@@ -1,0 +1,63 @@
+@font-face {
+  font-family: 'nt-dapper';
+  src: url('/fonts/NTDapper-regular.woff2') format('woff2'), url('/fonts/NTDapper-regular.woff') format('woff'),
+    url('/fonts/NTDapper-regular.eot');
+  font-weight: 400;
+  font-style: normal;
+  font-display: auto;
+}
+
+@font-face {
+  font-family: 'nt-dapper';
+  src: url('/fonts/NTDapper-bold.woff2') format('woff2'), url('/fonts/NTDapper-bold.woff') format('woff'),
+    url('/fonts/NTDapper-bold.eot');
+  font-weight: 700;
+  font-style: normal;
+  font-display: auto;
+}
+
+@font-face {
+  font-family: 'nt-dapper';
+  src: url('/fonts/NTDapper-black.woff2') format('woff2'), url('/fonts/NTDapper-black.woff') format('woff'),
+    url('/fonts/NTDapper-black.eot');
+  font-weight: 900;
+  font-style: normal;
+  font-display: auto;
+}
+
+@font-face {
+  font-family: 'jetbrains-mono';
+  src: url('/fonts/JetBrainsMono-Regular.woff2') format('woff2'),
+    url('/fonts/JetBrainsMono-Regular.woff') format('woff'), url('/fonts/JetBrainsMono-Regular.eot');
+  font-weight: 400;
+  font-style: normal;
+  font-display: auto;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'nt-dapper', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans,
+    Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --leva-colors-highlight1: #fefefe !important;
+  --leva-colors-highlight2: #fefefe !important;
+  --leva-colors-elevation1: #222138 !important;
+  --leva-colors-elevation2: #222138 !important;
+  --leva-fonts-mono: 'nt-dapper', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
+    Fira Sans, Droid Sans, Helvetica Neue, sans-serif !important;
+  --leva-fontSizes-root: 14px !important;
+  --leva-fontWeights-label: 900 !important;
+}
