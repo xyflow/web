@@ -2,7 +2,11 @@
   "private": true,
   "scripts": {
     "build": "turbo run build",
+    "build:docs": "turbo run build --filter xyflow-docs",
+    "build:platform": "turbo run build --filter xyflow-platform",
     "dev": "turbo run dev",
+    "dev:docs": "turbo run dev --filter xyflow-docs",
+    "dev:platform": "turbo run dev --filter xyflow-platform",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
