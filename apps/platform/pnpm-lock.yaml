@@ -49,6 +49,9 @@ dependencies:
   '@nhost/react-apollo':
     specifier: ^5.0.26
     version: 5.0.26(@apollo/client@3.7.15)(@nhost/nhost-js@2.2.8)(@nhost/react@2.0.22)(graphql@16.6.0)(react-dom@18.2.0)(react@18.2.0)
+  '@stackblitz/sdk':
+    specifier: ^1.9.0
+    version: 1.9.0
   '@stripe/stripe-js':
     specifier: ^1.54.0
     version: 1.54.0
@@ -2451,6 +2454,10 @@ packages:
 
   /@simplewebauthn/browser@6.2.2:
     resolution: {integrity: sha512-VUtne7+s6BmW4usnbitjZEI1VNT/PNh6bYg+AI4OMdfpo5z+yAq+6iVAWBJlIUGVk5InetEQvTUp6OefBam8qg==}
+    dev: false
+
+  /@stackblitz/sdk@1.9.0:
+    resolution: {integrity: sha512-3m6C7f8pnR5KXys/Hqx2x6ylnpqOak6HtnZI6T5keEO0yT+E4Spkw37VEbdwuC+2oxmjdgq6YZEgiKX7hM1GmQ==}
     dev: false
 
   /@stitches/core@1.2.8:
