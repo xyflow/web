@@ -19,6 +19,11 @@ export enum BillingPeriod {
   ANNUALLY = 'annually',
 }
 
+export enum Environment {
+  DEVELOPMENT = 'development',
+  PRODUCTION = 'production',
+}
+
 export type PricingPlanFeature = {
   label: React.ReactNode;
   description: React.ReactNode;
@@ -32,26 +37,13 @@ export type PricingPlanFeature = {
 export type PriceConfig = {
   label: string;
   unit: string;
-  development: string;
-  production: string;
-};
+} & Record<Environment, string>;
 
-export type SubscriptionConfig = {
-  // @todo use BillingPeriods type to create these options?
-  monthly: PriceConfig;
-  annually: PriceConfig;
-};
+export type SubscriptionConfig = Record<BillingPeriod, PriceConfig>;
 
 export type StripeConfig = {
-  product: {
-    development: string;
-    production: string;
-  };
-  prices: {
-    // @todo use Currencies type to create these options?
-    eur: SubscriptionConfig;
-    usd: SubscriptionConfig;
-  };
+  product: Record<Environment, string>;
+  prices: Record<Currency, SubscriptionConfig>;
 };
 
 export type PricingPlan = {

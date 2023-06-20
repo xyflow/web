@@ -1,10 +1,19 @@
-import { Flex, Box, Button, Link, Heading } from '@chakra-ui/react';
+import { Flex, Box, Button, Heading } from '@chakra-ui/react';
 import { HiOutlineCheckCircle, HiOutlineArrowNarrowRight } from 'components/Icons';
+import Card, { CardHeader, CardItem } from 'components/Card';
 
-import Card, { CardHeader, CardItem } from '../Card';
-import { useSubscription } from '../../context/subscription';
+import useSubscription from 'hooks/useSubscription';
 
-function ProFeature({ label, description = '', button = null, color = 'gray.500' }) {
+export type ProFeatureProps = {
+  label: string;
+  description?: string;
+  button?: React.ReactNode;
+  // @todo is there a better type than string for colors?
+  color?: string;
+  key?: string;
+};
+
+function ProFeature({ label, description = '', button = null, color = 'gray.500' }: ProFeatureProps) {
   const cardLabel = (
     <Flex>
       <Box mr={2} color={color} fontSize={24}>
@@ -36,13 +45,13 @@ function ProFeature({ label, description = '', button = null, color = 'gray.500'
 }
 
 function SubscriptionFeatures() {
-  const subscription = useSubscription();
+  const { data } = useSubscription();
 
-  if (!subscription) {
+  if (!data) {
     return null;
   }
 
-  const { features } = subscription;
+  const { features } = data;
 
   return (
     <Card>
@@ -50,14 +59,14 @@ function SubscriptionFeatures() {
         title="Your Subscription Features"
         action={
           <Heading bg="pink.500" color="white" px={2} py={1} borderRadius="md" size="sm">
-            {subscription.label} Plan
+            {data.label} Plan
           </Heading>
         }
       />
       <Box>
         {features.map((feature, index) => (
           <ProFeature
-            key={index}
+            key={`PricingPlanFeature__${index}`}
             label={feature.label}
             description={feature.description}
             button={feature.button}
