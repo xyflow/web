@@ -4,10 +4,12 @@ import Card, { CardHeader, CardItem } from 'components/Card';
 
 import useSubscription from 'hooks/useSubscription';
 
+import { PricingPlanFeature } from 'config/plans';
+
 export type ProFeatureProps = {
-  label: string;
-  description?: string;
-  button?: React.ReactNode;
+  label: React.ReactNode;
+  description?: React.ReactNode;
+  button?: PricingPlanFeature['button'] | null;
   // @todo is there a better type than string for colors?
   color?: string;
   key?: string;

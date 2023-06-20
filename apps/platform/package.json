@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@apollo/client": "^3.7.15",
-    "@blueprintjs/core": "^4.20.1",
     "@chakra-ui/icons": "^2.0.19",
     "@chakra-ui/next-js": "^2.1.4",
     "@chakra-ui/react": "^2.7.0",
@@ -51,7 +50,7 @@
     "micro": "^10.0.1",
     "moveable": "^0.48.0",
     "moveable-helper": "^0.4.0",
-    "next": "^13.4.5",
+    "next": "^13.4.6",
     "next-mdx-remote": "^4.4.1",
     "nextjs-progressbar": "^0.0.16",
     "node-mailjet": "^6.0.2",
