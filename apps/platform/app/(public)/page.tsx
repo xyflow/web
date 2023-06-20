@@ -1,12 +1,12 @@
 'use client';
 
 import { Box, Flex, useBreakpointValue } from '@chakra-ui/react';
+import NextImage from 'next/image';
 
 import Text from 'components/Text';
 import Heading from 'components/Heading';
 import PricingPlans from 'components/PricingPlans';
 import PricingFAQ from 'components/PricingFAQ';
-import WorkflowBuilderExample from 'components/PricingWorkflowBuilder/App';
 
 const SubscribePage = () => {
   // we are using a default breakpoint "md" here in order to prevent jumping on desktop screens
@@ -39,8 +39,8 @@ const SubscribePage = () => {
           </Text>
         </Box>
         {showWorkflow && (
-          <Flex ml={5} overflow="hidden" flex="1">
-            <WorkflowBuilderExample />
+          <Flex position="relative" ml={5} overflow="hidden" flex="1">
+            <NextImage alt="Workflow Builder Example" fill src="/img/intro-flow.png" />
           </Flex>
         )}
       </Flex>
