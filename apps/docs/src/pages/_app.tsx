@@ -25,6 +25,7 @@ export default function App({ Component, pageProps }) {
   return (
     <main
       className={`${ntDapperFont.variable} font-sans`}
+      // @ts-ignore
       style={{ '--primary': primaryColors[framework] }}
     >
       <Component {...pageProps} />
