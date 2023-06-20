@@ -12,10 +12,26 @@ function Logo() {
   return <strong>{label}</strong>;
 }
 
+const SidebarClassNameLookup = {
+  '/react-flow/examples/floating-edges': 'pro',
+};
+
+function SidebarTitle({ title, type, route }) {
+  console.log(title, route, type);
+
+  return (
+    <div className={`sidebar-title ${SidebarClassNameLookup[route] ?? ''}`}>
+      {title}
+    </div>
+  );
+}
+
 export default {
   logo: Logo,
   project: {
-    link: 'https://github.com/shuding/nextra',
+    link: 'https://github.com/xyflow/xyflow',
   },
-  // ...
+  sidebar: {
+    titleComponent: SidebarTitle,
+  },
 };

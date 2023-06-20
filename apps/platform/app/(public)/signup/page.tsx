@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 // import { useRouter } from 'next/router';
-import NextLink from 'next/link';
+import Link from 'next/link';
 import {
   Box,
   Button,
@@ -37,7 +37,7 @@ function Signup() {
   };
 
   return (
-    <Box bg="gray.50">
+    <Box>
       <Container
         maxW="lg"
         py={{
@@ -106,11 +106,11 @@ function Signup() {
                 <Text>Already have an account?</Text>
                 {/* @todo pass query params here */}
                 {/* <NextLink href={{ pathname: '/login', query: router.query }}> */}
-                <NextLink href={{ pathname: '/login' }}>
+                <Link href={{ pathname: '/login' }}>
                   <Button variant="link" colorScheme="blue">
                     Sign in
                   </Button>
-                </NextLink>
+                </Link>
               </HStack>
             </Stack>
           </Stack>

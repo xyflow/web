@@ -1,8 +1,9 @@
 {
-  "name": "react-flow-platform",
+  "name": "xyflow-platform",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --port 3000",
+    "dev:backend": "nhost up",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -37,6 +38,7 @@
     "d3-selection": "^3.0.0",
     "d3-timer": "^3.0.1",
     "dagre": "^0.8.5",
+    "encoding": "^0.1.13",
     "express": "^4.18.2",
     "fathom-client": "^3.5.0",
     "file-saver": "^2.0.5",
@@ -53,7 +55,6 @@
     "next-mdx-remote": "^4.4.1",
     "nextjs-progressbar": "^0.0.16",
     "node-mailjet": "^6.0.2",
-    "nodemailer": "^6.9.3",
     "re-resizable": "^6.9.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
