@@ -2,8 +2,6 @@
   "private": true,
   "scripts": {
     "build": "turbo run build",
-    "build:docs": "turbo run build --filter xyflow-docs",
-    "build:platform": "turbo run build --filter xyflow-platform",
     "dev": "turbo run dev",
     "dev:docs": "turbo run dev --filter xyflow-docs",
     "dev:platform": "turbo run dev --filter xyflow-platform",
@@ -15,7 +13,7 @@
     "eslint": "^7.32.0",
     "eslint-config-custom": "workspace:*",
     "prettier": "^2.5.1",
-    "turbo": "latest"
+    "turbo": "^1.10.3"
   },
   "packageManager": "pnpm@7.15.0",
   "name": "docs"
