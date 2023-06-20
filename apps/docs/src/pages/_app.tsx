@@ -1,3 +1,4 @@
+import useXYSite from 'hooks/useXYSite';
 import localFont from 'next/font/local';
 
 import 'styles/global.css';
@@ -12,9 +13,20 @@ const ntDapperFont = localFont({
   variable: '--font-ntdapper',
 });
 
+const primaryColors = {
+  xyflow: '248 1% 85%',
+  react: '333 100% 50%',
+  svelte: '15 100% 50%',
+};
+
 export default function App({ Component, pageProps }) {
+  const { framework } = useXYSite();
+
   return (
-    <main className={`${ntDapperFont.variable} font-sans`}>
+    <main
+      className={`${ntDapperFont.variable} font-sans`}
+      style={{ '--primary': primaryColors[framework] }}
+    >
       <Component {...pageProps} />
     </main>
   );
