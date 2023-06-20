@@ -1,6 +1,7 @@
 {
   "private": true,
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "build": "turbo run build",
     "dev": "turbo run dev",
     "dev:docs": "turbo run dev --filter xyflow-docs",

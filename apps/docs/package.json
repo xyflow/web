@@ -17,13 +17,17 @@
     "nextra-theme-docs": "^2.7.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "ui": "workspace:*"
+    "xyflow-ui": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^17.0.12",
     "@types/react": "^18.0.22",
     "@types/react-dom": "^18.0.7",
+    "autoprefixer": "^10.4.14",
+    "cssnano": "^6.0.1",
     "eslint-config-custom": "workspace:*",
+    "postcss": "^8.4.24",
+    "tailwindcss": "^3.3.2",
     "tsconfig": "workspace:*",
     "typescript": "^4.5.3"
   }
