@@ -1,3 +1,3 @@
 [submodule "apps/platform/pro-examples"]
 	path = apps/platform/pro-examples
-	url = https://$GITHUB_ACCESS_TOKEN@github.com:xyflow/pro-examples.git
+	url = git@github.com:xyflow/pro-examples.git
