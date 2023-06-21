@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "vercel-submodule": "sh ./scripts/vercel-private-submodule.sh",
+    "vercel-submodule": "./scripts/vercel-private-submodule.sh",
     "preinstall": "npx only-allow pnpm",
     "build": "turbo run build",
     "dev": "turbo run dev",
