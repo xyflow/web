@@ -2,17 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.sidebar-title.pro:after {
-  content: 'Pro';
-  display: inline-block;
-  font-size: 12px;
-  margin-left: 10px;
-  background-color: #ff0071;
-  color: white;
-  border-radius: 4px;
-  padding: 2px 5px;
-}
-
 @layer base {
   :root {
     --color-xyflow: 248 1% 85%;
