@@ -1,17 +1,14 @@
-'use client';
+import useSubscription from 'hooks/useSubscription';
 
-import ProExamples from 'pro-examples/examples';
+import SubscribedExampleViewer from './subscribed';
+import UnsubscribedExampleViewer from './unsubscribed';
 
 export default function ({ params }: { params: { id: string } }) {
-  const App = ProExamples.find((example) => example.id === params.id)?.component;
+  const { isSubscribed } = useSubscription();
 
-  if (!App) {
-    return null;
-  }
-
-  return (
-    <div style={{ width: 500, height: 500 }}>
-      <App />
-    </div>
+  return isSubscribed ? (
+    <SubscribedExampleViewer exampleId={params.id} />
+  ) : (
+    <UnsubscribedExampleViewer exampleId={params.id} />
   );
 }

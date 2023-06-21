@@ -1,4 +1,4 @@
-import { PlanId, PricingPlan } from 'config/plans';
+import { PlanId, PricingPlan, plans } from 'config/plans';
 
 // @todo implement me!
 export type SubscriptionStatus = {
@@ -10,9 +10,9 @@ export type SubscriptionStatus = {
 
 export default function useSubscription(): SubscriptionStatus {
   return {
-    isSubscribed: false,
-    plan: PlanId.FREE,
+    isSubscribed: true,
+    plan: PlanId.PRO,
     isLoading: false,
-    data: null,
+    data: plans.pro,
   };
 }
