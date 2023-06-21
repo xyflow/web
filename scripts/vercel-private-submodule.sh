@@ -21,6 +21,8 @@ rm -rf tmp || true # remove the tmp folder if exists
 
 git clone https://$GITHUB_ACCESS_TOKEN@$SUBMODULE_GITHUB tmp # clone the submodule repo
 
+rm -rf $SUBMODULE_PATH || true # remove the submodule path if exists
+
 # move the submodule from tmp to the submodule path
 # cd .. # go folder up
 rm -rf tmp/.git # remove .git 
