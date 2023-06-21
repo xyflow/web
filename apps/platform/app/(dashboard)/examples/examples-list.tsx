@@ -8,14 +8,14 @@ import { HiX } from 'components/Icons';
 import { authProtected } from 'components/Auth';
 import ExampleTeaser from 'components/ExampleTeaser';
 
-import examples, { Example } from 'config/examples';
+import examples, { Example } from 'pro-examples/examples';
 
 const uniqueTags = examples.reduce<string[]>((tags, example) => {
   example.tags?.forEach((tag) => !tags.includes(tag) && tags.push(tag));
   return tags;
 }, []);
 
-function Examples({ examples }: { examples: Example[] }) {
+function Examples() {
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
 
   return (
