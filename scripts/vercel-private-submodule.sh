@@ -1,8 +1,7 @@
 # github submodule repo address without https:// prefix
 SUBMODULE_GITHUB=github.com/xyflow/pro-examples
-
 # .gitmodules submodule path
-SUBMODULE_PATH=apps/platform/examples
+SUBMODULE_PATH=apps/platform/pro-examples
 
 # github access token is necessary
 # add it to Environment Variables on Vercel
@@ -14,27 +13,5 @@ fi
 # stop execution on error - don't let it build if something goes wrong
 set -e
 
-# get submodule commit
-output=`git submodule status --recursive` # get submodule info
-set -- $output # split the output into words
-COMMIT=$1 # get rid of the suffix
-
-echo $COMMIT
-# set up an empty temporary work directory
-rm -rf tmp || true # remove the tmp folder if exists
-mkdir tmp # create the tmp folder
-cd tmp # go into the tmp folder
-
-# checkout the current submodule commit
-git init # initialise empty repo
-git remote add origin https://$GITHUB_ACCESS_TOKEN@$SUBMODULE_GITHUB # add origin of the submodule
-git fetch --depth=1 origin $COMMIT # fetch only the required version
-git checkout $COMMIT # checkout on the right commit
-
-# move the submodule from tmp to the submodule path
-cd .. # go folder up
-rm -rf tmp/.git # remove .git 
-mv tmp/* $SUBMODULE_PATH/ # move the submodule to the submodule path
-
-# clean up
-rm -rf tmp # remove the tmp folder
+rm -rf $SUBMODULE_PATH || true # remove the submodule path if exists
+git clone https://$GITHUB_ACCESS_TOKEN@$SUBMODULE_GITHUB $SUBMODULE_PATH # clone the submodule repo
