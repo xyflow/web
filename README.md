@@ -1,81 +1,42 @@
-# Turborepo starter
+# XYFlow Websites and Docs
 
-This is an official starter Turborepo.
-
-## Using this example
-
-Run the following command:
-
-```sh
-npx create-turbo@latest
-```
+This monorepo contains our [website + docs](https://xyflow.com) and [pro platform](https://pro.xyflow.com). You can find the websites in the [/app](app) directory.
 
 ## What's inside?
 
-This Turborepo includes the following packages/apps:
+This Turborepo includes the following packages/apps. All internal / private packages are prefixed with `xy-`.
 
-### Apps and Packages
+### Apps
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `ui`: a stub React component library shared by both `web` and `docs` applications
-- `xy-eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `tsconfig`: `tsconfig.json`s used throughout the monorepo
+- [`docs`](apps/docs): the xyflow website that contains landingpages and documentation
+  - built with [NextJS](https://nextjs.org/) and [Nextra](https://nextra.site/)
+- [`platform`](apps/platform): the pro platform used by our subscribers to create subscriptions and access their subscription features
+  - built with [NextJS](https://nextjs.org/)
+  - [nhost](https://nhost.io) is being used for authentication, database and serverless functions
+  - payment infrastructure via [stripe](https://stripe.com)
+- [`xy-styleguide`](apps/xy-styleguide): A storybook app for exploring and documenting our internal ui components
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+### Packages
 
-### Utilities
+- [`xy-ui`](packages/xy-ui): our custom component library that contains ui components that are shared across our apps
+- [`xy-tailwind-config`](packages/xy-tailwind-config): contains shared tailwind configuration
+- [`xy-eslint-config`](packages/xy-eslint-config): `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
+- [`xy-tsconfig`](packages/xy-tsconfig): `tsconfig.json`s used throughout the monorepo
 
-This Turborepo has some additional tools already setup for you:
+## Getting started
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+To run one of the websites locally, you need to install the dependencies and packages:
 
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm build
+```sh
+pnpm install
 ```
 
-### Develop
+Now you can start the app that you want to work on with one of these commands:
 
-To develop all apps and packages, run the following command:
+```sh
+pnpm run dev:docs # runs the website + docs app on localhost:3001
 
+pnpm run dev:platform # runs the pro platform on localhost:3000
+
+pnpm run dev:styleguide # runs a storybook for inspecting our ui components on localhost:6006
 ```
-cd my-turborepo
-pnpm dev
-```
-
-### Remote Caching
-
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-npx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
