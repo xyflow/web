@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 export default function useXYSite() {
   const router = useRouter();
 
-  const framework = useMemo(() => {
+  const site = useMemo(() => {
     const { pathname } = router;
     if (pathname.includes('react-flow')) {
       return 'react';
@@ -16,6 +16,7 @@ export default function useXYSite() {
   }, [router.pathname]);
 
   return {
-    framework,
+    site,
+    isFramework: site !== 'xyflow',
   };
 }

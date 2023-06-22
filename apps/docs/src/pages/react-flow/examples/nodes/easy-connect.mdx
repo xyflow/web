@@ -1,0 +1,21 @@
+---
+sidebar_position: 5
+sidebar_label: Easy Connect
+title: Easy Connect
+hide_table_of_contents: true
+---
+
+import CodeViewer from '@/components/CodeViewer';
+
+This example features a custom node which serves as handle to make it easier to connect two nodes. Additionally, the nodes have a separate drag handle so that they are still draggable.
+
+<CodeViewer
+  codePath="example-flows/EasyConnect"
+  additionalFiles={[
+    'CustomNode.js',
+    'FloatingEdge.js',
+    'CustomConnectionLine.js',
+    'utils.js',
+    'style.css',
+  ]}
+/>

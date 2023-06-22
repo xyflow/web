@@ -20,7 +20,7 @@ This Turborepo includes the following packages/apps. All internal / private pack
 
 - [`xy-ui`](packages/xy-ui): our custom component library that contains ui components that are shared across our apps
 - [`xy-tailwind-config`](packages/xy-tailwind-config): contains shared tailwind configuration
-- [`xy-eslint-config`](packages/xy-eslint-config): `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
+- [`eslint-config-xyflow`](packages/xy-eslint-config): `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
 - [`xy-tsconfig`](packages/xy-tsconfig): `tsconfig.json`s used throughout the monorepo
 
 ## Getting started
@@ -38,7 +38,7 @@ pnpm run dev:docs # runs the website + docs app on localhost:3001
 
 pnpm run dev:platform # runs the pro platform on localhost:3000
 
-pnpm run dev:styleguide # runs a storybook for inspecting our ui components on localhost:6006
+pnpm run dev:style # runs a storybook for inspecting our ui components on localhost:6006
 ```
 
 ## Branches and Previews
