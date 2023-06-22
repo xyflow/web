@@ -38,7 +38,7 @@ pnpm run dev:docs # runs the website + docs app on localhost:3001
 
 pnpm run dev:platform # runs the pro platform on localhost:3000
 
-pnpm run dev:styleguide # runs a storybook for inspecting our ui components on localhost:6006
+pnpm run dev:style # runs a storybook for inspecting our ui components on localhost:6006
 ```
 
 ## Branches and Previews
