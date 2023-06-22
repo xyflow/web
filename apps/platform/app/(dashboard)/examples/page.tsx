@@ -4,18 +4,19 @@ import { useState } from 'react';
 import { Box, SimpleGrid, Wrap, Button, WrapItem, Text } from '@chakra-ui/react';
 import Head from 'next/head';
 import { HiX } from 'components/Icons';
-
-import examples from 'config/examples';
-import ExampleTeaser from 'components/ExampleTeaser';
+// @todo re-enable auth protection
 import { authProtected } from 'components/Auth';
+import ExampleTeaser from 'components/ExampleTeaser';
 
-const uniqueTags = examples.reduce((tags, example) => {
+import examples, { Example } from 'pro-examples/examples';
+
+const uniqueTags = examples.reduce<string[]>((tags, example) => {
   example.tags?.forEach((tag) => !tags.includes(tag) && tags.push(tag));
   return tags;
 }, []);
 
 function Examples() {
-  const [selectedTag, setSelectedTag] = useState(null);
+  const [selectedTag, setSelectedTag] = useState<string | null>(null);
 
   return (
     <Box>
@@ -34,7 +35,7 @@ function Examples() {
                 variant={selectedTag === tag ? 'solid' : 'outline'}
                 colorScheme="pink"
                 size="sm"
-                rightIcon={selectedTag === tag ? <HiX /> : null}
+                rightIcon={selectedTag === tag ? <HiX /> : undefined}
               >
                 {tag}
               </Button>

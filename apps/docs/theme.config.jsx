@@ -17,8 +17,6 @@ const SidebarClassNameLookup = {
 };
 
 function SidebarTitle({ title, type, route }) {
-  console.log(title, route, type);
-
   return (
     <div className={`sidebar-title ${SidebarClassNameLookup[route] ?? ''}`}>
       {title}

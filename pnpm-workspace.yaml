@@ -1,3 +1,6 @@
 packages:
-  - "apps/*"
-  - "packages/*"
+  - 'apps/*'
+  - 'packages/*'
+  - 'apps/platform/pro-examples/examples'
+  - 'apps/platform/pro-examples/viewer'
+  - 'apps/platform/pro-examples/packages/*'
