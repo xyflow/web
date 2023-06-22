@@ -1,13 +1,11 @@
+import { serialize } from 'next-mdx-remote/serialize';
+import ProCodeViewer from 'components/ProExampleViewer';
 import { getExampleFiles } from './utils';
 
-export default function ({ exampleId }: { exampleId: string }) {
+export default async function ({ exampleId }: { exampleId: string }) {
   const files = getExampleFiles(exampleId);
+  const readme = typeof files['README.mdx'] === 'string' ? files['README.mdx'] : '';
+  const readmeSource = await serialize(readme);
 
-  return (
-    <div>
-      {files.map((file) => (
-        <div key={file.name}>{file.name}</div>
-      ))}
-    </div>
-  );
+  return <ProCodeViewer readme={readmeSource} files={files} />;
 }

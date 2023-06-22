@@ -1,4 +1,3 @@
-// @todo replace markdown/terms-of-use with mdx files and import from there
 import TermsMDX from './terms-of-use.mdx';
 import styles from '../style.module.css';
 
