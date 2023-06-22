@@ -40,3 +40,14 @@ pnpm run dev:platform # runs the pro platform on localhost:3000
 
 pnpm run dev:styleguide # runs a storybook for inspecting our ui components on localhost:6006
 ```
+
+## Branches and Previews
+
+If you work on a feature, create a feature branch from `staging`.
+
+- `main` is the production branch. Commits get deployed automatically to:
+  - [https://xyflow-docs.vercel.app/](https://xyflow-docs.vercel.app/)
+  - [https://xyflow-platform.vercel.app/](https://xyflow-platform.vercel.app/)
+- `staging` is used for previewing the next release:
+  - [https://xyflow-docs-staging.vercel.app/](https://xyflow-docs-staging.vercel.app/)
+  - [https://xyflow-platform-staging.vercel.app/](https://xyflow-platform-staging.vercel.app/)
