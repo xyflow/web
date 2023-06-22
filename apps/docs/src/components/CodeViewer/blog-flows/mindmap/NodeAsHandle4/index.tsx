@@ -44,12 +44,18 @@ const defaultEdgeOptions = { style: connectionLineStyle, type: 'mindmap' };
 
 function Flow() {
   // whenever you use multiple values, you should use shallow for making sure that the component only re-renders when one of the values change
-  const { nodes, edges, onNodesChange, onEdgesChange, addChildNode } = useStore(selector, shallow);
+  const { nodes, edges, onNodesChange, onEdgesChange, addChildNode } = useStore(
+    selector,
+    shallow
+  );
   const connectingNodeId = useRef<string | null>(null);
   const store = useStoreApi();
   const { project } = useReactFlow();
 
-  const getChildNodePosition = (event: MouseEvent, parentNode?: Node) => {
+  const getChildNodePosition = (
+    event: MouseEvent | TouchEvent,
+    parentNode?: Node
+  ) => {
     const { domNode } = store.getState();
 
     if (
@@ -65,10 +71,13 @@ function Flow() {
 
     const { top, left } = domNode.getBoundingClientRect();
 
+    const isTouchEvent = 'touches' in event;
+    const x = isTouchEvent ? event.touches[0].clientX : event.clientX;
+    const y = isTouchEvent ? event.touches[0].clientY : event.clientY;
     // we need to remove the wrapper bounds, in order to get the correct mouse position
     const panePosition = project({
-      x: event.clientX - left,
-      y: event.clientY - top,
+      x: x - left,
+      y: y - top,
     });
 
     // we are calculating with positionAbsolute here because child nodes are positioned relative to their parent
@@ -85,7 +94,9 @@ function Flow() {
   const onConnectEnd: OnConnectEnd = useCallback(
     (event) => {
       const { nodeInternals } = store.getState();
-      const targetIsPane = (event.target as Element).classList.contains('react-flow__pane');
+      const targetIsPane = (event.target as Element).classList.contains(
+        'react-flow__pane'
+      );
 
       if (targetIsPane && connectingNodeId.current) {
         const parentNode = nodeInternals.get(connectingNodeId.current);

@@ -1,12 +1,20 @@
 import React, { useCallback } from 'react';
-import ReactFlow, { useNodesState, useEdgesState, addEdge, Controls, Background } from 'reactflow';
+import ReactFlow, {
+  useNodesState,
+  useEdgesState,
+  addEdge,
+  Controls,
+  Background,
+} from 'reactflow';
 
 import DownloadButton from './DownloadButton';
 import CustomNode from './CustomNode';
 import { initialNodes, initialEdges } from './nodes-edges';
 
 import 'reactflow/dist/style.css';
-import './index.css';
+
+// @todo how to handle this?
+// import './index.css';
 
 const connectionLineStyle = { stroke: '#ffff' };
 const snapGrid = [25, 25];
@@ -25,7 +33,10 @@ const DownloadImageFlow = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
-  const onConnect = useCallback((params) => setEdges((eds) => addEdge(params, eds)), []);
+  const onConnect = useCallback(
+    (params) => setEdges((eds) => addEdge(params, eds)),
+    []
+  );
 
   return (
     <ReactFlow

@@ -1,5 +1,9 @@
 {
   "index": "Overview",
-  "floating-edges": "Floating Edges",
-  "layouting": "Layouting"
+  "nodes": "Nodes",
+  "edges": "Edges",
+  "layout": "Layout",
+  "interaction": "Interaction",
+  "styling": "Styling",
+  "misc": "Misc"
 }
