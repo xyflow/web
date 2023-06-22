@@ -14,6 +14,7 @@ export const getExampleFiles = (exampleId: string): ExampleFile[] => {
   try {
     const fileNames = fs.readdirSync(examplesPath);
 
+    // @todo this should run recursively and include folders
     files = fileNames.map((file) => {
       const filePath = path.join(examplesPath, file);
       const fileContent = fs.readFileSync(filePath, 'utf8');
