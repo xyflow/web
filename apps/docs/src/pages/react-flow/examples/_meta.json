@@ -1,4 +1,9 @@
 {
+  "*": {
+    "theme": {
+      "toc": false
+    }
+  },
   "index": "Overview",
   "nodes": "Nodes",
   "edges": "Edges",
