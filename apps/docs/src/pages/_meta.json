@@ -2,7 +2,13 @@
   "*": {
     "type": "page"
   },
-  "index": "XY Flow",
+  "index": {
+    "title": "XY Flow",
+    "theme": {
+      "layout": "raw"
+    }
+  },
   "react-flow": "React Flow",
-  "svelte-flow": "Svelte Flow"
+  "svelte-flow": "Svelte Flow",
+  "blog": "Blog"
 }
