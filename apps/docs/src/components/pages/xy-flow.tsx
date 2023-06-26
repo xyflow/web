@@ -1,8 +1,9 @@
 import { Button } from 'xy-ui';
+import PageLayout from '@/components/page-layout';
 
 export default function XYFlowHome() {
   return (
-    <>
+    <PageLayout>
       Wire your ideas with XYFlow! Powerful open source libraries for building
       node-based UIs with React or Svelte. Ready out-of-the-box and infinitely
       customizable. React Flow Svelte Flow See what people build with xyflow Our
@@ -13,6 +14,6 @@ export default function XYFlowHome() {
       John, and Moritz. We are the maintainers of React Flow, Svelte Flow, and
       the communities around them.
       <Button variant="xyflow">xyflow</Button>
-    </>
+    </PageLayout>
   );
 }

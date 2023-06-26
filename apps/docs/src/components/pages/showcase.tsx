@@ -1,20 +1,20 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
+import PageLayout from '@/components/page-layout';
+
 import showcases from '../../../public/data/showcases.json';
 
 export default function Showcase() {
   return (
-    <>
-      <h1 className="text-6xl font-black mb-4 text-center">Showcase</h1>
-      <p className="text-center mb-8">
-        React Flow is used by thousands of people, from solo open-source
-        developers to companies like Stripe and Typeform. We’ve seen the library
-        used for data processing tools, chatbot builders, machine learning,
-        musical synthesizers, and more. Explore a selection of our favorite
-        projects that use React Flow here.
-      </p>
-
+    <PageLayout
+      title="Showcase"
+      subtitle="  React Flow is used by thousands of people, from solo open-source
+    developers to companies like Stripe and Typeform. We’ve seen the library
+    used for data processing tools, chatbot builders, machine learning,
+    musical synthesizers, and more. Explore a selection of our favorite
+    projects that use React Flow here."
+    >
       <div className="grid grid-cols-4 gap-4">
         {showcases.map((showcase) => (
           <div>
@@ -35,6 +35,6 @@ export default function Showcase() {
           </div>
         ))}
       </div>
-    </>
+    </PageLayout>
   );
 }

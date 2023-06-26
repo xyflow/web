@@ -19,7 +19,7 @@ const topNav = [
   },
 ];
 
-const xyNavBarRoutes = ['/blog', '/about', '/showcase'];
+const xyNavBarRoutes = ['/blog', '/about', '/showcase', '/open-source'];
 
 export default function Navbar(props) {
   const { site, isOrg } = useXYSite();

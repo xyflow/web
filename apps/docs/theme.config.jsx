@@ -4,6 +4,7 @@ import { useConfig } from 'nextra-theme-docs';
 import Logo from '@/components/logo';
 import Navbar from '@/components/navbar';
 import SidebarTitle from '@/components/sidebar-title';
+import Footer from '@/components/footer';
 import useXYSite from '@/hooks/useXYSite';
 
 export default {
@@ -16,6 +17,9 @@ export default {
   },
   sidebar: {
     titleComponent: SidebarTitle,
+  },
+  footer: {
+    component: Footer,
   },
   useNextSeoProps() {
     const { lib } = useXYSite();

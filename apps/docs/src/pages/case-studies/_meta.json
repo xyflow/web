@@ -2,7 +2,7 @@
   "*": {
     "display": "hidden",
     "theme": {
-      "toc": true,
+      "toc": false,
       "sidebar": false,
       "pagination": false,
       "typesetting": "article",
