@@ -10,9 +10,9 @@ export type SubscriptionStatus = {
 
 export default function useSubscription(): SubscriptionStatus {
   return {
-    isSubscribed: true,
-    plan: PlanId.PRO,
+    isSubscribed: false,
+    plan: PlanId.FREE,
     isLoading: false,
-    data: plans.pro,
+    data: plans.free,
   };
 }

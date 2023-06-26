@@ -38,17 +38,17 @@ dependencies:
     specifier: ^13.4.5
     version: 13.4.5(@mdx-js/loader@2.3.0)(@mdx-js/react@2.3.0)
   '@nhost/nextjs':
-    specifier: ^1.13.28
-    version: 1.13.28(@types/react@18.2.12)(encoding@0.1.13)(graphql@16.6.0)(next@13.4.6)(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^1.13.31
+    version: 1.13.31(@types/react@18.2.12)(encoding@0.1.13)(graphql@16.6.0)(next@13.4.6)(react-dom@18.2.0)(react@18.2.0)
   '@nhost/nhost-js':
-    specifier: ^2.2.8
-    version: 2.2.8(encoding@0.1.13)(graphql@16.6.0)
+    specifier: ^2.2.10
+    version: 2.2.10(encoding@0.1.13)(graphql@16.6.0)
   '@nhost/react':
-    specifier: ^2.0.22
-    version: 2.0.22(@types/react@18.2.12)(encoding@0.1.13)(graphql@16.6.0)(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^2.0.25
+    version: 2.0.25(@types/react@18.2.12)(encoding@0.1.13)(graphql@16.6.0)(react-dom@18.2.0)(react@18.2.0)
   '@nhost/react-apollo':
-    specifier: ^5.0.26
-    version: 5.0.26(@apollo/client@3.7.15)(@nhost/nhost-js@2.2.8)(@nhost/react@2.0.22)(graphql@16.6.0)(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^5.0.29
+    version: 5.0.29(@apollo/client@3.7.15)(@nhost/nhost-js@2.2.10)(@nhost/react@2.0.25)(graphql@16.6.0)(react-dom@18.2.0)(react@18.2.0)
   '@stackblitz/sdk':
     specifier: ^1.9.0
     version: 1.9.0
@@ -79,6 +79,9 @@ dependencies:
   graphql:
     specifier: ^16.6.0
     version: 16.6.0
+  graphql-request:
+    specifier: ^6.1.0
+    version: 6.1.0(encoding@0.1.13)(graphql@16.6.0)
   jsonwebtoken:
     specifier: ^9.0.0
     version: 9.0.0
@@ -135,6 +138,9 @@ devDependencies:
   '@types/express':
     specifier: ^4.17.17
     version: 4.17.17
+  '@types/file-saver':
+    specifier: ^2.0.5
+    version: 2.0.5
   '@types/jsonwebtoken':
     specifier: ^9.0.2
     version: 9.0.2
@@ -1927,20 +1933,20 @@ packages:
     dev: false
     optional: true
 
-  /@nhost/apollo@5.2.10(@apollo/client@3.7.15)(@nhost/nhost-js@2.2.8):
-    resolution: {integrity: sha512-JGYwTw+l0q7PS0qzuZq2I2fv2Zco/v3LnERgRzJg9nyxxk8jQa19Vcdxd7kPGttEtIYAyR0TelmSLswBjudc6Q==}
+  /@nhost/apollo@5.2.12(@apollo/client@3.7.15)(@nhost/nhost-js@2.2.10):
+    resolution: {integrity: sha512-tBzI7Umuv0z5GdyN1cpr2XhwAkKJh9DX+1Gchb3MuKO0NHSA51IhiqVPSvmrkv0znUI8LefuwsuXrhTBPXc7Jg==}
     peerDependencies:
       '@apollo/client': ^3.7.10
-      '@nhost/nhost-js': 2.2.8
+      '@nhost/nhost-js': 2.2.10
     dependencies:
       '@apollo/client': 3.7.15(graphql@16.6.0)(react-dom@18.2.0)(react@18.2.0)
-      '@nhost/nhost-js': 2.2.8(encoding@0.1.13)(graphql@16.6.0)
-      graphql: 16.6.0
-      graphql-ws: 5.13.1(graphql@16.6.0)
+      '@nhost/nhost-js': 2.2.10(encoding@0.1.13)(graphql@16.6.0)
+      graphql: 16.7.1
+      graphql-ws: 5.13.1(graphql@16.7.1)
     dev: false
 
-  /@nhost/graphql-js@0.1.3(encoding@0.1.13)(graphql@16.6.0):
-    resolution: {integrity: sha512-rzi3HxJj6/FRhHafzLbEySHh5A+JwsSGtfyeU2T49kidVovLbKEQtBi0nRgrLIdVLSdqJ5ZeUBKqgXnkSka4/Q==}
+  /@nhost/graphql-js@0.1.4(encoding@0.1.13)(graphql@16.6.0):
+    resolution: {integrity: sha512-IPHuGOf4iQrFsxG7Rh5jCCZzPCN9JkvldFww4Fz1lCVi9ZQNEaGaawIP5gBuBHeYIuALeaK1wVYKPc7vJ/euCA==}
     peerDependencies:
       graphql: ^14.0.0 || ^15.0.0 || ^16.0.0
     dependencies:
@@ -1951,11 +1957,11 @@ packages:
       - encoding
     dev: false
 
-  /@nhost/hasura-auth-js@2.1.6(encoding@0.1.13):
-    resolution: {integrity: sha512-Aiy8lMs3ECbFCJLmMaMjKBY6nKvvRVG1g7E2WvjVR++c0HAVjQAo3WQ+BG0PJDhFrr+Kb453DPhUwvnB/9yYWQ==}
+  /@nhost/hasura-auth-js@2.1.7(encoding@0.1.13):
+    resolution: {integrity: sha512-dbi8zrmuE3xSlA7WMNyrZzVPLKYSBUlKtUjob+axhts0+4TsqsB7NvdLXrhM0fYjRY5SFUtN2JLs+EWDGKAoLQ==}
     dependencies:
       '@simplewebauthn/browser': 6.2.2
-      isomorphic-unfetch: 3.1.0(encoding@0.1.13)
+      fetch-ponyfill: 7.1.0(encoding@0.1.13)
       js-cookie: 3.0.5
       jwt-decode: 3.1.2
       xstate: 4.37.2
@@ -1963,8 +1969,8 @@ packages:
       - encoding
     dev: false
 
-  /@nhost/hasura-storage-js@2.1.5(encoding@0.1.13):
-    resolution: {integrity: sha512-xsDkRW3fg5xPVlhLFk2rS/4RlFtlHncwR0vcmtxuJgbSm3tiTu1TqqXQYuLZS/4N/vNYPoSWK+n2L6Z2seSxiQ==}
+  /@nhost/hasura-storage-js@2.1.6(encoding@0.1.13):
+    resolution: {integrity: sha512-wjtTQptYNFIzGZTrgRBCd9g3frHRfE+d5XVqLVFzwqtDioYTE1fK4Dcl45LVyfKM6H15maAr5z70NIKmrQd4aA==}
     dependencies:
       fetch-ponyfill: 7.1.0(encoding@0.1.13)
       form-data: 4.0.0
@@ -1973,14 +1979,14 @@ packages:
       - encoding
     dev: false
 
-  /@nhost/nextjs@1.13.28(@types/react@18.2.12)(encoding@0.1.13)(graphql@16.6.0)(next@13.4.6)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-RQLyjH1wORrJBr3Hzd+5C4okcRo0jr8G/J902sDYDWIqXzgO3mJ2OmruUbOlDevwL6fSb19rJGHOWT3ccbTxdA==}
+  /@nhost/nextjs@1.13.31(@types/react@18.2.12)(encoding@0.1.13)(graphql@16.6.0)(next@13.4.6)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-m+B4YapVpjRUFrjAzbUQof9H/tLAm4DCHPmncd62J/sMW3k0YeVg3/m6KXyhMWMZJJiPphVorkKNFC5vAtrp5Q==}
     peerDependencies:
       next: ^12.0.10 || ^13.0.0
       react: ^17.0.0 || ^18.0.0
       react-dom: ^17.0.0 || ^18.0.0
     dependencies:
-      '@nhost/react': 2.0.22(@types/react@18.2.12)(encoding@0.1.13)(graphql@16.6.0)(react-dom@18.2.0)(react@18.2.0)
+      '@nhost/react': 2.0.25(@types/react@18.2.12)(encoding@0.1.13)(graphql@16.6.0)(react-dom@18.2.0)(react@18.2.0)
       isomorphic-unfetch: 3.1.0(encoding@0.1.13)
       js-cookie: 3.0.5
       next: 13.4.6(react-dom@18.2.0)(react@18.2.0)
@@ -1994,32 +2000,32 @@ packages:
       - graphql
     dev: false
 
-  /@nhost/nhost-js@2.2.8(encoding@0.1.13)(graphql@16.6.0):
-    resolution: {integrity: sha512-qWnBsz4uqNDAjKgVUpj616F+r5c2NLiOGR8xX05ZOtdPgsH/E/6/w6IT4731ysKNffaYcrtII4GZMVqUxrrWnA==}
+  /@nhost/nhost-js@2.2.10(encoding@0.1.13)(graphql@16.6.0):
+    resolution: {integrity: sha512-CMIDfDjo1avWOOGek2hk3SmAdvriY4tVQ+TVLV0yhaeOJWhi6XZjWh9Ezn2o05QGLKc7FTuPA2pqyO0YEWHNNw==}
     peerDependencies:
       graphql: ^14.0.0 || ^15.0.0 || ^16.0.0
     dependencies:
-      '@nhost/graphql-js': 0.1.3(encoding@0.1.13)(graphql@16.6.0)
-      '@nhost/hasura-auth-js': 2.1.6(encoding@0.1.13)
-      '@nhost/hasura-storage-js': 2.1.5(encoding@0.1.13)
+      '@nhost/graphql-js': 0.1.4(encoding@0.1.13)(graphql@16.6.0)
+      '@nhost/hasura-auth-js': 2.1.7(encoding@0.1.13)
+      '@nhost/hasura-storage-js': 2.1.6(encoding@0.1.13)
       graphql: 16.6.0
       isomorphic-unfetch: 3.1.0(encoding@0.1.13)
     transitivePeerDependencies:
       - encoding
     dev: false
 
-  /@nhost/react-apollo@5.0.26(@apollo/client@3.7.15)(@nhost/nhost-js@2.2.8)(@nhost/react@2.0.22)(graphql@16.6.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-5Xp32OCzH7nnk3W9NVY2GPa8s9Dx6TVIjo5k4C39W9Dkt3+Faxn03wZMo7jLHKN+bTamITiMHHe4AswUOE0l4g==}
+  /@nhost/react-apollo@5.0.29(@apollo/client@3.7.15)(@nhost/nhost-js@2.2.10)(@nhost/react@2.0.25)(graphql@16.6.0)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-ynEJMbLf0G876QLfhFvougyYVhBK8DYt8E9SkDVvct7QOCczhwJz7g0Or6caphFZ83QaYoZACIrgNG8jTgqgrQ==}
     peerDependencies:
       '@apollo/client': ^3.7.10
-      '@nhost/react': 2.0.22
+      '@nhost/react': 2.0.25
       graphql: ^16.0.0
       react: ^17.0.0 || ^18.0.0
       react-dom: ^17.0.0 || ^18.0.0
     dependencies:
       '@apollo/client': 3.7.15(graphql@16.6.0)(react-dom@18.2.0)(react@18.2.0)
-      '@nhost/apollo': 5.2.10(@apollo/client@3.7.15)(@nhost/nhost-js@2.2.8)
-      '@nhost/react': 2.0.22(@types/react@18.2.12)(encoding@0.1.13)(graphql@16.6.0)(react-dom@18.2.0)(react@18.2.0)
+      '@nhost/apollo': 5.2.12(@apollo/client@3.7.15)(@nhost/nhost-js@2.2.10)
+      '@nhost/react': 2.0.25(@types/react@18.2.12)(encoding@0.1.13)(graphql@16.6.0)(react-dom@18.2.0)(react@18.2.0)
       graphql: 16.6.0
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -2027,13 +2033,13 @@ packages:
       - '@nhost/nhost-js'
     dev: false
 
-  /@nhost/react@2.0.22(@types/react@18.2.12)(encoding@0.1.13)(graphql@16.6.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-tlx+P8ukM6nocZ5bi5onRzHiGjDrpXodMPqBiELoiitMkWghQv0Qe7tqWAVvPczukt3wYMDNJDchaf/Hsf/ktw==}
+  /@nhost/react@2.0.25(@types/react@18.2.12)(encoding@0.1.13)(graphql@16.6.0)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-5Ri5gT2w1Hz3OHv8VTCAB/Ldf2qcQe6MH80gOawVH70kon0WhorXYyHaFjIXce2RjEjvWN2XXyRdb+6o6+MLxw==}
     peerDependencies:
       react: ^17.0.0 || ^18.1.0
       react-dom: ^17.0.0 || ^18.1.0
     dependencies:
-      '@nhost/nhost-js': 2.2.8(encoding@0.1.13)(graphql@16.6.0)
+      '@nhost/nhost-js': 2.2.10(encoding@0.1.13)(graphql@16.6.0)
       '@xstate/react': 3.2.2(@types/react@18.2.12)(react@18.2.0)(xstate@4.37.2)
       jwt-decode: 3.1.2
       react: 18.2.0
@@ -2727,6 +2733,10 @@ packages:
       '@types/express-serve-static-core': 4.17.35
       '@types/qs': 6.9.7
       '@types/serve-static': 1.15.1
+    dev: true
+
+  /@types/file-saver@2.0.5:
+    resolution: {integrity: sha512-zv9kNf3keYegP5oThGLaPk8E081DFDuwfqjtiTzm6PoxChdJ1raSuADf2YGCVIyrSynLrgc8JWv296s7Q7pQSQ==}
     dev: true
 
   /@types/geojson@7946.0.10:
@@ -3593,6 +3603,14 @@ packages:
 
   /crelt@1.0.6:
     resolution: {integrity: sha512-VQ2MBenTq1fWZUH9DJNGti7kKv6EeAuYr3cLwxUWhIu1baTaXh4Ib5W2CqHVqib4/MqbYGJqiL3Zb8GJZr3l4g==}
+    dev: false
+
+  /cross-fetch@3.1.6(encoding@0.1.13):
+    resolution: {integrity: sha512-riRvo06crlE8HiqOwIpQhxwdOk4fOeR7FVM/wXoxchFEqMNUjvbs3bfo4OTgMEMHzppd4DxFBDbyySj8Cv781g==}
+    dependencies:
+      node-fetch: 2.6.11(encoding@0.1.13)
+    transitivePeerDependencies:
+      - encoding
     dev: false
 
   /cross-spawn@7.0.3:
@@ -4704,6 +4722,18 @@ packages:
     resolution: {integrity: sha512-EtKwoO6kxCL9WO5xipiHTZlSzBm7WLT627TqC/uVRd0HKmq8NXyebnNYxDoBi7wt8eTWrUrKXCOVaFq9x1kgag==}
     dev: true
 
+  /graphql-request@6.1.0(encoding@0.1.13)(graphql@16.6.0):
+    resolution: {integrity: sha512-p+XPfS4q7aIpKVcgmnZKhMNqhltk20hfXtkaIkTfjjmiKMJ5xrt5c743cL03y/K7y1rg3WrIC49xGiEQ4mxdNw==}
+    peerDependencies:
+      graphql: 14 - 16
+    dependencies:
+      '@graphql-typed-document-node/core': 3.2.0(graphql@16.6.0)
+      cross-fetch: 3.1.6(encoding@0.1.13)
+      graphql: 16.6.0
+    transitivePeerDependencies:
+      - encoding
+    dev: false
+
   /graphql-tag@2.12.6(graphql@16.6.0):
     resolution: {integrity: sha512-FdSNcu2QQcWnM2VNvSCCDCVS5PpPqpzgFT8+GXzqJuoDd0CBncxCY278u4mhRO7tMgo2JjgJA5aZ+nWSQ/Z+xg==}
     engines: {node: '>=10'}
@@ -4714,17 +4744,22 @@ packages:
       tslib: 2.5.3
     dev: false
 
-  /graphql-ws@5.13.1(graphql@16.6.0):
+  /graphql-ws@5.13.1(graphql@16.7.1):
     resolution: {integrity: sha512-eiX7ES/ZQr0q7hSM5UBOEIFfaAUmAY9/CSDyAnsETuybByU7l/v46drRg9DQoTvVABEHp3QnrvwgTRMhqy7zxQ==}
     engines: {node: '>=10'}
     peerDependencies:
       graphql: '>=0.11 <=16'
     dependencies:
-      graphql: 16.6.0
+      graphql: 16.7.1
     dev: false
 
   /graphql@16.6.0:
     resolution: {integrity: sha512-KPIBPDlW7NxrbT/eh4qPXz5FiFdL5UbaA0XUNz2Rp3Z3hqBSkbj0GVjwFDztsWVauZUWsbKHgMg++sk8UX0bkw==}
+    engines: {node: ^12.22.0 || ^14.16.0 || ^16.0.0 || >=17.0.0}
+    dev: false
+
+  /graphql@16.7.1:
+    resolution: {integrity: sha512-DRYR9tf+UGU0KOsMcKAlXeFfX89UiiIZ0dRU3mR0yJfu6OjZqUcp68NnFLnqQU5RexygFoDy1EW+ccOYcPfmHg==}
     engines: {node: ^12.22.0 || ^14.16.0 || ^16.0.0 || >=17.0.0}
     dev: false
 

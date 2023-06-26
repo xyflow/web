@@ -1,8 +1,7 @@
 'use client';
 
 import { useMemo } from 'react';
-import NextLink from 'next/link';
-import { Button, Flex, Wrap, Box, Link, useBreakpointValue } from '@chakra-ui/react';
+import { Flex, Wrap, Box, Link, useBreakpointValue } from '@chakra-ui/react';
 import { Resizable } from 're-resizable';
 import { aquaBlue } from '@codesandbox/sandpack-themes';
 import {
@@ -18,10 +17,16 @@ import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { isDevelopment } from 'utils/browser';
 import Heading from 'components/Heading';
 import Text from 'components/Text';
-import { MDXContent } from 'mdx/types';
+
+import mdxComponents from './mdx-components';
+import DownloadSandpackButton from './sandpack-downloader';
+import FullScreenButton from './fullscreen-button';
 
 export type ProCodeViewerProps = {
+  exampleId: string;
   files: SandpackFiles;
+  title?: string;
+  description?: string;
   dependencies?: SandpackSetup['dependencies'];
   sandpackOptions?: SandpackOptions;
   readme: MDXRemoteSerializeResult;
@@ -77,11 +82,15 @@ const resizeBottomEnabled = {
   topLeft: false,
 };
 
-const mdxComponents = {
-  FileLink: () => null,
-};
-
-export default function ProCodeViewer({ files, readme, dependencies, sandpackOptions }: ProCodeViewerProps) {
+export default function ProCodeViewer({
+  title,
+  description,
+  exampleId,
+  files,
+  readme,
+  dependencies,
+  sandpackOptions,
+}: ProCodeViewerProps) {
   const customSandpackOptions = useMemo(
     () => ({
       ...defaultSandpackOptions,
@@ -126,11 +135,41 @@ export default function ProCodeViewer({ files, readme, dependencies, sandpackOpt
           minWidth="10%"
           enable={resizeRightEnabled}
         >
-          {/* <ExampleHeader name={name} description={description} /> */}
+          <>
+            <Heading
+              letterSpacing="1px"
+              color="gray.500"
+              textTransform="uppercase"
+              fontSize="sm"
+              as="span"
+              style={{
+                WebkitFontSmoothing: 'antialiased',
+              }}
+            >
+              Pro Example
+            </Heading>
+            {title && (
+              <Heading
+                fontSize={['3xl', '4xl', '4xl', '5xl']}
+                as="h1"
+                mb={2}
+                style={{
+                  WebkitFontSmoothing: 'antialiased',
+                }}
+              >
+                {title}
+              </Heading>
+            )}
+            {description && (
+              <Text color="gray.800" lineHeight="1.4" fontSize="xl" mb={0}>
+                {description}
+              </Text>
+            )}
+          </>
           <Flex justifyContent="space-between" mt={4} mb={10}>
             <Wrap>
-              {/* <DownloadButton exampleId={exampleId} /> */}
-              {/* <FullScreenButton exampleId={exampleId} /> */}
+              <DownloadSandpackButton fileName={`${exampleId}-example`} />
+              <FullScreenButton exampleId={exampleId} />
             </Wrap>
             <Wrap>{/* <Variants exampleId={exampleId} variants={variants} /> */}</Wrap>
           </Flex>

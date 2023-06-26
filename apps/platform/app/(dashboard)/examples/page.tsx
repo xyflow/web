@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Box, SimpleGrid, Wrap, Button, WrapItem, Text } from '@chakra-ui/react';
+import { Box, SimpleGrid, Wrap, Button, WrapItem, Text, Heading } from '@chakra-ui/react';
 import Head from 'next/head';
 import { HiX } from 'components/Icons';
 // @todo re-enable auth protection
@@ -23,6 +23,9 @@ function Examples() {
       <Head>
         <title>Pro Examples - React Flow</title>
       </Head>
+      <Heading mb={4} fontSize={['3xl', '4xl', '4xl', '5xl']} as="h1">
+        Pro Examples
+      </Heading>
       <Text mt={2} mb={4} fontSize="lg" fontWeight="normal" maxWidth="1000px">
         The pro examples are a constantly expanded collection of advanced React Flow examples.
       </Text>

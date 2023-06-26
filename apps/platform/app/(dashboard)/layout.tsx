@@ -7,7 +7,7 @@ import MetaTags from 'components/MetaTags';
 import Footer from 'components/Footer';
 // import Notifications from 'components/Notifications';
 
-export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+export default function DashboardLayout({ children, ...rest }: { children: React.ReactNode }) {
   return (
     <Grid templateColumns="250px 1fr" templateRows="calc(100vh)" flex="1">
       <Sidebar />

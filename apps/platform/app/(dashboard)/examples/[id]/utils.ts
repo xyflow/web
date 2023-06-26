@@ -29,8 +29,14 @@ export const getExampleFiles = (exampleId: string): ProCodeViewerProps['files'] 
   return files;
 };
 
-export const getReadme = async (exampleId: string) => {
+export const getReadme = (exampleId: string): string => {
   const examplesPath = getExamplePath(exampleId);
+  const readmePath = path.join(examplesPath, 'README.mdx');
 
-  return await import(examplesPath + '/README.mdx');
+  try {
+    return fs.readFileSync(readmePath, 'utf8');
+  } catch (err) {
+    console.log(err);
+    return '';
+  }
 };

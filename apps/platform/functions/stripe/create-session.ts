@@ -1,8 +1,5 @@
 import { Request, Response } from 'express';
-import { stripe, getUserIdFromAuthToken } from '../_utils';
-
-// const { getUserId } = require('../../utils');
-// const { getStripeCustomerId } = require('../../utils/database');
+import { stripe, getUserIdFromAuthToken, getStripeCustomerId } from '../_utils';
 
 export type CreateCheckoutSessionResponse = {
   sessionId?: string;
@@ -24,14 +21,22 @@ export default async function createStripeCheckoutSession(req: Request, res: Res
       const authToken = req.headers.authorization;
 
       if (!authToken) {
-        return res.status(401).json({ error: 'Unauthorized' });
+        return res.status(400).json({ error: 'Unauthorized' });
       }
 
       const userId = getUserIdFromAuthToken(authToken);
-      // const userEmail = req.body.customerEmail;
-      const price = req.body.priceId;
+      const userEmail = req.body.customerEmail as string;
+      const price = req.body.priceId as string;
 
-      // const customer = await getStripeCustomerId({ userId, userEmail });
+      if (!userId || !userEmail || !price) {
+        return res.status(400).json({ error: 'Bad request.' });
+      }
+
+      const customer = await getStripeCustomerId({ userId, userEmail });
+
+      if (!customer) {
+        return res.status(400).json({ error: 'Bad request.' });
+      }
 
       const session = await stripe.checkout.sessions.create({
         line_items: [
@@ -40,8 +45,7 @@ export default async function createStripeCheckoutSession(req: Request, res: Res
             quantity: 1,
           },
         ],
-        // @todo: replace hardcoded customer id with the one from the database
-        customer: 'cus_NyQMS43mb0E8LF',
+        customer,
         automatic_tax: {
           enabled: true,
         },
