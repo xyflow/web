@@ -1,10 +1,10 @@
 import Link from 'next/link';
 
-import PageLayout from '@/components/page-layout';
+import PageSection from '@/components/page-section';
 
 export default function About() {
   return (
-    <PageLayout title="About" subtitle="Stuff about the xyflow team">
+    <PageSection title="About" subtitle="Stuff about the xyflow team">
       <p>
         We are Christopher, Hayleigh, John and Moritz and we work full-time to
         build and maintain React Flow. We are an independent company dedicated
@@ -20,6 +20,6 @@ export default function About() {
         Flow. For any questions or feedback you can{' '}
         <Link href="/contact">contact us</Link>.
       </p>
-    </PageLayout>
+    </PageSection>
   );
 }

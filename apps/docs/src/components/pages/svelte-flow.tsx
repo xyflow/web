@@ -1,10 +1,10 @@
 import { Button } from 'xy-ui';
-import PageLayout from '@/components/page-layout';
+import PageSection from '@/components/page-section';
 
 export default function SvelteFlowHome() {
   return (
-    <PageLayout>
+    <PageSection>
       Svelte Flow <Button variant="svelte">Svelte Flow</Button>
-    </PageLayout>
+    </PageSection>
   );
 }

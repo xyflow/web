@@ -15,6 +15,7 @@
     "@mdx-js/loader": "^2.3.0",
     "@mdx-js/react": "^2.3.0",
     "@next/mdx": "^13.4.7",
+    "clsx": "^1.2.1",
     "html-to-image": "^1.11.11",
     "nanoid": "^4.0.2",
     "next": "^13.4.7",

@@ -1,10 +1,10 @@
 import { Button } from 'xy-ui';
-import PageLayout from '@/components/page-layout';
+import PageSection from '@/components/page-section';
 
 export default function ReactFlowHome() {
   return (
-    <PageLayout>
+    <PageSection>
       React Flow <Button variant="react">React Flow</Button>
-    </PageLayout>
+    </PageSection>
   );
 }

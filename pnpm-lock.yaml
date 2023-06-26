@@ -31,6 +31,7 @@ importers:
       '@types/react': ^18.2.14
       '@types/react-dom': ^18.2.6
       autoprefixer: ^10.4.14
+      clsx: ^1.2.1
       cssnano: ^6.0.1
       dotenv: ^16.3.1
       eslint-config-xyflow: workspace:*
@@ -56,6 +57,7 @@ importers:
       '@mdx-js/loader': 2.3.0_webpack@5.87.0
       '@mdx-js/react': 2.3.0_react@18.2.0
       '@next/mdx': 13.4.7_msthxdjvrhmdkfpqqalumiidgq
+      clsx: 1.2.1
       html-to-image: 1.11.11
       nanoid: 4.0.2
       next: 13.4.7_biqbaboplfbrettd7655fr4n2y

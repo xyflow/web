@@ -1,13 +1,13 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
-import PageLayout from '@/components/page-layout';
+import PageSection from '@/components/page-section';
 
 import showcases from '../../../public/data/showcases.json';
 
 export default function Showcase() {
   return (
-    <PageLayout
+    <PageSection
       title="Showcase"
       subtitle="  React Flow is used by thousands of people, from solo open-source
     developers to companies like Stripe and Typeform. We’ve seen the library
@@ -35,6 +35,6 @@ export default function Showcase() {
           </div>
         ))}
       </div>
-    </PageLayout>
+    </PageSection>
   );
 }

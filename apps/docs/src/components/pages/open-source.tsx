@@ -1,12 +1,12 @@
-import PageLayout from '@/components/page-layout';
+import PageSection from '@/components/page-section';
 
 export default function OpenSource() {
   return (
-    <PageLayout
+    <PageSection
       title="We're Open Source"
       subtitle="We love Open Source and here is why"
     >
       <p>some content</p>
-    </PageLayout>
+    </PageSection>
   );
 }
