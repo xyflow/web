@@ -1,5 +1,5 @@
 import { serialize } from 'next-mdx-remote/serialize';
-import ProCodeViewer from 'components/ProExampleViewer';
+import ProCodeViewer from 'components/pro-example-viewer';
 import { getExampleFiles } from './utils';
 
 export default async function ({ exampleId }: { exampleId: string }) {

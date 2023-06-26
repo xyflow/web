@@ -1,9 +1,9 @@
 import { useRouter } from 'next/router';
 import { useConfig } from 'nextra-theme-docs';
 
-import Logo from './src/components/Logo';
-import Navbar from './src/components/Navbar';
-import SidebarTitle from './src/components/SidebarTitle';
+import Logo from '@/components/logo';
+import Navbar from '@/components/navbar';
+import SidebarTitle from '@/components/sidebar-title';
 import useXYSite from '@/hooks/useXYSite';
 
 export default {

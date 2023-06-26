@@ -8,7 +8,7 @@ tags: ['react-flow', 'release']
 # React Flow 11 Release
 
 import Image from '@theme/IdealImage';
-import Emoji from '@/components/Emoji';
+import Emoji from '@/components/emoji';
 
 A lot has happened since we published our last blog post six months ago. We got our first pro subscribers, we hired John who helps us with the docs, communication and community and we are all working full time on React Flow <Emoji content="🥳" />. Today we are releasing a new major version with lots of new features and very few breaking changes (unlike the last major update..).
 
