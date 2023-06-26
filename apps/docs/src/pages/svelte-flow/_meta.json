@@ -2,7 +2,13 @@
   "*": {
     "type": "page"
   },
-  "index": "Svelte Flow",
+  "index": {
+    "title": "Svelte Flow",
+    "theme": {
+      "layout": "raw"
+    }
+  },
   "docs": "Docs",
+  "api": "API",
   "examples": "Examples"
 }

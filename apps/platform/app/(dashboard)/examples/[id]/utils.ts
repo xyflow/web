@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-import type { ProCodeViewerProps } from 'components/ProExampleViewer';
+import type { ProCodeViewerProps } from 'components/pro-example-viewer';
 
 const getExamplePath = (exampleId: string): string => {
   return path.join(process.cwd(), `pro-examples/examples/src/${exampleId}`);

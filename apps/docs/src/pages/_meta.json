@@ -1,8 +1,29 @@
 {
   "*": {
-    "type": "page"
+    "type": "page",
+    "theme": {
+      "layout": "raw"
+    }
   },
-  "index": "XY Flow",
-  "react-flow": "React Flow",
-  "svelte-flow": "Svelte Flow"
+  "index": {
+    "title": "XY Flow"
+  },
+  "react-flow": {
+    "title": "React Flow"
+  },
+  "svelte-flow": {
+    "title": "Svelte Flow"
+  },
+  "blog": {
+    "title": "Blog"
+  },
+  "showcase": {
+    "title": "Showcase"
+  },
+  "about": {
+    "title": "About"
+  },
+  "case-studies": {
+    "title": "Case Studies"
+  }
 }
