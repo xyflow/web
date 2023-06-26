@@ -15,8 +15,17 @@ export default function useXYSite() {
     }
   }, [router.pathname]);
 
+  const lib = useMemo(() => {
+    if (site === 'xyflow') {
+      return site;
+    }
+
+    return `${site.charAt(0).toUpperCase() + site.slice(1)} Flow`;
+  }, [site]);
+
   return {
     site,
-    isFramework: site !== 'xyflow',
+    lib,
+    isOrg: site === 'xyflow',
   };
 }

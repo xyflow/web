@@ -2,7 +2,12 @@
   "*": {
     "type": "page"
   },
-  "index": "React Flow",
+  "index": {
+    "title": "React Flow",
+    "theme": {
+      "layout": "raw"
+    }
+  },
   "docs": "Docs",
   "examples": "Examples"
 }
