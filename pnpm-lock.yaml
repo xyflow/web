@@ -26,11 +26,13 @@ importers:
       '@mdx-js/loader': ^2.3.0
       '@mdx-js/react': ^2.3.0
       '@next/mdx': ^13.4.7
+      '@notionhq/client': ^2.2.5
       '@types/node': ^20.3.1
       '@types/react': ^18.2.14
       '@types/react-dom': ^18.2.6
       autoprefixer: ^10.4.14
       cssnano: ^6.0.1
+      dotenv: ^16.3.1
       eslint-config-xyflow: workspace:*
       html-to-image: ^1.11.11
       nanoid: ^4.0.2
@@ -67,11 +69,13 @@ importers:
       xy-ui: link:../../packages/xy-ui
       zustand: 4.3.8_react@18.2.0
     devDependencies:
+      '@notionhq/client': 2.2.5
       '@types/node': 20.3.1
       '@types/react': 18.2.14
       '@types/react-dom': 18.2.6
       autoprefixer: 10.4.14_postcss@8.4.24
       cssnano: 6.0.1_postcss@8.4.24
+      dotenv: 16.3.1
       eslint-config-xyflow: link:../../packages/eslint-config-xyflow
       postcss: 8.4.24
       tailwindcss: 3.3.2
@@ -5178,6 +5182,16 @@ packages:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
+
+  /@notionhq/client/2.2.5:
+    resolution: {integrity: sha512-NobSaeSK0DMuxAIy2pg53Iv850tGFxXYEYacFBQgO634L1uwQv7WQCAdeFQpD3kJiEycQfSYv6RGC5VENEXjiQ==}
+    engines: {node: '>=12'}
+    dependencies:
+      '@types/node-fetch': 2.6.4
+      node-fetch: 2.6.11
+    transitivePeerDependencies:
+      - encoding
+    dev: true
 
   /@open-draft/deferred-promise/2.1.0:
     resolution: {integrity: sha512-Rzd5JrXZX8zErHzgcGyngh4fmEbSHqTETdGj9rXtejlqMIgXFlyKBA7Jn1Xp0Ls0M0Y22+xHcWiEzbmdWl0BOA==}
