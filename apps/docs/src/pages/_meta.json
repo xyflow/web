@@ -10,5 +10,7 @@
   },
   "react-flow": "React Flow",
   "svelte-flow": "Svelte Flow",
-  "blog": "Blog"
+  "blog": "Blog",
+  "showcase": "Showcase",
+  "about": "About"
 }

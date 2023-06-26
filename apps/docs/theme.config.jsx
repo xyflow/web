@@ -21,8 +21,6 @@ export default {
     const { lib } = useXYSite();
     const { frontMatter } = useConfig();
 
-    console.log(frontMatter);
-
     return {
       titleTemplate: `%s – ${lib}`,
       title: frontMatter.title || lib,

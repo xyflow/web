@@ -9,5 +9,12 @@
     }
   },
   "docs": "Docs",
-  "examples": "Examples"
+  "api": "API",
+  "examples": "Examples",
+  "pro": {
+    "title": "Pro",
+    "theme": {
+      "layout": "raw"
+    }
+  }
 }
