@@ -3,6 +3,31 @@ title: Blog
 description: All the latest news and updates from React Flow and Svelte Flow
 ---
 
-import BlogPage from '@/components/pages/blog';
+import Link from 'next/link';
+import { getPagesUnderRoute } from 'nextra/context';
 
-<BlogPage />
+import PageLayout from '@/components/page-layout';
+
+<PageLayout
+  title="Blog"
+  subtitle="News and updates from React Flow and Svelte Flow."
+>
+  <ul>
+    {getPagesUnderRoute('/blog').map((page) => {
+      return (
+        <li key={page.route}>
+          <Link href={page.route} className="text-xl">
+            {page.meta?.title || page.frontMatter?.title || page.name}
+          </Link>
+          <p>
+            {page.frontMatter?.description}{' '}
+            <span>
+              <Link href={page.route}>Read More</Link>
+            </span>
+          </p>
+          {page.frontMatter?.date ? <p>{page.frontMatter.date}</p> : null}
+        </li>
+      );
+    })}
+  </ul>
+</PageLayout>

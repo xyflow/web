@@ -17,7 +17,7 @@ export default function Showcase() {
     >
       <div className="grid grid-cols-4 gap-4">
         {showcases.map((showcase) => (
-          <div>
+          <div key={showcase.id}>
             <div className="relative" style={{ paddingBottom: '60%' }}>
               <Image
                 alt="Image Alt"

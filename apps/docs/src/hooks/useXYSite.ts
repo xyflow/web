@@ -5,10 +5,9 @@ export default function useXYSite() {
   const router = useRouter();
 
   const site = useMemo(() => {
-    const { pathname } = router;
-    if (pathname.includes('react-flow')) {
+    if (router.pathname.includes('react-flow')) {
       return 'react';
-    } else if (pathname.includes('svelte-flow')) {
+    } else if (router.pathname.includes('svelte-flow')) {
       return 'svelte';
     } else {
       return 'xyflow';
