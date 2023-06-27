@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactFlow, { ReactFlowProvider, Handle, Position } from 'reactflow';
-import 'reactflow/dist/style.css';
-
-import './handles.css';
+import 'reactflow/dist/base.css';
 
 const initialNodes = [
   {
@@ -14,13 +12,32 @@ const initialNodes = [
 ];
 
 const handleWidth = 12;
-const handleStyle = { width: handleWidth, height: handleWidth, borderRadius: 4 };
+const handleStyle = {
+  width: handleWidth,
+  height: handleWidth,
+  borderRadius: 4,
+};
+
+const nodeStyle = {
+  background: 'white',
+  border: '1px solid #bbb',
+  padding: 12,
+  width: 300,
+  borderRadius: 2,
+  textAlign: 'center',
+  height: 50,
+  boxShadow: 'none',
+};
 
 function CustomNode() {
   return (
-    <>
+    <div style={nodeStyle}>
       <div>A node with four handles</div>
-      <Handle position={Position.Top} style={{ ...handleStyle, top: -handleWidth / 2 }} id="a" />
+      <Handle
+        position={Position.Top}
+        style={{ ...handleStyle, top: -handleWidth / 2 }}
+        id="a"
+      />
       <Handle
         position={Position.Right}
         style={{ ...handleStyle, right: -handleWidth / 2 }}
@@ -31,8 +48,12 @@ function CustomNode() {
         style={{ ...handleStyle, bottom: -handleWidth / 2 }}
         id="c"
       />
-      <Handle position={Position.Left} style={{ ...handleStyle, left: -handleWidth / 2 }} id="d" />
-    </>
+      <Handle
+        position={Position.Left}
+        style={{ ...handleStyle, left: -handleWidth / 2 }}
+        id="d"
+      />
+    </div>
   );
 }
 
@@ -44,7 +65,14 @@ const fitViewOptions = { padding: 1 };
 
 function Flow() {
   return (
-    <div style={{ height: 250, background: '#FAF5FF', border: '1px solid #333', marginBottom: 20 }}>
+    <div
+      style={{
+        height: 250,
+        background: '#FAF5FF',
+        border: '1px solid #333',
+        marginBottom: 20,
+      }}
+    >
       <ReactFlowProvider>
         <ReactFlow
           defaultNodes={initialNodes}
