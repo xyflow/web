@@ -1,7 +1,7 @@
 import React from 'react';
 import { FAQItem, FAQWrapper } from '../FAQ';
 
-export default function PricingFAQ(props) {
+export default function PricingFAQ() {
   return (
     <FAQWrapper>
       <FAQItem

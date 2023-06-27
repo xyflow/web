@@ -15,7 +15,7 @@ const GET_SUBSCRIPTION = gql`
   }
 `;
 
-// @todo move to components/Providers
+// @todo move to components/Providers or components/Context
 export function SubscriptionContextWrapper({ children }) {
   const isAuthenticated = useAuthenticated();
   const [subscription, setSubscription] = useState(plans.free);

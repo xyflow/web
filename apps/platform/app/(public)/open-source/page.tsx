@@ -1,5 +1,6 @@
+'use client';
+
 import { useState } from 'react';
-import { useRouter } from 'next/router';
 import NextLink from 'next/link';
 import Head from 'next/head';
 import {
@@ -16,38 +17,36 @@ import {
 } from '@chakra-ui/react';
 import { useSignInEmailPasswordless } from '@nhost/nextjs';
 
-import Heading from '../components/Heading';
-import Layout from '../components/Layout';
-import Card from '../components/Card';
-import Text from '../components/Text';
+import Heading from 'components/Heading';
+import Card from 'components/Card';
+import Text from 'components/Text';
 
 function Signup() {
-  const router = useRouter();
-  const [email, setEmail] = useState('');
-  const [metadata, setMetadata] = useState({ student: false });
+  const [email, setEmail] = useState<string>('');
+  const [metadata, setMetadata] = useState<{ openSource: boolean; url: string }>({ openSource: false, url: '' });
   const { signInEmailPasswordless, isLoading, isSuccess, isError, error } = useSignInEmailPasswordless();
 
-  const handleSubmit = async (evt) => {
+  const handleSubmit = async (evt: React.SyntheticEvent) => {
     evt.preventDefault();
     await signInEmailPasswordless(email, { metadata, redirectTo: '/dashboard' });
   };
 
   return (
-    <Layout>
+    <>
       <Head>
         <meta name="robots" content="noindex,nofollow" />
       </Head>
       <Box my={5}>
-        <Heading textAlign="center">React Flow Pro for Students</Heading>
+        <Heading textAlign="center">React Flow Pro for Open Source Projects</Heading>
         <Text textAlign="center">
-          This is only intended for educational purposes. If you are a business or private user of React Flow, please
-          use the{' '}
-          <NextLink href={{ pathname: '/signup', query: router.query }}>
+          This is intended for non-commercial open source projects. If you are a business or private user of React Flow,
+          please use the {/* @todo pass query params to regular sign up (if any) */}
+          <NextLink href={{ pathname: '/signup' }}>
             <Box as="span" color="blue">
               regular sign up
             </Box>
           </NextLink>
-          . Please use your university mail for this form.
+          .
         </Text>
       </Box>
       <Box>
@@ -79,7 +78,17 @@ function Signup() {
                 )}
                 <Stack spacing="5">
                   <FormControl>
-                    <FormLabel htmlFor="email">Your university mail</FormLabel>
+                    <FormLabel htmlFor="email">Project Url</FormLabel>
+                    <Input
+                      isRequired
+                      id="url"
+                      type="url"
+                      value={metadata.url}
+                      onChange={(evt) => setMetadata({ ...metadata, url: evt.target.value })}
+                    />
+                  </FormControl>
+                  <FormControl>
+                    <FormLabel htmlFor="email">Contact Email</FormLabel>
                     <Input
                       isRequired
                       id="email"
@@ -92,10 +101,11 @@ function Signup() {
                   <FormControl>
                     <Checkbox
                       isRequired
-                      isChecked={metadata.newsletter}
-                      onChange={(evt) => setMetadata({ ...metadata, student: evt.target.checked })}
+                      isChecked={metadata.openSource}
+                      onChange={(evt) => setMetadata({ ...metadata, openSource: evt.target.checked })}
                     >
-                      I confirm that I am using React Flow Pro only for educational purposes
+                      I confirm that I am using React Flow Pro only for non-commercial purposes in this open source
+                      project
                     </Checkbox>
                   </FormControl>
                 </Stack>
@@ -125,7 +135,7 @@ function Signup() {
           </Stack>
         </Container>
       </Box>
-    </Layout>
+    </>
   );
 }
 

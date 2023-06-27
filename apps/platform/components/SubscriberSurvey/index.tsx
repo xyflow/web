@@ -1,8 +1,8 @@
 import React from 'react';
-import { Button, Box } from '@chakra-ui/react';
+import { Button, Box, BoxProps } from '@chakra-ui/react';
 import { HiOutlineExternalLink } from 'components/Icons';
 
-export default function SubscriberSurvey(props) {
+export default function SubscriberSurvey(props: BoxProps) {
   return (
     <Box
       bg="pink.50"
