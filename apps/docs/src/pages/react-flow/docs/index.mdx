@@ -1,1 +1,334 @@
-# React Flow Guides
+---
+title: Quickstart
+description: React Flow quickstart that shows how to install the package, use it and where to find example apps
+sidebar_position: 1
+pagination_next: null
+---
+
+# Quickstart
+
+import { Tab, Tabs } from 'nextra-theme-docs';
+
+import Emoji from '@/components/emoji';
+import CodeViewer from '@/components/code-viewer';
+import ReactPlayer from '@/components/react-player-lazy';
+
+If you want to get up-and-running as soon as possible you're in the right place!
+This page will take you from zero to a working React Flow app in a few minutes.
+From there, you can take a deeper look at what React Flow is all about, check out
+the examples, or dive into the API docs.
+
+## React Flow in 60 seconds
+
+<div style={{ position: 'relative', paddingTop: '56.25%' }}>
+  <ReactPlayer
+    controls
+    url="https://www.youtube.com/watch?v=aUBWE41a900"
+    width="100%"
+    height="100%"
+    style={{ position: 'absolute', top: 0, left: 0 }}
+  />
+</div>
+
+## Play online
+
+You can try React Flow without setting anything up locally by checking out the
+starter projects we have on [CodeSandbox](https://codesandbox.io/):
+
+<div className="next-steps">
+  <a
+    className="next-steps__item"
+    target="_blank"
+    href="https://codesandbox.io/s/react-flow-starter-ou8or"
+  >
+    <span className="next-steps__item-sublabel">
+      new.reactflow.dev/js-react
+    </span>
+    <span>JavaScript</span>
+  </a>
+  <a
+    className="next-steps__item"
+    target="_blank"
+    href="https://codesandbox.io/s/react-flow-starter-typescript-j8lkh"
+  >
+    <span className="next-steps__item-sublabel">
+      new.reactflow.dev/ts-react
+    </span>
+    <span>TypeScript</span>
+  </a>
+</div>
+
+## Installation
+
+To get started locally you should have a few things:
+
+- [Node.js](https://nodejs.org/en/) installed.
+- Either npm or another package manager like [yarn](https://yarnpkg.com/) or
+  [pnpm](https://pnpm.io/).
+- A working knowledge of [React](https://reactjs.org/). You don't need to be an
+  expert, but you should be comfortable with the basics.
+
+First, spin up a new [React](https://reactjs.org/) project however you like; we
+recommend using [Vite](https://vitejs.dev/) but the choice is yours.
+
+<Tabs items={['npm', 'pnpm', 'yarn']}>
+  <Tab>
+
+```bash copy
+npm create vite@latest my-react-flow-app -- --template react
+```
+
+  </Tab>
+  <Tab >
+
+```bash copy
+pnpm create vite my-react-flow-app -- --template react
+```
+
+  </Tab>
+  <Tab >
+
+```bash copy
+yarn create vite my-react-flow-app -- --template react
+```
+
+  </Tab>
+</Tabs>
+
+React Flow is published on npm as React Flow is published on npm as [`reactflow`](https://npmjs.com/package/reactflow), so go ahead and add it next.
+
+<Tabs items={['npm', 'pnpm', 'yarn']}>
+  <Tab >
+
+```bash copy
+npm install reactflow
+```
+
+  </Tab>
+    <Tab >
+
+```bash copy
+pnpm add reactflow
+```
+
+  </Tab>
+  <Tab >
+
+```bash copy
+yarn add reactflow
+```
+
+  </Tab>
+</Tabs>
+
+Lastly, spin up the dev server and we're good to go!
+
+<Tabs items={['npm', 'pnpm', 'yarn']}>
+  <Tab>
+
+```bash copy
+npm run dev
+```
+
+  </Tab>
+  <Tab>
+
+```bash copy
+pnpm dev
+```
+
+  </Tab>
+  <Tab>
+
+```bash copy
+yarn dev
+```
+
+  </Tab>
+
+</Tabs>
+
+## Creating your first flow
+
+The `reactflow` package exports the `<ReactFlow />` component as the default export.
+That and a handful of nodes and edges are all we need to get something going! Get
+rid of everything inside `App.jsx` and add the following:
+
+```jsx
+import React from 'react';
+import ReactFlow from 'reactflow';
+
+import 'reactflow/dist/style.css';
+
+const initialNodes = [
+  { id: '1', position: { x: 0, y: 0 }, data: { label: '1' } },
+  { id: '2', position: { x: 0, y: 100 }, data: { label: '2' } },
+];
+const initialEdges = [{ id: 'e1-2', source: '1', target: '2' }];
+
+export default function App() {
+  return (
+    <div style={{ width: '100vw', height: '100vh' }}>
+      <ReactFlow nodes={initialNodes} edges={initialEdges} />
+    </div>
+  );
+}
+```
+
+There are a few things to pay attention to here:
+
+- <Emoji content="🎨" /> You must import the React Flow stylesheet.
+- <Emoji content="📐" /> The `<ReactFlow />` component must be wrapped in an element
+  with a width and height.
+
+## Adding interactivity
+
+Graphs created with React Flow are fully interactive. We can move nodes around,
+connect them together, delete them, ... To get the basic functionality we need
+to add three things:
+
+- A callback for what to do when [**nodes change**](/docs/api/react-flow-props/#onnodeschange).
+- A callback for what to do when [**edges change**](/docs/api/react-flow-props/#onedgeschange).
+- A callback for what to do when nodes are [**connected**](/docs/api/react-flow-props/#onconnect).
+
+Fortunately for you, we provide some hooks to make this easy!
+
+```jsx
+import React, { useCallback } from 'react';
+import ReactFlow, { useNodesState, useEdgesState, addEdge } from 'reactflow';
+
+import 'reactflow/dist/style.css';
+
+const initialNodes = [
+  { id: '1', position: { x: 0, y: 0 }, data: { label: '1' } },
+  { id: '2', position: { x: 0, y: 100 }, data: { label: '2' } },
+];
+const initialEdges = [{ id: 'e1-2', source: '1', target: '2' }];
+
+export default function App() {
+  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
+  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+
+  const onConnect = useCallback(
+    (params) => setEdges((eds) => addEdge(params, eds)),
+    [setEdges]
+  );
+
+  return (
+    <div style={{ width: '100vw', height: '100vh' }}>
+      <ReactFlow
+        nodes={nodes}
+        edges={edges}
+        onNodesChange={onNodesChange}
+        onEdgesChange={onEdgesChange}
+        onConnect={onConnect}
+      />
+    </div>
+  );
+}
+```
+
+## Some extra goodies
+
+Finally, React Flow ships with some plugins out of the box for things like a
+[`<Minimap />`](/docs/api/plugin-components/minimap) or viewport
+[`<Controls />`](/docs/api/plugin-components/controls).
+
+```jsx
+import React, { useCallback } from 'react';
+import ReactFlow, {
+  MiniMap,
+  Controls,
+  Background,
+  useNodesState,
+  useEdgesState,
+  addEdge,
+} from 'reactflow';
+
+import 'reactflow/dist/style.css';
+
+const initialNodes = [
+  { id: '1', position: { x: 0, y: 0 }, data: { label: '1' } },
+  { id: '2', position: { x: 0, y: 100 }, data: { label: '2' } },
+];
+const initialEdges = [{ id: 'e1-2', source: '1', target: '2' }];
+
+export default function App() {
+  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
+  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+
+  const onConnect = useCallback(
+    (params) => setEdges((eds) => addEdge(params, eds)),
+    [setEdges]
+  );
+
+  return (
+    <div style={{ width: '100vw', height: '100vh' }}>
+      <ReactFlow
+        nodes={nodes}
+        edges={edges}
+        onNodesChange={onNodesChange}
+        onEdgesChange={onEdgesChange}
+        onConnect={onConnect}
+      >
+        <Controls />
+        <MiniMap />
+        <Background variant="dots" gap={12} size={1} />
+      </ReactFlow>
+    </div>
+  );
+}
+```
+
+<CodeViewer
+  codePath="api-flows/Quickstart"
+  applyStyles={false}
+  showEditor={false}
+/>
+
+<Emoji content="🎉" /> Et voila. You've already created your first interactive flow!
+Check out the links below on where to head next.
+
+## Next Steps
+
+@todo
+
+<div className="next-steps">
+  <a className="next-steps__item" href="/docs/concepts/introduction">
+    <span className="next-steps__item-sublabel">
+      Get to grips with the basics
+    </span>
+    <span>Concepts</span>
+  </a>
+  <a className="next-steps__item" href="/docs/guides/custom-nodes">
+    <span className="next-steps__item-sublabel">Make React Flow your own</span>
+    <span>Customisation</span>
+  </a>
+  <a className="next-steps__item" href="/docs/examples/overview/">
+    <span className="next-steps__item-sublabel">
+      Add common functionality fast
+    </span>
+    <span>Examples</span>
+  </a>
+  <a className="next-steps__item" href="/docs/api/react-flow-props/">
+    <span className="next-steps__item-sublabel">
+      Take a peek under the hood
+    </span>
+    <span>API Reference</span>
+  </a>
+  <a
+    className="next-steps__item"
+    target="_blank"
+    href="https://discord.gg/RVmnytFmGW"
+  >
+    <span className="next-steps__item-sublabel">Join the community</span>
+    <span>Discord</span>
+  </a>
+  <a
+    className="next-steps__item"
+    href="https://github.com/wbkd/react-flow-example-apps"
+  >
+    <span className="next-steps__item-sublabel">Next.js, Remix, and more!</span>
+    <span>Template Projects</span>
+  </a>
+</div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import {
   SandpackProvider,
   SandpackLayout,
@@ -7,6 +7,9 @@ import {
   SandpackStack,
   OpenInCodeSandboxButton,
 } from '@codesandbox/sandpack-react';
+
+import { Framework } from '@/types';
+import { getScriptExtension, getTemplate, getDefaultSetup } from './utils';
 
 const hiddenBaseStyles = {
   '/styles.css': {
@@ -24,16 +27,26 @@ html, body, #root {
   },
 };
 
-const defaultSetup = {
-  dependencies: {
-    reactflow: '11.7.2',
-  },
-};
-
 const defaultOptions = {
   editorHeight: '70vh',
   editorWidthPercentage: 45,
   wrapContent: true,
+  readOnly: false,
+};
+
+type CodeViewerProps = {
+  codePath: string;
+  additionalFiles?: string[];
+  dependencies?: Record<string, string>;
+  options?: typeof defaultOptions;
+  activeFile?: string;
+  showEditor?: boolean;
+  showPreview?: boolean;
+  isTypescript?: boolean;
+  customPreview?: React.ReactNode;
+  sandpackOptions?: Record<string, any>;
+  showOpenInCodeSandbox?: boolean;
+  framework?: Framework;
 };
 
 export default function CodeViewer({
@@ -48,19 +61,24 @@ export default function CodeViewer({
   customPreview = null,
   sandpackOptions = {},
   showOpenInCodeSandbox = true,
-}) {
+  framework = 'react',
+}: CodeViewerProps) {
   const [files, setFiles] = useState(null);
-  const scriptExtension = isTypescript ? 'tsx' : 'js';
+  const scriptExtension = getScriptExtension({ framework, isTypescript });
 
   useEffect(() => {
     const loadFiles = async () => {
-      const res = await import(`!raw-loader!./${codePath}/index.${scriptExtension}`);
+      const res = await import(
+        `!raw-loader!./${codePath}/index.${scriptExtension}`
+      );
 
       const additional = {};
 
       for (let additionalFile of additionalFiles) {
         if (typeof additionalFile === 'string') {
-          const file = await import(`!raw-loader!./${codePath}/${additionalFile}`);
+          const file = await import(
+            `!raw-loader!./${codePath}/${additionalFile}`
+          );
           additional[`/${additionalFile}`] = { code: file.default };
 
           if (additionalFile === activeFile) {
@@ -80,6 +98,8 @@ export default function CodeViewer({
 
     loadFiles();
   }, []);
+
+  const defaultSetup = getDefaultSetup(framework);
 
   const customSetup = useMemo(
     () => ({
@@ -101,10 +121,12 @@ export default function CodeViewer({
 
   options.readOnly = !!customPreview;
 
+  const template = getTemplate({ framework, isTypescript });
+
   return (
     <div style={{ minHeight: editorHeight, marginBottom: 20 }}>
       <SandpackProvider
-        template={isTypescript ? 'react-ts' : 'react'}
+        template={template}
         options={sandpackOptions}
         customSetup={customSetup}
         files={{
@@ -117,11 +139,19 @@ export default function CodeViewer({
           {showPreview && customPreview ? (
             <>
               <SandpackStack style={{ flex: '1 1 0%' }}>
-                <div className="sp-preview-container" style={{ flex: '1 1 0%', height: '100%' }}>
+                <div
+                  className="sp-preview-container"
+                  style={{ flex: '1 1 0%', height: '100%' }}
+                >
                   {customPreview}
                   <div
                     className="sp-preview-actions"
-                    style={{ zIndex: 10, position: 'absolute', bottom: 10, right: 10 }}
+                    style={{
+                      zIndex: 10,
+                      position: 'absolute',
+                      bottom: 10,
+                      right: 10,
+                    }}
                   >
                     <OpenInCodeSandboxButton />
                   </div>
@@ -129,7 +159,10 @@ export default function CodeViewer({
               </SandpackStack>
             </>
           ) : (
-            <SandpackPreview style={panelStyle} showOpenInCodeSandbox={showOpenInCodeSandbox} />
+            <SandpackPreview
+              style={panelStyle}
+              showOpenInCodeSandbox={showOpenInCodeSandbox}
+            />
           )}
         </SandpackLayout>
       </SandpackProvider>
