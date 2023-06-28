@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-const baseUrl = 'https://xyflow-pro-examples.vercel.app/';
+import { PRO_EXAMPLE_BASE_URL } from '@/constants';
 
 export default function ({ slug }: { slug: string }) {
   return (
@@ -12,7 +12,10 @@ export default function ({ slug }: { slug: string }) {
           View Source Code
         </Link>
       </div>
-      <iframe src={`${baseUrl}${slug}`} className="h-[860px] w-full bg-white" />
+      <iframe
+        src={`${PRO_EXAMPLE_BASE_URL}${slug}`}
+        className="h-[860px] w-full bg-white"
+      />
     </div>
   );
 }

@@ -1,7 +1,11 @@
 import { useMemo } from 'react';
 import { useRouter } from 'next/router';
 
-export default function useXYSite() {
+export default function useXYSite(): {
+  site: 'react' | 'svelte' | 'xyflow';
+  lib: 'React Flow' | 'Svelte Flow' | null;
+  isOrg: boolean;
+} {
   const router = useRouter();
 
   const site = useMemo(() => {
@@ -16,10 +20,12 @@ export default function useXYSite() {
 
   const lib = useMemo(() => {
     if (site === 'xyflow') {
-      return site;
+      return null;
     }
 
-    return `${site.charAt(0).toUpperCase() + site.slice(1)} Flow`;
+    return `${site.charAt(0).toUpperCase() + site.slice(1)} Flow` as
+      | 'React Flow'
+      | 'Svelte Flow';
   }, [site]);
 
   return {
