@@ -48,7 +48,8 @@
     "react-dom": "^18.2.0",
     "react-syntax-highlighter": "^15.5.0",
     "sharp": "^0.32.1",
-    "stripe": "^12.9.0"
+    "stripe": "^12.9.0",
+    "xy-ui": "workspace:*"
   },
   "devDependencies": {
     "@types/d3": "^7.4.0",

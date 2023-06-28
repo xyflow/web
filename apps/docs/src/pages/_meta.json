@@ -25,5 +25,29 @@
   },
   "case-studies": {
     "title": "Case Studies"
+  },
+  "terms-of-use": {
+    "title": "Terms Of Use",
+    "theme": {
+      "layout": "page"
+    }
+  },
+  "ethical-standards": {
+    "title": "Ethical Standards",
+    "theme": {
+      "layout": "page"
+    }
+  },
+  "privacy": {
+    "title": "Privacy",
+    "theme": {
+      "layout": "page"
+    }
+  },
+  "imprint": {
+    "title": "Imprint",
+    "theme": {
+      "layout": "page"
+    }
   }
 }

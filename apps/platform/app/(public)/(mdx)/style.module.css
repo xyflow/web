@@ -1,4 +1,0 @@
-/* chakra overwrites global css, so we need to revert it (see https://github.com/chakra-ui/chakra-ui/issues/2802) */
-.mdxContent * {
-  all: revert;
-}

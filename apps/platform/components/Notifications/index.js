@@ -7,6 +7,7 @@ import { HiX } from 'components/Icons';
 
 import { useIsSubscribed } from '../../context/subscription';
 
+// @todo re-think notifications
 function Notification({ label, ...props }) {
   const [isHidden, setIsHidden] = useBoolean();
 

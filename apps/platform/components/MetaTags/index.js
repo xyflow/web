@@ -1,5 +1,6 @@
 import Head from 'next/head';
 
+// @todo replace with native nextjs metadata api
 function MetaTags() {
   return (
     <Head>

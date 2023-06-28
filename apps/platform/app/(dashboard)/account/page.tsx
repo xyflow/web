@@ -10,7 +10,6 @@ import { authProtected } from 'components/Auth';
 import Card, { CardHeader, CardItem } from 'components/Card';
 import CustomerPortalButton from 'components/CustomerPortalButton';
 import useSubscription from 'hooks/useSubscription';
-import useStripeCustomerPortal from 'hooks/useStripeCustomerPortal';
 
 const EditButton = (props: ButtonProps) => (
   <Button leftIcon={<HiOutlinePencilAlt size={16} />} colorScheme="gray" variant="outline" size="sm" {...props} />
@@ -20,7 +19,6 @@ function AccountPage() {
   const userData = useUserData();
   const { signOut } = useSignOut();
   const { isSubscribed } = useSubscription();
-  const { openPortal, isLoading } = useStripeCustomerPortal();
 
   if (!userData) {
     return null;
@@ -65,7 +63,12 @@ function AccountPage() {
         <CardHeader
           title="Billing & Subscription"
           action={
-            <Button onClick={openPortal} isLoading={isLoading} size="sm" variant="outline">
+            <Button
+              as="a"
+              href="https://billing.stripe.com/p/login/test_bIYfZ70VVdRY7lucMM?prefill_email=christopher@webkid.io"
+              size="sm"
+              variant="outline"
+            >
               Subscription Portal
             </Button>
           }

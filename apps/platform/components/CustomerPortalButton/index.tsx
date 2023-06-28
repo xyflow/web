@@ -1,16 +1,16 @@
 import { Button, ButtonProps } from '@chakra-ui/react';
 import NextLink from 'next/link';
 
-import { useIsSubscribed } from '../../context/subscription';
-import useStripeCustomerPortal from '../../hooks/useStripeCustomerPortal';
+import useSubscription from 'hooks/useSubscription';
+import useStripeCustomerPortal from 'hooks/useStripeCustomerPortal';
 
 const CustomerPortalButton = (props: ButtonProps) => {
-  const { isLoading, openPortal } = useStripeCustomerPortal();
-  const isSubscribed = useIsSubscribed();
+  const { portalUrl } = useStripeCustomerPortal();
+  const { isSubscribed } = useSubscription();
 
   if (!isSubscribed) {
     return (
-      <NextLink href="/pricing#plans">
+      <NextLink href="/dashboard">
         <Button variant="outline" size="sm" {...props}>
           Subscribe
         </Button>
@@ -18,7 +18,7 @@ const CustomerPortalButton = (props: ButtonProps) => {
     );
   }
 
-  return <Button isLoading={isLoading} variant="outline" size="sm" onClick={openPortal} {...props} />;
+  return <Button as="a" href={portalUrl} variant="outline" size="sm" {...props} />;
 };
 
 export default CustomerPortalButton;

@@ -4,6 +4,10 @@ name = 'STRIPE_SECRET_KEY'
 value = '{{ secrets.STRIPE_SECRET_KEY }}'
 
 [[global.environment]]
+name = 'STRIPE_WEBHOOK_SECRET'
+value = '{{ secrets.STRIPE_WEBHOOK_SECRET }}'
+
+[[global.environment]]
 name = 'MAILJET_APIKEY_PRIVATE'
 value = '{{ secrets.MAILJET_APIKEY_PRIVATE }}'
 

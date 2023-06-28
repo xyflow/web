@@ -1,23 +1,24 @@
-import { getNhostSession } from '@nhost/nextjs';
-import { cookies } from 'next/headers';
+'use client';
+import * as React from 'react';
 
-import NhostClientProvider from './ClientProvider';
+import { NhostClient, NhostProvider } from '@nhost/nextjs';
+import { NhostApolloProvider } from '@nhost/react-apollo';
 
-type NhostProviderProps = {
+export const nhost = new NhostClient({
+  subdomain: process.env.NEXT_PUBLIC_NHOST_SUBDOMAIN,
+  region: process.env.NEXT_PUBLIC_NHOST_REGION,
+});
+
+type Props = {
   children: React.ReactNode;
 };
 
-export default async function NhostProvider({ children }: NhostProviderProps) {
-  // const req = { cookies: cookies().get('BLA') };
-  // console.log(req);
-
-  // const nhostSession = await getNhostSession(
-  //   { subdomain: process.env.NEXT_PUBLIC_NHOST_SUBDOMAIN, region: process.env.NEXT_PUBLIC_NHOST_REGION },
-  //   // @ts-ignore
-  //   { req: { cookies: {} } }
-  // );
-
-  // console.log(nhostSession);
-
-  return <NhostClientProvider>{children}</NhostClientProvider>;
+function NhostClientProvider({ children }: Props) {
+  return (
+    <NhostProvider nhost={nhost}>
+      <NhostApolloProvider nhost={nhost}>{children}</NhostApolloProvider>
+    </NhostProvider>
+  );
 }
+
+export default NhostClientProvider;
