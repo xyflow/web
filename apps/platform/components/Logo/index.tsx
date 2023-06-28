@@ -7,7 +7,7 @@ export default function Logo({ width = 40, height = 40 }: { width?: number; heig
     <Flex flexShrink={0} alignItems="center">
       <ReactFlowLogo width={width} height={height} />
       <Box fontWeight="black" lineHeight={1} ml={2}>
-        React Flow
+        XY Flow
       </Box>
       <Box
         ml="4px"

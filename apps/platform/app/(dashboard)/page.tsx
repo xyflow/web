@@ -9,7 +9,7 @@ import { authProtected } from 'components/Auth';
 import Text from 'components/Text';
 import SubscriptionFeatures from 'components/SubscriptionFeatures';
 import SubscriberSurvey from 'components/SubscriberSurvey';
-import PricingPlans from 'components/PricingPlans';
+import StripePricingTable from 'components/PricingTable';
 
 import useStripeCustomerPortal from 'hooks/useStripeCustomerPortal';
 import useSubscription from 'hooks/useSubscription';
@@ -17,7 +17,7 @@ import useSubscription from 'hooks/useSubscription';
 const widgets: Record<PlanId, React.ReactNode> = {
   free: (
     <Box maxWidth="1600px">
-      <PricingPlans />
+      <StripePricingTable />
     </Box>
   ),
   student: (
@@ -47,7 +47,7 @@ const widgets: Record<PlanId, React.ReactNode> = {
 
 function DashboardTitle({ introText }: { introText: React.ReactNode }) {
   const { isSubscribed } = useSubscription();
-  const { isLoading: isPortalLoading, openPortal } = useStripeCustomerPortal();
+  const { portalUrl } = useStripeCustomerPortal();
   const { signOut } = useSignOut();
 
   return (
@@ -62,17 +62,18 @@ function DashboardTitle({ introText }: { introText: React.ReactNode }) {
             style={{
               WebkitFontSmoothing: 'antialiased',
             }}
+            fontWeight="black"
           >
             Dashboard
           </Heading>
           <Heading fontSize={['3xl', '4xl', '4xl', '5xl']} as="h1" mb={2}>
-            React Flow Pro
+            XY Flow Pro
           </Heading>
         </Box>
         <Box>
           <Wrap>
             {isSubscribed && (
-              <Button onClick={openPortal} isLoading={isPortalLoading} variant="outline" size="sm" colorScheme="pink">
+              <Button as="a" href={portalUrl} variant="outline" size="sm" colorScheme="pink">
                 Billing & Subscription
               </Button>
             )}
@@ -99,8 +100,8 @@ function Dashboard() {
     'Thank you for subscribing to React Flow Pro! With your subscription, you are ensuring the sustainable maintenance and development of the React Flow library.'
   ) : (
     <>
-      Welcome to React Flow Pro! With a subscription, you are ensuring the sustainable maintenance and development of
-      the React Flow library.
+      Welcome to XY Flow Pro! With a subscription, you are ensuring the sustainable maintenance and development of our
+      open-source libraries.
     </>
   );
 
