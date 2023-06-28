@@ -1,18 +1,11 @@
-// import useSubscription from 'hooks/useSubscription';
-
+import SubscriptionCheck from './subscription-check';
 import SubscribedExampleViewer from './subscribed';
-import UnsubscribedExampleViewer from './unsubscribed';
+import UnSubscribedExampleViewer from './unsubscribed';
 
-// @todo add auth
 export default function ({ params }: { params: { id: string } }) {
-  // @todo how to check the subscription status here (maybe in a server component?)
-  // const { isSubscribed } = useSubscription();
-
-  const isSubscribed = true;
-
-  return isSubscribed ? (
-    <SubscribedExampleViewer exampleId={params.id} />
-  ) : (
-    <UnsubscribedExampleViewer exampleId={params.id} />
+  return (
+    <SubscriptionCheck fallback={<UnSubscribedExampleViewer exampleId={params.id} />}>
+      <SubscribedExampleViewer exampleId={params.id} />
+    </SubscriptionCheck>
   );
 }
