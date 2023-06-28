@@ -1,6 +1,9 @@
 {
   "*": {
-    "type": "page"
+    "type": "page",
+    "theme": {
+      "layout": "default"
+    }
   },
   "index": {
     "title": "Svelte Flow",
