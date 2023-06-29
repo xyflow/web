@@ -60,8 +60,8 @@ export function NavBarAdditional() {
   }
 
   return (
-    <Button variant={site} size="sm" className="px-4 font-black">
-      Pro
+    <Button asChild variant={site} size="sm" className="px-4 font-black">
+      <Link href={`/${site}-flow/pro`}>Pro</Link>
     </Button>
   );
 }

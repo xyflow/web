@@ -1,34 +1,20 @@
+import {
+  GITHUB_API_URL,
+  NPM_REACT_FLOW_LEGACY,
+  NPM_REACTFLOW,
+} from '@/constants';
+
 export default async function getStaticProps({ params }) {
-  const GITHUB_API_URL = 'https://api.github.com/repos/wbkd/react-flow';
-  const REACT_FLOW_RENDERER_DOWNLOADS_URL =
-    'https://api.npmjs.org/downloads/point/last-week/react-flow-renderer';
-  const REACTFLOW_DOWNLOADS_URL =
-    'https://api.npmjs.org/downloads/point/last-week/reactflow';
-
-  const fetchJSON = async function (url) {
-    return new Promise((resolve, reject) => {
-      fetch(url, { headers: { 'User-Agent': 'webkid' } })
-        .then((res) => res.json())
-        .then((response) => {
-          resolve(response);
-        });
-    });
-  };
-
   const { stargazers_count: stars } = await fetchJSON(GITHUB_API_URL);
-  const { downloads: reactFlowRendererDownloads } = await fetchJSON(
-    REACT_FLOW_RENDERER_DOWNLOADS_URL
+  const { downloads: reactFlowLegacyDownloads } = await fetchJSON(
+    NPM_REACT_FLOW_LEGACY
   );
-  const { downloads: reactFlowDownloads } = await fetchJSON(
-    REACTFLOW_DOWNLOADS_URL
-  );
+  const { downloads: reactFlowDownloads } = await fetchJSON(NPM_REACTFLOW);
 
-  const downloads = reactFlowRendererDownloads + reactFlowDownloads;
+  const downloads = reactFlowLegacyDownloads + reactFlowDownloads;
 
   if (!downloads || !stars) {
-    return console.log(
-      'could not fetch downloads and stars. please try again.'
-    );
+    console.log('could not fetch downloads and stars. please try again.');
   }
 
   return {
@@ -38,6 +24,13 @@ export default async function getStaticProps({ params }) {
         downloads,
       },
     },
-    revalidate: 360,
+    revalidate: 60 * 60,
   };
+}
+
+async function fetchJSON(url) {
+  const resp = await fetch(url, { headers: { 'User-Agent': 'webkid' } });
+  const json = await resp.json();
+
+  return json;
 }
