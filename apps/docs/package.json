@@ -8,7 +8,6 @@
     "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "next lint",
-    "write-stats": "node scripts/get-stats.js",
     "write-showcases": "rm -rf static/img/showcase && mkdir -p static/img/showcase && node scripts/get-showcases.js"
   },
   "dependencies": {

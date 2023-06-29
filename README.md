@@ -51,3 +51,7 @@ If you work on a feature, create a feature branch from `staging`.
 - `staging` is used for previewing the next release:
   - [https://xyflow-docs-staging.vercel.app/](https://xyflow-docs-staging.vercel.app/)
   - [https://xyflow-platform-staging.vercel.app/](https://xyflow-platform-staging.vercel.app/)
+
+## Showcases
+
+In order to update the showcase section, you need to run `pnpm showcase` in the `apps/docs` folder.
