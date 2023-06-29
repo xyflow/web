@@ -1,23 +1,5 @@
-'use client';
+import AuthProtection from './auth-protection';
 
-import { useRouter } from 'next/navigation';
-import { useAuthenticationStatus } from '@nhost/nextjs';
-import { PageLoader } from 'components/Loader';
-
-const AuthProtectedLayout = ({ children }: { children: React.ReactNode }) => {
-  const router = useRouter();
-  const { isLoading, isAuthenticated } = useAuthenticationStatus();
-
-  if (isLoading) {
-    return <PageLoader />;
-  }
-
-  if (!isAuthenticated) {
-    router.push('/login');
-    return null;
-  }
-
-  return children;
-};
-
-export default AuthProtectedLayout;
+export default function AuthProtectedLayout({ children }: { children: React.ReactNode }) {
+  return <AuthProtection>{children}</AuthProtection>;
+}
