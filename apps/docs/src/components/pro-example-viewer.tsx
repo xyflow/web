@@ -13,7 +13,7 @@ export default function ({ slug }: { slug: string }) {
     site === 'react' ? REACT_PRO_EXAMPLE_BASE_URL : SVELTE_PRO_EXAMPLE_BASE_URL;
 
   return (
-    <div className="bg-react p-4">
+    <div className="bg-react p-4 my-4">
       <div className="flex justify-between items-center	mb-4">
         This is a Pro example. If you are subscribed to React Flow Pro you can
         access the annotated source code.
