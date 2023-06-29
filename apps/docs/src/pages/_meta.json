@@ -29,25 +29,25 @@
   "terms-of-use": {
     "title": "Terms Of Use",
     "theme": {
-      "layout": "page"
+      "layout": "full"
     }
   },
   "ethical-standards": {
     "title": "Ethical Standards",
     "theme": {
-      "layout": "page"
+      "layout": "full"
     }
   },
   "privacy": {
     "title": "Privacy",
     "theme": {
-      "layout": "page"
+      "layout": "full"
     }
   },
   "imprint": {
     "title": "Imprint",
     "theme": {
-      "layout": "page"
+      "layout": "full"
     }
   }
 }
