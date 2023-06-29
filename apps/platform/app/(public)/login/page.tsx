@@ -34,7 +34,7 @@ function Login() {
 
   useEffect(() => {
     if (isSuccess) {
-      router.push(searchParams?.get('redirectTo') || '/dashboard');
+      router.push(searchParams?.get('redirectTo') || '/');
     }
   }, [isSuccess, router, searchParams]);
 

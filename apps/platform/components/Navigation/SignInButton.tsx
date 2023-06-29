@@ -7,7 +7,7 @@ function SignInButton() {
 
   if (isAuthenticated) {
     return (
-      <NextLink href="/dashboard">
+      <NextLink href="/">
         <Button colorScheme="pink">Dashboard</Button>
       </NextLink>
     );

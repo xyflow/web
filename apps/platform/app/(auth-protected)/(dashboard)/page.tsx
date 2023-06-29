@@ -5,7 +5,6 @@ import { useSignOut } from '@nhost/nextjs';
 
 import { PlanId } from 'config/plans';
 
-import { authProtected } from 'components/Auth';
 import Text from 'components/Text';
 import SubscriptionFeatures from 'components/SubscriptionFeatures';
 import SubscriberSurvey from 'components/SubscriberSurvey';
@@ -115,4 +114,4 @@ function Dashboard() {
   );
 }
 
-export default authProtected(Dashboard);
+export default Dashboard;

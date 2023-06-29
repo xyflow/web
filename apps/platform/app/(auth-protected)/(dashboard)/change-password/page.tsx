@@ -7,7 +7,6 @@ import { useChangePassword } from '@nhost/nextjs';
 
 import Card from 'components/Card';
 import PasswordField from 'components/PasswordField';
-import { authProtected } from 'components/Auth';
 
 function ChangePassword() {
   const [password, setPassword] = useState<string>('');
@@ -86,4 +85,4 @@ function ChangePassword() {
   );
 }
 
-export default authProtected(ChangePassword);
+export default ChangePassword;

@@ -83,7 +83,7 @@ export default function SidebarItems() {
   return (
     <Flex overflow="auto" flex="1" flexDirection="column">
       <Box mb={5}>
-        <SidebarLink href="/dashboard" icon={<HiOutlineCollection size={20} fontWeight="normal" strokeWidth="1" />}>
+        <SidebarLink href="/" icon={<HiOutlineCollection size={20} fontWeight="normal" strokeWidth="1" />}>
           Dashboard
         </SidebarLink>
         <ExamplesCategory />

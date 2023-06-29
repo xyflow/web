@@ -5,7 +5,6 @@ import { Box, Button, Container, FormControl, Stack, Alert, AlertIcon, FormLabel
 import { useChangeEmail } from '@nhost/nextjs';
 
 import Card from 'components/Card';
-import { authProtected } from 'components/Auth';
 
 function ChangeEmail() {
   const [email, setEmail] = useState('');
@@ -63,4 +62,4 @@ function ChangeEmail() {
   );
 }
 
-export default authProtected(ChangeEmail);
+export default ChangeEmail;

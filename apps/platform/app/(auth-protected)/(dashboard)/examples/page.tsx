@@ -4,11 +4,9 @@ import { useState } from 'react';
 import { Box, SimpleGrid, Wrap, Button, WrapItem, Text, Heading } from '@chakra-ui/react';
 import Head from 'next/head';
 import { HiX } from 'components/Icons';
-// @todo re-enable auth protection
-import { authProtected } from 'components/Auth';
 import ExampleTeaser from 'components/ExampleTeaser';
 
-import examples, { Example } from 'pro-examples/examples';
+import examples from 'pro-examples/examples';
 
 const uniqueTags = examples.reduce<string[]>((tags, example) => {
   example.tags?.forEach((tag) => !tags.includes(tag) && tags.push(tag));
@@ -58,4 +56,4 @@ function Examples() {
   );
 }
 
-export default authProtected(Examples);
+export default Examples;
