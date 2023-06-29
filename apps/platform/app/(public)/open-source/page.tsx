@@ -28,7 +28,7 @@ function Signup() {
 
   const handleSubmit = async (evt: React.SyntheticEvent) => {
     evt.preventDefault();
-    await signInEmailPasswordless(email, { metadata, redirectTo: '/dashboard' });
+    await signInEmailPasswordless(email, { metadata, redirectTo: '/' });
   };
 
   return (

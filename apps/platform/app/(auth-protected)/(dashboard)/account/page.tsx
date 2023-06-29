@@ -5,7 +5,6 @@ import NextLink from 'next/link';
 import { useUserData, useSignOut } from '@nhost/nextjs';
 
 import { HiOutlinePencilAlt } from 'components/Icons';
-import { authProtected } from 'components/Auth';
 
 import Card, { CardHeader, CardItem } from 'components/Card';
 import CustomerPortalButton from 'components/CustomerPortalButton';
@@ -63,12 +62,7 @@ function AccountPage() {
         <CardHeader
           title="Billing & Subscription"
           action={
-            <Button
-              as="a"
-              href="https://billing.stripe.com/p/login/test_bIYfZ70VVdRY7lucMM?prefill_email=christopher@webkid.io"
-              size="sm"
-              variant="outline"
-            >
+            <Button as="a" href="christopher@webkid.io" size="sm" variant="outline">
               Subscription Portal
             </Button>
           }
@@ -114,4 +108,4 @@ function AccountPage() {
   );
 }
 
-export default authProtected(AccountPage);
+export default AccountPage;

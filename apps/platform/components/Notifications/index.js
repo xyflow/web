@@ -60,7 +60,7 @@ export default function Notifications() {
             <Box>
               You are currently not subscribed. To unlock all Pro features like the Pro examples, please subscribe{' '}
               <Link color="blue.500" fontWeight="bold">
-                <NextLink href="/dashboard">here</NextLink>
+                <NextLink href="/">here</NextLink>
               </Link>
               .
             </Box>
@@ -80,7 +80,7 @@ export default function Notifications() {
                 mx={1}
                 as="span"
                 onClick={() => {
-                  window.location.replace('/dashboard');
+                  window.location.replace('/');
                 }}
               >
                 reload
