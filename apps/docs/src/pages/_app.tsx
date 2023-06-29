@@ -1,5 +1,7 @@
-import useXYSite from 'hooks/useXYSite';
+import { type CSSProperties } from 'react';
 import localFont from 'next/font/local';
+
+import useXYSite from 'hooks/useXYSite';
 
 import 'styles/global.css';
 
@@ -13,9 +15,20 @@ const ntDapperFont = localFont({
   variable: '--font-ntdapper',
 });
 
+const hueValuesBySite = {
+  xyflow: 220,
+  react: 330,
+  svelte: 30,
+};
+
 export default function App({ Component, pageProps }) {
+  const { site } = useXYSite();
+
   return (
-    <main className={`${ntDapperFont.variable} font-sans`}>
+    <main
+      className={`${ntDapperFont.variable} font-sans`}
+      style={{ '--nextra-primary-hue': hueValuesBySite[site] } as CSSProperties}
+    >
       <Component {...pageProps} />
     </main>
   );

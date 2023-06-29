@@ -1,24 +1,25 @@
 ---
-sidebar_position: 10
-sidebar_label: Resize and Rotate
 title: Resize and Rotate
-hide_table_of_contents: true
 ---
 
-import CodeViewer from '@/components/code-viewer';
+import { Callout } from 'nextra/components';
 
+import CodeViewer from '@/components/code-viewer';
+import ExampleLayout from '@/components/example-layout';
+
+<ExampleLayout>
 This example shows how to implement a [custom node](/docs/api/nodes/custom-nodes/) that can be resized and rotated using the [NodeResizer component](/docs/api/nodes/node-resizer). It can be used as a starting point for building flow chart editors or diagrams where users can configure the size and rotation of the elements.
 
-:::info
-
+<Callout type="info">
 The `NodeResizer` component is **not** part of the `reactflow` package. You need to install it seperately and you need reactflow >= v11.3.3 for this to work.
 
 This used to be a pro example using the [moveable](https://www.npmjs.com/package/moveable) library. As React Flow now supports resizing through the [NodeResizer package](/docs/api/nodes/node-resizer), the pro example has been [deprecated](/docs/examples/nodes/resize-rotate-moveable-deprecated).
 
-:::
+</Callout>
 
 <CodeViewer
   codePath="example-flows/ResizeRotate"
   additionalFiles={['ResizeRotateNode.js', 'style.module.css']}
   dependencies={{ '@reactflow/node-resizer': '2.0.0' }}
 />
+</ExampleLayout>

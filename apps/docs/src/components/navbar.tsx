@@ -3,6 +3,7 @@ import { Navbar as NextraNavbar } from 'nextra-theme-docs';
 import { getPagesUnderRoute } from 'nextra/context';
 
 import useXYSite from 'hooks/useXYSite';
+import { Button } from 'xy-ui';
 
 const topNav = [
   {
@@ -27,7 +28,7 @@ export default function Navbar(props) {
   const navBarItems = isOrg
     ? props.items.filter((item) => xyNavBarRoutes.includes(item.route))
     : getPagesUnderRoute(`/${site}-flow`)
-        .filter((page) => page.name !== 'index')
+        .filter((page) => page.name !== 'index' && page.name !== 'pro')
         .map((p) => ({ ...p, title: p.meta?.title }));
 
   return (
@@ -48,5 +49,19 @@ export default function Navbar(props) {
         items={navBarItems}
       />
     </div>
+  );
+}
+
+export function NavBarAdditional() {
+  const { site, isOrg } = useXYSite();
+
+  if (isOrg) {
+    return null;
+  }
+
+  return (
+    <Button asChild variant={site} size="sm" className="px-4 font-black">
+      <Link href={`/${site}-flow/pro`}>Pro</Link>
+    </Button>
   );
 }

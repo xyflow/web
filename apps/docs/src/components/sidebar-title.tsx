@@ -10,7 +10,15 @@ const proExampleRoutes = {
   '/react-flow/examples/interaction/copy-and-paste': 'pro',
 };
 
-export default function SidebarTitle({ title, type, route }) {
+export default function SidebarTitle({
+  title,
+  type,
+  route,
+}: {
+  title: string;
+  type: string;
+  route: string;
+}) {
   return (
     <div className={`sidebar-title ${proExampleRoutes[route] ?? ''}`}>
       {title}

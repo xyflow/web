@@ -1,8 +1,15 @@
-import CodeViewer from '@/components/code-viewer';
+---
+title: Add Node On Edge Drop
+---
 
+import CodeViewer from '@/components/code-viewer';
+import ExampleLayout from '@/components/example-layout';
+
+<ExampleLayout>
 You can create a new node when you drop the connection line on the pane by using the `onConnectionStart` and `onConnectionStop` handlers.
 
 <CodeViewer
   codePath="example-flows/AddNodeOnEdgeDrop"
   additionalFiles={['index.css']}
 />
+</ExampleLayout>

@@ -1,13 +1,14 @@
-import { useRouter } from 'next/router';
+import useXYSite from '@/hooks/useXYSite';
 
 export default function Logo() {
-  const router = useRouter();
+  const { site } = useXYSite();
 
-  const label = router.pathname.startsWith('/react-flow')
-    ? 'React Flow'
-    : router.pathname.startsWith('/svelte-flow')
-    ? 'Svelte Flow'
-    : 'XY Flow';
+  const label =
+    site === 'react'
+      ? 'React Flow'
+      : site === 'svelte'
+      ? 'Svelte Flow'
+      : 'XY Flow';
 
   return <strong>{label}</strong>;
 }

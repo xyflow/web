@@ -1,19 +1,19 @@
-import { useRouter } from 'next/router';
 import { useConfig } from 'nextra-theme-docs';
 
 import Logo from '@/components/logo';
-import Navbar from '@/components/navbar';
+import Navbar, { NavBarAdditional } from '@/components/navbar';
 import SidebarTitle from '@/components/sidebar-title';
 import Footer from '@/components/footer';
 import useXYSite from '@/hooks/useXYSite';
 
 export default {
   logo: Logo,
-  project: {
-    link: 'https://github.com/xyflow/xyflow',
-  },
+  docsRepositoryBase: 'https://github.com/xyflow/xyflow',
+  // this is necessary to hide the github icon
+  project: {},
   navbar: {
     component: Navbar,
+    extraContent: NavBarAdditional,
   },
   sidebar: {
     titleComponent: SidebarTitle,
@@ -30,7 +30,7 @@ export default {
       title: frontMatter.title || lib,
       description:
         frontMatter.description ||
-        'xyflow - Libraries for React and Svelte for rendering node-based UIs.',
+        'xyflow - Libraries for React and Svelte for rendering workflows, diagrams and node-based UIs.',
     };
   },
   head: null,

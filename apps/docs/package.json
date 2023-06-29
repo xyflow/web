@@ -8,7 +8,6 @@
     "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "next lint",
-    "write-stats": "node scripts/get-stats.js",
     "write-showcases": "rm -rf static/img/showcase && mkdir -p static/img/showcase && node scripts/get-showcases.js"
   },
   "dependencies": {
@@ -36,7 +35,7 @@
     "@types/node": "^20.3.1",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
-    "@xyflow/svelte": "^0.0.8",
+    "@xyflow/svelte": "0.0.11",
     "autoprefixer": "^10.4.14",
     "cssnano": "^6.0.1",
     "dotenv": "^16.3.1",

@@ -7,7 +7,9 @@ hide_table_of_contents: true
 ---
 
 import CodeViewer from '@/components/code-viewer';
+import ExampleLayout from '@/components/example-layout';
 
+<ExampleLayout>
 Like our [dagre example](/docs/examples/layout/dagre), this example shows how you can integrate [elkjs](https://github.com/kieler/elkjs) with React Flow for more advanced tree layouts. The code for this example builds a similar tree to the dagre example, but you can look at the reference [here](https://www.eclipse.org/elk/reference.html) to see what you can configure (hint: it's a lot).
 
 <CodeViewer
@@ -15,3 +17,4 @@ Like our [dagre example](/docs/examples/layout/dagre), this example shows how yo
   additionalFiles={['nodes-edges.js']}
   dependencies={{ elkjs: 'latest' }}
 />
+</ExampleLayout>

@@ -119,12 +119,12 @@ export default function CodeViewer({
     return <div style={{ minHeight: editorHeight }} />;
   }
 
-  options.readOnly = !!customPreview;
+  sandpackOptions.readOnly = !!customPreview;
 
   const template = getTemplate({ framework, isTypescript });
 
   return (
-    <div style={{ minHeight: editorHeight, marginBottom: 20 }}>
+    <div className="my-4" style={{ minHeight: editorHeight }}>
       <SandpackProvider
         template={template}
         options={sandpackOptions}
