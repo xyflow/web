@@ -7,9 +7,12 @@ hide_table_of_contents: true
 ---
 
 import ProExampleViewer from '@/components/pro-example-viewer';
+import ExampleLayout from '@/components/example-layout';
 
+<ExampleLayout>
 This example shows how you can automatically arrange nodes after adding items from a sidebar. This a common UI pattern for workflow editors and lets you create a flow quickly. The layout is calculated every time a node is added with the help of the [d3-hierarchy](https://github.com/d3/d3-hierarchy) library. If you are subscribed to [React Flow Pro](https://pro.reactflow.dev/), you will get access to two versions of this example: One using [d3-hierarchy](https://github.com/d3/d3-hierarchy) and the other one using [dagre.js](https://github.com/dagrejs/dagre) as a layout engine.
 
 Dependencies: [reactflow](https://www.npmjs.com/package/reactflow), [d3-hierarchy](https://www.npmjs.com/package/d3-hierarchy) or [dagre](https://www.npmjs.com/package/dagre)
 
 <ProExampleViewer slug="auto-layout" />
+</ExampleLayout>

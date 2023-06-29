@@ -9,6 +9,7 @@ import useXYSite from '@/hooks/useXYSite';
 
 export default {
   logo: Logo,
+  docsRepositoryBase: 'https://github.com/xyflow/xyflow',
   project: {
     link: 'https://github.com/xyflow/xyflow',
   },
