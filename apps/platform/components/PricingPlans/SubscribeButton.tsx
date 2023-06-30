@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Box, Flex, Button } from '@chakra-ui/react';
 import { useUserEmail, useNhostClient, useAccessToken } from '@nhost/nextjs';
-import type { CreateCheckoutSessionResponse } from 'functions/stripe/create-session';
 
 import { isDevelopment } from 'utils/browser';
 
@@ -23,7 +22,7 @@ function SubscribeButton({ priceTag, price, colorScheme }: SubscribeButtonProps)
   const createStripeCheckoutSession = async () => {
     setLoading(true);
 
-    const { res, error } = await nhost.functions.call<CreateCheckoutSessionResponse>(
+    const { res, error } = await nhost.functions.call(
       '/stripe/create-session',
       {
         customerEmail: customerEmail,
@@ -33,6 +32,7 @@ function SubscribeButton({ priceTag, price, colorScheme }: SubscribeButtonProps)
       { headers: { Authorization: `Bearer ${authToken}` } }
     );
 
+    // @ts-ignore
     const sessionUrl = res?.data?.sessionUrl;
 
     if (!error && sessionUrl) {
