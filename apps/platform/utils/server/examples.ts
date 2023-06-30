@@ -2,7 +2,6 @@ import fs from 'fs';
 import path from 'path';
 
 import type { ProCodeViewerProps } from 'components/ProExampleViewer';
-import { FragmentMap } from '@apollo/client/utilities';
 import { SandpackFiles } from '@codesandbox/sandpack-react/types';
 
 export enum Framework {

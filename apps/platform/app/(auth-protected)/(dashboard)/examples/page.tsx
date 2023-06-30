@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import { getExamples } from 'utils/server/examples';
 
-export default async function ProExamplesOverview() {
-  const examples = getExamples();
+const examples = getExamples();
 
+export default async function ProExamplesOverview() {
   return (
     <div>
       <div>Pro Examples</div>
@@ -28,5 +28,3 @@ export default async function ProExamplesOverview() {
     </div>
   );
 }
-
-// @todo add static paths here
