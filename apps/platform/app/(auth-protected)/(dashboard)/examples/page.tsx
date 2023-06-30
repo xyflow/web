@@ -1,59 +1,32 @@
-'use client';
+import Link from 'next/link';
+import { getExamples } from 'utils/server/examples';
 
-import { useState } from 'react';
-import { Box, SimpleGrid, Wrap, Button, WrapItem, Text, Heading } from '@chakra-ui/react';
-import Head from 'next/head';
-import { HiX } from 'components/Icons';
-import ExampleTeaser from 'components/ExampleTeaser';
-
-import examples from 'pro-examples/examples';
-
-const uniqueTags = examples.reduce<string[]>((tags, example) => {
-  example.tags?.forEach((tag) => !tags.includes(tag) && tags.push(tag));
-  return tags;
-}, []);
-
-function Examples() {
-  const [selectedTag, setSelectedTag] = useState<string | null>(null);
+export default async function ProExamplesOverview() {
+  const examples = getExamples();
 
   return (
-    <Box>
-      <Head>
-        <title>Pro Examples - React Flow</title>
-      </Head>
-      <Heading mb={4} fontSize={['3xl', '4xl', '4xl', '5xl']} as="h1">
-        Pro Examples
-      </Heading>
-      <Text mt={2} mb={4} fontSize="lg" fontWeight="normal" maxWidth="1000px">
-        The pro examples are a constantly expanded collection of advanced React Flow examples.
-      </Text>
-      <Box>
-        <Wrap mb={4} spacing={2}>
-          {uniqueTags.map((tag) => (
-            <WrapItem key={tag}>
-              <Button
-                onClick={() => setSelectedTag(selectedTag === tag ? null : tag)}
-                variant={selectedTag === tag ? 'solid' : 'outline'}
-                colorScheme="pink"
-                size="sm"
-                rightIcon={selectedTag === tag ? <HiX /> : undefined}
-              >
-                {tag}
-              </Button>
-            </WrapItem>
+    <div>
+      <div>Pro Examples</div>
+      <div>
+        <div>React</div>
+        <ul>
+          {examples.react.map((example) => (
+            <Link href={`/examples/react/${example.id}`}>
+              <li key={example.id}>{example.id}</li>
+            </Link>
           ))}
-        </Wrap>
-      </Box>
-      <SimpleGrid columns={[1, 2, 2, 3, 4, 5]} spacingX={4} spacingY={8}>
-        {examples
-          .filter((example) => !example.hidden)
-          .filter((example) => (selectedTag ? example.tags?.includes(selectedTag) : true))
-          .map((example) => (
-            <ExampleTeaser example={example} key={example.id} />
+        </ul>
+      </div>
+      <div>
+        <div>Svelte</div>
+        <ul>
+          {examples.svelte.map((example) => (
+            <li key={example.id}>{example.id}</li>
           ))}
-      </SimpleGrid>
-    </Box>
+        </ul>
+      </div>
+    </div>
   );
 }
 
-export default Examples;
+// @todo add static paths here

@@ -2,7 +2,7 @@ import { Flex, Box } from '@chakra-ui/react';
 
 import ReactFlowLogo from './ReactFlowLogo';
 
-export default function Logo({ width = 40, height = 40 }: { width?: number; height?: number }) {
+export default function Logo({ width = 32, height = 32 }: { width?: number; height?: number }) {
   return (
     <Flex flexShrink={0} alignItems="center">
       <ReactFlowLogo width={width} height={height} />

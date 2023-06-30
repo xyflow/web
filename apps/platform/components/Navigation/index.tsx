@@ -7,7 +7,7 @@ import Logo from '../Logo';
 
 function Navigation() {
   return (
-    <Box bg="white">
+    <Box zIndex={1000} position="sticky" top={0} borderBottom="1px solid" borderBottomColor="gray.100" bg="white">
       <Box px={5} mx="auto">
         <Flex py={5} justifyContent="space-between">
           <NextLink href="/">
@@ -16,8 +16,8 @@ function Navigation() {
             </Flex>
           </NextLink>
           <Flex>
-            <NavItems />
-            <SignInButton />
+            {/* <NavItems /> */}
+            {/* <SignInButton /> */}
           </Flex>
         </Flex>
       </Box>

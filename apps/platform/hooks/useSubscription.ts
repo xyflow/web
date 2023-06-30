@@ -3,7 +3,6 @@ import { useContext } from 'react';
 import { PlanId, PricingPlan, plans } from 'config/plans';
 import { SubscriptionContext } from 'components/Providers/SubscriptionProvider';
 
-// @todo implement me!
 export type SubscriptionStatus = {
   isSubscribed: boolean;
   plan: PlanId;

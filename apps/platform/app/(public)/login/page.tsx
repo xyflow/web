@@ -49,7 +49,7 @@ function Login() {
   };
 
   return (
-    <Box bg="gray.50">
+    <Box>
       <Container
         maxW="lg"
         py={{
