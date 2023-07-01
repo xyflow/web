@@ -36,10 +36,6 @@ yarn-error.log*
 
 tsconfig.tsbuildinfo
 
-# nhost
-.nhost
-.secrets
-
 # @todo configure this
 .env.development
 .env.production
