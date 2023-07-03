@@ -2,7 +2,7 @@
 
 import { redirect } from 'next/navigation';
 import { useAuthenticationStatus } from '@nhost/nextjs';
-import { PageLoader } from 'components/Loader';
+import { PageLoader } from '@/components/Loader';
 
 const AuthProtection = ({ children }: { children: React.ReactNode }) => {
   const { isLoading, isAuthenticated } = useAuthenticationStatus();
@@ -12,7 +12,7 @@ const AuthProtection = ({ children }: { children: React.ReactNode }) => {
   }
 
   if (!isAuthenticated) {
-    redirect('/login');
+    redirect('/signin');
   }
 
   return children;

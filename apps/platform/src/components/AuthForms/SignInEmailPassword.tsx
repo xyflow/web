@@ -24,7 +24,7 @@ import Card from 'components/Card';
 import PasswordField from 'components/PasswordField';
 import OAuthSignIn from 'components/OAuthSignIn';
 
-function Login() {
+function SignInEmailPassword() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [form, setForm] = useState<{ email: string; password: string }>({ email: '', password: '' });
@@ -147,4 +147,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default SignInEmailPassword;

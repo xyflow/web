@@ -17,7 +17,7 @@ function DashboardLayout({ children, ...rest }: { children: React.ReactNode }) {
       <Box maxWidth={1200} mx="auto" py={4} px={6} mb={100}>
         {children}
       </Box>
-      <Footer mx="0" />
+      <Footer />
       {/* <GridItem height="calc(100vh)" position="relative" overflow="auto" flex="1"> */}
       {/* @todo re-enable notifications */}
       {/* <Notifications /> */}
