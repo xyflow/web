@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Navbar as NextraNavbar } from 'nextra-theme-docs';
 import { getPagesUnderRoute } from 'nextra/context';
 
-import useXYSite from 'hooks/useXYSite';
+import useXYSite from '@/hooks/use-xy-site';
 import { Button } from 'xy-ui';
 
 const topNav = [

@@ -1,20 +1,24 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
-import PageSection from '@/components/page-section';
+import BaseLayout from '@/layouts/base';
+import HeroSection from '@/components/hero-section';
 
 import showcases from '../../../public/data/showcases.json';
 
 export default function Showcase() {
   return (
-    <PageSection
-      title="Showcase"
-      subtitle="  React Flow is used by thousands of people, from solo open-source
+    <BaseLayout>
+      <HeroSection
+        title="Showcase"
+        subtitle="React Flow is used by thousands of people, from solo open-source
     developers to companies like Stripe and Typeform. We’ve seen the library
     used for data processing tools, chatbot builders, machine learning,
     musical synthesizers, and more. Explore a selection of our favorite
     projects that use React Flow here."
-    >
+        align="center"
+      />
+
       <div className="grid grid-cols-4 gap-4">
         {showcases.map((showcase) => (
           <div key={showcase.id}>
@@ -35,6 +39,6 @@ export default function Showcase() {
           </div>
         ))}
       </div>
-    </PageSection>
+    </BaseLayout>
   );
 }
