@@ -4,7 +4,7 @@ import {
   REACT_PRO_EXAMPLE_BASE_URL,
   SVELTE_PRO_EXAMPLE_BASE_URL,
 } from '@/constants';
-import useXYSite from '@/hooks/useXYSite';
+import useXYSite from '@/hooks/use-xy-site';
 
 export default function ({ slug }: { slug: string }) {
   const { site } = useXYSite();

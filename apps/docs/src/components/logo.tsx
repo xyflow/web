@@ -1,4 +1,4 @@
-import useXYSite from '@/hooks/useXYSite';
+import useXYSite from '@/hooks/use-xy-site';
 
 export default function Logo() {
   const { site } = useXYSite();

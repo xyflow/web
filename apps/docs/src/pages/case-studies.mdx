@@ -6,9 +6,9 @@ description: description
 import Link from 'next/link';
 import { getPagesUnderRoute } from 'nextra/context';
 
-import PageSection from '@/components/page-section';
+import HeroSection from '@/components/hero-section';
 
-<PageSection title="Case Studies" subtitle="Check out some of our case studies">
+<HeroSection title="Case Studies" subtitle="Check out some of our case studies">
   <ul>
     {getPagesUnderRoute('/case-studies').map((page) => {
       return (
@@ -27,4 +27,4 @@ import PageSection from '@/components/page-section';
       );
     })}
   </ul>
-</PageSection>
+</HeroSection>

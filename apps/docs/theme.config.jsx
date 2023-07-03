@@ -4,7 +4,7 @@ import Logo from '@/components/logo';
 import Navbar, { NavBarAdditional } from '@/components/navbar';
 import SidebarTitle from '@/components/sidebar-title';
 import Footer from '@/components/footer';
-import useXYSite from '@/hooks/useXYSite';
+import useXYSite from '@/hooks/use-xy-site';
 
 export default {
   logo: Logo,

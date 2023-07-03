@@ -28,6 +28,13 @@ export const Secondary: Story = {
   },
 };
 
+export const Ghost: Story = {
+  args: {
+    variant: 'ghost',
+    children: 'Ghost',
+  },
+};
+
 export const Large: Story = {
   args: {
     size: 'lg',

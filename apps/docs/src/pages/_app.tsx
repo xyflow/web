@@ -1,7 +1,7 @@
 import { type CSSProperties } from 'react';
 import localFont from 'next/font/local';
 
-import useXYSite from 'hooks/useXYSite';
+import useXYSite from '@/hooks/use-xy-site';
 
 import 'styles/global.css';
 
