@@ -9,7 +9,7 @@ type HeroSectionProps = {
   kicker?: string;
   className?: string;
   align?: 'left' | 'center';
-  children: ReactNode;
+  children?: ReactNode;
 };
 
 export default function HeroSection({
