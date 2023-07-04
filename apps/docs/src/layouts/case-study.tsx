@@ -53,7 +53,7 @@ function CaseStudyPreviews() {
 
 // this layout is used for the case study pages
 export default function CaseStudyLayout({ children }: { children: ReactNode }) {
-  const { frontMatter, ...r } = useConfig();
+  const { frontMatter } = useConfig();
 
   return (
     <>
