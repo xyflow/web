@@ -2,6 +2,7 @@ import BaseLayout from '@/layouts/base';
 import HeroSection from '@/components/hero-section';
 import PricingTable from '@/components/pricing-table';
 import ShowcaseOverview from '@/components/showcase-overview';
+import FAQ from '@/components/faq';
 
 export default function ReactFlowPro() {
   return (
@@ -31,6 +32,8 @@ export default function ReactFlowPro() {
       <PricingTable />
 
       <ShowcaseOverview />
+
+      <FAQ className="mt-20" />
     </BaseLayout>
   );
 }
