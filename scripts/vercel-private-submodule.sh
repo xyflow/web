@@ -1,7 +1,7 @@
 # github submodule repo address without https:// prefix
 SUBMODULE_GITHUB=github.com/xyflow/pro-examples
 # .gitmodules submodule path
-SUBMODULE_PATH=apps/platform/pro-examples
+SUBMODULE_PATH=sites/pro-platform/pro-examples
 
 # github access token is necessary
 # add it to Environment Variables on Vercel

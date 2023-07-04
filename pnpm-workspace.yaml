@@ -1,6 +1,7 @@
 packages:
   - 'apps/*'
+  - 'sites/*'
   - 'packages/*'
-  - 'apps/platform/pro-examples/examples'
-  - 'apps/platform/pro-examples/viewer'
-  - 'apps/platform/pro-examples/packages/*'
+  - 'sites/pro-platform/pro-examples/examples'
+  - 'sites/pro-platform/pro-examples/viewer'
+  - 'sites/pro-platform/pro-examples/packages/*'
