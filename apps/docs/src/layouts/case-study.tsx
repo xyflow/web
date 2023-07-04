@@ -21,30 +21,31 @@ function CaseStudyPreviews() {
   const nextIndex =
     currentIndex === caseStudyPages.length - 1 ? 0 : currentIndex + 1;
 
+  const prevCaseStudy = caseStudyPages[prevIndex];
+  const nextCaseStudy = caseStudyPages[nextIndex];
+
   return (
     <ContentGrid className="mt-20">
-      <ContentGridItem>
+      <ContentGridItem route={prevCaseStudy.route}>
         <CaseStudyPreview
           // @ts-ignore
-          client={caseStudyPages[prevIndex].frontMatter.client}
+          client={prevCaseStudy.frontMatter.client}
           // @ts-ignore
-          title={caseStudyPages[prevIndex].frontMatter.title}
+          title={prevCaseStudy.frontMatter.title}
           // @ts-ignore
-          description={caseStudyPages[prevIndex].frontMatter.description}
-          route={caseStudyPages[prevIndex].route}
-          className="px-8 py-16"
+          description={prevCaseStudy.frontMatter.description}
+          route={prevCaseStudy.route}
         />
       </ContentGridItem>
-      <ContentGridItem>
+      <ContentGridItem route={nextCaseStudy.route}>
         <CaseStudyPreview
           // @ts-ignore
-          client={caseStudyPages[nextIndex].frontMatter.client}
+          client={nextCaseStudy.frontMatter.client}
           // @ts-ignore
-          title={caseStudyPages[nextIndex].frontMatter.title}
+          title={nextCaseStudy.frontMatter.title}
           // @ts-ignore
-          description={caseStudyPages[nextIndex].frontMatter.description}
-          route={caseStudyPages[nextIndex].route}
-          className="px-8 py-16"
+          description={nextCaseStudy.frontMatter.description}
+          route={nextCaseStudy.route}
         />
       </ContentGridItem>
     </ContentGrid>

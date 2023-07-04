@@ -1,4 +1,5 @@
 import cn from 'clsx';
+import { useRouter } from 'next/router';
 
 export default function ContentGrid({
   className,
@@ -22,16 +23,22 @@ export default function ContentGrid({
 export function ContentGridItem({
   className,
   children,
+  route,
 }: {
   className?: string;
+  route?: string;
   children: React.ReactNode;
 }) {
+  const { push } = useRouter();
+
   return (
     <div
       className={cn(
-        'odd:border-r border-b border-gray-100 border-solid',
+        'odd:border-r border-b border-gray-100 border-solid px-8 py-16',
+        route && 'cursor-pointer hover:bg-gray-100/50',
         className
       )}
+      onClick={route ? () => push(route) : undefined}
     >
       {children}
     </div>

@@ -29,16 +29,16 @@ export const Kicker = () => (
   <ContentGrid className="mt-20">
     {getPagesUnderRoute('/case-studies').map((page) => {
       return (
-        <ContentGridItem key={page.route}>
+        <ContentGridItem key={page.route} route={page.route}>
           <CaseStudyPreview
             title={page.frontMatter.title}
             description={page.frontMatter.description}
             client={page.frontMatter.client}
             route={page.route}
-            className="px-8 py-16"
           />
         </ContentGridItem>
       );
     })}
+
   </ContentGrid>
 </BaseLayout>

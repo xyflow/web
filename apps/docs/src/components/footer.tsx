@@ -22,7 +22,7 @@ const company = [
 const social = [
   { title: 'Open Source', route: '/open-source' },
   { title: 'Showcase', route: '/showcase' },
-  { title: 'Case studies', route: '/case-studies' },
+  { title: 'Case Studies', route: '/case-studies' },
 ];
 
 const categories = [
@@ -46,16 +46,16 @@ const categories = [
 
 export default function Footer() {
   return (
-    <footer className='bg-black print:bg-transparent py-10'>
-      <div className='mx-auto flex text-white max-w-[90rem] pl-[max(env(safe-area-inset-left),1.5rem)] pr-[max(env(safe-area-inset-right),1.5rem)]'>
-        <div className='min-w-[300px] shrink-0'>image</div>
-        <div className='grow self-end'>
-          <div className='grid grid-cols-4 grid-gap-4'>
+    <footer className="bg-black print:bg-transparent py-10">
+      <div className="mx-auto flex text-white max-w-[90rem] pl-[max(env(safe-area-inset-left),1.5rem)] pr-[max(env(safe-area-inset-right),1.5rem)]">
+        <div className="min-w-[300px] shrink-0">image</div>
+        <div className="grow self-end">
+          <div className="grid grid-cols-4 grid-gap-4">
             {categories.map((category) => (
               <div key={category.title}>
-                <div className='text-gray-400 mb-2'>{category.title}</div>
+                <div className="text-gray-400 mb-2">{category.title}</div>
                 {category.items.map((item) => (
-                  <Link href={item.route} className='block' key={item.route}>
+                  <Link href={item.route} className="block" key={item.route}>
                     {item.title}
                   </Link>
                 ))}
