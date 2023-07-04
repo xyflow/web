@@ -9,11 +9,14 @@ export default function ReactFlowHome() {
 
   return (
     <BaseLayout>
-      <HeroSection>
-        React Flow <Button variant="react">React Flow</Button>
-        <div>Stars: {stars}</div>
-        <div>Downloads: {downloads}</div>
-      </HeroSection>
+      <HeroSection
+        title="Wire Your Ideas with React Flow"
+        subtitle="A customizable React component for building node-based editors and interactive diagrams"
+      />
+      <div>Stars: {stars}</div>
+      <div>Downloads: {downloads}</div>
+
+      <Button variant="react">React Flow</Button>
     </BaseLayout>
   );
 }

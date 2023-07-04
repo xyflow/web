@@ -11,7 +11,7 @@ export default function BaseLayout({ children, className }: BaseLayoutProps) {
   return (
     <main
       className={cn(
-        'py-14 mx-auto max-w-[90rem] pl-[max(env(safe-area-inset-left),1.5rem)] pr-[max(env(safe-area-inset-right),1.5rem)]',
+        'pt-16 pb-24 mx-auto max-w-[90rem] pl-[max(env(safe-area-inset-left),1.5rem)] pr-[max(env(safe-area-inset-right),1.5rem)]',
         className
       )}
     >
