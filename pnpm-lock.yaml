@@ -426,6 +426,9 @@ importers:
       lucide-react:
         specifier: ^0.248.0
         version: 0.248.0(react@18.2.0)
+      react-icons:
+        specifier: ^4.10.1
+        version: 4.10.1(react@18.2.0)
       tailwind-merge:
         specifier: ^1.13.2
         version: 1.13.2
