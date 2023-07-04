@@ -1,3 +1,5 @@
+'use client';
+
 import { useUserEmail, useUserId } from '@nhost/nextjs';
 
 const StripePricingTable = () => {

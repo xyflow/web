@@ -1,22 +1,12 @@
-import Link from 'next/link';
+import { SignInMagicLink, AuthFormWrapper } from '@/components/AuthForms';
 
-import Logo from '@/components/Logo';
-import { SignInMagicLink, SignInOAuth } from '@/components/AuthForms';
+const authFormLinks = [{ href: '/signin/password', label: 'Login using Email + Password' }];
 
 const SignInPage = () => {
   return (
-    <div>
-      <div className="flex flex-col items-center my-20">
-        <div className="mb-5">
-          <Logo />
-        </div>
-        <div className="w-full max-w-sm p-5 rounded border border-gray-500">
-          <SignInMagicLink />
-          <SignInOAuth />
-        </div>
-        <Link href="/signin/email-password">Use Email + Password</Link>
-      </div>
-    </div>
+    <AuthFormWrapper links={authFormLinks} title="sign in">
+      <SignInMagicLink />
+    </AuthFormWrapper>
   );
 };
 

@@ -17,13 +17,13 @@ const SignInMagicLink = () => {
     signInEmailPasswordless(email);
   };
 
-  if (isSuccess) {
-    return <p>Check your email for a magic link!</p>;
-  }
-
   return (
     <form onSubmit={onSubmit}>
       <div className="mb-2">
+        {isSuccess && <div>Please check your email for a magic link!</div>}
+        <div className="mb-4">
+          Enter your email to sign in or create an account. You will receive a mail with a login link.
+        </div>
         <label htmlFor="email">Email</label>
         <input
           value={email}
@@ -34,7 +34,7 @@ const SignInMagicLink = () => {
           type="email"
         />
       </div>
-      <Button type="submit" variant="outline">
+      <Button type="submit" variant="react">
         Sign In
       </Button>
     </form>

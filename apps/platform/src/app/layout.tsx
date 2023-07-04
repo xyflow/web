@@ -1,4 +1,7 @@
 import ClientProviders from '@/components/Providers';
+import Navigation from '@/components/Navigation';
+import Footer from '@/components/Footer';
+
 import { NtDapperFont } from '@/fonts';
 
 import '@/styles/globals.css';
@@ -33,7 +36,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta property="og:image" content="https://reactflow.dev/img/social/social.jpeg" />
       </head>
       <body className="bg-white">
-        <ClientProviders>{children}</ClientProviders>
+        <ClientProviders>
+          <div className="bg-white">
+            <Navigation />
+            <div className="p-4">{children}</div>
+            <Footer />
+          </div>
+        </ClientProviders>
       </body>
     </html>
   );

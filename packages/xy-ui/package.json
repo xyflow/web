@@ -9,13 +9,13 @@
     "generate:component": "turbo gen react-component"
   },
   "devDependencies": {
-    "@types/react": "^18.2.13",
+    "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
     "eslint": "^8.43.0",
+    "eslint-config-xyflow": "workspace:*",
     "react": "^18.2.0",
     "typescript": "^5.1.3",
-    "xy-tsconfig": "workspace:*",
-    "eslint-config-xyflow": "workspace:*"
+    "xy-tsconfig": "workspace:*"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.0.2",
