@@ -31,9 +31,9 @@ export const Kicker = () => (
       return (
         <ContentGridItem key={page.route} route={page.route}>
           <CaseStudyPreview
-            title={page.frontMatter.title}
-            description={page.frontMatter.description}
-            client={page.frontMatter.client}
+            title={page.meta?.title || page.frontMatter?.title || page.name}
+            description={page.frontMatter?.description}
+            client={page.frontMatter?.client}
             route={page.route}
           />
         </ContentGridItem>

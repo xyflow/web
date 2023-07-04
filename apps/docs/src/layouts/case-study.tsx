@@ -13,7 +13,7 @@ function CaseStudyPreviews() {
 
   const currentIndex = caseStudyPages.findIndex(
     // @ts-ignore
-    (page) => page.frontMatter.title === frontMatter.title
+    (page) => page.frontMatter?.title === frontMatter.title
   );
   const prevIndex =
     currentIndex === 0 ? caseStudyPages.length - 1 : currentIndex - 1;
@@ -29,22 +29,22 @@ function CaseStudyPreviews() {
       <ContentGridItem route={prevCaseStudy.route}>
         <CaseStudyPreview
           // @ts-ignore
-          client={prevCaseStudy.frontMatter.client}
+          client={prevCaseStudy.frontMatter?.client}
           // @ts-ignore
-          title={prevCaseStudy.frontMatter.title}
+          title={prevCaseStudy.frontMatter?.title}
           // @ts-ignore
-          description={prevCaseStudy.frontMatter.description}
+          description={prevCaseStudy.frontMatter?.description}
           route={prevCaseStudy.route}
         />
       </ContentGridItem>
       <ContentGridItem route={nextCaseStudy.route}>
         <CaseStudyPreview
           // @ts-ignore
-          client={nextCaseStudy.frontMatter.client}
+          client={nextCaseStudy.frontMatter?.client}
           // @ts-ignore
-          title={nextCaseStudy.frontMatter.title}
+          title={nextCaseStudy.frontMatter?.title}
           // @ts-ignore
-          description={nextCaseStudy.frontMatter.description}
+          description={nextCaseStudy.frontMatter?.description}
           route={nextCaseStudy.route}
         />
       </ContentGridItem>
