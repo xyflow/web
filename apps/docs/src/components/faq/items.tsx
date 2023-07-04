@@ -22,7 +22,7 @@ export default [
     ),
   },
   {
-    question: <>I / my company can't afford the monthly subscription price.</>,
+    question: <>I / my company can’t afford the monthly subscription price.</>,
     answer: (
       <>
         1. If you need access to the Pro Example code for a non-commercial
@@ -31,7 +31,7 @@ export default [
           <li>
             For <strong>educational purposes</strong>, email us at
             info@reactflow.dev using your university email address with a link
-            to the example you're looking for.
+            to the example you’re looking for.
           </li>
           <li>
             For <strong>non-commercial open source projects</strong>,{' '}
