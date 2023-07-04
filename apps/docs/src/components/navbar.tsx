@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Navbar as NextraNavbar } from 'nextra-theme-docs';
 import { getPagesUnderRoute } from 'nextra/context';
 
-import useXYSite from 'hooks/useXYSite';
+import useXYSite from '@/hooks/use-xy-site';
 import { Button } from 'xy-ui';
 
 const topNav = [
@@ -33,7 +33,7 @@ export default function Navbar(props) {
 
   return (
     <div>
-      <div className="flex items-center justify-center py-2 text-xs bg-black ">
+      <div className="flex items-center justify-center py-2 text-xs bg-black">
         {topNav.map((item) => (
           <Link
             className="px-1 mx-2 text-white hover:text-gray-300"

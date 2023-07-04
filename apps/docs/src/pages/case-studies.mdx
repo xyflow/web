@@ -1,30 +1,44 @@
 ---
 title: Case Studies
-description: description
+description: Overview of case studies that use React Flow and Svelte Flow
 ---
 
 import Link from 'next/link';
 import { getPagesUnderRoute } from 'nextra/context';
+import { RxCheckCircled } from 'react-icons/rx';
 
-import PageSection from '@/components/page-section';
+import BaseLayout from '@/layouts/base';
+import HeroSection from '@/components/hero-section';
+import ContentGrid, { ContentGridItem } from '@/components/content-grid';
+import CaseStudyPreview from '@/components/case-study-preview';
 
-<PageSection title="Case Studies" subtitle="Check out some of our case studies">
-  <ul>
+export const Kicker = () => (
+  <>
+    <RxCheckCircled className="inline-block w-4 h-4 mr-1 text-react" />
+    <span className="text-react">Success stories</span>
+  </>
+);
+
+<BaseLayout>
+  <HeroSection
+    title="How Pro subscribers use React Flow to build"
+    subtitle="Check how our users build custom node-based apps like workflow editors and diagramming tools"
+    kicker={<Kicker />}
+    align="center"
+  />
+  <ContentGrid className="mt-20">
     {getPagesUnderRoute('/case-studies').map((page) => {
       return (
-        <li key={page.route}>
-          <Link href={page.route} className="text-xl">
-            {page.meta?.title || page.frontMatter?.title || page.name}
-          </Link>
-          <p>
-            {page.frontMatter?.description}{' '}
-            <span>
-              <Link href={page.route}>Read More</Link>
-            </span>
-          </p>
-          {page.frontMatter?.date ? <p>{page.frontMatter.date}</p> : null}
-        </li>
+        <ContentGridItem key={page.route} route={page.route}>
+          <CaseStudyPreview
+            title={page.meta?.title || page.frontMatter?.title || page.name}
+            description={page.frontMatter?.description}
+            client={page.frontMatter?.client}
+            route={page.route}
+          />
+        </ContentGridItem>
       );
     })}
-  </ul>
-</PageSection>
+
+  </ContentGrid>
+</BaseLayout>

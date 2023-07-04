@@ -6,12 +6,15 @@ description: All the latest news and updates from React Flow and Svelte Flow
 import Link from 'next/link';
 import { getPagesUnderRoute } from 'nextra/context';
 
-import PageSection from '@/components/page-section';
+import BaseLayout from '@/layouts/base';
+import HeroSection from '@/components/hero-section';
 
-<PageSection
-  title="Blog"
-  subtitle="News and updates from React Flow and Svelte Flow."
->
+<BaseLayout>
+  <HeroSection
+    title="Blog"
+    subtitle="News and updates from React Flow and Svelte Flow."
+    align="center"
+  />
   <ul>
     {getPagesUnderRoute('/blog').map((page) => {
       return (
@@ -30,4 +33,4 @@ import PageSection from '@/components/page-section';
       );
     })}
   </ul>
-</PageSection>
+</BaseLayout>
