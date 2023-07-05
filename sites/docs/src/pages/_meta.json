@@ -5,27 +5,13 @@
       "layout": "raw"
     }
   },
-  "index": {
-    "title": "XY Flow"
-  },
-  "react-flow": {
-    "title": "React Flow"
-  },
-  "svelte-flow": {
-    "title": "Svelte Flow"
-  },
-  "blog": {
-    "title": "Blog"
-  },
-  "showcase": {
-    "title": "Showcase"
-  },
-  "about": {
-    "title": "About"
-  },
-  "case-studies": {
-    "title": "Case Studies"
-  },
+  "index": "XY Flow",
+  "react-flow": "React Flow",
+  "svelte-flow": "Svelte Flow",
+  "blog": "Blog",
+  "showcase": "Showcase",
+  "about": "About",
+  "case-studies": "Case Studies",
   "terms-of-use": {
     "title": "Terms Of Use",
     "theme": {

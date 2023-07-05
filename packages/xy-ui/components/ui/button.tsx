@@ -21,6 +21,7 @@ const buttonVariants = cva(
         react: 'bg-react text-react-foreground hover:bg-react/90',
         svelte: 'bg-svelte text-svelte-foreground hover:bg-svelte/90',
         xyflow: 'bg-xyflow text-xyflow-foreground hover:bg-xyflow/90',
+        pro: 'bg-secondary text-secondary-foreground hover:bg-gray-50 border border-solid border-gray-100',
       },
       size: {
         default: 'h-10 py-2 px-6',

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Button } from 'xy-ui';
 import BaseLayout from '@/layouts/base';
 import HeroSection from '@/components/hero-section';
+import ShowcaseOverview from '@/components/showcase-overview';
 
 export default function XYFlowHome() {
   return (
@@ -32,17 +33,9 @@ export default function XYFlowHome() {
           </div>
         </div>
       </HeroSection>
-      <HeroSection
-        className="bg-gray-900 text-white"
-        title="See what people build with xyflow"
-        subtitle="Our libraries are used by thousands of people, from solo open-source
-            developers to companies like Stripe and Typeform. We’ve seen the
-            library used for data processing tools, chatbot builders, machine
-            learning, musical synthesizers, and more."
-        align="center"
-      >
-        some more content
-      </HeroSection>
+
+      <ShowcaseOverview />
+
       <HeroSection
         title="About xyflow"
         subtitle="We are Christopher, Hayleigh, John, and Moritz. We are the maintainers

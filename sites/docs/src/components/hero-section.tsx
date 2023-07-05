@@ -26,7 +26,7 @@ export default function HeroSection({
   return (
     <div
       className={cn(
-        !isCenter && 'grid grid-cols-2 gap-40',
+        !isCenter && 'grid lg:grid-cols-2 lg:gap-40',
         isCenter && 'max-w-3xl mx-auto',
         className
       )}
