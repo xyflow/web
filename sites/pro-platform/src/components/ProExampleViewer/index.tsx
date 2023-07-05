@@ -108,7 +108,7 @@ export default function ProCodeViewer({
     []
   );
 
-  const isLargeScreen = useBreakpointValue({ base: false, xl: true });
+  const isLargeScreen = true;
   const textDefaultWidth = isLargeScreen ? '1000px' : '55%';
 
   return (
