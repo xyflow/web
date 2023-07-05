@@ -8,6 +8,8 @@ import { getPagesUnderRoute } from 'nextra/context';
 
 import BaseLayout from '@/layouts/base';
 import HeroSection from '@/components/hero-section';
+import ContentGrid, { ContentGridItem } from '@/components/content-grid';
+import BlogPostPreview from '@/components/blog-post-preview';
 
 <BaseLayout>
   <HeroSection
@@ -15,22 +17,20 @@ import HeroSection from '@/components/hero-section';
     subtitle="News and updates from React Flow and Svelte Flow."
     align="center"
   />
-  <ul>
-    {getPagesUnderRoute('/blog').map((page) => {
-      return (
-        <li key={page.route}>
-          <Link href={page.route} className="text-xl">
-            {page.meta?.title || page.frontMatter?.title || page.name}
-          </Link>
-          <p>
-            {page.frontMatter?.description}{' '}
-            <span>
-              <Link href={page.route}>Read More</Link>
-            </span>
-          </p>
-          {page.frontMatter?.date ? <p>{page.frontMatter.date}</p> : null}
-        </li>
-      );
-    })}
-  </ul>
+
+  <ContentGrid>
+  {getPagesUnderRoute('/blog').map((page) => {
+    return (
+      <ContentGridItem key={page.route} route={page.route}>
+        <BlogPostPreview
+          title={page.meta?.title || page.frontMatter?.title || page.name}
+          intro={page.frontMatter?.intro}
+          date={page.frontMatter?.date}
+          authors={page.frontMatter?.authors}
+          route={page.route}
+        />
+      </ContentGridItem>
+    );
+  })}
+  </ContentGrid>
 </BaseLayout>

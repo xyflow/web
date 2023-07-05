@@ -1,18 +1,22 @@
 import { type ReactNode } from 'react';
 import Link from 'next/link';
 import { useConfig } from 'nextra-theme-docs';
+import { type MdxFile } from 'nextra';
 import { getPagesUnderRoute } from 'nextra/context';
 
 import { Button } from 'xy-ui';
 import ContentGrid, { ContentGridItem } from '@/components/content-grid';
 import CaseStudyPreview from '@/components/case-study-preview';
 
+function isMdxPage(page: MdxFile | any): page is MdxFile {
+  return page?.kind === 'MdxPage';
+}
+
 function CaseStudyPreviews() {
   const { frontMatter } = useConfig();
-  const caseStudyPages = getPagesUnderRoute('/case-studies');
+  const caseStudyPages = getPagesUnderRoute('/case-studies').filter(isMdxPage);
 
   const currentIndex = caseStudyPages.findIndex(
-    // @ts-ignore
     (page) => page.frontMatter?.title === frontMatter.title
   );
   const prevIndex =
@@ -28,22 +32,16 @@ function CaseStudyPreviews() {
     <ContentGrid className="mt-20">
       <ContentGridItem route={prevCaseStudy.route}>
         <CaseStudyPreview
-          // @ts-ignore
           client={prevCaseStudy.frontMatter?.client}
-          // @ts-ignore
           title={prevCaseStudy.frontMatter?.title}
-          // @ts-ignore
           description={prevCaseStudy.frontMatter?.description}
           route={prevCaseStudy.route}
         />
       </ContentGridItem>
       <ContentGridItem route={nextCaseStudy.route}>
         <CaseStudyPreview
-          // @ts-ignore
           client={nextCaseStudy.frontMatter?.client}
-          // @ts-ignore
           title={nextCaseStudy.frontMatter?.title}
-          // @ts-ignore
           description={nextCaseStudy.frontMatter?.description}
           route={nextCaseStudy.route}
         />
@@ -52,7 +50,6 @@ function CaseStudyPreviews() {
   );
 }
 
-// this layout is used for the case study pages
 export default function CaseStudyLayout({ children }: { children: ReactNode }) {
   const { frontMatter } = useConfig();
 
