@@ -1,7 +1,7 @@
 'use client';
 
 import { useMemo } from 'react';
-import { Flex, Wrap, Box, Link, useBreakpointValue } from '@chakra-ui/react';
+import { Flex, Wrap, Box, Link, useBreakpointValue, Heading, Text } from '@chakra-ui/react';
 import { Resizable } from 're-resizable';
 import { aquaBlue } from '@codesandbox/sandpack-themes';
 import {
@@ -15,8 +15,6 @@ import {
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 
 import { isDevelopment } from 'utils/browser';
-import Heading from 'components/Heading';
-import Text from 'components/Text';
 
 import mdxComponents from './mdx-components';
 import DownloadSandpackButton from './sandpack-downloader';

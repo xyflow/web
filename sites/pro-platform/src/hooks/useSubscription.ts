@@ -1,22 +1,20 @@
 import { useContext } from 'react';
 
-import { PlanId, PricingPlan, plans } from 'config/plans';
 import { SubscriptionContext } from 'components/Providers/SubscriptionProvider';
+import { SubscriptionPlan } from '@/types';
 
 export type SubscriptionStatus = {
   isSubscribed: boolean;
-  plan: PlanId;
+  plan: SubscriptionPlan;
   isLoading: boolean;
-  data: PricingPlan | null;
 };
 
 export default function useSubscription(): SubscriptionStatus {
   const subscription = useContext(SubscriptionContext);
 
   return {
-    isSubscribed: subscription !== PlanId.FREE,
+    isSubscribed: subscription !== SubscriptionPlan.FREE,
     plan: subscription,
     isLoading: false,
-    data: plans[subscription],
   };
 }

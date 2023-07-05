@@ -23,10 +23,6 @@ function Signup() {
       <Head>
         <meta name="robots" content="noindex,nofollow" />
       </Head>
-      <div className="my-5 text-center">
-        This is intended for non-commercial open source projects. If you are a business or private user of React Flow,
-        please use the <Link href="/signin">regular sign up</Link>.
-      </div>
 
       <form onSubmit={handleSubmit}>
         {isError && error && <div>{error.message}</div>}

@@ -22,11 +22,6 @@ function Signup() {
       <Head>
         <meta name="robots" content="noindex,nofollow" />
       </Head>
-      <div className="mb-5 text-center">
-        This is only intended for educational purposes. If you are a business or private user of React Flow, please use
-        the <Link href={{ pathname: '/signin' }}>regular sign in</Link>. Please use your university mail for this form.
-      </div>
-
       <form onSubmit={handleSubmit}>
         {isError && error && <div>{error.message}</div>}
         {isSuccess && (

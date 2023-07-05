@@ -4,3 +4,4 @@ export * from './components/ui/card';
 export * from './components/ui/container';
 export * from './components/ui/list-wrapper';
 export * from './components/ui/select';
+export { cn } from './lib/utils';

@@ -4,7 +4,11 @@ const authFormLinks = [{ href: '/signin/password', label: 'Login using Email + P
 
 const SignInPage = () => {
   return (
-    <AuthFormWrapper links={authFormLinks} title="sign in">
+    <AuthFormWrapper
+      links={authFormLinks}
+      title="sign in"
+      description="Enter your email to sign in or create an account. You will receive a mail with a login link."
+    >
       <SignInMagicLink />
     </AuthFormWrapper>
   );
