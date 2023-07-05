@@ -1,31 +1,17 @@
 import { type ReactNode } from 'react';
 import { useConfig } from 'nextra-theme-docs';
-import { type MdxFile } from 'nextra';
-import { getPagesUnderRoute } from 'nextra/context';
 
 import ContentGrid, { ContentGridItem } from '@/components/content-grid';
 import BlogPostPreview from '@/components/blog-post-preview';
 import AuthorList from '@/components/authors-list';
-
-function isMdxPage(page: MdxFile | any): page is MdxFile {
-  return page?.kind === 'MdxPage';
-}
+import { getPrevAndNextPagesByTitle } from '@/utils';
 
 function BlogPostPreviews() {
   const { frontMatter } = useConfig();
-  const blogPostPages = getPagesUnderRoute('/blog').filter(isMdxPage);
-
-  const currentIndex = blogPostPages.findIndex(
-    (page) => page.frontMatter?.title === frontMatter.title
+  const [prevPost, nextPost] = getPrevAndNextPagesByTitle(
+    frontMatter.title,
+    '/blog'
   );
-  const prevIndex =
-    currentIndex === 0 ? blogPostPages.length - 1 : currentIndex - 1;
-
-  const nextIndex =
-    currentIndex === blogPostPages.length - 1 ? 0 : currentIndex + 1;
-
-  const prevPost = blogPostPages[prevIndex];
-  const nextPost = blogPostPages[nextIndex];
 
   return (
     <div className="mt-20 relative right-1/2 left-1/2 ml-[-50vw] mr-[-50vw] w-[100vw]">

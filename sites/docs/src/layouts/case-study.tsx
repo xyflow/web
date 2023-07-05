@@ -1,32 +1,18 @@
 import { type ReactNode } from 'react';
 import Link from 'next/link';
 import { useConfig } from 'nextra-theme-docs';
-import { type MdxFile } from 'nextra';
-import { getPagesUnderRoute } from 'nextra/context';
 
 import { Button } from 'xy-ui';
 import ContentGrid, { ContentGridItem } from '@/components/content-grid';
 import CaseStudyPreview from '@/components/case-study-preview';
-
-function isMdxPage(page: MdxFile | any): page is MdxFile {
-  return page?.kind === 'MdxPage';
-}
+import { getPrevAndNextPagesByTitle } from '@/utils';
 
 function CaseStudyPreviews() {
   const { frontMatter } = useConfig();
-  const caseStudyPages = getPagesUnderRoute('/case-studies').filter(isMdxPage);
-
-  const currentIndex = caseStudyPages.findIndex(
-    (page) => page.frontMatter?.title === frontMatter.title
+  const [prevCaseStudy, nextCaseStudy] = getPrevAndNextPagesByTitle(
+    frontMatter.title,
+    '/case-studies'
   );
-  const prevIndex =
-    currentIndex === 0 ? caseStudyPages.length - 1 : currentIndex - 1;
-
-  const nextIndex =
-    currentIndex === caseStudyPages.length - 1 ? 0 : currentIndex + 1;
-
-  const prevCaseStudy = caseStudyPages[prevIndex];
-  const nextCaseStudy = caseStudyPages[nextIndex];
 
   return (
     <ContentGrid className="mt-20">
