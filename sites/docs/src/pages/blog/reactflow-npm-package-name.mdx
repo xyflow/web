@@ -1,16 +1,18 @@
 ---
-slug: reactflow-npm-package-name
 title: 'How we lost our slick new npm package name (and then got it back)'
+intro: 'In 2019 we started building a library for building node based UIs, and decided to call it “React Flow.” It’s a nice name, so of course “reactflow” and “react-flow” were already taken. The best option we had for us was “react-flow-renderer,” so we took what we could get.'
+date: 2022/11/16
 authors: ['moritz']
 tags: ['react-flow', 'npm']
 image: /img/blog/v10-header.png
 ---
 
 import Image from 'next/image';
+
 import Emoji from '@/components/emoji';
+import BlogPostLayout from '@/layouts/blog-post';
 
-# How we lost our slick new npm package name (and then got it back)
-
+<BlogPostLayout>
 In 2019 we started building [a library for building node based UIs](https://github.com/wbkd/react-flow), and decided to call it “React Flow.” It’s a nice name, so of course “reactflow” and “react-flow” were already taken. The best option we had for us was “react-flow-renderer,” so we took what we could get.
 
 Three years and many Github stars later, we wanted a sleeker name. Both “reactflow” and “react-flow” hadn’t been used or changed for over 6 years, so I found the email address associated with “reactflow” using `npm view reactflow _npmUser`, sent a nice email asking if we could use it, and crossed fingers.
@@ -67,3 +69,5 @@ Thanks to npm support, everyone who wants to use React Flow can use `npm install
 1. Never unpublish the last version of a package if you might want to use the name again.
 2. Never do anything on npm that you are not 100% sure about.
 3. npm support is great ❤️
+
+</BlogPostLayout>

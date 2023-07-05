@@ -69,5 +69,6 @@ nav.nextra-toc:empty {
   html {
     /* this is a nextra default we need to overwrite */
     font-feature-settings: normal !important;
+    overflow-x: hidden;
   }
 }
