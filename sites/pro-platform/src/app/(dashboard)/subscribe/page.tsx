@@ -1,5 +1,6 @@
 import StripePricingTable from '@/components/PricingTable';
 import DashboardHeader from '@/components/DashboardHeader';
+import { Card, CardContent } from 'xy-ui';
 
 export default function SubscribePage() {
   return (
@@ -8,7 +9,11 @@ export default function SubscribePage() {
         title="Subscribe"
         description="Welcome to xyflow pro! With a subscription, you are ensuring the sustainable maintenance and development of our open-source libraries."
       />
-      <StripePricingTable />
+      <Card>
+        <CardContent className="px-4 pt-4 pb-0">
+          <StripePricingTable />
+        </CardContent>
+      </Card>
     </div>
   );
 }
