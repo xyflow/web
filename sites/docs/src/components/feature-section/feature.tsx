@@ -40,7 +40,6 @@ export default function Feature({
         'relative md:grid md:grid-cols-2 md:gap-8 mb-16 md:mb-24',
         zIndexClasses[featureCount - index]
       )}
-      key={`feature-${index}`}
     >
       <div
         className={cn(

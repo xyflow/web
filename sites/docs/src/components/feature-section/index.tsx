@@ -93,6 +93,7 @@ export default function FeatureSection({
     <div className={className} ref={ref}>
       {features.map((feature, index) => (
         <Feature
+          key={`feature-${index}`}
           variant={variant}
           featureCount={features.length}
           index={index}
