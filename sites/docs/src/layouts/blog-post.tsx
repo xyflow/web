@@ -1,6 +1,7 @@
 import { type ReactNode } from 'react';
 import { useConfig } from 'nextra-theme-docs';
 
+import { Text, Heading } from 'xy-ui';
 import ContentGrid, { ContentGridItem } from '@/components/content-grid';
 import BlogPostPreview from '@/components/blog-post-preview';
 import AuthorList from '@/components/authors-list';
@@ -44,10 +45,13 @@ export default function BlogPostLayout({ children }: { children: ReactNode }) {
 
   return (
     <>
-      <div className="text-light mt-10">{frontMatter.date}</div>
-      <h1 className="!font-black !text-6xl !text-left !mt-2 !mb-6">
+      <Text variant="light" className="mt-10">
+        {frontMatter.date}
+      </Text>
+      {/* we have to use important (!) here to overwrite the nextra article default styles */}
+      <Heading className="!font-black !text-6xl !text-left !mt-2 !mb-6">
         {frontMatter.title}
-      </h1>
+      </Heading>
       <AuthorList authors={frontMatter.authors} className="mb-10" />
 
       <div>{children}</div>

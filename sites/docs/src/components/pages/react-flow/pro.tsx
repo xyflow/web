@@ -8,7 +8,12 @@ export default function ReactFlowPro() {
   return (
     <BaseLayout>
       <HeroSection
-        title="Build Better Node-Based UIs with React Flow"
+        title={
+          <>
+            Build Better Node-Based UIs with{' '}
+            <span className="text-react">React Flow</span>
+          </>
+        }
         subtitle="Thanks for checking out React Flow Pro! We are Christopher, Hayleigh, John, and Moritz, and we are the team building and maintaining React Flow"
         kicker="React Flow Pro"
       >

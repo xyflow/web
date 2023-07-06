@@ -1,15 +1,17 @@
 import { type ReactNode } from 'react';
 import cn from 'clsx';
 
+import { Heading, Text } from 'xy-ui';
 import useXYSite from '@/hooks/use-xy-site';
 
 type HeroSectionProps = {
-  title?: React.ReactNode;
-  subtitle?: React.ReactNode;
-  kicker?: React.ReactNode;
+  title?: ReactNode;
+  subtitle?: ReactNode;
+  kicker?: ReactNode;
   className?: string;
   align?: 'left' | 'center';
   children?: ReactNode;
+  size?: 'md' | 'lg';
 };
 
 export default function HeroSection({
@@ -19,6 +21,7 @@ export default function HeroSection({
   children,
   className,
   align = 'left',
+  size = 'lg',
 }: HeroSectionProps) {
   const { site } = useXYSite();
   const isCenter = align === 'center';
@@ -42,8 +45,16 @@ export default function HeroSection({
             {kicker}
           </h3>
         )}
-        {title && <h1 className="text-6xl font-black mb-4">{title}</h1>}
-        {subtitle && <h2 className="text-xl mb-8">{subtitle}</h2>}
+        {title && (
+          <Heading size={size} className="mb-4 font-black">
+            {title}
+          </Heading>
+        )}
+        {subtitle && (
+          <Text size="lg" className="mb-8">
+            {subtitle}
+          </Text>
+        )}
       </div>
       <div>{children}</div>
     </div>

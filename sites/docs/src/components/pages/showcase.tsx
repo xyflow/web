@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
+import { Text } from 'xy-ui';
 import BaseLayout from '@/layouts/base';
 import HeroSection from '@/components/hero-section';
 
@@ -19,9 +20,9 @@ export default function Showcase() {
         align="center"
       />
 
-      <div className="grid grid-cols-4 gap-4">
+      <div className="grid grid-cols-4 gap-4 mt-20">
         {showcases.map((showcase) => (
-          <div key={showcase.id}>
+          <div key={showcase.id} className="mb-4">
             <div className="relative" style={{ paddingBottom: '60%' }}>
               <Image
                 alt="Image Alt"
@@ -30,8 +31,10 @@ export default function Showcase() {
                 objectFit="cover" // Scale your image down to fit into the container
               />
             </div>
-            <div className="font-bold">{showcase.title}</div>
-            <div>{showcase.description}</div>
+            <Text size="lg" className="font-bold my-2">
+              {showcase.title}
+            </Text>
+            <Text>{showcase.description}</Text>
 
             <Link href={showcase.url} target="_blank" rel="noopener noreferrer">
               URL

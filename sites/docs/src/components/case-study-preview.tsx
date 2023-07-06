@@ -1,10 +1,13 @@
+import { type ReactNode } from 'react';
 import Link from 'next/link';
 import { RxArrowRight } from 'react-icons/rx';
 
+import { Heading, Text } from 'xy-ui';
+
 type CaseStudyPreviewProps = {
-  client: React.ReactNode;
-  title: React.ReactNode;
-  description: React.ReactNode;
+  client: ReactNode;
+  title: ReactNode;
+  description: ReactNode;
   route: string;
   className?: string;
 };
@@ -18,9 +21,15 @@ export default function CaseStudyPreview({
 }: CaseStudyPreviewProps) {
   return (
     <div className={className}>
-      <div className="text-sm text-light">{client}</div>
-      <div className="font-bold text-2xl mb-4 mt-1">{title}</div>
-      <div className="text-light leading-snug mb-4">{description}</div>
+      <Text size="sm" variant="light">
+        {client}
+      </Text>
+      <Heading as="p" size="sm" className="mb-4 mt-1">
+        {title}
+      </Heading>
+      <Text variant="light" className="leading-snug mb-4">
+        {description}
+      </Text>
       <div>
         <Link href={route}>
           Read more <RxArrowRight className="inline w-3 h-3" />
