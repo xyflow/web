@@ -1,14 +1,15 @@
+import Link from 'next/link';
+
 import useXYSite from '@/hooks/use-xy-site';
 
 export default function Logo() {
-  const { site } = useXYSite();
+  const { site, isOrg, lib } = useXYSite();
+  const label = isOrg ? site : lib;
+  const href = isOrg ? `/${site}` : `/${site}-flow`;
 
-  const label =
-    site === 'react'
-      ? 'React Flow'
-      : site === 'svelte'
-      ? 'Svelte Flow'
-      : 'XY Flow';
-
-  return <strong>{label}</strong>;
+  return (
+    <Link href={href}>
+      <strong>{label}</strong>
+    </Link>
+  );
 }

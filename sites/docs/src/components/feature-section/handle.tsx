@@ -16,7 +16,7 @@ export default function Handle({
   return (
     <div
       className={cn(
-        'handle to absolute rounded-full border-2 border-solid md:left-1/2',
+        'handle absolute rounded-full border-2 border-solid md:left-1/2',
         variant === 'react' && 'border-react',
         variant === 'svelte' && 'border-svelte',
         variant === 'xyflow' && 'border-xyflow',
