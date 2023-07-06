@@ -2,13 +2,13 @@
 
 import { redirect } from 'next/navigation';
 import { useAuthenticationStatus } from '@nhost/nextjs';
-import { PageLoader } from '@/components/Loader';
 
 const AuthProtection = ({ children }: { children: React.ReactNode }) => {
   const { isLoading, isAuthenticated } = useAuthenticationStatus();
 
   if (isLoading) {
-    return <PageLoader />;
+    // @todo add a loader
+    return <div>Loading...</div>;
   }
 
   if (!isAuthenticated) {

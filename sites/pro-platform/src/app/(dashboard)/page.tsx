@@ -1,117 +1,50 @@
-'use client';
+import SubscriptionFeature from '@/components/SubscriptionFeature';
+import SubscriberSurvey from '@/components/SubscriberSurvey';
+import { SubscriptionPlan } from '@/types';
+import DashboardHeader from '@/components/DashboardHeader';
 
-import { Box, Heading, Flex, Button, Wrap } from '@chakra-ui/react';
-import { useSignOut } from '@nhost/nextjs';
-
-import { PlanId } from 'config/plans';
-
-import Text from 'components/Text';
-import SubscriptionFeatures from 'components/SubscriptionFeatures';
-import SubscriberSurvey from 'components/SubscriberSurvey';
-import StripePricingTable from 'components/PricingTable';
-
-import useStripeCustomerPortal from 'hooks/useStripeCustomerPortal';
-import useSubscription from 'hooks/useSubscription';
-
-const widgets: Record<PlanId, React.ReactNode> = {
-  free: (
-    <Box maxWidth="1600px">
-      <StripePricingTable />
-    </Box>
-  ),
-  student: (
-    <Box maxWidth="1200px">
-      <SubscriptionFeatures />
-    </Box>
-  ),
-  oss: (
-    <Box maxWidth="1200px">
-      <SubscriptionFeatures />
-    </Box>
-  ),
-  starter: (
-    <Box maxWidth="1200px">
-      <SubscriptionFeatures />
-      <SubscriberSurvey mt={6} />
-    </Box>
-  ),
-  pro: (
-    <Box maxWidth="1200px">
-      <SubscriptionFeatures />
-      <SubscriberSurvey mt={6} />
-    </Box>
-  ),
-  enterprise: null,
-};
-
-function DashboardTitle({ introText }: { introText: React.ReactNode }) {
-  const { isSubscribed } = useSubscription();
-  const { portalUrl } = useStripeCustomerPortal();
-  const { signOut } = useSignOut();
-
+function OverviewPage() {
   return (
-    <Box>
-      <Flex justifyContent="space-between">
-        <Box>
-          <Heading
-            letterSpacing="1px"
-            color="gray.500"
-            textTransform="uppercase"
-            fontSize="sm"
-            style={{
-              WebkitFontSmoothing: 'antialiased',
-            }}
-            fontWeight="black"
-          >
-            Dashboard
-          </Heading>
-          <Heading fontSize={['3xl', '4xl', '4xl', '5xl']} as="h1" mb={2}>
-            XY Flow Pro
-          </Heading>
-        </Box>
-        <Box>
-          <Wrap>
-            {isSubscribed && (
-              <Button as="a" href={portalUrl} variant="outline" size="sm" colorScheme="pink">
-                Billing & Subscription
-              </Button>
-            )}
-            <Button onClick={signOut} variant="outline" size="sm" colorScheme="pink">
-              Logout
-            </Button>
-          </Wrap>
-        </Box>
-      </Flex>
-
-      <Text mt={2} fontSize="lg" fontWeight="normal" maxWidth="1000px">
-        {introText}
-      </Text>
-    </Box>
+    <div className="max-w-4xl mx-auto mb-20">
+      <DashboardHeader
+        title="Overview"
+        description="Welcome to xyflow pro! With a subscription, you are ensuring the sustainable maintenance and development of our open-source libraries."
+      />
+      <div className="flex-1 space-y-7">
+        <SubscriptionFeature
+          title="Pro Examples"
+          description="A continuously growing collection of advanced React Flow examples. During your subscription you can access the source code of all Pro examples."
+          plans={[SubscriptionPlan.STARTER, SubscriptionPlan.PRO, SubscriptionPlan.ENTERPRISE]}
+          button={{ label: 'Browse Examples', href: '/examples' }}
+        />
+        <SubscriptionFeature
+          title="Prioritized Github Issues"
+          description="Your Github issues will be looked at first by our team. Please drop us a message at info@reactflow.dev with a link to your issue after creating it."
+          plans={[SubscriptionPlan.STARTER, SubscriptionPlan.PRO, SubscriptionPlan.ENTERPRISE]}
+          button={{ label: 'Open Issue', href: 'https://github.com/wbkd/react-flow/issues/new/choose' }}
+        />
+        <SubscriptionFeature
+          title="Email Support"
+          description="Your direct wire to the React Flow team. We will try to point you in the right direction quickly if you encounter problems using React Flow."
+          plans={[SubscriptionPlan.PRO, SubscriptionPlan.ENTERPRISE]}
+          button={{ label: 'Contact Support', href: 'mailto:support@reactflow.dev' }}
+        />
+        <SubscriptionFeature
+          title="Video Support"
+          description="Your direct wire to the React Flow team. We will try to point you in the right direction quickly if you encounter problems using React Flow."
+          plans={[SubscriptionPlan.ENTERPRISE]}
+          button={{ label: 'Contact Support', href: 'mailto:support@reactflow.dev' }}
+        />
+        <SubscriptionFeature
+          title="Onboarding Call"
+          description="We are interested to learn more about your project and what you are building with React Flow. You can schedule a call with us so that we can find out how we can make React Flow even better in the future."
+          plans={[SubscriptionPlan.STARTER, SubscriptionPlan.PRO, SubscriptionPlan.ENTERPRISE]}
+          button={{ label: 'Schedule Call', href: 'https://cal.com/team/react-flow' }}
+        />
+        <SubscriberSurvey />
+      </div>
+    </div>
   );
 }
 
-function Dashboard() {
-  const { plan, isSubscribed, isLoading } = useSubscription();
-
-  const dashboardWidgets = isLoading ? null : widgets[plan];
-
-  const introText = isSubscribed ? (
-    'Thank you for subscribing to React Flow Pro! With your subscription, you are ensuring the sustainable maintenance and development of the React Flow library.'
-  ) : (
-    <>
-      Welcome to XY Flow Pro! With a subscription, you are ensuring the sustainable maintenance and development of our
-      open-source libraries.
-    </>
-  );
-
-  return (
-    <Box>
-      <DashboardTitle introText={introText} />
-      <Box width="100%" position="relative">
-        <Box mt={5}>{dashboardWidgets}</Box>
-      </Box>
-    </Box>
-  );
-}
-
-export default Dashboard;
+export default OverviewPage;

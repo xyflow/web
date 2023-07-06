@@ -4,13 +4,13 @@ import { ReactNode, useEffect, createContext, useState } from 'react';
 import { gql } from '@apollo/client';
 import { useAuthQuery } from '@nhost/react-apollo';
 
-import { PlanId } from 'config/plans';
+import { SubscriptionPlan } from '@/types';
 
 type Props = {
   children: ReactNode;
 };
 
-export const SubscriptionContext = createContext<PlanId>(PlanId.FREE);
+export const SubscriptionContext = createContext<SubscriptionPlan>(SubscriptionPlan.FREE);
 
 const GET_SUBSCRIPTION = gql`
   query {
@@ -21,14 +21,14 @@ const GET_SUBSCRIPTION = gql`
 `;
 
 const SubscriptionProvider = ({ children }: Props) => {
-  const [subscriptionPlan, setSubscriptionPlan] = useState<PlanId>(PlanId.FREE);
+  const [subscriptionPlan, setSubscriptionPlan] = useState<SubscriptionPlan>(SubscriptionPlan.FREE);
   const { data } = useAuthQuery(GET_SUBSCRIPTION);
 
   useEffect(() => {
     const plan = data?.user_subscriptions?.[0]?.subscription_plan_id;
 
-    if (plan && plan !== PlanId.FREE) {
-      setSubscriptionPlan(plan as PlanId);
+    if (plan && plan !== SubscriptionPlan.FREE) {
+      setSubscriptionPlan(plan as SubscriptionPlan);
     }
   }, [data]);
 

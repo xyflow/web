@@ -1,29 +1,41 @@
-import { Flex, Box } from '@chakra-ui/react';
-import NextLink from 'next/link';
+import SidebarItem from './SidebarItem';
 
-import Logo from '../Logo';
-import SidebarItems from './SidebarItems';
+const sidebarItems = [
+  {
+    href: '/',
+    label: 'Overview',
+  },
+  {
+    href: '/examples',
+    label: 'Pro Examples',
+    matchSubPaths: true,
+  },
+  {
+    href: '/account',
+    label: 'Account',
+  },
+  {
+    href: '/members',
+    label: 'Members',
+  },
+  {
+    href: '/billing',
+    label: 'Billing',
+  },
+  {
+    href: '/subscribe',
+    label: 'Subscribe',
+  },
+];
 
-function Sidebar() {
+const Sidebar = () => {
   return (
-    <Flex
-      flex="1"
-      flexDirection="column"
-      borderRight="1px solid"
-      borderRightColor="gray.100"
-      height="100%"
-      bg="#f8f8fa"
-    >
-      <Box borderBottom="1px solid" borderBottomColor="gray.100" p={5}>
-        <NextLink href="/dashboard">
-          <Flex alignItems="center" cursor="pointer" userSelect="none" fontWeight="bold" fontSize={21}>
-            <Logo width={25} height={25} />
-          </Flex>
-        </NextLink>
-      </Box>
-      <SidebarItems />
-    </Flex>
+    <div className="lg:border-r pr-4 flex flex-wrap flex-row lg:flex-col lg:space-y-2 shrink-0">
+      {sidebarItems.map((item) => (
+        <SidebarItem {...item} key={item.href} />
+      ))}
+    </div>
   );
-}
+};
 
 export default Sidebar;

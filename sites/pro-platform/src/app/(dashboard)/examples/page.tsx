@@ -1,12 +1,16 @@
 import Link from 'next/link';
 import { getExamples } from 'utils/server/examples';
+import DashboardHeader from '@/components/DashboardHeader';
 
 const examples = getExamples();
 
 export default async function ProExamplesOverview() {
   return (
-    <div>
-      <div>Pro Examples</div>
+    <div className="max-w-4xl mx-auto mb-20">
+      <DashboardHeader
+        title="Pro Examples"
+        description="Welcome to xyflow pro! With a subscription, you are ensuring the sustainable maintenance and development of our open-source libraries."
+      />
       <div>
         <div>React</div>
         <ul>

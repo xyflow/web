@@ -1,9 +1,7 @@
 import React from 'react';
-import { Link, List, OrderedList, Icon } from '@chakra-ui/react';
+import { Link, List, OrderedList, Icon, Heading, Text } from '@chakra-ui/react';
 import { ExternalLinkIcon } from '@chakra-ui/icons';
 
-import Heading from 'components/Heading';
-import Text from 'components/Text';
 import { MDXComponents } from 'mdx/types';
 
 import CodeBlock from './CodeBlock';
