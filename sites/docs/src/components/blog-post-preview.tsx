@@ -1,12 +1,14 @@
+import { type ReactNode } from 'react';
 import Link from 'next/link';
 import { RxArrowRight } from 'react-icons/rx';
 
+import { Heading, Text } from 'xy-ui';
 import AuthorList from '@/components/authors-list';
 
 type BlogPostPreviewProps = {
-  date: React.ReactNode;
-  title: React.ReactNode;
-  intro: React.ReactNode;
+  date: ReactNode;
+  title: ReactNode;
+  intro: ReactNode;
   authors: string[];
   route: string;
   className?: string;
@@ -22,19 +24,25 @@ export default function BlogPostPreview({
 }: BlogPostPreviewProps) {
   return (
     <div className={className}>
-      <div className="text-sm text-light">{date}</div>
-      <div className="font-bold text-4xl mb-4 mt-1 underline-offset-2 underline">
+      <Text size="sm" variant="light">
+        {date}
+      </Text>
+      <Heading
+        as="p"
+        size="sm"
+        className="!text-left mb-4 mt-1 underline-offset-2 underline"
+      >
         {title}
-      </div>
-      <div className="text-light leading-snug mb-4">{intro}</div>
+      </Heading>
+      <Text variant="light" className="mb-4">
+        {intro}
+      </Text>
 
       <AuthorList authors={authors} className="mb-2" />
 
-      <div>
-        <Link href={route}>
-          Read more <RxArrowRight className="inline w-3 h-3" />
-        </Link>
-      </div>
+      <Link href={route}>
+        Read more <RxArrowRight className="inline w-3 h-3" />
+      </Link>
     </div>
   );
 }

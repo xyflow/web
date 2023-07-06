@@ -1,7 +1,7 @@
 import cn from 'clsx';
 import Link from 'next/link';
 
-import { Button } from 'xy-ui';
+import { Button, Text, Heading } from 'xy-ui';
 import { Framework } from '@/types';
 
 type Stats = {
@@ -29,15 +29,15 @@ export default function Stats({
       <div className="flex place-content-between lg:space-x-24 grow">
         {stats.map((s) => (
           <div key={`${s.label}-${s.value}`} className="text-center">
-            <div className={cn('text-6xl font-bold', `text-${variant}`)}>
+            <Heading className={cn('font-bold', `text-${variant}`)}>
               {s.value}
-            </div>
-            <div className="text-lg">{s.label}</div>
+            </Heading>
+            <Text size="lg">{s.label}</Text>
           </div>
         ))}
       </div>
       <div className="lg:ml-20 mt-8 lg:mt-0">
-        <div className="text-light">{description}</div>
+        <Text variant="light">{description}</Text>
         {link && (
           <Button asChild variant="pro" className={`mt-4 text-${variant}`}>
             <Link href={link}>{linkLabel}</Link>

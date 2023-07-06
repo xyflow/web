@@ -1,6 +1,5 @@
 import { useSSG } from 'nextra/ssg';
 
-import { Button } from 'xy-ui';
 import BaseLayout from '@/layouts/base';
 import HeroSection from '@/components/hero-section';
 import Stats from '@/components/stats';
@@ -11,8 +10,13 @@ export default function ReactFlowHome() {
   return (
     <BaseLayout>
       <HeroSection
-        title="Wire Your Ideas with React Flow"
+        title={
+          <>
+            Wire Your Ideas with <span className="text-react">React Flow</span>
+          </>
+        }
         subtitle="A customizable React component for building node-based editors and interactive diagrams"
+        size="md"
       />
 
       <Stats
