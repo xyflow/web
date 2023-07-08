@@ -1,0 +1,15 @@
+{
+  "name": "xy-ui",
+  "private": true,
+  "version": "0.0.0",
+  "main": "./src/index.js",
+  "license": "MIT",
+  "scripts": {},
+  "dependencies": {
+    "typedoc": "^0.24.8",
+    "typescript": "^5.1.6"
+  },
+  "devDependencies": {
+    "@types/node": "^20.4.0"
+  }
+}
