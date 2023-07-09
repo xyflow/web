@@ -37,7 +37,7 @@ function SubscriptionFeature({ title, description, plans = [], button }: Subscri
               ))}
             </div>
             <Link href="/subscribe" className="ml-auto">
-              <Button variant="react">Subscribe</Button>
+              <Button variant="react">Upgrade Subscription</Button>
             </Link>
           </>
         ) : (

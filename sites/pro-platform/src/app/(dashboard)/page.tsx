@@ -1,7 +1,7 @@
 import SubscriptionFeature from '@/components/SubscriptionFeature';
-import SubscriberSurvey from '@/components/SubscriberSurvey';
 import { SubscriptionPlan } from '@/types';
 import DashboardHeader from '@/components/DashboardHeader';
+import Notification from '@/components/Notification';
 
 function OverviewPage() {
   return (
@@ -11,6 +11,11 @@ function OverviewPage() {
         description="Welcome to xyflow pro! With a subscription, you are ensuring the sustainable maintenance and development of our open-source libraries."
       />
       <div className="flex-1 space-y-7">
+        <Notification
+          title="You are currently not subscribed."
+          description="If you want to unlock the pro features, please subscribe to a plan."
+          button={{ label: 'Subscribe', href: '/subscribe' }}
+        />
         <SubscriptionFeature
           title="Pro Examples"
           description="A continuously growing collection of advanced React Flow examples. During your subscription you can access the source code of all Pro examples."
@@ -41,7 +46,10 @@ function OverviewPage() {
           plans={[SubscriptionPlan.STARTER, SubscriptionPlan.PRO, SubscriptionPlan.ENTERPRISE]}
           button={{ label: 'Schedule Call', href: 'https://cal.com/team/react-flow' }}
         />
-        <SubscriberSurvey />
+        <Notification
+          description="We want to learn more about how you're using React Flow Pro."
+          button={{ href: 'https://ndmj05829wa.typeform.com/to/lWoYgbVK', label: 'Answer 3 questions for us' }}
+        />
       </div>
     </div>
   );

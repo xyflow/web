@@ -6,8 +6,9 @@ const SignInPage = () => {
   return (
     <AuthFormWrapper
       links={authFormLinks}
-      title="sign in"
-      description="Enter your email to sign in or create an account. You will receive a mail with a login link."
+      title="Sign In"
+      description="Enter your email to sign in or create an account."
+      showOAuth={false}
     >
       <SignInMagicLink />
     </AuthFormWrapper>

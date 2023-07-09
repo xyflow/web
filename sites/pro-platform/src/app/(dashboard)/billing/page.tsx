@@ -1,5 +1,6 @@
+import CustomerPortalButton from '@/components/CustomerPortalButton';
 import DashboardHeader from '@/components/DashboardHeader';
-import { Button, Card, CardDescription, CardFooter, CardHeader, CardTitle } from 'xy-ui';
+import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from 'xy-ui';
 
 export default function SubscribePage() {
   return (
@@ -16,7 +17,7 @@ export default function SubscribePage() {
           </CardDescription>
         </CardHeader>
         <CardFooter>
-          <Button>Open Customer Portal</Button>
+          <CustomerPortalButton variant="react">Open Customer Portal</CustomerPortalButton>
         </CardFooter>
       </Card>
     </div>
