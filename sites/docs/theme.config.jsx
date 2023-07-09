@@ -8,6 +8,7 @@ import useXYSite from '@/hooks/use-xy-site';
 
 export default {
   logo: Logo,
+  logoLink: false,
   docsRepositoryBase: 'https://github.com/xyflow/xyflow',
   // this is necessary to hide the github icon
   project: {},

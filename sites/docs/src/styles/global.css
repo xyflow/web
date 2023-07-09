@@ -17,9 +17,27 @@ nav.nextra-toc:empty {
   display: none;
 }
 
+.max-w-\[90rem\] {
+  max-width: 78rem;
+}
+
+nav.nx-max-w-\[90rem\] {
+  max-width: 78rem;
+}
+
+@media screen and (min-width: 2000px) {
+  .max-w-\[90rem\] {
+    max-width: 90rem;
+  }
+
+  nav.nx-max-w-\[90rem\] {
+    max-width: 90rem;
+  }
+}
+
 @layer base {
   :root {
-    --color-xyflow: 248 1% 85%;
+    --color-xyflow: 0 0% 0%;
     --color-react: 333 100% 50%;
     --color-svelte: 15 100% 50%;
 

@@ -2,7 +2,7 @@ import { type ReactNode } from 'react';
 import Link from 'next/link';
 import { useConfig } from 'nextra-theme-docs';
 
-import { Button } from 'xy-ui';
+import { Button, Heading, Text } from 'xy-ui';
 import ContentGrid, { ContentGridItem } from '@/components/content-grid';
 import CaseStudyPreview from '@/components/case-study-preview';
 import { getPrevAndNextPagesByTitle } from '@/utils';
@@ -41,21 +41,25 @@ export default function CaseStudyLayout({ children }: { children: ReactNode }) {
 
   return (
     <>
-      <h1 className="font-black text-6xl mb-4 mt-20">{frontMatter.title}</h1>
-      <h2 className="text-xl max-w-3xl">{frontMatter.description}</h2>
+      <Heading className="font-black text-6xl mb-4 mt-20">
+        {frontMatter.title}
+      </Heading>
+      <Text size="lg" className="max-w-3xl">
+        {frontMatter.description}
+      </Text>
 
       <div>{children}</div>
 
       <CaseStudyPreviews />
 
       <div className="text-center">
-        <h3 className="font-bold mb-4 mt-20 text-6xl">
+        <Heading as="h3" className="mb-4 mt-20 font-bold">
           Get React Flow <span className="text-react">Pro</span> today
-        </h3>
-        <p className="text-xl">
+        </Heading>
+        <Text size="lg">
           Ensure the sustainable maintenance and development of the React Flow
           library.
-        </p>
+        </Text>
         <Button asChild variant="react" size="lg" className="mt-7">
           <Link href="/react-flow/pro">Get Pro</Link>
         </Button>
