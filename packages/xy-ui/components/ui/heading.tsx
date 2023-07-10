@@ -10,6 +10,7 @@ const headingSizes = cva('font-bold', {
       sm: 'text-3xl',
       md: 'text-5xl',
       lg: 'text-6xl font-black',
+      xl: 'text-9xl',
     },
   },
   defaultVariants: {

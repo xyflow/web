@@ -3,9 +3,13 @@ import Link from 'next/link';
 import { Button, Container } from 'xy-ui';
 import HeroSection from '@/components/hero-section';
 
-export default function ShowcaseOverview() {
+export default function ShowcaseOverview({
+  className,
+}: {
+  className?: string;
+}) {
   return (
-    <Container variant="dark">
+    <Container variant="dark" className={className}>
       <div className="p-14">
         <HeroSection
           title="Used by thousands of people"

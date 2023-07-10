@@ -11,7 +11,7 @@ type HeroSectionProps = {
   className?: string;
   align?: 'left' | 'center';
   children?: ReactNode;
-  size?: 'md' | 'lg';
+  size?: 'md' | 'lg' | 'xl';
 };
 
 export default function HeroSection({
@@ -25,12 +25,14 @@ export default function HeroSection({
 }: HeroSectionProps) {
   const { site } = useXYSite();
   const isCenter = align === 'center';
+  const isXL = size === 'xl';
 
   return (
     <div
       className={cn(
         !isCenter && 'grid lg:grid-cols-2 lg:gap-40',
         isCenter && 'max-w-3xl mx-auto',
+        isXL && 'max-w-6xl',
         className
       )}
     >
@@ -38,7 +40,8 @@ export default function HeroSection({
         {kicker && (
           <h3
             className={cn(
-              'text-sm font-bold mb-2 site uppercase flex items-center justify-center',
+              'text-sm font-bold mb-2 site flex items-center ',
+              isCenter && 'justify-center',
               `text-${site}`
             )}
           >
@@ -46,12 +49,15 @@ export default function HeroSection({
           </h3>
         )}
         {title && (
-          <Heading size={size} className="mb-4 font-black">
+          <Heading
+            size={size}
+            className={cn('mb-4 font-black', isXL && 'leading-normal')}
+          >
             {title}
           </Heading>
         )}
         {subtitle && (
-          <Text size="lg" className="mb-8">
+          <Text size="lg" className="mb-8 max-w-3xl mx-auto">
             {subtitle}
           </Text>
         )}

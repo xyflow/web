@@ -1,49 +1,60 @@
 import Link from 'next/link';
 
-import { Button } from 'xy-ui';
+import { Button, Text, Heading } from 'xy-ui';
 import BaseLayout from '@/layouts/base';
 import HeroSection from '@/components/hero-section';
 import ShowcaseOverview from '@/components/showcase-overview';
+import HeadlineNode from '@/components/headline-node';
+import ContentGrid, { ContentGridItem } from '@/components/content-grid';
 
 export default function XYFlowHome() {
   return (
     <BaseLayout>
       <HeroSection
-        title="Wire your ideas with XYFlow!"
+        title={
+          <>
+            <HeadlineNode>Wire</HeadlineNode> your{' '}
+            <HeadlineNode>ideas</HeadlineNode> with{' '}
+            <HeadlineNode>xyflow</HeadlineNode>
+          </>
+        }
         subtitle="Powerful open source libraries for building node-based UIs with React or Svelte. Ready out-of-the-box and infinitely customizable"
         align="center"
-      >
-        <div className="flex justify-center">
-          <div className="max-w-[500px] w-full">
-            <div className="grid grid-cols-2 gap-4 place-content-center h-48">
-              <Link
-                href="/react-flow"
-                className="bg-gray-100 text-center p-10 shadow-md"
-              >
-                React Flow
-              </Link>
+        size="xl"
+      />
 
-              <Link
-                href="/svelte-flow"
-                className="bg-gray-100 text-center p-10 shadow-md"
-              >
-                Svelte Flow
-              </Link>
-            </div>
-          </div>
-        </div>
-      </HeroSection>
+      <ContentGrid>
+        <ContentGridItem>
+          <Heading size="sm">React Flow</Heading>
+          <Text className="mt-2 mb-4" variant="light">
+            A customizable React component for building node-based editors and
+            interactive diagrams
+          </Text>
+          <Button variant="react" asChild>
+            <Link href="/react-flow">Read More</Link>
+          </Button>
+        </ContentGridItem>
 
-      <ShowcaseOverview />
+        <ContentGridItem>
+          <Heading size="sm">Svelte Flow</Heading>
+          <Text className="mt-2 mb-4" variant="light">
+            A customizable Svelte component for building node-based editors and
+            interactive diagrams
+          </Text>
+          <Button variant="svelte" asChild>
+            <Link href="/svelte-flow">Svelte More</Link>
+          </Button>
+        </ContentGridItem>
+      </ContentGrid>
+
+      <ShowcaseOverview className="my-16 lg:my-24" />
 
       <HeroSection
         title="About xyflow"
         subtitle="We are Christopher, Hayleigh, John, and Moritz. We are the maintainers
         of React Flow, Svelte Flow, and the communities around them."
         align="center"
-      >
-        <Button variant="xyflow">xyflow</Button>
-      </HeroSection>
+      />
     </BaseLayout>
   );
 }

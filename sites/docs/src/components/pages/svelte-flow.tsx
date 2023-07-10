@@ -1,6 +1,11 @@
+import { HeartIcon } from '@heroicons/react/24/outline';
+
 import BaseLayout from '@/layouts/base';
 import HeroSection from '@/components/hero-section';
-import FeatureSection from '@/components/feature-section';
+import Features from '@/components/features';
+import Section from '@/components/section';
+import Stats from '@/components/stats';
+import GettingStarted from '@/components/getting-started';
 
 const features = [
   {
@@ -34,11 +39,32 @@ export default function SvelteFlowHome() {
         size="md"
       />
 
-      <FeatureSection
-        features={features}
-        className="mt-16 lg:mt-24"
-        variant="svelte"
-      />
+      <Section>
+        <Stats
+          variant="svelte"
+          stats={[
+            { label: 'Latest Release', value: 'May 23' },
+            {
+              label: 'Weekly Installs',
+              value: 5,
+            },
+            { label: 'License', value: 'MIT' },
+          ]}
+          description="Svelte Flow is a MIT-licensed open source library. You can help us to ensure the further development and maintenance by supporting us."
+          link="/svelte-flow/support"
+          linkLabel={
+            <>
+              <HeartIcon className="w-5 h-5 mr-1" /> Support Us
+            </>
+          }
+        />
+      </Section>
+
+      <GettingStarted />
+
+      <Section>
+        <Features features={features} variant="svelte" />
+      </Section>
     </BaseLayout>
   );
 }
