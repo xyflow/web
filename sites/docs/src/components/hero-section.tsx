@@ -56,7 +56,7 @@ export default function HeroSection({
           {kicker && (
             <h3
               className={cn(
-                'text-sm font-bold mb-2 site flex items-center ',
+                'text-md font-bold mb-2 site flex items-center ',
                 isCenter && 'justify-center',
                 `text-${site}`
               )}

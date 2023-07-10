@@ -8,3 +8,5 @@ export * from './components/ui/select';
 export * from './components/ui/text';
 
 export { cn } from './lib/utils';
+
+export * from './types';
