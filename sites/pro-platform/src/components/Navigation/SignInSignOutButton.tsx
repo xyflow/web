@@ -17,8 +17,10 @@ function SignInSignOutButton() {
   }
 
   return (
-    <Link href="/login">
-      <Button variant="outline">Sign In</Button>
+    <Link href="/signin">
+      <Button className="rounded-lg" variant="outline">
+        Sign In
+      </Button>
     </Link>
   );
 }

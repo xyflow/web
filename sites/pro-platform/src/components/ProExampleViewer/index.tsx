@@ -1,7 +1,6 @@
 'use client';
 
 import { useMemo } from 'react';
-import { Flex, Wrap, Box, Link, useBreakpointValue, Heading, Text } from '@chakra-ui/react';
 import { Resizable } from 're-resizable';
 import { aquaBlue } from '@codesandbox/sandpack-themes';
 import {
@@ -11,6 +10,7 @@ import {
   SandpackOptions,
   SandpackSetup,
   SandpackFiles,
+  SandpackLayout,
 } from '@codesandbox/sandpack-react';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 
@@ -19,6 +19,7 @@ import { isDevelopment } from 'utils/browser';
 import mdxComponents from './mdx-components';
 import DownloadSandpackButton from './sandpack-downloader';
 import FullScreenButton from './fullscreen-button';
+import OverviewButton from './overview-button';
 
 export type ProCodeViewerProps = {
   exampleId: string;
@@ -111,6 +112,7 @@ export default function ProCodeViewer({
   const isLargeScreen = true;
   const textDefaultWidth = isLargeScreen ? '1000px' : '55%';
 
+  // @todo fix the layout here and add resizable again
   return (
     <SandpackProvider
       template="react-ts"
@@ -119,87 +121,43 @@ export default function ProCodeViewer({
       options={customSandpackOptions}
       theme={aquaBlue}
     >
-      <Flex sx={{ WebkitFontSmoothing: 'auto' }} position="relative">
-        <Resizable
+      <div className="relative grid grid-cols-2">
+        {/* <Resizable
           defaultSize={{
-            width: textDefaultWidth,
+            width: '300px',
             height: '100%',
           }}
-          style={{
-            paddingTop: 'var(--chakra-space-6)',
-            paddingRight: 'var(--chakra-space-4)',
-          }}
-          maxWidth="90%"
+          maxWidth="1000px"
           minWidth="10%"
           enable={resizeRightEnabled}
-        >
-          <>
-            <Heading
-              letterSpacing="1px"
-              color="gray.500"
-              textTransform="uppercase"
-              fontSize="sm"
-              as="span"
-              style={{
-                WebkitFontSmoothing: 'antialiased',
-              }}
-            >
-              Pro Example
-            </Heading>
-            {title && (
-              <Heading
-                fontSize={['3xl', '4xl', '4xl', '5xl']}
-                as="h1"
-                mb={2}
-                style={{
-                  WebkitFontSmoothing: 'antialiased',
-                }}
-              >
-                {title}
-              </Heading>
-            )}
-            {description && (
-              <Text color="gray.800" lineHeight="1.4" fontSize="xl" mb={0}>
-                {description}
-              </Text>
-            )}
-          </>
-          <Flex justifyContent="space-between" mt={4} mb={10}>
-            <Wrap>
-              <DownloadSandpackButton fileName={`${exampleId}-example`} />
-              <FullScreenButton exampleId={exampleId} />
-            </Wrap>
-            <Wrap>{/* <Variants exampleId={exampleId} variants={variants} /> */}</Wrap>
-          </Flex>
-          <Box>
+        > */}
+        <div className="pr-4">
+          <div>
+            <OverviewButton />
+            {title && <h1>{title}</h1>}
+            {description && <div>{description}</div>}
+          </div>
+          <div>
+            <DownloadSandpackButton fileName={`${exampleId}-example`} />
+            <FullScreenButton exampleId={exampleId} />
+          </div>
+          <div style={{ fontFamily: 'unset', fontSize: '1rem' }}>
             <MDXRemote {...readme} components={mdxComponents} />
-          </Box>
-          <Box borderTop="1px solid" borderTopColor="gray.100">
-            <Heading fontSize="2xl" mt={4}>
-              Feedback
-            </Heading>
-            <Text color="gray.800" lineHeight="1.4" fontSize="md" mt={4}>
+          </div>
+          <div>
+            <div>Feedback</div>
+            <div>
               We are always trying to improve the quality of the Pro examples and would be happy about your feedback.
-              Feel free to reach out at{' '}
-              <Link color="pink.500" href="mailto:info@reactflow.dev">
-                info@reactflow.dev
-              </Link>
-              .
-            </Text>
-          </Box>
-        </Resizable>
-        <Flex
-          flexGrow={1}
-          top={0}
-          height="100vh"
-          overflow="hidden"
-          position="sticky"
-          borderLeft="1px solid white"
-          borderColor="gray.100"
-          flexDir="column"
-          width="100%"
-        >
-          <Resizable
+              Feel free to reach out at <a href="mailto:info@reactflow.dev">info@reactflow.dev</a>.
+            </div>
+          </div>
+        </div>
+        {/* </Resizable> */}
+        <div className="bg-red-500 sticky top-0 h-[100vh]">
+          <SandpackPreview style={{ height: '50%' }} showOpenInCodeSandbox={isDevelopment()} />
+          <SandpackCodeEditor style={{ height: '50%' }} />
+
+          {/* <Resizable
             defaultSize={{
               width: '100%',
               height: '50%',
@@ -208,9 +166,9 @@ export default function ProCodeViewer({
             maxHeight="90%"
             minHeight="10%"
           >
-            <Box h="100%" sx={{ '>div': { height: '100%' } }}>
+            <div>
               <SandpackPreview showOpenInCodeSandbox={isDevelopment()} />
-            </Box>
+            </div>
           </Resizable>
           <SandpackCodeEditor
             showRunButton={false}
@@ -218,9 +176,9 @@ export default function ProCodeViewer({
             {...customSandpackOptions}
             // @todo re-enable this
             // readOnly={isReadOnly}
-          />
-        </Flex>
-      </Flex>
+          /> */}
+        </div>
+      </div>
     </SandpackProvider>
   );
 }

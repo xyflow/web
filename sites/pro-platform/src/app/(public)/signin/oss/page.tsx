@@ -8,7 +8,7 @@ const SignUpOSSPage = () => {
     <AuthFormWrapper
       links={authFormLinks}
       showOAuth={false}
-      title="xyflow pro open source"
+      title="Open Source Sign In"
       description={
         <div>
           This is intended for non-commercial open source projects. If you are a business or private user of React Flow,

@@ -8,7 +8,7 @@ const SignUpEduPage = () => {
     <AuthFormWrapper
       links={authFormLinks}
       showOAuth={false}
-      title="xyflow pro edu"
+      title="Education Sign Up"
       description={
         <div>
           This is only intended for educational purposes. If you are a business or private user of React Flow, please

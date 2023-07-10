@@ -1,12 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
 import Head from 'next/head';
 
 import { useSignInEmailPasswordless } from '@nhost/nextjs';
 
-import { Button } from 'xy-ui';
+import { Button, Input, InputLabel } from 'xy-ui';
 
 function Signup() {
   const [email, setEmail] = useState<string>('');
@@ -29,21 +28,22 @@ function Signup() {
         {isSuccess && (
           <div>To complete your registration, please check your mailbox and click the link we have sent you.</div>
         )}
-        <div>
-          <label htmlFor="email">Project Url</label>
-          <input
+        <div className="mb-2">
+          <InputLabel htmlFor="email">Project Url</InputLabel>
+          <Input
+            variant="square"
             required
             id="url"
             type="url"
             value={metadata.url}
             onChange={(evt) => setMetadata({ ...metadata, url: evt.target.value })}
             placeholder="Your Project Url"
-            className="border border-gray-500 p-2 rounded w-full"
           />
         </div>
-        <div>
-          <label htmlFor="email">Contact Email</label>
-          <input
+        <div className="mb-2">
+          <InputLabel htmlFor="email">Contact Email</InputLabel>
+          <Input
+            variant="square"
             required
             id="email"
             type="email"
@@ -51,21 +51,22 @@ function Signup() {
             onChange={(evt) => setEmail(evt.target.value)}
             autoComplete="on"
             placeholder="Your Email"
-            className="border border-gray-500 p-2 rounded w-full"
           />
         </div>
-        <div>
-          <label htmlFor="confirm">
-            <input
-              type="checkbox"
-              required
-              checked={metadata.openSource}
-              onChange={(evt) => setMetadata({ ...metadata, openSource: evt.target.checked })}
-            ></input>
+        <div className="flex mb-4">
+          <input
+            className="shrink-0 w-4 h-4 mr-1 mb-auto mt-1"
+            id="confirm"
+            type="checkbox"
+            required
+            checked={metadata.openSource}
+            onChange={(evt) => setMetadata({ ...metadata, openSource: evt.target.checked })}
+          />
+          <label className="text-muted-foreground text-sm" htmlFor="confirm">
             I confirm that I am using React Flow Pro only for non-commercial purposes in this open source project
           </label>
         </div>
-        <Button disabled={isLoading} type="submit" variant="react">
+        <Button className="w-full rounded-lg" disabled={isLoading} type="submit" variant="react">
           Sign Up
         </Button>
       </form>

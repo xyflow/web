@@ -3,9 +3,8 @@
 import { useState } from 'react';
 import { useSignInEmailPasswordless } from '@nhost/nextjs';
 
-import Link from 'next/link';
 import Head from 'next/head';
-import { Button } from 'xy-ui';
+import { Button, Input, InputLabel } from 'xy-ui';
 
 function Signup() {
   const [email, setEmail] = useState<string>('');
@@ -28,11 +27,11 @@ function Signup() {
           <div>To complete your registration, please check your mailbox and click the link we have sent you.</div>
         )}
         <div>
-          <div>
-            <label htmlFor="email">Your university mail</label>
-            <input
+          <div className="mb-2">
+            <InputLabel htmlFor="email">Your university mail</InputLabel>
+            <Input
+              variant="square"
               placeholder="Your Email"
-              className="border border-gray-500 p-2 rounded w-full"
               required
               id="email"
               type="email"
@@ -41,20 +40,21 @@ function Signup() {
               autoComplete="on"
             />
           </div>
-          <div>
-            <label htmlFor="confirm">
-              <input
-                id="confirm"
-                type="checkbox"
-                required
-                checked={metadata.student}
-                onChange={(evt) => setMetadata({ ...metadata, student: evt.target.checked })}
-              />
-              I confirm that I am using xyflow pro only for educational purposes
+          <div className="flex mb-4">
+            <input
+              className="shrink-0 w-4 h-4 mr-1 mb-auto mt-1"
+              id="confirm"
+              type="checkbox"
+              required
+              checked={metadata.student}
+              onChange={(evt) => setMetadata({ ...metadata, student: evt.target.checked })}
+            />
+            <label className="text-muted-foreground text-sm" htmlFor="confirm">
+              I confirm that I am using xyflow pro only for educational purposes.
             </label>
           </div>
         </div>
-        <Button disabled={isLoading} type="submit" variant="react">
+        <Button className="w-full rounded-lg" disabled={isLoading} type="submit" variant="react">
           Sign Up
         </Button>
       </form>

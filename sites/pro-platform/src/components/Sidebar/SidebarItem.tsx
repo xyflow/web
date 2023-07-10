@@ -18,8 +18,8 @@ const SidebarItem = ({
   const isActive = matchSubPaths ? pathname.startsWith(href) : pathname === href;
 
   const className = cn(
-    'rounded-md py-1 px-4 lg:pr-10 font-bold ',
-    isActive ? 'bg-react text-white' : 'hover:underline'
+    'rounded-full py-1 px-4 lg:pr-10 font-bold text-muted-foreground',
+    isActive ? 'bg-pink-100 text-react' : 'hover:text-react'
   );
 
   return (

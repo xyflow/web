@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useResetPassword } from '@nhost/nextjs';
 
-import { Button } from 'xy-ui';
+import { Button, Input, InputLabel } from 'xy-ui';
 
 function ResetPassword() {
   const [email, setEmail] = useState<string>('');
@@ -18,18 +18,18 @@ function ResetPassword() {
     <form onSubmit={handleSubmit}>
       {isError && error && <div>{error.message}</div>}
       {isSent && <div>Please check your inbox to set a new password.</div>}
-      <div>
-        <label htmlFor="email">Email</label>
-        <input
+      <div className="mb-4">
+        <InputLabel htmlFor="email">Email</InputLabel>
+        <Input
+          variant="square"
           placeholder="Your Email"
-          className="border border-gray-500 p-2 rounded w-full"
           id="email"
           type="email"
           value={email}
           onChange={(evt) => setEmail(evt.target.value)}
         />
       </div>
-      <Button disabled={isLoading} type="submit" variant="react">
+      <Button className="w-full rounded-lg" disabled={isLoading} type="submit" variant="react">
         Send Reset Link
       </Button>
     </form>

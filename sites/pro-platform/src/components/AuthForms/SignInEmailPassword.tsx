@@ -4,8 +4,7 @@ import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useSignInEmailPassword, useSendVerificationEmail } from '@nhost/nextjs';
 
-import Link from 'next/link';
-import { Button } from 'xy-ui';
+import { Button, Input, InputLabel } from 'xy-ui';
 
 function SignInEmailPassword() {
   const searchParams = useSearchParams();
@@ -42,35 +41,36 @@ function SignInEmailPassword() {
           </div>
         </div>
       )}
-      <div>
-        <label htmlFor="email">Email</label>
-        <input
-          id="email"
-          type="email"
-          value={form.email}
-          onChange={(evt) => setForm({ ...form, email: evt.target.value })}
-          autoComplete="on"
-          className="border border-gray-500 p-2 rounded w-full"
-          placeholder="Your Email"
-          required
-        />
+      <div className="flex flex-col">
+        <div className="mb-2">
+          <InputLabel htmlFor="email">Email</InputLabel>
+          <Input
+            id="email"
+            type="email"
+            value={form.email}
+            onChange={(evt) => setForm({ ...form, email: evt.target.value })}
+            autoComplete="on"
+            placeholder="Your Email"
+            required
+            variant="square"
+          />
+        </div>
+        <div className="mb-4">
+          <InputLabel htmlFor="password">Password</InputLabel>
+          <Input
+            id="password"
+            type="password"
+            value={form.password}
+            onChange={(evt: React.ChangeEvent<HTMLInputElement>) => setForm({ ...form, password: evt.target.value })}
+            placeholder="Your Password"
+            required
+            variant="square"
+          />
+        </div>
+        <Button className="rounded-lg w-full" type="submit" variant="react">
+          Sign in
+        </Button>
       </div>
-      <div>
-        <label htmlFor="password">Password</label>
-        <input
-          id="password"
-          type="password"
-          value={form.password}
-          onChange={(evt: React.ChangeEvent<HTMLInputElement>) => setForm({ ...form, password: evt.target.value })}
-          className="border border-gray-500 p-2 rounded w-full"
-          placeholder="Your Password"
-          required
-        />
-        <Link href="/reset-password">Forgot Password?</Link>
-      </div>
-      <Button type="submit" variant="react">
-        Sign in
-      </Button>
     </form>
   );
 }

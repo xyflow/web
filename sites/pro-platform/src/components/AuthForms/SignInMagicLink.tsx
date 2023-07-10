@@ -1,8 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import { Button } from 'xy-ui';
+import { Button, Input, InputLabel } from 'xy-ui';
 import { useSignInEmailPasswordless } from '@nhost/nextjs';
+
 import Notification from '@/components/Notification';
 
 const SignInMagicLink = () => {
@@ -20,21 +21,15 @@ const SignInMagicLink = () => {
 
   return (
     <form onSubmit={onSubmit}>
-      <div className="mb-2">
+      <div className="flex flex-col space-y-4 mb-2">
         {isSuccess && <Notification description="Please check your email for a magic link!" />}
-        <div className="flex">
-          <input
-            value={email}
-            onChange={onChange}
-            id="email"
-            className="border px-4 py-2 rounded-full rounded-r-none border-r-0 w-full"
-            placeholder="Your Email"
-            type="email"
-          />
-          <Button className="shrink-0 rounded-l-none" type="submit" variant="react">
-            Sign In
-          </Button>
+        <div>
+          <InputLabel htmlFor="email">Email</InputLabel>
+          <Input variant="square" value={email} onChange={onChange} id="email" placeholder="Your Email" type="email" />
         </div>
+        <Button className="rounded-lg w-full shrink-0" type="submit" variant="react">
+          Send Secure Link
+        </Button>
       </div>
     </form>
   );

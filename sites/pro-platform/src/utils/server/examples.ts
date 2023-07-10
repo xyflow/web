@@ -6,7 +6,6 @@ import { SandpackFiles } from '@codesandbox/sandpack-react/types';
 
 export enum Framework {
   REACT = 'react',
-  SVELTE = 'svelte',
 }
 
 const getExamplesBasePath = (frameworkId: Framework): string => {
@@ -63,12 +62,19 @@ export const getExampleIds = (frameworkId: Framework): string[] => {
   return [];
 };
 
+export type ExampleConfig = {
+  title: string;
+  description: string;
+};
+
 export type Example = {
   id: string;
   files: SandpackFiles;
   directory: string;
   framework: Framework;
-};
+  // @todo type example config
+  // config: Record<string, any>;
+} & ExampleConfig;
 
 export const getExamples = (): Record<Framework, Example[]> => {
   return Object.values(Framework).reduce<Record<Framework, Example[]>>(
@@ -78,17 +84,21 @@ export const getExamples = (): Record<Framework, Example[]> => {
       exampleIds.forEach((exampleId) => {
         const examplePath = getExamplePath(frameworkId, exampleId);
         const exampleFiles = getExampleFiles(frameworkId, exampleId);
+        const exampleConfig: ExampleConfig = exampleFiles['config.json']
+          ? JSON.parse(exampleFiles['config.json'] as string)
+          : {};
 
         result[frameworkId].push({
           id: exampleId,
           directory: examplePath,
           files: exampleFiles,
           framework: frameworkId,
+          ...exampleConfig,
         });
       });
 
       return result;
     },
-    { [Framework.REACT]: [], [Framework.SVELTE]: [] }
+    { [Framework.REACT]: [] }
   );
 };

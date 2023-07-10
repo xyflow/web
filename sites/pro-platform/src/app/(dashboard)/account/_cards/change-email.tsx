@@ -1,7 +1,7 @@
 'use client';
 
 import { useUserEmail, useChangeEmail } from '@nhost/nextjs';
-import { Card, CardHeader, CardDescription, CardTitle, CardFooter, Button } from 'xy-ui';
+import { Card, CardHeader, CardDescription, CardTitle, CardFooter, Button, Input } from 'xy-ui';
 
 function ChangeEmailCard() {
   const email = useUserEmail();
@@ -12,9 +12,9 @@ function ChangeEmailCard() {
         <CardTitle>Change Email</CardTitle>
         <CardDescription>Use this form to update your email. We will send you a confirmation mail.</CardDescription>
       </CardHeader>
-      <CardFooter className="bg-muted">
-        <input className="rounded-lg px-4 py-2 border border-gray-300" type="email" value={email} />
-        <Button className="ml-auto" variant="react">
+      <CardFooter className="bg-muted space-x-10">
+        <Input type="email" value={email} />
+        <Button className="shrink-0 ml-auto" variant="react">
           Update Email
         </Button>
       </CardFooter>

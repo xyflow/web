@@ -1,13 +1,18 @@
 import { ResetPassword, AuthFormWrapper } from '@/components/AuthForms';
 
-const authFormLinks = [{ href: '/signin', label: 'Back to login' }];
+const authFormLinks = [{ href: '/signin/password', label: 'Back to login' }];
 
-const SignUpPage = () => {
+const ResetPasswordPage = () => {
   return (
-    <AuthFormWrapper links={authFormLinks} showOAuth={false}>
+    <AuthFormWrapper
+      title="Reset Password"
+      description="Enter your email to reset your password."
+      links={authFormLinks}
+      showOAuth={false}
+    >
       <ResetPassword />
     </AuthFormWrapper>
   );
 };
 
-export default SignUpPage;
+export default ResetPasswordPage;

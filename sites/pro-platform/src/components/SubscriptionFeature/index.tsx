@@ -7,6 +7,7 @@ import { SubscriptionPlan } from '@/types';
 import Link from 'next/link';
 
 import useSubscription from '@/hooks/useSubscription';
+import { CheckCircleIcon } from '@heroicons/react/24/outline';
 
 type SubscriptionFeatureProps = {
   title: React.ReactNode;
@@ -37,12 +38,14 @@ function SubscriptionFeature({ title, description, plans = [], button }: Subscri
               ))}
             </div>
             <Link href="/subscribe" className="ml-auto">
-              <Button variant="react">Upgrade Subscription</Button>
+              <Button variant="outline">Upgrade Subscription</Button>
             </Link>
           </>
         ) : (
           <>
-            <div className="text-muted-foreground text-sm font-bold">Included in your subscription!</div>
+            <div>
+              <CheckCircleIcon className="w-8 h-8 text-react" />
+            </div>
             {button && (
               <Link href={button.href} className="ml-auto">
                 <Button variant="react">{button.label}</Button>

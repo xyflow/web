@@ -1,3 +1,4 @@
+import { NotSubscribed, Subscribed } from '../SubscriptionStatus';
 import SidebarItem from './SidebarItem';
 
 const sidebarItems = [
@@ -22,10 +23,6 @@ const sidebarItems = [
     href: '/billing',
     label: 'Billing',
   },
-  {
-    href: '/subscribe',
-    label: 'Subscribe',
-  },
 ];
 
 const Sidebar = () => {
@@ -34,6 +31,9 @@ const Sidebar = () => {
       {sidebarItems.map((item) => (
         <SidebarItem {...item} key={item.href} />
       ))}
+      <NotSubscribed>
+        <SidebarItem href="/subscribe" label="Subscribe" />
+      </NotSubscribed>
     </div>
   );
 };

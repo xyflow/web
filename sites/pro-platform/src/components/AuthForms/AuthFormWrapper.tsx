@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import Link from 'next/link';
 
-import Logo from '@/components/Logo';
+import { ArrowLongRightIcon } from '@heroicons/react/20/solid';
 import { SignInOAuth } from '@/components/AuthForms';
 
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from 'xy-ui';
@@ -25,24 +25,35 @@ const AuthFormWrapper = ({
   return (
     <div>
       <div className="flex flex-col items-center my-20">
-        <div className="mb-5 flex flex-col items-center">
+        {/* <div className="mb-5 flex flex-col items-center">
           <Logo />
-        </div>
+        </div> */}
         <Card className="max-w-sm w-full">
           <CardHeader>
             {title && <CardTitle>{title}</CardTitle>}
             {description && <CardDescription>{description}</CardDescription>}
           </CardHeader>
-          <CardContent>{children}</CardContent>
-          {showOAuth && (
-            <CardFooter>
-              <SignInOAuth />
-            </CardFooter>
-          )}
+          <CardContent>
+            {children}
+            {showOAuth && (
+              <>
+                <div className="relative flex py-3 items-center">
+                  <div className="flex-grow border-t border-slate-200"></div>
+                  <span className="flex-shrink mx-4 text-muted-foreground">or</span>
+                  <div className="flex-grow border-t border-slate-200"></div>
+                </div>
+                <SignInOAuth />
+              </>
+            )}
+          </CardContent>
         </Card>
-        <div className="mt-5">
+        <div className="flex flex-col space-y-2 mt-5">
           {links.map((link) => (
-            <div key={link.href}>
+            <div
+              className="flex items-center space-x-1 hover:text-slate-800 text-muted-foreground text-sm font-bold cursor-pointer"
+              key={link.href}
+            >
+              <ArrowLongRightIcon className="h-4 w-4" />
               <Link href={link.href}>{link.label}</Link>
             </div>
           ))}

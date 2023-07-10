@@ -8,11 +8,7 @@ import CodeBlock from './CodeBlock';
 import FileLink from './FileLink';
 
 export const mdxComponents: MDXComponents = {
-  p: (props) => (
-    <Text color="gray.700" fontSize="md" lineHeight="1.4" {...props}>
-      {props.children}
-    </Text>
-  ),
+  p: (props) => <p className="text-sm" {...props} />,
   ul: (props) => (
     <List pl={2} lineHeight="1.4" color="gray.700" fontSize="md" {...props}>
       {props.children}
@@ -23,7 +19,7 @@ export const mdxComponents: MDXComponents = {
       {props.children}
     </OrderedList>
   ),
-  h1: (props) => <Heading fontSize="4xl">{props.children}</Heading>,
+  h1: (props) => <h1 {...props} />,
   h2: (props) => (
     <Heading fontSize="2xl" mb={4} mt={8}>
       {props.children}
@@ -43,7 +39,7 @@ export const mdxComponents: MDXComponents = {
     );
   },
   pre: CodeBlock,
-  FileLink,
+  FileLink: FileLink,
 };
 
 export default mdxComponents;

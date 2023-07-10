@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useSignUpEmailPassword } from '@nhost/nextjs';
 
-import { Button } from 'xy-ui';
+import { Button, Input, InputLabel } from 'xy-ui';
 
 function Signup() {
   const [email, setEmail] = useState<string>('');
@@ -22,9 +22,10 @@ function Signup() {
       {(isSuccess || needsEmailVerification) && (
         <div>To complete your registration, please check your mailbox and click the link we have sent you.</div>
       )}
-      <div>
-        <label htmlFor="email">Email</label>
-        <input
+      <div className="mb-2">
+        <InputLabel htmlFor="email">Email</InputLabel>
+        <Input
+          variant="square"
           id="email"
           type="email"
           value={email}
@@ -32,22 +33,21 @@ function Signup() {
           autoComplete="on"
           placeholder="Your Email"
           required
-          className="border border-gray-500 p-2 rounded w-full"
         />
       </div>
-      <div>
-        <label htmlFor="password">Password</label>
-        <input
+      <div className="mb-4">
+        <InputLabel htmlFor="password">Password</InputLabel>
+        <Input
+          variant="square"
           id="password"
           type="password"
           value={password}
           onChange={(evt: React.ChangeEvent<HTMLInputElement>) => setPassword(evt.target.value)}
-          className="border border-gray-500 p-2 rounded w-full"
           placeholder="Your Password"
           required
         />
       </div>
-      <Button disabled={isLoading} type="submit" variant="react">
+      <Button className="w-full rounded-lg" disabled={isLoading} type="submit" variant="react">
         Sign Up
       </Button>
     </form>
