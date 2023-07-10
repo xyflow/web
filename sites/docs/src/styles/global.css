@@ -17,6 +17,15 @@ nav.nextra-toc:empty {
   display: none;
 }
 
+nav.nx-bg-transparent {
+  background-color: white;
+}
+
+div.nextra-nav-container-blur {
+  backdrop-filter: none;
+  background: white;
+}
+
 .max-w-\[90rem\] {
   max-width: 78rem;
 }

@@ -1,3 +1,4 @@
+import { type ReactNode } from 'react';
 import cn from 'clsx';
 import Link from 'next/link';
 
@@ -5,9 +6,27 @@ import { Button, Text, Heading } from 'xy-ui';
 import { Framework } from '@/types';
 
 type Stats = {
-  label: string;
-  value: string | number;
+  label: ReactNode;
+  value: ReactNode;
 };
+
+export function StatsDisplay({
+  value,
+  label,
+  variant,
+  className,
+}: Stats & { variant: Framework | 'xyflow'; className?: string }) {
+  return (
+    <div className={cn('text-center', className)}>
+      <Heading className={cn('font-bold whitespace-nowrap', `text-${variant}`)}>
+        {value}
+      </Heading>
+      <Text className="whitespace-nowrap" size="lg">
+        {label}
+      </Text>
+    </div>
+  );
+}
 
 export default function Stats({
   stats,
@@ -21,22 +40,21 @@ export default function Stats({
   description: string;
   variant: Framework | 'xyflow';
   link?: string;
-  linkLabel?: string;
+  linkLabel?: ReactNode;
   className?: string;
 }) {
   return (
-    <div className={cn('lg:flex px-4 lg:px-10', className)}>
-      <div className="flex place-content-between lg:space-x-24 grow">
+    <div className={cn('lg:grid lg:grid-cols-7 lg:gap-20', className)}>
+      <div className="lg:col-span-4 flex place-content-between lg:space-x-24 grow">
         {stats.map((s) => (
-          <div key={`${s.label}-${s.value}`} className="text-center">
-            <Heading className={cn('font-bold', `text-${variant}`)}>
-              {s.value}
-            </Heading>
-            <Text size="lg">{s.label}</Text>
-          </div>
+          <StatsDisplay
+            key={`${s.label}-${s.value}`}
+            variant={variant}
+            {...s}
+          />
         ))}
       </div>
-      <div className="lg:ml-20 mt-8 lg:mt-0">
+      <div className="lg:col-span-3 mt-8 lg:mt-0">
         <Text variant="light">{description}</Text>
         {link && (
           <Button asChild variant="pro" className={`mt-4 text-${variant}`}>

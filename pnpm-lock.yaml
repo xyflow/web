@@ -54,6 +54,9 @@ importers:
 
   apps/xy-styleguide:
     dependencies:
+      '@heroicons/react':
+        specifier: ^2.0.18
+        version: 2.0.18(react@18.2.0)
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -172,6 +175,9 @@ importers:
 
   packages/xy-ui:
     dependencies:
+      '@heroicons/react':
+        specifier: ^2.0.18
+        version: 2.0.18(react@18.2.0)
       '@radix-ui/react-accordion':
         specifier: ^1.1.2
         version: 1.1.2(@types/react-dom@18.2.6)(@types/react@18.2.14)(react-dom@18.2.0)(react@18.2.0)
@@ -230,6 +236,9 @@ importers:
       '@codesandbox/sandpack-react':
         specifier: ^2.6.9
         version: 2.6.9(@lezer/common@1.0.3)(react-dom@18.2.0)(react@18.2.0)
+      '@heroicons/react':
+        specifier: ^2.0.18
+        version: 2.0.18(react@18.2.0)
       '@mdx-js/loader':
         specifier: ^2.3.0
         version: 2.3.0(webpack@5.88.1)

@@ -28,12 +28,17 @@ export default function Navbar(props) {
   const navBarItems = isOrg
     ? props.items.filter((item) => xyNavBarRoutes.includes(item.route))
     : getPagesUnderRoute(`/${site}-flow`)
-        .filter((page) => page.name !== 'index' && page.name !== 'pro')
+        .filter(
+          (page) =>
+            page.name !== 'index' &&
+            page.name !== 'pro' &&
+            page.name !== 'support-us'
+        )
         .map((p) => ({ ...p, title: p.meta?.title }));
 
   return (
-    <div>
-      <div className="flex items-center justify-center py-2 text-xs bg-black">
+    <>
+      <div className="relative flex items-center justify-center py-2 text-xs bg-black">
         {topNav.map((item) => (
           <Link
             className="px-1 mx-2 text-white hover:text-gray-300"
@@ -48,7 +53,7 @@ export default function Navbar(props) {
         flatDirectories={props.flatDirectories}
         items={navBarItems}
       />
-    </div>
+    </>
   );
 }
 
@@ -59,9 +64,12 @@ export function NavBarAdditional() {
     return null;
   }
 
+  const link = site === 'react' ? `/react-flow/pro` : `/svelte-flow/support-us`;
+  const label = site === 'react' ? 'Pro' : 'Support Us';
+
   return (
     <Button asChild variant={site} size="sm" className="px-4 font-black">
-      <Link href={`/${site}-flow/pro`}>Pro</Link>
+      <Link href={link}>{label}</Link>
     </Button>
   );
 }

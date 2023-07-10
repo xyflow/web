@@ -1,4 +1,4 @@
-import { RxInfoCircled } from 'react-icons/rx';
+import { InformationCircleIcon } from '@heroicons/react/24/outline';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { ListWrapper } from 'xy-ui';
@@ -16,9 +16,9 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   name: 'Select with placeholder',
   args: {
-    icon: RxInfoCircled,
+    icon: InformationCircleIcon,
     title: 'List title',
-    description: 'Some description',
+    subtitle: 'Some description',
     children: (
       <ul>
         <li>
