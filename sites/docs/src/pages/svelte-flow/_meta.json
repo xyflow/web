@@ -13,5 +13,12 @@
   },
   "docs": "Docs",
   "api": "API",
-  "examples": "Examples"
+  "examples": "Examples",
+  "support-us": {
+    "display": "hidden",
+    "title": "Svelte Flow",
+    "theme": {
+      "layout": "raw"
+    }
+  }
 }

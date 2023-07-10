@@ -1,4 +1,4 @@
-import { RxInfoCircled } from 'react-icons/rx';
+import { InformationCircleIcon } from '@heroicons/react/24/outline';
 
 import {
   Accordion,
@@ -14,7 +14,7 @@ export default function FAQ({ className }: { className?: string }) {
   return (
     <ListWrapper
       title="Frequently Asked Questions"
-      icon={RxInfoCircled}
+      icon={InformationCircleIcon}
       iconClassName="text-react"
       className={className}
     >

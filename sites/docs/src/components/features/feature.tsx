@@ -1,7 +1,8 @@
 import Link from 'next/link';
+import { Position } from '@xyflow/system';
 
 import { Heading, Text, Button, Container, cn } from 'xy-ui';
-import Handle from './handle';
+import Handle from '@/components/handle';
 
 const order1Class = 'order-1';
 const order2Class = 'order-2';
@@ -34,6 +35,10 @@ export default function Feature({
   featureCount: number;
   variant?: 'react' | 'svelte' | 'xyflow';
 } & FeatureProps) {
+  const sourceHandleId = `source-${index}`;
+  const nextTargetHandleId = `target-${index + 1}`;
+  const targetHandleId = `target-${index}`;
+
   return (
     <div
       className={cn(
@@ -62,27 +67,23 @@ export default function Feature({
           <div className="h-[400px] p-6"></div>
 
           {index > 0 && (
-            <Handle variant={variant} className="top-4 left-10 md:left-1/2" />
+            <Handle
+              id={targetHandleId}
+              variant={variant}
+              className="top-4 left-10 md:left-1/2"
+              type="target"
+              position={Position.Top}
+            />
           )}
           {index < featureCount - 1 && (
-            <>
-              <Handle
-                variant={variant}
-                className="bottom-4 right-10 md:right-auto"
-              >
-                <svg className="absolute pointer-events-none overflow-visible">
-                  <path
-                    className={cn(
-                      'fill-none stroke-2',
-                      variant === 'react' && 'stroke-react',
-                      variant === 'svelte' && 'stroke-svelte',
-                      variant === 'xyflow' && 'stroke-xyflow'
-                    )}
-                    style={{ strokeDasharray: 5 }}
-                  />
-                </svg>
-              </Handle>
-            </>
+            <Handle
+              id={sourceHandleId}
+              variant={variant}
+              className="bottom-4 right-10 md:left-1/2 md:right-auto"
+              position={Position.Bottom}
+              type="source"
+              to={nextTargetHandleId}
+            />
           )}
         </Container>
       </div>
