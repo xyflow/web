@@ -32,8 +32,8 @@ export default function Navbar(props) {
         .map((p) => ({ ...p, title: p.meta?.title }));
 
   return (
-    <div>
-      <div className="flex items-center justify-center py-2 text-xs bg-black">
+    <>
+      <div className="relative flex items-center justify-center py-2 text-xs bg-black">
         {topNav.map((item) => (
           <Link
             className="px-1 mx-2 text-white hover:text-gray-300"
@@ -48,7 +48,7 @@ export default function Navbar(props) {
         flatDirectories={props.flatDirectories}
         items={navBarItems}
       />
-    </div>
+    </>
   );
 }
 

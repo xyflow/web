@@ -98,7 +98,7 @@ export default function ReactFlowHome() {
               value: `${(downloads / 1000).toFixed(0)}k`,
             },
             { label: 'License', value: 'MIT' },
-            { label: 'License', value: 'MIT' },
+            { label: 'License', value: 'MITs' },
           ].map((s) => (
             <StatsDisplay
               key={`${s.label}-${s.value}`}
