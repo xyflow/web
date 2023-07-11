@@ -4,10 +4,11 @@ import { Heading, Text, cn } from 'xy-ui';
 import useXYSite from '@/hooks/use-xy-site';
 import useConnectionDrawer from '@/hooks/use-connection-drawer';
 
-type HeroSectionProps = {
+type HeroProps = {
   title?: ReactNode;
   subtitle?: ReactNode;
   kicker?: ReactNode;
+  additionalContent?: ReactNode;
   className?: string;
   align?: 'left' | 'center';
   children?: ReactNode;
@@ -15,7 +16,7 @@ type HeroSectionProps = {
   showGradient?: boolean;
 };
 
-export default function HeroSection({
+export default function Hero({
   title,
   subtitle,
   kicker,
@@ -24,7 +25,8 @@ export default function HeroSection({
   align = 'left',
   size = 'lg',
   showGradient = false,
-}: HeroSectionProps) {
+  additionalContent = null,
+}: HeroProps) {
   const { site } = useXYSite();
   const isCenter = align === 'center';
   const isXL = size === 'xl';
@@ -64,21 +66,19 @@ export default function HeroSection({
             </h3>
           )}
           {title && (
-            <Heading
-              size={size}
-              className={cn(
-                'mb-4 font-black',
-                isXL && 'leading-normal tracking-tight'
-              )}
-            >
+            <Heading size={size} className="mb-4 font-black">
               {title}
             </Heading>
           )}
           {subtitle && (
-            <Text size="lg" className="mb-8 max-w-3xl mx-auto">
+            <Text
+              size="lg"
+              className={cn('mb-4 lg:mb-6 max-w-3xl', isCenter && 'mx-auto')}
+            >
               {subtitle}
             </Text>
           )}
+          {additionalContent && <div>{additionalContent}</div>}
         </div>
         <div>{children}</div>
       </div>

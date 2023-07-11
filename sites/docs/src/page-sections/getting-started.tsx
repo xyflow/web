@@ -23,9 +23,12 @@ export default function GettingStarted() {
   return (
     <Container variant="dark" className="mt-16 lg:mt-24">
       <div className="p-14">
-        <Heading className={cn('text-lg mb-2 text-center', `text-${site}`)}>
+        <Text
+          size="lg"
+          className={cn('font-bold mb-2 text-center', `text-${site}`)}
+        >
           Getting Started with {lib}
-        </Heading>
+        </Text>
         <Text className="text-center max-w-lg mx-auto mb-6 lg:mb-8">
           Make sure you’ve the node.js and package manager installed. Then, type
           this in terminal:

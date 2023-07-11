@@ -5,7 +5,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '../../lib/utils';
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center rounded-full text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background shadow-md font-bold',
+  'inline-flex items-center justify-center rounded-full text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background shadow-md font-bold',
   {
     variants: {
       variant: {
@@ -21,12 +21,17 @@ const buttonVariants = cva(
         react: 'bg-react text-react-foreground hover:bg-react/90',
         svelte: 'bg-svelte text-svelte-foreground hover:bg-svelte/90',
         xyflow: 'bg-xyflow text-xyflow-foreground hover:bg-xyflow/90',
-        pro: 'bg-secondary text-secondary-foreground hover:bg-gray-50 border border-solid border-gray-100',
+        'svelte-pro':
+          'bg-secondary text-svelte hover:bg-gray-50 border border-solid border-svelte',
+        'react-pro':
+          'bg-secondary text-react hover:bg-gray-50 border border-solid border-react',
+        'xyflow-pro':
+          'bg-secondary text-xyflow hover:bg-gray-50 border border-solid border-react',
       },
       size: {
-        default: 'h-10 py-2 px-6',
-        sm: 'h-9 px-4 rounded-full',
-        lg: 'h-11 px-10 rounded-full',
+        default: 'py-2 h-9 px-6',
+        sm: 'px-4 h-8 rounded-full',
+        lg: 'px-10 h-10 text-md rounded-full',
       },
     },
     defaultVariants: {

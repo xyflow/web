@@ -1,11 +1,11 @@
 import { HeartIcon } from '@heroicons/react/24/outline';
 
 import BaseLayout from '@/layouts/base';
-import HeroSection from '@/components/hero-section';
-import Features from '@/components/features';
-import Section from '@/components/section';
-import Stats from '@/components/stats';
-import GettingStarted from '@/components/getting-started';
+import HeroFlow from '@/page-sections/hero-flow';
+import Features from '@/page-sections/features';
+import Section from '@/page-sections/section';
+import Stats from '@/page-sections/stats';
+import GettingStarted from '@/page-sections/getting-started';
 
 const features = [
   {
@@ -28,16 +28,7 @@ const features = [
 export default function SvelteFlowHome() {
   return (
     <BaseLayout>
-      <HeroSection
-        title={
-          <>
-            Wire Your Ideas with{' '}
-            <span className="text-svelte">Svelte Flow</span>
-          </>
-        }
-        subtitle="A customizable Svelte component for building node-based editors and interactive diagrams"
-        size="md"
-      />
+      <HeroFlow />
 
       <Section>
         <Stats

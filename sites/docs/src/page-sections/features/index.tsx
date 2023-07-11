@@ -3,17 +3,17 @@
 import useConnectionDrawer from '@/hooks/use-connection-drawer';
 import Feature, { FeatureProps } from './feature';
 
-type FeatureSectionProps = {
+type FeaturesProps = {
   features: FeatureProps[];
   className?: string;
   variant?: 'react' | 'svelte' | 'xyflow';
 };
 
-export default function FeatureSection({
+export default function Features({
   features,
   variant = 'react',
   className,
-}: FeatureSectionProps) {
+}: FeaturesProps) {
   const ref = useConnectionDrawer();
 
   return (

@@ -1,15 +1,15 @@
 import BaseLayout from '@/layouts/base';
-import HeroSection from '@/components/hero-section';
+import Hero from '@/page-sections/hero';
 
 export default function OpenSource() {
   return (
     <BaseLayout>
-      <HeroSection
+      <Hero
         title="We're Open Source"
         subtitle="We love Open Source and here is why"
       >
         <p>some content</p>
-      </HeroSection>
+      </Hero>
     </BaseLayout>
   );
 }

@@ -9,25 +9,39 @@ export default function useConnectionDrawer() {
   useEffect(() => {
     function drawConnections() {
       if (ref.current) {
+        const handlesVisible = window.innerWidth >= 900;
+        const targetHandles = Array.from(
+          ref.current.querySelectorAll('.handle.target')
+        );
+
         // 1. collect all source handles
-        const sourceHandles = ref.current.querySelectorAll('.handle.source');
+        const sourceHandles = Array.from(
+          ref.current.querySelectorAll('.handle.source')
+        );
+
+        [...sourceHandles, ...targetHandles].forEach(
+          (handle: HTMLDListElement) => {
+            handle.style.display = handlesVisible ? 'block' : 'none';
+          }
+        );
+
+        if (!handlesVisible) {
+          return;
+        }
 
         // 2. create pairs of handles [sourceHandle, targetHandle]
-        const handlePairs = Array.from(sourceHandles).reduce(
-          (res, sourceHandle) => {
-            const targetHandleId = sourceHandle.getAttribute('data-to');
-            const targetHandle = ref.current.querySelector(
-              `[data-handleid="${targetHandleId}"`
-            );
+        const handlePairs = sourceHandles.reduce((res, sourceHandle) => {
+          const targetHandleId = sourceHandle.getAttribute('data-to');
+          const targetHandle = ref.current.querySelector(
+            `[data-handleid="${targetHandleId}"`
+          );
 
-            if (sourceHandle && targetHandle) {
-              res.push([sourceHandle, targetHandle]);
-            }
+          if (sourceHandle && targetHandle) {
+            res.push([sourceHandle, targetHandle]);
+          }
 
-            return res;
-          },
-          []
-        );
+          return res;
+        }, []);
 
         // 3. for each pair of handles, calculate the edge path and update the svg
         handlePairs.forEach(([sourceHandle, targetHandle]) => {

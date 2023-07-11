@@ -1,7 +1,7 @@
 import { CheckCircleIcon } from '@heroicons/react/24/outline';
 
 import BaseLayout from '@/layouts/base';
-import HeroSection from '@/components/hero-section';
+import Hero from '@/page-sections/hero';
 import ContentGrid, { ContentGridItem } from '@/components/content-grid';
 import CaseStudyPreview from '@/components/case-study-preview';
 import { getMdxPagesUnderRoute } from '@/utils';
@@ -18,7 +18,7 @@ function Kicker() {
 export default function CaseStudies() {
   return (
     <BaseLayout>
-      <HeroSection
+      <Hero
         title="How Pro subscribers use React Flow to build"
         subtitle="Check how our users build custom node-based apps like workflow editors and diagramming tools"
         kicker={<Kicker />}
