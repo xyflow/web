@@ -6,8 +6,6 @@ type NhostRequest = Request & {
   rawBody: string;
 };
 
-const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET as string;
-
 const relevantEvents = new Set([
   'customer.subscription.created',
   'customer.subscription.updated',
@@ -25,6 +23,7 @@ export default async function stripeWebhookHandler(
   }
 
   const sig = req.headers['stripe-signature'] as string;
+  const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET as string;
 
   try {
     const event = stripe.webhooks.constructEvent(
@@ -33,22 +32,9 @@ export default async function stripeWebhookHandler(
       endpointSecret
     );
 
-    // if (event.type === 'checkout.session.completed') {
-    //   const checkoutSession = event.data.object as Stripe.Checkout.Session;
-
-    //   const userId = checkoutSession.client_reference_id;
-    //   const userEmail = checkoutSession.customer_email;
-    //   const customerId = checkoutSession.customer;
-
-    //   await updateSubscription({ userId, userEmail, customerId });
-    //   return res.status(200).send('Subscription updated!');
-    // }
-
     if (relevantEvents.has(event.type)) {
-      const stripeEvent = event.data.object as Stripe.Subscription;
-
-      console.log('WEBHOOK CALLED:', event.data);
-      await handleSubscriptionChange(stripeEvent);
+      // const stripeEvent = event.data.object as Stripe.Subscription;
+      // await handleSubscriptionChange(stripeEvent);
     }
 
     return res.status(200).send();
