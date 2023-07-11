@@ -22,7 +22,7 @@ export default async function stripeWebhookHandler(
   res: Response
 ) {
   if (req.method !== 'POST') {
-    return res.status(405).send({ message: endpointSecret });
+    return res.status(405).send({ message: 'Method not allowed.' });
   }
 
   const sig = req.headers['stripe-signature'] as string;
