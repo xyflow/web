@@ -141,7 +141,7 @@ export default function ProCodeViewer({
             <DownloadSandpackButton fileName={`${exampleId}-example`} />
             <FullScreenButton exampleId={exampleId} />
           </div>
-          <div style={{ fontFamily: 'unset', fontSize: '1rem' }}>
+          <div style={{ fontFamily: 'unset' }}>
             <MDXRemote {...readme} components={mdxComponents} />
           </div>
           <div>

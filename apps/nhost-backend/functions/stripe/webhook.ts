@@ -16,7 +16,11 @@ const relevantEvents = new Set([
   'customer.subscription.deleted',
 ]);
 
-export default async function stripeWebhookHandler(req: NhostRequest, res: Response) {
+export default async function stripeWebhookHandler(
+  req: NhostRequest,
+  res: Response
+) {
+  console.log(req);
   if (req.method !== 'POST') {
     return res.status(405).send({ message: 'Method not allowed.' });
   }
@@ -24,7 +28,11 @@ export default async function stripeWebhookHandler(req: NhostRequest, res: Respo
   const sig = req.headers['stripe-signature'] as string;
 
   try {
-    const event = stripe.webhooks.constructEvent(req.rawBody, sig, endpointSecret);
+    const event = stripe.webhooks.constructEvent(
+      req.rawBody,
+      sig,
+      endpointSecret
+    );
 
     // if (event.type === 'checkout.session.completed') {
     //   const checkoutSession = event.data.object as Stripe.Checkout.Session;
