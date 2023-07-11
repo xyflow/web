@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
-import { stripe, handleSubscriptionChange } from '../_utils';
-import Stripe from 'stripe';
+import { handleSubscriptionChange } from '../_utils/graphql/subscriptions';
+import { stripe } from '../_utils/stripe';
+import type Stripe from 'stripe';
 
 type NhostRequest = Request & {
   rawBody: string;
@@ -26,25 +27,21 @@ export default async function stripeWebhookHandler(
 
   const sig = req.headers['stripe-signature'] as string;
 
-  return res.status(200).send(endpointSecret);
+  try {
+    const event = stripe.webhooks.constructEvent(
+      req.rawBody,
+      sig,
+      endpointSecret
+    );
 
-  // try {
-  //   const event = stripe.webhooks.constructEvent(
-  //     req.rawBody,
-  //     sig,
-  //     endpointSecret
-  //   );
+    if (relevantEvents.has(event.type)) {
+      const stripeEvent = event.data.object as Stripe.Subscription;
+      await handleSubscriptionChange(stripeEvent);
+    }
 
-  //   console.log(event);
-
-  //   if (relevantEvents.has(event.type)) {
-  //     const stripeEvent = event.data.object as Stripe.Subscription;
-  //     await handleSubscriptionChange(stripeEvent);
-  //   }
-
-  //   return res.status(200).send();
-  // } catch (err) {
-  //   console.log(err);
-  //   return res.status(400).send(`Webhook Error: ${err}`);
-  // }
+    return res.status(200).send();
+  } catch (err) {
+    console.log(err);
+    return res.status(400).send(`Webhook Error: ${err}`);
+  }
 }
