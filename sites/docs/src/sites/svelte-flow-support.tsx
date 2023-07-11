@@ -15,7 +15,7 @@ import Link from 'next/link';
 
 import { Heading, ListWrapper, Text, type HeroIcon } from 'xy-ui';
 import BaseLayout from '@/layouts/base';
-import HeroSection from '@/components/hero-section';
+import Hero from '@/page-sections/hero';
 import ContentGrid, { ContentGridItem } from '@/components/content-grid';
 
 function Kicker() {
@@ -30,7 +30,7 @@ function Kicker() {
 export default function CaseStudies() {
   return (
     <BaseLayout>
-      <HeroSection
+      <Hero
         title="Support Svelte Flow"
         subtitle="Thanks for supporting Svelte Flow, there are lots of ways you can support the library, ecosystem, and community."
         kicker={<Kicker />}

@@ -3,8 +3,8 @@ import { Position } from '@xyflow/system';
 
 import { Button, Text, Heading } from 'xy-ui';
 import BaseLayout from '@/layouts/base';
-import HeroSection from '@/components/hero-section';
-import ShowcaseOverview from '@/components/showcase-overview';
+import Hero from '@/page-sections/hero';
+import ShowcaseOverview from '@/page-sections/showcase-overview';
 import HeadlineNode from '@/components/headline-node';
 import Handle from '@/components/handle';
 import ContentGrid, { ContentGridItem } from '@/components/content-grid';
@@ -12,7 +12,7 @@ import ContentGrid, { ContentGridItem } from '@/components/content-grid';
 export default function XYFlowHome() {
   return (
     <BaseLayout>
-      <HeroSection
+      <Hero
         title={
           <>
             <HeadlineNode>
@@ -90,7 +90,7 @@ export default function XYFlowHome() {
 
       <ShowcaseOverview className="my-16 lg:my-24" />
 
-      <HeroSection
+      <Hero
         title="About xyflow"
         subtitle="We are Christopher, Hayleigh, John, and Moritz. We are the maintainers
         of React Flow, Svelte Flow, and the communities around them."

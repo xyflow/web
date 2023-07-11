@@ -30,7 +30,6 @@ export default function Handle({
       data-to={to}
       className={cn(
         'handle absolute',
-
         handleWidthClass,
         handleHeightClass,
         className,
@@ -43,7 +42,7 @@ export default function Handle({
         data-position={position}
         data-to={to}
         className={cn(
-          ' absolute rounded-full border-2 border-solid bg-white z-20',
+          'absolute rounded-full border-2 border-solid bg-white z-20',
           variant === 'react' && 'border-react',
           variant === 'svelte' && 'border-svelte',
           variant === 'xyflow' && 'border-xyflow',

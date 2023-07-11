@@ -4,12 +4,12 @@ import { SparklesIcon } from '@heroicons/react/24/outline';
 
 import { Button, Heading, Text } from 'xy-ui';
 import BaseLayout from '@/layouts/base';
-import HeroSection from '@/components/hero-section';
-import Stats, { StatsDisplay } from '@/components/stats';
-import Features from '@/components/features';
-import Showcase from '@/components/showcase-overview';
-import Section from '@/components/section';
-import GettingStarted from '@/components/getting-started';
+import HeroFlow from '@/page-sections/hero-flow';
+import Stats, { StatsDisplay } from '@/page-sections/stats';
+import Features from '@/page-sections/features';
+import Showcase from '@/page-sections/showcase-overview';
+import Section from '@/page-sections/section';
+import GettingStarted from '@/page-sections/getting-started';
 
 const features = [
   {
@@ -39,15 +39,7 @@ export default function ReactFlowHome() {
 
   return (
     <BaseLayout>
-      <HeroSection
-        title={
-          <>
-            Wire Your Ideas with <span className="text-react">React Flow</span>
-          </>
-        }
-        subtitle="A customizable React component for building node-based editors and interactive diagrams"
-        size="md"
-      />
+      <HeroFlow />
 
       <Section>
         <Stats
@@ -80,7 +72,7 @@ export default function ReactFlowHome() {
 
       <Section className="lg:flex place-content-between">
         <div>
-          <Heading size="lg" className="font-bold">
+          <Heading size="md" className="font-bold">
             Some headline thing
           </Heading>
           <Text className="mb-4 mt-2">

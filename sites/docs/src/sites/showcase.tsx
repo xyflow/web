@@ -3,14 +3,14 @@ import Image from 'next/image';
 
 import { Text } from 'xy-ui';
 import BaseLayout from '@/layouts/base';
-import HeroSection from '@/components/hero-section';
+import Hero from '@/page-sections/hero';
 
-import showcases from '../../../public/data/showcases.json';
+import showcases from '../../public/data/showcases.json';
 
 export default function Showcase() {
   return (
     <BaseLayout>
-      <HeroSection
+      <Hero
         title="Showcase"
         subtitle="React Flow is used by thousands of people, from solo open-source
     developers to companies like Stripe and Typeform. We’ve seen the library

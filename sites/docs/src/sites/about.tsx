@@ -1,12 +1,12 @@
 import Link from 'next/link';
 
 import BaseLayout from '@/layouts/base';
-import HeroSection from '@/components/hero-section';
+import Hero from '@/page-sections/hero';
 
 export default function About() {
   return (
     <BaseLayout>
-      <HeroSection title="About" subtitle="Stuff about the xyflow team">
+      <Hero title="About" subtitle="Stuff about the xyflow team">
         <p>
           We are Christopher, Hayleigh, John and Moritz and we work full-time to
           build and maintain React Flow. We are an independent company dedicated
@@ -22,7 +22,7 @@ export default function About() {
           communication and community at React Flow. For any questions or
           feedback you can <Link href="/contact">contact us</Link>.
         </p>
-      </HeroSection>
+      </Hero>
     </BaseLayout>
   );
 }

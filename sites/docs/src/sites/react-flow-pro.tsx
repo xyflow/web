@@ -1,13 +1,13 @@
 import BaseLayout from '@/layouts/base';
-import HeroSection from '@/components/hero-section';
-import PricingTable from '@/components/pricing-table';
-import ShowcaseOverview from '@/components/showcase-overview';
+import Hero from '@/page-sections/hero';
+import PricingTable from '@/page-sections/pricing-table';
+import ShowcaseOverview from '@/page-sections/showcase-overview';
 import FAQ from '@/components/faq';
 
 export default function ReactFlowPro() {
   return (
     <BaseLayout>
-      <HeroSection
+      <Hero
         title={
           <>
             Build Better Node-Based UIs with{' '}
@@ -32,7 +32,7 @@ export default function ReactFlowPro() {
           like direct support, prioritized feature requests, and access to our
           Pro Examples.
         </p>
-      </HeroSection>
+      </Hero>
 
       <PricingTable />
 
