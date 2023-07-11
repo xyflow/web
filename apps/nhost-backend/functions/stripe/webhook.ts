@@ -14,32 +14,37 @@ const relevantEvents = new Set([
   'customer.subscription.deleted',
 ]);
 
+const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET as string;
+
 export default async function stripeWebhookHandler(
   req: NhostRequest,
   res: Response
 ) {
   if (req.method !== 'POST') {
-    return res.status(405).send({ message: 'Method not allowed.' });
+    return res.status(405).send({ message: endpointSecret });
   }
 
   const sig = req.headers['stripe-signature'] as string;
-  const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET as string;
 
-  try {
-    const event = stripe.webhooks.constructEvent(
-      req.rawBody,
-      sig,
-      endpointSecret
-    );
+  return res.status(200).send(endpointSecret);
 
-    if (relevantEvents.has(event.type)) {
-      // const stripeEvent = event.data.object as Stripe.Subscription;
-      // await handleSubscriptionChange(stripeEvent);
-    }
+  // try {
+  //   const event = stripe.webhooks.constructEvent(
+  //     req.rawBody,
+  //     sig,
+  //     endpointSecret
+  //   );
 
-    return res.status(200).send();
-  } catch (err) {
-    console.log(err);
-    return res.status(400).send(`Webhook Error: ${err}`);
-  }
+  //   console.log(event);
+
+  //   if (relevantEvents.has(event.type)) {
+  //     const stripeEvent = event.data.object as Stripe.Subscription;
+  //     await handleSubscriptionChange(stripeEvent);
+  //   }
+
+  //   return res.status(200).send();
+  // } catch (err) {
+  //   console.log(err);
+  //   return res.status(400).send(`Webhook Error: ${err}`);
+  // }
 }
