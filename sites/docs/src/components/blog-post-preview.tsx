@@ -1,6 +1,6 @@
 import { type ReactNode } from 'react';
 import Link from 'next/link';
-import { RxArrowRight } from 'react-icons/rx';
+import { ArrowRightIcon } from '@heroicons/react/24/outline';
 
 import { Heading, Text } from 'xy-ui';
 import AuthorList from '@/components/authors-list';
@@ -41,7 +41,7 @@ export default function BlogPostPreview({
       <AuthorList authors={authors} className="mb-2" />
 
       <Link href={route}>
-        Read more <RxArrowRight className="inline w-3 h-3" />
+        Read more <ArrowRightIcon className="inline w-3 h-3" />
       </Link>
     </div>
   );

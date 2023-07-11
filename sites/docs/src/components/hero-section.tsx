@@ -1,7 +1,6 @@
 import { type ReactNode } from 'react';
-import cn from 'clsx';
 
-import { Heading, Text } from 'xy-ui';
+import { Heading, Text, cn } from 'xy-ui';
 import useXYSite from '@/hooks/use-xy-site';
 import useConnectionDrawer from '@/hooks/use-connection-drawer';
 
@@ -56,7 +55,7 @@ export default function HeroSection({
           {kicker && (
             <h3
               className={cn(
-                'text-md font-bold mb-2 site flex items-center ',
+                'text-md font-bold mb-2 site flex items-center',
                 isCenter && 'justify-center',
                 `text-${site}`
               )}

@@ -1,4 +1,4 @@
-import { RxCheckCircled } from 'react-icons/rx';
+import { CheckCircleIcon } from '@heroicons/react/24/outline';
 
 import BaseLayout from '@/layouts/base';
 import HeroSection from '@/components/hero-section';
@@ -9,8 +9,8 @@ import { getMdxPagesUnderRoute } from '@/utils';
 function Kicker() {
   return (
     <>
-      <RxCheckCircled className="inline-block w-4 h-4 mr-1" />
-      Success stories
+      <CheckCircleIcon className="inline-block w-6 h-6 mr-1" />
+      Success Stories
     </>
   );
 }
