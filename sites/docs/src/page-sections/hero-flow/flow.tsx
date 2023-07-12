@@ -25,6 +25,10 @@ const nodeStyle = {};
 const isMobileFlow = typeof window !== 'undefined' && window.innerWidth < 992;
 const isLargeFlow = typeof window !== 'undefined' && window.innerWidth > 1250;
 
+const proOptions = {
+  hideAttribution: true,
+};
+
 function getNodePositions(headlineBounds) {
   const px = window.innerWidth * 0.05;
   const rfHeight = window.innerHeight * 0.8;
@@ -156,12 +160,12 @@ function Flow({ variant, headlineRef }: FlowProps) {
         type: 'hero',
         position: nodePositions.hero,
         style: { width: isLargeFlow ? 300 : 160, ...nodeStyle },
-        data: { color, zoom, shape, label: 'Output' },
+        data: { color, zoom, shape, label: 'output', variant },
       },
       {
         id: 'color',
         type: 'colorpicker',
-        data: { color, onChange: setColor, label: 'Shape Color' },
+        data: { color, onChange: setColor, label: 'shape color', variant },
         style: { ...nodeStyle, width: 150 },
         position: nodePositions.color,
       },
@@ -173,7 +177,8 @@ function Flow({ variant, headlineRef }: FlowProps) {
           min: 0,
           max: 40,
           onChange: setZoom,
-          label: 'Zoom Level',
+          label: 'zoom level',
+          variant,
         },
         style: { ...nodeStyle, width: 150 },
         position: nodePositions.zoom,
@@ -185,7 +190,8 @@ function Flow({ variant, headlineRef }: FlowProps) {
           value: shape,
           options: ['cube', 'pyramid'],
           onChange: setShape,
-          label: 'Shape Type',
+          label: 'shape type',
+          variant,
         },
         style: { ...nodeStyle, width: 150 },
         position: nodePositions.shape,
@@ -260,10 +266,10 @@ function Flow({ variant, headlineRef }: FlowProps) {
         defaultNodes={defaultNodes}
         defaultEdges={defaultEdges}
         ref={reactFlowRef}
-        id="hero"
+        proOptions={proOptions}
       >
+        <Controls showInteractive={false} className="bg-white" />
         <Background />
-        <Controls showInteractive={false} />
       </ReactFlow>
     </div>
   );

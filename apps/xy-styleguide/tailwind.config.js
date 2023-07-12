@@ -9,7 +9,7 @@ export default {
       ...xyTailwindConfig.theme.extend,
       fontFamily: {
         sans: ['NTDapper'],
-        mono: ['var(--font-roboto-mono)'],
+        mono: ['var(--font-firamono)'],
       },
     },
   },

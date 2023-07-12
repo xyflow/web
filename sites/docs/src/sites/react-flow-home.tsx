@@ -41,7 +41,7 @@ export default function ReactFlowHome() {
     <BaseLayout>
       <HeroFlow />
 
-      <Section>
+      <Section className="mt-6 lg:mt-10">
         <Stats
           variant="react"
           stats={[
