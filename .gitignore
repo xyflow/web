@@ -12,6 +12,7 @@ coverage
 .next/
 out/
 build
+sitemap.xml
 
 # misc
 .DS_Store

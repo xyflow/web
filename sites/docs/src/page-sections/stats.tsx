@@ -57,7 +57,7 @@ export default function Stats({
       <div className="lg:col-span-3 mt-8 lg:mt-0">
         <Text variant="light">{description}</Text>
         {link && (
-          <Button asChild variant="pro" className={`mt-4 text-${variant}`}>
+          <Button asChild variant={`${variant}-pro`} className="mt-4">
             <Link href={link}>{linkLabel}</Link>
           </Button>
         )}

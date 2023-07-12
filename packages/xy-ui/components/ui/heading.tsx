@@ -6,11 +6,11 @@ import { cn } from '../../lib/utils';
 const headingSizes = cva('font-bold', {
   variants: {
     size: {
-      default: 'text-6xl font-black',
-      sm: 'text-3xl',
-      md: 'text-5xl',
-      lg: 'text-6xl font-black',
-      xl: 'text-9xl',
+      default: 'text-5xl lg:text-6xl font-black',
+      sm: 'text-2xl lg:text-3xl',
+      md: 'text-4xl lg:text-5xl',
+      lg: 'text-5xl lg:text-6xl font-black',
+      xl: 'text-6xl md:text-8xl/normal lg:text-9xl/normal font-black leading-normal tracking-tight',
     },
   },
   defaultVariants: {

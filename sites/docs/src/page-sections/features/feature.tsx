@@ -53,7 +53,7 @@ export default function Feature({
         )}
       >
         <div>
-          <Heading size="lg" className="font-bold">
+          <Heading size="md" className="font-bold">
             {title}
           </Heading>
           <Text className="mb-4 mt-2">{text}</Text>

@@ -1,14 +1,15 @@
 import { type ReactNode } from 'react';
-import { useConfig, useMDXComponents } from 'nextra-theme-docs';
+import { useConfig } from 'nextra-theme-docs';
+
+import { Heading } from 'xy-ui';
 
 // this layout is used for the example pages
 export default function ExampleLayout({ children }: { children: ReactNode }) {
   const { frontMatter } = useConfig();
-  const { h1: H1 } = useMDXComponents();
 
   return (
     <>
-      <H1>{frontMatter.title}</H1>
+      <Heading size="md">{frontMatter.title}</Heading>
       {children}
     </>
   );

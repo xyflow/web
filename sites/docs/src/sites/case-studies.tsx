@@ -1,7 +1,7 @@
-import { RxCheckCircled } from 'react-icons/rx';
+import { CheckCircleIcon } from '@heroicons/react/24/outline';
 
 import BaseLayout from '@/layouts/base';
-import HeroSection from '@/components/hero-section';
+import Hero from '@/page-sections/hero';
 import ContentGrid, { ContentGridItem } from '@/components/content-grid';
 import CaseStudyPreview from '@/components/case-study-preview';
 import { getMdxPagesUnderRoute } from '@/utils';
@@ -9,8 +9,8 @@ import { getMdxPagesUnderRoute } from '@/utils';
 function Kicker() {
   return (
     <>
-      <RxCheckCircled className="inline-block w-4 h-4 mr-1" />
-      Success stories
+      <CheckCircleIcon className="inline-block w-6 h-6 mr-1" />
+      Success Stories
     </>
   );
 }
@@ -18,7 +18,7 @@ function Kicker() {
 export default function CaseStudies() {
   return (
     <BaseLayout>
-      <HeroSection
+      <Hero
         title="How Pro subscribers use React Flow to build"
         subtitle="Check how our users build custom node-based apps like workflow editors and diagramming tools"
         kicker={<Kicker />}

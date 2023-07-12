@@ -1,5 +1,5 @@
 import BaseLayout from '@/layouts/base';
-import HeroSection from '@/components/hero-section';
+import Hero from '@/page-sections/hero';
 import ContentGrid, { ContentGridItem } from '@/components/content-grid';
 import BlogPostPreview from '@/components/blog-post-preview';
 import { getMdxPagesUnderRoute } from '@/utils';
@@ -7,7 +7,7 @@ import { getMdxPagesUnderRoute } from '@/utils';
 export default function Blog() {
   return (
     <BaseLayout>
-      <HeroSection
+      <Hero
         title="Blog"
         subtitle="News and updates from React Flow and Svelte Flow."
         align="center"
