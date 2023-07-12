@@ -30,7 +30,7 @@ export default function SvelteFlowHome() {
     <BaseLayout>
       <HeroFlow />
 
-      <Section>
+      <Section className="mt-6 lg:mt-10">
         <Stats
           variant="svelte"
           stats={[

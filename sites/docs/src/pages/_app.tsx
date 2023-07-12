@@ -1,5 +1,6 @@
 import { type CSSProperties } from 'react';
 import localFont from 'next/font/local';
+import { Fira_Mono } from 'next/font/google';
 
 import useXYSite from '@/hooks/use-xy-site';
 
@@ -15,6 +16,12 @@ const ntDapperFont = localFont({
   variable: '--font-ntdapper',
 });
 
+const firaMonoFont = Fira_Mono({
+  weight: ['400'],
+  subsets: ['latin'],
+  variable: '--font-firamono',
+});
+
 const hueValuesBySite = {
   xyflow: 220,
   react: 330,
@@ -26,7 +33,7 @@ export default function App({ Component, pageProps }) {
 
   return (
     <main
-      className={`${ntDapperFont.variable} font-sans`}
+      className={`${ntDapperFont.variable} ${firaMonoFont.variable} font-sans`}
       style={{ '--nextra-primary-hue': hueValuesBySite[site] } as CSSProperties}
     >
       <Component {...pageProps} />

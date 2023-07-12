@@ -8,7 +8,6 @@ type HeroProps = {
   title?: ReactNode;
   subtitle?: ReactNode;
   kicker?: ReactNode;
-  additionalContent?: ReactNode;
   className?: string;
   align?: 'left' | 'center';
   children?: ReactNode;
@@ -25,7 +24,6 @@ export default function Hero({
   align = 'left',
   size = 'lg',
   showGradient = false,
-  additionalContent = null,
 }: HeroProps) {
   const { site } = useXYSite();
   const isCenter = align === 'center';
@@ -57,7 +55,7 @@ export default function Hero({
           {kicker && (
             <h3
               className={cn(
-                'text-md font-bold mb-2 site flex items-center',
+                'text-md font-bold mb-2 flex items-center',
                 isCenter && 'justify-center',
                 `text-${site}`
               )}
@@ -78,7 +76,6 @@ export default function Hero({
               {subtitle}
             </Text>
           )}
-          {additionalContent && <div>{additionalContent}</div>}
         </div>
         <div>{children}</div>
       </div>

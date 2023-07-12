@@ -1,4 +1,10 @@
-import { useEffect, useState, useRef, MutableRefObject } from 'react';
+import {
+  useEffect,
+  useState,
+  useRef,
+  MutableRefObject,
+  CSSProperties,
+} from 'react';
 import ReactFlow, {
   Background,
   Controls,
@@ -12,6 +18,7 @@ import SliderNode from './slider-node';
 import SwitcherNode from './switcher-node';
 import SwoopyNode from './swoopy-node';
 import { Framework } from '@/types';
+import { getColorBySite } from '@/utils';
 
 const nodeTypes = {
   hero: HeroNode,
@@ -24,6 +31,10 @@ const nodeTypes = {
 const nodeStyle = {};
 const isMobileFlow = typeof window !== 'undefined' && window.innerWidth < 992;
 const isLargeFlow = typeof window !== 'undefined' && window.innerWidth > 1250;
+
+const proOptions = {
+  hideAttribution: true,
+};
 
 function getNodePositions(headlineBounds) {
   const px = window.innerWidth * 0.05;
@@ -49,7 +60,7 @@ function getNodePositions(headlineBounds) {
 
   if (isLargeFlow) {
     const offsetX = window.innerWidth / 2;
-    const offsetY = headlineBounds.top + 20;
+    const offsetY = headlineBounds.top;
 
     return {
       hero: { x: offsetX + 340, y: offsetY },
@@ -117,16 +128,18 @@ type FlowProps = {
   headlineRef: MutableRefObject<HTMLDivElement>;
 };
 
-const colors = {
-  react: '#ff0073',
-  svelte: '#ff4000',
+const gradientStyle: CSSProperties = {
+  backgroundImage: 'url(/img/bg.jpg)',
+  backgroundSize: '40%',
+  backgroundRepeat: 'no-repeat',
+  backgroundPosition: '70% center',
 };
 
 function Flow({ variant, headlineRef }: FlowProps) {
   const { setNodes } = useReactFlow();
   const reactFlowRef = useRef(null);
   const [headlineDimensions, setHeadlineDimensions] = useState(null);
-  const [color, setColor] = useState(colors[variant]);
+  const [color, setColor] = useState(getColorBySite(variant));
   const [zoom, setZoom] = useState(12);
   const [shape, setShape] = useState('cube');
 
@@ -156,12 +169,12 @@ function Flow({ variant, headlineRef }: FlowProps) {
         type: 'hero',
         position: nodePositions.hero,
         style: { width: isLargeFlow ? 300 : 160, ...nodeStyle },
-        data: { color, zoom, shape, label: 'Output' },
+        data: { color, zoom, shape, label: 'output', variant },
       },
       {
         id: 'color',
         type: 'colorpicker',
-        data: { color, onChange: setColor, label: 'Shape Color' },
+        data: { color, onChange: setColor, label: 'shape color', variant },
         style: { ...nodeStyle, width: 150 },
         position: nodePositions.color,
       },
@@ -173,7 +186,8 @@ function Flow({ variant, headlineRef }: FlowProps) {
           min: 0,
           max: 40,
           onChange: setZoom,
-          label: 'Zoom Level',
+          label: 'zoom level',
+          variant,
         },
         style: { ...nodeStyle, width: 150 },
         position: nodePositions.zoom,
@@ -185,7 +199,8 @@ function Flow({ variant, headlineRef }: FlowProps) {
           value: shape,
           options: ['cube', 'pyramid'],
           onChange: setShape,
-          label: 'Shape Type',
+          label: 'shape type',
+          variant,
         },
         style: { ...nodeStyle, width: 150 },
         position: nodePositions.shape,
@@ -252,7 +267,7 @@ function Flow({ variant, headlineRef }: FlowProps) {
   }, [shape]);
 
   return (
-    <div className="h-[50vh]">
+    <div className="h-[65vh] xl:h-[45vh]">
       <ReactFlow
         preventScrolling={false}
         zoomOnScroll={false}
@@ -260,10 +275,11 @@ function Flow({ variant, headlineRef }: FlowProps) {
         defaultNodes={defaultNodes}
         defaultEdges={defaultEdges}
         ref={reactFlowRef}
-        id="hero"
+        proOptions={proOptions}
+        style={gradientStyle}
       >
+        <Controls showInteractive={false} className="bg-white" />
         <Background />
-        <Controls showInteractive={false} />
       </ReactFlow>
     </div>
   );

@@ -35,13 +35,13 @@ const features = [
 ];
 
 export default function ReactFlowHome() {
-  const { stars, downloads } = useSSG();
+  const { stars = 16000, downloads = 4000 } = useSSG();
 
   return (
     <BaseLayout>
       <HeroFlow />
 
-      <Section>
+      <Section className="mt-6 lg:mt-10">
         <Stats
           variant="react"
           stats={[

@@ -12,6 +12,17 @@ export default {
         '2xl': '1400px',
       },
     },
+    safelist: [
+      'bg-react',
+      'bg-svelte',
+      'bg-xyflow',
+      'text-react',
+      'text-svelte',
+      'text-xyflow',
+      'border-react',
+      'border-svelte',
+      'border-xyflow',
+    ],
     extend: {
       colors: {
         xyflow: {
@@ -68,7 +79,7 @@ export default {
       },
       fontFamily: {
         sans: ['var(--font-ntdapper)'],
-        mono: ['var(--font-roboto-mono)'],
+        mono: ['var(--font-firamono)'],
       },
       keyframes: {
         'accordion-down': {
