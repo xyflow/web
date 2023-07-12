@@ -1,4 +1,10 @@
-import { useEffect, useState, useRef, MutableRefObject } from 'react';
+import {
+  useEffect,
+  useState,
+  useRef,
+  MutableRefObject,
+  CSSProperties,
+} from 'react';
 import ReactFlow, {
   Background,
   Controls,
@@ -54,7 +60,7 @@ function getNodePositions(headlineBounds) {
 
   if (isLargeFlow) {
     const offsetX = window.innerWidth / 2;
-    const offsetY = headlineBounds.top + 20;
+    const offsetY = headlineBounds.top;
 
     return {
       hero: { x: offsetX + 340, y: offsetY },
@@ -120,6 +126,13 @@ const defaultEdges = [
 type FlowProps = {
   variant: Framework;
   headlineRef: MutableRefObject<HTMLDivElement>;
+};
+
+const gradientStyle: CSSProperties = {
+  backgroundImage: 'url(/img/bg.jpg)',
+  backgroundSize: '40%',
+  backgroundRepeat: 'no-repeat',
+  backgroundPosition: '70% center',
 };
 
 function Flow({ variant, headlineRef }: FlowProps) {
@@ -254,7 +267,7 @@ function Flow({ variant, headlineRef }: FlowProps) {
   }, [shape]);
 
   return (
-    <div className="h-[50vh]">
+    <div className="h-[65vh] xl:h-[45vh]">
       <ReactFlow
         preventScrolling={false}
         zoomOnScroll={false}
@@ -263,6 +276,7 @@ function Flow({ variant, headlineRef }: FlowProps) {
         defaultEdges={defaultEdges}
         ref={reactFlowRef}
         proOptions={proOptions}
+        style={gradientStyle}
       >
         <Controls showInteractive={false} className="bg-white" />
         <Background />

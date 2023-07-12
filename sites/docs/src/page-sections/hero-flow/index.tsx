@@ -40,7 +40,7 @@ export default function HeroFlow() {
 
   return (
     <LayoutBreakout>
-      <div className="pt-[15vh] pointer-events-none max-w-[90rem] w-full absolute left-1/2 -translate-x-1/2 z-10">
+      <div className="pt-[10vh] pointer-events-none max-w-[90rem] w-full absolute left-1/2 -translate-x-1/2 z-10">
         <div
           ref={headlineRef}
           style={headlineStyle}
