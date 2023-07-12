@@ -1,7 +1,7 @@
 'use client';
 
 import Sidebar from '@/components/Sidebar';
-import AuthProtection from './auth-protection';
+import AuthProtection from '@/components/AuthProtection';
 
 function DashboardLayout({ children }: { children: React.ReactNode }) {
   return (

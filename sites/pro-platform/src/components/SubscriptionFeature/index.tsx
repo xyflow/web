@@ -8,6 +8,7 @@ import Link from 'next/link';
 
 import useSubscription from '@/hooks/useSubscription';
 import { CheckCircleIcon } from '@heroicons/react/24/outline';
+import CustomerPortalButton from '../CustomerPortalButton';
 
 type SubscriptionFeatureProps = {
   title: React.ReactNode;
@@ -17,7 +18,7 @@ type SubscriptionFeatureProps = {
 };
 
 function SubscriptionFeature({ title, description, plans = [], button }: SubscriptionFeatureProps) {
-  const { plan } = useSubscription();
+  const { plan, isSubscribed } = useSubscription();
   const isLocked = plans && plans.length > 0 && !plans.includes(plan);
 
   return (
@@ -37,14 +38,21 @@ function SubscriptionFeature({ title, description, plans = [], button }: Subscri
                 </div>
               ))}
             </div>
-            <Link href="/subscribe" className="ml-auto">
-              <Button variant="outline">Upgrade Subscription</Button>
-            </Link>
+            {isSubscribed ? (
+              <div className="ml-auto">
+                <CustomerPortalButton variant="outline">Upgrade Subscription</CustomerPortalButton>
+              </div>
+            ) : (
+              <Link href="/subscribe" className="ml-auto">
+                <Button variant="outline">Subscribe</Button>
+              </Link>
+            )}
           </>
         ) : (
           <>
-            <div>
-              <CheckCircleIcon className="w-8 h-8 text-react" />
+            <div className="flex items-center space-x-2">
+              <CheckCircleIcon className="w-6 h-6 text-react" />
+              <div className="text-muted-foreground text-sm font-bold">Included</div>
             </div>
             {button && (
               <Link href={button.href} className="ml-auto">

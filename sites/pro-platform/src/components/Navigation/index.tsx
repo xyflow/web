@@ -1,8 +1,7 @@
 import Link from 'next/link';
-import Logo from '@/components/Logo';
-import { Subscribed, PlanLabel } from '@/components/SubscriptionStatus';
 
-import SignInSignOutButton from './SignInSignOutButton';
+import Logo from '@/components/Logo';
+import NavMenu from './NavMenu';
 
 function Navigation() {
   return (
@@ -11,15 +10,13 @@ function Navigation() {
         <Link href="/">
           <div className="flex items-center">
             <Logo width={32} height={32} />
-            <div className="ml-2 font-black text-gray-900 text-xl">xyflow pro</div>
-            <Subscribed>
-              <div className="ml-2 text-sm py-0.5 px-2 rounded-full bg-pink-100 border border-react text-react">
-                <PlanLabel />
-              </div>
-            </Subscribed>
+            <div className="ml-2 font-black text-gray-900 text-xl">
+              xyflow{' '}
+              <span className="uppercase text-xs bg-react text-white font-semibold px-1 py-0.5 rounded-full">pro</span>
+            </div>
           </div>
         </Link>
-        <SignInSignOutButton />
+        <NavMenu />
       </div>
     </div>
   );
