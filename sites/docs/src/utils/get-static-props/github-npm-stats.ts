@@ -4,12 +4,12 @@ import {
   NPM_REACTFLOW,
 } from '@/constants';
 
-export default async function getStaticProps({ params }) {
-  const { stargazers_count: stars } = await fetchJSON(GITHUB_API_URL);
-  const { downloads: reactFlowLegacyDownloads } = await fetchJSON(
+export default async function getStaticProps() {
+  const { stargazers_count: stars = 0 } = await fetchJSON(GITHUB_API_URL);
+  const { downloads: reactFlowLegacyDownloads = 0 } = await fetchJSON(
     NPM_REACT_FLOW_LEGACY
   );
-  const { downloads: reactFlowDownloads } = await fetchJSON(NPM_REACTFLOW);
+  const { downloads: reactFlowDownloads = 0 } = await fetchJSON(NPM_REACTFLOW);
 
   const downloads = reactFlowLegacyDownloads + reactFlowDownloads;
 

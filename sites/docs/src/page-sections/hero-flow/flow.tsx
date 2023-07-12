@@ -12,6 +12,7 @@ import SliderNode from './slider-node';
 import SwitcherNode from './switcher-node';
 import SwoopyNode from './swoopy-node';
 import { Framework } from '@/types';
+import { getColorBySite } from '@/utils';
 
 const nodeTypes = {
   hero: HeroNode,
@@ -121,16 +122,11 @@ type FlowProps = {
   headlineRef: MutableRefObject<HTMLDivElement>;
 };
 
-const colors = {
-  react: '#ff0073',
-  svelte: '#ff4000',
-};
-
 function Flow({ variant, headlineRef }: FlowProps) {
   const { setNodes } = useReactFlow();
   const reactFlowRef = useRef(null);
   const [headlineDimensions, setHeadlineDimensions] = useState(null);
-  const [color, setColor] = useState(colors[variant]);
+  const [color, setColor] = useState(getColorBySite(variant));
   const [zoom, setZoom] = useState(12);
   const [shape, setShape] = useState('cube');
 

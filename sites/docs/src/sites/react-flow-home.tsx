@@ -35,7 +35,7 @@ const features = [
 ];
 
 export default function ReactFlowHome() {
-  const { stars, downloads } = useSSG();
+  const { stars = 16000, downloads = 4000 } = useSSG();
 
   return (
     <BaseLayout>
