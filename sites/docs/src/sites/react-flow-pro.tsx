@@ -8,7 +8,7 @@ import Section from '@/page-sections/section';
 
 export default function ReactFlowPro() {
   return (
-    <BaseLayout className="bg-reactflow-gradient bg-no-repeat bg-[65%_top] bg-[length:35%]">
+    <BaseLayout>
       <Hero
         title={
           <>
