@@ -37,7 +37,7 @@ export default function ReactFlowPro() {
         </p>
       </Hero>
 
-      <PricingTable />
+      <PricingTable className="mt-6 lg:mt-10" />
 
       <Section>
         <ClientLogos />

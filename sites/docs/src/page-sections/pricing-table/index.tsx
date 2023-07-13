@@ -2,18 +2,19 @@
 
 import { useState } from 'react';
 
+import { cn } from 'xy-ui';
 import PeriodSwitch from './period-switch';
 import CurrencySwitch from './currency-switch';
 import Plans from './plans';
 import { Currency, BillingPeriod } from './types';
 
-export default function PricingTable() {
+export default function PricingTable({ className }: { className?: string }) {
   const [period, setPeriod] = useState<BillingPeriod>(BillingPeriod.MONTHLY);
   const [currency, setCurrency] = useState<Currency>(getDefaultCurrency());
 
   return (
     <div>
-      <div className="flex justify-center relative mb-8">
+      <div className={cn('flex justify-center relative mb-8', className)}>
         <PeriodSwitch period={period} onClick={setPeriod} />
         <CurrencySwitch value={currency} onChange={setCurrency} />
       </div>
