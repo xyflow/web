@@ -1,22 +1,30 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { Navbar as NextraNavbar } from 'nextra-theme-docs';
 import { getPagesUnderRoute } from 'nextra/context';
 
-import useXYSite from '@/hooks/use-xy-site';
 import { Button } from 'xy-ui';
+import useXYSite from '@/hooks/use-xy-site';
+import Logo from '@/components/logo';
+
+import reactLogo from '../../public/img/react-logo.svg';
+import svelteLogo from '../../public/img/svelte-logo.svg';
 
 const topNav = [
   {
     title: 'xyflow',
     route: '/',
+    logo: null,
   },
   {
-    title: 'React Flow',
+    title: 'React',
     route: '/react-flow',
+    logo: reactLogo,
   },
   {
-    title: 'Svelte Flow',
+    title: 'Svelte',
     route: '/svelte-flow',
+    logo: svelteLogo,
   },
 ];
 
@@ -38,13 +46,22 @@ export default function Navbar(props) {
 
   return (
     <>
-      <div className="relative flex items-center justify-center py-2 text-xs bg-black">
+      <div className="relative flex items-center justify-center py-2 text-xs bg-black space-x-2 z-30">
         {topNav.map((item) => (
           <Link
-            className="px-1 mx-2 text-white hover:text-gray-300"
+            className="px-1 text-white hover:text-gray-300 flex items-center"
             href={item.route}
             key={item.title}
           >
+            {item.logo ? (
+              <Image
+                src={item.logo}
+                alt="react logo"
+                className="w-4 h-4 mr-1"
+              />
+            ) : (
+              <Logo variant="xyflow" className="w-4 h-4 mr-1" inverted />
+            )}
             {item.title}
           </Link>
         ))}

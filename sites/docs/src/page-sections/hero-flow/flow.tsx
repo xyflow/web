@@ -11,6 +11,7 @@ import ReactFlow, {
   ReactFlowProvider,
   useReactFlow,
 } from 'reactflow';
+import cn from 'clsx';
 
 import HeroNode from './hero-node';
 import ColorPickerNode from './color-picker-node';
@@ -60,7 +61,7 @@ function getNodePositions(headlineBounds) {
 
   if (isLargeFlow) {
     const offsetX = window.innerWidth / 2;
-    const offsetY = headlineBounds.top;
+    const offsetY = headlineBounds.top + 25;
 
     return {
       hero: { x: offsetX + 340, y: offsetY },
@@ -128,11 +129,9 @@ type FlowProps = {
   headlineRef: MutableRefObject<HTMLDivElement>;
 };
 
-const gradientStyle: CSSProperties = {
-  backgroundImage: 'url(/img/bg.jpg)',
-  backgroundSize: '40%',
-  backgroundRepeat: 'no-repeat',
-  backgroundPosition: '70% center',
+const bgClass = {
+  react: 'bg-reactflow-gradient',
+  svelte: 'bg-svelteflow-gradient',
 };
 
 function Flow({ variant, headlineRef }: FlowProps) {
@@ -267,7 +266,7 @@ function Flow({ variant, headlineRef }: FlowProps) {
   }, [shape]);
 
   return (
-    <div className="h-[65vh] xl:h-[45vh]">
+    <div className="h-[65vh] xl:h-[60vh] 2xl:h-[50vh]">
       <ReactFlow
         preventScrolling={false}
         zoomOnScroll={false}
@@ -276,7 +275,10 @@ function Flow({ variant, headlineRef }: FlowProps) {
         defaultEdges={defaultEdges}
         ref={reactFlowRef}
         proOptions={proOptions}
-        style={gradientStyle}
+        className={cn(
+          'bg-no-repeat bg-[65%_center] bg-[length:35%]',
+          bgClass[variant]
+        )}
       >
         <Controls showInteractive={false} className="bg-white" />
         <Background />

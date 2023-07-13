@@ -10,6 +10,7 @@ import Features from '@/page-sections/features';
 import Showcase from '@/page-sections/showcase-overview';
 import Section from '@/page-sections/section';
 import GettingStarted from '@/page-sections/getting-started';
+import ClientLogos from '@/components/client-logos';
 
 const features = [
   {
@@ -66,6 +67,10 @@ export default function ReactFlowHome() {
 
       <Section>
         <Features features={features} variant="react" />
+      </Section>
+
+      <Section>
+        <ClientLogos />
       </Section>
 
       <Showcase />

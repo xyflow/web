@@ -8,6 +8,7 @@ import ShowcaseOverview from '@/page-sections/showcase-overview';
 import HeadlineNode from '@/components/headline-node';
 import Handle from '@/components/handle';
 import ContentGrid, { ContentGridItem } from '@/components/content-grid';
+import Logo from '@/components/logo';
 
 export default function XYFlowHome() {
   return (
@@ -65,25 +66,29 @@ export default function XYFlowHome() {
       />
 
       <ContentGrid className="mt-16 lg:mt-24">
-        <ContentGridItem>
-          <Heading size="sm">React Flow</Heading>
+        <ContentGridItem route="/react-flow">
+          <Heading size="sm" className="flex items-center">
+            <Logo variant="react" className="mr-2" /> React Flow
+          </Heading>
           <Text className="mt-2 mb-4" variant="light">
             A customizable React component for building node-based editors and
             interactive diagrams
           </Text>
-          <Button variant="react" asChild>
+          <Button variant="react" asChild size="lg">
             <Link href="/react-flow">Read More</Link>
           </Button>
         </ContentGridItem>
 
-        <ContentGridItem>
-          <Heading size="sm">Svelte Flow</Heading>
+        <ContentGridItem route="/svelte-flow">
+          <Heading size="sm" className="flex items-center">
+            <Logo variant="svelte" className="mr-2" /> Svelte Flow
+          </Heading>
           <Text className="mt-2 mb-4" variant="light">
             A customizable Svelte component for building node-based editors and
             interactive diagrams
           </Text>
-          <Button variant="svelte" asChild>
-            <Link href="/svelte-flow">Svelte More</Link>
+          <Button variant="svelte" asChild size="lg">
+            <Link href="/svelte-flow">Read More</Link>
           </Button>
         </ContentGridItem>
       </ContentGrid>

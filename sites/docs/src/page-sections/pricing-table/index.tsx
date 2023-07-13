@@ -19,11 +19,6 @@ export default function PricingTable() {
       </div>
 
       <Plans currency={currency} period={period} />
-
-      <div className="my-20">
-        <div className="text-center text-light">Some of our subscribers</div>
-        <div className="text-center">logo logo logo logo</div>
-      </div>
     </div>
   );
 }
