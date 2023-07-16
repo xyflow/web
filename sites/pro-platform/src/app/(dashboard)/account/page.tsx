@@ -5,7 +5,7 @@ import ChangePasswordCard from './_cards/change-password';
 
 function AccountPage() {
   return (
-    <div className="max-w-4xl mx-auto mb-20">
+    <div className="max-w-3xl mx-auto mb-20">
       <DashboardHeader
         title="Account"
         description="This page lets you manage your account. You can change your email, password, and delete your account."

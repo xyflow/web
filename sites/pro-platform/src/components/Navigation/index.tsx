@@ -12,7 +12,9 @@ function Navigation() {
             <Logo width={32} height={32} />
             <div className="ml-2 font-black text-gray-900 text-xl">
               xyflow{' '}
-              <span className="uppercase text-xs bg-react text-white font-semibold px-1 py-0.5 rounded-full">pro</span>
+              <span className="uppercase text-sm border border-react text-react font-semibold px-1 py-0.5 rounded-full">
+                pro
+              </span>
             </div>
           </div>
         </Link>

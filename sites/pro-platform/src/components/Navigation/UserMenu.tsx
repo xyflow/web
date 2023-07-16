@@ -15,6 +15,10 @@ export default function () {
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
+          <Link href="/">
+            <SelectLabel className="hover:bg-slate-100">Overview</SelectLabel>
+          </Link>
+          <SelectSeparator />
           <Link href="/account">
             <SelectLabel className="hover:bg-slate-100">Account</SelectLabel>
           </Link>

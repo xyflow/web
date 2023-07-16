@@ -17,6 +17,7 @@ function Signup() {
     await signInEmailPasswordless(email, { metadata, redirectTo: '/' });
   };
 
+  // @todo style notifications and error messages
   return (
     <>
       <Head>

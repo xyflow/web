@@ -13,7 +13,9 @@ function ChangeEmailCard() {
         <CardDescription>Use this form to update your email. We will send you a confirmation mail.</CardDescription>
       </CardHeader>
       <CardFooter className="bg-muted space-x-10">
-        <Input type="email" value={email} />
+        <div className="flex-1">
+          <Input className="max-w-xs" type="email" value={email} />
+        </div>
         <Button className="shrink-0 ml-auto" variant="react">
           Update Email
         </Button>
