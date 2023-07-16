@@ -1,9 +1,8 @@
-import { useRef } from 'react';
-import { SparklesIcon, HeartIcon } from '@heroicons/react/24/outline';
+import { CSSProperties, ReactNode, useRef } from 'react';
+import { SparklesIcon, HeartIcon, BoltIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 
-import { Button } from 'xy-ui';
-import Hero from '@/page-sections/hero';
+import { Button, Heading, Text } from 'xy-ui';
 import useXYSite from '@/hooks/use-xy-site';
 import Flow from './flow';
 import { Framework } from '@/types';
@@ -30,24 +29,37 @@ const proButtonLabel = {
   svelte: 'support Us',
 };
 
+const headlineStyle: CSSProperties = {
+  pointerEvents: 'all',
+};
+
 export default function HeroFlow() {
   const headlineRef = useRef<HTMLDivElement>(null);
   const { site, lib } = useXYSite();
   const ProIcon = proButtonIcon[site];
 
   return (
-    <div className="relative right-1/2 left-1/2 ml-[-50vw] mr-[-50vw] max-w-[100vw] w-[100vw] -mt-16">
-      <Hero
-        title={
-          <div ref={headlineRef}>
+    <LayoutBreakout>
+      <div className="pt-[10vh] pointer-events-none max-w-[90rem] w-full absolute left-1/2 -translate-x-1/2 z-10">
+        <div
+          ref={headlineRef}
+          style={headlineStyle}
+          className="max-w-md relative bg-white/10 backdrop-blur-[2px] p-[max(env(safe-area-inset-left),1.5rem)]"
+        >
+          <Heading size="md" className="mb-4 font-black">
             Wire Your Ideas with <span className={`text-${site}`}>{lib}</span>
-          </div>
-        }
-        subtitle={subtitle[site]}
-        additionalContent={
+          </Heading>
+
+          <Text size="lg" className="mb-4 lg:mb-6">
+            {subtitle[site]}
+          </Text>
+
           <div className="flex">
-            <Button variant="secondary" asChild className="mr-2">
-              <Link href={`/${site}-flow/docs`}>Docs</Link>
+            <Button variant="secondary" asChild className="mr-3 ">
+              <Link href={`/${site}-flow/docs`}>
+                <BoltIcon className="w-5 h-5 mr-1" />
+                Quickstart
+              </Link>
             </Button>
             <Button variant={`${site}-pro`} asChild>
               <Link href={proButtonHref[site]}>
@@ -55,12 +67,18 @@ export default function HeroFlow() {
               </Link>
             </Button>
           </div>
-        }
-        className="pt-[15vh] pointer-events-none max-w-[90rem] pl-[max(env(safe-area-inset-left),1.5rem)] w-full absolute left-1/2 -translate-x-1/2"
-        size="md"
-      />
+        </div>
+      </div>
 
       <Flow variant={site as Framework} headlineRef={headlineRef} />
+    </LayoutBreakout>
+  );
+}
+
+function LayoutBreakout({ children }: { children: ReactNode }) {
+  return (
+    <div className="relative right-1/2 left-1/2 ml-[-50vw] mr-[-50vw] max-w-[100vw] w-[100vw] -mt-16">
+      {children}
     </div>
   );
 }

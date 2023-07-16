@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { useConfig } from 'nextra-theme-docs';
 
-import Logo from '@/components/logo';
+import Logo from '@/components/navbar-logo';
 import Navbar, { NavBarAdditional } from '@/components/navbar';
 import SidebarTitle from '@/components/sidebar-title';
 import Footer from '@/components/footer';
@@ -72,6 +72,13 @@ export default {
       description:
         frontMatter.description ||
         'xyflow - Libraries for React and Svelte for rendering workflows, diagrams and node-based UIs.',
+
+      additionalLinkTags: [
+        {
+          rel: 'icon',
+          href: `${baseUrl}/img/favicon.ico`,
+        },
+      ],
 
       twitter: {
         handle: '@xyflow',

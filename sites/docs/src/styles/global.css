@@ -28,20 +28,20 @@ div.nextra-nav-container-blur {
   background: white;
 }
 
-.max-w-\[90rem\] {
+main .nx-max-w-\[90rem\],
+main .max-w-\[90rem\] {
   max-width: 78rem;
 }
 
-nav.nx-max-w-\[90rem\] {
-  max-width: 78rem;
+@media (max-width: 767px) {
+  main .nextra-sidebar-container {
+    padding-top: 90px;
+  }
 }
 
 @media screen and (min-width: 2000px) {
-  .max-w-\[90rem\] {
-    max-width: 90rem;
-  }
-
-  nav.nx-max-w-\[90rem\] {
+  main .nx-max-w-\[90rem\],
+  main .max-w-\[90rem\] {
     max-width: 90rem;
   }
 }

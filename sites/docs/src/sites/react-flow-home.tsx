@@ -10,6 +10,7 @@ import Features from '@/page-sections/features';
 import Showcase from '@/page-sections/showcase-overview';
 import Section from '@/page-sections/section';
 import GettingStarted from '@/page-sections/getting-started';
+import ClientLogos from '@/components/client-logos';
 
 const features = [
   {
@@ -35,13 +36,13 @@ const features = [
 ];
 
 export default function ReactFlowHome() {
-  const { stars, downloads } = useSSG();
+  const { stars = 16000, downloads = 4000 } = useSSG();
 
   return (
     <BaseLayout>
       <HeroFlow />
 
-      <Section>
+      <Section className="mt-6 lg:mt-10">
         <Stats
           variant="react"
           stats={[
@@ -66,6 +67,10 @@ export default function ReactFlowHome() {
 
       <Section>
         <Features features={features} variant="react" />
+      </Section>
+
+      <Section>
+        <ClientLogos />
       </Section>
 
       <Showcase />

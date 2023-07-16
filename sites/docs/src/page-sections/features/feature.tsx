@@ -42,8 +42,9 @@ export default function Feature({
   return (
     <div
       className={cn(
-        'relative md:grid md:grid-cols-2 md:gap-8 mb-16 md:mb-24',
-        zIndexClasses[featureCount - index]
+        'relative md:grid md:grid-cols-2 md:gap-8 ',
+        zIndexClasses[featureCount - index],
+        index < featureCount - 1 ? 'mb-16 md:mb-24' : ''
       )}
     >
       <div
