@@ -46,6 +46,7 @@ export default {
   docsRepositoryBase: 'https://github.com/xyflow/xyflow',
   // this is necessary to hide the github icon
   project: {},
+  darkMode: false,
   navbar: {
     component: Navbar,
     extraContent: NavBarAdditional,
