@@ -8,7 +8,8 @@
     "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "next lint",
-    "write-showcases": "rm -rf static/img/showcase && mkdir -p static/img/showcase && node scripts/get-showcases.js"
+    "write-showcases": "rm -rf static/img/showcase && mkdir -p static/img/showcase && node scripts/get-showcases.js",
+    "check-sitemap": "node scripts/check-sitemap.mjs"
   },
   "dependencies": {
     "@codesandbox/sandpack-react": "^2.6.9",
@@ -20,6 +21,7 @@
     "@react-three/fiber": "^8.13.4",
     "@xyflow/system": "^0.0.1",
     "clsx": "^1.2.1",
+    "fast-xml-parser": "^4.2.6",
     "html-to-image": "^1.11.11",
     "nanoid": "^4.0.2",
     "next": "^13.4.8",
