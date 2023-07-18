@@ -1,54 +1,36 @@
 import { type ReactNode } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useConfig } from 'nextra-theme-docs';
 
 import { Button, Heading, Text } from 'xy-ui';
 import ContentGrid, { ContentGridItem } from '@/components/content-grid';
-import CaseStudyPreview from '@/components/case-study-preview';
+import ProjectPreview from '@/components/project-preview';
 import { getPrevAndNextPagesByTitle } from '@/utils';
-
-function CaseStudyPreviews() {
-  const { frontMatter } = useConfig();
-  const [prevCaseStudy, nextCaseStudy] = getPrevAndNextPagesByTitle(
-    frontMatter.title,
-    '/case-studies'
-  );
-
-  return (
-    <ContentGrid className="mt-20">
-      <ContentGridItem route={prevCaseStudy.route}>
-        <CaseStudyPreview
-          client={prevCaseStudy.frontMatter?.client}
-          title={prevCaseStudy.frontMatter?.title}
-          description={prevCaseStudy.frontMatter?.description}
-          route={prevCaseStudy.route}
-        />
-      </ContentGridItem>
-      <ContentGridItem route={nextCaseStudy.route}>
-        <CaseStudyPreview
-          client={nextCaseStudy.frontMatter?.client}
-          title={nextCaseStudy.frontMatter?.title}
-          description={nextCaseStudy.frontMatter?.description}
-          route={nextCaseStudy.route}
-        />
-      </ContentGridItem>
-    </ContentGrid>
-  );
-}
 
 export default function CaseStudyLayout({ children }: { children: ReactNode }) {
   const { frontMatter } = useConfig();
 
   return (
     <>
-      <Heading className="font-black text-6xl mb-4 mt-20">
-        {frontMatter.title}
-      </Heading>
-      <Text size="lg" className="max-w-3xl">
-        {frontMatter.description}
-      </Text>
+      <div className="max-w-3xl mx-auto">
+        <Heading size="lg" className="mt-20">
+          {frontMatter.title}
+        </Heading>
+        <Text size="md" className="mt-4 lg:mt-6">
+          {frontMatter.interviewee}
+        </Text>
+      </div>
 
-      <div>{children}</div>
+      <Image
+        src={frontMatter.image}
+        width={frontMatter.image_width}
+        height={frontMatter.image_height}
+        alt={`${frontMatter.title} screenshot`}
+        className="shadow-md mx-auto my-14 rounded-md border border-solid border-gray-100"
+      />
+
+      <div className="max-w-3xl mx-auto">{children}</div>
 
       <CaseStudyPreviews />
 
@@ -65,5 +47,36 @@ export default function CaseStudyLayout({ children }: { children: ReactNode }) {
         </Button>
       </div>
     </>
+  );
+}
+
+function CaseStudyPreviews() {
+  const { frontMatter } = useConfig();
+  const [prevCaseStudy, nextCaseStudy] = getPrevAndNextPagesByTitle(
+    frontMatter.title,
+    '/case-studies'
+  );
+
+  return (
+    <ContentGrid className="mt-20">
+      <ContentGridItem route={prevCaseStudy.route}>
+        <ProjectPreview
+          image={nextCaseStudy.frontMatter?.image}
+          kicker={nextCaseStudy.frontMatter?.client}
+          title={prevCaseStudy.frontMatter?.title}
+          description={prevCaseStudy.frontMatter?.description}
+          route={prevCaseStudy.route}
+        />
+      </ContentGridItem>
+      <ContentGridItem route={nextCaseStudy.route}>
+        <ProjectPreview
+          image={nextCaseStudy.frontMatter?.image}
+          kicker={nextCaseStudy.frontMatter?.client}
+          title={nextCaseStudy.frontMatter?.title}
+          description={nextCaseStudy.frontMatter?.description}
+          route={nextCaseStudy.route}
+        />
+      </ContentGridItem>
+    </ContentGrid>
   );
 }
