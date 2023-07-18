@@ -29,7 +29,7 @@ function ResetPassword() {
           onChange={(evt) => setEmail(evt.target.value)}
         />
       </div>
-      <Button className="w-full rounded-lg" disabled={isLoading} type="submit" variant="react">
+      <Button size="lg" className="w-full" disabled={isLoading} type="submit" variant="react">
         Send Reset Link
       </Button>
     </form>

@@ -25,9 +25,17 @@ const SignInMagicLink = () => {
         {isSuccess && <Notification description="Please check your email for a magic link!" />}
         <div>
           <InputLabel htmlFor="email">Email</InputLabel>
-          <Input variant="square" value={email} onChange={onChange} id="email" placeholder="Your Email" type="email" />
+          <Input
+            required
+            variant="square"
+            value={email}
+            onChange={onChange}
+            id="email"
+            placeholder="Your Email"
+            type="email"
+          />
         </div>
-        <Button className="rounded-lg w-full shrink-0" type="submit" variant="react">
+        <Button size="lg" className="w-full shrink-0" type="submit" variant="react">
           Send Secure Link
         </Button>
       </div>

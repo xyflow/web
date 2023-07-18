@@ -54,7 +54,7 @@ function Signup() {
             </label>
           </div>
         </div>
-        <Button className="w-full rounded-lg" disabled={isLoading} type="submit" variant="react">
+        <Button size="lg" className="w-full" disabled={isLoading} type="submit" variant="react">
           Sign Up
         </Button>
       </form>

@@ -67,7 +67,7 @@ function SignInEmailPassword() {
             variant="square"
           />
         </div>
-        <Button className="rounded-lg w-full" type="submit" variant="react">
+        <Button size="lg" className="w-full" type="submit" variant="react">
           Sign in
         </Button>
       </div>

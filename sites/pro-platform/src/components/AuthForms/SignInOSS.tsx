@@ -67,7 +67,7 @@ function Signup() {
             I confirm that I am using React Flow Pro only for non-commercial purposes in this open source project
           </label>
         </div>
-        <Button className="w-full rounded-lg" disabled={isLoading} type="submit" variant="react">
+        <Button size="lg" className="w-full" disabled={isLoading} type="submit" variant="react">
           Sign Up
         </Button>
       </form>

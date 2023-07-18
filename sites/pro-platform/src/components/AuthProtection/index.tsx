@@ -4,9 +4,11 @@ import { redirect } from 'next/navigation';
 import { useAuthenticationStatus } from '@nhost/nextjs';
 
 import Loader from '@/components/Loader';
+import useQueryString from '@/hooks/useQueryString';
 
 const AuthProtection = ({ children }: { children: React.ReactNode }) => {
   const { isLoading, isAuthenticated } = useAuthenticationStatus();
+  const queryString = useQueryString();
 
   if (isLoading) {
     return (
@@ -17,7 +19,7 @@ const AuthProtection = ({ children }: { children: React.ReactNode }) => {
   }
 
   if (!isAuthenticated) {
-    redirect('/signin');
+    redirect(`/signin${queryString}`);
   }
 
   return children;
