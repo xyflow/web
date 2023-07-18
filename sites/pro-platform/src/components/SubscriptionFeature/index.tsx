@@ -23,7 +23,7 @@ function SubscriptionFeature({ title, description, plans = [], button }: Subscri
 
   return (
     <Card>
-      <CardHeader className={cn({ 'bg-muted': isLocked })}>
+      <CardHeader className={cn({ 'bg-muted': isLocked, 'cursor-not-allowed': isLocked })}>
         <CardTitle className={cn({ 'text-muted-foreground': isLocked })}>{title}</CardTitle>
         {description && <CardDescription className="text-muted-foreground">{description}</CardDescription>}
       </CardHeader>

@@ -32,6 +32,12 @@ function OverviewPage() {
           button={{ label: 'Open Issue', href: 'https://github.com/wbkd/react-flow/issues/new/choose' }}
         />
         <SubscriptionFeature
+          title="Invite Your Team"
+          description="You can invite your team members to your subscription. They will be able to access all pro features as well."
+          plans={[SubscriptionPlan.STARTER, SubscriptionPlan.PRO, SubscriptionPlan.ENTERPRISE]}
+          button={{ label: 'Invite Members', href: '/members' }}
+        />
+        <SubscriptionFeature
           title="Onboarding Call"
           description="We are interested to learn more about your project and what you are building with React Flow. You can schedule a call with us so that we can find out how we can make React Flow even better in the future."
           plans={[SubscriptionPlan.STARTER, SubscriptionPlan.PRO, SubscriptionPlan.ENTERPRISE]}

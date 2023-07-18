@@ -2,6 +2,7 @@ import jwt from 'jsonwebtoken';
 import { jwtSecretKey } from '../../utils';
 import { sendPublicNewsletterConfirmation } from '../../utils/mailjet';
 
+// @todo re-enable this function and convert to TS
 export default async function publicNewsletterSignup(req, res) {
   if (req.method === 'POST') {
     try {

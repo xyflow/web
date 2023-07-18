@@ -2,9 +2,9 @@ import { useUserEmail } from '@nhost/nextjs';
 
 function useStripeCustomerPortal(): { portalUrl: string } {
   const userEmail = useUserEmail();
-
-  // @todo put this in env var for dev/prod
-  return { portalUrl: `https://billing.stripe.com/p/login/test_bIYfZ70VVdRY7lucMM?prefilled_email=${userEmail}` };
+  return {
+    portalUrl: `https://billing.stripe.com/p/login/${process.env.NEXT_PUBLIC_STRIPE_CUSTOMER_PORTAL_ID}?prefilled_email=${userEmail}`,
+  };
 }
 
 export default useStripeCustomerPortal;

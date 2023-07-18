@@ -1,0 +1,15 @@
+table:
+  name: team_subscriptions
+  schema: public
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - email
+        - subscription_plan_id
+      filter:
+        _or:
+          - created_by:
+              _eq: X-Hasura-User-Id
+          - user_id:
+              _eq: X-Hasura-User-Id

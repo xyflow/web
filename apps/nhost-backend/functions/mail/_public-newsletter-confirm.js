@@ -2,6 +2,7 @@ import jwt from 'jsonwebtoken';
 import { jwtSecretKey } from '../../utils';
 import { subscribePublicMailinglist } from '../../utils/mailjet';
 
+// @todo re-enable this function and convert to TS
 export default async function publicNewsletterConfirm(req, res) {
   const token = req.query.token;
 

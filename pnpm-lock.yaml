@@ -391,17 +391,17 @@ importers:
         specifier: ^13.4.5
         version: 13.4.8(@mdx-js/loader@2.3.0)(@mdx-js/react@2.3.0)
       '@nhost/nextjs':
-        specifier: ^1.13.31
-        version: 1.13.31(@types/react@18.2.14)(encoding@0.1.13)(graphql@16.6.0)(next@13.4.8)(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^1.13.34
+        version: 1.13.34(@types/react@18.2.14)(encoding@0.1.13)(graphql@16.6.0)(next@13.4.8)(react-dom@18.2.0)(react@18.2.0)
       '@nhost/nhost-js':
-        specifier: ^2.2.10
-        version: 2.2.10(encoding@0.1.13)(graphql@16.6.0)
+        specifier: ^2.2.13
+        version: 2.2.13(encoding@0.1.13)(graphql@16.6.0)
       '@nhost/react':
-        specifier: ^2.0.25
-        version: 2.0.25(@types/react@18.2.14)(encoding@0.1.13)(graphql@16.6.0)(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.0.28
+        version: 2.0.28(@types/react@18.2.14)(encoding@0.1.13)(graphql@16.6.0)(react-dom@18.2.0)(react@18.2.0)
       '@nhost/react-apollo':
-        specifier: ^5.0.29
-        version: 5.0.29(@apollo/client@3.7.15)(@nhost/nhost-js@2.2.10)(@nhost/react@2.0.25)(graphql@16.6.0)(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^5.0.32
+        version: 5.0.32(@apollo/client@3.7.15)(@nhost/nhost-js@2.2.13)(@nhost/react@2.0.28)(graphql@16.6.0)(react-dom@18.2.0)(react@18.2.0)
       '@stackblitz/sdk':
         specifier: ^1.9.0
         version: 1.9.0
@@ -5163,14 +5163,14 @@ packages:
     dev: false
     optional: true
 
-  /@nhost/apollo@5.2.12(@apollo/client@3.7.15)(@nhost/nhost-js@2.2.10):
-    resolution: {integrity: sha512-tBzI7Umuv0z5GdyN1cpr2XhwAkKJh9DX+1Gchb3MuKO0NHSA51IhiqVPSvmrkv0znUI8LefuwsuXrhTBPXc7Jg==}
+  /@nhost/apollo@5.2.15(@apollo/client@3.7.15)(@nhost/nhost-js@2.2.13):
+    resolution: {integrity: sha512-tk/SZbzUwJlyJQzXcu+dVvajrJAvcpYYCIJqEol54WkgFjgX0A9tcbGJ+yHh6QRHsBW6OWnWxdER3Jt8cvfc8g==}
     peerDependencies:
       '@apollo/client': ^3.7.10
-      '@nhost/nhost-js': 2.2.10
+      '@nhost/nhost-js': 2.2.13
     dependencies:
       '@apollo/client': 3.7.15(graphql@16.6.0)(react-dom@18.2.0)(react@18.2.0)
-      '@nhost/nhost-js': 2.2.10(encoding@0.1.13)(graphql@16.6.0)
+      '@nhost/nhost-js': 2.2.13(encoding@0.1.13)(graphql@16.6.0)
       graphql: 16.7.1
       graphql-ws: 5.13.1(graphql@16.7.1)
     dev: false
@@ -5199,8 +5199,8 @@ packages:
       - encoding
     dev: false
 
-  /@nhost/hasura-storage-js@2.1.6(encoding@0.1.13):
-    resolution: {integrity: sha512-wjtTQptYNFIzGZTrgRBCd9g3frHRfE+d5XVqLVFzwqtDioYTE1fK4Dcl45LVyfKM6H15maAr5z70NIKmrQd4aA==}
+  /@nhost/hasura-storage-js@2.2.2(encoding@0.1.13):
+    resolution: {integrity: sha512-GMeB1m6YKZMZDSO6UtmgXYWxsFUNlphIZH9JeiDX+6UTmbd62UlDmhBcmx2OGy/tvv57D+HbohpV6AY9S6QL4w==}
     dependencies:
       fetch-ponyfill: 7.1.0(encoding@0.1.13)
       form-data: 4.0.0
@@ -5209,14 +5209,14 @@ packages:
       - encoding
     dev: false
 
-  /@nhost/nextjs@1.13.31(@types/react@18.2.14)(encoding@0.1.13)(graphql@16.6.0)(next@13.4.8)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-m+B4YapVpjRUFrjAzbUQof9H/tLAm4DCHPmncd62J/sMW3k0YeVg3/m6KXyhMWMZJJiPphVorkKNFC5vAtrp5Q==}
+  /@nhost/nextjs@1.13.34(@types/react@18.2.14)(encoding@0.1.13)(graphql@16.6.0)(next@13.4.8)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-OPQlqxd/DKyZ72Yja1omsTA4K4wi3XxDDVTTrm6wpwIvjdiUn6v+bdS4KiStDhOIm5ek8/dRWTGHox+M3QHF0Q==}
     peerDependencies:
       next: ^12.0.10 || ^13.0.0
       react: ^17.0.0 || ^18.0.0
       react-dom: ^17.0.0 || ^18.0.0
     dependencies:
-      '@nhost/react': 2.0.25(@types/react@18.2.14)(encoding@0.1.13)(graphql@16.6.0)(react-dom@18.2.0)(react@18.2.0)
+      '@nhost/react': 2.0.28(@types/react@18.2.14)(encoding@0.1.13)(graphql@16.6.0)(react-dom@18.2.0)(react@18.2.0)
       isomorphic-unfetch: 3.1.0(encoding@0.1.13)
       js-cookie: 3.0.5
       next: 13.4.8(react-dom@18.2.0)(react@18.2.0)
@@ -5230,32 +5230,32 @@ packages:
       - graphql
     dev: false
 
-  /@nhost/nhost-js@2.2.10(encoding@0.1.13)(graphql@16.6.0):
-    resolution: {integrity: sha512-CMIDfDjo1avWOOGek2hk3SmAdvriY4tVQ+TVLV0yhaeOJWhi6XZjWh9Ezn2o05QGLKc7FTuPA2pqyO0YEWHNNw==}
+  /@nhost/nhost-js@2.2.13(encoding@0.1.13)(graphql@16.6.0):
+    resolution: {integrity: sha512-HU9eOpkVBGGMHsRThGyl654Y9W8bksSEnyEvDojUg76+3ngOn2ebrasXR/94YoR206soEzq3v4b0OKmn/1jlnQ==}
     peerDependencies:
       graphql: ^14.0.0 || ^15.0.0 || ^16.0.0
     dependencies:
       '@nhost/graphql-js': 0.1.4(encoding@0.1.13)(graphql@16.6.0)
       '@nhost/hasura-auth-js': 2.1.7(encoding@0.1.13)
-      '@nhost/hasura-storage-js': 2.1.6(encoding@0.1.13)
+      '@nhost/hasura-storage-js': 2.2.2(encoding@0.1.13)
       graphql: 16.6.0
       isomorphic-unfetch: 3.1.0(encoding@0.1.13)
     transitivePeerDependencies:
       - encoding
     dev: false
 
-  /@nhost/react-apollo@5.0.29(@apollo/client@3.7.15)(@nhost/nhost-js@2.2.10)(@nhost/react@2.0.25)(graphql@16.6.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-ynEJMbLf0G876QLfhFvougyYVhBK8DYt8E9SkDVvct7QOCczhwJz7g0Or6caphFZ83QaYoZACIrgNG8jTgqgrQ==}
+  /@nhost/react-apollo@5.0.32(@apollo/client@3.7.15)(@nhost/nhost-js@2.2.13)(@nhost/react@2.0.28)(graphql@16.6.0)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-DVzakIcVzIdlV4VJK+ZPSimrdicFWH/O6j5hfqhC3OGM5j1udpayy/6iBhUErJgFGhT6dzjUpSKxVqhHu6sC9Q==}
     peerDependencies:
       '@apollo/client': ^3.7.10
-      '@nhost/react': 2.0.25
+      '@nhost/react': 2.0.28
       graphql: ^16.0.0
       react: ^17.0.0 || ^18.0.0
       react-dom: ^17.0.0 || ^18.0.0
     dependencies:
       '@apollo/client': 3.7.15(graphql@16.6.0)(react-dom@18.2.0)(react@18.2.0)
-      '@nhost/apollo': 5.2.12(@apollo/client@3.7.15)(@nhost/nhost-js@2.2.10)
-      '@nhost/react': 2.0.25(@types/react@18.2.14)(encoding@0.1.13)(graphql@16.6.0)(react-dom@18.2.0)(react@18.2.0)
+      '@nhost/apollo': 5.2.15(@apollo/client@3.7.15)(@nhost/nhost-js@2.2.13)
+      '@nhost/react': 2.0.28(@types/react@18.2.14)(encoding@0.1.13)(graphql@16.6.0)(react-dom@18.2.0)(react@18.2.0)
       graphql: 16.6.0
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -5263,13 +5263,13 @@ packages:
       - '@nhost/nhost-js'
     dev: false
 
-  /@nhost/react@2.0.25(@types/react@18.2.14)(encoding@0.1.13)(graphql@16.6.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-5Ri5gT2w1Hz3OHv8VTCAB/Ldf2qcQe6MH80gOawVH70kon0WhorXYyHaFjIXce2RjEjvWN2XXyRdb+6o6+MLxw==}
+  /@nhost/react@2.0.28(@types/react@18.2.14)(encoding@0.1.13)(graphql@16.6.0)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-DPt8SGiFmzL9prFvB/WJt97NbzXaJ+3xHC232H1TjR4ScOzsgvEMcth1McWCun49x5HK0IB7OXKsBrtA7WMCDg==}
     peerDependencies:
       react: ^17.0.0 || ^18.1.0
       react-dom: ^17.0.0 || ^18.1.0
     dependencies:
-      '@nhost/nhost-js': 2.2.10(encoding@0.1.13)(graphql@16.6.0)
+      '@nhost/nhost-js': 2.2.13(encoding@0.1.13)(graphql@16.6.0)
       '@xstate/react': 3.2.2(@types/react@18.2.14)(react@18.2.0)(xstate@4.37.2)
       jwt-decode: 3.1.2
       react: 18.2.0

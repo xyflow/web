@@ -16,7 +16,7 @@ export default function SubscribePage() {
             We use Stripe to manage your subscription. Please open the customer portal to get access to your billing{' '}
           </CardDescription>
         </CardHeader>
-        <CardFooter>
+        <CardFooter className="bg-muted">
           <CustomerPortalButton variant="react">Open Customer Portal</CustomerPortalButton>
         </CardFooter>
       </Card>

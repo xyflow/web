@@ -11,6 +11,7 @@ const {
 
 const { sendSubscriptionNotification } = require('../../utils/discord');
 
+// @todo re-enable this function and convert to TS
 export default async function handler(req, res) {
   // Check header to make sure the request comes from Hasura
   if (
