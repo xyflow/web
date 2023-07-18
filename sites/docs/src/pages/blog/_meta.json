@@ -1,0 +1,21 @@
+{
+  "*": {
+    "display": "hidden",
+    "theme": {
+      "toc": true,
+      "sidebar": false,
+      "pagination": false,
+      "layout": "default"
+    }
+  },
+  "react-flow-and-the-web-audio-api": "Tutorial: Integrating React Flow and the Web Audio API",
+  "spring-update-2023": "Team update – v11.6.0, Hayleigh is here, and talking about money",
+  "asking-for-money-for-open-source": "Dear Open Source: let’s do a better job of asking for money",
+  "react-flow-v-11-5": "v11.5.0 Release",
+  "mind-map-app-with-react-flow": "Tutorial: Build a Mind Map App with React Flow",
+  "react-flow-winter-2022": "v11.4.0, design-tool components, an awesome list, and new examples",
+  "reactflow-npm-package-name": "How we lost our slick new npm package name (and then got it back)",
+  "react-flow-fall-2022": "What’s new at React Flow - Fall 2022 🍂",
+  "react-flow-v11": "React Flow 11 Release",
+  "react-flow-v10": "Releasing React Flow 10 and React Flow Pro"
+}

@@ -1,0 +1,11 @@
+{
+  "custom-edge": "Custom Edges",
+  "edge-types": "Edge Types",
+  "updatable-edge": "Updatable Edge",
+  "custom-connectionline": "Custom Connectionline",
+  "markers": "Edge Markers",
+  "delete-edge-on-drop": "Delete Edge on Drop",
+  "floating-edges": "Floating Edges",
+  "simple-floating-edges": "Simple Floating Edges",
+  "edge-label-renderer": "Edge Label Renderer"
+}

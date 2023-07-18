@@ -12,6 +12,17 @@ export default {
         '2xl': '1400px',
       },
     },
+    safelist: [
+      'bg-react',
+      'bg-svelte',
+      'bg-xyflow',
+      'text-react',
+      'text-svelte',
+      'text-xyflow',
+      'border-react',
+      'border-svelte',
+      'border-xyflow',
+    ],
     extend: {
       colors: {
         xyflow: {
@@ -31,6 +42,7 @@ export default {
         ring: 'hsl(var(--ring))',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
+        light: 'hsl(var(--light))',
         primary: {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))',
@@ -67,7 +79,21 @@ export default {
       },
       fontFamily: {
         sans: ['var(--font-ntdapper)'],
-        mono: ['var(--font-roboto-mono)'],
+        mono: ['var(--font-firamono)'],
+      },
+      keyframes: {
+        'accordion-down': {
+          from: { height: 0 },
+          to: { height: 'var(--radix-accordion-content-height)' },
+        },
+        'accordion-up': {
+          from: { height: 'var(--radix-accordion-content-height)' },
+          to: { height: 0 },
+        },
+      },
+      animation: {
+        'accordion-down': 'accordion-down 0.2s ease-out',
+        'accordion-up': 'accordion-up 0.2s ease-out',
       },
     },
   },

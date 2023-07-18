@@ -1,0 +1,68 @@
+---
+title: Releasing React Flow 10 and React Flow Pro
+intro: 'Almost two years ago we open sourced React Flow that was built for our flow-based data processing tool Datablocks. Since then we invested more and more time in React Flow and it got a lot of traction (25k+ website visitors per month, 9k+ stars on Github, 1k+ Discord members, 100k+ weekly downloads on npm).'
+date: 2022/03/15
+authors: ['moritz', 'christopher']
+tags: ['react-flow', 'release']
+image: /img/blog/v10-header.png
+---
+
+import BlogPostLayout from '@/layouts/blog-post';
+
+<BlogPostLayout>
+Almost two years ago we [open sourced React Flow](https://webkid.io/blog/react-flow-node-based-graph-library/) that was built for our flow-based data processing tool [Datablocks](https://datablocks.pro). Since then we invested more and more time in React Flow and it got a lot of traction (25k+ website visitors per month, 9k+ stars on Github, 1k+ Discord members, 100k+ weekly downloads on npm).
+We are super happy about the progress and the community that has developed around React Flow. We think that the library has a lot of potential to solve problems that many developer teams face when building node-based editors.
+
+After several months of hard work, today we can finally announce the release of React Flow version 10. Together with the new library version, we are also releasing a fully revised documentation that is now powered by [Docusaurus](https://docusaurus.io/). Last but not least, we are releasing [React Flow Pro](https://pro.reactflow.dev/pricing), our new subscription model for React Flow which we want to establish to secure the further development and maintenance of the library. In this post we describe all the news around React Flow version 10. If you want to migrate from v9 to v10, please refer to the [migration guide](/docs/guides/migrate-to-v10).
+
+import CodeViewer from '@/components/code-viewer';
+
+<div style={{ marginTop: 40 }} />
+
+<CodeViewer
+  codePath="api-flows/SubFlows3"
+  options={{ editorHeight: 300 }}
+  showEditor={false}
+  additionalFiles={['nodes.js', 'edges.js']}
+/>
+
+<div
+  style={{ fontSize: 12, marginTop: -24, textAlign: 'center', color: '#777' }}
+>
+  Some of the most awaited features: Sub Flows!
+</div>
+
+## New Features
+
+Version 10 comes with many new features and improvements. Besides a complete rewrite of the internal state management, the separation of the graph elements into nodes and edges, several bug fixes and refactorings, these are the most important new features:
+
+- **Sub Flows**: Support for sub flows, nested flows and grouping of nodes
+- **Touch Device Support**: The UX for connecting nodes on touch devices has been improved
+- **Key Handling**: Multiple keys and key combinations are now supported
+- **Several new hooks**: `useReactFlow`, `useNodes`, `useEdges`, `useViewport`, `useKeypress` have been refactored to provide a better dev experience
+- **Fit View Property**: Fit all nodes and edges initially without writing custom logic
+- **Edge Marker**: More options to configure the start and end markers of the edges
+
+The biggest and most awaited new feature (when you look at the [Github discussions](https://github.com/wbkd/react-flow/discussions/1024)) is the support of sub flows and groups. In React Flow v10, a node can specify a `parentNode` which affects its positioning and dragging behaviour. Child nodes get positioned relatively to their parents and are being moved together with their parent node. It is also possible to limit child nodes to the boundaries of their parents. This gives React Flow users the ability to visualize nested data structures and implement features like collapse/expand or zooming into a sub flow.
+
+Another very important improvement is the support of touch devices. Because we designed [datablocks](https://datablocks.pro) as a desktop-only app, it was not possible to connect nodes on touch devices in the former versions. With v10 you can create connections by tapping two handles in succession.
+
+React Flow comes with some key handlers for removing, multi selecting and drawing a selection box. These handlers now have more options to be configured. You can not only pass a single key, but also multiple ones or key combinations.
+
+In order to update nodes, edges and the viewport, we implemented a new hook: `useReactFlow`. It comes with useful helpers like `getNode`, `fitView` or `setCenter`. We also added new hooks like `useNodes`, `useEdges`, `useViewport` and `useKeypress`.
+
+There is more! You can find a list with detailed explanations of the new features and breaking changes in the [migration guide](/docs/guides/migrate-to-v10).
+
+## React Flow Pro
+
+Together with the new library version, we are also releasing a subscription model called [React Flow Pro](https://pro.reactflow.dev/pricing). During the past two years we spent a lot of time on improving the library, adding new features, organizing issues and fixing bugs. With React Flow Pro we now want to take the next step: Securing the future of React Flow financially. Our goal is to keep the library open source, free of charge and under MIT license. At the same time, we want to give companies that use React Flow as an essential part of their business the assurance that the library will continue to be developed and updated.
+
+To meet both requirements, we came up with the idea of adding a small attribution to the React Flow renderer. Subscribers to the [Starter](https://pro.reactflow.dev/pricing) or [Enterprise](https://pro.reactflow.dev/pricing) plans can remove the attribution from their applications. Everyone else can use React Flow in the same way as before as long as the attribution is displayed. In addition to removing the attribution, Pro subscribers get access to an internal Discord channel and can schedule support calls.
+We are excited about this change and we hope that it will be well received and can secure our work on React Flow. You can check out the plans and features on the [React Flow Pro site](https://pro.reactflow.dev/pricing).
+
+---
+
+Hopefully we could give you a good overview about the new features and our future plans.
+If you have any feedback, you can contact us via [mail](maito:info@webkid.io) or the [contact form](https://pro.reactflow.dev/contact). Feel free to [follow us on twitter](https://twitter.com/reactflowdev) for the latest updates about React Flow.
+
+</BlogPostLayout>

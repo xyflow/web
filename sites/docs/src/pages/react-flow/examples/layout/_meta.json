@@ -1,0 +1,10 @@
+{
+  "sub-flows": "Sub Flow",
+  "horizontal": "Horizontal Flow",
+  "dagre": "Dagre Tree",
+  "elkjs": "Elkjs Tree",
+  "auto-layout": "Auto Layout",
+  "force-layout": "Force Layout",
+  "expand-collapse": "Expand and Collapse",
+  "workflow-builder-starter": "Workflow Builder Starter"
+}

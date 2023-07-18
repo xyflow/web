@@ -1,0 +1,23 @@
+{
+  "*": {
+    "type": "page",
+    "theme": {
+      "layout": "default"
+    }
+  },
+  "index": {
+    "title": "React Flow",
+    "theme": {
+      "layout": "raw"
+    }
+  },
+  "docs": "Docs",
+  "api": "API",
+  "examples": "Examples",
+  "pro": {
+    "title": "Pro",
+    "theme": {
+      "layout": "raw"
+    }
+  }
+}

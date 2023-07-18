@@ -1,0 +1,18 @@
+---
+sidebar_position: 10
+title: Contextual Zoom
+hide_table_of_contents: true
+---
+
+import CodeViewer from '@/components/code-viewer';
+import ExampleLayout from '@/layouts/example';
+
+<ExampleLayout>
+This example shows how the current zoom level can be used by a node to decide which content to show.
+We are using selecting the zoom via the [`useStore` hook](/docs/api/hooks/use-store/#usestore) to update our custom node whenever the zoom changes.
+
+<CodeViewer
+  codePath="example-flows/ContextualZoom"
+  additionalFiles={['ZoomNode.js', 'index.css']}
+/>
+</ExampleLayout>

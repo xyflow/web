@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import 'reactflow/dist/style.css';
+
+.sidebar-title.pro:after {
+  content: 'Pro';
+  display: inline-block;
+  font-size: 12px;
+  margin-left: 10px;
+  background-color: #ff0071;
+  color: white;
+  border-radius: 4px;
+  padding: 2px 5px;
+}
+
+nav.nextra-toc:empty {
+  display: none;
+}
+
+nav.nx-bg-transparent {
+  background-color: white;
+}
+
+div.nextra-nav-container-blur {
+  backdrop-filter: none;
+  background: white;
+}
+
+main .nx-max-w-\[90rem\],
+main .max-w-\[90rem\] {
+  max-width: 78rem;
+}
+
+@media (max-width: 767px) {
+  main .nextra-sidebar-container {
+    padding-top: 90px;
+  }
+}
+
+@media screen and (min-width: 2000px) {
+  main .nx-max-w-\[90rem\],
+  main .max-w-\[90rem\] {
+    max-width: 90rem;
+  }
+}
+
+@layer base {
+  :root {
+    --color-xyflow: 0 0% 0%;
+    --color-react: 333 100% 50%;
+    --color-svelte: 15 100% 50%;
+
+    --background: 0 0% 100%;
+    --foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 47.4% 11.2%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 0 100% 100%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 215 20.2% 65.1%;
+
+    --radius: 0.5rem;
+
+    --light: 215.4 16.3% 46.9%;
+  }
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+  }
+  html {
+    /* this is a nextra default we need to overwrite */
+    font-feature-settings: normal !important;
+    overflow-x: hidden;
+  }
+}

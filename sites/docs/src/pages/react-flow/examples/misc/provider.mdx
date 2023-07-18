@@ -1,0 +1,16 @@
+---
+title: ReactFlowProvider
+---
+
+import CodeViewer from '@/components/code-viewer';
+import ExampleLayout from '@/layouts/example';
+
+<ExampleLayout>
+If you are working with multiple flows on a page or if you are using a client side router you need to wrap each flow with a [`ReactFlowProvider`](/docs/api/react-flow-provider/) so that every flow has its own store instance.
+Using a `ReactFlowProvider` is also mandatory if you want to access the internal state outside of the `ReactFlow` component.
+
+<CodeViewer
+  codePath="example-flows/Provider"
+  additionalFiles={['Sidebar.js', 'index.css']}
+/>
+</ExampleLayout>

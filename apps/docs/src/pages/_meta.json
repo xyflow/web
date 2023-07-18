@@ -1,8 +1,0 @@
-{
-  "*": {
-    "type": "page"
-  },
-  "index": "XY Flow",
-  "react-flow": "React Flow",
-  "svelte-flow": "Svelte Flow"
-}
