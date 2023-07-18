@@ -47,6 +47,11 @@ export default {
   // this is necessary to hide the github icon
   project: {},
   darkMode: false,
+  nextThemes: {
+    enableSystem: false,
+    defaultTheme: 'light',
+    themes: ['light'],
+  },
   navbar: {
     component: Navbar,
     extraContent: NavBarAdditional,
