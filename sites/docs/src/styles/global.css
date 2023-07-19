@@ -33,6 +33,60 @@ main .max-w-\[90rem\] {
   max-width: 78rem;
 }
 
+.react-pro {
+  transition: all 0.3s ease;
+}
+
+@property --gradientAngle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 258deg;
+}
+
+.react-pro {
+  --gradientAngle: 258deg;
+}
+
+.react-pro:before {
+  transition: --gradientAngle 0.3s ease;
+  background: linear-gradient(
+      var(--gradientAngle),
+      rgba(255, 0, 114, 0.5) 36.34%,
+      rgba(175, 4, 255, 0.5) 50.92%,
+      rgba(240, 240, 240, 1) 63.72%
+    ),
+    linear-gradient(
+      var(--gradientAngle),
+      rgba(255, 0, 114, 0.5) 2.22%,
+      rgba(175, 4, 255, 0.5) 18.5%,
+      rgba(240, 240, 240, 1) 32.77%
+    );
+}
+
+.react-pro:hover:before {
+  --gradientAngle: 45deg;
+}
+
+.svelte-pro:before {
+  transition: --gradientAngle 0.3s ease;
+  background: linear-gradient(
+      var(--gradientAngle),
+      rgba(255, 62, 0, 0.5) 36.34%,
+      rgba(255, 64, 4, 0.5) 50.92%,
+      rgba(255, 255, 255, 1) 63.72%
+    ),
+    linear-gradient(
+      var(--gradientAngle),
+      rgba(255, 62, 0, 0.5) 2.22%,
+      rgba(255, 125, 4, 0.5) 18.5%,
+      rgba(255, 255, 255, 1) 32.77%
+    );
+}
+
+.svelte-pro:hover:before {
+  --gradientAngle: 45deg;
+}
+
 @media (max-width: 767px) {
   main .nextra-sidebar-container {
     padding-top: 90px;
