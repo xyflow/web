@@ -6,7 +6,16 @@ const containerVariants = cva('border border-solid rounded-3xl', {
   variants: {
     variant: {
       default: 'border-gray-100 bg-white',
-      dark: 'border-gray-700 bg-black text-white',
+      dark: 'border-gray-700 text-white bg-black',
+    },
+  },
+});
+
+const innerContainerVariants = cva('border border-solid rounded-3xl', {
+  variants: {
+    variant: {
+      default: 'border-gray-100 bg-white',
+      dark: 'border-gray-700 text-white bg-gradient-to-br from-black from-15% via-[#311c33] via-65% to-[#1c1826]',
     },
   },
 });
@@ -22,7 +31,7 @@ function Container({
 }: ContainerProps) {
   return (
     <div className={cn('p-3', containerVariants({ variant, className }))}>
-      <div className={cn('shadow-lg', containerVariants({ variant }))}>
+      <div className={cn('shadow-lg', innerContainerVariants({ variant }))}>
         {children}
       </div>
     </div>

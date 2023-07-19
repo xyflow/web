@@ -26,7 +26,7 @@ const proButtonIcon = {
 
 const proButtonLabel = {
   react: 'React Flow Pro',
-  svelte: 'support Us',
+  svelte: 'Support Us',
 };
 
 const headlineStyle: CSSProperties = {

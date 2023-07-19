@@ -10,6 +10,8 @@ export default function Handle({
   id,
   variant = 'react',
   className,
+  handleClassName,
+  svgClassName,
   children,
   position = Position.Bottom,
   type = 'source',
@@ -18,6 +20,8 @@ export default function Handle({
   id: string;
   variant?: 'react' | 'svelte' | 'xyflow';
   className?: string;
+  handleClassName?: string;
+  svgClassName?: string;
   children?: ReactNode;
   position?: Position;
   type?: 'source' | 'target';
@@ -47,19 +51,21 @@ export default function Handle({
           variant === 'svelte' && 'border-svelte',
           variant === 'xyflow' && 'border-xyflow',
           handleWidthClass,
-          handleHeightClass
+          handleHeightClass,
+          handleClassName
         )}
       />
       {type === 'source' && (
-        <svg className="absolute pointer-events-none overflow-visible -z-10">
+        <svg className="absolute pointer-events-none overflow-visible">
           <path
             className={cn(
               'fill-none stroke-2',
               variant === 'react' && 'stroke-react',
               variant === 'svelte' && 'stroke-svelte',
-              variant === 'xyflow' && 'stroke-xyflow'
+              variant === 'xyflow' && 'stroke-xyflow',
+              svgClassName
             )}
-            style={{ strokeDasharray: 5 }}
+            style={{ strokeDasharray: '4 2' }}
           />
         </svg>
       )}
