@@ -85,7 +85,7 @@ export default function XYFlowHome() {
           of React Flow, Svelte Flow, and the communities around them
         </Text>
 
-        <div className="flex justify-center space-x-4 mb-16">
+        <div className="flex justify-center space-x-8 mb-16">
           <Button asChild variant="link">
             <Link href="/blog" className="flex items-center">
               Blog <ArrowRightCircleIcon className="w-4 h-4 ml-1" />
