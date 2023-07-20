@@ -66,7 +66,7 @@ export default function ShowcaseOverview({
           {items.length && (
             <ShowcaseOverviewItems
               items={items}
-              delay={5000}
+              duration={5000}
               start={items[0].name}
             />
           )}
@@ -81,7 +81,7 @@ export default function ShowcaseOverview({
 type ShowcaseOverviewItemsProps = {
   items: ShowcaseItem[];
   start?: string;
-  delay?: number;
+  duration?: number;
 };
 
 const activeBarColours = {
@@ -92,21 +92,21 @@ const activeBarColours = {
 
 function ShowcaseOverviewItems({
   items,
-  delay,
+  duration,
   start,
 }: ShowcaseOverviewItemsProps) {
   const [active, setActive] = useState(start ?? items[0].name);
-  const [delta, setDelta] = useState(0);
-  const [shouldCycle, setShouldCycle] = useState(Boolean(delay));
+  const [elapsed, setelapsed] = useState(0);
+  const [shouldCycle, setShouldCycle] = useState(Boolean(duration));
   const onValueChange = useCallback((value) => {
     setActive(value);
-    setDelta(0);
+    setelapsed(0);
     setShouldCycle(false);
   }, []);
-  const activeBarWidth = shouldCycle ? (delta / delay) * 100 : 100;
+  const activeBarWidth = shouldCycle ? (elapsed / duration) * 100 : 100;
 
   useEffect(() => {
-    if (!shouldCycle) {
+    if (!shouldCycle && duration) {
       const resume = setTimeout(() => {
         setShouldCycle(true);
       }, 1000 * 10);
@@ -115,17 +115,17 @@ function ShowcaseOverviewItems({
     }
 
     window.requestAnimationFrame(() => {
-      if (delta >= delay) {
+      if (elapsed >= duration) {
         const index = items.findIndex((item) => item.name === active);
         const nextIndex = index === items.length - 1 ? 0 : index + 1;
 
         setActive(items[nextIndex].name);
-        setDelta(0);
+        setelapsed(0);
       } else {
-        setDelta(delta + 16.66);
+        setelapsed(elapsed + 16.66);
       }
     });
-  }, [active, delta, shouldCycle]);
+  }, [active, duration, elapsed, shouldCycle]);
 
   return (
     <Tabs value={active} onValueChange={onValueChange} className="relative">
