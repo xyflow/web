@@ -15,20 +15,35 @@ type SubscriptionFeatureProps = {
   description?: React.ReactNode;
   plans?: SubscriptionPlan[];
   button?: { label: string; href: string };
+  requireUserSubscription?: boolean;
 };
 
-function SubscriptionFeature({ title, description, plans = [], button }: SubscriptionFeatureProps) {
-  const { plan, isSubscribed } = useSubscription();
-  const isLocked = plans && plans.length > 0 && !plans.includes(plan);
+function SubscriptionFeature({
+  title,
+  description,
+  plans = [],
+  button,
+  requireUserSubscription = false,
+}: SubscriptionFeatureProps) {
+  const { plan, isUserSubscribed } = useSubscription();
+  const isActive = plans.includes(plan) && (requireUserSubscription ? isUserSubscribed : true);
 
   return (
-    <Card>
-      <CardHeader className={cn({ 'bg-muted': isLocked, 'cursor-not-allowed': isLocked })}>
-        <CardTitle className={cn({ 'text-muted-foreground': isLocked })}>{title}</CardTitle>
+    <Card className={cn('flex flex-col', { 'border-react': isActive, 'bg-muted': !isActive })}>
+      <CardHeader className={cn({ 'cursor-not-allowed': !isActive })}>
+        <CardTitle className={cn({ 'text-muted-foreground': !isActive })}>{title}</CardTitle>
         {description && <CardDescription className="text-muted-foreground">{description}</CardDescription>}
       </CardHeader>
-      <CardFooter className={cn({ 'bg-muted': !isLocked })}>
-        {isLocked ? (
+      <CardFooter className={cn('mt-auto bg-white', { 'bg-pink-50 border-t border-react': isActive })}>
+        {isActive ? (
+          <>
+            {button && (
+              <Link href={button.href}>
+                <Button variant="react">{button.label}</Button>
+              </Link>
+            )}
+          </>
+        ) : (
           <>
             <div className="flex flex-wrap items-center space-x-1.5">
               <div className="text-muted-foreground text-sm font-bold">Upgrade to</div>
@@ -38,25 +53,13 @@ function SubscriptionFeature({ title, description, plans = [], button }: Subscri
                 </div>
               ))}
             </div>
-            {isSubscribed ? (
+            {isUserSubscribed ? (
               <div className="ml-auto">
                 <CustomerPortalButton variant="outline">Upgrade Subscription</CustomerPortalButton>
               </div>
             ) : (
               <Link href="/subscribe" className="ml-auto">
                 <Button variant="outline">Subscribe</Button>
-              </Link>
-            )}
-          </>
-        ) : (
-          <>
-            <div className="flex items-center space-x-2">
-              <CheckCircleIcon className="w-6 h-6 text-react" />
-              <div className="text-muted-foreground text-sm font-bold">Included</div>
-            </div>
-            {button && (
-              <Link href={button.href} className="ml-auto">
-                <Button variant="react">{button.label}</Button>
               </Link>
             )}
           </>

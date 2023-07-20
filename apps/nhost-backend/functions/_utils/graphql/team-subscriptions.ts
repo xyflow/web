@@ -1,5 +1,6 @@
 import { gql } from 'graphql-request';
 
+import { Subscription } from './subscriptions';
 import GraphQLClient from './client';
 
 const UPSERT_TEAM_SUBSCRIPTION = gql`
@@ -37,11 +38,12 @@ type UpsertSubscriptionParams = {
   email?: string;
 };
 
-type UpsertSubscriptionResponse = {
+type TeamMember = {
   id: string;
   user_id: string;
-  stripe_customer_id: string;
+  created_by: string;
   subscription_plan_id: string;
+  email: string;
 };
 
 export async function upsertTeamSubscription({
@@ -49,14 +51,84 @@ export async function upsertTeamSubscription({
   planId,
   createdById,
   email,
-}: UpsertSubscriptionParams): Promise<UpsertSubscriptionResponse> {
-  return await GraphQLClient.request<UpsertSubscriptionResponse>(
-    UPSERT_TEAM_SUBSCRIPTION,
-    {
-      createdById,
-      userId,
-      planId,
-      email,
+}: UpsertSubscriptionParams): Promise<TeamMember> {
+  return await GraphQLClient.request<TeamMember>(UPSERT_TEAM_SUBSCRIPTION, {
+    createdById,
+    userId,
+    planId,
+    email,
+  });
+}
+
+const GET_TEAM_MEMBERS = gql`
+  query GetTeamMembers($createdById: uuid!) {
+    team_subscriptions(where: { created_by: { _eq: $createdById } }) {
+      id
+      user_id
+      email
+      subscription_plan_id
+      created_by
     }
-  );
+  }
+`;
+
+export async function getTeamMembers(
+  createdById: string
+): Promise<TeamMember[]> {
+  const data = await GraphQLClient.request<{
+    team_subscriptions: TeamMember[];
+  }>(GET_TEAM_MEMBERS, {
+    createdById,
+  });
+
+  return data.team_subscriptions;
+}
+
+export function getMaxMembers(subscription: Subscription) {
+  switch (subscription.subscription_plan_id) {
+    case 'starter':
+      return 1;
+    case 'pro':
+      return 5;
+    case 'enterprise':
+      return 10;
+    default:
+      return 0;
+  }
+}
+
+const REMOVE_TEAM_MEMBER = gql`
+  mutation RemoveTeamMember($createdById: uuid!, $email: citext!) {
+    delete_team_subscriptions(
+      where: {
+        _and: [
+          { email: { _eq: $email } }
+          { created_by: { _eq: $createdById } }
+        ]
+      }
+    ) {
+      affected_rows
+    }
+  }
+`;
+
+export async function removeTeamMember({
+  createdById,
+  email,
+}: {
+  createdById: string;
+  email: string;
+}): Promise<number> {
+  if (!createdById || !email) {
+    return 0;
+  }
+
+  const { affected_rows } = await GraphQLClient.request<{
+    affected_rows: number;
+  }>(REMOVE_TEAM_MEMBER, {
+    createdById,
+    email,
+  });
+
+  return affected_rows;
 }

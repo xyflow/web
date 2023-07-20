@@ -39,7 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ClientProviders>
           <div className="bg-white">
             <Navigation />
-            <div className="p-4">{children}</div>
+            <div className="p-4 relative">{children}</div>
             <Footer />
           </div>
         </ClientProviders>

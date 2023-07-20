@@ -35,7 +35,7 @@ type UpsertSubscriptionParams = {
   stripeCustomerId?: string;
 };
 
-type UpsertSubscriptionResponse = {
+export type Subscription = {
   id: string;
   user_id: string;
   stripe_customer_id: string;
@@ -46,15 +46,12 @@ async function upsertSubscription({
   userId,
   planId,
   stripeCustomerId,
-}: UpsertSubscriptionParams): Promise<UpsertSubscriptionResponse> {
-  return await GraphQLClient.request<UpsertSubscriptionResponse>(
-    UPSERT_SUBSCRIPTION,
-    {
-      userId,
-      planId,
-      stripeCustomerId,
-    }
-  );
+}: UpsertSubscriptionParams): Promise<Subscription> {
+  return await GraphQLClient.request<Subscription>(UPSERT_SUBSCRIPTION, {
+    userId,
+    planId,
+    stripeCustomerId,
+  });
 }
 
 type User = {
@@ -81,6 +78,24 @@ export async function getUserIdByEmail(email: string): Promise<string> {
     { email }
   );
   return response.users?.[0]?.id;
+}
+
+const GET_SUBSCRIPTION = gql`
+  query GetSubscription($userId: uuid!) {
+    user_subscriptions(where: { user_id: { _eq: $userId } }) {
+      id
+      user_id
+      stripe_customer_id
+      subscription_plan_id
+    }
+  }
+`;
+
+export async function getSubscription(userId: string): Promise<Subscription> {
+  const response = await GraphQLClient.request<{
+    user_subscriptions: Subscription[];
+  }>(GET_SUBSCRIPTION, { userId });
+  return response.user_subscriptions?.[0];
 }
 
 export function getCustomerId(customer: string | Stripe.Customer): string {

@@ -16,7 +16,7 @@ export default function ExampleTeaser({ example }: ExampleTeaserProps) {
         <Image objectFit="cover" alt="Example Teaser" fill src={`/img/examples/${example.id}.jpg`} />
       </div>
       <CardHeader className="flex-1">
-        <CardTitle>{example.title ?? example.id}</CardTitle>
+        <CardTitle>{example.name ?? example.id}</CardTitle>
         {example.description && <CardDescription>{example.description}</CardDescription>}
         <Link
           className="!mt-auto font-bold items-center text-react hover:text-slate-800 flex pt-4 w-full"

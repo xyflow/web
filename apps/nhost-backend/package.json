@@ -5,6 +5,7 @@
     "dev": "nhost up"
   },
   "dependencies": {
+    "@nhost/nhost-js": "^2.2.13",
     "express": "^4.18.2",
     "graphql-request": "^6.1.0",
     "jsonwebtoken": "^9.0.0",

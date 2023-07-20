@@ -49,6 +49,10 @@ export default function ManageTeamCard() {
     if (!isConfirmed) {
       return;
     }
+
+    const response = await nhostFunction('team/remove', { email });
+    await refetch();
+    console.log(response);
   };
 
   return (
@@ -56,8 +60,8 @@ export default function ManageTeamCard() {
       <CardHeader>
         <CardTitle>Manage Team</CardTitle>
         <CardDescription>
-          You can share your subscription with up to 3 team members. If you need more seats, please upgrade to a higher
-          plan.
+          You can share your subscription with up to <strong>X</strong> team members. If you need more seats, you can
+          buy them below.
         </CardDescription>
       </CardHeader>
       <div className="border-t">

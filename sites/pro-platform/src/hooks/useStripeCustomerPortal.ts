@@ -1,9 +1,18 @@
-import { useUserEmail } from '@nhost/nextjs';
+import useNhostFunction from './useNhostFunction';
 
-function useStripeCustomerPortal(): { portalUrl: string } {
-  const userEmail = useUserEmail();
+function useStripeCustomerPortal(): { openCustomerPortal: () => void } {
+  const callNhostFunction = useNhostFunction();
+
+  const openCustomerPortal = async () => {
+    const response = await callNhostFunction<{ url: string }>('/stripe/create-customer-portal', {});
+
+    if (response.res.data?.url) {
+      window.location.href = response.res.data.url;
+    }
+  };
+
   return {
-    portalUrl: `https://billing.stripe.com/p/login/${process.env.NEXT_PUBLIC_STRIPE_CUSTOMER_PORTAL_ID}?prefilled_email=${userEmail}`,
+    openCustomerPortal,
   };
 }
 
