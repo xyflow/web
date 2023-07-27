@@ -148,7 +148,12 @@ function ShowcaseSliderItems({
 
       <TabsList className="flex justify-around gap-8 mt-8 bg-transparent">
         {items.map((item, index) => (
-          <TabsTrigger key={index} value={item.name} className="w-full group">
+          <TabsTrigger
+            key={index}
+            value={item.name}
+            className="w-full group"
+            onClick={() => onValueChange(item.name)}
+          >
             <TabsActiveBar
               isActive={item.name === active}
               activeWidth={activeBarWidth}
