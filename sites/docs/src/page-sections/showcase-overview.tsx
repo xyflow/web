@@ -165,60 +165,73 @@ function ShowcaseSliderItems({
 
       <TabsList className="flex justify-around gap-8 mt-8 bg-transparent">
         {items.map((item, index) => (
-          <TabsTrigger
+          <ShowcaseSliderItem
             key={index}
-            value={item.name}
-            className={cn(
-              "w-full sm:flex flex-col group",
-              item.name === active ? "flex" : "hidden"
-            )}
-            onClick={() => onValueChange(item.name)}
-          >
-            <TabsActiveBar
-              isActive={item.name === active}
-              activeWidth={activeBarWidth}
-            />
-
-            <div
-              className={cn(
-                "text-muted transition duration-300 motion-reduce:transition-none",
-                "group-hover:opacity-100 px-2 md:px-4",
-                active === item.name ? " opacity-100" : " opacity-50"
-              )}
-            >
-              <Text className="my-2 font-mono font-bold text-center">
-                {item.name}
-              </Text>
-              <Text>{item.text}</Text>
-            </div>
-          </TabsTrigger>
+            item={item}
+            isActive={active === item.name}
+            activeBarWidth={active === item.name && activeBarWidth}
+            onClick={onValueChange}
+          />
         ))}
       </TabsList>
     </Tabs>
   );
 }
 
-// TabsActiveBar ---------------------------------------------------------------
+// ShowcaseSliderItem ----------------------------------------------------------
 
-type TabsActiveBarProps = {
+type ShowcaseSliderItemProps = {
+  item: ShowcaseItem;
   isActive: boolean;
-  activeWidth: number;
+  activeBarWidth?: number;
+  onClick: (name: string) => void;
 };
 
-function TabsActiveBar({ isActive, activeWidth }: TabsActiveBarProps) {
+function ShowcaseSliderItem({
+  item,
+  isActive,
+  onClick,
+  ...props
+}: ShowcaseSliderItemProps) {
   const { site } = useXYSite();
 
   return (
-    <div className="w-full relative mb-8 h-1.5 rounded bg-black/20">
-      {isActive && (
-        <div
-          style={{ width: `${activeWidth}%` }}
-          className={cn(
-            "absolute h-full rounded bg-gradient-to-r",
-            activeBarColours[site]
-          )}
-        />
+    <TabsTrigger
+      value={item.name}
+      className={cn(
+        "w-full sm:flex flex-col group",
+        isActive ? "flex" : "hidden"
       )}
-    </div>
+      onClick={() => onClick(item.name)}
+    >
+      <div className="w-full relative mb-8 h-1.5 rounded bg-black/20">
+        {/* I'm sure there's a fancy type way to say that `activeBarWidth` only
+            exists when `isActive` is true but I couldn't work out a nice solution
+            and it's probably overengineering anyway.
+        */}
+        {isActive && (
+          <div
+            style={{ width: `${props.activeBarWidth!}%` }}
+            className={cn(
+              "absolute h-full rounded bg-gradient-to-r",
+              activeBarColours[site]
+            )}
+          />
+        )}
+      </div>
+
+      <div
+        className={cn(
+          "text-muted transition duration-300 motion-reduce:transition-none",
+          "group-hover:opacity-100 px-2 md:px-4",
+          isActive ? " opacity-100" : " opacity-50"
+        )}
+      >
+        <Text className="my-2 font-mono font-bold text-center">
+          {item.name}
+        </Text>
+        <Text>{item.text}</Text>
+      </div>
+    </TabsTrigger>
   );
 }
