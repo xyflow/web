@@ -129,7 +129,7 @@ function ShowcaseOverviewItems({
 
   return (
     <Tabs value={active} onValueChange={onValueChange} className="relative">
-      <div className="relative mx-auto aspect-video">
+      <div className="relative mx-auto h-[40vh]">
         {items.map((item, index) => (
           <TabsContent key={index} forceMount value={item.name}>
             <div
