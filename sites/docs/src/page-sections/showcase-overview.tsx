@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useState, useCallback, useEffect, ReactNode } from "react";
+import { useState, useCallback, useEffect, ReactNode, useMemo } from "react";
 import {
   Button,
   Container,
@@ -96,18 +96,35 @@ function ShowcaseSliderItems({
   start,
 }: ShowcaseSliderItemsProps) {
   const [active, setActive] = useState(start ?? items[0].name);
-  const [elapsed, setelapsed] = useState(0);
+  const [elapsed, setElapsed] = useState(0);
   const [shouldCycle, setShouldCycle] = useState(Boolean(duration));
-  const onValueChange = useCallback((value) => {
+  const activeBarWidth = useMemo(
+    () => (shouldCycle ? (elapsed / duration) * 100 : 100),
+    [elapsed, duration, shouldCycle]
+  );
+
+  // Called whenever a tab is manually navigated to. We want to pause the cycle
+  // and give the user a chance to read the content.
+  const onValueChange = useCallback((value: string) => {
     setActive(value);
-    setelapsed(0);
+    setElapsed(0);
     setShouldCycle(false);
   }, []);
-  const activeBarWidth = shouldCycle ? (elapsed / duration) * 100 : 100;
+  // Once the timer for a tab has elapsed, this function is called to move on
+  // to the next one and reset the elapsed time. If the user has manually
+  // navigated to a tab, this also gets called when resuming the cycle.
+  const setNext = useCallback(() => {
+    const index = items.findIndex((item) => item.name === active);
+    const nextIndex = (index + 1) % items.length;
+
+    setActive(items[nextIndex].name);
+    setElapsed(0);
+  }, [active, items]);
 
   useEffect(() => {
     if (!shouldCycle && duration) {
       const resume = setTimeout(() => {
+        setNext();
         setShouldCycle(true);
       }, 1000 * 10);
 
@@ -116,13 +133,9 @@ function ShowcaseSliderItems({
 
     window.requestAnimationFrame(() => {
       if (elapsed >= duration) {
-        const index = items.findIndex((item) => item.name === active);
-        const nextIndex = index === items.length - 1 ? 0 : index + 1;
-
-        setActive(items[nextIndex].name);
-        setelapsed(0);
+        setNext();
       } else {
-        setelapsed(elapsed + 16.66);
+        setElapsed(elapsed + 16.66);
       }
     });
   }, [active, duration, elapsed, shouldCycle]);
