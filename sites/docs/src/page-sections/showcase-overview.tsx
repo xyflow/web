@@ -14,9 +14,9 @@ import {
 
 import useXYSite from "@/hooks/use-xy-site";
 
-// ShowcaseOverview ------------------------------------------------------------
+// ShowcaseSlider --------------------------------------------------------------
 
-export type ShowcaseOverviewProps = {
+export type ShowcaseSliderProps = {
   className?: string;
   items?: ShowcaseItem[];
 };
@@ -27,10 +27,10 @@ type ShowcaseItem = {
   content: ReactNode;
 };
 
-export default function ShowcaseOverview({
+export default function ShowcaseSlider({
   className,
   items = [],
-}: ShowcaseOverviewProps) {
+}: ShowcaseSliderProps) {
   const { site } = useXYSite();
 
   return (
@@ -64,7 +64,7 @@ export default function ShowcaseOverview({
 
         <div className="mt-8">
           {items.length && (
-            <ShowcaseOverviewItems
+            <ShowcaseSliderItems
               items={items}
               duration={5000}
               start={items[0].name}
@@ -76,9 +76,9 @@ export default function ShowcaseOverview({
   );
 }
 
-// ShowcaseOverviewItems -------------------------------------------------------
+// ShowcaseSliderItems ---------------------------------------------------------
 
-type ShowcaseOverviewItemsProps = {
+type ShowcaseSliderItemsProps = {
   items: ShowcaseItem[];
   start?: string;
   duration?: number;
@@ -90,11 +90,11 @@ const activeBarColours = {
   svelte: "from-svelte/40 to-svelte/70",
 };
 
-function ShowcaseOverviewItems({
+function ShowcaseSliderItems({
   items,
   duration,
   start,
-}: ShowcaseOverviewItemsProps) {
+}: ShowcaseSliderItemsProps) {
   const [active, setActive] = useState(start ?? items[0].name);
   const [elapsed, setelapsed] = useState(0);
   const [shouldCycle, setShouldCycle] = useState(Boolean(duration));

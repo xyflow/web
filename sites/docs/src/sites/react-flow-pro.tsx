@@ -1,10 +1,10 @@
-import BaseLayout from '@/layouts/base';
-import Hero from '@/page-sections/hero';
-import PricingTable from '@/page-sections/pricing-table';
-import ClientLogos from '@/components/client-logos';
-import ShowcaseOverview from '@/page-sections/showcase-overview';
-import FAQ from '@/components/faq';
-import Section from '@/page-sections/section';
+import BaseLayout from "@/layouts/base";
+import Hero from "@/page-sections/hero";
+import PricingTable from "@/page-sections/pricing-table";
+import ClientLogos from "@/components/client-logos";
+import ShowcaseSlider from "@/page-sections/showcase-overview";
+import FAQ from "@/components/faq";
+import Section from "@/page-sections/section";
 
 export default function ReactFlowPro() {
   return (
@@ -12,7 +12,7 @@ export default function ReactFlowPro() {
       <Hero
         title={
           <>
-            Build Better Node-Based UIs with{' '}
+            Build Better Node-Based UIs with{" "}
             <span className="text-react">React Flow</span>
           </>
         }
@@ -43,7 +43,7 @@ export default function ReactFlowPro() {
         <ClientLogos />
       </Section>
 
-      <ShowcaseOverview />
+      <ShowcaseSlider />
 
       <FAQ className="mt-20" />
     </BaseLayout>
