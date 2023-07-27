@@ -129,7 +129,11 @@ function ShowcaseSliderItems({
 
   return (
     <Tabs value={active} onValueChange={onValueChange} className="relative">
-      <div className="relative mx-auto h-[40vh]">
+      {/* Using `aspect-video` on smaller devices means we don't end up with
+          weirdly large images. On bigger displays we just fix the image size to
+          40vh. 
+      */}
+      <div className="relative mx-auto aspect-video sm:aspect-auto sm:h-[40vh]">
         {items.map((item, index) => (
           <TabsContent key={index} forceMount value={item.name}>
             <div
@@ -151,7 +155,10 @@ function ShowcaseSliderItems({
           <TabsTrigger
             key={index}
             value={item.name}
-            className="w-full group"
+            className={cn(
+              "w-full sm:flex flex-col group",
+              item.name === active ? "flex" : "hidden"
+            )}
             onClick={() => onValueChange(item.name)}
           >
             <TabsActiveBar
@@ -162,14 +169,14 @@ function ShowcaseSliderItems({
             <div
               className={cn(
                 "text-muted transition duration-300 motion-reduce:transition-none",
-                "group-hover:opacity-100",
-                active === item.name ? " opacity-100" : " opacity-70"
+                "group-hover:opacity-100 px-2 md:px-4",
+                active === item.name ? " opacity-100" : " opacity-50"
               )}
             >
               <Text className="my-2 font-mono font-bold text-center">
                 {item.name}
               </Text>
-              <Text className="text-muted">{item.text}</Text>
+              <Text>{item.text}</Text>
             </div>
           </TabsTrigger>
         ))}
@@ -189,8 +196,7 @@ function TabsActiveBar({ isActive, activeWidth }: TabsActiveBarProps) {
   const { site } = useXYSite();
 
   return (
-    <div className="relative mb-8 h-1.5 rounded">
-      <div className="absolute w-full h-full rounded bg-black/20" />
+    <div className="w-full relative mb-8 h-1.5 rounded bg-black/20">
       {isActive && (
         <div
           style={{ width: `${activeWidth}%` }}
