@@ -1,17 +1,17 @@
-import { type ReactNode } from 'react';
-import { useConfig } from 'nextra-theme-docs';
+import { type ReactNode } from "react";
+import { useConfig } from "nextra-theme-docs";
 
-import { Text, Heading } from 'xy-ui';
-import ContentGrid, { ContentGridItem } from '@/components/content-grid';
-import BlogPostPreview from '@/components/blog-post-preview';
-import AuthorList from '@/components/authors-list';
-import { getPrevAndNextPagesByTitle } from '@/utils';
+import { Text, Heading } from "xy-ui";
+import ContentGrid, { ContentGridItem } from "@/components/content-grid";
+import BlogPostPreview from "@/components/blog-post-preview";
+import AuthorList from "@/components/authors-list";
+import { getPrevAndNextPagesByTitle } from "@/utils";
 
 function BlogPostPreviews() {
   const { frontMatter } = useConfig();
   const [prevPost, nextPost] = getPrevAndNextPagesByTitle(
     frontMatter.title,
-    '/blog'
+    "/blog"
   );
 
   return (
@@ -44,7 +44,7 @@ export default function BlogPostLayout({ children }: { children: ReactNode }) {
   const { frontMatter } = useConfig();
 
   return (
-    <>
+    <div className="max-w-screen-md mx-auto">
       <Text variant="light" className="mt-10">
         {frontMatter.date}
       </Text>
@@ -57,6 +57,6 @@ export default function BlogPostLayout({ children }: { children: ReactNode }) {
       <div>{children}</div>
 
       <BlogPostPreviews />
-    </>
+    </div>
   );
 }
