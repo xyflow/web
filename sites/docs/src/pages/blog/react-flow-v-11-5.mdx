@@ -1,16 +1,15 @@
 ---
-title: 'v11.5.0 Release'
+title: "v11.5.0 Release"
 intro: Hello again! I am super excited to share the latest improvements of React Flow. The new auto pan features and connection radius makes it way easier to connect nodes and work with bigger flows. On top of that we improved the usability on touch devices.
 date: 2023/01/26
-authors: ['moritz']
-tags: ['react-flow', 'update']
+authors: ["moritz"]
+tags: ["react-flow", "update"]
 image: /img/blog/v10-header.png
 ---
 
-import Image from 'next/image';
-
-import Emoji from '@/components/emoji';
-import BlogPostLayout from '@/layouts/blog-post';
+import { Image } from "@/components/blog-post-embed";
+import Emoji from "@/components/emoji";
+import BlogPostLayout from "@/layouts/blog-post";
 
 <BlogPostLayout>
 Hello again! I am super excited to share the latest improvements of React Flow. The new auto pan features and connection radius makes it way easier to connect nodes and work with bigger flows. On top of that we improved the usability on touch devices.
@@ -22,6 +21,7 @@ After working a bit with Blender geometry nodes I knew that I wanted to add this
 <Image
   src="/img/blog/v11-5/auto-pan.gif"
   alt="Auto pan demo."
+  wide
   width={822}
   height={468}
 />
@@ -33,6 +33,7 @@ There are [several](/docs/examples/nodes/easy-connect/) [ways](/docs/examples/no
 <Image
   src="/img/blog/v11-5/connection-radius.gif"
   alt="Conneciton radius demo."
+  wide
   width={822}
   height={468}
 />
@@ -50,7 +51,7 @@ Since v10 we support connections on touch devices via tap connect. From now on y
 We extended the generic `Node` type so that you can now specify the `type` by passing a second param to `Node`.
 
 ```ts
-type MyCustomNode = Node<MyCustomNodeData, 'custom-node-type'>;
+type MyCustomNode = Node<MyCustomNodeData, "custom-node-type">;
 ```
 
 This allows you to create more specific node types that are aware of their `data` structure and `type`.

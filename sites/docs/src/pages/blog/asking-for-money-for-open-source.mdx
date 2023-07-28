@@ -1,28 +1,19 @@
 ---
-title: 'Dear Open Source: let’s do a better job of asking for money'
-intro: 'It’s common knowledge that many open source projects are underfunded. We think one reason for this is that the open source world is doing a bad job of asking for the money that it deserves. By telling the right organizations exactly why and how we want them to financially support our work, OSS projects can be compensated for more fairly, and result in a healthier open source ecosystem.'
+title: "Dear Open Source: let’s do a better job of asking for money"
+intro: "It’s common knowledge that many open source projects are underfunded. We think one reason for this is that the open source world is doing a bad job of asking for the money that it deserves. By telling the right organizations exactly why and how we want them to financially support our work, OSS projects can be compensated for more fairly, and result in a healthier open source ecosystem."
 date: 2023/02/27
-authors: ['john']
-tags: ['react-flow', 'open source']
-image: '/img/blog/oss-pricing/donate-button-banner.png'
+authors: ["john"]
+tags: ["react-flow", "open source"]
+image: "/img/blog/oss-pricing/donate-button-banner.png"
 ---
 
-import Image from 'next/image';
-
-import BlogPostLayout from '@/layouts/blog-post';
+import { Image } from "@/components/blog-post-embed";
+import BlogPostLayout from "@/layouts/blog-post";
 
 <BlogPostLayout>
 It’s common knowledge that many open source projects are underfunded. We think one reason for this is that **the open source world is doing a bad job of asking for the money that it deserves.** By telling the right organizations exactly why and how we want them to financially support our work, OSS projects can be compensated for more fairly, and result in a healthier open source ecosystem.
 
-<figure align="center">
-  <Image
-    src="/img/blog/oss-pricing/donate-button.png"
-    alt=""
-    maxWidth="50%"
-    width={366}
-    height={82}
-  />
-</figure>
+<Image src="/img/blog/oss-pricing/donate-button.png" alt="" />
 
 We maintain [React Flow](https://github.com/wbkd/react-flow), an open source library for making node-based UIs. Our story developed in a similar way to some other lucky libraries:
 
@@ -33,19 +24,14 @@ We maintain [React Flow](https://github.com/wbkd/react-flow), an open source lib
 
 Unfortunately our Github sponsors page didn’t pay the bills- not even close. To avoid having to find contract work or pitch for investment, we decided to ask for money in a more direct way by adding this to our website:
 
-<figure>
-  <Image
-    src="/img/blog/oss-pricing/pricing-ui.png"
-    alt="a webpage with four columns, giving the user a choice between 4 payment plans: free, starter, pro, and enterprise."
-    width={1594}
-    height={796}
-  />
-  <figcaption>
-    Our Free plan is the open source library as-is. The Starter and Pro plans
-    have a few extras that users can pay for with a monthly subscription, like
-    prioritized bug reports and email support.
-  </figcaption>
-</figure>
+<Image
+  src="/img/blog/oss-pricing/pricing-ui.png"
+  alt="A webpage with four columns, giving the user a choice between 4 payment plans: free, starter, pro, and enterprise."
+  wide
+  caption="Our Free plan is the open source library as-is. The Starter and Pro
+      plans have a few extras that users can pay for with a monthly subscription,
+      like prioritized bug reports and email support."
+/>
 
 We started getting paying customers at a _much_ faster rate, each paying more than any of our sponsors were, **and we became “ramen profitable” in a few months.**
 
@@ -71,14 +57,10 @@ We added a small attribution in the corner of React Flow’s viewport. It’s ea
 
 This moment establishes some friction to the user where they have to take a moment to consider if they are willing and able to support our library.
 
-<figure align="center">
-  <Image
-    src="/img/blog/oss-pricing/rf-attribution.png"
-    alt="The React Flow canvas, with a small text in the corner that says 'react flow'"
-    width={218}
-    height={156}
-  />
-</figure>
+<Image
+  src="/img/blog/oss-pricing/rf-attribution.png"
+  alt="The React Flow canvas, with a small text in the corner that says 'react flow'"
+/>
 
 ## Stealing from the SaaS Playbook
 
@@ -90,9 +72,8 @@ By using a three-column pricing page, the person with the credit card knows exac
 
 <Image
   src="/img/blog/oss-pricing/threecolumns.png"
-  alt=""
-  width={1414}
-  height={886}
+  alt="A mockup of a typical SaaS pricing page, with three columns: cheap, less cheap, and expensive."
+  wide
 />
 
 ## None of this is new
@@ -115,19 +96,11 @@ Asking for money in this way takes confidence in our work. It can be difficult t
 
 We hope sharing our journey can help a few people move money into the right hands.
 
-<figure>
-  <Image
-    src="/img/blog/oss-pricing/tipjar.png"
-    alt="a cash register with a tip jar next to it. On the tip jar is a handwritten sign that says 'money is the root of all evil, cleanse yourself here.'"
-    width={828}
-    height={821}
-  />
-  <figcaption>
-    <a href="https://www.reddit.com/r/funnysigns/comments/f151wh/local_tip_jar/?utm_source=share&utm_medium=web2x&context=3">
-      from reddit user slantedsc
-    </a>
-  </figcaption>
-</figure>
+<Image
+  src="/img/blog/oss-pricing/tipjar.png"
+  alt="a cash register with a tip jar next to it. On the tip jar is a handwritten sign that says 'money is the root of all evil, cleanse yourself here.'"
+  attribution="https://www.reddit.com/r/funnysigns/comments/f151wh/local_tip_jar/?utm_source=share&utm_medium=web2x&context=3"
+/>
 
 ## Continued Reading
 

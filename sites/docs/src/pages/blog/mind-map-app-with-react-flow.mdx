@@ -1,15 +1,15 @@
 ---
-title: 'Tutorial: Build a Mind Map App with React Flow'
+title: "Tutorial: Build a Mind Map App with React Flow"
 intro: "In this tutorial, you will learn to create a simple mind map tool with React Flow that can be used for brainstorming, organizing an idea, or mapping your thoughts in a visual way. To build this app, we'll be using state management, custom nodes and edges, and more."
 date: 2023/01/10
-authors: ['moritz']
-tags: ['react-flow', 'how-to', 'mind-map']
+authors: ["moritz"]
+tags: ["react-flow", "how-to", "mind-map"]
 image: /img/blog/mindmap/mindmap.png
 ---
 
-import Emoji from '@/components/emoji';
-import CodeViewer from '@/components/code-viewer';
-import BlogPostLayout from '@/layouts/blog-post';
+import { CodeViewer } from "@/components/blog-post-embed";
+import Emoji from "@/components/emoji";
+import BlogPostLayout from "@/layouts/blog-post";
 
 <BlogPostLayout>
 In this tutorial, you will learn to create a simple mind map tool with React Flow that can be used for brainstorming, organizing an idea, or mapping your thoughts in a visual way. To build this app, we'll be using state management, custom nodes and edges, and more.
@@ -20,14 +20,13 @@ Before we get our hands dirty, I want to show you the mindmapping tool we'll hav
 
 <CodeViewer
   codePath="blog-flows/mindmap/App"
-  options={{ editorHeight: '50vh' }}
   additionalFiles={[
-    'index.css',
-    'MindMapNode.tsx',
-    'MindMapEdge.tsx',
-    'store.ts',
+    "index.css",
+    "MindMapNode.tsx",
+    "MindMapEdge.tsx",
+    "store.ts",
   ]}
-  dependencies={{ nanoid: 'latest', zustand: '4.3.1' }}
+  dependencies={{ nanoid: "latest", zustand: "4.3.1" }}
   showEditor={false}
   isTypescript
 />
@@ -63,10 +62,10 @@ To keep it simple we are putting all of our code in the `src/App` folder. For th
 #### src/App/index.tsx
 
 ```tsx
-import ReactFlow, { Controls, Panel } from 'reactflow';
+import ReactFlow, { Controls, Panel } from "reactflow";
 
 // we have to import the React Flow styles for it to work
-import 'reactflow/dist/style.css';
+import "reactflow/dist/style.css";
 
 function Flow() {
   return (
@@ -87,15 +86,15 @@ To be able to use React Flow hooks, we need to wrap the application with the [`R
 #### src/main.tsx
 
 ```tsx
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { ReactFlowProvider } from 'reactflow';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { ReactFlowProvider } from "reactflow";
 
-import App from './App';
+import App from "./App";
 
-import './index.css';
+import "./index.css";
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <ReactFlowProvider>
       <App />
@@ -124,9 +123,8 @@ We are adding all styles of our app to the `index.css` file (you could also use 
 
 <CodeViewer
   codePath="blog-flows/mindmap/GettingStarted"
-  options={{ editorHeight: '45vh' }}
-  additionalFiles={['index.css']}
-  dependencies={{ nanoid: 'latest', zustand: '4.3.1' }}
+  additionalFiles={["index.css"]}
+  dependencies={{ nanoid: "latest", zustand: "4.3.1" }}
   isTypescript
 />
 
@@ -146,8 +144,8 @@ import {
   OnEdgesChange,
   applyNodeChanges,
   applyEdgeChanges,
-} from 'reactflow';
-import { create } from 'zustand';
+} from "reactflow";
+import { create } from "zustand";
 
 export type RFState = {
   nodes: Node[];
@@ -159,9 +157,9 @@ export type RFState = {
 const useStore = create<RFState>((set, get) => ({
   nodes: [
     {
-      id: 'root',
-      type: 'mindmap',
-      data: { label: 'React Flow Mind Map' },
+      id: "root",
+      type: "mindmap",
+      data: { label: "React Flow Mind Map" },
       position: { x: 0, y: 0 },
     },
   ],
@@ -188,13 +186,13 @@ As you can see we start with one initial node placed at `{ x: 0, y: 0 }` of type
 #### src/App/index.tsx
 
 ```tsx
-import ReactFlow, { Controls, Panel, NodeOrigin } from 'reactflow';
-import { shallow } from 'zustand/shallow';
+import ReactFlow, { Controls, Panel, NodeOrigin } from "reactflow";
+import { shallow } from "zustand/shallow";
 
-import useStore, { RFState } from './store';
+import useStore, { RFState } from "./store";
 
 // we have to import the React Flow styles for it to work
-import 'reactflow/dist/style.css';
+import "reactflow/dist/style.css";
 
 const selector = (state: RFState) => ({
   nodes: state.nodes,
@@ -235,9 +233,8 @@ We access the nodes, edges and change handlers from the store and pass them to t
 
 <CodeViewer
   codePath="blog-flows/mindmap/StoreNodesEdges"
-  options={{ editorHeight: '45vh' }}
-  additionalFiles={['store.ts', 'index.css']}
-  dependencies={{ nanoid: 'latest', zustand: '4.3.1' }}
+  additionalFiles={["store.ts", "index.css"]}
+  dependencies={{ nanoid: "latest", zustand: "4.3.1" }}
   isTypescript
 />
 
@@ -250,7 +247,7 @@ We want to use a custom type called 'mindmap' for our nodes. We need to add a ne
 #### src/App/MindMapNode/index.tsx
 
 ```tsx
-import { Handle, NodeProps, Position } from 'reactflow';
+import { Handle, NodeProps, Position } from "reactflow";
 
 export type NodeData = {
   label: string;
@@ -293,7 +290,7 @@ Let's do the same for the custom edge. Create a new folder called `MindMapEdge` 
 #### src/App/MindMapEdge/index.tsx
 
 ```tsx
-import { BaseEdge, EdgeProps, getStraightPath } from 'reactflow';
+import { BaseEdge, EdgeProps, getStraightPath } from "reactflow";
 
 function MindMapEdge(props: EdgeProps) {
   const { sourceX, sourceY, targetX, targetY } = props;
@@ -314,8 +311,8 @@ export default MindMapEdge;
 I will get into more detail about the custom nodes and edges in the next section. For now it's important that we can use the new types in our app, by adding the following to our `Flow` component:
 
 ```tsx
-import MindMapNode from './MindMapNode';
-import MindMapEdge from './MindMapEdge';
+import MindMapNode from "./MindMapNode";
+import MindMapEdge from "./MindMapEdge";
 
 const nodeTypes = {
   mindmap: MindMapNode,
@@ -330,14 +327,13 @@ and then pass the newly created types to the React Flow component.
 
 <CodeViewer
   codePath="blog-flows/mindmap/CustomNodesEdges"
-  options={{ editorHeight: '45vh' }}
   additionalFiles={[
-    'store.ts',
-    'MindMapNode.tsx',
-    'MindMapEdge.tsx',
-    'index.css',
+    "store.ts",
+    "MindMapNode.tsx",
+    "MindMapEdge.tsx",
+    "index.css",
   ]}
-  dependencies={{ nanoid: 'latest', zustand: '4.3.1' }}
+  dependencies={{ nanoid: "latest", zustand: "4.3.1" }}
   isTypescript
 />
 
@@ -361,7 +357,7 @@ const onConnectStart: OnConnectStart = useCallback((_, { nodeId }) => {
 const onConnectEnd: OnConnectEnd = useCallback((event) => {
   // we only want to create a new node if the connection ends on the pane
   const targetIsPane = (event.target as Element).classList.contains(
-    'react-flow__pane'
+    "react-flow__pane"
   );
 
   if (targetIsPane && connectingNodeId.current) {
@@ -378,8 +374,8 @@ Since our nodes are managed by the store, we create an action to add a new node 
 addChildNode: (parentNode: Node, position: XYPosition) => {
   const newNode = {
     id: nanoid(),
-    type: 'mindmap',
-    data: { label: 'New Node' },
+    type: "mindmap",
+    data: { label: "New Node" },
     position,
     parentNode: parentNode.id,
   };
@@ -408,7 +404,7 @@ const onConnectEnd: OnConnectEnd = useCallback(
   (event) => {
     const { nodeInternals } = store.getState();
     const targetIsPane = (event.target as Element).classList.contains(
-      'react-flow__pane'
+      "react-flow__pane"
     );
 
     if (targetIsPane && connectingNodeId.current) {
@@ -463,14 +459,13 @@ This function returns the position of the new node we want to add to our store. 
 
 <CodeViewer
   codePath="blog-flows/mindmap/CreateNodes"
-  options={{ editorHeight: '45vh' }}
   additionalFiles={[
-    'store.ts',
-    'MindMapNode.tsx',
-    'MindMapEdge.tsx',
-    'index.css',
+    "store.ts",
+    "MindMapNode.tsx",
+    "MindMapEdge.tsx",
+    "index.css",
   ]}
-  dependencies={{ nanoid: 'latest', zustand: '4.3.1' }}
+  dependencies={{ nanoid: "latest", zustand: "4.3.1" }}
   isTypescript
 />
 
@@ -502,9 +497,9 @@ Let's use the new action in our `MindmapNode` component:
 #### src/App/MindmapNode/index.tsx
 
 ```tsx
-import { Handle, NodeProps, Position } from 'reactflow';
+import { Handle, NodeProps, Position } from "reactflow";
 
-import useStore from '../store';
+import useStore from "../store";
 
 export type NodeData = {
   label: string;
@@ -571,14 +566,13 @@ In order to make the whole node a handle, we also update the style of the source
 
 <CodeViewer
   codePath="blog-flows/mindmap/NodeAsHandle"
-  options={{ editorHeight: '45vh' }}
   additionalFiles={[
-    'index.css',
-    'MindMapNode.tsx',
-    'MindMapEdge.tsx',
-    'store.ts',
+    "index.css",
+    "MindMapNode.tsx",
+    "MindMapEdge.tsx",
+    "store.ts",
   ]}
-  dependencies={{ nanoid: 'latest', zustand: '4.3.1' }}
+  dependencies={{ nanoid: "latest", zustand: "4.3.1" }}
   isTypescript
 />
 
@@ -587,9 +581,9 @@ This works but we can't move the nodes anymore because the source handle is now 
 #### src/App/MindmapNode/index.tsx
 
 ```tsx
-import { Handle, NodeProps, Position } from 'reactflow';
+import { Handle, NodeProps, Position } from "reactflow";
 
-import useStore from '../store';
+import useStore from "../store";
 
 export type NodeData = {
   label: string;
@@ -662,14 +656,13 @@ We add a wrapper div with the class name `inputWrapper` and a div with the class
 
 <CodeViewer
   codePath="blog-flows/mindmap/NodeAsHandle2"
-  options={{ editorHeight: '45vh' }}
   additionalFiles={[
-    'index.css',
-    'MindMapNode.tsx',
-    'MindMapEdge.tsx',
-    'store.ts',
+    "index.css",
+    "MindMapNode.tsx",
+    "MindMapEdge.tsx",
+    "store.ts",
   ]}
-  dependencies={{ nanoid: 'latest', zustand: '4.3.1' }}
+  dependencies={{ nanoid: "latest", zustand: "4.3.1" }}
   isTypescript
 />
 
@@ -684,12 +677,12 @@ const onConnectEnd: OnConnectEnd = useCallback(
   (event) => {
     const { nodeInternals } = store.getState();
     const targetIsPane = (event.target as Element).classList.contains(
-      'react-flow__pane'
+      "react-flow__pane"
     );
-    const node = (event.target as Element).closest('.react-flow__node');
+    const node = (event.target as Element).closest(".react-flow__node");
 
     if (node) {
-      node.querySelector('input')?.focus({ preventScroll: true });
+      node.querySelector("input")?.focus({ preventScroll: true });
     } else if (targetIsPane && connectingNodeId.current) {
       const parentNode = nodeInternals.get(connectingNodeId.current);
       const childNodePosition = getChildNodePosition(event, parentNode);
@@ -754,14 +747,13 @@ As you see we are focusing the input field if the user releases the mouse button
 
 <CodeViewer
   codePath="blog-flows/mindmap/NodeAsHandle3"
-  options={{ editorHeight: '45vh' }}
   additionalFiles={[
-    'index.css',
-    'MindMapNode.tsx',
-    'MindMapEdge.tsx',
-    'store.ts',
+    "index.css",
+    "MindMapNode.tsx",
+    "MindMapEdge.tsx",
+    "store.ts",
   ]}
-  dependencies={{ nanoid: 'latest', zustand: '4.3.1' }}
+  dependencies={{ nanoid: "latest", zustand: "4.3.1" }}
   isTypescript
 />
 
@@ -795,14 +787,13 @@ useEffect(() => {
 
 <CodeViewer
   codePath="blog-flows/mindmap/NodeAsHandle4"
-  options={{ editorHeight: '45vh' }}
   additionalFiles={[
-    'index.css',
-    'MindMapNode.tsx',
-    'MindMapEdge.tsx',
-    'store.ts',
+    "index.css",
+    "MindMapNode.tsx",
+    "MindMapEdge.tsx",
+    "store.ts",
   ]}
-  dependencies={{ nanoid: 'latest', zustand: '4.3.1' }}
+  dependencies={{ nanoid: "latest", zustand: "4.3.1" }}
   activeFile="MindMapNode.tsx"
   isTypescript
 />
@@ -816,7 +807,7 @@ You may have noticed that the edges are not centered. We created a custom edge a
 #### src/App/MindMapEdge.tsx
 
 ```tsx
-import { BaseEdge, EdgeProps, getStraightPath } from 'reactflow';
+import { BaseEdge, EdgeProps, getStraightPath } from "reactflow";
 
 function MindMapEdge(props: EdgeProps) {
   const { sourceX, sourceY, targetX, targetY } = props;
@@ -854,14 +845,13 @@ Nicely done! <Emoji content="💯" /> You can find the final code here:
 
 <CodeViewer
   codePath="blog-flows/mindmap/NodeAsHandle4"
-  options={{ editorHeight: '45vh' }}
   additionalFiles={[
-    'index.css',
-    'MindMapNode.tsx',
-    'MindMapEdge.tsx',
-    'store.ts',
+    "index.css",
+    "MindMapNode.tsx",
+    "MindMapEdge.tsx",
+    "store.ts",
   ]}
-  dependencies={{ nanoid: 'latest', zustand: '4.3.1' }}
+  dependencies={{ nanoid: "latest", zustand: "4.3.1" }}
   activeFile="MindMapNode.tsx"
   isTypescript
 />
