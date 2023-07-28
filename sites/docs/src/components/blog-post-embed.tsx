@@ -97,7 +97,23 @@ export function CodeViewer({
   );
 }
 
-// YoutubeEmbed -----------------------------------------------------------------------
+// (IFRAME) EMBEDS -------------------------------------------------------------
+
+export type EmbedProps = {
+  src: string;
+};
+
+export function Embed({ src }: EmbedProps) {
+  return (
+    <div
+      className={`relative aspect-video my-8 mx-0 ${negativeMargin} rounded-xl bg-gray-50`}
+    >
+      <iframe src={src} className="w-full h-full" />
+    </div>
+  );
+}
+
+// YoutubeEmbed ----------------------------------------------------------------
 
 export type YoutubeEmbedProps = {
   id: string;
@@ -106,7 +122,7 @@ export type YoutubeEmbedProps = {
 export function YoutubeEmbed({ id }: YoutubeEmbedProps) {
   return (
     <div
-      className={`relative h-full aspect-video my-8 mx-0 ${negativeMargin} rounded-xl bg-gray-50`}
+      className={`relative aspect-video my-8 mx-0 ${negativeMargin} rounded-xl bg-gray-50`}
     >
       <ReactPlayer
         controls
