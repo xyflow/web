@@ -41,7 +41,7 @@ export default function BlogPostPreview({
         {intro}
       </Text>
 
-      <AuthorList authors={authors} className="mb-2" noLink />
+      <AuthorList authors={authors} className="mb-2" noLink={!route} />
 
       <LinkOrSpan>
         Read more <ArrowRightIcon className="inline w-3 h-3" />
