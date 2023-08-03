@@ -1,16 +1,16 @@
-import { type ReactNode } from 'react';
-import Link from 'next/link';
-import { ArrowRightIcon } from '@heroicons/react/24/outline';
+import { type ReactNode } from "react";
+import Link from "next/link";
+import { ArrowRightIcon } from "@heroicons/react/24/outline";
 
-import { Heading, Text } from 'xy-ui';
-import AuthorList from '@/components/authors-list';
+import { Heading, Text } from "xy-ui";
+import AuthorList from "@/components/authors-list";
 
 type BlogPostPreviewProps = {
   date: ReactNode;
   title: ReactNode;
   intro: ReactNode;
   authors: string[];
-  route: string;
+  route?: string;
   className?: string;
 };
 
@@ -22,6 +22,9 @@ export default function BlogPostPreview({
   route,
   className,
 }: BlogPostPreviewProps) {
+  const LinkOrSpan = (props) =>
+    route ? <Link href={route} {...props} /> : <span {...props} />;
+
   return (
     <div className={className}>
       <Text size="sm" variant="light">
@@ -38,11 +41,11 @@ export default function BlogPostPreview({
         {intro}
       </Text>
 
-      <AuthorList authors={authors} className="mb-2" />
+      <AuthorList authors={authors} className="mb-2" noLink />
 
-      <Link href={route}>
+      <LinkOrSpan>
         Read more <ArrowRightIcon className="inline w-3 h-3" />
-      </Link>
+      </LinkOrSpan>
     </div>
   );
 }

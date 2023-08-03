@@ -1,17 +1,17 @@
-import { type ReactNode } from 'react';
-import { useConfig } from 'nextra-theme-docs';
+import { type ReactNode } from "react";
+import { useConfig } from "nextra-theme-docs";
 
-import { Text, Heading } from 'xy-ui';
-import ContentGrid, { ContentGridItem } from '@/components/content-grid';
-import BlogPostPreview from '@/components/blog-post-preview';
-import AuthorList from '@/components/authors-list';
-import { getPrevAndNextPagesByTitle } from '@/utils';
+import { Text, Heading } from "xy-ui";
+import ContentGrid, { ContentGridItem } from "@/components/content-grid";
+import BlogPostPreview from "@/components/blog-post-preview";
+import AuthorList from "@/components/authors-list";
+import { getPrevAndNextPagesByTitle } from "@/utils";
 
 function BlogPostPreviews() {
   const { frontMatter } = useConfig();
   const [prevPost, nextPost] = getPrevAndNextPagesByTitle(
     frontMatter.title,
-    '/blog'
+    "/blog"
   );
 
   return (
@@ -23,7 +23,6 @@ function BlogPostPreviews() {
             intro={prevPost.frontMatter?.intro}
             date={prevPost.frontMatter?.date}
             authors={prevPost.frontMatter?.authors}
-            route={prevPost.route}
           />
         </ContentGridItem>
         <ContentGridItem route={nextPost.route}>
@@ -32,7 +31,6 @@ function BlogPostPreviews() {
             intro={nextPost.frontMatter?.intro}
             date={nextPost.frontMatter?.date}
             authors={nextPost.frontMatter?.authors}
-            route={nextPost.route}
           />
         </ContentGridItem>
       </ContentGrid>
