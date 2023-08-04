@@ -5,6 +5,12 @@
       "layout": "raw"
     }
   },
+  "404": {
+    "title": "404",
+    "theme": {
+      "layout": "full"
+    }
+  },
   "index": "XY Flow",
   "react-flow": "React Flow",
   "svelte-flow": "Svelte Flow",
