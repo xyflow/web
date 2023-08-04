@@ -1,0 +1,37 @@
+---
+title: 404
+---
+
+import { ArrowRightCircleIcon } from "@heroicons/react/24/solid";
+import { Text } from "xy-ui";
+import BaseLayout from "@/layouts/base";
+import HeadlineNode from "@/components/headline-node";
+import Hero from "@/page-sections/hero";
+import Link from "next/link";
+
+<BaseLayout>
+  <Hero
+    title={
+      <div className="flex justify-center gap-12 lg:gap-24 lg:text-[5ch] mt-12 lg:mt-32">
+        <div>
+          <HeadlineNode>4</HeadlineNode>
+        </div>
+        <div className="-mt-12 lg:-mt-32 space-y-8">
+          <HeadlineNode>0</HeadlineNode>
+          <Text size="lg">We couldn't find that page.</Text>
+          <Link href="/">
+            <Text className="font-normal">
+              Go Home <ArrowRightCircleIcon className="inline w-6 h-6 ml-1" />
+            </Text>
+          </Link>
+        </div>
+        <div className="-mt-4 lg:-mt-12">
+          <HeadlineNode>4</HeadlineNode>
+        </div>
+      </div>
+    }
+    align="center"
+    size="xl"
+    showGradient
+  />
+</BaseLayout>
