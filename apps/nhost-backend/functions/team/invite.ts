@@ -1,23 +1,24 @@
 import { Request, Response } from 'express';
-import { getUserIdFromAuthToken } from '../_utils/jwt';
-import { allowCors, allowMethod } from '../_utils/middleware';
+import { authPost } from '../_utils/middleware';
 import {
   getUserIdByEmail,
   getSubscription,
 } from '../_utils/graphql/subscriptions';
 import {
-  getMaxMembers,
-  getTeamMembers,
+  getRemainingSeats,
   upsertTeamSubscription,
 } from '../_utils/graphql/team-subscriptions';
 import { createUser } from '../_utils/graphql/users';
 
-async function inviteTeamMember(req: Request, res: Response) {
-  const createdById = getUserIdFromAuthToken(req.headers.authorization);
+async function inviteTeamMember(
+  req: Request,
+  res: Response,
+  { userId: createdById }: { userId: string }
+) {
   const { email } = req.body;
 
-  if (!createdById || !email) {
-    return res.status(400).send({ message: 'Not authorized.' });
+  if (!email) {
+    return res.status(400).send({ message: 'Email missing.' });
   }
 
   // get the subscription from the creator to add the team member to the same plan
@@ -28,14 +29,6 @@ async function inviteTeamMember(req: Request, res: Response) {
     return res.status(400).send({ message: 'User is not subscribed.' });
   }
 
-  const teamMembers = await getTeamMembers(createdById);
-  const maxTeamMembers = getMaxMembers(subscription);
-
-  // if there are no seats left, we don't allow the user to add more team members
-  if (teamMembers.length >= maxTeamMembers) {
-    return res.status(400).send({ message: 'Not enough seats left.' });
-  }
-
   // if the added user already exists, the user id is added to the team subscription
   let userId = await getUserIdByEmail(email);
 
@@ -44,6 +37,8 @@ async function inviteTeamMember(req: Request, res: Response) {
     await createUser({ email });
     userId = await getUserIdByEmail(email);
   }
+
+  const remainingSeats = await getRemainingSeats(createdById);
 
   // final check if everything needed is there
   // also check if the user is not trying to add themselves
@@ -62,6 +57,10 @@ async function inviteTeamMember(req: Request, res: Response) {
   console.log('user_id', userId);
   console.log('plan_id', subscription.subscription_plan_id);
 
+  if (!remainingSeats) {
+    // buy extra seat
+  }
+
   await upsertTeamSubscription({
     createdById,
     email,
@@ -72,4 +71,4 @@ async function inviteTeamMember(req: Request, res: Response) {
   return res.status(200).json({ message: 'ok' });
 }
 
-export default allowMethod(allowCors(inviteTeamMember), 'POST');
+export default authPost(inviteTeamMember);

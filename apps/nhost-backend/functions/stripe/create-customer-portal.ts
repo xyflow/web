@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import stripe from '../_utils/stripe';
-import { allowCors } from '../_utils/middleware';
+import { authPost } from '../_utils/middleware';
 
 async function createStripeCustomerPortal(req: Request, res: Response) {
   const session = await stripe.billingPortal.sessions.create({
@@ -11,4 +11,4 @@ async function createStripeCustomerPortal(req: Request, res: Response) {
   return res.json(session);
 }
 
-export default allowCors(createStripeCustomerPortal);
+export default authPost(createStripeCustomerPortal);

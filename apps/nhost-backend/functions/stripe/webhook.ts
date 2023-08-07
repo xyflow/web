@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 import { handleSubscriptionChange } from '../_utils/graphql/subscriptions';
 import { stripe } from '../_utils/stripe';
-import { allowMethod } from '../_utils/middleware';
 import type Stripe from 'stripe';
 
 type NhostRequest = Request & {
@@ -19,6 +18,10 @@ const relevantEvents = new Set([
 const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET as string;
 
 const stripeWebhookHandler = async (req: NhostRequest, res: Response) => {
+  if (req.method !== 'POST') {
+    return res.status(405).send({ message: 'Method not allowed.' });
+  }
+
   const sig = req.headers['stripe-signature'] as string;
 
   try {
@@ -40,4 +43,4 @@ const stripeWebhookHandler = async (req: NhostRequest, res: Response) => {
   }
 };
 
-export default allowMethod(stripeWebhookHandler, 'POST');
+export default stripeWebhookHandler;

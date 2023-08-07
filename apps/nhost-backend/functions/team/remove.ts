@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { allowCors, allowMethod } from '../_utils/middleware';
+import { authPost } from '../_utils/middleware';
 import { getUserIdFromAuthToken } from '../_utils/jwt';
 import { removeTeamMember } from '../_utils/graphql/team-subscriptions';
 
@@ -18,4 +18,4 @@ async function removeTeamMemberHandler(req: Request, res: Response) {
     .send({ message: `removed ${removedCount} team member` });
 }
 
-export default allowMethod(allowCors(removeTeamMemberHandler), 'POST');
+export default authPost(removeTeamMemberHandler);

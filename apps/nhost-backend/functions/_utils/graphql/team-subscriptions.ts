@@ -1,6 +1,6 @@
 import { gql } from 'graphql-request';
 
-import { Subscription } from './subscriptions';
+import { getSubscription } from './subscriptions';
 import GraphQLClient from './client';
 
 const UPSERT_TEAM_SUBSCRIPTION = gql`
@@ -84,8 +84,10 @@ export async function getTeamMembers(
   return data.team_subscriptions;
 }
 
-export function getMaxMembers(subscription: Subscription) {
-  switch (subscription.subscription_plan_id) {
+export async function getFreeSeats(userId: string) {
+  const subscription = await getSubscription(userId);
+
+  switch (subscription?.subscription_plan_id) {
     case 'starter':
       return 1;
     case 'pro':
@@ -131,4 +133,11 @@ export async function removeTeamMember({
   });
 
   return affected_rows;
+}
+
+export async function getRemainingSeats(userId: string) {
+  const freeSeats = await getFreeSeats(userId);
+  const teamMembers = await getTeamMembers(userId);
+
+  return freeSeats - teamMembers.length;
 }

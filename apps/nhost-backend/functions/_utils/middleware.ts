@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
+import { getUserIdFromAuthToken } from './jwt';
 
-export const allowCors = (fn: any) => async (req: Request, res: Response) => {
+export const authPost = (fn: any) => async (req: Request, res: Response) => {
   res.setHeader('Access-Control-Allow-Credentials', 'true');
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader(
@@ -16,20 +17,15 @@ export const allowCors = (fn: any) => async (req: Request, res: Response) => {
     return res.status(200).end();
   }
 
-  return await fn(req, res);
+  if (req.method !== 'POST') {
+    return res.status(405).send({ message: 'Method not allowed.' });
+  }
+
+  const userId = getUserIdFromAuthToken(req.headers.authorization);
+
+  if (!userId) {
+    return res.status(401).send({ message: 'Unauthorized.' });
+  }
+
+  return await fn(req, res, { userId });
 };
-
-type RequestMethod = 'GET' | 'POST' | 'DELETE' | 'PUT';
-
-export const allowMethod =
-  (fn: any, method: RequestMethod) => async (req: Request, res: Response) => {
-    if (req.method === 'OPTIONS') {
-      return res.status(200).end();
-    }
-
-    if (req.method !== method) {
-      return res.status(405).send({ message: 'Method not allowed.' });
-    }
-
-    return await fn(req, res);
-  };

@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import stripe, { getLineItem } from '../_utils/stripe';
-import { allowCors, allowMethod } from '../_utils/middleware';
+import { authPost } from '../_utils/middleware';
 
 async function createStripeCheckoutSession(req: Request, res: Response) {
   const { plan, interval = 'month', currency = 'usd' } = req.body;
@@ -33,4 +33,4 @@ async function createStripeCheckoutSession(req: Request, res: Response) {
   return res.json(session);
 }
 
-export default allowCors(allowMethod(createStripeCheckoutSession, 'POST'));
+export default authPost(createStripeCheckoutSession);
