@@ -28,12 +28,14 @@ const hueValuesBySite = {
   svelte: 30,
 };
 
+const className = `${ntDapperFont.variable} ${firaMonoFont.variable} font-sans`;
+
 export default function App({ Component, pageProps }) {
   const { site } = useXYSite();
 
   return (
     <main
-      className={`${ntDapperFont.variable} ${firaMonoFont.variable} font-sans`}
+      className={className}
       style={{ '--nextra-primary-hue': hueValuesBySite[site] } as CSSProperties}
     >
       <Component {...pageProps} />

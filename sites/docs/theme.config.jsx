@@ -48,9 +48,8 @@ export default {
   project: {},
   darkMode: false,
   nextThemes: {
-    enableSystem: false,
+    forcedTheme: 'light',
     defaultTheme: 'light',
-    themes: ['light'],
   },
   navbar: {
     component: Navbar,
