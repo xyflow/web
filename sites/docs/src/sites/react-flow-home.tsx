@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { useSSG } from 'nextra/ssg';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 
@@ -32,6 +33,48 @@ const features = [
     title: 'All the right plugins',
     text: 'Make more advanced apps. Background, Minimap, Controls, Panel, Nodetoolbar, and Noderesizer.',
     route: '/react-flow/docs',
+  },
+];
+
+const showcases = [
+  {
+    name: 'Stripe Docs',
+    text: 'Diagrams for process documentation with interactive nodes',
+    content: (
+      <Image
+        className="rounded-xl"
+        src="/img/showcase/5e7c4463-7dc9-40e9-b3df-7433f6fc9abc.png"
+        alt="Stripe Docs"
+        objectFit="cover"
+        fill
+      />
+    ),
+  },
+  {
+    name: 'DoubleLoop',
+    text: 'Node-based dashboard builder to monitor business metrics',
+    content: (
+      <Image
+        className="rounded-xl"
+        src="/img/showcase/8b4e2243-4e88-40be-89b8-4bfad13460f8.png"
+        alt="DoubleLoop"
+        objectFit="cover"
+        fill
+      />
+    ),
+  },
+  {
+    name: 'TypeForm',
+    text: 'Interactive tool to build and visualize complex survey logic',
+    content: (
+      <Image
+        className="rounded-xl"
+        src="/img/showcase/0e29d66b-142b-42c4-a43c-6e3f6501d14b.png"
+        alt="TypeForm"
+        objectFit="cover"
+        fill
+      />
+    ),
   },
 ];
 
@@ -73,14 +116,14 @@ export default function ReactFlowHome() {
         <ClientLogos />
       </Section>
 
-      <Showcase />
+      <Showcase items={showcases} />
 
       <Section className="lg:flex place-content-between">
         <div>
           <Heading size="md" className="font-bold">
             Some headline thing
           </Heading>
-          <Text className="mb-4 mt-2">
+          <Text className="mt-2 mb-4">
             Here is a text about ethical standards and stuff
           </Text>
           <Button asChild>

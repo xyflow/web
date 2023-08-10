@@ -2,7 +2,7 @@ import BaseLayout from '@/layouts/base';
 import Hero from '@/page-sections/hero';
 import PricingTable from '@/page-sections/pricing-table';
 import ClientLogos from '@/components/client-logos';
-import ShowcaseOverview from '@/page-sections/showcase-overview';
+import ShowcaseSlider from '@/page-sections/showcase-overview';
 import FAQ from '@/components/faq';
 import Section from '@/page-sections/section';
 
@@ -43,7 +43,7 @@ export default function ReactFlowPro() {
         <ClientLogos />
       </Section>
 
-      <ShowcaseOverview />
+      <ShowcaseSlider />
 
       <FAQ className="mt-20" />
     </BaseLayout>
