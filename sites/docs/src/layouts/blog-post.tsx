@@ -23,7 +23,6 @@ function BlogPostPreviews() {
             intro={prevPost.frontMatter?.intro}
             date={prevPost.frontMatter?.date}
             authors={prevPost.frontMatter?.authors}
-            route={prevPost.route}
           />
         </ContentGridItem>
         <ContentGridItem route={nextPost.route}>
@@ -32,7 +31,6 @@ function BlogPostPreviews() {
             intro={nextPost.frontMatter?.intro}
             date={nextPost.frontMatter?.date}
             authors={nextPost.frontMatter?.authors}
-            route={nextPost.route}
           />
         </ContentGridItem>
       </ContentGrid>
