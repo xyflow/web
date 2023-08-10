@@ -15,5 +15,8 @@
     "theme.config.jsx",
     "tailwind.config.ts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules",
+    "src/components/code-viewer/svelte/stackblitz-template"
+  ]
 }

@@ -1,31 +1,9 @@
 import { useEffect, useState, useMemo } from 'react';
-import {
-  SandpackProvider,
-  SandpackLayout,
-  SandpackCodeEditor,
-  SandpackPreview,
-  SandpackStack,
-  OpenInCodeSandboxButton,
-} from '@codesandbox/sandpack-react';
+import ReactViewer from './react-viewer';
+import SvelteViewer from './svelte-viewer';
 
 import { Framework } from '@/types';
-import { getScriptExtension, getTemplate, getDefaultSetup } from './utils';
-
-const hiddenBaseStyles = {
-  '/styles.css': {
-    code: `
-html, body, #root {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: sans-serif;
-}
-`,
-    hidden: true,
-  },
-};
+import { getScriptExtension } from './utils';
 
 const defaultOptions = {
   editorHeight: '70vh',
@@ -52,16 +30,11 @@ type CodeViewerProps = {
 export default function CodeViewer({
   codePath,
   additionalFiles = [],
-  dependencies = {},
   options = defaultOptions,
   activeFile = null,
-  showEditor = true,
-  showPreview = true,
   isTypescript = false,
-  customPreview = null,
-  sandpackOptions = {},
-  showOpenInCodeSandbox = true,
   framework = 'react',
+  ...rest
 }: CodeViewerProps) {
   const [files, setFiles] = useState(null);
   const scriptExtension = getScriptExtension({ framework, isTypescript });
@@ -72,6 +45,8 @@ export default function CodeViewer({
         `!raw-loader!./${codePath}/index.${scriptExtension}`
       );
 
+      const pathPrefix = framework === 'svelte' ? 'src' : '';
+
       const additional = {};
 
       for (let additionalFile of additionalFiles) {
@@ -79,19 +54,21 @@ export default function CodeViewer({
           const file = await import(
             `!raw-loader!./${codePath}/${additionalFile}`
           );
-          additional[`/${additionalFile}`] = { code: file.default };
+          additional[`${pathPrefix}/${additionalFile}`] = {
+            code: file.default,
+          };
 
           if (additionalFile === activeFile) {
             additional[`/${additionalFile}`].active = true;
           }
         } else {
           const fileName = Object.keys(additionalFile)[0];
-          additional[fileName] = additionalFile[fileName];
+          additional[`${pathPrefix}/${fileName}`] = additionalFile[fileName];
         }
       }
 
       setFiles({
-        [`/App.${scriptExtension}`]: res.default,
+        [`${pathPrefix}/App.${scriptExtension}`]: res.default,
         ...additional,
       });
     };
@@ -99,73 +76,15 @@ export default function CodeViewer({
     loadFiles();
   }, []);
 
-  const defaultSetup = getDefaultSetup(framework);
-
-  const customSetup = useMemo(
-    () => ({
-      ...defaultSetup,
-      dependencies: {
-        ...defaultSetup.dependencies,
-        ...dependencies,
-      },
-    }),
-    []
-  );
-
   const editorHeight = options?.editorHeight || '70vh';
-  const panelStyle = { height: editorHeight };
 
   if (!files) {
     return <div style={{ minHeight: editorHeight }} />;
   }
 
-  sandpackOptions.readOnly = !!customPreview;
-
-  const template = getTemplate({ framework, isTypescript });
-
-  return (
-    <div className="my-4" style={{ minHeight: editorHeight }}>
-      <SandpackProvider
-        template={template}
-        options={sandpackOptions}
-        customSetup={customSetup}
-        files={{
-          ...files,
-          ...hiddenBaseStyles,
-        }}
-      >
-        <SandpackLayout>
-          {showEditor && <SandpackCodeEditor style={panelStyle} />}
-          {showPreview && customPreview ? (
-            <>
-              <SandpackStack style={{ flex: '1 1 0%' }}>
-                <div
-                  className="sp-preview-container"
-                  style={{ flex: '1 1 0%', height: '100%' }}
-                >
-                  {customPreview}
-                  <div
-                    className="sp-preview-actions"
-                    style={{
-                      zIndex: 10,
-                      position: 'absolute',
-                      bottom: 10,
-                      right: 10,
-                    }}
-                  >
-                    <OpenInCodeSandboxButton />
-                  </div>
-                </div>
-              </SandpackStack>
-            </>
-          ) : (
-            <SandpackPreview
-              style={panelStyle}
-              showOpenInCodeSandbox={showOpenInCodeSandbox}
-            />
-          )}
-        </SandpackLayout>
-      </SandpackProvider>
-    </div>
+  return framework === 'svelte' ? (
+    <SvelteViewer files={files} editorHeight={editorHeight} />
+  ) : (
+    <ReactViewer files={files} editorHeight={editorHeight} {...rest} />
   );
 }
