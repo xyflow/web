@@ -1,9 +1,9 @@
-import BaseLayout from "@/layouts/base";
-import Hero from "@/page-sections/hero";
-import { ArrowRightCircleIcon } from "@heroicons/react/24/solid";
-import Link from "next/link";
-import { useCallback } from "react";
-import { Card, Input, Checkbox, InputLabel, Button, Text } from "xy-ui";
+import BaseLayout from '@/layouts/base';
+import Hero from '@/page-sections/hero';
+import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
+import Link from 'next/link';
+import { useCallback } from 'react';
+import { Card, Input, Checkbox, InputLabel, Button, Text } from 'xy-ui';
 
 export default function ContactPage() {
   const onSubmit = useCallback((e: React.FormEvent<HTMLFormElement>) => {
@@ -26,7 +26,7 @@ export default function ContactPage() {
           className="absolute opacity-5 w-full h-[200%] left-1/2 -translate-x-1/2 -translate-y-1/4 pointer-events-none"
           style={{
             background:
-              "radial-gradient(rgba(68,91,222,1) 0%, rgba(215,78,243,1) 25%, rgba(255,255,255,1) 50%)",
+              'radial-gradient(rgba(68,91,222,1) 0%, rgba(215,78,243,1) 25%, rgba(255,255,255,1) 50%)',
           }}
         />
         <Card className="p-8 bg-white relative">
@@ -89,7 +89,7 @@ export default function ContactPage() {
           </div>
 
           <Text variant="light">
-            ... or reach out directly to{" "}
+            ... or reach out directly to{' '}
             <a className="text-primary" href="mailto:info@reactflow.dev">
               info@reactflow.dev
             </a>
@@ -102,21 +102,21 @@ export default function ContactPage() {
 }
 
 const contactInputs = [
-  { name: "Your name", type: "text", className: "col-span-2" },
-  { name: "Your email", type: "email", className: "col-span-2" },
-  { name: "Company / Organisation", type: "text", className: "col-span-4" },
+  { name: 'Your name', type: 'text', className: 'col-span-2' },
+  { name: 'Your email', type: 'email', className: 'col-span-2' },
+  { name: 'Company / Organisation', type: 'text', className: 'col-span-4' },
 ];
 
 const contactReasons = [
-  { name: "An issue or bug", value: "issue" },
-  { name: "Pro subscription / Enterprise quote", value: "pro" },
-  { name: "Something else", value: "other" },
+  { name: 'An issue or bug', value: 'issue' },
+  { name: 'Pro subscription / Enterprise quote', value: 'pro' },
+  { name: 'Something else', value: 'other' },
 ];
 
 const externalLinks = [
-  { name: "GitHub", href: "https://github.com/wbkd/reactflow" },
-  { name: "Discord", href: "https://discord.com/invite/RVmnytFmGW" },
-  { name: "Twitter", href: "https://twitter.com/reactflowdev" },
+  { name: 'GitHub', href: 'https://github.com/wbkd/reactflow' },
+  { name: 'Discord', href: 'https://discord.com/invite/RVmnytFmGW' },
+  { name: 'Twitter', href: 'https://twitter.com/reactflowdev' },
 ];
 
-const toFormName = (name: string) => name.toLowerCase().replace(" ", "-");
+const toFormName = (name: string) => name.toLowerCase().replace(' ', '-');
