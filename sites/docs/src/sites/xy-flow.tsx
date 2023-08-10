@@ -1,19 +1,19 @@
-import Link from "next/link";
-import Image from "next/image";
-import { Position } from "@xyflow/system";
-import { ArrowRightCircleIcon } from "@heroicons/react/24/solid";
+import Link from 'next/link';
+import Image from 'next/image';
+import { Position } from '@xyflow/system';
+import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 
-import { Text, Heading, Button } from "xy-ui";
-import BaseLayout from "@/layouts/base";
-import Hero from "@/page-sections/hero";
-import ShowcaseSlider from "@/page-sections/showcase-overview";
-import HeadlineNode from "@/components/headline-node";
-import Handle from "@/components/handle";
-import ContentGrid, { ContentGridItem } from "@/components/content-grid";
-import Logo from "@/components/logo";
-import Section from "@/page-sections/section";
+import { Text, Heading, Button } from 'xy-ui';
+import BaseLayout from '@/layouts/base';
+import Hero from '@/page-sections/hero';
+import ShowcaseSlider from '@/page-sections/showcase-overview';
+import HeadlineNode from '@/components/headline-node';
+import Handle from '@/components/handle';
+import ContentGrid, { ContentGridItem } from '@/components/content-grid';
+import Logo from '@/components/logo';
+import Section from '@/page-sections/section';
 
-import aboutImage from "../../public/img/about.jpg";
+import aboutImage from '../../public/img/about.jpg';
 
 export default function XYFlowHome() {
   return (
@@ -39,8 +39,8 @@ export default function XYFlowHome() {
                 className="top-1/2 -left-2"
                 variant="xyflow"
               />
-            </HeadlineNode>{" "}
-            your{" "}
+            </HeadlineNode>{' '}
+            your{' '}
             <HeadlineNode>
               <Handle
                 type="source"
@@ -52,8 +52,8 @@ export default function XYFlowHome() {
                 svgClassName="-z-10"
               />
               ideas
-            </HeadlineNode>{" "}
-            with{" "}
+            </HeadlineNode>{' '}
+            with{' '}
             <HeadlineNode>
               <Handle
                 type="target"

@@ -1,5 +1,5 @@
-import Link from "next/link";
-import { useState, useCallback, useEffect, ReactNode, useMemo } from "react";
+import Link from 'next/link';
+import { useState, useCallback, useEffect, ReactNode, useMemo } from 'react';
 import {
   Button,
   Container,
@@ -10,9 +10,9 @@ import {
   TabsTrigger,
   Text,
   cn,
-} from "xy-ui";
+} from 'xy-ui';
 
-import useXYSite from "@/hooks/use-xy-site";
+import useXYSite from '@/hooks/use-xy-site';
 
 // ShowcaseSlider --------------------------------------------------------------
 
@@ -40,8 +40,8 @@ export default function ShowcaseSlider({
           <div>
             <Text
               className={cn(
-                "font-bold mb-2",
-                site !== "xyflow" ? `text-${site}` : "text-gray-300"
+                'font-bold mb-2',
+                site !== 'xyflow' ? `text-${site}` : 'text-gray-300'
               )}
             >
               Project Showcase
@@ -85,9 +85,9 @@ type ShowcaseSliderItemsProps = {
 };
 
 const activeBarColours = {
-  xyflow: "from-xyflow/40 to-xyflow/70",
-  react: "from-react/40 to-react/70",
-  svelte: "from-svelte/40 to-svelte/70",
+  xyflow: 'from-xyflow/40 to-xyflow/70',
+  react: 'from-react/40 to-react/70',
+  svelte: 'from-svelte/40 to-svelte/70',
 };
 
 function ShowcaseSliderItems({
@@ -151,10 +151,10 @@ function ShowcaseSliderItems({
           <TabsContent key={index} forceMount value={item.name}>
             <div
               className={cn(
-                "transition duration-300 motion-reduce:transition-none",
+                'transition duration-300 motion-reduce:transition-none',
                 active === item.name
-                  ? "ease-out opacity-100"
-                  : "ease-in opacity-0"
+                  ? 'ease-out opacity-100'
+                  : 'ease-in opacity-0'
               )}
             >
               {item.content}
@@ -199,8 +199,8 @@ function ShowcaseSliderItem({
     <TabsTrigger
       value={item.name}
       className={cn(
-        "w-full sm:flex flex-col group",
-        isActive ? "flex" : "hidden"
+        'w-full sm:flex flex-col group',
+        isActive ? 'flex' : 'hidden'
       )}
       onClick={() => onClick(item.name)}
     >
@@ -213,7 +213,7 @@ function ShowcaseSliderItem({
           <div
             style={{ width: `${props.activeBarWidth!}%` }}
             className={cn(
-              "absolute h-full rounded bg-gradient-to-r",
+              'absolute h-full rounded bg-gradient-to-r',
               activeBarColours[site]
             )}
           />
@@ -222,9 +222,9 @@ function ShowcaseSliderItem({
 
       <div
         className={cn(
-          "text-muted transition duration-300 motion-reduce:transition-none",
-          "group-hover:opacity-100 px-2 md:px-4",
-          isActive ? " opacity-100" : " opacity-50"
+          'text-muted transition duration-300 motion-reduce:transition-none',
+          'group-hover:opacity-100 px-2 md:px-4',
+          isActive ? ' opacity-100' : ' opacity-50'
         )}
       >
         <Text className="my-2 font-mono font-bold text-center">
