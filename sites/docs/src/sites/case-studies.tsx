@@ -25,7 +25,6 @@ export default function CaseStudies() {
                 title={page.frontMatter?.title}
                 description={page.frontMatter?.description}
                 kicker={page.frontMatter?.client}
-                route={page.route}
               />
             </ContentGridItem>
           );

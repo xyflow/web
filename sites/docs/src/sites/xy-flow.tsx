@@ -169,9 +169,9 @@ function LibraryCards() {
           A customizable React component for building node-based editors and
           interactive diagrams
         </Text>
-        <Link href="/react-flow" className="text-react flex items-center">
+        <span className="text-react flex items-center">
           Read More <ArrowRightCircleIcon className="ml-1 w-4 h-4" />
-        </Link>
+        </span>
       </ContentGridItem>
 
       <ContentGridItem route="/svelte-flow">
@@ -182,9 +182,9 @@ function LibraryCards() {
           A customizable Svelte component for building node-based editors and
           interactive diagrams
         </Text>
-        <Link href="/svelte-flow" className="text-svelte flex items-center">
+        <span className="text-svelte flex items-center">
           Read More <ArrowRightCircleIcon className="ml-1 w-4 h-4" />
-        </Link>
+        </span>
       </ContentGridItem>
     </ContentGrid>
   );
