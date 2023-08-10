@@ -42,7 +42,7 @@ export default function BlogPostLayout({ children }: { children: ReactNode }) {
   const { frontMatter } = useConfig();
 
   return (
-    <>
+    <div className="max-w-screen-md mx-auto">
       <Text variant="light" className="mt-10">
         {frontMatter.date}
       </Text>
@@ -55,6 +55,6 @@ export default function BlogPostLayout({ children }: { children: ReactNode }) {
       <div>{children}</div>
 
       <BlogPostPreviews />
-    </>
+    </div>
   );
 }

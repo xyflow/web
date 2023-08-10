@@ -2,10 +2,10 @@
   "*": {
     "display": "hidden",
     "theme": {
-      "toc": true,
+      "toc": false,
       "sidebar": false,
       "pagination": false,
-      "layout": "default"
+      "layout": "full"
     }
   },
   "react-flow-and-the-web-audio-api": "Tutorial: Integrating React Flow and the Web Audio API",
