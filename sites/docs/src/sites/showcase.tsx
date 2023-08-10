@@ -35,6 +35,7 @@ export default function Showcase() {
               }
               description={showcase.description}
               route={showcase.url}
+              linkLabel="Website"
             />
           </ContentGridItem>
         ))}

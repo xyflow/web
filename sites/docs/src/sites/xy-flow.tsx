@@ -21,10 +21,10 @@ const showcases = [
     text: 'Diagrams for process documentation with interactive nodes',
     content: (
       <Image
-        className='rounded-xl'
-        src='/img/showcase/5e7c4463-7dc9-40e9-b3df-7433f6fc9abc.png'
-        alt='Stripe Docs'
-        objectFit='cover'
+        className="rounded-xl"
+        src="/img/showcase/5e7c4463-7dc9-40e9-b3df-7433f6fc9abc.png"
+        alt="Stripe Docs"
+        objectFit="cover"
         fill
       />
     ),
@@ -34,10 +34,10 @@ const showcases = [
     text: 'Node-based dashboard builder to monitor business metrics',
     content: (
       <Image
-        className='rounded-xl'
-        src='/img/showcase/8b4e2243-4e88-40be-89b8-4bfad13460f8.png'
-        alt='DoubleLoop'
-        objectFit='cover'
+        className="rounded-xl"
+        src="/img/showcase/8b4e2243-4e88-40be-89b8-4bfad13460f8.png"
+        alt="DoubleLoop"
+        objectFit="cover"
         fill
       />
     ),
@@ -47,10 +47,10 @@ const showcases = [
     text: 'Interactive tool to build and visualize complex survey logic',
     content: (
       <Image
-        className='rounded-xl'
-        src='/img/showcase/0e29d66b-142b-42c4-a43c-6e3f6501d14b.png'
-        alt='TypeForm'
-        objectFit='cover'
+        className="rounded-xl"
+        src="/img/showcase/0e29d66b-142b-42c4-a43c-6e3f6501d14b.png"
+        alt="TypeForm"
+        objectFit="cover"
         fill
       />
     ),
@@ -66,91 +66,91 @@ export default function XYFlowHome() {
             <HeadlineNode>
               Wire
               <Handle
-                type='source'
+                type="source"
                 position={Position.Right}
-                id='xy-wire-source'
-                to='xy-wire-target'
-                className='-left-[100vw] top-1/2'
-                variant='xyflow'
-                svgClassName='-z-10'
+                id="xy-wire-source"
+                to="xy-wire-target"
+                className="-left-[100vw] top-1/2"
+                variant="xyflow"
+                svgClassName="-z-10"
               />
               <Handle
-                type='target'
+                type="target"
                 position={Position.Left}
-                id='xy-wire-target'
-                className='top-1/2 -left-2'
-                variant='xyflow'
+                id="xy-wire-target"
+                className="top-1/2 -left-2"
+                variant="xyflow"
               />
             </HeadlineNode>{' '}
             your{' '}
             <HeadlineNode>
               <Handle
-                type='source'
+                type="source"
                 position={Position.Bottom}
-                id='xy-ideas'
-                to='xy-xyflow'
-                className='bottom-0 right-4'
-                variant='xyflow'
-                svgClassName='-z-10'
+                id="xy-ideas"
+                to="xy-xyflow"
+                className="bottom-0 right-4"
+                variant="xyflow"
+                svgClassName="-z-10"
               />
               ideas
             </HeadlineNode>{' '}
             with{' '}
             <HeadlineNode>
               <Handle
-                type='target'
-                id='xy-xyflow'
+                type="target"
+                id="xy-xyflow"
                 position={Position.Right}
-                className='top-1/2 -translate-y-1/2 right-0'
-                variant='xyflow'
+                className="top-1/2 -translate-y-1/2 right-0"
+                variant="xyflow"
               />
               xyflow
             </HeadlineNode>
           </>
         }
-        subtitle='Powerful open source libraries for building node-based UIs with React or Svelte. Ready out-of-the-box and infinitely customizable'
-        align='center'
-        size='xl'
+        subtitle="Powerful open source libraries for building node-based UIs with React or Svelte. Ready out-of-the-box and infinitely customizable"
+        align="center"
+        size="xl"
         showGradient
       />
 
       <LibraryCards />
 
-      <Showcase items={showcases} className='my-16 lg:my-24' />
+      <Showcase items={showcases} className="my-16 lg:my-24" />
 
       <Section>
-        <Heading size='sm' as='h3' className='text-center mb-2'>
+        <Heading size="sm" as="h3" className="text-center mb-2">
           About xyflow
         </Heading>
-        <Text className='text-center max-w-lg mx-auto mb-6' variant='light'>
+        <Text className="text-center max-w-lg mx-auto mb-6" variant="light">
           We are Christopher, Hayleigh, John, and Moritz. We are the maintainers
           of React Flow, Svelte Flow, and the communities around them
         </Text>
 
-        <div className='flex justify-center space-x-4 mb-16'>
-          <Button asChild variant='link'>
-            <Link href='/blog' className='flex items-center'>
-              Blog <ArrowRightCircleIcon className='w-4 h-4 ml-1' />
+        <div className="flex justify-center space-x-4 mb-16">
+          <Button asChild variant="link">
+            <Link href="/blog" className="flex items-center">
+              Blog <ArrowRightCircleIcon className="w-4 h-4 ml-1" />
             </Link>
           </Button>
-          <Button asChild variant='link'>
-            <Link href='/about' className='flex items-center'>
-              About us <ArrowRightCircleIcon className='w-4 h-4 ml-1' />
+          <Button asChild variant="link">
+            <Link href="/about" className="flex items-center">
+              About us <ArrowRightCircleIcon className="w-4 h-4 ml-1" />
             </Link>
           </Button>
-          <Button asChild variant='link'>
-            <Link href='/open-source' className='flex items-center'>
-              Open Source <ArrowRightCircleIcon className='w-4 h-4 ml-1' />
+          <Button asChild variant="link">
+            <Link href="/open-source" className="flex items-center">
+              Open Source <ArrowRightCircleIcon className="w-4 h-4 ml-1" />
             </Link>
           </Button>
-          <Button asChild variant='link'>
-            <Link href='/contact' className='flex items-center'>
-              Contact Us <ArrowRightCircleIcon className='w-4 h-4 ml-1' />
+          <Button asChild variant="link">
+            <Link href="/contact" className="flex items-center">
+              Contact Us <ArrowRightCircleIcon className="w-4 h-4 ml-1" />
             </Link>
           </Button>
         </div>
 
-        <Image src={aboutImage} alt='xyflow team' />
+        <Image src={aboutImage} alt="xyflow team" />
       </Section>
 
       <LibraryCards />
@@ -160,30 +160,30 @@ export default function XYFlowHome() {
 
 function LibraryCards() {
   return (
-    <ContentGrid className='mt-16 lg:mt-24'>
-      <ContentGridItem route='/react-flow'>
-        <Heading size='sm' className='flex items-center'>
-          <Logo variant='react' className='mr-2' /> React Flow
+    <ContentGrid className="mt-16 lg:mt-24">
+      <ContentGridItem route="/react-flow">
+        <Heading size="sm" className="flex items-center">
+          <Logo variant="react" className="mr-2" /> React Flow
         </Heading>
-        <Text className='mt-2 mb-4' variant='light'>
+        <Text className="mt-2 mb-4" variant="light">
           A customizable React component for building node-based editors and
           interactive diagrams
         </Text>
-        <Link href='/react-flow' className='text-react flex items-center'>
-          Read More <ArrowRightCircleIcon className='ml-1 w-4 h-4' />
+        <Link href="/react-flow" className="text-react flex items-center">
+          Read More <ArrowRightCircleIcon className="ml-1 w-4 h-4" />
         </Link>
       </ContentGridItem>
 
-      <ContentGridItem route='/svelte-flow'>
-        <Heading size='sm' className='flex items-center'>
-          <Logo variant='svelte' className='mr-2' /> Svelte Flow
+      <ContentGridItem route="/svelte-flow">
+        <Heading size="sm" className="flex items-center">
+          <Logo variant="svelte" className="mr-2" /> Svelte Flow
         </Heading>
-        <Text className='mt-2 mb-4' variant='light'>
+        <Text className="mt-2 mb-4" variant="light">
           A customizable Svelte component for building node-based editors and
           interactive diagrams
         </Text>
-        <Link href='/svelte-flow' className='text-svelte flex items-center'>
-          Read More <ArrowRightCircleIcon className='ml-1 w-4 h-4' />
+        <Link href="/svelte-flow" className="text-svelte flex items-center">
+          Read More <ArrowRightCircleIcon className="ml-1 w-4 h-4" />
         </Link>
       </ContentGridItem>
     </ContentGrid>

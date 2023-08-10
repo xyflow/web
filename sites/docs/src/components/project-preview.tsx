@@ -3,17 +3,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 
-import { Heading, Text } from 'xy-ui';
+import { Heading, Text, Button } from 'xy-ui';
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
-// alt="Image Alt"
-// src={`/img/showcase/${showcase.image}`}
-// layout="fill"
-// objectFit="cover" // Scale your image down to fit into the container
-// />
+
 type ProjectPreviewProps = {
   image?: string | StaticImport;
-  imageWidth?: number;
-  imageHeight?: number;
   kicker?: ReactNode;
   title: ReactNode;
   subtitle?: ReactNode;
@@ -25,8 +19,6 @@ type ProjectPreviewProps = {
 
 export default function ProjectPreview({
   image,
-  imageWidth,
-  imageHeight,
   kicker,
   title,
   subtitle,
@@ -38,7 +30,7 @@ export default function ProjectPreview({
   const isExternal = route.includes('https://');
   const linkProps = isExternal
     ? {
-        target: '_blabnk',
+        target: '_blank',
         rel: 'noopener noreferrer',
       }
     : {};
@@ -68,12 +60,12 @@ export default function ProjectPreview({
           {subtitle}
         </Text>
       )}
-      <Text variant="light" className="leading-snug my-4">
-        {description}
-      </Text>
-      <Link href={route} className="flex items-center" {...linkProps}>
-        {linkLabel} <ArrowRightCircleIcon className="ml-1 w-4 h-4" />
-      </Link>
+      <Text className="leading-snug my-4">{description}</Text>
+      <Button asChild variant="link">
+        <Link href={route} className="flex items-center" {...linkProps}>
+          {linkLabel} <ArrowRightCircleIcon className="ml-1 w-4 h-4" />
+        </Link>
+      </Button>
     </div>
   );
 }
