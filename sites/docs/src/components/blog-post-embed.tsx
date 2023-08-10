@@ -7,9 +7,9 @@
 // content and having a rounded border.
 //
 
-import NxImage from "next/image";
-import XyCodeViewer from "@/components/code-viewer";
-import ReactPlayer from "@/components/react-player-lazy";
+import NxImage from 'next/image';
+import XyCodeViewer from '@/components/code-viewer';
+import ReactPlayer from '@/components/react-player-lazy';
 
 // IMAGES ----------------------------------------------------------------------
 
@@ -83,7 +83,7 @@ export function CodeViewer({
       <XyCodeViewer
         codePath={codePath}
         options={{
-          editorHeight: "50vh",
+          editorHeight: '50vh',
           editorWidthPercentage: 100,
           wrapContent: false,
           readOnly: false,
@@ -129,7 +129,7 @@ export function YoutubeEmbed({ id }: YoutubeEmbedProps) {
         url={`https://www.youtube.com/watch?v=${id}`}
         width="100%"
         height="100%"
-        style={{ position: "absolute", top: 0, left: 0 }}
+        style={{ position: 'absolute', top: 0, left: 0 }}
       />
     </div>
   );
@@ -160,4 +160,4 @@ export function YoutubeEmbed({ id }: YoutubeEmbedProps) {
 //  ultrawide monitor. 12rem was chosen as an arbitrary sensible limit, it corresponds
 //  to tailwind's `mx-44` utility.
 //
-const negativeMargin = "sm:-mx-[min(calc((100vw-768px)/2),12rem)]";
+const negativeMargin = 'sm:-mx-[min(calc((100vw-768px)/2),12rem)]';

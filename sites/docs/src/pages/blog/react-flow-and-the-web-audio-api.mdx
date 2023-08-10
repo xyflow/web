@@ -1,18 +1,18 @@
 ---
-title: "Tutorial: Integrating React Flow and the Web Audio API"
+title: 'Tutorial: Integrating React Flow and the Web Audio API'
 intro: "Today we'll be looking at how to create an interactive audio playground using React Flow and the Web Audio API. We'll start from scratch, first learning about the Web Audio API before looking at how to handle many common scenarios in React Flow: state management, implementing custom nodes, and adding interactivity."
 date: 2023/04/14
-authors: ["hayleigh"]
-tags: ["react-flow", "web-audio-api", "how-to"]
+authors: ['hayleigh']
+tags: ['react-flow', 'web-audio-api', 'how-to']
 image: img/blog/webaudio/web-audio-blog-thumb.png
 ---
 
-import { Tab, Tabs } from "nextra-theme-docs";
-import { Callout } from "nextra/components";
+import { Tab, Tabs } from 'nextra-theme-docs';
+import { Callout } from 'nextra/components';
 
-import { CodeViewer, Embed, Image } from "@/components/blog-post-embed";
-import Emoji from "@/components/emoji";
-import BlogPostLayout from "@/layouts/blog-post";
+import { CodeViewer, Embed, Image } from '@/components/blog-post-embed';
+import Emoji from '@/components/emoji';
+import BlogPostLayout from '@/layouts/blog-post';
 
 <BlogPostLayout>
 Today we'll be looking at how to create an interactive audio playground using React
@@ -134,7 +134,7 @@ For our app, we'll track the mouse's position on the screen and use that to set
 the pitch of the oscillator node and the volume of the gain node.
 
 ```jsx filename="./src/App.jsx" {12-27}
-import React from "react";
+import React from 'react';
 
 const context = new AudioContext();
 const osc = context.createOscillator();
@@ -156,7 +156,7 @@ const updateValues = (e) => {
 export default function App() {
   return (
     <div
-      style={{ width: "100vw", height: "100vh" }}
+      style={{ width: '100vw', height: '100vh' }}
       onMouseMove={updateValues}
     />
   );
@@ -202,7 +202,7 @@ Here's what we put together, in case you weren't following along at home:
 
 <CodeViewer
   codePath="blog-flows/webaudio/MouseTheremin"
-  additionalFiles={["index.css"]}
+  additionalFiles={['index.css']}
   showEditor={false}
 />
 
@@ -239,21 +239,21 @@ We're going to remove everything from our Web Audio crash course and start from
 scratch. Start by modifying `main.jsx` to match the following:
 
 ```jsx filename="./src/main.jsx"
-import App from "./App";
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { ReactFlowProvider } from "reactflow";
+import App from './App';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { ReactFlowProvider } from 'reactflow';
 
 // 👇 Don't forget to import the styles!
-import "reactflow/dist/style.css";
-import "./index.css";
+import 'reactflow/dist/style.css';
+import './index.css';
 
-const root = document.querySelector("#root");
+const root = document.querySelector('#root');
 
 ReactDOM.createRoot(root).render(
   <React.StrictMode>
     {/* React flow needs to be inside an element with a known height and width to work */}
-    <div style={{ width: "100vw", height: "100vh" }}>
+    <div style={{ width: '100vw', height: '100vh' }}>
       <ReactFlowProvider>
         <App />
       </ReactFlowProvider>
@@ -275,8 +275,8 @@ There are three important things to pay attention to here:
 Next, hop into `App.jsx` and create an empty flow:
 
 ```jsx filename="./src/App.jsx"
-import React from "react";
-import ReactFlow, { Background } from "reactflow";
+import React from 'react';
+import ReactFlow, { Background } from 'reactflow';
 
 export default function App() {
   return (
@@ -316,9 +316,9 @@ To get a basic interactive React Flow graph going we need three actions:
 Go ahead and create a new file, `store.js`, and add the following:
 
 ```js filename="./src/store.js"
-import { applyNodeChanges, applyEdgeChanges } from "reactflow";
-import { nanoid } from "nanoid";
-import { create } from "zustand";
+import { applyNodeChanges, applyEdgeChanges } from 'reactflow';
+import { nanoid } from 'nanoid';
+import { create } from 'zustand';
 
 export const useStore = create((set, get) => ({
   nodes: [],
@@ -366,11 +366,11 @@ If we hop back over to our `<App />` component we can hook React Flow up to our
 actions and get something working.
 
 ```jsx filename="./src/App.jsx" {3,5,7-13,16,20-24}
-import React from "react";
-import ReactFlow, { Background } from "reactflow";
-import { shallow } from "zustand/shallow";
+import React from 'react';
+import ReactFlow, { Background } from 'reactflow';
+import { shallow } from 'zustand/shallow';
 
-import { useStore } from "./store";
+import { useStore } from './store';
 
 const selector = (store) => ({
   nodes: store.nodes,
@@ -423,8 +423,8 @@ const useStore = create((set, get) => ({
 
 <CodeViewer
   codePath="blog-flows/webaudio/StateManagement"
-  additionalFiles={["store.js"]}
-  dependencies={{ nanoid: "latest", zustand: "4.3.6" }}
+  additionalFiles={['store.js']}
+  dependencies={{ nanoid: 'latest', zustand: '4.3.6' }}
   showEditor={true}
 />
 
@@ -522,11 +522,11 @@ Now we just need to bring the action into our `<Osc />` component and call it
 whenever an input changes.
 
 ```jsx filename="./src/nodes/Osc.jsx" {3,7-10,13,28,35}
-import React from "react";
-import { Handle } from "reactflow";
-import { shallow } from "zustand/shallow";
+import React from 'react';
+import { Handle } from 'reactflow';
+import { shallow } from 'zustand/shallow';
 
-import { useStore } from "../store";
+import { useStore } from '../store';
 
 const selector = (id) => (store) => ({
   setFrequency: (e) => store.updateNode(id, { frequency: +e.target.value }),
@@ -580,12 +580,12 @@ For that we need to create a `nodeTypes` object: the keys should correspond to a
 node's `type` and the value will be the React component to render.
 
 ```jsx filename="./src/App.jsx" {5,16-18,26}
-import React from "react";
-import ReactFlow from "reactflow";
-import { shallow } from "zustand/shallow";
+import React from 'react';
+import ReactFlow from 'reactflow';
+import { shallow } from 'zustand/shallow';
 
-import { useStore } from "./store";
-import Osc from "./nodes/Osc";
+import { useStore } from './store';
+import Osc from './nodes/Osc';
 
 const selector = (store) => ({
   nodes: store.nodes,
@@ -648,8 +648,8 @@ const useStore = create((set, get) => ({
 
 <CodeViewer
   codePath="blog-flows/webaudio/CustomNode"
-  additionalFiles={["store.js", "nodes/Osc.js"]}
-  dependencies={{ nanoid: "latest", zustand: "4.3.6", twind: "latest" }}
+  additionalFiles={['store.js', 'nodes/Osc.js']}
+  dependencies={{ nanoid: 'latest', zustand: '4.3.6', twind: 'latest' }}
   showEditor={false}
 />
 
@@ -689,10 +689,10 @@ const useStore = create((set, get) => ({
 The custom node itself is then pretty simple:
 
 ```jsx filename="./src/nodes/Out.jsx"
-import React from "react";
-import { Handle } from "reactflow";
-import { shallow } from "zustand/shallow";
-import { useStore } from "../store";
+import React from 'react';
+import { Handle } from 'reactflow';
+import { shallow } from 'zustand/shallow';
+import { useStore } from '../store';
 
 const selector = (store) => ({
   isRunning: store.isRunning,
@@ -730,8 +730,8 @@ Things are starting to shape up quite nicely!
 
 <CodeViewer
   codePath="blog-flows/webaudio/CustomNodes"
-  additionalFiles={["store.js", "nodes/Osc.js", "nodes/Out.js", "nodes/Amp.js"]}
-  dependencies={{ nanoid: "latest", zustand: "4.3.6", twind: "latest" }}
+  additionalFiles={['store.js', 'nodes/Osc.js', 'nodes/Out.js', 'nodes/Amp.js']}
+  dependencies={{ nanoid: 'latest', zustand: '4.3.6', twind: 'latest' }}
   showEditor={false}
 />
 
@@ -768,7 +768,7 @@ const nodes = new Map();
 
 const osc = context.createOscillator();
 osc.frequency.value = 220;
-osc.type = "square";
+osc.type = 'square';
 osc.start();
 
 const amp = context.createGain();
@@ -776,9 +776,9 @@ amp.gain.value = 0.5;
 
 const out = context.destination;
 
-nodes.set("a", osc);
-nodes.set("b", amp);
-nodes.set("c", out);
+nodes.set('a', osc);
+nodes.set('b', amp);
+nodes.set('c', out);
 ```
 
 </Callout>
@@ -962,7 +962,7 @@ them with the real context's state and resume/suspend methods.
 
 ```js filename="./src/audio.js"
 export function isRunning() {
-  return context.state === "running";
+  return context.state === 'running';
 }
 
 export function toggleAudio() {
@@ -996,13 +996,13 @@ Let's see what we have in action.
 <CodeViewer
   codePath="blog-flows/webaudio/HardcodedAudio"
   additionalFiles={[
-    "store.js",
-    "audio.js",
-    "nodes/Osc.js",
-    "nodes/Amp.js",
-    "nodes/Out.js",
+    'store.js',
+    'audio.js',
+    'nodes/Osc.js',
+    'nodes/Amp.js',
+    'nodes/Out.js',
   ]}
-  dependencies={{ nanoid: "latest", zustand: "4.3.6", twind: "latest" }}
+  dependencies={{ nanoid: 'latest', zustand: '4.3.6', twind: 'latest' }}
   showEditor={false}
 />
 
@@ -1020,7 +1020,7 @@ an id for the new node, the type of node to create, and its initial data:
 ```js filename="./src/audio.js"
 export function createAudioNode(id, type, data) {
   switch (type) {
-    case "osc": {
+    case 'osc': {
       const node = context.createOscillator();
       node.frequency.value = data.frequency;
       node.type = data.type;
@@ -1030,7 +1030,7 @@ export function createAudioNode(id, type, data) {
       break;
     }
 
-    case "amp": {
+    case 'amp': {
       const node = context.createGain();
       node.gain.value = data.gain;
 
@@ -1116,8 +1116,8 @@ We don't need anything fancy here, just a couple of buttons that trigger the
 
 ```jsx filename="./src/App.jsx"
 <Panel position="top-right">
-  <button onClick={() => store.createNode("osc")}>osc</button>
-  <button onClick={() => store.createNode("amp")}>amp</button>
+  <button onClick={() => store.createNode('osc')}>osc</button>
+  <button onClick={() => store.createNode('amp')}>amp</button>
 </Panel>
 ```
 
@@ -1136,13 +1136,13 @@ make sure you haven't missed anything.
 <CodeViewer
   codePath="blog-flows/webaudio/Demo"
   additionalFiles={[
-    "store.js",
-    "audio.js",
-    "nodes/Osc.js",
-    "nodes/Amp.js",
-    "nodes/Out.js",
+    'store.js',
+    'audio.js',
+    'nodes/Osc.js',
+    'nodes/Amp.js',
+    'nodes/Out.js',
   ]}
-  dependencies={{ nanoid: "latest", zustand: "4.3.6", twind: "latest" }}
+  dependencies={{ nanoid: 'latest', zustand: '4.3.6', twind: 'latest' }}
   showEditor={true}
 />
 
