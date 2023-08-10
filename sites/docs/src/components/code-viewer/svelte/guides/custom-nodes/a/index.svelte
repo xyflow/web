@@ -1,106 +1,64 @@
 <script>
+  import { SvelteFlow, Background, Controls, MiniMap} from '@xyflow/svelte';
   import { writable } from 'svelte/store';
-  import {
-    SvelteFlow,
-    Controls,
-    Background,
-    BackgroundVariant,
-    MiniMap,
-    Position,
-  } from '@xyflow/svelte';
-  import { CustomNode } from './custom-node';
-
-  const nodeTypes = {
-    colorNode: CustomNode,
-  };
-
-  const bgColor = writable('#1A192B');
-
-  const onChange = (event) => {
-    nodes.update((nds) =>
-      nds.map((node) => {
-        if (node.type !== 'colorNode') {
-          return node;
-        }
-
-        const color = event.target.value;
-
-        bgColor.set(color);
-
-        return {
-          ...node,
-          data: {
-            ...node.data,
-            color,
-          },
-        };
-      })
-    );
-  };
+  const data = "world";
 
   const nodes = writable([
     {
       id: '1',
       type: 'input',
-      data: { label: 'An input node' },
-      position: { x: 0, y: 50 },
-      sourcePosition: Position.Right,
+      data: { label: 'Input Node' },
+      position: { x: 150, y: 5 }
     },
     {
       id: '2',
-      type: 'colorNode',
-      data: { onChange: onChange, color: bgColor },
-      style: 'border: 1px solid #777; padding: 10px',
-      position: { x: 250, y: 50 },
+      type: 'default',
+      data: { label: 'Node' },
+      position: { x: 0, y: 150 },
+      selectable: false
     },
     {
-      id: '3',
-      type: 'output',
-      data: { label: 'Output A' },
-      position: { x: 650, y: 25 },
-      targetPosition: Position.Left,
+      id: 'A',
+      type: 'default',
+      data: { label: 'Styled with class' },
+      class: 'custom-style',
+      position: { x: 150, y: 150 }
     },
     {
-      id: '4',
-      type: 'output',
-      data: { label: 'Output B' },
-      position: { x: 650, y: 120 },
-      targetPosition: Position.Left,
-    },
-  ]);
-
-  const edges = writable([
+      id: 'D',
+      type: 'default',
+      data: { label: 'Not draggable' },
+      position: { x: 150, y: 200 },
+      draggable: false
+    },])
+    const edges = writable([
     {
-      id: 'e1-2',
+      id: '1-2',
+      type: 'default',
       source: '1',
       target: '2',
-      animated: true,
+      label: 'Edge Text'
     },
     {
-      id: 'e2a-3',
-      source: '2',
-      sourceHandle: 'a',
-      target: '3',
-      animated: true,
+      id: '1-3',
+      type: 'smoothstep',
+      source: '1',
+      target: 'A',
+      selectable: false
     },
     {
-      id: 'e2b-4',
+      id: '2-4',
       source: '2',
-      sourceHandle: 'b',
-      target: '4',
-      animated: true,
-    },
+      target: 'D',
+      animated: true
+    }
   ]);
 </script>
-
-<SvelteFlow {nodes} {edges} {nodeTypes} fitView>
-  <Controls />
-  <Background variant={BackgroundVariant.Dots} />
-  <MiniMap />
-</SvelteFlow>
-
-<style>
-  :global(.svelte-flow) {
-    background: var(--bgcolor);
-  }
-</style>
+  
+<div style="height:100vh;">
+  <SvelteFlow {nodes} {edges} fitView>
+    <Background />
+    <Controls />
+    <MiniMap />
+  </SvelteFlow>
+</div>
