@@ -1,6 +1,8 @@
+![xyflow](https://github.com/xyflow/web/assets/3797215/9b251e22-c555-41c6-b754-943b8ee2ec5f)
+
 # XYFlow Websites and Docs
 
-This monorepo contains our [website + docs](https://xyflow.com) and [pro platform](https://pro.xyflow.com). You can find the websites in the [/app](app) directory.
+This monorepo contains our [website + docs](https://xyflow.com) and [pro platform](https://pro.xyflow.com). You can find the websites in the [/sites](sites) directory.
 
 ## What's inside?
 
