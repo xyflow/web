@@ -29,8 +29,22 @@ export function ContentGridItem({
   route?: string;
   children: React.ReactNode;
 }) {
+  const isExternal = route?.includes('https://');
+  const linkProps = isExternal
+    ? {
+        target: '_blank',
+        rel: 'noopener noreferrer',
+      }
+    : {};
+
   const LinkOrDiv = (props) =>
-    route ? <Link href={route} {...props} /> : <div {...props} />;
+    route && isExternal ? (
+      <a href={route} {...props} {...linkProps} />
+    ) : route ? (
+      <Link href={route} {...props} />
+    ) : (
+      <div {...props} />
+    );
 
   return (
     <LinkOrDiv
