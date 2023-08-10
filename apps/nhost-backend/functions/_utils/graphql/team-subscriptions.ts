@@ -84,7 +84,7 @@ export async function getTeamMembers(
   return data.team_subscriptions;
 }
 
-export async function getFreeSeats(userId: string) {
+export async function getIncludedSeats(userId: string) {
   const subscription = await getSubscription(userId);
 
   switch (subscription?.subscription_plan_id) {
@@ -135,9 +135,9 @@ export async function removeTeamMember({
   return affected_rows;
 }
 
-export async function getRemainingSeats(userId: string) {
-  const freeSeats = await getFreeSeats(userId);
+export async function getAvailableSeats(userId: string) {
+  const includedSeats = await getIncludedSeats(userId);
   const teamMembers = await getTeamMembers(userId);
 
-  return freeSeats - teamMembers.length;
+  return includedSeats - teamMembers.length;
 }

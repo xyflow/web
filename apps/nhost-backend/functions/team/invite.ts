@@ -5,8 +5,9 @@ import {
   getSubscription,
 } from '../_utils/graphql/subscriptions';
 import {
-  getRemainingSeats,
+  getIncludedSeats,
   upsertTeamSubscription,
+  getTeamMembers,
 } from '../_utils/graphql/team-subscriptions';
 import { createUser } from '../_utils/graphql/users';
 
@@ -15,7 +16,7 @@ async function inviteTeamMember(
   res: Response,
   { userId: createdById }: { userId: string }
 ) {
-  const { email } = req.body;
+  const { email, paymentConfirmed } = req.body;
 
   if (!email) {
     return res.status(400).send({ message: 'Email missing.' });
@@ -38,7 +39,15 @@ async function inviteTeamMember(
     userId = await getUserIdByEmail(email);
   }
 
-  const remainingSeats = await getRemainingSeats(createdById);
+  const teamMembers = await getTeamMembers(createdById);
+  const includedSeats = await getIncludedSeats(createdById);
+
+  if (teamMembers.length >= includedSeats && !paymentConfirmed) {
+    return res.status(200).send({
+      needsPaymentConfirmation: true,
+      message: 'You need to confirm to buy an extra seat.',
+    });
+  }
 
   // final check if everything needed is there
   // also check if the user is not trying to add themselves
@@ -57,7 +66,7 @@ async function inviteTeamMember(
   console.log('user_id', userId);
   console.log('plan_id', subscription.subscription_plan_id);
 
-  if (!remainingSeats) {
+  if (paymentConfirmed) {
     // buy extra seat
   }
 
