@@ -1,7 +1,7 @@
-import cn from "clsx";
+import cn from 'clsx';
 
-import authorData from "./authors";
-import Link from "next/link";
+import authorData from './authors';
+import Link from 'next/link';
 
 function Author({
   name,
@@ -22,7 +22,7 @@ function Author({
     noLink ? <span {...props} /> : <Link href={url} {...props} />;
 
   return (
-    <div className={cn("flex", className)}>
+    <div className={cn('flex', className)}>
       <LinkOrSpan>
         <img
           src={image}
@@ -50,7 +50,7 @@ export default function AuthorList({
   const authorsArray = Array.isArray(authors) ? authors : [authors];
 
   return (
-    <div className={cn("flex", className)}>
+    <div className={cn('flex', className)}>
       {authorsArray.map((author) => (
         <Author
           key={author}

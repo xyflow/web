@@ -1,9 +1,9 @@
-import { type ReactNode } from "react";
-import Link from "next/link";
-import { ArrowRightIcon } from "@heroicons/react/24/outline";
+import { type ReactNode } from 'react';
+import Link from 'next/link';
+import { ArrowRightIcon } from '@heroicons/react/24/outline';
 
-import { Heading, Text } from "xy-ui";
-import AuthorList from "@/components/authors-list";
+import { Heading, Text } from 'xy-ui';
+import AuthorList from '@/components/authors-list';
 
 type BlogPostPreviewProps = {
   date: ReactNode;
