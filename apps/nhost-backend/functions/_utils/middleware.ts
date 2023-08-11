@@ -34,4 +34,6 @@
 //   return handler;
 // };
 
-export const authPost = (fn: any) => fn;
+export const authPost = (fn: any) => (req: Request, res: Response) => {
+  fn(req, res, { userId: 'userId' });
+};
