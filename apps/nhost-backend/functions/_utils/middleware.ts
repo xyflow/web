@@ -1,7 +1,8 @@
 import { Request, Response } from 'express';
 import { getUserIdFromAuthToken } from './jwt';
 
-export const authPost = (fn: any) => (req: Request, res: Response) => {
+// @todo this doesn't work with nhost cloud, re-enable when fixed
+export const authPost = (fn: any) => async (req: Request, res: Response) => {
   res.setHeader('Access-Control-Allow-Credentials', 'true');
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader(
@@ -27,5 +28,10 @@ export const authPost = (fn: any) => (req: Request, res: Response) => {
     return res.status(401).send({ message: 'Unauthorized.' });
   }
 
-  fn(req, res, { userId });
+  try {
+    return await fn(req, res, { userId });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).send({ message: 'Internal server error.' });
+  }
 };
