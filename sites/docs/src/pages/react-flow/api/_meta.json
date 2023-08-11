@@ -1,3 +1,8 @@
 {
-  "index": "Quickstart"
+  "index": "<ReactFlow />",
+  "ReactFlowProvider": "<ReactFlowProvider />",
+  "components": "Components",
+  "types": "Types",
+  "hooks": "Hooks",
+  "utils": "Utils"
 }
