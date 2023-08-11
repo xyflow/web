@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
+import { getUserIdFromAuthToken } from './jwt';
 
-export const allowCors = (fn: any) => async (req: Request, res: Response) => {
+export const authPost = (fn: any) => async (req: Request, res: Response) => {
   res.setHeader('Access-Control-Allow-Credentials', 'true');
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader(
@@ -12,11 +13,23 @@ export const allowCors = (fn: any) => async (req: Request, res: Response) => {
     'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, Authorization'
   );
 
-  console.log('set headers');
-
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
   }
 
-  return await fn(req, res);
+  if (req.method !== 'POST') {
+    return res.status(405).send({ message: 'Method not allowed.' });
+  }
+
+  const userId = getUserIdFromAuthToken(req.headers.authorization);
+
+  if (!userId) {
+    return res.status(401).send({ message: 'Unauthorized.' });
+  }
+
+  try {
+    return await fn(req, res, { userId });
+  } catch (err) {
+    return res.status(500).send({ message: 'Internal server error.' });
+  }
 };

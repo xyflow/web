@@ -14,7 +14,7 @@ import {
 } from '@codesandbox/sandpack-react';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 
-import { isDevelopment } from 'utils/browser';
+import { isDevelopment } from '@/utils';
 
 import mdxComponents from './mdx-components';
 import DownloadSandpackButton from './sandpack-downloader';

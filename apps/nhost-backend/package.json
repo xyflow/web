@@ -2,9 +2,11 @@
   "name": "xyflow-nhost",
   "private": true,
   "scripts": {
-    "dev": "nhost up"
+    "dev": "nhost up",
+    "stripe-webhook": "source .secrets && stripe listen --forward-to https://local.functions.nhost.run/v1/stripe/webhook --api-key $STRIPE_SECRET_KEY"
   },
   "dependencies": {
+    "@nhost/nhost-js": "^2.2.13",
     "express": "^4.18.2",
     "graphql-request": "^6.1.0",
     "jsonwebtoken": "^9.0.0",
