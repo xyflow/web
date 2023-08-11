@@ -3,6 +3,7 @@
 import { ReactNode, useEffect, createContext, useState } from 'react';
 import { gql } from '@apollo/client';
 import { useAuthQuery } from '@nhost/react-apollo';
+import { useUserId } from '@nhost/nextjs';
 
 import { SubscriptionPlan } from '@/types';
 
@@ -25,19 +26,21 @@ const defaultContextValue = {
 export const SubscriptionContext = createContext<SubscriptionContextValue>(defaultContextValue);
 
 const GET_SUBSCRIPTION = gql`
-  query {
+  query GetSubscription($userId: uuid) {
     user_subscriptions {
       subscription_plan_id
     }
-    team_subscriptions {
+    team_subscriptions(where: { user_id: { _eq: $userId } }) {
       subscription_plan_id
     }
   }
 `;
 
 const SubscriptionProvider = ({ children }: Props) => {
+  const userId = useUserId();
+  console.log(userId);
+  const { data, loading } = useAuthQuery(GET_SUBSCRIPTION, { variables: { userId } });
   const [value, setValue] = useState<SubscriptionContextValue>(defaultContextValue);
-  const { data, loading } = useAuthQuery(GET_SUBSCRIPTION);
 
   useEffect(() => {
     const plan = data?.user_subscriptions?.[0]?.subscription_plan_id ?? SubscriptionPlan.FREE;

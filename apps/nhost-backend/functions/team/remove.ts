@@ -1,17 +1,21 @@
 import { Request, Response } from 'express';
 import { authPost } from '../_utils/middleware';
-import { getUserIdFromAuthToken } from '../_utils/jwt';
 import { removeTeamMember } from '../_utils/graphql/team-subscriptions';
+import { updateSeatQuantity } from '../_utils/stripe';
 
-async function removeTeamMemberHandler(req: Request, res: Response) {
-  const createdById = getUserIdFromAuthToken(req.headers.authorization);
+async function removeTeamMemberHandler(
+  req: Request,
+  res: Response,
+  { userId }: { userId: string }
+) {
   const { email } = req.body;
 
-  if (!createdById || !email) {
+  if (!userId || !email) {
     return res.status(405).send({ message: 'Bad request.' });
   }
 
-  const removedCount = await removeTeamMember({ createdById, email });
+  const removedCount = await removeTeamMember({ createdById: userId, email });
+  await updateSeatQuantity(userId, -1);
 
   return res
     .status(200)

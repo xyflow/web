@@ -48,7 +48,6 @@ export default function ManageTeamCard() {
 
   const removeMember = async (email: string) => {
     const isConfirmed = confirm(`Are you sure you want to remove ${email} from your team?`);
-    console.log(isConfirmed);
 
     if (!isConfirmed) {
       return;
@@ -69,7 +68,7 @@ export default function ManageTeamCard() {
         paymentConfirmed,
       });
 
-      if (res.data.needsPaymentConfirmation) {
+      if (res.data?.needsPaymentConfirmation) {
         setConfirmPayment(true);
         return;
       }

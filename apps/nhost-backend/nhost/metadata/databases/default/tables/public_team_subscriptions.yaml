@@ -7,6 +7,7 @@ select_permissions:
       columns:
         - email
         - subscription_plan_id
+        - user_id
       filter:
         _or:
           - created_by:

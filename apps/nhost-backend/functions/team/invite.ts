@@ -1,15 +1,13 @@
 import { Request, Response } from 'express';
 import { authPost } from '../_utils/middleware';
-import {
-  getUserIdByEmail,
-  getSubscription,
-} from '../_utils/graphql/subscriptions';
+import { getSubscription } from '../_utils/graphql/subscriptions';
 import {
   getIncludedSeats,
   upsertTeamSubscription,
   getTeamMembers,
 } from '../_utils/graphql/team-subscriptions';
-import { createUser } from '../_utils/graphql/users';
+import { createUser, getUserIdByEmail } from '../_utils/graphql/users';
+import { updateSeatQuantity } from '../_utils/stripe';
 
 async function inviteTeamMember(
   req: Request,
@@ -26,21 +24,18 @@ async function inviteTeamMember(
   const subscription = await getSubscription(createdById);
 
   // if the creator is not subscribed, don't add the team subscription
-  if (!subscription || subscription.subscription_plan_id === 'free') {
+  if (
+    !subscription ||
+    !subscription.subscription_plan_id ||
+    subscription.subscription_plan_id === 'free'
+  ) {
     return res.status(400).send({ message: 'User is not subscribed.' });
-  }
-
-  // if the added user already exists, the user id is added to the team subscription
-  let userId = await getUserIdByEmail(email);
-
-  // create a user if the user doesn't exist yet
-  if (!userId) {
-    await createUser({ email });
-    userId = await getUserIdByEmail(email);
   }
 
   const teamMembers = await getTeamMembers(createdById);
   const includedSeats = await getIncludedSeats(createdById);
+
+  // @todo check if team members already contains the email
 
   if (teamMembers.length >= includedSeats && !paymentConfirmed) {
     return res.status(200).send({
@@ -49,25 +44,21 @@ async function inviteTeamMember(
     });
   }
 
-  // final check if everything needed is there
-  // also check if the user is not trying to add themselves
-  if (
-    !userId ||
-    !createdById ||
-    userId === createdById ||
-    !subscription.subscription_plan_id ||
-    !email
-  ) {
-    return res.status(400).send({ message: 'Bad request.' });
+  // if the added user already exists, the user id is added to the team subscription
+  let userId = await getUserIdByEmail(email);
+
+  if (userId === createdById) {
+    return res.status(400).send({ message: 'You cannot add yourself.' });
   }
 
-  console.log('created_by', createdById);
-  console.log('email', email);
-  console.log('user_id', userId);
-  console.log('plan_id', subscription.subscription_plan_id);
+  // create a user if the user doesn't exist yet
+  if (!userId) {
+    await createUser({ email });
+    userId = await getUserIdByEmail(email);
 
-  if (paymentConfirmed) {
-    // buy extra seat
+    if (!userId) {
+      return res.status(400).send({ message: 'Could not create user.' });
+    }
   }
 
   await upsertTeamSubscription({
@@ -76,6 +67,12 @@ async function inviteTeamMember(
     userId,
     planId: subscription.subscription_plan_id,
   });
+
+  // @todo only do this if adding the team member was successful
+  if (teamMembers.length >= includedSeats && paymentConfirmed) {
+    // buy extra seat
+    await updateSeatQuantity(createdById, 1);
+  }
 
   return res.status(200).json({ message: 'ok' });
 }

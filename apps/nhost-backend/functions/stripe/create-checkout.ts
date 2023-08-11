@@ -1,9 +1,14 @@
 import { Request, Response } from 'express';
 import stripe, { getLineItem } from '../_utils/stripe';
 import { authPost } from '../_utils/middleware';
+import { getOrCreateCustomer } from '../_utils/graphql/subscriptions';
 
-async function createStripeCheckoutSession(req: Request, res: Response) {
-  const { plan, interval = 'month', currency = 'usd' } = req.body;
+async function createStripeCheckoutSession(
+  req: Request,
+  res: Response,
+  { userId }: { userId: string }
+) {
+  const { plan, interval = 'month' } = req.body;
 
   if (!plan) {
     return res.status(405).send({ message: 'Bad request.' });
@@ -12,23 +17,26 @@ async function createStripeCheckoutSession(req: Request, res: Response) {
   const lineItem = await getLineItem({
     plan,
     interval,
-    currency,
   });
 
   if (!lineItem) {
     return res.status(405).send({ message: 'Requested price not found.' });
   }
 
+  const stripeCustomerId = await getOrCreateCustomer(userId);
+
   const session = await stripe.checkout.sessions.create({
-    customer: 'cus_OII4KVQTNsywNQ',
+    customer: stripeCustomerId,
     line_items: [lineItem],
     mode: 'subscription',
     success_url: `${req.headers.origin}?payment_success=true&session_id={CHECKOUT_SESSION_ID}`,
     cancel_url: `${req.headers.origin}/subscribe?payment_cancelled=true`,
     automatic_tax: { enabled: true },
+    customer_update: {
+      address: 'auto',
+      name: 'auto',
+    },
   });
-
-  console.log(session);
 
   return res.json(session);
 }

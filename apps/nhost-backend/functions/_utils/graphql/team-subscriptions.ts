@@ -86,16 +86,18 @@ export async function getTeamMembers(
 
 export async function getIncludedSeats(userId: string) {
   const subscription = await getSubscription(userId);
+  // this helps us to add extra seats for a subscription in the database
+  const extraSeats = subscription.extra_seats ?? 0;
 
   switch (subscription?.subscription_plan_id) {
     case 'starter':
-      return 1;
+      return 1 + extraSeats;
     case 'pro':
-      return 5;
+      return 5 + extraSeats;
     case 'enterprise':
-      return 10;
+      return 10 + extraSeats;
     default:
-      return 0;
+      return extraSeats;
   }
 }
 
@@ -133,11 +135,4 @@ export async function removeTeamMember({
   });
 
   return affected_rows;
-}
-
-export async function getAvailableSeats(userId: string) {
-  const includedSeats = await getIncludedSeats(userId);
-  const teamMembers = await getTeamMembers(userId);
-
-  return includedSeats - teamMembers.length;
 }

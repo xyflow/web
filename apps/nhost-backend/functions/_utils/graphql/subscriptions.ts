@@ -2,7 +2,8 @@ import type Stripe from 'stripe';
 import { gql } from 'graphql-request';
 
 import GraphQLClient from './client';
-import { stripe } from '../stripe';
+import { stripe, createStripeCustomer } from '../stripe';
+import { getUser, getUserIdByEmail } from './users';
 
 const UPSERT_SUBSCRIPTION = gql`
   mutation UpsertSubscription(
@@ -40,6 +41,7 @@ export type Subscription = {
   user_id: string;
   stripe_customer_id: string;
   subscription_plan_id: string;
+  extra_seats?: number;
 };
 
 async function upsertSubscription({
@@ -52,32 +54,6 @@ async function upsertSubscription({
     planId,
     stripeCustomerId,
   });
-}
-
-type User = {
-  email: string;
-  id: string;
-};
-
-type GetUserByMailResponse = {
-  users: User[];
-};
-
-const GET_USER_BY_MAIL = gql`
-  query GetUserByMail($email: citext!) {
-    users(where: { email: { _eq: $email } }) {
-      email
-      id
-    }
-  }
-`;
-
-export async function getUserIdByEmail(email: string): Promise<string> {
-  const response = await GraphQLClient.request<GetUserByMailResponse>(
-    GET_USER_BY_MAIL,
-    { email }
-  );
-  return response.users?.[0]?.id;
 }
 
 const GET_SUBSCRIPTION = gql`
@@ -98,24 +74,44 @@ export async function getSubscription(userId: string): Promise<Subscription> {
   return response.user_subscriptions?.[0];
 }
 
-export function getCustomerId(customer: string | Stripe.Customer): string {
-  return typeof customer === 'string' ? customer : customer.id;
+export async function getOrCreateCustomer(userId: string) {
+  const subscription = await getSubscription(userId);
+
+  if (subscription && subscription.stripe_customer_id) {
+    return subscription.stripe_customer_id;
+  }
+
+  const { email } = await getUser(userId);
+  const stripeCustomer = await createStripeCustomer({ userId, email });
+
+  await upsertSubscription({
+    userId,
+    stripeCustomerId: stripeCustomer.id,
+    planId: 'free',
+  });
+
+  return stripeCustomer.id;
 }
 
 export async function handleSubscriptionChange(
   stripeEvent: Stripe.Subscription
 ) {
-  // @todo how to type the stripeEvent.customer correctly here?
-  const customerId = getCustomerId(stripeEvent.customer as string);
+  const customerId =
+    typeof stripeEvent.customer === 'string'
+      ? stripeEvent.customer
+      : stripeEvent.customer.id;
 
   // @todo how to type the customer here?
   const customer = (await stripe.customers.retrieve(
     customerId
   )) as Stripe.Customer;
 
-  if (customer && customer.email) {
-    const userId = await getUserIdByEmail(customer.email);
+  if (customer) {
+    const userId =
+      customer.metadata.userId ??
+      (await getUserIdByEmail(customer.email || ''));
     const status = stripeEvent.status;
+    // @todo we will have multiple items in the future
     const subscriptionItem = stripeEvent.items.data[0];
     const product = await stripe.products.retrieve(
       subscriptionItem.plan.product as string
