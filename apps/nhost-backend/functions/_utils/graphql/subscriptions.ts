@@ -4,7 +4,7 @@ import { gql } from 'graphql-request';
 import GraphQLClient from './client';
 import { stripe, createStripeCustomer } from '../stripe';
 import { getUser, getUserIdByEmail } from './users';
-import { updateTeamSubscriptionPlan } from './team-subscriptions';
+// import { updateTeamSubscriptionPlan } from './team-subscriptions';
 
 const UPSERT_SUBSCRIPTION = gql`
   mutation UpsertSubscription(
@@ -127,7 +127,7 @@ export async function handleSubscriptionChange(
         stripeCustomerId: customerId,
       });
 
-      await updateTeamSubscriptionPlan({ createdById: userId, planId });
+      // await updateTeamSubscriptionPlan({ createdById: userId, planId });
     }
 
     if (userId && (status === 'past_due' || status === 'canceled')) {
@@ -137,7 +137,7 @@ export async function handleSubscriptionChange(
         planId: 'free',
       });
 
-      await updateTeamSubscriptionPlan({ createdById: userId, planId: 'free' });
+      // await updateTeamSubscriptionPlan({ createdById: userId, planId: 'free' });
     }
   }
 }
