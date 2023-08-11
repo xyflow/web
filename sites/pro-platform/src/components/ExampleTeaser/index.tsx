@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Card, CardTitle, Button, CardHeader, CardFooter, CardDescription } from 'xy-ui';
+import { Card, CardTitle, CardHeader, CardDescription } from 'xy-ui';
 
 import { type Example } from '@/utils/server/examples';
 import Image from 'next/image';

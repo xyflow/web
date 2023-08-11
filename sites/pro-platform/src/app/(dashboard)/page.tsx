@@ -2,7 +2,8 @@ import SubscriptionFeature from '@/components/SubscriptionFeature';
 import { SubscriptionPlan } from '@/types';
 import DashboardHeader from '@/components/DashboardHeader';
 import Notification from '@/components/Notification';
-import { NotSubscribed } from '@/components/SubscriptionStatus';
+import NotSubscribedNotification from '@/components/Notification/not-subscribed';
+import { Subscribed } from '@/components/SubscriptionStatus';
 
 function OverviewPage() {
   return (
@@ -12,13 +13,7 @@ function OverviewPage() {
         description="Welcome to xyflow pro! With a subscription, you are ensuring the sustainable maintenance and development of our open-source libraries."
       />
       <div className="flex-1 space-y-7">
-        <NotSubscribed>
-          <Notification
-            title="You are currently not subscribed."
-            description="If you want to unlock the pro features, please subscribe to a plan."
-            button={{ label: 'Subscribe', href: '/subscribe' }}
-          />
-        </NotSubscribed>
+        <NotSubscribedNotification />
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-5 lg:gap-6">
           <SubscriptionFeature
             title="Pro Examples"
@@ -36,7 +31,7 @@ function OverviewPage() {
             title="Invite Your Team"
             description="You can invite your team members to your subscription. They will be able to access all pro features as well."
             plans={[SubscriptionPlan.STARTER, SubscriptionPlan.PRO, SubscriptionPlan.ENTERPRISE]}
-            button={{ label: 'Invite Members', href: '/members' }}
+            button={{ label: 'Invite Team', href: '/team' }}
             requireUserSubscription
           />
           <SubscriptionFeature
@@ -56,14 +51,16 @@ function OverviewPage() {
             title="Video Support"
             description="Your direct wire to the React Flow team. We will try to point you in the right direction quickly if you encounter problems using React Flow."
             plans={[SubscriptionPlan.ENTERPRISE]}
-            button={{ label: 'Contact Support', href: 'mailto:support@reactflow.dev' }}
+            button={{ label: 'Schedule Support Call', href: 'https://cal.com/team/react-flow' }}
           />
         </div>
 
-        <Notification
-          description="We want to learn more about how you're using React Flow Pro."
-          button={{ href: 'https://ndmj05829wa.typeform.com/to/lWoYgbVK', label: 'Answer 3 questions for us' }}
-        />
+        <Subscribed>
+          <Notification
+            description="We want to learn more about how you're using React Flow Pro."
+            button={{ href: 'https://ndmj05829wa.typeform.com/to/lWoYgbVK', label: 'Answer 3 questions for us' }}
+          />
+        </Subscribed>
       </div>
     </div>
   );

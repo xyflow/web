@@ -38,7 +38,6 @@ const GET_SUBSCRIPTION = gql`
 
 const SubscriptionProvider = ({ children }: Props) => {
   const userId = useUserId();
-  console.log(userId);
   const { data, loading } = useAuthQuery(GET_SUBSCRIPTION, { variables: { userId } });
   const [value, setValue] = useState<SubscriptionContextValue>(defaultContextValue);
 

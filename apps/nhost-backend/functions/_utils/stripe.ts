@@ -94,6 +94,8 @@ export async function updateSeatQuantity(userId: string, seatChange: number) {
     })
   );
 
+  console.log(subscription);
+
   const seatProduct = products?.find((product) => product.metadata.seats);
 
   if (seatProduct) {
@@ -106,16 +108,18 @@ export async function updateSeatQuantity(userId: string, seatChange: number) {
     const nextQuantity = quantity + seatChange;
 
     if (nextQuantity <= 0) {
-      // @todo is this correct? should we be deleting the subscription item?
       return await stripe.subscriptionItems.del(id);
     }
 
     // otherwise, we want to update the quantity of the existing seat product
     return await stripe.subscriptionItems.update(id, {
-      quantity: nextQuantity,
+      quantity: Math.max(0, nextQuantity),
+      // @todo we need to check if the current proration behavior is accurate
+      // proration_behavior: 'none',
     });
   }
 
+  // no seat item is found but we don't add seats so there is no need to do anything
   if (seatChange <= 0) {
     return false;
   }
@@ -123,10 +127,11 @@ export async function updateSeatQuantity(userId: string, seatChange: number) {
   const seatLineItem = await getLineItem({
     plan: 'seats',
     quantity: 1,
-    interval: 'month',
+    // @todo this needs to be the same interval as the subscription
+    interval: subscription.plan?.interval,
   });
 
-  // if we get here, we need to add a seat product
+  // create a new subscription item for the seat product
   return await stripe.subscriptionItems.create({
     subscription: subscription.id,
     ...seatLineItem,

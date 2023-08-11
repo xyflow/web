@@ -15,6 +15,7 @@ import {
   InputLabel,
 } from 'xy-ui';
 import useNhostFunction from '@/hooks/useNhostFunction';
+import { Subscribed } from '@/components/SubscriptionStatus';
 
 const GET_TEAM_MEMBERS = gql`
   query {
@@ -79,51 +80,53 @@ export default function ManageTeamCard() {
     };
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Manage Team</CardTitle>
-        <CardDescription>
-          Your subscription includes {includedSeats} free seats. Additional seats can be added for $20 per month.
-        </CardDescription>
-        {confirmPayment && (
-          <div className="mt-4">
-            <Button variant="react" onClick={addMember({ paymentConfirmed: true })}>
-              Confirm Payment
+    <Subscribed>
+      <Card>
+        <CardHeader>
+          <CardTitle>Manage Team</CardTitle>
+          <CardDescription>
+            Your subscription includes {includedSeats} free seats. Additional seats can be added for $20 per month.
+          </CardDescription>
+          {confirmPayment && (
+            <div className="mt-4">
+              <Button variant="react" onClick={addMember({ paymentConfirmed: true })}>
+                Confirm Payment
+              </Button>
+            </div>
+          )}
+        </CardHeader>
+        <div className="border-t">
+          {data?.team_subscriptions?.map((member: TeamMember) => (
+            <CardContent className="py-4 flex items-center justify-between border-b" key={member.email}>
+              <div className="font-semibold">{member.email}</div>
+              <Button onClick={() => removeMember(member.email)} variant="outline">
+                Remove
+              </Button>
+            </CardContent>
+          ))}
+        </div>
+        <CardFooter className="bg-muted space-x-10">
+          <form onSubmit={addMember({ paymentConfirmed: false })} className="flex justify-between w-full">
+            <div className="flex-1">
+              <InputLabel htmlFor="email">Add New Member</InputLabel>
+              <Input
+                variant="square"
+                className="max-w-xs"
+                type="email"
+                value={memberEmail}
+                onChange={(evt) => setMemberEmail(evt.target.value)}
+                required
+                id="email"
+                placeholder="Enter Email..."
+                disabled={isLoading}
+              />
+            </div>
+            <Button disabled={isLoading} className="shrink-0 ml-auto mt-auto" variant="react" type="submit">
+              {isLoading ? 'Please wait...' : `Add To Subscription`}
             </Button>
-          </div>
-        )}
-      </CardHeader>
-      <div className="border-t">
-        {data?.team_subscriptions?.map((member: TeamMember) => (
-          <CardContent className="py-4 flex items-center justify-between border-b" key={member.email}>
-            <div className="font-semibold">{member.email}</div>
-            <Button onClick={() => removeMember(member.email)} variant="outline">
-              Remove
-            </Button>
-          </CardContent>
-        ))}
-      </div>
-      <CardFooter className="bg-muted space-x-10">
-        <form onSubmit={addMember({ paymentConfirmed: false })} className="flex justify-between w-full">
-          <div className="flex-1">
-            <InputLabel htmlFor="email">Add New Member</InputLabel>
-            <Input
-              variant="square"
-              className="max-w-xs"
-              type="email"
-              value={memberEmail}
-              onChange={(evt) => setMemberEmail(evt.target.value)}
-              required
-              id="email"
-              placeholder="Enter Email..."
-              disabled={isLoading}
-            />
-          </div>
-          <Button disabled={isLoading} className="shrink-0 ml-auto mt-auto" variant="react" type="submit">
-            {isLoading ? 'Please wait...' : `Add To Subscription`}
-          </Button>
-        </form>
-      </CardFooter>
-    </Card>
+          </form>
+        </CardFooter>
+      </Card>
+    </Subscribed>
   );
 }

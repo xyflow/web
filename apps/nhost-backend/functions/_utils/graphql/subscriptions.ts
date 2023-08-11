@@ -111,14 +111,18 @@ export async function handleSubscriptionChange(
       customer.metadata.userId ??
       (await getUserIdByEmail(customer.email || ''));
     const status = stripeEvent.status;
-    // @todo we will have multiple items in the future
-    const subscriptionItem = stripeEvent.items.data[0];
-    const product = await stripe.products.retrieve(
-      subscriptionItem.plan.product as string
+
+    const subscriptionProducts = await Promise.all(
+      stripeEvent.items.data.map(async (item: Stripe.SubscriptionItem) => {
+        return await stripe.products.retrieve(item.plan.product as string);
+      })
     );
-    const planId = product.metadata.plan;
+
+    const product = subscriptionProducts.find((prod) => prod.metadata.plan);
+    const planId = product?.metadata.plan;
 
     if (planId && userId && status === 'active') {
+      // @todo we need to adjust the plan for the team members here, too
       await upsertSubscription({
         userId,
         planId,
@@ -127,6 +131,7 @@ export async function handleSubscriptionChange(
     }
 
     if (userId && (status === 'past_due' || status === 'canceled')) {
+      // @todo we need to adjust the plan for the team members here, too
       await upsertSubscription({
         userId,
         stripeCustomerId: customerId,
