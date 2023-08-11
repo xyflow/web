@@ -25,17 +25,26 @@ async function createStripeCheckoutSession(
 
   const stripeCustomerId = await getOrCreateCustomer(userId);
 
+  if (!stripeCustomerId) {
+    return res.status(405).send({ message: 'Stripe customer id not found.' });
+  }
+
   const session = await stripe.checkout.sessions.create({
     customer: stripeCustomerId,
     line_items: [lineItem],
     mode: 'subscription',
-    success_url: `${req.headers.origin}?payment_success=true&session_id={CHECKOUT_SESSION_ID}`,
-    cancel_url: `${req.headers.origin}/subscribe?payment_cancelled=true`,
-    automatic_tax: { enabled: true },
     customer_update: {
       address: 'auto',
       name: 'auto',
     },
+    automatic_tax: { enabled: true },
+    tax_id_collection: {
+      enabled: true,
+    },
+    allow_promotion_codes: true,
+    billing_address_collection: 'required',
+    success_url: `${req.headers.origin}?payment_success=true&session_id={CHECKOUT_SESSION_ID}`,
+    cancel_url: `${req.headers.origin}/subscribe?payment_cancelled=true`,
   });
 
   return res.json(session);

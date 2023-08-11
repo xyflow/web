@@ -88,7 +88,6 @@ export async function getOrCreateCustomer(userId: string) {
   await upsertSubscription({
     userId,
     stripeCustomerId: stripeCustomer.id,
-    planId: 'free',
   });
 
   return stripeCustomer.id;
@@ -102,7 +101,6 @@ export async function handleSubscriptionChange(
       ? stripeEvent.customer
       : stripeEvent.customer.id;
 
-  // @todo how to type the customer here?
   const customer = (await stripe.customers.retrieve(
     customerId
   )) as Stripe.Customer;
