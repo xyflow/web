@@ -31,21 +31,16 @@ type GetLineItemParams = {
 export const getLineItem = async ({
   plan,
   quantity = 1,
-  interval,
+  interval = 'month',
 }: GetLineItemParams) => {
   const prices = await getPrices();
 
   const priceId = prices.find(
-    // @ts-ignore
     (price) =>
-      // @ts-ignore
       (plan === 'seats'
-        ? // @ts-ignore
-          price.product.metadata.seats
-        : // @ts-ignore
-          price.product.metadata.plan === plan) &&
-      // @ts-ignore
-      price.recurring.interval === interval
+        ? (price.product as Stripe.Product).metadata.seats
+        : (price.product as Stripe.Product).metadata.plan === plan) &&
+      price.recurring?.interval === interval
   )?.id;
 
   if (!priceId) {
@@ -80,21 +75,22 @@ export async function getStripeSubscription(customerId: string) {
     expand: ['subscriptions', 'subscriptions.data.items.data'],
   });
 
-  // @ts-ignore
-  return customer?.subscriptions?.data?.[0];
+  return (customer as Stripe.Customer).subscriptions?.data?.[0];
 }
 
 export async function updateSeatQuantity(userId: string, seatChange: number) {
   const customerId = await getOrCreateCustomer(userId);
   const subscription = await getStripeSubscription(customerId);
 
+  if (!subscription) {
+    return false;
+  }
+
   const products = await Promise.all(
     subscription.items?.data?.map(async (item: Stripe.SubscriptionItem) => {
       return await stripe.products.retrieve(item.price.product as string);
     })
   );
-
-  console.log(subscription);
 
   const seatProduct = products?.find((product) => product.metadata.seats);
 
@@ -103,7 +99,11 @@ export async function updateSeatQuantity(userId: string, seatChange: number) {
       (item: Stripe.SubscriptionItem) => item.price.product === seatProduct.id
     );
 
-    const { id, quantity } = seatSubscriptionItem;
+    if (!seatSubscriptionItem) {
+      return false;
+    }
+
+    const { id, quantity = 0 } = seatSubscriptionItem;
 
     const nextQuantity = quantity + seatChange;
 
@@ -114,8 +114,6 @@ export async function updateSeatQuantity(userId: string, seatChange: number) {
     // otherwise, we want to update the quantity of the existing seat product
     return await stripe.subscriptionItems.update(id, {
       quantity: Math.max(0, nextQuantity),
-      // @todo we need to check if the current proration behavior is accurate
-      // proration_behavior: 'none',
     });
   }
 
@@ -127,7 +125,7 @@ export async function updateSeatQuantity(userId: string, seatChange: number) {
   const seatLineItem = await getLineItem({
     plan: 'seats',
     quantity: 1,
-    // @todo this needs to be the same interval as the subscription
+    // @ts-ignore
     interval: subscription.plan?.interval,
   });
 
