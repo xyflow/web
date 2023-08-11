@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
 import { getUserIdFromAuthToken } from './jwt';
 
-export function authPost(fn: any) {
-  return async function (req: Request, res: Response) {
+export const authPost = (fn: any) => {
+  const handler = async (req: Request, res: Response) => {
     res.setHeader('Access-Control-Allow-Credentials', 'true');
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader(
@@ -34,4 +34,6 @@ export function authPost(fn: any) {
       return res.status(500).send({ message: 'Internal server error.' });
     }
   };
-}
+
+  return handler;
+};

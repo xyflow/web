@@ -3,11 +3,11 @@ import stripe, { getLineItem } from '../_utils/stripe';
 import { authPost } from '../_utils/middleware';
 import { getOrCreateCustomer } from '../_utils/graphql/subscriptions';
 
-async function createStripeCheckoutSession(
+const createStripeCheckoutSession = async (
   req: Request,
   res: Response,
   { userId }: { userId: string }
-) {
+) => {
   const { plan, interval = 'month' } = req.body;
 
   if (!plan) {
@@ -48,6 +48,6 @@ async function createStripeCheckoutSession(
   });
 
   return res.json(session);
-}
+};
 
 export default authPost(createStripeCheckoutSession);
