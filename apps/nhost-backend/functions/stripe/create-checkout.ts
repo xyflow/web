@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
 import stripe, { getLineItem } from '../_utils/stripe';
-import { authPost } from '../_utils/middleware';
 import { getOrCreateCustomer } from '../_utils/graphql/subscriptions';
 
 const createStripeCheckoutSession = async (
@@ -50,4 +49,4 @@ const createStripeCheckoutSession = async (
   return res.json(session);
 };
 
-export default authPost(createStripeCheckoutSession);
+export default createStripeCheckoutSession;
