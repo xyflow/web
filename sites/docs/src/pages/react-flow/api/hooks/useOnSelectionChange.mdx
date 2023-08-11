@@ -1,0 +1,46 @@
+# useOnSelectionChange
+
+[Source](https://github.com/wbkd/react-flow/blob/6d9585c1a62bf549298c83ad5f2dcd6216a5b8eb/packages/core/src/hooks/useOnSelectionChange.ts)
+
+```ts
+export function useOnSelectionChange(
+  options: UseOnSelectionChangeOptions
+): void;
+```
+
+## Parameters
+
+### options: [`UseOnSelectionChangeOptions`](#useonselectionchangeoptions)
+
+## Returns
+
+### `void`
+
+## Types
+
+### `UseOnSelectionChangeOptions`
+
+```ts
+export type UseOnSelectionChangeOptions = {
+  onChange?: OnSelectionChangeFunc;
+};
+```
+
+### `OnSelectionChangeFunc`
+
+```ts
+export type OnSelectionChangeFunc = (params: OnSelectionChangeParams) => void;
+```
+
+### `OnSelectionChangeParams`
+
+```ts
+export type OnSelectionChangeParams = {
+  nodes: Node[];
+  edges: Edge[];
+};
+```
+
+## Examples
+
+## Notes

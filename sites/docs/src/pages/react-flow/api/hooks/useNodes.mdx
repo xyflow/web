@@ -1,0 +1,44 @@
+# useNodes
+
+[Source](https://github.com/wbkd/react-flow/blob/6d9585c1a62bf549298c83ad5f2dcd6216a5b8eb/packages/core/src/hooks/useNodes.ts)
+
+This hook returns an array of the current nodes. Components that use this hook
+will re-render **whenever any node changes**.
+
+```ts
+export function useNodes<NodeData>(): Node<NodeData>[];
+```
+
+## Returns
+
+### `Node<NodeData>[]`
+
+An array of all the nodes in the flow. See [`Node`](../types/node) for more
+details.
+
+## Types
+
+### `Node`
+
+Check out our [`types`](../types) reference for more details on
+the `Node` type.
+
+## Examples
+
+```tsx
+import { useNodes } from '@xyflow/reactflow';
+
+export default function () {
+  const nodes = useNodes();
+
+  return <div>There are currently {nodes.length} nodes!</div>;
+}
+```
+
+## Notes
+
+- Relying on `useNodes` unecessarily can be a common cause of performance
+  issues. Whenever any node changes, this hook will cause the component to
+  re-render. Often we actually care about something more specific, like when
+  the _number_ of nodes changes: where possible try to use
+  [`useStore`](./useStore) instead.

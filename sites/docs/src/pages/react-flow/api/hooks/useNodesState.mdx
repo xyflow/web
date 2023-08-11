@@ -1,0 +1,100 @@
+# useNodesState
+
+[Source](https://github.com/wbkd/react-flow/blob/6d9585c1a62bf549298c83ad5f2dcd6216a5b8eb/packages/core/src/hooks/useNodesEdgesState.ts)
+
+This hook makes it easy to prototype a controlled flow where you manage the
+state of nodes and edges outside the `ReactFlowInstance`. You can think of it
+like React's `useState` hook with an additional helper callback.
+
+```ts
+export function useNodesState<NodeData>(
+  initialNodes: Node<NodeData>[]
+): [
+  Node<NodeData>[],
+  Dispatch<SetStateAction<Node<NodeData>[]>>,
+  OnChange<NodeChange>
+];
+```
+
+## Parameters
+
+### initialNodes: `Node<NodeData>[]`
+
+## Returns
+
+### `[Node<NodeData>[], Dispatch<SetStateAction<Node<NodeData>[]>>, OnChange<NodeChange>]`
+
+Returns a three-element tuple containing everything you need to manage nodes
+within your flow. You can think of this like the familiar `useState` hook but
+with an additional `onChange` callback so you don't need to define your own
+`onNodesChange` handler.
+
+0. The first element is the current array of nodes. You might pass this directly
+   to the `nodes` prop of your `<ReactFlow>` component or you may want to
+   manipulate it first (for example do some layouting).
+1. The second element is a function that you can use to update the nodes. You can
+   pass it a new array of nodes or a callback that receives the current array of
+   nodes and returns a new array of nodes. This is the same as the second element
+   of the tuple returned by React's `useState` hook.
+2. The third element is a handy callback that can take an array of
+   [`NodeChange`](../types/node-change)s and update the nodes state accordingly.
+   You'll typically pass this directly to the `onNodesChange` prop of your
+   `<ReactFlow>` component.
+
+## Types
+
+### `Node`
+
+Check out our [`types`](../types) reference for more details on
+the `Node` type.
+
+### `OnChange`
+
+```ts
+type OnChange<ChangesType> = (changes: ChangesType[]) => void;
+```
+
+You can pass this callback to the `onNodesChange` prop of your `<ReactFlow>`
+component.
+
+### `NodeChange`
+
+### `React.Dispatch`
+
+You can find the definition for this type over at DefinitelyTyped
+[here](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/bdd784f597ef151da8659762300621686969470d/types/react/v17/index.d.ts#L882C17-L882C17).
+
+### `React.SetStateAction`
+
+You can find the definition for this type over at DefinitelyTyped
+[here](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/bdd784f597ef151da8659762300621686969470d/types/react/v17/index.d.ts#L879).
+
+## Examples
+
+```tsx
+import ReactFlow, { useNodesState, useEdgesState } from 'reactflow';
+
+const initialNodes = [];
+const initialEdges = [];
+
+export default function () {
+  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
+  const [edges, setEdges, onNodesChange] = useNodesState(initialEdges);
+
+  return (
+    <ReactFlow
+      nodes={nodes}
+      edges={edges}
+      onNodesChange={onNodesChange}
+      onEdgesChange={onEdgesChange}
+    />
+  );
+}
+```
+
+## Notes
+
+- This hook was created to make prototyping easier and our documentation
+  examples clearer. Although it is OK to use this hook in production, in
+  practice you may want to use a more sophisticated state management solution
+  like [Zustand](https://reactflow.dev/docs/guides/state-management/) instead.

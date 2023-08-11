@@ -1,0 +1,44 @@
+# useEdges
+
+[Source](https://github.com/wbkd/react-flow/blob/6d9585c1a62bf549298c83ad5f2dcd6216a5b8eb/packages/core/src/hooks/useEdges.ts)
+
+This hook returns an array of the current edges. Components that use this hook
+will re-render **whenever any edge changes**.
+
+```ts
+export function useEdges<EdgeData>(): Edge<EdgeData>[];
+```
+
+## Returns
+
+### `Edge<EdgeData>[]`
+
+An array of all the edges in the flow. See [`Edge`](../types/edge) for more
+details.
+
+## Types
+
+### `Edge`
+
+Check out our [`types`](../types#reactflowstate) reference for more details on
+the `Edge` type.
+
+## Examples
+
+```tsx
+import { useEdges } from '@xyflow/reactflow';
+
+export default function () {
+  const edges = useEdges();
+
+  return <div>There are currently {edges.length} edges!</div>;
+}
+```
+
+## Notes
+
+- Relying on `useEdges` unecessarily can be a common cause of performance
+  issues. Whenever any edge changes, this hook will cause the component to
+  re-render. Often we actually care about something more specific, like when
+  the _number_ of edges changes: where possible try to use
+  [`useStore`](./useStore) instead.
