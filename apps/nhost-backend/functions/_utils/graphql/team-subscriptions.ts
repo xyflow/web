@@ -87,7 +87,7 @@ export async function getTeamMembers(
 export async function getIncludedSeats(userId: string) {
   const subscription = await getSubscription(userId);
   // this helps us to add extra seats for a subscription in the database
-  const extraSeats = subscription.extra_seats ?? 0;
+  const extraSeats = subscription?.extra_seats ?? 0;
 
   switch (subscription?.subscription_plan_id) {
     case 'starter':
@@ -99,6 +99,38 @@ export async function getIncludedSeats(userId: string) {
     default:
       return extraSeats;
   }
+}
+
+const UPDATE_TEAM_SUBSCRIPTION_PLAN = gql`
+  mutation UpdateTeamSubscriptionPlan($createdById: uuid!, $planId: String!) {
+    update_team_subscriptions(
+      where: { created_by: { _eq: $createdById } }
+      _set: { subscription_plan_id: $planId }
+    ) {
+      affected_rows
+    }
+  }
+`;
+
+export async function updateTeamSubscriptionPlan({
+  createdById,
+  planId,
+}: {
+  createdById: string;
+  planId: string;
+}): Promise<number> {
+  if (!createdById || !planId) {
+    return 0;
+  }
+
+  const { affected_rows } = await GraphQLClient.request<{
+    affected_rows: number;
+  }>(UPDATE_TEAM_SUBSCRIPTION_PLAN, {
+    createdById,
+    planId,
+  });
+
+  return affected_rows;
 }
 
 const REMOVE_TEAM_MEMBER = gql`

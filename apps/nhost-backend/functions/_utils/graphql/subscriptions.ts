@@ -4,6 +4,7 @@ import { gql } from 'graphql-request';
 import GraphQLClient from './client';
 import { stripe, createStripeCustomer } from '../stripe';
 import { getUser, getUserIdByEmail } from './users';
+import { updateTeamSubscriptionPlan } from './team-subscriptions';
 
 const UPSERT_SUBSCRIPTION = gql`
   mutation UpsertSubscription(
@@ -122,21 +123,23 @@ export async function handleSubscriptionChange(
     const planId = product?.metadata.plan;
 
     if (planId && userId && status === 'active') {
-      // @todo we need to adjust the plan for the team members here, too
       await upsertSubscription({
         userId,
         planId,
         stripeCustomerId: customerId,
       });
+
+      await updateTeamSubscriptionPlan({ createdById: userId, planId });
     }
 
     if (userId && (status === 'past_due' || status === 'canceled')) {
-      // @todo we need to adjust the plan for the team members here, too
       await upsertSubscription({
         userId,
         stripeCustomerId: customerId,
         planId: 'free',
       });
+
+      await updateTeamSubscriptionPlan({ createdById: userId, planId: 'free' });
     }
   }
 }

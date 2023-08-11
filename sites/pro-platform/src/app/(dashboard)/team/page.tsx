@@ -1,6 +1,7 @@
 import DashboardHeader from '@/components/DashboardHeader';
 import ManageTeamCard from './_cards/manage-team';
 import NotSubscribedNotification from '@/components/Notification/not-subscribed';
+import { Subscribed } from '@/components/SubscriptionStatus';
 
 export default function TeamPage() {
   return (
@@ -11,7 +12,9 @@ export default function TeamPage() {
       />
       <div className="flex-1 space-y-7">
         <NotSubscribedNotification />
-        <ManageTeamCard />
+        <Subscribed requireUserSubscription>
+          <ManageTeamCard />
+        </Subscribed>
       </div>
     </div>
   );

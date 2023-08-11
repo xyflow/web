@@ -8,6 +8,7 @@ async function getTeamStatus(
   { userId }: { userId: string }
 ) {
   const includedSeats = await getIncludedSeats(userId);
+  // @todo return pricing and currency here
   res.status(200).send({ includedSeats });
 }
 
