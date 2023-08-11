@@ -88,6 +88,7 @@ export async function getOrCreateCustomer(userId: string) {
   await upsertSubscription({
     userId,
     stripeCustomerId: stripeCustomer.id,
+    planId: 'free',
   });
 
   return stripeCustomer.id;
