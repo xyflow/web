@@ -27,7 +27,7 @@ import useNhostFunction from '@/hooks/useNhostFunction';
 
 const GET_TEAM_MEMBERS = gql`
   query GetTeamMembers($userId: uuid) {
-    team_subscriptions(where: { created_by: { _eq: $userId } }) {
+    team_subscriptions(where: { created_by: { _eq: $userId } }, order_by: { created_at: asc }) {
       email
     }
   }
@@ -40,8 +40,10 @@ type TeamMember = {
 export default function ManageTeamCard() {
   const userId = useUserId();
   const [confirmPayment, setConfirmPayment] = useState<boolean>(false);
+  const [confirmDeleteMember, setConfirmDeleteMember] = useState<string>(null);
   const [includedSeats, setIncludedSeats] = useState<number>(0);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isDeleteLoading, setIsDeleteLoading] = useState<boolean>(false);
   const [memberEmail, setMemberEmail] = useState<string>('');
   const { data, refetch } = useAuthQuery(GET_TEAM_MEMBERS, { variables: { userId } });
   const nhostFunction = useNhostFunction();
@@ -57,37 +59,36 @@ export default function ManageTeamCard() {
   }, []);
 
   const removeMember = async (email: string) => {
-    const isConfirmed = confirm(`Are you sure you want to remove ${email} from your team?`);
+    setIsDeleteLoading(true);
+    await nhostFunction('team/remove', { email });
+    await refetch();
+    setIsDeleteLoading(false);
+    setConfirmDeleteMember(null);
+  };
 
-    if (!isConfirmed) {
+  const addMember = async ({ paymentConfirmed }: { paymentConfirmed: boolean }) => {
+    setIsLoading(true);
+
+    const { res } = await nhostFunction<{ needsPaymentConfirmation?: boolean }>('team/invite', {
+      email: memberEmail,
+      paymentConfirmed,
+    });
+
+    if (res.data?.needsPaymentConfirmation) {
+      setConfirmPayment(true);
+      setIsLoading(false);
       return;
     }
 
-    const response = await nhostFunction('team/remove', { email });
     await refetch();
+    setIsLoading(false);
+    setConfirmPayment(false);
   };
 
-  const addMember =
-    ({ paymentConfirmed }: { paymentConfirmed: boolean }) =>
-    async (evt: React.SyntheticEvent) => {
-      evt.preventDefault();
-      setIsLoading(true);
-
-      const { res } = await nhostFunction<{ needsPaymentConfirmation?: boolean }>('team/invite', {
-        email: memberEmail,
-        paymentConfirmed,
-      });
-
-      if (res.data?.needsPaymentConfirmation) {
-        setConfirmPayment(true);
-        setIsLoading(false);
-        return;
-      }
-
-      await refetch();
-      setIsLoading(false);
-      setConfirmPayment(false);
-    };
+  const onAdd = async (evt: React.SyntheticEvent<HTMLFormElement>) => {
+    evt.preventDefault();
+    await addMember({ paymentConfirmed: false });
+  };
 
   return (
     <Card>
@@ -107,8 +108,35 @@ export default function ManageTeamCard() {
               </AlertDialogHeader>
               <AlertDialogFooter>
                 <AlertDialogCancel onClick={() => setConfirmPayment(false)}>Cancel</AlertDialogCancel>
-                <AlertDialogAction disabled={isLoading} onClick={addMember({ paymentConfirmed: true })}>
+                <AlertDialogAction
+                  variant="react"
+                  disabled={isLoading}
+                  onClick={() => addMember({ paymentConfirmed: true })}
+                >
                   {isLoading ? 'Please wait...' : 'Confirm Payment'}
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
+        )}
+        {confirmDeleteMember && (
+          <AlertDialog open>
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+                <AlertDialogDescription>
+                  This will remove <strong>{confirmDeleteMember}</strong> from your team. They will no longer have
+                  access to your subscription features.
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel onClick={() => setConfirmDeleteMember(null)}>Cancel</AlertDialogCancel>
+                <AlertDialogAction
+                  variant="react"
+                  disabled={isDeleteLoading}
+                  onClick={() => removeMember(confirmDeleteMember)}
+                >
+                  {isDeleteLoading ? 'Please wait...' : 'Confirm Deletion'}
                 </AlertDialogAction>
               </AlertDialogFooter>
             </AlertDialogContent>
@@ -119,14 +147,14 @@ export default function ManageTeamCard() {
         {data?.team_subscriptions?.map((member: TeamMember) => (
           <CardContent className="py-4 flex items-center justify-between border-b" key={member.email}>
             <div className="font-semibold">{member.email}</div>
-            <Button onClick={() => removeMember(member.email)} variant="outline">
+            <Button onClick={() => setConfirmDeleteMember(member.email)} variant="outline">
               Remove
             </Button>
           </CardContent>
         ))}
       </div>
       <CardFooter className="bg-muted space-x-10">
-        <form onSubmit={addMember({ paymentConfirmed: false })} className="flex justify-between w-full">
+        <form onSubmit={onAdd} className="flex justify-between w-full">
           <div className="flex-1">
             <InputLabel htmlFor="email">Add New Member</InputLabel>
             <Input

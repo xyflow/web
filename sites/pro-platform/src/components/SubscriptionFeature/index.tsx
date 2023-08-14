@@ -48,11 +48,11 @@ function SubscriptionFeature({
         ) : (
           <>
             <div className="flex flex-wrap items-center space-x-1.5">
-              <div className="text-muted-foreground text-sm font-bold">Available on the {plans[0]} plan.</div>
+              <div className="text-muted-foreground text-sm">Available on the {plans[0]} plan.</div>
             </div>
             {isUserSubscribed ? (
               <div className="ml-auto">
-                <CustomerPortalButton variant="outline">Upgrade Subscription</CustomerPortalButton>
+                <CustomerPortalButton variant="outline">Upgrade</CustomerPortalButton>
               </div>
             ) : (
               <Link href="/subscribe" className="ml-auto">
