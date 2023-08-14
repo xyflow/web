@@ -110,13 +110,13 @@ export async function updateWelcomeMailStatus(
   welcomeMailStatus: boolean
 ) {
   const response = await GraphQLClient.request<{
-    insert_user_subscriptions: { affected_rows: number };
+    affected_rows: number;
   }>(UPDATE_WELCOME_MAIL_STATUS, {
     id: subscriptionId,
     sent_welcome_mail: welcomeMailStatus,
   });
 
-  return response.insert_user_subscriptions.affected_rows;
+  return response.affected_rows;
 }
 
 export async function handleSubscriptionChange(
