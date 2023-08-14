@@ -48,10 +48,7 @@ function SubscriptionFeature({
         ) : (
           <>
             <div className="flex flex-wrap items-center space-x-1.5">
-              <div className="text-muted-foreground text-sm font-bold">Included in</div>
-              <div className="text-sm py-0.5 px-2 rounded-full bg-pink-100 border border-react text-react">
-                {plans[0]}
-              </div>
+              <div className="text-muted-foreground text-sm font-bold">Available on the {plans[0]} plan.</div>
             </div>
             {isUserSubscribed ? (
               <div className="ml-auto">

@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { gql } from '@apollo/client';
 import { useAuthQuery } from '@nhost/react-apollo';
+import { useUserId } from '@nhost/nextjs';
 import {
   Button,
   Card,
@@ -13,12 +14,20 @@ import {
   CardTitle,
   Input,
   InputLabel,
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
 } from 'xy-ui';
 import useNhostFunction from '@/hooks/useNhostFunction';
 
 const GET_TEAM_MEMBERS = gql`
-  query {
-    team_subscriptions {
+  query GetTeamMembers($userId: uuid) {
+    team_subscriptions(where: { created_by: { _eq: $userId } }) {
       email
     }
   }
@@ -29,11 +38,12 @@ type TeamMember = {
 };
 
 export default function ManageTeamCard() {
+  const userId = useUserId();
   const [confirmPayment, setConfirmPayment] = useState<boolean>(false);
   const [includedSeats, setIncludedSeats] = useState<number>(0);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [memberEmail, setMemberEmail] = useState<string>('');
-  const { data, refetch } = useAuthQuery(GET_TEAM_MEMBERS);
+  const { data, refetch } = useAuthQuery(GET_TEAM_MEMBERS, { variables: { userId } });
   const nhostFunction = useNhostFunction();
 
   useEffect(() => {
@@ -70,6 +80,7 @@ export default function ManageTeamCard() {
 
       if (res.data?.needsPaymentConfirmation) {
         setConfirmPayment(true);
+        setIsLoading(false);
         return;
       }
 
@@ -86,11 +97,22 @@ export default function ManageTeamCard() {
           Your subscription includes {includedSeats} free seats. Additional seats can be added for $20 per month.
         </CardDescription>
         {confirmPayment && (
-          <div className="mt-4">
-            <Button variant="react" onClick={addMember({ paymentConfirmed: true })}>
-              Confirm Payment
-            </Button>
-          </div>
+          <AlertDialog open>
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <AlertDialogTitle>Free seat limit reached</AlertDialogTitle>
+                <AlertDialogDescription>
+                  Adding a new seat will charge $20 per month with your next invoice. Please confirm to continue.
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel onClick={() => setConfirmPayment(false)}>Cancel</AlertDialogCancel>
+                <AlertDialogAction disabled={isLoading} onClick={addMember({ paymentConfirmed: true })}>
+                  {isLoading ? 'Please wait...' : 'Confirm Payment'}
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
         )}
       </CardHeader>
       <div className="border-t">

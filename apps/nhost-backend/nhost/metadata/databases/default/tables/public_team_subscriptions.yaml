@@ -5,6 +5,7 @@ select_permissions:
   - role: user
     permission:
       columns:
+        - created_by
         - email
         - subscription_plan_id
         - user_id
