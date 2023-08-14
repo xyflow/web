@@ -1,5 +1,6 @@
 import Stripe from 'stripe';
 import { getOrCreateCustomer } from './graphql/subscriptions';
+import { getIncludedSeats, getTeamMembers } from './graphql/team-subscriptions';
 
 export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY ?? '', {
   apiVersion: '2022-11-15',
@@ -78,13 +79,17 @@ export async function getStripeSubscription(customerId: string) {
   return (customer as Stripe.Customer).subscriptions?.data?.[0];
 }
 
-export async function updateSeatQuantity(userId: string, seatChange: number) {
+export async function updateSeatQuantity(userId: string) {
   const customerId = await getOrCreateCustomer(userId);
   const subscription = await getStripeSubscription(customerId);
 
   if (!subscription) {
     return false;
   }
+
+  const includedSeats = await getIncludedSeats(userId);
+  const teamMembers = await getTeamMembers(userId);
+  const quantity = teamMembers.length - includedSeats;
 
   const products = await Promise.all(
     subscription.items?.data?.map(async (item: Stripe.SubscriptionItem) => {
@@ -103,28 +108,24 @@ export async function updateSeatQuantity(userId: string, seatChange: number) {
       return false;
     }
 
-    const { id, quantity = 0 } = seatSubscriptionItem;
-
-    const nextQuantity = quantity + seatChange;
-
-    if (nextQuantity <= 0) {
-      return await stripe.subscriptionItems.del(id);
+    if (quantity <= 0) {
+      return await stripe.subscriptionItems.del(seatSubscriptionItem.id);
     }
 
     // otherwise, we want to update the quantity of the existing seat product
-    return await stripe.subscriptionItems.update(id, {
-      quantity: Math.max(0, nextQuantity),
+    return await stripe.subscriptionItems.update(seatSubscriptionItem.id, {
+      quantity,
     });
   }
 
   // no seat item is found but we don't add seats so there is no need to do anything
-  if (seatChange <= 0) {
+  if (quantity <= 0) {
     return false;
   }
 
   const seatLineItem = await getLineItem({
     plan: 'seats',
-    quantity: 1,
+    quantity,
     // @ts-ignore
     interval: subscription.plan?.interval,
   });

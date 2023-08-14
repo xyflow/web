@@ -68,10 +68,9 @@ async function inviteTeamMember(
     planId: subscription.subscription_plan_id,
   });
 
-  // @todo only do this if adding the team member was successful
-  if (teamMembers.length >= includedSeats && paymentConfirmed) {
+  if (paymentConfirmed) {
     // buy extra seat
-    await updateSeatQuantity(createdById, 1);
+    await updateSeatQuantity(createdById);
   }
 
   return res.status(200).json({ message: 'ok' });
