@@ -4,7 +4,7 @@ import { gql } from 'graphql-request';
 import GraphQLClient from './client';
 import { stripe, createStripeCustomer } from '../stripe';
 import { getUser, getUserIdByEmail } from './users';
-// import { updateTeamSubscriptionPlan } from './team-subscriptions';
+import { updateTeamSubscriptionPlan } from './team-subscriptions';
 
 const UPSERT_SUBSCRIPTION = gql`
   mutation UpsertSubscription(
@@ -45,7 +45,7 @@ export type Subscription = {
   extra_seats?: number;
 };
 
-async function upsertSubscription({
+export async function upsertSubscription({
   userId,
   planId,
   stripeCustomerId,
@@ -94,6 +94,31 @@ export async function getOrCreateCustomer(userId: string) {
   return stripeCustomer.id;
 }
 
+const UPDATE_WELCOME_MAIL_STATUS = `
+  mutation ($id: uuid!, $sent_welcome_mail: Boolean!) {
+    update_user_subscriptions(
+      where: {id: {_eq: $id}},
+      _set: {sent_welcome_mail: $sent_welcome_mail}
+    ) {
+      affected_rows
+    }
+  }
+`;
+
+export async function updateWelcomeMailStatus(
+  subscriptionId: string,
+  welcomeMailStatus: boolean
+) {
+  const response = await GraphQLClient.request<{
+    insert_user_subscriptions: { affected_rows: number };
+  }>(UPDATE_WELCOME_MAIL_STATUS, {
+    id: subscriptionId,
+    sent_welcome_mail: welcomeMailStatus,
+  });
+
+  return response.insert_user_subscriptions.affected_rows;
+}
+
 export async function handleSubscriptionChange(
   stripeEvent: Stripe.Subscription
 ) {
@@ -128,7 +153,7 @@ export async function handleSubscriptionChange(
         stripeCustomerId: customerId,
       });
 
-      // await updateTeamSubscriptionPlan({ createdById: userId, planId });
+      await updateTeamSubscriptionPlan({ createdById: userId, planId });
     }
 
     if (userId && (status === 'past_due' || status === 'canceled')) {
@@ -138,7 +163,7 @@ export async function handleSubscriptionChange(
         planId: 'free',
       });
 
-      // await updateTeamSubscriptionPlan({ createdById: userId, planId: 'free' });
+      await updateTeamSubscriptionPlan({ createdById: userId, planId: 'free' });
     }
   }
 }

@@ -15,6 +15,10 @@ value = '{{ secrets.MAILJET_APIKEY_PRIVATE }}'
 name = 'MAILJET_APIKEY_PUBLIC'
 value = '{{ secrets.MAILJET_APIKEY_PUBLIC }}'
 
+[[global.environment]]
+name = 'DISCORD_NOTIFICATIONS_WEBHOOK'
+value = '{{ secrets.DISCORD_NOTIFICATIONS_WEBHOOK }}'
+
 [hasura]
 version = 'v2.25.1-ce'
 adminSecret = '{{ secrets.HASURA_GRAPHQL_ADMIN_SECRET }}'

@@ -27,12 +27,10 @@ export const authPost = (fn: any) => async (req: Request, res: Response) => {
     return res.status(401).send({ message: 'Unauthorized.' });
   }
 
-  return await fn(req, res, { userId });
-
-  // try {
-  //   return await fn(req, res, { userId });
-  // } catch (err) {
-  //   console.log(err);
-  //   return res.status(500).send({ message: 'Internal server error.' });
-  // }
+  try {
+    return await fn(req, res, { userId });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).send({ message: 'Internal server error.' });
+  }
 };
