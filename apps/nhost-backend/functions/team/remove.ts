@@ -15,7 +15,7 @@ async function removeTeamMemberHandler(
   }
 
   const removedCount = await removeTeamMember({ createdById: userId, email });
-  await updateSeatQuantity(userId, -1);
+  await updateSeatQuantity(userId);
 
   return res
     .status(200)
