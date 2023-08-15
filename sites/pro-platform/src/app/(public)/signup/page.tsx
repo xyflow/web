@@ -1,8 +1,8 @@
 import { SignUpEmailPassword, AuthFormWrapper } from '@/components/AuthForms';
 
 const authFormLinks = [
-  { href: '/signin', label: 'Sign in without password' },
-  { href: '/signin/password', label: 'Sign in using Email + Password' },
+  { href: '/signin', label: 'Sign in using Email + Password' },
+  { href: '/signin/magic-link', label: 'Sign in without password' },
 ];
 
 const SignUpPage = () => {
