@@ -162,11 +162,11 @@ version = '14.5-20221009-1'
 
 [provider]
 [provider.smtp]
-user = 'noreply@reactflow.dev'
+user = 'postmaster@sandbox778da61d4c604dd78906f707c14661fd.mailgun.org'
 password = '{{ secrets.SMTP_PASSWORD }}'
-sender = 'noreply@reactflow.dev'
-host = 'smtp-moklick.alwaysdata.net'
-port = 465
+sender = 'postmaster@sandbox778da61d4c604dd78906f707c14661fd.mailgun.org'
+host = 'smtp.mailgun.org'
+port = 587
 secure = true
 method = 'LOGIN'
 

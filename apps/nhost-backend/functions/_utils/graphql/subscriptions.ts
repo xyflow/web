@@ -6,6 +6,7 @@ import { stripe, createStripeCustomer } from '../stripe';
 import { getUser, getUserIdByEmail } from './users';
 import { updateTeamSubscriptionPlan } from './team-subscriptions';
 
+// @todo is this on_conflict rule correct?
 const UPSERT_SUBSCRIPTION = gql`
   mutation UpsertSubscription(
     $userId: uuid!
