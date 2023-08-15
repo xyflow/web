@@ -77,7 +77,7 @@ export default async function handleSubscriptionChange(
     return res.status(400).json({ error: 'no user id.' });
   }
 
-  const { email } = await getUser(userId);
+  const { email } = (await getUser(userId)) ?? {};
 
   if (!email) {
     return res.status(400).json({ error: `no email found for user ${userId}` });

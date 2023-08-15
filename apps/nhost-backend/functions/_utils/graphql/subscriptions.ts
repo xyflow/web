@@ -83,7 +83,7 @@ export async function getOrCreateCustomer(userId: string) {
     return subscription.stripe_customer_id;
   }
 
-  const { email } = await getUser(userId);
+  const { email } = (await getUser(userId)) ?? {};
   const stripeCustomer = await createStripeCustomer({ userId, email });
 
   await upsertSubscription({

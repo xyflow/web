@@ -52,7 +52,7 @@ const GET_USER_BY_ID = gql`
   }
 `;
 
-export async function getUser(id: string): Promise<User> {
+export async function getUser(id: string): Promise<User | null> {
   const response = await GraphQLClient.request<{ user: User }>(GET_USER_BY_ID, {
     id,
   });
