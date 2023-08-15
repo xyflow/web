@@ -166,8 +166,8 @@ user = 'postmaster@mg.xyflow.com'
 password = '{{ secrets.SMTP_PASSWORD }}'
 sender = 'noreply@xyflow.com'
 host = 'smtp.eu.mailgun.org'
-port = 587
-secure = false
+port = 465
+secure = true
 method = 'LOGIN'
 
 [storage]
