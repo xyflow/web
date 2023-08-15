@@ -164,8 +164,8 @@ version = '14.5-20221009-1'
 [provider.smtp]
 user = 'postmaster@mg.xyflow.com'
 password = '{{ secrets.SMTP_PASSWORD }}'
-sender = 'noreply@xyflow.com'
-host = 'smtp.mailgun.org'
+sender = 'noreply@mg.xyflow.com'
+host = 'smtp.eu.mailgun.org'
 port = 587
 secure = true
 method = 'LOGIN'
