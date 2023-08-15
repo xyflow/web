@@ -162,9 +162,9 @@ version = '14.5-20221009-1'
 
 [provider]
 [provider.smtp]
-user = 'postmaster@sandbox778da61d4c604dd78906f707c14661fd.mailgun.org'
+user = 'postmaster@mg.xyflow.com'
 password = '{{ secrets.SMTP_PASSWORD }}'
-sender = 'postmaster@sandbox778da61d4c604dd78906f707c14661fd.mailgun.org'
+sender = 'noreply@xyflow.com'
 host = 'smtp.mailgun.org'
 port = 587
 secure = true
