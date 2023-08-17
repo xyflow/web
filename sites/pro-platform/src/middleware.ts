@@ -7,15 +7,15 @@ export const config = {
 
 export function middleware(request: NextRequest) {
   if (request.nextUrl.pathname.startsWith('/auth-redirect')) {
-    const searchParams = new URLSearchParams(request.nextUrl.search);
+    const path = request.nextUrl.searchParams.get('path');
+    const fallback = request.nextUrl.searchParams.get('fallback');
 
-    const path = searchParams.get('path');
-    const fallback = searchParams.get('fallback');
-
-    const isAuthenticated = request.cookies.get('nhostRefreshToken');
+    const isProbablyAuthenticated = request.cookies.get('nhostRefreshToken');
 
     try {
-      return isAuthenticated ? NextResponse.rewrite(new URL(path, request.url)) : NextResponse.redirect(fallback);
+      return isProbablyAuthenticated
+        ? NextResponse.redirect(new URL(path, request.url))
+        : NextResponse.redirect(new URL(fallback, request.headers.get('referer')));
     } catch (err) {
       console.log(err);
     }

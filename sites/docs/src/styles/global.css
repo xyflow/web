@@ -152,6 +152,7 @@ main .max-w-\[90rem\] {
   html {
     /* this is a nextra default we need to overwrite */
     font-feature-settings: normal !important;
+    -webkit-font-smoothing: initial !important;
     overflow-x: hidden;
   }
 }

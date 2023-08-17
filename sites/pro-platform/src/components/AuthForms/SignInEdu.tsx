@@ -5,6 +5,7 @@ import { useSignInEmailPasswordless } from '@nhost/nextjs';
 
 import Head from 'next/head';
 import { Button, Input, InputLabel } from 'xy-ui';
+import { AuthErrorNotification, MagicLinkSuccessNotification } from './AuthNotification';
 
 function Signup() {
   const [email, setEmail] = useState<string>('');
@@ -22,10 +23,8 @@ function Signup() {
         <meta name="robots" content="noindex,nofollow" />
       </Head>
       <form onSubmit={handleSubmit}>
-        {isError && error && <div>{error.message}</div>}
-        {isSuccess && (
-          <div>To complete your registration, please check your mailbox and click the link we have sent you.</div>
-        )}
+        {isError && <AuthErrorNotification error={error} />}
+        {isSuccess && <MagicLinkSuccessNotification />}
         <div>
           <div className="mb-2">
             <InputLabel htmlFor="email">Your university mail</InputLabel>
@@ -54,7 +53,7 @@ function Signup() {
             </label>
           </div>
         </div>
-        <Button size="lg" className="w-full" disabled={isLoading} type="submit" variant="react">
+        <Button size="lg" className="w-full" disabled={isLoading} loading={isLoading} type="submit" variant="react">
           Sign Up
         </Button>
       </form>

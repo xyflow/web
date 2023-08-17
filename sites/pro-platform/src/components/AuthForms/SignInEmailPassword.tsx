@@ -2,17 +2,16 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useSignInEmailPassword, useSendVerificationEmail } from '@nhost/nextjs';
+import { useSignInEmailPassword } from '@nhost/nextjs';
 
 import { Button, Input, InputLabel } from 'xy-ui';
+import { AuthErrorNotification } from './AuthNotification';
 
 function SignInEmailPassword() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [form, setForm] = useState<{ email: string; password: string }>({ email: '', password: '' });
-  const { signInEmailPassword, isLoading, needsEmailVerification, isSuccess, isError, error } =
-    useSignInEmailPassword();
-  const { sendEmail, isLoading: isVerificationMailLoading } = useSendVerificationEmail();
+  const { signInEmailPassword, isLoading, isSuccess, isError, error } = useSignInEmailPassword();
 
   useEffect(() => {
     if (isSuccess) {
@@ -25,22 +24,9 @@ function SignInEmailPassword() {
     signInEmailPassword(form.email, form.password);
   };
 
-  const handleVerificationMail = async (evt: React.MouseEvent<HTMLButtonElement>) => {
-    evt.preventDefault();
-    await sendEmail(form.email);
-  };
-
   return (
     <form onSubmit={handleFormSubmit}>
-      {isError && <div>{error?.message}</div>}
-      {needsEmailVerification && (
-        <div>
-          <div>Your email has not been verified. Please check your mailbox.</div>
-          <div>
-            <Button onClick={handleVerificationMail}>Resend verification mail</Button>
-          </div>
-        </div>
-      )}
+      {isError && <AuthErrorNotification error={error} />}
       <div className="flex flex-col">
         <div className="mb-2">
           <InputLabel htmlFor="email">Email</InputLabel>
@@ -67,7 +53,7 @@ function SignInEmailPassword() {
             variant="square"
           />
         </div>
-        <Button size="lg" className="w-full" type="submit" variant="react">
+        <Button loading={isLoading} disabled={isLoading} size="lg" className="w-full" type="submit" variant="react">
           Sign in
         </Button>
       </div>

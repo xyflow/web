@@ -2,7 +2,6 @@ import SubscriptionFeature from '@/components/SubscriptionFeature';
 import { SubscriptionPlan } from '@/types';
 import DashboardHeader from '@/components/DashboardHeader';
 import Notification from '@/components/Notification';
-import NotSubscribedNotification from '@/components/Notification/not-subscribed';
 import { Subscribed } from '@/components/SubscriptionStatus';
 
 function OverviewPage() {
@@ -11,9 +10,9 @@ function OverviewPage() {
       <DashboardHeader
         title="Overview"
         description="Welcome to xyflow pro! With a subscription, you are ensuring the sustainable maintenance and development of our open-source libraries."
+        showSubscriptionPlan
       />
       <div className="flex-1 space-y-7">
-        <NotSubscribedNotification />
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-5 lg:gap-6">
           <SubscriptionFeature
             title="Pro Examples"

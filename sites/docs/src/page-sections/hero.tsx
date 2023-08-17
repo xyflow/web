@@ -1,7 +1,7 @@
 import { type ReactNode } from 'react';
 import cn from 'clsx';
 
-import { Heading, HeroIcon, Text } from 'xy-ui';
+import { Button, Heading, HeroIcon, Text } from 'xy-ui';
 import useXYSite from '@/hooks/use-xy-site';
 import useConnectionDrawer from '@/hooks/use-connection-drawer';
 
@@ -10,6 +10,7 @@ type HeroProps = {
   subtitle?: ReactNode;
   kicker?: ReactNode;
   kickerIcon?: HeroIcon;
+  action?: ReactNode;
   className?: string;
   align?: 'left' | 'center';
   children?: ReactNode;
@@ -22,6 +23,7 @@ export default function Hero({
   subtitle,
   kicker,
   kickerIcon: KickerIcon,
+  action,
   children,
   className,
   align = 'left',
@@ -82,6 +84,7 @@ export default function Hero({
               {subtitle}
             </Text>
           )}
+          {action && <div>{action}</div>}
         </div>
         <div>{children}</div>
       </div>

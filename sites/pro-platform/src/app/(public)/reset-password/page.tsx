@@ -9,6 +9,7 @@ const ResetPasswordPage = () => {
       description="Enter your email to reset your password."
       links={authFormLinks}
       showOAuth={false}
+      showHero={false}
     >
       <ResetPassword />
     </AuthFormWrapper>

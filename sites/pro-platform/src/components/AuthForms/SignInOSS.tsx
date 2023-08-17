@@ -6,6 +6,7 @@ import Head from 'next/head';
 import { useSignInEmailPasswordless } from '@nhost/nextjs';
 
 import { Button, Input, InputLabel } from 'xy-ui';
+import { AuthErrorNotification, MagicLinkSuccessNotification } from './AuthNotification';
 
 function Signup() {
   const [email, setEmail] = useState<string>('');
@@ -17,7 +18,6 @@ function Signup() {
     await signInEmailPasswordless(email, { metadata, redirectTo: '/' });
   };
 
-  // @todo style notifications and error messages
   return (
     <>
       <Head>
@@ -25,10 +25,8 @@ function Signup() {
       </Head>
 
       <form onSubmit={handleSubmit}>
-        {isError && error && <div>{error.message}</div>}
-        {isSuccess && (
-          <div>To complete your registration, please check your mailbox and click the link we have sent you.</div>
-        )}
+        {isError && <AuthErrorNotification error={error} />}
+        {isSuccess && <MagicLinkSuccessNotification />}
         <div className="mb-2">
           <InputLabel htmlFor="email">Project Url</InputLabel>
           <Input
@@ -67,7 +65,7 @@ function Signup() {
             I confirm that I am using React Flow Pro only for non-commercial purposes in this open source project
           </label>
         </div>
-        <Button size="lg" className="w-full" disabled={isLoading} type="submit" variant="react">
+        <Button size="lg" className="w-full" disabled={isLoading} loading={isLoading} type="submit" variant="react">
           Sign Up
         </Button>
       </form>

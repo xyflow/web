@@ -115,15 +115,8 @@ export default function ProCodeViewer({
 
   // @todo fix the layout here and add resizable again
   return (
-    <SandpackProvider
-      template="react-ts"
-      customSetup={customSetup}
-      files={{ ...files, ...hiddenBaseStyles }}
-      options={customSandpackOptions}
-      theme={aquaBlue}
-    >
-      <div className="relative grid grid-cols-2">
-        {/* <Resizable
+    <div className="relative grid grid-cols-2">
+      {/* <Resizable
           defaultSize={{
             width: '300px',
             height: '100%',
@@ -132,33 +125,44 @@ export default function ProCodeViewer({
           minWidth="10%"
           enable={resizeRightEnabled}
         > */}
-        <div className="pr-4">
-          <div className="space-y-1 mb-3">
-            <OverviewButton />
-            {name && <Heading size="sm">{name}</Heading>}
-            {description && <Text>{description}</Text>}
-          </div>
-          <div className="space-x-2">
-            <DownloadSandpackButton fileName={`${exampleId}-example`} />
-            <FullScreenButton exampleId={exampleId} />
-          </div>
-          <div>
-            <MDXRemote {...readme} components={mdxComponents} />
-          </div>
-          <div className="border-t mt-6 pt-4">
-            <Heading size="sm">Feedback</Heading>
-            <Text>
-              We are always trying to improve the quality of the Pro examples and would be happy about your feedback.
-              Feel free to reach out at <a href="mailto:info@reactflow.dev">info@reactflow.dev</a>.
-            </Text>
-          </div>
+      <div className="pr-4">
+        <div className="space-y-1 mb-3">
+          <OverviewButton />
+          {name && (
+            <Heading size="md" className="font-black">
+              {name}
+            </Heading>
+          )}
+          {description && <Text size="lg">{description}</Text>}
         </div>
-        {/* </Resizable> */}
-        <div className="bg-red-500 sticky top-0 h-[100vh]">
+        <div className="space-x-2">
+          {/* <DownloadSandpackButton fileName={`${exampleId}-example`} /> */}
+          <FullScreenButton exampleId={exampleId} />
+        </div>
+        <div>
+          <MDXRemote {...readme} components={mdxComponents} />
+        </div>
+        <div className="border-t mt-6 pt-4">
+          <Heading size="sm">Feedback</Heading>
+          <Text>
+            We are always trying to improve the quality of the Pro examples and would be happy about your feedback. Feel
+            free to reach out at <a href="mailto:info@reactflow.dev">info@reactflow.dev</a>.
+          </Text>
+        </div>
+      </div>
+      {/* </Resizable> */}
+      <div className="bg-red-500 sticky top-0 h-[100vh]">
+        <SandpackProvider
+          template="react-ts"
+          customSetup={customSetup}
+          files={{ ...files, ...hiddenBaseStyles }}
+          options={customSandpackOptions}
+          theme={aquaBlue}
+        >
           <SandpackPreview style={{ height: '50%' }} showOpenInCodeSandbox={isDevelopment()} />
           <SandpackCodeEditor style={{ height: '50%' }} />
-
-          {/* <Resizable
+        </SandpackProvider>
+        {/* <Resizable
             defaultSize={{
               width: '100%',
               height: '50%',
@@ -178,8 +182,7 @@ export default function ProCodeViewer({
             // @todo re-enable this
             // readOnly={isReadOnly}
           /> */}
-        </div>
       </div>
-    </SandpackProvider>
+    </div>
   );
 }

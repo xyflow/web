@@ -8,7 +8,7 @@ import FileLink from './FileLink';
 
 export const mdxComponents: MDXComponents = {
   // @ts-ignore
-  p: (props) => <Text {...props} />,
+  p: (props) => <Text className="mb-2" {...props} />,
   // ul: (props) => (
   //   <List pl={2} lineHeight="1.4" color="gray.700" fontSize="md" {...props}>
   //     {props.children}
@@ -20,9 +20,9 @@ export const mdxComponents: MDXComponents = {
   //   </OrderedList>
   // ),
   // @ts-ignore
-  h1: (props) => <Heading size="xl" {...props} />,
+  h1: (props) => <Heading size="md" className="mb-6 mt-4" {...props} />,
   // @ts-ignore
-  h2: (props) => <Heading className="text-md" {...props} />,
+  h2: (props) => <Heading size="sm" className="mb-2 mt-4 font-black" {...props} />,
   // h2: (props) => (
   //   <Heading fontSize="2xl" mb={4} mt={8}>
   //     {props.children}
@@ -42,7 +42,7 @@ export const mdxComponents: MDXComponents = {
   //   );
   // },
   pre: CodeBlock,
-  FileLink: FileLink,
+  FileLink: () => null,
 };
 
 export default mdxComponents;

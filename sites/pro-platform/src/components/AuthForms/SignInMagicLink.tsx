@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Button, Input, InputLabel } from 'xy-ui';
 import { useSignInEmailPasswordless } from '@nhost/nextjs';
 
-import Notification from '@/components/Notification';
+import { MagicLinkSuccessNotification } from './AuthNotification';
 
 const SignInMagicLink = () => {
   const [email, setEmail] = useState<string>('');
@@ -22,13 +22,7 @@ const SignInMagicLink = () => {
   return (
     <form onSubmit={onSubmit}>
       <div className="flex flex-col space-y-4 mb-2">
-        {isSuccess && (
-          <Notification
-            className="rounded-md font-sm bg-green-100 border-green-500 text-green-700"
-            title="We have sent you a link"
-            description="Please check your email to sign in."
-          />
-        )}
+        {isSuccess && <MagicLinkSuccessNotification />}
         {!isSuccess && (
           <>
             <div>
@@ -44,8 +38,15 @@ const SignInMagicLink = () => {
               />
             </div>
 
-            <Button disabled={isLoading} size="lg" className="w-full shrink-0" type="submit" variant="react">
-              {isLoading ? 'Please wait...' : 'Send Secure Link'}
+            <Button
+              disabled={isLoading}
+              loading={isLoading}
+              size="lg"
+              className="w-full shrink-0"
+              type="submit"
+              variant="react"
+            >
+              Send secure link
             </Button>
           </>
         )}
