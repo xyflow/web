@@ -14,6 +14,7 @@ export * from './components/ui/slider';
 export * from './components/ui/spinner';
 export * from './components/ui/tabs';
 export * from './components/ui/text';
+export * from './components/ui/checkbox';
 
 export { cn } from './lib/utils';
 
