@@ -43,7 +43,7 @@ function getOGMetaTags({ isArticle, url, frontMatter }) {
 export default {
   logo: Logo,
   logoLink: false,
-  docsRepositoryBase: 'https://github.com/xyflow/xyflow',
+  docsRepositoryBase: 'https://github.com/xyflow/web/tree/main/sites/docs',
   // this is necessary to hide the github icon
   project: {},
   darkMode: false,

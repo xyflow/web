@@ -1,11 +1,9 @@
-const {
-  getUserEmail,
-  createStudentSubscription,
-  createOpenSourceSubscription,
-} = require('../../utils/database');
+import { Request, Response } from 'express';
 
-// @todo re-enable this function and convert to TS
-export default async function handler(req, res) {
+import { getUser } from '../_utils/graphql/users';
+import { upsertSubscription } from '../_utils/graphql/subscriptions';
+
+export default async function userSignupHandler(req: Request, res: Response) {
   // Check header to make sure the request comes from Hasura
   if (
     req.headers['nhost-webhook-secret'] !== process.env.NHOST_WEBHOOK_SECRET
@@ -19,7 +17,7 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'no user found.' });
   }
 
-  const email = await getUserEmail(user.id);
+  const { email } = (await getUser(user.id)) ?? {};
 
   if (!email) {
     return res
@@ -29,7 +27,7 @@ export default async function handler(req, res) {
 
   if (user.metadata?.student) {
     try {
-      await createStudentSubscription({ user_id: user.id });
+      await upsertSubscription({ userId: user.id, planId: 'student' });
 
       return res.status(200).json({
         success: true,
@@ -37,13 +35,14 @@ export default async function handler(req, res) {
       });
     } catch (error) {
       console.log(error);
+      // @ts-ignore
       return res.status(400).json({ error: error.toString() });
     }
   }
 
   if (user.metadata?.openSource) {
     try {
-      await createOpenSourceSubscription({ user_id: user.id });
+      await upsertSubscription({ userId: user.id, planId: 'oss' });
 
       return res.status(200).json({
         success: true,
@@ -51,6 +50,7 @@ export default async function handler(req, res) {
       });
     } catch (error) {
       console.log(error);
+      // @ts-ignore
       return res.status(400).json({ error: error.toString() });
     }
   }

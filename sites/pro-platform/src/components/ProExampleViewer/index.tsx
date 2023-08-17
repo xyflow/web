@@ -13,8 +13,9 @@ import {
   SandpackLayout,
 } from '@codesandbox/sandpack-react';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
+import { Heading, Text } from 'xy-ui';
 
-import { isDevelopment } from 'utils/browser';
+import { isDevelopment } from '@/utils';
 
 import mdxComponents from './mdx-components';
 import DownloadSandpackButton from './sandpack-downloader';
@@ -24,7 +25,7 @@ import OverviewButton from './overview-button';
 export type ProCodeViewerProps = {
   exampleId: string;
   files: SandpackFiles;
-  title?: string;
+  name?: string;
   description?: string;
   dependencies?: SandpackSetup['dependencies'];
   sandpackOptions?: SandpackOptions;
@@ -82,7 +83,7 @@ const resizeBottomEnabled = {
 };
 
 export default function ProCodeViewer({
-  title,
+  name,
   description,
   exampleId,
   files,
@@ -132,24 +133,24 @@ export default function ProCodeViewer({
           enable={resizeRightEnabled}
         > */}
         <div className="pr-4">
-          <div>
+          <div className="space-y-1 mb-3">
             <OverviewButton />
-            {title && <h1>{title}</h1>}
-            {description && <div>{description}</div>}
+            {name && <Heading size="sm">{name}</Heading>}
+            {description && <Text>{description}</Text>}
           </div>
-          <div>
+          <div className="space-x-2">
             <DownloadSandpackButton fileName={`${exampleId}-example`} />
             <FullScreenButton exampleId={exampleId} />
           </div>
-          <div style={{ fontFamily: 'unset' }}>
+          <div>
             <MDXRemote {...readme} components={mdxComponents} />
           </div>
-          <div>
-            <div>Feedback</div>
-            <div>
+          <div className="border-t mt-6 pt-4">
+            <Heading size="sm">Feedback</Heading>
+            <Text>
               We are always trying to improve the quality of the Pro examples and would be happy about your feedback.
               Feel free to reach out at <a href="mailto:info@reactflow.dev">info@reactflow.dev</a>.
-            </div>
+            </Text>
           </div>
         </div>
         {/* </Resizable> */}

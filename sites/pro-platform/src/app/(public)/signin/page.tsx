@@ -1,17 +1,17 @@
-import { SignInMagicLink, AuthFormWrapper } from '@/components/AuthForms';
+import { SignInEmailPassword, AuthFormWrapper } from '@/components/AuthForms';
 
-const authFormLinks = [{ href: '/signin/password', label: 'Use Email + Password' }];
+const authFormLinks = [
+  { href: '/signup', label: "Don't have an account? Sign Up" },
+  { href: '/reset-password', label: 'Forgot Password?' },
+  { href: '/signin/magic-link', label: 'Sign in with magic link' },
+];
 
-const SignInPage = () => {
+const SignInEmailPasswordPage = () => {
   return (
-    <AuthFormWrapper
-      links={authFormLinks}
-      title="Sign In"
-      description="Enter your email to sign in or create an account."
-    >
-      <SignInMagicLink />
+    <AuthFormWrapper links={authFormLinks} title="Sign In" description="Enter your email and password to sign in.">
+      <SignInEmailPassword />
     </AuthFormWrapper>
   );
 };
 
-export default SignInPage;
+export default SignInEmailPasswordPage;

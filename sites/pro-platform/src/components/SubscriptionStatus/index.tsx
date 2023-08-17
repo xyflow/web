@@ -2,10 +2,17 @@
 
 import useSubscription from '@/hooks/useSubscription';
 
-export function Subscribed({ children }: { children: React.ReactNode }) {
-  const { isSubscribed, plan } = useSubscription();
+export function Subscribed({
+  requireUserSubscription = false,
+  children,
+}: {
+  children: React.ReactNode;
+  requireUserSubscription?: boolean;
+}) {
+  const { isSubscribed, isUserSubscribed } = useSubscription();
+  const subscribed = requireUserSubscription ? isUserSubscribed : isSubscribed;
 
-  if (!isSubscribed) {
+  if (!subscribed) {
     return null;
   }
 
