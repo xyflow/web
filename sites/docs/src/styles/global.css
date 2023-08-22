@@ -87,6 +87,30 @@ main .max-w-\[90rem\] {
   --gradientAngle: 45deg;
 }
 
+.nextra-nav-container .DocSearch-Button {
+  background: #eee;
+  margin-left: 0;
+}
+
+.nextra-nav-container .DocSearch-Button .DocSearch-Search-Icon {
+  width: 16px;
+  height: 16px;
+}
+
+.DocSearch-Button .DocSearch-Button-Keys {
+  font-size: 12px;
+}
+
+.DocSearch-Button .DocSearch-Button-Placeholder {
+  font-size: 14px;
+}
+
+.DocSearch-Input:focus,
+.DocSearch-Input:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
 @media (max-width: 767px) {
   main .nextra-sidebar-container {
     padding-top: 90px;
