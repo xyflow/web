@@ -27,8 +27,8 @@ export type SpinnerProps = React.SVGAttributes<SVGElement> &
   VariantProps<typeof spinnerVariants>;
 
 export const Spinner = React.forwardRef<SVGElement, SpinnerProps>(
-  ({ variant, size, className }) => (
-    <div role="status">
+  ({ variant, size, className }, ref) => (
+    <div role="status" ref={ref}>
       <svg
         aria-hidden="true"
         className={cn(spinnerVariants({ variant, size, className }))}
