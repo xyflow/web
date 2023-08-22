@@ -23,10 +23,10 @@ export const spinnerVariants = cva('animate-spin', {
   },
 });
 
-export type SpinnerProps = React.SVGAttributes<SVGElement> &
+export type SpinnerProps = React.SVGAttributes<HTMLDivElement> &
   VariantProps<typeof spinnerVariants>;
 
-export const Spinner = React.forwardRef<SVGElement, SpinnerProps>(
+export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
   ({ variant, size, className }, ref) => (
     <div role="status" ref={ref}>
       <svg

@@ -37,5 +37,7 @@ export function getColorBySite(site: Framework | 'xyflow') {
 }
 
 export function isDevelopment() {
-  return process.env.NODE_ENV === 'development';
+  return (
+    typeof process !== 'undefined' && process.env.NODE_ENV === 'development'
+  );
 }
