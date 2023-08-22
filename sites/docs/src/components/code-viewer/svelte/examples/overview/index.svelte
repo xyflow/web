@@ -10,8 +10,8 @@
     SelectionMode,
   } from '@xyflow/svelte';
 
-  import CustomNode from './custom-node.svelte';
-  import CustomEdge from './custom-edge.svelte';
+  import CustomNode from './CustomNode.svelte';
+  import CustomEdge from './CustomEdge.svelte';
 
   const nodeTypes = {
     custom: CustomNode,
