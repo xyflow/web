@@ -5,7 +5,6 @@ import Logo from '@/components/navbar-logo';
 import Navbar, { NavBarAdditional } from '@/components/navbar';
 import SidebarTitle from '@/components/sidebar-title';
 import Footer from '@/components/footer';
-import Search from '@/components/search';
 import useXYSite from '@/hooks/use-xy-site';
 
 const baseUrl =
@@ -61,9 +60,6 @@ export default {
   },
   footer: {
     component: Footer,
-  },
-  search: {
-    component: Search,
   },
   useNextSeoProps() {
     const router = useRouter();
