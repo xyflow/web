@@ -13,7 +13,7 @@ const textVariants = cva('', {
       xyflow: 'text-xyflow',
     },
     size: {
-      default: 'text-base',
+      default: 'text-base leading-relaxed',
       xs: 'text-xs',
       sm: 'text-sm',
       md: 'text-md',
