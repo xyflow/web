@@ -49,13 +49,16 @@ export default function OpenSource() {
           We chose the MIT License because we believe in Free and Open Source
           Software. Having this license means that anyone can use, repurpose, or
           resell our docs, our blog posts, or our library. We love that it
-          allows anyone to use xyFlow for their own projects, and we get to see
-          people build things with xyFlow that we never would have imagined. The
+          allows anyone to use xyflow for their own projects, and we get to see
+          people build things with xyflow that we never would have imagined. The
           MIT License also allows companies to easily use the library without
           having to hire a lawyer to interpret a custom license. We’ll keep our
           software MIT Licensed forever.
         </Text>
-        <Link href="" className="text-pink-500 underline text-lg ">
+        <Link
+          href="https://github.com/wbkd/react-flow/blob/main/LICENSE"
+          className="text-pink-500 underline text-lg "
+        >
           Read our license
         </Link>
 
@@ -63,13 +66,13 @@ export default function OpenSource() {
           How we fund our work
         </Heading>
         <Text className="text-lg leading-8">
-          We need funding to pay for the time it takes to care for xyFlow and
+          We need funding to pay for the time it takes to care for xyflow and
           the infrastructure around it. The way we do this is a thin-crust
           open-core model:
         </Text>
         <Image
           src={ossImage}
-          alt=""
+          alt="A diagram showing a circle with an outline. Inside the circle is the Free, Open Core, which contains Libraries, docs, examples, and discord. The thick outline of the circle is the Paid Crust, containing Pro examples, prioritized bug fixes, and email support."
           placeholder="blur"
           className="my-10 mx-auto lg:max-w-[544px] "
         ></Image>
@@ -85,7 +88,10 @@ export default function OpenSource() {
           it is placed on organizations who can afford to fund us (rather than
           individual developers).
         </Text>
-        <Link href="" className="text-pink-500 underline text-lg">
+        <Link
+          href="/blog/asking-for-money-for-open-source"
+          className="text-pink-500 underline text-lg"
+        >
           More about how xyflow is funded
         </Link>
         <Heading as="h2" size="sm" className="mb-4 mt-14">
@@ -107,7 +113,7 @@ export default function OpenSource() {
         </Text>
         <Text className="text-lg leading-8 mb-4">
           We offer free access to our Pro examples to non-commercial open source
-          projects and students who use xyFlow. If this is you, send us an email
+          projects and students who use xyflow. If this is you, send us an email
           to info@xyflow.dev from your student email, or send us a link to your
           open source project repository.
         </Text>
