@@ -59,7 +59,7 @@ export const plans: Record<PlanId, PricingPlan> = {
           },
           yearly: {
             label: '119€',
-            unit: 'month (billed annually)',
+            unit: 'month',
             development: 'price_1KsRfaANIskB3EFJmzNyioZN',
             production: 'price_1LzMLYANIskB3EFJsUorsRdb',
           },
@@ -73,7 +73,7 @@ export const plans: Record<PlanId, PricingPlan> = {
           },
           yearly: {
             label: '$129',
-            unit: 'month (billed annually)',
+            unit: 'month',
             development: 'price_1Kw1vqANIskB3EFJOUxjJG8o',
             production: 'price_1LzMJxANIskB3EFJayrPTV9l',
           },
@@ -106,7 +106,7 @@ export const plans: Record<PlanId, PricingPlan> = {
           },
           yearly: {
             label: '229€',
-            unit: 'month (billed annually)',
+            unit: 'month',
             development: 'price_1KsRgWANIskB3EFJ0cbcqYsM',
             production: 'price_1LzMMmANIskB3EFJzcrGkrFK',
           },
@@ -120,7 +120,7 @@ export const plans: Record<PlanId, PricingPlan> = {
           },
           yearly: {
             label: '$249',
-            unit: 'month (billed annually)',
+            unit: 'month',
             development: 'price_1Kw2lDANIskB3EFJletdOo7W',
             production: 'price_1LzMNPANIskB3EFJagHt3j7P',
           },

@@ -3,7 +3,8 @@
 import { redirect } from 'next/navigation';
 import { useAuthenticationStatus } from '@nhost/nextjs';
 
-const AuthProtection = ({ children }: { children: React.ReactNode }) => {
+// redirects to the dashboard if the user is already signed in
+const AuthRedirect = ({ children }: { children: React.ReactNode }) => {
   const { isAuthenticated } = useAuthenticationStatus();
 
   if (isAuthenticated) {
@@ -13,4 +14,4 @@ const AuthProtection = ({ children }: { children: React.ReactNode }) => {
   return children;
 };
 
-export default AuthProtection;
+export default AuthRedirect;

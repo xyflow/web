@@ -10,15 +10,15 @@
     SelectionMode,
   } from '@xyflow/svelte';
 
-  import CustomNode from './custom-node.svelte';
-  import CustomEdge from './custom-edge.svelte';
+  import CustomNode from './CustomNode.svelte';
+  import CustomEdge from './CustomEdge.svelte';
 
   const nodeTypes = {
-    custom: CustomNode
+    custom: CustomNode,
   };
 
   const edgeTypes = {
-    custom: CustomEdge
+    custom: CustomEdge,
   };
 
   const nodes = writable([
@@ -26,48 +26,48 @@
       id: '1',
       type: 'input',
       data: { label: 'Input Node' },
-      position: { x: 150, y: 5 }
+      position: { x: 150, y: 5 },
     },
     {
       id: '2',
       type: 'default',
       data: { label: 'Node' },
       position: { x: 0, y: 150 },
-      selectable: false
+      selectable: false,
     },
     {
       id: 'A',
       type: 'default',
       data: { label: 'Styled with class' },
       class: 'custom-style',
-      position: { x: 150, y: 150 }
+      position: { x: 150, y: 150 },
     },
     {
       id: 'D',
       type: 'default',
       data: { label: 'Not draggable' },
       position: { x: 150, y: 200 },
-      draggable: false
+      draggable: false,
     },
     {
       id: '3',
       type: 'output',
       data: { label: 'Output Node' },
-      position: { x: 300, y: 150 }
+      position: { x: 300, y: 150 },
     },
     {
       id: 'B',
       type: 'default',
       data: { label: 'Styled with style' },
       style: 'border: 2px solid #ff5050;',
-      position: { x: 450, y: 150 }
+      position: { x: 450, y: 150 },
     },
     {
       id: '4',
       type: 'custom',
       data: { label: 'Custom Node' },
-      position: { x: 150, y: 300 }
-    }
+      position: { x: 150, y: 300 },
+    },
   ]);
 
   const edges = writable([
@@ -76,22 +76,22 @@
       type: 'default',
       source: '1',
       target: '2',
-      label: 'Edge Text'
+      label: 'Edge Text',
     },
     {
       id: '1-3',
       type: 'smoothstep',
       source: '1',
       target: '3',
-      selectable: false
+      selectable: false,
     },
     {
       id: '2-4',
       type: 'custom',
       source: '2',
       target: '4',
-      animated: true
-    }
+      animated: true,
+    },
   ]);
 
   function updateNode() {
@@ -100,7 +100,7 @@
         if (n.id === '1') {
           return {
             ...n,
-            position: { x: n.position.x + 20, y: n.position.y }
+            position: { x: n.position.x + 20, y: n.position.y },
           };
         }
 
@@ -115,37 +115,37 @@
 </script>
 
 <div style="height:100vh">
-<SvelteFlow
-  {nodes}
-  {edges}
-  {nodeTypes}
-  {edgeTypes}
-  fitView
-  minZoom={0.1}
-  maxZoom={2.5}
-  selectionMode={SelectionMode.Full}
-  initialViewport={{ x: 100, y: 100, zoom: 2 }}
-  snapGrid={[25, 25]}
-  on:nodeclick={(event) => console.log('on node click', event)}
-  on:nodemouseenter={(event) => console.log('on node enter', event)}
-  on:nodemouseleave={(event) => console.log('on node leave', event)}
-  on:edgeclick={(event) => console.log('edge click', event)}
-  on:connectstart={(event) => console.log('on connect start', event)}
-  on:connect={(event) => console.log('on connect', event)}
-  on:connectend={(event) => console.log('on connect end', event)}
-  on:paneclick={(event) => console.log('on pane click', event)}
-  on:panecontextmenu={(event) => {
-    event.preventDefault();
-    console.log('on pane contextmenu', event);
-  }}
->
-  <Controls />
-  <Background variant={BackgroundVariant.Dots} />
-  <MiniMap />
-  <Panel position="top-right">
-    <button on:click={updateNode}>update node pos</button>
-  </Panel>
-</SvelteFlow>
+  <SvelteFlow
+    {nodes}
+    {edges}
+    {nodeTypes}
+    {edgeTypes}
+    fitView
+    minZoom={0.1}
+    maxZoom={2.5}
+    selectionMode={SelectionMode.Full}
+    initialViewport={{ x: 100, y: 100, zoom: 2 }}
+    snapGrid={[25, 25]}
+    on:nodeclick={(event) => console.log('on node click', event)}
+    on:nodemouseenter={(event) => console.log('on node enter', event)}
+    on:nodemouseleave={(event) => console.log('on node leave', event)}
+    on:edgeclick={(event) => console.log('edge click', event)}
+    on:connectstart={(event) => console.log('on connect start', event)}
+    on:connect={(event) => console.log('on connect', event)}
+    on:connectend={(event) => console.log('on connect end', event)}
+    on:paneclick={(event) => console.log('on pane click', event)}
+    on:panecontextmenu={(event) => {
+      event.preventDefault();
+      console.log('on pane contextmenu', event);
+    }}
+  >
+    <Controls />
+    <Background variant={BackgroundVariant.Dots} />
+    <MiniMap />
+    <Panel position="top-right">
+      <button on:click={updateNode}>update node pos</button>
+    </Panel>
+  </SvelteFlow>
 </div>
 
 <style>

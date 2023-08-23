@@ -17,7 +17,7 @@ export default async function userSignupHandler(req: Request, res: Response) {
     return res.status(400).json({ error: 'no user found.' });
   }
 
-  const { email } = await getUser(user.id);
+  const { email } = (await getUser(user.id)) ?? {};
 
   if (!email) {
     return res

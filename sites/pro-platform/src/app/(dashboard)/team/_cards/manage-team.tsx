@@ -51,8 +51,12 @@ export default function ManageTeamCard() {
   useEffect(() => {
     const updateIncludedSeats = async () => {
       const status = await nhostFunction<{ includedSeats: number }>('team/status', {});
+
+      if (!status || !status.res || !status.res.data) {
+        return;
+      }
+
       setIncludedSeats(status.res.data.includedSeats);
-      return status.res.data.includedSeats;
     };
 
     updateIncludedSeats();

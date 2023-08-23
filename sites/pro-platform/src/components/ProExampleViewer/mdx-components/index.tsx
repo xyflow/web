@@ -1,6 +1,5 @@
-import React from 'react';
-import { Link, List, OrderedList, Icon, Heading, Text } from '@chakra-ui/react';
-import { ExternalLinkIcon } from '@chakra-ui/icons';
+import * as React from 'react';
+import { Heading, Text } from 'xy-ui';
 
 import { MDXComponents } from 'mdx/types';
 
@@ -8,7 +7,8 @@ import CodeBlock from './CodeBlock';
 import FileLink from './FileLink';
 
 export const mdxComponents: MDXComponents = {
-  p: (props) => <p className="text-lg" {...props} />,
+  // @ts-ignore
+  p: (props) => <Text className="mb-2" {...props} />,
   // ul: (props) => (
   //   <List pl={2} lineHeight="1.4" color="gray.700" fontSize="md" {...props}>
   //     {props.children}
@@ -19,8 +19,10 @@ export const mdxComponents: MDXComponents = {
   //     {props.children}
   //   </OrderedList>
   // ),
-  h1: (props) => <h1 {...props} />,
-  h2: (props) => <h2 className="text-2xl" {...props} />,
+  // @ts-ignore
+  h1: (props) => <Heading size="md" className="mb-6 mt-4" {...props} />,
+  // @ts-ignore
+  h2: (props) => <Heading size="sm" className="mb-2 mt-4 font-black" {...props} />,
   // h2: (props) => (
   //   <Heading fontSize="2xl" mb={4} mt={8}>
   //     {props.children}
@@ -40,7 +42,7 @@ export const mdxComponents: MDXComponents = {
   //   );
   // },
   pre: CodeBlock,
-  FileLink: FileLink,
+  FileLink: () => null,
 };
 
 export default mdxComponents;

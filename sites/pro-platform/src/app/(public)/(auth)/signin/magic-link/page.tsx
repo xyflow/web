@@ -1,12 +1,12 @@
 import { SignInMagicLink, AuthFormWrapper } from '@/components/AuthForms';
 
-const authFormLinks = [{ href: '/signin/password', label: 'Use Email + Password' }];
+const authFormLinks = [{ href: '/signin', label: 'Sign in using Email and Password' }];
 
-const SignInPage = () => {
+const SignInEmailPasswordPage = () => {
   return (
     <AuthFormWrapper
       links={authFormLinks}
-      title="Sign In"
+      title="Sign In with Magic Link"
       description="Enter your email to sign in or create an account."
     >
       <SignInMagicLink />
@@ -14,4 +14,4 @@ const SignInPage = () => {
   );
 };
 
-export default SignInPage;
+export default SignInEmailPasswordPage;

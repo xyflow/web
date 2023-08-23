@@ -58,7 +58,7 @@ export async function createStripeCustomer({
   email,
   userId,
 }: {
-  email: string;
+  email?: string;
   userId: string;
 }) {
   const customer = await stripe.customers.create({

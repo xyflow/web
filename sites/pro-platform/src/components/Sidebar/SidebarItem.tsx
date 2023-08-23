@@ -2,29 +2,33 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { cn } from 'xy-ui';
+import { Button, cn } from 'xy-ui';
 
 const SidebarItem = ({
   href,
   label,
   matchSubPaths = false,
+  icon = null,
 }: {
   href: string;
   label: string;
   matchSubPaths?: boolean;
+  icon?: React.ReactNode;
 }) => {
   const pathname = usePathname();
   const isActive = matchSubPaths ? pathname.startsWith(href) : pathname === href;
 
-  const className = cn(
-    'mr-1 mb-2 py-1 px-4 bg-gray-100 rounded-full font-bold text-muted-foreground lg:mr-0 lg:mb-0 lg:pr-10 lg:bg-transparent',
-    isActive ? '!bg-pink-100 text-react' : 'hover:text-react'
-  );
+  const className = cn('shrink-0 bg-gray-100 lg:bg-transparent gap-1 text-muted-foreground justify-start', {
+    '!bg-pink-100 !text-react': isActive,
+    'pl-4': !!icon,
+  });
 
   return (
-    <Link className={className} href={href}>
-      {label}
-    </Link>
+    <Button variant="ghost" className={className} asChild>
+      <Link className="[&>svg]:w-5 [&>svg]:h-5" href={href}>
+        {icon} {label}
+      </Link>
+    </Button>
   );
 };
 
