@@ -7,19 +7,28 @@ import BaseLayout from '@/layouts/base';
 import Hero from '@/page-sections/hero';
 import Section from '@/page-sections/section';
 
+import ossImage from '@/../public/img/open-source/thincrustopencore.png';
+import starChart from '@/../public/img/open-source/starchart.png';
+
 export default function OpenSource() {
   return (
     <BaseLayout>
       <Hero
         kicker="Open Source"
         kickerIcon={UserGroupIcon}
-        title="How we do open source"
-        // subtitle="React Flow was published under an MIT License in 2019."
+        title="Open Source at xyflow"
+        subtitle="How and why we keep xyflow transparent, free, and MIT licensed"
         align="center"
       />
 
-      <Section className="max-w-screen-md mx-auto">
-        <Heading as="h2" size="sm" className="mb-4 lg:mt-14">
+      <Section className="max-w-screen-md mx-auto mt-12 lg:my-12">
+        <Image
+          src={starChart}
+          alt=""
+          placeholder="blur"
+          className="mx-auto lg:max-w-[544px] mt-2"
+        ></Image>
+        <Heading as="h2" size="sm" className="mb-4 mt-14">
           Open source since the beginning
         </Heading>
         <Text className="text-lg leading-8">
@@ -33,7 +42,7 @@ export default function OpenSource() {
           of one of the most popular node-based UI libraries :)
         </Text>
 
-        <Heading as="h2" size="sm" className="mb-4 lg:mt-14">
+        <Heading as="h2" size="sm" className="mb-4 mt-14">
           We’ll keep our software MIT Licensed forever.
         </Heading>
         <Text className="text-lg leading-8 mb-4">
@@ -46,11 +55,11 @@ export default function OpenSource() {
           having to hire a lawyer to interpret a custom license. We’ll keep our
           software MIT Licensed forever.
         </Text>
-        <Link href="" className="text-pink-500 underline text-lg">
+        <Link href="" className="text-pink-500 underline text-lg ">
           Read our license
         </Link>
 
-        <Heading as="h2" size="sm" className="mb-4 lg:mt-14">
+        <Heading as="h2" size="sm" className="mb-4 mt-14">
           How we fund our work
         </Heading>
         <Text className="text-lg leading-8">
@@ -59,11 +68,10 @@ export default function OpenSource() {
           open-core model:
         </Text>
         <Image
-          src="/img/open-source/thincrustopencore.png"
+          src={ossImage}
           alt=""
-          width={500}
-          height={500}
-          className="my-10"
+          placeholder="blur"
+          className="my-10 mx-auto lg:max-w-[544px] "
         ></Image>
 
         <Text className="text-lg leading-8 mb-4">
@@ -78,9 +86,9 @@ export default function OpenSource() {
           individual developers).
         </Text>
         <Link href="" className="text-pink-500 underline text-lg">
-          Read about xyflow is funded
+          More about how xyflow is funded
         </Link>
-        <Heading as="h2" size="sm" className="mb-4 lg:mt-14">
+        <Heading as="h2" size="sm" className="mb-4 mt-14">
           Supporting the open source ecosystem
         </Heading>
         <Text className="text-lg leading-8 mb-4">
