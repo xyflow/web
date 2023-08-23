@@ -24,6 +24,7 @@
     "clsx": "^1.2.1",
     "fast-xml-parser": "^4.2.6",
     "html-to-image": "^1.11.11",
+    "lucide-react": "^0.248.0",
     "nanoid": "^4.0.2",
     "next": "^13.4.10",
     "next-sitemap": "^4.1.8",
