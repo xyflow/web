@@ -1,15 +1,21 @@
-import { Button } from 'xy-ui';
+import { Button, cn } from 'xy-ui';
 
 type NotificationProps = {
   title?: React.ReactNode;
   description?: React.ReactNode;
   button?: { label: string; href: string };
-};
+} & React.HTMLAttributes<HTMLDivElement>;
 
 // @todo maybe move this into ui package
-export default function ({ title, description, button }: NotificationProps) {
+export default function ({ title, description, button, className, ...rest }: NotificationProps) {
   return (
-    <div className="bg-pink-50 text-react border-react p-5 border rounded-3xl flex justify-between items-center">
+    <div
+      className={cn(
+        'bg-pink-50 text-react border-react p-5 border rounded-3xl flex justify-between items-center',
+        className
+      )}
+      {...rest}
+    >
       <div>
         {title && <div className="font-black">{title}</div>}
         {description && <div>{description}</div>}

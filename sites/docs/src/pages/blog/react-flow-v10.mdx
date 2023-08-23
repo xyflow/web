@@ -7,6 +7,7 @@ tags: ['react-flow', 'release']
 image: /img/blog/v10-header.png
 ---
 
+import { CodeViewer } from '@/components/blog-post-embed';
 import BlogPostLayout from '@/layouts/blog-post';
 
 <BlogPostLayout>
@@ -15,14 +16,10 @@ We are super happy about the progress and the community that has developed aroun
 
 After several months of hard work, today we can finally announce the release of React Flow version 10. Together with the new library version, we are also releasing a fully revised documentation that is now powered by [Docusaurus](https://docusaurus.io/). Last but not least, we are releasing [React Flow Pro](https://pro.reactflow.dev/pricing), our new subscription model for React Flow which we want to establish to secure the further development and maintenance of the library. In this post we describe all the news around React Flow version 10. If you want to migrate from v9 to v10, please refer to the [migration guide](/docs/guides/migrate-to-v10).
 
-import CodeViewer from '@/components/code-viewer';
-
 <div style={{ marginTop: 40 }} />
 
 <CodeViewer
   codePath="api-flows/SubFlows3"
-  options={{ editorHeight: 300 }}
-  showEditor={false}
   additionalFiles={['nodes.js', 'edges.js']}
 />
 

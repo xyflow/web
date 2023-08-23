@@ -23,7 +23,6 @@ function BlogPostPreviews() {
             intro={prevPost.frontMatter?.intro}
             date={prevPost.frontMatter?.date}
             authors={prevPost.frontMatter?.authors}
-            route={prevPost.route}
           />
         </ContentGridItem>
         <ContentGridItem route={nextPost.route}>
@@ -32,7 +31,6 @@ function BlogPostPreviews() {
             intro={nextPost.frontMatter?.intro}
             date={nextPost.frontMatter?.date}
             authors={nextPost.frontMatter?.authors}
-            route={nextPost.route}
           />
         </ContentGridItem>
       </ContentGrid>
@@ -44,7 +42,7 @@ export default function BlogPostLayout({ children }: { children: ReactNode }) {
   const { frontMatter } = useConfig();
 
   return (
-    <>
+    <div className="max-w-screen-md mx-auto">
       <Text variant="light" className="mt-10">
         {frontMatter.date}
       </Text>
@@ -57,6 +55,6 @@ export default function BlogPostLayout({ children }: { children: ReactNode }) {
       <div>{children}</div>
 
       <BlogPostPreviews />
-    </>
+    </div>
   );
 }

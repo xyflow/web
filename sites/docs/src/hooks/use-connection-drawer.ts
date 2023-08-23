@@ -61,10 +61,10 @@ export default function useConnectionDrawer() {
           svg.setAttribute('width', Math.max(2, width));
           svg.setAttribute('height', Math.max(2, height));
           svg.style.right =
-            isRTL || isSmallScreen ? `${HANDLE_SIZE / 2 - 2}px` : 'auto';
+            isRTL || isSmallScreen ? `${HANDLE_SIZE / 2 - 1}px` : 'auto';
           svg.style.left =
-            isRTL || isSmallScreen ? 'auto' : `${HANDLE_SIZE / 2 - 2}px`;
-          svg.style.top = `${HANDLE_SIZE / 2 - 2}px`;
+            isRTL || isSmallScreen ? 'auto' : `${HANDLE_SIZE / 2 - 1}px`;
+          svg.style.top = `${HANDLE_SIZE / 2 - 1}px`;
           const sourcePosition = sourceHandle.getAttribute('data-position');
           const targetPosition = targetHandle.getAttribute('data-position');
 

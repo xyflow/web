@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { useSSG } from 'nextra/ssg';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 
@@ -15,12 +16,12 @@ import ClientLogos from '@/components/client-logos';
 const features = [
   {
     title: 'Ready out-of-the-box',
-    text: 'The things you need are already there: dragging nodes, zooming, planning, selecting multiple nodes, and adding/removing edges are all built-in.',
+    text: 'The things you need are already there: dragging nodes, zooming, panning, selecting multiple nodes, and adding/removing elements are all built-in.',
     route: '/react-flow/docs',
   },
   {
     title: 'Powered by us. Designed by you.',
-    text: 'We play nice with Tailwind and old CSS. React Flow nodes are just React components. Create custom nodes to add interactive controls.',
+    text: 'React Flow nodes are simply React components, ready for your interactive elements. We play nice with Tailwind and plain old CSS.',
     route: '/react-flow/docs',
   },
   {
@@ -32,6 +33,45 @@ const features = [
     title: 'All the right plugins',
     text: 'Make more advanced apps. Background, Minimap, Controls, Panel, Nodetoolbar, and Noderesizer.',
     route: '/react-flow/docs',
+  },
+];
+
+const showcases = [
+  {
+    name: 'Stripe Docs',
+    text: 'Diagrams for process documentation with interactive nodes',
+    content: (
+      <Image
+        className="rounded-xl object-cover"
+        src="/img/showcase/5e7c4463-7dc9-40e9-b3df-7433f6fc9abc.png"
+        alt="Stripe Docs"
+        fill
+      />
+    ),
+  },
+  {
+    name: 'DoubleLoop',
+    text: 'Node-based dashboard builder to monitor business metrics',
+    content: (
+      <Image
+        className="rounded-xl object-cover"
+        src="/img/showcase/8b4e2243-4e88-40be-89b8-4bfad13460f8.png"
+        alt="DoubleLoop"
+        fill
+      />
+    ),
+  },
+  {
+    name: 'TypeForm',
+    text: 'Interactive tool to build and visualize complex survey logic',
+    content: (
+      <Image
+        className="rounded-xl object-cover"
+        src="/img/showcase/0e29d66b-142b-42c4-a43c-6e3f6501d14b.png"
+        alt="TypeForm"
+        fill
+      />
+    ),
   },
 ];
 
@@ -73,14 +113,14 @@ export default function ReactFlowHome() {
         <ClientLogos />
       </Section>
 
-      <Showcase />
+      <Showcase items={showcases} />
 
       <Section className="lg:flex place-content-between">
         <div>
           <Heading size="md" className="font-bold">
             Some headline thing
           </Heading>
-          <Text className="mb-4 mt-2">
+          <Text className="mt-2 mb-4">
             Here is a text about ethical standards and stuff
           </Text>
           <Button asChild>

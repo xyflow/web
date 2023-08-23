@@ -35,3 +35,9 @@ const colors = {
 export function getColorBySite(site: Framework | 'xyflow') {
   return colors[site];
 }
+
+export function isDevelopment() {
+  return (
+    typeof process !== 'undefined' && process.env.NODE_ENV === 'development'
+  );
+}

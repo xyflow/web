@@ -266,7 +266,7 @@ function Flow({ variant, headlineRef }: FlowProps) {
   }, [shape]);
 
   return (
-    <div className="h-[65vh] xl:h-[60vh] 2xl:h-[50vh]">
+    <div className="h-[65vh] xl:h-[62vh] 2xl:h-[50vh]">
       <ReactFlow
         preventScrolling={false}
         zoomOnScroll={false}

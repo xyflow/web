@@ -1,10 +1,19 @@
-import { useUserEmail } from '@nhost/nextjs';
+import useNhostFunction from './useNhostFunction';
 
-function useStripeCustomerPortal(): { portalUrl: string } {
-  const userEmail = useUserEmail();
+function useStripeCustomerPortal(): { openCustomerPortal: () => void } {
+  const callNhostFunction = useNhostFunction();
 
-  // @todo put this in env var for dev/prod
-  return { portalUrl: `https://billing.stripe.com/p/login/test_bIYfZ70VVdRY7lucMM?prefilled_email=${userEmail}` };
+  const openCustomerPortal = async () => {
+    const response = await callNhostFunction<{ url: string }>('/stripe/create-customer-portal', {});
+
+    if (response.res.data?.url) {
+      window.location.href = response.res.data.url;
+    }
+  };
+
+  return {
+    openCustomerPortal,
+  };
 }
 
 export default useStripeCustomerPortal;

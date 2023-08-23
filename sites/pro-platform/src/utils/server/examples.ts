@@ -1,8 +1,8 @@
 import fs from 'fs';
 import path from 'path';
 
-import type { ProCodeViewerProps } from 'components/ProExampleViewer';
 import { SandpackFiles } from '@codesandbox/sandpack-react/types';
+import type { ProCodeViewerProps } from '@/components/ProExampleViewer';
 
 export enum Framework {
   REACT = 'react',
@@ -27,9 +27,12 @@ export const getExampleFiles = (frameworkId: Framework, exampleId: string): ProC
     // @todo this should run recursively and include folders
     fileNames.forEach((file) => {
       const filePath = path.join(examplesPath, file);
-      const fileContent = fs.readFileSync(filePath, 'utf8');
 
-      files[file] = fileContent;
+      // @todo handle folders here, too
+      if (fs.lstatSync(filePath).isFile()) {
+        const fileContent = fs.readFileSync(filePath, 'utf8');
+        files[file] = fileContent;
+      }
     });
   } catch (err) {
     console.log(err);
@@ -63,8 +66,9 @@ export const getExampleIds = (frameworkId: Framework): string[] => {
 };
 
 export type ExampleConfig = {
-  title: string;
+  name: string;
   description: string;
+  hidden?: boolean;
 };
 
 export type Example = {

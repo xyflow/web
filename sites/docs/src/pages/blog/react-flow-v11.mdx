@@ -6,7 +6,7 @@ authors: ['moritz']
 tags: ['react-flow', 'release']
 ---
 
-import Image from 'next/image';
+import { Image } from '@/components/blog-post-embed';
 import Emoji from '@/components/emoji';
 import BlogPostLayout from '@/layouts/blog-post';
 
@@ -68,6 +68,7 @@ Another big update is a complete rewrite of the edge routing for `smoothstep` an
   alt="Edge routing comparison v10 and v11"
   width={800}
   height={615}
+  wide
 />
 
 That's not all. We also revised the edge [update behaviour](https://twitter.com/reactflowdev/status/1564966917517021184), added [`pathOptions`](/docs/api/edges/edge-options/#options) for `default` and `smoothstep` edges and a new `deletable` flag. For making it easier to develop custom edges we are exporting a [`<BaseEdge />` component](/docs/api/edges/base-edge/) that can draw the invisible helper edge and the label for you.

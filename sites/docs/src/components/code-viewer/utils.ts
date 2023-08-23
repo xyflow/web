@@ -25,7 +25,7 @@ export function getTemplate({
   isTypescript: boolean;
 }): SandpackPredefinedTemplate {
   if (framework === 'svelte') {
-    return 'svelte';
+    return 'vite-svelte';
   }
 
   return isTypescript ? 'react-ts' : 'react';
@@ -39,10 +39,18 @@ const defaultSetupReact = {
 
 const defaultSetupSvelte = {
   dependencies: {
+    'd3-path': '1',
+    'd3-dispatch': '1',
+    'd3-color': '1',
+    'd3-ease': '1',
+    'd3-interpolate': '1',
+    'd3-timer': '1',
+    'd3-drag': '2',
+    'd3-transition': '2',
     '@xyflow/svelte': SVELTE_FLOW_VERSION,
   },
   devDependencies: {
-    svelte: '3.58.0',
+    svelte: '4',
   },
 };
 

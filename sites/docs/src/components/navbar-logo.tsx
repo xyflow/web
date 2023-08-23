@@ -11,10 +11,8 @@ export default function NavbarLogo() {
 
   return (
     <Link href={href} className="flex space-x-2 items-center">
-      <Logo variant={site} animated />
-      <Text size="lg" className="font-bold">
-        {label}
-      </Text>
+      <Logo className="h-9 w-9" variant={site} animated />
+      <Text className="font-black text-xl">{label}</Text>
     </Link>
   );
 }

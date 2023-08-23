@@ -65,26 +65,30 @@ export default function Feature({
       </div>
       <div className={index % 2 === 0 ? order2Class : order1Class}>
         <Container className="relative">
-          <div className="h-[400px] p-6"></div>
+          <div className="h-[400px] p-6 bg-gradient-to-br from-white to-gray-50 rounded-3xl"></div>
 
           {index > 0 && (
             <Handle
               id={targetHandleId}
               variant={variant}
-              className="top-4 left-10 md:left-1/2"
+              className="-top-2 left-10 md:left-1/2"
               type="target"
               position={Position.Top}
+              handleClassName="border-none"
             />
           )}
           {index < featureCount - 1 && (
             <Handle
               id={sourceHandleId}
               variant={variant}
-              className="bottom-4 right-10 md:left-1/2 md:right-auto"
+              className="bottom-[-2px] right-10 md:left-1/2 md:right-auto"
+              handleClassName="shadow-md"
               position={Position.Bottom}
               type="source"
               to={nextTargetHandleId}
-            />
+            >
+              <div className="bg-gray-50 rounded-b-full shadow-md absolute w-10 h-7 left-1/2 -translate-x-1/2 top-0" />
+            </Handle>
           )}
         </Container>
       </div>

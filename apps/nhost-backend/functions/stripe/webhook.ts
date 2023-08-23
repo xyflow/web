@@ -17,10 +17,7 @@ const relevantEvents = new Set([
 
 const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET as string;
 
-export default async function stripeWebhookHandler(
-  req: NhostRequest,
-  res: Response
-) {
+const stripeWebhookHandler = async (req: NhostRequest, res: Response) => {
   if (req.method !== 'POST') {
     return res.status(405).send({ message: 'Method not allowed.' });
   }
@@ -44,4 +41,6 @@ export default async function stripeWebhookHandler(
     console.log(err);
     return res.status(400).send(`Webhook Error: ${err}`);
   }
-}
+};
+
+export default stripeWebhookHandler;

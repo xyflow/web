@@ -10,7 +10,7 @@ import GettingStarted from '@/page-sections/getting-started';
 const features = [
   {
     title: 'Ready out-of-the-box',
-    text: 'The things you need are already there: dragging nodes, zooming, planning, selecting multiple nodes, and adding/removing edges are all built-in.',
+    text: 'The things you need are already there: dragging nodes, zooming, panning, selecting multiple nodes, and adding/removing edges are all built-in.',
     route: '/svelte-flow/docs',
   },
   {

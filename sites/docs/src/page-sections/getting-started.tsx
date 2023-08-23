@@ -6,7 +6,7 @@ import useXYSite from '@/hooks/use-xy-site';
 
 function AppWindow({ children }: { children: ReactNode }) {
   return (
-    <div className="border border-solid border-gray-600 rounded-md max-w-3xl mx-auto">
+    <div className="border border-solid border-gray-600 rounded-md max-w-3xl mx-auto bg-black">
       <div className="flex p-4">
         <div className="w-3 h-3 bg-red-500 rounded-full mr-2" />
         <div className="w-3 h-3 bg-yellow-500 rounded-full mr-2" />
