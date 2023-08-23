@@ -19,6 +19,9 @@ export default function OpenSource() {
       />
 
       <Section className="max-w-screen-md mx-auto">
+        <Heading as="h2" size="sm" className="mb-4 lg:mt-14">
+          Open source since the beginning
+        </Heading>
         <Text className="text-lg leading-8">
           We decided to open source the React Flow library in 2019. We started
           seeing our first users, receiving lots of bug reports and
@@ -31,7 +34,7 @@ export default function OpenSource() {
         </Text>
 
         <Heading as="h2" size="sm" className="mb-4 lg:mt-14">
-          MIT License
+          We’ll keep our software MIT Licensed forever.
         </Heading>
         <Text className="text-lg leading-8 mb-4">
           We chose the MIT License because we believe in Free and Open Source
@@ -48,7 +51,7 @@ export default function OpenSource() {
         </Link>
 
         <Heading as="h2" size="sm" className="mb-4 lg:mt-14">
-          Funding
+          How we fund our work
         </Heading>
         <Text className="text-lg leading-8">
           We need funding to pay for the time it takes to care for xyFlow and
@@ -78,7 +81,7 @@ export default function OpenSource() {
           Read about xyflow is funded
         </Link>
         <Heading as="h2" size="sm" className="mb-4 lg:mt-14">
-          Open Source Ecosystem
+          Supporting the open source ecosystem
         </Heading>
         <Text className="text-lg leading-8 mb-4">
           We give back to the Open Source projects that we use ourselves on{' '}
@@ -97,8 +100,8 @@ export default function OpenSource() {
         <Text className="text-lg leading-8 mb-4">
           We offer free access to our Pro examples to non-commercial open source
           projects and students who use xyFlow. If this is you, send us an email
-          to info@xyflow.dev from your student email or with a link to your open
-          source project repository.
+          to info@xyflow.dev from your student email, or send us a link to your
+          open source project repository.
         </Text>
       </Section>
     </BaseLayout>
