@@ -12,6 +12,8 @@
 
   import DebugNode from './DebugNode.svelte';
 
+  import '@xyflow/svelte/dist/style.css';
+
   const nodeTypes: NodeTypes = {
     default: DebugNode,
   };
