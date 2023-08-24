@@ -26,7 +26,7 @@ export default function CaseStudyLayout({ children }: { children: ReactNode }) {
         width={frontMatter.image_width}
         height={frontMatter.image_height}
         alt={`${frontMatter.title} screenshot`}
-        className="shadow-md mx-auto my-14 rounded-md border border-solid border-gray-100"
+        className="shadow-md mx-auto mb-14 mt-10 rounded-md border border-solid border-gray-100 lg:max-w-4xl"
       />
 
       <div className="max-w-3xl mx-auto">{children}</div>
