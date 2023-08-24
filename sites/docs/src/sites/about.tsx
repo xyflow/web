@@ -3,9 +3,12 @@ import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 import Link from 'next/link';
 
 import { Heading, Text, Button } from 'xy-ui';
+import Image from 'next/image';
+
 import BaseLayout from '@/layouts/base';
 import Hero from '@/page-sections/hero';
 import Section from '@/page-sections/section';
+import aboutUsImage from '@/../public/img/aboutus-team.png';
 
 import ContentGrid, { ContentGridItem } from '@/components/content-grid';
 
@@ -20,6 +23,12 @@ export default function About() {
       />
 
       <Section className="max-w-screen-md mx-auto mt-12 lg:my-12">
+        <Image
+          src={aboutUsImage}
+          alt="A picture of Christopher, Hayleigh, John, and Moritz"
+          placeholder="blur"
+          className="mx-auto lg:max-w-[544px] mt-2"
+        ></Image>
         <Text className="text-lg leading-8 mb-8">
           Since 2014, Moritz and Christopher have been creating infographics,
           tools, and projects together through their interactive news agency, 
@@ -53,15 +62,14 @@ export default function About() {
         </Text>
       </Section>
 
-      <div className="flex justify-center mt-16 lg:mt-20">
+      <div className="flex justify-center mt-16 lg:mt-32">
         <div className="max-w-3xl w-full">
           <div className="flex justify-center items-center mb-2">
             <UserGroupIcon className="w-8 h-8" />
           </div>
-          <div className="text-center text-3xl font-bold">Meet the team</div>
-
+          <Heading className="text-center">Meet the team</Heading>
           <div className="text-center text-light text-lg mt-2">
-            Christopher, Hayleigh, John, and Moritz
+            Who's driving this thing?
           </div>
         </div>
       </div>
