@@ -30,10 +30,12 @@ export default function Feature({
   title,
   text,
   route,
+  flowComponent: FlowComponent = () => null,
 }: {
   index: number;
   featureCount: number;
   variant?: 'react' | 'svelte' | 'xyflow';
+  flowComponent?: React.ComponentType;
 } & FeatureProps) {
   const sourceHandleId = `source-${index}`;
   const nextTargetHandleId = `target-${index + 1}`;
@@ -65,7 +67,9 @@ export default function Feature({
       </div>
       <div className={index % 2 === 0 ? order2Class : order1Class}>
         <Container className="relative">
-          <div className="h-[400px] p-6 bg-gradient-to-br from-white to-gray-50 rounded-3xl"></div>
+          <div className="h-[400px] overflow-hidden bg-gradient-to-br from-white to-gray-50 rounded-3xl">
+            <FlowComponent />
+          </div>
 
           {index > 0 && (
             <Handle

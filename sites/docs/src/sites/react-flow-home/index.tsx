@@ -13,26 +13,28 @@ import Section from '@/page-sections/section';
 import GettingStarted from '@/page-sections/getting-started';
 import ClientLogos from '@/components/client-logos';
 
+import FlowA from './flows/flow-a';
+import FlowB from './flows/flow-b';
+import FlowC from './flows/flow-c';
+
 const features = [
   {
     title: 'Ready out-of-the-box',
     text: 'The things you need are already there: dragging nodes, zooming, panning, selecting multiple nodes, and adding/removing elements are all built-in.',
     route: '/react-flow/docs',
+    flowComponent: FlowA,
   },
   {
     title: 'Powered by us. Designed by you.',
     text: 'React Flow nodes are simply React components, ready for your interactive elements. We play nice with Tailwind and plain old CSS.',
     route: '/react-flow/docs',
-  },
-  {
-    title: 'Ready for business',
-    text: 'Build with confidence. React Flow is written entirely in TypeScript. A comprehensive suite of Cypress tests helps us never miss a bug.',
-    route: '/react-flow/docs',
+    flowComponent: FlowB,
   },
   {
     title: 'All the right plugins',
     text: 'Make more advanced apps. Background, Minimap, Controls, Panel, Nodetoolbar, and Noderesizer.',
     route: '/react-flow/docs',
+    flowComponent: FlowC,
   },
 ];
 
