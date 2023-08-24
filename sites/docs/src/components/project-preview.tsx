@@ -5,6 +5,7 @@ import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 
 import { Heading, Text, Button } from 'xy-ui';
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
+import AuthorList from '@/components/authors-list';
 
 type ProjectPreviewProps = {
   image?: string | StaticImport;
@@ -12,6 +13,7 @@ type ProjectPreviewProps = {
   title: ReactNode;
   subtitle?: ReactNode;
   description: ReactNode;
+  authors?: string[];
   route?: string;
   linkLabel?: string;
   className?: string;
@@ -23,6 +25,7 @@ export default function ProjectPreview({
   title,
   subtitle,
   description,
+  authors,
   route,
   linkLabel = 'Read more',
   className,
@@ -60,7 +63,7 @@ export default function ProjectPreview({
           {kicker}
         </Text>
       )}
-      <Heading as="p" size="sm" className="mb-2 mt-1">
+      <Heading as="p" size="sm" className="mb-2 mt-1 lg:leading-snug">
         {title}
       </Heading>
       {subtitle && (
@@ -68,6 +71,7 @@ export default function ProjectPreview({
           {subtitle}
         </Text>
       )}
+      <AuthorList authors={authors} className="mt-6" />
       <Text className="leading-snug my-4">{description}</Text>
       <Button asChild variant="link">
         <LinkOrSpan className="flex items-center">

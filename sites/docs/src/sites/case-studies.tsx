@@ -11,7 +11,7 @@ export default function CaseStudies() {
     <BaseLayout>
       <Hero
         title="What Pro Subscribers build with React Flow"
-        subtitle="Check how our users build custom node-based apps like workflow editors and diagramming tools"
+        subtitle="See how our users build custom node-based apps like workflow editors and diagramming tools"
         kicker="Success Stories"
         kickerIcon={CheckCircleIcon}
         align="center"
@@ -24,6 +24,7 @@ export default function CaseStudies() {
                 image={page.frontMatter.image}
                 title={page.frontMatter?.title}
                 description={page.frontMatter?.description}
+                authors={page.frontMatter?.authors}
                 kicker={page.frontMatter?.client}
               />
             </ContentGridItem>
