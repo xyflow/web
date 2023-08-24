@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { Heading, Text, Button } from 'xy-ui';
 import BaseLayout from '@/layouts/base';
 import Hero from '@/page-sections/hero';
+import Section from '@/page-sections/section';
+
 import ContentGrid, { ContentGridItem } from '@/components/content-grid';
 
 export default function About() {
@@ -13,9 +15,43 @@ export default function About() {
       <Hero
         kicker="About Us"
         title="The story of xyflow"
-        subtitle="todo title"
+        subtitle="How we got here"
         align="center"
       />
+
+      <Section className="max-w-screen-md mx-auto mt-12 lg:my-12">
+        <Text className="text-lg leading-8 mb-8">
+          Since 2014, Moritz and Christopher have been creating infographics,
+          tools, and projects together through their interactive news agency, 
+          <Link href="https://webkid.io/" className="text-pink-500">
+            webkid
+          </Link>
+          . Along the way to creating 
+          <Link href="https://datablocks.pro/" className="text-pink-500">
+            Datablocks
+          </Link>{' '}
+          in 2019, they developed React Flow and decided to open-source it. More
+          and more people started using it, to the point they decided to work on
+          it full-time in 2021 to create a sustainable open-source project like
+          the many they had used.
+        </Text>
+        <Text className="text-lg leading-8 mb-8">
+          John and Hayleigh joined the team in 2022 and 2023 respectively to
+          help out with the many things that revolve around an open source
+          library. In 2023, we generalized the core of React Flow by porting the
+          library to Svelte. In order to keep all of our ducks in a row, we
+          created xyFlow to be the house where all of our project could live.
+          Now, here we are- happy maintainers of a couple of libraries we’re
+          proud of with wonderful communities behind them :)
+        </Text>
+        <Text className="text-lg leading-8 mb-8">
+          If you need anything, have an idea, or just want to say hi, we’re an
+          email away at info@xyflow.com.
+        </Text>
+        <Text className="text-lg leading-8">
+          ✌🏻 Christopher, Hayleigh, John, and Moritz
+        </Text>
+      </Section>
 
       <div className="flex justify-center mt-16 lg:mt-20">
         <div className="max-w-3xl w-full">
@@ -45,7 +81,7 @@ export default function About() {
         />
         <TeamCard
           name="John"
-          description="John works on all things un-code at xyFlow, which is a lot of writing and talking about where xyFlow is headed, how we get there, and open source in general. Before jumping into the world of open source, UX design and research were his bread and butter. Besides that, he likes looking at birds, playing music, and designing puzzles."
+          description="John works on all things un-code at xyflow, which is a lot of writing and talking about where xyflow is headed, how we get there, and open source in general. Before jumping into the world of open source, UX design and research were his bread and butter. Besides that, he likes looking at birds, playing music, and designing puzzles."
           twitter="johnrobbjr"
           github="johnrobbjr"
         />
