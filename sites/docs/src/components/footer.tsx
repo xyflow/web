@@ -60,11 +60,6 @@ export default function Footer() {
             A message from the team
           </Text>
           {router.pathname !== '/' && (
-            // <Image
-            //   src={aboutImage}
-            //   alt="xyflow team photo"
-            //   className="rounded-lg"
-            // />
             <div className="my-2 flex overflow-hidden">
               <img
                 className="inline-block h-12 w-12 rounded-full mx-1 "
