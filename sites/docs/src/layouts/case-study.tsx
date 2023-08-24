@@ -17,6 +17,14 @@ export default function CaseStudyLayout({ children }: { children: ReactNode }) {
         <Heading size="lg" className="mt-20">
           {frontMatter.title}
         </Heading>
+
+        <Image
+          src={frontMatter.intervieweeImage}
+          width={32}
+          height={32}
+          alt={`${frontMatter.interviewee} `}
+          className="rounded-full"
+        />
         <Text size="md" className="mt-4 lg:mt-6">
           {frontMatter.interviewee}
         </Text>

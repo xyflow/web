@@ -10,7 +10,7 @@ export default function CaseStudies() {
   return (
     <BaseLayout>
       <Hero
-        title="How Pro subscribers use React Flow to build"
+        title="What Pro Subscribers build with React Flow"
         subtitle="Check how our users build custom node-based apps like workflow editors and diagramming tools"
         kicker="Success Stories"
         kickerIcon={CheckCircleIcon}
