@@ -7,6 +7,7 @@ import { Button, Heading, Text } from 'xy-ui';
 import ContentGrid, { ContentGridItem } from '@/components/content-grid';
 import ProjectPreview from '@/components/project-preview';
 import { getPrevAndNextPagesByTitle } from '@/utils';
+import AuthorList from '@/components/authors-list';
 
 export default function CaseStudyLayout({ children }: { children: ReactNode }) {
   const { frontMatter } = useConfig();
@@ -17,17 +18,7 @@ export default function CaseStudyLayout({ children }: { children: ReactNode }) {
         <Heading size="lg" className="mt-20">
           {frontMatter.title}
         </Heading>
-
-        <Image
-          src={frontMatter.intervieweeImage}
-          width={32}
-          height={32}
-          alt={`${frontMatter.interviewee} `}
-          className="rounded-full"
-        />
-        <Text size="md" className="mt-4 lg:mt-6">
-          {frontMatter.interviewee}
-        </Text>
+        <AuthorList authors={frontMatter.authors} className="mt-10" />
       </div>
 
       <Image
