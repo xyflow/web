@@ -25,7 +25,13 @@ const features = [
     flowComponent: FlowA,
   },
   {
-    title: 'Powered by us. Designed by you.',
+    title: (
+      <>
+        Powered by us.
+        <br />
+        Designed by you.
+      </>
+    ),
     text: 'React Flow nodes are simply React components, ready for your interactive elements. We play nice with Tailwind and plain old CSS.',
     route: '/react-flow/docs',
     flowComponent: FlowB,

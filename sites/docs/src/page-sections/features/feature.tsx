@@ -3,6 +3,7 @@ import { Position } from '@xyflow/system';
 
 import { Heading, Text, Button, Container, cn } from 'xy-ui';
 import Handle from '@/components/handle';
+import { ReactNode } from 'react';
 
 const order1Class = 'order-1';
 const order2Class = 'order-2';
@@ -18,7 +19,7 @@ const zIndexClasses = {
 };
 
 export type FeatureProps = {
-  title: string;
+  title: ReactNode;
   text: string;
   route: string;
 };
@@ -56,10 +57,10 @@ export default function Feature({
         )}
       >
         <div>
-          <Heading size="md" className="font-bold">
+          <Heading size="md" className="font-bold mb-4">
             {title}
           </Heading>
-          <Text className="mb-4 mt-2">{text}</Text>
+          <Text className="mb-4 mt-2 text-gray-600">{text}</Text>
           <Button asChild>
             <Link href={route}>Read more</Link>
           </Button>
