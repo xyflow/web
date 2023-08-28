@@ -24,14 +24,16 @@ const edges = [
 ];
 
 const proOptions = { hideAttribution: true };
+const fitViewOptions = { padding: 0.4 };
 
 export default function Flow() {
   return (
     <ReactFlow
+      id="a"
       defaultNodes={nodes}
       defaultEdges={edges}
       fitView
-      id="a"
+      fitViewOptions={fitViewOptions}
       proOptions={proOptions}
       preventScrolling={false}
     >

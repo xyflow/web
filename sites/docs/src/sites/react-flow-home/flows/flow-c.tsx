@@ -94,16 +94,18 @@ const edges = [
 ];
 
 const proOptions = { hideAttribution: true };
+const fitViewOptions = { padding: 0.2 };
 const nodeColor = (node) => node.style.backgroundColor || '#eee';
 
 export default function Flow() {
   return (
     <ReactFlow
+      id="c"
+      className="home-flow-c"
       defaultNodes={nodes}
       defaultEdges={edges}
       fitView
-      className="home-flow-c"
-      id="c"
+      fitViewOptions={fitViewOptions}
       proOptions={proOptions}
       preventScrolling={false}
     >

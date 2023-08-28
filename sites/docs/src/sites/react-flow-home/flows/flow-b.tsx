@@ -99,13 +99,13 @@ function Flow() {
 
   return (
     <ReactFlow
+      id="b"
+      className="darkflow home-flow-b"
       defaultNodes={nodes}
       defaultEdges={edges}
       nodeTypes={nodeTypes}
       fitView
       fitViewOptions={fitViewOptions}
-      id="b"
-      className="darkflow home-flow-b"
       proOptions={proOptions}
       nodeOrigin={nodeOrigin}
       preventScrolling={false}
