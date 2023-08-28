@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import ReactFlow, {
-  Background,
   Controls,
   Handle,
   NodeOrigin,
@@ -19,13 +18,14 @@ import {
   SelectValue,
 } from 'xy-ui';
 
+import NodeWrapper from '@/components/node-wrapper';
+
 const nodes = [
   {
     id: '1',
     type: 'creator',
     data: { label: 'Hello' },
     position: { x: 0, y: 0 },
-    className: 'bg-slate-800 rounded-md',
   },
 ];
 
@@ -46,7 +46,9 @@ function CreatorNode() {
         data: { label: name.value },
         position: { x: 0, y: 250 },
         className:
-          shape.value === 'circle' ? 'rounded-full h-[100px] w-[100px]' : '',
+          shape.value === 'circle'
+            ? 'font-mono rounded-full h-[100px] w-[100px]'
+            : 'font-mono',
       },
     ]);
 
@@ -54,37 +56,26 @@ function CreatorNode() {
   };
 
   return (
-    <>
-      <div className="p-4 rounded-md text-white border border-slate-400">
-        <div className="font-bold text-center mb-2">Node Creator</div>
-        <form onSubmit={onSubmit}>
-          <label className="text-xs block">Name</label>
-          <Input
-            name="name"
-            type="text"
-            className="rounded-sm text-black"
-            required
-          />
-          <label className="mt-2 text-xs block">Shape</label>
-          <Select name="shape" value={shapeValue} onValueChange={setShapeValue}>
-            <SelectTrigger className="rounded-sm">
-              <SelectValue placeholder="Rectangle" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="rectangle">Rectangle</SelectItem>
-              <SelectItem value="circle">Circle</SelectItem>
-            </SelectContent>
-          </Select>
-          <button
-            type="submit"
-            className="block w-full mt-4 font-bold py-2 rounded-sm !bg-slate-600 text-white px-4"
-          >
-            Add
-          </button>
-        </form>
-      </div>
+    <NodeWrapper title="Node Creator">
+      <form onSubmit={onSubmit}>
+        <label>Name</label>
+        <Input name="name" type="text" required />
+        <label className="mt-2">Shape</label>
+        <Select name="shape" value={shapeValue} onValueChange={setShapeValue}>
+          <SelectTrigger className="rounded-sm text-xs font-mono border border-[#3C3C3C] !bg-[#323232] text-[#AFAFAF]">
+            <SelectValue placeholder="Rectangle" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="rectangle">Rectangle</SelectItem>
+            <SelectItem value="circle">Circle</SelectItem>
+          </SelectContent>
+        </Select>
+        <button type="submit" className="mt-4">
+          Add
+        </button>
+      </form>
       <Handle type="source" position={Position.Bottom} />
-    </>
+    </NodeWrapper>
   );
 }
 
@@ -94,7 +85,7 @@ const nodeTypes = {
 
 const proOptions = { hideAttribution: true };
 const nodeOrigin: NodeOrigin = [0.5, 0.5];
-const fitViewOptions = { padding: 0.2 };
+const fitViewOptions = { padding: 0.5 };
 
 function Flow() {
   const nodesInitialized = useNodesInitialized();
@@ -114,11 +105,16 @@ function Flow() {
       fitView
       fitViewOptions={fitViewOptions}
       id="b"
-      className="bg-slate-950"
+      className="darkflow home-flow-b"
       proOptions={proOptions}
       nodeOrigin={nodeOrigin}
+      preventScrolling={false}
     >
-      <Background />
+      <Controls
+        position="top-right"
+        showInteractive={false}
+        showFitView={false}
+      />
     </ReactFlow>
   );
 }

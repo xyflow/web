@@ -33,6 +33,7 @@ export default function Flow() {
       fitView
       id="a"
       proOptions={proOptions}
+      preventScrolling={false}
     >
       <Background />
       <Controls showInteractive={false} />

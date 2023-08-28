@@ -1,5 +1,6 @@
 import ReactFlow, {
   Background,
+  BackgroundVariant,
   Controls,
   MiniMap,
   Node,
@@ -13,12 +14,12 @@ const defaultNodeOptions = {
 
 const nodes: Node[] = [
   {
-    id: '1',
+    id: 'a',
     type: 'input',
     data: { label: 'A' },
     position: { x: 0, y: 0 },
     style: {
-      width: 80,
+      width: 50,
       backgroundColor: '#0050ff',
       borderColor: 'white',
       color: 'white',
@@ -28,11 +29,11 @@ const nodes: Node[] = [
     ...defaultNodeOptions,
   },
   {
-    id: '2',
+    id: 'b',
     data: { label: 'B' },
-    position: { x: 150, y: -100 },
+    position: { x: 150, y: -50 },
     style: {
-      width: 80,
+      width: 50,
       backgroundColor: '#a845d0',
       borderColor: 'white',
       color: 'white',
@@ -42,11 +43,25 @@ const nodes: Node[] = [
     ...defaultNodeOptions,
   },
   {
-    id: '3',
+    id: 'c',
     data: { label: 'C' },
+    position: { x: 150, y: 50 },
+    style: {
+      width: 50,
+      backgroundColor: '#a845d0',
+      borderColor: 'white',
+      color: 'white',
+      fontWeight: 'bold',
+      textTransform: 'uppercase',
+    },
+    ...defaultNodeOptions,
+  },
+  {
+    id: 'd',
+    data: { label: 'D' },
     position: { x: 300, y: 0 },
     style: {
-      width: 80,
+      width: 50,
       backgroundColor: '#ff2e8b',
       borderColor: 'white',
       color: 'white',
@@ -59,20 +74,27 @@ const nodes: Node[] = [
 
 const edges = [
   {
-    id: 'e1-2',
-    source: '1',
-    target: '2',
+    id: 'a-b',
+    source: 'a',
+    target: 'b',
     type: 'smoothstep',
   },
   {
-    id: 'e2-3',
-    source: '2',
-    target: '3',
+    id: 'a-c',
+    source: 'a',
+    target: 'c',
+    type: 'smoothstep',
+  },
+  {
+    id: 'b-d',
+    source: 'b',
+    target: 'd',
     type: 'smoothstep',
   },
 ];
 
 const proOptions = { hideAttribution: true };
+const nodeColor = (node) => node.style.backgroundColor || '#eee';
 
 export default function Flow() {
   return (
@@ -80,12 +102,27 @@ export default function Flow() {
       defaultNodes={nodes}
       defaultEdges={edges}
       fitView
+      className="home-flow-c"
       id="c"
       proOptions={proOptions}
+      preventScrolling={false}
     >
-      <Background />
+      <Background
+        id="b-1"
+        variant={BackgroundVariant.Lines}
+        gap={10}
+        lineWidth={1}
+        color="#f2f2f2"
+      />
+      <Background
+        id="b-2"
+        variant={BackgroundVariant.Lines}
+        gap={100}
+        lineWidth={2}
+        color="#eee"
+      />
       <Controls showInteractive={false} />
-      <MiniMap style={{ height: 100 }} />
+      <MiniMap style={{ height: 100 }} nodeColor={nodeColor} />
     </ReactFlow>
   );
 }
