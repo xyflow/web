@@ -27,7 +27,7 @@ export function getPrevAndNextPagesByTitle(title, route: string) {
 }
 
 const colors = {
-  react: '#ff0073',
+  react: '#ff0072',
   svelte: '#ff4000',
   xyflow: '#000',
 };

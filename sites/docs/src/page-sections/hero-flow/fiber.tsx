@@ -1,6 +1,5 @@
 import { Suspense, useEffect, useRef, useMemo } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { Tetrahedron, Box, MeshWobbleMaterial } from '@react-three/drei';
 
 const randomVector = (r) => [
   r / 2 - Math.random() * r,
@@ -29,12 +28,15 @@ function Shape({ type, random, color, ...props }) {
     }
   });
 
-  const ShapeComponent = type === 'cube' ? Box : Tetrahedron;
-
   return (
-    <ShapeComponent ref={ref} args={[1]} {...props}>
-      <MeshWobbleMaterial color={color} />
-    </ShapeComponent>
+    <mesh {...props} ref={ref}>
+      {type === 'cube' ? (
+        <boxGeometry args={[1, 1, 1]} />
+      ) : (
+        <tetrahedronGeometry args={[1, 0]} />
+      )}
+      <meshLambertMaterial color={color} />
+    </mesh>
   );
 }
 
@@ -63,8 +65,9 @@ export default function App({ color, zoom, shape, count = 150 }) {
     <div>
       <Canvas resize={canvasResize} dpr={2}>
         <Cam zoom={zoom} />
-        <ambientLight intensity={0.5} />
-        <directionalLight intensity={1} position={[0, 25, 20]} />
+        <ambientLight intensity={1} />
+        <directionalLight intensity={3} position={[0, 0, 100]} />
+
         <Suspense fallback={null}>
           {randomData.map((props, i) => (
             <Shape key={i} {...props} color={color} type={shape} />

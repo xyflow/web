@@ -82,7 +82,7 @@ export default function Navbar(props) {
 }
 
 export function NavBarAdditional() {
-  const { site, isOrg } = useXYSite();
+  const { site } = useXYSite();
   const { pathname } = useRouter();
 
   const isReactProPage = pathname === '/react-flow/pro';
@@ -95,21 +95,26 @@ export function NavBarAdditional() {
     );
   }
 
-  const link =
-    site === 'react' || isOrg
-      ? PRO_PLATFORM_OR_REACT_PRO_URL
-      : `/svelte-flow/support-us`;
-  const label =
-    site === 'react' || isOrg ? (
-      <>
-        <SparklesIcon className="w-5 h-5 mr-1" /> React Flow Pro
-      </>
-    ) : (
-      'Support Us'
-    );
+  // for now we also want to display the React Flow Pro button on the xyflow site
+  const isReactOrXyFlow = site === 'react' || site === 'xyflow';
+  const link = isReactOrXyFlow
+    ? PRO_PLATFORM_OR_REACT_PRO_URL
+    : `/svelte-flow/support-us`;
+  const label = isReactOrXyFlow ? (
+    <>
+      <SparklesIcon className="w-5 h-5 mr-1" /> React Flow Pro
+    </>
+  ) : (
+    'Support Us'
+  );
 
   return (
-    <Button asChild variant={site} size="sm" className="px-4 font-black">
+    <Button
+      asChild
+      variant={isReactOrXyFlow ? 'react' : site}
+      size="sm"
+      className="px-4 font-black"
+    >
       <Link href={link}>{label}</Link>
     </Button>
   );

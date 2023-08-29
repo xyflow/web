@@ -60,7 +60,9 @@ export default function Feature({
           <Heading size="md" className="font-bold mb-4">
             {title}
           </Heading>
-          <Text className="mb-4 mt-2 text-gray-600">{text}</Text>
+          <Text className="mb-8 mt-2" variant="light">
+            {text}
+          </Text>
           <Button asChild>
             <Link href={route}>Read more</Link>
           </Button>
