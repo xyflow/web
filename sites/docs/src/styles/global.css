@@ -4,6 +4,8 @@
 
 @import 'reactflow/dist/style.css';
 
+@import './docsearch.css';
+
 .sidebar-title.pro:after {
   content: 'Pro';
   display: inline-block;
@@ -85,30 +87,6 @@ main .max-w-\[90rem\] {
 
 .svelte-pro:hover:before {
   --gradientAngle: 45deg;
-}
-
-.nextra-nav-container .DocSearch-Button {
-  background: #eee;
-  margin-left: 0;
-}
-
-.nextra-nav-container .DocSearch-Button .DocSearch-Search-Icon {
-  width: 16px;
-  height: 16px;
-}
-
-.DocSearch-Button .DocSearch-Button-Keys {
-  font-size: 12px;
-}
-
-.DocSearch-Button .DocSearch-Button-Placeholder {
-  font-size: 14px;
-}
-
-.DocSearch-Input:focus,
-.DocSearch-Input:focus-visible {
-  outline: none;
-  box-shadow: none;
 }
 
 .react-flow__controls button {
