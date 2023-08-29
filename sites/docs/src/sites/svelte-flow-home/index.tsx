@@ -7,21 +7,34 @@ import Section from '@/page-sections/section';
 import Stats from '@/page-sections/stats';
 import GettingStarted from '@/page-sections/getting-started';
 
+import FlowA from './flows/flow-a';
+import FlowB from './flows/flow-b';
+import FlowC from './flows/flow-c';
+
 const features = [
   {
     title: 'Ready out-of-the-box',
     text: 'The things you need are already there: dragging nodes, zooming, panning, selecting multiple nodes, and adding/removing edges are all built-in.',
     route: '/svelte-flow/docs',
+    flowComponent: FlowA,
   },
   {
-    title: 'Powered by us. Designed by you.',
+    title: (
+      <>
+        Powered by us.
+        <br />
+        Designed by you.
+      </>
+    ),
     text: 'We play nice with Tailwind and old CSS. Svelte Flow nodes are just Svelte components. Create custom nodes to add interactive controls.',
     route: '/svelte-flow/docs',
+    flowComponent: FlowB,
   },
   {
-    title: 'Ready for business',
-    text: 'Build with confidence. Svelte Flow is written entirely in TypeScript. A comprehensive suite of Cypress tests helps us never miss a bug.',
+    title: 'All the right plugins',
+    text: 'Make more advanced apps with the Background, Minimap, Controls, Panel, NodeToolbar, and NodeResizer components.',
     route: '/svelte-flow/docs',
+    flowComponent: FlowC,
   },
 ];
 

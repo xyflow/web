@@ -38,7 +38,7 @@ const features = [
   },
   {
     title: 'All the right plugins',
-    text: 'Make more advanced apps. Background, Minimap, Controls, Panel, Nodetoolbar, and Noderesizer.',
+    text: 'Make more advanced apps with the Background, Minimap, Controls, Panel, NodeToolbar, and NodeResizer components.',
     route: '/react-flow/docs',
     flowComponent: FlowC,
   },
