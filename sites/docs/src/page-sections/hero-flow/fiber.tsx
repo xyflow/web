@@ -65,8 +65,8 @@ export default function App({ color, zoom, shape, count = 150 }) {
     <div>
       <Canvas resize={canvasResize} dpr={2}>
         <Cam zoom={zoom} />
-        <ambientLight intensity={1} />
-        <directionalLight intensity={3} position={[0, 0, 100]} />
+        <ambientLight />
+        <directionalLight position={[0, 0, 100]} />
 
         <Suspense fallback={null}>
           {randomData.map((props, i) => (
