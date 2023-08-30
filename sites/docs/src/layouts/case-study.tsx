@@ -24,10 +24,7 @@ export default function CaseStudyLayout({ children }: { children: ReactNode }) {
           <ChevronRightIcon className="h-5 w-5 mb-0.5 text-gray-500" />
           <Text className="ml-1 text-md font-medium">{frontMatter.client}</Text>
         </div>
-        <Heading
-          size="lg"
-          className="mt-8 !leading-tight text-gray-900 text-[64px]"
-        >
+        <Heading size="lg" className="mt-8 !leading-tight text-gray-900 ">
           {frontMatter.title}
         </Heading>
         <AuthorList authors={frontMatter.authors} className="mt-6" />
