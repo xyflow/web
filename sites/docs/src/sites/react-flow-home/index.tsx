@@ -126,13 +126,19 @@ export default function ReactFlowHome() {
       <Section className="lg:flex place-content-between">
         <div>
           <Heading size="md" className="font-bold">
-            Some headline thing
+            Come build with us
           </Heading>
           <Text className="mt-2 mb-4">
-            Here is a text about ethical standards and stuff
+            Join our community of creators who are building things with React
+            Flow. Besides just building things, that means being kind to one
+            another and following our code of conduct. Black lives matter. Trans
+            rights are human rights. No nazi bullsh*t.
           </Text>
-          <Button asChild>
-            <Link href="/">Not sure</Link>
+          <Button asChild className="mr-4">
+            <Link href="/">Join our Discord</Link>
+          </Button>
+          <Button asChild variant="outline">
+            <Link href="/">Read our Code of Conduct</Link>
           </Button>
         </div>
         <div className="grid grid-cols-2 mt-10 lg:mt-0">
