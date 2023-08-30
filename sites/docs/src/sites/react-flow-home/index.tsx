@@ -84,7 +84,12 @@ const showcases = [
 ];
 
 export default function ReactFlowHome() {
-  const { stars = 16000, downloads = 4000 } = useSSG();
+  const {
+    stars = 16000,
+    downloads = 4000,
+    usedBy = -1,
+    contributors = -1,
+  } = useSSG();
 
   return (
     <BaseLayout>
@@ -124,15 +129,16 @@ export default function ReactFlowHome() {
       <Showcase items={showcases} />
 
       <Section className="lg:flex place-content-between">
-        <div>
-          <Heading size="md" className="font-bold">
+        <div className="lg:max-w-2xl">
+          <Heading size="md" className="font-bold mb-6">
             Come build with us
           </Heading>
-          <Text className="mt-2 mb-4">
-            Join our community of creators who are building things with React
-            Flow. Besides just building things, that means being kind to one
-            another and following our code of conduct. Black lives matter. Trans
-            rights are human rights. No nazi bullsh*t.
+          <Text className="mt-2 mb-8 text-xl leading-relaxed">
+            As a community, we want to be friendly too. People from around the
+            world, of all backgrounds, genders, and experience levels are
+            welcome and respected equally. See our community code of conduct for
+            more. Black lives matter. Trans rights are human rights. No nazi
+            bullsh*t.
           </Text>
           <Button asChild className="mr-4">
             <Link href="/">Join our Discord</Link>
@@ -141,20 +147,23 @@ export default function ReactFlowHome() {
             <Link href="/">Read our Code of Conduct</Link>
           </Button>
         </div>
-        <div className="grid grid-cols-2 mt-10 lg:mt-0">
+        <div className="grid grid-cols-2 mt-10 lg:mt-0 ">
           {[
-            { label: 'Github Stars', value: `${(stars / 1000).toFixed(1)}k` },
+            {
+              label: 'Used By',
+              value: `${(usedBy / 1000).toFixed(1)}k`,
+            },
             {
               label: 'Weekly Installs',
               value: `${(downloads / 1000).toFixed(0)}k`,
             },
-            { label: 'License', value: 'MIT' },
-            { label: 'License', value: 'MITs' },
+            { label: 'Contributors', value: `${contributors}` },
+            { label: 'Haters', value: '0' },
           ].map((s) => (
             <StatsDisplay
               key={`${s.label}-${s.value}`}
               variant="react"
-              className="mb-6 lg:ml-20"
+              className="mb-6 lg:ml-20 !text-left"
               {...s}
             />
           ))}
