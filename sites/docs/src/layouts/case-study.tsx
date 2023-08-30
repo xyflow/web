@@ -4,6 +4,8 @@ import Image from 'next/image';
 import { useConfig } from 'nextra-theme-docs';
 
 import { Button, Heading, Text } from 'xy-ui';
+import { ChevronRightIcon } from '@heroicons/react/20/solid';
+
 import ContentGrid, { ContentGridItem } from '@/components/content-grid';
 import ProjectPreview from '@/components/project-preview';
 import { getPrevAndNextPagesByTitle } from '@/utils';
@@ -15,7 +17,14 @@ export default function CaseStudyLayout({ children }: { children: ReactNode }) {
   return (
     <>
       <div className="max-w-3xl mx-auto">
-        <Heading size="lg" className="mt-20">
+        <div className="flex mt-8 items-end">
+          <Link href="." className="mr-1 text-md text-gray-500 font-normal">
+            Case Studies
+          </Link>
+          <ChevronRightIcon className="h-5 w-5 mb-0.5 text-gray-500" />
+          <Text className="ml-1 text-md font-medium">{frontMatter.client}</Text>
+        </div>
+        <Heading size="lg" className="mt-16">
           {frontMatter.title}
         </Heading>
         <AuthorList authors={frontMatter.authors} className="mt-10" />
