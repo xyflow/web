@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 
-import { Heading, Text, Button } from 'xy-ui';
+import { Heading, Text, Button, Container } from 'xy-ui';
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 import AuthorList from '@/components/authors-list';
 
@@ -49,15 +49,19 @@ export default function ProjectPreview({
   return (
     <div className={className}>
       {image && (
-        <div className="aspect-video relative shadow-md mb-6 rounded-md border border-solid border-gray-100 overflow-hidden">
-          <Image
-            src={image}
-            alt={`${title} screenshot`}
-            className="object-cover"
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 600px, 600px"
-          />
-        </div>
+        <Container className="mx-auto">
+          <div className="overflow-hidden bg-gradient-to-br from-white to-gray-50 rounded-3xl">
+            <div className="aspect-video relative shadow-md mb-6 rounded-md border border-solid border-gray-100 overflow-hidden">
+              <Image
+                src={image}
+                alt={`${title} screenshot`}
+                className="object-cover"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 600px, 600px"
+              />
+            </div>
+          </div>
+        </Container>
       )}
       {kicker && (
         <Text size="sm" variant="light">

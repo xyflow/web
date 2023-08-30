@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useConfig } from 'nextra-theme-docs';
 
-import { Button, Heading, Text } from 'xy-ui';
+import { Button, Heading, Text, Container } from 'xy-ui';
 import { ChevronRightIcon } from '@heroicons/react/20/solid';
 
 import ContentGrid, { ContentGridItem } from '@/components/content-grid';
@@ -29,14 +29,18 @@ export default function CaseStudyLayout({ children }: { children: ReactNode }) {
         </Heading>
         <AuthorList authors={frontMatter.authors} className="mt-6" />
       </div>
-
-      <Image
-        src={frontMatter.image}
-        width={frontMatter.image_width}
-        height={frontMatter.image_height}
-        alt={`${frontMatter.title} screenshot`}
-        className="shadow-md mx-auto mb-14 mt-10 rounded-md border border-solid border-gray-100 lg:max-w-4xl"
-      />
+      {/* I want the container to inherit the width of its children */}
+      <Container className="mx-auto">
+        <div className="overflow-hidden bg-gradient-to-br from-white to-gray-50 rounded-3xl">
+          <Image
+            src={frontMatter.image}
+            width={frontMatter.image_width}
+            height={frontMatter.image_height}
+            alt={`${frontMatter.title} screenshot`}
+            className="rounded-md border border-solid border-gray-100 lg:max-w-4xl"
+          />
+        </div>
+      </Container>
 
       <div className="max-w-3xl mx-auto">{children}</div>
 
