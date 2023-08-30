@@ -2,10 +2,11 @@ import { type CSSProperties } from 'react';
 import { Handle, HandleType, Position } from 'reactflow';
 
 const defaultStyle = {
-  width: 10,
-  height: 10,
+  width: 7,
+  height: 14,
   backgroundColor: '#BDC4CC',
   border: 'none',
+  borderRadius: 23,
 };
 
 type HandleComponentProps = {

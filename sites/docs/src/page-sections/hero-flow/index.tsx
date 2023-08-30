@@ -8,8 +8,6 @@ import Flow from './flow';
 import { Framework } from '@/types';
 import { PRO_PLATFORM_OR_REACT_PRO_URL } from '@/constants';
 
-console.log(PRO_PLATFORM_OR_REACT_PRO_URL);
-
 const subtitle = {
   react:
     'A customizable React component for building node-based editors and interactive diagrams',

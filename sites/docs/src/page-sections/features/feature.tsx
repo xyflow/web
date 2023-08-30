@@ -3,6 +3,7 @@ import { Position } from '@xyflow/system';
 
 import { Heading, Text, Button, Container, cn } from 'xy-ui';
 import Handle from '@/components/handle';
+import { ReactNode } from 'react';
 
 const order1Class = 'order-1';
 const order2Class = 'order-2';
@@ -18,7 +19,7 @@ const zIndexClasses = {
 };
 
 export type FeatureProps = {
-  title: string;
+  title: ReactNode;
   text: string;
   route: string;
 };
@@ -30,10 +31,12 @@ export default function Feature({
   title,
   text,
   route,
+  flowComponent: FlowComponent = () => null,
 }: {
   index: number;
   featureCount: number;
   variant?: 'react' | 'svelte' | 'xyflow';
+  flowComponent?: React.ComponentType;
 } & FeatureProps) {
   const sourceHandleId = `source-${index}`;
   const nextTargetHandleId = `target-${index + 1}`;
@@ -54,10 +57,12 @@ export default function Feature({
         )}
       >
         <div>
-          <Heading size="md" className="font-bold">
+          <Heading size="md" className="font-bold mb-4">
             {title}
           </Heading>
-          <Text className="mb-4 mt-2">{text}</Text>
+          <Text className="mb-8 mt-2" variant="light">
+            {text}
+          </Text>
           <Button asChild>
             <Link href={route}>Read more</Link>
           </Button>
@@ -65,7 +70,9 @@ export default function Feature({
       </div>
       <div className={index % 2 === 0 ? order2Class : order1Class}>
         <Container className="relative">
-          <div className="h-[400px] p-6 bg-gradient-to-br from-white to-gray-50 rounded-3xl"></div>
+          <div className="h-[400px] overflow-hidden bg-gradient-to-br from-white to-gray-50 rounded-3xl">
+            <FlowComponent />
+          </div>
 
           {index > 0 && (
             <Handle

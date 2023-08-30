@@ -1,10 +1,10 @@
-import { type CSSProperties } from 'react';
+import { CSSProperties, useEffect, useRef } from 'react';
+import { useRouter } from 'next/router';
 import localFont from 'next/font/local';
 import { Fira_Mono } from 'next/font/google';
 
-import useXYSite from '@/hooks/use-xy-site';
-
 import 'styles/global.css';
+import useXYSite from '@/hooks/use-xy-site';
 
 const ntDapperFont = localFont({
   src: [
@@ -22,21 +22,51 @@ const firaMonoFont = Fira_Mono({
   variable: '--font-firamono',
 });
 
+const className = `${ntDapperFont.variable} ${firaMonoFont.variable} font-sans`;
+
+// @todo this doesn't work because it's not flexible enough
 const hueValuesBySite = {
   xyflow: 220,
   react: 330,
   svelte: 30,
 };
 
-const className = `${ntDapperFont.variable} ${firaMonoFont.variable} font-sans`;
-
 export default function App({ Component, pageProps }) {
-  const { site } = useXYSite();
+  const { site, getSiteByPathname } = useXYSite();
+  const router = useRouter();
+  let prevSite = useRef(null);
+
+  useEffect(() => {
+    const handleRouteChange = (url) => {
+      const nextSite = getSiteByPathname(url);
+      // we are adding a "react", "svelte" class to the body to be able to style
+      // the docsearch modal based on the current site
+      document.body.classList.remove(prevSite.current);
+      document.body.classList.add(nextSite);
+
+      prevSite.current = nextSite;
+    };
+
+    router.events.on('routeChangeStart', handleRouteChange);
+
+    handleRouteChange(router.pathname);
+
+    return () => {
+      router.events.off('routeChangeStart', handleRouteChange);
+    };
+  }, [router]);
 
   return (
     <main
       className={className}
-      style={{ '--nextra-primary-hue': hueValuesBySite[site] } as CSSProperties}
+      style={
+        {
+          '--nextra-primary-hue': hueValuesBySite[site],
+          '--docsearch-primary-color': `hsl(var(--color-${site}))`,
+          '--docsearch-highlight-color': `hsl(var(--color-${site}))`,
+          '--docsearch-searchbox-shadow': `inset 0 0 0 2px hsl(var(--color-${site}))`,
+        } as CSSProperties
+      }
     >
       <Component {...pageProps} />
     </main>

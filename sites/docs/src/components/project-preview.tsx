@@ -53,8 +53,9 @@ export default function ProjectPreview({
           <Image
             src={image}
             alt={`${title} screenshot`}
-            layout="fill"
-            objectFit="cover"
+            className="object-cover"
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 600px, 600px"
           />
         </div>
       )}

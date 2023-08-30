@@ -8,6 +8,8 @@
     MarkerType,
   } from '@xyflow/svelte';
 
+  import '@xyflow/svelte/dist/style.css';
+
   const nodes = writable([
     {
       id: '1',

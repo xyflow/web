@@ -6,9 +6,9 @@ import { cn } from '../../lib/utils';
 const headingSizes = cva('font-bold leading-snug tracking-[-0.02rem]', {
   variants: {
     size: {
-      default: 'text-5xl lg:text-6xl font-black leading-relaxed',
-      sm: 'text-2xl lg:text-3xl/relaxed',
-      md: 'text-4xl lg:text-5xl/relaxed',
+      default: 'text-5xl lg:text-6xl font-black leading',
+      sm: 'text-2xl lg:text-3xl',
+      md: 'text-4xl lg:text-5xl',
       lg: 'text-5xl lg:text-6xl font-black',
       xl: 'text-6xl md:text-8xl/normal lg:text-9xl/normal font-black',
     },

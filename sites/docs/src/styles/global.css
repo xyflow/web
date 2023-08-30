@@ -4,6 +4,8 @@
 
 @import 'reactflow/dist/style.css';
 
+@import './docsearch.css';
+
 .sidebar-title.pro:after {
   content: 'Pro';
   display: inline-block;
@@ -91,28 +93,130 @@ main .max-w-\[90rem\] {
   --gradientAngle: 45deg;
 }
 
-.nextra-nav-container .DocSearch-Button {
-  background: #eee;
-  margin-left: 0;
+.react-flow__controls button {
+  background: white;
 }
 
-.nextra-nav-container .DocSearch-Button .DocSearch-Search-Icon {
-  width: 16px;
-  height: 16px;
+.darkflow.react-flow {
+  background-color: #141414;
 }
 
-.DocSearch-Button .DocSearch-Button-Keys {
-  font-size: 12px;
+.lightflow .node-wrapper__title,
+.darkflow .node-wrapper__title {
+  @apply font-mono;
+  @apply text-xs;
+  @apply px-4;
+  @apply py-2;
+  @apply border-b;
+  @apply border-[#ededed];
 }
 
-.DocSearch-Button .DocSearch-Button-Placeholder {
-  font-size: 14px;
+.lightflow .node-wrapper label,
+.darkflow .node-wrapper label {
+  @apply text-xs;
+  @apply block;
+  @apply font-mono;
+  @apply text-[#555];
+  @apply mb-1;
 }
 
-.DocSearch-Input:focus,
-.DocSearch-Input:focus-visible {
-  outline: none;
-  box-shadow: none;
+.lightflow .node-wrapper input,
+.darkflow .node-wrapper input {
+  @apply rounded-sm;
+  @apply text-xs;
+  @apply font-mono;
+  @apply border-[#EDEDED];
+  @apply text-[#111];
+  @apply bg-[#ffffff];
+}
+
+.darkflow .node-wrapper input {
+  @apply border-[#3C3C3C];
+  @apply text-[#AFAFAF];
+  @apply bg-[#323232];
+}
+
+/* we don't want to style the radix select component */
+.lightflow .node-wrapper button:not([role='combobox']),
+.darkflow .node-wrapper button:not([role='combobox']) {
+  @apply block;
+  @apply font-mono;
+  @apply w-full;
+  @apply text-xs;
+  @apply rounded-md;
+  @apply text-white;
+  @apply py-2;
+  @apply px-4;
+  @apply bg-react;
+}
+
+.darkflow .node-wrapper label {
+  @apply text-[#AFAFAF];
+}
+
+.darkflow .node-wrapper__title {
+  @apply border-[#3C3C3C];
+}
+
+.darkflow .react-flow__node {
+  background-color: #1e1e1e;
+  color: white;
+  border: 1px solid #3c3c3c;
+  border-radius: 8px;
+}
+
+.lightflow .react-flow__node {
+  background-color: #fff;
+  color: #111;
+  border: 1px solid #ededed;
+}
+
+.lightflow .react-flow__handle,
+.darkflow .react-flow__handle {
+  width: 20px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #6e6e6e;
+  border: none;
+}
+
+.darkflow .react-flow__handle {
+  background-color: #bebebe;
+}
+
+.home-flow-b .react-flow__node {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-flow-b .react-flow__controls {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.home-flow-b .react-flow__controls-button {
+  border-bottom: 1px solid #555;
+  background: #323232;
+}
+
+.home-flow-b .react-flow__controls-button:hover {
+  background: #525252;
+}
+
+.home-flow-b .react-flow__controls-button:last-child {
+  border-bottom: none;
+}
+
+.home-flow-b .react-flow__controls svg {
+  fill: #afafaf;
+}
+
+.home-flow-c .react-flow__handle {
+  width: 7px;
+  height: 12px;
+  border-radius: 5px;
+  background-color: #ddd;
 }
 
 @media (max-width: 767px) {
@@ -165,7 +269,7 @@ main .max-w-\[90rem\] {
 
     --radius: 0.5rem;
 
-    --light: 0 0% 61%;
+    --light: 0 0% 46%;
   }
 }
 

@@ -13,6 +13,8 @@
   import CustomNode from './CustomNode.svelte';
   import CustomEdge from './CustomEdge.svelte';
 
+  import '@xyflow/svelte/dist/style.css';
+
   const nodeTypes = {
     custom: CustomNode,
   };

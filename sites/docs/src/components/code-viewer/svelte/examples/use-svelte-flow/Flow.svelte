@@ -10,6 +10,8 @@
 
   import Sidebar from './Sidebar.svelte';
 
+  import '@xyflow/svelte/dist/style.css';
+
   const nodes = writable([
     {
       id: '1',
