@@ -49,18 +49,17 @@ export default function ProjectPreview({
   return (
     <div className={className}>
       {image && (
-        <Container className="mx-auto">
-          <div className="overflow-hidden bg-gradient-to-br from-white to-gray-50 rounded-3xl">
-            <div className="aspect-video relative shadow-md mb-6 rounded-md border border-solid border-gray-100 overflow-hidden">
-              <Image
-                src={image}
-                alt={`${title} screenshot`}
-                className="object-cover"
-                fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 600px, 600px"
-              />
-            </div>
-          </div>
+        <Container
+          className="mx-auto aspect-video relative overflow-hidden bg-gray-50"
+          size="sm"
+        >
+          <Image
+            src={image}
+            alt={`${title} screenshot`}
+            className="object-cover"
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 600px, 600px"
+          />
         </Container>
       )}
       {kicker && (

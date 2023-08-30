@@ -30,16 +30,13 @@ export default function CaseStudyLayout({ children }: { children: ReactNode }) {
         <AuthorList authors={frontMatter.authors} className="mt-6" />
       </div>
       {/* I want the container to inherit the width of its children */}
-      <Container className="mx-auto">
-        <div className="overflow-hidden bg-gradient-to-br from-white to-gray-50 rounded-3xl">
-          <Image
-            src={frontMatter.image}
-            width={frontMatter.image_width}
-            height={frontMatter.image_height}
-            alt={`${frontMatter.title} screenshot`}
-            className="rounded-md border border-solid border-gray-100 lg:max-w-4xl"
-          />
-        </div>
+      <Container className="mx-auto mt-8 bg-gray-50">
+        <Image
+          src={frontMatter.image}
+          width={frontMatter.image_width}
+          height={frontMatter.image_height}
+          alt={`${frontMatter.title} screenshot`}
+        />
       </Container>
 
       <div className="max-w-3xl mx-auto">{children}</div>
