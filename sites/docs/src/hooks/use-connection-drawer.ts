@@ -11,12 +11,12 @@ export default function useConnectionDrawer() {
       if (ref.current) {
         const handlesVisible = window.innerWidth >= 900;
         const targetHandles = Array.from(
-          ref.current.querySelectorAll('.handle.target')
+          ref.current.querySelectorAll('.port.target')
         );
 
         // 1. collect all source handles
         const sourceHandles = Array.from(
-          ref.current.querySelectorAll('.handle.source')
+          ref.current.querySelectorAll('.port.source')
         );
 
         [...sourceHandles, ...targetHandles].forEach(
@@ -33,7 +33,7 @@ export default function useConnectionDrawer() {
         const handlePairs = sourceHandles.reduce((res, sourceHandle) => {
           const targetHandleId = sourceHandle.getAttribute('data-to');
           const targetHandle = ref.current.querySelector(
-            `[data-handleid="${targetHandleId}"`
+            `[data-portid="${targetHandleId}"`
           );
 
           if (sourceHandle && targetHandle) {

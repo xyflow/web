@@ -32,11 +32,11 @@ export default function Handle({
 }) {
   return (
     <div
-      data-handleid={id}
+      data-portid={id}
       data-position={position}
       data-to={to}
       className={cn(
-        'handle absolute',
+        'port absolute',
         handleWidthClass,
         handleHeightClass,
         className,
@@ -45,7 +45,7 @@ export default function Handle({
     >
       {children}
       <div
-        data-handleid={id}
+        data-portid={id}
         data-position={position}
         data-to={to}
         className={cn(

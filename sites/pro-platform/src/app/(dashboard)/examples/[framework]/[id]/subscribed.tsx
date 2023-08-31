@@ -3,7 +3,7 @@ import ProCodeViewer from 'components/ProExampleViewer';
 import { getExampleFiles, getReadme, Framework } from 'utils/server/examples';
 
 type ProExampleFrontmatter = {
-  title?: string;
+  name?: string;
   description?: string;
 };
 
@@ -16,7 +16,7 @@ export default async function ({ exampleId, frameworkId }: { exampleId: string; 
 
   return (
     <ProCodeViewer
-      title={readmeSource.frontmatter.title}
+      name={readmeSource.frontmatter.name}
       description={readmeSource.frontmatter.description}
       exampleId={exampleId}
       readme={readmeSource}

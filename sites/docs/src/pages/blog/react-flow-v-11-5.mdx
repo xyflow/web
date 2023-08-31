@@ -7,8 +7,7 @@ tags: ['react-flow', 'update']
 image: /img/blog/v10-header.png
 ---
 
-import Image from 'next/image';
-
+import { Image } from '@/components/blog-post-embed';
 import Emoji from '@/components/emoji';
 import BlogPostLayout from '@/layouts/blog-post';
 
@@ -22,6 +21,7 @@ After working a bit with Blender geometry nodes I knew that I wanted to add this
 <Image
   src="/img/blog/v11-5/auto-pan.gif"
   alt="Auto pan demo."
+  wide
   width={822}
   height={468}
 />
@@ -33,6 +33,7 @@ There are [several](/docs/examples/nodes/easy-connect/) [ways](/docs/examples/no
 <Image
   src="/img/blog/v11-5/connection-radius.gif"
   alt="Conneciton radius demo."
+  wide
   width={822}
   height={468}
 />

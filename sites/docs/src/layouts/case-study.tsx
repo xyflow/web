@@ -65,7 +65,6 @@ function CaseStudyPreviews() {
           kicker={nextCaseStudy.frontMatter?.client}
           title={prevCaseStudy.frontMatter?.title}
           description={prevCaseStudy.frontMatter?.description}
-          route={prevCaseStudy.route}
         />
       </ContentGridItem>
       <ContentGridItem route={nextCaseStudy.route}>
@@ -74,7 +73,6 @@ function CaseStudyPreviews() {
           kicker={nextCaseStudy.frontMatter?.client}
           title={nextCaseStudy.frontMatter?.title}
           description={nextCaseStudy.frontMatter?.description}
-          route={nextCaseStudy.route}
         />
       </ContentGridItem>
     </ContentGrid>

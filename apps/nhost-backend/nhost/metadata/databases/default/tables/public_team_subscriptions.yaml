@@ -5,8 +5,11 @@ select_permissions:
   - role: user
     permission:
       columns:
+        - created_at
+        - created_by
         - email
         - subscription_plan_id
+        - user_id
       filter:
         _or:
           - created_by:

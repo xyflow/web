@@ -9,7 +9,9 @@ export default function ExampleLayout({ children }: { children: ReactNode }) {
 
   return (
     <>
-      <Heading size="md">{frontMatter.title}</Heading>
+      <Heading size="md" className="mt-6">
+        {frontMatter.title}
+      </Heading>
       {children}
     </>
   );

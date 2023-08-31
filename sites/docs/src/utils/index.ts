@@ -27,11 +27,17 @@ export function getPrevAndNextPagesByTitle(title, route: string) {
 }
 
 const colors = {
-  react: '#ff0073',
+  react: '#ff0072',
   svelte: '#ff4000',
   xyflow: '#000',
 };
 
 export function getColorBySite(site: Framework | 'xyflow') {
   return colors[site];
+}
+
+export function isDevelopment() {
+  return (
+    typeof process !== 'undefined' && process.env.NODE_ENV === 'development'
+  );
 }

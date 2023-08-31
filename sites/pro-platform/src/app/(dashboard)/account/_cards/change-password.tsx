@@ -5,12 +5,15 @@ import { useChangePassword } from '@nhost/nextjs';
 import { Card, CardHeader, CardDescription, CardTitle, CardFooter, Button, Input, InputLabel } from 'xy-ui';
 
 function ChangePasswordCard() {
-  const { changePassword } = useChangePassword();
+  const [isLoading, setIsLoading] = useState(false);
+  const { changePassword, isSuccess } = useChangePassword();
   const [newPassword, setNewPassword] = useState<string>('');
 
   const handleSubmit = async (evt: React.SyntheticEvent) => {
     evt.preventDefault();
+    setIsLoading(true);
     await changePassword(newPassword);
+    setIsLoading(false);
   };
 
   return (
@@ -34,8 +37,8 @@ function ChangePasswordCard() {
               placeholder="Enter password..."
             />
           </div>
-          <Button className="shrink-0 ml-auto mt-auto" variant="react" type="submit">
-            Update Password
+          <Button disabled={isLoading} className="shrink-0 ml-auto mt-auto" variant="react" type="submit">
+            {isLoading ? 'Please wait...' : 'Change Password'}
           </Button>
         </form>
       </CardFooter>

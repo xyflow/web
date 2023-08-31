@@ -2,6 +2,7 @@
   "extends": "xy-tsconfig/nextjs.json",
   "compilerOptions": {
     "plugins": [{ "name": "next" }],
+    "target": "ES6",
     "baseUrl": "src/",
     "paths": {
       "@/*": ["./*"]
