@@ -55,7 +55,7 @@ export default function Footer() {
   return (
     <footer className="bg-black print:bg-transparent py-12 lg:py-18">
       <div className="mx-auto lg:flex text-white max-w-[90rem] pl-[max(env(safe-area-inset-left),1.5rem)] pr-[max(env(safe-area-inset-right),1.5rem)]">
-        <div className="lg:max-w-[300px] lg:mr-24 shrink-0">
+        <div className="lg:max-w-[300px] md:max-w-[600px] lg:mr-24 shrink-0">
           <Text variant="light" className="mb-2">
             A message from the team
           </Text>
@@ -64,7 +64,12 @@ export default function Footer() {
             since 2021.
           </div>
           {!['/', '/about'].includes(router.pathname) && (
-            <Image src={aboutImage} alt="xyflow team photo" />
+            <Image
+              src={aboutImage}
+              alt="photo of the xyflow team sitting in an office"
+              width={300}
+              height={136}
+            />
           )}
         </div>
         <div className="grow">
