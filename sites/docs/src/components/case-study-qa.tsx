@@ -1,8 +1,8 @@
-import { Text } from 'xy-ui';
+import { Text, cn } from 'xy-ui';
 
 type CaseStudyQAProps = {
-  question?: string;
-  answer?: string;
+  question: string;
+  answer: string;
   className?: string;
 };
 
@@ -12,13 +12,16 @@ export default function CaseStudyQA({
   className,
 }: CaseStudyQAProps) {
   return (
-    <div className={className}>
-      <Text size="lg" className="mt-12 font-semibold leading-relaxed">
+    <>
+      <Text
+        size="lg"
+        className={cn(['font-semibold leading-relaxed', className])}
+      >
         {question}
       </Text>
-      <Text size="lg" className="mt-2 leading-relaxed">
+      <Text size="lg" className="mt-2 mb-12 leading-relaxed">
         {answer}
       </Text>
-    </div>
+    </>
   );
 }
