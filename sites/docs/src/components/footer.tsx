@@ -63,7 +63,7 @@ export default function Footer() {
             Cared for by the xyflow team– building and maintaining React Flow
             since 2021.
           </div>
-          {router.pathname !== '/' && (
+          {!['/', '/about'].includes(router.pathname) && (
             <Image src={aboutImage} alt="xyflow team photo" />
           )}
         </div>
