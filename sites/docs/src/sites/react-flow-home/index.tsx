@@ -134,11 +134,11 @@ export default function ReactFlowHome() {
             Join our community
           </Heading>
           <Text className="mt-2 mb-8 text-xl leading-relaxed">
-            We're nice to each other over here on the React Flow corner of the
-            internet. People from around the world, of all backgrounds, genders,
-            and experience levels are welcome and respected equally. See our
-            community code of conduct for more. Black lives matter. Trans rights
-            are human rights. No nazi bullsh*t.
+            We&apos;re nice to each other over here on the React Flow corner of
+            the internet. People from around the world, of all backgrounds, of
+            Conduct for more. Black lives matter. Trans rights are human
+            genders, and experience levels are welcome. See our Code rights. No
+            nazi bullsh*t.
           </Text>
           <Button asChild className="mr-4">
             <Link href="/">Join our Discord</Link>

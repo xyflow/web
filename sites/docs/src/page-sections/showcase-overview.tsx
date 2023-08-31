@@ -52,9 +52,9 @@ export default function ShowcaseSlider({
           <div>
             <Text className="mt-4 mb-4">
               From solo open-source developers, to companies like Stripe and
-              Typeform. We’ve seen the library used for data processing tools,
-              chatbot builders, machine learning, musical synthezisers, and
-              more.
+              Typeform. We&apos;ve seen the library used for data processing
+              tools, chatbot builders, machine learning, musical synthezisers,
+              and more.
             </Text>
             <Button asChild variant="secondary" className={`text-${site}`}>
               <Link href="/showcase">See all projects</Link>
