@@ -131,14 +131,14 @@ export default function ReactFlowHome() {
       <Section className="lg:flex place-content-between">
         <div className="lg:max-w-2xl">
           <Heading size="md" className="font-bold mb-6">
-            Come build with us
+            Join our community
           </Heading>
           <Text className="mt-2 mb-8 text-xl leading-relaxed">
-            As a community, we want to be friendly too. People from around the
-            world, of all backgrounds, genders, and experience levels are
-            welcome and respected equally. See our community code of conduct for
-            more. Black lives matter. Trans rights are human rights. No nazi
-            bullsh*t.
+            We're nice to each other over here on the React Flow corner of the
+            internet. People from around the world, of all backgrounds, genders,
+            and experience levels are welcome and respected equally. See our
+            community code of conduct for more. Black lives matter. Trans rights
+            are human rights. No nazi bullsh*t.
           </Text>
           <Button asChild className="mr-4">
             <Link href="/">Join our Discord</Link>
