@@ -30,7 +30,7 @@ export default function About() {
       />
 
       <Section className="max-w-screen-md mx-auto mt-12 lg:my-12">
-        <Text className="text-lg leading-8 mb-8">
+        <Text size="lg" className="leading-8 mb-8">
           Since 2014, Moritz and Christopher have been creating infographics,
           tools, and projects together through their interactive news agency, 
           <Link href="https://webkid.io/" className="text-pink-500">
@@ -45,20 +45,20 @@ export default function About() {
           it full-time in 2021 to create a sustainable open-source project like
           the many they had used.
         </Text>
-        <Text className="text-lg leading-8 mb-8">
+        <Text size="lg" className="leading-8 mb-8">
           John, Hayleigh, and Peter joined the team to help out with the many
           things that revolve around an open source library. In 2023, we
-          generalized the core of React Flow by porting the library to Svelte.
-          In order to keep all of our ducks in a row, we created xyflow to be
-          the house where all of our project could live. Now, here we are- happy
-          maintainers of a couple of libraries we&apos;re proud of with
-          wonderful communities behind them :)
+          generalized the core of React Flow to support other frameworks beyond
+          React. In order to keep all of our ducks in a row, we created xyflow
+          to be the house where all of our projects could live. Now, here we
+          are- happy maintainers of a couple of libraries we&apos;re proud of
+          with wonderful communities behind them :)
         </Text>
-        <Text className="text-lg leading-8 mb-8">
+        <Text size="lg" className="leading-8 mb-8">
           If you need anything, have an idea, or just want to say hi, we&apos;re
           an email away at info@xyflow.com.
         </Text>
-        <Text className="text-lg leading-8">
+        <Text size="lg" className="leading-8">
           ✌🏻 Christopher, Hayleigh, John, Moritz, and Peter
         </Text>
       </Section>
@@ -69,9 +69,9 @@ export default function About() {
             <UserGroupIcon className="w-8 h-8" />
           </div>
           <Heading className="text-center">Meet the team</Heading>
-          <div className="text-center text-light text-lg mt-2">
+          <Text size="lg" className="text-center text-light  mt-2">
             Who&apos;s driving this thing?
-          </div>
+          </Text>
         </div>
       </div>
 
