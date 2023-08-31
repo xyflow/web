@@ -14,23 +14,34 @@ import {
 
 import useXYSite from '@/hooks/use-xy-site';
 
-// ShowcaseSlider --------------------------------------------------------------
-
-export type ShowcaseSliderProps = {
-  className?: string;
-  items?: ShowcaseItem[];
-};
-
-type ShowcaseItem = {
+type SliderItem = {
   name: string;
   text: string;
   content: ReactNode;
 };
 
-export default function ShowcaseSlider({
+export type ImageSliderProps = {
+  kicker?: ReactNode;
+  title?: ReactNode;
+  description?: ReactNode;
+  buttonText?: ReactNode;
+  className?: string;
+  items?: SliderItem[];
+};
+
+export default function ImageSlider({
+  kicker = 'Project Showcase',
+  title = 'Used by thousands of people',
+  description = `
+  From solo open-source developers, to companies like Stripe and
+  Typeform. We’ve seen the library used for data processing tools,
+  chatbot builders, machine learning, musical synthezisers, and
+  more.
+  `,
+  buttonText = 'See all projects',
   className,
   items = [],
-}: ShowcaseSliderProps) {
+}: ImageSliderProps) {
   const { site } = useXYSite();
 
   return (
@@ -44,27 +55,22 @@ export default function ShowcaseSlider({
                 site !== 'xyflow' ? `text-${site}` : 'text-gray-300'
               )}
             >
-              Project Showcase
+              {kicker}
             </Text>
 
-            <Heading className="mb-4">Used by thousands of people</Heading>
+            <Heading className="mb-4">{title}</Heading>
           </div>
           <div>
-            <Text className="mt-4 mb-4">
-              From solo open-source developers, to companies like Stripe and
-              Typeform. We’ve seen the library used for data processing tools,
-              chatbot builders, machine learning, musical synthezisers, and
-              more.
-            </Text>
+            <Text className="mt-4 mb-4">{description}</Text>
             <Button asChild variant="secondary" className={`text-${site}`}>
-              <Link href="/showcase">See all projects</Link>
+              <Link href="/showcase">{buttonText}</Link>
             </Button>
           </div>
         </div>
 
         <div className="mt-8">
           {!!items.length && (
-            <ShowcaseSliderItems
+            <ImageSliderItems
               items={items}
               duration={5000}
               start={items[0].name}
@@ -76,10 +82,10 @@ export default function ShowcaseSlider({
   );
 }
 
-// ShowcaseSliderItems ---------------------------------------------------------
+// ImageSliderItems ---------------------------------------------------------
 
-type ShowcaseSliderItemsProps = {
-  items: ShowcaseItem[];
+type ImageSliderItemsProps = {
+  items: SliderItem[];
   start?: string;
   duration?: number;
 };
@@ -90,11 +96,7 @@ const activeBarColours = {
   svelte: 'from-svelte/40 to-svelte/70',
 };
 
-function ShowcaseSliderItems({
-  items,
-  duration,
-  start,
-}: ShowcaseSliderItemsProps) {
+function ImageSliderItems({ items, duration, start }: ImageSliderItemsProps) {
   const [active, setActive] = useState(start ?? items[0].name);
   const [elapsed, setElapsed] = useState(0);
   const [shouldCycle, setShouldCycle] = useState(Boolean(duration));
@@ -170,7 +172,7 @@ function ShowcaseSliderItems({
 
       <TabsList className="flex justify-around gap-8 mt-8 bg-transparent">
         {items.map((item, index) => (
-          <ShowcaseSliderItem
+          <ImageSliderItem
             key={index}
             item={item}
             isActive={active === item.name}
@@ -183,21 +185,21 @@ function ShowcaseSliderItems({
   );
 }
 
-// ShowcaseSliderItem ----------------------------------------------------------
+// ImageSliderItem ----------------------------------------------------------
 
-type ShowcaseSliderItemProps = {
-  item: ShowcaseItem;
+type ImageSliderItemProps = {
+  item: SliderItem;
   isActive: boolean;
   activeBarWidth?: number;
   onClick: (name: string) => void;
 };
 
-function ShowcaseSliderItem({
+function ImageSliderItem({
   item,
   isActive,
   onClick,
   ...props
-}: ShowcaseSliderItemProps) {
+}: ImageSliderItemProps) {
   const { site } = useXYSite();
 
   return (
@@ -229,13 +231,11 @@ function ShowcaseSliderItem({
         className={cn(
           'text-muted transition duration-300 motion-reduce:transition-none',
           'group-hover:opacity-100 px-2 md:px-4',
-          isActive ? ' opacity-100' : ' opacity-50'
+          isActive ? ' opacity-100' : ' opacity-40'
         )}
       >
-        <Text className="my-2 font-mono font-bold text-center">
-          {item.name}
-        </Text>
-        <Text>{item.text}</Text>
+        <Text className="my-2 font-mono">{item.name}</Text>
+        <Text className="leading-snug opacity-80">{item.text}</Text>
       </div>
     </TabsTrigger>
   );
