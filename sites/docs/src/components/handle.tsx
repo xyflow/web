@@ -3,9 +3,6 @@ import { Position } from '@xyflow/system';
 
 import { cn } from 'xy-ui';
 
-const handleWidthClass = 'w-[18px]';
-const handleHeightClass = 'h-[18px]';
-
 export default function Handle({
   id,
   variant = 'react',
@@ -14,7 +11,10 @@ export default function Handle({
   svgClassName,
   children,
   position = Position.Bottom,
+  handleWidthClass = 'w-[18px]',
+  handleHeightClass = 'h-[18px]',
   type = 'source',
+  dashed = true,
   to,
 }: {
   id: string;
@@ -24,6 +24,9 @@ export default function Handle({
   svgClassName?: string;
   children?: ReactNode;
   position?: Position;
+  handleWidthClass?: string;
+  handleHeightClass?: string;
+  dashed?: boolean;
   type?: 'source' | 'target';
   to?: string;
 }) {
@@ -65,7 +68,7 @@ export default function Handle({
               variant === 'xyflow' && 'stroke-xyflow',
               svgClassName
             )}
-            style={{ strokeDasharray: '4 2' }}
+            style={{ strokeDasharray: dashed ? '4 2' : 'none' }}
           />
         </svg>
       )}

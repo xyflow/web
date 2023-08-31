@@ -8,7 +8,7 @@
   "404": {
     "title": "404",
     "theme": {
-      "layout": "full"
+      "layout": "raw"
     }
   },
   "index": "XY Flow",
