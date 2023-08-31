@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useConfig } from 'nextra-theme-docs';
 
 import { Button, Heading, Text, Container } from 'xy-ui';
+import { SparklesIcon } from '@heroicons/react/24/outline';
 import { ChevronRightIcon } from '@heroicons/react/20/solid';
 
 import ContentGrid, { ContentGridItem } from '@/components/content-grid';
@@ -29,7 +30,6 @@ export default function CaseStudyLayout({ children }: { children: ReactNode }) {
         </Heading>
         <AuthorList authors={frontMatter.authors} className="mt-6" />
       </div>
-      {/* I want the container to inherit the width of its children */}
       <Container className="mx-auto mt-8 bg-gray-50">
         <Image
           src={frontMatter.image}
@@ -44,15 +44,18 @@ export default function CaseStudyLayout({ children }: { children: ReactNode }) {
       <CaseStudyPreviews />
 
       <div className="text-center">
-        <Heading as="h3" className="mb-4 mt-20 font-bold">
+        <Heading as="h3" className="mb-4 mt-24 font-bold">
           Get React Flow <span className="text-react">Pro</span> today
         </Heading>
         <Text size="lg">
           Ensure the sustainable maintenance and development of the React Flow
           library.
         </Text>
-        <Button asChild variant="react" size="lg" className="mt-7">
-          <Link href="/react-flow/pro">Get Pro</Link>
+        <Button size="lg" asChild variant="react-pro" className="mt-12 mb-16">
+          <Link href="/react-flow/pro" className="flex items-center">
+            <SparklesIcon className="w-5 h-5 mr-1" />
+            React Flow Pro
+          </Link>
         </Button>
       </div>
     </>
