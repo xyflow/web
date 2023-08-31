@@ -75,7 +75,7 @@ export default function XYFlowHome() {
                 type="target"
                 position={Position.Left}
                 id="xy-wire-target"
-                className="top-1/2 -left-2"
+                className="top-1/2 -left-[9px]"
                 variant="xyflow"
               />
             </HeadlineNode>{' '}
@@ -86,7 +86,7 @@ export default function XYFlowHome() {
                 position={Position.Bottom}
                 id="xy-ideas"
                 to="xy-xyflow"
-                className="bottom-0 right-4"
+                className="-bottom-[9px] right-4"
                 variant="xyflow"
                 svgClassName="-z-10"
               />
@@ -98,7 +98,7 @@ export default function XYFlowHome() {
                 type="target"
                 id="xy-xyflow"
                 position={Position.Right}
-                className="top-1/2 -translate-y-1/2 right-0"
+                className="top-1/2 -translate-y-1/2 -right-[9px]"
                 variant="xyflow"
               />
               xyflow

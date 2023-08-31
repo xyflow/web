@@ -52,7 +52,7 @@ export default function Handle({
           'absolute rounded-full border-2 border-solid bg-white z-20',
           variant === 'react' && 'border-react',
           variant === 'svelte' && 'border-svelte',
-          variant === 'xyflow' && 'border-xyflow',
+          variant === 'xyflow' && 'border-[#D74EF3]',
           handleWidthClass,
           handleHeightClass,
           handleClassName
@@ -65,7 +65,7 @@ export default function Handle({
               'fill-none stroke-2',
               variant === 'react' && 'stroke-react',
               variant === 'svelte' && 'stroke-svelte',
-              variant === 'xyflow' && 'stroke-xyflow',
+              variant === 'xyflow' && 'stroke-[#D74EF3]',
               svgClassName
             )}
             style={{ strokeDasharray: dashed ? '4 2' : 'none' }}
