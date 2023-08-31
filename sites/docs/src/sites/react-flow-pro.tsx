@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from 'xy-ui';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 
@@ -6,11 +7,38 @@ import BaseLayout from '@/layouts/base';
 import Hero from '@/page-sections/hero';
 import PricingTable from '@/page-sections/pricing-table';
 import ClientLogos from '@/components/client-logos';
-import ShowcaseSlider from '@/page-sections/showcase-overview';
+import ImageSlider from '@/page-sections/image-slider';
 import FAQ from '@/components/faq';
 import Section from '@/page-sections/section';
 
 import { PRO_PLATFORM_SIGNUP_URL } from '@/constants';
+
+const sliderItems = [
+  {
+    name: 'DoubleLoop',
+    text: 'Tracking business goals with React Flow-powered maps',
+    content: (
+      <Image
+        className="rounded-xl object-cover"
+        src="/img/case-studies/doubleloop-screenshot.png"
+        alt="DoubleLoop"
+        fill
+      />
+    ),
+  },
+  {
+    name: 'OneSignal',
+    text: 'Automating customer engagement with a workflow builder',
+    content: (
+      <Image
+        className="rounded-xl object-cover"
+        src="/img/case-studies/onesignal-screenshot.png"
+        alt="TypeForm"
+        fill
+      />
+    ),
+  },
+];
 
 export default function ReactFlowPro() {
   return (
@@ -56,7 +84,13 @@ export default function ReactFlowPro() {
         <ClientLogos />
       </Section>
 
-      <ShowcaseSlider />
+      <ImageSlider
+        kicker="Case studies"
+        title="some title"
+        description="some description"
+        buttonText="See all case studies"
+        items={sliderItems}
+      />
 
       <FAQ className="mt-20" />
     </BaseLayout>
