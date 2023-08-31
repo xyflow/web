@@ -2,13 +2,13 @@ import { UserGroupIcon } from '@heroicons/react/24/outline';
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 import Link from 'next/link';
 
-import { Heading, Text, Button } from 'xy-ui';
+import { Heading, Text, Button, Container } from 'xy-ui';
 import Image from 'next/image';
 
 import BaseLayout from '@/layouts/base';
 import Hero from '@/page-sections/hero';
 import Section from '@/page-sections/section';
-import aboutUsImage from '@/../public/img/aboutus-team.png';
+import aboutUsImage from '@/../public/img/about.jpg';
 
 import ContentGrid, { ContentGridItem } from '@/components/content-grid';
 
@@ -22,13 +22,14 @@ export default function About() {
         align="center"
       />
 
+      <Image
+        src={aboutUsImage}
+        alt="Christopher, Hayleigh, John, Moritz, and Peter sitting in an office"
+        placeholder="blur"
+        className="mx-auto lg:max-w-[900px] mt-16 rounded-sm"
+      />
+
       <Section className="max-w-screen-md mx-auto mt-12 lg:my-12">
-        <Image
-          src={aboutUsImage}
-          alt="A picture of Christopher, Hayleigh, John, and Moritz"
-          placeholder="blur"
-          className="mx-auto lg:max-w-[544px] mt-2"
-        ></Image>
         <Text className="text-lg leading-8 mb-8">
           Since 2014, Moritz and Christopher have been creating infographics,
           tools, and projects together through their interactive news agency, 
@@ -45,20 +46,20 @@ export default function About() {
           the many they had used.
         </Text>
         <Text className="text-lg leading-8 mb-8">
-          John and Hayleigh joined the team in 2022 and 2023 respectively to
-          help out with the many things that revolve around an open source
-          library. In 2023, we generalized the core of React Flow by porting the
-          library to Svelte. In order to keep all of our ducks in a row, we
-          created xyFlow to be the house where all of our project could live.
-          Now, here we are- happy maintainers of a couple of libraries
-          we&apos;re proud of with wonderful communities behind them :)
+          John, Hayleigh, and Peter joined the team to help out with the many
+          things that revolve around an open source library. In 2023, we
+          generalized the core of React Flow by porting the library to Svelte.
+          In order to keep all of our ducks in a row, we created xyflow to be
+          the house where all of our project could live. Now, here we are- happy
+          maintainers of a couple of libraries we&apos;re proud of with
+          wonderful communities behind them :)
         </Text>
         <Text className="text-lg leading-8 mb-8">
           If you need anything, have an idea, or just want to say hi, we&apos;re
           an email away at info@xyflow.com.
         </Text>
         <Text className="text-lg leading-8">
-          ✌🏻 Christopher, Hayleigh, John, and Moritz
+          ✌🏻 Christopher, Hayleigh, John, Moritz, and Peter
         </Text>
       </Section>
 
@@ -98,6 +99,12 @@ export default function About() {
           description="Moritz was raised in the depths of Tolteburger Wald by a pack of wolves, learning how to hunt, survive, and develop front-end applications. He abandoned his pack after a disagreement in 2019, where he fled to the streets of Berlin. He now maintains React Flow, and dreams of one day rejoining his pack."
           twitter="moklick"
           github="moklick"
+        />
+        <TeamCard
+          name="Peter"
+          description="We're not sure who Peter is yet, we'll let you know as soon as we find out."
+          github="peterkogo"
+          twitter=""
         />
       </ContentGrid>
     </BaseLayout>

@@ -59,34 +59,13 @@ export default function Footer() {
           <Text variant="light" className="mb-2">
             A message from the team
           </Text>
-          {router.pathname !== '/' && (
-            <div className="my-2 flex overflow-hidden">
-              <img
-                className="inline-block h-12 w-12 rounded-full mx-1 "
-                src="https://github.com/chrtze.png"
-                alt=""
-              />
-              <img
-                className="inline-block h-12 w-12 rounded-full mx-1 "
-                src="https://github.com/hayleigh-dot-dev.png"
-                alt=""
-              />
-              <img
-                className="inline-block h-12 w-12 rounded-full mx-1 "
-                src="https://github.com/johnrobbjr.png"
-                alt=""
-              />
-              <img
-                className="inline-block h-12 w-12 rounded-full mx-1 "
-                src="https://github.com/moklick.png"
-                alt=""
-              />
-            </div>
-          )}
           <div className="font-black text-3xl tracking-tight leading-none mb-6 lg:mb-10">
             Cared for by the xyflow team– building and maintaining React Flow
             since 2021.
           </div>
+          {router.pathname !== '/' && (
+            <Image src={aboutImage} alt="xyflow team photo" />
+          )}
         </div>
         <div className="grow">
           <div className="flex flex-col grow h-[100%]">
