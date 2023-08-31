@@ -9,6 +9,18 @@ will re-render **whenever any node changes**.
 export function useNodes<NodeData>(): Node<NodeData>[];
 ```
 
+## Usage
+
+```tsx
+import { useNodes } from '@xyflow/reactflow';
+
+export default function () {
+  const nodes = useNodes();
+
+  return <div>There are currently {nodes.length} nodes!</div>;
+}
+```
+
 ## Returns
 
 ### `Node<NodeData>[]`
@@ -22,18 +34,6 @@ details.
 
 Check out our [`types`](../types) reference for more details on
 the `Node` type.
-
-## Examples
-
-```tsx
-import { useNodes } from '@xyflow/reactflow';
-
-export default function () {
-  const nodes = useNodes();
-
-  return <div>There are currently {nodes.length} nodes!</div>;
-}
-```
 
 ## Notes
 

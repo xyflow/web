@@ -10,31 +10,7 @@ export function useNodesInitialized(
 ): boolean;
 ```
 
-## Parameters
-
-### options?: [`UseNodesInitializedOptions`](#usenodesinitializedoptions)
-
-Options to configure the behaviour of this hook. See
-[`UseNodesInitializedOptions`](#usenodesinitializedoptions) for more details.
-
-## Returns
-
-### `boolean`
-
-Whether or not the nodes have been initialized by the ReactFlow component and
-given a width and height.
-
-## Types
-
-### UseNodesInitializedOptions
-
-```ts
-export type UseNodesInitializedOptions = {
-  includeHiddenNodes?: boolean;
-};
-```
-
-## Examples
+## Usage
 
 ```tsx
 import { useReactFlow, useNodesInitialized } from '@xyflow/reactflow';
@@ -57,6 +33,30 @@ export default function useLayout() {
 
   return layoutedNodes;
 }
+```
+
+## Parameters
+
+### options?: [`UseNodesInitializedOptions`](#usenodesinitializedoptions)
+
+Options to configure the behaviour of this hook. See
+[`UseNodesInitializedOptions`](#usenodesinitializedoptions) for more details.
+
+## Returns
+
+### `boolean`
+
+Whether or not the nodes have been initialized by the ReactFlow component and
+given a width and height.
+
+## Types
+
+### UseNodesInitializedOptions
+
+```ts
+export type UseNodesInitializedOptions = {
+  includeHiddenNodes?: boolean;
+};
 ```
 
 ## Notes

@@ -16,6 +16,29 @@ export function useEdgesState<EdgeData>(
 ];
 ```
 
+## Usage
+
+```tsx
+import ReactFlow, { useNodesState, useEdgesState } from 'reactflow';
+
+const initialNodes = [];
+const initialEdges = [];
+
+export default function () {
+  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
+  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+
+  return (
+    <ReactFlow
+      nodes={nodes}
+      edges={edges}
+      onNodesChange={onNodesChange}
+      onEdgesChange={onEdgesChange}
+    />
+  );
+}
+```
+
 ## Parameters
 
 ### initialEdges: `Edge<EdgeData>[]`
@@ -68,29 +91,6 @@ You can find the definition for this type over at DefinitelyTyped
 
 You can find the definition for this type over at DefinitelyTyped
 [here](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/bdd784f597ef151da8659762300621686969470d/types/react/v17/index.d.ts#L879).
-
-## Examples
-
-```tsx
-import ReactFlow, { useNodesState, useEdgesState } from 'reactflow';
-
-const initialNodes = [];
-const initialEdges = [];
-
-export default function () {
-  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
-  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
-
-  return (
-    <ReactFlow
-      nodes={nodes}
-      edges={edges}
-      onNodesChange={onNodesChange}
-      onEdgesChange={onEdgesChange}
-    />
-  );
-}
-```
 
 ## Notes
 

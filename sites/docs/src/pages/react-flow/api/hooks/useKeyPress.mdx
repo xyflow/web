@@ -12,6 +12,24 @@ export function useKeyPress(
 ): boolean;
 ```
 
+## Usage
+
+```tsx
+import { useKeyPress } from 'reactflow';
+
+export default function () {
+  const spacePressed = useKeyPress('Space');
+  const cmdAndSPressed = useKeyPress(['Meta+s', 'Strg+s']);
+
+  return (
+    <div>
+      {spacePressed && <p>Space pressed!</p>}
+      {cmdAndSPressed && <p>Cmd + S pressed!</p>}
+    </div>
+  );
+}
+```
+
 ## Parameters
 
 ### keyCode?: [`KeyCode | null`](#keycode)
@@ -34,7 +52,7 @@ keycodes are pressed if an array is passed in) and false otherwise.
 ### `KeyCode`
 
 ```ts
-type KeyCode = string | Array<string>;
+type KeyCode = string | string[];
 ```
 
 A single string can represent either an individual key code like `"Space"` or a
@@ -54,24 +72,6 @@ export interface UseKeyPressOptions {
 The `target` property tells the hook what element to attach the keyup and keydown
 event listeners to. By default it is the document object, but you may pass in
 a different element if you need to.
-
-## Examples
-
-```tsx
-import { useKeyPress } from 'reactflow';
-
-export default function () {
-  const spacePressed = useKeyPress('Space');
-  const cmdAndSPressed = useKeyPress(['Meta+s', 'Strg+s']);
-
-  return (
-    <div>
-      {spacePressed && <p>Space pressed!</p>}
-      {cmdAndSPressed && <p>Cmd + S pressed!</p>}
-    </div>
-  );
-}
-```
 
 ## Notes
 

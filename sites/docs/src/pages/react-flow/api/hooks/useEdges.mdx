@@ -9,6 +9,18 @@ will re-render **whenever any edge changes**.
 export function useEdges<EdgeData>(): Edge<EdgeData>[];
 ```
 
+## Usage
+
+```tsx
+import { useEdges } from '@xyflow/reactflow';
+
+export default function () {
+  const edges = useEdges();
+
+  return <div>There are currently {edges.length} edges!</div>;
+}
+```
+
 ## Returns
 
 ### `Edge<EdgeData>[]`
@@ -22,18 +34,6 @@ details.
 
 Check out our [`types`](../types#reactflowstate) reference for more details on
 the `Edge` type.
-
-## Examples
-
-```tsx
-import { useEdges } from '@xyflow/reactflow';
-
-export default function () {
-  const edges = useEdges();
-
-  return <div>There are currently {edges.length} edges!</div>;
-}
-```
 
 ## Notes
 
