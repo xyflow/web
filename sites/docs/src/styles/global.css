@@ -25,6 +25,10 @@ nav.nx-bg-transparent {
   background-color: white;
 }
 
+.light .nextra-content {
+  color: #222;
+}
+
 div.nextra-nav-container-blur {
   backdrop-filter: none;
   background: white;

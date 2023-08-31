@@ -70,7 +70,7 @@ export default function Feature({
       </div>
       <div className={index % 2 === 0 ? order2Class : order1Class}>
         <Container className="relative">
-          <div className="h-[400px] overflow-hidden bg-gradient-to-br from-white to-gray-50 rounded-3xl">
+          <div className="h-[400px] overflow-hidden bg-gradient-to-br from-white to-gray-50">
             <FlowComponent />
           </div>
 
