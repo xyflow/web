@@ -50,12 +50,12 @@ export default function About() {
           library. In 2023, we generalized the core of React Flow by porting the
           library to Svelte. In order to keep all of our ducks in a row, we
           created xyFlow to be the house where all of our project could live.
-          Now, here we are- happy maintainers of a couple of libraries we’re
-          proud of with wonderful communities behind them :)
+          Now, here we are- happy maintainers of a couple of libraries
+          we&apos;re proud of with wonderful communities behind them :)
         </Text>
         <Text className="text-lg leading-8 mb-8">
-          If you need anything, have an idea, or just want to say hi, we’re an
-          email away at info@xyflow.com.
+          If you need anything, have an idea, or just want to say hi, we&apos;re
+          an email away at info@xyflow.com.
         </Text>
         <Text className="text-lg leading-8">
           ✌🏻 Christopher, Hayleigh, John, and Moritz
@@ -69,7 +69,7 @@ export default function About() {
           </div>
           <Heading className="text-center">Meet the team</Heading>
           <div className="text-center text-light text-lg mt-2">
-            Who's driving this thing?
+            Who&apos;s driving this thing?
           </div>
         </div>
       </div>
