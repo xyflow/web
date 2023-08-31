@@ -1,8 +1,19 @@
 {
-  "index": "<ReactFlow />",
+  "*": {
+    "theme": {
+      "toc": false
+    }
+  },
+  "index": {
+    "display": "hidden"
+  },
+  "ReactFlow": "<ReactFlow />",
   "ReactFlowProvider": "<ReactFlowProvider />",
   "components": "Components",
   "types": "Types",
   "hooks": "Hooks",
-  "utils": "Utils"
+  "utils": "Utils",
+  "_README": {
+    "display": "hidden"
+  }
 }
