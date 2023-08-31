@@ -63,7 +63,7 @@ export default function ProjectPreview({
         </Container>
       )}
       {kicker && (
-        <Text size="sm" variant="light">
+        <Text size="sm" variant="light" className="mt-8">
           {kicker}
         </Text>
       )}
@@ -77,7 +77,7 @@ export default function ProjectPreview({
       )}
       <AuthorList authors={authors} className="mt-6" />
       <Text className="leading-snug my-4">{description}</Text>
-      <Button asChild variant="link">
+      <Button asChild variant="link" className="text-md">
         <LinkOrSpan className="flex items-center">
           {linkLabel} <ArrowRightCircleIcon className="ml-1 w-4 h-4" />
         </LinkOrSpan>
