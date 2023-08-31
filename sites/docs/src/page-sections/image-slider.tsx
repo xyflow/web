@@ -25,6 +25,7 @@ export type ImageSliderProps = {
   title?: ReactNode;
   description?: ReactNode;
   buttonText?: ReactNode;
+  buttonLink?: string;
   className?: string;
   items?: SliderItem[];
 };
@@ -39,6 +40,7 @@ export default function ImageSlider({
   more.
   `,
   buttonText = 'See all projects',
+  buttonLink = '/showcase',
   className,
   items = [],
 }: ImageSliderProps) {
@@ -63,7 +65,7 @@ export default function ImageSlider({
           <div>
             <Text className="mt-4 mb-4">{description}</Text>
             <Button asChild variant="secondary" className={`text-${site}`}>
-              <Link href="/showcase">{buttonText}</Link>
+              <Link href={buttonLink}>{buttonText}</Link>
             </Button>
           </div>
         </div>

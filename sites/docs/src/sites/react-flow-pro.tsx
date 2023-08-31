@@ -86,9 +86,10 @@ export default function ReactFlowPro() {
 
       <ImageSlider
         kicker="Case studies"
-        title="some title"
-        description="some description"
+        title="See what our subscribers build"
+        description="React Flow Pro subscribers use pro examples, prioritized issues, and support to build advanced workflow builders, node-based editors, and diagramming tools."
         buttonText="See all case studies"
+        buttonLink="/case-studies"
         items={sliderItems}
       />
 
