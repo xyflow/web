@@ -30,12 +30,15 @@ const innerContainerVariants = cva('border border-solid', {
 
 export interface ContainerProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof containerVariants> {}
+    VariantProps<typeof containerVariants> {
+  innerClassName?: string;
+}
 
 function Container({
   variant = 'default',
   size = 'default',
   className,
+  innerClassName,
   children,
 }: ContainerProps) {
   return (
@@ -43,7 +46,7 @@ function Container({
       <div
         className={cn(
           'shadow-lg relative overflow-hidden h-full',
-          innerContainerVariants({ variant, size })
+          innerContainerVariants({ variant, size, className: innerClassName })
         )}
       >
         {children}

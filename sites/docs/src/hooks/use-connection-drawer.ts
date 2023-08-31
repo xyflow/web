@@ -1,8 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { getSmoothStepPath } from '@xyflow/system';
 
-const HANDLE_SIZE = 18;
-
 export default function useConnectionDrawer() {
   const ref = useRef<HTMLDivElement>();
 
@@ -60,8 +58,6 @@ export default function useConnectionDrawer() {
 
           const handleHeight = fromHandleBounds.height;
           const handleWidth = fromHandleBounds.width;
-
-          console.log(handleHeight, handleWidth);
 
           svg.setAttribute('width', Math.max(2, width));
           svg.setAttribute('height', Math.max(2, height));

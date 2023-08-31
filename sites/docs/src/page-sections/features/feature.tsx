@@ -69,8 +69,8 @@ export default function Feature({
         </div>
       </div>
       <div className={index % 2 === 0 ? order2Class : order1Class}>
-        <Container className="relative">
-          <div className="h-[400px] overflow-hidden bg-gradient-to-br from-white to-gray-50">
+        <Container className="relative" innerClassName="overflow-visible">
+          <div className="h-[400px] rounded-[18px] overflow-hidden bg-gradient-to-br from-white to-gray-50">
             <FlowComponent />
           </div>
 
@@ -78,17 +78,17 @@ export default function Feature({
             <Handle
               id={targetHandleId}
               variant={variant}
-              className="-top-2 left-10 md:left-1/2"
+              className="-top-4 left-10 md:left-1/2"
               type="target"
               position={Position.Top}
-              handleClassName="border-none"
+              handleClassName="border-none bg-transparent"
             />
           )}
           {index < featureCount - 1 && (
             <Handle
               id={sourceHandleId}
               variant={variant}
-              className="bottom-[-2px] right-10 md:left-1/2 md:right-auto"
+              className="-bottom-[18px] right-10 md:left-1/2 md:right-auto"
               handleClassName="shadow-md"
               position={Position.Bottom}
               type="source"
