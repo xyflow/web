@@ -1,33 +1,40 @@
-# \<Background />
+import { PropsTable } from '@/components/props-table';
+import { backgroundProps } from './Background.props.ts';
+
+# &lt;Background />
+
+The `<Background />` component makes it convinient to render different types of
+backgrounds common in node-based UIs. It comes with three variants: `lines`,
+`dots` and `cross`.
+
+```tsx
+import { useState } from 'react';
+import ReactFlow, { Background } from 'reactflow';
+
+import 'reactflow/dist/style.css';
+
+export default function Flow() {
+  return (
+    <ReactFlow defaultNodes={[...]} defaultEdges={[...]}>
+      <Background color="#ccc" variant="dots" />
+    </ReactFlow>
+  );
+}
+```
+
+[source](https://github.com/wbkd/react-flow/blob/xyflow/packages/react/src/additional-components/Background/Background.tsx)
 
 ## Props
 
-### className?: `string`
+<PropsTable {...backgroundProps} />
 
-### color?: `string`
-
-### gap?: `number | [number, number]`
-
-### id?: `string`
-
-### lineWidth?: `number`
-
-### offset?: `number`
-
-### size?: `number`
-
-### style?: `CSSProperties`
-
-### variant?: `BackgroundVariant`
-
-## Types
-
-### `React.CSSProperties`
-
-You can find the definition of this type over at DefinitelyTyped
-[here](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/bdd784f597ef151da8659762300621686969470d/types/react/v17/index.d.ts#L1545C3-L1545C3).
+## Other types
 
 ### `BackgroundVariant`
+
+The three variants are exported as an enum for convenience. You can either import
+the enum and use it like `BackgroundVariant.Lines` or you can use the raw string
+value directly.
 
 ```ts
 export enum BackgroundVariant {
@@ -39,4 +46,39 @@ export enum BackgroundVariant {
 
 ## Examples
 
+### Combining multiple backgrounds
+
+It is possible to layer multiple `<Background />` components on top of one another
+to create something more interesting. The following example shows how to render a
+square grid accented every 10th line.
+
+```tsx
+import ReactFlow, { Background, BackgroundVariant } from 'reactflow';
+
+import 'reactflow/dist/style.css';
+
+export default function Flow() {
+  return (
+    <ReactFlow defaultNodes={[...]} defaultEdges={[...]}>
+      <Background
+        id="1"
+        gap={10}
+        color="#f1f1f1"
+        variant={BackgroundVariant.Lines}
+      />
+
+      <Background
+        id="2"
+        gap={100}
+        color="#ccc"
+        variant={BackgroundVariant.Lines}
+      />
+    </ReactFlow>
+  );
+}
+```
+
 ## Notes
+
+- When combining multiple `<Background />` components it's important to give each
+  of them a unique `id` prop!
