@@ -60,7 +60,7 @@ export default function Hero({
           {kicker && (
             <h3
               className={cn(
-                'text-md font-bold mb-2 flex items-center',
+                'text-sm font-bold mb-6 flex items-center uppercase tracking-wider',
                 isCenter && 'justify-center',
                 `text-${site}`
               )}
@@ -72,7 +72,7 @@ export default function Hero({
             </h3>
           )}
           {title && (
-            <Heading size={size} className="mb-4 font-black">
+            <Heading size={size} className="mb-6 font-black">
               {title}
             </Heading>
           )}

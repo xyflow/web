@@ -6,7 +6,7 @@ import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 import { Text, Heading, Button } from 'xy-ui';
 import BaseLayout from '@/layouts/base';
 import Hero from '@/page-sections/hero';
-import Showcase from '@/page-sections/showcase-overview';
+import ImageSlider from '@/page-sections/image-slider';
 import HeadlineNode from '@/components/headline-node';
 import Handle from '@/components/handle';
 import ContentGrid, { ContentGridItem } from '@/components/content-grid';
@@ -15,7 +15,7 @@ import Section from '@/page-sections/section';
 
 import aboutImage from '../../public/img/about.jpg';
 
-const showcases = [
+const sliderItems = [
   {
     name: 'Stripe Docs',
     text: 'Diagrams for process documentation with interactive nodes',
@@ -113,7 +113,7 @@ export default function XYFlowHome() {
 
       <LibraryCards />
 
-      <Showcase items={showcases} className="my-16 lg:my-24" />
+      <ImageSlider items={sliderItems} className="my-16 lg:my-24" />
 
       <Section>
         <Heading size="sm" as="h3" className="text-center mb-2">

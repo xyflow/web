@@ -8,7 +8,7 @@ import BaseLayout from '@/layouts/base';
 import HeroFlow from '@/page-sections/hero-flow';
 import Stats, { StatsDisplay } from '@/page-sections/stats';
 import Features from '@/page-sections/features';
-import Showcase from '@/page-sections/showcase-overview';
+import ImageSlider from '@/page-sections/image-slider';
 import Section from '@/page-sections/section';
 import GettingStarted from '@/page-sections/getting-started';
 import ClientLogos from '@/components/client-logos';
@@ -44,7 +44,7 @@ const features = [
   },
 ];
 
-const showcases = [
+const sliderItems = [
   {
     name: 'Stripe Docs',
     text: 'Diagrams for process documentation with interactive nodes',
@@ -121,7 +121,7 @@ export default function ReactFlowHome() {
         <ClientLogos />
       </Section>
 
-      <Showcase items={showcases} />
+      <ImageSlider items={sliderItems} />
 
       <Section className="lg:flex place-content-between">
         <div>
