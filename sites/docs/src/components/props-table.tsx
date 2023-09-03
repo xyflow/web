@@ -1,28 +1,45 @@
 import Link from 'next/link';
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { Popover, PopoverContent, PopoverTrigger, Text } from 'xy-ui';
+
+import * as reactFlowTypes from '../pages/react-flow/api/types/_meta.json';
 
 export type PropsTableProps = {
   props: [name: string, type?: string, default_?: string][];
+  variant?: 'react' | 'svelte';
   links?: Record<string, string>;
   info?: Record<string, string>;
+  deeplinkPrefix?: string;
 };
 
-export function PropsTable({ props = [], links, info = {} }: PropsTableProps) {
+export function PropsTable({
+  props = [],
+  variant = 'react',
+  links,
+  info = {},
+  deeplinkPrefix = '',
+}: PropsTableProps) {
   const shouldShowDefault = props.some(([, , default_]) => !!default_);
+  const allLinks = useMemo(
+    () => ({
+      ...links,
+      ...externalLinks,
+      ...(variant === 'react' ? externalReactLinks : externalSvelteLinks),
+      ...(variant === 'react' ? reactFlowLinks : {}),
+    }),
+    [variant, links]
+  );
   const linkify = useCallback(
     (type: string) =>
-      links === undefined
-        ? type
-        : type.match(/(\w+|\W+)/g).map((chunk) =>
-            chunk in links ? (
-              <Link href={links[chunk]} className="text-react">
-                {chunk}
-              </Link>
-            ) : (
-              chunk
-            )
-          ),
+      type.match(/(\w+|\W+)/g).map((chunk) =>
+        chunk in allLinks ? (
+          <Link href={allLinks[chunk]} className="text-react">
+            {chunk}
+          </Link>
+        ) : (
+          chunk
+        )
+      ),
     [links]
   );
   const Info = useCallback(
@@ -47,6 +64,7 @@ export function PropsTable({ props = [], links, info = {} }: PropsTableProps) {
     <table className="table-auto w-full my-8 rounded-xl relative">
       <thead>
         <tr className="bg-gray-100">
+          <th className="px-2 py-2" />
           <th align="left" className="py-2 px-2">
             Name
           </th>
@@ -76,8 +94,18 @@ export function PropsTable({ props = [], links, info = {} }: PropsTableProps) {
             );
           }
 
+          const id = name.toLowerCase().trim();
+
           return (
-            <tr key={name} className="hover:bg-gray-50">
+            <tr key={name} id={id} className="hover:bg-gray-50 group">
+              <td className="px-2 w-8">
+                <Link
+                  className={`invisible group-hover:visible text-${variant}`}
+                  href={deeplinkPrefix ? `#${deeplinkPrefix}-${id}` : `#${id}`}
+                >
+                  #
+                </Link>
+              </td>
               <td className="flex justify-between py-1 px-2">
                 <Text>{name}</Text>
               </td>
@@ -89,7 +117,7 @@ export function PropsTable({ props = [], links, info = {} }: PropsTableProps) {
               </td>
               {shouldShowDefault && (
                 <td className="px-2 hidden md:table-cell">
-                  {default_ ? <code>{default_}</code> : '-'}
+                  {default_ ? <code>{linkify(default_)}</code> : '-'}
                 </td>
               )}
             </tr>
@@ -99,3 +127,34 @@ export function PropsTable({ props = [], links, info = {} }: PropsTableProps) {
     </table>
   );
 }
+
+// -----------------------------------------------------------------------------
+
+export const reactFlowLinks = Object.fromEntries(
+  Object.keys(reactFlowTypes).map((t) => [
+    t.split('.')[0],
+    `/react-flow/api/types/${t}`,
+  ])
+);
+
+const externalReactLinks = {
+  CSSProperties:
+    'https://github.com/DefinitelyTyped/DefinitelyTyped/blob/61c7bb49838a155b2b0476bb97d5e707ca80a23b/types/react/v17/index.d.ts#L1545',
+  MouseEvent:
+    'https://github.com/DefinitelyTyped/DefinitelyTyped/blob/61c7bb49838a155b2b0476bb97d5e707ca80a23b/types/react/v17/index.d.ts#L1226C6-L1226C6',
+  ComponentType:
+    'https://github.com/DefinitelyTyped/DefinitelyTyped/blob/61c7bb49838a155b2b0476bb97d5e707ca80a23b/types/react/v17/index.d.ts#L75',
+  Partial:
+    'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype',
+};
+
+export const svelteFlowLinks = {};
+
+const externalSvelteLinks = {};
+
+const externalLinks = {
+  Partial:
+    'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype',
+  Record:
+    'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type',
+};
