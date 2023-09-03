@@ -1,0 +1,72 @@
+import { Callout } from 'nextra/components';
+import { PropsTable } from '@/components/props-table';
+import { miniMapProps, miniMapNodeProps } from './MiniMap.props.ts';
+
+# &lt;MiniMap />
+
+A short description on what the component is or does.
+
+```tsx
+import ReactFlow, { MiniMap } from '@xyflow/reactflow';
+
+export default function Flow() {
+  return (
+    <ReactFlow nodes={[...]]} edges={[...]]}>
+      <MiniMap
+        nodeStrokeWidth={3}
+        zoomable
+        pannable
+      />
+    </ReactFlow>
+  );
+}
+
+```
+
+[source](https://github.come/xyflow/xyflow/a/link/to/the/component)
+
+## Props
+
+<PropsTable {...miniMapProps} />
+
+## Examples
+
+### Implement a custom mini map node
+
+It is possible to pass a custom component to the `nodeComponent` prop to change
+how nodes are rendered in the mini map. If you do this you **must** use only
+SVG elements in your component if you want it to work correctly.
+
+```tsx
+import ReactFlow, { MiniMap } from '@xyflow/reactflow';
+
+export default function Flow() {
+  return (
+    <ReactFlow nodes={[...]]} edges={[...]]}>
+      <MiniMap
+        nodeColor={nodeColor}
+        nodeStrokeWidth={3}
+        nodeComponent={MiniMapNode}
+      />
+    </ReactFlow>
+  );
+}
+
+function nodeColor(node) {
+  switch (node.type) {
+    case 'input':
+      return '#6ede87';
+    case 'output':
+      return '#6865A5';
+    default:
+      return '#ff0072';
+  }
+}
+
+function MiniMapNode({ x, y, color }) {
+  return <circle cx={x} cy={y} r="50" fill={color} />;
+}
+```
+
+Check out the documentation for [`MiniMapNodeProps`](/react-flow/api/types/MiniMapNodeProps)
+to see what props are passed to your custom component.

@@ -1,6 +1,4 @@
 {
-  "_template": { "display": "hidden" },
-
   "useEdges": "useEdges",
   "useEdgesState": "useEdgesState",
   "useKeyPress": "useKeyPress",

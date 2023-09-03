@@ -1,0 +1,42 @@
+import { PropsTable } from '@/components/props-table';
+import { connectionFields } from './Connection.fields.ts';
+
+# Connection
+
+A short description on where or how this type is used.
+
+```ts
+export type Connection = {
+  source: string | null;
+  target: string | null;
+  sourceHandle: string | null;
+  targetHandle: string | null;
+};
+```
+
+[source](https://github.com/wbkd/react-flow/blob/b6ac43ba4546a15329968f638968b9be3aa87040/packages/system/src/types/general.ts#L24C1-L29C3)
+
+## Usage
+
+```ts
+... // a brief example on where/how this type is used
+```
+
+## Fields
+
+<PropsTable {...connectionFields} />
+
+## ConnectionStatus
+
+```ts
+export type ConnectionStatus = 'valid' | 'invalid';
+```
+
+## ConnectionMode
+
+```ts
+export enum ConnectionMode {
+  Strict = 'strict',
+  Loose = 'loose',
+}
+```

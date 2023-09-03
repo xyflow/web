@@ -1,3 +1,6 @@
 {
-  "background": "<Background />"
+  "Background": "<Background />",
+  "Controls": "<Controls />",
+  "MiniMap": "<MiniMap />",
+  "NodeResizer": "<NodeResizer />"
 }

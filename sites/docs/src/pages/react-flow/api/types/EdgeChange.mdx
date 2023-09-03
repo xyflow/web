@@ -1,0 +1,47 @@
+import { PropsTable } from '@/components/props-table';
+import {
+  edgeAddChangeFields,
+  edgeRemoveChangeFields,
+  edgeResetChangeFields,
+  edgeSelectionChangeFields,
+} from './EdgeChange.fields.ts';
+
+# NodeChange
+
+A short description on where or how this type is used.
+
+```ts
+export type EdgeChange =
+  | EdgeAddChange
+  | EdgeRemoveChange
+  | EdgeResetChange
+  | EdgeSelectionChange;
+```
+
+[source](https://github.come/xyflow/xyflow/a/link/to/the/type)
+
+## Variant types
+
+### EdgeAddChange&lt;T>
+
+<PropsTable {...edgeAddChangeFields} />
+
+### EdgeRemoveChange
+
+<PropsTable {...edgeRemoveChangeFields} />
+
+### EdgeResetChange&lt;T>
+
+<PropsTable {...edgeResetChangeFields} />
+
+### EdgeSelectionChange
+
+<PropsTable {...edgeSelectionChangeFields} />
+
+## Examples
+
+### Scenario one
+
+### Scenario two
+
+## Notes

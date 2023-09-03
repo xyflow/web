@@ -1,0 +1,140 @@
+# Edge Utils
+
+Implementing custom edges can be a bit of hard work. THe functions documented
+below make it easier to work with paths in custom edges. You can see how some of
+these functions are used in our [custom edges](/react-flow/examples/edges/custom-edge)
+example.
+
+```ts
+import ReactFlow, {
+  getBezierPath,
+  getSimpleBezierPath,
+  getSmoothStepPath,
+  getStraightPath,
+  getMarkerEnd,
+} from '@xyflow/reactflow';
+```
+
+## getBezierPath
+
+```ts
+export function getBezierPath(params: GetBezierPathParams) => [
+  path: string,
+  labelX: number,
+  labelY: number,
+  offsetX:number,
+  offsetY: number
+]
+```
+
+Note that the return type of this function is a **named tuple**. If you are working
+with JavaScript, you should ignore the labels and treat the return value as an
+array.
+
+```ts
+type GetBezierPathParams = {
+  sourceX: number;
+  sourceY: number;
+  sourcePosition?: Position;
+  targetX: number;
+  targetY: number;
+  targetPosition?: Position;
+  curvature?: number;
+};
+```
+
+## getSimpleBezierPath
+
+```ts
+export function getSimpleBezierPath(params: GetBezierPathParams) => [
+  path: string,
+  labelX: number,
+  labelY: number,
+  offsetX: number,
+  offsetY: number
+]
+```
+
+Note that the return type of this function is a **named tuple**. If you are working
+with JavaScript, you should ignore the labels and treat the return value as an
+array.
+
+```ts
+type GetSmoothStepPathParams = {
+  sourceX: number;
+  sourceY: number;
+  sourcePosition?: Position;
+  targetX: number;
+  targetY: number;
+  targetPosition?: Position;
+  borderRadius?: number;
+  centerX?: number;
+  centerY?: number;
+  offset?: number;
+};
+```
+
+## getSmoothStepPath
+
+```ts
+export function getSmoothStepPath(params: GetSmoothStepPathParams) => [
+  path: string,
+  labelX: number,
+  labelY: number,
+  offsetX: number,
+  offsetY: number
+]
+```
+
+Note that the return type of this function is a **named tuple**. If you are working
+with JavaScript, you should ignore the labels and treat the return value as an
+array.
+
+```ts
+type GetSmoothStepPathParams = {
+  sourceX: number;
+  sourceY: number;
+  sourcePosition?: Position;
+  targetX: number;
+  targetY: number;
+  targetPosition?: Position;
+  borderRadius?: number;
+  centerX?: number;
+  centerY?: number;
+  offset?: number;
+};
+```
+
+## getStraightPath
+
+```ts
+export function getStraightPath(params: GetStraightPathParams) => [
+  path: string,
+  labelX: number,
+  labelY: number,
+  offsetX: number,
+  offsetY: number
+]
+```
+
+Note that the return type of this function is a **named tuple**. If you are working
+with JavaScript, you should ignore the labels and treat the return value as an
+array.
+
+```ts
+type GetStraightPathParams {
+  sourceX: number;
+  sourceY: number;
+  targetX: number;
+  targetY: number;
+};
+```
+
+## getMarkerEnd
+
+```ts
+export function getMarkerEnd(
+  markerType?: MarkerType,
+  markerEndId?: string
+) => string
+```

@@ -1,0 +1,85 @@
+# Node&lt;T, U>
+
+[source](https://github.com/wbkd/react-flow/blob/xyflow/packages/system/src/types/nodes.ts)
+
+```ts
+export type Node<T = any, U extends string | undefined> = {
+  id: string;
+  position: XYPosition;
+  data: T;
+  type?: U;
+  sourcePosition?: Position;
+  targetPosition?: Position;
+  hidden?: boolean;
+  selected?: boolean;
+  dragging?: boolean;
+  draggable?: boolean;
+  selectable?: boolean;
+  connectable?: boolean;
+  resizing?: boolean;
+  deletable?: boolean;
+  dragHandle?: string;
+  width?: number | null;
+  height?: number | null;
+  parentNode?: string;
+  zIndex?: number;
+  extent?: 'parent' | CoordinateExtent;
+  expandParent?: boolean;
+  positionAbsolute?: XYPosition;
+  ariaLabel?: string;
+  focusable?: boolean;
+  origin?: NodeOrigin;
+  style?: CSSProperties;
+  className?: string;
+};
+```
+
+## Fields
+
+### id: `string`
+
+### position: `XYPosition`
+
+### data: `T`
+
+### type?: `U`
+
+### sourcePosition?: `Position`
+
+### targetPosition?: `Position`
+
+### hidden?: `boolean`
+
+### selected?: `boolean`
+
+### dragging?: `boolean`
+
+### draggable?: `boolean`
+
+### selectable?: `boolean`
+
+### connectable?: `boolean`
+
+### deletable?: `boolean`
+
+### dragHandle?: `string`
+
+### width?: `number | null`
+
+### height?: `number | null`
+
+### parentNode?: `string`
+
+### zIndex?: `number`
+
+### extent?: `'parent' | CoordinateExtent`
+
+### expandParent?: `boolean`
+
+### positionAbsolute?: `XYPosition`
+
+### ariaLabel?: `string`
+
+### focusable?: `boolean`
+
+### origin?: `NodeOrigin`

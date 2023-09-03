@@ -1,0 +1,59 @@
+import { PropsTable } from '@/components/props-table';
+import {
+  nodeDimensionChangeFields,
+  nodePositionChangeFields,
+  nodeSelectionChangeFields,
+  nodeRemoveChangeFields,
+  nodeAddChangeFields,
+  nodeResetChangeFields,
+} from './NodeChange.fields.ts';
+
+# NodeChange
+
+A short description on where or how this type is used.
+
+```ts
+export type NodeChange =
+  | NodeDimensionChange
+  | NodePositionChange
+  | NodeSelectionChange
+  | NodeRemoveChange
+  | NodeAddChange
+  | NodeResetChange;
+```
+
+[source](https://github.come/xyflow/xyflow/a/link/to/the/type)
+
+## Variant types
+
+### NodeDimensionChange
+
+<PropsTable {...nodeDimensionChangeFields} />
+
+### NodePositionChange
+
+<PropsTable {...nodePositionChangeFields} />
+
+### NodeSelectionChange
+
+<PropsTable {...nodeSelectionChangeFields} />
+
+### NodeRemoveChange
+
+<PropsTable {...nodeRemoveChangeFields} />
+
+### NodeAddChange&lt;T = any>
+
+<PropsTable {...nodeAddChangeFields} />
+
+### NodeResetChange&lt;T = any>
+
+<PropsTable {...nodeResetChangeFields} />
+
+## Examples
+
+### Scenario one
+
+### Scenario two
+
+## Notes

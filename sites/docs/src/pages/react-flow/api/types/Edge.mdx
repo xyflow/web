@@ -1,0 +1,33 @@
+import { PropsTable } from '@/components/props-table';
+import { edgeFields } from './Edge.fields.ts';
+
+# EdgeBase&lt;T>
+
+[source](https://github.com/wbkd/react-flow/blob/xyflow/packages/system/src/types/edges.ts)
+
+```ts
+export type EdgeBase<EdgeData = any> = {
+  id: string;
+  type?: string;
+  source: string;
+  target: string;
+  sourceHandle?: string | null;
+  targetHandle?: string | null;
+  animated?: boolean;
+  hidden?: boolean;
+  deletable?: boolean;
+  selectable?: boolean;
+  data?: EdgeData;
+  selected?: boolean;
+  markerStart?: EdgeMarkerType;
+  markerEnd?: EdgeMarkerType;
+  zIndex?: number;
+  ariaLabel?: string;
+  interactionWidth?: number;
+  focusable?: boolean;
+};
+```
+
+## Fields
+
+<PropsTable {...edgeFields} />

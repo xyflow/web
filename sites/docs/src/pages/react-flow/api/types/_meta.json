@@ -1,3 +1,11 @@
 {
-  "ReactFlowInstance": "ReactFlowInstance"
+  "Connection": "Connection",
+  "Edge": "Edge<T>",
+  "EdgeChange": "EdgeChange",
+  "EdgeProps": "EdgeProps<T>",
+  "FitViewOptions": "FitViewOptions",
+  "Node": "Node<T, U>",
+  "NodeChange": "NodeChange",
+  "NodeProps": "NodeProps<T>",
+  "ReactFlowInstance": "ReactFlowInstance<T, U>"
 }

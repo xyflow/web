@@ -1,0 +1,56 @@
+import { PropsTable } from '@/components/props-table';
+import { controlsProps } from './Controls.props.ts';
+
+# &lt;Controls />
+
+The `<Controls />` component renders a small panel that contain convenient
+buttons to zoom in, zoom out, fit the view, and lock the viewport.
+
+```tsx
+import ReactFlow, { Controls } from '@xyflow/reactlfow'
+
+export default function Flow() {
+  return (
+    <ReactFlow nodes={[...]} edges={[...]}>
+      <Controls />
+    </ReactFlow>
+  )
+}
+```
+
+[source](https://github.come/xyflow/xyflow/a/link/to/the/component)
+
+## Props
+
+The `<Controls />` component accepts any prop valid on a `<div />` element, as
+well as the following:
+
+<PropsTable {...controlsProps} />
+
+## &lt;ControlButton />
+
+If you'd like to add additional buttons to the `<Controls />` component, this
+component will do the trick!
+
+```tsx
+import { MagicWand } from '@radix-ui/react-icons'
+import ReactFlow, { Controls, ControlButton } from '@xyflow/reactlfow'
+
+export default function Flow() {
+  return (
+    <ReactFlow nodes={[...]} edges={[...]}>
+      <Controls>
+        <ControlButton onClick={() => alert('Something magical just happened. ✨')}>
+          <MagicWand />
+        </ControlButton>
+    </ReactFlow>
+  )
+}
+```
+
+### Props
+
+The `<ControlButton />` component any acceps any prop valid on a `<button />`
+element.
+
+## Notes
