@@ -1,5 +1,6 @@
 {
   "Connection": "Connection",
+  "CoordinateExtent": "CoordinateExtent",
   "Edge": "Edge<T>",
   "EdgeChange": "EdgeChange",
   "EdgeProps": "EdgeProps<T>",
@@ -7,5 +8,6 @@
   "Node": "Node<T, U>",
   "NodeChange": "NodeChange",
   "NodeProps": "NodeProps<T>",
-  "ReactFlowInstance": "ReactFlowInstance<T, U>"
+  "ReactFlowInstance": "ReactFlowInstance<T, U>",
+  "Viewport": "Viewport"
 }
