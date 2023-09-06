@@ -1,4 +1,5 @@
 import DashboardHeader from '@/components/DashboardHeader';
+import NotSubscribedNotification from '@/components/Notification/not-subscribed';
 import ExampleTeaser from '@/components/ExampleTeaser';
 
 import { getExamples } from '@/utils/server/examples';
@@ -12,7 +13,8 @@ export default async function ProExamplesOverview() {
         title="Pro Examples"
         description="Welcome to xyflow pro! With a subscription, you are ensuring the sustainable maintenance and development of our open-source libraries."
       />
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <NotSubscribedNotification />
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
         {examples.react
           .filter((example) => !example.hidden)
           .map((example) => (
