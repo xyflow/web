@@ -21,6 +21,7 @@ import mdxComponents from './mdx-components';
 import DownloadSandpackButton from './sandpack-downloader';
 import FullScreenButton from './fullscreen-button';
 import OverviewButton from './overview-button';
+import Toolbar from './toolbar';
 
 export type ProCodeViewerProps = {
   exampleId: string;
@@ -135,10 +136,6 @@ export default function ProCodeViewer({
           )}
           {description && <Text size="lg">{description}</Text>}
         </div>
-        <div className="space-x-2">
-          {/* <DownloadSandpackButton fileName={`${exampleId}-example`} /> */}
-          <FullScreenButton exampleId={exampleId} />
-        </div>
         <div>
           <MDXRemote {...readme} components={mdxComponents} />
         </div>
@@ -151,16 +148,20 @@ export default function ProCodeViewer({
         </div>
       </div>
       {/* </Resizable> */}
-      <div className="bg-red-500 sticky top-0 h-[100vh]">
+      <div className="sticky top-0 h-[100vh]">
         <SandpackProvider
           template="react-ts"
           customSetup={customSetup}
           files={{ ...files, ...hiddenBaseStyles }}
           options={customSandpackOptions}
           theme={aquaBlue}
+          className="h-[100vh] relative"
         >
-          <SandpackPreview style={{ height: '50%' }} showOpenInCodeSandbox={isDevelopment()} />
-          <SandpackCodeEditor style={{ height: '50%' }} />
+          <div className="flex flex-col h-[100vh]">
+            <Toolbar />
+            <SandpackPreview className="h-[45%] flex-shrink-0" showOpenInCodeSandbox={isDevelopment()} />
+            <SandpackCodeEditor className="flex-grow-1 flex-shrink-1 overflow-hidden" />
+          </div>
         </SandpackProvider>
         {/* <Resizable
             defaultSize={{

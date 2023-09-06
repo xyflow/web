@@ -3,7 +3,7 @@ import ExampleTeaser from '@/components/ExampleTeaser';
 
 import { getExamples } from '@/utils/server/examples';
 
-const examples = getExamples();
+const examples = getExamples({ includeFiles: false });
 
 export default async function ProExamplesOverview() {
   return (
