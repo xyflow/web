@@ -1,6 +1,7 @@
 import { useEffect, useState, useMemo } from 'react';
 import ReactViewer from './react-viewer';
 import SvelteViewer from './svelte-viewer';
+import AgnosticViewer from './agnostic-viewer'
 
 import { Framework } from '@/types';
 import { getScriptExtension } from './utils';
@@ -25,6 +26,7 @@ type CodeViewerProps = {
   sandpackOptions?: Record<string, any>;
   showOpenInCodeSandbox?: boolean;
   framework?: Framework;
+  custom_examples?: boolean;
 };
 
 export default function CodeViewer({
@@ -34,6 +36,7 @@ export default function CodeViewer({
   activeFile = null,
   isTypescript = false,
   framework = 'react',
+  custom_examples = false,
   ...rest
 }: CodeViewerProps) {
   const [files, setFiles] = useState(null);
@@ -41,11 +44,15 @@ export default function CodeViewer({
 
   useEffect(() => {
     const loadFiles = async () => {
+      // const folder = framework === 'svelte' ? '../../../../../apps/example-viewer-svelte/src/examples' : ''
+
       const res = await import(
         `!raw-loader!./${codePath}/index.${scriptExtension}`
       );
 
-      const pathPrefix = framework === 'svelte' ? 'src' : '';
+
+      // const pathPrefix = framework === 'svelte' ? 'src' : '';
+      const pathPrefix = '';
 
       const additional = {};
 
@@ -73,17 +80,33 @@ export default function CodeViewer({
       });
     };
 
-    loadFiles();
+    async function loadFilesCustom() {
+      const response = await fetch(`http://localhost:5173/${codePath}`, { method: 'POST' })
+
+      if (response.ok) {
+        const files = await response.json()
+        setFiles(files)
+      }
+
+    }
+
+    if (!custom_examples) {
+      loadFiles();
+    } else {
+      loadFilesCustom();
+    }
   }, []);
 
   const editorHeight = options?.editorHeight || '70vh';
+
+  // console.log(files)
 
   if (!files) {
     return <div style={{ minHeight: editorHeight }} />;
   }
 
   return framework === 'svelte' ? (
-    <SvelteViewer files={files} editorHeight={editorHeight} />
+    <AgnosticViewer files={files} editorHeight={editorHeight} framework={framework} codePath={codePath} custom_examples={custom_examples} {...rest} />
   ) : (
     <ReactViewer files={files} editorHeight={editorHeight} {...rest} />
   );
