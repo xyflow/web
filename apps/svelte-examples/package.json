@@ -3,14 +3,14 @@
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
-		"dev": "vite dev",
-		"build": "vite build",
+		"dev": "./create_endpoints.sh && vite dev",
+		"build": "./create_endpoints.sh && vite build",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
 		"format": "prettier --plugin-search-dir . --write .",
-		"generate": "./generate_routes.sh"
+		"create:endpoints": "./create_endpoints.sh"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^2.0.0",

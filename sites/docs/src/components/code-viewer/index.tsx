@@ -1,10 +1,10 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState } from 'react';
 import ReactViewer from './react-viewer';
-import SvelteViewer from './svelte-viewer';
-import AgnosticViewer from './agnostic-viewer'
+import AgnosticViewer from './agnostic-viewer';
 
 import { Framework } from '@/types';
 import { getScriptExtension } from './utils';
+import { SVELTE_EXAMPLES_URL } from '@/constants';
 
 const defaultOptions = {
   editorHeight: '70vh',
@@ -26,7 +26,6 @@ type CodeViewerProps = {
   sandpackOptions?: Record<string, any>;
   showOpenInCodeSandbox?: boolean;
   framework?: Framework;
-  custom_examples?: boolean;
 };
 
 export default function CodeViewer({
@@ -36,23 +35,16 @@ export default function CodeViewer({
   activeFile = null,
   isTypescript = false,
   framework = 'react',
-  custom_examples = false,
   ...rest
 }: CodeViewerProps) {
   const [files, setFiles] = useState(null);
   const scriptExtension = getScriptExtension({ framework, isTypescript });
 
   useEffect(() => {
-    const loadFiles = async () => {
-      // const folder = framework === 'svelte' ? '../../../../../apps/example-viewer-svelte/src/examples' : ''
-
+    const loadLocalFiles = async () => {
       const res = await import(
         `!raw-loader!./${codePath}/index.${scriptExtension}`
       );
-
-
-      // const pathPrefix = framework === 'svelte' ? 'src' : '';
-      const pathPrefix = '';
 
       const additional = {};
 
@@ -61,7 +53,7 @@ export default function CodeViewer({
           const file = await import(
             `!raw-loader!./${codePath}/${additionalFile}`
           );
-          additional[`${pathPrefix}/${additionalFile}`] = {
+          additional[`/${additionalFile}`] = {
             code: file.default,
           };
 
@@ -70,43 +62,48 @@ export default function CodeViewer({
           }
         } else {
           const fileName = Object.keys(additionalFile)[0];
-          additional[`${pathPrefix}/${fileName}`] = additionalFile[fileName];
+          additional[`/${fileName}`] = additionalFile[fileName];
         }
       }
 
       setFiles({
-        [`${pathPrefix}/App.${scriptExtension}`]: res.default,
+        [`/App.${scriptExtension}`]: res.default,
         ...additional,
       });
     };
 
-    async function loadFilesCustom() {
-      const response = await fetch(`http://localhost:5173/${codePath}`, { method: 'POST' })
+    async function loadFilesSvelte() {
+      const response = await fetch(`${SVELTE_EXAMPLES_URL}${codePath}`, {
+        method: 'POST',
+      });
 
       if (response.ok) {
-        const files = await response.json()
-        setFiles(files)
+        const files = await response.json();
+        setFiles(files);
       }
-
     }
 
-    if (!custom_examples) {
-      loadFiles();
+    if (framework === 'svelte') {
+      loadFilesSvelte();
     } else {
-      loadFilesCustom();
+      loadLocalFiles();
     }
   }, []);
 
   const editorHeight = options?.editorHeight || '70vh';
-
-  // console.log(files)
 
   if (!files) {
     return <div style={{ minHeight: editorHeight }} />;
   }
 
   return framework === 'svelte' ? (
-    <AgnosticViewer files={files} editorHeight={editorHeight} framework={framework} codePath={codePath} custom_examples={custom_examples} {...rest} />
+    <AgnosticViewer
+      files={files}
+      editorHeight={editorHeight}
+      framework={framework}
+      codePath={codePath}
+      {...rest}
+    />
   ) : (
     <ReactViewer files={files} editorHeight={editorHeight} {...rest} />
   );
