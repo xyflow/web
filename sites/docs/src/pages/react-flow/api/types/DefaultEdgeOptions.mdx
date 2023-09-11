@@ -1,0 +1,28 @@
+import { PropsTable } from '@/components/props-table';
+import { defaultEdgeOptionsFields } from './DefaultEdgeOptions.fields.ts';
+
+# DefaultEdgeOptions&lt;T>
+
+[source](https://github.com/wbkd/react-flow/blob/40115eea1b90e2c0c8dd280a02652ab107f21d59/packages/core/src/types/edges.ts#L65)
+
+```ts
+export type DefaultEdgeOptions<T> = {
+  type?: string;
+  animated?: boolean;
+  hidden?: boolean;
+  deletable?: boolean;
+  selectable?: boolean;
+  data?: T;
+  selected?: boolean;
+  markerStart?: EdgeMarkerType;
+  markerEnd?: EdgeMarkerType;
+  zIndex?: number;
+  ariaLabel?: string;
+  interactionWidth?: number;
+  focusable?: boolean;
+};
+```
+
+## Fields
+
+<PropsTable {...defaultEdgeOptionsFields} />
