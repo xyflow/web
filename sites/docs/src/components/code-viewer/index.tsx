@@ -1,10 +1,7 @@
-import { useEffect, useState } from 'react';
-import ReactViewer from './react-viewer';
-import AgnosticViewer from './agnostic-viewer';
-
 import { Framework } from '@/types';
-import { getScriptExtension } from './utils';
-import { SVELTE_EXAMPLES_URL } from '@/constants';
+
+import ReactExample from './react-example';
+import SvelteExample from './svelte-example';
 
 const defaultOptions = {
   editorHeight: '70vh',
@@ -37,74 +34,36 @@ export default function CodeViewer({
   framework = 'react',
   ...rest
 }: CodeViewerProps) {
-  const [files, setFiles] = useState(null);
-  const scriptExtension = getScriptExtension({ framework, isTypescript });
+  const editorHeight = options?.editorHeight || defaultOptions.editorHeight;
 
-  useEffect(() => {
-    const loadLocalFiles = async () => {
-      const res = await import(
-        `!raw-loader!./${codePath}/index.${scriptExtension}`
-      );
-
-      const additional = {};
-
-      for (let additionalFile of additionalFiles) {
-        if (typeof additionalFile === 'string') {
-          const file = await import(
-            `!raw-loader!./${codePath}/${additionalFile}`
-          );
-          additional[`/${additionalFile}`] = {
-            code: file.default,
-          };
-
-          if (additionalFile === activeFile) {
-            additional[`/${additionalFile}`].active = true;
-          }
-        } else {
-          const fileName = Object.keys(additionalFile)[0];
-          additional[`/${fileName}`] = additionalFile[fileName];
-        }
+  function getViewer(framework: string) {
+    switch (framework) {
+      case 'react': {
+        return (
+          <ReactExample
+            codePath={codePath}
+            isTypescript={isTypescript}
+            framework={framework}
+            editorHeight={editorHeight}
+            additionalFiles={additionalFiles}
+            {...rest}
+          />
+        );
       }
-
-      setFiles({
-        [`/App.${scriptExtension}`]: res.default,
-        ...additional,
-      });
-    };
-
-    async function loadFilesSvelte() {
-      const response = await fetch(`${SVELTE_EXAMPLES_URL}${codePath}`, {
-        method: 'POST',
-      });
-
-      if (response.ok) {
-        const files = await response.json();
-        setFiles(files);
+      case 'svelte': {
+        return (
+          <SvelteExample
+            codePath={codePath}
+            framework={framework}
+            editorHeight={editorHeight}
+            {...rest}
+          />
+        );
       }
+      default:
+        return <div>NO EXMPLE IMPLEMENTED</div>;
     }
-
-    if (framework === 'svelte') {
-      loadFilesSvelte();
-    } else {
-      loadLocalFiles();
-    }
-  }, []);
-
-  const editorHeight = options?.editorHeight || '70vh';
-
-  if (!files) {
-    return <div style={{ minHeight: editorHeight }} />;
   }
 
-  return framework === 'svelte' ? (
-    <AgnosticViewer
-      files={files}
-      editorHeight={editorHeight}
-      framework={framework}
-      codePath={codePath}
-      {...rest}
-    />
-  ) : (
-    <ReactViewer files={files} editorHeight={editorHeight} {...rest} />
-  );
+  return getViewer(framework);
 }

@@ -43,12 +43,12 @@ type CodeViewerProps = {
   showPreview?: boolean;
   isTypescript?: boolean;
   customPreview?: React.ReactNode;
+  customOpenButton?: React.ReactNode;
   sandpackOptions?: Record<string, any>;
   showOpenInCodeSandbox?: boolean;
   framework?: Framework;
   files?: SandpackFiles;
   editorHeight?: string | number;
-  codePath: string;
 };
 
 const defaultSetup = {
@@ -58,17 +58,17 @@ const defaultSetup = {
 };
 
 export default function CodeViewer({
+  framework,
   dependencies = {},
   showEditor = true,
   showPreview = true,
   isTypescript = false,
   customPreview = null,
+  customOpenButton = null,
   sandpackOptions = {},
   showOpenInCodeSandbox = true,
   files = {},
   editorHeight = '70vh',
-  framework,
-  codePath,
 }: CodeViewerProps) {
   const customSetup = useMemo(
     () => ({
@@ -84,8 +84,6 @@ export default function CodeViewer({
   const panelStyle = { height: editorHeight };
   sandpackOptions.readOnly = !!customPreview;
 
-  console.log(files);
-
   return (
     <div className="my-4" style={{ minHeight: editorHeight }}>
       <SandpackProvider
@@ -94,48 +92,43 @@ export default function CodeViewer({
         }
         options={sandpackOptions}
         customSetup={customSetup}
-        files={files}
+        files={{
+          ...files,
+          ...hiddenBaseStyles,
+        }}
       >
         <SandpackLayout>
           {showEditor && <SandpackCodeEditor style={panelStyle} />}
-          {framework === 'react' && (
+          {showPreview && customPreview ? (
             <>
-              {showPreview && customPreview ? (
-                <>
-                  <SandpackStack style={{ flex: '1 1 0%' }}>
-                    <div
-                      className="sp-preview-container"
-                      style={{ flex: '1 1 0%', height: '100%' }}
-                    >
-                      {customPreview}
-                      <div
-                        className="sp-preview-actions"
-                        style={{
-                          zIndex: 10,
-                          position: 'absolute',
-                          bottom: 10,
-                          right: 10,
-                        }}
-                      >
-                        <OpenInCodeSandboxButton />
-                      </div>
-                    </div>
-                  </SandpackStack>
-                </>
-              ) : (
-                <SandpackPreview
-                  style={panelStyle}
-                  showOpenInCodeSandbox={showOpenInCodeSandbox}
-                />
-              )}
+              <SandpackStack style={{ flex: '1 1 0%', height: editorHeight }}>
+                <div
+                  className="sp-preview-container"
+                  style={{ flex: '1 1 0%', height: '100%' }}
+                >
+                  {customPreview}
+                  <div
+                    className="sp-preview-actions"
+                    style={{
+                      zIndex: 10,
+                      position: 'absolute',
+                      bottom: 10,
+                      right: 10,
+                    }}
+                  >
+                    {showOpenInCodeSandbox && !customOpenButton && (
+                      <OpenInCodeSandboxButton />
+                    )}
+                    {customOpenButton}
+                  </div>
+                </div>
+              </SandpackStack>
             </>
-          )}
-          {framework === 'svelte' && (
-            <iframe
-              src={`${SVELTE_EXAMPLES_URL}${codePath}`}
-              width="100%"
-              height="500px"
-            ></iframe>
+          ) : (
+            <SandpackPreview
+              style={panelStyle}
+              showOpenInCodeSandbox={showOpenInCodeSandbox}
+            />
           )}
         </SandpackLayout>
       </SandpackProvider>

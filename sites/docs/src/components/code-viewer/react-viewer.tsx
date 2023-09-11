@@ -82,7 +82,7 @@ export default function CodeViewer({
   sandpackOptions.readOnly = !!customPreview;
 
   return (
-    <div className='my-4' style={{ minHeight: editorHeight }}>
+    <div className="my-4" style={{ minHeight: editorHeight }}>
       <SandpackProvider
         template={isTypescript ? 'react-ts' : 'react'}
         options={sandpackOptions}
@@ -98,12 +98,12 @@ export default function CodeViewer({
             <>
               <SandpackStack style={{ flex: '1 1 0%' }}>
                 <div
-                  className='sp-preview-container'
+                  className="sp-preview-container"
                   style={{ flex: '1 1 0%', height: '100%' }}
                 >
                   {customPreview}
                   <div
-                    className='sp-preview-actions'
+                    className="sp-preview-actions"
                     style={{
                       zIndex: 10,
                       position: 'absolute',
