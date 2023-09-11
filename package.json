@@ -5,11 +5,10 @@
     "preinstall": "npx only-allow pnpm",
     "build": "turbo run build",
     "dev": "turbo run dev",
-    "dev:docs": "turbo run dev --filter xyflow-docs",
+    "dev:docs": "turbo run dev --filter xyflow-docs --filter svelte-examples",
     "dev:platform": "turbo run dev --filter xyflow-platform",
     "dev:style": "turbo run dev --filter xy-styleguide",
     "dev:nhost": "turbo run dev --filter xyflow-nhost",
-    "dev:svelte": "turbo run storybook --filter xyflow-examples-svelte",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "clean": "pnpm -r --parallel exec rimraf dist .turbo node_modules"
