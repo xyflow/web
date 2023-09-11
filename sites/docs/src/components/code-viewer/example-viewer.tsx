@@ -49,6 +49,7 @@ type CodeViewerProps = {
   framework?: Framework;
   files?: SandpackFiles;
   editorHeight?: string | number;
+  readOnly?: boolean;
 };
 
 const defaultSetup = {
@@ -69,6 +70,7 @@ export default function CodeViewer({
   showOpenInCodeSandbox = true,
   files = {},
   editorHeight = '70vh',
+  readOnly = false,
 }: CodeViewerProps) {
   const customSetup = useMemo(
     () => ({
@@ -98,7 +100,9 @@ export default function CodeViewer({
         }}
       >
         <SandpackLayout>
-          {showEditor && <SandpackCodeEditor style={panelStyle} />}
+          {showEditor && (
+            <SandpackCodeEditor readOnly={readOnly} style={panelStyle} />
+          )}
           {showPreview && customPreview ? (
             <>
               <SandpackStack style={{ flex: '1 1 0%', height: editorHeight }}>

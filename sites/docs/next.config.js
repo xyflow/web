@@ -26,7 +26,7 @@ const nextConfig = {
       destination: '/react-flow/api/:path*',
       permanent: false,
     },
-  ]
+  ],
 };
 
 const withNextra = require('nextra')({

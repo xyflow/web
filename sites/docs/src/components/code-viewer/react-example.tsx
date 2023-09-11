@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import AgnosticViewer from './agnostic-viewer';
+import ExampleViewer from './example-viewer';
 import { getScriptExtension, loadLocalFiles } from './utils';
 
 import { Framework } from '@/types';
@@ -48,7 +48,7 @@ export default function ReactExample({
   }
 
   return (
-    <AgnosticViewer
+    <ExampleViewer
       files={files}
       activeFile={activeFile}
       framework={framework}

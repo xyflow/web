@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import sdk from '@stackblitz/sdk';
 
 import { Button } from 'xy-ui';
-import AgnosticViewer from './agnostic-viewer';
+import ExampleViewer from './example-viewer';
 import SvelteSetup from './svelte/setup';
 
 import { Framework } from '@/types';
@@ -25,13 +25,16 @@ export default function SvelteExample({
   const [fileFetchFailed, setFileFetchFailed] = useState(false);
 
   function openInStackblitz() {
-    const stackblitzFiles = {};
-
     // rename files to land in folder src/example/ on stackblitz
-    Object.keys(files).forEach((fileName) => {
-      const newFileName = `src/example/${fileName}`;
-      stackblitzFiles[newFileName] = files[fileName];
-    });
+    const stackblitzFiles = Object.keys(files).reduce(
+      (filesAcc: { [key: string]: string }, fileName) => {
+        const newFileName = `src/example/${fileName}`;
+        filesAcc[newFileName] = files[fileName];
+
+        return filesAcc;
+      },
+      {}
+    );
 
     sdk.openProject(
       {
@@ -73,24 +76,30 @@ export default function SvelteExample({
 
   if (!files) {
     return (
-      <div style={{ minHeight: editorHeight }}>
+      <>
         {fileFetchFailed && (
           <div
-            // style={{ background: 'red', height: editorHeight, color: 'white' }}
-            className=""
+            style={{ height: editorHeight }}
+            className="w-full color nx-bg-primary-100 flex justify-center content-center flex-wrap"
           >
-            Example failed to load.
+            <p
+              style={{ color: 'rgb(230, 115, 0)' }}
+              className="color-primary-foreground"
+            >
+              Example failed to load
+            </p>
           </div>
         )}
-      </div>
+      </>
     );
   }
 
   return (
-    <AgnosticViewer
+    <ExampleViewer
       files={files}
       editorHeight={editorHeight}
       showOpenInCodeSandbox={false}
+      readOnly
       customPreview={
         <iframe
           src={`${SVELTE_EXAMPLES_URL}${codePath}`}

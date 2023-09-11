@@ -5,22 +5,24 @@
 import { json } from '@sveltejs/kit';
 
 export function POST() {
-	const files = import.meta.glob(['./*.js', './*.ts', './*.svelte', './*css', '!**/+server.ts'], {
-		as: 'raw',
-		eager: true
-	});
+  const files = import.meta.glob(['./*.js', './*.ts', './*.svelte', './*css', '!**/+server.ts'], {
+    as: 'raw',
+    eager: true
+  });
 
-	const filesClean = {};
+  let filesClean: { [key: string]: string } = {};
 
-	// Loose ./ for each filename
-	// +page.svelte becomes App.svelte for correct display in Sandpack
-	Object.keys(files).forEach((filename) => {
-		if (filename === './+page.svelte') {
-			filesClean['App.svelte'] = files[filename];
-		} else {
-			filesClean[filename.substring(2)] = files[filename];
-		}
-	});
+  // Loose ./ for each filename
+  // +page.svelte becomes App.svelte for correct display in Sandpack
+  filesClean = Object.keys(files).reduce((filesCleanAcc: { [key: string]: string }, filename) => {
+    if (filename === './+page.svelte') {
+      filesCleanAcc['App.svelte'] = files[filename];
+    } else {
+      filesCleanAcc[filename.substring(2)] = files[filename];
+    }
 
-	return json(filesClean);
+    return filesCleanAcc;
+  }, {});
+
+  return json(filesClean);
 }

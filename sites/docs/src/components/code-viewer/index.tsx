@@ -36,34 +36,26 @@ export default function CodeViewer({
 }: CodeViewerProps) {
   const editorHeight = options?.editorHeight || defaultOptions.editorHeight;
 
-  function getViewer(framework: string) {
-    switch (framework) {
-      case 'react': {
-        return (
-          <ReactExample
-            codePath={codePath}
-            isTypescript={isTypescript}
-            framework={framework}
-            editorHeight={editorHeight}
-            additionalFiles={additionalFiles}
-            {...rest}
-          />
-        );
-      }
-      case 'svelte': {
-        return (
-          <SvelteExample
-            codePath={codePath}
-            framework={framework}
-            editorHeight={editorHeight}
-            {...rest}
-          />
-        );
-      }
-      default:
-        return <div>NO EXMPLE IMPLEMENTED</div>;
-    }
-  }
-
-  return getViewer(framework);
+  return (
+    <>
+      {framework === 'react' && (
+        <ReactExample
+          codePath={codePath}
+          isTypescript={isTypescript}
+          framework={framework}
+          editorHeight={editorHeight}
+          additionalFiles={additionalFiles}
+          {...rest}
+        />
+      )}
+      {framework === 'svelte' && (
+        <SvelteExample
+          codePath={codePath}
+          framework={framework}
+          editorHeight={editorHeight}
+          {...rest}
+        />
+      )}
+    </>
+  );
 }
