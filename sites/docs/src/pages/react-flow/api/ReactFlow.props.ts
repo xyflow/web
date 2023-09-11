@@ -6,22 +6,6 @@ const links = {
   ProOptions: '#prooptions',
   OnConnectStartParams: '#onconnectstartparams',
   OnSelectionChangeParams: '#onselectionchangeparams',
-
-  // External links
-  CSSProperties:
-    'https://github.com/DefinitelyTyped/DefinitelyTyped/blob/61c7bb49838a155b2b0476bb97d5e707ca80a23b/types/react/v17/index.d.ts#L1545',
-  MouseEvent:
-    'https://github.com/DefinitelyTyped/DefinitelyTyped/blob/61c7bb49838a155b2b0476bb97d5e707ca80a23b/types/react/v17/index.d.ts#L1226C6-L1226C6',
-  ComponentType:
-    'https://github.com/DefinitelyTyped/DefinitelyTyped/blob/61c7bb49838a155b2b0476bb97d5e707ca80a23b/types/react/v17/index.d.ts#L75',
-
-  // Types docs
-  ...Object.fromEntries(
-    Object.keys(Types).map((t) => [
-      t.split('.')[0],
-      `/react-flow/api/types/${t}`,
-    ])
-  ),
 };
 
 export const commonProps: PropsTableProps = {
@@ -44,6 +28,8 @@ export const commonProps: PropsTableProps = {
   info: {
     nodes: 'The nodes to render in a controlled flow.',
     defaultNodes: 'The initial nodes to render in an uncontrolled flow.',
+    onNodesChange:
+      'blah blah blah this is a really long line of text and a very detailed description wow I learned so much by reading this.',
   },
 };
 

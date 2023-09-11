@@ -1,9 +1,4 @@
 import { type PropsTableProps } from '@/components/props-table';
-import * as Types from './_meta.json';
-
-const links = Object.fromEntries(
-  Object.keys(Types).map((t) => [t.split('.')[0], `/react-flow/api/types/${t}`])
-);
 
 export const nodeDimensionChangeFields: PropsTableProps = {
   props: [

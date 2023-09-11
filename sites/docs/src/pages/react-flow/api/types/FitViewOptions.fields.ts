@@ -1,5 +1,4 @@
 import { type PropsTableProps } from '@/components/props-table';
-import * as Types from '../types/_meta.json';
 
 export const fitViewOptionsFields: PropsTableProps = {
   props: [
