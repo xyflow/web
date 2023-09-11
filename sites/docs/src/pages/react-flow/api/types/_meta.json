@@ -9,6 +9,7 @@
   "EdgeMarker": "EdgeMarker",
   "EdgeProps": "EdgeProps<T>",
   "FitViewOptions": "FitViewOptions",
+  "MarkerType": "MarkerType",
   "Node": "Node<T, U>",
   "NodeChange": "NodeChange",
   "NodeProps": "NodeProps<T>",
