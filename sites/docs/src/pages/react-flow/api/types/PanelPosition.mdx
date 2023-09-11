@@ -1,0 +1,18 @@
+# PanelPosition
+
+This type is mostly used to help position things on top of the flow viewport. For
+example both the [`<MiniMap />`](/react-flow/api/components/MiniMap) and
+[`<Controls />`](/react-flow/api/components/Controls) components take a `position`
+prop of this type.
+
+```ts
+export type PanelPosition =
+  | 'top-left'
+  | 'top-center'
+  | 'top-right'
+  | 'bottom-left'
+  | 'bottom-center'
+  | 'bottom-right';
+```
+
+[source](https://github.com/wbkd/react-flow/blob/40115eea1b90e2c0c8dd280a02652ab107f21d59/packages/core/src/types/general.ts#L269C1-L270C1)
