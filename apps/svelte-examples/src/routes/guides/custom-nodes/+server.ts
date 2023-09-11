@@ -12,6 +12,8 @@ export function POST() {
 
 	const filesClean = {};
 
+	// Loose ./ for each filename
+	// +page.svelte becomes App.svelte for correct display in Sandpack
 	Object.keys(files).forEach((filename) => {
 		if (filename === './+page.svelte') {
 			filesClean['App.svelte'] = files[filename];
@@ -19,9 +21,6 @@ export function POST() {
 			filesClean[filename.substring(2)] = files[filename];
 		}
 	});
-
-	// files['App.svelte'] = files['./+page.svelte'];
-	// delete files['./+page.svelte'];
 
 	return json(filesClean);
 }
