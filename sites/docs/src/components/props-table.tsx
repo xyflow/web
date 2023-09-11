@@ -31,9 +31,13 @@ export function PropsTable({
   );
   const linkify = useCallback(
     (type: string) =>
-      type.match(/(\w+|\W+)/g).map((chunk) =>
+      type.match(/(\w+|\W+)/g).map((chunk, i) =>
         chunk in allLinks ? (
-          <Link href={allLinks[chunk]} className="text-react">
+          <Link
+            key={`${chunk}-${i}`}
+            href={allLinks[chunk]}
+            className="text-react"
+          >
             {chunk}
           </Link>
         ) : (
@@ -41,23 +45,6 @@ export function PropsTable({
         )
       ),
     [links]
-  );
-  const Info = useCallback(
-    ({ name }: { name: string }) =>
-      name in info && (
-        <Popover>
-          <PopoverTrigger>
-            <Text
-              size="xs"
-              className="inline-flex border justify-center items-center hover:bg-gray-50 text-react rounded-lg w-6 h-6"
-            >
-              ?
-            </Text>
-          </PopoverTrigger>
-          <PopoverContent>{info[name]}</PopoverContent>
-        </Popover>
-      ),
-    [info]
   );
 
   return (
@@ -68,7 +55,6 @@ export function PropsTable({
           <th align="left" className="py-2 px-2">
             Name
           </th>
-          <th className="px-2 py-2" />
           <th align="left" className="py-2 px-2">
             Type
           </th>
@@ -79,11 +65,33 @@ export function PropsTable({
           )}
         </tr>
       </thead>
-      <tbody className="divide-y">
-        {props.map(([name, type, default_]) => {
-          if (!type && !default_) {
-            return (
-              <tr key={name} className="bg-gray-50">
+
+      {/* This might seem like a hella contrived way to go about things but let
+          me break it down. For props with an optional description, we want to
+          render a second row underneath the usual defaults, and crucially we
+          want that row to span both the "type" and "default" columns.
+
+          That means we can't just plonk the description in an existing <td>. Your
+          first instinct might be to just render a fragment and produce two rows,
+          and that was mine too! 
+
+          It's super nit-picky but if you do this group-hover doesn't work correctly
+          and the description row doesn't turn grey when the user hovers over it.
+
+          It turns our it's semanticall valid to render as many <tbody>s as you 
+          like as long as they all appear after a <thead> and before a <tfoot>,
+          so that's what we have to do.
+
+          We need the markup to be semantically valid because next "helpfully"
+          does markup validation when statically generating pages.
+      */}
+      {props.map(([name, type, default_]) => {
+        const id = name.toLowerCase().trim();
+
+        return (
+          <tbody key={id} className="hover:bg-gray-50 group border-t">
+            {!type && !default_ ? (
+              <tr className="bg-gray-50 border-t">
                 <th
                   colSpan={3}
                   className="py-1 px-2 font-bold sticky top-0 text-left"
@@ -91,39 +99,67 @@ export function PropsTable({
                   {name}
                 </th>
               </tr>
-            );
-          }
+            ) : name in info ? (
+              <>
+                <tr id={id}>
+                  <td className="px-2 w-8">
+                    <Link
+                      className={`invisible group-hover:visible text-${variant}`}
+                      href={
+                        deeplinkPrefix ? `#${deeplinkPrefix}-${id}` : `#${id}`
+                      }
+                    >
+                      #
+                    </Link>
+                  </td>
+                  <td className="flex justify-between py-1 px-2">
+                    <Text>{name}</Text>
+                  </td>
+                  <td className="px-2">
+                    <code>{linkify(type)}</code>
+                  </td>
+                  {shouldShowDefault && (
+                    <td className="px-2 hidden md:table-cell">
+                      {default_ ? <code>{linkify(default_)}</code> : '-'}
+                    </td>
+                  )}
+                </tr>
 
-          const id = name.toLowerCase().trim();
-
-          return (
-            <tr key={name} id={id} className="hover:bg-gray-50 group">
-              <td className="px-2 w-8">
-                <Link
-                  className={`invisible group-hover:visible text-${variant}`}
-                  href={deeplinkPrefix ? `#${deeplinkPrefix}-${id}` : `#${id}`}
-                >
-                  #
-                </Link>
-              </td>
-              <td className="flex justify-between py-1 px-2">
-                <Text>{name}</Text>
-              </td>
-              <td className="px-2">
-                <Info name={name} />
-              </td>
-              <td className="px-2">
-                <code>{linkify(type)}</code>
-              </td>
-              {shouldShowDefault && (
-                <td className="px-2 hidden md:table-cell">
-                  {default_ ? <code>{linkify(default_)}</code> : '-'}
+                <tr className="!border-0">
+                  <td className="px-2" colSpan={2} />
+                  <td className="px-2" colSpan={2}>
+                    {info[name]}
+                  </td>
+                </tr>
+              </>
+            ) : (
+              <tr id={id}>
+                <td className="px-2 w-8">
+                  <Link
+                    className={`invisible group-hover:visible text-${variant}`}
+                    href={
+                      deeplinkPrefix ? `#${deeplinkPrefix}-${id}` : `#${id}`
+                    }
+                  >
+                    #
+                  </Link>
                 </td>
-              )}
-            </tr>
-          );
-        })}
-      </tbody>
+                <td className="flex justify-between py-1 px-2">
+                  <Text>{name}</Text>
+                </td>
+                <td className="px-2">
+                  <code>{linkify(type)}</code>
+                </td>
+                {shouldShowDefault && (
+                  <td className="px-2 hidden md:table-cell">
+                    {default_ ? <code>{linkify(default_)}</code> : '-'}
+                  </td>
+                )}
+              </tr>
+            )}
+          </tbody>
+        );
+      })}
     </table>
   );
 }
