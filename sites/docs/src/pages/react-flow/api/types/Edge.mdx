@@ -19,8 +19,8 @@ export type EdgeBase<EdgeData = any> = {
   selectable?: boolean;
   data?: EdgeData;
   selected?: boolean;
-  markerStart?: EdgeMarkerType;
-  markerEnd?: EdgeMarkerType;
+  markerStart?: string | EdgeMarker;
+  markerEnd?: string | EdgeMarker;
   zIndex?: number;
   ariaLabel?: string;
   interactionWidth?: number;

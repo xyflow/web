@@ -1,13 +1,18 @@
 {
   "Connection": "Connection",
+  "ConnectionLineComponentProps": "ConnectionLineComponentProps",
+  "ConnectionLineType": "ConnectionLineType",
   "CoordinateExtent": "CoordinateExtent",
+  "DefaultEdgeOptions": "DefaultEdgeOptions",
   "Edge": "Edge<T>",
   "EdgeChange": "EdgeChange",
+  "EdgeMarker": "EdgeMarker",
   "EdgeProps": "EdgeProps<T>",
   "FitViewOptions": "FitViewOptions",
   "Node": "Node<T, U>",
   "NodeChange": "NodeChange",
   "NodeProps": "NodeProps<T>",
+  "PanelPosition": "PanelPosition",
   "ReactFlowInstance": "ReactFlowInstance<T, U>",
   "Viewport": "Viewport"
 }

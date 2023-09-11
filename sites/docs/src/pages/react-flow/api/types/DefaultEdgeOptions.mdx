@@ -14,8 +14,8 @@ export type DefaultEdgeOptions<T> = {
   selectable?: boolean;
   data?: T;
   selected?: boolean;
-  markerStart?: EdgeMarkerType;
-  markerEnd?: EdgeMarkerType;
+  markerStart?: string | EdgeMarker;
+  markerEnd?: string | EdgeMarker;
   zIndex?: number;
   ariaLabel?: string;
   interactionWidth?: number;

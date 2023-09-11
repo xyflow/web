@@ -180,7 +180,10 @@ export const connectionLineProps: PropsTableProps = {
     ['connectionRadius', 'number', '20'],
     ['connectionLineType', 'ConnectionLineType', 'ConnectionLineType.Bezier'],
     ['connectionLineStyle', 'React.CSSProperties'],
-    ['connectionLineComponent', 'React.ComponentType<ConnectionLineProps>'],
+    [
+      'connectionLineComponent',
+      'React.ComponentType<ConnectionLineComponentProps>',
+    ],
     ['connectionLineWrapperStyles', 'React.CSSProperties'],
   ],
   links: links,
