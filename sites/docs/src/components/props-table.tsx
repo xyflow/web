@@ -99,7 +99,7 @@ export function PropsTable({
                   {name}
                 </th>
               </tr>
-            ) : name in info ? (
+            ) : (
               <>
                 <tr id={id}>
                   <td className="px-2 w-8">
@@ -125,37 +125,15 @@ export function PropsTable({
                   )}
                 </tr>
 
-                <tr className="!border-0">
-                  <td className="px-2" colSpan={2} />
-                  <td className="px-2" colSpan={2}>
-                    {info[name]}
-                  </td>
-                </tr>
-              </>
-            ) : (
-              <tr id={id}>
-                <td className="px-2 w-8">
-                  <Link
-                    className={`invisible group-hover:visible text-${variant}`}
-                    href={
-                      deeplinkPrefix ? `#${deeplinkPrefix}-${id}` : `#${id}`
-                    }
-                  >
-                    #
-                  </Link>
-                </td>
-                <td className="flex justify-between py-1 px-2">
-                  <Text>{name}</Text>
-                </td>
-                <td className="px-2">
-                  <code>{linkify(type)}</code>
-                </td>
-                {shouldShowDefault && (
-                  <td className="px-2 hidden md:table-cell">
-                    {default_ ? <code>{linkify(default_)}</code> : '-'}
-                  </td>
+                {name in info && (
+                  <tr className="!border-0">
+                    <td className="px-2" colSpan={2} />
+                    <td className="px-2" colSpan={2}>
+                      {info[name]}
+                    </td>
+                  </tr>
                 )}
-              </tr>
+              </>
             )}
           </tbody>
         );
