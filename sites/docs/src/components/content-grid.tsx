@@ -1,5 +1,5 @@
 import cn from 'clsx';
-import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 export default function ContentGrid({
   className,
@@ -29,18 +29,32 @@ export function ContentGridItem({
   route?: string;
   children: React.ReactNode;
 }) {
-  const { push } = useRouter();
+  const isExternal = route?.includes('https://');
+  const linkProps = isExternal
+    ? {
+        target: '_blank',
+        rel: 'noopener noreferrer',
+      }
+    : {};
+
+  const LinkOrDiv = (props) =>
+    route && isExternal ? (
+      <a href={route} {...props} {...linkProps} />
+    ) : route ? (
+      <Link href={route} {...props} />
+    ) : (
+      <div {...props} />
+    );
 
   return (
-    <div
+    <LinkOrDiv
       className={cn(
         'odd:border-r border-b border-gray-100 border-solid px-8 py-10 lg:py-16',
         route && 'cursor-pointer hover:bg-gray-100/50',
         className
       )}
-      onClick={route ? () => push(route) : undefined}
     >
       {children}
-    </div>
+    </LinkOrDiv>
   );
 }

@@ -6,7 +6,7 @@ import useXYSite from '@/hooks/use-xy-site';
 
 function AppWindow({ children }: { children: ReactNode }) {
   return (
-    <div className="border border-solid border-gray-600 rounded-md max-w-3xl mx-auto">
+    <div className="border border-solid border-gray-600 rounded-md max-w-3xl mx-auto bg-black">
       <div className="flex p-4">
         <div className="w-3 h-3 bg-red-500 rounded-full mr-2" />
         <div className="w-3 h-3 bg-yellow-500 rounded-full mr-2" />
@@ -30,13 +30,13 @@ export default function GettingStarted() {
           Getting Started with {lib}
         </Text>
         <Text className="text-center max-w-lg mx-auto mb-6 lg:mb-8">
-          Make sure you’ve the node.js and package manager installed. Then, type
-          this in terminal:
+          Make sure you’ve installed npm, npmn or yarn. Then you can install
+          React Flow via:
         </Text>
 
         <AppWindow>
           <pre className="!pl-0">
-            <code className="inline">
+            <code className="inline text-lg">
               npm install <span className={`text-${site}`}>@xyflow/{site}</span>
             </code>
           </pre>

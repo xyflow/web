@@ -6,6 +6,7 @@ import { Button, Heading, Text } from 'xy-ui';
 import useXYSite from '@/hooks/use-xy-site';
 import Flow from './flow';
 import { Framework } from '@/types';
+import { PRO_PLATFORM_OR_REACT_PRO_URL } from '@/constants';
 
 const subtitle = {
   react:
@@ -15,7 +16,7 @@ const subtitle = {
 };
 
 const proButtonHref = {
-  react: '/react-flow/pro',
+  react: PRO_PLATFORM_OR_REACT_PRO_URL,
   svelte: '/svelte-flow/support-us',
 };
 
@@ -26,7 +27,7 @@ const proButtonIcon = {
 
 const proButtonLabel = {
   react: 'React Flow Pro',
-  svelte: 'support Us',
+  svelte: 'Support Us',
 };
 
 const headlineStyle: CSSProperties = {

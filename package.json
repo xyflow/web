@@ -5,7 +5,7 @@
     "preinstall": "npx only-allow pnpm",
     "build": "turbo run build",
     "dev": "turbo run dev",
-    "dev:docs": "turbo run dev --filter xyflow-docs",
+    "dev:docs": "turbo run dev --filter xyflow-docs --filter svelte-examples",
     "dev:platform": "turbo run dev --filter xyflow-platform",
     "dev:style": "turbo run dev --filter xy-styleguide",
     "dev:nhost": "turbo run dev --filter xyflow-nhost",
@@ -15,12 +15,12 @@
   },
   "devDependencies": {
     "@turbo/gen": "^1.10.4",
-    "eslint": "^8.43.0",
+    "eslint": "^8.47.0",
+    "eslint-config-xyflow": "workspace:*",
     "prettier": "^2.8.8",
     "rimraf": "^5.0.1",
-    "turbo": "^1.10.4",
-    "typescript": "^5.1.3",
-    "eslint-config-xyflow": "workspace:*"
+    "turbo": "^1.10.12",
+    "typescript": "^5.1.3"
   },
   "packageManager": "pnpm@7.15.0",
   "name": "docs"

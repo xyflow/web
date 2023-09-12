@@ -1,10 +1,4 @@
-import {
-  useEffect,
-  useState,
-  useRef,
-  MutableRefObject,
-  CSSProperties,
-} from 'react';
+import { useEffect, useState, useRef, MutableRefObject } from 'react';
 import ReactFlow, {
   Background,
   Controls,
@@ -101,10 +95,10 @@ const defaultEdges = [
     animated: true,
   },
   {
-    id: 'zoom->hero',
-    source: 'zoom',
+    id: 'shape->hero',
+    source: 'shape',
     target: 'hero',
-    targetHandle: 'zoom',
+    targetHandle: 'shape',
     style: {
       stroke: '#A3ADB8',
       strokeWidth: 1.5,
@@ -112,10 +106,10 @@ const defaultEdges = [
     animated: true,
   },
   {
-    id: 'shape->hero',
-    source: 'shape',
+    id: 'zoom->hero',
+    source: 'zoom',
     target: 'hero',
-    targetHandle: 'shape',
+    targetHandle: 'zoom',
     style: {
       stroke: '#A3ADB8',
       strokeWidth: 1.5,
@@ -266,7 +260,7 @@ function Flow({ variant, headlineRef }: FlowProps) {
   }, [shape]);
 
   return (
-    <div className="h-[65vh] xl:h-[60vh] 2xl:h-[50vh]">
+    <div className="h-[65vh] xl:h-[62vh] 2xl:h-[50vh]">
       <ReactFlow
         preventScrolling={false}
         zoomOnScroll={false}

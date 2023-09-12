@@ -1,5 +1,4 @@
-import { Button } from '@chakra-ui/react';
-import { HiOutlineDownload } from 'components/Icons';
+import { Button } from 'xy-ui';
 
 import useSandpackDownloader from './useSandpackDownloader';
 
@@ -11,7 +10,7 @@ function DownloadSandpackButton({ fileName = 'react-flow-pro-example' }: Downloa
   const download = useSandpackDownloader({ fileName });
 
   return (
-    <Button leftIcon={<HiOutlineDownload />} size="sm" variant="outline" colorScheme="pink" onClick={download}>
+    <Button size="sm" variant="react" onClick={download}>
       Download
     </Button>
   );

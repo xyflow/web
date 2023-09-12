@@ -1,5 +1,4 @@
-import { Button } from '@chakra-ui/react';
-import { HiOutlineExternalLink } from 'components/Icons';
+import { Button } from 'xy-ui';
 
 type FullScreenButtonProps = {
   exampleId: string;
@@ -8,7 +7,7 @@ type FullScreenButtonProps = {
 function FullScreenButton({ exampleId }: FullScreenButtonProps) {
   return (
     <a target="_blank" href={`https://xyflow-pro-examples.vercel.app/${exampleId}`}>
-      <Button leftIcon={<HiOutlineExternalLink />} size="sm" variant="outline" colorScheme="pink">
+      <Button size="sm" variant="react">
         Fullscreen
       </Button>
     </a>

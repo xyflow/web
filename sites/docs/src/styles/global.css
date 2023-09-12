@@ -4,6 +4,8 @@
 
 @import 'reactflow/dist/style.css';
 
+@import './docsearch.css';
+
 .sidebar-title.pro:after {
   content: 'Pro';
   display: inline-block;
@@ -23,6 +25,10 @@ nav.nx-bg-transparent {
   background-color: white;
 }
 
+.light .nextra-content {
+  color: #222;
+}
+
 div.nextra-nav-container-blur {
   backdrop-filter: none;
   background: white;
@@ -31,6 +37,186 @@ div.nextra-nav-container-blur {
 main .nx-max-w-\[90rem\],
 main .max-w-\[90rem\] {
   max-width: 78rem;
+}
+
+.react-pro {
+  transition: all 0.3s ease;
+}
+
+@property --gradientAngle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 258deg;
+}
+
+.react-pro {
+  --gradientAngle: 258deg;
+}
+
+.react-pro:before {
+  transition: --gradientAngle 0.3s ease;
+  background: linear-gradient(
+      var(--gradientAngle),
+      rgba(255, 0, 114, 0.5) 36.34%,
+      rgba(175, 4, 255, 0.5) 50.92%,
+      rgba(240, 240, 240, 1) 63.72%
+    ),
+    linear-gradient(
+      var(--gradientAngle),
+      rgba(255, 0, 114, 0.5) 2.22%,
+      rgba(175, 4, 255, 0.5) 18.5%,
+      rgba(240, 240, 240, 1) 32.77%
+    );
+}
+
+.react-pro:hover:before {
+  --gradientAngle: 45deg;
+}
+
+.svelte-pro:before {
+  transition: --gradientAngle 0.3s ease;
+  background: linear-gradient(
+      var(--gradientAngle),
+      rgba(255, 62, 0, 0.5) 36.34%,
+      rgba(255, 64, 4, 0.5) 50.92%,
+      rgba(255, 255, 255, 1) 63.72%
+    ),
+    linear-gradient(
+      var(--gradientAngle),
+      rgba(255, 62, 0, 0.5) 2.22%,
+      rgba(255, 125, 4, 0.5) 18.5%,
+      rgba(255, 255, 255, 1) 32.77%
+    );
+}
+
+.svelte-pro:hover:before {
+  --gradientAngle: 45deg;
+}
+
+.react-flow__controls button {
+  background: white;
+}
+
+.darkflow.react-flow {
+  background-color: #141414;
+}
+
+.lightflow .node-wrapper__title,
+.darkflow .node-wrapper__title {
+  @apply font-mono;
+  @apply text-xs;
+  @apply px-4;
+  @apply py-2;
+  @apply border-b;
+  @apply border-[#ededed];
+}
+
+.lightflow .node-wrapper label,
+.darkflow .node-wrapper label {
+  @apply text-xs;
+  @apply block;
+  @apply font-mono;
+  @apply text-[#555];
+  @apply mb-1;
+}
+
+.lightflow .node-wrapper input,
+.darkflow .node-wrapper input {
+  @apply rounded-sm;
+  @apply text-xs;
+  @apply font-mono;
+  @apply border-[#EDEDED];
+  @apply text-[#111];
+  @apply bg-[#ffffff];
+}
+
+.darkflow .node-wrapper input {
+  @apply border-[#3C3C3C];
+  @apply text-[#AFAFAF];
+  @apply bg-[#323232];
+}
+
+/* we don't want to style the radix select component */
+.lightflow .node-wrapper button:not([role='combobox']),
+.darkflow .node-wrapper button:not([role='combobox']) {
+  @apply block;
+  @apply font-mono;
+  @apply w-full;
+  @apply text-xs;
+  @apply rounded-md;
+  @apply text-white;
+  @apply py-2;
+  @apply px-4;
+  @apply bg-react;
+}
+
+.darkflow .node-wrapper label {
+  @apply text-[#AFAFAF];
+}
+
+.darkflow .node-wrapper__title {
+  @apply border-[#3C3C3C];
+}
+
+.darkflow .react-flow__node {
+  background-color: #1e1e1e;
+  color: white;
+  border: 1px solid #3c3c3c;
+  border-radius: 8px;
+}
+
+.lightflow .react-flow__node {
+  background-color: #fff;
+  color: #111;
+  border: 1px solid #ededed;
+}
+
+.lightflow .react-flow__handle,
+.darkflow .react-flow__handle {
+  width: 20px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #6e6e6e;
+  border: none;
+}
+
+.darkflow .react-flow__handle {
+  background-color: #bebebe;
+}
+
+.home-flow-b .react-flow__node {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-flow-b .react-flow__controls {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.home-flow-b .react-flow__controls-button {
+  border-bottom: 1px solid #555;
+  background: #323232;
+}
+
+.home-flow-b .react-flow__controls-button:hover {
+  background: #525252;
+}
+
+.home-flow-b .react-flow__controls-button:last-child {
+  border-bottom: none;
+}
+
+.home-flow-b .react-flow__controls svg {
+  fill: #afafaf;
+}
+
+.home-flow-c .react-flow__handle {
+  width: 7px;
+  height: 12px;
+  border-radius: 5px;
+  background-color: #ddd;
 }
 
 @media (max-width: 767px) {
@@ -83,7 +269,7 @@ main .max-w-\[90rem\] {
 
     --radius: 0.5rem;
 
-    --light: 215.4 16.3% 46.9%;
+    --light: 0 0% 46%;
   }
 }
 
@@ -98,6 +284,7 @@ main .max-w-\[90rem\] {
   html {
     /* this is a nextra default we need to overwrite */
     font-feature-settings: normal !important;
+    -webkit-font-smoothing: initial !important;
     overflow-x: hidden;
   }
 }

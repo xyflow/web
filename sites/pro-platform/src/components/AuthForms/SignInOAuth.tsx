@@ -9,7 +9,7 @@ const SignInOAuth = () => {
   return (
     <div>
       <a href={github}>
-        <Button className="rounded-lg w-full" variant="outline">
+        <Button size="lg" className="w-full" variant="outline">
           Sign in with Github
         </Button>
       </a>

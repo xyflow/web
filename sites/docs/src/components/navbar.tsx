@@ -1,14 +1,21 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { Navbar as NextraNavbar } from 'nextra-theme-docs';
 import { getPagesUnderRoute } from 'nextra/context';
 
 import { Button } from 'xy-ui';
 import useXYSite from '@/hooks/use-xy-site';
 import Logo from '@/components/logo';
+import {
+  PRO_PLATFORM_OR_REACT_PRO_URL,
+  PRO_PLATFORM_SIGNUP_URL,
+  PRO_PLATFORM_URL,
+} from '@/constants';
 
 import reactLogo from '../../public/img/react-logo.svg';
 import svelteLogo from '../../public/img/svelte-logo.svg';
+import { SparklesIcon } from '@heroicons/react/24/outline';
 
 const topNav = [
   {
@@ -75,17 +82,39 @@ export default function Navbar(props) {
 }
 
 export function NavBarAdditional() {
-  const { site, isOrg } = useXYSite();
+  const { site } = useXYSite();
+  const { pathname } = useRouter();
 
-  if (isOrg) {
-    return null;
+  const isReactProPage = pathname === '/react-flow/pro';
+
+  if (isReactProPage) {
+    return (
+      <Button asChild variant={site} className="px-4 font-black">
+        <Link href={PRO_PLATFORM_SIGNUP_URL}>Sign Up</Link>
+      </Button>
+    );
   }
 
-  const link = site === 'react' ? `/react-flow/pro` : `/svelte-flow/support-us`;
-  const label = site === 'react' ? 'Pro' : 'Support Us';
+  // for now we also want to display the React Flow Pro button on the xyflow site
+  const isReactOrXyFlow = site === 'react' || site === 'xyflow';
+  const link = isReactOrXyFlow
+    ? PRO_PLATFORM_OR_REACT_PRO_URL
+    : `/svelte-flow/support-us`;
+  const label = isReactOrXyFlow ? (
+    <>
+      <SparklesIcon className="w-5 h-5 mr-1" /> React Flow Pro
+    </>
+  ) : (
+    'Support Us'
+  );
 
   return (
-    <Button asChild variant={site} size="sm" className="px-4 font-black">
+    <Button
+      asChild
+      variant={isReactOrXyFlow ? 'react' : site}
+      size="sm"
+      className="px-4 font-black"
+    >
       <Link href={link}>{label}</Link>
     </Button>
   );

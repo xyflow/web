@@ -20,7 +20,7 @@ export default function Showcase() {
 
       <ContentGrid className="mt-20">
         {showcases.map((showcase) => (
-          <ContentGridItem key={showcase.id}>
+          <ContentGridItem key={showcase.id} route={showcase.url}>
             <ProjectPreview
               image={`/img/showcase/${showcase.image}`}
               title={showcase.title}
@@ -34,7 +34,7 @@ export default function Showcase() {
                 </>
               }
               description={showcase.description}
-              route={showcase.url}
+              linkLabel="Website"
             />
           </ContentGridItem>
         ))}
