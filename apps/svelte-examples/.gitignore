@@ -9,4 +9,5 @@ node_modules
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 
+# +server.ts get auto generated
 /src/routes/**/+server.ts
