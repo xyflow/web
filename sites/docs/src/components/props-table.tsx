@@ -1,6 +1,6 @@
+import { Text } from 'xy-ui';
 import Link from 'next/link';
 import React, { useCallback, useMemo } from 'react';
-import { Popover, PopoverContent, PopoverTrigger, Text } from 'xy-ui';
 
 import * as reactFlowTypes from '../pages/react-flow/api/types/_meta.json';
 
@@ -115,11 +115,11 @@ export function PropsTable({
                   <td className="flex justify-between py-1 px-2">
                     <Text>{name}</Text>
                   </td>
-                  <td className="px-2">
+                  <td className="px-2 text-sm">
                     <code>{linkify(type)}</code>
                   </td>
                   {shouldShowDefault && (
-                    <td className="px-2 hidden md:table-cell">
+                    <td className="px-2 text-sm hidden md:table-cell">
                       {default_ ? <code>{linkify(default_)}</code> : '-'}
                     </td>
                   )}
@@ -146,20 +146,23 @@ export function PropsTable({
 
 export const reactFlowLinks = Object.fromEntries(
   Object.keys(reactFlowTypes).map((t) => [
+    // We want to link to the type when our docs refer to a namedspaced value like
+    // `Position.Left`. Splitting on the period and taking the first part will
+    // always give us the type name.
     t.split('.')[0],
     `/react-flow/api/types/${t}`,
   ])
 );
 
 const externalReactLinks = {
+  ComponentType:
+    'https://github.com/DefinitelyTyped/DefinitelyTyped/blob/61c7bb49838a155b2b0476bb97d5e707ca80a23b/types/react/v17/index.d.ts#L75',
   CSSProperties:
     'https://github.com/DefinitelyTyped/DefinitelyTyped/blob/61c7bb49838a155b2b0476bb97d5e707ca80a23b/types/react/v17/index.d.ts#L1545',
   MouseEvent:
     'https://github.com/DefinitelyTyped/DefinitelyTyped/blob/61c7bb49838a155b2b0476bb97d5e707ca80a23b/types/react/v17/index.d.ts#L1226C6-L1226C6',
-  ComponentType:
-    'https://github.com/DefinitelyTyped/DefinitelyTyped/blob/61c7bb49838a155b2b0476bb97d5e707ca80a23b/types/react/v17/index.d.ts#L75',
-  Partial:
-    'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype',
+  ReactNode:
+    'https://github.com/DefinitelyTyped/DefinitelyTyped/blob/d7e13a7c7789d54cf8d601352517189e82baf502/types/react/index.d.ts#L264',
 };
 
 export const svelteFlowLinks = {};
