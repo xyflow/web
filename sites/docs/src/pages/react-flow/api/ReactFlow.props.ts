@@ -100,11 +100,11 @@ export const eventHandlerProps: PropsTableProps = {
     ['onEdgeUpdate', '(oldEdge: Edge, newConnection: Connection) => void'],
     [
       'onEdgeUpdateStart',
-      '(event: React.MouseEvent, edge: Edge, handleType: HandleType) => void',
+      '(event: React.MouseEvent, edge: Edge, handleType: "source" | "target") => void',
     ],
     [
       'onEdgeUpdateEnd',
-      '(event: React.MouseEvent, edge: Edge, handleType: HandleType) => void',
+      '(event: React.MouseEvent, edge: Edge, handleType: "source" | "target") => void',
     ],
     ['onEdgesDelete', '(edges: Edge[]) => void'],
     ['onEdgesChange', '(changes: EdgeChange[]) => void'],
@@ -135,7 +135,10 @@ export const eventHandlerProps: PropsTableProps = {
     ['onPaneMouseLeave', '(event: React.MouseEvent) => void'],
 
     ['Selections'],
-    ['onSelectionChange', '(params: OnSelectionChangeParams) => void'],
+    [
+      'onSelectionChange',
+      '(params: { nodes: Node[]; edges: Edge[]; }) => void',
+    ],
     [
       'onSelectionDragStart',
       '(event: React.MouseEvent, nodes: Node[]) => void',
