@@ -1,0 +1,36 @@
+import { PropsTable } from '@/components/props-table';
+import { nodeToolbarProps } from './NodeToolbar.props.ts';
+
+# &lt;NodeToolbar />
+
+```jsx
+import { memo } from 'react';
+import { Handle, Position, NodeToolbar } from 'reactflow';
+
+export CustomNode = ({ data }) => {
+  return (
+    <>
+      <NodeToolbar isVisible={data.toolbarVisible} position={data.toolbarPosition}>
+        <button>delete</button>
+        <button>copy</button>
+        <button>expand</button>
+      </NodeToolbar>
+
+      <div style={{ padding: '10px 20px' }}>
+        {data.label}
+      </div>
+
+      <Handle type="target" position={Position.Left} />
+      <Handle type="source" position={Position.Right} />
+    </>
+  );
+};
+
+export default memo(CustomNode);
+```
+
+[source](https://github.com/wbkd/react-flow/blob/961d1295b4f056dec6532ff785a3cc1de60dc1f6/packages/react/src/additional-components/NodeToolbar/NodeToolbar.tsx#L72)
+
+## Props
+
+<PropsTable {...nodeToolbarProps} />

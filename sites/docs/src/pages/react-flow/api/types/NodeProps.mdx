@@ -1,4 +1,6 @@
 import { Callout } from 'nextra/components';
+import { PropsTable } from '@/components/props-table';
+import { nodePropsFields } from './NodeProps.fields.ts';
 
 # NodeProps&lt;T>
 
@@ -70,39 +72,7 @@ You can read more in our [custom node guide](/react-flow/docs/guides/custom-node
 
 ## Fields
 
-### id: `string`
-
-Every node in a flow should have a unique id.
-
-### data: `T`
-
-The `data` prop lets you store node data in React Flow's internal state rather
-than your custom node component's state. This can be useful if you want to
-serialize your flow's state to JSON or pass configuration or custom data to
-your nodes.
-
-You may have seen this already when using the built-in nodes. The `data` prop
-lets you specify a label for any of React Flow's default nodes!
-
-### dragHandle?: `boolean`
-
-### type?: `string`
-
-### selected?: `boolean`
-
-### isConnectable?: `boolean`
-
-### zIndex?: `number`
-
-### xPos: `number`
-
-### yPos: `number`
-
-### dragging: `boolean`
-
-### targetPosition?: `Position`
-
-### sourcePosition?: `Position`
+<PropsTable {...nodePropsFields} />
 
 ## Notes
 

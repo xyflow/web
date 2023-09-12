@@ -1,0 +1,27 @@
+import { PropsTable } from '@/components/props-table';
+import { handleProps } from './Handle.props.ts';
+
+# &lt;Handle />
+
+The `<Handle />` component is used in your [custom nodes](/react-flow/docs/guides/custom-nodes)
+to define connection points
+
+```jsx
+import { Handle, Position } from '@xyflow/react';
+
+const targetHandleWithValidation = (
+  <Handle
+    type="target"
+    position={Position.Left}
+    isValidConnection={(connection) => connection.source === 'some-id'}
+    onConnect={(params) => console.log('handle onConnect', params)}
+    style={{ background: '#fff' }}
+  />
+);
+```
+
+[source](https://github.com/wbkd/react-flow/blob/961d1295b4f056dec6532ff785a3cc1de60dc1f6/packages/react/src/components/Handle/index.tsx#L45)
+
+## Props
+
+<PropsTable {...handleProps} />

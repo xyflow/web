@@ -1,19 +1,4 @@
 import { type PropsTableProps } from '@/components/props-table';
-import * as Types from '../types/_meta.json';
-
-const links = {
-  // External links
-  CSSProperties:
-    'https://github.com/DefinitelyTyped/DefinitelyTyped/blob/61c7bb49838a155b2b0476bb97d5e707ca80a23b/types/react/v17/index.d.ts#L1545',
-
-  // Types docs
-  ...Object.fromEntries(
-    Object.keys(Types).map((t) => [
-      t.split('.')[0],
-      `/react-flow/api/types/${t}`,
-    ])
-  ),
-};
 
 export const nodeResizerProps: PropsTableProps = {
   props: [
@@ -34,5 +19,4 @@ export const nodeResizerProps: PropsTableProps = {
     ['onResize?', 'OnResize'],
     ['onResizeEnd?', 'OnResizeEnd'],
   ],
-  links: links,
 };

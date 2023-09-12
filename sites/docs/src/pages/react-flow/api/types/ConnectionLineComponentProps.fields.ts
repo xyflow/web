@@ -2,7 +2,7 @@ import { type PropsTableProps } from '@/components/props-table';
 
 export const connectionLineComponentPropsFields: PropsTableProps = {
   props: [
-    ['connectionLineStyle', 'CSSProperties'],
+    ['connectionLineStyle', 'React.CSSProperties'],
     ['connectionLineType', 'ConnectionLineType'],
     ['fromNode', 'Node'],
     ['fromHandle', 'HandleElement'],
@@ -12,6 +12,6 @@ export const connectionLineComponentPropsFields: PropsTableProps = {
     ['toY', 'number'],
     ['fromPosition', 'Position'],
     ['toPosition', 'Position'],
-    ['connectionStatus', 'ConnectionStatus | null'],
+    ['connectionStatus', '"valid" | "invalid" | null'],
   ],
 };

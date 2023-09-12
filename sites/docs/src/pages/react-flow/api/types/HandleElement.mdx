@@ -1,0 +1,21 @@
+import { PropsTable } from '@/components/props-table';
+import { handleElementFields } from './HandleElement.fields.ts';
+
+# HandleElement
+
+```ts
+export type HandleElement = {
+  id?: string | null;
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  position: Position;
+};
+```
+
+[source](https://github.com/wbkd/react-flow/blob/961d1295b4f056dec6532ff785a3cc1de60dc1f6/packages/system/src/types/handles.ts#L5)
+
+## Fields
+
+<PropsTable {...handleElementFields} />

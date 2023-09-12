@@ -1,0 +1,25 @@
+import { PropsTable } from '@/components/props-table';
+import { baseEdgeProps } from './BaseEdge.props.ts';
+
+# &lt;BaseEdge />
+
+```js
+import { BaseEdge } from '@xyflow/reactflow';
+
+export function CustomEdge({ sourceX, sourceY, targetX, targetY, ...props }) {
+  const [edgePath] = getStraightPath({
+    sourceX,
+    sourceY,
+    targetX,
+    targetY,
+  });
+
+  return <BaseEdge path={edgePath} {...props} />;
+}
+```
+
+[source](https://github.com/wbkd/react-flow/blob/961d1295b4f056dec6532ff785a3cc1de60dc1f6/packages/react/src/components/Edges/BaseEdge.tsx#L7)
+
+## Props
+
+<PropsTable {...baseEdgeProps} />

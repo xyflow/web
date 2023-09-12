@@ -1,6 +1,11 @@
 {
   "Background": "<Background />",
+  "BaseEdge": "<BaseEdge />",
   "Controls": "<Controls />",
+  "EdgeLabelRenderer": "<EdgeLabelRenderer />",
+  "EdgeText": "<EdgeText />",
+  "Handle": "<Handle />",
   "MiniMap": "<MiniMap />",
-  "NodeResizer": "<NodeResizer />"
+  "NodeResizer": "<NodeResizer />",
+  "NodeToolbar": "<NodeToolbar />"
 }

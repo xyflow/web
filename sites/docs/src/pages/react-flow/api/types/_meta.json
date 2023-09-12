@@ -9,11 +9,13 @@
   "EdgeMarker": "EdgeMarker",
   "EdgeProps": "EdgeProps<T>",
   "FitViewOptions": "FitViewOptions",
+  "HandleElement": "HandleElement",
   "MarkerType": "MarkerType",
   "Node": "Node<T, U>",
   "NodeChange": "NodeChange",
   "NodeProps": "NodeProps<T>",
   "PanelPosition": "PanelPosition",
+  "Position": "Position",
   "ReactFlowInstance": "ReactFlowInstance<T, U>",
   "ReactFlowJsonObject": "ReactFlowJsonObject<T, U>",
   "Viewport": "Viewport"
