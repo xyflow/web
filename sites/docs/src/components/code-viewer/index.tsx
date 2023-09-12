@@ -1,9 +1,7 @@
-import { useEffect, useState, useMemo } from 'react';
-import ReactViewer from './react-viewer';
-import SvelteViewer from './svelte-viewer';
-
 import { Framework } from '@/types';
-import { getScriptExtension } from './utils';
+
+import ReactExample from './react-example';
+import SvelteExample from './svelte-example';
 
 const defaultOptions = {
   editorHeight: '70vh',
@@ -36,55 +34,28 @@ export default function CodeViewer({
   framework = 'react',
   ...rest
 }: CodeViewerProps) {
-  const [files, setFiles] = useState(null);
-  const scriptExtension = getScriptExtension({ framework, isTypescript });
+  const editorHeight = options?.editorHeight || defaultOptions.editorHeight;
 
-  useEffect(() => {
-    const loadFiles = async () => {
-      const res = await import(
-        `!raw-loader!./${codePath}/index.${scriptExtension}`
-      );
-
-      const pathPrefix = framework === 'svelte' ? 'src' : '';
-
-      const additional = {};
-
-      for (let additionalFile of additionalFiles) {
-        if (typeof additionalFile === 'string') {
-          const file = await import(
-            `!raw-loader!./${codePath}/${additionalFile}`
-          );
-          additional[`${pathPrefix}/${additionalFile}`] = {
-            code: file.default,
-          };
-
-          if (additionalFile === activeFile) {
-            additional[`/${additionalFile}`].active = true;
-          }
-        } else {
-          const fileName = Object.keys(additionalFile)[0];
-          additional[`${pathPrefix}/${fileName}`] = additionalFile[fileName];
-        }
-      }
-
-      setFiles({
-        [`${pathPrefix}/App.${scriptExtension}`]: res.default,
-        ...additional,
-      });
-    };
-
-    loadFiles();
-  }, []);
-
-  const editorHeight = options?.editorHeight || '70vh';
-
-  if (!files) {
-    return <div style={{ minHeight: editorHeight }} />;
-  }
-
-  return framework === 'svelte' ? (
-    <SvelteViewer files={files} editorHeight={editorHeight} />
-  ) : (
-    <ReactViewer files={files} editorHeight={editorHeight} {...rest} />
+  return (
+    <>
+      {framework === 'react' && (
+        <ReactExample
+          codePath={codePath}
+          isTypescript={isTypescript}
+          framework={framework}
+          editorHeight={editorHeight}
+          additionalFiles={additionalFiles}
+          {...rest}
+        />
+      )}
+      {framework === 'svelte' && (
+        <SvelteExample
+          codePath={codePath}
+          framework={framework}
+          editorHeight={editorHeight}
+          {...rest}
+        />
+      )}
+    </>
   );
 }

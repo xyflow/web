@@ -57,3 +57,34 @@ const defaultSetupSvelte = {
 export function getDefaultSetup(framework: Framework) {
   return framework === 'svelte' ? defaultSetupSvelte : defaultSetupReact;
 }
+
+export async function loadLocalFiles(
+  codePath: string,
+  scriptExtension: string,
+  additionalFiles?: string[],
+  activeFile?: string
+) {
+  const res = await import(
+    `!raw-loader!./${codePath}/index.${scriptExtension}`
+  );
+
+  const additional = {};
+
+  for (let additionalFile of additionalFiles) {
+    if (typeof additionalFile === 'string') {
+      const file = await import(`!raw-loader!./${codePath}/${additionalFile}`);
+      additional[`/${additionalFile}`] = {
+        code: file.default,
+      };
+
+      if (additionalFile === activeFile) {
+        additional[`/${additionalFile}`].active = true;
+      }
+    } else {
+      const fileName = Object.keys(additionalFile)[0];
+      additional[`/${fileName}`] = additionalFile[fileName];
+    }
+  }
+
+  return { default: res.default, additional };
+}

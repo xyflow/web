@@ -7,9 +7,9 @@ const setup = {
     '# Logs\nlogs\n*.log\nnpm-debug.log*\nyarn-debug.log*\nyarn-error.log*\npnpm-debug.log*\nlerna-debug.log*\n\nnode_modules\ndist\ndist-ssr\n*.local\n\n# Editor directories and files\n.vscode/*\n!.vscode/extensions.json\n.idea\n.DS_Store\n*.suo\n*.ntvs*\n*.njsproj\n*.sln\n*.sw?\n',
   'index.html':
     '<!doctype html>\n<html lang="en">\n  <head>\n    <meta charset="UTF-8" />\n    <link rel="icon" type="image/svg+xml" href="/vite.svg" />\n    <meta name="viewport" content="width=device-width, initial-scale=1.0" />\n    <title>Vite + Svelte</title>\n  </head>\n  <body>\n    <div id="app"></div>\n    <script type="module" src="/src/main.js"></script>\n  </body>\n</html>\n',
-  'src/app.css': '',
+  // 'src/app.css': '',
   'src/main.js':
-    "import './app.css'\nimport App from './App.svelte'\n\nconst app = new App({\n  target: document.getElementById('app'),\n})\n\nexport default app\n",
+    "import App from './example/App.svelte'\n\nconst app = new App({\n  target: document.getElementById('app'),\n})\n\nexport default app\n",
   'package.json': JSON.stringify({
     name: 'vite-svelte-starter',
     private: true,
@@ -31,8 +31,6 @@ const setup = {
   }),
   'jsconfig.json':
     '{\n  "compilerOptions": {\n    "moduleResolution": "bundler",\n    "target": "ESNext",\n    "module": "ESNext",\n    /**\n     * svelte-preprocess cannot figure out whether you have\n     * a value or a type, so tell TypeScript to enforce using\n     * `import type` instead of `import` for Types.\n     */\n    "verbatimModuleSyntax": true,\n    "isolatedModules": true,\n    "resolveJsonModule": true,\n    /**\n     * To have warnings / errors of the Svelte compiler at the\n     * correct position, enable source maps by default.\n     */\n    "sourceMap": true,\n    "esModuleInterop": true,\n    "skipLibCheck": true,\n    /**\n     * Typecheck JS in `.svelte` and `.js` files by default.\n     * Disable this if you\'d like to use dynamic types.\n     */\n    "checkJs": true\n  },\n  /**\n   * Use global.d.ts instead of compilerOptions.types\n   * to avoid limiting type declarations.\n   */\n  "include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.svelte"]\n}\n',
-  'src/App.svelte':
-    '<script>\n  import svelteLogo from \'./assets/svelte.svg\'\n  import viteLogo from \'/vite.svg\'\n  import Counter from \'./lib/Counter.svelte\'\n</script>\n\n<main>\n  <div>\n    <a href="https://vitejs.dev" target="_blank" rel="noreferrer">\n      <img src={viteLogo} class="logo" alt="Vite Logo" />\n    </a>\n    <a href="https://svelte.dev" target="_blank" rel="noreferrer">\n      <img src={svelteLogo} class="logo svelte" alt="Svelte Logo" />\n    </a>\n  </div>\n  <h1>Vite + Svelte</h1>\n\n  <div class="card">\n    <Counter />\n  </div>\n\n  <p>\n    Check out <a href="https://github.com/sveltejs/kit#readme" target="_blank" rel="noreferrer">SvelteKit</a>, the official Svelte app framework powered by Vite!\n  </p>\n\n  <p class="read-the-docs">\n    Click on the Vite and Svelte logos to learn more\n  </p>\n</main>\n\n<style>\n  .logo {\n    height: 6em;\n    padding: 1.5em;\n    will-change: filter;\n    transition: filter 300ms;\n  }\n  .logo:hover {\n    filter: drop-shadow(0 0 2em #646cffaa);\n  }\n  .logo.svelte:hover {\n    filter: drop-shadow(0 0 2em #ff3e00aa);\n  }\n  .read-the-docs {\n    color: #888;\n  }\n</style>\n',
   'vite.config.js':
     "import { defineConfig } from 'vite'\nimport { svelte } from '@sveltejs/vite-plugin-svelte'\n\n// https://vitejs.dev/config/\nexport default defineConfig({\n  plugins: [svelte()],\n})\n",
   'public/vite.svg':
@@ -41,10 +39,6 @@ const setup = {
     "import { vitePreprocess } from '@sveltejs/vite-plugin-svelte'\n\nexport default {\n  // Consult https://svelte.dev/docs#compile-time-svelte-preprocess\n  // for more information about preprocessors\n  preprocess: vitePreprocess(),\n}\n",
   'src/vite-env.d.ts':
     '/// <reference types="svelte" />\n/// <reference types="vite/client" />\n',
-  'src/assets/svelte.svg':
-    '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--logos" width="26.6" height="32" preserveAspectRatio="xMidYMid meet" viewBox="0 0 256 308"><path fill="#FF3E00" d="M239.682 40.707C211.113-.182 154.69-12.301 113.895 13.69L42.247 59.356a82.198 82.198 0 0 0-37.135 55.056a86.566 86.566 0 0 0 8.536 55.576a82.425 82.425 0 0 0-12.296 30.719a87.596 87.596 0 0 0 14.964 66.244c28.574 40.893 84.997 53.007 125.787 27.016l71.648-45.664a82.182 82.182 0 0 0 37.135-55.057a86.601 86.601 0 0 0-8.53-55.577a82.409 82.409 0 0 0 12.29-30.718a87.573 87.573 0 0 0-14.963-66.244"></path><path fill="#FFF" d="M106.889 270.841c-23.102 6.007-47.497-3.036-61.103-22.648a52.685 52.685 0 0 1-9.003-39.85a49.978 49.978 0 0 1 1.713-6.693l1.35-4.115l3.671 2.697a92.447 92.447 0 0 0 28.036 14.007l2.663.808l-.245 2.659a16.067 16.067 0 0 0 2.89 10.656a17.143 17.143 0 0 0 18.397 6.828a15.786 15.786 0 0 0 4.403-1.935l71.67-45.672a14.922 14.922 0 0 0 6.734-9.977a15.923 15.923 0 0 0-2.713-12.011a17.156 17.156 0 0 0-18.404-6.832a15.78 15.78 0 0 0-4.396 1.933l-27.35 17.434a52.298 52.298 0 0 1-14.553 6.391c-23.101 6.007-47.497-3.036-61.101-22.649a52.681 52.681 0 0 1-9.004-39.849a49.428 49.428 0 0 1 22.34-33.114l71.664-45.677a52.218 52.218 0 0 1 14.563-6.398c23.101-6.007 47.497 3.036 61.101 22.648a52.685 52.685 0 0 1 9.004 39.85a50.559 50.559 0 0 1-1.713 6.692l-1.35 4.116l-3.67-2.693a92.373 92.373 0 0 0-28.037-14.013l-2.664-.809l.246-2.658a16.099 16.099 0 0 0-2.89-10.656a17.143 17.143 0 0 0-18.398-6.828a15.786 15.786 0 0 0-4.402 1.935l-71.67 45.674a14.898 14.898 0 0 0-6.73 9.975a15.9 15.9 0 0 0 2.709 12.012a17.156 17.156 0 0 0 18.404 6.832a15.841 15.841 0 0 0 4.402-1.935l27.345-17.427a52.147 52.147 0 0 1 14.552-6.397c23.101-6.006 47.497 3.037 61.102 22.65a52.681 52.681 0 0 1 9.003 39.848a49.453 49.453 0 0 1-22.34 33.12l-71.664 45.673a52.218 52.218 0 0 1-14.563 6.398"></path></svg>',
-  'src/lib/Counter.svelte':
-    '<script>\n  let count = 0\n  const increment = () => {\n    count += 1\n  }\n</script>\n\n<button on:click={increment}>\n  count is {count}\n</button>\n',
   '.vscode/extensions.json':
     '{\n  "recommendations": ["svelte.svelte-vscode"]\n}\n',
 };

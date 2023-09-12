@@ -24,3 +24,8 @@ export const NPM_REACT_FLOW_LEGACY =
   'https://api.npmjs.org/downloads/point/last-week/react-flow-renderer';
 export const NPM_REACTFLOW =
   'https://api.npmjs.org/downloads/point/last-week/reactflow';
+
+// url of sveltekit instance serving examples/guides
+export const SVELTE_EXAMPLES_URL = isDevelopment()
+  ? 'http://localhost:5173/'
+  : 'https://xyflow-svelte-examples.vercel.app';
