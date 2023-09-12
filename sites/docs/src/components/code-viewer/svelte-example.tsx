@@ -82,12 +82,7 @@ export default function SvelteExample({
             style={{ height: editorHeight }}
             className="w-full color nx-bg-primary-100 flex justify-center content-center flex-wrap"
           >
-            <p
-              style={{ color: 'rgb(230, 115, 0)' }}
-              className="color-primary-foreground"
-            >
-              Example failed to load
-            </p>
+            <p className="text-svelte">Example failed to load</p>
           </div>
         )}
       </>
