@@ -28,4 +28,4 @@ export const NPM_REACTFLOW =
 // url of sveltekit instance serving examples/guides
 export const SVELTE_EXAMPLES_URL = isDevelopment()
   ? 'http://localhost:5173/'
-  : 'https://xyflow-svelte-examples.vercel.app';
+  : 'https://xyflow-svelte-examples.vercel.app/';
