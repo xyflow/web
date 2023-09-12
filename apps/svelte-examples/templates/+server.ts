@@ -1,5 +1,5 @@
 // Template for ALL endpoints serving the code snippets
-// No need to edit these
+// No need to edit these inside /src/routes/**
 // Will be overwritten by "pnpm run create:endpoints"
 
 import { json } from '@sveltejs/kit';
