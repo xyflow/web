@@ -10,19 +10,20 @@ export function POST() {
     eager: true
   });
 
-  let filesClean: { [key: string]: string } = {};
-
   // Loose ./ for each filename
   // +page.svelte becomes App.svelte for correct display in Sandpack
-  filesClean = Object.keys(files).reduce((filesCleanAcc: { [key: string]: string }, filename) => {
-    if (filename === './+page.svelte') {
-      filesCleanAcc['App.svelte'] = files[filename];
-    } else {
-      filesCleanAcc[filename.substring(2)] = files[filename];
-    }
+  const filesClean: { [key: string]: string } = Object.entries(files).reduce(
+    (filesCleanAcc: { [key: string]: string }, [filename, file]) => {
+      if (filename === './+page.svelte') {
+        filesCleanAcc['App.svelte'] = file;
+      } else {
+        filesCleanAcc[filename.replace('./', '')] = file;
+      }
 
-    return filesCleanAcc;
-  }, {});
+      return filesCleanAcc;
+    },
+    {}
+  );
 
   return json(filesClean);
 }

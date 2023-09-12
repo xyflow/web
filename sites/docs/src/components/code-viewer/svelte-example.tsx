@@ -21,15 +21,15 @@ export default function SvelteExample({
   activeFile,
   ...rest
 }: SvelteExampleProps) {
-  const [files, setFiles] = useState(null);
+  const [files, setFiles] = useState<{ [key: string]: string }>(null);
   const [fileFetchFailed, setFileFetchFailed] = useState(false);
 
   function openInStackblitz() {
     // rename files to land in folder src/example/ on stackblitz
-    const stackblitzFiles = Object.keys(files).reduce(
-      (filesAcc: { [key: string]: string }, fileName) => {
+    const stackblitzFiles = Object.entries(files).reduce(
+      (filesAcc: { [key: string]: string }, [fileName, file]) => {
         const newFileName = `src/example/${fileName}`;
-        filesAcc[newFileName] = files[fileName];
+        filesAcc[newFileName] = file;
 
         return filesAcc;
       },
