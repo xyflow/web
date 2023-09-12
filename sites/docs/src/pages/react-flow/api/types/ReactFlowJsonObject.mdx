@@ -1,0 +1,16 @@
+import { PropsTable } from '@/components/props-table';
+import { reactFlowJsonObjectFields } from './ReactFlowJsonObject.fields.ts';
+
+# ReactFlowJsonObject&lt;T, U>
+
+```ts
+export type ReactFlowJsonObject<T, U> = {
+  nodes: Node<T>[];
+  edges: Edge<U>[];
+  viewport: Viewport;
+};
+```
+
+## Fields
+
+<PropsTable {...reactFlowJsonObjectFields} />

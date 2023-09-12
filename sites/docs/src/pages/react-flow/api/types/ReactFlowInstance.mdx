@@ -1,70 +1,70 @@
-# ReactFlowInstance&lt;NodeData, EdgeData>
+import { PropsTable } from '@/components/props-table';
+import {
+  nodesAndEdgesFields,
+  intersectionFields,
+  viewportFields,
+} from './ReactFlowInstance.fields.ts';
+
+# ReactFlowInstance&lt;T, U>
 
 ```ts
-export type ReactFlowInstance<NodeData = any, EdgeData = any> = {
+export type ReactFlowInstance<T, U> = {
   // Nodes and Edges
-  getNode: (id: string) => Node<NodeData> | undefined;
-  getNodes: () => Node<NodeData>[];
-  addNodes: (payload: Node<NodeData>[] | Node<NodeData>) => void;
-  setNodes: (
-    payload: Node<NodeData>[] | ((nodes: Node<NodeData>[]) => Node<NodeData>[])
-  ) => void;
+  getNode: (id: string) => Node<T> | undefined;
+  getNodes: () => Node<T>[];
+  addNodes: (payload: Node<T>[] | Node<T>) => void;
+  setNodes: (payload: Node<T>[] | ((nodes: Node<T>[]) => Node<T>[])) => void;
 
-  getEdge: (id: string) => Edge<EdgeData> | undefined;
-  getEdges: () => Edge<EdgeData>[];
-  addEdges: (payload: Edge<EdgeData>[] | Edge<EdgeData>) => void;
-  setEdges: (
-    payload: Edge<EdgeData>[] | ((edges: Edge<EdgeData>[]) => Edge<EdgeData>[])
-  ) => void;
+  getEdge: (id: string) => Edge<U> | undefined;
+  getEdges: () => Edge<U>[];
+  addEdges: (payload: Edge<U>[] | Edge<U>) => void;
+  setEdges: (payload: Edge<U>[] | ((edges: Edge<U>[]) => Edge<U>[])) => void;
 
-  toObject: () => ReactFlowJsonObject<NodeData, EdgeData>;
-  deleteElements: ({ nodes, edges }: DeleteElementsOptions) => void;
+  toObject: () => ReactFlowJsonObject<T, U>;
+  deleteElements: (payload: {
+    nodes?: (Partial<Node> & { id: Node['id'] })[];
+    edges?: (Partial<Edge> & { id: Edge['id'] })[];
+  }) => void;
 
   // Intersections
   getIntersectingNodes: (
-    node: (Partial<Node<NodeData>> & { id: Node['id'] }) | Rect,
+    node: (Partial<Node<T>> & { id: Node['id'] }) | Rect,
     partially?: boolean,
-    nodes?: Node<NodeData>[]
-  ) => Node<NodeData>[];
+    nodes?: Node<T>[]
+  ) => Node<T>[];
 
   isNodeIntersecting: (
-    node: (Partial<Node<NodeData>> & { id: Node['id'] }) | Rect,
+    node: (Partial<Node<T>> & { id: Node['id'] }) | Rect,
     area: Rect,
     partially?: boolean
   ) => boolean;
 
   // Viewport
   viewportInitialized: boolean;
-  zoomIn: ZoomInOut;
-  zoomOut: ZoomInOut;
-  zoomTo: ZoomTo;
-  getZoom: GetZoom;
-  setViewport: SetViewport;
-  getViewport: GetViewport;
-  fitView: FitView;
-  setCenter: SetCenter;
-  fitBounds: FitBounds;
-  project: Project;
+  zoomIn: (options?: { duration: number }) => void;
+  zoomOut: (options?: { duration: number }) => void;
+  zoomTo: (zoomLevel: number, options?: { duration: number }) => void;
+  getZoom: () => number;
+  setViewport: (viewport: Viewport, options?: { duration: number }) => void;
+  getViewport: () => Viewport;
+  fitView: (fitViewOptions?: FitViewOptions) => boolean;
+  setCenter: (
+    x: number,
+    y: number,
+    options?: { duration: number; zoom: number }
+  ) => void;
+  fitBounds: (
+    bounds: Rect,
+    options?: { duration: number; padding: number }
+  ) => void;
+  project: (position: { x: number; y: number }) => { x: number; y: number };
 };
 ```
 
-## Types
+## Fields
 
-### `ReactFlowJsonObject`
+<PropsTable {...nodesAndEdgesFields} />
 
-```ts
-export type ReactFlowJsonObject<NodeData = any, EdgeData = any> = {
-  nodes: Node<NodeData>[];
-  edges: Edge<EdgeData>[];
-  viewport: Viewport;
-};
-```
+<PropsTable {...intersectionFields} />
 
-### `DeleteElementsOoptions`
-
-```ts
-export type DeleteElementsOptions = {
-  nodes?: (Partial<Node> & { id: Node['id'] })[];
-  edges?: (Partial<Edge> & { id: Edge['id'] })[];
-};
-```
+<PropsTable {...viewportFields} />
