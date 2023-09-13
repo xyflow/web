@@ -19,12 +19,11 @@ import { isDevelopment } from '@/utils';
 
 import mdxComponents from './mdx-components';
 import DownloadSandpackButton from './sandpack-downloader';
-import FullScreenButton from './fullscreen-button';
 import OverviewButton from './overview-button';
 import Toolbar from './toolbar';
 
 export type ProCodeViewerProps = {
-  exampleId: string;
+  id: string;
   files: SandpackFiles;
   name?: string;
   description?: string;
@@ -86,7 +85,7 @@ const resizeBottomEnabled = {
 export default function ProCodeViewer({
   name,
   description,
-  exampleId,
+  id,
   files,
   readme,
   dependencies,
@@ -158,7 +157,7 @@ export default function ProCodeViewer({
           className="h-[100vh] relative"
         >
           <div className="flex flex-col h-[100vh]">
-            <Toolbar />
+            <Toolbar exampleId={id} />
             <SandpackPreview className="h-[45%] flex-shrink-0" showOpenInCodeSandbox={isDevelopment()} />
             <SandpackCodeEditor className="flex-grow-1 flex-shrink-1 overflow-hidden" />
           </div>

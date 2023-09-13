@@ -2,7 +2,7 @@
 
 import useNhostFunction from '@/hooks/useNhostFunction';
 import { useState } from 'react';
-import { Button, Card, CardContent, CardHeader, CardTitle, Input, InputLabel } from 'xy-ui';
+import { Button, Card, CardContent, CardHeader, CardTitle } from 'xy-ui';
 
 type PricingPlanProps = {
   plan: 'starter' | 'pro' | 'enterprise';
@@ -13,17 +13,24 @@ type PricingPlanProps = {
 
 export default function PricingPlan({ plan, interval = 'month', currency = 'usd', seats = 0 }: PricingPlanProps) {
   const callNhostFunction = useNhostFunction();
+  const [isLoading, setLoading] = useState(false);
 
   const subscribe = async () => {
+    setLoading(true);
+
     const response = await callNhostFunction<{ url: string }>('/stripe/create-checkout', {
       plan,
       interval,
       currency,
     });
 
-    if (response.res.data?.url) {
+    if (response.res?.data?.url) {
       window.location.href = response.res.data.url;
+      setTimeout(() => setLoading(false), 500);
+      return;
     }
+
+    setLoading(false);
   };
 
   return (
@@ -44,7 +51,7 @@ export default function PricingPlan({ plan, interval = 'month', currency = 'usd'
         </div>
       </CardContent>
       <CardContent>
-        <Button className="w-full" variant="react" onClick={subscribe}>
+        <Button loading={isLoading} className="w-full" variant="react" onClick={subscribe}>
           Subscribe
         </Button>
       </CardContent>

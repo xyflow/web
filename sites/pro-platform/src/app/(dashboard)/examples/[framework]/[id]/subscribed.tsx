@@ -14,5 +14,5 @@ export default async function ({ exampleId, frameworkId }: { exampleId: string; 
     parseFrontmatter: true,
   });
 
-  return <ProCodeViewer {...example} files={example.files ?? {}} exampleId={exampleId} readme={readmeSource} />;
+  return <ProCodeViewer {...example} files={example.files ?? {}} readme={readmeSource} />;
 }
