@@ -20,11 +20,13 @@ export type PropsTableProps = {
 export function PropsTable({
   props = [],
   variant = 'react',
-  links,
-  info = {},
+  links = {},
   deeplinkPrefix = '',
 }: PropsTableProps) {
+  // We can hide the default column entirely if none of the props have a default
+  // value to document.
   const shouldShowDefault = props.some((prop) => !!prop.default);
+  //
   const allLinks = useMemo(
     () => ({
       ...links,
@@ -34,6 +36,8 @@ export function PropsTable({
     }),
     [variant, links]
   );
+  // This function takes a string representing some type and attempts to turn any
+  // types referenced inside into links, either internal or external.
   const linkify = useCallback(
     (type: string) =>
       type.match(/(\w+|\W+)/g).map((chunk, i) =>
@@ -53,18 +57,22 @@ export function PropsTable({
   );
 
   return (
-    <table className="table-auto w-full my-8 rounded-xl relative">
+    <table className="table-fixed w-full my-8 rounded-xl relative">
       <thead>
         <tr className="bg-gray-100">
-          <th className="px-2 py-2" />
-          <th align="left" className="py-2 px-2">
+          <th className="px-2 py-2 w-[5%]" />
+          <th align="left" className="py-2 px-2 w-[25%]">
             Name
           </th>
-          <th align="left" className="py-2 px-2">
+          <th
+            align="left"
+            className="py-2 px-2"
+            style={{ width: shouldShowDefault ? '50%' : '70%' }}
+          >
             Type
           </th>
           {shouldShowDefault && (
-            <th align="left" className="py-2 px-2 hidden md:table-cell">
+            <th align="left" className="py-2 px-2 hidden md:table-cell w-[20%]">
               Default
             </th>
           )}
@@ -97,7 +105,16 @@ export function PropsTable({
           <tbody key={id} className="hover:bg-gray-50 group border-t">
             {!prop.type && !prop.default ? (
               <tr className="bg-gray-50 border-t">
-                <th className="px-2 w-8" />
+                <td className="px-2 w-8">
+                  <Link
+                    className={`invisible group-hover:visible text-${variant}`}
+                    href={
+                      deeplinkPrefix ? `#${deeplinkPrefix}-${id}` : `#${id}`
+                    }
+                  >
+                    #
+                  </Link>
+                </td>
                 <th
                   colSpan={3}
                   className="py-1 px-2 font-bold sticky top-0 text-left"
@@ -119,7 +136,7 @@ export function PropsTable({
                     </Link>
                   </td>
                   <td className="flex justify-between py-1 px-2">
-                    <Text>{prop.name}</Text>
+                    <Text size="sm">{prop.name}</Text>
                   </td>
                   <td className="px-2 text-sm">
                     <code>{linkify(prop.type)}</code>
@@ -139,7 +156,7 @@ export function PropsTable({
                   <tr className="!border-0">
                     <td className="px-2" colSpan={2} />
                     <td className="px-2" colSpan={2}>
-                      {prop.description}
+                      <Text size="sm">{prop.description}</Text>
                     </td>
                   </tr>
                 )}
@@ -175,6 +192,8 @@ const externalReactLinks = {
     'https://github.com/DefinitelyTyped/DefinitelyTyped/blob/61c7bb49838a155b2b0476bb97d5e707ca80a23b/types/react/v17/index.d.ts#L1226C6-L1226C6',
   ReactNode:
     'https://github.com/DefinitelyTyped/DefinitelyTyped/blob/d7e13a7c7789d54cf8d601352517189e82baf502/types/react/index.d.ts#L264',
+  StoreApi:
+    'https://github.com/pmndrs/zustand/blob/0426978490e8b14f40443bcbb2332e103076510b/src/vanilla.ts#L8',
 };
 
 export const svelteFlowLinks = {};
