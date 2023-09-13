@@ -60,8 +60,8 @@ export function PropsTable({
     <table className="table-fixed w-full my-8 rounded-xl relative">
       <thead>
         <tr className="bg-gray-100">
-          <th className="px-2 py-2 w-[5%]" />
-          <th align="left" className="py-2 px-2 w-[25%]">
+          <th className="px-2 py-2 w-[3%]" />
+          <th align="left" className="py-2 px-2 w-[27%]">
             Name
           </th>
           <th
