@@ -2,8 +2,9 @@ import { Framework } from '@/types';
 
 import ReactExample from './react-example';
 import SvelteExample from './svelte-example';
+import { CodeViewerOptions } from './example-viewer';
 
-const defaultOptions = {
+const defaultOptions: CodeViewerOptions = {
   editorHeight: '70vh',
   editorWidthPercentage: 45,
   wrapContent: true,
@@ -14,7 +15,7 @@ type CodeViewerProps = {
   codePath: string;
   additionalFiles?: string[];
   dependencies?: Record<string, string>;
-  options?: typeof defaultOptions;
+  options?: CodeViewerOptions;
   activeFile?: string;
   showEditor?: boolean;
   showPreview?: boolean;
@@ -34,7 +35,12 @@ export default function CodeViewer({
   framework = 'react',
   ...rest
 }: CodeViewerProps) {
-  const editorHeight = options?.editorHeight || defaultOptions.editorHeight;
+  const optionsMerged = {
+    ...defaultOptions,
+    ...options,
+  };
+
+  console.log(optionsMerged);
 
   return (
     <>
@@ -43,8 +49,8 @@ export default function CodeViewer({
           codePath={codePath}
           isTypescript={isTypescript}
           framework={framework}
-          editorHeight={editorHeight}
           additionalFiles={additionalFiles}
+          options={optionsMerged}
           {...rest}
         />
       )}
@@ -52,7 +58,7 @@ export default function CodeViewer({
         <SvelteExample
           codePath={codePath}
           framework={framework}
-          editorHeight={editorHeight}
+          options={optionsMerged}
           {...rest}
         />
       )}

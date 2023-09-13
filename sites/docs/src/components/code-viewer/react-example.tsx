@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import ExampleViewer from './example-viewer';
+import ExampleViewer, { CodeViewerOptions } from './example-viewer';
 import { getScriptExtension, loadLocalFiles } from './utils';
 
 import { Framework } from '@/types';
@@ -7,10 +7,10 @@ import { Framework } from '@/types';
 type ReactExampleProps = {
   codePath: string;
   additionalFiles: string[];
-  activeFile?: string;
   framework: Framework;
   isTypescript: boolean;
-  editorHeight: string;
+  options: CodeViewerOptions;
+  activeFile?: string;
 };
 
 export default function ReactExample({
@@ -19,7 +19,7 @@ export default function ReactExample({
   activeFile,
   framework,
   isTypescript,
-  editorHeight,
+  options,
   ...rest
 }: ReactExampleProps) {
   const [files, setFiles] = useState(null);
@@ -44,7 +44,7 @@ export default function ReactExample({
   }, []);
 
   if (!files) {
-    return <div style={{ minHeight: editorHeight }} />;
+    return <div style={{ minHeight: options.editorHeight }} />;
   }
 
   return (
@@ -53,6 +53,7 @@ export default function ReactExample({
       activeFile={activeFile}
       framework={framework}
       isTypescript={isTypescript}
+      options={options}
       {...rest}
     />
   );

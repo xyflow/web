@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import sdk from '@stackblitz/sdk';
 
 import { Button } from 'xy-ui';
-import ExampleViewer from './example-viewer';
+import ExampleViewer, { CodeViewerOptions } from './example-viewer';
 import SvelteSetup from './svelte/setup';
 
 import { Framework } from '@/types';
@@ -12,12 +12,12 @@ type SvelteExampleProps = {
   codePath: string;
   framework?: Framework;
   activeFile?: string;
-  editorHeight: string;
+  options: CodeViewerOptions;
 };
 
 export default function SvelteExample({
   codePath,
-  editorHeight,
+  options,
   activeFile,
   ...rest
 }: SvelteExampleProps) {
@@ -79,7 +79,7 @@ export default function SvelteExample({
       <>
         {fileFetchFailed && (
           <div
-            style={{ height: editorHeight }}
+            style={{ height: options.editorHeight }}
             className="w-full color nx-bg-primary-100 flex justify-center content-center flex-wrap"
           >
             <p className="text-svelte">Example failed to load</p>
@@ -92,14 +92,14 @@ export default function SvelteExample({
   return (
     <ExampleViewer
       files={files}
-      editorHeight={editorHeight}
       showOpenInCodeSandbox={false}
       readOnly
+      options={options}
       customPreview={
         <iframe
           src={`${SVELTE_EXAMPLES_URL}${codePath}`}
           width="100%"
-          height={editorHeight}
+          height="100%"
         />
       }
       customOpenButton={

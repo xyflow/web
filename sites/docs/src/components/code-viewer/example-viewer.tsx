@@ -9,7 +9,7 @@ import {
   SandpackFiles,
 } from '@codesandbox/sandpack-react';
 
-import { REACT_FLOW_VERSION, SVELTE_EXAMPLES_URL } from '@/constants';
+import { REACT_FLOW_VERSION } from '@/constants';
 import { Framework } from '@/types';
 
 const hiddenBaseStyles = {
@@ -28,16 +28,16 @@ html, body, #root {
   },
 };
 
-const defaultOptions = {
-  editorHeight: '70vh',
-  editorWidthPercentage: 45,
-  wrapContent: true,
-  readOnly: false,
+export type CodeViewerOptions = {
+  editorHeight: string | number;
+  editorWidthPercentage: number;
+  wrapContent: boolean;
+  readOnly: boolean;
 };
 
 type CodeViewerProps = {
   dependencies?: Record<string, string>;
-  options?: typeof defaultOptions;
+  options: CodeViewerOptions;
   activeFile?: string;
   showEditor?: boolean;
   showPreview?: boolean;
@@ -48,7 +48,6 @@ type CodeViewerProps = {
   showOpenInCodeSandbox?: boolean;
   framework?: Framework;
   files?: SandpackFiles;
-  editorHeight?: string | number;
   readOnly?: boolean;
 };
 
@@ -60,6 +59,7 @@ const defaultSetup = {
 
 export default function CodeViewer({
   framework,
+  options,
   dependencies = {},
   showEditor = true,
   showPreview = true,
@@ -69,7 +69,6 @@ export default function CodeViewer({
   sandpackOptions = {},
   showOpenInCodeSandbox = true,
   files = {},
-  editorHeight = '70vh',
   readOnly = false,
 }: CodeViewerProps) {
   const customSetup = useMemo(
@@ -83,11 +82,11 @@ export default function CodeViewer({
     []
   );
 
-  const panelStyle = { height: editorHeight };
+  const panelStyle = { height: options.editorHeight };
   sandpackOptions.readOnly = !!customPreview;
 
   return (
-    <div className="my-4" style={{ minHeight: editorHeight }}>
+    <div className="my-4" style={{ minHeight: options.editorHeight }}>
       <SandpackProvider
         template={
           framework === 'react' && isTypescript ? 'react-ts' : framework
@@ -101,11 +100,18 @@ export default function CodeViewer({
       >
         <SandpackLayout>
           {showEditor && (
-            <SandpackCodeEditor readOnly={readOnly} style={panelStyle} />
+            <SandpackCodeEditor
+              // fix for <pre> with padding when read-only is set
+              className={'[&_pre]:!p-0'}
+              readOnly={readOnly}
+              style={{ ...panelStyle, padding: 0 }}
+            />
           )}
           {showPreview && customPreview ? (
             <>
-              <SandpackStack style={{ flex: '1 1 0%', height: editorHeight }}>
+              <SandpackStack
+                style={{ flex: '1 1 0%', height: options.editorHeight }}
+              >
                 <div
                   className="sp-preview-container"
                   style={{ flex: '1 1 0%', height: '100%' }}
