@@ -1,9 +1,12 @@
+import { PropsTable } from '@/components/props-table';
+import { nodeFields } from './Node.fields.ts';
+
 # Node&lt;T, U>
 
 [source](https://github.com/wbkd/react-flow/blob/xyflow/packages/system/src/types/nodes.ts)
 
 ```ts
-export type Node<T = any, U extends string | undefined> = {
+export type Node<T, U> = {
   id: string;
   position: XYPosition;
   data: T;
@@ -36,50 +39,4 @@ export type Node<T = any, U extends string | undefined> = {
 
 ## Fields
 
-### id: `string`
-
-### position: `XYPosition`
-
-### data: `T`
-
-### type?: `U`
-
-### sourcePosition?: `Position`
-
-### targetPosition?: `Position`
-
-### hidden?: `boolean`
-
-### selected?: `boolean`
-
-### dragging?: `boolean`
-
-### draggable?: `boolean`
-
-### selectable?: `boolean`
-
-### connectable?: `boolean`
-
-### deletable?: `boolean`
-
-### dragHandle?: `string`
-
-### width?: `number | null`
-
-### height?: `number | null`
-
-### parentNode?: `string`
-
-### zIndex?: `number`
-
-### extent?: `'parent' | CoordinateExtent`
-
-### expandParent?: `boolean`
-
-### positionAbsolute?: `XYPosition`
-
-### ariaLabel?: `string`
-
-### focusable?: `boolean`
-
-### origin?: `NodeOrigin`
+<PropsTable {...nodeFields} />
