@@ -2,11 +2,11 @@ import { type PropsTableProps } from '@/components/props-table';
 
 export const handleElementFields: PropsTableProps = {
   props: [
-    ['id', 'string | null'],
-    ['x', 'number'],
-    ['y', 'number'],
-    ['width', 'number'],
-    ['height', 'number'],
-    ['position', 'Position'],
+    { name: 'id', type: 'string | null' },
+    { name: 'x', type: 'number' },
+    { name: 'y', type: 'number' },
+    { name: 'width', type: 'number' },
+    { name: 'height', type: 'number' },
+    { name: 'position', type: 'Position' },
   ],
 };

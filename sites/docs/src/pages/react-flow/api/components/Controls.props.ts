@@ -2,14 +2,17 @@ import { type PropsTableProps } from '@/components/props-table';
 
 export const controlsProps: PropsTableProps = {
   props: [
-    ['showZoom?', 'boolean', 'true'],
-    ['showFitView?', 'boolean', 'true'],
-    ['showInteractive?', 'boolean', 'true'],
-    ['fitViewOptions?', 'FitViewOptions'],
-    ['onZoomIn?', '() => void'],
-    ['onZoomOut?', '() => void'],
-    ['onFitView?', '() => void'],
-    ['onInteractiveChange?', '(interactiveStatus: boolean) => void'],
-    ['position?', 'PanelPosition', '"bottom-left"'],
+    { name: 'showZoom?', type: 'boolean', default: 'true' },
+    { name: 'showFitView?', type: 'boolean', default: 'true' },
+    { name: 'showInteractive?', type: 'boolean', default: 'true' },
+    { name: 'fitViewOptions?', type: 'FitViewOptions' },
+    { name: 'onZoomIn?', type: '() => void' },
+    { name: 'onZoomOut?', type: '() => void' },
+    { name: 'onFitView?', type: '() => void' },
+    {
+      name: 'onInteractiveChange?',
+      type: '(interactiveStatus: boolean) => void',
+    },
+    { name: 'position?', type: 'PanelPosition', default: '"bottom-left"' },
   ],
 };

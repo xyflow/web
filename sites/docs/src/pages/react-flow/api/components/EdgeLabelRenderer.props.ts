@@ -1,5 +1,5 @@
 import { type PropsTableProps } from '@/components/props-table';
 
 export const edgeLabelRendererProps: PropsTableProps = {
-  props: [['children', 'React.ReactNode']],
+  props: [{ name: 'children', type: 'React.ReactNode' }],
 };

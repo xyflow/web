@@ -6,17 +6,21 @@ const links = {
 
 export const backgroundProps: PropsTableProps = {
   props: [
-    ['id?', 'string'],
-    ['color?', 'string'],
-    ['bgColor?', 'string'],
-    ['className?', 'string'],
-    ['patternClassName?', 'string'],
-    ['gap?', 'number | [number, number]', '28'],
-    ['size?', 'number'],
-    ['offset?', 'number', '2'],
-    ['lineWidth?', 'number', '1'],
-    ['variant?', 'BackgroundVariant', 'BackgroundVariant.Dots'],
-    ['style?', 'React.CSSProperties'],
+    { name: 'id?', type: 'string' },
+    { name: 'color?', type: 'string' },
+    { name: 'bgColor?', type: 'string' },
+    { name: 'className?', type: 'string' },
+    { name: 'patternClassName?', type: 'string' },
+    { name: 'gap?', type: 'number | [number, number]', default: '28' },
+    { name: 'size?', type: 'number' },
+    { name: 'offset?', type: 'number', default: '2' },
+    { name: 'lineWidth?', type: 'number', default: '1' },
+    {
+      name: 'variant?',
+      type: 'BackgroundVariant',
+      default: 'BackgroundVariant.Dots',
+    },
+    { name: 'style?', type: 'React.CSSProperties' },
   ],
   links: links,
 };

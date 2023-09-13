@@ -2,49 +2,49 @@ import { type PropsTableProps } from '@/components/props-table';
 
 export const nodeDimensionChangeFields: PropsTableProps = {
   props: [
-    ['id', 'string'],
-    ['type', '"dimensions"'],
-    ['dimensions?', 'Dimensions'],
-    ['updateStyle?', 'boolean'],
-    ['resizing?', 'boolean'],
+    { name: 'id', type: 'string' },
+    { name: 'type', type: '"dimensions"' },
+    { name: 'dimensions?', type: 'Dimensions' },
+    { name: 'updateStyle?', type: 'boolean' },
+    { name: 'resizing?', type: 'boolean' },
   ],
 };
 
 export const nodePositionChangeFields: PropsTableProps = {
   props: [
-    ['id', 'string'],
-    ['type', '"position"'],
-    ['position?', 'XYPosition'],
-    ['positionAbsolute?', 'XYPosition'],
-    ['dragging?', 'boolean'],
+    { name: 'id', type: 'string' },
+    { name: 'type', type: '"position"' },
+    { name: 'position?', type: 'XYPosition' },
+    { name: 'positionAbsolute?', type: 'XYPosition' },
+    { name: 'dragging?', type: 'boolean' },
   ],
 };
 
 export const nodeSelectionChangeFields: PropsTableProps = {
   props: [
-    ['id', 'string'],
-    ['type', '"select"'],
-    ['selected', 'boolean'],
+    { name: 'id', type: 'string' },
+    { name: 'type', type: '"select"' },
+    { name: 'selected', type: 'boolean' },
   ],
 };
 
 export const nodeRemoveChangeFields: PropsTableProps = {
   props: [
-    ['id', 'string'],
-    ['type', '"remove"'],
+    { name: 'id', type: 'string' },
+    { name: 'type', type: '"remove"' },
   ],
 };
 
 export const nodeAddChangeFields: PropsTableProps = {
   props: [
-    ['item', 'Node<T>'],
-    ['type', '"add"'],
+    { name: 'item', type: 'Node<T>' },
+    { name: 'type', type: '"add"' },
   ],
 };
 
 export const nodeResetChangeFields: PropsTableProps = {
   props: [
-    ['item', 'Node<T>'],
-    ['type', '"reset"'],
+    { name: 'item', type: 'Node<T>' },
+    { name: 'type', type: '"reset"' },
   ],
 };

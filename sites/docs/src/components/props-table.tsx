@@ -5,7 +5,12 @@ import React, { useCallback, useMemo } from 'react';
 import * as reactFlowTypes from '../pages/react-flow/api/types/_meta.json';
 
 export type PropsTableProps = {
-  props: [name: string, type?: string, default_?: string][];
+  props: {
+    name: string;
+    type?: string;
+    default?: string;
+    description?: string;
+  }[];
   variant?: 'react' | 'svelte';
   links?: Record<string, string>;
   info?: Record<string, string>;
@@ -19,7 +24,7 @@ export function PropsTable({
   info = {},
   deeplinkPrefix = '',
 }: PropsTableProps) {
-  const shouldShowDefault = props.some(([, , default_]) => !!default_);
+  const shouldShowDefault = props.some((prop) => !!prop.default);
   const allLinks = useMemo(
     () => ({
       ...links,
@@ -85,18 +90,19 @@ export function PropsTable({
           We need the markup to be semantically valid because next "helpfully"
           does markup validation when statically generating pages.
       */}
-      {props.map(([name, type, default_]) => {
-        const id = name.toLowerCase().trim();
+      {props.map((prop) => {
+        const id = prop.name.toLowerCase().trim();
 
         return (
           <tbody key={id} className="hover:bg-gray-50 group border-t">
-            {!type && !default_ ? (
+            {!prop.type && !prop.default ? (
               <tr className="bg-gray-50 border-t">
+                <th className="px-2 w-8" />
                 <th
                   colSpan={3}
                   className="py-1 px-2 font-bold sticky top-0 text-left"
                 >
-                  {name}
+                  {prop.name}
                 </th>
               </tr>
             ) : (
@@ -113,23 +119,27 @@ export function PropsTable({
                     </Link>
                   </td>
                   <td className="flex justify-between py-1 px-2">
-                    <Text>{name}</Text>
+                    <Text>{prop.name}</Text>
                   </td>
                   <td className="px-2 text-sm">
-                    <code>{linkify(type)}</code>
+                    <code>{linkify(prop.type)}</code>
                   </td>
                   {shouldShowDefault && (
                     <td className="px-2 text-sm hidden md:table-cell">
-                      {default_ ? <code>{linkify(default_)}</code> : '-'}
+                      {prop.default ? (
+                        <code>{linkify(prop.default)}</code>
+                      ) : (
+                        '-'
+                      )}
                     </td>
                   )}
                 </tr>
 
-                {name in info && (
+                {prop.description && (
                   <tr className="!border-0">
                     <td className="px-2" colSpan={2} />
                     <td className="px-2" colSpan={2}>
-                      {info[name]}
+                      {prop.description}
                     </td>
                   </tr>
                 )}
@@ -159,6 +169,8 @@ const externalReactLinks = {
     'https://github.com/DefinitelyTyped/DefinitelyTyped/blob/61c7bb49838a155b2b0476bb97d5e707ca80a23b/types/react/v17/index.d.ts#L75',
   CSSProperties:
     'https://github.com/DefinitelyTyped/DefinitelyTyped/blob/61c7bb49838a155b2b0476bb97d5e707ca80a23b/types/react/v17/index.d.ts#L1545',
+  DragEvent:
+    'https://github.com/DefinitelyTyped/DefinitelyTyped/blob/0cb3553dbd4f91bf6c20e1f4e8bc56197b1e61f8/types/d3-drag/index.d.ts#L281C1-L281C1',
   MouseEvent:
     'https://github.com/DefinitelyTyped/DefinitelyTyped/blob/61c7bb49838a155b2b0476bb97d5e707ca80a23b/types/react/v17/index.d.ts#L1226C6-L1226C6',
   ReactNode:

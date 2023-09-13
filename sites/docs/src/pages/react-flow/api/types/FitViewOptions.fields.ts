@@ -2,11 +2,11 @@ import { type PropsTableProps } from '@/components/props-table';
 
 export const fitViewOptionsFields: PropsTableProps = {
   props: [
-    ['padding?', 'number'],
-    ['includeHiddenNodes?', 'boolean'],
-    ['minZoom?', 'number'],
-    ['maxZoom?', 'number'],
-    ['duration?', 'number'],
-    ['nodes?', "(Partial<Node> & { id: Node['id'] })[]"],
+    { name: 'padding?', type: 'number' },
+    { name: 'includeHiddenNodes?', type: 'boolean' },
+    { name: 'minZoom?', type: 'number' },
+    { name: 'maxZoom?', type: 'number' },
+    { name: 'duration?', type: 'number' },
+    { name: 'nodes?', type: "(Partial<Node> & { id: Node['id'] })[]" },
   ],
 };
