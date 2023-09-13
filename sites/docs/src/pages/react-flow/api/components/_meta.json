@@ -7,5 +7,6 @@
   "Handle": "<Handle />",
   "MiniMap": "<MiniMap />",
   "NodeResizer": "<NodeResizer />",
-  "NodeToolbar": "<NodeToolbar />"
+  "NodeToolbar": "<NodeToolbar />",
+  "Panel": "<Panel />"
 }

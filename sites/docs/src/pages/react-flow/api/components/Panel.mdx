@@ -1,0 +1,30 @@
+import { PropsTable } from '@/components/props-table';
+import { panelProps } from './Panel.props.ts';
+
+# &lt;Panel />
+
+```jsx
+import ReactFlow, { Background, Panel } from '@xyflow/reactflow';
+
+export default function Flow() {
+  return (
+    <ReactFlow nodes={[...]} fitView>
+      <Panel position="top-left">top-left</Panel>
+      <Panel position="top-center">top-center</Panel>
+      <Panel position="top-right">top-right</Panel>
+      <Panel position="bottom-left">bottom-left</Panel>
+      <Panel position="bottom-center">bottom-center</Panel>
+      <Panel position="bottom-right">bottom-right</Panel>
+    </ReactFlow>
+  );
+}
+```
+
+[source](https://github.com/wbkd/react-flow/blob/961d1295b4f056dec6532ff785a3cc1de60dc1f6/packages/react/src/components/Panel/index.tsx#L15)
+
+## Props
+
+<PropsTable {...panelProps} />
+
+Additionally, the `<Panel />` component accepts all props of the HTML `<div />`
+element.
