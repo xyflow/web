@@ -27,7 +27,7 @@ export const nodeFields: PropsTableProps = {
     { name: 'ariaLabel', type: 'string' },
     { name: 'focusable', type: 'boolean' },
     { name: 'origin', type: 'NodeOrigin' },
-    { name: 'style', type: 'CSSProperties' },
+    { name: 'style', type: 'React.CSSProperties' },
     { name: 'className', type: 'string' },
   ],
 };
