@@ -6,7 +6,7 @@ import NavMenu from './NavMenu';
 function Navigation() {
   return (
     <div className="bg-white relative border-b px-4 top-0">
-      <div className="flex items-center justify-between py-3">
+      <div className="flex items-center justify-between py-3 max-w-7xl mx-auto">
         <Link href="/">
           <div className="flex items-center">
             <Logo width={28} height={28} />

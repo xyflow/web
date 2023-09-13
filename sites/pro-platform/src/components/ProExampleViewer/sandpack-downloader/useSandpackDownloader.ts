@@ -1,5 +1,3 @@
-import React from 'react';
-import { Button } from '@chakra-ui/react';
 import { useSandpack } from '@codesandbox/sandpack-react';
 import JSZip from 'jszip';
 import { saveAs } from 'file-saver';

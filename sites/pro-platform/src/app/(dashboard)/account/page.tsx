@@ -6,7 +6,7 @@ import DeleteAccountCard from './_cards/delete-account';
 
 function AccountPage() {
   return (
-    <div className="max-w-3xl mx-auto mb-20">
+    <div className="max-w-3xl">
       <DashboardHeader
         title="Account"
         description="This page lets you manage your account. You can change your email, password, and delete your account."

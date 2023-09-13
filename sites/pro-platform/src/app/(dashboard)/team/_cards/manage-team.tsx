@@ -44,6 +44,7 @@ export default function ManageTeamCard() {
   const [includedSeats, setIncludedSeats] = useState<number>(0);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isDeleteLoading, setIsDeleteLoading] = useState<boolean>(false);
+  const [isError, setIsError] = useState<boolean>(false);
   const [memberEmail, setMemberEmail] = useState<string>('');
   const { data, refetch } = useAuthQuery(GET_TEAM_MEMBERS, { variables: { userId } });
   const nhostFunction = useNhostFunction();
@@ -63,8 +64,14 @@ export default function ManageTeamCard() {
   }, []);
 
   const removeMember = async (email: string) => {
+    setIsError(false);
     setIsDeleteLoading(true);
-    await nhostFunction('team/remove', { email });
+    const { error } = await nhostFunction('team/remove', { email });
+
+    if (error) {
+      setIsError(true);
+    }
+
     await refetch();
     setIsDeleteLoading(false);
     setConfirmDeleteMember(null);
@@ -72,11 +79,18 @@ export default function ManageTeamCard() {
 
   const addMember = async ({ paymentConfirmed }: { paymentConfirmed: boolean }) => {
     setIsLoading(true);
+    setIsError(false);
 
-    const { res } = await nhostFunction<{ needsPaymentConfirmation?: boolean }>('team/invite', {
+    const { res, error } = await nhostFunction<{ needsPaymentConfirmation?: boolean }>('team/invite', {
       email: memberEmail,
       paymentConfirmed,
     });
+
+    if (error) {
+      setIsLoading(false);
+      setIsError(true);
+      return;
+    }
 
     if (res.data?.needsPaymentConfirmation) {
       setConfirmPayment(true);
@@ -147,6 +161,7 @@ export default function ManageTeamCard() {
           </AlertDialog>
         )}
       </CardHeader>
+
       <div className="border-t">
         {data?.team_subscriptions?.map((member: TeamMember) => (
           <CardContent className="py-4 flex items-center justify-between border-b" key={member.email}>
@@ -172,6 +187,7 @@ export default function ManageTeamCard() {
               placeholder="Enter Email..."
               disabled={isLoading}
             />
+            {isError && <InputLabel className="text-red-600 mt-1">Something went wrong. Please try again.</InputLabel>}
           </div>
           <Button disabled={isLoading} className="shrink-0 ml-auto mt-auto" variant="react" type="submit">
             {isLoading ? 'Please wait...' : `Add To Subscription`}

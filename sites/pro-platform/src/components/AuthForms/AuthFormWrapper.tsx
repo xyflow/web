@@ -25,7 +25,7 @@ const AuthFormWrapper = ({
   description = null,
 }: AuthFormWrapperProps) => {
   return (
-    <div className="relative overflow-hidden -m-4">
+    <div className="relative overflow-hidden -m-4 min-h-[70vh]">
       <div
         className="absolute opacity-10 w-[100vw] h-[70vw] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-10"
         style={{
