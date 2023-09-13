@@ -1,0 +1,22 @@
+# &lt;ControlButton />
+
+```jsx
+import { MagicWand } from '@radix-ui/react-icons'
+import ReactFlow, { Controls, ControlButton } from '@xyflow/reactlfow'
+
+export default function Flow() {
+  return (
+    <ReactFlow nodes={[...]} edges={[...]}>
+      <Controls>
+        <ControlButton onClick={() => alert('Something magical just happened. ✨')}>
+          <MagicWand />
+        </ControlButton>
+    </ReactFlow>
+  )
+}
+```
+
+## Props
+
+The `<ControlButton />` component accepts any prop valid on a HTML `<button />`
+element.

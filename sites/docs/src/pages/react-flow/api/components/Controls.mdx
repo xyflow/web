@@ -27,30 +27,7 @@ well as the following:
 
 <PropsTable {...controlsProps} />
 
-## &lt;ControlButton />
-
-If you'd like to add additional buttons to the `<Controls />` component, this
-component will do the trick!
-
-```tsx
-import { MagicWand } from '@radix-ui/react-icons'
-import ReactFlow, { Controls, ControlButton } from '@xyflow/reactlfow'
-
-export default function Flow() {
-  return (
-    <ReactFlow nodes={[...]} edges={[...]}>
-      <Controls>
-        <ControlButton onClick={() => alert('Something magical just happened. ✨')}>
-          <MagicWand />
-        </ControlButton>
-    </ReactFlow>
-  )
-}
-```
-
-### Props
-
-The `<ControlButton />` component any acceps any prop valid on a `<button />`
-element.
-
 ## Notes
+
+- To extend or customise the controls, you can use the [`<ControlButton />`](./ControlButton)
+  component
