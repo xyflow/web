@@ -1,0 +1,43 @@
+import { PropsTable } from '@/components/props-table';
+import {
+  getSmoothStepPathParams,
+  returnType,
+} from './getSmoothStepPath.params.ts';
+
+# getSmoothStepPath()
+
+```ts
+export function getSmoothStepPath({
+  sourceX,
+  sourceY,
+  sourcePosition = Position.Bottom,
+  targetX,
+  targetY,
+  targetPosition = Position.Top,
+  borderRadius = 5,
+  centerX,
+  centerY,
+  offset = 20,
+}: GetSmoothStepPathParams): [
+  path: string,
+  labelX: number,
+  labelY: number,
+  offsetX: number,
+  offsetY: number
+];
+```
+
+## Params
+
+<PropsTable {...getSmoothStepPathParams} />
+
+## Returns
+
+This function returns a tuple containing everything you need to render a bezier
+path. In JavaScript, a tuple is just an array with a known fixed length. We've
+documented the type of each element in the table below.
+
+In TypeScript, each element in the tuple is labelled to provide additional
+context.
+
+<PropsTable {...returnType} />

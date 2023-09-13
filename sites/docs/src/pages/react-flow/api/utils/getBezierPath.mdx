@@ -1,0 +1,47 @@
+import { PropsTable } from '@/components/props-table';
+import {
+  getBezierPathParams,
+  returnType,
+  signature,
+} from './getBezierPath.params.ts';
+
+# getBezierPath()
+
+```ts
+export function getBezierPath({
+  sourceX,
+  sourceY,
+  sourcePosition = Position.Bottom,
+  targetX,
+  targetY,
+  targetPosition = Position.Top,
+  curvature = 0.25,
+}: GetBezierPathParams): [
+  path: string,
+  labelX: number,
+  labelY: number,
+  offsetX: number,
+  offsetY: number
+];
+```
+
+[source](https://github.com/wbkd/react-flow/blob/961d1295b4f056dec6532ff785a3cc1de60dc1f6/packages/system/src/utils/edges/bezier-edge.ts#L72)
+
+## Signature
+
+<PropsTable {...signature} />
+
+## Params
+
+<PropsTable {...getBezierPathParams} />
+
+## Returns
+
+This function returns a tuple containing everything you need to render a bezier
+path. In JavaScript, a tuple is just an array with a known fixed length. We've
+documented the type of each element in the table below.
+
+In TypeScript, each element in the tuple is labelled to provide additional
+context.
+
+<PropsTable {...returnType} />

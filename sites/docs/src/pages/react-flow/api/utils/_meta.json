@@ -1,0 +1,6 @@
+{
+  "getBezierPath": "getBezierPath()",
+  "getSmoothStepPath": "getSmoothStepPath()",
+  "getMarkerEnd": "getMarkerEnd()",
+  "getStraightPath": "getStraightPath()"
+}
