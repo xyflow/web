@@ -9,7 +9,7 @@ import {
   SandpackFiles,
 } from '@codesandbox/sandpack-react';
 
-import { REACT_FLOW_VERSION } from '@/constants';
+import { REACT_FLOW_VERSION, SVELTE_EXAMPLES_URL } from '@/constants';
 import { Framework } from '@/types';
 
 const hiddenBaseStyles = {
@@ -43,11 +43,13 @@ type CodeViewerProps = {
   showPreview?: boolean;
   isTypescript?: boolean;
   customPreview?: React.ReactNode;
+  customOpenButton?: React.ReactNode;
   sandpackOptions?: Record<string, any>;
   showOpenInCodeSandbox?: boolean;
   framework?: Framework;
   files?: SandpackFiles;
   editorHeight?: string | number;
+  readOnly?: boolean;
 };
 
 const defaultSetup = {
@@ -57,15 +59,18 @@ const defaultSetup = {
 };
 
 export default function CodeViewer({
+  framework,
   dependencies = {},
   showEditor = true,
   showPreview = true,
   isTypescript = false,
   customPreview = null,
+  customOpenButton = null,
   sandpackOptions = {},
   showOpenInCodeSandbox = true,
   files = {},
   editorHeight = '70vh',
+  readOnly = false,
 }: CodeViewerProps) {
   const customSetup = useMemo(
     () => ({
@@ -82,9 +87,11 @@ export default function CodeViewer({
   sandpackOptions.readOnly = !!customPreview;
 
   return (
-    <div className='my-4' style={{ minHeight: editorHeight }}>
+    <div className="my-4" style={{ minHeight: editorHeight }}>
       <SandpackProvider
-        template={isTypescript ? 'react-ts' : 'react'}
+        template={
+          framework === 'react' && isTypescript ? 'react-ts' : framework
+        }
         options={sandpackOptions}
         customSetup={customSetup}
         files={{
@@ -93,17 +100,19 @@ export default function CodeViewer({
         }}
       >
         <SandpackLayout>
-          {showEditor && <SandpackCodeEditor style={panelStyle} />}
+          {showEditor && (
+            <SandpackCodeEditor readOnly={readOnly} style={panelStyle} />
+          )}
           {showPreview && customPreview ? (
             <>
-              <SandpackStack style={{ flex: '1 1 0%' }}>
+              <SandpackStack style={{ flex: '1 1 0%', height: editorHeight }}>
                 <div
-                  className='sp-preview-container'
+                  className="sp-preview-container"
                   style={{ flex: '1 1 0%', height: '100%' }}
                 >
                   {customPreview}
                   <div
-                    className='sp-preview-actions'
+                    className="sp-preview-actions"
                     style={{
                       zIndex: 10,
                       position: 'absolute',
@@ -111,7 +120,10 @@ export default function CodeViewer({
                       right: 10,
                     }}
                   >
-                    <OpenInCodeSandboxButton />
+                    {showOpenInCodeSandbox && !customOpenButton && (
+                      <OpenInCodeSandboxButton />
+                    )}
+                    {customOpenButton}
                   </div>
                 </div>
               </SandpackStack>
