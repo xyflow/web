@@ -26,7 +26,6 @@
         const edgeType = $nodes.find((node) => node.type === 'custom')?.data.selects[
           edge.sourceHandle
         ];
-        console.log(edgeType);
         edge.type = edgeType;
       }
     });
