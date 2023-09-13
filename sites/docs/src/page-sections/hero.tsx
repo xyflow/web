@@ -1,7 +1,7 @@
 import { type ReactNode } from 'react';
 import cn from 'clsx';
 
-import { Heading, HeroIcon, Text } from 'xy-ui';
+import { Button, Heading, HeroIcon, Text } from 'xy-ui';
 import useXYSite from '@/hooks/use-xy-site';
 import useConnectionDrawer from '@/hooks/use-connection-drawer';
 
@@ -10,6 +10,7 @@ type HeroProps = {
   subtitle?: ReactNode;
   kicker?: ReactNode;
   kickerIcon?: HeroIcon;
+  action?: ReactNode;
   className?: string;
   align?: 'left' | 'center';
   children?: ReactNode;
@@ -22,6 +23,7 @@ export default function Hero({
   subtitle,
   kicker,
   kickerIcon: KickerIcon,
+  action,
   children,
   className,
   align = 'left',
@@ -58,7 +60,7 @@ export default function Hero({
           {kicker && (
             <h3
               className={cn(
-                'text-md font-bold mb-2 flex items-center',
+                'text-sm font-bold mb-6 flex items-center uppercase tracking-wider',
                 isCenter && 'justify-center',
                 `text-${site}`
               )}
@@ -70,7 +72,7 @@ export default function Hero({
             </h3>
           )}
           {title && (
-            <Heading size={size} className="mb-4 font-black">
+            <Heading size={size} className="mb-6 font-black">
               {title}
             </Heading>
           )}
@@ -82,6 +84,7 @@ export default function Hero({
               {subtitle}
             </Text>
           )}
+          {action && <div>{action}</div>}
         </div>
         <div>{children}</div>
       </div>

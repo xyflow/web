@@ -2,9 +2,14 @@ import { UserGroupIcon } from '@heroicons/react/24/outline';
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 import Link from 'next/link';
 
-import { Heading, Text, Button } from 'xy-ui';
+import { Heading, Text, Button, Container } from 'xy-ui';
+import Image from 'next/image';
+
 import BaseLayout from '@/layouts/base';
 import Hero from '@/page-sections/hero';
+import Section from '@/page-sections/section';
+import aboutUsImage from '@/../public/img/about.jpg';
+
 import ContentGrid, { ContentGridItem } from '@/components/content-grid';
 
 export default function About() {
@@ -13,20 +18,60 @@ export default function About() {
       <Hero
         kicker="About Us"
         title="The story of xyflow"
-        subtitle="todo title"
+        subtitle="How we got here"
         align="center"
       />
 
-      <div className="flex justify-center mt-16 lg:mt-20">
+      <Image
+        src={aboutUsImage}
+        alt="Christopher, Hayleigh, John, Moritz, and Peter sitting in an office"
+        placeholder="blur"
+        className="mx-auto lg:max-w-[900px] mt-16 rounded-sm"
+      />
+
+      <Section className="max-w-screen-md mx-auto mt-12 lg:my-12">
+        <Text size="lg" className="leading-8 mb-8">
+          Since 2014, Moritz and Christopher have been creating infographics,
+          tools, and projects together through their interactive news agency, 
+          <Link href="https://webkid.io/" className="text-pink-500">
+            webkid
+          </Link>
+          . Along the way to creating 
+          <Link href="https://datablocks.pro/" className="text-pink-500">
+            Datablocks
+          </Link>{' '}
+          in 2019, they developed React Flow and decided to open-source it. More
+          and more people started using it, to the point they decided to work on
+          it full-time in 2021 to create a sustainable open-source project like
+          the many they had used.
+        </Text>
+        <Text size="lg" className="leading-8 mb-8">
+          John, Hayleigh, and Peter joined the team to help out with the many
+          things that revolve around an open source library. In 2023, we
+          generalized the core of React Flow to support other frameworks beyond
+          React. In order to keep all of our ducks in a row, we created xyflow
+          to be the house where all of our projects could live. Now, here we
+          are- happy maintainers of a couple of libraries we&apos;re proud of
+          with wonderful communities behind them :)
+        </Text>
+        <Text size="lg" className="leading-8 mb-8">
+          If you need anything, have an idea, or just want to say hi, we&apos;re
+          an email away at info@xyflow.com.
+        </Text>
+        <Text size="lg" className="leading-8">
+          ✌🏻 Christopher, Hayleigh, John, Moritz, and Peter
+        </Text>
+      </Section>
+
+      <div className="flex justify-center mt-16 lg:mt-32">
         <div className="max-w-3xl w-full">
           <div className="flex justify-center items-center mb-2">
             <UserGroupIcon className="w-8 h-8" />
           </div>
-          <div className="text-center text-3xl font-bold">Meet the team</div>
-
-          <div className="text-center text-light text-lg mt-2">
-            Christopher, Hayleigh, John, and Moritz
-          </div>
+          <Heading className="text-center">Meet the team</Heading>
+          <Text size="lg" className="text-center text-light  mt-2">
+            Who&apos;s driving this thing?
+          </Text>
         </div>
       </div>
 
@@ -45,15 +90,21 @@ export default function About() {
         />
         <TeamCard
           name="John"
-          description="John works on all things un-code at xyFlow, which is a lot of writing and talking about where xyFlow is headed, how we get there, and open source in general. Before jumping into the world of open source, UX design and research were his bread and butter. Besides that, he likes looking at birds, playing music, and designing puzzles."
+          description="John works on all things un-code at xyflow, which is a lot of writing and talking about where xyflow is headed, how we get there, and open source in general. Before jumping into the world of open source, UX design and research were his bread and butter. Besides that, he likes looking at birds, playing music, and designing puzzles."
           twitter="johnrobbjr"
           github="johnrobbjr"
         />
         <TeamCard
           name="Moritz"
-          description="Moritz was raised in the depths of Tolteburger Wald by a pack of wolves, learning how to hunt, survive, and develop front-end applications. He abandoned his pack after a disagreement in 2019, where he fled to the streets of Berlin. He now maintains React Flow, and dreams of one day rejoining his pack."
+          description="Moritz was raised in the depths of Teutoburger Wald by a pack of wolves, learning how to hunt, survive, and develop front-end applications. He abandoned his pack after a disagreement in 2019, where he fled to the streets of Berlin. He now maintains React Flow, and dreams of one day rejoining his pack."
           twitter="moklick"
           github="moklick"
+        />
+        <TeamCard
+          name="Peter"
+          description="We're not sure who Peter is yet, we'll let you know as soon as we find out."
+          github="peterkogo"
+          twitter=""
         />
       </ContentGrid>
     </BaseLayout>

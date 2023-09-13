@@ -3,9 +3,6 @@ import { Position } from '@xyflow/system';
 
 import { cn } from 'xy-ui';
 
-const handleWidthClass = 'w-[18px]';
-const handleHeightClass = 'h-[18px]';
-
 export default function Handle({
   id,
   variant = 'react',
@@ -14,7 +11,10 @@ export default function Handle({
   svgClassName,
   children,
   position = Position.Bottom,
+  handleWidthClass = 'w-[18px]',
+  handleHeightClass = 'h-[18px]',
   type = 'source',
+  dashed = true,
   to,
 }: {
   id: string;
@@ -24,16 +24,19 @@ export default function Handle({
   svgClassName?: string;
   children?: ReactNode;
   position?: Position;
+  handleWidthClass?: string;
+  handleHeightClass?: string;
+  dashed?: boolean;
   type?: 'source' | 'target';
   to?: string;
 }) {
   return (
     <div
-      data-handleid={id}
+      data-portid={id}
       data-position={position}
       data-to={to}
       className={cn(
-        'handle absolute',
+        'port absolute',
         handleWidthClass,
         handleHeightClass,
         className,
@@ -42,14 +45,14 @@ export default function Handle({
     >
       {children}
       <div
-        data-handleid={id}
+        data-portid={id}
         data-position={position}
         data-to={to}
         className={cn(
           'absolute rounded-full border-2 border-solid bg-white z-20',
           variant === 'react' && 'border-react',
           variant === 'svelte' && 'border-svelte',
-          variant === 'xyflow' && 'border-xyflow',
+          variant === 'xyflow' && 'border-[#D74EF3]',
           handleWidthClass,
           handleHeightClass,
           handleClassName
@@ -62,10 +65,10 @@ export default function Handle({
               'fill-none stroke-2',
               variant === 'react' && 'stroke-react',
               variant === 'svelte' && 'stroke-svelte',
-              variant === 'xyflow' && 'stroke-xyflow',
+              variant === 'xyflow' && 'stroke-[#D74EF3]',
               svgClassName
             )}
-            style={{ strokeDasharray: '4 2' }}
+            style={{ strokeDasharray: dashed ? '4 2' : 'none' }}
           />
         </svg>
       )}

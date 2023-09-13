@@ -1,23 +1,30 @@
-import { useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 import { useRouter } from 'next/router';
 
 export default function useXYSite(): {
   site: 'react' | 'svelte' | 'xyflow';
   lib: 'React Flow' | 'Svelte Flow' | null;
   isOrg: boolean;
+  getSiteByPathname: (pathname: string) => 'react' | 'svelte' | 'xyflow';
 } {
   const router = useRouter();
 
-  const site = useMemo(() => {
-    const segments = router.pathname.split('/');
+  const getSiteByPathname = useCallback((pathname: string) => {
+    const segments = pathname.split('/');
+
     if (segments.includes('react-flow')) {
       return 'react';
     } else if (segments.includes('svelte-flow')) {
       return 'svelte';
-    } else {
-      return 'xyflow';
     }
-  }, [router.pathname]);
+
+    return 'xyflow';
+  }, []);
+
+  const site = useMemo(
+    () => getSiteByPathname(router.pathname),
+    [router.pathname]
+  );
 
   const lib = useMemo(() => {
     if (site === 'xyflow') {
@@ -33,5 +40,6 @@ export default function useXYSite(): {
     site,
     lib,
     isOrg: site === 'xyflow',
+    getSiteByPathname,
   };
 }

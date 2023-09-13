@@ -55,20 +55,20 @@ export default function Footer() {
   return (
     <footer className="bg-black print:bg-transparent py-12 lg:py-18">
       <div className="mx-auto lg:flex text-white max-w-[90rem] pl-[max(env(safe-area-inset-left),1.5rem)] pr-[max(env(safe-area-inset-right),1.5rem)]">
-        <div className="lg:max-w-[300px] lg:mr-24 shrink-0">
+        <div className="lg:max-w-[300px] md:max-w-[600px] lg:mr-24 shrink-0">
           <Text variant="light" className="mb-2">
             A message from the team
           </Text>
           <div className="font-black text-3xl tracking-tight leading-none mb-6 lg:mb-10">
-            Cared for by the xyflow team. We’ve been building and maintaining
-            React Flow since 2021.
+            Cared for by the xyflow team– building and maintaining React Flow
+            since 2021.
           </div>
-
-          {router.pathname !== '/' && (
+          {!['/', '/about'].includes(router.pathname) && (
             <Image
               src={aboutImage}
-              alt="xyflow team photo"
-              className="rounded-lg"
+              alt="photo of the xyflow team sitting in an office"
+              width={300}
+              height={136}
             />
           )}
         </div>

@@ -12,8 +12,8 @@ const FooterLink = ({
 
 export default function Footer() {
   return (
-    <div className="bg-gray-50 min-h-300">
-      <div className="max-w-4xl px-4 pt-4 pb-10 mx-auto">
+    <div className="min-h-300 border-t">
+      <div className="max-w-7xl px-4 pt-4 pb-10 mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3">
           <div>
             <FooterHeading>React Flow Pro</FooterHeading>

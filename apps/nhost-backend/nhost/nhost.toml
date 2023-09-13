@@ -15,6 +15,10 @@ value = '{{ secrets.MAILJET_APIKEY_PRIVATE }}'
 name = 'MAILJET_APIKEY_PUBLIC'
 value = '{{ secrets.MAILJET_APIKEY_PUBLIC }}'
 
+[[global.environment]]
+name = 'DISCORD_NOTIFICATIONS_WEBHOOK'
+value = '{{ secrets.DISCORD_NOTIFICATIONS_WEBHOOK }}'
+
 [hasura]
 version = 'v2.25.1-ce'
 adminSecret = '{{ secrets.HASURA_GRAPHQL_ADMIN_SECRET }}'
@@ -85,7 +89,7 @@ enabled = true
 
 [auth.method.emailPassword]
 hibpEnabled = false
-emailVerificationRequired = true
+emailVerificationRequired = false
 passwordMinLength = 8
 
 [auth.method.smsPasswordless]
@@ -158,10 +162,10 @@ version = '14.5-20221009-1'
 
 [provider]
 [provider.smtp]
-user = 'noreply@reactflow.dev'
+user = 'postmaster@mg.xyflow.com'
 password = '{{ secrets.SMTP_PASSWORD }}'
-sender = 'noreply@reactflow.dev'
-host = 'smtp-moklick.alwaysdata.net'
+sender = 'noreply@xyflow.com'
+host = 'smtp.eu.mailgun.org'
 port = 465
 secure = true
 method = 'LOGIN'

@@ -6,7 +6,7 @@ import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 import { Text, Heading, Button } from 'xy-ui';
 import BaseLayout from '@/layouts/base';
 import Hero from '@/page-sections/hero';
-import Showcase from '@/page-sections/showcase-overview';
+import ImageSlider from '@/page-sections/image-slider';
 import HeadlineNode from '@/components/headline-node';
 import Handle from '@/components/handle';
 import ContentGrid, { ContentGridItem } from '@/components/content-grid';
@@ -15,16 +15,15 @@ import Section from '@/page-sections/section';
 
 import aboutImage from '../../public/img/about.jpg';
 
-const showcases = [
+const sliderItems = [
   {
     name: 'Stripe Docs',
     text: 'Diagrams for process documentation with interactive nodes',
     content: (
       <Image
-        className="rounded-xl"
+        className="rounded-xl object-cover"
         src="/img/showcase/5e7c4463-7dc9-40e9-b3df-7433f6fc9abc.png"
         alt="Stripe Docs"
-        objectFit="cover"
         fill
       />
     ),
@@ -34,10 +33,9 @@ const showcases = [
     text: 'Node-based dashboard builder to monitor business metrics',
     content: (
       <Image
-        className="rounded-xl"
+        className="rounded-xl object-cover"
         src="/img/showcase/8b4e2243-4e88-40be-89b8-4bfad13460f8.png"
         alt="DoubleLoop"
-        objectFit="cover"
         fill
       />
     ),
@@ -47,10 +45,9 @@ const showcases = [
     text: 'Interactive tool to build and visualize complex survey logic',
     content: (
       <Image
-        className="rounded-xl"
+        className="rounded-xl object-cover"
         src="/img/showcase/0e29d66b-142b-42c4-a43c-6e3f6501d14b.png"
         alt="TypeForm"
-        objectFit="cover"
         fill
       />
     ),
@@ -78,7 +75,7 @@ export default function XYFlowHome() {
                 type="target"
                 position={Position.Left}
                 id="xy-wire-target"
-                className="top-1/2 -left-2"
+                className="top-1/2 -left-[9px]"
                 variant="xyflow"
               />
             </HeadlineNode>{' '}
@@ -89,7 +86,7 @@ export default function XYFlowHome() {
                 position={Position.Bottom}
                 id="xy-ideas"
                 to="xy-xyflow"
-                className="bottom-0 right-4"
+                className="-bottom-[9px] right-4"
                 variant="xyflow"
                 svgClassName="-z-10"
               />
@@ -101,7 +98,7 @@ export default function XYFlowHome() {
                 type="target"
                 id="xy-xyflow"
                 position={Position.Right}
-                className="top-1/2 -translate-y-1/2 right-0"
+                className="top-1/2 -translate-y-1/2 -right-[9px]"
                 variant="xyflow"
               />
               xyflow
@@ -116,7 +113,7 @@ export default function XYFlowHome() {
 
       <LibraryCards />
 
-      <Showcase items={showcases} className="my-16 lg:my-24" />
+      <ImageSlider items={sliderItems} className="my-16 lg:my-24" />
 
       <Section>
         <Heading size="sm" as="h3" className="text-center mb-2">

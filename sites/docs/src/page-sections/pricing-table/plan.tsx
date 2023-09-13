@@ -23,7 +23,11 @@ function PlanAction({
 }) {
   return (
     <div className="flex">
-      <Button size="lg" variant={highlighted ? 'react' : 'default'}>
+      <Button
+        className="shrink-0"
+        size="lg"
+        variant={highlighted ? 'react' : 'default'}
+      >
         Sign up
       </Button>
 

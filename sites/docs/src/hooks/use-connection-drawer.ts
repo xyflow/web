@@ -1,8 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { getSmoothStepPath } from '@xyflow/system';
 
-const HANDLE_SIZE = 18;
-
 export default function useConnectionDrawer() {
   const ref = useRef<HTMLDivElement>();
 
@@ -11,12 +9,12 @@ export default function useConnectionDrawer() {
       if (ref.current) {
         const handlesVisible = window.innerWidth >= 900;
         const targetHandles = Array.from(
-          ref.current.querySelectorAll('.handle.target')
+          ref.current.querySelectorAll('.port.target')
         );
 
         // 1. collect all source handles
         const sourceHandles = Array.from(
-          ref.current.querySelectorAll('.handle.source')
+          ref.current.querySelectorAll('.port.source')
         );
 
         [...sourceHandles, ...targetHandles].forEach(
@@ -33,7 +31,7 @@ export default function useConnectionDrawer() {
         const handlePairs = sourceHandles.reduce((res, sourceHandle) => {
           const targetHandleId = sourceHandle.getAttribute('data-to');
           const targetHandle = ref.current.querySelector(
-            `[data-handleid="${targetHandleId}"`
+            `[data-portid="${targetHandleId}"`
           );
 
           if (sourceHandle && targetHandle) {
@@ -58,13 +56,16 @@ export default function useConnectionDrawer() {
 
           const isSmallScreen = window.innerWidth <= 768;
 
+          const handleHeight = fromHandleBounds.height;
+          const handleWidth = fromHandleBounds.width;
+
           svg.setAttribute('width', Math.max(2, width));
           svg.setAttribute('height', Math.max(2, height));
           svg.style.right =
-            isRTL || isSmallScreen ? `${HANDLE_SIZE / 2 - 1}px` : 'auto';
+            isRTL || isSmallScreen ? `${handleWidth / 2 - 1}px` : 'auto';
           svg.style.left =
-            isRTL || isSmallScreen ? 'auto' : `${HANDLE_SIZE / 2 - 1}px`;
-          svg.style.top = `${HANDLE_SIZE / 2 - 1}px`;
+            isRTL || isSmallScreen ? 'auto' : `${handleWidth / 2 - 1}px`;
+          svg.style.top = `${handleHeight / 2 - 1}px`;
           const sourcePosition = sourceHandle.getAttribute('data-position');
           const targetPosition = targetHandle.getAttribute('data-position');
 

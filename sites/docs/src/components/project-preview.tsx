@@ -3,8 +3,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 
-import { Heading, Text, Button } from 'xy-ui';
+import { Heading, Text, Button, Container } from 'xy-ui';
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
+import AuthorList from '@/components/authors-list';
 
 type ProjectPreviewProps = {
   image?: string | StaticImport;
@@ -12,6 +13,7 @@ type ProjectPreviewProps = {
   title: ReactNode;
   subtitle?: ReactNode;
   description: ReactNode;
+  authors?: string[];
   route?: string;
   linkLabel?: string;
   className?: string;
@@ -23,6 +25,7 @@ export default function ProjectPreview({
   title,
   subtitle,
   description,
+  authors,
   route,
   linkLabel = 'Read more',
   className,
@@ -46,21 +49,25 @@ export default function ProjectPreview({
   return (
     <div className={className}>
       {image && (
-        <div className="aspect-video relative shadow-md mb-6 rounded-md border border-solid border-gray-100 overflow-hidden">
+        <Container
+          className="mx-auto aspect-video relative overflow-hidden bg-gray-50"
+          size="sm"
+        >
           <Image
             src={image}
             alt={`${title} screenshot`}
-            layout="fill"
-            objectFit="cover"
+            className="object-cover"
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 600px, 600px"
           />
-        </div>
+        </Container>
       )}
       {kicker && (
-        <Text size="sm" variant="light">
+        <Text size="sm" variant="light" className="mt-8">
           {kicker}
         </Text>
       )}
-      <Heading as="p" size="sm" className="mb-2 mt-1">
+      <Heading as="p" size="sm" className="mb-2 mt-1 lg:leading-snug">
         {title}
       </Heading>
       {subtitle && (
@@ -68,8 +75,9 @@ export default function ProjectPreview({
           {subtitle}
         </Text>
       )}
+      <AuthorList authors={authors} className="mt-6" />
       <Text className="leading-snug my-4">{description}</Text>
-      <Button asChild variant="link">
+      <Button asChild variant="link" className="text-md">
         <LinkOrSpan className="flex items-center">
           {linkLabel} <ArrowRightCircleIcon className="ml-1 w-4 h-4" />
         </LinkOrSpan>

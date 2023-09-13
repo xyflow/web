@@ -5,6 +5,7 @@ import Logo from '@/components/navbar-logo';
 import Navbar, { NavBarAdditional } from '@/components/navbar';
 import SidebarTitle from '@/components/sidebar-title';
 import Footer from '@/components/footer';
+import Search from '@/components/search';
 import useXYSite from '@/hooks/use-xy-site';
 
 const baseUrl =
@@ -61,9 +62,12 @@ export default {
   footer: {
     component: Footer,
   },
+  search: {
+    component: Search,
+  },
   useNextSeoProps() {
     const router = useRouter();
-    const { lib } = useXYSite();
+    const { lib, site } = useXYSite();
     const { frontMatter } = useConfig();
     const appendix = lib ? lib : 'xyflow';
     const url = `${baseUrl}/${router.asPath}`;
@@ -82,6 +86,13 @@ export default {
         {
           rel: 'icon',
           href: `${baseUrl}/img/favicon.ico`,
+        },
+      ],
+
+      additionalMetaTags: [
+        {
+          name: 'docsearch:site',
+          content: site,
         },
       ],
 
