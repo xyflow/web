@@ -10,7 +10,7 @@ export function createNodesAndEdges(xNodes = 10, yNodes = 10) {
       const data = { label: `Node ${nodeId}` };
       const node = {
         id: `stress-${nodeId.toString()}`,
-        style: { width: 50, fontSize: 11 },
+        style: 'width: 50px; fontSize: 11pt;',
         data,
         position
       };
