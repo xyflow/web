@@ -1,3 +1,6 @@
+import { PropsTable } from '@/components/props-table';
+import { signature } from './useEdges.signature.ts';
+
 # useEdges
 
 [Source](https://github.com/wbkd/react-flow/blob/6d9585c1a62bf549298c83ad5f2dcd6216a5b8eb/packages/core/src/hooks/useEdges.ts)
@@ -21,19 +24,9 @@ export default function () {
 }
 ```
 
-## Returns
+## Signature
 
-### `Edge<EdgeData>[]`
-
-An array of all the edges in the flow. See [`Edge`](../types/edge) for more
-details.
-
-## Types
-
-### `Edge`
-
-Check out our [`types`](../types#reactflowstate) reference for more details on
-the `Edge` type.
+<PropsTable {...signature} />
 
 ## Notes
 
