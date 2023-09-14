@@ -11,7 +11,7 @@
   ];
 
   const initialEdges = [{ id: 'e1-2', source: '1', target: '2' }];
-  const defaultViewport = { x: 0, y: 0, zoom: 1.5 };
+  const initialViewport = { x: 0, y: 0, zoom: 1.5 };
 
   const nodes = writable<Node[]>(initialNodes);
   const edges = writable(initialEdges);
@@ -54,7 +54,7 @@
 </script>
 
 <div style="height:100vh;">
-  <SvelteFlow {nodes} {edges} {defaultViewport} minZoom={0.2} maxZoom={4}>
+  <SvelteFlow {nodes} {edges} {initialViewport} minZoom={0.2} maxZoom={4}>
     <div class="updatenode__controls">
       <label>label:</label>
       <input value={nodeName} on:input={(evt) => (nodeName = evt.target.value)} />

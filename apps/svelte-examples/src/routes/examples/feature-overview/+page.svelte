@@ -13,7 +13,6 @@
   const nodes = writable<Node[]>(initialNodes);
   const edges = writable(initialEdges);
 
-  // FIXME: impossible to get the Type right
   const nodeTypes: NodeTypes = {
     custom: CustomNode
   };

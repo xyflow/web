@@ -1,7 +1,6 @@
 <script lang="ts">
-  //FIXME Not possible to move custom node
   import { SvelteFlow, Background, Controls, MiniMap } from '@xyflow/svelte';
-  import type { NodeTypes, Node } from '@xyflow/svelte';
+  import type { Node } from '@xyflow/svelte';
   import { writable } from 'svelte/store';
 
   import ColorSelectorNode from './ColorSelectorNode.svelte';
@@ -39,7 +38,7 @@
       id: '2',
       type: 'selectorNode',
       data: { onChange: onChange, color: bgColor },
-      style: { border: '1px solid #777', padding: 10 },
+      style: 'border: 1px solid #777; padding: 10px;',
       position: { x: 300, y: 50 }
     },
     {
@@ -64,7 +63,7 @@
       source: '1',
       target: '2',
       animated: true,
-      style: { stroke: '#fff' }
+      style: 'stroke: #fff;'
     },
     {
       id: 'e2a-3',
@@ -72,7 +71,7 @@
       target: '3',
       sourceHandle: 'a',
       animated: true,
-      style: { stroke: '#fff' }
+      style: 'stroke: #fff;'
     },
     {
       id: 'e2b-4',
@@ -80,7 +79,7 @@
       target: '4',
       sourceHandle: 'b',
       animated: true,
-      style: { stroke: '#fff' }
+      style: 'stroke: #fff;'
     }
   ];
 

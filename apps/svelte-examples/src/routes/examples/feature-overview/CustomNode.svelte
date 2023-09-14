@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Handle, Position, useStore } from '@xyflow/svelte';
+  import { Handle, Position, useStore, type NodeProps } from '@xyflow/svelte';
 
   const options = [
     {
@@ -20,7 +20,9 @@
     }
   ];
 
-  export let data;
+  type $$Props = NodeProps;
+
+  export let data: $$Props['data'];
   export let id: string;
 
   // const { setNodes } = useSvelteFlow();
