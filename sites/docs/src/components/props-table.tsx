@@ -136,7 +136,7 @@ export function PropsTable({
                     </Link>
                   </td>
                   <td className="flex justify-between py-1 px-2">
-                    <Text size="sm">{prop.name}</Text>
+                    <Text>{prop.name}</Text>
                   </td>
                   <td className="px-2 text-sm">
                     <code>{linkify(prop.type)}</code>
@@ -156,7 +156,7 @@ export function PropsTable({
                   <tr className="!border-0">
                     <td className="px-2" colSpan={2} />
                     <td className="px-2" colSpan={2}>
-                      <Text size="sm">{prop.description}</Text>
+                      <Text>{prop.description}</Text>
                     </td>
                   </tr>
                 )}
@@ -186,12 +186,16 @@ const externalReactLinks = {
     'https://github.com/DefinitelyTyped/DefinitelyTyped/blob/61c7bb49838a155b2b0476bb97d5e707ca80a23b/types/react/v17/index.d.ts#L75',
   CSSProperties:
     'https://github.com/DefinitelyTyped/DefinitelyTyped/blob/61c7bb49838a155b2b0476bb97d5e707ca80a23b/types/react/v17/index.d.ts#L1545',
+  Dispatch:
+    'https://github.com/DefinitelyTyped/DefinitelyTyped/blob/bdd784f597ef151da8659762300621686969470d/types/react/v17/index.d.ts#L879',
   DragEvent:
     'https://github.com/DefinitelyTyped/DefinitelyTyped/blob/0cb3553dbd4f91bf6c20e1f4e8bc56197b1e61f8/types/d3-drag/index.d.ts#L281C1-L281C1',
   MouseEvent:
     'https://github.com/DefinitelyTyped/DefinitelyTyped/blob/61c7bb49838a155b2b0476bb97d5e707ca80a23b/types/react/v17/index.d.ts#L1226C6-L1226C6',
   ReactNode:
     'https://github.com/DefinitelyTyped/DefinitelyTyped/blob/d7e13a7c7789d54cf8d601352517189e82baf502/types/react/index.d.ts#L264',
+  SetStateAction:
+    'https://github.com/DefinitelyTyped/DefinitelyTyped/blob/bdd784f597ef151da8659762300621686969470d/types/react/v17/index.d.ts#L879',
   StoreApi:
     'https://github.com/pmndrs/zustand/blob/0426978490e8b14f40443bcbb2332e103076510b/src/vanilla.ts#L8',
 };
