@@ -99,7 +99,8 @@ export function PropsTable({
           does markup validation when statically generating pages.
       */}
       {props.map((prop) => {
-        const id = prop.name.toLowerCase().trim();
+        const name = prop.name.toLowerCase().trim();
+        const id = deeplinkPrefix ? `${deeplinkPrefix}-${name}` : name;
 
         return (
           <tbody key={id} className="hover:bg-gray-50 group border-t">
@@ -108,9 +109,7 @@ export function PropsTable({
                 <td className="px-2 w-8">
                   <Link
                     className={`invisible group-hover:visible text-${variant}`}
-                    href={
-                      deeplinkPrefix ? `#${deeplinkPrefix}-${id}` : `#${id}`
-                    }
+                    href={`#${id}`}
                   >
                     #
                   </Link>
@@ -128,9 +127,7 @@ export function PropsTable({
                   <td className="px-2 w-8">
                     <Link
                       className={`invisible group-hover:visible text-${variant}`}
-                      href={
-                        deeplinkPrefix ? `#${deeplinkPrefix}-${id}` : `#${id}`
-                      }
+                      href={`#${id}`}
                     >
                       #
                     </Link>
