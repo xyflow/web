@@ -19,7 +19,7 @@ Edges are SVG based. If you want to render more complex labels you can use the `
 
 ```jsx
 import React from 'react';
-import { getBezierPath, EdgeLabelRenderer, BaseEdge } from 'reactflow';
+import { getBezierPath, EdgeLabelRenderer, BaseEdge } from '@xyflow/reactflow';
 
 const CustomEdge = ({ id, data, ...props }) => {
   const [edgePath, labelX, labelY] = getBezierPath(props);
