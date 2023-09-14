@@ -1,18 +1,10 @@
-# useKeyPress
+import { PropsTable } from '@/components/props-table';
+import { signature } from '@/page-data/react-flow/api/hooks/useKeyPress.ts';
 
-[Source](https://github.com/wbkd/react-flow/blob/6d9585c1a62bf549298c83ad5f2dcd6216a5b8eb/packages/core/src/hooks/useKeyPress.ts)
+# useKeyPress
 
 This hook lets you listen for specific key codes and tells you whether they are
 currently pressed or not.
-
-```ts
-export function useKeyPress(
-  keyCode: KeyCode | null,
-  options: UseKeyPressOptions
-): boolean;
-```
-
-## Usage
 
 ```tsx
 import { useKeyPress } from 'reactflow';
@@ -30,48 +22,11 @@ export default function () {
 }
 ```
 
-## Parameters
+[Source](https://github.com/wbkd/react-flow/blob/6d9585c1a62bf549298c83ad5f2dcd6216a5b8eb/packages/core/src/hooks/useKeyPress.ts)
 
-### keyCode?: [`KeyCode | null`](#keycode)
+## Signature
 
-Passing in `null` will unbind any event listeners that were previously set up
-by this hook. That way you can conditionally enable ot disable the hook whenever
-you need it.
-
-### options?: [`UseKeyPressOptions`](#usekeypressoptions)
-
-## Returns
-
-### `boolean`
-
-Returns true if the provided keycode is pressed (or if any of the provided
-keycodes are pressed if an array is passed in) and false otherwise.
-
-## Types
-
-### `KeyCode`
-
-```ts
-type KeyCode = string | string[];
-```
-
-A single string can represent either an individual key code like `"Space"` or a
-combination of codes by combining them with a `"+"` such as `"Ctrl+C"`.
-
-An array of strings represents multiple `KeyCode`s that can trigger the hook,
-for example `["Ctrl+C", "Meta+C"]`.
-
-### `UseKeyPressOptions`
-
-```ts
-export interface UseKeyPressOptions {
-  target: Window | Document | HTMLElement | ShadowRoot | null;
-}
-```
-
-The `target` property tells the hook what element to attach the keyup and keydown
-event listeners to. By default it is the document object, but you may pass in
-a different element if you need to.
+<PropsTable {...signature} />
 
 ## Notes
 

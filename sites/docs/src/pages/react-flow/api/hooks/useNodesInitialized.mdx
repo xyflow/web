@@ -1,16 +1,11 @@
+import { PropsTable } from '@/components/props-table';
+import { signature } from '@/page-data/react-flow/api/hooks/useNodesInitialized.ts';
+
 # useNodesInitialized
 
 This hook tells you whether all the nodes in a flow have been measured and given
 a width and height. When you add a node to the flow, this hook will return
 `false` and then `true` again once the node has been measured.
-
-```ts
-export function useNodesInitialized(
-  options: UseNodesInitializedOptions
-): boolean;
-```
-
-## Usage
 
 ```tsx
 import { useReactFlow, useNodesInitialized } from '@xyflow/reactflow';
@@ -35,29 +30,9 @@ export default function useLayout() {
 }
 ```
 
-## Parameters
+## Signature
 
-### options?: [`UseNodesInitializedOptions`](#usenodesinitializedoptions)
-
-Options to configure the behaviour of this hook. See
-[`UseNodesInitializedOptions`](#usenodesinitializedoptions) for more details.
-
-## Returns
-
-### `boolean`
-
-Whether or not the nodes have been initialized by the ReactFlow component and
-given a width and height.
-
-## Types
-
-### UseNodesInitializedOptions
-
-```ts
-export type UseNodesInitializedOptions = {
-  includeHiddenNodes?: boolean;
-};
-```
+<PropsTable {...signature} />
 
 ## Notes
 

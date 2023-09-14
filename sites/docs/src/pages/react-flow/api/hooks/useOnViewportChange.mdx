@@ -1,32 +1,14 @@
+import { PropsTable } from '@/components/props-table';
+import { signature } from '@/page-data/react-flow/api/hooks/useOnViewportChange.ts';
+
 # useOnViewportChange
+
+```ts
+
+```
 
 [Source](https://github.com/wbkd/react-flow/blob/6d9585c1a62bf549298c83ad5f2dcd6216a5b8eb/packages/core/src/hooks/useOnViewportChange.ts)
 
-```ts
-function useOnViewportChange(options: UseOnViewportChangeOptions): void;
-```
+## Signature
 
-## Usage
-
-## Parameters
-
-### options: [`UseOnViewportChangeOptions`](#useonviewportchangeoptions)
-
-## Returns
-
-### `void`
-
-## Types
-
-### `UseOnViewportChangeOptions`
-
-```ts
-export type UseOnViewportChangeOptions = {
-  onStart?: (viewport: Viewport) => void;;
-  onChange?: (viewport: Viewport) => void;;
-  onEnd?: (viewport: Viewport) => void;;
-};
-```
-
-Check out our [`types`](../types#viewport) reference for more details on the
-`Viewport` type.
+<PropsTable {...signature} />

@@ -1,22 +1,11 @@
-# useEdgesState
+import { PropsTable } from '@/components/props-table';
+import { signature } from '@/page-data/react-flow/api/hooks/useEdgesState.ts';
 
-[Source](https://github.com/wbkd/react-flow/blob/6d9585c1a62bf549298c83ad5f2dcd6216a5b8eb/packages/core/src/hooks/useNodesEdgesState.ts)
+# useEdgesState
 
 This hook makes it easy to prototype a controlled flow where you manage the
 state of nodes and edges outside the `ReactFlowInstance`. You can think of it
 like React's `useState` hook with an additional helper callback.
-
-```ts
-export function useEdgesState<EdgeData>(
-  initialEdges: Edge<EdgeData>[]
-): [
-  Edge<EdgeData>[],
-  Dispatch<SetStateAction<Node<EdgeData>[]>>,
-  OnChange<EdgeChange>
-];
-```
-
-## Usage
 
 ```tsx
 import ReactFlow, { useNodesState, useEdgesState } from 'reactflow';
@@ -39,58 +28,11 @@ export default function () {
 }
 ```
 
-## Parameters
+[Source](https://github.com/wbkd/react-flow/blob/6d9585c1a62bf549298c83ad5f2dcd6216a5b8eb/packages/core/src/hooks/useNodesEdgesState.ts)
 
-### initialEdges: `Edge<EdgeData>[]`
+## Signature
 
-## Returns
-
-### `[Edge<EdgeData>[], Dispatch<SetStateAction<Edge<EdgeData>[]>>, OnChange<EdgeChange>]`
-
-Returns a three-element tuple containing everything you need to manage edges
-within your flow. You can think of this like the familiar `useState` hook but
-with an additional `onChange` callback so you don't need to define your own
-`onEdgesChange` handler.
-
-0. The first element is the current array of edges. You might pass this directly
-   to the `edges` prop of your `<ReactFlow>` component or you may want to
-   manipulate it first (for example do some layouting).
-1. The second element is a function that you can use to update the edges. You can
-   pass it a new array of edges or a callback that receives the current array of
-   edges and returns a new array of edges. This is the same as the second element
-   of the tuple returned by React's `useState` hook.
-2. The third element is a handy callback that can take an array of
-   [`EdgeChange`](../types/edge-change)s and update the edges state accordingly.
-   You'll typically pass this directly to the `onEdgesChange` prop of your
-   `<ReactFlow>` component.
-
-## Types
-
-### `Edge`
-
-Check out our [`types`](../types#reactflowstate) reference for more details on
-the `ReactFlowState` type.
-
-### `OnChange`
-
-```ts
-type OnChange<ChangesType> = (changes: ChangesType[]) => void;
-```
-
-You can pass this callback to the `onEdgesChange` prop of your `<ReactFlow>`
-component.
-
-### `EdgeChange`
-
-### `React.Dispatch`
-
-You can find the definition for this type over at DefinitelyTyped
-[here](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/bdd784f597ef151da8659762300621686969470d/types/react/v17/index.d.ts#L882C17-L882C17).
-
-### `React.SetStateAction`
-
-You can find the definition for this type over at DefinitelyTyped
-[here](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/bdd784f597ef151da8659762300621686969470d/types/react/v17/index.d.ts#L879).
+<PropsTable {...signature} />
 
 ## Notes
 

@@ -1,18 +1,10 @@
 import { PropsTable } from '@/components/props-table';
-import { signature } from './useEdges.signature.ts';
+import { signature } from '@/page-data/react-flow/api/hooks/useEdges.ts';
 
 # useEdges
 
-[Source](https://github.com/wbkd/react-flow/blob/6d9585c1a62bf549298c83ad5f2dcd6216a5b8eb/packages/core/src/hooks/useEdges.ts)
-
 This hook returns an array of the current edges. Components that use this hook
 will re-render **whenever any edge changes**.
-
-```ts
-export function useEdges<EdgeData>(): Edge<EdgeData>[];
-```
-
-## Usage
 
 ```tsx
 import { useEdges } from '@xyflow/reactflow';

@@ -1,32 +1,14 @@
+import { PropsTable } from '@/components/props-table';
+import { signature } from '@/page-data/react-flow/api/hooks/useStore.ts';
+
 # useStore
+
+```ts
+
+```
 
 [Source](https://github.com/wbkd/react-flow/blob/6d9585c1a62bf549298c83ad5f2dcd6216a5b8eb/packages/core/src/hooks/useStore.ts)
 
-````ts
-function useStore<T>(
-  selector: (state: ReactFlowState) => T,
-  equalityFn?: (a: T, b: T) => boolean
-): T```
-````
+## Signature
 
-## Usage
-
-## Parameters
-
-### selector: `(state: ReactFlowState) => T`
-
-You can find documentation on the `ReactFlowState` type over at our
-[types reference](../types).
-
-### equalityFn?: `(a: T, b: T) => boolean`
-
-## Returns
-
-### `T`
-
-## Types
-
-### `ReactFlowState`
-
-Check out our [`types`](../types#reactflowstate) reference for more details on
-the `ReactFlowState` type.
+<PropsTable {...signature} />
