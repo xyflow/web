@@ -5,6 +5,7 @@ const links = {
 };
 
 export const commonProps: PropsTableProps = {
+  deeplinkPrefix: 'common',
   props: [
     {
       name: 'nodes',
@@ -64,6 +65,7 @@ export const commonProps: PropsTableProps = {
 };
 
 export const viewportProps: PropsTableProps = {
+  deeplinkPrefix: 'viewport',
   props: [
     { name: 'fitView', type: 'boolean', default: 'false' },
     { name: 'fitViewOptions', type: 'FitViewOptions', default: '-' },
@@ -98,6 +100,7 @@ export const viewportProps: PropsTableProps = {
 };
 
 export const edgeProps: PropsTableProps = {
+  deeplinkPrefix: 'edge',
   props: [
     { name: 'elevateEdgesOnSelect', type: 'boolean', default: 'false' },
     { name: 'defaultMarkerColor', type: 'string', default: '"#b1b1b7"' },
@@ -109,6 +112,7 @@ export const edgeProps: PropsTableProps = {
 };
 
 export const eventHandlerProps: PropsTableProps = {
+  deeplinkPrefix: 'event',
   props: [
     { name: 'General' },
     { name: 'onInit', type: '(instance: ReactFlowInstance) => void' },
@@ -252,6 +256,7 @@ export const eventHandlerProps: PropsTableProps = {
 };
 
 export const interactionProps: PropsTableProps = {
+  deeplinkPrefix: 'interaction',
   props: [
     { name: 'nodesDraggable', type: 'boolean', default: 'true' },
     { name: 'nodesConnectable', type: 'boolean', default: 'true' },
@@ -283,6 +288,7 @@ export const interactionProps: PropsTableProps = {
 };
 
 export const connectionLineProps: PropsTableProps = {
+  deeplinkPrefix: 'connection',
   props: [
     { name: 'connectionRadius', type: 'number', default: '20' },
     {
@@ -301,6 +307,7 @@ export const connectionLineProps: PropsTableProps = {
 };
 
 export const keyboardProps: PropsTableProps = {
+  deeplinkPrefix: 'keyboard',
   props: [
     {
       name: 'deleteKeyCode',
