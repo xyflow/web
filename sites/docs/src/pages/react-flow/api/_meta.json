@@ -4,10 +4,13 @@
       "toc": false
     }
   },
-  "index": {
-    "display": "hidden"
+  "index": "How to use this Reference?",
+  "ReactFlow": {
+    "title": "<ReactFlow />",
+    "theme": {
+      "toc": true
+    }
   },
-  "ReactFlow": "<ReactFlow />",
   "ReactFlowProvider": "<ReactFlowProvider />",
   "components": "Components",
   "types": "Types",
