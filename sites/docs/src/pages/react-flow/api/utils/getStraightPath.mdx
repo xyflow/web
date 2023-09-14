@@ -1,39 +1,14 @@
 import { PropsTable } from '@/components/props-table';
-import {
-  getStraightPathParams,
-  returnType,
-} from '@/page-data/react-flow/api/utils/getStraightPath.params.ts';
+import { signature } from '@/page-data/react-flow/api/utils/getStraightPath.ts';
 
 # getStraightPath()
 
 ```ts
-export function getStraightPath({
-  sourceX,
-  sourceY,
-  targetX,
-  targetY,
-}: GetStraightPathParams): [
-  path: string,
-  labelX: number,
-  labelY: number,
-  offsetX: number,
-  offsetY: number
-];
+
 ```
 
 [Source](https://github.com/wbkd/react-flow/blob/961d1295b4f056dec6532ff785a3cc1de60dc1f6/packages/system/src/utils/edges/straight-edge.ts#L10C1-L15C108)
 
-## Params
+## Signature
 
-<PropsTable {...getStraightPathParams} />
-
-## Returns
-
-This function returns a tuple containing everything you need to render a bezier
-path. In JavaScript, a tuple is just an array with a known fixed length. We've
-documented the type of each element in the table below.
-
-In TypeScript, each element in the tuple is labelled to provide additional
-context.
-
-<PropsTable {...returnType} />
+<PropsTable {...signature} />

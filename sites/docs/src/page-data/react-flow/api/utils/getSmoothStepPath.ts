@@ -1,7 +1,8 @@
 import { type PropsTableProps } from '@/components/props-table';
 
-export const getSmoothStepPathParams: PropsTableProps = {
+export const signature: PropsTableProps = {
   props: [
+    { name: 'Params' },
     { name: 'sourceX', type: 'number' },
     { name: 'sourceY', type: 'number' },
     { name: 'sourcePosition', type: 'Position', default: 'Position.Bottom' },
@@ -12,15 +13,11 @@ export const getSmoothStepPathParams: PropsTableProps = {
     { name: 'centerX?', type: 'number' },
     { name: 'centerY?', type: 'number' },
     { name: 'offset?', type: 'number', default: '20' },
-  ],
-};
-
-export const returnType: PropsTableProps = {
-  props: [
-    { name: '[0]', type: 'string' },
-    { name: '[1]', type: 'number' },
-    { name: '[2]', type: 'number' },
-    { name: '[3]', type: 'number' },
-    { name: '[4]', type: 'number' },
+    { name: 'Returns' },
+    { name: '[0]', type: 'string', description: 'path?' },
+    { name: '[1]', type: 'number', description: 'labelX?' },
+    { name: '[2]', type: 'number', description: 'labelY?' },
+    { name: '[3]', type: 'number', description: 'offsetX?' },
+    { name: '[4]', type: 'number', description: 'offsetY?' },
   ],
 };

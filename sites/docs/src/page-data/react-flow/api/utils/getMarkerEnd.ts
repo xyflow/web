@@ -9,14 +9,3 @@ export const signature: PropsTableProps = {
     { name: '', type: 'string' },
   ],
 };
-
-export const getMarkerEndParams: PropsTableProps = {
-  props: [
-    { name: 'markerType?', type: 'MarkerType' },
-    { name: 'markerEndId?', type: 'string' },
-  ],
-};
-
-export const returnType: PropsTableProps = {
-  props: [{ name: '', type: 'string' }],
-};
