@@ -3,6 +3,8 @@ import { baseEdgeProps } from '@/page-data/react-flow/api/components/BaseEdge.pr
 
 # &lt;BaseEdge />
 
+[Source](https://github.com/wbkd/react-flow/blob/961d1295b4f056dec6532ff785a3cc1de60dc1f6/packages/react/src/components/Edges/BaseEdge.tsx#L7)
+
 The `<BaseEdge />` component gets used internally for all the edges. It can be used inside a custom edge and handles the invisible helper edge and the edge label for you.
 
 ```js
@@ -19,8 +21,6 @@ export function CustomEdge({ sourceX, sourceY, targetX, targetY, ...props }) {
   return <BaseEdge path={edgePath} {...props} />;
 }
 ```
-
-[Source](https://github.com/wbkd/react-flow/blob/961d1295b4f056dec6532ff785a3cc1de60dc1f6/packages/react/src/components/Edges/BaseEdge.tsx#L7)
 
 ## Props
 
