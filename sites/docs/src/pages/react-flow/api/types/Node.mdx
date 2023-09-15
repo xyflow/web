@@ -3,10 +3,10 @@ import { nodeFields } from '@/page-data/react-flow/api/types/Node.fields.ts';
 
 # Node&lt;T, U>
 
-[Source](https://github.com/wbkd/react-flow/blob/xyflow/packages/system/src/types/nodes.ts)
+[Source on GitHub](https://github.com/wbkd/react-flow/blob/f919cb152dd5a92ec3b4d7e4568ffe099bc2af39/packages/react/src/types/nodes.ts#L4)
 
 ```ts
-export type Node<T, U> = {
+export type Node<T, U extends string> = {
   id: string;
   position: XYPosition;
   data: T;
@@ -32,7 +32,7 @@ export type Node<T, U> = {
   ariaLabel?: string;
   focusable?: boolean;
   origin?: NodeOrigin;
-  style?: CSSProperties;
+  style?: React.CSSProperties;
   className?: string;
 };
 ```

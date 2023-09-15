@@ -6,10 +6,10 @@ import {
 
 # &lt;NodeResizer />
 
+[Source on GitHub](https://github.com/wbkd/react-flow/blob/f919cb152dd5a92ec3b4d7e4568ffe099bc2af39/packages/react/src/additional-components/NodeResizer/NodeResizer.tsx#L7)
+
 ```tsx
-<ComponentName>
-  ... //
-<ComponentName>
+
 ```
 
 ## Props
@@ -20,6 +20,13 @@ import {
 
 ### ResizeParams
 
-<PropsTable {...resizeParamsFields} />
+```ts
+export type ResizeParams = {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+};
+```
 
-## Notes
+<PropsTable {...resizeParamsFields} />
