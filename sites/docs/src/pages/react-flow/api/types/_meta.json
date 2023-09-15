@@ -3,7 +3,7 @@
   "ConnectionLineComponentProps": "ConnectionLineComponentProps",
   "ConnectionLineType": "ConnectionLineType",
   "CoordinateExtent": "CoordinateExtent",
-  "DefaultEdgeOptions": "DefaultEdgeOptions",
+  "DefaultEdgeOptions": "DefaultEdgeOptions<T>",
   "Edge": "Edge<T>",
   "EdgeChange": "EdgeChange",
   "EdgeMarker": "EdgeMarker",
