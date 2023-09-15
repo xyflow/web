@@ -169,13 +169,17 @@ export function PropsTable({
 // -----------------------------------------------------------------------------
 
 export const reactFlowLinks = Object.fromEntries(
-  Object.keys(reactFlowTypes).map((t) => [
-    // We want to link to the type when our docs refer to a namedspaced value like
-    // `Position.Left`. Splitting on the period and taking the first part will
-    // always give us the type name.
-    t.split('.')[0],
-    `/react-flow/api/types/${t}`,
-  ])
+  Object.keys(reactFlowTypes).map((t) =>
+    t === 'default'
+      ? []
+      : [
+          // We want to link to the type when our docs refer to a namedspaced value like
+          // `Position.Left`. Splitting on the period and taking the first part will
+          // always give us the type name.
+          t.split('.')[0],
+          `/react-flow/api/types/${t}`,
+        ]
+  )
 );
 
 const externalReactLinks = {
