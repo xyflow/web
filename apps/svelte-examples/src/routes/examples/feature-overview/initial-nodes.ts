@@ -1,6 +1,6 @@
-import { Position, MarkerType } from '@xyflow/svelte';
+import { Position, MarkerType, type Node } from '@xyflow/svelte';
 
-export const nodes = [
+export const nodes: Node[] = [
   {
     id: '1',
     type: 'input',
@@ -59,17 +59,15 @@ export const nodes = [
   },
   {
     id: '7',
-    type: 'default',
+    type: 'message',
     class: 'annotation',
-    data: {
-      label: `
-        On the bottom left you see the <strong>Controls</strong> and the bottom right the{' '}
-        <strong>MiniMap</strong>. This is also just a node 🥳
-        `
-    },
     draggable: false,
     selectable: false,
-    position: { x: 150, y: 400 }
+    data: {
+      label: 'message'
+    },
+    position: { x: 150, y: 400 },
+    style: 'width: 280px; padding: 15px;'
   }
 ];
 

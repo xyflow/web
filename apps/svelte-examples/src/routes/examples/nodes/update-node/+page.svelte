@@ -1,6 +1,6 @@
 <script lang="ts">
   import { SvelteFlow } from '@xyflow/svelte';
-  import type { Node } from '@xyflow/svelte';
+  import type { Edge, Node } from '@xyflow/svelte';
   import { writable } from 'svelte/store';
 
   import '@xyflow/svelte/dist/style.css';
@@ -10,7 +10,7 @@
     { id: '2', data: { label: 'Node 2' }, position: { x: 100, y: 200 } }
   ];
 
-  const initialEdges = [{ id: 'e1-2', source: '1', target: '2' }];
+  const initialEdges: Edge[] = [{ id: 'e1-2', source: '1', target: '2' }];
   const initialViewport = { x: 0, y: 0, zoom: 1.5 };
 
   const nodes = writable<Node[]>(initialNodes);
@@ -24,7 +24,15 @@
   $: updateNode({ nodeBg });
   $: updateNode({ nodeHidden });
 
-  function updateNode({ nodeName, nodeBg, nodeHidden }) {
+  function updateNode({
+    nodeName,
+    nodeBg,
+    nodeHidden
+  }: {
+    nodeName?: string;
+    nodeBg?: string;
+    nodeHidden?: boolean;
+  }) {
     $nodes.forEach((node) => {
       if (node.id === '1') {
         if (nodeName) {
@@ -36,7 +44,6 @@
         }
 
         if (nodeHidden !== undefined) {
-          // FIXME: node.hidden does not work, edge hidden not available
           node.hidden = nodeHidden;
 
           $edges.forEach((edge) => {
@@ -57,17 +64,17 @@
   <SvelteFlow {nodes} {edges} {initialViewport} minZoom={0.2} maxZoom={4}>
     <div class="updatenode__controls">
       <label>label:</label>
-      <input value={nodeName} on:input={(evt) => (nodeName = evt.target.value)} />
+      <input value={nodeName} on:input={(evt) => (nodeName = evt.target?.value)} />
 
       <label class="updatenode__bglabel">background:</label>
-      <input value={nodeBg} on:input={(evt) => (nodeBg = evt.target.value)} />
+      <input value={nodeBg} on:input={(evt) => (nodeBg = evt.target?.value)} />
 
       <div class="updatenode__checkboxwrapper">
         <label>hidden:</label>
         <input
           type="checkbox"
           checked={nodeHidden}
-          on:input={(evt) => (nodeHidden = evt.target.checked)}
+          on:input={(evt) => (nodeHidden = evt.target?.checked)}
         />
       </div>
     </div>

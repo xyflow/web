@@ -6,15 +6,16 @@
   import { nodes as initialNodes, edges as initialEdges } from './initial-nodes';
 
   import CustomNode from './CustomNode.svelte';
+  import Message from './Message.svelte';
 
   import '@xyflow/svelte/dist/style.css';
-  // import './overview.css';
 
   const nodes = writable<Node[]>(initialNodes);
   const edges = writable(initialEdges);
 
   const nodeTypes: NodeTypes = {
-    custom: CustomNode
+    custom: CustomNode,
+    message: Message
   };
 
   // we are using a bit of a shortcut here to adjust the edge type
@@ -30,9 +31,6 @@
     });
     $edges = $edges;
   }
-
-  // FIXME The correct edges are definitely set but for some reason changes don't get applied
-  $: console.log($edges);
 </script>
 
 <div style="height:100vh;">
@@ -69,7 +67,9 @@
     border: none;
     line-height: 1.4;
     width: 225px;
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 15%), 0 2px 4px -1px rgb(0 0 0 / 8%);
+    box-shadow:
+      0 4px 6px -1px rgb(0 0 0 / 15%),
+      0 2px 4px -1px rgb(0 0 0 / 8%);
   }
 
   :global(.annotation .svelte-flow__handle) {

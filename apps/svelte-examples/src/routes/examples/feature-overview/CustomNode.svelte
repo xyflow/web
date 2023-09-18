@@ -25,7 +25,6 @@
   export let data: $$Props['data'];
   export let id: string;
 
-  // const { setNodes } = useSvelteFlow();
   const { nodes } = useStore();
 
   function handleInput(evt: InputEvent, handleId: string) {
@@ -80,7 +79,9 @@
     width: 180px;
     background: #f5f5f6;
     color: #222;
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 15%), 0 2px 4px -1px rgb(0 0 0 / 8%);
+    box-shadow:
+      0 4px 6px -1px rgb(0 0 0 / 15%),
+      0 2px 4px -1px rgb(0 0 0 / 8%);
     border-radius: 2px;
   }
 
