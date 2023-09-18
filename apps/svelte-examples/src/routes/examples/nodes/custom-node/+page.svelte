@@ -1,43 +1,40 @@
 <script lang="ts">
-  import { SvelteFlow, Background, Controls, MiniMap } from '@xyflow/svelte';
-  import type { Node } from '@xyflow/svelte';
+  import { SvelteFlow, Background, Controls, MiniMap, Position } from '@xyflow/svelte';
+  import type { Node, Edge, SnapGrid } from '@xyflow/svelte';
   import { writable } from 'svelte/store';
 
   import ColorSelectorNode from './ColorSelectorNode.svelte';
 
   import '@xyflow/svelte/dist/style.css';
 
-  const connectionLineStyle = { stroke: '#fff' };
-  const snapGrid = [20, 20];
+  const snapGrid: SnapGrid = [10, 10];
   const nodeTypes = {
     selectorNode: ColorSelectorNode
   };
-  const defaultViewport = { x: 0, y: 0, zoom: 1.5 };
 
   let bgColor = '#1A192B';
 
-  function onChange(event) {
-    console.log(event);
+  function onInput(event: Event) {
     $nodes.forEach((node) => {
       if (node.id === '2') {
-        bgColor = event.target.value;
+        bgColor = (event.target as HTMLInputElement)?.value;
       }
     });
     $nodes = $nodes;
   }
 
-  const initialNodes = [
+  const initialNodes: Node[] = [
     {
       id: '1',
       type: 'input',
       data: { label: 'An input node' },
       position: { x: 0, y: 50 },
-      sourcePosition: 'right'
+      sourcePosition: Position.Right
     },
     {
       id: '2',
       type: 'selectorNode',
-      data: { onChange: onChange, color: bgColor },
+      data: { onInput, color: bgColor },
       style: 'border: 1px solid #777; padding: 10px;',
       position: { x: 300, y: 50 }
     },
@@ -46,18 +43,18 @@
       type: 'output',
       data: { label: 'Output A' },
       position: { x: 650, y: 25 },
-      targetPosition: 'left'
+      targetPosition: Position.Left
     },
     {
       id: '4',
       type: 'output',
       data: { label: 'Output B' },
       position: { x: 650, y: 100 },
-      targetPosition: 'left'
+      targetPosition: Position.Left
     }
   ];
 
-  const initialEdges = [
+  const initialEdges: Edge[] = [
     {
       id: 'e1-2',
       source: '1',
@@ -88,17 +85,7 @@
 </script>
 
 <div style="height:100vh;">
-  <SvelteFlow
-    {nodes}
-    {edges}
-    {nodeTypes}
-    style={`background: ${bgColor}`}
-    {connectionLineStyle}
-    snapToGrid={true}
-    {snapGrid}
-    {defaultViewport}
-    fitView
-  >
+  <SvelteFlow {nodes} {edges} {nodeTypes} style={`background: ${bgColor}`} {snapGrid} fitView>
     <Background />
     <Controls />
     <MiniMap />

@@ -2,6 +2,7 @@
   import { SvelteFlow, Background, Controls, MiniMap } from '@xyflow/svelte';
   import { writable } from 'svelte/store';
   import { createNodesAndEdges } from './utils';
+
   import '@xyflow/svelte/dist/style.css';
 
   const initialViewport = { x: 0, y: 0, zoom: 0.5 };

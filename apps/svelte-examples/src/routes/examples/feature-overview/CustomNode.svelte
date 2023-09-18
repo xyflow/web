@@ -23,7 +23,7 @@
   type $$Props = NodeProps;
 
   export let data: $$Props['data'];
-  export let id: string;
+  export let id: $$Props['id'];
 
   const { nodes } = useStore();
 

@@ -1,21 +1,17 @@
-<script>
-  import { Handle, Position } from '@xyflow/svelte';
+<script lang="ts">
+  import { Handle, Position, type NodeProps } from '@xyflow/svelte';
 
-  export let data;
-  export let isConnectable;
+  type $$Props = NodeProps;
+
+  export let data: $$Props['data'];
+  export let isConnectable: $$Props['isConnectable'];
 </script>
 
-<Handle
-  type="target"
-  position={Position.Left}
-  style="background: #555;"
-  on:connect={(params) => console.log('handle onConnect', params)}
-  {isConnectable}
-/>
+<Handle type="target" position={Position.Left} style="background: #555;" {isConnectable} />
 <div>
   Custom Color Picker Node: <strong>{data.color}</strong>
 </div>
-<input class="nodrag" type="color" on:input={data.onChange} value={data.color} />
+<input class="nodrag" type="color" on:input={data.onInput} value={data.color} />
 <Handle
   type="source"
   position={Position.Right}

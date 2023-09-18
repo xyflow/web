@@ -35,9 +35,9 @@
 
 <div style="height:100vh;">
   <SvelteFlow {nodes} {edges} {nodeTypes} fitView>
-    <Background />
+    <Background patternColor="#aaa" gap={16} />
     <Controls />
-    <MiniMap />
+    <MiniMap zoomable pannable height={120} />
   </SvelteFlow>
 </div>
 
