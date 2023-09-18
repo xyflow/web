@@ -1,11 +1,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Button } from 'xy-ui';
+import { Button, PricingTable } from 'xy-ui';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 
 import BaseLayout from '@/layouts/base';
 import Hero from '@/page-sections/hero';
-import PricingTable from '@/page-sections/pricing-table';
 import ClientLogos from '@/components/client-logos';
 import ImageSlider from '@/page-sections/image-slider';
 import FAQ from '@/components/faq';
