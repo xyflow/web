@@ -6,22 +6,47 @@ import { handleProps } from '@/page-data/react-flow/api/components/Handle.props.
 [Source on GitHub](https://github.com/wbkd/react-flow/blob/f919cb152dd5a92ec3b4d7e4568ffe099bc2af39/packages/react/src/components/Handle/index.tsx#L45)
 
 The `<Handle />` component is used in your [custom nodes](/react-flow/docs/guides/custom-nodes)
-to define connection points
+to define connection points.
 
 ```jsx
 import { Handle, Position } from '@xyflow/react';
 
-const targetHandleWithValidation = (
-  <Handle
-    type="target"
-    position={Position.Left}
-    isValidConnection={(connection) => connection.source === 'some-id'}
-    onConnect={(params) => console.log('handle onConnect', params)}
-    style={{ background: '#fff' }}
-  />
-);
+export CustomNode = ({ data }) => {
+  return (
+    <>
+      <div style={{ padding: '10px 20px' }}>
+        {data.label}
+      </div>
+
+      <Handle type="target" position={Position.Left} />
+      <Handle type="source" position={Position.Right} />
+    </>
+  );
+};
 ```
 
 ## Props
 
 <PropsTable {...handleProps} />
+
+## Examples
+
+### Custom handle with validation
+
+You can create your own custom handles by wrapping the `<Handle />` component.
+This example shows a custom handle that only allows connections when the
+connection source matches a given id.
+
+```jsx
+import { Handle, Position } from '@xyflow/react';
+
+export const TargetHandleWithValidation = ({ position, source }) => (
+  <Handle
+    type="target"
+    position={position}
+    isValidConnection={(connection) => connection.source === source}
+    onConnect={(params) => console.log('handle onConnect', params)}
+    style={{ background: '#fff' }}
+  />
+);
+```

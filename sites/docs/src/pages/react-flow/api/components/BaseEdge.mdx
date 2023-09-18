@@ -5,9 +5,11 @@ import { baseEdgeProps } from '@/page-data/react-flow/api/components/BaseEdge.pr
 
 [Source on GitHub](https://github.com/wbkd/react-flow/blob/f919cb152dd5a92ec3b4d7e4568ffe099bc2af39/packages/react/src/components/Edges/BaseEdge.tsx#L7)
 
-The `<BaseEdge />` component gets used internally for all the edges. It can be used inside a custom edge and handles the invisible helper edge and the edge label for you.
+The `<BaseEdge />` component gets used internally for all the edges. It can be
+used inside a custom edge and handles the invisible helper edge and the edge label
+for you.
 
-```js
+```jsx
 import { BaseEdge } from '@xyflow/reactflow';
 
 export function CustomEdge({ sourceX, sourceY, targetX, targetY, ...props }) {
@@ -28,4 +30,7 @@ export function CustomEdge({ sourceX, sourceY, targetX, targetY, ...props }) {
 
 ## Notes
 
-- If you want to use an edge marker with the `BaseEdge` component, you need to pass the `markerStart` or `markerEnd` props of `EdgeProps` to the `BaseEdge`.
+- If you want to use an edge marker with the [`<BaseEdge />`](./BaseEdge) component,
+  you can pass the `markerStart` or `markerEnd` props passed to your custom edge
+  through to the [`<BaseEdge />`](./BaseEdge) component. You can see all the props
+  passed to a custom edge by looking at the [`EdgeProps`](../types/EdgeProps) type.
