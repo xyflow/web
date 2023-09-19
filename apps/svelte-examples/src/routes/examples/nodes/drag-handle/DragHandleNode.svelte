@@ -6,7 +6,9 @@
 
 <Handle type="target" position={Position.Left} />
 <div class="label">
-  Only draggable here → <span class="drag-handle custom-drag-handle" />
+  Only draggable here →
+  <!-- Use the class specified at node.dragHandle here -->
+  <span class="drag-handle custom-drag-handle" />
 </div>
 <Handle type="source" position={Position.Right} />
 

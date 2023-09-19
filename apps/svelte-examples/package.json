@@ -15,11 +15,11 @@
   "devDependencies": {
     "@sveltejs/adapter-auto": "^2.1.0",
     "@sveltejs/kit": "^1.25.0",
-    "@typescript-eslint/eslint-plugin": "^6.7.0",
-    "@typescript-eslint/parser": "^6.7.0",
+    "@typescript-eslint/eslint-plugin": "^6.7.2",
+    "@typescript-eslint/parser": "^6.7.2",
     "eslint": "^8.49.0",
     "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-svelte": "^2.33.1",
+    "eslint-plugin-svelte": "^2.33.2",
     "prettier": "^3.0.3",
     "prettier-plugin-svelte": "^3.0.3",
     "svelte": "^4.2.0",
@@ -30,7 +30,7 @@
   },
   "type": "module",
   "dependencies": {
-    "@xyflow/svelte": "0.0.19",
+    "@xyflow/svelte": "0.0.20",
     "xy-tsconfig": "workspace:*"
   }
 }
