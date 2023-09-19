@@ -90,3 +90,48 @@ export async function sendMailTemplate(
     return false;
   }
 }
+
+export async function sendMail({
+  to,
+  subject,
+  content,
+  replyTo,
+}: {
+  to: string;
+  subject: string;
+  content: string;
+  replyTo: string;
+}) {
+  if (!to || !subject || !content || !replyTo) {
+    return false;
+  }
+
+  try {
+    const response = await mailjet.post('send', { version: 'v3.1' }).request({
+      Messages: [
+        {
+          From: {
+            Email: 'info@reactflow.dev',
+            Name: 'React Flow',
+          },
+          To: [
+            {
+              Email: to,
+            },
+          ],
+          ReplyTo: {
+            Email: replyTo,
+          },
+          Subject: subject,
+          TextPart: content,
+          HTMLPart: content,
+        },
+      ],
+    });
+
+    return response.response.status === 200;
+  } catch (err) {
+    console.log(err);
+    return false;
+  }
+}
