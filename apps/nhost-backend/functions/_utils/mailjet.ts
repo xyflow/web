@@ -112,7 +112,7 @@ export async function sendMail({
         {
           From: {
             Email: 'info@reactflow.dev',
-            Name: 'React Flow',
+            Name: 'xyflow',
           },
           To: [
             {
@@ -124,7 +124,6 @@ export async function sendMail({
           },
           Subject: subject,
           TextPart: content,
-          HTMLPart: content,
         },
       ],
     });
