@@ -2,18 +2,11 @@ import BaseLayout from '@/layouts/base';
 import Hero from '@/page-sections/hero';
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 import Link from 'next/link';
-import { useCallback } from 'react';
-import { Card, Input, Checkbox, InputLabel, Button, Text } from 'xy-ui';
+import { Card, Input, InputLabel, Text } from 'xy-ui';
+
+import ContactForm from '@/components/contact-form';
 
 export default function ContactPage() {
-  const onSubmit = useCallback((e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    const data = Object.fromEntries(formData.entries());
-
-    console.log(data);
-  }, []);
-
   return (
     <BaseLayout>
       <Hero
@@ -30,18 +23,13 @@ export default function ContactPage() {
           }}
         />
         <Card className="p-8 bg-white relative">
-          <form
-            className="grid grid-cols-4 gap-x-4 gap-y-8"
-            onSubmit={onSubmit}
-          >
-            {contactInputs.map(({ name, type, ...props }) => (
-              <InputLabel key={name} {...props}>
-                <span>{name}</span>
-                <Input name={toFormName(name)} type={type} variant="square" />
-              </InputLabel>
-            ))}
+          <ContactForm>
+            <InputLabel>
+              <span>Your Email</span>
+              <Input name="email" type="email" required variant="square" />
+            </InputLabel>
 
-            <div className="col-span-4 flex flex-col space-y-2">
+            {/* <div className="col-span-4 flex flex-col space-y-2">
               <p className="mb-1 block text-sm font-bold text-muted-foreground">
                 What are you reaching out about?
               </p>
@@ -51,23 +39,20 @@ export default function ContactPage() {
                   <span>{name}</span>
                 </InputLabel>
               ))}
-            </div>
+            </div> */}
 
             <InputLabel className="col-span-4">
               <span>Your message</span>
               {/* Maybe we should wrap this in a component and drop it into xy-ui/TextArea
                   or something similar. */}
               <textarea
-                name="contact-message"
+                name="message"
+                required
                 // These classes are copied from the `<Input />` component.
                 className="px-4 py-2 border border-gray-300 rounded-lg w-full h-32 md:h-64"
               />
             </InputLabel>
-
-            <Button className="col-span-1" type="submit" variant="secondary">
-              Send
-            </Button>
-          </form>
+          </ContactForm>
         </Card>
 
         <div className="py-8 px-24 space-y-8">
@@ -100,18 +85,6 @@ export default function ContactPage() {
     </BaseLayout>
   );
 }
-
-const contactInputs = [
-  { name: 'Your name', type: 'text', className: 'col-span-2' },
-  { name: 'Your email', type: 'email', className: 'col-span-2' },
-  { name: 'Company / Organisation', type: 'text', className: 'col-span-4' },
-];
-
-const contactReasons = [
-  { name: 'An issue or bug', value: 'issue' },
-  { name: 'Pro subscription / Enterprise quote', value: 'pro' },
-  { name: 'Something else', value: 'other' },
-];
 
 const externalLinks = [
   { name: 'GitHub', href: 'https://github.com/wbkd/reactflow' },
