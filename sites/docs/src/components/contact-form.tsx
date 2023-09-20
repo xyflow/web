@@ -57,7 +57,7 @@ export default function ContactForm({ children }) {
         <Alert variant="success">
           <AlertTitle>Thanks for reaching out!</AlertTitle>
           <AlertDescription>
-            We'll get back to you as soon as possible.
+            We{"'"}ll get back to you as soon as possible.
           </AlertDescription>
         </Alert>
       )}
