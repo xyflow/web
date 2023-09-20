@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react';
 import { Button, Alert, AlertTitle, AlertDescription } from 'xy-ui';
+import { CONTACT_FORM_URL } from '@/constants';
 
 export type ContactFormProps = {
   children: React.ReactNode;
@@ -20,17 +21,14 @@ export default function ContactForm({ children }) {
     const data = Object.fromEntries(formData.entries());
 
     try {
-      const response = await fetch(
-        'https://local.functions.nhost.run/v1/contact',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
-          },
-          body: JSON.stringify(data),
-        }
-      );
+      const response = await fetch(CONTACT_FORM_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
 
       if (response.ok) {
         setIsSuccess(true);
