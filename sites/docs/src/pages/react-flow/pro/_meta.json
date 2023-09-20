@@ -1,0 +1,15 @@
+{
+  "*": {
+    "type": "page",
+    "theme": {
+      "layout": "raw"
+    }
+  },
+  "index": {
+    "title": "React Flow Pro",
+    "theme": {
+      "layout": "raw"
+    }
+  },
+  "pricing": "Pricing"
+}
