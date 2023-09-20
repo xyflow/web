@@ -30,7 +30,7 @@ const ContactFormHandler = async (req: Request, res: Response) => {
   const content = getContent(req.body);
 
   const success = await sendMail({
-    to: 'christopher@webkid.io',
+    to: 'info@xyflow.com',
     subject: 'Your message to the xyflow team',
     content,
     replyTo: req.body.email,
