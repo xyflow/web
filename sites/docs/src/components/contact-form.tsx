@@ -65,7 +65,7 @@ export default function ContactForm({ children }) {
         {children}
         <Button
           loading={isLoading}
-          disabled={isLoading || isSuccess || isError}
+          disabled={isLoading || isSuccess}
           className="col-span-1"
           type="submit"
           variant="secondary"
