@@ -6,6 +6,8 @@ export const signature: PropsTableProps = {
     { name: 'edge', type: 'Edge' },
     { name: 'connection', type: 'Connection' },
     { name: 'edges', type: 'Edge[]' },
+    { name: 'options?', type: 'object' },
+    { name: 'options.shouldReplaceId', type: 'boolean' },
     { name: 'Returns' },
     { name: '', type: 'Edge[]' },
   ],
