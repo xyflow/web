@@ -36,12 +36,28 @@ export const miniMapProps: PropsTableProps = {
       name: 'onNodeClick?',
       type: '(event: React.MouseEvent, node: Node<T>) => void',
     },
-    { name: 'pannable?', type: 'boolean', default: 'false' },
-    { name: 'zoomable?', type: 'boolean', default: 'false' },
+    {
+      name: 'pannable?',
+      type: 'boolean',
+      default: 'false',
+      description: `Determines whether you can pan the viewport by dragging
+      inside the minimap.`,
+    },
+    {
+      name: 'zoomable?',
+      type: 'boolean',
+      default: 'false',
+      description: `Determines whether you can zoom the viewport by scrolling
+      inside the minimap.`,
+    },
     {
       name: 'ariaLabel?',
       type: 'string | null',
       default: '"React Flow mini map"',
+      description: `There is no text inside the minimap for a screen reader to
+      use as an accessible name, so it's important we provide one to make the
+      minimap accessible. The default is sufficient but you may want to replace 
+      it with something more relevant to your app or product.`,
     },
     { name: 'inversePan?', type: 'boolean' },
     { name: 'zoomStep?', type: 'number', default: '10' },

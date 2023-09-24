@@ -8,10 +8,34 @@ export const signature: PropsTableProps = {
     { name: 'targetX', type: 'number' },
     { name: 'targetY', type: 'number' },
     { name: 'Returns' },
-    { name: '[0]', type: 'string', description: 'path?' },
-    { name: '[1]', type: 'number', description: 'labelX?' },
-    { name: '[2]', type: 'number', description: 'labelY?' },
-    { name: '[3]', type: 'number', description: 'offsetX?' },
-    { name: '[4]', type: 'number', description: 'offsetY?' },
+    {
+      name: '[0]',
+      type: 'string',
+      description: 'The path to use in an SVG <path> element.',
+    },
+    {
+      name: '[1]',
+      type: 'number',
+      description:
+        'The x position you can use to render a label for this edge.',
+    },
+    {
+      name: '[2]',
+      type: 'number',
+      description:
+        'The y position you can use to render a label for this edge.',
+    },
+    {
+      name: '[3]',
+      type: 'number',
+      description: `The absolute difference between the source x position and
+      the x position of the middle of this path.`,
+    },
+    {
+      name: '[4]',
+      type: 'number',
+      description: `The absolute difference between the source y position and
+      the y position of the middle of this path.`,
+    },
   ],
 };
