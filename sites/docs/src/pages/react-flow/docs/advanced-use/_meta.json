@@ -1,5 +1,7 @@
 {
   "accessibility": "Accessibility",
   "testing": "Testing",
-  "typescript": "TypeScript"
+  "typescript": "TypeScript",
+  "uncontrolled-flow": "Uncontrolled Flows",
+  "state-management": "State Management"
 }

@@ -1,7 +1,5 @@
 {
   "installation-and-requirements": "Installation",
   "building-a-flow": "Building a Flow",
-  "adding-interactivity": "Adding Interactivity",
-  "uncontrolled-flow": "Uncontrolled Flows",
-  "state-management": "State Management"
+  "adding-interactivity": "Adding Interactivity"
 }
