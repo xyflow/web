@@ -1,11 +1,6 @@
 import { type PropsTableProps } from '@/components/props-table';
 
-const links = {
-  ResizeParams: '#resizeparams',
-};
-
 export const nodeResizerProps: PropsTableProps = {
-  links,
   props: [
     { name: 'nodeId?', type: 'string' },
     { name: 'color?', type: 'string' },
@@ -35,15 +30,5 @@ export const nodeResizerProps: PropsTableProps = {
       name: 'onResizeEnd?',
       type: '(event: D3.DragEvent, params: ResizeParams) => void',
     },
-  ],
-};
-
-export const resizeParamsFields: PropsTableProps = {
-  links,
-  props: [
-    { name: 'x', type: 'number' },
-    { name: 'y', type: 'number' },
-    { name: 'width', type: 'number' },
-    { name: 'height', type: 'number' },
   ],
 };
