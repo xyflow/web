@@ -65,6 +65,9 @@ export default {
   search: {
     component: Search,
   },
+  feedback: {
+    useLink: () => '/contact',
+  },
   useNextSeoProps() {
     const router = useRouter();
     const { lib, site } = useXYSite();
