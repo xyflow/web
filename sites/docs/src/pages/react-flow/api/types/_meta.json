@@ -1,4 +1,5 @@
 {
+  "BackgroundVariant": "BackgroundVariant",
   "Connection": "Connection",
   "ConnectionLineComponentProps": "ConnectionLineComponentProps",
   "ConnectionLineType": "ConnectionLineType",

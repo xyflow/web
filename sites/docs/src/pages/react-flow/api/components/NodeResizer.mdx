@@ -1,8 +1,5 @@
 import { PropsTable } from '@/components/props-table';
-import {
-  nodeResizerProps,
-  resizeParamsFields,
-} from '@/page-data/react-flow/api/components/NodeResizer.props.ts';
+import { nodeResizerProps } from '@/page-data/react-flow/api/components/NodeResizer.props.ts';
 
 # &lt;NodeResizer />
 
@@ -31,22 +28,15 @@ export default memo(ResizableNode);
 
 ## Props
 
+The interface of the `<NodeResizer />` props is exported as `NodeResizerProps`.
+
 <PropsTable {...nodeResizerProps} />
 
-## Other types
+## Examples
 
-### ResizeParams
+### @todo add examples here
 
-```ts
-export type ResizeParams = {
-  x: number;
-  y: number;
-  width: number;
-  height: number;
-};
-```
-
-<PropsTable {...resizeParamsFields} />
+### @todo reference node resize control here
 
 ## Notes
 

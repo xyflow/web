@@ -27,6 +27,8 @@ export default function Flow() {
 
 ## Props
 
+The interface of the `<MiniMap />` props is exported as `MiniMapProps`.
+
 <PropsTable {...miniMapProps} />
 
 ## Examples
@@ -74,7 +76,7 @@ function MiniMapNode({ x, y }) {
 Check out the documentation for [`MiniMapNodeProps`](/react-flow/api/types/MiniMapNodeProps)
 to see what props are passed to your custom component.
 
-## Customising mini map node color
+### Customising mini map node color
 
 The `nodeColor`, `nodeStrokeColor`, and `nodeClassName` props can be a function
 that takes a [`Node`](../types/Node) and computes a value for the prop. This can

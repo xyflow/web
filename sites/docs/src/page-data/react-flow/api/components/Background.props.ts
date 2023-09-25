@@ -1,9 +1,5 @@
 import { type PropsTableProps } from '@/components/props-table';
 
-const links = {
-  BackgroundVariant: '#backgroundvariant',
-};
-
 export const backgroundProps: PropsTableProps = {
   props: [
     { name: 'id?', type: 'string' },
@@ -34,5 +30,4 @@ export const backgroundProps: PropsTableProps = {
     },
     { name: 'style?', type: 'React.CSSProperties' },
   ],
-  links: links,
 };

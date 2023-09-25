@@ -8,6 +8,7 @@
   "Handle": "<Handle />",
   "MiniMap": "<MiniMap />",
   "NodeResizer": "<NodeResizer />",
+  "NodeResizeControl": "<NodeResizeControl />",
   "NodeToolbar": "<NodeToolbar />",
   "Panel": "<Panel />"
 }
