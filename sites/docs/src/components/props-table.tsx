@@ -44,7 +44,7 @@ export function PropsTable({
         chunk in allLinks ? (
           <Link
             key={`${chunk}-${i}`}
-            href={allLinks[chunk]}
+            href={allLinks[chunk] ?? ''}
             className="text-react"
           >
             {chunk}

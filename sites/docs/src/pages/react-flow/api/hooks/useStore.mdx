@@ -1,3 +1,4 @@
+import { Callout } from 'nextra/components';
 import { PropsTable } from '@/components/props-table';
 import { signature } from '@/page-data/react-flow/api/hooks/useStore.ts';
 
@@ -5,10 +6,55 @@ import { signature } from '@/page-data/react-flow/api/hooks/useStore.ts';
 
 [Source on GitHub](https://github.com/wbkd/react-flow/blob/f919cb152dd5a92ec3b4d7e4568ffe099bc2af39/packages/react/src/hooks/useStore.ts#L13)
 
-```ts
+This hook can be used to subscribe to internal state changes of the React Flow component. The `useStore` hook is re-exported from the [zustand](https://github.com/pmndrs/zustand) state management library. You can refer to the zustand docs for more information.
 
+<Callout type="info">
+  This hook should only be used if there is no other way to access the internal
+  state.
+</Callout>
+
+```tsx
+import { useEffect } from 'react';
+import ReactFlow, { useStore } from '@xyflow/react';
+
+const nodesLengthSelector = (state) =>
+  Array.from(state.nodeInternals.values()).length || 0;
+
+const NodesLengthLogger = () => {
+  const nodesLength = useStore(nodesLengthSelector);
+
+  useEffect(() => {
+    console.log('nodes length changed:', nodesLength);
+  }, [nodesLength]);
+
+  return null;
+};
+
+function Flow() {
+  return (
+    <ReactFlow nodes={nodes}>
+      <NodesLengthLogger />
+    </ReactFlow>
+  );
+}
 ```
 
 ## Signature
 
 <PropsTable {...signature} />
+
+## Trigger Store Actions
+
+You can trigger store actions using the `useStore` hook, too. The actions that are being used internally are exposed and can be accessed similar to the state values:
+
+```tsx
+import { useStore } from '@xyflow/react';
+
+const setMinZoomSelector = (state) => state.setMinZoom;
+
+function MinZoomSetter() {
+  const setMinZoom = useStore(setMinZoomSelector);
+
+  return <button onClick={() => setMinZoom(6)}>set min zoom</button>;
+}
+```

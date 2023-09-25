@@ -17,7 +17,9 @@
   "NodeProps": "NodeProps<T>",
   "PanelPosition": "PanelPosition",
   "Position": "Position",
+  "ProOptions": "ProOptions",
   "ReactFlowInstance": "ReactFlowInstance<T, U>",
   "ReactFlowJsonObject": "ReactFlowJsonObject<T, U>",
+  "ResizeParams": "ResizeParams",
   "Viewport": "Viewport"
 }
