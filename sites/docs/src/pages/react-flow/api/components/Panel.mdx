@@ -1,5 +1,5 @@
 import { PropsTable } from '@/components/props-table';
-import { panelProps } from '@/page-data/react-flow/api/components/Panel.props.ts';
+import { panelProps } from '@/page-data/react-flow/api/components/Panel.ts';
 
 # &lt;Panel />
 
@@ -28,7 +28,8 @@ export default function Flow() {
 
 ## Props
 
-The interface of the Panel Prop Types are exported as `PanelProps`.
+For TypeScript users, the props type for the `<Panel />` component is exported
+as `PanelProps`.
 
 <PropsTable {...panelProps} />
 

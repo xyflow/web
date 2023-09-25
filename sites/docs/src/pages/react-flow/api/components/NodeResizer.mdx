@@ -1,6 +1,6 @@
 import CodeViewer from '@/components/code-viewer';
 import { PropsTable } from '@/components/props-table';
-import { nodeResizerProps } from '@/page-data/react-flow/api/components/NodeResizer.props.ts';
+import { nodeResizerProps } from '@/page-data/react-flow/api/components/NodeResizer.ts';
 
 # &lt;NodeResizer />
 
@@ -29,7 +29,8 @@ export default memo(ResizableNode);
 
 ## Props
 
-The interface of the `<NodeResizer />` props is exported as `NodeResizerProps`.
+For TypeScript users, the props type for the `<NodeResizer />` component is exported
+as `NodeResizerProps`.
 
 <PropsTable {...nodeResizerProps} />
 

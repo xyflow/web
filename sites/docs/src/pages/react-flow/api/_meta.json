@@ -4,9 +4,6 @@
   "ReactFlowProvider": "<ReactFlowProvider />",
   "components": "Components",
   "hooks": "Hooks",
-  "utils": "Utils",
   "types": "Types",
-  "_README": {
-    "display": "hidden"
-  }
+  "utils": "Utils"
 }

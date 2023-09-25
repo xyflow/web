@@ -1,5 +1,5 @@
 import { PropsTable } from '@/components/props-table';
-import { nodeToolbarProps } from '@/page-data/react-flow/api/components/NodeToolbar.props.ts';
+import { nodeToolbarProps } from '@/page-data/react-flow/api/components/NodeToolbar.ts';
 
 # &lt;NodeToolbar />
 
@@ -36,7 +36,8 @@ export default memo(CustomNode);
 
 ## Props
 
-The interface of the `NodeToolbar` Prop Types are exported as `NodeToolbarProps`.
+For TypeScript users, the props type for the `<NodeToolbar />` component is exported
+as `NodeToolbarProps`.
 
 <PropsTable {...nodeToolbarProps} />
 

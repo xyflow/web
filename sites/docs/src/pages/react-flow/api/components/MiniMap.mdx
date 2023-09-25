@@ -3,7 +3,7 @@ import { PropsTable } from '@/components/props-table';
 import {
   miniMapProps,
   miniMapNodeProps,
-} from '@/page-data/react-flow/api/components/MiniMap.props.ts';
+} from '@/page-data/react-flow/api/components/MiniMap.ts';
 
 # &lt;MiniMap />
 
@@ -27,7 +27,8 @@ export default function Flow() {
 
 ## Props
 
-The interface of the `<MiniMap />` props is exported as `MiniMapProps`.
+For TypeScript users, the props type for the `<MiniMap />` component is exported
+as `MiniMapProps`.
 
 <PropsTable {...miniMapProps} />
 

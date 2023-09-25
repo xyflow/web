@@ -1,5 +1,5 @@
 import { PropsTable } from '@/components/props-table';
-import { controlsProps } from '@/page-data/react-flow/api/components/Controls.props.ts';
+import { controlsProps } from '@/page-data/react-flow/api/components/Controls.ts';
 
 # &lt;Controls />
 
@@ -22,10 +22,13 @@ export default function Flow() {
 
 ## Props
 
-The `<Controls />` component accepts any prop valid on a `<div />` element, as
-well as the following. The interface of the Controls Prop Types are exported as `ControlProps`.
+For TypeScript users, the props type for the `<Controls />` component is exported
+as `ControlsProps`.
 
 <PropsTable {...controlsProps} />
+
+Additionally, the `<Controls />` component accepts any prop valid on a `<div />`
+element.
 
 ## Notes
 

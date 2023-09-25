@@ -1,5 +1,5 @@
 import { PropsTable } from '@/components/props-table';
-import { edgeTextProps } from '@/page-data/react-flow/api/components/EdgeText.props.ts';
+import { edgeTextProps } from '@/page-data/react-flow/api/components/EdgeText.ts';
 
 # &lt;EdgeText />
 
@@ -29,6 +29,10 @@ export function CustomEdgeLabel({ label }) {
 
 ## Props
 
-The interface of the `EdgeText` props is exported as `EdgeTextProps`. Besides the documented props, you can also pass any standard React HTML attributes such as `onClick`, `className` and so on.
+For TypeScript users, the props type for the `<EdgeText />` component is exported
+as `EdgeTextProps`.
 
 <PropsTable {...edgeTextProps} />
+
+Additionally, you may also pass any standard React HTML attributes such as `onClick`,
+`className` and so on.
