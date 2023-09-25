@@ -24,7 +24,7 @@ export const nodeResizeControlProps: PropsTableProps = {
     },
     {
       name: 'onResizeStart?',
-      type: '(event: D3.DragEvent, params: ResizeParams ) => void',
+      type: '(event: D3.DragEvent, params: ResizeParams) => void',
     },
     {
       name: 'shouldResize?',
@@ -32,7 +32,7 @@ export const nodeResizeControlProps: PropsTableProps = {
     },
     {
       name: 'onResizeEnd?',
-      type: '(event: D3.DragEvent, params: ResizeParams ) => void',
+      type: '(event: D3.DragEvent, params: ResizeParams) => void',
     },
   ],
 };
