@@ -1,3 +1,4 @@
+import CodeViewer from '@/components/code-viewer';
 import { PropsTable } from '@/components/props-table';
 import { nodeResizerProps } from '@/page-data/react-flow/api/components/NodeResizer.props.ts';
 
@@ -34,9 +35,23 @@ The interface of the `<NodeResizer />` props is exported as `NodeResizerProps`.
 
 ## Examples
 
-### @todo add examples here
+### Default Behavior
 
-### @todo reference node resize control here
+<CodeViewer
+  codePath="api-flows/NodeResizer"
+  additionalFiles={[
+    'ResizableNode.js',
+    'ResizableNodeSelected.js',
+    'CustomResizerNode.js',
+  ]}
+  showEditor={false}
+  applyStyles={false}
+  options={{ editorHeight: 400, editorWidthPercentage: 45, wrapContent: true }}
+/>
+
+### Custom Resize Controls
+
+To build custom resize controls, you can use the [NodeResizeControl](./NodeResizeControl) component and customize it.
 
 ## Notes
 

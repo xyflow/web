@@ -3,9 +3,9 @@
   "ReactFlow": "<ReactFlow />",
   "ReactFlowProvider": "<ReactFlowProvider />",
   "components": "Components",
-  "types": "Types",
   "hooks": "Hooks",
   "utils": "Utils",
+  "types": "Types",
   "_README": {
     "display": "hidden"
   }
