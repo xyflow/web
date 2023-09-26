@@ -7,7 +7,7 @@ pagination_next: null
 
 # Quickstart
 
-import { Tab, Tabs } from 'nextra/components';
+import { Tab, Tabs, Cards, Card } from 'nextra/components';
 
 import Emoji from '@/components/emoji';
 import CodeViewer from '@/components/code-viewer';
@@ -35,28 +35,26 @@ the examples, or dive into the API docs.
 You can try React Flow without setting anything up locally by checking out the
 starter projects we have on [CodeSandbox](https://codesandbox.io/):
 
-<div className="next-steps">
-  <a
-    className="next-steps__item"
-    target="_blank"
-    href="https://codesandbox.io/s/react-flow-starter-ou8or"
-  >
-    <span className="next-steps__item-sublabel">
-      new.reactflow.dev/js-react
-    </span>
-    <span>JavaScript</span>
-  </a>
-  <a
-    className="next-steps__item"
-    target="_blank"
-    href="https://codesandbox.io/s/react-flow-starter-typescript-j8lkh"
-  >
-    <span className="next-steps__item-sublabel">
-      new.reactflow.dev/ts-react
-    </span>
-    <span>TypeScript</span>
-  </a>
-</div>
+<Cards>
+  <Card
+    title="new.reactflow.dev/js-react"
+    href="https://new.reactflow.dev/js-react"
+    icon={
+      <div className="rounded-full w-10 h-10 bg-yellow-200 text-gray-700 font-black flex items-center justify-center">
+        JS
+      </div>
+    }
+  />
+  <Card
+    title="new.reactflow.dev/ts-react"
+    href="https://new.reactflow.dev/ts-react"
+    icon={
+      <div className="rounded-full w-10 h-10 bg-blue-500 text-white font-black flex items-center justify-center">
+        TS
+      </div>
+    }
+  />
+</Cards>
 
 ## Installation
 
@@ -291,44 +289,14 @@ Check out the links below on where to head next.
 
 ## Next Steps
 
-@todo
-
-<div className="next-steps">
-  <a className="next-steps__item" href="/docs/concepts/introduction">
-    <span className="next-steps__item-sublabel">
-      Get to grips with the basics
-    </span>
-    <span>Concepts</span>
-  </a>
-  <a className="next-steps__item" href="/docs/guides/custom-nodes">
-    <span className="next-steps__item-sublabel">Make React Flow your own</span>
-    <span>Customisation</span>
-  </a>
-  <a className="next-steps__item" href="/docs/examples/overview/">
-    <span className="next-steps__item-sublabel">
-      Add common functionality fast
-    </span>
-    <span>Examples</span>
-  </a>
-  <a className="next-steps__item" href="/docs/api/react-flow-props/">
-    <span className="next-steps__item-sublabel">
-      Take a peek under the hood
-    </span>
-    <span>API Reference</span>
-  </a>
-  <a
-    className="next-steps__item"
-    target="_blank"
-    href="https://discord.gg/RVmnytFmGW"
-  >
-    <span className="next-steps__item-sublabel">Join the community</span>
-    <span>Discord</span>
-  </a>
-  <a
-    className="next-steps__item"
+<Cards>
+  <Card title="Concepts" href="/docs/concepts/introduction" />
+  <Card title="Customisation" href="/docs/guides/custom-nodes" />
+  <Card title="Examples" href="/docs/examples/overview" />
+  <Card title="API Reference" href="/docs/api" />
+  <Card title="Discord" href="https://discord.gg/RVmnytFmGW" />
+  <Card
+    title="Template Projects"
     href="https://github.com/wbkd/react-flow-example-apps"
-  >
-    <span className="next-steps__item-sublabel">Next.js, Remix, and more!</span>
-    <span>Template Projects</span>
-  </a>
-</div>
+  />
+</Cards>
