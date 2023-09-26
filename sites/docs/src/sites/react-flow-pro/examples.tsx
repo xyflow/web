@@ -47,6 +47,7 @@ export default function ProExamples() {
             </Button>
           </div>
         }
+        showGradient
       />
       <ContentGrid className="mt-20">
         {proExamples.map((page) => (

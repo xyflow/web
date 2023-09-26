@@ -85,7 +85,7 @@ export const ProPlan: SubscriptionPlan = {
   id: PlanId.PRO,
   label: 'Premium',
   description:
-    'Best for start-ups and businesses who build commercial products with React Flow.',
+    'Best for companies that want a direct wire to the React Flow team.',
   pricing: [
     {
       currency: Currency.EUR,
@@ -113,13 +113,7 @@ export const ProPlan: SubscriptionPlan = {
     features.prioritizedIssues,
     features.mitLicense,
     {
-      label: (
-        <>
-          Up to 1 hour of{' '}
-          <a href="#accordion-button-faq-email">individual support</a> via email
-          per month
-        </>
-      ),
+      label: 'Up to 1 hour of individual support via email per month',
       description:
         'Your direct wire to the React Flow team. We will try to point you in the right direction quickly if you encounter problems using React Flow.',
       button: {
@@ -146,7 +140,7 @@ export const EnterprisePlan: SubscriptionPlan = {
   id: PlanId.ENTERPRISE,
   label: 'Enterprise',
   description:
-    'Best for start-ups and businesses who build commercial products with React Flow.',
+    'For large companies who want to have guidance and insights from the React Flow team.',
 
   features: [
     {
@@ -171,12 +165,7 @@ export const EnterprisePlan: SubscriptionPlan = {
     features.prioritizedIssues,
     features.mitLicense,
     {
-      label: (
-        <>
-          1 hour of <a href="#accordion-button-faq-email">individual support</a>{' '}
-          via voice, video or email per month
-        </>
-      ),
+      label: '1 hour of individual support via voice, video or email per month',
       description:
         'Your direct wire to the React Flow team. We will try to point you in the right direction quickly if you encounter problems using React Flow.',
       button: {

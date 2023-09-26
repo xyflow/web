@@ -14,6 +14,7 @@ export default function Enterprise() {
         kicker="xyflow pro"
         kickerIcon={SparklesIcon}
         align="center"
+        showGradient
       />
       <Card className="p-8 bg-white relative max-w-xl mx-auto mt-16">
         <ContactForm>

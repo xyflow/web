@@ -13,6 +13,7 @@ export default function ReactFlowProPricing() {
         kicker="xyflow pro"
         kickerIcon={SparklesIcon}
         align="center"
+        showGradient
       />
       <PricingTable />
       <Subscribe />
