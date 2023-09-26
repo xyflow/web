@@ -3,7 +3,7 @@
   import type { NodeTypes, Node } from '@xyflow/svelte';
   import { writable } from 'svelte/store';
 
-  import { nodes as initialNodes, edges as initialEdges } from './initial-nodes';
+  import { nodes as initialNodes, edges as initialEdges } from './nodes-and-edges';
 
   import CustomNode from './CustomNode.svelte';
   import Message from './Message.svelte';

@@ -32,7 +32,10 @@ const AddNodeOnEdgeDrop = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   const { project } = useReactFlow();
-  const onConnect = useCallback((params) => setEdges((eds) => addEdge(params, eds)), []);
+  const onConnect = useCallback(
+    (params) => setEdges((eds) => addEdge(params, eds)),
+    []
+  );
 
   const onConnectStart = useCallback((_, { nodeId }) => {
     connectingNodeId.current = nodeId;
@@ -48,13 +51,19 @@ const AddNodeOnEdgeDrop = () => {
         const id = getId();
         const newNode = {
           id,
-          // we are removing the half of the node width (75) to center the new node
-          position: project({ x: event.clientX - left - 75, y: event.clientY - top }),
+          position: project({
+            x: event.clientX - left,
+            y: event.clientY - top,
+          }),
           data: { label: `Node ${id}` },
+          origin: [0.5, 0.0],
+          // FIXME: Does not work
         };
 
         setNodes((nds) => nds.concat(newNode));
-        setEdges((eds) => eds.concat({ id, source: connectingNodeId.current, target: id }));
+        setEdges((eds) =>
+          eds.concat({ id, source: connectingNodeId.current, target: id })
+        );
       }
     },
     [project]
@@ -72,6 +81,7 @@ const AddNodeOnEdgeDrop = () => {
         onConnectEnd={onConnectEnd}
         fitView
         fitViewOptions={fitViewOptions}
+        nodeOrigin={[0.5, 0]}
       />
     </div>
   );
