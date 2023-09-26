@@ -10,7 +10,13 @@ const features: Record<string, FeatureConfig> = {
   proExamples: {
     label: (
       <>
-        Access to all <a href="/react-flow/pro-examples">Pro Examples</a>
+        Access to all{' '}
+        <a
+          className="text-react hover:underline"
+          href="/react-flow/pro/examples"
+        >
+          Pro Examples
+        </a>
       </>
     ),
     description:
@@ -147,7 +153,12 @@ export const EnterprisePlan: SubscriptionPlan = {
       label: (
         <>
           Perpetual access to all{' '}
-          <a href="/react-flow/pro-examples">Pro Examples</a>
+          <a
+            className="text-react hover:underline"
+            href="/react-flow/pro/examples"
+          >
+            Pro Examples
+          </a>
         </>
       ),
       description:

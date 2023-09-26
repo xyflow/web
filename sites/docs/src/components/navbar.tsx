@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import { Navbar as NextraNavbar } from 'nextra-theme-docs';
 import { getPagesUnderRoute } from 'nextra/context';
 
@@ -97,13 +96,7 @@ export function NavBarAdditional() {
   const link = isReactOrXyFlow
     ? PRO_PLATFORM_OR_REACT_PRO_URL
     : `/svelte-flow/support-us`;
-  const label = isReactOrXyFlow ? (
-    <>
-      <SparklesIcon className="w-5 h-5 mr-1" /> React Flow Pro
-    </>
-  ) : (
-    'Support Us'
-  );
+  const label = isReactOrXyFlow ? 'React Flow Pro' : 'Support Us';
 
   return (
     <Button

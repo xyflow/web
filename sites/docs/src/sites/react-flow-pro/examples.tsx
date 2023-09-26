@@ -7,8 +7,28 @@ import Subscribe from '@/page-sections/subscribe';
 import ContentGrid, { ContentGridItem } from '@/components/content-grid';
 import ProjectPreview from '@/components/project-preview';
 import { getMdxPagesUnderRoute } from '@/utils';
+import { getPagesUnderRoute } from 'nextra/context';
+
+function getProExamplesUnderRoute(route) {
+  return getMdxPagesUnderRoute(route).filter(
+    (page) => page.frontMatter?.sidebar_class_name === 'pro'
+  );
+}
+
+function getProExamples() {
+  const exampleFolders = getPagesUnderRoute('/react-flow/examples').filter(
+    (page) => page.kind === 'Folder'
+  );
+
+  return exampleFolders.reduce((acc, folder) => {
+    const proExamplesInFolder = getProExamplesUnderRoute(folder.route);
+    return [...acc, ...proExamplesInFolder];
+  }, []);
+}
 
 export default function ProExamples() {
+  const proExamples = getProExamples();
+
   return (
     <BaseLayout>
       <Hero
@@ -29,19 +49,17 @@ export default function ProExamples() {
         }
       />
       <ContentGrid className="mt-20">
-        {getMdxPagesUnderRoute('/case-studies').map((page) => {
-          return (
-            <ContentGridItem key={page.route} route={page.route}>
-              <ProjectPreview
-                image={page.frontMatter.image}
-                title={page.frontMatter?.title}
-                description={page.frontMatter?.description}
-                authors={page.frontMatter?.authors}
-                kicker={page.frontMatter?.client}
-              />
-            </ContentGridItem>
-          );
-        })}
+        {proExamples.map((page) => (
+          <ContentGridItem key={page.route} route={page.route}>
+            <ProjectPreview
+              image={`/img/pro-examples/${page.name}.jpg`}
+              title={page.frontMatter?.title}
+              description={page.frontMatter?.description}
+              authors={page.frontMatter?.authors}
+              linkLabel="View Example"
+            />
+          </ContentGridItem>
+        ))}
       </ContentGrid>
       <Subscribe />
     </BaseLayout>
