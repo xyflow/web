@@ -2,7 +2,10 @@
   "index": "Quickstart",
   "concepts": "Concepts",
   "getting-started": "Getting Started",
-  "guides": "Guides",
+  "customization": "Customizing React Flow",
+  "layouting": "Layouting",
+  "advanced-use": "Advanced Use",
+  "troubleshooting": "Troubleshooting",
   "api-link": {
     "title": "API Reference",
     "href": "/react-flow/api"

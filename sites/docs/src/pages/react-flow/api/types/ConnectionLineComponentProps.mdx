@@ -1,0 +1,30 @@
+import { PropsTable } from '@/components/props-table';
+import { connectionLineComponentPropsFields } from '@/page-data/react-flow/api/types/ConnectionLineComponentProps.fields.ts';
+
+# ConnectionLineComponentProps
+
+[Source on GitHub](https://github.com/wbkd/react-flow/blob/f919cb152dd5a92ec3b4d7e4568ffe099bc2af39/packages/react/src/types/edges.ts#L113)
+
+If you want to render a custom component for connection lines, you can set the
+`connectionLineComponent` prop on the [`<ReactFlow />`](../ReactFlow#connection-connectionLineComponent)
+component. The `ConnectionLineComponentProps` are passed to your custom component.
+
+```ts
+export type ConnectionLineComponentProps = {
+  connectionLineStyle?: CSSProperties;
+  connectionLineType: ConnectionLineType;
+  fromNode?: Node;
+  fromHandle?: HandleElement;
+  fromX: number;
+  fromY: number;
+  toX: number;
+  toY: number;
+  fromPosition: Position;
+  toPosition: Position;
+  connectionStatus: 'valid' | 'invalid' | null;
+};
+```
+
+## Props
+
+<PropsTable {...connectionLineComponentPropsFields} />

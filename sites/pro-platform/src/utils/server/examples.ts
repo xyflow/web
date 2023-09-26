@@ -8,6 +8,25 @@ export enum Framework {
   REACT = 'react',
 }
 
+export type ExampleConfig = {
+  name: string;
+  description: string;
+  hidden?: boolean;
+};
+
+export type Example = {
+  id: string;
+  files?: SandpackFiles;
+  directory: string;
+  framework: Framework;
+  // @todo type example config
+  // config: Record<string, any>;
+} & ExampleConfig;
+
+export type GetExampleOptions = {
+  includeFiles?: boolean;
+};
+
 const getExamplesBasePath = (frameworkId: Framework): string => {
   return path.join(process.cwd(), `pro-examples/examples/${frameworkId}/src`);
 };
@@ -41,16 +60,34 @@ export const getExampleFiles = (frameworkId: Framework, exampleId: string): ProC
   return files;
 };
 
-export const getReadme = (frameworkId: Framework, exampleId: string): string => {
+export const getExampleConfig = (frameworkId: Framework, exampleId: string): ExampleConfig | undefined => {
   const examplesPath = getExamplePath(frameworkId, exampleId);
-  const readmePath = path.join(examplesPath, 'README.mdx');
 
   try {
-    return fs.readFileSync(readmePath, 'utf8');
+    const configJson = fs.readFileSync(path.join(examplesPath, 'config.json'), 'utf8');
+    return JSON.parse(configJson);
   } catch (err) {
     console.log(err);
-    return '';
+    return undefined;
   }
+};
+
+export const getExample = (
+  frameworkId: Framework,
+  exampleId: string,
+  { includeFiles = false }: GetExampleOptions = {}
+): Example => {
+  const examplePath = getExamplePath(frameworkId, exampleId);
+  const exampleFiles = includeFiles ? getExampleFiles(frameworkId, exampleId) : undefined;
+  const exampleConfig = getExampleConfig(frameworkId, exampleId);
+
+  return {
+    id: exampleId,
+    directory: examplePath,
+    framework: frameworkId,
+    ...exampleConfig,
+    files: exampleFiles,
+  };
 };
 
 export const getExampleIds = (frameworkId: Framework): string[] => {
@@ -65,40 +102,13 @@ export const getExampleIds = (frameworkId: Framework): string[] => {
   return [];
 };
 
-export type ExampleConfig = {
-  name: string;
-  description: string;
-  hidden?: boolean;
-};
-
-export type Example = {
-  id: string;
-  files: SandpackFiles;
-  directory: string;
-  framework: Framework;
-  // @todo type example config
-  // config: Record<string, any>;
-} & ExampleConfig;
-
-export const getExamples = (): Record<Framework, Example[]> => {
+export const getExamples = ({ includeFiles = false }: GetExampleOptions = {}): Record<Framework, Example[]> => {
   return Object.values(Framework).reduce<Record<Framework, Example[]>>(
     (result, frameworkId) => {
       const exampleIds = getExampleIds(frameworkId);
 
       exampleIds.forEach((exampleId) => {
-        const examplePath = getExamplePath(frameworkId, exampleId);
-        const exampleFiles = getExampleFiles(frameworkId, exampleId);
-        const exampleConfig: ExampleConfig = exampleFiles['config.json']
-          ? JSON.parse(exampleFiles['config.json'] as string)
-          : {};
-
-        result[frameworkId].push({
-          id: exampleId,
-          directory: examplePath,
-          files: exampleFiles,
-          framework: frameworkId,
-          ...exampleConfig,
-        });
+        result[frameworkId].push(getExample(frameworkId, exampleId, { includeFiles }));
       });
 
       return result;

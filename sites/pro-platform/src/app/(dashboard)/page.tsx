@@ -6,7 +6,7 @@ import { Subscribed } from '@/components/SubscriptionStatus';
 
 function OverviewPage() {
   return (
-    <div className="max-w-7xl mx-auto mb-20">
+    <>
       <DashboardHeader
         title="Overview"
         description="Welcome to xyflow pro! With a subscription, you are ensuring the sustainable maintenance and development of our open-source libraries."
@@ -61,7 +61,7 @@ function OverviewPage() {
           />
         </Subscribed>
       </div>
-    </div>
+    </>
   );
 }
 

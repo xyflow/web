@@ -49,16 +49,20 @@ function SubscriptionFeature({
           <>
             <div className="flex flex-wrap items-center space-x-1.5">
               <div className="text-muted-foreground text-sm">
-                Available on the{' '}
-                <Link className="font-bold hover:text-gray-800" href="/subscribe">
-                  {plans[0]} plan
-                </Link>
-                .
+                Available on the <span className="font-bold">{plans[0]}</span> plan.
               </div>
             </div>
-            {isUserSubscribed && (
+            {isUserSubscribed ? (
               <div className="ml-auto">
-                <CustomerPortalButton variant="outline">Upgrade</CustomerPortalButton>
+                <CustomerPortalButton className="text-react font-bold text-sm" variant="link">
+                  Upgrade
+                </CustomerPortalButton>
+              </div>
+            ) : (
+              <div className="ml-auto">
+                <Button asChild className="text-react font-bold text-sm" variant="link">
+                  <Link href="/subscribe">Subscribe</Link>
+                </Button>
               </div>
             )}
           </>

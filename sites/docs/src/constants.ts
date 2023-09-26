@@ -28,4 +28,9 @@ export const NPM_REACTFLOW =
 // url of sveltekit instance serving examples/guides
 export const SVELTE_EXAMPLES_URL = isDevelopment()
   ? 'http://localhost:5173/'
-  : 'https://xyflow-svelte-examples.vercel.app';
+  : 'https://xyflow-svelte-examples.vercel.app/';
+
+// @todo change prod url to production nhost instance once it's merged
+export const CONTACT_FORM_URL = isDevelopment()
+  ? 'https://local.functions.nhost.run/v1/contact'
+  : 'https://qatudfhrsubqcehhdsgx.functions.eu-central-1.nhost.run/v1/contact';

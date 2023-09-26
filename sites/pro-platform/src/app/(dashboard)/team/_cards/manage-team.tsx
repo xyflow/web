@@ -24,6 +24,7 @@ import {
   AlertDialogTitle,
 } from 'xy-ui';
 import useNhostFunction from '@/hooks/useNhostFunction';
+import useSubscription from '@/hooks/useSubscription';
 
 const GET_TEAM_MEMBERS = gql`
   query GetTeamMembers($userId: uuid) {
@@ -37,34 +38,44 @@ type TeamMember = {
   email: string;
 };
 
+type TeamStatus = { includedSeats: number; currency: 'usd' | 'eur'; billingPeriod: 'month' | 'year' };
+
 export default function ManageTeamCard() {
   const userId = useUserId();
+  const [status, setStatus] = useState<TeamStatus | null>(null);
   const [confirmPayment, setConfirmPayment] = useState<boolean>(false);
   const [confirmDeleteMember, setConfirmDeleteMember] = useState<string>(null);
-  const [includedSeats, setIncludedSeats] = useState<number>(0);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isDeleteLoading, setIsDeleteLoading] = useState<boolean>(false);
+  const [isError, setIsError] = useState<boolean>(false);
   const [memberEmail, setMemberEmail] = useState<string>('');
   const { data, refetch } = useAuthQuery(GET_TEAM_MEMBERS, { variables: { userId } });
   const nhostFunction = useNhostFunction();
+  const { isSubscribed } = useSubscription();
 
   useEffect(() => {
-    const updateIncludedSeats = async () => {
-      const status = await nhostFunction<{ includedSeats: number }>('team/status', {});
+    const updateStatus = async () => {
+      const status = await nhostFunction<TeamStatus>('team/status', {});
 
       if (!status || !status.res || !status.res.data) {
         return;
       }
 
-      setIncludedSeats(status.res.data.includedSeats);
+      setStatus(status.res.data);
     };
 
-    updateIncludedSeats();
+    updateStatus();
   }, []);
 
   const removeMember = async (email: string) => {
+    setIsError(false);
     setIsDeleteLoading(true);
-    await nhostFunction('team/remove', { email });
+    const { error } = await nhostFunction('team/remove', { email });
+
+    if (error) {
+      setIsError(true);
+    }
+
     await refetch();
     setIsDeleteLoading(false);
     setConfirmDeleteMember(null);
@@ -72,11 +83,18 @@ export default function ManageTeamCard() {
 
   const addMember = async ({ paymentConfirmed }: { paymentConfirmed: boolean }) => {
     setIsLoading(true);
+    setIsError(false);
 
-    const { res } = await nhostFunction<{ needsPaymentConfirmation?: boolean }>('team/invite', {
+    const { res, error } = await nhostFunction<{ needsPaymentConfirmation?: boolean }>('team/invite', {
       email: memberEmail,
       paymentConfirmed,
     });
+
+    if (error) {
+      setIsLoading(false);
+      setIsError(true);
+      return;
+    }
 
     if (res.data?.needsPaymentConfirmation) {
       setConfirmPayment(true);
@@ -94,20 +112,32 @@ export default function ManageTeamCard() {
     await addMember({ paymentConfirmed: false });
   };
 
+  const currencySign = status?.currency === 'eur' ? '€' : '$';
+  const seatPrice = status?.billingPeriod === 'year' ? 240 : 20;
+
+  if (!isSubscribed || !status) {
+    return null;
+  }
+
   return (
     <Card>
       <CardHeader>
         <CardTitle>Manage Team</CardTitle>
-        <CardDescription>
-          Your subscription includes {includedSeats} free seats. Additional seats can be added for $20 per month.
-        </CardDescription>
+        {status && (
+          <CardDescription>
+            Your subscription includes {status.includedSeats} free seats. Additional seats can be added for{' '}
+            {currencySign}
+            {seatPrice} per {status.billingPeriod}.
+          </CardDescription>
+        )}
         {confirmPayment && (
           <AlertDialog open>
             <AlertDialogContent>
               <AlertDialogHeader>
                 <AlertDialogTitle>Free seat limit reached</AlertDialogTitle>
                 <AlertDialogDescription>
-                  Adding a new seat will charge $20 per month with your next invoice. Please confirm to continue.
+                  Adding a new seat will charge {currencySign}
+                  {seatPrice} per {status.billingPeriod} with your next invoice. Please confirm to continue.
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>
@@ -147,10 +177,18 @@ export default function ManageTeamCard() {
           </AlertDialog>
         )}
       </CardHeader>
+
       <div className="border-t">
-        {data?.team_subscriptions?.map((member: TeamMember) => (
+        {data?.team_subscriptions?.map((member: TeamMember, i: number) => (
           <CardContent className="py-4 flex items-center justify-between border-b" key={member.email}>
-            <div className="font-semibold">{member.email}</div>
+            <div className="font-semibold">
+              {member.email}{' '}
+              {i < (status?.includedSeats ?? 0) && (
+                <span className="text-muted-foreground ml-2 bg-muted px-2 py-0.5 border border-gray-300 rounded-md">
+                  included
+                </span>
+              )}
+            </div>
             <Button onClick={() => setConfirmDeleteMember(member.email)} variant="outline">
               Remove
             </Button>
@@ -172,6 +210,7 @@ export default function ManageTeamCard() {
               placeholder="Enter Email..."
               disabled={isLoading}
             />
+            {isError && <InputLabel className="text-red-600 mt-1">Something went wrong. Please try again.</InputLabel>}
           </div>
           <Button disabled={isLoading} className="shrink-0 ml-auto mt-auto" variant="react" type="submit">
             {isLoading ? 'Please wait...' : `Add To Subscription`}

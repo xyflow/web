@@ -6,9 +6,9 @@ import AuthProtected from './auth-protected';
 function DashboardLayout({ children }: { children: React.ReactNode }) {
   return (
     <AuthProtected>
-      <div className="flex flex-col lg:flex-row w-full">
+      <div className="flex flex-col lg:flex-row w-full max-w-7xl mx-auto">
         <Sidebar />
-        <div className="py-4 lg:pl-6 lg:py-0 flex-1 lg:border-l min-h-[75vh]">{children}</div>
+        <div className="pt-4 pb-20 flex-1 min-h-[75vh] lg:pl-6 lg:pt-0 lg:border-l ">{children}</div>
       </div>
     </AuthProtected>
   );

@@ -22,7 +22,12 @@ const Sidebar = () => {
         <SidebarItem icon={<Cog8ToothIcon />} href="/account" label="Account" />
         <SidebarItem icon={<CreditCardIcon />} href="/billing" label="Billing" />
         <NotSubscribed>
-          <SidebarItem icon={<SparklesIcon />} href="/subscribe" label="Subscribe" />
+          <SidebarItem
+            icon={<SparklesIcon />}
+            href="/subscribe"
+            label="Subscribe"
+            className="!text-react hover:!bg-pink-100"
+          />
         </NotSubscribed>
       </div>
     </div>
