@@ -5,11 +5,7 @@
       "layout": "raw"
     }
   },
-  "index": {
-    "title": "React Flow Pro",
-    "theme": {
-      "layout": "raw"
-    }
-  },
-  "pricing": "Pricing"
+  "pricing": "Pricing",
+  "examples": "Pro Examples",
+  "enterprise": "Enterprise"
 }

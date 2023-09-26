@@ -9,6 +9,7 @@ import ClientLogos from '@/components/client-logos';
 import ImageSlider from '@/page-sections/image-slider';
 import FAQ from '@/components/faq';
 import Section from '@/page-sections/section';
+import SubscribeSection from '@/page-sections/subscribe';
 
 import { PRO_PLATFORM_SIGNUP_URL } from '@/constants';
 
@@ -93,6 +94,7 @@ export default function ReactFlowPro() {
       />
 
       <FAQ className="mt-20" />
+      <SubscribeSection />
     </BaseLayout>
   );
 }

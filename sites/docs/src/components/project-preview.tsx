@@ -37,6 +37,7 @@ export default function ProjectPreview({
         rel: 'noopener noreferrer',
       }
     : {};
+
   const LinkOrSpan = (props) =>
     isExternal ? (
       <a href={route} {...props} {...linkProps} />
@@ -75,7 +76,7 @@ export default function ProjectPreview({
           {subtitle}
         </Text>
       )}
-      <AuthorList authors={authors} className="mt-6" />
+      <AuthorList noLink={!route} authors={authors} className="mt-6" />
       <Text className="leading-snug my-4">{description}</Text>
       <Button asChild variant="link" className="text-md">
         <LinkOrSpan className="flex items-center">

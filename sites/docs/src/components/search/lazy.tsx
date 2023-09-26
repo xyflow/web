@@ -9,9 +9,9 @@ import '@docsearch/css';
 // and added it as a facet in the algolia settings
 
 export default function () {
-  const { site } = useXYSite();
+  const { site, isPro } = useXYSite();
 
-  if (site === 'xyflow') {
+  if (site === 'xyflow' || isPro) {
     return null;
   }
 

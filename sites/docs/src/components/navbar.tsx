@@ -38,11 +38,11 @@ const topNav = [
 const xyNavBarRoutes = ['/blog', '/about', '/showcase', '/open-source'];
 
 export default function Navbar(props) {
-  const { site, isOrg } = useXYSite();
+  const { site, isOrg, isPro } = useXYSite();
 
   const navBarItems = isOrg
     ? props.items.filter((item) => xyNavBarRoutes.includes(item.route))
-    : getPagesUnderRoute(`/${site}-flow`)
+    : getPagesUnderRoute(isPro ? `/${site}-flow/pro` : `/${site}-flow`)
         .filter(
           (page) =>
             page.name !== 'index' &&
@@ -82,12 +82,9 @@ export default function Navbar(props) {
 }
 
 export function NavBarAdditional() {
-  const { site } = useXYSite();
-  const { pathname } = useRouter();
+  const { site, isPro } = useXYSite();
 
-  const isReactProPage = pathname === '/react-flow/pro';
-
-  if (isReactProPage) {
+  if (isPro) {
     return (
       <Button asChild variant={site} className="px-4 font-black">
         <Link href={PRO_PLATFORM_SIGNUP_URL}>Sign Up</Link>
