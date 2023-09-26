@@ -10,7 +10,7 @@ export const initialNodes: Node[] = [
     id: '1',
     position: { x: 0, y: 0 },
     data: {
-      label: '⬛️'
+      label: 'Node 1'
     },
     ...nodeDefaults
   }

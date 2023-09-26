@@ -34,7 +34,7 @@ const AddNodeOnEdgeDrop = () => {
   const { project } = useReactFlow();
   const onConnect = useCallback(
     (params) => setEdges((eds) => addEdge(params, eds)),
-    []
+    [],
   );
 
   const onConnectStart = useCallback((_, { nodeId }) => {
@@ -57,16 +57,15 @@ const AddNodeOnEdgeDrop = () => {
           }),
           data: { label: `Node ${id}` },
           origin: [0.5, 0.0],
-          // FIXME: Does not work
         };
 
         setNodes((nds) => nds.concat(newNode));
         setEdges((eds) =>
-          eds.concat({ id, source: connectingNodeId.current, target: id })
+          eds.concat({ id, source: connectingNodeId.current, target: id }),
         );
       }
     },
-    [project]
+    [project],
   );
 
   return (
