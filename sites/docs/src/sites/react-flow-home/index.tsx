@@ -13,7 +13,7 @@ import {
 } from '@heroicons/react/24/outline';
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 
-import { Button, Heading, Text, ListWrapper } from 'xy-ui';
+import { Button, Heading, Text, ListWrapper, HeroIcon } from 'xy-ui';
 import BaseLayout from '@/layouts/base';
 import HeroFlow from '@/page-sections/hero-flow';
 import Stats, { StatsDisplay } from '@/page-sections/stats';
