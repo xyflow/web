@@ -3,10 +3,9 @@ import Link from 'next/link';
 import {
   HeartIcon,
   AtSymbolIcon,
-  MusicalNoteIcon,
-  PuzzlePieceIcon,
   CodeBracketIcon,
   RocketLaunchIcon,
+  DocumentTextIcon,
 } from '@heroicons/react/24/outline';
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 
@@ -58,10 +57,10 @@ export default function SvelteFlowHome() {
         <Stats
           variant="svelte"
           stats={[
-            { label: 'Latest Release', value: 'May 23' },
+            { label: 'Version', value: '9.9.9' },
             {
               label: 'Weekly Installs',
-              value: 5,
+              value: -1,
             },
             { label: 'License', value: 'MIT' },
           ]}
@@ -92,7 +91,7 @@ export default function SvelteFlowHome() {
             label="Getting Started Guide"
             link="/"
           />
-
+          <ListItem icon={DocumentTextIcon} label="Read the Docs" link="/" />
           <ListItem icon={AtSymbolIcon} label="Contact us" link="/" />
         </ListWrapper>
       </Section>
