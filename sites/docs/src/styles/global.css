@@ -34,11 +34,6 @@ div.nextra-nav-container-blur {
   background: white;
 }
 
-main .nx-max-w-\[90rem\],
-main .max-w-\[90rem\] {
-  max-width: 78rem;
-}
-
 .react-pro {
   transition: all 0.3s ease;
 }
