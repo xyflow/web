@@ -12,7 +12,7 @@ type ProjectPreviewProps = {
   kicker?: ReactNode;
   title: ReactNode;
   subtitle?: ReactNode;
-  description: ReactNode;
+  description?: ReactNode;
   authors?: string[];
   route?: string;
   linkLabel?: string;
@@ -27,7 +27,7 @@ export default function ProjectPreview({
   description,
   authors,
   route,
-  linkLabel = 'Read more',
+  linkLabel,
   className,
 }: ProjectPreviewProps) {
   const isExternal = route?.includes('https://');
@@ -75,13 +75,15 @@ export default function ProjectPreview({
           {subtitle}
         </Text>
       )}
-      <AuthorList authors={authors} className="mt-6" />
-      <Text className="leading-snug my-4">{description}</Text>
-      <Button asChild variant="link" className="text-md">
-        <LinkOrSpan className="flex items-center">
-          {linkLabel} <ArrowRightCircleIcon className="ml-1 w-4 h-4" />
-        </LinkOrSpan>
-      </Button>
+      {authors && <AuthorList authors={authors} className="mt-6" />}
+      {description && <Text className="leading-snug my-4">{description}</Text>}
+      {linkLabel && (
+        <Button asChild variant="link" className="text-md">
+          <LinkOrSpan className="flex items-center">
+            {linkLabel} <ArrowRightCircleIcon className="ml-1 w-4 h-4" />
+          </LinkOrSpan>
+        </Button>
+      )}
     </div>
   );
 }

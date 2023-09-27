@@ -179,27 +179,24 @@ export default function ReactFlowHome() {
           Start your first React Flow project
         </Heading>
         <ContentGrid className="grid-cols-1 lg:grid-cols-3 border-none">
-          <ContentGridItem className="border-none">
+          <ContentGridItem className="border-none" route="/">
             <ProjectPreview
               image="/img/getting-started-thumb.png"
               title="Getting Started Guide"
-              description=""
               linkLabel="Get Started"
             />
           </ContentGridItem>
-          <ContentGridItem className="border-none">
+          <ContentGridItem className="border-none" route="/">
             <ProjectPreview
               image="/img/blog/webaudio/web-audio-blog-thumb.png"
               title="Build a browser synth"
-              description=""
               linkLabel="Get Started"
             />
           </ContentGridItem>
-          <ContentGridItem className="border-none">
+          <ContentGridItem className="border-none" route="/">
             <ProjectPreview
               image="/img/blog/mindmap/mindmap.png"
-              title="Build a Mind Map"
-              description=""
+              title="Build a mind map"
               linkLabel="Get Started"
             />
           </ContentGridItem>
