@@ -1,15 +1,7 @@
-import { type ReactNode } from 'react';
 import Link from 'next/link';
-import {
-  HeartIcon,
-  AtSymbolIcon,
-  CodeBracketIcon,
-  RocketLaunchIcon,
-  DocumentTextIcon,
-} from '@heroicons/react/24/outline';
-import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
+import { HeartIcon } from '@heroicons/react/24/outline';
 
-import { Text, HeroIcon, ListWrapper } from 'xy-ui';
+import { Button, Heading } from 'xy-ui';
 import BaseLayout from '@/layouts/base';
 import HeroFlow from '@/page-sections/hero-flow';
 import Features from '@/page-sections/features';
@@ -78,6 +70,25 @@ export default function SvelteFlowHome() {
 
       <Section>
         <Features features={features} variant="svelte" />
+      </Section>
+      <Section className="mx-auto lg:max-w-[800px]">
+        <Heading size="sm" as="h3" className="text-center mb-12 mt-32">
+          Get started with Svelte Flow and join the community of people building
+          node-based UIs
+        </Heading>
+
+        <div className="flex justify-center space-x-8">
+          <Button size="lg" asChild variant="secondary">
+            <Link href="/react-flow/pro" className="flex items-center">
+              Read the Docs
+            </Link>
+          </Button>
+          <Button size="lg" asChild variant="secondary">
+            <Link href="/react-flow/pro" className="flex items-center">
+              Join our Discord
+            </Link>
+          </Button>
+        </div>
       </Section>
     </BaseLayout>
   );
