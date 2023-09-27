@@ -174,30 +174,30 @@ export default function ReactFlowHome() {
         </div>
       </Section>
       {/* remove link with icon */}
-      <Section className="text-center">
-        <Heading size="md" className="font-bold ">
-          Start your first React Flow project
+      <Section className="text-center lg:mb-0">
+        <Heading size="md" className="font-bold mt-32">
+          Get started with your first React Flow project
         </Heading>
-        <ContentGrid className="grid-cols-1 lg:grid-cols-3 border-none">
-          <ContentGridItem className="border-none" route="/">
+        <ContentGrid className="grid-cols-1 lg:grid-cols-3 border-none my-0 py-0">
+          <ContentGridItem className="border-none my-0 py-0" route="/">
             <ProjectPreview
+              className="my-0 py-0"
               image="/img/getting-started-thumb.png"
               title="Getting Started Guide"
-              linkLabel="Get Started"
             />
           </ContentGridItem>
-          <ContentGridItem className="border-none" route="/">
+          <ContentGridItem className="border-none my-0 py-0" route="/">
             <ProjectPreview
+              className="my-0 py-0"
               image="/img/blog/webaudio/web-audio-blog-thumb.png"
               title="Build a browser synth"
-              linkLabel="Get Started"
             />
           </ContentGridItem>
-          <ContentGridItem className="border-none" route="/">
+          <ContentGridItem className="border-none my-0 py-0" route="/">
             <ProjectPreview
+              className="my-0 py-0"
               image="/img/blog/mindmap/mindmap.png"
               title="Build a mind map"
-              linkLabel="Get Started"
             />
           </ContentGridItem>
         </ContentGrid>
