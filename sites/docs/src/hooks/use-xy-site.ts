@@ -5,6 +5,7 @@ export default function useXYSite(): {
   site: 'react' | 'svelte' | 'xyflow';
   lib: 'React Flow' | 'Svelte Flow' | null;
   isOrg: boolean;
+  isPro: boolean;
   getSiteByPathname: (pathname: string) => 'react' | 'svelte' | 'xyflow';
 } {
   const router = useRouter();
@@ -40,6 +41,7 @@ export default function useXYSite(): {
     site,
     lib,
     isOrg: site === 'xyflow',
+    isPro: router.pathname.includes('react-flow/pro'),
     getSiteByPathname,
   };
 }

@@ -1,12 +1,21 @@
 import { useState, useCallback } from 'react';
-import { Button, Alert, AlertTitle, AlertDescription } from 'xy-ui';
+import { Button, Alert, AlertTitle, AlertDescription, cn } from 'xy-ui';
 import { CONTACT_FORM_URL } from '@/constants';
+import useXYSite from '@/hooks/use-xy-site';
 
 export type ContactFormProps = {
   children: React.ReactNode;
 };
 
+// we need to overwrite the default added [type=submit] { background-color: transparent; } rule from tailwind
+const bgImportantClassNames = {
+  react: '!bg-react hover:!bg-react/90',
+  svelte: '!bg-svelte hover:!bg-svelte/90',
+  xyflow: '!bg-xyflow hover:!bg-xyflow/90',
+};
+
 export default function ContactForm({ children }) {
+  const { site } = useXYSite();
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -66,9 +75,9 @@ export default function ContactForm({ children }) {
         <Button
           loading={isLoading}
           disabled={isLoading || isSuccess}
-          className="col-span-1"
+          className={bgImportantClassNames[site]}
           type="submit"
-          variant="secondary"
+          variant={site}
         >
           Send
         </Button>

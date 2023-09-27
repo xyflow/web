@@ -9,6 +9,7 @@ import ClientLogos from '@/components/client-logos';
 import ImageSlider from '@/page-sections/image-slider';
 import FAQ from '@/components/faq';
 import Section from '@/page-sections/section';
+import SubscribeSection from '@/page-sections/subscribe';
 
 import { PRO_PLATFORM_SIGNUP_URL } from '@/constants';
 
@@ -50,7 +51,7 @@ export default function ReactFlowPro() {
           </>
         }
         subtitle="Thanks for checking out React Flow Pro! We are Christopher, Hayleigh, John, and Moritz, and we are the team building and maintaining React Flow"
-        kicker="React Flow Pro"
+        kicker="xyflow Pro"
         action={
           <Button asChild size="lg" variant="react-pro">
             <Link href={PRO_PLATFORM_SIGNUP_URL}>
@@ -93,6 +94,7 @@ export default function ReactFlowPro() {
       />
 
       <FAQ className="mt-20" />
+      <SubscribeSection />
     </BaseLayout>
   );
 }

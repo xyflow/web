@@ -1,6 +1,7 @@
 import BaseLayout from '@/layouts/base';
 import Hero from '@/page-sections/hero';
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
+import { EnvelopeIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { Card, Input, InputLabel, Text } from 'xy-ui';
 
@@ -11,6 +12,8 @@ export default function ContactPage() {
     <BaseLayout>
       <Hero
         align="center"
+        kicker="Contact Us"
+        kickerIcon={EnvelopeIcon}
         title="We're happy to answer any questions you have"
         subtitle="Messages go to our email inbox and we aim to respond within a couple of days."
       />

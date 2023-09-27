@@ -1,0 +1,11 @@
+{
+  "*": {
+    "type": "page",
+    "theme": {
+      "layout": "raw"
+    }
+  },
+  "pricing": "Pricing",
+  "examples": "Pro Examples",
+  "enterprise": "Enterprise"
+}
