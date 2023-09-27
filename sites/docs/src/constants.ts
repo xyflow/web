@@ -24,3 +24,13 @@ export const NPM_REACT_FLOW_LEGACY =
   'https://api.npmjs.org/downloads/point/last-week/react-flow-renderer';
 export const NPM_REACTFLOW =
   'https://api.npmjs.org/downloads/point/last-week/reactflow';
+
+// url of sveltekit instance serving examples/guides
+export const SVELTE_EXAMPLES_URL = isDevelopment()
+  ? 'http://localhost:5173/'
+  : 'https://xyflow-svelte-examples.vercel.app/';
+
+// @todo change prod url to production nhost instance once it's merged
+export const CONTACT_FORM_URL = isDevelopment()
+  ? 'https://local.functions.nhost.run/v1/contact'
+  : 'https://qatudfhrsubqcehhdsgx.functions.eu-central-1.nhost.run/v1/contact';

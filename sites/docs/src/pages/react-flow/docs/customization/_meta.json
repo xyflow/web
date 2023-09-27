@@ -1,0 +1,8 @@
+{
+  "index": "Custom Nodes",
+  "node-props": {
+    "title": "Custom Node Props",
+    "href": "/react-flow/api/types/NodeProps"
+  },
+  "theming": "Theming"
+}

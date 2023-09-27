@@ -1,8 +1,20 @@
-import { ReactNode } from 'react';
+import { CSSProperties, ReactNode } from 'react';
+import cn from 'clsx';
 
-export default function HeadlineNode({ children }: { children: ReactNode }) {
+export default function HeadlineNode({
+  children,
+  className,
+  style,
+}: {
+  children: ReactNode;
+  className?: string;
+  style?: CSSProperties;
+}) {
   return (
-    <span className="relative shadow-lg py-2 rounded-xl bg-white">
+    <span
+      className={cn(['relative shadow-lg py-2 rounded-xl bg-white', className])}
+      style={style}
+    >
       <span
         style={{
           backgroundImage:

@@ -23,4 +23,16 @@ export default {
     url: 'https://twitter.com/moklick',
     image: 'https://github.com/moklick.png',
   },
+  sumit: {
+    name: 'Sumit Gupta',
+    title: 'CTO / Co-Founder of Doubleloop',
+    url: '',
+    image: 'https://github.com/sumitngupta.png',
+  },
+  lee: {
+    name: 'Lee Munroe',
+    title: 'Head of Design at OneSignal',
+    url: '',
+    image: '/img/case-studies/onesignal-leemunroe.jpeg',
+  },
 };

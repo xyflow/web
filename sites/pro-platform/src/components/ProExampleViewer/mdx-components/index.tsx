@@ -4,7 +4,6 @@ import { Heading, Text } from 'xy-ui';
 import { MDXComponents } from 'mdx/types';
 
 import CodeBlock from './CodeBlock';
-import FileLink from './FileLink';
 
 export const mdxComponents: MDXComponents = {
   // @ts-ignore
@@ -42,7 +41,7 @@ export const mdxComponents: MDXComponents = {
   //   );
   // },
   pre: CodeBlock,
-  FileLink: () => null,
+  FileLink: (props) => <span {...props} />,
 };
 
 export default mdxComponents;

@@ -26,7 +26,7 @@ function Author({
       <LinkOrSpan>
         <img
           src={image}
-          className="w-10 h-10 mr-2 border border-gray-100 border-solid rounded-full"
+          className="w-10 min-w-min h-10 mr-2 border border-gray-100 border-solid rounded-full"
         />
       </LinkOrSpan>
 

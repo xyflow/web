@@ -21,8 +21,8 @@ function Shape({ type, random, color, ...props }) {
     const t = state.clock.getElapsedTime() + random * 10000;
     if (ref.current) {
       ref.current.rotation.set(
-        Math.cos(t / 4) / 2,
-        Math.sin(t / 4) / 2,
+        Math.cos(t / 1.5) / 2,
+        Math.sin(t) / 2,
         Math.cos(t / 1.5) / 2
       );
     }
@@ -65,8 +65,8 @@ export default function App({ color, zoom, shape, count = 150 }) {
     <div>
       <Canvas resize={canvasResize} dpr={2}>
         <Cam zoom={zoom} />
-        <ambientLight />
-        <directionalLight position={[0, 0, 100]} />
+        <ambientLight intensity={0.5} />
+        <directionalLight intensity={3} position={[0, 0, 100]} />
 
         <Suspense fallback={null}>
           {randomData.map((props, i) => (

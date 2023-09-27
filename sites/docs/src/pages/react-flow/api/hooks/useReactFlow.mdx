@@ -1,0 +1,44 @@
+import { PropsTable } from '@/components/props-table';
+import { signature } from '@/page-data/react-flow/api/hooks/useReactFlow.ts';
+
+# useReactFlow
+
+[Source on GitHub](https://github.com/wbkd/react-flow/blob/f919cb152dd5a92ec3b4d7e4568ffe099bc2af39/packages/react/src/hooks/useReactFlow.ts#L21)
+
+This hook returns a [`ReactFlowInstance`](../types/ReactFlowInstance) that can
+be used to update nodes and edges, manipulate the viewport, or query the current
+state of the flow.
+
+```jsx
+import { useCallback, useState } from 'react';
+import { useReactFlow } from '@xyflow/react';
+
+export function NodeCounter() {
+  const reactFlow = useReactFlow();
+  const [count, setCount] = useState(0);
+  const countNodes = useCallback(() => {
+    setCount(reactFlow.getNodes().length);
+  }, [reactFlow]);
+
+  return (
+    <div>
+      <button onClick={countNodes}>Update count</button>
+      <p>There are {count} nodes in the flow.</p>
+    </div>
+  );
+}
+```
+
+## Signature
+
+<PropsTable {...signature} />
+
+## Notes
+
+- This hook can only be used in a component that is a child of a
+  [`<ReactFlowProvider />`](../ReactFlowProvider) or a
+  [`<ReactFlow />`](../ReactFlow) comoponent.
+- Unlike [`useNodes`](./useNodes) or [`useEdges`](./useEdges), this hook won't
+  cause your component to re-render when state changes. Instead, you can query
+  the state when you need it by using methods on the [`ReactFlowInstance`](../types/ReactFlowInstance)
+  this hook returns.
