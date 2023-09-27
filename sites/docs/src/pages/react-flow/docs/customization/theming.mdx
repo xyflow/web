@@ -1,37 +1,171 @@
 ---
 title: Theming
-description: React Flow comes with a minimal default theme. You can overwrite the default styles or use third-party libraries.
+description: React Flow comes with a minimal default theme. It's common to overwrite the default styles with your own CSS or use third-party libraries like TailwindCSS or Styled Components.
 ---
+
+import { Callout } from 'nextra/components';
+import CodeViewer from '@/components/code-viewer';
 
 # Theming
 
-React Flow includes a very minimal default theme and necessary default styles to make everything work as expected. You need to load the styles on your own:
+React Flow has been built with deep customization in mind. Many of our users
+fully transform the look and feel of React Flow to match their own brand or design
+system. This guide will introduce you to the different ways you can customize
+React Flow's appearance.
 
-### Load Default Styles
+## Default styles
+
+React Flow's default styles are enough to get going with the built-in nodes. They
+provide some sensible defaults for styles like padding, border radius, and animated
+edges. You can see what they look like below:
+
+<CodeViewer
+  codePath="example-flows/DefaultStyle"
+  showEditor={false}
+  options={{ wrapContent: true }}
+/>
+
+You'll typically load these default styles by importing them in you `App.jsx`
+file or other entry point:
 
 ```js
 import 'reactflow/dist/style.css';
 ```
 
-This is how the default style looks:
+Without dipping into [custom nodes](../../examples/nodes/custom-node) and
+[edges](../../examples/edges//custom-edges), there are three ways you can style
+React Flow's basic look:
 
-import CodeViewer from '@/components/code-viewer';
+- Passing inline styles through `style` props
+- Overriding the built-in classes with custom CSS
+- Overriding the CSS variables React Flow uses
 
-<CodeViewer
-  codePath="example-flows/DefaultStyle"
-  showEditor={false}
-  options={{ editorHeight: 500, editorWidthPercentage: 45, wrapContent: true }}
-/>
+### Customizing with `style` props
 
-### Load Base Styles
+The easiest way to start customising the look and feel of your flows is to use
+the `style` prop found on many of React Flow's components to inline your own
+CSS.
 
-This is basically no styling, but mandatory for React Flow to work.
+```jsx
+import ReactFlow from '@xyflow/react'
+
+const styles = {
+  background: 'red',
+  width: '100%',
+  height: 300,
+};
+
+export default function Flow() {
+  return <ReactFlow style={styles} nodes={[...]} edges={[...]} />
+}
+```
+
+### Overriding built-in classes
+
+Some consider heavy use of inline styles to be an anti-pattern. In that case,
+you can override the built-in classes that React Flow uses with your own CSS.
+There are many classes attached to all sorts of elements in React Flow, but the
+ones you'll likely want to override are listed below:
+
+| Class name                         | Description                                                                         |
+| :--------------------------------- | :---------------------------------------------------------------------------------- |
+| `.react-flow`                      | The outermost container                                                             |
+| `.react-flow__renderer`            | The inner container                                                                 |
+| `.react-flow__zoompane`            | Zoom & pan pane                                                                     |
+| `.react-flow__selectionpane`       | Selection pane                                                                      |
+| `.react-flow__selection`           | User selection                                                                      |
+| `.react-flow__edges`               | The element containing all edges in the flow                                        |
+| `.react-flow__edge`                | Applied to each [`Edge`](../../api/types/Edge) in the flow                          |
+| `.react-flow__edge.selected`       | Added to an [`Edge`](../../api/types/Edge) when selected                            |
+| `.react-flow__edge.animated`       | Added to an [`Edge`](../../api/types/Edge) when its `animated` prop is `true`       |
+| `.react-flow__edge-path`           | The SVG `<path />` element of an [`Edge`](../../api/types/Edge)                     |
+| `.react-flow__edge-text`           | The SVG `<text />` element of an [`Edge`](../../api/types/Edge) label               |
+| `.react-flow__edge-textbg`         | The SVG `<text />` element behind an [`Edge`](../../api/types/Edge) label           |
+| `.react-flow__connection`          | Applied to the current connection line                                              |
+| `.react-flow__connection-path`     | The SVG `<path />` of a connection line                                             |
+| `.react-flow__nodes`               | The element containing all nodes in the flow                                        |
+| `.react-flow__node`                | Applied to each [`Node`](../../api/types/Node) in the flow                          |
+| `.react-flow__node.selected`       | Added to a [`Node`](../../api/types/Node) when selected.                            |
+| `.react-flow__node-default`        | Added when [`Node`](../../api/types/Node) type is `"default"`                       |
+| `.react-flow__node-input`          | Added when [`Node`](../../api/types/Node) type is `"input"`                         |
+| `.react-flow__node-output`         | Added when [`Node`](../../api/types/Node) type is `"output"`                        |
+| `.react-flow__nodesselection`      | Nodes selection                                                                     |
+| `.react-flow__nodesselection-rect` | Nodes selection rect                                                                |
+| `.react-flow__handle`              | Applied to each [`<Handle />`](../../api/components/Handle) component               |
+| `.react-flow__handle-top`          | Applied when a handle's [`Position`](../../api/types/Position) is set to `"top"`    |
+| `.react-flow__handle-right`        | Applied when a handle's [`Position`](../../api/types/Position) is set to `"right"`  |
+| `.react-flow__handle-bottom`       | Applied when a handle's [`Position`](../../api/types/Position) is set to `"bottom"` |
+| `.react-flow__handle-left`         | Applied when a handle's [`Position`](../../api/types/Position) is set to `"left"`   |
+| `.react-flow__handle-connecting`   | Applied when a connection line is above a handle.                                   |
+| `.react-flow__handle-valid`        | Applied when a connection line is above a handle **and** the connection is valid    |
+| `.react-flow__background`          | Applied to the [`<Background />`](../../api/components/Background) component        |
+| `.react-flow__minimap`             | Applied to the [`<MiniMap />`](../../api/components/MiniMap) component              |
+| `.react-flow__controls`            | Applied to the [`<Controls />`](../../api/components/Controls) component            |
+
+<Callout type="warning">
+  Be careful if you go poking around the source code looking for other classes
+  to override. Some classes are used internally and are required in order for
+  the library to be functional. If you replace them you may end up with
+  unexpected bugs or errors!
+</Callout>
+
+### CSS variables
+
+If you don't want to replace the default styles entirely but just want to tweak
+the overall look and feel, you can override some of the CSS variables we use
+throughout the library.
+
+These variables are mostly self-explanatory. Below is a table of all the variables
+you might want to tweak and their default values for reference:
+
+| Variable name                                      | Default                             |
+| :------------------------------------------------- | :---------------------------------- |
+| `--edge-stroke-default`                            | `#b1b1b7`                           |
+| `--edge-stroke-width-default`                      | `1`                                 |
+| `--edge-stroke-selected-default`                   | `#555`                              |
+| `--connectionline-stroke-default`                  | `#b1b1b7`                           |
+| `--connectionline-stroke-width-default`            | `1`                                 |
+| `--attribution-background-color-default`           | `rgba(255, 255, 255, 0.5)`          |
+| `--minimap-background-color-default`               | `#fff`                              |
+| `--background-pattern-dot-color-default`           | `#91919a`                           |
+| `--background-pattern-line-color-default`          | `#eee`                              |
+| `--background-pattern-cross-color-default`         | `#e2e2e2`                           |
+| `--node-color-default`                             | `inherit`                           |
+| `--node-border-default`                            | `1px solid #1a192b`                 |
+| `--node-background-color-default`                  | `#fff`                              |
+| `--node-group-background-color-default`            | `rgba(240, 240, 240, 0.25)`         |
+| `--node-boxshadow-hover-default`                   | `0 1px 4px 1px rgba(0, 0, 0, 0.08)` |
+| `--node-boxshadow-selected-default`                | `0 0 0 0.5px #1a192b`               |
+| `--handle-background-color-default`                | `#1a192b`                           |
+| `--handle-border-color-default`                    | `#fff`                              |
+| `--selection-background-color-default`             | `rgba(0, 89, 220, 0.08)`            |
+| `--selection-border-default`                       | `1px dotted rgba(0, 89, 220, 0.8)`  |
+| `--controls-button-background-color-default`       | `#fefefe`                           |
+| `--controls-button-background-color-hover-default` | `#f4f4f4`                           |
+| `--controls-button-color-default`                  | `inherit`                           |
+| `--controls-button-color-hover-default`            | `inherit`                           |
+| `--controls-button-border-color-default`           | `#eee`                              |
+| `--controls-box-shadow-default`                    | `0 0 2px 1px rgba(0, 0, 0, 0.08)`   |
+
+These variables are used to define the _defaults_ for the various elements of
+React Flow. This means they can still be overriden by inline styles or custom
+classes on a per-element basis.
+
+## Third-party solutions
+
+You can choose to opt-out of React Flow's default styling altogether and use a
+third-party styling solution instead. If you want to do this, you must make sure
+you still import the base styles.
 
 ```js
 import 'reactflow/dist/base.css';
 ```
 
-This is an example of the base styles:
+<Callout type="warning">
+  These base styles are **required** for React Flow to function correctly. If
+  you don't import them or you override them with your own styles, some things
+  might not work as expected!
+</Callout>
 
 <CodeViewer
   codePath="example-flows/BaseStyle"
@@ -39,71 +173,67 @@ This is an example of the base styles:
   options={{ editorHeight: 500, editorWidthPercentage: 45, wrapContent: true }}
 />
 
-## Overwrite Default Styles
+### Styled Components
 
-When you are using the default styles there are two ways to style the flow pane and the nodes and edges.
-You can create your own CSS rules or pass style properties to the components.
+Many of the components you render directly, such as the
+[`<MiniMap />`](../../api/components/MiniMap), accept both `className` and
+`style` props. This means you can use any styling solution you like, such as
+[Styled Components](https://styled-components.com/):
 
-### Using Class Names
+```jsx
+import { MiniMap } from '@xyflow/react';
 
-Since we are rendering DOM nodes you can simply overwrite the styles with your own CSS rules.
-The React Flow wrapper has the class name `react-flow`. If you want to change the background for example you can do:
+const StyledMiniMap = styled(MiniMap)`
+  background-color: ${(props) => props.theme.bg};
 
-```css
-.react-flow {
-  background: red;
+  .react-flow__minimap-mask {
+    fill: ${(props) => props.theme.minimapMaskBg};
+  }
+
+  .react-flow__minimap-node {
+    fill: ${(props) => props.theme.nodeBg};
+    stroke: none;
+  }
+`;
+```
+
+For a complete example of using Styled Components with React Flow, check out
+[the example](../../examples/styling/styled-components)!
+
+### TailwindCSS
+
+Custom nodes and edges are just React components, and you can use any styling
+solution you'd like to style them. For example, you might want to use
+[Tailwind](https://tailwindcss.com/) to style your nodes:
+
+```jsx
+function CustomNode({ data }) {
+  return (
+    <div className="px-4 py-2 shadow-md rounded-md bg-white border-2 border-stone-400">
+      <div className="flex">
+        <div className="rounded-full w-12 h-12 flex justify-center items-center bg-gray-100">
+          {data.emoji}
+        </div>
+        <div className="ml-2">
+          <div className="text-lg font-bold">{data.name}</div>
+          <div className="text-gray-500">{data.job}</div>
+        </div>
+      </div>
+
+      <Handle
+        type="target"
+        position={Position.Top}
+        className="w-16 !bg-teal-500"
+      />
+      <Handle
+        type="source"
+        position={Position.Bottom}
+        className="w-16 !bg-teal-500"
+      />
+    </div>
+  );
 }
 ```
 
-### Using Style Prop
-
-You can also pass css properties via the `style` prop:
-
-```jsx
-const reactFlowStyle = {
-  background: 'red',
-  width: '100%',
-  height: 300,
-};
-...
-<ReactFlow style={reactFlowStyle} />;
-```
-
-### Using Third-Party Libraries
-
-You can use any library you want for styling your flows. Check out the [styled-components](/docs/examples/styling/styled-components/) or [tailwind](/docs/examples/styling/tailwind/) examples for some inspiration.
-
-## React Flow Class Names
-
-The following class names are used for the different elements that could occur inside a flow:
-
-- `.react-flow` - Outer container
-- `.react-flow__renderer` - Inner container
-- `.react-flow__zoompane` - Zoom & pan pane
-- `.react-flow__selectionpane` - Selection pane
-- `.react-flow__selection` - User selection
-- `.react-flow__edges` - Edges wrapper
-- `.react-flow__edge` - Edge element
-  - `.selected` is added when edge is selected
-  - `.animated` is added when edge is animated
-- `.react-flow__edge-path` - Edge element path
-- `.react-flow__edge-text` - Edge text
-- `.react-flow__edge-textbg` - Edge text background
-- `.react-flow__connection` - Connection line
-- `.react-flow__connection-path` - Connection line path
-- `.react-flow__nodes` - Nodes wrapper
-- `.react-flow__node` - Node element
-  - `.selected` is added when a node is selected
-  - `-${type}` is added (`.react-flow__node-default`, `.react-flow__node-input`, `.react-flow__node-output`)
-- `.react-flow__nodesselection` - Nodes selection
-- `.react-flow__nodesselection-rect ` - Nodes selection rect
-- `.react-flow__handle` - Handle component
-  - `.react-flow__handle-bottom` is added when position = 'bottom'
-  - `.react-flow__handle-top` is added when position = 'top'
-  - `.react-flow__handle-left` is added when position = 'left'
-  - `.react-flow__handle-right` is added when position = 'right'
-  - `.react-flow__handle-connecting` is added when connection line is above a handle
-  - `.react-flow__handle-valid` is added when connection line is above a handle and the connection is valid
-- `.react-flow__background` - Background component
-- `.react-flow__minimap` - Mini map component
-- `.react-flow__controls` - Controls component
+For a complete example of using Tailwind with React Flow, check out
+[the example](../../examples/styling/tailwind)!
