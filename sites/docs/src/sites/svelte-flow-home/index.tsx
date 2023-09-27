@@ -79,45 +79,6 @@ export default function SvelteFlowHome() {
       <Section>
         <Features features={features} variant="svelte" />
       </Section>
-      <Section className="mb-8 lg:mb-8">
-        <ListWrapper
-          className="mt-32 max-w-lg mx-auto"
-          icon={RocketLaunchIcon}
-          iconClassName="text-svelte"
-          title="Let's get you started"
-        >
-          <ListItem
-            icon={CodeBracketIcon}
-            label="Getting Started Guide"
-            link="/"
-          />
-          <ListItem icon={DocumentTextIcon} label="Read the Docs" link="/" />
-          <ListItem icon={AtSymbolIcon} label="Contact us" link="/" />
-        </ListWrapper>
-      </Section>
     </BaseLayout>
-  );
-}
-
-function ListItem({
-  label,
-  icon: Icon,
-  link,
-}: {
-  label: ReactNode;
-  icon: HeroIcon;
-  link?: string;
-}) {
-  const WrapperComponent = link ? Link : 'div';
-
-  return (
-    <WrapperComponent
-      href={link}
-      className="flex py-6 border-b border-solid border-gray-100"
-    >
-      <Icon className="w-6 h-6 mr-2" />
-      <Text className="font-bold">{label}</Text>
-      {link && <ArrowRightCircleIcon className="text-svelte w-6 h-6 ml-auto" />}
-    </WrapperComponent>
   );
 }
