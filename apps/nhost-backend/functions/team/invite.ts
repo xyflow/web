@@ -17,7 +17,9 @@ async function inviteTeamMember(
   const { email, paymentConfirmed } = req.body;
 
   if (!email) {
-    return res.status(400).send({ message: 'Email missing.' });
+    return res
+      .status(400)
+      .send({ message: 'Please provide a valid email address.' });
   }
 
   // get the subscription from the creator to add the team member to the same plan
@@ -29,7 +31,12 @@ async function inviteTeamMember(
     !subscription.subscription_plan_id ||
     subscription.subscription_plan_id === 'free'
   ) {
-    return res.status(400).send({ message: 'User is not subscribed.' });
+    return res
+      .status(400)
+      .send({
+        message:
+          'You are not subscribed. To add team members, you need to create a subscription first.',
+      });
   }
 
   const teamMembers = await getTeamMembers(createdById);
@@ -40,7 +47,7 @@ async function inviteTeamMember(
   if (teamMembers.length >= includedSeats && !paymentConfirmed) {
     return res.status(200).send({
       needsPaymentConfirmation: true,
-      message: 'You need to confirm to buy an extra seat.',
+      message: 'Please confirm to add an extra seat to your subscription.',
     });
   }
 
@@ -48,7 +55,9 @@ async function inviteTeamMember(
   let userId = await getUserIdByEmail(email);
 
   if (userId === createdById) {
-    return res.status(400).send({ message: 'You cannot add yourself.' });
+    return res
+      .status(400)
+      .send({ message: 'You cannot add yourself to your team.' });
   }
 
   // create a user if the user doesn't exist yet
@@ -57,7 +66,7 @@ async function inviteTeamMember(
     userId = await getUserIdByEmail(email);
 
     if (!userId) {
-      return res.status(400).send({ message: 'Could not create user.' });
+      return res.status(400).send({ message: 'Something went wrong.' });
     }
   }
 
@@ -73,7 +82,7 @@ async function inviteTeamMember(
     await updateSeatQuantity(createdById);
   }
 
-  return res.status(200).json({ message: 'ok' });
+  return res.status(200).json({ message: 'Team member added successfully.' });
 }
 
 export default authPost(inviteTeamMember);

@@ -1,0 +1,41 @@
+import { PropsTable } from '@/components/props-table';
+import { signature } from '@/page-data/react-flow/api/utils/applyNodeChanges.ts';
+
+# applyNodeChanges()
+
+[Source on GitHub](https://github.com/wbkd/react-flow/blob/f919cb152dd5a92ec3b4d7e4568ffe099bc2af39/packages/react/src/utils/changes.ts#L118)
+
+Various events on the [`<ReactFlow />`](../ReactFlow) component can produce an
+[`NodeChange`](../types/NodeChange) that describes how to update the edges of your
+flow in some way. If you don't need any custom behaviour, this util can be used to
+take an array of these changes and apply them to your edges.
+
+```js
+import { useState, useCallback } from 'react';
+import ReactFlow, { applyNodeChanges } from '@xyflow/react';
+
+export default function Flow() {
+  const [nodes, setNodes] = useState([]);
+  const [edges, setEdges] = useState([]);
+  const onNodesChange = useCallback(
+    (changes) => {
+      setNodes((oldEdges) => applyNodeChanges(changes, oldEdges));
+    },
+    [setEdges]
+  );
+
+  return (
+    <ReactFLow nodes={nodes} edges={edges} onNodesChange={onNodesChange} />
+  );
+}
+```
+
+## Signature
+
+<PropsTable {...signature} />
+
+## Notes
+
+- If you don't need any custom behaviour, the [`useNodesState`](../hooks/useNodesState)
+  hook conviniently wraps this util and React's `useState` hook for you and might
+  be simpler to use.
