@@ -1,0 +1,31 @@
+body {
+  margin: 0;
+  background-color: #f8f8f8;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+main {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  background-color: #f8f8f8;
+  /* border: none; */
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+}

@@ -23,7 +23,7 @@ const innerContainerVariants = cva('border border-solid', {
     },
     size: {
       default: 'rounded-[18px]',
-      sm: 'rounded-[6px]',
+      sm: 'rounded-[9px]',
     },
   },
 });
@@ -42,10 +42,10 @@ function Container({
   children,
 }: ContainerProps) {
   return (
-    <div className={cn('p-2', containerVariants({ variant, size, className }))}>
+    <div className={cn('p-1', containerVariants({ variant, size, className }))}>
       <div
         className={cn(
-          'shadow-lg relative overflow-hidden h-full',
+          'shadow-md relative overflow-hidden h-full',
           innerContainerVariants({ variant, size, className: innerClassName })
         )}
       >

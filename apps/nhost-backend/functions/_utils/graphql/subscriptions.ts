@@ -65,6 +65,7 @@ const GET_SUBSCRIPTION = gql`
       user_id
       stripe_customer_id
       subscription_plan_id
+      extra_seats
     }
   }
 `;

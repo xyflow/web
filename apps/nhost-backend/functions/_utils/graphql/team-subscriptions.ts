@@ -1,6 +1,7 @@
 import { gql } from 'graphql-request';
 
 import { getSubscription } from './subscriptions';
+import { getStripeSubscription } from '../stripe';
 import GraphQLClient from './client';
 
 const UPSERT_TEAM_SUBSCRIPTION = gql`
@@ -82,6 +83,19 @@ export async function getTeamMembers(
   });
 
   return data.team_subscriptions;
+}
+
+export async function getSeatPricing(userId: string) {
+  const subscription = await getSubscription(userId);
+  const stripeSubscription = await getStripeSubscription(
+    subscription.stripe_customer_id
+  );
+
+  return {
+    currency: stripeSubscription?.currency ?? 'usd',
+    billingPeriod:
+      stripeSubscription?.items?.data?.[0]?.plan?.interval ?? 'monthly',
+  };
 }
 
 export async function getIncludedSeats(userId: string) {
