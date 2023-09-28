@@ -1,3 +1,3 @@
-[submodule "sites/pro-platform/pro-examples"]
-	path = sites/pro-platform/pro-examples
+[submodule "sites/pro.xyflow.com/pro-examples"]
+	path = sites/pro.xyflow.com/pro-examples
 	url = git@github.com:xyflow/pro-examples.git
