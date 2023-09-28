@@ -1,6 +1,7 @@
 {
   "*": {
     "type": "page",
+    "display": "hidden",
     "theme": {
       "layout": "raw"
     }
@@ -12,9 +13,18 @@
     }
   },
   "index": "XY Flow",
-  "blog": "Blog",
-  "showcase": "Showcase",
-  "about": "About",
+  "blog": {
+    "title": "Blog",
+    "display": "normal"
+  },
+  "showcase": {
+    "title": "Showcase",
+    "display": "normal"
+  },
+  "about": {
+    "title": "About",
+    "display": "normal"
+  },
   "case-studies": "Case Studies",
   "terms-of-use": {
     "title": "Terms Of Use",

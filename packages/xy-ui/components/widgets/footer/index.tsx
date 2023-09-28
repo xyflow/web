@@ -1,9 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-
-import aboutImage from '../../public/img/about.jpg';
-import { useRouter } from 'next/router';
-import { Text } from 'xy-ui';
+import { Text } from '../../ui/text';
 
 const docs = [
   { title: 'React Flow API', route: '/react-flow/api' },
@@ -49,9 +46,11 @@ const categories = [
   },
 ];
 
-export default function Footer() {
-  const router = useRouter();
+type FooterProps = {
+  imageSrc?: string;
+};
 
+export default function Footer({ imageSrc }: FooterProps) {
   return (
     <footer className="bg-black print:bg-transparent py-12 lg:py-18">
       <div className="mx-auto lg:flex text-white max-w-[90rem] pl-[max(env(safe-area-inset-left),1.5rem)] pr-[max(env(safe-area-inset-right),1.5rem)]">
@@ -63,9 +62,9 @@ export default function Footer() {
             Cared for by the xyflow team– building and maintaining React Flow
             since 2021.
           </div>
-          {!['/', '/about'].includes(router.pathname) && (
+          {imageSrc && (
             <Image
-              src={aboutImage}
+              src={imageSrc}
               alt="photo of the xyflow team sitting in an office"
               width={300}
               height={136}
@@ -99,3 +98,5 @@ export default function Footer() {
     </footer>
   );
 }
+
+export { Footer, type FooterProps };

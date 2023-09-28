@@ -1,24 +1,18 @@
 import { useEffect, useRef } from 'react';
-
-import { cn } from 'xy-ui';
-import { getColorBySite } from '@/utils';
-import { Framework } from '@/types';
+import { cn } from '../../lib/utils';
 
 type LogoProps = {
-  variant: Framework | 'xyflow';
   animated?: boolean;
   inverted?: boolean;
   className?: string;
 };
 
 export default function Logo({
-  variant,
   animated = false,
   inverted = false,
   className,
 }: LogoProps) {
   const ref = useRef<SVGSVGElement>();
-  const color = getColorBySite(variant);
 
   useEffect(() => {
     if (animated) {
@@ -30,12 +24,12 @@ export default function Logo({
         });
       });
     }
-  }, [variant, animated]);
+  }, [animated]);
 
   const bgColor = inverted ? '#fff' : '#1A192B';
 
   return (
-    <div className={cn('w-8 h-8', className)}>
+    <div className={cn('w-8 h-8 text-primary', className)}>
       <svg
         width="100%"
         height="100%"
@@ -47,13 +41,7 @@ export default function Logo({
         <path
           d="M35 3H25C23.8954 3 23 3.89543 23 5V15C23 16.1046 23.8954 17 25 17H35C36.1046 17 37 16.1046 37 15V5C37 3.89543 36.1046 3 35 3Z"
           strokeWidth="2"
-          fill={
-            animated
-              ? '#fff'
-              : inverted && variant === 'xyflow'
-              ? '#fff'
-              : color
-          }
+          fill={animated ? '#fff' : inverted ? '#fff' : 'currentColor'}
           stroke={animated ? bgColor : 'transparent'}
           data-path="animation"
         >
@@ -61,7 +49,7 @@ export default function Logo({
             <>
               <animate
                 attributeName="fill"
-                values={`#fff;#fff;${color}`}
+                values={`#fff;#fff;currentColor`}
                 keyTimes="0;0.5;1"
                 dur="1000ms"
                 fill="freeze"
@@ -140,13 +128,15 @@ export default function Logo({
         />
         <path
           d="M23 12C24.1046 12 25 11.1046 25 10C25 8.89543 24.1046 8 23 8C21.8954 8 21 8.89543 21 10C21 11.1046 21.8954 12 23 12Z"
-          fill={color}
+          fill="currentColor"
         />
         <path
           d="M30 19C31.1046 19 32 18.1046 32 17C32 15.8954 31.1046 15 30 15C28.8954 15 28 15.8954 28 17C28 18.1046 28.8954 19 30 19Z"
-          fill={color}
+          fill="currentColor"
         />
       </svg>
     </div>
   );
 }
+
+export { Logo, type LogoProps };

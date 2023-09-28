@@ -1,11 +1,9 @@
 import { useRouter } from 'next/router';
 import { useConfig } from 'nextra-theme-docs';
+import { Footer, Button } from 'xy-ui';
 
 import Logo from '@/components/navbar-logo';
-import Navbar, { NavBarAdditional } from '@/components/navbar';
 import SidebarTitle from '@/components/sidebar-title';
-import Footer from '@/components/footer';
-import Search from '@/components/search';
 import useXYSite from '@/hooks/use-xy-site';
 
 const baseUrl =
@@ -53,8 +51,8 @@ export default {
     defaultTheme: 'light',
   },
   navbar: {
-    component: Navbar,
-    extraContent: NavBarAdditional,
+    // component: Navbar,
+    extraContent: () => <Button>Contact Us</Button>,
   },
   sidebar: {
     titleComponent: SidebarTitle,
@@ -63,7 +61,7 @@ export default {
     component: Footer,
   },
   search: {
-    component: Search,
+    component: () => null,
   },
   feedback: {
     useLink: () => '/contact',
