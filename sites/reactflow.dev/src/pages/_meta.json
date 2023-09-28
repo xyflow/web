@@ -1,0 +1,23 @@
+{
+  "*": {
+    "type": "page",
+    "theme": {
+      "layout": "default"
+    }
+  },
+  "index": {
+    "title": "Home",
+    "theme": {
+      "layout": "raw"
+    }
+  },
+  "docs": "Docs",
+  "api-reference": "API",
+  "examples": "Examples",
+  "pro": {
+    "title": "Pro",
+    "theme": {
+      "layout": "raw"
+    }
+  }
+}
