@@ -79,7 +79,10 @@ export default function Hero({
           {subtitle && (
             <Text
               size="lg"
-              className={cn('mb-4 lg:mb-6 max-w-3xl', isCenter && 'mx-auto')}
+              className={cn(
+                'leading-7 mb-4 lg:mb-6 max-w-3xl',
+                isCenter && 'mx-auto'
+              )}
             >
               {subtitle}
             </Text>

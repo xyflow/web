@@ -1,3 +1,5 @@
+import { type ReactNode } from 'react';
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { useSSG } from 'nextra/ssg';
@@ -16,6 +18,8 @@ import ClientLogos from '@/components/client-logos';
 import FlowA from './flows/flow-a';
 import FlowB from './flows/flow-b';
 import FlowC from './flows/flow-c';
+import ContentGrid, { ContentGridItem } from '@/components/content-grid';
+import ProjectPreview from '@/components/project-preview';
 
 const features = [
   {
@@ -84,7 +88,12 @@ const sliderItems = [
 ];
 
 export default function ReactFlowHome() {
-  const { stars = 16000, downloads = 4000 } = useSSG();
+  const {
+    stars = 16000,
+    downloads = 4000,
+    usedBy = -1,
+    contributors = -1,
+  } = useSSG();
 
   return (
     <BaseLayout>
@@ -123,36 +132,71 @@ export default function ReactFlowHome() {
 
       <ImageSlider items={sliderItems} />
 
-      <Section className="lg:flex place-content-between">
-        <div>
-          <Heading size="md" className="font-bold">
-            Some headline thing
+      <Section className="lg:mt-36 lg:flex place-content-between">
+        <div className="lg:max-w-2xl">
+          <Heading size="md" className="font-bold mb-6">
+            Join our community
           </Heading>
-          <Text className="mt-2 mb-4">
-            Here is a text about ethical standards and stuff
+          <Text className="mt-2 mb-8 text-xl leading-relaxed">
+            We&apos;re nice to each other over here on the React Flow corner of
+            the internet. People from around the world, of all backgrounds,
+            genders, and experience levels are welcome and respected equally.
+            Read our Code of Conduct for more. Black lives matter. Trans rights
+            are human rights. No nazi bullsh*t.
           </Text>
-          <Button asChild>
-            <Link href="/">Not sure</Link>
+          <Button asChild className="mr-4">
+            <Link href="https://discord.gg/RVmnytFmGW">Join our Discord</Link>
+          </Button>
+          <Button asChild variant="outline">
+            <Link href="/">Read our Code of Conduct</Link>
           </Button>
         </div>
-        <div className="grid grid-cols-2 mt-10 lg:mt-0">
+        <div className="grid grid-cols-2 mt-10 lg:mt-0 ">
           {[
-            { label: 'Github Stars', value: `${(stars / 1000).toFixed(1)}k` },
+            {
+              label: 'Used By',
+              value: `${(usedBy / 1000).toFixed(1)}k`,
+            },
             {
               label: 'Weekly Installs',
               value: `${(downloads / 1000).toFixed(0)}k`,
             },
-            { label: 'License', value: 'MIT' },
-            { label: 'License', value: 'MITs' },
+            { label: 'Contributors', value: `${contributors}` },
+            { label: 'Haters', value: '0' },
           ].map((s) => (
             <StatsDisplay
               key={`${s.label}-${s.value}`}
               variant="react"
-              className="mb-6 lg:ml-20"
+              className="mb-6 lg:ml-20 !text-left"
               {...s}
             />
           ))}
         </div>
+      </Section>
+
+      <Section className=" lg:mt-48 lg:-mb-24">
+        <Heading
+          size="md"
+          className="text-center font-bold mt-32 mb-12 max-w-lg mx-auto "
+        >
+          Get started with your first React Flow project
+        </Heading>
+        <ContentGrid className="grid-cols-1 lg:grid-cols-2">
+          <ContentGridItem route="/">
+            <ProjectPreview
+              image="/img/getting-started-thumb.png"
+              title="Getting Started Guide"
+              description="Build an interactive flow and learn the foundations of React Flow in a few minutes"
+            />
+          </ContentGridItem>
+          <ContentGridItem route="/">
+            <ProjectPreview
+              image="/img/blog/webaudio/web-audio-blog-thumb.png"
+              title="Build a browser synth"
+              description="Learn React Flow and the Web Audio API while creating an interactive sound-making machine"
+            />
+          </ContentGridItem>
+        </ContentGrid>
       </Section>
     </BaseLayout>
   );
