@@ -8,6 +8,7 @@ import {
   PricingConfig,
   PlanId,
 } from './types';
+import { CheckCircleIcon } from '@heroicons/react/24/outline';
 
 type PlanProps = SubscriptionPlan & {
   currency: Currency;
@@ -23,11 +24,22 @@ type PlanProps = SubscriptionPlan & {
   }) => void;
 };
 
-function Features({ items }: { items: FeatureConfig[] }) {
+function Features({
+  items,
+  highlighted,
+}: {
+  items: FeatureConfig[];
+  highlighted: boolean;
+}) {
   return (
     <ul>
       {items.map((item, i) => (
-        <li key={`feat-${i}`} className="mb-2">
+        <li key={`feat-${i}`} className="mb-2 flex gap-1">
+          <CheckCircleIcon
+            className={cn('w-[21px] h-[21px] shrink-0 mt-0.5', {
+              'text-react': highlighted,
+            })}
+          />
           {item.label}
         </li>
       ))}
@@ -135,7 +147,7 @@ export default function Plan({
 
       <div className="mt-8">
         <div className="text-light mb-4">Included Features</div>
-        <Features items={features} />
+        <Features items={features} highlighted={highlighted} />
       </div>
     </div>
   );
