@@ -5,11 +5,6 @@
 
   import '@xyflow/svelte/dist/style.css';
 
-  let rect: DOMRectReadOnly;
-
-  let id = 1;
-  const getId = () => `${id++}`;
-
   const initialNodes: Node[] = [
     {
       id: '0',
@@ -23,6 +18,9 @@
   const edges = writable<Edge[]>([]);
 
   let connectingNodeId: string = '0';
+  let rect: DOMRectReadOnly;
+  let id = 1;
+  const getId = () => `${id++}`;
 
   const { project } = useSvelteFlow();
 
@@ -62,6 +60,7 @@
     {nodes}
     {edges}
     fitView
+    fitViewOptions={{ padding: 2 }}
     on:connectstart={({ detail: { nodeId } }) => {
       // Memorize the nodeId you start draggin a connection line from a node
       connectingNodeId = nodeId;

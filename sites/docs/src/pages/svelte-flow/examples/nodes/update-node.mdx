@@ -1,5 +1,5 @@
 ---
-title: Update Node
+title: Updating Nodes
 description: This example shows how to update the data field of a specific node.
 ---
 
@@ -7,10 +7,8 @@ import CodeViewer from '@/components/code-viewer';
 import ExampleLayout from '@/layouts/example';
 
 <ExampleLayout>
-This example shows how to update the data field of a specific node.
-
-<CodeViewer
-  codePath="examples/nodes/update-node"
-  framework="svelte"
-/>
+  You can update properties of nodes and edges freely. Don't forget to [self
+  assign](https://svelte.dev/docs/svelte-components#script-2-assignments-are-reactive)
+  `$nodes = $nodes` to trigger an update.
+  <CodeViewer codePath="examples/nodes/update-node" framework="svelte" />
 </ExampleLayout>

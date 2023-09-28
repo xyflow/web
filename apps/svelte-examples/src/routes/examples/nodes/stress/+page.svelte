@@ -5,17 +5,15 @@
 
   import '@xyflow/svelte/dist/style.css';
 
-  const initialViewport = { x: 0, y: 0, zoom: 0.5 };
-
-  const { nodes: initialNodes, edges: initialEdges } = createNodesAndEdges(10, 10);
+  const { nodes: initialNodes, edges: initialEdges } = createNodesAndEdges(15, 30);
   const nodes = writable(initialNodes);
   const edges = writable(initialEdges);
 
   function updatePos() {
     $nodes.forEach((node) => {
       node.position = {
-        x: Math.random() * window.innerWidth,
-        y: Math.random() * window.innerHeight
+        x: Math.random() * 1500,
+        y: Math.random() * 1500
       };
     });
     $nodes = $nodes;
@@ -23,7 +21,7 @@
 </script>
 
 <div style="height:100vh;">
-  <SvelteFlow {nodes} {edges} {initialViewport} minZoom={0.2} maxZoom={4}>
+  <SvelteFlow {nodes} {edges} minZoom={0} fitView>
     <Background />
     <MiniMap />
     <Controls />

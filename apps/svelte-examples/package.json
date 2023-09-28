@@ -30,7 +30,7 @@
   },
   "type": "module",
   "dependencies": {
-    "@xyflow/svelte": "0.0.21",
+    "@xyflow/svelte": "0.0.22",
     "xy-tsconfig": "workspace:*"
   }
 }

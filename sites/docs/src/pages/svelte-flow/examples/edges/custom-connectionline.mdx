@@ -1,14 +1,13 @@
 ---
-sidebar_position: 3
-title: Custom Connectionline
-hide_table_of_contents: true
+title: Connection Line
 ---
 
 import CodeViewer from '@/components/code-viewer';
 import ExampleLayout from '@/layouts/example';
 
 <ExampleLayout>
-This example shows the implementation and usage of a custom connection line. You can find the passed props in the [custom connection line docs](/docs/api/edges/custom-connection-line/).
+A Connection Line is what you see when you click and drag out from a handle. It represents a possible edge and can snap to valid handles in close proximity.
+You can implement your own Connection Line by passing a Svelte component with `slot="connectionLine"`. The `useConnection` hook gives you access to the current `connection`.
 
 <CodeViewer
   codePath="examples/edges/custom-connectionline"

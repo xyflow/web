@@ -22,10 +22,6 @@ const initialNodes = [
 let id = 1;
 const getId = () => `${id++}`;
 
-const fitViewOptions = {
-  padding: 3,
-};
-
 const AddNodeOnEdgeDrop = () => {
   const reactFlowWrapper = useRef(null);
   const connectingNodeId = useRef(null);
@@ -79,7 +75,7 @@ const AddNodeOnEdgeDrop = () => {
         onConnectStart={onConnectStart}
         onConnectEnd={onConnectEnd}
         fitView
-        fitViewOptions={fitViewOptions}
+        fitViewOptions={{ padding: 2 }}
         nodeOrigin={[0.5, 0]}
       />
     </div>
