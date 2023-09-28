@@ -2,7 +2,7 @@ import { Text } from 'xy-ui';
 import Link from 'next/link';
 import React, { useCallback, useMemo } from 'react';
 
-import * as reactFlowTypes from '../pages/react-flow/api/types/_meta.json';
+import * as reactFlowTypes from '@/pages/api-reference/types/_meta.json';
 
 export type PropsTableProps = {
   props: {

@@ -52,19 +52,19 @@ export default {
     forcedTheme: 'light',
     defaultTheme: 'light',
   },
-  navbar: {
-    component: Navbar,
-    extraContent: NavBarAdditional,
-  },
+  // navbar: {
+  //   component: Navbar,
+  //   extraContent: NavBarAdditional,
+  // },
   sidebar: {
     titleComponent: SidebarTitle,
   },
   footer: {
     component: Footer,
   },
-  search: {
-    component: Search,
-  },
+  // search: {
+  //   component: Search,
+  // },
   feedback: {
     useLink: () => '/contact',
   },

@@ -102,7 +102,7 @@ export default function ReactFlowHome() {
             { label: 'License', value: 'MIT' },
           ]}
           description="React Flow is a MIT-licensed open source library. You can help us to ensure the further development and maintenance by subscribing to React Flow Pro."
-          link="/react-flow/pro"
+          link="/pro"
           linkLabel={
             <>
               <SparklesIcon className="w-5 h-5 mr-1" /> React Flow Pro
