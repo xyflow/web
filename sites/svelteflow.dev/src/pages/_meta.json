@@ -2,44 +2,22 @@
   "*": {
     "type": "page",
     "theme": {
-      "layout": "raw"
+      "layout": "default"
     }
   },
-  "404": {
-    "title": "404",
+  "index": {
+    "title": "Home",
     "theme": {
       "layout": "raw"
     }
   },
-  "index": "XY Flow",
-  "react-flow": "React Flow",
-  "svelte-flow": "Svelte Flow",
-  "blog": "Blog",
-  "showcase": "Showcase",
-  "about": "About",
-  "case-studies": "Case Studies",
-  "terms-of-use": {
-    "title": "Terms Of Use",
+  "docs": "Docs",
+  "api-reference": "API",
+  "examples": "Examples",
+  "support-us": {
+    "title": "Support Us",
     "theme": {
-      "layout": "full"
-    }
-  },
-  "ethical-standards": {
-    "title": "Ethical Standards",
-    "theme": {
-      "layout": "full"
-    }
-  },
-  "privacy": {
-    "title": "Privacy",
-    "theme": {
-      "layout": "full"
-    }
-  },
-  "imprint": {
-    "title": "Imprint",
-    "theme": {
-      "layout": "full"
+      "layout": "raw"
     }
   }
 }

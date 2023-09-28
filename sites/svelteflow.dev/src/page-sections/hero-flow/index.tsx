@@ -36,7 +36,8 @@ const headlineStyle: CSSProperties = {
 
 export default function HeroFlow() {
   const headlineRef = useRef<HTMLDivElement>(null);
-  const { site, lib } = useXYSite();
+  const site = 'svelte';
+  const lib = 'Svelte Flow';
   const ProIcon = proButtonIcon[site];
 
   return (
@@ -57,12 +58,12 @@ export default function HeroFlow() {
 
           <div className="flex">
             <Button variant="secondary" asChild className="mr-3 ">
-              <Link href={`/${site}-flow/docs`}>
+              <Link href="/docs">
                 <BoltIcon className="w-5 h-5 mr-1" />
                 Quickstart
               </Link>
             </Button>
-            <Button variant={`${site}-pro`} asChild>
+            <Button variant="svelte-pro" asChild>
               <Link href={proButtonHref[site]}>
                 <ProIcon className="w-5 h-5 mr-1" /> {proButtonLabel[site]}
               </Link>
