@@ -50,7 +50,7 @@ export default function ProjectPreview({
     <div className={className}>
       {image && (
         <Container
-          className="mx-auto aspect-video relative overflow-hidden bg-gray-50 mb-12"
+          className="mx-auto aspect-video relative overflow-hidden bg-gray-50 mb-10"
           size="sm"
         >
           <Image
@@ -62,32 +62,34 @@ export default function ProjectPreview({
           />
         </Container>
       )}
-      {kicker && (
-        <Text size="sm" variant="light" className="mt-8">
-          {kicker}
-        </Text>
-      )}
-      <Heading as="p" size="sm" className="mb-2 mt-1 lg:leading-snug">
-        {title}
-      </Heading>
-      {subtitle && (
-        <Text size="lg" className="leading-snug">
-          {subtitle}
-        </Text>
-      )}
-      {authors && <AuthorList authors={authors} className="mt-6" />}
-      {description && (
-        <Text variant="light" className="leading-snug mt-4 mb-8" size="lg">
-          {description}
-        </Text>
-      )}
-      {linkLabel && (
-        <Button asChild variant="link" className="text-md ">
-          <LinkOrSpan className="flex items-center">
-            {linkLabel} <ArrowRightCircleIcon className="ml-1 w-4 h-4" />
-          </LinkOrSpan>
-        </Button>
-      )}
+      <div className="pl-3">
+        {kicker && (
+          <Text size="sm" variant="light" className="mt-8">
+            {kicker}
+          </Text>
+        )}
+        <Heading as="p" size="sm" className="mb-2 mt-1 lg:leading-snug">
+          {title}
+        </Heading>
+        {subtitle && (
+          <Text size="lg" className="leading-snug">
+            {subtitle}
+          </Text>
+        )}
+        {authors && <AuthorList authors={authors} className="mt-6" />}
+        {description && (
+          <Text variant="light" className="leading-snug mt-4 mb-8" size="lg">
+            {description}
+          </Text>
+        )}
+        {linkLabel && (
+          <Button asChild variant="link" className="text-md ">
+            <LinkOrSpan className="flex items-center">
+              {linkLabel} <ArrowRightCircleIcon className="ml-1 w-4 h-4" />
+            </LinkOrSpan>
+          </Button>
+        )}
+      </div>
     </div>
   );
 }

@@ -132,7 +132,7 @@ export default function ReactFlowHome() {
 
       <ImageSlider items={sliderItems} />
 
-      <Section className="lg:flex place-content-between">
+      <Section className="lg:mt-36 lg:flex place-content-between">
         <div className="lg:max-w-2xl">
           <Heading size="md" className="font-bold mb-6">
             Join our community
@@ -174,7 +174,7 @@ export default function ReactFlowHome() {
         </div>
       </Section>
 
-      <Section className=" lg:-mb-24">
+      <Section className=" lg:mt-48 lg:-mb-24">
         <Heading
           size="md"
           className="text-center font-bold mt-32 mb-12 max-w-lg mx-auto "
@@ -186,14 +186,14 @@ export default function ReactFlowHome() {
             <ProjectPreview
               image="/img/getting-started-thumb.png"
               title="Getting Started Guide"
-              description="hey there my friend learn nodes edges labels and the basics"
+              description="Build an interactive flow and learn the foundations of React Flow in a few minutes"
             />
           </ContentGridItem>
           <ContentGridItem route="/">
             <ProjectPreview
               image="/img/blog/webaudio/web-audio-blog-thumb.png"
               title="Build a browser synth"
-              description="Make noise on the internet using Web Audio API and React Flow"
+              description="Learn React Flow and the Web Audio API while creating an interactive sound-making machine"
             />
           </ContentGridItem>
         </ContentGrid>
