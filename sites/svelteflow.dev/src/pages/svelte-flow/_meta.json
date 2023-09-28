@@ -1,0 +1,24 @@
+{
+  "*": {
+    "type": "page",
+    "theme": {
+      "layout": "default"
+    }
+  },
+  "index": {
+    "title": "Svelte Flow",
+    "theme": {
+      "layout": "raw"
+    }
+  },
+  "docs": "Docs",
+  "api": "API",
+  "examples": "Examples",
+  "support-us": {
+    "display": "hidden",
+    "title": "Svelte Flow",
+    "theme": {
+      "layout": "raw"
+    }
+  }
+}

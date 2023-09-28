@@ -1,0 +1,61 @@
+import { PropsTable } from '@/components/props-table';
+import {
+  nodeDimensionChangeFields,
+  nodePositionChangeFields,
+  nodeSelectionChangeFields,
+  nodeRemoveChangeFields,
+  nodeAddChangeFields,
+  nodeResetChangeFields,
+} from '@/page-data/react-flow/api/types/NodeChange.fields.ts';
+
+# NodeChange
+
+[Source on GitHub](https://github.com/wbkd/react-flow/blob/f919cb152dd5a92ec3b4d7e4568ffe099bc2af39/packages/react/src/types/changes.ts#L43)
+
+```ts
+export type NodeChange =
+  | NodeDimensionChange
+  | NodePositionChange
+  | NodeSelectionChange
+  | NodeRemoveChange
+  | NodeAddChange
+  | NodeResetChange;
+```
+
+## Variant types
+
+### NodeDimensionChange
+
+[Source on GitHub](https://github.com/wbkd/react-flow/blob/f919cb152dd5a92ec3b4d7e4568ffe099bc2af39/packages/react/src/types/changes.ts#L6)
+
+<PropsTable {...nodeDimensionChangeFields} />
+
+### NodePositionChange
+
+[Source on GitHub](https://github.com/wbkd/react-flow/blob/f919cb152dd5a92ec3b4d7e4568ffe099bc2af39/packages/react/src/types/changes.ts#L14)
+
+<PropsTable {...nodePositionChangeFields} />
+
+### NodeSelectionChange
+
+[Source on GitHub](https://github.com/wbkd/react-flow/blob/f919cb152dd5a92ec3b4d7e4568ffe099bc2af39/packages/react/src/types/changes.ts#L22)
+
+<PropsTable {...nodeSelectionChangeFields} />
+
+### NodeRemoveChange
+
+[Source on GitHub](https://github.com/wbkd/react-flow/blob/f919cb152dd5a92ec3b4d7e4568ffe099bc2af39/packages/react/src/types/changes.ts#L28)
+
+<PropsTable {...nodeRemoveChangeFields} />
+
+### NodeAddChange&lt;T = any>
+
+[Source on GitHub](https://github.com/wbkd/react-flow/blob/f919cb152dd5a92ec3b4d7e4568ffe099bc2af39/packages/react/src/types/changes.ts#L33)
+
+<PropsTable {...nodeAddChangeFields} />
+
+### NodeResetChange&lt;T = any>
+
+[Source on GitHub](https://github.com/wbkd/react-flow/blob/f919cb152dd5a92ec3b4d7e4568ffe099bc2af39/packages/react/src/types/changes.ts#L38)
+
+<PropsTable {...nodeResetChangeFields} />

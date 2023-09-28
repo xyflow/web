@@ -1,0 +1,45 @@
+---
+title: Accessibility
+description: React Flow is accessible with a keyboard and readable by a screenreader
+---
+
+# Accessibility
+
+A flow is accessible with a keyboard and readable by a screenreader. Nodes and edges are focusable, selectable, moveable and deleteable with the keyboard.
+
+import { Callout } from 'nextra/components';
+
+<Callout type="info">
+  If you have an idea how we can improve the accessibility of React Flow, please
+  feel free to [contact us](/contact).
+</Callout>
+
+## Built-in Features
+
+### Keyboard Controls
+
+- Nodes and edges are focusable by using the `Tab` key (`tabIndex={0}` + `role="button"`)
+- Nodes and edges are selectable by using `Enter` or `Space`, un-selectable by using `Escape`
+- Nodes are moveable with arrow keys (press Shift for increasing velocity)
+- Nodes and Edges get a `aria-describedby` attribute to describe keyboard controls
+
+You can configure the keyboard controls with the props: `nodesFocusable`, `edgesFocusable` and `disableKeyboardA11y`. `nodesFocusable` and `edgesFocusable` (both true by default) need to be true if you want to be able to focus elements with Tab and then select or deselect them with Enter and Escape. If you are setting `disableKeyboardA11y={true}`, the nodes are not moveable with arrow keys anymore.
+
+<Callout type="info">
+  Nodes are only moveable with arrow keys when `nodesDraggable` and
+  `nodesFocusable` are true (default behaviour).
+</Callout>
+
+### WAI-ARIA
+
+- Edges: Default `aria-label` - overwritable with new `Edge` option `ariaLabel`
+- Nodes: `ariaLabel` option (no default here, because we assume that there might be text inside the node)
+- Minimap component: `aria-describedby` + title
+- Attribution component: `aria-label`
+- Controls component: `aria-labels` for buttons
+
+## Better accessible node-based UIs
+
+- When your nodes don't have textual content, you should provide an aria-label via the node options.
+- You can improve the default `aria-label` ('from source.id to target.id') of an edge, when your nodes have names that you could use by passing specific aria-labels to the edges.
+- follow best [practice WAI-ARIA guides](https://w3c.github.io/aria-practices/) in your application

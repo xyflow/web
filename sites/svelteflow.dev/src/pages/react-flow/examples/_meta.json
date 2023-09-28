@@ -1,0 +1,14 @@
+{
+  "*": {
+    "theme": {
+      "toc": false
+    }
+  },
+  "index": "Overview",
+  "nodes": "Nodes",
+  "edges": "Edges",
+  "layout": "Layout",
+  "interaction": "Interaction",
+  "styling": "Styling",
+  "misc": "Misc"
+}

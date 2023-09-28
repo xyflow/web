@@ -1,0 +1,79 @@
+body {
+  margin: 0;
+  background-color: #f8f8f8;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+.header {
+  color: #cdcdcd;
+}
+
+.react-flow__node-mindmap {
+  background: #f6ad55;
+  border-radius: 2px;
+  border: 1px solid transparent;
+  padding: 2px 5px;
+  font-weight: 700;
+}
+
+.react-flow__handle.target {
+  top: 50%;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.react-flow__handle.source {
+  top: 0;
+  left: 0;
+  transform: none;
+  background: #f6ad55;
+  height: 100%;
+  width: 100%;
+  border-radius: 2px;
+  border: none;
+}
+
+.react-flow .react-flow__connectionline {
+  z-index: 0;
+}
+
+.inputWrapper {
+  display: flex;
+  height: 20px;
+  z-index: 1;
+  position: relative;
+  pointer-events: none;
+}
+
+.dragHandle {
+  background: transparent;
+  width: 14px;
+  height: 100%;
+  margin-right: 4px;
+  display: flex;
+  align-items: center;
+  pointer-events: all;
+}
+
+.input {
+  border: none;
+  padding: 0 2px;
+  border-radius: 1px;
+  font-weight: 700;
+  background: transparent;
+  height: 100%;
+  color: #222;
+  pointer-events: none;
+}
+
+.input:focus {
+  border: none;
+  outline: none;
+  background: rgba(255, 255, 255, 0.25);
+  pointer-events: all;
+}
