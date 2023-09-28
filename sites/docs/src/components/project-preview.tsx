@@ -50,7 +50,7 @@ export default function ProjectPreview({
     <div className={className}>
       {image && (
         <Container
-          className="mx-auto aspect-video relative overflow-hidden bg-gray-50"
+          className="mx-auto aspect-video relative overflow-hidden bg-gray-50 mb-12"
           size="sm"
         >
           <Image
@@ -71,14 +71,18 @@ export default function ProjectPreview({
         {title}
       </Heading>
       {subtitle && (
-        <Text variant="light" size="sm" className="leading-snug">
+        <Text size="lg" className="leading-snug">
           {subtitle}
         </Text>
       )}
       {authors && <AuthorList authors={authors} className="mt-6" />}
-      {description && <Text className="leading-snug my-4">{description}</Text>}
+      {description && (
+        <Text variant="light" className="leading-snug mt-4 mb-8" size="lg">
+          {description}
+        </Text>
+      )}
       {linkLabel && (
-        <Button asChild variant="link" className="text-md">
+        <Button asChild variant="link" className="text-md ">
           <LinkOrSpan className="flex items-center">
             {linkLabel} <ArrowRightCircleIcon className="ml-1 w-4 h-4" />
           </LinkOrSpan>
