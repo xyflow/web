@@ -8,7 +8,7 @@
 //
 
 import NxImage from 'next/image';
-import XyCodeViewer from '@/components/code-viewer';
+import ExampleViewer from '@/components/example-viewer';
 import ReactPlayer from '@/components/react-player-lazy';
 
 // IMAGES ----------------------------------------------------------------------
@@ -80,10 +80,10 @@ export function CodeViewer({
 }: CodeViewerProps) {
   return (
     <div className={`relative h-full mx-0 ${negativeMargin}`}>
-      <XyCodeViewer
+      <ExampleViewer
         codePath={codePath}
-        options={{
-          editorHeight: '50vh',
+        editorHeight={'50vh'}
+        sandpackOptions={{
           editorWidthPercentage: 100,
           wrapContent: false,
           readOnly: false,
