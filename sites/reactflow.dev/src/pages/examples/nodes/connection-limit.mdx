@@ -3,7 +3,7 @@ title: Connection Limit
 description: This is an example of a custom node limiting the amount of connections a handle can have using the `isConnectalbe` prop.
 ---
 
-import CodeViewer from '@/components/code-viewer';
+import ExampleViewer from '@/components/example-viewer';
 import ExampleLayout from '@/layouts/example';
 
 <ExampleLayout>
@@ -11,7 +11,7 @@ This is an example of a custom node with a custom handle that can limit the amou
 You can use a boolean, a number (the number of max. connections the handle should have) or a callback function that returns a boolean
 as an arg for the `isConnectable` prop of the CustomHandle component.
 
-<CodeViewer
+<ExampleViewer
   codePath="example-flows/ConnectionLimit"
   additionalFiles={['CustomNode.js', 'CustomHandle.js']}
 />

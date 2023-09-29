@@ -9,10 +9,10 @@ There are two ways to use React Flow - controlled or uncontrolled. Controlled me
 
 An implementation of an uncontrolled flow is simpler, because you don't need to pass any handlers:
 
-import CodeViewer from '@/components/code-viewer';
+import ExampleViewer from '@/components/example-viewer';
 import { Callout } from 'nextra/components';
 
-<CodeViewer
+<ExampleViewer
   codePath="api-flows/Uncontrolled"
   applyStyles={false}
   options={{ editorHeight: 500, editorWidthPercentage: 45, wrapContent: true }}
@@ -30,7 +30,7 @@ Since you don't have nodes and edges in your local state, you can't update them 
   to use the `useReactFlow` hook.
 </Callout>
 
-<CodeViewer
+<ExampleViewer
   codePath="api-flows/Uncontrolled2"
   applyStyles={false}
   options={{ editorHeight: 500, editorWidthPercentage: 45, wrapContent: true }}

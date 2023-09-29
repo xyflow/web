@@ -20,9 +20,9 @@ import { Callout } from 'nextra/components';
   properly.
 </Callout>
 
-import CodeViewer from '@/components/code-viewer';
+import ExampleViewer from '@/components/example-viewer';
 
-<CodeViewer
+<ExampleViewer
   codePath="api-flows/IntroductionFlow"
   applyStyles={false}
   options={{
@@ -36,7 +36,7 @@ import CodeViewer from '@/components/code-viewer';
 
 By default React Flow doesn't do any internal state updates besides handling the viewport when you setup a controlled flow. As with an `<input />` component you need to pass handlers to apply the changes that are triggered by React Flow to your nodes and edges. In order to **select**, **drag** and **remove** nodes and edges you need to implement an `onNodesChange` and an `onEdgesChange` handler:
 
-<CodeViewer
+<ExampleViewer
   codePath="api-flows/IntroductionFlow2"
   applyStyles={false}
   options={{
@@ -66,7 +66,7 @@ const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
 The last piece that is missing to get the full interactivity is the `onConnect` handler. You need to implement it, in order to handle new connections.
 
-<CodeViewer
+<ExampleViewer
   codePath="api-flows/IntroductionFlow3"
   applyStyles={false}
   options={{

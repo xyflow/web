@@ -4,7 +4,7 @@ description: React Flow doesn't include any layouting algorithms out of the box.
 ---
 
 import { Callout } from 'nextra/components';
-import CodeViewer from '@/components/code-viewer';
+import ExampleViewer from '@/components/example-viewer';
 
 We regularly get asked how to handle layouting in React Flow. While we could build
 some basic layouting into React Flow, we believe that **you know your app's
@@ -19,7 +19,7 @@ and resources for routing edges.
 To start let's put together a simple example flow that we can use as a base for
 testing out the different layouting options.
 
-<CodeViewer
+<ExampleViewer
   codePath="api-flows/LayoutingFlow1-Empty"
   options={{ editorHeight: '50vh' }}
   applyStyles={true}
@@ -58,7 +58,7 @@ Dagre is a simple library for layouting directed graphs. It has minimal configur
 options and a focus on speed over choosing the most optimal layout. If you need
 to organise your flows into a tree, _we highly recommend dagre_.
 
-<CodeViewer
+<ExampleViewer
   codePath="api-flows/LayoutingFlow2-Dagre"
   options={{ editorHeight: '50vh' }}
   applyStyles={false}
@@ -102,7 +102,7 @@ provide a handful of interesting layouting options. While the library can layout
 a simple tree just fine, it also has layouting algorithms for tree maps, partition
 layouts, and enclosure diagrams.
 
-<CodeViewer
+<ExampleViewer
   codePath="api-flows/LayoutingFlow3-D3-Hierarchy"
   options={{ editorHeight: '50vh' }}
   applyStyles={false}
@@ -132,7 +132,7 @@ so we need a way to keep computing the layout across multiple renders.
 
 First, let's see what it does:
 
-<CodeViewer
+<ExampleViewer
   codePath="api-flows/LayoutingFlow4-D3-Force"
   options={{ editorHeight: '50vh' }}
   applyStyles={false}
@@ -180,7 +180,7 @@ Elkjs is certainly the most configurable option available, but it's also the mos
 complicated. Elkjs is a Java library that's been ported to JavaScript, and it
 provides a huge number of options for configuring the layout of your graph.
 
-<CodeViewer
+<ExampleViewer
   codePath="api-flows/LayoutingFlow6-Elkjs"
   options={{ editorHeight: '50vh' }}
   applyStyles={false}

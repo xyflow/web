@@ -5,7 +5,7 @@ description: Here's how to install the React Flow package using npm (as reactflo
 
 # Building a Flow
 
-import CodeViewer from '@/components/code-viewer';
+import ExampleViewer from '@/components/example-viewer';
 
 In this section we are explaining how to create a controlled flow component. Now that you've installed React Flow into your React project, all files are in place to start using React Flow.
 
@@ -19,7 +19,7 @@ import ReactFlow, { Background, Controls } from 'reactflow';
 
 We can now use the components to render an empty flow:
 
-<CodeViewer
+<ExampleViewer
   codePath="api-flows/GettingStarted1"
   applyStyles={false}
   options={{ editorHeight: 400, editorWidthPercentage: 45, wrapContent: true }}
@@ -46,7 +46,7 @@ const nodes = [
 
 These nodes can now be added to the flow:
 
-<CodeViewer
+<ExampleViewer
   codePath="api-flows/GettingStarted2"
   applyStyles={false}
   options={{ editorHeight: 400, editorWidthPercentage: 45, wrapContent: true }}
@@ -70,7 +70,7 @@ const nodes = [
 ];
 ```
 
-<CodeViewer
+<ExampleViewer
   codePath="api-flows/GettingStarted3"
   applyStyles={false}
   options={{ editorHeight: 400, editorWidthPercentage: 45, wrapContent: true }}
@@ -90,7 +90,7 @@ To make an edge, we need to specify two attributes: the source node (where the e
 const edges = [{ id: '1-2', source: '1', target: '2' }];
 ```
 
-<CodeViewer
+<ExampleViewer
   codePath="api-flows/GettingStarted4"
   applyStyles={false}
   options={{ editorHeight: 400, editorWidthPercentage: 45, wrapContent: true }}
@@ -98,7 +98,7 @@ const edges = [{ id: '1-2', source: '1', target: '2' }];
 
 Let's give this edge two properties that are built into React Flow, a `label` and a different `type`.
 
-<CodeViewer
+<ExampleViewer
   codePath="api-flows/GettingStarted5"
   applyStyles={false}
   options={{ editorHeight: 400, editorWidthPercentage: 45, wrapContent: true }}
