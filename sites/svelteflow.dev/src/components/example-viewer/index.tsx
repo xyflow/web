@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 import sdk from '@stackblitz/sdk';
 
-import { Button } from 'xy-ui';
-import ExampleViewer from './example-viewer';
+import { Button, CodeViewer } from 'xy-ui';
 import SvelteSetup from './svelte/setup';
 
 import { Framework } from '@/types';
@@ -90,7 +89,7 @@ export default function SvelteExample({
   }
 
   return (
-    <ExampleViewer
+    <CodeViewer
       files={files}
       editorHeight={editorHeight}
       showOpenInCodeSandbox={false}
