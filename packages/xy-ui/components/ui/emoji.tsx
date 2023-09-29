@@ -11,7 +11,7 @@ export type EmojiProps = {
 // an aria-label (and the appropriate role) if a label is provided, or removes it
 // from the accessibility tree entirely if not.
 //
-export default function Emoji({ content, label }: EmojiProps) {
+export function Emoji({ content, label }: EmojiProps) {
   return label ? (
     <span role="img" aria-label={label}>
       {content}
