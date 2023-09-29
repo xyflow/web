@@ -19,6 +19,7 @@ export * from './components/ui/checkbox';
 export * from './components/ui/logo';
 export * from './components/widgets/pricing-table';
 export * from './components/widgets/footer';
+export * from './components/widgets/code-viewer';
 
 export { cn } from './lib/utils';
 
