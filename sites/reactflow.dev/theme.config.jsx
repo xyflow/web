@@ -1,11 +1,12 @@
 import { useRouter } from 'next/router';
 import { useConfig } from 'nextra-theme-docs';
 
+import aboutImage from './public/img/about.jpg';
+import Footer from 'xy-ui/footer';
 import Logo from '@/components/navbar-logo';
 import Navbar, { NavBarAdditional } from '@/components/navbar';
-import SidebarTitle from '@/components/sidebar-title';
-import Footer from '@/components/footer';
 import Search from '@/components/search';
+import SidebarTitle from '@/components/sidebar-title';
 import useXYSite from '@/hooks/use-xy-site';
 
 const baseUrl =
@@ -60,7 +61,14 @@ export default {
     titleComponent: SidebarTitle,
   },
   footer: {
-    component: Footer,
+    component: () => {
+      const router = useRouter();
+      const imageSrc = !['/', '/about'].includes(router.pathname)
+        ? aboutImage
+        : undefined;
+
+      return <Footer imageSrc={imageSrc} />;
+    },
   },
   // search: {
   //   component: Search,
