@@ -4,6 +4,3 @@ Allow: /
 
 # Host
 Host: https://xyflow.com
-
-# Sitemaps
-Sitemap: https://xyflow.com/sitemap.xml
