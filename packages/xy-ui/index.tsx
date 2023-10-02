@@ -16,6 +16,7 @@ export * from './components/ui/spinner';
 export * from './components/ui/tabs';
 export * from './components/ui/text';
 export * from './components/ui/checkbox';
+export * from './components/ui/footer';
 export * from './components/widgets/pricing-table';
 
 export { cn } from './lib/utils';
