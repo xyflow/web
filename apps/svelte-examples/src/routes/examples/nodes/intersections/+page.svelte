@@ -1,19 +1,8 @@
 <script lang="ts">
-  import { SvelteFlow } from '@xyflow/svelte';
-  import type { Edge, Node } from '@xyflow/svelte';
-  import { writable } from 'svelte/store';
-
-  import '@xyflow/svelte/dist/style.css';
-
-  import { initialNodes, initialEdges } from './nodes-and-edges';
-
-  const nodes = writable<Node[]>(initialNodes);
-  const edges = writable<Edge[]>(initialEdges);
+  import { SvelteFlowProvider } from '@xyflow/svelte';
+  import Flow from './Flow.svelte';
 </script>
 
-<div style="height:100vh;">
-  <SvelteFlow {nodes} {edges} fitView></SvelteFlow>
-</div>
-
-<style>
-</style>
+<SvelteFlowProvider>
+  <Flow />
+</SvelteFlowProvider>
