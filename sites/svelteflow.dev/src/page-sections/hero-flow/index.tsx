@@ -17,7 +17,7 @@ const subtitle = {
 
 const proButtonHref = {
   react: PRO_PLATFORM_OR_REACT_PRO_URL,
-  svelte: '/svelte-flow/support-us',
+  svelte: '/support-us',
 };
 
 const proButtonIcon = {
