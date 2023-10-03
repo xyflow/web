@@ -1,10 +1,13 @@
 import { CheckCircleIcon } from '@heroicons/react/24/outline';
 import Subscribe from '@/page-sections/subscribe';
-import BaseLayout from '@/layouts/base';
 import Hero from '@/page-sections/hero';
-import ContentGrid, { ContentGridItem } from '@/components/content-grid';
-import ProjectPreview from '@/components/project-preview';
 import { getMdxPagesUnderRoute } from '@/utils';
+import {
+  BaseLayout,
+  ContentGrid,
+  ContentGridItem,
+  ProjectPreview,
+} from 'xy-ui';
 
 export default function CaseStudies() {
   return (

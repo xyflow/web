@@ -17,11 +17,7 @@ export type BlogPostLayoutProps = {
   children: ReactNode;
 };
 
-export default function BlogPostLayout({
-  prev,
-  next,
-  children,
-}: BlogPostLayoutProps) {
+export function BlogPostLayout({ prev, next, children }: BlogPostLayoutProps) {
   const { frontMatter } = useConfig();
 
   return (

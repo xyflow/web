@@ -4,7 +4,7 @@ import { REACT_FLOW_VERSION } from '@/constants';
 
 type ExampleViewerProps = CodeViewerProps & {
   codePath: string;
-  additionalFiles: string[];
+  additionalFiles?: string[];
   activeFile?: string;
   isTypescript: boolean;
   editorHeight: string;
@@ -12,7 +12,7 @@ type ExampleViewerProps = CodeViewerProps & {
 
 export default function ExampleViewer({
   codePath,
-  additionalFiles,
+  additionalFiles = [],
   activeFile,
   isTypescript,
   editorHeight,

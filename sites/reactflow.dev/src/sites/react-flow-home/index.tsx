@@ -3,8 +3,7 @@ import Image from 'next/image';
 import { useSSG } from 'nextra/ssg';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 
-import { Button, Heading, Text } from 'xy-ui';
-import BaseLayout from '@/layouts/base';
+import { BaseLayout, Button, Heading, Text } from 'xy-ui';
 import HeroFlow from '@/page-sections/hero-flow';
 import Stats, { StatsDisplay } from '@/page-sections/stats';
 import Features from '@/page-sections/features';

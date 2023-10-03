@@ -1,11 +1,14 @@
-import { Button } from 'xy-ui';
+import {
+  BaseLayout,
+  ContentGrid,
+  ContentGridItem,
+  Button,
+  ProjectPreview,
+} from 'xy-ui';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
-import BaseLayout from '@/layouts/base';
 import Hero from '@/page-sections/hero';
 import Subscribe from '@/page-sections/subscribe';
-import ContentGrid, { ContentGridItem } from '@/components/content-grid';
-import ProjectPreview from '@/components/project-preview';
 import { getMdxPagesUnderRoute } from '@/utils';
 import { getPagesUnderRoute } from 'nextra/context';
 

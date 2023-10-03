@@ -2,6 +2,8 @@ export * from './components/layout/base';
 export * from './components/layout/blog-post';
 export * from './components/layout/case-study';
 export * from './components/layout/text-only';
+export * from './components/layout/example';
+
 export * from './components/ui/accordion';
 export * from './components/ui/alert-dialog';
 export * from './components/ui/alert';
@@ -23,6 +25,7 @@ export * from './components/ui/slider';
 export * from './components/ui/spinner';
 export * from './components/ui/tabs';
 export * from './components/ui/text';
+
 export * from './components/widgets/authors-list';
 export * from './components/widgets/blog-post';
 export * from './components/widgets/code-viewer';

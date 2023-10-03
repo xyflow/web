@@ -1,10 +1,13 @@
 import { type ReactNode } from 'react';
 import { useConfig } from 'nextra-theme-docs';
+import { Heading } from '../../';
 
-import { Heading } from 'xy-ui';
-
-// this layout is used for the example pages
-export default function ExampleLayout({ children }: { children: ReactNode }) {
+/**
+ * This basic layout is used for all the example pages across reactflow.dev and
+ * svelteflow.dev.
+ *
+ */
+export function ExampleLayout({ children }: { children: ReactNode }) {
   const { frontMatter } = useConfig();
 
   return (
@@ -12,6 +15,7 @@ export default function ExampleLayout({ children }: { children: ReactNode }) {
       <Heading size="md" className="mt-6">
         {frontMatter.title}
       </Heading>
+
       {children}
     </>
   );

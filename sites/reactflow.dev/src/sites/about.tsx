@@ -2,15 +2,20 @@ import { UserGroupIcon } from '@heroicons/react/24/outline';
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 import Link from 'next/link';
 
-import { Heading, Text, Button, Container } from 'xy-ui';
+import {
+  BaseLayout,
+  ContentGrid,
+  ContentGridItem,
+  Heading,
+  Text,
+  Button,
+  Container,
+} from 'xy-ui';
 import Image from 'next/image';
 
-import BaseLayout from '@/layouts/base';
 import Hero from '@/page-sections/hero';
 import Section from '@/page-sections/section';
 import aboutUsImage from '@/../public/img/about.jpg';
-
-import ContentGrid, { ContentGridItem } from '@/components/content-grid';
 
 export default function About() {
   return (

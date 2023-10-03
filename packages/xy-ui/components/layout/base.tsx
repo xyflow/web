@@ -7,7 +7,7 @@ export type BaseLayoutProps = {
 };
 
 // used to center center the content on the page
-export default function BaseLayout({ children, className }: BaseLayoutProps) {
+export function BaseLayout({ children, className }: BaseLayoutProps) {
   return (
     <main
       className={cn(
