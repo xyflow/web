@@ -40,6 +40,8 @@
   },
   "peerDependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "nextra": "^2.12.3",
+    "nextra-theme-docs": "^2.12.3"
   }
 }
