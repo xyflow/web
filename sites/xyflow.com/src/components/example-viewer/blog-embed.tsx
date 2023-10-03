@@ -1,7 +1,7 @@
 import ExampleViewer from './';
 import { wideNegativeMargin } from 'xy-ui';
 
-export type CodeViewerProps = {
+export type BlogExampleViewerProps = {
   codePath: string;
   additionalFiles?: string[];
   showEditor?: boolean;
@@ -9,13 +9,13 @@ export type CodeViewerProps = {
   isTypescript?: boolean;
 };
 
-export function CodeViewer({
+export function BlogExampleViewer({
   codePath,
   additionalFiles = [],
   showEditor = false,
   dependencies = {},
   isTypescript = false,
-}: CodeViewerProps) {
+}: BlogExampleViewerProps) {
   return (
     <div className={`relative h-full mx-0 ${wideNegativeMargin}`}>
       <ExampleViewer

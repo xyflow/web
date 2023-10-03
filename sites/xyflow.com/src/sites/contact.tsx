@@ -1,9 +1,8 @@
-import BaseLayout from '@/layouts/base';
 import Hero from '@/page-sections/hero';
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 import { EnvelopeIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
-import { Card, Input, InputLabel, Text } from 'xy-ui';
+import { BaseLayout, Card, Input, InputLabel, Text } from 'xy-ui';
 
 import ContactForm from '@/components/contact-form';
 

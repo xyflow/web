@@ -8,10 +8,9 @@ image: img/blog/webaudio/web-audio-blog-thumb.png
 ---
 
 import { Callout, Tab, Tabs } from 'nextra/components';
+import { BlogPostLayout, Embed, Image, Emoji } from 'xy-ui';
 
-import { CodeViewer, Embed, Image } from '@/components/blog-post-embed';
-import { Emoji } from 'xy-ui';
-import BlogPostLayout from '@/layouts/blog-post';
+import { BlogExampleViewer } from '@/components/example-viewer';
 
 <BlogPostLayout>
 Today we'll be looking at how to create an interactive audio playground using React
@@ -199,7 +198,7 @@ export default function App() {
 And that's everything we need to start making some sounds with the Web Audio API!
 Here's what we put together, in case you weren't following along at home:
 
-<CodeViewer
+<BlogExampleViewer
   codePath="blog-flows/webaudio/MouseTheremin"
   additionalFiles={['index.css']}
   showEditor={false}
@@ -420,7 +419,7 @@ const useStore = create((set, get) => ({
 }));
 ```
 
-<CodeViewer
+<BlogExampleViewer
   codePath="blog-flows/webaudio/StateManagement"
   additionalFiles={['store.js']}
   dependencies={{ nanoid: 'latest', zustand: '4.3.6' }}
@@ -645,7 +644,7 @@ const useStore = create((set, get) => ({
 }));
 ```
 
-<CodeViewer
+<BlogExampleViewer
   codePath="blog-flows/webaudio/CustomNode"
   additionalFiles={['store.js', 'nodes/Osc.js']}
   dependencies={{ nanoid: 'latest', zustand: '4.3.6', twind: 'latest' }}
@@ -727,7 +726,7 @@ export default function Out({ id, data }) {
 
 Things are starting to shape up quite nicely!
 
-<CodeViewer
+<BlogExampleViewer
   codePath="blog-flows/webaudio/CustomNodes"
   additionalFiles={['store.js', 'nodes/Osc.js', 'nodes/Out.js', 'nodes/Amp.js']}
   dependencies={{ nanoid: 'latest', zustand: '4.3.6', twind: 'latest' }}
@@ -992,7 +991,7 @@ export const useStore = create((set, get) => ({
 Et voilà, we did it! We've now put enough together to actually _make sounds_!
 Let's see what we have in action.
 
-<CodeViewer
+<BlogExampleViewer
   codePath="blog-flows/webaudio/HardcodedAudio"
   additionalFiles={[
     'store.js',
@@ -1132,7 +1131,7 @@ that can:
 Here's the demo from the beginning, but this time you can see the source code to
 make sure you haven't missed anything.
 
-<CodeViewer
+<BlogExampleViewer
   codePath="blog-flows/webaudio/Demo"
   additionalFiles={[
     'store.js',

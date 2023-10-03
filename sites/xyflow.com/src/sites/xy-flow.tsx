@@ -3,13 +3,19 @@ import Image from 'next/image';
 import { Position } from '@xyflow/system';
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 
-import { Text, Heading, Button, Logo } from 'xy-ui';
-import BaseLayout from '@/layouts/base';
+import {
+  BaseLayout,
+  ContentGrid,
+  ContentGridItem,
+  Text,
+  Heading,
+  Button,
+  Logo,
+} from 'xy-ui';
 import Hero from '@/page-sections/hero';
 import ImageSlider from '@/page-sections/image-slider';
 import HeadlineNode from '@/components/headline-node';
 import Handle from '@/components/handle';
-import ContentGrid, { ContentGridItem } from '@/components/content-grid';
 import Section from '@/page-sections/section';
 
 import aboutImage from '../../public/img/about.jpg';

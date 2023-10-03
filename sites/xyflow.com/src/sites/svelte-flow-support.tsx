@@ -13,10 +13,16 @@ import {
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 import Link from 'next/link';
 
-import { Heading, ListWrapper, Text, type HeroIcon } from 'xy-ui';
-import BaseLayout from '@/layouts/base';
+import {
+  BaseLayout,
+  ContentGrid,
+  ContentGridItem,
+  Heading,
+  ListWrapper,
+  Text,
+  type HeroIcon,
+} from 'xy-ui';
 import Hero from '@/page-sections/hero';
-import ContentGrid, { ContentGridItem } from '@/components/content-grid';
 
 function Kicker() {
   return (
