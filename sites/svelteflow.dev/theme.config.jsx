@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import { useConfig } from 'nextra-theme-docs';
 
 import aboutImage from './public/img/about.jpg';
-import Footer from 'xy-ui/footer';
+import { Footer } from 'xy-ui';
 import Logo from '@/components/navbar-logo';
 import Navbar, { NavBarAdditional } from '@/components/navbar';
 import Search from '@/components/search';
