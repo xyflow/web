@@ -86,23 +86,27 @@ type CaseStudyPreviewsProps = {
 function CaseStudyPreviews({ prev, next }: CaseStudyPreviewsProps) {
   return (
     <ContentGrid className="mt-20">
-      <ContentGridItem route={prev.route}>
-        <ProjectPreview
-          image={prev.frontMatter?.image}
-          kicker={prev.frontMatter?.client}
-          title={prev.frontMatter?.title}
-          description={prev.frontMatter?.description}
-        />
-      </ContentGridItem>
+      {prev && (
+        <ContentGridItem route={prev.route}>
+          <ProjectPreview
+            image={prev.frontMatter?.image}
+            kicker={prev.frontMatter?.client}
+            title={prev.frontMatter?.title}
+            description={prev.frontMatter?.description}
+          />
+        </ContentGridItem>
+      )}
 
-      <ContentGridItem route={next.route}>
-        <ProjectPreview
-          image={next.frontMatter?.image}
-          kicker={next.frontMatter?.client}
-          title={next.frontMatter?.title}
-          description={next.frontMatter?.description}
-        />
-      </ContentGridItem>
+      {next && (
+        <ContentGridItem route={next.route}>
+          <ProjectPreview
+            image={next.frontMatter?.image}
+            kicker={next.frontMatter?.client}
+            title={next.frontMatter?.title}
+            description={next.frontMatter?.description}
+          />
+        </ContentGridItem>
+      )}
     </ContentGrid>
   );
 }

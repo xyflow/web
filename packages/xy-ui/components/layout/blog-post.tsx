@@ -47,23 +47,27 @@ function BlogPostPreviews({ prev, next }: BlogPostPreviewsProps) {
   return (
     <div className="mt-20 relative right-1/2 left-1/2 ml-[-50vw] mr-[-50vw] w-[100vw]">
       <ContentGrid className="max-w-[90rem] mx-auto">
-        <ContentGridItem route={prev.route}>
-          <BlogPostPreview
-            title={prev.frontMatter?.title}
-            intro={prev.frontMatter?.intro}
-            date={prev.frontMatter?.date}
-            authors={prev.frontMatter?.authors}
-          />
-        </ContentGridItem>
+        {prev && (
+          <ContentGridItem route={prev.route}>
+            <BlogPostPreview
+              title={prev.frontMatter?.title}
+              intro={prev.frontMatter?.intro}
+              date={prev.frontMatter?.date}
+              authors={prev.frontMatter?.authors}
+            />
+          </ContentGridItem>
+        )}
 
-        <ContentGridItem route={next.route}>
-          <BlogPostPreview
-            title={next.frontMatter?.title}
-            intro={next.frontMatter?.intro}
-            date={next.frontMatter?.date}
-            authors={next.frontMatter?.authors}
-          />
-        </ContentGridItem>
+        {next && (
+          <ContentGridItem route={next.route}>
+            <BlogPostPreview
+              title={next.frontMatter?.title}
+              intro={next.frontMatter?.intro}
+              date={next.frontMatter?.date}
+              authors={next.frontMatter?.authors}
+            />
+          </ContentGridItem>
+        )}
       </ContentGrid>
     </div>
   );

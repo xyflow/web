@@ -89,3 +89,5 @@ async function loadLocalFiles(
 
   return { default: res.default, additional };
 }
+
+export { BlogExampleViewer } from './blog-embed';
