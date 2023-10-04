@@ -12,8 +12,6 @@ import ColorPickerNode from './color-picker-node';
 import SliderNode from './slider-node';
 import SwitcherNode from './switcher-node';
 import SwoopyNode from './swoopy-node';
-import { Framework } from '@/types';
-import { getColorBySite } from '@/utils';
 
 const nodeTypes = {
   hero: HeroNode,
@@ -119,20 +117,16 @@ const defaultEdges = [
 ];
 
 type FlowProps = {
-  variant: Framework;
+  initialColor?: string;
   headlineRef: MutableRefObject<HTMLDivElement>;
+  className?: string;
 };
 
-const bgClass = {
-  react: 'bg-reactflow-gradient',
-  svelte: 'bg-svelteflow-gradient',
-};
-
-function Flow({ variant, headlineRef }: FlowProps) {
+function Flow({ initialColor = '#777', headlineRef, className }: FlowProps) {
   const { setNodes } = useReactFlow();
   const reactFlowRef = useRef(null);
   const [headlineDimensions, setHeadlineDimensions] = useState(null);
-  const [color, setColor] = useState(getColorBySite(variant));
+  const [color, setColor] = useState(initialColor);
   const [zoom, setZoom] = useState(12);
   const [shape, setShape] = useState('cube');
 
@@ -162,12 +156,12 @@ function Flow({ variant, headlineRef }: FlowProps) {
         type: 'hero',
         position: nodePositions.hero,
         style: { width: isLargeFlow ? 300 : 160, ...nodeStyle },
-        data: { color, zoom, shape, label: 'output', variant },
+        data: { color, zoom, shape, label: 'output' },
       },
       {
         id: 'color',
         type: 'colorpicker',
-        data: { color, onChange: setColor, label: 'shape color', variant },
+        data: { color, onChange: setColor, label: 'shape color' },
         style: { ...nodeStyle, width: 150 },
         position: nodePositions.color,
       },
@@ -180,7 +174,6 @@ function Flow({ variant, headlineRef }: FlowProps) {
           max: 40,
           onChange: setZoom,
           label: 'zoom level',
-          variant,
         },
         style: { ...nodeStyle, width: 150 },
         position: nodePositions.zoom,
@@ -193,7 +186,6 @@ function Flow({ variant, headlineRef }: FlowProps) {
           options: ['cube', 'pyramid'],
           onChange: setShape,
           label: 'shape type',
-          variant,
         },
         style: { ...nodeStyle, width: 150 },
         position: nodePositions.shape,
@@ -271,7 +263,7 @@ function Flow({ variant, headlineRef }: FlowProps) {
         proOptions={proOptions}
         className={cn(
           'bg-no-repeat bg-[65%_center] bg-[length:35%]',
-          bgClass[variant]
+          className
         )}
       >
         <Controls showInteractive={false} className="bg-white" />

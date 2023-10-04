@@ -1,6 +1,5 @@
-import { PricingTable } from 'xy-ui';
+import { BaseLayout, PricingTable } from 'xy-ui';
 import { SparklesIcon } from '@heroicons/react/24/outline';
-import BaseLayout from '@/layouts/base';
 import Hero from '@/page-sections/hero';
 import Subscribe from '@/page-sections/subscribe';
 

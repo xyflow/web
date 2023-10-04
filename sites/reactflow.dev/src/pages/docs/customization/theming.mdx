@@ -4,7 +4,7 @@ description: React Flow comes with a minimal default theme. It's common to overw
 ---
 
 import { Callout } from 'nextra/components';
-import CodeViewer from '@/components/code-viewer';
+import ExampleViewer from '@/components/example-viewer';
 
 # Theming
 
@@ -19,7 +19,7 @@ React Flow's default styles are enough to get going with the built-in nodes. The
 provide some sensible defaults for styles like padding, border radius, and animated
 edges. You can see what they look like below:
 
-<CodeViewer
+<ExampleViewer
   codePath="example-flows/DefaultStyle"
   showEditor={false}
   options={{ wrapContent: true }}
@@ -167,7 +167,7 @@ import 'reactflow/dist/base.css';
   might not work as expected!
 </Callout>
 
-<CodeViewer
+<ExampleViewer
   codePath="example-flows/BaseStyle"
   showEditor={false}
   options={{ editorHeight: 500, editorWidthPercentage: 45, wrapContent: true }}

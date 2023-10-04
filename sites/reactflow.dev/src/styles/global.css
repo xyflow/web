@@ -6,6 +6,7 @@
 
 @import './docsearch.css';
 
+/* add a "pro" label to the pro examples in the sidebar */
 .sidebar-title.pro:after {
   content: 'Pro';
   display: inline-block;
@@ -17,6 +18,7 @@
   padding: 2px 5px;
 }
 
+/* if there is no content in the toc, we don't want it to take up the space */
 nav.nextra-toc:empty {
   display: none;
 }
@@ -34,7 +36,7 @@ div.nextra-nav-container-blur {
   background: white;
 }
 
-.react-pro {
+.pro-button {
   transition: all 0.3s ease;
 }
 
@@ -44,11 +46,11 @@ div.nextra-nav-container-blur {
   initial-value: 258deg;
 }
 
-.react-pro {
+.pro-button {
   --gradientAngle: 258deg;
 }
 
-.react-pro:before {
+.pro-button:before {
   transition: --gradientAngle 0.3s ease;
   background: linear-gradient(
       var(--gradientAngle),
@@ -64,27 +66,7 @@ div.nextra-nav-container-blur {
     );
 }
 
-.react-pro:hover:before {
-  --gradientAngle: 45deg;
-}
-
-.svelte-pro:before {
-  transition: --gradientAngle 0.3s ease;
-  background: linear-gradient(
-      var(--gradientAngle),
-      rgba(255, 62, 0, 0.5) 36.34%,
-      rgba(255, 64, 4, 0.5) 50.92%,
-      rgba(255, 255, 255, 1) 63.72%
-    ),
-    linear-gradient(
-      var(--gradientAngle),
-      rgba(255, 62, 0, 0.5) 2.22%,
-      rgba(255, 125, 4, 0.5) 18.5%,
-      rgba(255, 255, 255, 1) 32.77%
-    );
-}
-
-.svelte-pro:hover:before {
+.pro-button:hover:before {
   --gradientAngle: 45deg;
 }
 
@@ -229,9 +211,8 @@ div.nextra-nav-container-blur {
 
 @layer base {
   :root {
-    --color-xyflow: 0 0% 0%;
-    --color-react: 333 100% 50%;
-    --color-svelte: 15 100% 50%;
+    --primary: 333 100% 50%;
+    --primary-foreground: 210 40% 98%;
 
     --background: 0 0% 100%;
     --foreground: 222.2 47.4% 11.2%;
@@ -247,9 +228,6 @@ div.nextra-nav-container-blur {
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
 
     --secondary: 0 100% 100%;
     --secondary-foreground: 222.2 47.4% 11.2%;

@@ -3,8 +3,14 @@ import Image from 'next/image';
 import { useSSG } from 'nextra/ssg';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 
-import { Button, Heading, Text } from 'xy-ui';
-import BaseLayout from '@/layouts/base';
+import {
+  BaseLayout,
+  Button,
+  Heading,
+  Text,
+  ContentGrid,
+  ContentGridItem,
+} from 'xy-ui';
 import HeroFlow from '@/page-sections/hero-flow';
 import Stats, { StatsDisplay } from '@/page-sections/stats';
 import Features from '@/page-sections/features';
@@ -12,7 +18,6 @@ import ImageSlider from '@/page-sections/image-slider';
 import Section from '@/page-sections/section';
 import GettingStarted from '@/page-sections/getting-started';
 import ClientLogos from '@/components/client-logos';
-import ContentGrid, { ContentGridItem } from '@/components/content-grid';
 import ProjectPreview from '@/components/project-preview';
 
 import FlowA from './flows/flow-a';
@@ -94,7 +99,6 @@ export default function ReactFlowHome() {
 
       <Section className="mt-6 lg:mt-10">
         <Stats
-          variant="react"
           stats={[
             { label: 'Github Stars', value: `${(stars / 1000).toFixed(1)}k` },
             {
@@ -116,7 +120,7 @@ export default function ReactFlowHome() {
       <GettingStarted />
 
       <Section>
-        <Features features={features} variant="react" />
+        <Features features={features} />
       </Section>
 
       <Section>
@@ -149,7 +153,6 @@ export default function ReactFlowHome() {
           ].map((s) => (
             <StatsDisplay
               key={`${s.label}-${s.value}`}
-              variant="react"
               className="mb-6 lg:ml-20"
               {...s}
             />

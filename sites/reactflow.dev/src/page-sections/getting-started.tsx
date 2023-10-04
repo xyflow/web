@@ -1,8 +1,7 @@
 import { type ReactNode } from 'react';
 import Link from 'next/link';
 
-import { Button, Heading, Text, Container, cn } from 'xy-ui';
-import useXYSite from '@/hooks/use-xy-site';
+import { Button, Text, Container, cn } from 'xy-ui';
 
 function AppWindow({ children }: { children: ReactNode }) {
   return (
@@ -18,33 +17,32 @@ function AppWindow({ children }: { children: ReactNode }) {
 }
 
 export default function GettingStarted() {
-  const { lib, site } = useXYSite();
-
   return (
     <Container variant="dark" className="mt-16 lg:mt-24">
       <div className="p-14">
         <Text
           size="lg"
-          className={cn('font-bold mb-2 text-center', `text-${site}`)}
+          className={cn('font-bold mb-2 text-center text-primary')}
         >
-          Getting Started with {lib}
+          Getting Started with React Flow
         </Text>
         <Text className="text-center max-w-lg mx-auto mb-6 lg:mb-8">
-          Make sure you’ve installed npm, npmn or yarn. Then you can install
+          Make sure you’ve installed npm, pnpm or yarn. Then you can install
           React Flow via:
         </Text>
 
         <AppWindow>
           <pre className="!pl-0">
             <code className="inline text-lg">
-              npm install <span className={`text-${site}`}>@xyflow/{site}</span>
+              npm install{' '}
+              <span className="text-primary">@xyflow/react-flow</span>
             </code>
           </pre>
         </AppWindow>
 
         <div className={cn('flex justify-center mt-10 ')}>
-          <Button variant="secondary" className={`text-${site}`} asChild>
-            <Link href={`/${site}-flow/docs`}>Get Started</Link>
+          <Button variant="secondary" className="text-primary" asChild>
+            <Link href="/docs">Get Started</Link>
           </Button>
         </div>
       </div>

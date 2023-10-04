@@ -1,9 +1,12 @@
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 
-import BaseLayout from '@/layouts/base';
+import {
+  BaseLayout,
+  ContentGrid,
+  ContentGridItem,
+  ProjectPreview,
+} from 'xy-ui';
 import Hero from '@/page-sections/hero';
-import ContentGrid, { ContentGridItem } from '@/components/content-grid';
-import ProjectPreview from '@/components/project-preview';
 
 import showcases from '../../public/data/showcases.json';
 

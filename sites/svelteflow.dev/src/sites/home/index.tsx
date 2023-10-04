@@ -1,8 +1,6 @@
 import Link from 'next/link';
 import { HeartIcon } from '@heroicons/react/24/outline';
-
-import { Button, Heading } from 'xy-ui';
-import BaseLayout from '@/layouts/base';
+import { BaseLayout, Button, Heading } from 'xy-ui';
 import HeroFlow from '@/page-sections/hero-flow';
 import Features from '@/page-sections/features';
 import Section from '@/page-sections/section';
