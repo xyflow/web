@@ -13,7 +13,7 @@ import {
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 import Link from 'next/link';
 
-import { Heading, ListWrapper, Text, type HeroIcon } from 'xy-ui';
+import { Heading, ListWrapper, Text, Button, type HeroIcon } from 'xy-ui';
 import BaseLayout from '@/layouts/base';
 import Hero from '@/page-sections/hero';
 import ContentGrid, { ContentGridItem } from '@/components/content-grid';
@@ -32,62 +32,62 @@ export default function CaseStudies() {
     <BaseLayout>
       <Hero
         title="Support Svelte Flow"
-        subtitle="Thanks for supporting Svelte Flow, there are lots of ways you can support the library, ecosystem, and community."
+        subtitle="Thanks for supporting Svelte Flow, there are lots of ways you can help the library, ecosystem, and community."
         kicker={<Kicker />}
         align="center"
       />
       <ContentGrid className="mt-20">
         <GridItem
           icon={CommandLineIcon}
-          title="Show us what you make"
-          link="https://discord.gg/RVmnytFmGW"
-
+          title="Show us what you made"
+          links={[
+            { linkName: 'Discord', route: '/' },
+            { linkName: 'Email us', route: '/' },
+          ]}
           text={
             <>
-              Drop it in into our Discord Server, tweet at us, or email us at
-              info@xyflow.com
-
-              ...LINK TO DISCORD 
+              We love works in progress and screenshots. Drop it in into our
+              Discord Server, tweet at us, drop us an email
             </>
-
           }
-          
         />
         <GridItem
           icon={UserGroupIcon}
           title="Join the Community"
+          links={[
+            { linkName: 'Github Discussions', route: '/' },
+            { linkName: 'Discord', route: '/' },
+          ]}
           text={
             <>
               Ask and answer questions in our Discord Server or jump in on
-              Github discussions.  ...LINK TO MASTODON, BLUESKY 
-
-              ...Try using something called LinkRouter that's in the updated xy-ui footer in staging.
-
-              ... and/or refer to the showcase component
+              Github discussions.
             </>
           }
         />
         <GridItem
           icon={CheckCircleIcon}
           title="Squash Bugs"
-          link="/"
+          links={[{ linkName: 'Github Issues', route: '/' }]}
           text={
             <>
               We can’t catch them all. Check existing issues and discussions
               first, then create a new issue to tell us what’s up.
-              
-
             </>
           }
         />
         <GridItem
           icon={CurrencyDollarIcon}
           title="Financial Support"
+          links={[
+            { linkName: 'Github Sponsors', route: '/' },
+            { linkName: 'Open Collective', route: '/' },
+          ]}
           text={
             <>
               If you are an organization who wants to make sure Svelte Flow
-              continues to be maintained, you can sponsor us on Github or OpenCollective, or reach out to us at info@xyflow.com
-              ...GITHUB SPONSORS, OPENCOLLECTIVE
+              continues to be maintained, you can sponsor us on Github or
+              OpenCollective, or reach out to us at info@xyflow.com
             </>
           }
         />
@@ -117,16 +117,6 @@ export default function CaseStudies() {
         />
         <ListItem
           icon={ChatBubbleOvalLeftEllipsisIcon}
-          label="Sponsor us on Open Collective"
-          link="/svelte-flow"
-        />
-        <ListItem
-          icon={ChatBubbleOvalLeftEllipsisIcon}
-          label="Sponsor us on Github"
-          link="/svelte-flow"
-        />
-        <ListItem
-          icon={ChatBubbleOvalLeftEllipsisIcon}
           label="Create Tutorials for Svelte Flow"
         />
       </ListWrapper>
@@ -138,12 +128,16 @@ function GridItem({
   title,
   text,
   icon: Icon,
-  link,
+  route,
+  linkName,
+  links,
 }: {
   title: ReactNode;
   text: ReactNode;
   icon: HeroIcon;
-  link?: string;
+  route?: string;
+  linkName?: string;
+  links?: Array<{ route: string; linkName: string }>;
 }) {
   return (
     <ContentGridItem>
@@ -151,8 +145,22 @@ function GridItem({
       <Heading size="sm" className="mt-2 mb-4" as="p">
         {title}
       </Heading>
-      <Text variant="light">{text}</Text>
-      <Text>{link}</Text>
+      <Text variant="light" className="text-md">
+        {text}
+      </Text>
+      <div className="flex items-center space-x-4 mt-8">
+        {links &&
+          links.map((link) => {
+            return (
+              <Button asChild variant="link" className="text-svelte text-md">
+                <Link href={link.route}>
+                  {link.linkName}{' '}
+                  <ArrowRightCircleIcon className="ml-1 w-4 h-4" />
+                </Link>
+              </Button>
+            );
+          })}
+      </div>
     </ContentGridItem>
   );
 }
