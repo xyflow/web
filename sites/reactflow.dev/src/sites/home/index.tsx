@@ -3,7 +3,14 @@ import Image from 'next/image';
 import { useSSG } from 'nextra/ssg';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 
-import { BaseLayout, Button, Heading, Text } from 'xy-ui';
+import {
+  BaseLayout,
+  Button,
+  Heading,
+  Text,
+  ContentGrid,
+  ContentGridItem,
+} from 'xy-ui';
 import HeroFlow from '@/page-sections/hero-flow';
 import Stats, { StatsDisplay } from '@/page-sections/stats';
 import Features from '@/page-sections/features';
@@ -11,6 +18,7 @@ import ImageSlider from '@/page-sections/image-slider';
 import Section from '@/page-sections/section';
 import GettingStarted from '@/page-sections/getting-started';
 import ClientLogos from '@/components/client-logos';
+import ProjectPreview from '@/components/project-preview';
 
 import FlowA from './flows/flow-a';
 import FlowB from './flows/flow-b';
@@ -150,6 +158,31 @@ export default function ReactFlowHome() {
             />
           ))}
         </div>
+      </Section>
+
+      <Section className=" lg:mt-48 lg:-mb-24">
+        <Heading
+          size="md"
+          className="text-center font-bold mt-32 mb-12 max-w-lg mx-auto "
+        >
+          Get started with your first React Flow project
+        </Heading>
+        <ContentGrid className="grid-cols-1 lg:grid-cols-2">
+          <ContentGridItem route="/docs">
+            <ProjectPreview
+              image="/img/getting-started-thumb.png"
+              title="Getting Started Guide"
+              description="Build an interactive flow and learn the foundations of React Flow in a few minutes"
+            />
+          </ContentGridItem>
+          <ContentGridItem route="https://xyflow.com/blog/react-flow-and-the-web-audio-api">
+            <ProjectPreview
+              image="/img/blog/webaudio/web-audio-blog-thumb.png"
+              title="Build a browser synth"
+              description="Learn React Flow and the Web Audio API while creating an interactive sound-making machine"
+            />
+          </ContentGridItem>
+        </ContentGrid>
       </Section>
     </BaseLayout>
   );

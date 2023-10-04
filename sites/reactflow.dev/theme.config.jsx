@@ -1,11 +1,11 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useConfig } from 'nextra-theme-docs';
-
-import aboutImage from './public/img/about.jpg';
 import { Footer, Button, Text, Logo } from 'xy-ui';
 import Search from '@/components/search';
 import SidebarTitle from '@/components/sidebar-title';
+
+import aboutImage from './public/img/about.jpg';
 
 const baseUrl =
   process.env.NODE_ENV === 'production'

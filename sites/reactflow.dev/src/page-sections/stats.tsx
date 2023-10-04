@@ -19,7 +19,7 @@ export function StatsDisplay({
       <Heading className={cn('font-bold whitespace-nowrap text-primary')}>
         {value}
       </Heading>
-      <Text className="whitespace-nowrap" size="lg">
+      <Text className="whitespace-nowrap mt-2" size="lg">
         {label}
       </Text>
     </div>

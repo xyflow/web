@@ -87,6 +87,26 @@ export const viewportProps: PropsTableProps = {
   deeplinkPrefix: 'viewport',
   props: [
     {
+      name: 'defaultViewport?',
+      type: 'Viewport',
+      default: '{ x: 0, y: 0, zoom: 1 }',
+      description: `Sets the initial position and zoom of the viewport. If a
+      default viewport is provided but fitView is enabled, the default viewport
+      will be ignored.`,
+    },
+    {
+      name: 'viewport?',
+      type: 'Viewport',
+      default: '{ x: 0, y: 0, zoom: 1 }',
+      description: `When you pass a viewport prop, it's controlled and you also need to pass onViewportChange to handle internal changes.`,
+    },
+    {
+      name: 'OnViewportChange?',
+      type: 'OnViewportChange',
+      default: '-',
+      description: `Used when working with a controlled viewport for updating the user viewport state.`,
+    },
+    {
       name: 'fitView?',
       type: 'boolean',
       default: 'false',
@@ -102,14 +122,6 @@ export const viewportProps: PropsTableProps = {
     },
     { name: 'minZoom?', type: 'number', default: '0.5' },
     { name: 'maxZoom?', type: 'number', default: '2' },
-    {
-      name: 'defaultViewport?',
-      type: 'Viewport',
-      default: '{ x: 0, y: 0, zoom: 1 }',
-      description: `Sets the initial position and zoom of the viewport. If a
-      default viewport is provided but fitView is enabled, the default viewport
-      will be ignored.`,
-    },
     {
       name: 'snapToGrid?',
       type: 'boolean',

@@ -2,47 +2,49 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Text } from '../../ui/text';
 
-const docs = [
-  { title: 'React Flow API', route: '/react-flow/api' },
-  { title: 'Svelte Flow API', route: '/svelte-flow/api' },
-];
-
 const libraries = [
   { title: 'React Flow', route: '/react-flow' },
   { title: 'Svelte Flow', route: '/svelte-flow' },
+  { title: 'Project Showcase', route: '/' },
+  { title: 'Case Studies', route: '/' },
 ];
 
-const company = [
-  { title: 'About', route: '/about' },
-  { title: 'Blog', route: '/blog' },
+const xyflow = [
+  { title: 'About', route: '/' },
+  { title: 'Contact', route: '/' },
+  { title: 'Open Source', route: '/' },
+];
+
+const legal = [
   { title: 'Terms of Use', route: '/terms-of-use' },
   { title: 'Ethical Standards', route: '/ethical-standards' },
-  { title: 'Privacy', route: '/privacy' },
+  { title: 'Privacy Policy', route: '/privacy' },
   { title: 'Imprint', route: '/imprint' },
 ];
 
 const social = [
-  { title: 'Open Source', route: '/open-source' },
-  { title: 'Showcase', route: '/showcase' },
-  { title: 'Case Studies', route: '/case-studies' },
+  { title: 'Discord', route: 'https://discord.gg/RVmnytFmGW' },
+  { title: 'Github', route: 'https://github.com/xyflow' },
+  { title: 'Mastodon', route: 'https://fosstodon.org/@reactflowdev' },
+  { title: 'Bluesky', route: 'https://bsky.app/profile/xyflow.com' },
 ];
 
 const categories = [
-  {
-    title: 'Docs',
-    items: docs,
-  },
   {
     title: 'Libraries',
     items: libraries,
   },
   {
-    title: 'Company',
-    items: company,
+    title: 'Community',
+    items: social,
   },
   {
-    title: 'Social',
-    items: social,
+    title: 'xyflow',
+    items: xyflow,
+  },
+  {
+    title: 'Legal',
+    items: legal,
   },
 ];
 
