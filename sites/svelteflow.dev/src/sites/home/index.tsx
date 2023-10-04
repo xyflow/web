@@ -49,10 +49,10 @@ export default function SvelteFlowHome() {
         <Stats
           variant="svelte"
           stats={[
-            { label: 'Version', value: '9.9.9' },
+            { label: 'Latest Release', value: 'May 23' },
             {
               label: 'Weekly Installs',
-              value: -1,
+              value: 5,
             },
             { label: 'License', value: 'MIT' },
           ]}
@@ -71,6 +71,7 @@ export default function SvelteFlowHome() {
       <Section>
         <Features features={features} variant="svelte" />
       </Section>
+
       <Section className="mx-auto lg:max-w-[800px] lg:mb-8">
         <Heading size="md" as="h3" className="text-center mb-12 mt-32">
           Get started with Svelte Flow and join the community of people building
