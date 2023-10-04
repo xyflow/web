@@ -1,10 +1,9 @@
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useConfig } from 'nextra-theme-docs';
 
 import aboutImage from './public/img/about.jpg';
-import { Footer } from 'xy-ui';
-import Logo from '@/components/navbar-logo';
-import Navbar, { NavBarAdditional } from '@/components/navbar';
+import { Footer, Button, Text, Logo } from 'xy-ui';
 import Search from '@/components/search';
 import SidebarTitle from '@/components/sidebar-title';
 import useXYSite from '@/hooks/use-xy-site';
@@ -43,7 +42,12 @@ function getOGMetaTags({ isArticle, url, frontMatter }) {
 }
 
 export default {
-  logo: Logo,
+  logo: () => (
+    <Link href="/" className="flex space-x-2 items-center">
+      <Logo className="h-9 w-9" animated />
+      <Text className="font-black text-xl">React Flow</Text>
+    </Link>
+  ),
   logoLink: false,
   docsRepositoryBase: 'https://github.com/xyflow/web/tree/main/sites/docs',
   // this is necessary to hide the github icon
@@ -53,12 +57,15 @@ export default {
     forcedTheme: 'light',
     defaultTheme: 'light',
   },
-  // navbar: {
-  //   component: Navbar,
-  //   extraContent: NavBarAdditional,
-  // },
   sidebar: {
     titleComponent: SidebarTitle,
+  },
+  navbar: {
+    extraContent: () => (
+      <Button asChild>
+        <Link href="/pro">Pro</Link>
+      </Button>
+    ),
   },
   footer: {
     component: () => {
@@ -70,9 +77,9 @@ export default {
       return <Footer imageSrc={imageSrc} />;
     },
   },
-  // search: {
-  //   component: Search,
-  // },
+  search: {
+    component: Search,
+  },
   feedback: {
     useLink: () => '/contact',
   },
