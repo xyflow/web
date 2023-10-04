@@ -19,7 +19,7 @@ function getProExamplesUnderRoute(route) {
 }
 
 function getProExamples() {
-  const exampleFolders = getPagesUnderRoute('/react-flow/examples').filter(
+  const exampleFolders = getPagesUnderRoute('/examples').filter(
     (page) => page.kind === 'Folder'
   );
 
@@ -42,10 +42,8 @@ export default function ProExamples() {
         align="center"
         action={
           <div className="flex gap-2 justify-center">
-            <Button size="lg" variant="react">
-              Get Started
-            </Button>
-            <Button asChild size="lg" variant="react-pro">
+            <Button size="lg">Get Started</Button>
+            <Button asChild size="lg" variant="pro">
               <Link href="/react-flow/pro/pricing">Pricing</Link>
             </Button>
           </div>

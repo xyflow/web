@@ -49,7 +49,7 @@ export default function HeroFlow() {
       <Flow
         initialColor="#ff0072"
         headlineRef={headlineRef}
-        className="bg-reactflow-gradient"
+        className="bg-gradient"
       />
     </LayoutBreakout>
   );

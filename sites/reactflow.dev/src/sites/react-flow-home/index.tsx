@@ -112,7 +112,7 @@ export default function ReactFlowHome() {
       <GettingStarted />
 
       <Section>
-        <Features features={features} variant="react" />
+        <Features features={features} />
       </Section>
 
       <Section>

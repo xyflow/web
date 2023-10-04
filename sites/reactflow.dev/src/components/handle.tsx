@@ -5,7 +5,6 @@ import { cn } from 'xy-ui';
 
 export default function Handle({
   id,
-  variant = 'react',
   className,
   handleClassName,
   svgClassName,
@@ -18,7 +17,6 @@ export default function Handle({
   to,
 }: {
   id: string;
-  variant?: 'react' | 'svelte' | 'xyflow';
   className?: string;
   handleClassName?: string;
   svgClassName?: string;
@@ -49,10 +47,7 @@ export default function Handle({
         data-position={position}
         data-to={to}
         className={cn(
-          'absolute rounded-full border-2 border-solid bg-white z-20',
-          variant === 'react' && 'border-react',
-          variant === 'svelte' && 'border-svelte',
-          variant === 'xyflow' && 'border-[#D74EF3]',
+          'absolute rounded-full border-2 border-solid bg-white z-20 border-primary',
           handleWidthClass,
           handleHeightClass,
           handleClassName
@@ -61,13 +56,7 @@ export default function Handle({
       {type === 'source' && (
         <svg className="absolute pointer-events-none overflow-visible">
           <path
-            className={cn(
-              'fill-none stroke-2',
-              variant === 'react' && 'stroke-react',
-              variant === 'svelte' && 'stroke-svelte',
-              variant === 'xyflow' && 'stroke-[#D74EF3]',
-              svgClassName
-            )}
+            className={cn('fill-none stroke-2 stroke-primary', svgClassName)}
             style={{ strokeDasharray: dashed ? '4 2' : 'none' }}
           />
         </svg>

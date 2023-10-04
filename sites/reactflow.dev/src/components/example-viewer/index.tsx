@@ -51,7 +51,7 @@ export default function ExampleViewer({
     <CodeViewer
       files={files}
       activeFile={activeFile}
-      framework={'react'}
+      framework="react"
       isTypescript={isTypescript}
       dependencies={dependenciesWithDefault}
       {...rest}

@@ -6,7 +6,6 @@ import aboutImage from './public/img/about.jpg';
 import { Footer, Button, Text, Logo } from 'xy-ui';
 import Search from '@/components/search';
 import SidebarTitle from '@/components/sidebar-title';
-import useXYSite from '@/hooks/use-xy-site';
 
 const baseUrl =
   process.env.NODE_ENV === 'production'
@@ -87,17 +86,15 @@ export default {
   primarySaturation: 100,
   useNextSeoProps() {
     const router = useRouter();
-    const { lib, site } = useXYSite();
     const { frontMatter } = useConfig();
-    const appendix = lib ? lib : 'xyflow';
     const url = `${baseUrl}/${router.asPath}`;
     const isArticle = router.pathname.includes('/blog/');
 
     return {
       defaultTitle:
         'xyflow - Libraries for React and Svelte for rendering workflows, diagrams and node-based UIs.',
-      titleTemplate: `%s – ${appendix}`,
-      title: frontMatter.title || lib,
+      titleTemplate: '%s – React Flow',
+      title: frontMatter.title || 'React Flow',
       description:
         frontMatter.description ||
         'xyflow - Libraries for React and Svelte for rendering workflows, diagrams and node-based UIs.',
@@ -112,7 +109,7 @@ export default {
       additionalMetaTags: [
         {
           name: 'docsearch:site',
-          content: site,
+          content: 'react',
         },
       ],
 
