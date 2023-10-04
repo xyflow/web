@@ -40,12 +40,18 @@ export default function CaseStudies() {
         <GridItem
           icon={CommandLineIcon}
           title="Show us what you make"
+          link="https://discord.gg/RVmnytFmGW"
+
           text={
             <>
               Drop it in into our Discord Server, tweet at us, or email us at
               info@xyflow.com
+
+              ...LINK TO DISCORD 
             </>
+
           }
+          
         />
         <GridItem
           icon={UserGroupIcon}
@@ -53,17 +59,24 @@ export default function CaseStudies() {
           text={
             <>
               Ask and answer questions in our Discord Server or jump in on
-              Github discussions.
+              Github discussions.  ...LINK TO MASTODON, BLUESKY 
+
+              ...Try using something called LinkRouter that's in the updated xy-ui footer in staging.
+
+              ... and/or refer to the showcase component
             </>
           }
         />
         <GridItem
           icon={CheckCircleIcon}
           title="Squash Bugs"
+          link="/"
           text={
             <>
               We can’t catch them all. Check existing issues and discussions
               first, then create a new issue to tell us what’s up.
+              
+
             </>
           }
         />
@@ -73,7 +86,8 @@ export default function CaseStudies() {
           text={
             <>
               If you are an organization who wants to make sure Svelte Flow
-              continues to be maintained, reach out to us at info@xyflow.com
+              continues to be maintained, you can sponsor us on Github or OpenCollective, or reach out to us at info@xyflow.com
+              ...GITHUB SPONSORS, OPENCOLLECTIVE
             </>
           }
         />
@@ -124,10 +138,12 @@ function GridItem({
   title,
   text,
   icon: Icon,
+  link,
 }: {
   title: ReactNode;
   text: ReactNode;
   icon: HeroIcon;
+  link?: string;
 }) {
   return (
     <ContentGridItem>
@@ -136,6 +152,7 @@ function GridItem({
         {title}
       </Heading>
       <Text variant="light">{text}</Text>
+      <Text>{link}</Text>
     </ContentGridItem>
   );
 }
