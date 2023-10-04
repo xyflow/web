@@ -134,8 +134,6 @@ function GridItem({
   title: ReactNode;
   text: ReactNode;
   icon: HeroIcon;
-  route?: string;
-  linkName?: string;
   links?: Array<{ route: string; linkName: string }>;
 }) {
   return (
@@ -147,6 +145,7 @@ function GridItem({
       <Text variant="light" className="text-md">
         {text}
       </Text>
+
       <div className="flex items-center space-x-4 mt-8">
         {links &&
           links.map((link) => {
