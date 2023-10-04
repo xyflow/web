@@ -1,4 +1,4 @@
-import { Position, type Node, type Edge } from '@xyflow/svelte';
+import type { Node, Edge } from '@xyflow/svelte';
 
 export const initialNodes: Node[] = [
   {
@@ -27,4 +27,11 @@ export const initialNodes: Node[] = [
   }
 ];
 
-export const initialEdges: Edge[] = [];
+export const initialEdges: Edge[] = [
+  {
+    id: '1',
+    source: '1',
+    target: '2',
+    type: 'floating'
+  }
+];
