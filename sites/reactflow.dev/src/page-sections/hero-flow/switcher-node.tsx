@@ -6,13 +6,7 @@ import Handle from './handle';
 import Wrapper from './node-wrapper';
 
 export default function SwitcherNode({ data }) {
-  const {
-    label = '',
-    options = [],
-    onChange = () => {},
-    value,
-    variant,
-  } = data;
+  const { label = '', options = [], onChange = () => {}, value } = data;
 
   return (
     <Wrapper label={label}>
@@ -23,7 +17,7 @@ export default function SwitcherNode({ data }) {
             <RadioGroupItem
               value={option}
               id={option}
-              className={cn(`text-${variant} border-${variant}`)}
+              className={cn(`text-primary border-primary`)}
             />
             <Label
               htmlFor={option}

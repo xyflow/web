@@ -83,6 +83,8 @@ export default {
   feedback: {
     useLink: () => '/contact',
   },
+  primaryHue: 330,
+  primarySaturation: 100,
   useNextSeoProps() {
     const router = useRouter();
     const { lib, site } = useXYSite();

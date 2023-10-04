@@ -8,9 +8,7 @@ const textVariants = cva('', {
     variant: {
       default: '',
       light: 'text-light',
-      react: 'text-react',
-      svelte: 'text-svelte',
-      xyflow: 'text-xyflow',
+      primary: 'text-primary',
     },
     size: {
       default: 'text-base leading-relaxed',

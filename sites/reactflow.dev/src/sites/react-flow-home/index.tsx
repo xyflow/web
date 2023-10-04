@@ -91,7 +91,6 @@ export default function ReactFlowHome() {
 
       <Section className="mt-6 lg:mt-10">
         <Stats
-          variant="react"
           stats={[
             { label: 'Github Stars', value: `${(stars / 1000).toFixed(1)}k` },
             {
@@ -146,7 +145,6 @@ export default function ReactFlowHome() {
           ].map((s) => (
             <StatsDisplay
               key={`${s.label}-${s.value}`}
-              variant="react"
               className="mb-6 lg:ml-20"
               {...s}
             />

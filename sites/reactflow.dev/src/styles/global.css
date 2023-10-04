@@ -6,6 +6,7 @@
 
 @import './docsearch.css';
 
+/* add a "pro" label to the pro examples in the sidebar */
 .sidebar-title.pro:after {
   content: 'Pro';
   display: inline-block;
@@ -17,6 +18,7 @@
   padding: 2px 5px;
 }
 
+/* if there is no content in the toc, we don't want it to take up the space */
 nav.nextra-toc:empty {
   display: none;
 }
@@ -34,7 +36,7 @@ div.nextra-nav-container-blur {
   background: white;
 }
 
-.react-pro {
+.pro-button {
   transition: all 0.3s ease;
 }
 
@@ -44,11 +46,11 @@ div.nextra-nav-container-blur {
   initial-value: 258deg;
 }
 
-.react-pro {
+.pro-button {
   --gradientAngle: 258deg;
 }
 
-.react-pro:before {
+.pro-button:before {
   transition: --gradientAngle 0.3s ease;
   background: linear-gradient(
       var(--gradientAngle),
@@ -64,27 +66,7 @@ div.nextra-nav-container-blur {
     );
 }
 
-.react-pro:hover:before {
-  --gradientAngle: 45deg;
-}
-
-.svelte-pro:before {
-  transition: --gradientAngle 0.3s ease;
-  background: linear-gradient(
-      var(--gradientAngle),
-      rgba(255, 62, 0, 0.5) 36.34%,
-      rgba(255, 64, 4, 0.5) 50.92%,
-      rgba(255, 255, 255, 1) 63.72%
-    ),
-    linear-gradient(
-      var(--gradientAngle),
-      rgba(255, 62, 0, 0.5) 2.22%,
-      rgba(255, 125, 4, 0.5) 18.5%,
-      rgba(255, 255, 255, 1) 32.77%
-    );
-}
-
-.svelte-pro:hover:before {
+.pro-button:hover:before {
   --gradientAngle: 45deg;
 }
 

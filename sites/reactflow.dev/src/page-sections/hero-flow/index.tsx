@@ -1,34 +1,9 @@
 import { CSSProperties, ReactNode, useRef } from 'react';
-import { SparklesIcon, HeartIcon, BoltIcon } from '@heroicons/react/24/outline';
+import { SparklesIcon, BoltIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 
 import { Button, Heading, Text } from 'xy-ui';
-import useXYSite from '@/hooks/use-xy-site';
 import Flow from './flow';
-import { Framework } from '@/types';
-import { PRO_PLATFORM_OR_REACT_PRO_URL } from '@/constants';
-
-const subtitle = {
-  react:
-    'A customizable React component for building node-based editors and interactive diagrams',
-  svelte:
-    'A customizable Svelte component for building node-based editors and interactive diagrams',
-};
-
-const proButtonHref = {
-  react: PRO_PLATFORM_OR_REACT_PRO_URL,
-  svelte: '/svelte-flow/support-us',
-};
-
-const proButtonIcon = {
-  react: SparklesIcon,
-  svelte: HeartIcon,
-};
-
-const proButtonLabel = {
-  react: 'React Flow Pro',
-  svelte: 'Support Us',
-};
 
 const headlineStyle: CSSProperties = {
   pointerEvents: 'all',
@@ -36,10 +11,6 @@ const headlineStyle: CSSProperties = {
 
 export default function HeroFlow() {
   const headlineRef = useRef<HTMLDivElement>(null);
-  const site = 'react';
-  const lib = 'React Flow';
-  // const { site, lib } = useXYSite();
-  const ProIcon = proButtonIcon[site];
 
   return (
     <LayoutBreakout>
@@ -50,11 +21,13 @@ export default function HeroFlow() {
           className="max-w-md relative bg-white/10 backdrop-blur-[2px] p-[max(env(safe-area-inset-left),1.5rem)]"
         >
           <Heading size="md" className="mb-4 font-black">
-            Wire Your Ideas with <span className={`text-${site}`}>{lib}</span>
+            Wire Your Ideas with{' '}
+            <span className="text-primary">React Flow</span>
           </Heading>
 
           <Text size="lg" className="mb-4 lg:mb-6">
-            {subtitle[site]}
+            A customizable React component for building node-based editors and
+            interactive diagrams
           </Text>
 
           <div className="flex">
@@ -64,16 +37,20 @@ export default function HeroFlow() {
                 Quickstart
               </Link>
             </Button>
-            <Button variant="react-pro" asChild>
+            <Button variant="pro" asChild>
               <Link href="/pro">
-                <ProIcon className="w-5 h-5 mr-1" /> {proButtonLabel[site]}
+                <SparklesIcon className="w-5 h-5 mr-1" /> React Flow Pro
               </Link>
             </Button>
           </div>
         </div>
       </div>
 
-      <Flow variant={site as Framework} headlineRef={headlineRef} />
+      <Flow
+        initialColor="#ff0072"
+        headlineRef={headlineRef}
+        className="bg-reactflow-gradient"
+      />
     </LayoutBreakout>
   );
 }

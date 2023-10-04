@@ -61,7 +61,7 @@ export default function App({ Component, pageProps }) {
       className={className}
       style={
         {
-          '--nextra-primary-hue': hueValuesBySite[site],
+          // '--nextra-primary-hue': hueValuesBySite[site],
           '--docsearch-primary-color': `hsl(var(--color-${site}))`,
           '--docsearch-highlight-color': `hsl(var(--color-${site}))`,
           '--docsearch-searchbox-shadow': `inset 0 0 0 2px hsl(var(--color-${site}))`,
