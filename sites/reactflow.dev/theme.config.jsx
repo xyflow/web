@@ -4,7 +4,7 @@ import { useConfig } from 'nextra-theme-docs';
 import Logo from '@/components/navbar-logo';
 import Navbar, { NavBarAdditional } from '@/components/navbar';
 import SidebarTitle from '@/components/sidebar-title';
-import Footer from '@/components/footer';
+import { Footer } from 'xy-ui';
 import Search from '@/components/search';
 import useXYSite from '@/hooks/use-xy-site';
 
