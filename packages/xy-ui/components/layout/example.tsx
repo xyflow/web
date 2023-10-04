@@ -1,3 +1,5 @@
+'use client';
+
 import { type ReactNode } from 'react';
 import { useConfig } from 'nextra-theme-docs';
 import { Heading } from '../../';
