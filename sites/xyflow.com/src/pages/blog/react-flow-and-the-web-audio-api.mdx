@@ -9,10 +9,11 @@ image: img/blog/webaudio/web-audio-blog-thumb.png
 
 import { Callout, Tab, Tabs } from 'nextra/components';
 import { BlogPostLayout, Embed, Image, Emoji } from 'xy-ui';
+import { usePostMetadata } from '@/hooks/use-post-metadata';
 
 import { BlogExampleViewer } from '@/components/example-viewer';
 
-<BlogPostLayout>
+<BlogPostLayout usePostMetadata={usePostMetadata}>
 Today we'll be looking at how to create an interactive audio playground using React
 Flow and the Web Audio API. We'll start from scratch, first learning about the Web
 Audio API before looking at how to handle many common scenarios in React Flow:

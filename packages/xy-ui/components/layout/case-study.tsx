@@ -2,7 +2,6 @@ import { ChevronRightIcon } from '@heroicons/react/20/solid';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 import { type MdxFile } from 'nextra';
 import { type ReactNode } from 'react';
-import { useConfig } from 'nextra-theme-docs';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -15,20 +14,36 @@ import {
   ContentGrid,
   ContentGridItem,
   ProjectPreview,
+  Author,
 } from '../../';
 
+export type CaseStudyFrontmatter = {
+  title: string;
+  description: string;
+  authors: Author[];
+  client: string;
+  clientLogo: string;
+  interviewee: string;
+  intervieweeImage: string;
+  image: string;
+  image_width: number;
+  image_height: number;
+};
+
 export type CaseStudyLayoutProps = {
-  prev: MdxFile;
-  next: MdxFile;
+  useCaseStudyMetadata: () => {
+    frontMatter: CaseStudyFrontmatter;
+    prev?: MdxFile;
+    next?: MdxFile;
+  };
   children: ReactNode;
 };
 
 export function CaseStudyLayout({
-  prev,
-  next,
+  useCaseStudyMetadata,
   children,
 }: CaseStudyLayoutProps) {
-  const { frontMatter } = useConfig();
+  const { frontMatter, prev, next } = useCaseStudyMetadata();
 
   return (
     <>
@@ -79,34 +94,34 @@ export function CaseStudyLayout({
 }
 
 type CaseStudyPreviewsProps = {
-  prev: MdxFile;
-  next: MdxFile;
+  prev?: MdxFile;
+  next?: MdxFile;
 };
 
 function CaseStudyPreviews({ prev, next }: CaseStudyPreviewsProps) {
   return (
     <ContentGrid className="mt-20">
-      {prev && (
-        <ContentGridItem route={prev.route}>
+      <ContentGridItem route={prev?.route}>
+        {prev && (
           <ProjectPreview
             image={prev.frontMatter?.image}
             kicker={prev.frontMatter?.client}
             title={prev.frontMatter?.title}
             description={prev.frontMatter?.description}
           />
-        </ContentGridItem>
-      )}
+        )}
+      </ContentGridItem>
 
-      {next && (
-        <ContentGridItem route={next.route}>
+      <ContentGridItem route={next?.route}>
+        {next && (
           <ProjectPreview
             image={next.frontMatter?.image}
             kicker={next.frontMatter?.client}
             title={next.frontMatter?.title}
             description={next.frontMatter?.description}
           />
-        </ContentGridItem>
-      )}
+        )}
+      </ContentGridItem>
     </ContentGrid>
   );
 }

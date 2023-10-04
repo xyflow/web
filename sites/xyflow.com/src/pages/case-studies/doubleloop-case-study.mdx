@@ -11,8 +11,9 @@ image_height: 495
 
 import { CaseStudyLayout } from 'xy-ui';
 import QandA from '@/components/case-study-qa';
+import { useCaseStudyMetadata } from '@/hooks/use-case-study-metadata';
 
-<CaseStudyLayout>
+<CaseStudyLayout useCaseStudyMetadata={useCaseStudyMetadata}>
 
 <QandA
   className="mt-16"

@@ -9,8 +9,9 @@ image: /img/blog/mindmap/mindmap.png
 
 import { BlogExampleViewer } from '@/components/example-viewer';
 import { BlogPostLayout, Emoji } from 'xy-ui';
+import { usePostMetadata } from '@/hooks/use-post-metadata';
 
-<BlogPostLayout>
+<BlogPostLayout usePostMetadata={usePostMetadata}>
 In this tutorial, you will learn to create a simple mind map tool with React Flow that can be used for brainstorming, organizing an idea, or mapping your thoughts in a visual way. To build this app, we'll be using state management, custom nodes and edges, and more.
 
 ## <Emoji content="🎬" /> It's Demo Time!

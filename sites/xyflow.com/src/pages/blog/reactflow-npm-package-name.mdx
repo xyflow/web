@@ -8,8 +8,9 @@ image: /img/blog/v10-header.png
 ---
 
 import { BlogPostLayout, Image, Emoji } from 'xy-ui';
+import { usePostMetadata } from '@/hooks/use-post-metadata';
 
-<BlogPostLayout>
+<BlogPostLayout usePostMetadata={usePostMetadata}>
 In 2019 we started building [a library for building node based UIs](https://github.com/wbkd/react-flow), and decided to call it “React Flow.” It’s a nice name, so of course “reactflow” and “react-flow” were already taken. The best option we had for us was “react-flow-renderer,” so we took what we could get.
 
 Three years and many Github stars later, we wanted a sleeker name. Both “reactflow” and “react-flow” hadn’t been used or changed for over 6 years, so I found the email address associated with “reactflow” using `npm view reactflow _npmUser`, sent a nice email asking if we could use it, and crossed fingers.

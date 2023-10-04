@@ -8,8 +8,9 @@ image: /img/blog/v10-header.png
 ---
 
 import { BlogPostLayout, Emoji, Embed, Image } from 'xy-ui';
+import { usePostMetadata } from '@/hooks/use-post-metadata';
 
-<BlogPostLayout>
+<BlogPostLayout usePostMetadata={usePostMetadata}>
 Howdy! Here’s a dispatch straight from our desks about what’s happened in the last couple of months at React Flow: updates, news, and a peek behind-the-scenes. Here we go.
 
 ## Launching v11 and post-release housekeeping

@@ -1,6 +1,6 @@
 import { type MdxFile } from 'nextra';
 import { type ReactNode } from 'react';
-import { useConfig } from 'nextra-theme-docs';
+import { type Author } from '../../';
 
 import {
   AuthorList,
@@ -11,14 +11,30 @@ import {
   BlogPostPreview,
 } from '../../';
 
+export type BlogPostFrontmatter = {
+  title: string;
+  intro: string;
+  date: string;
+  authors: Author[];
+};
+
 export type BlogPostLayoutProps = {
-  prev: MdxFile;
-  next: MdxFile;
+  usePostMetadata: () => {
+    frontMatter: BlogPostFrontmatter;
+    prev?: MdxFile;
+    next?: MdxFile;
+  };
   children: ReactNode;
 };
 
-export function BlogPostLayout({ prev, next, children }: BlogPostLayoutProps) {
-  const { frontMatter } = useConfig();
+/**
+ *
+ */
+export function BlogPostLayout({
+  usePostMetadata,
+  children,
+}: BlogPostLayoutProps) {
+  const { frontMatter, prev, next } = usePostMetadata();
 
   return (
     <div className="max-w-screen-md mx-auto">
@@ -39,35 +55,35 @@ export function BlogPostLayout({ prev, next, children }: BlogPostLayoutProps) {
 }
 
 type BlogPostPreviewsProps = {
-  prev: MdxFile;
-  next: MdxFile;
+  prev?: MdxFile;
+  next?: MdxFile;
 };
 
 function BlogPostPreviews({ prev, next }: BlogPostPreviewsProps) {
   return (
     <div className="mt-20 relative right-1/2 left-1/2 ml-[-50vw] mr-[-50vw] w-[100vw]">
       <ContentGrid className="max-w-[90rem] mx-auto">
-        {prev && (
-          <ContentGridItem route={prev.route}>
+        <ContentGridItem route={prev?.route}>
+          {prev && (
             <BlogPostPreview
               title={prev.frontMatter?.title}
               intro={prev.frontMatter?.intro}
               date={prev.frontMatter?.date}
               authors={prev.frontMatter?.authors}
             />
-          </ContentGridItem>
-        )}
+          )}
+        </ContentGridItem>
 
-        {next && (
-          <ContentGridItem route={next.route}>
+        <ContentGridItem route={next?.route}>
+          {next && (
             <BlogPostPreview
               title={next.frontMatter?.title}
               intro={next.frontMatter?.intro}
               date={next.frontMatter?.date}
               authors={next.frontMatter?.authors}
             />
-          </ContentGridItem>
-        )}
+          )}
+        </ContentGridItem>
       </ContentGrid>
     </div>
   );

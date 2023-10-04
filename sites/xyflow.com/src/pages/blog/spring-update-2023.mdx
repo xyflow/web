@@ -8,8 +8,9 @@ image: '/img/blog/v10-header.png'
 ---
 
 import { BlogPostLayout, Image, YoutubeEmbed, ReactPlayer, Emoji } from 'xy-ui';
+import { usePostMetadata } from '@/hooks/use-post-metadata';
 
-<BlogPostLayout>
+<BlogPostLayout usePostMetadata={usePostMetadata}>
 To kick it off, v11.5.0 was released! 🎉 It comes with Auto pan, snappy connections, error handling, the NodeResizer component, and more goodies that I won’t get into here, because there’s already a [write-up about the release](https://reactflow.dev/blog/react-flow-v-11-5/) by Moritz.
 
 v.11.6.0 was released too! 🎊🎊 This one came with:

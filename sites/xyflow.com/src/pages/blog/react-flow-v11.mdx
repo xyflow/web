@@ -7,8 +7,9 @@ tags: ['react-flow', 'release']
 ---
 
 import { BlogPostLayout, Image, Emoji } from 'xy-ui';
+import { usePostMetadata } from '@/hooks/use-post-metadata';
 
-<BlogPostLayout>
+<BlogPostLayout usePostMetadata={usePostMetadata}>
 A lot has happened since we published our last blog post six months ago. We got our first pro subscribers, we hired John who helps us with the docs, communication and community and we are all working full time on React Flow <Emoji content="🥳" />. Today we are releasing a new major version with lots of new features and very few breaking changes (unlike the last major update..).
 
 **If you are looking for the information how to upgrade, please refer to the ["Migrate to v11" guide](/docs/guides/migrate-to-v11/).**
