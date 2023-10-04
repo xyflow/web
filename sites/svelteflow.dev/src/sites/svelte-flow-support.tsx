@@ -9,6 +9,7 @@ import {
   SparklesIcon,
   StarIcon,
   ChatBubbleOvalLeftEllipsisIcon,
+  VideoCameraIcon,
 } from '@heroicons/react/24/outline';
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 import Link from 'next/link';
@@ -32,7 +33,7 @@ export default function CaseStudies() {
     <BaseLayout>
       <Hero
         title="Support Svelte Flow"
-        subtitle="Thanks for supporting Svelte Flow, there are lots of ways you can help the library, ecosystem, and community."
+        subtitle="Thanks for supporting Svelte Flow, there are lots of ways you can help the library, ecosystem, and community grow."
         kicker={<Kicker />}
         align="center"
       />
@@ -41,13 +42,13 @@ export default function CaseStudies() {
           icon={CommandLineIcon}
           title="Show us what you made"
           links={[
-            { linkName: 'Discord', route: '/' },
-            { linkName: 'Email us', route: '/' },
+            { linkName: 'Discord', route: 'https://discord.gg/RVmnytFmGW' },
+            { linkName: 'Email us', route: 'mailto:info@xyflow.com' },
           ]}
           text={
             <>
-              We love works in progress and screenshots. Drop it in into our
-              Discord Server, tweet at us, drop us an email
+              We love to see works in progress and screenshots. Drop it in into
+              our Discord Server, tweet at us, or drop us an email
             </>
           }
         />
@@ -56,7 +57,7 @@ export default function CaseStudies() {
           title="Join the Community"
           links={[
             { linkName: 'Github Discussions', route: '/' },
-            { linkName: 'Discord', route: '/' },
+            { linkName: 'Discord', route: 'https://discord.gg/RVmnytFmGW' },
           ]}
           text={
             <>
@@ -116,7 +117,7 @@ export default function CaseStudies() {
           link="/svelte-flow"
         />
         <ListItem
-          icon={ChatBubbleOvalLeftEllipsisIcon}
+          icon={VideoCameraIcon}
           label="Create Tutorials for Svelte Flow"
         />
       </ListWrapper>
@@ -128,8 +129,6 @@ function GridItem({
   title,
   text,
   icon: Icon,
-  route,
-  linkName,
   links,
 }: {
   title: ReactNode;
