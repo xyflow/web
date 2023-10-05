@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { Position } from 'reactflow';
 
-import { Text } from 'xy-ui';
+import { Text } from '../../..';
 import Handle from './handle';
 import Wrapper from './node-wrapper';
 

@@ -1,6 +1,6 @@
-import { cn } from 'xy-ui';
+import { cn } from '../../..';
 
-export default function SwoopyNode({ data }) {
+export default function SwoopyNode({ data }: { data: any }) {
   return (
     <div className="text-light flex relative">
       <div

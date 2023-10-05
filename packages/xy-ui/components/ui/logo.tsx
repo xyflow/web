@@ -14,7 +14,7 @@ export default function Logo({
   inverted = false,
   className,
 }: LogoProps) {
-  const ref = useRef<SVGSVGElement>();
+  const ref = useRef<SVGSVGElement>(null);
 
   useEffect(() => {
     if (animated) {
