@@ -1,7 +1,8 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-import { cn } from '../../lib/utils';
+import { ReactNode, useEffect, useRef } from 'react';
+import Link from 'next/link';
+import { cn, Text } from '../..';
 
 type LogoProps = {
   animated?: boolean;
@@ -9,11 +10,7 @@ type LogoProps = {
   className?: string;
 };
 
-export default function Logo({
-  animated = false,
-  inverted = false,
-  className,
-}: LogoProps) {
+function Logo({ animated = false, inverted = false, className }: LogoProps) {
   const ref = useRef<SVGSVGElement>(null);
 
   useEffect(() => {
@@ -141,4 +138,23 @@ export default function Logo({
   );
 }
 
-export { Logo, type LogoProps };
+type LogoLabelProps = {
+  labelClassName?: string;
+  logoClassName?: string;
+  label?: ReactNode;
+};
+
+function LogoLabel({
+  labelClassName,
+  logoClassName,
+  label = null,
+}: LogoLabelProps) {
+  return (
+    <Link href="/" className="flex space-x-2 items-center">
+      <Logo className={cn('h-9 w-9', logoClassName)} />
+      <Text className={cn('font-black text-xl', labelClassName)}>{label}</Text>
+    </Link>
+  );
+}
+
+export { Logo, LogoLabel, type LogoProps, type LogoLabelProps };
