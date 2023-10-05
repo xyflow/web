@@ -1,9 +1,8 @@
 import { useRouter } from 'next/router';
 import { useConfig } from 'nextra-theme-docs';
-import { Footer, Button } from 'xy-ui';
+import { Footer, Button, LogoLabel } from 'xy-ui';
 
 import aboutImage from './public/img/about.jpg';
-import Logo from '@/components/navbar-logo';
 import SidebarTitle from '@/components/sidebar-title';
 import useXYSite from '@/hooks/use-xy-site';
 
@@ -41,7 +40,7 @@ function getOGMetaTags({ isArticle, url, frontMatter }) {
 }
 
 export default {
-  logo: Logo,
+  logo: () => <LogoLabel label="xyflow" />,
   logoLink: false,
   docsRepositoryBase: 'https://github.com/xyflow/web/tree/main/sites/docs',
   // this is necessary to hide the github icon

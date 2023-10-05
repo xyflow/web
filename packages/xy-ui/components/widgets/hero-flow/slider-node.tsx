@@ -1,10 +1,10 @@
 import { Position } from 'reactflow';
 
-import { Slider } from 'xy-ui';
+import { Slider } from '../../..';
 import Handle from './handle';
 import Wrapper from './node-wrapper';
 
-export default function SliderNode({ data }) {
+export default function SliderNode({ data }: { data: any }) {
   const {
     label = '',
     min = 0,
