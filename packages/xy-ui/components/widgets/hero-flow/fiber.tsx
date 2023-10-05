@@ -1,7 +1,7 @@
 import { Suspense, useEffect, useRef, useMemo } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 
-const randomVector = (r) => [
+const randomVector = (r: number) => [
   r / 2 - Math.random() * r,
   r / 2 - Math.random() * r,
   r / 2 - Math.random() * r,
@@ -15,7 +15,7 @@ const randomEuler = () => [
 
 const canvasResize = { scroll: false };
 
-function Shape({ type, random, color, ...props }) {
+function Shape({ type, random, color, ...props }: any) {
   const ref = useRef<any>();
   useFrame((state) => {
     const t = state.clock.getElapsedTime() + random * 10000;
@@ -40,7 +40,7 @@ function Shape({ type, random, color, ...props }) {
   );
 }
 
-function Cam({ zoom }) {
+function Cam({ zoom }: { zoom: number }) {
   const { camera } = useThree();
 
   useEffect(() => {
@@ -50,10 +50,10 @@ function Cam({ zoom }) {
   return null;
 }
 
-export default function App({ color, zoom, shape, count = 150 }) {
+export default function App({ color, zoom, shape, count = 150 }: any) {
   const randomData = useMemo(
     () =>
-      Array.from({ length: count }, (r = 10) => ({
+      Array.from({ length: count }, (r: number = 10) => ({
         random: Math.random(),
         position: randomVector(r),
         rotation: randomEuler(),

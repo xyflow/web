@@ -4,7 +4,7 @@ import Fiber from './fiber';
 import Handle from './handle';
 import Wrapper from './node-wrapper';
 
-export default function HeroNode({ data }) {
+export default function HeroNode({ data }: { data: any }) {
   const { label = '' } = data;
 
   return (

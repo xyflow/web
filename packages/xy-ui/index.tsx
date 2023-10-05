@@ -3,6 +3,7 @@ export * from './components/layout/blog-post';
 export * from './components/layout/case-study';
 export * from './components/layout/text-only';
 export * from './components/layout/example';
+export * from './components/layout/breakout';
 
 export * from './components/ui/accordion';
 export * from './components/ui/alert-dialog';
@@ -33,6 +34,7 @@ export * from './components/widgets/footer';
 export * from './components/widgets/pricing-table';
 export * from './components/widgets/project-preview';
 export * from './components/widgets/react-player-lazy';
+export * from './components/widgets/hero-flow';
 
 export * from './lib/utils';
 

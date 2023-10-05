@@ -1,8 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useSSG } from 'nextra/ssg';
-import { SparklesIcon } from '@heroicons/react/24/outline';
-
 import {
   BaseLayout,
   Button,
@@ -10,8 +8,9 @@ import {
   Text,
   ContentGrid,
   ContentGridItem,
+  HeroFlow,
 } from 'xy-ui';
-import HeroFlow from '@/page-sections/hero-flow';
+import { SparklesIcon } from '@heroicons/react/24/outline';
 import Stats, { StatsDisplay } from '@/page-sections/stats';
 import Features from '@/page-sections/features';
 import ImageSlider from '@/page-sections/image-slider';
@@ -95,7 +94,7 @@ export default function ReactFlowHome() {
 
   return (
     <BaseLayout>
-      <HeroFlow />
+      <HeroFlow title="React Flow" initialColor="#ff0071" />
 
       <Section className="mt-6 lg:mt-10">
         <Stats

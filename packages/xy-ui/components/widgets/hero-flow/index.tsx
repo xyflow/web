@@ -1,15 +1,19 @@
 import { CSSProperties, ReactNode, useRef } from 'react';
 import { SparklesIcon, BoltIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
-
-import { Button, Heading, Text } from 'xy-ui';
+import { Button, Heading, Text, LayoutBreakout } from '../../..';
 import Flow from './flow';
 
 const headlineStyle: CSSProperties = {
   pointerEvents: 'all',
 };
 
-export default function HeroFlow() {
+type HeroFlowProps = {
+  initialColor?: string;
+  title?: string;
+};
+
+function HeroFlow({ initialColor = '#111', title = '' }: HeroFlowProps) {
   const headlineRef = useRef<HTMLDivElement>(null);
 
   return (
@@ -21,8 +25,7 @@ export default function HeroFlow() {
           className="max-w-md relative bg-white/10 backdrop-blur-[2px] p-[max(env(safe-area-inset-left),1.5rem)]"
         >
           <Heading size="md" className="mb-4 font-black">
-            Wire Your Ideas with{' '}
-            <span className="text-primary">React Flow</span>
+            Wire Your Ideas with <span className="text-primary">{title}</span>
           </Heading>
 
           <Text size="lg" className="mb-4 lg:mb-6">
@@ -31,7 +34,7 @@ export default function HeroFlow() {
           </Text>
 
           <div className="flex">
-            <Button variant="secondary" asChild className="mr-3 ">
+            <Button asChild className="mr-3 ">
               <Link href="/docs">
                 <BoltIcon className="w-5 h-5 mr-1" />
                 Quickstart
@@ -47,7 +50,7 @@ export default function HeroFlow() {
       </div>
 
       <Flow
-        initialColor="#ff0072"
+        initialColor={initialColor}
         headlineRef={headlineRef}
         className="bg-gradient"
       />
@@ -55,10 +58,4 @@ export default function HeroFlow() {
   );
 }
 
-function LayoutBreakout({ children }: { children: ReactNode }) {
-  return (
-    <div className="relative right-1/2 left-1/2 ml-[-50vw] mr-[-50vw] max-w-[100vw] w-[100vw] -mt-16">
-      {children}
-    </div>
-  );
-}
+export { HeroFlow, type HeroFlowProps };

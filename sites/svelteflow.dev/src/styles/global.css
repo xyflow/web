@@ -229,9 +229,8 @@ div.nextra-nav-container-blur {
 
 @layer base {
   :root {
-    --color-xyflow: 0 0% 0%;
-    --color-react: 333 100% 50%;
-    --color-svelte: 15 100% 50%;
+    --primary: 15 100% 50%;
+    --primary-foreground: 210 40% 98%;
 
     --background: 0 0% 100%;
     --foreground: 222.2 47.4% 11.2%;
@@ -247,9 +246,6 @@ div.nextra-nav-container-blur {
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
 
     --secondary: 0 100% 100%;
     --secondary-foreground: 222.2 47.4% 11.2%;

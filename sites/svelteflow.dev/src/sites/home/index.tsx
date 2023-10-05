@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { HeartIcon } from '@heroicons/react/24/outline';
-import { BaseLayout, Button, Heading } from 'xy-ui';
-import HeroFlow from '@/page-sections/hero-flow';
+import { BaseLayout, Button, Heading, HeroFlow } from 'xy-ui';
 import Features from '@/page-sections/features';
 import Section from '@/page-sections/section';
 import Stats from '@/page-sections/stats';
@@ -41,7 +40,7 @@ const features = [
 export default function SvelteFlowHome() {
   return (
     <BaseLayout>
-      <HeroFlow />
+      <HeroFlow title="Svelte Flow" initialColor="#f97316" />
 
       <Section className="mt-6 lg:mt-10">
         <Stats
