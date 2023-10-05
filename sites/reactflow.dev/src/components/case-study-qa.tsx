@@ -19,9 +19,12 @@ export default function CaseStudyQA({
       >
         {question}
       </Text>
-      <Text size="lg" className="mt-2 mb-12 leading-relaxed">
-        {answer}
-      </Text>
+
+      <blockquote>
+        <Text size="lg" className="mt-2 mb-12 leading-relaxed">
+          “ {answer} ”
+        </Text>
+      </blockquote>
     </>
   );
 }
