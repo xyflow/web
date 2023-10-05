@@ -2,6 +2,7 @@
 title: Delete Middle Node
 ---
 
+import { Callout } from 'nextra/components';
 import CodeViewer from '@/components/code-viewer';
 import ExampleLayout from '@/layouts/example';
 
@@ -42,12 +43,12 @@ Let's break some of it down:
   of these nodes, we create a new edge that connects to each node in the array of
   `outgoers`. These are nodes that were connected to the deleted node as a target.
 
-:::info
+<Callout type="info">
 For brevity, we're using object destructuring while at the same time renaming
 the variable bound (e.g. `({ id: source }) => ...)` destructures the `id`
 property of the object and binds it to a new variable called `source`) but you
 don't need to do this
-:::
+</Callout>
 
 ## Quick Reference
 

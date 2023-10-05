@@ -2,6 +2,8 @@
   import { Position, type NodeProps } from '@xyflow/svelte';
   import CustomHandle from './CustomHandle.svelte';
   type $$Props = NodeProps;
+
+  export let node: $$Props['node'];
 </script>
 
 <div class="customNode">
