@@ -66,6 +66,9 @@ importers:
       '@xyflow/svelte':
         specifier: 0.0.22
         version: 0.0.22(svelte@4.2.1)
+      '@xyflow/system':
+        specifier: ^0.0.4
+        version: 0.0.4
       xy-tsconfig:
         specifier: workspace:*
         version: link:../../packages/xy-tsconfig

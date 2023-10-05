@@ -7,16 +7,17 @@ import CodeViewer from '@/components/code-viewer';
 import ExampleLayout from '@/layouts/example';
 
 <ExampleLayout>
-This example features a custom node which serves as handle to make it easier to connect two nodes. Additionally, the nodes have a separate drag handle so that they are still draggable.
-
-<CodeViewer
-  codePath="example-flows/EasyConnect"
-  additionalFiles={[
-    'CustomNode.js',
-    'FloatingEdge.js',
-    'CustomConnectionLine.js',
-    'utils.js',
-    'style.css',
-  ]}
-/>
+  Fed up with tiny little connection handles? Make your whole node act as one!
+  Keep in mind though that you need to define seperate drag handles in this case
+  to still be able to drag the node.
+  <CodeViewer
+    codePath="example-flows/EasyConnect"
+    additionalFiles={[
+      'CustomNode.js',
+      'FloatingEdge.js',
+      'CustomConnectionLine.js',
+      'utils.js',
+      'style.css',
+    ]}
+  />
 </ExampleLayout>
