@@ -90,9 +90,9 @@ export default function Footer({ imageSrc }: FooterProps) {
               ))}
             </div>
 
-            <Text variant="light" className="mt-auto">
+            <Text variant="light" className="text-sm mt-auto">
               info@xyflow.com — Copyright © {new Date().getFullYear()} webkid
-              GmbH. All rights reserved.
+              GmbH. All rights reserved. - website designed by facu
             </Text>
           </div>
         </div>

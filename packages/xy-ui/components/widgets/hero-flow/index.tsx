@@ -1,3 +1,5 @@
+'use client';
+
 import { CSSProperties, ReactNode, useRef } from 'react';
 import { SparklesIcon, BoltIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
@@ -10,10 +12,17 @@ const headlineStyle: CSSProperties = {
 
 type HeroFlowProps = {
   initialColor?: string;
-  title?: string;
+  title?: ReactNode;
+  subtitle?: ReactNode;
+  action?: ReactNode;
 };
 
-function HeroFlow({ initialColor = '#111', title = '' }: HeroFlowProps) {
+function HeroFlow({
+  initialColor = '#111',
+  title = '',
+  subtitle,
+  action,
+}: HeroFlowProps) {
   const headlineRef = useRef<HTMLDivElement>(null);
 
   return (
@@ -28,24 +37,14 @@ function HeroFlow({ initialColor = '#111', title = '' }: HeroFlowProps) {
             Wire Your Ideas with <span className="text-primary">{title}</span>
           </Heading>
 
-          <Text size="lg" className="mb-4 lg:mb-6">
-            A customizable React component for building node-based editors and
-            interactive diagrams
-          </Text>
+          {subtitle && (
+            <Text size="lg" className="mb-4 lg:mb-6">
+              A customizable React component for building node-based editors and
+              interactive diagrams
+            </Text>
+          )}
 
-          <div className="flex">
-            <Button asChild className="mr-3 ">
-              <Link href="/docs">
-                <BoltIcon className="w-5 h-5 mr-1" />
-                Quickstart
-              </Link>
-            </Button>
-            <Button variant="pro" asChild>
-              <Link href="/pro">
-                <SparklesIcon className="w-5 h-5 mr-1" /> React Flow Pro
-              </Link>
-            </Button>
-          </div>
+          {action && <div>{action}</div>}
         </div>
       </div>
 

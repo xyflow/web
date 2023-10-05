@@ -43,7 +43,7 @@ function getOGMetaTags({ isArticle, url, frontMatter }) {
 export default {
   logo: () => (
     <Link href="/" className="flex space-x-2 items-center">
-      <Logo className="h-9 w-9" animated />
+      <Logo className="h-9 w-9" />
       <Text className="font-black text-xl">React Flow</Text>
     </Link>
   ),
