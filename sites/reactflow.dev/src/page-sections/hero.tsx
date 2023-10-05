@@ -1,8 +1,7 @@
 import { type ReactNode } from 'react';
 import cn from 'clsx';
 
-import { Button, Heading, HeroIcon, Text } from 'xy-ui';
-import useXYSite from '@/hooks/use-xy-site';
+import { Heading, HeroIcon, Text } from 'xy-ui';
 import useConnectionDrawer from '@/hooks/use-connection-drawer';
 
 type HeroProps = {
@@ -30,7 +29,6 @@ export default function Hero({
   size = 'lg',
   showGradient = false,
 }: HeroProps) {
-  const { site } = useXYSite();
   const isCenter = align === 'center';
   const isXL = size === 'xl';
   const ref = useConnectionDrawer();
@@ -60,9 +58,8 @@ export default function Hero({
           {kicker && (
             <h3
               className={cn(
-                'text-sm font-bold mb-6 flex items-center uppercase tracking-wider',
-                isCenter && 'justify-center',
-                `text-${site}`
+                'text-sm font-bold mb-6 flex items-center uppercase tracking-wider text-primary',
+                isCenter && 'justify-center'
               )}
             >
               {KickerIcon && (
@@ -79,7 +76,10 @@ export default function Hero({
           {subtitle && (
             <Text
               size="lg"
-              className={cn('mb-4 lg:mb-6 max-w-3xl', isCenter && 'mx-auto')}
+              className={cn(
+                'leading-7 mb-4 lg:mb-6 max-w-3xl',
+                isCenter && 'mx-auto'
+              )}
             >
               {subtitle}
             </Text>

@@ -1,6 +1,6 @@
 import { Position } from 'reactflow';
 
-import { Label, Slider } from 'xy-ui';
+import { Slider } from 'xy-ui';
 import Handle from './handle';
 import Wrapper from './node-wrapper';
 
@@ -11,7 +11,6 @@ export default function SliderNode({ data }) {
     max = 1,
     onChange = () => {},
     value = 0.5,
-    variant,
   } = data;
 
   return (
@@ -23,8 +22,8 @@ export default function SliderNode({ data }) {
         value={[value]}
         onValueChange={(val) => onChange(val[0])}
         inverted
-        rangeClassName={`bg-${variant}`}
-        thumbClassName={`bg-${variant}`}
+        rangeClassName="bg-primary"
+        thumbClassName="bg-primary"
       />
       <Handle type="source" position={Position.Right} />
     </Wrapper>

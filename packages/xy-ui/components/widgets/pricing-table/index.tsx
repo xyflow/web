@@ -52,14 +52,14 @@ const PricingTable = ({
       >
         <div>
           <Button
-            variant={isMonthly ? 'react' : 'secondary'}
+            variant={isMonthly ? 'default' : 'secondary'}
             onClick={() => setBillingInterval(BillingInterval.MONTH)}
             className="rounded-r-none"
           >
             Monthly
           </Button>
           <Button
-            variant={!isMonthly ? 'react' : 'secondary'}
+            variant={!isMonthly ? 'default' : 'secondary'}
             onClick={() => setBillingInterval(BillingInterval.YEAR)}
             className="rounded-l-none"
           >

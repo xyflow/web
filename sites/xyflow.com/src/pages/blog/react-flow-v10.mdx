@@ -7,10 +7,11 @@ tags: ['react-flow', 'release']
 image: /img/blog/v10-header.png
 ---
 
-import { CodeViewer } from '@/components/blog-post-embed';
-import BlogPostLayout from '@/layouts/blog-post';
+import { BlogPostLayout } from 'xy-ui';
+import { BlogExampleViewer } from '@/components/example-viewer';
+import { usePostMetadata } from '@/hooks/use-post-metadata';
 
-<BlogPostLayout>
+<BlogPostLayout usePostMetadata={usePostMetadata}>
 Almost two years ago we [open sourced React Flow](https://webkid.io/blog/react-flow-node-based-graph-library/) that was built for our flow-based data processing tool [Datablocks](https://datablocks.pro). Since then we invested more and more time in React Flow and it got a lot of traction (25k+ website visitors per month, 9k+ stars on Github, 1k+ Discord members, 100k+ weekly downloads on npm).
 We are super happy about the progress and the community that has developed around React Flow. We think that the library has a lot of potential to solve problems that many developer teams face when building node-based editors.
 
@@ -18,7 +19,7 @@ After several months of hard work, today we can finally announce the release of 
 
 <div style={{ marginTop: 40 }} />
 
-<CodeViewer
+<BlogExampleViewer
   codePath="api-flows/SubFlows3"
   additionalFiles={['nodes.js', 'edges.js']}
 />

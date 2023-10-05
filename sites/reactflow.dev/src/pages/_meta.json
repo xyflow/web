@@ -7,6 +7,7 @@
   },
   "index": {
     "title": "Home",
+    "display": "hidden",
     "theme": {
       "layout": "raw"
     }
@@ -16,6 +17,7 @@
   "examples": "Examples",
   "pro": {
     "title": "Pro",
+    "display": "hidden",
     "theme": {
       "layout": "raw"
     }
