@@ -3,13 +3,13 @@ title: Custom Nodes
 description: This is an example of a custom node implementation. React Flow nodes are React components, and you can display any content that you want.
 ---
 
-import CodeViewer from '@/components/code-viewer';
-import ExampleLayout from '@/layouts/example';
+import ExampleViewer from '@/components/example-viewer';
+import { ExampleLayout } from 'xy-ui';
 
 <ExampleLayout>
 Creating your own nodes is as easy as creating a regular React component and passing them to `nodeTypes`. Being just regular components, you can essentially display any content and implement any functionality you like. Inside, you have access to a number of props that let you implement and extend default node behaviour.
 
-<CodeViewer
+<ExampleViewer
   codePath="example-flows/CustomNode"
   additionalFiles={['ColorSelectorNode.js', 'index.css']}
 />

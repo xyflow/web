@@ -3,11 +3,11 @@ title: Stress Test
 description: A stress test with a lot of nodes and edges.
 ---
 
-import CodeViewer from '@/components/code-viewer';
-import ExampleLayout from '@/layouts/example';
+import ExampleViewer from '@/components/example-viewer';
+import { ExampleLayout } from 'xy-ui';
 
 <ExampleLayout>
 You doubt we can render a lot of nodes and edges? See for yourself.
 
-<CodeViewer codePath="example-flows/Stress" additionalFiles={['utils.js']} />
+<ExampleViewer codePath="example-flows/Stress" additionalFiles={['utils.js']} />
 </ExampleLayout>

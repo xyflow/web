@@ -3,12 +3,15 @@ title: Subflows
 description: You can create nested flows / subflows with Svelte Flow. Here you can see how to implement them.
 ---
 
-import CodeViewer from '@/components/code-viewer';
-import ExampleLayout from '@/layouts/example';
+import { ExampleLayout } from 'xy-ui';
+import ExampleViewer from '@/components/example-viewer';
 
 <ExampleLayout>
 With Svelte Flow you can display subflows (nested flows) easily by using the node option `parent`.
 
-<CodeViewer codePath="examples/layout/subflows" framework="svelte" />
+<ExampleViewer
+  codePath="examples/layout/subflows"
+  additionalFiles={['DebugNode.svelte']}
+/>
 
 </ExampleLayout>

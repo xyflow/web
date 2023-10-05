@@ -7,7 +7,7 @@ description: We'll show you the basic functionality of React Flow including conn
 
 In the following part we will introduce you to the core concepts of React Flow and explain how to create an interactive flow. A flow consists of nodes and edges (or just nodes). You can pass arrays of `nodes` and `edges` as props to the ReactFlow component. Hereby all node and edge ids need to be unique. A node needs a position and a label (this could be different if you are using [custom nodes](/docs/guides/custom-nodes)) and an edge needs a source (node id) and a target (node id). You can read more about the options in the [Node options](/docs/api/nodes/node-options) and [Edge options](/docs/api/edges/edge-options) sections.
 
-### Controlled or Uncontrolled
+## Controlled or Uncontrolled
 
 With React Flow you have two ways to setup a flow. You can either create a controlled or an [uncontrolled one](/docs/guides/uncontrolled-flow).
 We recommend to use a controlled one but for simpler use cases you can also setup an uncontrolled flow. **In the following part we will setup a controlled flow.** Let's start by adding some nodes and edges to the ReactFlow component:
@@ -20,9 +20,9 @@ import { Callout } from 'nextra/components';
   properly.
 </Callout>
 
-import CodeViewer from '@/components/code-viewer';
+import ExampleViewer from '@/components/example-viewer';
 
-<CodeViewer
+<ExampleViewer
   codePath="api-flows/IntroductionFlow"
   applyStyles={false}
   options={{
@@ -36,7 +36,7 @@ import CodeViewer from '@/components/code-viewer';
 
 By default React Flow doesn't do any internal state updates besides handling the viewport when you setup a controlled flow. As with an `<input />` component you need to pass handlers to apply the changes that are triggered by React Flow to your nodes and edges. In order to **select**, **drag** and **remove** nodes and edges you need to implement an `onNodesChange` and an `onEdgesChange` handler:
 
-<CodeViewer
+<ExampleViewer
   codePath="api-flows/IntroductionFlow2"
   applyStyles={false}
   options={{
@@ -66,7 +66,7 @@ const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
 The last piece that is missing to get the full interactivity is the `onConnect` handler. You need to implement it, in order to handle new connections.
 
-<CodeViewer
+<ExampleViewer
   codePath="api-flows/IntroductionFlow3"
   applyStyles={false}
   options={{

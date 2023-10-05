@@ -12,8 +12,8 @@ export default function SubscribeSection() {
       </Heading>
 
       <div className="flex justify-center space-x-8">
-        <Button size="lg" asChild variant="react-pro">
-          <Link href="/react-flow/pro" className="flex items-center">
+        <Button size="lg" asChild variant="pro">
+          <Link href="/pro" className="flex items-center">
             <SparklesIcon className="w-5 h-5 mr-1" />
             React Flow Pro
           </Link>

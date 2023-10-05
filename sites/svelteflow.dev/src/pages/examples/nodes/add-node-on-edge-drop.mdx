@@ -2,14 +2,11 @@
 title: Add Node On Edge Drop
 ---
 
-import CodeViewer from '@/components/code-viewer';
-import ExampleLayout from '@/layouts/example';
+import { ExampleLayout } from 'xy-ui';
+import ExampleViewer from '@/components/example-viewer';
 
 <ExampleLayout>
 You can create a new node when you drop the connection line on the pane by using the `onConnectionStart` and `onConnectionStop` handlers.
 
-<CodeViewer
-  codePath="examples/nodes/add-node-on-drop"
-  framework="svelte"
-/>
+<ExampleViewer codePath="examples/nodes/add-node-on-drop" />
 </ExampleLayout>

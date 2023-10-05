@@ -5,7 +5,7 @@ description: Here's how to install the React Flow package using npm and how to i
 
 # Adding Interactivity
 
-import CodeViewer from '@/components/code-viewer';
+import ExampleViewer from '@/components/example-viewer';
 import { Callout } from 'nextra/components';
 
 Let's make it so we can select, drag, and remove nodes and edges.
@@ -49,7 +49,7 @@ const onEdgesChange = useCallback(
 
 When you drag or select a node, the `onNodeChange` handler gets called. With help of the `applyNodeChanges` function you can then apply those changes to your current node state. Putting evetything together, it should look like this:
 
-<CodeViewer
+<ExampleViewer
   codePath="api-flows/MakeItInteractive1"
   applyStyles={false}
   options={{ editorHeight: 400, editorWidthPercentage: 45, wrapContent: true }}
@@ -61,7 +61,7 @@ Now if you run your application, you'll be able to click and drag the components
 
 One last piece is missing: connecting nodes manually. For this we need to implement an `onConnect` handler and pass it to the `<ReactFlow />` component as well:
 
-<CodeViewer
+<ExampleViewer
   codePath="api-flows/MakeItInteractive2"
   applyStyles={false}
   options={{ editorHeight: 400, editorWidthPercentage: 45, wrapContent: true }}

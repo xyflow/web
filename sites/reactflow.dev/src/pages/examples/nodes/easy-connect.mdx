@@ -3,14 +3,12 @@ sidebar_label: Easy Connect
 title: Easy Connect
 ---
 
-import CodeViewer from '@/components/code-viewer';
-import ExampleLayout from '@/layouts/example';
+import ExampleViewer from '@/components/example-viewer';
+import { ExampleLayout } from 'xy-ui';
 
 <ExampleLayout>
-  Fed up with tiny little connection handles? Make your whole node act as one!
-  Keep in mind though that you need to define seperate drag handles in this case
-  to still be able to drag the node.
-  <CodeViewer
+  Fed up with tiny little connection handles? Make your whole node act as one! Keep in mind though that you need to define seperate drag handles in this case to still be able to drag the node.
+  <ExampleViewer
     codePath="example-flows/EasyConnect"
     additionalFiles={[
       'CustomNode.js',

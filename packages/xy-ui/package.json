@@ -18,6 +18,7 @@
     "xy-tsconfig": "workspace:*"
   },
   "dependencies": {
+    "@codesandbox/sandpack-react": "^2.6.9",
     "@heroicons/react": "^2.0.18",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-alert-dialog": "^1.0.4",
@@ -29,12 +30,21 @@
     "@radix-ui/react-slider": "^1.1.2",
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-tabs": "^1.0.4",
+    "@react-three/fiber": "^8.13.7",
     "class-variance-authority": "^0.6.0",
     "clsx": "^1.2.1",
     "lucide-react": "^0.248.0",
     "next": "^13.5.3",
+    "react-player": "^2.12.0",
+    "reactflow": "^11.8.3",
     "tailwind-merge": "^1.13.2",
     "tailwindcss": "^3.3.2",
     "tailwindcss-animate": "^1.0.6"
+  },
+  "peerDependencies": {
+    "nextra": "^2.12.3",
+    "nextra-theme-docs": "^2.12.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }

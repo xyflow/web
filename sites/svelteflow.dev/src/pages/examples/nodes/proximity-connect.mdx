@@ -3,14 +3,11 @@ title: Proximity Connect
 description: Example showing how to automatically create edges when nodes get close to each other
 ---
 
-import CodeViewer from '@/components/code-viewer';
-import ExampleLayout from '@/layouts/example';
+import { ExampleLayout } from 'xy-ui';
+import ExampleViewer from '@/components/example-viewer';
 
 <ExampleLayout>
 This example shows how to automatically create edges when a node is dropped in close proximity to another one. While dragging, a dotted connection line is displayed to show which edge will be created if you drop the node.
 
-<CodeViewer
-  codePath="examples/nodes/proximity-connect"
-  framework="svelte"
-/>
+<ExampleViewer codePath="examples/nodes/proximity-connect" />
 </ExampleLayout>

@@ -1,7 +1,10 @@
-import BaseLayout from '@/layouts/base';
+import {
+  BaseLayout,
+  ContentGrid,
+  ContentGridItem,
+  BlogPostPreview,
+} from 'xy-ui';
 import Hero from '@/page-sections/hero';
-import ContentGrid, { ContentGridItem } from '@/components/content-grid';
-import BlogPostPreview from '@/components/blog-post-preview';
 import { getMdxPagesUnderRoute } from '@/utils';
 
 export default function Blog() {

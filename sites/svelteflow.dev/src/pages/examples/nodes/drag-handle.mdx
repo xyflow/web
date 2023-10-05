@@ -2,14 +2,11 @@
 title: Drag Handle
 ---
 
-import CodeViewer from '@/components/code-viewer';
-import ExampleLayout from '@/layouts/example';
+import { ExampleLayout } from 'xy-ui';
+import ExampleViewer from '@/components/example-viewer';
 
 <ExampleLayout>
 You can restrict dragging to a specific part of node, by specifiying a class that will act as a [`dragHandle`](/docs/api/nodes/node-options/#options).
 
-<CodeViewer
-  codePath="examples/nodes/drag-handle"
-  framework='svelte'
-/>
+<ExampleViewer codePath="examples/nodes/drag-handle" />
 </ExampleLayout>

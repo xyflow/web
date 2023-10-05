@@ -3,12 +3,12 @@ sidebar_label: Easy Connect
 title: Easy Connect
 ---
 
-import CodeViewer from '@/components/code-viewer';
-import ExampleLayout from '@/layouts/example';
+import { ExampleLayout } from 'xy-ui';
+import ExampleViewer from '@/components/example-viewer';
 
 <ExampleLayout>
   Fed up with tiny little connection handles? Make your whole node act as one!
   Keep in mind though that you need to define seperate drag handles in this case
   to still be able to drag the node.
-  <CodeViewer codePath="examples/nodes/easy-connect" framework="svelte" />
+  <ExampleViewer codePath="examples/nodes/easy-connect" />
 </ExampleLayout>

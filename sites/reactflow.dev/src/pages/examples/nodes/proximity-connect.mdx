@@ -3,13 +3,13 @@ title: Proximity Connect
 description: Example showing how to automatically create edges when nodes get close to each other
 ---
 
-import CodeViewer from '@/components/code-viewer';
-import ExampleLayout from '@/layouts/example';
+import ExampleViewer from '@/components/example-viewer';
+import { ExampleLayout } from 'xy-ui';
 
 <ExampleLayout>
 This example shows how to automatically create edges when a node is dropped in close proximity to another one. While dragging, a dotted connection line is displayed to show which edge will be created if you drop the node.
 
-<CodeViewer
+<ExampleViewer
   codePath="example-flows/ProximityConnect"
   additionalFiles={['nodes-and-edges.js', 'style.css']}
 />

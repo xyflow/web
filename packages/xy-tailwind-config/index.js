@@ -3,6 +3,7 @@ export default {
   content: [
     './src/**/*.{js,ts,jsx,tsx,mdx}',
     '../../packages/xy-ui/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './theme.config.{js,ts,jsx,tsx}',
   ],
   theme: {
     container: {

@@ -2,14 +2,14 @@
 title: Connection Line
 ---
 
-import CodeViewer from '@/components/code-viewer';
-import ExampleLayout from '@/layouts/example';
+import { ExampleLayout } from 'xy-ui';
+import ExampleViewer from '@/components/example-viewer';
 
 <ExampleLayout>
 A Connection Line is what you see when you click and drag out from a handle. It represents a possible edge and can snap to valid handles in close proximity.
 You can implement your own Connection Line by passing a React component rendering the line. You can find the passed props in the [custom connection line docs](/docs/api/edges/custom-connection-line/).
 
-<CodeViewer
+<ExampleViewer
   codePath="example-flows/CustomConnectionLine"
   additionalFiles={['ConnectionLine.js', 'CustomNode.js']}
 />

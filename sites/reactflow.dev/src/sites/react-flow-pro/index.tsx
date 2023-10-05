@@ -1,9 +1,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Button, PricingTable } from 'xy-ui';
+import { BaseLayout, Button, PricingTable } from 'xy-ui';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 
-import BaseLayout from '@/layouts/base';
 import Hero from '@/page-sections/hero';
 import ClientLogos from '@/components/client-logos';
 import ImageSlider from '@/page-sections/image-slider';
@@ -47,13 +46,13 @@ export default function ReactFlowPro() {
         title={
           <>
             Build Better Node-Based UIs with{' '}
-            <span className="text-react">React Flow</span>
+            <span className="text-primary">React Flow</span>
           </>
         }
         subtitle="Thanks for checking out React Flow Pro! We are Christopher, Hayleigh, John, and Moritz, and we are the team building and maintaining React Flow"
         kicker="xyflow Pro"
         action={
-          <Button asChild size="lg" variant="react-pro">
+          <Button asChild size="lg" variant="pro">
             <Link href={PRO_PLATFORM_SIGNUP_URL}>
               <SparklesIcon className="w-5 h-5 mr-2" /> Get Started
             </Link>
