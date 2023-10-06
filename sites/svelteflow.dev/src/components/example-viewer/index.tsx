@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import sdk from '@stackblitz/sdk';
 
 import { Button, CodeViewer } from 'xy-ui';
-import SvelteSetup from './svelte/setup';
+import SvelteSetup from './setup'
 
 import { SVELTE_EXAMPLES_URL } from '@/constants';
 
