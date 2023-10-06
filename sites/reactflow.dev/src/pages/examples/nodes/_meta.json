@@ -1,7 +1,7 @@
 {
-  "custom-node": "Custom Node",
-  "update-node": "Update Node",
-  "stress": "Stress",
+  "custom-node": "Custom Nodes",
+  "update-node": "Updating Nodes",
+  "stress": "Stress Test",
   "hidden": "Hidden",
   "drag-handle": "Drag Handle",
   "easy-connect": "Easy Connect",

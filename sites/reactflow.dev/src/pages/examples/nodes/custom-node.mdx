@@ -1,5 +1,5 @@
 ---
-title: Custom Node
+title: Custom Nodes
 description: This is an example of a custom node implementation. React Flow nodes are React components, and you can display any content that you want.
 ---
 
@@ -7,7 +7,7 @@ import ExampleViewer from '@/components/example-viewer';
 import { ExampleLayout } from 'xy-ui';
 
 <ExampleLayout>
-This is an example of a custom node implementation. Nodes are just React components so you can display any content and functionality you want. The instructions about how to set up a custom node can be found on the [custom nodes doc page](/docs/guides/custom-nodes/).
+Creating your own nodes is as easy as creating a regular React component and passing them to `nodeTypes`. Being just regular components, you can essentially display any content and implement any functionality you like. Inside, you have access to a number of props that let you implement and extend default node behaviour.
 
 <ExampleViewer
   codePath="example-flows/CustomNode"

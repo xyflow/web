@@ -1,9 +1,10 @@
 ---
 title: Delete Middle Node
 ---
+import { Callout } from 'nextra/components';
 
-import ExampleViewer from '@/components/example-viewer';
 import { ExampleLayout } from 'xy-ui';
+import ExampleViewer from '@/components/example-viewer';
 
 <ExampleLayout>
 This example shows you how recover deleted edges when you remove a node from the
@@ -42,12 +43,12 @@ Let's break some of it down:
   of these nodes, we create a new edge that connects to each node in the array of
   `outgoers`. These are nodes that were connected to the deleted node as a target.
 
-:::info
+<Callout type="info">
 For brevity, we're using object destructuring while at the same time renaming
 the variable bound (e.g. `({ id: source }) => ...)` destructures the `id`
 property of the object and binds it to a new variable called `source`) but you
 don't need to do this
-:::
+</Callout>
 
 ## Quick Reference
 

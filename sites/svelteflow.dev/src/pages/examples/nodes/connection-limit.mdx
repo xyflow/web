@@ -1,0 +1,15 @@
+---
+title: Connection Limit
+description: This is an example of a custom node limiting the amount of connections a handle can have using the `isConnectalbe` prop.
+---
+
+import { ExampleLayout } from 'xy-ui';
+import ExampleViewer from '@/components/example-viewer';
+
+<ExampleLayout>
+This is an example of a custom node with a custom handle that can limit the amount of connections a handle can have using the `isConnectable` prop.
+You can use a boolean, a number (the number of max. connections the handle should have) or a callback function that returns a boolean
+as an arg for the `isConnectable` prop of the CustomHandle component.
+
+<ExampleViewer codePath="examples/nodes/connection-limit" />
+</ExampleLayout>

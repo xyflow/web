@@ -1,0 +1,13 @@
+---
+title: Connection Line
+---
+
+import { ExampleLayout } from 'xy-ui';
+import ExampleViewer from '@/components/example-viewer';
+
+<ExampleLayout>
+A Connection Line is what you see when you click and drag out from a handle. It represents a possible edge and can snap to valid handles in close proximity.
+You can implement your own Connection Line by passing a Svelte component with `slot="connectionLine"`. The `useConnection` hook gives you access to the current `connection`.
+
+<ExampleViewer codePath="examples/edges/custom-connectionline" />
+</ExampleLayout>
