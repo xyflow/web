@@ -12,9 +12,16 @@
       "layout": "raw"
     }
   },
+
   "docs": "Docs",
-  "api-reference": "API",
   "examples": "Examples",
+  "api-reference": "API",
+  "showcase": {
+    "title": "Showcase",
+    "theme": {
+      "layout": "raw"
+    }
+  },
   "pro": {
     "title": "Pro",
     "display": "hidden",
