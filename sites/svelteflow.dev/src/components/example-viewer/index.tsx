@@ -4,12 +4,10 @@ import sdk from '@stackblitz/sdk';
 import { Button, CodeViewer } from 'xy-ui';
 import SvelteSetup from './svelte/setup';
 
-import { Framework } from '@/types';
 import { SVELTE_EXAMPLES_URL } from '@/constants';
 
 type SvelteExampleProps = {
   codePath: string;
-  framework?: Framework;
   activeFile?: string;
   editorHeight: number | string;
 };
