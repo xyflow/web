@@ -3,8 +3,8 @@ import {
   ContentGrid,
   ContentGridItem,
   BlogPostPreview,
+  Hero,
 } from 'xy-ui';
-import Hero from '@/page-sections/hero';
 import { getMdxPagesUnderRoute } from '@/utils';
 
 export default function Blog() {

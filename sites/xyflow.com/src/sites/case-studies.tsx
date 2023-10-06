@@ -5,8 +5,8 @@ import {
   ContentGrid,
   ContentGridItem,
   ProjectPreview,
+  Hero,
 } from 'xy-ui';
-import Hero from '@/page-sections/hero';
 import { getMdxPagesUnderRoute } from '@/utils';
 
 export default function CaseStudies() {
