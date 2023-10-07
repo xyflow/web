@@ -70,17 +70,19 @@ export function CaseStudyLayout({
 
       <div className="max-w-3xl mx-auto px-6">{children}</div>
 
-      <CaseStudyPreviews prev={prev} next={next} />
+      <div className="mx-auto max-w-screen-xl">
+        <CaseStudyPreviews prev={prev} next={next} />
+      </div>
 
-      <div className="text-center">
+      <div className="text-center mb-10">
         <Heading as="h3" className="mb-4 mt-24 font-bold">
-          Get React Flow <span className="text-react">Pro</span> today
+          Get React Flow <span className="text-primary">Pro</span> today
         </Heading>
         <Text size="lg">
           Ensure the sustainable maintenance and development of the React Flow
           library.
         </Text>
-        <Button size="lg" asChild variant="react-pro" className="mt-12 mb-16">
+        <Button size="lg" asChild variant="pro" className="mt-12 mb-16">
           <Link href="/react-flow/pro" className="flex items-center">
             <SparklesIcon className="w-5 h-5 mr-1" />
             React Flow Pro
