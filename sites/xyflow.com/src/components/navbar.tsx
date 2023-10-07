@@ -6,11 +6,6 @@ import { getPagesUnderRoute } from 'nextra/context';
 import { Button } from 'xy-ui';
 import useXYSite from '@/hooks/use-xy-site';
 import Logo from '@/components/logo';
-import {
-  PRO_PLATFORM_OR_REACT_PRO_URL,
-  PRO_PLATFORM_SIGNUP_URL,
-  PRO_PLATFORM_URL,
-} from '@/constants';
 
 import reactLogo from '../../public/img/react-logo.svg';
 import svelteLogo from '../../public/img/svelte-logo.svg';
@@ -86,7 +81,7 @@ export function NavBarAdditional() {
   if (isPro) {
     return (
       <Button asChild variant={site} className="px-4 font-black">
-        <Link href={PRO_PLATFORM_SIGNUP_URL}>Sign Up</Link>
+        <Link href={process.env.NEXT_PUBLIC_PRO_PLATFORM_SIGNUP_URL}>Sign Up</Link>
       </Button>
     );
   }
@@ -94,7 +89,7 @@ export function NavBarAdditional() {
   // for now we also want to display the React Flow Pro button on the xyflow site
   const isReactOrXyFlow = site === 'react' || site === 'xyflow';
   const link = isReactOrXyFlow
-    ? PRO_PLATFORM_OR_REACT_PRO_URL
+    ? process.env.NEXT_PUBLIC_PRO_PLATFORM_OR_REACT_PRO_URL
     : `/svelte-flow/support-us`;
   const label = isReactOrXyFlow ? 'React Flow Pro' : 'Support Us';
 

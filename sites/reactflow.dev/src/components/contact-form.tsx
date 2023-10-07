@@ -1,6 +1,5 @@
 import { useState, useCallback } from 'react';
 import { Button, Alert, AlertTitle, AlertDescription } from 'xy-ui';
-import { CONTACT_FORM_URL } from '@/constants';
 
 export type ContactFormProps = {
   children: React.ReactNode;
@@ -21,7 +20,7 @@ export default function ContactForm({ children }) {
     const data = Object.fromEntries(formData.entries());
 
     try {
-      const response = await fetch(CONTACT_FORM_URL, {
+      const response = await fetch(process.env.NEXT_PUBLIC_CONTACT_FORM_URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -4,8 +4,6 @@ import sdk from '@stackblitz/sdk';
 import { Button, CodeViewer } from 'xy-ui';
 import SvelteSetup from './setup'
 
-import { SVELTE_EXAMPLES_URL } from '@/constants';
-
 type SvelteExampleProps = {
   codePath: string;
   activeFile?: string;
@@ -53,7 +51,7 @@ export default function SvelteExample({
   useEffect(() => {
     async function fetchFiles() {
       try {
-        const response = await fetch(`${SVELTE_EXAMPLES_URL}${codePath}`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_SVELTE_EXAMPLES_URL}${codePath}`, {
           method: 'POST',
         });
 
@@ -95,7 +93,7 @@ export default function SvelteExample({
       readOnly
       customPreview={
         <iframe
-          src={`${SVELTE_EXAMPLES_URL}${codePath}`}
+          src={`${process.env.NEXT_PUBLIC_SVELTE_EXAMPLES_URL}${codePath}`}
           width="100%"
           height="100%"
         />
