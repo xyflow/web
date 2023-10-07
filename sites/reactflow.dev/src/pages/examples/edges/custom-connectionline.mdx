@@ -1,17 +1,16 @@
 ---
-sidebar_position: 3
-title: Custom Connectionline
-hide_table_of_contents: true
+title: Connection Line
 ---
 
 import ExampleViewer from '@/components/example-viewer';
 import ExampleLayout from '@/layouts/example-with-frontmatter';
 
 <ExampleLayout>
-This example shows the implementation and usage of a custom connection line. You can find the passed props in the [custom connection line docs](/docs/api/edges/custom-connection-line/).
+A Connection Line is what you see when you click and drag out from a handle. It represents a possible edge and can snap to valid handles in close proximity.
+You can implement your own Connection Line by passing a React component rendering the line. You can find the passed props in the [custom connection line docs](/docs/api/edges/custom-connection-line/).
 
 <ExampleViewer
   codePath="example-flows/CustomConnectionLine"
-  additionalFiles={['ConnectionLine.js']}
+  additionalFiles={['ConnectionLine.js', 'CustomNode.js']}
 />
 </ExampleLayout>

@@ -2,16 +2,14 @@ import { useEffect, useState } from 'react';
 import sdk from '@stackblitz/sdk';
 
 import { Button, CodeViewer } from 'xy-ui';
-import SvelteSetup from './svelte/setup';
+import SvelteSetup from './setup'
 
-import { Framework } from '@/types';
 import { SVELTE_EXAMPLES_URL } from '@/constants';
 
 type SvelteExampleProps = {
   codePath: string;
-  framework?: Framework;
   activeFile?: string;
-  editorHeight: string;
+  editorHeight: number | string;
 };
 
 export default function SvelteExample({
@@ -93,12 +91,13 @@ export default function SvelteExample({
       files={files}
       editorHeight={editorHeight}
       showOpenInCodeSandbox={false}
+      framework="svelte"
       readOnly
       customPreview={
         <iframe
           src={`${SVELTE_EXAMPLES_URL}${codePath}`}
           width="100%"
-          height={editorHeight}
+          height="100%"
         />
       }
       customOpenButton={

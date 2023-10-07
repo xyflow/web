@@ -1,0 +1,13 @@
+---
+title: Custom Nodes
+description: This is an example of a custom node implementation. Svelte Flow nodes are Svelte components, and you can display any content that you want.
+---
+
+import ExampleLayout from '@/layouts/example-with-frontmatter';
+import ExampleViewer from '@/components/example-viewer';
+
+<ExampleLayout>
+Creating your own nodes is as easy as creating a regular Svelte component and passing them to `nodeTypes`. Being just regular components, you can essentially display any content and implement any functionality you like. Inside, you have access to a number of props that let you implement and extend default node behaviour.
+
+<ExampleViewer codePath="examples/nodes/custom-node" />
+</ExampleLayout>

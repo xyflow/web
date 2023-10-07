@@ -11,12 +11,18 @@ import 'reactflow/dist/style.css';
 
 import { createNodesAndEdges } from './utils.js';
 
-const { nodes: initialNodes, edges: initialEdges } = createNodesAndEdges(10, 10);
+const { nodes: initialNodes, edges: initialEdges } = createNodesAndEdges(
+  15,
+  30,
+);
 
 const StressFlow = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
-  const onConnect = useCallback((params) => setEdges((els) => addEdge(params, els)), []);
+  const onConnect = useCallback(
+    (params) => setEdges((els) => addEdge(params, els)),
+    [],
+  );
 
   const updatePos = useCallback(() => {
     setNodes((nds) => {
@@ -24,8 +30,8 @@ const StressFlow = () => {
         return {
           ...node,
           position: {
-            x: Math.random() * window.innerWidth,
-            y: Math.random() * window.innerHeight,
+            x: Math.random() * 1500,
+            y: Math.random() * 1500,
           },
         };
       });
@@ -39,12 +45,17 @@ const StressFlow = () => {
       onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
       onConnect={onConnect}
+      fitView
+      minZoom={0}
     >
       <MiniMap />
       <Controls />
       <Background />
 
-      <button onClick={updatePos} style={{ position: 'absolute', right: 10, top: 30, zIndex: 4 }}>
+      <button
+        onClick={updatePos}
+        style={{ position: 'absolute', right: 10, top: 30, zIndex: 4 }}
+      >
         change pos
       </button>
     </ReactFlow>
