@@ -1,11 +1,16 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useConfig } from 'nextra-theme-docs';
+import { useConfig, Navbar } from 'nextra-theme-docs';
 import { Footer, Button, LogoLabel } from 'xy-ui';
 import Search from '@/components/search';
 import SidebarTitle from '@/components/sidebar-title';
 
 import aboutImage from './public/img/about.jpg';
+
+function useIsPro() {
+  const router = useRouter();
+  return router.pathname.includes('/pro');
+}
 
 const baseUrl =
   process.env.NODE_ENV === 'production'
@@ -55,27 +60,63 @@ export default {
     titleComponent: SidebarTitle,
   },
   navbar: {
-    extraContent: () => (
-      <Button asChild>
-        <Link href="/pro">Pro</Link>
-      </Button>
-    ),
+    component: (props) => {
+      const isPro = useIsPro();
+
+      if (isPro) {
+        return (
+          <Navbar
+            {...props}
+            items={[
+              {
+                title: 'Pricing',
+                href: '/pro/pricing',
+              },
+              { title: 'Pro Examples', href: '/pro/examples' },
+              { title: 'Enterprise', href: '/pro/enterprise' },
+            ]}
+          />
+        );
+      }
+
+      return <Navbar {...props} />;
+    },
+    extraContent: () => {
+      const isPro = useIsPro();
+
+      if (isPro) {
+        return (
+          <Button asChild>
+            <Link href="https://pro.xyflow.com/signup">Sign Up</Link>
+          </Button>
+        );
+      }
+
+      return (
+        <Button asChild>
+          <Link href="/pro">Pro</Link>
+        </Button>
+      );
+    },
   },
   footer: {
     component: () => {
-      const router = useRouter();
-      const imageSrc = !['/', '/about'].includes(router.pathname)
-        ? aboutImage
-        : undefined;
-
-      return <Footer imageSrc={imageSrc} />;
+      return <Footer imageSrc={aboutImage} />;
     },
   },
   search: {
-    component: Search,
+    component: (props) => {
+      const isPro = useIsPro();
+
+      if (isPro) {
+        return null;
+      }
+
+      return <Search {...props} />;
+    },
   },
   feedback: {
-    useLink: () => '/contact',
+    useLink: () => 'https://xyflow.com/contact',
   },
   primaryHue: 330,
   primarySaturation: 100,

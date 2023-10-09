@@ -1,11 +1,13 @@
-import { useState, useCallback } from 'react';
-import { Button, Alert, AlertTitle, AlertDescription } from 'xy-ui';
+'use client';
 
-export type ContactFormProps = {
-  children: React.ReactNode;
+import { useState, useCallback } from 'react';
+import { Button, Alert, AlertTitle, AlertDescription } from '../../..';
+
+type ContactFormProps = {
+  children?: React.ReactNode;
 };
 
-export default function ContactForm({ children }) {
+function ContactForm({ children }: ContactFormProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -17,10 +19,11 @@ export default function ContactForm({ children }) {
     setIsError(false);
 
     const formData = new FormData(e.currentTarget);
+    // @ts-ignore
     const data = Object.fromEntries(formData.entries());
 
     try {
-      const response = await fetch(process.env.NEXT_PUBLIC_CONTACT_FORM_URL, {
+      const response = await fetch(process.env.NEXT_PUBLIC_CONTACT_FORM_URL as string, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -75,3 +78,5 @@ export default function ContactForm({ children }) {
     </div>
   );
 }
+
+export { ContactForm, type ContactFormProps };

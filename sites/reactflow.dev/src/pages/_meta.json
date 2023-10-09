@@ -38,5 +38,27 @@
     "theme": {
       "layout": "raw"
     }
+  },
+  "community": {
+    "title": "Community",
+    "type": "menu",
+    "items": {
+      "showcase": {
+        "title": "Showcase",
+        "href": "/showcase"
+      },
+      "case-studies": {
+        "title": "Case Studies",
+        "href": "/case-studies"
+      },
+      "github": {
+        "title": "Github",
+        "href": "https://github.com/xyflow"
+      },
+      "contact": {
+        "title": "Contact Us",
+        "href": "mailto:info@xyflow.com"
+      }
+    }
   }
 }

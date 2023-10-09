@@ -32,6 +32,7 @@ export * from './components/ui/text';
 export * from './components/widgets/authors-list';
 export * from './components/widgets/blog-post';
 export * from './components/widgets/code-viewer';
+export * from './components/widgets/contact-form';
 export * from './components/widgets/footer';
 export * from './components/widgets/pricing-table';
 export * from './components/widgets/project-preview';
