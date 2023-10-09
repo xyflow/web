@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useRef } from 'react';
 import { getSmoothStepPath, type Position } from '@xyflow/system';
 
@@ -27,7 +29,7 @@ export function useConnectionDrawer() {
           const path = svg.querySelector('path')!;
           const width = Math.max(
             Math.abs(fromHandleBounds.left - toHandleBounds.left),
-            2,
+            2
           );
           const height = Math.abs(fromHandleBounds.top - toHandleBounds.top);
 
@@ -44,10 +46,10 @@ export function useConnectionDrawer() {
             isRTL || isSmallScreen ? 'auto' : `${handleWidth / 2 - 1}px`;
           svg.style.top = `${handleHeight / 2 - 1}px`;
           const sourcePosition = sourceHandle.getAttribute(
-            'data-position',
+            'data-position'
           ) as Position;
           const targetPosition = targetHandle.getAttribute(
-            'data-position',
+            'data-position'
           ) as Position;
 
           const [edgePath] = getSmoothStepPath({
@@ -89,14 +91,14 @@ function collectHandles(container: HTMLElement): {
 
 function createMatchedPairs(
   container: HTMLElement,
-  sourceHandles: HTMLElement[],
+  sourceHandles: HTMLElement[]
 ): [HTMLElement, HTMLElement][] {
   const pairs: [HTMLElement, HTMLElement][] = [];
 
   for (const sourceHandle of sourceHandles) {
     const targetHandleId = sourceHandle.getAttribute('data-to')!;
     const targetHandle = container.querySelector<HTMLElement>(
-      `[data-portid="${targetHandleId}"`,
+      `[data-portid="${targetHandleId}"`
     );
 
     if (sourceHandle && targetHandle) {
