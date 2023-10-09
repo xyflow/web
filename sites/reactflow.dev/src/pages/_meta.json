@@ -13,11 +13,11 @@
     }
   },
 
-  "docs": "Docs",
-  "api-reference": {
+  "learn": "Learn",
+  "examples": "Examples",
+  "reference": {
     "title": "Reference"
   },
-  "examples": "Examples",
   "showcase": {
     "title": "Showcase",
     "display": "hidden",
