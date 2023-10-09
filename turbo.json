@@ -1,20 +1,23 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalEnv": ["NODE_ENV"],
-  "globalDependencies": ["**/.env.*local"],
+  "globalDotEnv": [".env"],
+  "globalEnv": ["NODE_ENV",  "NEXT_PUBLIC_*", "GITHUB_API_URL", "NPM_SVELTE_FLOW", "NPM_REACT_FLOW", "NPM_REACT_FLOW_LEGACY"],
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
       "outputs": [".next/**", "!.next/cache/**"],
-      "env": ["NODE_ENV"]
+      "dotEnv": [".env.production.local", ".env.local", ".env.production", ".env"]
     },
     "lint": {
-      "env": ["NODE_ENV"]
+      "dotEnv": [".env.development.local", ".env.local", ".env.development", ".env"]
     },
     "dev": {
       "cache": false,
       "persistent": true,
-      "env": ["NODE_ENV"]
+      "dotEnv": [".env.development.local", ".env.local", ".env.development", ".env"]
+    },
+    "test": {
+      "dotEnv": [".env.test.local", ".env.test", ".env"]
     }
   }
 }

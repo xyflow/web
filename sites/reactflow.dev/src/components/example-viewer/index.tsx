@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { CodeViewer, CodeViewerProps } from 'xy-ui';
-import { REACT_FLOW_VERSION } from '@/constants';
 
 type ExampleViewerProps = CodeViewerProps & {
   codePath: string;
@@ -22,7 +21,7 @@ export default function ExampleViewer({
   const [files, setFiles] = useState(null);
   const scriptExtension = isTypescript ? 'tsx' : 'js';
   const dependenciesWithDefault = {
-    reactflow: REACT_FLOW_VERSION,
+    reactflow: process.env.NEXT_PUBLIC_REACT_FLOW_VERSION,
     ...dependencies,
   };
 
