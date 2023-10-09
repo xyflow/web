@@ -14,10 +14,13 @@
   },
 
   "docs": "Docs",
+  "api-reference": {
+    "title": "Reference"
+  },
   "examples": "Examples",
-  "api-reference": "API",
   "showcase": {
     "title": "Showcase",
+    "display": "hidden",
     "theme": {
       "layout": "raw"
     }
@@ -31,6 +34,7 @@
   },
   "case-studies": {
     "title": "Case Studies",
+    "display": "hidden",
     "theme": {
       "layout": "raw"
     }

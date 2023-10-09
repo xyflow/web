@@ -11,7 +11,7 @@ export type ShowcaseLayoutProps = {
   title: string;
   subtitle: string;
   showcases?: ShowcaseItem[];
-  footer?: React.ReactNode;
+  children?: React.ReactNode;
 };
 
 export type ShowcaseItem = {
@@ -27,7 +27,7 @@ export function ShowcaseLayout({
   title,
   subtitle,
   showcases = [],
-  footer,
+  children,
 }: ShowcaseLayoutProps) {
   return (
     <BaseLayout>
@@ -71,8 +71,7 @@ export function ShowcaseLayout({
           />
         </ContentGridItem>
       </ContentGrid>
-
-      {footer}
+      {children}
     </BaseLayout>
   );
 }
