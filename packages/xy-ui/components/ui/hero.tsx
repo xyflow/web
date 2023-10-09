@@ -1,11 +1,10 @@
 import { type ReactNode } from 'react';
-import cn from 'clsx';
+import { cn } from '../../lib/utils';
 
-import { Heading, HeroIcon, Text } from 'xy-ui';
-import useXYSite from '@/hooks/use-xy-site';
-import useConnectionDrawer from '@/hooks/use-connection-drawer';
+import { Heading, HeroIcon, Text } from '../../';
+import { useConnectionDrawer } from '../../';
 
-type HeroProps = {
+export type HeroProps = {
   title?: ReactNode;
   subtitle?: ReactNode;
   kicker?: ReactNode;
@@ -18,7 +17,7 @@ type HeroProps = {
   showGradient?: boolean;
 };
 
-export default function Hero({
+export function Hero({
   title,
   subtitle,
   kicker,
@@ -30,7 +29,6 @@ export default function Hero({
   size = 'lg',
   showGradient = false,
 }: HeroProps) {
-  const { site } = useXYSite();
   const isCenter = align === 'center';
   const isXL = size === 'xl';
   const ref = useConnectionDrawer();
@@ -53,16 +51,15 @@ export default function Hero({
           !isCenter && 'grid lg:grid-cols-2 lg:gap-40',
           isCenter && 'max-w-3xl mx-auto',
           isXL && 'max-w-6xl',
-          className
+          className,
         )}
       >
         <div className={cn(isCenter && 'text-center')}>
           {kicker && (
             <h3
               className={cn(
-                'text-sm font-bold mb-6 flex items-center uppercase tracking-wider',
+                'text-sm font-bold mb-6 flex items-center uppercase tracking-wider text-primary',
                 isCenter && 'justify-center',
-                `text-${site}`
               )}
             >
               {KickerIcon && (
@@ -79,7 +76,10 @@ export default function Hero({
           {subtitle && (
             <Text
               size="lg"
-              className={cn('mb-4 lg:mb-6 max-w-3xl', isCenter && 'mx-auto')}
+              className={cn(
+                'leading-7 mb-4 lg:mb-6 max-w-3xl',
+                isCenter && 'mx-auto',
+              )}
             >
               {subtitle}
             </Text>

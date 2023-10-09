@@ -3,24 +3,24 @@ import {
   ContentGrid,
   ContentGridItem,
   Button,
+  Hero,
   ProjectPreview,
 } from 'xy-ui';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
-import Hero from '@/page-sections/hero';
 import Subscribe from '@/page-sections/subscribe';
 import { getMdxPagesUnderRoute } from '@/utils';
 import { getPagesUnderRoute } from 'nextra/context';
 
 function getProExamplesUnderRoute(route) {
   return getMdxPagesUnderRoute(route).filter(
-    (page) => page.frontMatter?.sidebar_class_name === 'pro'
+    (page) => page.frontMatter?.sidebar_class_name === 'pro',
   );
 }
 
 function getProExamples() {
   const exampleFolders = getPagesUnderRoute('/examples').filter(
-    (page) => page.kind === 'Folder'
+    (page) => page.kind === 'Folder',
   );
 
   return exampleFolders.reduce((acc, folder) => {

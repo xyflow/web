@@ -1,9 +1,10 @@
 export * from './components/layout/base';
 export * from './components/layout/blog-post';
-export * from './components/layout/case-study';
-export * from './components/layout/text-only';
-export * from './components/layout/example';
 export * from './components/layout/breakout';
+export * from './components/layout/case-study';
+export * from './components/layout/example';
+export * from './components/layout/showcase';
+export * from './components/layout/text-only';
 
 export * from './components/ui/accordion';
 export * from './components/ui/alert-dialog';
@@ -15,6 +16,7 @@ export * from './components/ui/container';
 export * from './components/ui/content-grid';
 export * from './components/ui/emoji';
 export * from './components/ui/heading';
+export * from './components/ui/hero';
 export * from './components/ui/input';
 export * from './components/ui/label';
 export * from './components/ui/list-wrapper';
@@ -35,6 +37,8 @@ export * from './components/widgets/pricing-table';
 export * from './components/widgets/project-preview';
 export * from './components/widgets/react-player-lazy';
 export * from './components/widgets/hero-flow';
+
+export * from './hooks/use-connection-drawer';
 
 export * from './lib/utils';
 

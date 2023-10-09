@@ -31,23 +31,21 @@ export type CaseStudyFrontmatter = {
 };
 
 export type CaseStudyLayoutProps = {
-  useCaseStudyMetadata: () => {
-    frontMatter: CaseStudyFrontmatter;
-    prev?: MdxFile;
-    next?: MdxFile;
-  };
+  frontMatter: CaseStudyFrontmatter;
+  prev?: MdxFile;
+  next?: MdxFile;
   children: ReactNode;
 };
 
 export function CaseStudyLayout({
-  useCaseStudyMetadata,
+  frontMatter,
+  prev,
+  next,
   children,
 }: CaseStudyLayoutProps) {
-  const { frontMatter, prev, next } = useCaseStudyMetadata();
-
   return (
     <>
-      <div className="max-w-3xl mx-auto">
+      <div className="max-w-3xl mx-auto px-6">
         <div className="flex mt-16 items-end">
           <Link href="." className="mr-1 text-md text-gray-500 font-normal">
             Case Studies
@@ -61,7 +59,7 @@ export function CaseStudyLayout({
         <AuthorList authors={frontMatter.authors} className="mt-6" />
       </div>
 
-      <Container className="mx-auto mt-8 bg-gray-50">
+      <Container className="mx-auto mt-8 bg-gray-50 max-w-screen-xl">
         <Image
           src={frontMatter.image}
           width={frontMatter.image_width}
@@ -70,19 +68,21 @@ export function CaseStudyLayout({
         />
       </Container>
 
-      <div className="max-w-3xl mx-auto">{children}</div>
+      <div className="max-w-3xl mx-auto px-6">{children}</div>
 
-      <CaseStudyPreviews prev={prev} next={next} />
+      <div className="mx-auto max-w-screen-xl">
+        <CaseStudyPreviews prev={prev} next={next} />
+      </div>
 
-      <div className="text-center">
+      <div className="text-center mb-10">
         <Heading as="h3" className="mb-4 mt-24 font-bold">
-          Get React Flow <span className="text-react">Pro</span> today
+          Get React Flow <span className="text-primary">Pro</span> today
         </Heading>
         <Text size="lg">
           Ensure the sustainable maintenance and development of the React Flow
           library.
         </Text>
-        <Button size="lg" asChild variant="react-pro" className="mt-12 mb-16">
+        <Button size="lg" asChild variant="pro" className="mt-12 mb-16">
           <Link href="/react-flow/pro" className="flex items-center">
             <SparklesIcon className="w-5 h-5 mr-1" />
             React Flow Pro
