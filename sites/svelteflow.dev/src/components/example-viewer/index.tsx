@@ -2,16 +2,12 @@ import { useEffect, useState } from 'react';
 import sdk from '@stackblitz/sdk';
 
 import { Button, CodeViewer } from 'xy-ui';
-import SvelteSetup from './svelte/setup';
-
-import { Framework } from '@/types';
-import { SVELTE_EXAMPLES_URL } from '@/constants';
+import SvelteSetup from './setup'
 
 type SvelteExampleProps = {
   codePath: string;
-  framework?: Framework;
   activeFile?: string;
-  editorHeight: string;
+  editorHeight: number | string;
 };
 
 export default function SvelteExample({
@@ -55,7 +51,7 @@ export default function SvelteExample({
   useEffect(() => {
     async function fetchFiles() {
       try {
-        const response = await fetch(`${SVELTE_EXAMPLES_URL}${codePath}`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_SVELTE_EXAMPLES_URL}${codePath}`, {
           method: 'POST',
         });
 
@@ -93,12 +89,13 @@ export default function SvelteExample({
       files={files}
       editorHeight={editorHeight}
       showOpenInCodeSandbox={false}
+      framework="svelte"
       readOnly
       customPreview={
         <iframe
-          src={`${SVELTE_EXAMPLES_URL}${codePath}`}
+          src={`${process.env.NEXT_PUBLIC_SVELTE_EXAMPLES_URL}${codePath}`}
           width="100%"
-          height={editorHeight}
+          height="100%"
         />
       }
       customOpenButton={

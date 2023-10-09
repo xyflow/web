@@ -1,4 +1,3 @@
-import { Framework } from '@/types';
 import { MdxFile } from 'nextra';
 import { getPagesUnderRoute } from 'nextra/context';
 
@@ -24,20 +23,4 @@ export function getPrevAndNextPagesByTitle(title, route: string) {
   const nextPage = pages[nextIndex];
 
   return [prevPage, nextPage];
-}
-
-const colors = {
-  react: '#ff0072',
-  svelte: '#ff4000',
-  xyflow: '#000',
-};
-
-export function getColorBySite(site: Framework | 'xyflow') {
-  return colors[site];
-}
-
-export function isDevelopment() {
-  return (
-    typeof process !== 'undefined' && process.env.NODE_ENV === 'development'
-  );
 }

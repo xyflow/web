@@ -1,16 +1,13 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { BaseLayout, Button, PricingTable } from 'xy-ui';
+import { BaseLayout, Button, Hero, PricingTable } from 'xy-ui';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 
-import Hero from '@/page-sections/hero';
 import ClientLogos from '@/components/client-logos';
 import ImageSlider from '@/page-sections/image-slider';
 import FAQ from '@/components/faq';
 import Section from '@/page-sections/section';
 import SubscribeSection from '@/page-sections/subscribe';
-
-import { PRO_PLATFORM_SIGNUP_URL } from '@/constants';
 
 const sliderItems = [
   {
@@ -53,7 +50,7 @@ export default function ReactFlowPro() {
         kicker="xyflow Pro"
         action={
           <Button asChild size="lg" variant="pro">
-            <Link href={PRO_PLATFORM_SIGNUP_URL}>
+            <Link href={process.env.NEXT_PUBLIC_PRO_PLATFORM_SIGNUP_URL}>
               <SparklesIcon className="w-5 h-5 mr-2" /> Get Started
             </Link>
           </Button>

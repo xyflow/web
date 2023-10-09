@@ -11,8 +11,8 @@ import {
   Heading,
   Button,
   Logo,
+  Hero,
 } from 'xy-ui';
-import Hero from '@/page-sections/hero';
 import ImageSlider from '@/page-sections/image-slider';
 import HeadlineNode from '@/components/headline-node';
 import Handle from '@/components/handle';

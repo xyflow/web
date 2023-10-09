@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: 'https://xyflow.com',
+  siteUrl: 'https://reactflow.dev',
   generateRobotsTxt: true,
   generateIndexSitemap: false,
   exclude: ['/error/*'],

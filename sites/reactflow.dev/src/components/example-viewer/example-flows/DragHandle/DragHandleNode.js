@@ -22,7 +22,9 @@ function DragHandleNode() {
     <>
       <Handle type="target" position={Position.Left} onConnect={onConnect} />
       <div style={labelStyle}>
-        Only draggable here → <span className="custom-drag-handle" style={dragHandleStyle} />
+        Only draggable here →
+        {/* Use the class specified at node.dragHandle here */}
+        <span className="custom-drag-handle" style={dragHandleStyle} />
       </div>
       <Handle type="source" position={Position.Right} />
     </>

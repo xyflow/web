@@ -12,11 +12,28 @@
       "layout": "raw"
     }
   },
+
   "docs": "Docs",
-  "api-reference": "API",
+  "api-reference": {
+    "title": "Reference"
+  },
   "examples": "Examples",
+  "showcase": {
+    "title": "Showcase",
+    "display": "hidden",
+    "theme": {
+      "layout": "raw"
+    }
+  },
   "pro": {
     "title": "Pro",
+    "display": "hidden",
+    "theme": {
+      "layout": "raw"
+    }
+  },
+  "case-studies": {
+    "title": "Case Studies",
     "display": "hidden",
     "theme": {
       "layout": "raw"

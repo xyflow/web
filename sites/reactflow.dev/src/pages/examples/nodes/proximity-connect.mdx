@@ -1,12 +1,13 @@
 ---
 title: Proximity Connect
+description: Example showing how to automatically create edges when nodes get close to each other
 ---
 
 import ExampleViewer from '@/components/example-viewer';
-import { ExampleLayout } from 'xy-ui';
+import ExampleLayout from '@/layouts/example-with-frontmatter';
 
 <ExampleLayout>
-This example shows how to create an edge when a node is dragged within a certain distance of another node. When the dragged node comes within a specified radius of another node, the connecting line will appear.
+This example shows how to automatically create edges when a node is dropped in close proximity to another one. While dragging, a dotted connection line is displayed to show which edge will be created if you drop the node.
 
 <ExampleViewer
   codePath="example-flows/ProximityConnect"
