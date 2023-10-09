@@ -1,18 +1,22 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useSSG } from 'nextra/ssg';
-import { SparklesIcon } from '@heroicons/react/24/outline';
-
-import { Button, Heading, Text } from 'xy-ui';
-import BaseLayout from '@/layouts/base';
-import HeroFlow from '@/page-sections/hero-flow';
+import {
+  BaseLayout,
+  Button,
+  Heading,
+  Text,
+  ContentGrid,
+  ContentGridItem,
+  HeroFlow,
+} from 'xy-ui';
+import { SparklesIcon, BoltIcon } from '@heroicons/react/24/outline';
 import Stats, { StatsDisplay } from '@/page-sections/stats';
 import Features from '@/page-sections/features';
 import ImageSlider from '@/page-sections/image-slider';
 import Section from '@/page-sections/section';
 import GettingStarted from '@/page-sections/getting-started';
 import ClientLogos from '@/components/client-logos';
-import ContentGrid, { ContentGridItem } from '@/components/content-grid';
 import ProjectPreview from '@/components/project-preview';
 
 import FlowA from './flows/flow-a';
@@ -90,11 +94,29 @@ export default function ReactFlowHome() {
 
   return (
     <BaseLayout>
-      <HeroFlow />
+      <HeroFlow
+        title="React Flow"
+        initialColor="#ff0071"
+        subtitle="A customizable React component for building node-based editors and interactive diagrams"
+        action={
+          <div className="flex">
+            <Button asChild className="mr-3 ">
+              <Link href="/docs">
+                <BoltIcon className="w-5 h-5 mr-1" />
+                Quickstart
+              </Link>
+            </Button>
+            <Button variant="pro" asChild>
+              <Link href="/pro">
+                <SparklesIcon className="w-5 h-5 mr-1" /> React Flow Pro
+              </Link>
+            </Button>
+          </div>
+        }
+      />
 
       <Section className="mt-6 lg:mt-10">
         <Stats
-          variant="react"
           stats={[
             { label: 'Github Stars', value: `${(stars / 1000).toFixed(1)}k` },
             {
@@ -116,7 +138,7 @@ export default function ReactFlowHome() {
       <GettingStarted />
 
       <Section>
-        <Features features={features} variant="react" />
+        <Features features={features} />
       </Section>
 
       <Section>
@@ -125,39 +147,7 @@ export default function ReactFlowHome() {
 
       <ImageSlider items={sliderItems} />
 
-      <Section className="lg:flex place-content-between">
-        <div>
-          <Heading size="md" className="font-bold">
-            Some headline thing
-          </Heading>
-          <Text className="mt-2 mb-4">
-            Here is a text about ethical standards and stuff
-          </Text>
-          <Button asChild>
-            <Link href="/">Not sure</Link>
-          </Button>
-        </div>
-        <div className="grid grid-cols-2 mt-10 lg:mt-0">
-          {[
-            { label: 'Github Stars', value: `${(stars / 1000).toFixed(1)}k` },
-            {
-              label: 'Weekly Installs',
-              value: `${(downloads / 1000).toFixed(0)}k`,
-            },
-            { label: 'License', value: 'MIT' },
-            { label: 'License', value: 'MITs' },
-          ].map((s) => (
-            <StatsDisplay
-              key={`${s.label}-${s.value}`}
-              variant="react"
-              className="mb-6 lg:ml-20"
-              {...s}
-            />
-          ))}
-        </div>
-      </Section>
-
-      <Section className=" lg:mt-48 lg:-mb-24">
+      <Section>
         <Heading
           size="md"
           className="text-center font-bold mt-32 mb-12 max-w-lg mx-auto "
@@ -180,6 +170,35 @@ export default function ReactFlowHome() {
             />
           </ContentGridItem>
         </ContentGrid>
+      </Section>
+
+      <Section className="lg:flex place-content-between">
+        <div>
+          <Heading size="md" className="font-bold">
+            Questions?
+          </Heading>
+          <Text className="mt-2 mb-4">Contact Us</Text>
+          <Button asChild>
+            <Link href="/contact">Contact Us</Link>
+          </Button>
+        </div>
+        <div className="grid grid-cols-2 mt-10 lg:mt-0">
+          {[
+            { label: 'Github Stars', value: `${(stars / 1000).toFixed(1)}k` },
+            {
+              label: 'Weekly Installs',
+              value: `${(downloads / 1000).toFixed(0)}k`,
+            },
+            { label: 'License', value: 'MIT' },
+            { label: 'License', value: 'MITs' },
+          ].map((s) => (
+            <StatsDisplay
+              key={`${s.label}-${s.value}`}
+              className="mb-6 lg:ml-20"
+              {...s}
+            />
+          ))}
+        </div>
       </Section>
     </BaseLayout>
   );

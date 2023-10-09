@@ -11,13 +11,19 @@ import {
   ChatBubbleOvalLeftEllipsisIcon,
   VideoCameraIcon,
 } from '@heroicons/react/24/outline';
+import {
+  BaseLayout,
+  ContentGrid,
+  ContentGridItem,
+  Heading,
+  ListWrapper,
+  Text,
+  Hero,
+  Button,
+  type HeroIcon,
+} from 'xy-ui';
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 import Link from 'next/link';
-
-import { Heading, ListWrapper, Text, Button, type HeroIcon } from 'xy-ui';
-import BaseLayout from '@/layouts/base';
-import Hero from '@/page-sections/hero';
-import ContentGrid, { ContentGridItem } from '@/components/content-grid';
 
 function Kicker() {
   return (
@@ -97,28 +103,24 @@ export default function CaseStudies() {
       <ListWrapper
         className="mt-16 lg:mt-24"
         icon={SparklesIcon}
-        iconClassName="text-svelte"
+        iconClassName="text-primary"
         title="Other ways to support us"
         subtitle="You or your organization can also..."
       >
         <ListItem
           icon={DocumentDuplicateIcon}
           label="Improve and edit our docs"
-          link="/svelte-flow"
+          link="/docs"
         />
         <ListItem
           icon={StarIcon}
           label="Star us on Github"
-          link="/svelte-flow"
+          link="https://github.com/xyflow/xy-flow"
         />
         <ListItem
           icon={ChatBubbleOvalLeftEllipsisIcon}
           label="Tweet/toot about us"
-          link="/svelte-flow"
-        />
-        <ListItem
-          icon={VideoCameraIcon}
-          label="Create Tutorials for Svelte Flow"
+          link="https://x.com/xyflow"
         />
       </ListWrapper>
     </BaseLayout>
@@ -138,7 +140,7 @@ function GridItem({
 }) {
   return (
     <ContentGridItem>
-      <Icon className="text-svelte w-8 h-8" />
+      <Icon className="text-primary w-8 h-8" />
       <Heading size="sm" className="mt-2 mb-4" as="p">
         {title}
       </Heading>
@@ -150,7 +152,7 @@ function GridItem({
         {links &&
           links.map((link) => {
             return (
-              <Button asChild variant="link" className="text-svelte text-md">
+              <Button asChild variant="link" className="text-primary text-md">
                 <Link href={link.route}>
                   {link.linkName}{' '}
                   <ArrowRightCircleIcon className="ml-1 w-4 h-4" />
@@ -177,11 +179,13 @@ function ListItem({
   return (
     <WrapperComponent
       href={link}
-      className="flex py-6 border-b border-solid border-gray-100"
+      className="flex py-6 px-4 border-b border-solid border-gray-100 hover:bg-gray-50"
     >
       <Icon className="w-6 h-6 mr-2" />
       <Text className="font-bold">{label}</Text>
-      {link && <ArrowRightCircleIcon className="text-svelte w-6 h-6 ml-auto" />}
+      {link && (
+        <ArrowRightCircleIcon className="text-primary w-6 h-6 ml-auto" />
+      )}
     </WrapperComponent>
   );
 }

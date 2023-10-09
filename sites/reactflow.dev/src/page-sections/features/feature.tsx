@@ -27,7 +27,6 @@ export type FeatureProps = {
 export default function Feature({
   index,
   featureCount,
-  variant = 'react',
   title,
   text,
   route,
@@ -35,7 +34,6 @@ export default function Feature({
 }: {
   index: number;
   featureCount: number;
-  variant?: 'react' | 'svelte' | 'xyflow';
   flowComponent?: React.ComponentType;
 } & FeatureProps) {
   const sourceHandleId = `source-${index}`;
@@ -77,7 +75,6 @@ export default function Feature({
           {index > 0 && (
             <Handle
               id={targetHandleId}
-              variant={variant}
               className="-top-4 left-10 md:left-1/2"
               type="target"
               position={Position.Top}
@@ -87,7 +84,6 @@ export default function Feature({
           {index < featureCount - 1 && (
             <Handle
               id={sourceHandleId}
-              variant={variant}
               className="-bottom-[18px] right-10 md:left-1/2 md:right-auto"
               handleClassName="shadow-md"
               position={Position.Bottom}

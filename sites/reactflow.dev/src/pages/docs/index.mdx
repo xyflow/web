@@ -9,9 +9,9 @@ pagination_next: null
 
 import { Tab, Tabs, Cards, Card } from 'nextra/components';
 
-import Emoji from '@/components/emoji';
-import CodeViewer from '@/components/code-viewer';
-import ReactPlayer from '@/components/react-player-lazy';
+import { Emoji } from 'xy-ui';
+import ExampleViewer from '@/components/example-viewer';
+import { ReactPlayer } from 'xy-ui';
 
 If you want to get up-and-running as soon as possible you're in the right place!
 This page will take you from zero to a working React Flow app in a few minutes.
@@ -278,7 +278,7 @@ export default function App() {
 }
 ```
 
-<CodeViewer
+<ExampleViewer
   codePath="api-flows/Quickstart"
   applyStyles={false}
   showEditor={false}

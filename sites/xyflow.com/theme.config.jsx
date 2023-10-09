@@ -1,11 +1,9 @@
 import { useRouter } from 'next/router';
 import { useConfig } from 'nextra-theme-docs';
+import { Footer, Button, LogoLabel } from 'xy-ui';
 
-import Logo from '@/components/navbar-logo';
-import Navbar, { NavBarAdditional } from '@/components/navbar';
+import aboutImage from './public/img/about.jpg';
 import SidebarTitle from '@/components/sidebar-title';
-import { Footer } from 'xy-ui';
-import Search from '@/components/search';
 import useXYSite from '@/hooks/use-xy-site';
 
 const baseUrl =
@@ -42,7 +40,7 @@ function getOGMetaTags({ isArticle, url, frontMatter }) {
 }
 
 export default {
-  logo: Logo,
+  logo: () => <LogoLabel label="xyflow" />,
   logoLink: false,
   docsRepositoryBase: 'https://github.com/xyflow/web/tree/main/sites/docs',
   // this is necessary to hide the github icon
@@ -53,17 +51,24 @@ export default {
     defaultTheme: 'light',
   },
   navbar: {
-    component: Navbar,
-    extraContent: NavBarAdditional,
+    // component: Navbar,
+    extraContent: () => <Button>Contact Us</Button>,
   },
   sidebar: {
     titleComponent: SidebarTitle,
   },
   footer: {
-    component: Footer,
+    component: () => {
+      const router = useRouter();
+      const imageSrc = !['/', '/about'].includes(router.pathname)
+        ? aboutImage
+        : undefined;
+
+      return <Footer imageSrc={imageSrc} />;
+    },
   },
   search: {
-    component: Search,
+    component: () => null,
   },
   feedback: {
     useLink: () => '/contact',

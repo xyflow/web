@@ -12,7 +12,6 @@
     "check-sitemap": "node scripts/check-sitemap.mjs"
   },
   "dependencies": {
-    "@codesandbox/sandpack-react": "^2.6.9",
     "@docsearch/react": "3",
     "@heroicons/react": "^2.0.18",
     "@mdx-js/loader": "^2.3.0",

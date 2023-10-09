@@ -12,8 +12,6 @@ import {
   cn,
 } from 'xy-ui';
 
-import useXYSite from '@/hooks/use-xy-site';
-
 type SliderItem = {
   name: string;
   text: string;
@@ -44,27 +42,18 @@ export default function ImageSlider({
   className,
   items = [],
 }: ImageSliderProps) {
-  const { site } = useXYSite();
-
   return (
     <Container variant="dark" className={className}>
       <div className="p-14">
         <div className="grid lg:grid-cols-2 lg:gap-40">
           <div>
-            <Text
-              className={cn(
-                'font-bold mb-2',
-                site !== 'xyflow' ? `text-${site}` : 'text-gray-300'
-              )}
-            >
-              {kicker}
-            </Text>
+            <Text className={cn('font-bold mb-2 text-primary')}>{kicker}</Text>
 
             <Heading className="mb-4">{title}</Heading>
           </div>
           <div>
             <Text className="mt-4 mb-4">{description}</Text>
-            <Button asChild variant="secondary" className={`text-${site}`}>
+            <Button asChild variant="secondary" className="text-primary">
               <Link href={buttonLink}>{buttonText}</Link>
             </Button>
           </div>
@@ -90,12 +79,6 @@ type ImageSliderItemsProps = {
   items: SliderItem[];
   start?: string;
   duration?: number;
-};
-
-const activeBarColours = {
-  xyflow: 'from-white/40 to-white/70',
-  react: 'from-react/40 to-react/70',
-  svelte: 'from-svelte/40 to-svelte/70',
 };
 
 function ImageSliderItems({ items, duration, start }: ImageSliderItemsProps) {
@@ -202,8 +185,6 @@ function ImageSliderItem({
   onClick,
   ...props
 }: ImageSliderItemProps) {
-  const { site } = useXYSite();
-
   return (
     <TabsTrigger
       value={item.name}
@@ -222,8 +203,7 @@ function ImageSliderItem({
           <div
             style={{ width: `${props.activeBarWidth!}%` }}
             className={cn(
-              'absolute h-full rounded bg-gradient-to-r',
-              activeBarColours[site]
+              'absolute h-full rounded bg-gradient-to-r from-primary/40 to-primary/70'
             )}
           />
         )}

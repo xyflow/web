@@ -1,5 +1,5 @@
 module.exports = {
-  ...import('../../.prettierrc'),
+  // ...import('../../.prettierrc'),
   singleQuote: true,
   trailingComma: 'none',
   printWidth: 100,

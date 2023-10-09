@@ -3,11 +3,11 @@ title: Sub Flow
 description: Rendering nested graphs and grouping nodes is possible in React Flow. You can configure the behavior of the child nodes using extent ‘group’ to the node configuration.
 ---
 
-import CodeViewer from '@/components/code-viewer';
-import ExampleLayout from '@/layouts/example';
+import ExampleViewer from '@/components/example-viewer';
+import ExampleLayout from '@/layouts/example-with-frontmatter';
 
 <ExampleLayout>
 React Flow supports rendering nested graphs and grouping of nodes. You can configure the behaviour of the child nodes using `extent: 'parent'` and render group elements without handles by passing `type: 'group'` to the node configuration. See our [Sub Flow guide](/docs/guides/sub-flows) for more information.
 
-<CodeViewer codePath="example-flows/SubFlows" />
+<ExampleViewer codePath="example-flows/SubFlows" />
 </ExampleLayout>

@@ -3,9 +3,15 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 
-import { Heading, Text, Button, Container } from 'xy-ui';
+import {
+  Heading,
+  Text,
+  Button,
+  Container,
+  AuthorList,
+  AuthorListProps,
+} from 'xy-ui';
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
-import AuthorList from '@/components/authors-list';
 
 type ProjectPreviewProps = {
   image?: string | StaticImport;
@@ -78,7 +84,11 @@ export default function ProjectPreview({
           </Text>
         )}
         {authors && (
-          <AuthorList noLink={!route} authors={authors} className="mt-6" />
+          <AuthorList
+            noLink={!route}
+            authors={authors as AuthorListProps['authors']}
+            className="mt-6"
+          />
         )}
         {description && (
           <Text variant="light" className="leading-snug mt-4 mb-8" size="lg">

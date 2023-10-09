@@ -6,14 +6,9 @@ import Feature, { FeatureProps } from './feature';
 type FeaturesProps = {
   features: FeatureProps[];
   className?: string;
-  variant?: 'react' | 'svelte' | 'xyflow';
 };
 
-export default function Features({
-  features,
-  variant = 'react',
-  className,
-}: FeaturesProps) {
+export default function Features({ features, className }: FeaturesProps) {
   const ref = useConnectionDrawer();
 
   return (
@@ -21,7 +16,6 @@ export default function Features({
       {features.map((feature, index) => (
         <Feature
           key={`feature-${index}`}
-          variant={variant}
           featureCount={features.length}
           index={index}
           {...feature}

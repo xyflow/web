@@ -1,23 +1,26 @@
-import { Button } from 'xy-ui';
+import {
+  BaseLayout,
+  ContentGrid,
+  ContentGridItem,
+  Button,
+  Hero,
+  ProjectPreview,
+} from 'xy-ui';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
-import BaseLayout from '@/layouts/base';
-import Hero from '@/page-sections/hero';
 import Subscribe from '@/page-sections/subscribe';
-import ContentGrid, { ContentGridItem } from '@/components/content-grid';
-import ProjectPreview from '@/components/project-preview';
 import { getMdxPagesUnderRoute } from '@/utils';
 import { getPagesUnderRoute } from 'nextra/context';
 
 function getProExamplesUnderRoute(route) {
   return getMdxPagesUnderRoute(route).filter(
-    (page) => page.frontMatter?.sidebar_class_name === 'pro'
+    (page) => page.frontMatter?.sidebar_class_name === 'pro',
   );
 }
 
 function getProExamples() {
-  const exampleFolders = getPagesUnderRoute('/react-flow/examples').filter(
-    (page) => page.kind === 'Folder'
+  const exampleFolders = getPagesUnderRoute('/examples').filter(
+    (page) => page.kind === 'Folder',
   );
 
   return exampleFolders.reduce((acc, folder) => {
@@ -39,10 +42,8 @@ export default function ProExamples() {
         align="center"
         action={
           <div className="flex gap-2 justify-center">
-            <Button size="lg" variant="react">
-              Get Started
-            </Button>
-            <Button asChild size="lg" variant="react-pro">
+            <Button size="lg">Get Started</Button>
+            <Button asChild size="lg" variant="pro">
               <Link href="/react-flow/pro/pricing">Pricing</Link>
             </Button>
           </div>

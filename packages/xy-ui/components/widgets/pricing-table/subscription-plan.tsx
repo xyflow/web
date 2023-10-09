@@ -37,7 +37,7 @@ function Features({
         <li key={`feat-${i}`} className="mb-2 flex gap-1">
           <CheckCircleIcon
             className={cn('w-[21px] h-[21px] shrink-0 mt-0.5', {
-              'text-react': highlighted,
+              'text-primary': highlighted,
             })}
           />
           {item.label}
@@ -96,7 +96,7 @@ export default function Plan({
   pricing,
   currency,
   billingInterval,
-  buttonVariant = 'default',
+  buttonVariant = 'black',
   buttonLabel = 'Sign up',
   isLoading = false,
   onSelect = ({ plan }) => {
@@ -115,10 +115,10 @@ export default function Plan({
       className={cn(
         'p-8 md:p-12 lg:p-14',
         highlighted &&
-          'border-x border-solid border-gray-100 bg-gradient-to-b from-react/5'
+          'border-x border-solid border-gray-100 bg-gradient-to-b from-primary/5'
       )}
     >
-      <div className={cn('font-bold text-4xl', highlighted && 'text-react')}>
+      <div className={cn('font-bold text-4xl', highlighted && 'text-primary')}>
         {label}
       </div>
       <div className="text-lg leading-tight h-[120px] relative mt-6">
@@ -130,7 +130,7 @@ export default function Plan({
           <Button
             className="shrink-0"
             size="lg"
-            variant={highlighted ? 'react' : buttonVariant}
+            variant={highlighted ? 'default' : buttonVariant}
             loading={isLoading}
             onClick={() => onSelect({ plan: id, currency, billingInterval })}
           >

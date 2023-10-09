@@ -3,13 +3,13 @@ title: Styled Components Light + Dark Mode
 description: You can use any library you want to style your components. In this example we are using styled components to show how to create a simple dark / light mode.
 ---
 
-import CodeViewer from '@/components/code-viewer';
-import ExampleLayout from '@/layouts/example';
+import ExampleViewer from '@/components/example-viewer';
+import ExampleLayout from '@/layouts/example-with-frontmatter';
 
 <ExampleLayout>
 In this example we are using [styled components](https://styled-components.com/) to show how to implement a dark and light mode.
 
-<CodeViewer
+<ExampleViewer
   codePath="example-flows/StyledComponents"
   additionalFiles={['CustomNode.js', 'theme.js', 'nodes-edges.js']}
   dependencies={{

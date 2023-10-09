@@ -1,10 +1,8 @@
 import { UserGroupIcon } from '@heroicons/react/24/outline';
 
-import { Heading, Text } from 'xy-ui';
+import { BaseLayout, Heading, Text, Hero } from 'xy-ui';
 import Link from 'next/link';
 import Image from 'next/image';
-import BaseLayout from '@/layouts/base';
-import Hero from '@/page-sections/hero';
 import Section from '@/page-sections/section';
 
 import ossImage from '@/../public/img/open-source/thincrustopencore.png';

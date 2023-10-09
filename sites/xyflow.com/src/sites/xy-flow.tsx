@@ -3,14 +3,19 @@ import Image from 'next/image';
 import { Position } from '@xyflow/system';
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 
-import { Text, Heading, Button } from 'xy-ui';
-import BaseLayout from '@/layouts/base';
-import Hero from '@/page-sections/hero';
+import {
+  BaseLayout,
+  ContentGrid,
+  ContentGridItem,
+  Text,
+  Heading,
+  Button,
+  Logo,
+  Hero,
+} from 'xy-ui';
 import ImageSlider from '@/page-sections/image-slider';
 import HeadlineNode from '@/components/headline-node';
 import Handle from '@/components/handle';
-import ContentGrid, { ContentGridItem } from '@/components/content-grid';
-import Logo from '@/components/logo';
 import Section from '@/page-sections/section';
 
 import aboutImage from '../../public/img/about.jpg';
@@ -160,7 +165,7 @@ function LibraryCards() {
     <ContentGrid className="mt-16 lg:mt-24">
       <ContentGridItem route="/react-flow">
         <Heading size="sm" className="flex items-center">
-          <Logo variant="react" className="mr-2" /> React Flow
+          <Logo className="mr-2 text-react" /> React Flow
         </Heading>
         <Text className="mt-2 mb-4" variant="light">
           A customizable React component for building node-based editors and
@@ -173,7 +178,7 @@ function LibraryCards() {
 
       <ContentGridItem route="/svelte-flow">
         <Heading size="sm" className="flex items-center">
-          <Logo variant="svelte" className="mr-2" /> Svelte Flow
+          <Logo className="mr-2 text-svelte" /> Svelte Flow
         </Heading>
         <Text className="mt-2 mb-4" variant="light">
           A customizable Svelte component for building node-based editors and
