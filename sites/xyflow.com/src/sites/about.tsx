@@ -147,7 +147,7 @@ function TeamCard({
         {links &&
           links.map((link) => {
             return (
-              <Button asChild variant="link" className=" text-md">
+              <Button key={link.route} asChild variant="link" className=" text-md">
                 <Link href={link.route}>
                   {link.linkName}{' '}
                   <ArrowRightCircleIcon className="ml-1 w-4 h-4" />
