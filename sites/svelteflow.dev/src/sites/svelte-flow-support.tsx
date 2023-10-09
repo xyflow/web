@@ -10,9 +10,9 @@ import {
   StarIcon,
   ChatBubbleOvalLeftEllipsisIcon,
 } from '@heroicons/react/24/outline';
+import { Hero } from 'xy-ui';
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 import Link from 'next/link';
-import Hero from '@/page-sections/hero';
 
 import {
   BaseLayout,

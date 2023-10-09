@@ -275,6 +275,9 @@ importers:
       '@react-three/fiber':
         specifier: ^8.13.7
         version: 8.13.7(react-dom@18.2.0)(react@18.2.0)(three@0.155.0)
+      '@xyflow/system':
+        specifier: ^0.0.4
+        version: 0.0.4
       class-variance-authority:
         specifier: ^0.6.0
         version: 0.6.0(typescript@5.1.3)

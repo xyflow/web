@@ -9,11 +9,10 @@ import {
   Heading,
   Text,
   Button,
-  Container,
+  Hero,
 } from 'xy-ui';
 import Image from 'next/image';
 
-import Hero from '@/page-sections/hero';
 import Section from '@/page-sections/section';
 import aboutUsImage from '@/../public/img/about.jpg';
 

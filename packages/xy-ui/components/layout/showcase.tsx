@@ -1,23 +1,41 @@
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
-
 import {
   BaseLayout,
   ContentGrid,
   ContentGridItem,
+  Hero,
   ProjectPreview,
-} from 'xy-ui';
-import Hero from '@/page-sections/hero';
+} from '../../';
 
-import showcases from '../../public/data/showcases.json';
+export type ShowcaseLayoutProps = {
+  title: string;
+  subtitle: string;
+  showcases?: ShowcaseItem[];
+  children?: React.ReactNode;
+};
 
-export default function Showcase() {
+export type ShowcaseItem = {
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+  url: string;
+  tags: { id: string; name: string }[];
+};
+
+export function ShowcaseLayout({
+  title,
+  subtitle,
+  showcases = [],
+  children,
+}: ShowcaseLayoutProps) {
   return (
     <BaseLayout>
       <Hero
         kicker="Showcase"
         kickerIcon={MagnifyingGlassIcon}
-        title="From solo open-source developers to companies like Stripe and Typeform"
-        subtitle="We’ve seen the library used for data processing tools, chatbot builders, machine learning, musical synthesizers, and more. Explore a selection of our favorite projects that use xyFlow here."
+        title={title}
+        subtitle={subtitle}
         align="center"
       />
 
@@ -41,7 +59,19 @@ export default function Showcase() {
             />
           </ContentGridItem>
         ))}
+
+        <ContentGridItem
+          route="https://github.com/xyflow/web/issues/new"
+          className={showcases.length % 2 === 0 ? 'lg:col-span-2' : ''}
+        >
+          <ProjectPreview
+            title="Your project here?"
+            description="Have you built something exciting you want to show off? We want to feature it here!"
+            linkLabel="Open an issue on GitHub"
+          />
+        </ContentGridItem>
       </ContentGrid>
+      {children}
     </BaseLayout>
   );
 }
