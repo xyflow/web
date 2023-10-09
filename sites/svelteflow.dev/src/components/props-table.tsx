@@ -2,7 +2,7 @@ import { Text } from 'xy-ui';
 import Link from 'next/link';
 import React, { useCallback, useMemo } from 'react';
 
-import * as reactFlowTypes from '@/pages/api-reference/_meta.json';
+import * as svelteFlowTypes from '@/pages/reference/_meta.json';
 
 export type PropsTableProps = {
   props: {
@@ -34,7 +34,7 @@ export function PropsTable({
       ...(variant === 'react' ? externalReactLinks : externalSvelteLinks),
       ...(variant === 'react' ? reactFlowLinks : {}),
     }),
-    [variant, links]
+    [variant, links],
   );
   // This function takes a string representing some type and attempts to turn any
   // types referenced inside into links, either internal or external.
@@ -51,9 +51,9 @@ export function PropsTable({
           </Link>
         ) : (
           chunk
-        )
+        ),
       ),
-    [links]
+    [links],
   );
 
   return (
@@ -169,7 +169,7 @@ export function PropsTable({
 // -----------------------------------------------------------------------------
 
 export const reactFlowLinks = Object.fromEntries(
-  Object.keys(reactFlowTypes).map((t) =>
+  Object.keys(svelteFlowTypes).map((t) =>
     t === 'default'
       ? []
       : [
@@ -178,8 +178,8 @@ export const reactFlowLinks = Object.fromEntries(
           // always give us the type name.
           t.split('.')[0],
           `/react-flow/api/types/${t}`,
-        ]
-  )
+        ],
+  ),
 );
 
 const externalReactLinks = {
