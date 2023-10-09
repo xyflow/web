@@ -11,9 +11,9 @@
       "layout": "raw"
     }
   },
-  "docs": "Docs",
-  "api-reference": "API",
+  "learn": "Learn",
   "examples": "Examples",
+  "reference": "Reference",
   "showcase": {
     "title": "Showcase",
     "theme": {
