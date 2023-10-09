@@ -1,13 +1,27 @@
+import { useConfig } from 'nextra-theme-docs';
 import { getPagesUnderRoute } from 'nextra/context';
 import { type MdxFile } from 'nextra';
-import { useConfig } from 'nextra-theme-docs';
+import {
+  CaseStudyLayout as BaseCaseStudyLayout,
+  type CaseStudyFrontmatter,
+} from 'xy-ui';
 
-export function useCaseStudyMetadata() {
-  const { title, frontMatter } = useConfig();
+export type CaseStudyLayoutProps = {
+  children: React.ReactNode;
+};
+
+export function CaseStudyLayout({ children }: CaseStudyLayoutProps) {
+  const { title, frontMatter } = useConfig<CaseStudyFrontmatter>();
   const { prev, next } = getPrevAndNextPagesByTitle(title, '/case-studies');
 
-  return { frontMatter, prev, next };
+  return (
+    <BaseCaseStudyLayout frontMatter={frontMatter} prev={prev} next={next}>
+      {children}
+    </BaseCaseStudyLayout>
+  );
 }
+
+export default CaseStudyLayout;
 
 // UTILS -----------------------------------------------------------------------
 
