@@ -21,5 +21,11 @@
     "theme": {
       "layout": "raw"
     }
+  },
+  "case-studies": {
+    "title": "Case Studies",
+    "theme": {
+      "layout": "raw"
+    }
   }
 }
