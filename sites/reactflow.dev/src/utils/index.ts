@@ -24,9 +24,3 @@ export function getPrevAndNextPagesByTitle(title, route: string) {
 
   return [prevPage, nextPage];
 }
-
-export function isDevelopment() {
-  return (
-    typeof process !== 'undefined' && process.env.NODE_ENV === 'development'
-  );
-}
