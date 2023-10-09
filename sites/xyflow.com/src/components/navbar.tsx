@@ -95,7 +95,7 @@ export function NavBarAdditional() {
   const isReactOrXyFlow = site === 'react' || site === 'xyflow';
   const link = isReactOrXyFlow
     ? PRO_PLATFORM_OR_REACT_PRO_URL
-    : `/svelte-flow/support-us`;
+    : `/support-us`;
   const label = isReactOrXyFlow ? 'React Flow Pro' : 'Support Us';
 
   return (

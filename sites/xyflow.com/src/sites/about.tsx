@@ -83,32 +83,43 @@ export default function About() {
         <TeamCard
           name="Christopher"
           description="Christopher doesn’t remember anything before 2015. He woke up on the shores of the Spree, where he wandered into the offices of the newspaper Zeit and they gave him a job as a front-end developer, mistaking him for the potential new hire. He quickly rose through the ranks there. Now he codes at xyFlow, hoping one day he will remember how he got here, and what the meaning of all this is anyway."
-          twitter="chrtze"
-          github="chrtze"
+          links={[
+            { linkName: 'Twitter', route: '/' },
+            { linkName: 'Github', route: 'https://discord.gg/RVmnytFmGW' },
+          ]}
         />
         <TeamCard
           name="Hayleigh"
           description="Hayleigh is a time traveller who arrived in the year 2023 on accident trying to get to the year 2032 (her home-year). While she and her 2 cats wait another 7 years until the time machine is re-invented, she decided to take to coding in languages (archaic to her) such as React, Javascript, and Elm. "
-          twitter="hayleighdotdev"
-          github="hayleigh-dot-dev"
+          links={[
+            { linkName: 'Twitter', route: 'twitter.com/hayleighdotdev' },
+            { linkName: 'Github', route: 'github.com/hayleigh-dot-dev' },
+          ]}
         />
         <TeamCard
           name="John"
           description="John works on all things un-code at xyflow, which is a lot of writing and talking about where xyflow is headed, how we get there, and open source in general. Before jumping into the world of open source, UX design and research were his bread and butter. Besides that, he likes looking at birds, playing music, and designing puzzles."
-          twitter="johnrobbjr"
-          github="johnrobbjr"
+          links={[
+            { linkName: 'Website', route: 'https://johnrobbdesign.com/' },
+
+            {
+              linkName: 'Mastodon',
+              route: 'https://mastodon.social/@johnrobbjr',
+            },
+          ]}
         />
         <TeamCard
           name="Moritz"
           description="Moritz was raised in the depths of Teutoburger Wald by a pack of wolves, learning how to hunt, survive, and develop front-end applications. He abandoned his pack after a disagreement in 2019, where he fled to the streets of Berlin. He now maintains React Flow, and dreams of one day rejoining his pack."
-          twitter="moklick"
-          github="moklick"
+          links={[
+            { linkName: 'Twitter', route: 'twitter.com/moklick' },
+            { linkName: 'Github', route: 'github.com/moklick' },
+          ]}
         />
         <TeamCard
           name="Peter"
           description="We're not sure who Peter is yet, we'll let you know as soon as we find out."
-          github="peterkogo"
-          twitter=""
+          links={[{ linkName: 'Github', route: 'github.com/peterkogo' }]}
         />
       </ContentGrid>
     </BaseLayout>
@@ -118,13 +129,12 @@ export default function About() {
 function TeamCard({
   name,
   description,
-  twitter,
-  github,
+  links,
 }: {
   name: string;
   description: string;
-  twitter: string;
-  github: string;
+
+  links?: Array<{ route: string; linkName: string }>;
 }) {
   return (
     <ContentGridItem>
@@ -133,17 +143,18 @@ function TeamCard({
       </Heading>
       <Text className="mb-4">{description}</Text>
 
-      <div className="flex items-center space-x-4">
-        <Button asChild variant="link">
-          <Link href={`https://twitter.com/${twitter}`}>
-            Twitter <ArrowRightCircleIcon className="ml-1 w-4 h-4" />
-          </Link>
-        </Button>
-        <Button asChild variant="link">
-          <Link href={`https://github.com/${github}`}>
-            Github <ArrowRightCircleIcon className="ml-1 w-4 h-4" />
-          </Link>
-        </Button>
+      <div className="flex items-center space-x-4 mt-8">
+        {links &&
+          links.map((link) => {
+            return (
+              <Button key={link.route} asChild variant="link" className=" text-md">
+                <Link href={link.route}>
+                  {link.linkName}{' '}
+                  <ArrowRightCircleIcon className="ml-1 w-4 h-4" />
+                </Link>
+              </Button>
+            );
+          })}
       </div>
     </ContentGridItem>
   );
