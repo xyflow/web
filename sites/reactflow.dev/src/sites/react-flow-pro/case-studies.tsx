@@ -1,5 +1,5 @@
 import { CheckCircleIcon } from '@heroicons/react/24/outline';
-import Subscribe from '@/page-sections/subscribe';
+import Subscribe from '@/components/subscribe-section';
 import {
   BaseLayout,
   ContentGrid,
