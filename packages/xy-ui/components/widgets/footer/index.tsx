@@ -90,9 +90,13 @@ export default function Footer({ imageSrc }: FooterProps) {
               ))}
             </div>
 
-            <Text variant="light" className="text-sm mt-auto">
-              info@xyflow.com — Copyright © {new Date().getFullYear()} webkid
-              GmbH. All rights reserved. - website designed by facu
+            <Text variant="light" className="py-6 text-sm mt-auto">
+              <a href="mailto:info@xyflow.com">info@xyflow.com</a> — Copyright
+              © {new Date().getFullYear()} webkid GmbH. All rights reserved —
+              website design by{' '}
+              <a target="_blank" href="https://facumontanaro.com/">
+                Facu Montanaro
+              </a>
             </Text>
           </div>
         </div>

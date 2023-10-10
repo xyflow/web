@@ -1,3 +1,5 @@
+'use client';
+
 import { TabsTrigger, Text, cn } from '../../..';
 
 import { SliderItem } from './types';
