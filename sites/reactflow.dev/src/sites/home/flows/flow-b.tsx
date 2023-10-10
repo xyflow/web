@@ -16,9 +16,8 @@ import {
   SelectTrigger,
   SelectContent,
   SelectValue,
+  NodeWrapper,
 } from 'xy-ui';
-
-import NodeWrapper from '@/components/node-wrapper';
 
 const nodes = [
   {
