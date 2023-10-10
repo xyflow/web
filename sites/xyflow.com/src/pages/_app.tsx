@@ -1,5 +1,4 @@
-import { CSSProperties, useEffect, useRef } from 'react';
-import { useRouter } from 'next/router';
+import { CSSProperties } from 'react';
 import localFont from 'next/font/local';
 import { Fira_Mono } from 'next/font/google';
 
@@ -38,31 +37,9 @@ const fathomOptions = {
 };
 
 export default function App({ Component, pageProps }) {
-  const { site, getSiteByPathname } = useXYSite();
-  const router = useRouter();
-  let prevSite = useRef(null);
+  const { site } = useXYSite();
 
   useFathom(fathomOptions);
-
-  useEffect(() => {
-    const handleRouteChange = (url) => {
-      const nextSite = getSiteByPathname(url);
-      // we are adding a "react", "svelte" class to the body to be able to style
-      // the docsearch modal based on the current site
-      document.body.classList.remove(prevSite.current);
-      document.body.classList.add(nextSite);
-
-      prevSite.current = nextSite;
-    };
-
-    router.events.on('routeChangeStart', handleRouteChange);
-
-    handleRouteChange(router.pathname);
-
-    return () => {
-      router.events.off('routeChangeStart', handleRouteChange);
-    };
-  }, [router]);
 
   return (
     <main
