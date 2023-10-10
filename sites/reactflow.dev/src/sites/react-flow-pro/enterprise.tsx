@@ -1,7 +1,6 @@
-import { Hero, BaseLayout, Card, InputLabel, Input } from 'xy-ui';
+import { Hero, BaseLayout, Card, InputLabel, Input, ContactForm } from 'xy-ui';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 import Subscribe from '@/page-sections/subscribe';
-import ContactForm from '@/components/contact-form';
 
 export default function Enterprise() {
   return (

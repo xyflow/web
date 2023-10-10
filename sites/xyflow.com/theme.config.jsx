@@ -1,48 +1,20 @@
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useConfig } from 'nextra-theme-docs';
-import { Footer, Button, LogoLabel } from 'xy-ui';
+import { Footer, Button, LogoLabel, Search } from 'xy-ui';
 
 import aboutImage from './public/img/about.jpg';
-import SidebarTitle from '@/components/sidebar-title';
-import useXYSite from '@/hooks/use-xy-site';
 
 const baseUrl =
   process.env.NODE_ENV === 'production'
-    ? 'https://xyflow.com'
-    : 'http://localhost:3001';
-
-function getOGMetaTags({ isArticle, url, frontMatter }) {
-  const base = {
-    url,
-    type: isArticle ? 'article' : 'website',
-    images: [
-      {
-        url: `${baseUrl}/img/og/xyflow.jpg`,
-        width: 800,
-        height: 600,
-        alt: 'xyflow teaser',
-      },
-    ],
-  };
-
-  if (!isArticle) {
-    return base;
-  }
-
-  return {
-    ...base,
-    article: {
-      publishedTime: frontMatter.publishedAt,
-      authors: frontMatter.authors,
-      tags: frontMatter.tags,
-    },
-  };
-}
+    ? 'https://svelteflow.dev'
+    : 'http://localhost:3003';
 
 export default {
   logo: () => <LogoLabel label="xyflow" />,
   logoLink: false,
-  docsRepositoryBase: 'https://github.com/xyflow/web/tree/main/sites/docs',
+  docsRepositoryBase:
+    'https://github.com/xyflow/web/tree/main/sites/svelteflow.dev',
   // this is necessary to hide the github icon
   project: {},
   darkMode: false,
@@ -51,44 +23,39 @@ export default {
     defaultTheme: 'light',
   },
   navbar: {
-    // component: Navbar,
-    extraContent: () => <Button>Contact Us</Button>,
-  },
-  sidebar: {
-    titleComponent: SidebarTitle,
+    extraContent: () => {
+      return (
+        <Button asChild>
+          <Link href="/contact">Contact Us</Link>
+        </Button>
+      );
+    },
   },
   footer: {
     component: () => {
-      const router = useRouter();
-      const imageSrc = !['/', '/about'].includes(router.pathname)
-        ? aboutImage
-        : undefined;
-
-      return <Footer imageSrc={imageSrc} />;
+      return <Footer imageSrc={aboutImage} />;
     },
   },
   search: {
-    component: () => null,
+    component: undefined,
   },
   feedback: {
-    useLink: () => '/contact',
+    useLink: () => 'https://xyflow.com/contact',
   },
+  primaryHue: 330,
+  primarySaturation: 100,
   useNextSeoProps() {
     const router = useRouter();
-    const { lib, site } = useXYSite();
     const { frontMatter } = useConfig();
-    const appendix = lib ? lib : 'xyflow';
     const url = `${baseUrl}/${router.asPath}`;
-    const isArticle = router.pathname.includes('/blog/');
 
     return {
-      defaultTitle:
-        'xyflow - Libraries for React and Svelte for rendering workflows, diagrams and node-based UIs.',
-      titleTemplate: `%s – ${appendix}`,
-      title: frontMatter.title || lib,
+      defaultTitle: 'xyflow',
+      titleTemplate: '%s – xyflow',
+      title: frontMatter.title || 'xyflow',
       description:
         frontMatter.description ||
-        'xyflow - Libraries for React and Svelte for rendering workflows, diagrams and node-based UIs.',
+        'xyflow - Customizable library for rendering workflows, diagrams and node-based UIs.',
 
       additionalLinkTags: [
         {
@@ -100,7 +67,7 @@ export default {
       additionalMetaTags: [
         {
           name: 'docsearch:site',
-          content: site,
+          content: 'svelte',
         },
       ],
 
@@ -110,7 +77,18 @@ export default {
         cardType: 'summary_large_image',
       },
 
-      openGraph: getOGMetaTags({ isArticle, url, frontMatter }),
+      openGraph: {
+        url,
+        type: 'website',
+        images: [
+          {
+            url: `${baseUrl}/img/og/xyflow.jpg`,
+            width: 800,
+            height: 600,
+            alt: 'xyflow Teaser',
+          },
+        ],
+      },
     };
   },
   head: null,

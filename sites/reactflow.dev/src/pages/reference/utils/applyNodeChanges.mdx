@@ -1,5 +1,5 @@
 import { PropsTable } from '@/components/props-table';
-import { signature } from '@/page-data/react-flow/api/utils/applyNodeChanges.ts';
+import { signature } from '@/page-data/reference/utils/applyNodeChanges.ts';
 
 # applyNodeChanges()
 
@@ -21,7 +21,7 @@ export default function Flow() {
     (changes) => {
       setNodes((oldEdges) => applyNodeChanges(changes, oldEdges));
     },
-    [setEdges]
+    [setEdges],
   );
 
   return (
