@@ -6,26 +6,42 @@
       "layout": "raw"
     }
   },
+
+  "blog": {
+    "title": "Blog",
+    "display": "normal"
+  },
+  "about": {
+    "title": "About Us",
+    "display": "normal"
+  },
+  "open-source": {
+    "title": "Open Source",
+    "display": "normal"
+  },
+  "libraries": {
+    "title": "Libraries",
+    "display": "normal",
+    "type": "menu",
+    "items": {
+      "react-flow": {
+        "title": "React Flow",
+        "href": "https://reactflow.dev"
+      },
+      "svelte-flow": {
+        "title": "Svelte Flow",
+        "href": "https://svelteflow.dev"
+      }
+    }
+  },
+
+  "index": "xyflow",
   "404": {
     "title": "404",
     "theme": {
       "layout": "raw"
     }
   },
-  "index": "XY Flow",
-  "blog": {
-    "title": "Blog",
-    "display": "normal"
-  },
-  "showcase": {
-    "title": "Showcase",
-    "display": "normal"
-  },
-  "about": {
-    "title": "About",
-    "display": "normal"
-  },
-  "case-studies": "Case Studies",
   "terms-of-use": {
     "title": "Terms Of Use",
     "theme": {

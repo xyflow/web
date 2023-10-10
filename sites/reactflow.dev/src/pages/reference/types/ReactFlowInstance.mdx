@@ -3,7 +3,7 @@ import {
   nodesAndEdgesFields,
   intersectionFields,
   viewportFields,
-} from '@/page-data/react-flow/api/types/ReactFlowInstance.fields.ts';
+} from '@/page-data/reference/types/ReactFlowInstance.fields.ts';
 
 # ReactFlowInstance&lt;T, U>
 
@@ -37,13 +37,13 @@ export type ReactFlowInstance<T, U> = {
   getIntersectingNodes: (
     node: (Partial<Node<T>> & { id: Node['id'] }) | Rect,
     partially?: boolean,
-    nodes?: Node<T>[]
+    nodes?: Node<T>[],
   ) => Node<T>[];
 
   isNodeIntersecting: (
     node: (Partial<Node<T>> & { id: Node['id'] }) | Rect,
     area: Rect,
-    partially?: boolean
+    partially?: boolean,
   ) => boolean;
 
   // Viewport
@@ -58,11 +58,11 @@ export type ReactFlowInstance<T, U> = {
   setCenter: (
     x: number,
     y: number,
-    options?: { duration: number; zoom: number }
+    options?: { duration: number; zoom: number },
   ) => void;
   fitBounds: (
     bounds: Rect,
-    options?: { duration: number; padding: number }
+    options?: { duration: number; padding: number },
   ) => void;
   project: (position: { x: number; y: number }) => { x: number; y: number };
 };

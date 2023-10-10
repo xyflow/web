@@ -6,9 +6,7 @@ import Link from 'next/link';
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 import { Position } from 'reactflow';
 
-import { BaseLayout, Text, Hero } from 'xy-ui';
-import HeadlineNode from '@/components/headline-node';
-import Handle from '@/components/handle';
+import { BaseLayout, Text, Hero, Handle, HeadlineNode } from 'xy-ui';
 
 <BaseLayout>
   <Hero
@@ -24,7 +22,6 @@ import Handle from '@/components/handle';
             handleWidthClass="w-4"
             handleHeightClass="h-8"
             handleClassName="border-none bg-purple-600"
-            variant="xyflow"
             dashed={false}
           />
         </HeadlineNode>
@@ -39,7 +36,6 @@ import Handle from '@/components/handle';
             handleHeightClass="h-8"
             id="0-source"
             to="4-target"
-            variant="xyflow"
             svgClassName="stroke-purple-600"
             dashed={false}
           />
@@ -47,13 +43,12 @@ import Handle from '@/components/handle';
             type="source"
             position={Position.Right}
             className="top-1/2 -right-[8px]"
-            handleClassName="border-none bg-purple-500"
+            handleClassName="border-none bg-purple-600"
             handleWidthClass="w-4"
             handleHeightClass="h-8"
             id="0.1-source"
             to="4.1-target"
-            variant="xyflow"
-            svgClassName="stroke-purple-500"
+            svgClassName="stroke-purple-600"
             dashed={false}
           />
         </HeadlineNode>
@@ -64,10 +59,9 @@ import Handle from '@/components/handle';
             position={Position.Left}
             id="4.1-target"
             className="top-1/2 -left-[8px]"
-            handleClassName="border-none bg-purple-500"
+            handleClassName="border-none bg-purple-600"
             andleWidthClass="w-4"
             handleHeightClass="h-8"
-            variant="xyflow"
             dashed={false}
           />
         </HeadlineNode>

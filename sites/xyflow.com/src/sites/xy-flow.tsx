@@ -12,10 +12,11 @@ import {
   Button,
   Logo,
   Hero,
+  ImageSlider,
+  Handle,
+  HeadlineNode,
 } from 'xy-ui';
-import ImageSlider from '@/page-sections/image-slider';
-import HeadlineNode from '@/components/headline-node';
-import Handle from '@/components/handle';
+
 import Section from '@/page-sections/section';
 
 import aboutImage from '../../public/img/about.jpg';
@@ -73,15 +74,16 @@ export default function XYFlowHome() {
                 id="xy-wire-source"
                 to="xy-wire-target"
                 className="-left-[100vw] top-1/2"
-                variant="xyflow"
-                svgClassName="-z-10"
+                svgClassName="-z-10 stroke-purple-600"
+                handleClassName="border-purple-600"
               />
               <Handle
                 type="target"
                 position={Position.Left}
                 id="xy-wire-target"
                 className="top-1/2 -left-[9px]"
-                variant="xyflow"
+                svgClassName="stroke-purple-600"
+                handleClassName="border-purple-600"
               />
             </HeadlineNode>{' '}
             your{' '}
@@ -92,8 +94,8 @@ export default function XYFlowHome() {
                 id="xy-ideas"
                 to="xy-xyflow"
                 className="-bottom-[9px] right-4"
-                variant="xyflow"
-                svgClassName="-z-10"
+                svgClassName="-z-10 stroke-purple-600"
+                handleClassName="border-purple-600"
               />
               ideas
             </HeadlineNode>{' '}
@@ -104,7 +106,8 @@ export default function XYFlowHome() {
                 id="xy-xyflow"
                 position={Position.Right}
                 className="top-1/2 -translate-y-1/2 -right-[9px]"
-                variant="xyflow"
+                svgClassName="stroke-purple-600"
+                handleClassName="border-purple-600"
               />
               xyflow
             </HeadlineNode>

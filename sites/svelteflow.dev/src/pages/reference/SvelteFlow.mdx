@@ -1,0 +1,81 @@
+import { Callout } from 'nextra/components';
+import { PropsTable } from 'xy-ui';
+import {
+  commonProps,
+  viewportProps,
+  edgeProps,
+  eventHandlerProps,
+  interactionProps,
+  connectionLineProps,
+  keyboardProps,
+} from '@/page-data/reference/SvelteFlow.ts';
+
+# &lt;SvelteFlow />
+
+The `<SvelteFlow />` component is the heart of your Svelte Flow application.
+
+```tsx
+import ReactFlow from '@xyflow/react'
+
+export default function Flow() {
+  return <ReactFlow
+    nodes={...}
+    edges={...}
+    onNodesChange={...}
+    ...
+  />
+}
+```
+
+This component takes a lot of different props, most of which are optional. We've
+tried to document them in groups that make sense to help you find your way.
+
+## Common props
+
+These are the props you will most commonly use when working with React Flow. If
+you are working with a controlled flow with custom nodes, you will likely use
+almost all of these!
+
+<PropsTable {...commonProps} />
+
+## Viewport props
+
+<PropsTable {...viewportProps} />
+
+## Edge props
+
+<PropsTable {...edgeProps} />
+
+## Event handlers
+
+<Callout type="warning">
+  It's important to remember to define any event handlers outside of your
+  component or using React's `useCallback` hook. If you don't, this can cause
+  React Flow to enter an infinite re-render loop!
+</Callout>
+
+<PropsTable {...eventHandlerProps} />
+
+## Interaction props
+
+<PropsTable {...interactionProps} />
+
+## Connection line props
+
+<PropsTable {...connectionLineProps} />
+
+## Keyboard props
+
+React Flow let's you pass in a few different keyboard shortcuts as another way
+to interact with your flow. We've tried to set up sensible defaults like using
+backspace to delete any selected nodes or edges, but you can use these props to
+set your own.
+
+To disable any of these shortcuts, pass in `null` to to the prop you want to
+disable.
+
+<PropsTable {...keyboardProps} />
+
+## Notes
+
+- The props of this component get exported as `ReactFlowProps`
