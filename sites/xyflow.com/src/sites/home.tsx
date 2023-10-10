@@ -167,26 +167,26 @@ function LibraryCards() {
     <ContentGrid className="mt-16 lg:mt-24">
       <ContentGridItem route="/react-flow">
         <Heading size="sm" className="flex items-center">
-          <Logo className="mr-2 text-react" /> React Flow
+          <Logo className="mr-2 text-[#ff0071]" /> React Flow
         </Heading>
         <Text className="mt-2 mb-4" variant="light">
           A customizable React component for building node-based editors and
           interactive diagrams
         </Text>
-        <span className="text-react flex items-center">
+        <span className="text-[#ff0071] flex items-center">
           Read More <ArrowRightCircleIcon className="ml-1 w-4 h-4" />
         </span>
       </ContentGridItem>
 
       <ContentGridItem route="/svelte-flow">
         <Heading size="sm" className="flex items-center">
-          <Logo className="mr-2 text-svelte" /> Svelte Flow
+          <Logo className="mr-2 text-[#ff4000]" /> Svelte Flow
         </Heading>
         <Text className="mt-2 mb-4" variant="light">
           A customizable Svelte component for building node-based editors and
           interactive diagrams
         </Text>
-        <span className="text-svelte flex items-center">
+        <span className="text-[#ff4000] flex items-center">
           Read More <ArrowRightCircleIcon className="ml-1 w-4 h-4" />
         </span>
       </ContentGridItem>
