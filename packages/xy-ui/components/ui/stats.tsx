@@ -1,19 +1,23 @@
 import { type ReactNode } from 'react';
-import cn from 'clsx';
 import Link from 'next/link';
 
-import { Button, Text, Heading } from 'xy-ui';
+import { Button, Text, Heading, cn } from '../../.';
 
-type Stats = {
+type StatsItem = {
   label: ReactNode;
   value: ReactNode;
 };
 
-export function StatsDisplay({
-  value,
-  label,
-  className,
-}: Stats & { className?: string }) {
+type StatsDisplayProps = StatsItem & { className?: string };
+type StatsProps = {
+  stats: StatsItem[];
+  description: string;
+  link?: string;
+  linkLabel?: ReactNode;
+  className?: string;
+};
+
+function StatsDisplay({ value, label, className }: StatsDisplayProps) {
   return (
     <div className={cn('text-center', className)}>
       <Heading className={cn('font-bold whitespace-nowrap text-primary')}>
@@ -26,19 +30,7 @@ export function StatsDisplay({
   );
 }
 
-export default function Stats({
-  stats,
-  description,
-  link,
-  linkLabel,
-  className,
-}: {
-  stats: Stats[];
-  description: string;
-  link?: string;
-  linkLabel?: ReactNode;
-  className?: string;
-}) {
+function Stats({ stats, description, link, linkLabel, className }: StatsProps) {
   return (
     <div className={cn('lg:grid lg:grid-cols-7 lg:gap-20', className)}>
       <div className="lg:col-span-4 flex place-content-between lg:space-x-24 grow">
@@ -57,3 +49,5 @@ export default function Stats({
     </div>
   );
 }
+
+export { Stats, StatsDisplay, type StatsProps, type StatsDisplayProps };

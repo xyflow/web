@@ -29,6 +29,7 @@ export * from './components/ui/section';
 export * from './components/ui/select';
 export * from './components/ui/slider';
 export * from './components/ui/spinner';
+export * from './components/ui/stats';
 export * from './components/ui/tabs';
 export * from './components/ui/text';
 

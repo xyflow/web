@@ -8,8 +8,8 @@ import {
   Section,
   Features,
   GettingStarted,
+  Stats,
 } from 'xy-ui';
-import Stats from '@/page-sections/stats';
 
 import FlowA from './flows/flow-a';
 import FlowB from './flows/flow-b';
@@ -68,7 +68,6 @@ export default function SvelteFlowHome() {
 
       <Section className="mt-6 lg:mt-10">
         <Stats
-          variant="svelte"
           stats={[
             { label: 'Latest Release', value: 'May 23' },
             {

@@ -14,9 +14,10 @@ import {
   Section,
   Features,
   GettingStarted,
+  Stats,
+  StatsDisplay,
 } from 'xy-ui';
 import { SparklesIcon, BoltIcon } from '@heroicons/react/24/outline';
-import Stats, { StatsDisplay } from '@/page-sections/stats';
 import ClientLogos from '@/components/client-logos';
 
 import FlowA from './flows/flow-a';
