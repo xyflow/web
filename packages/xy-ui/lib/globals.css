@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* add a "pro" label to the pro examples in the sidebar */
 .sidebar-title.pro:after {
   content: 'Pro';
   display: inline-block;
@@ -12,8 +13,6 @@
   border-radius: 4px;
   padding: 2px 5px;
 }
-
-/* add a "pro" label to the pro examples in the sidebar */
 
 /* if there is no content in the toc, we don't want it to take up the space */
 nav.nextra-toc:empty {

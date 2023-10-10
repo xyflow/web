@@ -1,9 +1,8 @@
 import { UserGroupIcon } from '@heroicons/react/24/outline';
 
-import { BaseLayout, Heading, Text, Hero } from 'xy-ui';
+import { BaseLayout, Heading, Text, Hero, Section } from 'xy-ui';
 import Link from 'next/link';
 import Image from 'next/image';
-import Section from '@/page-sections/section';
 
 import ossImage from '@/../public/img/open-source/thincrustopencore.png';
 import starChart from '@/../public/img/open-source/starchart.png';

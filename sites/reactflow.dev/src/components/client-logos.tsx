@@ -8,7 +8,7 @@ import microsoft from '../../public/img/clients/microsoft.svg';
 import intuit from '../../public/img/clients/intuit.svg';
 
 export default function ClientLogos({
-  title = 'Some of our subscribers',
+  title = 'Used By',
   className,
 }: {
   title?: string;
