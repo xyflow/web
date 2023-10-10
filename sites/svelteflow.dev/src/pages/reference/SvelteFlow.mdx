@@ -15,13 +15,12 @@ import {
 The `<SvelteFlow />` component is the heart of your Svelte Flow application.
 
 ```tsx
-import ReactFlow from '@xyflow/react'
+import { SvelteFlow } from '@xyflow/svelte'
 
 export default function Flow() {
-  return <ReactFlow
+  return <SvelteFlow
     nodes={...}
     edges={...}
-    onNodesChange={...}
     ...
   />
 }
@@ -32,9 +31,7 @@ tried to document them in groups that make sense to help you find your way.
 
 ## Common props
 
-These are the props you will most commonly use when working with React Flow. If
-you are working with a controlled flow with custom nodes, you will likely use
-almost all of these!
+These are the props you will most commonly use when working with Svelte Flow.
 
 <PropsTable {...commonProps} />
 
@@ -48,12 +45,6 @@ almost all of these!
 
 ## Event handlers
 
-<Callout type="warning">
-  It's important to remember to define any event handlers outside of your
-  component or using React's `useCallback` hook. If you don't, this can cause
-  React Flow to enter an infinite re-render loop!
-</Callout>
-
 <PropsTable {...eventHandlerProps} />
 
 ## Interaction props
@@ -64,18 +55,6 @@ almost all of these!
 
 <PropsTable {...connectionLineProps} />
 
-## Keyboard props
-
-React Flow let's you pass in a few different keyboard shortcuts as another way
-to interact with your flow. We've tried to set up sensible defaults like using
-backspace to delete any selected nodes or edges, but you can use these props to
-set your own.
-
-To disable any of these shortcuts, pass in `null` to to the prop you want to
-disable.
-
-<PropsTable {...keyboardProps} />
-
 ## Notes
 
-- The props of this component get exported as `ReactFlowProps`
+- The props of this component get exported as `SvelteFlowProps`
