@@ -50,12 +50,12 @@ export default {
     const url = `${baseUrl}/${router.asPath}`;
 
     return {
-      defaultTitle: 'Svelte Flow',
-      titleTemplate: '%s – Svelte Flow',
-      title: frontMatter.title || 'Svelte Flow',
+      defaultTitle: 'xyflow',
+      titleTemplate: '%s – xyflow',
+      title: frontMatter.title || 'xyflow',
       description:
         frontMatter.description ||
-        'Svelte Flow - Customizable library for rendering workflows, diagrams and node-based UIs.',
+        'xyflow - Customizable library for rendering workflows, diagrams and node-based UIs.',
 
       additionalLinkTags: [
         {
@@ -85,7 +85,7 @@ export default {
             url: `${baseUrl}/img/og/xyflow.jpg`,
             width: 800,
             height: 600,
-            alt: 'Svelte Flow Teaser',
+            alt: 'xyflow Teaser',
           },
         ],
       },

@@ -42,8 +42,8 @@ export default {
   feedback: {
     useLink: () => 'https://xyflow.com/contact',
   },
-  primaryHue: 330,
-  primarySaturation: 100,
+  primaryHue: 30,
+  primarySaturation: 80,
   useNextSeoProps() {
     const router = useRouter();
     const { frontMatter } = useConfig();
