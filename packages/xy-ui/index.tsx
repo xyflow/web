@@ -45,6 +45,7 @@ export * from './components/widgets/image-slider';
 export * from './components/widgets/search';
 
 export * from './hooks/use-connection-drawer';
+export * from './hooks/use-fathom';
 
 export * from './lib/utils';
 

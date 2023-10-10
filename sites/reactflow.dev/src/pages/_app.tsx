@@ -1,5 +1,6 @@
 import localFont from 'next/font/local';
 import { Fira_Mono } from 'next/font/google';
+import { useFathom } from 'xy-ui';
 
 import 'styles/global.css';
 
@@ -21,7 +22,14 @@ const firaMonoFont = Fira_Mono({
 
 const className = `${ntDapperFont.variable} ${firaMonoFont.variable} font-sans`;
 
+const fathomOptions = {
+  id: 'LXMRMWLB',
+  domains: ['reactflow.dev'],
+};
+
 export default function App({ Component, pageProps }) {
+  useFathom(fathomOptions);
+
   return (
     <main className={className}>
       <Component {...pageProps} />
