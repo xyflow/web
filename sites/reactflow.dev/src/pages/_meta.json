@@ -15,6 +15,12 @@
 
   "learn": "Learn",
   "examples": "Examples",
+  "tutorials": {
+    "title": "Tutorials",
+    "theme": {
+      "layout": "raw"
+    }
+  },
   "reference": {
     "title": "Reference"
   },
