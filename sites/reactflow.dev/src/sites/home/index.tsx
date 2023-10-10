@@ -11,12 +11,13 @@ import {
   HeroFlow,
   ImageSlider,
   ProjectPreview,
+  Section,
+  Features,
+  GettingStarted,
+  Stats,
+  StatsDisplay,
 } from 'xy-ui';
 import { SparklesIcon, BoltIcon } from '@heroicons/react/24/outline';
-import Stats, { StatsDisplay } from '@/page-sections/stats';
-import Features from '@/page-sections/features';
-import Section from '@/page-sections/section';
-import GettingStarted from '@/page-sections/getting-started';
 import ClientLogos from '@/components/client-logos';
 
 import FlowA from './flows/flow-a';
@@ -57,7 +58,7 @@ const sliderItems = [
     content: (
       <Image
         className="rounded-xl object-cover"
-        src="/img/showcase/5e7c4463-7dc9-40e9-b3df-7433f6fc9abc.png"
+        src="/img/featured/stripe.png"
         alt="Stripe Docs"
         fill
       />
@@ -69,7 +70,7 @@ const sliderItems = [
     content: (
       <Image
         className="rounded-xl object-cover"
-        src="/img/showcase/8b4e2243-4e88-40be-89b8-4bfad13460f8.png"
+        src="/img/featured/doubleloop.png"
         alt="DoubleLoop"
         fill
       />
@@ -81,7 +82,7 @@ const sliderItems = [
     content: (
       <Image
         className="rounded-xl object-cover"
-        src="/img/showcase/0e29d66b-142b-42c4-a43c-6e3f6501d14b.png"
+        src="/img/featured/typeform.png"
         alt="TypeForm"
         fill
       />
@@ -135,7 +136,10 @@ export default function ReactFlowHome() {
         />
       </Section>
 
-      <GettingStarted />
+      <GettingStarted
+        libraryName="React Flow"
+        packageName="@xyflow/react-flow"
+      />
 
       <Section>
         <Features features={features} />

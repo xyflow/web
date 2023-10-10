@@ -14,16 +14,19 @@ import {
 
 The `<SvelteFlow />` component is the heart of your Svelte Flow application.
 
-```tsx
-import { SvelteFlow } from '@xyflow/svelte'
+```svelte
+<script>
+  import { SvelteFlow } from '@xyflow/svelte';
 
-export default function Flow() {
-  return <SvelteFlow
-    nodes={...}
-    edges={...}
-    ...
-  />
-}
+  const nodes = writable([]);
+  const edges = writable([]);
+</script>
+
+<SvelteFlow
+  nodes={nodes}
+  edges={edges}
+  fitView
+/>
 ```
 
 This component takes a lot of different props, most of which are optional. We've

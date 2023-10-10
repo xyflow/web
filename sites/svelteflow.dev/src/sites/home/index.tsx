@@ -1,10 +1,15 @@
 import Link from 'next/link';
 import { HeartIcon, BoltIcon } from '@heroicons/react/24/outline';
-import { BaseLayout, Button, Heading, HeroFlow } from 'xy-ui';
-import Features from '@/page-sections/features';
-import Section from '@/page-sections/section';
-import Stats from '@/page-sections/stats';
-import GettingStarted from '@/page-sections/getting-started';
+import {
+  BaseLayout,
+  Button,
+  Heading,
+  HeroFlow,
+  Section,
+  Features,
+  GettingStarted,
+  Stats,
+} from 'xy-ui';
 
 import FlowA from './flows/flow-a';
 import FlowB from './flows/flow-b';
@@ -63,7 +68,6 @@ export default function SvelteFlowHome() {
 
       <Section className="mt-6 lg:mt-10">
         <Stats
-          variant="svelte"
           stats={[
             { label: 'Latest Release', value: 'May 23' },
             {
@@ -82,10 +86,13 @@ export default function SvelteFlowHome() {
         />
       </Section>
 
-      <GettingStarted />
+      <GettingStarted
+        libraryName="Svelte Flow"
+        packageName="@xyflow/svelte-flow"
+      />
 
       <Section>
-        <Features features={features} variant="svelte" />
+        <Features features={features} />
       </Section>
 
       <Section className="mx-auto lg:max-w-[800px] lg:mb-8">
@@ -95,13 +102,13 @@ export default function SvelteFlowHome() {
         </Heading>
 
         <div className="flex justify-center space-x-8">
-          <Button size="lg" asChild variant="svelte">
-            <Link href="/react-flow/pro" className="flex items-center">
+          <Button size="lg" asChild>
+            <Link href="/learn" className="flex items-center">
               Read the Docs
             </Link>
           </Button>
           <Button size="lg" asChild variant="secondary">
-            <Link href="/react-flow/pro" className="flex items-center">
+            <Link href="/learn" className="flex items-center">
               Join our Discord
             </Link>
           </Button>
