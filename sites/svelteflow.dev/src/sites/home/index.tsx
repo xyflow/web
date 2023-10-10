@@ -102,13 +102,13 @@ export default function SvelteFlowHome() {
         </Heading>
 
         <div className="flex justify-center space-x-8">
-          <Button size="lg" asChild variant="svelte">
-            <Link href="/react-flow/pro" className="flex items-center">
+          <Button size="lg" asChild>
+            <Link href="/learn" className="flex items-center">
               Read the Docs
             </Link>
           </Button>
           <Button size="lg" asChild variant="secondary">
-            <Link href="/react-flow/pro" className="flex items-center">
+            <Link href="/learn" className="flex items-center">
               Join our Discord
             </Link>
           </Button>
