@@ -9,11 +9,11 @@ import {
   ContentGrid,
   ContentGridItem,
   HeroFlow,
+  ImageSlider,
 } from 'xy-ui';
 import { SparklesIcon, BoltIcon } from '@heroicons/react/24/outline';
 import Stats, { StatsDisplay } from '@/page-sections/stats';
 import Features from '@/page-sections/features';
-import ImageSlider from '@/page-sections/image-slider';
 import Section from '@/page-sections/section';
 import GettingStarted from '@/page-sections/getting-started';
 import ClientLogos from '@/components/client-logos';
