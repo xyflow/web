@@ -7,13 +7,16 @@ tags: ['react-flow', 'open source']
 image: '/img/blog/oss-pricing/donate-button-banner.png'
 ---
 
-import { BlogPostLayout, Image } from 'xy-ui';
-import { usePostMetadata } from '@/hooks/use-post-metadata';
+import { Bleed } from 'nextra-theme-docs';
+import { Image } from 'xy-ui';
+import { BlogPostLayout } from '@/layouts/blog-post-with-frontmatter';
 
-<BlogPostLayout usePostMetadata={usePostMetadata}>
+<BlogPostLayout>
 It’s common knowledge that many open source projects are underfunded. We think one reason for this is that **the open source world is doing a bad job of asking for the money that it deserves.** By telling the right organizations exactly why and how we want them to financially support our work, OSS projects can be compensated for more fairly, and result in a healthier open source ecosystem.
 
-<Image src="/img/blog/oss-pricing/donate-button.png" alt="" />
+<Bleed>
+  <Image src="/img/blog/oss-pricing/donate-button.png" alt="" />
+</Bleed>
 
 We maintain [React Flow](https://github.com/wbkd/react-flow), an open source library for making node-based UIs. Our story developed in a similar way to some other lucky libraries:
 
@@ -24,14 +27,16 @@ We maintain [React Flow](https://github.com/wbkd/react-flow), an open source lib
 
 Unfortunately our Github sponsors page didn’t pay the bills- not even close. To avoid having to find contract work or pitch for investment, we decided to ask for money in a more direct way by adding this to our website:
 
-<Image
-  src="/img/blog/oss-pricing/pricing-ui.png"
-  alt="A webpage with four columns, giving the user a choice between 4 payment plans: free, starter, pro, and enterprise."
-  wide
-  caption="Our Free plan is the open source library as-is. The Starter and Pro
+<Bleed>
+  <Image
+    src="/img/blog/oss-pricing/pricing-ui.png"
+    alt="A webpage with four columns, giving the user a choice between 4 payment plans: free, starter, pro, and enterprise."
+    wide
+    caption="Our Free plan is the open source library as-is. The Starter and Pro
       plans have a few extras that users can pay for with a monthly subscription,
       like prioritized bug reports and email support."
-/>
+  />
+</Bleed>
 
 We started getting paying customers at a _much_ faster rate, each paying more than any of our sponsors were, **and we became “ramen profitable” in a few months.**
 
@@ -70,11 +75,13 @@ We wish that every open source evangelist would pay us with their company’s cr
 
 By using a three-column pricing page, the person with the credit card knows exactly what to expect when they arrive on our pricing page: cheap on the left side, expensive on the right. It says what they get, and how much it costs. We didn’t need to explain any complex donation structures, or how their money would exactly be used by us, which we believe might be a barrier for organizations who are easily able to afford the pricetag. This way, we helped our users to become successful liaisons when asking for budget within their organizations.
 
-<Image
-  src="/img/blog/oss-pricing/threecolumns.png"
-  alt="A mockup of a typical SaaS pricing page, with three columns: cheap, less cheap, and expensive."
-  wide
-/>
+<Bleed>
+  <Image
+    src="/img/blog/oss-pricing/threecolumns.png"
+    alt="A mockup of a typical SaaS pricing page, with three columns: cheap, less cheap, and expensive."
+    wide
+  />
+</Bleed>
 
 ## None of this is new
 
