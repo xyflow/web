@@ -1,5 +1,5 @@
 import { BookOpenIcon } from '@heroicons/react/24/outline';
-import Subscribe from '@/page-sections/subscribe';
+import SubscribeSection from '@/components/subscribe-section';
 import {
   BaseLayout,
   ContentGrid,
@@ -34,7 +34,7 @@ export default function CaseStudies() {
           );
         })}
       </ContentGrid>
-      <Subscribe />
+      <SubscribeSection />
     </BaseLayout>
   );
 }
