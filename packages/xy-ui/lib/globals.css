@@ -204,6 +204,7 @@ div.nextra-nav-container-blur {
 
 .nextra-nav-container .DocSearch-Button {
   margin-left: 0;
+  @apply bg-gray-100;
 }
 
 .nextra-nav-container .DocSearch-Button .DocSearch-Search-Icon {
@@ -281,7 +282,9 @@ div.nextra-nav-container-blur {
   }
   body {
     @apply bg-background text-foreground;
-    font-feature-settings: 'rlig' 1, 'calt' 1;
+    font-feature-settings:
+      'rlig' 1,
+      'calt' 1;
   }
   html {
     /* this is a nextra default we need to overwrite */

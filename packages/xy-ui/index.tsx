@@ -39,6 +39,7 @@ export * from './components/widgets/project-preview';
 export * from './components/widgets/react-player-lazy';
 export * from './components/widgets/hero-flow';
 export * from './components/widgets/image-slider';
+export * from './components/widgets/search';
 
 export * from './hooks/use-connection-drawer';
 

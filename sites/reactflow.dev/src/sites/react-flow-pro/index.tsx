@@ -46,7 +46,7 @@ export default function ReactFlowPro() {
           </>
         }
         subtitle="Thanks for checking out React Flow Pro! We are Christopher, Hayleigh, John, and Moritz, and we are the team building and maintaining React Flow"
-        kicker="xyflow Pro"
+        kicker="React Flow Pro"
         action={
           <Button asChild size="lg" variant="pro">
             <Link href={process.env.NEXT_PUBLIC_PRO_PLATFORM_SIGNUP_URL}>
@@ -54,6 +54,7 @@ export default function ReactFlowPro() {
             </Link>
           </Button>
         }
+        showGradient
       >
         <p className="mt-4 mb-2">
           <strong>React Flow is open-source MIT-licensed software</strong>, and
