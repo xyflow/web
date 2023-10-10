@@ -13,10 +13,10 @@ import {
   ProjectPreview,
   Section,
   Features,
+  GettingStarted,
 } from 'xy-ui';
 import { SparklesIcon, BoltIcon } from '@heroicons/react/24/outline';
 import Stats, { StatsDisplay } from '@/page-sections/stats';
-import GettingStarted from '@/page-sections/getting-started';
 import ClientLogos from '@/components/client-logos';
 
 import FlowA from './flows/flow-a';
@@ -135,7 +135,10 @@ export default function ReactFlowHome() {
         />
       </Section>
 
-      <GettingStarted />
+      <GettingStarted
+        libraryName="React Flow"
+        packageName="@xyflow/react-flow"
+      />
 
       <Section>
         <Features features={features} />

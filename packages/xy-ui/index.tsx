@@ -38,6 +38,7 @@ export * from './components/widgets/code-viewer';
 export * from './components/widgets/contact-form';
 export * from './components/widgets/footer';
 export * from './components/widgets/features';
+export * from './components/widgets/getting-started';
 export * from './components/widgets/pricing-table';
 export * from './components/widgets/project-preview';
 export * from './components/widgets/props-table';

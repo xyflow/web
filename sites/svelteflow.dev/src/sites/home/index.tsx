@@ -7,9 +7,9 @@ import {
   HeroFlow,
   Section,
   Features,
+  GettingStarted,
 } from 'xy-ui';
 import Stats from '@/page-sections/stats';
-import GettingStarted from '@/page-sections/getting-started';
 
 import FlowA from './flows/flow-a';
 import FlowB from './flows/flow-b';
@@ -87,7 +87,10 @@ export default function SvelteFlowHome() {
         />
       </Section>
 
-      <GettingStarted />
+      <GettingStarted
+        libraryName="Svelte Flow"
+        packageName="@xyflow/svelte-flow"
+      />
 
       <Section>
         <Features features={features} />
