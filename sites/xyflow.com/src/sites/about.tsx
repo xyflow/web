@@ -10,10 +10,9 @@ import {
   Text,
   Button,
   Hero,
+  Section,
 } from 'xy-ui';
 import Image from 'next/image';
-
-import Section from '@/page-sections/section';
 import aboutUsImage from '@/../public/img/about.jpg';
 
 export default function About() {
@@ -147,7 +146,12 @@ function TeamCard({
         {links &&
           links.map((link) => {
             return (
-              <Button key={link.route} asChild variant="link" className=" text-md">
+              <Button
+                key={link.route}
+                asChild
+                variant="link"
+                className=" text-md"
+              >
                 <Link href={link.route}>
                   {link.linkName}{' '}
                   <ArrowRightCircleIcon className="ml-1 w-4 h-4" />

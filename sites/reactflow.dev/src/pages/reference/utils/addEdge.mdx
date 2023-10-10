@@ -1,5 +1,5 @@
 import { PropsTable } from '@/components/props-table';
-import { signature } from '@/page-data/react-flow/api/utils/addEdge.ts';
+import { signature } from '@/page-data/reference/utils/addEdge.ts';
 
 # addEdge()
 
@@ -20,7 +20,7 @@ export default function Flow() {
     (connection) => {
       setEdges((oldEdges) => addEdge(connection, oldEdges));
     },
-    [setEdges]
+    [setEdges],
   );
 
   return <ReactFLow nodes={nodes} edges={edges} onConnect={onConnect} />;

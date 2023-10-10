@@ -9,15 +9,16 @@ import {
   ContentGrid,
   ContentGridItem,
   HeroFlow,
+  ImageSlider,
+  ProjectPreview,
+  Section,
+  Features,
+  GettingStarted,
+  Stats,
+  StatsDisplay,
 } from 'xy-ui';
 import { SparklesIcon, BoltIcon } from '@heroicons/react/24/outline';
-import Stats, { StatsDisplay } from '@/page-sections/stats';
-import Features from '@/page-sections/features';
-import ImageSlider from '@/page-sections/image-slider';
-import Section from '@/page-sections/section';
-import GettingStarted from '@/page-sections/getting-started';
 import ClientLogos from '@/components/client-logos';
-import ProjectPreview from '@/components/project-preview';
 
 import FlowA from './flows/flow-a';
 import FlowB from './flows/flow-b';
@@ -27,7 +28,7 @@ const features = [
   {
     title: 'Ready out-of-the-box',
     text: 'The things you need are already there: dragging nodes, zooming, panning, selecting multiple nodes, and adding/removing elements are all built-in.',
-    route: '/react-flow/docs',
+    route: '/learn',
     flowComponent: FlowA,
   },
   {
@@ -39,13 +40,13 @@ const features = [
       </>
     ),
     text: 'React Flow nodes are simply React components, ready for your interactive elements. We play nice with Tailwind and plain old CSS.',
-    route: '/react-flow/docs',
+    route: '/learn',
     flowComponent: FlowB,
   },
   {
     title: 'All the right plugins',
     text: 'Make more advanced apps with the Background, Minimap, Controls, Panel, NodeToolbar, and NodeResizer components.',
-    route: '/react-flow/docs',
+    route: '/learn',
     flowComponent: FlowC,
   },
 ];
@@ -57,7 +58,7 @@ const sliderItems = [
     content: (
       <Image
         className="rounded-xl object-cover"
-        src="/img/showcase/5e7c4463-7dc9-40e9-b3df-7433f6fc9abc.png"
+        src="/img/featured/stripe.png"
         alt="Stripe Docs"
         fill
       />
@@ -69,7 +70,7 @@ const sliderItems = [
     content: (
       <Image
         className="rounded-xl object-cover"
-        src="/img/showcase/8b4e2243-4e88-40be-89b8-4bfad13460f8.png"
+        src="/img/featured/doubleloop.png"
         alt="DoubleLoop"
         fill
       />
@@ -81,7 +82,7 @@ const sliderItems = [
     content: (
       <Image
         className="rounded-xl object-cover"
-        src="/img/showcase/0e29d66b-142b-42c4-a43c-6e3f6501d14b.png"
+        src="/img/featured/typeform.png"
         alt="TypeForm"
         fill
       />
@@ -101,7 +102,7 @@ export default function ReactFlowHome() {
         action={
           <div className="flex">
             <Button asChild className="mr-3 ">
-              <Link href="/docs">
+              <Link href="/learn">
                 <BoltIcon className="w-5 h-5 mr-1" />
                 Quickstart
               </Link>
@@ -135,7 +136,10 @@ export default function ReactFlowHome() {
         />
       </Section>
 
-      <GettingStarted />
+      <GettingStarted
+        libraryName="React Flow"
+        packageName="@xyflow/react-flow"
+      />
 
       <Section>
         <Features features={features} />
@@ -155,7 +159,7 @@ export default function ReactFlowHome() {
           Get started with your first React Flow project
         </Heading>
         <ContentGrid className="grid-cols-1 lg:grid-cols-2">
-          <ContentGridItem route="/docs">
+          <ContentGridItem route="/learn">
             <ProjectPreview
               image="/img/getting-started-thumb.png"
               title="Getting Started Guide"

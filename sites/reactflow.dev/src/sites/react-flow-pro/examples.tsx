@@ -8,7 +8,7 @@ import {
 } from 'xy-ui';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
-import Subscribe from '@/page-sections/subscribe';
+import Subscribe from '@/components/subscribe-section';
 import { getMdxPagesUnderRoute } from '@/utils';
 import { getPagesUnderRoute } from 'nextra/context';
 
