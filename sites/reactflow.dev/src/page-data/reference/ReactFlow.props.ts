@@ -188,7 +188,7 @@ export const edgeProps: PropsTableProps = {
     },
     { name: 'defaultMarkerColor?', type: 'string', default: '"#b1b1b7"' },
     {
-      name: 'defaultEdgeOoptions?',
+      name: 'defaultEdgeOptions?',
       type: 'DefaultEdgeOptions',
       description: `Any defaults set here will be applied to all new edges that
       are added to the flow. Properties on a new edge will override these defaults
@@ -225,7 +225,7 @@ export const eventHandlerProps: PropsTableProps = {
     },
     {
       name: 'onError?',
-      type: '(code: string, message: string => void',
+      type: '(code: string, message: string) => void',
       description: `Ocassionally something may happen that causes React Flow to
       error. Instead of exploding your application, we log a message to the console
       and then call this event handler. You might use it for additional logging
