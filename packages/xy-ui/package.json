@@ -34,6 +34,7 @@
     "@xyflow/system": "^0.0.4",
     "class-variance-authority": "^0.6.0",
     "clsx": "^1.2.1",
+    "fathom-client": "^3.5.0",
     "lucide-react": "^0.248.0",
     "next": "^13.5.3",
     "react-player": "^2.12.0",

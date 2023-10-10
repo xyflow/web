@@ -39,6 +39,7 @@ export * from './components/widgets/react-player-lazy';
 export * from './components/widgets/hero-flow';
 
 export * from './hooks/use-connection-drawer';
+export * from './hooks/use-fathom';
 
 export * from './lib/utils';
 

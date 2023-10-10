@@ -5,6 +5,7 @@ import { Fira_Mono } from 'next/font/google';
 
 import 'styles/global.css';
 import useXYSite from '@/hooks/use-xy-site';
+import { useFathom } from 'xy-ui';
 
 const ntDapperFont = localFont({
   src: [
@@ -31,10 +32,17 @@ const hueValuesBySite = {
   svelte: 30,
 };
 
+const fathomOptions = {
+  id: 'JQTCQNLV',
+  domains: ['xyflow.com'],
+};
+
 export default function App({ Component, pageProps }) {
   const { site, getSiteByPathname } = useXYSite();
   const router = useRouter();
   let prevSite = useRef(null);
+
+  useFathom(fathomOptions);
 
   useEffect(() => {
     const handleRouteChange = (url) => {

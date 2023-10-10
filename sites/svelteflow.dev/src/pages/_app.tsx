@@ -2,6 +2,7 @@ import { CSSProperties, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 import localFont from 'next/font/local';
 import { Fira_Mono } from 'next/font/google';
+import { useFathom } from 'xy-ui';
 
 import 'styles/global.css';
 import useXYSite from '@/hooks/use-xy-site';
@@ -31,6 +32,11 @@ const hueValuesBySite = {
   svelte: 30,
 };
 
+const fathomOptions = {
+  id: 'PFWQXXRR',
+  domains: ['svelteflow.dev'],
+};
+
 export default function App({ Component, pageProps }) {
   const { site, getSiteByPathname } = useXYSite();
   const router = useRouter();
@@ -55,6 +61,8 @@ export default function App({ Component, pageProps }) {
       router.events.off('routeChangeStart', handleRouteChange);
     };
   }, [router]);
+
+  useFathom(fathomOptions);
 
   return (
     <main
