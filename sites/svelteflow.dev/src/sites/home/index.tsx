@@ -1,8 +1,7 @@
 import Link from 'next/link';
 import { HeartIcon, BoltIcon } from '@heroicons/react/24/outline';
-import { BaseLayout, Button, Heading, HeroFlow } from 'xy-ui';
+import { BaseLayout, Button, Heading, HeroFlow, Section } from 'xy-ui';
 import Features from '@/page-sections/features';
-import Section from '@/page-sections/section';
 import Stats from '@/page-sections/stats';
 import GettingStarted from '@/page-sections/getting-started';
 

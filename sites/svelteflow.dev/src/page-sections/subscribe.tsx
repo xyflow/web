@@ -1,7 +1,6 @@
 import Link from 'next/link';
-import { Heading, Button } from 'xy-ui';
+import { Heading, Button, Section } from 'xy-ui';
 import { SparklesIcon } from '@heroicons/react/24/outline';
-import Section from '@/page-sections/section';
 
 export default function SubscribeSection() {
   return (

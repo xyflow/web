@@ -15,9 +15,8 @@ import {
   ImageSlider,
   Handle,
   HeadlineNode,
+  Section,
 } from 'xy-ui';
-
-import Section from '@/page-sections/section';
 
 import aboutImage from '../../public/img/about.jpg';
 

@@ -25,6 +25,7 @@ export * from './components/ui/list-wrapper';
 export * from './components/ui/logo';
 export * from './components/ui/popover';
 export * from './components/ui/radio-group';
+export * from './components/ui/section';
 export * from './components/ui/select';
 export * from './components/ui/slider';
 export * from './components/ui/spinner';
