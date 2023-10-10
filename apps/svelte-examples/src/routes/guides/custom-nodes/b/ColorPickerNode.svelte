@@ -12,7 +12,7 @@
 <div class="colorpicker">
   <Handle type="target" position={Position.Left} />
   <div>
-    color: <strong>{$color}</strong>
+    mix color: <strong>{$color}</strong>
   </div>
   <input
     class="nodrag"
