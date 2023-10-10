@@ -1,7 +1,13 @@
 import Link from 'next/link';
 import { HeartIcon, BoltIcon } from '@heroicons/react/24/outline';
-import { BaseLayout, Button, Heading, HeroFlow, Section } from 'xy-ui';
-import Features from '@/page-sections/features';
+import {
+  BaseLayout,
+  Button,
+  Heading,
+  HeroFlow,
+  Section,
+  Features,
+} from 'xy-ui';
 import Stats from '@/page-sections/stats';
 import GettingStarted from '@/page-sections/getting-started';
 
@@ -84,7 +90,7 @@ export default function SvelteFlowHome() {
       <GettingStarted />
 
       <Section>
-        <Features features={features} variant="svelte" />
+        <Features features={features} />
       </Section>
 
       <Section className="mx-auto lg:max-w-[800px] lg:mb-8">

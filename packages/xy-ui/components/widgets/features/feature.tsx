@@ -1,8 +1,7 @@
 import Link from 'next/link';
 import { Position } from '@xyflow/system';
 
-import { Heading, Text, Button, Container, cn } from 'xy-ui';
-import Handle from '@/components/handle';
+import { Heading, Text, Button, Container, cn, Handle } from '../../..';
 import { ReactNode } from 'react';
 
 const order1Class = 'order-1';
@@ -18,24 +17,23 @@ const zIndexClasses = {
   6: 'z-[6]',
 };
 
-export type FeatureProps = {
+type FeatureProps = {
   title: ReactNode;
   text: string;
   route: string;
+  index: number;
+  featureCount: number;
+  flowComponent?: React.ComponentType;
 };
 
-export default function Feature({
+function Feature({
   index,
   featureCount,
   title,
   text,
   route,
   flowComponent: FlowComponent = () => null,
-}: {
-  index: number;
-  featureCount: number;
-  flowComponent?: React.ComponentType;
-} & FeatureProps) {
+}: FeatureProps) {
   const sourceHandleId = `source-${index}`;
   const nextTargetHandleId = `target-${index + 1}`;
   const targetHandleId = `target-${index}`;
@@ -44,14 +42,15 @@ export default function Feature({
     <div
       className={cn(
         'relative md:grid md:grid-cols-2 md:gap-8 ',
+        // @ts-ignore
         zIndexClasses[featureCount - index],
-        index < featureCount - 1 ? 'mb-16 md:mb-24' : ''
+        index < featureCount - 1 ? 'mb-16 md:mb-24' : '',
       )}
     >
       <div
         className={cn(
           'flex flex-col justify-center mb-4',
-          index % 2 === 0 ? order1Class : order2Class
+          index % 2 === 0 ? order1Class : order2Class,
         )}
       >
         <div>
@@ -98,3 +97,5 @@ export default function Feature({
     </div>
   );
 }
+
+export { Feature, type FeatureProps };
