@@ -69,7 +69,7 @@ function CreatorNode() {
             <SelectItem value="circle">Circle</SelectItem>
           </SelectContent>
         </Select>
-        <button type="submit" className="mt-4">
+        <button type="submit" className="mt-4 !bg-primary">
           Add
         </button>
       </form>
