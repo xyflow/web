@@ -20,19 +20,21 @@ export default function CaseStudies() {
         align="center"
       />
       <ContentGrid className="mt-20">
-        {getMdxPagesUnderRoute('/case-studies').map((page) => {
-          return (
-            <ContentGridItem key={page.route} route={page.route}>
-              <ProjectPreview
-                image={page.frontMatter.image}
-                title={page.frontMatter?.title}
-                description={page.frontMatter?.description}
-                authors={page.frontMatter?.authors}
-                kicker={page.frontMatter?.client}
-              />
-            </ContentGridItem>
-          );
-        })}
+        {getMdxPagesUnderRoute('/pro/case-studies')
+          .filter((page) => page.name !== 'index')
+          .map((page) => {
+            return (
+              <ContentGridItem key={page.route} route={page.route}>
+                <ProjectPreview
+                  image={page.frontMatter.image}
+                  title={page.frontMatter?.title}
+                  description={page.frontMatter?.description}
+                  authors={page.frontMatter?.authors}
+                  kicker={page.frontMatter?.client}
+                />
+              </ContentGridItem>
+            );
+          })}
       </ContentGrid>
       <Subscribe />
     </BaseLayout>

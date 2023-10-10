@@ -16,9 +16,9 @@
         "title": "Showcase",
         "href": "/showcase"
       },
-      "case-studies": {
-        "title": "Case Studies",
-        "href": "/case-studies"
+      "discord": {
+        "title": "Discord",
+        "href": "https://discord.gg/RVmnytFmGW"
       },
       "github": {
         "title": "Github",
@@ -47,13 +47,6 @@
   },
   "pro": {
     "title": "Pro",
-    "display": "hidden",
-    "theme": {
-      "layout": "raw"
-    }
-  },
-  "case-studies": {
-    "title": "Case Studies",
     "display": "hidden",
     "theme": {
       "layout": "raw"

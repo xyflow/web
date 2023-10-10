@@ -45,6 +45,7 @@ export default {
                 href: '/pro/pricing',
               },
               { title: 'Pro Examples', href: '/pro/examples' },
+              { title: 'Case Studies', href: '/pro/case-studies' },
               { title: 'Enterprise', href: '/pro/enterprise' },
             ]}
           />

@@ -5,7 +5,7 @@ description: Troubleshooting guide
 
 # Troubleshooting
 
-import Alert from '@/components/alert';
+import { Callout } from 'nextra/components';
 
 This guide contains warnings and errors that can occur when using React Flow. We are also adding common questions and pitfalls that we collect from our [Discord Server](https://discord.gg/RVmnytFmGW), [Github Issues](https://github.com/wbkd/react-flow/issues) and [Github Discussions](https://github.com/wbkd/react-flow/discussions).
 
@@ -24,7 +24,7 @@ Update reactflow and @reactflow/node-resizer (in case you are using it), remove 
 
 A possible solution is to wrap your component with a [`<ReactFlowProvider />`](/docs/api/react-flow-provider) or move the code that is accessing the state inside a child of your React Flow instance.
 
-<Alert status="error">This will cause an error:</Alert>
+<Callout type="error">This will cause an error:</Callout>
 
 ```jsx
 import ReactFlow from 'reactflow';
@@ -40,7 +40,7 @@ function FlowWithoutProvider(props) {
 export default FlowWithoutProvider;
 ```
 
-<Alert status="error">This will cause an error, too:</Alert>
+<Callout type="error">This will cause an error, too:</Callout>
 
 ```jsx
 import ReactFlow, { ReactFlowProvider } from 'reactflow';
@@ -61,7 +61,7 @@ function Flow(props) {
 export default FlowWithProvider;
 ```
 
-<Alert status="success">This works:</Alert>
+<Callout type="info">This works:</Callout>
 
 As soon as you want to access the internal state of React Flow (for example by using the `useReactFlow` hook), you need to wrap your component with a `<ReactFlowProvider />`. Here the wrapping is done outside of the component:
 
@@ -92,7 +92,7 @@ export default FlowWithProvider;
 
 This warning appears when the `nodeTypes` or `edgeTypes` properties change after the initial render. The `nodeTypes` or `edgeTypes` should only be changed dynamically in very rare cases. Usually they are defined once with all the types that you are using in your application. It can happen easily that you are defining the nodeTypes or edgeTypes object inside of your component render function, which will cause React Flow to re-render every time your component re-renders.
 
-<Alert status="error">Causes a warning:</Alert>
+<Callout type="error">Causes a warning:</Callout>
 
 ```jsx
 import ReactFlow from 'reactflow';
@@ -113,7 +113,7 @@ function Flow(props) {
 export default Flow;
 ```
 
-<Alert status="success">Recommended implementation:</Alert>
+<Callout type="info">Recommended implementation:</Callout>
 
 ```jsx
 import ReactFlow from 'reactflow';
@@ -131,7 +131,7 @@ function Flow(props) {
 export default Flow;
 ```
 
-<Alert status="success">Alternative implementation:</Alert>
+<Callout type="info">Alternative implementation:</Callout>
 
 You can use this if you want to change your nodeTypes dynamically without causing unneccessary re-renders.
 
@@ -147,7 +147,7 @@ function Flow(props) {
     () => ({
       myCustomNode: MyCustomNode,
     }),
-    []
+    [],
   );
 
   return <ReactFlow nodeTypes={nodeTypes} />;
@@ -160,7 +160,7 @@ export default Flow;
 
 This usually happens when you are specifying a custom node type for one of your nodes but not passing the correct nodeTypes property to React Flow. The string for the type option of your custom node needs to be exactly the same as the key of the nodeTypes object.
 
-<Alert status="error">Doesn't work:</Alert>
+<Callout type="error">Doesn't work:</Callout>
 
 ```jsx
 import ReactFlow from 'reactflow';
@@ -182,7 +182,7 @@ function Flow(props) {
 }
 ```
 
-<Alert status="error">Doesn't work either:</Alert>
+<Callout type="error">Doesn't work either:</Callout>
 
 ```jsx
 import ReactFlow from 'reactflow';
@@ -208,7 +208,7 @@ function Flow(props) {
 }
 ```
 
-<Alert status="success">This does work:</Alert>
+<Callout type="info">This does work:</Callout>
 
 ```jsx
 import ReactFlow from 'reactflow';
@@ -237,7 +237,7 @@ function Flow(props) {
 
 Under the hood, React Flow measures the parent DOM element to adjust the renderer. If you try to render React Flow in a regular div without a height, we cannot display the graph. If you encounter this warning, you need to make sure that your wrapper component has some CSS attached to it so that it gets a fixed height or inherits the height of its parent.
 
-<Alert status="error">This will cause the warning:</Alert>
+<Callout type="error">This will cause the warning:</Callout>
 
 ```jsx
 import ReactFlow from 'reactflow';
@@ -252,7 +252,7 @@ function Flow(props) {
 }
 ```
 
-<Alert status="success">Working example:</Alert>
+<Callout type="info">Working example:</Callout>
 
 ```jsx
 import ReactFlow from 'reactflow';
@@ -270,7 +270,7 @@ function Flow(props) {
 
 This warning appears when you are trying to add the `extent` option to a node that does not have a parent node. Depending on what you are trying to do, you can remove the `extent` option or specify a `parentNode`.
 
-<Alert status="error">Does show a warning:</Alert>
+<Callout type="error">Does show a warning:</Callout>
 
 ```jsx
 import ReactFlow from 'reactflow';
@@ -289,7 +289,7 @@ function Flow(props) {
 }
 ```
 
-<Alert status="success">Warning resolved:</Alert>
+<Callout type="info">Warning resolved:</Callout>
 
 ```jsx import ReactFlow from 'reactflow';
 const nodes = [
@@ -310,7 +310,7 @@ function Flow(props) {
 
 This happens when you do not pass a `source` and a `target` option to the edge object. Without the source and target, the edge cannot be rendered.
 
-<Alert status="error">Will show a warning:</Alert>
+<Callout type="error">Will show a warning:</Callout>
 
 ```jsx
 import ReactFlow from 'reactflow';
@@ -332,7 +332,7 @@ function Flow(props) {
 }
 ```
 
-<Alert status="success">This works:</Alert>
+<Callout type="info">This works:</Callout>
 
 ```jsx
 import ReactFlow from 'reactflow';

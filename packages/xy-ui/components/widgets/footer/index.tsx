@@ -90,10 +90,13 @@ export default function Footer({ imageSrc }: FooterProps) {
               ))}
             </div>
 
-            <Text variant="light" className="py-6 text-sm mt-auto">
+            <Text variant="light" className="pt-6 text-sm mt-auto">
               <a href="mailto:info@xyflow.com">info@xyflow.com</a> — Copyright
-              © {new Date().getFullYear()} webkid GmbH. All rights reserved —
-              website design by{' '}
+              © {new Date().getFullYear()}{' '}
+              <a href="https://webkid.io" target="_blank">
+                webkid GmbH
+              </a>
+              . All rights reserved — website design by{' '}
               <a target="_blank" href="https://facumontanaro.com/">
                 Facu Montanaro
               </a>
