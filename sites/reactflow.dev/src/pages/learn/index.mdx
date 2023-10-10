@@ -35,7 +35,7 @@ the examples, or dive into the API docs.
 You can try React Flow without setting anything up locally by checking out the
 starter projects we have on [CodeSandbox](https://codesandbox.io/):
 
-<Cards>
+<Cards num={2}>
   <Card
     title="new.reactflow.dev/js-react"
     href="https://new.reactflow.dev/js-react"
@@ -209,7 +209,7 @@ export default function App() {
 
   const onConnect = useCallback(
     (params) => setEdges((eds) => addEdge(params, eds)),
-    [setEdges]
+    [setEdges],
   );
 
   return (
@@ -257,7 +257,7 @@ export default function App() {
 
   const onConnect = useCallback(
     (params) => setEdges((eds) => addEdge(params, eds)),
-    [setEdges]
+    [setEdges],
   );
 
   return (

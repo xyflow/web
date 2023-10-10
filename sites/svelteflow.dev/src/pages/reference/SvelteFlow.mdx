@@ -1,0 +1,60 @@
+import { Callout } from 'nextra/components';
+import { PropsTable } from 'xy-ui';
+import {
+  commonProps,
+  viewportProps,
+  edgeProps,
+  eventHandlerProps,
+  interactionProps,
+  connectionLineProps,
+  keyboardProps,
+} from '@/page-data/reference/SvelteFlow.ts';
+
+# &lt;SvelteFlow />
+
+The `<SvelteFlow />` component is the heart of your Svelte Flow application.
+
+```tsx
+import { SvelteFlow } from '@xyflow/svelte'
+
+export default function Flow() {
+  return <SvelteFlow
+    nodes={...}
+    edges={...}
+    ...
+  />
+}
+```
+
+This component takes a lot of different props, most of which are optional. We've
+tried to document them in groups that make sense to help you find your way.
+
+## Common props
+
+These are the props you will most commonly use when working with Svelte Flow.
+
+<PropsTable {...commonProps} />
+
+## Viewport props
+
+<PropsTable {...viewportProps} />
+
+## Edge props
+
+<PropsTable {...edgeProps} />
+
+## Event handlers
+
+<PropsTable {...eventHandlerProps} />
+
+## Interaction props
+
+<PropsTable {...interactionProps} />
+
+## Connection line props
+
+<PropsTable {...connectionLineProps} />
+
+## Notes
+
+- The props of this component get exported as `SvelteFlowProps`

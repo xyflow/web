@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@codesandbox/sandpack-react": "^2.6.9",
+    "@docsearch/react": "^3.5.2",
     "@heroicons/react": "^2.0.18",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-alert-dialog": "^1.0.4",

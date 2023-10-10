@@ -1,10 +1,8 @@
-import { CSSProperties } from 'react';
 import localFont from 'next/font/local';
 import { Fira_Mono } from 'next/font/google';
 import { useFathom } from 'xy-ui';
 
 import 'styles/global.css';
-import useXYSite from '@/hooks/use-xy-site';
 
 const ntDapperFont = localFont({
   src: [
@@ -24,35 +22,16 @@ const firaMonoFont = Fira_Mono({
 
 const className = `${ntDapperFont.variable} ${firaMonoFont.variable} font-sans`;
 
-// @todo this doesn't work because it's not flexible enough
-const hueValuesBySite = {
-  xyflow: 220,
-  react: 330,
-  svelte: 30,
-};
-
 const fathomOptions = {
   id: 'PFWQXXRR',
   domains: ['svelteflow.dev'],
 };
 
 export default function App({ Component, pageProps }) {
-  const { site } = useXYSite();
-
   useFathom(fathomOptions);
 
   return (
-    <main
-      className={className}
-      style={
-        {
-          '--nextra-primary-hue': hueValuesBySite[site],
-          '--docsearch-primary-color': `hsl(var(--color-${site}))`,
-          '--docsearch-highlight-color': `hsl(var(--color-${site}))`,
-          '--docsearch-searchbox-shadow': `inset 0 0 0 2px hsl(var(--color-${site}))`,
-        } as CSSProperties
-      }
-    >
+    <main className={className}>
       <Component {...pageProps} />
     </main>
   );
