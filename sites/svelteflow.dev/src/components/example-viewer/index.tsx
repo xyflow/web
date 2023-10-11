@@ -106,7 +106,7 @@ export default function SvelteExample({
         <Button
           onClick={openInStackblitz}
           size="sm"
-          className="font-medium text-[10px] h-6 bg-gray-100 hover:bg-gray-200 text-gray-700 font-mono"
+          className="font-medium text-[10px] h-6 bg-gray-100 hover:bg-gray-200 text-gray-700"
         >
           Open in Stackblitz
         </Button>
