@@ -1,9 +1,7 @@
 'use client';
 
 import { CSSProperties, ReactNode, useRef } from 'react';
-import { SparklesIcon, BoltIcon } from '@heroicons/react/24/outline';
-import Link from 'next/link';
-import { Button, Heading, Text, LayoutBreakout } from '../../..';
+import { Heading, Text, LayoutBreakout } from '../../..';
 import Flow from './flow';
 
 const headlineStyle: CSSProperties = {
@@ -31,20 +29,22 @@ function HeroFlow({
         <div
           ref={headlineRef}
           style={headlineStyle}
-          className="max-w-md relative bg-white/10 backdrop-blur-[2px] p-[max(env(safe-area-inset-left),1.5rem)]"
+          className="text-center mx-auto lg:mx-0 lg:text-left max-w-lg relative bg-white/10 backdrop-blur-[2px] p-[max(env(safe-area-inset-left),1.5rem)]"
         >
-          <Heading size="md" className="mb-4 font-black">
+          <Heading size="lg" className="mb-4 font-black">
             Wire Your Ideas with <span className="text-primary">{title}</span>
           </Heading>
 
           {subtitle && (
-            <Text size="lg" className="mb-4 lg:mb-6">
+            <Text className="mb-4 lg:mb-6 text-xl">
               A customizable React component for building node-based editors and
               interactive diagrams
             </Text>
           )}
 
-          {action && <div>{action}</div>}
+          {action && (
+            <div className="flex justify-center lg:justify-start">{action}</div>
+          )}
         </div>
       </div>
 

@@ -88,8 +88,8 @@ const defaultEdges: Edge[] = [
     target: 'hero',
     targetHandle: 'color',
     style: {
-      stroke: '#A3ADB8',
-      strokeWidth: 1.5,
+      stroke: '#D2D2D2',
+      strokeWidth: 2,
     },
     animated: true,
   },
@@ -99,8 +99,8 @@ const defaultEdges: Edge[] = [
     target: 'hero',
     targetHandle: 'shape',
     style: {
-      stroke: '#A3ADB8',
-      strokeWidth: 1.5,
+      stroke: '#D2D2D2',
+      strokeWidth: 2,
     },
     animated: true,
   },
@@ -110,8 +110,8 @@ const defaultEdges: Edge[] = [
     target: 'hero',
     targetHandle: 'zoom',
     style: {
-      stroke: '#A3ADB8',
-      strokeWidth: 1.5,
+      stroke: '#D2D2D2',
+      strokeWidth: 2,
     },
     animated: true,
   },
@@ -225,7 +225,7 @@ function Flow({ initialColor = '#777', headlineRef, className }: FlowProps) {
           n.data = { ...n.data, color };
         }
         return n;
-      })
+      }),
     );
   }, [color]);
 
@@ -239,7 +239,7 @@ function Flow({ initialColor = '#777', headlineRef, className }: FlowProps) {
           n.data = { ...n.data, zoom };
         }
         return n;
-      })
+      }),
     );
   }, [zoom]);
 
@@ -253,7 +253,7 @@ function Flow({ initialColor = '#777', headlineRef, className }: FlowProps) {
           n.data = { ...n.data, shape };
         }
         return n;
-      })
+      }),
     );
   }, [shape]);
 
@@ -269,7 +269,7 @@ function Flow({ initialColor = '#777', headlineRef, className }: FlowProps) {
         proOptions={proOptions}
         className={cn(
           'bg-no-repeat bg-[65%_center] bg-[length:35%]',
-          className
+          className,
         )}
       >
         {/* <Controls showInteractive={false} className="bg-white" /> */}

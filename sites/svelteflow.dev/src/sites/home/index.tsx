@@ -51,13 +51,13 @@ export default function SvelteFlowHome() {
         subtitle="A customizable React component for building node-based editors and interactive diagrams"
         action={
           <div className="flex">
-            <Button asChild className="mr-3 ">
+            <Button asChild className="mr-3" size="lg">
               <Link href="/docs">
                 <BoltIcon className="w-5 h-5 mr-1" />
                 Quickstart
               </Link>
             </Button>
-            <Button variant="pro" asChild>
+            <Button variant="pro" asChild size="lg">
               <Link href="/support">
                 <HeartIcon className="w-5 h-5 mr-1" /> Support Us
               </Link>

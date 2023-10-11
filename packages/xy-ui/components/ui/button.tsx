@@ -34,14 +34,14 @@ const buttonVariants = cva(
       size: {
         default: 'py-2 h-9 px-6',
         sm: 'px-4 h-8 rounded-full',
-        lg: 'px-10 h-10 text-md rounded-full',
+        lg: 'px-6 h-10 text-md rounded-full',
       },
     },
     defaultVariants: {
       variant: 'default',
       size: 'default',
     },
-  }
+  },
 );
 
 export interface ButtonProps
@@ -62,7 +62,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       children,
       ...props
     },
-    ref
+    ref,
   ) => {
     const Comp = asChild ? Slot : 'button';
 
@@ -75,7 +75,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {loading ? <Spinner size={size} /> : children}
       </Comp>
     );
-  }
+  },
 );
 
 Button.displayName = 'Button';

@@ -101,13 +101,13 @@ export default function ReactFlowHome() {
         subtitle="A customizable React component for building node-based editors and interactive diagrams"
         action={
           <div className="flex">
-            <Button asChild className="mr-3 ">
+            <Button size="lg" asChild className="mr-3 ">
               <Link href="/learn">
                 <BoltIcon className="w-5 h-5 mr-1" />
                 Quickstart
               </Link>
             </Button>
-            <Button variant="pro" asChild>
+            <Button size="lg" variant="pro" asChild>
               <Link href="/pro">
                 <SparklesIcon className="w-5 h-5 mr-1" /> React Flow Pro
               </Link>
