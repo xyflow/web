@@ -54,7 +54,7 @@ type FooterProps = {
   baseUrl?: string;
 };
 
-// we can pass a baseurl that gets remove from the links in order to have site specific relative links
+// we can pass a baseurl that gets removed from the links in order to have site specific relative links
 export default function Footer({ imageSrc, baseUrl = '' }: FooterProps) {
   return (
     <footer className="bg-black print:bg-transparent py-12 lg:py-18">
