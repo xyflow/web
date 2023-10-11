@@ -33,7 +33,7 @@ export default {
   },
   footer: {
     component: () => {
-      return <Footer imageSrc={aboutImage} />;
+      return <Footer imageSrc={aboutImage} baseUrl="https://xyflow.com" />;
     },
   },
   search: {
@@ -42,7 +42,7 @@ export default {
   feedback: {
     useLink: () => 'https://xyflow.com/contact',
   },
-  primaryHue: 330,
+  primaryHue: 333,
   primarySaturation: 100,
   useNextSeoProps() {
     const router = useRouter();

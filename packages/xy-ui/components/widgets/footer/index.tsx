@@ -3,23 +3,24 @@ import Image from 'next/image';
 import { Text } from '../../ui/text';
 
 const libraries = [
-  { title: 'React Flow', route: '/react-flow' },
-  { title: 'Svelte Flow', route: '/svelte-flow' },
-  { title: 'Project Showcase', route: '/' },
-  { title: 'Case Studies', route: '/' },
+  { title: 'React Flow', route: 'https://reactflow.dev/' },
+  { title: 'Svelte Flow', route: 'https://svelteflow.dev/' },
+  { title: 'Project Showcase', route: 'https://reactflow.dev/showcase' },
+  { title: 'Case Studies', route: 'https://reactflow.dev/pro/case-studies' },
 ];
 
 const xyflow = [
-  { title: 'About', route: '/' },
-  { title: 'Contact', route: '/' },
-  { title: 'Open Source', route: '/' },
+  { title: 'Blog', route: 'https://xyflow.com/blog' },
+  { title: 'Open Source', route: 'https://xyflow.com/open-source' },
+  { title: 'About', route: 'https://xyflow.com/about' },
+  { title: 'Contact', route: 'https://xyflow.com/contact' },
 ];
 
 const legal = [
-  { title: 'Terms of Use', route: '/terms-of-use' },
-  { title: 'Ethical Standards', route: '/ethical-standards' },
-  { title: 'Privacy Policy', route: '/privacy' },
-  { title: 'Imprint', route: '/imprint' },
+  { title: 'Terms of Use', route: 'https://xyflow.com/terms-of-use' },
+  { title: 'Ethical Standards', route: 'https://xyflow.com/ethical-standards' },
+  { title: 'Privacy Policy', route: 'https://xyflow.com/privacy' },
+  { title: 'Imprint', route: 'https://xyflow.com/imprint' },
 ];
 
 const social = [
@@ -50,9 +51,11 @@ const categories = [
 
 type FooterProps = {
   imageSrc?: string;
+  baseUrl?: string;
 };
 
-export default function Footer({ imageSrc }: FooterProps) {
+// we can pass a baseurl that gets removed from the links in order to have site specific relative links
+export default function Footer({ imageSrc, baseUrl = '' }: FooterProps) {
   return (
     <footer className="bg-black print:bg-transparent py-12 lg:py-18">
       <div className="mx-auto lg:flex text-white max-w-[90rem] pl-[max(env(safe-area-inset-left),1.5rem)] pr-[max(env(safe-area-inset-right),1.5rem)]">
@@ -82,7 +85,11 @@ export default function Footer({ imageSrc }: FooterProps) {
                     {category.title}
                   </Text>
                   {category.items.map((item) => (
-                    <Link href={item.route} className="block" key={item.route}>
+                    <Link
+                      href={item.route.replace(baseUrl, '')}
+                      className="block"
+                      key={item.title}
+                    >
                       {item.title}
                     </Link>
                   ))}
