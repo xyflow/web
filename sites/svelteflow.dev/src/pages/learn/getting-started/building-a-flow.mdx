@@ -1,0 +1,90 @@
+---
+title: Building a flow
+description: A quick guide that shows you how to get started with Svelte Flow
+---
+
+# Building a flow
+
+import ExampleViewer from '@/components/example-viewer';
+
+In the following section we will show you how to create a Svelte component that displays a simple flow. We assume that you've installed Svelte Flow and hope that you are ready to create your first component with Svelte Flow.
+
+## Getting Started
+
+Let's add an `SvelteFlow` component with a `Controls` and a `Background` component. For this we import the components from the `@xyflow/svelte` package:
+
+```js
+import { SvelteFlow, Background, Controls } from '@xyflow/svelte';
+// 👇 always import the styles
+import '@xyflow/svelte/dist/style.css';
+```
+
+Now you can use them in your component like this:
+
+<ExampleViewer codePath="guides/getting-started/a" editorHeight={400} />
+
+As you can see, you can pan around by dragging the pane, zoom in and out by scrolling the mouse or using the control panel buttons.
+
+There are three important things to keep in mind here:
+
+1. You need to **import the styles**. Otherwise Svelte Flow looks weird and doesn't work.
+2. The **parent container needs a width and a height**, because Svelte Flow uses its parent dimensions.
+3. If you have **multiple flows on one page**, you need to pass a unique `id` prop to each component to make Svelte Flow work properly.
+
+## Adding nodes
+
+Now that the basics are set up, we can add a few nodes. For this, you need to create a [writable store](https://svelte.dev/docs/svelte-store#writable) with an array of [node objects](/docs/api/nodes/node-options/) like this:
+
+```js
+import { writable } from 'svelte/store';
+
+const nodes = writable([
+  {
+    id: '1', // required and needs to be a string
+    position: { x: 0, y: 0 }, // required
+    data: { label: 'hey' }, // required
+  },
+  {
+    id: '2',
+    position: { x: 100, y: 100 },
+    data: { label: 'world' },
+  },
+]);
+```
+
+If we add these nodes to our `SvelteFlow` component, we can see them on the screen:
+
+<ExampleViewer codePath="guides/getting-started/b" editorHeight={400} />
+
+There are lots of options to configure nodes. You can see the full list of options on the [node option site](/api-reference/nodes/node-options/).
+
+This is a good start! You can already do a lot of things:
+
+- **drag nodes** around
+- **select nodes**, by clicking on them
+- **delete nodes** by pressing the `Backspace` key
+- **multi select nodes** by holding down the `Shift` key create a selection box
+
+## Connecting nodes with an edge
+
+Now that we have two nodes, let's connect them with an edge.
+
+To make an edge, we need to specify two attributes: the source node (edge start) and the target node (edge end). We use the `id` of the two nodes to specify this (in our example, our two nodes have ids of "1" and "2"). The edges are stored in a writable store, just like the nodes:
+
+```js
+import { writable } from 'svelte/store';
+
+const edges = writable([{ id: '1-2', source: '1', target: '2' }]);
+```
+
+<ExampleViewer codePath="guides/getting-started/c" editorHeight={400} />
+
+As the nodes, the edges have a lot of options too. You can chosse a type, define start and end markers, labels and of course change the styling. You can see the full list of options on the [edge option site](/api-reference/edges/edge-options/).
+
+## Fine-tuning the flow
+
+Now that we have a basic flow, we can fine-tune it a bit. You can automatically fit all nodes into the viewport, by using the `fitView` prop. If a white background is not what you want, you can easily adjust it by using the `bgColor` prop of the `Background` component. As you can see, we alos used the `patternColor` prop to change the color of the pattern. Of course you can also change the pattern with the `variant` prop. By default the controls panel comes with a zoom-in, zoom-out, fit view and lock button. You can remove the lock button for example by setting `showLock={false}`.
+
+<ExampleViewer codePath="guides/getting-started/d" editorHeight={400} />
+
+There are way more things you can do! You can get a good overview by checking out the [examples](/examples) or the [API reference](/api-reference).
