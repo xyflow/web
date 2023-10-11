@@ -1,13 +1,27 @@
+import { useConfig } from 'nextra-theme-docs';
 import { getPagesUnderRoute } from 'nextra/context';
 import { type MdxFile } from 'nextra';
-import { useConfig } from 'nextra-theme-docs';
+import {
+  BlogPostLayout as BaseBlogPostLayout,
+  type BlogPostFrontmatter,
+} from 'xy-ui';
 
-export function usePostMetadata() {
-  const { title, frontMatter } = useConfig();
-  const { prev, next } = getPrevAndNextPagesByTitle(title, '/blog');
+export type TutorialLayoutProps = {
+  children: React.ReactNode;
+};
 
-  return { frontMatter, prev, next };
+export function TutorialLayout({ children }: TutorialLayoutProps) {
+  const { title, frontMatter } = useConfig<BlogPostFrontmatter>();
+  const { prev, next } = getPrevAndNextPagesByTitle(title, '/tutorials');
+
+  return (
+    <BaseBlogPostLayout frontMatter={frontMatter} prev={prev} next={next}>
+      {children}
+    </BaseBlogPostLayout>
+  );
 }
+
+export default TutorialLayout;
 
 // UTILS -----------------------------------------------------------------------
 
@@ -20,7 +34,7 @@ function getPrevAndNextPagesByTitle(title: string, route: string) {
   });
 
   const currentIndex = pages.findIndex(
-    (page) => page.frontMatter?.title === title
+    (page) => page.frontMatter?.title === title,
   );
 
   const prev = pages[currentIndex - 1];

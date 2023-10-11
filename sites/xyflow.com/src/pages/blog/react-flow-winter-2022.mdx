@@ -7,11 +7,12 @@ tags: ['react-flow', 'update']
 image: /img/blog/v10-header.png
 ---
 
+import { Bleed } from 'nextra-theme-docs';
 import { BlogExampleViewer } from '@/components/example-viewer';
-import { BlogPostLayout, Embed, Image, Emoji } from 'xy-ui';
-import { usePostMetadata } from '@/hooks/use-post-metadata';
+import { Embed, Image, Emoji } from 'xy-ui';
+import { BlogPostLayout } from '@/layouts/blog-post-with-frontmatter';
 
-<BlogPostLayout usePostMetadata={usePostMetadata}>
+<BlogPostLayout>
 Hey! We wanted to share an update about what we’ve been up to before we wrap ourselves up in blankets to hibernate until the new year (we’ll be shutting our laptops from today until January 2nd ⛄). Let’s get into what’s been up the past few months, what’s coming, and what we’re excited about right now.
 
 ## Pan, zoom, and select like your favorite design tools with the v11.4.0 minor release 💫
@@ -59,23 +60,27 @@ We hope to continue on this path, this will mean talking to some of you all (yay
 
 **A lot of people liked our list of [Awesome Node Based UIs](https://github.com/wbkd/awesome-node-based-uis)** with resources, libraries, and good-looking apps. Within a month of publishing it we already have more than 120 entries, 22 contributors and 1k Github stars!! So cool. And this [comment](https://news.ycombinator.com/item?id=33641786) on Hackernews was too good not to share <Emoji content="😊" />.
 
-<Image
-  src="/img/blog/winter-2022/hackernews.png"
-  alt="a screenshot from a comment on hackernews"
-  width={1684}
-  height={378}
-  wide
-/>
+<Bleed>
+  <Image
+    src="/img/blog/winter-2022/hackernews.png"
+    alt="a screenshot from a comment on hackernews"
+    width={1684}
+    height={378}
+    wide
+  />
+</Bleed>
 
 **We met people IRL** at React Day Berlin and gave a lightning talk on making React Flow financially sustainable. We’re interested in giving more talks (maybe at [re:publica 23](https://re-publica.com/en)?) and finding our community as a company, and this was one step towards that for us. The talk isn’t publicly available yet, but it will be soon [here](https://portal.gitnation.org/contents/making-an-open-source-library-financially-sustainable).
 
-<Image
-  src="/img/blog/winter-2022/reactday-pics.jpeg"
-  alt="John standing in front of a crowd of people giving a presentation, and a selfie of Moritz and John standing outside the React Day conference building"
-  width={3657}
-  height={1533}
-  wide
-/>
+<Bleed>
+  <Image
+    src="/img/blog/winter-2022/reactday-pics.jpeg"
+    alt="John standing in front of a crowd of people giving a presentation, and a selfie of Moritz and John standing outside the React Day conference building"
+    width={3657}
+    height={1533}
+    wide
+  />
+</Bleed>
 
 Cheers and have a cozy winter holiday! See you in 2023.
 

@@ -162,15 +162,15 @@ export default function ReactFlowHome() {
           <ContentGridItem route="/learn">
             <ProjectPreview
               image="/img/getting-started-thumb.png"
-              title="Getting Started Guide"
+              title="Getting started guide"
               description="Build an interactive flow and learn the foundations of React Flow in a few minutes"
             />
           </ContentGridItem>
-          <ContentGridItem route="https://xyflow.com/blog/react-flow-and-the-web-audio-api">
+          <ContentGridItem route="/tutorials">
             <ProjectPreview
               image="/img/blog/webaudio/web-audio-blog-thumb.png"
-              title="Build a browser synth"
-              description="Learn React Flow and the Web Audio API while creating an interactive sound-making machine"
+              title="In-depth tutorials"
+              description="React Flow's tutorials provide step-by-step instructions for building MVP apps like mind maps and audio playgrounds."
             />
           </ContentGridItem>
         </ContentGrid>

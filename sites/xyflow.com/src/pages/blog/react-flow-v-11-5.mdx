@@ -7,35 +7,40 @@ tags: ['react-flow', 'update']
 image: /img/blog/v10-header.png
 ---
 
-import { BlogPostLayout, Image, Emoji } from 'xy-ui';
-import { usePostMetadata } from '@/hooks/use-post-metadata';
+import { Bleed } from 'nextra-theme-docs';
+import { Image, Emoji } from 'xy-ui';
+import { BlogPostLayout } from '@/layouts/blog-post-with-frontmatter';
 
-<BlogPostLayout usePostMetadata={usePostMetadata}>
+<BlogPostLayout>
 Hello again! I am super excited to share the latest improvements of React Flow. The new auto pan features and connection radius makes it way easier to connect nodes and work with bigger flows. On top of that we improved the usability on touch devices.
 
 ## Auto pan
 
 After working a bit with Blender geometry nodes I knew that I wanted to add this feature. Whenever you drag a node, a selection box or a connection line to the border of the pane, it automatically pans into that direction. This enables the users to connect nodes without having to scroll around and organize nodes more easily. If you don't like it, you can disable this new feature with [`autoPanOnConnect={false}`](/docs/api/react-flow-props/#autopanonconnect-1) and [`autoPanOnNodeDrag={false}`](/docs/api/react-flow-props/#autopanonnodedrag-1).
 
-<Image
-  src="/img/blog/v11-5/auto-pan.gif"
-  alt="Auto pan demo."
-  wide
-  width={822}
-  height={468}
-/>
+<Bleed>
+  <Image
+    src="/img/blog/v11-5/auto-pan.gif"
+    alt="Auto pan demo."
+    wide
+    width={822}
+    height={468}
+  />
+</Bleed>
 
 ## Connection radius
 
 There are [several](/docs/examples/nodes/easy-connect/) [ways](/docs/examples/nodes/proximity-connect/) to connect nodes. The built-in way is to drag a connection line from one handle to another. To make this easier we added the [`connectionRadius` prop](/docs/api/react-flow-props/#connectionradius-1). The connection radius specifies the radius around a handle where you can drop the connection line. There is no need to drop it directly above a handle any more <Emoji content="🙌" />.
 
-<Image
-  src="/img/blog/v11-5/connection-radius.gif"
-  alt="Conneciton radius demo."
-  wide
-  width={822}
-  height={468}
-/>
+<Bleed>
+  <Image
+    src="/img/blog/v11-5/connection-radius.gif"
+    alt="Conneciton radius demo."
+    wide
+    width={822}
+    height={468}
+  />
+</Bleed>
 
 ## Error handling
 

@@ -6,10 +6,11 @@ authors: ['moritz']
 tags: ['react-flow', 'release']
 ---
 
-import { BlogPostLayout, Image, Emoji } from 'xy-ui';
-import { usePostMetadata } from '@/hooks/use-post-metadata';
+import { Bleed } from 'nextra-theme-docs';
+import { Image, Emoji } from 'xy-ui';
+import { BlogPostLayout } from '@/layouts/blog-post-with-frontmatter';
 
-<BlogPostLayout usePostMetadata={usePostMetadata}>
+<BlogPostLayout>
 A lot has happened since we published our last blog post six months ago. We got our first pro subscribers, we hired John who helps us with the docs, communication and community and we are all working full time on React Flow <Emoji content="🥳" />. Today we are releasing a new major version with lots of new features and very few breaking changes (unlike the last major update..).
 
 **If you are looking for the information how to upgrade, please refer to the ["Migrate to v11" guide](/docs/guides/migrate-to-v11/).**
@@ -62,13 +63,15 @@ Whereas in v10, the nodes were a bit more in the spotlight, this time we've put 
 
 Another big update is a complete rewrite of the edge routing for `smoothstep` and `step` edge types.
 
-<Image
-  src="/img/blog/v11/rf-edge-routing.png"
-  alt="Edge routing comparison v10 and v11"
-  width={800}
-  height={615}
-  wide
-/>
+<Bleed>
+  <Image
+    src="/img/blog/v11/rf-edge-routing.png"
+    alt="Edge routing comparison v10 and v11"
+    width={800}
+    height={615}
+    wide
+  />
+</Bleed>
 
 That's not all. We also revised the edge [update behaviour](https://twitter.com/reactflowdev/status/1564966917517021184), added [`pathOptions`](/docs/api/edges/edge-options/#options) for `default` and `smoothstep` edges and a new `deletable` flag. For making it easier to develop custom edges we are exporting a [`<BaseEdge />` component](/docs/api/edges/base-edge/) that can draw the invisible helper edge and the label for you.
 

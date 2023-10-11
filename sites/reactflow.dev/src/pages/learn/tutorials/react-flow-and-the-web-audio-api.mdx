@@ -1,33 +1,35 @@
 ---
-title: 'Tutorial: Integrating React Flow and the Web Audio API'
+title: 'Integrate with the Web Audio API'
 intro: "Today we'll be looking at how to create an interactive audio playground using React Flow and the Web Audio API. We'll start from scratch, first learning about the Web Audio API before looking at how to handle many common scenarios in React Flow: state management, implementing custom nodes, and adding interactivity."
 date: 2023/04/14
 authors: ['hayleigh']
 tags: ['react-flow', 'web-audio-api', 'how-to']
-image: img/blog/webaudio/web-audio-blog-thumb.png
+image: /img/blog/webaudio/web-audio-blog-thumb.png
 ---
 
 import { Callout, Tab, Tabs } from 'nextra/components';
-import { BlogPostLayout, Embed, Image, Emoji } from 'xy-ui';
-import { usePostMetadata } from '@/hooks/use-post-metadata';
+import { Bleed } from 'nextra-theme-docs';
+import { Embed, Image, Emoji } from 'xy-ui';
+import { BlogExampleViewer } from '@/components/example-viewer/blog-embed';
+import { TutorialLayout } from '@/layouts/tutorial-with-frontmatter';
 
-import { BlogExampleViewer } from '@/components/example-viewer';
-
-<BlogPostLayout usePostMetadata={usePostMetadata}>
+<TutorialLayout>
 Today we'll be looking at how to create an interactive audio playground using React
 Flow and the Web Audio API. We'll start from scratch, first learning about the Web
 Audio API before looking at how to handle many common scenarios in React Flow:
 state management, implementing custom nodes, and adding interactivity.
 
-<Image
-  src="/img/blog/webaudio/bleep-cafe.png"
-  alt="A screenshot of bleep.cafe, a visual audio programming environment. In it,
+<Bleed>
+  <Image
+    src="/img/blog/webaudio/bleep-cafe.png"
+    alt="A screenshot of bleep.cafe, a visual audio programming environment. In it,
     there are four nodes connected together: an xy pad, an oscillator node, a
     volume node, and a master output."
-  wide
-  caption="This is bleep.cafe. We're going to learn everything we need to know to
+    wide
+    caption="This is bleep.cafe. We're going to learn everything we need to know to
     build something just like it!"
-/>
+  />
+</Bleed>
 
 A while back I shared a project I was working on to the React Flow
 [discord server](https://discord.com/invite/RVmnytFmGW). It's called
@@ -49,7 +51,9 @@ But first...
 
 ## A demo!
 
-<Embed src="https://wbkd.github.io/react-flow-web-audio/" />
+<Bleed>
+  <Embed src="https://wbkd.github.io/react-flow-web-audio/" />
+</Bleed>
 
 <Callout type="warning">
 This and other examples in this tutorial _make sound_.
@@ -199,11 +203,13 @@ export default function App() {
 And that's everything we need to start making some sounds with the Web Audio API!
 Here's what we put together, in case you weren't following along at home:
 
-<BlogExampleViewer
-  codePath="blog-flows/webaudio/MouseTheremin"
-  additionalFiles={['index.css']}
-  showEditor={false}
-/>
+<Bleed>
+  <BlogExampleViewer
+    codePath="blog-flows/webaudio/MouseTheremin"
+    additionalFiles={['index.css']}
+    showEditor={false}
+  />
+</Bleed>
 
 Now let's put this knowledge to one side and take a look at how to build a React
 Flow project from scratch.
@@ -257,7 +263,7 @@ ReactDOM.createRoot(root).render(
         <App />
       </ReactFlowProvider>
     </div>
-  </React.StrictMode>
+  </React.StrictMode>,
 );
 ```
 
@@ -420,12 +426,14 @@ const useStore = create((set, get) => ({
 }));
 ```
 
-<BlogExampleViewer
-  codePath="blog-flows/webaudio/StateManagement"
-  additionalFiles={['store.js']}
-  dependencies={{ nanoid: 'latest', zustand: '4.3.6' }}
-  showEditor={true}
-/>
+<Bleed>
+  <BlogExampleViewer
+    codePath="blog-flows/webaudio/StateManagement"
+    additionalFiles={['store.js']}
+    dependencies={{ nanoid: 'latest', zustand: '4.3.6' }}
+    showEditor={true}
+  />
+</Bleed>
 
 ### 2. Custom nodes
 
@@ -645,12 +653,14 @@ const useStore = create((set, get) => ({
 }));
 ```
 
-<BlogExampleViewer
-  codePath="blog-flows/webaudio/CustomNode"
-  additionalFiles={['store.js', 'nodes/Osc.js']}
-  dependencies={{ nanoid: 'latest', zustand: '4.3.6', twind: 'latest' }}
-  showEditor={false}
-/>
+<Bleed>
+  <BlogExampleViewer
+    codePath="blog-flows/webaudio/CustomNode"
+    additionalFiles={['store.js', 'nodes/Osc.js']}
+    dependencies={{ nanoid: 'latest', zustand: '4.3.6', twind: 'latest' }}
+    showEditor={false}
+  />
+</Bleed>
 
 <Callout type="info">
 Stuck on styling?
@@ -727,12 +737,19 @@ export default function Out({ id, data }) {
 
 Things are starting to shape up quite nicely!
 
-<BlogExampleViewer
-  codePath="blog-flows/webaudio/CustomNodes"
-  additionalFiles={['store.js', 'nodes/Osc.js', 'nodes/Out.js', 'nodes/Amp.js']}
-  dependencies={{ nanoid: 'latest', zustand: '4.3.6', twind: 'latest' }}
-  showEditor={false}
-/>
+<Bleed>
+  <BlogExampleViewer
+    codePath="blog-flows/webaudio/CustomNodes"
+    additionalFiles={[
+      'store.js',
+      'nodes/Osc.js',
+      'nodes/Out.js',
+      'nodes/Amp.js',
+    ]}
+    dependencies={{ nanoid: 'latest', zustand: '4.3.6', twind: 'latest' }}
+    showEditor={false}
+  />
+</Bleed>
 
 The next step, then, is to…
 
@@ -992,18 +1009,20 @@ export const useStore = create((set, get) => ({
 Et voilà, we did it! We've now put enough together to actually _make sounds_!
 Let's see what we have in action.
 
-<BlogExampleViewer
-  codePath="blog-flows/webaudio/HardcodedAudio"
-  additionalFiles={[
-    'store.js',
-    'audio.js',
-    'nodes/Osc.js',
-    'nodes/Amp.js',
-    'nodes/Out.js',
-  ]}
-  dependencies={{ nanoid: 'latest', zustand: '4.3.6', twind: 'latest' }}
-  showEditor={false}
-/>
+<Bleed>
+  <BlogExampleViewer
+    codePath="blog-flows/webaudio/HardcodedAudio"
+    additionalFiles={[
+      'store.js',
+      'audio.js',
+      'nodes/Osc.js',
+      'nodes/Amp.js',
+      'nodes/Out.js',
+    ]}
+    dependencies={{ nanoid: 'latest', zustand: '4.3.6', twind: 'latest' }}
+    showEditor={false}
+  />
+</Bleed>
 
 ### 4. Creating new nodes
 
@@ -1132,18 +1151,20 @@ that can:
 Here's the demo from the beginning, but this time you can see the source code to
 make sure you haven't missed anything.
 
-<BlogExampleViewer
-  codePath="blog-flows/webaudio/Demo"
-  additionalFiles={[
-    'store.js',
-    'audio.js',
-    'nodes/Osc.js',
-    'nodes/Amp.js',
-    'nodes/Out.js',
-  ]}
-  dependencies={{ nanoid: 'latest', zustand: '4.3.6', twind: 'latest' }}
-  showEditor={true}
-/>
+<Bleed>
+  <BlogExampleViewer
+    codePath="blog-flows/webaudio/Demo"
+    additionalFiles={[
+      'store.js',
+      'audio.js',
+      'nodes/Osc.js',
+      'nodes/Amp.js',
+      'nodes/Out.js',
+    ]}
+    dependencies={{ nanoid: 'latest', zustand: '4.3.6', twind: 'latest' }}
+    showEditor={true}
+  />
+</Bleed>
 
 ## Final thoughts
 
@@ -1184,4 +1205,4 @@ React Flow is an independent company financed by its users. If you want to suppo
 us you can [sponsor us on Github](https://github.com/sponsors/wbkd) or
 [subscribe to one of our Pro plans](https://pro.reactflow.dev/).
 
-</BlogPostLayout>
+</TutorialLayout>
