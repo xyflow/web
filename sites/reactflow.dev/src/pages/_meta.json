@@ -8,12 +8,6 @@
   "learn": "Learn",
   "reference": "Reference",
   "examples": "Examples",
-  "tutorials": {
-    "title": "Tutorials",
-    "theme": {
-      "layout": "raw"
-    }
-  },
   "community": {
     "title": "Community",
     "type": "menu",
@@ -53,6 +47,13 @@
   },
   "pro": {
     "title": "Pro",
+    "display": "hidden",
+    "theme": {
+      "layout": "raw"
+    }
+  },
+  "tutorials": {
+    "title": "Tutorials",
     "display": "hidden",
     "theme": {
       "layout": "raw"
