@@ -68,9 +68,8 @@ export function CodeViewer({
 }: CodeViewerProps) {
   const panelStyle = { height: editorHeight };
   sandpackOptions.readOnly = !!customPreview;
-  sandpackOptions.activeFile = activeFile;
-
-  console.log(sandpackOptions);
+  // @ todo refactor this. activeFile should be passed separately or within the sandpackOptions
+  sandpackOptions.activeFile = sandpackOptions.activeFile || activeFile;
 
   return (
     <div className="my-4" style={{ minHeight: editorHeight }}>
