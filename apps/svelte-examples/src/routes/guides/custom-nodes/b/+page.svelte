@@ -38,5 +38,6 @@
     {nodeTypes}
     fitView
     style="background-color: color-mix(in srgb, {$colorA}, {$colorB});"
+    attributionPosition="top-right"
   />
 </div>
