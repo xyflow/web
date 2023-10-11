@@ -23,5 +23,5 @@
 </script>
 
 <div style="height:100vh;">
-  <SvelteFlow {nodes} {edges} {nodeTypes} fitView />
+  <SvelteFlow {nodes} {edges} {nodeTypes} fitView attributionPosition="top-right" />
 </div>

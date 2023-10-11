@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import sdk from '@stackblitz/sdk';
 
 import { Button, CodeViewer } from 'xy-ui';
-import SvelteSetup from './setup'
+import SvelteSetup from './setup';
 
 type SvelteExampleProps = {
   codePath: string;
@@ -28,7 +28,7 @@ export default function SvelteExample({
 
         return filesAcc;
       },
-      {}
+      {},
     );
 
     sdk.openProject(
@@ -44,16 +44,19 @@ export default function SvelteExample({
         openFile: activeFile
           ? `src/example/${activeFile}`
           : 'src/example/App.svelte',
-      }
+      },
     );
   }
 
   useEffect(() => {
     async function fetchFiles() {
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_SVELTE_EXAMPLES_URL}${codePath}`, {
-          method: 'POST',
-        });
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_SVELTE_EXAMPLES_URL}${codePath}`,
+          {
+            method: 'POST',
+          },
+        );
 
         if (response.ok) {
           const files = await response.json();
@@ -91,6 +94,7 @@ export default function SvelteExample({
       showOpenInCodeSandbox={false}
       framework="svelte"
       readOnly
+      activeFile={activeFile}
       customPreview={
         <iframe
           src={`${process.env.NEXT_PUBLIC_SVELTE_EXAMPLES_URL}${codePath}`}
@@ -99,7 +103,13 @@ export default function SvelteExample({
         />
       }
       customOpenButton={
-        <Button onClick={openInStackblitz}>Open in Stackblitz</Button>
+        <Button
+          onClick={openInStackblitz}
+          size="sm"
+          className="font-medium text-[10px] h-6 bg-gray-100 hover:bg-gray-200 text-gray-700"
+        >
+          Open in Stackblitz
+        </Button>
       }
       {...rest}
     />
