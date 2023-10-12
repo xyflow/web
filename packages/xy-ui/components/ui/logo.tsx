@@ -10,7 +10,12 @@ type LogoProps = {
   className?: string;
 };
 
-function Logo({ animated = false, inverted = false, className }: LogoProps) {
+function Logo({
+  animated = false,
+  inverted = false,
+  filled = false,
+  className,
+}: LogoProps) {
   const ref = useRef<SVGSVGElement>(null);
 
   useEffect(() => {
@@ -26,6 +31,7 @@ function Logo({ animated = false, inverted = false, className }: LogoProps) {
   }, [animated]);
 
   const bgColor = inverted ? '#fff' : '#1A192B';
+  const pathFill = animated ? '#fff' : inverted ? '#fff' : 'currentColor';
 
   return (
     <div className={cn('w-8 h-8 text-primary', className)}>
@@ -40,8 +46,8 @@ function Logo({ animated = false, inverted = false, className }: LogoProps) {
         <path
           d="M35 3H25C23.8954 3 23 3.89543 23 5V15C23 16.1046 23.8954 17 25 17H35C36.1046 17 37 16.1046 37 15V5C37 3.89543 36.1046 3 35 3Z"
           strokeWidth="2"
-          fill={animated ? '#fff' : inverted ? '#fff' : 'currentColor'}
-          stroke={animated ? bgColor : 'transparent'}
+          fill={filled ? pathFill : 'transparent'}
+          stroke={animated ? bgColor : filled ? 'transparent' : 'currentColor'}
           data-path="animation"
         >
           {animated && (

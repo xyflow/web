@@ -9,5 +9,6 @@
   :root {
     --primary: 333 100% 50%;
     --primary-foreground: 210 40% 98%;
+    --docsearch-primary-color: hsl(var(--primary));
   }
 }
