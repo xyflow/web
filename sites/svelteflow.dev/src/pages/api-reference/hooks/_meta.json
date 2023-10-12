@@ -1,8 +1,8 @@
 {
-  "useconnection": "useConnection()",
-  "useedges": "useEdges()",
-  "usenodes": "useNodes()",
-  "usesvelteflow": "useSvelteFlow()",
-  "usestore": "useStore()",
-  "useupdatenodeinternals": "useUpdateNodeInternals()"
+  "use-connection": "useConnection()",
+  "use-edges": "useEdges()",
+  "use-nodes": "useNodes()",
+  "use-svelte-flow": "useSvelteFlow()",
+  "use-store": "useStore()",
+  "use-update-node-internals": "useUpdateNodeInternals()"
 }
