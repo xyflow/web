@@ -102,17 +102,17 @@
 </div>
 
 <style>
-  :global(.svelte-flow__edge-path) {
+  :global(.svelte-flow .svelte-flow__edge-path) {
     stroke: #333;
     stroke-width: 2;
   }
 
-  :global(.temp .svelte-flow__edge-path) {
+  :global(.svelte-flow .temp .svelte-flow__edge-path) {
     stroke: #bbb;
     stroke-dasharray: 5 5;
   }
 
-  :global(.svelte-flow__node) {
+  :global(.svelte-flow .svelte-flow__node) {
     border-radius: 100%;
     background-color: #fff;
     width: 50px;
