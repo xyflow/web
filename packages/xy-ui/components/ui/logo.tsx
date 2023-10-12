@@ -7,6 +7,7 @@ import { cn, Text } from '../..';
 type LogoProps = {
   animated?: boolean;
   inverted?: boolean;
+  filled?: boolean;
   className?: string;
 };
 
