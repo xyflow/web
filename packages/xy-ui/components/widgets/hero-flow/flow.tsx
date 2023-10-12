@@ -1,12 +1,17 @@
-import { useEffect, useState, useRef, MutableRefObject } from 'react';
+'use client';
+
+import { useCallback, useState, useEffect, MutableRefObject } from 'react';
 import ReactFlow, {
   Background,
   ReactFlowProvider,
   useReactFlow,
   Node,
   Edge,
+  useStoreApi,
+  useStore,
+  ReactFlowState,
 } from 'reactflow';
-import cn from 'clsx';
+import { cn } from '../../..';
 
 import HeroNode from './hero-node';
 import ColorPickerNode from './color-picker-node';
@@ -22,64 +27,56 @@ const nodeTypes = {
   swoopy: SwoopyNode,
 };
 
-const nodeStyle = {};
-const isMobileFlow = typeof window !== 'undefined' && window.innerWidth < 992;
-const isLargeFlow = typeof window !== 'undefined' && window.innerWidth > 1250;
-
 const proOptions = {
   hideAttribution: true,
 };
 
-function getNodePositions(headlineBounds: any) {
-  const px = window.innerWidth * 0.05;
-  const rfHeight = window.innerHeight * 0.8;
-  const rfWidth = window.innerWidth;
+const initialState = {
+  color: '#777',
+  zoom: 12,
+  shape: 'cube',
+};
 
-  if (isMobileFlow) {
-    const offsetY =
-      headlineBounds.top +
-      headlineBounds.height +
-      (rfHeight - headlineBounds.height) / 2 -
-      125;
-
-    return {
-      hero: { x: rfWidth - 150 - px, y: offsetY + 15 },
-      shape: { x: px + px / 4, y: offsetY + 15 },
-      color: { x: px / 2, y: offsetY + 90 },
-      zoom: { x: px, y: offsetY + 170 },
-      swoopy1: { x: 40, y: -40 },
-      swoopy2: { x: 160, y: 40 },
-    };
-  }
-
-  if (isLargeFlow) {
-    const offsetX = window.innerWidth / 2;
-    const offsetY = headlineBounds.top + 25;
-
-    return {
-      hero: { x: offsetX + 340, y: offsetY },
-      shape: { x: offsetX - 50, y: offsetY - 60 },
-      color: { x: offsetX - 150, y: offsetY + 80 },
-      zoom: { x: offsetX - 20, y: offsetY + 220 },
-      swoopy1: { x: 75, y: -35 },
-      swoopy2: { x: 160, y: 40 },
-    };
-  }
-
-  const offsetX = headlineBounds.left + headlineBounds.width + px;
-  const offsetY = rfHeight / 2 - 150;
-
-  return {
-    hero: { x: rfWidth - px - 180, y: offsetY + 20 },
-    shape: { x: offsetX, y: offsetY - 10 },
-    color: { x: offsetX, y: offsetY + 100 },
-    zoom: { x: offsetX, y: offsetY + 200 },
-    swoopy1: { x: 75, y: -35 },
-    swoopy2: { x: 160, y: 40 },
-  };
-}
-
-const defaultNodes: Node[] = [];
+const defaultNodes: Node[] = [
+  {
+    id: 'hero',
+    type: 'hero',
+    position: { x: 390, y: 50 },
+    data: { ...initialState, label: 'output' },
+    className: 'w-[200px] lg:w-[300px]',
+    style: { opacity: 0 },
+  },
+  {
+    id: 'color',
+    type: 'colorpicker',
+    position: { x: 50, y: 0 },
+    data: { ...initialState, label: 'shape color' },
+    className: 'w-[150px]',
+    style: { opacity: 0 },
+  },
+  {
+    id: 'shape',
+    type: 'switcher',
+    position: { x: 0, y: 125 },
+    data: {
+      ...initialState,
+      label: 'shape type',
+    },
+    className: 'w-[150px]',
+    style: { opacity: 0 },
+  },
+  {
+    id: 'zoom',
+    type: 'slider',
+    position: { x: 40, y: 280 },
+    data: {
+      ...initialState,
+      label: 'zoom level',
+    },
+    className: 'w-[150px]',
+    style: { opacity: 0 },
+  },
+];
 
 const defaultEdges: Edge[] = [
   {
@@ -88,8 +85,9 @@ const defaultEdges: Edge[] = [
     target: 'hero',
     targetHandle: 'color',
     style: {
-      stroke: '#A3ADB8',
-      strokeWidth: 1.5,
+      stroke: '#D2D2D2',
+      strokeWidth: 2,
+      opacity: 0,
     },
     animated: true,
   },
@@ -99,8 +97,9 @@ const defaultEdges: Edge[] = [
     target: 'hero',
     targetHandle: 'shape',
     style: {
-      stroke: '#A3ADB8',
-      strokeWidth: 1.5,
+      stroke: '#D2D2D2',
+      strokeWidth: 2,
+      opacity: 0,
     },
     animated: true,
   },
@@ -110,8 +109,9 @@ const defaultEdges: Edge[] = [
     target: 'hero',
     targetHandle: 'zoom',
     style: {
-      stroke: '#A3ADB8',
-      strokeWidth: 1.5,
+      stroke: '#D2D2D2',
+      strokeWidth: 2,
+      opacity: 0,
     },
     animated: true,
   },
@@ -119,160 +119,81 @@ const defaultEdges: Edge[] = [
 
 type FlowProps = {
   initialColor?: string;
-  headlineRef: MutableRefObject<HTMLDivElement | null>;
   className?: string;
 };
 
-function Flow({ initialColor = '#777', headlineRef, className }: FlowProps) {
-  const { setNodes } = useReactFlow();
-  const reactFlowRef = useRef<HTMLDivElement>(null);
-  const [headlineDimensions, setHeadlineDimensions] = useState<{
-    top: number;
-    left: number;
-    width: number;
-    height: number;
-  } | null>(null);
-  const [color, setColor] = useState(initialColor);
-  const [zoom, setZoom] = useState(12);
-  const [shape, setShape] = useState('cube');
+const viewportWidthSelector = (state: ReactFlowState) => state.width;
 
-  useEffect(() => {
-    if (headlineRef?.current && reactFlowRef.current) {
-      const headlineBbox = headlineRef.current.getBoundingClientRect();
-      const rfBbox = reactFlowRef.current.getBoundingClientRect();
-      setHeadlineDimensions({
-        top: headlineBbox.top - rfBbox.top,
-        left: headlineBbox.left - rfBbox.left,
-        width: headlineBbox.width,
-        height: headlineBbox.height,
-      });
-    }
-  }, []);
+function Flow({ initialColor = '#777', className }: FlowProps) {
+  const { getNodes, setNodes, setEdges, setViewport } = useReactFlow();
+  const viewportWidth = useStore(viewportWidthSelector);
+  const store = useStoreApi();
+  const [flowState, setFlowState] = useState({
+    ...initialState,
+    color: initialColor,
+  });
 
-  useEffect(() => {
-    if (!headlineDimensions) {
-      return;
-    }
+  const adjustViewport = useCallback(() => {
+    const nodes = getNodes();
+    const { width, height } = store.getState();
+    const xMin = Math.min(...nodes.map((n) => n.position.x));
+    const xMax = Math.max(...nodes.map((n) => n.position.x + (n.width ?? 0)));
+    const yMin = Math.min(...nodes.map((n) => n.position.y));
+    const yMax = Math.max(...nodes.map((n) => n.position.y + (n.height ?? 0)));
+    const zoom = width < 1240 ? (width < 500 ? 0.65 : 0.8) : 1;
+    const mobileView = width < 1024;
+    const flowWidth = (xMax - xMin) * zoom;
+    const flowHeight = (yMax - yMin) * zoom;
+    const navWidth = Math.min(width - 70, 1200);
+    const viewportX = mobileView
+      ? width / 2 - flowWidth / 2
+      : width - flowWidth - (width - navWidth) / 2;
+    const viewportY = mobileView
+      ? height - flowHeight - 20
+      : height / 2 - flowHeight / 2;
 
-    const nodePositions = getNodePositions(headlineDimensions);
+    setViewport({ x: viewportX, y: viewportY, zoom });
+  }, [setViewport, getNodes, store]);
 
-    setNodes([
-      {
-        id: 'hero',
-        type: 'hero',
-        position: nodePositions.hero,
-        style: { width: isLargeFlow ? 300 : 160, ...nodeStyle },
-        data: { color, zoom, shape, label: 'output' },
-      },
-      {
-        id: 'color',
-        type: 'colorpicker',
-        data: { color, onChange: setColor, label: 'shape color' },
-        style: { ...nodeStyle, width: 150 },
-        position: nodePositions.color,
-      },
-      {
-        id: 'zoom',
-        type: 'slider',
-        data: {
-          value: zoom,
-          min: 0,
-          max: 40,
-          onChange: setZoom,
-          label: 'zoom level',
-        },
-        style: { ...nodeStyle, width: 150 },
-        position: nodePositions.zoom,
-      },
-      {
-        id: 'shape',
-        type: 'switcher',
-        data: {
-          value: shape,
-          options: ['cube', 'pyramid'],
-          onChange: setShape,
-          label: 'shape type',
-        },
-        style: { ...nodeStyle, width: 150 },
-        position: nodePositions.shape,
-      },
-      {
-        id: 'swoopy1',
-        type: 'swoopy',
-        draggable: false,
-        data: { label: 'custom node' },
-        position: nodePositions.swoopy1,
-        parentNode: 'shape',
-      },
-      {
-        id: 'swoopy2',
-        type: 'swoopy',
-        draggable: false,
-        data: { label: 'animated edge', swoopyDir: 'top' },
-        position: nodePositions.swoopy2,
-        parentNode: 'zoom',
-      },
-    ]);
-  }, [headlineDimensions]);
+  const onInit = useCallback(() => {
+    adjustViewport();
+    setNodes((nds) =>
+      nds.map((n) => ({ ...n, style: { ...n.style, opacity: 1 } })),
+    );
+    setEdges((eds) =>
+      eds.map((e) => ({ ...e, style: { ...e.style, opacity: 1 } })),
+    );
+  }, [setViewport, getNodes, store]);
 
   useEffect(() => {
     setNodes((nds) =>
-      nds.map((n) => {
-        if (n.id === 'color') {
-          n.data = { ...n.data, value: color };
-        }
-        if (n.id === 'hero') {
-          n.data = { ...n.data, color };
-        }
-        return n;
-      })
+      nds.map((n) => ({
+        ...n,
+        data: { ...n.data, ...flowState, setState: setFlowState },
+      })),
     );
-  }, [color]);
+  }, [flowState]);
 
   useEffect(() => {
-    setNodes((nds) =>
-      nds.map((n) => {
-        if (n.id === 'zoom') {
-          n.data = { ...n.data, value: zoom };
-        }
-        if (n.id === 'hero') {
-          n.data = { ...n.data, zoom };
-        }
-        return n;
-      })
-    );
-  }, [zoom]);
-
-  useEffect(() => {
-    setNodes((nds) =>
-      nds.map((n) => {
-        if (n.id === 'shape') {
-          n.data = { ...n.data, value: shape };
-        }
-        if (n.id === 'hero') {
-          n.data = { ...n.data, shape };
-        }
-        return n;
-      })
-    );
-  }, [shape]);
+    adjustViewport();
+  }, [viewportWidth]);
 
   return (
-    <div className="h-[70vh] xl:h-[65vh] 2xl:h-[62vh]">
+    <div className="w-full h-full">
       <ReactFlow
         preventScrolling={false}
         zoomOnScroll={false}
         nodeTypes={nodeTypes}
         defaultNodes={defaultNodes}
         defaultEdges={defaultEdges}
-        ref={reactFlowRef}
         proOptions={proOptions}
         className={cn(
           'bg-no-repeat bg-[65%_center] bg-[length:35%]',
-          className
+          className,
         )}
+        onInit={onInit}
+        defaultViewport={{ x: 0, y: 0, zoom: 1 }}
       >
-        {/* <Controls showInteractive={false} className="bg-white" /> */}
         <Background />
       </ReactFlow>
     </div>

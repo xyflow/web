@@ -1,13 +1,6 @@
 import { type CSSProperties } from 'react';
 import { Handle, HandleType, Position } from 'reactflow';
-
-const defaultStyle = {
-  width: 7,
-  height: 14,
-  backgroundColor: '#BDC4CC',
-  border: 'none',
-  borderRadius: 23,
-};
+import { cn } from '../../../.';
 
 type HandleComponentProps = {
   id?: string;
@@ -20,7 +13,13 @@ type HandleComponentProps = {
 export default function HandleComponent({
   style,
   label,
+  position,
   ...props
 }: HandleComponentProps) {
-  return <Handle style={{ ...defaultStyle, ...style }} {...props} />;
+  const className = cn('w-[10px] h-[10px] bg-gray-400 border-none', {
+    '-left-[5px]': position === Position.Left,
+    '-right-[5px]': position === Position.Right,
+  });
+
+  return <Handle className={className} position={position} {...props} />;
 }

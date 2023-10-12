@@ -9,7 +9,7 @@ export default function HeroNode({ data }: { data: any }) {
 
   return (
     <Wrapper label={label}>
-      <div className="h-full w-full">
+      <div className="w-full h-[200px]">
         <Fiber {...data} />
         <Handle
           type="target"

@@ -1,9 +1,5 @@
-'use client';
-
-import { CSSProperties, ReactNode, useRef } from 'react';
-import { SparklesIcon, BoltIcon } from '@heroicons/react/24/outline';
-import Link from 'next/link';
-import { Button, Heading, Text, LayoutBreakout } from '../../..';
+import { CSSProperties, ReactNode } from 'react';
+import { Heading, Text, LayoutBreakout } from '../../..';
 import Flow from './flow';
 
 const headlineStyle: CSSProperties = {
@@ -23,36 +19,31 @@ function HeroFlow({
   subtitle,
   action,
 }: HeroFlowProps) {
-  const headlineRef = useRef<HTMLDivElement>(null);
-
   return (
-    <LayoutBreakout>
-      <div className="pt-[10vh] pointer-events-none max-w-[90rem] w-full absolute left-1/2 -translate-x-1/2 z-10">
+    <LayoutBreakout className="h-[600px] lg:h-[550px] xl:h-[600px]">
+      <div className="pointer-events-none max-w-[90rem] w-full absolute left-1/2 top-8 lg:top-[130px] -translate-x-1/2 z-10">
         <div
-          ref={headlineRef}
           style={headlineStyle}
-          className="max-w-md relative bg-white/10 backdrop-blur-[2px] p-[max(env(safe-area-inset-left),1.5rem)]"
+          className="text-center mx-auto lg:mx-0 lg:text-left max-w-lg relative bg-white/10 backdrop-blur-[2px] px-3 lg:px-[35px]"
         >
-          <Heading size="md" className="mb-4 font-black">
+          <Heading size="lg" className="mb-4 font-black">
             Wire Your Ideas with <span className="text-primary">{title}</span>
           </Heading>
 
           {subtitle && (
-            <Text size="lg" className="mb-4 lg:mb-6">
+            <Text className="mb-4 lg:mb-6 text-xl">
               A customizable React component for building node-based editors and
               interactive diagrams
             </Text>
           )}
 
-          {action && <div>{action}</div>}
+          {action && (
+            <div className="flex justify-center lg:justify-start">{action}</div>
+          )}
         </div>
       </div>
 
-      <Flow
-        initialColor={initialColor}
-        headlineRef={headlineRef}
-        className="bg-gradient"
-      />
+      <Flow initialColor={initialColor} className="bg-gradient" />
     </LayoutBreakout>
   );
 }

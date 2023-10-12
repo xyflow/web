@@ -20,10 +20,10 @@ type StatsProps = {
 function StatsDisplay({ value, label, className }: StatsDisplayProps) {
   return (
     <div className={cn('text-center', className)}>
-      <Heading className={cn('font-bold whitespace-nowrap text-primary')}>
+      <Heading className="font-bold tabular-nums whitespace-nowrap text-primary text-4xl md:text-5xl lg:text-6xl">
         {value}
       </Heading>
-      <Text className="whitespace-nowrap mt-2" size="lg">
+      <Text className="whitespace-nowrap mt-2 text-md md:text-lg lg:text-lg">
         {label}
       </Text>
     </div>
@@ -39,9 +39,11 @@ function Stats({ stats, description, link, linkLabel, className }: StatsProps) {
         ))}
       </div>
       <div className="lg:col-span-3 mt-8 lg:mt-0">
-        <Text variant="light">{description}</Text>
+        <Text size="lg" variant="light">
+          {description}
+        </Text>
         {link && (
-          <Button asChild variant="pro" className="mt-4">
+          <Button asChild variant="pro" className="mt-5" size="lg">
             <Link href={link}>{linkLabel}</Link>
           </Button>
         )}

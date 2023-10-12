@@ -25,7 +25,7 @@ export default {
   navbar: {
     extraContent: () => {
       return (
-        <Button asChild>
+        <Button className="hidden lg:block" asChild>
           <Link href="/support-us">Support Us</Link>
         </Button>
       );
