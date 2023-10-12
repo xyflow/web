@@ -70,7 +70,7 @@ export const miniMapProps: PropsTableProps = {
     {
       name: 'ariaLabel?',
       type: 'string | null',
-      default: '"React Flow mini map"',
+      default: '"Svelte Flow mini map"',
       description: `There is no text inside the minimap for a screen reader to
       use as an accessible name, so it's important we provide one to make the
       minimap accessible. The default is sufficient but you may want to replace 
