@@ -30,12 +30,12 @@
 </div>
 
 <style>
-  :global(.svelte-flow__node.highlight) {
+  :global(.svelte-flow.intersection-flow .svelte-flow__node.highlight) {
     background-color: #ff0072 !important;
     color: white;
   }
 
-  :global(.intersection-flow .svelte-flow__node) {
+  :global(.svelte-flow.intersection-flow .svelte-flow__node) {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -46,15 +46,15 @@
   }
 
   :global(
-      .intersection-flow .svelte-flow__node.selected,
-      .intersection-flow .svelte-flow__node:hover,
-      .intersection-flow .svelte-flow__node:focus
+      .svelte-flow.intersection-flow .svelte-flow__node.selected,
+      .svelte-flow.intersection-flow .svelte-flow__node:hover,
+      .svelte-flow.intersection-flow .svelte-flow__node:focus
     ) {
     box-shadow: 6px 6px 0 1px rgba(0, 0, 0, 0.7);
     background-color: #eee;
   }
 
-  :global(.intersection-flow .svelte-flow__handle) {
+  :global(.svelte-flow.intersection-flow .svelte-flow__handle) {
     display: none;
   }
 </style>

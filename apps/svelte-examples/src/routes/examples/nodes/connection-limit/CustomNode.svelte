@@ -3,11 +3,11 @@
   import CustomHandle from './CustomHandle.svelte';
   type $$Props = NodeProps;
 
-  export let node: $$Props['node'];
+  export let id: $$Props['id'];
 </script>
 
 <div class="customNode">
-  <CustomHandle type="target" position={Position.Left} />
+  <CustomHandle type="target" position={Position.Left} nodeId={id} />
   <div>Connection Limit 1</div>
 </div>
 

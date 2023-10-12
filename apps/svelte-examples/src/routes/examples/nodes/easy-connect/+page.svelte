@@ -30,7 +30,7 @@
     }
   };
 
-  const connectionLineStyle = 'stroke: black !important;';
+  const connectionLineStyle = 'stroke: black; stroke-width: 3;';
 </script>
 
 <div style="height:100vh;">
@@ -40,9 +40,6 @@
     {edges}
     {edgeTypes}
     {defaultEdgeOptions}
-    on:connect={(e) => {
-      console.log(e);
-    }}
     connectionLineType={ConnectionLineType.Straight}
     {connectionLineStyle}
     fitView
