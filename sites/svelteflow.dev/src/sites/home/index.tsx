@@ -15,6 +15,8 @@ import FlowA from './flows/flow-a';
 import FlowB from './flows/flow-b';
 import FlowC from './flows/flow-c';
 
+import SupportSection from '@/components/support-section';
+
 const features = [
   {
     title: 'Ready out-of-the-box',
@@ -95,25 +97,7 @@ export default function SvelteFlowHome() {
         <Features features={features} />
       </Section>
 
-      <Section className="mx-auto lg:max-w-[800px] lg:mb-8">
-        <Heading size="md" as="h3" className="text-center mb-12 mt-32">
-          Get started with Svelte Flow and join the community of people building
-          node-based UIs
-        </Heading>
-
-        <div className="flex justify-center space-x-8">
-          <Button size="lg" asChild>
-            <Link href="/learn" className="flex items-center">
-              Read the Docs
-            </Link>
-          </Button>
-          <Button size="lg" asChild variant="secondary">
-            <Link href="/learn" className="flex items-center">
-              Join our Discord
-            </Link>
-          </Button>
-        </div>
-      </Section>
+      <SupportSection />
     </BaseLayout>
   );
 }

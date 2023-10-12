@@ -225,10 +225,8 @@ div.nextra-nav-container-blur {
   box-shadow: none;
 }
 
-@media (max-width: 767px) {
-  main .nextra-sidebar-container {
-    padding-top: 90px;
-  }
+.nextra-sidebar-container .DocSearch.DocSearch-Button {
+  display: none;
 }
 
 @media screen and (min-width: 2000px) {
