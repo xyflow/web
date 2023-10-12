@@ -6,7 +6,7 @@ import Handle from './handle';
 import Wrapper from './node-wrapper';
 
 export default memo(({ data }: { data: any }) => {
-  const { label = '', onChange = () => {}, color = '#000', value } = data;
+  const { label = '', setState = () => {}, color = '#000', value } = data;
 
   return (
     <Wrapper label={label}>
@@ -14,7 +14,9 @@ export default memo(({ data }: { data: any }) => {
         <input
           className="nodrag border-md w-6 h-6"
           type="color"
-          onChange={(evt) => onChange(evt.target.value)}
+          onChange={(evt) =>
+            setState((state: any) => ({ ...state, color: evt.target.value }))
+          }
           defaultValue={color}
         />
         <Text size="xs" variant="light">
