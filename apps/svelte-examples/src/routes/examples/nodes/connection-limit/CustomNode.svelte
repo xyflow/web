@@ -5,7 +5,6 @@
   export let id: $$Props['id'];
 
   const edges = useEdges();
-  let isConnectable = true;
 
   $: isConnectable = $edges.filter((edge) => edge.target === id || edge.source === id).length < 1;
 </script>
