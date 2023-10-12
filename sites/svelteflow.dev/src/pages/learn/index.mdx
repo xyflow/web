@@ -40,29 +40,25 @@ The easiest way to get the latest version of Svelte Flow is to install it via np
 </Tabs>
 What is “xyflow”? Learn more [here](https://wbkd.notion.site/Upcoming-Changes-at-React-Flow-1a443641891a4069927c0a115e915251).
 
-## Getting started
+## Creating your first flow
 
-We are working on a new website and everything so there are no docs for Svelte Flow yet. Everything is typed, so your IDE should help you a bit and you can also the [React Flow docs](https://reactflow.dev/docs) because the API is very similar. You can also check out the [Svelte Flow examples](https://github.com/wbkd/react-flow/tree/xyflow/packages/svelte/src/routes) in this repo.
-If you want to start right away you can check out the [Svelte Flow examples Stackblitz project](https://stackblitz.com/edit/svelte-flow-examples?file=src%2Froutes%2Foverview%2F%2Bpage.svelte).
-
-A basic flow looks like this:
+We get started by stacking together the most important components of Svelte Flow: `SvelteFlow`, `Controls`, `Background` and `MiniMap`. A basic flow looks like this:
 
 ```svelte
 <script lang="ts">
   import { writable } from 'svelte/store';
   import {
     SvelteFlow,
-    SvelteFlowProvider,
     Controls,
     Background,
     BackgroundVariant,
-    MiniMap,
-    Panel,
-    type NodeTypes
+    MiniMap
   } from '@xyflow/svelte';
 
+  // 👇 this is important! You need to import the styles for Svelte Flow to work
+  import '@xyflow/svelte/dist/style.css';
+
   // We are using writables for the nodes and edges to sync them easily. When a user drags a node for example, Svelte Flow updates its position.
-  // This also makes it easier to update nodes in user land.
   const nodes = writable([
     {
       id: '1',
@@ -72,7 +68,7 @@ A basic flow looks like this:
     },
     {
       id: '2',
-      type: 'custom',
+      type: 'default',
       data: { label: 'Node' },
       position: { x: 0, y: 150 }
     }
@@ -95,10 +91,9 @@ A basic flow looks like this:
 <SvelteFlow
   {nodes}
   {edges}
-  {nodeTypes}
+  {snapGrid}
   fitView
-  snapGrid={snapGrid}
-  on:nodeclick={(event) => console.log('on node click', event)}
+  on:nodeclick={(event) => console.log('on node click', event.detail.node)}
 >
   <Controls />
   <Background variant={BackgroundVariant.Dots} />
@@ -114,6 +109,6 @@ A basic flow looks like this:
 
 **Squash Bugs:** We can’t catch them all. Check existing issues and discussions first, then create a new issue to tell us what’s up.
 
-**Financial Support:** If you are an organization who wants to make sure Svelte Flow continues to be maintained, reach out to us at info@reactflow.dev
+**Financial Support:** If you are an organization who wants to make sure Svelte Flow continues to be maintained, reach out to us at info@xyflow.com
 
 And of course, we love Github stars ⭐

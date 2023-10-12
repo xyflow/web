@@ -52,7 +52,7 @@ export function Image({
         </a>
       )}
       {caption && (
-        <figcaption className="mx-12 mt-2 font-semibold text-gray-400 sm:mx-auto sm:w-3/4 lg:w-1/2">
+        <figcaption className="mx-12 mt-2 font-semibold text-gray-400 text-center sm:mx-auto sm:w-3/4 lg:w-1/2">
           {caption}
         </figcaption>
       )}

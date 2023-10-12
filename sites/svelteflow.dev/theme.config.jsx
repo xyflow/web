@@ -33,7 +33,7 @@ export default {
   },
   footer: {
     component: () => {
-      return <Footer imageSrc={aboutImage} />;
+      return <Footer imageSrc={aboutImage} baseUrl="https://svelteflow.dev" />;
     },
   },
   search: {
@@ -42,8 +42,8 @@ export default {
   feedback: {
     useLink: () => 'https://xyflow.com/contact',
   },
-  primaryHue: 30,
-  primarySaturation: 80,
+  primaryHue: 15,
+  primarySaturation: 90,
   useNextSeoProps() {
     const router = useRouter();
     const { frontMatter } = useConfig();

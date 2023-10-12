@@ -74,7 +74,7 @@ export default {
   },
   footer: {
     component: () => {
-      return <Footer imageSrc={aboutImage} />;
+      return <Footer imageSrc={aboutImage} baseUrl="https://reactflow.dev" />;
     },
   },
   search: {
@@ -91,8 +91,8 @@ export default {
   feedback: {
     useLink: () => 'https://xyflow.com/contact',
   },
-  primaryHue: 330,
-  primarySaturation: 100,
+  primaryHue: 333,
+  primarySaturation: 80,
   useNextSeoProps() {
     const router = useRouter();
     const { frontMatter } = useConfig();

@@ -7,22 +7,25 @@ tags: ['react-flow', 'npm']
 image: /img/blog/v10-header.png
 ---
 
-import { BlogPostLayout, Image, Emoji } from 'xy-ui';
-import { usePostMetadata } from '@/hooks/use-post-metadata';
+import { Bleed } from 'nextra-theme-docs';
+import { Image, Emoji } from 'xy-ui';
+import { BlogPostLayout } from '@/layouts/blog-post-with-frontmatter';
 
-<BlogPostLayout usePostMetadata={usePostMetadata}>
+<BlogPostLayout>
 In 2019 we started building [a library for building node based UIs](https://github.com/wbkd/react-flow), and decided to call it “React Flow.” It’s a nice name, so of course “reactflow” and “react-flow” were already taken. The best option we had for us was “react-flow-renderer,” so we took what we could get.
 
 Three years and many Github stars later, we wanted a sleeker name. Both “reactflow” and “react-flow” hadn’t been used or changed for over 6 years, so I found the email address associated with “reactflow” using `npm view reactflow _npmUser`, sent a nice email asking if we could use it, and crossed fingers.
 
 Within just 2 hours, the owner replied, and said he had already handed over the rights to us (?!?!). Faster and easier than expected thanks to a quick-responding stranger, we were in business <Emoji content="🔥" />. We were about to publish a new major version, and were excited that a fresh new “reactflow” package would come with the release.
 
-<Image
-  src="/img/blog/npm/package-handover.png"
-  alt="email from reactflow package handover"
-  width={716}
-  height={371}
-/>
+<Bleed>
+  <Image
+    src="/img/blog/npm/package-handover.png"
+    alt="email from reactflow package handover"
+    width={716}
+    height={371}
+  />
+</Bleed>
 
 ## Mistakes were made
 
@@ -50,7 +53,9 @@ But we just had the name?! Those two names have existed together for the past 6 
 
 With a frantic google search, it turns out npm introduced a [typosquat security feature](https://blog.npmjs.org/post/168978377570/new-package-moniker-rules) a few years ago, way after either of these package names were created, which was now blocking me from using the “reactflow” package at all. I felt terrible, and couldn’t believe that I lost a package that I just received from a kind stranger!
 
-<Image src="/img/blog/npm/nooo.gif" alt="Noooo!" width={498} height={249} />
+<Bleed>
+  <Image src="/img/blog/npm/nooo.gif" alt="Noooo!" width={498} height={249} />
+</Bleed>
 
 ## Getting reactflow back
 
