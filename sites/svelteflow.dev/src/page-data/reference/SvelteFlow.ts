@@ -35,6 +35,15 @@ export const commonProps: PropsTableProps = {
       description: `The origin of the node to use when placing it in the flow or looking up its x and y position.
         An origin of [0,0] means that a node's top left corner will be placed at the x and y position.`,
     },
+    {
+      name: 'nodeDragThreshold?',
+      type: 'number',
+      default: '0',
+      description: `
+          With a threshold greater than zero you can delay node drag events. If threshold equals 1,
+          you need to drag the node 1 pixel before a drag event is fired.
+        `,
+    },
     { name: 'style?', type: 'string' },
     { name: 'class?', type: 'string' },
     {
