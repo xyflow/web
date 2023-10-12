@@ -1,5 +1,9 @@
 {
   "index": "Quickstart",
   "getting-started": "Getting Started",
-  "guides": "Guides"
+  "guides": "Guides",
+  "api-link": {
+    "title": "API Reference",
+    "href": "/api-reference"
+  }
 }
