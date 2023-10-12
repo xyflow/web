@@ -10,6 +10,7 @@ import ReactFlow, {
   useStoreApi,
   useStore,
   ReactFlowState,
+  getRectOfNodes,
 } from 'reactflow';
 import { cn } from '../../..';
 
@@ -136,10 +137,13 @@ function Flow({ initialColor = '#777', className }: FlowProps) {
   const adjustViewport = useCallback(() => {
     const nodes = getNodes();
     const { width, height } = store.getState();
-    const xMin = Math.min(...nodes.map((n) => n.position.x));
-    const xMax = Math.max(...nodes.map((n) => n.position.x + (n.width ?? 0)));
-    const yMin = Math.min(...nodes.map((n) => n.position.y));
-    const yMax = Math.max(...nodes.map((n) => n.position.y + (n.height ?? 0)));
+    const {
+      x: xMin,
+      y: yMin,
+      width: xMax,
+      height: yMax,
+    } = getRectOfNodes(nodes);
+
     const zoom = width < 1240 ? (width < 500 ? 0.65 : 0.8) : 1;
     const mobileView = width < 1024;
     const flowWidth = (xMax - xMin) * zoom;
@@ -192,7 +196,7 @@ function Flow({ initialColor = '#777', className }: FlowProps) {
           className,
         )}
         onInit={onInit}
-        defaultViewport={{ x: 0, y: 0, zoom: 1 }}
+        id="hero"
       >
         <Background />
       </ReactFlow>
