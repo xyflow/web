@@ -86,3 +86,10 @@ Since the handle is a div, you can use CSS to style it or pass a style prop to
 customize a Handle. You can see this in the
 [Add Node On Edge Drop](/docs/examples/nodes/add-node-on-edge-drop/) and
 [Simple Floating Edges](/docs/examples/edges/simple-floating-edges/) examples.
+
+## Notes
+
+- If you need to hide a handle for some reason, you must use `visibility: hidden`
+  or `opacity: 0` instead of `display: none`. This is important because React
+  Flow needs to calculate the dimensions of the handle to work properly and using
+  `display: none` will report a width and height of 0!
