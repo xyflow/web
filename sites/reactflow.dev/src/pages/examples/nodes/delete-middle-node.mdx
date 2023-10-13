@@ -2,7 +2,8 @@
 title: Delete Middle Node
 ---
 
-import { Callout } from 'nextra/components';
+import { Callout, Cards, Card } from 'nextra/components';
+import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
 
 import ExampleViewer from '@/components/example-viewer';
 import ExampleLayout from '@/layouts/example-with-frontmatter';
@@ -53,44 +54,19 @@ don't need to do this
 
 ## Quick Reference
 
-<div className="next-steps">
-  <a
-    className="next-steps__item"
-    href="/docs/api/graph-util-functions/#getconnectededges"
-  >
-    <span className="next-steps__item-sublabel">
-      Returns all edges that are connected to the passed nodes
-    </span>
-    <span>getConnectedEdges</span>
-  </a>
-  <a
-    className="next-steps__item"
-    href="/docs/api/graph-util-functions/#getincomers"
-  >
-    <span className="next-steps__item-sublabel">
-      Returns all direct incoming nodes of the passed node
-    </span>
-    <span>getIncomers</span>
-  </a>
-  <a
-    className="next-steps__item"
-    target="_blank"
+<Cards num={2}>
+  <Card title="getConnectedEdges" href="/reference/utils/getConnectedEdges" />
+  <Card title="getIncomers" href="/reference/utils/getIncomers" />
+  <Card
+    title="Array.prototype.flatMap"
     href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flatMap"
-  >
-    <span className="next-steps__item-sublabel">
-      Map each element in an array and flatten the result
-    </span>
-    <span>Array.prototype.flatMap</span>
-  </a>
-  <a
-    className="next-steps__item"
-    target="_blank"
+    icon={<ArrowTopRightOnSquareIcon />}
+  />
+  <Card
+    title="Destructuring assignment"
     href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#assigning_to_new_variable_names"
-  >
-    <span className="next-steps__item-sublabel">
-      Rename a variable bound in object destructuring
-    </span>
-    <span>Destructuring assignment</span>
-  </a>
-</div>
+    icon={<ArrowTopRightOnSquareIcon />}
+  />
+</Cards>
+
 </ExampleLayout>
