@@ -6,6 +6,8 @@ import {
   Hero,
   ProjectPreview,
 } from '../../';
+import { cn } from '../../lib/utils';
+import { useCallback, useMemo, useState } from 'react';
 
 export type ShowcaseLayoutProps = {
   title: string;
@@ -29,6 +31,36 @@ export function ShowcaseLayout({
   showcases = [],
   children,
 }: ShowcaseLayoutProps) {
+  const allTags = useMemo(() => {
+    return new Set([
+      ...showcases.flatMap(({ tags }) => tags.map((tag) => tag.name)),
+    ]);
+  }, [showcases]);
+  const [selectedTags, setSelectedTags] = useState<Set<string>>(new Set());
+  const toggleTag = useCallback(
+    (tag: string) =>
+      setSelectedTags((tags) => {
+        const newTags = new Set(tags);
+
+        if (newTags.has(tag)) {
+          newTags.delete(tag);
+        } else {
+          newTags.add(tag);
+        }
+        return newTags;
+      }),
+    [],
+  );
+
+  const visibleShowcases = useMemo(() => {
+    if (selectedTags.size === 0) {
+      return showcases;
+    }
+    return showcases.filter(({ tags }) =>
+      [...selectedTags].every((tag) => tags.some(({ name }) => name === tag)),
+    );
+  }, [selectedTags, showcases]);
+
   return (
     <BaseLayout>
       <Hero
@@ -39,22 +71,42 @@ export function ShowcaseLayout({
         align="center"
       />
 
-      <ContentGrid className="mt-20">
-        {showcases.map((showcase) => (
-          <ContentGridItem key={showcase.id} route={showcase.url}>
+      <div className="flex justify-center items-center flex-wrap gap-x-2 gap-y-4 max-w-4xl mx-auto">
+        {[...allTags].map((tag, i) => (
+          <button
+            key={i}
+            className={cn(
+              'rounded-xl text-xs px-2 py-1',
+              selectedTags.has(tag) ? 'bg-primary text-white' : 'bg-gray-200',
+            )}
+            onClick={() => toggleTag(tag)}
+          >
+            {tag}
+          </button>
+        ))}
+      </div>
+
+      <ContentGrid className="mt-8">
+        {visibleShowcases.map((showcase) => (
+          <ContentGridItem key={showcase.id}>
             <ProjectPreview
               image={`/img/showcase/${showcase.image}`}
               title={showcase.title}
               subtitle={
                 <>
                   {showcase.tags.map((tag) => (
-                    <span key={tag.id} className="mr-2">
+                    <button
+                      key={tag.id}
+                      className="mr-2 rounded-xl bg-gray-200 px-2 py-1"
+                      onClick={() => toggleTag(tag.name)}
+                    >
                       {tag.name}
-                    </span>
+                    </button>
                   ))}
                 </>
               }
               description={showcase.description}
+              route={showcase.url}
               linkLabel="Website"
             />
           </ContentGridItem>
