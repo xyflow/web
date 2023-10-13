@@ -168,7 +168,7 @@ export default function ReactFlowHome() {
           </ContentGridItem>
           <ContentGridItem route="/tutorials">
             <ProjectPreview
-              image="/img/blog/webaudio/web-audio-blog-thumb.png"
+              image="/img/tutorials/webaudio/web-audio-blog-thumb.png"
               title="In-depth tutorials"
               description="React Flow's tutorials provide step-by-step instructions for building MVP apps like mind maps and audio playgrounds."
             />

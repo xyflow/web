@@ -1,8 +1,10 @@
-require('dotenv').config();
+require('dotenv').config({ path: '.env.local' });
 const { Client } = require('@notionhq/client');
 const path = require('path');
 const fs = require('fs');
 const https = require('https');
+
+console.log(process.env.NOTION_API_SECRET);
 
 const SHOWCASES_DATABASE_ID = '585dfdbe353145f6af6dc2294ab14253';
 const notion = new Client({ auth: process.env.NOTION_API_SECRET });

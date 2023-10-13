@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://xyflow.com
+Host: https://svelteflow.dev
 
 # Sitemaps
-Sitemap: https://xyflow.com/sitemap.xml
+Sitemap: https://svelteflow.dev/sitemap.xml
