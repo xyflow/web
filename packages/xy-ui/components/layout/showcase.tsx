@@ -74,15 +74,16 @@ export function ShowcaseLayout({
               title={showcase.title}
               subtitle={
                 <>
-                  {showcase.tags.map((tag) => (
-                    <Tag
-                      key={tag.id}
-                      name={tag.name}
-                      selected={selected.has(tag.name)}
-                      onClick={toggle}
-                      className="mr-2"
-                    />
-                  ))}
+                  <span className="flex gap-2">
+                    {showcase.tags.map((tag) => (
+                      <Tag
+                        key={tag.id}
+                        name={tag.name}
+                        selected={selected.has(tag.name)}
+                        onClick={toggle}
+                      />
+                    ))}
+                  </span>
                 </>
               }
               description={showcase.description}

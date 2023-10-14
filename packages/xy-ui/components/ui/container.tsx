@@ -1,6 +1,7 @@
 import { cva, type VariantProps } from 'class-variance-authority';
 
 import { cn } from '../../lib/utils';
+import { breakoutClassName } from '../layout/breakout';
 
 const containerVariants = cva('border border-solid', {
   variants: {
@@ -11,6 +12,10 @@ const containerVariants = cva('border border-solid', {
     size: {
       default: 'rounded-3xl',
       sm: 'rounded-xl',
+    },
+    breakout: {
+      default: '',
+      true: breakoutClassName,
     },
   },
 });
@@ -46,7 +51,7 @@ function Container({
       <div
         className={cn(
           'shadow-md relative overflow-hidden h-full',
-          innerContainerVariants({ variant, size, className: innerClassName })
+          innerContainerVariants({ variant, size, className: innerClassName }),
         )}
       >
         {children}

@@ -24,6 +24,10 @@ export function AuthorList({
 }: AuthorListProps) {
   const authorsArray = Array.isArray(authors) ? authors : [authors];
 
+  if (!authorsArray.length) {
+    return null;
+  }
+
   return (
     <div className={cn('flex', className)}>
       {authorsArray.map((author) => (

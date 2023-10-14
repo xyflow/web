@@ -6,17 +6,11 @@ type LayoutBreakoutProps = {
   className?: string;
 };
 
+const breakoutClassName =
+  'relative right-1/2 left-1/2 ml-[-50vw] mr-[-50vw] max-w-[100vw] w-[100vw]';
+
 function LayoutBreakout({ children, className }: LayoutBreakoutProps) {
-  return (
-    <div
-      className={cn(
-        'relative right-1/2 left-1/2 ml-[-50vw] mr-[-50vw] max-w-[100vw] w-[100vw] -mt-10 lg:-mt-14 2xl:-mt-18',
-        className,
-      )}
-    >
-      {children}
-    </div>
-  );
+  return <div className={cn(breakoutClassName, className)}>{children}</div>;
 }
 
-export { LayoutBreakout, type LayoutBreakoutProps };
+export { LayoutBreakout, type LayoutBreakoutProps, breakoutClassName };
