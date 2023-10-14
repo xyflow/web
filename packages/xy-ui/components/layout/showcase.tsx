@@ -39,7 +39,9 @@ export function ShowcaseLayout({
       return showcases;
     }
     return showcases.filter(({ tags }) =>
-      [...selected].every((tag) => tags.some(({ name }) => name === tag)),
+      Array.from(selected).every((tag) =>
+        tags.some(({ name }) => name === tag),
+      ),
     );
   }, [selected, showcases]);
 
@@ -54,7 +56,7 @@ export function ShowcaseLayout({
       />
 
       <div className="flex justify-center items-center flex-wrap gap-x-2 gap-y-4 max-w-4xl mx-auto">
-        {all.map((tag, i) => (
+        {Array.from(all).map((tag, i) => (
           <Tag
             key={i}
             name={tag}
@@ -129,13 +131,13 @@ function Tag({ name, selected = false, onClick, className }: TagProps) {
 }
 
 function useTags(showcases: ShowcaseItem[]) {
-  const all = useMemo(() => {
-    return Array.from(
+  const all = useMemo(
+    () =>
       new Set([
         ...showcases.flatMap(({ tags }) => tags.map((tag) => tag.name)),
       ]),
-    );
-  }, [showcases]);
+    [showcases],
+  );
   const [selected, setSelected] = useState<Set<string>>(new Set());
   const toggle = useCallback(
     (tag: string) =>
