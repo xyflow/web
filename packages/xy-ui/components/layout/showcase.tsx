@@ -1,5 +1,6 @@
 'use client';
 
+import { useCallback, useMemo, useState } from 'react';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import {
   BaseLayout,
@@ -9,7 +10,6 @@ import {
   ProjectPreview,
 } from '../../';
 import { cn } from '../../lib/utils';
-import { useCallback, useMemo, useState } from 'react';
 
 export type ShowcaseLayoutProps = {
   title: string;
@@ -54,7 +54,7 @@ export function ShowcaseLayout({
       />
 
       <div className="flex justify-center items-center flex-wrap gap-x-2 gap-y-4 max-w-4xl mx-auto">
-        {[...all].map((tag, i) => (
+        {all.map((tag, i) => (
           <Tag
             key={i}
             name={tag}
@@ -130,9 +130,11 @@ function Tag({ name, selected = false, onClick, className }: TagProps) {
 
 function useTags(showcases: ShowcaseItem[]) {
   const all = useMemo(() => {
-    return new Set([
-      ...showcases.flatMap(({ tags }) => tags.map((tag) => tag.name)),
-    ]);
+    return Array.from(
+      new Set([
+        ...showcases.flatMap(({ tags }) => tags.map((tag) => tag.name)),
+      ]),
+    );
   }, [showcases]);
   const [selected, setSelected] = useState<Set<string>>(new Set());
   const toggle = useCallback(
