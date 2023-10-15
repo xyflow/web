@@ -67,7 +67,7 @@ function Feature({
       </div>
       <div className={index % 2 === 0 ? order2Class : order1Class}>
         <Container className="relative" innerClassName="overflow-visible">
-          <div className="h-[400px] rounded-[18px] overflow-hidden bg-gradient-to-br from-white to-gray-50">
+          <div className="h-[300px] md:h-[400px] rounded-[18px] overflow-hidden bg-gradient-to-br from-white to-gray-50">
             <FlowComponent />
           </div>
 
