@@ -15,8 +15,12 @@ type GettingStartedProps = {
 function GettingStarted({ libraryName, packageName }: GettingStartedProps) {
   return (
     <LayoutBreakout className="max-w-[78rem] lg:ml-0 lg:mr-0 lg:right-0 lg:left-0 lg:w-full lg:px-4 !mt-0">
-      <Container variant="dark" className="mt-16 lg:mt-24 p-0 lg:p-1">
-        <div className="pt-14">
+      <Container
+        variant="dark"
+        className="rounded-none border-none p-0 mt-16 lg:mt-24 lg:p-1.5 lg:rounded-3xl"
+        innerClassName="rounded-none border-none lg:rounded-[18px] lg:border-solid lg:border-gray-700"
+      >
+        <div className="px-4 pt-12 pb-4">
           <Text size="lg" className="font-bold mb-2 text-center text-primary">
             Getting Started with {libraryName}
           </Text>
@@ -32,15 +36,15 @@ function GettingStarted({ libraryName, packageName }: GettingStartedProps) {
               </code>
             </pre>
           </AppWindow>
+        </div>
 
-          <div className="flex justify-center mt-5 py-3 bg-black/90 border-t border-gray-700">
-            <Button variant="link" className="text-white font-bold" asChild>
-              <Link href={`/learn`}>
-                See full Quickstart guide{' '}
-                <ArrowLongRightIcon className="ml-2 w-4 h-4 stroke-2" />
-              </Link>
-            </Button>
-          </div>
+        <div className="flex justify-center mt-5 py-3 bg-black/90 border-t border-gray-700">
+          <Button variant="link" className="text-white font-bold" asChild>
+            <Link href={`/learn`}>
+              See full Quickstart guide{' '}
+              <ArrowLongRightIcon className="ml-2 w-4 h-4 stroke-2" />
+            </Link>
+          </Button>
         </div>
       </Container>
     </LayoutBreakout>
