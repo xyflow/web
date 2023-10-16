@@ -69,7 +69,10 @@ export function Hero({
             </h3>
           )}
           {title && (
-            <Heading size={size} className="mb-6 font-black">
+            <Heading
+              size={size}
+              className="max-sm:text-[29px] max-md:leading-loose mb-6 font-black"
+            >
               {title}
             </Heading>
           )}

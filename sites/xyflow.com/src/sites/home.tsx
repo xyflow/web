@@ -62,7 +62,7 @@ export default function XYFlowHome() {
     <BaseLayout>
       <Hero
         title={
-          <>
+          <div className="text-md">
             <HeadlineNode>
               Wire
               <Handle
@@ -108,7 +108,7 @@ export default function XYFlowHome() {
               />
               xyflow
             </HeadlineNode>
-          </>
+          </div>
         }
         subtitle="Powerful open source libraries for building node-based UIs with React or Svelte. Ready out-of-the-box and infinitely customizable"
         align="center"
