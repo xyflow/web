@@ -62,7 +62,7 @@ export default function XYFlowHome() {
     <BaseLayout>
       <Hero
         title={
-          <div className="max-sm:text-[29px] max-md:leading-loose">
+          <div className="max-sm:text-[42px] max-md:leading-[1.8]">
             <HeadlineNode>
               Wire
               <Handle
