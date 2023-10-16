@@ -24,6 +24,10 @@ export function AuthorList({
 }: AuthorListProps) {
   const authorsArray = Array.isArray(authors) ? authors : [authors];
 
+  if (!authorsArray.length) {
+    return null;
+  }
+
   return (
     <div className={cn('flex', className)}>
       {authorsArray.map((author) => (
@@ -52,11 +56,11 @@ function Author({ name, title, image, url, className, noLink }: AuthorProps) {
     noLink ? <span {...props} /> : <Link href={url} {...props} />;
 
   return (
-    <div className={cn('flex', className)}>
-      <LinkOrSpan>
+    <div className={cn('flex gap-2 items-center', className)}>
+      <LinkOrSpan className="!w-10 !h-10">
         <img
           src={image}
-          className="w-10 min-w-min h-10 mr-2 border border-gray-100 border-solid rounded-full"
+          className="inline w-10 h-10 mr-2 border border-gray-100 border-solid rounded-full"
         />
       </LinkOrSpan>
 

@@ -5,6 +5,32 @@
       "layout": "default"
     }
   },
+  "learn": "Learn",
+  "reference": "Reference",
+  "examples": "Examples",
+  "community": {
+    "title": "Community",
+    "type": "menu",
+    "items": {
+      "showcase": {
+        "title": "Showcase",
+        "href": "/showcase"
+      },
+      "discord": {
+        "title": "Discord",
+        "href": "https://discord.gg/RVmnytFmGW"
+      },
+      "github": {
+        "title": "Github",
+        "href": "https://github.com/xyflow"
+      },
+      "contact": {
+        "title": "Contact Us",
+        "href": "https://xyflow.com/contact"
+      }
+    }
+  },
+
   "index": {
     "title": "Home",
     "display": "hidden",
@@ -12,12 +38,6 @@
       "layout": "raw"
     }
   },
-
-  "docs": "Docs",
-  "api-reference": {
-    "title": "Reference"
-  },
-  "examples": "Examples",
   "showcase": {
     "title": "Showcase",
     "display": "hidden",
@@ -32,8 +52,8 @@
       "layout": "raw"
     }
   },
-  "case-studies": {
-    "title": "Case Studies",
+  "tutorials": {
+    "title": "Tutorials",
     "display": "hidden",
     "theme": {
       "layout": "raw"

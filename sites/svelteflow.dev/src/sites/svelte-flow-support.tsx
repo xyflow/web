@@ -1,4 +1,5 @@
 import { type ReactNode } from 'react';
+
 import {
   HeartIcon,
   CommandLineIcon,
@@ -9,8 +10,8 @@ import {
   SparklesIcon,
   StarIcon,
   ChatBubbleOvalLeftEllipsisIcon,
-  VideoCameraIcon,
 } from '@heroicons/react/24/outline';
+
 import {
   BaseLayout,
   ContentGrid,

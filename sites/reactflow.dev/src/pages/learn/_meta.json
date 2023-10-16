@@ -1,0 +1,14 @@
+{
+  "index": "Quickstart",
+  "concepts": "Concepts",
+  "getting-started": "Getting Started",
+  "customization": "Customizing React Flow",
+  "layouting": "Layouting",
+  "advanced-use": "Advanced Use",
+  "tutorials": "Tutorials",
+  "troubleshooting": "Troubleshooting",
+  "api-link": {
+    "title": "API Reference",
+    "href": "/api-reference"
+  }
+}

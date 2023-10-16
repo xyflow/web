@@ -7,10 +7,11 @@ tags: ['react-flow', 'update']
 image: /img/blog/v10-header.png
 ---
 
-import { BlogPostLayout, Emoji, Embed, Image } from 'xy-ui';
-import { usePostMetadata } from '@/hooks/use-post-metadata';
+import { Bleed } from 'nextra-theme-docs';
+import { Emoji, Embed, Image } from 'xy-ui';
+import { BlogPostLayout } from '@/layouts/blog-post-with-frontmatter';
 
-<BlogPostLayout usePostMetadata={usePostMetadata}>
+<BlogPostLayout>
 Howdy! Here’s a dispatch straight from our desks about what’s happened in the last couple of months at React Flow: updates, news, and a peek behind-the-scenes. Here we go.
 
 ## Launching v11 and post-release housekeeping
@@ -21,7 +22,19 @@ Post-launch, we took a few weeks to tend to our current structures. We made some
 
 Slowly but surely, folks are starting to use our new package name. `react-flow-renderer` is dead, long live `reactflow`! (data from [npmtrends](https://npmtrends.com/react-flow-renderer-vs-reactflow))
 
-[<Image src="/img/blog/fall-2022/package-stats.png" alt="graph comparing npm installs of react-flow-renderer npm installs versus reactflow" width={1492} height={1076}/>](https://npmtrends.com/react-flow-renderer-vs-reactflow)
+<Bleed>
+  <Image
+    src="/img/blog/fall-2022/package-stats.png"
+    alt="graph comparing npm installs of react-flow-renderer npm installs versus reactflow"
+    width={1492}
+    height={1076}
+    caption={
+      <a href="https://npmtrends.com/react-flow-renderer-vs-reactflow">
+        npmtrends.com
+      </a>
+    }
+  />
+</Bleed>
 
 ## Examples, examples, examples
 
@@ -35,13 +48,15 @@ We’ve added a bunch of new examples to the docs including:
 - [Light / Dark Mode](/docs/examples/styling/styled-components/)
 - [Workflow Builder](https://pro.reactflow.dev/examples/workflow-builder) (aka the “taco flow” for Pro subscribers)
 
-<Image
-  src="/img/blog/fall-2022/examples-fallblog.gif"
-  alt="Illustrations of the Easy Connect, Collision Detection, and Turorepo examples"
-  width={1800}
-  height={450}
-  wide
-/>
+<Bleed>
+  <Image
+    src="/img/blog/fall-2022/examples-fallblog.gif"
+    alt="Illustrations of the Easy Connect, Collision Detection, and Turorepo examples"
+    width={1800}
+    height={450}
+    wide
+  />
+</Bleed>
 
 ## Our first round of user research
 
@@ -51,13 +66,15 @@ We’ll be sharing out some of those findings from our research at our lightning
 
 ## Explaining ourselves better
 
-<Image
-  src="/img/blog/fall-2022/handles-definition.png"
-  alt="a node with a dot on each side. Each dot is called a handle"
-  width={1456}
-  height={520}
-  wide
-/>
+<Bleed>
+  <Image
+    src="/img/blog/fall-2022/handles-definition.png"
+    alt="a node with a dot on each side. Each dot is called a handle"
+    width={1456}
+    height={520}
+    wide
+  />
+</Bleed>
 
 We also **added some basic explainers to the docs** (answering questions like [“what is a handle?”](/docs/concepts/terms-and-definitions/#handles)) to encourage easier onboarding for folks who are new to React Flow.
 
@@ -65,13 +82,15 @@ We also changed our docs to make it clear that **anyone is allowed to remove the
 
 ## In the office
 
-<Image
-  src="/img/blog/fall-2022/office-fall.jpeg"
-  alt="Pictures of a dog in an office, Christopher and Moritz looking at a whiteboard cardboard template, whiteboard sketches, and a hat with the React Flow logo "
-  width={1800}
-  height={716}
-  wide
-/>
+<Bleed>
+  <Image
+    src="/img/blog/fall-2022/office-fall.jpeg"
+    alt="Pictures of a dog in an office, Christopher and Moritz looking at a whiteboard cardboard template, whiteboard sketches, and a hat with the React Flow logo "
+    width={1800}
+    height={716}
+    wide
+  />
+</Bleed>
 
 Over at our office in Kreuzberg, Berlin, we put up a whiteboard, ordered some embroidered hats, had a 4-legged visitor, and continue to be entertained by the ongoing construction site across the street.
 

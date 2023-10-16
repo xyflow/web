@@ -1,0 +1,38 @@
+import { PropsTable } from '@/components/props-table';
+import { signature } from '@/page-data/reference/utils/addEdge.ts';
+
+# addEdge()
+
+[Source on GitHub](https://github.com/wbkd/react-flow/blob/f919cb152dd5a92ec3b4d7e4568ffe099bc2af39/packages/react/src/utils/general.ts#L17C29-L17C29)
+
+This util is a convenience function to add a new [`Edge`](../types/Edge) to an
+array of edges. It also performs some validation to make sure you don't add an
+invalid edge or duplicate an existing one.
+
+```js
+import { useCallback } from 'react';
+import ReactFlow, { useNodesState, useEdgesState } from '@xyflow/react';
+
+export default function Flow() {
+  const [nodes, setNodes, onNodesChange] = useNodesState([]);
+  const [edges, setEdges, onEdgesChange] = useEdgesState([]);
+  const onConnect = useCallback(
+    (connection) => {
+      setEdges((oldEdges) => addEdge(connection, oldEdges));
+    },
+    [setEdges],
+  );
+
+  return <ReactFLow nodes={nodes} edges={edges} onConnect={onConnect} />;
+}
+```
+
+## Signature
+
+<PropsTable {...signature} />
+
+## Notes
+
+- If an edge with the same `target` and `source` already exists (and the same
+  `targetHandle` and `sourceHandle` if those are set), then this util won't add
+  a new edge even if the `id` property is different.

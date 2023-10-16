@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { SvelteFlow } from '@xyflow/svelte';
+  import { SvelteFlow, Background } from '@xyflow/svelte';
   import type { Edge, Node } from '@xyflow/svelte';
   import { writable } from 'svelte/store';
 
@@ -97,22 +97,23 @@
 </script>
 
 <div style="height:100vh;">
-  <SvelteFlow {nodes} {edges} fitView on:nodedrag={onNodeDrag} on:nodedragstop={onNodeDragStop}
-  ></SvelteFlow>
+  <SvelteFlow {nodes} {edges} fitView on:nodedrag={onNodeDrag} on:nodedragstop={onNodeDragStop}>
+    <Background />
+  </SvelteFlow>
 </div>
 
 <style>
-  :global(.svelte-flow__edge-path) {
+  :global(.svelte-flow .svelte-flow__edge-path) {
     stroke: #333;
     stroke-width: 2;
   }
 
-  :global(.temp .svelte-flow__edge-path) {
+  :global(.svelte-flow .temp .svelte-flow__edge-path) {
     stroke: #bbb;
     stroke-dasharray: 5 5;
   }
 
-  :global(.svelte-flow__node) {
+  :global(.svelte-flow .svelte-flow__node) {
     border-radius: 100%;
     background-color: #fff;
     width: 50px;

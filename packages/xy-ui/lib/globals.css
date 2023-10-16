@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* add a "pro" label to the pro examples in the sidebar */
 .sidebar-title.pro:after {
   content: 'Pro';
   display: inline-block;
@@ -12,8 +13,6 @@
   border-radius: 4px;
   padding: 2px 5px;
 }
-
-/* add a "pro" label to the pro examples in the sidebar */
 
 /* if there is no content in the toc, we don't want it to take up the space */
 nav.nextra-toc:empty {
@@ -204,6 +203,7 @@ div.nextra-nav-container-blur {
 
 .nextra-nav-container .DocSearch-Button {
   margin-left: 0;
+  @apply bg-gray-100;
 }
 
 .nextra-nav-container .DocSearch-Button .DocSearch-Search-Icon {
@@ -225,10 +225,8 @@ div.nextra-nav-container-blur {
   box-shadow: none;
 }
 
-@media (max-width: 767px) {
-  main .nextra-sidebar-container {
-    padding-top: 90px;
-  }
+.nextra-sidebar-container .DocSearch.DocSearch-Button {
+  display: none;
 }
 
 @media screen and (min-width: 2000px) {
@@ -281,7 +279,9 @@ div.nextra-nav-container-blur {
   }
   body {
     @apply bg-background text-foreground;
-    font-feature-settings: 'rlig' 1, 'calt' 1;
+    font-feature-settings:
+      'rlig' 1,
+      'calt' 1;
   }
   html {
     /* this is a nextra default we need to overwrite */

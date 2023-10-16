@@ -1,0 +1,21 @@
+import { PropsTable } from 'xy-ui';
+import { connectionFields } from '@/page-data/reference/types/Connection.fields.ts';
+
+# Connection
+
+[Source on GitHub](https://github.com/wbkd/react-flow/blob/f919cb152dd5a92ec3b4d7e4568ffe099bc2af39/packages/system/src/types/general.ts#L24)
+
+The `Connection` type is the basic minimal description of an [`Edge`](./Edge) between two nodes.
+
+```ts
+export type Connection = {
+  source: string | null;
+  target: string | null;
+  sourceHandle: string | null;
+  targetHandle: string | null;
+};
+```
+
+## Fields
+
+<PropsTable {...connectionFields} />

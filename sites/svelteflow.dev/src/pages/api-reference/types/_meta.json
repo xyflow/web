@@ -1,0 +1,18 @@
+{
+  "background-variant": "BackgroundVariant",
+  "connection": "Connection",
+  "connectionn-line-type": "ConnectionLineType",
+  "coordinate-extent": "CoordinateExtent",
+  "default-edge-options": "DefaultEdgeOptions<T>",
+  "edge": "Edge<T>",
+  "edge-marker": "EdgeMarker",
+  "edge-props": "EdgeProps<T>",
+  "fit-view-options": "FitViewOptions",
+  "handle-element": "HandleElement",
+  "marker-type": "MarkerType",
+  "node": "Node<T, U>",
+  "node-props": "NodeProps<T>",
+  "panel-position": "PanelPosition",
+  "position": "Position",
+  "viewport": "Viewport"
+}

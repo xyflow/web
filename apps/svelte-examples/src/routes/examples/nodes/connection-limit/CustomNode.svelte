@@ -1,13 +1,16 @@
 <script lang="ts">
-  import { Position, type NodeProps } from '@xyflow/svelte';
-  import CustomHandle from './CustomHandle.svelte';
+  import { Position, type NodeProps, Handle, useEdges } from '@xyflow/svelte';
   type $$Props = NodeProps;
 
-  export let node: $$Props['node'];
+  export let id: $$Props['id'];
+
+  const edges = useEdges();
+
+  $: isConnectable = $edges.filter((edge) => edge.target === id || edge.source === id).length < 1;
 </script>
 
 <div class="customNode">
-  <CustomHandle type="target" position={Position.Left} />
+  <Handle type="target" position={Position.Left} {isConnectable} />
   <div>Connection Limit 1</div>
 </div>
 

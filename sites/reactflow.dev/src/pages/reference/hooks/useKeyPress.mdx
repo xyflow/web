@@ -1,0 +1,34 @@
+import { PropsTable } from '@/components/props-table';
+import { signature } from '@/page-data/reference/hooks/useKeyPress.ts';
+
+# useKeyPress
+
+[Source on GitHub](https://github.com/wbkd/react-flow/blob/f919cb152dd5a92ec3b4d7e4568ffe099bc2af39/packages/react/src/hooks/useKeyPress.ts#L18)
+
+This hook lets you listen for specific key codes and tells you whether they are
+currently pressed or not.
+
+```jsx
+import { useKeyPress } from '@xyflow/react';
+
+export default function () {
+  const spacePressed = useKeyPress('Space');
+  const cmdAndSPressed = useKeyPress(['Meta+s', 'Strg+s']);
+
+  return (
+    <div>
+      {spacePressed && <p>Space pressed!</p>}
+      {cmdAndSPressed && <p>Cmd + S pressed!</p>}
+    </div>
+  );
+}
+```
+
+## Signature
+
+<PropsTable {...signature} />
+
+## Notes
+
+- This hook does not rely on a `ReactFlowInstance` so you are free to use it
+  anywhere in your app!

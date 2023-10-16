@@ -1,20 +1,27 @@
 import Link from 'next/link';
 import { HeartIcon, BoltIcon } from '@heroicons/react/24/outline';
-import { BaseLayout, Button, Heading, HeroFlow } from 'xy-ui';
-import Features from '@/page-sections/features';
-import Section from '@/page-sections/section';
-import Stats from '@/page-sections/stats';
-import GettingStarted from '@/page-sections/getting-started';
+import {
+  BaseLayout,
+  Button,
+  Heading,
+  HeroFlow,
+  Section,
+  Features,
+  GettingStarted,
+  Stats,
+} from 'xy-ui';
 
 import FlowA from './flows/flow-a';
 import FlowB from './flows/flow-b';
 import FlowC from './flows/flow-c';
 
+import SupportSection from '@/components/support-section';
+
 const features = [
   {
     title: 'Ready out-of-the-box',
     text: 'The things you need are already there: dragging nodes, zooming, panning, selecting multiple nodes, and adding/removing edges are all built-in.',
-    route: '/svelte-flow/docs',
+    route: '/learn',
     flowComponent: FlowA,
   },
   {
@@ -26,13 +33,13 @@ const features = [
       </>
     ),
     text: 'We play nice with Tailwind and old CSS. Svelte Flow nodes are just Svelte components. Create custom nodes to add interactive controls.',
-    route: '/svelte-flow/docs',
+    route: '/learn',
     flowComponent: FlowB,
   },
   {
     title: 'All the right plugins',
     text: 'Make more advanced apps with the Background, Minimap, Controls, Panel, NodeToolbar, and NodeResizer components.',
-    route: '/svelte-flow/docs',
+    route: '/learn',
     flowComponent: FlowC,
   },
 ];
@@ -43,17 +50,17 @@ export default function SvelteFlowHome() {
       <HeroFlow
         title="Svelte Flow"
         initialColor="#ff4000"
-        subtitle="A customizable React component for building node-based editors and interactive diagrams"
+        subtitle="A customizable Svelte component for building node-based editors and interactive diagrams"
         action={
           <div className="flex">
-            <Button asChild className="mr-3 ">
-              <Link href="/docs">
+            <Button asChild className="mr-3" size="lg">
+              <Link href="/learn">
                 <BoltIcon className="w-5 h-5 mr-1" />
                 Quickstart
               </Link>
             </Button>
-            <Button variant="pro" asChild>
-              <Link href="/support">
+            <Button variant="pro" asChild size="lg">
+              <Link href="/support-us">
                 <HeartIcon className="w-5 h-5 mr-1" /> Support Us
               </Link>
             </Button>
@@ -63,17 +70,16 @@ export default function SvelteFlowHome() {
 
       <Section className="mt-6 lg:mt-10">
         <Stats
-          variant="svelte"
           stats={[
-            { label: 'Latest Release', value: 'May 23' },
+            { label: 'Current Version', value: '0.0.23' },
             {
               label: 'Weekly Installs',
-              value: 5,
+              value: 423,
             },
             { label: 'License', value: 'MIT' },
           ]}
           description="Svelte Flow is a MIT-licensed open source library. You can help us to ensure the further development and maintenance by supporting us."
-          link="/svelte-flow/support"
+          link="/support-us"
           linkLabel={
             <>
               <HeartIcon className="w-5 h-5 mr-1" /> Support Us
@@ -82,31 +88,16 @@ export default function SvelteFlowHome() {
         />
       </Section>
 
-      <GettingStarted />
+      <GettingStarted
+        libraryName="Svelte Flow"
+        packageName="@xyflow/svelte-flow"
+      />
 
       <Section>
-        <Features features={features} variant="svelte" />
+        <Features features={features} />
       </Section>
 
-      <Section className="mx-auto lg:max-w-[800px] lg:mb-8">
-        <Heading size="md" as="h3" className="text-center mb-12 mt-32">
-          Get started with Svelte Flow and join the community of people building
-          node-based UIs
-        </Heading>
-
-        <div className="flex justify-center space-x-8">
-          <Button size="lg" asChild variant="svelte">
-            <Link href="/react-flow/pro" className="flex items-center">
-              Read the Docs
-            </Link>
-          </Button>
-          <Button size="lg" asChild variant="secondary">
-            <Link href="/react-flow/pro" className="flex items-center">
-              Join our Discord
-            </Link>
-          </Button>
-        </div>
-      </Section>
+      <SupportSection />
     </BaseLayout>
   );
 }

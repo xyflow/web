@@ -1,0 +1,44 @@
+import { PropsTable } from '@/components/props-table';
+import { signature } from '@/page-data/reference/hooks/useOnSelectionChange.ts';
+
+# useOnSelectionChange
+
+[Source on GitHub](https://github.com/wbkd/react-flow/blob/f919cb152dd5a92ec3b4d7e4568ffe099bc2af39/packages/react/src/hooks/useOnSelectionChange.ts#L10)
+
+This hook lets you listen for changes to both node and edge selection. As the
+name implies, the callback you provide will be called whenever the selection of
+_either_ nodes or edges changes.
+
+```jsx
+import { useState } from 'react';
+import ReactFlow, { useOnSelectionChange } from '@xyflow/react';
+
+function SelectionDisplay() {
+  const [selectedNodes, setSelectedNodes] = useState([]);
+  const [selectedEdges, setSelectedEdges] = useState([]);
+
+  useOnSelectionChange({
+    onChange: ({ nodes, edges }) => {
+      setSelectedNodes(nodes.map((node) => node.id));
+      setSelectedEdges(edges.map((edge) => edge.id));
+    },
+  });
+
+  return (
+    <div>
+      <p>Selected nodes: {selectedNodes.join(', ')}</p>
+      <p>Selected edges: {selectedEdges.join(', ')}</p>
+    </div>
+  );
+}
+```
+
+## Signature
+
+<PropsTable {...signature} />
+
+## Notes
+
+- This hook can only be used in a component that is a child of a
+  [`<ReactFlowProvider />`](../ReactFlowProvider) or a
+  [`<ReactFlow />`](../ReactFlow) comoponent.

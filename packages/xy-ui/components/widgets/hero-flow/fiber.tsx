@@ -23,7 +23,7 @@ function Shape({ type, random, color, ...props }: any) {
       ref.current.rotation.set(
         Math.cos(t / 1.5) / 2,
         Math.sin(t) / 2,
-        Math.cos(t / 1.5) / 2
+        Math.cos(t / 1.5) / 2,
       );
     }
   });
@@ -58,22 +58,20 @@ export default function App({ color, zoom, shape, count = 150 }: any) {
         position: randomVector(r),
         rotation: randomEuler(),
       })),
-    [count]
+    [count],
   );
 
   return (
-    <div>
-      <Canvas resize={canvasResize} dpr={2}>
-        <Cam zoom={zoom} />
-        <ambientLight intensity={0.5} />
-        <directionalLight intensity={3} position={[0, 0, 100]} />
+    <Canvas resize={canvasResize} dpr={2}>
+      <Cam zoom={zoom} />
+      <ambientLight intensity={0.5} />
+      <directionalLight intensity={3} position={[0, 0, 100]} />
 
-        <Suspense fallback={null}>
-          {randomData.map((props, i) => (
-            <Shape key={i} {...props} color={color} type={shape} />
-          ))}
-        </Suspense>
-      </Canvas>
-    </div>
+      <Suspense fallback={null}>
+        {randomData.map((props, i) => (
+          <Shape key={i} {...props} color={color} type={shape} />
+        ))}
+      </Suspense>
+    </Canvas>
   );
 }

@@ -1,6 +1,6 @@
 import { ShowcaseLayout } from 'xy-ui';
 import showcases from '../../public/data/showcases.json';
-import SubscribeSection from '@/page-sections/subscribe';
+import SubscribeSection from '@/components/subscribe-section';
 
 // @todo this should be moved into getStaticProps
 // if we have the data, it should be filtering out the react showcases from the list

@@ -1,6 +1,6 @@
+import { Footer } from 'xy-ui';
 import ClientProviders from '@/components/Providers';
 import Navigation from '@/components/Navigation';
-import Footer from '@/components/Footer';
 
 import { NtDapperFont } from '@/fonts';
 

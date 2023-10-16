@@ -1,0 +1,53 @@
+import { PropsTable } from '@/components/props-table';
+import { nodeFields } from '@/page-data/reference/types/Node.fields.ts';
+
+# Node&lt;T, U>
+
+[Source on GitHub](https://github.com/wbkd/react-flow/blob/f919cb152dd5a92ec3b4d7e4568ffe099bc2af39/packages/react/src/types/nodes.ts#L4)
+
+The `Node` type represents everything React Flow needs to know about a given node.
+Many of these properties can be manipulated both by React Flow or by you, but
+some such as `width` and `height` should be considered read-only.
+
+```ts
+export type Node<T, U extends string> = {
+  id: string;
+  position: XYPosition;
+  data: T;
+  type?: U;
+  sourcePosition?: Position;
+  targetPosition?: Position;
+  hidden?: boolean;
+  selected?: boolean;
+  dragging?: boolean;
+  draggable?: boolean;
+  selectable?: boolean;
+  connectable?: boolean;
+  resizing?: boolean;
+  deletable?: boolean;
+  dragHandle?: string;
+  width?: number | null;
+  height?: number | null;
+  parentNode?: string;
+  zIndex?: number;
+  extent?: 'parent' | CoordinateExtent;
+  expandParent?: boolean;
+  positionAbsolute?: XYPosition;
+  ariaLabel?: string;
+  focusable?: boolean;
+  origin?: NodeOrigin;
+  style?: React.CSSProperties;
+  className?: string;
+};
+```
+
+## Fields
+
+<PropsTable {...nodeFields} />
+
+## Notes
+
+- You shouldn't try to set the `width` or `height` of a node directly. It is
+  calculated internally by React Flow and used when rendering the node in the
+  viewport. To control a node's size you should use the `style` or `className`
+  props to apply CSS styles instead.

@@ -1,16 +1,23 @@
+import { useCallback } from 'react';
 import { Position } from 'reactflow';
 
 import { RadioGroup, RadioGroupItem, Label, cn } from '../../..';
 import Handle from './handle';
 import Wrapper from './node-wrapper';
 
+const options = ['cube', 'pyramid'];
+
 export default function SwitcherNode({ data }: { data: any }) {
-  const { label = '', options = [], onChange = () => {}, value } = data;
+  const { label = '', setState = () => {}, shape } = data;
+
+  const onValueChange = useCallback((val: string) => {
+    setState((state: any) => ({ ...state, shape: val }));
+  }, []);
 
   return (
     <Wrapper label={label}>
       <Handle type="source" position={Position.Right} />
-      <RadioGroup value={value} onValueChange={onChange}>
+      <RadioGroup value={shape} onValueChange={onValueChange}>
         {options.map((option: any) => (
           <div className="flex items-center space-x-2 nodrag" key={option}>
             <RadioGroupItem

@@ -1,13 +1,18 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { BaseLayout, Button, Hero, PricingTable } from 'xy-ui';
+import {
+  BaseLayout,
+  Button,
+  Hero,
+  PricingTable,
+  ImageSlider,
+  Section,
+} from 'xy-ui';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 
 import ClientLogos from '@/components/client-logos';
-import ImageSlider from '@/page-sections/image-slider';
 import FAQ from '@/components/faq';
-import Section from '@/page-sections/section';
-import SubscribeSection from '@/page-sections/subscribe';
+import SubscribeSection from '@/components/subscribe-section';
 
 const sliderItems = [
   {
@@ -47,7 +52,7 @@ export default function ReactFlowPro() {
           </>
         }
         subtitle="Thanks for checking out React Flow Pro! We are Christopher, Hayleigh, John, and Moritz, and we are the team building and maintaining React Flow"
-        kicker="xyflow Pro"
+        kicker="React Flow Pro"
         action={
           <Button asChild size="lg" variant="pro">
             <Link href={process.env.NEXT_PUBLIC_PRO_PLATFORM_SIGNUP_URL}>
@@ -55,6 +60,7 @@ export default function ReactFlowPro() {
             </Link>
           </Button>
         }
+        showGradient
       >
         <p className="mt-4 mb-2">
           <strong>React Flow is open-source MIT-licensed software</strong>, and

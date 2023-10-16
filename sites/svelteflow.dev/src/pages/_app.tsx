@@ -1,10 +1,8 @@
-import { CSSProperties, useEffect, useRef } from 'react';
-import { useRouter } from 'next/router';
 import localFont from 'next/font/local';
 import { Fira_Mono } from 'next/font/google';
+import { Text, useFathom } from 'xy-ui';
 
 import 'styles/global.css';
-import useXYSite from '@/hooks/use-xy-site';
 
 const ntDapperFont = localFont({
   src: [
@@ -24,51 +22,44 @@ const firaMonoFont = Fira_Mono({
 
 const className = `${ntDapperFont.variable} ${firaMonoFont.variable} font-sans`;
 
-// @todo this doesn't work because it's not flexible enough
-const hueValuesBySite = {
-  xyflow: 220,
-  react: 330,
-  svelte: 30,
+const fathomOptions = {
+  id: 'PFWQXXRR',
+  domains: ['svelteflow.dev'],
 };
 
+const sites: { name: string; href: string; logo?: string }[] = [
+  { name: 'xyflow', href: 'https://xyflow.com' },
+  {
+    name: 'React Flow',
+    // logo: '/img/react-logo.svg',
+    href: 'https://reactflow.dev',
+  },
+  {
+    name: 'Svelte Flow',
+    // logo: '/img/svelte-logo.svg',
+    href: 'https://svelteflow.dev',
+  },
+];
+
 export default function App({ Component, pageProps }) {
-  const { site, getSiteByPathname } = useXYSite();
-  const router = useRouter();
-  let prevSite = useRef(null);
-
-  useEffect(() => {
-    const handleRouteChange = (url) => {
-      const nextSite = getSiteByPathname(url);
-      // we are adding a "react", "svelte" class to the body to be able to style
-      // the docsearch modal based on the current site
-      document.body.classList.remove(prevSite.current);
-      document.body.classList.add(nextSite);
-
-      prevSite.current = nextSite;
-    };
-
-    router.events.on('routeChangeStart', handleRouteChange);
-
-    handleRouteChange(router.pathname);
-
-    return () => {
-      router.events.off('routeChangeStart', handleRouteChange);
-    };
-  }, [router]);
+  useFathom(fathomOptions);
 
   return (
-    <main
-      className={className}
-      style={
-        {
-          '--nextra-primary-hue': hueValuesBySite[site],
-          '--docsearch-primary-color': `hsl(var(--color-${site}))`,
-          '--docsearch-highlight-color': `hsl(var(--color-${site}))`,
-          '--docsearch-searchbox-shadow': `inset 0 0 0 2px hsl(var(--color-${site}))`,
-        } as CSSProperties
-      }
-    >
+    <div className={className}>
+      <header className="bg-black py-2 flex items-center justify-center gap-8">
+        {sites.map((site) => (
+          <Text size="xs" key={site.name}>
+            {site.logo && (
+              <img src={site.logo} className="w-3 h-3 mr-2 inline-block" />
+            )}
+            <a href={site.href} className="text-white hover:text-gray-200">
+              {site.name}
+            </a>
+          </Text>
+        ))}
+      </header>
+
       <Component {...pageProps} />
-    </main>
+    </div>
   );
 }

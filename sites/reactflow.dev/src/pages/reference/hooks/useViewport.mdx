@@ -1,0 +1,36 @@
+import { PropsTable } from '@/components/props-table';
+import { signature } from '@/page-data/reference/hooks/useViewport.ts';
+
+# useViewport
+
+[Source on GitHub](https://github.com/wbkd/react-flow/blob/f919cb152dd5a92ec3b4d7e4568ffe099bc2af39/packages/react/src/hooks/useViewport.ts#L13)
+
+The `useViewport` hook is a convenient way to read the current state of the
+[`Viewport`](../types/Viewport) in a component. Components that use this hook
+will re-render **whenever the viewport changes**.
+
+```jsx
+import { useViewport } from '@xyflow/react';
+
+export default function ViewportDisplay() {
+  const { x, y, zoom } = useViewport();
+
+  return (
+    <div>
+      <p>
+        The viewport is currently at ({x}, {y}) and zoomed to {zoom}.
+      </p>
+    </div>
+  );
+}
+```
+
+## Signature
+
+<PropsTable {...signature} />
+
+## Notes
+
+- This hook can only be used in a component that is a child of a
+  [`<ReactFlowProvider />`](../ReactFlowProvider) or a
+  [`<ReactFlow />`](../ReactFlow) comoponent.
