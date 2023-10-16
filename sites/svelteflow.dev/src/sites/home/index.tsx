@@ -21,7 +21,7 @@ const features = [
   {
     title: 'Ready out-of-the-box',
     text: 'The things you need are already there: dragging nodes, zooming, panning, selecting multiple nodes, and adding/removing edges are all built-in.',
-    route: '/svelte-flow/docs',
+    route: '/learn',
     flowComponent: FlowA,
   },
   {
@@ -33,13 +33,13 @@ const features = [
       </>
     ),
     text: 'We play nice with Tailwind and old CSS. Svelte Flow nodes are just Svelte components. Create custom nodes to add interactive controls.',
-    route: '/svelte-flow/docs',
+    route: '/learn',
     flowComponent: FlowB,
   },
   {
     title: 'All the right plugins',
     text: 'Make more advanced apps with the Background, Minimap, Controls, Panel, NodeToolbar, and NodeResizer components.',
-    route: '/svelte-flow/docs',
+    route: '/learn',
     flowComponent: FlowC,
   },
 ];
@@ -54,13 +54,13 @@ export default function SvelteFlowHome() {
         action={
           <div className="flex">
             <Button asChild className="mr-3" size="lg">
-              <Link href="/docs">
+              <Link href="/learn">
                 <BoltIcon className="w-5 h-5 mr-1" />
                 Quickstart
               </Link>
             </Button>
             <Button variant="pro" asChild size="lg">
-              <Link href="/support">
+              <Link href="/support-us">
                 <HeartIcon className="w-5 h-5 mr-1" /> Support Us
               </Link>
             </Button>
@@ -79,7 +79,7 @@ export default function SvelteFlowHome() {
             { label: 'License', value: 'MIT' },
           ]}
           description="Svelte Flow is a MIT-licensed open source library. You can help us to ensure the further development and maintenance by supporting us."
-          link="/svelte-flow/support"
+          link="/support-us"
           linkLabel={
             <>
               <HeartIcon className="w-5 h-5 mr-1" /> Support Us

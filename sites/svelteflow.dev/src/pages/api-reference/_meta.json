@@ -3,5 +3,6 @@
   "svelte-flow": "<SvelteFlow />",
   "svelte-flow-provider": "<SvelteFlowProvider />",
   "components": "Components",
-  "hooks": "Hooks"
+  "hooks": "Hooks",
+  "types": "Types"
 }

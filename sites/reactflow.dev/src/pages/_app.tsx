@@ -37,7 +37,7 @@ const sites = [
   {
     name: 'Svelte Flow',
     logo: '/img/svelte-logo.svg',
-    href: 'https://svelteflow.com',
+    href: 'https://svelteflow.dev',
   },
 ];
 
