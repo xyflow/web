@@ -54,7 +54,7 @@ export default function CaseStudies() {
               target: '_blank',
               route: 'https://discord.gg/RVmnytFmGW',
             },
-            { linkName: 'Contaft us', route: 'https://xyflow.com/contact' },
+            { linkName: 'Contact us', route: 'https://xyflow.com/contact' },
           ]}
           text={
             <>
