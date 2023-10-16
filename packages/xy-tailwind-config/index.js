@@ -17,6 +17,7 @@ export default {
       'bg-react',
       'bg-svelte',
       'bg-xyflow',
+      'bg-gradient',
       'text-react',
       'text-svelte',
       'text-xyflow',

@@ -38,7 +38,7 @@ function HeroFlow({
         </div>
       </div>
 
-      <Flow initialColor={initialColor} className="bg-gradient" />
+      <Flow initialColor={initialColor} />
     </LayoutBreakout>
   );
 }
