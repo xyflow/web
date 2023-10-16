@@ -7,14 +7,21 @@ import aboutImage from './public/img/about.jpg';
 
 const baseUrl =
   process.env.NODE_ENV === 'production'
-    ? 'https://svelteflow.dev'
-    : 'http://localhost:3003';
+    ? 'https://xyflow.com'
+    : 'http://localhost:3001';
+
+const noIndexNoFollow = [
+  {
+    name: 'robots',
+    content: 'noindex, nofollow',
+  },
+];
 
 export default {
   logo: () => <LogoLabel label="xyflow" />,
   logoLink: false,
   docsRepositoryBase:
-    'https://github.com/xyflow/web/tree/main/sites/svelteflow.dev',
+    'https://github.com/xyflow/web/tree/main/sites/xyflow.com',
   // this is necessary to hide the github icon
   project: {},
   darkMode: false,
@@ -32,9 +39,34 @@ export default {
     },
   },
   footer: {
-    component: () => {
-      return <Footer imageSrc={aboutImage} baseUrl="https://xyflow.com" />;
-    },
+    component: () => (
+      <Footer
+        message={{
+          title: '',
+          text: `Xyflow have been building and maintaining software for node-based UIs since 2019.`,
+        }}
+        internal={{
+          title: 'xyflow',
+          items: [
+            { title: 'About Us', route: '/about' },
+            { title: 'Open Source', route: '/open-source' },
+            { title: 'Blog', route: '/blog' },
+            { title: 'Contact Us', route: '/contact' },
+          ],
+        }}
+        legal={[
+          { title: 'Terms of Use', route: 'https://xyflow.com/terms-of-use' },
+          {
+            title: 'Ethical Standards',
+            route: 'https://xyflow.com/ethical-standards',
+          },
+          { title: 'Privacy Policy', route: 'https://xyflow.com/privacy' },
+          { title: 'Imprint', route: 'https://xyflow.com/imprint' },
+        ]}
+        imageSrc={aboutImage}
+        baseUrl="https://reactflow.dev"
+      />
+    ),
   },
   search: {
     component: undefined,
@@ -47,7 +79,8 @@ export default {
   useNextSeoProps() {
     const router = useRouter();
     const { frontMatter } = useConfig();
-    const url = `${baseUrl}/${router.asPath}`;
+    const url = `${baseUrl}${router.asPath}`;
+    const isBlog = router.pathname.includes('/blog');
 
     return {
       defaultTitle: 'xyflow',
@@ -69,6 +102,10 @@ export default {
           name: 'docsearch:site',
           content: 'svelte',
         },
+        {
+          name: 'testxy',
+          content: 'xyflow',
+        },
       ],
 
       twitter: {
@@ -83,12 +120,15 @@ export default {
         images: [
           {
             url: `${baseUrl}/img/og/xyflow.jpg`,
-            width: 800,
-            height: 600,
+            width: 1200,
+            height: 640,
             alt: 'xyflow Teaser',
           },
         ],
       },
+
+      noindex: isBlog,
+      nofollow: isBlog,
     };
   },
   head: null,

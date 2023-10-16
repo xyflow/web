@@ -73,9 +73,37 @@ export default {
     },
   },
   footer: {
-    component: () => {
-      return <Footer imageSrc={aboutImage} baseUrl="https://reactflow.dev" />;
-    },
+    component: () => (
+      <Footer
+        message={{
+          title: 'React Flow is a project by xyflow.',
+          text: `We've been building and maintaining software for node-based UIs since 2019.`,
+        }}
+        internal={{
+          title: 'React Flow',
+          items: [
+            { title: 'Quickstart Guide', route: '/learn' },
+            { title: 'API Reference', route: '/api-reference' },
+            { title: 'Examples', route: '/examples' },
+            { title: 'Showcase', route: '/showcase' },
+            { title: 'Support Us', route: '/support-us' },
+          ],
+        }}
+        legal={[
+          {
+            title: 'MIT License',
+            route: 'https://github.com/wbkd/react-flow/blob/main/LICENSE',
+          },
+          {
+            title: 'Code of Conduct',
+            route:
+              'https://github.com/wbkd/react-flow/blob/main/CODE_OF_CONDUCT.md',
+          },
+        ]}
+        imageSrc={aboutImage}
+        baseUrl="https://reactflow.dev"
+      />
+    ),
   },
   search: {
     component: (props) => {
@@ -96,7 +124,7 @@ export default {
   useNextSeoProps() {
     const router = useRouter();
     const { frontMatter } = useConfig();
-    const url = `${baseUrl}/${router.asPath}`;
+    const url = `${baseUrl}${router.asPath}`;
 
     return {
       defaultTitle: 'React Flow',
@@ -131,9 +159,9 @@ export default {
         type: 'website',
         images: [
           {
-            url: `${baseUrl}/img/og/xyflow.jpg`,
-            width: 800,
-            height: 600,
+            url: `${baseUrl}/img/og/reactflow.jpg`,
+            width: 1200,
+            height: 640,
             alt: 'React Flow Teaser',
           },
         ],
