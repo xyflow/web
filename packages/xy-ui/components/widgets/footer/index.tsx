@@ -1,13 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Text } from '../../ui/text';
-
-const libraries = [
-  { title: 'React Flow', route: 'https://reactflow.dev/' },
-  { title: 'Svelte Flow', route: 'https://svelteflow.dev/' },
-  { title: 'Project Showcase', route: 'https://reactflow.dev/showcase' },
-  { title: 'Case Studies', route: 'https://reactflow.dev/pro/case-studies' },
-];
+import { useMemo } from 'react';
 
 const xyflow = [
   { title: 'Blog', route: 'https://xyflow.com/blog' },
@@ -30,11 +24,7 @@ const social = [
   { title: 'Bluesky', route: 'https://bsky.app/profile/xyflow.com' },
 ];
 
-const categories = [
-  {
-    title: 'Libraries',
-    items: libraries,
-  },
+const baseCategories = [
   {
     title: 'Community',
     items: social,
@@ -43,30 +33,58 @@ const categories = [
     title: 'xyflow',
     items: xyflow,
   },
-  {
-    title: 'Legal',
-    items: legal,
-  },
 ];
 
 type FooterProps = {
+  message?: {
+    title: string;
+    text: string;
+  };
+  internal?: {
+    title: string;
+    items: { title: string; route: string }[];
+  };
+  legal?: { title: string; route: string }[];
   imageSrc?: string;
   baseUrl?: string;
 };
 
 // we can pass a baseurl that gets removed from the links in order to have site specific relative links
-export default function Footer({ imageSrc, baseUrl = '' }: FooterProps) {
+export default function Footer({
+  message,
+  internal,
+  legal,
+  imageSrc,
+  baseUrl = '',
+}: FooterProps) {
+  const allCategories = useMemo(() => {
+    const categories = [...baseCategories];
+
+    if (internal) {
+      categories.unshift(internal);
+    }
+
+    if (legal) {
+      categories.push({ title: 'Legal', items: legal });
+    }
+
+    return categories;
+  }, [internal, legal]);
+
   return (
     <footer className="bg-black print:bg-transparent py-12 lg:py-18">
       <div className="mx-auto lg:flex text-white max-w-[90rem] pl-[max(env(safe-area-inset-left),1.5rem)] pr-[max(env(safe-area-inset-right),1.5rem)]">
         <div className="lg:max-w-[300px] md:max-w-[600px] lg:mr-24 shrink-0">
-          <Text variant="light" className="mb-2">
-            A message from the team
-          </Text>
-          <div className="font-black text-3xl tracking-tight leading-none mb-6 lg:mb-10">
-            Cared for by the xyflow team– building and maintaining React Flow
-            since 2021.
-          </div>
+          {message && (
+            <>
+              <Text variant="light" className="mb-2">
+                {message.title}
+              </Text>
+              <div className="font-black text-3xl tracking-tight leading-none mb-6 lg:mb-10">
+                {message.text}
+              </div>
+            </>
+          )}
           {imageSrc && (
             <Image
               src={imageSrc}
@@ -79,7 +97,7 @@ export default function Footer({ imageSrc, baseUrl = '' }: FooterProps) {
         <div className="grow">
           <div className="flex flex-col grow h-[100%]">
             <div className="grid grid-cols-2 lg:grid-cols-4 grid-gap-4">
-              {categories.map((category) => (
+              {allCategories.map((category) => (
                 <div key={category.title} className="mt-4 lg:mt-0">
                   <Text variant="light" className="text-light mb-2">
                     {category.title}
