@@ -50,7 +50,7 @@ export default function SvelteFlowHome() {
       <HeroFlow
         title="Svelte Flow"
         initialColor="#ff4000"
-        subtitle="A customizable React component for building node-based editors and interactive diagrams"
+        subtitle="A customizable Svelte component for building node-based editors and interactive diagrams"
         action={
           <div className="flex">
             <Button asChild className="mr-3" size="lg">
@@ -71,10 +71,10 @@ export default function SvelteFlowHome() {
       <Section className="mt-6 lg:mt-10">
         <Stats
           stats={[
-            { label: 'Latest Release', value: 'May 23' },
+            { label: 'Current Version', value: '0.0.23' },
             {
               label: 'Weekly Installs',
-              value: 5,
+              value: 423,
             },
             { label: 'License', value: 'MIT' },
           ]}

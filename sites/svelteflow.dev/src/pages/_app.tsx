@@ -27,16 +27,16 @@ const fathomOptions = {
   domains: ['svelteflow.dev'],
 };
 
-const sites = [
-  { name: 'xyflow.com', href: 'https://xyflow.com' },
+const sites: { name: string; href: string; logo?: string }[] = [
+  { name: 'xyflow', href: 'https://xyflow.com' },
   {
     name: 'React Flow',
-    logo: '/img/react-logo.svg',
+    // logo: '/img/react-logo.svg',
     href: 'https://reactflow.dev',
   },
   {
     name: 'Svelte Flow',
-    logo: '/img/svelte-logo.svg',
+    // logo: '/img/svelte-logo.svg',
     href: 'https://svelteflow.dev',
   },
 ];
