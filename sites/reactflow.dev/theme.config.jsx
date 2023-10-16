@@ -96,7 +96,7 @@ export default {
   useNextSeoProps() {
     const router = useRouter();
     const { frontMatter } = useConfig();
-    const url = `${baseUrl}/${router.asPath}`;
+    const url = `${baseUrl}${router.asPath}`;
 
     return {
       defaultTitle: 'React Flow',
@@ -131,9 +131,9 @@ export default {
         type: 'website',
         images: [
           {
-            url: `${baseUrl}/img/og/xyflow.jpg`,
-            width: 800,
-            height: 600,
+            url: `${baseUrl}/img/og/reactflow.jpg`,
+            width: 1200,
+            height: 640,
             alt: 'React Flow Teaser',
           },
         ],
