@@ -5,12 +5,9 @@ import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 
 import {
   BaseLayout,
-  ContentGrid,
-  ContentGridItem,
   Text,
   Heading,
   Button,
-  Logo,
   Hero,
   ImageSlider,
   Handle,
@@ -18,6 +15,7 @@ import {
   Section,
 } from 'xy-ui';
 
+import LibraryCards from '@/components/library-cards';
 import aboutImage from '../../public/img/about.jpg';
 
 const sliderItems = [
@@ -120,7 +118,11 @@ export default function XYFlowHome() {
 
       <LibraryCards />
 
-      <ImageSlider items={sliderItems} className="my-16 lg:my-24" />
+      <ImageSlider
+        buttonLink="https://reactflow.dev/showcase"
+        items={sliderItems}
+        className="my-16 lg:my-24"
+      />
 
       <Section>
         <Heading size="sm" as="h3" className="text-center mb-2">
@@ -159,37 +161,5 @@ export default function XYFlowHome() {
 
       <LibraryCards />
     </BaseLayout>
-  );
-}
-
-function LibraryCards() {
-  return (
-    <ContentGrid className="mt-16 lg:mt-24">
-      <ContentGridItem route="/react-flow">
-        <Heading size="sm" className="flex items-center">
-          <Logo className="mr-2 text-[#ff0071]" /> React Flow
-        </Heading>
-        <Text className="mt-2 mb-4" variant="light">
-          A customizable React component for building node-based editors and
-          interactive diagrams
-        </Text>
-        <span className="text-[#ff0071] flex items-center">
-          Read More <ArrowRightCircleIcon className="ml-1 w-4 h-4" />
-        </span>
-      </ContentGridItem>
-
-      <ContentGridItem route="/svelte-flow">
-        <Heading size="sm" className="flex items-center">
-          <Logo className="mr-2 text-[#ff4000]" /> Svelte Flow
-        </Heading>
-        <Text className="mt-2 mb-4" variant="light">
-          A customizable Svelte component for building node-based editors and
-          interactive diagrams
-        </Text>
-        <span className="text-[#ff4000] flex items-center">
-          Read More <ArrowRightCircleIcon className="ml-1 w-4 h-4" />
-        </span>
-      </ContentGridItem>
-    </ContentGrid>
   );
 }
