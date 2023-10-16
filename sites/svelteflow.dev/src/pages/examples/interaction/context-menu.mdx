@@ -1,0 +1,16 @@
+---
+title: Context Menu
+---
+
+import ExampleViewer from '@/components/example-viewer';
+import ExampleLayout from '@/layouts/example-with-frontmatter';
+
+<ExampleLayout>
+This example shows how the current zoom level can be used by a node to decide which content to show.
+We can access the zoom inside the viewport writable via the [`useSvelteStore` hook](/api-reference/hooks/use-svelte-flow) to update our custom node whenever the zoom changes.
+
+<ExampleViewer
+  codePath="examples/interaction/context-menu"
+  framework="svelte"
+/>
+</ExampleLayout>
