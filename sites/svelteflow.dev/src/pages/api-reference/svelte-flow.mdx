@@ -16,6 +16,7 @@ The `<SvelteFlow />` component is the heart of your Svelte Flow application.
 
 ```svelte
 <script>
+  import { writable } from 'svelte/store';
   import { SvelteFlow } from '@xyflow/svelte';
 
   const nodes = writable([]);

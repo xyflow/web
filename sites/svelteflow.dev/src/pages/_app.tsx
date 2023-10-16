@@ -24,7 +24,6 @@ const className = `${ntDapperFont.variable} ${firaMonoFont.variable} font-sans`;
 
 const fathomOptions = {
   id: 'PFWQXXRR',
-  domains: ['svelteflow.dev'],
 };
 
 const sites: { name: string; href: string; logo?: string }[] = [
