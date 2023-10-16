@@ -18,6 +18,3 @@
     <Background />
   </SvelteFlow>
 </div>
-
-<style>
-</style>
