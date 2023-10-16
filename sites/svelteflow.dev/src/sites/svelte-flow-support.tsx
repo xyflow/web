@@ -40,17 +40,21 @@ export default function CaseStudies() {
     <BaseLayout>
       <Hero
         title="Support Svelte Flow"
-        subtitle="Thanks for supporting Svelte Flow, there are lots of ways you can help the library, ecosystem, and community grow."
+        subtitle="Thanks for your interest in Svelte Flow! There are lots of ways you can help the library, ecosystem, and community grow."
         kicker={<Kicker />}
         align="center"
       />
       <ContentGrid className="mt-20">
         <GridItem
           icon={CommandLineIcon}
-          title="Show us what you made"
+          title="Show us what you've made"
           links={[
-            { linkName: 'Discord', route: 'https://discord.gg/RVmnytFmGW' },
-            { linkName: 'Email us', route: 'mailto:info@xyflow.com' },
+            {
+              linkName: 'Discord',
+              target: '_blank',
+              route: 'https://discord.gg/RVmnytFmGW',
+            },
+            { linkName: 'Contaft us', route: 'https://xyflow.com/contact' },
           ]}
           text={
             <>
@@ -63,7 +67,10 @@ export default function CaseStudies() {
           icon={UserGroupIcon}
           title="Join the Community"
           links={[
-            { linkName: 'Github Discussions', route: '/' },
+            {
+              linkName: 'Github Discussions',
+              route: 'https://github.com/wbkd/react-flow/discussions',
+            },
             { linkName: 'Discord', route: 'https://discord.gg/RVmnytFmGW' },
           ]}
           text={
@@ -76,7 +83,12 @@ export default function CaseStudies() {
         <GridItem
           icon={CheckCircleIcon}
           title="Squash Bugs"
-          links={[{ linkName: 'Github Issues', route: '/' }]}
+          links={[
+            {
+              linkName: 'Github Issues',
+              route: 'https://github.com/wbkd/react-flow/issues',
+            },
+          ]}
           text={
             <>
               We can’t catch them all. Check existing issues and discussions
@@ -88,8 +100,14 @@ export default function CaseStudies() {
           icon={CurrencyDollarIcon}
           title="Financial Support"
           links={[
-            { linkName: 'Github Sponsors', route: '/' },
-            { linkName: 'Open Collective', route: '/' },
+            {
+              linkName: 'Github Sponsors',
+              route: 'https://github.com/sponsors/wbkd',
+            },
+            {
+              linkName: 'Open Collective',
+              route: 'https://opencollective.com/reactflow',
+            },
           ]}
           text={
             <>
@@ -111,7 +129,7 @@ export default function CaseStudies() {
         <ListItem
           icon={DocumentDuplicateIcon}
           label="Improve and edit our docs"
-          link="/docs"
+          link="https://github.com/xyflow/web"
         />
         <ListItem
           icon={StarIcon}
@@ -120,8 +138,8 @@ export default function CaseStudies() {
         />
         <ListItem
           icon={ChatBubbleOvalLeftEllipsisIcon}
-          label="Tweet/toot about us"
-          link="https://x.com/xyflow"
+          label="Toot about us"
+          link="https://fosstodon.org/@reactflowdev"
         />
       </ListWrapper>
     </BaseLayout>
@@ -137,7 +155,7 @@ function GridItem({
   title: ReactNode;
   text: ReactNode;
   icon: HeroIcon;
-  links?: Array<{ route: string; linkName: string }>;
+  links?: Array<{ route: string; linkName: string; target?: string }>;
 }) {
   return (
     <ContentGridItem>
@@ -159,7 +177,7 @@ function GridItem({
                 variant="link"
                 className="text-primary text-md"
               >
-                <Link href={link.route}>
+                <Link href={link.route} target={link.target}>
                   {link.linkName}{' '}
                   <ArrowRightCircleIcon className="ml-1 w-4 h-4" />
                 </Link>

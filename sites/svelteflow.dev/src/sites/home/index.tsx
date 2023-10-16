@@ -32,13 +32,13 @@ const features = [
         Designed by you.
       </>
     ),
-    text: 'We play nice with Tailwind and old CSS. Svelte Flow nodes are just Svelte components. Create custom nodes to add interactive controls.',
-    route: '/learn',
+    text: 'We play nice with Tailwind and good old CSS. Svelte Flow nodes are just Svelte components. Create custom nodes to have full control with interactive components.',
+    route: '/learn/guides/custom-nodes',
     flowComponent: FlowB,
   },
   {
     title: 'All the right plugins',
-    text: 'Make more advanced apps with the Background, Minimap, Controls, Panel, NodeToolbar, and NodeResizer components.',
+    text: 'Make more advanced apps with the Background, Minimap, Controls, and Panel components.',
     route: '/learn',
     flowComponent: FlowC,
   },
