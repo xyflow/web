@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { SvelteFlow } from '@xyflow/svelte';
+  import { SvelteFlow, Background } from '@xyflow/svelte';
   import type { Edge, Node } from '@xyflow/svelte';
   import { writable } from 'svelte/store';
 
@@ -11,7 +11,6 @@
   ];
 
   const initialEdges: Edge[] = [{ id: 'e1-2', source: '1', target: '2' }];
-  const initialViewport = { x: 0, y: 0, zoom: 1.5 };
 
   const nodes = writable<Node[]>(initialNodes);
   const edges = writable(initialEdges);
@@ -61,7 +60,7 @@
 </script>
 
 <div style="height:100vh;">
-  <SvelteFlow {nodes} {edges} {initialViewport} minZoom={0.2} maxZoom={4}>
+  <SvelteFlow {nodes} {edges} fitView>
     <div class="updatenode__controls">
       <label>label:</label>
       <input value={nodeName} on:input={(evt) => (nodeName = evt.target?.value)} />
@@ -78,6 +77,7 @@
         />
       </div>
     </div>
+    <Background />
   </SvelteFlow>
 </div>
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { ConnectionLineType, MarkerType, SvelteFlow } from '@xyflow/svelte';
+  import { ConnectionLineType, MarkerType, SvelteFlow, Background } from '@xyflow/svelte';
   import type { Edge, Node } from '@xyflow/svelte';
   import { writable } from 'svelte/store';
 
@@ -43,7 +43,9 @@
     connectionLineType={ConnectionLineType.Straight}
     {connectionLineStyle}
     fitView
-  ></SvelteFlow>
+  >
+    <Background />
+  </SvelteFlow>
 </div>
 
 <style>

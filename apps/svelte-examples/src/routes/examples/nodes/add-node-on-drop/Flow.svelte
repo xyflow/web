@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { SvelteFlow, useSvelteFlow } from '@xyflow/svelte';
+  import { SvelteFlow, useSvelteFlow, Background } from '@xyflow/svelte';
   import type { Edge, Node } from '@xyflow/svelte';
   import { writable } from 'svelte/store';
 
@@ -22,7 +22,7 @@
   let id = 1;
   const getId = () => `${id++}`;
 
-  const { project } = useSvelteFlow();
+  const { screenToFlowCoordinate } = useSvelteFlow();
 
   function handleConnectEnd({ detail: { event } }: { detail: { event: MouseEvent | TouchEvent } }) {
     // See of connection landed inside the flow pane
@@ -33,9 +33,9 @@
         id,
         data: { label: `Node ${id}` },
         // project the screen coordinates to pane coordinates
-        position: project({
-          x: event.clientX - rect.left,
-          y: event.clientY - rect.top
+        position: screenToFlowCoordinate({
+          x: event.clientX,
+          y: event.clientY
         }),
         // set the origin of the new node so it is centered
         origin: [0.5, 0.0]
@@ -66,7 +66,9 @@
       connectingNodeId = nodeId;
     }}
     on:connectend={handleConnectEnd}
-  ></SvelteFlow>
+  >
+    <Background />
+  </SvelteFlow>
 </div>
 
 <style>

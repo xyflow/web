@@ -1,6 +1,6 @@
 <script lang="ts">
   import '@xyflow/svelte/dist/style.css';
-  import { SvelteFlow } from '@xyflow/svelte';
+  import { SvelteFlow, Background } from '@xyflow/svelte';
   import type { Edge, Node } from '@xyflow/svelte';
   import { writable } from 'svelte/store';
 
@@ -16,7 +16,9 @@
 </script>
 
 <div style="height:100vh;">
-  <SvelteFlow {nodes} {edges} {nodeTypes} fitView></SvelteFlow>
+  <SvelteFlow {nodes} {edges} {nodeTypes} fitView>
+    <Background />
+  </SvelteFlow>
 </div>
 
 <style>
