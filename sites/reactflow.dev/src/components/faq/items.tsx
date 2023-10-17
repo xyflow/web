@@ -1,4 +1,10 @@
+import React from 'react';
 import Link from 'next/link';
+
+const PinkLink = (props) => (
+  <Link className="text-pink-600" {...props} />
+  // make some hover-color change
+);
 
 export default [
   {
@@ -35,13 +41,14 @@ export default [
           </li>
           <li>
             For <strong>non-commercial open source projects</strong>,{' '}
-            <Link href="/contact">contact us</Link> with the link to the github
-            or gitlab repository.
+            <PinkLink href="/contact">contact us</PinkLink> with the link to the
+            github or gitlab repository.
           </li>
         </ul>
         <div>
           2. If you are a <strong>pre-revenue startup</strong>,{' '}
-          <Link href="/contact">contact us</Link> for a startup discount.
+          <PinkLink href="/contact">contact us</PinkLink> for a startup
+          discount.
         </div>
       </>
     ),
@@ -59,41 +66,21 @@ export default [
     answer: (
       <>
         You can find all of our company and invoicing details{' '}
-        <Link
+        <PinkLink
           href="https://wbkd.notion.site/Company-and-Invoicing-Details-for-subscribing-to-React-Flow-125f6b699fb24c93aa7016c588b3ae35"
           target="_blank"
         >
           here
-        </Link>
+        </PinkLink>
         .
         <br />
         If your organization already uses GitHub sponsorships, feel free to do a
         sponsorship on our{' '}
-        <Link href="https://github.com/sponsors/wbkd" target="_blank">
+        <PinkLink href="https://github.com/sponsors/wbkd" target="_blank">
           GitHub Sponsors website
-        </Link>{' '}
+        </PinkLink>{' '}
         for the same subscription price, then send us an email so we can upgrade
         you to the correct plan.
-      </>
-    ),
-  },
-  {
-    question: <>Will React Flow work for my project’s specific use case?</>,
-    answer: (
-      <>
-        We’ve built React Flow to be flexible and low-level, so it works for
-        many use cases. Take a look at our{' '}
-        <Link
-          href="https:reactflow.dev/docs/examples/overview/"
-          target="_blank"
-        >
-          Examples
-        </Link>{' '}
-        and our{' '}
-        <Link href="https:reactflow.dev/showcase/" target="_blank">
-          Project Showcase
-        </Link>{' '}
-        see some of what is possible to build with React Flow.
       </>
     ),
   },
@@ -103,9 +90,9 @@ export default [
       <>
         We have project partners who would be happy to help build your custom
         React Flow app.{' '}
-        <Link href="https:pro.reactflow.dev/contact" target="_blank">
+        <PinkLink href="https:pro.reactflow.dev/contact" target="_blank">
           Contact us
-        </Link>{' '}
+        </PinkLink>{' '}
         with a description of what you’re looking to build and the project
         scope, and we’ll put you in touch. (The core team is busy maintaining
         the library, so we don{"'"}t take on these projects ourselves.)
@@ -129,7 +116,29 @@ export default [
       <>
         After unsubscribing, you will no longer be able to access the Pro
         Example code through our website. You will still be able to use React
-        Flow as usual and continue receiving updates to the library.
+        Flow as usual and continue receiving updates to the library. You can
+        continue using the Pro Example code in your projects, even if you're no
+        longer a subscriber.
+      </>
+    ),
+  },
+  {
+    question: (
+      <>
+        Can I use React Flow for my commercial project without a subscription?
+      </>
+    ),
+    answer: (
+      <>
+        Yes. The React Flow library is under an{' '}
+        <PinkLink href="https://github.com/wbkd/react-flow/blob/main/LICENSE">
+          MIT License
+        </PinkLink>
+        . We rely on the support of commercial organizations and projects to
+        keep React Flow maintained and consistently updated. If your
+        organization is able to afford a subscription, we would recommend it in
+        order to make sure React Flow and its ecosystem continue to be a
+        reliable resource.
       </>
     ),
   },
@@ -138,8 +147,8 @@ export default [
     answer: (
       <>
         We’re happy to answer any questions you have.{' '}
-        <Link href="/contact">Contact us</Link>, we check our email regularly
-        and usually reply in a day or two.
+        <PinkLink href="/contact">Contact us</PinkLink>, we check our email
+        regularly and usually reply in a day or two.
       </>
     ),
   },
