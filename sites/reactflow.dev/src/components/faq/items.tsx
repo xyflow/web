@@ -13,8 +13,8 @@ export default [
     question: <>Is React Flow Pro a different library than React Flow?</>,
     answer: (
       <>
-        "React Flow Pro" is not an additional library, but instead a paid
-        service built around the open-source{' '}
+        &quot;React Flow Pro&quot; is not an additional library, but instead a
+        paid service built around the open-source{' '}
         <PinkLink href="https://github.com/wbkd/react-flow">
           React Flow library
         </PinkLink>
@@ -89,7 +89,7 @@ export default [
         </PinkLink>{' '}
         with a description of what you’re looking to build and the project
         scope, and we’ll put you in touch. (The core team is busy maintaining
-        the library, so we don{"'"}t take on these projects ourselves.)
+        the library, so we don&apos;t take on these projects ourselves.)
       </>
     ),
   },
