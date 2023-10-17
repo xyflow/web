@@ -2,8 +2,10 @@ import React from 'react';
 import Link from 'next/link';
 
 const PinkLink = (props) => (
-  <Link className="text-primary" {...props} />
-  // make some hover-color change
+  <Link
+    className="text-primary hover:text-pink-600 hover:underline"
+    {...props}
+  />
 );
 
 export default [
@@ -24,9 +26,8 @@ export default [
     question: <>I / my company can’t afford the monthly subscription price.</>,
     answer: (
       <>
-        1. If you need access to the Pro Example code for a non-commercial
-        project:
-        <ul>
+        If you need access to the Pro Example code for a non-commercial project:
+        <ul className="list-disc pl-8 mb-4">
           <li>
             For <strong>educational purposes</strong>, email us at
             info@reactflow.dev using your university email address with a link
@@ -39,7 +40,7 @@ export default [
           </li>
         </ul>
         <div>
-          2. If you are a <strong>pre-revenue startup</strong>,{' '}
+          If you are a <strong>pre-revenue startup</strong>,{' '}
           <PinkLink href="/contact">contact us</PinkLink> for a startup
           discount.
         </div>

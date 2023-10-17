@@ -12,7 +12,7 @@ const features: Record<string, FeatureConfig> = {
       <>
         Access to all{' '}
         <a
-          className="text-primary hover:underline"
+          className="text-primary hover:underline "
           href="/react-flow/pro/examples"
         >
           Pro Examples
