@@ -45,7 +45,13 @@ function AboutSection({ imageSrc }: AboutSectionProps) {
         </Button>
       </div>
 
-      {imageSrc && <Image src={imageSrc} alt="photo of the xyflow team" />}
+      {imageSrc && (
+        <Image
+          className="rounded-3xl overflow-hidden"
+          src={imageSrc}
+          alt="photo of the xyflow team"
+        />
+      )}
     </Section>
   );
 }
