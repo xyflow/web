@@ -23,7 +23,9 @@ export default [
     ),
   },
   {
-    question: <>I / my company can’t afford the monthly subscription price.</>,
+    question: (
+      <>I / my company can&apos;t afford the monthly subscription price.</>
+    ),
     answer: (
       <>
         If you need access to the Pro Example code for a non-commercial project:
@@ -31,7 +33,7 @@ export default [
           <li>
             For <strong>educational purposes</strong>, email us at
             info@reactflow.dev using your university email address with a link
-            to the example you’re looking for.
+            to the example you&apos;re looking for.
           </li>
           <li>
             For <strong>non-commercial open source projects</strong>,{' '}
@@ -87,9 +89,10 @@ export default [
         <PinkLink href="https:pro.reactflow.dev/contact" target="_blank">
           Contact us
         </PinkLink>{' '}
-        with a description of what you’re looking to build and the project
-        scope, and we’ll put you in touch. (The core team is busy maintaining
-        the library, so we don&apos;t take on these projects ourselves.)
+        with a description of what you&apos;re looking to build and the project
+        scope, and we&apos;ll put you in touch. (The core team is busy
+        maintaining the library, so we don&apos;t take on these projects
+        ourselves.)
       </>
     ),
   },
