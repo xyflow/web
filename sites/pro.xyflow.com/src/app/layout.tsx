@@ -18,6 +18,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         {/* @todo replace with nextjs metadata api: https://nextjs.org/docs/app/api-reference/file-conventions/metadata */}
         <title>React Flow Pro</title>
+        {/* @todo remove noindex nofollow after launch */}
+        <meta name="robots" content="noindex, nofollow" />
         <meta name="title" content="React Flow Pro" />
         <meta
           name="description"

@@ -33,7 +33,36 @@ export default {
   },
   footer: {
     component: () => {
-      return <Footer imageSrc={aboutImage} baseUrl="https://svelteflow.dev" />;
+      const router = useRouter();
+      const isHomePage = router.pathname === '/';
+
+      return (
+        <Footer
+          internal={{
+            title: 'Svelte Flow',
+            items: [
+              { title: 'Quickstart Guide', route: '/learn' },
+              { title: 'API Reference', route: '/api-reference' },
+              { title: 'Examples', route: '/examples' },
+              { title: 'Showcase', route: '/showcase' },
+              { title: 'Support Us', route: '/support-us' },
+            ],
+          }}
+          legal={[
+            {
+              title: 'MIT License',
+              route: 'https://github.com/wbkd/react-flow/blob/main/LICENSE',
+            },
+            {
+              title: 'Code of Conduct',
+              route:
+                'https://github.com/wbkd/react-flow/blob/main/CODE_OF_CONDUCT.md',
+            },
+          ]}
+          imageSrc={isHomePage ? undefined : aboutImage}
+          baseUrl="https://svelteflow.dev"
+        />
+      );
     },
   },
   search: {
@@ -47,7 +76,7 @@ export default {
   useNextSeoProps() {
     const router = useRouter();
     const { frontMatter } = useConfig();
-    const url = `${baseUrl}/${router.asPath}`;
+    const url = `${baseUrl}${router.asPath}`;
 
     return {
       defaultTitle: 'Svelte Flow',
@@ -82,9 +111,9 @@ export default {
         type: 'website',
         images: [
           {
-            url: `${baseUrl}/img/og/xyflow.jpg`,
-            width: 800,
-            height: 600,
+            url: `${baseUrl}/img/og/svelteflow.jpg`,
+            width: 1200,
+            height: 640,
             alt: 'Svelte Flow Teaser',
           },
         ],

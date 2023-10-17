@@ -3,6 +3,7 @@ import sdk from '@stackblitz/sdk';
 
 import { Button, CodeViewer } from 'xy-ui';
 import SvelteSetup from './setup';
+import IframePreview from './iframe-preview';
 
 type SvelteExampleProps = {
   codePath: string;
@@ -95,13 +96,7 @@ export default function SvelteExample({
       framework="svelte"
       readOnly
       activeFile={activeFile}
-      customPreview={
-        <iframe
-          src={`${process.env.NEXT_PUBLIC_SVELTE_EXAMPLES_URL}${codePath}`}
-          width="100%"
-          height="100%"
-        />
-      }
+      customPreview={<IframePreview path={codePath} />}
       customOpenButton={
         <Button
           onClick={openInStackblitz}

@@ -35,7 +35,7 @@ export default function ImageSliderItem({
           <div
             style={{ width: `${props.activeBarWidth!}%` }}
             className={cn(
-              'absolute h-full rounded bg-gradient-to-r from-primary/40 to-primary/70',
+              'absolute h-full rounded bg-gradient-to-r from-accent/40 to-accent/70',
             )}
           />
         )}

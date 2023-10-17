@@ -34,13 +34,13 @@ function ImageSlider({
       <div className="p-14">
         <div className="grid lg:grid-cols-2 lg:gap-40">
           <div>
-            <Text className={cn('font-bold mb-2 text-primary')}>{kicker}</Text>
+            <Text className={cn('font-bold mb-2 text-accent')}>{kicker}</Text>
 
             <Heading className="mb-4">{title}</Heading>
           </div>
           <div>
             <Text className="mt-4 mb-4">{description}</Text>
-            <Button asChild variant="secondary" className="text-primary">
+            <Button asChild variant="secondary">
               <Link href={buttonLink}>{buttonText}</Link>
             </Button>
           </div>

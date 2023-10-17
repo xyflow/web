@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useConfig, Navbar } from 'nextra-theme-docs';
 import { Footer, Button, LogoLabel, Search } from 'xy-ui';
@@ -30,6 +31,22 @@ export default {
   },
   sidebar: {
     titleComponent: SidebarTitle,
+  },
+  banner: {
+    text: (
+      <a
+        className="flex justify-center items-center"
+        href="https://svelteflow.dev"
+      >
+        <Image
+          width={15}
+          height={25}
+          src="/img/svelte-logo.svg"
+          className="mr-1"
+        />
+        <div>React Flow is now available for Svelte!</div>
+      </a>
+    ),
   },
   navbar: {
     component: (props) => {
@@ -74,7 +91,36 @@ export default {
   },
   footer: {
     component: () => {
-      return <Footer imageSrc={aboutImage} baseUrl="https://reactflow.dev" />;
+      const router = useRouter();
+      const isHomePage = router.pathname === '/';
+
+      return (
+        <Footer
+          internal={{
+            title: 'React Flow',
+            items: [
+              { title: 'Quickstart Guide', route: '/learn' },
+              { title: 'API Reference', route: '/api-reference' },
+              { title: 'Examples', route: '/examples' },
+              { title: 'Showcase', route: '/showcase' },
+              { title: 'Support Us', route: '/support-us' },
+            ],
+          }}
+          legal={[
+            {
+              title: 'MIT License',
+              route: 'https://github.com/wbkd/react-flow/blob/main/LICENSE',
+            },
+            {
+              title: 'Code of Conduct',
+              route:
+                'https://github.com/wbkd/react-flow/blob/main/CODE_OF_CONDUCT.md',
+            },
+          ]}
+          imageSrc={isHomePage ? undefined : aboutImage}
+          baseUrl="https://reactflow.dev"
+        />
+      );
     },
   },
   search: {
@@ -96,7 +142,7 @@ export default {
   useNextSeoProps() {
     const router = useRouter();
     const { frontMatter } = useConfig();
-    const url = `${baseUrl}/${router.asPath}`;
+    const url = `${baseUrl}${router.asPath}`;
 
     return {
       defaultTitle: 'React Flow',
@@ -131,9 +177,9 @@ export default {
         type: 'website',
         images: [
           {
-            url: `${baseUrl}/img/og/xyflow.jpg`,
-            width: 800,
-            height: 600,
+            url: `${baseUrl}/img/og/reactflow.jpg`,
+            width: 1200,
+            height: 640,
             alt: 'React Flow Teaser',
           },
         ],

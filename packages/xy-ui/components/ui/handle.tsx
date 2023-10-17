@@ -36,7 +36,7 @@ function Handle({
       data-position={position}
       data-to={to}
       className={cn(
-        'port absolute',
+        'port absolute hidden',
         handleWidthClass,
         handleHeightClass,
         className,

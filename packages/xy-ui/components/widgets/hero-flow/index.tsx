@@ -30,12 +30,7 @@ function HeroFlow({
             Wire Your Ideas with <span className="text-primary">{title}</span>
           </Heading>
 
-          {subtitle && (
-            <Text className="mb-4 lg:mb-6 text-xl">
-              A customizable React component for building node-based editors and
-              interactive diagrams
-            </Text>
-          )}
+          {subtitle && <Text className="mb-4 lg:mb-6 text-xl">{subtitle}</Text>}
 
           {action && (
             <div className="flex justify-center lg:justify-start">{action}</div>
@@ -43,7 +38,7 @@ function HeroFlow({
         </div>
       </div>
 
-      <Flow initialColor={initialColor} className="bg-gradient" />
+      <Flow initialColor={initialColor} />
     </LayoutBreakout>
   );
 }

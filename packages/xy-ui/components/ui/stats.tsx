@@ -43,7 +43,12 @@ function Stats({ stats, description, link, linkLabel, className }: StatsProps) {
           {description}
         </Text>
         {link && (
-          <Button asChild variant="pro" className="mt-5" size="lg">
+          <Button
+            asChild
+            variant="pro"
+            className="max-md:w-full mt-5"
+            size="lg"
+          >
             <Link href={link}>{linkLabel}</Link>
           </Button>
         )}

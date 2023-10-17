@@ -57,7 +57,7 @@ function Feature({
           <Heading size="md" className="font-bold mb-4">
             {title}
           </Heading>
-          <Text className="mb-8 mt-2" variant="light">
+          <Text className="mb-8 mt-2 max-w-md" variant="light">
             {text}
           </Text>
           <Button asChild>

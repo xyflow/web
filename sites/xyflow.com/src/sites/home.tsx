@@ -1,21 +1,14 @@
-import Link from 'next/link';
 import Image from 'next/image';
 import { Position } from '@xyflow/system';
-import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 
 import {
   BaseLayout,
-  ContentGrid,
-  ContentGridItem,
-  Text,
-  Heading,
-  Button,
-  Logo,
   Hero,
   ImageSlider,
   Handle,
   HeadlineNode,
-  Section,
+  ProjectCards,
+  AboutSection,
 } from 'xy-ui';
 
 import aboutImage from '../../public/img/about.jpg';
@@ -64,7 +57,7 @@ export default function XYFlowHome() {
     <BaseLayout>
       <Hero
         title={
-          <>
+          <div className="max-sm:text-[42px] max-md:leading-[1.8]">
             <HeadlineNode>
               Wire
               <Handle
@@ -110,7 +103,7 @@ export default function XYFlowHome() {
               />
               xyflow
             </HeadlineNode>
-          </>
+          </div>
         }
         subtitle="Powerful open source libraries for building node-based UIs with React or Svelte. Ready out-of-the-box and infinitely customizable"
         align="center"
@@ -118,78 +111,17 @@ export default function XYFlowHome() {
         showGradient
       />
 
-      <LibraryCards />
+      <ProjectCards projects={['reactflow', 'svelteflow']} />
 
-      <ImageSlider items={sliderItems} className="my-16 lg:my-24" />
+      <ImageSlider
+        buttonLink="https://reactflow.dev/showcase"
+        items={sliderItems}
+        className="my-16 lg:my-24"
+      />
 
-      <Section>
-        <Heading size="sm" as="h3" className="text-center mb-2">
-          About xyflow
-        </Heading>
-        <Text className="text-center max-w-lg mx-auto mb-6" variant="light">
-          We are Christopher, Hayleigh, John, and Moritz. We are the maintainers
-          of React Flow, Svelte Flow, and the communities around them
-        </Text>
+      <AboutSection imageSrc={aboutImage} />
 
-        <div className="flex justify-center space-x-8 mb-16">
-          <Button asChild variant="link">
-            <Link href="/blog" className="flex items-center">
-              Blog <ArrowRightCircleIcon className="w-4 h-4 ml-1" />
-            </Link>
-          </Button>
-          <Button asChild variant="link">
-            <Link href="/about" className="flex items-center">
-              About us <ArrowRightCircleIcon className="w-4 h-4 ml-1" />
-            </Link>
-          </Button>
-          <Button asChild variant="link">
-            <Link href="/open-source" className="flex items-center">
-              Open Source <ArrowRightCircleIcon className="w-4 h-4 ml-1" />
-            </Link>
-          </Button>
-          <Button asChild variant="link">
-            <Link href="/contact" className="flex items-center">
-              Contact Us <ArrowRightCircleIcon className="w-4 h-4 ml-1" />
-            </Link>
-          </Button>
-        </div>
-
-        <Image src={aboutImage} alt="xyflow team" />
-      </Section>
-
-      <LibraryCards />
+      <ProjectCards projects={['reactflow', 'svelteflow']} />
     </BaseLayout>
-  );
-}
-
-function LibraryCards() {
-  return (
-    <ContentGrid className="mt-16 lg:mt-24">
-      <ContentGridItem route="/react-flow">
-        <Heading size="sm" className="flex items-center">
-          <Logo className="mr-2 text-[#ff0071]" /> React Flow
-        </Heading>
-        <Text className="mt-2 mb-4" variant="light">
-          A customizable React component for building node-based editors and
-          interactive diagrams
-        </Text>
-        <span className="text-[#ff0071] flex items-center">
-          Read More <ArrowRightCircleIcon className="ml-1 w-4 h-4" />
-        </span>
-      </ContentGridItem>
-
-      <ContentGridItem route="/svelte-flow">
-        <Heading size="sm" className="flex items-center">
-          <Logo className="mr-2 text-[#ff4000]" /> Svelte Flow
-        </Heading>
-        <Text className="mt-2 mb-4" variant="light">
-          A customizable Svelte component for building node-based editors and
-          interactive diagrams
-        </Text>
-        <span className="text-[#ff4000] flex items-center">
-          Read More <ArrowRightCircleIcon className="ml-1 w-4 h-4" />
-        </span>
-      </ContentGridItem>
-    </ContentGrid>
   );
 }

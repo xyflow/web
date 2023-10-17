@@ -1,0 +1,58 @@
+name: Improve existing content
+description: Make a suggestion to improve the content on one of our sites
+labels:
+  - content
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for investing your time in contributing to our docs! Any
+        contribution you make will be reflected on our documentation sites at
+        https://reactflow.dev or https://svelteflow.dev ✨.
+
+        * For questions about our libraries, ask in [Discussions](https://github.com/wbkd/react-flow/discussions).
+        * Before you file an issue read the [Contributing guide](https://docs.github.com/en/contributing).
+        * Check to make sure someone hasn't already opened a similar [issue](https://github.com/github/docs/issues).
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: This project has a Code of Conduct that all participants are expected to understand and follow.
+      options:
+        - label: I have read and agree to the xyflow contributor [Code of Conduct](https://github.com/xyflow/web/blob/main/CODE_OF_CONDUCT.md)
+          required: true
+
+  - type: dropdown
+    attributes:
+      label: Which site are you suggesting a change for?
+      options:
+        - reactflow.dev
+        - svelteflow.dev
+        - xyflow.com
+      default: 0
+
+  - type: textarea
+    attributes:
+      label: What content is affected by this change?
+      description: Please link to the live content you'd like to see updated.
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: What part(s) of the article would you like to see updated?
+      description: |
+        - Give as much detail as you can to help us understand the change you want to see. 
+        - Why should the docs be changed? What use cases does it support?
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Additional information
+      description: |
+        - If you are reporting a problem, are you able to reliably reproduce the it?
+        - Add any other context or screenshots about the feature here.
+    validations:
+      required: false

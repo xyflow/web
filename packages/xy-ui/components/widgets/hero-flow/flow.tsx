@@ -183,7 +183,7 @@ function Flow({ initialColor = '#777', className }: FlowProps) {
   }, [viewportWidth]);
 
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-full bg-gradient bg-no-repeat bg-[center_120px] lg:bg-[65%_center] lg:bg-[length:35%]">
       <ReactFlow
         preventScrolling={false}
         zoomOnScroll={false}
@@ -191,10 +191,7 @@ function Flow({ initialColor = '#777', className }: FlowProps) {
         defaultNodes={defaultNodes}
         defaultEdges={defaultEdges}
         proOptions={proOptions}
-        className={cn(
-          'bg-no-repeat bg-[65%_center] bg-[length:35%]',
-          className,
-        )}
+        className={className}
         onInit={onInit}
         id="hero"
       >
