@@ -1,3 +1,4 @@
+export * from './components/layout/404';
 export * from './components/layout/base';
 export * from './components/layout/blog-post';
 export * from './components/layout/breakout';

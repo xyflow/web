@@ -1,10 +1,8 @@
 import React from 'react';
+import { NotFoundLayout } from 'xy-ui';
 
-type Props = {};
-
-// @todo style and customize 404 page
-function NotFound({}: Props) {
-  return <div>404 page not found</div>;
+function NotFound() {
+  return <NotFoundLayout />;
 }
 
 export default NotFound;
