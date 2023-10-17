@@ -35,6 +35,7 @@ export * from './components/ui/stats';
 export * from './components/ui/tabs';
 export * from './components/ui/text';
 
+export * from './components/widgets/about-section';
 export * from './components/widgets/authors-list';
 export * from './components/widgets/blog-post';
 export * from './components/widgets/code-viewer';
@@ -43,6 +44,7 @@ export * from './components/widgets/footer';
 export * from './components/widgets/features';
 export * from './components/widgets/getting-started';
 export * from './components/widgets/pricing-table';
+export * from './components/widgets/project-cards';
 export * from './components/widgets/project-preview';
 export * from './components/widgets/props-table';
 export * from './components/widgets/react-player-lazy';

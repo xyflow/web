@@ -51,7 +51,10 @@ type FooterProps = {
 
 // we can pass a baseurl that gets removed from the links in order to have site specific relative links
 export default function Footer({
-  message,
+  message = {
+    title: 'A project by the xyflow team',
+    text: 'We are building and maintaining open source software for node-based UIs since 2019.',
+  },
   internal,
   legal,
   imageSrc,
