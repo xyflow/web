@@ -11,6 +11,7 @@
     --primary-foreground: 210 40% 98%;
     --secondary-foreground: 15 100% 50%;
 
+    --accent: 15 100% 50%;
     --docsearch-primary-color: hsl(var(--primary));
   }
 }

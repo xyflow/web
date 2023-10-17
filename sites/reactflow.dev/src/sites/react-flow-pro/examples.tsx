@@ -44,7 +44,7 @@ export default function ProExamples() {
           <div className="flex gap-2 justify-center">
             <Button size="lg">Get Started</Button>
             <Button asChild size="lg" variant="pro">
-              <Link href="/react-flow/pro/pricing">Pricing</Link>
+              <Link href="/pro/pricing">Pricing</Link>
             </Button>
           </div>
         }

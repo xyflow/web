@@ -3,19 +3,56 @@ import { HeartIcon, BoltIcon } from '@heroicons/react/24/outline';
 import {
   BaseLayout,
   Button,
-  Heading,
+  AboutSection,
+  ImageSlider,
   HeroFlow,
   Section,
   Features,
   GettingStarted,
   Stats,
+  ProjectCards,
 } from 'xy-ui';
 
 import FlowA from './flows/flow-a';
 import FlowB from './flows/flow-b';
 import FlowC from './flows/flow-c';
 
-import SupportSection from '@/components/support-section';
+import IframePreview from '@/components/example-viewer/iframe-preview';
+
+import aboutImage from '../../../public/img/about.jpg';
+
+const sliderItems = [
+  {
+    name: 'Feature Overview',
+    text: 'Many features of Svelte Flow require zero configuration',
+    content: (
+      <IframePreview
+        className="rounded-xl overflow-hidden pointer-events-none"
+        path="examples/feature-overview"
+      />
+    ),
+  },
+  {
+    name: 'Subflows',
+    text: 'Svelte Flow supports nested graphs out of the box',
+    content: (
+      <IframePreview
+        className="rounded-xl overflow-hidden pointer-events-none"
+        path="examples/layout/subflows"
+      />
+    ),
+  },
+  {
+    name: 'Edge Types',
+    text: 'The component comes with a set of common edge types',
+    content: (
+      <IframePreview
+        className="rounded-xl overflow-hidden pointer-events-none"
+        path="examples/edges/edge-types"
+      />
+    ),
+  },
+];
 
 const features = [
   {
@@ -50,7 +87,7 @@ export default function SvelteFlowHome() {
       <HeroFlow
         title="Svelte Flow"
         initialColor="#ff4000"
-        subtitle="A customizable Svelte component for building node-based editors and interactive diagrams"
+        subtitle="A customizable Svelte component for building node-based editors and interactive diagrams by the creators of React Flow"
         action={
           <div className="flex">
             <Button asChild className="mr-3" size="lg">
@@ -88,16 +125,24 @@ export default function SvelteFlowHome() {
         />
       </Section>
 
-      <GettingStarted
-        libraryName="Svelte Flow"
-        packageName="@xyflow/svelte-flow"
-      />
+      <GettingStarted libraryName="Svelte Flow" packageName="@xyflow/svelte" />
 
       <Section>
         <Features features={features} />
       </Section>
 
-      <SupportSection />
+      <ImageSlider
+        kicker="Interactive Examples"
+        title="See Svelte Flow in action"
+        buttonText="See all examples"
+        buttonLink="/examples"
+        description="To see all the capabilities of Svelte Flow, check out the interactive examples which are regularly updated."
+        items={sliderItems}
+      />
+
+      <AboutSection imageSrc={aboutImage} />
+
+      <ProjectCards projects={['reactflow', 'xyflow']} />
     </BaseLayout>
   );
 }

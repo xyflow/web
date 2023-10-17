@@ -39,34 +39,39 @@ export default {
     },
   },
   footer: {
-    component: () => (
-      <Footer
-        message={{
-          title: '',
-          text: `Xyflow have been building and maintaining software for node-based UIs since 2019.`,
-        }}
-        internal={{
-          title: 'xyflow',
-          items: [
-            { title: 'About Us', route: '/about' },
-            { title: 'Open Source', route: '/open-source' },
-            { title: 'Blog', route: '/blog' },
-            { title: 'Contact Us', route: '/contact' },
-          ],
-        }}
-        legal={[
-          { title: 'Terms of Use', route: 'https://xyflow.com/terms-of-use' },
-          {
-            title: 'Ethical Standards',
-            route: 'https://xyflow.com/ethical-standards',
-          },
-          { title: 'Privacy Policy', route: 'https://xyflow.com/privacy' },
-          { title: 'Imprint', route: 'https://xyflow.com/imprint' },
-        ]}
-        imageSrc={aboutImage}
-        baseUrl="https://reactflow.dev"
-      />
-    ),
+    component: () => {
+      const router = useRouter();
+      const isHomePage = router.pathname === '/';
+
+      return (
+        <Footer
+          message={{
+            title: '',
+            text: 'xyflow is building and maintaining open source software for node-based UIs since 2019.',
+          }}
+          internal={{
+            title: 'xyflow',
+            items: [
+              { title: 'About Us', route: '/about' },
+              { title: 'Open Source', route: '/open-source' },
+              { title: 'Blog', route: '/blog' },
+              { title: 'Contact Us', route: '/contact' },
+            ],
+          }}
+          legal={[
+            { title: 'Terms of Use', route: 'https://xyflow.com/terms-of-use' },
+            {
+              title: 'Ethical Standards',
+              route: 'https://xyflow.com/ethical-standards',
+            },
+            { title: 'Privacy Policy', route: 'https://xyflow.com/privacy' },
+            { title: 'Imprint', route: 'https://xyflow.com/imprint' },
+          ]}
+          imageSrc={isHomePage ? undefined : aboutImage}
+          baseUrl="https://reactflow.dev"
+        />
+      );
+    },
   },
   search: {
     component: undefined,

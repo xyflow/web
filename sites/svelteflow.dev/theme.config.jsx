@@ -32,37 +32,38 @@ export default {
     },
   },
   footer: {
-    component: () => (
-      <Footer
-        message={{
-          title: 'Svelte Flow is a project by xyflow.',
-          text: `We've been building and maintaining software for node-based UIs since 2019.`,
-        }}
-        internal={{
-          title: 'Svelte Flow',
-          items: [
-            { title: 'Quickstart Guide', route: '/learn' },
-            { title: 'API Reference', route: '/api-reference' },
-            { title: 'Examples', route: '/examples' },
-            { title: 'Showcase', route: '/showcase' },
-            { title: 'Support Us', route: '/support-us' },
-          ],
-        }}
-        legal={[
-          {
-            title: 'MIT License',
-            route: 'https://github.com/wbkd/react-flow/blob/main/LICENSE',
-          },
-          {
-            title: 'Code of Conduct',
-            route:
-              'https://github.com/wbkd/react-flow/blob/main/CODE_OF_CONDUCT.md',
-          },
-        ]}
-        imageSrc={aboutImage}
-        baseUrl="https://svelteflow.dev"
-      />
-    ),
+    component: () => {
+      const router = useRouter();
+      const isHomePage = router.pathname === '/';
+
+      return (
+        <Footer
+          internal={{
+            title: 'Svelte Flow',
+            items: [
+              { title: 'Quickstart Guide', route: '/learn' },
+              { title: 'API Reference', route: '/api-reference' },
+              { title: 'Examples', route: '/examples' },
+              { title: 'Showcase', route: '/showcase' },
+              { title: 'Support Us', route: '/support-us' },
+            ],
+          }}
+          legal={[
+            {
+              title: 'MIT License',
+              route: 'https://github.com/wbkd/react-flow/blob/main/LICENSE',
+            },
+            {
+              title: 'Code of Conduct',
+              route:
+                'https://github.com/wbkd/react-flow/blob/main/CODE_OF_CONDUCT.md',
+            },
+          ]}
+          imageSrc={isHomePage ? undefined : aboutImage}
+          baseUrl="https://svelteflow.dev"
+        />
+      );
+    },
   },
   search: {
     component: Search,

@@ -1,21 +1,16 @@
-import Link from 'next/link';
 import Image from 'next/image';
 import { Position } from '@xyflow/system';
-import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 
 import {
   BaseLayout,
-  Text,
-  Heading,
-  Button,
   Hero,
   ImageSlider,
   Handle,
   HeadlineNode,
-  Section,
+  ProjectCards,
+  AboutSection,
 } from 'xy-ui';
 
-import LibraryCards from '@/components/library-cards';
 import aboutImage from '../../public/img/about.jpg';
 
 const sliderItems = [
@@ -116,7 +111,7 @@ export default function XYFlowHome() {
         showGradient
       />
 
-      <LibraryCards />
+      <ProjectCards projects={['reactflow', 'svelteflow']} />
 
       <ImageSlider
         buttonLink="https://reactflow.dev/showcase"
@@ -124,42 +119,9 @@ export default function XYFlowHome() {
         className="my-16 lg:my-24"
       />
 
-      <Section>
-        <Heading size="sm" as="h3" className="text-center mb-2">
-          About xyflow
-        </Heading>
-        <Text className="text-center max-w-lg mx-auto mb-6" variant="light">
-          We are Christopher, Hayleigh, John, and Moritz. We are the maintainers
-          of React Flow, Svelte Flow, and the communities around them
-        </Text>
+      <AboutSection imageSrc={aboutImage} />
 
-        <div className="flex justify-center space-x-8 mb-16">
-          <Button asChild variant="link">
-            <Link href="/blog" className="flex items-center">
-              Blog <ArrowRightCircleIcon className="w-4 h-4 ml-1" />
-            </Link>
-          </Button>
-          <Button asChild variant="link">
-            <Link href="/about" className="flex items-center">
-              About us <ArrowRightCircleIcon className="w-4 h-4 ml-1" />
-            </Link>
-          </Button>
-          <Button asChild variant="link">
-            <Link href="/open-source" className="flex items-center">
-              Open Source <ArrowRightCircleIcon className="w-4 h-4 ml-1" />
-            </Link>
-          </Button>
-          <Button asChild variant="link">
-            <Link href="/contact" className="flex items-center">
-              Contact Us <ArrowRightCircleIcon className="w-4 h-4 ml-1" />
-            </Link>
-          </Button>
-        </div>
-
-        <Image src={aboutImage} alt="xyflow team" />
-      </Section>
-
-      <LibraryCards />
+      <ProjectCards projects={['reactflow', 'svelteflow']} />
     </BaseLayout>
   );
 }
