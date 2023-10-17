@@ -36,9 +36,13 @@ pnpm install
 Now you can start the app that you want to work on with one of these commands:
 
 ```sh
-pnpm run dev:docs # runs the website + docs app on localhost:3001
+pnpm run dev:xyflow.com # runs the xyflow website on localhost:3001
 
-pnpm run dev:platform # runs the pro platform on localhost:3000
+pnpm run dev:reactflow.dev # runs the React Flow website and docs on localhost:3002
+
+pnpm run dev:svelteflow.dev # runs the Svelte Flow website and docs on localhost:3003
+
+pnpm run dev:pro.xyflow.com # runs the React Flow Pro website on localhost:3000
 
 pnpm run dev:style # runs a storybook for inspecting our ui components on localhost:6006
 ```
