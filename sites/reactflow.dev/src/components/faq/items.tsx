@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 
 const PinkLink = (props) => (
-  <Link className="text-pink-600" {...props} />
+  <Link className="text-primary" {...props} />
   // make some hover-color change
 );
 
@@ -11,19 +11,12 @@ export default [
     question: <>Is React Flow Pro a different library than React Flow?</>,
     answer: (
       <>
-        React Flow Pro is not an additional library, it is a paid subscription
-        around the React Flow open-source library that gives you access to
-        exclusive services like Pro examples, individual support from the React
-        Flow team or prioritized bug reports.
-      </>
-    ),
-  },
-  {
-    question: <>Can we try out React Flow before purchasing it?</>,
-    answer: (
-      <>
-        Yes, you can start using React Flow and all of the features of the
-        library without paying anything.
+        "React Flow Pro" is not an additional library, but instead a paid
+        service built around the open-source{' '}
+        <PinkLink href="https://github.com/wbkd/react-flow">
+          React Flow library
+        </PinkLink>
+        .
       </>
     ),
   },
@@ -57,7 +50,7 @@ export default [
     question: (
       <>Is the subscription cost per project, per user, or per organization?</>
     ),
-    answer: <>One subscription is enough for one organization</>,
+    answer: <>One subscription is enough for one organization.</>,
   },
   {
     question: (

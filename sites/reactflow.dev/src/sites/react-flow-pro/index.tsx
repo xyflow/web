@@ -95,7 +95,7 @@ export default function ReactFlowPro() {
         items={sliderItems}
       />
 
-      <FAQ className="mt-20" />
+      <FAQ className="mt-32" />
       <SubscribeSection />
     </BaseLayout>
   );
