@@ -58,5 +58,11 @@
     "theme": {
       "layout": "raw"
     }
+  },
+  "404": {
+    "title": "404",
+    "theme": {
+      "layout": "raw"
+    }
   }
 }

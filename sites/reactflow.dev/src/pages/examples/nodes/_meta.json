@@ -13,5 +13,9 @@
   "intersections": "Intersections",
   "shapes": "Shapes",
   "connection-limit": "Connection Limit",
-  "delete-middle-node": "Delete Middle Node"
+  "delete-middle-node": "Delete Middle Node",
+  "resize-rotate-moveable-deprecated": {
+    "title": "Resize and Rotate (moveable.js)",
+    "display": "hidden"
+  }
 }
