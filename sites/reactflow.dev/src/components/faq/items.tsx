@@ -114,8 +114,8 @@ export default [
         After unsubscribing, you will no longer be able to access the Pro
         Example code through our website. You will still be able to use React
         Flow as usual and continue receiving updates to the library. You can
-        continue using the Pro Example code in your projects, even if you're no
-        longer a subscriber.
+        continue using the Pro Example code in your projects, even if
+        you&apos;re no longer a subscriber.
       </>
     ),
   },
@@ -143,7 +143,7 @@ export default [
     question: <>I still have questions about subscribing.</>,
     answer: (
       <>
-        We’re happy to answer any questions you have.{' '}
+        We&apos;re happy to answer any questions you have.{' '}
         <PinkLink href="/contact">Contact us</PinkLink>, we check our email
         regularly and usually reply in a day or two.
       </>
