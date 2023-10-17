@@ -1,18 +1,42 @@
 <script lang="ts">
-  export let id: number;
-  export let top: number;
-  export let left: number;
-  export let right: number;
-  export let bottom: number;
+  import { useEdges, useNodes } from '@xyflow/svelte';
 
-  function duplicateNode() {}
+  export let onClick: () => void;
+  export let id: string;
+  export let top: number | undefined;
+  export let left: number | undefined;
+  export let right: number | undefined;
+  export let bottom: number | undefined;
 
-  function deleteNode() {}
+  const nodes = useNodes();
+  const edges = useEdges();
+
+  function duplicateNode() {
+    const node = $nodes.find((node) => node.id === id);
+    if (node) {
+      $nodes.push({
+        ...node,
+        // You should use a better id than this in production
+        id: `${id}-copy${Math.random()}`,
+        position: {
+          x: node.position.x,
+          y: node.position.y + 50
+        }
+      });
+    }
+    $nodes = $nodes;
+  }
+
+  function deleteNode() {
+    $nodes = $nodes.filter((node) => node.id !== id);
+    $edges = $edges.filter((edge) => edge.source !== id && edge.target !== id);
+  }
 </script>
 
 <div
   style={`top: ${top}px; left: ${left}px; right: ${right}px; bottom: ${bottom}px;`}
   class="context-menu"
+  on:click={onClick}
 >
   <p style="margin: 0.5em;">
     <small>node: {id}</small>
