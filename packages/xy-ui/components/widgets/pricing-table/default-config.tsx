@@ -1,3 +1,5 @@
+import { Link } from '../../ui/link';
+
 import {
   BillingInterval,
   Currency,
@@ -9,21 +11,18 @@ import {
 const features: Record<string, FeatureConfig> = {
   proExamples: {
     label: (
-      <>
+      <span>
         Access to all{' '}
-        <a
-          className="text-primary hover:underline "
-          href="/react-flow/pro/examples"
-        >
+        <Link variant="primary" href="/pro/examples">
           Pro Examples
-        </a>
-      </>
+        </Link>
+      </span>
     ),
     description:
       'A continuously growing collection of advanced React Flow examples. During your subscription you can access the source code of all Pro examples.',
     button: {
       label: 'Pro Examples',
-      href: '/examples',
+      href: '/pro/examples',
     },
   },
   prioritizedIssues: {
@@ -145,21 +144,18 @@ export const EnterprisePlan: SubscriptionPlan = {
   features: [
     {
       label: (
-        <>
+        <span>
           Perpetual access to all{' '}
-          <a
-            className="text-primary hover:underline"
-            href="/react-flow/pro/examples"
-          >
+          <Link variant="primary" href="/pro/examples">
             Pro Examples
-          </a>
-        </>
+          </Link>
+        </span>
       ),
       description:
         'A continuously growing collection of advanced React Flow examples. During your subscription you can access the source code of all Pro examples.',
       button: {
         label: 'Pro Examples',
-        href: '/examples',
+        href: '/pro/examples',
       },
     },
     features.prioritizedIssues,
