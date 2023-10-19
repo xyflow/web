@@ -1,7 +1,7 @@
 {
   "index": "API Reference",
-  "svelte-flow": "<SvelteFlow />",
-  "svelte-flow-provider": "<SvelteFlowProvider />",
+  "SvelteFlow": "<SvelteFlow />",
+  "SvelteFlowProvider": "<SvelteFlowProvider />",
   "components": "Components",
   "hooks": "Hooks",
   "types": "Types"
