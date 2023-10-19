@@ -16,12 +16,12 @@ up with the graph `a->c`.
 
 To achieve this, we need to make use of a few bits:
 
-- The [`onNodesDelete`](/docs/api/react-flow-props/#onnodesdelete) callback lets
+- The [`onNodesDelete`](/api-reference/react-flow-props/#event-onnodesdelete) callback lets
   us know when a node is deleted.
-- [`getConnectedEdges`](/docs/api/graph-util-functions/#getconnectededges) gives us
+- [`getConnectedEdges`](/api-reference/utils/getConnectedEdges) gives us
   all the edges connected to a node, either as source or target.
-- [`getIncomers`](/docs/api/graph-util-functions/#getincomers) and
-  [`getOutgoers`](/docs/api/graph-util-functions/#getoutgoers) give us the nodes
+- [`getIncomers`](/api-reference/utils/getIncomers) and
+  [`getOutgoers`](/api-reference/utils/getOutgoers) give us the nodes
   connected to a node as source or target.
 
 This comes together to allow us to take all the nodes connected to the deleted
@@ -55,8 +55,11 @@ don't need to do this
 ## Quick Reference
 
 <Cards num={2}>
-  <Card title="getConnectedEdges" href="/reference/utils/getConnectedEdges" />
-  <Card title="getIncomers" href="/reference/utils/getIncomers" />
+  <Card
+    title="getConnectedEdges"
+    href="/api-reference/utils/getConnectedEdges"
+  />
+  <Card title="getIncomers" href="/api-reference/utils/getIncomers" />
   <Card
     title="Array.prototype.flatMap"
     href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flatMap"

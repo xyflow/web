@@ -44,7 +44,7 @@ export default {
           src="/img/svelte-logo.svg"
           className="mr-1"
         />
-        <div>React Flow is now available for Svelte!</div>
+        <div>We've just launched Svelte Flow!</div>
       </a>
     ),
   },

@@ -23,6 +23,7 @@ type FeatureProps = {
   route: string;
   index: number;
   featureCount: number;
+  linkLabel?: string;
   flowComponent?: React.ComponentType;
 };
 
@@ -33,6 +34,7 @@ function Feature({
   text,
   route,
   flowComponent: FlowComponent = () => null,
+  linkLabel = 'Read more',
 }: FeatureProps) {
   const sourceHandleId = `source-${index}`;
   const nextTargetHandleId = `target-${index + 1}`;
@@ -61,7 +63,7 @@ function Feature({
             {text}
           </Text>
           <Button asChild>
-            <Link href={route}>Read more</Link>
+            <Link href={route}>{linkLabel}</Link>
           </Button>
         </div>
       </div>

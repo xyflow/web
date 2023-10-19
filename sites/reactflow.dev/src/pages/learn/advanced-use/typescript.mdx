@@ -50,15 +50,15 @@ function Flow() {
 
   const onNodesChange: OnNodesChange = useCallback(
     (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
-    [setNodes]
+    [setNodes],
   );
   const onEdgesChange: OnEdgesChange = useCallback(
     (changes) => setEdges((eds) => applyEdgeChanges(changes, eds)),
-    [setEdges]
+    [setEdges],
   );
   const onConnect: OnConnect = useCallback(
     (connection) => setEdges((eds) => addEdge(connection, eds)),
-    [setEdges]
+    [setEdges],
   );
 
   return (
@@ -79,7 +79,7 @@ function Flow() {
 
 ## Custom Nodes
 
-When you are working with [custom nodes](/docs/api/nodes/custom-nodes) you can define the data type by passing a parameter:
+When you are working with [custom nodes](/learn/customization/custom-nodes) you can define the data type by passing a parameter:
 
 ```ts
 import { Node, NodeProps } from 'reactflow';

@@ -17,7 +17,7 @@ Hey! We wanted to share an update about what we’ve been up to before we wrap o
 
 ## Pan, zoom, and select like your favorite design tools with the v11.4.0 minor release 💫
 
-In the [latest minor release](https://github.com/wbkd/react-flow/releases/tag/11.4.0), you can finally configure the controls so that they behave like Figma, Miro or Sketch. This includes click-dragging to make a selection, [pan by holding the spacebar, and scrolling to zoom](https://reactflow.dev/docs/guides/panning-and-zooming/). You can also configure if a node is selected if it is fully inside/partially inside the selection area.
+In the [latest minor release](https://github.com/wbkd/react-flow/releases/tag/11.4.0), you can finally configure the controls so that they behave like Figma, Miro or Sketch. This includes click-dragging to make a selection, [pan by holding the spacebar, and scrolling to zoom](https://reactflow.dev/learn/concepts/the-viewport). You can also configure if a node is selected if it is fully inside/partially inside the selection area.
 
 <Image
   src="/img/blog/winter-2022/designy-behavior.gif"
@@ -28,7 +28,7 @@ In the [latest minor release](https://github.com/wbkd/react-flow/releases/tag/11
 
 ## New helper components: beyond nodes and edges
 
-As we’ve done research on apps that use React Flow, we’ve noticed a lot of folks are custom-building a lot of similar elements (or using third-party libraries) on top of React Flow. To help with this, we’ve started to build helper components including [Edge labels](https://reactflow.dev/docs/api/edges/edge-label-renderer/), [node resizing](https://reactflow.dev/docs/api/nodes/node-resizer/), [toolbars and tooltips](https://reactflow.dev/docs/api/nodes/node-toolbar/). We’re doing this work carefully, to make sure we’re not compromising the low-level simplicity of the core library, while making sure React Flow includes all components that are needed for building a node-based app.
+As we’ve done research on apps that use React Flow, we’ve noticed a lot of folks are custom-building a lot of similar elements (or using third-party libraries) on top of React Flow. To help with this, we’ve started to build helper components including [Edge labels](https://reactflow.dev/api-reference/components/EdgeLabelRenderer), [node resizing](https://reactflow.dev/api-reference/components/NodeResizer), [toolbars and tooltips](https://reactflow.dev/api-reference/components/NodeToolbar). We’re doing this work carefully, to make sure we’re not compromising the low-level simplicity of the core library, while making sure React Flow includes all components that are needed for building a node-based app.
 
 <Image
   src="/img/blog/winter-2022/3components.gif"
@@ -41,7 +41,7 @@ We hope to continue on this path, this will mean talking to some of you all (yay
 
 ## More new examples!
 
-**[Intersections](https://reactflow.dev/docs/examples/nodes/intersections/)**: This example uses the new [intersection helpers](https://reactflow.dev/docs/api/react-flow-instance/#isnodeintersecting) to detect if a node intersects with another node.
+**[Intersections](https://reactflow.dev/examples/nodes/intersections/)**: This example uses the new [intersection helpers](https://reactflow.dev/api-reference/types/ReactFlowInstance/#isnodeintersecting) to detect if a node intersects with another node.
 
 <Image
   src="/img/blog/winter-2022/intersection.gif"
@@ -50,13 +50,13 @@ We hope to continue on this path, this will mean talking to some of you all (yay
   height={354}
 />
 
-**[Resize and Rotate](https://reactflow.dev/docs/examples/nodes/resize-rotate/):** This was a Pro example, but we decided to make the source code available to everyone in our public docs to avoid trouble people were having with third-party resizing libraries. We also refactored the code to use the new [resizer component](https://reactflow.dev/docs/api/nodes/node-resizer/).
+**[Resize and Rotate](https://reactflow.dev/examples/nodes/resize-rotate):** This was a Pro example, but we decided to make the source code available to everyone in our public docs to avoid trouble people were having with third-party resizing libraries. We also refactored the code to use the new [resizer component](https://reactflow.dev/api-reference/components/NodeResizer).
 
-**[Dynamic Grouping](https://reactflow.dev/docs/examples/nodes/dynamic-grouping/)** (Pro Example 💎): Grouping nodes made easy! Make new groups or add a node to an existing group by dragging a node from a drawer or using a “group nodes” button.
+**[Dynamic Grouping](https://reactflow.dev/examples/nodes/dynamic-grouping)** (Pro Example 💎): Grouping nodes made easy! Make new groups or add a node to an existing group by dragging a node from a drawer or using a “group nodes” button.
 
 ## In other news: npm blunder, a growing list of UIs, a lightning talk
 
-**We shared our mistakes** of [how we lost our slick new npm package name (and then got it back)](https://reactflow.dev/blog/reactflow-npm-package-name/).
+**We shared our mistakes** of [how we lost our slick new npm package name (and then got it back)](blog/reactflow-npm-package-name/).
 
 **A lot of people liked our list of [Awesome Node Based UIs](https://github.com/wbkd/awesome-node-based-uis)** with resources, libraries, and good-looking apps. Within a month of publishing it we already have more than 120 entries, 22 contributors and 1k Github stars!! So cool. And this [comment](https://news.ycombinator.com/item?id=33641786) on Hackernews was too good not to share <Emoji content="😊" />.
 

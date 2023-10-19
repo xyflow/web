@@ -51,7 +51,7 @@ export default function ReactFlowPro() {
             <span className="text-primary">React Flow</span>
           </>
         }
-        subtitle="Thanks for checking out React Flow Pro! We are Christopher, Hayleigh, John, and Moritz, and we are the team building and maintaining React Flow"
+        subtitle="Thanks for checking out React Flow Pro! We are Christopher, Hayleigh, John, Moritz, and Peter, and we are the team building and maintaining React Flow"
         kicker="React Flow Pro"
         action={
           <Button asChild size="lg" variant="pro">
@@ -95,7 +95,7 @@ export default function ReactFlowPro() {
         items={sliderItems}
       />
 
-      <FAQ className="mt-20" />
+      <FAQ className="mt-32" />
       <SubscribeSection />
     </BaseLayout>
   );

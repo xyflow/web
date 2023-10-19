@@ -27,6 +27,7 @@ const features = [
     title: 'Ready out-of-the-box',
     text: 'The things you need are already there: dragging nodes, zooming, panning, selecting multiple nodes, and adding/removing elements are all built-in.',
     route: '/learn',
+    linkLabel: 'Get started',
     flowComponent: FlowA,
   },
   {
@@ -38,13 +39,14 @@ const features = [
       </>
     ),
     text: 'React Flow nodes are simply React components, ready for your interactive elements. We play nice with Tailwind and plain old CSS.',
-    route: '/learn',
+    route: '/learn/customization/custom-nodes',
+    linkLabel: 'Custom nodes guide',
     flowComponent: FlowB,
   },
   {
     title: 'All the right plugins',
     text: 'Make more advanced apps with the Background, Minimap, Controls, Panel, NodeToolbar, and NodeResizer components.',
-    route: '/learn',
+    route: '/learn/concepts/plugin-components',
     flowComponent: FlowC,
   },
 ];
