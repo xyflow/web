@@ -35,7 +35,7 @@
   "dependencies": {
     "@dagrejs/dagre": "^1.0.4",
     "@types/dagre": "^0.7.48",
-    "@xyflow/svelte": "0.0.23",
+    "@xyflow/svelte": "0.0.24",
     "@xyflow/system": "^0.0.8",
     "elkjs": "^0.8.2",
     "html-to-image": "^1.11.11",

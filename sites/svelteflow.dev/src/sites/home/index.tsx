@@ -108,7 +108,10 @@ export default function SvelteFlowHome() {
       <Section className="mt-6 lg:mt-10">
         <Stats
           stats={[
-            { label: 'Current Version', value: '0.0.23' },
+            {
+              label: 'Current Version',
+              value: process.env.NEXT_PUBLIC_SVELTE_FLOW_VERSION,
+            },
             {
               label: 'Weekly Installs',
               value: 423,
