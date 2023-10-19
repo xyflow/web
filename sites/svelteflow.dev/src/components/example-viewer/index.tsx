@@ -96,7 +96,7 @@ export default function SvelteExample({
       framework="svelte"
       readOnly
       activeFile={activeFile}
-      customPreview={<IframePreview path={codePath} />}
+      customPreview={<IframePreview path={codePath} className="example" />}
       customOpenButton={
         <Button
           onClick={openInStackblitz}
