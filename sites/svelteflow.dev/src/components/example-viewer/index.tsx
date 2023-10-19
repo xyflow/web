@@ -2,25 +2,28 @@ import { useEffect, useState } from 'react';
 import sdk from '@stackblitz/sdk';
 
 import { Button, CodeViewer } from 'xy-ui';
-import SvelteSetup from './setup';
+import setup from './setup';
 import IframePreview from './iframe-preview';
 
 type SvelteExampleProps = {
   codePath: string;
   activeFile?: string;
   editorHeight: number | string;
+  dependencies?: { [key: string]: string };
 };
 
 export default function SvelteExample({
   codePath,
   editorHeight,
   activeFile,
+  dependencies = {},
   ...rest
 }: SvelteExampleProps) {
   const [files, setFiles] = useState<{ [key: string]: string }>(null);
   const [fileFetchFailed, setFileFetchFailed] = useState(false);
 
   function openInStackblitz() {
+    const svelteSetup = setup({ dependencies });
     // rename files to land in folder src/example/ on stackblitz
     const stackblitzFiles = Object.entries(files).reduce(
       (filesAcc: { [key: string]: string }, [fileName, file]) => {
@@ -36,7 +39,7 @@ export default function SvelteExample({
       {
         title: 'Svelte Example',
         files: {
-          ...SvelteSetup,
+          ...svelteSetup,
           ...stackblitzFiles,
         },
         template: 'node',
