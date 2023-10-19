@@ -3,6 +3,7 @@
   import type { Edge, Node } from '@xyflow/svelte';
   import { writable } from 'svelte/store';
 
+  import './tailwind.css';
   import '@xyflow/svelte/dist/style.css';
 
   import { initialNodes, initialEdges } from './nodes-and-edges';
