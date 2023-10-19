@@ -22,7 +22,7 @@ Update reactflow and @reactflow/node-resizer (in case you are using it), remove 
 
 #### Solution for B
 
-A possible solution is to wrap your component with a [`<ReactFlowProvider />`](/docs/api/react-flow-provider) or move the code that is accessing the state inside a child of your React Flow instance.
+A possible solution is to wrap your component with a [`<ReactFlowProvider />`](/api-reference/ReactFlowProvider) or move the code that is accessing the state inside a child of your React Flow instance.
 
 <Callout type="error">This will cause an error:</Callout>
 
@@ -355,15 +355,15 @@ function Flow(props) {
 
 ### The old edge with id="some-id" does not exist.
 
-This can happen when you are trying to [update an edge](/docs/examples/edges/updatable-edge) but the edge you want to update is already removed from the state. This is a very rare case. Please see the [Updatable Edge example](/docs/examples/edges/updatable-edge) for implementation details.
+This can happen when you are trying to [update an edge](/examples/edges/updatable-edge) but the edge you want to update is already removed from the state. This is a very rare case. Please see the [Updatable Edge example](/examples/edges/updatable-edge) for implementation details.
 
 ### Couldn't create edge for source/target handle id: "some-id"; edge id: "some-id".
 
-This can happen if you are working with multiple handles and a handle is not found by its `id` property. Please see the [Custom Node Example](/docs/examples/nodes/custom-node) for an example of working with multiple handles.
+This can happen if you are working with multiple handles and a handle is not found by its `id` property. Please see the [Custom Node Example](/examples/nodes/custom-node) for an example of working with multiple handles.
 
 ### Marker type doesn't exist.
 
-This warning occurs when you are trying to specify a marker type that is not built into React Flow. The existing marker types are documented [here](/docs/api/edges/edge-options/#edgemarker).
+This warning occurs when you are trying to specify a marker type that is not built into React Flow. The existing marker types are documented [here](/api-reference/types/Edge/#edgemarker).
 
 ### Handle: No node id found.
 

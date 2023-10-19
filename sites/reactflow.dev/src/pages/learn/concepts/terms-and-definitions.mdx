@@ -13,7 +13,7 @@ In this part of the docs we are explaining some basic React Flow terms and defin
 
 <NodesFlow />
 
-A node in React Flow is a React component. That means it can render anything you like. Each node has an x- and y-coordinate, which tells it where it is placed in the viewport. By default, a node looks like in the example above. You can find all the options for customizing your nodes in the [Node options](/docs/api/nodes/node-options/) documentation.
+A node in React Flow is a React component. That means it can render anything you like. Each node has an x- and y-coordinate, which tells it where it is placed in the viewport. By default, a node looks like in the example above. You can find all the options for customizing your nodes in the [Node options](/api-reference/types/Node) documentation.
 
 ### Custom Nodes
 
@@ -23,7 +23,7 @@ This is where the magic of React Flow happens. You can customize nodes to look a
 - Visualize data
 - Support multiple handles
 
-Please refer to the [custom node docs](/docs/guides/custom-nodes/) for further information.
+Please refer to the [custom node docs](/learn/customization/custom-nodes/) for further information.
 
 ## Handles
 
@@ -31,7 +31,7 @@ import HandlesFlow from '@/components/example-viewer/basic-terms/handles';
 
 <HandlesFlow />{' '}
 
-A handle (also called “port” in other libraries) is the place where an edge attaches to a node. The handle can be placed anywhere, and styled as you like. It’s just a div element. By default, it appears as a grey circle on the top, bottom, left, or right of the node. When creating a custom node, you can have as many handles as you need in your node. More information can be found in the [handle docs](/docs/api/nodes/handle/).
+A handle (also called “port” in other libraries) is the place where an edge attaches to a node. The handle can be placed anywhere, and styled as you like. It’s just a div element. By default, it appears as a grey circle on the top, bottom, left, or right of the node. When creating a custom node, you can have as many handles as you need in your node. More information can be found in the [handle docs](/api-reference/components/Handle).
 
 ## Edges
 
@@ -39,7 +39,7 @@ import EdgesFlow from '@/components/example-viewer/basic-terms/edges';
 
 <EdgesFlow />
 
-An edge connects two nodes. Every edge needs a target and a source node. React Flow comes with four built-in [edges types](/docs/examples/edges/edge-types/): default (bezier), smoothstep, step and straight. An edge is SVG path that can be styled with CSS and is completely customizable. If you are using multiple handles, you can reference them individually to create multiple connections for a node.
+An edge connects two nodes. Every edge needs a target and a source node. React Flow comes with four built-in [edges types](/examples/edges/edge-types/): default (bezier), smoothstep, step and straight. An edge is SVG path that can be styled with CSS and is completely customizable. If you are using multiple handles, you can reference them individually to create multiple connections for a node.
 
 ### Custom Edges
 
@@ -49,11 +49,11 @@ Like custom nodes, you can also customize edges. Things that people do with cust
 - Custom routing behaviour
 - Complex styling or interactions that cannot be solved with just one SVG path
 
-You can find more information on the [custom edges api](/docs/api/edges/custom-edges/) site.
+You can find more information on the [custom edges api](/api-reference/types/EdgeProps) site.
 
 ## Connection Line
 
-React Flow has built-in functionality to click-and-drag from one handle to another in order to create a new edge. While dragging, the placeholder edge is called a connection line. The connection line also comes with four types built-in and is customizable. You can find the props for configuring the connection line in the [props section](/docs/api/react-flow-props/#connection-line).
+React Flow has built-in functionality to click-and-drag from one handle to another in order to create a new edge. While dragging, the placeholder edge is called a connection line. The connection line also comes with four types built-in and is customizable. You can find the props for configuring the connection line in the [props section](/api-reference/ReactFlow/#connection-line).
 
 ## Viewport
 

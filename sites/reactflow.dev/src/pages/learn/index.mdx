@@ -185,9 +185,9 @@ Graphs created with React Flow are fully interactive. We can move nodes around,
 connect them together, delete them, ... To get the basic functionality we need
 to add three things:
 
-- A callback for what to do when [**nodes change**](/docs/api/react-flow-props/#onnodeschange).
-- A callback for what to do when [**edges change**](/docs/api/react-flow-props/#onedgeschange).
-- A callback for what to do when nodes are [**connected**](/docs/api/react-flow-props/#onconnect).
+- A callback for what to do when [nodes change](/api-reference/ReactFlow/#onNodeschange).
+- A callback for what to do when [edges change](/api-reference/ReactFlow/#onEdgesChange).
+- A callback for what to do when nodes are [connected](/api-reference/ReactFlow/#onConnect).
 
 Fortunately for you, we provide some hooks to make this easy!
 
@@ -229,8 +229,8 @@ export default function App() {
 ## Some extra goodies
 
 Finally, React Flow ships with some plugins out of the box for things like a
-[`<Minimap />`](/docs/api/plugin-components/minimap) or viewport
-[`<Controls />`](/docs/api/plugin-components/controls).
+[`<Minimap />`](/api-reference/components/MiniMap) or viewport
+[`<Controls />`](/api-reference/components/Controls).
 
 ```jsx
 import React, { useCallback } from 'react';
@@ -290,10 +290,10 @@ Check out the links below on where to head next.
 ## Next Steps
 
 <Cards>
-  <Card title="Concepts" href="/docs/concepts/introduction" />
-  <Card title="Customisation" href="/docs/guides/custom-nodes" />
-  <Card title="Examples" href="/docs/examples/overview" />
-  <Card title="API Reference" href="/docs/api" />
+  <Card title="Concepts" href="/learn/concepts/introduction" />
+  <Card title="Customisation" href="/learn/customization/custom-nodes" />
+  <Card title="Examples" href="/examples/overview" />
+  <Card title="API Reference" href="/api-reference" />
   <Card title="Discord" href="https://discord.gg/RVmnytFmGW" />
   <Card
     title="Template Projects"
