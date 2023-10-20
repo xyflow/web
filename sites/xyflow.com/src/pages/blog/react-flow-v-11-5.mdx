@@ -16,7 +16,7 @@ Hello again! I am super excited to share the latest improvements of React Flow. 
 
 ## Auto pan
 
-After working a bit with Blender geometry nodes I knew that I wanted to add this feature. Whenever you drag a node, a selection box or a connection line to the border of the pane, it automatically pans into that direction. This enables the users to connect nodes without having to scroll around and organize nodes more easily. If you don't like it, you can disable this new feature with [`autoPanOnConnect={false}`](/api-reference/ReactFlow#autopanonconnect-1) and [`autoPanOnNodeDrag={false}`](https://reactflow.dev/api-reference/ReactFlow/#autopanonnodedrag-1).
+After working a bit with Blender geometry nodes I knew that I wanted to add this feature. Whenever you drag a node, a selection box or a connection line to the border of the pane, it automatically pans into that direction. This enables the users to connect nodes without having to scroll around and organize nodes more easily. If you don't like it, you can disable this new feature with [`autoPanOnConnect={false}`](https://reactflow.dev/api-reference/react-flow#autopanonconnect-1) and [`autoPanOnNodeDrag={false}`](https://reactflow.dev/api-reference/react-flow/#autopanonnodedrag-1).
 
 <Bleed>
   <Image
@@ -30,7 +30,7 @@ After working a bit with Blender geometry nodes I knew that I wanted to add this
 
 ## Connection radius
 
-There are [several](https://reactflow.dev/examples/nodes/easy-connect/) [ways](https://reactflow.dev/examples/nodes/proximity-connect/) to connect nodes. The built-in way is to drag a connection line from one handle to another. To make this easier we added the [`connectionRadius` prop](https://reactflow.dev/api-reference/ReactFlow/#connectionradius-1). The connection radius specifies the radius around a handle where you can drop the connection line. There is no need to drop it directly above a handle any more <Emoji content="🙌" />.
+There are [several](https://reactflow.dev/examples/nodes/easy-connect/) [ways](https://reactflow.dev/examples/nodes/proximity-connect/) to connect nodes. The built-in way is to drag a connection line from one handle to another. To make this easier we added the [`connectionRadius` prop](https://reactflow.dev/api-reference/react-flow/#connectionradius-1). The connection radius specifies the radius around a handle where you can drop the connection line. There is no need to drop it directly above a handle any more <Emoji content="🙌" />.
 
 <Bleed>
   <Image
@@ -44,7 +44,7 @@ There are [several](https://reactflow.dev/examples/nodes/easy-connect/) [ways](h
 
 ## Error handling
 
-We added a new [`onError`](https://reactflow.dev/api-reference/ReactFlow/#onerror-1) handler that you can use to get notified when an error happens. This can be useful if you want to log errors or show a notification to the user.
+We added a new [`onError`](https://reactflow.dev/api-reference/react-flow/#onerror-1) handler that you can use to get notified when an error happens. This can be useful if you want to log errors or show a notification to the user.
 
 ## Touch support
 
@@ -62,7 +62,7 @@ This allows you to create more specific node types that are aware of their `data
 
 # <Emoji content="👉" /> Node Resizer 2.0 <Emoji content="👈" />
 
-We also released a new major version of the [`@reactflow/node-resizer` package](https://reactflow.dev/api-reference/components/NodeResizer). You can now pass a `shouldResize` handler that allows you to cancel a resize event. In addition we added a `direction` attribute to the resize params for `onResize` and `shouldResize`.
+We also released a new major version of the [`@reactflow/node-resizer` package](https://reactflow.dev/api-reference/components/node-resizer). You can now pass a `shouldResize` handler that allows you to cancel a resize event. In addition we added a `direction` attribute to the resize params for `onResize` and `shouldResize`.
 
 ## That's it!
 

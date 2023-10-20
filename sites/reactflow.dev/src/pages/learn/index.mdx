@@ -185,9 +185,9 @@ Graphs created with React Flow are fully interactive. We can move nodes around,
 connect them together, delete them, ... To get the basic functionality we need
 to add three things:
 
-- A callback for what to do when [nodes change](/api-reference/ReactFlow/#onNodeschange).
-- A callback for what to do when [edges change](/api-reference/ReactFlow/#onEdgesChange).
-- A callback for what to do when nodes are [connected](/api-reference/ReactFlow/#onConnect).
+- A callback for what to do when [nodes change](/api-reference/react-flow/#on-nodes-change).
+- A callback for what to do when [edges change](/api-reference/react-flow/#on-edges-change).
+- A callback for what to do when nodes are [connected](/api-reference/react-flow/#on-connect).
 
 Fortunately for you, we provide some hooks to make this easy!
 
@@ -229,8 +229,8 @@ export default function App() {
 ## Some extra goodies
 
 Finally, React Flow ships with some plugins out of the box for things like a
-[`<Minimap />`](/api-reference/components/MiniMap) or viewport
-[`<Controls />`](/api-reference/components/Controls).
+[`<Minimap />`](/api-reference/components/minimap) or viewport
+[`<Controls />`](/api-reference/components/controls).
 
 ```jsx
 import React, { useCallback } from 'react';

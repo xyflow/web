@@ -2,7 +2,7 @@
   "custom-nodes": "Custom Nodes",
   "node-props": {
     "title": "Custom Node Props",
-    "href": "/api-reference/types/NodeProps"
+    "href": "/api-reference/types/node-props"
   },
   "theming": "Theming"
 }
