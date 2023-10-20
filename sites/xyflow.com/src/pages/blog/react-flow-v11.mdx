@@ -59,7 +59,7 @@ Moreover we added default aria-labels to all elements on the pane and made them 
 
 ### Edge Routing and Edge Selection
 
-Whereas in v10, the nodes were a bit more in the spotlight, this time we've put a special focus on the edges. A lot of people complained that thin edges are hard to select. We've fixed that by introducing a new [`interactionWidth` edge option](/docs/api/edges/edge-options/#options). Its default value is 20, meaning that a 20px wide invisible edge gets painted below the visible edge for an easier interaction.
+Whereas in v10, the nodes were a bit more in the spotlight, this time we've put a special focus on the edges. A lot of people complained that thin edges are hard to select. We've fixed that by introducing a new [`interactionWidth` edge option](/api-reference/types/Edge). Its default value is 20, meaning that a 20px wide invisible edge gets painted below the visible edge for an easier interaction.
 
 Another big update is a complete rewrite of the edge routing for `smoothstep` and `step` edge types.
 
@@ -73,21 +73,21 @@ Another big update is a complete rewrite of the edge routing for `smoothstep` an
   />
 </Bleed>
 
-That's not all. We also revised the edge [update behaviour](https://twitter.com/reactflowdev/status/1564966917517021184), added [`pathOptions`](/docs/api/edges/edge-options/#options) for `default` and `smoothstep` edges and a new `deletable` flag. For making it easier to develop custom edges we are exporting a [`<BaseEdge />` component](/docs/api/edges/base-edge/) that can draw the invisible helper edge and the label for you.
+That's not all. We also revised the edge [update behaviour](https://twitter.com/reactflowdev/status/1564966917517021184), added [`pathOptions`](https://reactflow.dev/api-reference/types/Edge) for `default` and `smoothstep` edges and a new `deletable` flag. For making it easier to develop custom edges we are exporting a [`<BaseEdge />` component](https://reactflow.dev/api-reference/components/BaseEdge) that can draw the invisible helper edge and the label for you.
 
 ### Node Positioning
 
-To make layouting easier, we've added a new prop called [`nodeOrigin`](/docs/api/react-flow-props/). The origin was always in the top left, meaning that you need to subtract half the width and height to center a node. Now you can set `nodeOrigin={[0.5, 0.5]}` to set the origin to the center or `nodeOrigin={[1, 1]}` to set it to the bottom right.
+To make layouting easier, we've added a new prop called [`nodeOrigin`](https://reactflow.dev/api-reference/ReactFlow). The origin was always in the top left, meaning that you need to subtract half the width and height to center a node. Now you can set `nodeOrigin={[0.5, 0.5]}` to set the origin to the center or `nodeOrigin={[1, 1]}` to set it to the bottom right.
 
-Furthermore we've implemented a [`useNodesInitialized` hook](/docs/api/hooks/use-nodes-initialized). It returns a boolean that can be used to determine if all nodes are initialized and a new layout should be done, for example. Another small change is that you can pan over a node when it's not draggable which makes it easier to navigate bigger flows.
+Furthermore we've implemented a [`useNodesInitialized` hook](https://reactflow.dev/api-reference/hooks/useNodesInitialized). It returns a boolean that can be used to determine if all nodes are initialized and a new layout should be done, for example. Another small change is that you can pan over a node when it's not draggable which makes it easier to navigate bigger flows.
 
 ### New Hooks
 
-In the future we want to get rid of some `<ReactFlow />` component props (there are 140+ <Emoji content="😵‍💫" />). One idea is to replace some props through hooks. With this release we are adding the [`useOnViewportChange`](/docs/api/hooks/use-on-viewport-change) and the [`useOnSelectionChange`](/docs/api/hooks/use-on-selection-change) hook. Before this release you could only listen to a viewport change by using `onMoveStart`, `onMove` and `onMoveEnd`. With the new `useOnViewportChange` hook, you can easily listen to changes in every component.
+In the future we want to get rid of some `<ReactFlow />` component props (there are 140+ <Emoji content="😵‍💫" />). One idea is to replace some props through hooks. With this release we are adding the [`useOnViewportChange`](https://reactflow.dev/api-reference/hooks/useOnViewportChange) and the [`useOnSelectionChange`](https://reactflow.dev/api-reference/hooks/useOnSelectionChange) hook. Before this release you could only listen to a viewport change by using `onMoveStart`, `onMove` and `onMoveEnd`. With the new `useOnViewportChange` hook, you can easily listen to changes in every component.
 
 ### Miscellaneous
 
-The background got a [new variant `cross`](/docs/api/plugin-components/background/#prop-types), and you can control the gap size horizontally and vertically individually for all variants. We've added new handlers that make it easier to add mouse event handlers to the pane (the area below the nodes): [`onPaneMouseEnter`, `onPaneMouseMove` and `onPaneMouseLeave`](/docs/api/react-flow-props/#pane). Last but not least the cursor is a grabbing hand while dragging the pane or a node and you pan over nodes when they are not draggable. Strange that this wasn't always the case?!
+The background got a [new variant `cross`](https://reactflow.dev/api-reference/components/Background/#prop-types), and you can control the gap size horizontally and vertically individually for all variants. We've added new handlers that make it easier to add mouse event handlers to the pane (the area below the nodes): [`onPaneMouseEnter`, `onPaneMouseMove` and `onPaneMouseLeave`](/api-reference/ReactFlow/#pane). Last but not least the cursor is a grabbing hand while dragging the pane or a node and you pan over nodes when they are not draggable. Strange that this wasn't always the case?!
 
 ## What's Next?
 

@@ -4,18 +4,14 @@ import { useSSG } from 'nextra/ssg';
 import {
   BaseLayout,
   Button,
-  Heading,
-  Text,
-  ContentGrid,
-  ContentGridItem,
   HeroFlow,
   ImageSlider,
-  ProjectPreview,
   Section,
   Features,
   GettingStarted,
   Stats,
-  StatsDisplay,
+  AboutSection,
+  ProjectCards,
 } from 'xy-ui';
 import { SparklesIcon, BoltIcon } from '@heroicons/react/24/outline';
 import ClientLogos from '@/components/client-logos';
@@ -24,11 +20,14 @@ import FlowA from './flows/flow-a';
 import FlowB from './flows/flow-b';
 import FlowC from './flows/flow-c';
 
+import aboutImage from '../../../public/img/about.jpg';
+
 const features = [
   {
     title: 'Ready out-of-the-box',
     text: 'The things you need are already there: dragging nodes, zooming, panning, selecting multiple nodes, and adding/removing elements are all built-in.',
     route: '/learn',
+    linkLabel: 'Get started',
     flowComponent: FlowA,
   },
   {
@@ -40,13 +39,14 @@ const features = [
       </>
     ),
     text: 'React Flow nodes are simply React components, ready for your interactive elements. We play nice with Tailwind and plain old CSS.',
-    route: '/learn',
+    route: '/learn/customization/custom-nodes',
+    linkLabel: 'Custom nodes guide',
     flowComponent: FlowB,
   },
   {
     title: 'All the right plugins',
     text: 'Make more advanced apps with the Background, Minimap, Controls, Panel, NodeToolbar, and NodeResizer components.',
-    route: '/learn',
+    route: '/learn/concepts/plugin-components',
     flowComponent: FlowC,
   },
 ];
@@ -136,10 +136,7 @@ export default function ReactFlowHome() {
         />
       </Section>
 
-      <GettingStarted
-        libraryName="React Flow"
-        packageName="@xyflow/react-flow"
-      />
+      <GettingStarted libraryName="React Flow" packageName="@xyflow/react" />
 
       <Section>
         <Features features={features} />
@@ -151,59 +148,9 @@ export default function ReactFlowHome() {
 
       <ImageSlider items={sliderItems} />
 
-      <Section>
-        <Heading
-          size="md"
-          className="text-center font-bold mt-32 mb-12 max-w-lg mx-auto "
-        >
-          Get started with your first React Flow project
-        </Heading>
-        <ContentGrid className="grid-cols-1 lg:grid-cols-2">
-          <ContentGridItem route="/learn">
-            <ProjectPreview
-              image="/img/getting-started-thumb.png"
-              title="Getting started guide"
-              description="Build an interactive flow and learn the foundations of React Flow in a few minutes"
-            />
-          </ContentGridItem>
-          <ContentGridItem route="/tutorials">
-            <ProjectPreview
-              image="/img/tutorials/webaudio/web-audio-blog-thumb.png"
-              title="In-depth tutorials"
-              description="React Flow's tutorials provide step-by-step instructions for building MVP apps like mind maps and audio playgrounds."
-            />
-          </ContentGridItem>
-        </ContentGrid>
-      </Section>
+      <AboutSection imageSrc={aboutImage} />
 
-      <Section className="lg:flex place-content-between">
-        <div>
-          <Heading size="md" className="font-bold">
-            Questions?
-          </Heading>
-          <Text className="mt-2 mb-4">Contact Us</Text>
-          <Button asChild>
-            <Link href="/contact">Contact Us</Link>
-          </Button>
-        </div>
-        <div className="grid grid-cols-2 mt-10 lg:mt-0">
-          {[
-            { label: 'Github Stars', value: `${(stars / 1000).toFixed(1)}k` },
-            {
-              label: 'Weekly Installs',
-              value: `${(downloads / 1000).toFixed(0)}k`,
-            },
-            { label: 'License', value: 'MIT' },
-            { label: 'License', value: 'MITs' },
-          ].map((s) => (
-            <StatsDisplay
-              key={`${s.label}-${s.value}`}
-              className="mb-6 lg:ml-20"
-              {...s}
-            />
-          ))}
-        </div>
-      </Section>
+      <ProjectCards projects={['svelteflow', 'xyflow']} />
     </BaseLayout>
   );
 }

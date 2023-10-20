@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useConfig, Navbar } from 'nextra-theme-docs';
 import { Footer, Button, LogoLabel, Search } from 'xy-ui';
@@ -30,6 +31,22 @@ export default {
   },
   sidebar: {
     titleComponent: SidebarTitle,
+  },
+  banner: {
+    text: (
+      <a
+        className="flex justify-center items-center"
+        href="https://svelteflow.dev"
+      >
+        <Image
+          width={15}
+          height={25}
+          src="/img/svelte-logo.svg"
+          className="mr-1"
+        />
+        <div>We've just launched Svelte Flow!</div>
+      </a>
+    ),
   },
   navbar: {
     component: (props) => {
@@ -73,37 +90,38 @@ export default {
     },
   },
   footer: {
-    component: () => (
-      <Footer
-        message={{
-          title: 'React Flow is a project by xyflow.',
-          text: `We've been building and maintaining software for node-based UIs since 2019.`,
-        }}
-        internal={{
-          title: 'React Flow',
-          items: [
-            { title: 'Quickstart Guide', route: '/learn' },
-            { title: 'API Reference', route: '/api-reference' },
-            { title: 'Examples', route: '/examples' },
-            { title: 'Showcase', route: '/showcase' },
-            { title: 'Support Us', route: '/support-us' },
-          ],
-        }}
-        legal={[
-          {
-            title: 'MIT License',
-            route: 'https://github.com/wbkd/react-flow/blob/main/LICENSE',
-          },
-          {
-            title: 'Code of Conduct',
-            route:
-              'https://github.com/wbkd/react-flow/blob/main/CODE_OF_CONDUCT.md',
-          },
-        ]}
-        imageSrc={aboutImage}
-        baseUrl="https://reactflow.dev"
-      />
-    ),
+    component: () => {
+      const router = useRouter();
+      const isHomePage = router.pathname === '/';
+
+      return (
+        <Footer
+          internal={{
+            title: 'React Flow',
+            items: [
+              { title: 'Quickstart Guide', route: '/learn' },
+              { title: 'API Reference', route: '/api-reference' },
+              { title: 'Examples', route: '/examples' },
+              { title: 'Showcase', route: '/showcase' },
+              { title: 'Support Us', route: '/support-us' },
+            ],
+          }}
+          legal={[
+            {
+              title: 'MIT License',
+              route: 'https://github.com/wbkd/react-flow/blob/main/LICENSE',
+            },
+            {
+              title: 'Code of Conduct',
+              route:
+                'https://github.com/wbkd/react-flow/blob/main/CODE_OF_CONDUCT.md',
+            },
+          ]}
+          imageSrc={isHomePage ? undefined : aboutImage}
+          baseUrl="https://reactflow.dev"
+        />
+      );
+    },
   },
   search: {
     component: (props) => {

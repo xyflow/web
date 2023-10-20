@@ -293,7 +293,7 @@ export default function App() {
 ```
 
 We'll expand and add on to this component over time. For now, we've added one of
-React Flow's plugins - [`<Background />`](/docs/api/plugin-components/background/) -
+React Flow's plugins - [`<Background />`](/api-reference/components/Background) -
 to check if everything is setup correctly. Go ahead and run `npm run dev` (or
 whatever you need to do to spin up a dev server if you didn't choose vite) and
 check out your browser. You should see an empty flow:
@@ -358,8 +358,8 @@ that's it for zustand.
 
 The `changes` argument in both `onNodesChange` and `onEdgesChange` represents
 events like a node or edge being moved or deleted. Fortunately, React Flow provides
-some [helper](/docs/api/graph-util-functions/#applynodechanges)
-[functions](/docs/api/graph-util-functions/#applyedgechanges) to apply those changes
+some [helper](/api-reference/utils/applyNodeChanges)
+[functions](/api-reference/utils/applyEdgeChanges) to apply those changes
 for us. We just need to update the store with the new array of nodes.
 
 `addEdge` will be called whenever two nodes get connected. The `data` argument is
@@ -670,8 +670,8 @@ see that your custom node doesn't look like the one in the preview above. To kee
 things easy to digest, we've left out styling in the code snippets.
 
 To learn how to style your custom nodes, check out our docs on
-[theming](https://reactflow.dev/docs/guides/theming/) or our example using
-[Tailwind](https://reactflow.dev/docs/examples/styling/tailwind/).
+[theming](/learn/customization/theming) or our example using
+[Tailwind](/examples/styling/tailwind/).
 
 </Callout>
 

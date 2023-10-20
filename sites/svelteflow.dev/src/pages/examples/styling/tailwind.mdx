@@ -1,0 +1,19 @@
+---
+title: Tailwind
+description: In this example we are using tailwind for styling the flow.
+---
+
+import ExampleViewer from '@/components/example-viewer';
+import ExampleLayout from '@/layouts/example-with-frontmatter';
+
+<ExampleLayout>
+In this example we are using [tailwind](https://tailwindcss.com/) for styling the flow.
+
+<ExampleViewer
+  codePath="examples/styling/tailwind"
+  sandpackOptions={{
+    externalResources: ['https://cdn.tailwindcss.com'],
+  }}
+  framework="svelte"
+/>
+</ExampleLayout>

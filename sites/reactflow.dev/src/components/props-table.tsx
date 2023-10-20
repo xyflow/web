@@ -1,7 +1,7 @@
 import { PropsTable, type PropsTableProps } from 'xy-ui';
 import React, { useMemo } from 'react';
 
-import * as reactFlowTypes from '@/pages/reference/types/_meta.json';
+import * as reactFlowTypes from '@/pages/api-reference/types/_meta.json';
 
 export const reactFlowLinks = Object.fromEntries(
   Object.keys(reactFlowTypes).map((t) =>
@@ -12,7 +12,7 @@ export const reactFlowLinks = Object.fromEntries(
           // `Position.Left`. Splitting on the period and taking the first part will
           // always give us the type name.
           t.split('.')[0],
-          `/reference/types/${t}`,
+          `/api-reference/types/${t}`,
         ],
   ),
 );

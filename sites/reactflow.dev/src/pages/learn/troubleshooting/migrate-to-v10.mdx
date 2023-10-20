@@ -9,21 +9,21 @@ Welcome to React Flow v10! With the major version update, there are coming many 
 
 ## New Features
 
-- [**Sub Flows**](/docs/guides/sub-flows): You can now add nodes to a parent node and create groups and nested flows
+- [**Sub Flows**](/learn/layouting/sub-flows): You can now add nodes to a parent node and create groups and nested flows
 - **Node Type 'group'**: A new node type without handles that can be used as a group node
 - **Touch Device Support**: It is now possible to connect nodes on touch devices
 - **Fit View on Init**: You can use the new `fitView` prop to fit the initial view
 - **Key Handling**: Not only single keys but also multiple keys and key combinations are possible now
-- [**useKeyPress hook**](/docs/api/hooks/use-key-press): A util hook for handling keyboard events
-- [**useReactFlow hook**](/docs/api/hooks/use-react-flow): Returns a React Flow instance that exposes functions to manipulate the flow
-- **[useNodes](/docs/api/hooks/use-nodes), [useEdges](/docs/api/hooks/use-edges) and [useViewport](/docs/api/hooks/use-viewport) hooks**: Hooks for receiving nodes, edges and the viewport
+- [**useKeyPress hook**](/api-reference/hooks/useKeyPress): A util hook for handling keyboard events
+- [**useReactFlow hook**](/api-reference/hooks/useReactFlow): Returns a React Flow instance that exposes functions to manipulate the flow
+- **[useNodes](/api-reference/hooks/use-nodes), [useEdges](/api-reference/hooks/useEdges) and [useViewport](/api-reference/hooks/useViewport) hooks**: Hooks for receiving nodes, edges and the viewport
 - **Edge Marker**: More options to configure the start and end markers of an edge
 
 ## Breaking Changes
 
 TLDR:
 
-- Split the `elements` array into `nodes` and `edges` arrays and implement `onNodesChange` and `onEdgesChange` handlers (detailed guide in the [core concepts section](/docs/concepts/core-concepts))
+- Split the `elements` array into `nodes` and `edges` arrays and implement `onNodesChange` and `onEdgesChange` handlers (detailed guide in the [core concepts section](/learn/concepts/core-concepts))
 - Memoize your custom `nodeTypes` and `edgeTypes`
 - Rename `onLoad` to `onInit`
 - Rename `paneMoveable` to `panOnDrag`
@@ -57,10 +57,10 @@ const BasicFlow = () => {
   const onElementsRemove = useCallback(
     (elementsToRemove) =>
       setElements((els) => removeElements(elementsToRemove, els)),
-    []
+    [],
   );
   const onConnect = useCallback((connection) =>
-    setElements((es) => addEdge(connection, es))
+    setElements((es) => addEdge(connection, es)),
   );
 
   return (
@@ -98,14 +98,14 @@ const BasicFlow = () => {
 
   const onNodesChange = useCallback(
     (changes) => setNodes((ns) => applyNodeChanges(changes, ns)),
-    []
+    [],
   );
   const onEdgesChange = useCallback(
     (changes) => setEdges((es) => applyEdgeChanges(changes, es)),
-    []
+    [],
   );
   const onConnect = useCallback((connection) =>
-    setEdges((eds) => addEdge(connection, eds))
+    setEdges((eds) => addEdge(connection, eds)),
   );
 
   return (
@@ -157,7 +157,7 @@ const BasicFlow = () => {
 export default BasicFlow;
 ```
 
-If you want to add, remove or update a node or edge you can only do this by using the [ReactFlow instance](/docs/api/react-flow-instance/) that you can receive either with the new `useReactFlow` hook or by using the `onInit` handler that gets the instance as a function param.
+If you want to add, remove or update a node or edge you can only do this by using the [ReactFlow instance](/api-reference/react-flow-instance/) that you can receive either with the new `useReactFlow` hook or by using the `onInit` handler that gets the instance as a function param.
 
 ### 2. Memoize your custom `nodeTypes` and `edgeTypes`
 
@@ -199,7 +199,7 @@ function Flow() {
 
 ### 3. ~~Redux~~ - Zustand
 
-We switched our state management library from Redux to [Zustand](https://github.com/pmndrs/zustand). With this change we could remove about 300LOC from our state related code. If you need to access the internal store, you can use the [`useStore` hook](/docs/api/hooks/use-store):
+We switched our state management library from Redux to [Zustand](https://github.com/pmndrs/zustand). With this change we could remove about 300LOC from our state related code. If you need to access the internal store, you can use the [`useStore` hook](/api-reference/hooks/use-store):
 
 #### Old API
 
@@ -286,7 +286,7 @@ This is more consistent with the rest of the API (`panOnScroll`, `zoomOnScroll`,
 
 ### 6. ~~useZoomPanHelper transform~~ - unified in `useReactFlow`
 
-As "transform" is also the variable name of the transform in the store and it's not clear that `transform` is a setter we renamed it to `setViewport`. This is also more consistent with the other functions. Also, all `useZoomPanHelper` functions have been moved to the [React Flow instance](/docs/api/react-flow-instance) that you get from the [`useReactFlow` hook](/docs/api/hooks/use-react-flow) or the `onInit` handler.
+As "transform" is also the variable name of the transform in the store and it's not clear that `transform` is a setter we renamed it to `setViewport`. This is also more consistent with the other functions. Also, all `useZoomPanHelper` functions have been moved to the [React Flow instance](/api-reference/react-flow-instance) that you get from the [`useReactFlow` hook](/api-reference/hooks/use-react-flow) or the `onInit` handler.
 
 #### Old API
 

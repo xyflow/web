@@ -159,7 +159,9 @@ function LogoLabel({
   return (
     <Link href="/" className="flex space-x-2 items-center">
       <Logo className={cn('h-9 w-9', logoClassName)} />
-      <Text className={cn('font-black text-xl', labelClassName)}>{label}</Text>
+      <Text className={cn('font-black text-xl leading-none', labelClassName)}>
+        {label}
+      </Text>
     </Link>
   );
 }

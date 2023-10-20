@@ -30,6 +30,3 @@
     <Background variant={BackgroundVariant.Lines} />
   </SvelteFlow>
 </div>
-
-<style>
-</style>

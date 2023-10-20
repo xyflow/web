@@ -1,10 +1,10 @@
 {
-  "background": "<Background />",
-  "base-edge": "<BaseEdge />",
-  "control-button": "<ControlButton />",
-  "controls": "<Controls />",
-  "edge-label-renderer": "<EdgeLabelRenderer />",
-  "handle": "<Handle />",
-  "minimap": "<MiniMap />",
-  "panel": "<Panel />"
+  "Background": "<Background />",
+  "BaseEdge": "<BaseEdge />",
+  "ControlButton": "<ControlButton />",
+  "Controls": "<Controls />",
+  "EdgeLabelRenderer": "<EdgeLabelRenderer />",
+  "Handle": "<Handle />",
+  "MiniMap": "<MiniMap />",
+  "Panel": "<Panel />"
 }
