@@ -1,7 +1,7 @@
 {
   "index": "API Reference",
-  "ReactFlow": "<ReactFlow />",
-  "ReactFlowProvider": "<ReactFlowProvider />",
+  "react-flow": "<ReactFlow />",
+  "react-flow-provider": "<ReactFlowProvider />",
   "components": "Components",
   "hooks": "Hooks",
   "types": "Types",
