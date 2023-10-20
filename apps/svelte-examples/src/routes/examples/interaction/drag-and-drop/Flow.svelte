@@ -7,7 +7,7 @@
     BackgroundVariant,
     MiniMap,
     useSvelteFlow,
-    type Node,
+    type Node
   } from '@xyflow/svelte';
   import Sidebar from './Sidebar.svelte';
 
@@ -18,20 +18,20 @@
       id: '1',
       type: 'input',
       data: { label: 'Input Node' },
-      position: { x: 150, y: 5 },
+      position: { x: 150, y: 5 }
     },
     {
       id: '2',
       type: 'default',
-      data: { label: 'Node' },
-      position: { x: 0, y: 150 },
+      data: { label: 'Default Node' },
+      position: { x: 0, y: 150 }
     },
     {
       id: '3',
       type: 'output',
       data: { label: 'Output Node' },
-      position: { x: 300, y: 150 },
-    },
+      position: { x: 300, y: 150 }
+    }
   ]);
 
   const edges = writable([
@@ -39,19 +39,17 @@
       id: '1-2',
       type: 'default',
       source: '1',
-      target: '2',
-      label: 'Edge Text',
+      target: '2'
     },
     {
       id: '1-3',
       type: 'smoothstep',
       source: '1',
-      target: '3',
-    },
+      target: '3'
+    }
   ]);
 
-  const svelteFlow = useSvelteFlow();
-
+  const { screenToFlowCoordinate } = useSvelteFlow();
   const onDragOver = (event: DragEvent) => {
     event.preventDefault();
 
@@ -68,18 +66,22 @@
     }
 
     const type = event.dataTransfer.getData('application/svelteflow');
-    const position = svelteFlow.project({
+
+    const position = screenToFlowCoordinate({
       x: event.clientX,
-      y: event.clientY - 40,
+      y: event.clientY
     });
-    const newNode: Node = {
+
+    const newNode = {
       id: `${Math.random()}`,
       type,
       position,
       data: { label: `${type} node` },
-    };
+      origin: [0.5, 0.0]
+    } satisfies Node;
 
-    svelteFlow.nodes.update((nds) => nds.concat(newNode));
+    $nodes.push(newNode);
+    $nodes = $nodes;
   };
 </script>
 
@@ -96,5 +98,6 @@
   main {
     height: 100vh;
     display: flex;
+    flex-direction: column-reverse;
   }
 </style>
