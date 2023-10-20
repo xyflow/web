@@ -66,7 +66,7 @@ export default {
     },
   },
   search: {
-    component: () => null,
+    component: Search,
   },
   feedback: {
     useLink: () => 'https://xyflow.com/contact',
