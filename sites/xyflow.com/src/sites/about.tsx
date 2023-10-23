@@ -117,7 +117,7 @@ export default function About() {
         />
         <TeamCard
           name="Peter"
-          description="We're not sure who Peter is yet, we'll let you know as soon as we find out."
+          description="Peter has been directing a mockumentary of the xyflow team a la The Office since he broke into our building during the summer of 2023. Luckily for our team, the footage will never be released since he never asked us to sign a talent waiver, and none of us have the heart to tell him. Once he&apos;s done editing the footage (he keeps saying &apos;one more week&apos;), we&apos;re hoping he&apos;ll make some contributions to the Svelte Flow library and docs."
           links={[{ linkName: 'Github', route: 'github.com/peterkogo' }]}
         />
       </ContentGrid>
