@@ -1,8 +1,7 @@
 <svelte:options immutable />
 
 <script lang="ts">
-  import type { EdgeProps, Node } from '@xyflow/svelte';
-  import { getStraightPath, useNodes } from '@xyflow/svelte';
+  import { getStraightPath, useNodes, type EdgeProps, type Node } from '@xyflow/svelte';
   import { getEdgeParams } from './utils';
 
   type $$Props = EdgeProps;

@@ -1,6 +1,6 @@
 <script>
-  import { SvelteFlow, Background, Controls, MiniMap } from '@xyflow/svelte';
   import { writable } from 'svelte/store';
+  import { SvelteFlow, Background, Controls, MiniMap } from '@xyflow/svelte';
   import { createNodesAndEdges } from './utils';
 
   import '@xyflow/svelte/dist/style.css';
