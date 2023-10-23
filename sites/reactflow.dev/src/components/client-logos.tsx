@@ -23,18 +23,17 @@ export default function ClientLogos({
       <Text variant="light" className="mb-8">
         {title}
       </Text>
-      <div className="grid grid-cols-4 gap-12 place-items-center">
-        {/* <div className="flex items-center space-x-12 mt-4"> */}
+      <div className="grid md:grid-cols-4 grid-cols-2 md:gap-12 gap-8 place-items-center">
         <Image src={benchling} alt="benchling" className="h-7 w-auto" />
         <Image src={stripe} alt="stripe" className="h-7 w-auto" />
         <Image
           src={cartoworkflows}
           alt="carto workflows"
-          className="h-7 w-auto"
+          className="h-9 w-auto"
         />
         <Image src={intuit} alt="intuit" className="h-7 w-auto" />
-        <Image src={railway} alt="railway" className="h-7 w-auto" />
-        <Image src={retool} alt="retool" className="h-7 w-auto" />
+        <Image src={railway} alt="railway" className="h-9 w-auto" />
+        <Image src={retool} alt="retool" className="h-6 w-auto" />
         <Image src={doubleloop} alt="doubleloop" className="h-7 w-auto" />
         <Image src={onesignal} alt="onesignal" className="h-7 w-auto" />
       </div>
