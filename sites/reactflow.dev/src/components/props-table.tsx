@@ -1,21 +1,14 @@
 import { PropsTable, type PropsTableProps } from 'xy-ui';
 import React, { useMemo } from 'react';
 
-import * as reactFlowTypes from '@/pages/api-reference/types/_meta.json';
+import reactFlowTypes from '@/pages/api-reference/types/_meta.json';
 
-export const reactFlowLinks = Object.fromEntries(
-  Object.keys(reactFlowTypes).map((t) =>
-    t === 'default'
-      ? []
-      : [
-          // We want to link to the type when our docs refer to a namedspaced value like
-          // `Position.Left`. Splitting on the period and taking the first part will
-          // always give us the type name.
-          t.split('.')[0],
-          `/api-reference/types/${t}`,
-        ],
-  ),
-);
+export const reactFlowLinks = Object.entries(reactFlowTypes).reduce<
+  Record<string, string>
+>((curr, [slug, name]) => {
+  curr[name] = `/api-reference/types/${slug}`;
+  return curr;
+}, {});
 
 const externalReactLinks = {
   ComponentType:

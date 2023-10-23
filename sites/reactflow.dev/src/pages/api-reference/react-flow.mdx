@@ -4,10 +4,15 @@ import {
   commonProps,
   viewportProps,
   edgeProps,
-  eventHandlerProps,
   interactionProps,
   connectionLineProps,
   keyboardProps,
+  generalEventHandlerProps,
+  nodeEventHandlerProps,
+  edgeEventHandlerProps,
+  connectionEventHandlerProps,
+  paneEventHandlerProps,
+  selectionEventHandlerProps,
 } from '@/page-data/reference/ReactFlow.props.ts';
 
 # &lt;ReactFlow />
@@ -58,7 +63,29 @@ almost all of these!
   React Flow to enter an infinite re-render loop!
 </Callout>
 
-<PropsTable {...eventHandlerProps} />
+### General Events
+
+<PropsTable {...generalEventHandlerProps} />
+
+### Node Events
+
+<PropsTable {...nodeEventHandlerProps} />
+
+### Edge Events
+
+<PropsTable {...edgeEventHandlerProps} />
+
+### Connection Events
+
+<PropsTable {...connectionEventHandlerProps} />
+
+### Pane Events
+
+<PropsTable {...paneEventHandlerProps} />
+
+### Selection Events
+
+<PropsTable {...selectionEventHandlerProps} />
 
 ## Interaction props
 
