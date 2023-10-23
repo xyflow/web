@@ -2,13 +2,14 @@ import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 import Link from 'next/link';
 import Image, { type StaticImageData } from 'next/image';
 
-import { Section, Heading, Text, Button } from '../../../.';
+import { Section, Heading, Text, Button, cn } from '../../../.';
 
 type AboutSectionProps = {
   imageSrc?: string | StaticImageData;
+  colorizeImage?: boolean;
 };
 
-function AboutSection({ imageSrc }: AboutSectionProps) {
+function AboutSection({ imageSrc, colorizeImage = true }: AboutSectionProps) {
   return (
     <Section>
       <Heading size="sm" className="text-center mb-2">
@@ -46,11 +47,17 @@ function AboutSection({ imageSrc }: AboutSectionProps) {
       </div>
 
       {imageSrc && (
-        <Image
-          className="rounded-3xl overflow-hidden"
-          src={imageSrc}
-          alt="photo of the xyflow team"
-        />
+        <div
+          className={cn('rounded-3xl overflow-hidden', {
+            'bg-primary/40': colorizeImage,
+          })}
+        >
+          <Image
+            className="grayscale mix-blend-multiply"
+            src={imageSrc}
+            alt="photo of the xyflow team"
+          />
+        </div>
       )}
     </Section>
   );

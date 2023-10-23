@@ -119,7 +119,7 @@ export default function XYFlowHome() {
         className="my-16 lg:my-24"
       />
 
-      <AboutSection imageSrc={aboutImage} />
+      <AboutSection colorizeImage={false} imageSrc={aboutImage} />
 
       <ProjectCards projects={['reactflow', 'svelteflow']} />
     </BaseLayout>
