@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useSSG } from 'nextra/ssg';
 import { HeartIcon, BoltIcon } from '@heroicons/react/24/outline';
 import {
   BaseLayout,
@@ -84,6 +85,8 @@ const features = [
 ];
 
 export default function SvelteFlowHome() {
+  const { downloads = 450 } = useSSG();
+
   return (
     <BaseLayout>
       <HeroFlow
@@ -116,7 +119,10 @@ export default function SvelteFlowHome() {
             },
             {
               label: 'Weekly Installs',
-              value: 423,
+              value:
+                downloads >= 1000
+                  ? `${(downloads / 1000).toFixed(0)}k`
+                  : downloads,
             },
             { label: 'License', value: 'MIT' },
           ]}
