@@ -117,7 +117,7 @@ export default {
                 'https://github.com/wbkd/react-flow/blob/main/CODE_OF_CONDUCT.md',
             },
           ]}
-          imageSrc={isHomePage ? undefined : aboutImage}
+          // imageSrc={isHomePage ? undefined : aboutImage}
           baseUrl="https://reactflow.dev"
         />
       );

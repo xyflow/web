@@ -148,7 +148,7 @@ export default function ReactFlowHome() {
 
       <ImageSlider items={sliderItems} />
 
-      <AboutSection imageSrc={aboutImage} />
+      <AboutSection />
 
       <ProjectCards projects={['svelteflow', 'xyflow']} />
     </BaseLayout>
