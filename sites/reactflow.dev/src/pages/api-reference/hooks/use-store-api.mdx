@@ -11,7 +11,8 @@ In some cases, you might need to access the store directly. This hook returns th
 <Callout type="info">
   This hook should only be used if there is no other way to access the internal
   state. For many of the common use cases, there are dedicated hooks available
-  such as [`useReactFlow`](./useReactFlow), [`useViewport`](./useViewport), etc.
+  such as [`useReactFlow`](./use-react-flow), [`useViewport`](./use-react-flow),
+  etc.
 </Callout>
 
 ```tsx
@@ -47,7 +48,7 @@ function Flow() {
 ```
 
 This example computes the number of nodes in the flow _on-demand_. This is in
-contrast to the example in the [`useStore`](./useStore) hook that re-renders
+contrast to the example in the [`useStore`](./use-store) hook that re-renders
 the component whenever the number of nodes changes.
 
 Choosing whether to calculate values on-demand or to subscribe to changes as they
@@ -56,7 +57,7 @@ calculations in an event handler can make your app feel sluggish or unresponsive
 On the other hand, computing values eagerly can lead to slow or unnecessary
 re-renders.
 
-We make both this hook and [`useStore`](./useStore) available so that you can
+We make both this hook and [`useStore`](./use-store) available so that you can
 choose the approach that works best for your use-case.
 
 ## Signature
