@@ -67,7 +67,7 @@ export default {
             { title: 'Privacy Policy', route: 'https://xyflow.com/privacy' },
             { title: 'Imprint', route: 'https://xyflow.com/imprint' },
           ]}
-          imageSrc={isHomePage ? undefined : aboutImage}
+          // imageSrc={isHomePage ? undefined : aboutImage}
           baseUrl="https://reactflow.dev"
         />
       );

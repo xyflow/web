@@ -1,0 +1,65 @@
+import { Callout } from 'nextra/components';
+import { PropsTable } from '@/components/props-table';
+import { signature } from '@/page-data/reference/hooks/useStoreApi.ts';
+
+# useStoreApi
+
+[Source on GitHub](https://github.com/wbkd/react-flow/blob/f919cb152dd5a92ec3b4d7e4568ffe099bc2af39/packages/react/src/hooks/useStore.ts#L26)
+
+In some cases, you might need to access the store directly. This hook returns the store object which can be used on demand to access the state or dispatch actions.
+
+<Callout type="info">
+  This hook should only be used if there is no other way to access the internal
+  state. For many of the common use cases, there are dedicated hooks available
+  such as [`useReactFlow`](./use-react-flow), [`useViewport`](./use-react-flow),
+  etc.
+</Callout>
+
+```tsx
+import { useState, useCallback } from 'react';
+import ReactFlow, { useStoreApi } from '@xyflow/react';
+
+const NodesLengthDisplay = () => {
+  const [nodesLength, setNodesLength] = useState(0);
+  const store = useStoreApi();
+
+  const onClick = useCallback(() => {
+    const { nodeInternals } = store.getState();
+    const length = Array.from(nodeInternals.values()).length || 0;
+
+    setNodesLength(length);
+  }, [store]);
+
+  return (
+    <div>
+      <p>The current number of nodes is: {nodesLength}</p>
+      <button onClick={onClick}>Update node length.</button>
+    </div>
+  );
+};
+
+function Flow() {
+  return (
+    <ReactFlow nodes={nodes}>
+      <NodesLengthLogger />
+    </ReactFlow>
+  );
+}
+```
+
+This example computes the number of nodes in the flow _on-demand_. This is in
+contrast to the example in the [`useStore`](./use-store) hook that re-renders
+the component whenever the number of nodes changes.
+
+Choosing whether to calculate values on-demand or to subscribe to changes as they
+happen is a bit of a balancing act. On the one hand, putting too many heavy
+calculations in an event handler can make your app feel sluggish or unresponsive.
+On the other hand, computing values eagerly can lead to slow or unnecessary
+re-renders.
+
+We make both this hook and [`useStore`](./use-store) available so that you can
+choose the approach that works best for your use-case.
+
+## Signature
+
+<PropsTable {...signature} />

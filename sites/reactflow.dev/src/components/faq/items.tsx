@@ -30,7 +30,7 @@ export default [
           </li>
           <li>
             For <strong>non-commercial open source projects</strong>,{' '}
-            <Link variant="primary" href="/contact">
+            <Link variant="primary" href="https://xyflow.com/contact">
               contact us
             </Link>{' '}
             with the link to the github or gitlab repository.
@@ -38,7 +38,7 @@ export default [
         </ul>
         <div>
           If you are a <strong>pre-revenue startup</strong>,{' '}
-          <Link variant="primary" href="/contact">
+          <Link variant="primary" href="https://xyflow.com/contact">
             contact us
           </Link>{' '}
           for a startup discount.
@@ -153,7 +153,7 @@ export default [
     answer: (
       <>
         We&apos;re happy to answer any questions you have.{' '}
-        <Link variant="primary" href="/contact">
+        <Link variant="primary" href="https://xyflow.com/contact">
           Contact us
         </Link>
         , we check our email regularly and usually reply in a day or two.

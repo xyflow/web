@@ -83,7 +83,7 @@ export default function ReactFlowPro() {
       <PricingTable className="mt-6 lg:mt-10" />
 
       <Section>
-        <ClientLogos />
+        <ClientLogos title="Subscribers to React Flow Pro" />
       </Section>
 
       <ImageSlider

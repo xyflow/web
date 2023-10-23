@@ -1,5 +1,4 @@
-import { MarkerType } from '@xyflow/svelte';
-import type { Node, Edge } from '@xyflow/svelte';
+import { MarkerType, type Edge, type Node } from '@xyflow/svelte';
 
 export const initialNodes: Node[] = [
   {

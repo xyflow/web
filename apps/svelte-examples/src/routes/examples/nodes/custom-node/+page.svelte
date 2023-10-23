@@ -1,7 +1,15 @@
 <script lang="ts">
-  import { SvelteFlow, Background, Controls, MiniMap, Position } from '@xyflow/svelte';
-  import type { Node, Edge, SnapGrid } from '@xyflow/svelte';
   import { writable } from 'svelte/store';
+  import {
+    SvelteFlow,
+    Background,
+    Controls,
+    MiniMap,
+    Position,
+    type Node,
+    type Edge,
+    type SnapGrid
+  } from '@xyflow/svelte';
 
   import ColorSelectorNode from './ColorSelectorNode.svelte';
 

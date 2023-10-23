@@ -1,10 +1,11 @@
 <script lang="ts">
-  import { Handle, Position } from '@xyflow/svelte';
+  import { Handle, Position, type NodeProps } from '@xyflow/svelte';
   import { FileIcon, CloudIcon } from 'svelte-feather-icons';
 
   import FunctionIcon from './FunctionIcon.svelte';
 
-  export let data;
+  type $$Props = NodeProps;
+  export let data: $$Props['data'];
 </script>
 
 <div class="cloud gradient">

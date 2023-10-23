@@ -28,7 +28,7 @@ In the [latest minor release](https://github.com/wbkd/react-flow/releases/tag/11
 
 ## New helper components: beyond nodes and edges
 
-As we’ve done research on apps that use React Flow, we’ve noticed a lot of folks are custom-building a lot of similar elements (or using third-party libraries) on top of React Flow. To help with this, we’ve started to build helper components including [Edge labels](https://reactflow.dev/api-reference/components/EdgeLabelRenderer), [node resizing](https://reactflow.dev/api-reference/components/NodeResizer), [toolbars and tooltips](https://reactflow.dev/api-reference/components/NodeToolbar). We’re doing this work carefully, to make sure we’re not compromising the low-level simplicity of the core library, while making sure React Flow includes all components that are needed for building a node-based app.
+As we’ve done research on apps that use React Flow, we’ve noticed a lot of folks are custom-building a lot of similar elements (or using third-party libraries) on top of React Flow. To help with this, we’ve started to build helper components including [Edge labels](https://reactflow.dev/api-reference/components/edge-label-renderer), [node resizing](https://reactflow.dev/api-reference/components/node-resizer), [toolbars and tooltips](https://reactflow.dev/api-reference/components/node-toolbar). We’re doing this work carefully, to make sure we’re not compromising the low-level simplicity of the core library, while making sure React Flow includes all components that are needed for building a node-based app.
 
 <Image
   src="/img/blog/winter-2022/3components.gif"
@@ -41,7 +41,7 @@ We hope to continue on this path, this will mean talking to some of you all (yay
 
 ## More new examples!
 
-**[Intersections](https://reactflow.dev/examples/nodes/intersections/)**: This example uses the new [intersection helpers](https://reactflow.dev/api-reference/types/ReactFlowInstance/#isnodeintersecting) to detect if a node intersects with another node.
+**[Intersections](https://reactflow.dev/examples/nodes/intersections/)**: This example uses the new [intersection helpers](https://reactflow.dev/api-reference/types/react-flow-instance/#isnodeintersecting) to detect if a node intersects with another node.
 
 <Image
   src="/img/blog/winter-2022/intersection.gif"
@@ -50,7 +50,7 @@ We hope to continue on this path, this will mean talking to some of you all (yay
   height={354}
 />
 
-**[Resize and Rotate](https://reactflow.dev/examples/nodes/resize-rotate):** This was a Pro example, but we decided to make the source code available to everyone in our public docs to avoid trouble people were having with third-party resizing libraries. We also refactored the code to use the new [resizer component](https://reactflow.dev/api-reference/components/NodeResizer).
+**[Resize and Rotate](https://reactflow.dev/examples/nodes/resize-rotate):** This was a Pro example, but we decided to make the source code available to everyone in our public docs to avoid trouble people were having with third-party resizing libraries. We also refactored the code to use the new [resizer component](https://reactflow.dev/api-reference/components/node-resizer).
 
 **[Dynamic Grouping](https://reactflow.dev/examples/nodes/dynamic-grouping)** (Pro Example 💎): Grouping nodes made easy! Make new groups or add a node to an existing group by dragging a node from a drawer or using a “group nodes” button.
 
