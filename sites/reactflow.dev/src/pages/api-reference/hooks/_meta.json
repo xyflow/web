@@ -1,15 +1,15 @@
 {
-  "useEdges": "useEdges()",
-  "useEdgesState": "useEdgesState()",
-  "useKeyPress": "useKeyPress()",
-  "useNodes": "useNodes()",
-  "useNodesInitialized": "useNodesInitialized()",
-  "useNodesState": "useNodesState()",
-  "useOnSelectionChange": "useOnSelectionChange()",
-  "useOnViewportChange": "useOnViewportChange()",
-  "useReactFlow": "useReactFlow()",
-  "useStore": "useStore()",
-  "useStoreApi": "useStoreApi()",
-  "useUpdateNodeInternals": "useUpdateNodeInternals()",
-  "useViewport": "useViewport()"
+  "use-edges": "useEdges()",
+  "use-edges-state": "useEdgesState()",
+  "use-key-press": "useKeyPress()",
+  "use-nodes": "useNodes()",
+  "use-nodes-initialized": "useNodesInitialized()",
+  "use-nodes-state": "useNodesState()",
+  "use-on-selection-change": "useOnSelectionChange()",
+  "use-on-viewport-change": "useOnViewportChange()",
+  "use-react-flow": "useReactFlow()",
+  "use-store": "useStore()",
+  "use-store-api": "useStoreApi()",
+  "use-update-node-internals": "useUpdateNodeInternals()",
+  "use-viewport": "useViewport()"
 }

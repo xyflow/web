@@ -1,0 +1,83 @@
+import { Callout } from 'nextra/components';
+import { PropsTable } from 'xy-ui';
+import {
+  miniMapProps,
+  miniMapNodeProps,
+} from '@/page-data/reference/components/MiniMap.ts';
+
+# &lt;MiniMap />
+
+[Source on GitHub](https://github.com/wbkd/react-flow/blob/f919cb152dd5a92ec3b4d7e4568ffe099bc2af39/packages/react/src/additional-components/MiniMap/MiniMap.tsx#L40)
+
+The `<MiniMap />` component can be used to render an overview of your flow. It
+renders each node as an SVG element and visualizes where the current viewport is
+in relation to the rest of the flow.
+
+```svelte
+<script lang="ts">
+  import { writable } from 'svelte/store';
+  import { SvelteFlow, MiniMap } from '@xyflow/svelte';
+
+  const nodes = writable([]);
+  const edges = writable([]);
+</script>
+
+<SvelteFlow nodes={nodes} edges={edges}>
+  <MiniMap nodeStrokeWidth={3} />
+</SvelteFlow>
+```
+
+## Props
+
+For TypeScript users, the props type for the `<MiniMap />` component is exported
+as `MiniMapProps`.
+
+<PropsTable {...miniMapProps} />
+
+## Examples
+
+### Making the mini map interactive
+
+By default, the mini map is non-interactive. To allow users to interact with the
+viewport by panning or zooming the minimap, you can set either of the `zoomable`
+or `pannable` (or both!) props to `true`.
+
+```svelte
+<script lang="ts">
+  import { writable } from 'svelte/store';
+  import { SvelteFlow, MiniMap } from '@xyflow/svelte';
+
+  const nodes = writable([]);
+  const edges = writable([]);
+</script>
+
+<SvelteFlow nodes={nodes} edges={edges}>
+  <MiniMap pannable zoomable />
+</SvelteFlow>
+```
+
+### Customising mini map node color
+
+The `nodeColor`, `nodeStrokeColor`, and `nodeClassName` props can be a function
+that takes a [`Node`](../types/node) and computes a value for the prop. This can
+be used to customise the appearance of each mini map node.
+
+This example shows how to color each mini map node based on the node's type:
+
+```svelte
+<script lang="ts">
+  import { writable } from 'svelte/store';
+  import { SvelteFlow, MiniMap } from '@xyflow/svelte';
+
+  const nodes = writable([]);
+  const edges = writable([]);
+
+  function nodeColor(node) {
+    return node.type === 'input' ? 'blue' : 'red';
+  }
+</script>
+
+<SvelteFlow nodes={nodes} edges={edges}>
+  <MiniMap nodeColor={nodeColor} />
+</SvelteFlow>
+```

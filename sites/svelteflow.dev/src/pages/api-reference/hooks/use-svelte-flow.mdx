@@ -1,0 +1,21 @@
+import { PropsTable } from 'xy-ui';
+import { signature } from '@/page-data/reference/hooks/useSvelteFlow.ts';
+
+# useSvelteFlow
+
+[Source on GitHub](https://github.com/wbkd/react-flow/blob/f919cb152dd5a92ec3b4d7e4568ffe099bc2af39/packages/react/src/hooks/useReactFlow.ts#L21)
+
+This hook returns a [`SvelteFlowInstance`](../types/svelte-flow-instance) that can
+be used to update the viewport, tranform coordinates or get node intersections for example.
+
+```svelte
+<script lang="ts">
+  import { useSvelteFlow } from '@xyflow/svelte';
+
+  const { screenToFlowCoordinate } = useSvelteFlow();
+</script>
+```
+
+## Signature
+
+<PropsTable {...signature} />
