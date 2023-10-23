@@ -2,18 +2,18 @@
 
 <script lang="ts">
   import type { EdgeProps, Node } from '@xyflow/svelte';
-  import { getStraightPath, useStore } from '@xyflow/svelte';
+  import { getStraightPath, useNodes } from '@xyflow/svelte';
   import { getEdgeParams } from './utils';
 
   type $$Props = EdgeProps;
 
   export let source: EdgeProps['source'];
   export let target: EdgeProps['target'];
-  export let markerEnd: EdgeProps['markerEnd'];
-  export let style: EdgeProps['style'];
+  export let markerEnd: EdgeProps['markerEnd'] = undefined;
+  export let style: EdgeProps['style'] = undefined;
   export let id: EdgeProps['id'];
 
-  const { nodes } = useStore();
+  const nodes = useNodes();
 
   let sourceNode: Node | undefined;
   let targetNode: Node | undefined;

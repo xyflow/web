@@ -1,6 +1,5 @@
 <script lang="ts">
-  import { SvelteFlow, Background, useSvelteFlow, useStore } from '@xyflow/svelte';
-  import type { Edge, Node } from '@xyflow/svelte';
+  import { SvelteFlow, Background, type Node, type Edge } from '@xyflow/svelte';
   import { writable } from 'svelte/store';
 
   import ContextMenu from './ContextMenu.svelte';
