@@ -13,7 +13,8 @@ state management library, so you should check out their docs for more details.
 <Callout type="info">
   This hook should only be used if there is no other way to access the internal
   state. For many of the common use cases, there are dedicated hooks available
-  such as [`useReactFlow`](./useReactFlow), [`useViewport`](./useViewport), etc.
+  such as [`useReactFlow`](./use-react-flow), [`useViewport`](./use-viewport),
+  etc.
 </Callout>
 
 ```jsx
@@ -39,7 +40,7 @@ function Flow() {
 
 This example computes the number of nodes eagerly. Whenever the number of nodes
 in the flow changes, the `<NodesLengthDisplay />` component will re-render. This
-is in contrast to the example in the [`useStoreApi`](./useStoreApi) hook that only
+is in contrast to the example in the [`useStoreApi`](./use-store-api) hook that only
 computes the number of nodes when a button is clicked.
 
 Choosing whether to calculate values on-demand or to subscribe to changes as they
@@ -48,7 +49,7 @@ calculations in an event handler can make your app feel sluggish or unresponsive
 On the other hand, computing values eagerly can lead to slow or unnecessary
 re-renders.
 
-We make both this hook and [`useStoreApi`](./useStoreApi) available so that you
+We make both this hook and [`useStoreApi`](./use-store-api) available so that you
 can choose the approach that works best for your use-case.
 
 ## Signature
