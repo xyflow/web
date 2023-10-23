@@ -4,5 +4,8 @@ description: A customizable Svelte component for building node-based editors and
 ---
 
 import SvelteFlowPage from '@/sites/home';
+import getStaticPropsStats from '@/utils/get-static-props/github-npm-stats';
+
+export const getStaticProps = getStaticPropsStats;
 
 <SvelteFlowPage />

@@ -5,23 +5,28 @@
   import '@xyflow/svelte/dist/style.css';
 
   import { initialNodes, initialEdges } from './nodes-and-edges';
-  import CustomNode from './CustomNode.svelte';
-  import SimpleFloatingEdge from './SimpleFloatingEdge.svelte';
+
+  import ButtonEdge from './ButtonEdge.svelte';
+  import BiDirectionalEdge from './BiDirectionalEdge.svelte';
+  import BiDirectionalNode from './BiDirectionalNode.svelte';
+  import SelfConnectingEdge from './SelfConnectingEdge.svelte';
 
   const nodes = writable<Node[]>(initialNodes);
   const edges = writable<Edge[]>(initialEdges);
 
   const nodeTypes = {
-    custom: CustomNode
+    bidirectional: BiDirectionalNode
   };
 
   const edgeTypes = {
-    floating: SimpleFloatingEdge
+    buttonedge: ButtonEdge,
+    bidirectional: BiDirectionalEdge,
+    selfconnecting: SelfConnectingEdge
   };
 </script>
 
 <div style="height:100vh;">
-  <SvelteFlow {nodes} {nodeTypes} {edges} {edgeTypes} fitView connectionMode={ConnectionMode.Loose}>
+  <SvelteFlow {nodes} {nodeTypes} {edges} {edgeTypes} connectionMode={ConnectionMode.Loose} fitView>
     <Background />
   </SvelteFlow>
 </div>

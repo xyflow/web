@@ -1,14 +1,13 @@
 <script lang="ts">
-  import { SvelteFlow, Background, Controls } from '@xyflow/svelte';
-  import type { Edge, Node } from '@xyflow/svelte';
   import { writable } from 'svelte/store';
+  import { SvelteFlow, Controls, type Node, type Edge } from '@xyflow/svelte';
 
   import '@xyflow/svelte/dist/style.css';
   import './turbo.css';
 
   import { initialNodes, initialEdges } from './nodes-and-edges';
-  import TurboNode from './TurboNode.svelte'
-  import TurboEdge from './TurboEdge.svelte'
+  import TurboNode from './TurboNode.svelte';
+  import TurboEdge from './TurboEdge.svelte';
 
   const nodes = writable<Node[]>(initialNodes);
   const edges = writable<Edge[]>(initialEdges);
@@ -29,7 +28,7 @@
 
 <div style="height:100vh;">
   <SvelteFlow {nodes} {nodeTypes} {edges} {edgeTypes} {defaultEdgeOptions} fitView>
-    <Controls showInteractive={false} />
+    <Controls showLock={false} />
     <svg>
       <defs>
         <linearGradient id="edge-gradient">

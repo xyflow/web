@@ -1,6 +1,5 @@
 <script lang="ts">
-  import type { EdgeProps, Node } from '@xyflow/svelte';
-  import { getBezierPath, useStore } from '@xyflow/svelte';
+  import { getBezierPath, useNodes, type Node, type EdgeProps } from '@xyflow/svelte';
   import { getEdgeParams } from './utils';
 
   type $$Props = EdgeProps;
@@ -9,7 +8,7 @@
   export let target: $$Props['target'];
   export let id: $$Props['id'];
 
-  const { nodes } = useStore();
+  const nodes = useNodes();
 
   let sourceNode: Node | undefined;
   let targetNode: Node | undefined;

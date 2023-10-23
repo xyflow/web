@@ -1,7 +1,13 @@
 <script lang="ts">
-  import { SvelteFlow, Background, Controls, MiniMap } from '@xyflow/svelte';
-  import type { NodeTypes, Node } from '@xyflow/svelte';
   import { writable } from 'svelte/store';
+  import {
+    SvelteFlow,
+    Background,
+    Controls,
+    MiniMap,
+    type Node,
+    type NodeTypes
+  } from '@xyflow/svelte';
 
   import { nodes as initialNodes, edges as initialEdges } from './nodes-and-edges';
 

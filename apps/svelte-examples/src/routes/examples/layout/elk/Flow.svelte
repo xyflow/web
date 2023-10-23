@@ -1,15 +1,16 @@
 <script lang="ts">
+  import { writable } from 'svelte/store';
+  import ELK from 'elkjs/lib/elk.bundled.js';
   import {
     SvelteFlow,
     Background,
     Position,
     ConnectionLineType,
     Panel,
-    useSvelteFlow
+    useSvelteFlow,
+    type Node,
+    type Edge
   } from '@xyflow/svelte';
-  import type { Edge, Node } from '@xyflow/svelte';
-  import { writable } from 'svelte/store';
-  import ELK from 'elkjs/lib/elk.bundled.js';
 
   import '@xyflow/svelte/dist/style.css';
 
