@@ -1,6 +1,6 @@
 <script>
-  import { SvelteFlow } from '@xyflow/svelte';
   import { writable } from 'svelte/store';
+  import { SvelteFlow } from '@xyflow/svelte';
 
   import ColorPickerNode from './ColorPickerNode.svelte';
 

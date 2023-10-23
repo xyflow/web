@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Handle, Position, useStore, type NodeProps } from '@xyflow/svelte';
+  import { Handle, Position, useNodes, type NodeProps } from '@xyflow/svelte';
 
   const options = [
     {
@@ -25,7 +25,7 @@
   export let data: $$Props['data'];
   export let id: $$Props['id'];
 
-  const { nodes } = useStore();
+  const nodes = useNodes();
 
   function handleInput(evt: InputEvent, handleId: string) {
     nodes.set(
