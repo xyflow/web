@@ -1,5 +1,6 @@
 <script lang="ts">
   import { writable } from 'svelte/store';
+  import ELK from 'elkjs/lib/elk.bundled.js';
   import {
     SvelteFlow,
     Background,
@@ -10,7 +11,6 @@
     type Node,
     type Edge
   } from '@xyflow/svelte';
-  import ELK from 'elkjs/lib/elk.bundled.js';
 
   import '@xyflow/svelte/dist/style.css';
 

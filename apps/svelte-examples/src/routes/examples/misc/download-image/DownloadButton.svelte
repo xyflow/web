@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { Panel, getRectOfNodes, getTransformForBounds, useNodes } from '@xyflow/svelte';
   import { toPng } from 'html-to-image';
+  import { Panel, getRectOfNodes, getTransformForBounds, useNodes } from '@xyflow/svelte';
 
   const nodes = useNodes();
 

@@ -1,5 +1,6 @@
 <script lang="ts">
   import { writable } from 'svelte/store';
+  import dagre from '@dagrejs/dagre';
   import {
     SvelteFlow,
     Background,
@@ -9,7 +10,6 @@
     type Node,
     type Edge
   } from '@xyflow/svelte';
-  import dagre from '@dagrejs/dagre';
 
   import '@xyflow/svelte/dist/style.css';
 
