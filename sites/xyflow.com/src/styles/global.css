@@ -13,3 +13,16 @@
     --secondary-foreground: 0 0% 0%;
   }
 }
+
+/* We have this weird bug where the mobile top navbar can be scrolled out of view
+even though the body is supposed to have overflow:hidden set. The following two
+rules make it work almost correctly, but they don't feel great. */
+
+html:has(body.nx-overflow-hidden) {
+  overflow-y: hidden;
+}
+
+html:has(body.nx-overflow-hidden) nav {
+  position: fixed;
+  width: 100%;
+}
