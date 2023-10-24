@@ -1,23 +1,19 @@
-import { Position, MarkerType, type Node } from '@xyflow/svelte';
+import { Position, MarkerType, type Node, type XYPosition } from '@xyflow/svelte';
 
 // this helper function returns the intersection point
 // of the line between the center of the intersectionNode and the target node
 function getNodeIntersection(intersectionNode: Node, targetNode: Node) {
   // https://math.stackexchange.com/questions/1724792/an-algorithm-for-finding-the-intersection-point-between-a-center-of-vision-and-a
-  const {
-    width: intersectionNodeWidth,
-    height: intersectionNodeHeight,
-    positionAbsolute: intersectionNodePosition
-  } = intersectionNode;
-  const targetPosition = targetNode.positionAbsolute;
+  const intersectionNodePosition = intersectionNode.positionAbsolute || { x: 0, y: 0 };
+  const targetPosition = targetNode.positionAbsolute || { x: 0, y: 0 };
 
-  const w = intersectionNodeWidth / 2;
-  const h = intersectionNodeHeight / 2;
+  const w = (intersectionNode.width ?? 0) / 2;
+  const h = (intersectionNode.height ?? 0) / 2;
 
   const x2 = intersectionNodePosition.x + w;
   const y2 = intersectionNodePosition.y + h;
-  const x1 = targetPosition.x + w;
-  const y1 = targetPosition.y + h;
+  const x1 = targetPosition.x + (targetNode.width ?? 0) / 2;
+  const y1 = targetPosition.y + (targetNode.height ?? 0) / 2;
 
   const xx1 = (x1 - x2) / (2 * w) - (y1 - y2) / (2 * h);
   const yy1 = (x1 - x2) / (2 * w) + (y1 - y2) / (2 * h);
@@ -31,23 +27,25 @@ function getNodeIntersection(intersectionNode: Node, targetNode: Node) {
 }
 
 // returns the position (top,right,bottom or right) passed node compared to the intersection point
-function getEdgePosition(node, intersectionPoint) {
-  const n = { ...node.positionAbsolute, ...node };
-  const nx = Math.round(n.x);
-  const ny = Math.round(n.y);
+function getEdgePosition(node: Node, intersectionPoint: XYPosition) {
+  if (!node.width || !node.height) {
+    return null;
+  }
+  const nx = Math.round(node.positionAbsolute?.x || 0);
+  const ny = Math.round(node.positionAbsolute?.y || 0);
   const px = Math.round(intersectionPoint.x);
   const py = Math.round(intersectionPoint.y);
 
   if (px <= nx + 1) {
     return Position.Left;
   }
-  if (px >= nx + n.width - 1) {
+  if (px >= nx + node.width - 1) {
     return Position.Right;
   }
   if (py <= ny + 1) {
     return Position.Top;
   }
-  if (py >= n.y + n.height - 1) {
+  if (py >= ny + node.height - 1) {
     return Position.Bottom;
   }
 
@@ -55,7 +53,7 @@ function getEdgePosition(node, intersectionPoint) {
 }
 
 // returns the parameters (sx, sy, tx, ty, sourcePos, targetPos) you need to create an edge
-export function getEdgeParams(source, target) {
+export function getEdgeParams(source: Node, target: Node) {
   const sourceIntersectionPoint = getNodeIntersection(source, target);
   const targetIntersectionPoint = getNodeIntersection(target, source);
 
