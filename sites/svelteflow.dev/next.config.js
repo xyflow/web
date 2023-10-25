@@ -9,7 +9,7 @@ const nextConfig = {
 
 const withNextra = require('nextra')({
   theme: 'nextra-theme-docs',
-  themeConfig: './theme.config.jsx',
+  themeConfig: './theme.config.tsx',
 });
 
 // Merge MDX config with Next.js config
