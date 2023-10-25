@@ -1,0 +1,116 @@
+---
+title: 'Svelte Flow – a library for rendering interactive node-based UIs'
+intro: 'Today we are excited to launch Svelte Flow, a library for creating workflow builders, database visualizers, data processing tools, and more.'
+date: 2023/11/06
+authors: ['john']
+tags: ['react-flow', 'update']
+image: '/img/blog/v11-reactflow-header.png'
+---
+
+import { Image, Emoji } from 'xy-ui';
+import { BlogPostLayout } from '@/layouts/blog-post-with-frontmatter';
+
+<BlogPostLayout>
+Today we are excited to launch Svelte Flow! It’s is a library for creating workflow builders, database visualizers, data processing tools, and anything else you can imagine with nodes on a canvas.
+
+Try it out with `npm install @xyflow/svelte`, or go to the Github(LINK!). Svelte Flow is MIT Licensed and was built from the ground-up by the team who created and maintains [React Flow](https://reactflow.dev/). You can find docs, examples, and more on our website at [svelteflow.dev](https://www.svelteflow.dev/)
+
+(add some nice example in iframe)
+
+## Features
+
+**Interactivity out-of-the-box:** dragging nodes, zooming, panning, selecting multiple nodes, and adding/removing edges are all built-in.
+
+**Easily customizable:** Svelte Flow nodes are components, so you can create custom nodes any way you want. Svelte Flow is focused on the UI and canvas of your application, you bring the data and layouting libraries.
+
+**Built-in Components:** Background, Minimap, Controls, and Panel components are ready-to-use on install.
+
+## Docs & Examples
+
+Today we’re launching [svelteflow.dev](http://svelteflow.dev) with docs, guides, reference, and a bunch of copy-pasteable code examples. We’ll keep adding and refining the docs, and there is already plenty for you to easily get started with the library.
+
+- [Getting Started guide](https://svelteflow.dev/learn/getting-started/installation)
+- 20+ Code examples
+  - [Dagre Layouting](https://svelteflow.dev/examples/layout/dagre)
+  - [Subflows](https://svelteflow.dev/examples/layout/subflows)
+  - [Stress test](https://svelteflow.dev/examples/nodes/stress)
+  - [See all 20+ Examples](https://svelteflow.dev/examples)
+- [API Reference](https://svelteflow.dev/api-reference)
+- [Ways to support the project](https://svelteflow.dev/support-us)
+
+## Get running with just a few lines of code
+
+After installing @xyflow/svelte, you can make your first Svelte Flow app by copy-pasting this into your Svelte project.
+
+```jsx
+<script lang="ts">
+  import { writable } from 'svelte/store';
+  import {
+    SvelteFlow,
+    Controls,
+    Background,
+    MiniMap,
+  } from '@xyflow/svelte';
+
+  import '@xyflow/svelte/dist/style.css'
+
+  const nodes = writable([
+    {
+      id: '1',
+      data: { label: 'Hello' },
+      position: { x: 0, y: 0 }
+    },
+    {
+      id: '2',
+      data: { label: 'World' },
+      position: { x: 0, y: 100 }
+    }
+  ]);
+
+  const edges = writable([
+    {
+      id: '1-2',
+      source: '1',
+      target: '2',
+    }
+  ]);
+</script>
+
+<SvelteFlow {nodes} {edges}>
+  <Controls />
+  <Background />
+  <MiniMap />
+</SvelteFlow>
+```
+
+(result in iframe):
+
+### And beyond…
+
+Svelte Flow is unopinionated on how you the content of nodes, edges, and handles, so you can do whatever you'd like with them.
+
+(include an iframe with complicated example with custom nodes, handles, etc.)
+
+## Join the Svelte Flow community
+
+We also have an active channel in our Discord that’s talking about Svelte Flow, new features, and reporting bugs. [Join the Discord](https://discord.com/invite/TmAJQbwWDM)
+
+[Sam Lavigne](https://mastodon.social/@samlavigne) has already built a tool using Svelte Flow to help people explore ffmpeg filters in the browser! [Try it out here](https://ffmpeg.lav.io/)
+
+<figure>
+  <img src="/img/blog/2023-svelte-flow-launch/ffmpeg.png" alt="" />
+</figure>
+
+## Who are we
+
+We are the xyflow team\*, the creators of React Flow and Svelte Flow. In 2019 we open sourced React Flow, and we’ve been maintaining and caring for the library through its growth. Earlier this year we got excited about the growing Svelte community, and created a prototype of what our tool could look like if it was built in Svelte. We ended up abstracting the core of React Flow in order to do the port, which meant increasing the performance and fixing bugs for React Flow along the way.
+
+Now that Svelte Flow is launched, we’re excited to see how people use the library, and to continue to improve it.
+
+See you around and thanks for checking out Svelte Flow ✌🏻
+
+Christopher, Hayleigh, John, Moritz, and Peter
+
+\*_until now, we referred to ourselves as the “React Flow team”. Now that we’re not just building React Flow, we’re now calling ourselves the “xyflow team”. Hi!_
+
+</BlogPostLayout>
