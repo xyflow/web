@@ -1,12 +1,17 @@
-const Fs = require('node:fs/promises');
-const Path = require('node:path');
+import * as Fs from 'node:fs/promises';
+import * as Path from 'node:path';
+import * as Url from 'node:url';
+
+// ES modules in node don't support the `__dirname` global, but we can recover it
+// with some help from the `Url` module.
+//
+// see: https://blog.logrocket.com/alternatives-dirname-node-js-es-modules/
+const __dirname = Url.fileURLToPath(new URL('.', import.meta.url));
 
 const OUTPUT_PATH = Path.resolve(__dirname, '../src/utils/routes.ts');
 const ROUTES_PATH = Path.resolve(__dirname, '../src/pages');
 
-main();
-
-async function extractRoutes(path = '/', set = new Set()) {
+export async function extractRoutes(path = '/', set = new Set()) {
   const dir = `${ROUTES_PATH}/${path}`;
 
   for (const dirent of await Fs.readdir(dir, { withFileTypes: true })) {
@@ -26,9 +31,8 @@ async function extractRoutes(path = '/', set = new Set()) {
   return set;
 }
 
-async function main() {
-  const routes = await extractRoutes();
-  const type = `
+const routes = await extractRoutes();
+const type = `
 export type Route = ExternalRoute | InternalRoute;
 
 export type ExternalRoute = \`https://\${string}\`;
@@ -40,5 +44,4 @@ export type InternalRoute =
     .join('\n  | ')};
   `;
 
-  await Fs.writeFile(OUTPUT_PATH, type.trim());
-}
+await Fs.writeFile(OUTPUT_PATH, type.trim());

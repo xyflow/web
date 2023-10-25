@@ -10,7 +10,8 @@
     "lint": "next lint",
     "write-showcases": "rm -rf static/img/showcase && mkdir -p static/img/showcase && node scripts/get-showcases.js",
     "check-sitemap": "node scripts/check-sitemap.mjs",
-    "generate-routes-type": "node scripts/generate-routes-type.js"
+    "generate-routes-type": "node scripts/generate-routes-type.mjs",
+    "check-links": "node scripts/check-mdx-links.mjs"
   },
   "dependencies": {
     "@docsearch/react": "3",
