@@ -6,6 +6,7 @@ import { Footer, Button, LogoLabel, Search } from 'xy-ui';
 
 import SidebarTitle from '@/components/sidebar-title';
 import aboutImage from './public/img/about.jpg';
+import { type Route } from '@/utils';
 
 function useIsPro() {
   const router = useRouter();
@@ -39,6 +40,7 @@ export default {
         href="https://svelteflow.dev"
       >
         <Image
+          alt=""
           width={15}
           height={25}
           src="/img/svelte-logo.svg"
@@ -56,15 +58,14 @@ export default {
         return (
           <Navbar
             {...props}
-            items={[
-              {
-                title: 'Pricing',
-                href: '/pro/pricing',
-              },
-              { title: 'Pro Examples', href: '/pro/examples' },
-              { title: 'Case Studies', href: '/pro/case-studies' },
-              { title: 'Enterprise', href: '/pro/enterprise' },
-            ]}
+            items={
+              [
+                { title: 'Pricing', href: '/pro/pricing' },
+                { title: 'Pro Examples', href: '/pro/examples' },
+                { title: 'Case Studies', href: '/pro/case-studies' },
+                { title: 'Enterprise', href: '/pro/enterprise' },
+              ] satisfies { title: string; href: Route }[]
+            }
           />
         );
       }
@@ -103,8 +104,8 @@ export default {
               { title: 'API Reference', route: '/api-reference' },
               { title: 'Examples', route: '/examples' },
               { title: 'Showcase', route: '/showcase' },
-              { title: 'Support Us', route: '/support-us' },
-            ],
+              { title: 'Support Us', route: '/pro' },
+            ] satisfies { title: string; route: Route }[],
           }}
           legal={[
             {
