@@ -7,7 +7,7 @@ description: Now you know how to create an interactive flow, let's see how to dy
 
 ## Things to avoid
 
-- Be extra careful when using [`setNodes`](/reference/types/react-flow-instance#set-nodes)
+- Be extra careful when using [`setNodes`](/api-reference/types/react-flow-instance#set-nodes)
   in a `useEffect` hook. A common source of trouble is unconditionally calling
   `setNodes` in an effect hook with your `nodes` as a dependency: this can easily
   spiral into an infinite loop!

@@ -39,11 +39,11 @@ Directly beneath that, we'll add these two functions:
 ```js
 const onNodesChange = useCallback(
   (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
-  []
+  [],
 );
 const onEdgesChange = useCallback(
   (changes) => setEdges((eds) => applyEdgeChanges(changes, eds)),
-  []
+  [],
 );
 ```
 
@@ -69,4 +69,4 @@ One last piece is missing: connecting nodes manually. For this we need to implem
 
 Try to connect the two nodes by dragging from on handle to another one. That's it. You've built a fully interactive flow.
 
-That's it for now :) You made it! If you want to move on, we recommend to check out the ["Custom Nodes" guide](/docs/guides/custom-nodes/).
+That's it for now :) You made it! If you want to move on, we recommend to check out the ["Custom Nodes" guide](/learn/customization/custom-nodes).
