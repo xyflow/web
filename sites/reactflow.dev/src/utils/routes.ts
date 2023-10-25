@@ -72,7 +72,7 @@ export type InternalRoute =
   | '/api-reference/utils/update-edge'
   | '/examples'
   | '/examples/edges/custom-connectionline'
-  | '/examples/edges/custom-edge'
+  | '/examples/edges/custom-edges'
   | '/examples/edges/delete-edge-on-drop'
   | '/examples/edges/edge-label-renderer'
   | '/examples/edges/edge-types'
