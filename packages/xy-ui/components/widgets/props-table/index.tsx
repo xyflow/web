@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 import Link from 'next/link';
 import slugify from '@sindresorhus/slugify';
+import { cn } from '../../../lib/utils';
 
 type PropsTableProps = {
   props: {
@@ -43,14 +44,15 @@ function PropsTable({ props: data, links = {} }: PropsTableProps) {
   return (
     <table className="w-full my-8 text-sm">
       <thead className="hidden lg:table-header-group text-left border-b border-gray-200">
-        <tr className="[&>th]:py-3">
+        <tr className="[&>th]:p-1.5">
           <th>Name</th>
-          <th className="px-3">Type</th>
+          <th>Type</th>
           {showDefaultColumn && <th>Default</th>}
         </tr>
       </thead>
       {data.map((prop) => {
         const slug = slugify(prop.name);
+        const isHeading = !prop.type && !prop.description && !prop.default;
 
         return (
           <tbody
@@ -67,12 +69,19 @@ function PropsTable({ props: data, links = {} }: PropsTableProps) {
                   >
                     #
                   </Link>
-                  <code className="bg-gray-50 px-1.5 py-0.5 border border-gray-200 rounded-sm">
-                    {prop.name}
-                  </code>
+                  {prop.name &&
+                    (isHeading ? (
+                      <span className="px-1.5 py-0.5 font-bold">
+                        {prop.name}
+                      </span>
+                    ) : (
+                      <code className="bg-gray-50 px-1.5 py-0.5 border border-gray-200 rounded-sm">
+                        {prop.name}
+                      </code>
+                    ))}
                 </div>
               </td>
-              <td className="px-3">
+              <td>
                 <div>
                   <code className="break-all">{linkify(prop.type)}</code>
                 </div>
@@ -88,8 +97,19 @@ function PropsTable({ props: data, links = {} }: PropsTableProps) {
                 )}
               </td>
               {showDefaultColumn && (
-                <td>
-                  <code className="break-all">{linkify(prop.default)}</code>
+                // For the mobile view, we want to hide the default column entirely
+                // if there is no content for it. We want this because otherwise
+                // the default padding applied to table cells will add some extra
+                // blank space we don't want.
+                <td
+                  className={cn(
+                    '!px-0',
+                    prop.default ? '' : '!hidden lg:table-cell',
+                  )}
+                >
+                  <pre className="inline-block bg-gray-50 !px-1.5 py-0.5 border border-gray-200 rounded-sm">
+                    <code className="">{linkify(prop.default)}</code>
+                  </pre>
                 </td>
               )}
             </tr>
