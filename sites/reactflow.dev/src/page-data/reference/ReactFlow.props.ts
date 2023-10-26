@@ -49,6 +49,12 @@ export const commonProps: PropsTableProps = {
     {
       name: 'nodeTypes',
       type: 'Record<String, React.ComponentType<NodeProps>>',
+      default: `{
+  input: InputNode,
+  default: DefaultNode,
+  output: OutputNode
+  group: GroupNode
+}`,
       description: `If you want to use custom nodes in your flow, you need to let
       React Flow know about them. When rendering a new node, React Flow will look
       up that node's type in this object and render the corresponding component.`,
@@ -56,6 +62,13 @@ export const commonProps: PropsTableProps = {
     {
       name: 'edgeTypes',
       type: 'Record<String, React.ComponentType<EdgeProps>>',
+      default: `{
+  default: BezierEdge,
+  straight: StraightEdge,
+  step: StepEdge,
+  smoothstep: SmoothStepEdge
+  simplebezier: SimpleBezier
+}`,
       description: `As with node types, this prop lets you use custom edges in
       your flow by mapping edge types to React components.`,
     },
