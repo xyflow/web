@@ -11,24 +11,24 @@
 <div style="background: #DDD; padding: 25px">
   <div>Node</div>
   <Handle
-    type="source"
     id="red"
+    type="source"
     position={Position.Bottom}
-    style={DEFAULT_HANDLE_STYLE + 'left: 15%; background: red;'}
+    style="{DEFAULT_HANDLE_STYLE}; left: 15%; background: red;"
     {isConnectable}
   />
   <Handle
-    type="source"
-    position={Position.Bottom}
     id="blue"
-    style={DEFAULT_HANDLE_STYLE + 'left: 50%; background: blue;'}
+    type="source"
+    position={Position.Bottom}
+    style="{DEFAULT_HANDLE_STYLE}; left: 50%; background: blue;"
     {isConnectable}
   />
   <Handle
+    id="orange"
     type="source"
     position={Position.Bottom}
-    id="orange"
-    style={DEFAULT_HANDLE_STYLE + 'left: 85%; background: orange;'}
+    style="{DEFAULT_HANDLE_STYLE}; left: 85%; background: orange;"
     {isConnectable}
   />
 </div>

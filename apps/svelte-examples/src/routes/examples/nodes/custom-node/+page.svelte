@@ -7,29 +7,18 @@
     MiniMap,
     Position,
     type Node,
-    type Edge,
-    type SnapGrid
+    type Edge
   } from '@xyflow/svelte';
 
   import ColorSelectorNode from './ColorSelectorNode.svelte';
 
   import '@xyflow/svelte/dist/style.css';
 
-  const snapGrid: SnapGrid = [10, 10];
   const nodeTypes = {
     selectorNode: ColorSelectorNode
   };
 
-  let bgColor = '#1A192B';
-
-  function onInput(event: Event) {
-    $nodes.forEach((node) => {
-      if (node.id === '2') {
-        bgColor = (event.target as HTMLInputElement)?.value;
-      }
-    });
-    $nodes = $nodes;
-  }
+  const bgColor = writable('#1A192B');
 
   const initialNodes: Node[] = [
     {
@@ -42,7 +31,7 @@
     {
       id: '2',
       type: 'selectorNode',
-      data: { onInput, color: bgColor },
+      data: { color: bgColor },
       style: 'border: 1px solid #777; padding: 10px;',
       position: { x: 300, y: 50 }
     },
@@ -93,7 +82,7 @@
 </script>
 
 <div style="height:100vh;">
-  <SvelteFlow {nodes} {edges} {nodeTypes} style={`background: ${bgColor}`} {snapGrid} fitView>
+  <SvelteFlow {nodes} {edges} {nodeTypes} style="background: {$bgColor}" fitView>
     <Background />
     <Controls />
     <MiniMap />
