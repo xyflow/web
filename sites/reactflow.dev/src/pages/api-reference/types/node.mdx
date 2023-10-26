@@ -45,6 +45,22 @@ export type Node<T, U extends string> = {
 
 <PropsTable {...nodeFields} />
 
+## Default node types
+
+You can create any of React Flow's default nodes by setting the `type` property
+to one of the following values:
+
+- `"default"`
+- `"input"`
+- `"output"`
+- `"group"`
+
+If you don't set the `type` property at all, React Flow will fallback to the
+`"default"` node with both an input and output port.
+
+These default nodes are available even if you set the [`nodeTypes`](/api-reference/react-flow#node-types)
+prop to something else, unless you override any of these keys directly.
+
 ## Notes
 
 - You shouldn't try to set the `width` or `height` of a node directly. It is
