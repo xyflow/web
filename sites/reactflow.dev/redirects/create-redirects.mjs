@@ -1,10 +1,31 @@
 import { XMLParser } from 'fast-xml-parser';
+import fs from 'fs';
+import { fileURLToPath } from 'url';
+import path from 'path';
+import staticRedirects from './static-redirects.json' assert { type: 'json' };
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const OLD_RF_SITEMAP = path.join(__dirname, './sitemap-rf-v11.xml');
+const NEW_RF_SITEMAP = 'https://reactflow-website.vercel.app/sitemap.xml';
+const XY_SITEMAP = 'https://xyflow.com/sitemap.xml';
+const OUTPUT = path.join(__dirname, 'redirects.json');
 
 const xmlParser = new XMLParser();
 
 async function getSitePaths(url) {
-  const response = await fetch(url);
-  const sitemapXML = await response.text();
+  const isLocal = !url.startsWith('http');
+
+  let sitemapXML = '';
+
+  if (isLocal) {
+    sitemapXML = fs.readFileSync(url, 'utf8').toString();
+  } else {
+    const response = await fetch(url);
+    sitemapXML = await response.text();
+  }
+
   const { urlset } = xmlParser.parse(sitemapXML);
   const paths = urlset.url.map((item) =>
     item.loc
@@ -19,7 +40,7 @@ async function getSitePaths(url) {
 async function start() {
   const redirects = [];
 
-  let unmatched = await getSitePaths('https://reactflow.dev/sitemap.xml');
+  let unmatched = await getSitePaths(OLD_RF_SITEMAP);
 
   const redirect = (from, to, domain = '') => {
     unmatched = unmatched.filter((path) => path !== from);
@@ -33,9 +54,7 @@ async function start() {
     }
   };
 
-  const rfPaths = await getSitePaths(
-    'https://reactflow-website.vercel.app/sitemap.xml',
-  );
+  const rfPaths = await getSitePaths(NEW_RF_SITEMAP);
 
   const match = (originalPath, lookupPath) => {
     const newPath = rfPaths.find((p) => p === lookupPath);
@@ -45,7 +64,11 @@ async function start() {
     }
   };
 
-  const xyPaths = await getSitePaths('https://xyflow.com/sitemap.xml');
+  staticRedirects.forEach(({ source, destination }) =>
+    redirect(source, destination),
+  );
+
+  const xyPaths = await getSitePaths(XY_SITEMAP);
 
   unmatched.forEach((path) => {
     // first filter out all the paths that haven't changed
@@ -59,6 +82,10 @@ async function start() {
       const newPath =
         xyPaths.find((xyPath) => xyPath.includes(path)) ?? '/blog';
       return redirect(path, newPath, 'https://xyflow.com');
+    }
+
+    if (path.startsWith('/newsletter')) {
+      return redirect(path, '/');
     }
 
     match(path, path.replace('/docs/api', '/api-reference'));
@@ -80,38 +107,9 @@ async function start() {
     match(path, path.replace('/docs/guides', '/learn/layouting'));
   });
 
-  // // redirects for the blog pages
-  // const blogPaths = unmatchedPaths.filter((path) => path.startsWith('/blog/'));
-
-  // blogPaths.forEach((blogPath) => {
-  //   // if the url doesn't exist, we just redirect to the blog page
-  //   const newPath =
-  //     xyFlowPaths.find((path) => path.includes(blogPath)) ?? '/blog';
-  //   const newUrl = `https://xyflow.com${newPath}`;
-
-  //   redirects.push({ source: blogPath, destination: newUrl, permanent: true });
-  // });
-
-  console.log(redirects);
   console.log(unmatched);
 
-  // const oldSitemapXML = await fetchSitemap();
-  // const newSitemapXML = await fetchSitemap();
-
-  // const sitemapXML = await fetchSitemap();
-
-  // let failedCount = 0;
-
-  // for (const url of urls) {
-  //   const res = await fetch(url, { method: 'HEAD' });
-
-  //   if (res.status !== 200) {
-  //     failedCount++;
-  //     console.log(url, res.status);
-  //   }
-  // }
-
-  // console.log(`Couldn't fetch ${failedCount} pages.`);
+  fs.writeFileSync(OUTPUT, JSON.stringify(redirects, null, 2));
 }
 
 start();

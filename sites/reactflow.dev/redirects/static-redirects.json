@@ -1,0 +1,54 @@
+[
+  {
+    "source": "/docs/api/edges/custom-connection-line",
+    "destination": "/api-reference/types/connection-line-component-props"
+  },
+  {
+    "source": "/docs/api/edges/edge-utils",
+    "destination": "/api-reference/utils/get-bezier-path"
+  },
+  {
+    "source": "/docs/api/graph-util-functions",
+    "destination": "/api-reference/utils/is-edge"
+  },
+  {
+    "source": "/docs/api/nodes/custom-nodes",
+    "destination": "/api-reference/types/node-props"
+  },
+  {
+    "source": "/docs/api/nodes/node-options",
+    "destination": "/api-reference/types/node"
+  },
+  {
+    "source": "/docs/api/react-flow-instance",
+    "destination": "/api-reference/types/react-flow-instance"
+  },
+  {
+    "source": "/docs/api/react-flow-props",
+    "destination": "/api-reference/react-flow"
+  },
+  {
+    "source": "/docs/api/types",
+    "destination": "/api-reference/types/node"
+  },
+  {
+    "source": "/docs/concepts/packages",
+    "destination": "/learn"
+  },
+  {
+    "source": "/docs/examples/overview",
+    "destination": "/examples"
+  },
+  {
+    "source": "/docs/guides/panning-and-zooming",
+    "destination": "/learn/concepts/the-viewport"
+  },
+  {
+    "source": "/docs/guides/troubleshooting",
+    "destination": "/learn/troubleshooting"
+  },
+  {
+    "source": "/docs/quickstart",
+    "destination": "/learn"
+  }
+]
