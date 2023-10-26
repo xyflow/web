@@ -3,14 +3,14 @@ import { signature } from '@/page-data/reference/hooks/useNodes.ts';
 
 # useNodes
 
-[Source on GitHub](https://github.com/wbkd/react-flow/blob/f919cb152dd5a92ec3b4d7e4568ffe099bc2af39/packages/react/src/hooks/useNodes.ts#L8)
+[Source on GitHub](https://github.com/wbkd/react-flow/blob/bacaa99c73b347856f63c5d495f5a0829be1e431/packages/core/src/hooks/useNodes.ts/#L8)
 
 This hook returns an array of the current nodes. Components that use this hook
 will re-render **whenever any node changes**, including when a node is selected
 or moved.
 
 ```jsx
-import { useNodes } from '@xyflow/react';
+import { useNodes } from 'reactflow';
 
 export default function () {
   const nodes = useNodes();

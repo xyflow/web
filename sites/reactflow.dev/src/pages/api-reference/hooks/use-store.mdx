@@ -4,7 +4,7 @@ import { signature } from '@/page-data/reference/hooks/useStore.ts';
 
 # useStore
 
-[Source on GitHub](https://github.com/wbkd/react-flow/blob/f919cb152dd5a92ec3b4d7e4568ffe099bc2af39/packages/react/src/hooks/useStore.ts#L13)
+[Source on GitHub](https://github.com/wbkd/react-flow/blob/bacaa99c73b347856f63c5d495f5a0829be1e431/packages/core/src/hooks/useStore.ts/#L13)
 
 This hook can be used to subscribe to internal state changes of the React Flow
 component. The `useStore` hook is re-exported from the [Zustand](https://github.com/pmndrs/zustand)
@@ -18,7 +18,7 @@ state management library, so you should check out their docs for more details.
 </Callout>
 
 ```jsx
-import ReactFlow, { useStore } from '@xyflow/react';
+import ReactFlow, { useStore } from 'reactflow';
 
 const nodesLengthSelector = (state) =>
   Array.from(state.nodeInternals.values()).length || 0;
@@ -65,7 +65,7 @@ through the `useStore` hook. These actions are already used internally throughou
 the library, but you can also use them to implement custom functionality.
 
 ```jsx
-import { useStore } from '@xyflow/react';
+import { useStore } from 'reactflow';
 
 const setMinZoomSelector = (state) => state.setMinZoom;
 

@@ -3,7 +3,7 @@ import { backgroundProps } from '@/page-data/reference/components/Background.ts'
 
 # &lt;Background />
 
-[Source on GitHub](https://github.com/wbkd/react-flow/blob/f919cb152dd5a92ec3b4d7e4568ffe099bc2af39/packages/react/src/additional-components/Background/Background.tsx#L19)
+[Source on GitHub](https://github.com/wbkd/react-flow/blob/bacaa99c73b347856f63c5d495f5a0829be1e431/packages/background/src/Background.tsx/#L23)
 
 The `<Background />` component makes it convenient to render different types of
 backgrounds common in node-based UIs. It comes with three variants: `lines`,
@@ -11,7 +11,7 @@ backgrounds common in node-based UIs. It comes with three variants: `lines`,
 
 ```jsx
 import { useState } from 'react';
-import ReactFlow, { Background } from '@xyflow/react';
+import ReactFlow, { Background } from 'reactflow';
 
 export default function Flow() {
   return (
@@ -35,7 +35,7 @@ to create something more interesting. The following example shows how to render 
 square grid accented every 10th line.
 
 ```tsx
-import ReactFlow, { Background, BackgroundVariant } from '@xyflow/react';
+import ReactFlow, { Background, BackgroundVariant } from 'reactflow';
 
 import 'reactflow/dist/style.css';
 

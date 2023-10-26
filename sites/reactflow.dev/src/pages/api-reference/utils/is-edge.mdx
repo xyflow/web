@@ -3,14 +3,24 @@ import { signature } from '@/page-data/reference/utils/isEdge.ts';
 
 # isEdge()
 
-[Source on GitHub](https://github.com/wbkd/react-flow/blob/f919cb152dd5a92ec3b4d7e4568ffe099bc2af39/packages/react/src/utils/general.ts#L14)
+[Source on GitHub](https://github.com/wbkd/react-flow/blob/bacaa99c73b347856f63c5d495f5a0829be1e431/packages/core/src/utils/graph.ts/#L19)
 
 Test whether an object is useable as an [`Edge`](/api-reference/types/edge). In TypeScript
 this is a type guard that will narrow the type of whatever you pass in to
 [`Edge`](/api-reference/types/edge) if it returns `true`.
 
 ```js
-@todo
+import { isEdge } from 'reactflow';
+
+const edge = {
+  id: 'edge-a',
+  source: 'a',
+  target: 'b',
+};
+
+if (isEdge(edge)) {
+  // ..
+}
 ```
 
 ## Signature

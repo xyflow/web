@@ -137,7 +137,7 @@ export default function ReactFlowHome() {
         />
       </Section>
 
-      <GettingStarted libraryName="React Flow" packageName="@xyflow/react" />
+      <GettingStarted libraryName="React Flow" packageName="reactflow" />
 
       <Section>
         <Features features={features} />
