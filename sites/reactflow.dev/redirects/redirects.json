@@ -25,6 +25,11 @@
     "permanent": true
   },
   {
+    "source": "/docs/api/edges/edge-options",
+    "destination": "/api-reference/types/edge",
+    "permanent": true
+  },
+  {
     "source": "/docs/api/react-flow-instance",
     "destination": "/api-reference/types/react-flow-instance",
     "permanent": true

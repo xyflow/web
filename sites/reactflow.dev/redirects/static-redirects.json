@@ -20,6 +20,10 @@
     "destination": "/api-reference/types/node"
   },
   {
+    "source": "/docs/api/edges/edge-options",
+    "destination": "/api-reference/types/edge"
+  },
+  {
     "source": "/docs/api/react-flow-instance",
     "destination": "/api-reference/types/react-flow-instance"
   },
