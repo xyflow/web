@@ -95,7 +95,7 @@ export const miniMapNodeProps: PropsTableProps = {
     { name: 'shapeRendering?', type: 'string' },
     { name: 'strokeColor?', type: 'string' },
     { name: 'strokeWidth?', type: 'number' },
-    { name: 'style?', type: ' CSSProperties' },
+    { name: 'style?', type: 'string' },
     { name: 'selected?', type: 'boolean' },
   ],
   links: links,
