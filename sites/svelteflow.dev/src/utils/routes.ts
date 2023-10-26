@@ -40,6 +40,7 @@ export type InternalRoute =
   | '/examples'
   | '/examples/edges/custom-connectionline'
   | '/examples/edges/custom-edge'
+  | '/examples/edges/edge-label-renderer'
   | '/examples/edges/edge-markers'
   | '/examples/edges/edge-types'
   | '/examples/edges/simple-floating-edges'
