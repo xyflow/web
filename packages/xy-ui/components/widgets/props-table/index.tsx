@@ -108,7 +108,7 @@ function PropsTable({ props: data, links = {} }: PropsTableProps) {
                   )}
                 >
                   <pre className="inline-block bg-gray-50 !px-1.5 py-0.5 border border-gray-200 rounded-sm">
-                    <code className="">{linkify(prop.default)}</code>
+                    <code className="text-xs">{linkify(prop.default)}</code>
                   </pre>
                 </td>
               )}

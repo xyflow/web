@@ -156,72 +156,75 @@ export const eventHandlerProps: PropsTableProps = {
     { name: 'Nodes' },
     {
       name: 'on:nodeclick?',
-      type: 'CustomEvent<{ event: MouseEvent | TouchEvent; node: Node }>',
+      type: '(event: CustomEvent<{ event: MouseEvent | TouchEvent; node: Node }>) => void',
     },
     {
       name: 'on:nodecontextmenu?',
-      type: 'CustomEvent<{ event: MouseEvent; node: Node }>',
+      type: '(event: CustomEvent<{ event: MouseEvent; node: Node }>) => void',
     },
     {
       name: 'on:nodemouseenter?',
-      type: 'CustomEvent<{ event: MouseEvent; node: Node }>',
+      type: '(event: CustomEvent<{ event: MouseEvent; node: Node }>) => void',
     },
     {
       name: 'on:nodemousemove?',
-      type: 'CustomEvent<{ event: MouseEvent; node: Node }>',
+      type: '(event: CustomEvent<{ event: MouseEvent; node: Node }>) => void',
     },
     {
       name: 'on:nodemouseleave?',
-      type: 'CustomEvent<{ event: MouseEvent; node: Node }>',
+      type: '(event: CustomEvent<{ event: MouseEvent; node: Node }>) => void',
     },
     {
       name: 'on:nodedragstart?',
-      type: 'CustomEvent<{ event: MouseEvent; node: NodeBase; nodes: NodeBase[] }>',
+      type: '(event: CustomEvent<{ event: MouseEvent; node: NodeBase; nodes: NodeBase[] }>) => void',
     },
     {
       name: 'on:nodedrag?',
-      type: 'CustomEvent<{ event: MouseEvent; node: NodeBase; nodes: NodeBase[] }>',
+      type: '(event: CustomEvent<{ event: MouseEvent; node: NodeBase; nodes: NodeBase[] }>) => void',
     },
     {
       name: 'on:nodedragstop?',
-      type: 'CustomEvent<{ event: MouseEvent; node: NodeBase; nodes: NodeBase[] }>',
+      type: '(event: CustomEvent<{ event: MouseEvent; node: NodeBase; nodes: NodeBase[] }>) => void',
     },
     { name: 'Edges' },
     {
       name: 'on:edgeclick?',
-      type: 'CustomEvent<{ event: MouseEvent; edge: Edge }>',
+      type: '(event: CustomEvent<{ event: MouseEvent; edge: Edge }>) => void',
     },
     {
       name: 'on:edgecontextmenu?',
-      type: 'CustomEvent<{ event: MouseEvent; edge: Edge }>',
+      type: '(event: CustomEvent<{ event: MouseEvent; edge: Edge }>) => void',
     },
     { name: 'Connections' },
     {
       name: 'on:connectstart?',
-      type: `CustomEvent<{
+      type: `(event: CustomEvent<{
         event: MouseEvent | TouchEvent;
         nodeId?: string;
         handleId?: string;
         handleType?: HandleType;
-      }>`,
+      }>) => void`,
       description: `When a user starts to drag a connection line, this event gets fired.`,
     },
     {
       name: 'on:connect?',
-      type: 'CustomEvent<{ connection: Connection }>',
+      type: '(event: CustomEvent<{ connection: Connection }>) => void',
       description: `This event gets fired when a connection successfully completes.`,
     },
     {
       name: 'on:connectend?',
-      type: 'CustomEvent<{ event: MouseEvent | TouchEvent }>',
+      type: '(event: CustomEvent<{ event: MouseEvent | TouchEvent }>) => void',
       description: `Whenever the user drops the connection line, this events get fired. No matter if a connection was created or not.`,
     },
     { name: 'Pane' },
     {
       name: 'on:paneclick?',
-      type: 'CustomEvent<{ event: MouseEvent | TouchEvent }>',
+      type: '(event: CustomEvent<{ event: MouseEvent | TouchEvent }>) => void',
     },
-    { name: 'on:panecontextmenu?', type: 'CustomEvent<{ event: MouseEvent }>' },
+    {
+      name: 'on:panecontextmenu?',
+      type: '(event: CustomEvent<{ event: MouseEvent }>) => void',
+    },
   ],
 };
 
