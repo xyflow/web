@@ -52,13 +52,6 @@
       "layout": "raw"
     }
   },
-  "tutorials": {
-    "title": "Tutorials",
-    "display": "hidden",
-    "theme": {
-      "layout": "raw"
-    }
-  },
   "404": {
     "title": "404",
     "theme": {

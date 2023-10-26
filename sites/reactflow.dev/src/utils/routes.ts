@@ -147,6 +147,7 @@ export type InternalRoute =
   | '/learn/troubleshooting/migrate-to-v10'
   | '/learn/troubleshooting/migrate-to-v11'
   | '/learn/troubleshooting/remove-attribution'
+  | '/learn/tutorials'
   | '/learn/tutorials/mind-map-app-with-react-flow'
   | '/learn/tutorials/react-flow-and-the-web-audio-api'
   | '/pro'
@@ -156,5 +157,4 @@ export type InternalRoute =
   | '/pro/enterprise'
   | '/pro/examples'
   | '/pro/pricing'
-  | '/showcase'
-  | '/tutorials';
+  | '/showcase';
