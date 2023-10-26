@@ -16,6 +16,25 @@
   }
 }
 
+/* this override adds some space for the api docs */
+
+.learn article main.md\:nx-px-12,
+.api-reference article main.md\:nx-px-12 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.examples article main.md\:nx-px-12 {
+  padding-left: 1.5rem;
+  padding-right: 0;
+}
+
+/* this unifies the /examples content width with /api-refernce and /learn */
+
+.examples main.nx-max-w-6xl {
+  max-width: none;
+}
+
 /* We have this weird bug where the mobile top navbar can be scrolled out of view
 even though the body is supposed to have overflow:hidden set. The following two
 rules make it work almost correctly, but they don't feel great. */

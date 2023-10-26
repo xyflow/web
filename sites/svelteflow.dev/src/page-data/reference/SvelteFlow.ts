@@ -4,26 +4,26 @@ export const commonProps: PropsTableProps = {
   deeplinkPrefix: 'common',
   props: [
     {
-      name: 'nodes?',
+      name: 'nodes',
       type: 'Writable<Node[]>',
       default: 'writable([])',
       description: 'A writable store with an array of nodes.',
     },
     {
-      name: 'edges?',
+      name: 'edges',
       type: 'Writable<Edge[]>',
       default: 'writable([])',
       description: 'A writable store with an array of edges.',
     },
     {
-      name: 'nodeTypes?',
+      name: 'nodeTypes',
       type: 'Record<string, ComponentType<SvelteComponent<NodeProps>>>',
       description: `If you want to use custom nodes in your flow, you need to let
       Svelte Flow know about them. When rendering a new node, Svelte Flow will look
       up that node's type in this object and render the corresponding component.`,
     },
     {
-      name: 'edgeTypes?',
+      name: 'edgeTypes',
       type: 'Record<string, ComponentType<SvelteComponent<EdgeProps>>>',
       description: `As with node types, this prop lets you use custom edges in
       your flow by mapping edge types to Svelte components.`,
@@ -36,7 +36,7 @@ export const commonProps: PropsTableProps = {
         An origin of [0,0] means that a node's top left corner will be placed at the x and y position.`,
     },
     {
-      name: 'nodeDragThreshold?',
+      name: 'nodeDragThreshold',
       type: 'number',
       default: '0',
       description: `
@@ -44,14 +44,8 @@ export const commonProps: PropsTableProps = {
           you need to drag the node 1 pixel before a drag event is fired.
         `,
     },
-    { name: 'style?', type: 'string' },
-    { name: 'class?', type: 'string' },
-    {
-      name: 'proOptions?',
-      type: 'ProOptions',
-      description: `Our pro options are configuration settings intended for 
-      Pro subscribers. Anyone is free to use them, though!`,
-    },
+    { name: 'style', type: 'string' },
+    { name: 'class', type: 'string' },
   ],
 };
 
@@ -59,7 +53,7 @@ export const viewportProps: PropsTableProps = {
   deeplinkPrefix: 'viewport',
   props: [
     {
-      name: 'initialViewport?',
+      name: 'initialViewport',
       type: 'Viewport',
       default: '{ x: 0, y: 0, zoom: 1 }',
       description: `Sets the initial position and zoom of the viewport. If a
@@ -67,42 +61,42 @@ export const viewportProps: PropsTableProps = {
       will be ignored.`,
     },
     {
-      name: 'viewport?',
+      name: 'viewport',
       type: 'Writable<Viewport>',
       default: 'undefined',
       description: `If you need more control over the viewport, you can pass a writable store.`,
     },
     {
-      name: 'fitView?',
+      name: 'fitView',
       type: 'boolean',
       default: 'false',
       description: `When true, the flow will be zoomed and panned to fit all the
       nodes initially provided.`,
     },
     {
-      name: 'fitViewOptions?',
+      name: 'fitViewOptions',
       type: 'FitViewOptions',
       description: `When you typically call fitView on a Svelte Flow instance, you
       can provide an object of options to customize its behaviour. This prop lets
       you do the same for the initial fitView call.`,
     },
-    { name: 'minZoom?', type: 'number', default: '0.5' },
-    { name: 'maxZoom?', type: 'number', default: '2' },
+    { name: 'minZoom', type: 'number', default: '0.5' },
+    { name: 'maxZoom', type: 'number', default: '2' },
     {
-      name: 'snapGrid?',
+      name: 'snapGrid',
       type: '[number, number] | undefined',
       default: 'undefined',
       description: `This prop configures the grid that nodes will snap to.`,
     },
     {
-      name: 'onlyRenderVisibleElements?',
+      name: 'onlyRenderVisibleElements',
       type: 'boolean',
       default: 'false',
       description: `You can enable this optimisation to instruct Svelte Flow to
       only render nodes and edges that would be visible in the viewport.`,
     },
     {
-      name: 'translateExtent?',
+      name: 'translateExtent',
       type: 'CoordinateExtent',
       default: '[[-∞,-∞], [+∞,+∞]]',
       description: `By default the viewport extends infinitely. You can use this
@@ -110,14 +104,14 @@ export const viewportProps: PropsTableProps = {
       boundary and the second pair is the bottom right..`,
     },
     {
-      name: 'preventScrolling?',
+      name: 'preventScrolling',
       type: 'boolean',
       default: 'true',
       description: `Disabling this prop will allow the user to scroll the page
       even when their pointer is over the flow.`,
     },
     {
-      name: 'attributionPosition?',
+      name: 'attributionPosition',
       type: 'PanelPosition',
       default: '"bottom-right"',
       description: `By default, Svelte Flow will render a small attribution in
@@ -130,9 +124,9 @@ export const viewportProps: PropsTableProps = {
 export const edgeProps: PropsTableProps = {
   deeplinkPrefix: 'edge',
   props: [
-    { name: 'defaultMarkerColor?', type: 'string', default: '"#b1b1b7"' },
+    { name: 'defaultMarkerColor', type: 'string', default: '"#b1b1b7"' },
     {
-      name: 'defaultEdgeOptions?',
+      name: 'defaultEdgeOptions',
       type: 'DefaultEdgeOptions',
       description: `Any defaults set here will be applied to all new edges that
       are added to the flow. Properties on a new edge will override these defaults
@@ -146,7 +140,7 @@ export const eventHandlerProps: PropsTableProps = {
   props: [
     { name: 'General' },
     {
-      name: 'on:error?',
+      name: 'on:error',
       type: '(code: string, message: string) => void',
       description: `Ocassionally something may happen that causes Svelte Flow to
       error. Instead of exploding your application, we log a message to the console
@@ -155,49 +149,49 @@ export const eventHandlerProps: PropsTableProps = {
     },
     { name: 'Nodes' },
     {
-      name: 'on:nodeclick?',
+      name: 'on:nodeclick',
       type: '(event: CustomEvent<{ event: MouseEvent | TouchEvent; node: Node }>) => void',
     },
     {
-      name: 'on:nodecontextmenu?',
+      name: 'on:nodecontextmenu',
       type: '(event: CustomEvent<{ event: MouseEvent; node: Node }>) => void',
     },
     {
-      name: 'on:nodemouseenter?',
+      name: 'on:nodemouseenter',
       type: '(event: CustomEvent<{ event: MouseEvent; node: Node }>) => void',
     },
     {
-      name: 'on:nodemousemove?',
+      name: 'on:nodemousemove',
       type: '(event: CustomEvent<{ event: MouseEvent; node: Node }>) => void',
     },
     {
-      name: 'on:nodemouseleave?',
+      name: 'on:nodemouseleave',
       type: '(event: CustomEvent<{ event: MouseEvent; node: Node }>) => void',
     },
     {
-      name: 'on:nodedragstart?',
+      name: 'on:nodedragstart',
       type: '(event: CustomEvent<{ event: MouseEvent; node: NodeBase; nodes: NodeBase[] }>) => void',
     },
     {
-      name: 'on:nodedrag?',
+      name: 'on:nodedrag',
       type: '(event: CustomEvent<{ event: MouseEvent; node: NodeBase; nodes: NodeBase[] }>) => void',
     },
     {
-      name: 'on:nodedragstop?',
+      name: 'on:nodedragstop',
       type: '(event: CustomEvent<{ event: MouseEvent; node: NodeBase; nodes: NodeBase[] }>) => void',
     },
     { name: 'Edges' },
     {
-      name: 'on:edgeclick?',
+      name: 'on:edgeclick',
       type: '(event: CustomEvent<{ event: MouseEvent; edge: Edge }>) => void',
     },
     {
-      name: 'on:edgecontextmenu?',
+      name: 'on:edgecontextmenu',
       type: '(event: CustomEvent<{ event: MouseEvent; edge: Edge }>) => void',
     },
     { name: 'Connections' },
     {
-      name: 'on:connectstart?',
+      name: 'on:connectstart',
       type: `(event: CustomEvent<{
         event: MouseEvent | TouchEvent;
         nodeId?: string;
@@ -207,22 +201,22 @@ export const eventHandlerProps: PropsTableProps = {
       description: `When a user starts to drag a connection line, this event gets fired.`,
     },
     {
-      name: 'on:connect?',
+      name: 'on:connect',
       type: '(event: CustomEvent<{ connection: Connection }>) => void',
       description: `This event gets fired when a connection successfully completes.`,
     },
     {
-      name: 'on:connectend?',
+      name: 'on:connectend',
       type: '(event: CustomEvent<{ event: MouseEvent | TouchEvent }>) => void',
       description: `Whenever the user drops the connection line, this events get fired. No matter if a connection was created or not.`,
     },
     { name: 'Pane' },
     {
-      name: 'on:paneclick?',
+      name: 'on:paneclick',
       type: '(event: CustomEvent<{ event: MouseEvent | TouchEvent }>) => void',
     },
     {
-      name: 'on:panecontextmenu?',
+      name: 'on:panecontextmenu',
       type: '(event: CustomEvent<{ event: MouseEvent }>) => void',
     },
   ],
@@ -232,7 +226,7 @@ export const interactionProps: PropsTableProps = {
   deeplinkPrefix: 'interaction',
   props: [
     {
-      name: 'nodesDraggable?',
+      name: 'nodesDraggable',
       type: 'boolean',
       default: 'true',
       description: `Controls whether all nodes should be draggable or not. Individual
@@ -241,17 +235,17 @@ export const interactionProps: PropsTableProps = {
       class to those nodes.`,
     },
     {
-      name: 'nodesConnectable?',
+      name: 'nodesConnectable',
       type: 'boolean',
       default: 'true',
       description: `Controls whether all nodes should be connectable or not. Individual
       nodes can override this setting by setting their connectable prop.`,
     },
-    { name: 'elementsSelectable?', type: 'boolean', default: 'true' },
-    { name: 'autoPanOnConnect?', type: 'boolean', default: 'true' },
-    { name: 'autoPanOnNodeDrag?', type: 'boolean', default: 'true' },
+    { name: 'elementsSelectable', type: 'boolean', default: 'true' },
+    { name: 'autoPanOnConnect', type: 'boolean', default: 'true' },
+    { name: 'autoPanOnNodeDrag', type: 'boolean', default: 'true' },
     {
-      name: 'panOnDrag?',
+      name: 'panOnDrag',
       type: 'boolean | (0 | 1 | 2 | 3 | 4)[]',
       default: 'true',
       description: `Enableing this prop allows users to pan the viewport by clicking
@@ -260,27 +254,27 @@ export const interactionProps: PropsTableProps = {
       panning with the left and right mouse buttons.`,
     },
     {
-      name: 'selectionMode?',
+      name: 'selectionMode',
       type: '"partial" | "full"',
       default: '"full"',
       description: `When set to "partial", when the user creates a selection box
       by click and dragging nodes that are only partially in the box are still
       selected.`,
     },
-    { name: 'panOnScroll?', type: 'boolean', default: 'false' },
-    { name: 'panOnScrollSpeed?', type: 'number' },
+    { name: 'panOnScroll', type: 'boolean', default: 'false' },
+    { name: 'panOnScrollSpeed', type: 'number' },
     {
-      name: 'panOnScrollMode?',
+      name: 'panOnScrollMode',
       type: '"free" | "horizontal" | "vertical"',
       default: '"free"',
       description: `This prop is used to limit the direction of panning when
       panOnScroll is enabled. The "free" option allows panning in any direction.`,
     },
-    { name: 'zoomOnScroll?', type: 'boolean', default: 'true' },
-    { name: 'zoomOnPinch?', type: 'boolean', default: 'true' },
-    { name: 'zoomOnDoubleClick?', type: 'boolean', default: 'true' },
+    { name: 'zoomOnScroll', type: 'boolean', default: 'true' },
+    { name: 'zoomOnPinch', type: 'boolean', default: 'true' },
+    { name: 'zoomOnDoubleClick', type: 'boolean', default: 'true' },
     {
-      name: 'connectionMode?',
+      name: 'connectionMode',
       type: '"loose" | "strict"',
       default: '"strict"',
       description: `A loose connection mode will allow you to connect handles of
@@ -300,21 +294,21 @@ export const connectionLineProps: PropsTableProps = {
       description: `This prop allows you to control which connections are valid. It gets called before an edge is created.`,
     },
     {
-      name: 'connectionRadius?',
+      name: 'connectionRadius',
       type: 'number',
       default: '20',
       description: `The radius around a handle where you drop a connection line
       to create a new edge.`,
     },
     {
-      name: 'connectionLineType?',
+      name: 'connectionLineType',
       type: 'ConnectionLineType',
       default: 'ConnectionLineType.Bezier',
       description: `The type of edge path to use for connection lines. Although
       created edges can be of any type, Svelte Flow needs to know what type of
       path to render for the connection line before the edge is created!`,
     },
-    { name: 'connectionLineStyle?', type: 'string' },
-    { name: 'connectionLineWrapperStyles?', type: 'string' },
+    { name: 'connectionLineStyle', type: 'string' },
+    { name: 'connectionLineWrapperStyles', type: 'string' },
   ],
 };

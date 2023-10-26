@@ -76,18 +76,14 @@ export default function SvelteExample({
     fetchFiles();
   }, []);
 
-  if (!files) {
+  if (!files && fileFetchFailed) {
     return (
-      <>
-        {fileFetchFailed && (
-          <div
-            style={{ height: editorHeight }}
-            className="w-full color nx-bg-primary-100 flex justify-center content-center flex-wrap"
-          >
-            <p className="text-svelte">Example failed to load</p>
-          </div>
-        )}
-      </>
+      <div
+        style={{ height: editorHeight }}
+        className="w-full color nx-bg-primary-100 flex justify-center content-center flex-wrap"
+      >
+        <p className="text-svelte">Example failed to load</p>
+      </div>
     );
   }
 
