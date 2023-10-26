@@ -12,6 +12,8 @@ import {
 
 # &lt;SvelteFlow />
 
+[Source oon Github](https://github.com/wbkd/react-flow/blob/78169c992bf95a5dbc9bccbdc2a07725a307e2c3/packages/svelte/src/lib/container/SvelteFlow/SvelteFlow.svelte)
+
 The `<SvelteFlow />` component is the heart of your Svelte Flow application.
 
 ```svelte
@@ -19,8 +21,14 @@ The `<SvelteFlow />` component is the heart of your Svelte Flow application.
   import { writable } from 'svelte/store';
   import { SvelteFlow } from '@xyflow/svelte';
 
-  const nodes = writable([]);
-  const edges = writable([]);
+  const nodes = writable([
+    { id: 'a', data: { label: 'node a' }, position: { x: 0, y: 0 } },
+    { id: 'b', data: { label: 'node b' }, position: { x: 0, y: 100 } }
+  ]);
+
+  const edges = writable([
+    { id: 'e1-2', source: 'a', target: 'b' }
+  ]);
 </script>
 
 <SvelteFlow
