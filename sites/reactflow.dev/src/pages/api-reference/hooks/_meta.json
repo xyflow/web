@@ -2,6 +2,7 @@
   "use-edges": "useEdges()",
   "use-edges-state": "useEdgesState()",
   "use-key-press": "useKeyPress()",
+  "use-node-id": "useNodeId()",
   "use-nodes": "useNodes()",
   "use-nodes-initialized": "useNodesInitialized()",
   "use-nodes-state": "useNodesState()",
