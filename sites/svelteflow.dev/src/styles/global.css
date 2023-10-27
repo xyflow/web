@@ -19,14 +19,10 @@
 /* this override adds some space for the api docs */
 
 .learn article main.md\:nx-px-12,
-.api-reference article main.md\:nx-px-12 {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-}
-
+.api-reference article main.md\:nx-px-12,
 .examples article main.md\:nx-px-12 {
   padding-left: 1.5rem;
-  padding-right: 0;
+  padding-right: 1.5rem;
 }
 
 /* this unifies the /examples content width with /api-refernce and /learn */
