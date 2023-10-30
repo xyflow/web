@@ -1,3 +1,11 @@
+---
+title: Edge
+description:
+  'Where a Connection is the minimal description of an edge between two nodes,
+  an `Edge` is the complete description with everything React Flow needs to know
+  in order to render it.'
+---
+
 import { PropsTable } from '@/components/props-table';
 import {
   defaultEdgeFields,
@@ -7,9 +15,9 @@ import {
 
 # Edge&lt;T>
 
-[Source on GitHub](https://github.com/wbkd/react-flow/blob/f919cb152dd5a92ec3b4d7e4568ffe099bc2af39/packages/react/src/types/edges.ts#L49)
+[Source on GitHub](https://github.com/wbkd/react-flow/blob/bacaa99c73b347856f63c5d495f5a0829be1e431/packages/core/src/types/edges.ts/#L63)
 
-Where a [`Connection`](./Connection) is the minimal description of an edge between
+Where a [`Connection`](/api-reference/types/connection) is the minimal description of an edge between
 two nodes, an `Edge` is the complete description with everything React Flow needs
 to know in order to render it.
 
@@ -24,13 +32,13 @@ export type Edge<T> =
 
 ### DefaultEdge&lt;T>
 
-[Source on GitHub](https://github.com/wbkd/react-flow/blob/f919cb152dd5a92ec3b4d7e4568ffe099bc2af39/packages/react/src/types/edges.ts#L31)
+[Source on GitHub](https://github.com/wbkd/react-flow/blob/bacaa99c73b347856f63c5d495f5a0829be1e431/packages/core/src/types/edges.ts/#L17)
 
 <PropsTable {...defaultEdgeFields} />
 
 ### SmoothStepEdgeType&lt;T>
 
-[Source on GitHub](https://github.com/wbkd/react-flow/blob/f919cb152dd5a92ec3b4d7e4568ffe099bc2af39/packages/react/src/types/edges.ts#L39C1-L39C1)
+[Source on GitHub](https://github.com/wbkd/react-flow/blob/bacaa99c73b347856f63c5d495f5a0829be1e431/packages/core/src/types/edges.ts/#L49)
 
 The `SmoothStepEdgeType` variant has all the same fields as the `DefaultEdge`
 variant, but it also has the following additional fields:
@@ -39,9 +47,26 @@ variant, but it also has the following additional fields:
 
 ### BezierEdgeType&lt;T>
 
-[Source on GitHub](https://github.com/wbkd/react-flow/blob/f919cb152dd5a92ec3b4d7e4568ffe099bc2af39/packages/react/src/types/edges.ts#L44)
+[Source on GitHub](https://github.com/wbkd/react-flow/blob/bacaa99c73b347856f63c5d495f5a0829be1e431/packages/core/src/types/edges.ts/#L58)
 
 The `BezierEdgeType` variant has all the same fields as the `DefaultEdge` variant,
 but it also has the following additional fields:
 
 <PropsTable {...bezierEdgeTypeFields} />
+
+## Default edge types
+
+You can create any of React Flow's default edges by setting the `type` property
+to one of the following values:
+
+- `"default"`
+- `"straight"`
+- `"step"`
+- `"smoothstep"`
+- `"simplebezier"`
+
+If you don't set the `type` property at all, React Flow will fallback to the
+`"default"` bezier curve edge type.
+
+These default edges are available even if you set the [`edgeTypes`](/api-reference/react-flow#edge-types)
+prop to something else, unless you override any of these keys directly.

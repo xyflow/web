@@ -12,7 +12,7 @@ export type CaseStudyLayoutProps = {
 
 export function CaseStudyLayout({ children }: CaseStudyLayoutProps) {
   const { title, frontMatter } = useConfig<CaseStudyFrontmatter>();
-  const { prev, next } = getPrevAndNextPagesByTitle(title, '/case-studies');
+  const { prev, next } = getPrevAndNextPagesByTitle(title, '/pro/case-studies');
 
   return (
     <BaseCaseStudyLayout frontMatter={frontMatter} prev={prev} next={next}>
@@ -34,7 +34,7 @@ function getPrevAndNextPagesByTitle(title: string, route: string) {
   });
 
   const currentIndex = pages.findIndex(
-    (page) => page.frontMatter?.title === title
+    (page) => page.frontMatter?.title === title,
   );
   const prevIndex = currentIndex - 1 < 0 ? pages.length - 1 : currentIndex - 1;
   const nextIndex = currentIndex + 1 > pages.length - 1 ? 0 : currentIndex + 1;

@@ -1,16 +1,39 @@
+---
+title: isNode()
+description:
+  'Test whether an object is useable as an Node. In TypeScript this is a type
+  guard that will narrow the type of whatever you pass in to Node if it returns
+  true.'
+---
+
 import { PropsTable } from '@/components/props-table';
 import { signature } from '@/page-data/reference/utils/isNode.ts';
 
 # isNode()
 
-[Source on GitHub](https://github.com/wbkd/react-flow/blob/f919cb152dd5a92ec3b4d7e4568ffe099bc2af39/packages/react/src/utils/general.ts#L13)
+[Source on GitHub](https://github.com/wbkd/react-flow/blob/bacaa99c73b347856f63c5d495f5a0829be1e431/packages/core/src/utils/graph.ts/#L22)
 
-Test whether an object is useable as an [`Node`](../types/node). In TypeScript
+Test whether an object is useable as an [`Node`](/api-reference/types/node). In TypeScript
 this is a type guard that will narrow the type of whatever you pass in to
-[`Node`](../types/node) if it returns `true`.
+[`Node`](/api-reference/types/node) if it returns `true`.
 
-```ts
-@todo
+```js
+import { isNode } from 'reactflow';
+
+const node = {
+  id: 'node-a',
+  data: {
+    label: 'node',
+  },
+  position: {
+    x: 0,
+    y: 0,
+  },
+};
+
+if (isNode(node)) {
+  // ..
+}
 ```
 
 ## Signature

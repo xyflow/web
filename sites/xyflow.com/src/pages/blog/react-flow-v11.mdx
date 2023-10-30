@@ -13,7 +13,7 @@ import { BlogPostLayout } from '@/layouts/blog-post-with-frontmatter';
 <BlogPostLayout>
 A lot has happened since we published our last blog post six months ago. We got our first pro subscribers, we hired John who helps us with the docs, communication and community and we are all working full time on React Flow <Emoji content="🥳" />. Today we are releasing a new major version with lots of new features and very few breaking changes (unlike the last major update..).
 
-**If you are looking for the information how to upgrade, please refer to the ["Migrate to v11" guide](/docs/guides/migrate-to-v11/).**
+**If you are looking for the information how to upgrade, please refer to the ["Migrate to v11" guide](https://reactflow.dev/learn/troubleshooting/migrate-to-v11/).**
 
 #### TLDR;
 
@@ -45,7 +45,7 @@ import 'reactflow/dist/style.css';
 </ReactFlow>
 ```
 
-Looks nice, right? Under the hood we are publishing packages separately in the `@reactflow` organization. These packages are used by the main `reactflow` package and also can be [used separately](/docs/concepts/packages/). For this we've rebuilt React Flow to a monorepo powered by [turborepo](https://turborepo.org/), [Rollup](https://rollupjs.org/) and [Vite](https://vitejs.dev/).
+Looks nice, right? Under the hood we are publishing packages separately in the `@reactflow` organization. These packages are used by the main `reactflow` package and also can be [used separately](https://reactflow.dev/learn/concepts/packages/). For this we've rebuilt React Flow to a monorepo powered by [turborepo](https://turborepo.org/), [Rollup](https://rollupjs.org/) and [Vite](https://vitejs.dev/).
 
 ## <Emoji content="✨" /> New Features
 
@@ -55,11 +55,11 @@ For this release, we focused on accessibility (nothing better for a v11 release 
 
 Accessibility was quite limited in the previous versions and we put a lot of work into it to make it better by default. You can now interact with a flow with your keyboard. You can focus nodes and edges with `Tab`, select an element with `Enter` and move nodes around with the arrow keys.
 
-Moreover we added default aria-labels to all elements on the pane and made them configurable with new `ariaLabel` options for nodes and edges. You can refer to the new [Accessibility guide](/docs/guides/accessibility) for more information.
+Moreover we added default aria-labels to all elements on the pane and made them configurable with new `ariaLabel` options for nodes and edges. You can refer to the new [Accessibility guide](https://reactflow.dev/learn/advanced-use/accessibility) for more information.
 
 ### Edge Routing and Edge Selection
 
-Whereas in v10, the nodes were a bit more in the spotlight, this time we've put a special focus on the edges. A lot of people complained that thin edges are hard to select. We've fixed that by introducing a new [`interactionWidth` edge option](/api-reference/types/edge). Its default value is 20, meaning that a 20px wide invisible edge gets painted below the visible edge for an easier interaction.
+Whereas in v10, the nodes were a bit more in the spotlight, this time we've put a special focus on the edges. A lot of people complained that thin edges are hard to select. We've fixed that by introducing a new [`interactionWidth` edge option](https://reactflow.dev/api-reference/types/edge). Its default value is 20, meaning that a 20px wide invisible edge gets painted below the visible edge for an easier interaction.
 
 Another big update is a complete rewrite of the edge routing for `smoothstep` and `step` edge types.
 
@@ -87,7 +87,7 @@ In the future we want to get rid of some `<ReactFlow />` component props (there 
 
 ### Miscellaneous
 
-The background got a [new variant `cross`](https://reactflow.dev/api-reference/components/background/#prop-types), and you can control the gap size horizontally and vertically individually for all variants. We've added new handlers that make it easier to add mouse event handlers to the pane (the area below the nodes): [`onPaneMouseEnter`, `onPaneMouseMove` and `onPaneMouseLeave`](/api-reference/react-flow/#pane). Last but not least the cursor is a grabbing hand while dragging the pane or a node and you pan over nodes when they are not draggable. Strange that this wasn't always the case?!
+The background got a [new variant `cross`](https://reactflow.dev/api-reference/components/background/#prop-types), and you can control the gap size horizontally and vertically individually for all variants. We've added new handlers that make it easier to add mouse event handlers to the pane (the area below the nodes): [`onPaneMouseEnter`, `onPaneMouseMove` and `onPaneMouseLeave`](https://reactflow.dev/api-reference/react-flow/#pane). Last but not least the cursor is a grabbing hand while dragging the pane or a node and you pan over nodes when they are not draggable. Strange that this wasn't always the case?!
 
 ## What's Next?
 

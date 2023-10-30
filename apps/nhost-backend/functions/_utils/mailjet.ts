@@ -8,7 +8,7 @@ const mailjet = new Mailjet({
 export async function subscribeMailingList(
   email: string,
   listId: number,
-  properties = {}
+  properties = {},
 ) {
   if (!email || !listId) {
     return false;
@@ -57,7 +57,7 @@ export async function sendMailTemplate(
   email: string,
   subject: string,
   templateId: number,
-  variables = {}
+  variables = {},
 ) {
   if (!email || !subject || !templateId) {
     return false;
@@ -68,7 +68,7 @@ export async function sendMailTemplate(
       Messages: [
         {
           From: {
-            Email: 'info@reactflow.dev',
+            Email: 'noreply@reactflow.dev',
             Name: 'React Flow',
           },
           To: [
@@ -111,8 +111,8 @@ export async function sendMail({
       Messages: [
         {
           From: {
-            Email: 'info@reactflow.dev',
-            Name: 'xyflow',
+            Email: 'noreply@reactflow.dev',
+            Name: 'React Flow',
           },
           To: [
             {

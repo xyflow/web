@@ -43,40 +43,40 @@ There are different ways how you can customize the appearance of Svelte Flow:
 
 If you want to override the default styles, you can do so by overriding the built-in CSS classes. You can find a list of all the classes used by Svelte Flow below:
 
-| Class name                          | Description                                                                                   |
-| :---------------------------------- | :-------------------------------------------------------------------------------------------- |
-| `.svelte-flow`                      | The outermost container                                                                       |
-| `.svelte-flow__renderer`            | The inner container                                                                           |
-| `.svelte-flow__zoompane`            | Zoom & pan pane                                                                               |
-| `.svelte-flow__selectionpane`       | Selection pane                                                                                |
-| `.svelte-flow__selection`           | User selection                                                                                |
-| `.svelte-flow__edges`               | The element containing all edges in the flow                                                  |
-| `.svelte-flow__edge`                | Applied to each [`Edge`](../../api-reference/types/edge) in the flow                          |
-| `.svelte-flow__edge.selected`       | Added to an [`Edge`](../../api-reference/types/edge) when selected                            |
-| `.svelte-flow__edge.animated`       | Added to an [`Edge`](../../api-reference/types/edge) when its `animated` prop is `true`       |
-| `.svelte-flow__edge-path`           | The SVG `<path />` element of an [`Edge`](../../api-reference/types/edge)                     |
-| `.svelte-flow__edge-label`          | The edge label                                                                                |
-| `.svelte-flow__connection`          | Applied to the current connection line                                                        |
-| `.svelte-flow__connection-path`     | The SVG `<path />` of a connection line                                                       |
-| `.svelte-flow__nodes`               | The element containing all nodes in the flow                                                  |
-| `.svelte-flow__node`                | Applied to each [`Node`](../../api-reference/types/node) in the flow                          |
-| `.svelte-flow__node.selected`       | Added to a [`Node`](../../api-reference/types/node) when selected.                            |
-| `.svelte-flow__node-default`        | Added when [`Node`](../../api-reference/types/node) type is `"default"`                       |
-| `.svelte-flow__node-input`          | Added when [`Node`](../../api-reference/types/node) type is `"input"`                         |
-| `.svelte-flow__node-output`         | Added when [`Node`](../../api-reference/types/node) type is `"output"`                        |
-| `.svelte-flow__node-group`          | Added when [`Node`](../../api-reference/types/node) type is `"group"`                         |
-| `.svelte-flow__nodesselection`      | Nodes selection                                                                               |
-| `.svelte-flow__nodesselection-rect` | Nodes selection rect                                                                          |
-| `.svelte-flow__handle`              | Applied to each [`<Handle />`](../../api-reference/components/handle) component               |
-| `.svelte-flow__handle-top`          | Applied when a handle's [`Position`](../../api-reference/types/position) is set to `"top"`    |
-| `.svelte-flow__handle-right`        | Applied when a handle's [`Position`](../../api-reference/types/position) is set to `"right"`  |
-| `.svelte-flow__handle-bottom`       | Applied when a handle's [`Position`](../../api-reference/types/position) is set to `"bottom"` |
-| `.svelte-flow__handle-left`         | Applied when a handle's [`Position`](../../api-reference/types/position) is set to `"left"`   |
-| `.svelte-flow__handle.connecting`   | Applied when a connection line is above a handle.                                             |
-| `.svelte-flow__handle.valid`        | Applied when a connection line is above a handle **and** the connection is valid              |
-| `.svelte-flow__background`          | Applied to the [`<Background />`](../../api-reference/components/background) component        |
-| `.svelte-flow__minimap`             | Applied to the [`<MiniMap />`](../../api-reference/components/minimap) component              |
-| `.svelte-flow__controls`            | Applied to the [`<Controls />`](../../api-reference/components/controls) component            |
+| Class name                          | Description                                                                              |
+| :---------------------------------- | :--------------------------------------------------------------------------------------- |
+| `.svelte-flow`                      | The outermost container                                                                  |
+| `.svelte-flow__renderer`            | The inner container                                                                      |
+| `.svelte-flow__zoompane`            | Zoom & pan pane                                                                          |
+| `.svelte-flow__selectionpane`       | Selection pane                                                                           |
+| `.svelte-flow__selection`           | User selection                                                                           |
+| `.svelte-flow__edges`               | The element containing all edges in the flow                                             |
+| `.svelte-flow__edge`                | Applied to each [`Edge`](/api-reference/types/edge) in the flow                          |
+| `.svelte-flow__edge.selected`       | Added to an [`Edge`](/api-reference/types/edge) when selected                            |
+| `.svelte-flow__edge.animated`       | Added to an [`Edge`](/api-reference/types/edge) when its `animated` prop is `true`       |
+| `.svelte-flow__edge-path`           | The SVG `<path />` element of an [`Edge`](/api-reference/types/edge)                     |
+| `.svelte-flow__edge-label`          | The edge label                                                                           |
+| `.svelte-flow__connection`          | Applied to the current connection line                                                   |
+| `.svelte-flow__connection-path`     | The SVG `<path />` of a connection line                                                  |
+| `.svelte-flow__nodes`               | The element containing all nodes in the flow                                             |
+| `.svelte-flow__node`                | Applied to each [`Node`](/api-reference/types/node) in the flow                          |
+| `.svelte-flow__node.selected`       | Added to a [`Node`](/api-reference/types/node) when selected.                            |
+| `.svelte-flow__node-default`        | Added when [`Node`](/api-reference/types/node) type is `"default"`                       |
+| `.svelte-flow__node-input`          | Added when [`Node`](/api-reference/types/node) type is `"input"`                         |
+| `.svelte-flow__node-output`         | Added when [`Node`](/api-reference/types/node) type is `"output"`                        |
+| `.svelte-flow__node-group`          | Added when [`Node`](/api-reference/types/node) type is `"group"`                         |
+| `.svelte-flow__nodesselection`      | Nodes selection                                                                          |
+| `.svelte-flow__nodesselection-rect` | Nodes selection rect                                                                     |
+| `.svelte-flow__handle`              | Applied to each [`<Handle />`](/api-reference/components/handle) component               |
+| `.svelte-flow__handle-top`          | Applied when a handle's [`Position`](/api-reference/types/position) is set to `"top"`    |
+| `.svelte-flow__handle-right`        | Applied when a handle's [`Position`](/api-reference/types/position) is set to `"right"`  |
+| `.svelte-flow__handle-bottom`       | Applied when a handle's [`Position`](/api-reference/types/position) is set to `"bottom"` |
+| `.svelte-flow__handle-left`         | Applied when a handle's [`Position`](/api-reference/types/position) is set to `"left"`   |
+| `.svelte-flow__handle.connecting`   | Applied when a connection line is above a handle.                                        |
+| `.svelte-flow__handle.valid`        | Applied when a connection line is above a handle **and** the connection is valid         |
+| `.svelte-flow__background`          | Applied to the [`<Background />`](/api-reference/components/background) component        |
+| `.svelte-flow__minimap`             | Applied to the [`<MiniMap />`](/api-reference/components/mini-map) component             |
+| `.svelte-flow__controls`            | Applied to the [`<Controls />`](/api-reference/components/controls) component            |
 
 <Callout type="warning">
   Be careful if you go poking around the source code looking for other classes

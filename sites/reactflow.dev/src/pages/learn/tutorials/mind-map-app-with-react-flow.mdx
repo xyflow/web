@@ -39,7 +39,7 @@ If you'd like to live dangerously and dive right into the code, you can find the
 
 ## <Emoji content="👩🏻‍💻" /> Getting started
 
-To do this tutorial you will need some knowledge of [React](https://reactjs.org/docs/getting-started.html) and [React Flow](/docs/concepts/terms-and-definitions/) (hi, that's us! <Emoji content="😁" /> it's an open source library for building node-based UIs like workflow tools, ETL pipelines, and [more](https://reactflow.dev/showcase/).)
+To do this tutorial you will need some knowledge of [React](https://reactjs.org/docs/getting-started.html) and [React Flow](/learn/concepts/terms-and-definitions) (hi, that's us! <Emoji content="😁" /> it's an open source library for building node-based UIs like workflow tools, ETL pipelines, and [more](https://reactflow.dev/showcase/).)
 
 We'll be using [Vite](https://vitejs.dev/) to develop our app, but you can also use [Create React App](https://create-react-app.dev/) or any other tool you like. To scaffold a new React app with Vite you need to do:
 
@@ -123,7 +123,7 @@ body,
 }
 ```
 
-We are adding all styles of our app to the `index.css` file (you could also use a CSS-in-JS library like [Styled Components](/examples/styling/styled-components/) or [Tailwind](/examples/styling/tailwind/)). Now you can start the development server with `npm run dev` and you should see the following:
+We are adding all styles of our app to the `index.css` file (you could also use a CSS-in-JS library like [Styled Components](/examples/styling/styled-components) or [Tailwind](/examples/styling/tailwind)). Now you can start the development server with `npm run dev` and you should see the following:
 
 <Bleed>
   <BlogExampleViewer
@@ -401,7 +401,7 @@ addChildNode: (parentNode: Node, position: XYPosition) => {
 };
 ```
 
-We are using the passed node as a parent. Normally this feature is used to implement [grouping](/examples/nodes/dynamic-grouping/) or [sub flows](/examples/layout/sub-flows/). Here we are using it to move all child nodes when their parent is moved. It enables us to clean up and re-order the mind map so that we don't have to move all child nodes manually. Let's use the new action in our `onConnectEnd` handler:
+We are using the passed node as a parent. Normally this feature is used to implement [grouping](/examples/nodes/dynamic-grouping) or [sub flows](/examples/layout/sub-flows). Here we are using it to move all child nodes when their parent is moved. It enables us to clean up and re-order the mind map so that we don't have to move all child nodes manually. Let's use the new action in our `onConnectEnd` handler:
 
 #### Adjustments in src/App/index.tsx
 
@@ -463,7 +463,7 @@ const getChildNodePosition = (event: MouseEvent, parentNode?: Node) => {
 };
 ```
 
-This function returns the position of the new node we want to add to our store. We are using the [`project` function](/api-reference/types/react-flow-instance/#project) to convert screen coordinates into React Flow coordinates. As mentioned earlier, child nodes are positioned relative to their parents. That's why we need to subtract the parent position from the child node position. That was a lot to take in, let's see it in action:
+This function returns the position of the new node we want to add to our store. We are using the [`project` function](/api-reference/types/react-flow-instance#project) to convert screen coordinates into React Flow coordinates. As mentioned earlier, child nodes are positioned relative to their parents. That's why we need to subtract the parent position from the child node position. That was a lot to take in, let's see it in action:
 
 <Bleed>
   <BlogExampleViewer
@@ -588,7 +588,7 @@ In order to make the whole node a handle, we also update the style of the source
   />
 </Bleed>
 
-This works but we can't move the nodes anymore because the source handle is now the whole node and covers the input field. We fix that by using the [`dragHandle` node option](/api-reference/types/node/#drag-handle). It allows us to specify a selector for a DOM element that should be used as a drag handle. For this we adjust the custom node a bit:
+This works but we can't move the nodes anymore because the source handle is now the whole node and covers the input field. We fix that by using the [`dragHandle` node option](/api-reference/types/node#drag-handle). It allows us to specify a selector for a DOM element that should be used as a drag handle. For this we adjust the custom node a bit:
 
 #### src/App/MindmapNode/index.tsx
 
@@ -843,7 +843,7 @@ function MindMapEdge(props: EdgeProps) {
 export default MindMapEdge;
 ```
 
-We are passing all props to the [`getStraightPath`](/api-reference/utils/getStraightPath) helper function but adjust the sourceY so that it is in the center of the node.
+We are passing all props to the [`getStraightPath`](/api-reference/utils/get-straight-path) helper function but adjust the sourceY so that it is in the center of the node.
 
 More over we want the title to be a bit more subtle and choose a color for our background. We can do this by adjusting the color of the panel (we added the class name `"header"`) and the background color of the body element:
 

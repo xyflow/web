@@ -34,7 +34,7 @@
 </script>
 
 <div
-  style={`top: ${top}px; left: ${left}px; right: ${right}px; bottom: ${bottom}px;`}
+  style="top: {top}px; left: {left}px; right: {right}px; bottom: {bottom}px;"
   class="context-menu"
   on:click={onClick}
 >

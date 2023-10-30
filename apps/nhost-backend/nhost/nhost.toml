@@ -51,6 +51,7 @@ version = '0.19.1'
 
 [auth.redirections]
 clientUrl = 'http://localhost:3000'
+allowedUrls = ['http://localhost:3000', 'https://*.vercel.app', 'https://*.netlify.app', 'https://pro.reactflow.dev']
 
 [auth.signUp]
 enabled = true
@@ -89,7 +90,7 @@ enabled = true
 
 [auth.method.emailPassword]
 hibpEnabled = false
-emailVerificationRequired = false
+emailVerificationRequired = true
 passwordMinLength = 8
 
 [auth.method.smsPasswordless]
@@ -162,10 +163,10 @@ version = '14.5-20221009-1'
 
 [provider]
 [provider.smtp]
-user = 'postmaster@mg.xyflow.com'
+user = 'noreply@reactflow.dev'
 password = '{{ secrets.SMTP_PASSWORD }}'
-sender = 'noreply@xyflow.com'
-host = 'smtp.eu.mailgun.org'
+sender = 'noreply@reactflow.dev'
+host = 'smtp-moklick.alwaysdata.net'
 port = 465
 secure = true
 method = 'LOGIN'

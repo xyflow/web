@@ -6,16 +6,21 @@ export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY ?? '', {
   apiVersion: '2022-11-15',
 });
 
+type GetPricesOptions = {
+  forceUpdate?: boolean;
+};
+
 let prices: Stripe.Price[] | null = null;
 
-export const getPrices = async () => {
-  if (prices) {
+export const getPrices = async (options?: GetPricesOptions) => {
+  if (prices && !options?.forceUpdate) {
     return prices;
   }
 
   const { data } = await stripe.prices.list({
     active: true,
     expand: ['data.product'],
+    limit: 100,
   });
 
   prices = data;
@@ -41,7 +46,7 @@ export const getLineItem = async ({
       (plan === 'seats'
         ? (price.product as Stripe.Product).metadata.seats
         : (price.product as Stripe.Product).metadata.plan === plan) &&
-      price.recurring?.interval === interval
+      price.recurring?.interval === interval,
   )?.id;
 
   if (!priceId) {
@@ -94,14 +99,14 @@ export async function updateSeatQuantity(userId: string) {
   const products = await Promise.all(
     subscription.items?.data?.map(async (item: Stripe.SubscriptionItem) => {
       return await stripe.products.retrieve(item.price.product as string);
-    })
+    }),
   );
 
   const seatProduct = products?.find((product) => product.metadata.seats);
 
   if (seatProduct) {
     const seatSubscriptionItem = subscription.items?.data?.find(
-      (item: Stripe.SubscriptionItem) => item.price.product === seatProduct.id
+      (item: Stripe.SubscriptionItem) => item.price.product === seatProduct.id,
     );
 
     if (!seatSubscriptionItem) {
