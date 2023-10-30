@@ -1,7 +1,7 @@
 import { getMdxPagesUnderRoute } from '../index';
 import { type InternalRoute } from '../routes';
 
-export type Category = 'components' | 'hooks' | 'types' | 'utils';
+export type Category = 'components' | 'hooks' | 'types';
 
 export function getApiReferenceByCategory(
   category: Category,
