@@ -34,5 +34,5 @@
 </script>
 
 <Panel position="top-right">
-  <button on:click={handleClick}>Donwload Image</button>
+  <button on:click={handleClick}>Download Image</button>
 </Panel>

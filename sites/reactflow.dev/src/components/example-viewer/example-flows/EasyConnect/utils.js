@@ -16,8 +16,8 @@ function getNodeIntersection(intersectionNode, targetNode) {
 
   const x2 = intersectionNodePosition.x + w;
   const y2 = intersectionNodePosition.y + h;
-  const x1 = targetPosition.x + w;
-  const y1 = targetPosition.y + h;
+  const x1 = targetPosition.x + targetNode.width / 2;
+  const y1 = targetPosition.y + targetNode.height / 2;
 
   const xx1 = (x1 - x2) / (2 * w) - (y1 - y2) / (2 * h);
   const yy1 = (x1 - x2) / (2 * w) + (y1 - y2) / (2 * h);
