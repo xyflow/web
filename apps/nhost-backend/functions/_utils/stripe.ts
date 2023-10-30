@@ -9,6 +9,8 @@ export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY ?? '', {
 let prices: Stripe.Price[] | null = null;
 
 export const getPrices = async () => {
+  console.log(prices);
+
   if (prices) {
     return prices;
   }
@@ -17,6 +19,8 @@ export const getPrices = async () => {
     active: true,
     expand: ['data.product'],
   });
+
+  console.log(data);
 
   prices = data;
 
@@ -41,7 +45,7 @@ export const getLineItem = async ({
       (plan === 'seats'
         ? (price.product as Stripe.Product).metadata.seats
         : (price.product as Stripe.Product).metadata.plan === plan) &&
-      price.recurring?.interval === interval
+      price.recurring?.interval === interval,
   )?.id;
 
   if (!priceId) {
@@ -94,14 +98,14 @@ export async function updateSeatQuantity(userId: string) {
   const products = await Promise.all(
     subscription.items?.data?.map(async (item: Stripe.SubscriptionItem) => {
       return await stripe.products.retrieve(item.price.product as string);
-    })
+    }),
   );
 
   const seatProduct = products?.find((product) => product.metadata.seats);
 
   if (seatProduct) {
     const seatSubscriptionItem = subscription.items?.data?.find(
-      (item: Stripe.SubscriptionItem) => item.price.product === seatProduct.id
+      (item: Stripe.SubscriptionItem) => item.price.product === seatProduct.id,
     );
 
     if (!seatSubscriptionItem) {
