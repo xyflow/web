@@ -6,12 +6,14 @@ export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY ?? '', {
   apiVersion: '2022-11-15',
 });
 
+type GetPricesOptions = {
+  forceUpdate?: boolean;
+};
+
 let prices: Stripe.Price[] | null = null;
 
-export const getPrices = async () => {
-  console.log(prices);
-
-  if (prices) {
+export const getPrices = async (options?: GetPricesOptions) => {
+  if (prices && !options?.forceUpdate) {
     return prices;
   }
 
@@ -19,8 +21,6 @@ export const getPrices = async () => {
     active: true,
     expand: ['data.product'],
   });
-
-  console.log(data);
 
   prices = data;
 
