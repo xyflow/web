@@ -20,6 +20,7 @@ export const getPrices = async (options?: GetPricesOptions) => {
   const { data } = await stripe.prices.list({
     active: true,
     expand: ['data.product'],
+    limit: 100,
   });
 
   prices = data;
