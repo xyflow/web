@@ -5,6 +5,7 @@ export type ExternalRoute = `https://${string}`;
 export type InternalRoute =
   | '/'
   | '/api-reference'
+  | '/api-reference/components'
   | '/api-reference/components/background'
   | '/api-reference/components/base-edge'
   | '/api-reference/components/control-button'
@@ -13,6 +14,7 @@ export type InternalRoute =
   | '/api-reference/components/handle'
   | '/api-reference/components/mini-map'
   | '/api-reference/components/panel'
+  | '/api-reference/hooks'
   | '/api-reference/hooks/use-connection'
   | '/api-reference/hooks/use-edges'
   | '/api-reference/hooks/use-nodes'
@@ -21,6 +23,7 @@ export type InternalRoute =
   | '/api-reference/hooks/use-update-node-internals'
   | '/api-reference/svelte-flow'
   | '/api-reference/svelte-flow-provider'
+  | '/api-reference/types'
   | '/api-reference/types/background-variant'
   | '/api-reference/types/connection'
   | '/api-reference/types/connection-line-type'
