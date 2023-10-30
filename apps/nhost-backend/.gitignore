@@ -1,6 +1,8 @@
 # nhost
 .nhost
 .secrets
+.secrets.production
+.secrets.development
 
 # dependencies
 /node_modules
