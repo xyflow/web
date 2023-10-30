@@ -1,5 +1,4 @@
 import { type ReactNode } from 'react';
-import { Heading } from '../../';
 
 export type ExampleLayoutProps = {
   frontMatter: { title: string };
@@ -14,9 +13,9 @@ export type ExampleLayoutProps = {
 export function ExampleLayout({ frontMatter, children }: ExampleLayoutProps) {
   return (
     <>
-      <Heading size="md" className="mt-6">
+      <h1 className="mt-2 text-4xl font-bold tracking-tight text-slate-900 leading-normal">
         {frontMatter.title}
-      </Heading>
+      </h1>
 
       {children}
     </>

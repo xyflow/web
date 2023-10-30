@@ -1,10 +1,18 @@
+---
+title: NodeProps
+description:
+  'When you implement a custom node it is wrapped in a component that enables
+  basic functionality like selection and dragging. Your custom node receives the
+  following props:'
+---
+
 import { Callout } from 'nextra/components';
 import { PropsTable } from '@/components/props-table';
 import { nodePropsFields } from '@/page-data/reference/types/NodeProps.fields.ts';
 
 # NodeProps&lt;T>
 
-[Source on GitHub](https://github.com/wbkd/react-flow/blob/f919cb152dd5a92ec3b4d7e4568ffe099bc2af39/packages/system/src/types/nodes.ts#L41)
+[Source on GitHub](https://github.com/wbkd/react-flow/blob/bacaa99c73b347856f63c5d495f5a0829be1e431/packages/core/src/types/nodes.ts/#L78)
 
 When you implement a [custom node](/learn/customization/custom-nodes) it is
 wrapped in a component that enables basic functionality like selection and
@@ -30,7 +38,7 @@ export type NodeProps<T = any> = {
 ## Usage
 
 ```tsx
-import { NodeProps } from '@xyflow/react';
+import { NodeProps } from 'reactflow';
 import { useState } from 'react';
 
 export type CounterData = {
@@ -56,7 +64,7 @@ Remember to register your custom node by adding it to the
 `<ReactFlow />` component.
 
 ```tsx
-import ReactFlow from '@xyflow/react';
+import ReactFlow from 'reactflow';
 import CounterNode from './CounterNode';
 
 const nodeTypes = {

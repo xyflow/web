@@ -9,7 +9,9 @@
     "start": "next start",
     "lint": "next lint",
     "write-showcases": "rm -rf static/img/showcase && mkdir -p static/img/showcase && node scripts/get-showcases.js",
-    "check-sitemap": "node scripts/check-sitemap.mjs"
+    "check-sitemap": "node scripts/check-sitemap.mjs",
+    "generate-routes-type": "node scripts/generate-routes-type.mjs",
+    "check-links": "node scripts/check-mdx-links.mjs"
   },
   "dependencies": {
     "@codesandbox/sandpack-react": "^2.6.9",

@@ -6,5 +6,12 @@
       "pagination": false,
       "layout": "full"
     }
+  },
+  "index": {
+    "title": "Tutorials",
+    "display": "hidden",
+    "theme": {
+      "layout": "raw"
+    }
   }
 }

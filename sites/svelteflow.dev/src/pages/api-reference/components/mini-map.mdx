@@ -1,5 +1,14 @@
+---
+title: The MiniMap component
+displayTitle: '<MiniMap />'
+description:
+  The MiniMap component renders an overview of your flow. It renders each node as
+  an SVG element and visualizes where the current viewport is in relation to the
+  rest of the flow.
+---
+
 import { Callout } from 'nextra/components';
-import { PropsTable } from 'xy-ui';
+import { PropsTable } from '@/components/props-table';
 import {
   miniMapProps,
   miniMapNodeProps,
@@ -7,7 +16,7 @@ import {
 
 # &lt;MiniMap />
 
-[Source on GitHub](https://github.com/wbkd/react-flow/blob/f919cb152dd5a92ec3b4d7e4568ffe099bc2af39/packages/react/src/additional-components/MiniMap/MiniMap.tsx#L40)
+[Source on GitHub](https://github.com/wbkd/react-flow/blob/78169c992bf95a5dbc9bccbdc2a07725a307e2c3/packages/svelte/src/lib/plugins/Minimap/Minimap.svelte)
 
 The `<MiniMap />` component can be used to render an overview of your flow. It
 renders each node as an SVG element and visualizes where the current viewport is
@@ -59,7 +68,7 @@ or `pannable` (or both!) props to `true`.
 ### Customising mini map node color
 
 The `nodeColor`, `nodeStrokeColor`, and `nodeClassName` props can be a function
-that takes a [`Node`](../types/node) and computes a value for the prop. This can
+that takes a [`Node`](/api-reference/types/node) and computes a value for the prop. This can
 be used to customise the appearance of each mini map node.
 
 This example shows how to color each mini map node based on the node's type:

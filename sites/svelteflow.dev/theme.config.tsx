@@ -4,6 +4,7 @@ import { useConfig } from 'nextra-theme-docs';
 import { Footer, Button, LogoLabel, Search } from 'xy-ui';
 
 import aboutImage from './public/img/about.jpg';
+import { InternalRoute } from '@/utils';
 
 const baseUrl =
   process.env.NODE_ENV === 'production'
@@ -46,7 +47,7 @@ export default {
               { title: 'Examples', route: '/examples' },
               { title: 'Showcase', route: '/showcase' },
               { title: 'Support Us', route: '/support-us' },
-            ],
+            ] satisfies { title: string; route: InternalRoute }[],
           }}
           legal={[
             {

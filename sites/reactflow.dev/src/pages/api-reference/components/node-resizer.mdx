@@ -1,10 +1,18 @@
+---
+title: The NodeResizer component
+displayTitle: '<NodeResizer />'
+description:
+  'The NodeResizer component can be used to add a resize functionality to your
+  nodes. It renders draggable controls around the node to resize in all directions.'
+---
+
 import ExampleViewer from '@/components/example-viewer';
 import { PropsTable } from '@/components/props-table';
 import { nodeResizerProps } from '@/page-data/reference/components/NodeResizer.ts';
 
 # &lt;NodeResizer />
 
-[Source on GitHub](https://github.com/wbkd/react-flow/blob/f919cb152dd5a92ec3b4d7e4568ffe099bc2af39/packages/react/src/additional-components/NodeResizer/NodeResizer.tsx#L7)
+[Source on GitHub](https://github.com/wbkd/react-flow/blob/bacaa99c73b347856f63c5d495f5a0829be1e431/packages/node-resizer/src/NodeResizer.tsx/#L9)
 
 The `<NodeResizer />` component can be used to add a resize functionality to your
 nodes. It renders draggable controls around the node to resize in all directions.
@@ -52,10 +60,10 @@ as `NodeResizerProps`.
 
 ### Custom Resize Controls
 
-To build custom resize controls, you can use the [NodeResizeControl](./node-resize-control) component and customize it.
+To build custom resize controls, you can use the [NodeResizeControl](/api-reference/components/node-resize-control) component and customize it.
 
 ## Notes
 
-- Take a look at the docs for the [`NodeProps`](../types/node-props) type or the
+- Take a look at the docs for the [`NodeProps`](/api-reference/types/node-props) type or the
   guide on [custom nodes](/learn/customization/custom-nodes) to see how to
   implement your own nodes.

@@ -1,7 +1,6 @@
 import { type PropsTableProps } from 'xy-ui';
 
 export const commonProps: PropsTableProps = {
-  deeplinkPrefix: 'common',
   props: [
     {
       name: 'nodes',
@@ -49,6 +48,12 @@ export const commonProps: PropsTableProps = {
     {
       name: 'nodeTypes',
       type: 'Record<String, React.ComponentType<NodeProps>>',
+      default: `{
+  input: InputNode,
+  default: DefaultNode,
+  output: OutputNode
+  group: GroupNode
+}`,
       description: `If you want to use custom nodes in your flow, you need to let
       React Flow know about them. When rendering a new node, React Flow will look
       up that node's type in this object and render the corresponding component.`,
@@ -56,6 +61,13 @@ export const commonProps: PropsTableProps = {
     {
       name: 'edgeTypes',
       type: 'Record<String, React.ComponentType<EdgeProps>>',
+      default: `{
+  default: BezierEdge,
+  straight: StraightEdge,
+  step: StepEdge,
+  smoothstep: SmoothStepEdge
+  simplebezier: SimpleBezier
+}`,
       description: `As with node types, this prop lets you use custom edges in
       your flow by mapping edge types to React components.`,
     },
@@ -88,7 +100,6 @@ export const commonProps: PropsTableProps = {
 };
 
 export const viewportProps: PropsTableProps = {
-  deeplinkPrefix: 'viewport',
   props: [
     {
       name: 'defaultViewport',
@@ -180,7 +191,6 @@ export const viewportProps: PropsTableProps = {
 };
 
 export const edgeProps: PropsTableProps = {
-  deeplinkPrefix: 'edge',
   props: [
     {
       name: 'elevateEdgesOnSelect',
@@ -216,7 +226,6 @@ export const edgeProps: PropsTableProps = {
 };
 
 export const generalEventHandlerProps: PropsTableProps = {
-  deeplinkPrefix: 'event',
   props: [
     {
       name: 'onInit',
@@ -236,7 +245,6 @@ export const generalEventHandlerProps: PropsTableProps = {
 };
 
 export const nodeEventHandlerProps: PropsTableProps = {
-  deeplinkPrefix: 'event',
   props: [
     {
       name: 'onNodeClick',
@@ -285,7 +293,6 @@ export const nodeEventHandlerProps: PropsTableProps = {
 };
 
 export const edgeEventHandlerProps: PropsTableProps = {
-  deeplinkPrefix: 'event',
   props: [
     {
       name: 'onEdgeClick',
@@ -334,7 +341,6 @@ export const edgeEventHandlerProps: PropsTableProps = {
 };
 
 export const connectionEventHandlerProps: PropsTableProps = {
-  deeplinkPrefix: 'event',
   props: [
     {
       name: 'onConnect',
@@ -365,7 +371,6 @@ export const connectionEventHandlerProps: PropsTableProps = {
 };
 
 export const paneEventHandlerProps: PropsTableProps = {
-  deeplinkPrefix: 'event',
   props: [
     {
       name: 'onMove',
@@ -395,7 +400,6 @@ export const paneEventHandlerProps: PropsTableProps = {
 };
 
 export const selectionEventHandlerProps: PropsTableProps = {
-  deeplinkPrefix: 'event',
   props: [
     {
       name: 'onSelectionChange',
@@ -420,7 +424,6 @@ export const selectionEventHandlerProps: PropsTableProps = {
 };
 
 export const interactionProps: PropsTableProps = {
-  deeplinkPrefix: 'interaction',
   props: [
     {
       name: 'nodesDraggable',
@@ -520,7 +523,6 @@ export const interactionProps: PropsTableProps = {
 };
 
 export const connectionLineProps: PropsTableProps = {
-  deeplinkPrefix: 'connection',
   props: [
     {
       name: 'connectionRadius',
@@ -547,7 +549,6 @@ export const connectionLineProps: PropsTableProps = {
 };
 
 export const keyboardProps: PropsTableProps = {
-  deeplinkPrefix: 'keyboard',
   props: [
     {
       name: 'deleteKeyCode',
