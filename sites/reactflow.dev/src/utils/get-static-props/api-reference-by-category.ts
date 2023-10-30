@@ -10,7 +10,7 @@ export function getApiReferenceByCategory(
   const pages = getMdxPagesUnderRoute(route);
 
   return pages.map((page) => ({
-    title: page.frontMatter.title,
+    title: page.frontMatter.displayTitle ?? page.frontMatter.title,
     description: page.frontMatter.description,
     route: page.route as InternalRoute,
   }));
