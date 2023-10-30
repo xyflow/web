@@ -1,7 +1,6 @@
 import { type PropsTableProps } from 'xy-ui';
 
 export const commonProps: PropsTableProps = {
-  deeplinkPrefix: 'common',
   props: [
     {
       name: 'nodes',
@@ -50,7 +49,6 @@ export const commonProps: PropsTableProps = {
 };
 
 export const viewportProps: PropsTableProps = {
-  deeplinkPrefix: 'viewport',
   props: [
     {
       name: 'initialViewport',
@@ -122,7 +120,6 @@ export const viewportProps: PropsTableProps = {
 };
 
 export const edgeProps: PropsTableProps = {
-  deeplinkPrefix: 'edge',
   props: [
     { name: 'defaultMarkerColor', type: 'string', default: '"#b1b1b7"' },
     {
@@ -135,10 +132,8 @@ export const edgeProps: PropsTableProps = {
   ],
 };
 
-export const eventHandlerProps: PropsTableProps = {
-  deeplinkPrefix: 'event',
+export const generalEventHandlerProps: PropsTableProps = {
   props: [
-    { name: 'General' },
     {
       name: 'on:error',
       type: '(code: string, message: string) => void',
@@ -147,7 +142,11 @@ export const eventHandlerProps: PropsTableProps = {
       and then call this event handler. You might use it for additional logging
       or to show a message to the user.`,
     },
-    { name: 'Nodes' },
+  ],
+};
+
+export const nodeEventHandlerProps: PropsTableProps = {
+  props: [
     {
       name: 'on:nodeclick',
       type: '(event: CustomEvent<{ event: MouseEvent | TouchEvent; node: Node }>) => void',
@@ -180,7 +179,11 @@ export const eventHandlerProps: PropsTableProps = {
       name: 'on:nodedragstop',
       type: '(event: CustomEvent<{ event: MouseEvent; node: NodeBase; nodes: NodeBase[] }>) => void',
     },
-    { name: 'Edges' },
+  ],
+};
+
+export const edgeEventHandlerProps: PropsTableProps = {
+  props: [
     {
       name: 'on:edgeclick',
       type: '(event: CustomEvent<{ event: MouseEvent; edge: Edge }>) => void',
@@ -189,7 +192,11 @@ export const eventHandlerProps: PropsTableProps = {
       name: 'on:edgecontextmenu',
       type: '(event: CustomEvent<{ event: MouseEvent; edge: Edge }>) => void',
     },
-    { name: 'Connections' },
+  ],
+};
+
+export const connectionEventHandlerProps: PropsTableProps = {
+  props: [
     {
       name: 'on:connectstart',
       type: `(event: CustomEvent<{
@@ -210,7 +217,11 @@ export const eventHandlerProps: PropsTableProps = {
       type: '(event: CustomEvent<{ event: MouseEvent | TouchEvent }>) => void',
       description: `Whenever the user drops the connection line, this events get fired. No matter if a connection was created or not.`,
     },
-    { name: 'Pane' },
+  ],
+};
+
+export const paneEventHandlerProps: PropsTableProps = {
+  props: [
     {
       name: 'on:paneclick',
       type: '(event: CustomEvent<{ event: MouseEvent | TouchEvent }>) => void',
@@ -223,7 +234,6 @@ export const eventHandlerProps: PropsTableProps = {
 };
 
 export const interactionProps: PropsTableProps = {
-  deeplinkPrefix: 'interaction',
   props: [
     {
       name: 'nodesDraggable',
@@ -285,7 +295,6 @@ export const interactionProps: PropsTableProps = {
 };
 
 export const connectionLineProps: PropsTableProps = {
-  deeplinkPrefix: 'connection',
   props: [
     {
       name: 'isValidConnection',

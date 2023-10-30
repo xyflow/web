@@ -1,7 +1,6 @@
 import { type PropsTableProps } from 'xy-ui';
 
 export const commonProps: PropsTableProps = {
-  deeplinkPrefix: 'common',
   props: [
     {
       name: 'nodes',
@@ -101,7 +100,6 @@ export const commonProps: PropsTableProps = {
 };
 
 export const viewportProps: PropsTableProps = {
-  deeplinkPrefix: 'viewport',
   props: [
     {
       name: 'defaultViewport',
@@ -193,7 +191,6 @@ export const viewportProps: PropsTableProps = {
 };
 
 export const edgeProps: PropsTableProps = {
-  deeplinkPrefix: 'edge',
   props: [
     {
       name: 'elevateEdgesOnSelect',
@@ -229,7 +226,6 @@ export const edgeProps: PropsTableProps = {
 };
 
 export const generalEventHandlerProps: PropsTableProps = {
-  deeplinkPrefix: 'event',
   props: [
     {
       name: 'onInit',
@@ -249,7 +245,6 @@ export const generalEventHandlerProps: PropsTableProps = {
 };
 
 export const nodeEventHandlerProps: PropsTableProps = {
-  deeplinkPrefix: 'event',
   props: [
     {
       name: 'onNodeClick',
@@ -298,7 +293,6 @@ export const nodeEventHandlerProps: PropsTableProps = {
 };
 
 export const edgeEventHandlerProps: PropsTableProps = {
-  deeplinkPrefix: 'event',
   props: [
     {
       name: 'onEdgeClick',
@@ -347,7 +341,6 @@ export const edgeEventHandlerProps: PropsTableProps = {
 };
 
 export const connectionEventHandlerProps: PropsTableProps = {
-  deeplinkPrefix: 'event',
   props: [
     {
       name: 'onConnect',
@@ -378,7 +371,6 @@ export const connectionEventHandlerProps: PropsTableProps = {
 };
 
 export const paneEventHandlerProps: PropsTableProps = {
-  deeplinkPrefix: 'event',
   props: [
     {
       name: 'onMove',
@@ -408,7 +400,6 @@ export const paneEventHandlerProps: PropsTableProps = {
 };
 
 export const selectionEventHandlerProps: PropsTableProps = {
-  deeplinkPrefix: 'event',
   props: [
     {
       name: 'onSelectionChange',
@@ -433,7 +424,6 @@ export const selectionEventHandlerProps: PropsTableProps = {
 };
 
 export const interactionProps: PropsTableProps = {
-  deeplinkPrefix: 'interaction',
   props: [
     {
       name: 'nodesDraggable',
@@ -533,7 +523,6 @@ export const interactionProps: PropsTableProps = {
 };
 
 export const connectionLineProps: PropsTableProps = {
-  deeplinkPrefix: 'connection',
   props: [
     {
       name: 'connectionRadius',
@@ -560,7 +549,6 @@ export const connectionLineProps: PropsTableProps = {
 };
 
 export const keyboardProps: PropsTableProps = {
-  deeplinkPrefix: 'keyboard',
   props: [
     {
       name: 'deleteKeyCode',

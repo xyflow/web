@@ -8,7 +8,11 @@ import {
   commonProps,
   viewportProps,
   edgeProps,
-  eventHandlerProps,
+  generalEventHandlerProps,
+  nodeEventHandlerProps,
+  edgeEventHandlerProps,
+  connectionEventHandlerProps,
+  paneEventHandlerProps,
   interactionProps,
   connectionLineProps,
   keyboardProps,
@@ -61,7 +65,25 @@ These are the props you will most commonly use when working with Svelte Flow.
 
 ## Event handlers
 
-<PropsTable {...eventHandlerProps} />
+### General Events
+
+<PropsTable {...generalEventHandlerProps} />
+
+### Node Events
+
+<PropsTable {...nodeEventHandlerProps} />
+
+### Edge Events
+
+<PropsTable {...edgeEventHandlerProps} />
+
+### Connection Events
+
+<PropsTable {...connectionEventHandlerProps} />
+
+### Pane Events
+
+<PropsTable {...paneEventHandlerProps} />
 
 ## Interaction props
 
