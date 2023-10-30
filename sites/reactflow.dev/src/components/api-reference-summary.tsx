@@ -47,12 +47,6 @@ function NextraH2Element({
       {...props}
     >
       {children}
-      <a
-        href="#props"
-        id="props"
-        className="subheading-anchor"
-        aria-label="Permalink for this section"
-      ></a>
     </h2>
   );
 }
