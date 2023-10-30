@@ -1,17 +1,27 @@
 [
   {
+    "source": "/blog/mind-map-app-with-react-flow",
+    "destination": "/learn/tutorials/mind-map-app-with-react-flow",
+    "permanent": true
+  },
+  {
+    "source": "/blog/react-flow-and-the-web-audio-api",
+    "destination": "/learn/tutorials/react-flow-and-the-web-audio-api",
+    "permanent": true
+  },
+  {
     "source": "/docs/api/edges/custom-connection-line",
     "destination": "/api-reference/types/connection-line-component-props",
     "permanent": true
   },
   {
     "source": "/docs/api/edges/edge-utils",
-    "destination": "/api-reference/utils/get-bezier-path",
+    "destination": "/api-reference/utils",
     "permanent": true
   },
   {
     "source": "/docs/api/graph-util-functions",
-    "destination": "/api-reference/utils/is-edge",
+    "destination": "/api-reference/utils",
     "permanent": true
   },
   {
@@ -41,12 +51,12 @@
   },
   {
     "source": "/docs/api/types",
-    "destination": "/api-reference/types/node",
+    "destination": "/api-reference/types",
     "permanent": true
   },
   {
     "source": "/docs/concepts/packages",
-    "destination": "/learn",
+    "destination": "/learn/concepts/plugin-components",
     "permanent": true
   },
   {
@@ -70,6 +80,26 @@
     "permanent": true
   },
   {
+    "source": "/docs/api/edges/custom-edges",
+    "destination": "/examples/edge/custom-edges",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/edges/custom-edge",
+    "destination": "/examples/edge/custom-edges",
+    "permanent": true
+  },
+  {
+    "source": "/docs/api/edges/edge-types",
+    "destination": "/api-reference/types/edge#default-edge-types",
+    "permanent": true
+  },
+  {
+    "source": "/docs/api/nodes/node-types",
+    "destination": "/api-reference/types/node#default-node-types",
+    "permanent": true
+  },
+  {
     "source": "/blog",
     "destination": "https://xyflow.com/blog",
     "permanent": true
@@ -85,17 +115,7 @@
     "permanent": true
   },
   {
-    "source": "/blog/mind-map-app-with-react-flow",
-    "destination": "https://xyflow.com/blog",
-    "permanent": true
-  },
-  {
     "source": "/blog/page/2",
-    "destination": "https://xyflow.com/blog",
-    "permanent": true
-  },
-  {
-    "source": "/blog/react-flow-and-the-web-audio-api",
     "destination": "https://xyflow.com/blog",
     "permanent": true
   },
@@ -182,6 +202,11 @@
   {
     "source": "/docs/api/hooks/use-key-press",
     "destination": "/api-reference/hooks/use-key-press",
+    "permanent": true
+  },
+  {
+    "source": "/docs/api/hooks/use-node-id",
+    "destination": "/api-reference/hooks/use-node-id",
     "permanent": true
   },
   {
@@ -292,11 +317,6 @@
   {
     "source": "/docs/examples/edges/custom-connectionline",
     "destination": "/examples/edges/custom-connectionline",
-    "permanent": true
-  },
-  {
-    "source": "/docs/examples/edges/custom-edge",
-    "destination": "/examples/edges/custom-edge",
     "permanent": true
   },
   {

@@ -8,7 +8,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const OLD_RF_SITEMAP = path.join(__dirname, './sitemap-rf-v11.xml');
-const NEW_RF_SITEMAP = 'https://reactflow-website.vercel.app/sitemap.xml';
+const NEW_RF_SITEMAP =
+  'https://reactflow-website-staging.vercel.app//sitemap.xml';
 const XY_SITEMAP = 'https://xyflow.com/sitemap.xml';
 const OUTPUT = path.join(__dirname, 'redirects.json');
 
@@ -107,7 +108,10 @@ async function start() {
     match(path, path.replace('/docs/guides', '/learn/layouting'));
   });
 
-  console.log(unmatched);
+  console.log('unmatched paths:', unmatched);
+  console.log(
+    redirects.map((r) => `${r.source} ➜ ${r.destination}`).join('\n'),
+  );
 
   fs.writeFileSync(OUTPUT, JSON.stringify(redirects, null, 2));
 }
