@@ -47,17 +47,15 @@ export default {
       return (
         <Footer
           message={{
-            title: '',
+            title: 'Hello from the xyflow team',
             text: 'xyflow is building and maintaining open source software for node-based UIs since 2019.',
           }}
           internal={{
-            title: 'xyflow',
+            title: 'Libraries',
             items: [
-              { title: 'About Us', route: '/about' },
-              { title: 'Open Source', route: '/open-source' },
-              { title: 'Blog', route: '/blog' },
-              { title: 'Contact Us', route: '/contact' },
-            ] satisfies { title: string; route: InternalRoute }[],
+              { title: 'React Flow', route: 'https://reactflow.dev/' },
+              { title: 'Svelte Flow', route: 'https://svelteflow.dev/' },
+            ],
           }}
           legal={[
             { title: 'Terms of Use', route: 'https://xyflow.com/terms-of-use' },
@@ -69,7 +67,7 @@ export default {
             { title: 'Imprint', route: 'https://xyflow.com/imprint' },
           ]}
           // imageSrc={isHomePage ? undefined : aboutImage}
-          baseUrl="https://reactflow.dev"
+          baseUrl="https://xyflow.com"
         />
       );
     },

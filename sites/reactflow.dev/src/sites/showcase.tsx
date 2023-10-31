@@ -10,7 +10,7 @@ export default function Showcase() {
   return (
     <ShowcaseLayout
       title="React Flow is used by everyone: from solo open-source projects to companies like Stripe and Typeform"
-      subtitle="We've seen React Flow used to create data processing tools, chatbot builders, machine learning, musical synthesizers, and more. Explore some of our favorite projects that use xyFlow here."
+      subtitle="We've seen React Flow used to create data processing tools, chatbot builders, machine learning, musical synthesizers, and more. Explore some of our favorite projects from around the internet."
       showcases={visibleShowcases}
     >
       <SubscribeSection />
