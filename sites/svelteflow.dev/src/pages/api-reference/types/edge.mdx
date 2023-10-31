@@ -1,4 +1,11 @@
-import { PropsTable } from 'xy-ui';
+---
+title: Edge
+description:
+  An Edge is the complete description with everything Svelte Flow needs to know
+  in order to render it.
+---
+
+import { PropsTable } from '@/components/props-table';
 import {
   defaultEdgeFields,
   smoothStepEdgeTypeFields,
@@ -6,8 +13,6 @@ import {
 } from '@/page-data/reference/types/Edge.fields.ts';
 
 # Edge&lt;T>
-
-[Source on GitHub](https://github.com/wbkd/react-flow/blob/f919cb152dd5a92ec3b4d7e4568ffe099bc2af39/packages/react/src/types/edges.ts#L49)
 
 An `Edge` is the complete description with everything Svelte Flow needs to know in order to render it.
 
@@ -22,13 +27,9 @@ export type Edge<T> =
 
 ### DefaultEdge&lt;T>
 
-[Source on GitHub](https://github.com/wbkd/react-flow/blob/f919cb152dd5a92ec3b4d7e4568ffe099bc2af39/packages/react/src/types/edges.ts#L31)
-
 <PropsTable {...defaultEdgeFields} />
 
 ### SmoothStepEdgeType&lt;T>
-
-[Source on GitHub](https://github.com/wbkd/react-flow/blob/f919cb152dd5a92ec3b4d7e4568ffe099bc2af39/packages/react/src/types/edges.ts#L39C1-L39C1)
 
 The `SmoothStepEdgeType` variant has all the same fields as the `DefaultEdge`
 variant, but it also has the following additional fields:
@@ -36,8 +37,6 @@ variant, but it also has the following additional fields:
 <PropsTable {...smoothStepEdgeTypeFields} />
 
 ### BezierEdgeType&lt;T>
-
-[Source on GitHub](https://github.com/wbkd/react-flow/blob/f919cb152dd5a92ec3b4d7e4568ffe099bc2af39/packages/react/src/types/edges.ts#L44)
 
 The `BezierEdgeType` variant has all the same fields as the `DefaultEdge` variant,
 but it also has the following additional fields:

@@ -1,6 +1,6 @@
 ---
 title: Migrate to v10
-description: Migration guide for React Flow v10
+description: Use this guide to migrate from React Flow v9 to v10.
 ---
 
 # Migrate to v10
@@ -157,7 +157,7 @@ const BasicFlow = () => {
 export default BasicFlow;
 ```
 
-If you want to add, remove or update a node or edge you can only do this by using the [ReactFlow instance](/api-reference/react-flow-instance/) that you can receive either with the new `useReactFlow` hook or by using the `onInit` handler that gets the instance as a function param.
+If you want to add, remove or update a node or edge you can only do this by using the [ReactFlow instance](/api-reference/types/react-flow-instance) that you can receive either with the new `useReactFlow` hook or by using the `onInit` handler that gets the instance as a function param.
 
 ### 2. Memoize your custom `nodeTypes` and `edgeTypes`
 
@@ -286,7 +286,7 @@ This is more consistent with the rest of the API (`panOnScroll`, `zoomOnScroll`,
 
 ### 6. ~~useZoomPanHelper transform~~ - unified in `useReactFlow`
 
-As "transform" is also the variable name of the transform in the store and it's not clear that `transform` is a setter we renamed it to `setViewport`. This is also more consistent with the other functions. Also, all `useZoomPanHelper` functions have been moved to the [React Flow instance](/api-reference/react-flow-instance) that you get from the [`useReactFlow` hook](/api-reference/hooks/use-react-flow) or the `onInit` handler.
+As "transform" is also the variable name of the transform in the store and it's not clear that `transform` is a setter we renamed it to `setViewport`. This is also more consistent with the other functions. Also, all `useZoomPanHelper` functions have been moved to the [React Flow instance](/api-reference/types/react-flow-instance) that you get from the [`useReactFlow` hook](/api-reference/hooks/use-react-flow) or the `onInit` handler.
 
 #### Old API
 

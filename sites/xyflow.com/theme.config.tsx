@@ -4,6 +4,7 @@ import { useConfig } from 'nextra-theme-docs';
 import { Footer, Button, LogoLabel, Search } from 'xy-ui';
 
 import aboutImage from './public/img/about.jpg';
+import { InternalRoute } from '@/utils';
 
 const baseUrl =
   process.env.NODE_ENV === 'production'
@@ -56,7 +57,7 @@ export default {
               { title: 'Open Source', route: '/open-source' },
               { title: 'Blog', route: '/blog' },
               { title: 'Contact Us', route: '/contact' },
-            ],
+            ] satisfies { title: string; route: InternalRoute }[],
           }}
           legal={[
             { title: 'Terms of Use', route: 'https://xyflow.com/terms-of-use' },

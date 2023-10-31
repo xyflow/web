@@ -91,7 +91,7 @@ export default function ReactFlowPro() {
         title="See what our subscribers build"
         description="React Flow Pro subscribers use pro examples, prioritized issues, and support to build advanced workflow builders, node-based editors, and diagramming tools."
         buttonText="See all case studies"
-        buttonLink="/case-studies"
+        buttonLink="/pro/case-studies"
         items={sliderItems}
       />
 

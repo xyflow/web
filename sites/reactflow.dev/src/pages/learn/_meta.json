@@ -5,7 +5,12 @@
   "customization": "Customizing React Flow",
   "layouting": "Layouting",
   "advanced-use": "Advanced Use",
-  "tutorials": "Tutorials",
+  "tutorials": {
+    "title": "Tutorials",
+    "theme": {
+      "layout": "raw"
+    }
+  },
   "troubleshooting": "Troubleshooting",
   "api-link": {
     "title": "API Reference",

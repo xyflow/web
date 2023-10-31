@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { ReactNode } from 'react';
-import { Button, Container, Heading, Text, cn } from '../../..';
+import { Button, Container, Heading, Text } from '../../..';
 
 import { SliderItem } from './types';
 import ImageSliderItems from './image-slider-items';
@@ -34,9 +34,11 @@ function ImageSlider({
       <div className="p-14">
         <div className="grid lg:grid-cols-2 lg:gap-40">
           <div>
-            <Text className={cn('font-bold mb-2 text-accent')}>{kicker}</Text>
+            <Text className="font-bold mb-2 text-accent tracking-wide">
+              {kicker}
+            </Text>
 
-            <Heading className="mb-4">{title}</Heading>
+            <Heading className="mb-4 tracking-normal">{title}</Heading>
           </div>
           <div>
             <Text className="mt-4 mb-4">{description}</Text>

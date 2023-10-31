@@ -1,0 +1,45 @@
+---
+title: useNodeId
+description:
+  "You can use this hook to get the id of the node it is used inside. It is useful
+  if you need the node's id deeper in the render tree but don't want to manually
+  drill down the id as a prop."
+---
+
+import { PropsTable } from '@/components/props-table';
+import { signature } from '@/page-data/reference/hooks/useNodeId.ts';
+
+# useNodeId
+
+[Source on Github](https://github.com/wbkd/react-flow/blob/bacaa99c73b347856f63c5d495f5a0829be1e431/packages/core/src/contexts/NodeIdContext.ts/#L7)
+
+You can use this hook to get the id of the node it is used inside. It is useful
+if you need the node's id deeper in the render tree but don't want to manually
+drill down the id as a prop.
+
+```js
+import { useNodeId } from 'reactflow';
+
+export default function CutsomNode() {
+  return (
+    <div>
+      <span>This node has an id of </span>
+      <NodeIdDisplay />
+    </div>
+  );
+}
+
+function NodeIdDisplay() {
+  const nodeId = useNodeId();
+
+  return <span>{nodeId}</span>;
+}
+```
+
+## Signature
+
+<PropsTable {...signature} />
+
+## Notes
+
+- This hook should only be used within a custom node or its children.

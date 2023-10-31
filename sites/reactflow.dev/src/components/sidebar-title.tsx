@@ -1,3 +1,5 @@
+import type { InternalRoute } from '@/utils';
+
 const proExampleRoutes = {
   '/examples/nodes/dynamic-grouping': 'pro',
   '/examples/nodes/resize-rotate-moveable-deprecated': 'pro',
@@ -8,7 +10,7 @@ const proExampleRoutes = {
   '/examples/interaction/helper-lines': 'pro',
   '/examples/interaction/undo-and-redo': 'pro',
   '/examples/interaction/copy-and-paste': 'pro',
-};
+} satisfies { [K in InternalRoute]?: string };
 
 export default function SidebarTitle({
   title,

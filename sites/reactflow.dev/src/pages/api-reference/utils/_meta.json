@@ -8,6 +8,7 @@
   "get-marker-end": "getMarkerEnd()",
   "get-outgoers": "getOutgoers()",
   "get-rect-of-nodes": "getRectOfNodes()",
+  "get-simple-bezier-path": "getSimpleBezierPath()",
   "get-smooth-step-path": "getSmoothStepPath()",
   "get-straight-path": "getStraightPath()",
   "get-transform-for-bounds": "getTransformForBounds()",

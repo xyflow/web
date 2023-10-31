@@ -1,9 +1,17 @@
+---
+title: useOnSelectionChange
+description:
+  'This hook lets you listen for changes to both node and edge selection. As the
+  name implies, the callback you provide will be called whenever the selection of
+  either nodes or edges changes.'
+---
+
 import { PropsTable } from '@/components/props-table';
 import { signature } from '@/page-data/reference/hooks/useOnSelectionChange.ts';
 
 # useOnSelectionChange
 
-[Source on GitHub](https://github.com/wbkd/react-flow/blob/f919cb152dd5a92ec3b4d7e4568ffe099bc2af39/packages/react/src/hooks/useOnSelectionChange.ts#L10)
+[Source on GitHub](https://github.com/wbkd/react-flow/blob/bacaa99c73b347856f63c5d495f5a0829be1e431/packages/core/src/hooks/useOnSelectionChange.ts/#L10)
 
 This hook lets you listen for changes to both node and edge selection. As the
 name implies, the callback you provide will be called whenever the selection of
@@ -11,7 +19,7 @@ _either_ nodes or edges changes.
 
 ```jsx
 import { useState } from 'react';
-import ReactFlow, { useOnSelectionChange } from '@xyflow/react';
+import ReactFlow, { useOnSelectionChange } from 'reactflow';
 
 function SelectionDisplay() {
   const [selectedNodes, setSelectedNodes] = useState([]);
@@ -40,5 +48,5 @@ function SelectionDisplay() {
 ## Notes
 
 - This hook can only be used in a component that is a child of a
-  [`<ReactFlowProvider />`](../react-flow-provider) or a
-  [`<ReactFlow />`](../react-flow) component.
+  [`<ReactFlowProvider />`](/api-reference/react-flow-provider) or a
+  [`<ReactFlow />`](/api-reference/react-flow) component.

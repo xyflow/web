@@ -1,9 +1,18 @@
+---
+title: getTransformForBounds()
+description:
+  'This util tells you what to set the viewport to in order to fit the given bounds.
+  You might use this to pre-calculate the viewport for a given set of nodes on the
+  server or calculate the viewport for the given bounds _without_ changing the
+  viewport directly.'
+---
+
 import { PropsTable } from '@/components/props-table';
 import { signature } from '@/page-data/reference/utils/getTransformForBounds.ts';
 
 # getTransformForBounds()
 
-[Source on Github](https://github.com/wbkd/react-flow/blob/f919cb152dd5a92ec3b4d7e4568ffe099bc2af39/packages/system/src/utils/general.ts#L157)
+[Source on Github](https://github.com/wbkd/react-flow/blob/bacaa99c73b347856f63c5d495f5a0829be1e431/packages/core/src/utils/graph.ts/#L273)
 
 This util tells you what to set the viewport to in order to fit the given bounds.
 You might use this to pre-calculate the viewport for a given set of nodes on the
@@ -11,7 +20,20 @@ server or calculate the viewport for the given bounds _without_ changing the
 viewport directly.
 
 ```js
-@todo
+import { getTransformForBounds } from 'reactflow';
+
+const transform = getTransformForBounds(
+  {
+    x: 0,
+    y: 0,
+    width: 100,
+    height: 100,
+  },
+  1200,
+  800,
+  0.5,
+  2,
+);
 ```
 
 ## Signature
@@ -21,8 +43,8 @@ viewport directly.
 ## Notes
 
 - This is quite a low-level utility. You might want to look at the
-  [`fitView`](../types/react-flow-instance#fitview) or
-  [`fitBounds`](../types/react-flow-instance#fitbounds) methods for a more practical
+  [`fitView`](/api-reference/types/react-flow-instance#fitview) or
+  [`fitBounds`](/api-reference/types/react-flow-instance#fitbounds) methods for a more practical
   api.
 - This function is called get**Transform**... for historical reasons. Its return
-  type represents a [`Viewport`](../types/viewport) in tuple form.
+  type represents a [`Viewport`](/api-reference/types/viewport) in tuple form.

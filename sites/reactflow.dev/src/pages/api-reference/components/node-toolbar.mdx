@@ -1,16 +1,25 @@
+---
+title: The NodeToolbar component
+displayTitle: '<NodeToolbar />'
+description:
+  "The NodeToolbar component can render a toolbar or tooltip to one side of a
+  custom node. This toolbar doesn't scale with the viewport so that the content
+  is always visible."
+---
+
 import { PropsTable } from '@/components/props-table';
 import { nodeToolbarProps } from '@/page-data/reference/components/NodeToolbar.ts';
 
 # &lt;NodeToolbar />
 
-[Source on GitHub](https://github.com/wbkd/react-flow/blob/f919cb152dd5a92ec3b4d7e4568ffe099bc2af39/packages/react/src/additional-components/NodeToolbar/NodeToolbar.tsx#L72)
+[Source on GitHub](https://github.com/wbkd/react-flow/blob/bacaa99c73b347856f63c5d495f5a0829be1e431/packages/node-toolbar/src/NodeToolbar.tsx/#L79)
 
 This component can render a toolbar or tooltip to one side of a custom node. This
 toolbar doesn't scale with the viewport so that the content is always visible.
 
 ```jsx
 import { memo } from 'react';
-import { Handle, Position, NodeToolbar } from '@xyflow/react';
+import { Handle, Position, NodeToolbar } from 'reactflow';
 
 export CustomNode = ({ data }) => {
   return (

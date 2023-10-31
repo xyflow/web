@@ -1,0 +1,34 @@
+---
+title: MiniMapNodeProps
+description: ''
+---
+
+import { PropsTable } from '@/components/props-table';
+import { minimapNodePropsFields } from '@/page-data/reference/types/MiniMapNodeProps.fields.ts';
+
+# MiniMapNodeProps
+
+[Source on GitHub](https://github.com/wbkd/react-flow/blob/78169c992bf95a5dbc9bccbdc2a07725a307e2c3/packages/react/src/additional-components/MiniMap/types.ts/#L37)
+
+```ts
+export type MiniMapNodeProps = {
+  id: string;
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  borderRadius: number;
+  className: string;
+  color: string;
+  shapeRendering: string;
+  strokeColor: string;
+  strokeWidth: number;
+  style?: CSSProperties;
+  selected: boolean;
+  onClick?: (event: MouseEvent, id: string) => void;
+};
+```
+
+## Fields
+
+<PropsTable {...minimapNodePropsFields} />

@@ -21,6 +21,7 @@ import FlowC from './flows/flow-c';
 import IframePreview from '@/components/example-viewer/iframe-preview';
 
 import aboutImage from '../../../public/img/about.jpg';
+import type { InternalRoute } from '@/utils';
 
 const sliderItems = [
   {
@@ -59,7 +60,7 @@ const features = [
   {
     title: 'Ready out-of-the-box',
     text: 'The things you need are already there: dragging nodes, zooming, panning, selecting multiple nodes, and adding/removing edges are all built-in.',
-    route: '/learn',
+    route: '/learn' satisfies InternalRoute,
     linkLabel: 'Get started',
     flowComponent: FlowA,
   },
@@ -72,14 +73,14 @@ const features = [
       </>
     ),
     text: 'We play nice with Tailwind and good old CSS. Svelte Flow nodes are just Svelte components. Create custom nodes to have full control with interactive components.',
-    route: '/learn/guides/custom-nodes',
+    route: '/learn/guides/custom-nodes' satisfies InternalRoute,
     linkLabel: 'Custom nodes guide',
     flowComponent: FlowB,
   },
   {
     title: 'All the right plugins',
     text: 'Make more advanced apps with the Background, Minimap, Controls, and Panel components.',
-    route: '/learn',
+    route: '/learn' satisfies InternalRoute,
     flowComponent: FlowC,
   },
 ];

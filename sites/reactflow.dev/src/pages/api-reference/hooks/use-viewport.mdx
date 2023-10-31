@@ -1,16 +1,24 @@
+---
+title: useViewport
+description:
+  'The useViewport hook is a convenient way to read the current state of the
+  Viewport in a component. Components that use this hook will re-render whenever
+  the viewport changes.'
+---
+
 import { PropsTable } from '@/components/props-table';
 import { signature } from '@/page-data/reference/hooks/useViewport.ts';
 
 # useViewport
 
-[Source on GitHub](https://github.com/wbkd/react-flow/blob/f919cb152dd5a92ec3b4d7e4568ffe099bc2af39/packages/react/src/hooks/useViewport.ts#L13)
+[Source on GitHub](https://github.com/wbkd/react-flow/blob/bacaa99c73b347856f63c5d495f5a0829be1e431/packages/core/src/hooks/useViewport.ts/#L12)
 
 The `useViewport` hook is a convenient way to read the current state of the
-[`Viewport`](../types/viewport) in a component. Components that use this hook
+[`Viewport`](/api-reference/types/viewport) in a component. Components that use this hook
 will re-render **whenever the viewport changes**.
 
 ```jsx
-import { useViewport } from '@xyflow/react';
+import { useViewport } from 'reactflow';
 
 export default function ViewportDisplay() {
   const { x, y, zoom } = useViewport();
@@ -32,5 +40,5 @@ export default function ViewportDisplay() {
 ## Notes
 
 - This hook can only be used in a component that is a child of a
-  [`<ReactFlowProvider />`](../react-flow-provider) or a
-  [`<ReactFlow />`](../react-flow) component.
+  [`<ReactFlowProvider />`](/api-reference/react-flow-provider) or a
+  [`<ReactFlow />`](/api-reference/react-flow) component.

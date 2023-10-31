@@ -4,8 +4,6 @@ const path = require('path');
 const fs = require('fs');
 const https = require('https');
 
-console.log(process.env.NOTION_API_SECRET);
-
 const SHOWCASES_DATABASE_ID = '585dfdbe353145f6af6dc2294ab14253';
 const notion = new Client({ auth: process.env.NOTION_API_SECRET });
 const OUTPUT_PATH = path.resolve(__dirname, '../public/data/showcases.json');
@@ -34,7 +32,7 @@ const downloadImage = (source, target) => {
         {
           property: 'library',
           rich_text: {
-            equals: 'react',
+            equals: 'svelte',
           },
         },
       ],
@@ -59,7 +57,9 @@ const downloadImage = (source, target) => {
       const demoUrl = result.properties['demo-url'].url;
       const tags = result.properties.tags.multi_select;
       const featured = result.properties.featured.checkbox;
-      const description = result.properties.description.rich_text[0].plain_text;
+
+      const description =
+        result.properties.description.rich_text[0]?.plain_text;
       const imageSrc = result.properties.image.files[0].file.url;
       const imageFileName = `${id}.png`;
       const imageFilePath = path.resolve(OUTPUT_IMAGE_PATH, imageFileName);
