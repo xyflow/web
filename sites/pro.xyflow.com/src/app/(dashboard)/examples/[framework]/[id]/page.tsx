@@ -4,7 +4,7 @@ import UnSubscribedExampleViewer from './unsubscribed';
 import { Framework, getExampleIds, getExamples } from 'utils/server/examples';
 
 export default function ({ params }: { params: { id: string; framework: Framework } }) {
-  // weird syntax but this is the only way (?) currently to render server components in a client component
+  // the only way to render a server component (UnSubscribedExampleViewer, SubscribedExampleViewer) within a client component (SubscriptionCheck) is to pass it as a prop or children
   return (
     <SubscriptionCheck fallback={<UnSubscribedExampleViewer frameworkId={params.framework} exampleId={params.id} />}>
       <SubscribedExampleViewer frameworkId={params.framework} exampleId={params.id} />

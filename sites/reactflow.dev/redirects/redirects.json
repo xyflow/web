@@ -1,0 +1,1002 @@
+[
+  {
+    "source": "/blog/mind-map-app-with-react-flow",
+    "destination": "/learn/tutorials/mind-map-app-with-react-flow",
+    "permanent": true
+  },
+  {
+    "source": "/blog/react-flow-and-the-web-audio-api",
+    "destination": "/learn/tutorials/react-flow-and-the-web-audio-api",
+    "permanent": true
+  },
+  {
+    "source": "/docs/api/edges/custom-connection-line",
+    "destination": "/api-reference/types/connection-line-component-props",
+    "permanent": true
+  },
+  {
+    "source": "/docs/api/edges/edge-utils",
+    "destination": "/api-reference/utils",
+    "permanent": true
+  },
+  {
+    "source": "/docs/api/graph-util-functions",
+    "destination": "/api-reference/utils",
+    "permanent": true
+  },
+  {
+    "source": "/docs/api/nodes/custom-nodes",
+    "destination": "/api-reference/types/node-props",
+    "permanent": true
+  },
+  {
+    "source": "/docs/api/nodes/node-options",
+    "destination": "/api-reference/types/node",
+    "permanent": true
+  },
+  {
+    "source": "/docs/api/edges/edge-options",
+    "destination": "/api-reference/types/edge",
+    "permanent": true
+  },
+  {
+    "source": "/docs/api/react-flow-instance",
+    "destination": "/api-reference/types/react-flow-instance",
+    "permanent": true
+  },
+  {
+    "source": "/docs/api/react-flow-props",
+    "destination": "/api-reference/react-flow",
+    "permanent": true
+  },
+  {
+    "source": "/docs/api/types",
+    "destination": "/api-reference/types",
+    "permanent": true
+  },
+  {
+    "source": "/docs/concepts/packages",
+    "destination": "/learn/concepts/plugin-components",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/overview",
+    "destination": "/examples",
+    "permanent": true
+  },
+  {
+    "source": "/docs/guides/panning-and-zooming",
+    "destination": "/learn/concepts/the-viewport",
+    "permanent": true
+  },
+  {
+    "source": "/docs/guides/troubleshooting",
+    "destination": "/learn/troubleshooting",
+    "permanent": true
+  },
+  {
+    "source": "/docs/quickstart",
+    "destination": "/learn",
+    "permanent": true
+  },
+  {
+    "source": "/docs/api/edges/custom-edges",
+    "destination": "/examples/edge/custom-edges",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/edges/custom-edge",
+    "destination": "/examples/edge/custom-edges",
+    "permanent": true
+  },
+  {
+    "source": "/docs/api/edges/edge-types",
+    "destination": "/api-reference/types/edge#default-edge-types",
+    "permanent": true
+  },
+  {
+    "source": "/docs/api/nodes/node-types",
+    "destination": "/api-reference/types/node#default-node-types",
+    "permanent": true
+  },
+  {
+    "source": "/examples/floating-edges",
+    "destination": "/examples/edges/floating-edges",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/floating-edges",
+    "destination": "/examples/edges/floating-edges",
+    "permanent": true
+  },
+  {
+    "source": "/docs/getting-started/core-concepts",
+    "destination": "/learn/concepts/core-concepts",
+    "permanent": true
+  },
+  {
+    "source": "/docs/getting-started/plugin-components",
+    "destination": "/learn/concepts/plugin-components",
+    "permanent": true
+  },
+  {
+    "source": "/blog",
+    "destination": "https://xyflow.com/blog",
+    "permanent": true
+  },
+  {
+    "source": "/blog/archive",
+    "destination": "https://xyflow.com/blog",
+    "permanent": true
+  },
+  {
+    "source": "/blog/asking-for-money-for-open-source",
+    "destination": "https://xyflow.com/blog/asking-for-money-for-open-source",
+    "permanent": true
+  },
+  {
+    "source": "/blog/page/2",
+    "destination": "https://xyflow.com/blog",
+    "permanent": true
+  },
+  {
+    "source": "/blog/react-flow-fall-2022",
+    "destination": "https://xyflow.com/blog/react-flow-fall-2022",
+    "permanent": true
+  },
+  {
+    "source": "/blog/react-flow-v-11-5",
+    "destination": "https://xyflow.com/blog/react-flow-v-11-5",
+    "permanent": true
+  },
+  {
+    "source": "/blog/react-flow-v10",
+    "destination": "https://xyflow.com/blog/react-flow-v10",
+    "permanent": true
+  },
+  {
+    "source": "/blog/react-flow-v11",
+    "destination": "https://xyflow.com/blog/react-flow-v11",
+    "permanent": true
+  },
+  {
+    "source": "/blog/react-flow-winter-2022",
+    "destination": "https://xyflow.com/blog/react-flow-winter-2022",
+    "permanent": true
+  },
+  {
+    "source": "/blog/reactflow-npm-package-name",
+    "destination": "https://xyflow.com/blog/reactflow-npm-package-name",
+    "permanent": true
+  },
+  {
+    "source": "/blog/spring-update-2023",
+    "destination": "https://xyflow.com/blog/spring-update-2023",
+    "permanent": true
+  },
+  {
+    "source": "/blog/svelte-flow-alpha-xyflow",
+    "destination": "https://xyflow.com/blog/svelte-flow-alpha-xyflow",
+    "permanent": true
+  },
+  {
+    "source": "/newsletter-signup-failed",
+    "destination": "/",
+    "permanent": true
+  },
+  {
+    "source": "/newsletter-thank-you",
+    "destination": "/",
+    "permanent": true
+  },
+  {
+    "source": "/newsletter",
+    "destination": "/",
+    "permanent": true
+  },
+  {
+    "source": "/docs/api/edges/base-edge",
+    "destination": "/api-reference/components/base-edge",
+    "permanent": true
+  },
+  {
+    "source": "/docs/api/edges/edge-label-renderer",
+    "destination": "/api-reference/components/edge-label-renderer",
+    "permanent": true
+  },
+  {
+    "source": "/docs/api/edges/edge-text",
+    "destination": "/api-reference/components/edge-text",
+    "permanent": true
+  },
+  {
+    "source": "/docs/api/hooks/use-edges-state",
+    "destination": "/api-reference/hooks/use-edges-state",
+    "permanent": true
+  },
+  {
+    "source": "/docs/api/hooks/use-edges",
+    "destination": "/api-reference/hooks/use-edges",
+    "permanent": true
+  },
+  {
+    "source": "/docs/api/hooks/use-key-press",
+    "destination": "/api-reference/hooks/use-key-press",
+    "permanent": true
+  },
+  {
+    "source": "/docs/api/hooks/use-node-id",
+    "destination": "/api-reference/hooks/use-node-id",
+    "permanent": true
+  },
+  {
+    "source": "/docs/api/hooks/use-nodes-initialized",
+    "destination": "/api-reference/hooks/use-nodes-initialized",
+    "permanent": true
+  },
+  {
+    "source": "/docs/api/hooks/use-nodes-state",
+    "destination": "/api-reference/hooks/use-nodes-state",
+    "permanent": true
+  },
+  {
+    "source": "/docs/api/hooks/use-nodes",
+    "destination": "/api-reference/hooks/use-nodes",
+    "permanent": true
+  },
+  {
+    "source": "/docs/api/hooks/use-on-selection-change",
+    "destination": "/api-reference/hooks/use-on-selection-change",
+    "permanent": true
+  },
+  {
+    "source": "/docs/api/hooks/use-on-viewport-change",
+    "destination": "/api-reference/hooks/use-on-viewport-change",
+    "permanent": true
+  },
+  {
+    "source": "/docs/api/hooks/use-react-flow",
+    "destination": "/api-reference/hooks/use-react-flow",
+    "permanent": true
+  },
+  {
+    "source": "/docs/api/hooks/use-store",
+    "destination": "/api-reference/hooks/use-store",
+    "permanent": true
+  },
+  {
+    "source": "/docs/api/hooks/use-update-node-internals",
+    "destination": "/api-reference/hooks/use-update-node-internals",
+    "permanent": true
+  },
+  {
+    "source": "/docs/api/hooks/use-viewport",
+    "destination": "/api-reference/hooks/use-viewport",
+    "permanent": true
+  },
+  {
+    "source": "/docs/api/nodes/handle",
+    "destination": "/api-reference/components/handle",
+    "permanent": true
+  },
+  {
+    "source": "/docs/api/nodes/node-resizer",
+    "destination": "/api-reference/components/node-resizer",
+    "permanent": true
+  },
+  {
+    "source": "/docs/api/nodes/node-toolbar",
+    "destination": "/api-reference/components/node-toolbar",
+    "permanent": true
+  },
+  {
+    "source": "/docs/api/plugin-components/background",
+    "destination": "/api-reference/components/background",
+    "permanent": true
+  },
+  {
+    "source": "/docs/api/plugin-components/controls",
+    "destination": "/api-reference/components/controls",
+    "permanent": true
+  },
+  {
+    "source": "/docs/api/plugin-components/minimap",
+    "destination": "/api-reference/components/minimap",
+    "permanent": true
+  },
+  {
+    "source": "/docs/api/plugin-components/panel",
+    "destination": "/api-reference/components/panel",
+    "permanent": true
+  },
+  {
+    "source": "/docs/api/react-flow-provider",
+    "destination": "/api-reference/react-flow-provider",
+    "permanent": true
+  },
+  {
+    "source": "/docs/concepts/core-concepts",
+    "destination": "/learn/concepts/core-concepts",
+    "permanent": true
+  },
+  {
+    "source": "/docs/concepts/introduction",
+    "destination": "/learn/concepts/introduction",
+    "permanent": true
+  },
+  {
+    "source": "/docs/concepts/plugin-components",
+    "destination": "/learn/concepts/plugin-components",
+    "permanent": true
+  },
+  {
+    "source": "/docs/concepts/terms-and-definitions",
+    "destination": "/learn/concepts/terms-and-definitions",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/edges/custom-connectionline",
+    "destination": "/examples/edges/custom-connectionline",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/edges/delete-edge-on-drop",
+    "destination": "/examples/edges/delete-edge-on-drop",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/edges/edge-label-renderer",
+    "destination": "/examples/edges/edge-label-renderer",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/edges/edge-types",
+    "destination": "/examples/edges/edge-types",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/edges/floating-edges",
+    "destination": "/examples/edges/floating-edges",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/edges/markers",
+    "destination": "/examples/edges/markers",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/edges/simple-floating-edges",
+    "destination": "/examples/edges/simple-floating-edges",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/edges/updatable-edge",
+    "destination": "/examples/edges/updatable-edge",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/interaction/collaborative",
+    "destination": "/examples/interaction/collaborative",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/interaction/collision-detection",
+    "destination": "/examples/interaction/collision-detection",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/interaction/context-menu",
+    "destination": "/examples/interaction/context-menu",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/interaction/contextual-zoom",
+    "destination": "/examples/interaction/contextual-zoom",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/interaction/copy-and-paste",
+    "destination": "/examples/interaction/copy-and-paste",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/interaction/drag-and-drop",
+    "destination": "/examples/interaction/drag-and-drop",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/interaction/helper-lines",
+    "destination": "/examples/interaction/helper-lines",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/interaction/interaction-props",
+    "destination": "/examples/interaction/interaction-props",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/interaction/save-and-restore",
+    "destination": "/examples/interaction/save-and-restore",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/interaction/touch-device",
+    "destination": "/examples/interaction/touch-device",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/interaction/undo-and-redo",
+    "destination": "/examples/interaction/undo-and-redo",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/interaction/validation",
+    "destination": "/examples/interaction/validation",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/interaction/zoom-transitions",
+    "destination": "/examples/interaction/zoom-transitions",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/layout/auto-layout",
+    "destination": "/examples/layout/auto-layout",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/layout/dagre",
+    "destination": "/examples/layout/dagre",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/layout/elkjs",
+    "destination": "/examples/layout/elkjs",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/layout/expand-collapse",
+    "destination": "/examples/layout/expand-collapse",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/layout/force-layout",
+    "destination": "/examples/layout/force-layout",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/layout/horizontal",
+    "destination": "/examples/layout/horizontal",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/layout/sub-flows",
+    "destination": "/examples/layout/sub-flows",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/layout/workflow-builder-starter",
+    "destination": "/examples/layout/workflow-builder-starter",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/misc/download-image",
+    "destination": "/examples/misc/download-image",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/misc/provider",
+    "destination": "/examples/misc/provider",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/misc/use-react-flow-hook",
+    "destination": "/examples/misc/use-react-flow-hook",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/nodes/add-node-on-edge-drop",
+    "destination": "/examples/nodes/add-node-on-edge-drop",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/nodes/connection-limit",
+    "destination": "/examples/nodes/connection-limit",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/nodes/custom-node",
+    "destination": "/examples/nodes/custom-node",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/nodes/delete-middle-node",
+    "destination": "/examples/nodes/delete-middle-node",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/nodes/drag-handle",
+    "destination": "/examples/nodes/drag-handle",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/nodes/dynamic-grouping",
+    "destination": "/examples/nodes/dynamic-grouping",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/nodes/easy-connect",
+    "destination": "/examples/nodes/easy-connect",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/nodes/hidden",
+    "destination": "/examples/nodes/hidden",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/nodes/intersections",
+    "destination": "/examples/nodes/intersections",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/nodes/node-resizer",
+    "destination": "/examples/nodes/node-resizer",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/nodes/proximity-connect",
+    "destination": "/examples/nodes/proximity-connect",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/nodes/resize-rotate-moveable-deprecated",
+    "destination": "/examples/nodes/resize-rotate-moveable-deprecated",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/nodes/resize-rotate",
+    "destination": "/examples/nodes/resize-rotate",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/nodes/shapes",
+    "destination": "/examples/nodes/shapes",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/nodes/stress",
+    "destination": "/examples/nodes/stress",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/nodes/update-node",
+    "destination": "/examples/nodes/update-node",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/styling/base-style",
+    "destination": "/examples/styling/base-style",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/styling/styled-components",
+    "destination": "/examples/styling/styled-components",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/styling/tailwind",
+    "destination": "/examples/styling/tailwind",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/styling/turbo-flow",
+    "destination": "/examples/styling/turbo-flow",
+    "permanent": true
+  },
+  {
+    "source": "/docs/getting-started/adding-interactivity",
+    "destination": "/learn/getting-started/adding-interactivity",
+    "permanent": true
+  },
+  {
+    "source": "/docs/getting-started/building-a-flow",
+    "destination": "/learn/getting-started/building-a-flow",
+    "permanent": true
+  },
+  {
+    "source": "/docs/getting-started/installation-and-requirements",
+    "destination": "/learn/getting-started/installation-and-requirements",
+    "permanent": true
+  },
+  {
+    "source": "/docs/guides/accessibility",
+    "destination": "/learn/advanced-use/accessibility",
+    "permanent": true
+  },
+  {
+    "source": "/docs/guides/custom-nodes",
+    "destination": "/learn/customization/custom-nodes",
+    "permanent": true
+  },
+  {
+    "source": "/docs/guides/layouting",
+    "destination": "/learn/layouting/layouting",
+    "permanent": true
+  },
+  {
+    "source": "/docs/guides/migrate-to-v10",
+    "destination": "/learn/troubleshooting/migrate-to-v10",
+    "permanent": true
+  },
+  {
+    "source": "/docs/guides/migrate-to-v11",
+    "destination": "/learn/troubleshooting/migrate-to-v11",
+    "permanent": true
+  },
+  {
+    "source": "/docs/guides/remove-attribution",
+    "destination": "/learn/troubleshooting/remove-attribution",
+    "permanent": true
+  },
+  {
+    "source": "/docs/guides/state-management",
+    "destination": "/learn/advanced-use/state-management",
+    "permanent": true
+  },
+  {
+    "source": "/docs/guides/sub-flows",
+    "destination": "/learn/layouting/sub-flows",
+    "permanent": true
+  },
+  {
+    "source": "/docs/guides/testing",
+    "destination": "/learn/advanced-use/testing",
+    "permanent": true
+  },
+  {
+    "source": "/docs/guides/theming",
+    "destination": "/learn/customization/theming",
+    "permanent": true
+  },
+  {
+    "source": "/docs/guides/typescript",
+    "destination": "/learn/advanced-use/typescript",
+    "permanent": true
+  },
+  {
+    "source": "/docs/guides/uncontrolled-flow",
+    "destination": "/learn/advanced-use/uncontrolled-flow",
+    "permanent": true
+  },
+  {
+    "source": "/docs/getting-started",
+    "destination": "/docs/getting-started/installation-and-requirements",
+    "permanent": true
+  },
+  {
+    "source": "/docs/theming",
+    "destination": "/learn/customization/theming",
+    "permanent": true
+  },
+  {
+    "source": "/docs/api/component-props",
+    "destination": "/api-reference/react-flow",
+    "permanent": true
+  },
+  {
+    "source": "/docs/api/helper-functions",
+    "destination": "/api-reference/utils",
+    "permanent": true
+  },
+  {
+    "source": "/docs/api/nodes",
+    "destination": "/api-reference/types/node",
+    "permanent": true
+  },
+  {
+    "source": "/docs/api/node-types",
+    "destination": "/api-reference/types/node#default-node-types",
+    "permanent": true
+  },
+  {
+    "source": "/docs/api/handle",
+    "destination": "/api-reference/components/handle",
+    "permanent": true
+  },
+  {
+    "source": "/docs/api/edges",
+    "destination": "/api-reference/types/edge",
+    "permanent": true
+  },
+  {
+    "source": "/docs/api/edge-types",
+    "destination": "/api-reference/types/edge#default-edge-types",
+    "permanent": true
+  },
+  {
+    "source": "/docs/api/edge-utils",
+    "destination": "/api-reference/utils",
+    "permanent": true
+  },
+  {
+    "source": "/docs/api/internal-state-actions",
+    "destination": "/api-reference/hooks/use-store",
+    "permanent": true
+  },
+  {
+    "source": "/docs/api/hooks",
+    "destination": "/api-reference/hooks/use-react-flow",
+    "permanent": true
+  },
+  {
+    "source": "/docs/api/components/background",
+    "destination": "/api-reference/components/background",
+    "permanent": true
+  },
+  {
+    "source": "/docs/api/components/controls",
+    "destination": "/api-reference/components/controls",
+    "permanent": true
+  },
+  {
+    "source": "/docs/api/components/minimap",
+    "destination": "/api-reference/components/minimap",
+    "permanent": true
+  },
+  {
+    "source": "/docs/api/components/provider",
+    "destination": "/api-reference/react-flow-provider",
+    "permanent": true
+  },
+  {
+    "source": "/docs/getting-started/installation",
+    "destination": "/learn/getting-started/installation-and-requirements",
+    "permanent": true
+  },
+  {
+    "source": "/examples/custom-node",
+    "destination": "/docs/examples/nodes/custom-node",
+    "permanent": true
+  },
+  {
+    "source": "/examples/update-node",
+    "destination": "/docs/examples/nodes/update-node",
+    "permanent": true
+  },
+  {
+    "source": "/examples/edges",
+    "destination": "/docs/examples/edges/custom-edge",
+    "permanent": true
+  },
+  {
+    "source": "/examples/edge-with-button",
+    "destination": "/examples/edge/custom-edges",
+    "permanent": true
+  },
+  {
+    "source": "/examples/updatable-edge",
+    "destination": "/docs/examples/edges/updatable-edge",
+    "permanent": true
+  },
+  {
+    "source": "/examples/horizontal",
+    "destination": "/docs/examples/layout/horizontal",
+    "permanent": true
+  },
+  {
+    "source": "/examples/interaction",
+    "destination": "/docs/examples/interaction/interaction-props",
+    "permanent": true
+  },
+  {
+    "source": "/examples/provider",
+    "destination": "/docs/examples/misc/provider",
+    "permanent": true
+  },
+  {
+    "source": "/examples/validation",
+    "destination": "/docs/examples/interaction/validation",
+    "permanent": true
+  },
+  {
+    "source": "/examples/use-zoom-pan-helper-hook",
+    "destination": "/docs/examples/misc/use-react-flow-hook",
+    "permanent": true
+  },
+  {
+    "source": "/examples/drag-and-drop",
+    "destination": "/docs/examples/interaction/drag-and-drop",
+    "permanent": true
+  },
+  {
+    "source": "/examples/layouting",
+    "destination": "/docs/examples/layout/dagre",
+    "permanent": true
+  },
+  {
+    "source": "/examples/save-and-restore",
+    "destination": "/docs/examples/interaction/save-and-restore",
+    "permanent": true
+  },
+  {
+    "source": "/examples/stress",
+    "destination": "/docs/examples/nodes/stress",
+    "permanent": true
+  },
+  {
+    "source": "/examples/custom-connectionline",
+    "destination": "/docs/examples/edges/custom-connectionline",
+    "permanent": true
+  },
+  {
+    "source": "/examples/edge-types",
+    "destination": "/docs/examples/edges/edge-types",
+    "permanent": true
+  },
+  {
+    "source": "/examples/hidden",
+    "destination": "/docs/examples/nodes/hidden",
+    "permanent": true
+  },
+  {
+    "source": "/examples/smooth-transition",
+    "destination": "/docs/examples/interaction/zoom-transitions",
+    "permanent": true
+  },
+  {
+    "source": "/examples/contextual-zoom-features",
+    "destination": "/docs/examples/interaction/contextual-zoom",
+    "permanent": true
+  },
+  {
+    "source": "/examples/drag-handle",
+    "destination": "/docs/examples/nodes/drag-handle",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/edges/edge-with-button",
+    "destination": "/examples/edge/custom-edges",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/update-node",
+    "destination": "/examples/nodes/update-node",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/custom-node",
+    "destination": "/examples/nodes/custom-node",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/drag-handle",
+    "destination": "/examples/nodes/drag-handle",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/hidden",
+    "destination": "/examples/nodes/hidden",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/stress",
+    "destination": "/examples/nodes/stress",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/edges",
+    "destination": "/examples/edge/custom-edges",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/updatable-edge",
+    "destination": "/examples/edges/updatable-edge",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/edge-with-button",
+    "destination": "/examples/edge/custom-edges",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/edge-types",
+    "destination": "/examples/edges/edge-types",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/custom-connectionline",
+    "destination": "/examples/edges/custom-connectionline",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/interaction",
+    "destination": "/examples/interaction/interaction-props",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/touch-device",
+    "destination": "/examples/interaction/touch-device",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/smooth-transition",
+    "destination": "/examples/interaction/zoom-transitions",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/drag-and-drop",
+    "destination": "/examples/interaction/drag-and-drop",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/validation",
+    "destination": "/examples/interaction/validation",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/save-and-restore",
+    "destination": "/examples/interaction/save-and-restore",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/contextual-zoom",
+    "destination": "/examples/interaction/contextual-zoom",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/layouting",
+    "destination": "/examples/layout/dagre",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/horizontal",
+    "destination": "/examples/layout/horizontal",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/sub-flows",
+    "destination": "/examples/layout/sub-flows",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/use-react-flow-hook",
+    "destination": "/examples/misc/use-react-flow-hook",
+    "permanent": true
+  },
+  {
+    "source": "/docs/examples/provider",
+    "destination": "/examples/misc/provider",
+    "permanent": true
+  },
+  {
+    "source": "/docs",
+    "destination": "/learn",
+    "permanent": true
+  },
+  {
+    "source": "/docs/introduction",
+    "destination": "/learn/concepts/introduction",
+    "permanent": true
+  },
+  {
+    "source": "/docs/overview/terms-and-definitions",
+    "destination": "/learn/concepts/terms-and-definitions",
+    "permanent": true
+  },
+  {
+    "source": "/docs/overview/core-concepts",
+    "destination": "/learn/concepts/core-concepts",
+    "permanent": true
+  },
+  {
+    "source": "/docs/overview/plugin-components",
+    "destination": "/learn/concepts/plugin-components",
+    "permanent": true
+  },
+  {
+    "source": "/docs/overview/packages",
+    "destination": "/learn/concepts/plugin-components",
+    "permanent": true
+  }
+]

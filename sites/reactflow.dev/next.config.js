@@ -1,3 +1,5 @@
+const redirects = require('./redirects/redirects.json');
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Configure pageExtensions to include md and mdx
@@ -5,6 +7,9 @@ const nextConfig = {
   // Optionally, add any other Next.js config below
   reactStrictMode: true,
   transpilePackages: ['ui'],
+  async redirects() {
+    return redirects;
+  },
 };
 
 const withNextra = require('nextra')({

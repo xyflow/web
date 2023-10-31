@@ -1,0 +1,282 @@
+[
+  {
+    "source": "/docs/getting-started",
+    "destination": "/docs/getting-started/installation"
+  },
+  {
+    "source": "/docs/theming",
+    "destination": "/docs/guides/theming"
+  },
+  {
+    "source": "/docs/api/component-props",
+    "destination": "/docs/api/react-flow-props"
+  },
+  {
+    "source": "/docs/api/helper-functions",
+    "destination": "/docs/api/graph-util-functions"
+  },
+  {
+    "source": "/docs/api/nodes",
+    "destination": "/docs/api/nodes/node-options"
+  },
+  {
+    "source": "/docs/api/node-types",
+    "destination": "/docs/api/nodes/node-types"
+  },
+  {
+    "source": "/docs/api/handle",
+    "destination": "/docs/api/nodes/handle"
+  },
+  {
+    "source": "/docs/api/edges",
+    "destination": "/docs/api/edges/edge-options"
+  },
+  {
+    "source": "/docs/api/edge-types",
+    "destination": "/docs/api/edges/edge-types"
+  },
+  {
+    "source": "/docs/api/edge-utils",
+    "destination": "/docs/api/edges/edge-utils"
+  },
+  {
+    "source": "/docs/api/internal-state-actions",
+    "destination": "/docs/api/hooks/use-store"
+  },
+  {
+    "source": "/docs/api/hooks",
+    "destination": "/docs/api/hooks/use-react-flow"
+  },
+  {
+    "source": "/docs/api/components/background",
+    "destination": "/docs/api/plugin-components/background"
+  },
+  {
+    "source": "/docs/api/components/controls",
+    "destination": "/docs/api/plugin-components/controls"
+  },
+  {
+    "source": "/docs/api/components/minimap",
+    "destination": "/docs/api/plugin-components/minimap"
+  },
+  {
+    "source": "/docs/api/components/provider",
+    "destination": "/docs/api/react-flow-provider"
+  },
+  {
+    "source": "/docs/getting-started/installation",
+    "destination": "/docs/getting-started/installation-and-requirements"
+  },
+  {
+    "source": "/docs/getting-started/core-concepts",
+    "destination": "/docs/overview/core-concepts/ "
+  },
+  {
+    "source": "/docs/getting-started/plugin-components",
+    "destination": "/docs/overview/plugin-components/ "
+  },
+  {
+    "source": "/examples",
+    "destination": "/docs/examples/overview"
+  },
+  {
+    "source": "/examples/custom-node",
+    "destination": "/docs/examples/custom-node"
+  },
+  {
+    "source": "/examples/update-node",
+    "destination": "/docs/examples/update-node"
+  },
+  {
+    "source": "/examples/edges",
+    "destination": "/docs/examples/edges"
+  },
+  {
+    "source": "/examples/edge-with-button",
+    "destination": "/docs/examples/edges/custom-edge"
+  },
+  {
+    "source": "/examples/updatable-edge",
+    "destination": "/docs/examples/updatable-edge"
+  },
+  {
+    "source": "/examples/horizontal",
+    "destination": "/docs/examples/horizontal"
+  },
+  {
+    "source": "/examples/interaction",
+    "destination": "/docs/examples/interaction"
+  },
+  {
+    "source": "/examples/provider",
+    "destination": "/docs/examples/provider"
+  },
+  {
+    "source": "/examples/validation",
+    "destination": "/docs/examples/validation"
+  },
+  {
+    "source": "/examples/use-zoom-pan-helper-hook",
+    "destination": "/docs/examples/use-react-flow-hook"
+  },
+  {
+    "source": "/examples/drag-and-drop",
+    "destination": "/docs/examples/drag-and-drop"
+  },
+  {
+    "source": "/examples/layouting",
+    "destination": "/docs/examples/layouting"
+  },
+  {
+    "source": "/examples/save-and-restore",
+    "destination": "/docs/examples/save-and-restore"
+  },
+  {
+    "source": "/examples/stress",
+    "destination": "/docs/examples/stress"
+  },
+  {
+    "source": "/examples/custom-connectionline",
+    "destination": "/docs/examples/custom-connectionline"
+  },
+  {
+    "source": "/examples/edge-types",
+    "destination": "/docs/examples/edge-types"
+  },
+  {
+    "source": "/examples/hidden",
+    "destination": "/docs/examples/hidden"
+  },
+  {
+    "source": "/examples/smooth-transition",
+    "destination": "/docs/examples/smooth-transition"
+  },
+  {
+    "source": "/examples/contextual-zoom-features",
+    "destination": "/docs/examples/contextual-zoom"
+  },
+  {
+    "source": "/examples/drag-handle",
+    "destination": "/docs/examples/drag-handle"
+  },
+  {
+    "source": "/examples/floating-edges",
+    "destination": "/docs/examples/floating-edges"
+  },
+  {
+    "source": "/docs/examples/edges/edge-with-button",
+    "destination": "/docs/examples/edges/custom-edge"
+  },
+  {
+    "source": "/docs/examples/update-node",
+    "destination": "/docs/examples/nodes/update-node"
+  },
+  {
+    "source": "/docs/examples/custom-node",
+    "destination": "/docs/examples/nodes/custom-node"
+  },
+  {
+    "source": "/docs/examples/drag-handle",
+    "destination": "/docs/examples/nodes/drag-handle"
+  },
+  {
+    "source": "/docs/examples/hidden",
+    "destination": "/docs/examples/nodes/hidden"
+  },
+  {
+    "source": "/docs/examples/stress",
+    "destination": "/docs/examples/nodes/stress"
+  },
+  {
+    "source": "/docs/examples/edges",
+    "destination": "/docs/examples/edges/custom-edge"
+  },
+  {
+    "source": "/docs/examples/updatable-edge",
+    "destination": "/docs/examples/edges/updatable-edge"
+  },
+  {
+    "source": "/docs/examples/edge-with-button",
+    "destination": "/docs/examples/edges/custom-edge"
+  },
+  {
+    "source": "/docs/examples/edge-types",
+    "destination": "/docs/examples/edges/edge-types"
+  },
+  {
+    "source": "/docs/examples/custom-connectionline",
+    "destination": "/docs/examples/edges/custom-connectionline"
+  },
+  {
+    "source": "/docs/examples/interaction",
+    "destination": "/docs/examples/interaction/interaction-props"
+  },
+  {
+    "source": "/docs/examples/touch-device",
+    "destination": "/docs/examples/interaction/touch-device"
+  },
+  {
+    "source": "/docs/examples/smooth-transition",
+    "destination": "/docs/examples/interaction/zoom-transitions"
+  },
+  {
+    "source": "/docs/examples/drag-and-drop",
+    "destination": "/docs/examples/interaction/drag-and-drop"
+  },
+  {
+    "source": "/docs/examples/validation",
+    "destination": "/docs/examples/interaction/validation"
+  },
+  {
+    "source": "/docs/examples/save-and-restore",
+    "destination": "/docs/examples/interaction/save-and-restore"
+  },
+  {
+    "source": "/docs/examples/contextual-zoom",
+    "destination": "/docs/examples/interaction/contextual-zoom"
+  },
+  {
+    "source": "/docs/examples/layouting",
+    "destination": "/docs/examples/layout/dagre"
+  },
+  {
+    "source": "/docs/examples/horizontal",
+    "destination": "/docs/examples/layout/horizontal"
+  },
+  {
+    "source": "/docs/examples/sub-flows",
+    "destination": "/docs/examples/layout/sub-flows"
+  },
+  {
+    "source": "/docs/examples/use-react-flow-hook",
+    "destination": "/docs/examples/misc/use-react-flow-hook"
+  },
+  {
+    "source": "/docs/examples/provider",
+    "destination": "/docs/examples/misc/provider"
+  },
+  {
+    "source": "/docs",
+    "destination": "/docs/quickstart"
+  },
+  {
+    "source": "/docs/introduction",
+    "destination": "/docs/concepts/introduction"
+  },
+  {
+    "source": "/docs/overview/terms-and-definitions",
+    "destination": "/docs/concepts/terms-and-definitions"
+  },
+  {
+    "source": "/docs/overview/core-concepts",
+    "destination": "/docs/concepts/core-concepts"
+  },
+  {
+    "source": "/docs/overview/plugin-components",
+    "destination": "/docs/concepts/plugin-components"
+  },
+  {
+    "source": "/docs/overview/packages",
+    "destination": "/docs/concepts/packages"
+  }
+]
