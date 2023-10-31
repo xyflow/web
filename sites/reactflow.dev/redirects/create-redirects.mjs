@@ -1,13 +1,19 @@
+/**
+ * This script reads in the old sitemap of reactflow.dev and tries to match
+ * each path to a new one.
+ * It outputs the redirects.json file that is being used in the nextjs config.
+ */
 import { XMLParser } from 'fast-xml-parser';
 import fs from 'fs';
 import { fileURLToPath } from 'url';
 import path from 'path';
-import staticRedirects from './static-redirects.json' assert { type: 'json' };
+import staticRedirects from './data/static-redirects.json' assert { type: 'json' };
+import legacyRedirects from './data/legacy-redirects.json' assert { type: 'json' };
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const OLD_RF_SITEMAP = path.join(__dirname, './sitemap-rf-v11.xml');
+const OLD_RF_SITEMAP = path.join(__dirname, './data/sitemap-rf-v11.xml');
 const NEW_RF_SITEMAP =
   'https://reactflow-website-staging.vercel.app//sitemap.xml';
 const XY_SITEMAP = 'https://xyflow.com/sitemap.xml';
@@ -112,6 +118,52 @@ async function start() {
   console.log(
     redirects.map((r) => `${r.source} ➜ ${r.destination}`).join('\n'),
   );
+
+  let legacy = [];
+
+  legacyRedirects
+    // filter out redirects that are already in the redirects.json
+    .filter((item) => !redirects.find((r) => r.source === item.source))
+    .forEach((item) => {
+      const newRedirect = redirects.find((r) => r.source === item.destination);
+
+      if (newRedirect && item.source !== newRedirect.destination) {
+        return legacy.push({
+          source: item.source,
+          destination: newRedirect.destination,
+          permanent: true,
+        });
+      }
+
+      const legacyRedirect = legacyRedirects.find(
+        (r) => r.source === item.destination,
+      );
+
+      if (legacyRedirect) {
+        return legacy.push({
+          source: item.source,
+          destination: legacyRedirect.destination,
+          permanent: true,
+        });
+      }
+
+      console.log('unmatched legacy redirect:', item.source, item.destination);
+    });
+
+  legacy = legacy.filter(
+    (item) =>
+      !redirects.find(
+        (r) => r.source === item.source && r.destination === item.destination,
+      ),
+  );
+
+  console.log(
+    legacy.map((r) => `(legacy) ${r.source} ➜ ${r.destination}`).join('\n'),
+  );
+
+  redirects.push(...legacy);
+
+  console.log(redirects.length);
 
   fs.writeFileSync(OUTPUT, JSON.stringify(redirects, null, 2));
 }

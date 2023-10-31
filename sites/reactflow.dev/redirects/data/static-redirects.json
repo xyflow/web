@@ -78,5 +78,21 @@
   {
     "source": "/docs/api/nodes/node-types",
     "destination": "/api-reference/types/node#default-node-types"
+  },
+  {
+    "source": "/examples/floating-edges",
+    "destination": "/examples/edges/floating-edges"
+  },
+  {
+    "source": "/docs/examples/floating-edges",
+    "destination": "/examples/edges/floating-edges"
+  },
+  {
+    "source": "/docs/getting-started/core-concepts",
+    "destination": "/learn/concepts/core-concepts"
+  },
+  {
+    "source": "/docs/getting-started/plugin-components",
+    "destination": "/learn/concepts/plugin-components"
   }
 ]
