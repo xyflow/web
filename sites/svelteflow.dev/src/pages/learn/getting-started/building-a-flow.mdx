@@ -11,7 +11,7 @@ In the following section we will show you how to create a Svelte component that 
 
 ## Getting Started
 
-Let's add an `SvelteFlow` component with a `Controls` and a `Background` component. For this we import the components from the `@xyflow/svelte` package:
+Let's add a `SvelteFlow` component with a `Controls` and a `Background` component. For this we import the components from the `@xyflow/svelte` package:
 
 ```js
 import { SvelteFlow, Background, Controls } from '@xyflow/svelte';
@@ -23,12 +23,12 @@ Now you can use them in your component like this:
 
 <ExampleViewer codePath="guides/getting-started/a" editorHeight={400} />
 
-As you can see, you can pan around by dragging the pane, zoom in and out by scrolling the mouse or using the control panel buttons.
+You can now pan around by dragging the pan, as well as zoom in and out by scrolling the mouse or using the control panel buttons.
 
 There are three important things to keep in mind here:
 
 1. You need to **import the styles**. Otherwise Svelte Flow looks weird and doesn't work.
-2. The **parent container needs a width and a height**, because Svelte Flow uses its parent dimensions.
+2. The **parent container needs a width and height**, because Svelte Flow uses its parent dimensions.
 3. If you have **multiple flows on one page**, you need to pass a unique `id` prop to each component to make Svelte Flow work properly.
 
 ## Adding nodes
@@ -61,7 +61,7 @@ There are lots of options to configure nodes. You can see the full list of optio
 This is a good start! You can already do a lot of things:
 
 - **drag nodes** around
-- **select nodes**, by clicking on them
+- **select nodes** by clicking on them
 - **delete nodes** by pressing the `Backspace` key
 - **multi select nodes** by holding down the `Shift` key create a selection box
 
@@ -79,11 +79,15 @@ const edges = writable([{ id: '1-2', source: '1', target: '2' }]);
 
 <ExampleViewer codePath="guides/getting-started/c" editorHeight={400} />
 
-As the nodes, the edges have a lot of options too. You can chosse a type, define start and end markers, labels and of course change the styling. You can see the full list of options on the [edge option site](/api-reference/types/edge).
+Just like nodes, edges have a lot of options too. You can choose a type, define start and end markers, labels, and change the styling. You can see the full list of options on the [edge option site](/api-reference/types/edge).
 
 ## Fine-tuning the flow
 
-Now that we have a basic flow, we can fine-tune it a bit. You can automatically fit all nodes into the viewport, by using the `fitView` prop. If a white background is not what you want, you can easily adjust it by using the `bgColor` prop of the `Background` component. As you can see, we alos used the `patternColor` prop to change the color of the pattern. Of course you can also change the pattern with the `variant` prop. By default the controls panel comes with a zoom-in, zoom-out, fit view and lock button. You can remove the lock button for example by setting `showLock={false}`.
+Now that we have a basic flow, let's fine-tune it a bit. You can automatically fit all nodes into the viewport by using the `fitView` prop.
+
+If you want something besides a white background, you can easily adjust it by using the `bgColor` prop of the `Background` component. As you can see, we also used the `patternColor` prop to change the color of the background pattern. You can also change the pattern with the `variant` prop.
+
+By default the controls panel comes with a zoom-in, zoom-out, fit view and lock button. You can remove the lock button for example by setting `showLock={false}`.
 
 <ExampleViewer codePath="guides/getting-started/d" editorHeight={400} />
 
