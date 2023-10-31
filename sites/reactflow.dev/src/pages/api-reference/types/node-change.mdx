@@ -1,6 +1,9 @@
 ---
 title: NodeChange
-description: ''
+description:
+  The onNodesChange callback takes an array of NodeChange objects that you should
+  use to update your flow's state. The NodeChange type is a union of six different
+  object types that represent that various ways an node can change in a flow.
 ---
 
 import { PropsTable } from '@/components/props-table';
@@ -16,6 +19,11 @@ import {
 # NodeChange
 
 [Source on GitHub](https://github.com/wbkd/react-flow/blob/bacaa99c73b347856f63c5d495f5a0829be1e431/packages/core/src/types/changes.ts/#L44)
+
+The [`onNodesChange`](/api-reference/react-flow#on-nodes-change) callback takes
+an array of `NodeChange` objects that you should use to update your flow's state.
+The `NodeChange` type is a union of six different object types that represent that
+various ways an node can change in a flow.
 
 ```ts
 export type NodeChange =
