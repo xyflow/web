@@ -81,7 +81,7 @@ export default function About() {
       <ContentGrid className="mt-16 lg:mt-20">
         <TeamCard
           name="Christopher"
-          description="Christopher doesn’t remember anything before 2015. He woke up on the shores of the Spree, where he wandered into the offices of the newspaper Zeit and they gave him a job as a front-end developer, mistaking him for the potential new hire. He quickly rose through the ranks there. Now he codes at xyFlow, hoping one day he will remember how he got here, and what the meaning of all this is anyway."
+          description="Christopher doesn’t remember anything before 2015. He woke up on the shores of the Spree, where he wandered into the offices of the newspaper Zeit and they gave him a job as a front-end developer, mistaking him for the potential new hire. He quickly rose through the ranks there. Now he codes at xyflow, hoping one day he will remember how he got here, and what the meaning of all this is anyway."
           links={[
             { linkName: 'Twitter', route: 'https://twitter.com/chrtze' },
             { linkName: 'Github', route: 'https://github.com/chrtze' },
