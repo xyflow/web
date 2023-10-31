@@ -47,7 +47,6 @@ export type InternalRoute =
   | '/api-reference/types/edge-marker'
   | '/api-reference/types/edge-props'
   | '/api-reference/types/fit-view-options'
-  | '/api-reference/types/handle-element'
   | '/api-reference/types/marker-type'
   | '/api-reference/types/mini-map-node-props'
   | '/api-reference/types/node'
