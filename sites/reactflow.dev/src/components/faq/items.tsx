@@ -25,8 +25,8 @@ export default [
         <ul className="list-disc pl-8 mb-4">
           <li>
             For <strong>educational purposes</strong>, email us at
-            info@reactflow.dev using your university email address with a link
-            to the example you&apos;re looking for.
+            info@xyflow.com using your university email address with a link to
+            the example you&apos;re looking for.
           </li>
           <li>
             For <strong>non-commercial open source projects</strong>,{' '}
@@ -90,7 +90,7 @@ export default [
         React Flow app.{' '}
         <Link
           variant="primary"
-          href="https://pro.xyflow.com/contact"
+          href="https://xyflow.com/contact"
           target="_blank"
         >
           Contact us

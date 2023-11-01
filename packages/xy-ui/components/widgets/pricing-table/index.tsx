@@ -36,7 +36,7 @@ const PricingTable = ({
   }) => void;
 }) => {
   const [billingInterval, setBillingInterval] = useState<BillingInterval>(
-    BillingInterval.MONTH
+    BillingInterval.MONTH,
   );
   const [currency, setCurrency] = useState<Currency>(getDefaultCurrency());
 
@@ -47,7 +47,7 @@ const PricingTable = ({
       <div
         className={cn(
           'flex flex-wrap justify-between lg:justify-center relative mb-8',
-          className
+          className,
         )}
       >
         <div>
@@ -88,6 +88,7 @@ const PricingTable = ({
               currency={currency}
               billingInterval={billingInterval}
               onSelect={onSelect}
+              key={plan.id}
             />
           ))}
         </div>

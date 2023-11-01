@@ -1,6 +1,13 @@
-import { Hero, BaseLayout, Card, InputLabel, Input, ContactForm } from 'xy-ui';
+import {
+  Hero,
+  BaseLayout,
+  Card,
+  InputLabel,
+  Input,
+  ContactForm,
+  SubscribeSection,
+} from 'xy-ui';
 import { SparklesIcon } from '@heroicons/react/24/outline';
-import Subscribe from '@/components/subscribe-section';
 
 export default function Enterprise() {
   return (
@@ -8,7 +15,7 @@ export default function Enterprise() {
       <Hero
         title="React Flow Pro Enterprise"
         subtitle="Pro subscribers have access to advanced examples and guides that can be used as a starting point or inspiration for building node-based UIs."
-        kicker="xyflow pro"
+        kicker="React Flow Pro"
         kickerIcon={SparklesIcon}
         align="center"
         showGradient
@@ -50,7 +57,10 @@ export default function Enterprise() {
           </InputLabel>
         </ContactForm>
       </Card>
-      <Subscribe />
+      <SubscribeSection
+        btnLink={`${process.env.NEXT_PUBLIC_PRO_PLATFORM_URL}/signup`}
+        btnLabel="Sign Up Now"
+      />
     </BaseLayout>
   );
 }

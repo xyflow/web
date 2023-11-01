@@ -5,7 +5,6 @@ export const edgeAddChangeFields: PropsTableProps = {
     { name: 'type', type: '"add"' },
     { name: 'item', type: 'Edge<T>' },
   ],
-  deeplinkPrefix: 'edge-add-change',
 };
 
 export const edgeRemoveChangeFields: PropsTableProps = {
@@ -13,7 +12,6 @@ export const edgeRemoveChangeFields: PropsTableProps = {
     { name: 'type', type: '"remote"' },
     { name: 'id', type: 'string' },
   ],
-  deeplinkPrefix: 'edgeremovechange',
 };
 
 export const edgeResetChangeFields: PropsTableProps = {
@@ -21,7 +19,6 @@ export const edgeResetChangeFields: PropsTableProps = {
     { name: 'type', type: '"reset"' },
     { name: 'item', type: 'Edge<T>' },
   ],
-  deeplinkPrefix: 'edgeresetchange',
 };
 
 export const edgeSelectionChangeFields: PropsTableProps = {
@@ -30,5 +27,4 @@ export const edgeSelectionChangeFields: PropsTableProps = {
     { name: 'id', type: 'string' },
     { name: 'selected', type: 'boolean' },
   ],
-  deeplinkPrefix: 'edgeselectionchange',
 };

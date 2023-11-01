@@ -134,7 +134,7 @@ export default function CaseStudies() {
         <ListItem
           icon={StarIcon}
           label="Star us on Github"
-          link="https://github.com/xyflow/xy-flow"
+          link="https://github.com/wbkd/react-flow"
         />
         <ListItem
           icon={ChatBubbleOvalLeftEllipsisIcon}

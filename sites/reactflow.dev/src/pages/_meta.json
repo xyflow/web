@@ -22,7 +22,7 @@
       },
       "github": {
         "title": "Github",
-        "href": "https://github.com/xyflow"
+        "href": "https://github.com/xyflow/xyflow"
       },
       "contact": {
         "title": "Contact Us",
@@ -52,11 +52,11 @@
       "layout": "raw"
     }
   },
-  "tutorials": {
-    "title": "Tutorials",
+  "whats-new": {
+    "title": "What's new?",
     "display": "hidden",
     "theme": {
-      "layout": "raw"
+      "layout": "default"
     }
   },
   "404": {

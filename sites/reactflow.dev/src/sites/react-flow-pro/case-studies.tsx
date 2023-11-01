@@ -1,11 +1,11 @@
-import { CheckCircleIcon } from '@heroicons/react/24/outline';
-import Subscribe from '@/components/subscribe-section';
+import { SparklesIcon } from '@heroicons/react/24/outline';
 import {
   BaseLayout,
   ContentGrid,
   ContentGridItem,
   ProjectPreview,
   Hero,
+  SubscribeSection,
 } from 'xy-ui';
 import { getMdxPagesUnderRoute } from '@/utils';
 
@@ -15,9 +15,10 @@ export default function CaseStudies() {
       <Hero
         title="What Pro Subscribers build with React Flow"
         subtitle="See how our users build custom node-based apps like workflow editors and diagramming tools"
-        kicker="Success Stories"
-        kickerIcon={CheckCircleIcon}
+        kicker="Case Studies"
+        kickerIcon={SparklesIcon}
         align="center"
+        showGradient
       />
       <ContentGrid className="mt-20">
         {getMdxPagesUnderRoute('/pro/case-studies')
@@ -36,7 +37,10 @@ export default function CaseStudies() {
             );
           })}
       </ContentGrid>
-      <Subscribe />
+      <SubscribeSection
+        btnLink={`${process.env.NEXT_PUBLIC_PRO_PLATFORM_URL}/signup`}
+        btnLabel="Sign Up Now"
+      />
     </BaseLayout>
   );
 }

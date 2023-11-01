@@ -21,12 +21,13 @@ import FlowB from './flows/flow-b';
 import FlowC from './flows/flow-c';
 
 import aboutImage from '../../../public/img/about.jpg';
+import type { InternalRoute } from '@/utils';
 
 const features = [
   {
     title: 'Ready out-of-the-box',
     text: 'The things you need are already there: dragging nodes, zooming, panning, selecting multiple nodes, and adding/removing elements are all built-in.',
-    route: '/learn',
+    route: '/learn' satisfies InternalRoute,
     linkLabel: 'Get started',
     flowComponent: FlowA,
   },
@@ -39,14 +40,14 @@ const features = [
       </>
     ),
     text: 'React Flow nodes are simply React components, ready for your interactive elements. We play nice with Tailwind and plain old CSS.',
-    route: '/learn/customization/custom-nodes',
+    route: '/learn/customization/custom-nodes' satisfies InternalRoute,
     linkLabel: 'Custom nodes guide',
     flowComponent: FlowB,
   },
   {
     title: 'All the right plugins',
     text: 'Make more advanced apps with the Background, Minimap, Controls, Panel, NodeToolbar, and NodeResizer components.',
-    route: '/learn/concepts/plugin-components',
+    route: '/learn/concepts/plugin-components' satisfies InternalRoute,
     flowComponent: FlowC,
   },
 ];
@@ -136,7 +137,7 @@ export default function ReactFlowHome() {
         />
       </Section>
 
-      <GettingStarted libraryName="React Flow" packageName="@xyflow/react" />
+      <GettingStarted libraryName="React Flow" packageName="reactflow" />
 
       <Section>
         <Features features={features} />

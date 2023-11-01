@@ -52,6 +52,7 @@ export * from './components/widgets/react-player-lazy';
 export * from './components/widgets/hero-flow';
 export * from './components/widgets/image-slider';
 export * from './components/widgets/search';
+export * from './components/widgets/subscribe-section';
 
 export * from './hooks/use-connection-drawer';
 export * from './hooks/use-fathom';

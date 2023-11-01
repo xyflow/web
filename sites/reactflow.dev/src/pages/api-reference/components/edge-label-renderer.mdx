@@ -1,10 +1,20 @@
+---
+title: The EdgeLabelRenderer component
+displayTitle: '<EdgeLabelRenderer />'
+description:
+  'Edges are SVG-based. If you want to render more complex labels you can use the
+  EdgeLabelRenderer component to access a div based renderer. This component is a
+  portal that renders the label in a div that is positioned on top of the edges.
+  You can see an example usage of the component in the edge label renderer example.'
+---
+
 import { Callout } from 'nextra/components';
 import { PropsTable } from '@/components/props-table';
 import { edgeLabelRendererProps } from '@/page-data/reference/components/EdgeLabelRenderer.ts';
 
 # &lt;EdgeLabelRenderer />
 
-[Source on GitHub](https://github.com/wbkd/react-flow/blob/f919cb152dd5a92ec3b4d7e4568ffe099bc2af39/packages/react/src/components/EdgeLabelRenderer/index.tsx#L9)
+[Source on GitHub](https://github.com/wbkd/react-flow/blob/bacaa99c73b347856f63c5d495f5a0829be1e431/packages/core/src/components/EdgeLabelRenderer/index.tsx/#L9)
 
 Edges are SVG-based. If you want to render more complex labels you can use the
 `<EdgeLabelRenderer />` component to access a div based renderer. This component
@@ -19,7 +29,7 @@ example.
 
 ```jsx
 import React from 'react';
-import { getBezierPath, EdgeLabelRenderer, BaseEdge } from '@xyflow/react';
+import { getBezierPath, EdgeLabelRenderer, BaseEdge } from 'reactflow';
 
 const CustomEdge = ({ id, data, ...props }) => {
   const [edgePath, labelX, labelY] = getBezierPath(props);

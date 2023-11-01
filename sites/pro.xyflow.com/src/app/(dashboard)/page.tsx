@@ -22,7 +22,7 @@ function OverviewPage() {
           />
           <SubscriptionFeature
             title="Prioritized Github Issues"
-            description="Your Github issues will be looked at first by our team. Please drop us a message at info@reactflow.dev with a link to your issue after creating it."
+            description="Your Github issues will be looked at first by our team. Please drop us a message at info@xyflow.com with a link to your issue after creating it."
             plans={[SubscriptionPlan.STARTER, SubscriptionPlan.PRO, SubscriptionPlan.ENTERPRISE]}
             button={{ label: 'Open Issue', href: 'https://github.com/wbkd/react-flow/issues/new/choose' }}
           />

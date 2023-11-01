@@ -1,5 +1,4 @@
 import { ChevronRightIcon } from '@heroicons/react/20/solid';
-import { SparklesIcon } from '@heroicons/react/24/outline';
 import { type MdxFile } from 'nextra';
 import { type ReactNode } from 'react';
 import Image from 'next/image';
@@ -7,7 +6,6 @@ import Link from 'next/link';
 
 import {
   AuthorList,
-  Button,
   Heading,
   Text,
   Container,
@@ -15,6 +13,7 @@ import {
   ContentGridItem,
   ProjectPreview,
   Author,
+  SubscribeSection,
 } from '../../';
 
 export type CaseStudyFrontmatter = {
@@ -74,21 +73,7 @@ export function CaseStudyLayout({
         <CaseStudyPreviews prev={prev} next={next} />
       </div>
 
-      <div className="text-center mb-10">
-        <Heading as="h3" className="mb-4 mt-24 font-bold">
-          Get React Flow <span className="text-primary">Pro</span> today
-        </Heading>
-        <Text size="lg">
-          Ensure the sustainable maintenance and development of the React Flow
-          library.
-        </Text>
-        <Button size="lg" asChild variant="pro" className="mt-12 mb-16">
-          <Link href="/react-flow/pro" className="flex items-center">
-            <SparklesIcon className="w-5 h-5 mr-1" />
-            React Flow Pro
-          </Link>
-        </Button>
-      </div>
+      <SubscribeSection />
     </>
   );
 }

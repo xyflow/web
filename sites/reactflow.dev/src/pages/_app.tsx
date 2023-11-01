@@ -1,6 +1,7 @@
+import { useRouter } from 'next/router';
 import localFont from 'next/font/local';
 import { Fira_Mono } from 'next/font/google';
-import { useFathom } from 'xy-ui';
+import { cn, useFathom } from 'xy-ui';
 
 import 'styles/global.css';
 
@@ -28,10 +29,13 @@ const fathomOptions = {
 };
 
 export default function App({ Component, pageProps }) {
+  const router = useRouter();
+  // we need this to be able to override nextra theme styles for specific pages
+  const routeSegment = router.pathname?.split('/')?.[1];
   useFathom(fathomOptions);
 
   return (
-    <div className={className}>
+    <div className={cn(className, routeSegment)}>
       <Component {...pageProps} />
     </div>
   );

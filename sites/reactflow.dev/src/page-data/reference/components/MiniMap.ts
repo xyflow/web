@@ -79,7 +79,7 @@ export const miniMapNodeProps: PropsTableProps = {
     { name: 'shapeRendering:', type: 'string' },
     { name: 'strokeColor', type: 'string' },
     { name: 'strokeWidth', type: 'number' },
-    { name: 'style?', type: ' CSSProperties' },
+    { name: 'style?', type: 'React.CSSProperties' },
     { name: 'selected', type: 'boolean' },
     { name: 'onClick?', type: ' (event: MouseEvent, id: string) => void' },
   ],

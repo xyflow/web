@@ -6,7 +6,7 @@ import { nodes, edges } from './initialElements';
 
 /**
  * This example demonstrates how you can remove the attribution from the React Flow renderer.
- * Please only hide the attribution if you are subscribed to React Flow Pro: https://pro.reactflow.dev
+ * Please only hide the attribution if you are subscribed to React Flow Pro: https://reactflow.dev/pro
  */
 const proOptions = { hideAttribution: true };
 

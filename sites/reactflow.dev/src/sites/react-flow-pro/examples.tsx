@@ -5,10 +5,10 @@ import {
   Button,
   Hero,
   ProjectPreview,
+  SubscribeSection,
 } from 'xy-ui';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
-import Subscribe from '@/components/subscribe-section';
 import { getMdxPagesUnderRoute } from '@/utils';
 import { getPagesUnderRoute } from 'nextra/context';
 
@@ -37,13 +37,17 @@ export default function ProExamples() {
       <Hero
         title="React Flow Pro Examples"
         subtitle="Pro subscribers have access to advanced examples and guides that can be used as a starting point or inspiration for building node-based UIs."
-        kicker="xyflow pro"
+        kicker="React Flow Pro"
         kickerIcon={SparklesIcon}
         align="center"
         action={
           <div className="flex gap-2 justify-center">
-            <Button size="lg">Get Started</Button>
-            <Button asChild size="lg" variant="pro">
+            <Button asChild size="lg">
+              <Link href={`${process.env.NEXT_PUBLIC_PRO_PLATFORM_URL}/signup`}>
+                <SparklesIcon className="w-5 h-5 mr-2" /> Get Started
+              </Link>
+            </Button>
+            <Button asChild size="lg" variant="secondary">
               <Link href="/pro/pricing">Pricing</Link>
             </Button>
           </div>
@@ -63,7 +67,10 @@ export default function ProExamples() {
           </ContentGridItem>
         ))}
       </ContentGrid>
-      <Subscribe />
+      <SubscribeSection
+        btnLink={`${process.env.NEXT_PUBLIC_PRO_PLATFORM_URL}/signup`}
+        btnLabel="Sign Up Now"
+      />
     </BaseLayout>
   );
 }
