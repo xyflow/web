@@ -7,9 +7,10 @@ tags: ['react-flow', 'update']
 image: '/img/blog/v11-reactflow-header.png'
 ---
 
-import { Image, Emoji, Embed } from 'xy-ui';
-import { BlogPostLayout } from '@/layouts/blog-post-with-frontmatter';
+import Image from 'next/image';
 import { Bleed } from 'nextra-theme-docs';
+import { Emoji, Embed, Text } from 'xy-ui';
+import { BlogPostLayout } from '@/layouts/blog-post-with-frontmatter';
 
 <BlogPostLayout>
 Today we are excited to launch Svelte Flow! 🎉⚡️ Svelte Flow is a library for creating workflow builders, database visualizers, data processing tools, and anything else you can imagine with nodes on a screen.
@@ -18,17 +19,17 @@ Today we are excited to launch Svelte Flow! 🎉⚡️ Svelte Flow is a library 
   <Embed src="https://xyflow-svelte-examples.vercel.app/examples/feature-overview" />
 </Bleed>
 
-Try it out with `npm install @xyflow/svelte`, or check out the Github repo(LINK!). Svelte Flow is MIT Licensed and was built from the ground-up by the team who created and maintains [React Flow](https://reactflow.dev/).
+Try it out with `npm install @xyflow/svelte`, or check out the [Github repo](https://github.com/xyflow/xyflow). Svelte Flow is MIT Licensed and was built from the ground-up by the team who created and maintains [React Flow](https://reactflow.dev/).
 
 🕹 **Interactivity out-of-the-box:** dragging nodes, zooming, panning, selecting multiple nodes, and adding/removing edges are all built-in.
 
-💅🏻 **Easily customizable:** Svelte Flow nodes are easily customizeable components, made to be tweaked and modified to your heart's content. Svelte Flow is focused on the UI and canvas of your application, you bring the data and layouting libraries.
+💅🏻 **Easily customizable:** Svelte Flow nodes are easily customizable components, made to be tweaked and modified to your heart's content. Svelte Flow is focused on the UI and canvas of your application, you bring the data and layouting libraries.
 
 🔌 **Built-in Components:** Background, Minimap, Controls, and Panel components are ready-to-use on install.
 
 ## Docs & Examples
 
-We just launched our new website: [svelteflow.dev](http://svelteflow.dev). You can find docs, guides, reference, and a bunch of copy-pasteable code examples, and we'll continue to add new resources and improve the ones that are already there as we continue to maintain the library.
+We just launched [svelteflow.dev](https://svelteflow.dev) where you can find docs, guides, reference, and a bunch of copy-pasteable code examples, and we'll keep adding new resources and improve the ones that are already there as we continue to maintain the library.
 
 - [Getting Started guide](https://svelteflow.dev/learn/getting-started/installation)
 - 20+ Code examples
@@ -100,13 +101,18 @@ Svelte Flow is unopinionated on how you the content of nodes, edges, and handles
 
 ## Join in the conversation
 
-We also have an active channel in our Discord that’s talking about Svelte Flow, new features, and reporting bugs. [Join the Discord](https://discord.com/invite/TmAJQbwWDM)
+We also have an active Discord server where we're talking about Svelte Flow, new features, and reporting bugs. [Join the Discord](https://discord.com/invite/TmAJQbwWDM)
 
 [Sam Lavigne](https://mastodon.social/@samlavigne) has already built a tool using Svelte Flow to help people explore ffmpeg filters in the browser! [Try it out here](https://ffmpeg.lav.io/)
 
-<figure>
-  <img src="/img/blog/2023-svelte-flow-launch/ffmpeg.png" alt="" />
-</figure>
+<Image
+  src="/img/blog/2023-svelte-flow-launch/ffmpeg.png"
+  alt="ffmpeg explorer screenshot"
+  width={1000}
+  height={500}
+  className="mt-4"
+/>
+<div className="text-center text-gray-600">ffmpeg explorer screenshot</div>
 
 ## Who built Svelte Flow?
 
