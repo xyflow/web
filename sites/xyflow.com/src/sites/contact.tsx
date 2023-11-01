@@ -94,9 +94,9 @@ export default function ContactPage() {
 }
 
 const externalLinks = [
-  { name: 'GitHub', href: 'https://github.com/wbkd/reactflow' },
+  { name: 'GitHub', href: 'https://github.com/xyflow' },
   { name: 'Discord', href: 'https://discord.com/invite/RVmnytFmGW' },
-  { name: 'Twitter', href: 'https://twitter.com/reactflowdev' },
+  { name: 'Twitter', href: 'https://twitter.com/xyflowdev' },
 ];
 
 const toFormName = (name: string) => name.toLowerCase().replace(' ', '-');
