@@ -1,6 +1,6 @@
 import { BaseLayout, Hero, PricingTable } from 'xy-ui';
 import { SparklesIcon } from '@heroicons/react/24/outline';
-import Subscribe from '@/components/subscribe-section';
+import SubscribeSection from '@/components/subscribe-section';
 
 export default function ReactFlowProPricing() {
   return (
@@ -8,13 +8,16 @@ export default function ReactFlowProPricing() {
       <Hero
         title="Pricing"
         subtitle="Your subscription goes directly towards the development and maintenance of React Flow and allows us to keep the library independent and open source."
-        kicker="xyflow pro"
+        kicker="React Flow Pro"
         kickerIcon={SparklesIcon}
         align="center"
         showGradient
       />
       <PricingTable />
-      <Subscribe />
+      <SubscribeSection
+        btnLink={`${process.env.NEXT_PUBLIC_PRO_PLATFORM_URL}/signup`}
+        btnLabel="Sign Up Now"
+      />
     </BaseLayout>
   );
 }
