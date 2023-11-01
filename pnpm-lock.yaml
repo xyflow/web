@@ -80,8 +80,8 @@ importers:
         specifier: ^0.155.1
         version: 0.155.1
       '@xyflow/svelte':
-        specifier: 0.0.25
-        version: 0.0.25(svelte@4.2.2)
+        specifier: 0.0.26
+        version: 0.0.26(svelte@4.2.2)
       '@xyflow/system':
         specifier: ^0.0.9
         version: 0.0.9
@@ -9059,8 +9059,8 @@ packages:
       svelte: 4.2.2
     dev: true
 
-  /@xyflow/svelte@0.0.25(svelte@4.2.2):
-    resolution: {integrity: sha512-Mwa6kFbV9NNfGEsqtAnfUdFwK+1Y7gwF8LLNY9m0s+lnuXJDplJYn99FLjfT1Y/3sNomGuQK8BJ93h2VFnkJHw==}
+  /@xyflow/svelte@0.0.26(svelte@4.2.2):
+    resolution: {integrity: sha512-u3cTMYL27k7JS/N/8lXBXCQs06X14QpCmdmHvLN8XXIHtumoFnlLHkFXhwE9f1RLmN0DHqiv8kwnLEk4ngTqWA==}
     peerDependencies:
       svelte: ^3.0.0 || ^4.0.0
     dependencies:
