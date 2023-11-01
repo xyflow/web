@@ -1,4 +1,4 @@
-![xyflow](https://github.com/xyflow/web/assets/3797215/9b251e22-c555-41c6-b754-943b8ee2ec5f)
+![xyflow](https://github.com/xyflow/web/assets/2857535/36a86114-e925-4669-a2dd-d0ae35cce76d)
 
 # xyflow/web
 

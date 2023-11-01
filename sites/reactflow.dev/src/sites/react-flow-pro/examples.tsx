@@ -5,10 +5,10 @@ import {
   Button,
   Hero,
   ProjectPreview,
+  SubscribeSection,
 } from 'xy-ui';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
-import SubscribeSection from '@/components/subscribe-section';
 import { getMdxPagesUnderRoute } from '@/utils';
 import { getPagesUnderRoute } from 'nextra/context';
 

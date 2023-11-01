@@ -70,9 +70,15 @@ importers:
       '@dagrejs/dagre':
         specifier: ^1.0.4
         version: 1.0.4
+      '@threlte/core':
+        specifier: ^6.1.0
+        version: 6.1.0(svelte@4.2.2)(three@0.158.0)
       '@types/dagre':
         specifier: ^0.7.51
         version: 0.7.51
+      '@types/three':
+        specifier: ^0.155.1
+        version: 0.155.1
       '@xyflow/svelte':
         specifier: 0.0.25
         version: 0.0.25(svelte@4.2.2)
@@ -88,6 +94,9 @@ importers:
       svelte-feather-icons:
         specifier: ^4.0.1
         version: 4.0.1
+      three:
+        specifier: ^0.158.0
+        version: 0.158.0
       xy-tsconfig:
         specifier: workspace:*
         version: link:../../packages/xy-tsconfig
@@ -7568,6 +7577,16 @@ packages:
     dependencies:
       npm-to-yarn: 2.1.0
       unist-util-visit: 5.0.0
+    dev: false
+
+  /@threlte/core@6.1.0(svelte@4.2.2)(three@0.158.0):
+    resolution: {integrity: sha512-8Sm4Hkcs0oSB+c1WnMxWfZvbsatYkMv8VOgfsF+jzbvZUyPKtcwvbOe43Y101zhZTk//GKrdsPuwcURuFGMYVg==}
+    peerDependencies:
+      svelte: '>=4'
+      three: '>=0.133'
+    dependencies:
+      svelte: 4.2.2
+      three: 0.158.0
     dev: false
 
   /@tootallnate/quickjs-emscripten@0.23.0:

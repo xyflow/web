@@ -82,8 +82,8 @@ export default function ContactPage() {
 
           <Text variant="light">
             ... or reach out directly to{' '}
-            <a className="text-primary" href="mailto:info@reactflow.dev">
-              info@reactflow.dev
+            <a className="text-primary" href="mailto:info@xyflow.com">
+              info@xyflow.com
             </a>
             .
           </Text>

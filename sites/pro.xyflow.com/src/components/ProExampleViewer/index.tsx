@@ -142,7 +142,7 @@ export default function ProCodeViewer({
           <Heading size="sm">Feedback</Heading>
           <Text>
             We are always trying to improve the quality of the Pro examples and would be happy about your feedback. Feel
-            free to reach out at <a href="mailto:info@reactflow.dev">info@reactflow.dev</a>.
+            free to reach out at <a href="mailto:info@xyflow.com">info@xyflow.com</a>.
           </Text>
         </div>
       </div>

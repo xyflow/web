@@ -1,8 +1,8 @@
 {
   "*": {
     "theme": {
-      "toc": false,
-      "sidebar": false,
+      "toc": true,
+      "sidebar": true,
       "pagination": false,
       "layout": "full"
     }
@@ -13,5 +13,7 @@
     "theme": {
       "layout": "raw"
     }
-  }
+  },
+  "react-flow-and-the-web-audio-api": "Web Audio API",
+  "mind-map-app-with-react-flow": "Mind Map App"
 }

@@ -14,4 +14,4 @@ npm install
 npm start
 ```
 
-If you face any issues, please [contact us](https://pro.reactflow.dev/contact).
+If you face any issues, please [contact us](https://xyflow.com/contact).

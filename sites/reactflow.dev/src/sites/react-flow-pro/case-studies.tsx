@@ -1,11 +1,11 @@
 import { SparklesIcon } from '@heroicons/react/24/outline';
-import SubscribeSection from '@/components/subscribe-section';
 import {
   BaseLayout,
   ContentGrid,
   ContentGridItem,
   ProjectPreview,
   Hero,
+  SubscribeSection,
 } from 'xy-ui';
 import { getMdxPagesUnderRoute } from '@/utils';
 
