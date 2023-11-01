@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useConfig, Navbar } from 'nextra-theme-docs';
 import { Footer, Button, LogoLabel, Search } from 'xy-ui';
+import { SparklesIcon } from '@heroicons/react/24/outline';
 
 import SidebarTitle from '@/components/sidebar-title';
 import aboutImage from './public/img/about.jpg';
@@ -91,8 +92,14 @@ export default {
       }
 
       return (
-        <Button asChild>
-          <Link href="/pro">Pro</Link>
+        <Button className="px-4" asChild>
+          <Link href="/pro">
+            <SparklesIcon className="w-4 h-4 mr-1" />
+            <span>
+              <span className="hidden md:inline">React Flow </span>
+              <span>Pro</span>
+            </span>
+          </Link>
         </Button>
       );
     },
