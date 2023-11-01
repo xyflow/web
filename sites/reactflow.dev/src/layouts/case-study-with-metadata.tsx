@@ -26,12 +26,14 @@ export default CaseStudyLayout;
 // UTILS -----------------------------------------------------------------------
 
 function getPrevAndNextPagesByTitle(title: string, route: string) {
-  const pages = getMdxPagesUnderRoute(route).sort((a, b) => {
-    const aDate = new Date(a.frontMatter?.date);
-    const bDate = new Date(b.frontMatter?.date);
+  const pages = getMdxPagesUnderRoute(route)
+    .filter((p) => p.name !== 'index')
+    .sort((a, b) => {
+      const aDate = new Date(a.frontMatter?.date);
+      const bDate = new Date(b.frontMatter?.date);
 
-    return aDate.getTime() - bDate.getTime();
-  });
+      return aDate.getTime() - bDate.getTime();
+    });
 
   const currentIndex = pages.findIndex(
     (page) => page.frontMatter?.title === title,
