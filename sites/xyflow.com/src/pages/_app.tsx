@@ -24,7 +24,6 @@ const className = `${ntDapperFont.variable} ${firaMonoFont.variable} font-sans`;
 
 const fathomOptions = {
   id: 'JQTCQNLV',
-  domains: ['xyflow.com'],
 };
 
 export default function App({ Component, pageProps }) {

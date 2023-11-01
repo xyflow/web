@@ -11,13 +11,6 @@ const baseUrl =
     ? 'https://xyflow.com'
     : 'http://localhost:3001';
 
-const noIndexNoFollow = [
-  {
-    name: 'robots',
-    content: 'noindex, nofollow',
-  },
-];
-
 export default {
   logo: () => <LogoLabel label="xyflow" />,
   logoLink: false,
@@ -84,7 +77,6 @@ export default {
     const router = useRouter();
     const { frontMatter } = useConfig();
     const url = `${baseUrl}${router.asPath}`;
-    const isBlog = router.pathname.includes('/blog');
 
     return {
       defaultTitle: 'xyflow',
@@ -130,9 +122,6 @@ export default {
           },
         ],
       },
-
-      noindex: isBlog,
-      nofollow: isBlog,
     };
   },
   head: null,
