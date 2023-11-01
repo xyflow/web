@@ -37,7 +37,7 @@ export default {
   banner: {
     text: (
       <a
-        className="flex justify-center items-center"
+        className="flex justify-center items-center max-w-xs mx-auto hover:underline"
         href="https://svelteflow.dev"
       >
         <Image
@@ -45,9 +45,9 @@ export default {
           width={15}
           height={25}
           src="/img/svelte-logo.svg"
-          className="mr-1"
+          className="mr-2"
         />
-        <div>We've just launched Svelte Flow!</div>
+        <span>We just launched Svelte Flow!</span>
       </a>
     ),
   },

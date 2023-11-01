@@ -43,3 +43,7 @@ html:has(body.nx-overflow-hidden) nav {
   position: fixed;
   width: 100%;
 }
+
+.nextra-banner-container {
+  @apply bg-[linear-gradient(1deg,#383838,#212121)];
+}
