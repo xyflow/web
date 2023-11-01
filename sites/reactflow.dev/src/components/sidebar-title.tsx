@@ -5,6 +5,8 @@ const proExampleRoutes = {
   '/examples/nodes/resize-rotate-moveable-deprecated': 'pro',
   '/examples/nodes/shapes': 'pro',
   '/examples/layout/force-layout': 'pro',
+  '/examples/layout/auto-layout': 'pro',
+  '/examples/layout/expand-collapse': 'pro',
   '/examples/layout/workflow-builder-starter': 'pro',
   '/examples/interaction/collaborative': 'pro',
   '/examples/interaction/helper-lines': 'pro',

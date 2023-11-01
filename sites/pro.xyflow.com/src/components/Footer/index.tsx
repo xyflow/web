@@ -48,8 +48,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="text-sm text-gray-500 text-center mt-10">
-          <a href="mailto:info@reactflow.dev">info@reactflow.dev</a> — Copyright © 2023 webkid GmbH. All rights
-          reserved.
+          <a href="mailto:info@xyflow.com">info@xyflow.com</a> — Copyright © 2023 webkid GmbH. All rights reserved.
         </div>
       </div>
     </div>

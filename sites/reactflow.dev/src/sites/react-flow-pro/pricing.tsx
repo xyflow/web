@@ -1,6 +1,5 @@
-import { BaseLayout, Hero, PricingTable } from 'xy-ui';
+import { BaseLayout, Hero, PricingTable, SubscribeSection } from 'xy-ui';
 import { SparklesIcon } from '@heroicons/react/24/outline';
-import SubscribeSection from '@/components/subscribe-section';
 
 export default function ReactFlowProPricing() {
   return (

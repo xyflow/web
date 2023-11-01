@@ -14,7 +14,7 @@ export default function () {
 
   const subscribe = async ({ plan, interval }: { plan: SubscriptionPlanId; interval: BillingInterval }) => {
     if (plan === SubscriptionPlanId.ENTERPRISE) {
-      return window.open('https://xyflow.com/react-flow/pro/enterprise', '_blank');
+      return window.open('https://reactflow.dev/pro/enterprise', '_blank');
     }
 
     setLoading(true);

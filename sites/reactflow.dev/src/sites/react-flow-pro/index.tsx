@@ -7,12 +7,12 @@ import {
   PricingTable,
   ImageSlider,
   Section,
+  SubscribeSection,
 } from 'xy-ui';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 
 import ClientLogos from '@/components/client-logos';
 import FAQ from '@/components/faq';
-import SubscribeSection from '@/components/subscribe-section';
 
 const sliderItems = [
   {

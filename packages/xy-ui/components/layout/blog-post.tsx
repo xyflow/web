@@ -1,12 +1,9 @@
 import { type MdxFile } from 'nextra';
 import { type ReactNode } from 'react';
-import { type Author } from '../../';
-import Link from 'next/link';
-import { SparklesIcon } from '@heroicons/react/24/outline';
+import { SubscribeSection, type Author } from '../../';
 
 import {
   AuthorList,
-  Button,
   Text,
   Heading,
   ContentGrid,
@@ -28,9 +25,6 @@ export type BlogPostLayoutProps = {
   children: ReactNode;
 };
 
-/**
- *
- */
 export function BlogPostLayout({
   frontMatter,
   prev,
@@ -54,21 +48,7 @@ export function BlogPostLayout({
         <BlogPostPreviews prev={prev} next={next} />
       </div>
 
-      <div className="text-center mb-10">
-        <Heading as="h3" className="mb-4 mt-24 font-bold">
-          Get React Flow <span className="text-primary">Pro</span> today
-        </Heading>
-        <Text size="lg">
-          Ensure the sustainable maintenance and development of the React Flow
-          library.
-        </Text>
-        <Button size="lg" asChild variant="pro" className="mt-12 mb-16">
-          <Link href="/react-flow/pro" className="flex items-center">
-            <SparklesIcon className="w-5 h-5 mr-1" />
-            React Flow Pro
-          </Link>
-        </Button>
-      </div>
+      <SubscribeSection btnLink="https://reactflow.dev/pro" />
     </div>
   );
 }
@@ -82,27 +62,27 @@ function BlogPostPreviews({ prev, next }: BlogPostPreviewsProps) {
   return (
     <div className="mt-20 relative right-1/2 left-1/2 ml-[-50vw] mr-[-50vw] w-[100vw]">
       <ContentGrid className="max-w-[90rem] mx-auto">
-        <ContentGridItem route={prev?.route}>
-          {prev && (
+        {prev && (
+          <ContentGridItem route={prev?.route}>
             <BlogPostPreview
               title={prev.frontMatter?.title}
               intro={prev.frontMatter?.intro}
               date={prev.frontMatter?.date}
               authors={prev.frontMatter?.authors}
             />
-          )}
-        </ContentGridItem>
+          </ContentGridItem>
+        )}
 
-        <ContentGridItem route={next?.route}>
-          {next && (
+        {next && (
+          <ContentGridItem route={next?.route}>
             <BlogPostPreview
               title={next.frontMatter?.title}
               intro={next.frontMatter?.intro}
               date={next.frontMatter?.date}
               authors={next.frontMatter?.authors}
             />
-          )}
-        </ContentGridItem>
+          </ContentGridItem>
+        )}
       </ContentGrid>
     </div>
   );

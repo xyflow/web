@@ -12,10 +12,10 @@ export type TutorialLayoutProps = {
 
 export function TutorialLayout({ children }: TutorialLayoutProps) {
   const { title, frontMatter } = useConfig<BlogPostFrontmatter>();
-  const { prev, next } = getPrevAndNextPagesByTitle(title, '/tutorials');
+  const { prev, next } = getPrevAndNextPagesByTitle(title, '/learn/tutorials');
 
   return (
-    <BaseBlogPostLayout frontMatter={frontMatter} prev={prev} next={next}>
+    <BaseBlogPostLayout frontMatter={frontMatter}>
       {children}
     </BaseBlogPostLayout>
   );
