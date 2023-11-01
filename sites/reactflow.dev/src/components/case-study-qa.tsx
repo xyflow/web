@@ -22,7 +22,7 @@ export default function CaseStudyQA({
 
       <blockquote>
         <Text size="lg" className="mt-2 mb-12 leading-relaxed">
-          “ {answer} ”
+          {answer}
         </Text>
       </blockquote>
     </>

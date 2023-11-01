@@ -39,6 +39,18 @@ const sliderItems = [
       />
     ),
   },
+  {
+    name: 'Carto',
+    text: 'Spatial data analysis pipelines with a no-code pipeline editor',
+    content: (
+      <Image
+        className="rounded-xl object-cover"
+        src="/img/case-studies/carto-screenshot.png"
+        alt="TypeForm"
+        fill
+      />
+    ),
+  },
 ];
 
 export default function ReactFlowPro() {
