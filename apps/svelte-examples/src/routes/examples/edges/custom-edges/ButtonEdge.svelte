@@ -13,20 +13,14 @@
   export let markerEnd: $$Props['markerEnd'] = undefined;
   export let style: $$Props['style'] = undefined;
 
-  let edgePath: string;
-  let labelX: number;
-  let labelY: number;
-
-  $: {
-    [edgePath, labelX, labelY] = getBezierPath({
-      sourceX,
-      sourceY,
-      sourcePosition,
-      targetX,
-      targetY,
-      targetPosition
-    });
-  }
+  $: [edgePath, labelX, labelY] = getBezierPath({
+    sourceX,
+    sourceY,
+    sourcePosition,
+    targetX,
+    targetY,
+    targetPosition
+  });
 </script>
 
 <BaseEdge path={edgePath} {markerEnd} {style} />

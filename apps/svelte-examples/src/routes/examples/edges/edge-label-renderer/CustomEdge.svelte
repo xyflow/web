@@ -11,21 +11,14 @@
   export let targetPosition: $$Props['targetPosition'];
   export let data: $$Props['data'] = undefined;
 
-  let edgePath: string;
-  let labelX: number;
-  let labelY: number;
-
-  $: {
-    [edgePath, labelX, labelY] = getBezierPath({
-      sourceX,
-      sourceY,
-      sourcePosition,
-      targetX,
-      targetY,
-      targetPosition
-    });
-  }
-  console.log(1);
+  $: [edgePath, labelX, labelY] = getBezierPath({
+    sourceX,
+    sourceY,
+    sourcePosition,
+    targetX,
+    targetY,
+    targetPosition
+  });
 </script>
 
 <BaseEdge path={edgePath} />
