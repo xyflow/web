@@ -180,6 +180,16 @@ export default {
       return <Search {...props} />;
     },
   },
+  toc: {
+    extraContent: () => (
+      <Link
+        href="/whats-new"
+        className="nx-text-xs nx-font-medium nx-text-gray-500 hover:nx-text-gray-900 dark:nx-text-gray-400 dark:hover:nx-text-gray-100 contrast-more:nx-text-gray-800 contrast-more:dark:nx-text-gray-50"
+      >
+        What's new here?
+      </Link>
+    ),
+  },
   feedback: {
     useLink: () => 'https://xyflow.com/contact',
   },
