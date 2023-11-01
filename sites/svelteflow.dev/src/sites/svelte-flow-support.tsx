@@ -102,7 +102,7 @@ export default function CaseStudies() {
           links={[
             {
               linkName: 'Github Sponsors',
-              route: 'https://github.com/sponsors/wbkd',
+              route: 'https://github.com/sponsors/xyflow',
             },
             {
               linkName: 'Open Collective',

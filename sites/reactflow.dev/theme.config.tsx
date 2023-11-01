@@ -157,13 +157,12 @@ export default {
               : [
                   {
                     title: 'MIT License',
-                    route:
-                      'https://github.com/wbkd/react-flow/blob/main/LICENSE',
+                    route: 'https://github.com/xyflow/xyflow/blob/main/LICENSE',
                   },
                   {
                     title: 'Code of Conduct',
                     route:
-                      'https://github.com/wbkd/react-flow/blob/main/CODE_OF_CONDUCT.md',
+                      'https://github.com/xyflow/xyflow/blob/main/CODE_OF_CONDUCT.md',
                   },
                   { title: 'Imprint', route: 'https://xyflow.com/imprint' },
                 ]

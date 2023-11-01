@@ -46,7 +46,7 @@ export default function OpenSource() {
           software MIT Licensed forever.
         </Text>
         <Link
-          href="https://github.com/wbkd/react-flow/blob/main/LICENSE"
+          href="https://github.com/xyflow/xyflow/blob/main/LICENSE"
           className="text-pink-500 underline text-lg "
         >
           Read our license
@@ -96,7 +96,7 @@ export default function OpenSource() {
             Open Collective
           </Link>{' '}
           and{' '}
-          <Link href="https://github.com/wbkd" className="text-pink-500">
+          <Link href="https://github.com/xyflow" className="text-pink-500">
             Github
           </Link>
           .

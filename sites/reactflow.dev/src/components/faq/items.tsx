@@ -72,7 +72,7 @@ export default [
         sponsorship on our{' '}
         <Link
           variant="primary"
-          href="https://github.com/sponsors/wbkd"
+          href="https://github.com/sponsors/xyflow"
           target="_blank"
         >
           GitHub Sponsors website
