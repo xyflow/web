@@ -5,7 +5,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import ossImage from '@/../public/img/open-source/thincrustopencore.png';
-import starChart from '@/../public/img/open-source/starchart.png';
 
 export default function OpenSource() {
   return (
@@ -19,12 +18,6 @@ export default function OpenSource() {
       />
 
       <Section className="max-w-screen-md mx-auto mt-12 lg:my-12">
-        <Image
-          src={starChart}
-          alt=""
-          placeholder="blur"
-          className="mx-auto lg:max-w-[544px] mt-2"
-        ></Image>
         <Heading as="h2" size="sm" className="mb-4 mt-14">
           Open source since the beginning
         </Heading>

@@ -5,11 +5,13 @@ description: Step by step guide about how to work with custom nodes in Svelte Fl
 
 # Custom Nodes
 
-A powerful feature of Svelte Flow is the ability to add custom nodes. Within your custom nodes you can render everything you want. You can define multiple source and target handles and render form inputs or even interactive charts for example. In this guide we will implement two node with a color input field that updates the background color of the flow.
+A powerful feature of Svelte Flow is the ability to add custom nodes. You can render everything you want in your custom nodes. You can define multiple source and target handles and render form inputs or even interactive charts. In this guide we will implement two nodes with color input fields that update the background color of the flow.
 
 ## Creating a custom node component
 
-A custom node is just a Svelte component. Internally it gets wrapped to provide basic functionality like dragging and selecting. From the wrapper component we are passing props like the position or the data besides [other props](/api-reference/types/node-props). Let's start to implement the `ColorPickerNode`. We are using the [`Handle` component](/api-reference/components/handle) to be able to connect our custom node with other nodes and add an input field with type="color" to the node:
+A custom node is just a Svelte component. Internally it gets wrapped to provide basic functionality like dragging and selecting. From the wrapper component we are passing props like the position or the data besides [other props](/api-reference/types/node-props).
+
+Let's start to implement the `ColorPickerNode`. We are using the [`Handle` component](/api-reference/components/handle) to connect our custom node with other nodes and add an input field with type="color" to the node:
 
 ```svelte filename="ColorPickerNode.svelte"
 <script lang="ts">
@@ -39,7 +41,7 @@ A custom node is just a Svelte component. Internally it gets wrapped to provide 
 
 ```
 
-As you see we've added the class name "nodrag" to the input. This prevents dragging within the input field and lets us select text for example.
+As you can see we've added the class name "nodrag" to the input. This prevents dragging within the input field, which in this case will allow us to select text inside the node.
 
 ## Adding a new node type
 
@@ -73,7 +75,7 @@ const nodes = writable([
 ]);
 ```
 
-The `data` field of a node can be used to store whatever data you like. In this case we are storing the current color value in a [writable store](https://svelte.dev/docs/svelte-store#writable). This makes it easy to update it from within the custom node later. After putting it all together and add some basic styles, we get a nice looking flow with a custom node with a color picker.
+The `data` field of a node can be used to store whatever data you like. In this case we are storing the current color value in a [writable store](https://svelte.dev/docs/svelte-store#writable). This makes it easy to update it from within the custom node later. After putting it all together and adding some basic styles, we get a nice looking custom node with a color picker.
 
 import ExampleViewer from '@/components/example-viewer';
 

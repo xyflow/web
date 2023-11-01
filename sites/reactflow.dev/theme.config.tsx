@@ -13,6 +13,11 @@ function useIsPro() {
   return router.pathname.includes('/pro');
 }
 
+function useIsProSubPage() {
+  const router = useRouter();
+  return router.pathname.startsWith('/pro') && router.pathname !== '/pro';
+}
+
 const baseUrl =
   process.env.NODE_ENV === 'production'
     ? 'https://reactflow.dev'
@@ -53,6 +58,7 @@ export default {
   navbar: {
     component: (props) => {
       const isPro = useIsPro();
+      const isProSubPage = useIsProSubPage();
 
       if (isPro) {
         return (
@@ -60,6 +66,7 @@ export default {
             {...props}
             items={
               [
+                // ...(isProSubPage ? [{ title: 'Home', href: '/pro/pricing' }] : []),
                 { title: 'Pricing', href: '/pro/pricing' },
                 { title: 'Pro Examples', href: '/pro/examples' },
                 { title: 'Case Studies', href: '/pro/case-studies' },
@@ -78,7 +85,9 @@ export default {
       if (isPro) {
         return (
           <Button asChild>
-            <Link href="https://pro.xyflow.com/signup">Sign Up</Link>
+            <Link href={`${process.env.NEXT_PUBLIC_PRO_PLATFORM_URL}/signup`}>
+              Sign Up
+            </Link>
           </Button>
         );
       }
@@ -94,30 +103,66 @@ export default {
     component: () => {
       const router = useRouter();
       const isHomePage = router.pathname === '/';
+      const isPro = useIsPro();
 
       return (
         <Footer
           internal={{
-            title: 'React Flow',
-            items: [
-              { title: 'Quickstart Guide', route: '/learn' },
-              { title: 'API Reference', route: '/api-reference' },
-              { title: 'Examples', route: '/examples' },
-              { title: 'Showcase', route: '/showcase' },
-              { title: 'Support Us', route: '/pro' },
-            ] satisfies { title: string; route: Route }[],
+            title: isPro ? 'React Flow Pro' : 'React Flow',
+            items: isPro
+              ? [
+                  { title: 'Pricing', route: '/pro/pricing' },
+                  { title: 'Pro Examples', route: '/pro/examples' },
+                  { title: 'Case Studies', route: '/pro/case-studies' },
+                  { title: 'Enterprise', route: '/pro/enterprise' },
+                  {
+                    title: 'Sign Up',
+                    route: `${process.env.NEXT_PUBLIC_PRO_PLATFORM_URL}/signup`,
+                  },
+                  {
+                    title: 'Sign In',
+                    route: `${process.env.NEXT_PUBLIC_PRO_PLATFORM_URL}/login`,
+                  },
+                ]
+              : ([
+                  { title: 'Quickstart Guide', route: '/learn' },
+                  { title: 'API Reference', route: '/api-reference' },
+                  { title: 'Examples', route: '/examples' },
+                  { title: 'Showcase', route: '/showcase' },
+                  { title: 'React Flow Pro', route: '/pro' },
+                ] satisfies { title: string; route: Route }[]),
           }}
-          legal={[
-            {
-              title: 'MIT License',
-              route: 'https://github.com/wbkd/react-flow/blob/main/LICENSE',
-            },
-            {
-              title: 'Code of Conduct',
-              route:
-                'https://github.com/wbkd/react-flow/blob/main/CODE_OF_CONDUCT.md',
-            },
-          ]}
+          legal={
+            isPro
+              ? [
+                  {
+                    title: 'Terms of Use',
+                    route: 'https://xyflow.com/terms-of-use',
+                  },
+                  {
+                    title: 'Ethical Standards',
+                    route: 'https://xyflow.com/ethical-standards',
+                  },
+                  {
+                    title: 'Privacy Policy',
+                    route: 'https://xyflow.com/privacy',
+                  },
+                  { title: 'Imprint', route: 'https://xyflow.com/imprint' },
+                ]
+              : [
+                  {
+                    title: 'MIT License',
+                    route:
+                      'https://github.com/wbkd/react-flow/blob/main/LICENSE',
+                  },
+                  {
+                    title: 'Code of Conduct',
+                    route:
+                      'https://github.com/wbkd/react-flow/blob/main/CODE_OF_CONDUCT.md',
+                  },
+                  { title: 'Imprint', route: 'https://xyflow.com/imprint' },
+                ]
+          }
           // imageSrc={isHomePage ? undefined : aboutImage}
           baseUrl="https://reactflow.dev"
         />
@@ -134,6 +179,16 @@ export default {
 
       return <Search {...props} />;
     },
+  },
+  toc: {
+    extraContent: () => (
+      <Link
+        href="/whats-new"
+        className="nx-text-xs nx-font-medium nx-text-gray-500 hover:nx-text-gray-900 dark:nx-text-gray-400 dark:hover:nx-text-gray-100 contrast-more:nx-text-gray-800 contrast-more:dark:nx-text-gray-50"
+      >
+        What's new here?
+      </Link>
+    ),
   },
   feedback: {
     useLink: () => 'https://xyflow.com/contact',

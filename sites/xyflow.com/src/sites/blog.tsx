@@ -12,7 +12,7 @@ export default function Blog() {
     <BaseLayout>
       <Hero
         title="Blog"
-        subtitle="News and updates from React Flow and Svelte Flow."
+        subtitle="News and updates from the team behind React Flow and Svelte Flow."
         align="center"
       />
       <ContentGrid>

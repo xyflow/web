@@ -52,6 +52,13 @@
       "layout": "raw"
     }
   },
+  "whats-new": {
+    "title": "What's new?",
+    "display": "hidden",
+    "theme": {
+      "layout": "default"
+    }
+  },
   "404": {
     "title": "404",
     "theme": {

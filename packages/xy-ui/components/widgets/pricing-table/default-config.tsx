@@ -65,12 +65,12 @@ export const StarterPlan: SubscriptionPlan = {
     {
       currency: Currency.USD,
       interval: BillingInterval.MONTH,
-      label: '$129',
+      label: '$139',
     },
     {
       currency: Currency.USD,
       interval: BillingInterval.YEAR,
-      label: '$119',
+      label: '$129',
     },
   ],
   features: [
@@ -89,22 +89,22 @@ export const ProPlan: SubscriptionPlan = {
     {
       currency: Currency.EUR,
       interval: BillingInterval.MONTH,
-      label: '129€',
+      label: '249€',
     },
     {
       currency: Currency.EUR,
       interval: BillingInterval.YEAR,
-      label: '119€',
+      label: '229€',
     },
     {
       currency: Currency.USD,
       interval: BillingInterval.MONTH,
-      label: '$129',
+      label: '$269',
     },
     {
       currency: Currency.USD,
       interval: BillingInterval.YEAR,
-      label: '$119',
+      label: '$249',
     },
   ],
   features: [

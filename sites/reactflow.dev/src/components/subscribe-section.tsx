@@ -2,7 +2,15 @@ import Link from 'next/link';
 import { Heading, Button, Section } from 'xy-ui';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 
-export default function SubscribeSection() {
+export type SubscribeSectionProps = {
+  btnLink?: string;
+  btnLabel?: React.ReactNode;
+};
+
+export default function SubscribeSection({
+  btnLink = '/pro',
+  btnLabel = 'React Flow Pro',
+}: SubscribeSectionProps) {
   return (
     <Section className="mx-auto lg:max-w-[800px]">
       <Heading size="sm" as="h3" className="text-center mb-12 mt-32">
@@ -12,9 +20,9 @@ export default function SubscribeSection() {
 
       <div className="flex justify-center space-x-8">
         <Button size="lg" asChild variant="pro">
-          <Link href="/pro" className="flex items-center">
+          <Link href={btnLink} className="flex items-center">
             <SparklesIcon className="w-5 h-5 mr-1" />
-            React Flow Pro
+            {btnLabel}
           </Link>
         </Button>
       </div>

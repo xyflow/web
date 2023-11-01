@@ -20,7 +20,7 @@ const legal = [
 const social = [
   { title: 'Discord', route: 'https://discord.gg/RVmnytFmGW' },
   { title: 'Github', route: 'https://github.com/xyflow' },
-  { title: 'Mastodon', route: 'https://fosstodon.org/@reactflowdev' },
+  { title: 'Mastodon', route: 'https://fosstodon.org/@xyflow' },
   { title: 'Bluesky', route: 'https://bsky.app/profile/xyflow.com' },
 ];
 

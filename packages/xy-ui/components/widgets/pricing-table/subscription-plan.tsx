@@ -1,4 +1,5 @@
 import cn from 'clsx';
+import Link from 'next/link';
 import { Button } from '../../../.';
 import {
   BillingInterval,
@@ -57,7 +58,8 @@ function PricingDisplay({
   billingInterval: BillingInterval;
 }) {
   const currentPrice = pricing?.find(
-    (price) => price.currency === currency && price.interval === billingInterval
+    (price) =>
+      price.currency === currency && price.interval === billingInterval,
   );
 
   if (!currentPrice || !pricing) {
@@ -68,7 +70,7 @@ function PricingDisplay({
     billingInterval === BillingInterval.YEAR
       ? pricing.find(
           (price) =>
-            price.currency === currency && price.interval !== billingInterval
+            price.currency === currency && price.interval !== billingInterval,
         )
       : undefined;
 
@@ -99,23 +101,19 @@ export default function Plan({
   buttonVariant = 'black',
   buttonLabel = 'Sign up',
   isLoading = false,
-  onSelect = ({ plan }) => {
-    const url =
-      plan === PlanId.ENTERPRISE
-        ? 'https://xyflow.com/react-flow/pro/enterprise'
-        : 'https://pro.xyflow.com';
-
-    if (typeof window !== 'undefined') {
-      window.open(url, '_blank');
-    }
-  },
+  onSelect,
 }: PlanProps) {
+  const btnLink =
+    id === PlanId.ENTERPRISE
+      ? '/pro/enterprise'
+      : 'https://pro.reactflow.dev/signup';
+
   return (
     <div
       className={cn(
         'p-8 md:p-12 lg:p-14',
         highlighted &&
-          'border-x border-solid border-gray-100 bg-gradient-to-b from-primary/5'
+          'border-x border-solid border-gray-100 bg-gradient-to-b from-primary/5',
       )}
     >
       <div className={cn('font-bold text-4xl', highlighted && 'text-primary')}>
@@ -132,9 +130,19 @@ export default function Plan({
             size="lg"
             variant={highlighted ? 'default' : buttonVariant}
             loading={isLoading}
-            onClick={() => onSelect({ plan: id, currency, billingInterval })}
+            asChild
           >
-            {buttonLabel}
+            {onSelect ? (
+              <Button
+                onClick={() =>
+                  onSelect({ plan: id, currency, billingInterval })
+                }
+              >
+                {buttonLabel}
+              </Button>
+            ) : (
+              <Link href={btnLink}>{buttonLabel}</Link>
+            )}
           </Button>
 
           <PricingDisplay

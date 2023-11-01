@@ -1,0 +1,98 @@
+[
+  {
+    "source": "/blog/mind-map-app-with-react-flow",
+    "destination": "/learn/tutorials/mind-map-app-with-react-flow"
+  },
+  {
+    "source": "/blog/react-flow-and-the-web-audio-api",
+    "destination": "/learn/tutorials/react-flow-and-the-web-audio-api"
+  },
+  {
+    "source": "/docs/api/edges/custom-connection-line",
+    "destination": "/api-reference/types/connection-line-component-props"
+  },
+  {
+    "source": "/docs/api/edges/edge-utils",
+    "destination": "/api-reference/utils"
+  },
+  {
+    "source": "/docs/api/graph-util-functions",
+    "destination": "/api-reference/utils"
+  },
+  {
+    "source": "/docs/api/nodes/custom-nodes",
+    "destination": "/api-reference/types/node-props"
+  },
+  {
+    "source": "/docs/api/nodes/node-options",
+    "destination": "/api-reference/types/node"
+  },
+  {
+    "source": "/docs/api/edges/edge-options",
+    "destination": "/api-reference/types/edge"
+  },
+  {
+    "source": "/docs/api/react-flow-instance",
+    "destination": "/api-reference/types/react-flow-instance"
+  },
+  {
+    "source": "/docs/api/react-flow-props",
+    "destination": "/api-reference/react-flow"
+  },
+  {
+    "source": "/docs/api/types",
+    "destination": "/api-reference/types"
+  },
+  {
+    "source": "/docs/concepts/packages",
+    "destination": "/learn/concepts/plugin-components"
+  },
+  {
+    "source": "/docs/examples/overview",
+    "destination": "/examples"
+  },
+  {
+    "source": "/docs/guides/panning-and-zooming",
+    "destination": "/learn/concepts/the-viewport"
+  },
+  {
+    "source": "/docs/guides/troubleshooting",
+    "destination": "/learn/troubleshooting"
+  },
+  {
+    "source": "/docs/quickstart",
+    "destination": "/learn"
+  },
+  {
+    "source": "/docs/api/edges/custom-edges",
+    "destination": "/examples/edge/custom-edges"
+  },
+  {
+    "source": "/docs/examples/edges/custom-edge",
+    "destination": "/examples/edge/custom-edges"
+  },
+  {
+    "source": "/docs/api/edges/edge-types",
+    "destination": "/api-reference/types/edge#default-edge-types"
+  },
+  {
+    "source": "/docs/api/nodes/node-types",
+    "destination": "/api-reference/types/node#default-node-types"
+  },
+  {
+    "source": "/examples/floating-edges",
+    "destination": "/examples/edges/floating-edges"
+  },
+  {
+    "source": "/docs/examples/floating-edges",
+    "destination": "/examples/edges/floating-edges"
+  },
+  {
+    "source": "/docs/getting-started/core-concepts",
+    "destination": "/learn/concepts/core-concepts"
+  },
+  {
+    "source": "/docs/getting-started/plugin-components",
+    "destination": "/learn/concepts/plugin-components"
+  }
+]
