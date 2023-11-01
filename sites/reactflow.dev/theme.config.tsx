@@ -13,11 +13,6 @@ function useIsPro() {
   return router.pathname.includes('/pro');
 }
 
-function useIsProSubPage() {
-  const router = useRouter();
-  return router.pathname.startsWith('/pro') && router.pathname !== '/pro';
-}
-
 const baseUrl =
   process.env.NODE_ENV === 'production'
     ? 'https://reactflow.dev'
@@ -57,8 +52,10 @@ export default {
   },
   navbar: {
     component: (props) => {
+      const router = useRouter();
       const isPro = useIsPro();
-      const isProSubPage = useIsProSubPage();
+      const isProSubpage = isPro && router.pathname !== '/pro';
+      const proHomePageKey = isProSubpage ? 'href' : 'route';
 
       if (isPro) {
         return (
@@ -66,12 +63,13 @@ export default {
             {...props}
             items={
               [
-                // ...(isProSubPage ? [{ title: 'Home', href: '/pro/pricing' }] : []),
-                { title: 'Pricing', href: '/pro/pricing' },
-                { title: 'Pro Examples', href: '/pro/examples' },
-                { title: 'Case Studies', href: '/pro/case-studies' },
-                { title: 'Enterprise', href: '/pro/enterprise' },
-              ] satisfies { title: string; href: Route }[]
+                // hack: the item only gets highlighted when it has a "route", not when it has a "href"
+                // by doing this we prevent the "Pricing" item to be highlighted on sub routes
+                { title: 'Pricing', [proHomePageKey]: '/pro' },
+                { title: 'Pro Examples', route: '/pro/examples' },
+                { title: 'Case Studies', route: '/pro/case-studies' },
+                { title: 'Enterprise', route: '/pro/enterprise' },
+              ] satisfies { title: string; route?: Route; href?: Route }[]
             }
           />
         );
