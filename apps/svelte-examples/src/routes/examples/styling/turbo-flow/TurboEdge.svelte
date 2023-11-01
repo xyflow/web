@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { useNodes, type EdgeProps } from '@xyflow/svelte';
+  import type { EdgeProps } from '@xyflow/svelte';
   import { getBezierPath } from '@xyflow/system';
 
   type $$Props = EdgeProps;
@@ -14,15 +14,11 @@
   export let targetPosition: $$Props['targetPosition'];
 
   let edgePath: string | undefined;
-  let sourceNode: Node | undefined;
-  let targetNode: Node | undefined;
-
-  const nodes = useNodes();
 
   $: {
     const xEqual = sourceX === targetX;
     const yEqual = sourceY === targetY;
-    edgePath = getBezierPath({
+    [edgePath] = getBezierPath({
       // we need this little hack in order to display the gradient for a straight line
       sourceX: xEqual ? sourceX + 0.0001 : sourceX,
       sourceY: yEqual ? sourceY + 0.0001 : sourceY,
@@ -30,7 +26,7 @@
       targetX,
       targetY,
       targetPosition
-    })[0];
+    });
   }
 </script>
 
