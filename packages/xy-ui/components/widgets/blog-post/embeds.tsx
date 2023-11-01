@@ -8,7 +8,7 @@
 //
 
 import NxImage from 'next/image';
-import { wideNegativeMargin, ReactPlayer } from '../../../';
+import { wideNegativeMargin, ReactPlayer, cn } from '../../../';
 
 // IMAGES ----------------------------------------------------------------------
 
@@ -64,14 +64,29 @@ export function Image({
 
 export type EmbedProps = {
   src: string;
+  lazy?: boolean;
+  className?: string;
 };
 
-export function Embed({ src }: EmbedProps) {
+type IFrameProps = {
+  loading?: 'lazy' | 'eager';
+};
+
+export function Embed({ src, lazy, className }: EmbedProps) {
+  const iFrameProps: IFrameProps = {};
+
+  if (lazy) {
+    iFrameProps.loading = 'lazy';
+  }
+
   return (
     <div
-      className={`relative aspect-video my-8 mx-0 ${wideNegativeMargin} rounded-xl bg-gray-50`}
+      className={cn(
+        `relative aspect-video my-8 mx-0 ${wideNegativeMargin} rounded-xl bg-gray-50`,
+        className,
+      )}
     >
-      <iframe src={src} className="w-full h-full" />
+      <iframe src={src} {...iFrameProps} className="w-full h-full" />
     </div>
   );
 }
