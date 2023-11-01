@@ -32,7 +32,7 @@ export default function Footer() {
             <FooterLink isExternal href="https://reactflow.dev/examples">
               Examples
             </FooterLink>
-            <FooterLink isExternal href="https://github.com/wbkd/react-flow">
+            <FooterLink isExternal href="https://github.com/xyflow/xyflow">
               Github
             </FooterLink>
             <FooterLink isExternal href="https://discord.gg/Bqt6xrs">

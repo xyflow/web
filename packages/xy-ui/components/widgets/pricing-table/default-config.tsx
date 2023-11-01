@@ -31,7 +31,7 @@ const features: Record<string, FeatureConfig> = {
       'Your Github issues will be looked at first by our team. Please drop us a message at info@reactflow.dev with a link to your issue after creating it.',
     button: {
       label: 'Open Github Issue',
-      href: 'https://github.com/wbkd/react-flow/issues/new/choose',
+      href: 'https://github.com/xyflow/xyflow/issues/new/choose',
       external: true,
     },
   },
@@ -40,7 +40,7 @@ const features: Record<string, FeatureConfig> = {
     description: 'Keep the library running and maintained under an MIT License',
     button: {
       label: 'MIT License',
-      href: 'https://github.com/wbkd/react-flow/blob/main/LICENSE',
+      href: 'https://github.com/xyflow/xyflow/blob/main/LICENSE',
       external: true,
     },
   },
