@@ -8,7 +8,7 @@ export default [
       <>
         &quot;React Flow Pro&quot; is not an additional library, but instead a
         paid service built around the open-source{' '}
-        <Link variant="primary" href="https://github.com/wbkd/react-flow">
+        <Link variant="primary" href="https://github.com/xyflow/xyflow">
           React Flow library
         </Link>
         .
@@ -136,7 +136,7 @@ export default [
         Yes. The React Flow library is under an{' '}
         <Link
           variant="primary"
-          href="https://github.com/wbkd/react-flow/blob/main/LICENSE"
+          href="https://github.com/xyflow/xyflow/blob/main/LICENSE"
         >
           MIT License
         </Link>
