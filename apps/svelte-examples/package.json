@@ -34,12 +34,15 @@
   "type": "module",
   "dependencies": {
     "@dagrejs/dagre": "^1.0.4",
+    "@threlte/core": "^6.1.0",
     "@types/dagre": "^0.7.48",
+    "@types/three": "^0.155.1",
     "@xyflow/svelte": "0.0.24",
     "@xyflow/system": "^0.0.8",
     "elkjs": "^0.8.2",
     "html-to-image": "^1.11.11",
     "svelte-feather-icons": "^4.0.1",
+    "three": "^0.158.0",
     "xy-tsconfig": "workspace:*"
   }
 }

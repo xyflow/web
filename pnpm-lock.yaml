@@ -70,9 +70,15 @@ importers:
       '@dagrejs/dagre':
         specifier: ^1.0.4
         version: 1.0.4
+      '@threlte/core':
+        specifier: ^6.1.0
+        version: 6.1.0(svelte@4.2.1)(three@0.158.0)
       '@types/dagre':
         specifier: ^0.7.48
         version: 0.7.48
+      '@types/three':
+        specifier: ^0.155.1
+        version: 0.155.1
       '@xyflow/svelte':
         specifier: 0.0.24
         version: 0.0.24(svelte@4.2.1)
@@ -88,6 +94,9 @@ importers:
       svelte-feather-icons:
         specifier: ^4.0.1
         version: 4.0.1
+      three:
+        specifier: ^0.158.0
+        version: 0.158.0
       xy-tsconfig:
         specifier: workspace:*
         version: link:../../packages/xy-tsconfig
@@ -305,7 +314,7 @@ importers:
         version: 1.0.4(@types/react-dom@18.2.6)(@types/react@18.2.14)(react-dom@18.2.0)(react@18.2.0)
       '@react-three/fiber':
         specifier: ^8.13.7
-        version: 8.13.7(react-dom@18.2.0)(react@18.2.0)(three@0.157.0)
+        version: 8.13.7(react-dom@18.2.0)(react@18.2.0)(three@0.158.0)
       '@sindresorhus/slugify':
         specifier: ^2.2.1
         version: 2.2.1
@@ -544,7 +553,7 @@ importers:
         version: 13.4.19(@mdx-js/loader@2.3.0)(@mdx-js/react@2.3.0)
       '@react-three/fiber':
         specifier: ^8.13.7
-        version: 8.13.7(react-dom@18.2.0)(react@18.2.0)(three@0.157.0)
+        version: 8.13.7(react-dom@18.2.0)(react@18.2.0)(three@0.158.0)
       '@stackblitz/sdk':
         specifier: ^1.9.0
         version: 1.9.0
@@ -668,7 +677,7 @@ importers:
         version: 13.4.19(@mdx-js/loader@2.3.0)(@mdx-js/react@2.3.0)
       '@react-three/fiber':
         specifier: ^8.13.7
-        version: 8.13.7(react-dom@18.2.0)(react@18.2.0)(three@0.157.0)
+        version: 8.13.7(react-dom@18.2.0)(react@18.2.0)(three@0.158.0)
       '@stackblitz/sdk':
         specifier: ^1.9.0
         version: 1.9.0
@@ -792,7 +801,7 @@ importers:
         version: 13.4.19(@mdx-js/loader@2.3.0)(@mdx-js/react@2.3.0)
       '@react-three/fiber':
         specifier: ^8.13.7
-        version: 8.13.7(react-dom@18.2.0)(react@18.2.0)(three@0.157.0)
+        version: 8.13.7(react-dom@18.2.0)(react@18.2.0)(three@0.158.0)
       '@stackblitz/sdk':
         specifier: ^1.9.0
         version: 1.9.0
@@ -5946,7 +5955,7 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@react-three/fiber@8.13.7(react-dom@18.2.0)(react@18.2.0)(three@0.157.0):
+  /@react-three/fiber@8.13.7(react-dom@18.2.0)(react@18.2.0)(three@0.158.0):
     resolution: {integrity: sha512-fH1wYi8+A2YZX8uYd9N4hfbAV+kHE565s7f62+SMNmpeynaUsN8NzXACmmJ6BpVKAKdxfvOde6dBGwG1BrWOKQ==}
     peerDependencies:
       expo: '>=43.0'
@@ -5977,7 +5986,7 @@ packages:
       react-use-measure: 2.1.1(react-dom@18.2.0)(react@18.2.0)
       scheduler: 0.21.0
       suspend-react: 0.1.3(react@18.2.0)
-      three: 0.157.0
+      three: 0.158.0
       zustand: 3.7.2(react@18.2.0)
     dev: false
 
@@ -7553,6 +7562,16 @@ packages:
     dependencies:
       npm-to-yarn: 2.1.0
       unist-util-visit: 5.0.0
+    dev: false
+
+  /@threlte/core@6.1.0(svelte@4.2.1)(three@0.158.0):
+    resolution: {integrity: sha512-8Sm4Hkcs0oSB+c1WnMxWfZvbsatYkMv8VOgfsF+jzbvZUyPKtcwvbOe43Y101zhZTk//GKrdsPuwcURuFGMYVg==}
+    peerDependencies:
+      svelte: '>=4'
+      three: '>=0.133'
+    dependencies:
+      svelte: 4.2.1
+      three: 0.158.0
     dev: false
 
   /@tootallnate/quickjs-emscripten@0.23.0:
@@ -18766,8 +18785,8 @@ packages:
     dependencies:
       any-promise: 1.3.0
 
-  /three@0.157.0:
-    resolution: {integrity: sha512-CeAwQrf4x3z0/e+MC4F+nXLW5t0gh3pw+L6CCBqpHvOq3bGYIgRYub7Pv0j/9wR+d++OiEglyZzWyuSYbwWGOA==}
+  /three@0.158.0:
+    resolution: {integrity: sha512-TALj4EOpdDPF1henk2Q+s17K61uEAAWQ7TJB68nr7FKxqwyDr3msOt5IWdbGm4TaWKjrtWS8DJJWe9JnvsWOhQ==}
     dev: false
 
   /through2@2.0.5:
