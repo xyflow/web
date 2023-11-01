@@ -29,6 +29,12 @@ export default {
     url: '',
     image: 'https://github.com/sumitngupta.png',
   },
+  jesus: {
+    name: 'Jesús Arroyo Torrens',
+    title: 'Lead Software Engineer at Carto',
+    url: '',
+    image: 'https://github.com/Jesus89.png',
+  },
   lee: {
     name: 'Lee Munroe',
     title: 'Head of Design at OneSignal',
