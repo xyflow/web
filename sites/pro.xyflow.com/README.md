@@ -44,7 +44,7 @@ To run the platform locally, you need to prepare your local environment to run s
 1. Clone this repository
 2. Add .env.development.local and .env.production.local files containing the following entries: `NHOST_ADMIN_SECRET`, `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`
 3. Install the nhost CLI (https://docs.nhost.io/get-started/cli-workflow/install-cli)
-4. Clone the backend repository: wbkd/react-flow-nhost
+4. Clone the backend repository: xyflow/react-flow-nhost
 5. Inside the backend repository, run `nhost dev` (in one terminal)
 6. Install the stripe CLI: https://stripe.com/docs/stripe-cli
 7. In another terminal, run `stripe login` and `stripe listen --forward-to localhost:3000/api/stripe/webhook` (this will also print the STRIPE_WEBHOOK_SECRET for your .env.development.local file)

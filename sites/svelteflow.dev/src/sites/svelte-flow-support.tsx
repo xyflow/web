@@ -69,7 +69,7 @@ export default function CaseStudies() {
           links={[
             {
               linkName: 'Github Discussions',
-              route: 'https://github.com/wbkd/react-flow/discussions',
+              route: 'https://github.com/xyflow/xyflow/discussions',
             },
             { linkName: 'Discord', route: 'https://discord.gg/RVmnytFmGW' },
           ]}
@@ -86,7 +86,7 @@ export default function CaseStudies() {
           links={[
             {
               linkName: 'Github Issues',
-              route: 'https://github.com/wbkd/react-flow/issues',
+              route: 'https://github.com/xyflow/xyflow/issues',
             },
           ]}
           text={
@@ -134,7 +134,7 @@ export default function CaseStudies() {
         <ListItem
           icon={StarIcon}
           label="Star us on Github"
-          link="https://github.com/wbkd/react-flow"
+          link="https://github.com/xyflow/xyflow"
         />
         <ListItem
           icon={ChatBubbleOvalLeftEllipsisIcon}
