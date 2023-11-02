@@ -121,8 +121,8 @@ deployed to a preview environment we have set up on Vercel:
 
 ## Support our work with React Flow Pro
 
-Everything with do at xyflow is open-sourced MIT-licensed software, and it will
-be forever. Our library enables thousands of solo developers and organizations
+React Flow and Svelte Flow is open-sourced MIT-licensed software, and it will
+be forever. Our libraries enables thousands of solo developers and organizations
 like Stripe and Linkedin to build their node-based apps. With so many active
 users, it takes time and effort to maintain the library, docs, and community.
 We can’t do that without your support.
