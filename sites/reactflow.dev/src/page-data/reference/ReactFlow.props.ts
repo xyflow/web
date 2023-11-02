@@ -374,19 +374,19 @@ export const paneEventHandlerProps: PropsTableProps = {
   props: [
     {
       name: 'onMove',
-      type: '(event: React.MouseEvent, data: Viewport) => void',
+      type: '(event: React.MouseEvent | React.TouchEvent | null, data: Viewport) => void',
       description: `This event handler is called while the user is either panning
       or zooming the viewport.`,
     },
     {
       name: 'onMoveStart',
-      type: '(event: React.MouseEvent, data: Viewport) => void',
+      type: '(event: React.MouseEvent | React.TouchEvent | null, data: Viewport) => void',
       description: `This event handler is called when the user begins to pan or
       zoom the viewport.`,
     },
     {
       name: 'onMoveEnd',
-      type: '(event: React.MouseEvent, data: Viewport) => void',
+      type: '(event: React.MouseEvent | React.TouchEvent | null, data: Viewport) => void',
       description: `This event handler is called while the user stops either
       panning or zooming the viewport.`,
     },
