@@ -5,6 +5,8 @@ const ctx = new AudioContext();
 const osc = ctx.createOscillator();
 const amp = ctx.createGain();
 
+ctx.suspend();
+
 osc.connect(amp);
 amp.connect(ctx.destination);
 
