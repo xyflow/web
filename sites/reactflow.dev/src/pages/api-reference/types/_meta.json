@@ -10,7 +10,6 @@
   "edge-marker": "EdgeMarker",
   "edge-props": "EdgeProps",
   "fit-view-options": "FitViewOptions",
-  "handle-element": "HandleElement",
   "marker-type": "MarkerType",
   "mini-map-node-props": "MiniMapNodeProps",
   "node": "Node",
