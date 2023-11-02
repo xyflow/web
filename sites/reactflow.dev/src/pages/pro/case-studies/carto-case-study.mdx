@@ -11,6 +11,7 @@ image_height: 766
 
 import QandA from '@/components/case-study-qa';
 import CaseStudyLayout from '@/layouts/case-study-with-metadata';
+import Link from 'next/link';
 
 <CaseStudyLayout>
 
@@ -21,7 +22,6 @@ import CaseStudyLayout from '@/layouts/case-study-with-metadata';
 />
 
 <QandA
-  className="mt-16"
   question="What is your role at Carto?"
   answer="As a front-end developer, I strive to get our platform's best UI & UX. As a result our team currently works with a stack around the React ecosystem, both on applications for end users (Workflows, Builder, Workspace) plus a set of tools for developers (CARTO for React, CARTO for deck.gl)."
 />
@@ -52,5 +52,9 @@ import CaseStudyLayout from '@/layouts/case-study-with-metadata';
   question="Did you have any trouble with the library at any point along the way?"
   answer="Integration was really smooth in our frontend codebase, from the very beginning. We were able to do the integration very autonomously"
 />
+
+<div className="text-lg text-pink-600">
+  [Check out Carto Workflows](https://carto.com/workflows)
+</div>
 
 </CaseStudyLayout>
