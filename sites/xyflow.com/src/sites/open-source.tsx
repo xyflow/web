@@ -18,6 +18,13 @@ export default function OpenSource() {
       />
 
       <Section className="max-w-screen-md mx-auto mt-12 lg:my-12">
+        <Image
+          src="https://api.star-history.com/svg?repos=xyflow/xyflow&type=Date"
+          alt="xyflow GitHub Star History"
+          width={800}
+          height={400}
+        />
+
         <Heading as="h2" size="sm" className="mb-4 mt-14">
           Open source since the beginning
         </Heading>
@@ -65,7 +72,7 @@ export default function OpenSource() {
           alt="A diagram showing a circle with an outline. Inside the circle is the Free, Open Core, which contains Libraries, docs, examples, and discord. The thick outline of the circle is the Paid Crust, containing Pro examples, prioritized bug fixes, and email support."
           placeholder="blur"
           className="my-10 mx-auto lg:max-w-[544px] "
-        ></Image>
+        />
 
         <Text className="text-lg leading-8 mb-4">
           We spend most of our time on the “core,” which is MIT Licensed

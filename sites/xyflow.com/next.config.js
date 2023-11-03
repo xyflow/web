@@ -5,6 +5,17 @@ const nextConfig = {
   // Optionally, add any other Next.js config below
   reactStrictMode: true,
   transpilePackages: ['ui'],
+  images: {
+    dangerouslyAllowSVG: true,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'api.star-history.com',
+        port: '',
+        pathname: '/svg',
+      },
+    ],
+  },
 };
 
 const withNextra = require('nextra')({
