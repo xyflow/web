@@ -16,6 +16,10 @@
         "title": "Showcase",
         "href": "/showcase"
       },
+      "whats-new": {
+        "title": "What's new?",
+        "href": "/whats-new"
+      },
       "discord": {
         "title": "Discord",
         "href": "https://discord.gg/RVmnytFmGW"
@@ -56,7 +60,7 @@
     "title": "What's new?",
     "display": "hidden",
     "theme": {
-      "layout": "default"
+      "layout": "full"
     }
   },
   "404": {
