@@ -96,7 +96,7 @@ export default {
           <Link href="/pro">
             <SparklesIcon className="w-4 h-4 mr-1" />
             <span>
-              <span className="hidden md:inline">React Flow </span>
+              <span className="hidden lg:inline">React Flow </span>
               <span>Pro</span>
             </span>
           </Link>
