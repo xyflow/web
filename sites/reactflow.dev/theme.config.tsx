@@ -237,7 +237,7 @@ export default {
         type: 'website',
         images: [
           {
-            url: `${baseUrl}/img/og/reactflow.jpg`,
+            url: `${baseUrl}/img/og/react-flow-og.jpg`,
             width: 1200,
             height: 640,
             alt: 'React Flow Teaser',
