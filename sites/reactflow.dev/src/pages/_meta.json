@@ -56,7 +56,7 @@
     "title": "What's new?",
     "display": "hidden",
     "theme": {
-      "layout": "default"
+      "layout": "full"
     }
   },
   "404": {
