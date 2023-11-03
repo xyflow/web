@@ -165,4 +165,6 @@ export type InternalRoute =
   | '/pro/examples'
   | '/pro/pricing'
   | '/showcase'
-  | '/whats-new';
+  | '/whats-new'
+  | '/whats-new/2023-11-01'
+  | '/whats-new/2023-11-02';
