@@ -112,7 +112,7 @@ export default {
         type: 'website',
         images: [
           {
-            url: `${baseUrl}/img/og/svelteflow.jpg`,
+            url: `${baseUrl}/img/og/svelte-flow-og.jpg`,
             width: 1200,
             height: 640,
             alt: 'Svelte Flow Teaser',
