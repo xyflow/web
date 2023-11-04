@@ -1,6 +1,7 @@
 const context = new AudioContext();
 const nodes = new Map();
 
+context.suspend();
 nodes.set('output', context.destination);
 
 export function isRunning() {

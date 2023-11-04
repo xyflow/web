@@ -1,0 +1,19 @@
+# Preventing cycles
+
+import ExampleViewer from '@/components/example-viewer';
+import ExampleLayout from '@/layouts/example-with-frontmatter';
+
+<ExampleLayout>
+
+In the [validation](/examples/interaction/validation) example, we saw how to use
+the [`isValidConnection`](/api-reference/react-flow#is-valid-connection) callback
+to prevent certain connections from being created. This example shows how to use
+the [`getOutgoers`](/api-reference/utils/get-outgoers) util to check if a new
+connection would cause a cycle in the flow.
+
+<ExampleViewer
+  codePath="example-flows/PreventConnectionCycles"
+  additionalFiles={['nodes-edges.js']}
+/>
+
+</ExampleLayout>

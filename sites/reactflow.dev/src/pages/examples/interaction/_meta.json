@@ -2,6 +2,7 @@
   "interaction-props": "Interaction Props",
   "drag-and-drop": "Drag and Drop",
   "validation": "Validation",
+  "prevent-cycles": "Preventing Cycles",
   "undo-and-redo": "Undo and Redo",
   "copy-and-paste": "Copy and Paste",
   "helper-lines": "Helper Lines",

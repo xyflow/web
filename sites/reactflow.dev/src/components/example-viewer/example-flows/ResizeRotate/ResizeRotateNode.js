@@ -1,10 +1,13 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Handle, Position, useUpdateNodeInternals } from 'reactflow';
+import {
+  Handle,
+  Position,
+  useUpdateNodeInternals,
+  NodeResizer,
+} from 'reactflow';
 import { drag } from 'd3-drag';
 import { select } from 'd3-selection';
-import { NodeResizer } from '@reactflow/node-resizer';
 
-import '@reactflow/node-resizer/dist/style.css';
 import styles from './style.module.css';
 
 export default function ResizeRotateNode({
@@ -16,8 +19,8 @@ export default function ResizeRotateNode({
   const rotateControlRef = useRef(null);
   const updateNodeInternals = useUpdateNodeInternals();
   const [rotation, setRotation] = useState(0);
-  const [resizable, setResizable] = useState(true);
-  const [rotatable, setRotatable] = useState(true);
+  const [resizable, setResizable] = useState(!!data.resizable);
+  const [rotatable, setRotatable] = useState(!!data.rotatable);
 
   useEffect(() => {
     if (!rotateControlRef.current) {
@@ -76,8 +79,16 @@ export default function ResizeRotateNode({
             </label>
           </div>
         </div>
-        <Handle style={{ opacity: 0 }} position={sourcePosition} type="source" />
-        <Handle style={{ opacity: 0 }} position={targetPosition} type="target" />
+        <Handle
+          style={{ opacity: 0 }}
+          position={sourcePosition}
+          type="source"
+        />
+        <Handle
+          style={{ opacity: 0 }}
+          position={targetPosition}
+          type="target"
+        />
       </div>
     </>
   );

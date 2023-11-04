@@ -1,9 +1,9 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useConfig } from 'nextra-theme-docs';
 import { Footer, Button, LogoLabel, Search } from 'xy-ui';
 
-import aboutImage from './public/img/about.jpg';
 import { InternalRoute } from '@/utils';
 
 const baseUrl =
@@ -22,6 +22,23 @@ export default {
   nextThemes: {
     forcedTheme: 'light',
     defaultTheme: 'light',
+  },
+  banner: {
+    text: (
+      <a
+        className="flex justify-center items-center max-w-xs mx-auto hover:underline"
+        href="https://www.xyflow.com/blog/svelte-flow-launch"
+      >
+        <Image
+          alt=""
+          width={15}
+          height={25}
+          src="/img/svelte-logo.svg"
+          className="mr-2"
+        />
+        <span>Svelte Flow just launched and is still alpha!</span>
+      </a>
+    ),
   },
   navbar: {
     extraContent: () => {
@@ -112,7 +129,7 @@ export default {
         type: 'website',
         images: [
           {
-            url: `${baseUrl}/img/og/svelteflow.jpg`,
+            url: `${baseUrl}/img/og/svelte-flow-og.jpg`,
             width: 1200,
             height: 640,
             alt: 'Svelte Flow Teaser',

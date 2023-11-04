@@ -1,6 +1,8 @@
 const context = new AudioContext();
 const nodes = new Map();
 
+constext.suspend();
+
 const osc = context.createOscillator();
 osc.frequency.value = 220;
 osc.type = 'square';

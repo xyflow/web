@@ -94,6 +94,7 @@ export type InternalRoute =
   | '/examples/interaction/drag-and-drop'
   | '/examples/interaction/helper-lines'
   | '/examples/interaction/interaction-props'
+  | '/examples/interaction/prevent-cycles'
   | '/examples/interaction/save-and-restore'
   | '/examples/interaction/touch-device'
   | '/examples/interaction/undo-and-redo'
@@ -157,9 +158,13 @@ export type InternalRoute =
   | '/learn/tutorials/react-flow-and-the-web-audio-api'
   | '/pro'
   | '/pro/case-studies'
+  | '/pro/case-studies/carto-case-study'
   | '/pro/case-studies/doubleloop-case-study'
   | '/pro/case-studies/onesignal-case-study'
   | '/pro/enterprise'
   | '/pro/examples'
   | '/pro/pricing'
-  | '/showcase';
+  | '/showcase'
+  | '/whats-new'
+  | '/whats-new/2023-11-01'
+  | '/whats-new/2023-11-02';
