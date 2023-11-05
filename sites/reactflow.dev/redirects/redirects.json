@@ -81,12 +81,12 @@
   },
   {
     "source": "/docs/api/edges/custom-edges",
-    "destination": "/examples/edge/custom-edges",
+    "destination": "/examples/edges/custom-edges",
     "permanent": true
   },
   {
     "source": "/docs/examples/edges/custom-edge",
-    "destination": "/examples/edge/custom-edges",
+    "destination": "/examples/edges/custom-edges",
     "permanent": true
   },
   {
@@ -771,7 +771,7 @@
   },
   {
     "source": "/examples/edge-with-button",
-    "destination": "/examples/edge/custom-edges",
+    "destination": "/examples/edges/custom-edges",
     "permanent": true
   },
   {
@@ -856,7 +856,7 @@
   },
   {
     "source": "/docs/examples/edges/edge-with-button",
-    "destination": "/examples/edge/custom-edges",
+    "destination": "/examples/edges/custom-edges",
     "permanent": true
   },
   {
@@ -886,7 +886,7 @@
   },
   {
     "source": "/docs/examples/edges",
-    "destination": "/examples/edge/custom-edges",
+    "destination": "/examples/edges/custom-edges",
     "permanent": true
   },
   {
@@ -896,7 +896,7 @@
   },
   {
     "source": "/docs/examples/edge-with-button",
-    "destination": "/examples/edge/custom-edges",
+    "destination": "/examples/edges/custom-edges",
     "permanent": true
   },
   {
