@@ -88,17 +88,23 @@ We get started by stacking together the most important components of Svelte Flow
   const snapGrid = [25, 25];
 </script>
 
-<SvelteFlow
-  {nodes}
-  {edges}
-  {snapGrid}
-  fitView
-  on:nodeclick={(event) => console.log('on node click', event.detail.node)}
->
-  <Controls />
-  <Background variant={BackgroundVariant.Dots} />
-  <MiniMap />
-</SvelteFlow>
+<!--
+👇 By default, the Svelte Flow container has a height of 100%. 
+This means that the parent container needs a height to render the flow.
+-->
+<div style:height="500px">
+  <SvelteFlow
+    {nodes}
+    {edges}
+    {snapGrid}
+    fitView
+    on:nodeclick={(event) => console.log('on node click', event.detail.node)}
+  >
+    <Controls />
+    <Background variant={BackgroundVariant.Dots} />
+    <MiniMap />
+  </SvelteFlow>
+</div>
 ```
 
 ## How to Contribute
