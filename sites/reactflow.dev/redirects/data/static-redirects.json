@@ -8,6 +8,10 @@
     "destination": "/learn/tutorials/react-flow-and-the-web-audio-api"
   },
   {
+    "source": "/examples/overview",
+    "destination": "/examples"
+  },
+  {
     "source": "/docs/api/edges/custom-connection-line",
     "destination": "/api-reference/types/connection-line-component-props"
   },
@@ -65,11 +69,11 @@
   },
   {
     "source": "/docs/api/edges/custom-edges",
-    "destination": "/examples/edge/custom-edges"
+    "destination": "/examples/edges/custom-edges"
   },
   {
     "source": "/docs/examples/edges/custom-edge",
-    "destination": "/examples/edge/custom-edges"
+    "destination": "/examples/edges/custom-edges"
   },
   {
     "source": "/docs/api/edges/edge-types",
