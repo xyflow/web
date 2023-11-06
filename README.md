@@ -20,9 +20,6 @@ there's a lot going on.
 The apps directory contains projects that run on the backend or applications we
 might want to run during development:
 
-- `apps/nhost-backend` is the backend we use to power our pro platform. It handles
-  user authentication, subscription management, and email. [Nhost](https://nhost.io)
-  is the open-source serverless backend we use to power it.
 - `apps/svelte-examples` is a SvelteKit app that contains all the examples we use
   throughout our Svelte docs. We like to use [sandpack](https://sandpack.codesandbox.io)
   for our React examples but it doesn't support Svelte yet, so we built our own
@@ -50,7 +47,6 @@ tools we use:
 Each directory in the sites folder is a separate website that we deploy. The name
 of the directory always corresponds to the domain name of the website:
 
-- `sites/pro.xyflow.com` is the frontend for our pro platform.
 - `sites/reactflow.dev` is the documentation site for React Flow. It, and the
   rest of sites, are built with [Nextra](https://nextra.site/) and
   [Next.js](https://nextjs.org/).
@@ -82,12 +78,10 @@ pnpm run dev:docs
 
 For everything else, there is an individual script to run each app independently:
 
-- `pnpm run dev:pro.xyflow.com`
 - `pnpm run dev:reactflow.dev`
 - `pnpm run dev:svelteflow.dev`
 - `pnpm run dev:xyflow.com`
 - `pnpm run dev:style`
-- `pnpm run dev:nhost`
 
 ### Generating showcases
 
@@ -112,7 +106,6 @@ We have continuous deployment set up on both the `main` and `staging` branches.
 Commits to `main` will be deployed to production. Commits to `staging` will be
 deployed to a preview environment we have set up on Vercel:
 
-- https://xyflow-platform-staging.vercel.app (our pro platform)
 - https://xyflow-website-staging.vercel.app
 - https://reactflow-website-staging.vercel.app
 - https://svelteflow-website-staging.vercel.app
