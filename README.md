@@ -2,13 +2,7 @@
 
 # xyflow/web
 
-This monorepo contains everything needed to build and run the xyflow website,
-the documentation sites for Svelte Flow and React Flow, and our pro subscriber
-platform.
-
-Our documentation has always been open source, but now our pro platform is too!
-We hope that other open-source organisations can learn or use it as a starting
-point if they want to build their own paid subscription platform.
+This monorepo contains the xyflow website and the documentation sites for React Flow and Svelte Flow.
 
 ## What's inside?
 
