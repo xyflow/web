@@ -98,16 +98,6 @@ pnpm write-showcases
 > You must have a `.env` file in the project with a key called `NOTION_API_SECRET`
 > for this script to work.
 
-## Branches and CD
-
-We have continuous deployment set up on both the `main` and `staging` branches.
-Commits to `main` will be deployed to production. Commits to `staging` will be
-deployed to a preview environment we have set up on Vercel:
-
-- https://xyflow-website-staging.vercel.app
-- https://reactflow-website-staging.vercel.app
-- https://svelteflow-website-staging.vercel.app
-
 ---
 
 ## Support our work with React Flow Pro
