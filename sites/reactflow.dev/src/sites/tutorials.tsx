@@ -1,12 +1,7 @@
 import { BookOpenIcon } from '@heroicons/react/24/outline';
-import {
-  BaseLayout,
-  ContentGrid,
-  ContentGridItem,
-  ProjectPreview,
-  Hero,
-  SubscribeSection,
-} from 'xy-ui';
+import { ContentGrid, ContentGridItem } from '@xyflow/xy-ui';
+import { BaseLayout, Hero, ProjectPreview, SubscribeSection } from 'xy-shared';
+
 import { getMdxPagesUnderRoute } from '@/utils';
 
 export default function CaseStudies() {

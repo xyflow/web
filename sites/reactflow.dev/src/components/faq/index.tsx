@@ -6,7 +6,7 @@ import {
   AccordionTrigger,
   AccordionContent,
   ListWrapper,
-} from 'xy-ui';
+} from '@xyflow/xy-ui';
 
 import faqItems from './items';
 

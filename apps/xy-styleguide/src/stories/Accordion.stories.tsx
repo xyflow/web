@@ -5,7 +5,7 @@ import {
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
-} from 'xy-ui';
+} from '@xyflow/xy-ui';
 
 const meta = {
   title: 'Example/Accordion',

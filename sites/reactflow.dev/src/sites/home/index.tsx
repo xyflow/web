@@ -1,18 +1,16 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useSSG } from 'nextra/ssg';
+import { Button, Section, Stats } from '@xyflow/xy-ui';
 import {
   BaseLayout,
-  Button,
   HeroFlow,
   ImageSlider,
-  Section,
   Features,
   GettingStarted,
-  Stats,
   AboutSection,
   ProjectCards,
-} from 'xy-ui';
+} from 'xy-shared';
 import { SparklesIcon, BoltIcon } from '@heroicons/react/24/outline';
 import ClientLogos from '@/components/client-logos';
 

@@ -1,14 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import {
-  BaseLayout,
-  Button,
-  Hero,
-  PricingTable,
-  ImageSlider,
-  Section,
-  SubscribeSection,
-} from 'xy-ui';
+import { Button, PricingTable, Section } from '@xyflow/xy-ui';
+import { BaseLayout, Hero, ImageSlider, SubscribeSection } from 'xy-shared';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 
 import ClientLogos from '@/components/client-logos';

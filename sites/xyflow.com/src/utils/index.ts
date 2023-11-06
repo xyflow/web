@@ -1,5 +1,6 @@
 import { MdxFile } from 'nextra';
 import { getPagesUnderRoute } from 'nextra/context';
+
 import { type Route, type ExternalRoute, type InternalRoute } from './routes';
 
 export function isMdxPage(page: MdxFile | any): page is MdxFile {

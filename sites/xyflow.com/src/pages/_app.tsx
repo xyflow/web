@@ -1,6 +1,6 @@
 import localFont from 'next/font/local';
 import { Fira_Mono } from 'next/font/google';
-import { useFathom } from 'xy-ui';
+import { useFathom } from 'xy-shared';
 
 import 'styles/global.css';
 

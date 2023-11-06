@@ -1,4 +1,4 @@
-import { PropsTable, type PropsTableProps } from 'xy-ui';
+import { PropsTable, type PropsTableProps } from 'xy-shared';
 import React, { useMemo } from 'react';
 
 import reactFlowTypes from '@/pages/api-reference/types/_meta.json';

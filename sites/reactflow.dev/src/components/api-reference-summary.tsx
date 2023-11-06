@@ -1,10 +1,11 @@
-import { ArrowRightIcon } from '@heroicons/react/24/solid';
 import { useMemo } from 'react';
+import { ArrowRightIcon } from '@heroicons/react/24/solid';
+import Link from 'next/link';
+
 import {
   getApiReferenceByCategory,
   type Category,
 } from '@/utils/get-static-props/api-reference-by-category';
-import Link from 'next/link';
 
 export type ApiReferenceSummaryProps = {
   category: Category;

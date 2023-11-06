@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @import 'reactflow/dist/style.css';
-@import 'xy-ui/lib/globals.css';
+@import 'xy-shared/lib/globals.css';
 
 @layer base {
   :root {

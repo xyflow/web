@@ -1,38 +1,19 @@
 'use client';
 
-import { ReactNode, useEffect, useRef } from 'react';
+import { ReactNode, useRef } from 'react';
 import Link from 'next/link';
+
 import { cn, Text } from '../..';
 
 type LogoProps = {
-  animated?: boolean;
   inverted?: boolean;
-  filled?: boolean;
   className?: string;
 };
 
-function Logo({
-  animated = false,
-  inverted = false,
-  filled = false,
-  className,
-}: LogoProps) {
+function Logo({ inverted = false, className }: LogoProps) {
   const ref = useRef<SVGSVGElement>(null);
 
-  useEffect(() => {
-    if (animated) {
-      const paths = ref.current?.querySelectorAll('[data-path="animation"]');
-      paths?.forEach((path) => {
-        const animations = path?.querySelectorAll('animate');
-        animations?.forEach((animation) => {
-          animation.beginElement();
-        });
-      });
-    }
-  }, [animated]);
-
   const bgColor = inverted ? '#fff' : '#1A192B';
-  const pathFill = animated ? '#fff' : inverted ? '#fff' : 'currentColor';
 
   return (
     <div className={cn('w-8 h-8 text-primary', className)}>
@@ -47,29 +28,10 @@ function Logo({
         <path
           d="M35 3H25C23.8954 3 23 3.89543 23 5V15C23 16.1046 23.8954 17 25 17H35C36.1046 17 37 16.1046 37 15V5C37 3.89543 36.1046 3 35 3Z"
           strokeWidth="2"
-          fill={filled ? pathFill : 'transparent'}
-          stroke={animated ? bgColor : filled ? 'transparent' : 'currentColor'}
+          fill="none"
+          stroke="currentColor"
           data-path="animation"
-        >
-          {animated && (
-            <>
-              <animate
-                attributeName="fill"
-                values={`#fff;#fff;currentColor`}
-                keyTimes="0;0.5;1"
-                dur="1000ms"
-                fill="freeze"
-              />
-              <animate
-                attributeName="stroke"
-                values="#1A192B;#1A192B;transparent"
-                keyTimes="0;0.5;1"
-                dur="1000ms"
-                fill="freeze"
-              />
-            </>
-          )}
-        </path>
+        />
         <path
           d="M35 23H25C23.8954 23 23 23.8954 23 25V35C23 36.1046 23.8954 37 25 37H35C36.1046 37 37 36.1046 37 35V25C37 23.8954 36.1046 23 35 23Z"
           stroke={bgColor}

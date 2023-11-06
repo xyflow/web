@@ -1,4 +1,4 @@
-import { type PropsTableProps } from 'xy-ui';
+import { type PropsTableProps } from 'xy-shared';
 
 export const edgePropsFields: PropsTableProps = {
   props: [

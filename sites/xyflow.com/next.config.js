@@ -4,7 +4,7 @@ const nextConfig = {
   pageExtensions: ['ts', 'tsx', 'js', 'jsx'],
   // Optionally, add any other Next.js config below
   reactStrictMode: true,
-  transpilePackages: ['ui'],
+  transpilePackages: ['@xyflow/xy-ui', 'xy-shared'],
   images: {
     dangerouslyAllowSVG: true,
     remotePatterns: [

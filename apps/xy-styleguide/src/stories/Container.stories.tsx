@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Container } from 'xy-ui';
+import { Container } from '@xyflow/xy-ui';
 
 const meta = {
   title: 'Example/Container',

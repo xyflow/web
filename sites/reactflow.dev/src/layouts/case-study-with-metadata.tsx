@@ -4,7 +4,7 @@ import { type MdxFile } from 'nextra';
 import {
   CaseStudyLayout as BaseCaseStudyLayout,
   type CaseStudyFrontmatter,
-} from 'xy-ui';
+} from 'xy-shared';
 
 export type CaseStudyLayoutProps = {
   children: React.ReactNode;

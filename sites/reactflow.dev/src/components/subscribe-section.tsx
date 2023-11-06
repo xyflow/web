@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Heading, Button, Section } from 'xy-ui';
+import { Heading, Button, Section } from '@xyflow/xy-ui';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 
 export type SubscribeSectionProps = {
