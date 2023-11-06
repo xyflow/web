@@ -94,7 +94,7 @@ export function ShowcaseLayout({
         ))}
 
         <ContentGridItem
-          route="https://github.com/xyflow/web/issues/new?assignees=&labels=content&projects=&template=submit-showcase.yaml"
+          route="https://github.com/xyflow/web/issues/new?labels=content&template=submit-showcase.yaml"
           className={showcases.length % 2 === 0 ? 'lg:col-span-2' : ''}
         >
           <ProjectPreview
