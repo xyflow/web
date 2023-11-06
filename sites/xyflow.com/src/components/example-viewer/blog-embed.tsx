@@ -1,5 +1,5 @@
 import ExampleViewer from './';
-import { wideNegativeMargin } from '@xyflow/xy-ui';
+import { wideNegativeMargin } from 'xy-shared';
 
 export type BlogExampleViewerProps = {
   codePath: string;

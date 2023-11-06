@@ -1,10 +1,3 @@
-import { type ClassValue, clsx } from 'clsx';
-import { twMerge } from 'tailwind-merge';
-
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
-
 // Well this is a pretty funky class, huh. I'm gonna try and break it down a bit
 // so we can understand what's going on here:
 //

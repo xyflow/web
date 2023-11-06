@@ -8,9 +8,9 @@
 //
 
 import NxImage from 'next/image';
-import { wideNegativeMargin, cn } from '@xyflow/xy-ui';
+import { cn } from '@xyflow/xy-ui';
 
-import { ReactPlayer } from '../../';
+import { ReactPlayer, wideNegativeMargin } from '../../';
 
 // IMAGES ----------------------------------------------------------------------
 
