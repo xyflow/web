@@ -15,7 +15,7 @@ type SvelteExampleProps = {
 
 export default function SvelteExample({
   codePath,
-  editorHeight,
+  editorHeight = '70vh',
   activeFile,
   dependencies = {},
   tailwind = false,
@@ -92,7 +92,7 @@ export default function SvelteExample({
     return (
       <div
         style={{ height: editorHeight }}
-        className="w-full color nx-bg-primary-100 flex justify-center content-center flex-wrap"
+        className={`w-full color nx-bg-primary-100 flex justify-center content-center flex-wrap`}
       >
         <p className="text-svelte">Example failed to load</p>
       </div>
@@ -101,7 +101,7 @@ export default function SvelteExample({
 
   return (
     <CodeViewer
-      files={files}
+      files={files ? files : { 'App.svelte': 'Loading...' }}
       editorHeight={editorHeight}
       showOpenInCodeSandbox={false}
       framework="svelte"
