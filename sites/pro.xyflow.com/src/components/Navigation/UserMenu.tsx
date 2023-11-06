@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useUserEmail, useSignOut } from '@nhost/nextjs';
-import { Select, SelectContent, SelectSeparator, SelectLabel, SelectTrigger, SelectGroup } from 'xy-ui';
+import { Select, SelectContent, SelectSeparator, SelectLabel, SelectTrigger, SelectGroup } from '@xyflow/xy-ui';
 
 // @todo style status badge
 export default function () {

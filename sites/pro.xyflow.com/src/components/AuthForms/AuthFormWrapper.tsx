@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { ArrowLongRightIcon } from '@heroicons/react/20/solid';
 import { SignInOAuth } from '@/components/AuthForms';
 
-import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription, Heading, Text } from 'xy-ui';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription, Heading, Text } from '@xyflow/xy-ui';
 
 type AuthFormWrapperProps = {
   children?: React.ReactNode;

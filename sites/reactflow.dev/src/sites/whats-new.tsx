@@ -1,12 +1,12 @@
-import { Author, AuthorList, BaseLayout, Hero, Text } from 'xy-ui';
-import { InternalRoute } from '@/utils';
-import { MDXRemote, type MDXRemoteSerializeResult } from 'next-mdx-remote';
-import { useSSG } from 'nextra/ssg';
-import TimeAgo from 'timeago-react';
-import { useCallback, useMemo } from 'react';
-import ExampleViewer from '@/components/example-viewer';
-import { PencilSquareIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
+import { useSSG } from 'nextra/ssg';
+import { Hero, Text } from '@xyflow/xy-ui';
+import { Author, AuthorList, BaseLayout } from 'xy-shared';
+import { MDXRemote, type MDXRemoteSerializeResult } from 'next-mdx-remote';
+import TimeAgo from 'timeago-react';
+import { PencilSquareIcon } from '@heroicons/react/24/outline';
+
+import ExampleViewer from '@/components/example-viewer';
 
 export default function WhatsNew() {
   const mdx = useSSG('mdx') as TimelineEventProps[];

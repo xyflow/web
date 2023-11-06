@@ -1,6 +1,5 @@
 import Image from 'next/image';
-
-import { Text, cn } from 'xy-ui';
+import { Text, cn } from '@xyflow/xy-ui';
 
 import benchling from '../../public/img/clients/benchling.svg';
 import stripe from '../../public/img/clients/stripe.svg';

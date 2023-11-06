@@ -1,7 +1,7 @@
 'use client';
 
 // @todo how can this be turned into a server component?
-import { Button, ButtonProps } from 'xy-ui';
+import { Button, ButtonProps } from '@xyflow/xy-ui';
 import useStripeCustomerPortal from '@/hooks/useStripeCustomerPortal';
 
 export default function (props: ButtonProps) {

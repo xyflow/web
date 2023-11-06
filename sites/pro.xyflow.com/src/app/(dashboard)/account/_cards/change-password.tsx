@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useChangePassword } from '@nhost/nextjs';
-import { Card, CardHeader, CardDescription, CardTitle, CardFooter, Button, Input, InputLabel } from 'xy-ui';
+import { Card, CardHeader, CardDescription, CardTitle, CardFooter, Button, Input, InputLabel } from '@xyflow/xy-ui';
 
 function ChangePasswordCard() {
   const [isLoading, setIsLoading] = useState(false);

@@ -2,9 +2,9 @@
 
 import { useState } from 'react';
 import { useSignInEmailPasswordless } from '@nhost/nextjs';
-
 import Head from 'next/head';
-import { Button, Input, InputLabel } from 'xy-ui';
+import { Button, Input, InputLabel } from '@xyflow/xy-ui';
+
 import { AuthErrorNotification, MagicLinkSuccessNotification } from './AuthNotification';
 
 function Signup() {

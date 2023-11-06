@@ -1,7 +1,8 @@
 import localFont from 'next/font/local';
 import { Fira_Mono } from 'next/font/google';
 import { useRouter } from 'next/router';
-import { cn, useFathom } from 'xy-ui';
+import { cn } from '@xyflow/xy-ui';
+import { useFathom } from 'xy-shared';
 
 import 'styles/global.css';
 

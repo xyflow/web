@@ -17,7 +17,7 @@ import {
   SelectContent,
   SelectValue,
   NodeWrapper,
-} from 'xy-ui';
+} from '@xyflow/xy-ui';
 
 const nodes = [
   {

@@ -1,4 +1,4 @@
-import { Button } from 'xy-ui';
+import { Button } from '@xyflow/xy-ui';
 
 type FullScreenButtonProps = {
   exampleId: string;

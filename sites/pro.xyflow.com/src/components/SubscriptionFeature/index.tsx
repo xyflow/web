@@ -1,12 +1,11 @@
 'use client';
 
 import * as React from 'react';
-
-import { Card, CardHeader, CardTitle, CardDescription, CardFooter, Button, cn } from 'xy-ui';
-import { SubscriptionPlan } from '@/types';
 import Link from 'next/link';
+import { Card, CardHeader, CardTitle, CardDescription, CardFooter, Button, cn } from '@xyflow/xy-ui';
 import { ArrowLongRightIcon } from '@heroicons/react/20/solid';
 
+import { SubscriptionPlan } from '@/types';
 import useSubscription from '@/hooks/useSubscription';
 import CustomerPortalButton from '../CustomerPortalButton';
 

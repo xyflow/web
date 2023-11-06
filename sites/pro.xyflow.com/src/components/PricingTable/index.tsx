@@ -1,8 +1,9 @@
 'use client';
 
-import useNhostFunction from '@/hooks/useNhostFunction';
 import { useState } from 'react';
-import { PricingTable, defaultSubscriptionPlans, BillingInterval, SubscriptionPlanId } from 'xy-ui';
+import { PricingTable, defaultSubscriptionPlans, BillingInterval, SubscriptionPlanId } from '@xyflow/xy-ui';
+
+import useNhostFunction from '@/hooks/useNhostFunction';
 
 export default function () {
   const callNhostFunction = useNhostFunction();

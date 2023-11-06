@@ -1,3 +1,5 @@
+// @todo can we take this from @xyflow/xy-ui ?
+
 export default function ReactFlowLogo({ width = 40, height = 40 }: { width?: number; height?: number }) {
   return (
     <svg width={width} height={height} viewBox={`0 0 132 132`} fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -1,8 +1,9 @@
 'use client';
 
-import useNhostFunction from '@/hooks/useNhostFunction';
 import { useState } from 'react';
-import { Button, Card, CardContent, CardHeader, CardTitle } from 'xy-ui';
+import { Button, Card, CardContent, CardHeader, CardTitle } from '@xyflow/xy-ui';
+
+import useNhostFunction from '@/hooks/useNhostFunction';
 
 type PricingPlanProps = {
   plan: 'starter' | 'pro' | 'enterprise';

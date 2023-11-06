@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useResetPassword } from '@nhost/nextjs';
 
-import { Button, Input, InputLabel } from 'xy-ui';
+import { Button, Input, InputLabel } from '@xyflow/xy-ui';
 import { AuthErrorNotification, AuthNotification } from './AuthNotification';
 
 function ResetPassword() {

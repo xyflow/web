@@ -1,4 +1,4 @@
-import { Button, cn } from 'xy-ui';
+import { Button, cn } from '@xyflow/xy-ui';
 
 type NotificationProps = {
   title?: React.ReactNode;

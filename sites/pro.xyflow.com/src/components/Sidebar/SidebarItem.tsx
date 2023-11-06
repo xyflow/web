@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Button, cn, ButtonProps } from 'xy-ui';
+import { Button, cn, ButtonProps } from '@xyflow/xy-ui';
 
 const SidebarItem = ({
   href,

@@ -1,5 +1,5 @@
 import { ArrowDownTrayIcon, ArrowTopRightOnSquareIcon } from '@heroicons/react/20/solid';
-import { Button } from 'xy-ui';
+import { Button } from '@xyflow/xy-ui';
 
 import useSandpackDownloader from '../sandpack-downloader/useSandpackDownloader';
 

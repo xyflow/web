@@ -3,8 +3,8 @@
 import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useSignInEmailPassword } from '@nhost/nextjs';
+import { Button, Input, InputLabel } from '@xyflow/xy-ui';
 
-import { Button, Input, InputLabel } from 'xy-ui';
 import { AuthErrorNotification } from './AuthNotification';
 
 function SignInEmailPassword() {

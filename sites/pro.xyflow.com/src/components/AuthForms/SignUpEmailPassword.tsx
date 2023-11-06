@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 import { useSignUpEmailPassword } from '@nhost/nextjs';
+import { Button, Input, InputLabel } from '@xyflow/xy-ui';
 
-import { Button, Input, InputLabel } from 'xy-ui';
 import { AuthErrorNotification } from './AuthNotification';
 
 function Signup() {

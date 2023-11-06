@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import sdk from '@stackblitz/sdk';
+import { Button } from '@xyflow/xy-ui';
+import { CodeViewer } from 'xy-shared';
 
-import { Button, CodeViewer } from 'xy-ui';
 import setup from './setup';
 import IframePreview from './iframe-preview';
 

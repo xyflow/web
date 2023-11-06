@@ -1,5 +1,5 @@
-import { Container, Text, Button } from 'xy-ui';
 import Link from 'next/link';
+import { Container, Text, Button } from '@xyflow/xy-ui';
 
 export default function ({ slug }: { slug: string }) {
   return (

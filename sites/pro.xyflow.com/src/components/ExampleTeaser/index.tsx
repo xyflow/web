@@ -1,9 +1,9 @@
 import Link from 'next/link';
-import { Card, CardTitle, CardHeader, CardDescription } from 'xy-ui';
-
-import { type Example } from '@/utils/server/examples';
+import { Card, CardTitle, CardHeader, CardDescription } from '@xyflow/xy-ui';
 import Image from 'next/image';
 import { ArrowLongRightIcon } from '@heroicons/react/20/solid';
+
+import { type Example } from '@/utils/server/examples';
 
 export type ExampleTeaserProps = {
   example: Example;

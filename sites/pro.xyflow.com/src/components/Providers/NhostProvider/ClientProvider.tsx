@@ -1,7 +1,6 @@
 'use client';
 
 import * as React from 'react';
-
 import { NhostClient, NhostProvider } from '@nhost/nextjs';
 import { NhostApolloProvider } from '@nhost/react-apollo';
 

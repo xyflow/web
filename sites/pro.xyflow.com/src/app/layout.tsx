@@ -1,4 +1,4 @@
-import { Footer } from 'xy-ui';
+import { Footer } from '@xyflow/xy-ui';
 import ClientProviders from '@/components/Providers';
 import Navigation from '@/components/Navigation';
 

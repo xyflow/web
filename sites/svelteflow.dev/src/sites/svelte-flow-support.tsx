@@ -22,7 +22,7 @@ import {
   Hero,
   Button,
   type HeroIcon,
-} from 'xy-ui';
+} from '@xyflow/xy-ui';
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 import Link from 'next/link';
 

@@ -13,7 +13,7 @@ import {
   SandpackLayout,
 } from '@codesandbox/sandpack-react';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
-import { Heading, Text } from 'xy-ui';
+import { Heading, Text } from '@xyflow/xy-ui';
 
 import { isDevelopment } from '@/utils';
 

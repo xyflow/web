@@ -1,9 +1,8 @@
 import React from 'react';
-
 import { SandpackCodeViewer, SandpackProvider } from '@codesandbox/sandpack-react';
 import { aquaBlue } from '@codesandbox/sandpack-themes';
 import { MDXComponents } from 'mdx/types';
-import { Button } from 'xy-ui';
+import { Button } from '@xyflow/xy-ui';
 
 const hasCodeChild = (children: any): boolean => {
   return children?.type === 'code';

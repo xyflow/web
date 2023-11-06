@@ -22,7 +22,7 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from 'xy-ui';
+} from '@xyflow/xy-ui';
 import useNhostFunction from '@/hooks/useNhostFunction';
 import useSubscription from '@/hooks/useSubscription';
 

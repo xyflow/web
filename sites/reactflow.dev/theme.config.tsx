@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useConfig, Navbar } from 'nextra-theme-docs';
-import { Footer, Button, LogoLabel, Search } from 'xy-ui';
+import { Footer, Button, LogoLabel, Search } from '@xyflow/xy-ui';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 
 import SidebarTitle from '@/components/sidebar-title';

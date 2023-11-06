@@ -1,18 +1,16 @@
 import Link from 'next/link';
 import { useSSG } from 'nextra/ssg';
 import { HeartIcon, BoltIcon } from '@heroicons/react/24/outline';
+import { Button, Section, Stats } from '@xyflow/xy-ui';
 import {
   BaseLayout,
-  Button,
   AboutSection,
   ImageSlider,
   HeroFlow,
-  Section,
   Features,
   GettingStarted,
-  Stats,
   ProjectCards,
-} from 'xy-ui';
+} from 'xy-shared';
 
 import FlowA from './flows/flow-a';
 import FlowB from './flows/flow-b';
@@ -20,7 +18,6 @@ import FlowC from './flows/flow-c';
 
 import IframePreview from '@/components/example-viewer/iframe-preview';
 
-import aboutImage from '../../../public/img/about.jpg';
 import type { InternalRoute } from '@/utils';
 
 const sliderItems = [

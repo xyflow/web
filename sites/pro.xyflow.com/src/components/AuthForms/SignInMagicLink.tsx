@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Button, Input, InputLabel } from 'xy-ui';
+import { Button, Input, InputLabel } from '@xyflow/xy-ui';
 import { useSignInEmailPasswordless } from '@nhost/nextjs';
 
 import { MagicLinkSuccessNotification } from './AuthNotification';

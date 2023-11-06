@@ -4,7 +4,7 @@ import { type MdxFile } from 'nextra';
 import {
   BlogPostLayout as BaseBlogPostLayout,
   type BlogPostFrontmatter,
-} from 'xy-ui';
+} from 'xy-shared';
 
 export type BlogPostLayoutProps = {
   children: React.ReactNode;

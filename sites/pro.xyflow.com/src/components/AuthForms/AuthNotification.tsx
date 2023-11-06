@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Link from 'next/link';
-import { Alert, AlertTitle, AlertDescription, Button } from 'xy-ui';
+import { Alert, AlertTitle, AlertDescription, Button } from '@xyflow/xy-ui';
 import { ErrorPayload } from '@nhost/nextjs';
 
 type AuthErrorProps = {

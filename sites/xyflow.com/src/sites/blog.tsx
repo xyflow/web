@@ -1,10 +1,6 @@
-import {
-  BaseLayout,
-  ContentGrid,
-  ContentGridItem,
-  BlogPostPreview,
-  Hero,
-} from 'xy-ui';
+import { ContentGrid, ContentGridItem, Hero } from '@xyflow/xy-ui';
+import { BaseLayout, BlogPostPreview } from 'xy-shared';
+
 import { getMdxPagesUnderRoute } from '@/utils';
 
 export default function Blog() {

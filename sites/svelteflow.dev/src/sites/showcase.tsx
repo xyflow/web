@@ -1,4 +1,5 @@
-import { ShowcaseLayout } from 'xy-ui';
+import { ShowcaseLayout } from 'xy-shared';
+
 import showcases from '../../public/data/showcases.json';
 
 export default function Showcase() {

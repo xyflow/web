@@ -1,15 +1,8 @@
+import Link from 'next/link';
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 import { EnvelopeIcon } from '@heroicons/react/24/outline';
-import Link from 'next/link';
-import {
-  BaseLayout,
-  Card,
-  Input,
-  InputLabel,
-  Text,
-  Hero,
-  ContactForm,
-} from 'xy-ui';
+import { Card, Input, InputLabel, Text, Hero } from '@xyflow/xy-ui';
+import { BaseLayout, ContactForm } from 'xy-shared';
 
 export default function ContactPage() {
   return (

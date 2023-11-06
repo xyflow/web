@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Heading, Text } from 'xy-ui';
-
+import { Heading, Text } from '@xyflow/xy-ui';
 import { MDXComponents } from 'mdx/types';
 
 import CodeBlock from './CodeBlock';

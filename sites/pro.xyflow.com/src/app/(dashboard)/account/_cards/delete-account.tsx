@@ -1,4 +1,4 @@
-import { Card, CardHeader, CardTitle, CardDescription, CardFooter, Button } from 'xy-ui';
+import { Card, CardHeader, CardTitle, CardDescription, CardFooter, Button } from '@xyflow/xy-ui';
 
 export default function () {
   return (

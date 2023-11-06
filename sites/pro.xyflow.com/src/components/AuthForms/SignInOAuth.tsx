@@ -1,7 +1,7 @@
 'use client';
 
 import { useProviderLink } from '@nhost/nextjs';
-import { Button } from 'xy-ui';
+import { Button } from '@xyflow/xy-ui';
 
 const SignInOAuth = () => {
   const { github } = useProviderLink({ metadata: {} });

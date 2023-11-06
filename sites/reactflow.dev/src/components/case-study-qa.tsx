@@ -1,4 +1,4 @@
-import { Text, cn } from 'xy-ui';
+import { Text, cn } from '@xyflow/xy-ui';
 
 type CaseStudyQAProps = {
   question: string;

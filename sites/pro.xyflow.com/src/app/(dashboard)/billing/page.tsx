@@ -1,6 +1,6 @@
 import CustomerPortalButton from '@/components/CustomerPortalButton';
 import DashboardHeader from '@/components/DashboardHeader';
-import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from 'xy-ui';
+import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from '@xyflow/xy-ui';
 
 export default function SubscribePage() {
   return (

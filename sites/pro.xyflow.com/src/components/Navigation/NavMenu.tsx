@@ -2,7 +2,8 @@
 
 import Link from 'next/link';
 import { SignedIn, SignedOut } from '@nhost/nextjs';
-import { Button } from 'xy-ui';
+import { Button } from '@xyflow/xy-ui';
+
 import UserMenu from './UserMenu';
 
 export default function () {

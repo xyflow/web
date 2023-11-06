@@ -1,4 +1,4 @@
-import { ExampleLayout as BaseExampleLayout } from 'xy-ui';
+import { ExampleLayout as BaseExampleLayout } from 'xy-shared';
 import { useConfig } from 'nextra-theme-docs';
 
 export type ExampleLayoutProps = {

@@ -1,7 +1,7 @@
 import { InformationCircleIcon } from '@heroicons/react/24/outline';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { ListWrapper } from 'xy-ui';
+import { ListWrapper } from '@xyflow/xy-ui';
 
 const meta = {
   title: 'Example/ListWrapper',

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { PricingTable } from 'xy-ui';
+import { PricingTable } from '@xyflow/xy-ui';
 
 const meta = {
   title: 'Example/PricingTable',
