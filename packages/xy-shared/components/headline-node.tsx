@@ -1,5 +1,5 @@
 import { CSSProperties, ReactNode } from 'react';
-import { cn } from '../../.';
+import { cn } from '@xyflow/xy-ui';
 
 type HeadlineNodeProps = {
   children: ReactNode;

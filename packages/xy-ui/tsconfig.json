@@ -6,6 +6,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["."],
+  "include": [".", "../xy-shared/components/node-wrapper.tsx"],
   "exclude": ["dist", "build", "node_modules"]
 }

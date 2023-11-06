@@ -1,8 +1,9 @@
 import { type ReactNode } from 'react';
 import Link from 'next/link';
 import { Position } from '@xyflow/system';
+import { Heading, Text, Button, Container, cn } from '@xyflow/xy-ui';
 
-import { Heading, Text, Button, Container, cn, Handle } from '@xyflow/xy-ui';
+import { Handle } from '../../';
 
 const order1Class = 'order-1';
 const order2Class = 'order-2';

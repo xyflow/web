@@ -1,7 +1,6 @@
 import { type ReactNode } from 'react';
 import { Position } from '@xyflow/system';
-
-import { cn } from '../../.';
+import { cn } from '@xyflow/xy-ui';
 
 type HandleProps = {
   id: string;

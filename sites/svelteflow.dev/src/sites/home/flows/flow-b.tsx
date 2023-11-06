@@ -8,7 +8,7 @@ import ReactFlow, {
   useNodesInitialized,
   useReactFlow,
 } from 'reactflow';
-
+import { NodeWrapper } from 'xy-shared';
 import {
   Input,
   Select,
@@ -16,7 +16,6 @@ import {
   SelectTrigger,
   SelectContent,
   SelectValue,
-  NodeWrapper,
 } from '@xyflow/xy-ui';
 
 const nodes = [

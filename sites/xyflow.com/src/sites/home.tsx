@@ -1,7 +1,8 @@
 import Image from 'next/image';
 import { Position } from '@xyflow/system';
-import { Handle, HeadlineNode } from '@xyflow/xy-ui';
 import {
+  Handle,
+  HeadlineNode,
   BaseLayout,
   Hero,
   ImageSlider,
