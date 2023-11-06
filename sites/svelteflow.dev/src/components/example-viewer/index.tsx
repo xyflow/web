@@ -10,6 +10,7 @@ type SvelteExampleProps = {
   activeFile?: string;
   editorHeight: number | string;
   dependencies?: { [key: string]: string };
+  tailwind?: boolean;
 };
 
 export default function SvelteExample({
@@ -17,13 +18,24 @@ export default function SvelteExample({
   editorHeight,
   activeFile,
   dependencies = {},
+  tailwind = false,
   ...rest
 }: SvelteExampleProps) {
   const [files, setFiles] = useState<{ [key: string]: string }>(null);
   const [fileFetchFailed, setFileFetchFailed] = useState(false);
 
   function openInStackblitz() {
-    const svelteSetup = setup({ dependencies });
+    const svelteSetup = setup({
+      dependencies: tailwind
+        ? {
+            ...dependencies,
+            tailwindcss: 'latest',
+            postcss: 'latest',
+            autoprefixer: 'latest',
+          }
+        : dependencies,
+      tailwind,
+    });
     // rename files to land in folder src/example/ on stackblitz
     const stackblitzFiles = Object.entries(files).reduce(
       (filesAcc: { [key: string]: string }, [fileName, file]) => {
