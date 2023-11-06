@@ -18,9 +18,7 @@
   let nodeBg = '#eee';
   let nodeHidden = false;
 
-  $: updateNode({ nodeName });
-  $: updateNode({ nodeBg });
-  $: updateNode({ nodeHidden });
+  $: updateNode({ nodeName, nodeBg, nodeHidden });
 
   function updateNode({
     nodeName,
@@ -34,7 +32,12 @@
     $nodes.forEach((node) => {
       if (node.id === '1') {
         if (nodeName) {
-          node.data.label = nodeName;
+          // IMPORTANT: You need to mutate the data object
+          // otherwise the node will not be updated
+          node.data = {
+            ...node.data,
+            label: nodeName
+          };
         }
 
         if (nodeBg) {

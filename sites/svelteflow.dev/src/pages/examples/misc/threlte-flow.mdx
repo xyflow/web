@@ -9,6 +9,12 @@ import ExampleViewer from '@/components/example-viewer';
 You may have noticed that the hero flow on our [our homepage](/) is actually written in React 🙈.
 For all the the non-believers, here it is written in Svelte Flow with help from the [amazing Threlte library](https://threlte.xyz/).
 
-<ExampleViewer codePath="examples/misc/hero-flow" />
+<ExampleViewer
+  codePath="examples/misc/hero-flow"
+  dependencies={{
+    '@threlte/core': 'latest',
+  }}
+  tailwind
+/>
 
 </ExampleLayout>

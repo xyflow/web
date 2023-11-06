@@ -38,7 +38,7 @@ import Sidebar from './Sidebar.svelte';
 </script>
 
 <aside>
-  {#each $visibleNodes as node (node.id)}
+  {#each $nodes as node (node.id)}
     <div key={node.id}>
       Node {node.id} -
         x: {node.position.x.toFixed(2)},
