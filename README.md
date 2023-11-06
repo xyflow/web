@@ -2,7 +2,11 @@
 
 # xyflow/web
 
-This monorepo contains the xyflow website and the documentation sites for React Flow and Svelte Flow.
+This monorepo contains our team website and the docs for our libraries.
+
+- [xyflow.com](https://xyflow.com) - our team website and blog
+- [reactflow.dev](https://reactflow.dev) - the website and documentation for the React Flow library
+- [svelteflow.dev](https://svelteflow.dev) - the website and documentation for the Svelte Flow library
 
 ## What's inside?
 
@@ -131,5 +135,5 @@ also always excited when folks want to share their projects with us. There are
 a few ways you can get in touch:
 
 - Use the contact form on our [website](https://xyflow.com/contact).
-- Drop us an email at [info@reactflow.dev](mailto:info@reactflow.dev)
+- Drop us an email at [info@xyflow.com](mailto:info@xyflow.com)
 - Join our [Discord server](https://discord.com/invite/RVmnytFmGW)
