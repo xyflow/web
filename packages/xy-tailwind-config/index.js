@@ -5,6 +5,7 @@ export default {
     '../../packages/xy-ui/components/**/*.{js,ts,jsx,tsx,mdx}',
     '../../packages/xy-shared/widgets/**/*.{js,ts,jsx,tsx,mdx}',
     '../../packages/xy-shared/layouts/**/*.{js,ts,jsx,tsx,mdx}',
+    '../../packages/xy-shared/components/**/*.{js,ts,jsx,tsx,mdx}',
     './theme.config.{js,ts,jsx,tsx}',
   ],
   theme: {
