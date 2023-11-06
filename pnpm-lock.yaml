@@ -899,6 +899,9 @@ importers:
       '@types/three':
         specifier: ^0.155.1
         version: 0.155.1
+      '@xyflow/system':
+        specifier: ^0.0.9
+        version: 0.0.9
       '@xyflow/xy-ui':
         specifier: workspace:*
         version: link:../../packages/xy-ui
