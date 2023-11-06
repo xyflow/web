@@ -314,8 +314,8 @@ importers:
         specifier: ^2.2.1
         version: 2.2.1
       '@xyflow/system':
-        specifier: ^0.0.4
-        version: 0.0.4
+        specifier: ^0.0.9
+        version: 0.0.9
       '@xyflow/xy-ui':
         specifier: workspace:*
         version: link:../xy-ui
@@ -422,8 +422,8 @@ importers:
         specifier: ^1.0.4
         version: 1.0.4(@types/react-dom@18.2.6)(@types/react@18.2.14)(react-dom@18.2.0)(react@18.2.0)
       '@xyflow/system':
-        specifier: ^0.0.4
-        version: 0.0.4
+        specifier: ^0.0.9
+        version: 0.0.9
       class-variance-authority:
         specifier: ^0.6.0
         version: 0.6.0(typescript@5.1.3)
@@ -651,9 +651,6 @@ importers:
       '@types/three':
         specifier: ^0.155.1
         version: 0.155.1
-      '@xyflow/system':
-        specifier: ^0.0.4
-        version: 0.0.4
       '@xyflow/xy-ui':
         specifier: workspace:*
         version: link:../../packages/xy-ui
@@ -781,9 +778,6 @@ importers:
       '@types/three':
         specifier: ^0.155.1
         version: 0.155.1
-      '@xyflow/system':
-        specifier: ^0.0.4
-        version: 0.0.4
       '@xyflow/xy-ui':
         specifier: workspace:*
         version: link:../../packages/xy-ui
@@ -905,9 +899,6 @@ importers:
       '@types/three':
         specifier: ^0.155.1
         version: 0.155.1
-      '@xyflow/system':
-        specifier: ^0.0.4
-        version: 0.0.4
       '@xyflow/xy-ui':
         specifier: workspace:*
         version: link:../../packages/xy-ui
@@ -9153,6 +9144,7 @@ packages:
       d3-drag: 3.0.0
       d3-selection: 3.0.0
       d3-zoom: 3.0.0
+    dev: true
 
   /@xyflow/system@0.0.9:
     resolution: {integrity: sha512-jtn5RaSydScUDetIhT4KNClCnbdQN8c3cpHZvV2iTo7vALx6q+w8G2b2h3jMAqE8hBpavzh9hHYdIDrQMVh+iw==}
