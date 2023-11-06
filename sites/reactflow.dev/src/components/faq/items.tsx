@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'xy-ui';
+import { Link } from '@xyflow/xy-ui';
 
 export default [
   {

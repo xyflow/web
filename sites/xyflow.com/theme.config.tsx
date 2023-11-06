@@ -1,10 +1,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useConfig } from 'nextra-theme-docs';
-import { Footer, Button, LogoLabel, Search } from 'xy-ui';
-
-import aboutImage from './public/img/about.jpg';
-import { InternalRoute } from '@/utils';
+import { Footer, Button, LogoLabel } from '@xyflow/xy-ui';
 
 const baseUrl =
   process.env.NODE_ENV === 'production'
@@ -34,9 +31,6 @@ export default {
   },
   footer: {
     component: () => {
-      const router = useRouter();
-      const isHomePage = router.pathname === '/';
-
       return (
         <Footer
           message={{

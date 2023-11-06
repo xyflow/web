@@ -1,5 +1,15 @@
 import { type ReactNode } from 'react';
-
+import Link from 'next/link';
+import {
+  ContentGrid,
+  ContentGridItem,
+  Heading,
+  ListWrapper,
+  Text,
+  Button,
+  type HeroIcon,
+} from '@xyflow/xy-ui';
+import { BaseLayout, Hero } from 'xy-shared';
 import {
   HeartIcon,
   CommandLineIcon,
@@ -11,20 +21,7 @@ import {
   StarIcon,
   ChatBubbleOvalLeftEllipsisIcon,
 } from '@heroicons/react/24/outline';
-
-import {
-  BaseLayout,
-  ContentGrid,
-  ContentGridItem,
-  Heading,
-  ListWrapper,
-  Text,
-  Hero,
-  Button,
-  type HeroIcon,
-} from 'xy-ui';
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
-import Link from 'next/link';
 
 function Kicker() {
   return (

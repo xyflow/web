@@ -1,18 +1,17 @@
 import { UserGroupIcon } from '@heroicons/react/24/outline';
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
+import Image from 'next/image';
 import Link from 'next/link';
-
 import {
-  BaseLayout,
   ContentGrid,
   ContentGridItem,
   Heading,
   Text,
   Button,
-  Hero,
   Section,
-} from 'xy-ui';
-import Image from 'next/image';
+} from '@xyflow/xy-ui';
+import { BaseLayout, Hero } from 'xy-shared';
+
 import aboutUsImage from '@/../public/img/about.jpg';
 
 export default function About() {

@@ -1,4 +1,4 @@
-import { type PropsTableProps } from 'xy-ui';
+import { type PropsTableProps } from 'xy-shared';
 
 const links = {
   MiniMapNodeProps: '#props-1',

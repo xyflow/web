@@ -1,4 +1,4 @@
-import { ShowcaseLayout, SubscribeSection } from 'xy-ui';
+import { ShowcaseLayout, SubscribeSection } from 'xy-shared';
 import showcases from '../../public/data/showcases.json';
 
 // @todo this should be moved into getStaticProps

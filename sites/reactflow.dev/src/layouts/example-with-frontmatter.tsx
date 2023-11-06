@@ -1,5 +1,5 @@
-import { ExampleLayout as BaseExampleLayout } from 'xy-ui';
 import { useConfig } from 'nextra-theme-docs';
+import { ExampleLayout as BaseExampleLayout } from 'xy-shared';
 
 export type ExampleLayoutProps = {
   children: React.ReactNode;

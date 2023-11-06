@@ -1,5 +1,5 @@
-import { PropsTable, type PropsTableProps } from 'xy-ui';
 import React, { useMemo } from 'react';
+import { PropsTable, type PropsTableProps } from 'xy-shared';
 
 import svelteFlowTypes from '@/pages/api-reference/types/_meta.json';
 

@@ -2,11 +2,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useConfig, Navbar } from 'nextra-theme-docs';
-import { Footer, Button, LogoLabel, Search } from 'xy-ui';
+import { Footer, Button, LogoLabel } from '@xyflow/xy-ui';
+import { Search } from 'xy-shared';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 
 import SidebarTitle from '@/components/sidebar-title';
-import aboutImage from './public/img/about.jpg';
 import { type Route } from '@/utils';
 
 function useIsPro() {

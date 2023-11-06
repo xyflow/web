@@ -1,9 +1,8 @@
 import Link from 'next/link';
-import { Heading, Button, Section } from 'xy-ui';
+import { Heading, Button, Section } from '@xyflow/xy-ui';
 import {
   BookOpenIcon,
   ChatBubbleLeftRightIcon,
-  HeartIcon,
 } from '@heroicons/react/24/outline';
 
 export default function SubscribeSection() {

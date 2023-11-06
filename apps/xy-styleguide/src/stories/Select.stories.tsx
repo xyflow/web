@@ -6,7 +6,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from 'xy-ui';
+} from '@xyflow/xy-ui';
 
 const meta = {
   title: 'Example/Select',

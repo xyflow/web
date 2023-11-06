@@ -1,16 +1,10 @@
-import {
-  BaseLayout,
-  ContentGrid,
-  ContentGridItem,
-  Button,
-  Hero,
-  ProjectPreview,
-  SubscribeSection,
-} from 'xy-ui';
-import { SparklesIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
-import { getMdxPagesUnderRoute } from '@/utils';
 import { getPagesUnderRoute } from 'nextra/context';
+import { ContentGrid, ContentGridItem, Button } from '@xyflow/xy-ui';
+import { BaseLayout, Hero, ProjectPreview, SubscribeSection } from 'xy-shared';
+import { SparklesIcon } from '@heroicons/react/24/outline';
+
+import { getMdxPagesUnderRoute } from '@/utils';
 
 function getProExamplesUnderRoute(route) {
   return getMdxPagesUnderRoute(route).filter(

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { CodeViewer, CodeViewerProps } from 'xy-ui';
+import { CodeViewer, CodeViewerProps } from 'xy-shared';
 
 type ExampleViewerProps = CodeViewerProps & {
   codePath: string;
@@ -31,7 +31,7 @@ export default function ExampleViewer({
         codePath,
         scriptExtension,
         additionalFiles,
-        activeFile
+        activeFile,
       );
       setFiles({
         [`/App.${scriptExtension}`]: files.default,
@@ -62,7 +62,7 @@ async function loadLocalFiles(
   codePath: string,
   scriptExtension: string,
   additionalFiles?: string[],
-  activeFile?: string
+  activeFile?: string,
 ) {
   const res = await import(
     `!raw-loader!./${codePath}/index.${scriptExtension}`
