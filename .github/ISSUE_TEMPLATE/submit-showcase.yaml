@@ -1,0 +1,77 @@
+name: Submit Showcase
+description: Request for your project to be submitted to the React Flow or Svelte Flow showcase
+labels:
+  - showcase
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for submitting your project to our showcase!
+        
+        To be accepted, projects must:
+        * Use React or Svelte Flow
+        * Have a screenshot available
+        * Are live projects available for use
+
+        We _especially_ like projects that
+        * Have a live usable demo
+        * Use xyflow in a unique way
+        * Are open source
+
+        Accepted showcases will appear on https://reactflow.dev/showcase/ or https://svelteflow.dev/showcase
+        _By submitting an issue here, it is not guaranteed that we will add your project to the showcase._
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: This project has a Code of Conduct that all participants are expected to understand and follow.
+      options:
+        - label: I have read and agree to the xyflow contributor [Code of Conduct](https://github.com/xyflow/web/blob/main/CODE_OF_CONDUCT.md)
+          required: true
+  - type: input
+    id: project-name
+    attributes:
+      label: Project Name
+      description: What is the name of your company or tool?
+      validations:
+        required: true
+  - type: input
+      id: project-description
+      attributes:
+        label: Project Description
+        description: Describe your project in 100 characters or less, specifically about the piece of your project that uses xyflow. Avoid flashy adjectives like "very," "powerful," or "advanced"
+        placeholder: ex. Node-based dashboard builder to monitor business metrics
+  - type: input
+      id: project-tags
+      attributes:
+        label: Project Tags
+        description: Write a few "tags" to make your project more easily searchable in the showcase. See https://reactflow.dev/showcase for existing tags, write your own if none fit your project.
+        placeholder: dashboard, image processing, no-code, development, automation
+  - type: input
+    id: link-website
+    attributes:
+      label: Link to the project website
+      description: This can be a github repo, landing page, or similar.
+  - type: input
+    id: link-demo
+    attributes:
+      label: Link to project demo
+      description: A place that a user can click and already start playing with the tool that uses xyflow. Leave this blank if there is none available.
+  - type: dropdown
+    id: library
+    attributes: 
+      label: Used Library
+      description: Does your project use React Flow or Svelte Flow?
+      options:
+      - React Flow
+      - Svelte Flow
+      - Both
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+    id: project-screenshot
+      label: Upload a Project Screenshot
+      description: See https://reactflow.dev/showcase for example screenshots. Size should be at least 1000pxx800px and less than 1MB, and should show xyflow being used.
+    validations:
+      required: true
