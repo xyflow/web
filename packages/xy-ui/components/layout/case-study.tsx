@@ -1,8 +1,8 @@
-import { ChevronRightIcon } from '@heroicons/react/20/solid';
-import { type MdxFile } from 'nextra';
 import { type ReactNode } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { type MdxFile } from 'nextra';
+import { ChevronRightIcon } from '@heroicons/react/20/solid';
 
 import {
   AuthorList,

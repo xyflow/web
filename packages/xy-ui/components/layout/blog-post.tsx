@@ -1,8 +1,8 @@
-import { type MdxFile } from 'nextra';
 import { type ReactNode } from 'react';
-import { SubscribeSection, type Author } from '../../';
-
+import { type MdxFile } from 'nextra';
 import {
+  type Author,
+  SubscribeSection,
   AuthorList,
   Text,
   Heading,

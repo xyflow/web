@@ -23,14 +23,17 @@ function ContactForm({ children }: ContactFormProps) {
     const data = Object.fromEntries(formData.entries());
 
     try {
-      const response = await fetch(process.env.NEXT_PUBLIC_CONTACT_FORM_URL as string, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
+      const response = await fetch(
+        process.env.NEXT_PUBLIC_CONTACT_FORM_URL as string,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+          body: JSON.stringify(data),
         },
-        body: JSON.stringify(data),
-      });
+      );
 
       if (response.ok) {
         setIsSuccess(true);
