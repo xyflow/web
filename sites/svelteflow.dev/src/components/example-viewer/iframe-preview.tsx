@@ -5,7 +5,6 @@ export default function ({
   path: string;
   className?: string;
 }) {
-  console.log(process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL);
   const fullPath = process.env.NEXT_PUBLIC_VERCEL_GIT_PULL_REQUEST_ID
     ? `https://xyflow-svelte-examples-git-${process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF}-xyflow.vercel.app/${path}`
     : `${process.env.NEXT_PUBLIC_SVELTE_EXAMPLES_URL}${path}`;
