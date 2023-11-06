@@ -10,4 +10,3 @@ These layout components often depend on nextra-specific types and hooks. Make
 sure you have the following peer dependencies installed:
 
 - `nextra`
-- `nextra-theme-docs`

@@ -37,9 +37,7 @@
     "tailwindcss-animate": "^1.0.6"
   },
   "peerDependencies": {
-    "next": "^13.5.3",
-    "nextra": "^2.12.3",
-    "nextra-theme-docs": "^2.12.3",
+    "next": "13 || 14",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }
