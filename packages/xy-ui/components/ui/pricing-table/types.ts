@@ -1,4 +1,4 @@
-import { ButtonProps } from '@xyflow/xy-ui';
+import { ButtonProps } from '../../../';
 
 export enum PlanId {
   STARTER = 'starter',

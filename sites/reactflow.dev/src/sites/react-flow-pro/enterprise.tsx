@@ -1,5 +1,5 @@
-import { Hero, Card, InputLabel, Input } from '@xyflow/xy-ui';
-import { BaseLayout, ContactForm, SubscribeSection } from 'xy-shared';
+import { Card, InputLabel, Input } from '@xyflow/xy-ui';
+import { BaseLayout, Hero, ContactForm, SubscribeSection } from 'xy-shared';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 
 export default function Enterprise() {

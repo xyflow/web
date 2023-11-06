@@ -1,7 +1,13 @@
 import Image from 'next/image';
 import { Position } from '@xyflow/system';
-import { Hero, Handle, HeadlineNode } from '@xyflow/xy-ui';
-import { BaseLayout, ImageSlider, ProjectCards, AboutSection } from 'xy-shared';
+import { Handle, HeadlineNode } from '@xyflow/xy-ui';
+import {
+  BaseLayout,
+  Hero,
+  ImageSlider,
+  ProjectCards,
+  AboutSection,
+} from 'xy-shared';
 
 const sliderItems = [
   {

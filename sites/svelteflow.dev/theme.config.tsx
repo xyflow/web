@@ -2,7 +2,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useConfig } from 'nextra-theme-docs';
-import { Footer, Button, LogoLabel, Search } from '@xyflow/xy-ui';
+import { Footer, Button, LogoLabel } from '@xyflow/xy-ui';
+import { Search } from 'xy-shared';
 
 import { InternalRoute } from '@/utils';
 

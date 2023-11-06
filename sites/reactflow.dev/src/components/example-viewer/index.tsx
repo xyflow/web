@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { CodeViewer, CodeViewerProps } from '@xyflow/xy-ui';
+import { CodeViewer, CodeViewerProps } from 'xy-shared';
 
 type ExampleViewerProps = CodeViewerProps & {
   codePath: string;

@@ -11,7 +11,6 @@ export * from './components/ui/footer';
 export * from './components/ui/handle';
 export * from './components/ui/heading';
 export * from './components/ui/headline-node';
-export * from './components/ui/hero';
 export * from './components/ui/input';
 export * from './components/ui/label';
 export * from './components/ui/link';

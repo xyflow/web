@@ -1,4 +1,4 @@
-import { Link } from '@xyflow/xy-ui';
+import { Link } from '../../../';
 
 import {
   BillingInterval,

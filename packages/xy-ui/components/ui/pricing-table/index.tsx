@@ -10,7 +10,7 @@ import {
   SelectContent,
   SelectItem,
   Container,
-} from '@xyflow/xy-ui';
+} from '../../../';
 
 import Plan from './subscription-plan';
 import defaultConfig from './default-config';

@@ -1,5 +1,5 @@
-import { ContentGrid, ContentGridItem, Hero } from '@xyflow/xy-ui';
-import { BaseLayout, BlogPostPreview } from 'xy-shared';
+import { ContentGrid, ContentGridItem } from '@xyflow/xy-ui';
+import { BaseLayout, BlogPostPreview, Hero } from 'xy-shared';
 
 import { getMdxPagesUnderRoute } from '@/utils';
 

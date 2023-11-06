@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useSSG } from 'nextra/ssg';
-import { Hero, Text } from '@xyflow/xy-ui';
-import { Author, AuthorList, BaseLayout } from 'xy-shared';
+import { Text } from '@xyflow/xy-ui';
+import { Author, Hero, AuthorList, BaseLayout } from 'xy-shared';
 import { MDXRemote, type MDXRemoteSerializeResult } from 'next-mdx-remote';
 import TimeAgo from 'timeago-react';
 import { PencilSquareIcon } from '@heroicons/react/24/outline';

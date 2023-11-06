@@ -1,7 +1,9 @@
 import { cva, type VariantProps } from 'class-variance-authority';
 
 import { cn } from '../../lib/utils';
-import { breakoutClassName } from '../layout/breakout';
+
+const breakoutClassName =
+  'relative right-1/2 left-1/2 ml-[-50vw] mr-[-50vw] max-w-[100vw] w-[100vw]';
 
 const containerVariants = cva('border border-solid', {
   variants: {

@@ -2,9 +2,9 @@
 
 import { useCallback, useMemo, useState } from 'react';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
-import { cn, ContentGrid, ContentGridItem, Hero } from '@xyflow/xy-ui';
+import { cn, ContentGrid, ContentGridItem } from '@xyflow/xy-ui';
 
-import { BaseLayout, ProjectPreview } from '../';
+import { BaseLayout, ProjectPreview, Hero } from '../';
 
 export type ShowcaseLayoutProps = {
   title: string;

@@ -1,7 +1,6 @@
 import { type ReactNode } from 'react';
-import { cn } from '../../lib/utils';
+import { Heading, HeroIcon, Text, cn } from '@xyflow/xy-ui';
 
-import { Heading, HeroIcon, Text } from '../../';
 import { useConnectionDrawer } from '../../';
 
 export type HeroProps = {

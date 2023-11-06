@@ -8,10 +8,9 @@ import {
   Heading,
   Text,
   Button,
-  Hero,
   Section,
 } from '@xyflow/xy-ui';
-import { BaseLayout } from 'xy-shared';
+import { BaseLayout, Hero } from 'xy-shared';
 
 import aboutUsImage from '@/../public/img/about.jpg';
 
