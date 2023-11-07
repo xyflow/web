@@ -9,12 +9,12 @@
     type NodeTypes
   } from '@xyflow/svelte';
 
+  import '@xyflow/svelte/dist/style.css';
+
   import { nodes as initialNodes, edges as initialEdges } from './nodes-and-edges';
 
   import CustomNode from './CustomNode.svelte';
   import Message from './Message.svelte';
-
-  import '@xyflow/svelte/dist/style.css';
 
   const nodes = writable<Node[]>(initialNodes);
   const edges = writable(initialEdges);
@@ -48,13 +48,13 @@
 </div>
 
 <style>
-  :global(.custom-style) {
+  :global(.svelte-flow__node.custom-style) {
     background: #63b3ed;
     color: white;
     width: 100;
   }
 
-  :global(.circle) {
+  :global(.svelte-flow__node.circle) {
     background: #2b6cb0;
     color: white;
     border-radius: 50%;
