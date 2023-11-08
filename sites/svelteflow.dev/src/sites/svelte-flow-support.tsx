@@ -103,7 +103,7 @@ export default function CaseStudies() {
             },
             {
               linkName: 'Open Collective',
-              route: 'https://opencollective.com/reactflow',
+              route: 'https://opencollective.com/xyflow',
             },
           ]}
           text={
@@ -136,7 +136,7 @@ export default function CaseStudies() {
         <ListItem
           icon={ChatBubbleOvalLeftEllipsisIcon}
           label="Toot about us"
-          link="https://fosstodon.org/@reactflowdev"
+          link="https://fosstodon.org/@xyflow"
         />
       </ListWrapper>
     </BaseLayout>
