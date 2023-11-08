@@ -30,14 +30,17 @@ function Flow() {
 
   const onNodesChange = useCallback(
     (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
-    []
+    [],
   );
   const onEdgesChange = useCallback(
     (changes) => setEdges((eds) => applyEdgeChanges(changes, eds)),
-    []
+    [],
   );
 
-  const onConnect = useCallback((params) => setEdges((eds) => addEdge(params, eds)), []);
+  const onConnect = useCallback(
+    (params) => setEdges((eds) => addEdge(params, eds)),
+    [],
+  );
 
   return (
     <div style={{ height: '100%' }}>
@@ -47,6 +50,7 @@ function Flow() {
         edges={edges}
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
+        fitView
       >
         <Background />
         <Controls />
