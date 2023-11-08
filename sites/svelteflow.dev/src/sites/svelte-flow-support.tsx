@@ -103,7 +103,7 @@ export default function CaseStudies() {
             },
             {
               linkName: 'Open Collective',
-              route: 'https://opencollective.com/reactflow',
+              route: 'https://opencollective.com/xyflow',
             },
           ]}
           text={
