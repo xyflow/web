@@ -136,7 +136,7 @@ export default function CaseStudies() {
         <ListItem
           icon={ChatBubbleOvalLeftEllipsisIcon}
           label="Toot about us"
-          link="https://fosstodon.org/@reactflowdev"
+          link="https://fosstodon.org/@xyflow"
         />
       </ListWrapper>
     </BaseLayout>
