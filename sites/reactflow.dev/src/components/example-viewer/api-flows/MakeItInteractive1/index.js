@@ -1,5 +1,10 @@
 import { useState, useCallback } from 'react';
-import ReactFlow, { Controls, Background, applyNodeChanges, applyEdgeChanges } from 'reactflow';
+import ReactFlow, {
+  Controls,
+  Background,
+  applyNodeChanges,
+  applyEdgeChanges,
+} from 'reactflow';
 import 'reactflow/dist/style.css';
 
 const initialNodes = [
@@ -16,7 +21,9 @@ const initialNodes = [
   },
 ];
 
-const initialEdges = [{ id: '1-2', source: '1', target: '2', label: 'to the', type: 'step' }];
+const initialEdges = [
+  { id: '1-2', source: '1', target: '2', label: 'to the', type: 'step' },
+];
 
 function Flow() {
   const [nodes, setNodes] = useState(initialNodes);
@@ -24,11 +31,11 @@ function Flow() {
 
   const onNodesChange = useCallback(
     (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
-    []
+    [],
   );
   const onEdgesChange = useCallback(
     (changes) => setEdges((eds) => applyEdgeChanges(changes, eds)),
-    []
+    [],
   );
 
   return (
@@ -38,6 +45,7 @@ function Flow() {
         onNodesChange={onNodesChange}
         edges={edges}
         onEdgesChange={onEdgesChange}
+        fitView
       >
         <Background />
         <Controls />
