@@ -33,7 +33,11 @@ function HeroFlow({
             Wire Your Ideas with <span className="text-primary">{title}</span>
           </Heading>
 
-          {subtitle && <Text className="mb-4 lg:mb-6 text-xl">{subtitle}</Text>}
+          {subtitle && (
+            <Text className="mb-4 lg:mb-6 text-xl" as="h2">
+              {subtitle}
+            </Text>
+          )}
 
           {action && (
             <div className="flex justify-center lg:justify-start">{action}</div>
