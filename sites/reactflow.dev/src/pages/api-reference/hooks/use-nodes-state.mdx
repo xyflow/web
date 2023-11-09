@@ -25,7 +25,7 @@ const initialEdges = [];
 
 export default function () {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
-  const [edges, setEdges, onNodesChange] = useNodesState(initialEdges);
+  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
   return (
     <ReactFlow
