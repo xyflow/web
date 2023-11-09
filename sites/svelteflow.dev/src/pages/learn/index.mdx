@@ -14,6 +14,31 @@ Svelte Flow is a highly customizable component for building interactive graphs a
   API is likely to change.
 </Callout>
 
+## Play online
+
+You can try Svelte Flow without setting anything up locally by checking out the starter projects we have on [Stackblitz](https://stackblitz.com):
+
+<Cards num={2}>
+  <Card
+    title="new.svelteflow.dev/js"
+    href="https://new.svelteflow.dev/js"
+    icon={
+      <div className="rounded-full w-10 h-10 bg-yellow-200 text-gray-700 font-black flex items-center justify-center">
+        JS
+      </div>
+    }
+  />
+  <Card
+    title="new.svelteflow.dev/ts"
+    href="https://new.svelteflow.dev/ts"
+    icon={
+      <div className="rounded-full w-10 h-10 bg-blue-500 text-white font-black flex items-center justify-center">
+        TS
+      </div>
+    }
+  />
+</Cards>
+
 ## Installation
 
 The easiest way to get the latest version of Svelte Flow is to install it via npm, yarn or pnpm:
@@ -89,7 +114,7 @@ We get started by stacking together the most important components of Svelte Flow
 </script>
 
 <!--
-👇 By default, the Svelte Flow container has a height of 100%. 
+👇 By default, the Svelte Flow container has a height of 100%.
 This means that the parent container needs a height to render the flow.
 -->
 <div style:height="500px">
