@@ -64,6 +64,18 @@ export const viewportFields: PropsTableProps = {
     {
       name: 'project',
       type: '(position: { x: number; y: number; }) => { x: number; y: number; }',
+      description:
+        '⚠️ This function is deprecated and will be removed in v12. Please use `screenToFlowPosition` instead. When using `screenToFlowPosition`, you do not need to subtract the react flow bounds anymore.',
+    },
+    {
+      name: 'screenToFlowPosition',
+      type: '(position: { x: number; y: number; }) => { x: number; y: number; }',
+      description:
+        'With this function you can translate a screen pixel position to a flow position. It is usefull for implemting drag and drop from a sidebar for example.',
+    },
+    {
+      name: 'flowToScreenPosition',
+      type: '(position: { x: number; y: number; }) => { x: number; y: number; }',
     },
   ],
 };
