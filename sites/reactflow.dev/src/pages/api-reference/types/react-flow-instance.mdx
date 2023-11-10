@@ -72,7 +72,16 @@ export type ReactFlowInstance<T, U> = {
     bounds: Rect,
     options?: { duration: number; padding: number },
   ) => void;
+  // @deprecated Use `screenToFlowPosition`.
   project: (position: { x: number; y: number }) => { x: number; y: number };
+  screenToFlowPosition: (position: { x: number; y: number }) => {
+    x: number;
+    y: number;
+  };
+  flowToScreenPosition: (position: { x: number; y: number }) => {
+    x: number;
+    y: number;
+  };
 };
 ```
 

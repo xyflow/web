@@ -1,34 +1,27 @@
 ---
-title: getTransformForBounds()
-description:
-  'This util tells you what to set the viewport to in order to fit the given bounds.
+title: getViewportForBounds()
+description: 'This util returns the viewport for the given bounds.
   You might use this to pre-calculate the viewport for a given set of nodes on the
   server or calculate the viewport for the given bounds _without_ changing the
   viewport directly.'
 ---
 
-import { Callout } from 'nextra/components';
 import { PropsTable } from '@/components/props-table';
-import { signature } from '@/page-data/reference/utils/getTransformForBounds.ts';
+import { signature } from '@/page-data/reference/utils/getViewportForBounds.ts';
 
-# getTransformForBounds()
+# getViewportForBounds()
 
 [Source on Github](https://github.com/xyflow/xyflow/blob/v11/packages/core/src/utils/graph.ts/#L273)
 
-<Callout type="warning" emoji="⚠️">
-  This function is deprecated and will be removed in v12. Use
-  [getViewportForBounds](/api-reference/utils/get-viewport-for-bounds) instead.
-</Callout>
-
-This util tells you what to set the viewport to in order to fit the given bounds.
+This util returns the viewport for the given bounds.
 You might use this to pre-calculate the viewport for a given set of nodes on the
 server or calculate the viewport for the given bounds _without_ changing the
 viewport directly.
 
 ```js
-import { getTransformForBounds } from 'reactflow';
+import { getViewportForBounds } from 'reactflow';
 
-const transform = getTransformForBounds(
+const { x, y, zoomn } = getViewportForBounds(
   {
     x: 0,
     y: 0,
@@ -52,5 +45,3 @@ const transform = getTransformForBounds(
   [`fitView`](/api-reference/types/react-flow-instance#fitview) or
   [`fitBounds`](/api-reference/types/react-flow-instance#fitbounds) methods for a more practical
   api.
-- This function is called get**Transform**... for historical reasons. Its return
-  type represents a [`Viewport`](/api-reference/types/viewport) in tuple form.
