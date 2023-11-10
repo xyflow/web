@@ -27,7 +27,7 @@ const AddNodeOnEdgeDrop = () => {
   const connectingNodeId = useRef(null);
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
-  const { project } = useReactFlow();
+  const { screenToFlowPosition } = useReactFlow();
   const onConnect = useCallback(
     (params) => setEdges((eds) => addEdge(params, eds)),
     [],
@@ -43,13 +43,12 @@ const AddNodeOnEdgeDrop = () => {
 
       if (targetIsPane) {
         // we need to remove the wrapper bounds, in order to get the correct position
-        const { top, left } = reactFlowWrapper.current.getBoundingClientRect();
         const id = getId();
         const newNode = {
           id,
-          position: project({
-            x: event.clientX - left,
-            y: event.clientY - top,
+          position: screenToFlowPosition({
+            x: event.clientX,
+            y: event.clientY,
           }),
           data: { label: `Node ${id}` },
           origin: [0.5, 0.0],
@@ -61,7 +60,7 @@ const AddNodeOnEdgeDrop = () => {
         );
       }
     },
-    [project],
+    [screenToFlowPosition],
   );
 
   return (

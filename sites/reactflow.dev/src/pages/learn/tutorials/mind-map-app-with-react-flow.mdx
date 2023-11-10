@@ -448,12 +448,9 @@ const getChildNodePosition = (event: MouseEvent, parentNode?: Node) => {
     return;
   }
 
-  const { top, left } = domNode.getBoundingClientRect();
-
-  // we need to remove the wrapper bounds, in order to get the correct mouse position
-  const panePosition = project({
-    x: event.clientX - left,
-    y: event.clientY - top,
+  const panePosition = screenToFlowPosition({
+    x: event.clientX,
+    y: event.clientY,
   });
 
   // we are calculating with positionAbsolute here because child nodes are positioned relative to their parent
