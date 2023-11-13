@@ -31,7 +31,7 @@ function ImageSlider({
 }: ImageSliderProps) {
   return (
     <Container variant="dark" className={className}>
-      <div className="p-14">
+      <div className="p-4 md:p-8 lg:p-14">
         <div className="grid lg:grid-cols-2 lg:gap-40">
           <div>
             <Text className="font-bold mb-2 text-accent tracking-wide">
