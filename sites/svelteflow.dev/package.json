@@ -29,6 +29,7 @@
     "html-to-image": "^1.11.11",
     "nanoid": "^4.0.2",
     "next": "^13.4.19",
+    "next-mdx-remote": "^4.4.1",
     "next-sitemap": "^4.2.2",
     "nextra": "^2.13.2",
     "nextra-theme-docs": "^2.13.2",

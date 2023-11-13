@@ -30,5 +30,6 @@ export * from './hooks/use-fathom';
 export * from './components/handle';
 export * from './components/headline-node';
 export * from './components/node-wrapper';
+export * from './components/timeline-event';
 
 export * from './lib/utils';

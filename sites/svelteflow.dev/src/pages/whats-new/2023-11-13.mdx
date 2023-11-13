@@ -1,0 +1,20 @@
+---
+title: Alpha changes and a new release 0.0.27
+description: Svelte Flow is still alpha and you should expect breaking changes. Even if we try to avoid them, they will happen.
+authors: [moritz]
+date: '2023-11-13'
+---
+
+# New release 0.0.27
+
+We just released Svelte Flow 0.0.27 with some breaking changes. Even if we try to avoid them, they will happen. We just renamed some functions, so the migration should go easy. Here is a list of all changes:
+
+- ⚠️ rename `screenToFlowCoordinate` to `screenToFlowPosition`
+- ⚠️ rename `flowToScreenCoordinate` to `flowToScreenPosition`
+- ⚠️ rename `getTransformForBounds` to `getViewportForBounds` (return `{ x: number, y: number, zoom: number }` instead of `[number, number, number]`)
+- ⚠️ rename `getRectOfNodes` to `getNodesBounds`
+- simplify handle default styles, so that it's easier to override them
+- add `selectionOnDrag` prop - can be used to create figma-like controls in combination with `panOnDrag={false}` / `panOnDrag={[1, 2]}` + `panOnScroll={true}`
+- 🎉 add e2e tests
+
+You can find the changelog with all previous changes on [Github](https://github.com/xyflow/xyflow/blob/main/packages/svelte/CHANGELOG.md).
