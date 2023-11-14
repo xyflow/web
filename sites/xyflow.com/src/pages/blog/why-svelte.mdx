@@ -15,22 +15,20 @@ import { Emoji } from '@xyflow/xy-ui';
 import { BlogPostLayout } from '@/layouts/blog-post-with-frontmatter';
 
 <BlogPostLayout>
-Through building and maintaining [React Flow](https://reactflow.dev/) since 2019, we have received a lot of requests from people asking when the library will be available in their chosen development language. Two projects saw the need for themselves and built their own libraries (Svelvet and Vue Flow), both citing inspiration from React Flow.
+We've received so many requests of people asking if [React Flow](https://reactflow.dev/) will be ported to their favorite front-end framework. Two people even started their own libraries ([Svelvet](https://www.svelvet.io/) and [Vue Flow](https://vueflow.dev/)), both citing React Flow as a jumping-off point. Even though there is a clear user need, we've stuck with React since 2019 until only recently.
 
 <Image
-  alt="ADD"
+  alt="A collection of messages on discord where people ask us to port React Flow to other front-end frameworks like solidjs, svelte, preact, flutter, and angular."
   src="/img/blog/2023-why-svelte/discord-langs.png"
   width={800}
   height={600}
   className="mt-4"
 />
-<div className="text-center text-gray-600">
+<div className="text-center text-gray-500">
   we could really choose [any language](https://jsfuck.com/)
 </div>
 
-Earlier this year, we had the time and space to choose what would come next for us as a team. We ended up spending the next months developing _Svelte Flow_, and just launched it earlier this month.
-
-So the question that we’re being asked now, is:
+That is until earlier this year, where we felt we had the time and space to choose what would come next for us as a team. We ended up spending the next months developing _Svelte Flow_, and just launched it earlier this month. One obvious question remains:
 
 ## Why Svelte?
 
@@ -41,37 +39,48 @@ Before working on React Flow, we worked on lots of interactive data visualizatio
 In 2020, we tried using Svelte on one of our projects to build an interactive map (below), and had a great time using it. It left a good impression on us and we were excited to return to it.
 
 <Image
-  alt="ADD"
+  alt="An interactive map with the title Where do our products come from? It shows which countries this company's groceries come from, sorted by type of grocery like snacks, nuts, or dry fruits."
   src="/img/blog/2023-why-svelte/svelte-project-koro.gif"
   width={933}
   height={645}
   className="mt-4"
 />
-<div className="text-center text-gray-600">
-  our first time using Svelte in 2020. [live
+<div className="text-center text-gray-500">
+  Our first project with Svelte in 2020. [live
   demo](https://www.korodrogerie.de/news/blog/interaktive-karte)
 </div>
 
 ### 2. Happy and growing community
 
-Although Svelte has less than half of the usage of React, Vue, or Angular, it has a high retention rate, usage, and interest according to the [2022 stateofjs survey](https://2022.stateofjs.com/en-US/libraries/front-end-frameworks/). Also we’ve heard lots of anecdotal evidence that the developer experience is great, and we were happy to experience it for ourselves. (also recent securing of funding might ensure continued ...) [from Vercel](https://vercel.com/blog/vercel-welcomes-rich-harris-creator-of-svelte) gave an extra push of confidence to embark on a months-long journey in the language...
+Although Svelte has less than half of the usage of React, Vue, or Angular, it has a high retention rate, usage, and interest according to the [2022 stateofjs survey](https://2022.stateofjs.com/en-US/libraries/front-end-frameworks/). We’ve heard lots of anecdotal evidence that the developer experience is great, and we were happy to experience it for ourselves. On top of that, recent funding [from Vercel](https://vercel.com/blog/vercel-welcomes-rich-harris-creator-of-svelte) gave us a confidence-boost that the core Svelte team will be sticking around.
 
 <Image
-  alt="ADD"
+  alt="A graph showing the ratio of retention over time for popular front-end technologies. Svelte and Solid have the highest retention around 90 percent. React is around 83 percent. Ember and Angular have the lowest at 19 and 42 percent, respectively."
   src="/img/blog/2023-why-svelte/js2022-survey.png"
   width={1040}
   height={959}
   className="mt-4"
 />
-<div className="text-center text-gray-600">
-  we could really choose [any language](https://jsfuck.com/)
+<div className="text-center text-gray-500">
+  Data from [stateofjs 2022
+  survey](https://2022.stateofjs.com/en-US/libraries/front-end-frameworks/)
 </div>
-
-[_data from stateofjs 2022 survey_](https://2022.stateofjs.com/en-US/libraries/front-end-frameworks/)
 
 ### 3. We just like… wanted to?
 
 In the spirit of experimentation, we built the first prototype of Svelte Flow in a couple of weeks. It worked, and it we had fun doing it. We like to follow those impulses when they arrive, so we kept going.
+
+<Image
+  alt="A prototype of Svelte Flow. There are 6 nodes in the viewport with a minimap, controls to zoom in and out, and nodes and edges with various colors"
+  src="/img/blog/2023-why-svelte/svelte-zero.gif"
+  width={1175}
+  height={753}
+  className="mt-4"
+/>
+
+<div className="text-center text-gray-500">
+  All of Svelte Flow's functionality after a week of work
+</div>
 
 ## Why not just stick to React?
 
@@ -79,7 +88,7 @@ We’re financially stable from funded organizations paying for React Flow Pro, 
 
 ## So how is it going?
 
-The launch went _really_ well. We got featured in lots of newsletters and front-pages. We changed our github repo name (from react-flow to xyflow) with the launch and folks seemed excited about the rebrand, without a single pitchfork in sight. And there are already [projects](https://svelteflow.dev/showcase) out in the wild using Svelte Flow. Unreal.
+The launch went _really_ well. We got featured in lots of newsletters and front-pages. We changed our github repo name (from react-flow to [xyflow](https://xyflow.com/)) with the launch and folks seemed excited about the rebrand, without a single pitchfork in sight. And there are already [projects](https://svelteflow.dev/showcase) out in the wild using Svelte Flow. Cool beans.
 
 Also along the way, we refactored the core of the library, abstracting a bunch of it to vanillaJS, fixing bugs that we found along the way, benefitting both libraries. We’re really happy about that too.
 
