@@ -1,0 +1,88 @@
+---
+title: 'Why Svelte? Why not this other language I had in mind?'
+intro: 'change this'
+date: 2023/11/14
+authors: ['moritz', 'john']
+tags: ['svelte-flow']
+image: '/img/blog/v11-reactflow-header.png'
+---
+
+import Image from 'next/image';
+import { Bleed } from 'nextra-theme-docs';
+import { Embed, Text } from 'xy-shared';
+import { Emoji } from '@xyflow/xy-ui';
+
+import { BlogPostLayout } from '@/layouts/blog-post-with-frontmatter';
+
+<BlogPostLayout>
+Through building and maintaining [React Flow](https://reactflow.dev/) since 2019, we have received a lot of requests from people asking when the library will be available in their chosen development language. Two projects saw the need for themselves and built their own libraries (Svelvet and Vue Flow), both citing inspiration from React Flow.
+
+<Image
+  alt="ADD"
+  src="/img/blog/2023-why-svelte/discord-langs.png"
+  width={800}
+  height={600}
+  className="mt-4"
+/>
+<div className="text-center text-gray-600">
+  we could really choose [any language](https://jsfuck.com/)
+</div>
+
+Earlier this year, we had the time and space to choose what would come next for us as a team. We ended up spending the next months developing _Svelte Flow_, and just launched it earlier this month.
+
+So the question that we’re being asked now, is:
+
+## Why Svelte?
+
+### 1. Newsroom roots
+
+Before working on React Flow, we worked on lots of interactive data visualizations with newsrooms under the name of [webkid](https://webkid.io/). While we were doing that, we would see Rich Harris’ work from the New York Times ([like this](https://www.nytimes.com/interactive/2018/01/27/technology/social-media-bots.html)), and followed his work on Svelte since its beginnings (even back when it was called "Ractive").
+
+In 2020, we tried using Svelte on one of our projects to build an interactive map (below), and had a great time using it. It left a good impression on us and we were excited to return to it.
+
+<Image
+  alt="ADD"
+  src="/img/blog/2023-why-svelte/svelte-project-koro.gif"
+  width={933}
+  height={645}
+  className="mt-4"
+/>
+<div className="text-center text-gray-600">
+  our first time using Svelte in 2020. [live
+  demo](https://www.korodrogerie.de/news/blog/interaktive-karte)
+</div>
+
+### 2. Happy and growing community
+
+Although Svelte has less than half of the usage of React, Vue, or Angular, it has a high retention rate, usage, and interest according to the [2022 stateofjs survey](https://2022.stateofjs.com/en-US/libraries/front-end-frameworks/). Also we’ve heard lots of anecdotal evidence that the developer experience is great, and we were happy to experience it for ourselves. (also recent securing of funding might ensure continued ...) [from Vercel](https://vercel.com/blog/vercel-welcomes-rich-harris-creator-of-svelte) gave an extra push of confidence to embark on a months-long journey in the language...
+
+<Image
+  alt="ADD"
+  src="/img/blog/2023-why-svelte/js2022-survey.png"
+  width={1040}
+  height={959}
+  className="mt-4"
+/>
+<div className="text-center text-gray-600">
+  we could really choose [any language](https://jsfuck.com/)
+</div>
+
+[_data from stateofjs 2022 survey_](https://2022.stateofjs.com/en-US/libraries/front-end-frameworks/)
+
+### 3. We just like… wanted to?
+
+In the spirit of experimentation, we built the first prototype of Svelte Flow in a couple of weeks. It worked, and it we had fun doing it. We like to follow those impulses when they arrive, so we kept going.
+
+## Why not just stick to React?
+
+We’re financially stable from funded organizations paying for React Flow Pro, and that is dependent on the current ubiquity of React as the industry standard. Frameworks do [die](https://stackoverflow.blog/2018/01/11/brutal-lifecycle-javascript-frameworks/), and being able to port our library to other languages means that we’re more flexible as a company, rather than relying on the success of React (and by proxy, Meta).
+
+## So how is it going?
+
+The launch went _really_ well. We got featured in lots of newsletters and front-pages. We changed our github repo name (from react-flow to xyflow) with the launch and folks seemed excited about the rebrand, without a single pitchfork in sight. And there are already [projects](https://svelteflow.dev/showcase) out in the wild using Svelte Flow. Unreal.
+
+Also along the way, we refactored the core of the library, abstracting a bunch of it to vanillaJS, fixing bugs that we found along the way, benefitting both libraries. We’re really happy about that too.
+
+All in all, we’re excited to bring Svelte Flow to its beta release and to see what else people build with it. We’ll see you around!
+
+</BlogPostLayout>
