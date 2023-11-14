@@ -7,6 +7,7 @@ description:
 
 import { Callout } from 'nextra/components';
 import ExampleViewer from '@/components/example-viewer';
+import { Image } from 'xy-shared';
 
 # Custom edges
 
@@ -136,7 +137,11 @@ If we try to use this edge now, we'll see that the button is rendered in the
 centre of the flow (it might be hidden behind "Node A"). Because of the edge
 label portal, we'll need to do some extra work to position the button ourselves.
 
-![](/img/learn/edge-label-renderer-position.png)
+<Image
+  src="/img/learn/edge-label-renderer-position.png"
+  alt="A screen shot of a simple flow. The edge label renderer is highlighted in
+  the DOM inspector and the button is rendered in the centre of the flow."
+/>
 
 Fortunately, the path utils we've already seen can help us with this! Along with
 the SVG path to render, these functions also return the `x` and `y` coordinates
