@@ -1,7 +1,7 @@
 export default {
   christopher: {
     name: 'Christopher Möller',
-    title: 'React Flow Maintainer',
+    title: 'xyflow Maintainer',
     url: 'https://twitter.com/chrtze',
     image: 'https://github.com/chrtze.png',
   },
@@ -19,7 +19,7 @@ export default {
   },
   moritz: {
     name: 'Moritz Klack',
-    title: 'React Flow Maintainer',
+    title: 'xyflow Maintainer',
     url: 'https://twitter.com/moklick',
     image: 'https://github.com/moklick.png',
   },
