@@ -1,6 +1,6 @@
 import { type ReactNode } from 'react';
 import Link from 'next/link';
-import { ArrowRightIcon } from '@heroicons/react/24/outline';
+import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 import { Heading, Text } from '@xyflow/xy-ui';
 
 import { type Author, AuthorList } from '../../';
@@ -32,19 +32,19 @@ export function BlogPostPreview({
       </Text>
       <Heading
         as="p"
-        size="sm"
-        className="!text-left mb-4 mt-1 underline-offset-2 underline"
+        size="md"
+        className="!text-left mb-8 mt-1 underline-offset-3 underline"
       >
         {title}
       </Heading>
+      <AuthorList authors={authors} className="mb-8" noLink={!route} />
+
       <Text variant="light" className="mb-4">
         {intro}
       </Text>
 
-      <AuthorList authors={authors} className="mb-2" noLink={!route} />
-
       <LinkOrSpan>
-        Read more <ArrowRightIcon className="inline w-3 h-3" />
+        Read more <ArrowRightCircleIcon className="inline w-4 h-4" />
       </LinkOrSpan>
     </div>
   );
