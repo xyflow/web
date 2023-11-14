@@ -4,5 +4,10 @@
     "title": "Custom Node Props",
     "href": "/api-reference/types/node-props"
   },
+  "custom-edges": "Custom Edges",
+  "edge-props": {
+    "title": "Custom Edge Props",
+    "href": "/api-reference/types/edge-props"
+  },
   "theming": "Theming"
 }

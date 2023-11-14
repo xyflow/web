@@ -53,6 +53,7 @@ export default function ExampleViewer({
       framework="react"
       isTypescript={isTypescript}
       dependencies={dependenciesWithDefault}
+      editorHeight={editorHeight}
       {...rest}
     />
   );
