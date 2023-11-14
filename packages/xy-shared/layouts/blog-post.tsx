@@ -38,7 +38,7 @@ export function BlogPostLayout({
       <Heading className="!font-black !text-6xl !text-left !mt-2 !mb-8">
         {frontMatter.title}
       </Heading>
-      <AuthorList authors={frontMatter.authors} className="mb-10" />
+      <AuthorList authors={frontMatter.authors} className="mb-6" />
 
       <div className="max-w-3xl mx-auto [&>p]:text-lg [&>p]:leading-loose [&>h2]:border-none [&>h2]:mt-16 [&>ul]:text-lg ">
         {children}
