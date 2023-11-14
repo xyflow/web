@@ -35,7 +35,7 @@ export function BlogPostLayout({
         {frontMatter.date}
       </Text>
       {/* we have to use important (!) here to overwrite the nextra article default styles */}
-      <Heading className="!font-black !text-6xl !text-left !mt-2 !mb-6">
+      <Heading className="!font-black !text-6xl !text-left !mt-2 !mb-8">
         {frontMatter.title}
       </Heading>
       <AuthorList authors={frontMatter.authors} className="mb-10" />

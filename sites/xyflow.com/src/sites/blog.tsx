@@ -19,6 +19,7 @@ export default function Blog() {
               intro={page.frontMatter?.intro}
               date={page.frontMatter?.date}
               authors={page.frontMatter?.authors}
+              headingSize="md"
             />
           </ContentGridItem>
         ))}
