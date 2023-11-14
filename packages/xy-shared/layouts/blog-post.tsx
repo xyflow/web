@@ -40,7 +40,7 @@ export function BlogPostLayout({
       </Heading>
       <AuthorList authors={frontMatter.authors} className="mb-10" />
 
-      <div className="max-w-3xl mx-auto sm:px-6 [&>p]:text-lg [&>p]:leading-loose [&>h2]:border-none [&>h2]:mt-16 [&>ul]:text-lg ">
+      <div className="max-w-3xl mx-auto [&>p]:text-lg [&>p]:leading-loose [&>h2]:border-none [&>h2]:mt-16 [&>ul]:text-lg ">
         {children}
       </div>
 
@@ -69,6 +69,7 @@ function BlogPostPreviews({ prev, next }: BlogPostPreviewsProps) {
               intro={prev.frontMatter?.intro}
               date={prev.frontMatter?.date}
               authors={prev.frontMatter?.authors}
+              headingSize="md"
             />
           </ContentGridItem>
         )}
@@ -80,6 +81,7 @@ function BlogPostPreviews({ prev, next }: BlogPostPreviewsProps) {
               intro={next.frontMatter?.intro}
               date={next.frontMatter?.date}
               authors={next.frontMatter?.authors}
+              headingSize="md"
             />
           </ContentGridItem>
         )}

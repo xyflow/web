@@ -1,14 +1,18 @@
 import { type ReactNode } from 'react';
 import Link from 'next/link';
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
-import { Heading, Text } from '@xyflow/xy-ui';
+import { Heading, HeadingProps, Text } from '@xyflow/xy-ui';
 
 import { type Author, AuthorList } from '../../';
+import { Size } from '@react-three/fiber';
 
 export type BlogPostPreviewProps = {
   date: ReactNode;
   title: ReactNode;
   intro: ReactNode;
+
+  // CHECK THIS
+  headingSize?: HeadingProps['size'];
   authors: Author[];
   route?: string;
   className?: string;
@@ -18,6 +22,7 @@ export function BlogPostPreview({
   date,
   title,
   intro,
+  headingSize = 'sm',
   authors = [],
   route,
   className,
@@ -32,7 +37,7 @@ export function BlogPostPreview({
       </Text>
       <Heading
         as="p"
-        size="md"
+        size={headingSize}
         className="!text-left mb-8 mt-1 underline-offset-3 underline"
       >
         {title}
