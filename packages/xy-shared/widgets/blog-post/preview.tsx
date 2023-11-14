@@ -4,14 +4,11 @@ import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 import { Heading, HeadingProps, Text } from '@xyflow/xy-ui';
 
 import { type Author, AuthorList } from '../../';
-import { Size } from '@react-three/fiber';
 
 export type BlogPostPreviewProps = {
   date: ReactNode;
   title: ReactNode;
   intro: ReactNode;
-
-  // CHECK THIS
   headingSize?: HeadingProps['size'];
   authors: Author[];
   route?: string;
@@ -38,11 +35,11 @@ export function BlogPostPreview({
       <Heading
         as="p"
         size={headingSize}
-        className="!text-left mb-8 mt-1 underline-offset-3 underline"
+        className="!text-left mb-6 mt-1 underline-offset-3 underline"
       >
         {title}
       </Heading>
-      <AuthorList authors={authors} className="mb-8" noLink={!route} />
+      <AuthorList authors={authors} className="md:mb-4 mb-4" noLink={!route} />
 
       <Text variant="light" className="mb-4">
         {intro}
