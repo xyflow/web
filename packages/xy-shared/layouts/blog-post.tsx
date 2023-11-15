@@ -11,6 +11,7 @@ import {
 
 export type BlogPostFrontmatter = {
   title: string;
+  htmlTitle?: string;
   intro: string;
   date: string;
   authors: Author[];
@@ -36,7 +37,11 @@ export function BlogPostLayout({
       </Text>
       {/* we have to use important (!) here to overwrite the nextra article default styles */}
       <Heading className="!font-black !text-6xl !text-left !mt-2 !mb-8">
-        {frontMatter.title}
+        {frontMatter.htmlTitle ? (
+          <span dangerouslySetInnerHTML={{ __html: frontMatter.htmlTitle }} />
+        ) : (
+          frontMatter.title
+        )}
       </Heading>
       <AuthorList authors={frontMatter.authors} className="mb-6" />
 
