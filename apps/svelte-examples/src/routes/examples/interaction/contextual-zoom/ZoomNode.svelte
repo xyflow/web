@@ -17,7 +17,7 @@
 </script>
 
 <div class="zoom-node">
-  <Handle type="target" position={Position.Top} />
+  <Handle type="target" position={Position.Top} on:connect on:connectend on:connectstart />
   {#if showContent}
     <p>{data.content}</p>
   {:else}
@@ -27,7 +27,7 @@
       <div />
     </div>
   {/if}
-  <Handle type="source" position={Position.Bottom} />
+  <Handle type="source" position={Position.Bottom} on:connect on:connectend on:connectstart />
 </div>
 
 <style>

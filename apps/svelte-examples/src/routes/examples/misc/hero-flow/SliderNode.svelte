@@ -17,7 +17,7 @@
 </script>
 
 <NodeWrapper {label}>
-  <Handle type="source" position={Position.Right} />
+  <Handle type="source" position={Position.Right} on:connect on:connectend on:connectstart />
   <input
     class="nodrag accent-[#ff4000]"
     style="direction: rtl;"

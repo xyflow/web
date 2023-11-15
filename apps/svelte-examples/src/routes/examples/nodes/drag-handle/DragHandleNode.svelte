@@ -4,13 +4,13 @@
   type $$Props = NodeProps;
 </script>
 
-<Handle type="target" position={Position.Left} />
+<Handle type="target" position={Position.Left} on:connect on:connectend on:connectstart />
 <div class="label">
   Only draggable here →
   <!-- Use the class specified at node.dragHandle here -->
   <span class="drag-handle custom-drag-handle" />
 </div>
-<Handle type="source" position={Position.Right} />
+<Handle type="source" position={Position.Right} on:connect on:connectend on:connectstart />
 
 <style>
   .label {

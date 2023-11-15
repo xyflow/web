@@ -67,7 +67,14 @@
             </option>
           {/each}
         </select>
-        <Handle type="source" position={Position.Right} id={handleId} />
+        <Handle
+          type="source"
+          position={Position.Right}
+          id={handleId}
+          on:connect
+          on:connectend
+          on:connectstart
+        />
       </div>
     {/each}
   </div>

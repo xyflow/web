@@ -18,5 +18,5 @@
     <input bind:value class="nodrag border-md w-6 h-6" type="color" />
     <p>{value}</p>
   </div>
-  <Handle type="source" position={Position.Right} />
+  <Handle type="source" position={Position.Right} on:connect on:connectend on:connectstart />
 </NodeWrapper>

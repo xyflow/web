@@ -32,7 +32,7 @@
         {/if}
       </div>
     </div>
-    <Handle type="target" position={Position.Left} />
-    <Handle type="source" position={Position.Right} />
+    <Handle type="target" position={Position.Left} on:connect on:connectend on:connectstart />
+    <Handle type="source" position={Position.Right} on:connect on:connectend on:connectstart />
   </div>
 </div>

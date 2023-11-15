@@ -10,7 +10,14 @@
 </script>
 
 <div class="customNode">
-  <Handle type="target" position={Position.Left} {isConnectable} />
+  <Handle
+    type="target"
+    position={Position.Left}
+    {isConnectable}
+    on:connect
+    on:connectend
+    on:connectstart
+  />
   <div>Connection Limit 1</div>
 </div>
 
