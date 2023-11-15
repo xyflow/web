@@ -30,14 +30,9 @@ export function AuthorList({
   }
 
   return (
-    <div className={cn('flex', className)}>
+    <div className={cn('flex flex-wrap', className)}>
       {authorsArray.map((author) => (
-        <Author
-          key={author}
-          {...authorData[author]}
-          className="mr-4"
-          noLink={noLink}
-        />
+        <Author key={author} {...authorData[author]} noLink={noLink} />
       ))}
     </div>
   );
@@ -57,11 +52,11 @@ function Author({ name, title, image, url, className, noLink }: AuthorProps) {
     noLink ? <span {...props} /> : <Link href={url} {...props} />;
 
   return (
-    <div className={cn('flex gap-2 items-center', className)}>
-      <LinkOrSpan className="!w-10 !h-10">
+    <div className={cn('flex items-center mr-4 mb-4', className)}>
+      <LinkOrSpan className="!w-10 !h-10 mr-2">
         <img
           src={image}
-          className="inline w-10 h-10 mr-2 border border-gray-100 border-solid rounded-full"
+          className="inline w-10 h-10 border border-gray-100 border-solid rounded-full"
         />
       </LinkOrSpan>
 
