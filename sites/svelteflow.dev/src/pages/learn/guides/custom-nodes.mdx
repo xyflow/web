@@ -3,6 +3,8 @@ title: Custom Nodes
 description: Step by step guide about how to work with custom nodes in Svelte Flow.
 ---
 
+import { Callout } from 'nextra/components';
+
 # Custom Nodes
 
 A powerful feature of Svelte Flow is the ability to add custom nodes. You can render everything you want in your custom nodes. You can define multiple source and target handles and render form inputs or even interactive charts. In this guide we will implement two nodes with color input fields that update the background color of the flow.
@@ -36,12 +38,18 @@ Let's start to implement the `ColorPickerNode`. We are using the [`Handle` compo
     on:input={(evt) => data.color.set(evt.target?.value)}
     value={$color}
   />
-  <Handle type="source" position={Position.Right} />
+  <Handle type="source" position={Position.Right} on:connect on:connectstart on:connectend />
 </div>
 
 ```
 
 As you can see we've added the class name "nodrag" to the input. This prevents dragging within the input field, which in this case will allow us to select text inside the node.
+
+<Callout type="warning">
+  <strong>Be aware:</strong>
+  You have to forward on:connect, on:connectstart and on:connectend on the handles
+  for the events to be fired on the wrapper component.
+</Callout>
 
 ## Adding a new node type
 

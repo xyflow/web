@@ -15,8 +15,32 @@
     <Canvas dpr={2}>
       <ThrelteScene {flowState} />
     </Canvas>
-    <Handle type="target" position={Position.Left} style="top:20px;" id="color" />
-    <Handle type="target" position={Position.Left} style="top:40px;" id="shape" />
-    <Handle type="target" position={Position.Left} style="top:60px;" id="zoom" />
+    <Handle
+      type="target"
+      position={Position.Left}
+      style="top:20px;"
+      id="color"
+      on:connect
+      on:connectend
+      on:connectstart
+    />
+    <Handle
+      type="target"
+      position={Position.Left}
+      style="top:40px;"
+      id="shape"
+      on:connect
+      on:connectend
+      on:connectstart
+    />
+    <Handle
+      type="target"
+      position={Position.Left}
+      style="top:60px;"
+      id="zoom"
+      on:connect
+      on:connectend
+      on:connectstart
+    />
   </div>
 </NodeWrapper>
