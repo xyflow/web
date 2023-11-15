@@ -76,14 +76,14 @@ export const signature: PropsTableProps = {
       description: '',
     },
     {
-      name: 'screenToFlowCoordinate',
+      name: 'screenToFlowPosition',
       type: `(position: XYPosition) => XYPosition`,
-      description: 'Transforms a screen coordinate to a Svelte coordinate.',
+      description: 'Transforms a screen position to a Svelte position.',
     },
     {
-      name: 'flowToScreenCoordinate',
+      name: 'flowToScreenPosition',
       type: `(position: XYPosition) => XYPosition`,
-      description: 'Transforms a Svelte coordinate to a screen coordinate.',
+      description: 'Transforms a Svelte position to a screen position.',
     },
     {
       name: 'getConnectedEdges',

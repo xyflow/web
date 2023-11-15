@@ -12,13 +12,13 @@ import { signature } from '@/page-data/reference/hooks/useSvelteFlow.ts';
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/hooks/useSvelteFlow.ts/#L24)
 
-This hook returns functions to update the viewport, transform coordinates or get node intersections for example.
+This hook returns functions to update the viewport, transform positions or get node intersections for example.
 
 ```svelte
 <script lang="ts">
   import { useSvelteFlow } from '@xyflow/svelte';
 
-  const { screenToFlowCoordinate, zoomIn } = useSvelteFlow();
+  const { screenToFlowPosition, zoomIn } = useSvelteFlow();
 </script>
 ```
 
