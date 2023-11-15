@@ -1,7 +1,7 @@
 export default {
   christopher: {
     name: 'Christopher Möller',
-    title: 'xyflow Maintainer',
+    title: 'xyflow',
     url: 'https://twitter.com/chrtze',
     image: 'https://github.com/chrtze.png',
   },
@@ -13,13 +13,13 @@ export default {
   },
   john: {
     name: 'John Robb',
-    title: 'Community Manager',
+    title: 'is typing...',
     url: 'http://johnrobbdesign.com/',
     image: 'https://github.com/johnrobbjr.png',
   },
   moritz: {
     name: 'Moritz Klack',
-    title: 'xyflow Maintainer',
+    title: 'xyflow',
     url: 'https://twitter.com/moklick',
     image: 'https://github.com/moklick.png',
   },
