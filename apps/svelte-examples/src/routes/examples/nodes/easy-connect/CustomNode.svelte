@@ -15,7 +15,7 @@
   $: isConnecting = !!$connection.startHandle?.nodeId;
   $: isTarget = !!$connection.startHandle && $connection.startHandle?.nodeId !== id;
 
-  const label = isTarget ? 'Drop here' : 'Drag to connect';
+  $: label = isTarget ? 'Drop here' : 'Drag to connect';
 </script>
 
 <div class="customNode">
