@@ -26,7 +26,6 @@ export const nodeFields: PropsTableProps = {
     { name: 'positionAbsolute?', type: 'XYPosition' },
     { name: 'ariaLabel?', type: 'string' },
     { name: 'focusable?', type: 'boolean' },
-    { name: 'origin?', type: 'NodeOrigin' },
     { name: 'style?', type: 'React.CSSProperties' },
     { name: 'className?', type: 'string' },
   ],
