@@ -18,13 +18,14 @@ When you implement a [custom node](/learn/guides/custom-nodes) it is wrapped in 
 export type NodeProps<T = any> = {
   id: string;
   data: T;
+  width: number;
+  height: number;
   dragHandle?: boolean;
   type?: string;
   selected?: boolean;
   isConnectable?: boolean;
   zIndex?: number;
-  xPos: number;
-  yPos: number;
+  positionAbsolute: XYPosition;
   dragging: boolean;
   targetPosition?: Position;
   sourcePosition?: Position;

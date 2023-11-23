@@ -49,8 +49,8 @@ importers:
         specifier: ^0.155.1
         version: 0.155.1
       '@xyflow/svelte':
-        specifier: 0.0.26
-        version: 0.0.26(svelte@4.2.2)
+        specifier: 0.0.28
+        version: 0.0.28(svelte@4.2.2)
       '@xyflow/system':
         specifier: ^0.0.9
         version: 0.0.9
@@ -8586,15 +8586,27 @@ packages:
       svelte: 4.2.7
     dev: true
 
-  /@xyflow/svelte@0.0.26(svelte@4.2.2):
-    resolution: {integrity: sha512-u3cTMYL27k7JS/N/8lXBXCQs06X14QpCmdmHvLN8XXIHtumoFnlLHkFXhwE9f1RLmN0DHqiv8kwnLEk4ngTqWA==}
+  /@xyflow/svelte@0.0.28(svelte@4.2.2):
+    resolution: {integrity: sha512-8mCyjorsHFPnfFvTNhoCs/Cvyyk2v8IZnFqw2zJMBMdL87OD/hMxDY/zbImL6M43paojQzJFb//Rl0aWoJaBxA==}
     peerDependencies:
       svelte: ^3.0.0 || ^4.0.0
     dependencies:
       '@svelte-put/shortcut': 3.0.0
-      '@xyflow/system': 0.0.9
+      '@xyflow/system': 0.0.11
       classcat: 5.0.4
       svelte: 4.2.2
+    dev: false
+
+  /@xyflow/system@0.0.11:
+    resolution: {integrity: sha512-QllVEdguVfRHonf1kuiHTt4nwDuISF7AXY47h2mjSG+99GrRxoUBHfhEiKq9vdJMuZJOCUCtrgLuxDezgw/R3w==}
+    dependencies:
+      '@types/d3': 7.4.2
+      '@types/d3-drag': 3.0.5
+      '@types/d3-selection': 3.0.8
+      '@types/d3-zoom': 3.0.6
+      d3-drag: 3.0.0
+      d3-selection: 3.0.0
+      d3-zoom: 3.0.0
     dev: false
 
   /@xyflow/system@0.0.4:

@@ -4,8 +4,8 @@ import { Position, MarkerType, type Node, type XYPosition } from '@xyflow/svelte
 // of the line between the center of the intersectionNode and the target node
 function getNodeIntersection(intersectionNode: Node, targetNode: Node) {
   // https://math.stackexchange.com/questions/1724792/an-algorithm-for-finding-the-intersection-point-between-a-center-of-vision-and-a
-  const intersectionNodePosition = intersectionNode.positionAbsolute || { x: 0, y: 0 };
-  const targetPosition = targetNode.positionAbsolute || { x: 0, y: 0 };
+  const intersectionNodePosition = intersectionNode.computed?.positionAbsolute || { x: 0, y: 0 };
+  const targetPosition = targetNode.computed?.positionAbsolute || { x: 0, y: 0 };
 
   const w = (intersectionNode.width ?? 0) / 2;
   const h = (intersectionNode.height ?? 0) / 2;
@@ -31,8 +31,8 @@ function getEdgePosition(node: Node, intersectionPoint: XYPosition) {
   if (!node.width || !node.height) {
     return null;
   }
-  const nx = Math.round(node.positionAbsolute?.x || 0);
-  const ny = Math.round(node.positionAbsolute?.y || 0);
+  const nx = Math.round(node.computed?positionAbsolute?.x || 0);
+  const ny = Math.round(node.computed?positionAbsolute?.y || 0);
   const px = Math.round(intersectionPoint.x);
   const py = Math.round(intersectionPoint.y);
 

@@ -49,16 +49,16 @@ function getHandleCoordsByPosition(node, handlePosition) {
       break;
   }
 
-  const x = node.positionAbsolute.x + handle.x + offsetX;
-  const y = node.positionAbsolute.y + handle.y + offsetY;
+  const x = node.computed?.positionAbsolute.x + handle.x + offsetX;
+  const y = node.computed?.positionAbsolute.y + handle.y + offsetY;
 
   return [x, y];
 }
 
 function getNodeCenter(node) {
   return {
-    x: node.positionAbsolute.x + node.width / 2,
-    y: node.positionAbsolute.y + node.height / 2
+    x: node.computed?.positionAbsolute.x + node.width / 2,
+    y: node.computed?.positionAbsolute.y + node.height / 2
   };
 }
 
