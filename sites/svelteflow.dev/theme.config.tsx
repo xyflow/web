@@ -25,6 +25,7 @@ export default {
     defaultTheme: 'light',
   },
   banner: {
+    key: 'whats-new',
     text: (
       <Link
         className="flex justify-center items-center max-w-xs mx-auto hover:underline"
@@ -37,7 +38,9 @@ export default {
           src="/img/svelte-logo.svg"
           className="mr-2"
         />
-        <span>Svelte Flow just launched and is still alpha!</span>
+        <span>
+          Svelte Flow is still alpha! Check out the latest changes here.
+        </span>
       </Link>
     ),
   },
