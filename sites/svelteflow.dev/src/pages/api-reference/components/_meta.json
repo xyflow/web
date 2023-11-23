@@ -6,5 +6,6 @@
   "edge-label-renderer": "<EdgeLabelRenderer />",
   "handle": "<Handle />",
   "mini-map": "<MiniMap />",
+  "node-toolbar": "<NodeToolbar />",
   "panel": "<Panel />"
 }

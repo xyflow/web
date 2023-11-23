@@ -28,6 +28,12 @@ export const commonProps: PropsTableProps = {
       your flow by mapping edge types to Svelte components.`,
     },
     {
+      name: 'colorMode',
+      type: 'ColorMode',
+      default: '"light"',
+      description: `With this type you can switch between the built-in light and dark themes.`,
+    },
+    {
       name: 'nodeOrigin',
       type: '[number, number]',
       default: '[0,0]',
@@ -191,6 +197,19 @@ export const edgeEventHandlerProps: PropsTableProps = {
     {
       name: 'on:edgecontextmenu',
       type: '(event: CustomEvent<{ event: MouseEvent; edge: Edge }>) => void',
+    },
+  ],
+};
+
+export const selectionEventHandlers: PropsTableProps = {
+  props: [
+    {
+      name: 'on:selectionclick',
+      type: '(event: CustomEvent<{ event: MouseEvent; nodes: Node[] }>) => void',
+    },
+    {
+      name: 'on:selectioncontextmenu',
+      type: '(event: CustomEvent<{ event: MouseEvent; nodes: Node[] }>) => void',
     },
   ],
 };

@@ -1,5 +1,6 @@
 {
   "background-variant": "BackgroundVariant",
+  "color-mode": "ColorMode",
   "connection": "Connection",
   "connectionn-line-type": "ConnectionLineType",
   "coordinate-extent": "CoordinateExtent",
