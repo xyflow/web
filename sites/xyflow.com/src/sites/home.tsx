@@ -102,7 +102,14 @@ export default function XYFlowHome() {
             </HeadlineNode>
           </div>
         }
-        subtitle="Powerful open source libraries for building node-based UIs with React or Svelte. Ready out-of-the-box and infinitely customizable"
+        subtitle={
+          <>
+            Powerful open source libraries for building node-based UIs with
+            React or Svelte.
+            <br />
+            Ready out-of-the-box and infinitely customizable
+          </>
+        }
         align="center"
         size="xl"
         showGradient
