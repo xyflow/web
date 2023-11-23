@@ -3,6 +3,8 @@
   import {
     SvelteFlow,
     Background,
+    Controls,
+    MiniMap,
     Panel,
     type Node,
     type Edge,
@@ -22,6 +24,8 @@
 <div style="height:100vh;">
   <SvelteFlow {nodes} {edges} {colorMode} fitView>
     <Background />
+    <Controls />
+    <MiniMap />
 
     <Panel>
       <select bind:value={colorMode}>

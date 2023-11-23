@@ -563,12 +563,12 @@ export const keyboardProps: PropsTableProps = {
     {
       name: 'multiSelectionKeyCode',
       type: 'string | string[] | null',
-      default: '"Meta"',
+      default: '"Meta" for MacOs, "Control" for other systems',
     },
     {
       name: 'zoomActivationKeyCode',
       type: 'string | string[] | null',
-      default: '"Meta"',
+      default: '"Meta" for MacOs, "Control" for other systems',
       description: `If a key is set, you can zoom the viewport while that key is
       held down even if panOnScroll is set to false. By setting this prop to null
       you can disable this functionality.`,

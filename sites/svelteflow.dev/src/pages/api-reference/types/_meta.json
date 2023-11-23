@@ -9,6 +9,7 @@
   "edge-marker": "EdgeMarker",
   "edge-props": "EdgeProps",
   "fit-view-options": "FitViewOptions",
+  "key-definition": "KeyDefinition",
   "marker-type": "MarkerType",
   "node": "Node",
   "node-props": "NodeProps",

@@ -141,12 +141,18 @@ export const edgeProps: PropsTableProps = {
 export const generalEventHandlerProps: PropsTableProps = {
   props: [
     {
-      name: 'on:error',
+      name: 'onerror',
       type: '(code: string, message: string) => void',
       description: `Ocassionally something may happen that causes Svelte Flow to
       error. Instead of exploding your application, we log a message to the console
-      and then call this event handler. You might use it for additional logging
+      and then call this handler. You might use it for additional logging
       or to show a message to the user.`,
+    },
+    {
+      name: 'ondelete',
+      type: '(params: { nodes: Node[]; edges: Edge[] }) => void',
+      description:
+        'This handler gets called when the user deletes nodes or edges.',
     },
   ],
 };
@@ -309,6 +315,42 @@ export const interactionProps: PropsTableProps = {
       description: `A loose connection mode will allow you to connect handles of
       any type to one another. The strict mode will only allow you to connect
       source handles to target handles.`,
+    },
+  ],
+};
+
+export const keyboardProps: PropsTableProps = {
+  props: [
+    {
+      name: 'deleteKey',
+      type: 'KeyDefinition | null',
+      default: '"Backspace"',
+    },
+    {
+      name: 'selectionKey',
+      type: 'KeyDefinition | null',
+      default: '"Shift"',
+    },
+    {
+      name: 'multiSelectionKey',
+      type: 'KeyDefinition | null',
+      default: '"Meta" for MacOs, "Control" for other systems',
+    },
+    {
+      name: 'zoomActivationKey',
+      type: 'KeyDefinition | null',
+      default: '"Meta" for MacOs, "Control" for other systems',
+      description: `If a key is set, you can zoom the viewport while that key is
+      held down even if panOnScroll is set to false. By setting this prop to null
+      you can disable this functionality.`,
+    },
+    {
+      name: 'panActivationKey',
+      type: 'KeyDefinition | null',
+      default: '"Space"',
+      description: `If a key is set, you can pan the viewport while that key is
+      held down even if panOnScroll is set to false. By setting this prop to null
+      you can disable this functionality.`,
     },
   ],
 };

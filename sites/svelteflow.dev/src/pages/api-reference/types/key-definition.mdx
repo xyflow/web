@@ -1,0 +1,16 @@
+---
+title: KeyDefinition
+description: A key definition is a string or an object that describes a key and a modifier.
+---
+
+import { PropsTable } from '@/components/props-table';
+import { connectionFields } from '@/page-data/reference/types/Connection.fields.ts';
+
+# KeyDefinition
+
+A key definition is a string or an object that describes a key and a modifier. It is used for defining built-in keybindings like `selectionKey` or `deleteKey`.
+
+```ts
+export type KeyDefinitionObject = { key: string; modifier?: KeyModifier };
+export type KeyDefinition = string | KeyDefinitionObject;
+```
