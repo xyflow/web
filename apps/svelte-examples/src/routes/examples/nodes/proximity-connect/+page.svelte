@@ -38,7 +38,7 @@
     }
 
     const closeNodeIsSource =
-      closestNode.node.computed?.positionAbsolute.x < node.computed?.positionAbsolute.x;
+      closestNode.node.computed?.positionAbsolute?.x < node.computed?.positionAbsolute?.x;
 
     return {
       id: closeNodeIsSource
