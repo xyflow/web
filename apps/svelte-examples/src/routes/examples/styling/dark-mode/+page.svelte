@@ -24,7 +24,7 @@
     <Background />
 
     <Panel>
-      <select bind:value={colorMode} data-testid="colormode-select">
+      <select bind:value={colorMode}>
         <option value="dark">dark</option>
         <option value="light">light</option>
         <option value="system">system</option>
