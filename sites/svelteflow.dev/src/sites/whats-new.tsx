@@ -12,7 +12,12 @@ export default function WhatsNew() {
       <Hero
         title="What's new?"
         align="center"
-        subtitle="We're always improving our docs. This is a timeline of the things we've added or changed so far."
+        subtitle={
+          <>
+            Here you can find the latest news about the Svelte Flow library and
+            the docs.
+          </>
+        }
         kicker="Timeline"
         kickerIcon={PencilSquareIcon}
       />

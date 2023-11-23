@@ -12,7 +12,13 @@ export default function WhatsNew() {
       <Hero
         title="What's new?"
         align="center"
-        subtitle="We're always improving our docs. This is a timeline of the things we've added or changed so far."
+        subtitle={
+          <>
+            We're always working on the React Flow docs and the library.
+            <br />
+            This is a timeline of the things we've added or changed so far.
+          </>
+        }
         kicker="Timeline"
         kickerIcon={PencilSquareIcon}
       />
