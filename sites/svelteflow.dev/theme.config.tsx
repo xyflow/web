@@ -26,9 +26,9 @@ export default {
   },
   banner: {
     text: (
-      <a
+      <Link
         className="flex justify-center items-center max-w-xs mx-auto hover:underline"
-        href="https://www.xyflow.com/blog/svelte-flow-launch"
+        href="/whats-new"
       >
         <Image
           alt=""
@@ -38,7 +38,7 @@ export default {
           className="mr-2"
         />
         <span>Svelte Flow just launched and is still alpha!</span>
-      </a>
+      </Link>
     ),
   },
   navbar: {
