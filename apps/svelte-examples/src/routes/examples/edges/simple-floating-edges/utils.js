@@ -57,8 +57,8 @@ function getHandleCoordsByPosition(node, handlePosition) {
 
 function getNodeCenter(node) {
   return {
-    x: node.computed?.positionAbsolute.x + node.width / 2,
-    y: node.computed?.positionAbsolute.y + node.height / 2
+    x: node.computed?.positionAbsolute.x + node.computed?.width / 2,
+    y: node.computed?.positionAbsolute.y + node.computed?.height / 2
   };
 }
 

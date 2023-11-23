@@ -31,8 +31,8 @@ function getEdgePosition(node: Node, intersectionPoint: XYPosition) {
   if (!node.width || !node.height) {
     return null;
   }
-  const nx = Math.round(node.computed?positionAbsolute?.x || 0);
-  const ny = Math.round(node.computed?positionAbsolute?.y || 0);
+  const nx = Math.round(node.computed?.positionAbsolute?.x ?? 0);
+  const ny = Math.round(node.computed?.positionAbsolute?.y ?? 0);
   const px = Math.round(intersectionPoint.x);
   const py = Math.round(intersectionPoint.y);
 
