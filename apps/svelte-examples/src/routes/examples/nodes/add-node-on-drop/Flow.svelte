@@ -21,7 +21,7 @@
   let id = 1;
   const getId = () => `${id++}`;
 
-  const { screenToFlowCoordinate } = useSvelteFlow();
+  const { screenToFlowPosition } = useSvelteFlow();
 
   function handleConnectEnd({ detail: { event } }: { detail: { event: MouseEvent | TouchEvent } }) {
     // See of connection landed inside the flow pane
@@ -32,7 +32,7 @@
         id,
         data: { label: `Node ${id}` },
         // project the screen coordinates to pane coordinates
-        position: screenToFlowCoordinate({
+        position: screenToFlowPosition({
           x: event.clientX,
           y: event.clientY
         }),

@@ -49,7 +49,7 @@
     }
   ]);
 
-  const { screenToFlowCoordinate } = useSvelteFlow();
+  const { screenToFlowPosition } = useSvelteFlow();
   const onDragOver = (event: DragEvent) => {
     event.preventDefault();
 
@@ -67,7 +67,7 @@
 
     const type = event.dataTransfer.getData('application/svelteflow');
 
-    const position = screenToFlowCoordinate({
+    const position = screenToFlowPosition({
       x: event.clientX,
       y: event.clientY
     });
