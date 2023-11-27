@@ -14,9 +14,9 @@ export default function WhatsNew() {
         align="center"
         subtitle={
           <>
-            We're always working on the React Flow docs and the library.
+            We&apos;re always working on the React Flow docs and the library.
             <br />
-            This is a timeline of the things we've added or changed so far.
+            This is a timeline of the things we&apos;ve added or changed so far.
           </>
         }
         kicker="Timeline"
