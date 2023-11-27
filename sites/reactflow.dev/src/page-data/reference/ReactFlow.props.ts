@@ -163,14 +163,14 @@ export const viewportProps: PropsTableProps = {
       default: '[[-∞,-∞], [+∞,+∞]]',
       description: `By default the viewport extends infinitely. You can use this
       prop to set a boundary. The first pair of coordinates is the top left
-      boundary and the second pair is the bottom right..`,
+      boundary and the second pair is the bottom right.`,
     },
     {
       name: 'nodeExtent',
       type: 'CoordinateExtent',
       default: '[[-∞,-∞], [+∞,+∞]]',
       description: `As with translateExtent, this prop lets you set a boundary
-      for governing where nodes can be placed. `,
+      for governing where nodes can be placed.`,
     },
     {
       name: 'preventScrolling',
