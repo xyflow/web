@@ -127,6 +127,18 @@ export default function About() {
             { linkName: 'Github', route: 'https://github.com/peterkogo' },
           ]}
         />
+        <TeamCard
+          name="Burak"
+          description="Burak created Vue Flow while aboard a pirate ship, hoping the motley crew could better organize themselves with a node-based cleaning schedule. Even after his ship was commandeered on the shores of Hamburg, he continues to seek those harsh bone-breaking conditions on land through Brazilian Jiu Jitsu, skateboarding, and open source software development.
+          "
+          links={[
+            { linkName: 'Github', route: 'https://github.com/bcakmakoglu' },
+            {
+              linkName: 'Website',
+              route: 'https://www.scheissaufdeinmarketingdusalamiwurst.de/',
+            },
+          ]}
+        />
       </ContentGrid>
     </BaseLayout>
   );
