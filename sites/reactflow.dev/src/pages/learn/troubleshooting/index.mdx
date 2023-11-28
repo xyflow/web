@@ -9,6 +9,7 @@ import { Callout } from 'nextra/components';
 
 This guide contains warnings and errors that can occur when using React Flow. We are also adding common questions and pitfalls that we collect from our [Discord Server](https://discord.gg/RVmnytFmGW), [Github Issues](https://github.com/xyflow/xyflow/issues) and [Github Discussions](https://github.com/xyflow/xyflow/discussions).
 
+<div id="error-001" />
 ### Warning: Seems like you have not used zustand provider as an ancestor
 
 This usually happens when:
@@ -88,7 +89,10 @@ function FlowWithProvider(props) {
 export default FlowWithProvider;
 ```
 
-### It looks like you have created a new nodeTypes or edgeTypes object. If this wasn't on purpose please define the nodeTypes/edgeTypes outside of the component or memoize them.
+<div id="error-002" />
+### It looks like you have created a new nodeTypes or edgeTypes object. If this wasn't
+on purpose please define the nodeTypes/edgeTypes outside of the component or memoize
+them.
 
 This warning appears when the `nodeTypes` or `edgeTypes` properties change after the initial render. The `nodeTypes` or `edgeTypes` should only be changed dynamically in very rare cases. Usually they are defined once with all the types that you are using in your application. It can happen easily that you are defining the nodeTypes or edgeTypes object inside of your component render function, which will cause React Flow to re-render every time your component re-renders.
 
@@ -156,6 +160,7 @@ function Flow(props) {
 export default Flow;
 ```
 
+<div id="error-003" />
 ### Node type not found. Using fallback type "default".
 
 This usually happens when you are specifying a custom node type for one of your nodes but not passing the correct nodeTypes property to React Flow. The string for the type option of your custom node needs to be exactly the same as the key of the nodeTypes object.
@@ -233,6 +238,7 @@ function Flow(props) {
 }
 ```
 
+<div id="error-004" />
 ### The React Flow parent container needs a width and a height to render the graph.
 
 Under the hood, React Flow measures the parent DOM element to adjust the renderer. If you try to render React Flow in a regular div without a height, we cannot display the graph. If you encounter this warning, you need to make sure that your wrapper component has some CSS attached to it so that it gets a fixed height or inherits the height of its parent.
@@ -266,6 +272,7 @@ function Flow(props) {
 }
 ```
 
+<div id="error-005" />
 ### Only child nodes can use a parent extent.
 
 This warning appears when you are trying to add the `extent` option to a node that does not have a parent node. Depending on what you are trying to do, you can remove the `extent` option or specify a `parentNode`.
@@ -306,6 +313,7 @@ function Flow(props) {
 }
 ```
 
+<div id="error-006" />
 ### Can't create edge. An edge needs a source and a target.
 
 This happens when you do not pass a `source` and a `target` option to the edge object. Without the source and target, the edge cannot be rendered.
@@ -353,18 +361,22 @@ function Flow(props) {
 }
 ```
 
+<div id="error-007" />
 ### The old edge with id="some-id" does not exist.
 
 This can happen when you are trying to [update an edge](/examples/edges/updatable-edge) but the edge you want to update is already removed from the state. This is a very rare case. Please see the [Updatable Edge example](/examples/edges/updatable-edge) for implementation details.
 
+<div id="error-008" />
 ### Couldn't create edge for source/target handle id: "some-id"; edge id: "some-id".
 
 This can happen if you are working with multiple handles and a handle is not found by its `id` property. Please see the [Custom Node Example](/examples/nodes/custom-node) for an example of working with multiple handles.
 
+<div id="error-009" />
 ### Marker type doesn't exist.
 
 This warning occurs when you are trying to specify a marker type that is not built into React Flow. The existing marker types are documented [here](/api-reference/types/edge#edgemarker).
 
+<div id="error-010" />
 ### Handle: No node id found.
 
 This warning occurs when you try to use a `<Handle />` component outside of a custom node component.

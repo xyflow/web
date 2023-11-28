@@ -9,13 +9,13 @@ import { fileURLToPath } from 'url';
 import path from 'path';
 import staticRedirects from './data/static-redirects.json' assert { type: 'json' };
 import legacyRedirects from './data/legacy-redirects.json' assert { type: 'json' };
+import errorRedirects from './data/error-redirects.json' assert { type: 'json' };
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const OLD_RF_SITEMAP = path.join(__dirname, './data/sitemap-rf-v11.xml');
-const NEW_RF_SITEMAP =
-  'https://reactflow-website-staging.vercel.app//sitemap.xml';
+const NEW_RF_SITEMAP = 'https://reactflow.dev/sitemap.xml';
 const XY_SITEMAP = 'https://xyflow.com/sitemap.xml';
 const OUTPUT = path.join(__dirname, 'redirects.json');
 
@@ -71,7 +71,7 @@ async function start() {
     }
   };
 
-  staticRedirects.forEach(({ source, destination }) =>
+  [...staticRedirects, ...errorRedirects].forEach(({ source, destination }) =>
     redirect(source, destination),
   );
 
