@@ -5,16 +5,25 @@ import ReactFlow, {
   useEdgesState,
   addEdge,
   getOutgoers,
+  useReactFlow,
+  ReactFlowProvider,
 } from 'reactflow';
 import { nodes as initialNodes, edges as initialEdges } from './nodes-edges';
+
 import 'reactflow/dist/style.css';
 
 const Flow = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
+  const { getNodes, getEdges } = useReactFlow();
+
   const isValidConnection = useCallback(
     (connection) => {
+      // we are using getNodes and getEdges helpers here
+      // to make sure we create isValidConnection function only once
+      const nodes = getNodes();
+      const edges = getEdges();
       const target = nodes.find((node) => node.id === connection.target);
       const hasCycle = (node, visited = new Set()) => {
         if (visited.has(node.id)) return false;
@@ -30,7 +39,11 @@ const Flow = () => {
       if (target.id === connection.source) return false;
       return !hasCycle(target);
     },
-    [nodes, edges],
+    [getNodes, getEdges],
+  );
+
+  const onConnect = useCallback((params) =>
+    setEdges((els) => addEdge(params, els)),
   );
 
   return (
@@ -39,7 +52,7 @@ const Flow = () => {
       edges={edges}
       onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
-      onConnect={(params) => setEdges((els) => addEdge(params, els))}
+      onConnect={onConnect}
       isValidConnection={isValidConnection}
       fitView
     >
@@ -48,4 +61,8 @@ const Flow = () => {
   );
 };
 
-export default Flow;
+export default () => (
+  <ReactFlowProvider>
+    <Flow />
+  </ReactFlowProvider>
+);
