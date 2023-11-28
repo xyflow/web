@@ -29,7 +29,11 @@ const AddNodeOnEdgeDrop = () => {
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   const { screenToFlowPosition } = useReactFlow();
   const onConnect = useCallback(
-    (params) => setEdges((eds) => addEdge(params, eds)),
+    (params) => {
+      // reset the start node on connections
+      connectingNodeId.current = null;
+      setEdges((eds) => addEdge(params, eds))
+    },
     [],
   );
 
@@ -39,6 +43,8 @@ const AddNodeOnEdgeDrop = () => {
 
   const onConnectEnd = useCallback(
     (event) => {
+      if (!connectingNodeId.current) return;
+
       const targetIsPane = event.target.classList.contains('react-flow__pane');
 
       if (targetIsPane) {
