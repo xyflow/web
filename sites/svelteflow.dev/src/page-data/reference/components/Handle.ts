@@ -14,18 +14,23 @@ export const handleProps: PropsTableProps = {
       are typically Position.Top.`,
     },
     { name: 'isConnectable?', type: 'boolean', default: 'true' },
+    // not implemented yet
+    // {
+    //   name: 'isConnectableStart?',
+    //   type: 'boolean',
+    //   default: 'type === "source"',
+    //   description: `Dictates whether a connection can start from this handle.`,
+    // },
+    // {
+    //   name: 'isConnectableEnd?',
+    //   type: 'boolean',
+    //   default: 'type === "target"',
+    //   description: `Dictates whether a connection can end on this handle.`,
+    // },
     {
-      name: 'isConnectableStart?',
-      type: 'boolean',
-      default: 'type === "source"',
-      description: `Dictates whether a connection can start from this handle.`,
+      name: 'on:connect?',
+      type: '(event: CustomEvent<{ connection: Connection }>) => void',
+      description: `This event only gets fired for the source handle. We are working on a better solution to get notied when a connection is created.`,
     },
-    {
-      name: 'isConnectableEnd?',
-      type: 'boolean',
-      default: 'type === "target"',
-      description: `Dictates whether a connection can end on this handle.`,
-    },
-    { name: 'onConnect?', type: '(connection: Connection) => void' },
   ],
 };
