@@ -94,5 +94,9 @@
   {
     "source": "/docs/getting-started/plugin-components",
     "destination": "/learn/concepts/plugin-components"
+  },
+  {
+    "source": "/error",
+    "destination": "/learn/troubleshooting"
   }
 ]

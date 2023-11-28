@@ -9,7 +9,6 @@ import { fileURLToPath } from 'url';
 import path from 'path';
 import staticRedirects from './data/static-redirects.json' assert { type: 'json' };
 import legacyRedirects from './data/legacy-redirects.json' assert { type: 'json' };
-import errorRedirects from './data/error-redirects.json' assert { type: 'json' };
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -71,7 +70,7 @@ async function start() {
     }
   };
 
-  [...staticRedirects, ...errorRedirects].forEach(({ source, destination }) =>
+  staticRedirects.forEach(({ source, destination }) =>
     redirect(source, destination),
   );
 

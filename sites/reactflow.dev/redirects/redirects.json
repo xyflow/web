@@ -120,53 +120,8 @@
     "permanent": true
   },
   {
-    "source": "/error#001",
-    "destination": "/learn/troubleshooting#error-001",
-    "permanent": true
-  },
-  {
-    "source": "/error#002",
-    "destination": "/learn/troubleshooting#error-002",
-    "permanent": true
-  },
-  {
-    "source": "/error#003",
-    "destination": "/learn/troubleshooting#error-003",
-    "permanent": true
-  },
-  {
-    "source": "/error#004",
-    "destination": "/learn/troubleshooting#error-004",
-    "permanent": true
-  },
-  {
-    "source": "/error#005",
-    "destination": "/learn/troubleshooting#error-005",
-    "permanent": true
-  },
-  {
-    "source": "/error#006",
-    "destination": "/learn/troubleshooting#error-006",
-    "permanent": true
-  },
-  {
-    "source": "/error#007",
-    "destination": "/learn/troubleshooting#error-007",
-    "permanent": true
-  },
-  {
-    "source": "/error#008",
-    "destination": "/learn/troubleshooting#error-008",
-    "permanent": true
-  },
-  {
-    "source": "/error#009",
-    "destination": "/learn/troubleshooting#error-009",
-    "permanent": true
-  },
-  {
-    "source": "/error#010",
-    "destination": "/learn/troubleshooting#error-010",
+    "source": "/error",
+    "destination": "/learn/troubleshooting",
     "permanent": true
   },
   {
