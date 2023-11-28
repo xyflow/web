@@ -27,6 +27,7 @@ const Flow = () => {
         }
       };
 
+      if (target.id === connection.source) return false;
       return !hasCycle(target);
     },
     [nodes, edges],
