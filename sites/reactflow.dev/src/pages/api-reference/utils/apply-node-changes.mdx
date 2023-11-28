@@ -28,7 +28,7 @@ export default function Flow() {
   const [edges, setEdges] = useState([]);
   const onNodesChange = useCallback(
     (changes) => {
-      setNodes((oldEdges) => applyNodeChanges(changes, oldEdges));
+      setNodes((oldNodes) => applyNodeChanges(changes, oldNodes));
     },
     [setEdges],
   );
