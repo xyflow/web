@@ -109,18 +109,19 @@ export const viewportProps: PropsTableProps = {
       default viewport is provided but fitView is enabled, the default viewport
       will be ignored.`,
     },
-    {
-      name: 'viewport',
-      type: 'Viewport',
-      default: '{ x: 0, y: 0, zoom: 1 }',
-      description: `When you pass a viewport prop, it's controlled and you also need to pass onViewportChange to handle internal changes.`,
-    },
-    {
-      name: 'onViewportChange',
-      type: 'OnViewportChange',
-      default: '-',
-      description: `Used when working with a controlled viewport for updating the user viewport state.`,
-    },
+    // v12 props
+    // {
+    //   name: 'viewport',
+    //   type: 'Viewport',
+    //   default: '{ x: 0, y: 0, zoom: 1 }',
+    //   description: `When you pass a viewport prop, it's controlled and you also need to pass onViewportChange to handle internal changes.`,
+    // },
+    // {
+    //   name: 'onViewportChange',
+    //   type: 'OnViewportChange',
+    //   default: '-',
+    //   description: `Used when working with a controlled viewport for updating the user viewport state.`,
+    // },
     {
       name: 'fitView',
       type: 'boolean',
