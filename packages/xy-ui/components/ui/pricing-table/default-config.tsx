@@ -25,6 +25,18 @@ const features: Record<string, FeatureConfig> = {
       href: '/pro/examples',
     },
   },
+  teamMembers1: {
+    label: 'Invite 1 team member',
+    description: 'You can share your subscription with 1 team member.',
+  },
+  teamMembers5: {
+    label: 'Invite 5 team members',
+    description: 'You can share your subscription with 5 team members.',
+  },
+  teamMembers10: {
+    label: 'Invite 10 team members',
+    description: 'You can share your subscription with 10 team members.',
+  },
   prioritizedIssues: {
     label: 'Prioritized Github Issues',
     description:
@@ -76,13 +88,14 @@ export const StarterPlan: SubscriptionPlan = {
   features: [
     features.proExamples,
     features.prioritizedIssues,
+    features.teamMembers1,
     features.mitLicense,
   ],
 };
 
 export const ProPlan: SubscriptionPlan = {
   id: PlanId.PRO,
-  label: 'Premium',
+  label: 'Pro',
   description:
     'Best for companies that want a direct wire to the React Flow team.',
   pricing: [
@@ -110,6 +123,7 @@ export const ProPlan: SubscriptionPlan = {
   features: [
     features.proExamples,
     features.prioritizedIssues,
+    features.teamMembers5,
     features.mitLicense,
     {
       label: 'Up to 1 hour of individual support via email per month',
@@ -159,6 +173,7 @@ export const EnterprisePlan: SubscriptionPlan = {
       },
     },
     features.prioritizedIssues,
+    features.teamMembers10,
     features.mitLicense,
     {
       label: '1 hour of individual support via voice, video or email per month',
