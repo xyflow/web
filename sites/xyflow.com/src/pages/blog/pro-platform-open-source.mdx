@@ -1,0 +1,66 @@
+---
+title: 'Our Pro Platform is now open source'
+intro: 'add this here.'
+date: 6 December 2023
+authors: ['christopher', 'john']
+tags: ['react-flow', 'open-source']
+image: '/img/blog/v11-reactflow-header.png'
+---
+
+import { Image } from 'xy-shared';
+import { Emoji } from '@xyflow/xy-ui';
+import { BlogPostLayout } from '@/layouts/blog-post-with-frontmatter';
+
+<BlogPostLayout>
+
+We’re excited to announce that we just open sourced our Pro Platform! 🎉 Our Pro Platform allows our subscribers to access and view “Pro Examples,(LINK)” manage their subscription, and add new team members.
+
+When we created the Pro Platform last year, it was developed in a way that made our proprietary “Pro Examples” inseparable from the platform that was hosting them. We spent time this year rebuilding the pro platform from the ground up and ready to be open sourced. Feels much better this way as a company with open source at our core.
+
+We hope that some folks take a look, get inspired for their own projects, and that our Pro Subscribers like the new features built in to the refresh 💫
+
+Github repo at [xyflow/pro-platform](https://github.com/xyflow/pro-platform)
+
+Or create an account at [pro.reactflow.dev/dashboard](https://pro.reactflow.dev/dashboard) (correct link?)
+
+# New Features
+
+### Add and manage team members ⚽️
+
+In order to add new team members, you used to have to email us (ugh) and we’d manually add your new team members to the database (ughhh). Now you can automatically add and delete team members, or add additional emails to your subscription plan. You can find more about inviting team members in our [Pro FAQs](https://reactflow.dev/pro).
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/d2a92f9d-ed0b-4bf7-88ed-335b76d8d166/d4a6cf1b-a33c-4461-b66a-b8f2b8697dd5/Untitled.png)
+
+### New design, example viewer, better usability 🪩
+
+It looks ✨better✨ and it’s easier to get around. There’s a new Example Viewer which is faster because we don’t build the whole example on the client anymore.
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/d2a92f9d-ed0b-4bf7-88ed-335b76d8d166/d61bdc85-3683-45bb-a88d-bf0057bdf31e/Untitled.png)
+
+### Refreshed Pro Examples
+
+Good news, dagre no longer has the “deprecated” tag was removed from [dagre](https://github.com/dagrejs/dagre)! Workflow builder and Expand / Collapse examples have been rebuilt with dagre, so that you can switch between the d3 and dagre versions.
+
+The Shapes Pro example has been refactored, and now includes features to drag-and-drop shape nodes, resize, a color picker, dark mode, and an updated minimap. in the next months we plan to refactor some others as well, so keep your eyes out for those updates.
+
+[shapes-3.mov](https://prod-files-secure.s3.us-west-2.amazonaws.com/d2a92f9d-ed0b-4bf7-88ed-335b76d8d166/6f5c98c5-1b14-4003-8f3a-01e7e4bc5474/shapes-3.mov)
+
+You can now fire up our Pro examples now using Vite (instead of create-react-app).
+
+![carbon (9).png](<https://prod-files-secure.s3.us-west-2.amazonaws.com/d2a92f9d-ed0b-4bf7-88ed-335b76d8d166/69206949-e8e5-4d94-adbc-c4e7b2b7b30b/carbon_(9).png>)
+
+### Under the hood improvements 🏎
+
+In the new platform, we have migrated to the latest Nextjs version (using app router), replaced ChakraUI with TailwindCSS and our own UI package, and converted everything from JS to Typescript.
+
+# What do you think?
+
+If you take a look, or would like to try using the platform for your own projects, we’d love to hear from you! We’re still working on the documentation on how to easily set this up and get it integrated with Nhost, mailjet, Stripe, etc.
+
+And if you’d like to sign up for React Flow Pro, you can learn more about subscriptions at https://pro.reactflow.dev/.
+
+Cheers!
+
+The xyflow team
+
+</BlogPostLayout>
