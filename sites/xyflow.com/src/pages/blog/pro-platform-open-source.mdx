@@ -7,39 +7,52 @@ tags: ['react-flow', 'open-source']
 image: '/img/blog/v11-reactflow-header.png'
 ---
 
-import { Image } from 'xy-shared';
 import { Emoji } from '@xyflow/xy-ui';
 import { BlogPostLayout } from '@/layouts/blog-post-with-frontmatter';
 
+import Image from 'next/image';
+
 <BlogPostLayout>
 
-We’re excited to announce that we just open sourced our Pro Platform! 🎉 Our Pro Platform allows our subscribers to access and view “Pro Examples,(LINK)” manage their subscription, and add new team members.
+We’re excited to announce that we just open sourced our Pro Platform! 🎉 Our Pro Platform is the website that allows React Flow Pro subscribers to access and view “[Pro Examples](https://reactflow.dev/pro/examples),” manage their subscription, and give team members access to the platform.
 
-When we created the Pro Platform last year, it was developed in a way that made our proprietary “Pro Examples” inseparable from the platform that was hosting them. We spent time this year rebuilding the pro platform from the ground up and ready to be open sourced. Feels much better this way as a company with open source at our core.
+When we created the Pro Platform last year, it was developed in a way that made the Pro Examples (which are not open source) inseparable from the platform that was hosting them. We spent time this year rebuilding the pro platform from the ground up and ready to be open sourced. Feels much better this way as a company with OSS at our core.
 
-We hope that some folks take a look, get inspired for their own projects, and that our Pro Subscribers like the new features built in to the refresh 💫
+We hope that some folks take a look, get inspired for their own projects, and that our Pro Subscribers like the new features built in for the refresh 💫
 
-Github repo at [xyflow/pro-platform](https://github.com/xyflow/pro-platform)
+Check out the Github repo: [@xyflow/pro-platform](https://github.com/xyflow/pro-platform)
 
-Or create an account at [pro.reactflow.dev/dashboard](https://pro.reactflow.dev/dashboard) (correct link?)
+Create an account on the platform: [pro.reactflow.dev/dashboard](https://pro.reactflow.dev/dashboard) (correct link?)
 
 # New Features
+
+### Fresh look, new example viewer, better usability 🪩
+
+It looks ✨better✨ and it’s easier to get around. There’s a new Example Viewer which is faster because we don’t build the whole example on the client anymore.
+
+<Image
+  alt="The dashboard of React Flow Pro, which shows options to view Pro Examples, open a prioritized github issue, invite your team, schedule an onboarding call, or contact support via email."
+  src="/img/blog/2023-pro-platform-oss/pro-dashboard.png"
+  width={806}
+  height={524}
+  className="mt-4"
+/>
 
 ### Add and manage team members ⚽️
 
 In order to add new team members, you used to have to email us (ugh) and we’d manually add your new team members to the database (ughhh). Now you can automatically add and delete team members, or add additional emails to your subscription plan. You can find more about inviting team members in our [Pro FAQs](https://reactflow.dev/pro).
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/d2a92f9d-ed0b-4bf7-88ed-335b76d8d166/d4a6cf1b-a33c-4461-b66a-b8f2b8697dd5/Untitled.png)
-
-### New design, example viewer, better usability 🪩
-
-It looks ✨better✨ and it’s easier to get around. There’s a new Example Viewer which is faster because we don’t build the whole example on the client anymore.
-
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/d2a92f9d-ed0b-4bf7-88ed-335b76d8d166/d61bdc85-3683-45bb-a88d-bf0057bdf31e/Untitled.png)
+<Image
+  alt="a screenshot of a list of team members, where someone can add and delete team members from gaining access to the pro platform"
+  src="/img/blog/2023-pro-platform-oss/pro-team-members.png"
+  width={916}
+  height={564}
+  className="mt-4"
+/>
 
 ### Refreshed Pro Examples
 
-Good news, dagre no longer has the “deprecated” tag was removed from [dagre](https://github.com/dagrejs/dagre)! Workflow builder and Expand / Collapse examples have been rebuilt with dagre, so that you can switch between the d3 and dagre versions.
+[Dagre](https://github.com/dagrejs/dagre) no longer has the “deprecated” tag! Our Workflow builder and Expand / Collapse pro examples have been rebuilt with dagre, so that you can switch between the d3 and dagre versions.
 
 The Shapes Pro example has been refactored, and now includes features to drag-and-drop shape nodes, resize, a color picker, dark mode, and an updated minimap. in the next months we plan to refactor some others as well, so keep your eyes out for those updates.
 
