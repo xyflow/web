@@ -10,6 +10,9 @@ image: '/img/blog/v11-reactflow-header.png'
 import { Emoji } from '@xyflow/xy-ui';
 import { BlogPostLayout } from '@/layouts/blog-post-with-frontmatter';
 
+import { Bleed } from 'nextra-theme-docs';
+import { Embed, Text } from 'xy-shared';
+
 import Image from 'next/image';
 
 <BlogPostLayout>
@@ -22,7 +25,7 @@ We hope that some folks take a look, get inspired for their own projects, and th
 
 Check out the Github repo: [@xyflow/pro-platform](https://github.com/xyflow/pro-platform)
 
-Create an account on the platform: [pro.reactflow.dev/dashboard](https://pro.reactflow.dev/dashboard) (correct link?)
+Create an account on the platform: [pro.reactflow.dev](https://pro.reactflow.dev) (correct link?)
 
 # New Features
 
@@ -56,11 +59,23 @@ In order to add new team members, you used to have to email us (ugh) and we’d 
 
 The Shapes Pro example has been refactored, and now includes features to drag-and-drop shape nodes, resize, a color picker, dark mode, and an updated minimap. in the next months we plan to refactor some others as well, so keep your eyes out for those updates.
 
-[shapes-3.mov](https://prod-files-secure.s3.us-west-2.amazonaws.com/d2a92f9d-ed0b-4bf7-88ed-335b76d8d166/6f5c98c5-1b14-4003-8f3a-01e7e4bc5474/shapes-3.mov)
+<Bleed>
+  <Embed
+    lazy
+    src="https://pro-example-apps.vercel.app/shapes"
+    className="shadow-xs"
+  />
+</Bleed>
 
 You can now fire up our Pro examples now using Vite (instead of create-react-app).
 
-![carbon (9).png](<https://prod-files-secure.s3.us-west-2.amazonaws.com/d2a92f9d-ed0b-4bf7-88ed-335b76d8d166/69206949-e8e5-4d94-adbc-c4e7b2b7b30b/carbon_(9).png>)
+<Image
+  alt="a code snippet entered into terminal showing how to quickly get a react flow pro example up and running using Vite"
+  src="/img/blog/2023-pro-platform-oss/pro-vite.png"
+  width={514}
+  height={379}
+  className="mt-4 mx-auto"
+/>
 
 ### Under the hood improvements 🏎
 
