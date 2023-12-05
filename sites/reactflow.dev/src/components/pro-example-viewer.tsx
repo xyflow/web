@@ -15,14 +15,14 @@ export default function ({ slug }: { slug: string }) {
             .
           </Text>
           <Button variant="secondary" className="text-primary shrink-0">
-            <a href={`https://pro.reactflow.dev/examples/${slug}`}>
+            <a href={`https://pro.reactflow.dev/examples/react/${slug}`}>
               View Source Code
             </a>
           </Button>
         </div>
 
         <iframe
-          src={`https://xyflow-react-pro-examples.vercel.app/${slug}`}
+          src={`https://pro-example-apps.vercel.app/${slug}`}
           className="block h-[645px] w-full rounded-xl bg-white"
         />
       </div>
