@@ -17,7 +17,7 @@ import Image from 'next/image';
 
 <BlogPostLayout>
 
-We’re excited to announce that we just open sourced our Pro Platform! 🚀 The Pro Platform is where React Flow Pro subscribers can access and view “[Pro Examples](https://reactflow.dev/pro/examples),” manage their subscription, and give team members access to the platform. We hope that some folks take a look, get inspired for their own projects, and that our Pro Subscribers like the new features we built 💫
+We’re excited to announce that we just open sourced our Pro Platform! 🚀 The Pro Platform is where React Flow Pro subscribers can access and view “[Pro Examples](https://reactflow.dev/pro/examples),” manage their subscription, and give team members access to the platform. We hope that some folks take a look, get inspired for their own projects, and that our Pro Subscribers like the new features we've built 💫
 
 Check out the [Github repo](https://github.com/xyflow/pro-platform) or try it out live by [signing up on the Pro Platform](https://pro.reactflow.dev).
 
@@ -32,16 +32,16 @@ Check out the [Github repo](https://github.com/xyflow/pro-platform) or try it ou
 
 ### Why open source it?
 
-We believe open source is the better way to make things - freedom of information, accountability, an easy way to collect contributions and bug reports from users, allowing someone else to do it better, etc. We also love it when [OSS maintainers are paid for their work](https://www.xyflow.com/blog/asking-for-money-for-open-source), and we could imagine other folks using our Pro Platform around own open source projects (as a code-oriented alternative to something like [Ghost](https://ghost.org/) or [Patreon](https://www.patreon.com/)). Of course we’re far away from that, but open sourcing it and letting folks peek under the hood is a way to start.
+We believe open source is the better way to make things - freedom of information, accountability, an easy way to collect contributions and bug reports from users, allowing someone else to do it better, etc. We also love it when [OSS maintainers are paid for their work](https://www.xyflow.com/blog/asking-for-money-for-open-source), and we could imagine other folks using our Pro Platform around their own open source projects (as a code-oriented alternative to something like [Ghost](https://ghost.org/) or [Patreon](https://www.patreon.com/)). Of course we’re far away from that, but open sourcing it and letting folks peek under the hood is a way to start.
 
 # New Features
 
 ### Fresh look, new example viewer, better usability 🪩
 
-It looks ✨better✨ and it’s easier to get around. There’s a new Example Viewer which is faster because we don’t build the whole example on the client anymore.
+It looks ✨better✨ and it’s easier to get around. There’s a new example viewer which is faster because we don’t build the whole example on the client anymore.
 
 <Image
-  alt="The Pro Example viewer, where a user cycles between tabs of previewing the example, looking at the code, and reading the guide."
+  alt="The example viewer, where a user cycles between tabs of previewing the example, looking at the code, and reading the guide."
   src="/img/blog/2023-pro-platform-oss/pro-new-example-viewer-4.gif"
   width={806}
   height={524}
@@ -65,7 +65,7 @@ In order to add new team members, you used to have to email us (ugh) and we’d 
 
 All of our Pro Examples are now standalone Vite apps. This makes them easier to run and also easier for us to develop.
 
-[Dagre](https://github.com/dagrejs/dagre) no longer has the “deprecated” tag! Our [Workflow Builder](https://reactflow.dev/examples/layout/workflow-builder-starter) and [Expand / Collapse](https://reactflow.dev/examples/layout/expand-collapse) Pro Examples have been rebuilt with dagre, so that you can switch between the d3 and dagre versions.
+We noticed that [Dagre](https://github.com/dagrejs/dagre) no longer has the “deprecated” tag! Our [Workflow Builder](https://reactflow.dev/examples/layout/workflow-builder-starter) and [Expand / Collapse](https://reactflow.dev/examples/layout/expand-collapse) Pro Examples have been rebuilt with dagre, so that you can switch between the d3 and dagre versions.
 
 The Shapes Pro Example has been refactored, and now includes features to drag-and-drop shape nodes, resize, a color picker, dark mode, and an updated minimap. in the next months we plan to refactor some others as well, so keep your eyes out for those updates.
 
@@ -83,7 +83,7 @@ The Shapes Pro Example has been refactored, and now includes features to drag-an
 
 ### Under the hood improvements 🏎
 
-In the new platform, we have migrated to the latest Nextjs version (using app router), replaced ChakraUI with TailwindCSS and our own UI package, and converted everything from JS to Typescript.
+In the new platform, we have migrated to the latest Nextjs version (using app router), replaced ChakraUI with TailwindCSS and our own UI package, and converted everything from JS to TypeScript.
 
 When we created the Pro Platform last year, it was developed in a way that made the Pro Examples (which are not open source) inseparable from the platform that was hosting them. The Pro Example code now sits in a private repository, separate from the platform's repository.
 
