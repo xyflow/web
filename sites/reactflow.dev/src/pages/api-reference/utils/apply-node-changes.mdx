@@ -30,7 +30,7 @@ export default function Flow() {
     (changes) => {
       setNodes((oldNodes) => applyNodeChanges(changes, oldNodes));
     },
-    [setEdges],
+    [setNodes],
   );
 
   return (
