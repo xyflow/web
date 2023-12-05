@@ -1,6 +1,6 @@
 ---
-title: 'Our Pro Platform is now open source'
-intro: 'We took some time to rebuild the Pro Platform from the ground up and ready to be open sourced, hopefully allowing some folks to take inspiration for their own OSS projects, and we added new features for our pro subscribers.'
+title: 'React Flow Pro Platform goes open source'
+intro: 'We rebuilt the Pro Platform from the ground up and it is now open source. We hope some folks can take inspiration for their own OSS projects, and the pro subscribers enjoy the new look and features.'
 date: 6 December 2023
 authors: ['christopher', 'john']
 tags: ['react-flow', 'open-source']
@@ -17,15 +17,14 @@ import Image from 'next/image';
 
 <BlogPostLayout>
 
-We’re excited to announce that we just open sourced our Pro Platform! 🎉 Our Pro Platform is the website that allows React Flow Pro subscribers to access and view “[Pro Examples](https://reactflow.dev/pro/examples),” manage their subscription, and give team members access to the platform.
+We’re excited to announce that we just open sourced our Pro Platform! The Pro Platform is the website where React Flow Pro subscribers to access and view “[Pro Examples](https://reactflow.dev/pro/examples),” manage their subscription, and give team members access to the platform.
+We hope that some folks take a look, get inspired for their own projects, and that our Pro Subscribers like the new features we built 💫
 
-When we created the Pro Platform last year, it was developed in a way that made the Pro Examples (which are not open source) inseparable from the platform that was hosting them. We took some time to rebuild the Pro Platform from the ground up and ready to be open sourced. Feels much better this way as a company with OSS at our core.
+You can check out the [Github repo](https://github.com/xyflow/pro-platform) or try it out live by [signing up on the Pro Platform](https://pro.reactflow.dev).
 
-We hope that some folks take a look, get inspired for their own projects, and that our Pro Subscribers like the new features built in for the refresh 💫
+### Why open source it?
 
-Check out the Github repo: [@xyflow/pro-platform](https://github.com/xyflow/pro-platform)
-
-Create an account on the platform: [pro.reactflow.dev](https://pro.reactflow.dev) (correct link?)
+We believe open source is the better way to develop software - freedom of information, accountability, an easy way to collect contributions and bug reports from users, allowing someone else to do it better, etc. We also love it when [OSS maintainers are paid for their work](https://www.xyflow.com/blog/asking-for-money-for-open-source), and we could imagine other folks using our Pro Platform around own open source projects (as a developer-focused alternative to something like [Ghost](https://ghost.org/) or [Patreon](https://www.patreon.com/)). Of course we’re far away from that, but open sourcing it and letting folks peek under the hood is a way to start.
 
 # New Features
 
@@ -53,9 +52,11 @@ In order to add new team members, you used to have to email us (ugh) and we’d 
   className="mt-4"
 />
 
-### Refreshed Pro Examples
+### Refreshed Pro Examples 💫
 
-[Dagre](https://github.com/dagrejs/dagre) no longer has the “deprecated” tag! Our Workflow builder and Expand / Collapse Pro Examples have been rebuilt with dagre, so that you can switch between the d3 and dagre versions.
+All of our Pro Examples are now standalone Vite apps. This makes them easier to run and also easier for us to develop.
+
+[Dagre](https://github.com/dagrejs/dagre) no longer has the “deprecated” tag! Our [Workflow Builder](https://reactflow.dev/examples/layout/workflow-builder-starter) and [Expand / Collapse](https://reactflow.dev/examples/layout/expand-collapse) Pro Examples have been rebuilt with dagre, so that you can switch between the d3 and dagre versions.
 
 The Shapes Pro Example has been refactored, and now includes features to drag-and-drop shape nodes, resize, a color picker, dark mode, and an updated minimap. in the next months we plan to refactor some others as well, so keep your eyes out for those updates.
 
@@ -65,23 +66,19 @@ The Shapes Pro Example has been refactored, and now includes features to drag-an
     src="https://pro-example-apps.vercel.app/shapes"
     className="shadow-xs"
   />
+  <div className="text-center text-gray-500 -mt-6">
+    Refreshed Shapes Pro Example with minimap, darkmode toggle, and resizeable
+    draggable shapes
+  </div>
 </Bleed>
-
-You can now fire up our Pro examples now using Vite (instead of create-react-app).
-
-<Image
-  alt="a code snippet entered into terminal showing how to quickly get a react flow Pro Example up and running using Vite"
-  src="/img/blog/2023-pro-platform-oss/pro-vite.png"
-  width={514}
-  height={379}
-  className="mt-4 mx-auto"
-/>
 
 ### Under the hood improvements 🏎
 
 In the new platform, we have migrated to the latest Nextjs version (using app router), replaced ChakraUI with TailwindCSS and our own UI package, and converted everything from JS to Typescript.
 
-# What do you think?
+When we created the Pro Platform last year, it was developed in a way that made the Pro Examples (which are not open source) inseparable from the platform that was hosting them. The Pro Example code now sits in a private repository so the Pro Platform code can be open sourced.
+
+# Let us know what you think 💭
 
 If you take a look, or would like to try using the platform for your own projects, we’d love to hear from you! We’re still working on the documentation on how to easily set this up and get it integrated with Nhost, mailjet, Stripe, etc.
 
