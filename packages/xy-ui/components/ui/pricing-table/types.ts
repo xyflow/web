@@ -18,12 +18,7 @@ export enum BillingInterval {
 
 export type FeatureConfig = {
   label: React.ReactNode;
-  description: React.ReactNode;
-  button?: {
-    label: string;
-    href: string;
-    external?: boolean;
-  };
+  description?: React.ReactNode;
 };
 
 export type PricingConfig = {

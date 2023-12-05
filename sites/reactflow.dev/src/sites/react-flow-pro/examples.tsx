@@ -8,7 +8,7 @@ import { getMdxPagesUnderRoute } from '@/utils';
 
 function getProExamplesUnderRoute(route) {
   return getMdxPagesUnderRoute(route).filter(
-    (page) => page.frontMatter?.sidebar_class_name === 'pro',
+    (page) => page.frontMatter?.is_pro_example,
   );
 }
 
@@ -17,10 +17,12 @@ function getProExamples() {
     (page) => page.kind === 'Folder',
   );
 
-  return exampleFolders.reduce((acc, folder) => {
-    const proExamplesInFolder = getProExamplesUnderRoute(folder.route);
-    return [...acc, ...proExamplesInFolder];
-  }, []);
+  return exampleFolders
+    .reduce((acc, folder) => {
+      const proExamplesInFolder = getProExamplesUnderRoute(folder.route);
+      return [...acc, ...proExamplesInFolder];
+    }, [])
+    .sort((a, b) => a.frontMatter?.title?.localeCompare(b.frontMatter?.title));
 }
 
 export default function ProExamples() {

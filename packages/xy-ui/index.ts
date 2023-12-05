@@ -7,6 +7,8 @@ export * from './components/ui/checkbox';
 export * from './components/ui/container';
 export * from './components/ui/content-grid';
 export * from './components/ui/emoji';
+export * from './components/ui/faq';
+export { default as reactFlowProFaqItems } from './components/ui/faq/items/react-flow-pro';
 export * from './components/ui/footer';
 export * from './components/ui/heading';
 export * from './components/ui/input';
@@ -24,6 +26,7 @@ export * from './components/ui/spinner';
 export * from './components/ui/stats';
 export * from './components/ui/tabs';
 export * from './components/ui/text';
+export * from './components/ui/tooltip';
 
 export * from './lib/utils';
 

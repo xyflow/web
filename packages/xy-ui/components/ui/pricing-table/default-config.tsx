@@ -13,36 +13,32 @@ const features: Record<string, FeatureConfig> = {
     label: (
       <span>
         Access to all{' '}
-        <Link variant="primary" href="/pro/examples">
+        <Link variant="primary" href="https://reactflow.dev/pro/examples">
           Pro Examples
         </Link>
       </span>
     ),
+  },
+  teamMembers1: {
+    label: 'Invite 1 team member',
     description:
-      'A continuously growing collection of advanced React Flow examples. During your subscription you can access the source code of all Pro examples.',
-    button: {
-      label: 'Pro Examples',
-      href: '/pro/examples',
-    },
+      'You can purchase additional seats through the platform as-needed.',
+  },
+  teamMembers5: {
+    label: 'Invite 5 team members',
+    description:
+      'You can purchase additional seats through the platform as-needed.',
+  },
+  teamMembers10: {
+    label: 'Invite 10 team members',
+    description:
+      'You can purchase additional seats through the platform as-needed.',
   },
   prioritizedIssues: {
     label: 'Prioritized Github Issues',
-    description:
-      'Your Github issues will be looked at first by our team. Please drop us a message at info@reactflow.dev with a link to your issue after creating it.',
-    button: {
-      label: 'Open Github Issue',
-      href: 'https://github.com/xyflow/xyflow/issues/new/choose',
-      external: true,
-    },
   },
   mitLicense: {
     label: 'Keep the library running and maintained under an MIT License',
-    description: 'Keep the library running and maintained under an MIT License',
-    button: {
-      label: 'MIT License',
-      href: 'https://github.com/xyflow/xyflow/blob/main/LICENSE',
-      external: true,
-    },
   },
 };
 
@@ -76,13 +72,14 @@ export const StarterPlan: SubscriptionPlan = {
   features: [
     features.proExamples,
     features.prioritizedIssues,
+    features.teamMembers1,
     features.mitLicense,
   ],
 };
 
 export const ProPlan: SubscriptionPlan = {
   id: PlanId.PRO,
-  label: 'Premium',
+  label: 'Professional',
   description:
     'Best for companies that want a direct wire to the React Flow team.',
   pricing: [
@@ -110,26 +107,13 @@ export const ProPlan: SubscriptionPlan = {
   features: [
     features.proExamples,
     features.prioritizedIssues,
+    features.teamMembers5,
     features.mitLicense,
     {
       label: 'Up to 1 hour of individual support via email per month',
-      description:
-        'Your direct wire to the React Flow team. We will try to point you in the right direction quickly if you encounter problems using React Flow.',
-      button: {
-        label: 'Contact Support',
-        href: 'mailto:support@reactflow.dev',
-        external: true,
-      },
     },
     {
       label: 'Introduction call with one of the creators of React Flow',
-      description:
-        'We are interested to learn more about your project and what you are building with React Flow. You can schedule a call with us so that we can find out how we can make React Flow even better in the future.',
-      button: {
-        label: 'Schedule Call',
-        href: 'https://cal.com/team/react-flow',
-        external: true,
-      },
     },
   ],
   highlighted: true,
@@ -146,39 +130,20 @@ export const EnterprisePlan: SubscriptionPlan = {
       label: (
         <span>
           Perpetual access to all{' '}
-          <Link variant="primary" href="/pro/examples">
+          <Link variant="primary" href="https://reactflow.dev/pro/examples">
             Pro Examples
           </Link>
         </span>
       ),
-      description:
-        'A continuously growing collection of advanced React Flow examples. During your subscription you can access the source code of all Pro examples.',
-      button: {
-        label: 'Pro Examples',
-        href: '/pro/examples',
-      },
     },
     features.prioritizedIssues,
+    features.teamMembers10,
     features.mitLicense,
     {
       label: '1 hour of individual support via voice, video or email per month',
-      description:
-        'Your direct wire to the React Flow team. We will try to point you in the right direction quickly if you encounter problems using React Flow.',
-      button: {
-        label: 'Contact Support',
-        href: 'mailto:support@reactflow.dev',
-        external: true,
-      },
     },
     {
       label: 'Custom procurement and payment process',
-      description:
-        'We will sign up for your vendor portal and support payment via bank transfer and PO.',
-      button: {
-        label: 'Contact Us',
-        href: 'mailto:info@reactflow.dev',
-        external: true,
-      },
     },
   ],
   buttonVariant: 'secondary',

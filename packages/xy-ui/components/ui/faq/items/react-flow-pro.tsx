@@ -1,7 +1,7 @@
-import React from 'react';
-import { Link } from '@xyflow/xy-ui';
+import { Link } from '../../link';
+import { type FAQItem } from '..';
 
-export default [
+const items: FAQItem[] = [
   {
     question: <>Is React Flow Pro a different library than React Flow?</>,
     answer: (
@@ -47,6 +47,7 @@ export default [
     ),
   },
   {
+    id: 'team-members',
     question: <>Can my team members access the pro examples?</>,
     answer: (
       <>
@@ -109,6 +110,7 @@ export default [
     ),
   },
   {
+    id: 'email-support',
     question: <>What is included in the individual email support?</>,
     answer: (
       <>
@@ -167,3 +169,5 @@ export default [
     ),
   },
 ];
+
+export default items;

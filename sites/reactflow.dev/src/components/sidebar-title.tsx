@@ -2,7 +2,6 @@ import type { InternalRoute } from '@/utils';
 
 const proExampleRoutes = {
   '/examples/nodes/dynamic-grouping': 'pro',
-  '/examples/nodes/resize-rotate-moveable-deprecated': 'pro',
   '/examples/nodes/shapes': 'pro',
   '/examples/layout/force-layout': 'pro',
   '/examples/layout/auto-layout': 'pro',

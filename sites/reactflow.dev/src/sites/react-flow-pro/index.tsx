@@ -1,11 +1,16 @@
-import Link from 'next/link';
 import Image from 'next/image';
-import { Button, PricingTable, Section } from '@xyflow/xy-ui';
+import Link from 'next/link';
+import {
+  Button,
+  PricingTable,
+  Section,
+  FAQ,
+  reactFlowProFaqItems,
+} from '@xyflow/xy-ui';
 import { BaseLayout, Hero, ImageSlider, SubscribeSection } from 'xy-shared';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 
 import ClientLogos from '@/components/client-logos';
-import FAQ from '@/components/faq';
 
 const sliderItems = [
   {
@@ -101,7 +106,7 @@ export default function ReactFlowPro() {
         items={sliderItems}
       />
 
-      <FAQ className="mt-32" />
+      <FAQ items={reactFlowProFaqItems} className="mt-32" />
       <SubscribeSection
         btnLink={`${process.env.NEXT_PUBLIC_PRO_PLATFORM_URL}/signup`}
         btnLabel="Sign Up Now"
