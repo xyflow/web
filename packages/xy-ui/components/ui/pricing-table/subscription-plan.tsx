@@ -1,7 +1,11 @@
 import Link from 'next/link';
 import cn from 'clsx';
-import { CheckCircleIcon } from '@heroicons/react/24/outline';
-import { Button } from '../../../';
+import {
+  CheckCircleIcon,
+  InformationCircleIcon,
+} from '@heroicons/react/24/outline';
+
+import { Button, Tooltip, TooltipContent, TooltipTrigger } from '../../../';
 
 import {
   BillingInterval,
@@ -42,7 +46,19 @@ function Features({
               'text-primary': highlighted,
             })}
           />
-          {item.label}
+          <div>
+            {item.label}
+            {item.description && (
+              <Tooltip>
+                <TooltipTrigger className="inline ml-0.5">
+                  <InformationCircleIcon className="w-[18px] h-[18px] shrink-0 text-gray-600" />
+                </TooltipTrigger>
+                <TooltipContent className="max-w-[200px]">
+                  {item.description}
+                </TooltipContent>
+              </Tooltip>
+            )}
+          </div>
         </li>
       ))}
     </ul>

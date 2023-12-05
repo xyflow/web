@@ -10,6 +10,7 @@ import {
   SelectContent,
   SelectItem,
   Container,
+  TooltipProvider,
 } from '../../../';
 
 import Plan from './subscription-plan';
@@ -41,57 +42,59 @@ const PricingTable = ({
   const isMonthly = billingInterval === BillingInterval.MONTH;
 
   return (
-    <div>
-      <div
-        className={cn(
-          'flex flex-wrap justify-between lg:justify-center relative mb-8',
-          className,
-        )}
-      >
-        <div>
-          <Button
-            variant={isMonthly ? 'default' : 'secondary'}
-            onClick={() => setBillingInterval(BillingInterval.MONTH)}
-            className="rounded-r-none"
-          >
-            Monthly
-          </Button>
-          <Button
-            variant={!isMonthly ? 'default' : 'secondary'}
-            onClick={() => setBillingInterval(BillingInterval.YEAR)}
-            className="rounded-l-none"
-          >
-            Yearly
-          </Button>
-        </div>
-        <Select
-          value={currency}
-          onValueChange={(value) => setCurrency(value as Currency)}
+    <TooltipProvider>
+      <div>
+        <div
+          className={cn(
+            'flex flex-wrap justify-between lg:justify-center relative mb-8',
+            className,
+          )}
         >
-          <SelectTrigger className="w-[100px] absolute right-0">
-            <SelectValue />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="usd">$ USD</SelectItem>
-            <SelectItem value="eur">€ EUR</SelectItem>
-          </SelectContent>
-        </Select>
-      </div>
-
-      <Container>
-        <div className={`grid grid-cols-1 lg:grid-cols-3 gap-0`}>
-          {plans.map((plan) => (
-            <Plan
-              {...plan}
-              currency={currency}
-              billingInterval={billingInterval}
-              onSelect={onSelect}
-              key={plan.id}
-            />
-          ))}
+          <div>
+            <Button
+              variant={isMonthly ? 'default' : 'secondary'}
+              onClick={() => setBillingInterval(BillingInterval.MONTH)}
+              className="rounded-r-none"
+            >
+              Monthly
+            </Button>
+            <Button
+              variant={!isMonthly ? 'default' : 'secondary'}
+              onClick={() => setBillingInterval(BillingInterval.YEAR)}
+              className="rounded-l-none"
+            >
+              Yearly
+            </Button>
+          </div>
+          <Select
+            value={currency}
+            onValueChange={(value) => setCurrency(value as Currency)}
+          >
+            <SelectTrigger className="w-[100px] absolute right-0">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="usd">$ USD</SelectItem>
+              <SelectItem value="eur">€ EUR</SelectItem>
+            </SelectContent>
+          </Select>
         </div>
-      </Container>
-    </div>
+
+        <Container>
+          <div className={`grid grid-cols-1 lg:grid-cols-3 gap-0`}>
+            {plans.map((plan) => (
+              <Plan
+                {...plan}
+                currency={currency}
+                billingInterval={billingInterval}
+                onSelect={onSelect}
+                key={plan.id}
+              />
+            ))}
+          </div>
+        </Container>
+      </div>
+    </TooltipProvider>
   );
 };
 
