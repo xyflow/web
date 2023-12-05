@@ -50,8 +50,8 @@ export default [
     question: <>Can my team members access the pro examples?</>,
     answer: (
       <>
-        Yes. You can add a team member's email address in the Pro Platform, and
-        they will receive an email to create an account.
+        Yes. You can add a team member{"'"}s email address in the Pro Platform,
+        and they will receive an email to create an account.
         <br />
         Then they will have access to the Pro Platform where they can access the
         Pro Example code.
