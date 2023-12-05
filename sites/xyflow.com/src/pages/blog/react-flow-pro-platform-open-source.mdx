@@ -17,20 +17,9 @@ import Image from 'next/image';
 
 <BlogPostLayout>
 
-We’re excited to announce that we just open sourced our Pro Platform! The Pro Platform is the website where React Flow Pro subscribers to access and view “[Pro Examples](https://reactflow.dev/pro/examples),” manage their subscription, and give team members access to the platform.
-We hope that some folks take a look, get inspired for their own projects, and that our Pro Subscribers like the new features we built 💫
+We’re excited to announce that we just open sourced our Pro Platform! 🚀 The Pro Platform is where React Flow Pro subscribers can access and view “[Pro Examples](https://reactflow.dev/pro/examples),” manage their subscription, and give team members access to the platform. We hope that some folks take a look, get inspired for their own projects, and that our Pro Subscribers like the new features we built 💫
 
-You can check out the [Github repo](https://github.com/xyflow/pro-platform) or try it out live by [signing up on the Pro Platform](https://pro.reactflow.dev).
-
-### Why open source it?
-
-We believe open source is the better way to develop software - freedom of information, accountability, an easy way to collect contributions and bug reports from users, allowing someone else to do it better, etc. We also love it when [OSS maintainers are paid for their work](https://www.xyflow.com/blog/asking-for-money-for-open-source), and we could imagine other folks using our Pro Platform around own open source projects (as a developer-focused alternative to something like [Ghost](https://ghost.org/) or [Patreon](https://www.patreon.com/)). Of course we’re far away from that, but open sourcing it and letting folks peek under the hood is a way to start.
-
-# New Features
-
-### Fresh look, new example viewer, better usability 🪩
-
-It looks ✨better✨ and it’s easier to get around. There’s a new Example Viewer which is faster because we don’t build the whole example on the client anymore.
+Check out the [Github repo](https://github.com/xyflow/pro-platform) or try it out live by [signing up on the Pro Platform](https://pro.reactflow.dev).
 
 <Image
   alt="The dashboard of React Flow Pro, which shows options to view Pro Examples, open a prioritized github issue, invite your team, schedule an onboarding call, or contact support via email."
@@ -39,6 +28,26 @@ It looks ✨better✨ and it’s easier to get around. There’s a new Example 
   height={524}
   className="mt-4"
 />
+<div className="text-center text-gray-500 mt-1">The Pro Platform dashboard</div>
+
+### Why open source it?
+
+We believe open source is the better way to make things - freedom of information, accountability, an easy way to collect contributions and bug reports from users, allowing someone else to do it better, etc. We also love it when [OSS maintainers are paid for their work](https://www.xyflow.com/blog/asking-for-money-for-open-source), and we could imagine other folks using our Pro Platform around own open source projects (as a code-oriented alternative to something like [Ghost](https://ghost.org/) or [Patreon](https://www.patreon.com/)). Of course we’re far away from that, but open sourcing it and letting folks peek under the hood is a way to start.
+
+# New Features
+
+### Fresh look, new example viewer, better usability 🪩
+
+It looks ✨better✨ and it’s easier to get around. There’s a new Example Viewer which is faster because we don’t build the whole example on the client anymore.
+
+<Image
+  alt="The Pro Example viewer, where a user cycles between tabs of previewing the example, looking at the code, and reading the guide."
+  src="/img/blog/2023-pro-platform-oss/pro-new-example-viewer-4.gif"
+  width={806}
+  height={524}
+  className="mt-4"
+/>
+<div className="text-center text-gray-500 mt-2">The new example viewer</div>
 
 ### Add and manage team members ⚽️
 
@@ -76,16 +85,16 @@ The Shapes Pro Example has been refactored, and now includes features to drag-an
 
 In the new platform, we have migrated to the latest Nextjs version (using app router), replaced ChakraUI with TailwindCSS and our own UI package, and converted everything from JS to Typescript.
 
-When we created the Pro Platform last year, it was developed in a way that made the Pro Examples (which are not open source) inseparable from the platform that was hosting them. The Pro Example code now sits in a private repository so the Pro Platform code can be open sourced.
+When we created the Pro Platform last year, it was developed in a way that made the Pro Examples (which are not open source) inseparable from the platform that was hosting them. The Pro Example code now sits in a private repository, separate from the platform's repository.
 
 # Let us know what you think 💭
 
-If you take a look, or would like to try using the platform for your own projects, we’d love to hear from you! We’re still working on the documentation on how to easily set this up and get it integrated with Nhost, mailjet, Stripe, etc.
+If you want to try using the platform for your own project, we’d love to hear from you! We’re still working on the documentation on how to easily set this up and get it integrated with Nhost, Mailjet, and Stripe, and would appreciate any feedback on how this could be helpful for you.
 
-And if you’d like to sign up for React Flow Pro, you can learn more about subscriptions at https://pro.reactflow.dev/.
+You can learn more about our React Flow Pro subscriptions [here](https://pro.reactflow.dev/).
 
 Cheers!
 
-The xyflow team
+The xyflow team ✨
 
 </BlogPostLayout>
