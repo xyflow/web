@@ -13,7 +13,7 @@ const features: Record<string, FeatureConfig> = {
     label: (
       <span>
         Access to all{' '}
-        <Link variant="primary" href="/pro/examples">
+        <Link variant="primary" href="https://reactflow.dev/pro/examples">
           Pro Examples
         </Link>
       </span>
@@ -22,7 +22,7 @@ const features: Record<string, FeatureConfig> = {
       'A continuously growing collection of advanced React Flow examples. During your subscription you can access the source code of all Pro examples.',
     button: {
       label: 'Pro Examples',
-      href: '/pro/examples',
+      href: 'https://reactflow.dev/pro/examples',
     },
   },
   teamMembers1: {
@@ -95,7 +95,7 @@ export const StarterPlan: SubscriptionPlan = {
 
 export const ProPlan: SubscriptionPlan = {
   id: PlanId.PRO,
-  label: 'Pro',
+  label: 'Professional',
   description:
     'Best for companies that want a direct wire to the React Flow team.',
   pricing: [
@@ -160,7 +160,7 @@ export const EnterprisePlan: SubscriptionPlan = {
       label: (
         <span>
           Perpetual access to all{' '}
-          <Link variant="primary" href="/pro/examples">
+          <Link variant="primary" href="https://reactflow.dev/pro/examples">
             Pro Examples
           </Link>
         </span>
