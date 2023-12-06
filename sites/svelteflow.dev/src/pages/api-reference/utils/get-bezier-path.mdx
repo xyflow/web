@@ -1,0 +1,45 @@
+---
+title: getBezierPath()
+description:
+  'The getBezierPath util returns everything you need to render a bezier edge
+  between two nodes.'
+---
+
+import { PropsTable } from '@/components/props-table';
+import { signature } from '@/page-data/reference/utils/getBezierPath.ts';
+
+# getBezierPath()
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/v11/packages/core/src/components/Edges/BezierEdge.tsx/#L48)
+
+The `getBezierPath` util returns everything you need to render a bezier edge
+between two nodes.
+
+```js
+import { Position, getBezierPath } from '@xyflow/svelte';
+
+const source = { x: 0, y: 20 };
+const target = { x: 150, y: 100 };
+
+const [path, labelX, labelY, offsetX, offsetY] = getBezierPath({
+  sourceX: source.x,
+  sourceY: source.y,
+  sourcePosition: Position.Right,
+  targetX: target.x,
+  targetY: target.y,
+  targetPosition: Position.Left,
+});
+
+console.log(path); //=> "M0,20 C75,20 75,100 150,100"
+console.log(labelX, labelY); //=> 75, 60
+console.log(offsetX, offsetY); //=> 75, 40
+```
+
+## Signature
+
+<PropsTable {...signature} />
+
+## Notes
+
+- This function returns a tuple (aka a fixed-size array) to make it easier to
+  work with multiple edge paths at once.
