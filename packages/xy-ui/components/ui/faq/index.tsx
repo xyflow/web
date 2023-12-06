@@ -20,6 +20,7 @@ export function FAQ({
 }: { className?: string; items?: FAQItem[] } = {}) {
   return (
     <ListWrapper
+      id="FAQ"
       title="Frequently Asked Questions"
       icon={InformationCircleIcon}
       iconClassName="text-react"
