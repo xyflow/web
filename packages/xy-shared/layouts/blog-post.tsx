@@ -45,7 +45,7 @@ export function BlogPostLayout({
       </Heading>
       <AuthorList authors={frontMatter.authors} className="mb-6" />
 
-      <div className="max-w-3xl mx-auto [&>p]:text-lg [&>p]:leading-loose [&>h2]:border-none [&>h2]:mt-16 [&>ul]:text-lg ">
+      <div className="max-w-3xl mx-auto [&>p]:text-lg [&>p]:leading-loose [&>h1]:mt-16 [&>h2]:border-none [&>h2]:mt-16 [&>ul]:text-lg ">
         {children}
       </div>
 
