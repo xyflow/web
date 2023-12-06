@@ -10,6 +10,7 @@ type ListWrapperProps = {
   icon?: HeroIcon;
   iconClassName?: string;
   subtitle?: string;
+  id?: string;
 };
 
 function ListWrapper({
@@ -19,9 +20,10 @@ function ListWrapper({
   subtitle,
   className,
   children,
+  id
 }: ListWrapperProps) {
   return (
-    <div className={cn('flex justify-center', className)}>
+    <div className={cn('flex justify-center', className)} id={id}>
       <div className="max-w-3xl w-full">
         {Icon && (
           <div className="flex justify-center items-center mb-4">
