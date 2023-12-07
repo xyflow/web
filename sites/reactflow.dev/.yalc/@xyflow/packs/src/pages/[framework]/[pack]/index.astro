@@ -1,0 +1,45 @@
+---
+import { parseFilesToRoutes } from "../../../utils/paths";
+
+import { DevFlow as MusicPackReact } from "../../../packs/music/index";
+import MusicPackSvelte from "../../../packs/music/index.svelte";
+
+export async function getStaticPaths() {
+  const files = import.meta.glob("../../../packs/*/*", {
+    eager: true,
+    import: "default",
+  });
+  return parseFilesToRoutes(files);
+}
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script is:inline src="https://cdn.tailwindcss.com"></script>
+    <style>
+      html,
+      body {
+        font-family: system-ui;
+        margin: 0;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    {
+      Astro.params.pack === "music" && (
+        <>
+          {Astro.params.framework === "react" && <MusicPackReact client:load />}
+          {Astro.params.framework === "svelte" && (
+            <MusicPackSvelte client:load />
+          )}
+        </>
+      )
+    }
+  </body>
+</html>

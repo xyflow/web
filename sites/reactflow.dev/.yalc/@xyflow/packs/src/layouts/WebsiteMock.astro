@@ -1,0 +1,110 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preload" href="/NTDapper-black.woff2" />
+    <link rel="preload" href="/NTDapper-bold.woff2" />
+    <link rel="preload" href="/NTDapper-medium.woff2" />
+    <link rel="preload" href="/NTDapper-regular.woff2" />
+    <style>
+      @font-face {
+        font-family: "NTDapper";
+        font-style: normal;
+        font-weight: 400;
+        src: url("/fonts/NTDapper-regular.woff2") format("woff2");
+      }
+      @font-face {
+        font-family: "NTDapper";
+        font-style: normal;
+        font-weight: 500;
+        src: url("/fonts/NTDapper-medium.woff2") format("woff2");
+      }
+      @font-face {
+        font-family: "NTDapper";
+        font-style: normal;
+        font-weight: 700;
+        src: url("/fonts/NTDapper-bold.woff2") format("woff2");
+      }
+      @font-face {
+        font-family: "NTDapper";
+        font-style: normal;
+        font-weight: 900;
+        src: url("/fonts/NTDapper-black.woff2") format("woff2");
+      }
+      html,
+      body {
+        font-family: "NTDapper";
+        margin: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+      }
+
+      nav {
+        widht: 100%;
+        height: 64px;
+        background: white;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        border-bottom: 1px solid #eee;
+      }
+
+      .logo {
+        height: 36px;
+        margin-left: 32px;
+        margin-right: 15px;
+      }
+
+      .title {
+        display: flex;
+        align-items: center;
+        margin-right: auto;
+      }
+
+      .placeholder {
+        width: 60px;
+        height: 14px;
+        background: #ddd;
+        margin: 0 9px;
+      }
+
+      .search {
+        background: rgb(243, 244, 246);
+        height: 36px;
+        width: 140px;
+        border-radius: 36px;
+        margin: 0 9px;
+      }
+
+      .pro {
+        background: rgba(255, 0, 115, 0.808);
+        height: 36px;
+        width: 140px;
+        border-radius: 36px;
+        margin: 0 9px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="title">
+        <img src="/react-flow-logo.svg" class="logo" />
+        <h1>React Flow</h1>
+      </div>
+      <div class="placeholder"></div>
+      <div class="placeholder"></div>
+      <div class="placeholder"></div>
+      <div class="placeholder"></div>
+      <div class="search"></div>
+      <div class="pro"></div>
+    </nav>
+    <slot />
+  </body>
+</html>

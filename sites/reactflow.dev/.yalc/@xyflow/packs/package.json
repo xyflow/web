@@ -1,0 +1,37 @@
+{
+  "name": "@xyflow/packs",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.3.1",
+    "@astrojs/react": "^3.0.6",
+    "@astrojs/svelte": "^4.0.4",
+    "@astrojs/tailwind": "^5.0.2",
+    "@codesandbox/sandpack-react": "^2.10.0",
+    "@codesandbox/sandpack-themes": "^2.0.21",
+    "@radix-ui/react-hover-card": "^1.0.7",
+    "@radix-ui/react-icons": "^1.3.0",
+    "@types/react": "^18.2.39",
+    "@types/react-dom": "^18.2.17",
+    "@xyflow/svelte": "^0.0.27",
+    "astro": "^3.6.1",
+    "clsx": "^2.0.0",
+    "prettier": "^3.1.0",
+    "prettier-plugin-astro": "^0.12.2",
+    "prettier-plugin-tailwindcss": "^0.5.7",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "reactflow": "^11.10.1",
+    "svelte": "^4.2.7",
+    "tailwindcss": "^3.3.5",
+    "typescript": "^5.3.2"
+  },
+  "yalcSig": "5d5f7feabd42a9e2f1b2bbec405bcd92"
+}

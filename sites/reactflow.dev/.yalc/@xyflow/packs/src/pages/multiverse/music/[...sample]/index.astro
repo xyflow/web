@@ -1,0 +1,54 @@
+---
+import WebsiteMock from "../../../../layouts/WebsiteMock.astro";
+
+import { parseFilesToSamples, type Sample } from "../../../../utils/paths";
+
+// Adjust the import here ------------- 👇
+import PackFlow from "../../../../packs/music";
+import type { GetStaticPaths } from "astro";
+
+export async function getStaticPaths() {
+  const files = import.meta.glob(
+    // And here ------- 👇
+    ["../../../../packs/music/**/**/*", "!**/index.tsx", "!**/*.css"],
+    { eager: true, as: "raw" },
+  );
+
+  const modules = import.meta.glob(
+    // And here ------- 👇
+    ["../../../../packs/music/**/**/*.tsx", "!**/index.tsx"],
+    { eager: true, import: "default", query: "?inline" },
+  );
+  const samples = parseFilesToSamples(files, modules);
+  const routes: ReturnType<GetStaticPaths> = [];
+  Object.keys(samples).forEach((sample) => {
+    routes.push({
+      params: {
+        sample,
+      },
+      props: {
+        samples,
+      },
+    });
+  });
+
+  routes.push({
+    params: {
+      sample: undefined,
+    },
+    props: {
+      samples,
+    },
+  });
+
+  return routes;
+}
+---
+
+<WebsiteMock>
+  <PackFlow
+    samples={Astro.props.samples as Record<string, Sample>}
+    initialLocation={(Astro.params.sample as string) ?? "home"}
+    client:load
+  />
+</WebsiteMock>

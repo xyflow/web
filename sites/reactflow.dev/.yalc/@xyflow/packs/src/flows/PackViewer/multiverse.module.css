@@ -1,0 +1,31 @@
+.nodeHighlightBox:hover::before {
+  box-sizing: content-box;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  content: "";
+  padding: 15px;
+  transform: translate(-15px, -15px);
+  pointer-events: none;
+  background: rgba(107, 188, 248, 0.21);
+  outline: dashed 1px rgb(107, 188, 248);
+}
+
+.edgeHighlightBox {
+  cursor: pointer;
+  position: absolute;
+  pointer-events: all;
+  z-index: 1001;
+  background: rgba(107, 188, 248, 0.21);
+  outline: dashed 1px rgb(107, 188, 248);
+}
+
+.tooltip {
+  backdrop-filter: blur(2px);
+  background: rgba(211, 237, 255, 0.8);
+  font-size: 0.8em;
+  z-index: 1002;
+  padding: 5px 10px;
+  border-radius: 4px;
+  color: rgb(82, 150, 203);
+}
