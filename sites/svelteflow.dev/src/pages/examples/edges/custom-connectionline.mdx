@@ -4,6 +4,7 @@ title: Connection Line
 
 import ExampleLayout from '@/layouts/example-with-frontmatter';
 import ExampleViewer from '@/components/example-viewer';
+import UnusedPropWarning from '@/components/unused-prop-warning';
 
 <ExampleLayout>
 A Connection Line is what you see when you click and drag out from a handle. It represents a possible edge and can snap to valid handles in close proximity.
@@ -11,3 +12,5 @@ You can implement your own Connection Line by passing a Svelte component with `s
 
 <ExampleViewer codePath="examples/edges/custom-connectionline" />
 </ExampleLayout>
+
+<UnusedPropWarning />

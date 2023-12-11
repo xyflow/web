@@ -4,6 +4,7 @@ title: Contextual Zoom
 
 import ExampleViewer from '@/components/example-viewer';
 import ExampleLayout from '@/layouts/example-with-frontmatter';
+import UnusedPropWarning from '@/components/unused-prop-warning';
 
 <ExampleLayout>
 This example shows how the current zoom level can be used by a node to decide which content to show.
@@ -14,3 +15,5 @@ We can access the zoom inside the viewport writable via the [`useSvelteStore` ho
   framework="svelte"
 />
 </ExampleLayout>
+
+<UnusedPropWarning />
