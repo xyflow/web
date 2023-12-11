@@ -1,11 +1,10 @@
-import fs from 'fs';
-import klaw from 'klaw';
 import { GetStaticPaths, GetStaticPathsResult, GetStaticProps } from 'next';
+import fs from 'fs';
+import { globSync } from 'glob';
 import path from 'path';
 
 import { PackViewer, type Sample, Musicpack } from '@xyflow/packs';
-import { glob, globSync } from 'glob';
-import { Noto_Sans_Tamil_Supplement } from 'next/font/google';
+import { BaseLayout } from 'xy-shared';
 
 const MODULE_PATH = 'node_modules/@xyflow/packs';
 const PACKS = { music: Musicpack };
@@ -89,13 +88,15 @@ export const getStaticProps = (async (context) => {
 
 export default ({ pack, sample, samples }) => {
   return (
-    <div style={{ width: '100vw', height: '100vh' }}>
-      <PackViewer
-        flowConfig={Musicpack.flowConfig}
-        initialLocation={sample ?? 'home'}
-        pack={pack}
-        samples={samples}
-      />
-    </div>
+    <BaseLayout>
+      <div style={{ width: '100%', height: '80vh' }}>
+        <PackViewer
+          flowConfig={Musicpack.flowConfig}
+          initialLocation={sample ?? 'home'}
+          pack={pack}
+          samples={samples}
+        />
+      </div>
+    </BaseLayout>
   );
 };
