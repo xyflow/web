@@ -5,6 +5,7 @@ description: This is an example of a custom node limiting the amount of connecti
 
 import ExampleLayout from '@/layouts/example-with-frontmatter';
 import ExampleViewer from '@/components/example-viewer';
+import UnusedPropWarning from '@/components/unused-prop-warning';
 
 <ExampleLayout>
 This is an example of a custom node with a custom handle that can limit the amount of connections a handle can have using the `isConnectable` prop.
@@ -13,3 +14,5 @@ as an arg for the `isConnectable` prop of the CustomHandle component.
 
 <ExampleViewer codePath="examples/nodes/connection-limit" />
 </ExampleLayout>
+
+<UnusedPropWarning />

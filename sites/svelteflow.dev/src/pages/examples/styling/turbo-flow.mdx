@@ -5,6 +5,7 @@ description: This example showcases how you can recreate the style that is used 
 
 import ExampleViewer from '@/components/example-viewer';
 import ExampleLayout from '@/layouts/example-with-frontmatter';
+import UnusedPropWarning from '@/components/unused-prop-warning';
 
 <ExampleLayout>
 Every part of the Svelte Flow UI is customizable. As the name implies the look is taken from the beautiful [turbo.build](https://turbo.build/pack/docs/core-concepts#function-level-caching) website. You can find more information about custom styles in the [theming guide](/learn/guides/theming). (Svelte Flow uses Turborepo and we love it 💜)
@@ -17,3 +18,5 @@ Every part of the Svelte Flow UI is customizable. As the name implies the look i
   }}
 />
 </ExampleLayout>
+
+<UnusedPropWarning />
