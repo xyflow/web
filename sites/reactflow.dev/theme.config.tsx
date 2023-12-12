@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useConfig, Navbar } from 'nextra-theme-docs';
 import { Footer, Button, LogoLabel } from '@xyflow/xy-ui';
@@ -35,20 +34,14 @@ export default {
     titleComponent: SidebarTitle,
   },
   banner: {
+    key: 'survey-2023',
     text: (
-      <a
+      <Link
         className="flex justify-center items-center max-w-xs mx-auto hover:underline"
-        href="https://svelteflow.dev"
+        href="/developer-survey-2023"
       >
-        <Image
-          alt=""
-          width={15}
-          height={25}
-          src="/img/svelte-logo.svg"
-          className="mr-2"
-        />
-        <span>We just launched Svelte Flow!</span>
-      </a>
+        📣 Take the 2023 React Flow Developer Survey
+      </Link>
     ),
   },
   navbar: {
