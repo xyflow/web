@@ -47,3 +47,18 @@ html:has(body.nx-overflow-hidden) nav {
 .nextra-banner-container {
   @apply bg-[linear-gradient(1deg,#383838,#212121)];
 }
+
+.developer-survey-2023 [dir='ltr'] {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.developer-survey-2023 .nx-mx-auto {
+  flex-grow: 1;
+  width: 100%;
+}
+
+.developer-survey-2023 footer {
+  display: none;
+}

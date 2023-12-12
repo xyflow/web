@@ -68,5 +68,11 @@
     "theme": {
       "layout": "raw"
     }
+  },
+  "developer-survey-2023": {
+    "display": "hidden",
+    "theme": {
+      "layout": "raw"
+    }
   }
 }

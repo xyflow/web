@@ -21,6 +21,7 @@
     "@next/mdx": "^13.4.19",
     "@react-three/fiber": "^8.13.7",
     "@stackblitz/sdk": "^1.9.0",
+    "@typeform/embed-react": "^3.9.0",
     "@types/three": "^0.155.1",
     "@xyflow/xy-ui": "workspace:*",
     "clsx": "^1.2.1",
