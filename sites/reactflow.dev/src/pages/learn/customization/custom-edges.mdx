@@ -173,11 +173,11 @@ export default function CustomEdge({ id, sourceX, sourceY, targetX, targetY }) {
 
 <Callout type="info">
   To make sure our edge labels are interactive and not just for presentation, it
-  is important to add `pointer-evens: all` to the label's style. This will ensure
+  is important to add `pointer-events: all` to the label's style. This will ensure
   that the label is clickable.
 
 And just like with interactive controls in custom nodes, we need to remember
-to add the `nodrag` and `nopan` classes to the label to stop mouse events also
+to add the `nodrag` and `nopan` classes to the label to stop mouse events from
 controlling the canvas.
 
 </Callout>
