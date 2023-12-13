@@ -50,7 +50,6 @@ export const TargetHandleWithValidation = ({ position, source }) => (
     type="target"
     position={position}
     isValidConnection={(connection) => connection.source === source}
-    on:connect
     style={{ background: '#fff' }}
   />
 );

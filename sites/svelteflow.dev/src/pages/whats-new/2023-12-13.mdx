@@ -1,0 +1,33 @@
+---
+title: New release 0.0.29
+description: The best Svelte Flow version so far
+authors: [moritz]
+date: '2023-12-13'
+---
+
+# New Release 0.0.29
+
+Another huge update for Svelte Flow 🙏 Creating reactive flows will be way easier with the new hooks and functions. You can now subscribe to connected nodes, receive data and update nodes more easily. We fix a big issue about the `<Handle />` component. No more `on:connect` that only worked for target `<Handle />` components but `onconnect` and `ondisconnect` that works for every `<Handle />`.
+
+Check this [Reactive Flow example](/examples/interaction/reactive-flow) to see the new helpers in action.
+
+### New Features
+
+- add [`useHandleConnections`](/api-reference/hooks/use-handle-connections) hook for receiving connected node and handle ids for a specific handle
+- add [`useNodesData(ids: string | string[])`](/api-reference/hooks/use-nodes-data) hook for receiving data from other nodes
+- new `updateNode` and `updateNodeData` for [`useSvelteFlow`](/api-reference/hooks/use-svelte-flow) to update a node or the data object
+- add `onedgecreate` function for passing a certain id or other attributes to a newly created edge
+
+### Breaking
+
+- replace `on:connect`, `on:connectstart` and `on:connectend` with `onconnect`, `onconnectstart` and `onconnectend`, no need to forward `on:connect..` anymore
+
+### Fixes and minor changes
+
+- `onconnect` and `ondisconnect` callback work for `<Handle />` component
+- don't delete a node when user presses Backspace inside an input/textarea/.nokey element
+- `bgColor` prop for Background didn't work
+- prefix css vars with "xy-"
+- don't update nodes and edges on pane click if not necessary
+- cleaner types for exported edges
+- fix `getIntersectingNodes` bug when passing `Rect`

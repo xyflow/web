@@ -20,7 +20,7 @@
     on:input={(evt) => data.color.set(evt.target?.value)}
     value={$color}
   />
-  <Handle type="source" position={Position.Right} on:connect on:connectend on:connectstart />
+  <Handle type="source" position={Position.Right} />
 </div>
 
 <style>

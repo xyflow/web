@@ -7,23 +7,9 @@
 </script>
 
 <div class="node">
-  <Handle
-    type="source"
-    position={Position.Left}
-    id="left"
-    on:connect
-    on:connectend
-    on:connectstart
-  />
+  <Handle type="source" position={Position.Left} id="left" />
   {data?.label}
-  <Handle
-    type="source"
-    position={Position.Right}
-    id="right"
-    on:connect
-    on:connectend
-    on:connectstart
-  />
+  <Handle type="source" position={Position.Right} id="right" />
 </div>
 
 <style>

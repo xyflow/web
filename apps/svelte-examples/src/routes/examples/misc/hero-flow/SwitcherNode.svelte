@@ -16,7 +16,7 @@
 </script>
 
 <NodeWrapper {label}>
-  <Handle type="source" position={Position.Right} on:connect on:connectend on:connectstart />
+  <Handle type="source" position={Position.Right} />
   <div class="flex flex-col nodrag">
     {#each options as option}
       <label class="flex">

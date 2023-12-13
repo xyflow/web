@@ -19,16 +19,10 @@
     type="target"
     position={Position.Top}
     class="w-16 !bg-teal-500 rounded-none border-none"
-    on:connect
-    on:connectend
-    on:connectstart
   />
   <Handle
     type="source"
     position={Position.Bottom}
     class="w-16 !bg-teal-500 rounded-none border-none"
-    on:connect
-    on:connectend
-    on:connectstart
   />
 </div>

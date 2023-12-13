@@ -86,19 +86,16 @@ export const signature: PropsTableProps = {
       description: 'Transforms a Svelte position to a screen position.',
     },
     {
-      name: 'getConnectedEdges',
-      type: `(id: string | (Node | { id: Node['id'] })[]) => Edge[]`,
-      description: '',
+      name: 'updateNode',
+      type: `(id: string, node: Node | (node: Node) => Partial<Node>, options?: { replace: boolean }) => void`,
+      description:
+        'Function for updating a node. The passed node or function result gets merged into to the existing node. You can change that behaviour and replace the node by passing `options.replace = true`.',
     },
     {
-      name: 'getIncomers',
-      type: `(node: string | Node | { id: Node['id'] }) => Node[]`,
-      description: '',
-    },
-    {
-      name: 'getOutgoers',
-      type: ` (node: string | Node | { id: Node['id'] }) => Node[]`,
-      description: '',
+      name: 'updateNodeData',
+      type: `(id: string, data: object | (node: Node) => object, options?: { replace: boolean }) => void`,
+      description:
+        'Function for updating node data. The passed data or function result gets merged into to the existing node data. You can change that behaviour and replace the node by passing `options.replace = true`.',
     },
   ],
 };

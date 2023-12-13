@@ -16,16 +16,18 @@
   const nodes = writable<Node[]>(initialNodes);
   const edges = writable<Edge[]>([]);
 
-  let connectingNodeId: string = '0';
+  let connectingNodeId: string | null = '0';
   let rect: DOMRectReadOnly;
   let id = 1;
   const getId = () => `${id++}`;
 
   const { screenToFlowPosition } = useSvelteFlow();
 
-  function handleConnectEnd({ detail: { event } }: { detail: { event: MouseEvent | TouchEvent } }) {
+  function handleConnectEnd(event: MouseEvent | TouchEvent) {
+    if (connectingNodeId === null) return;
+
     // See of connection landed inside the flow pane
-    const targetIsPane = event.target?.classList.contains('svelte-flow__pane');
+    const targetIsPane = (event.target as Element)?.classList.contains('svelte-flow__pane');
     if (targetIsPane) {
       const id = getId();
       const newNode: Node = {
@@ -60,11 +62,11 @@
     {edges}
     fitView
     fitViewOptions={{ padding: 2 }}
-    on:connectstart={({ detail: { nodeId } }) => {
+    onconnectstart={(_, { nodeId }) => {
       // Memorize the nodeId you start draggin a connection line from a node
       connectingNodeId = nodeId;
     }}
-    on:connectend={handleConnectEnd}
+    onconnectend={handleConnectEnd}
   >
     <Background />
   </SvelteFlow>

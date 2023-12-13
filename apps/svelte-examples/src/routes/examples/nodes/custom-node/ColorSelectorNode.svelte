@@ -9,15 +9,7 @@
   const { color } = data;
 </script>
 
-<Handle
-  type="target"
-  position={Position.Left}
-  style="background: #555;"
-  {isConnectable}
-  on:connect
-  on:connectend
-  on:connectstart
-/>
+<Handle type="target" position={Position.Left} style="background: #555;" {isConnectable} />
 <div>
   Custom Color Picker Node: <strong>{$color}</strong>
 </div>
@@ -35,9 +27,6 @@
   id="a"
   style="top: 10px; background: #555;"
   {isConnectable}
-  on:connect
-  on:connectend
-  on:connectstart
 />
 <Handle
   type="source"
@@ -45,9 +34,6 @@
   id="b"
   style="bottom: 10px; top: auto; background: #555;"
   {isConnectable}
-  on:connect
-  on:connectend
-  on:connectstart
 />
 
 <style>

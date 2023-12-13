@@ -10,6 +10,7 @@ type PropsTableProps = {
     default?: string;
     description?: string;
     example?: string;
+    optional?: boolean;
   }[];
   links?: Record<string, string>;
   info?: Record<string, string>;
@@ -75,9 +76,14 @@ function PropsTable({ props: data, links = {} }: PropsTableProps) {
                         {prop.name}
                       </span>
                     ) : (
-                      <code className="bg-gray-50 px-1.5 py-0.5 border border-gray-200 rounded-sm">
-                        {prop.name}
-                      </code>
+                      <>
+                        <code className="bg-gray-50 px-1.5 py-0.5 border border-gray-200 rounded-sm">
+                          {prop.name}
+                        </code>
+                        {prop.optional && (
+                          <span className="ml-1 text-gray-500">(optional)</span>
+                        )}
+                      </>
                     ))}
                 </div>
               </td>

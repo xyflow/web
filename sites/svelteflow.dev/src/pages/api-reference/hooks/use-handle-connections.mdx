@@ -1,0 +1,35 @@
+---
+title: useHandleConnections
+description: This hook can be used to get notified when the connections of a handle change.
+---
+
+import { PropsTable } from '@/components/props-table';
+import { signature } from '@/page-data/reference/hooks/useHandleConnections.ts';
+
+# useHandleConnections
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/hooks/useHandleConnections.ts)
+
+This hook can be used to get notified when the connections of a handle change.
+
+```svelte
+<script lang="ts">
+  import { useHandleConnections } from '@xyflow/svelte';
+
+  const connections = useHandleConnections({ id: 'node-id', type: 'target' });
+
+  $: {
+    // This will be called whenever connections change
+    // for the target handle in the node with id 'node-id'
+    console.log($connections);
+  }
+</script>
+```
+
+## Signature
+
+<PropsTable {...signature} />
+
+## Notes
+
+- Check the [Reactive Flow example](/examples/interaction/reactive-flow) to see how this hook can be used

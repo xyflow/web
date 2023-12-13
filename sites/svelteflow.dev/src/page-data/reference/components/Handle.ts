@@ -28,9 +28,12 @@ export const handleProps: PropsTableProps = {
     //   description: `Dictates whether a connection can end on this handle.`,
     // },
     {
-      name: 'on:connect?',
-      type: '(event: CustomEvent<{ connection: Connection }>) => void',
-      description: `This event only gets fired for the source handle. We are working on a better solution to get notied when a connection is created.`,
+      name: 'onconnect?',
+      type: '(connection: Connection[]) => void',
+    },
+    {
+      name: 'ondisconnect?',
+      type: '(connection: Connection[]) => void',
     },
   ],
 };

@@ -7,42 +7,10 @@
 
 <div class="node">
   {data.label}
-  <Handle
-    type="source"
-    position={Position.Top}
-    id="a"
-    class="handle"
-    on:connect
-    on:connectend
-    on:connectstart
-  />
-  <Handle
-    type="source"
-    position={Position.Right}
-    id="b"
-    class="handle"
-    on:connect
-    on:connectend
-    on:connectstart
-  />
-  <Handle
-    type="source"
-    position={Position.Bottom}
-    id="c"
-    class="handle"
-    on:connect
-    on:connectend
-    on:connectstart
-  />
-  <Handle
-    type="source"
-    position={Position.Left}
-    id="d"
-    class="handle"
-    on:connect
-    on:connectend
-    on:connectstart
-  />
+  <Handle type="source" position={Position.Top} id="a" class="handle" />
+  <Handle type="source" position={Position.Right} id="b" class="handle" />
+  <Handle type="source" position={Position.Bottom} id="c" class="handle" />
+  <Handle type="source" position={Position.Left} id="d" class="handle" />
 </div>
 
 <style>

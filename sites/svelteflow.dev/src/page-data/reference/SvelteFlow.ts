@@ -135,6 +135,11 @@ export const edgeProps: PropsTableProps = {
       are added to the flow. Properties on a new edge will override these defaults
       if they exist.`,
     },
+    {
+      name: 'onedgecreate',
+      type: `(connection: Connection) => Edge`,
+      description: `This handler gets called when a new edge is created. You can use it to modify the newly created edge.`,
+    },
   ],
 };
 
@@ -223,23 +228,22 @@ export const selectionEventHandlers: PropsTableProps = {
 export const connectionEventHandlerProps: PropsTableProps = {
   props: [
     {
-      name: 'on:connectstart',
-      type: `(event: CustomEvent<{
-        event: MouseEvent | TouchEvent;
+      name: 'onconnectstart',
+      type: `(event: MouseEvent | TouchEvent, params: {
         nodeId?: string;
         handleId?: string;
         handleType?: HandleType;
-      }>) => void`,
+      }) => void`,
       description: `When a user starts to drag a connection line, this event gets fired.`,
     },
     {
-      name: 'on:connect',
-      type: '(event: CustomEvent<{ connection: Connection }>) => void',
+      name: 'onconnect',
+      type: '(connection: Connection) => void',
       description: `This event gets fired when a connection successfully completes.`,
     },
     {
-      name: 'on:connectend',
-      type: '(event: CustomEvent<{ event: MouseEvent | TouchEvent }>) => void',
+      name: 'onconnectend',
+      type: '(event: MouseEvent | TouchEvent) => void',
       description: `Whenever the user drops the connection line, this events get fired. No matter if a connection was created or not.`,
     },
   ],

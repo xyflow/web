@@ -13,6 +13,8 @@ export const svelteFlowLinks = Object.entries(svelteFlowTypes).reduce<
 const externalReactLinks = {
   Writable:
     'https://github.com/sveltejs/svelte/blob/3d20b392895b54b75b840fda6511840cc6a7a371/packages/svelte/src/runtime/store/public.d.ts#L37',
+  Readable:
+    'https://github.com/sveltejs/svelte/blob/3d20b392895b54b75b840fda6511840cc6a7a371/packages/svelte/src/runtime/store/public.d.ts#L27',
   ComponentType:
     'https://github.com/sveltejs/svelte/blob/3d20b392895b54b75b840fda6511840cc6a7a371/packages/svelte/src/runtime/internal/public.d.ts#L67',
   SvelteComponent:
