@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Text } from '@xyflow/xy-ui';
+import { Image } from '../';
 import { MDXRemote, type MDXRemoteSerializeResult } from 'next-mdx-remote';
 import TimeAgo from 'timeago-react';
 
@@ -36,7 +37,7 @@ export function TimelineEvent({
       <div className="pl-2">
         <MDXRemote
           frontmatter={frontmatter}
-          components={{ ExampleViewer: exampleViewer }}
+          components={{ ExampleViewer: exampleViewer, Image }}
           {...src}
         />
 
