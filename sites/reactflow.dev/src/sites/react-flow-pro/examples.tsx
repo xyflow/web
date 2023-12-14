@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { getPagesUnderRoute } from 'nextra/context';
+import { useSSG } from 'nextra/ssg';
 import { ContentGrid, ContentGridItem, Button } from '@xyflow/xy-ui';
 import { BaseLayout, Hero, ProjectPreview, SubscribeSection } from 'xy-shared';
 import { SparklesIcon } from '@heroicons/react/24/outline';
@@ -26,7 +27,32 @@ function getProExamples() {
 }
 
 export default function ProExamples() {
+  const { remoteProExamples } = useSSG();
   const proExamples = getProExamples();
+
+  // @todo: this can be simplified if the ids of the pro examples match the remote ids (e.g workflow-builder-starter -> workflow-builder)
+  // it that's done we can remove /img/pro-examples entirely
+  const examples = proExamples.reduce((result, curr) => {
+    const remote = remoteProExamples.find((remote) => remote.id === curr.name);
+
+    if (remote) {
+      result.push({
+        ...remote,
+        route: curr.route,
+        image: `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${remote.id}/thumbnail.jpg`,
+      });
+    } else {
+      result.push({
+        id: curr.name,
+        route: curr.route,
+        name: curr.frontMatter?.title,
+        description: curr.frontMatter?.description,
+        image: `/img/pro-examples/${curr.name}.jpg`,
+      });
+    }
+
+    return result;
+  }, []);
 
   return (
     <BaseLayout>
@@ -51,13 +77,12 @@ export default function ProExamples() {
         showGradient
       />
       <ContentGrid className="mt-20">
-        {proExamples.map((page) => (
-          <ContentGridItem key={page.route} route={page.route}>
+        {examples.map((example) => (
+          <ContentGridItem key={example.id} route={example.route}>
             <ProjectPreview
-              image={`/img/pro-examples/${page.name}.jpg`}
-              title={page.frontMatter?.title}
-              description={page.frontMatter?.description}
-              authors={page.frontMatter?.authors}
+              image={example.image}
+              title={example.name}
+              description={example.description}
               linkLabel="View Example"
             />
           </ContentGridItem>

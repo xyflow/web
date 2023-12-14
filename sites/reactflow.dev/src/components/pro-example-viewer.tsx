@@ -48,7 +48,7 @@ export default function ({
 
       <div>
         <iframe
-          src={`https://pro-examples.reactflow.dev/${slug}`}
+          src={`${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${slug}`}
           className="block h-[645px] w-full bg-white"
         />
       </div>

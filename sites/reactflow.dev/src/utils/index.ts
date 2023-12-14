@@ -26,4 +26,18 @@ export function getPrevAndNextPagesByTitle(title, route: InternalRoute) {
   return [prevPage, nextPage];
 }
 
+// @todo use generic for the return type here?
+export async function fetchJSON(url: string): Promise<Record<string, any>> {
+  let json = {};
+
+  try {
+    const resp = await fetch(url, { headers: { 'User-Agent': 'webkid' } });
+    json = await resp.json();
+  } catch (err) {
+    console.log(err);
+  }
+
+  return json;
+}
+
 export type { Route, ExternalRoute, InternalRoute };
