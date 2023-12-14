@@ -6,12 +6,11 @@
 .sidebar-title.pro:after {
   content: 'Pro';
   display: inline-block;
-  font-size: 12px;
-  margin-left: 10px;
-  background-color: hsl(var(--primary));
-  color: white;
-  border-radius: 4px;
-  padding: 2px 5px;
+  @apply bg-primary/10 border border-primary text-primary text-xs ml-1.5 px-1.5 font-bold rounded-full;
+}
+
+li.active .sidebar-title.pro:after {
+  @apply bg-primary border-primary text-white;
 }
 
 /* if there is no content in the toc, we don't want it to take up the space */

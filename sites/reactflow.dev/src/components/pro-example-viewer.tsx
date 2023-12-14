@@ -1,29 +1,55 @@
 import Link from 'next/link';
-import { Container, Text, Button } from '@xyflow/xy-ui';
+import { Container, ContainerProps, Text, Button, cn } from '@xyflow/xy-ui';
 
-export default function ({ slug }: { slug: string }) {
+export default function ({
+  slug,
+  variant = 'default',
+}: {
+  slug: string;
+  variant?: ContainerProps['variant'];
+}) {
+  const isLightMode = variant === 'default';
+
+  const teaserClasses = cn(
+    'px-6 py-8 flex flex-wrap items-center justify-between gap-x-4 gap-y-2',
+    {
+      'bg-gradient': isLightMode,
+      'bg-[length:200%]': isLightMode,
+      'bg-center': isLightMode,
+    },
+  );
+
   return (
-    <Container variant="dark" className="mt-8">
-      <div className="p-8">
-        <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 mb-8">
-          <Text>
-            This is a Pro example. You can access the annotated source code if
-            you are subscribed to{' '}
-            <Link className="underline" href="/pro">
-              React Flow Pro
-            </Link>
-            .
-          </Text>
-          <Button variant="secondary" className="text-primary shrink-0">
+    <Container className="mt-7" variant={variant}>
+      <div className={teaserClasses}>
+        <Text className="flex-1 basis-full max-w-xl">
+          <strong>This is a Pro example.</strong> Get{' '}
+          <Link className="underline" href="/pro/examples">
+            every pro example
+          </Link>
+          , 1:1 support from the xyflow team and prioritized Github issues with
+          a{' '}
+          <Link className="underline" href="/pro">
+            React Flow Pro subscription
+          </Link>
+          .
+        </Text>
+        <div className="flex space-x-4">
+          <Button asChild className="shrink-0">
+            <Link href="/pro">See Pricing Plans</Link>
+          </Button>
+          <Button asChild variant="secondary" className="text-primary shrink-0">
             <a href={`https://pro.reactflow.dev/examples/react/${slug}`}>
-              View Source Code
+              Sign In
             </a>
           </Button>
         </div>
+      </div>
 
+      <div>
         <iframe
-          src={`https://pro-example-apps.vercel.app/${slug}`}
-          className="block h-[645px] w-full rounded-xl bg-white"
+          src={`https://pro-examples.reactflow.dev/${slug}`}
+          className="block h-[645px] w-full bg-white"
         />
       </div>
     </Container>

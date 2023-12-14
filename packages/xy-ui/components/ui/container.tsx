@@ -29,7 +29,7 @@ const innerContainerVariants = cva('border border-solid', {
       dark: 'border-gray-700 text-white bg-gradient-to-br from-black from-15% via-[#311c33] via-65% to-[#1c1826]',
     },
     size: {
-      default: 'rounded-[18px]',
+      default: 'rounded-[22px]',
       sm: 'rounded-[9px]',
     },
   },
