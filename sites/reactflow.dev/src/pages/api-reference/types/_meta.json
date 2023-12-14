@@ -21,5 +21,7 @@
   "react-flow-instance": "ReactFlowInstance",
   "react-flow-json-object": "ReactFlowJsonObject",
   "resize-params": "ResizeParams",
-  "viewport": "Viewport"
+  "viewport": "Viewport",
+  "node-origin": "NodeOrigin",
+  "xy-position": "XYPosition"
 }
