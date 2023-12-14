@@ -513,13 +513,6 @@ export const interactionProps: PropsTableProps = {
       any type to one another. The strict mode will only allow you to connect
       source handles to target handles.`,
     },
-    {
-      name: 'disabledKeyboardA11y',
-      type: 'boolean',
-      default: 'false',
-      description: `You can use this prop to disable keyboard accessibility fetures
-      such as moving selected nodes with the arrow keys.`,
-    },
   ],
 };
 
@@ -581,6 +574,13 @@ export const keyboardProps: PropsTableProps = {
       description: `If a key is set, you can pan the viewport while that key is
       held down even if panOnScroll is set to false. By setting this prop to null
       you can disable this functionality.`,
+    },
+    {
+      name: 'disabledKeyboardA11y',
+      type: 'boolean',
+      default: 'false',
+      description: `You can use this prop to disable keyboard accessibility features
+      such as selecting nodes or moving selected nodes with the arrow keys.`,
     },
   ],
 };
