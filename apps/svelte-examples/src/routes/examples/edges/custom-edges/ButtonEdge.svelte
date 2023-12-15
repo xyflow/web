@@ -1,5 +1,11 @@
 <script lang="ts">
-  import { getBezierPath, BaseEdge, type EdgeProps, EdgeLabelRenderer } from '@xyflow/svelte';
+  import {
+    getBezierPath,
+    BaseEdge,
+    type EdgeProps,
+    EdgeLabelRenderer,
+    useEdges
+  } from '@xyflow/svelte';
 
   type $$Props = EdgeProps;
 
@@ -21,6 +27,10 @@
     targetY,
     targetPosition
   });
+
+  const edges = useEdges();
+
+  const onEdgeClick = () => edges.update((eds) => eds.filter((edge) => edge.id !== id));
 </script>
 
 <BaseEdge path={edgePath} {markerEnd} {style} />
@@ -29,15 +39,7 @@
     class="edgeButtonContainer nodrag nopan"
     style:transform="translate(-50%, -50%) translate({labelX}px,{labelY}px)"
   >
-    <button
-      class="edgeButton"
-      on:click={(event) => {
-        event.stopPropagation();
-        alert(`remove ${id}`);
-      }}
-    >
-      ×
-    </button>
+    <button class="edgeButton" on:click={onEdgeClick}> × </button>
   </div>
 </EdgeLabelRenderer>
 
