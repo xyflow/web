@@ -50,18 +50,22 @@ const PricingTable = ({
             className,
           )}
         >
-          <div>
+          <div className="rounded-full flex gap-1 bg-gray-100 p-2 ">
             <Button
-              variant={isMonthly ? 'default' : 'secondary'}
+              variant="secondary"
               onClick={() => setBillingInterval(BillingInterval.MONTH)}
-              className="rounded-r-none"
+              className={
+                isMonthly ? '' : 'text-gray-400 bg-gray-100 shadow-none'
+              }
             >
               Monthly
             </Button>
             <Button
-              variant={!isMonthly ? 'default' : 'secondary'}
+              variant="secondary"
               onClick={() => setBillingInterval(BillingInterval.YEAR)}
-              className="rounded-l-none"
+              className={
+                !isMonthly ? '' : 'text-gray-400 bg-gray-100 shadow-none'
+              }
             >
               Yearly
             </Button>
