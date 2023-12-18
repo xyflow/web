@@ -16,7 +16,7 @@ This hook can be used to get notified when the connections of a handle change.
 <script lang="ts">
   import { useHandleConnections } from '@xyflow/svelte';
 
-  const connections = useHandleConnections({ id: 'node-id', type: 'target' });
+  const connections = useHandleConnections({ nodeId: 'node-id', type: 'target' });
 
   $: {
     // This will be called whenever connections change
