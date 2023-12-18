@@ -1,17 +1,5 @@
-import type { InternalRoute } from '@/utils';
-
-const proExampleRoutes = {
-  '/examples/nodes/dynamic-grouping': 'pro',
-  '/examples/nodes/shapes': 'pro',
-  '/examples/layout/force-layout': 'pro',
-  '/examples/layout/auto-layout': 'pro',
-  '/examples/layout/expand-collapse': 'pro',
-  '/examples/layout/workflow-builder-starter': 'pro',
-  '/examples/interaction/collaborative': 'pro',
-  '/examples/interaction/helper-lines': 'pro',
-  '/examples/interaction/undo-and-redo': 'pro',
-  '/examples/interaction/copy-and-paste': 'pro',
-} satisfies { [K in InternalRoute]?: string };
+import { cn } from '@xyflow/xy-ui';
+import { isProExample } from '@/utils';
 
 export default function SidebarTitle({
   title,
@@ -22,9 +10,7 @@ export default function SidebarTitle({
   type: string;
   route: string;
 }) {
-  return (
-    <div className={`sidebar-title ${proExampleRoutes[route] ?? ''}`}>
-      {title}
-    </div>
-  );
+  const className = cn('sidebar-title', { pro: isProExample(route) });
+
+  return <div className={className}>{title}</div>;
 }

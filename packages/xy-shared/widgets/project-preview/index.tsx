@@ -59,7 +59,7 @@ export function ProjectPreview({
             alt={`${title} screenshot`}
             className="object-cover"
             fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 600px, 600px"
+            sizes="(max-width: 768px) 100vw, 500px"
           />
         </Container>
       )}

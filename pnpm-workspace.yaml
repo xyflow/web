@@ -2,6 +2,3 @@ packages:
   - 'apps/*'
   - 'sites/*'
   - 'packages/*'
-  - 'sites/pro.xyflow.com/pro-examples/examples'
-  - 'sites/pro.xyflow.com/pro-examples/viewer'
-  - 'sites/pro.xyflow.com/pro-examples/packages/*'

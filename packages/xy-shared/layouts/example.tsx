@@ -20,12 +20,11 @@ export function ExampleLayout({ frontMatter, children }: ExampleLayoutProps) {
         </h1>
         {frontMatter.is_pro_example && (
           <div className="bg-primary/5 border border-primary text-primary px-2 pb-0.5 font-bold rounded-full">
-            pro
+            Pro
           </div>
         )}
       </div>
       {children}
-      {frontMatter.is_pro_example && <SubscribeSection />}
     </>
   );
 }

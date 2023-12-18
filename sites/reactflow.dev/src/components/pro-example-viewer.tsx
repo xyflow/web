@@ -25,14 +25,10 @@ export default function ({
         <Text className="flex-1 basis-full max-w-xl">
           <strong>This is a Pro example.</strong> Get{' '}
           <Link className="underline" href="/pro/examples">
-            every pro example
+            all pro examples
           </Link>
           , 1:1 support from the xyflow team and prioritized Github issues with
-          a{' '}
-          <Link className="underline" href="/pro">
-            React Flow Pro subscription
-          </Link>
-          .
+          a React Flow Pro subscription.
         </Text>
         <div className="flex space-x-4">
           <Button asChild className="shrink-0">

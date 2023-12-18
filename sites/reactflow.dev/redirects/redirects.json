@@ -125,6 +125,26 @@
     "permanent": true
   },
   {
+    "source": "/examples/layout/workflow-builder-starter",
+    "destination": "/examples/layout/workflow-builder",
+    "permanent": true
+  },
+  {
+    "source": "/examples/nodes/resize-rotate-moveable-deprecated",
+    "destination": "/examples/nodes/resize-rotate",
+    "permanent": true
+  },
+  {
+    "source": "/examples/interaction/undo-and-redo",
+    "destination": "/examples/interaction/undo-redo",
+    "permanent": true
+  },
+  {
+    "source": "/examples/interaction/copy-and-paste",
+    "destination": "/examples/interaction/copy-paste",
+    "permanent": true
+  },
+  {
     "source": "/blog",
     "destination": "https://xyflow.com/blog",
     "permanent": true

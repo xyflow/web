@@ -30,8 +30,6 @@ export default function ProExamples() {
   const { remoteProExamples } = useSSG();
   const proExamples = getProExamples();
 
-  // @todo: this can be simplified if the ids of the pro examples match the remote ids (e.g workflow-builder-starter -> workflow-builder)
-  // it that's done we can remove /img/pro-examples entirely
   const examples = proExamples.reduce((result, curr) => {
     const remote = remoteProExamples.find((remote) => remote.id === curr.name);
 
@@ -40,14 +38,6 @@ export default function ProExamples() {
         ...remote,
         route: curr.route,
         image: `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${remote.id}/thumbnail.jpg`,
-      });
-    } else {
-      result.push({
-        id: curr.name,
-        route: curr.route,
-        name: curr.frontMatter?.title,
-        description: curr.frontMatter?.description,
-        image: `/img/pro-examples/${curr.name}.jpg`,
       });
     }
 
