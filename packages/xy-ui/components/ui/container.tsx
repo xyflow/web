@@ -49,7 +49,7 @@ function Container({
   children,
 }: ContainerProps) {
   return (
-    <div className={cn('p-1', containerVariants({ variant, size, className }))}>
+    <div className={cn('p-2', containerVariants({ variant, size, className }))}>
       <div
         className={cn(
           'shadow-md relative overflow-hidden h-full',
