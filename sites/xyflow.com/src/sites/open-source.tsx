@@ -116,7 +116,7 @@ export default function OpenSource() {
         <Text className="text-lg leading-8 mb-4">
           We give back to the Open Source projects that we use ourselves on{' '}
           <Link
-            href="https://opencollective.com/webkid"
+            href="https://opencollective.com/xyflow-org"
             className="text-pink-500"
           >
             Open Collective
