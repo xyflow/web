@@ -29,35 +29,54 @@ export default function OpenSource() {
           Open source since the beginning
         </Heading>
         <Text className="text-lg leading-8">
-          We decided to open source the React Flow library in 2019. We started
-          seeing our first users, receiving lots of bug reports and
-          contributions early on, which allowed us to grow. More and more
-          companies and people started to use it, which led to more maintenance
-          work, to the point that we decided to shift our full attention to the
-          library in 2021. A few months later, we set up a business model to
-          support our ongoing work on the library. Now we’re happy maintainers
-          of one of the most popular node-based UI libraries :)
+          We gave the React Flow library an MIT license in 2019. Within a few
+          months, we started to see our first users, contributions, and bug
+          reports. As more and more people and organizations started to use
+          React Flow, we needed to spend more time maintaining the library. In
+          2021 we decided to shift our full attention to the library. We set up
+          a business model to support our ongoing work on the library, and put
+          our agency-style work to the side. Since then, we've been happy
+          maintainers of one of the most popular node-based UI libraries :)
+        </Text>
+        <Text className="text-lg leading-8 mt-8">
+          Since then, we've also released{' '}
+          <Link
+            href="https://svelteflow.dev"
+            className="text-pink-500 text-lg "
+          >
+            Svelte Flow
+          </Link>{' '}
+          and our{' '}
+          <Link
+            href="https://github.com/xyflow/pro-platform/"
+            className="text-pink-500 text-lg "
+          >
+            Pro Platform
+          </Link>{' '}
+          under an MIT License, and you can expect the same from any projects in
+          the future.
         </Text>
 
         <Heading as="h2" size="sm" className="mb-4 mt-14">
-          We’ll keep our software MIT Licensed forever.
+          We’ll keep our software MIT Licensed forever
         </Heading>
         <Text className="text-lg leading-8 mb-4">
-          We chose the MIT License because we believe in Free and Open Source
-          Software. Having this license means that anyone can use, repurpose, or
-          resell our docs, our blog posts, or our library. We love that it
-          allows anyone to use xyflow for their own projects, and we get to see
-          people build things with xyflow that we never would have imagined. The
-          MIT License also allows companies to easily use the library without
-          having to hire a lawyer to interpret a custom license. We’ll keep our
-          software MIT Licensed forever.
+          We chose the{' '}
+          <Link
+            href="https://github.com/xyflow/xyflow/blob/main/LICENSE"
+            className="text-pink-500 text-lg "
+          >
+            MIT License
+          </Link>{' '}
+          because we believe in Free and Open Source Software. Having this
+          license means that anyone can use, repurpose, or resell our docs, our
+          blog posts, or our library. We love that it allows anyone to use
+          xyflow for their own projects, and we get to see people build things
+          with xyflow that we never would have imagined. The MIT License also
+          allows companies to easily use the library without having to hire a
+          lawyer to interpret a custom license. We’ll keep our software MIT
+          Licensed forever.
         </Text>
-        <Link
-          href="https://github.com/xyflow/xyflow/blob/main/LICENSE"
-          className="text-pink-500 underline text-lg "
-        >
-          Read our license
-        </Link>
 
         <Heading as="h2" size="sm" className="mb-4 mt-14">
           How we fund our work
