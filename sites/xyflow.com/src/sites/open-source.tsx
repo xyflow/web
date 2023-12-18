@@ -29,17 +29,15 @@ export default function OpenSource() {
           Open source since the beginning
         </Heading>
         <Text className="text-lg leading-8">
-          We gave the React Flow library an MIT license in 2019. Within a few
-          months, we started to see our first users, contributions, and bug
-          reports. As more and more people and organizations started to use
-          React Flow, we needed to spend more time maintaining the library. In
-          2021 we decided to shift our full attention to the library. We set up
-          a business model to support our ongoing work on the library, and put
-          our agency-style work to the side. Since then, we've been happy
-          maintainers of one of the most popular node-based UI libraries :)
+          We gave the React Flow library an MIT license in 2019. As we got we
+          needed to spend more time maintaining the library. In 2021 we decided
+          to shift our full attention to the library. We set up a business model
+          to support our ongoing work on the library, and put our agency-style
+          work to the side. Since then, we&apos;ve been happy maintainers of one
+          of the most popular node-based UI libraries.
         </Text>
         <Text className="text-lg leading-8 mt-8">
-          Since then, we've also released{' '}
+          Since then, we&apos;ve also released{' '}
           <Link
             href="https://svelteflow.dev"
             className="text-pink-500 text-lg "
@@ -58,7 +56,7 @@ export default function OpenSource() {
         </Text>
 
         <Heading as="h2" size="sm" className="mb-4 mt-14">
-          We’ll keep our software MIT Licensed forever
+          We&apos;ll keep our software MIT Licensed forever
         </Heading>
         <Text className="text-lg leading-8 mb-4">
           We chose the{' '}
@@ -74,7 +72,7 @@ export default function OpenSource() {
           xyflow for their own projects, and we get to see people build things
           with xyflow that we never would have imagined. The MIT License also
           allows companies to easily use the library without having to hire a
-          lawyer to interpret a custom license. We’ll keep our software MIT
+          lawyer to interpret a custom license. We&apos;ll keep our software MIT
           Licensed forever.
         </Text>
 
