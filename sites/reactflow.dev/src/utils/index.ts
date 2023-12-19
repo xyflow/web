@@ -28,6 +28,7 @@ export function getPrevAndNextPagesByTitle(title, route: InternalRoute) {
 
 // this function looks up the frontmatter data of an example and returns true if it is a pro example
 // needs to be done this way because nextra doesn't pass this information to the sidebar title
+// note: this only looks up one nesting level
 export function isProExample(route: string) {
   if (!route.startsWith('/examples/')) {
     return false;
