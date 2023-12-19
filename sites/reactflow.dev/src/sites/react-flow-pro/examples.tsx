@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { getPagesUnderRoute } from 'nextra/context';
+import { useSSG } from 'nextra/ssg';
 import { ContentGrid, ContentGridItem, Button } from '@xyflow/xy-ui';
 import { BaseLayout, Hero, ProjectPreview, SubscribeSection } from 'xy-shared';
 import { SparklesIcon } from '@heroicons/react/24/outline';
@@ -26,7 +27,22 @@ function getProExamples() {
 }
 
 export default function ProExamples() {
+  const { remoteProExamples } = useSSG();
   const proExamples = getProExamples();
+
+  const examples = proExamples.reduce((result, curr) => {
+    const remote = remoteProExamples.find((remote) => remote.id === curr.name);
+
+    if (remote) {
+      result.push({
+        ...remote,
+        route: curr.route,
+        image: `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${remote.id}/thumbnail.jpg`,
+      });
+    }
+
+    return result;
+  }, []);
 
   return (
     <BaseLayout>
@@ -51,13 +67,12 @@ export default function ProExamples() {
         showGradient
       />
       <ContentGrid className="mt-20">
-        {proExamples.map((page) => (
-          <ContentGridItem key={page.route} route={page.route}>
+        {examples.map((example) => (
+          <ContentGridItem key={example.id} route={example.route}>
             <ProjectPreview
-              image={`/img/pro-examples/${page.name}.jpg`}
-              title={page.frontMatter?.title}
-              description={page.frontMatter?.description}
-              authors={page.frontMatter?.authors}
+              image={example.image}
+              title={example.name}
+              description={example.description}
               linkLabel="View Example"
             />
           </ContentGridItem>

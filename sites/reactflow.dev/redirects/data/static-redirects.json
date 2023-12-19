@@ -98,5 +98,21 @@
   {
     "source": "/error",
     "destination": "/learn/troubleshooting"
+  },
+  {
+    "source": "/examples/layout/workflow-builder-starter",
+    "destination": "/examples/layout/workflow-builder"
+  },
+  {
+    "source": "/examples/nodes/resize-rotate-moveable-deprecated",
+    "destination": "/examples/nodes/resize-rotate"
+  },
+  {
+    "source": "/examples/interaction/undo-and-redo",
+    "destination": "/examples/interaction/undo-redo"
+  },
+  {
+    "source": "/examples/interaction/copy-and-paste",
+    "destination": "/examples/interaction/copy-paste"
   }
 ]

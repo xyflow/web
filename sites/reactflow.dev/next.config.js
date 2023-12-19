@@ -10,6 +10,14 @@ const nextConfig = {
   async redirects() {
     return redirects;
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'pro-examples.reactflow.dev',
+      },
+    ],
+  },
 };
 
 const withNextra = require('nextra')({
