@@ -33,17 +33,6 @@ export default {
   sidebar: {
     titleComponent: SidebarTitle,
   },
-  banner: {
-    key: 'survey-2023',
-    text: (
-      <Link
-        className="flex justify-center items-center max-w-xs mx-auto hover:underline"
-        href="/developer-survey-2023"
-      >
-        📣 Take the 2023 React Flow Developer Survey
-      </Link>
-    ),
-  },
   navbar: {
     component: (props) => {
       const router = useRouter();
