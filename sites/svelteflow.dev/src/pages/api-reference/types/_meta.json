@@ -15,5 +15,7 @@
   "node-props": "NodeProps",
   "panel-position": "PanelPosition",
   "position": "Position",
-  "viewport": "Viewport"
+  "viewport": "Viewport",
+  "xy-position": "XYPosition",
+  "node-origin": "NodeOrigin"
 }

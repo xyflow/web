@@ -190,6 +190,7 @@ function Flow({ initialColor = '#777', className }: FlowProps) {
         defaultNodes={defaultNodes}
         defaultEdges={defaultEdges}
         proOptions={proOptions}
+        panOnDrag={viewportWidth > 1024}
         className={className}
         onInit={onInit}
         id="hero"

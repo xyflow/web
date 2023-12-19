@@ -1,5 +1,11 @@
 import React from 'react';
-import { BaseEdge, EdgeLabelRenderer, EdgeProps, getBezierPath } from 'reactflow';
+import {
+  BaseEdge,
+  EdgeLabelRenderer,
+  EdgeProps,
+  getBezierPath,
+  useReactFlow,
+} from 'reactflow';
 
 import './buttonedge.css';
 
@@ -19,6 +25,7 @@ export default function CustomEdge({
   style = {},
   markerEnd,
 }: EdgeProps) {
+  const { setEdges } = useReactFlow();
   const [edgePath, labelX, labelY] = getBezierPath({
     sourceX,
     sourceY,
@@ -27,6 +34,10 @@ export default function CustomEdge({
     targetY,
     targetPosition,
   });
+
+  const onEdgeClick = () => {
+    setEdges((edges) => edges.filter((edge) => edge.id !== id));
+  };
 
   return (
     <>
@@ -43,7 +54,7 @@ export default function CustomEdge({
           }}
           className="nodrag nopan"
         >
-          <button className="edgebutton" onClick={(event) => onEdgeClick(event, id)}>
+          <button className="edgebutton" onClick={onEdgeClick}>
             ×
           </button>
         </div>

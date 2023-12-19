@@ -10,7 +10,7 @@ import { type Route } from '@/utils';
 
 function useIsPro() {
   const router = useRouter();
-  return router.pathname.split('/').includes('pro');
+  return router.pathname.startsWith('/pro');
 }
 
 const baseUrl =
