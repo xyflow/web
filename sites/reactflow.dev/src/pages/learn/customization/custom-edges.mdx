@@ -123,7 +123,7 @@ export default function CustomEdge({ id, sourceX, sourceY, targetX, targetY }) {
       <BaseEdge id={id} path={edgePath} />
       <EdgeLabelRenderer>
         <button
-          onClick={() => setEdge((edges) => edges.filter((e) => e.id !== id))}
+          onClick={() => setEdges((edges) => edges.filter((e) => e.id !== id))}
         >
           delete
         </button>
