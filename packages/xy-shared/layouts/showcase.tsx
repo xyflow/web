@@ -19,6 +19,7 @@ export type ShowcaseItem = {
   description: string;
   image: string;
   url: string;
+  demoUrl?: string;
   tags: { id: string; name: string }[];
 };
 
@@ -83,6 +84,11 @@ export function ShowcaseLayout({
               }
               description={showcase.description}
               route={showcase.url}
+              altRoute={
+                showcase.demoUrl
+                  ? { href: showcase.demoUrl, label: 'Demo' }
+                  : undefined
+              }
               linkLabel="Website"
             />
           </ContentGridItem>
