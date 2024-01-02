@@ -1,13 +1,26 @@
 ---
 title: Tailwind
-description: In this example we are using tailwind for styling the flow.
+description: In this example we are using Tailwind for styling the flow.
 ---
 
+import { Callout } from 'nextra/components';
 import ExampleViewer from '@/components/example-viewer';
 import ExampleLayout from '@/layouts/example-with-frontmatter';
 
 <ExampleLayout>
-In this example we are using [tailwind](https://tailwindcss.com/) for styling the flow.
+In this example we are using [Tailwind](https://tailwindcss.com/) for styling the flow.
+
+<Callout type="warning">
+  We are using the Tailwind CDN for this example. Because of a [bug](https://github.com/codesandbox/sandpack/issues/624)
+  with SandPack, opening the sandbox below will not have the script added to the
+  HTML document. To make sure the example works correctly, make sure you add
+  `<script src="https://cdn.tailwindcss.com"></script>` to the HTML document
+  in `public/index.html` manually.
+
+If you are copying the example locally, you will likely have Tailwind set up
+differently, and can ignore this warning.
+
+</Callout>
 
 <ExampleViewer
   codePath="example-flows/Tailwind"
@@ -16,6 +29,5 @@ In this example we are using [tailwind](https://tailwindcss.com/) for styling th
   sandpackOptions={{
     externalResources: ['https://cdn.tailwindcss.com'],
   }}
-  showOpenInCodeSandbox={false}
 />
 </ExampleLayout>
