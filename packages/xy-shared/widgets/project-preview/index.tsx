@@ -15,6 +15,10 @@ export type ProjectPreviewProps = {
   description: ReactNode;
   authors?: Author[];
   route?: string;
+  altRoute?: {
+    href: string;
+    label: string;
+  };
   linkLabel?: string;
   className?: string;
 };
@@ -28,6 +32,7 @@ export function ProjectPreview({
   authors = [],
   route,
   linkLabel = 'Read more',
+  altRoute,
   className,
 }: ProjectPreviewProps) {
   const isExternal = route?.includes('https://');
@@ -78,11 +83,24 @@ export function ProjectPreview({
       )}
       <AuthorList noLink={!route} authors={authors} className="mt-6" />
       <Text className="leading-snug my-4">{description}</Text>
-      <Button asChild variant="link" className="text-md">
-        <LinkOrSpan className="flex items-center">
-          {linkLabel} <ArrowRightCircleIcon className="ml-1 w-4 h-4" />
-        </LinkOrSpan>
-      </Button>
+      <div className="flex gap-4">
+        <Button asChild variant="link" className="text-md">
+          <LinkOrSpan className="flex items-center">
+            {linkLabel} <ArrowRightCircleIcon className="ml-1 w-4 h-4" />
+          </LinkOrSpan>
+        </Button>
+        {altRoute && (
+          <Button asChild variant="link" className="text-md">
+            <a
+              href={altRoute.href}
+              target="_blank"
+              className="flex items-center"
+            >
+              {altRoute.label} <ArrowRightCircleIcon className="ml-1 w-4 h-4" />
+            </a>
+          </Button>
+        )}
+      </div>
     </div>
   );
 }
