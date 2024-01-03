@@ -13,7 +13,7 @@ import { signature } from '@/page-data/reference/utils/getStraightPath.ts';
 Calculates the straight line path between two points.
 
 ```js
-import { Position, getStraightPath } from '@xyflow/svelte';
+import { getStraightPath } from '@xyflow/svelte';
 
 const source = { x: 0, y: 20 };
 const target = { x: 150, y: 100 };
@@ -21,10 +21,8 @@ const target = { x: 150, y: 100 };
 const [path, labelX, labelY, offsetX, offsetY] = getStraightPath({
   sourceX: source.x,
   sourceY: source.y,
-  sourcePosition: Position.Right,
   targetX: target.x,
   targetY: target.y,
-  targetPosition: Position.Left,
 });
 
 console.log(path); //=> "M 0,20L 150,100"
@@ -38,5 +36,4 @@ console.log(offsetX, offsetY); //=> 75, 40
 
 ## Notes
 
-- This function returns a tuple (aka a fixed-size array) to make it easier to
-  work with multiple edge paths at once.
+- This function returns a tuple (aka a fixed-size array) to make it easier to work with multiple edge paths at once.
