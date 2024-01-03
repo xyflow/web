@@ -380,3 +380,46 @@ This warning occurs when you are trying to specify a marker type that is not bui
 ### Handle: No node id found.
 
 This warning occurs when you try to use a `<Handle />` component outside of a custom node component.
+
+### I get an error when building my app with webpack 4.
+
+If you're using webpack 4, you'll likely run into an error like this:
+
+```
+ERROR in /node_modules/@reactflow/core/dist/esm/index.js 16:19
+Module parse failed: Unexpected token (16:19)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+```
+
+React Flow is a modern JavaScript code base and makes use of lots of newer
+JavaScript features. By default, webpack 4 does not transpile your code and it
+doesn't know how to handle React Flow.
+
+You need to add a number of babel plugins to your webpack config to make it work:
+
+```sh
+$ npm i --save-dev babel-loader@8.2.5 @babel/preset-env @babel/preset-react @babel/plugin-proposal-optional-chaining @babel/plugin-proposal-nullish-coalescing-operator
+```
+
+and configure the loader like this:
+
+```js
+{
+  test: /node_modules[\/\\]@?reactflow[\/\\].*.js$/,
+  use: {
+    loader: 'babel-loader',
+    options: {
+      presets: ['@babel/preset-env', "@babel/preset-react"],
+      plugins: [
+        "@babel/plugin-proposal-optional-chaining",
+        "@babel/plugin-proposal-nullish-coalescing-operator",
+      ]
+    }
+  }
+}
+```
+
+<Callout type="info">
+  If you're using webpack 5, you don't need to do anything! React Flow will work
+  out of the box.
+</Callout>
