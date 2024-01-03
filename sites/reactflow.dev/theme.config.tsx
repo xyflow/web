@@ -116,6 +116,7 @@ export default {
                   { title: 'API Reference', route: '/api-reference' },
                   { title: 'Examples', route: '/examples' },
                   { title: 'Showcase', route: '/showcase' },
+                  { title: 'Case Studies', route: '/pro/case-studies' },
                   { title: 'React Flow Pro', route: '/pro' },
                 ] satisfies { title: string; route: Route }[]),
           }}
