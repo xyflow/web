@@ -421,6 +421,7 @@ export const selectionEventHandlerProps: PropsTableProps = {
     },
     { name: 'onSelectionStart', type: '() => void' },
     { name: 'onSelectionEnd', type: '() => void' },
+    { name: 'onSelectionContextMenu', type: '(event: ReactMouseEvent, nodes: Node[]) => void' },
   ],
 };
 
