@@ -1,4 +1,5 @@
-import { Position } from '@xyflow/react';
+import { useCallback } from 'react';
+import { NodeProps, Position, useReactFlow } from '@xyflow/react';
 import { Slider } from '@xyflow/xy-ui';
 
 import Handle from './handle';
@@ -7,19 +8,21 @@ import Wrapper from './node-wrapper';
 const min = 0;
 const max = 40;
 
-export default function SliderNode({ data }: { data: any }) {
-  const { label = '', setState = () => {}, zoom = 12 } = data;
+export default function SliderNode({ data, id }: NodeProps) {
+  const { updateNodeData } = useReactFlow();
+  const onValueChange = useCallback(
+    (values: number[]) => updateNodeData(id, { value: values[0] }),
+    [],
+  );
 
   return (
-    <Wrapper label={label}>
+    <Wrapper label={data.label}>
       <Slider
         className="nodrag m-2"
         min={min}
         max={max}
-        value={[zoom]}
-        onValueChange={(val) =>
-          setState((state: any) => ({ ...state, zoom: val[0] }))
-        }
+        value={[data.value]}
+        onValueChange={onValueChange}
         inverted
         rangeClassName="bg-primary"
         thumbClassName="bg-primary"

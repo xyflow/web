@@ -1,29 +1,29 @@
 import { useCallback } from 'react';
-import { Position } from '@xyflow/react';
-import { RadioGroup, RadioGroupItem, Label, cn } from '@xyflow/xy-ui';
+import { NodeProps, Position, useReactFlow } from '@xyflow/react';
+import { RadioGroup, RadioGroupItem, Label } from '@xyflow/xy-ui';
 
 import Handle from './handle';
 import Wrapper from './node-wrapper';
 
 const options = ['cube', 'pyramid'];
 
-export default function SwitcherNode({ data }: { data: any }) {
-  const { label = '', setState = () => {}, shape } = data;
-
-  const onValueChange = useCallback((val: string) => {
-    setState((state: any) => ({ ...state, shape: val }));
-  }, []);
+export default function SwitcherNode({ id, data }: NodeProps) {
+  const { updateNodeData } = useReactFlow();
+  const onValueChange = useCallback(
+    (value: string) => updateNodeData(id, { value }),
+    [],
+  );
 
   return (
-    <Wrapper label={label}>
+    <Wrapper label={data.label}>
       <Handle type="source" position={Position.Right} />
-      <RadioGroup value={shape} onValueChange={onValueChange}>
+      <RadioGroup value={data.value} onValueChange={onValueChange}>
         {options.map((option: any) => (
           <div className="flex items-center space-x-2 nodrag" key={option}>
             <RadioGroupItem
               value={option}
               id={option}
-              className={cn(`text-primary border-primary`)}
+              className="text-primary border-primary"
             />
             <Label
               htmlFor={option}

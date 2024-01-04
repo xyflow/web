@@ -283,8 +283,8 @@ importers:
         specifier: ^2.2.1
         version: 2.2.1
       '@xyflow/react':
-        specifier: 12.0.0-next.1
-        version: 12.0.0-next.1(@types/react@18.2.14)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 12.0.0-next.3
+        version: 12.0.0-next.3(@types/react@18.2.14)(react-dom@18.2.0)(react@18.2.0)
       '@xyflow/system':
         specifier: ^0.0.9
         version: 0.0.9
@@ -8828,27 +8828,6 @@ packages:
 
   /@xtuc/long@4.2.2:
     resolution: {integrity: sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==}
-
-  /@xyflow/react@12.0.0-next.1(@types/react@18.2.14)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-TpKXwoU8J2czpziwUVKegvFQ0TJSNEHIbsmpiBpHG46cWdiHnxH9LJUqxI8ammtNKLgbTErfmSvQvrfzxtXr4A==}
-    peerDependencies:
-      react: '>=17'
-      react-dom: '>=17'
-    dependencies:
-      '@types/d3': 7.4.3
-      '@types/d3-drag': 3.0.7
-      '@types/d3-selection': 3.0.10
-      '@xyflow/system': 0.0.13
-      classcat: 5.0.4
-      d3-drag: 3.0.0
-      d3-selection: 3.0.0
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      zustand: 4.4.1(@types/react@18.2.14)(react@18.2.0)
-    transitivePeerDependencies:
-      - '@types/react'
-      - immer
-    dev: false
 
   /@xyflow/react@12.0.0-next.3(@types/react@18.2.14)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-tPjb0Q4RtfSxPztJq0YuYD1hvMNCeeQ3A7oi0lkkvhGGoBXV6f95TSkUo8g/s0SxBiDjucZLP5zjrHwM0XOuAQ==}

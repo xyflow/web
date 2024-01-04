@@ -1,6 +1,5 @@
 import { type CSSProperties } from 'react';
 import { Handle, HandleType, Position } from '@xyflow/react';
-import { cn } from '@xyflow/xy-ui';
 
 type HandleComponentProps = {
   id?: string;
@@ -16,10 +15,12 @@ export default function HandleComponent({
   position,
   ...props
 }: HandleComponentProps) {
-  const className = cn('w-[10px] h-[10px] bg-gray-400 border-none', {
-    '-left-[5px]': position === Position.Left,
-    '-right-[5px]': position === Position.Right,
-  });
-
-  return <Handle className={className} position={position} {...props} />;
+  return (
+    <Handle
+      className="w-[10px] h-[10px] bg-gray-400 border-none"
+      position={position}
+      style={style}
+      {...props}
+    />
+  );
 }
