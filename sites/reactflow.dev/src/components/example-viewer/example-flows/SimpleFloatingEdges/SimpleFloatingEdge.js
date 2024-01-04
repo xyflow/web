@@ -5,10 +5,10 @@ import { getEdgeParams } from './utils.js';
 
 function SimpleFloatingEdge({ id, source, target, markerEnd, style }) {
   const sourceNode = useStore(
-    useCallback((store) => store.nodeInternals.get(source), [source]),
+    useCallback((store) => store.nodeLookup.get(source), [source]),
   );
   const targetNode = useStore(
-    useCallback((store) => store.nodeInternals.get(target), [target]),
+    useCallback((store) => store.nodeLookup.get(target), [target]),
   );
 
   if (!sourceNode || !targetNode) {

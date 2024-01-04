@@ -1,34 +1,17 @@
-import React, { useMemo } from 'react';
-import { getConnectedEdges, Handle, useNodeId, useStore } from '@xyflow/react';
-
-const selector = (s) => ({
-  nodeInternals: s.nodeInternals,
-  edges: s.edges,
-});
+import React from 'react';
+import { Handle, useHandleConnections } from '@xyflow/react';
 
 const CustomHandle = (props) => {
-  const { nodeInternals, edges } = useStore(selector);
-  const nodeId = useNodeId();
+  const connections = useHandleConnections({
+    type: props.type,
+  });
 
-  const isHandleConnectable = useMemo(() => {
-    if (typeof props.isConnectable === 'function') {
-      const node = nodeInternals.get(nodeId);
-      const connectedEdges = getConnectedEdges([node], edges);
-
-      return props.isConnectable({ node, connectedEdges });
-    }
-
-    if (typeof props.isConnectable === 'number') {
-      const node = nodeInternals.get(nodeId);
-      const connectedEdges = getConnectedEdges([node], edges);
-
-      return connectedEdges.length < props.isConnectable;
-    }
-
-    return props.isConnectable;
-  }, [nodeInternals, edges, nodeId, props.isConnectable]);
-
-  return <Handle {...props} isConnectable={isHandleConnectable}></Handle>;
+  return (
+    <Handle
+      {...props}
+      isConnectable={connections.length < props.connectionCount}
+    />
+  );
 };
 
 export default CustomHandle;

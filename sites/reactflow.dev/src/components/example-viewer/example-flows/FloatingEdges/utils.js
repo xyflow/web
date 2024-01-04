@@ -8,16 +8,16 @@ function getNodeIntersection(intersectionNode, targetNode) {
     width: intersectionNodeWidth,
     height: intersectionNodeHeight,
     positionAbsolute: intersectionNodePosition,
-  } = intersectionNode;
-  const targetPosition = targetNode.positionAbsolute;
+  } = intersectionNode.computed;
+  const targetPosition = targetNode.computed.positionAbsolute;
 
   const w = intersectionNodeWidth / 2;
   const h = intersectionNodeHeight / 2;
 
   const x2 = intersectionNodePosition.x + w;
   const y2 = intersectionNodePosition.y + h;
-  const x1 = targetPosition.x + targetNode.width / 2;
-  const y1 = targetPosition.y + targetNode.height / 2;
+  const x1 = targetPosition.x + targetNode.computed.width / 2;
+  const y1 = targetPosition.y + targetNode.computed.height / 2;
 
   const xx1 = (x1 - x2) / (2 * w) - (y1 - y2) / (2 * h);
   const yy1 = (x1 - x2) / (2 * w) + (y1 - y2) / (2 * h);
@@ -32,7 +32,7 @@ function getNodeIntersection(intersectionNode, targetNode) {
 
 // returns the position (top,right,bottom or right) passed node compared to the intersection point
 function getEdgePosition(node, intersectionPoint) {
-  const n = { ...node.positionAbsolute, ...node };
+  const n = { ...node.computed.positionAbsolute, ...node };
   const nx = Math.round(n.x);
   const ny = Math.round(n.y);
   const px = Math.round(intersectionPoint.x);
@@ -41,13 +41,13 @@ function getEdgePosition(node, intersectionPoint) {
   if (px <= nx + 1) {
     return Position.Left;
   }
-  if (px >= nx + n.width - 1) {
+  if (px >= nx + n.computed.width - 1) {
     return Position.Right;
   }
   if (py <= ny + 1) {
     return Position.Top;
   }
-  if (py >= n.y + n.height - 1) {
+  if (py >= n.y + n.computed.height - 1) {
     return Position.Bottom;
   }
 

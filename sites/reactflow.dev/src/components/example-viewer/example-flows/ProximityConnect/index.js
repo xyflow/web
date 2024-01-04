@@ -28,14 +28,15 @@ const Flow = () => {
   );
 
   const getClosestEdge = useCallback((node) => {
-    const { nodeInternals } = store.getState();
-    const storeNodes = Array.from(nodeInternals.values());
+    const { nodes: storeNodes } = store.getState();
 
     const closestNode = storeNodes.reduce(
       (res, n) => {
         if (n.id !== node.id) {
-          const dx = n.positionAbsolute.x - node.positionAbsolute.x;
-          const dy = n.positionAbsolute.y - node.positionAbsolute.y;
+          const dx =
+            n.computed.positionAbsolute.x - node.computed.positionAbsolute.x;
+          const dy =
+            n.computed.positionAbsolute.y - node.computed.positionAbsolute.y;
           const d = Math.sqrt(dx * dx + dy * dy);
 
           if (d < res.distance && d < MIN_DISTANCE) {
@@ -57,7 +58,8 @@ const Flow = () => {
     }
 
     const closeNodeIsSource =
-      closestNode.node.positionAbsolute.x < node.positionAbsolute.x;
+      closestNode.node.computed.positionAbsolute.x <
+      node.computed.positionAbsolute.x;
 
     return {
       id: closeNodeIsSource

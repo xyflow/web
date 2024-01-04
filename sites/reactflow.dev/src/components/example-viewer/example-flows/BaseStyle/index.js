@@ -10,7 +10,7 @@ import {
   Position,
 } from '@xyflow/react';
 
-import 'reactflow/dist/base.css';
+import '@xyflow/react/dist/base.css';
 
 const nodeDefaults = {
   sourcePosition: Position.Right,

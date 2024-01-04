@@ -10,7 +10,7 @@ import {
 } from '@xyflow/react';
 import { FiFile } from 'react-icons/fi';
 
-import 'reactflow/dist/base.css';
+import '@xyflow/react/dist/base.css';
 import './index.css';
 import TurboNode, { TurboNodeData } from './TurboNode';
 import TurboEdge from './TurboEdge';
