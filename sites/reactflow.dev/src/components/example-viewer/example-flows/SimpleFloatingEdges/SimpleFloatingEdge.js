@@ -1,17 +1,24 @@
 import { useCallback } from 'react';
-import { useStore, getBezierPath } from 'reactflow';
+import { useStore, getBezierPath } from '@xyflow/react';
 
 import { getEdgeParams } from './utils.js';
 
 function SimpleFloatingEdge({ id, source, target, markerEnd, style }) {
-  const sourceNode = useStore(useCallback((store) => store.nodeInternals.get(source), [source]));
-  const targetNode = useStore(useCallback((store) => store.nodeInternals.get(target), [target]));
+  const sourceNode = useStore(
+    useCallback((store) => store.nodeInternals.get(source), [source]),
+  );
+  const targetNode = useStore(
+    useCallback((store) => store.nodeInternals.get(target), [target]),
+  );
 
   if (!sourceNode || !targetNode) {
     return null;
   }
 
-  const { sx, sy, tx, ty, sourcePos, targetPos } = getEdgeParams(sourceNode, targetNode);
+  const { sx, sy, tx, ty, sourcePos, targetPos } = getEdgeParams(
+    sourceNode,
+    targetNode,
+  );
 
   const [edgePath] = getBezierPath({
     sourceX: sx,

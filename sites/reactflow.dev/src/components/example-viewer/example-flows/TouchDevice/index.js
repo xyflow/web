@@ -1,6 +1,12 @@
 import { useCallback } from 'react';
-import ReactFlow, { useNodesState, useEdgesState, Position, addEdge } from 'reactflow';
-import 'reactflow/dist/style.css';
+import {
+  ReactFlow,
+  useNodesState,
+  useEdgesState,
+  Position,
+  addEdge,
+} from '@xyflow/react';
+import '@xyflow/react/dist/style.css';
 
 import './index.css';
 
@@ -26,7 +32,10 @@ const initialEdges = [];
 const TouchDeviceFlow = () => {
   const [nodes, , onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
-  const onConnect = useCallback((connection) => setEdges((eds) => addEdge(connection, eds)), []);
+  const onConnect = useCallback(
+    (connection) => setEdges((eds) => addEdge(connection, eds)),
+    [],
+  );
 
   return (
     <ReactFlow

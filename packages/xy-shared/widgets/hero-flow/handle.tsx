@@ -1,5 +1,5 @@
 import { type CSSProperties } from 'react';
-import { Handle, HandleType, Position } from 'reactflow';
+import { Handle, HandleType, Position } from '@xyflow/react';
 import { cn } from '@xyflow/xy-ui';
 
 type HandleComponentProps = {

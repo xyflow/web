@@ -67,10 +67,10 @@ To keep it simple we are putting all of our code in the `src/App` folder. For th
 #### src/App/index.tsx
 
 ```tsx
-import ReactFlow, { Controls, Panel } from 'reactflow';
+import { ReactFlow, Controls, Panel } from '@xyflow/react';
 
 // we have to import the React Flow styles for it to work
-import 'reactflow/dist/style.css';
+import '@xyflow/react/dist/style.css';
 
 function Flow() {
   return (
@@ -93,7 +93,7 @@ To be able to use React Flow hooks, we need to wrap the application with the [`R
 ```tsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { ReactFlowProvider } from 'reactflow';
+import { ReactFlowProvider } from '@xyflow/react';
 
 import App from './App';
 
@@ -151,7 +151,7 @@ import {
   OnEdgesChange,
   applyNodeChanges,
   applyEdgeChanges,
-} from 'reactflow';
+} from '@xyflow/react';
 import { create } from 'zustand';
 
 export type RFState = {
@@ -193,13 +193,13 @@ As you can see we start with one initial node placed at `{ x: 0, y: 0 }` of type
 #### src/App/index.tsx
 
 ```tsx
-import ReactFlow, { Controls, Panel, NodeOrigin } from 'reactflow';
+import { ReactFlow, Controls, Panel, NodeOrigin } from '@xyflow/react';
 import { shallow } from 'zustand/shallow';
 
 import useStore, { RFState } from './store';
 
 // we have to import the React Flow styles for it to work
-import 'reactflow/dist/style.css';
+import '@xyflow/react/dist/style.css';
 
 const selector = (state: RFState) => ({
   nodes: state.nodes,
@@ -256,7 +256,7 @@ We want to use a custom type called 'mindmap' for our nodes. We need to add a ne
 #### src/App/MindMapNode/index.tsx
 
 ```tsx
-import { Handle, NodeProps, Position } from 'reactflow';
+import { Handle, NodeProps, Position } from '@xyflow/react';
 
 export type NodeData = {
   label: string;
@@ -299,7 +299,7 @@ Let's do the same for the custom edge. Create a new folder called `MindMapEdge` 
 #### src/App/MindMapEdge/index.tsx
 
 ```tsx
-import { BaseEdge, EdgeProps, getStraightPath } from 'reactflow';
+import { BaseEdge, EdgeProps, getStraightPath } from '@xyflow/react';
 
 function MindMapEdge(props: EdgeProps) {
   const { sourceX, sourceY, targetX, targetY } = props;
@@ -505,7 +505,7 @@ Let's use the new action in our `MindmapNode` component:
 #### src/App/MindmapNode/index.tsx
 
 ```tsx
-import { Handle, NodeProps, Position } from 'reactflow';
+import { Handle, NodeProps, Position } from '@xyflow/react';
 
 import useStore from '../store';
 
@@ -591,7 +591,7 @@ This works but we can't move the nodes anymore because the source handle is now 
 #### src/App/MindmapNode/index.tsx
 
 ```tsx
-import { Handle, NodeProps, Position } from 'reactflow';
+import { Handle, NodeProps, Position } from '@xyflow/react';
 
 import useStore from '../store';
 
@@ -823,7 +823,7 @@ You may have noticed that the edges are not centered. We created a custom edge a
 #### src/App/MindMapEdge.tsx
 
 ```tsx
-import { BaseEdge, EdgeProps, getStraightPath } from 'reactflow';
+import { BaseEdge, EdgeProps, getStraightPath } from '@xyflow/react';
 
 function MindMapEdge(props: EdgeProps) {
   const { sourceX, sourceY, targetX, targetY } = props;

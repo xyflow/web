@@ -1,4 +1,4 @@
-import { applyNodeChanges, applyEdgeChanges } from 'reactflow';
+import { applyNodeChanges, applyEdgeChanges } from '@xyflow/react';
 import { nanoid } from 'nanoid';
 import { create } from 'zustand';
 import {
@@ -58,7 +58,9 @@ export const useStore = create((set, get) => ({
     updateAudioNode(id, data);
     set({
       nodes: get().nodes.map((node) =>
-        node.id === id ? { ...node, data: Object.assign(node.data, data) } : node
+        node.id === id
+          ? { ...node, data: Object.assign(node.data, data) }
+          : node,
       ),
     });
   },

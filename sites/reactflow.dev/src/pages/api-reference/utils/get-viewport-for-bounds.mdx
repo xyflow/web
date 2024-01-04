@@ -18,8 +18,12 @@ You might use this to pre-calculate the viewport for a given set of nodes on the
 server or calculate the viewport for the given bounds _without_ changing the
 viewport directly.
 
+<Callout type="info" emoji="ℹ️">
+  This function was previously called `getTransformForBounds`
+</Callout>
+
 ```js
-import { getViewportForBounds } from 'reactflow';
+import { getViewportForBounds } from '@xyflow/react';
 
 const { x, y, zoomn } = getViewportForBounds(
   {

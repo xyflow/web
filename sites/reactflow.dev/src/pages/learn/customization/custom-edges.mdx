@@ -32,7 +32,7 @@ To kick start our custom edge, we'll just render a straight path between the
 source and target.
 
 ```jsx
-import { BaseEdge, getStraightPath } from 'reactflow';
+import { BaseEdge, getStraightPath } from '@xyflow/react';
 
 export default function CustomEdge({ id, sourceX, sourceY, targetX, targetY }) {
   const [edgePath] = getStraightPath({
@@ -65,7 +65,7 @@ use React's `useMemo` hook to prevent unnecessary re-renders. React Flow will
 show a warning in the console if you forget to do this.
 
 ```jsx
-import ReactFlow from 'reactflow'
+import ReactFlow from '@xyflow/react'
 import CustomEdge from './CustomEdge'
 
 
@@ -107,7 +107,7 @@ import {
   EdgeLabelRenderer,
   getStraightPath,
   useReactFlow,
-} from 'reactflow';
+} from '@xyflow/react';
 
 export default function CustomEdge({ id, sourceX, sourceY, targetX, targetY }) {
   const { setEdges } = useReactFlow();

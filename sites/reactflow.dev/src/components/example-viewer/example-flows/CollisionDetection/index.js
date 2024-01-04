@@ -1,9 +1,12 @@
 import React, { useEffect, useState, useRef } from 'react';
-import ReactFlow, { useNodesState, useEdgesState, Panel } from 'reactflow';
+import { ReactFlow, useNodesState, useEdgesState, Panel } from '@xyflow/react';
 
-import { nodes as initialNodes, edges as initialEdges } from './initial-elements';
+import {
+  nodes as initialNodes,
+  edges as initialEdges,
+} from './initial-elements';
 
-import 'reactflow/dist/style.css';
+import '@xyflow/react/dist/style.css';
 import './style.css';
 
 const panelStyle = {
@@ -37,7 +40,7 @@ const CollisionDetectionFlow = () => {
         centerX < n.position.x + n.width &&
         centerY > n.position.y &&
         centerY < n.position.y + n.height &&
-        n.id !== node.id // this is needed, otherwise we would always find the dragged node
+        n.id !== node.id, // this is needed, otherwise we would always find the dragged node
     );
 
     setTarget(targetNode);
@@ -57,7 +60,7 @@ const CollisionDetectionFlow = () => {
           n.data = { ...n.data, color: targetColor, label: targetColor };
         }
         return n;
-      })
+      }),
     );
 
     setTarget(null);
@@ -70,7 +73,10 @@ const CollisionDetectionFlow = () => {
     setNodes((nodes) =>
       nodes.map((node) => {
         if (node.id === target?.id) {
-          node.style = { ...node.style, backgroundColor: dragRef.current?.data.color };
+          node.style = {
+            ...node.style,
+            backgroundColor: dragRef.current?.data.color,
+          };
           node.data = { ...node.data, label: dragRef.current?.data.color };
         } else if (node.id === dragRef.current?.id && target) {
           node.style = { ...node.style, backgroundColor: target.data.color };
@@ -80,7 +86,7 @@ const CollisionDetectionFlow = () => {
           node.data = { ...node.data, label: node.data.color };
         }
         return node;
-      })
+      }),
     );
   }, [target]);
 

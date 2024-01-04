@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
-import ReactFlow, {
+import {
+  ReactFlow,
   Controls,
   Background,
   addEdge,
@@ -9,8 +10,8 @@ import ReactFlow, {
   Node,
   useEdgesState,
   useNodesState,
-} from 'reactflow';
-import 'reactflow/dist/style.css';
+} from '@xyflow/react';
+import '@xyflow/react/dist/style.css';
 
 import CustomEdge from './CustomEdge';
 import CustomEdgeStartEnd from './CustomEdgeStartEnd';
@@ -59,7 +60,7 @@ const EdgesFlow = () => {
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   const onConnect = useCallback(
     (params: Connection | Edge) => setEdges((eds) => addEdge(params, eds)),
-    [setEdges]
+    [setEdges],
   );
 
   return (

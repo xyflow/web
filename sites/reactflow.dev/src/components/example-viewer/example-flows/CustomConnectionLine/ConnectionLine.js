@@ -1,5 +1,5 @@
 import React from 'react';
-import { useStore } from 'reactflow';
+import { useStore } from '@xyflow/react';
 
 export default ({ fromX, fromY, toX, toY }) => {
   const { connectionHandleId } = useStore();

@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { Handle, useStore, Position } from 'reactflow';
+import { Handle, useStore, Position } from '@xyflow/react';
 
 const Placeholder = () => (
   <div className="placeholder">

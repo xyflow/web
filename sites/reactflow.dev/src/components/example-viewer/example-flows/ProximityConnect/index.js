@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
-import ReactFlow, {
+import {
+  ReactFlow,
   addEdge,
   useNodesState,
   useEdgesState,
@@ -7,9 +8,9 @@ import ReactFlow, {
   BackgroundVariant,
   ReactFlowProvider,
   useStoreApi,
-} from 'reactflow';
+} from '@xyflow/react';
 
-import 'reactflow/dist/style.css';
+import '@xyflow/react/dist/style.css';
 import './style.css';
 
 import { initialEdges, initialNodes } from './nodes-and-edges';

@@ -1,5 +1,6 @@
 import React, { useCallback, useRef } from 'react';
-import ReactFlow, {
+import {
+  ReactFlow,
   Controls,
   OnConnectEnd,
   OnConnectStart,
@@ -10,7 +11,7 @@ import ReactFlow, {
   ReactFlowProvider,
   NodeOrigin,
   ConnectionLineType,
-} from 'reactflow';
+} from '@xyflow/react';
 import { shallow } from 'zustand/shallow';
 
 import useStore, { RFState } from './store';
@@ -20,7 +21,7 @@ import MindMapEdge from './MindMapEdge';
 import './index.css';
 
 // we need to import the React Flow styles to make it work
-import 'reactflow/dist/style.css';
+import '@xyflow/react/dist/style.css';
 
 const selector = (state: RFState) => ({
   nodes: state.nodes,

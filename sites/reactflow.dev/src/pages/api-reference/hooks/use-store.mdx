@@ -26,7 +26,7 @@ state management library, so you should check out their docs for more details.
 </Callout>
 
 ```jsx
-import ReactFlow, { useStore } from 'reactflow';
+import { ReactFlow,  useStore } from '@xyflow/react';
 
 const nodesLengthSelector = (state) =>
   Array.from(state.nodeInternals.values()).length || 0;
@@ -73,7 +73,7 @@ through the `useStore` hook. These actions are already used internally throughou
 the library, but you can also use them to implement custom functionality.
 
 ```jsx
-import { useStore } from 'reactflow';
+import { useStore } from '@xyflow/react';
 
 const setMinZoomSelector = (state) => state.setMinZoom;
 

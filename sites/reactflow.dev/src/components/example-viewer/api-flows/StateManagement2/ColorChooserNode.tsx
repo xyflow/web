@@ -1,5 +1,5 @@
 import React from 'react';
-import { Handle, NodeProps, Position } from 'reactflow';
+import { Handle, NodeProps, Position } from '@xyflow/react';
 
 import useStore, { NodeData } from './store';
 

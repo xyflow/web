@@ -1,4 +1,4 @@
-import { Position } from 'reactflow';
+import { Position } from '@xyflow/react';
 
 import Fiber from './fiber';
 import Handle from './handle';

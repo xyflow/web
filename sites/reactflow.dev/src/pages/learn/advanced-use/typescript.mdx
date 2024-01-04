@@ -11,7 +11,8 @@ React Flow is written in TypesSript, so you don't need to install the types sepa
 
 ```tsx
 import { useState, useCallback } from 'react';
-import ReactFlow, {
+import {
+  ReactFlow,
   addEdge,
   FitViewOptions,
   applyNodeChanges,
@@ -21,7 +22,7 @@ import ReactFlow, {
   NodeChange,
   EdgeChange,
   Connection,
-} from 'reactflow';
+} from '@xyflow/react';
 
 import CustomNode from './CustomNode';
 
@@ -82,7 +83,7 @@ function Flow() {
 When you are working with [custom nodes](/learn/customization/custom-nodes) you can define the data type by passing a parameter:
 
 ```ts
-import { Node, NodeProps } from 'reactflow';
+import { Node, NodeProps } from '@xyflow/react';
 
 type NodeData = {
   value: number;

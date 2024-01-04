@@ -1,4 +1,4 @@
-import { Position } from 'reactflow';
+import { Position } from '@xyflow/react';
 import { Slider } from '@xyflow/xy-ui';
 
 import Handle from './handle';

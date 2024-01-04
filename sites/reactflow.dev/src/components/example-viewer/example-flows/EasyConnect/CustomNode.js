@@ -1,4 +1,4 @@
-import { Handle, Position, useStore } from 'reactflow';
+import { Handle, Position, useStore } from '@xyflow/react';
 
 const connectionNodeIdSelector = (state) => state.connectionNodeId;
 
@@ -21,7 +21,11 @@ export default function CustomNode({ id }) {
         {/* If handles are conditionally rendered and not present initially, you need to update the node internals https://reactflow.dev/docs/api/hooks/use-update-node-internals/ */}
         {/* In this case we don't need to use useUpdateNodeInternals, since !isConnecting is true at the beginning and all handles are rendered initially. */}
         {!isConnecting && (
-          <Handle className="customHandle" position={Position.Right} type="source" />
+          <Handle
+            className="customHandle"
+            position={Position.Right}
+            type="source"
+          />
         )}
 
         <Handle

@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { Position } from 'reactflow';
+import { Position } from '@xyflow/react';
 import { RadioGroup, RadioGroupItem, Label, cn } from '@xyflow/xy-ui';
 
 import Handle from './handle';

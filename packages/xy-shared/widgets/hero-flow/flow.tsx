@@ -1,7 +1,8 @@
 'use client';
 
 import { useCallback, useState, useEffect } from 'react';
-import ReactFlow, {
+import {
+  ReactFlow,
   Background,
   ReactFlowProvider,
   useReactFlow,
@@ -10,8 +11,8 @@ import ReactFlow, {
   useStoreApi,
   useStore,
   ReactFlowState,
-  getRectOfNodes,
-} from 'reactflow';
+  getNodesBounds,
+} from '@xyflow/react';
 
 import HeroNode from './hero-node';
 import ColorPickerNode from './color-picker-node';
@@ -141,7 +142,7 @@ function Flow({ initialColor = '#777', className }: FlowProps) {
       y: yMin,
       width: xMax,
       height: yMax,
-    } = getRectOfNodes(nodes);
+    } = getNodesBounds(nodes);
 
     const zoom = width < 1240 ? (width < 500 ? 0.65 : 0.8) : 1;
     const mobileView = width < 1024;

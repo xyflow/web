@@ -1,6 +1,13 @@
 import React, { useCallback, useRef } from 'react';
-import ReactFlow, { useNodesState, useEdgesState, Controls, updateEdge, addEdge } from 'reactflow';
-import 'reactflow/dist/style.css';
+import {
+  ReactFlow,
+  useNodesState,
+  useEdgesState,
+  Controls,
+  updateEdge,
+  addEdge,
+} from '@xyflow/react';
+import '@xyflow/react/dist/style.css';
 
 const initialNodes = [
   {
@@ -21,13 +28,18 @@ const initialNodes = [
   },
 ];
 
-const initialEdges = [{ id: 'e1-2', source: '1', target: '2', label: 'updatable edge' }];
+const initialEdges = [
+  { id: 'e1-2', source: '1', target: '2', label: 'updatable edge' },
+];
 
 const DeleteEdgeDrop = () => {
   const edgeUpdateSuccessful = useRef(true);
   const [nodes, , onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
-  const onConnect = useCallback((params) => setEdges((els) => addEdge(params, els)), []);
+  const onConnect = useCallback(
+    (params) => setEdges((els) => addEdge(params, els)),
+    [],
+  );
 
   const onEdgeUpdateStart = useCallback(() => {
     edgeUpdateSuccessful.current = false;

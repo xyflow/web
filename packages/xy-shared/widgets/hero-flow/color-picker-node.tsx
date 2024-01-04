@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { Position } from 'reactflow';
+import { Position } from '@xyflow/react';
 import { Text } from '@xyflow/xy-ui';
 
 import Handle from './handle';

@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { Handle, useReactFlow, useStoreApi, Position } from 'reactflow';
+import { Handle, useReactFlow, useStoreApi, Position } from '@xyflow/react';
 
 const options = [
   {
@@ -39,7 +39,7 @@ function Select({ value, handleId, nodeId }) {
         }
 
         return node;
-      })
+      }),
     );
   };
 
@@ -66,7 +66,12 @@ function CustomNode({ id, data }) {
       </div>
       <div className="custom-node__body">
         {Object.keys(data.selects).map((handleId) => (
-          <Select key={handleId} nodeId={id} value={data.selects[handleId]} handleId={handleId} />
+          <Select
+            key={handleId}
+            nodeId={id}
+            value={data.selects[handleId]}
+            handleId={handleId}
+          />
         ))}
       </div>
     </>

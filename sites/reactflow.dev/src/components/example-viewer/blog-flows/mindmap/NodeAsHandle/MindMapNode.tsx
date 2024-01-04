@@ -1,5 +1,5 @@
 import React from 'react';
-import { Handle, NodeProps, Position } from 'reactflow';
+import { Handle, NodeProps, Position } from '@xyflow/react';
 
 export type NodeData = {
   label: string;
@@ -12,7 +12,10 @@ function MindMapNode({ id, data }: NodeProps<NodeData>) {
 
   return (
     <>
-      <input value={data.label} onChange={(evt) => updateNodeLabel(id, evt.target.value)} />
+      <input
+        value={data.label}
+        onChange={(evt) => updateNodeLabel(id, evt.target.value)}
+      />
 
       <Handle type="target" position={Position.Top} />
       <Handle type="source" position={Position.Bottom} />

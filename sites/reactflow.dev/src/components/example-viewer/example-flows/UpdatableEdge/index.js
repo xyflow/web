@@ -1,7 +1,14 @@
 import React, { useCallback } from 'react';
-import ReactFlow, { useNodesState, useEdgesState, Controls, updateEdge, addEdge } from 'reactflow';
+import {
+  ReactFlow,
+  useNodesState,
+  useEdgesState,
+  Controls,
+  updateEdge,
+  addEdge,
+} from '@xyflow/react';
 
-import 'reactflow/dist/style.css';
+import '@xyflow/react/dist/style.css';
 
 const initialNodes = [
   {
@@ -94,7 +101,12 @@ const initialEdges = [
     label: 'This edge can only be updated from target',
     updatable: 'target',
   },
-  { id: 'e5-6', source: '5', target: '6', label: 'This edge can be updated from both sides' },
+  {
+    id: 'e5-6',
+    source: '5',
+    target: '6',
+    label: 'This edge can be updated from both sides',
+  },
 ];
 
 const UpdatableEdge = () => {
@@ -102,10 +114,14 @@ const UpdatableEdge = () => {
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   // gets called after end of edge gets dragged to another source or target
   const onEdgeUpdate = useCallback(
-    (oldEdge, newConnection) => setEdges((els) => updateEdge(oldEdge, newConnection, els)),
-    []
+    (oldEdge, newConnection) =>
+      setEdges((els) => updateEdge(oldEdge, newConnection, els)),
+    [],
   );
-  const onConnect = useCallback((params) => setEdges((els) => addEdge(params, els)), []);
+  const onConnect = useCallback(
+    (params) => setEdges((els) => addEdge(params, els)),
+    [],
+  );
 
   return (
     <ReactFlow

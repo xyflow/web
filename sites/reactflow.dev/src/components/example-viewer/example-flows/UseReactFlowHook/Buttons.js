@@ -1,5 +1,5 @@
 import React from 'react';
-import { useStoreApi, useReactFlow, Panel } from 'reactflow';
+import { useStoreApi, useReactFlow, Panel } from '@xyflow/react';
 
 const panelStyle = {
   color: '#777',

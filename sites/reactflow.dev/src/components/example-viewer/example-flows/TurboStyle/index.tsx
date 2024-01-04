@@ -1,5 +1,13 @@
 import React, { useCallback } from 'react';
-import ReactFlow, { Controls, useNodesState, useEdgesState, addEdge, Node, Edge } from 'reactflow';
+import {
+  ReactFlow,
+  Controls,
+  useNodesState,
+  useEdgesState,
+  addEdge,
+  Node,
+  Edge,
+} from '@xyflow/react';
 import { FiFile } from 'react-icons/fi';
 
 import 'reactflow/dist/base.css';
@@ -92,7 +100,10 @@ const Flow = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
-  const onConnect = useCallback((params) => setEdges((els) => addEdge(params, els)), []);
+  const onConnect = useCallback(
+    (params) => setEdges((els) => addEdge(params, els)),
+    [],
+  );
 
   return (
     <ReactFlow

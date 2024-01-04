@@ -25,7 +25,7 @@ In some cases, you might need to access the store directly. This hook returns th
 
 ```tsx
 import { useState, useCallback } from 'react';
-import ReactFlow, { useStoreApi } from 'reactflow';
+import { ReactFlow, useStoreApi } from '@xyflow/react';
 
 const NodesLengthDisplay = () => {
   const [nodesLength, setNodesLength] = useState(0);

@@ -1,4 +1,4 @@
-import { NodeToolbar, useStore } from 'reactflow';
+import { NodeToolbar, useStore } from '@xyflow/react';
 
 const selectedNodesSelector = (state) =>
   Array.from(state.nodeInternals.values())

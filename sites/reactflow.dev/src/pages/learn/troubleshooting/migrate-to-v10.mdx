@@ -44,7 +44,7 @@ If you want to have the full control and use nodes and edges from your local sta
 
 ```jsx
 import { useState, useCallback } from 'react';
-import ReactFlow, { removeElements, addEdge } from 'react-flow-renderer';
+import { ReactFlow, removeElements, addEdge } from 'react-flow-renderer';
 
 const initialElements = [
   { id: '1', data: { label: 'Node 1' }, position: { x: 250, y: 0 } },
@@ -79,7 +79,8 @@ export default BasicFlow;
 
 ```jsx
 import { useState, useCallback } from 'react';
-import ReactFlow, {
+import {
+  ReactFlow,
   applyNodeChanges,
   applyEdgeChanges,
   addEdge,

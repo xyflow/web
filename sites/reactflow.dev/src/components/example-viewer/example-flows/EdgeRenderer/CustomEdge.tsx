@@ -1,5 +1,10 @@
 import React, { FC } from 'react';
-import { EdgeProps, getBezierPath, EdgeLabelRenderer, BaseEdge } from 'reactflow';
+import {
+  EdgeProps,
+  getBezierPath,
+  EdgeLabelRenderer,
+  BaseEdge,
+} from '@xyflow/react';
 
 const CustomEdge: FC<EdgeProps> = ({
   id,

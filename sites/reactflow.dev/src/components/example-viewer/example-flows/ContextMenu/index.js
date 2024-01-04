@@ -1,15 +1,16 @@
 import React, { useCallback, useRef, useState } from 'react';
-import ReactFlow, {
+import {
+  ReactFlow,
   Background,
   useNodesState,
   useEdgesState,
   addEdge,
-} from 'reactflow';
+} from '@xyflow/react';
 
 import { initialNodes, initialEdges } from './nodes-edges';
 import ContextMenu from './ContextMenu';
 
-import 'reactflow/dist/style.css';
+import '@xyflow/react/dist/style.css';
 import './style.css';
 
 const Flow = () => {
