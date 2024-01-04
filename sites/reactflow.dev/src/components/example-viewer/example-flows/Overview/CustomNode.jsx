@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { Handle, useReactFlow, useStoreApi, Position } from '@xyflow/react';
+import { Handle, useReactFlow, Position } from '@xyflow/react';
 
 const options = [
   {
@@ -21,26 +21,15 @@ const options = [
 ];
 
 function Select({ value, handleId, nodeId }) {
-  const { setNodes } = useReactFlow();
-  const store = useStoreApi();
+  const { updateNodeData } = useReactFlow();
 
   const onChange = (evt) => {
-    const { nodeInternals } = store.getState();
-    setNodes(
-      Array.from(nodeInternals.values()).map((node) => {
-        if (node.id === nodeId) {
-          node.data = {
-            ...node.data,
-            selects: {
-              ...node.data.selects,
-              [handleId]: evt.target.value,
-            },
-          };
-        }
-
-        return node;
-      }),
-    );
+    updateNodeData(nodeId, (node) => ({
+      selects: {
+        ...node.data.selects,
+        [handleId]: evt.target.value,
+      },
+    }));
   };
 
   return (

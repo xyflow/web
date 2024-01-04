@@ -32,8 +32,8 @@ const NodesLengthDisplay = () => {
   const store = useStoreApi();
 
   const onClick = useCallback(() => {
-    const { nodeInternals } = store.getState();
-    const length = Array.from(nodeInternals.values()).length || 0;
+    const { nodes } = store.getState();
+    const length = nodes.length || 0;
 
     setNodesLength(length);
   }, [store]);

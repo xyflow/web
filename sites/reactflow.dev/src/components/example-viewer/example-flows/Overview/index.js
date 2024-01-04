@@ -43,7 +43,10 @@ const OverviewFlow = () => {
     if (edge.sourceHandle) {
       const edgeType = nodes.find((node) => node.type === 'custom').data
         .selects[edge.sourceHandle];
-      edge.type = edgeType;
+      return {
+        ...edge,
+        type: edgeType,
+      };
     }
 
     return edge;

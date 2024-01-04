@@ -7,7 +7,7 @@ import {
   useNodesState,
   useEdgesState,
   useReactFlow,
-  useStore,
+  useNodesInitialized,
 } from '@xyflow/react';
 
 import { initialNodes, initialEdges } from './nodes-edges.js';
@@ -16,16 +16,12 @@ import '@xyflow/react/dist/style.css';
 
 const useLayoutedElements = () => {
   const { getNodes, setNodes, getEdges, fitView } = useReactFlow();
-  const initialised = useStore((store) =>
-    [...store.nodeInternals.values()].every(
-      (node) => node.width && node.height,
-    ),
-  );
+  const initialized = useNodesInitialized();
 
   return useMemo(() => {
-    // If React Flow hasn't initialised our nodes with a width and height yet, or
+    // If React Flow hasn't initialized our nodes with a width and height yet, or
     // if there are no nodes in the flow, then we can't run the simulation!
-    if (!initialised || getNodes().length === 0) return [false, {}];
+    if (!initialized || getNodes().length === 0) return [false, {}];
 
     let running = false;
     let idMap = new Map();

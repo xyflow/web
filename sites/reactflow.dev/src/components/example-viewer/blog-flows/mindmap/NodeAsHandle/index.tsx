@@ -63,9 +63,9 @@ function Flow() {
       !domNode ||
       // we need to check if these properites exist, because when a node is not initialized yet,
       // it doesn't have a positionAbsolute nor a width or height
-      !parentNode?.positionAbsolute ||
-      !parentNode?.width ||
-      !parentNode?.height
+      !parentNode?.computed?.positionAbsolute ||
+      !parentNode?.computed?.width ||
+      !parentNode?.computed?.height
     ) {
       return;
     }
@@ -81,8 +81,14 @@ function Flow() {
 
     // we are calculating with positionAbsolute here because child nodes are positioned relative to their parent
     return {
-      x: panePosition.x - parentNode.positionAbsolute.x + parentNode.width / 2,
-      y: panePosition.y - parentNode.positionAbsolute.y + parentNode.height / 2,
+      x:
+        panePosition.x -
+        parentNode.computed?.positionAbsolute.x +
+        parentNode.computed?.width / 2,
+      y:
+        panePosition.y -
+        parentNode.computed?.positionAbsolute.y +
+        parentNode.computed?.height / 2,
     };
   };
 
@@ -92,13 +98,13 @@ function Flow() {
 
   const onConnectEnd: OnConnectEnd = useCallback(
     (event) => {
-      const { nodeInternals } = store.getState();
+      const { nodeLookup } = store.getState();
       const targetIsPane = (event.target as Element).classList.contains(
         'react-flow__pane',
       );
 
       if (targetIsPane && connectingNodeId.current) {
-        const parentNode = nodeInternals.get(connectingNodeId.current);
+        const parentNode = nodeLookup.get(connectingNodeId.current);
         const childNodePosition = getChildNodePosition(event, parentNode);
 
         if (parentNode && childNodePosition) {

@@ -1,4 +1,4 @@
-import { Background, BackgroundVariant } from '@xyflow/react';
+import { ReactFlow, Background, BackgroundVariant } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 
 import defaultNodes from './nodes.js';

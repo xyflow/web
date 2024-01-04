@@ -26,10 +26,10 @@ state management library, so you should check out their docs for more details.
 </Callout>
 
 ```jsx
-import { ReactFlow,  useStore } from '@xyflow/react';
+import { ReactFlow, useStore } from '@xyflow/react';
 
 const nodesLengthSelector = (state) =>
-  Array.from(state.nodeInternals.values()).length || 0;
+  state.nodes.length || 0;
 
 const NodesLengthDisplay = () => {
   const nodesLength = useStore(nodesLengthSelector);
