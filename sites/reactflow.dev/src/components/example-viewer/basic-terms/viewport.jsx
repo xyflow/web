@@ -1,10 +1,11 @@
 import React from 'react';
-import ReactFlow, {
+import {
+  ReactFlow,
   Background,
   Controls,
   ReactFlowProvider,
   useStore,
-} from 'reactflow';
+} from '@xyflow/react';
 import 'reactflow/dist/base.css';
 
 const selector = (s) => s.transform;

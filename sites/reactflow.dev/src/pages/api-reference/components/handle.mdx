@@ -15,7 +15,7 @@ The `<Handle />` component is used in your [custom nodes](/learn/customization/c
 to define connection points.
 
 ```jsx
-import { Handle, Position } from 'reactflow';
+import { Handle, Position } from '@xyflow/react';
 
 export CustomNode = ({ data }) => {
   return (
@@ -47,7 +47,7 @@ This example shows a custom handle that only allows connections when the
 connection source matches a given id.
 
 ```jsx
-import { Handle, Position } from 'reactflow';
+import { Handle, Position } from '@xyflow/react';
 
 export const TargetHandleWithValidation = ({ position, source }) => (
   <Handle

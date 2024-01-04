@@ -1,13 +1,14 @@
 import React, { useState, useCallback } from 'react';
-import ReactFlow, {
+import {
+  ReactFlow,
   ReactFlowProvider,
   useNodesState,
   useEdgesState,
   addEdge,
   useReactFlow,
   Panel,
-} from 'reactflow';
-import 'reactflow/dist/style.css';
+} from '@xyflow/react';
+import '@xyflow/react/dist/style.css';
 
 const flowKey = 'example-flow';
 
@@ -26,7 +27,10 @@ const SaveRestore = () => {
   const [rfInstance, setRfInstance] = useState(null);
   const { setViewport } = useReactFlow();
 
-  const onConnect = useCallback((params) => setEdges((eds) => addEdge(params, eds)), [setEdges]);
+  const onConnect = useCallback(
+    (params) => setEdges((eds) => addEdge(params, eds)),
+    [setEdges],
+  );
   const onSave = useCallback(() => {
     if (rfInstance) {
       const flow = rfInstance.toObject();

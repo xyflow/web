@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
-import ReactFlow, {
+import {
+  ReactFlow,
   Background,
   Controls,
   MiniMap,
@@ -7,9 +8,9 @@ import ReactFlow, {
   useEdgesState,
   addEdge,
   Position,
-} from 'reactflow';
+} from '@xyflow/react';
 
-import 'reactflow/dist/style.css';
+import '@xyflow/react/dist/style.css';
 
 const nodeDefaults = {
   sourcePosition: Position.Right,
@@ -68,7 +69,7 @@ const Flow = () => {
 
   const onConnect = useCallback(
     (params) => setEdges((els) => addEdge(params, els)),
-    []
+    [],
   );
 
   return (

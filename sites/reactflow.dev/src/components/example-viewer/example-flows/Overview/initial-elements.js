@@ -1,5 +1,5 @@
 import React from 'react';
-import { MarkerType, Position } from 'reactflow';
+import { MarkerType, Position } from '@xyflow/react';
 
 export const nodes = [
   {
@@ -73,8 +73,8 @@ export const nodes = [
     data: {
       label: (
         <>
-          On the bottom left you see the <strong>Controls</strong> and the bottom right the{' '}
-          <strong>MiniMap</strong>. This is also just a node 🥳
+          On the bottom left you see the <strong>Controls</strong> and the
+          bottom right the <strong>MiniMap</strong>. This is also just a node 🥳
         </>
       ),
     },

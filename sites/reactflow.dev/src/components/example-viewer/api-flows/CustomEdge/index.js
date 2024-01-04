@@ -1,8 +1,13 @@
 import { useCallback } from 'react';
-import ReactFlow, { addEdge, useNodesState, useEdgesState } from 'reactflow';
+import {
+  ReactFlow,
+  addEdge,
+  useNodesState,
+  useEdgesState,
+} from '@xyflow/react';
 import CustomEdge from './CustomEdge';
 
-import 'reactflow/dist/style.css';
+import '@xyflow/react/dist/style.css';
 
 const initialNodes = [
   { id: 'a', position: { x: 0, y: 0 }, data: { label: 'Node A' } },

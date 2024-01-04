@@ -29,7 +29,7 @@ You'll typically load these default styles by importing them in you `App.jsx`
 file or other entry point:
 
 ```js
-import 'reactflow/dist/style.css';
+import '@xyflow/react/dist/style.css';
 ```
 
 Without dipping into [custom nodes](/examples/nodes/custom-node) and
@@ -47,7 +47,7 @@ the `style` prop found on many of React Flow's components to inline your own
 CSS.
 
 ```jsx
-import ReactFlow from 'reactflow'
+import ReactFlow from '@xyflow/react'
 
 const styles = {
   background: 'red',
@@ -139,7 +139,7 @@ Many of the components you render directly, such as the
 [Styled Components](https://styled-components.com/):
 
 ```jsx
-import { MiniMap } from 'reactflow';
+import { MiniMap } from '@xyflow/react';
 
 const StyledMiniMap = styled(MiniMap)`
   background-color: ${(props) => props.theme.bg};

@@ -1,4 +1,4 @@
-import { Position } from 'reactflow';
+import { Position } from '@xyflow/react';
 
 const nodeDefaults = {
   sourcePosition: Position.Right,

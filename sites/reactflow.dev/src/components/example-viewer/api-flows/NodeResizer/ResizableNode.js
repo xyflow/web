@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { Handle, Position, NodeResizer } from 'reactflow';
+import { Handle, Position, NodeResizer } from '@xyflow/react';
 
 const ResizableNode = ({ data }) => {
   return (

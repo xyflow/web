@@ -1,12 +1,18 @@
 import React, { useCallback } from 'react';
 
-import ReactFlow, { addEdge, useNodesState, useEdgesState, MarkerType } from 'reactflow';
+import {
+  ReactFlow,
+  addEdge,
+  useNodesState,
+  useEdgesState,
+  MarkerType,
+} from '@xyflow/react';
 
 import CustomNode from './CustomNode';
 import FloatingEdge from './FloatingEdge';
 import CustomConnectionLine from './CustomConnectionLine';
 
-import 'reactflow/dist/style.css';
+import '@xyflow/react/dist/style.css';
 import './style.css';
 
 const initialNodes = [
@@ -60,7 +66,10 @@ const EasyConnectExample = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
-  const onConnect = useCallback((params) => setEdges((eds) => addEdge(params, eds)), [setEdges]);
+  const onConnect = useCallback(
+    (params) => setEdges((eds) => addEdge(params, eds)),
+    [setEdges],
+  );
 
   return (
     <ReactFlow

@@ -3,7 +3,7 @@ import {
   EdgeLabelRenderer,
   getStraightPath,
   useReactFlow,
-} from 'reactflow';
+} from '@xyflow/react';
 
 export default function CustomEdge({ id, sourceX, sourceY, targetX, targetY }) {
   const { setEdges } = useReactFlow();

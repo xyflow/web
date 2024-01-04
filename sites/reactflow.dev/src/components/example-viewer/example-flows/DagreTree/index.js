@@ -1,16 +1,17 @@
 import React, { useCallback } from 'react';
-import ReactFlow, {
+import {
+  ReactFlow,
   addEdge,
   ConnectionLineType,
   Panel,
   useNodesState,
   useEdgesState,
-} from 'reactflow';
+} from '@xyflow/react';
 import dagre from 'dagre';
 
 import { initialNodes, initialEdges } from './nodes-edges.js';
 
-import 'reactflow/dist/style.css';
+import '@xyflow/react/dist/style.css';
 
 const dagreGraph = new dagre.graphlib.Graph();
 dagreGraph.setDefaultEdgeLabel(() => ({}));
@@ -52,7 +53,7 @@ const getLayoutedElements = (nodes, edges, direction = 'TB') => {
 
 const { nodes: layoutedNodes, edges: layoutedEdges } = getLayoutedElements(
   initialNodes,
-  initialEdges
+  initialEdges,
 );
 
 const LayoutFlow = () => {
@@ -62,22 +63,22 @@ const LayoutFlow = () => {
   const onConnect = useCallback(
     (params) =>
       setEdges((eds) =>
-        addEdge({ ...params, type: ConnectionLineType.SmoothStep, animated: true }, eds)
+        addEdge(
+          { ...params, type: ConnectionLineType.SmoothStep, animated: true },
+          eds,
+        ),
       ),
-    []
+    [],
   );
   const onLayout = useCallback(
     (direction) => {
-      const { nodes: layoutedNodes, edges: layoutedEdges } = getLayoutedElements(
-        nodes,
-        edges,
-        direction
-      );
+      const { nodes: layoutedNodes, edges: layoutedEdges } =
+        getLayoutedElements(nodes, edges, direction);
 
       setNodes([...layoutedNodes]);
       setEdges([...layoutedEdges]);
     },
-    [nodes, edges]
+    [nodes, edges],
   );
 
   return (

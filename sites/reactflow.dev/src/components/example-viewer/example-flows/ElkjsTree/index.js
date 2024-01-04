@@ -1,16 +1,17 @@
 import { initialNodes, initialEdges } from './nodes-edges.js';
 import ELK from 'elkjs/lib/elk.bundled.js';
 import React, { useCallback, useLayoutEffect } from 'react';
-import ReactFlow, {
+import {
+  ReactFlow,
   ReactFlowProvider,
   addEdge,
   Panel,
   useNodesState,
   useEdgesState,
   useReactFlow,
-} from 'reactflow';
+} from '@xyflow/react';
 
-import 'reactflow/dist/style.css';
+import '@xyflow/react/dist/style.css';
 
 const elk = new ELK();
 
@@ -64,21 +65,26 @@ function LayoutFlow() {
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   const { fitView } = useReactFlow();
 
-  const onConnect = useCallback((params) => setEdges((eds) => addEdge(params, eds)), []);
+  const onConnect = useCallback(
+    (params) => setEdges((eds) => addEdge(params, eds)),
+    [],
+  );
   const onLayout = useCallback(
     ({ direction, useInitialNodes = false }) => {
       const opts = { 'elk.direction': direction, ...elkOptions };
       const ns = useInitialNodes ? initialNodes : nodes;
       const es = useInitialNodes ? initialEdges : edges;
 
-      getLayoutedElements(ns, es, opts).then(({ nodes: layoutedNodes, edges: layoutedEdges }) => {
-        setNodes(layoutedNodes);
-        setEdges(layoutedEdges);
+      getLayoutedElements(ns, es, opts).then(
+        ({ nodes: layoutedNodes, edges: layoutedEdges }) => {
+          setNodes(layoutedNodes);
+          setEdges(layoutedEdges);
 
-        window.requestAnimationFrame(() => fitView());
-      });
+          window.requestAnimationFrame(() => fitView());
+        },
+      );
     },
-    [nodes, edges]
+    [nodes, edges],
   );
 
   // Calculate the initial layout on mount.
@@ -96,9 +102,13 @@ function LayoutFlow() {
       fitView
     >
       <Panel position="top-right">
-        <button onClick={() => onLayout({ direction: 'DOWN' })}>vertical layout</button>
+        <button onClick={() => onLayout({ direction: 'DOWN' })}>
+          vertical layout
+        </button>
 
-        <button onClick={() => onLayout({ direction: 'RIGHT' })}>horizontal layout</button>
+        <button onClick={() => onLayout({ direction: 'RIGHT' })}>
+          horizontal layout
+        </button>
       </Panel>
     </ReactFlow>
   );

@@ -1,10 +1,13 @@
 import { memo } from 'react';
-import { Handle, Position, NodeToolbar } from 'reactflow';
+import { Handle, Position, NodeToolbar } from '@xyflow/react';
 
 const CustomNode = ({ data }) => {
   return (
     <>
-      <NodeToolbar isVisible={data.toolbarVisible} position={data.toolbarPosition}>
+      <NodeToolbar
+        isVisible={data.toolbarVisible}
+        position={data.toolbarPosition}
+      >
         <button>delete</button>
         <button>copy</button>
         <button>expand</button>

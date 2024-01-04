@@ -1,5 +1,6 @@
 import React, { useCallback, MouseEvent } from 'react';
-import ReactFlow, {
+import {
+  ReactFlow,
   Background,
   Controls,
   ReactFlowProvider,
@@ -7,8 +8,8 @@ import ReactFlow, {
   Edge,
   useReactFlow,
   useNodesState,
-} from 'reactflow';
-import 'reactflow/dist/style.css';
+} from '@xyflow/react';
+import '@xyflow/react/dist/style.css';
 
 import './style.css';
 
@@ -56,7 +57,7 @@ const BasicFlow = () => {
       ns.map((n) => ({
         ...n,
         className: intersections.includes(n.id) ? 'highlight' : '',
-      }))
+      })),
     );
   }, []);
 
