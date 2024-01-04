@@ -362,7 +362,7 @@ export const connectionEventHandlerProps: PropsTableProps = {
     { name: 'onClickConnectEnd', type: '(event: React.MouseEvent) => void' },
     {
       name: 'isValidConnection',
-      type: '(edge: Edge) => boolean',
+      type: '(connection: Connection) => boolean',
       description: `This callback can be used to validate a new connection. If
       you return false, the edge will not be added to your flow. If you have custom
       connection logic its preferred to use this callback over the isValidConnection
@@ -421,7 +421,10 @@ export const selectionEventHandlerProps: PropsTableProps = {
     },
     { name: 'onSelectionStart', type: '() => void' },
     { name: 'onSelectionEnd', type: '() => void' },
-    { name: 'onSelectionContextMenu', type: '(event: React.MouseEvent, nodes: Node[]) => void' },
+    {
+      name: 'onSelectionContextMenu',
+      type: '(event: React.MouseEvent, nodes: Node[]) => void',
+    },
   ],
 };
 

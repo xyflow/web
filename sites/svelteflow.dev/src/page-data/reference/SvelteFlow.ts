@@ -363,7 +363,7 @@ export const connectionLineProps: PropsTableProps = {
   props: [
     {
       name: 'isValidConnection',
-      type: 'IsValidConnection',
+      type: '(connection: Connection) => boolean',
       default: '() => true',
       description: `This prop allows you to control which connections are valid. It gets called before an edge is created.`,
     },
