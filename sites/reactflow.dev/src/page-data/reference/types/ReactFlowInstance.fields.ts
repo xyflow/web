@@ -71,7 +71,7 @@ export const viewportFields: PropsTableProps = {
       name: 'screenToFlowPosition',
       type: '(position: { x: number; y: number; }) => { x: number; y: number; }',
       description:
-        'With this function you can translate a screen pixel position to a flow position. It is usefull for implemting drag and drop from a sidebar for example.',
+        'With this function you can translate a screen pixel position to a flow position. It is useful for implemting drag and drop from a sidebar for example.',
     },
     {
       name: 'flowToScreenPosition',
