@@ -12,5 +12,11 @@ export default function SidebarTitle({
 }) {
   const className = cn('sidebar-title', { pro: isProExample(route) });
 
+  console.log(cn(className, undefined));
+
+  // displayPill(route);
+
+  // console.log(title, type, route);
+
   return <div className={className}>{title}</div>;
 }
