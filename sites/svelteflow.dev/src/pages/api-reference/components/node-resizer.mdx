@@ -17,22 +17,17 @@ import { nodeResizerProps } from '@/page-data/reference/components/NodeResizer.t
 The `<NodeResizer />` component can be used to add a resize functionality to your
 nodes. It renders draggable controls around the node to resize in all directions.
 
-```jsx
-import { memo } from 'react';
-import { Handle, Position, NodeResizer } from 'reactflow';
+```svelte filename="CustomNode.svelte"
+<script lang="ts">
+  import { Handle, Position, NodeResizer } from '@xyflow/svelte';
 
-const ResizableNode = ({ data }) => {
-  return (
-    <>
-      <NodeResizer minWidth={100} minHeight={30} />
-      <Handle type="target" position={Position.Left} />
-      <div style={{ padding: 10 }}>{data.label}</div>
-      <Handle type="source" position={Position.Right} />
-    </>
-  );
-};
+  export let data;
+</script>
 
-export default memo(ResizableNode);
+<NodeResizer minWidth={100} minHeight={30} />
+<Handle type="target" position={Position.Left} />
+<div style={{ padding: 10 }}>{data.label}</div>
+<Handle type="source" position={Position.Right} />
 ```
 
 ## Props
@@ -46,17 +41,7 @@ as `NodeResizerProps`.
 
 Head over to the [example page](/examples/nodes/node-resizer) to see how this is done.
 
-<ExampleViewer
-  codePath="api-flows/NodeResizer"
-  additionalFiles={[
-    'ResizableNode.js',
-    'ResizableNodeSelected.js',
-    'CustomResizerNode.js',
-  ]}
-  showEditor={false}
-  applyStyles={false}
-  options={{ editorHeight: 400, editorWidthPercentage: 45, wrapContent: true }}
-/>
+<ExampleViewer codePath="examples/nodes/node-resizer" showEditor={false} />
 
 ### Custom Resize Controls
 
@@ -65,5 +50,5 @@ To build custom resize controls, you can use the [NodeResizeControl](/api-refere
 ## Notes
 
 - Take a look at the docs for the [`NodeProps`](/api-reference/types/node-props) type or the
-  guide on [custom nodes](/learn/customization/custom-nodes) to see how to
+  guide on [custom nodes](/learn/guides/custom-nodes) to see how to
   implement your own nodes.
