@@ -159,6 +159,12 @@ export const generalEventHandlerProps: PropsTableProps = {
       description:
         'This handler gets called when the user deletes nodes or edges.',
     },
+    {
+      name: 'onbeforedelete',
+      type: 'async (params: { nodes: Node[]; edges: Edge[] }) => boolean',
+      description:
+        'This handler gets called before the user deletes nodes or edges and provides a way to abort the deletion by returning false.',
+    },
   ],
 };
 
