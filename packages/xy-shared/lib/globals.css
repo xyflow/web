@@ -3,13 +3,14 @@
 @tailwind utilities;
 
 /* adds labels to the sidebar items */
-.sidebar-title.pill:after {
-  display: inline-block;
-  @apply border border-primary text-primary text-xs ml-1.5 px-1.5 font-bold rounded-full;
-}
 .sidebar-title.pro:after {
   content: 'Pro';
-  @apply bg-primary/10;
+  @apply bg-primary/10 border border-primary text-primary text-xs ml-1.5 px-1.5 font-bold rounded-full;
+}
+
+li.active .sidebar-title.pro:after {
+  display: inline-block;
+  @apply bg-primary border-primary text-white;
 }
 
 .sidebar-title.new:after {
@@ -19,13 +20,8 @@
   line-height: 14px;
   transform: translate(-35%, -35%);
   content: 'new';
-  border: none;
   font-weight: 500;
-  /* @apply bg-primary/5 border-primary/5 font-bold; */
-}
-
-li.active .sidebar-title.pill:after {
-  @apply bg-primary border-primary text-white;
+  @apply text-primary ml-1.5 px-1.5;
 }
 
 /* if there is no content in the toc, we don't want it to take up the space */
