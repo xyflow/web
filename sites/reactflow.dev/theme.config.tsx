@@ -5,7 +5,6 @@ import { Footer, Button, LogoLabel } from '@xyflow/xy-ui';
 import { Search, SidebarTitle } from 'xy-shared';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 
-// import SidebarTitle from '@/components/sidebar-title';
 import { type Route } from '@/utils';
 
 function useIsPro() {

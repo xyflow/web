@@ -12,18 +12,14 @@ function daysFromNow(dateString: string) {
 
 export function SidebarTitle({
   title,
-  type,
   route,
 }: {
   title: string;
-  type: string;
   route: string;
 }) {
   const isProExample = getFrontmatterTag(route, 'is_pro_example');
   const createdAt = getFrontmatterTag(route, 'created_at');
   const isNew = createdAt && daysFromNow(createdAt) < NUM_DAYS_NEW;
-
-  if (createdAt) console.log(daysFromNow(createdAt));
 
   const className = cn(
     'sidebar-title',
