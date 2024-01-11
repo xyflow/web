@@ -2,7 +2,7 @@
   "background-variant": "BackgroundVariant",
   "color-mode": "ColorMode",
   "connection": "Connection",
-  "connectionn-line-type": "ConnectionLineType",
+  "connection-line-type": "ConnectionLineType",
   "coordinate-extent": "CoordinateExtent",
   "default-edge-options": "DefaultEdgeOptions",
   "edge": "Edge",
@@ -13,9 +13,10 @@
   "marker-type": "MarkerType",
   "node": "Node",
   "node-props": "NodeProps",
+  "node-origin": "NodeOrigin",
   "panel-position": "PanelPosition",
   "position": "Position",
+  "svelte-flow-store": "SvelteFlowStore",
   "viewport": "Viewport",
-  "xy-position": "XYPosition",
-  "node-origin": "NodeOrigin"
+  "xy-position": "XYPosition"
 }
