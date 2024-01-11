@@ -46,7 +46,7 @@ export const signature: PropsTableProps = {
     {
       name: 'getIntersectingNodes',
       type: `(
-        nodeOrRect: Node | { id: Node['id'] } | Rect,
+        nodeOrRect: Node | { id: string } | Rect,
         partially?: boolean,
         nodesToIntersect?: Node[]
       ) => Node[]`,
@@ -55,7 +55,7 @@ export const signature: PropsTableProps = {
     {
       name: 'isNodeIntersecting',
       type: `(
-        nodeOrRect: Node | { id: Node['id'] } | Rect,
+        nodeOrRect: Node | { id: string } | Rect,
         area: Rect,
         partially?: boolean
       ) => boolean`,
@@ -69,11 +69,12 @@ export const signature: PropsTableProps = {
     {
       name: 'deleteElements',
       type: `
-      (
-        nodesToRemove?: (Node | { id: Node['id'] })[],
-        edgesToRemove?: (Edge | { id: Edge['id'] })[]
-      ) => { deletedNodes: Node[]; deletedEdges: Edge[] }`,
-      description: '',
+      async ({ nodes, edges }: {
+        nodes?: Node[] | { id: string }[],
+        edges?: Edge[] | { id: string }[]
+      }) => { deletedNodes: Node[]; deletedEdges: Edge[] }`,
+      description:
+        'Helper function to remove nodes and edges that also deletes connected edges and child nodes.',
     },
     {
       name: 'screenToFlowPosition',
