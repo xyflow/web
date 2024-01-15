@@ -2,10 +2,9 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useConfig, Navbar } from 'nextra-theme-docs';
 import { Footer, Button, LogoLabel } from '@xyflow/xy-ui';
-import { Search } from 'xy-shared';
+import { Search, SidebarTitle } from 'xy-shared';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 
-import SidebarTitle from '@/components/sidebar-title';
 import { type Route } from '@/utils';
 
 function useIsPro() {

@@ -2,15 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
-/* add a "pro" label to the pro examples in the sidebar */
+/* adds labels to the sidebar items */
 .sidebar-title.pro:after {
   content: 'Pro';
-  display: inline-block;
   @apply bg-primary/10 border border-primary text-primary text-xs ml-1.5 px-1.5 font-bold rounded-full;
 }
 
 li.active .sidebar-title.pro:after {
+  display: inline-block;
   @apply bg-primary border-primary text-white;
+}
+
+.sidebar-title.new:after {
+  position: absolute;
+  width: 36px;
+  font-size: 12px;
+  line-height: 14px;
+  transform: translate(-35%, -35%);
+  content: 'new';
+  font-weight: 500;
+  @apply text-primary ml-1.5 px-1.5;
 }
 
 /* if there is no content in the toc, we don't want it to take up the space */
