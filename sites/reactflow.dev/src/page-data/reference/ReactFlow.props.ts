@@ -580,7 +580,7 @@ export const keyboardProps: PropsTableProps = {
       you can disable this functionality.`,
     },
     {
-      name: 'disabledKeyboardA11y',
+      name: 'disableKeyboardA11y',
       type: 'boolean',
       default: 'false',
       description: `You can use this prop to disable keyboard accessibility features
