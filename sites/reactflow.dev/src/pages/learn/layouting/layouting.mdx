@@ -35,18 +35,22 @@ for you to compare how they're set up.
 For layouting nodes, there are a few third-party libraries that we think are worth
 checking out:
 
-- Dagre
-- D3-Hierarchy
-- D3-Force
-- ELK
+| Library                                            | Dynamic node sizes | Sub-flow layouting | Edge routing | Bundle size                                                                                                                                   |
+| -------------------------------------------------- | ------------------ | ------------------ | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Dagre](https://github.com/dagrejs/dagre)          | Yes                | Yes¹               | No           | <a href="https://pkg-size.dev/@dagrejs/dagre"><img src="https://pkg-size.dev/badge/bundle/39882" title="Bundle size for @dagrejs/dagre"/></a> |
+| [D3-Hierarchy](https://github.com/d3/d3-hierarchy) | No                 | No                 | No           | <a href="https://pkg-size.dev/d3-hierarchy"><img src="https://pkg-size.dev/badge/bundle/14697" title="Bundle size for d3-hierarchy"/></a>     |
+| [D3-Force](https://github.com/d3/d3-force)         | Yes                | No                 | No           | <a href="https://pkg-size.dev/d3-force"><img src="https://pkg-size.dev/badge/bundle/15623" title="Bundle size for d3-force"/></a>             |
+| [ELK](https://github.com/kieler/elkjs)             | Yes                | Yes                | Yes          | <a href="https://pkg-size.dev/elkjs"><img src="https://pkg-size.dev/badge/bundle/1455420" title="Bundle size for elkjs"/></a>                 |
+
+¹ Dagre currently has an [open issue](https://github.com/dagrejs/dagre/issues/238)
+that prevents it from laying out sub-flows correctly if any nodes in the sub-flow
+are connected to nodes outside the sub-flow.
 
 We've loosely ordered these options from simplest to most complex, where dagre
 is largely a drop-in solution and elkjs is a full-blown highly configurable
-layouting engine.
-
-Let's take a look at a brief example of how each of these libraries can be used
-with React Flow. For dagre and elkjs specifically, we have some separate examples
-you can refer back to [here](/examples/layout/dagre)
+layouting engine. Below, we'll take a look at a brief example of how each of these
+libraries can be used with React Flow. For dagre and elkjs specifically, we have
+some separate examples you can refer back to [here](/examples/layout/dagre)
 and [here](/examples/layout/elkjs).
 
 ### Dagre
@@ -79,18 +83,6 @@ node's position according to node stored in the dagre graph.
 Documentation for dagre's configuration options can be found
 [here](https://github.com/dagrejs/dagre/wiki#configuring-the-layout), including
 properties to set for spacing and alignment.
-
-<Callout>
-  In this example we use `Element.getBoundingClientRect` to get the dimensions
-  of each node. You should think twice about doing this in your own apps if you
-  allow zooming: the dimensions of the nodes will change as the user zooms in
-  and out!
-  <></>
-  Dagre also expects every node in the graph to have the same dimensions. If you
-  have lots of different-sized nodes you may want to consider one of the other
-  options below, or configuring dagre with the largest dimensions you expect to
-  see.
-</Callout>
 
 ### D3-Hierarchy
 
