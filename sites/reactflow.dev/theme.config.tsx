@@ -22,7 +22,6 @@ export default {
   logoLink: false,
   docsRepositoryBase:
     'https://github.com/xyflow/web/tree/main/sites/reactflow.dev',
-  // this is necessary to hide the github icon
   project: {
     link: 'https://github.com/xyflow/xyflow',
   },
