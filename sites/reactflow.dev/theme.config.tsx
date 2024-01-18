@@ -23,7 +23,9 @@ export default {
   docsRepositoryBase:
     'https://github.com/xyflow/web/tree/main/sites/reactflow.dev',
   // this is necessary to hide the github icon
-  project: {},
+  project: {
+    link: 'https://github.com/xyflow/xyflow',
+  },
   darkMode: false,
   nextThemes: {
     forcedTheme: 'light',

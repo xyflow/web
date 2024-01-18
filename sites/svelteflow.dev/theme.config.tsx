@@ -17,8 +17,9 @@ export default {
   logoLink: false,
   docsRepositoryBase:
     'https://github.com/xyflow/web/tree/main/sites/svelteflow.dev',
-  // this is necessary to hide the github icon
-  project: {},
+  project: {
+    link: 'https://github.com/xyflow/xyflow',
+  },
   darkMode: false,
   nextThemes: {
     forcedTheme: 'light',
