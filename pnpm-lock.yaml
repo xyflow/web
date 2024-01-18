@@ -721,8 +721,8 @@ importers:
         specifier: ^0.155.1
         version: 0.155.1
       '@xyflow/system':
-        specifier: ^0.0.9
-        version: 0.0.9
+        specifier: ^0.0.14
+        version: 0.0.14
       '@xyflow/xy-ui':
         specifier: workspace:*
         version: link:../../packages/xy-ui
@@ -6950,18 +6950,6 @@ packages:
       d3-selection: 3.0.0
       d3-zoom: 3.0.0
     dev: true
-
-  /@xyflow/system@0.0.9:
-    resolution: {integrity: sha512-jtn5RaSydScUDetIhT4KNClCnbdQN8c3cpHZvV2iTo7vALx6q+w8G2b2h3jMAqE8hBpavzh9hHYdIDrQMVh+iw==}
-    dependencies:
-      '@types/d3': 7.4.3
-      '@types/d3-drag': 3.0.7
-      '@types/d3-selection': 3.0.10
-      '@types/d3-zoom': 3.0.8
-      d3-drag: 3.0.0
-      d3-selection: 3.0.0
-      d3-zoom: 3.0.0
-    dev: false
 
   /@yarnpkg/esbuild-plugin-pnp@3.0.0-rc.15(esbuild@0.18.20):
     resolution: {integrity: sha512-kYzDJO5CA9sy+on/s2aIW0411AklfCi8Ck/4QDivOqsMKpStZA2SsR+X27VTggGwpStWaLrjJcDcdDMowtG8MA==}
