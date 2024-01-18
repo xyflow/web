@@ -38,12 +38,15 @@ export type Node<T, U extends string> = {
   zIndex?: number;
   extent?: 'parent' | CoordinateExtent;
   expandParent?: boolean;
-  positionAbsolute?: XYPosition;
   ariaLabel?: string;
-  focusable?: boolean;
   origin?: NodeOrigin;
   style?: string;
   class?: string;
+  computed?: {
+    width?: number;
+    height?: number;
+    positionAbsolute?: XYPosition;
+  };
 };
 ```
 
