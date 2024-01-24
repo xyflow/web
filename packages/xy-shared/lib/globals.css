@@ -8,6 +8,10 @@
   @apply bg-primary/10 border border-primary text-primary text-xs ml-1.5 px-1.5 font-bold rounded-full;
 }
 
+.sidebar-title.pro.free:after {
+  content: 'Pro Trial';
+}
+
 li.active .sidebar-title.pro:after {
   display: inline-block;
   @apply bg-primary border-primary text-white;

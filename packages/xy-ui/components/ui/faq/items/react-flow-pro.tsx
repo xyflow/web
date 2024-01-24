@@ -16,6 +16,20 @@ const items: FAQItem[] = [
     ),
   },
   {
+    question: <>Can I get a free trial of React Flow Pro?</>,
+    answer: (
+      <>
+        When you{' '}
+        <Link variant="primary" href="https://pro.reactflow.dev/signup">
+          create a React Flow Pro account
+        </Link>
+        , you can log in to the pro platform and access the Helper Lines pro example for
+        free. If you subscribe, you can access all of the pro
+        examples.
+      </>
+    ),
+  },
+  {
     question: (
       <>I / my company can&apos;t afford the monthly subscription price.</>
     ),
