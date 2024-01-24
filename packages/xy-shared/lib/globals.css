@@ -33,6 +33,10 @@ nav.nextra-toc:empty {
   display: none;
 }
 
+nav a:has(svg.nav-github-logo) {
+  @apply max-sm:hidden;
+}
+
 nav.nx-bg-transparent {
   background-color: white;
 }
