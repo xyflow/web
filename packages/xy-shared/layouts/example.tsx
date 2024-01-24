@@ -1,8 +1,7 @@
 import { type ReactNode } from 'react';
-import { SubscribeSection } from '..';
 
 export type ExampleLayoutProps = {
-  frontMatter: { title: string; is_pro_example?: boolean };
+  frontMatter: { title: string; is_pro_example?: boolean; is_free?: boolean };
   children: ReactNode;
 };
 
@@ -20,7 +19,7 @@ export function ExampleLayout({ frontMatter, children }: ExampleLayoutProps) {
         </h1>
         {frontMatter.is_pro_example && (
           <div className="bg-primary/5 border border-primary text-primary px-2 pb-0.5 font-bold rounded-full">
-            Pro
+            Pro {frontMatter.is_free && 'Trial'}
           </div>
         )}
       </div>

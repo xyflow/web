@@ -18,12 +18,14 @@ export function SidebarTitle({
   route: string;
 }) {
   const isProExample = getFrontmatterTag(route, 'is_pro_example');
+  const isFree = getFrontmatterTag(route, 'is_free');
   const createdAt = getFrontmatterTag(route, 'created_at');
   const isNew = createdAt && daysFromNow(createdAt) < NUM_DAYS_NEW;
 
   const className = cn(
     'sidebar-title',
     { pro: isProExample },
+    { free: isFree },
     { new: isNew },
     { pill: isNew || isProExample },
   );

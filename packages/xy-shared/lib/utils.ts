@@ -28,7 +28,7 @@ export const wideNegativeMargin = 'sm:-mx-[min(calc((100vw-768px)/2),12rem)]';
 // Collect all frontmatters for fast access so we can display pills
 // in the sidebar more efficiently
 // Add all keys you want to check for here
-const RELEVANT_FRONTMATTER_KEYS = ['is_pro_example', 'created_at'];
+const RELEVANT_FRONTMATTER_KEYS = ['is_pro_example', 'is_free', 'created_at'];
 let pageFrontMattersMap: Map<string, any> | undefined = undefined;
 
 function addToMap(
