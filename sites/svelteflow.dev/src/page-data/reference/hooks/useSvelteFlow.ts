@@ -4,6 +4,33 @@ export const signature: PropsTableProps = {
   props: [
     { name: 'Returns' },
     {
+      name: 'getNode',
+      type: '(id: string) => Node | undefined',
+      description: 'Returns a node by id.',
+    },
+    {
+      name: 'getNodes',
+      type: '(nodeIds?: string[]) => Node[]',
+      description:
+        'Returns all nodes if no ids are passed or the nodes of the passed ids.',
+    },
+    {
+      name: 'getEdge',
+      type: '(id: string) => Edge | undefined',
+      description: 'Returns an edge by id.',
+    },
+    {
+      name: 'getEdges',
+      type: '(edgeIds?: string[]) => Node[]',
+      description:
+        'Returns all edges if no ids are passed or the edges of the passed ids.',
+    },
+    {
+      name: 'zoomIn',
+      type: 'Function',
+      description: '',
+    },
+    {
       name: 'zoomIn',
       type: 'Function',
       description: '',

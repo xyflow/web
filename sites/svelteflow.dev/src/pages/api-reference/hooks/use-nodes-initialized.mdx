@@ -1,0 +1,25 @@
+---
+title: useNodesInitialized
+description: The useNodesInitialized hook can be used to check if all nodes are initialized.
+---
+
+import { PropsTable } from '@/components/props-table';
+import { signature } from '@/page-data/reference/hooks/useNodesInitialized.ts';
+
+# useNodesInitialized
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/hooks/useInitialized.ts#L8-L13)
+
+This hook can be used to check if all nodes are initialized. It returns a readable store with a boolean.
+
+```svelte
+<script lang="ts">
+  import { useNodesInitialized } from '@xyflow/svelte';
+
+  const useNodesInitialized = useNodesInitialized();
+</script>
+```
+
+## Signature
+
+<PropsTable {...signature} />
