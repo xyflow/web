@@ -20,6 +20,10 @@
         "title": "What's new?",
         "href": "/whats-new"
       },
+      "discord": {
+        "title": "Discord",
+        "href": "https://discord.gg/RVmnytFmGW"
+      },
       "github": {
         "title": "Github",
         "href": "https://github.com/xyflow/xyflow"
