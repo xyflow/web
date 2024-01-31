@@ -121,3 +121,55 @@ These variables are mostly self-explanatory. Below is a table of all the variabl
 | `--controls-box-shadow-default`                    | `0 0 2px 1px rgba(0, 0, 0, 0.08)`   |
 
 These variables are used to define the _defaults_ for the various elements of Svelte Flow. This means they can still be overriden by inline styles or custom classes on a per-element basis.
+
+### Tailwind
+
+### TailwindCSS
+
+Custom nodes and edges are just React components, and you can use any styling
+solution you'd like to style them. For example, you might want to use
+[Tailwind](https://tailwindcss.com/) to style your nodes:
+
+```svelte
+<script lang="ts">
+  import { Handle, Position, type NodeProps } from '@xyflow/svelte';
+
+  type $$Props = NodeProps;
+  export let data: $$Props['data'];
+</script>
+
+<div class="px-4 py-2 shadow-md rounded-md bg-white border-2 border-stone-400">
+  <div class="flex">
+    <div class="rounded-full w-12 h-12 flex justify-center items-center bg-gray-100">
+      {data.emoji}
+    </div>
+    <div class="ml-2">
+      <div class="text-lg font-bold">{data.name}</div>
+      <div class="text-gray-500">{data.job}</div>
+    </div>
+  </div>
+  <Handle
+    type="target"
+    position={Position.Top}
+    class="w-16 !bg-teal-500 rounded-none border-none"
+  />
+  <Handle
+    type="source"
+    position={Position.Bottom}
+    class="w-16 !bg-teal-500 rounded-none border-none"
+  />
+</div>
+```
+
+<Callout type="warning">
+  If you want to overwrite default styles, make sure to import Tailwinds entry
+  point after Svelte Flows base styles.
+</Callout>
+
+```js
+import '@xyflow/svelte/dist/style.css';
+import 'tailwind.css';
+```
+
+For a complete example of using Tailwind with React Flow, check out
+[the example](/examples/styling/tailwind)!
