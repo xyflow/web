@@ -16,7 +16,7 @@ import { Callout } from 'nextra/components';
 
 In this guide we are explaining how you could use React Flow with the state management library [Zustand](https://github.com/pmndrs/zustand). We will build a little app where every node has a color chooser that updates its background color. In this guide we are are using Zustand, because we are already using it internally for React Flow, but of course you can use any other library like [Redux](https://redux.js.org/), [Recoil](https://recoiljs.org/) or [Jotai](https://jotai.org/) as well.
 
-As you might have seen in the previous guides and examples, React Flow can easily be used with a local state for handling the nodes and edges of your diagram. When your app grows and you want to alter your state from within your nodes for example, things can easily get more complex. To avoid passing down functions through the node data field, you could use a [React context](https://reactjs.org/docs/context.html) or add a state management library as explained in this guide.
+As you might have seen in the previous guides and examples, React Flow can easily be used with a local component state for handling the nodes and edges of your diagram. When your app grows and you want to alter your state from within your nodes for example, things can get more complex. To avoid passing down functions through the node data field, you could use a [React context](https://reactjs.org/docs/context.html) or add a state management library as explained in this guide.
 
 ## Install Zustand
 
@@ -50,7 +50,7 @@ yarn add zustand
 
 ## Create a Store
 
-Zustand lets you create a hook for accessing the store easily. We put our `nodes` and `edges` and the `onNodesChange`, `onEdgesChange` and `onConnect` functions in the store in order to get the basic interactivity for our graph:
+Zustand lets you create a hook for accessing the values and functions of your store. We put the `nodes` and `edges` and the `onNodesChange`, `onEdgesChange`, `onConnect`, `setNodes` and `setEdges` functions in the store to get the basic interactivity for our graph:
 
 import ExampleViewer from '@/components/example-viewer';
 
@@ -63,7 +63,7 @@ import ExampleViewer from '@/components/example-viewer';
   isTypescript
 />
 
-That's the basic setup. We now have a store with the nodes and edges that can handle the changes triggered by React Flow. When you take a look at the `App.tsx` file, you can see that it's kept nice and clean. All the data and actions are now part of the store and can easily be accessed with the `useStore` hook.
+That's the basic setup. We now have a store with nodes and edges that can handle the changes (dragging, selecting or removing a node or edge) triggered by React Flow. When you take a look at the `App.tsx` file, you can see that it's kept nice and clean. All the data and actions are now part of the store and can be accessed with the `useStore` hook.
 
 ## Implement a Color Change Action
 
@@ -75,7 +75,7 @@ updateNodeColor: (nodeId: string, color: string) => {
     nodes: get().nodes.map((node) => {
       if (node.id === nodeId) {
         // it's important to create a new object here, to inform React Flow about the changes
-        node.data = { ...node.data, color };
+        return { ...node, data: { ...node.data, color } };
       }
 
       return node;
@@ -94,7 +94,7 @@ const updateNodeColor = useStore((s) => s.updateNodeColor);
 
 ## Add a Color Chooser Node
 
-In this last step we implement the `ColorChooserNode` component and call the `updateNodeColor` when the user changes the color. The custom part of the color chooser node is the color input.
+In this step we implement the `ColorChooserNode` component and call the `updateNodeColor` when the user changes the color. The custom part of the color chooser node is the color input.
 
 ```jsx
 <input

@@ -45,7 +45,7 @@ export const nodes: ElkNode[] = [
     id: 'd',
     data: {
       label: 'D',
-      sourceHandles: [{ id: 'd-s-a' }, { id: 'd-s-b' }],
+      sourceHandles: [{ id: 'd-s-a' }],
       targetHandles: [{ id: 'd-t-a' }, { id: 'd-t-b' }, { id: 'd-t-c' }],
     },
     position: { x: 0, y: 0 },
@@ -56,7 +56,7 @@ export const nodes: ElkNode[] = [
     data: {
       label: 'E',
       sourceHandles: [{ id: 'e-s-a' }],
-      targetHandles: [{ id: 'e-t-a' }, { id: 'e-t-b' }],
+      targetHandles: [{ id: 'e-t-a' }],
     },
     position: { x: 0, y: 0 },
     type: 'elk',

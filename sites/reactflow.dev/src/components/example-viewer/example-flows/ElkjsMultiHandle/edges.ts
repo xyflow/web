@@ -11,16 +11,16 @@ export const edges: Edge[] = [
   {
     id: 'a-c',
     source: 'a',
-    sourceHandle: 'a-s-b',
+    sourceHandle: 'a-s-c',
     target: 'c',
-    targetHandle: 'c-t-b',
+    targetHandle: 'c-t-c',
   },
   {
     id: 'a-d',
     source: 'a',
-    sourceHandle: 'a-s-c',
+    sourceHandle: 'a-s-b',
     target: 'd',
-    targetHandle: 'd-t-c',
+    targetHandle: 'd-t-b',
   },
   {
     id: 'b-e',
@@ -32,9 +32,9 @@ export const edges: Edge[] = [
   {
     id: 'd-e',
     source: 'd',
-    sourceHandle: 'd-s-b',
+    sourceHandle: 'd-s-a',
     target: 'e',
-    targetHandle: 'e-t-b',
+    targetHandle: 'e-t-a',
   },
   {
     id: 'e-f',
