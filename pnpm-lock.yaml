@@ -475,6 +475,9 @@ importers:
       clsx:
         specifier: ^1.2.1
         version: 1.2.1
+      elkjs:
+        specifier: ^0.8.2
+        version: 0.8.2
       fast-xml-parser:
         specifier: ^4.2.6
         version: 4.3.3
