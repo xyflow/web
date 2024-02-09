@@ -25,13 +25,13 @@ const initialNodes = [
   {
     id: 'c',
     type: 'input',
-    data: { label: 'nodes' },
+    data: { label: 'nodes...' },
     position: { x: 150, y: 0 },
   },
   {
     id: 'd',
     type: 'output',
-    data: { label: 'D' },
+    data: { label: '...and connect to me!' },
     position: { x: 250, y: 200 },
   },
 ];
