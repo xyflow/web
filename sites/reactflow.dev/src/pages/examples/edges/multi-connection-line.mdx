@@ -1,0 +1,26 @@
+---
+title: Multi Connection Line
+---
+
+import ExampleViewer from '@/components/example-viewer';
+import ExampleLayout from '@/layouts/example-with-frontmatter';
+import { Callout } from 'nextra/components';
+
+<ExampleLayout>
+
+React Flow typically only allows one connection to be created at a time. This
+example builds on the [custom connection line](/examples/edges/custom-connectionline)
+example to show how to draw multiple connection lines from any selected nodes at
+once.
+
+<Callout type="info">
+  Pay attention to the `onConnect` handler. If you forget to include this then
+  only one connection will be created even if you have multiple selected nodes!
+</Callout>
+
+<ExampleViewer
+  codePath="example-flows/MultiConnectionLine"
+  additionalFiles={['ConnectionLine.js']}
+/>
+
+</ExampleLayout>
