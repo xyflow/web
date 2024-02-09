@@ -89,6 +89,7 @@ export type InternalRoute =
   | '/examples/edges/edge-types'
   | '/examples/edges/floating-edges'
   | '/examples/edges/markers'
+  | '/examples/edges/multi-connection-line'
   | '/examples/edges/simple-floating-edges'
   | '/examples/edges/updatable-edge'
   | '/examples/interaction/collaborative'
@@ -178,4 +179,5 @@ export type InternalRoute =
   | '/whats-new/2023-11-14'
   | '/whats-new/2023-12-06'
   | '/whats-new/2023-12-12'
-  | '/whats-new/2024-01-18';
+  | '/whats-new/2024-01-18'
+  | '/whats-new/2024-02-09';
