@@ -130,7 +130,7 @@ export default function OpenSource() {
         <Text className="text-lg leading-8 mb-4">
           We offer free access to our Pro examples to non-commercial open source
           projects and students who use xyflow. If this is you, send us an email
-          to info@xyflow.dev from your student email, or send us a link to your
+          to info@xyflow.com from your student email, or send us a link to your
           open source project repository.
         </Text>
       </Section>
