@@ -27,4 +27,11 @@ once.
   additionalFiles={['ConnectionLine.js']}
 />
 
+<Callout type="warning">
+  This example makes use of the special `internalsSymbol` to access properties
+  on a node you won't typically need access to. Properties hidden behind this
+  symbol don't have the same stability guarantees as the public API, so use them
+  with caution.
+</Callout>
+
 </ExampleLayout>
