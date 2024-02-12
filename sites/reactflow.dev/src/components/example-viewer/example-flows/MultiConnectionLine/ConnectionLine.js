@@ -1,9 +1,8 @@
 import React from 'react';
-import { useStore, internalsSymbol, getSimpleBezierPath } from 'reactflow';
+import { internalsSymbol, getSimpleBezierPath, useNodes } from 'reactflow';
 
 export default ({ fromNode, toX, toY }) => {
-  const { nodeInternals } = useStore();
-  const handleBounds = [...nodeInternals.values()].flatMap((node) => {
+  const handleBounds = useNodes().flatMap((node) => {
     if (node.id !== fromNode.id && !node.selected) return [];
 
     return node[internalsSymbol].handleBounds.source.map((bounds) => ({
