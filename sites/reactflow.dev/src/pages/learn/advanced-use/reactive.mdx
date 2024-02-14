@@ -1,0 +1,161 @@
+---
+title: Computing Flows
+description: Learn how to extend React Flow to compute data going through flowgraphs.
+createdAt: 2024-02-14
+---
+
+# Computing Flows
+
+import { Callout } from 'nextra/components';
+
+<Callout type="info">
+  For this guide we assume that you already know about the [core
+  concepts](/learn/concepts/core-concepts) of React Flow and how to implement
+  [custom nodes](/learn/customization/custom-nodes).
+</Callout>
+
+React Flow is first and foremost a visualization library. What happens with the data that is being visualized is very much up to you. Do you want to store it in a database? Do you want to send it to a server? Do you want to exchange realtime information with a robot? That's your call, and we won't stand in you way.
+Sometimes however, you might want to a node to react to changes of connected nodes. Or you want to implement a simple tool that runs inside your browser. In that case: This is the guide for you.
+
+## Creating some Custom Nodes
+
+Let's start by creating a custom input node and add 3 instances of it to the flow. We will be using a controlled html `<input type="number" />` and limit it to integer numbers between 0-255 inside the `onChange` event handler - and yes, you guessed it: this tutorial is going to be about colors.
+
+import ExampleViewer from '@/components/example-viewer';
+
+<ExampleViewer
+  activeFile="NumberInput.js"
+  codePath="api-flows/Reactive1"
+  applyStyles={false}
+  options={{ editorHeight: 500, editorWidthPercentage: 45, wrapContent: true }}
+  additionalFiles={['NumberInput.js']}
+/>
+
+Next, we'll add a new custom node with one target handle for each color channel and a background that displays the resulting color. Now that we have multiple handles of the same kind on a single node, don't forget to give each one a seperate id! Let's also add edges going from the input nodes to the color node while we are at it.
+
+<ExampleViewer
+  activeFile="ColorPreview.js"
+  codePath="api-flows/Reactive2"
+  applyStyles={false}
+  options={{ editorHeight: 500, editorWidthPercentage: 45, wrapContent: true }}
+  additionalFiles={['NumberInput.js', 'ColorPreview.js']}
+/>
+
+## Piping the data
+
+So how do we go about actually getting the data from the input nodes to the color node? This is a simple 2 step process that involves 2 hooks created for exactly this purpose:
+
+1. Make the value of the number inputs accessible by storing them inside `node.data` by using [`updateNodeData`](/api-reference/types/react-flow-instance#update-node-data).
+2. `useHandleConnections` for finding out which nodes are connected & `useNodeData` for getting the data from the connected nodes.
+
+### Step 1: Writing values to the data object
+
+First we add some initial values to the `node.data` objects in our initial nodes array. We use these values inside the number inputs to set out intitial state.
+Then we import the function `updateNodeData` from the `useReactFlow` hook and use it to update the `node.data` object with the new value whenever the input changes.
+
+<Callout type="info">
+The data you pass to `updateNodeData` will be merged with the old data object by default. You can pass `{ replace: true }` as an option to replace the object.
+</Callout>
+
+<ExampleViewer
+  activeFile="NumberInput.js"
+  codePath="api-flows/Reactive3"
+  applyStyles={false}
+  options={{ editorHeight: 500, editorWidthPercentage: 45, wrapContent: true }}
+  additionalFiles={['NumberInput.js', 'ColorPreview.js']}
+/>
+
+<Callout type="warning">
+  When dealing with input fields you don't want to use the node data as state
+  directly. There is a delay in updating the data object and the cursor might
+  jump around and lead to undefined behaviour.
+</Callout>
+
+### Step 2: Getting data from connected nodes
+
+We start by determining all connections for each handle by using the `useHandleConnections` hook and then fetching the data for the first connected node using the `useNodeData` hook.
+Now we can react to changes of every input node and update the background color with help of a `useEffect` hook.
+
+<Callout type="info">
+  Note that each handle can have multiple nodes connected to it and you might
+  want to restrict the number of connections to a single handle inside your
+  application. See [this example](/examples/nodes/connection-limit) on how to do
+  that.
+</Callout>
+
+<b>And there you go!</b> Try changing the input values and see the color change in
+real time.
+
+<ExampleViewer
+  activeFile="ColorPreview.js"
+  codePath="api-flows/Reactive4"
+  applyStyles={false}
+  options={{ editorHeight: 500, editorWidthPercentage: 45, wrapContent: true }}
+  additionalFiles={['NumberInput.js', 'ColorPreview.js']}
+/>
+
+### Improving the code
+
+It might seem awkward to get the connections first, then the data and all that
+seperately for each handle. However, in nodes with multiple handles you should consider creating
+a handle component that isolates connection states and node data binding. We can do this pretty easily by creating a small inline component like so.
+
+<ExampleViewer
+  activeFile="ColorPreview.js"
+  codePath="api-flows/Reactive5"
+  applyStyles={false}
+  options={{ editorHeight: 500, editorWidthPercentage: 45, wrapContent: true }}
+  additionalFiles={['NumberInput.js', 'ColorPreview.js']}
+/>
+
+## Getting more complex
+
+Allright - so we have a simple example of how to pipe data through React Flow. But what if we want to do something more complex? What if we want to transform the data along the way?
+And what if we want the data to take different paths? No problem! We can do that too.
+
+## Continuing the flow
+
+Let's continue the flow! We begin just like before by writing the rgb values to the `node.data` object and adding an output handle to the color node.
+
+<Callout type="info">
+  In this case we can actually move the entire local state to `node.data`
+  because there are no inputs involved that might act up.
+</Callout>
+
+<ExampleViewer
+  activeFile="ColorPreview.js"
+  codePath="api-flows/Reactive6"
+  applyStyles={false}
+  options={{ editorHeight: 500, editorWidthPercentage: 45, wrapContent: true }}
+  additionalFiles={['NumberInput.js', 'ColorPreview.js']}
+/>
+
+Then we add a new node that takes in a color object and determines if it is either a light or a dark color. For this we us the perceived brightness formula `isLight = (0.2126 * color.r + 0.7152 * color.g + 0.0722 * color.b) >= 128`.
+
+<ExampleViewer
+  activeFile="LightnessNode.js"
+  codePath="api-flows/Reactive7"
+  applyStyles={false}
+  options={{ editorHeight: 500, editorWidthPercentage: 45, wrapContent: true }}
+  additionalFiles={['NumberInput.js', 'ColorPreview.js', 'Lightness.js']}
+/>
+
+### Branching
+
+Let's say you would like the flow to take a different route based on a certain condition.
+One way to achieve this is to give IDs to all source handles, seperate the node data by source handle ID and
+also access the node data by source handle ID. Let's rewrite our LightnessNode to have a dark and light output handle,
+where we want to conditionally continue the flow and let's add a node that simply shows the color input.
+
+<ExampleViewer
+  activeFile="LightnessNode.js"
+  codePath="api-flows/Reactive8"
+  applyStyles={false}
+  options={{ editorHeight: 500, editorWidthPercentage: 45, wrapContent: true }}
+  additionalFiles={[
+    'NumberInput.js',
+    'ColorPreview.js',
+    'Lightness.js',
+    'Log.js',
+  ]}
+/>
