@@ -40,7 +40,7 @@ const initialNodes = [
   {
     type: 'ColorPreview',
     id: 'color',
-    position: { x: 250, y: 50 },
+    position: { x: 150, y: 50 },
     data: {
       label: 'Color',
       value: { r: undefined, g: undefined, b: undefined },
@@ -49,7 +49,7 @@ const initialNodes = [
   {
     type: 'Lightness',
     id: 'lightness',
-    position: { x: 450, y: 80 },
+    position: { x: 350, y: 75 },
   },
 ];
 

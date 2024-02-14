@@ -10,10 +10,14 @@ import '@xyflow/react/dist/style.css';
 
 import NumberInput from './NumberInput.js';
 import ColorPreview from './ColorPreview.js';
+import Lightness from './Lightness.js';
+import Log from './Log.js';
 
 const nodeTypes = {
   NumberInput,
   ColorPreview,
+  Lightness,
+  Log,
 };
 
 const initialNodes = [
@@ -44,6 +48,23 @@ const initialNodes = [
       value: { r: undefined, g: undefined, b: undefined },
     },
   },
+  {
+    type: 'Lightness',
+    id: 'lightness',
+    position: { x: 350, y: 75 },
+  },
+  {
+    id: 'log-1',
+    type: 'Log',
+    position: { x: 500, y: 0 },
+    data: { label: 'Use black font', fontColor: 'black' },
+  },
+  {
+    id: 'log-2',
+    type: 'Log',
+    position: { x: 500, y: 140 },
+    data: { label: 'Use white font', fontColor: 'white' },
+  },
 ];
 
 const initialEdges = [
@@ -64,6 +85,23 @@ const initialEdges = [
     source: '3',
     target: 'color',
     targetHandle: 'blue',
+  },
+  {
+    id: 'color-lightness',
+    source: 'color',
+    target: 'lightness',
+  },
+  {
+    id: 'lightness-log-1',
+    source: 'lightness',
+    sourceHandle: 'light',
+    target: 'log-1',
+  },
+  {
+    id: 'lightness-log-2',
+    source: 'lightness',
+    sourceHandle: 'dark',
+    target: 'log-2',
   },
 ];
 

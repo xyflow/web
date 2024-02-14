@@ -11,13 +11,11 @@ import '@xyflow/react/dist/style.css';
 import NumberInput from './NumberInput.js';
 import ColorPreview from './ColorPreview.js';
 import Lightness from './Lightness.js';
-import Log from './Log.js';
 
 const nodeTypes = {
   NumberInput,
   ColorPreview,
   Lightness,
-  Log,
 };
 
 const initialNodes = [
@@ -42,7 +40,7 @@ const initialNodes = [
   {
     type: 'ColorPreview',
     id: 'color',
-    position: { x: 250, y: 50 },
+    position: { x: 150, y: 50 },
     data: {
       label: 'Color',
       value: { r: undefined, g: undefined, b: undefined },
@@ -51,19 +49,7 @@ const initialNodes = [
   {
     type: 'Lightness',
     id: 'lightness',
-    position: { x: 450, y: 80 },
-  },
-  {
-    id: 'log-1',
-    type: 'Log',
-    position: { x: 600, y: 100 },
-    data: { label: 'Log 1' },
-  },
-  {
-    id: 'log-2',
-    type: 'Log',
-    position: { x: 600, y: 140 },
-    data: { label: 'Log 2' },
+    position: { x: 350, y: 75 },
   },
 ];
 

@@ -38,7 +38,7 @@ const initialNodes = [
   {
     type: 'ColorPreview',
     id: 'color',
-    position: { x: 250, y: 50 },
+    position: { x: 150, y: 50 },
     data: { label: 'Color' },
   },
 ];

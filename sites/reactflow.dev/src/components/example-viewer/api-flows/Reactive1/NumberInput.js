@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 import { Handle, Position } from '@xyflow/react';
 
-function TextUpdaterNode({ id }) {
+function NumberInput({ id, data }) {
   const [number, setNumber] = useState(0);
 
   const onChange = useCallback((evt) => {
@@ -12,7 +12,15 @@ function TextUpdaterNode({ id }) {
   }, []);
 
   return (
-    <>
+    <div
+      style={{
+        padding: 10,
+        background: '#FFF',
+        border: '1px solid #CCC',
+        borderRadius: 10,
+      }}
+    >
+      <div>{data.label}</div>
       <input
         id={`number-${id}`}
         name="number"
@@ -24,8 +32,8 @@ function TextUpdaterNode({ id }) {
         value={number}
       />
       <Handle type="source" position={Position.Right} />
-    </>
+    </div>
   );
 }
 
-export default TextUpdaterNode;
+export default NumberInput;
