@@ -4,6 +4,33 @@ export const signature: PropsTableProps = {
   props: [
     { name: 'Returns' },
     {
+      name: 'getNode',
+      type: '(id: string) => Node | undefined',
+      description: 'Returns a node by id.',
+    },
+    {
+      name: 'getNodes',
+      type: '(nodeIds?: string[]) => Node[]',
+      description:
+        'Returns all nodes if no ids are passed or the nodes of the passed ids.',
+    },
+    {
+      name: 'getEdge',
+      type: '(id: string) => Edge | undefined',
+      description: 'Returns an edge by id.',
+    },
+    {
+      name: 'getEdges',
+      type: '(edgeIds?: string[]) => Node[]',
+      description:
+        'Returns all edges if no ids are passed or the edges of the passed ids.',
+    },
+    {
+      name: 'zoomIn',
+      type: 'Function',
+      description: '',
+    },
+    {
       name: 'zoomIn',
       type: 'Function',
       description: '',
@@ -46,7 +73,7 @@ export const signature: PropsTableProps = {
     {
       name: 'getIntersectingNodes',
       type: `(
-        nodeOrRect: Node | { id: Node['id'] } | Rect,
+        nodeOrRect: Node | { id: string } | Rect,
         partially?: boolean,
         nodesToIntersect?: Node[]
       ) => Node[]`,
@@ -55,7 +82,7 @@ export const signature: PropsTableProps = {
     {
       name: 'isNodeIntersecting',
       type: `(
-        nodeOrRect: Node | { id: Node['id'] } | Rect,
+        nodeOrRect: Node | { id: string } | Rect,
         area: Rect,
         partially?: boolean
       ) => boolean`,
@@ -69,11 +96,12 @@ export const signature: PropsTableProps = {
     {
       name: 'deleteElements',
       type: `
-      (
-        nodesToRemove?: (Node | { id: Node['id'] })[],
-        edgesToRemove?: (Edge | { id: Edge['id'] })[]
-      ) => { deletedNodes: Node[]; deletedEdges: Edge[] }`,
-      description: '',
+      async ({ nodes, edges }: {
+        nodes?: Node[] | { id: string }[],
+        edges?: Edge[] | { id: string }[]
+      }) => { deletedNodes: Node[]; deletedEdges: Edge[] }`,
+      description:
+        'Helper function to remove nodes and edges that also deletes connected edges and child nodes.',
     },
     {
       name: 'screenToFlowPosition',

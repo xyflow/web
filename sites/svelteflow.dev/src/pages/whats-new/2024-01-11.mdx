@@ -1,0 +1,20 @@
+---
+title: New release 0.0.33
+description: A new release 0.0.33 is out!
+authors: [moritz]
+date: '2024-01-11'
+---
+
+# New release 0.0.33
+
+### ⚠️ Breaking
+
+- [`deleteElements` function](http://localhost:3003/api-reference/hooks/use-svelte-flow#delete-elements) now takes one object as an argument `{ nodes: [], edges: [] }` instead of two `(nodes, edges)`
+
+### Bugfixes
+
+- fix `deleteElements`
+- fix dragging when `draggable=false`
+- add `ariaLabel` prop for `<Controls />`
+
+You can find the changelog with all previous changes on [Github](https://github.com/xyflow/xyflow/blob/main/packages/svelte/CHANGELOG.md).

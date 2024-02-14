@@ -1,3 +1,5 @@
+import { getAllPages } from 'nextra/context';
+
 // Well this is a pretty funky class, huh. I'm gonna try and break it down a bit
 // so we can understand what's going on here:
 //
@@ -22,3 +24,53 @@
 //  to tailwind's `mx-44` utility.
 //
 export const wideNegativeMargin = 'sm:-mx-[min(calc((100vw-768px)/2),12rem)]';
+
+// Collect all frontmatters for fast access so we can display pills
+// in the sidebar more efficiently
+// Add all keys you want to check for here
+const RELEVANT_FRONTMATTER_KEYS = ['is_pro_example', 'is_free', 'created_at'];
+let pageFrontMattersMap: Map<string, any> | undefined = undefined;
+
+function addToMap(
+  map: Map<string, any>,
+  elements: ReturnType<typeof getAllPages>,
+) {
+  elements.forEach((element) => {
+    if (element.kind === 'MdxPage' && element.frontMatter) {
+      for (const key of RELEVANT_FRONTMATTER_KEYS) {
+        if (element.frontMatter[key]) {
+          map.set(element.route, element.frontMatter);
+          break;
+        }
+      }
+    }
+    if (element.kind === 'Folder') {
+      addToMap(map, element.children);
+    }
+  });
+}
+
+function initializePageFrontMattersMap() {
+  const allPages = getAllPages();
+  pageFrontMattersMap = new Map();
+  addToMap(pageFrontMattersMap, allPages);
+}
+
+function getFrontmatterOfPage(route: string) {
+  if (!pageFrontMattersMap) {
+    initializePageFrontMattersMap();
+  }
+
+  const frontMatter = pageFrontMattersMap!.get(route);
+  return frontMatter;
+}
+
+export function getFrontmatterTag(route: string, tag: string) {
+  const frontMatter = getFrontmatterOfPage(route);
+
+  if (!frontMatter) {
+    return undefined;
+  }
+
+  return frontMatter[tag];
+}

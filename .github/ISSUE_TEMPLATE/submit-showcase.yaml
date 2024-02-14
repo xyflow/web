@@ -14,9 +14,10 @@ body:
         * Are live projects available for use (can be behind a paywall)
 
         We _especially_ like projects that
+        * Are open source
         * Have a live usable demo
         * Use xyflow in a unique way
-        * Are open source
+        * Are different than existing showcases
 
         _By submitting an issue here, it is not guaranteed that we will add your project to the showcase._
         Accepted showcases will appear on https://reactflow.dev/showcase/ or https://svelteflow.dev/showcase
@@ -49,6 +50,12 @@ body:
       label: Project Tags
       description: Write a few "tags" to make your project more easily searchable in the showcase. See https://reactflow.dev/showcase for existing tags, write your own if none fit your project.
       placeholder: dashboard, image processing, no-code, development, automation
+  - type: checkboxes
+    id: open-source
+    attributes:
+      label: Open Source
+      options:
+        - label: This project is Open Source
   - type: input
     id: link-website
     attributes:
@@ -74,12 +81,12 @@ body:
     id: project-screenshot
     attributes:
       label: Upload a Project Screenshot
-      description: See https://reactflow.dev/showcase for example screenshots. Size should be at least 1000pxx800px and less than 1MB, and should show xyflow being used.
+      description: A plain screenshot of your app showing xyflow being used. No background image, window around it, or overlayed text. At least 1000px x 800px and less than 1MB, and should show xyflow being used. See https://reactflow.dev/showcase for approved example screenshots.
     validations:
       required: true
 
-  - type: textarea
+  - type: input
     id: additional-info
     attributes:
-      label: Additional Information
-      description: Share anything else you feel is relevant.
+      label: Anything else?
+      description: Share any additional information you feel is relevant.

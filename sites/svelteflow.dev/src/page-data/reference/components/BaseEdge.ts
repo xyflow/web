@@ -5,6 +5,8 @@ export const baseEdgeProps: PropsTableProps = {
     { name: 'id', type: 'string' },
     { name: 'interactionWidth', type: 'number' },
     { name: 'path', type: 'string' },
+    { name: 'style', type: 'string' },
+    { name: 'class', type: 'string' },
     { name: 'markerStart', type: 'string' },
     { name: 'markerEnd', type: 'string' },
     { name: 'label', type: 'string' },

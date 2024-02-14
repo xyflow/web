@@ -31,5 +31,6 @@ export * from './components/handle';
 export * from './components/headline-node';
 export * from './components/node-wrapper';
 export * from './components/timeline-event';
+export * from './components/sidebar-title';
 
 export * from './lib/utils';

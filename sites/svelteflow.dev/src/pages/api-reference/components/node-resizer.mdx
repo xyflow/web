@@ -1,0 +1,55 @@
+---
+title: The NodeResizer component
+created_at: 2024-01-11
+displayTitle: '<NodeResizer />'
+description:
+  'The NodeResizer component can be used to add a resize functionality to your
+  nodes. It renders draggable controls around the node to resize in all directions.'
+---
+
+import ExampleViewer from '@/components/example-viewer';
+import { PropsTable } from '@/components/props-table';
+import { nodeResizerProps } from '@/page-data/reference/components/NodeResizer.ts';
+
+# &lt;NodeResizer />
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/v11/packages/node-resizer/src/NodeResizer.tsx/#L9)
+
+The `<NodeResizer />` component can be used to add a resize functionality to your
+nodes. It renders draggable controls around the node to resize in all directions.
+
+```svelte filename="CustomNode.svelte"
+<script lang="ts">
+  import { Handle, Position, NodeResizer } from '@xyflow/svelte';
+
+  export let data;
+</script>
+
+<NodeResizer minWidth={100} minHeight={30} />
+<Handle type="target" position={Position.Left} />
+<div style={{ padding: 10 }}>{data.label}</div>
+<Handle type="source" position={Position.Right} />
+```
+
+## Props
+
+For TypeScript users, the props type for the `<NodeResizer />` component is exported
+as `NodeResizerProps`.
+
+<PropsTable {...nodeResizerProps} />
+
+## Examples
+
+Head over to the [example page](/examples/nodes/node-resizer) to see how this is done.
+
+<ExampleViewer codePath="examples/nodes/node-resizer" showEditor={false} />
+
+### Custom Resize Controls
+
+To build custom resize controls, you can use the [NodeResizeControl](/api-reference/components/node-resize-control) component and customize it.
+
+## Notes
+
+- Take a look at the docs for the [`NodeProps`](/api-reference/types/node-props) type or the
+  guide on [custom nodes](/learn/guides/custom-nodes) to see how to
+  implement your own nodes.

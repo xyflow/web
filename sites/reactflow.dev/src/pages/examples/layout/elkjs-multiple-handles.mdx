@@ -1,0 +1,18 @@
+---
+title: Elkjs Multiple Handles
+description: 'This examples shows how to use multiple handles with the elkjs layouting engine.'
+---
+
+import ExampleViewer from '@/components/example-viewer';
+import ExampleLayout from '@/layouts/example-with-frontmatter';
+
+<ExampleLayout>
+This example demonstrates how to configure [elkjs](https://github.com/kieler/elkjs) to use specific handles (called 'ports' in elkjs). This is helpful to reduce edge crossings and have more control over the layout. The important things to configure are unique ids for the handles / ports, the actual ports for elkjs with a correct side property and `'org.eclipse.elk.portConstraints' : 'FIXED_ORDER'` for all nodes.
+
+<ExampleViewer
+  codePath="example-flows/ElkjsMultiHandle"
+  additionalFiles={['useLayoutNodes.ts', 'nodes.ts', 'edges.ts', 'ElkNode.tsx', 'index.css']}
+  dependencies={{ elkjs: 'latest' }}
+  activeFile="useLayoutNodes.ts"
+/>
+</ExampleLayout>

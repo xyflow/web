@@ -110,7 +110,6 @@ Sadly, the only way to surpress the warnings is by actually exporting all props 
     export let selected; selected;
     export let isConnectable; isConnectable;
     export let zIndex; zIndex;
-    export let positionAbsolute; positionAbsolute;
     export let width; width;
     export let height; height;
     export let dragging; dragging;
@@ -127,23 +126,23 @@ Or if you use Typescript:
 
     export let id: $$Props['id']; id;
     export let data: $$Props['data']; data;
-    export let dragHandle: $$Props['dragHandle']; dragHandle;
-    export let type: $$Props['type']; type;
-    export let selected: $$Props['selected']; selected;
-    export let isConnectable: $$Props['isConnectable']; isConnectable;
-    export let zIndex: $$Props['zIndex']; zIndex;
-    export let positionAbsolute: $$Props['positionAbsolute']; positionAbsolute;
-    export let width: $$Props['width']; width;
-    export let height: $$Props['height']; height;
+    export let dragHandle: $$Props['dragHandle'] = undefined; dragHandle;
+    export let type: $$Props['type']  = undefined; type;
+    export let selected: $$Props['selected'] = undefined; selected;
+    export let isConnectable: $$Props['isConnectable'] = undefined; isConnectable;
+    export let zIndex: $$Props['zIndex'] = undefined; zIndex;
+    export let width: $$Props['width'] = undefined; width;
+    export let height: $$Props['height'] = undefined; height;
     export let dragging: $$Props['dragging']; dragging;
-    export let targetPosition: $$Props['targetPosition']; targetPosition;
-    export let sourcePosition: $$Props['sourcePosition']; sourcePosition;
+    export let targetPosition: $$Props['targetPosition'] = undefined; targetPosition;
+    export let sourcePosition: $$Props['sourcePosition'] = undefined; sourcePosition;
 </script>
 ```
 
 <Callout type="default">
   <strong>Help appreciated:</strong>
   If you have a better solution, please let us know. This is quite an annoyance when
-  working with custom nodes and edges. You can find more information in the related
-  [Svelte issue](https://github.com/sveltejs/svelte/issues/5892#issuecomment-762660755).
+  working with custom nodes and edges. You can comment on the [Svelte RFC we have
+  submitted](https://github.com/sveltejs/rfcs/pull/73) and find more information
+  in the related [Svelte issue](https://github.com/sveltejs/svelte/issues/5892#issuecomment-762660755).
 </Callout>

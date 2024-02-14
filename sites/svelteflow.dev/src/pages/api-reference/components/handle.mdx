@@ -42,8 +42,10 @@ You can create your own custom handles by wrapping the `<Handle />` component.
 This example shows a custom handle that only allows connections when the
 connection source matches a given id.
 
-```jsx
+```svelte
+<script>
 import { Handle, Position } from '@xyflow/svelte';
+</script>
 
 export const TargetHandleWithValidation = ({ position, source }) => (
   <Handle

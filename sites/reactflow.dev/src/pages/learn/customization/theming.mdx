@@ -193,5 +193,15 @@ function CustomNode({ data }) {
 }
 ```
 
+<Callout type="warning">
+  If you want to overwrite default styles, make sure to import Tailwinds entry
+  point after React Flows base styles.
+</Callout>
+
+```js
+import 'reactflow/dist/style.css';
+import 'tailwind.css';
+```
+
 For a complete example of using Tailwind with React Flow, check out
 [the example](/examples/styling/tailwind)!

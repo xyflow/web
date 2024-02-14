@@ -1,4 +1,4 @@
-import { Position, internalsSymbol } from '@xyflow/system';
+import { Position, internalsSymbol } from '@xyflow/svelte';
 
 // returns the position (top,right,bottom or right) passed node compared to
 function getParams(nodeA, nodeB) {

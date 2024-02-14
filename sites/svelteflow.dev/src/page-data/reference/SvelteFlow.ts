@@ -146,6 +146,11 @@ export const edgeProps: PropsTableProps = {
 export const generalEventHandlerProps: PropsTableProps = {
   props: [
     {
+      name: 'oninit',
+      type: '() => void',
+      description: 'This handler gets called when the flow is initialized.',
+    },
+    {
       name: 'onerror',
       type: '(code: string, message: string) => void',
       description: `Ocassionally something may happen that causes Svelte Flow to
@@ -158,6 +163,12 @@ export const generalEventHandlerProps: PropsTableProps = {
       type: '(params: { nodes: Node[]; edges: Edge[] }) => void',
       description:
         'This handler gets called when the user deletes nodes or edges.',
+    },
+    {
+      name: 'onbeforedelete',
+      type: 'async (params: { nodes: Node[]; edges: Edge[] }) => boolean',
+      description:
+        'This handler gets called before the user deletes nodes or edges and provides a way to abort the deletion by returning false.',
     },
   ],
 };
@@ -363,7 +374,7 @@ export const connectionLineProps: PropsTableProps = {
   props: [
     {
       name: 'isValidConnection',
-      type: 'IsValidConnection',
+      type: '(connection: Connection) => boolean',
       default: '() => true',
       description: `This prop allows you to control which connections are valid. It gets called before an edge is created.`,
     },
