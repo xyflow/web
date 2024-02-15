@@ -4,5 +4,5 @@
   "typescript": "TypeScript",
   "uncontrolled-flow": "Uncontrolled Flows",
   "state-management": "State Management",
-  "reactive": "Computing Flows"
+  "computing-flows": "Computing Flows"
 }
