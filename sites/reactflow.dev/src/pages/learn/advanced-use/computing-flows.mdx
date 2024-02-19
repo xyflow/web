@@ -16,11 +16,11 @@ import { Callout } from 'nextra/components';
 
 React Flow is first and foremost a UI library for rendering so called node-based applications. What happens with the data that is being rendered is very much up to you. Do you want to store it in a database? Do you want to send it to a server? Do you want to synchronize realtime information with a robot? That's your call and we won't stand in you way.
 
-Sometimes however, you might want to compute data flows right in React Flow: Update a node, based on the connected data or maybe you even want to implement a tool that runs fully inside your browser. In those cases: This is the guide for you.
+Sometimes however, you might want to compute data flows right in React Flow: update a node based on the connected data or maybe you even want to implement a tool that runs fully inside your browser. In those cases, this is the guide for you.
 
 ## What are we going to build?
 
-At the end of this guide you will have an interactive flow graph that generates a color out of three separate number input fields (red, green and blue) and determines wether a white or black text would be more readable on that background color.
+At the end of this guide you will have an interactive flow graph that generates a color out of three separate number input fields (red, green and blue) and determines whether a white or black text would be more readable on that background color.
 
 <ExampleViewer
   codePath="api-flows/Reactive9"
@@ -53,7 +53,14 @@ import ExampleViewer from '@/components/example-viewer';
   editorHeight={500}
 />
 
-Next, we'll add a new custom node (`ColorPreview.js`) with one target handle for each color channel and a background that displays the resulting color. Whenever you have multiple handles of the same kind on a single node, don't forget to give each one a seperate id! Let's also add edges going from the input nodes to the color node while we are at it.
+Next, we'll add a new custom node (`ColorPreview.js`) with one target handle for each color channel and a background that displays the resulting color.
+
+<Callout type="info">
+  Whenever you have multiple handles of the same kind on a single node, don't
+  forget to give each one a seperate id!
+</Callout>
+Let's also add edges going from the input nodes to the color node to our `initialEdges`
+array while we are at it.
 
 <ExampleViewer
   activeFile="ColorPreview.js"
@@ -68,16 +75,16 @@ Next, we'll add a new custom node (`ColorPreview.js`) with one target handle for
 
 So how do we actually get the data from the input nodes to the color node? This is a two step process that involves two hooks created for exactly this purpose:
 
-1. Store each number input value inside the node's `data` object with help of the [`updateNodeData`](/api-reference/types/react-flow-instance#update-node-data).
+1. Store each number input value inside the node's `data` object with help of [`updateNodeData`](/api-reference/types/react-flow-instance#update-node-data) callback.
 2. Find out which nodes are connected by using [`useHandleConnections`](/api-reference/hooks/use-handle-connections) and then use [`useNodesData`](/api-reference/hooks/use-nodes-data) for receiving the data from the connected nodes.
 
 ### Step 1: Writing values to the data object
 
 First we add some initial values for the input nodes inside the `data` object in our `initialNodes` array and use them as initial state for the input nodes.
-Then we import the function [`updateNodeData`](/api-reference/types/react-flow-instance#update-node-data) from the [`useReactFlow`](/api-reference/hooks/use-react-flow) hook and use it to update the `data` object of the node with a new value whenever the input changes.
+Then we grab the function [`updateNodeData`](/api-reference/types/react-flow-instance#update-node-data) from the [`useReactFlow`](/api-reference/hooks/use-react-flow) hook and use it to update the `data` object of the node with a new value whenever the input changes.
 
 <Callout type="info">
-By default, the data you pass to [`updateNodeData`](/api-reference/types/react-flow-instance#update-node-data) will be merged with the old data object. You can pass `{ replace: true }` as an option to replace the object instead.
+By default, the data you pass to [`updateNodeData`](/api-reference/types/react-flow-instance#update-node-data) will be merged with the old data object. This makes it easier to do partial updates and saves you in case you forget to add `{...data}`. You can pass `{ replace: true }` as an option to replace the object instead.
 </Callout>
 
 <ExampleViewer
@@ -90,15 +97,17 @@ By default, the data you pass to [`updateNodeData`](/api-reference/types/react-f
 />
 
 <Callout type="warning">
-  When dealing with input fields you don't want to use a nodes `data` object as
-  UI state directly. There is a delay in updating the data object and the cursor
-  might jump around erraticly and lead to unwanted inputs.
+  <b>
+    When dealing with input fields you don't want to use a nodes `data` object
+    as UI state directly.
+  </b>
+  There is a delay in updating the data object and the cursor might jump around erraticly
+  and lead to unwanted inputs.
 </Callout>
 
 ### Step 2: Getting data from connected nodes
 
-We start by determining all connections for each handle with the [`useHandleConnections`](/api-reference/hooks/use-handle-connections) hook and then fetching the data for the first connected node with the [`updateNodeData`](/api-reference/types/react-flow-instance#update-node-data) hook.
-Now we can react to changes of the input nodes and update the background color accordingly with a `useEffect` hook.
+We start by determining all connections for each handle with the [`useHandleConnections`](/api-reference/hooks/use-handle-connections) hook and then fetching the data for the first connected node with [`updateNodeData`](/api-reference/types/react-flow-instance#update-node-data).
 
 <Callout type="info">
   Note that each handle can have multiple nodes connected to it and you might
@@ -121,7 +130,7 @@ in real time.
 
 ### Improving the code
 
-It might seem awkward to get the connections first, then the data seperately for each handle. In nodes like these with multiple handles you should consider creating a custom handle component that isolates connection states and node data binding. We can do this by creating a new component for the custom handle.
+It might seem awkward to get the connections first, then the data seperately for each handle. In nodes like these with multiple handles you should consider creating a custom handle component that isolates connection states and node data binding. We can do this by creating a new component for the custom handle and promoting color to local state.
 
 <ExampleViewer
   activeFile="ColorPreview.js"
@@ -138,21 +147,12 @@ Alright, we have a simple example of how to pipe data through React Flow. But wh
 
 ### Continuing the flow
 
-Let's extend our flow! We begin just like before by writing the accumulated `{r, g, b}` values to the nodes `data` object and adding an output handle to the color node.
+Let's extend our flow! Start by adding an output `<Handle type="source" position={Position.Right} />` to the color node.
 
 <Callout type="info">
   Because there are no inputs fields on this node, we don't need to keep a local
-  state. Let's just read and update the nodes `data` object directly.
+  state at all. We can just read and update the nodes `data` object directly.
 </Callout>
-
-<ExampleViewer
-  activeFile="ColorPreview.js"
-  codePath="api-flows/Reactive6"
-  applyStyles={false}
-  options={{ editorHeight: 500, editorWidthPercentage: 45, wrapContent: true }}
-  additionalFiles={['NumberInput.js', 'ColorPreview.js']}
-  editorHeight={500}
-/>
 
 Next, we add a new node (`Lightness.js`) that takes in a color object and determines if it is either a light or a dark color. We can use the [relative luminance formula](https://en.wikipedia.org/wiki/Relative_luminance#Relative_luminance_and_%22gamma_encoded%22_colorspaces)
 `luminance = 0.2126 * color.r + 0.7152 * color.g + 0.0722 * color.b`
@@ -169,9 +169,9 @@ to calculate the perceived brightness of a color (0 being the darkest and 255 be
 
 ### Conditional branching
 
-What if we would like to take a different path in our flow, based on the perceived lightness? Let's give our lightness node two source handles `light` and `dark` and separate the node `data` object by source handle IDs. This is needed if you have multiple source handles to distinguish between each source handles data.
+What if we would like to take a different path in our flow based on the perceived lightness? Let's give our lightness node two source handles `light` and `dark` and separate the node `data` object by source handle IDs. This is needed if you have multiple source handles to distinguish between each source handles data.
 
-But what does it mean to 'take a different route'? One solution would be to assume that `null` or `undefined` data hooked up to a target handle is considered a 'stop'. In our case we can write the incoming color into `data.values.light` if it's a light color and into `data.values.dark` if it's a dark color and set the respective other value to `null`.
+But what does it mean to "take a different route"? One solution would be to assume that `null` or `undefined` data hooked up to a target handle is considered a "stop". In our case we can write the incoming color into `data.values.light` if it's a light color and into `data.values.dark` if it's a dark color and set the respective other value to `null`.
 
 <ExampleViewer
   activeFile="Lightness.js"
@@ -197,3 +197,22 @@ Cool! Now we only need a last node to see if it actually works... We can create 
     'Log.js',
   ]}
 />
+
+### Summary
+
+You have learned how to actually move data through the flow and transform it along the way.
+All you need to do is
+
+1. store data inside the node's `data` object with help of [`updateNodeData`](/api-reference/types/react-flow-instance#update-node-data) callback.
+2. find out which nodes are connected by using [`useHandleConnections`](/api-reference/hooks/use-handle-connections) and then use [`useNodesData`](/api-reference/hooks/use-nodes-data) for receiving the data from the connected nodes.
+
+You can implement branching for example by interpreting incoming data that is undefined as a "stop". As a side note, most flowgraphs that also have a branching usually seperate the triggering of nodes from the actual data hooked up to the nodes. Unreal Engines Blueprints are a good example for this.
+
+<Callout type="info">
+  A last note before you go: you should find a consistent way of structuring all
+  your node data, instead of mixing ideas like we did just now. This means for
+  example, if you start working with splitting data by handle ID you should do
+  it for all nodes, regardless whether they have multiple handles or not. Being
+  able to make assumptions about the structure of your data throughout you flow
+  will make your life a lot easier.
+</Callout>

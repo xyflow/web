@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import {
   Handle,
   Position,
@@ -28,7 +27,7 @@ const handleStyle = {
 };
 
 function ColorPreview() {
-  const [color, setColor] = useState({ r: 0, g: 0, b: 0 });
+  // const [color, setColor] = useState({ r: 0, g: 0, b: 0 });
 
   const redConnections = useHandleConnections({
     type: 'target',
@@ -54,13 +53,11 @@ function ColorPreview() {
     blueConnections.map((connection) => connection.source),
   );
 
-  useEffect(() => {
-    setColor({
-      r: redNodeData.length > 0 ? redNodeData[0].value : 0,
-      g: greenNodeData.length > 0 ? greenNodeData[0].value : 0,
-      b: blueNodeData.length > 0 ? blueNodeData[0].value : 0,
-    });
-  }, [redNodeData, greenNodeData, blueNodeData]);
+  const color = {
+    r: redNodeData.length > 0 ? redNodeData[0].value : 0,
+    g: greenNodeData.length > 0 ? greenNodeData[0].value : 0,
+    b: blueNodeData.length > 0 ? blueNodeData[0].value : 0,
+  };
 
   return (
     <div
