@@ -7,6 +7,7 @@ created_at: 2024-02-14
 # Computing Flows
 
 import { Callout } from 'nextra/components';
+import ExampleViewer from '@/components/example-viewer';
 
 <Callout type="info">
   For this guide we assume that you already know about the [core
@@ -23,7 +24,7 @@ Sometimes however, you might want to compute data flows right in React Flow: upd
 At the end of this guide you will have an interactive flow graph that generates a color out of three separate number input fields (red, green and blue) and determines whether a white or black text would be more readable on that background color.
 
 <ExampleViewer
-  codePath="api-flows/Reactive9"
+  codePath="api-flows/Computing6"
   editorHeight={500}
   applyStyles={false}
   showEditor={false}
@@ -35,25 +36,50 @@ At the end of this guide you will have an interactive flow graph that generates 
     'ColorPreview.js',
     'Lightness.js',
     'Log.js',
+    'style.css',
   ]}
 />
 
 ## Creating custom nodes
 
-Let's start by creating a custom input node (`NumberInput.js`) and add three instances of it. We will be using a controlled `<input type="number" />` and limit it to integer numbers between 0 - 255 inside the `onChange` event handler - and yes, you guessed it: this tutorial is going to be about colors.
+Let's start by creating a custom input node (`NumberInput.js`) and add three instances of it. We will be using a controlled `<input type="number" />` and limit it to integer numbers between 0 - 255 inside the `onChange` event handler.
 
-import ExampleViewer from '@/components/example-viewer';
+```jsx
+import { useCallback, useState } from 'react';
+import { Handle, Position } from '@xyflow/react';
 
-<ExampleViewer
-  activeFile="NumberInput.js"
-  codePath="api-flows/Reactive1"
-  applyStyles={false}
-  options={{ editorHeight: 500, editorWidthPercentage: 45, wrapContent: true }}
-  additionalFiles={['NumberInput.js']}
-  editorHeight={500}
-/>
+function NumberInput({ id, data }) {
+  const [number, setNumber] = useState(0);
 
-Next, we'll add a new custom node (`ColorPreview.js`) with one target handle for each color channel and a background that displays the resulting color.
+  const onChange = useCallback((evt) => {
+    const cappedNumber = Math.round(
+      Math.min(255, Math.max(0, evt.target.value)),
+    );
+    setNumber(cappedNumber);
+  }, []);
+
+  return (
+    <div className="number-input">
+      <div>{data.label}</div>
+      <input
+        id={`number-${id}`}
+        name="number"
+        type="number"
+        min="0"
+        max="255"
+        onChange={onChange}
+        className="nodrag"
+        value={number}
+      />
+      <Handle type="source" position={Position.Right} />
+    </div>
+  );
+}
+
+export default NumberInput;
+```
+
+Next, we'll add a new custom node (`ColorPreview.js`) with one target handle for each color channel and a background that displays the resulting color. We can use `mix-blend-mode: 'difference';` to make the text color always readable.
 
 <Callout type="info">
   Whenever you have multiple handles of the same kind on a single node, don't
@@ -64,14 +90,14 @@ array while we are at it.
 
 <ExampleViewer
   activeFile="ColorPreview.js"
-  codePath="api-flows/Reactive2"
+  codePath="api-flows/Computing"
   applyStyles={false}
   options={{ editorHeight: 500, editorWidthPercentage: 45, wrapContent: true }}
-  additionalFiles={['NumberInput.js', 'ColorPreview.js']}
+  additionalFiles={['NumberInput.js', 'ColorPreview.js', 'style.css']}
   editorHeight={500}
 />
 
-## Piping data
+## Copmuting data
 
 So how do we actually get the data from the input nodes to the color node? This is a two step process that involves two hooks created for exactly this purpose:
 
@@ -89,10 +115,10 @@ By default, the data you pass to [`updateNodeData`](/api-reference/types/react-f
 
 <ExampleViewer
   activeFile="NumberInput.js"
-  codePath="api-flows/Reactive3"
+  codePath="api-flows/Computing2"
   applyStyles={false}
   options={{ editorHeight: 500, editorWidthPercentage: 45, wrapContent: true }}
-  additionalFiles={['NumberInput.js', 'ColorPreview.js']}
+  additionalFiles={['NumberInput.js', 'ColorPreview.js', 'style.css']}
   editorHeight={500}
 />
 
@@ -121,25 +147,84 @@ in real time.
 
 <ExampleViewer
   activeFile="ColorPreview.js"
-  codePath="api-flows/Reactive4"
+  codePath="api-flows/Computing3"
   applyStyles={false}
   options={{ editorHeight: 500, editorWidthPercentage: 45, wrapContent: true }}
-  additionalFiles={['NumberInput.js', 'ColorPreview.js']}
+  additionalFiles={['NumberInput.js', 'ColorPreview.js', 'style.css']}
   editorHeight={500}
 />
 
 ### Improving the code
 
-It might seem awkward to get the connections first, then the data seperately for each handle. In nodes like these with multiple handles you should consider creating a custom handle component that isolates connection states and node data binding. We can do this by creating a new component for the custom handle and promoting color to local state.
+It might seem awkward to get the connections first, then the data seperately for each handle. In nodes like these with multiple handles you should consider creating a custom handle component that isolates connection states and node data binding. We can create one inline.
 
-<ExampleViewer
-  activeFile="ColorPreview.js"
-  codePath="api-flows/Reactive5"
-  applyStyles={false}
-  options={{ editorHeight: 500, editorWidthPercentage: 45, wrapContent: true }}
-  additionalFiles={['NumberInput.js', 'ColorPreview.js']}
-  editorHeight={500}
-/>
+```jsx filename="ColorPreview.js"
+// {...}
+function CustomHandle({ id, label, onChange }) {
+  const connections = useHandleConnections({
+    type: 'target',
+    id,
+  });
+
+  const nodeData = useNodesData(
+    connections.map((connection) => connection.source),
+  );
+
+  useEffect(() => {
+    onChange(nodeData.length > 0 ? nodeData[0].value : 0);
+  }, [nodeData]);
+
+  return (
+    <div>
+      <Handle
+        type="target"
+        position={Position.Left}
+        id={id}
+        className="handle"
+      />
+      <label htmlFor="red" className="label">
+        {label}
+      </label>
+    </div>
+  );
+}
+```
+
+We can promote color to local state and declare each handle like this:
+
+```jsx filename="ColorPreview.js"
+// {...}
+function ColorPreview() {
+  const [color, setColor] = useState({ r: 0, g: 0, b: 0 });
+
+  return (
+    <div
+      className="node"
+      style={{
+        background: `rgb(${color.r}, ${color.g}, ${color.b})`,
+      }}
+    >
+      <CustomHandle
+        id="red"
+        label="R"
+        onChange={(value) => setColor((c) => ({ ...c, r: value }))}
+      />
+      <CustomHandle
+        id="green"
+        label="G"
+        onChange={(value) => setColor((c) => ({ ...c, g: value }))}
+      />
+      <CustomHandle
+        id="blue"
+        label="B"
+        onChange={(value) => setColor((c) => ({ ...c, b: value }))}
+      />
+    </div>
+  );
+}
+
+export default ColorPreview;
+```
 
 ## Getting more complex
 
@@ -147,7 +232,7 @@ Alright, we have a simple example of how to pipe data through React Flow. But wh
 
 ### Continuing the flow
 
-Let's extend our flow! Start by adding an output `<Handle type="source" position={Position.Right} />` to the color node.
+Let's extend our flow! Start by adding an output `<Handle type="source" position={Position.Right} />` to the color node and remove the local component state.
 
 <Callout type="info">
   Because there are no inputs fields on this node, we don't need to keep a local
@@ -160,10 +245,15 @@ to calculate the perceived brightness of a color (0 being the darkest and 255 be
 
 <ExampleViewer
   activeFile="Lightness.js"
-  codePath="api-flows/Reactive7"
+  codePath="api-flows/Computing4"
   applyStyles={false}
   options={{ editorHeight: 500, editorWidthPercentage: 45, wrapContent: true }}
-  additionalFiles={['NumberInput.js', 'ColorPreview.js', 'Lightness.js']}
+  additionalFiles={[
+    'NumberInput.js',
+    'ColorPreview.js',
+    'Lightness.js',
+    'style.css',
+  ]}
   editorHeight={500}
 />
 
@@ -173,20 +263,27 @@ What if we would like to take a different path in our flow based on the perceive
 
 But what does it mean to "take a different route"? One solution would be to assume that `null` or `undefined` data hooked up to a target handle is considered a "stop". In our case we can write the incoming color into `data.values.light` if it's a light color and into `data.values.dark` if it's a dark color and set the respective other value to `null`.
 
+Don't forget to add `flex-direction: column;` and `align-items: end;` to reposition the handle labels.
+
 <ExampleViewer
   activeFile="Lightness.js"
-  codePath="api-flows/Reactive8"
+  codePath="api-flows/Computing5"
   applyStyles={false}
   editorHeight={500}
   options={{ editorHeight: 500, editorWidthPercentage: 45, wrapContent: true }}
-  additionalFiles={['NumberInput.js', 'ColorPreview.js', 'Lightness.js']}
+  additionalFiles={[
+    'NumberInput.js',
+    'ColorPreview.js',
+    'Lightness.js',
+    'style.css',
+  ]}
 />
 
 Cool! Now we only need a last node to see if it actually works... We can create a custom debugging node (`Log.js`) that displays the hooked up data and BAM! We are done!
 
 <ExampleViewer
   activeFile="Log.js"
-  codePath="api-flows/Reactive9"
+  codePath="api-flows/Computing6"
   applyStyles={false}
   editorHeight={500}
   options={{ editorHeight: 500, editorWidthPercentage: 45, wrapContent: true }}
@@ -195,10 +292,11 @@ Cool! Now we only need a last node to see if it actually works... We can create 
     'ColorPreview.js',
     'Lightness.js',
     'Log.js',
+    'style.css',
   ]}
 />
 
-### Summary
+## Summary
 
 You have learned how to actually move data through the flow and transform it along the way.
 All you need to do is
@@ -213,6 +311,6 @@ You can implement branching for example by interpreting incoming data that is un
   your node data, instead of mixing ideas like we did just now. This means for
   example, if you start working with splitting data by handle ID you should do
   it for all nodes, regardless whether they have multiple handles or not. Being
-  able to make assumptions about the structure of your data throughout you flow
+  able to make assumptions about the structure of your data throughout your flow
   will make your life a lot easier.
 </Callout>

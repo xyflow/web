@@ -7,14 +7,7 @@ import {
   useReactFlow,
 } from '@xyflow/react';
 
-const nodeStyle = {
-  width: 100,
-  height: 100,
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'end',
-  borderRadius: 10,
-};
+import './style.css';
 
 function LightnessNode({ id }) {
   const { updateNodeData } = useReactFlow();
@@ -45,8 +38,8 @@ function LightnessNode({ id }) {
 
   return (
     <div
+      className="lightness-node"
       style={{
-        ...nodeStyle,
         background: lightness === 'light' ? 'white' : 'black',
         color: lightness === 'light' ? 'black' : 'white',
       }}

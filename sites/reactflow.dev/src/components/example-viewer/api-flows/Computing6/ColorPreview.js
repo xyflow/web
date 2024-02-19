@@ -7,26 +7,7 @@ import {
   useReactFlow,
 } from '@xyflow/react';
 
-const nodeStyle = {
-  height: 150,
-  width: 150,
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'space-around',
-  borderRadius: 10,
-};
-
-const labelStyle = {
-  marginLeft: 10,
-  mixBlendMode: 'difference',
-  color: 'white',
-  fontWeight: 'bold',
-};
-
-const handleStyle = {
-  position: 'relative',
-  top: 15,
-};
+import './style.css';
 
 function CustomHandle({ id, label, onChange }) {
   const connections = useHandleConnections({
@@ -48,9 +29,9 @@ function CustomHandle({ id, label, onChange }) {
         type="target"
         position={Position.Left}
         id={id}
-        style={handleStyle}
+        className="handle"
       />
-      <label htmlFor="red" style={labelStyle}>
+      <label htmlFor="red" className="label">
         {label}
       </label>
     </div>
@@ -62,8 +43,8 @@ function ColorPreview({ id, data }) {
 
   return (
     <div
+      className="node"
       style={{
-        ...nodeStyle,
         background: data.value
           ? `rgb(${data.value.r}, ${data.value.g}, ${data.value.b})`
           : 'rgb(0, 0, 0)',

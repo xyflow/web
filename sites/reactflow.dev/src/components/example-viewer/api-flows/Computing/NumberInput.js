@@ -1,25 +1,20 @@
 import { useCallback, useState } from 'react';
-import { Handle, Position, useReactFlow } from '@xyflow/react';
+import { Handle, Position } from '@xyflow/react';
+
+import './style.css';
 
 function NumberInput({ id, data }) {
-  const { updateNodeData } = useReactFlow();
-  const [number, setNumber] = useState(data.value);
+  const [number, setNumber] = useState(0);
 
   const onChange = useCallback((evt) => {
-    const cappedNumber = Math.min(255, Math.max(0, evt.target.value));
+    const cappedNumber = Math.round(
+      Math.min(255, Math.max(0, evt.target.value)),
+    );
     setNumber(cappedNumber);
-    updateNodeData(id, { value: cappedNumber });
   }, []);
 
   return (
-    <div
-      style={{
-        padding: 10,
-        background: '#FFF',
-        border: '1px solid #CCC',
-        borderRadius: 10,
-      }}
-    >
+    <div className="number-input">
       <div>{data.label}</div>
       <input
         id={`number-${id}`}

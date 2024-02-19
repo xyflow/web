@@ -10,10 +10,12 @@ import '@xyflow/react/dist/style.css';
 
 import NumberInput from './NumberInput.js';
 import ColorPreview from './ColorPreview.js';
+import Lightness from './Lightness.js';
 
 const nodeTypes = {
   NumberInput,
   ColorPreview,
+  Lightness,
 };
 
 const initialNodes = [
@@ -44,6 +46,11 @@ const initialNodes = [
       value: { r: undefined, g: undefined, b: undefined },
     },
   },
+  {
+    type: 'Lightness',
+    id: 'lightness',
+    position: { x: 350, y: 75 },
+  },
 ];
 
 const initialEdges = [
@@ -64,6 +71,11 @@ const initialEdges = [
     source: '3',
     target: 'color',
     targetHandle: 'blue',
+  },
+  {
+    id: 'color-lightness',
+    source: 'color',
+    target: 'lightness',
   },
 ];
 

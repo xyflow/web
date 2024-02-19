@@ -1,6 +1,8 @@
 import { useCallback, useState } from 'react';
 import { Handle, Position, useReactFlow } from '@xyflow/react';
 
+import './style.css';
+
 function NumberInput({ id, data }) {
   const { updateNodeData } = useReactFlow();
   const [number, setNumber] = useState(data.value);
@@ -12,14 +14,7 @@ function NumberInput({ id, data }) {
   }, []);
 
   return (
-    <div
-      style={{
-        padding: 10,
-        background: '#FFF',
-        border: '1px solid #CCC',
-        borderRadius: 10,
-      }}
-    >
+    <div className="number-input">
       <div>{data.label}</div>
       <input
         id={`number-${id}`}

@@ -6,15 +6,7 @@ import {
   useNodesData,
 } from '@xyflow/react';
 
-const nodeStyle = {
-  width: 100,
-  height: 100,
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  textAlign: 'center',
-  borderRadius: 10,
-};
+import './style.css';
 
 function LightnessNode() {
   const connections = useHandleConnections({ type: 'target' });
@@ -39,8 +31,8 @@ function LightnessNode() {
 
   return (
     <div
+      className="lightness-node"
       style={{
-        ...nodeStyle,
         background: lightness === 'light' ? 'white' : 'black',
         color: lightness === 'light' ? 'black' : 'white',
       }}

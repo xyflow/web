@@ -1,34 +1,14 @@
-import { useState } from 'react';
 import { Handle, Position } from '@xyflow/react';
 
-const nodeStyle = {
-  height: 150,
-  width: 150,
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'space-around',
-  borderRadius: 10,
-};
-
-const labelStyle = {
-  marginLeft: 10,
-  mixBlendMode: 'difference',
-  color: 'white',
-  fontWeight: 'bold',
-};
-
-const handleStyle = {
-  position: 'relative',
-  top: 15,
-};
+import './style.css';
 
 function ColorPreview() {
-  const [color, setColor] = useState({ r: 0, g: 0, b: 0 });
+  const color = { r: 0, g: 0, b: 0 };
 
   return (
     <div
+      className="node"
       style={{
-        ...nodeStyle,
         background: `rgb(${color.r}, ${color.g}, ${color.b})`,
       }}
     >
@@ -37,9 +17,9 @@ function ColorPreview() {
           type="target"
           position={Position.Left}
           id="red"
-          style={handleStyle}
+          className="handle"
         />
-        <label htmlFor="red" style={labelStyle}>
+        <label htmlFor="red" className="label">
           R
         </label>
       </div>
@@ -48,9 +28,9 @@ function ColorPreview() {
           type="target"
           position={Position.Left}
           id="green"
-          style={handleStyle}
+          className="handle"
         />
-        <label htmlFor="green" style={labelStyle}>
+        <label htmlFor="green" className="label">
           G
         </label>
       </div>
@@ -59,9 +39,9 @@ function ColorPreview() {
           type="target"
           position={Position.Left}
           id="blue"
-          style={handleStyle}
+          className="handle"
         />
-        <label htmlFor="red" style={labelStyle}>
+        <label htmlFor="red" className="label">
           B
         </label>
       </div>

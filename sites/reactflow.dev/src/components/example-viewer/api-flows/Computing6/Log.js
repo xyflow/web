@@ -1,5 +1,7 @@
 import { Handle, useHandleConnections, useNodesData } from '@xyflow/react';
 
+import './style.css';
+
 function Log({ data }) {
   const connections = useHandleConnections({ type: 'target' });
 
@@ -11,17 +13,10 @@ function Log({ data }) {
 
   return (
     <div
+      className="log-node"
       style={{
         background: color ? `rgb(${color.r}, ${color.g}, ${color.b})` : 'white',
-        width: 80,
-        height: 80,
-        wordWrap: 'break-word',
-        padding: 5,
-        fontWeight: 'bold',
         color: color ? data.fontColor : 'black',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
       }}
     >
       {color ? data.label : 'Do nothing'}
