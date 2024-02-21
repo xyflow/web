@@ -1,0 +1,84 @@
+---
+title: SSR / SSG
+description: Guide about how to use configure React Flow to render flows on the server
+created_at: 2024-02-20
+---
+
+# Server side rendering / Server side generation
+
+In this guide you will learn how to configure React Flow to render a flow on the server.
+
+import { Callout } from 'nextra/components';
+
+<Callout type="info">
+  Server side rendering is supported since React Flow version 12.
+</Callout>
+
+This guide covers an advanced use case and assumes that you are familiar with React Flow.
+If you just want to create a screenshot of a flow, you could also do that on the client. For this checkout the [download image example](/examples/misc/download-image).
+
+### Node dimensions
+
+There are different things you need to configure to make React Flow work on the server. The most important part are the node dimensions. React Flow renders only nodes if they have a width and height. Normally, you pass nodes without a specific `width` and `height`, they get measured , and the dimensions get written into `computed.width` and `computed.height`. Since we can't measure the dimensions on the server, we need to pass the dimensions explicitly. This can be done with the `width` and `height` or the `initialWidth` and `initialHeight` node properties.
+
+```js
+const nodes = [
+  {
+    id: '1',
+    type: 'default',
+    position: { x: 0, y: 0 },
+    data: { label: 'Node 1' },
+    width: 100,
+    height: 50,
+  },
+];
+```
+
+Now React Flow knows the dimensions of the node and can render it on the server. The `width` and `height` properties are used as an inline style for the node. If you expect nodes to have different dimensions on the client or if the dimensions should by dynamic based on the content, you can use the `initialWidth` and `initialHeight` properties. They are only used for the first render (on the server or on the client) as long as the nodes are not measured and `computed.width` and `computed.height` are not set.
+
+<Callout type="default">
+  <strong>
+    There are two ways to specify node dimensions for server side rendering
+  </strong>
+  <div>
+    1. `width` and `height` for static dimensions that are known in advance and
+    don't change.
+  </div>
+  <div>
+    2. `initialWidth` and `initialHeight` for dynamic dimensions that are not
+    known in advance or change.
+  </div>
+</Callout>
+
+### Handle positions
+
+You probably not only want to render the nodes on the server but also the edges. On the client, React Flow checks the positions of the handles, and stores that information, so that the edges know where to start and end. Since we can't measure the handle positions on the server, we need to pass this information. This can be done with the `handles` property of a node.
+
+```js
+const nodes: Node[] = [
+  {
+    id: '1',
+    type: 'default',
+    position: { x: 0, y: 0 },
+    data: { label: 'Node 1' },
+    width: 100,
+    height: 50,
+    handles: [
+      {
+        type: 'target',
+        position: Position.Top,
+        x: 100 / 2,
+        y: 0,
+      },
+      {
+        type: 'source',
+        position: Position.Bottom,
+        x: 100 / 2,
+        y: 50,
+      },
+    ],
+  },
+];
+```
+
+With this additional information, React Flow knows enough about the handles to render the edges on the server.
