@@ -19,7 +19,7 @@ export const nodesAndEdgesFields: PropsTableProps = {
     { name: 'toObject', type: '() => ReactFlowJsonObject<T, U>' },
     {
       name: 'deleteElements',
-      type: '(payload: { nodes?: (Partial<Node> & { id: Node["id"] })[]; edges?: (Partial<Edge> & { id: Edge["id"] })[]; }) => void',
+      type: 'DeleteElements',
     },
     {
       name: 'updateNodeData',

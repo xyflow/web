@@ -24,6 +24,6 @@ export const signature: PropsTableProps = {
       type: '(connections: Connection[]) => void',
     },
     { name: 'Returns' },
-    { name: '', type: 'Connection[]' },
+    { name: '', type: 'HandleConnection[]' },
   ],
 };

@@ -13,7 +13,7 @@ import {
   nodeSelectionChangeFields,
   nodeRemoveChangeFields,
   nodeAddChangeFields,
-  nodeResetChangeFields,
+  nodeReplaceChangeFields,
 } from '@/page-data/reference/types/NodeChange.fields.ts';
 
 # NodeChange
@@ -32,7 +32,7 @@ export type NodeChange =
   | NodeSelectionChange
   | NodeRemoveChange
   | NodeAddChange
-  | NodeResetChange;
+  | NodeReplaceChange;
 ```
 
 ## Variant types
@@ -53,10 +53,10 @@ export type NodeChange =
 
 <PropsTable {...nodeRemoveChangeFields} />
 
-### NodeAddChange&lt;T = any>
+### NodeAddChange&lt;NodeType extends Node = Node>
 
 <PropsTable {...nodeAddChangeFields} />
 
-### NodeResetChange&lt;T = any>
+### NodeReplaceChange&lt;NodeType extends Node = Node>
 
-<PropsTable {...nodeResetChangeFields} />
+<PropsTable {...nodeReplaceChangeFields} />

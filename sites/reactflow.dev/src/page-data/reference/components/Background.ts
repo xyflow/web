@@ -5,6 +5,8 @@ export const backgroundProps: PropsTableProps = {
     { name: 'id?', type: 'string' },
     { name: 'color?', type: 'string' },
     { name: 'className?', type: 'string' },
+    { name: 'style?', type: 'React.CSSProperties' },
+    { name: 'patternClassName?', type: 'string' },
     {
       name: 'gap?',
       type: 'number | [number, number]',
@@ -26,6 +28,5 @@ export const backgroundProps: PropsTableProps = {
       type: 'BackgroundVariant',
       default: 'BackgroundVariant.Dots',
     },
-    { name: 'style?', type: 'React.CSSProperties' },
   ],
 };

@@ -6,7 +6,6 @@ description:
   following props:'
 ---
 
-import { Callout } from 'nextra/components';
 import { PropsTable } from '@/components/props-table';
 import { nodePropsFields } from '@/page-data/reference/types/NodeProps.fields.ts';
 
@@ -27,8 +26,8 @@ export type NodeProps<T = any> = {
   selected?: boolean;
   isConnectable?: boolean;
   zIndex?: number;
-  xPos: number;
-  yPos: number;
+  positionAbsoluteX: number;
+  positionAbsoluteY: number;
   dragging: boolean;
   targetPosition?: Position;
   sourcePosition?: Position;

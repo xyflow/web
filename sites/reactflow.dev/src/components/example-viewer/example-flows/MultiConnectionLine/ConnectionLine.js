@@ -1,5 +1,4 @@
-import React from 'react';
-import { internalsSymbol, getSimpleBezierPath, useNodes } from 'reactflow';
+import { internalsSymbol, getSimpleBezierPath, useNodes } from '@xyflow/react';
 
 export default ({ fromNode, toX, toY }) => {
   const handleBounds = useNodes().flatMap((node) => {
@@ -7,7 +6,7 @@ export default ({ fromNode, toX, toY }) => {
 
     return node[internalsSymbol].handleBounds.source.map((bounds) => ({
       id: node.id,
-      positionAbsolute: node.positionAbsolute,
+      positionAbsolute: node.computed?.positionAbsolute,
       bounds,
     }));
   });

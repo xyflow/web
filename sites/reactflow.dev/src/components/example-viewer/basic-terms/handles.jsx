@@ -1,6 +1,6 @@
 import React from 'react';
 import { ReactFlow, ReactFlowProvider, Handle, Position } from '@xyflow/react';
-import 'reactflow/dist/base.css';
+import '@xyflow/react/dist/base.css';
 
 const initialNodes = [
   {

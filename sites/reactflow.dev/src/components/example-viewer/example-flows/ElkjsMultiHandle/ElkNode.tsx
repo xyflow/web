@@ -1,4 +1,4 @@
-import { Handle, NodeProps, Position } from 'reactflow';
+import { Handle, NodeProps, Position } from '@xyflow/react';
 
 import { ElkNodeData } from './nodes';
 

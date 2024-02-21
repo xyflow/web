@@ -6,7 +6,7 @@ import {
   ReactFlowProvider,
   useStore,
 } from '@xyflow/react';
-import 'reactflow/dist/base.css';
+import '@xyflow/react/dist/base.css';
 
 const selector = (s) => s.transform;
 

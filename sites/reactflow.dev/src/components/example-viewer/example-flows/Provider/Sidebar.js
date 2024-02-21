@@ -9,8 +9,10 @@ export default ({ nodes, setNodes }) => {
   const selectAll = useCallback(() => {
     setNodes((nds) =>
       nds.map((node) => {
-        node.selected = true;
-        return node;
+        return {
+          ...node,
+          selected: true,
+        };
       }),
     );
   }, [setNodes]);

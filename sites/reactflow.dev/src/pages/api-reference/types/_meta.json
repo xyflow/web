@@ -1,5 +1,6 @@
 {
   "background-variant": "BackgroundVariant",
+  "handle-connection": "HandleConnection",
   "connection": "Connection",
   "connection-line-component-props": "ConnectionLineComponentProps",
   "connection-line-type": "ConnectionLineType",
@@ -13,8 +14,10 @@
   "marker-type": "MarkerType",
   "mini-map-node-props": "MiniMapNodeProps",
   "node": "Node",
-  "node-change": "NodeChange",
   "node-props": "NodeProps",
+  "node-change": "NodeChange",
+  "node-origin": "NodeOrigin",
+  "node-handle": "NodeHandle",
   "panel-position": "PanelPosition",
   "position": "Position",
   "pro-options": "ProOptions",
@@ -22,6 +25,8 @@
   "react-flow-json-object": "ReactFlowJsonObject",
   "resize-params": "ResizeParams",
   "viewport": "Viewport",
-  "node-origin": "NodeOrigin",
-  "xy-position": "XYPosition"
+  "on-nodes-change": "OnNodesChange",
+  "on-edges-change": "OnEdgesChange",
+  "xy-position": "XYPosition",
+  "delete-elements": "DeleteElements"
 }

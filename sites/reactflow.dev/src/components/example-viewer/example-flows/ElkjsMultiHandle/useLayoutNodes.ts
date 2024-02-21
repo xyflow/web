@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import ELK from 'elkjs/lib/elk.bundled.js';
-import { Edge, useNodesInitialized, useReactFlow } from 'reactflow';
+import { Edge, useNodesInitialized, useReactFlow } from '@xyflow/react';
 
 import { ElkNode, ElkNodeData } from './nodes';
 
