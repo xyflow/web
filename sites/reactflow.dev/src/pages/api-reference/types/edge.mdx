@@ -22,10 +22,7 @@ two nodes, an `Edge` is the complete description with everything React Flow need
 to know in order to render it.
 
 ```ts
-export type Edge<T> =
-  | DefaultEdge<T>
-  | SmoothStepEdgeType<T>
-  | BezierEdgeType<T>;
+export type Edge<T> = DefaultEdge<T> | SmoothStepEdge<T> | BezierEdge<T>;
 ```
 
 ## Variants
@@ -36,20 +33,20 @@ export type Edge<T> =
 
 <PropsTable {...defaultEdgeFields} />
 
-### SmoothStepEdgeType&lt;T>
+### SmoothStepEdge&lt;T>
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/v11/packages/core/src/types/edges.ts/#L49)
 
-The `SmoothStepEdgeType` variant has all the same fields as the `DefaultEdge`
+The `SmoothStepEdge` variant has all the same fields as the `DefaultEdge`
 variant, but it also has the following additional fields:
 
 <PropsTable {...smoothStepEdgeTypeFields} />
 
-### BezierEdgeType&lt;T>
+### BezierEdge&lt;T>
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/v11/packages/core/src/types/edges.ts/#L58)
 
-The `BezierEdgeType` variant has all the same fields as the `DefaultEdge` variant,
+The `BezierEdge` variant has all the same fields as the `DefaultEdge` variant,
 but it also has the following additional fields:
 
 <PropsTable {...bezierEdgeTypeFields} />
