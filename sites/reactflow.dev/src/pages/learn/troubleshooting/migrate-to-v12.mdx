@@ -5,38 +5,7 @@ description: Use this guide to migrate from React Flow v11 to v12.
 
 # Migrate to v12
 
-Like every major release, React Flow 12 introduces some breaking changes but also comes with a huge set of new features. Svelte Flow had a big impact on this release as well. While combing through each line of React Flow, we created framework agnostic helpers, found bugs, and made some under the hood improvements. All of these changes are baked into the v12 release as a welcome side-effect of that launch. 🙌🏻 We also **improved the performance for larger flows** with the help of Ivan and we are now using **TSDoc for a better developer experience** in your IDE.
-
-## Main features
-
-- **SSR / SSG**: You can render a flow on the server and hydrate on the client: [SSR/SSG guide](/learn/advanced-use/ssr-ssg-configuration)
-  - Details: In v11, `width` and `height` were set by the library as soon as the nodes got measured. This still happens, but we are now using `computed.width` and `computed.height` to store this information. The `positionAbsolute` attribute also gets stored in `computed` . In the previous versions there was always a lot of confusion about `width` and `height`. It’s hard to understand, that you can’t use it for passing an actual width or height. It’s also not obvious that those attributes get added by the library. We think that the new implementation solves both of the problems: `width` and `height` are optional attributes that can be used to define dimensions and everything that is set by the library, is stored in `computed`.
-- **Computing Flows:** The new hooks [`useHandleConnections`](/api-reference/hooks/use-handle-connections) and [`useNodesData`](/api-reference/hooks/use-nodes-data) and the new [`updateNode`](/api-reference/types/react-flow-instance#update-node) and [`updateNodeData`](/api-reference/types/react-flow-instance#update-node-data) functions (both are part of `useReactFlow`) can be used to manage the data flow between your nodes: [Computing flows guide](/learn/advanced-use/computing-flows)
-  - Details: Working with reactive flows is super common. You update node A and want to react on those changes in the connected node B. Until now everyone had to come up with a custom solution. With this version we want to change this and give you performant helpers to handle this.
-- **Dark mode and css variables:** React Flow now comes with a built-in dark mode, that can be toggled by using the new `colorMode` prop (”light”, “dark” or “system”): [Dark mode example](/examples/styling/dark-mode)
-  - Details: With this version we want to make it easier to switch between dark and light modes and give you a better starting point for dark flows. If you pass colorMode=”dark”, we add the class name “dark” to the wrapper and use it to adjust the styling. To make the implementation for this new feature easier on our ends, we switched to CSS variables for most of the styles. These variables can also be used in user land to customize a flow.
-
-## More features and updates
-
-There is more! Besides the new main features, we added some minor things that were on our list for a long time. We also started to use TSDoc for a better DX. We already started to add some docs for some types and hooks which should improve the developer experience.
-
-- **`useConnection` hook:** With this hook you can access the ongoing connection. For example, you can use it for colorizing handles styling a custom connection line based on the current start / end handles.
-- **Controlled `viewport`:** This is an advanced feature. Possible use cases are to animate the viewport or round the transform for lower res screens for example. This features brings two new props: `viewport` and `onViewportChange`.
-- **`ViewportPortal` component:** This makes it possible to render elements in the viewport without the need to implement a custom node.
-- **`onDelete` handler**: We added a combined handler for `onDeleteNodes` and `onDeleteEdges` to make it easier to react to deletions.
-- **`onBeforeDelete` handler**: With this handler you can prevent/ manage deletions.
-- **`isValidConnection` prop:** This makes it possible to implement one validation function for all connections. It also gets called for programmatically added edges.
-- **Background component**: add `patternClassName` to be able to style the background pattern by using a class name. This is useful if you want to style the background pattern with Tailwind for example.
-- **`onMove` callback** gets triggered for library-invoked viewport updates (like fitView or zoom-in)
-- **`deleteElements`** now returns deleted nodes and deleted edges
-- add **`origin` attribute** for nodes
-- add **`selectable` attribute** for edges
-- Correct types for `BezierEdge`, `StepEdge`, `SmoothStepEdge` and `StraightEdge` components
-- New edges created by the library only have `sourceHandle` and `targetHandle` attributes when those attributes are set. (We used to pass `sourceHandle: null` and `targetHandle: null`)
-- Edges do not mount/unmount when their z-index change
-- `nodeDragThreshold` is 1 by default instead of 0
-
-## Breaking Changes
+Before you can use the [new features](https://github.com/xyflow/xyflow/discussions/3764) that come with React Flow v12 like server side rendering, computing flows, and dark mode, here are the breaking changes you'll have to address first.
 
 ### 1. A new npm package name
 
@@ -110,7 +79,7 @@ setNodes((currentNodes) =>
 
 ### 4. Custom node props
 
-We reanmed the `posX` and `posY` props to `positionAbsoluteX` and `positionAbsoluteY`
+We renamed the `posX` and `posY` props to `positionAbsoluteX` and `positionAbsoluteY`
 
 #### Old API
 
@@ -146,7 +115,7 @@ const bounds = getNodesBounds(nodes: Node[], { nodeOrigin })
 
 ### 6. Typescript changes for defining nodes and edges
 
-We simplified types and fixed issues about functions where users could pass a NodeData generic. The new way is to define your own node type with a union of all your nodes. The big advantage of this is, that you can have multiple node types with different data structures and always be able to distinguish by checking the `node.type` attribute.
+We simplified types and fixed issues about functions where users could pass a NodeData generic. The new way is to define your own node type with a union of all your nodes. With this change, you can now have multiple node types with different data structures and always be able to distinguish by checking the `node.type` attribute.
 
 #### New API
 
@@ -199,3 +168,7 @@ We removed the following deprecated functions:
 ### 9. Custom `applyNodeChanges` and `applyEdgeChanges``
 
 If you wrote your own function for applying changes, you need to handle the new "replace" event. We removed the "reset" event and added a "replace" event that replaces specific nodes or edges.
+
+### That's it!
+
+We hope you like v12! To see a full breakdown of what's new in this version, you can read about it [here](https://github.com/xyflow/xyflow/discussions/3764).
