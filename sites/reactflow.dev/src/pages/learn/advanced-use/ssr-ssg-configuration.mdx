@@ -1,25 +1,25 @@
 ---
 title: SSR / SSG
-description: Guide about how to use configure React Flow to render flows on the server
-created_at: 2024-02-20
+description: Guide about how to configure React Flow to render flows on the server
+created_at: 2024-03-01
 ---
 
-# Server side rendering / Server side generation
+# Server side rendering, server side generation
 
 In this guide you will learn how to configure React Flow to render a flow on the server.
 
 import { Callout } from 'nextra/components';
 
 <Callout type="info">
-  Server side rendering is supported since React Flow version 12.
+  Server side rendering is supported since React Flow 12.
 </Callout>
 
 This guide covers an advanced use case and assumes that you are familiar with React Flow.
-If you just want to create a screenshot of a flow, you could also do that on the client. For this checkout the [download image example](/examples/misc/download-image).
+If you just want to create a screenshot of a flow, you could also do that on the client. For this, please checkout the [download image example](/examples/misc/download-image).
 
 ### Node dimensions
 
-There are different things you need to configure to make React Flow work on the server. The most important part are the node dimensions. React Flow renders only nodes if they have a width and height. Normally, you pass nodes without a specific `width` and `height`, they get measured , and the dimensions get written into `computed.width` and `computed.height`. Since we can't measure the dimensions on the server, we need to pass the dimensions explicitly. This can be done with the `width` and `height` or the `initialWidth` and `initialHeight` node properties.
+There are different things you need to configure to make React Flow work on the server. The most important part are the node dimensions. React Flow only renders nodes if they have a width and height. Normally, you pass nodes without a specific `width` and `height`, they get measured and the dimensions get written to `computed.width` and `computed.height`. Since we can't measure the dimensions on the server, we need to pass them explicitly. This can be done with the `width` and `height` or the `initialWidth` and `initialHeight` node properties.
 
 ```js
 const nodes = [
@@ -52,7 +52,7 @@ Now React Flow knows the dimensions of the node and can render it on the server.
 
 ### Handle positions
 
-You probably not only want to render the nodes on the server but also the edges. On the client, React Flow checks the positions of the handles, and stores that information, so that the edges know where to start and end. Since we can't measure the handle positions on the server, we need to pass this information. This can be done with the `handles` property of a node.
+You probably not only want to render the nodes on the server but also the edges. On the client, React Flow checks the positions of the handles and stores that information to draw the edges. Since we can't measure the handle positions on the server, we need to pass this information, too. This can be done with the `handles` property of a node.
 
 ```js
 const nodes: Node[] = [
@@ -81,4 +81,30 @@ const nodes: Node[] = [
 ];
 ```
 
-With this additional information, React Flow knows enough about the handles to render the edges on the server.
+With this additional information, React Flow knows enough about the handles to render the edges on the server. If you are fine with just rendering the nodes, you can skip this step.
+
+### Using `fitView` on the server
+
+If you know the dimensions of the React Flow container itself, you can even use `fitView` on the server. For this, you need to pass the `width` and `height` of the container to the `ReactFlow` component.
+
+```js
+<ReactFlow nodes={nodes} edges={edges} fitView width={1000} height={500} />
+```
+
+This will calculate the viewport and set the `transform` on the server in order to include all nodes in the viewport.
+
+### Usage with the `<ReactFlowProvider>`
+
+If you are using the `ReactFlowProvider`, you need to pass nodes, edges, wrapper dimensions and fit view prop to the provider.
+
+```js
+<ReactFlowProvider
+  initialNodes={nodes}
+  initialEdges={edges}
+  initialWidth={1000}
+  initialHeight={500}
+  fitView
+>
+  <App />
+</ReactFlowProvider>
+```
