@@ -29,6 +29,15 @@ export default function () {
 
 <PropsTable {...signature} />
 
+## Typescript
+
+This hook accepts a generic type argument of custom edge types. See this
+[section in our Typescript guide](/learn/advanced-use/typescript#nodetype-edgetype-unions) for more information.
+
+```tsx
+const nodes = useEdges<CustomEdgeType>();
+```
+
 ## Notes
 
 - Relying on `useEdges` unecessarily can be a common cause of performance

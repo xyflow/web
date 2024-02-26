@@ -116,3 +116,12 @@ function nodeColor(node) {
   }
 }
 ```
+
+## Typescript
+
+This component accepts a generic type argument of custom node types. See this
+[section in our Typescript guide](/learn/advanced-use/typescript#nodetype-edgetype-unions) for more information.
+
+```tsx
+<MiniMap<CustomNodeType> nodeColor={nodeColor} />
+```

@@ -71,3 +71,12 @@ choose the approach that works best for your use-case.
 ## Signature
 
 <PropsTable {...signature} />
+
+## Typescript
+
+This hook accepts a generic type argument of custom node & edge types. See this
+[section in our Typescript guide](/learn/advanced-use/typescript#nodetype-edgetype-unions) for more information.
+
+```tsx
+const store = useStoreApi<CustomNodeType, CustomEdgeType>();
+```

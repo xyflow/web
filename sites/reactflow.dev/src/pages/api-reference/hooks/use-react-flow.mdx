@@ -40,6 +40,15 @@ export function NodeCounter() {
 
 <PropsTable {...signature} />
 
+## Typescript
+
+This hook accepts a generic type argument of custom node & edge types. See this
+[section in our Typescript guide](/learn/advanced-use/typescript#nodetype-edgetype-unions) for more information.
+
+```tsx
+const reactFlow = useReactFlow<CustomNodeType, CustomEdgeType>();
+```
+
 ## Notes
 
 - This hook can only be used in a component that is a child of a
