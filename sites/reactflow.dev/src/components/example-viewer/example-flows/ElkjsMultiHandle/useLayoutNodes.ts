@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import ELK from 'elkjs/lib/elk.bundled.js';
-import { Edge, useNodesInitialized, useReactFlow } from '@xyflow/react';
+import { type Edge, useNodesInitialized, useReactFlow } from '@xyflow/react';
 
-import { ElkNode, ElkNodeData } from './nodes';
+import { type ElkNode } from './nodes';
 
 // elk layouting options can be found here:
 // https://www.eclipse.org/elk/reference/algorithms/org-eclipse-elk-layered.html
@@ -79,7 +79,7 @@ export const getLayoutedNodes = async (nodes: ElkNode[], edges: Edge[]) => {
 
 export default function useLayoutNodes() {
   const nodesInitialized = useNodesInitialized();
-  const { getNodes, getEdges, setNodes, fitView } = useReactFlow<ElkNodeData>();
+  const { getNodes, getEdges, setNodes, fitView } = useReactFlow<ElkNode>();
 
   useEffect(() => {
     if (nodesInitialized) {
