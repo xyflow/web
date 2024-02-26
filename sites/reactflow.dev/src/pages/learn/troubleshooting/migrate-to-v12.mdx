@@ -1,0 +1,174 @@
+---
+title: Migrate to v12
+description: Use this guide to migrate from React Flow v11 to v12.
+---
+
+# Migrate to v12
+
+Before you can use the [new features](https://github.com/xyflow/xyflow/discussions/3764) that come with React Flow v12 like server side rendering, computing flows, and dark mode, here are the breaking changes you'll have to address first.
+
+### 1. A new npm package name
+
+The package `reactflow` has been renamed to `@xyflow/react` and it's not a default import anymore.
+
+#### Old API
+
+```js
+// npm install reactflow
+import ReactFlow from 'reactflow';
+```
+
+#### New API
+
+```js
+// npm install @xyflow/react
+import { ReactFlow } from '@xyflow/react';
+
+// you also need to adjust the style import
+import '@xyflow/react/dist/style.css';
+
+// or if you just want basic styles
+import '@xyflow/react/dist/base.css';
+```
+
+### 2. Node attribute “computed”
+
+All computed node values are now stored in `node.computed`. Besides the new package name, this is the biggest change. After React Flow measures your nodes, it writes the dimesions to `node.computed.width` and `node.computed.height`.
+
+#### Old API
+
+```js
+// getting the measured width and height
+const nodeWidth = node.width;
+const nodeHeight = node.height;
+```
+
+#### New API
+
+```js
+// getting the measured width and height
+const nodeWidth = node.computed.width;
+const nodeHeight = node.computed.height;
+```
+
+### 3. Updating nodes and edges
+
+We are not supporting node and edge updates with object mutations anymore. If you want to update a certain attribute, you need to create a new node / edge.
+
+#### Old API
+
+```js
+setNodes((currentNodes) =>
+  currentNodes.map((node) => {
+    node.hidden = true;
+    return node;
+  }),
+);
+```
+
+#### New API
+
+```js
+setNodes((currentNodes) =>
+  currentNodes.map((node) => ({
+    ...node,
+    hidden: true,
+  })),
+);
+```
+
+### 4. Custom node props
+
+We renamed the `posX` and `posY` props to `positionAbsoluteX` and `positionAbsoluteY`
+
+#### Old API
+
+```js
+function CustomNode({ posX, posY }) {
+  ...
+}
+```
+
+#### New API
+
+```js
+function CustomNode({ positionAbsoluteX, positionAbsoluteY }) {
+  ...
+}
+```
+
+### 5. `getNodesBounds` options
+
+The type of the second param changed from `nodeOrigin` to `options.nodeOrigin` / `options.useRelativePosition`
+
+#### Old API
+
+```js
+const bounds = getNodesBounds(nodes: Node[], nodeOrigin)
+```
+
+#### New API
+
+```js
+const bounds = getNodesBounds(nodes: Node[], { nodeOrigin })
+```
+
+### 6. Typescript changes for defining nodes and edges
+
+We simplified types and fixed issues about functions where users could pass a NodeData generic. The new way is to define your own node type with a union of all your nodes. With this change, you can now have multiple node types with different data structures and always be able to distinguish by checking the `node.type` attribute.
+
+#### New API
+
+```js
+type NumberNode = Node<{ value: number }, 'number'>;
+type TextNode = Node<{ text: string }, 'text'>;
+type AppNode = NumberNode | TextNode;
+```
+
+You can then use the `AppNode` type as the following:
+
+```js
+const nodes: AppNode[] = [
+  { id: '1', type: 'number', data: { value: 1 }, position: { x: 100, y: 100 } },
+  { id: '2', type: 'text', data: { text: 'Hello' }, position: { x: 200, y: 200 } },
+];
+```
+
+```js
+const onNodesChange: onNodesChange<AppNode> = useCallback((changes) => setNodes(nds => applyChanges(changes, nds)), []);
+```
+
+You can read more about this in the [Typescript guide](/learn/advanced-use/typescript).
+
+### 7. Rename `nodeInternals`
+
+If you are using `nodeInternals` you need to rename it to `nodeLookup`.
+
+#### Old API
+
+```js
+const node = useStore((s) => s.nodeInternals.get(id));
+```
+
+#### New API
+
+```js
+const node = useStore((s) => s.nodeLookup.get(id));
+```
+
+### 8. Removal of deprecated functions
+
+We removed the following deprecated functions:
+
+- `getTransformForBounds` (replaced by `getViewportForBounds`)
+- `getRectOfNodes` (replaced by `getNodesBounds`)
+- `project` (replaced by `screenToFlowPosition`)
+- `getMarkerEndId`
+
+### 9. Custom `applyNodeChanges` and `applyEdgeChanges``
+
+If you wrote your own function for applying changes, you need to handle the new "replace" event. We removed the "reset" event and added a "replace" event that replaces specific nodes or edges.
+
+### That's it!
+
+We hope you like v12! To see a full breakdown of what's new in this version, you can read about it [here](https://github.com/xyflow/xyflow/discussions/3764).
