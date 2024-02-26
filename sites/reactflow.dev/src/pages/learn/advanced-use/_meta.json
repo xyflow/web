@@ -4,5 +4,6 @@
   "typescript": "TypeScript",
   "uncontrolled-flow": "Uncontrolled Flows",
   "state-management": "State Management",
-  "computing-flows": "Computing Flows"
+  "computing-flows": "Computing Flows",
+  "ssr-ssg-configuration": "SSR / SSG"
 }
