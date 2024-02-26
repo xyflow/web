@@ -222,9 +222,14 @@ import { type OnNodeDrag } from '@xyflow/react';
 Our type unions can be used to type the return values of many hooks.
 
 ```tsx filename="CustomNodeBar.tsx"
-import { useHandleConnections, useNodesData } from '@xyflow/react';
+import { useHandleConnections, useNodesData, useStore } from '@xyflow/react';
 
 export default function CustomNodeBar() {
+  // You can type useStore by typing the selector function
+  const nodes = useStore((s: ReactFlowState<CustomNodeType>) => ({
+    nodes: s.nodes,
+  }));
+
   const connections = useHandleConnections({
     type: 'target',
   });

@@ -84,6 +84,17 @@ function MinZoomSetter() {
 }
 ```
 
+## Typescript
+
+This hook can be typed by typing the selector function. See this
+[section in our Typescript guide](/learn/advanced-use/typescript#nodetype-edgetype-unions) for more information.
+
+```tsx
+const nodes = useStore((s: ReactFlowState<CustomNodeType>) => ({
+  nodes: s.nodes,
+}));
+```
+
 ## Notes
 
 - You should define your store selector function _outside_ of the component that

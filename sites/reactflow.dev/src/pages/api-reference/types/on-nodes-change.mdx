@@ -1,4 +1,22 @@
 ---
-title: OnNodesChangeHandler
+title: OnNodesChange
 description: ''
 ---
+
+# OnNodesChange
+
+If you opt for using a controlled flow, you gain the advantage of handling any changes to the nodes yourself, however this means that React Flow will not apply any of these changes for you. Making a mistake here can lead to unexpected behavior. You are behind the wheel now.
+
+```tsx
+export type OnNodesChange<NodeType extends Node = Node> = (
+  changes: NodeChange<NodeType>[],
+) => void;
+
+export type NodeChange<NodeType extends Node = Node> =
+  | NodeDimensionChange
+  | NodePositionChange
+  | NodeSelectionChange
+  | NodeRemoveChange
+  | NodeAddChange<NodeType>
+  | NodeReplaceChange<NodeType>;
+```
