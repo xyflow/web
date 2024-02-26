@@ -19,5 +19,10 @@
     "title": "Custom Edge Props",
     "href": "/api-reference/types/edge-props"
   },
-  "theming": "Theming"
+  "theming": {
+    "title": "Theming",
+    "theme": {
+      "pagination": false
+    }
+  }
 }
