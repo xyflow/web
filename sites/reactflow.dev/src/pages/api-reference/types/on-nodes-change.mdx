@@ -3,20 +3,31 @@ title: OnNodesChange
 description: ''
 ---
 
+import { PropsTable } from '@/components/props-table';
+import { fields } from '@/page-data/reference/types/OnNodesChange.ts';
+
 # OnNodesChange
 
-If you opt for using a controlled flow, you gain the advantage of handling any changes to the nodes yourself, however this means that React Flow will not apply any of these changes for you. Making a mistake here can lead to unexpected behavior. You are behind the wheel now.
+This type is used for typing the [`onNodesChange`](/api-reference/react-flow#on-nodes-change) function.
 
 ```tsx
 export type OnNodesChange<NodeType extends Node = Node> = (
   changes: NodeChange<NodeType>[],
 ) => void;
+```
 
-export type NodeChange<NodeType extends Node = Node> =
-  | NodeDimensionChange
-  | NodePositionChange
-  | NodeSelectionChange
-  | NodeRemoveChange
-  | NodeAddChange<NodeType>
-  | NodeReplaceChange<NodeType>;
+## Fields
+
+<PropsTable {...fields} />
+
+## Usage
+
+This type accepts a generic type argument of custom nodes types. See this
+[section in our Typescript guide](/learn/advanced-use/typescript#nodetype-edgetype-unions) for more information.
+
+```tsx
+const onNodesChange: OnNodesChange = useCallback(
+  (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
+  [setNodes],
+);
 ```

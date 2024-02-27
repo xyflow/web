@@ -6,7 +6,11 @@ description:
 ---
 
 import { PropsTable } from '@/components/props-table';
-import { signature } from '@/page-data/reference/hooks/useReactFlow.ts';
+import {
+  nodesAndEdgesFields,
+  intersectionFields,
+  viewportFields,
+} from '@/page-data/reference/types/ReactFlowInstance.fields.ts';
 
 # useReactFlow
 
@@ -38,7 +42,17 @@ export function NodeCounter() {
 
 ## Signature
 
-<PropsTable {...signature} />
+### Nodes and edges
+
+<PropsTable {...nodesAndEdgesFields} />
+
+### Intersections
+
+<PropsTable {...intersectionFields} />
+
+### Viewport fields
+
+<PropsTable {...viewportFields} />
 
 ## Typescript
 

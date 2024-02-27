@@ -6,6 +6,7 @@
   "connection-line-type": "ConnectionLineType",
   "coordinate-extent": "CoordinateExtent",
   "default-edge-options": "DefaultEdgeOptions",
+  "delete-elements": "DeleteElements",
   "edge": "Edge",
   "edge-change": "EdgeChange",
   "edge-marker": "EdgeMarker",
@@ -18,6 +19,8 @@
   "node-change": "NodeChange",
   "node-origin": "NodeOrigin",
   "node-handle": "NodeHandle",
+  "on-nodes-change": "OnNodesChange",
+  "on-edges-change": "OnEdgesChange",
   "panel-position": "PanelPosition",
   "position": "Position",
   "pro-options": "ProOptions",
@@ -25,8 +28,5 @@
   "react-flow-json-object": "ReactFlowJsonObject",
   "resize-params": "ResizeParams",
   "viewport": "Viewport",
-  "on-nodes-change": "OnNodesChange",
-  "on-edges-change": "OnEdgesChange",
-  "xy-position": "XYPosition",
-  "delete-elements": "DeleteElements"
+  "xy-position": "XYPosition"
 }

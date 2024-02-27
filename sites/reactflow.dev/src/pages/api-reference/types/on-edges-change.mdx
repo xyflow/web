@@ -3,18 +3,31 @@ title: OnEdgesChange
 description: ''
 ---
 
+import { PropsTable } from '@/components/props-table';
+import { fields } from '@/page-data/reference/types/OnEdgesChange.ts';
+
 # OnEdgesChange
 
-If you opt for using a controlled flow, you gain the advantage of handling any changes to the edges yourself, however this means that React Flow will not apply any of these changes for you. Making a mistake here can lead to unexpected behavior. You are behind the wheel now.
+This type is used for typing the [`onEdgesChange`](/api-reference/react-flow#on-edges-change) function.
 
 ```tsx
 export type OnEdgesChange<EdgeType extends Edge = Edge> = (
   changes: EdgeChange<EdgeType>[],
 ) => void;
+```
 
-export type EdgeChange<EdgeType extends Edge = Edge> =
-  | EdgeSelectionChange
-  | EdgeRemoveChange
-  | EdgeAddChange<EdgeType>
-  | EdgeReplaceChange<EdgeType>;
+## Fields
+
+<PropsTable {...fields} />
+
+## Usage
+
+This type accepts a generic type argument of custom edge types. See this
+[section in our Typescript guide](/learn/advanced-use/typescript#nodetype-edgetype-unions) for more information.
+
+```tsx
+const onEdgesChange: OnEdgesChange = useCallback(
+  (changes) => setEdges((eds) => applyEdgeChanges(changes, eds)),
+  [setEdges],
+);
 ```
