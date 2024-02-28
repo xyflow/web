@@ -2,9 +2,14 @@ import { internalsSymbol, getSimpleBezierPath, useNodes } from '@xyflow/react';
 
 export default ({ fromNode, toX, toY }) => {
   const handleBounds = useNodes().flatMap((node) => {
-    if (node.id !== fromNode.id && !node.selected) return [];
+    if (
+      (node.id !== fromNode.id && !node.selected) ||
+      // we only want to draw a connection line from a source handle
+      !node[internalsSymbol].handleBounds.source
+    )
+      return [];
 
-    return node[internalsSymbol].handleBounds.source.map((bounds) => ({
+    return node[internalsSymbol].handleBounds.source?.map((bounds) => ({
       id: node.id,
       positionAbsolute: node.computed?.positionAbsolute,
       bounds,

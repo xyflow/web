@@ -125,5 +125,11 @@ export const signature: PropsTableProps = {
       description:
         'Function for updating node data. The passed data or function result gets merged into to the existing node data. You can change that behaviour and replace the node by passing `options.replace = true`.',
     },
+    {
+      name: 'toObject',
+      type: `() => { nodes: Node[]; edges: Edge[]; viewport: Viewport };`,
+      description:
+        'This function returns a JSON representation of your current Svelte Flow graph.',
+    },
   ],
 };

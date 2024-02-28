@@ -16,7 +16,12 @@ export const nodesAndEdgesFields: PropsTableProps = {
       name: 'setEdges',
       type: '(payload: Edge<U>[] | ((edges: Edge<U>[]) => Edge<U>[])) => void',
     },
-    { name: 'toObject', type: '() => ReactFlowJsonObject<T, U>' },
+    {
+      name: 'toObject',
+      type: '() => ReactFlowJsonObject<T, U>',
+      description:
+        'This function returns a JSON representation of your current React Flow graph.',
+    },
     {
       name: 'deleteElements',
       type: 'DeleteElements',
