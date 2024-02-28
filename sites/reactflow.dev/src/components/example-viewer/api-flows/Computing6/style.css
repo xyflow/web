@@ -1,7 +1,13 @@
+.react-flow__node {
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.12);
+  border-radius: 10px;
+  font-size: 12px;
+}
+
 .number-input {
   padding: 10px;
   background: #fff;
-  border: 1px solid #ccc;
+  border: 1px solid #eee;
   border-radius: 10px;
 }
 
@@ -46,4 +52,5 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 10px;
 }

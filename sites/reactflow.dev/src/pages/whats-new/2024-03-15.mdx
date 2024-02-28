@@ -1,0 +1,126 @@
+---
+title: React Flow 12 - all you need to know
+description: React Flow 12 is finally here! Now with SSR support, more helpers for computing flows, dark mode and a better developer experience.
+authors: [moritz]
+date: '2024-03-15'
+---
+
+import ExampleViewer from '@/components/example-viewer';
+import { Callout, Tabs, Tab } from 'nextra/components';
+
+# React Flow 12 - all you need to know
+
+<Callout type="info">
+  If you want to migrate from 11 to 12, please checkout the [migration
+  guide](/learn/troubleshooting/migrate-to-v12).
+</Callout>
+
+React Flow 12 is finally here ✨ We are super excited and hope you enjoy the new features as much as we do. The big topics for version 12 are:
+
+1. **Support for SSG/ SSR**: you can now render flows on the server ([server side rendering guide](/learn/advanced-use/ssr-ssg-configration))
+2. **Computing flows**: new hooks and helper functions to simplify data flows ([computing flows guide](/learn/advanced-use/computing-flows))
+3. **Dark mode**: a new base style and easy way to switch between built in color modes ([dark mode example](/examples/styling/dark-mode))
+4. **DX improvements**: we are now using TSDoc for a better developer experience in your IDE
+
+Svelte Flow had a big impact on this release as well. While combing through each line of React Flow, we created framework agnostic helpers, found bugs, and made some under the hood improvements. All of these changes are baked into the React Flow 12 release as a welcome side-effect of that launch.
+
+<ExampleViewer
+  codePath="api-flows/Computing6"
+  additionalFiles={[
+    'NumberInput.js',
+    'ColorPreview.js',
+    'Lightness.js',
+    'Log.js',
+    'style.css',
+  ]}
+  showEditor={false}
+  editorHeight="400px"
+/>
+
+### Get it now 🚀
+
+From now on you can find the package in the @xyflow organization:
+
+<Tabs items={['npm', 'pnpm', 'yarn']}>
+  <Tab>
+
+```bash copy
+npm install @xyflow/react
+```
+
+  </Tab>
+  <Tab>
+
+```bash copy
+pnpm add @xyflow/react
+```
+
+  </Tab>
+  <Tab>
+
+```bash copy
+yarn add @xyflow/react
+```
+
+  </Tab>
+</Tabs>
+
+## Main features
+
+Now that you successfully migrated to v12, you can use all the fancy features. As mentioned above, the biggest updates for v12 are:
+
+#### 1. Server side rendering
+
+you can define `width`, `height` and `handles` for the nodes. This makes it possible to render a flow on the server and hydrate on the client: [server side rendering guide](/learn/advanced-use/ssr-ssg-configration).
+
+- **Details:** In v11, `width` and `height` were set by the library as soon as the nodes got measured. This still happens, but we are now using `computed.width` and `computed.height` to store this information. The `positionAbsolute` attribute also gets stored in `computed`. In the previous versions there was always a lot of confusion about `width` and `height`. It’s hard to understand, that you can’t use it for passing an actual width or height. It’s also not obvious that those attributes get added by the library. We think that the new implementation solves both of the problems: `width` and `height` are optional attributes that can be used to define dimensions and everything that is set by the library, is stored in `computed`.
+
+#### 2. Computing flows
+
+The new hooks [`useHandleConnections`](/api-reference/hooks/use-handle-connections) and [`useNodesData`](/api-reference/hooks/use-nodes-data) and the new [`updateNode`](/api-reference/hooks/use-react-flow#update-node) and [`updateNodeData`](/api-reference/hooks/use-react-flow#update-node-data) functions (both are part of `useReactFlow`) can be used to manage the data flow between your nodes: [computing flows guide](/learn/advanced-use/computing-flows).
+
+- **Details:** Working with flows where one node data relies on another node is super common. You update node A and want to react on those changes in the connected node B. Until now everyone had to come up with a custom solution. With this version we want to change this and give you performant helpers to handle use cases like this.
+
+#### 3. Dark mode and CSS variables
+
+React Flow now comes with a built-in dark mode, that can be toggled by using the new [`colorMode`](/api-reference/react-flow#color-mode) prop (”light”, “dark” or “system”): [dark mode example](/examples/styling/dark-mode)
+
+- **Details:** With this version we want to make it easier to switch between dark and light modes and give you a better starting point for dark flows. If you pass `colorMode="dark"`, we add the class name "dark" to the wrapper and use it to adjust the styling. To make the implementation for this new feature easier on our ends, we switched to CSS variables for most of the styles. These variables can also be used in user land to customize a flow.
+
+#### 4. A better DX with TSDoc
+
+We started to use TSDoc for a better DX. While developing your IDE will now show you the documentation for the props and hooks. This is a big step for us to make the library more accessible and easier to use. We will also use TSDoc in the near future to generate the documentation.
+
+## More features and updates
+
+There is more! Besides the new main features, we added some minor things that were on our list for a long time:
+
+- **[`useConnection` hook](/api-reference/hooks/use-connection):** With this hook you can access the ongoing connection. For example, you can use it for colorizing handles styling a custom connection line based on the current start / end handles.
+- **Controlled `viewport`:** This is an advanced feature. Possible use cases are to animate the viewport or round the transform for lower res screens for example. This features brings two new props: [`viewport`](/api-reference/react-flow#viewport) and [`onViewportChange`](/api-reference/react-flow#on-viewport-change).
+- **[`ViewportPortal`](/api-reference/components/viewport-portal) component:** This makes it possible to render elements in the viewport without the need to implement a custom node.
+- **[`onDelete`](/api-reference/react-flow#on-delete) handler**: We added a combined handler for `onDeleteNodes` and `onDeleteEdges` to make it easier to react to deletions.
+- **[`onBeforeDelete`](/api-reference/react-flow#on-before-delete) handler**: With this handler you can prevent/ manage deletions.
+- **[`isValidConnection`](/api-reference/react-flow#is-valid-connection) prop:** This makes it possible to implement one validation function for all connections. It also gets called for programmatically added edges.
+- **Background component**: add [`patternClassName`](/api-reference/components/background#pattern-class-name) prop to be able to style the background pattern by using a class name. This is useful if you want to style the background pattern with Tailwind for example.
+- **`onMove` callback** gets triggered for library-invoked viewport updates (like fitView or zoom-in)
+- **`deleteElements`** now returns deleted nodes and deleted edges
+- add **`origin` attribute** for nodes
+- add **`selectable` attribute** for edges
+- Correct types for `BezierEdge`, `StepEdge`, `SmoothStepEdge` and `StraightEdge` components
+- New edges created by the library only have `sourceHandle` and `targetHandle` attributes when those attributes are set. (We used to pass `sourceHandle: null` and `targetHandle: null`)
+- Edges do not mount/unmount when their z-index change
+- `nodeDragThreshold` is 1 by default instead of 0
+
+### Internal changes
+
+These changes are not really user-facing, but it could be important for folks who are working with the React Flow store:
+
+- The biggest internal change is that we created a new package **@xyflow/system with framework agnostic helpers** that can be used be React Flow and Svelte Flow
+  - **XYDrag** for handling dragging node(s) and selection
+  - **XYPanZoom** for controlling the viewport panning and zooming
+  - **XYHandle** for managing new connections
+- We replaced the `nodeInternals` map with a `nodes` array. We added a new `nodeLookup` map that serves as a lookup, but we are not creating a new map object on any change so it’s really only useful as a lookup.
+- We removed the internal "reset" event and added a "replace" event to be able to update specific nodes.
+- We removed `connectionNodeId`, `connectionHandleId`, `connectionHandleType` from the store and added `connectionStartHandle.nodeId`, `connectionStartHandle.handleId`, …
+- add `data-id` to edges
+- `onNodeDragStart`, `onNodeDrag` and `onNodeDragStop` also get called when user drags a selection (in addition to `onSelectionDragStart`, `onSelectionDrag`, `onSelectionDragStop`)
