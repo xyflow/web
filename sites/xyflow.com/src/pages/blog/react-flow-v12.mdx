@@ -1,0 +1,110 @@
+---
+title: 'React Flow v12: Server Side Rendering, Computing Flows, Dark Mode'
+htmlTitle: 'React Flow v12: Server Side Rendering, Computing Flows, Dark Mode'
+intro: 'intro text'
+date: 15 March 2024
+authors: ['moritz', 'john']
+tags: ['react-flow']
+image: '/img/blog/v11-reactflow-header.png'
+---
+
+import Image from 'next/image';
+
+import { BlogPostLayout } from '@/layouts/blog-post-with-frontmatter';
+
+<BlogPostLayout>
+
+For the last few months we’ve been wrapping up a solid v12 release for y’all. Since v11, we’ve grown our core team to five people, reached nearly 20k stars on github, rebranded to xyflow, launched Svelte Flow (many great side-effects of this are baked into this release), and kept all of our office plants alive.
+
+This release also brings the final piece of the “xyflow” puzzle, as our package name changes from `ReactFlow` to `@xyflow/react`. We pinky promise that we won’t change our package name again anytime soon!
+
+This has been in beta since January and we’ve been tending to bugs since then, so we’re confident in sending this out now as a stable release. Shout-out to the brave souls who have already tried it out and submitted your issues, we appreciate you! 🙏🏻
+
+(If you want to skip the details and just migrate from 11 to 12 ASAP, use our [migration guide](https://reactflow.dev/learn/troubleshooting/migrate-to-12) )
+
+Let’s dive into v12! 🌊
+
+## TL;DR
+
+React Flow v12 is here, and the main features are
+
+- Support for Server Side Rendering
+- Hooks and helpers for computing flows
+- Built-in dark mode
+- Better DX via TSDoc
+
+# What’s new here?
+
+## 1. Support for server side rendering
+
+[SHOW AN EXAMPLE HERE]
+
+React is heading towards server side rendering, with tools like [Nextjs](https://nextjs.org/), [Astro](https://astro.build/), and [waku](https://waku.gg/). We’ve gotten asked to do server side rendering more than a [couple](https://github.com/xyflow/xyflow/issues/3168) of [times](https://github.com/xyflow/xyflow/issues/3384) due to difficulties using React Flow with these tools. In v11, Astro just renders a React Flow diagram as blank by default- that’s no good.
+
+With v12, you can now:
+
+- Display static HTML diagrams for docs sites (even if client has no JS)
+- Dynamically generate opengraph images that appear as embeds when sharing a link to your flow
+- Pre-render flows for crawlable content
+
+Check out our [server side rendering guide](http://localhost:3002/learn/advanced-use/ssr-ssg-configuration)
+
+## 2. Computing flows - hooks and helpers
+
+[show an example here]
+
+One of the most difficult things about using React Flow is state management, even though it’s really a general difficulty with React.
+
+In v12 We added helpers to simplify getting data from connected nodes, updating node data, and managing the data between nodes. It’s nothing like fully-fledged state management libraries like Zustand, but maybe this can help folks who just need to do some simple data processing on the client-side to get up-and-running faster with their React Flow apps.
+
+Check out our [computing flows guide](http://localhost:3002/learn/advanced-use/computing-flows)
+
+## 3. Built-in dark mode
+
+(Example with dark stuff)
+
+We added a `colorMode` prop, where you can toggle between "light", "dark", or "system". Under the hood, React Flow just adds a class name to the wrapper, but we had to do a bunch of changes to make this possible. Now all of the default styles are using CSS variables, so you can easily build your own themes based on that.
+
+(add link to dark mode docs, if they exist)
+
+## 4. Better Dev Experience with TSDoc
+
+We used TSDoc to create a better dev experience in your IDE to get more info about what a function or component does. We’ve been told our DX is pretty good already 💅🏻 we’re always happy to make it even better.
+
+IMAGES
+
+_Before and after_
+
+Bonus content
+
+**Performance:** Ivan! Thanks for this. Some of the most beautiful pull requests we’ve ever seen. Improved performance by changing the default of nodeDragThreshold from 0 to 1, so that the function isn’t called every time you click a node, but only when it’s moved. SMART. (link to pull requests, or some visual change?)
+
+# Even more features!
+
+Besides the new main features listed above, we added some other things that we wanted to include for a long time.
+
+- **`[useConnection` hook](/api-reference/hooks/use-connection):** With this hook you can access the ongoing connection. For example, you can use it for colorizing handles styling a custom connection line based on the current start / end handles.
+- **Controlled `viewport`:** This is an advanced feature. Possible use cases are to animate the viewport or round the transform for lower res screens for example. This features brings two new props: `[viewport](/api-reference/react-flow#viewport)` and `[onViewportChange](/api-reference/react-flow#on-viewport-change)`.
+- **`[ViewportPortal](/api-reference/components/viewport-portal)` component:** This makes it possible to render elements in the viewport without the need to implement a custom node.
+- **`[onDelete](/api-reference/react-flow#on-delete)` handler**: We added a combined handler for `onDeleteNodes` and `onDeleteEdges` to make it easier to react to deletions.
+- **`[onBeforeDelete](/api-reference/react-flow#on-before-delete)` handler**: With this handler you can prevent/ manage deletions.
+- **`[isValidConnection](/api-reference/react-flow#is-valid-connection)` prop:** This makes it possible to implement one validation function for all connections. It also gets called for programmatically added edges.
+- **Background component**: add `[patternClassName](/api-reference/components/background#pattern-class-name)` prop to be able to style the background pattern by using a class name. This is useful if you want to style the background pattern with Tailwind for example.
+- **`onMove` callback** gets triggered for library-invoked viewport updates (like fitView or zoom-in)
+- **`deleteElements`** now returns deleted nodes and deleted edges
+- add **`origin` attribute** for nodes
+- add **`selectable` attribute** for edges
+- Correct types for `BezierEdge`, `StepEdge`, `SmoothStepEdge` and `StraightEdge` components
+- New edges created by the library only have `sourceHandle` and `targetHandle` attributes when those attributes are set. (We used to pass `sourceHandle: null` and `targetHandle: null`)
+- Edges do not mount/unmount when their z-index change
+- `nodeDragThreshold` is 1 by default instead of 0
+
+And that’s it for v12, thanks for sticking around and using React Flow 🌻
+
+See you around!
+
+The xyflow core team
+
+Christopher, Hayleigh, John, Moritz, and Peter
+
+</BlogPostLayout>
