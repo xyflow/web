@@ -9,7 +9,7 @@ created_at: 2024-03-01
 import { Callout } from 'nextra/components';
 
 <Callout type="info">
-  Server side rendering has been supported since React Flow 12
+  Server side rendering is supported since React Flow 12
 </Callout>
 
 This is an advanced use case and assumes you are already familiar with React Flow. If you're new to React Flow, check out our [getting started guide](/learn/getting-started/installation-and-requirements).
@@ -100,7 +100,7 @@ This will calculate the viewport and set the `transform` on the server in order 
 
 ### Usage with the `<ReactFlowProvider>`
 
-If you are using the `ReactFlowProvider`, you need to pass nodes, edges, wrapper dimensions and fit view prop to the provider.
+If you are using the `ReactFlowProvider`, you can pass `initialNodes`, `initialEdges` and optional wrapper dimensions (`initialWidth` and `initialHeight`) and `fitView` to the provider.
 
 ```js
 <ReactFlowProvider
