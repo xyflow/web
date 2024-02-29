@@ -45,6 +45,17 @@ export default {
   sidebar: {
     titleComponent: SidebarTitle,
   },
+  banner: {
+    key: 'v12-beta',
+    text: (
+      <Link
+        className="flex justify-center items-center max-w-xs mx-auto hover:underline"
+        href="https://github.com/xyflow/xyflow/discussions/3764"
+      >
+        🧪 Help us to squash some more bugs, before we release stable React Flow 12
+      </Link>
+    ),
+  },
   navbar: {
     component: (props) => {
       const router = useRouter();
