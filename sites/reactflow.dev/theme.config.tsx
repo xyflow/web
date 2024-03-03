@@ -52,7 +52,7 @@ export default {
         className="flex justify-center items-center max-w-xs mx-auto hover:underline"
         href="https://github.com/xyflow/xyflow/discussions/3764"
       >
-        🧪 Help us to squash some more bugs, before we release stable React Flow 12
+        🧪 React Flow 12 is around the corner! Check it out and help us to squash some more bugs.
       </Link>
     ),
   },
