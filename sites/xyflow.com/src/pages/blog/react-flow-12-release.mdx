@@ -8,21 +8,22 @@ tags: ['react-flow']
 image: '/img/blog/v11-reactflow-header.png'
 ---
 
+import { Bleed } from 'nextra-theme-docs';
+import { Embed, Text, Image } from 'xy-shared';
+
 import { BlogPostLayout } from '@/layouts/blog-post-with-frontmatter';
 import ExampleViewer from '@/components/example-viewer';
 import SSRFlow from '@/components/SSRFlow';
-import { Bleed } from 'nextra-theme-docs';
-import { Embed, Text } from 'xy-shared';
 
 <BlogPostLayout>
 
-Since v11, we’ve grown our core team to five people, reached nearly 20k stars on github, rebranded to xyflow, launched Svelte Flow, and kept all of our office plants alive. And now, we've prepared a hefty React Flow release for y'all 🎁 It comes with a few much-asked for major features, as well as tons of bug/performance clean-up as a result of combing through every. line. of. code. while developing Svelte Flow.
+Since the last major release, we’ve grown our core team to five people, reached nearly 20k stars on Github, rebranded to xyflow, launched Svelte Flow, and kept all of our office plants alive. And now, we've prepared a hefty React Flow release for y'all 🎁 It comes with a few much-asked for major features, as well as tons of bug/performance clean-up as a result of combing through every. line. of. code. while developing Svelte Flow.
 
-This release also brings the final piece of the “xyflow” puzzle, as our package name changes from `ReactFlow` to `@xyflow/react`. We pinky promise that we won’t change our package name again anytime soon!
+This release also brings the final piece of the “xyflow” puzzle, as our package name changes from `reactflow` to `@xyflow/react`. We pinky promise that we won’t change our package name again anytime soon!
 
-This has been in beta since January and we’ve been tending to bugs since then, so we’re confident in sending this out now as a stable release. Shout-out to the brave souls who have already tried it out and submitted your issues, we appreciate you! 🙏🏻
+React Flow 12 has been in beta since January and we’ve been tending to bugs since then, so we’re confident in sending this out now as a stable release. Shout-out to the brave souls who have already tried it out and submitted your issues, we appreciate you! 🙏🏻
 
-If you want to skip the details and just migrate your project to v12, head over to our [migration guide](https://reactflow.dev/learn/troubleshooting/migrate-to-12).
+If you want to skip the details and just migrate your project, head over to our [migration guide](https://reactflow.dev/learn/troubleshooting/migrate-to-12).
 
 ### TL;DR
 
@@ -49,10 +50,6 @@ The new version comes with a bunch of features. Here are the main ones:
   <SSRFlow />
 </Bleed>
 
-(iFrame, with some nodes inside, that have some text that say "turn off javascript in your browser, but I'll stay bc I'm rendered server-side - M)
-
-(description) this example was rendered on the server-side, so you can \_**_ or oyu can't_ \_\_\_**... if you turn of your js in devftools... this wil work, and the other exmaples won't
-
 React is heading towards server side rendering, with tools like [Nextjs](https://nextjs.org/), [Astro](https://astro.build/), and [waku](https://waku.gg/). We’ve gotten asked to do server side rendering more than a [couple](https://github.com/xyflow/xyflow/issues/3168) of [times](https://github.com/xyflow/xyflow/issues/3384) due to difficulties using React Flow with these tools. For example, with React Flow v11 Astro just renders a React Flow diagram as blank by default- that’s no good.
 
 With v12, you can now:
@@ -63,7 +60,7 @@ With v12, you can now:
 
 (embed tweet)https://twitter.com/alecchernicki/status/1761477031001301118
 
-[🔗 Server side rendering guide](http://localhost:3002/learn/advanced-use/ssr-ssg-configuration)
+[🔗 Server side rendering guide](https://reactflow.dev/learn/advanced-use/ssr-ssg-configuration)
 
 ## 2. Computing flows - hooks and helpers
 
@@ -87,7 +84,7 @@ One of the most difficult things about using React Flow is state management, eve
 
 In v12 we added helpers to simplify getting data from connected nodes, updating node data, and managing the data between nodes. It’s nothing like fully-fledged state management libraries like Zustand, but maybe this can help folks who just need to do some simple data processing on the client-side to get up-and-running faster with their React Flow apps.
 
-Check out our [computing flows guide](https://reactflow.dev/learn/advanced-use/computing-flows)
+[🔗 Computing flows guide](https://reactflow.dev/learn/advanced-use/computing-flows)
 
 ## 3. Dark mode
 
@@ -103,11 +100,19 @@ Check out our [computing flows guide](https://reactflow.dev/learn/advanced-use/c
 
 React Flow finally comes with a built-in dark mode 🌚 For this, you can now pass a `colorMode` prop, to toggle between "light", "dark", or "system". Under the hood, React Flow just adds a class name to the wrapper, but we had to do a bunch of changes to make this possible. Now all of the default styles are using CSS variables, so you can easily build your own themes based on that.
 
-[Dark mode example with source](https://reactflow.dev/examples/styling/dark-mode/)
+[🔗 Dark mode example](https://reactflow.dev/examples/styling/dark-mode/)
 
 ## 4. Better Dev Experience with TSDoc
 
-_Before and after image or example goes here_
+<Bleed>
+  <Image
+    src="/img/blog/v12/tsdoc.png"
+    alt="IDE hover information for nodes prop"
+    wide
+    width={2102}
+    height={682}
+  />
+</Bleed>
 
 We used TSDoc to create a better dev experience in your IDE to get more info about what a function or component does. We’ve been told our DX is pretty good already, but we’re always happy to make it even better 💅🏻
 
@@ -123,13 +128,13 @@ We worked with [Ivan Akulov](https://3perf.com/) to improve the performance of R
 
 Besides the new main features listed above, we added some other things that we wanted to include for a long time.
 
-- **[`useConnection` hook](/api-reference/hooks/use-connection):** With this hook you can access the ongoing connection. For example, you can use it for colorizing handles styling a custom connection line based on the current start / end handles.
-- **Controlled `viewport`:** This is an advanced feature. Possible use cases are to animate the viewport or round the transform for lower res screens for example. This features brings two new props: [`viewport`](/api-reference/react-flow#viewport) and [`onViewportChange`](/api-reference/react-flow#on-viewport-change).
-- **[`ViewportPortal`](/api-reference/components/viewport-portal) component:** This makes it possible to render elements in the viewport without the need to implement a custom node.
-- **[`onDelete`](/api-reference/react-flow#on-delete) handler**: We added a combined handler for onDeleteNodes and onDeleteEdges to make it easier to react to deletions.
-- **[`onBeforeDelete`](/api-reference/react-flow#on-before-delete) handler**: With this handler you can prevent/ manage deletions.
-- **[`isValidConnection`](/api-reference/react-flow#is-valid-connection) prop:** This makes it possible to implement one validation function for all connections. It also gets called for programmatically added edges.
-- **Background component**: add [`patternClassName`](/api-reference/components/background#pattern-class-name) prop to be able to style the background pattern by using a class name. This is useful if you want to style the background pattern with Tailwind for example.
+- **[`useConnection` hook](https://reactflow.dev/api-reference/hooks/use-connection):** With this hook you can access the ongoing connection. For example, you can use it for colorizing handles styling a custom connection line based on the current start / end handles.
+- **Controlled `viewport`:** This is an advanced feature. Possible use cases are to animate the viewport or round the transform for lower res screens for example. This features brings two new props: [`viewport`](https://reactflow.dev/api-reference/react-flow#viewport) and [`onViewportChange`](https://reactflow.dev/api-reference/react-flow#on-viewport-change).
+- **[`ViewportPortal`](https://reactflow.dev/api-reference/components/viewport-portal) component:** This makes it possible to render elements in the viewport without the need to implement a custom node.
+- **[`onDelete`](https://reactflow.dev/api-reference/react-flow#on-delete) handler**: We added a combined handler for onDeleteNodes and onDeleteEdges to make it easier to react to deletions.
+- **[`onBeforeDelete`](https://reactflow.dev/api-reference/react-flow#on-before-delete) handler**: With this handler you can prevent/ manage deletions.
+- **[`isValidConnection`](https://reactflow.dev/api-reference/react-flow#is-valid-connection) prop:** This makes it possible to implement one validation function for all connections. It also gets called for programmatically added edges.
+- **Background component**: add [`patternClassName`](https://reactflow.dev/api-reference/components/background#pattern-class-name) prop to be able to style the background pattern by using a class name. This is useful if you want to style the background pattern with Tailwind for example.
 - **`onMove` callback** gets triggered for library-invoked viewport updates (like fitView or zoom-in)
 - **`deleteElements`** now returns deleted nodes and deleted edges
 - add **`origin` attribute** for nodes
