@@ -1,54 +1,33 @@
 import { create } from 'zustand';
-import {
-  Connection,
-  Edge,
-  EdgeChange,
-  Node,
-  NodeChange,
-  addEdge,
-  OnNodesChange,
-  OnEdgesChange,
-  OnConnect,
-  applyNodeChanges,
-  applyEdgeChanges,
-} from '@xyflow/react';
+import { addEdge, applyNodeChanges, applyEdgeChanges } from '@xyflow/react';
 
 import initialNodes from './nodes';
 import initialEdges from './edges';
-
-type RFState = {
-  nodes: Node[];
-  edges: Edge[];
-  onNodesChange: OnNodesChange;
-  onEdgesChange: OnEdgesChange;
-  onConnect: OnConnect;
-  setNodes: (nodes: Node[]) => void;
-  setEdges: (edges: Edge[]) => void;
-};
+import { AppState } from './types';
 
 // this is our useStore hook that we can use in our components to get parts of the store and call actions
-const useStore = create<RFState>((set, get) => ({
+const useStore = create<AppState>((set, get) => ({
   nodes: initialNodes,
   edges: initialEdges,
-  onNodesChange: (changes: NodeChange[]) => {
+  onNodesChange: (changes) => {
     set({
       nodes: applyNodeChanges(changes, get().nodes),
     });
   },
-  onEdgesChange: (changes: EdgeChange[]) => {
+  onEdgesChange: (changes) => {
     set({
       edges: applyEdgeChanges(changes, get().edges),
     });
   },
-  onConnect: (connection: Connection) => {
+  onConnect: (connection) => {
     set({
       edges: addEdge(connection, get().edges),
     });
   },
-  setNodes: (nodes: Node[]) => {
+  setNodes: (nodes) => {
     set({ nodes });
   },
-  setEdges: (edges: Edge[]) => {
+  setEdges: (edges) => {
     set({ edges });
   },
 }));
