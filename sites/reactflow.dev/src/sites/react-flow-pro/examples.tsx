@@ -1,11 +1,30 @@
 import Link from 'next/link';
 import { getPagesUnderRoute } from 'nextra/context';
 import { useSSG } from 'nextra/ssg';
-import { ContentGrid, ContentGridItem, Button } from '@xyflow/xy-ui';
+import {
+  ContentGrid,
+  ContentGridItem,
+  Button,
+  Heading,
+  HeroIcon,
+  Text,
+  Logo,
+  Container,
+  Section,
+} from '@xyflow/xy-ui';
 import { BaseLayout, Hero, ProjectPreview, SubscribeSection } from 'xy-shared';
-import { SparklesIcon } from '@heroicons/react/24/outline';
+import {
+  ArrowDownCircleIcon,
+  ArrowRightCircleIcon,
+  PlusCircleIcon,
+  SparklesIcon,
+  StarIcon,
+} from '@heroicons/react/24/outline';
 
 import { getMdxPagesUnderRoute } from '@/utils';
+import Image from 'next/image';
+import { ReactNode } from 'react';
+import { HeartIcon } from '@heroicons/react/24/solid';
 
 function getProExamplesUnderRoute(route) {
   return getMdxPagesUnderRoute(route).filter(
@@ -45,27 +64,91 @@ export default function ProExamples() {
   }, []);
 
   return (
-    <BaseLayout>
+    <BaseLayout className="max-w-[1400px]">
       <Hero
-        title="React Flow Pro Examples"
-        subtitle="Pro subscribers have access to advanced examples and guides that can be used as a starting point or inspiration for building node-based UIs."
-        kicker="React Flow Pro"
-        kickerIcon={SparklesIcon}
-        align="center"
+        title={
+          <span>
+            Upgrade your apps with React Flow{' '}
+            <span className="text-primary">Pro</span> Examples
+          </span>
+        }
+        subtitle="Get 10 advanced React Flow code examples to use in your node-based UIs, crafted by the React Flow core team."
         action={
-          <div className="flex gap-2 justify-center">
+          <div className="flex gap-2">
             <Button asChild size="lg">
               <Link href={`${process.env.NEXT_PUBLIC_PRO_PLATFORM_URL}/signup`}>
-                <SparklesIcon className="w-5 h-5 mr-2" /> Get Started
+                See Subscriptions
               </Link>
             </Button>
-            <Button asChild size="lg" variant="secondary">
-              <Link href="/pro/pricing">Pricing</Link>
+            <Button asChild size="lg" variant="pro">
+              <Link href="/pro/pricing">
+                <SparklesIcon className="w-5 h-5 mr-2" /> Get Started
+              </Link>
             </Button>
           </div>
         }
         showGradient
-      />
+      >
+        <Image
+          src="/img/pro/pro-examples.png"
+          alt="Overview of the pro example apps"
+          width={604}
+          height={478}
+        />
+      </Hero>
+      <ContentGrid className="lg:grid-cols-4">
+        <GridItem
+          title="By the creators of React Flow"
+          text="Feature-complete and crafted by the core team"
+          // @ts-ignore
+          icon={Logo}
+        />
+        <GridItem
+          title="Downloadable Vite apps and guides"
+          text="Step-by-step instructions on how each example works"
+          icon={ArrowDownCircleIcon}
+        />
+        <GridItem
+          title="Regularly Added and Updated"
+          text="Subscribers are the first to get new pro examples and refactors"
+          icon={PlusCircleIcon}
+        />
+        <GridItem
+          title="Subscribe for one, use them forever"
+          text="Download the pro examples and use them anywhere, anytime"
+          icon={StarIcon}
+        />
+      </ContentGrid>
+
+      <Section>
+        <Container>
+          <iframe
+            src={`${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/shapes`}
+            className="block h-[645px] w-full bg-white"
+          />
+        </Container>
+        <div className="flex mt-4 gap-2">
+          <Heading size="md">Shapes</Heading>
+          <div className="max-w-lg ml-auto">
+            <Text>
+              Custom nodes in cylinder, plus, hexagon, circle, and more shapes.
+              Great for showing workflows, flow diagrams, BPMN diagrams, or
+              other process mapping. Comes with intuitive UI elements to
+              drag-and-drop new nodes onto the canvas, change the color with a
+              toolbar, plus dark and light mode.
+            </Text>
+            <div className="flex gap-2 mt-4">
+              <Button asChild size="lg">
+                <Link href="/examples/nodes/shapes">Demo</Link>
+              </Button>
+              <Button asChild size="lg" variant="pro">
+                <Link href="/pro/pricing">Sign Up</Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </Section>
+
       <ContentGrid className="mt-20">
         {examples.map((example) => (
           <ContentGridItem key={example.id} route={example.route}>
@@ -73,15 +156,70 @@ export default function ProExamples() {
               image={example.image}
               title={example.name}
               description={example.description}
-              linkLabel="View Example"
+              linkLabel="Demo"
             />
           </ContentGridItem>
         ))}
       </ContentGrid>
-      <SubscribeSection
-        btnLink={`${process.env.NEXT_PUBLIC_PRO_PLATFORM_URL}/signup`}
-        btnLabel="Sign Up Now"
-      />
+
+      <Section>
+        <Container variant="dark">
+          <Text>Get Started</Text>
+          <Heading size="md">
+            Boost your React Flow apps with React Flow Pro
+          </Heading>
+        </Container>
+      </Section>
+
+      <Section>
+        <Heading>
+          Are you a student, educator, or open source developer?
+        </Heading>
+        <Text>Get all of these Pro examples for free</Text>
+      </Section>
     </BaseLayout>
+  );
+}
+
+function GridItem({
+  title,
+  text,
+  icon: Icon,
+  links,
+}: {
+  title: ReactNode;
+  text: ReactNode;
+  icon: HeroIcon;
+  links?: Array<{ route: string; linkName: string; target?: string }>;
+}) {
+  return (
+    <ContentGridItem>
+      <Icon className="text-primary w-8 h-8" />
+      <Heading size="sm" className="mt-2 mb-4" as="p">
+        {title}
+      </Heading>
+      <Text variant="light" className="text-md">
+        {text}
+      </Text>
+
+      <div className="flex items-center space-x-4 mt-8">
+        {links &&
+          links.map((link) => {
+            return (
+              <Button
+                key={link.route}
+                asChild
+                variant="link"
+                className="text-primary text-md"
+              >
+                <Link href={link.route} target={link.target}>
+                  {link.linkName}{' '}
+                  <ArrowRightCircleIcon className="ml-1 w-4 h-4" />
+                </Link>
+              </Button>
+            );
+          })}
+      </div>
+    </ContentGridItem>
   );
 }
