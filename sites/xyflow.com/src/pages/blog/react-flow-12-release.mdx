@@ -9,6 +9,9 @@ image: '/img/blog/v11-reactflow-header.png'
 ---
 
 import { BlogPostLayout } from '@/layouts/blog-post-with-frontmatter';
+import ExampleViewer from '@/components/example-viewer';
+import { Bleed } from 'nextra-theme-docs';
+import { Embed, Text } from 'xy-shared';
 
 <BlogPostLayout>
 
@@ -20,16 +23,24 @@ This has been in beta since January and we’ve been tending to bugs since then,
 
 If you want to skip the details and just migrate your project to v12, head over to our [migration guide](https://reactflow.dev/learn/troubleshooting/migrate-to-12).
 
-## TL;DR
+### TL;DR
+
+<div style={{ marginTop: -10 }} />
 
 React Flow 12 is here, and the main features are
 
-- Support for Server Side Rendering
+<div style={{ marginTop: -10 }} />
+
+- Server side rendering support
 - Hooks and helpers for computing flows
 - Dark mode
 - Better DX via TSDoc
 
-# Major feature releases
+# Major features
+
+The new version comes with a bunch of features. Here are the main ones:
+
+<div style={{ marginTop: -30 }} />
 
 ## 1. Support for server side rendering
 
@@ -51,19 +62,43 @@ With v12, you can now:
 
 ## 2. Computing flows - hooks and helpers
 
-(use the flow peter made with RGB color nodes - M)
+<Bleed>
+  <ExampleViewer
+    codePath="api-flows/ComputingFlow"
+    editorHeight={400}
+    applyStyles={false}
+    showEditor={false}
+    additionalFiles={[
+      'NumberInput.js',
+      'ColorPreview.js',
+      'Lightness.js',
+      'Log.js',
+      'style.css',
+    ]}
+  />
+</Bleed>
 
 One of the most difficult things about using React Flow is state management, even though we know it's really a difficult thing about React Flow.
 
 In v12 we added helpers to simplify getting data from connected nodes, updating node data, and managing the data between nodes. It’s nothing like fully-fledged state management libraries like Zustand, but maybe this can help folks who just need to do some simple data processing on the client-side to get up-and-running faster with their React Flow apps.
 
-[Computing flows guide](http://localhost:3002/learn/advanced-use/computing-flows)
+Check out our [computing flows guide](https://reactflow.dev/learn/advanced-use/computing-flows)
 
 ## 3. Dark mode
 
-(include example for dark mode that we already made - M)
+<Bleed>
+  <ExampleViewer
+    codePath="api-flows/DarkMode"
+    editorHeight={400}
+    applyStyles={false}
+    showEditor={false}
+    isTypescript
+  />
+</Bleed>
 
-We added a `colorMode` prop, where you can toggle between "light", "dark", or "system". Under the hood, React Flow just adds a class name to the wrapper, but we had to do a bunch of changes to make this possible. Now all of the default styles are using CSS variables, so you can easily build your own themes based on that.
+React Flow finally comes with a built-in dark mode 🌚 For this, you can now pass a `colorMode` prop, to toggle between "light", "dark", or "system". Under the hood, React Flow just adds a class name to the wrapper, but we had to do a bunch of changes to make this possible. Now all of the default styles are using CSS variables, so you can easily build your own themes based on that.
+
+[Dark mode example with source](https://reactflow.dev/examples/styling/dark-mode/)
 
 ## 4. Better Dev Experience with TSDoc
 
@@ -97,8 +132,8 @@ Besides the new main features listed above, we added some other things that we w
 - add **`selectable` attribute** for edges
 - Edges do not mount/unmount when their z-index change
 
-((new feedback is highly appreciated))
+# Bye!
 
-And that’s it for React Flow 12, thanks for sticking around and using React Flow 🌻
+And that’s it for React Flow 12, thanks for sticking around and using React Flow 🌻 If you have any questions or feedback, please reach out :)
 
 </BlogPostLayout>
