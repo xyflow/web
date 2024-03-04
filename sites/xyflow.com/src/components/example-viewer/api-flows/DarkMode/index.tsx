@@ -55,16 +55,19 @@ const initialEdges: Edge[] = [
     id: 'A-B',
     source: 'A',
     target: 'B',
+    type: 'straight',
   },
   {
     id: 'A-C',
     source: 'A',
     target: 'C',
+    type: 'straight',
   },
   {
     id: 'A-D',
     source: 'A',
     target: 'D',
+    type: 'straight',
   },
 ];
 

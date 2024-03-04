@@ -10,6 +10,7 @@ image: '/img/blog/v11-reactflow-header.png'
 
 import { BlogPostLayout } from '@/layouts/blog-post-with-frontmatter';
 import ExampleViewer from '@/components/example-viewer';
+import SSRFlow from '@/components/SSRFlow';
 import { Bleed } from 'nextra-theme-docs';
 import { Embed, Text } from 'xy-shared';
 
@@ -43,6 +44,10 @@ The new version comes with a bunch of features. Here are the main ones:
 <div style={{ marginTop: -30 }} />
 
 ## 1. Support for server side rendering
+
+<Bleed>
+  <SSRFlow />
+</Bleed>
 
 (iFrame, with some nodes inside, that have some text that say "turn off javascript in your browser, but I'll stay bc I'm rendered server-side - M)
 
@@ -112,7 +117,6 @@ We worked with [Ivan Akulov](https://3perf.com/) to improve the performance of R
 
 - [Add performance tests for selecting, dragging, and remounting](https://github.com/xyflow/xyflow/pull/3685)
 - [Initial costs: Batch initial store updates together + more](https://github.com/xyflow/xyflow/pull/3677)
-- [Set nodeDragThreshold to 1](https://github.com/xyflow/xyflow/pull/3667)
 - [Don’t rerender NodeRenderer and MiniMapNodes unless necessary](https://github.com/xyflow/xyflow/pull/3668)
 
 # Even more features!

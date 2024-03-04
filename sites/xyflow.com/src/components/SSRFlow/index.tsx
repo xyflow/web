@@ -7,46 +7,61 @@ import {
   useEdgesState,
   OnConnect,
   Edge,
-  MiniMap,
   Background,
-  Controls,
-  Panel,
-  ColorMode,
   Position,
 } from '@xyflow/react';
-
 import '@xyflow/react/dist/style.css';
 
-const nodeDefaults = {
-  sourcePosition: Position.Right,
-  targetPosition: Position.Left,
+const nodeDimensions = {
+  width: 150,
+  height: 40,
 };
 
 const initialNodes: Node[] = [
   {
     id: 'A',
     type: 'input',
-    position: { x: 0, y: 150 },
-    data: { label: 'A' },
-    ...nodeDefaults,
+    position: { x: 75, y: 0 },
+    data: { label: 'This flow' },
+    ...nodeDimensions,
+    handles: [
+      {
+        type: 'source',
+        position: Position.Bottom,
+        x: nodeDimensions.width / 2,
+        y: nodeDimensions.height,
+      },
+    ],
   },
   {
     id: 'B',
-    position: { x: 400, y: 0 },
-    data: { label: 'B' },
-    ...nodeDefaults,
+    type: 'output',
+    position: { x: 0, y: 100 },
+    data: { label: 'still works' },
+    ...nodeDimensions,
+    handles: [
+      {
+        type: 'target',
+        position: Position.Top,
+        x: nodeDimensions.width / 2,
+        y: 0,
+      },
+    ],
   },
   {
     id: 'C',
-    position: { x: 400, y: 150 },
-    data: { label: 'C' },
-    ...nodeDefaults,
-  },
-  {
-    id: 'D',
-    position: { x: 400, y: 300 },
-    data: { label: 'D' },
-    ...nodeDefaults,
+    type: 'output',
+    position: { x: 150, y: 200 },
+    data: { label: 'if you turn off JS' },
+    ...nodeDimensions,
+    handles: [
+      {
+        type: 'target',
+        position: Position.Top,
+        x: nodeDimensions.width / 2,
+        y: 0,
+      },
+    ],
   },
 ];
 
@@ -61,15 +76,9 @@ const initialEdges: Edge[] = [
     source: 'A',
     target: 'C',
   },
-  {
-    id: 'A-D',
-    source: 'A',
-    target: 'D',
-  },
 ];
 
 function SSRFlow() {
-  const [colorMode, setColorMode] = useState<ColorMode>('dark');
   const [nodes, , onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
@@ -78,33 +87,19 @@ function SSRFlow() {
     [setEdges],
   );
 
-  const onChange: ChangeEventHandler<HTMLSelectElement> = (evt) => {
-    setColorMode(evt.target.value as ColorMode);
-  };
-
   return (
-    <ReactFlow
-      nodes={nodes}
-      edges={edges}
-      onNodesChange={onNodesChange}
-      onEdgesChange={onEdgesChange}
-      onConnect={onConnect}
-      colorMode={colorMode}
-      fitView
-      attributionPosition="top-right"
-    >
-      <MiniMap />
-      <Background />
-      <Controls showInteractive={false} />
-
-      <Panel position="top-left">
-        <select onChange={onChange} data-testid="colormode-select">
-          <option value="dark">dark</option>
-          <option value="light">light</option>
-          <option value="system">system</option>
-        </select>
-      </Panel>
-    </ReactFlow>
+    <div style={{ height: 400 }}>
+      <ReactFlow
+        nodes={nodes}
+        edges={edges}
+        onNodesChange={onNodesChange}
+        onEdgesChange={onEdgesChange}
+        onConnect={onConnect}
+        fitView
+      >
+        <Background />
+      </ReactFlow>
+    </div>
   );
 }
 
