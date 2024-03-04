@@ -7,20 +7,16 @@ import {
   useReactFlow,
 } from '@xyflow/react';
 
-import './style.css';
-
 function CustomHandle({ id, label, onChange }) {
   const connections = useHandleConnections({
     type: 'target',
     id,
   });
 
-  const nodeData = useNodesData(
-    connections.map((connection) => connection.source),
-  );
+  const nodeData = useNodesData(connections?.[0].source);
 
   useEffect(() => {
-    onChange(nodeData.length > 0 ? nodeData[0].data.value : 0);
+    onChange(nodeData?.data ? nodeData.data.value : 0);
   }, [nodeData]);
 
   return (

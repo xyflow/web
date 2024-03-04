@@ -8,6 +8,8 @@ import {
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 
+import './style.css';
+
 import NumberInput from './NumberInput.js';
 import ColorPreview from './ColorPreview.js';
 import Lightness from './Lightness.js';

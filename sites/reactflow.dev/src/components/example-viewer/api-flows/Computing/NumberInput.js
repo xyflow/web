@@ -1,8 +1,6 @@
 import { useCallback, useState } from 'react';
 import { Handle, Position } from '@xyflow/react';
 
-import './style.css';
-
 function NumberInput({ id, data }) {
   const [number, setNumber] = useState(0);
 
