@@ -11,6 +11,7 @@ import {
   Logo,
   Container,
   Section,
+  ListWrapper,
 } from '@xyflow/xy-ui';
 import { BaseLayout, Hero, ProjectPreview, SubscribeSection } from 'xy-shared';
 import {
@@ -64,7 +65,7 @@ export default function ProExamples() {
   }, []);
 
   return (
-    <BaseLayout className="max-w-[1400px]">
+    <BaseLayout>
       <Hero
         title={
           <span>
@@ -87,7 +88,6 @@ export default function ProExamples() {
             </Button>
           </div>
         }
-        showGradient
       >
         <Image
           src="/img/pro/pro-examples.png"
@@ -121,7 +121,7 @@ export default function ProExamples() {
       </ContentGrid>
 
       <Section>
-        <Container>
+        <Container variant="dark">
           <iframe
             src={`${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/shapes`}
             className="block h-[645px] w-full bg-white"
@@ -163,21 +163,58 @@ export default function ProExamples() {
       </ContentGrid>
 
       <Section>
-        <Container variant="dark">
-          <Text>Get Started</Text>
-          <Heading size="md">
-            Boost your React Flow apps with React Flow Pro
-          </Heading>
+        <Container
+          variant="dark"
+          innerClassName="p-4 md:p-8 lg:p-14 flex gap-4 items-center"
+        >
+          <div>
+            <Text>Get Started</Text>
+            <Heading size="md">
+              Boost your React Flow apps with React Flow Pro
+            </Heading>
+          </div>
+          <div>
+            <Text>
+              Get all 10 pro examples with just one month of a Pro subscription
+              from 129€
+            </Text>
+            <div className="flex gap-2 mt-4">
+              <Button asChild size="lg">
+                <Link href="/examples/nodes/shapes">Demo</Link>
+              </Button>
+              <Button asChild size="lg" variant="pro">
+                <Link href="/pro/pricing">Sign Up</Link>
+              </Button>
+            </div>
+          </div>
         </Container>
       </Section>
 
       <Section>
-        <Heading>
-          Are you a student, educator, or open source developer?
-        </Heading>
-        <Text>Get all of these Pro examples for free</Text>
+        <ListWrapper
+          title="Are you a student, educator, or open source developer?"
+          subtitle="Get all of these Pro examples for free"
+        >
+          <ListItem
+            title="For education purposes"
+            text="Email us at info@xyflow.com using your university email address"
+          />
+          <ListItem
+            title="For non-commercial open source projects"
+            text="Contact us with the link to the github or gitlab repository"
+          />
+        </ListWrapper>
       </Section>
     </BaseLayout>
+  );
+}
+
+function ListItem({ title, text }) {
+  return (
+    <div className="mb-4">
+      <Text className="font-bold mt-2">{title}</Text>
+      <Text variant="light">{text}</Text>
+    </div>
   );
 }
 
