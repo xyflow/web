@@ -33,9 +33,9 @@ function ColorPreview() {
   );
 
   const color = {
-    r: redNodeData.length > 0 ? redNodeData[0].value : 0,
-    g: greenNodeData.length > 0 ? greenNodeData[0].value : 0,
-    b: blueNodeData.length > 0 ? blueNodeData[0].value : 0,
+    r: redNodeData.length > 0 ? redNodeData[0].data.value : 0,
+    g: greenNodeData.length > 0 ? greenNodeData[0].data.value : 0,
+    b: blueNodeData.length > 0 ? blueNodeData[0].data.value : 0,
   };
 
   return (

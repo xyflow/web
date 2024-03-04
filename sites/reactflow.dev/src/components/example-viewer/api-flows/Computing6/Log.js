@@ -9,7 +9,9 @@ function Log({ data }) {
     connections.map((connection) => connection.source),
   );
 
-  const color = nodeData[0] ? nodeData[0][connections[0].sourceHandle] : null;
+  const color = nodeData[0].data
+    ? nodeData[0].data[connections[0].sourceHandle]
+    : null;
 
   return (
     <div

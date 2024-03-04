@@ -169,7 +169,7 @@ function CustomHandle({ id, label, onChange }) {
   );
 
   useEffect(() => {
-    onChange(nodeData.length > 0 ? nodeData[0].value : 0);
+    onChange(nodeData.length > 0 ? nodeData[0].data.value : 0);
   }, [nodeData]);
 
   return (

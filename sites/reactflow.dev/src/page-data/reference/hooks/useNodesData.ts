@@ -10,6 +10,8 @@ export const signature: PropsTableProps = {
         'A single node ID or an array of node IDs whose `data` objects you want to observe',
     },
     { name: 'Returns' },
-    { name: '', type: 'any | any[]' },
+    { name: 'id', type: 'string' },
+    { name: 'type', type: 'string' },
+    { name: 'data', type: 'any | any[]' },
   ],
 };

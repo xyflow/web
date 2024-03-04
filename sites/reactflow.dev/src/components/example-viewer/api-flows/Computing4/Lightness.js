@@ -17,8 +17,8 @@ function LightnessNode() {
   const [lightness, setLightness] = useState('dark');
 
   useEffect(() => {
-    if (nodesData.length > 0 && nodesData[0].value) {
-      const color = nodesData[0].value;
+    if (nodesData.length > 0 && nodesData[0].data.value) {
+      const color = nodesData[0].data?.value;
       setLightness(
         0.2126 * color.r + 0.7152 * color.g + 0.0722 * color.b >= 128
           ? 'light'

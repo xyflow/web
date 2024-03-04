@@ -10,8 +10,9 @@ export const signature: PropsTableProps = {
     { name: 'Returns' },
     {
       name: '',
-      type: 'Readable<object | object[]>',
-      description: 'A readable store with data object/s of passed node id/s.',
+      type: 'Readable<{ id: string, type:string, data: object} | { id: string, type:string, data: object}[]>',
+      description:
+        'A readable store with id, type and data object/s of passed node id/s.',
     },
   ],
 };
