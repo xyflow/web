@@ -7,21 +7,17 @@ import {
   useReactFlow,
 } from '@xyflow/react';
 
-import './style.css';
-
 function LightnessNode({ id }) {
   const { updateNodeData } = useReactFlow();
 
   const connections = useHandleConnections({ type: 'target' });
-  const nodesData = useNodesData(
-    connections.map((connection) => connection.source),
-  );
+  const nodesData = useNodesData(connections?.[0].source);
 
   const [lightness, setLightness] = useState('dark');
 
   useEffect(() => {
-    if (nodesData.length > 0 && nodesData[0].value) {
-      const color = nodesData[0].value;
+    if (nodesData?.data) {
+      const color = nodesData.data.value;
       const isLight =
         0.2126 * color.r + 0.7152 * color.g + 0.0722 * color.b >= 128;
       setLightness(isLight ? 'light' : 'dark');

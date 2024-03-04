@@ -49,8 +49,8 @@ importers:
         specifier: ^0.155.1
         version: 0.155.1
       '@xyflow/svelte':
-        specifier: 0.0.34
-        version: 0.0.34(svelte@4.2.10)
+        specifier: 0.0.37
+        version: 0.0.37(svelte@4.2.10)
       elkjs:
         specifier: ^0.8.2
         version: 0.8.2
@@ -283,8 +283,8 @@ importers:
         specifier: ^2.2.1
         version: 2.2.1
       '@xyflow/react':
-        specifier: 12.0.0-next.8
-        version: 12.0.0-next.8(@types/react@18.2.14)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 12.0.0-next.10
+        version: 12.0.0-next.10(@types/react@18.2.14)(react-dom@18.2.0)(react@18.2.0)
       '@xyflow/system':
         specifier: ^0.0.16
         version: 0.0.16
@@ -473,8 +473,8 @@ importers:
         specifier: ^0.155.1
         version: 0.155.1
       '@xyflow/react':
-        specifier: 12.0.0-next.9
-        version: 12.0.0-next.9(@types/react@18.2.14)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 12.0.0-next.10
+        version: 12.0.0-next.10(@types/react@18.2.14)(react-dom@18.2.0)(react@18.2.0)
       '@xyflow/xy-ui':
         specifier: workspace:*
         version: link:../../packages/xy-ui
@@ -9074,22 +9074,6 @@ packages:
       - immer
     dev: false
 
-  /@xyflow/react@12.0.0-next.8(@types/react@18.2.14)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-Jdy/0wv10ycxwQm5rESWN8Psp+FTipbIv4RTIJwAH9zG5AqGp20ESi/k3oxJmAsbQHIcGgjB2RlOhxBs2qqJLA==}
-    peerDependencies:
-      react: '>=17'
-      react-dom: '>=17'
-    dependencies:
-      '@xyflow/system': 0.0.16
-      classcat: 5.0.4
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      zustand: 4.4.1(@types/react@18.2.14)(react@18.2.0)
-    transitivePeerDependencies:
-      - '@types/react'
-      - immer
-    dev: false
-
   /@xyflow/react@12.0.0-next.9(@types/react@18.2.14)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-WrW5H4HN/oHXORnUdy5tYs6tK96npLZAvcx8weza3tzkNiZO+gncjpwHxWq/wt5ABIAgSadCXRvfv8nAMTlrnQ==}
     peerDependencies:
@@ -9117,27 +9101,15 @@ packages:
       svelte: 4.2.12
     dev: true
 
-  /@xyflow/svelte@0.0.34(svelte@4.2.10):
-    resolution: {integrity: sha512-3uo9V06BOVoSp0Yrpe48j6m12llRGqjE3KXhkU8m4Kn6dVlWBVnEbmLUKU9CLjfhjZei1C9sy5PbL5YzbZ4ymQ==}
+  /@xyflow/svelte@0.0.37(svelte@4.2.10):
+    resolution: {integrity: sha512-7aXtKB2rdifwY+ifL7J5ofbX6wvUUZrIvvwCl4RcLtlC5QKqtpGmz/UDVQKTJJjiY1qTXvXyajrPT2qKNZL3aQ==}
     peerDependencies:
       svelte: ^3.0.0 || ^4.0.0
     dependencies:
       '@svelte-put/shortcut': 3.1.0
-      '@xyflow/system': 0.0.15
+      '@xyflow/system': 0.0.18
       classcat: 5.0.4
       svelte: 4.2.10
-    dev: false
-
-  /@xyflow/system@0.0.15:
-    resolution: {integrity: sha512-TD3+lm4H1CtDgzooDv9K8izG49RzfpMklIyiQ84ftF3HgwhjPY8oR8pf0L7f6i+sTeCyIL1V+P4kM1GJc0ZN3w==}
-    dependencies:
-      '@types/d3': 7.4.3
-      '@types/d3-drag': 3.0.7
-      '@types/d3-selection': 3.0.10
-      '@types/d3-zoom': 3.0.8
-      d3-drag: 3.0.0
-      d3-selection: 3.0.0
-      d3-zoom: 3.0.0
     dev: false
 
   /@xyflow/system@0.0.16:

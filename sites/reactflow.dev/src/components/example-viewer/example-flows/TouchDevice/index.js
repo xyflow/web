@@ -6,8 +6,8 @@ import {
   Position,
   addEdge,
 } from '@xyflow/react';
-import '@xyflow/react/dist/style.css';
 
+import '@xyflow/react/dist/style.css';
 import './index.css';
 
 const initialNodes = [
@@ -34,7 +34,7 @@ const TouchDeviceFlow = () => {
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   const onConnect = useCallback(
     (connection) => setEdges((eds) => addEdge(connection, eds)),
-    [],
+    [setEdges],
   );
 
   return (
@@ -44,8 +44,7 @@ const TouchDeviceFlow = () => {
       onConnect={onConnect}
       onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
-      className="touchdevice-flow"
-      fitView
+      className="touch-flow"
     />
   );
 };

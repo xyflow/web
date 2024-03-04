@@ -1,15 +1,13 @@
 import { Handle, useHandleConnections, useNodesData } from '@xyflow/react';
 
-import './style.css';
-
 function Log({ data }) {
   const connections = useHandleConnections({ type: 'target' });
 
-  const nodeData = useNodesData(
-    connections.map((connection) => connection.source),
-  );
+  const nodeData = useNodesData(connections?.[0].source);
 
-  const color = nodeData[0] ? nodeData[0][connections[0].sourceHandle] : null;
+  const color = nodeData.data
+    ? nodeData.data[connections?.[0].sourceHandle]
+    : null;
 
   return (
     <div

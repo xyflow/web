@@ -13,7 +13,11 @@ export default function HeroNode({ data }: NodeProps) {
   return (
     <Wrapper label={label}>
       <div className="w-full h-[200px]">
-        <Fiber color={color.value} shape={shape.value} zoom={zoom.value} />
+        <Fiber
+          color={color?.data.value}
+          shape={shape?.data.value}
+          zoom={zoom?.data.value}
+        />
         <Handle
           type="target"
           position={Position.Left}

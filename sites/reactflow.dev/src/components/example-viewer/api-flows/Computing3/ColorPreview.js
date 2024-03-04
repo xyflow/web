@@ -5,37 +5,29 @@ import {
   useHandleConnections,
 } from '@xyflow/react';
 
-import './style.css';
-
 function ColorPreview() {
   const redConnections = useHandleConnections({
     type: 'target',
     id: 'red',
   });
-  const redNodeData = useNodesData(
-    redConnections.map((connection) => connection.source),
-  );
+  const redNodeData = useNodesData(redConnections?.[0].source);
 
   const greenConnections = useHandleConnections({
     type: 'target',
     id: 'green',
   });
-  const greenNodeData = useNodesData(
-    greenConnections.map((connection) => connection.source),
-  );
+  const greenNodeData = useNodesData(greenConnections?.[0].source);
 
   const blueConnections = useHandleConnections({
     type: 'target',
     id: 'blue',
   });
-  const blueNodeData = useNodesData(
-    blueConnections.map((connection) => connection.source),
-  );
+  const blueNodeData = useNodesData(blueConnections?.[0].source);
 
   const color = {
-    r: redNodeData.length > 0 ? redNodeData[0].value : 0,
-    g: greenNodeData.length > 0 ? greenNodeData[0].value : 0,
-    b: blueNodeData.length > 0 ? blueNodeData[0].value : 0,
+    r: blueNodeData?.data ? redNodeData.data.value : 0,
+    g: greenNodeData?.data ? greenNodeData.data.value : 0,
+    b: blueNodeData?.data ? blueNodeData.data.value : 0,
   };
 
   return (
