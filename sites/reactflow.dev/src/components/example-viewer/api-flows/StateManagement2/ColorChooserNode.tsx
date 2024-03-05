@@ -2,9 +2,9 @@ import React from 'react';
 import { Handle, NodeProps, Position } from '@xyflow/react';
 
 import useStore from './store';
-import { type ColorChooserNode } from './types';
+import { NodeData } from './types';
 
-function ColorChooserNode({ id, data }: NodeProps<ColorChooserNode>) {
+function ColorChooserNode({ id, data }: NodeProps<NodeData>) {
   const updateNodeColor = useStore((state) => state.updateNodeColor);
 
   return (

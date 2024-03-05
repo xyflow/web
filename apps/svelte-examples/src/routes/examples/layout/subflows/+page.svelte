@@ -6,7 +6,6 @@
     Background,
     BackgroundVariant,
     MiniMap,
-    type NodeTypes,
     type Node,
     type Edge
   } from '@xyflow/svelte';
