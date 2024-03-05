@@ -26,7 +26,7 @@ function EdgeLabel({ transform, label }: { transform: string; label: string }) {
   );
 }
 
-const CustomEdge: FC<EdgeProps> = ({
+const CustomEdge: FC<EdgeProps<{ startLabel: string; endLabel: string }>> = ({
   id,
   sourceX,
   sourceY,
