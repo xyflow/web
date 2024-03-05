@@ -58,8 +58,9 @@ import ExampleViewer from '@/components/example-viewer';
   activeFile="store.ts"
   codePath="api-flows/StateManagement"
   applyStyles={false}
-  options={{ editorHeight: 500, editorWidthPercentage: 45, wrapContent: true }}
-  additionalFiles={['store.ts', 'nodes.ts', 'edges.ts']}
+  editorHeight={500}
+  options={{ editorWidthPercentage: 45, wrapContent: true }}
+  additionalFiles={['store.ts', 'nodes.ts', 'edges.ts', 'types.ts']}
   isTypescript
 />
 
@@ -111,8 +112,15 @@ We add the `nodrag` class name so that the user doesn't drag the node by mistake
   activeFile="ColorChooserNode.tsx"
   codePath="api-flows/StateManagement2"
   applyStyles={false}
-  options={{ editorHeight: 500, editorWidthPercentage: 45, wrapContent: true }}
-  additionalFiles={['ColorChooserNode.tsx', 'store.ts', 'nodes.ts', 'edges.ts']}
+  editorHeight={500}
+  options={{ editorWidthPercentage: 45, wrapContent: true }}
+  additionalFiles={[
+    'ColorChooserNode.tsx',
+    'store.ts',
+    'nodes.ts',
+    'edges.ts',
+    'types.ts',
+  ]}
   isTypescript
 />
 
