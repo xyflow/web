@@ -35,9 +35,9 @@ export type RFState = {
 const useStore = create<RFState>((set, get) => ({
   nodes: initialNodes,
   edges: initialEdges,
-  onNodesChange: (changes: NodeChange[]) => {
+  onNodesChange: (changes: NodeChange<Node<NodeData>>[]) => {
     set({
-      nodes: applyNodeChanges(changes, get().nodes),
+      nodes: applyNodeChanges<Node<NodeData>>(changes, get().nodes),
     });
   },
   onEdgesChange: (changes: EdgeChange[]) => {
@@ -50,7 +50,7 @@ const useStore = create<RFState>((set, get) => ({
       edges: addEdge(connection, get().edges),
     });
   },
-  setNodes: (nodes: Node[]) => {
+  setNodes: (nodes: Node<NodeData>[]) => {
     set({ nodes });
   },
   setEdges: (edges: Edge[]) => {

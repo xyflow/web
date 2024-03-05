@@ -1,4 +1,5 @@
 import { Node } from '@xyflow/react';
+import { NodeData } from './store';
 
 export default [
   {
@@ -20,4 +21,4 @@ export default [
     data: { color: '#B794F4' },
     position: { x: 250, y: 250 },
   },
-] as Node[];
+] as Node<NodeData>[];
