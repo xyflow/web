@@ -8,9 +8,8 @@ import { Callout } from 'nextra/components';
 
 # Usage with TypeScript
 
-React Flow is written in TypesScript because we value the additional safety barrier it provides.
-We export all the types you need for correctly typing data structures and functions you pass to the React Flow component.
-On top of that we also provide a way for you to extend the types of nodes and edges.
+React Flow is written in TypeScript because we value the additional safety barrier it provides.
+We export all the types you need for correctly typing data structures and functions you pass to the React Flow component. We also provide a way to extend the types of nodes and edges.
 
 ## Basic Usage
 
@@ -152,21 +151,20 @@ export default CustomEdgeBaz;
 
 ## Advanced Usage
 
-When creating a more complex application with React Flow, you will end up with a number of custom nodes & edges, each with different kinds of data attached to them.
-Anytime we operate on these nodes & edges through built in functions and hooks, we have to make sure that we [narrow down](https://www.typescriptlang.org/docs/handbook/2/narrowing.html)
+When creating complex applications with React Flow, you will have a number of custom nodes & edges, each with different kinds of data attached to them.
+When we operate on these nodes & edges through built in functions and hooks, we have to make sure that we [narrow down](https://www.typescriptlang.org/docs/handbook/2/narrowing.html)
 the types of nodes & edges to prevent runtime errors.
 
 ### NodeType, EdgeType unions
 
-You will stumble upon many functions, callbacks and hooks (even the ReactFlow component itself) that expect a `NodeType` or `EdgeType` generic. These generics are simply
+You will see many functions, callbacks and hooks (even the ReactFlow component itself) that expect a `NodeType` or `EdgeType` generic. These generics are simply
 [Unions](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#union-types) of all the different types of nodes & edges you have in your application.
 As long as you have typed the data objects correctly (see previous section), you can use their exported type.
 
 <Callout type="info">
-  If you use the any of the built-in nodes ('input', 'output', 'default') or
-  edges ('straight', 'step', 'smoothstep', 'bezier'), you can add the
-  `BuiltInNode` and `BuiltInEdge` types exported from `@xyflow/react` to your
-  union type.
+  If you use any of the built-in nodes ('input', 'output', 'default') or edges
+  ('straight', 'step', 'smoothstep', 'bezier'), you can add the `BuiltInNode`
+  and `BuiltInEdge` types exported from `@xyflow/react` to your union type.
 </Callout>
 
 ```tsx
