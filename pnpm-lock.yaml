@@ -733,11 +733,11 @@ importers:
         specifier: ^0.155.1
         version: 0.155.1
       '@xyflow/react':
-        specifier: 12.0.0-next.9
-        version: 12.0.0-next.9(@types/react@18.2.14)(react-dom@18.2.0)(react@18.2.0)
+        specifier: latest
+        version: 12.0.0-next.10(@types/react@18.2.14)(react-dom@18.2.0)(react@18.2.0)
       '@xyflow/system':
-        specifier: ^0.0.16
-        version: 0.0.16
+        specifier: latest
+        version: 0.0.18
       '@xyflow/xy-ui':
         specifier: workspace:*
         version: link:../../packages/xy-ui
