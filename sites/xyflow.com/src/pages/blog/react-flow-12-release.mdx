@@ -51,15 +51,19 @@ The new version comes with a bunch of features. Here are the main ones:
   <SSRFlow />
 </Bleed>
 
+<div className="text-center text-gray-500 mt-1">
+  This flow was rendered on the server, so it's not using any javascript
+</div>
+
 React is heading towards server side rendering, with tools like [Nextjs](https://nextjs.org/), [Astro](https://astro.build/), and [waku](https://waku.gg/). We’ve gotten asked to do server side rendering more than a [couple](https://github.com/xyflow/xyflow/issues/3168) of [times](https://github.com/xyflow/xyflow/issues/3384) due to difficulties using React Flow with these tools. For example, with React Flow v11 Astro just renders a React Flow diagram as blank by default- that’s no good.
 
-With v12, you can now:
+With React Flow 12, you can now:
 
 - Display static HTML diagrams for docs sites (even if the client has no JS)
 - Dynamically generate opengraph images that appear as embeds when sharing a link to your flow
 - Pre-render flows for crawlable content
 
-(embed tweet)https://twitter.com/alecchernicki/status/1761477031001301118
+Here's an example of [server-side rendering being used live](https://twitter.com/alecchernicki/status/1761477031001301118)
 
 [🔗 Server side rendering guide](https://reactflow.dev/learn/advanced-use/ssr-ssg-configuration)
 
@@ -107,12 +111,12 @@ React Flow finally comes with a built-in dark mode 🌚 For this, you can now pa
 
 <Bleed>
   <Image
-    src="/img/blog/v12/tsdoc.png"
-    alt="IDE hover information for nodes prop"
-    wide
-    width={2102}
-    height={682}
-  />
+    src="/img/blog/v12/tsdoc.gif"
+    alt="IDE hover information for nodes prop, there is more information shown in React Flow 12 than in React Flow 11"
+    width={907}
+    height={720}
+/>
+
 </Bleed>
 
 We used TSDoc to create a better dev experience in your IDE to get more info about what a function or component does. We’ve been told our DX is pretty good already, but we’re always happy to make it even better 💅🏻
@@ -142,8 +146,8 @@ Besides the new main features listed above, we added some other things that we w
 - add **`selectable` attribute** for edges
 - Edges do not mount/unmount when their z-index change
 
-# Bye!
+# And that's it!
 
-And that’s it for React Flow 12, thanks for sticking around and using React Flow 🌻 If you have any questions or feedback, please reach out :)
+That's all for this release, thanks for sticking around and using React Flow 😊🌻 If you have any questions or feedback, please reach out on discord, github, or our [contact form](http://localhost:3001/contact).
 
 </BlogPostLayout>
