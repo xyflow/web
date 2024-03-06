@@ -1,7 +1,7 @@
 ---
 title: Usage with TypeScript
-description: React Flow is written in TypeScript! In this section we setup a basic flow with the corresponding types.
-created_at: 2024-02-22
+description: In this guide we exlpain how to work with React Flow and TypeScript.
+created_at: 2024-03-22
 ---
 
 import { Callout } from 'nextra/components';
@@ -11,7 +11,7 @@ import { Callout } from 'nextra/components';
 React Flow is written in TypeScript because we value the additional safety barrier it provides.
 We export all the types you need for correctly typing data structures and functions you pass to the React Flow component. We also provide a way to extend the types of nodes and edges.
 
-## Basic Usage
+## Basic usage
 
 Let's start with the most basic types you need for a simple starting point. Typescript might already infer some of these types, but we will define them explicitly nontheless.
 
@@ -29,17 +29,9 @@ import {
   type OnNodesChange,
   type OnEdgesChange,
   type OnNodeDrag,
-  type Connection,
   type NodeTypes,
-  type EdgeTypes,
   type DefaultEdgeOptions,
 } from '@xyflow/react';
-
-import CustomNodeFoo from './CustomNodeFoo';
-import CustomNodeBar from './CustomNodeBar';
-
-import CustomEdgeBaz from './CustomEdgeBaz';
-import CustomEdgeQux from './CustomEdgeQux';
 
 const initialNodes: Node[] = [
   { id: '1', data: { label: 'Node 1' }, position: { x: 5, y: 5 } },
@@ -57,13 +49,8 @@ const defaultEdgeOptions: DefaultEdgeOptions = {
 };
 
 const nodeTypes: NodeTypes = {
-  foo: CustomNodeFoo,
-  bar: CustomNodeBar,
-};
-
-const edgeTypes: EdgeTypes = {
-  baz: CustomEdgeBaz,
-  qux: CustomEdgeQux,
+  num: NumberNode,
+  txt: TextNode,
 };
 
 const onNodeDrag: OnNodeDrag = (_, node) => {
@@ -105,60 +92,73 @@ function Flow() {
 }
 ```
 
-### Custom Nodes
+### Custom nodes
 
-When working with [custom nodes](/learn/customization/custom-nodes) you have the possibility to attach custom data to every node.
-The type of the data is expressed by a generic passed to the `Node` type.
+When working with [custom nodes](/learn/customization/custom-nodes) you have the possibility to pass a custom `Node` type (or your `Node` union) to the `NodeProps` type. There are basically two ways to work with custom nodes:
 
-```tsx filename="CustomNodeFoo.tsx"
+1. If you have **multiple custom nodes**, you want to pass a specific `Node` type as a generic to the `NodeProps` type:
+
+```tsx filename="NumberNode.tsx"
 import type { NodeProps } from '@xyflow/react';
 
-type FooNodeData = {
-  mySpecialNumber: number;
-};
+type NumberNode = Node<{ number: number }, 'number'>;
 
-export default function CustomNodeFoo({ data }: NodeProps<FooNodeData>) {
-  return <div>A special number: {data.mySpecialNumber}</div>;
+export default function NumberNode({ data }: NodeProps<NumberNode>) {
+  return <div>A special number: {data.number}</div>;
 }
 ```
 
-### Custom Edges
+2. If you have **one custom node** that renders different content based on the node type, you want to pass your `Node` union type as a generic to `NodeProps`:
+
+```tsx filename="CustomNode.tsx"
+import type { NodeProps } from '@xyflow/react';
+
+type NumberNode = Node<{ number: number }, 'number'>;
+type TextNode = Node<{ text: string }, 'text'>;
+
+type AppNode = NumberNode | TextNode;
+
+export default function CustomNode({ data }: NodeProps<AppNode>) {
+  if (data.type === 'number') {
+    return <div>A special number: {data.number}</div>;
+  }
+
+  return <div>A special text: {data.text}</div>;
+}
+```
+
+### Custom edges
 
 For [custom edges](/learn/customization/custom-nodes) you have the same possiblity as for custom nodes.
-The type of the data is expressed by a generic passed to the `Edge` type.
 
-```tsx filename="CustomEdgeBaz.tsx"
+```tsx filename="CustomEdge.tsx"
 import { getStraightPath, BaseEdge, type EdgeProps } from '@xyflow/react';
 
-type BazEdgeData = {
-  value: number;
-};
+type CustomEdge = Edge<{ value: number }, 'custom'>;
 
-function CustomEdgeBaz({
+export default function CustomEdge({
   id,
   sourceX,
   sourceY,
   targetX,
   targetY,
-}: EdgeProps<BazEdgeData>) {
+}: EdgeProps<CustomEdge>) {
   const [edgePath] = getStraightPath({ sourceX, sourceY, targetX, targetY });
 
   return <BaseEdge id={id} path={edgePath} />;
 }
-
-export default CustomEdgeBaz;
 ```
 
-## Advanced Usage
+## Advanced usage
 
 When creating complex applications with React Flow, you will have a number of custom nodes & edges, each with different kinds of data attached to them.
 When we operate on these nodes & edges through built in functions and hooks, we have to make sure that we [narrow down](https://www.typescriptlang.org/docs/handbook/2/narrowing.html)
 the types of nodes & edges to prevent runtime errors.
 
-### NodeType, EdgeType unions
+### `Node` and `Edge` type unions
 
 You will see many functions, callbacks and hooks (even the ReactFlow component itself) that expect a `NodeType` or `EdgeType` generic. These generics are simply
-[Unions](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#union-types) of all the different types of nodes & edges you have in your application.
+[unions](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#union-types) of all the different types of nodes & edges you have in your application.
 As long as you have typed the data objects correctly (see previous section), you can use their exported type.
 
 <Callout type="info">
@@ -169,18 +169,19 @@ As long as you have typed the data objects correctly (see previous section), you
 
 ```tsx
 import type { BuiltInNode, BuiltInEdge } from '@xyflow/react';
-// Custom Nodes
-import CustomNodeFoo from './CustomNodeFoo';
-import CustomNodeBar from './CustomNodeBar';
-// Custom Edges
-import CustomEdgeBaz from './CustomEdgeBaz';
-import CustomEdgeQux from './CustomEdgeQux';
 
-export type CustomNodeType = BuiltInNode | CustomNodeFoo | CustomNodeBar;
-export type CustomEdgeType = BuiltInEdge | CustomEdgeBaz | CustomEdgeQux;
+// Custom nodes
+import NumberNode from './NumberNode';
+import TextNode from './TextNode';
+
+// Custom edge
+import EditableEdge from './EditableEdge';
+
+export type CustomNodeType = BuiltInNode | NumberNode | TextNode;
+export type CustomEdgeType = BuiltInEdge | EditableEdge;
 ```
 
-### &lt;ReactFlow />
+### Functions passed to `<ReactFlow />`
 
 To receive correct types for callback functions, you can pass your union types to the `ReactFlow` component.
 By doing that you will have to type your callback functions explicitly.
@@ -188,43 +189,39 @@ By doing that you will have to type your callback functions explicitly.
 ```tsx
 import { type OnNodeDrag } from '@xyflow/react';
 
-  // ...
+// ...
 
-  // Pass your union type here ...
-  const onNodeDrag: OnNodeDrag<CustomNodeType> = (_, node) => {
-    if (node.type === 'foo') {
-      // From here on, Typescript knows that node.data
-      // is of type { mySpecialNumber: number }
-      console.log('drag event', node.data.mySpecialNumber);
-    }
-  };
+// Pass your union type here ...
+const onNodeDrag: OnNodeDrag<CustomNodeType> = useCallback((_, node) => {
+  if (node.type === 'number') {
+    // From here on, Typescript knows that node.data
+    // is of type { num: number }
+    console.log('drag event', node.data.number);
+  }
+}, []);
 
-  return (
-    <ReactFlow<CustomNodeType, CustomEdgeType> // ... and here ...
-      nodes={nodes}
-      nodeTypes={nodeTypes}
-      edges={edges}
-      edgeTypes={edgeTypes}
-      onNodeDrag={onNodeDrag} // .. so these types match
-      onNodesChange={onNodesChange}
-      onEdgesChange={onEdgesChange}
-      onConnect={onConnect}
-      defaultEdgeOptions={defaultEdgeOptions}
-      fitViewOptions={fitViewOptions}
-      fitView
-    />
-  );
-}
+const onNodesChange: OnNodesChange<CustomNodeType> = useCallback(
+  (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
+  [setNodes],
+);
 ```
 
-### Hooks & Functions
+### Hooks
 
-Our type unions can be used to type the return values of many hooks.
+The type unions can also be used to type the return values of many hooks.
 
-```tsx filename="CustomNodeBar.tsx"
-import { useHandleConnections, useNodesData, useStore } from '@xyflow/react';
+```tsx filename="FlowComponent.tsx"
+import {
+  useReactFlow,
+  useHandleConnections,
+  useNodesData,
+  useStore,
+} from '@xyflow/react';
 
-export default function CustomNodeBar() {
+export default function FlowComponent() {
+  // returned nodes and edges are correctly typed now
+  const { getNodes, getEdges } = useReactFlow<CustomNodeType, CustomEdgeType>();
+
   // You can type useStore by typing the selector function
   const nodes = useStore((s: ReactFlowState<CustomNodeType>) => ({
     nodes: s.nodes,
@@ -234,14 +231,12 @@ export default function CustomNodeBar() {
     type: 'target',
   });
 
-  const nodesData = useNodesData<CustomNodeType>(
-    connections.map((connection) => connection.source),
-  );
+  const nodesData = useNodesData<CustomNodeType>(connections?.[0].source);
 
   nodeData.forEach(({ type, data }) => {
-    if (type === 'foo') {
+    if (type === 'number') {
       // This is type safe because we have narrowed down the type
-      console.log(data.mySpecialNumber);
+      console.log(data.number);
     }
   });
   // ...
@@ -251,13 +246,13 @@ export default function CustomNodeBar() {
 ### Type guards
 
 There are multiple ways you can define [type guards](https://www.typescriptlang.org/docs/handbook/2/narrowing.html#typeof-type-guards) in Typescript.
-One way is to define type guard functions like `isFooNode` or `isBarNode` to filter out specific nodes from a list of nodes.
+One way is to define type guard functions like `isNumberNode` or `isTextNode` to filter out specific nodes from a list of nodes.
 
 ```tsx
-function isFooNode(node: CustomNodeType): node is CustomNodeFoo {
-  return node.type === 'foo';
+function isNumberNode(node: CustomNodeType): node is NumberNode {
+  return node.type === 'number';
 }
 
-// fooNodes is of type CustomNodeFoo[]
-let fooNodes = nodes.filter(isFooNode);
+// numberNodes is of type NumberNode[]
+const numberNodes = nodes.filter(isNumberNode);
 ```
