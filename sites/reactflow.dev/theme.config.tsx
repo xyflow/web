@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useConfig, Navbar } from 'nextra-theme-docs';
+import { SparklesIcon } from '@heroicons/react/24/outline';
 import { Footer, Button, LogoLabel } from '@xyflow/xy-ui';
 import { Search, SidebarTitle } from 'xy-shared';
-import { SparklesIcon } from '@heroicons/react/24/outline';
 
 import { type Route } from '@/utils';
 
@@ -46,14 +46,13 @@ export default {
     titleComponent: SidebarTitle,
   },
   banner: {
-    key: 'v12-beta',
+    key: 'react-flow-12',
     text: (
       <Link
         className="flex justify-center items-center max-w-xs mx-auto hover:underline"
-        href="https://github.com/xyflow/xyflow/discussions/3764"
+        href="/learn/troubleshooting/migrate-to-v12"
       >
-        🧪 React Flow 12 is around the corner! Check it out and help us to
-        squash some more bugs.
+        🔥 React Flow 12 is here! SSR, dark mode, computing flows, and more
       </Link>
     ),
   },
