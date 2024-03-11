@@ -28,7 +28,7 @@ html, body, #root {
 };
 
 const defaultOptions = {
-  editorHeight: '70vh',
+  editorHeight: '60vh',
   editorWidthPercentage: 45,
   wrapContent: true,
   readOnly: false,
@@ -62,7 +62,7 @@ export function CodeViewer({
   sandpackOptions = {},
   showOpenInCodeSandbox = true,
   files = {},
-  editorHeight = '70vh',
+  editorHeight = '60vh',
   readOnly = false,
   activeFile,
 }: CodeViewerProps) {

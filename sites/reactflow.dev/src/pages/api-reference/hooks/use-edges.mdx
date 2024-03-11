@@ -16,7 +16,7 @@ This hook returns an array of the current edges. Components that use this hook
 will re-render **whenever any edge changes**.
 
 ```jsx
-import { useEdges } from 'reactflow';
+import { useEdges } from '@xyflow/react';
 
 export default function () {
   const edges = useEdges();
@@ -28,6 +28,15 @@ export default function () {
 ## Signature
 
 <PropsTable {...signature} />
+
+## Typescript
+
+This hook accepts a generic type argument of custom edge types. See this
+[section in our Typescript guide](/learn/advanced-use/typescript#nodetype-edgetype-unions) for more information.
+
+```tsx
+const nodes = useEdges<CustomEdgeType>();
+```
 
 ## Notes
 

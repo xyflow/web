@@ -1,9 +1,12 @@
 import React, { useEffect, useState, useRef } from 'react';
-import ReactFlow, { useNodesState, useEdgesState, Panel } from 'reactflow';
+import { ReactFlow, useNodesState, useEdgesState, Panel } from '@xyflow/react';
 
-import { nodes as initialNodes, edges as initialEdges } from './initial-elements';
+import {
+  nodes as initialNodes,
+  edges as initialEdges,
+} from './initial-elements';
 
-import 'reactflow/dist/style.css';
+import '@xyflow/react/dist/style.css';
 import './style.css';
 
 const panelStyle = {
@@ -27,17 +30,17 @@ const CollisionDetectionFlow = () => {
 
   const onNodeDrag = (evt, node) => {
     // calculate the center point of the node from position and dimensions
-    const centerX = node.position.x + node.width / 2;
-    const centerY = node.position.y + node.height / 2;
+    const centerX = node.position.x + node.computed.width / 2;
+    const centerY = node.position.y + node.computed.height / 2;
 
     // find a node where the center point is inside
     const targetNode = nodes.find(
       (n) =>
         centerX > n.position.x &&
-        centerX < n.position.x + n.width &&
+        centerX < n.position.x + n.computed.width &&
         centerY > n.position.y &&
-        centerY < n.position.y + n.height &&
-        n.id !== node.id // this is needed, otherwise we would always find the dragged node
+        centerY < n.position.y + n.computed.height &&
+        n.id !== node.id, // this is needed, otherwise we would always find the dragged node
     );
 
     setTarget(targetNode);
@@ -57,7 +60,7 @@ const CollisionDetectionFlow = () => {
           n.data = { ...n.data, color: targetColor, label: targetColor };
         }
         return n;
-      })
+      }),
     );
 
     setTarget(null);
@@ -70,7 +73,10 @@ const CollisionDetectionFlow = () => {
     setNodes((nodes) =>
       nodes.map((node) => {
         if (node.id === target?.id) {
-          node.style = { ...node.style, backgroundColor: dragRef.current?.data.color };
+          node.style = {
+            ...node.style,
+            backgroundColor: dragRef.current?.data.color,
+          };
           node.data = { ...node.data, label: dragRef.current?.data.color };
         } else if (node.id === dragRef.current?.id && target) {
           node.style = { ...node.style, backgroundColor: target.data.color };
@@ -80,7 +86,7 @@ const CollisionDetectionFlow = () => {
           node.data = { ...node.data, label: node.data.color };
         }
         return node;
-      })
+      }),
     );
   }, [target]);
 

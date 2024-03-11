@@ -1,27 +1,34 @@
-import { Position } from 'reactflow';
+import { NodeProps, Position, useNodesData } from '@xyflow/react';
 
 import Fiber from './fiber';
 import Handle from './handle';
 import Wrapper from './node-wrapper';
 
-export default function HeroNode({ data }: { data: any }) {
+export default function HeroNode({ data }: NodeProps) {
   const { label = '' } = data;
+  const color = useNodesData('color');
+  const shape = useNodesData('shape');
+  const zoom = useNodesData('zoom');
 
   return (
     <Wrapper label={label}>
       <div className="w-full h-[200px]">
-        <Fiber {...data} />
+        <Fiber
+          color={color?.data.value}
+          shape={shape?.data.value}
+          zoom={zoom?.data.value}
+        />
         <Handle
           type="target"
           position={Position.Left}
           style={{ top: 20 }}
-          id="shape"
+          id="color"
         />
         <Handle
           type="target"
           position={Position.Left}
           style={{ top: 40 }}
-          id="color"
+          id="shape"
         />
         <Handle
           type="target"

@@ -1,6 +1,11 @@
 import React from 'react';
-import ReactFlow, { useNodesState, useEdgesState, Background } from 'reactflow';
-import 'reactflow/dist/style.css';
+import {
+  ReactFlow,
+  useNodesState,
+  useEdgesState,
+  Background,
+} from '@xyflow/react';
+import '@xyflow/react/dist/style.css';
 
 import DragHandleNode from './DragHandleNode.js';
 

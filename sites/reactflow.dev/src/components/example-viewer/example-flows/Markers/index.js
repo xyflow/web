@@ -1,6 +1,6 @@
 import React from 'react';
-import ReactFlow, { Background, MarkerType } from 'reactflow';
-import 'reactflow/dist/style.css';
+import { ReactFlow, Background, MarkerType } from '@xyflow/react';
+import '@xyflow/react/dist/style.css';
 
 const defaultNodes = [
   {
@@ -171,7 +171,11 @@ export default function MarkersExample() {
               fill="#1A192B"
             />
             <path opacity="0.35" d="M22 9.5H18V10.5H22V9.5Z" fill="#1A192B" />
-            <path opacity="0.35" d="M29.5 17.5V21.5H30.5V17.5H29.5Z" fill="#1A192B" />
+            <path
+              opacity="0.35"
+              d="M29.5 17.5V21.5H30.5V17.5H29.5Z"
+              fill="#1A192B"
+            />
             <path opacity="0.35" d="M22 29.5H18V30.5H22V29.5Z" fill="#1A192B" />
             <path
               d="M17 12C18.1046 12 19 11.1046 19 10C19 8.89543 18.1046 8 17 8C15.8954 8 15 8.89543 15 10C15 11.1046 15.8954 12 17 12Z"

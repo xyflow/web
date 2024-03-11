@@ -1,10 +1,10 @@
 import Link from 'next/link';
-import { Text } from '@xyflow/xy-ui';
-import { Image } from '../';
 import { MDXRemote, type MDXRemoteSerializeResult } from 'next-mdx-remote';
 import TimeAgo from 'timeago-react';
+import { Callout, Tabs, Tab } from 'nextra/components';
+import { Emoji, Text } from '@xyflow/xy-ui';
 
-import { Author, AuthorList } from '../';
+import { Author, AuthorList, Image } from '../';
 
 export type TimelineEventProps = MDXRemoteSerializeResult & {
   exampleViewer: React.ComponentProps<any>;
@@ -37,7 +37,14 @@ export function TimelineEvent({
       <div className="pl-2">
         <MDXRemote
           frontmatter={frontmatter}
-          components={{ ExampleViewer: exampleViewer, Image }}
+          components={{
+            ExampleViewer: exampleViewer,
+            Image,
+            Tabs,
+            Tab,
+            Callout,
+            Emoji,
+          }}
           {...src}
         />
 

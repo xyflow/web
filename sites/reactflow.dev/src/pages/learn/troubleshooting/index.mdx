@@ -28,8 +28,8 @@ A possible solution is to wrap your component with a [`<ReactFlowProvider />`](/
 <Callout type="error">This will cause an error:</Callout>
 
 ```jsx
-import ReactFlow from 'reactflow';
-import 'reactflow/dist/style.css';
+import { ReactFlow } from '@xyflow/react';
+import '@xyflow/react/dist/style.css';
 
 function FlowWithoutProvider(props) {
   // cannot access the state here
@@ -44,8 +44,8 @@ export default FlowWithoutProvider;
 <Callout type="error">This will cause an error, too:</Callout>
 
 ```jsx
-import ReactFlow, { ReactFlowProvider } from 'reactflow';
-import 'reactflow/dist/style.css';
+import { ReactFlow, ReactFlowProvider } from '@xyflow/react';
+import '@xyflow/react/dist/style.css';
 
 function Flow(props) {
   // still cannot access the state here
@@ -67,8 +67,8 @@ export default FlowWithProvider;
 As soon as you want to access the internal state of React Flow (for example by using the `useReactFlow` hook), you need to wrap your component with a `<ReactFlowProvider />`. Here the wrapping is done outside of the component:
 
 ```jsx
-import ReactFlow, { ReactFlowProvider } from 'reactflow';
-import 'reactflow/dist/style.css';
+import { ReactFlow, ReactFlowProvider } from '@xyflow/react';
+import '@xyflow/react/dist/style.css';
 
 function Flow(props) {
   // you can access the internal state here
@@ -99,8 +99,8 @@ This warning appears when the `nodeTypes` or `edgeTypes` properties change after
 <Callout type="error">Causes a warning:</Callout>
 
 ```jsx
-import ReactFlow from 'reactflow';
-import 'reactflow/dist/style.css';
+import { ReactFlow } from '@xyflow/react';
+import '@xyflow/react/dist/style.css';
 
 import MyCustomNode from './MyCustomNode';
 
@@ -120,7 +120,7 @@ export default Flow;
 <Callout type="info">Recommended implementation:</Callout>
 
 ```jsx
-import ReactFlow from 'reactflow';
+import { ReactFlow } from '@xyflow/react';
 import MyCustomNode from './MyCustomNode';
 
 // defined outside of the component
@@ -141,8 +141,8 @@ You can use this if you want to change your nodeTypes dynamically without causin
 
 ```jsx
 import { useMemo } from 'react';
-import ReactFlow from 'reactflow';
-import 'reactflow/dist/style.css';
+import { ReactFlow } from '@xyflow/react';
+import '@xyflow/react/dist/style.css';
 
 import MyCustomNode from './MyCustomNode';
 
@@ -168,8 +168,8 @@ This usually happens when you are specifying a custom node type for one of your 
 <Callout type="error">Doesn't work:</Callout>
 
 ```jsx
-import ReactFlow from 'reactflow';
-import 'reactflow/dist/style.css';
+import { ReactFlow } from '@xyflow/react';
+import '@xyflow/react/dist/style.css';
 
 import MyCustomNode from './MyCustomNode';
 
@@ -190,8 +190,8 @@ function Flow(props) {
 <Callout type="error">Doesn't work either:</Callout>
 
 ```jsx
-import ReactFlow from 'reactflow';
-import 'reactflow/dist/style.css';
+import { ReactFlow } from '@xyflow/react';
+import '@xyflow/react/dist/style.css';
 
 import MyCustomNode from './MyCustomNode';
 
@@ -216,8 +216,8 @@ function Flow(props) {
 <Callout type="info">This does work:</Callout>
 
 ```jsx
-import ReactFlow from 'reactflow';
-import 'reactflow/dist/style.css';
+import { ReactFlow } from '@xyflow/react';
+import '@xyflow/react/dist/style.css';
 
 import MyCustomNode from './MyCustomNode';
 
@@ -246,8 +246,8 @@ Under the hood, React Flow measures the parent DOM element to adjust the rendere
 <Callout type="error">This will cause the warning:</Callout>
 
 ```jsx
-import ReactFlow from 'reactflow';
-import 'reactflow/dist/style.css';
+import { ReactFlow } from '@xyflow/react';
+import '@xyflow/react/dist/style.css';
 
 function Flow(props) {
   return (
@@ -261,7 +261,7 @@ function Flow(props) {
 <Callout type="info">Working example:</Callout>
 
 ```jsx
-import ReactFlow from 'reactflow';
+import { ReactFlow } from '@xyflow/react';
 
 function Flow(props) {
   return (
@@ -280,8 +280,8 @@ This warning appears when you are trying to add the `extent` option to a node th
 <Callout type="error">Does show a warning:</Callout>
 
 ```jsx
-import ReactFlow from 'reactflow';
-import 'reactflow/dist/style.css';
+import { ReactFlow } from '@xyflow/react';
+import '@xyflow/react/dist/style.css';
 
 const nodes = [
   {
@@ -298,7 +298,7 @@ function Flow(props) {
 
 <Callout type="info">Warning resolved:</Callout>
 
-```jsx import ReactFlow from 'reactflow';
+```jsx import { ReactFlow } from '@xyflow/react';
 const nodes = [
   {
     id: 'mycustomnode',
@@ -321,8 +321,8 @@ This happens when you do not pass a `source` and a `target` option to the edge o
 <Callout type="error">Will show a warning:</Callout>
 
 ```jsx
-import ReactFlow from 'reactflow';
-import 'reactflow/dist/style.css';
+import { ReactFlow } from '@xyflow/react';
+import '@xyflow/react/dist/style.css';
 
 const nodes = [
   /* ... */
@@ -343,7 +343,7 @@ function Flow(props) {
 <Callout type="info">This works:</Callout>
 
 ```jsx
-import ReactFlow from 'reactflow';
+import { ReactFlow } from '@xyflow/react';
 
 const nodes = [
   /* ... */

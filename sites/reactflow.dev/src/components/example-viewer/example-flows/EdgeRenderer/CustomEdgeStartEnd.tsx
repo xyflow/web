@@ -1,5 +1,10 @@
 import React, { FC } from 'react';
-import { EdgeProps, getBezierPath, EdgeLabelRenderer, BaseEdge } from 'reactflow';
+import {
+  EdgeProps,
+  getBezierPath,
+  EdgeLabelRenderer,
+  BaseEdge,
+} from '@xyflow/react';
 
 // this is a little helper component to render the actual edge label
 function EdgeLabel({ transform, label }: { transform: string; label: string }) {
@@ -21,7 +26,7 @@ function EdgeLabel({ transform, label }: { transform: string; label: string }) {
   );
 }
 
-const CustomEdge: FC<EdgeProps> = ({
+const CustomEdge: FC<EdgeProps<{ startLabel: string; endLabel: string }>> = ({
   id,
   sourceX,
   sourceY,

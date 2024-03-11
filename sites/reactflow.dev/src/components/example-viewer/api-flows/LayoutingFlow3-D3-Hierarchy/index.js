@@ -1,15 +1,16 @@
 import { stratify, tree } from 'd3-hierarchy';
 import React, { useCallback, useMemo } from 'react';
-import ReactFlow, {
+import {
+  ReactFlow,
   ReactFlowProvider,
   Panel,
   useNodesState,
   useEdgesState,
   useReactFlow,
-} from 'reactflow';
+} from '@xyflow/react';
 
 import { initialNodes, initialEdges } from './nodes-edges.js';
-import 'reactflow/dist/style.css';
+import '@xyflow/react/dist/style.css';
 
 const g = tree();
 
@@ -40,9 +41,10 @@ const LayoutFlow = () => {
 
   const onLayout = useCallback(
     (direction) => {
-      const { nodes: layoutedNodes, edges: layoutedEdges } = getLayoutedElements(nodes, edges, {
-        direction,
-      });
+      const { nodes: layoutedNodes, edges: layoutedEdges } =
+        getLayoutedElements(nodes, edges, {
+          direction,
+        });
 
       setNodes([...layoutedNodes]);
       setEdges([...layoutedEdges]);
@@ -51,7 +53,7 @@ const LayoutFlow = () => {
         fitView();
       });
     },
-    [nodes, edges]
+    [nodes, edges],
   );
 
   return (

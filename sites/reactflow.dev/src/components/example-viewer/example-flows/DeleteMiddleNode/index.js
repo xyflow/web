@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
-import ReactFlow, {
+import {
+  ReactFlow,
   Background,
   useNodesState,
   useEdgesState,
@@ -7,16 +8,31 @@ import ReactFlow, {
   getIncomers,
   getOutgoers,
   getConnectedEdges,
-} from 'reactflow';
+} from '@xyflow/react';
 
-import 'reactflow/dist/style.css';
+import '@xyflow/react/dist/style.css';
 
 const initialNodes = [
-  { id: '1', type: 'input', data: { label: 'Start here...' }, position: { x: -150, y: 0 } },
-  { id: '2', type: 'input', data: { label: '...or here!' }, position: { x: 150, y: 0 } },
+  {
+    id: '1',
+    type: 'input',
+    data: { label: 'Start here...' },
+    position: { x: -150, y: 0 },
+  },
+  {
+    id: '2',
+    type: 'input',
+    data: { label: '...or here!' },
+    position: { x: 150, y: 0 },
+  },
   { id: '3', data: { label: 'Delete me.' }, position: { x: 0, y: 100 } },
   { id: '4', data: { label: 'Then me!' }, position: { x: 0, y: 200 } },
-  { id: '5', type: 'output', data: { label: 'End here!' }, position: { x: 0, y: 300 } },
+  {
+    id: '5',
+    type: 'output',
+    data: { label: 'End here!' },
+    position: { x: 0, y: 300 },
+  },
 ];
 
 const initialEdges = [
@@ -30,7 +46,10 @@ export default function Flow() {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
-  const onConnect = useCallback((params) => setEdges(addEdge(params, edges)), [edges]);
+  const onConnect = useCallback(
+    (params) => setEdges(addEdge(params, edges)),
+    [edges],
+  );
   const onNodesDelete = useCallback(
     (deleted) => {
       setEdges(
@@ -39,17 +58,23 @@ export default function Flow() {
           const outgoers = getOutgoers(node, nodes, edges);
           const connectedEdges = getConnectedEdges([node], edges);
 
-          const remainingEdges = acc.filter((edge) => !connectedEdges.includes(edge));
+          const remainingEdges = acc.filter(
+            (edge) => !connectedEdges.includes(edge),
+          );
 
           const createdEdges = incomers.flatMap(({ id: source }) =>
-            outgoers.map(({ id: target }) => ({ id: `${source}->${target}`, source, target }))
+            outgoers.map(({ id: target }) => ({
+              id: `${source}->${target}`,
+              source,
+              target,
+            })),
           );
 
           return [...remainingEdges, ...createdEdges];
-        }, edges)
+        }, edges),
       );
     },
-    [nodes, edges]
+    [nodes, edges],
   );
 
   return (

@@ -1,4 +1,4 @@
-import { applyNodeChanges, applyEdgeChanges } from 'reactflow';
+import { applyNodeChanges, applyEdgeChanges } from '@xyflow/react';
 import { nanoid } from 'nanoid';
 import { create } from 'zustand';
 

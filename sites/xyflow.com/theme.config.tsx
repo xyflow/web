@@ -71,6 +71,8 @@ export default {
     const router = useRouter();
     const { frontMatter } = useConfig();
     const url = `${baseUrl}${router.asPath}`;
+    const hasImage =
+      frontMatter.image && frontMatter.imageWidth && frontMatter.imageHeight;
 
     return {
       defaultTitle: 'xyflow',
@@ -109,9 +111,9 @@ export default {
         type: 'website',
         images: [
           {
-            url: `${baseUrl}/img/og/xyflow.jpg`,
-            width: 1200,
-            height: 640,
+            url: `${baseUrl}${hasImage || '/img/og/xyflow.jpg'}`,
+            width: hasImage ? frontMatter.imageWidth : 1200,
+            height: hasImage ? frontMatter.imageHeight : 640,
             alt: 'xyflow Teaser',
           },
         ],

@@ -3,5 +3,7 @@
   "testing": "Testing",
   "typescript": "TypeScript",
   "uncontrolled-flow": "Uncontrolled Flows",
-  "state-management": "State Management"
+  "state-management": "State Management",
+  "computing-flows": "Computing Flows",
+  "ssr-ssg-configuration": "Server Side Rendering"
 }

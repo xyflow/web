@@ -1,15 +1,16 @@
 import ELK from 'elkjs/lib/elk.bundled.js';
 import React, { useCallback } from 'react';
-import ReactFlow, {
+import {
+  ReactFlow,
   ReactFlowProvider,
   Panel,
   useNodesState,
   useEdgesState,
   useReactFlow,
-} from 'reactflow';
+} from '@xyflow/react';
 
 import { initialNodes, initialEdges } from './nodes-edges.js';
-import 'reactflow/dist/style.css';
+import '@xyflow/react/dist/style.css';
 
 const elk = new ELK();
 
@@ -63,14 +64,20 @@ const LayoutFlow = () => {
       <Panel position="top-right">
         <button
           onClick={() =>
-            getLayoutedElements({ 'elk.algorithm': 'layered', 'elk.direction': 'DOWN' })
+            getLayoutedElements({
+              'elk.algorithm': 'layered',
+              'elk.direction': 'DOWN',
+            })
           }
         >
           vertical layout
         </button>
         <button
           onClick={() =>
-            getLayoutedElements({ 'elk.algorithm': 'layered', 'elk.direction': 'RIGHT' })
+            getLayoutedElements({
+              'elk.algorithm': 'layered',
+              'elk.direction': 'RIGHT',
+            })
           }
         >
           horizontal layout

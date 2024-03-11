@@ -4,7 +4,7 @@ import {
   Position,
   useUpdateNodeInternals,
   NodeResizer,
-} from 'reactflow';
+} from '@xyflow/react';
 import { drag } from 'd3-drag';
 import { select } from 'd3-selection';
 

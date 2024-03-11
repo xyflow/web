@@ -9,7 +9,7 @@ description:
 import { PropsTable } from '@/components/props-table';
 import { nodeFields } from '@/page-data/reference/types/Node.fields.ts';
 
-# Node&lt;T, U>
+# Node
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/v11/packages/core/src/types/nodes.ts/#L8)
 
@@ -45,6 +45,13 @@ export type Node<T, U extends string> = {
   focusable?: boolean;
   style?: React.CSSProperties;
   className?: string;
+  origin?: NodeOrigin;
+  handles?: NodeHandle[];
+  computed?: {
+    width?: number;
+    height?: number;
+    positionAbsolute?: XYPosition;
+  };
 };
 ```
 

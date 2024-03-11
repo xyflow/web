@@ -16,18 +16,19 @@
     type: 'target'
   });
 
-  $: nodeData = useNodesData($connections.map((connection) => connection.source));
+  $: nodesData = useNodesData($connections.map((connection) => connection.source));
+  $: console.log($nodesData);
 </script>
 
 <div class="custom">
   <Handle type="target" position={Position.Left} />
   <div class="label">incoming texts:</div>
 
-  {#if $nodeData.length === 0}
+  {#if $nodesData.length === 0}
     <div>no connected nodes</div>
   {:else}
-    {#each $nodeData as data}
-      <div>{data.text}</div>
+    {#each $nodesData as nodeData}
+      <div>{nodeData.data?.text}</div>
     {/each}
   {/if}
 </div>

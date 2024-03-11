@@ -10,5 +10,6 @@
   "node-resizer": "<NodeResizer />",
   "node-resize-control": "<NodeResizeControl />",
   "node-toolbar": "<NodeToolbar />",
-  "panel": "<Panel />"
+  "panel": "<Panel />",
+  "viewport-portal": "<ViewportPortal />"
 }

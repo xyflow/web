@@ -1,0 +1,27 @@
+---
+title: HandleConnection
+description: 'The HandleConnection type is a Connection that includes the edgeId.'
+---
+
+import { PropsTable } from '@/components/props-table';
+import { connectionFields } from '@/page-data/reference/types/HandleConnection.fields.ts';
+
+# Connection
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/v11/packages/core/src/types/general.ts/#L57)
+
+The `HandleConnection` type is an extention of a basic [Connection](/api-reference/types/connection) that includes the `edgeId`.
+
+```ts
+export type Connection = {
+  source: string | null;
+  target: string | null;
+  sourceHandle: string | null;
+  targetHandle: string | null;
+  edgeId: string;
+};
+```
+
+## Fields
+
+<PropsTable {...connectionFields} />
