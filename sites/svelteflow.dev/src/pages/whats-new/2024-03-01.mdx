@@ -1,0 +1,22 @@
+---
+title: New release 0.0.37
+description: Svelte Flow 0.0.37 release notes
+authors: [moritz]
+date: '2024-03-01'
+---
+
+## 0.0.37
+
+## ⚠️ Breaking changes
+
+- `useNodesData` not only returns data objects but also the type and the id of the node
+- status class names for Handle components are slightly different. It's now "connectingfrom" and "connectingto" instead of "connecting"
+
+## Patch changes
+
+- better cursor defaults for the pane, nodes and edges
+- add `initialWidth` and `initialHeight` node attributes for specifying initial dimensions for ssr
+- always re-measure nodes when new nodes get passed
+- fix `NodeResizer` when used in combination with `nodeOrigin`
+
+You can find the changelog with all previous changes on [Github](https://github.com/xyflow/xyflow/blob/main/packages/svelte/CHANGELOG.md).
