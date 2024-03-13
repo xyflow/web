@@ -15,13 +15,13 @@ import { nodePropsFields } from '@/page-data/reference/types/NodeProps.fields.ts
 When you implement a [custom node](/learn/guides/custom-nodes) it is wrapped in a component that enables basic functionality like drag, select and remove. A custom node gets the following props:
 
 ```ts
-export type NodeProps<T = any> = {
+export type NodeProps<NodeType extends Node = Node> = {
   id: string;
-  data: T;
+  data: NodeType['data'];
   width: number;
   height: number;
   dragHandle?: boolean;
-  type?: string;
+  type?: NodeType['type'];
   selected?: boolean;
   isConnectable?: boolean;
   zIndex?: number;
