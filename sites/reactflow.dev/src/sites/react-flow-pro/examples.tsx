@@ -13,7 +13,7 @@ import {
   Section,
   ListWrapper,
 } from '@xyflow/xy-ui';
-import { BaseLayout, Hero, ProjectPreview, SubscribeSection } from 'xy-shared';
+import { BaseLayout, Hero, ProjectPreview, LayoutBreakout } from 'xy-shared';
 import {
   ArrowDownCircleIcon,
   ArrowRightCircleIcon,
@@ -25,7 +25,6 @@ import {
 import { getMdxPagesUnderRoute } from '@/utils';
 import Image from 'next/image';
 import { ReactNode } from 'react';
-import { HeartIcon } from '@heroicons/react/24/solid';
 import starsvg from '../../../public/img/pro/star.svg';
 
 function getProExamplesUnderRoute(route) {
@@ -68,6 +67,7 @@ export default function ProExamples() {
   return (
     <BaseLayout>
       <Hero
+        className="lg:gap-20"
         title={
           <div className="mt-6">
             Upgrade your apps with React Flow <StarText /> Examples
@@ -75,31 +75,26 @@ export default function ProExamples() {
         }
         subtitle="Get 10 advanced React Flow code examples to use in your node-based UIs, crafted by the React Flow core team."
         action={
-          <div className="flex gap-2 items-center">
+          <div className="flex flex-wrap gap-2 items-center">
             <Button
               variant="secondary"
-              className="text-black"
+              className="text-black w-full md:w-auto"
               asChild
               size="lg"
             >
-              <Link href={`${process.env.NEXT_PUBLIC_PRO_PLATFORM_URL}/signup`}>
-                See Subscriptions
-              </Link>
+              <Link href="/pro">See Subscriptions</Link>
             </Button>
-            <Button asChild size="lg" variant="pro">
-              <Link href="/pro/pricing">
-                <SparklesIcon className="w-5 h-5 mr-2" /> Sign Up
-              </Link>
-            </Button>
-            <GradientText />
+            <SignUpButton />
           </div>
         }
+        showGradient
       >
         <Image
           src="/img/pro/pro-examples.png"
           alt="Overview of the pro example apps"
-          width={604}
-          height={478}
+          width={640}
+          height={460}
+          className="hidden lg:block"
         />
       </Hero>
       <Section>
@@ -108,7 +103,7 @@ export default function ProExamples() {
             title="By the creators of React Flow"
             text="Feature-complete and crafted by the core team"
             // @ts-ignore
-            icon={Logo}
+            icon={() => <Logo className="h-8 w-8 text-black" />}
           />
           <GridItem
             title="Downloadable Vite apps and guides"
@@ -131,7 +126,7 @@ export default function ProExamples() {
       <hr className="border-gray-100" />
 
       <Section>
-        <Container variant="dark">
+        <Container>
           <Image
             src={`${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/shapes/thumbnail.jpg`}
             width={1200}
@@ -140,9 +135,11 @@ export default function ProExamples() {
             alt="Shapes Example Preview"
           />
         </Container>
-        <div className="flex mt-10 gap-2">
-          <Heading size="md">Shapes</Heading>
-          <div className="max-w-lg ml-auto">
+        <div className="flex flex-wrap mt-10 gap-2">
+          <Heading className="w-full md:w-auto" size="md">
+            Shapes
+          </Heading>
+          <div className="md:max-w-lg ml-auto">
             <Text>
               Custom nodes in cylinder, plus, hexagon, circle, and more shapes.
               Great for showing workflows, flow diagrams, BPMN diagrams, or
@@ -150,14 +147,11 @@ export default function ProExamples() {
               drag-and-drop new nodes onto the canvas, change the color with a
               toolbar, plus dark and light mode.
             </Text>
-            <div className="flex gap-2 mt-4 items-center">
-              <Button asChild size="lg">
+            <div className="mt-4 flex flex-wrap gap-2 items-center">
+              <Button asChild size="lg" className="w-full md:w-auto">
                 <Link href="/examples/nodes/shapes">Demo</Link>
               </Button>
-              <Button asChild size="lg" variant="pro">
-                <Link href="/pro/pricing">Sign Up</Link>
-              </Button>
-              <GradientText />
+              <SignUpButton />
             </div>
           </div>
         </div>
@@ -177,31 +171,36 @@ export default function ProExamples() {
       </ContentGrid>
 
       <Section>
-        <Container
-          variant="dark"
-          innerClassName="p-4 md:p-8 lg:p-14 flex gap-4 items-center"
-        >
-          <div>
-            <Text>Get Started</Text>
-            <Heading size="md">
-              Boost your React Flow apps with React Flow Pro
-            </Heading>
-          </div>
-          <div>
-            <Text>
-              Get all 10 pro examples with just one month of a Pro subscription
-              from 129€
-            </Text>
-            <div className="flex gap-2 mt-4">
-              <Button asChild size="lg">
-                <Link href="/examples/nodes/shapes">Try it out</Link>
-              </Button>
-              <Button asChild size="lg" variant="pro">
-                <Link href="/pro/pricing">See subscription plans</Link>
-              </Button>
+        <LayoutBreakout className="max-w-[78rem] lg:ml-0 lg:mr-0 lg:right-0 lg:left-0 lg:w-full lg:px-4 !mt-0">
+          <Container
+            variant="dark"
+            className="max-lg:rounded-none"
+            innerClassName="px-4 py-8 flex flex-wrap gap-4 relative w-full items-center shadow-none bg-none bg-gray-100/10 lg:px-20 lg:py-20"
+          >
+            <div className="md:flex-1">
+              <Text className="text-gray-300 mb-2">Get Started</Text>
+              <Heading size="md">Boost your apps with React Flow Pro</Heading>
             </div>
-          </div>
-        </Container>
+            <div className="md:flex-1">
+              <Text className="mb-2">
+                Get all 10 pro examples with just one month of a Pro
+                subscription from 129€
+              </Text>
+              <div className="flex gap-2 mt-4">
+                <Button asChild size="lg">
+                  <Link
+                    href={`${process.env.NEXT_PUBLIC_PRO_PLATFORM_URL}/signup`}
+                  >
+                    Try it out
+                  </Link>
+                </Button>
+                <Button asChild size="lg" variant="pro">
+                  <Link href="/pro/pricing">See subscription plans</Link>
+                </Button>
+              </div>
+            </div>
+          </Container>
+        </LayoutBreakout>
       </Section>
 
       <Section>
@@ -247,7 +246,7 @@ function GridItem({
 }) {
   return (
     <div>
-      <Icon className="text-primary w-8 h-8" />
+      <Icon className="text-black w-8 h-8" />
       <div className="text-3xl font-bold mt-2 mb-4">{title}</div>
       <Text variant="light" className="text-md">
         {text}
@@ -298,10 +297,17 @@ function StarText() {
   );
 }
 
-function GradientText() {
+function SignUpButton() {
   return (
-    <span className="text-sm text-transparent bg-clip-text bg-gradient-to-r from-[#FA3C92] to-[#969696]">
-      to get a free pro example
-    </span>
+    <div className="flex gap-2 items-center flex-wrap w-full md:w-auto">
+      <Button asChild size="lg" variant="pro" className="w-full md:w-auto">
+        <Link href={`${process.env.NEXT_PUBLIC_PRO_PLATFORM_URL}/signup`}>
+          <SparklesIcon className="w-5 h-5 mr-2" /> Sign Up
+        </Link>
+      </Button>
+      <span className="text-sm mx-auto text-transparent bg-clip-text bg-gradient-to-r from-[#FA3C92] to-[#969696]">
+        to get a free pro example
+      </span>
+    </div>
   );
 }

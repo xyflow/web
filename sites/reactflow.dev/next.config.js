@@ -14,7 +14,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'pro-examples.reactflow.dev',
+        hostname: '**.reactflow.dev',
       },
     ],
   },
