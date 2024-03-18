@@ -95,6 +95,8 @@ export default function ProExamples() {
           width={640}
           height={460}
           className="hidden lg:block"
+          priority
+          style={{ objectFit: 'contain' }}
         />
       </Hero>
       <Section>
@@ -128,11 +130,12 @@ export default function ProExamples() {
       <Section>
         <Container>
           <Image
-            src={`${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/shapes/thumbnail.jpg`}
-            width={1200}
-            height={600}
-            objectFit="contain"
+            src="/img/pro/shapes-pro-example.jpg"
+            width={1168}
+            height={474}
             alt="Shapes Example Preview"
+            priority
+            style={{ objectFit: 'contain', display: 'block' }}
           />
         </Container>
         <div className="flex flex-wrap mt-10 gap-2">
@@ -170,8 +173,8 @@ export default function ProExamples() {
         ))}
       </ContentGrid>
 
-      <Section>
-        <LayoutBreakout className="max-w-[78rem] lg:ml-0 lg:mr-0 lg:right-0 lg:left-0 lg:w-full lg:px-4 !mt-0">
+      <Section className="lg:px-0">
+        <LayoutBreakout className="max-w-[78rem] lg:ml-0 lg:mr-0 lg:right-0 lg:left-0 lg:w-full lg:px-0 !mt-0">
           <Container
             variant="dark"
             className="max-lg:rounded-none"
@@ -211,12 +214,34 @@ export default function ProExamples() {
         >
           <ListItem
             title="For education purposes"
-            text="Email us at info@xyflow.com using your university email address"
+            text={
+              <>
+                Email us at{' '}
+                <Link
+                  className="font-bold hover:underline"
+                  href="mailto:info@xyflow.com"
+                >
+                  info@xyflow.com
+                </Link>{' '}
+                using your university email address
+              </>
+            }
           />
           <hr className="my-5" />
           <ListItem
             title="For non-commercial open source projects"
-            text="Contact us with the link to the github or gitlab repository"
+            text={
+              <>
+                <Link
+                  className="font-bold hover:underline"
+                  target="_blank"
+                  href="https://xyflow.com/contact"
+                >
+                  Contact us
+                </Link>{' '}
+                with the link to the github or gitlab repository
+              </>
+            }
           />
         </ListWrapper>
       </Section>
