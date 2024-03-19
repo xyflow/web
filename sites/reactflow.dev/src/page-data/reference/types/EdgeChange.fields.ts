@@ -9,7 +9,7 @@ export const edgeAddChangeFields: PropsTableProps = {
 
 export const edgeRemoveChangeFields: PropsTableProps = {
   props: [
-    { name: 'type', type: '"remote"' },
+    { name: 'type', type: '"remove"' },
     { name: 'id', type: 'string' },
   ],
 };

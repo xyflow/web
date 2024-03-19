@@ -197,15 +197,18 @@ export const nodeEventHandlerProps: PropsTableProps = {
     },
     {
       name: 'on:nodedragstart',
-      type: '(event: CustomEvent<{ event: MouseEvent; node: NodeBase; nodes: NodeBase[] }>) => void',
+      type: '(event: CustomEvent<{ event: MouseEvent; targetNode: Node | null; nodes: Node[] }>) => void',
+      description: `This event is used for single nodes and selections. If you drag a selection, targetNode is null`,
     },
     {
       name: 'on:nodedrag',
-      type: '(event: CustomEvent<{ event: MouseEvent; node: NodeBase; nodes: NodeBase[] }>) => void',
+      type: '(event: CustomEvent<{ event: MouseEvent; targetNode: Node | null; nodes: Node[] }>) => void',
+      description: `This event is used for single nodes and selections. If you drag a selection, targetNode is null`,
     },
     {
       name: 'on:nodedragstop',
-      type: '(event: CustomEvent<{ event: MouseEvent; node: NodeBase; nodes: NodeBase[] }>) => void',
+      type: '(event: CustomEvent<{ event: MouseEvent; targetNode: Node | null; nodes: Node[] }>) => void',
+      description: `This event is used for single nodes and selections. If you drag a selection, targetNode is null`,
     },
   ],
 };
