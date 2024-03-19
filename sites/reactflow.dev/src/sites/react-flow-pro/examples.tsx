@@ -82,9 +82,9 @@ export default function ProExamples() {
               asChild
               size="lg"
             >
-              <Link href="/pro">See Subscriptions</Link>
+              <Link href="/pro">See Plans</Link>
             </Button>
-            <SignUpButton />
+            <SignUpButton showIcon />
           </div>
         }
         showGradient
@@ -130,7 +130,7 @@ export default function ProExamples() {
       <Section>
         <Container>
           <Image
-            src="/img/pro/shapes-pro-example.jpg"
+            src="/img/pro/helper-lines-pro-example.jpg"
             width={1168}
             height={474}
             alt="Shapes Example Preview"
@@ -139,22 +139,32 @@ export default function ProExamples() {
           />
         </Container>
         <div className="flex flex-wrap mt-10 gap-2">
-          <Heading className="w-full md:w-auto" size="md">
-            Shapes
+          <Heading
+            className="w-full md:w-auto mb-auto flex gap-3 items-center"
+            size="md"
+          >
+            Helper Lines{' '}
+            <span className="text-sm text-primary bg-gray-100 px-3 py-1 rounded-full">
+              Free Trial
+            </span>
           </Heading>
           <div className="md:max-w-lg ml-auto">
             <Text>
-              Custom nodes in cylinder, plus, hexagon, circle, and more shapes.
-              Great for showing workflows, flow diagrams, BPMN diagrams, or
-              other process mapping. Comes with intuitive UI elements to
-              drag-and-drop new nodes onto the canvas, change the color with a
-              toolbar, plus dark and light mode.
+              Have guiding lines appear when the sides of your nodes are nearly
+              lined up to assist users in aligning and positioning nodes in a
+              diagram. Great for precise layouting and visual consistency like
+              in design tools such as Figma and Miro.
             </Text>
-            <div className="mt-4 flex flex-wrap gap-2 items-center">
-              <Button asChild size="lg" className="w-full md:w-auto">
-                <Link href="/examples/nodes/shapes">Demo</Link>
+            <div className="mt-6 flex flex-wrap gap-2 items-center">
+              <Button
+                asChild
+                size="lg"
+                variant="black"
+                className="w-full md:w-auto"
+              >
+                <Link href="/examples/interaction/helper-lines">Demo</Link>
               </Button>
-              <SignUpButton />
+              <SignUpButton description="to get this example for free" />
             </div>
           </div>
         </div>
@@ -181,23 +191,33 @@ export default function ProExamples() {
             innerClassName="px-4 py-8 flex flex-wrap gap-4 relative w-full items-center shadow-none bg-none bg-gray-100/10 lg:px-20 lg:py-20"
           >
             <div className="md:flex-1">
-              <Text className="text-gray-300 mb-2">Get Started</Text>
+              <Text className="text-gray-400 mb-4">Get Started</Text>
               <Heading size="md">Boost your apps with React Flow Pro</Heading>
             </div>
             <div className="md:flex-1">
-              <Text className="mb-2">
+              <Text className="mb-8 text-gray-300">
                 Get all 10 pro examples with just one month of a Pro
                 subscription from 129€
               </Text>
               <div className="flex gap-2 mt-4">
-                <Button asChild size="lg">
+                <Button
+                  asChild
+                  size="lg"
+                  variant="secondary"
+                  className="text-black hover:bg-gray-100"
+                >
                   <Link
                     href={`${process.env.NEXT_PUBLIC_PRO_PLATFORM_URL}/signup`}
                   >
                     Try it out
                   </Link>
                 </Button>
-                <Button asChild size="lg" variant="pro">
+                <Button
+                  asChild
+                  size="lg"
+                  variant="black"
+                  className="bg-white/10 hover:bg-white/20"
+                >
                   <Link href="/pro/pricing">See subscription plans</Link>
                 </Button>
               </div>
@@ -322,16 +342,22 @@ function StarText() {
   );
 }
 
-function SignUpButton() {
+function SignUpButton({
+  showIcon = false,
+  description = 'to get a free pro example',
+}: {
+  showIcon?: boolean;
+  description?: string;
+}) {
   return (
     <div className="flex gap-2 items-center flex-wrap w-full md:w-auto">
       <Button asChild size="lg" variant="pro" className="w-full md:w-auto">
         <Link href={`${process.env.NEXT_PUBLIC_PRO_PLATFORM_URL}/signup`}>
-          <SparklesIcon className="w-5 h-5 mr-2" /> Sign Up
+          {showIcon && <SparklesIcon className="w-5 h-5 mr-2" />}Sign Up
         </Link>
       </Button>
       <span className="text-sm mx-auto text-transparent bg-clip-text bg-gradient-to-r from-[#FA3C92] to-[#969696]">
-        to get a free pro example
+        {description}
       </span>
     </div>
   );
