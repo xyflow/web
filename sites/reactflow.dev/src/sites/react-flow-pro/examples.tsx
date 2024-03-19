@@ -190,21 +190,21 @@ export default function ProExamples() {
             className="max-lg:rounded-none"
             innerClassName="px-4 py-8 flex flex-wrap gap-4 relative w-full items-center shadow-none bg-none bg-gray-100/10 lg:px-20 lg:py-20"
           >
-            <div className="md:flex-1">
+            <div className="max-md:w-full md:flex-1">
               <Text className="text-gray-400 mb-4">Get Started</Text>
               <Heading size="md">Boost your apps with React Flow Pro</Heading>
             </div>
-            <div className="md:flex-1">
+            <div className="max-md:w-full md:flex-1">
               <Text className="mb-8 text-gray-300">
                 Get all 10 pro examples with just one month of a Pro
                 subscription from 129€
               </Text>
-              <div className="flex gap-2 mt-4">
+              <div className="flex flex-wrap gap-2 mt-4">
                 <Button
                   asChild
                   size="lg"
                   variant="secondary"
-                  className="text-black hover:bg-gray-100"
+                  className="text-black hover:bg-gray-100 w-full md:w-auto"
                 >
                   <Link
                     href={`${process.env.NEXT_PUBLIC_PRO_PLATFORM_URL}/signup`}
@@ -216,7 +216,7 @@ export default function ProExamples() {
                   asChild
                   size="lg"
                   variant="black"
-                  className="bg-white/10 hover:bg-white/20"
+                  className="bg-white/10 hover:bg-white/20 w-full md:w-auto"
                 >
                   <Link href="/pro/pricing">See subscription plans</Link>
                 </Button>
