@@ -10,28 +10,29 @@ import {
   SelectItem,
   SelectValue,
   Checkbox,
-  CardContent,
-  CardHeader,
+  Accordion,
 } from '@xyflow/xy-ui';
 import { BaseLayout, Hero, SubscribeSection } from 'xy-shared';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 
 export default function Enterprise() {
-  const [plan, setPlan] = useState('starter');
-  const [billingCountry, setBillingCountry] = useState(undefined);
-  const [shippingCountry, setShippingCountry] = useState(null);
-  const [isSameEndUser, setIsSameEndUser] = useState(true);
+  const [formData, setFormData] = useState({
+    plan: 'starter',
+    email: undefined,
+    name: undefined,
+    website: undefined,
+    same_end_user: true,
+    end_user_name: undefined,
+    end_user_website: undefined,
+    message: undefined,
+  });
 
   const onSubmit = useCallback(
     async (evt: React.FormEvent<HTMLFormElement>) => {
       evt.preventDefault();
 
-      const formData = new FormData(evt.currentTarget);
-      // @ts-ignore
-      const data = Object.fromEntries(formData.entries());
-
       try {
-        console.log(data);
+        console.log(formData);
         // const response = await fetch(
         //   process.env.NEXT_PUBLIC_CONTACT_FORM_URL as string,
         //   {
@@ -45,7 +46,7 @@ export default function Enterprise() {
         // );
       } catch (err) {}
     },
-    [],
+    [formData],
   );
 
   return (
@@ -59,114 +60,123 @@ export default function Enterprise() {
         showGradient
       />
       <Card className="p-8 bg-white relative max-w-xl mx-auto mt-16">
-        <form className="flex flex-col gap-y-2" onSubmit={onSubmit}>
-          <InputLabel>
-            <span>Select a subscription plan</span>
+        <Accordion
+          defaultValue={[
+            'subscription-plan',
+            'contact-details',
+            'end-user-details',
+          ]}
+          type="multiple"
+        >
+          <form className="flex flex-col gap-y-2" onSubmit={onSubmit}>
+            <InputLabel>Subscription Plan</InputLabel>
             <div className="grid grid-cols-3 gap-x-2">
-              <Card>
-                <CardHeader>Starter</CardHeader>
-              </Card>
-              <Card className="bg-primary">
-                <CardHeader>Professional</CardHeader>
-              </Card>
-              <Card>
-                <CardHeader>Enterprise</CardHeader>
-              </Card>
+              <Button
+                type="button"
+                className={
+                  formData.plan === 'starter'
+                    ? 'hover:bg-white cursor-default'
+                    : 'hover:bg-gray-100'
+                }
+                variant={formData.plan === 'starter' ? 'outline' : 'ghost'}
+                onClick={() =>
+                  setFormData((fd) => ({ ...fd, plan: 'starter' }))
+                }
+              >
+                Starter
+              </Button>
+              <Button
+                type="button"
+                className={
+                  formData.plan === 'pro'
+                    ? 'hover:bg-white cursor-default'
+                    : 'hover:bg-gray-100'
+                }
+                variant={formData.plan === 'pro' ? 'outline' : 'ghost'}
+                onClick={() => setFormData((fd) => ({ ...fd, plan: 'pro' }))}
+              >
+                Professional
+              </Button>
+              <Button
+                type="button"
+                className={
+                  formData.plan === 'enterprise'
+                    ? 'hover:bg-white cursor-default'
+                    : 'hover:bg-gray-100'
+                }
+                variant={formData.plan === 'enterprise' ? 'outline' : 'ghost'}
+                onClick={() =>
+                  setFormData((fd) => ({ ...fd, plan: 'enterprise' }))
+                }
+              >
+                Enterprise
+              </Button>
             </div>
-          </InputLabel>
-
-          <InputLabel>
-            <span>Contact Email</span>
+            <InputLabel>Contact Email</InputLabel>
             <Input
               name="email"
               type="email"
               required
-              variant="square"
-              placeholder="Your work email..."
+              placeholder="info@xyflow.com"
+              value={formData.email}
+              onChange={(evt) =>
+                setFormData((fd) => ({ ...fd, email: evt.target.value }))
+              }
             />
-          </InputLabel>
-
-          <InputLabel>
-            <span>Company Website</span>
+            <InputLabel>Company Name</InputLabel>
+            <Input
+              name="name"
+              type="text"
+              placeholder="ACME Inc."
+              value={formData.name}
+              onChange={(evt) =>
+                setFormData((fd) => ({ ...fd, name: evt.target.value }))
+              }
+            />
+            <InputLabel>Company Website</InputLabel>
             <Input
               placeholder="https://..."
               name="company"
               type="url"
               required
-              variant="square"
+              value={formData.website}
+              onChange={(evt) =>
+                setFormData((fd) => ({ ...fd, website: evt.target.value }))
+              }
             />
-          </InputLabel>
-
-          <InputLabel>
-            <span>Billing Details</span>
             <div className="flex flex-col gap-y-2">
-              <Input
-                name="name"
-                type="text"
-                variant="square"
-                placeholder="ACME Inc."
-              />
-              <CountrySelect
-                value={billingCountry}
-                onValueChange={(value) => setBillingCountry(value)}
-              />
-              {billingCountry && (
+              <InputLabel className="flex gap-2 items-center font-normal">
+                <Checkbox
+                  checked={formData.same_end_user}
+                  onCheckedChange={(same_end_user) =>
+                    setFormData((fd) => ({
+                      ...fd,
+                      same_end_user: !!same_end_user,
+                    }))
+                  }
+                />
+                <span>End User is the same company</span>
+              </InputLabel>
+              {!formData.same_end_user && (
                 <>
-                  <InputLabel>
-                    <span>Address (optional)</span>
-                    <div className="flex flex-col gap-y-2">
-                      <Input
-                        name="line1"
-                        type="text"
-                        variant="square"
-                        placeholder="Adress Line 1"
-                      />
-                      <Input
-                        name="line2"
-                        type="text"
-                        variant="square"
-                        placeholder="Adress Line 2"
-                      />
-                      <Input
-                        name="postal_code"
-                        type="text"
-                        variant="square"
-                        placeholder="ZIP or postal code"
-                      />
-                      <Input
-                        name="city"
-                        type="text"
-                        variant="square"
-                        placeholder="City, district, suburb, town, or village"
-                      />
-                      <Input
-                        name="state"
-                        type="text"
-                        variant="square"
-                        placeholder="State, county, province, or region"
-                      />
-                    </div>
-                  </InputLabel>
+                  <InputLabel>End User Company Name</InputLabel>
+                  <Input
+                    required
+                    name="name"
+                    type="text"
+                    placeholder="ACME Inc."
+                  />
+                  <InputLabel>End User Company Website</InputLabel>
+                  <Input
+                    placeholder="https://..."
+                    name="company"
+                    type="url"
+                    required
+                  />
                 </>
               )}
             </div>
-          </InputLabel>
-
-          <InputLabel>
-            <span>End User Details</span>
-          </InputLabel>
-
-          <InputLabel className="flex gap-2 items-center font-normal">
-            <Checkbox
-              checked={isSameEndUser}
-              onCheckedChange={(checked) => setIsSameEndUser(!!checked)}
-            />
-            <span>Same as Billing Details</span>
-          </InputLabel>
-          <InputLabel className="col-span-4">
-            <span>Additional Information</span>
-            {/* Maybe we should wrap this in a component and drop it into xy-ui/TextArea
-                  or something similar. */}
+            <InputLabel>Send us a message</InputLabel>
             <textarea
               name="message"
               placeholder="Your message..."
@@ -174,19 +184,21 @@ export default function Enterprise() {
               className="px-4 py-2 border border-gray-300 rounded-lg w-full resize-none"
               rows={5}
             />
-          </InputLabel>
-          <InputLabel className="flex gap-2 items-center font-normal">
-            <Checkbox required />
-            <span>Agree to Terms and Conditions</span>
-          </InputLabel>
-          <Button
-            className="!bg-primary hover:!bg-primary/90"
-            type="submit"
-            role="submit"
-          >
-            Request a quote
-          </Button>
-        </form>
+            <InputLabel className="flex gap-2 items-center font-normal my-6">
+              <Checkbox required />
+              <div>
+                <div>Agree to Terms and Conditions</div>
+              </div>
+            </InputLabel>
+            <Button
+              className="!bg-primary hover:!bg-primary/90"
+              type="submit"
+              role="submit"
+            >
+              Request a quote
+            </Button>
+          </form>
+        </Accordion>
       </Card>
       <SubscribeSection
         btnLink={`${process.env.NEXT_PUBLIC_PRO_PLATFORM_URL}/signup`}
@@ -248,7 +260,7 @@ const countries = [
 function CountrySelect({ value, onValueChange }) {
   return (
     <Select value={value} onValueChange={onValueChange}>
-      <SelectTrigger className="rounded-lg">
+      <SelectTrigger>
         <SelectValue placeholder="Select a country..." />
       </SelectTrigger>
       <SelectContent className="max-h-[var(--radix-select-content-available-height)]">
