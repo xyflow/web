@@ -1,50 +1,72 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useState, useEffect } from 'react';
 import {
   Card,
   InputLabel,
   Input,
   Button,
-  Select,
-  SelectTrigger,
-  SelectContent,
-  SelectItem,
-  SelectValue,
   Checkbox,
   Accordion,
+  Link,
 } from '@xyflow/xy-ui';
 import { BaseLayout, Hero, SubscribeSection } from 'xy-shared';
 import { SparklesIcon } from '@heroicons/react/24/outline';
+import { useSearchParams } from 'next/navigation';
 
-export default function Enterprise() {
+export default function QuoteRequestPage() {
+  const searchParams = useSearchParams();
+
+  const [formState, setFormState] = useState({
+    loading: false,
+    error: false,
+    success: false,
+  });
+
   const [formData, setFormData] = useState({
     plan: 'starter',
-    email: undefined,
-    name: undefined,
-    website: undefined,
+    email: '',
+    name: '',
+    website: '',
     same_end_user: true,
-    end_user_name: undefined,
-    end_user_website: undefined,
-    message: undefined,
+    end_user_name: '',
+    end_user_website: '',
+    message: '',
   });
+
+  useEffect(() => {
+    const plan = searchParams.get('plan');
+
+    if (['starter', 'pro', 'enterprise'].includes(plan)) {
+      setFormData((fd) => ({ ...fd, plan }));
+    }
+  }, [searchParams]);
 
   const onSubmit = useCallback(
     async (evt: React.FormEvent<HTMLFormElement>) => {
       evt.preventDefault();
 
+      setFormState({ error: false, loading: true, success: false });
+
       try {
-        console.log(formData);
-        // const response = await fetch(
-        //   process.env.NEXT_PUBLIC_CONTACT_FORM_URL as string,
-        //   {
-        //     method: 'POST',
-        //     headers: {
-        //       'Content-Type': 'application/json',
-        //       Accept: 'application/json',
-        //     },
-        //     body: JSON.stringify(data),
-        //   },
-        // );
-      } catch (err) {}
+        const response = await fetch(
+          'https://local.functions.nhost.run/v1/stripe/create-quote',
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Accept: 'application/json',
+            },
+            body: JSON.stringify(formData),
+          },
+        );
+
+        if (response.ok) {
+          return setFormState({ error: false, loading: false, success: true });
+        }
+      } catch (err) {
+        return setFormState({ error: true, loading: false, success: false });
+      }
+
+      setFormState({ error: false, loading: false, success: false });
     },
     [formData],
   );
@@ -70,12 +92,12 @@ export default function Enterprise() {
         >
           <form className="flex flex-col gap-y-2" onSubmit={onSubmit}>
             <InputLabel>Subscription Plan</InputLabel>
-            <div className="grid grid-cols-3 gap-x-2">
+            <div className="grid grid-cols-3 gap-x-3 px-3 py-2 bg-gray-100 rounded-full">
               <Button
                 type="button"
                 className={
                   formData.plan === 'starter'
-                    ? 'hover:bg-white cursor-default'
+                    ? 'hover:bg-white cursor-default !bg-white !text-primary'
                     : 'hover:bg-gray-100'
                 }
                 variant={formData.plan === 'starter' ? 'outline' : 'ghost'}
@@ -89,7 +111,7 @@ export default function Enterprise() {
                 type="button"
                 className={
                   formData.plan === 'pro'
-                    ? 'hover:bg-white cursor-default'
+                    ? 'hover:bg-white cursor-default !bg-white !text-primary'
                     : 'hover:bg-gray-100'
                 }
                 variant={formData.plan === 'pro' ? 'outline' : 'ghost'}
@@ -101,7 +123,7 @@ export default function Enterprise() {
                 type="button"
                 className={
                   formData.plan === 'enterprise'
-                    ? 'hover:bg-white cursor-default'
+                    ? 'hover:bg-white cursor-default !bg-white !text-primary'
                     : 'hover:bg-gray-100'
                 }
                 variant={formData.plan === 'enterprise' ? 'outline' : 'ghost'}
@@ -127,6 +149,7 @@ export default function Enterprise() {
             <Input
               name="name"
               type="text"
+              required
               placeholder="ACME Inc."
               value={formData.name}
               onChange={(evt) =>
@@ -165,6 +188,13 @@ export default function Enterprise() {
                     name="name"
                     type="text"
                     placeholder="ACME Inc."
+                    value={formData.end_user_name}
+                    onChange={(evt) =>
+                      setFormData((fd) => ({
+                        ...fd,
+                        end_user_name: evt.target.value,
+                      }))
+                    }
                   />
                   <InputLabel>End User Company Website</InputLabel>
                   <Input
@@ -172,6 +202,13 @@ export default function Enterprise() {
                     name="company"
                     type="url"
                     required
+                    value={formData.end_user_website}
+                    onChange={(evt) =>
+                      setFormData((fd) => ({
+                        ...fd,
+                        end_user_website: evt.target.value,
+                      }))
+                    }
                   />
                 </>
               )}
@@ -183,6 +220,10 @@ export default function Enterprise() {
               // These classes are copied from the `<Input />` component.
               className="px-4 py-2 border border-gray-300 rounded-lg w-full resize-none"
               rows={5}
+              value={formData.message}
+              onChange={(evt) =>
+                setFormData((fd) => ({ ...fd, message: evt.target.value }))
+              }
             />
             <InputLabel className="flex gap-2 items-center font-normal my-6">
               <Checkbox required />
@@ -190,13 +231,34 @@ export default function Enterprise() {
                 <div>Agree to Terms and Conditions</div>
               </div>
             </InputLabel>
-            <Button
-              className="!bg-primary hover:!bg-primary/90"
-              type="submit"
-              role="submit"
-            >
-              Request a quote
-            </Button>
+            {formState.error && (
+              <InputLabel className="text-red-500">
+                Something went wrong. Please reach out to us at{' '}
+                <Link className="text-sm" href="mailto:info@xyflow.com">
+                  info@xyflow.com
+                </Link>
+                .
+              </InputLabel>
+            )}
+            {formState.success && (
+              <InputLabel className="text-green-700">
+                Thanks for your request! We will reach out to you shortly with
+                your quote.
+              </InputLabel>
+            )}
+            {!formState.error && !formState.success && (
+              <Button
+                className="!bg-primary hover:!bg-primary/90"
+                type="submit"
+                role="submit"
+                loading={formState.loading}
+                disabled={
+                  formState.loading || formState.error || formState.success
+                }
+              >
+                Request a quote
+              </Button>
+            )}
           </form>
         </Accordion>
       </Card>
@@ -205,69 +267,5 @@ export default function Enterprise() {
         btnLabel="Sign Up Now"
       />
     </BaseLayout>
-  );
-}
-
-const countries = [
-  { country: 'Australia', code: 'AU' },
-  { country: 'Austria', code: 'AT' },
-  { country: 'Belgium', code: 'BE' },
-  { country: 'Brazil', code: 'BR' },
-  { country: 'Bulgaria', code: 'BG' },
-  { country: 'Canada', code: 'CA' },
-  { country: 'Croatia', code: 'HR' },
-  { country: 'Cyprus', code: 'CY' },
-  { country: 'Czech Republic', code: 'CZ' },
-  { country: 'Denmark', code: 'DK' },
-  { country: 'Estonia', code: 'EE' },
-  { country: 'Finland', code: 'FI' },
-  { country: 'France', code: 'FR' },
-  { country: 'Germany', code: 'DE' },
-  { country: 'Gibraltar', code: 'GI' },
-  { country: 'Greece', code: 'GR' },
-  { country: 'Hong Kong', code: 'HK' },
-  { country: 'Hungary', code: 'HU' },
-  { country: 'India', code: 'IN' },
-  { country: 'Indonesia', code: 'ID' },
-  { country: 'Ireland', code: 'IE' },
-  { country: 'Italy', code: 'IT' },
-  { country: 'Japan', code: 'JP' },
-  { country: 'Latvia', code: 'LV' },
-  { country: 'Liechtenstein', code: 'LI' },
-  { country: 'Lithuania', code: 'LT' },
-  { country: 'Luxembourg', code: 'LU' },
-  { country: 'Malaysia', code: 'MY' },
-  { country: 'Malta', code: 'MT' },
-  { country: 'Mexico ', code: 'MX' },
-  { country: 'Netherlands', code: 'NL' },
-  { country: 'New Zealand', code: 'NZ' },
-  { country: 'Norway', code: 'NO' },
-  { country: 'Poland', code: 'PL' },
-  { country: 'Portugal', code: 'PT' },
-  { country: 'Romania', code: 'RO' },
-  { country: 'Singapore', code: 'SG' },
-  { country: 'Slovakia', code: 'SK' },
-  { country: 'Slovenia', code: 'SI' },
-  { country: 'Spain', code: 'ES' },
-  { country: 'Sweden', code: 'SE' },
-  { country: 'Switzerland', code: 'CH' },
-  { country: 'Thailand', code: 'TH' },
-  { country: 'United Arab Emirates', code: 'AE' },
-  { country: 'United Kingdom', code: 'GB' },
-  { country: 'United States', code: 'US' },
-];
-
-function CountrySelect({ value, onValueChange }) {
-  return (
-    <Select value={value} onValueChange={onValueChange}>
-      <SelectTrigger>
-        <SelectValue placeholder="Select a country..." />
-      </SelectTrigger>
-      <SelectContent className="max-h-[var(--radix-select-content-available-height)]">
-        {countries.map((country) => (
-          <SelectItem value={country.code}>{country.country}</SelectItem>
-        ))}
-      </SelectContent>
-    </Select>
   );
 }
