@@ -48,7 +48,7 @@ export default function QuoteRequestPage() {
 
       try {
         const response = await fetch(
-          'https://local.functions.nhost.run/v1/stripe/create-quote',
+          `${process.env.NEXT_PUBLIC_NHOST_API_URL}/stripe/create-quote`,
           {
             method: 'POST',
             headers: {
