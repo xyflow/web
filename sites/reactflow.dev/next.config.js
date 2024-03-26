@@ -1,4 +1,4 @@
-const redirects = require('./redirects/redirects.json');
+const redirects = require('./redirects.json');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
