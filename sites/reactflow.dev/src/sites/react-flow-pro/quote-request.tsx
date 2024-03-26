@@ -21,14 +21,13 @@ export default function QuoteRequestPage() {
     success: false,
   });
 
+  const [isDifferentEndUser, setIsDifferentEndUser] = useState(false);
+
   const [formData, setFormData] = useState({
     plan: 'starter',
     email: '',
     name: '',
     website: '',
-    same_end_user: true,
-    end_user_name: '',
-    end_user_website: '',
     message: '',
   });
 
@@ -156,63 +155,28 @@ export default function QuoteRequestPage() {
                 setFormData((fd) => ({ ...fd, name: evt.target.value }))
               }
             />
-            <InputLabel>Company Website</InputLabel>
-            <Input
-              placeholder="https://..."
-              name="company"
-              type="url"
-              required
-              value={formData.website}
-              onChange={(evt) =>
-                setFormData((fd) => ({ ...fd, website: evt.target.value }))
-              }
-            />
-            <div className="flex flex-col gap-y-2">
-              <InputLabel className="flex gap-2 items-center font-normal">
-                <Checkbox
-                  checked={formData.same_end_user}
-                  onCheckedChange={(same_end_user) =>
-                    setFormData((fd) => ({
-                      ...fd,
-                      same_end_user: !!same_end_user,
-                    }))
+            <InputLabel className="flex gap-2 items-center font-normal">
+              <Checkbox
+                checked={isDifferentEndUser}
+                onCheckedChange={(checked) => setIsDifferentEndUser(!!checked)}
+              />
+              <span>I am purchasing for another company (reseller)</span>
+            </InputLabel>
+            {isDifferentEndUser && (
+              <>
+                <InputLabel>End User Website</InputLabel>
+                <Input
+                  placeholder="https://..."
+                  name="company"
+                  type="url"
+                  required
+                  value={formData.website}
+                  onChange={(evt) =>
+                    setFormData((fd) => ({ ...fd, website: evt.target.value }))
                   }
                 />
-                <span>End User is the same company</span>
-              </InputLabel>
-              {!formData.same_end_user && (
-                <>
-                  <InputLabel>End User Company Name</InputLabel>
-                  <Input
-                    required
-                    name="name"
-                    type="text"
-                    placeholder="ACME Inc."
-                    value={formData.end_user_name}
-                    onChange={(evt) =>
-                      setFormData((fd) => ({
-                        ...fd,
-                        end_user_name: evt.target.value,
-                      }))
-                    }
-                  />
-                  <InputLabel>End User Company Website</InputLabel>
-                  <Input
-                    placeholder="https://..."
-                    name="company"
-                    type="url"
-                    required
-                    value={formData.end_user_website}
-                    onChange={(evt) =>
-                      setFormData((fd) => ({
-                        ...fd,
-                        end_user_website: evt.target.value,
-                      }))
-                    }
-                  />
-                </>
-              )}
-            </div>
+              </>
+            )}
             <InputLabel>Send us a message</InputLabel>
             <textarea
               name="message"
@@ -228,7 +192,15 @@ export default function QuoteRequestPage() {
             <InputLabel className="flex gap-2 items-center font-normal my-6">
               <Checkbox required />
               <div>
-                <div>Agree to Terms and Conditions</div>
+                <div>
+                  I have read and agree to the{' '}
+                  <Link
+                    className="text-sm text-primary"
+                    href="https://xyflow.com/terms-of-use"
+                  >
+                    Terms and Conditions
+                  </Link>
+                </div>
               </div>
             </InputLabel>
             {formState.error && (
