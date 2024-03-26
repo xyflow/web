@@ -5,9 +5,18 @@ description: This example shows how to update the data field of a specific node.
 
 import ExampleViewer from '@/components/example-viewer';
 import ExampleLayout from '@/layouts/example-with-frontmatter';
+import { Callout } from 'nextra/components';
 
 <ExampleLayout>
 You can update properties of nodes and edges freely as long as you pass a newly created `nodes` or `edges` array to `ReactFlow`.
+
+{' '}
+
+<Callout type="info">
+  You have to create a new `data` object on a node to notify React Flow about
+  data changes.
+</Callout>
+<br />
 
 <ExampleViewer
   codePath="example-flows/UpdateNode"
