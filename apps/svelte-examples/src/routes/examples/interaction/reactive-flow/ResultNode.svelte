@@ -17,7 +17,6 @@
   });
 
   $: nodesData = useNodesData($connections.map((connection) => connection.source));
-  $: console.log($nodesData);
 </script>
 
 <div class="custom">
@@ -28,7 +27,7 @@
     <div>no connected nodes</div>
   {:else}
     {#each $nodesData as nodeData}
-      <div>{nodeData.data?.text}</div>
+      <div>{nodeData.data.text}</div>
     {/each}
   {/if}
 </div>

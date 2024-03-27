@@ -17,7 +17,13 @@ export default function ContextMenu({
       y: node.position.y + 50,
     };
 
-    addNodes({ ...node, id: `${node.id}-copy`, position });
+    addNodes({
+      ...node,
+      selected: false,
+      dragging: false,
+      id: `${node.id}-copy`,
+      position,
+    });
   }, [id, getNode, addNodes]);
 
   const deleteNode = useCallback(() => {

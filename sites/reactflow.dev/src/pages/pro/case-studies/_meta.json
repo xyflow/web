@@ -7,5 +7,9 @@
       "pagination": false,
       "layout": "raw"
     }
+  },
+  "index": {
+    "display": "normal",
+    "title": "Case Studies Home"
   }
 }

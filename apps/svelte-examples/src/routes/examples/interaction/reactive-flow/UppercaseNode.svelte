@@ -20,8 +20,6 @@
 
   $: nodeData = useNodesData($connections[0]?.source);
 
-  $: console.log($nodeData);
-
   $: {
     updateNodeData(id, { text: $nodeData?.data?.text?.toUpperCase() || '' });
   }

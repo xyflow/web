@@ -43,7 +43,7 @@
     "reactflow": "^11.10.4",
     "timeago-react": "^3.0.6",
     "xy-shared": "workspace:*",
-    "zustand": "^4.4.1"
+    "zustand": "^4.5.2"
   },
   "devDependencies": {
     "@notionhq/client": "^2.2.5",

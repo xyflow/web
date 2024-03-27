@@ -1,6 +1,6 @@
 import React from 'react';
-import { ReactFlow } from '@xyflow/react';
-import { shallow } from 'zustand/shallow';
+import { useShallow } from 'zustand/react/shallow';
+import ReactFlow from 'reactflow';
 
 import '@xyflow/react/dist/style.css';
 
@@ -19,8 +19,7 @@ const selector = (state) => ({
 
 function Flow() {
   const { nodes, edges, onNodesChange, onEdgesChange, onConnect } = useStore(
-    selector,
-    shallow,
+    useShallow(selector),
   );
 
   return (
