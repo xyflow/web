@@ -6,10 +6,6 @@ import {
   OnConnect,
 } from '@xyflow/react';
 
-export type NodeData = {
-  color: string;
-};
-
 export type AppNode = Node;
 
 export type AppState = {

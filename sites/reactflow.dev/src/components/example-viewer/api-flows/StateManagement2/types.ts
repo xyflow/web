@@ -7,13 +7,14 @@ import {
   BuiltInNode,
 } from '@xyflow/react';
 
-export type NodeData = {
-  color: string;
-};
+export type ColorNode = Node<
+  {
+    color: string;
+  },
+  'colorChooser'
+>;
 
-export type ColorChooserNode = Node<NodeData, 'colorChooser'>;
-
-export type AppNode = ColorChooserNode | BuiltInNode;
+export type AppNode = ColorNode | BuiltInNode;
 
 export type AppState = {
   nodes: AppNode[];
