@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { Handle, NodeProps, Position } from '@xyflow/react';
+import { BuiltInNode, Handle, NodeProps, Position } from '@xyflow/react';
 
 const style = {
   padding: 10,
@@ -7,7 +7,7 @@ const style = {
   border: '1px solid #ddd',
 };
 
-const BiDirectionalNode = ({ data }: NodeProps) => {
+const BiDirectionalNode = ({ data }: NodeProps<BuiltInNode>) => {
   return (
     <div style={style}>
       <Handle type="source" position={Position.Left} id="left" />

@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useLayoutEffect } from 'react';
-import { Handle, NodeProps, Position } from '@xyflow/react';
+import { Handle, NodeProps, Position, Node } from '@xyflow/react';
 
 import useStore from './store';
 
@@ -7,7 +7,7 @@ export type NodeData = {
   label: string;
 };
 
-function MindMapNode({ id, data }: NodeProps<NodeData>) {
+function MindMapNode({ id, data }: NodeProps<Node<NodeData>>) {
   const inputRef = useRef<HTMLInputElement>();
   const updateNodeLabel = useStore((state) => state.updateNodeLabel);
 

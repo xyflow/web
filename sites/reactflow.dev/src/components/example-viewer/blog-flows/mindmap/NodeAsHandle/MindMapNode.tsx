@@ -1,5 +1,5 @@
 import React from 'react';
-import { Handle, NodeProps, Position } from '@xyflow/react';
+import { Handle, Node, NodeProps, Position } from '@xyflow/react';
 
 export type NodeData = {
   label: string;
@@ -7,7 +7,7 @@ export type NodeData = {
 
 import useStore from './store';
 
-function MindMapNode({ id, data }: NodeProps<NodeData>) {
+function MindMapNode({ id, data }: NodeProps<Node<NodeData>>) {
   const updateNodeLabel = useStore((state) => state.updateNodeLabel);
 
   return (

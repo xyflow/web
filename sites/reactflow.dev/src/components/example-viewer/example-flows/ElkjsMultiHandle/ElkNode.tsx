@@ -1,8 +1,8 @@
 import { Handle, NodeProps, Position } from '@xyflow/react';
 
-import { ElkNodeData } from './nodes';
+import { ElkNode as ElkNodeType } from './nodes';
 
-export default function ElkNode({ data }: NodeProps<ElkNodeData>) {
+export default function ElkNode({ data }: NodeProps<ElkNodeType>) {
   return (
     <>
       <div className="handles targets">
