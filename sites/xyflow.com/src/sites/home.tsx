@@ -112,7 +112,7 @@ export default function XYFlowHome() {
         }
         align="center"
         size="xl"
-        showGradient
+        backgroundVariant="gradient"
       />
 
       <ProjectCards projects={['reactflow', 'svelteflow']} />
