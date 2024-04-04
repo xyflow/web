@@ -75,7 +75,7 @@ export function NotFoundLayout({ children }: NotFoundLayoutProps) {
         }
         align="center"
         size="xl"
-        showGradient
+        backgroundVariant="gradient"
       >
         <div className="flex flex-col items-center -mt-[40px]">
           <Text size="lg" className="block">

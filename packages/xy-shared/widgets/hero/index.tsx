@@ -13,7 +13,7 @@ export type HeroProps = {
   align?: 'left' | 'center';
   children?: ReactNode;
   size?: 'md' | 'lg' | 'xl';
-  showGradient?: boolean;
+  backgroundVariant?: 'gradient' | 'image';
 };
 
 export function Hero({
@@ -26,7 +26,7 @@ export function Hero({
   className,
   align = 'left',
   size = 'lg',
-  showGradient = false,
+  backgroundVariant,
 }: HeroProps) {
   const isCenter = align === 'center';
   const isXL = size === 'xl';
@@ -34,7 +34,7 @@ export function Hero({
 
   return (
     <div ref={ref}>
-      {showGradient && (
+      {backgroundVariant === 'gradient' && (
         <div
           className="absolute -mt-16 opacity-10 w-[100vw] h-[70vw] left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none -z-10"
           style={{
@@ -42,6 +42,12 @@ export function Hero({
               'radial-gradient(rgba(68,91,222,1) 0%, rgba(215,78,243,1) 25%, rgba(255,255,255,1) 50%)',
           }}
         />
+      )}
+
+      {backgroundVariant === 'image' && (
+        <div className="relative">
+          <div className="absolute w-full h-[70vw] bg-gradient bg-no-repeat bg-contain lg:bg-[length:50%] bg-[90%_top]  pointer-events-none -z-10" />
+        </div>
       )}
 
       <div
