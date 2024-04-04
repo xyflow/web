@@ -43,3 +43,11 @@ html:has(body.nx-overflow-hidden) nav {
   position: fixed;
   width: 100%;
 }
+
+.sandpack-wrapper.vertical > .sp-wrapper > .sp-layout {
+  flex-direction: column-reverse;
+}
+
+.sandpack-wrapper.vertical .sp-stack {
+  flex: none;
+}

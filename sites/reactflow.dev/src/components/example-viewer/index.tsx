@@ -54,6 +54,7 @@ export default function ExampleViewer({
       isTypescript={isTypescript}
       dependencies={dependenciesWithDefault}
       editorHeight={editorHeight}
+      orientation="vertical"
       {...rest}
     />
   );

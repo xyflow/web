@@ -18,10 +18,12 @@
   cursor: pointer;
   font-family: var(--font);
   background-color: #f4f4f4;
+  border-right: 1px solid #ddd;
 }
 
 .react-flow__devtools button:hover {
   background: var(--highlight-color);
+  opacity: 0.8;
   color: white;
 }
 
@@ -32,11 +34,11 @@
 
 .react-flow__devtools button:first-child {
   border-radius: var(--border-radius) 0 0 var(--border-radius);
-  border-right: 1px solid #ddd;
 }
 
 .react-flow__devtools button:last-child {
   border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  border-right: none;
 }
 
 .react-flow__devtools-changelogger {

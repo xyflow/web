@@ -23,17 +23,12 @@ const initNodes: Node[] = [
   {
     id: '2a',
     data: { label: 'Node 2' },
-    position: { x: 100, y: 100 },
+    position: { x: 100, y: 120 },
   },
   {
     id: '3a',
     data: { label: 'Node 3' },
-    position: { x: 400, y: 100 },
-  },
-  {
-    id: '4a',
-    data: { label: 'Node 4' },
-    position: { x: 400, y: 200 },
+    position: { x: 400, y: 120 },
   },
 ];
 
@@ -41,6 +36,8 @@ const initEdges: Edge[] = [
   { id: 'e1-2', source: '1a', target: '2a' },
   { id: 'e1-3', source: '1a', target: '3a' },
 ];
+
+const fitViewOptions = { padding: 0.5 };
 
 function Flow() {
   const [nodes, , onNodesChange] = useNodesState(initNodes);
@@ -59,6 +56,7 @@ function Flow() {
       onEdgesChange={onEdgesChange}
       onConnect={onConnect}
       fitView
+      fitViewOptions={fitViewOptions}
     >
       <DevTools />
     </ReactFlow>

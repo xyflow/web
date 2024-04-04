@@ -1,22 +1,64 @@
 ---
 title: Devtools and Debugging
-description: Learn how to build your own devtools for React Flow
+description: Copy pastable devtools for React Flow
 ---
 
 import ExampleViewer from '@/components/example-viewer';
+import { Callout } from 'nextra/components';
 
 # Devtools and Debugging
 
-In this section you will learn how to build your own devtools for React Flow. We might add a devtools package in the future, but for now you can build your own.
+<Callout type="info">
+  This is an ongoing experiment on implementing React Flow devtools. While we
+  are working on the actual package, we would be happy to hear about your
+  feedback and ideas on [Discord](https://discord.gg/Bqt6xrs) or via mail at
+  info@xyflow.com.
+</Callout>
 
-<ExampleViewer
-  codePath="api-flows/Devtools"
-  options={{ editorHeight: 500, editorWidthPercentage: 45, wrapContent: true }}
-  additionalFiles={[
-    'Devtools.tsx',
-    'ChangeLogger.tsx',
-    'NodeInspector.tsx',
-    'style.css',
-  ]}
-  isTypescript
-/>
+React Flow might sometimes seem like a magic black box, but in reality you can reveal its secrets quite easily! Say goodbye to nasty `console.log` all over your code and use our current implementation as a copy pastable solution today.
+From our own experience developing new features, we constantly end up logging the same values like nodes and changes. Our proposal for the React Flow devtools is an independent component you can pass to your flow to get a better understanding of what is happening under the hood.
+
+The current implementation consists of three toggable components: `ChangeLogger`, `NodeInspector` and the `ViewportLogger`:
+
+<div className="nestedSandpack">
+  <ExampleViewer
+    codePath="api-flows/Devtools"
+    options={{
+      editorHeight: 500,
+      editorWidthPercentage: 45,
+      wrapContent: true,
+    }}
+    additionalFiles={[
+      'Devtools.tsx',
+      'ChangeLogger.tsx',
+      'NodeInspector.tsx',
+      'ViewportLogger.tsx',
+      'style.css',
+    ]}
+    isTypescript
+    editorHeight={400}
+    sandpackOptions={{
+      classes: {
+        'sp-wrapper': 'lel',
+      },
+    }}
+  />
+</div>
+
+If you want to try out our current approach, you can copy paste all or parts of the code above into your project. The components are independent and can be used separately. The `Devtools` component is the main component that wraps the other components. It also provides buttons to toggle the visibility of the different features.
+
+## Node Inspector
+
+If you want to get some insights about your node attributes, you can use the `NodeInspector` component. As you can see the implementation is pretty straight forward. It uses [`useNodes`](/api-reference/hooks/use-nodes) to get the current nodes and the [`ViewportPortal`](/api-reference/components/viewport-portal) to render the node attributes in a separate container without the need to apply the current viewport transform. You can add more attributes to the `NodeInspector` component by adding them to the `NodeInfo` component.
+
+## Change Logger
+
+If you are working with a controlled flow, React Flow calls `onNodesChange` with changes that the user need to apply in order to keep the state in sync. The `ChangeLogger` component logs these changes. The implementation is quite sneaky, because it intercepts the users `onNodesChanges` function. For this we get the user provided `onNodesChange` function from the store, extend it and call it after we added the actual changes to our changes list.
+
+## Viewport Logger
+
+This is the simplest component of the three. It logs the current viewport position and zoom level in a [`Panel` component](/api-reference/componentns/panel).
+
+## Let us know what you think
+
+As mentioned above, if you have any feedback or ideas on how to improve the devtools, please let us know on [Discord](https://discord.gg/Bqt6xrs) or via mail at info@xyflow.com.
