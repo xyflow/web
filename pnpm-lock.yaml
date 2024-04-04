@@ -737,7 +737,7 @@ importers:
         version: 12.0.0-next.12(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0)
       '@xyflow/system':
         specifier: latest
-        version: 0.0.20
+        version: 0.0.21
       '@xyflow/xy-ui':
         specifier: workspace:*
         version: link:../../packages/xy-ui
@@ -7520,6 +7520,18 @@ packages:
 
   /@xyflow/system@0.0.18:
     resolution: {integrity: sha512-OPRax1cKJLstvDrrb2sIxWZS+OhggP1cd9NA40ZAGTWDHTZLtVenujp3VrU6wyx0JQ4S8bN3InTQ6wuH3JTrzQ==}
+    dependencies:
+      '@types/d3': 7.4.3
+      '@types/d3-drag': 3.0.7
+      '@types/d3-selection': 3.0.10
+      '@types/d3-zoom': 3.0.8
+      d3-drag: 3.0.0
+      d3-selection: 3.0.0
+      d3-zoom: 3.0.0
+    dev: false
+
+  /@xyflow/system@0.0.20:
+    resolution: {integrity: sha512-OQ9irX0HtZqAzOKtnNi7WpDT6SEp7VpR16VRatd7oImw5vahyjmggUSY7as9XvJnAz0D9H0g1qjRX99moabvQA==}
     dependencies:
       '@types/d3': 7.4.3
       '@types/d3-drag': 3.0.7
