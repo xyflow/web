@@ -29,8 +29,8 @@ function ChangeInfo({ change }: ChangeInfoProps) {
           : null}
         {type === 'position'
           ? `position: ${change.position?.x.toFixed(
-              1,
-            )}, ${change.position?.y.toFixed(1)}`
+            1,
+          )}, ${change.position?.y.toFixed(1)}`
           : null}
         {type === 'remove' ? 'remove' : null}
         {type === 'replace' ? JSON.stringify(change.item, null, 2) : null}
@@ -57,16 +57,7 @@ export default function ChangeLogger({ limit = 20 }: ChangeLoggerProps) {
     const onNodesChangeLogger: OnNodesChange = (changes) => {
       userOnNodesChange(changes);
 
-      setChanges((c) => {
-        changes.forEach((change) => {
-          if (c.length >= limit) {
-            c.pop();
-          }
-
-          c = [change, ...c];
-        });
-        return c;
-      });
+      setChanges(oldChanges => [...changes, ...oldChanges].slice(0, 20));
     };
 
     store.setState({ onNodesChange: onNodesChangeLogger });
