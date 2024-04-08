@@ -6,8 +6,8 @@
     }
   },
   "learn": "Learn",
-  "api-reference": "Reference",
   "examples": "Examples",
+  "api-reference": "Reference",
   "community": {
     "title": "Community",
     "type": "menu",

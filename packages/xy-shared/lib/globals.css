@@ -5,14 +5,14 @@
 /* adds labels to the sidebar items */
 .sidebar-title.pro:after {
   content: 'Pro';
-  @apply bg-primary/10 border border-primary text-primary text-xs ml-1.5 px-1.5 font-bold rounded-full;
+  @apply bg-primary border border-primary text-white text-xs ml-1.5 px-1.5 font-bold rounded-full;
 }
 
 .sidebar-title.pro.free:after {
   content: 'Pro Trial';
 }
 
-li.active .sidebar-title.pro:after {
+li.active > .sidebar-title.pro:after {
   display: inline-block;
   @apply bg-primary border-primary text-white;
 }
@@ -26,6 +26,13 @@ li.active .sidebar-title.pro:after {
   content: 'new';
   font-weight: 500;
   @apply text-primary ml-1.5 px-1.5;
+}
+
+.nextra-menu-desktop li > a {
+}
+
+.nextra-menu-desktop li.active > a {
+  @apply bg-transparent text-primary;
 }
 
 /* if there is no content in the toc, we don't want it to take up the space */

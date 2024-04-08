@@ -4,7 +4,13 @@
       "toc": false
     }
   },
-  "index": "Overview",
+  "index": {
+    "title": "Examples",
+    "theme": {
+      "breadcrumb": false
+    }
+  },
+  "overview": "Basic Features",
   "nodes": "Nodes",
   "edges": "Edges",
   "layout": "Layout",
