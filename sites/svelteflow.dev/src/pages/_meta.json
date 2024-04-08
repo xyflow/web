@@ -20,6 +20,10 @@
         "title": "What's new?",
         "href": "/whats-new"
       },
+      "blog": {
+        "title": "Blog",
+        "href": "https://xyflow.com/blog"
+      },
       "discord": {
         "title": "Discord",
         "href": "https://discord.gg/RVmnytFmGW"

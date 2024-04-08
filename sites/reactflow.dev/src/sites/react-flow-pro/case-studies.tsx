@@ -13,7 +13,7 @@ export default function CaseStudies() {
         kicker="Case Studies"
         kickerIcon={SparklesIcon}
         align="center"
-        showGradient
+        backgroundVariant="gradient"
       />
       <ContentGrid className="mt-20">
         {getMdxPagesUnderRoute('/pro/case-studies')
