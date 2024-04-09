@@ -6,10 +6,17 @@ description:
   some such as width and height should be considered read-only.'
 ---
 
+import { Callout } from 'nextra/components';
 import { PropsTable } from '@/components/props-table';
 import { nodeFields } from '@/page-data/reference/types/Node.fields.ts';
 
 # Node&lt;T, U>
+
+<Callout type="info">
+  **Deprecation of `parentNode` property!** We have renamed the `parentNode`
+  option to `parentId` in version 11.11.0. The old property is still supported
+  but will be removed in version 12.
+</Callout>
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/v11/packages/core/src/types/nodes.ts/#L8)
 
@@ -36,7 +43,9 @@ export type Node<T, U extends string> = {
   dragHandle?: string;
   width?: number | null;
   height?: number | null;
+  /** @deprecated - use `parentId` instead */
   parentNode?: string;
+  parentId?: string;
   zIndex?: number;
   extent?: 'parent' | CoordinateExtent;
   expandParent?: boolean;

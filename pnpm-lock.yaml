@@ -14,7 +14,7 @@ importers:
     devDependencies:
       '@turbo/gen':
         specifier: ^1.10.14
-        version: 1.11.3(@types/node@20.11.30)(typescript@5.3.3)
+        version: 1.11.3(@types/node@20.12.6)(typescript@5.3.3)
       eslint:
         specifier: ^8.49.0
         version: 8.56.0
@@ -120,7 +120,7 @@ importers:
         version: 5.4.2
       vite:
         specifier: ^5.1.6
-        version: 5.1.6(@types/node@20.11.30)
+        version: 5.1.6(@types/node@20.12.6)
 
   apps/xy-styleguide:
     dependencies:
@@ -208,7 +208,7 @@ importers:
         version: 5.3.3
       vite:
         specifier: ^4.3.9
-        version: 4.5.1(@types/node@20.11.30)(less@4.2.0)
+        version: 4.5.1(@types/node@20.12.6)(less@4.2.0)
       xy-tailwind-config:
         specifier: workspace:*
         version: link:../../packages/xy-tailwind-config
@@ -242,7 +242,7 @@ importers:
         version: 3.5.2
       '@docsearch/react':
         specifier: ^3.5.2
-        version: 3.5.2(@algolia/client-search@4.23.1)(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0)(search-insights@2.13.0)
+        version: 3.5.2(@algolia/client-search@4.23.2)(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0)(search-insights@2.13.0)
       '@heroicons/react':
         specifier: ^2.0.18
         version: 2.1.1(react@18.2.0)
@@ -278,7 +278,7 @@ importers:
         version: 1.0.4(@types/react-dom@18.2.18)(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0)
       '@react-three/fiber':
         specifier: ^8.13.7
-        version: 8.15.13(react-dom@18.2.0)(react@18.2.0)(three@0.158.0)
+        version: 8.15.13(react-dom@18.2.0)(react@18.2.0)(three@0.163.0)
       '@sindresorhus/slugify':
         specifier: ^2.2.1
         version: 2.2.1
@@ -444,7 +444,7 @@ importers:
     dependencies:
       '@docsearch/react':
         specifier: '3'
-        version: 3.5.2(@algolia/client-search@4.23.1)(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0)(search-insights@2.13.0)
+        version: 3.5.2(@algolia/client-search@4.23.2)(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0)(search-insights@2.13.0)
       '@heroicons/react':
         specifier: ^2.0.18
         version: 2.1.1(react@18.2.0)
@@ -459,7 +459,7 @@ importers:
         version: 13.5.6(@mdx-js/loader@2.3.0)(@mdx-js/react@2.3.0)
       '@react-three/fiber':
         specifier: ^8.13.7
-        version: 8.15.13(react-dom@18.2.0)(react@18.2.0)(three@0.158.0)
+        version: 8.15.13(react-dom@18.2.0)(react@18.2.0)(three@0.163.0)
       '@stackblitz/sdk':
         specifier: ^1.9.0
         version: 1.9.0
@@ -518,8 +518,8 @@ importers:
         specifier: ^2.12.0
         version: 2.14.1(react@18.2.0)
       reactflow:
-        specifier: ^11.10.4
-        version: 11.10.4(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^11.11.0
+        version: 11.11.0(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0)
       timeago-react:
         specifier: ^3.0.6
         version: 3.0.6(react@18.2.0)
@@ -577,7 +577,7 @@ importers:
         version: 2.11.2(@lezer/common@1.2.1)(react-dom@18.2.0)(react@18.2.0)
       '@docsearch/react':
         specifier: '3'
-        version: 3.5.2(@algolia/client-search@4.23.1)(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0)(search-insights@2.13.0)
+        version: 3.5.2(@algolia/client-search@4.23.2)(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0)(search-insights@2.13.0)
       '@heroicons/react':
         specifier: ^2.0.18
         version: 2.1.1(react@18.2.0)
@@ -592,7 +592,7 @@ importers:
         version: 13.5.6(@mdx-js/loader@2.3.0)(@mdx-js/react@2.3.0)
       '@react-three/fiber':
         specifier: ^8.13.7
-        version: 8.15.13(react-dom@18.2.0)(react@18.2.0)(three@0.158.0)
+        version: 8.15.13(react-dom@18.2.0)(react@18.2.0)(three@0.163.0)
       '@stackblitz/sdk':
         specifier: ^1.9.0
         version: 1.9.0
@@ -701,7 +701,7 @@ importers:
         version: 2.11.2(@lezer/common@1.2.1)(react-dom@18.2.0)(react@18.2.0)
       '@docsearch/react':
         specifier: '3'
-        version: 3.5.2(@algolia/client-search@4.23.1)(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0)(search-insights@2.13.0)
+        version: 3.5.2(@algolia/client-search@4.23.2)(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0)(search-insights@2.13.0)
       '@heroicons/react':
         specifier: ^2.0.18
         version: 2.1.1(react@18.2.0)
@@ -716,7 +716,7 @@ importers:
         version: 13.5.6(@mdx-js/loader@2.3.0)(@mdx-js/react@2.3.0)
       '@react-three/fiber':
         specifier: ^8.13.7
-        version: 8.15.13(react-dom@18.2.0)(react@18.2.0)(three@0.158.0)
+        version: 8.15.13(react-dom@18.2.0)(react@18.2.0)(three@0.163.0)
       '@stackblitz/sdk':
         specifier: ^1.9.0
         version: 1.9.0
@@ -769,8 +769,8 @@ importers:
         specifier: ^2.12.0
         version: 2.14.1(react@18.2.0)
       reactflow:
-        specifier: ^11.10.4
-        version: 11.10.4(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^11.11.0
+        version: 11.11.0(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0)
       xy-shared:
         specifier: workspace:*
         version: link:../../packages/xy-shared
@@ -824,47 +824,47 @@ packages:
     resolution: {integrity: sha512-1Yjs2SvM8TflER/OD3cOjhWWOZb58A2t7wpE2S9XfBYTiIl+XFhQG2bjy4Pu1I+EAlCNUzRDYDdFwFYUKvXcIA==}
     engines: {node: '>=0.10.0'}
 
-  /@algolia/autocomplete-core@1.9.3(@algolia/client-search@4.23.1)(algoliasearch@4.22.1)(search-insights@2.13.0):
+  /@algolia/autocomplete-core@1.9.3(@algolia/client-search@4.23.2)(algoliasearch@4.22.1)(search-insights@2.13.0):
     resolution: {integrity: sha512-009HdfugtGCdC4JdXUbVJClA0q0zh24yyePn+KUGk3rP7j8FEe/m5Yo/z65gn6nP/cM39PxpzqKrL7A6fP6PPw==}
     dependencies:
-      '@algolia/autocomplete-plugin-algolia-insights': 1.9.3(@algolia/client-search@4.23.1)(algoliasearch@4.22.1)(search-insights@2.13.0)
-      '@algolia/autocomplete-shared': 1.9.3(@algolia/client-search@4.23.1)(algoliasearch@4.22.1)
+      '@algolia/autocomplete-plugin-algolia-insights': 1.9.3(@algolia/client-search@4.23.2)(algoliasearch@4.22.1)(search-insights@2.13.0)
+      '@algolia/autocomplete-shared': 1.9.3(@algolia/client-search@4.23.2)(algoliasearch@4.22.1)
     transitivePeerDependencies:
       - '@algolia/client-search'
       - algoliasearch
       - search-insights
     dev: false
 
-  /@algolia/autocomplete-plugin-algolia-insights@1.9.3(@algolia/client-search@4.23.1)(algoliasearch@4.22.1)(search-insights@2.13.0):
+  /@algolia/autocomplete-plugin-algolia-insights@1.9.3(@algolia/client-search@4.23.2)(algoliasearch@4.22.1)(search-insights@2.13.0):
     resolution: {integrity: sha512-a/yTUkcO/Vyy+JffmAnTWbr4/90cLzw+CC3bRbhnULr/EM0fGNvM13oQQ14f2moLMcVDyAx/leczLlAOovhSZg==}
     peerDependencies:
       search-insights: '>= 1 < 3'
     dependencies:
-      '@algolia/autocomplete-shared': 1.9.3(@algolia/client-search@4.23.1)(algoliasearch@4.22.1)
+      '@algolia/autocomplete-shared': 1.9.3(@algolia/client-search@4.23.2)(algoliasearch@4.22.1)
       search-insights: 2.13.0
     transitivePeerDependencies:
       - '@algolia/client-search'
       - algoliasearch
     dev: false
 
-  /@algolia/autocomplete-preset-algolia@1.9.3(@algolia/client-search@4.23.1)(algoliasearch@4.22.1):
+  /@algolia/autocomplete-preset-algolia@1.9.3(@algolia/client-search@4.23.2)(algoliasearch@4.22.1):
     resolution: {integrity: sha512-d4qlt6YmrLMYy95n5TB52wtNDr6EgAIPH81dvvvW8UmuWRgxEtY0NJiPwl/h95JtG2vmRM804M0DSwMCNZlzRA==}
     peerDependencies:
       '@algolia/client-search': '>= 4.9.1 < 6'
       algoliasearch: '>= 4.9.1 < 6'
     dependencies:
-      '@algolia/autocomplete-shared': 1.9.3(@algolia/client-search@4.23.1)(algoliasearch@4.22.1)
-      '@algolia/client-search': 4.23.1
+      '@algolia/autocomplete-shared': 1.9.3(@algolia/client-search@4.23.2)(algoliasearch@4.22.1)
+      '@algolia/client-search': 4.23.2
       algoliasearch: 4.22.1
     dev: false
 
-  /@algolia/autocomplete-shared@1.9.3(@algolia/client-search@4.23.1)(algoliasearch@4.22.1):
+  /@algolia/autocomplete-shared@1.9.3(@algolia/client-search@4.23.2)(algoliasearch@4.22.1):
     resolution: {integrity: sha512-Wnm9E4Ye6Rl6sTTqjoymD+l8DjSTHsHboVRYrKgEt8Q7UHm9nYbqhN/i0fhUYA3OAEH7WA8x3jfpnmJm3rKvaQ==}
     peerDependencies:
       '@algolia/client-search': '>= 4.9.1 < 6'
       algoliasearch: '>= 4.9.1 < 6'
     dependencies:
-      '@algolia/client-search': 4.23.1
+      '@algolia/client-search': 4.23.2
       algoliasearch: 4.22.1
     dev: false
 
@@ -878,8 +878,8 @@ packages:
     resolution: {integrity: sha512-TJMBKqZNKYB9TptRRjSUtevJeQVXRmg6rk9qgFKWvOy8jhCPdyNZV1nB3SKGufzvTVbomAukFR8guu/8NRKBTA==}
     dev: false
 
-  /@algolia/cache-common@4.23.1:
-    resolution: {integrity: sha512-w0sqXuwbGyIDsFDHTZzTv79rZjW7vc/6vCPdqYAAkiUlvvCdUo0cCWFXpbMpvYHBS2IXZXJaQY0R9yL/bmk9VQ==}
+  /@algolia/cache-common@4.23.2:
+    resolution: {integrity: sha512-OUK/6mqr6CQWxzl/QY0/mwhlGvS6fMtvEPyn/7AHUx96NjqDA4X4+Ju7aXFQKh+m3jW9VPB0B9xvEQgyAnRPNw==}
     dev: false
 
   /@algolia/cache-in-memory@4.22.1:
@@ -912,11 +912,11 @@ packages:
       '@algolia/transporter': 4.22.1
     dev: false
 
-  /@algolia/client-common@4.23.1:
-    resolution: {integrity: sha512-01lBsO8r4KeXWIDzVQoPMYwOndeAvSQk3xk3Bxwrt2ag5jrGswiq8DgEqPVx+PQw+7T5GY6dS25cYcdv1dVorA==}
+  /@algolia/client-common@4.23.2:
+    resolution: {integrity: sha512-Q2K1FRJBern8kIfZ0EqPvUr3V29ICxCm/q42zInV+VJRjldAD9oTsMGwqUQ26GFMdFYmqkEfCbY4VGAiQhh22g==}
     dependencies:
-      '@algolia/requester-common': 4.23.1
-      '@algolia/transporter': 4.23.1
+      '@algolia/requester-common': 4.23.2
+      '@algolia/transporter': 4.23.2
     dev: false
 
   /@algolia/client-personalization@4.22.1:
@@ -935,20 +935,20 @@ packages:
       '@algolia/transporter': 4.22.1
     dev: false
 
-  /@algolia/client-search@4.23.1:
-    resolution: {integrity: sha512-jeA1ZksO0N33SZhcLRa4paUI7LFJrrhtMlw27eIdPTVv/npV0dMLoNGPg3MuLSeZqRKqfpY7tTOBjRZFMhskLg==}
+  /@algolia/client-search@4.23.2:
+    resolution: {integrity: sha512-CxSB29OVGSE7l/iyoHvamMonzq7Ev8lnk/OkzleODZ1iBcCs3JC/XgTIKzN/4RSTrJ9QybsnlrN/bYCGufo7qw==}
     dependencies:
-      '@algolia/client-common': 4.23.1
-      '@algolia/requester-common': 4.23.1
-      '@algolia/transporter': 4.23.1
+      '@algolia/client-common': 4.23.2
+      '@algolia/requester-common': 4.23.2
+      '@algolia/transporter': 4.23.2
     dev: false
 
   /@algolia/logger-common@4.22.1:
     resolution: {integrity: sha512-OnTFymd2odHSO39r4DSWRFETkBufnY2iGUZNrMXpIhF5cmFE8pGoINNPzwg02QLBlGSaLqdKy0bM8S0GyqPLBg==}
     dev: false
 
-  /@algolia/logger-common@4.23.1:
-    resolution: {integrity: sha512-hGsqJrpeZfw1Ng8ctWj9gg8zXlSmEMA0cfbBn3yoZa3so8oQZmB9uz57AJcJj1CfSBf+5SK8/AF4kjTungvgUA==}
+  /@algolia/logger-common@4.23.2:
+    resolution: {integrity: sha512-jGM49Q7626cXZ7qRAWXn0jDlzvoA1FvN4rKTi1g0hxKsTTSReyYk0i1ADWjChDPl3Q+nSDhJuosM2bBUAay7xw==}
     dev: false
 
   /@algolia/logger-console@4.22.1:
@@ -967,8 +967,8 @@ packages:
     resolution: {integrity: sha512-dgvhSAtg2MJnR+BxrIFqlLtkLlVVhas9HgYKMk2Uxiy5m6/8HZBL40JVAMb2LovoPFs9I/EWIoFVjOrFwzn5Qg==}
     dev: false
 
-  /@algolia/requester-common@4.23.1:
-    resolution: {integrity: sha512-G9+ySLxPBtn2o6Mk4NoxPnkYtAe/isxrVy5LmJ4za+aYEdV5tvZpgvn+k4558T7XoRBrI2eQKyjnvQs7zJeCdw==}
+  /@algolia/requester-common@4.23.2:
+    resolution: {integrity: sha512-3EfpBS0Hri0lGDB5H/BocLt7Vkop0bTTLVUBB844HH6tVycwShmsV6bDR7yXbQvFP1uNpgePRD3cdBCjeHmk6Q==}
     dev: false
 
   /@algolia/requester-node-http@4.22.1:
@@ -985,12 +985,12 @@ packages:
       '@algolia/requester-common': 4.22.1
     dev: false
 
-  /@algolia/transporter@4.23.1:
-    resolution: {integrity: sha512-8ucVx0hV7yIeTZUFsix31UEIJFRauPriWlzLBbDy9gRHrK45WbMQ1S9FliDdoY5OvbFxi0/5OKRj0Dw1EkbcJA==}
+  /@algolia/transporter@4.23.2:
+    resolution: {integrity: sha512-GY3aGKBy+8AK4vZh8sfkatDciDVKad5rTY2S10Aefyjh7e7UGBP4zigf42qVXwU8VOPwi7l/L7OACGMOFcjB0Q==}
     dependencies:
-      '@algolia/cache-common': 4.23.1
-      '@algolia/logger-common': 4.23.1
-      '@algolia/requester-common': 4.23.1
+      '@algolia/cache-common': 4.23.2
+      '@algolia/logger-common': 4.23.2
+      '@algolia/requester-common': 4.23.2
     dev: false
 
   /@alloc/quick-lru@5.2.0:
@@ -2505,7 +2505,7 @@ packages:
     resolution: {integrity: sha512-SPiDHaWKQZpwR2siD0KQUwlStvIAnEyK6tAE2h2Wuoq8ue9skzhlyVQ1ddzOxX6khULnAALDiR/isSF3bnuciA==}
     dev: false
 
-  /@docsearch/react@3.5.2(@algolia/client-search@4.23.1)(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0)(search-insights@2.13.0):
+  /@docsearch/react@3.5.2(@algolia/client-search@4.23.2)(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0)(search-insights@2.13.0):
     resolution: {integrity: sha512-9Ahcrs5z2jq/DcAvYtvlqEBHImbm4YJI8M9y0x6Tqg598P40HTEkX7hsMcIuThI+hTFxRGZ9hll0Wygm2yEjng==}
     peerDependencies:
       '@types/react': '>= 16.8.0 < 19.0.0'
@@ -2522,8 +2522,8 @@ packages:
       search-insights:
         optional: true
     dependencies:
-      '@algolia/autocomplete-core': 1.9.3(@algolia/client-search@4.23.1)(algoliasearch@4.22.1)(search-insights@2.13.0)
-      '@algolia/autocomplete-preset-algolia': 1.9.3(@algolia/client-search@4.23.1)(algoliasearch@4.22.1)
+      '@algolia/autocomplete-core': 1.9.3(@algolia/client-search@4.23.2)(algoliasearch@4.22.1)(search-insights@2.13.0)
+      '@algolia/autocomplete-preset-algolia': 1.9.3(@algolia/client-search@4.23.2)(algoliasearch@4.22.1)
       '@docsearch/css': 3.5.2
       '@types/react': 18.2.47
       algoliasearch: 4.22.1
@@ -3155,7 +3155,7 @@ packages:
       magic-string: 0.27.0
       react-docgen-typescript: 2.2.2(typescript@5.3.3)
       typescript: 5.3.3
-      vite: 4.5.1(@types/node@20.11.30)(less@4.2.0)
+      vite: 4.5.1(@types/node@20.12.6)(less@4.2.0)
     dev: true
 
   /@jridgewell/gen-mapping@0.3.3:
@@ -4785,7 +4785,7 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@react-three/fiber@8.15.13(react-dom@18.2.0)(react@18.2.0)(three@0.158.0):
+  /@react-three/fiber@8.15.13(react-dom@18.2.0)(react@18.2.0)(three@0.163.0):
     resolution: {integrity: sha512-FS6F/k69q2KEf7nxdce1Rzd5qyp6VHtTgjouTMfiotWNiNwlhfQQeAxfcnDg0i2XVaOUGkLaD9BK8LBVnpfzUA==}
     peerDependencies:
       expo: '>=43.0'
@@ -4822,8 +4822,24 @@ packages:
       react-use-measure: 2.1.1(react-dom@18.2.0)(react@18.2.0)
       scheduler: 0.21.0
       suspend-react: 0.1.3(react@18.2.0)
-      three: 0.158.0
+      three: 0.163.0
       zustand: 3.7.2(react@18.2.0)
+    dev: false
+
+  /@reactflow/background@11.3.10(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-EdrQrNOdZtK5I+g+rKqLgiNU1rHXtpu2kQ0Af0LZ6v8yzOhAIMpxC70MeLXCLhZRHBkg1djk7gP6ZOSFZQFbUQ==}
+    peerDependencies:
+      react: '>=17'
+      react-dom: '>=17'
+    dependencies:
+      '@reactflow/core': 11.11.0(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0)
+      classcat: 5.0.5
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      zustand: 4.5.2(@types/react@18.2.47)(react@18.2.0)
+    transitivePeerDependencies:
+      - '@types/react'
+      - immer
     dev: false
 
   /@reactflow/background@11.3.6(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0):
@@ -4850,6 +4866,22 @@ packages:
     dependencies:
       '@reactflow/core': 11.10.4(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0)
       classcat: 5.0.4
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      zustand: 4.5.2(@types/react@18.2.47)(react@18.2.0)
+    transitivePeerDependencies:
+      - '@types/react'
+      - immer
+    dev: false
+
+  /@reactflow/controls@11.2.10(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-Y4lzm34Fu1uA67v83A91Ff9em9rHoVr80nk53OcI3IzgAN5Fzav+LEbXblCdMSl7nObdxnReK56H++upfTjVXA==}
+    peerDependencies:
+      react: '>=17'
+      react-dom: '>=17'
+    dependencies:
+      '@reactflow/core': 11.11.0(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0)
+      classcat: 5.0.5
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       zustand: 4.5.2(@types/react@18.2.47)(react@18.2.0)
@@ -4934,6 +4966,48 @@ packages:
       - immer
     dev: false
 
+  /@reactflow/core@11.11.0(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-Flw7kpEvXXb+qfT6jhFmscZLzIN8AY7kZC8SwVOW0ijpsgvILnE6cMq45CKmTaWxl82KbaHPxZUB3FeQxb1KMQ==}
+    peerDependencies:
+      react: '>=17'
+      react-dom: '>=17'
+    dependencies:
+      '@types/d3': 7.4.3
+      '@types/d3-drag': 3.0.7
+      '@types/d3-selection': 3.0.10
+      '@types/d3-zoom': 3.0.8
+      classcat: 5.0.5
+      d3-drag: 3.0.0
+      d3-selection: 3.0.0
+      d3-zoom: 3.0.0
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      zustand: 4.4.7(@types/react@18.2.47)(react@18.2.0)
+    transitivePeerDependencies:
+      - '@types/react'
+      - immer
+    dev: false
+
+  /@reactflow/minimap@11.7.10(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-tlNctCy87n+yhaATham4W+UgcSWj+iASF8CNsQVowYaiEPZlugvEHfNl724Z1eqXXl7iBqz9zZWEzYVUf9/+qA==}
+    peerDependencies:
+      react: '>=17'
+      react-dom: '>=17'
+    dependencies:
+      '@reactflow/core': 11.11.0(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0)
+      '@types/d3-selection': 3.0.10
+      '@types/d3-zoom': 3.0.8
+      classcat: 5.0.5
+      d3-selection: 3.0.0
+      d3-zoom: 3.0.0
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      zustand: 4.5.2(@types/react@18.2.47)(react@18.2.0)
+    transitivePeerDependencies:
+      - '@types/react'
+      - immer
+    dev: false
+
   /@reactflow/minimap@11.7.6(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-kJEtyeQkTZYViLGebVWHVUJROMAGcvejvT+iX4DqKnFb5yK8E8LWlXQpRx2FrL9gDy80mJJaciy7IxnnQKE1bg==}
     peerDependencies:
@@ -4974,6 +5048,24 @@ packages:
       - immer
     dev: false
 
+  /@reactflow/node-resizer@2.2.10(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-pErzqNTKA9q7SdvlOo+lNjoLoGck7GGqO7acmYKkqRnML13BS+rL5tBu880ZEm6htQK0juz3EM+asTPkdPJ00Q==}
+    peerDependencies:
+      react: '>=17'
+      react-dom: '>=17'
+    dependencies:
+      '@reactflow/core': 11.11.0(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0)
+      classcat: 5.0.5
+      d3-drag: 3.0.0
+      d3-selection: 3.0.0
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      zustand: 4.5.2(@types/react@18.2.47)(react@18.2.0)
+    transitivePeerDependencies:
+      - '@types/react'
+      - immer
+    dev: false
+
   /@reactflow/node-resizer@2.2.6(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-1Xb6q97uP7hRBLpog9sRCNfnsHdDgFRGEiU+lQqGgPEAeYwl4nRjWa/sXwH6ajniKxBhGEvrdzOgEFn6CRMcpQ==}
     peerDependencies:
@@ -5002,6 +5094,22 @@ packages:
       classcat: 5.0.4
       d3-drag: 3.0.0
       d3-selection: 3.0.0
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      zustand: 4.5.2(@types/react@18.2.47)(react@18.2.0)
+    transitivePeerDependencies:
+      - '@types/react'
+      - immer
+    dev: false
+
+  /@reactflow/node-toolbar@1.3.10(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-0zifoe2i/SjooZuWZZ03wYOraPfkqqyn6XUlryjzSGzABOSQuaXd71YrdIkmhym9/5fbCsLg42Dct3V9r0f1Eg==}
+    peerDependencies:
+      react: '>=17'
+      react-dom: '>=17'
+    dependencies:
+      '@reactflow/core': 11.11.0(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0)
+      classcat: 5.0.5
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       zustand: 4.5.2(@types/react@18.2.47)(react@18.2.0)
@@ -5510,7 +5618,7 @@ packages:
       magic-string: 0.30.5
       rollup: 3.29.4
       typescript: 5.3.3
-      vite: 4.5.1(@types/node@20.11.30)(less@4.2.0)
+      vite: 4.5.1(@types/node@20.12.6)(less@4.2.0)
     transitivePeerDependencies:
       - encoding
       - supports-color
@@ -5884,7 +5992,7 @@ packages:
       react: 18.2.0
       react-docgen: 7.0.2
       react-dom: 18.2.0(react@18.2.0)
-      vite: 4.5.1(@types/node@20.11.30)(less@4.2.0)
+      vite: 4.5.1(@types/node@20.12.6)(less@4.2.0)
     transitivePeerDependencies:
       - '@preact/preset-vite'
       - encoding
@@ -6031,7 +6139,7 @@ packages:
       sirv: 2.0.4
       svelte: 4.2.12
       tiny-glob: 0.2.9
-      vite: 5.1.6(@types/node@20.11.30)
+      vite: 5.1.6(@types/node@20.12.6)
     dev: true
 
   /@sveltejs/vite-plugin-svelte-inspector@2.0.0(@sveltejs/vite-plugin-svelte@3.0.2)(svelte@4.2.12)(vite@5.1.6):
@@ -6045,7 +6153,7 @@ packages:
       '@sveltejs/vite-plugin-svelte': 3.0.2(svelte@4.2.12)(vite@5.1.6)
       debug: 4.3.4
       svelte: 4.2.12
-      vite: 5.1.6(@types/node@20.11.30)
+      vite: 5.1.6(@types/node@20.12.6)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -6064,7 +6172,7 @@ packages:
       magic-string: 0.30.7
       svelte: 4.2.12
       svelte-hmr: 0.15.3(svelte@4.2.12)
-      vite: 5.1.6(@types/node@20.11.30)
+      vite: 5.1.6(@types/node@20.12.6)
       vitefu: 0.2.5(vite@5.1.6)
     transitivePeerDependencies:
       - supports-color
@@ -6292,7 +6400,7 @@ packages:
     resolution: {integrity: sha512-vxhUy4J8lyeyinH7Azl1pdd43GJhZH/tP2weN8TntQblOY+A0XbT8DJk1/oCPuOOyg/Ja757rG0CgHcWC8OfMA==}
     dev: true
 
-  /@turbo/gen@1.11.3(@types/node@20.11.30)(typescript@5.3.3):
+  /@turbo/gen@1.11.3(@types/node@20.12.6)(typescript@5.3.3):
     resolution: {integrity: sha512-cHGRj7Jn7Hw1cA7NuwWYfYdhEliQX4LuSfEB9L1m8ifGkHalU3bbYXcehzLThmckpGpUQGnXYx0UtVudbQ42HA==}
     hasBin: true
     dependencies:
@@ -6304,7 +6412,7 @@ packages:
       minimatch: 9.0.3
       node-plop: 0.26.3
       proxy-agent: 6.3.1
-      ts-node: 10.9.2(@types/node@20.11.30)(typescript@5.3.3)
+      ts-node: 10.9.2(@types/node@20.12.6)(typescript@5.3.3)
       update-check: 1.5.4
       validate-npm-package-name: 5.0.0
     transitivePeerDependencies:
@@ -6600,11 +6708,11 @@ packages:
   /@types/eslint-scope@3.7.7:
     resolution: {integrity: sha512-MzMFlSLBqNF2gcHWO0G1vP/YQyfvrxZ0bF+u7mzUdZ1/xK4A4sru+nraZz5i3iEIk1l1uyicaDVTB4QbbEkAYg==}
     dependencies:
-      '@types/eslint': 8.56.6
+      '@types/eslint': 8.56.7
       '@types/estree': 1.0.5
 
-  /@types/eslint@8.56.6:
-    resolution: {integrity: sha512-ymwc+qb1XkjT/gfoQwxIeHZ6ixH23A+tCT2ADSA/DPVKzAjwYkTXBMCQ/f6fe4wEa85Lhp26VPeUxI7wMhAi7A==}
+  /@types/eslint@8.56.7:
+    resolution: {integrity: sha512-SjDvI/x3zsZnOkYZ3lCt9lOZWZLB2jIlNKz+LBgCtDurK0JZcwucxYHn1w2BJkD34dgX9Tjnak0txtq4WTggEA==}
     dependencies:
       '@types/estree': 1.0.5
       '@types/json-schema': 7.0.15
@@ -6784,8 +6892,8 @@ packages:
       undici-types: 5.26.5
     dev: true
 
-  /@types/node@20.11.30:
-    resolution: {integrity: sha512-dHM6ZxwlmuZaRmUPfv1p+KrdD1Dci04FbdEm/9wEMouFqxYoFl5aMkt0VMAUtYRQDyYvD41WJLukhq/ha3YuTw==}
+  /@types/node@20.12.6:
+    resolution: {integrity: sha512-3KurE8taB8GCvZBPngVbp0lk5CKi8M9f9k1rsADh0Evdz5SzJ+Q+Hx9uHoFGsLnLnd1xmkDQr2hVhlA0Mn0lKQ==}
     dependencies:
       undici-types: 5.26.5
 
@@ -7274,7 +7382,7 @@ packages:
       vite: ^4 || ^5
     dependencies:
       '@swc/core': 1.3.102
-      vite: 4.5.1(@types/node@20.11.30)(less@4.2.0)
+      vite: 4.5.1(@types/node@20.12.6)(less@4.2.0)
     transitivePeerDependencies:
       - '@swc/helpers'
     dev: true
@@ -7290,7 +7398,7 @@ packages:
       '@babel/plugin-transform-react-jsx-source': 7.23.3(@babel/core@7.23.7)
       magic-string: 0.27.0
       react-refresh: 0.14.0
-      vite: 4.5.1(@types/node@20.11.30)(less@4.2.0)
+      vite: 4.5.1(@types/node@20.12.6)(less@4.2.0)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -8338,6 +8446,10 @@ packages:
 
   /classcat@5.0.4:
     resolution: {integrity: sha512-sbpkOw6z413p+HDGcBENe498WM9woqWHiJxCq7nvmxe9WmrUmqfAcxpIwAiMtM5Q3AhYkzXcNQHqsWq0mND51g==}
+
+  /classcat@5.0.5:
+    resolution: {integrity: sha512-JhZUT7JFcQy/EzW605k/ktHtncoo9vnyW/2GspNYwFlN1C/WmjuV/xtS04e9SOkL2sTdw0VAZ2UGCcQ9lR6p6w==}
+    dev: false
 
   /clean-set@1.1.2:
     resolution: {integrity: sha512-cA8uCj0qSoG9e0kevyOWXwPaELRPVg5Pxp6WskLMwerx257Zfnh8Nl0JBH59d7wQzij2CK7qEfJQK3RjuKKIug==}
@@ -11813,7 +11925,7 @@ packages:
     resolution: {integrity: sha512-7vuh85V5cdDofPyxn58nrPjBktZo0u9x1g8WtjQol+jZDaE+fhN+cIvTj11GndBnMnyfrUOG1sZQxCdjKh+DKg==}
     engines: {node: '>= 10.13.0'}
     dependencies:
-      '@types/node': 20.11.30
+      '@types/node': 20.12.6
       merge-stream: 2.0.0
       supports-color: 8.1.1
 
@@ -14867,6 +14979,25 @@ packages:
       - immer
     dev: false
 
+  /reactflow@11.11.0(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-DGA5x/zB+lyHZxu9j6k5kmz9ECk4k/ZtLU1cdd7a3sZgl3Jy7i7NKtOL0cdkSVVu8Bi96286idyMszveSozufA==}
+    peerDependencies:
+      react: '>=17'
+      react-dom: '>=17'
+    dependencies:
+      '@reactflow/background': 11.3.10(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0)
+      '@reactflow/controls': 11.2.10(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0)
+      '@reactflow/core': 11.11.0(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0)
+      '@reactflow/minimap': 11.7.10(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0)
+      '@reactflow/node-resizer': 2.2.10(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0)
+      '@reactflow/node-toolbar': 1.3.10(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    transitivePeerDependencies:
+      - '@types/react'
+      - immer
+    dev: false
+
   /read-cache@1.0.0:
     resolution: {integrity: sha512-Owdv/Ft7IjOgm/i0xvNDZ1LrRANRfew4b2prF3OWMQLxLfu3bS8FVhCsrSCMK4lR56Y9ya+AThoTpDCTxCmpRA==}
     dependencies:
@@ -16227,7 +16358,7 @@ packages:
       jest-worker: 27.5.1
       schema-utils: 3.3.0
       serialize-javascript: 6.0.2
-      terser: 5.29.2
+      terser: 5.30.3
       webpack: 5.91.0(esbuild@0.18.20)
     dev: true
 
@@ -16251,12 +16382,12 @@ packages:
       jest-worker: 27.5.1
       schema-utils: 3.3.0
       serialize-javascript: 6.0.2
-      terser: 5.29.2
+      terser: 5.30.3
       webpack: 5.91.0
     dev: false
 
-  /terser@5.29.2:
-    resolution: {integrity: sha512-ZiGkhUBIM+7LwkNjXYJq8svgkd+QK3UUr0wJqY4MieaezBSAIPgbSPZyIx0idM6XWK5CMzSWa8MJIzmRcB8Caw==}
+  /terser@5.30.3:
+    resolution: {integrity: sha512-STdUgOUx8rLbMGO9IOwHLpCqolkDITFFQSMYYwKE1N2lY6MVSaeoi10z/EhWxRc6ybqoVmKSkhKYH/XUpl7vSA==}
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
@@ -16290,6 +16421,10 @@ packages:
 
   /three@0.158.0:
     resolution: {integrity: sha512-TALj4EOpdDPF1henk2Q+s17K61uEAAWQ7TJB68nr7FKxqwyDr3msOt5IWdbGm4TaWKjrtWS8DJJWe9JnvsWOhQ==}
+    dev: false
+
+  /three@0.163.0:
+    resolution: {integrity: sha512-HlMgCb2TF/dTLRtknBnjUTsR8FsDqBY43itYop2+Zg822I+Kd0Ua2vs8CvfBVefXkBdNDrLMoRTGCIIpfCuDew==}
     dev: false
 
   /through2@2.0.5:
@@ -16433,7 +16568,7 @@ packages:
   /ts-interface-checker@0.1.13:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
 
-  /ts-node@10.9.2(@types/node@20.11.30)(typescript@5.3.3):
+  /ts-node@10.9.2(@types/node@20.12.6)(typescript@5.3.3):
     resolution: {integrity: sha512-f0FFpIdcHgn8zcPSbf1dRevwt047YMnaiJM3u2w2RewrB+fob/zePZcrOyQoLMMO7aBIddLcQIEK5dYjkLnGrQ==}
     hasBin: true
     peerDependencies:
@@ -16452,7 +16587,7 @@ packages:
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 20.11.30
+      '@types/node': 20.12.6
       acorn: 8.11.3
       acorn-walk: 8.3.2
       arg: 4.1.3
@@ -17085,7 +17220,7 @@ packages:
       vfile-message: 4.0.2
     dev: false
 
-  /vite@4.5.1(@types/node@20.11.30)(less@4.2.0):
+  /vite@4.5.1(@types/node@20.12.6)(less@4.2.0):
     resolution: {integrity: sha512-AXXFaAJ8yebyqzoNB9fu2pHoo/nWX+xZlaRwoeYUxEqBO+Zj4msE5G+BhGBll9lYEKv9Hfks52PAF2X7qDYXQA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -17113,7 +17248,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 20.11.30
+      '@types/node': 20.12.6
       esbuild: 0.18.20
       less: 4.2.0
       postcss: 8.4.33
@@ -17122,7 +17257,7 @@ packages:
       fsevents: 2.3.3
     dev: true
 
-  /vite@5.1.6(@types/node@20.11.30):
+  /vite@5.1.6(@types/node@20.12.6):
     resolution: {integrity: sha512-yYIAZs9nVfRJ/AiOLCA91zzhjsHUgMjB+EigzFb6W2XTLO8JixBCKCjvhKZaye+NKYHCrkv3Oh50dH9EdLU2RA==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
@@ -17150,7 +17285,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 20.11.30
+      '@types/node': 20.12.6
       esbuild: 0.19.11
       postcss: 8.4.36
       rollup: 4.13.0
@@ -17166,7 +17301,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 5.1.6(@types/node@20.11.30)
+      vite: 5.1.6(@types/node@20.12.6)
     dev: true
 
   /vscode-oniguruma@1.7.0:

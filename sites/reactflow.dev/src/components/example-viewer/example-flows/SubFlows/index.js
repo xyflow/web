@@ -28,7 +28,7 @@ const initialNodes = [
     id: '2a',
     data: { label: 'Node A.1' },
     position: { x: 10, y: 50 },
-    parentNode: '2',
+    parentId: '2',
   },
   {
     id: '3',
@@ -49,7 +49,7 @@ const initialNodes = [
     data: { label: 'Node B.1' },
     position: { x: 15, y: 65 },
     className: 'light',
-    parentNode: '4',
+    parentId: '4',
     extent: 'parent',
   },
   {
@@ -62,21 +62,21 @@ const initialNodes = [
       height: 150,
       width: 270,
     },
-    parentNode: '4',
+    parentId: '4',
   },
   {
     id: '4b1',
     data: { label: 'Node B.A.1' },
     position: { x: 20, y: 40 },
     className: 'light',
-    parentNode: '4b',
+    parentId: '4b',
   },
   {
     id: '4b2',
     data: { label: 'Node B.A.2' },
     position: { x: 100, y: 100 },
     className: 'light',
-    parentNode: '4b',
+    parentId: '4b',
   },
 ];
 

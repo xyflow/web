@@ -20,6 +20,7 @@ export const nodeFields: PropsTableProps = {
     { name: 'width?', type: 'number | null' },
     { name: 'height?', type: 'number | null' },
     { name: 'parentNode?', type: 'string' },
+    { name: 'parentId?', type: 'string' },
     { name: 'zIndex?', type: 'number' },
     { name: 'extent?', type: '"parent" | CoordinateExtent' },
     { name: 'expandParent?', type: 'boolean' },
