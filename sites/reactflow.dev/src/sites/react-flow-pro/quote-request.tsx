@@ -75,10 +75,10 @@ export default function QuoteRequestPage() {
       <Hero
         kicker="React Flow Pro"
         title="Request a Quote"
-        subtitle="Use the form below to get an official quote for one of our subscription plans."
+        subtitle="Use the form below to get an official quote for one of our annual subscription plans."
         kickerIcon={SparklesIcon}
         align="center"
-        showGradient
+        backgroundVariant="gradient"
       />
       <Card className="p-8 bg-white relative max-w-xl mx-auto mt-16">
         <Accordion

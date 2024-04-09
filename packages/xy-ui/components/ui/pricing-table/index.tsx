@@ -42,7 +42,7 @@ const PricingTable = ({
   const isMonthly = billingInterval === BillingInterval.MONTH;
 
   return (
-    <TooltipProvider>
+    <TooltipProvider delayDuration={0}>
       <div>
         <div
           className={cn(
