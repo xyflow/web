@@ -23,6 +23,12 @@ export default {
     url: 'https://twitter.com/moklick',
     image: 'https://github.com/moklick.png',
   },
+  peter: {
+    name: 'Peter Gorzo',
+    title: 'xyflow',
+    url: '',
+    image: 'https://github.com/peterkogo.png',
+  },
   sumit: {
     name: 'Sumit Gupta',
     title: 'CTO / Co-Founder of Doubleloop',
