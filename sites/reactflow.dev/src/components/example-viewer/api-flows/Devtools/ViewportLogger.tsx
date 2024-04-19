@@ -1,6 +1,6 @@
 import { Panel, useStore } from 'reactflow';
 
-export default function NodeInspector() {
+export default function ViewportLogger() {
   const viewport = useStore(
     (s) =>
       `x: ${s.transform[0].toFixed(2)}, y: ${s.transform[1].toFixed(

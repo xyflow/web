@@ -11,7 +11,7 @@ import NodeInspector from './NodeInspector';
 import ChangeLogger from './ChangeLogger';
 import ViewportLogger from './ViewportLogger';
 
-export default function ReactFlowDevTools() {
+export default function DevTools() {
   const [nodeInspectorActive, setNodeInspectorActive] = useState(true);
   const [changeLoggerActive, setChangeLoggerActive] = useState(true);
   const [viewportLoggerActive, setViewportLoggerActive] = useState(true);

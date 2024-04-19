@@ -51,11 +51,11 @@ export default function ChangeLogger({ limit = 20 }: ChangeLoggerProps) {
     const onNodesChangeLogger: OnNodesChange = (changes) => {
       userOnNodesChange(changes);
 
-      setChanges((oldChanges) => [...changes, ...oldChanges].slice(0, 20));
+      setChanges((oldChanges) => [...changes, ...oldChanges].slice(0, limit));
     };
 
     store.setState({ onNodesChange: onNodesChangeLogger });
-  }, [onNodesChange]);
+  }, [onNodesChange, limit]);
 
   return (
     <div className="react-flow__devtools-changelogger">
