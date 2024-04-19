@@ -71,6 +71,14 @@ div.nextra-nav-container-blur {
   --gradientAngle: 258deg;
 }
 
+main .nx-text-primary-600 {
+  @apply text-primary;
+}
+
+main .nx-border-primary-500 {
+  @apply border-primary;
+}
+
 .pro-button:before {
   transition: --gradientAngle 0.3s ease;
   background: linear-gradient(
