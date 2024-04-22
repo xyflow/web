@@ -152,7 +152,7 @@ import {
   applyNodeChanges,
   applyEdgeChanges,
 } from 'reactflow';
-import { create } from 'zustand';
+import { createWithEqualityFn } from "zustand/traditional";
 
 export type RFState = {
   nodes: Node[];
@@ -161,7 +161,7 @@ export type RFState = {
   onEdgesChange: OnEdgesChange;
 };
 
-const useStore = create<RFState>((set, get) => ({
+const useStore = createWithEqualityFn<RFState>((set, get) => ({
   nodes: [
     {
       id: 'root',
