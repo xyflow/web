@@ -473,8 +473,8 @@ importers:
         specifier: ^0.155.1
         version: 0.155.1
       '@xyflow/react':
-        specifier: 12.0.0-next.12
-        version: 12.0.0-next.12(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 12.0.0-next.15
+        version: 12.0.0-next.15(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0)
       '@xyflow/xy-ui':
         specifier: workspace:*
         version: link:../../packages/xy-ui
@@ -7444,6 +7444,22 @@ packages:
       - immer
     dev: false
 
+  /@xyflow/react@12.0.0-next.15(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-8EFPbredDlBB/a/OpSzaybrCfN1WP6sHoDk9iB73NEG8QEbbzxHPAkAaCb7yHKcyoyDzXg25v5ormmZ13vWwcw==}
+    peerDependencies:
+      react: '>=17'
+      react-dom: '>=17'
+    dependencies:
+      '@xyflow/system': 0.0.24
+      classcat: 5.0.4
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      zustand: 4.5.2(@types/react@18.2.47)(react@18.2.0)
+    transitivePeerDependencies:
+      - '@types/react'
+      - immer
+    dev: false
+
   /@xyflow/react@12.0.0-next.9(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-WrW5H4HN/oHXORnUdy5tYs6tK96npLZAvcx8weza3tzkNiZO+gncjpwHxWq/wt5ABIAgSadCXRvfv8nAMTlrnQ==}
     peerDependencies:
@@ -7544,6 +7560,18 @@ packages:
 
   /@xyflow/system@0.0.21:
     resolution: {integrity: sha512-IvvJkC495u8mIA4Xm35dnQp0a5JUwzRm8eDBWKNyI3lAw93dOr85cKSrCNSuQ5M5SWNy2teFCFvnQEgVjwK3dg==}
+    dependencies:
+      '@types/d3': 7.4.3
+      '@types/d3-drag': 3.0.7
+      '@types/d3-selection': 3.0.10
+      '@types/d3-zoom': 3.0.8
+      d3-drag: 3.0.0
+      d3-selection: 3.0.0
+      d3-zoom: 3.0.0
+    dev: false
+
+  /@xyflow/system@0.0.24:
+    resolution: {integrity: sha512-aWUT1+m2naRlNrqCF3DIV6OEvmLJSUxMOG83pIglA+EEsvGtNaprpZxgj5Ypopf3rVE92wpLmVPDf3meAdzM5A==}
     dependencies:
       '@types/d3': 7.4.3
       '@types/d3-drag': 3.0.7

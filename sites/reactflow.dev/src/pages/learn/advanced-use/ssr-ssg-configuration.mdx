@@ -24,7 +24,7 @@ In this guide you will learn how to configure React Flow to render a flow on the
 
 ### Node dimensions
 
-You need to configure a few things to make React Flow work on the server, the most important being the node dimensions. React Flow only renders nodes if they have a width and height. Usually you pass nodes without a specific `width` and `height`, they are then measured and the dimensions get written to `computed.width` and `computed.height`. Since we can't measure the dimensions on the server, we need to pass them explicitly. This can be done with the `width` and `height` or the `initialWidth` and `initialHeight` node properties.
+You need to configure a few things to make React Flow work on the server, the most important being the node dimensions. React Flow only renders nodes if they have a width and height. Usually you pass nodes without a specific `width` and `height`, they are then measured and the dimensions get written to `measured.width` and `measured.height`. Since we can't measure the dimensions on the server, we need to pass them explicitly. This can be done with the `width` and `height` or the `initialWidth` and `initialHeight` node properties.
 
 ```js
 const nodes = [
@@ -39,7 +39,7 @@ const nodes = [
 ];
 ```
 
-React Flow now knows the dimensions of the node and can render it on the server. The `width` and `height` properties are used as an inline style for the node. If you expect nodes to have different dimensions on the client or if the dimensions should by dynamic based on the content, you can use the `initialWidth` and `initialHeight` properties. They are only used for the first render (on the server or on the client) as long as the nodes are not measured and `computed.width` and `computed.height` are not set.
+React Flow now knows the dimensions of the node and can render it on the server. The `width` and `height` properties are used as an inline style for the node. If you expect nodes to have different dimensions on the client or if the dimensions should by dynamic based on the content, you can use the `initialWidth` and `initialHeight` properties. They are only used for the first render (on the server or on the client) as long as the nodes are not measured and `measured.width` and `measured.height` are not set.
 
 <Callout type="default">
   <strong>

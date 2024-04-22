@@ -30,16 +30,16 @@ const CollisionDetectionFlow = () => {
 
   const onNodeDrag = (evt, node) => {
     // calculate the center point of the node from position and dimensions
-    const centerX = node.position.x + node.computed.width / 2;
-    const centerY = node.position.y + node.computed.height / 2;
+    const centerX = node.position.x + node.measured.width / 2;
+    const centerY = node.position.y + node.measured.height / 2;
 
     // find a node where the center point is inside
     const targetNode = nodes.find(
       (n) =>
         centerX > n.position.x &&
-        centerX < n.position.x + n.computed.width &&
+        centerX < n.position.x + n.measured.width &&
         centerY > n.position.y &&
-        centerY < n.position.y + n.computed.height &&
+        centerY < n.position.y + n.measured.height &&
         n.id !== node.id, // this is needed, otherwise we would always find the dragged node
     );
 

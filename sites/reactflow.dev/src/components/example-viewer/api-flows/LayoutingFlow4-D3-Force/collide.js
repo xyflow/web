@@ -10,7 +10,7 @@ export function collide() {
     );
 
     for (const node of nodes) {
-      const r = node.computed.width / 2;
+      const r = node.measured.width / 2;
       const nx1 = node.x - r;
       const nx2 = node.x + r;
       const ny1 = node.y - r;
@@ -20,7 +20,7 @@ export function collide() {
         if (!quad.length) {
           do {
             if (quad.data !== node) {
-              const r = node.computed.width / 2 + quad.data.width / 2;
+              const r = node.measured.width / 2 + quad.data.width / 2;
               let x = node.x - quad.data.x;
               let y = node.y - quad.data.y;
               let l = Math.hypot(x, y);

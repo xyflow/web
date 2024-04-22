@@ -31,8 +31,8 @@ export const nodeFields: PropsTableProps = {
     { name: 'handles?', type: 'NodeHandle[]' },
     { name: 'origin?', type: 'NodeOrigin' },
     {
-      name: 'computed?',
-      type: '{ width?: number, height?: number, positionAbsolute: XYPosition}',
+      name: 'measured?',
+      type: '{ width?: number, height?: number }',
     },
   ],
 };

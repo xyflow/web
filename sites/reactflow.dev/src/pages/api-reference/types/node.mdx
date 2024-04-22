@@ -36,21 +36,19 @@ export type Node<T, U extends string> = {
   dragHandle?: string;
   width?: number | null;
   height?: number | null;
-  parentNode?: string;
+  parentId?: string;
   zIndex?: number;
   extent?: 'parent' | CoordinateExtent;
   expandParent?: boolean;
-  positionAbsolute?: XYPosition;
   ariaLabel?: string;
   focusable?: boolean;
   style?: React.CSSProperties;
   className?: string;
   origin?: NodeOrigin;
   handles?: NodeHandle[];
-  computed?: {
+  measured?: {
     width?: number;
     height?: number;
-    positionAbsolute?: XYPosition;
   };
 };
 ```

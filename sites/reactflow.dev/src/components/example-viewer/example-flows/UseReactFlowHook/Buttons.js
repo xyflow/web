@@ -23,8 +23,8 @@ export default () => {
     if (nodes.length > 0) {
       const node = nodes[0];
 
-      const x = node.position.x + node.computed.width / 2;
-      const y = node.position.y + node.computed.height / 2;
+      const x = node.position.x + node.measured.width / 2;
+      const y = node.position.y + node.measured.height / 2;
       const zoom = 1.85;
 
       setCenter(x, y, { zoom, duration: 1000 });
