@@ -3,10 +3,9 @@ import { Handle, useStore, Position } from 'reactflow';
 
 export default memo(({ id }) => {
   const label = useStore((s) => {
-    const node = s.nodeInternals.get('2-3');
-    const isConnected = s.edges.some((edge) => edge.target === id);
+    const node = s.nodeInternals.get(id);
 
-    if (!node || !isConnected) {
+    if (!node) {
       return null;
     }
 
