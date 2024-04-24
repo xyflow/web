@@ -56,13 +56,13 @@ export const nodes = [
         transform: 'translate(5px, 25px) scale(1, -1) rotate(100deg)',
       },
     },
-    position: { x: 245, y: 200 },
+    position: { x: 220, y: 200 },
   },
   {
     id: '2-1',
     type: 'group',
     position: {
-      x: -150,
+      x: -170,
       y: 250,
     },
     style: {

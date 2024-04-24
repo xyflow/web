@@ -10,9 +10,9 @@ export default memo(({ id }) => {
       return null;
     }
 
-    return `position ${parseInt(node.position.x)}x ${parseInt(
+    return `position x:${parseInt(node.position.x)} y:${parseInt(
       node.position.y,
-    )}y`;
+    )}`;
   });
 
   return (

@@ -200,3 +200,27 @@
   transform: translate(-50%, -50%);
   border-radius: 100%;
 }
+
+.react-flow__minimap .group {
+  fill-opacity: 0.4;
+}
+
+.react-flow__minimap .resizer,
+.react-flow__minimap .tools,
+.react-flow__minimap .circle,
+.react-flow__minimap .textinput {
+  fill: rgb(208, 192, 247);
+}
+
+.react-flow__minimap .resizer {
+  fill: rgb(208, 192, 247);
+}
+
+.react-flow__minimap .circle {
+  rx: 100%;
+  ry: 100%;
+}
+
+.react-flow__minimap .annotation {
+  display: none;
+}
