@@ -2,12 +2,9 @@ import React from 'react';
 import {
   BaseEdge,
   EdgeLabelRenderer,
-  EdgeProps,
   getBezierPath,
   useReactFlow,
 } from 'reactflow';
-
-import './buttonedge.css';
 
 export default function CustomEdge({
   id,
@@ -19,7 +16,7 @@ export default function CustomEdge({
   targetPosition,
   style = {},
   markerEnd,
-}: EdgeProps) {
+}) {
   const { setEdges } = useReactFlow();
   const [edgePath, labelX, labelY] = getBezierPath({
     sourceX,

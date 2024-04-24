@@ -1,6 +1,6 @@
 ---
 title: Feature Overview
-description: A basic example showing the most used features of React Flow - controls, MiniMap, node types, edge types, edge labels, and custom styling.
+description: An example that shows the most important features of React Flow - node types, edge types, edge labels, sub flows, custom nodes, node resizer, node toolbar, controls and mini map.
 ---
 
 import ExampleViewer from '@/components/example-viewer';
@@ -12,7 +12,17 @@ You can see different [node types](/api-reference/types/node) (input, default, o
 
 <ExampleViewer
   codePath="example-flows/Overview"
-  additionalFiles={['initial-elements.js', 'CustomNode.jsx', 'overview.css']}
+  additionalFiles={[
+    'initial-elements.js',
+    'AnnotationNode.jsx',
+    'ToolbarNode.jsx',
+    'ResizerNode.jsx',
+    'TextNode.jsx',
+    'CircleNode.jsx',
+    'ButtonEdge.jsx',
+    'overview.css',
+  ]}
+  orientation="vertical"
 />
 
 </ExampleLayout>
