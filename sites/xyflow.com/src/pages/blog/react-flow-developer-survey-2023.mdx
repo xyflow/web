@@ -1,0 +1,186 @@
+---
+title: 'React Flow Developer Survey 2023'
+htmlTitle: 'React Flow Developer Survey 2023'
+description: ''
+intro: ''
+date: 01 May 2024
+authors: ['john', 'hayleigh']
+tags: ['react-flow']
+image: '/img/blog/v11-reactflow-header.png'
+---
+
+import { Bleed } from 'nextra-theme-docs';
+import { Embed, Text, Image } from 'xy-shared';
+
+import { BlogPostLayout } from '@/layouts/blog-post-with-frontmatter';
+
+<BlogPostLayout>
+
+We've been doing this React Flow thing for a good few years now. Not only has a
+lot of the library's development been driven by our own real-world experience,
+we've also been fortunate enough to receive a lot of really great feedback from
+the community too. This feedback often comes in the form of GitHub issues and
+discussions in our Discord server, but we also conducted a survey of some of our
+Pro subscribers back in 2022.
+
+Getting this sort of feedback is invaluable: our users come from all sorts of
+backgrounds and our library is used by big companies and individuals alike. We
+decided quite late in the year to run an end-of-year survey to both discover
+and celebrate what the community has been up to with React Flow, but also to
+uncover the current pain points in both the library and our documentation.
+
+Now 2024 is getting away from us, and it's time to share what we found! This report
+serves two purposes:
+
+1. To share the results of the survey with the community! In particular we think
+   it's great to celebrate all the different people and projects that are using
+   React Flow.
+
+2. To help other open source projects understand what sort of insights they might
+   be able to gain from running a survey of their own.
+
+If you just care about the results, we also have a fun interactive React Flow app
+that shows off the highlights [here]().
+
+## Our method
+
+Any good survey starts with a clear goal in mind, and while none of us are
+researchers, we did our best to make sure that we were asking the right questions
+in the right way. We put together a survey using Typeform
+([did you know they use React Flow?](https://www.typeform.com/help/a/use-the-logic-map-to-add-logic-to-your-forms-5514792640916/))
+that would help us learn about our community in five important areas:
+
+1. **Who our users are and what is their expertise.** We know our users come from
+   all sorts of backgrounds and we're often discussing how to make sure our content
+   serves everyone (that's how we ended up with our super quick [TypeScript primer](https://reactflow.dev/api-reference#a-note-for-javascript-users)
+   for JavaScript users). Getting a better understanding of who our users are means
+   we can rely less on our gut feeling and make sure we're tailoring our content
+   to the right people.
+
+2. **What they are building with React Flow.** We love seeing all the cool things
+   people are building with React Flow! We wanted to know what sort of projects
+   people are working on to see if there were any unexpected use cases that we
+   could learn from or what common types of apps we could focus our development
+   and documentation efforts on.
+
+3. **Where our users go to get help.** We spend a lot of time on our documentation
+   so it's important to know that time is being spent in the right places. We have
+   analyticis to tell us what pages are popular, but if folks are heading somewhere
+   else to get help then that can tell us something too!
+
+4. **What features or things do they find most difficult about React Flow** and
+   **what would they like to see added.** Gathering feature requests is a no-brainer
+   for a survey like this – especially as we wrap up work on React Flow v12 and
+   set our sights on the future. But it's also useful to learn about the pain points
+   folks run into when using the library, especially if we can factor in their
+   different backgrounds and use cases.
+
+5. **What our users think about React Flow Pro**, why they would or would not
+   subscribe, and what they think about the pricing. It can feel a little uncomfortable
+   to talk about money in an open source project, but our Pro subscribers keep the
+   lights on and make sure we can can keep working on the project. That being said,
+   it's important to us that our regular users (that make up the vast majority of
+   our community) don't feel like we're squeezing them for cash or holding features
+   hostage. This vibe check can tell us if we're communicating what React Flow Pro
+   is about effectively.
+
+It's easy to fall into the trap of asking questions and collecting data that you
+don't need. Working out the gender split of React Flow users might be interesting,
+but "because it's interesting" is not a compelling reason for research! Keeping
+these goals in mind helps us focus the questions and make sure we're collecting
+information we can make use of.
+
+There's always a balance between wanting to capture the most information possible
+and making sure that the survey is short enough that people will actually take
+some time to fill it out. We designed the majority of the survey questions to be
+multiple choice (with many optionally including a free-form "other" response) and
+left the most important questions open-ended.
+
+## What we found
+
+The survey ended up being 19 questions long, and took a little less than 10
+minutes to complete. We had a total of 86 responses and worked out we had a 42.2%
+completition rate: that means about 200 people started the survey and roughly 120
+of them didn't finish it. A completition rate of 42% is actually pretty good for a
+survey like this!
+
+### Who is using React Flow?
+
+We mentioned in the previous section that discovering things like the gender
+split of our community weren't important to us, so what sort of information
+_did_ we collect?
+
+- 57% new to React Flow. Folks new to the library/community might be more engaged
+  and willing to provide feedback.
+
+- Half respondands _didn't_ put frontend as an area of expertise. That perspective
+  is important when we consider our documentation and how we communicate with our
+  users.
+
+- We had some respondants from data science and design backgrounds: not even
+  developers!
+
+- Majority of respondants said they were using React Flow _at work_. This is
+  interesting given that most of the respondants _also_ said they were new to
+  the library and/or frontend development.
+
+### What are people building with React Flow?
+
+- We were surprised to see the number of whiteboard or infinite-canvas style
+  apps users were building with React Flow. This has got us thinking about what
+  examples we can provide to help support this kind of use case.
+
+- We were also surprised to see how much _internal_ tooling was being built the
+  library. Often internal tools can be a bit unglamerous, but this turned out to
+  be one of the largest categories! The features we've added for computing flows
+  in React Flow v12 should help these folks a lot.
+
+- Yawn ai / workflow builder / no-code someone please write something insightful
+  about these things.
+
+### How do our users get help when they're stuck?
+
+- A surprising _26%_ of folks said they were getting help with React Flow from
+  ChatGPT. This is a little disheartening given the amount of time we spend on
+  our docs, but it's made us consider whether we can offer something similar
+  directly. We have _so much_ documentation now that something more conversational
+  might be the best way to navigate it!
+
+- On the other hand, 90% of respondants said they were using the official
+  documentation! Hooray. More interestingly, **8** people said they _don't_ use
+  the docs: for those folks our _discord_ server reigns supreme. Maybe there is
+  something to be said for a more conversational approach to our docs 👀
+
+- We forgot to put GitHub as an option for this question, but still got 6 responses
+  listing it. In our experience quite a few people _do_ open issues and discussions
+  to get help, so what gives? We ran an "event" on Discord that linked to the survey
+  and added a banner to our documentation site – folks visiting these places would
+  have _known_ we were running a survey. On the other hand there was no way to
+  know that the survey was being run from GitHub: if you primarily used GitHub to
+  get support or interact with the team then you likely would have never known we
+  were running a survey.
+
+- Our documentation is split up into three categories: API reference, examples,
+  and guides/tutorials. We asked participants if there is a category of docs that
+  they use more than others and 48% said they use the API reference the most! On
+  the other hand, only 15% said they use the tutorials the most, and the examples
+  sit somewhere in the middle. When we compare this to how much time participants
+  have spent with the library, it is clear the newcomers spend more time with our
+  long-form guides and more-experienced folks want to jump right into the API
+  reference.
+
+### What are the biggest pain points using React Flow?
+
+### How do our users feel about React Flow Pro?
+
+## Tips for other maintainers
+
+- Make sure you're reaching your entire community! We fumbled the bag by not
+  making it clear to our GitHub-based users that we were running a survey and
+  we've missed out on some valuable feedback!
+
+- Keep the survey short and focused. The attrition rate for these sorts of surveys
+  is high and only gets higher the longer the survey is or the more detail you
+  ask participants to provide.
+
+</BlogPostLayout>
