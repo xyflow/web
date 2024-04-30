@@ -1,6 +1,5 @@
-import { type } from 'os';
 import React from 'react';
-import { MarkerType, Position } from 'reactflow';
+import { MarkerType } from 'reactflow';
 
 export const nodes = [
   {
@@ -9,8 +8,9 @@ export const nodes = [
     draggable: false,
     selectable: false,
     data: {
+      level: 1,
       label:
-        '1. Built-in node and edge types. Draggable, selectable, removable and connectable!',
+        'Built-in node and edge types. Draggable, deletable and connectable!',
       arrowStyle: {
         right: 0,
         bottom: 0,
@@ -49,7 +49,8 @@ export const nodes = [
     draggable: false,
     selectable: false,
     data: {
-      label: '2. Support for sub flows, toolbars and resizing.',
+      level: 2,
+      label: 'Sub flows, toolbars and resizable nodes!',
       arrowStyle: {
         left: 0,
         bottom: 0,
@@ -108,13 +109,8 @@ export const nodes = [
     draggable: false,
     selectable: false,
     data: {
-      label: (
-        <>
-          3. A node can render anything and is fully customizable!
-          <br />
-          (this is a node too)
-        </>
-      ),
+      level: 3,
+      label: <>Nodes and edges can be anything and are fully customizable!</>,
       arrowStyle: {
         right: 0,
         bottom: 0,
@@ -138,7 +134,13 @@ export const nodes = [
 ];
 
 export const edges = [
-  { id: 'e1-2', source: '1-1', target: '1-2', label: 'edge' },
+  {
+    id: 'e1-2',
+    source: '1-1',
+    target: '1-2',
+    label: 'edge',
+    type: 'smoothstep',
+  },
   {
     id: 'e1-3',
     source: '1-1',
@@ -170,6 +172,8 @@ export const edges = [
     sourceHandle: 'a',
     target: '3-2',
     type: 'button',
+    animated: true,
+    style: { stroke: 'rgb(158, 118, 255)', strokeWidth: 2 },
   },
   {
     id: 'e3-4',
@@ -177,5 +181,6 @@ export const edges = [
     sourceHandle: 'b',
     target: '3-1',
     type: 'button',
+    style: { strokeWidth: 2 },
   },
 ];
