@@ -11,7 +11,7 @@ export default function Enterprise() {
         kicker="React Flow Pro"
         kickerIcon={SparklesIcon}
         align="center"
-        showGradient
+        backgroundVariant="gradient"
       />
       <Card className="p-8 bg-white relative max-w-xl mx-auto mt-16">
         <ContactForm>

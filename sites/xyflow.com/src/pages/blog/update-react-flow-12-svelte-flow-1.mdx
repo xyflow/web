@@ -1,0 +1,110 @@
+---
+title: 'Team Update – React Flow 12, Svelte Flow for Svelte 5, editable edges'
+intro: 'Let’s get into React Flow 12, Svelte Flow 1.0.0 in Svelte 5, a user survey, editable edges, and investigating our team’s working rhythm.'
+date: 29 April 2024
+authors: ['john']
+tags: ['update']
+image: '/img/blog/v11-reactflow-header.png'
+---
+
+import { Emoji } from '@xyflow/xy-ui';
+import { BlogPostLayout } from '@/layouts/blog-post-with-frontmatter';
+import { BlogExampleViewer } from '@/components/example-viewer';
+
+import { Bleed } from 'nextra-theme-docs';
+import { Embed, Text } from 'xy-shared';
+
+import Image from 'next/image';
+
+<BlogPostLayout>
+
+Birds are chirping again– wait no, it’s snowing. Wait no. I don’t know anymore, but it’s certainly been a while since we told everyone about what’s going on with our team. Let’s get into React Flow 12, Svelte Flow 1.0.0 in Svelte 5, our 2023 end-of-year survey, editable edges, and investigating our team’s working rhythm.
+
+## React Flow 12 🪁
+
+At the beginning of the year, we asked folks to try out the staged version of React Flow 12 and to send us any bugs they found, and a huuuuge thank you to those brave souls 🙏🏻. We’ve been taking our time to address them all before making sure we’re ready to release a stable version.
+
+The big ticket items coming in this release are:
+
+1. **Support for SSG/ SSR**: you can now render flows on the server ([example](https://codesandbox.io/p/devbox/reactflow-v12-next-3xlx3n?workspaceId=25a0577d-5515-44d9-bab2-59b9181e01e3))
+2. **Computing flows**: new hooks and helper functions to simplify data flows ([example](https://codesandbox.io/p/sandbox/reactflow-reactive-flow-34lk98?file=/src/Flow.tsx))
+3. **Dark mode**: a new base style and easy way to switch between built in color modes ([example](https://codesandbox.io/p/sandbox/reactflow-dark-mode-256l99))
+
+[Here’s the full feature list](https://github.com/xyflow/xyflow/discussions/3764)
+
+There have been lots of asks of “when?”, and our best answer is “soon!!” Getting this release out the door is our biggest priority right now, and we’re going to give it the time it will take. We're super excited to get this release out into the world.
+
+## Svelte Flow rewrite for Svelte 5 🚚
+
+Svelte 5 was announced last September, and we've been following the release closely! We like what we see, like fallback values for props which will help us as library maintainers. We have decided that our 1.0.0 release candidate will be written in Svelte 5 (Svelte Flow 0.0.x will remain available for anyone who wants to stick with Svelte 4), so stay tuned.
+
+## 2023 End-of-year survey ✅
+
+We sent out a survey to React Flow users at the end of last year, and we received 82 responses (thank you!!). We looked over the findings as a team and have been synthesizing them into a shareable report. The findings have already helped guide us in the right direction for the beginning of the year.
+
+Here's a sneak-peek of the findings:
+
+- The API reference is the most used section of our docs
+- Layouting, State Management, “Smart” Edges, and Performance were some of the biggest difficulties / needs from users
+- A quarter of people said they use ChatGPT to get help when they are having trouble with React Flow
+
+## Fresh Examples 🧼
+
+**Devtools:** One response from the end-of-the-year survey was _"... i find myself constantly printing out the values of edges, nodes and how they change. Maybe a small tool that displays the details of the current element on click (only enabled in dev mode) would help a lot for new comers willing to deep dive."_ Here's an answer to that, and maybe a React Flow DevTools package in the future! [See the code here](https://reactflow.dev/learn/advanced-use/devtools-and-debugging)
+
+<Bleed>
+  <BlogExampleViewer
+    codePath="api-flows/Devtools"
+    additionalFiles={[
+      'Devtools.tsx',
+      'ChangeLogger.tsx',
+      'NodeInspector.tsx',
+      'ViewportLogger.tsx',
+      'style.css',
+    ]}
+    isTypescript
+    editorHeight={200}
+    showEditor={false}
+  />
+</Bleed>
+
+**Editable Edge:** We have been asked to make an editable edge for so. so. long. We finally got the time to try it out, and thanks to Hayleigh and Peter, we now have it as a fully functional [Pro example](https://reactflow.dev/examples/edges/editable-edge)!
+
+<Bleed>
+  <Embed
+    lazy
+    src="https://pro-examples.reactflow.dev/editable-edge"
+    className="shadow-xs"
+  />
+</Bleed>
+
+More examples
+
+- Layout in ElkJS with multiple connections: https://reactflow.dev/examples/layout/elkjs-multiple-handles
+- Drag multiple connection lines at once from different nodes: https://reactflow.dev/examples/edges/multi-connection-line
+
+## Exploring working rhythms 🥁
+
+We’ve talked a lot about how we do medium- and long-term planning as a team, trying to not put too many constraints on ourselves so that we can’t explore, but also not giving ourselves so much freedom that we feel lost or decision paralysis every morning.
+
+We all met up in Berlin in March and decided to take some pieces of [Shape Up](https://www.notion.so/Newsletter-Blogpost-Spring-2024-c3d6cdae5c9744edbb935435fed058cc?pvs=21) into our work. We’ve been trying out writing project proposals (called “pitches”) and to work in three-week cycles on the projects we choose at the beginning of that cycle. We’re learning a lot and maybe at some point we can make our work a bit more transparent by sharing this process with the community. Smells like another blog post 👀
+
+## Other thoughts
+
+We're hosting a Town Hall in our [discord](https://discord.gg/RJegxRHM?event=1234425553000599583)! On Tuesday, May 7th, we'll talk about what we've been working on recently, what's on our minds, and answer general questions about the library (no troubleshooting though). It's at 8:00 SF, 11:00 NY, 17:00 Germany, 20:30 India. [Add to your calendar](https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=NXRqcmFubnIycjJyb2JoaGZyajlnZ2V0cjIgY19kOTc3ZTY4MTY4ZmZlYjAyMmQzODVkYmEzZDhmOWY2ZDA2ZmQxZTFiNmViYTMyMWRkZTYyODMyZGE1NzRiMTJjQGc&tmsrc=c_d977e68168ffeb022d385dba3d8f9f6d06fd1e1b6eba321dde62832da574b12c%40group.calendar.google.com).
+
+The [Open Canvas Working Group](https://www.canvasprotocol.org/) is kicking off to establish interoperability between infinite canvas tools. We’re following it! 👀
+
+John went to FOSSBackstage in Berlin and [tooted about it](https://fosstodon.org/@johnrobbjr@mastodon.social).
+
+Some numbers: We're up to 21k stars on Github, putting us in the top 1000 most-starred repos on Github. We now have 4k members in our [discord](https://discord.gg/RVmnytFmGW). We're up to 5k weekly installs of Svelte Flow (we were around 2k at the end of 2023).
+
+## We appreciate you! 🤗
+
+Thanks for y’all who test, use, share, subscribe, and support our libraries and ecosystems. Until next time!
+
+The xyflow team
+
+Christopher, Hayleigh, John, Moritz, and Peter
+
+</BlogPostLayout>

@@ -87,7 +87,7 @@ export default function ProExamples() {
             <SignUpButton showIcon />
           </div>
         }
-        showGradient
+        backgroundVariant="image"
       >
         <Image
           src="/img/pro/pro-examples.png"

@@ -3,5 +3,6 @@
   "testing": "Testing",
   "typescript": "TypeScript",
   "uncontrolled-flow": "Uncontrolled Flows",
-  "state-management": "State Management"
+  "state-management": "State Management",
+  "devtools-and-debugging": "Devtools"
 }
