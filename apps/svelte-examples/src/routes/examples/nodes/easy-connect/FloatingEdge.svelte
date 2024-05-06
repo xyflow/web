@@ -1,7 +1,7 @@
 <svelte:options immutable />
 
 <script lang="ts">
-  import { getStraightPath, useNodes, type EdgeProps, type Node } from '@xyflow/svelte';
+  import { getStraightPath, useInternalNode, type EdgeProps } from '@xyflow/svelte';
   import { getEdgeParams } from './utils';
 
   type $$Props = EdgeProps;
@@ -12,18 +12,12 @@
   export let style: EdgeProps['style'] = undefined;
   export let id: EdgeProps['id'];
 
-  const nodes = useNodes();
-
-  let sourceNode: Node | undefined;
-  let targetNode: Node | undefined;
+  let sourceNode = useInternalNode(source);
+  let targetNode = useInternalNode(target);
 
   let edgePath: string | undefined;
 
   $: {
-    $nodes.forEach((node) => {
-      if (node.id === source) sourceNode = node;
-      if (node.id === target) targetNode = node;
-    });
     if (sourceNode && targetNode) {
       const edgeParams = getEdgeParams(sourceNode, targetNode);
       edgePath = getStraightPath({

@@ -19,7 +19,7 @@ export const initialNodes: Node[] = [
     id: '2a',
     data: { label: 'Node A.1' },
     position: { x: 10, y: 50 },
-    parentNode: '2'
+    parentId: '2'
   },
   { id: '3', data: { label: 'Node 1' }, position: { x: 320, y: 100 }, class: 'light' },
   {
@@ -35,7 +35,7 @@ export const initialNodes: Node[] = [
     data: { label: 'Node B.1' },
     position: { x: 15, y: 65 },
     class: 'light',
-    parentNode: '4',
+    parentId: '4',
     extent: 'parent'
   },
   {
@@ -44,21 +44,21 @@ export const initialNodes: Node[] = [
     position: { x: 15, y: 120 },
     class: 'light',
     style: 'background-color: rgba(255, 0, 255, 0.2); width: 270px; height: 150px;',
-    parentNode: '4'
+    parentId: '4'
   },
   {
     id: '4b1',
     data: { label: 'Node B.A.1' },
     position: { x: 20, y: 40 },
     class: 'light',
-    parentNode: '4b'
+    parentId: '4b'
   },
   {
     id: '4b2',
     data: { label: 'Node B.A.2' },
     position: { x: 100, y: 100 },
     class: 'light',
-    parentNode: '4b'
+    parentId: '4b'
   }
 ];
 

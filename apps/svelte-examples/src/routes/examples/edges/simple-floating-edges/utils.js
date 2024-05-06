@@ -1,4 +1,4 @@
-import { Position, internalsSymbol } from '@xyflow/svelte';
+import { Position } from '@xyflow/svelte';
 
 // returns the position (top,right,bottom or right) passed node compared to
 function getParams(nodeA, nodeB) {
@@ -24,9 +24,7 @@ function getParams(nodeA, nodeB) {
 
 function getHandleCoordsByPosition(node, handlePosition) {
   // all handles are from type source, that's why we use handleBounds.source here
-  const handle = node[internalsSymbol].handleBounds.source.find(
-    (h) => h.position === handlePosition
-  );
+  const handle = node.internals.handleBounds.source.find((h) => h.position === handlePosition);
 
   let offsetX = handle.width / 2;
   let offsetY = handle.height / 2;
@@ -49,16 +47,16 @@ function getHandleCoordsByPosition(node, handlePosition) {
       break;
   }
 
-  const x = node.computed?.positionAbsolute.x + handle.x + offsetX;
-  const y = node.computed?.positionAbsolute.y + handle.y + offsetY;
+  const x = node.internals.positionAbsolute.x + handle.x + offsetX;
+  const y = node.internals.positionAbsolute.y + handle.y + offsetY;
 
   return [x, y];
 }
 
 function getNodeCenter(node) {
   return {
-    x: node.computed?.positionAbsolute.x + node.computed?.width / 2,
-    y: node.computed?.positionAbsolute.y + node.computed?.height / 2
+    x: node.internals.positionAbsolute.x + node.measured.width / 2,
+    y: node.internals.positionAbsolute.y + node.measured.height / 2
   };
 }
 
@@ -66,6 +64,8 @@ function getNodeCenter(node) {
 export function getEdgeParams(source, target) {
   const [sx, sy, sourcePos] = getParams(source, target);
   const [tx, ty, targetPos] = getParams(target, source);
+
+  console.log(sx, sy, sourcePos, tx, ty, targetPos);
 
   return {
     sx,

@@ -16,14 +16,14 @@
       type: 'input',
       data: { label: 'child 1' },
       position: { x: 10, y: 10 },
-      parentNode: 'A',
+      parentId: 'A',
       extent: 'parent'
     },
     {
       id: 'A-2',
       data: { label: 'child 2' },
       position: { x: 10, y: 90 },
-      parentNode: 'A',
+      parentId: 'A',
       extent: 'parent'
     },
     {
@@ -37,7 +37,7 @@
       id: 'B-1',
       data: { label: 'child 1' },
       position: { x: 50, y: 10 },
-      parentNode: 'B',
+      parentId: 'B',
       extent: 'parent',
       draggable: false,
       style: 'width: 60px;'
@@ -46,7 +46,7 @@
       id: 'B-2',
       data: { label: 'child 2' },
       position: { x: 10, y: 90 },
-      parentNode: 'B',
+      parentId: 'B',
       extent: 'parent',
       draggable: false,
       style: 'width: 60px;'
@@ -55,7 +55,7 @@
       id: 'B-3',
       data: { label: 'child 3' },
       position: { x: 100, y: 90 },
-      parentNode: 'B',
+      parentId: 'B',
       extent: 'parent',
       draggable: false,
       style: 'width: 60px;'

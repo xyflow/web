@@ -17,14 +17,14 @@
       type: 'input',
       data: { label: 'child 1' },
       position: { x: 10, y: 10 },
-      parentNode: 'A',
+      parentId: 'A',
       extent: 'parent'
     },
     {
       id: 'C',
       data: { label: 'child 2' },
       position: { x: 10, y: 90 },
-      parentNode: 'A',
+      parentId: 'A',
       extent: 'parent'
     }
   ]);
