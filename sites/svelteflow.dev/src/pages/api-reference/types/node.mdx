@@ -9,18 +9,21 @@ description:
 import { PropsTable } from '@/components/props-table';
 import { nodeFields } from '@/page-data/reference/types/Node.fields.ts';
 
-# Node&lt;T, U>
+# Node&lt;NodeData, NodeType>
 
 The `Node` type represents everything Svelte Flow needs to know about a given node.
 Many of these properties can be manipulated both by Svelte Flow or by you, but
 some such as `width` and `height` should be considered read-only.
 
 ```ts
-export type Node<T, U extends string> = {
+export type Node<
+  NodeData extends Record<string, unknown>,
+  NodeType extends string,
+> = {
   id: string;
   position: XYPosition;
-  data: T;
-  type?: U;
+  data: NodeData;
+  type?: NodeType;
   sourcePosition?: Position;
   targetPosition?: Position;
   hidden?: boolean;
@@ -32,20 +35,18 @@ export type Node<T, U extends string> = {
   resizing?: boolean;
   deletable?: boolean;
   dragHandle?: string;
-  width?: number | null;
-  height?: number | null;
+  width?: number;
+  height?: number;
   parentNode?: string;
   zIndex?: number;
   extent?: 'parent' | CoordinateExtent;
-  expandParent?: boolean;
   ariaLabel?: string;
   origin?: NodeOrigin;
   style?: string;
   class?: string;
-  computed?: {
+  measured?: {
     width?: number;
     height?: number;
-    positionAbsolute?: XYPosition;
   };
 };
 ```
@@ -56,7 +57,7 @@ export type Node<T, U extends string> = {
 
 ## Notes
 
-- You shouldn't try to set the `width` or `height` of a node directly. It is
-  calculated internally by Svelte Flow and used when rendering the node in the
-  viewport. To control a node's size you should use the `style` or `class`
-  props to apply CSS styles instead.
+- You shouldn't try to set the `measured.width` or `measured.height` of a node directly. It is
+  measured internally by Svelte Flow and used when rendering the node in the
+  viewport. To control a node's size you should use the `width` and `height`
+  attributes.
