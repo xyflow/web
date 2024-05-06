@@ -1,0 +1,85 @@
+[
+  {
+    "title": "New multi-connection line example!",
+    "description": "Quite a while back, a user opened a GitHub issue asking us to add the ability to draw multiple connection lines to the library. We don't have any plans to add this to the library itself, but we hope this example helps folks who need this functionality in their own apps.",
+    "authors": [
+      "hayleigh"
+    ],
+    "date": "2024-02-09",
+    "route": "/whats-new/2024-02-09"
+  },
+  {
+    "title": "New ELKjs example!",
+    "description": "New ELKjs example published to show how to use it with nodes with multiple handles.",
+    "authors": [
+      "moritz"
+    ],
+    "date": "2024-02-05",
+    "route": "/whats-new/2024-02-05"
+  },
+  {
+    "title": "New node toolbar example!",
+    "description": "Buried away in our API reference is the documentation for our NodeToolbar component. We've been missing an example to accompany it though, so we've published a new example to show how it can be used.",
+    "authors": [
+      "hayleigh"
+    ],
+    "date": "2024-01-18",
+    "route": "/whats-new/2024-01-18"
+  },
+  {
+    "title": "The first annual React Flow Developer Survey launches!",
+    "description": "We want to know what pieces of the library and its ecosystem are most/least helpful to our users (and what is missing) as we slide into the new year. To help us work that out, we've put together a short survey.",
+    "authors": [
+      "john",
+      "hayleigh"
+    ],
+    "date": "2023-12-12",
+    "route": "/whats-new/2023-12-12"
+  },
+  {
+    "title": "React Flow Pro Platform goes open source!",
+    "description": "We're excited to announce that we just open sourced our Pro Platform! The Pro Platform is where React Flow Pro subscribers can access and view “Pro Examples,” manage their subscription, and give team members access to the platform. We hope that some folks take a look and get inspired for their own projects.",
+    "authors": [
+      "christopher",
+      "john"
+    ],
+    "date": "2023-12-06",
+    "route": "/whats-new/2023-12-06"
+  },
+  {
+    "title": "New custom edges guide!",
+    "description": "We've added a new guide to show folks how to create their own custom edges. This guide breaks down what the BaseEdge and EdgeLabelRenderer components are for, and shows how to use some of the path utilities React Flow provides.",
+    "authors": [
+      "hayleigh"
+    ],
+    "date": "2023-11-14",
+    "route": "/whats-new/2023-11-14"
+  },
+  {
+    "title": "New release 11.10.0!",
+    "description": "We released React Flow v11.10.0 with deprecations and some bugfixes.",
+    "authors": [
+      "moritz"
+    ],
+    "date": "2023-11-10",
+    "route": "/whats-new/2023-11-10"
+  },
+  {
+    "title": "New \"prevent connection cycles\" example!",
+    "description": "This example shows how to use the util to check if a new connection would cause a cycle in the flow.",
+    "authors": [
+      "hayleigh"
+    ],
+    "date": "2023-11-02",
+    "route": "/whats-new/2023-11-02"
+  },
+  {
+    "title": "We refreshed our docs!",
+    "description": "We refreshed the React Flow docs in November 2023, so things might look a little different around here.",
+    "authors": [
+      "john"
+    ],
+    "date": "2023-11-01",
+    "route": "/whats-new/2023-11-01"
+  }
+]
