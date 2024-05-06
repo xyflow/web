@@ -1,103 +1,188 @@
-import { Position, MarkerType, type Node } from '@xyflow/svelte';
+import { writable } from 'svelte/store';
+import { MarkerType, type Edge } from '@xyflow/svelte';
 
-export const nodes: Node[] = [
+import type { AppNode } from './types';
+
+export const nodes = writable<AppNode[]>([
   {
-    id: '1',
+    id: 'annotation-1',
+    type: 'annotation',
+    draggable: false,
+    selectable: false,
+    data: {
+      level: 1,
+      label: 'Built-in node and edge types. Draggable, deletable and connectable!',
+      arrowStyle: `
+        right: 0;
+        bottom: 0;
+        transform: translate(-30px,10px) rotate(-80deg);
+      `
+    },
+    position: { x: -80, y: -30 }
+  },
+  {
+    id: '1-1',
     type: 'input',
     data: {
       label: 'Input Node'
     },
-    position: { x: 250, y: 0 }
+    position: { x: 150, y: 0 }
   },
   {
-    id: '2',
+    id: '1-2',
+    type: 'default',
     data: {
       label: 'Default Node'
     },
-    position: { x: 100, y: 100 }
+    position: { x: 0, y: 100 }
   },
   {
-    id: '3',
+    id: '1-3',
     type: 'output',
     data: {
       label: 'Output Node'
     },
-    position: { x: 400, y: 100 }
+    position: { x: 300, y: 100 }
   },
   {
-    id: '4',
-    type: 'custom',
-    position: { x: 100, y: 200 },
-    data: {
-      selects: {
-        'handle-0': 'smoothstep',
-        'handle-1': 'smoothstep'
-      }
-    }
-  },
-  {
-    id: '5',
-    type: 'output',
-    data: {
-      label: 'custom style'
-    },
-    class: 'circle',
-    position: { x: 400, y: 200 },
-    sourcePosition: Position.Right,
-    targetPosition: Position.Left
-  },
-  {
-    id: '6',
-    type: 'output',
-    class: 'custom-style',
-    data: {
-      label: 'Node'
-    },
-    position: { x: 400, y: 325 },
-    sourcePosition: Position.Right,
-    targetPosition: Position.Left
-  },
-  {
-    id: '7',
-    type: 'message',
-    class: 'annotation',
+    id: 'annotation-2',
+    type: 'annotation',
     draggable: false,
     selectable: false,
     data: {
-      label: 'message'
+      level: 2,
+      label: 'Sub flows, toolbars and resizable nodes!',
+      arrowStyle: `
+        left: 0;
+        bottom: 0;
+        transform: translate(5px, 25px) scale(1, -1) rotate(100deg);
+      `
     },
-    position: { x: 150, y: 400 },
-    style: 'width: 280px; padding: 15px;'
-  }
-];
-
-export const edges = [
-  { id: 'e1-2', source: '1', target: '2', label: 'this is an edge label' },
-  { id: 'e1-3', source: '1', target: '3', animated: true },
+    position: { x: 220, y: 200 }
+  },
   {
-    id: 'e4-5',
-    source: '4',
-    target: '5',
-    type: 'smoothstep',
-    sourceHandle: 'handle-0',
-    data: {
-      selectIndex: 0
+    id: '2-1',
+    type: 'group',
+    position: {
+      x: -170,
+      y: 250
     },
+    data: {},
+    style: `
+      backgroundColor: rgba(208, 192, 247, 0.2);
+      width: 380px;
+      height: 180px;
+    `
+  },
+  {
+    id: '2-2',
+    data: {
+      label: 'Node with Toolbar'
+    },
+    type: 'tools',
+    position: { x: 50, y: 50 },
+    style: `
+      background: rgb(208, 192, 247);
+      width: 80px;
+      height: 80px;
+    `,
+    parentId: '2-1',
+    extent: 'parent'
+  },
+  {
+    id: '2-3',
+    type: 'resizer',
+    data: {
+      label: 'resizable node'
+    },
+    position: { x: 250, y: 50 },
+    style: `
+      background: rgb(208, 192, 247);
+      color: white;
+      width: 80px;
+      height: 80px;
+    `,
+    parentId: '2-1',
+    extent: 'parent'
+  },
+  {
+    id: 'annotation-3',
+    type: 'annotation',
+    draggable: false,
+    selectable: false,
+    data: {
+      level: 3,
+      label: 'Nodes and edges can be anything and are fully customizable!',
+      arrowStyle: `
+        right: 0;
+        bottom: 0;
+        transform: translate(-35px, 20px) rotate(-80deg);
+      `
+    },
+    position: { x: -40, y: 570 }
+  },
+  {
+    id: '3-2',
+    type: 'textinput',
+    position: { x: 150, y: 650 },
+    data: {}
+  },
+  {
+    id: '3-1',
+    type: 'circle',
+    position: { x: 350, y: 500 },
+    data: {}
+  }
+]);
+
+export const edges = writable<Edge[]>([
+  {
+    id: 'e1-2',
+    source: '1-1',
+    target: '1-2',
+    label: 'edge',
+    type: 'smoothstep'
+  },
+  {
+    id: 'e1-3',
+    source: '1-1',
+    target: '1-3',
+    animated: true,
+    label: 'animated edge'
+  },
+  {
+    id: 'e2-2',
+    source: '1-2',
+    target: '2-2',
+    type: 'smoothstep',
     markerEnd: {
       type: MarkerType.ArrowClosed
     }
   },
   {
-    id: 'e4-6',
-    source: '4',
-    target: '6',
+    id: 'e2-3',
+    source: '2-2',
+    target: '2-3',
     type: 'smoothstep',
-    sourceHandle: 'handle-1',
-    data: {
-      selectIndex: 1
-    },
     markerEnd: {
       type: MarkerType.ArrowClosed
     }
+  },
+  {
+    id: 'e3-3',
+    source: '2-3',
+    sourceHandle: 'a',
+    target: '3-2',
+    type: 'button',
+    animated: true,
+    style: `stroke: rgb(158, 118, 255); strokeWidth: 2px`
+  },
+  {
+    id: 'e3-4',
+    source: '2-3',
+    sourceHandle: 'b',
+    target: '3-1',
+    type: 'button',
+    style: `strokeWidth: 2px`
   }
-];
+]);

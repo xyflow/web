@@ -1,8 +1,8 @@
-import { Position, MarkerType, type XYPosition } from '@xyflow/svelte';
+import { Position, MarkerType, type XYPosition, type InternalNode } from '@xyflow/svelte';
 
 // this helper function returns the intersection point
 // of the line between the center of the intersectionNode and the target node
-function getNodeIntersection(intersectionNode, targetNode) {
+function getNodeIntersection(intersectionNode: InternalNode, targetNode: InternalNode) {
   // https://math.stackexchange.com/questions/1724792/an-algorithm-for-finding-the-intersection-point-between-a-center-of-vision-and-a
   const intersectionNodePosition = intersectionNode.internals.positionAbsolute || { x: 0, y: 0 };
   const targetPosition = targetNode.internals.positionAbsolute || { x: 0, y: 0 };
@@ -27,7 +27,7 @@ function getNodeIntersection(intersectionNode, targetNode) {
 }
 
 // returns the position (top,right,bottom or right) passed node compared to the intersection point
-function getEdgePosition(node, intersectionPoint: XYPosition) {
+function getEdgePosition(node: InternalNode, intersectionPoint: XYPosition) {
   if (!node.measured.width || !node.measured.height) {
     return null;
   }
@@ -53,7 +53,7 @@ function getEdgePosition(node, intersectionPoint: XYPosition) {
 }
 
 // returns the parameters (sx, sy, tx, ty, sourcePos, targetPos) you need to create an edge
-export function getEdgeParams(source, target) {
+export function getEdgeParams(source: InternalNode, target: InternalNode) {
   const sourceIntersectionPoint = getNodeIntersection(source, target);
   const targetIntersectionPoint = getNodeIntersection(target, source);
 
