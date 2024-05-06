@@ -7,6 +7,8 @@ import { SparklesIcon } from '@heroicons/react/24/outline';
 
 import { type Route } from '@/utils';
 
+import whatsNew from './src/pages/whats-new/_feed.json';
+
 function useIsPro() {
   const router = useRouter();
   return router.pathname.startsWith('/pro');
@@ -111,8 +113,6 @@ export default {
   },
   footer: {
     component: () => {
-      const router = useRouter();
-      const isHomePage = router.pathname === '/';
       const isPro = useIsPro();
 
       return (
@@ -191,14 +191,27 @@ export default {
     },
   },
   toc: {
-    extraContent: () => (
-      <Link
-        href="/whats-new"
-        className="nx-text-xs nx-font-medium nx-text-gray-500 hover:nx-text-gray-900 dark:nx-text-gray-400 dark:hover:nx-text-gray-100 contrast-more:nx-text-gray-800 contrast-more:dark:nx-text-gray-50"
-      >
-        What's new here?
-      </Link>
-    ),
+    extraContent: () => {
+      const className =
+        'nx-text-xs nx-font-medium nx-text-gray-500 hover:nx-text-gray-900 dark:nx-text-gray-400 dark:hover:nx-text-gray-100 contrast-more:nx-text-gray-800 contrast-more:dark:nx-text-gray-50';
+
+      return (
+        <div className="nx-mt-4 nx-flex nx-flex-col nx-gap-2">
+          {whatsNew.slice(0, 3).map((frontmatter) => (
+            <Link
+              key={frontmatter.route}
+              href={frontmatter.route}
+              className={className}
+            >
+              {frontmatter.title}
+            </Link>
+          ))}
+          <Link href="/whats-new" className={className}>
+            See what else is new...
+          </Link>
+        </div>
+      );
+    },
   },
   feedback: {
     useLink: () => 'https://xyflow.com/contact',
