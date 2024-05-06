@@ -8,5 +8,8 @@
   "index": "Home",
   "pricing": "Pricing",
   "examples": "Pro Examples",
-  "enterprise": "Enterprise"
+  "quote-request": {
+    "display": "hidden"
+  },
+  "case-studies": "Case Studies"
 }

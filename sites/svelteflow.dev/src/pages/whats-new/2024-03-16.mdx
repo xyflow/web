@@ -1,0 +1,21 @@
+---
+title: New release 0.0.39
+description: Svelte Flow 0.0.39 is here!
+authors: [moritz]
+date: '2024-03-16'
+---
+
+# Release notes: 0.0.39
+
+## ⚠️ Breaking changes
+
+- `on:nodedragstart`, `on:nodedrag` and `on:nodedragstop` are also getting fired if a selection bix is being dragged. We renamed the `node` param to `targetNode` and set it to `null` if a selection is being dragged.
+
+## Minor changes
+
+- add [`EdgeLabel`](/api-reference/components/edge-label) component
+
+## Patch changes
+
+- add "connectionindicator" class for `Handle` component
+- address a11y warnings

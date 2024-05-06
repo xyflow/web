@@ -197,15 +197,18 @@ export const nodeEventHandlerProps: PropsTableProps = {
     },
     {
       name: 'on:nodedragstart',
-      type: '(event: CustomEvent<{ event: MouseEvent; node: NodeBase; nodes: NodeBase[] }>) => void',
+      type: '(event: CustomEvent<{ event: MouseEvent; targetNode: Node | null; nodes: Node[] }>) => void',
+      description: `This event is used for single nodes and selections. If you drag a selection, targetNode is null`,
     },
     {
       name: 'on:nodedrag',
-      type: '(event: CustomEvent<{ event: MouseEvent; node: NodeBase; nodes: NodeBase[] }>) => void',
+      type: '(event: CustomEvent<{ event: MouseEvent; targetNode: Node | null; nodes: Node[] }>) => void',
+      description: `This event is used for single nodes and selections. If you drag a selection, targetNode is null`,
     },
     {
       name: 'on:nodedragstop',
-      type: '(event: CustomEvent<{ event: MouseEvent; node: NodeBase; nodes: NodeBase[] }>) => void',
+      type: '(event: CustomEvent<{ event: MouseEvent; targetNode: Node | null; nodes: Node[] }>) => void',
+      description: `This event is used for single nodes and selections. If you drag a selection, targetNode is null`,
     },
   ],
 };
@@ -338,22 +341,22 @@ export const keyboardProps: PropsTableProps = {
   props: [
     {
       name: 'deleteKey',
-      type: 'KeyDefinition | null',
+      type: 'KeyDefinition | KeyDefinition[] | null',
       default: '"Backspace"',
     },
     {
       name: 'selectionKey',
-      type: 'KeyDefinition | null',
+      type: 'KeyDefinition | KeyDefinition[] | null',
       default: '"Shift"',
     },
     {
       name: 'multiSelectionKey',
-      type: 'KeyDefinition | null',
+      type: 'KeyDefinition | KeyDefinition[] | null',
       default: '"Meta" for MacOs, "Control" for other systems',
     },
     {
       name: 'zoomActivationKey',
-      type: 'KeyDefinition | null',
+      type: 'KeyDefinition | KeyDefinition[] | null',
       default: '"Meta" for MacOs, "Control" for other systems',
       description: `If a key is set, you can zoom the viewport while that key is
       held down even if panOnScroll is set to false. By setting this prop to null
@@ -361,7 +364,7 @@ export const keyboardProps: PropsTableProps = {
     },
     {
       name: 'panActivationKey',
-      type: 'KeyDefinition | null',
+      type: 'KeyDefinition | KeyDefinition[] | null',
       default: '"Space"',
       description: `If a key is set, you can pan the viewport while that key is
       held down even if panOnScroll is set to false. By setting this prop to null

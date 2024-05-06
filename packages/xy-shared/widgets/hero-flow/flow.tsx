@@ -10,7 +10,7 @@ import ReactFlow, {
   useStoreApi,
   useStore,
   ReactFlowState,
-  getRectOfNodes,
+  getNodesBounds,
 } from 'reactflow';
 
 import HeroNode from './hero-node';
@@ -141,7 +141,7 @@ function Flow({ initialColor = '#777', className }: FlowProps) {
       y: yMin,
       width: xMax,
       height: yMax,
-    } = getRectOfNodes(nodes);
+    } = getNodesBounds(nodes);
 
     const zoom = width < 1240 ? (width < 500 ? 0.65 : 0.8) : 1;
     const mobileView = width < 1024;

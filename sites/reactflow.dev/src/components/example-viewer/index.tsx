@@ -7,6 +7,7 @@ type ExampleViewerProps = CodeViewerProps & {
   activeFile?: string;
   isTypescript: boolean;
   editorHeight: string;
+  orientation?: 'horizontal' | 'vertical';
 };
 
 export default function ExampleViewer({
@@ -16,6 +17,7 @@ export default function ExampleViewer({
   isTypescript,
   editorHeight,
   dependencies = {},
+  orientation = 'horizontal',
   ...rest
 }: ExampleViewerProps) {
   const [files, setFiles] = useState(null);
@@ -54,6 +56,7 @@ export default function ExampleViewer({
       isTypescript={isTypescript}
       dependencies={dependenciesWithDefault}
       editorHeight={editorHeight}
+      orientation={orientation}
       {...rest}
     />
   );

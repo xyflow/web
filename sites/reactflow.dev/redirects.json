@@ -1023,5 +1023,15 @@
     "source": "/docs/overview/packages",
     "destination": "/learn/concepts/plugin-components",
     "permanent": true
+  },
+  {
+    "source": "/docs/overview/packages",
+    "destination": "/learn/concepts/plugin-components",
+    "permanent": true
+  },
+  {
+    "source": "/pro/enterprise",
+    "destination": "/pro/quote-request?plan=enterprise",
+    "permanent": true
   }
 ]

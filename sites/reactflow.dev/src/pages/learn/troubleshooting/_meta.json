@@ -2,5 +2,10 @@
   "index": "Common Errors",
   "remove-attribution": "Remove Attribution",
   "migrate-to-v11": "Migrate to v11",
-  "migrate-to-v10": "Migrate to v10"
+  "migrate-to-v10": {
+    "title": "Migrate to v10",
+    "theme": {
+      "pagination": false
+    }
+  }
 }

@@ -65,7 +65,7 @@
     height: 8px;
   }
 
-  :global(.svelte-flow .svelte-flow__handle.connecting) {
+  :global(.svelte-flow .svelte-flow__handle.connectingto) {
     background: #ff6060;
   }
 

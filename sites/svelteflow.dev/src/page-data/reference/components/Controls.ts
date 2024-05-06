@@ -11,5 +11,12 @@ export const controlsProps: PropsTableProps = {
     { name: 'buttonBgColorHover?', type: 'string', default: 'undefined' },
     { name: 'buttonColor?', type: 'string', default: 'undefined' },
     { name: 'buttonColorHover?', type: 'string', default: 'undefined' },
+    { name: 'style?', type: 'string', default: 'undefined' },
+    { name: 'class?', type: 'string', default: 'undefined' },
+    {
+      name: 'orientation?',
+      type: '"horizontal" | "vertical"',
+      default: '"vertical"',
+    },
   ],
 };

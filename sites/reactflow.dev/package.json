@@ -32,17 +32,17 @@
     "next": "^13.4.19",
     "next-mdx-remote": "^4.4.1",
     "next-sitemap": "^4.2.2",
-    "nextra": "^2.13.2",
-    "nextra-theme-docs": "^2.13.2",
+    "nextra": "^2.13.3",
+    "nextra-theme-docs": "^2.13.3",
     "raw-loader": "^4.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.10.1",
     "react-player": "^2.12.0",
-    "reactflow": "^11.10.3",
+    "reactflow": "^11.11.1",
     "timeago-react": "^3.0.6",
     "xy-shared": "workspace:*",
-    "zustand": "^4.4.1"
+    "zustand": "^4.5.2"
   },
   "devDependencies": {
     "@notionhq/client": "^2.2.5",

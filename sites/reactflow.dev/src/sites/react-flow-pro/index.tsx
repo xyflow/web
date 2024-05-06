@@ -71,7 +71,7 @@ export default function ReactFlowPro() {
             </Link>
           </Button>
         }
-        showGradient
+        backgroundVariant="gradient"
       >
         <p className="mt-4 mb-2">
           <strong>React Flow is open-source MIT-licensed software</strong>, and

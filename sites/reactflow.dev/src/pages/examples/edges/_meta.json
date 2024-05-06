@@ -1,8 +1,10 @@
 {
   "custom-edges": "Custom Edges",
   "edge-types": "Edge Types",
+  "editable-edge": "Editable Edge",
   "updatable-edge": "Updatable Edge",
   "custom-connectionline": "Connection Line",
+  "multi-connection-line": "Multi Connection Line",
   "markers": "Edge Markers",
   "delete-edge-on-drop": "Delete Edge on Drop",
   "floating-edges": "Floating Edges",

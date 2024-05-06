@@ -20,12 +20,12 @@ backgrounds common in node-based UIs. It comes with three variants: `lines`,
 
 ```jsx
 import { useState } from 'react';
-import ReactFlow, { Background } from 'reactflow';
+import ReactFlow, { Background, BackgroundVariant } from 'reactflow';
 
 export default function Flow() {
   return (
     <ReactFlow defaultNodes={[...]} defaultEdges={[...]}>
-      <Background color="#ccc" variant="dots" />
+      <Background color="#ccc" variant={BackgroundVariant.Dots} />
     </ReactFlow>
   );
 }
