@@ -102,8 +102,8 @@ pnpm write-showcases
 
 ## Support our work with React Flow Pro
 
-React Flow and Svelte Flow is open-sourced MIT-licensed software, and it will
-be forever. Our libraries enables thousands of solo developers and organizations
+React Flow and Svelte Flow are open-source MIT-licensed libraries, and it will
+be forever. Our libraries enable thousands of solo developers and organizations
 like Stripe and Linkedin to build their node-based apps. With so many active
 users, it takes time and effort to maintain the library, docs, and community.
 We can’t do that without your support.
@@ -112,8 +112,8 @@ We can’t do that without your support.
 
 Why Subscribe? With your subscription, you are ensuring the sustainable
 maintenance and development of both React Flow and Svelte Flow. This is how we
-make sure these libraries stay MIT-licensed. In return, you get a high-quality,
-maintained, updated library, along with benefits like direct support,
+make sure these libraries stay MIT-licensed. In return, you get high-quality,
+maintained, updated libraries, along with benefits like direct support,
 prioritized feature requests, and access to our Pro Examples.
 
 ---

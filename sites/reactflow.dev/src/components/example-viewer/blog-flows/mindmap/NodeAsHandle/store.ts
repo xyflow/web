@@ -47,7 +47,7 @@ const useStore = create<RFState>((set, get) => ({
       type: 'mindmap',
       data: { label: 'New Node' },
       position,
-      parentNode: parentNode.id,
+      parentId: parentNode.id,
     };
 
     const newEdge = {
