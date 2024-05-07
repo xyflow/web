@@ -48,7 +48,10 @@ export type SectionParams = {
   title?: string;
   content?: React.ReactNode;
   links?: { text: string; href: string }[];
-  action?: (() => void) | { text: string; onClick: () => void };
+  action?:
+    | (() => void)
+    | { content: React.ReactNode; onClick: () => void }
+    | { content: React.ReactNode; onClick: () => void }[];
   position: { x: number; y: number };
 } & Omit<Node, 'id' | 'type' | 'data' | 'position'>;
 
@@ -110,9 +113,24 @@ export const section = ({
         <Button className="nodrag nopan" onClick={action}>
           Next
         </Button>
+      ) : Array.isArray(action) ? (
+        <div className="flex gap-2">
+          {action.map(({ content, onClick }, i) => (
+            <Button
+              className="nodrag nopan inline-flex items-center gap-1 group"
+              key={i}
+              onClick={onClick}
+            >
+              {content}
+            </Button>
+          ))}
+        </div>
       ) : typeof action === 'object' ? (
-        <Button className="nodrag nopan" onClick={action.onClick}>
-          {action.text}
+        <Button
+          className="nodrag nopan inline-flex items-center gap-1 group"
+          onClick={action.onClick}
+        >
+          {action.content}
         </Button>
       ) : null,
   },

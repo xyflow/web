@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import ReactFlow, { Background, Node, ReactFlowProvider } from 'reactflow';
 import { FocusParams, useFocus } from './flow/hooks';
 import { nodeTypes, section, project, action } from './flow/nodes';
-import { ArrowRightIcon } from '@heroicons/react/20/solid';
+import { ArrowDownIcon, ArrowRightIcon } from '@heroicons/react/20/solid';
 import { BarChart } from '@/components/bar-chart';
 
 export default function ReactFlow2023Survey() {
@@ -122,7 +122,7 @@ const initialNodes = ({
         </>
       ),
       action: {
-        text: 'Who responded?',
+        content: 'Who responded?',
         onClick: () => focus({ id: 'respondents' }),
       },
     }),
@@ -143,19 +143,38 @@ const initialNodes = ({
           </Text>
         </>
       ),
-      action: () =>
-        focus({
-          id: 'user-apps',
-          duration: 500,
-          then: [
-            [300, () => reveal('user-apps-whiteboard')],
-            [250, () => reveal('user-apps-no-code')],
-            [200, () => reveal('user-apps-engineering')],
-            [150, () => reveal('user-apps-knowledge-graph')],
-            [100, () => reveal('user-apps-internal-tools')],
-            [100, () => reveal('user-apps-dnd')],
-          ],
-        }),
+      action: [
+        {
+          content: (
+            <>
+              <Text>Next</Text>
+              <ArrowDownIcon className="w-4 h-4 transition-transform group-hover:translate-y-1" />
+            </>
+          ),
+          onClick: () =>
+            focus({
+              id: 'user-apps',
+              duration: 500,
+              then: [
+                [300, () => reveal('user-apps-whiteboard')],
+                [250, () => reveal('user-apps-no-code')],
+                [200, () => reveal('user-apps-engineering')],
+                [150, () => reveal('user-apps-knowledge-graph')],
+                [100, () => reveal('user-apps-internal-tools')],
+                [100, () => reveal('user-apps-dnd')],
+              ],
+            }),
+        },
+        {
+          content: (
+            <>
+              <Text>More details</Text>
+              <ArrowRightIcon className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </>
+          ),
+          onClick: () => focus({ id: 'respondents-expertise' }),
+        },
+      ],
     }),
     section({
       id: 'respondents-expertise',
@@ -257,6 +276,12 @@ const initialNodes = ({
           </Text>
         </>
       ),
+    }),
+    action({
+      id: 'respondents-back',
+      position: { x: 2800, y: 1400 },
+      content: <Text>Take me back!</Text>,
+      action: () => focus({ id: 'respondents' }),
     }),
     // WHAT ARE THEY BUILDING --------------------------------------------------
     section({
@@ -517,6 +542,10 @@ const initialNodes = ({
 const initialEdges = [
   { source: 'title', target: 'intro' },
   { source: 'intro', target: 'respondents' },
+  { source: 'respondents', target: 'respondents-expertise' },
+  { source: 'respondents-expertise', target: 'respondents-where' },
+  { source: 'respondents-where', target: 'respondents-how-long' },
+  { source: 'respondents-how-long', target: 'respondents-back' },
   { source: 'respondents', target: 'user-apps' },
   { source: 'user-apps', target: 'user-apps-whiteboard' },
   { source: 'user-apps-whiteboard', target: 'user-apps-whiteboard-0' },
