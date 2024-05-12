@@ -1,10 +1,11 @@
 import { Emoji, Link, Text } from '@xyflow/xy-ui';
 import { useEffect, useState } from 'react';
 import ReactFlow, { Background, Node, ReactFlowProvider } from 'reactflow';
-import { FocusParams, useFocus } from './flow/hooks';
+import useForceLayout, { FocusParams, useFocus } from './flow/hooks';
 import { nodeTypes, section, project, action } from './flow/nodes';
 import { ArrowDownIcon, ArrowRightIcon } from '@heroicons/react/20/solid';
 import { BarChart } from '@/components/bar-chart';
+import { edgeTypes, focusEdge } from './flow/edges';
 
 export default function ReactFlow2023Survey() {
   return (
@@ -20,12 +21,17 @@ function Flow() {
     duration: 2500,
   });
   const [nodes, setNodes] = useState([]);
+  const { start: startProjectsForceLayout } = useForceLayout({
+    rootId: 'user-apps',
+  });
 
   useEffect(() => {
     setNodes(
-      initialNodes({ focus: setFocus, update: setNodes }).map(
-        (node, i) => ((node.id ??= `${i}`), node),
-      ),
+      initialNodes({
+        startProjectsForceLayout,
+        focus: setFocus,
+        update: setNodes,
+      }).map((node, i) => ((node.id ??= `${i}`), node)),
     );
   }, []);
 
@@ -38,6 +44,7 @@ function Flow() {
         nodes={nodes}
         nodeTypes={nodeTypes}
         edges={initialEdges}
+        edgeTypes={edgeTypes}
         nodesDraggable={false}
         nodesFocusable={false}
         defaultEdgeOptions={{
@@ -51,9 +58,11 @@ function Flow() {
 }
 
 const initialNodes = ({
+  startProjectsForceLayout,
   focus,
   update,
 }: {
+  startProjectsForceLayout: () => void;
   focus: (params: FocusParams) => void;
   update: React.Dispatch<React.SetStateAction<Node[]>>;
 }) => {
@@ -162,6 +171,7 @@ const initialNodes = ({
                 [150, () => reveal('user-apps-knowledge-graph')],
                 [100, () => reveal('user-apps-internal-tools')],
                 [100, () => reveal('user-apps-dnd')],
+                [100, () => startProjectsForceLayout()],
               ],
             }),
         },
@@ -178,7 +188,7 @@ const initialNodes = ({
     }),
     section({
       id: 'respondents-expertise',
-      position: { x: 700, y: 1400 },
+      position: { x: 1000, y: 1400 },
       content: (
         <>
           <Text size="lg">
@@ -212,7 +222,7 @@ const initialNodes = ({
     }),
     section({
       id: 'respondents-where',
-      position: { x: 1400, y: 1400 },
+      position: { x: 2000, y: 1400 },
       content: (
         <>
           <Text size="lg">
@@ -242,7 +252,7 @@ const initialNodes = ({
     }),
     section({
       id: 'respondents-how-long',
-      position: { x: 2100, y: 1400 },
+      position: { x: 3000, y: 1400 },
       content: (
         <>
           <Text size="lg">
@@ -279,7 +289,7 @@ const initialNodes = ({
     }),
     action({
       id: 'respondents-back',
-      position: { x: 2800, y: 1400 },
+      position: { x: 3600, y: 1730 },
       content: <Text>Take me back!</Text>,
       action: () => focus({ id: 'respondents' }),
     }),
@@ -289,12 +299,6 @@ const initialNodes = ({
       isHero: true,
       position: { x: 0, y: 3000 },
       title: 'What are our users building?',
-    }),
-    action({
-      id: 'user-apps-continue',
-      position: { x: 700, y: 3080 },
-      action: () => focus({ id: 'help' }),
-      content: 'continue...',
     }),
     ...projectCategory({
       id: 'user-apps-whiteboard',
@@ -542,9 +546,9 @@ const initialNodes = ({
 const initialEdges = [
   { source: 'title', target: 'intro' },
   { source: 'intro', target: 'respondents' },
-  { source: 'respondents', target: 'respondents-expertise' },
-  { source: 'respondents-expertise', target: 'respondents-where' },
-  { source: 'respondents-where', target: 'respondents-how-long' },
+  focusEdge('respondents', 'respondents-expertise', 'prev'),
+  focusEdge('respondents-expertise', 'respondents-where', 'both'),
+  focusEdge('respondents-where', 'respondents-how-long', 'both'),
   { source: 'respondents-how-long', target: 'respondents-back' },
   { source: 'respondents', target: 'user-apps' },
   { source: 'user-apps', target: 'user-apps-whiteboard' },
@@ -603,8 +607,7 @@ const initialEdges = [
   { source: 'user-apps-internal-tools', target: 'user-apps-internal-tools-5' },
   { source: 'user-apps', target: 'user-apps-dnd' },
   { source: 'user-apps-dnd', target: 'user-apps-dnd-0' },
-  { source: 'user-apps', target: 'user-apps-continue' },
-  { source: 'user-apps-continue', target: 'help' },
+  focusEdge('user-apps', 'help', 'both'),
   { source: 'help', target: 'help-sources' },
   { source: 'help', target: 'help-sections' },
 ].map((edge) => ({ ...edge, id: `${edge.source}->${edge.target}` }));

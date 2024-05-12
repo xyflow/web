@@ -466,6 +466,9 @@ importers:
       '@typeform/embed-react':
         specifier: ^3.9.0
         version: 3.10.0(react@18.2.0)
+      '@types/d3-force':
+        specifier: ^3.0.9
+        version: 3.0.9
       '@types/three':
         specifier: ^0.155.1
         version: 0.155.1
