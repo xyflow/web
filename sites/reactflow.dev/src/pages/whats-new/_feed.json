@@ -1,5 +1,24 @@
 [
   {
+    "title": "Devtools and a fresh overview example",
+    "description": "Sometimes it's hard to understand what's going on in your React Flow app. That's why we've added a devtools section to the docs. It's a copy pastable example that explains how you can get some insights into your React Flow app. We also published a revised version of the feature overview example.",
+    "authors": [
+      "moritz"
+    ],
+    "date": "2024-05-06",
+    "route": "/whats-new/2024-05-06"
+  },
+  {
+    "title": "We finally made an editable edge Pro example",
+    "description": "One of the most common questions we get from users is how to let users edit an edge's path. This Pro example demonstrates how to do exactly that, by cutting up an edge into segments that can be freely moved around.",
+    "authors": [
+      "peter",
+      "hayleigh"
+    ],
+    "date": "2024-04-11",
+    "route": "/whats-new/2024-04-11"
+  },
+  {
     "title": "New multi-connection line example!",
     "description": "Quite a while back, a user opened a GitHub issue asking us to add the ability to draw multiple connection lines to the library. We don't have any plans to add this to the library itself, but we hope this example helps folks who need this functionality in their own apps.",
     "authors": [
