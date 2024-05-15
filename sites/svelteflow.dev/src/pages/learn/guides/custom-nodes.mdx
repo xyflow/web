@@ -98,51 +98,13 @@ Following this guide you will probably wonder why your browser console is floode
 <CustomNode /> was created with unknown prop 'height'
 ```
 
-This is due to the wrapper component always passing every prop to the custom node component, regardless wether you have implemented them in your svelte component or not.
-Sadly, the only way to surpress the warnings is by actually exporting all props and using them in an empty statement, like this:
+This is due to the wrapper component always passing every prop to the custom node component, regardless whether you have implemented them in your svelte component or not.
+To suppress them, simply add `$$restProps` to a line, like this:
 
 ```svelte filename="CustomNode.svelte"
 <script>
-    export let id; id;
-    export let data; data;
-    export let dragHandle; dragHandle;
-    export let type; type;
-    export let selected; selected;
-    export let isConnectable; isConnectable;
-    export let zIndex; zIndex;
-    export let width; width;
-    export let height; height;
-    export let dragging; dragging;
-    export let targetPosition; targetPosition;
-    export let sourcePosition; sourcePosition;
+    // Your svelte flow code...
+
+    $$restProps;
 </script>
 ```
-
-Or if you use Typescript:
-
-```ts filename="CustomNode.svelte"
-<script lang=ts>
-    type $$Props = NodeProps;
-
-    export let id: $$Props['id']; id;
-    export let data: $$Props['data']; data;
-    export let dragHandle: $$Props['dragHandle'] = undefined; dragHandle;
-    export let type: $$Props['type']  = undefined; type;
-    export let selected: $$Props['selected'] = undefined; selected;
-    export let isConnectable: $$Props['isConnectable'] = undefined; isConnectable;
-    export let zIndex: $$Props['zIndex'] = undefined; zIndex;
-    export let width: $$Props['width'] = undefined; width;
-    export let height: $$Props['height'] = undefined; height;
-    export let dragging: $$Props['dragging']; dragging;
-    export let targetPosition: $$Props['targetPosition'] = undefined; targetPosition;
-    export let sourcePosition: $$Props['sourcePosition'] = undefined; sourcePosition;
-</script>
-```
-
-<Callout type="default">
-  <strong>Help appreciated:</strong>
-  If you have a better solution, please let us know. This is quite an annoyance when
-  working with custom nodes and edges. You can comment on the [Svelte RFC we have
-  submitted](https://github.com/sveltejs/rfcs/pull/73) and find more information
-  in the related [Svelte issue](https://github.com/sveltejs/svelte/issues/5892#issuecomment-762660755).
-</Callout>

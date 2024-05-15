@@ -14,9 +14,9 @@
   function getClosestEdge(node: Node, nodes: Node[]) {
     const closestNode = nodes.reduce(
       (res, n) => {
-        if (n.id !== node.id && n.computed && node.computed) {
-          const dx = n.computed.positionAbsolute?.x! - node.computed.positionAbsolute?.x!;
-          const dy = n.computed.positionAbsolute?.y! - node.computed.positionAbsolute?.y!;
+        if (n.id !== node.id) {
+          const dx = n.position.x - node.position.x;
+          const dy = n.position.y - node.position.y;
           const d = Math.sqrt(dx * dx + dy * dy);
 
           if (d < res.distance && d < MIN_DISTANCE) {
@@ -37,8 +37,7 @@
       return null;
     }
 
-    const closeNodeIsSource =
-      closestNode.node.computed?.positionAbsolute?.x! < node.computed?.positionAbsolute?.x!;
+    const closeNodeIsSource = closestNode.node.position.x < node.position.x;
 
     return {
       id: closeNodeIsSource
@@ -50,7 +49,7 @@
     };
   }
 
-  function onNodeDrag({ detail: { targetNode: node } }): OnNodeDrag {
+  function onNodeDrag({ detail: { targetNode: node } }) {
     const closestEdge = getClosestEdge(node, $nodes);
 
     let edgeAlreadyExists = false;

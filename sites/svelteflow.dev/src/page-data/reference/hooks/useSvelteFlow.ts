@@ -15,6 +15,11 @@ export const signature: PropsTableProps = {
         'Returns all nodes if no ids are passed or the nodes of the passed ids.',
     },
     {
+      name: 'getInternalNode',
+      type: '(id: string) => InternalNode | undefined',
+      description: 'Returns an internal node by id.',
+    },
+    {
       name: 'getEdge',
       type: '(id: string) => Edge | undefined',
       description: 'Returns an edge by id.',

@@ -17,7 +17,7 @@ import { Callout } from 'nextra/components';
 
 ### Defining child nodes
 
-To define a node as a child of another node, you need to use the `parentNode` option (you can find a list of all options in the [node options section](/api-reference/types/node)). Once we do that, the child node is positioned relative to its parent. A position of `{ x: 0, y: 0 }` is at the top left corner of the parent.
+To define a node as a child of another node, you need to use the `parentId` option (you can find a list of all options in the [node options section](/api-reference/types/node)). Once we do that, the child node is positioned relative to its parent. A position of `{ x: 0, y: 0 }` is at the top left corner of the parent.
 
 ```js
 const nodes = writable([
@@ -27,13 +27,13 @@ const nodes = writable([
     data: {},
     position: { x: 0, y: 0 },
   },
-  // this gets a child node by using the parentNode option
+  // this gets a child node by using the parentId option
   {
     id: 'B',
     data: { label: 'child 1' },
     position: { x: 10, y: 10 },
     // 👇
-    parentNode: 'A',
+    parentId: 'A',
   },
 ]);
 ```
@@ -46,7 +46,7 @@ import ExampleViewer from '@/components/example-viewer';
 
 ### How child nodes work
 
-When you drag the parent node, you will notice that the child nodes move accordingly. Adding a node to another node with the `parentNode` option positions it relative to its parent. In terms of markup, the child node is not a subordinate. You can drag or position the child outside of its parent (when the `extent: 'parent'` option is not set). Nevertheless, when you drag the parent, the child moves too.
+When you drag the parent node, you will notice that the child nodes move accordingly. Adding a node to another node with the `parentId` option positions it relative to its parent. In terms of markup, the child node is not a subordinate. You can drag or position the child outside of its parent (when the `extent: 'parent'` option is not set). Nevertheless, when you drag the parent, the child moves too.
 
 In the provided example, we use the `group` type for the parent node. The 'group' type is a convenient node type without handles, but you can use any other node type for this.
 
