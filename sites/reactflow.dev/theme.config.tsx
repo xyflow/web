@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useConfig, Navbar } from 'nextra-theme-docs';
-import { Footer, Button, LogoLabel } from '@xyflow/xy-ui';
+import { Footer, Button, LogoLabel, cn } from '@xyflow/xy-ui';
 import { Search, SidebarTitle } from 'xy-shared';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 
@@ -197,6 +197,9 @@ export default {
 
       return (
         <div className="nx-mt-4 nx-flex nx-flex-col nx-gap-2">
+          <p className="nx-text-xs nx-font-semibold nx-tracking-tight nx-text-gray-600 dark:nx-text-gray-200 contrast-more:nx-text-gray-900 contrast-more:dark:nx-text-gray-50">
+            What's new?
+          </p>
           {whatsNew.slice(0, 3).map((frontmatter) => (
             <Link
               key={frontmatter.route}
@@ -207,7 +210,7 @@ export default {
             </Link>
           ))}
           <Link href="/whats-new" className={className}>
-            See what else is new...
+            ...and more!
           </Link>
         </div>
       );
