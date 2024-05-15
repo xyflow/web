@@ -8,6 +8,7 @@ import { Author, AuthorList } from '../';
 
 export type TimelineEventProps = MDXRemoteSerializeResult & {
   exampleViewer: React.ComponentProps<any>;
+  proExampleViewer: React.ComponentProps<any>;
   frontmatter: {
     title: string;
     description: string;
@@ -19,7 +20,8 @@ export type TimelineEventProps = MDXRemoteSerializeResult & {
 
 export function TimelineEvent({
   frontmatter,
-  exampleViewer,
+  exampleViewer: ExampleViewer,
+  proExampleViewer: ProExampleViewer,
   ...src
 }: TimelineEventProps) {
   return (
@@ -37,7 +39,7 @@ export function TimelineEvent({
       <div className="pl-2">
         <MDXRemote
           frontmatter={frontmatter}
-          components={{ ExampleViewer: exampleViewer, Image }}
+          components={{ ExampleViewer, ProExampleViewer, Image }}
           {...src}
         />
 
