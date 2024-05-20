@@ -18,7 +18,13 @@ export const defaultEdgeFields: PropsTableProps = {
     { name: 'selected', type: 'boolean' },
     { name: 'deletable', type: 'boolean' },
     { name: 'focusable', type: 'boolean' },
-    { name: 'updatable?', type: 'boolean | "source" | "target"' },
+    {
+      name: 'updatable?',
+      type: 'boolean | "source" | "target"',
+      description: `Determines whether the edge can be updated by dragging the
+      source or target to a new node. This property only has an effect if the
+      edgesUpdatable prop on your <ReactFlow/> component is set to true.`,
+    },
     { name: 'markerStart', type: 'string | EdgeMarker' },
     { name: 'markerEnd', type: 'string | EdgeMarker' },
     { name: 'zIndex?', type: 'number' },
