@@ -8,7 +8,28 @@ import ExampleViewer from '@/components/example-viewer';
 import ExampleLayout from '@/layouts/example-with-frontmatter';
 
 <ExampleLayout>
-An edge is updatable by dragging it to another handle if you are using the [`onEdgeUpdate` handler prop](/api-reference/react-flow#edges). The handler gets called after the edge gets dropped to a new handle. You can use the [`updateEdge`](/api-reference/utils/update-edge) helper function to update your edges state accordingly.
+An edge is updatable by dragging it to another handle if you are using the
+[`onEdgeUpdate` handler prop](/api-reference/react-flow#edges). The handler gets
+called after the edge gets dropped to a new handle. You can use the
+[`updateEdge`](/api-reference/utils/update-edge) helper function to update your
+edges state accordingly.
 
 <ExampleViewer codePath="example-flows/UpdatableEdge" />
+
+A couple of properties interact with one another to determine whether an edge is
+updatable or not:
+
+- By default the [`edgesUpdatable`](/api-reference/react-flow#edgesUpdatable) is
+  set to `true`.
+
+- For edges to actually be draggable, though, it is also necessary to define a
+  [`onEdgeUpdate`](/api-reference/react-flow#onEdgeUpdate) handler.
+
+- Individual edges can be made non-updatable by setting their [`updatable`](/api-reference/types/edge#updatable)
+  prop  to `false` or they can restrict the dragging to a specific handle by setting
+  it to either `"source"` or `"target"`. It's important to note that the
+  `edgesUpdatable` prop must be set to `true`. You can consider an edge's
+  `updatable` prop as a way to _restrict_ an updatable edge to a specific handle
+  or no handle at all rather than a way to _override_ the `edgesUpdatable` prop.
+
 </ExampleLayout>
