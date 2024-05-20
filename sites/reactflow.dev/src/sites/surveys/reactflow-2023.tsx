@@ -1,8 +1,8 @@
-import { Emoji, Link, Text } from '@xyflow/xy-ui';
+import { Button, Emoji, Link, Text } from '@xyflow/xy-ui';
 import { useEffect, useState } from 'react';
 import ReactFlow, { Background, Node, ReactFlowProvider } from 'reactflow';
-import useForceLayout, { FocusParams, useFocus } from './flow/hooks';
-import { nodeTypes, section, project, action } from './flow/nodes';
+import { FocusParams, useFocus } from './flow/hooks';
+import { nodeTypes, section, project, action, chatBubble } from './flow/nodes';
 import { ArrowDownIcon, ArrowRightIcon } from '@heroicons/react/20/solid';
 import { BarChart } from '@/components/bar-chart';
 import { edgeTypes, focusEdge } from './flow/edges';
@@ -21,14 +21,10 @@ function Flow() {
     duration: 2500,
   });
   const [nodes, setNodes] = useState([]);
-  const { start: startProjectsForceLayout } = useForceLayout({
-    rootId: 'user-apps',
-  });
 
   useEffect(() => {
     setNodes(
       initialNodes({
-        startProjectsForceLayout,
         focus: setFocus,
         update: setNodes,
       }).map((node, i) => ((node.id ??= `${i}`), node)),
@@ -47,6 +43,7 @@ function Flow() {
         edgeTypes={edgeTypes}
         nodesDraggable={false}
         nodesFocusable={false}
+        minZoom={0.5}
         defaultEdgeOptions={{
           type: 'straight',
         }}
@@ -58,11 +55,9 @@ function Flow() {
 }
 
 const initialNodes = ({
-  startProjectsForceLayout,
   focus,
   update,
 }: {
-  startProjectsForceLayout: () => void;
   focus: (params: FocusParams) => void;
   update: React.Dispatch<React.SetStateAction<Node[]>>;
 }) => {
@@ -74,12 +69,32 @@ const initialNodes = ({
     );
   };
 
-  const projectCategory = ({ id, name, position, projects }) => [
-    ...projects.map((name, i) =>
-      project({ id: `${id}-${i}`, position, label: name }),
-    ),
-    project({ id, isCategory: true, position, label: name }),
-  ];
+  const projectCategory = ({ id, name, position, projects }) => {
+    const radius = name.length * 12;
+
+    return [
+      ...projects.map((name, i) => {
+        const offsetX = Math.random() * 30 - 15;
+        const offsetY = Math.random() * 30 - 15;
+
+        return project({
+          id: `${id}-${i}`,
+          label: name,
+          position: {
+            x:
+              position.x +
+              offsetX +
+              radius * Math.cos((i / projects.length) * Math.PI * 2),
+            y:
+              position.y +
+              offsetY +
+              radius * Math.sin((i / projects.length) * Math.PI * 2),
+          },
+        });
+      }),
+      project({ id, isCategory: true, position, label: name }),
+    ];
+  };
 
   return [
     // INTRO -------------------------------------------------------------------
@@ -163,6 +178,7 @@ const initialNodes = ({
           onClick: () =>
             focus({
               id: 'user-apps',
+              includeChildren: true,
               duration: 500,
               then: [
                 [300, () => reveal('user-apps-whiteboard')],
@@ -171,7 +187,6 @@ const initialNodes = ({
                 [150, () => reveal('user-apps-knowledge-graph')],
                 [100, () => reveal('user-apps-internal-tools')],
                 [100, () => reveal('user-apps-dnd')],
-                [100, () => startProjectsForceLayout()],
               ],
             }),
         },
@@ -302,7 +317,7 @@ const initialNodes = ({
     }),
     ...projectCategory({
       id: 'user-apps-whiteboard',
-      position: { x: 500, y: 3250 },
+      position: { x: 700, y: 3350 },
       name: 'Whiteboard & Canvas',
       projects: [
         'Spatial canvas for ideas and thoughts',
@@ -312,7 +327,7 @@ const initialNodes = ({
     }),
     ...projectCategory({
       id: 'user-apps-no-code',
-      position: { x: 100, y: 3300 },
+      position: { x: 100, y: 3500 },
       name: 'No-code platforms',
       projects: [
         'No-code website builder',
@@ -334,7 +349,7 @@ const initialNodes = ({
     }),
     ...projectCategory({
       id: 'user-apps-knowledge-graph',
-      position: { x: -500, y: 2900 },
+      position: { x: -400, y: 2700 },
       name: 'Knowledge graphs',
       projects: [
         'A flow chart to describe Journey Maps and API flows',
@@ -349,7 +364,7 @@ const initialNodes = ({
     }),
     ...projectCategory({
       id: 'user-apps-internal-tools',
-      position: { x: 0, y: 2800 },
+      position: { x: 400, y: 2600 },
       name: 'Internal tools',
       projects: [
         'Infrastructure data flow visualizer',
@@ -362,7 +377,7 @@ const initialNodes = ({
     }),
     ...projectCategory({
       id: 'user-apps-dnd',
-      position: { x: 300, y: 2925 },
+      position: { x: 600, y: 3025 },
       name: 'DUNGEONS AND DRAGONS',
       projects: ['Game master screen'],
     }),
@@ -390,10 +405,30 @@ const initialNodes = ({
           </Text>
         </>
       ),
+      action: [
+        {
+          content: (
+            <>
+              <Text>Next</Text>
+              <ArrowDownIcon className="w-4 h-4 transition-transform group-hover:translate-y-1" />
+            </>
+          ),
+          onClick: () => focus({ id: 'stuck' }),
+        },
+        {
+          content: (
+            <>
+              <Text>More details</Text>
+              <ArrowRightIcon className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </>
+          ),
+          onClick: () => focus({ id: 'help-sources' }),
+        },
+      ],
     }),
     section({
       id: 'help-sources',
-      position: { x: 1700, y: 3600 },
+      position: { x: 3000, y: 3000 },
       content: (
         <>
           <Text>
@@ -439,10 +474,11 @@ const initialNodes = ({
           </Text>
         </>
       ),
+      action: [],
     }),
     section({
       id: 'help-sections',
-      position: { x: 2300, y: 3600 },
+      position: { x: 4000, y: 3000 },
       content: (
         <>
           <Text>
@@ -473,10 +509,301 @@ const initialNodes = ({
         </>
       ),
     }),
+    // WHAT DO THEY GET STUCK ON -----------------------------------------------
+    section({
+      id: 'stuck',
+      isHero: true,
+      position: { x: 2000, y: 5000 },
+      title: 'What is most the difficult thing about React Flow?',
+      content: (
+        <>
+          <Text>
+            So we have an idea of where folks are going to get help, but what
+            exactly are they looking to get help{' '}
+            <span className="italic">with</span>?
+          </Text>
+          <Text>
+            We asked some open-ended questions about what things our users found
+            most difficult about using React Flow or what features and
+            functionality they felt was missing from the library. Then, we went
+            through the responses and grouped them into categories or themes.
+          </Text>
+          <Text>Here are the most common categories:</Text>
+          <div className="flex flex-wrap gap-2 my-8">
+            <Button onClick={() => focus({ id: 'stuck-main-performance' })}>
+              Performance
+            </Button>
+            <Button
+              onClick={() => focus({ id: 'stuck-main-state-management' })}
+            >
+              State management
+            </Button>
+            <Button onClick={() => focus({ id: 'stuck-main-smart-edges' })}>
+              "Smart" edges
+            </Button>
+            <Button onClick={() => focus({ id: 'stuck-main-layouting' })}>
+              Layouting
+            </Button>
+          </div>
+          <Text>
+            We also had some responses that didn't fit into any of these
+            categories...
+          </Text>
+        </>
+      ),
+    }),
+    section({
+      id: 'stuck-main-performance',
+      position: { x: 2700, y: 4900 },
+      title: 'Performance',
+      content: (
+        <>
+          <Text>
+            Getting performance right in a big React app is a hard problem, and
+            many of our users have definitely felt that pain. We noticed
+            recurring pain points around state management: particularly related
+            to custom nodes and node data.
+          </Text>
+          <MessageCloud
+            messages={[
+              'our use case became much more unique so we needed to explore new territory, specifically with rolling our own state management...I\'m still sitting here wondering if we are doing it "right" in terms of optimizing the performance of React Flow.',
+              "Passing info from one node to another, and getting connected node's info in a large graph without slowing down the app",
+            ]}
+          />
+          <Text>Here's what we're planning to do about it:</Text>
+          <ul className="list-disc list-inside [&>*]:ml-4">
+            <li>
+              Put Performance FAQ in Docs (including what's not possible/good to
+              make with React Flow)
+            </li>
+            <li>
+              Create hooks for connecting node's info to a large graph without
+              slowing down the app
+            </li>
+            <li>Surface more information about React Flow's internal state</li>
+          </ul>
+          <hr />
+          <Text>Jump to another category:</Text>
+          <div className="flex flex-wrap gap-2">
+            <Button
+              onClick={() => focus({ id: 'stuck-main-state-management' })}
+            >
+              State management
+            </Button>
+            <Button onClick={() => focus({ id: 'stuck-main-smart-edges' })}>
+              "Smart" edges
+            </Button>
+            <Button onClick={() => focus({ id: 'stuck-main-layouting' })}>
+              Layouting
+            </Button>
+          </div>
+        </>
+      ),
+    }),
+    section({
+      id: 'stuck-main-state-management',
+      position: { x: 3400, y: 4800 },
+      title: 'State management',
+      content: (
+        <>
+          <Text>
+            Our users felt state management was difficult to get right in React
+            Flow. There's a lot of confusion around what state is managed by
+            React Flow vs what state should be managed by the user, and then
+            there are questions about what library or approach to use for state
+            management!
+          </Text>
+          <MessageCloud
+            messages={[
+              "The documentation has some holes in it, so I've run into some dead ends trying to figure out how particular areas of state management should work.",
+              'Maybe a complete example with state management and/or more docs on the library implementation',
+              "State is difficult, but that's probably just because state is hard in general",
+              'Managing state and changes for my custom nodes.',
+            ]}
+          />
+          <Text>Here's what we're planning to do about it:</Text>
+          <ul className="list-disc list-inside [&>*]:ml-4">
+            <li>
+              Make computed flows possible, which covers many simple cases
+              without having to use a third-party library.
+            </li>
+            <li>Create an example where we load data from a database</li>
+            <li>
+              Teach some common state management tips in our React Flow
+              documentation for folks who are new to React
+            </li>
+          </ul>
+          <hr />
+          <Text>Jump to another category:</Text>
+          <div className="flex flex-wrap gap-2">
+            <Button onClick={() => focus({ id: 'stuck-main-performance' })}>
+              Performance
+            </Button>
+            <Button onClick={() => focus({ id: 'stuck-main-smart-edges' })}>
+              "Smart" edges
+            </Button>
+            <Button onClick={() => focus({ id: 'stuck-main-layouting' })}>
+              Layouting
+            </Button>
+          </div>
+        </>
+      ),
+    }),
+    section({
+      id: 'stuck-main-smart-edges',
+      position: { x: 4100, y: 4700 },
+      title: 'Smart edges',
+      content: (
+        <>
+          <Text>
+            Smarter and more powerful edges has been a recurring request from
+            our users for literally years! There's scope for the library to
+            improve but we're also weary about making the library harder to
+            maintain: some of the features folks want end up being quite
+            complex!
+          </Text>
+          <MessageCloud
+            messages={[
+              'More animations for edges.',
+              "Implementing smart edges for sure🥹, haven't been able to figure out yet, also would love if you guys could add some examples of edges routing in your documentation.",
+              'I wish React Flow has something like edge routing, to avoid edge intersections.',
+            ]}
+          />
+          <Text>Here's what we're planning to do about it:</Text>
+          <ul className="list-disc list-inside [&>*]:ml-4">
+            <li>
+              Create a Pro Example showing off editable edges and edge routing.
+            </li>
+            <li>
+              Create a new example demonstrating how to do custom edge
+              animations.
+            </li>
+          </ul>
+          <hr />
+          <Text>Jump to another category:</Text>
+          <div className="flex flex-wrap gap-2">
+            <Button onClick={() => focus({ id: 'stuck-main-performance' })}>
+              Performance
+            </Button>
+            <Button
+              onClick={() => focus({ id: 'stuck-main-state-management' })}
+            >
+              State management
+            </Button>
+            <Button onClick={() => focus({ id: 'stuck-main-layouting' })}>
+              Layouting
+            </Button>
+          </div>
+        </>
+      ),
+    }),
+    section({
+      id: 'stuck-main-layouting',
+      position: { x: 4800, y: 4600 },
+      title: 'Layouting',
+      content: (
+        <>
+          <Text>
+            Around 50% of respondents mentioned they had implemented some sort
+            of node layouting in their flows.
+          </Text>
+          <Text>
+            We have no plans on adding layouting directly to the library – there
+            are other packages out there that solve that problem much better
+            than we could – but it is clear that this is something many of our
+            users need and perhaps we could do a better job at pointing folks in
+            the right direction.
+          </Text>
+          <MessageCloud
+            messages={[
+              'Auto layout helpers not based on other third party libraries. Better way to trigger layout changes and recalculation.',
+              "...It's also hard to do auto layout on data change like getting new nodes from the database... it wasn't as straightforward as I hoped for.",
+              'Auto layout options and doing the custom math for my layout. Learning to think the way a layout engine wants',
+            ]}
+          />
+          <Text>Here's what we're planning to do about it:</Text>
+          <ul className="list-disc list-inside [&>*]:ml-4">
+            <li>
+              Build more complex layouting examples, e.g. changing a layout
+              after getting node updates from a database
+            </li>
+            <li>
+              Create more step-by-step tutorials on how to use 3rd party
+              tutorials with React Flow (like Elk, Dagre, etc.), instead of just
+              the examples we already provide
+            </li>
+          </ul>
+          <hr />
+          <Text>Jump to another category:</Text>
+          <div className="flex flex-wrap gap-2">
+            <Button onClick={() => focus({ id: 'stuck-main-performance' })}>
+              Performance
+            </Button>
+            <Button
+              onClick={() => focus({ id: 'stuck-main-state-management' })}
+            >
+              State management
+            </Button>
+            <Button onClick={() => focus({ id: 'stuck-main-smart-edges' })}>
+              Smart edges
+            </Button>
+          </div>
+        </>
+      ),
+    }),
+    section({
+      id: 'stuck-extra-internals',
+      position: { x: 1800, y: 6000 },
+      title: 'Understanding the internals',
+      content: (
+        <>
+          <MessageCloud
+            messages={[
+              'I find myself constantly printing out the values of edges, nodes and how they change. Maybe a small tool that displays the details of the current element on click (only enabled in dev mode.)',
+              "The innerworkings of the edge API's, the tricks with nodeinternals to get edges to choose the nearest side of a node. It's great that it's possible, but also those API's are pretty confusing.",
+              'Accessing the internal states are sometimes not working as expected. e.g. getNodes might not return the latest data. We ended up using some work-arounds. I guess this is more of a React problem.',
+              'Something like a hashtable to query data from node / edge without searching the whole array',
+            ]}
+          />
+        </>
+      ),
+    }),
+    section({
+      id: 'stuck-extra-interaction',
+      position: { x: 2400, y: 6200 },
+      title: 'Interactivity and UX',
+      content: (
+        <>
+          <MessageCloud
+            messages={[
+              'I think the API should facilitate the interaction between nodes. e.g. add custom props for custom nodes.',
+              'Yes, the nodes data object to be passable to next connected node data more easily',
+              'some UX tips/pages/sections to create a functional flow ui could be cool (there is community showcase to find inspiration, but some tips or deep explanation on how to design the node/edge for some use case, like a node, form inside a node or in a detail component, etc...)"',
+              'Built in UX / comprehensive examples for "making a node editor" would be great.',
+            ]}
+          />
+        </>
+      ),
+    }),
+    section({
+      id: 'stuck-extra-custom-nodes',
+      position: { x: 1700, y: 6600 },
+      title: 'Custom nodes',
+      content: (
+        <>
+          <MessageCloud
+            messages={[
+              'No good examples to understand the complex node design.',
+              "I feel there's a general lack of information about doing anything other than basic stuff with Custom Nodes.",
+            ]}
+          />
+        </>
+      ),
+    }),
     // REACT FLOW PRO ----------------------------------------------------------
     section({
       id: 'pro',
-      position: { x: 6000, y: 500 },
+      position: { x: 2000, y: 7000 },
       title: 'Why do people subscribe to React Flow Pro?',
       content: (
         <>
@@ -501,7 +828,7 @@ const initialNodes = ({
     }),
     section({
       id: 'pro-who-knew',
-      position: { x: 6000, y: 1100 },
+      position: { x: 2000, y: 7600 },
       content: (
         <>
           <Text>
@@ -514,7 +841,7 @@ const initialNodes = ({
     }),
     section({
       id: 'pro-why-tho',
-      position: { x: 6000, y: 1400 },
+      position: { x: 2000, y: 7800 },
       content: (
         <>
           <Text>
@@ -540,8 +867,58 @@ const initialNodes = ({
         </>
       ),
     }),
+    section({
+      id: 'pro-why-not-tho',
+      position: { x: 2000, y: 8300 },
+      content: (
+        <>
+          <Text>
+            For the folks that <span className="font-bold">didn't</span>{' '}
+            subscribe to React Flow Pro, the most common reason was its price.
+            We cater our Pro subscription around businesses because those are
+            the folks with the money available to keep React Flow sustainable,
+            but that can mean our pricing feels unfair to individuals or small
+            teams.
+          </Text>
+          <Text>
+            We offer discounts for early stage startups, and{' '}
+            <span className="font-bold">students and open source projects</span>{' '}
+            can access individual Pro Examples on request.
+          </Text>
+          <Text>
+            Some people were unhappy about the subscription model and would
+            prefer a one-time payment. Our Pro platform is constantly improving
+            and we are regularly adding new examples! The Pro subscription is
+            what allows us to keep working on React Flow as a job and keep the
+            library MIT licensed: having that recurring revenue makes all that
+            possible.
+          </Text>
+        </>
+      ),
+    }),
+    action({
+      id: 'to-thank-you',
+      position: { x: 2200, y: 8900 },
+      content: <Text>And lastly...</Text>,
+      action: () => focus({ id: 'respondents' }),
+    }),
   ];
 };
+
+function MessageCloud({ messages }: { messages: string[] }) {
+  return (
+    <div className="flex flex-wrap justify-around items-start gap-x-4 gap-y-2">
+      {messages.map((message) => (
+        <div
+          key={message}
+          className="odd:mt-6 w-48 p-2 bg-blue-500 text-white rounded-tr-lg rounded-b-lg shadow-md"
+        >
+          <Text size="xs">{message}</Text>
+        </div>
+      ))}
+    </div>
+  );
+}
 
 const initialEdges = [
   { source: 'title', target: 'intro' },
@@ -608,6 +985,7 @@ const initialEdges = [
   { source: 'user-apps', target: 'user-apps-dnd' },
   { source: 'user-apps-dnd', target: 'user-apps-dnd-0' },
   focusEdge('user-apps', 'help', 'both'),
-  { source: 'help', target: 'help-sources' },
-  { source: 'help', target: 'help-sections' },
+  focusEdge('help', 'help-sources', 'prev'),
+  focusEdge('help-sources', 'help-sections', 'both'),
+  { source: 'help', target: 'stuck' },
 ].map((edge) => ({ ...edge, id: `${edge.source}->${edge.target}` }));

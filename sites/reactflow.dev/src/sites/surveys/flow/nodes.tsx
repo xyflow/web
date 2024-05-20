@@ -5,6 +5,7 @@ export const nodeTypes = {
   action: ActionNode,
   section: SectionNode,
   project: ProjectNode,
+  'chat-bubble': ChatBubble,
 };
 
 export type ActionParams = {
@@ -203,6 +204,37 @@ function ProjectNode({ data }) {
         className="invisible absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
       />
       <Text size={data?.isCategory ? 'sm' : 'xs'}>{data?.label}</Text>
+    </div>
+  );
+}
+
+export type ChatBubbleParams = {
+  id?: string;
+  message: string;
+  position: { x: number; y: number };
+};
+
+export const chatBubble = ({ id, message, position }) => ({
+  id,
+  type: 'chat-bubble',
+  data: { message },
+  position,
+});
+
+function ChatBubble({ data }) {
+  return (
+    <div className="w-48 p-2 bg-gray-50 rounded-tr-lg rounded-b-lg shadow-md">
+      <Handle
+        type="target"
+        position={Position.Top}
+        className="invisible absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+      />
+      <Handle
+        type="source"
+        position={Position.Bottom}
+        className="invisible absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+      />
+      <Text size="xs">{data.message}</Text>
     </div>
   );
 }
