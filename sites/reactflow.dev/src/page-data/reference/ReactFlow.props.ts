@@ -221,7 +221,8 @@ export const edgeProps: PropsTableProps = {
       default: 'true',
       description: `Whether or not edges can be updated once they are created.
       When both this prop is true and an onEdgeUpdate handler is provided, the
-      user can drag an existing edge to a new source or target.`,
+      user can drag an existing edge to a new source or target. Individual edges
+      can override this value with their updatable property.`,
     },
   ],
 };

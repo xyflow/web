@@ -22,8 +22,8 @@ export const defaultEdgeFields: PropsTableProps = {
       name: 'updatable?',
       type: 'boolean | "source" | "target"',
       description: `Determines whether the edge can be updated by dragging the
-      source or target to a new node. This property only has an effect if the
-      edgesUpdatable prop on your <ReactFlow/> component is set to true.`,
+      source or target to a new node. This property will override the default
+      set by the edgesUpdatable prop on the <ReactFlow /> component.`,
     },
     { name: 'markerStart', type: 'string | EdgeMarker' },
     { name: 'markerEnd', type: 'string | EdgeMarker' },
