@@ -2,7 +2,7 @@ import React from 'react';
 import ReactFlow, { useNodesState, useEdgesState, Background } from 'reactflow';
 import 'reactflow/dist/style.css';
 
-import DragHandleNode from './DragHandleNode.js';
+import DragHandleNode from './DragHandleNode';
 
 const nodeTypes = {
   dragHandleNode: DragHandleNode,

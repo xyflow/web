@@ -4,7 +4,7 @@ import 'reactflow/dist/style.css';
 import defaultNodes from './nodes.js';
 import defaultEdges from './edges.js';
 
-import MiniMapNode from './MiniMapNode.js';
+import MiniMapNode from './MiniMapNode';
 
 const nodeColor = (node) => {
   switch (node.type) {

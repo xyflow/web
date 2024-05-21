@@ -21,7 +21,7 @@ export default function ExampleViewer({
   ...rest
 }: ExampleViewerProps) {
   const [files, setFiles] = useState(null);
-  const scriptExtension = isTypescript ? 'tsx' : 'js';
+  const scriptExtension = isTypescript ? 'tsx' : 'jsx';
   const dependenciesWithDefault = {
     reactflow: process.env.NEXT_PUBLIC_REACT_FLOW_VERSION,
     ...dependencies,
