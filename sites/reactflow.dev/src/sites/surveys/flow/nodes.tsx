@@ -1,4 +1,4 @@
-import { Button, Heading, HeroIcon, Link, Text, cn } from '@xyflow/xy-ui';
+import { Button, Heading, Link, Text, cn } from '@xyflow/xy-ui';
 import { Handle, Node, Position } from 'reactflow';
 
 export const nodeTypes = {
@@ -214,7 +214,7 @@ export type ChatBubbleParams = {
   position: { x: number; y: number };
 };
 
-export const chatBubble = ({ id, message, position }) => ({
+export const chatBubble = ({ id, message, position }: ChatBubbleParams) => ({
   id,
   type: 'chat-bubble',
   data: { message },
@@ -223,7 +223,7 @@ export const chatBubble = ({ id, message, position }) => ({
 
 function ChatBubble({ data }) {
   return (
-    <div className="w-48 p-2 bg-gray-50 rounded-tr-lg rounded-b-lg shadow-md">
+    <div className="max-w-48 p-2 bg-blue-500 text-white rounded-tr-lg rounded-b-lg shadow-md">
       <Handle
         type="target"
         position={Position.Top}

@@ -71,29 +71,28 @@ const initialNodes = ({
 
   const projectCategory = ({ id, name, position, projects }) => {
     const radius = name.length * 12;
+    const category = project({ id, isCategory: true, position, label: name });
+    const children = projects.map((name: string, i: number) => {
+      const offsetX = Math.random() * 30 - 15;
+      const offsetY = Math.random() * 30 - 15;
 
-    return [
-      ...projects.map((name, i) => {
-        const offsetX = Math.random() * 30 - 15;
-        const offsetY = Math.random() * 30 - 15;
+      return project({
+        id: `${id}-${i}`,
+        label: name,
+        position: {
+          x:
+            position.x +
+            offsetX +
+            radius * Math.cos((i / projects.length) * Math.PI * 2),
+          y:
+            position.y +
+            offsetY +
+            radius * Math.sin((i / projects.length) * Math.PI * 2),
+        },
+      });
+    });
 
-        return project({
-          id: `${id}-${i}`,
-          label: name,
-          position: {
-            x:
-              position.x +
-              offsetX +
-              radius * Math.cos((i / projects.length) * Math.PI * 2),
-            y:
-              position.y +
-              offsetY +
-              radius * Math.sin((i / projects.length) * Math.PI * 2),
-          },
-        });
-      }),
-      project({ id, isCategory: true, position, label: name }),
-    ];
+    return [...children, category];
   };
 
   return [
@@ -545,16 +544,12 @@ const initialNodes = ({
               Layouting
             </Button>
           </div>
-          <Text>
-            We also had some responses that didn't fit into any of these
-            categories...
-          </Text>
         </>
       ),
     }),
     section({
       id: 'stuck-main-performance',
-      position: { x: 2700, y: 4900 },
+      position: { x: 2700, y: 4500 },
       title: 'Performance',
       content: (
         <>
@@ -602,7 +597,7 @@ const initialNodes = ({
     }),
     section({
       id: 'stuck-main-state-management',
-      position: { x: 3400, y: 4800 },
+      position: { x: 2700, y: 5500 },
       title: 'State management',
       content: (
         <>
@@ -651,7 +646,7 @@ const initialNodes = ({
     }),
     section({
       id: 'stuck-main-smart-edges',
-      position: { x: 4100, y: 4700 },
+      position: { x: 1300, y: 4500 },
       title: 'Smart edges',
       content: (
         <>
@@ -699,7 +694,7 @@ const initialNodes = ({
     }),
     section({
       id: 'stuck-main-layouting',
-      position: { x: 4800, y: 4600 },
+      position: { x: 1300, y: 5500 },
       title: 'Layouting',
       content: (
         <>
@@ -752,11 +747,31 @@ const initialNodes = ({
       ),
     }),
     section({
-      id: 'stuck-extra-internals',
-      position: { x: 1800, y: 6000 },
-      title: 'Understanding the internals',
+      id: 'stuck-extra',
+      position: { x: 2000, y: 6000 },
       content: (
         <>
+          <Text>
+            We also had some responses that didn't fit into any of these
+            categories...
+          </Text>
+          <button
+            className="group self-end mt-2"
+            onClick={() => focus({ id: 'stuck-extra-internals' })}
+          >
+            <ArrowDownIcon className="w-4 h-4 transition-transform group-hover:translate-y-1 translate-y-0" />
+          </button>
+        </>
+      ),
+    }),
+    section({
+      id: 'stuck-extra-internals',
+      position: { x: 2000, y: 6500 },
+      content: (
+        <>
+          <Text size="lg" className="font-bold">
+            Understanding the internals
+          </Text>
           <MessageCloud
             messages={[
               'I find myself constantly printing out the values of edges, nodes and how they change. Maybe a small tool that displays the details of the current element on click (only enabled in dev mode.)',
@@ -765,15 +780,46 @@ const initialNodes = ({
               'Something like a hashtable to query data from node / edge without searching the whole array',
             ]}
           />
+          <button
+            className="group self-end mt-2"
+            onClick={() => focus({ id: 'stuck-extra-custom-nodes' })}
+          >
+            <ArrowDownIcon className="w-4 h-4 transition-transform group-hover:translate-y-1 translate-y-0" />
+          </button>
+        </>
+      ),
+    }),
+    section({
+      id: 'stuck-extra-custom-nodes',
+      position: { x: 2020, y: 7000 },
+      content: (
+        <>
+          <Text size="lg" className="font-bold">
+            Custom nodes
+          </Text>
+          <MessageCloud
+            messages={[
+              'No good examples to understand the complex node design.',
+              "I feel there's a general lack of information about doing anything other than basic stuff with Custom Nodes.",
+            ]}
+          />
+          <button
+            className="group self-end mt-2"
+            onClick={() => focus({ id: 'stuck-extra-interaction' })}
+          >
+            <ArrowDownIcon className="w-4 h-4 transition-transform group-hover:translate-y-1 translate-y-0" />
+          </button>
         </>
       ),
     }),
     section({
       id: 'stuck-extra-interaction',
-      position: { x: 2400, y: 6200 },
-      title: 'Interactivity and UX',
+      position: { x: 2000, y: 7300 },
       content: (
         <>
+          <Text size="lg" className="font-bold">
+            Interactivity and UX
+          </Text>
           <MessageCloud
             messages={[
               'I think the API should facilitate the interaction between nodes. e.g. add custom props for custom nodes.',
@@ -782,28 +828,19 @@ const initialNodes = ({
               'Built in UX / comprehensive examples for "making a node editor" would be great.',
             ]}
           />
-        </>
-      ),
-    }),
-    section({
-      id: 'stuck-extra-custom-nodes',
-      position: { x: 1700, y: 6600 },
-      title: 'Custom nodes',
-      content: (
-        <>
-          <MessageCloud
-            messages={[
-              'No good examples to understand the complex node design.',
-              "I feel there's a general lack of information about doing anything other than basic stuff with Custom Nodes.",
-            ]}
-          />
+          <button
+            className="group self-end mt-2"
+            onClick={() => focus({ id: 'pro' })}
+          >
+            <ArrowDownIcon className="w-4 h-4 transition-transform group-hover:translate-y-1 translate-y-0" />
+          </button>
         </>
       ),
     }),
     // REACT FLOW PRO ----------------------------------------------------------
     section({
       id: 'pro',
-      position: { x: 2000, y: 7000 },
+      position: { x: 2000, y: 9000 },
       title: 'Why do people subscribe to React Flow Pro?',
       content: (
         <>
@@ -823,12 +860,18 @@ const initialNodes = ({
             We asked about it, and got responses from{' '}
             <span className="font-bold">19</span> Pro subscribers.
           </Text>
+          <button
+            className="group self-end mt-2"
+            onClick={() => focus({ id: 'pro-who-knew' })}
+          >
+            <ArrowDownIcon className="w-4 h-4 transition-transform group-hover:translate-y-1 translate-y-0" />
+          </button>
         </>
       ),
     }),
     section({
       id: 'pro-who-knew',
-      position: { x: 2000, y: 7600 },
+      position: { x: 2000, y: 9600 },
       content: (
         <>
           <Text>
@@ -836,12 +879,18 @@ const initialNodes = ({
             We've never put money into advertising or promotion, and now we know
             we don't need to start now! <Emoji content="💅🏻" />
           </Text>
+          <button
+            className="group self-end mt-2"
+            onClick={() => focus({ id: 'pro-why-tho' })}
+          >
+            <ArrowDownIcon className="w-4 h-4 transition-transform group-hover:translate-y-1 translate-y-0" />
+          </button>
         </>
       ),
     }),
     section({
       id: 'pro-why-tho',
-      position: { x: 2000, y: 7800 },
+      position: { x: 2000, y: 9800 },
       content: (
         <>
           <Text>
@@ -864,12 +913,18 @@ const initialNodes = ({
             subscription is affordable to businesses in Europe or the US, but if
             you're in India or Brazil, it's significantly more expensive.
           </Text>
+          <button
+            className="group self-end mt-2"
+            onClick={() => focus({ id: 'pro-why-not-tho' })}
+          >
+            <ArrowDownIcon className="w-4 h-4 transition-transform group-hover:translate-y-1 translate-y-0" />
+          </button>
         </>
       ),
     }),
     section({
       id: 'pro-why-not-tho',
-      position: { x: 2000, y: 8300 },
+      position: { x: 2000, y: 10300 },
       content: (
         <>
           <Text>
@@ -893,14 +948,118 @@ const initialNodes = ({
             library MIT licensed: having that recurring revenue makes all that
             possible.
           </Text>
+          <button
+            className="group self-end mt-2"
+            onClick={() => focus({ id: 'to-thank-you' })}
+          >
+            <ArrowDownIcon className="w-4 h-4 transition-transform group-hover:translate-y-1 translate-y-0" />
+          </button>
         </>
       ),
     }),
     action({
       id: 'to-thank-you',
-      position: { x: 2200, y: 8900 },
+      position: { x: 2200, y: 10900 },
       content: <Text>And lastly...</Text>,
-      action: () => focus({ id: 'respondents' }),
+      action: () => focus({ id: 'thank-you' }),
+    }),
+    //
+    // THANK YOU ---------------------------------------------------------------
+    section({
+      id: 'thank-you',
+      position: { x: 4000, y: 9000 },
+      title: 'Thank you!',
+      content: (
+        <>
+          <Text>
+            Thank you to everyone who took the time to fill out our survey! We
+            really appreciate your feedback and we're excited to use it to make
+            React Flow even better.
+          </Text>
+          <Text>
+            If you'd like to read things in more detail, you can check out the
+            full survey over on{' '}
+            <Link
+              href="https://xyflow.com/blog/react-flow-developer-survey-2023"
+              className="hover:underline text-primary"
+            >
+              our blog
+            </Link>
+            .
+          </Text>
+          <Text>
+            Catch you next time! <Emoji content="✌️" /> The xyflow team –
+            Christopher, Hayleigh, John, Moritz, and Peter
+          </Text>
+        </>
+      ),
+    }),
+    chatBubble({
+      position: { x: 3900, y: 8800 },
+      message: 'Keep up the good work',
+    }),
+    chatBubble({
+      position: { x: 3950, y: 8900 },
+      message: 'It’s a great library!',
+    }),
+    chatBubble({
+      position: { x: 4150, y: 8750 },
+      message: "I like a lot your product, I'd like to work a lot on it",
+    }),
+    chatBubble({
+      position: { x: 4100, y: 8850 },
+      message:
+        'Great project! Very grateful it exists! Thank you for your work.',
+    }),
+    chatBubble({
+      position: { x: 4400, y: 8800 },
+      message:
+        'You are doing an excellent job with this. I am very happy with reactflow and would love to see you push it further. The examples are great, because they make it very easy to adopt features.',
+    }),
+    chatBubble({
+      position: { x: 4550, y: 8950 },
+      message: 'You guys are awesome',
+    }),
+    chatBubble({
+      position: { x: 4600, y: 9050 },
+      message:
+        'I have great respect for the reactflow team, making a great asset for the public under MIT license.',
+    }),
+    chatBubble({
+      position: { x: 4550, y: 9200 },
+      message: "Great product, can't wait to see the future of it.",
+    }),
+    chatBubble({
+      position: { x: 4600, y: 9350 },
+      message:
+        "I really appreciate the work you've put into this awesome library, it's enabling me to do so much more than I'd otherwise be able to do.",
+    }),
+    chatBubble({
+      position: { x: 4350, y: 9450 },
+      message:
+        'Good job! Really like the lib. Fits my indie-project even though I might spent to much on this part (might be hard for me as a backend-developer)',
+    }),
+    chatBubble({
+      position: { x: 4100, y: 9530 },
+      message: 'Thanks for the incredible helpful open source project',
+    }),
+    chatBubble({
+      position: { x: 3900, y: 9400 },
+      message:
+        'Keep up the good working. Looking forward to getting actual feature updates again when v12 and svelte is out',
+    }),
+    chatBubble({
+      position: { x: 3800, y: 9100 },
+      message: "I'm a big fan of reactflow!",
+    }),
+    chatBubble({
+      position: { x: 3720, y: 9250 },
+      message:
+        'i really like the styling of the react flow page and the docs related to components are very helpful',
+    }),
+    chatBubble({
+      position: { x: 3700, y: 9000 },
+      message: '"...it\'s very easy I love you developers"',
     }),
   ];
 };
@@ -988,4 +1147,13 @@ const initialEdges = [
   focusEdge('help', 'help-sources', 'prev'),
   focusEdge('help-sources', 'help-sections', 'both'),
   { source: 'help', target: 'stuck' },
+  { source: 'stuck', target: 'stuck-extra' },
+  { source: 'stuck-extra', target: 'stuck-extra-internals' },
+  { source: 'stuck-extra-internals', target: 'stuck-extra-custom-nodes' },
+  { source: 'stuck-extra-custom-nodes', target: 'stuck-extra-interaction' },
+  { source: 'stuck-extra-interaction', target: 'pro' },
+  { source: 'pro', target: 'pro-who-knew' },
+  { source: 'pro-who-knew', target: 'pro-why-tho' },
+  { source: 'pro-why-tho', target: 'pro-why-not-tho' },
+  { source: 'pro-why-not-tho', target: 'to-thank-you' },
 ].map((edge) => ({ ...edge, id: `${edge.source}->${edge.target}` }));
