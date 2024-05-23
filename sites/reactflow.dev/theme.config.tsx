@@ -4,10 +4,7 @@ import { useConfig, Navbar } from 'nextra-theme-docs';
 import { Footer, Button, LogoLabel, cn } from '@xyflow/xy-ui';
 import { Search, SidebarTitle } from 'xy-shared';
 import { SparklesIcon } from '@heroicons/react/24/outline';
-
-import { type Route } from '@/utils';
-
-import whatsNew from './src/pages/whats-new/_feed.json';
+import { getMdxPagesUnderRoute, type Route } from '@/utils';
 
 function useIsPro() {
   const router = useRouter();
@@ -200,15 +197,14 @@ export default {
           <p className="nx-text-xs nx-font-semibold nx-tracking-tight nx-text-gray-600 dark:nx-text-gray-200 contrast-more:nx-text-gray-900 contrast-more:dark:nx-text-gray-50">
             What's new?
           </p>
-          {whatsNew.slice(0, 3).map((frontmatter) => (
-            <Link
-              key={frontmatter.route}
-              href={frontmatter.route}
-              className={className}
-            >
-              {frontmatter.title}
-            </Link>
-          ))}
+          {getMdxPagesUnderRoute('/whats-new')
+            .sort()
+            .slice(0, 3)
+            .map(({ route, frontMatter }) => (
+              <Link key={route} href={route} className={className}>
+                {frontMatter.title}
+              </Link>
+            ))}
           <Link href="/whats-new" className={className}>
             ...and more!
           </Link>

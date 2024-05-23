@@ -11,7 +11,6 @@
     "write-showcases": "rm -rf static/img/showcase && mkdir -p static/img/showcase && node scripts/get-showcases.js",
     "check-sitemap": "node scripts/check-sitemap.mjs",
     "generate-routes-type": "node scripts/generate-routes-type.mjs",
-    "generate-whats-new": "node scripts/generate-whats-new-feed.mjs",
     "check-links": "node scripts/check-mdx-links.mjs"
   },
   "dependencies": {
