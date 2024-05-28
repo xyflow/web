@@ -1,34 +1,43 @@
 import './App.css';
 
-import { lazy } from 'react';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-
-const paths = [
-  {
-    id: 'custom-edge',
-    path: 'CustomEdge',
-  },
-  {
-    id: 'elkjs-tree',
-    path: 'ElkjsTree',
-  },
-];
-
-const router = createBrowserRouter(
-  paths.map((path) => ({
-    path: `/${path.id}`,
-    Component: lazy(
-      () =>
-        import(
-          // @ts-expect-error this line will error because we don't know it's a react component
-          `../../../sites/reactflow.dev/src/components/example-viewer/example-flows/ElkjsMultiHandle`
-        ),
-    ),
-  })),
-);
+import { useEffect, useState, type ComponentType, lazy } from 'react';
 
 function App() {
-  return <RouterProvider router={router} />;
+  const [Component, setComponent] = useState<null | ComponentType>(null);
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const examplePath = urlParams.get('path');
+
+    const loadComponent = async () => {
+      let extension = 'jsx';
+
+      try {
+        await import(
+          `../../../sites/reactflow.dev/src/components/example-viewer/example-flows/${examplePath}/index.jsx`
+        );
+      } catch (err) {
+        extension = 'tsx';
+      }
+
+      const jsx = lazy(
+        () =>
+          import(
+            `../../../sites/reactflow.dev/src/components/example-viewer/example-flows/${examplePath}/index.${extension}`
+          ),
+      );
+
+      setComponent(jsx);
+    };
+
+    loadComponent();
+  }, []);
+
+  if (!Component) {
+    return null;
+  }
+
+  return <Component />;
 }
 
 export default App;
