@@ -103,7 +103,7 @@ yarn create vite my-react-flow-app -- --template react
 
 React Flow is published on npm as [`reactflow`](https://npmjs.com/package/reactflow), so go ahead and add it next.
 
-<Tabs items={['npm', 'pnpm', 'yarn']}>
+<Tabs items={['npm', 'pnpm', 'yarn', 'bun']}>
   <Tab >
 
 ```bash copy
@@ -125,11 +125,18 @@ yarn add reactflow
 ```
 
   </Tab>
+  <Tab>
+
+```bash copy
+bun add reactflow
+```
+
+</Tab>
 </Tabs>
 
 Lastly, spin up the dev server and we're good to go!
 
-<Tabs items={['npm', 'pnpm', 'yarn']}>
+<Tabs items={['npm', 'pnpm', 'yarn', 'bun']}>
   <Tab>
 
 ```bash copy
@@ -151,7 +158,13 @@ yarn dev
 ```
 
   </Tab>
+  <Tab>
 
+```bash copy
+bun run dev
+```
+
+</Tab>
 </Tabs>
 
 ## Creating your first flow
