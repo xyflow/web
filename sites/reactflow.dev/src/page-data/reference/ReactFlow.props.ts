@@ -493,8 +493,8 @@ export const interactionProps: PropsTableProps = {
     { name: 'panOnScrollSpeed', type: 'number' },
     {
       name: 'panOnScrollMode',
-      type: '"free" | "horizontal" | "vertical"',
-      default: '"free"',
+      type: 'PanOnScrollMode',
+      default: 'PanOnScrollMode.Free',
       description: `This prop is used to limit the direction of panning when
       panOnScroll is enabled. The "free" option allows panning in any direction.`,
     },
