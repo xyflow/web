@@ -829,7 +829,7 @@ const initialNodes = ({
             messages={[
               'I think the API should facilitate the interaction between nodes. e.g. add custom props for custom nodes.',
               'Yes, the nodes data object to be passable to next connected node data more easily',
-              'some UX tips/pages/sections to create a functional flow ui could be cool (there is community showcase to find inspiration, but some tips or deep explanation on how to design the node/edge for some use case, like a node, form inside a node or in a detail component, etc...)"',
+              'some UX tips/pages/sections to create a functional flow ui could be cool (there is community showcase to find inspiration, but some tips or deep explanation on how to design the node/edge for some use case, like a node, form inside a node or in a detail component, etc...)&quot;',
               'Built in UX / comprehensive examples for "making a node editor" would be great.',
             ]}
           />
@@ -1065,7 +1065,7 @@ const initialNodes = ({
     }),
     chatBubble({
       position: { x: 3700, y: 9000 },
-      message: '"...it&apos;s very easy I love you developers"',
+      message: '&quot;...it&apos;s very easy I love you developers&quot;',
     }),
   ];
 };
