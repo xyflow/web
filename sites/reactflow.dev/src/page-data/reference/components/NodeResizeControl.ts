@@ -8,7 +8,12 @@ export const nodeResizeControlProps: PropsTableProps = {
       type: '"top" | "bottom" | "left" | "right" | "top-left" | "top-right" | "bottom-left" | "bottom-right"',
       default: '"bottom-right"',
     },
-    { name: 'variant?', type: '"handle" | "line"', default: '"handle"' },
+    {
+      name: 'variant?',
+      type: '"handle" | "line"',
+      default: '"handle"',
+      description: ``,
+    },
     { name: 'keepAspectRatio?', type: 'boolean', default: 'false' },
     { name: 'minWidth?', type: 'number', default: '10' },
     { name: 'maxWidth?', type: 'number', default: 'Number.MAX_SAFE_INTEGER' },

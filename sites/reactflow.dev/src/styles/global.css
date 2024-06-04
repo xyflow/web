@@ -62,3 +62,11 @@ html:has(body.nx-overflow-hidden) nav {
 .developer-survey-2023 footer {
   display: none;
 }
+
+.sandpack-wrapper.vertical > .sp-wrapper > .sp-layout {
+  flex-direction: column-reverse;
+}
+
+.sandpack-wrapper.vertical .sp-stack {
+  flex: none;
+}

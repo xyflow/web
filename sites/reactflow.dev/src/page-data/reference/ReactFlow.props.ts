@@ -233,8 +233,9 @@ export const edgeProps: PropsTableProps = {
       type: 'boolean',
       default: 'true',
       description: `Whether or not edges can be updated once they are created.
-      This allows users to drag the source or target handles of an edge to a new
-      node.`,
+      When both this prop is true and an onEdgeUpdate handler is provided, the
+      user can drag an existing edge to a new source or target. Individual edges
+      can override this value with their updatable property.`,
     },
   ],
 };
@@ -346,14 +347,22 @@ export const edgeEventHandlerProps: PropsTableProps = {
     {
       name: 'onEdgeUpdate',
       type: '(oldEdge: Edge, newConnection: Connection) => void',
+      description: `This handler is called when the source or target of an updatable
+      edge is dragged from the current node. It will fire even if the edge's source
+      or target do not end up changing. You can use the updateEdge utility to
+      convert the connection to a new edge.`,
     },
     {
       name: 'onEdgeUpdateStart',
       type: '(event: React.MouseEvent, edge: Edge, handleType: "source" | "target") => void',
+      description: `This event fires when the user begins dragging the source or
+      target of an editable edge. `,
     },
     {
       name: 'onEdgeUpdateEnd',
       type: '(event: React.MouseEvent, edge: Edge, handleType: "source" | "target") => void',
+      description: `This event fires when the user releases the source or target
+      of an editable edge. It is called even if an edge update does not occur.`,
     },
     { name: 'onEdgesDelete', type: '(edges: Edge[]) => void' },
     {
@@ -508,8 +517,8 @@ export const interactionProps: PropsTableProps = {
     { name: 'panOnScrollSpeed', type: 'number' },
     {
       name: 'panOnScrollMode',
-      type: '"free" | "horizontal" | "vertical"',
-      default: '"free"',
+      type: 'PanOnScrollMode',
+      default: 'PanOnScrollMode.Free',
       description: `This prop is used to limit the direction of panning when
       panOnScroll is enabled. The "free" option allows panning in any direction.`,
     },

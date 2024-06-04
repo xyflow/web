@@ -13,21 +13,29 @@ import {
   nodes as initialNodes,
   edges as initialEdges,
 } from './initial-elements';
-import CustomNode from './CustomNode';
+import AnnotationNode from './AnnotationNode';
+import ToolbarNode from './ToolbarNode';
+import ResizerNode from './ResizerNode';
+import CircleNode from './CircleNode';
+import TextNode from './TextNode';
+import ButtonEdge from './ButtonEdge';
 
 import '@xyflow/react/dist/style.css';
 import './overview.css';
 
 const nodeTypes = {
-  custom: CustomNode,
+  annotation: AnnotationNode,
+  tools: ToolbarNode,
+  resizer: ResizerNode,
+  circle: CircleNode,
+  textinput: TextNode,
 };
 
-const minimapStyle = {
-  height: 120,
+const edgeTypes = {
+  button: ButtonEdge,
 };
 
-const onInit = (reactFlowInstance) =>
-  console.log('flow loaded:', reactFlowInstance);
+const nodeClassName = (node) => node.type;
 
 const OverviewFlow = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
@@ -37,36 +45,22 @@ const OverviewFlow = () => {
     [],
   );
 
-  // we are using a bit of a shortcut here to adjust the edge type
-  // this could also be done with a custom edge for example
-  const edgesWithUpdatedTypes = edges.map((edge) => {
-    if (edge.sourceHandle) {
-      const edgeType = nodes.find((node) => node.type === 'custom').data
-        .selects[edge.sourceHandle];
-      return {
-        ...edge,
-        type: edgeType,
-      };
-    }
-
-    return edge;
-  });
-
   return (
     <ReactFlow
       nodes={nodes}
-      edges={edgesWithUpdatedTypes}
+      edges={edges}
       onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
       onConnect={onConnect}
-      onInit={onInit}
       fitView
       attributionPosition="top-right"
       nodeTypes={nodeTypes}
+      edgeTypes={edgeTypes}
+      className="overview"
     >
-      <MiniMap style={minimapStyle} zoomable pannable />
+      <MiniMap zoomable pannable nodeClassName={nodeClassName} />
       <Controls />
-      <Background color="#aaa" gap={16} />
+      <Background />
     </ReactFlow>
   );
 };

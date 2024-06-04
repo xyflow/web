@@ -1,10 +1,10 @@
-<script>
+<script lang="ts">
   import { writable } from 'svelte/store';
-  import { SvelteFlow, Background } from '@xyflow/svelte';
+  import { SvelteFlow, Background, type Node } from '@xyflow/svelte';
 
   import '@xyflow/svelte/dist/style.css';
 
-  const nodes = writable([
+  const nodes = writable<Node[]>([
     {
       id: 'A',
       type: 'group',
@@ -17,14 +17,14 @@
       type: 'input',
       data: { label: 'child 1' },
       position: { x: 10, y: 10 },
-      parentNode: 'A',
+      parentId: 'A',
       extent: 'parent'
     },
     {
       id: 'C',
       data: { label: 'child 2' },
       position: { x: 10, y: 90 },
-      parentNode: 'A',
+      parentId: 'A',
       extent: 'parent'
     }
   ]);

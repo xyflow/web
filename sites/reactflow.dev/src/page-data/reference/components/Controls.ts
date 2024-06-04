@@ -2,13 +2,41 @@ import { type PropsTableProps } from 'xy-shared';
 
 export const controlsProps: PropsTableProps = {
   props: [
-    { name: 'showZoom?', type: 'boolean', default: 'true' },
-    { name: 'showFitView?', type: 'boolean', default: 'true' },
+    {
+      name: 'showZoom?',
+      type: 'boolean',
+      default: 'true',
+      description: `Whether or not to show the zoom in and zoom out buttons. By
+      default these buttons will adjust the viewport zoom by a fixed amount each
+      press.`,
+    },
+    {
+      name: 'showFitView?',
+      type: 'boolean',
+      default: 'true',
+      description: `Whether or not to show the fit view button. By default this
+      button will adjust the viewport so that all nodes are visible at once.`,
+    },
     { name: 'showInteractive?', type: 'boolean', default: 'true' },
     { name: 'fitViewOptions?', type: 'FitViewOptions' },
-    { name: 'onZoomIn?', type: '() => void' },
-    { name: 'onZoomOut?', type: '() => void' },
-    { name: 'onFitView?', type: '() => void' },
+    {
+      name: 'onZoomIn?',
+      type: '() => void',
+      description: `Called when the zoom in button is clicked. When this is not
+      provided, a default zoom will be applied to the viewpor.t`,
+    },
+    {
+      name: 'onZoomOut?',
+      type: '() => void',
+      description: `Called when the zoom out button is clicked. When this is not
+      provided, a default zoom will be applied to the viewport.`,
+    },
+    {
+      name: 'onFitView?',
+      type: '() => void',
+      description: `Called when the fit view button is clicked. When this is not
+      provided, the viewport will be adjusted so that all nodes are visible.`,
+    },
     {
       name: 'onInteractiveChange?',
       type: '(interactiveStatus: boolean) => void',

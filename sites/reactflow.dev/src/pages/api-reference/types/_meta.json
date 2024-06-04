@@ -21,6 +21,7 @@
   "node-handle": "NodeHandle",
   "on-nodes-change": "OnNodesChange",
   "on-edges-change": "OnEdgesChange",
+  "pan-on-scroll-mode": "PanOnScrollMode",
   "panel-position": "PanelPosition",
   "position": "Position",
   "pro-options": "ProOptions",

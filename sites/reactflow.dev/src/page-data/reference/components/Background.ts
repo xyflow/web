@@ -2,7 +2,12 @@ import { type PropsTableProps } from 'xy-shared';
 
 export const backgroundProps: PropsTableProps = {
   props: [
-    { name: 'id?', type: 'string' },
+    {
+      name: 'id?',
+      type: 'string',
+      description: `When multiple backgrounds are present on the page, each one
+      should have a unique id.`,
+    },
     { name: 'color?', type: 'string' },
     { name: 'className?', type: 'string' },
     { name: 'style?', type: 'React.CSSProperties' },
@@ -22,7 +27,12 @@ export const backgroundProps: PropsTableProps = {
       1 or 6 respectively, or ignored if BackgroundVariant.Lines is used.`,
     },
     { name: 'offset?', type: 'number', default: '2' },
-    { name: 'lineWidth?', type: 'number', default: '1' },
+    {
+      name: 'lineWidth?',
+      type: 'number',
+      default: '1',
+      description: `The stroke thickness used when drawing the pattern.`,
+    },
     {
       name: 'variant?',
       type: 'BackgroundVariant',

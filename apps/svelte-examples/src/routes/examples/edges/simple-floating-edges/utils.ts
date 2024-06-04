@@ -1,14 +1,14 @@
-import { Position, internalsSymbol } from '@xyflow/svelte';
+import { Position, type InternalNode } from '@xyflow/svelte';
 
 // returns the position (top,right,bottom or right) passed node compared to
-function getParams(nodeA, nodeB) {
+function getParams(nodeA: InternalNode, nodeB: InternalNode): [number, number, Position] {
   const centerA = getNodeCenter(nodeA);
   const centerB = getNodeCenter(nodeB);
 
   const horizontalDiff = Math.abs(centerA.x - centerB.x);
   const verticalDiff = Math.abs(centerA.y - centerB.y);
 
-  let position;
+  let position: Position;
 
   // when the horizontal difference between the nodes is bigger, we use Position.Left or Position.Right for the handle
   if (horizontalDiff > verticalDiff) {
@@ -22,11 +22,13 @@ function getParams(nodeA, nodeB) {
   return [x, y, position];
 }
 
-function getHandleCoordsByPosition(node, handlePosition) {
+function getHandleCoordsByPosition(node: InternalNode, handlePosition: Position): [number, number] {
   // all handles are from type source, that's why we use handleBounds.source here
-  const handle = node[internalsSymbol].handleBounds.source.find(
-    (h) => h.position === handlePosition
-  );
+  const handle = node.internals.handleBounds?.source?.find((h) => h.position === handlePosition);
+
+  if (!handle?.width || !handle?.height) {
+    return [0, 0];
+  }
 
   let offsetX = handle.width / 2;
   let offsetY = handle.height / 2;
@@ -49,21 +51,21 @@ function getHandleCoordsByPosition(node, handlePosition) {
       break;
   }
 
-  const x = node.computed?.positionAbsolute.x + handle.x + offsetX;
-  const y = node.computed?.positionAbsolute.y + handle.y + offsetY;
+  const x = node.internals.positionAbsolute.x + handle.x + offsetX;
+  const y = node.internals.positionAbsolute.y + handle.y + offsetY;
 
   return [x, y];
 }
 
-function getNodeCenter(node) {
+function getNodeCenter(node: InternalNode) {
   return {
-    x: node.computed?.positionAbsolute.x + node.computed?.width / 2,
-    y: node.computed?.positionAbsolute.y + node.computed?.height / 2
+    x: node.internals.positionAbsolute.x + (node.measured.width ?? 0) / 2,
+    y: node.internals.positionAbsolute.y + (node.measured.height ?? 0) / 2
   };
 }
 
 // returns the parameters (sx, sy, tx, ty, sourcePos, targetPos) you need to create an edge
-export function getEdgeParams(source, target) {
+export function getEdgeParams(source: InternalNode, target: InternalNode) {
   const [sx, sy, sourcePos] = getParams(source, target);
   const [tx, ty, targetPos] = getParams(target, source);
 

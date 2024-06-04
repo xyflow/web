@@ -74,7 +74,6 @@ export default {
                 { title: 'Pricing', [proHomePageKey]: '/pro' },
                 { title: 'Pro Examples', route: '/pro/examples' },
                 { title: 'Case Studies', route: '/pro/case-studies' },
-                { title: 'Enterprise', route: '/pro/enterprise' },
               ] satisfies { title: string; route?: Route; href?: Route }[]
             }
           />
@@ -124,7 +123,7 @@ export default {
                   { title: 'Pricing', route: '/pro/pricing' },
                   { title: 'Pro Examples', route: '/pro/examples' },
                   { title: 'Case Studies', route: '/pro/case-studies' },
-                  { title: 'Enterprise', route: '/pro/enterprise' },
+                  { title: 'Request a Quote', route: '/pro/quote-request' },
                   {
                     title: 'Sign Up',
                     route: `${process.env.NEXT_PUBLIC_PRO_PLATFORM_URL}/signup`,

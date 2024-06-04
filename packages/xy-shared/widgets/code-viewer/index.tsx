@@ -10,6 +10,7 @@ import {
   SandpackFiles,
 } from '@codesandbox/sandpack-react';
 import { Framework } from '@xyflow/xy-ui';
+import cn from 'clsx';
 
 const hiddenBaseStyles = {
   '/styles.css': {
@@ -49,6 +50,7 @@ export type CodeViewerProps = {
   files?: SandpackFiles;
   editorHeight?: string | number;
   readOnly?: boolean;
+  orientation?: 'horizontal' | 'vertical';
 };
 
 export function CodeViewer({
@@ -65,6 +67,7 @@ export function CodeViewer({
   editorHeight = '60vh',
   readOnly = false,
   activeFile,
+  orientation = 'horizontal',
 }: CodeViewerProps) {
   const panelStyle = { height: editorHeight };
   sandpackOptions.readOnly = !!customPreview;
@@ -72,7 +75,10 @@ export function CodeViewer({
   sandpackOptions.activeFile = sandpackOptions.activeFile || activeFile;
 
   return (
-    <div className="my-4" style={{ minHeight: editorHeight }}>
+    <div
+      className={cn('my-4', 'sandpack-wrapper', orientation)}
+      style={{ minHeight: editorHeight }}
+    >
       <SandpackProvider
         template={
           framework === 'react' && isTypescript ? 'react-ts' : framework
@@ -90,10 +96,10 @@ export function CodeViewer({
           )}
           {showPreview && customPreview ? (
             <>
-              <SandpackStack style={{ flex: '1 1 0%', height: editorHeight }}>
+              <SandpackStack style={{ height: editorHeight }}>
                 <div
                   className="sp-preview-container"
-                  style={{ flex: '1 1 0%', height: '100%' }}
+                  style={{ height: '100%' }}
                 >
                   {customPreview}
                   <div
