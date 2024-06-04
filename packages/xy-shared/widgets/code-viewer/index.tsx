@@ -106,10 +106,10 @@ export function CodeViewer({
           )}
           {showPreview && customPreview ? (
             <>
-              <SandpackStack style={{ flex: '1 1 0%', height: editorHeight }}>
+              <SandpackStack style={{ height: editorHeight }}>
                 <div
                   className="sp-preview-container"
-                  style={{ flex: '1 1 0%', height: '100%' }}
+                  style={{ height: '100%' }}
                 >
                   {customPreview}
                   <div

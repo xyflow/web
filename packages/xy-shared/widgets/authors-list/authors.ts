@@ -47,4 +47,10 @@ export default {
     url: '',
     image: '/img/case-studies/onesignal-leemunroe.jpeg',
   },
+  tobias: {
+    name: 'Tobias Meixner',
+    title: 'Co-Founder of Hubql',
+    url: '',
+    image: '/img/case-studies/hubql-tobiasmeixner.jpg',
+  },
 };

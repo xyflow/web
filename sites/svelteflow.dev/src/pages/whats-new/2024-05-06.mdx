@@ -1,0 +1,39 @@
+---
+title: Svelte Flow 0.1.0
+description: A big update for Svelte Flow
+authors: [moritz]
+date: '2024-05-06T13:00:00'
+---
+
+# Svelte Flow 0.1.0
+
+This is a bigger update for Svelte Flow to keep up with the latest changes we made for React Flow and the Svelte5 rewrite. The biggest change is the separation of user nodes (type `Node`) and internal nodes (type `InternalNode`), which includes a renaming of the `node.computed` attribute to `node.measured`. In the previous versions, we stored internals in `node[internalsSymbol]`. This doesn't exist anymore, but we only add it to our internal nodes in `node.internals.`.
+
+## ⚠️ Breaking
+
+- rename `node.computed` to `node.measured` - this attribute only includes `width` and `height` and no `positionAbsolute` anymore. For receiving an internal node, we added the helpers [`useInternalNode`](/api-reference/hooks/use-internal-node) and [`getInternalNode`](/api-reference/hooks/use-svelte-flow#get-internal-node)
+- rename `node.parentNode` to `node.parentId`
+
+### More updates:
+
+- add `isValidConnection` for `<Handle />` component
+- add `fitViewOptions` for `<Controls />` component
+- add `getInternalNode` to `useSvelteFlow`
+- add `useInternalNode` hook
+- don't reset nodes and edges when svelte flow unmounts
+- fix node event types
+- make handleId and isTarget reactive
+- fix MiniMap interaction for touch devices
+- fix pane: pinch zoom on Windows
+
+## 0.1.1
+
+- fix `useInternalNode` hook export
+
+## 0.1.2
+
+- fix `InternalNode` type export
+
+## 0.1.3
+
+- fix `NodeToolbar` for subflows
