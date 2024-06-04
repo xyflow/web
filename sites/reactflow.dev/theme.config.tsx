@@ -46,11 +46,11 @@ export default {
     titleComponent: SidebarTitle,
   },
   banner: {
-    key: 'v12-beta',
+    key: '2023-survey-results',
     text: (
       <Link
         className="flex justify-center items-center max-w-xs mx-auto hover:underline"
-        href="https://github.com/xyflow/xyflow/discussions/3764"
+        href="https://reactflow.dev/developer-survey-2023"
       >
         📬 2023 year-end survey results are here! See what the community says
         about React Flow
