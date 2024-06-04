@@ -105,10 +105,10 @@ const initialNodes = ({
       content: (
         <>
           <Text size="sm">
-            We asked React Flow users about the React Flow users and the
-            ecosystem of docs, support, and subscriptions around it to better
-            understand our users&apos; needs, and help guide the core team as we
-            continue improving the library.
+            We asked React Flow users about the library and the ecosystem of
+            docs, support, and subscriptions around it to better understand our
+            users&apos; needs, and help guide the core team as we continue
+            improving the library.
           </Text>
           <Text size="sm">Here&apos;s what we found ✌️</Text>
         </>
@@ -136,7 +136,7 @@ const initialNodes = ({
               What features do they find most difficult to use and what do they
               want to see added?
             </li>
-            <li>What do our users think about React Flow Prop</li>
+            <li>What do our users think about React Flow Pro?</li>
           </ol>
           <Text size="sm">
             The survey was at most 19 questions long, took an average of 8:44
@@ -258,7 +258,7 @@ const initialNodes = ({
             React Flow in different contexts.
           </Text>
           <Text>
-            The vast majority of respondents are using React FLow at work, but
+            The vast majority of respondents are using React Flow at work, but
             we were surprised to see how many people were using React Flow at
             work <span className="italic">and</span> on personal projects. A{' '}
             <span className="font-bold">quarter of respondents</span> using
@@ -381,7 +381,7 @@ const initialNodes = ({
     ...projectCategory({
       id: 'user-apps-dnd',
       position: { x: 600, y: 3025 },
-      name: 'DUNGEONS AND DRAGONS',
+      name: 'Dungeons and Dragons',
       projects: ['Game master screen'],
     }),
     // WHERE DO THEY GET HELP --------------------------------------------------
@@ -565,8 +565,8 @@ const initialNodes = ({
           </Text>
           <MessageCloud
             messages={[
-              'our use case became much more unique so we needed to explore new territory, specifically with rolling our own state management...I&apos;m still sitting here wondering if we are doing it "right" in terms of optimizing the performance of React Flow.',
-              'Passing info from one node to another, and getting connected node&apos;s info in a large graph without slowing down the app',
+              'our use case became much more unique so we needed to explore new territory, specifically with rolling our own state management...I‘m still sitting here wondering if we are doing it "right" in terms of optimizing the performance of React Flow.',
+              'Passing info from one node to another, and getting connected nodes‘ info in a large graph without slowing down the app',
             ]}
           />
           <Text>Here&apos;s what we&apos;re planning to do about it:</Text>
@@ -610,15 +610,15 @@ const initialNodes = ({
           <Text>
             Our users felt state management was difficult to get right in React
             Flow. There&apos;s a lot of confusion around what state is managed
-            by React Flow vs what state should be managed by the user, and then
-            there are questions about what library or approach to use for state
-            management!
+            by React Flow versus what state should be managed by the user, and
+            then there are questions about what library or approach to use for
+            state management!
           </Text>
           <MessageCloud
             messages={[
-              'The documentation has some holes in it, so I&apos;ve run into some dead ends trying to figure out how particular areas of state management should work.',
+              'The documentation has some holes in it, so I‘ve run into some dead ends trying to figure out how particular areas of state management should work.',
               'Maybe a complete example with state management and/or more docs on the library implementation',
-              'State is difficult, but that&apos;s probably just because state is hard in general',
+              'State is difficult, but that‘s probably just because state is hard in general',
               'Managing state and changes for my custom nodes.',
             ]}
           />
@@ -666,7 +666,7 @@ const initialNodes = ({
           <MessageCloud
             messages={[
               'More animations for edges.',
-              'Implementing smart edges for sure🥹, haven&apos;t been able to figure out yet, also would love if you guys could add some examples of edges routing in your documentation.',
+              'Implementing smart edges for sure🥹, haven‘t been able to figure out yet, also would love if you guys could add some examples of edges routing in your documentation.',
               'I wish React Flow has something like edge routing, to avoid edge intersections.',
             ]}
           />
@@ -718,7 +718,7 @@ const initialNodes = ({
           <MessageCloud
             messages={[
               'Auto layout helpers not based on other third party libraries. Better way to trigger layout changes and recalculation.',
-              '...It&apos;s also hard to do auto layout on data change like getting new nodes from the database... it wasn&apos;t as straightforward as I hoped for.',
+              '...It‘s also hard to do auto layout on data change like getting new nodes from the database... it wasn‘t as straightforward as I hoped for.',
               'Auto layout options and doing the custom math for my layout. Learning to think the way a layout engine wants',
             ]}
           />
@@ -781,7 +781,7 @@ const initialNodes = ({
           <MessageCloud
             messages={[
               'I find myself constantly printing out the values of edges, nodes and how they change. Maybe a small tool that displays the details of the current element on click (only enabled in dev mode.)',
-              'The innerworkings of the edge API&apos;s, the tricks with nodeinternals to get edges to choose the nearest side of a node. It&apos;s great that it&apos;s possible, but also those API&apos;s are pretty confusing.',
+              'The innerworkings of the edge APIs, the tricks with nodeinternals to get edges to choose the nearest side of a node. It‘s great that it‘s possible, but also those APIs are pretty confusing.',
               'Accessing the internal states are sometimes not working as expected. e.g. getNodes might not return the latest data. We ended up using some work-arounds. I guess this is more of a React problem.',
               'Something like a hashtable to query data from node / edge without searching the whole array',
             ]}
@@ -806,7 +806,7 @@ const initialNodes = ({
           <MessageCloud
             messages={[
               'No good examples to understand the complex node design.',
-              'I feel there&apos;s a general lack of information about doing anything other than basic stuff with Custom Nodes.',
+              'I feel there‘s a general lack of information about doing anything other than basic stuff with Custom Nodes.',
             ]}
           />
           <button
@@ -830,7 +830,7 @@ const initialNodes = ({
             messages={[
               'I think the API should facilitate the interaction between nodes. e.g. add custom props for custom nodes.',
               'Yes, the nodes data object to be passable to next connected node data more easily',
-              'some UX tips/pages/sections to create a functional flow ui could be cool (there is community showcase to find inspiration, but some tips or deep explanation on how to design the node/edge for some use case, like a node, form inside a node or in a detail component, etc...)&quot;',
+              'some UX tips/pages/sections to create a functional flow ui could be cool (there is community showcase to find inspiration, but some tips or deep explanation on how to design the node/edge for some use case, like a node, form inside a node or in a detail component, etc...)',
               'Built in UX / comprehensive examples for "making a node editor" would be great.',
             ]}
           />
@@ -945,7 +945,7 @@ const initialNodes = ({
           <Text>
             We offer discounts for early stage startups, and{' '}
             <span className="font-bold">students and open source projects</span>{' '}
-            can access individual Pro Examples on request.
+            can access Pro Examples on request.
           </Text>
           <Text>
             Some people were unhappy about the subscription model and would
@@ -1007,11 +1007,11 @@ const initialNodes = ({
     }),
     chatBubble({
       position: { x: 3950, y: 8900 },
-      message: 'It&apos;s a great library!',
+      message: 'It‘s a great library!',
     }),
     chatBubble({
       position: { x: 4150, y: 8750 },
-      message: 'I like a lot your product, I&apos;d like to work a lot on it',
+      message: 'I like a lot your product, I‘d like to work a lot on it',
     }),
     chatBubble({
       position: { x: 4100, y: 8850 },
@@ -1039,7 +1039,7 @@ const initialNodes = ({
     chatBubble({
       position: { x: 4600, y: 9350 },
       message:
-        'I really appreciate the work you&apos;ve put into this awesome library, it&apos;s enabling me to do so much more than I&apos;d otherwise be able to do.',
+        'I really appreciate the work you&apos;ve put into this awesome library, it‘s enabling me to do so much more than I‘d otherwise be able to do.',
     }),
     chatBubble({
       position: { x: 4350, y: 9450 },
@@ -1057,7 +1057,7 @@ const initialNodes = ({
     }),
     chatBubble({
       position: { x: 3800, y: 9100 },
-      message: 'I&apos;m a big fan of reactflow!',
+      message: 'I‘m a big fan of reactflow!',
     }),
     chatBubble({
       position: { x: 3720, y: 9250 },
@@ -1066,7 +1066,7 @@ const initialNodes = ({
     }),
     chatBubble({
       position: { x: 3700, y: 9000 },
-      message: '&quot;...it&apos;s very easy I love you developers&quot;',
+      message: 'it‘s very easy I love you developers',
     }),
   ];
 };
@@ -1079,7 +1079,7 @@ function MessageCloud({ messages }: { messages: string[] }) {
           key={message}
           className="odd:mt-6 w-48 p-2 bg-blue-500 text-white rounded-tr-lg rounded-b-lg shadow-md"
         >
-          <Text size="xs">{message}</Text>
+          <Text size="xs">"{message}"</Text>
         </div>
       ))}
     </div>

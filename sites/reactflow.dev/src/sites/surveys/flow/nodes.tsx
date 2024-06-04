@@ -77,7 +77,7 @@ export const section = ({
             className={cn(
               'relative',
               isHero && 'text-center',
-              content && 'mb-12',
+              content && 'mb-6',
             )}
           >
             {isHero && (
