@@ -114,8 +114,10 @@ const initialNodes = ({
         </>
       ),
       links: [
-        { text: 'See the survey', href: '' },
-        { text: 'Read our write-up', href: '' },
+        {
+          text: 'Read the full write-up',
+          href: 'https://xyflow.com/blog/react-flow-developer-survey-2023',
+        },
       ],
       action: () => focus({ id: 'intro' }),
     }),
@@ -493,7 +495,7 @@ const initialNodes = ({
               { name: 'API Reference', value: 41 },
               { name: 'Examples', value: 28 },
               { name: 'Docs / Learn', value: 13 },
-              { name: 'I&apos;m not sure', value: 2 },
+              { name: 'I‘m not sure', value: 2 },
             ]}
           />
           <Text>
