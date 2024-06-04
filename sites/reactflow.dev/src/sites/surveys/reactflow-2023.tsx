@@ -223,15 +223,16 @@ const initialNodes = ({
           />
           <Text>
             We let folks select multiple options for this one, but we might have
-            fumbled a bit by including a "full-stack" option when selecting both
-            "frontend" and "backend" would have been made more sense.
+            fumbled a bit by including a &quot;full-stack&quot; option when
+            selecting both &quot;frontend&quot; and &quot;backend&quot; would
+            have been made more sense.
           </Text>
           <Text>
             A total of eight respondents{' '}
             <span className="italic">didn&apos;t</span> choose one of
-            "full-stack" or "frontend". it&apos;s hard to imagine someone
-            unfamiliar with frontend getting stuck into a library like React
-            Flow, talk about jumping in at the deep end!
+            &quot;full-stack&quot; or &quot;frontend&quot;. it&apos;s hard to
+            imagine someone unfamiliar with frontend getting stuck into a
+            library like React Flow, talk about jumping in at the deep end!
           </Text>
         </>
       ),
@@ -459,7 +460,7 @@ const initialNodes = ({
             On the other hand, we found it difficult to surface the survey to
             our users that primarily interact with us through GitHub issues.{' '}
             <span className="font-bold">
-              All six of the "Other" responses mentioned GitHub
+              All six of the &quot;Other&quot; responses mentioned GitHub
             </span>
             , and we suspect that number would be higher if we had more
             participants <span className="italic">coming</span> from GitHub.
@@ -541,7 +542,7 @@ const initialNodes = ({
               State management
             </Button>
             <Button onClick={() => focus({ id: 'stuck-main-smart-edges' })}>
-              "Smart" edges
+              &quot;Smart&quot; edges
             </Button>
             <Button onClick={() => focus({ id: 'stuck-main-layouting' })}>
               Layouting
@@ -591,7 +592,7 @@ const initialNodes = ({
               State management
             </Button>
             <Button onClick={() => focus({ id: 'stuck-main-smart-edges' })}>
-              "Smart" edges
+              &quot;Smart&quot; edges
             </Button>
             <Button onClick={() => focus({ id: 'stuck-main-layouting' })}>
               Layouting
@@ -640,7 +641,7 @@ const initialNodes = ({
               Performance
             </Button>
             <Button onClick={() => focus({ id: 'stuck-main-smart-edges' })}>
-              "Smart" edges
+              &quot;Smart&quot; edges
             </Button>
             <Button onClick={() => focus({ id: 'stuck-main-layouting' })}>
               Layouting
