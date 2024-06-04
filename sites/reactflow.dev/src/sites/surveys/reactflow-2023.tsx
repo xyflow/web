@@ -1036,12 +1036,12 @@ const initialNodes = ({
     }),
     chatBubble({
       position: { x: 4550, y: 9200 },
-      message: 'Great product, can&apos;t wait to see the future of it.',
+      message: 'Great product, can‘t wait to see the future of it.',
     }),
     chatBubble({
       position: { x: 4600, y: 9350 },
       message:
-        'I really appreciate the work you&apos;ve put into this awesome library, it‘s enabling me to do so much more than I‘d otherwise be able to do.',
+        'I really appreciate the work you‘ve put into this awesome library, it‘s enabling me to do so much more than I‘d otherwise be able to do.',
     }),
     chatBubble({
       position: { x: 4350, y: 9450 },
