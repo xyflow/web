@@ -15,6 +15,7 @@
   "node": "Node",
   "node-change": "NodeChange",
   "node-props": "NodeProps",
+  "pan-on-scroll-mode": "PanOnScrollMode",
   "panel-position": "PanelPosition",
   "position": "Position",
   "pro-options": "ProOptions",

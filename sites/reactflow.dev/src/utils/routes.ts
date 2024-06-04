@@ -53,6 +53,7 @@ export type InternalRoute =
   | '/api-reference/types/node-change'
   | '/api-reference/types/node-origin'
   | '/api-reference/types/node-props'
+  | '/api-reference/types/pan-on-scroll-mode'
   | '/api-reference/types/panel-position'
   | '/api-reference/types/position'
   | '/api-reference/types/pro-options'
@@ -170,6 +171,7 @@ export type InternalRoute =
   | '/pro/case-studies'
   | '/pro/case-studies/carto-case-study'
   | '/pro/case-studies/doubleloop-case-study'
+  | '/pro/case-studies/hubql-case-study'
   | '/pro/case-studies/onesignal-case-study'
   | '/pro/examples'
   | '/pro/pricing'
@@ -185,4 +187,5 @@ export type InternalRoute =
   | '/whats-new/2024-01-18'
   | '/whats-new/2024-02-05'
   | '/whats-new/2024-02-09'
-  | '/whats-new/_feed.json';
+  | '/whats-new/2024-04-11'
+  | '/whats-new/2024-05-06';

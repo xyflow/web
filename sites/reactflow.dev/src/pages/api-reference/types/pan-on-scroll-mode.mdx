@@ -1,0 +1,23 @@
+---
+title: PanOnScrollMode
+description:
+  This enum is used to set the different modes of panning the viewport when the
+  user scrolls.
+---
+
+# PanOnScrollMode
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/6e237ad2b77de8add92cb4e19ada3cdd8773d53c/packages/core/src/types/general.ts#L103C1-L107C2)
+
+This enum is used to set the different modes of panning the viewport when the
+user scrolls. The `Free` mode allows the user to pan in any direction by scrolling
+with a device like a trackpad. The `Vertical` and `Horizontal` modes restrict
+scroll panning to only the vertical or horizontal axis, respectively.
+
+```ts
+export enum PanOnScrollMode {
+  Free = 'free',
+  Vertical = 'vertical',
+  Horizontal = 'horizontal',
+}
+```

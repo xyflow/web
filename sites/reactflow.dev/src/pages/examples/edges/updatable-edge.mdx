@@ -8,7 +8,32 @@ import ExampleViewer from '@/components/example-viewer';
 import ExampleLayout from '@/layouts/example-with-frontmatter';
 
 <ExampleLayout>
-An edge is updatable by dragging it to another handle if you are using the [`onEdgeUpdate` handler prop](/api-reference/react-flow#edges). The handler gets called after the edge gets dropped to a new handle. You can use the [`updateEdge`](/api-reference/utils/update-edge) helper function to update your edges state accordingly.
+An edge is updatable by dragging it to another handle if you are using the
+[`onEdgeUpdate` handler prop](/api-reference/react-flow#edges). The handler gets
+called after the edge gets dropped to a new handle. You can use the
+[`updateEdge`](/api-reference/utils/update-edge) helper function to update your
+edges state accordingly.
 
 <ExampleViewer codePath="example-flows/UpdatableEdge" />
+
+A couple of properties interact with one another to determine whether an edge is
+updatable or not:
+
+- By default the [`edgesUpdatable`](/api-reference/react-flow#edgesUpdatable) is
+  set to `true`.
+
+- For edges to actually be draggable, though, it is also necessary to define a
+  [`onEdgeUpdate`](/api-reference/react-flow#onEdgeUpdate) handler.
+
+- Individual edges can refine or override the [`edgesUpdatable`](/api-reference/react-flow#edgesUpdatable)
+  prop by setting their [`updatable`](/api-reference/types/edge#updatable) property.
+
+  - `true` means the edge is updatable even if [`edgesUpdatable`](/api-reference/react-flow#edgesUpdatable)
+
+  - `"source"` or `"target"` means the edge is updatable only from the source or
+    target handle regardless of the [`edgesUpdatable`](/api-reference/react-flow#edgesUpdatable) prop.
+
+  - `false` means the edge is not updatable even if [`edgesUpdatable`](/api-reference/react-flow#edgesUpdatable)
+    is set to `true`.
+
 </ExampleLayout>
