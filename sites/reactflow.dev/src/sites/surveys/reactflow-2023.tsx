@@ -1,10 +1,11 @@
-import { Button, Emoji, Link, Text } from '@xyflow/xy-ui';
 import { useEffect, useState } from 'react';
 import ReactFlow, { Background, Node, ReactFlowProvider } from 'reactflow';
+import { ArrowDownIcon, ArrowRightIcon } from '@heroicons/react/20/solid';
+import { Button, Emoji, Link, Text } from '@xyflow/xy-ui';
+
+import { BarChart } from '@/components/bar-chart';
 import { FocusParams, useFocus } from './flow/hooks';
 import { nodeTypes, section, project, action, chatBubble } from './flow/nodes';
-import { ArrowDownIcon, ArrowRightIcon } from '@heroicons/react/20/solid';
-import { BarChart } from '@/components/bar-chart';
 import { edgeTypes, focusEdge } from './flow/edges';
 
 export default function ReactFlow2023Survey() {
@@ -14,6 +15,10 @@ export default function ReactFlow2023Survey() {
     </ReactFlowProvider>
   );
 }
+
+const defaultEdgeOptions = {
+  type: 'straight',
+};
 
 function Flow() {
   const [focus, setFocus] = useState<FocusParams>({
@@ -44,9 +49,7 @@ function Flow() {
         nodesDraggable={false}
         nodesFocusable={false}
         minZoom={0.5}
-        defaultEdgeOptions={{
-          type: 'straight',
-        }}
+        defaultEdgeOptions={defaultEdgeOptions}
       >
         <Background />
       </ReactFlow>
