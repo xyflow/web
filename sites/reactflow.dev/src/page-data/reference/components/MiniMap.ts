@@ -19,11 +19,18 @@ export const miniMapProps: PropsTableProps = {
     { name: 'nodeClassName?', type: 'string | (node: Node<T>) => string' },
     { name: 'nodeBorderRadius?', type: 'number', default: '5' },
     { name: 'nodeStrokeWidth?', type: 'number', default: '2' },
-    { name: 'nodeComponent?', type: 'React.ComponentType<MiniMapNodeProps>' },
+    {
+      name: 'nodeComponent?',
+      type: 'React.ComponentType<MiniMapNodeProps>',
+      description: `A custom component to render the nodes in the minimap. This
+        component must render an SVG element!`,
+    },
     {
       name: 'maskColor?',
       type: 'string',
       default: '"rgb(240, 240, 240, 0.6)"',
+      description: `The color of the mask that covers the portion of the minimap
+      not currently visible in the viewport.`,
     },
     { name: 'maskStrokeColor?', type: 'string', default: '"none"' },
     { name: 'maskStrokeWidth?', type: 'number', default: '1' },
@@ -56,7 +63,7 @@ export const miniMapProps: PropsTableProps = {
       default: '"React Flow mini map"',
       description: `There is no text inside the minimap for a screen reader to
       use as an accessible name, so it's important we provide one to make the
-      minimap accessible. The default is sufficient but you may want to replace 
+      minimap accessible. The default is sufficient but you may want to replace
       it with something more relevant to your app or product.`,
     },
     { name: 'inversePan?', type: 'boolean' },
