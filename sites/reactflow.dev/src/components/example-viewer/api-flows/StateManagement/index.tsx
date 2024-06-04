@@ -1,6 +1,6 @@
 import React from 'react';
-import { useShallow } from 'zustand/react/shallow';
 import ReactFlow from 'reactflow';
+import { shallow } from 'zustand/shallow';
 
 import 'reactflow/dist/style.css';
 
@@ -15,9 +15,7 @@ const selector = (state) => ({
 });
 
 function Flow() {
-  const { nodes, edges, onNodesChange, onEdgesChange, onConnect } = useStore(
-    useShallow(selector),
-  );
+  const { nodes, edges, onNodesChange, onEdgesChange, onConnect } = useStore(selector, shallow);
 
   return (
     <ReactFlow

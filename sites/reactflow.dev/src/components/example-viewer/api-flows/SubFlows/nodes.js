@@ -14,14 +14,14 @@ const nodes = [
     type: 'input',
     data: { label: 'child node 1' },
     position: { x: 10, y: 10 },
-    parentId: 'A',
+    parentNode: 'A',
     extent: 'parent',
   },
   {
     id: 'C',
     data: { label: 'child node 2' },
     position: { x: 10, y: 90 },
-    parentId: 'A',
+    parentNode: 'A',
     extent: 'parent',
   },
 ];

@@ -60,7 +60,7 @@ const useStore = create<RFState>((set, get) => ({
     set({
       nodes: get().nodes.map((node) => {
         if (node.id === nodeId) {
-          // it's important to create a new object here, to inform React Flow about the changes
+          // it's important to create a new object here, to inform React Flow about the cahnges
           node.data = { ...node.data, color };
         }
 
