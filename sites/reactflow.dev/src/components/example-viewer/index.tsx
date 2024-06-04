@@ -21,7 +21,11 @@ export default function ExampleViewer({
   ...rest
 }: ExampleViewerProps) {
   const [files, setFiles] = useState(null);
-  const scriptExtension = isTypescript ? 'tsx' : 'jsx';
+  const scriptExtension = isTypescript
+    ? 'tsx'
+    : codePath.includes('example-flows')
+      ? 'jsx'
+      : 'js';
   // sandpack does not support using .jsx extension with the react template
   const sandpackExtension = scriptExtension === 'jsx' ? 'js' : scriptExtension;
   const dependenciesWithDefault = {
