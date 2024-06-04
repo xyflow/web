@@ -31,22 +31,24 @@ export default function CaseStudies() {
   );
 
   return (
-    <ContentGrid className="mt-20 lg:grid-cols-3">
-      {allExamples.map((page) => {
-        return (
-          <ContentGridItem key={page.route} route={page.route}>
-            <ProjectPreview
-              image={`/img${page.route}.jpg`}
-              title={page.frontMatter?.title}
-              description={page.frontMatter?.description}
-              authors={page.frontMatter?.authors}
-              kicker={page.route
-                .match(/(?<=\/examples\/)(.*)(?=\/)/g)?.[0]
-                ?.toUpperCase()}
-            />
-          </ContentGridItem>
-        );
-      })}
-    </ContentGrid>
+    <>
+      <ContentGrid className="mt-20 lg:grid-cols-3">
+        {allExamples.map((page) => {
+          return (
+            <ContentGridItem key={page.route} route={page.route}>
+              <ProjectPreview
+                image={`/img${page.route}.jpg`}
+                title={page.frontMatter?.title}
+                description={page.frontMatter?.description}
+                authors={page.frontMatter?.authors}
+                kicker={page.route
+                  .match(/(?<=\/examples\/)(.*)(?=\/)/g)?.[0]
+                  ?.toUpperCase()}
+              />
+            </ContentGridItem>
+          );
+        })}
+      </ContentGrid>
+    </>
   );
 }
