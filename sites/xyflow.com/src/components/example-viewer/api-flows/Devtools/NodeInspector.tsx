@@ -1,4 +1,4 @@
-import { useNodes, EdgeLabelRenderer } from 'reactflow';
+import { useNodes, EdgeLabelRenderer } from '@xyflow/react';
 
 export default function NodeInspector() {
   const nodes = useNodes();

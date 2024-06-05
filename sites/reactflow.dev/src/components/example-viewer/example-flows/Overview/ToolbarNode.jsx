@@ -1,5 +1,5 @@
 import { memo, useState } from 'react';
-import { Handle, Position, NodeToolbar } from 'reactflow';
+import { Handle, Position, NodeToolbar } from '@xyflow/react';
 
 const labelStyle = {
   position: 'absolute',

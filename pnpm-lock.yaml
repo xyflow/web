@@ -283,11 +283,8 @@ importers:
         specifier: ^2.2.1
         version: 2.2.1
       '@xyflow/react':
-        specifier: 12.0.0-next.10
-        version: 12.0.0-next.10(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0)
-      '@xyflow/system':
-        specifier: ^0.0.16
-        version: 0.0.16
+        specifier: 12.0.0-next.19
+        version: 12.0.0-next.19(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0)
       '@xyflow/xy-ui':
         specifier: workspace:*
         version: link:../xy-ui
@@ -473,8 +470,8 @@ importers:
         specifier: ^0.155.1
         version: 0.155.1
       '@xyflow/react':
-        specifier: 12.0.0-next.15
-        version: 12.0.0-next.15(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 12.0.0-next.19
+        version: 12.0.0-next.19(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0)
       '@xyflow/xy-ui':
         specifier: workspace:*
         version: link:../../packages/xy-ui
@@ -606,8 +603,8 @@ importers:
         specifier: ^0.155.1
         version: 0.155.1
       '@xyflow/react':
-        specifier: 12.0.0-next.9
-        version: 12.0.0-next.9(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 12.0.0-next.19
+        version: 12.0.0-next.19(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0)
       '@xyflow/xy-ui':
         specifier: workspace:*
         version: link:../../packages/xy-ui
@@ -735,9 +732,6 @@ importers:
       '@xyflow/react':
         specifier: latest
         version: 12.0.0-next.12(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0)
-      '@xyflow/system':
-        specifier: latest
-        version: 0.0.26
       '@xyflow/xy-ui':
         specifier: workspace:*
         version: link:../../packages/xy-ui
@@ -7420,22 +7414,6 @@ packages:
   /@xtuc/long@4.2.2:
     resolution: {integrity: sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==}
 
-  /@xyflow/react@12.0.0-next.10(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-mrBpbHpaO+BOTioXUJcEBcJtko5Ma+Ql62TT0zAOy5X403wzmRdKKc1qie7M5dEU7Ftn6zFLaBqxhXlxCWI7Rg==}
-    peerDependencies:
-      react: '>=17'
-      react-dom: '>=17'
-    dependencies:
-      '@xyflow/system': 0.0.18
-      classcat: 5.0.4
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      zustand: 4.5.2(@types/react@18.2.47)(react@18.2.0)
-    transitivePeerDependencies:
-      - '@types/react'
-      - immer
-    dev: false
-
   /@xyflow/react@12.0.0-next.12(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-A9B4U5M9UoQKDe4KTP6Cv11Ot5lwH5Dz0chLBW8cynTlhFF6Rf+O3vsvQsNo2WCJovbsK6hgpdLPMCUqSYM4Jg==}
     peerDependencies:
@@ -7452,30 +7430,14 @@ packages:
       - immer
     dev: false
 
-  /@xyflow/react@12.0.0-next.15(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-8EFPbredDlBB/a/OpSzaybrCfN1WP6sHoDk9iB73NEG8QEbbzxHPAkAaCb7yHKcyoyDzXg25v5ormmZ13vWwcw==}
+  /@xyflow/react@12.0.0-next.19(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-cxPvVutOy3FfF+gSu3ubJCwKAJ/EiBxeCD210fegF+DzPIysjTmqZSo8e4IkN0H/5WoMWFN3bgXMGzzqEOXhMQ==}
     peerDependencies:
       react: '>=17'
       react-dom: '>=17'
     dependencies:
-      '@xyflow/system': 0.0.24
-      classcat: 5.0.4
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      zustand: 4.5.2(@types/react@18.2.47)(react@18.2.0)
-    transitivePeerDependencies:
-      - '@types/react'
-      - immer
-    dev: false
-
-  /@xyflow/react@12.0.0-next.9(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-WrW5H4HN/oHXORnUdy5tYs6tK96npLZAvcx8weza3tzkNiZO+gncjpwHxWq/wt5ABIAgSadCXRvfv8nAMTlrnQ==}
-    peerDependencies:
-      react: '>=17'
-      react-dom: '>=17'
-    dependencies:
-      '@xyflow/system': 0.0.17
-      classcat: 5.0.4
+      '@xyflow/system': 0.0.27
+      classcat: 5.0.5
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       zustand: 4.5.2(@types/react@18.2.47)(react@18.2.0)
@@ -7518,56 +7480,8 @@ packages:
       - typescript
     dev: false
 
-  /@xyflow/system@0.0.16:
-    resolution: {integrity: sha512-pVWaBHAE1Ew9acmNGEdsVLNh8Z+TEBbsdaIojV+SDbmolYlCQ1UJ6Sse4k+K3rr7kgX/1GRsiEcWxOFIx0wt+w==}
-    dependencies:
-      '@types/d3': 7.4.3
-      '@types/d3-drag': 3.0.7
-      '@types/d3-selection': 3.0.10
-      '@types/d3-zoom': 3.0.8
-      d3-drag: 3.0.0
-      d3-selection: 3.0.0
-      d3-zoom: 3.0.0
-    dev: false
-
-  /@xyflow/system@0.0.17:
-    resolution: {integrity: sha512-3a7ulxW4xQvpFN9USjfbLi0whyltqDv6KxguIrOK2AOg6l1KMNimbV+WxiM0LdQAtJAW6ftthbhdSCPw66JPIw==}
-    dependencies:
-      '@types/d3': 7.4.3
-      '@types/d3-drag': 3.0.7
-      '@types/d3-selection': 3.0.10
-      '@types/d3-zoom': 3.0.8
-      d3-drag: 3.0.0
-      d3-selection: 3.0.0
-      d3-zoom: 3.0.0
-    dev: false
-
-  /@xyflow/system@0.0.18:
-    resolution: {integrity: sha512-OPRax1cKJLstvDrrb2sIxWZS+OhggP1cd9NA40ZAGTWDHTZLtVenujp3VrU6wyx0JQ4S8bN3InTQ6wuH3JTrzQ==}
-    dependencies:
-      '@types/d3': 7.4.3
-      '@types/d3-drag': 3.0.7
-      '@types/d3-selection': 3.0.10
-      '@types/d3-zoom': 3.0.8
-      d3-drag: 3.0.0
-      d3-selection: 3.0.0
-      d3-zoom: 3.0.0
-    dev: false
-
   /@xyflow/system@0.0.20:
     resolution: {integrity: sha512-OQ9irX0HtZqAzOKtnNi7WpDT6SEp7VpR16VRatd7oImw5vahyjmggUSY7as9XvJnAz0D9H0g1qjRX99moabvQA==}
-    dependencies:
-      '@types/d3': 7.4.3
-      '@types/d3-drag': 3.0.7
-      '@types/d3-selection': 3.0.10
-      '@types/d3-zoom': 3.0.8
-      d3-drag: 3.0.0
-      d3-selection: 3.0.0
-      d3-zoom: 3.0.0
-    dev: false
-
-  /@xyflow/system@0.0.24:
-    resolution: {integrity: sha512-aWUT1+m2naRlNrqCF3DIV6OEvmLJSUxMOG83pIglA+EEsvGtNaprpZxgj5Ypopf3rVE92wpLmVPDf3meAdzM5A==}
     dependencies:
       '@types/d3': 7.4.3
       '@types/d3-drag': 3.0.7
@@ -7590,12 +7504,12 @@ packages:
       d3-zoom: 3.0.0
     dev: false
 
-  /@xyflow/system@0.0.26:
-    resolution: {integrity: sha512-BOizB0xZiJmzNzihoqpqWLddyGhKesBLXcQpKnXdZuI8KpLDVXXxbJH2JTuVOGsBGSAZc/yXZqtwrXBhu8rA5w==}
+  /@xyflow/system@0.0.27:
+    resolution: {integrity: sha512-byGYC/4ZfdAUAqZOwVqIU+KwcZrO/hkjODaUr74x1ozpA87AlxLJaeQsBIHrezys+2rxRquulYtu6Q+1qCoayg==}
     dependencies:
-      '@types/d3': 7.4.3
       '@types/d3-drag': 3.0.7
       '@types/d3-selection': 3.0.10
+      '@types/d3-transition': 3.0.8
       '@types/d3-zoom': 3.0.8
       d3-drag: 3.0.0
       d3-selection: 3.0.0
