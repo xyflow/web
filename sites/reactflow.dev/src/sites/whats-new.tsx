@@ -3,6 +3,7 @@ import { PencilSquareIcon } from '@heroicons/react/24/outline';
 import { BaseLayout, Hero, TimelineEvent, TimelineEventProps } from 'xy-shared';
 
 import ExampleViewer from '@/components/example-viewer';
+import ProExampleViewer from '@/components/pro-example-viewer';
 
 export default function WhatsNew() {
   const mdx = useSSG('mdx') as TimelineEventProps[];
@@ -24,7 +25,12 @@ export default function WhatsNew() {
       />
 
       {mdx.map((src, i) => (
-        <TimelineEvent key={i} {...src} exampleViewer={ExampleViewer} />
+        <TimelineEvent
+          key={i}
+          {...src}
+          exampleViewer={ExampleViewer}
+          proExampleViewer={ProExampleViewer}
+        />
       ))}
     </BaseLayout>
   );

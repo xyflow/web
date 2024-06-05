@@ -17,12 +17,8 @@ export default async function getStaticProps() {
   }
 
   return {
-    props: {
-      ssg: {
-        stars,
-        downloads,
-      },
-    },
+    stars,
+    downloads,
     revalidate: 60 * 60,
   };
 }
