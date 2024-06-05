@@ -210,6 +210,14 @@ div.nextra-nav-container-blur {
   background-color: #ddd;
 }
 
+/* nextra blog overwrites */
+
+article.nextra-content ol li,
+article.nextra-content ol li p {
+  font-size: 1.125rem;
+  line-height: 2;
+}
+
 /* Docsearch overwrite */
 .nextra-nav-container {
   --docsearch-searchbox-background: #eee;
