@@ -1084,7 +1084,7 @@ function MessageCloud({ messages }: { messages: string[] }) {
           key={message}
           className="odd:mt-6 w-48 p-2 bg-blue-500 text-white rounded-tr-lg rounded-b-lg shadow-md"
         >
-          <Text size="xs">"{message}"</Text>
+          <Text size="xs">&ldquo;{message}&ldquo;</Text>
         </div>
       ))}
     </div>
