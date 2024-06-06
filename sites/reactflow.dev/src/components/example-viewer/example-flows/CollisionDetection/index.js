@@ -41,7 +41,7 @@ const CollisionDetectionFlow = () => {
     const centerX = node.position.x + node.width / 2;
     const centerY = node.position.y + node.height / 2;
 
-    // find a overlapping nodes
+    // find overlapping nodes
     const intersectingNodes = getIntersectingNodes(node);
 
     setTarget(intersectingNodes ? intersectingNodes[0] : null);
@@ -53,8 +53,7 @@ const CollisionDetectionFlow = () => {
   };
 
   useEffect(() => {
-    // whenever the target changes, we swap the colors temporarily
-    // this is just a placeholder, implement your own logic here
+    // whenever the target changes, we swap the colors
     setNodes((nodes) =>
       nodes.map((node) => {
         if (node.id === dragRef.current?.id && target) {
