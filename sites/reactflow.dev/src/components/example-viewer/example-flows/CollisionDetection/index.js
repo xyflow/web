@@ -1,17 +1,28 @@
-import React, { useEffect, useState, useRef } from 'react';
-import ReactFlow, { useNodesState, useEdgesState, Panel } from 'reactflow';
+import React, { useEffect, useState, useRef } from "react";
+import ReactFlow, {
+  ReactFlowProvider,
+  useReactFlow,
+  useNodesState,
+  useEdgesState,
+  Panel,
+} from "reactflow";
 
-import { nodes as initialNodes, edges as initialEdges } from './initial-elements';
+import {
+  nodes as initialNodes,
+  edges as initialEdges,
+} from "./initial-elements";
 
-import 'reactflow/dist/style.css';
-import './style.css';
+import "reactflow/dist/style.css";
+import "./style.css";
 
 const panelStyle = {
   fontSize: 12,
-  color: '#777',
+  color: "#777",
 };
 
 const CollisionDetectionFlow = () => {
+  const { getIntersectingNodes } = useReactFlow();
+
   // this ref stores the current dragged node
   const dragRef = useRef(null);
 
@@ -30,36 +41,13 @@ const CollisionDetectionFlow = () => {
     const centerX = node.position.x + node.width / 2;
     const centerY = node.position.y + node.height / 2;
 
-    // find a node where the center point is inside
-    const targetNode = nodes.find(
-      (n) =>
-        centerX > n.position.x &&
-        centerX < n.position.x + n.width &&
-        centerY > n.position.y &&
-        centerY < n.position.y + n.height &&
-        n.id !== node.id // this is needed, otherwise we would always find the dragged node
-    );
+    // find a overlapping nodes
+    const intersectingNodes = getIntersectingNodes(node);
 
-    setTarget(targetNode);
+    setTarget(intersectingNodes ? intersectingNodes[0] : null);
   };
 
   const onNodeDragStop = (evt, node) => {
-    // on drag stop, we swap the colors of the nodes
-    const nodeColor = node.data.label;
-    const targetColor = target?.data.label;
-
-    setNodes((nodes) =>
-      nodes.map((n) => {
-        if (n.id === target?.id) {
-          n.data = { ...n.data, color: nodeColor, label: nodeColor };
-        }
-        if (n.id === node.id && target) {
-          n.data = { ...n.data, color: targetColor, label: targetColor };
-        }
-        return n;
-      })
-    );
-
     setTarget(null);
     dragRef.current = null;
   };
@@ -69,15 +57,14 @@ const CollisionDetectionFlow = () => {
     // this is just a placeholder, implement your own logic here
     setNodes((nodes) =>
       nodes.map((node) => {
-        if (node.id === target?.id) {
-          node.style = { ...node.style, backgroundColor: dragRef.current?.data.color };
-          node.data = { ...node.data, label: dragRef.current?.data.color };
-        } else if (node.id === dragRef.current?.id && target) {
-          node.style = { ...node.style, backgroundColor: target.data.color };
-          node.data = { ...node.data, label: target.data.color };
-        } else {
-          node.style = { ...node.style, backgroundColor: node.data.color };
-          node.data = { ...node.data, label: node.data.color };
+        if (node.id === dragRef.current?.id && target) {
+          node.style = {
+            ...node.style,
+            background: target.style.background,
+          };
+          node.data = {
+            label: target.style.background,
+          };
         }
         return node;
       })
@@ -104,4 +91,8 @@ const CollisionDetectionFlow = () => {
   );
 };
 
-export default CollisionDetectionFlow;
+export default () => (
+  <ReactFlowProvider>
+    <CollisionDetectionFlow />
+  </ReactFlowProvider>
+);
