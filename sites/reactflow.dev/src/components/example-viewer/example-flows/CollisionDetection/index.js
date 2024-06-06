@@ -58,13 +58,16 @@ const CollisionDetectionFlow = () => {
     setNodes((nodes) =>
       nodes.map((node) => {
         if (node.id === dragRef.current?.id && target) {
-          node.style = {
-            ...node.style,
-            background: target.style.background,
-          };
-          node.data = {
-            label: target.style.background,
-          };
+          return {
+            ...node,
+            style: {
+              ...node.style,
+              background: target.style.background,
+            },
+            data: {
+              label: target.style.background,
+            },
+          }
         }
         return node;
       })
