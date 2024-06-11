@@ -18,8 +18,8 @@ import FlowA from './flows/flow-a';
 import FlowB from './flows/flow-b';
 import FlowC from './flows/flow-c';
 
-import aboutImage from '../../../public/img/about.jpg';
 import type { InternalRoute } from '@/utils';
+import WhatsNewPreview from '@/components/whats-new-preview';
 
 const features = [
   {
@@ -90,7 +90,7 @@ const sliderItems = [
 ];
 
 export default function ReactFlowHome() {
-  const { stars = 16000, downloads = 4000 } = useSSG();
+  const { stars = 16000, downloads = 4000, whatsNew = [] } = useSSG();
 
   return (
     <BaseLayout>
@@ -147,8 +147,12 @@ export default function ReactFlowHome() {
 
       <ImageSlider items={sliderItems} />
 
-      <AboutSection />
+      <Section className="relative">
+        <WhatsNewPreview items={whatsNew} variant="compact" />
+        <div className="lg:hidden h-[50%] w-full bg-gradient-to-b from-transparent via-white/70 to-white absolute bottom-0 pointer-events-none" />
+      </Section>
 
+      <AboutSection />
       <ProjectCards projects={['svelteflow', 'xyflow']} />
     </BaseLayout>
   );

@@ -1,0 +1,27 @@
+---
+title: Svelte Flow 0.1.5 & 0.1.4
+description: Update for Svelte Flow
+authors: [peter]
+date: '2024-06-10T12:00:00'
+---
+
+# Svelte Flow 0.1.5 & 0.1.4
+
+While adding some last minute features to the new React Flow release we also ported them to Svelte Flow and fixed some issues along the way. This includes making `selectable`, `deletable`, `draggable` and `parentId` available as props for custom nodes, fixing panel elements standing in the way of making selection boxes and fixing zoom behaviour on mobile.
+
+## 0.1.5
+
+- prevent zooming on mobile if zoomOnPinch is false
+- add `StraightEdge` to built-in path types
+- abort drag when multiple touches are detected
+- fix merge_styles error
+
+## 0.1.4
+
+- add `selectable`, `deletable` and `draggable` to node and edge props
+- add `parentId` to node props
+- add `on:edgemouseenter` and `on:edgemouseleave` event handler
+- fix deselection of edges
+- remove pointer events from panel when user selection is active
+- fix viewport initialization with user viewport
+- fix parent node lookup in `evaluateAbsolutePosition` - thanks @lcsfort

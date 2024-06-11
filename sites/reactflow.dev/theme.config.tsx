@@ -1,11 +1,10 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useConfig, Navbar } from 'nextra-theme-docs';
-import { Footer, Button, LogoLabel } from '@xyflow/xy-ui';
+import { Footer, Button, LogoLabel, cn } from '@xyflow/xy-ui';
 import { Search, SidebarTitle } from 'xy-shared';
 import { SparklesIcon } from '@heroicons/react/24/outline';
-
-import { type Route } from '@/utils';
+import { getMdxPagesUnderRoute, type Route } from '@/utils';
 
 function useIsPro() {
   const router = useRouter();
@@ -46,14 +45,14 @@ export default {
     titleComponent: SidebarTitle,
   },
   banner: {
-    key: 'v12-beta',
+    key: '2023-survey-results',
     text: (
       <Link
         className="flex justify-center items-center max-w-xs mx-auto hover:underline"
-        href="https://github.com/xyflow/xyflow/discussions/3764"
+        href="https://reactflow.dev/developer-survey-2023"
       >
-        🧪 React Flow 12 is around the corner! Check it out and help us to
-        squash some more bugs.
+        📬 2023 year-end survey results are here! See what the community says
+        about React Flow
       </Link>
     ),
   },
@@ -111,8 +110,6 @@ export default {
   },
   footer: {
     component: () => {
-      const router = useRouter();
-      const isHomePage = router.pathname === '/';
       const isPro = useIsPro();
 
       return (
@@ -191,14 +188,29 @@ export default {
     },
   },
   toc: {
-    extraContent: () => (
-      <Link
-        href="/whats-new"
-        className="nx-text-xs nx-font-medium nx-text-gray-500 hover:nx-text-gray-900 dark:nx-text-gray-400 dark:hover:nx-text-gray-100 contrast-more:nx-text-gray-800 contrast-more:dark:nx-text-gray-50"
-      >
-        What's new here?
-      </Link>
-    ),
+    extraContent: () => {
+      const className =
+        'nx-text-xs nx-font-medium nx-text-gray-500 hover:nx-text-gray-900 dark:nx-text-gray-400 dark:hover:nx-text-gray-100 contrast-more:nx-text-gray-800 contrast-more:dark:nx-text-gray-50';
+
+      return (
+        <div className="nx-mt-4 nx-flex nx-flex-col nx-gap-2">
+          <p className="nx-text-xs nx-font-semibold nx-tracking-tight nx-text-gray-600 dark:nx-text-gray-200 contrast-more:nx-text-gray-900 contrast-more:dark:nx-text-gray-50">
+            What's new?
+          </p>
+          {getMdxPagesUnderRoute('/whats-new')
+            .sort()
+            .slice(0, 3)
+            .map(({ route, frontMatter }) => (
+              <Link key={route} href={route} className={className}>
+                {frontMatter.title}
+              </Link>
+            ))}
+          <Link href="/whats-new" className={className}>
+            ...and more!
+          </Link>
+        </div>
+      );
+    },
   },
   feedback: {
     useLink: () => 'https://xyflow.com/contact',
