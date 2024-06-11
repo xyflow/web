@@ -112,6 +112,7 @@ export type InternalRoute =
   | '/examples/layout/dagre'
   | '/examples/layout/elkjs'
   | '/examples/layout/elkjs-multiple-handles'
+  | '/examples/layout/entitree-flex'
   | '/examples/layout/expand-collapse'
   | '/examples/layout/force-layout'
   | '/examples/layout/horizontal'
@@ -188,4 +189,5 @@ export type InternalRoute =
   | '/whats-new/2024-02-05'
   | '/whats-new/2024-02-09'
   | '/whats-new/2024-04-11'
-  | '/whats-new/2024-05-06';
+  | '/whats-new/2024-05-06'
+  | '/whats-new/2024-06-11';
