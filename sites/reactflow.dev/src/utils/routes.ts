@@ -112,6 +112,7 @@ export type InternalRoute =
   | '/examples/layout/dagre'
   | '/examples/layout/elkjs'
   | '/examples/layout/elkjs-multiple-handles'
+  | '/examples/layout/entitree-flex'
   | '/examples/layout/expand-collapse'
   | '/examples/layout/force-layout'
   | '/examples/layout/horizontal'
