@@ -25,6 +25,9 @@
     "@types/three": "^0.155.1",
     "@xyflow/xy-ui": "workspace:*",
     "clsx": "^1.2.1",
+    "d3-drag": "^3.0.0",
+    "d3-selection": "^3.0.0",
+    "dagre": "^0.8.5",
     "elkjs": "^0.8.2",
     "fast-xml-parser": "^4.2.6",
     "html-to-image": "^1.11.11",
@@ -40,6 +43,7 @@
     "react-icons": "^4.10.1",
     "react-player": "^2.12.0",
     "reactflow": "^11.11.1",
+    "styled-components": "^6.1.11",
     "timeago-react": "^3.0.6",
     "xy-shared": "workspace:*",
     "zustand": "^4.5.2"

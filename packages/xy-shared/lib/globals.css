@@ -71,7 +71,8 @@ div.nextra-nav-container-blur {
   --gradientAngle: 258deg;
 }
 
-main .nx-text-primary-600 {
+main .nx-text-primary-600,
+nav .nx-text-primary-600 {
   @apply text-primary;
 }
 

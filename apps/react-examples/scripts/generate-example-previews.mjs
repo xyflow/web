@@ -88,7 +88,7 @@ function getExampleData() {
         path: example.screenshotPath,
       });
     } catch (err) {
-      console.log('error:', example.codePath);
+      console.log('error:', example.codePath, err);
     }
   }
 
