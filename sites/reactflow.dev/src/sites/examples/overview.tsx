@@ -59,9 +59,9 @@ export default function ExamplesOverviewPage({
               Feature Overview
             </Heading>
             <Text>
-              This is an overview example React Flow's basic features. You can
-              see built-in node and edge types, sub flows as well as NodeToolbar
-              and NodeResizer components.
+              This is an overview example React Flow{"'"}s basic features. You
+              can see built-in node and edge types, sub flows as well as
+              NodeToolbar and NodeResizer components.
             </Text>
             <div className="mt-6 flex flex-wrap gap-2 items-center">
               <Button asChild size="lg" className="w-full md:w-auto">
