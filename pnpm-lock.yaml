@@ -440,11 +440,26 @@ importers:
         specifier: workspace:*
         version: link:../xy-tsconfig
 
-  scripts/check-libs:
+  scripts/check-flow-libs:
     dependencies:
       '@actions/exec':
         specifier: ^1.1.1
         version: 1.1.1
+      envfile:
+        specifier: ^7.1.0
+        version: 7.1.0
+      latest-version:
+        specifier: ^9.0.0
+        version: 9.0.0
+
+  scripts/create-whats-new:
+    dependencies:
+      '@actions/exec':
+        specifier: ^1.1.1
+        version: 1.1.1
+      dotenv:
+        specifier: ^16.4.5
+        version: 16.4.5
       envfile:
         specifier: ^7.1.0
         version: 7.1.0
