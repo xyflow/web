@@ -37,7 +37,7 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.10.1",
     "react-player": "^2.12.0",
-    "reactflow": "^11.11.1",
+    "reactflow": "^11.11.3",
     "xy-shared": "workspace:*",
     "zustand": "^4.4.1"
   },
