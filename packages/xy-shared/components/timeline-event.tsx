@@ -40,7 +40,7 @@ export function TimelineEvent({
         <MDXRemote
           frontmatter={frontmatter}
           components={{
-            ExampleViewer: exampleViewer,
+            ExampleViewer,
             ProExampleViewer,
             Image,
             Tabs,
