@@ -34,7 +34,7 @@
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-tabs": "^1.0.4",
     "@react-three/fiber": "^8.13.7",
-    "@sinndresorhus/slugify": "^2.2.1",
+    "@sindresorhus/slugify": "^2.2.1",
     "@xyflow/react": "^12.0.0-next.19",
     "@xyflow/xy-ui": "workspace:*",
     "class-variance-authority": "^0.6.0",
