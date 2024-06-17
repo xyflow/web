@@ -11,6 +11,7 @@ import {
   ReactFlowProvider,
   NodeOrigin,
   ConnectionLineType,
+  InternalNode,
 } from '@xyflow/react';
 import { shallow } from 'zustand/shallow';
 
@@ -55,7 +56,7 @@ function Flow() {
 
   const getChildNodePosition = (
     event: MouseEvent | TouchEvent,
-    parentNode?: Node,
+    parentNode?: InternalNode,
   ) => {
     const { domNode } = store.getState();
 
@@ -63,9 +64,9 @@ function Flow() {
       !domNode ||
       // we need to check if these properites exist, because when a node is not initialized yet,
       // it doesn't have a positionAbsolute nor a width or height
-      !parentNode?.computed?.positionAbsolute ||
-      !parentNode?.computed?.width ||
-      !parentNode?.computed?.height
+      !parentNode?.internals.positionAbsolute ||
+      !parentNode?.measured.width ||
+      !parentNode?.measured.height
     ) {
       return;
     }
@@ -83,12 +84,12 @@ function Flow() {
     return {
       x:
         panePosition.x -
-        parentNode.computed?.positionAbsolute.x +
-        parentNode.computed?.width / 2,
+        parentNode.internals.positionAbsolute.x +
+        parentNode.measured.width / 2,
       y:
         panePosition.y -
-        parentNode.computed?.positionAbsolute.y +
-        parentNode.computed?.height / 2,
+        parentNode.internals.positionAbsolute.y +
+        parentNode.measured.height / 2,
     };
   };
 
