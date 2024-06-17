@@ -2,6 +2,9 @@ name: Check flow libraries
 
 on:
   workflow_dispatch
+  push:
+    branches:
+      - "feat/auto-lib-update"
   # schedule:
   #  - cron: '0 10 * * 1'
 
