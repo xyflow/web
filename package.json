@@ -12,7 +12,7 @@
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "clean": "pnpm -r --parallel exec rimraf dist .turbo node_modules",
-    "checklibs": "cd scripts/check-libs && pnpm start"
+    "checkflowlibs": "cd scripts/check-libs && pnpm start"
   },
   "devDependencies": {
     "@turbo/gen": "^1.10.14",

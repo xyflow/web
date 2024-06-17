@@ -1,0 +1,25 @@
+name: Check flow libraries
+
+on:
+  workflow_dispatch
+  # schedule:
+  #  - cron: '0 10 * * 1'
+
+jobs:
+  check-flow-libs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/ci-setup
+      - name: Update flow dependencies
+        run: pnpm checkflowlibs
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.PAT }}
+          commit-message: Update dependencies
+          title: Update dependencies
+          body: |
+            - React Flow & Svelte Flow dependency update
+
+          branch: update-flow-libs
