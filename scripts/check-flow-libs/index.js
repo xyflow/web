@@ -1,9 +1,9 @@
 import { FlowLibUpdater } from './flow-lib-updater.js';
 
 const reactFlowUpdater = await FlowLibUpdater({
+  site: 'reactflow.dev',
   packageName: 'reactflow',
   envKey: 'NEXT_PUBLIC_REACT_FLOW_VERSION',
-  siteName: 'reactflow.dev',
 });
 const reactFlowUpdated = await reactFlowUpdater.start();
 
@@ -12,9 +12,9 @@ if (reactFlowUpdated) {
 }
 
 const svelteFlowUpdater = await FlowLibUpdater({
+  site: 'svelteflow.dev',
   packageName: '@xyflow/svelte',
   envKey: 'NEXT_PUBLIC_SVELTE_FLOW_VERSION',
-  siteName: 'svelteflow.dev',
 });
 const svelteFlowUpdated = await svelteFlowUpdater.start();
 

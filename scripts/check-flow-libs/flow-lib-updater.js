@@ -1,6 +1,7 @@
 import { dirname, resolve } from 'path';
 import { fileURLToPath } from 'url';
 import { readFile, writeFile } from 'fs/promises';
+
 import latestVersion from 'latest-version';
 import { exec } from '@actions/exec';
 import { parse as parseEnv, stringify as stringifyEnv } from 'envfile';
@@ -11,8 +12,8 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
  * This is a helper function for checking the latest version on npm against the version in the .env file for a specific site.
  * You need to create the helper and then call the start method to check the version.
  */
-export async function FlowLibUpdater({ siteName, packageName, envKey }) {
-  const sitePath = resolve(__dirname, `../../sites/${siteName}`);
+export async function FlowLibUpdater({ site, packageName, envKey }) {
+  const sitePath = resolve(__dirname, `../../sites/${site}`);
   const latestNpmVersion = await latestVersion(packageName);
   const envPath = resolve(sitePath, '.env');
   const envContent = await readFile(envPath);
@@ -62,7 +63,6 @@ export async function FlowLibUpdater({ siteName, packageName, envKey }) {
 }
 
 // utils
-
 function areVersionsEqual(a, b) {
   if (!a || !b) {
     return false;
