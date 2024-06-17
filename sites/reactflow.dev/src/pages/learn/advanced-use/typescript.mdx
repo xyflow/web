@@ -99,7 +99,7 @@ When working with [custom nodes](/learn/customization/custom-nodes) you have the
 1. If you have **multiple custom nodes**, you want to pass a specific `Node` type as a generic to the `NodeProps` type:
 
 ```tsx filename="NumberNode.tsx"
-import type { NodeProps } from '@xyflow/react';
+import type { Node, NodeProps } from '@xyflow/react';
 
 type NumberNode = Node<{ number: number }, 'number'>;
 
@@ -111,7 +111,7 @@ export default function NumberNode({ data }: NodeProps<NumberNode>) {
 2. If you have **one custom node** that renders different content based on the node type, you want to pass your `Node` union type as a generic to `NodeProps`:
 
 ```tsx filename="CustomNode.tsx"
-import type { NodeProps } from '@xyflow/react';
+import type { Node, NodeProps } from '@xyflow/react';
 
 type NumberNode = Node<{ number: number }, 'number'>;
 type TextNode = Node<{ text: string }, 'text'>;
@@ -132,7 +132,12 @@ export default function CustomNode({ data }: NodeProps<AppNode>) {
 For [custom edges](/learn/customization/custom-nodes) you have the same possiblity as for custom nodes.
 
 ```tsx filename="CustomEdge.tsx"
-import { getStraightPath, BaseEdge, type EdgeProps } from '@xyflow/react';
+import {
+  getStraightPath,
+  BaseEdge,
+  type EdgeProps,
+  type Edge,
+} from '@xyflow/react';
 
 type CustomEdge = Edge<{ value: number }, 'custom'>;
 

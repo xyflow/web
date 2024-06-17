@@ -1,11 +1,13 @@
 import { memo } from 'react';
-import { NodeProps, Position, useReactFlow } from '@xyflow/react';
+import { Node, NodeProps, Position, useReactFlow } from '@xyflow/react';
 import { Text } from '@xyflow/xy-ui';
 
 import Handle from './handle';
 import Wrapper from './node-wrapper';
 
-export default memo(({ data, id }: NodeProps) => {
+export type ColorPickerNode = Node<{ label: string; value: number }>;
+
+export default memo(({ data, id }: NodeProps<ColorPickerNode>) => {
   const { updateNodeData } = useReactFlow();
 
   return (

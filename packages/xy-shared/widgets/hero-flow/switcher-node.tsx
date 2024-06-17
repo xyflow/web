@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { NodeProps, Position, useReactFlow } from '@xyflow/react';
+import { Node, NodeProps, Position, useReactFlow } from '@xyflow/react';
 import { RadioGroup, RadioGroupItem, Label } from '@xyflow/xy-ui';
 
 import Handle from './handle';
@@ -7,7 +7,9 @@ import Wrapper from './node-wrapper';
 
 const options = ['cube', 'pyramid'];
 
-export default function SwitcherNode({ id, data }: NodeProps) {
+export type SwitcherNode = Node<{ label: string; value: string }>;
+
+export default function SwitcherNode({ id, data }: NodeProps<SwitcherNode>) {
   const { updateNodeData } = useReactFlow();
   const onValueChange = useCallback(
     (value: string) => updateNodeData(id, { value }),

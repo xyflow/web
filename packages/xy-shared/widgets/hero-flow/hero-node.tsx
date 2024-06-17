@@ -1,10 +1,12 @@
-import { NodeProps, Position, useNodesData } from '@xyflow/react';
+import { Node, NodeProps, Position, useNodesData } from '@xyflow/react';
 
 import Fiber from './fiber';
 import Handle from './handle';
 import Wrapper from './node-wrapper';
 
-export default function HeroNode({ data }: NodeProps) {
+export type HeroNode = Node<{ label: string }>;
+
+export default function HeroNode({ data }: NodeProps<HeroNode>) {
   const { label = '' } = data;
   const color = useNodesData('color');
   const shape = useNodesData('shape');
