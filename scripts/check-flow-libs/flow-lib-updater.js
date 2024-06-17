@@ -28,7 +28,7 @@ export async function FlowLibUpdater({ siteName, packageName, envKey }) {
       return;
     }
 
-    envParsed[versionKey] = latestNpmVersion;
+    envParsed[envKey] = latestNpmVersion;
 
     const envUpdated = stringifyEnv(envParsed);
 
