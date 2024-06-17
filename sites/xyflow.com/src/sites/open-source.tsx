@@ -133,6 +133,25 @@ export default function OpenSource() {
           to info@xyflow.com from your student email, or send us a link to your
           open source project repository.
         </Text>
+        <Text className="text-lg leading-8 mb-4">
+          We want to share our learnings whenever we can. We conducted a survey
+          with React Flow developers in 2023, and we shared the results publicly
+          in an{' '}
+          <Link
+            href="https://localhost:3002/developer-survey-2023"
+            className="text-pink-500 text-lg "
+          >
+            interactive React Flow app
+          </Link>{' '}
+          and in a{' '}
+          <Link
+            href="/blog/react-flow-developer-survey-2023"
+            className="text-pink-500 text-lg "
+          >
+            full-length blog post
+          </Link>
+          .
+        </Text>
       </Section>
     </BaseLayout>
   );

@@ -22,6 +22,8 @@ export type ImageProps = {
   wide?: boolean;
   caption?: string;
   attribution?: string;
+  className?: string;
+  imageClassName?: string;
 };
 
 export function Image({
@@ -32,9 +34,13 @@ export function Image({
   wide,
   caption,
   attribution,
+  className,
+  imageClassName,
 }: ImageProps) {
   return (
-    <figure className={`my-8 mx-0 ${wide && wideNegativeMargin}`}>
+    <figure
+      className={cn('my-8', 'mx-0', wide && wideNegativeMargin, className)}
+    >
       <NxImage
         src={src}
         alt={alt}
@@ -43,7 +49,7 @@ export function Image({
         width={width}
         height={height}
         sizes="100vw"
-        className="w-full h-auto rounded-xl"
+        className={cn('w-full', 'h-auto', 'rounded-xl', imageClassName)}
       />
       {attribution && (
         <a
