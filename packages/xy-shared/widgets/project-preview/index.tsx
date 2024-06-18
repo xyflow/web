@@ -3,16 +3,19 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
-import { Heading, Text, Button, Container } from '@xyflow/xy-ui';
+import { Heading, Text, Button, Container, TextProps } from '@xyflow/xy-ui';
 
 import { type Author, AuthorList } from '../../';
 
 export type ProjectPreviewProps = {
   image?: string | StaticImport;
   kicker?: ReactNode;
+  kickerSize?: TextProps['size'];
   title: ReactNode;
+  titleSize?: TextProps['size'];
   subtitle?: ReactNode;
   description: ReactNode;
+  descriptionVariant?: TextProps['variant'];
   authors?: Author[];
   route?: string;
   altRoute?: {
@@ -26,9 +29,12 @@ export type ProjectPreviewProps = {
 export function ProjectPreview({
   image,
   kicker,
+  kickerSize = 'sm',
   title,
+  titleSize = 'sm',
   subtitle,
   description,
+  descriptionVariant = 'default',
   authors = [],
   route,
   linkLabel = 'Read more',
@@ -69,11 +75,11 @@ export function ProjectPreview({
         </Container>
       )}
       {kicker && (
-        <Text size="sm" variant="light" className="mt-8">
+        <Text size={kickerSize} variant="light" className="mt-8">
           {kicker}
         </Text>
       )}
-      <Heading as="p" size="sm" className="mb-2 mt-1 lg:leading-snug">
+      <Heading as="p" size={titleSize} className="mb-2 mt-1 lg:leading-snug">
         {title}
       </Heading>
       {subtitle && (
@@ -82,7 +88,9 @@ export function ProjectPreview({
         </Text>
       )}
       <AuthorList noLink={!route} authors={authors} className="mt-6" />
-      <Text className="leading-snug my-4">{description}</Text>
+      <Text className="leading-snug my-4" variant={descriptionVariant}>
+        {description}
+      </Text>
       <div className="flex gap-4">
         <Button asChild variant="link" className="text-md">
           <LinkOrSpan className="flex items-center">

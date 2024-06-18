@@ -7,6 +7,7 @@ const headingSizes = cva('font-bold leading-snug tracking-[-0.02rem]', {
   variants: {
     size: {
       default: 'text-5xl lg:text-6xl font-black leading',
+      xs: 'text-1xl lg:text-2xl',
       sm: 'text-2xl lg:text-3xl',
       md: 'text-4xl lg:text-5xl',
       lg: 'text-5xl lg:text-6xl font-black',
@@ -35,7 +36,7 @@ const Heading = React.forwardRef<HTMLHeadingElement, HeadingProps>(
         {...props}
       />
     );
-  }
+  },
 );
 Heading.displayName = 'Heading';
 

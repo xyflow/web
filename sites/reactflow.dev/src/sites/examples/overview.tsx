@@ -37,11 +37,13 @@ export default function ExamplesOverviewPage({
       : !example.frontMatter?.category,
   );
 
+  console.log(examples);
+
   return (
     <>
       <Section className="!px-0">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-          <Container>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+          <Container className="col-span-2 aspect-video">
             <Image
               src="/img/examples/overview.jpg"
               width={1024}
@@ -58,14 +60,14 @@ export default function ExamplesOverviewPage({
             >
               Feature Overview
             </Heading>
-            <Text>
+            <Text variant="light">
               This is an overview example React Flow{"'"}s basic features. You
               can see built-in node and edge types, sub flows as well as
               NodeToolbar and NodeResizer components.
             </Text>
             <div className="mt-6 flex flex-wrap gap-2 items-center">
               <Button asChild size="lg" className="w-full md:w-auto">
-                <Link href="/examples/overview">Demo</Link>
+                <Link href="/examples/overview">See example</Link>
               </Button>
             </div>
           </div>
@@ -78,11 +80,14 @@ export default function ExamplesOverviewPage({
               <ProjectPreview
                 image={`/img${page.route}.jpg`}
                 title={page.frontMatter?.title}
+                titleSize="xs"
                 description={page.frontMatter?.description}
-                authors={page.frontMatter?.authors}
+                descriptionVariant="light"
+                linkLabel="See example"
                 kicker={page.route
                   .match(/(?<=\/examples\/)(.*)(?=\/)/g)?.[0]
                   ?.toUpperCase()}
+                kickerSize="xs"
               />
             </ContentGridItem>
           );
