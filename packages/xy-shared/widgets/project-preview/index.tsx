@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
-import { Heading, Text, Button, Container, TextProps } from '@xyflow/xy-ui';
+import { Heading, Text, Button, Container, TextProps, cn } from '@xyflow/xy-ui';
 
 import { type Author, AuthorList } from '../../';
 
@@ -23,6 +23,7 @@ export type ProjectPreviewProps = {
     label: string;
   };
   linkLabel?: string;
+  linkClassName?: string;
   className?: string;
 };
 
@@ -38,6 +39,7 @@ export function ProjectPreview({
   authors = [],
   route,
   linkLabel = 'Read more',
+  linkClassName,
   altRoute,
   className,
 }: ProjectPreviewProps) {
@@ -68,14 +70,14 @@ export function ProjectPreview({
           <Image
             src={image}
             alt={`${title} screenshot`}
-            className="object-cover"
+            className="object-cover group-hover:scale-105 transition-transform"
             fill
             sizes="(max-width: 768px) 100vw, 500px"
           />
         </Container>
       )}
       {kicker && (
-        <Text size={kickerSize} variant="light" className="mt-8">
+        <Text size={kickerSize} variant="light" className="mt-8 tracking-wide">
           {kicker}
         </Text>
       )}
@@ -92,7 +94,7 @@ export function ProjectPreview({
         {description}
       </Text>
       <div className="flex gap-4">
-        <Button asChild variant="link" className="text-md">
+        <Button asChild variant="link" className={cn('text-md', linkClassName)}>
           <LinkOrSpan className="flex items-center">
             {linkLabel} <ArrowRightCircleIcon className="ml-1 w-4 h-4" />
           </LinkOrSpan>

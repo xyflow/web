@@ -60,7 +60,6 @@ function getExampleData() {
 
 (async () => {
   const exampleData = getExampleData();
-  console.log(exampleData);
 
   // Launch the browser and open a new blank page
   const browser = await puppeteer.launch({
@@ -76,6 +75,7 @@ function getExampleData() {
   await page.setViewport({ width: 1024, height: 768 });
 
   for (const example of exampleData) {
+    console.log(example);
     const url = example.isProExample
       ? `https://pro-examples.reactflow.dev/${example.proExampleId}`
       : `http://localhost:5173/?path=${example.codePath}`;
