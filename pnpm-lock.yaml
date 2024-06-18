@@ -563,6 +563,9 @@ importers:
       elkjs:
         specifier: ^0.8.2
         version: 0.8.2
+      entitree-flex:
+        specifier: ^0.4.1
+        version: 0.4.1
       fast-xml-parser:
         specifier: ^4.2.6
         version: 4.3.3
