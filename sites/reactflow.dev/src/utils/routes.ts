@@ -110,6 +110,7 @@ export type InternalRoute =
   | '/examples/interaction/zoom-transitions'
   | '/examples/layout/auto-layout'
   | '/examples/layout/dagre'
+  | '/examples/layout/entitree-flex'
   | '/examples/layout/elkjs'
   | '/examples/layout/elkjs-multiple-handles'
   | '/examples/layout/entitree-flex'
