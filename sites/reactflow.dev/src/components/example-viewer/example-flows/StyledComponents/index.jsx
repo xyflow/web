@@ -56,7 +56,10 @@ const Flow = ({ children }) => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
-  const onConnect = useCallback((params) => setEdges((eds) => addEdge(params, eds)), []);
+  const onConnect = useCallback(
+    (params) => setEdges((eds) => addEdge(params, eds)),
+    [],
+  );
 
   return (
     <ReactFlowStyled
@@ -77,10 +80,10 @@ const Flow = ({ children }) => {
 
 export default () => {
   const [mode, setMode] = useState('light');
-  const theme = mode === 'light' ? lightTheme : darkTheme;
+  const theme = mode == 'light' ? lightTheme : darkTheme;
 
   const toggleMode = () => {
-    setMode((m) => (m === 'light' ? 'dark' : 'light'));
+    setMode((m) => (m == 'light' ? 'dark' : 'light'));
   };
 
   return (
