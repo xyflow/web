@@ -1,24 +1,22 @@
 import React, { memo } from 'react';
 import { Handle, Position } from 'reactflow';
-import { nodeHeight, nodeWidth } from './App';
 
 const { Top, Bottom, Left, Right } = Position;
 
-export default memo(({ data: nodeInfo, id: nodeId }) => {
-  const { isSpouse, isSibling, label, direction } = nodeInfo;
+const nodeStyle = {
+  height: 36,
+  minWidth: 150,
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  border: '1px solid black',
+  borderRadius: '4px',
+};
+
+export default memo(({ data }) => {
+  const { isSpouse, isSibling, label, direction } = data;
 
   const isTreeHorizontal = direction === 'LR';
-
-  // Define the node style
-  const nodeStyle = {
-    height: nodeHeight,
-    minWidth: nodeWidth,
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    border: '1px solid black',
-    borderRadius: '4px',
-  };
 
   const getTargetPosition = () => {
     if (isSpouse) {
@@ -29,10 +27,10 @@ export default memo(({ data: nodeInfo, id: nodeId }) => {
     return isTreeHorizontal ? Left : Top;
   };
 
-  const isRootNode = nodeInfo?.isRoot;
-  const hasChildren = !!nodeInfo?.children?.length;
-  const hasSiblings = !!nodeInfo?.siblings?.length;
-  const hasSpouses = !!nodeInfo?.spouses?.length;
+  const isRootNode = data?.isRoot;
+  const hasChildren = !!data?.children?.length;
+  const hasSiblings = !!data?.siblings?.length;
+  const hasSpouses = !!data?.spouses?.length;
 
   return (
     <div className="nodrag">

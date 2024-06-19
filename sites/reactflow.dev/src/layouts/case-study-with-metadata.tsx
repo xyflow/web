@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import { useConfig } from 'nextra-theme-docs';
 import { getPagesUnderRoute } from 'nextra/context';
 import { type MdxFile } from 'nextra';
@@ -7,7 +8,7 @@ import {
 } from 'xy-shared';
 
 export type CaseStudyLayoutProps = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 export function CaseStudyLayout({ children }: CaseStudyLayoutProps) {
@@ -16,7 +17,7 @@ export function CaseStudyLayout({ children }: CaseStudyLayoutProps) {
 
   return (
     <BaseCaseStudyLayout frontMatter={frontMatter} prev={prev} next={next}>
-      {children}
+      <>{children}</>
     </BaseCaseStudyLayout>
   );
 }

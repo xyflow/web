@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import { useConfig } from 'nextra-theme-docs';
 import { getPagesUnderRoute } from 'nextra/context';
 import { type MdxFile } from 'nextra';
@@ -7,7 +8,7 @@ import {
 } from 'xy-shared';
 
 export type TutorialLayoutProps = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 export function TutorialLayout({ children }: TutorialLayoutProps) {
@@ -16,7 +17,7 @@ export function TutorialLayout({ children }: TutorialLayoutProps) {
 
   return (
     <BaseBlogPostLayout frontMatter={frontMatter}>
-      {children}
+      <>{children}</>
     </BaseBlogPostLayout>
   );
 }

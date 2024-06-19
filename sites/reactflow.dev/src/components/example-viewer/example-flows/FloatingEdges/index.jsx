@@ -8,9 +8,9 @@ import ReactFlow, {
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 
-import FloatingEdge from './FloatingEdge.js';
-import FloatingConnectionLine from './FloatingConnectionLine.js';
-import { createNodesAndEdges } from './utils.js';
+import FloatingEdge from './FloatingEdge';
+import FloatingConnectionLine from './FloatingConnectionLine';
+import { createNodesAndEdges } from './utils';
 
 import './index.css';
 
@@ -27,9 +27,16 @@ const NodeAsHandleFlow = () => {
   const onConnect = useCallback(
     (params) =>
       setEdges((eds) =>
-        addEdge({ ...params, type: 'floating', markerEnd: { type: MarkerType.Arrow } }, eds)
+        addEdge(
+          {
+            ...params,
+            type: 'floating',
+            markerEnd: { type: MarkerType.Arrow },
+          },
+          eds,
+        ),
       ),
-    [setEdges]
+    [setEdges],
   );
 
   return (

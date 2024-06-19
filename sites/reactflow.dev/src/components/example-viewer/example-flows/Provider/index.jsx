@@ -8,7 +8,7 @@ import ReactFlow, {
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 
-import Sidebar from './Sidebar.js';
+import Sidebar from './Sidebar';
 
 import './index.css';
 
@@ -37,7 +37,10 @@ const initialEdges = [
 const ProviderFlow = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
-  const onConnect = useCallback((params) => setEdges((els) => addEdge(params, els)), []);
+  const onConnect = useCallback(
+    (params) => setEdges((els) => addEdge(params, els)),
+    [],
+  );
 
   return (
     <div className="providerflow">
