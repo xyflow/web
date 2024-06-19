@@ -27,10 +27,10 @@ export default memo(({ data }) => {
     return isTreeHorizontal ? Left : Top;
   };
 
-  const isRootNode = nodeInfo?.isRoot;
-  const hasChildren = !!nodeInfo?.children?.length;
-  const hasSiblings = !!nodeInfo?.siblings?.length;
-  const hasSpouses = !!nodeInfo?.spouses?.length;
+  const isRootNode = data?.isRoot;
+  const hasChildren = !!data?.children?.length;
+  const hasSiblings = !!data?.siblings?.length;
+  const hasSpouses = !!data?.spouses?.length;
 
   return (
     <div className="nodrag">
