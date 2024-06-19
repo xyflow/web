@@ -34,7 +34,7 @@ importers:
         specifier: ^5.2.2
         version: 5.3.3
 
-  apps/react-examples:
+  apps/react-screenshots:
     dependencies:
       d3-drag:
         specifier: ^3.0.0
