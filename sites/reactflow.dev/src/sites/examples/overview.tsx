@@ -57,7 +57,7 @@ export default function ExamplesOverviewPage({
   return (
     <>
       <Section className="!px-0">
-        <Link href="/examples/overview">
+        <Link href="/examples/overview" className="hover:no-underline group">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
             <Container className="col-span-2 aspect-video">
               <Image
@@ -67,6 +67,7 @@ export default function ExamplesOverviewPage({
                 alt="Feature Overview Example Preview"
                 priority
                 style={{ objectFit: 'contain', display: 'block' }}
+                className="group-hover:scale-[1.05] transition-transform"
               />
             </Container>
             <div className="mt-auto mb-auto">
@@ -78,16 +79,15 @@ export default function ExamplesOverviewPage({
                 can see built-in node and edge types, sub flows as well as
                 NodeToolbar and NodeResizer components.
               </Text>
-              <div className="mt-6 flex flex-wrap gap-2 items-center">
+              <div className="mt-6 flex flex-wrap gap-2 items-center group-hover:text-primary">
                 <Button
                   asChild
                   size="lg"
                   variant="link"
-                  className="w-full md:w-auto text-black font-medium"
+                  className="w-full md:w-auto text-black font-medium "
                 >
                   <>
-                    See example{' '}
-                    <ArrowRightCircleIcon className="ml-1 w-4 h-4" />
+                    See example <ArrowRightCircleIcon className="w-4 h-4" />
                   </>
                 </Button>
               </div>
@@ -126,7 +126,7 @@ export default function ExamplesOverviewPage({
                       description={example.frontMatter?.description}
                       descriptionVariant="light"
                       linkLabel="See example"
-                      linkClassName="text-gray-900 font-medium text-sm"
+                      linkClassName="text-gray-900 font-medium text-sm group-hover:text-primary"
                       kicker={category?.toUpperCase()}
                       kickerSize="xs"
                       imageWrapperClassName="p-0 shadow-md border-none"
