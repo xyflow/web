@@ -301,7 +301,7 @@ export const interactionProps: PropsTableProps = {
       name: 'panOnDrag',
       type: 'boolean | (0 | 1 | 2 | 3 | 4)[]',
       default: 'true',
-      description: `Enableing this prop allows users to pan the viewport by clicking
+      description: `Enabling this prop allows users to pan the viewport by clicking
       and dragging. You can also set this prop to an array of numbers to limit
       which mouse buttons can activate panning. For example, [0,2] would allow
       panning with the left and right mouse buttons.`,
