@@ -25,6 +25,7 @@ export type ProjectPreviewProps = {
   linkLabel?: string;
   linkClassName?: string;
   className?: string;
+  imageWrapperClassName?: string;
 };
 
 export function ProjectPreview({
@@ -42,6 +43,7 @@ export function ProjectPreview({
   linkClassName,
   altRoute,
   className,
+  imageWrapperClassName,
 }: ProjectPreviewProps) {
   const isExternal = route?.includes('https://');
   const linkProps = isExternal
@@ -64,7 +66,14 @@ export function ProjectPreview({
     <div className={className}>
       {image && (
         <Container
-          className="mx-auto aspect-video relative overflow-hidden bg-gray-50"
+          className={cn(
+            'mx-auto',
+            'aspect-video',
+            'relative',
+            'overflow-hidden',
+            'bg-gray-50',
+            imageWrapperClassName,
+          )}
           size="sm"
         >
           <Image
@@ -81,7 +90,7 @@ export function ProjectPreview({
           {kicker}
         </Text>
       )}
-      <Heading as="p" size={titleSize} className="mb-2 mt-1 lg:leading-snug">
+      <Heading as="div" size={titleSize} className="mb-2 mt-1 lg:leading-snug">
         {title}
       </Heading>
       {subtitle && (

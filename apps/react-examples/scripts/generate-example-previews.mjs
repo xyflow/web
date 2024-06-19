@@ -71,8 +71,8 @@ function getExampleData() {
   });
   const page = await browser.newPage();
 
-  // Set screen size
-  await page.setViewport({ width: 1024, height: 768 });
+  // this is 16/6 aspect ratio like the preview images
+  await page.setViewport({ width: 1024, height: 576 });
 
   for (const example of exampleData) {
     console.log(example);
