@@ -58,41 +58,41 @@ export default function ExamplesOverviewPage({
     <>
       <Section className="!px-0">
         <Link href="/examples/overview">
-          <>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-              <Container className="col-span-2 aspect-video">
-                <Image
-                  src="/img/examples/overview.jpg"
-                  width={1024}
-                  height={768}
-                  alt="Feature Overview Example Preview"
-                  priority
-                  style={{ objectFit: 'contain', display: 'block' }}
-                />
-              </Container>
-              <div className="mt-auto mb-auto">
-                <Heading className="mt-2 mb-4" size="sm">
-                  Feature Overview
-                </Heading>
-                <Text variant="light">
-                  This is an overview example React Flow{"'"}s basic features.
-                  You can see built-in node and edge types, sub flows as well as
-                  NodeToolbar and NodeResizer components.
-                </Text>
-                <div className="mt-6 flex flex-wrap gap-2 items-center">
-                  <Button
-                    asChild
-                    size="lg"
-                    variant="link"
-                    className="w-full md:w-auto text-black font-medium"
-                  >
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+            <Container className="col-span-2 aspect-video">
+              <Image
+                src="/img/examples/overview.jpg"
+                width={1024}
+                height={768}
+                alt="Feature Overview Example Preview"
+                priority
+                style={{ objectFit: 'contain', display: 'block' }}
+              />
+            </Container>
+            <div className="mt-auto mb-auto">
+              <Heading className="mt-2 mb-4" size="sm">
+                Feature Overview
+              </Heading>
+              <Text variant="light">
+                This is an overview example React Flow{"'"}s basic features. You
+                can see built-in node and edge types, sub flows as well as
+                NodeToolbar and NodeResizer components.
+              </Text>
+              <div className="mt-6 flex flex-wrap gap-2 items-center">
+                <Button
+                  asChild
+                  size="lg"
+                  variant="link"
+                  className="w-full md:w-auto text-black font-medium"
+                >
+                  <>
                     See example{' '}
                     <ArrowRightCircleIcon className="ml-1 w-4 h-4" />
-                  </Button>
-                </div>
+                  </>
+                </Button>
               </div>
             </div>
-          </>
+          </div>
         </Link>
       </Section>
 
