@@ -37,8 +37,8 @@ importers:
   apps/react-screenshots:
     dependencies:
       '@xyflow/react':
-        specifier: 12.0.0-next.22
-        version: 12.0.0-next.22(@types/react@18.3.1)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        specifier: 12.0.0-next.24
+        version: 12.0.0-next.24(@types/react@18.3.1)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       d3-drag:
         specifier: ^3.0.0
         version: 3.0.0
@@ -537,8 +537,8 @@ importers:
         specifier: ^0.155.1
         version: 0.155.1
       '@xyflow/react':
-        specifier: ^12.0.0-next.22
-        version: 12.0.0-next.22(@types/react@18.2.47)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        specifier: ^12.0.0-next.24
+        version: 12.0.0-next.24(@types/react@18.2.47)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@xyflow/xy-ui':
         specifier: workspace:*
         version: link:../../packages/xy-ui
@@ -4165,8 +4165,8 @@ packages:
       react: '>=17'
       react-dom: '>=17'
 
-  '@xyflow/react@12.0.0-next.22':
-    resolution: {integrity: sha512-3vt0Ls/6SUSSYsWp8bTEqVA6CT2Eq7EcQf9zqIyXNIV2/mDDRYTjj6YYymToeUtIWBokk2amuW227tPaJAfPOg==}
+  '@xyflow/react@12.0.0-next.24':
+    resolution: {integrity: sha512-FwvTUG7AxThzD4Y1Cuc0OX0eErAFpn7tBNJbCrzcSffrqQw9H4ZnFj+SUDtmxQnAISqs40dTf8szrC8+x9zQPg==}
     peerDependencies:
       react: '>=17'
       react-dom: '>=17'
@@ -13877,7 +13877,7 @@ snapshots:
       - '@types/react'
       - immer
 
-  '@xyflow/react@12.0.0-next.22(@types/react@18.2.47)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
+  '@xyflow/react@12.0.0-next.24(@types/react@18.2.47)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
       '@xyflow/system': 0.0.30
       classcat: 5.0.5
@@ -13888,7 +13888,7 @@ snapshots:
       - '@types/react'
       - immer
 
-  '@xyflow/react@12.0.0-next.22(@types/react@18.3.1)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
+  '@xyflow/react@12.0.0-next.24(@types/react@18.3.1)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
       '@xyflow/system': 0.0.30
       classcat: 5.0.5
