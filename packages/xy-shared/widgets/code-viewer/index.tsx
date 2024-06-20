@@ -8,7 +8,6 @@ import {
   SandpackStack,
   OpenInCodeSandboxButton,
   SandpackFiles,
-  useSandpack,
 } from '@codesandbox/sandpack-react';
 import { Framework } from '@xyflow/xy-ui';
 import cn from 'clsx';
@@ -54,14 +53,6 @@ export type CodeViewerProps = {
   orientation?: 'horizontal' | 'vertical';
 };
 
-function SandpackLogger() {
-  const sp = useSandpack();
-
-  console.log(sp);
-
-  return null;
-}
-
 export function CodeViewer({
   framework = 'react',
   dependencies = {},
@@ -99,7 +90,6 @@ export function CodeViewer({
           ...hiddenBaseStyles,
         }}
       >
-        <SandpackLogger />
         <SandpackLayout>
           {showEditor && (
             <SandpackCodeEditor readOnly={readOnly} style={panelStyle} />
