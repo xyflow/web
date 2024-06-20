@@ -82,14 +82,28 @@ export type ReactFlowInstance<T, U> = {
     x: number;
     y: number;
   };
-  updateNodes: (
+  updateNode: (
     id: string,
     nodeUpdate: Partial<NodeType> | ((node: NodeType) => Partial<NodeType>),
     options?: { replace: boolean },
   ) => void;
   updateNodeData: (
     id: string,
-    dataUpdate: object | ((node: Node) => object),
+    dataUpdate:
+      | Partial<NodeType>['data']
+      | ((node: Node) => Partial<NodeType>['data']),
+    options?: { replace: boolean },
+  ) => void;
+  updateEdge: (
+    id: string,
+    edgeUpdate: Partial<EdgeType> | ((node: EdgeType) => Partial<EdgeType>),
+    options?: { replace: boolean },
+  ) => void;
+  updateEdgeData: (
+    id: string,
+    dataUpdate:
+      | Partial<EdgeType>['data']
+      | ((node: Edge) => Partial<EdgeType>['data']),
     options?: { replace: boolean },
   ) => void;
 };
