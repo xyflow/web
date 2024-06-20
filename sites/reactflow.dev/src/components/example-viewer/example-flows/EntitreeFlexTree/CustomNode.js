@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { Handle, Position } from 'reactflow';
+import { Handle, Position } from '@xyflow/react';
 import { nodeHeight, nodeWidth } from './App';
 
 const { Top, Bottom, Left, Right } = Position;

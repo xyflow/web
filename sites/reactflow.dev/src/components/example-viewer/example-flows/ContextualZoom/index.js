@@ -25,19 +25,19 @@ const initialNodes = [
     data: {
       content: <>Zoom to toggle content and placeholder</>,
     },
-    position: { x: 0, y: 50 },
+    position: { x: 0, y: 0 },
   },
   {
     id: '2',
     type: 'zoom',
     data: { content: <>this is a node with some lines of text in it.</> },
-    position: { x: 300, y: 50 },
+    position: { x: 200, y: 0 },
   },
   {
     id: '3',
     type: 'zoom',
     data: { content: <>this is another node with some more text.</> },
-    position: { x: 650, y: 50 },
+    position: { x: 400, y: 0 },
   },
 ];
 
@@ -78,6 +78,7 @@ const ContextualZoomFlow = () => {
       snapGrid={snapGrid}
       defaultViewport={defaultViewport}
       attributionPosition="top-right"
+      fitView
     >
       <MiniMap />
       <Controls />

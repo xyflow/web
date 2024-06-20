@@ -1,16 +1,17 @@
 import React, { useCallback } from 'react';
-import ReactFlow, {
+import {
+  ReactFlow,
   addEdge,
   ConnectionLineType,
   Panel,
   useNodesState,
   useEdgesState,
   Position,
-} from 'reactflow';
+} from '@xyflow/react';
 import { layoutFromMap } from 'entitree-flex';
 import CustomNode from './CustomNode';
 
-import 'reactflow/dist/style.css';
+import '@xyflow/react/dist/style.css';
 import { initialTree, treeRootId } from './nodes-edges';
 
 export const nodeWidth = 150;

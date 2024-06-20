@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { ReactFlow, ReactFlowProvider, useNodesState, useEdgesState, Panel } from '@xyflow/react';
+import { ReactFlow, ReactFlowProvider, useNodesState, useEdgesState, Panel, useReactFlow } from '@xyflow/react';
 
 import {
   nodes as initialNodes,

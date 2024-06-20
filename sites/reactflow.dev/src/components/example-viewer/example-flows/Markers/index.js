@@ -192,7 +192,7 @@ export default function MarkersExample() {
           </marker>
         </defs>
       </svg>
-      <ReactFlow defaultNodes={defaultNodes} defaultEdges={defaultEdges}>
+      <ReactFlow defaultNodes={defaultNodes} defaultEdges={defaultEdges} fitView>
         <Background />
       </ReactFlow>
     </>

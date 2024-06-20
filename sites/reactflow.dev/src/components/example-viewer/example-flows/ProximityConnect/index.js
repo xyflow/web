@@ -34,9 +34,9 @@ const Flow = () => {
       (res, n) => {
         if (n.id !== node.id) {
           const dx =
-            n.computed.positionAbsolute.x - node.computed.positionAbsolute.x;
+            n.measured.positionAbsolute.x - node.measured.positionAbsolute.x;
           const dy =
-            n.computed.positionAbsolute.y - node.computed.positionAbsolute.y;
+            n.measured.positionAbsolute.y - node.measured.positionAbsolute.y;
           const d = Math.sqrt(dx * dx + dy * dy);
 
           if (d < res.distance && d < MIN_DISTANCE) {
@@ -58,8 +58,8 @@ const Flow = () => {
     }
 
     const closeNodeIsSource =
-      closestNode.node.computed.positionAbsolute.x <
-      node.computed.positionAbsolute.x;
+      closestNode.node.measured.positionAbsolute.x <
+      node.measured.positionAbsolute.x;
 
     return {
       id: closeNodeIsSource

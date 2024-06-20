@@ -45,6 +45,7 @@ const TouchDeviceFlow = () => {
       onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
       className="touch-flow"
+      fitView
     />
   );
 };

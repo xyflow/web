@@ -9,7 +9,7 @@ const Placeholder = () => (
   </div>
 );
 
-const zoomSelector = (s) => s.transform[2] >= 1.5;
+const zoomSelector = (s) => s.transform[2] >= 0.9;
 
 export default memo(({ data }) => {
   const showContent = useStore(zoomSelector);

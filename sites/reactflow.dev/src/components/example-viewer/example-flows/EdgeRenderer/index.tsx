@@ -23,9 +23,9 @@ const initialNodes: Node[] = [
     data: { label: 'Node 1' },
     position: { x: 0, y: 0 },
   },
-  { id: '2', data: { label: 'Node 2' }, position: { x: 0, y: 400 } },
-  { id: '3', data: { label: 'Node 3' }, position: { x: 400, y: 0 } },
-  { id: '4', data: { label: 'Node 4' }, position: { x: 400, y: 400 } },
+  { id: '2', data: { label: 'Node 2' }, position: { x: 0, y: 300 } },
+  { id: '3', data: { label: 'Node 3' }, position: { x: 200, y: 0 } },
+  { id: '4', data: { label: 'Node 4' }, position: { x: 200, y: 300 } },
 ];
 
 const initialEdges: Edge[] = [
@@ -71,6 +71,7 @@ const EdgesFlow = () => {
       onEdgesChange={onEdgesChange}
       onConnect={onConnect}
       edgeTypes={edgeTypes}
+      fitView
     >
       <Controls />
       <Background />

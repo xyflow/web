@@ -99,6 +99,8 @@ const UpdateNode = () => {
       minZoom={0.2}
       maxZoom={4}
       attributionPosition="bottom-left"
+      fitView
+      fitViewOptions={{ padding: 0.5 }}
     >
       <div className="updatenode__controls">
         <label>label:</label>

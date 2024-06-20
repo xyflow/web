@@ -6,8 +6,8 @@ function getNodeIntersection(intersectionNode, targetNode) {
   // https://math.stackexchange.com/questions/1724792/an-algorithm-for-finding-the-intersection-point-between-a-center-of-vision-and-a
   const { width: intersectionNodeWidth, height: intersectionNodeHeight } =
     intersectionNode.measured;
-  const intersectionNodePosition = intersectionNode.internals;
-  const targetPosition = targetNode.measured.positionAbsolute;
+  const intersectionNodePosition = intersectionNode.internals.positionAbsolute;
+  const targetPosition = targetNode.internals.positionAbsolute;
 
   const w = intersectionNodeWidth / 2;
   const h = intersectionNodeHeight / 2;

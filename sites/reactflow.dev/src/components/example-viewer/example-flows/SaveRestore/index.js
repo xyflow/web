@@ -15,8 +15,8 @@ const flowKey = 'example-flow';
 const getNodeId = () => `randomnode_${+new Date()}`;
 
 const initialNodes = [
-  { id: '1', data: { label: 'Node 1' }, position: { x: 100, y: 100 } },
-  { id: '2', data: { label: 'Node 2' }, position: { x: 100, y: 200 } },
+  { id: '1', data: { label: 'Node 1' }, position: { x: 0, y: -50 } },
+  { id: '2', data: { label: 'Node 2' }, position: { x: 0, y: 50 } },
 ];
 
 const initialEdges = [{ id: 'e1-2', source: '1', target: '2' }];
@@ -58,8 +58,8 @@ const SaveRestore = () => {
       id: getNodeId(),
       data: { label: 'Added node' },
       position: {
-        x: Math.random() * window.innerWidth - 100,
-        y: Math.random() * window.innerHeight,
+        x: (Math.random() - 0.5) * 400,
+        y: (Math.random() - 0.5) * 400,
       },
     };
     setNodes((nds) => nds.concat(newNode));
@@ -73,6 +73,8 @@ const SaveRestore = () => {
       onEdgesChange={onEdgesChange}
       onConnect={onConnect}
       onInit={setRfInstance}
+      fitView
+      fitViewOptions={{ padding: 2 }}
     >
       <Panel position="top-right">
         <button onClick={onSave}>save</button>

@@ -56,6 +56,7 @@ const HiddenFlow = () => {
       onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
       onConnect={onConnect}
+      fitView
     >
       <MiniMap />
       <Controls />

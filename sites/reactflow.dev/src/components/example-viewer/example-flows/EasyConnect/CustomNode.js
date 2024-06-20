@@ -1,12 +1,11 @@
-import { Handle, Position, useStore } from '@xyflow/react';
-
-const connectionNodeIdSelector = (state) => state.connectionNodeId;
+import { Handle, Position, useConnection } from '@xyflow/react';
 
 export default function CustomNode({ id }) {
-  const connectionNodeId = useStore(connectionNodeIdSelector);
+  const connection = useConnection();
 
-  const isConnecting = !!connectionNodeId;
-  const isTarget = connectionNodeId && connectionNodeId !== id;
+  const isConnecting = !!connection.startHandle;
+  const isTarget = connection.startHandle && connection.startHandle.nodeId !== id;
+
   const label = isTarget ? 'Drop here' : 'Drag to connect';
 
   return (
