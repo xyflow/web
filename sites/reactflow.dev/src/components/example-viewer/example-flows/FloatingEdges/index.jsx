@@ -9,9 +9,9 @@ import {
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 
-import FloatingEdge from './FloatingEdge.js';
-import FloatingConnectionLine from './FloatingConnectionLine.js';
-import { createNodesAndEdges } from './utils.js';
+import FloatingEdge from './FloatingEdge';
+import FloatingConnectionLine from './FloatingConnectionLine';
+import { createNodesAndEdges } from './utils';
 
 import './index.css';
 

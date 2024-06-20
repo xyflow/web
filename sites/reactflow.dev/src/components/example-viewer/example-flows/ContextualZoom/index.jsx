@@ -8,7 +8,7 @@ import {
   Controls,
 } from '@xyflow/react';
 
-import ZoomNode from './ZoomNode.js';
+import ZoomNode from './ZoomNode';
 
 import '@xyflow/react/dist/style.css';
 import './index.css';

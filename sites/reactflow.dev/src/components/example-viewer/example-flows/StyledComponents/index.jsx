@@ -81,10 +81,10 @@ const Flow = ({ children }) => {
 
 export default () => {
   const [mode, setMode] = useState('light');
-  const theme = mode === 'light' ? lightTheme : darkTheme;
+  const theme = mode == 'light' ? lightTheme : darkTheme;
 
   const toggleMode = () => {
-    setMode((m) => (m === 'light' ? 'dark' : 'light'));
+    setMode((m) => (m == 'light' ? 'dark' : 'light'));
   };
 
   return (

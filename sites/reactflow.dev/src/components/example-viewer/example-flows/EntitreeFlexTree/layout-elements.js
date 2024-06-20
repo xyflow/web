@@ -1,25 +1,8 @@
-import React, { useCallback } from 'react';
-import {
-  ReactFlow,
-  addEdge,
-  ConnectionLineType,
-  Panel,
-  useNodesState,
-  useEdgesState,
-  Position,
-} from '@xyflow/react';
+import { Position } from '@xyflow/react';
 import { layoutFromMap } from 'entitree-flex';
-import CustomNode from './CustomNode';
 
-import '@xyflow/react/dist/style.css';
-import { initialTree, treeRootId } from './nodes-edges';
-
-export const nodeWidth = 150;
-export const nodeHeight = 36;
-
-const nodeTypes = {
-  custom: CustomNode,
-};
+const nodeWidth = 150;
+const nodeHeight = 36;
 
 const Orientation = {
   Vertical: 'vertical',
@@ -47,8 +30,7 @@ const entitreeSettings = {
 
 const { Top, Bottom, Left, Right } = Position;
 
-const getLayoutedElements = (tree, rootId, direction = 'TB') => {
-  console.log({ tree, rootId });
+export const layoutElements = (tree, rootId, direction = 'TB') => {
   const isTreeHorizontal = direction === 'LR';
 
   const { nodes: entitreeNodes, rels: entitreeEdges } = layoutFromMap(
@@ -130,60 +112,3 @@ const getLayoutedElements = (tree, rootId, direction = 'TB') => {
 
   return { nodes, edges };
 };
-
-const updateLayout = () => {
-  const { nodes: layoutedNodes, edges: layoutedEdges } = getLayoutedElements(
-    initialTree,
-    treeRootId,
-    'TB',
-  );
-  return [layoutedNodes, layoutedEdges];
-};
-
-const [layoutedNodes, layoutedEdges] = updateLayout();
-
-const LayoutFlow = () => {
-  const [nodes, setNodes, onNodesChange] = useNodesState(layoutedNodes);
-  const [edges, setEdges, onEdgesChange] = useEdgesState(layoutedEdges);
-
-  const onConnect = useCallback(
-    (params) =>
-      setEdges((eds) =>
-        addEdge(
-          { ...params, type: ConnectionLineType.SmoothStep, animated: true },
-          eds,
-        ),
-      ),
-    [],
-  );
-  const onLayout = useCallback(
-    (direction) => {
-      const { nodes: layoutedNodes, edges: layoutedEdges } =
-        getLayoutedElements(initialTree, treeRootId, direction);
-
-      setNodes([...layoutedNodes]);
-      setEdges([...layoutedEdges]);
-    },
-    [nodes, edges],
-  );
-
-  return (
-    <ReactFlow
-      nodes={nodes}
-      edges={edges}
-      onNodesChange={onNodesChange}
-      onEdgesChange={onEdgesChange}
-      onConnect={onConnect}
-      connectionLineType={ConnectionLineType.SmoothStep}
-      fitView
-      nodeTypes={nodeTypes}
-    >
-      <Panel position="top-right">
-        <button onClick={() => onLayout('TB')}>vertical layout</button>
-        <button onClick={() => onLayout('LR')}>horizontal layout</button>
-      </Panel>
-    </ReactFlow>
-  );
-};
-
-export default LayoutFlow;

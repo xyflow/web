@@ -16,7 +16,7 @@ export function BlogPostLayout({ children }: BlogPostLayoutProps) {
 
   return (
     <BaseBlogPostLayout frontMatter={frontMatter} prev={prev} next={next}>
-      {children}
+      <>{children}</>
     </BaseBlogPostLayout>
   );
 }

@@ -9,7 +9,7 @@ import {
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 
-import Sidebar from './Sidebar.js';
+import Sidebar from './Sidebar';
 
 import './index.css';
 
