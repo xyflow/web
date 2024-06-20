@@ -20,11 +20,11 @@ export const defaultEdgeFields: PropsTableProps = {
     { name: 'deletable', type: 'boolean' },
     { name: 'focusable', type: 'boolean' },
     {
-      name: 'updatable?',
+      name: 'reconnectable?',
       type: 'boolean | "source" | "target"',
       description: `Determines whether the edge can be updated by dragging the
       source or target to a new node. This property will override the default
-      set by the edgesUpdatable prop on the <ReactFlow /> component.`,
+      set by the edgesReconnectable prop on the <ReactFlow /> component.`,
     },
     { name: 'markerStart', type: 'string | EdgeMarker' },
     { name: 'markerEnd', type: 'string | EdgeMarker' },

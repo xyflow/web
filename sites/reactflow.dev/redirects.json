@@ -396,7 +396,12 @@
   },
   {
     "source": "/docs/examples/edges/updatable-edge",
-    "destination": "/examples/edges/updatable-edge",
+    "destination": "/examples/edges/edge-reconnect",
+    "permanent": true
+  },
+  {
+    "source": "/examples/edges/updatable-edge",
+    "destination": "/examples/edges/edge-reconnect",
     "permanent": true
   },
   {

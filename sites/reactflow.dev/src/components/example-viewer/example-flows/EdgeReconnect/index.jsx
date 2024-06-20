@@ -4,7 +4,7 @@ import {
   useNodesState,
   useEdgesState,
   Controls,
-  updateEdge,
+  reconnectEdge,
   addEdge,
 } from '@xyflow/react';
 
@@ -92,14 +92,14 @@ const initialEdges = [
     source: '1',
     target: '3',
     label: 'This edge can only be updated from source',
-    updatable: 'source',
+    reconnectable: 'source',
   },
   {
     id: 'e2-4',
     source: '2',
     target: '4',
     label: 'This edge can only be updated from target',
-    updatable: 'target',
+    reconnectable: 'target',
   },
   {
     id: 'e5-6',
@@ -109,13 +109,13 @@ const initialEdges = [
   },
 ];
 
-const UpdatableEdge = () => {
+const EdgeReconnect = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   // gets called after end of edge gets dragged to another source or target
-  const onEdgeUpdate = useCallback(
+  const onReconnect = useCallback(
     (oldEdge, newConnection) =>
-      setEdges((els) => updateEdge(oldEdge, newConnection, els)),
+      setEdges((els) => reconnectEdge(oldEdge, newConnection, els)),
     [],
   );
   const onConnect = useCallback(
@@ -130,7 +130,7 @@ const UpdatableEdge = () => {
       onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
       snapToGrid
-      onEdgeUpdate={onEdgeUpdate}
+      onReconnect={onReconnect}
       onConnect={onConnect}
       fitView
       attributionPosition="top-right"
@@ -140,4 +140,4 @@ const UpdatableEdge = () => {
   );
 };
 
-export default UpdatableEdge;
+export default EdgeReconnect;

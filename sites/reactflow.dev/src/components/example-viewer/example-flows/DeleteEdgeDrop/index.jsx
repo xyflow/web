@@ -4,7 +4,7 @@ import {
   useNodesState,
   useEdgesState,
   Controls,
-  updateEdge,
+  reconnectEdge,
   addEdge,
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
@@ -29,11 +29,11 @@ const initialNodes = [
 ];
 
 const initialEdges = [
-  { id: 'e1-2', source: '1', target: '2', label: 'updatable edge' },
+  { id: 'e1-2', source: '1', target: '2', label: 'reconnectable edge' },
 ];
 
 const DeleteEdgeDrop = () => {
-  const edgeUpdateSuccessful = useRef(true);
+  const edgeReconnectSuccessful = useRef(true);
   const [nodes, , onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   const onConnect = useCallback(
@@ -41,21 +41,21 @@ const DeleteEdgeDrop = () => {
     [],
   );
 
-  const onEdgeUpdateStart = useCallback(() => {
-    edgeUpdateSuccessful.current = false;
+  const onReconnectStart = useCallback(() => {
+    edgeReconnectSuccessful.current = false;
   }, []);
 
-  const onEdgeUpdate = useCallback((oldEdge, newConnection) => {
-    edgeUpdateSuccessful.current = true;
-    setEdges((els) => updateEdge(oldEdge, newConnection, els));
+  const onReconnect = useCallback((oldEdge, newConnection) => {
+    edgeReconnectSuccessful.current = true;
+    setEdges((els) => reconnectEdge(oldEdge, newConnection, els));
   }, []);
 
-  const onEdgeUpdateEnd = useCallback((_, edge) => {
-    if (!edgeUpdateSuccessful.current) {
+  const onReconnectEnd = useCallback((_, edge) => {
+    if (!edgeReconnectSuccessful.current) {
       setEdges((eds) => eds.filter((e) => e.id !== edge.id));
     }
 
-    edgeUpdateSuccessful.current = true;
+    edgeReconnectSuccessful.current = true;
   }, []);
 
   return (
@@ -65,9 +65,9 @@ const DeleteEdgeDrop = () => {
       onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
       snapToGrid
-      onEdgeUpdate={onEdgeUpdate}
-      onEdgeUpdateStart={onEdgeUpdateStart}
-      onEdgeUpdateEnd={onEdgeUpdateEnd}
+      onReconnect={onReconnect}
+      onReconnectStart={onReconnectStart}
+      onReconnectEnd={onReconnectEnd}
       onConnect={onConnect}
       fitView
       attributionPosition="top-right"

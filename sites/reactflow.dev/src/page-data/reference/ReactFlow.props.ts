@@ -222,20 +222,20 @@ export const edgeProps: PropsTableProps = {
       if they exist.`,
     },
     {
-      name: 'edgeUpdaterRadius',
+      name: 'reconnectRadius',
       type: 'number',
       default: '10',
       description: `The radius around an edge connection that can trigger an edge
-      update.`,
+      reconnection.`,
     },
     {
-      name: 'edgesUpdatable',
+      name: 'edgesReconnectable',
       type: 'boolean',
       default: 'true',
       description: `Whether or not edges can be updated once they are created.
-      When both this prop is true and an onEdgeUpdate handler is provided, the
+      When both this prop is true and an onReconnect handler is provided, the
       user can drag an existing edge to a new source or target. Individual edges
-      can override this value with their updatable property.`,
+      can override this value with their reconnectable property.`,
     },
   ],
 };
@@ -345,21 +345,21 @@ export const edgeEventHandlerProps: PropsTableProps = {
       type: '(event: React.MouseEvent, edge: Edge) => void',
     },
     {
-      name: 'onEdgeUpdate',
+      name: 'onReconnect',
       type: '(oldEdge: Edge, newConnection: Connection) => void',
-      description: `This handler is called when the source or target of an updatable
+      description: `This handler is called when the source or target of an reconnectable
       edge is dragged from the current node. It will fire even if the edge's source
-      or target do not end up changing. You can use the updateEdge utility to
+      or target do not end up changing. You can use the reconnectEdge utility to
       convert the connection to a new edge.`,
     },
     {
-      name: 'onEdgeUpdateStart',
+      name: 'onReconnectStart',
       type: '(event: React.MouseEvent, edge: Edge, handleType: "source" | "target") => void',
       description: `This event fires when the user begins dragging the source or
       target of an editable edge. `,
     },
     {
-      name: 'onEdgeUpdateEnd',
+      name: 'onReconnectEnd',
       type: '(event: React.MouseEvent, edge: Edge, handleType: "source" | "target") => void',
       description: `This event fires when the user releases the source or target
       of an editable edge. It is called even if an edge update does not occur.`,

@@ -14,5 +14,5 @@
   "get-viewport-for-bounds": "getViewportForBounds()",
   "is-edge": "isEdge()",
   "is-node": "isNode()",
-  "update-edge": "updateEdge()"
+  "reconnect-edge": "reconnectEdge()"
 }
