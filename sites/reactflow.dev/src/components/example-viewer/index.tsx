@@ -21,7 +21,13 @@ export default function ExampleViewer({
   ...rest
 }: ExampleViewerProps) {
   const [files, setFiles] = useState(null);
-  const scriptExtension = isTypescript ? 'tsx' : 'js';
+  const scriptExtension = isTypescript
+    ? 'tsx'
+    : codePath.includes('example-flows')
+      ? 'jsx'
+      : 'js';
+  // sandpack does not support using .jsx extension with the react template
+  const sandpackExtension = scriptExtension === 'jsx' ? 'js' : scriptExtension;
   const dependenciesWithDefault = {
     reactflow: process.env.NEXT_PUBLIC_REACT_FLOW_VERSION,
     ...dependencies,
@@ -36,7 +42,7 @@ export default function ExampleViewer({
         activeFile,
       );
       setFiles({
-        [`/App.${scriptExtension}`]: files.default,
+        [`/App.${sandpackExtension}`]: files.default,
         ...files.additional,
       });
     };

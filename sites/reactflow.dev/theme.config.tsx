@@ -44,18 +44,18 @@ export default {
   sidebar: {
     titleComponent: SidebarTitle,
   },
-  banner: {
-    key: '2023-survey-results',
-    text: (
-      <Link
-        className="flex justify-center items-center max-w-xs mx-auto hover:underline"
-        href="https://reactflow.dev/developer-survey-2023"
-      >
-        📬 2023 year-end survey results are here! See what the community says
-        about React Flow
-      </Link>
-    ),
-  },
+  // banner: {
+  //   key: '2023-survey-results',
+  //   text: (
+  //     <Link
+  //       className="flex justify-center items-center max-w-xs mx-auto hover:underline"
+  //       href="https://reactflow.dev/developer-survey-2023"
+  //     >
+  //       📬 2023 year-end survey results are here! See what the community says
+  //       about React Flow
+  //     </Link>
+  //   ),
+  // },
   navbar: {
     component: (props) => {
       const router = useRouter();

@@ -122,7 +122,7 @@ export const section = ({
               key={i}
               onClick={onClick}
             >
-              {content}
+              <>{content}</>
             </Button>
           ))}
         </div>
@@ -131,7 +131,7 @@ export const section = ({
           className="nodrag nopan inline-flex items-center gap-1 group"
           onClick={action.onClick}
         >
-          {action.content}
+          <>{action.content}</>
         </Button>
       ) : null,
   },

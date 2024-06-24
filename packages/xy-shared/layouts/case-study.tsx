@@ -64,7 +64,9 @@ export function CaseStudyLayout({
         />
       </Container>
 
-      <div className="max-w-3xl mx-auto px-6">{children}</div>
+      <div className="max-w-3xl mx-auto px-6">
+        <>{children}</>
+      </div>
 
       <div className="mx-auto max-w-screen-xl">
         <CaseStudyPreviews prev={prev} next={next} />
