@@ -396,7 +396,7 @@
   },
   {
     "source": "/docs/examples/edges/updatable-edge",
-    "destination": "/examples/edges/updatable-edge",
+    "destination": "/examples/edges/reconnect-edge",
     "permanent": true
   },
   {
@@ -801,7 +801,7 @@
   },
   {
     "source": "/examples/updatable-edge",
-    "destination": "/docs/examples/edges/updatable-edge",
+    "destination": "/examples/edges/reconnect-edge",
     "permanent": true
   },
   {
@@ -916,7 +916,7 @@
   },
   {
     "source": "/docs/examples/updatable-edge",
-    "destination": "/examples/edges/updatable-edge",
+    "destination": "/examples/edges/reconnect-edge",
     "permanent": true
   },
   {
@@ -1032,6 +1032,11 @@
   {
     "source": "/pro/enterprise",
     "destination": "/pro/quote-request?plan=enterprise",
+    "permanent": true
+  },
+  {
+    "source": "/examples/edges/updatable-edge",
+    "destination": "/examples/edges/reconnect-edge",
     "permanent": true
   }
 ]

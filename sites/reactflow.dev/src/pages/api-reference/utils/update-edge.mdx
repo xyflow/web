@@ -6,12 +6,18 @@ description:
   the connection you provide.'
 ---
 
+import { Callout } from 'nextra/components';
 import { PropsTable } from '@/components/props-table';
 import { signature } from '@/page-data/reference/utils/updateEdge.ts';
 
 # updateEdge()
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/v11/packages/core/src/utils/graph.ts/#L97)
+
+<Callout type="warning" emoji="⚠️">
+  This function is deprecated and will be removed in React Flow 12. Use
+  [reconnectEdge](/api-reference/utils/reconnect-edge) instead.
+</Callout>
 
 A handy utility to update an existing [`Edge`](/api-reference/types/edge) with new properties.
 This searches your edge array for an edge with a matching `id` and updates its
