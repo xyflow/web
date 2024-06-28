@@ -1,5 +1,5 @@
 ---
-title: updateEdge()
+title: reconnectEdge()
 description:
   'A handy utility to update an existing Edge with new properties. This searches
   your edge array for an edge with a matching id and updates its properties with
@@ -7,9 +7,9 @@ description:
 ---
 
 import { PropsTable } from '@/components/props-table';
-import { signature } from '@/page-data/reference/utils/updateEdge.ts';
+import { signature } from '@/page-data/reference/utils/reconnectEdge.ts';
 
-# updateEdge()
+# reconnectEdge()
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/v11/packages/core/src/utils/graph.ts/#L97)
 
@@ -18,8 +18,8 @@ This searches your edge array for an edge with a matching `id` and updates its
 properties with the connection you provide.
 
 ```js
-const onEdgeUpdate = useCallback(
-  (oldEdge: Edge, newConnection: Connection) => setEdges((els) => updateEdge(oldEdge, newConnection, els)),
+const onReconnect = useCallback(
+  (oldEdge: Edge, newConnection: Connection) => setEdges((els) => reconnectEdge(oldEdge, newConnection, els)),
   []
 );
 ```

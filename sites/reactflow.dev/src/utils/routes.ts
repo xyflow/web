@@ -93,7 +93,7 @@ export type InternalRoute =
   | '/examples/edges/markers'
   | '/examples/edges/multi-connection-line'
   | '/examples/edges/simple-floating-edges'
-  | '/examples/edges/updatable-edge'
+  | '/examples/edges/reconnect-edge'
   | '/examples/interaction/collaborative'
   | '/examples/interaction/collision-detection'
   | '/examples/interaction/context-menu'

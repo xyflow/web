@@ -1,5 +1,11 @@
 import React, { useCallback } from 'react';
-import ReactFlow, { useNodesState, useEdgesState, Controls, updateEdge, addEdge } from 'reactflow';
+import ReactFlow, {
+  useNodesState,
+  useEdgesState,
+  Controls,
+  reconnectEdge,
+  addEdge,
+} from 'reactflow';
 
 import 'reactflow/dist/style.css';
 
@@ -85,27 +91,36 @@ const initialEdges = [
     source: '1',
     target: '3',
     label: 'This edge can only be updated from source',
-    updatable: 'source',
+    reconnectable: 'source',
   },
   {
     id: 'e2-4',
     source: '2',
     target: '4',
     label: 'This edge can only be updated from target',
-    updatable: 'target',
+    reconnectable: 'target',
   },
-  { id: 'e5-6', source: '5', target: '6', label: 'This edge can be updated from both sides' },
+  {
+    id: 'e5-6',
+    source: '5',
+    target: '6',
+    label: 'This edge can be updated from both sides',
+  },
 ];
 
-const UpdatableEdge = () => {
+const ReconnectEdge = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   // gets called after end of edge gets dragged to another source or target
-  const onEdgeUpdate = useCallback(
-    (oldEdge, newConnection) => setEdges((els) => updateEdge(oldEdge, newConnection, els)),
-    []
+  const onReconnect = useCallback(
+    (oldEdge, newConnection) =>
+      setEdges((els) => reconnectEdge(oldEdge, newConnection, els)),
+    [],
   );
-  const onConnect = useCallback((params) => setEdges((els) => addEdge(params, els)), []);
+  const onConnect = useCallback(
+    (params) => setEdges((els) => addEdge(params, els)),
+    [],
+  );
 
   return (
     <ReactFlow
@@ -114,7 +129,7 @@ const UpdatableEdge = () => {
       onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
       snapToGrid
-      onEdgeUpdate={onEdgeUpdate}
+      onReconnect={onReconnect}
       onConnect={onConnect}
       fitView
       attributionPosition="top-right"
@@ -123,5 +138,4 @@ const UpdatableEdge = () => {
     </ReactFlow>
   );
 };
-
-export default UpdatableEdge;
+export default ReconnectEdge;

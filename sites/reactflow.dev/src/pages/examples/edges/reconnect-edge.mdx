@@ -1,5 +1,5 @@
 ---
-title: Updatable Edge
+title: Reconnect Edge
 description: Click-drag to move an existing edge from one handle to another
 ---
 
@@ -7,10 +7,10 @@ import ExampleViewer from '@/components/example-viewer';
 import ExampleLayout from '@/layouts/example-with-frontmatter';
 
 <ExampleLayout>
-An edge is updatable by dragging it to another handle if you are using the
-[`onEdgeUpdate` handler prop](/api-reference/react-flow#edges). The handler gets
+An edge is reconnectable by dragging it to another handle if you are using the
+[`onReconnect` handler prop](/api-reference/react-flow#edges). The handler gets
 called after the edge gets dropped to a new handle. You can use the
-[`updateEdge`](/api-reference/utils/update-edge) helper function to update your
+[`reconnectEdge`](/api-reference/utils/reconnect-edge) helper function to update your
 edges state accordingly.
 
 <ExampleViewer codePath="example-flows/UpdatableEdge" />
@@ -22,17 +22,17 @@ updatable or not:
   set to `true`.
 
 - For edges to actually be draggable, though, it is also necessary to define a
-  [`onEdgeUpdate`](/api-reference/react-flow#onEdgeUpdate) handler.
+  [`onReconnect`](/api-reference/react-flow#onReconnect) handler.
 
-- Individual edges can refine or override the [`edgesUpdatable`](/api-reference/react-flow#edgesUpdatable)
+- Individual edges can refine or override the [`edgesReconnectable`](/api-reference/react-flow#edgesReconnectable)
   prop by setting their [`updatable`](/api-reference/types/edge#updatable) property.
 
-  - `true` means the edge is updatable even if [`edgesUpdatable`](/api-reference/react-flow#edgesUpdatable)
+  - `true` means the edge is updatable even if [`edgesReconnectable`](/api-reference/react-flow#edgesReconnectable)
 
   - `"source"` or `"target"` means the edge is updatable only from the source or
-    target handle regardless of the [`edgesUpdatable`](/api-reference/react-flow#edgesUpdatable) prop.
+    target handle regardless of the [`edgesReconnectable`](/api-reference/react-flow#edgesReconnectable) prop.
 
-  - `false` means the edge is not updatable even if [`edgesUpdatable`](/api-reference/react-flow#edgesUpdatable)
+  - `false` means the edge is not updatable even if [`edgesReconnectable`](/api-reference/react-flow#edgesReconnectable)
     is set to `true`.
 
 </ExampleLayout>
