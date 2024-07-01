@@ -1,0 +1,19 @@
+{
+  "name": "check-flow-libs",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "xyflow",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/exec": "^1.1.1",
+    "envfile": "^7.1.0",
+    "latest-version": "^9.0.0"
+  }
+}
