@@ -212,6 +212,12 @@ export const edgeProps: PropsTableProps = {
       name: 'edgeUpdaterRadius',
       type: 'number',
       default: '10',
+      description: `deprecated: Please use reconnectRadius`,
+    },
+    {
+      name: 'reconnectRadius',
+      type: 'number',
+      default: '10',
       description: `The radius around an edge connection that can trigger an edge
       update.`,
     },
@@ -322,20 +328,32 @@ export const edgeEventHandlerProps: PropsTableProps = {
     },
     {
       name: 'onEdgeUpdate',
-      type: '(oldEdge: Edge, newConnection: Connection) => void',
-      description: `This handler is called when the source or target of an updatable
-      edge is dragged from the current node. It will fire even if the edge's source
-      or target do not end up changing. You can use the updateEdge utility to
-      convert the connection to a new edge.`,
+      description: `deprectated: Please use onReconnect`,
     },
     {
       name: 'onEdgeUpdateStart',
+      description: `deprectated: Please use onReconnectStart`,
+    },
+    {
+      name: 'onEdgeUpdateEnd',
+      description: `deprectated: Please use onReconnectEnd`,
+    },
+    {
+      name: 'onReconnect',
+      type: '(oldEdge: Edge, newConnection: Connection) => void',
+      description: `This handler is called when the source or target of an reconnectable
+      edge is dragged from the current node. It will fire even if the edge's source
+      or target do not end up changing. You can use the reconnectEdge utility to
+      convert the connection to a new edge.`,
+    },
+    {
+      name: 'onReconnectStart',
       type: '(event: React.MouseEvent, edge: Edge, handleType: "source" | "target") => void',
       description: `This event fires when the user begins dragging the source or
       target of an editable edge. `,
     },
     {
-      name: 'onEdgeUpdateEnd',
+      name: 'onReconnectEnd',
       type: '(event: React.MouseEvent, edge: Edge, handleType: "source" | "target") => void',
       description: `This event fires when the user releases the source or target
       of an editable edge. It is called even if an edge update does not occur.`,
@@ -475,7 +493,7 @@ export const interactionProps: PropsTableProps = {
       name: 'panOnDrag',
       type: 'boolean | (0 | 1 | 2 | 3 | 4)[]',
       default: 'true',
-      description: `Enableing this prop allows users to pan the viewport by clicking
+      description: `Enabling this prop allows users to pan the viewport by clicking
       and dragging. You can also set this prop to an array of numbers to limit
       which mouse buttons can activate panning. For example, [0,2] would allow
       panning with the left and right mouse buttons.`,

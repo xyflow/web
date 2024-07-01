@@ -1,6 +1,6 @@
 import { UserGroupIcon } from '@heroicons/react/24/outline';
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
 import {
   ContentGrid,
@@ -12,7 +12,11 @@ import {
 } from '@xyflow/xy-ui';
 import { BaseLayout, Hero } from 'xy-shared';
 
-import aboutUsImage from '@/../public/img/about.jpg';
+import john from '@/../public/img/john.jpg';
+import christopher from '@/../public/img/christopher.jpg';
+import hayleigh from '@/../public/img/hayleigh.jpg';
+import moritz from '@/../public/img/moritz.jpg';
+import peter from '@/../public/img/peter.jpg';
 
 export default function About() {
   return (
@@ -22,13 +26,6 @@ export default function About() {
         title="The story of xyflow"
         subtitle="How we got here"
         align="center"
-      />
-
-      <Image
-        src={aboutUsImage}
-        alt="Christopher, Hayleigh, John, Moritz, and Peter standing in front of trees"
-        placeholder="blur"
-        className="mx-auto lg:max-w-[900px] mt-16 rounded-sm"
       />
 
       <Section className="max-w-screen-md mx-auto mt-12 lg:my-12">
@@ -80,6 +77,7 @@ export default function About() {
       <ContentGrid className="mt-16 lg:mt-20">
         <TeamCard
           name="Christopher"
+          teampic={christopher}
           description="Christopher doesn't remember anything before 2015. He woke up on the shores of the Spree, where he wandered into the offices of the newspaper Zeit and they gave him a job as a front-end developer, mistaking him for the potential new hire. He quickly rose through the ranks there. Now he codes at xyflow, hoping one day he will remember how he got here, and what the meaning of all this is anyway."
           links={[
             { linkName: 'Twitter', route: 'https://twitter.com/chrtze' },
@@ -88,6 +86,7 @@ export default function About() {
         />
         <TeamCard
           name="Hayleigh"
+          teampic={hayleigh}
           description="Hayleigh is a time traveller who arrived in the year 2023 on accident trying to get to the year 2032 (her home-year). While she and her 2 cats wait another 7 years until the time machine is re-invented, she decided to take to coding in languages (archaic to her) such as React, Javascript, and Elm. "
           links={[
             {
@@ -102,6 +101,7 @@ export default function About() {
         />
         <TeamCard
           name="John"
+          teampic={john}
           description="John works on all things un-code at xyflow, which is a lot of writing and talking about where xyflow is headed, how we get there, and open source in general. Before jumping into the world of open source, UX design and research were his bread and butter. Besides that, he likes looking at birds, playing music, and designing puzzles."
           links={[
             { linkName: 'Website', route: 'https://johnrobbdesign.com/' },
@@ -114,6 +114,7 @@ export default function About() {
         />
         <TeamCard
           name="Moritz"
+          teampic={moritz}
           description="Moritz was raised in the depths of Teutoburger Wald by a pack of wolves, learning how to hunt, survive, and develop front-end applications. He abandoned his pack after a disagreement in 2019, where he fled to the streets of Berlin. He now maintains React Flow, and dreams of one day rejoining his pack."
           links={[
             { linkName: 'Twitter', route: 'https://twitter.com/moklick' },
@@ -122,6 +123,7 @@ export default function About() {
         />
         <TeamCard
           name="Peter"
+          teampic={peter}
           description="Peter has been directing a mockumentary of the xyflow team a la The Office since he broke into our building during the summer of 2023. Luckily for our team, the footage will never be released since he never asked us to sign a talent waiver, and none of us have the heart to tell him. Once he's done editing the footage (he keeps saying 'one more week'), we're hoping he'll make some contributions to the Svelte Flow library and docs."
           links={[
             { linkName: 'Github', route: 'https://github.com/peterkogo' },
@@ -148,14 +150,29 @@ function TeamCard({
   name,
   description,
   links,
+  teampic,
 }: {
   name: string;
   description: string;
+  teampic?: StaticImageData;
 
   links?: Array<{ route: string; linkName: string }>;
 }) {
   return (
     <ContentGridItem>
+      {teampic && (
+        <Image
+          src={teampic}
+          alt={name}
+          className="mb-8 lg:-mt-8"
+          width="260"
+          height="304"
+        />
+      )}
+      {!teampic && (
+        <div className="mb-8 lg:-mt-8" style={{ width: 260, height: 304 }} />
+      )}
+
       <Heading as="p" size="sm" className="mb-4">
         {name}
       </Heading>

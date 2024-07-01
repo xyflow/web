@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useMemo, useState, ReactNode } from 'react';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import { cn, ContentGrid, ContentGridItem } from '@xyflow/xy-ui';
 
@@ -10,7 +10,7 @@ export type ShowcaseLayoutProps = {
   title: string;
   subtitle: string;
   showcases?: ShowcaseItem[];
-  children?: React.ReactNode;
+  children?: ReactNode;
 };
 
 export type ShowcaseItem = {
@@ -105,7 +105,7 @@ export function ShowcaseLayout({
           />
         </ContentGridItem>
       </ContentGrid>
-      {children}
+      <>{children}</>
     </BaseLayout>
   );
 }
