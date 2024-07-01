@@ -1,16 +1,17 @@
 import React, { useCallback, useRef } from 'react';
-import ReactFlow, {
+import {
+  ReactFlow,
   Controls,
   OnConnectEnd,
   OnConnectStart,
   Panel,
   useStoreApi,
-  Node,
   useReactFlow,
   ReactFlowProvider,
   NodeOrigin,
   ConnectionLineType,
-} from 'reactflow';
+  InternalNode,
+} from '@xyflow/react';
 import { shallow } from 'zustand/shallow';
 
 import useStore, { RFState } from './store';
@@ -20,7 +21,7 @@ import MindMapEdge from './MindMapEdge';
 import './index.css';
 
 // we need to import the React Flow styles to make it work
-import 'reactflow/dist/style.css';
+import '@xyflow/react/dist/style.css';
 
 const selector = (state: RFState) => ({
   nodes: state.nodes,
@@ -54,7 +55,7 @@ function Flow() {
 
   const getChildNodePosition = (
     event: MouseEvent | TouchEvent,
-    parentNode?: Node,
+    parentNode?: InternalNode,
   ) => {
     const { domNode } = store.getState();
 
@@ -62,9 +63,9 @@ function Flow() {
       !domNode ||
       // we need to check if these properites exist, because when a node is not initialized yet,
       // it doesn't have a positionAbsolute nor a width or height
-      !parentNode?.positionAbsolute ||
-      !parentNode?.width ||
-      !parentNode?.height
+      !parentNode?.internals.positionAbsolute ||
+      !parentNode?.measured.width ||
+      !parentNode?.measured.height
     ) {
       return;
     }
@@ -80,8 +81,14 @@ function Flow() {
 
     // we are calculating with positionAbsolute here because child nodes are positioned relative to their parent
     return {
-      x: panePosition.x - parentNode.positionAbsolute.x + parentNode.width / 2,
-      y: panePosition.y - parentNode.positionAbsolute.y + parentNode.height / 2,
+      x:
+        panePosition.x -
+        parentNode.internals.positionAbsolute.x +
+        parentNode.measured.width / 2,
+      y:
+        panePosition.y -
+        parentNode.internals.positionAbsolute.y +
+        parentNode.measured.height / 2,
     };
   };
 
@@ -91,7 +98,7 @@ function Flow() {
 
   const onConnectEnd: OnConnectEnd = useCallback(
     (event) => {
-      const { nodeInternals } = store.getState();
+      const { nodeLookup } = store.getState();
       const targetIsPane = (event.target as Element).classList.contains(
         'react-flow__pane',
       );
@@ -100,7 +107,7 @@ function Flow() {
       if (node) {
         node.querySelector('input')?.focus({ preventScroll: true });
       } else if (targetIsPane && connectingNodeId.current) {
-        const parentNode = nodeInternals.get(connectingNodeId.current);
+        const parentNode = nodeLookup.get(connectingNodeId.current);
         const childNodePosition = getChildNodePosition(event, parentNode);
 
         if (parentNode && childNodePosition) {

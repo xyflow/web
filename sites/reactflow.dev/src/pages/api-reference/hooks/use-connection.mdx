@@ -1,0 +1,43 @@
+---
+title: useConnection
+description:
+  The useConnection hook returns the current connection when there is an active
+  connection interaction. If no connection interaction is active, it returns null
+  for every property. A typical use case for this hook is to colorize handles
+  based on a certain condition (e.g. if the connection is valid or not).
+created_at: 2024-21-02
+---
+
+import { PropsTable } from '@/components/props-table';
+import { signature } from '@/page-data/reference/hooks/useConnection.ts';
+
+# useConnection
+
+[Source on GitHub]()
+
+The `useConnection` hook returns the current connection when there is an active connection interaction. If no connection interaction is active, it returns `null` for every property. A typical use case for this hook is to colorize handles based on a certain condition (e.g. if the connection is valid or not).
+
+```tsx
+import { useConnection } from '@xyflow/react';
+
+export default function () {
+  const connection = useConnection();
+
+  return (
+    {connection &&
+      <div>
+        Someone is trying to make a connection from {connection.source} to this one.
+      </div>
+    }
+    {!connection &&
+      <div>
+        There are currently no incoming connections!
+      </div>
+    }
+    )
+}
+```
+
+## Signature
+
+<PropsTable {...signature} />

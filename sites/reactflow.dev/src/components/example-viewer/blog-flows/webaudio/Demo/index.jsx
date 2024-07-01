@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactFlow, { ReactFlowProvider, Background, Panel, useReactFlow } from 'reactflow';
+import { ReactFlow, ReactFlowProvider, Background, Panel } from '@xyflow/react';
 import { shallow } from 'zustand/shallow';
 import { useStore } from './store';
 import { tw } from 'twind';
@@ -7,7 +7,7 @@ import Osc from './nodes/Osc';
 import Amp from './nodes/Amp';
 import Out from './nodes/Out';
 
-import 'reactflow/dist/style.css';
+import '@xyflow/react/dist/style.css';
 
 const nodeTypes = {
   osc: Osc,
@@ -44,10 +44,16 @@ export default function App() {
           fitView
         >
           <Panel className={tw('space-x-4')} position="top-right">
-            <button className={tw('px-2 py-1 rounded bg-white shadow')} onClick={store.addOsc}>
+            <button
+              className={tw('px-2 py-1 rounded bg-white shadow')}
+              onClick={store.addOsc}
+            >
               Add Osc
             </button>
-            <button className={tw('px-2 py-1 rounded bg-white shadow')} onClick={store.addAmp}>
+            <button
+              className={tw('px-2 py-1 rounded bg-white shadow')}
+              onClick={store.addAmp}
+            >
               Add Amp
             </button>
           </Panel>

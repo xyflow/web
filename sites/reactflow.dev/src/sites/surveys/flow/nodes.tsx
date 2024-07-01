@@ -1,5 +1,5 @@
 import { Button, Heading, Link, Text, cn } from '@xyflow/xy-ui';
-import { Handle, Node, Position } from 'reactflow';
+import { Handle, Node, Position } from '@xyflow/react';
 
 export const nodeTypes = {
   action: ActionNode,

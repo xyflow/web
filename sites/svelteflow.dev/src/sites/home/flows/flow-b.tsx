@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import ReactFlow, {
+import {
+  ReactFlow,
   Controls,
   Handle,
   NodeOrigin,
@@ -7,7 +8,7 @@ import ReactFlow, {
   ReactFlowProvider,
   useNodesInitialized,
   useReactFlow,
-} from 'reactflow';
+} from '@xyflow/react';
 import { NodeWrapper } from 'xy-shared';
 import {
   Input,

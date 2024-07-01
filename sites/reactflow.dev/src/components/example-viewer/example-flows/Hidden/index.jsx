@@ -1,6 +1,13 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import ReactFlow, { useNodesState, useEdgesState, addEdge, MiniMap, Controls } from 'reactflow';
-import 'reactflow/dist/style.css';
+import {
+  ReactFlow,
+  useNodesState,
+  useEdgesState,
+  addEdge,
+  MiniMap,
+  Controls,
+} from '@xyflow/react';
+import '@xyflow/react/dist/style.css';
 
 const initialNodes = [
   {
@@ -21,8 +28,10 @@ const initialEdges = [
 ];
 
 const hide = (hidden) => (nodeOrEdge) => {
-  nodeOrEdge.hidden = hidden;
-  return nodeOrEdge;
+  return {
+    ...nodeOrEdge,
+    hidden,
+  };
 };
 
 const HiddenFlow = () => {
@@ -30,7 +39,10 @@ const HiddenFlow = () => {
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   const [hidden, setHidden] = useState(false);
 
-  const onConnect = useCallback((params) => setEdges((els) => addEdge(params, els)), []);
+  const onConnect = useCallback(
+    (params) => setEdges((els) => addEdge(params, els)),
+    [],
+  );
 
   useEffect(() => {
     setNodes((nds) => nds.map(hide(hidden)));
@@ -44,6 +56,7 @@ const HiddenFlow = () => {
       onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
       onConnect={onConnect}
+      fitView
     >
       <MiniMap />
       <Controls />

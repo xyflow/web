@@ -1,5 +1,5 @@
+import { Position } from '@xyflow/react';
 import { layoutFromMap } from 'entitree-flex';
-import { Position } from 'reactflow';
 
 const nodeWidth = 150;
 const nodeHeight = 36;

@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import 'reactflow/dist/style.css';
+@import '@xyflow/react/dist/style.css';
 @import 'xy-shared/lib/globals.css';
 
 @layer base {

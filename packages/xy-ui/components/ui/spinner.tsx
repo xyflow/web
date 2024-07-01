@@ -43,5 +43,5 @@ export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
       </svg>
       <span className="sr-only">Loading...</span>
     </div>
-  )
+  ),
 );

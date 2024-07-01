@@ -1,6 +1,11 @@
 import React, { useCallback } from 'react';
-import ReactFlow, { useNodesState, useEdgesState, addEdge } from 'reactflow';
-import 'reactflow/dist/style.css';
+import {
+  ReactFlow,
+  useNodesState,
+  useEdgesState,
+  addEdge,
+} from '@xyflow/react';
+import '@xyflow/react/dist/style.css';
 
 const initialNodes = [
   {
@@ -116,7 +121,10 @@ const initialEdges = [
 const HorizontalFlow = () => {
   const [nodes, _, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
-  const onConnect = useCallback((params) => setEdges((els) => addEdge(params, els)), []);
+  const onConnect = useCallback(
+    (params) => setEdges((els) => addEdge(params, els)),
+    [],
+  );
 
   return (
     <ReactFlow

@@ -1,5 +1,5 @@
 import React from 'react';
-import { BaseEdge, BezierEdge, EdgeProps } from 'reactflow';
+import { BaseEdge, BezierEdge, EdgeProps } from '@xyflow/react';
 
 export default function SelfConnecting(props: EdgeProps) {
   // we are using the default bezier edge when source and target ids are different

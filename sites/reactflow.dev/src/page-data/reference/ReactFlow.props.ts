@@ -82,10 +82,11 @@ export const commonProps: PropsTableProps = {
     {
       name: 'nodeDragThreshold',
       type: 'number',
-      default: '0',
+      default: '1',
       description: `
           With a threshold greater than zero you can delay node drag events. If threshold equals 1,
-          you need to drag the node 1 pixel before a drag event is fired.
+          you need to drag the node 1 pixel before a drag event is fired. 1 is the default values, so
+          clicks don't trigger drag events.
         `,
     },
     { name: 'style', type: 'React.CSSProperties' },
@@ -95,6 +96,13 @@ export const commonProps: PropsTableProps = {
       type: 'ProOptions',
       description: `Our pro options are configuration settings intended for our
       Pro subscribers. Anyone is free to use them, though!`,
+    },
+    {
+      name: 'colorMode',
+      type: '"system" | "light" | "dark"',
+      default: '"system"',
+      description: `React Flow has 2 built-in color themes: light and dark. 
+      By default it will try to adopt the users systems color theme.`,
     },
   ],
 };
@@ -109,19 +117,17 @@ export const viewportProps: PropsTableProps = {
       default viewport is provided but fitView is enabled, the default viewport
       will be ignored.`,
     },
-    // v12 props
-    // {
-    //   name: 'viewport',
-    //   type: 'Viewport',
-    //   default: '{ x: 0, y: 0, zoom: 1 }',
-    //   description: `When you pass a viewport prop, it's controlled and you also need to pass onViewportChange to handle internal changes.`,
-    // },
-    // {
-    //   name: 'onViewportChange',
-    //   type: 'OnViewportChange',
-    //   default: '-',
-    //   description: `Used when working with a controlled viewport for updating the user viewport state.`,
-    // },
+    {
+      name: 'viewport',
+      type: 'Viewport',
+      default: '{ x: 0, y: 0, zoom: 1 }',
+      description: `When you pass a viewport prop, it's controlled and you also need to pass onViewportChange to handle internal changes.`,
+    },
+    {
+      name: 'onViewportChange',
+      type: '(viewport: Viewport) => void',
+      description: `Used when working with a controlled viewport for updating the user viewport state.`,
+    },
     {
       name: 'fitView',
       type: 'boolean',
@@ -209,7 +215,7 @@ export const edgeProps: PropsTableProps = {
       if they exist.`,
     },
     {
-      name: 'edgeUpdaterRadius',
+      name: 'reconnectRadius',
       type: 'number',
       default: '10',
       description: `deprecated: Please use reconnectRadius`,
@@ -219,16 +225,16 @@ export const edgeProps: PropsTableProps = {
       type: 'number',
       default: '10',
       description: `The radius around an edge connection that can trigger an edge
-      update.`,
+      reconnection.`,
     },
     {
-      name: 'edgesUpdatable',
+      name: 'edgesReconnectable',
       type: 'boolean',
       default: 'true',
       description: `Whether or not edges can be updated once they are created.
-      When both this prop is true and an onEdgeUpdate handler is provided, the
+      When both this prop is true and an onReconnect handler is provided, the
       user can drag an existing edge to a new source or target. Individual edges
-      can override this value with their updatable property.`,
+      can override this value with their reconnectable property.`,
     },
   ],
 };
@@ -248,6 +254,17 @@ export const generalEventHandlerProps: PropsTableProps = {
       error. Instead of exploding your application, we log a message to the console
       and then call this event handler. You might use it for additional logging
       or to show a message to the user.`,
+    },
+    {
+      name: 'onDelete',
+      type: '({nodes: Node[], edges: Edge[]}) => void',
+      description: `This handler gets called when a Node or Edge is deleted.`,
+    },
+    {
+      name: 'onBeforeDelete',
+      type: '({nodes: Node[], edges: Edge[]}) => Promise<boolean | {nodes: Node[], edges: Edge[]}>',
+      description: `This handler gets before Nodes or Edges are about to be deleted. 
+      Deletion can be aborted by returning false or the nodes and edges to be deleted can be modified.`,
     },
   ],
 };
@@ -293,7 +310,7 @@ export const nodeEventHandlerProps: PropsTableProps = {
     { name: 'onNodesDelete', type: '(nodes: Node[]) => void' },
     {
       name: 'onNodesChange',
-      type: '(changes: NodeChange[]) => void',
+      type: 'OnNodesChange',
       description: `Use this event handler to add interactivity to a controlled
       flow. It is called on node drag, select, and move.`,
     },
@@ -327,18 +344,6 @@ export const edgeEventHandlerProps: PropsTableProps = {
       type: '(event: React.MouseEvent, edge: Edge) => void',
     },
     {
-      name: 'onEdgeUpdate',
-      description: `deprectated: Please use onReconnect`,
-    },
-    {
-      name: 'onEdgeUpdateStart',
-      description: `deprectated: Please use onReconnectStart`,
-    },
-    {
-      name: 'onEdgeUpdateEnd',
-      description: `deprectated: Please use onReconnectEnd`,
-    },
-    {
       name: 'onReconnect',
       type: '(oldEdge: Edge, newConnection: Connection) => void',
       description: `This handler is called when the source or target of an reconnectable
@@ -361,7 +366,7 @@ export const edgeEventHandlerProps: PropsTableProps = {
     { name: 'onEdgesDelete', type: '(edges: Edge[]) => void' },
     {
       name: 'onEdgesChange',
-      type: '(changes: EdgeChange[]) => void',
+      type: 'OnEdgesChange',
       description: `Use this event handler to add interactivity to a controlled
       flow. It is called on edge select and remove.`,
     },

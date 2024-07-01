@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
-import { Position } from '@xyflow/system';
+import { Position } from '@xyflow/react';
 import { Text } from '@xyflow/xy-ui';
 import { Hero, HeadlineNode, Handle } from '../';
 

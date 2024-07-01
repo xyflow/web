@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactFlow, { ReactFlowProvider, Background } from 'reactflow';
+import { ReactFlow, ReactFlowProvider, Background } from '@xyflow/react';
 import { shallow } from 'zustand/shallow';
 import { useStore } from './store';
 import Osc from './nodes/Osc';

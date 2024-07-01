@@ -1,11 +1,12 @@
 import { useState, useCallback } from 'react';
-import ReactFlow, {
+import {
+  ReactFlow,
   Controls,
   Background,
   applyNodeChanges,
   applyEdgeChanges,
-} from 'reactflow';
-import 'reactflow/dist/style.css';
+} from '@xyflow/react';
+import '@xyflow/react/dist/style.css';
 
 const initialNodes = [
   {

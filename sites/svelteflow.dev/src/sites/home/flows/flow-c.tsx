@@ -1,11 +1,12 @@
-import ReactFlow, {
+import {
+  ReactFlow,
   Background,
   BackgroundVariant,
   Controls,
   MiniMap,
   Node,
   Position,
-} from 'reactflow';
+} from '@xyflow/react';
 
 const defaultNodeOptions = {
   targetPosition: Position.Left,

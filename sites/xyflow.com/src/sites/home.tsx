@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { Position } from '@xyflow/system';
+import { Position } from '@xyflow/react';
 import {
   Handle,
   HeadlineNode,

@@ -1,28 +1,27 @@
 import * as Cola from 'webcola';
-import React, { useEffect, useLayoutEffect, useMemo, useState } from 'react';
-import ReactFlow, {
+import React, { useMemo } from 'react';
+import {
+  ReactFlow,
   ReactFlowProvider,
   Panel,
   useNodesState,
   useEdgesState,
   useReactFlow,
-  useStore,
-} from 'reactflow';
+  useNodesInitialized,
+} from '@xyflow/react';
 
 import { initialNodes, initialEdges } from './nodes-edges.js';
 
-import 'reactflow/dist/style.css';
+import '@xyflow/react/dist/style.css';
 
 const useLayoutedElements = () => {
   const { getNodes, setNodes, getEdges, fitView } = useReactFlow();
-  const initialised = useStore((store) =>
-    [...store.nodeInternals.values()].every((node) => node.width && node.height)
-  );
+  const initialized = useNodesInitialized();
 
   return useMemo(() => {
-    // If React Flow hasn't initialised our nodes with a width and height yet, or
+    // If React Flow hasn't initialized our nodes with a width and height yet, or
     // if there are no nodes in the flow, then we can't run the simulation!
-    if (!initialised || getNodes().length === 0) return [false, {}];
+    if (!initialized || getNodes().length === 0) return [false, {}];
 
     let running = false;
     let idMap = new Map();
@@ -49,7 +48,9 @@ const useLayoutedElements = () => {
 
     const tick = () => {
       getNodes().forEach((node, i) => {
-        const dragging = Boolean(document.querySelector(`[data-id="${node.id}"].dragging`));
+        const dragging = Boolean(
+          document.querySelector(`[data-id="${node.id}"].dragging`),
+        );
 
         if (dragging && !nodes[i].fixed) {
           Cola.Layout.dragStart(nodes[i]);
@@ -66,7 +67,9 @@ const useLayoutedElements = () => {
       });
 
       simulation.tick();
-      setNodes(nodes.map((node) => ({ ...node, position: { x: node.x, y: node.y } })));
+      setNodes(
+        nodes.map((node) => ({ ...node, position: { x: node.x, y: node.y } })),
+      );
 
       window.requestAnimationFrame(() => {
         // Give React and React Flow a chance to update and render the new node
@@ -107,7 +110,9 @@ const LayoutFlow = () => {
     >
       <Panel>
         {initialised && (
-          <button onClick={toggle}>{isRunning() ? 'Stop' : 'Start'} force simulation</button>
+          <button onClick={toggle}>
+            {isRunning() ? 'Stop' : 'Start'} force simulation
+          </button>
         )}
       </Panel>
     </ReactFlow>

@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
-import ReactFlow, { applyEdgeChanges, applyNodeChanges } from 'reactflow';
-import 'reactflow/dist/style.css';
+import { ReactFlow, applyEdgeChanges, applyNodeChanges } from '@xyflow/react';
+import '@xyflow/react/dist/style.css';
 
 import initialNodes from './nodes.js';
 import initialEdges from './edges.js';
@@ -11,11 +11,11 @@ function Flow() {
 
   const onNodesChange = useCallback(
     (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
-    [setNodes]
+    [setNodes],
   );
   const onEdgesChange = useCallback(
     (changes) => setEdges((eds) => applyEdgeChanges(changes, eds)),
-    [setEdges]
+    [setEdges],
   );
 
   return (

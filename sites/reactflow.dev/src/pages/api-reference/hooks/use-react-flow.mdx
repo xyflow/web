@@ -6,7 +6,11 @@ description:
 ---
 
 import { PropsTable } from '@/components/props-table';
-import { signature } from '@/page-data/reference/hooks/useReactFlow.ts';
+import {
+  nodesAndEdgesFields,
+  intersectionFields,
+  viewportFields,
+} from '@/page-data/reference/types/ReactFlowInstance.fields.ts';
 
 # useReactFlow
 
@@ -18,7 +22,7 @@ state of the flow.
 
 ```jsx
 import { useCallback, useState } from 'react';
-import { useReactFlow } from 'reactflow';
+import { useReactFlow } from '@xyflow/react';
 
 export function NodeCounter() {
   const reactFlow = useReactFlow();
@@ -40,7 +44,26 @@ export function NodeCounter() {
 
 ## Signature
 
-<PropsTable {...signature} />
+### Nodes and edges
+
+<PropsTable {...nodesAndEdgesFields} />
+
+### Intersections
+
+<PropsTable {...intersectionFields} />
+
+### Viewport fields
+
+<PropsTable {...viewportFields} />
+
+## Typescript
+
+This hook accepts a generic type argument of custom node & edge types. See this
+[section in our Typescript guide](/learn/advanced-use/typescript#nodetype-edgetype-unions) for more information.
+
+```tsx
+const reactFlow = useReactFlow<CustomNodeType, CustomEdgeType>();
+```
 
 ## Notes
 

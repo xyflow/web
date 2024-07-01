@@ -1,12 +1,13 @@
-import React, { useCallback, useState } from 'react';
-import ReactFlow, {
+import { useCallback } from 'react';
+import {
+  ReactFlow,
   ReactFlowProvider,
   Panel,
   NodeToolbar,
   Position,
   useNodesState,
-} from 'reactflow';
-import 'reactflow/dist/style.css';
+} from '@xyflow/react';
+import '@xyflow/react/dist/style.css';
 
 const initialNodes = [
   {

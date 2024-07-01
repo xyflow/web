@@ -1,12 +1,13 @@
-import ReactFlow, {
+import {
+  ReactFlow,
   MiniMap,
   Background,
   BackgroundVariant,
   Controls,
   Position,
   Panel,
-} from 'reactflow';
-import 'reactflow/dist/style.css';
+} from '@xyflow/react';
+import '@xyflow/react/dist/style.css';
 
 import CustomNode from './CustomNode';
 import TooltipNode from './TooltipNode';
@@ -62,7 +63,11 @@ const initialNodes = [
   {
     id: '6',
     type: 'custom',
-    data: { label: 'toolbar always open', toolbarPosition: Position.Top, toolbarVisible: true },
+    data: {
+      label: 'toolbar always open',
+      toolbarPosition: Position.Top,
+      toolbarVisible: true,
+    },
     position: { x: 0, y: -100 },
     style: defaultNodeStyle,
   },

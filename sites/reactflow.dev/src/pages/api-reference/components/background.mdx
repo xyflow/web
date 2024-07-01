@@ -20,7 +20,7 @@ backgrounds common in node-based UIs. It comes with three variants: `lines`,
 
 ```jsx
 import { useState } from 'react';
-import ReactFlow, { Background, BackgroundVariant } from 'reactflow';
+import { ReactFlow, Background, BackgroundVariant } from '@xyflow/react';
 
 export default function Flow() {
   return (
@@ -44,9 +44,9 @@ to create something more interesting. The following example shows how to render 
 square grid accented every 10th line.
 
 ```tsx
-import ReactFlow, { Background, BackgroundVariant } from 'reactflow';
+import { ReactFlow,  Background, BackgroundVariant } from '@xyflow/react';
 
-import 'reactflow/dist/style.css';
+import '@xyflow/react/dist/style.css';
 
 export default function Flow() {
   return (

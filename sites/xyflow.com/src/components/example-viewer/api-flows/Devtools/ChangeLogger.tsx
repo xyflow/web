@@ -1,5 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
-import { NodeChange, OnNodesChange, useStore, useStoreApi } from 'reactflow';
+import {
+  NodeChange,
+  OnNodesChange,
+  useStore,
+  useStoreApi,
+} from '@xyflow/react';
 
 type ChangeLoggerProps = {
   color?: string;

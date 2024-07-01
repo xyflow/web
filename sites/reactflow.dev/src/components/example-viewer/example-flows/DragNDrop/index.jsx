@@ -1,13 +1,14 @@
 import React, { useRef, useCallback } from 'react';
-import ReactFlow, {
+import {
+  ReactFlow,
   ReactFlowProvider,
   addEdge,
   useNodesState,
   useEdgesState,
   Controls,
   useReactFlow,
-} from 'reactflow';
-import 'reactflow/dist/style.css';
+} from '@xyflow/react';
+import '@xyflow/react/dist/style.css';
 
 import Sidebar from './Sidebar';
 

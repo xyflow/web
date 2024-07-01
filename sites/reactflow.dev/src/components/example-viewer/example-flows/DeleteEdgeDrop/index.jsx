@@ -1,12 +1,13 @@
 import React, { useCallback, useRef } from 'react';
-import ReactFlow, {
+import {
+  ReactFlow,
   useNodesState,
   useEdgesState,
   Controls,
   reconnectEdge,
   addEdge,
-} from 'reactflow';
-import 'reactflow/dist/style.css';
+} from '@xyflow/react';
+import '@xyflow/react/dist/style.css';
 
 const initialNodes = [
   {
@@ -28,33 +29,33 @@ const initialNodes = [
 ];
 
 const initialEdges = [
-  { id: 'e1-2', source: '1', target: '2', label: 'updatable edge' },
+  { id: 'e1-2', source: '1', target: '2', label: 'reconnectable edge' },
 ];
 
 const DeleteEdgeDrop = () => {
+  const edgeReconnectSuccessful = useRef(true);
   const [nodes, , onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
-  const reconnectDone = useRef(true);
   const onConnect = useCallback(
     (params) => setEdges((els) => addEdge(params, els)),
     [],
   );
 
   const onReconnectStart = useCallback(() => {
-    reconnectDone.current = false;
+    edgeReconnectSuccessful.current = false;
   }, []);
 
   const onReconnect = useCallback((oldEdge, newConnection) => {
-    reconnectDone.current = true;
+    edgeReconnectSuccessful.current = true;
     setEdges((els) => reconnectEdge(oldEdge, newConnection, els));
   }, []);
 
   const onReconnectEnd = useCallback((_, edge) => {
-    if (!reconnectDone.current) {
+    if (!edgeReconnectSuccessful.current) {
       setEdges((eds) => eds.filter((e) => e.id !== edge.id));
     }
 
-    reconnectDone.current = true;
+    edgeReconnectSuccessful.current = true;
   }, []);
 
   return (

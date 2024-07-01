@@ -101,27 +101,27 @@ yarn create vite my-react-flow-app -- --template react
   </Tab>
 </Tabs>
 
-React Flow is published on npm as [`reactflow`](https://npmjs.com/package/reactflow), so go ahead and add it next.
+React Flow is published on npm as [`@xyflow/react`](https://npmjs.com/package/@xyflow/react), so go ahead and add it next.
 
 <Tabs items={['npm', 'pnpm', 'yarn', 'bun']}>
   <Tab >
 
 ```bash copy
-npm install reactflow
+npm install @xyflow/react
 ```
 
   </Tab>
     <Tab >
 
 ```bash copy
-pnpm add reactflow
+pnpm add @xyflow/react
 ```
 
   </Tab>
   <Tab >
 
 ```bash copy
-yarn add reactflow
+yarn add @xyflow/react
 ```
 
   </Tab>
@@ -175,9 +175,9 @@ rid of everything inside `App.jsx` and add the following:
 
 ```jsx
 import React from 'react';
-import ReactFlow from 'reactflow';
+import { ReactFlow } from '@xyflow/react';
 
-import 'reactflow/dist/style.css';
+import '@xyflow/react/dist/style.css';
 
 const initialNodes = [
   { id: '1', position: { x: 0, y: 0 }, data: { label: '1' } },
@@ -214,9 +214,14 @@ Fortunately for you, we provide some hooks to make this easy!
 
 ```jsx
 import React, { useCallback } from 'react';
-import ReactFlow, { useNodesState, useEdgesState, addEdge } from 'reactflow';
+import {
+  ReactFlow,
+  useNodesState,
+  useEdgesState,
+  addEdge,
+} from '@xyflow/react';
 
-import 'reactflow/dist/style.css';
+import '@xyflow/react/dist/style.css';
 
 const initialNodes = [
   { id: '1', position: { x: 0, y: 0 }, data: { label: '1' } },
@@ -255,16 +260,17 @@ Finally, React Flow ships with some plugins out of the box for things like a
 
 ```jsx
 import React, { useCallback } from 'react';
-import ReactFlow, {
+import {
+  ReactFlow,
   MiniMap,
   Controls,
   Background,
   useNodesState,
   useEdgesState,
   addEdge,
-} from 'reactflow';
+} from '@xyflow/react';
 
-import 'reactflow/dist/style.css';
+import '@xyflow/react/dist/style.css';
 
 const initialNodes = [
   { id: '1', position: { x: 0, y: 0 }, data: { label: '1' } },

@@ -1,4 +1,4 @@
-import ReactFlow, { Background, Controls } from 'reactflow';
+import { ReactFlow, Background, Controls } from '@xyflow/react';
 
 const nodes = [
   {

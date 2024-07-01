@@ -1,17 +1,18 @@
 import React, { useCallback } from 'react';
-import ReactFlow, {
+import {
+  ReactFlow,
   useNodesState,
   useEdgesState,
   addEdge,
   Controls,
   Background,
-} from 'reactflow';
+} from '@xyflow/react';
 
 import DownloadButton from './DownloadButton';
 import CustomNode from './CustomNode';
 import { initialNodes, initialEdges } from './nodes-edges';
 
-import 'reactflow/dist/style.css';
+import '@xyflow/react/dist/style.css';
 
 // @todo how to handle this?
 // import './index.css';
@@ -35,7 +36,7 @@ const DownloadImageFlow = () => {
 
   const onConnect = useCallback(
     (params) => setEdges((eds) => addEdge(params, eds)),
-    []
+    [],
   );
 
   return (

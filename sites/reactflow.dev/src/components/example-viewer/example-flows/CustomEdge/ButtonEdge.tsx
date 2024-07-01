@@ -5,7 +5,7 @@ import {
   EdgeProps,
   getBezierPath,
   useReactFlow,
-} from 'reactflow';
+} from '@xyflow/react';
 
 import './buttonedge.css';
 

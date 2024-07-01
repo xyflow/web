@@ -1,6 +1,6 @@
 import React from 'react';
-import ReactFlow, { ReactFlowProvider } from 'reactflow';
-import 'reactflow/dist/style.css';
+import { ReactFlow, ReactFlowProvider } from '@xyflow/react';
+import '@xyflow/react/dist/style.css';
 
 const initialNodes = [
   {
@@ -36,7 +36,14 @@ const initialEdges = [
 
 function Flow() {
   return (
-    <div style={{ height: 250, background: '#FAF5FF', border: '1px solid #333', marginBottom: 20 }}>
+    <div
+      style={{
+        height: 250,
+        background: '#FAF5FF',
+        border: '1px solid #333',
+        marginBottom: 20,
+      }}
+    >
       <ReactFlowProvider>
         <ReactFlow
           defaultNodes={initialNodes}

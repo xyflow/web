@@ -1,6 +1,6 @@
 <script>
   import { writable } from 'svelte/store';
-  import { SvelteFlow, Background, Controls, BackgroundVariant } from '@xyflow/svelte';
+  import { SvelteFlow, Background, Controls } from '@xyflow/svelte';
 
   import '@xyflow/svelte/dist/style.css';
 

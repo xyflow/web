@@ -234,12 +234,12 @@ skipped over the last section, we ran `npm create vite@latest -- --template reac
 to get started. You can use whatever bundler and/or dev server you like, though.
 Nothing here is vite specific.
 
-We only need three additional dependencies for this project: `reactflow` for our
+We only need three additional dependencies for this project: `@xyflow/react` for our
 UI (obviously!), `zustand` as our simple state management library (that's what we use
 under the hood at React Flow) and `nanoid` as a lightweight id generator.
 
 ```bash
-npm install reactflow zustand nanoid
+npm install @xyflow/react zustand nanoid
 ```
 
 We're going to remove everything from our Web Audio crash course and start from
@@ -249,10 +249,10 @@ scratch. Start by modifying `main.jsx` to match the following:
 import App from './App';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { ReactFlowProvider } from 'reactflow';
+import { ReactFlowProvider } from '@xyflow/react';
 
 // 👇 Don't forget to import the styles!
-import 'reactflow/dist/style.css';
+import '@xyflow/react/dist/style.css';
 import './index.css';
 
 const root = document.querySelector('#root');
@@ -283,7 +283,7 @@ Next, hop into `App.jsx` and create an empty flow:
 
 ```jsx filename="./src/App.jsx"
 import React from 'react';
-import ReactFlow, { Background } from 'reactflow';
+import { ReactFlow, Background } from '@xyflow/react';
 
 export default function App() {
   return (
@@ -323,7 +323,7 @@ To get a basic interactive React Flow graph going we need three actions:
 Go ahead and create a new file, `store.js`, and add the following:
 
 ```js filename="./src/store.js"
-import { applyNodeChanges, applyEdgeChanges } from 'reactflow';
+import { applyNodeChanges, applyEdgeChanges } from '@xyflow/react';
 import { nanoid } from 'nanoid';
 import { create } from 'zustand';
 
@@ -374,7 +374,7 @@ actions and get something working.
 
 ```jsx filename="./src/App.jsx" {3,5,7-13,16,20-24}
 import React from 'react';
-import ReactFlow, { Background } from 'reactflow';
+import { ReactFlow, Background } from '@xyflow/react';
 import { shallow } from 'zustand/shallow';
 
 import { useStore } from './store';
@@ -453,7 +453,7 @@ handle to connect the output of the oscillator to other nodes.
 
 ```jsx filename="./src/nodes/Osc.jsx"
 import React from 'react';
-import { Handle } from 'reactflow';
+import { Handle } from '@xyflow/react';
 
 import { useStore } from '../store';
 
@@ -532,7 +532,7 @@ whenever an input changes.
 
 ```jsx filename="./src/nodes/Osc.jsx" {3,7-10,13,28,35}
 import React from 'react';
-import { Handle } from 'reactflow';
+import { Handle } from '@xyflow/react';
 import { shallow } from 'zustand/shallow';
 
 import { useStore } from '../store';
@@ -590,7 +590,7 @@ node's `type` and the value will be the React component to render.
 
 ```jsx filename="./src/App.jsx" {5,16-18,26}
 import React from 'react';
-import ReactFlow from 'reactflow';
+import { ReactFlow } from '@xyflow/react';
 import { shallow } from 'zustand/shallow';
 
 import { useStore } from './store';
@@ -701,7 +701,7 @@ The custom node itself is then pretty simple:
 
 ```jsx filename="./src/nodes/Out.jsx"
 import React from 'react';
-import { Handle } from 'reactflow';
+import { Handle } from '@xyflow/react';
 import { shallow } from 'zustand/shallow';
 import { useStore } from '../store';
 
@@ -1109,7 +1109,7 @@ plugin component.
 
 ```jsx filename="./src/App.jsx"
 ...
-import ReactFlow, { Panel } from 'reactflow';
+import { ReactFlow,  Panel } from '@xyflow/react';
 ...
 
 const selector = (store) => ({

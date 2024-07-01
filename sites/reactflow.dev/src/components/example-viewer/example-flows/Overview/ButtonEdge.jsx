@@ -4,7 +4,7 @@ import {
   EdgeLabelRenderer,
   getBezierPath,
   useReactFlow,
-} from 'reactflow';
+} from '@xyflow/react';
 
 export default function CustomEdge({
   id,

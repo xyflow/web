@@ -1,12 +1,12 @@
 import React, { memo } from 'react';
-import { Handle, useStore, Position, useReactFlow } from 'reactflow';
+import { Handle, useStore, Position, useReactFlow } from '@xyflow/react';
 
 const dimensionAttrs = ['width', 'height'];
 
 export default memo(({ id }) => {
   const { setNodes } = useReactFlow();
   const dimensions = useStore((s) => {
-    const node = s.nodeInternals.get('2-3');
+    const node = s.nodeLookup.get('2-3');
 
     if (
       !node ||

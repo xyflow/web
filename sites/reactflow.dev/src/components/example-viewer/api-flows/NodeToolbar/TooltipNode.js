@@ -1,11 +1,14 @@
 import { memo, useState } from 'react';
-import { Handle, Position, NodeToolbar } from 'reactflow';
+import { Handle, Position, NodeToolbar } from '@xyflow/react';
 
 const TooltipNode = ({ data }) => {
   const [isVisible, setVisible] = useState(false);
 
   return (
-    <div onMouseEnter={() => setVisible(true)} onMouseLeave={() => setVisible(false)}>
+    <div
+      onMouseEnter={() => setVisible(true)}
+      onMouseLeave={() => setVisible(false)}
+    >
       <NodeToolbar isVisible={isVisible} position={data.toolbarPosition}>
         <div>This is a tooltip</div>
       </NodeToolbar>

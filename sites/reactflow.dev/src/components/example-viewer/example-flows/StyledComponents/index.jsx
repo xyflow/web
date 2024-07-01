@@ -1,19 +1,20 @@
 import React, { useCallback, useState } from 'react';
-import ReactFlow, {
+import {
+  ReactFlow,
   useNodesState,
   useEdgesState,
   addEdge,
   MiniMap,
   Controls,
   Panel,
-} from 'reactflow';
+} from '@xyflow/react';
 import styled, { ThemeProvider } from 'styled-components';
 
 import { nodes as initialNodes, edges as initialEdges } from './nodes-edges';
 import { darkTheme, lightTheme } from './theme';
 import CustomNode from './CustomNode';
 
-import 'reactflow/dist/style.css';
+import '@xyflow/react/dist/style.css';
 
 const nodeTypes = {
   custom: CustomNode,

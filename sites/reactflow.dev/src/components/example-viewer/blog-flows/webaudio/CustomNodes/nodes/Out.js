@@ -1,5 +1,5 @@
 import React from 'react';
-import { Handle } from 'reactflow';
+import { Handle } from '@xyflow/react';
 import { shallow } from 'zustand/shallow';
 import { useStore } from '../store';
 import { tw } from 'twind';

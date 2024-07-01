@@ -1,13 +1,14 @@
 import { useCallback } from 'react';
-import ReactFlow, {
+import {
+  ReactFlow,
   addEdge,
   Node,
   Connection,
   Edge,
   useNodesState,
   useEdgesState,
-} from 'reactflow';
-import 'reactflow/dist/style.css';
+} from '@xyflow/react';
+import '@xyflow/react/dist/style.css';
 
 import DevTools from './Devtools';
 import './style.css';

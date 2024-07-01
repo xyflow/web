@@ -56,7 +56,7 @@ import ReactFlow from 'react-flow-renderer';
 
 ```js
 // npm install reactflow
-import ReactFlow from 'reactflow';
+import { ReactFlow } from '@xyflow/react';
 ```
 
 ### 2. Importing CSS is mandatory
@@ -65,10 +65,10 @@ We are not injecting CSS anymore. **React Flow won't work if you are not loading
 
 ```js
 // default styling
-import 'reactflow/dist/style.css';
+import '@xyflow/react/dist/style.css';
 
 // or if you just want basic styles
-import 'reactflow/dist/base.css';
+import '@xyflow/react/dist/base.css';
 ```
 
 #### 2.1. Removal of the nocss entrypoint
@@ -92,7 +92,7 @@ export default Flow;
 #### New API
 
 ```jsx
-import ReactFlow from 'reactflow';
+import { ReactFlow } from '@xyflow/react';
 
 const defaultViewport: Viewport = { x: 10, y: 15, zoom: 5 };
 
@@ -122,7 +122,7 @@ const [centerX, centerY] = getBezierEdgeCenter(params);
 #### New API
 
 ```jsx
-import { getBezierPath } from 'reactflow';
+import { getBezierPath } from '@xyflow/react';
 
 const [path, labelX, labelY] = getBezierPath(edgeParams);
 ```
@@ -155,7 +155,7 @@ export default Flow;
 #### New API
 
 ```jsx
-import ReactFlow from 'reactflow';
+import { ReactFlow } from '@xyflow/react';
 
 const Flow = () => {
   const onConnectEnd = () => console.log('on connect stop');

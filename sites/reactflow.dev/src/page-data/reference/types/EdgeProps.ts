@@ -3,7 +3,7 @@ import { type PropsTableProps } from 'xy-shared';
 export const edgePropsFields: PropsTableProps = {
   props: [
     { name: 'id', type: 'string' },
-    { name: 'animated', type: 'boolean' },
+    { name: 'animated?', type: 'boolean' },
     { name: 'data', type: 'T' },
     { name: 'style', type: 'React.CSSProperties' },
     { name: 'selected', type: 'boolean' },

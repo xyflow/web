@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { getSmoothStepPath, type Position } from '@xyflow/system';
+import { getSmoothStepPath, type Position } from '@xyflow/react';
 
 export function useConnectionDrawer() {
   const ref = useRef<HTMLDivElement>(null);

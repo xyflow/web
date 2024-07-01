@@ -1,5 +1,5 @@
-import ReactFlow from 'reactflow';
-import 'reactflow/dist/style.css';
+import { ReactFlow } from '@xyflow/react';
+import '@xyflow/react/dist/style.css';
 
 const defaultNodes = [
   {
@@ -32,7 +32,13 @@ const defaultNodes = [
 const defaultEdges = [];
 
 function Flow() {
-  return <ReactFlow defaultNodes={defaultNodes} defaultEdges={defaultEdges} fitView />;
+  return (
+    <ReactFlow
+      defaultNodes={defaultNodes}
+      defaultEdges={defaultEdges}
+      fitView
+    />
+  );
 }
 
 export default Flow;

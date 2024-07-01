@@ -5,7 +5,7 @@ import {
   type ReactNode,
   HTMLAttributes,
 } from 'react';
-import { Panel } from 'reactflow';
+import { Panel } from '@xyflow/react';
 
 import NodeInspector from './NodeInspector';
 import ChangeLogger from './ChangeLogger';

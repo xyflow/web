@@ -81,7 +81,7 @@ For everything else, there is an individual script to run each app independently
 - `pnpm run dev:xyflow.com`
 - `pnpm run dev:style`
 
-### Generating showcases
+### Update showcases
 
 We have a database of projects that use our libraries stored in notion. Both the
 React Flow and Svelte Flow sites have a script that will generate the JSON used
@@ -97,6 +97,23 @@ pnpm write-showcases
 > [!IMPORTANT]  
 > You must have a `.env` file in the project with a key called `NOTION_API_SECRET`
 > for this script to work.
+
+### Generate a what's new page for a release
+
+There is a little helper script that pulls the latest release from Github and
+creates a new what's new page with the release notes as the new content.
+
+```sh
+pnpm whatsnew
+```
+
+You might want to adjust the author and check the actual content before you push
+the changes to Github.
+
+### Update React Flow and Svelte Flow dependencies
+
+There is a Github action that checks the latest React Flow and Svelte Flow versions
+daily and creates a PR if there is a new version.
 
 ---
 
