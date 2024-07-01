@@ -2,7 +2,7 @@
   "custom-edges": "Custom Edges",
   "edge-types": "Edge Types",
   "editable-edge": "Editable Edge",
-  "edge-reconnect": "Edge Reconnect",
+  "reconnect-edge": "Reconnect Edge",
   "custom-connectionline": "Connection Line",
   "multi-connection-line": "Multi Connection Line",
   "markers": "Edge Markers",

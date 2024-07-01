@@ -22,6 +22,11 @@ export const defaultEdgeFields: PropsTableProps = {
     {
       name: 'reconnectable?',
       type: 'boolean | "source" | "target"',
+      description: 'deprecated: Please use reconnectable',
+    },
+    {
+      name: 'reconnectable?',
+      type: 'boolean | "source" | "target"',
       description: `Determines whether the edge can be updated by dragging the
       source or target to a new node. This property will override the default
       set by the edgesReconnectable prop on the <ReactFlow /> component.`,

@@ -117,18 +117,11 @@ export const viewportProps: PropsTableProps = {
       default viewport is provided but fitView is enabled, the default viewport
       will be ignored.`,
     },
-    // v12 props
-    // {
-    //   name: 'viewport',
-    //   type: 'Viewport',
-    //   default: '{ x: 0, y: 0, zoom: 1 }',
-    //   description: `When you pass a viewport prop, it's controlled and you also need to pass onViewportChange to handle internal changes.`,
-    // },
     {
       name: 'viewport',
       type: 'Viewport',
-      description: `Controlled, user-provided viewport to be used instead of the internal one. 
-      When set, onViewportChange is required to handle internal changes.`,
+      default: '{ x: 0, y: 0, zoom: 1 }',
+      description: `When you pass a viewport prop, it's controlled and you also need to pass onViewportChange to handle internal changes.`,
     },
     {
       name: 'onViewportChange',
@@ -220,6 +213,12 @@ export const edgeProps: PropsTableProps = {
       description: `Any defaults set here will be applied to all new edges that
       are added to the flow. Properties on a new edge will override these defaults
       if they exist.`,
+    },
+    {
+      name: 'reconnectRadius',
+      type: 'number',
+      default: '10',
+      description: `deprecated: Please use reconnectRadius`,
     },
     {
       name: 'reconnectRadius',
