@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - 'feat/auto-lib-update'
+      - 'main'
 
 jobs:
   check-flow-libs:
