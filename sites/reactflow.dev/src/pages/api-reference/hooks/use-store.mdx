@@ -26,10 +26,10 @@ state management library, so you should check out their docs for more details.
 </Callout>
 
 ```jsx
-import ReactFlow, { useStore } from 'reactflow';
+import { ReactFlow, useStore } from '@xyflow/react';
 
 const nodesLengthSelector = (state) =>
-  Array.from(state.nodeInternals.values()).length || 0;
+  state.nodes.length || 0;
 
 const NodesLengthDisplay = () => {
   const nodesLength = useStore(nodesLengthSelector);
@@ -64,16 +64,16 @@ can choose the approach that works best for your use-case.
 
 <PropsTable {...signature} />
 
-### Examples
+## Examples
 
-## Triggering store actions
+### Triggering store actions
 
 You can manipulate the internal React Flow state by triggering internal actions
 through the `useStore` hook. These actions are already used internally throughout
 the library, but you can also use them to implement custom functionality.
 
 ```jsx
-import { useStore } from 'reactflow';
+import { useStore } from '@xyflow/react';
 
 const setMinZoomSelector = (state) => state.setMinZoom;
 
@@ -82,6 +82,17 @@ function MinZoomSetter() {
 
   return <button onClick={() => setMinZoom(6)}>set min zoom</button>;
 }
+```
+
+## Typescript
+
+This hook can be typed by typing the selector function. See this
+[section in our Typescript guide](/learn/advanced-use/typescript#nodetype-edgetype-unions) for more information.
+
+```tsx
+const nodes = useStore((s: ReactFlowState<CustomNodeType>) => ({
+  nodes: s.nodes,
+}));
 ```
 
 ## Notes

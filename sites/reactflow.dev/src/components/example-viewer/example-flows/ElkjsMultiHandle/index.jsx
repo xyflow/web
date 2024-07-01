@@ -1,13 +1,14 @@
-import ReactFlow, {
+import {
+  ReactFlow,
   Controls,
   Background,
   MiniMap,
   useNodesState,
   useEdgesState,
   ReactFlowProvider,
-} from 'reactflow';
+} from '@xyflow/react';
 
-import 'reactflow/dist/style.css';
+import '@xyflow/react/dist/style.css';
 import './index.css';
 
 import ElkNode from './ElkNode';

@@ -6,7 +6,6 @@ description:
   following props:'
 ---
 
-import { Callout } from 'nextra/components';
 import { PropsTable } from '@/components/props-table';
 import { nodePropsFields } from '@/page-data/reference/types/NodeProps.fields.ts';
 
@@ -27,8 +26,8 @@ export type NodeProps<T = any> = {
   selected?: boolean;
   isConnectable?: boolean;
   zIndex?: number;
-  xPos: number;
-  yPos: number;
+  positionAbsoluteX: number;
+  positionAbsoluteY: number;
   dragging: boolean;
   targetPosition?: Position;
   sourcePosition?: Position;
@@ -38,7 +37,7 @@ export type NodeProps<T = any> = {
 ## Usage
 
 ```tsx
-import { NodeProps } from 'reactflow';
+import { NodeProps } from '@xyflow/react';
 import { useState } from 'react';
 
 export type CounterData = {
@@ -64,7 +63,7 @@ Remember to register your custom node by adding it to the
 `<ReactFlow />` component.
 
 ```tsx
-import ReactFlow from 'reactflow';
+import { ReactFlow } from '@xyflow/react';
 import CounterNode from './CounterNode';
 
 const nodeTypes = {

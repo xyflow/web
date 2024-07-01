@@ -1,4 +1,4 @@
-import { Node } from 'reactflow';
+import { type Node } from '@xyflow/react';
 
 export type ElkNodeData = {
   label: string;

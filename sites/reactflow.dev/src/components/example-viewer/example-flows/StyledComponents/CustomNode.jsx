@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { Handle, Position } from 'reactflow';
+import { Handle, Position } from '@xyflow/react';
 import styled from 'styled-components';
 
 const Node = styled.div`
@@ -7,7 +7,9 @@ const Node = styled.div`
   border-radius: 5px;
   background: ${(props) => props.theme.nodeBg};
   color: ${(props) => props.theme.nodeColor};
-  border: 1px solid ${(props) => (props.selected ? props.theme.primary : props.theme.nodeBorder)};
+  border: 1px solid
+    ${(props) =>
+      props.selected ? props.theme.primary : props.theme.nodeBorder};
 
   .react-flow__handle {
     background: ${(props) => props.theme.primary};

@@ -1,5 +1,5 @@
-import ReactFlow, { Controls, ControlButton } from 'reactflow';
-import 'reactflow/dist/style.css';
+import { ReactFlow, Controls, ControlButton } from '@xyflow/react';
+import '@xyflow/react/dist/style.css';
 
 import defaultNodes from './nodes.js';
 import defaultEdges from './edges.js';
@@ -10,7 +10,10 @@ function CustomControls() {
       <ControlButton onClick={() => console.log('action')} title="action">
         <div>1</div>
       </ControlButton>
-      <ControlButton onClick={() => console.log('another action')} title="another action">
+      <ControlButton
+        onClick={() => console.log('another action')}
+        title="another action"
+      >
         <div>2</div>
       </ControlButton>
     </Controls>

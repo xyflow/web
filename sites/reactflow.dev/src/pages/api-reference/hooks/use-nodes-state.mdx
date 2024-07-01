@@ -18,7 +18,7 @@ state of nodes and edges outside the `ReactFlowInstance`. You can think of it
 like React's `useState` hook with an additional helper callback.
 
 ```jsx
-import ReactFlow, { useNodesState, useEdgesState } from 'reactflow';
+import { ReactFlow, useNodesState, useEdgesState } from '@xyflow/react';
 
 const initialNodes = [];
 const initialEdges = [];
@@ -41,6 +41,15 @@ export default function () {
 ## Signature
 
 <PropsTable {...signature} />
+
+## Typescript
+
+This hook accepts a generic type argument of custom node types. See this
+[section in our Typescript guide](/learn/advanced-use/typescript#nodetype-edgetype-unions) for more information.
+
+```tsx
+const nodes = useNodesState<CustomNodeType>();
+```
 
 ## Notes
 

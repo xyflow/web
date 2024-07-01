@@ -1,8 +1,8 @@
 import React from 'react';
-import ReactFlow, { Controls, Panel } from 'reactflow';
+import { ReactFlow, Controls, Panel } from '@xyflow/react';
 
 // we need to import the React Flow styles to make it work
-import 'reactflow/dist/style.css';
+import '@xyflow/react/dist/style.css';
 
 function Flow() {
   return (

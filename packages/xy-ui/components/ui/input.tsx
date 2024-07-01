@@ -31,7 +31,7 @@ function InputLabel({ className, ...rest }: InputLabelProps) {
     <label
       className={cn(
         'mb-1 block text-sm font-bold text-muted-foreground',
-        className
+        className,
       )}
       {...rest}
     />

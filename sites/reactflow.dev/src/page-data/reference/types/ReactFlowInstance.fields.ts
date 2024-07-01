@@ -24,7 +24,15 @@ export const nodesAndEdgesFields: PropsTableProps = {
     },
     {
       name: 'deleteElements',
-      type: '(payload: { nodes?: (Partial<Node> & { id: Node["id"] })[]; edges?: (Partial<Edge> & { id: Edge["id"] })[]; }) => void',
+      type: 'DeleteElements',
+    },
+    {
+      name: 'updateNode',
+      type: '(id: string, nodeUpdate: Partial<NodeType> | ((node: NodeType) => Partial<NodeType>), options?: { replace: boolean },) => void',
+    },
+    {
+      name: 'updateNodeData',
+      type: '(id: string, dataUpdate: object | ((node: Node) => object), options?: { replace: boolean }) => void;',
     },
   ],
 };

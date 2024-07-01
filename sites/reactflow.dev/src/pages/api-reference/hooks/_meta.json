@@ -1,9 +1,12 @@
 {
+  "use-connection": "useConnection()",
   "use-edges": "useEdges()",
   "use-edges-state": "useEdgesState()",
+  "use-handle-connections": "useHandleConnections()",
   "use-key-press": "useKeyPress()",
   "use-node-id": "useNodeId()",
   "use-nodes": "useNodes()",
+  "use-nodes-data": "useNodesData()",
   "use-nodes-initialized": "useNodesInitialized()",
   "use-nodes-state": "useNodesState()",
   "use-on-selection-change": "useOnSelectionChange()",

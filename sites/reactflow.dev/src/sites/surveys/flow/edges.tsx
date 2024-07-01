@@ -1,13 +1,13 @@
 import { ArrowLeftIcon } from '@heroicons/react/20/solid';
 import { ArrowRightIcon } from '@heroicons/react/24/solid';
 import { Button } from '@xyflow/xy-ui';
-import { useCallback, useMemo, useRef } from 'react';
+import { useCallback, useMemo } from 'react';
 import {
   BaseEdge,
   EdgeLabelRenderer,
   getStraightPath,
   useReactFlow,
-} from 'reactflow';
+} from '@xyflow/react';
 
 export const edgeTypes = {
   focus: FocusEdge,

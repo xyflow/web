@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
-import ReactFlow, {
+import {
+  ReactFlow,
   addEdge,
   useNodesState,
   useEdgesState,
@@ -7,9 +8,9 @@ import ReactFlow, {
   BackgroundVariant,
   ReactFlowProvider,
   useStoreApi,
-} from 'reactflow';
+} from '@xyflow/react';
 
-import 'reactflow/dist/style.css';
+import '@xyflow/react/dist/style.css';
 import './style.css';
 
 import { initialEdges, initialNodes } from './nodes-and-edges';
@@ -27,14 +28,15 @@ const Flow = () => {
   );
 
   const getClosestEdge = useCallback((node) => {
-    const { nodeInternals } = store.getState();
-    const storeNodes = Array.from(nodeInternals.values());
+    const { nodes: storeNodes } = store.getState();
 
     const closestNode = storeNodes.reduce(
       (res, n) => {
         if (n.id !== node.id) {
-          const dx = n.positionAbsolute.x - node.positionAbsolute.x;
-          const dy = n.positionAbsolute.y - node.positionAbsolute.y;
+          const dx =
+            n.measured.positionAbsolute.x - node.measured.positionAbsolute.x;
+          const dy =
+            n.measured.positionAbsolute.y - node.measured.positionAbsolute.y;
           const d = Math.sqrt(dx * dx + dy * dy);
 
           if (d < res.distance && d < MIN_DISTANCE) {
@@ -56,7 +58,8 @@ const Flow = () => {
     }
 
     const closeNodeIsSource =
-      closestNode.node.positionAbsolute.x < node.positionAbsolute.x;
+      closestNode.node.measured.positionAbsolute.x <
+      node.measured.positionAbsolute.x;
 
     return {
       id: closeNodeIsSource

@@ -1,5 +1,5 @@
-import ReactFlow, { Controls } from 'reactflow';
-import 'reactflow/dist/style.css';
+import { ReactFlow, Controls } from '@xyflow/react';
+import '@xyflow/react/dist/style.css';
 
 import defaultNodes from './nodes.js';
 import defaultEdges from './edges.js';

@@ -1,5 +1,10 @@
 import React, { FC } from 'react';
-import { EdgeProps, getBezierPath, EdgeLabelRenderer, BaseEdge } from 'reactflow';
+import {
+  EdgeProps,
+  getBezierPath,
+  EdgeLabelRenderer,
+  BaseEdge,
+} from '@xyflow/react';
 
 const CustomEdge: FC<EdgeProps> = ({
   id,
@@ -9,7 +14,7 @@ const CustomEdge: FC<EdgeProps> = ({
   targetY,
   sourcePosition,
   targetPosition,
-  data,
+  label,
 }) => {
   const [edgePath, labelX, labelY] = getBezierPath({
     sourceX,
@@ -36,7 +41,7 @@ const CustomEdge: FC<EdgeProps> = ({
           }}
           className="nodrag nopan"
         >
-          {data.label}
+          {label}
         </div>
       </EdgeLabelRenderer>
     </>

@@ -1,13 +1,14 @@
 import React, { useCallback } from 'react';
-import ReactFlow, {
+import {
+  ReactFlow,
   useNodesState,
   useEdgesState,
   Controls,
   reconnectEdge,
   addEdge,
-} from 'reactflow';
+} from '@xyflow/react';
 
-import 'reactflow/dist/style.css';
+import '@xyflow/react/dist/style.css';
 
 const initialNodes = [
   {
@@ -108,7 +109,7 @@ const initialEdges = [
   },
 ];
 
-const ReconnectEdge = () => {
+const EdgeReconnect = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   // gets called after end of edge gets dragged to another source or target
@@ -138,4 +139,5 @@ const ReconnectEdge = () => {
     </ReactFlow>
   );
 };
-export default ReconnectEdge;
+
+export default EdgeReconnect;

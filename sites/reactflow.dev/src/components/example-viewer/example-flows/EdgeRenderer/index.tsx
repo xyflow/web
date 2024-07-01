@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
-import ReactFlow, {
+import {
+  ReactFlow,
   Controls,
   Background,
   addEdge,
@@ -9,8 +10,8 @@ import ReactFlow, {
   Node,
   useEdgesState,
   useNodesState,
-} from 'reactflow';
-import 'reactflow/dist/style.css';
+} from '@xyflow/react';
+import '@xyflow/react/dist/style.css';
 
 import CustomEdge from './CustomEdge';
 import CustomEdgeStartEnd from './CustomEdgeStartEnd';
@@ -22,9 +23,9 @@ const initialNodes: Node[] = [
     data: { label: 'Node 1' },
     position: { x: 0, y: 0 },
   },
-  { id: '2', data: { label: 'Node 2' }, position: { x: 0, y: 400 } },
-  { id: '3', data: { label: 'Node 3' }, position: { x: 400, y: 0 } },
-  { id: '4', data: { label: 'Node 4' }, position: { x: 400, y: 400 } },
+  { id: '2', data: { label: 'Node 2' }, position: { x: 0, y: 300 } },
+  { id: '3', data: { label: 'Node 3' }, position: { x: 200, y: 0 } },
+  { id: '4', data: { label: 'Node 4' }, position: { x: 200, y: 300 } },
 ];
 
 const initialEdges: Edge[] = [
@@ -59,7 +60,7 @@ const EdgesFlow = () => {
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   const onConnect = useCallback(
     (params: Connection | Edge) => setEdges((eds) => addEdge(params, eds)),
-    [setEdges]
+    [setEdges],
   );
 
   return (
@@ -70,6 +71,7 @@ const EdgesFlow = () => {
       onEdgesChange={onEdgesChange}
       onConnect={onConnect}
       edgeTypes={edgeTypes}
+      fitView
     >
       <Controls />
       <Background />

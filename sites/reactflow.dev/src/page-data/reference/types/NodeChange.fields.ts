@@ -42,9 +42,10 @@ export const nodeAddChangeFields: PropsTableProps = {
   ],
 };
 
-export const nodeResetChangeFields: PropsTableProps = {
+export const nodeReplaceChangeFields: PropsTableProps = {
   props: [
-    { name: 'item', type: 'Node<T>' },
-    { name: 'type', type: '"reset"' },
+    { name: 'id', type: 'string' },
+    { name: 'item', type: 'Node<NodeType>' },
+    { name: 'type', type: '"replace"' },
   ],
 };

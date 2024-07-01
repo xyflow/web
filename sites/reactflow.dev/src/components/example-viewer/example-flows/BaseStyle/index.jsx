@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
-import ReactFlow, {
+import {
+  ReactFlow,
   Background,
   Controls,
   MiniMap,
@@ -7,9 +8,9 @@ import ReactFlow, {
   useEdgesState,
   addEdge,
   Position,
-} from 'reactflow';
+} from '@xyflow/react';
 
-import 'reactflow/dist/base.css';
+import '@xyflow/react/dist/base.css';
 
 const nodeDefaults = {
   sourcePosition: Position.Right,
@@ -23,9 +24,24 @@ const initialNodes = [
     data: { label: 'base style 1' },
     ...nodeDefaults,
   },
-  { id: '2', position: { x: 250, y: 0 }, data: { label: 'base style 2' }, ...nodeDefaults },
-  { id: '3', position: { x: 250, y: 150 }, data: { label: 'base style 3' }, ...nodeDefaults },
-  { id: '4', position: { x: 250, y: 300 }, data: { label: 'base style 4' }, ...nodeDefaults },
+  {
+    id: '2',
+    position: { x: 250, y: 0 },
+    data: { label: 'base style 2' },
+    ...nodeDefaults,
+  },
+  {
+    id: '3',
+    position: { x: 250, y: 150 },
+    data: { label: 'base style 3' },
+    ...nodeDefaults,
+  },
+  {
+    id: '4',
+    position: { x: 250, y: 300 },
+    data: { label: 'base style 4' },
+    ...nodeDefaults,
+  },
 ];
 
 const initialEdges = [
@@ -50,7 +66,10 @@ const Flow = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
-  const onConnect = useCallback((params) => setEdges((els) => addEdge(params, els)), []);
+  const onConnect = useCallback(
+    (params) => setEdges((els) => addEdge(params, els)),
+    [],
+  );
 
   return (
     <ReactFlow

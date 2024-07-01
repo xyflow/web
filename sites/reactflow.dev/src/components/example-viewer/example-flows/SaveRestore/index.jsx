@@ -1,21 +1,22 @@
 import React, { useState, useCallback } from 'react';
-import ReactFlow, {
+import {
+  ReactFlow,
   ReactFlowProvider,
   useNodesState,
   useEdgesState,
   addEdge,
   useReactFlow,
   Panel,
-} from 'reactflow';
-import 'reactflow/dist/style.css';
+} from '@xyflow/react';
+import '@xyflow/react/dist/style.css';
 
 const flowKey = 'example-flow';
 
 const getNodeId = () => `randomnode_${+new Date()}`;
 
 const initialNodes = [
-  { id: '1', data: { label: 'Node 1' }, position: { x: 100, y: 100 } },
-  { id: '2', data: { label: 'Node 2' }, position: { x: 100, y: 200 } },
+  { id: '1', data: { label: 'Node 1' }, position: { x: 0, y: -50 } },
+  { id: '2', data: { label: 'Node 2' }, position: { x: 0, y: 50 } },
 ];
 
 const initialEdges = [{ id: 'e1-2', source: '1', target: '2' }];
@@ -26,7 +27,10 @@ const SaveRestore = () => {
   const [rfInstance, setRfInstance] = useState(null);
   const { setViewport } = useReactFlow();
 
-  const onConnect = useCallback((params) => setEdges((eds) => addEdge(params, eds)), [setEdges]);
+  const onConnect = useCallback(
+    (params) => setEdges((eds) => addEdge(params, eds)),
+    [setEdges],
+  );
   const onSave = useCallback(() => {
     if (rfInstance) {
       const flow = rfInstance.toObject();
@@ -54,8 +58,8 @@ const SaveRestore = () => {
       id: getNodeId(),
       data: { label: 'Added node' },
       position: {
-        x: Math.random() * window.innerWidth - 100,
-        y: Math.random() * window.innerHeight,
+        x: (Math.random() - 0.5) * 400,
+        y: (Math.random() - 0.5) * 400,
       },
     };
     setNodes((nds) => nds.concat(newNode));
@@ -69,6 +73,8 @@ const SaveRestore = () => {
       onEdgesChange={onEdgesChange}
       onConnect={onConnect}
       onInit={setRfInstance}
+      fitView
+      fitViewOptions={{ padding: 2 }}
     >
       <Panel position="top-right">
         <button onClick={onSave}>save</button>

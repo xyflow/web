@@ -1,13 +1,14 @@
 import React, { useCallback } from 'react';
-import ReactFlow, {
+import {
+  ReactFlow,
   ReactFlowProvider,
   useNodesState,
   useEdgesState,
   useReactFlow,
-} from 'reactflow';
+} from '@xyflow/react';
 
 import { initialNodes, initialEdges } from './nodes-edges.js';
-import 'reactflow/dist/style.css';
+import '@xyflow/react/dist/style.css';
 
 const getLayoutedElements = (nodes, edges) => {
   return { nodes, edges };
