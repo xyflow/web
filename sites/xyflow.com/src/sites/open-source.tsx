@@ -138,7 +138,7 @@ export default function OpenSource() {
           with React Flow developers in 2023, and we shared the results publicly
           in an{' '}
           <Link
-            href="https://localhost:3002/developer-survey-2023"
+            href="https://reactflow.dev/developer-survey-2023"
             className="text-pink-500 text-lg "
           >
             interactive React Flow app
