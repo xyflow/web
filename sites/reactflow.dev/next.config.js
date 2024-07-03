@@ -1,4 +1,7 @@
 const redirects = require('./redirects.json');
+const REACT_FLOW_VERSION = require('./package.json').dependencies[
+  '@xyflow/react'
+]?.replace('^', '');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -17,6 +20,9 @@ const nextConfig = {
         hostname: '**.reactflow.dev',
       },
     ],
+  },
+  env: {
+    REACT_FLOW_VERSION,
   },
 };
 
