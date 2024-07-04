@@ -6,9 +6,8 @@ export const controlsProps: PropsTableProps = {
       name: 'showZoom?',
       type: 'boolean',
       default: 'true',
-      description: `Whether or not to show the zoom in and zoom out buttons. By
-      default these buttons will adjust the viewport zoom by a fixed amount each
-      press.`,
+      description: `Whether or not to show the zoom in and zoom out buttons.
+      These buttons will adjust the viewport zoom by a fixed amount each press.`,
     },
     {
       name: 'showFitView?',
@@ -18,18 +17,23 @@ export const controlsProps: PropsTableProps = {
       button will adjust the viewport so that all nodes are visible at once.`,
     },
     { name: 'showInteractive?', type: 'boolean', default: 'true' },
-    { name: 'fitViewOptions?', type: 'FitViewOptions' },
+    {
+      name: 'fitViewOptions?',
+      type: 'FitViewOptions',
+      description: `Customise the options for the fit view button. These are the
+      same options you would pass to the fitView function.`,
+    },
     {
       name: 'onZoomIn?',
       type: '() => void',
-      description: `Called when the zoom in button is clicked. When this is not
-      provided, a default zoom will be applied to the viewpor.t`,
+      description: `Called in addition the default zoom behaviour when the zoom
+      in button is clicked.`,
     },
     {
       name: 'onZoomOut?',
       type: '() => void',
-      description: `Called when the zoom out button is clicked. When this is not
-      provided, a default zoom will be applied to the viewport.`,
+      description: `Called in addition the default zoom behaviour when the zoom
+      out button is clicked.`,
     },
     {
       name: 'onFitView?',

@@ -33,7 +33,13 @@ export const defaultEdgeFields: PropsTableProps = {
     { name: 'markerStart', type: 'string | EdgeMarker' },
     { name: 'markerEnd', type: 'string | EdgeMarker' },
     { name: 'zIndex?', type: 'number' },
-    { name: 'interactionWidth', type: 'number' },
+    {
+      name: 'interactionWidth',
+      type: 'number',
+      description: `ReactFlow renders an invisible path around each edge to make
+      them easier to click or tap on. This property sets the width of that
+      invisible path.`,
+    },
     { name: 'ariaLabel', type: 'string' },
     { name: 'label?', type: 'string | React.ReactNode' },
     { name: 'labelStyle?', type: 'React.CSSProperties' },
