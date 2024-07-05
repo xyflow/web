@@ -1,5 +1,7 @@
 import Flow from './Flow';
 
+// add more slides and create different layouts by
+// linking slides in different ways.
 const slides = {
   '1': { right: '2' },
   '2': { left: '1', up: '3', right: '4' },

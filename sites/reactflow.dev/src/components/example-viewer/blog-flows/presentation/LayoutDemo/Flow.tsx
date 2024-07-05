@@ -35,6 +35,7 @@ export default function Flow({ slides }) {
       nodes.push(node);
       visited.add(id);
 
+      if (!data) continue;
       if (data.left && !visited.has(data.left)) {
         // a node on left we haven't seen means we need to subtract SLIDE_WIDTH
         // from the current position
