@@ -1,4 +1,4 @@
-import { ReactFlow, ReactFlowProvider } from 'reactflow';
+import ReactFlow, { ReactFlowProvider } from 'reactflow';
 import { Slide, SLIDE_WIDTH } from './Slide';
 
 import 'reactflow/dist/style.css';
