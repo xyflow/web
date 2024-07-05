@@ -5,109 +5,26 @@ import React, {
   useState,
 } from 'react';
 import ReactFlow, {
-  Node,
   useReactFlow,
   ReactFlowProvider,
   NodeMouseHandler,
 } from 'reactflow';
 
-import slides from './slides';
-import './index.css';
+import { Slide } from './Slide';
+import { slides, slidesToElements } from './slides';
 
 // we need to import the React Flow styles to make it work
 import 'reactflow/dist/style.css';
-import {
-  Slide,
-  SlideData,
-  SLIDE_WIDTH,
-  SLIDE_HEIGHT,
-  SLIDE_PADDING,
-} from './Slide';
-
-const slidesToElements = () => {
-  const start = Object.keys(slides)[0];
-  const stack = [{ id: start, position: { x: 0, y: 0 } }];
-  const visited = new Set();
-  const nodes = [];
-  const edges = [];
-
-  while (stack.length) {
-    const { id, position } = stack.pop();
-    const slide = slides[id];
-    const node = {
-      id,
-      type: 'slide',
-      position,
-      data: slide,
-      draggable: false,
-    } satisfies Node<SlideData>;
-
-    if (slide.left && !visited.has(slide.left)) {
-      const nextPosition = {
-        x: position.x - (SLIDE_WIDTH + SLIDE_PADDING),
-        y: position.y,
-      };
-
-      stack.push({ id: slide.left, position: nextPosition });
-      edges.push({
-        id: `${id}->${slide.left}`,
-        source: id,
-        target: slide.left,
-      });
-    }
-
-    if (slide.up && !visited.has(slide.up)) {
-      const nextPosition = {
-        x: position.x,
-        y: position.y - (SLIDE_HEIGHT + SLIDE_PADDING),
-      };
-
-      stack.push({ id: slide.up, position: nextPosition });
-      edges.push({ id: `${id}->${slide.up}`, source: id, target: slide.up });
-    }
-
-    if (slide.down && !visited.has(slide.down)) {
-      const nextPosition = {
-        x: position.x,
-        y: position.y + (SLIDE_HEIGHT + SLIDE_PADDING),
-      };
-
-      stack.push({ id: slide.down, position: nextPosition });
-      edges.push({
-        id: `${id}->${slide.down}`,
-        source: id,
-        target: slide.down,
-      });
-    }
-
-    if (slide.right && !visited.has(slide.right)) {
-      const nextPosition = {
-        x: position.x + (SLIDE_WIDTH + SLIDE_PADDING),
-        y: position.y,
-      };
-
-      stack.push({ id: slide.right, position: nextPosition });
-      edges.push({
-        id: `${id}->${slide.down}`,
-        source: id,
-        target: slide.down,
-      });
-    }
-
-    nodes.push(node);
-    visited.add(id);
-  }
-
-  return { start, nodes, edges };
-};
+import './index.css';
 
 const nodeTypes = {
   slide: Slide,
 };
 
 function Flow() {
+  const start = '01';
   const { fitView } = useReactFlow();
-  const { start, nodes, edges } = useMemo(() => slidesToElements(), []);
+  const { nodes, edges } = useMemo(() => slidesToElements(start, slides), []);
   const [currentSlide, setCurrentSlide] = useState(start);
 
   const handleKeyPress = useCallback<KeyboardEventHandler>(
@@ -169,13 +86,14 @@ function Flow() {
     <ReactFlow
       nodes={nodes}
       nodeTypes={nodeTypes}
+      nodesDraggable={false}
       edges={edges}
       fitView
       fitViewOptions={{ nodes: [{ id: start }] }}
       minZoom={0.1}
       onKeyDown={handleKeyPress}
       onNodeClick={handleNodeClick}
-    ></ReactFlow>
+    />
   );
 }
 
