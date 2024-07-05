@@ -104,8 +104,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 );
 ```
 
-If you are going to style your app differently, for example with
-[Styled Components](/examples/styling/styled-components) or
+For this tutorial we're going to skip over styling, but each example is styled
+by vanilla CSS and imported into `main.tsx` to be bundled by vite. If you are
+going to style your app differently, for example with [Styled Components](/examples/styling/styled-components) or
 [Tailwind CSS](/examples/styling/tailwind) you can skip the import to `index.css`.
 
 Let's also create a new file `Slide.tsx` that will be our custom node used to
@@ -142,7 +143,7 @@ The last thing to do is to register our new custom node and show something on th
 screen.
 
 ```tsx filename="App.tsx"
-import { ReactFlow } from 'reactflow';
+import ReactFlow from 'reactflow';
 import { Slide } from './Slide';
 
 const nodeTypes = {
@@ -211,10 +212,13 @@ export function Slide({ data }: NodeProps<SlideData>) {
 }
 ```
 
+In React Flow, nodes can have data stored on them that can be used during rendering.
+In this case we're storing the markdown content to display by adding a `source`
+property to the `SlideData` type and passing that to the `<Remark />` component.
 We can update our hardcoded nodes with some markdown content to see it in action:
 
 ```tsx filename="App.tsx" {2, 5-9}
-import { ReactFlow } from 'reactflow';
+import ReactFlow from 'reactflow';
 import { Slide, SLIDE_WIDTH } from './Slide';
 
 export default function App() {
@@ -238,6 +242,10 @@ export default function App() {
     isTypescript
   />
 </Bleed>
+
+You might have noticed that we also imported `SLIDE_WIDTH` to help us position
+the additional slides. In the follwing section we'll take a look at how to lay
+out those slides automatically...
 
 ## Laying out the nodes
 
@@ -264,41 +272,30 @@ export type SlideData = {
 ```
 
 By storing this information on the node data directly, we can write fully declarative
-slides without running about nodes and edges, we can easily compute the layout of
-the presentation, and we can add navigation buttons to each slide to move between
-them in a later step.
+slides without worrying about seting up the nodes and edges. Instead this lets us
+easily compute the layout of the presentation and we add things like navigation
+buttons to each slide to move between them in a later step.
 
 Next we will create a function, `slidesToElements`, that takes an object of slides
-and an id for the slide to start at, and returns an array of nodes and edges that
-we can pass to the `<ReactFlow />` component.
+and an id for the first slide in the presentation, and returns an array of nodes
+and edges that we can pass to the `<ReactFlow />` component.
 
 The algorithm will go something like this:
 
 - Push the initial slide's id and the position `{ x: 0, y: 0 }` onto a stack.
-
 - While that stack is not empty...
-
-  - Pop the current position and slide id off the stack**.**
-
+  - Pop the current position and slide id off the stack.
   - Look up the slide data by id.
-
   - Push a new node onto the nodes array with the current id, position, and slide
     data.
-
   - Add the slide's id to a set of visited slides.
-
   - For every direction (left, right, up, down)...
-
     - Make sure the slide has not already been visited.
-
     - Take the current position and update the x or y coordinate by adding or
       subtracting `SLIDE_WIDTH` or `SLIDE_HEIGHT` depending on the direction.
-
     - Push the new position and the new slide's id onto a stack.
-
     - Push a new edge onto the edges array connecting the current slide to the
       new slide.
-
     - Repeat for the remaining directions.
 
 If all goes to plan, we should be able to take a stack of slides shown below and
@@ -312,49 +309,63 @@ turn them into a neatly laid out grid!
 Let's see the code. In a file called `slides.ts` add the following:
 
 ```tsx filename="slides.ts"
+import { SlideData, SLIDE_WIDTH, SLIDE_HEIGHT } from './Slide'
+
 export const slidesToElements = (initial: string, slides: Record<string, SlideData>) => {
-  // the stack contains nodes we need to visit
-  const stack = [{ id: start, position: { x: 0, y: 0 }}]
-  // this set stops us from visiting the same node twice
   const visited = new Set()
-  // these are the nodes and edges we'll give to React Flow
   const nodes = []
   const edges = []
 
+  // push the initial slide's id and the position { x: 0, y: 0 } onto a stack.
+  const stack = [{ id: start, position: { x: 0, y: 0 }}]
+
+  // while that stack is not empty...
   while (stack.length) {
+    // pop the current position and slide id off the stack.
     const { id, position } = stack.pop()
+    // look up the slide data by id.
     const data = slides[id]
     // remember to add `type: 'slide'` to the node!
     const node = { id, type: 'slide', position, data }
 
+    // push a new node onto the nodes array with the current id, position, and
+    // slide data.
     nodes.push(node)
+    // add the slide's id to a set of visited slides.
     visited.add(id)
 
+    // for every direction (left, right, up, down)...
+    // make sure the slide has not already been visited.
     if (data.left && !visited.has(data.left)) {
-      // a node on left we haven't seen means we need to subtract SLIDE_WIDTH
-      // from the current position
+      // take the current position and update the x or y coordinate by adding or
+      // subtracting `SLIDE_WIDTH` or `SLIDE_HEIGHT` depending on the direction.
       const nextPosition = {
         x: position.x - SLIDE_WIDTH,
         y: position.y,
       }
 
+      // push the new position and the new slide's id onto a stack.
       stack.push({ id: data.left, position: nextPosition })
+
+      // push a new edge onto the edges array connecting the current slide to the
+      // new slide.
       edges.push({ id: `${id}->${data.left}`, source: id, target: data.left });
     }
 
-    // repeat for right, up, down...
+    // repeat for the remaining directions...
   }
 
   return { nodes, edges }
 }
 ```
 
-We've left out the code for the right, up, and down directions for brevity, but
-the logic is the same for each direction. 
+Comments have been added to show which parts of the code correspond to the algorithm
+we outlined above. We've left out the code for the right, up, and down directions
+for brevity, but the logic is the same for each direction.
 
-Below is a demo app of the layouting algorithm, you can edit the `slides` object
-to see how adding slides to different directions affects the layout. There are
-two limitations of this algorithm:
+Below is a demo app of the layouting algorithm: you can edit the `slides` object
+to see how adding slides to different directions affects the layout. Keep in mind
+there are two important limitations of this algorithm:
 
 1. It is possible to construct a layout that overlaps two slides in the same
    position.
@@ -362,7 +373,7 @@ two limitations of this algorithm:
 2. The algorithm will ignore nodes that cannot be reached from the initial slide.
 
 Addressing these shortcomings is totally possible, but a bit beyond the scope of
-this tutorial. If you give a shot, be sure to share your solution with us on the
+this tutorial. If you give a shot please share your solution with us on the
 [discord server](https://discord.com/invite/RVmnytFmGW)!
 
 <Bleed>
@@ -374,6 +385,51 @@ this tutorial. If you give a shot, be sure to share your solution with us on the
     isTypescript
   />
 </Bleed>
+
+With our layouting algorithm in place, we can swap out our hardcoded nodes array
+and create an object of slides that we can pass to `slidesToElements` instead.
+
+```tsx filename="slides.ts"
+export const slides = {
+  '01': {
+    source: `...`,
+    right: '02',
+  },
+  '02': {
+    source: `...`,
+    left: '01',
+    up: '03',
+    right: '04',
+  },
+  '03': {
+    source: `...`,
+    down: '02',
+  },
+  '04': {
+    source: `...`,
+    left: '02',
+  }
+} as Record<string, SlideData>
+```
+
+Then in `App.tsx` we can replace the old nodes array:
+
+```tsx filename="App.tsx" {1,4,7-8, }
+import { useMemo } from 'react'
+import ReactFlow from 'reactflow';
+import { Slide } from './Slide';
+import { slides, slidesToElements } from './slides'
+
+export default function App() {
+  const start = '01'
+  const { nodes, edges } = useMemo(() => slidesToElements(start, slides), [])
+
+  return <ReactFlow nodes={nodes} nodeTypes={nodeTypes} edges={edges} fitView />;
+}
+```
+
+The nodes and edges in our flow are static, so we can use `useMemo` to memoize
+the layouting computation.
 
 ## Navigating between slides
 
@@ -388,9 +444,9 @@ going to add three different ways to navigate around our presentation:
   between slides in any valid direction.
 
 - Keyboard navigation as an extension to navigation controls to move between
-  slides with the arrow keys. 
+  slides with the arrow keys.
 
-### Focus on click 
+### Focus on click
 
 The `<ReactFlow />` element can receive an [`onNodeClick`](/api-reference/react-flow#on-node-click)
 callback that fires when _any_ node is clicked. Along with the mouse event itself,
@@ -401,26 +457,52 @@ to pan the canvas thanks to the `fitView` method.
 Flow instance, and we can get access to it by using the [`useReactFlow`](/api-reference/react-flow-instance#use-react-flow)
 hook.
 
-```tsx {1,5-10,15}
-function Flow() {
+```tsx {1-2,7,10-15,20-21}
+import { useMemo, useCallback } from 'react';
+import ReactFlow, { NodeMouseHandler, useReactFlow, } from 'reactflow';
+...
+
+export default function App() {
+  const start = '01'
   const { fitView } = useReactFlow();
-  const { start, nodes, edges } = useMemo(() => slidesToElements(), []);
+  const { nodes, edges } = useMemo(() => slidesToElements(start, slides), []);
 
   const handleNodeClick = useCallback<NodeMouseHandler>(
     (_, node) => {
       fitView({ nodes: [node], duration: 150 });
     },
-    [currentSlide],
+    [fitView],
   );
 
   return (
     <ReactFlow
       ...
+      fitViewOptions={{ nodes: [{ id: start }] }}
       onNodeClick={handleNodeClick}
     />
   );
 }
 ```
+
+In the code above, we've added a `handleNodeClick` callback that pans and zooms
+the canvas to focus on the clicked node. This works because the `fitView` function
+accepts an array of nodes to focus on, and a duration to transition to the new
+viewport. All the options for `fitView` can be found documented under the
+[`FitViewOptions`](/api-reference/types/fit-view-options) type.
+
+We're also passing some options for the initial fit view of the flow itself. This
+will mean the start slide is always in view when the app is first loaded.
+
+<Bleed>
+  <BlogExampleViewer
+    style={{ aspectRatio: '16 / 9' }}
+    codePath="blog-flows/presentation/FocusOnClick"
+    additionalFiles={[ 'Slide.tsx', 'slides.ts', 'index.css']}
+    dependencies={{ 'react-remark': '2.1.0' }}
+    showEditor={false}
+    isTypescript
+  />
+</Bleed>
 
 ### Slide controls
 
@@ -502,6 +584,7 @@ In addition to `onNodeClick`, we can also listen to _keyboard events_ on the
 
 Up until now the slide currently focused is implied by the position of the canvas,
 but if we want to handle key presses on the entire canvas we need to _explicitly_
-track the current slide.
+track the current slide. In our main `<App />` component we'll add a piece of
+state to track the current slide id, and initialise it with the start slide.
 
 </TutorialLayout>
