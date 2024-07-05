@@ -1,0 +1,507 @@
+---
+title: 'Creating presentations with React Flow'
+intro: ''
+date: 2024/01/07
+authors: ['hayleigh']
+tags: ['react-flow', 'presentation', 'slide-show']
+image: /img/tutorials/mindmap/mindmap.png
+---
+
+import { Cards, Card, Callout, Tab, Tabs } from 'nextra/components';
+import { Bleed } from 'nextra-theme-docs';
+import { Image } from 'xy-shared';
+import { BlogExampleViewer } from '@/components/example-viewer/blog-embed';
+import { TutorialLayout } from '@/layouts/tutorial-with-frontmatter';
+
+<TutorialLayout>
+We recently published the results of our 2023 end of year survey. Alongside the
+full write up of the results, we also created an [interactive presentation](/developer-survey-2023)
+of the key findings using React Flow itself.
+
+A lot of our docs and examples focus on using React Flow in interactive flows
+that have dynamic nodes and edges. An interesting discovery from our survey was
+the number of folks using React Flow in more static ways, such as visualising
+static data! Since we went through the process of creating a presentation with
+React Flow ourselves, we thought it would be a great opportunity to share what
+we learned!
+
+We'll be building a modified version of the presentation we created with support
+for markdown slides and keyboard navigation. Here's a peek at the final result:
+
+<Bleed>
+  <BlogExampleViewer
+    style={{ aspectRatio: '16 / 9' }}
+    codePath="blog-flows/presentation/App"
+    additionalFiles={['Slide.tsx', 'slides.ts', 'index.css']}
+    dependencies={{ 'react-remark': '2.1.0' }}
+    showEditor={false}
+    isTypescript
+  />
+</Bleed>
+
+## Setting up the project
+
+We always recommend using [Vite](https://vitejs.dev) when starting new React Flow
+projects and this time we'll use TypeScript too. You can scaffold a new project
+with the following command:
+
+```bash
+npm create vite@latest -- --template react-ts
+```
+
+If you'd prefer to follow along with JavaScript feel free to use the `react`
+template instead. You can also follow along in your browser by using our codesandbox
+templates:
+
+<Cards num={2}>
+  <Card
+    title="new.reactflow.dev/js"
+    href="https://new.reactflow.dev/js"
+    icon={
+      <div className="rounded-full w-10 h-10 bg-yellow-200 text-gray-700 font-black flex items-center justify-center">
+        JS
+      </div>
+    }
+  />
+  <Card
+    title="new.reactflow.dev/ts"
+    href="https://new.reactflow.dev/ts"
+    icon={
+      <div className="rounded-full w-10 h-10 bg-blue-500 text-white font-black flex items-center justify-center">
+        TS
+      </div>
+    }
+  />
+</Cards>
+
+Besides React Flow we only need to pull in one dependency, [`react-remark`](https://www.npmjs.com/package/react-remark),
+to help us render markdown in our slides.
+
+```bash
+npm install reactflow react-remark
+```
+
+We'll modify the generated `main.tsx` to include React Flow's styles, as well as
+wrap the app in a `<ReactFlowProvider />` to make sure we can access the React Flow
+instance in our components;
+
+```tsx filename="main.tsx" {3,7,12-14}
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { ReactFlowProvider } from 'reactflow';
+
+import App from './App';
+
+import 'reactflow/dist/style.css';
+import './index.css';
+
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <ReactFlowProvider>
+      <App />
+    </ReactFlowProvider>
+  </React.StrictMode>,
+);
+```
+
+If you are going to style your app differently, for example with
+[Styled Components](/examples/styling/styled-components) or
+[Tailwind CSS](/examples/styling/tailwind) you can skip the import to `index.css`.
+
+Let's also create a new file `Slide.tsx` that will be our custom node used to
+render each slide.
+
+```tsx filename="Slide.tsx"
+import { type NodeProps } from 'reactflow';
+
+export const SLIDE_WIDTH = 1920;
+export const SLIDE_HEIGHT = 1080;
+
+export type SlideData = {};
+
+const style = {
+  width: `${SLIDE_WIDTH}px`,
+  height: `${SLIDE_HEIGHT}px`,
+} satisfies React.CSSProperties;
+
+export function Slide({ data }: NodeProps<SlideData>) {
+  return (
+    <article className="slide nodrag" style={style}>
+      <div>Hello, React Flow!</div>
+    </article>
+  );
+}
+```
+
+We're setting the slide width and height as constants here (rather than styling
+the node in CSS) because we'll want access to those dimensions later on. We've
+also stubbed out the `SlideData` type so we can properly type the component's
+props.
+
+The last thing to do is to register our new custom node and show something on the
+screen.
+
+```tsx filename="App.tsx"
+import { ReactFlow } from 'reactflow';
+import { Slide } from './Slide';
+
+const nodeTypes = {
+  slide: Slide,
+};
+
+export default function App() {
+  const nodes = [
+    { id: '0', type: 'slide', position: { x: 0, y: 0 }, data: {} },
+  ];
+
+  return <ReactFlow nodes={nodes} nodeTypes={nodeTypes} fitView />;
+}
+```
+
+<Callout>
+  It's important to remember to define your `nodeTypes` object _outside_ of the
+  component (or to use React's `useMemo` hook)! When the `nodeTypes` object changes,
+  the entire flow is re-rendered.
+</Callout>
+
+OK, what do we have so far?
+
+<Bleed>
+  <BlogExampleViewer
+    style={{ aspectRatio: '16 / 9' }}
+    codePath="blog-flows/presentation/Scaffold"
+    additionalFiles={['Slide.tsx', 'index.css']}
+    dependencies={{ 'react-remark': '2.1.0' }}
+    showEditor={false}
+    isTypescript
+  />
+</Bleed>
+
+Not super exciting, let's add markdown rendering and create a few slides
+side by side!
+
+## Rendering markdown
+
+This step is super simple thank's to the `react-remark` package we installed
+earlier. We can use the `<Remark />` component to render a string of markdown
+content into our slides.
+
+```tsx filename="Slide.tsx" {2,7-9,19}
+import { type NodeProps } from 'reactflow';
+import { Remark } from 'react-remark';
+
+export const SLIDE_WIDTH = 1920;
+export const SLIDE_HEIGHT = 1080;
+
+export type SlideData = {
+  source: string;
+};
+
+const style = {
+  width: `${SLIDE_WIDTH}px`,
+  height: `${SLIDE_HEIGHT}px`,
+} satisfies React.CSSProperties;
+
+export function Slide({ data }: NodeProps<SlideData>) {
+  return (
+    <article className="slide nodrag" style={style}>
+      <Remark>{data.source}</Remark>
+    </article>
+  );
+}
+```
+
+We can update our hardcoded nodes with some markdown content to see it in action:
+
+```tsx filename="App.tsx" {2, 5-9}
+import { ReactFlow } from 'reactflow';
+import { Slide, SLIDE_WIDTH } from './Slide';
+
+export default function App() {
+  const nodes = [
+    { id: '0', type: 'slide', position: { x: 0, y: 0 }, data: { source: '# Hello, React Flow!' } },
+    { id: '1', type: 'slide', position: { x: SLIDE_WIDTH, y: 0 }, data: { source: '...' } },
+    { id: '2', type: 'slide', position: { x: SLIDE_WIDTH * 2, y: 0 }, data: { source: '...' } },
+  ];
+
+  return <ReactFlow nodes={nodes} nodeTypes={nodeTypes} fitView />;
+}
+```
+
+<Bleed>
+  <BlogExampleViewer
+    style={{ aspectRatio: '16 / 9' }}
+    codePath="blog-flows/presentation/RenderingMarkdown"
+    additionalFiles={['Slide.tsx', 'index.css']}
+    dependencies={{ 'react-remark': '2.1.0' }}
+    showEditor={false}
+    isTypescript
+  />
+</Bleed>
+
+## Laying out the nodes
+
+We often get asked how to automatically lay out nodes in a flow, and we have some
+documentation on how to use common layouting libraries like dagre and d3-hierarchy
+in our [layouting guide](/learn/layouting/layouting). It's also totally possible
+to write your own layouting algorithm too!
+
+For our presentation app we'll construct a simple grid layout by starting from
+0,0 and updating the x or y coordinates any time we have a new slide to the left,
+right, up, or down. This part of the guide get's a bit nerdy, but stick with us!
+
+First, we need to update our `SlideData` type to include optional ids for the slides
+to the left, right, up, and down of the current slide.
+
+```tsx filename="Slide.tsx" {3-6}
+export type SlideData = {
+  source: string;
+  left?: string;
+  up?: string;
+  down?: string;
+  right?: string;
+};
+```
+
+By storing this information on the node data directly, we can write fully declarative
+slides without running about nodes and edges, we can easily compute the layout of
+the presentation, and we can add navigation buttons to each slide to move between
+them in a later step.
+
+Next we will create a function, `slidesToElements`, that takes an object of slides
+and an id for the slide to start at, and returns an array of nodes and edges that
+we can pass to the `<ReactFlow />` component.
+
+The algorithm will go something like this:
+
+- Push the initial slide's id and the position `{ x: 0, y: 0 }` onto a stack.
+
+- While that stack is not empty...
+
+  - Pop the current position and slide id off the stack**.**
+
+  - Look up the slide data by id.
+
+  - Push a new node onto the nodes array with the current id, position, and slide
+    data.
+
+  - Add the slide's id to a set of visited slides.
+
+  - For every direction (left, right, up, down)...
+
+    - Make sure the slide has not already been visited.
+
+    - Take the current position and update the x or y coordinate by adding or
+      subtracting `SLIDE_WIDTH` or `SLIDE_HEIGHT` depending on the direction.
+
+    - Push the new position and the new slide's id onto a stack.
+
+    - Push a new edge onto the edges array connecting the current slide to the
+      new slide.
+
+    - Repeat for the remaining directions.
+
+If all goes to plan, we should be able to take a stack of slides shown below and
+turn them into a neatly laid out grid!
+
+<Image
+  src="/img/tutorials/presentation/ideal-layout.png"
+  wide
+/>
+
+Let's see the code. In a file called `slides.ts` add the following:
+
+```tsx filename="slides.ts"
+export const slidesToElements = (initial: string, slides: Record<string, SlideData>) => {
+  // the stack contains nodes we need to visit
+  const stack = [{ id: start, position: { x: 0, y: 0 }}]
+  // this set stops us from visiting the same node twice
+  const visited = new Set()
+  // these are the nodes and edges we'll give to React Flow
+  const nodes = []
+  const edges = []
+
+  while (stack.length) {
+    const { id, position } = stack.pop()
+    const data = slides[id]
+    // remember to add `type: 'slide'` to the node!
+    const node = { id, type: 'slide', position, data }
+
+    nodes.push(node)
+    visited.add(id)
+
+    if (data.left && !visited.has(data.left)) {
+      // a node on left we haven't seen means we need to subtract SLIDE_WIDTH
+      // from the current position
+      const nextPosition = {
+        x: position.x - SLIDE_WIDTH,
+        y: position.y,
+      }
+
+      stack.push({ id: data.left, position: nextPosition })
+      edges.push({ id: `${id}->${data.left}`, source: id, target: data.left });
+    }
+
+    // repeat for right, up, down...
+  }
+
+  return { nodes, edges }
+}
+```
+
+We've left out the code for the right, up, and down directions for brevity, but
+the logic is the same for each direction. 
+
+Below is a demo app of the layouting algorithm, you can edit the `slides` object
+to see how adding slides to different directions affects the layout. There are
+two limitations of this algorithm:
+
+1. It is possible to construct a layout that overlaps two slides in the same
+   position.
+
+2. The algorithm will ignore nodes that cannot be reached from the initial slide.
+
+Addressing these shortcomings is totally possible, but a bit beyond the scope of
+this tutorial. If you give a shot, be sure to share your solution with us on the
+[discord server](https://discord.com/invite/RVmnytFmGW)!
+
+<Bleed>
+  <BlogExampleViewer
+    style={{ aspectRatio: '16 / 9' }}
+    codePath="blog-flows/presentation/LayoutDemo"
+    additionalFiles={[ 'Flow.tsx','index.css']}
+    showEditor
+    isTypescript
+  />
+</Bleed>
+
+## Navigating between slides
+
+So far we have our presentation laid out in a grid, but we have to manually pan
+the canvas to see each slide which isn't very practical for a presentation! We're
+going to add three different ways to navigate around our presentation:
+
+- Click-to-focus on nodes. This will allow us to jump around to different slides
+  by clicking on them.
+
+- Navigation buttons on each slide. These will allow us to move sequentially
+  between slides in any valid direction.
+
+- Keyboard navigation as an extension to navigation controls to move between
+  slides with the arrow keys. 
+
+### Focus on click 
+
+The `<ReactFlow />` element can receive an [`onNodeClick`](/api-reference/react-flow#on-node-click)
+callback that fires when _any_ node is clicked. Along with the mouse event itself,
+we also receive a reference to the node that was clicked on, and we can use that
+to pan the canvas thanks to the `fitView` method.
+
+[`fitView`](/api-reference/react-flow-instance#fit-view) is a method on the React
+Flow instance, and we can get access to it by using the [`useReactFlow`](/api-reference/react-flow-instance#use-react-flow)
+hook.
+
+```tsx {1,5-10,15}
+function Flow() {
+  const { fitView } = useReactFlow();
+  const { start, nodes, edges } = useMemo(() => slidesToElements(), []);
+
+  const handleNodeClick = useCallback<NodeMouseHandler>(
+    (_, node) => {
+      fitView({ nodes: [node], duration: 150 });
+    },
+    [currentSlide],
+  );
+
+  return (
+    <ReactFlow
+      ...
+      onNodeClick={handleNodeClick}
+    />
+  );
+}
+```
+
+### Slide controls
+
+... words
+
+Let's add a `<footer>` to each slide that conditionally renders a button in any
+direction with a connected slide. We'll also preemtively create a `moveToNextSlide`
+callback that we'll implement in a second.
+
+```tsx {3,8,13-18}
+import { type NodeProps } from 'reactflow';
+import { Remark } from 'react-remark';
+import { useCallback } from 'react';
+
+export function Slide({ data }: NodeProps<SlideData>) {
+  ...
+
+  const moveToNextSlide = useCallback((id: string) => {}, [])
+
+  return (
+    <article className="slide nodrag" style={style}>
+      <Remark>{source}</Remark>
+      <footer className="slide__controls nopan">
+        {data.left && <button onClick={() => moveToNextSlide(data.left)}>←</button>}
+        {data.up && <button onClick={() => moveToNextSlide(data.up)}>↑</button>}
+        {data.down && <button onClick={() => moveToNextSlide(ddata.own)}>↓</button>}
+        {data.right && <button onClick={() => moveToNextSlide(data.right)}>→</button>}
+      </footer>
+    </article>
+  );
+}
+```
+
+You can style the footer however you like, but it's important to add the `"nopan"`
+class to prevent prevent the canvas from panning as you interact with any of the
+buttons.
+
+To implement the `moveToNextSlide` callback we can make use of the `fitView`
+method on the [React Flow instance](/reference/types/react-flow-instance). to
+access this, we need to pull in the `useReactFlow` hook:
+
+```tsx {1}
+import { type NodeProps, useReactFlow } from 'reactflow';
+import { Remark } from 'react-remark';
+import { useCallback } from 'react';
+
+...
+```
+
+The `fitView` method can smoothly transition the viewport from one node to another
+by passing in an array of node ids to focus on, which is exactly the behaviour
+we want for our presentation!
+
+```tsx {2, 4-9}
+export function Slide({ data }: NodeProps<SlideData>) {
+  const { fitView } = useReactFlow();
+
+  const moveToNextSlide = useCallback(
+    (id: string) => {
+      fitView({ nodes: [{ id }], duration: 150 });
+    },
+    [fitView],
+  );
+
+  return (
+    <article className="slide" style={style}>
+      ...
+    </article>
+  );
+}
+```
+
+But what about keyboard navigation?
+
+### Keyboard navigation
+
+In addition to `onNodeClick`, we can also listen to _keyboard events_ on the
+`<ReactFlow />` component through handlers like [`onKeyDown`](/api-reference/react-flow#on-key-down).
+
+Up until now the slide currently focused is implied by the position of the canvas,
+but if we want to handle key presses on the entire canvas we need to _explicitly_
+track the current slide.
+
+</TutorialLayout>
