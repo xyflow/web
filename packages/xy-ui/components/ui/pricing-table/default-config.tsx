@@ -103,6 +103,11 @@ export const ProPlan: SubscriptionPlan = {
       interval: BillingInterval.YEAR,
       label: '$249',
     },
+    {
+      currency: Currency.INR,
+      interval: BillingInterval.YEAR,
+      label: 'INR249',
+    },
   ],
   features: [
     features.proExamples,

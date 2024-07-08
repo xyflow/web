@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { useSSG } from 'nextra/ssg';
 import {
   Button,
   PricingTable,
@@ -52,6 +53,10 @@ const sliderItems = [
 ];
 
 export default function ReactFlowPro() {
+  const { proPricing } = useSSG();
+
+  console.log(proPricing);
+
   return (
     <BaseLayout>
       <Hero

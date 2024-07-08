@@ -9,6 +9,7 @@ export enum PlanId {
 export enum Currency {
   EUR = 'eur',
   USD = 'usd',
+  INR = 'inr',
 }
 
 export enum BillingInterval {
