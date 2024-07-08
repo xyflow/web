@@ -4,7 +4,13 @@ export const nodePropsFields: PropsTableProps = {
   props: [
     { name: 'id', type: 'string;' },
     { name: 'data', type: 'T;' },
-    { name: 'dragHandle', type: 'boolean;' },
+    {
+      name: 'dragHandle?',
+      type: 'string;',
+      description: `A class name that can be applied to elements inside the node
+      that allows those elements to act as drag handles, letting the user drag the
+      node by clicking and dragging on those elements.`,
+    },
     { name: 'type', type: 'string;' },
     { name: 'selected', type: 'boolean;' },
     { name: 'isConnectable', type: 'boolean;' },

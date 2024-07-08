@@ -456,6 +456,8 @@ export const selectionEventHandlerProps: PropsTableProps = {
     {
       name: 'onSelectionContextMenu',
       type: '(event: React.MouseEvent, nodes: Node[]) => void',
+      description: `This event handler is called when a user right-clicks on a
+      node selection.`,
     },
   ],
 };
@@ -490,10 +492,32 @@ export const interactionProps: PropsTableProps = {
       name: 'edgesFocusable',
       type: 'boolean',
       default: 'true',
+      description: `When true, focus between edges can be cycled with the Tab key
+      and selected with the Enter key. This option can be overriden by individual
+      edges by setting their focusable prop.`,
     },
-    { name: 'elementsSelectable', type: 'boolean', default: 'true' },
-    { name: 'autoPanOnConnect', type: 'boolean', default: 'true' },
-    { name: 'autoPanOnNodeDrag', type: 'boolean', default: 'true' },
+    {
+      name: 'elementsSelectable',
+      type: 'boolean',
+      default: 'true',
+      description: `When true, elements (nodes and edges) can be selected by clicking
+      on them. This option can be overriden by individual elements by setting their
+      selectable prop.`,
+    },
+    {
+      name: 'autoPanOnConnect',
+      type: 'boolean',
+      default: 'true',
+      description: `When try, the viewport will pan automatically when the cursor
+      moves to the edge of the viewport while creating a connection. `,
+    },
+    {
+      name: 'autoPanOnNodeDrag',
+      type: 'boolean',
+      default: 'true',
+      description: `When true, the viewport will pan automatically when the cursor
+      moves to the edge of the viewport while dragging a node. `,
+    },
     {
       name: 'panOnDrag',
       type: 'boolean | (0 | 1 | 2 | 3 | 4)[]',
@@ -584,11 +608,19 @@ export const keyboardProps: PropsTableProps = {
       name: 'deleteKeyCode',
       type: 'string | string[] | null',
       default: '"Backspace"',
+      description: `If set, pressing the key or chord will delete any selected
+      nodes and edges. Passing an array represents mutliple keys that can be
+      pressed. For example, ["Delete", "Backspace"] will delete selected elements
+      when either key is pressed.`,
     },
     {
       name: 'selectionKeyCode',
       type: 'string | string[] | null',
       default: '"Shift"',
+      description: `If set, holding this key will let you click and drag to draw
+      a selection box around multiple nodes and edges. Passing an array represents
+      mutliple keys that can be pressed. For example, ["Shift", "Meta"] will
+      allow you to draw a selection box when either key is pressed.`,
     },
     {
       name: 'multiSelectionKeyCode',

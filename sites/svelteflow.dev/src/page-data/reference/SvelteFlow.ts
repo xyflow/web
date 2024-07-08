@@ -306,6 +306,7 @@ export const interactionProps: PropsTableProps = {
       which mouse buttons can activate panning. For example, [0,2] would allow
       panning with the left and right mouse buttons.`,
     },
+    { name: 'selectionOnDrag', type: 'boolean', default: 'false' },
     {
       name: 'selectionMode',
       type: '"partial" | "full"',
