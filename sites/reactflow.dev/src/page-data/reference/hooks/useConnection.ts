@@ -5,7 +5,7 @@ export const signature: PropsTableProps = {
     { name: 'Returns' },
     {
       name: '',
-      type: 'Connection',
+      type: 'ConnectionState',
       description: '',
     },
   ],

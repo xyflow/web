@@ -509,14 +509,20 @@ export const interactionProps: PropsTableProps = {
       type: 'boolean',
       default: 'true',
       description: `When try, the viewport will pan automatically when the cursor
-      moves to the edge of the viewport while creating a connection. `,
+      moves to the edge of the viewport while creating a connection.`,
     },
     {
       name: 'autoPanOnNodeDrag',
       type: 'boolean',
       default: 'true',
       description: `When true, the viewport will pan automatically when the cursor
-      moves to the edge of the viewport while dragging a node. `,
+      moves to the edge of the viewport while dragging a node.`,
+    },
+    {
+      name: 'autoPanSpeed',
+      type: 'number',
+      default: `20`,
+      description: `The speed at which the viewport will pan for autoPanOnNodeDrag and autoPanOnConnect`,
     },
     {
       name: 'panOnDrag',

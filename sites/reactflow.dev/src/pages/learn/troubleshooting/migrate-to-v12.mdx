@@ -344,18 +344,21 @@ There is more! Besides the new main features, we added some minor things that we
 - **[`onDelete`](/api-reference/react-flow#on-delete) handler**: We added a combined handler for `onDeleteNodes` and `onDeleteEdges` to make it easier to react to deletions.
 - **[`onBeforeDelete`](/api-reference/react-flow#on-before-delete) handler**: With this handler you can prevent/ manage deletions.
 - **[`isValidConnection`](/api-reference/react-flow#is-valid-connection) prop:** This makes it possible to implement one validation function for all connections. It also gets called for programmatically added edges.
+- **[`autoPanSpeed`](/api-reference/react-flow#autoPanSpeed) prop:** For controlling the speed while auto panning.
 - **Background component**: add [`patternClassName`](/api-reference/components/background#pattern-class-name) prop to be able to style the background pattern by using a class name. This is useful if you want to style the background pattern with Tailwind for example.
 - **`onMove` callback** gets triggered for library-invoked viewport updates (like fitView or zoom-in)
 - **`deleteElements`** now returns deleted nodes and deleted edges
 - add **`origin` attribute** for nodes
 - add **`selectable` attribute** for edges
+- Node Resizer: child nodes don't move when the group is resized, extent and expand is recognized correctly
 - Correct types for `BezierEdge`, `StepEdge`, `SmoothStepEdge` and `StraightEdge` components
 - New edges created by the library only have `sourceHandle` and `targetHandle` attributes when those attributes are set. (We used to pass `sourceHandle: null` and `targetHandle: null`)
 - Edges do not mount/unmount when their z-index change
+- connection line knows about the target handle position so that the path is drawn correctly
 - `nodeDragThreshold` is 1 by default instead of 0
 - a better selection box usability (capture while dragging out of the flow)
 - add `selectable`, `deletable`, `draggable` and `parentId` to `NodeProps`
-- add warning when styles not loaded
+- add a warning when styles not loaded
 
 {<h3>Internal changes</h3>}
 
@@ -367,6 +370,6 @@ These changes are not really user-facing, but it could be important for folks wh
   - **XYHandle** for managing new connections
 - We renamed `nodeInternals` to `nodeLookup`. That map serves as a lookup, but we are not creating a new map object on any change so it’s really only useful as a lookup.
 - We removed the internal "reset" event and added a "replace" event to be able to update specific nodes.
-- We removed `connectionNodeId`, `connectionHandleId`, `connectionHandleType` from the store and added `connectionStartHandle.nodeId`, `connectionStartHandle.handleId`, …
+- We removed `connectionNodeId`, `connectionHandleId`, `connectionHandleType` from the store and added `connection.fromHandle.nodeId`, `connection.fromHandle.id`, …
 - add `data-id` to edges
 - `onNodeDragStart`, `onNodeDrag` and `onNodeDragStop` also get called when user drags a selection (in addition to `onSelectionDragStart`, `onSelectionDrag`, `onSelectionDragStop`)
