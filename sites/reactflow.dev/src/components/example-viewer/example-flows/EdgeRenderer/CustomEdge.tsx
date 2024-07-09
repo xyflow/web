@@ -14,7 +14,7 @@ const CustomEdge: FC<EdgeProps> = ({
   targetY,
   sourcePosition,
   targetPosition,
-  label,
+  data,
 }) => {
   const [edgePath, labelX, labelY] = getBezierPath({
     sourceX,
@@ -41,7 +41,7 @@ const CustomEdge: FC<EdgeProps> = ({
           }}
           className="nodrag nopan"
         >
-          {label}
+          {data.label}
         </div>
       </EdgeLabelRenderer>
     </>

@@ -13,12 +13,12 @@ called after the edge gets dropped to a new handle. You can use the
 [`reconnectEdge`](/api-reference/utils/reconnect-edge) helper function to update your
 edges state accordingly.
 
-<ExampleViewer codePath="example-flows/UpdatableEdge" />
+<ExampleViewer codePath="example-flows/EdgeReconnect" />
 
 A couple of properties interact with one another to determine whether an edge is
 updatable or not:
 
-- By default the [`edgesUpdatable`](/api-reference/react-flow#edgesUpdatable) is
+- By default the [`edgesReconnectable`](/api-reference/react-flow#edgesReconnectable) is
   set to `true`.
 
 - For edges to actually be draggable, though, it is also necessary to define a

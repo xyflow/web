@@ -3,6 +3,10 @@ import { type PropsTableProps } from 'xy-shared';
 export const nodesAndEdgesFields: PropsTableProps = {
   props: [
     { name: 'getNode', type: '(id: string) => Node<T> | undefined' },
+    {
+      name: 'getInternalNode',
+      type: '(id: string) => InternalNode<T> | undefined',
+    },
     { name: 'getNodes', type: '() => Node<T>[]' },
     {
       name: 'addNodes',
