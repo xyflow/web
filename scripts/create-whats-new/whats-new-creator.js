@@ -13,7 +13,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 export async function WhatsNewCreator({ site, packageName }) {
   const sitePath = resolve(__dirname, `../../sites/${site}`);
   const latestNpmVersion = await latestVersion(packageName);
-  const ghApiUrl = `https://api.github.com/repos/xyflow/xyflow/releases/tags/${latestNpmVersion}`;
+  const ghApiUrl = `https://api.github.com/repos/xyflow/xyflow/releases/tags/${packageName}@${latestNpmVersion}`;
 
   async function getReleaseNotes() {
     console.log('request release notes for', ghApiUrl);
@@ -53,10 +53,10 @@ export async function WhatsNewCreator({ site, packageName }) {
 
   function getMdContent(date, body) {
     return `---
-title: New Release ${latestNpmVersion}
-description: What's new in ${packageName} ${latestNpmVersion}
-authors: [moklick]
- date: ${date}
+title: "New Release ${latestNpmVersion}"
+description: "What's new in ${packageName} ${latestNpmVersion}"
+authors: [moritz]
+date: "${date.toString()}"
 ---
     
 # ${latestNpmVersion}
