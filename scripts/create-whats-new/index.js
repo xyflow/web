@@ -5,7 +5,7 @@ dotenv.config({ path: '.env.local' });
 
 const reactFlowCreator = await WhatsNewCreator({
   site: 'reactflow.dev',
-  packageName: 'reactflow',
+  packageName: '@xyflow/react',
 });
 const reactFlowUpdated = await reactFlowCreator.start();
 
