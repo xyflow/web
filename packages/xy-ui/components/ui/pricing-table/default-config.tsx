@@ -68,6 +68,16 @@ export const StarterPlan: SubscriptionPlan = {
       interval: BillingInterval.YEAR,
       label: '$129',
     },
+    {
+      currency: Currency.INR,
+      interval: BillingInterval.MONTH,
+      label: '₹2,700',
+    },
+    {
+      currency: Currency.INR,
+      interval: BillingInterval.YEAR,
+      label: '₹2,475',
+    },
   ],
   features: [
     features.proExamples,
@@ -105,8 +115,13 @@ export const ProPlan: SubscriptionPlan = {
     },
     {
       currency: Currency.INR,
+      interval: BillingInterval.MONTH,
+      label: '₹22,300',
+    },
+    {
+      currency: Currency.INR,
       interval: BillingInterval.YEAR,
-      label: 'INR249',
+      label: '₹20,000',
     },
   ],
   features: [
