@@ -50,7 +50,8 @@ React Flow 12 is here, and the main features are
 </Bleed>
 
 <div className="text-center text-gray-500 mt-1">
-  This flow was rendered on the server, so it's not using any javascript
+  This flow was rendered on the server. It can be displayed without Javascript
+  on the client.
 </div>
 
 React is heading towards server side rendering, with tools like [Nextjs](https://nextjs.org/), [Astro](https://astro.build/), and [waku](https://waku.gg/). We’ve gotten asked to support server side rendering more than a [couple](https://github.com/xyflow/xyflow/issues/3168) of [times](https://github.com/xyflow/xyflow/issues/3384) due to difficulties using React Flow with these tools. In React Flow 11, Astro just renders a blank screen by default when using React Flow- that’s no good.
@@ -115,7 +116,7 @@ Check out the [dark mode example](https://reactflow.dev/examples/styling/dark-mo
 
 </Bleed>
 
-We used TSDoc to create a better dev experience in your IDE to get more info about what a function or component does. We’ve been told our DX is pretty good already, but we’re always happy to make it even better 💅🏻
+We now use TSDoc to create a better dev experience in your IDE to get more info about what a function or component does. We’ve been told our DX is pretty good already, but we’re always happy to make it even better 💅🏻
 
 **Bonus feature: Performance improvements**
 
@@ -129,13 +130,16 @@ We worked with [Ivan Akulov](https://3perf.com/) to improve the performance of R
 
 Besides the new main features listed above, we added some other things that we wanted to include for a long time.
 
-- **[`useConnection` hook](https://reactflow.dev/api-reference/hooks/use-connection):** With this hook you can access the ongoing connection. For example, you can use it for colorizing handles styling a custom connection line based on the current start / end handles.
-- **Controlled `viewport`:** This is an advanced feature. Possible use cases are to animate the viewport or round the transform for lower res screens for example. This features brings two new props: [`viewport`](https://reactflow.dev/api-reference/react-flow#viewport) and [`onViewportChange`](https://reactflow.dev/api-reference/react-flow#on-viewport-change).
-- **[`ViewportPortal`](https://reactflow.dev/api-reference/components/viewport-portal) component:** This makes it possible to render elements in the viewport without the need to implement a custom node.
-- **[`onDelete`](https://reactflow.dev/api-reference/react-flow#on-delete) handler:** We added a combined handler for `onDeleteNodes` and `onDeleteEdges` to make it easier to react to deletions.
-- **[`onBeforeDelete`](https://reactflow.dev/api-reference/react-flow#on-before-delete) handler:** With this handler you can prevent/ manage deletions.
-- **[`isValidConnection`](https://reactflow.dev/api-reference/react-flow#is-valid-connection) prop:** This makes it possible to implement one validation function for all connections. It also gets called for programmatically added edges.
-- **Background component:** add [`patternClassName`](https://reactflow.dev/api-reference/components/background#pattern-class-name) prop to be able to style the background pattern by using a class name. This is useful if you want to style the background pattern with Tailwind for example.
+- **[`useConnection` hook](/api-reference/hooks/use-connection):** With this hook you can access the ongoing connection. For example, you can use it for colorizing handles styling a custom connection line based on the current start / end handles.
+- **Controlled `viewport`:** This is an advanced feature. Possible use cases are to animate the viewport or round the transform for lower res screens for example. This features brings two new props: [`viewport`](/api-reference/react-flow#viewport) and [`onViewportChange`](/api-reference/react-flow#on-viewport-change).
+- **[`ViewportPortal`](/api-reference/components/viewport-portal) component:** This makes it possible to render elements in the viewport without the need to implement a custom node.
+- **[`onDelete`](/api-reference/react-flow#on-delete) handler**: We added a combined handler for `onDeleteNodes` and `onDeleteEdges` to make it easier to react to deletions.
+- **[`onBeforeDelete`](/api-reference/react-flow#on-before-delete) handler**: With this handler you can prevent/ manage deletions.
+- **[`isValidConnection`](/api-reference/react-flow#is-valid-connection) prop:** This makes it possible to implement one validation function for all connections. It also gets called for programmatically added edges.
+- **[`autoPanSpeed`](/api-reference/react-flow#autoPanSpeed) prop:** For controlling the speed while auto panning.
+- **[`paneClickDistance`](/api-reference/react-flow#paneClickDistance) prop:** max distance between mousedown/up that will trigger a click.
+- **Background component**: add [`patternClassName`](/api-reference/components/background#pattern-class-name) prop to be able to style the background pattern by using a class name. This is useful if you want to style the background pattern with Tailwind for example.
+- **Node Resizer updates**: child nodes don't move when the group is resized, extent and expand is recognized correctly
 - **`onMove` callback** gets triggered for library-invoked viewport updates (like fitView or zoom-in)
 - **`deleteElements`** now returns deleted nodes and deleted edges
 - add **`origin` attribute** for nodes
@@ -143,7 +147,11 @@ Besides the new main features listed above, we added some other things that we w
 - Correct types for `BezierEdge`, `StepEdge`, `SmoothStepEdge` and `StraightEdge` components
 - New edges created by the library only have `sourceHandle` and `targetHandle` attributes when those attributes are set. (We used to pass `sourceHandle: null` and `targetHandle: null`)
 - Edges do not mount/unmount when their z-index change
+- connection line knows about the target handle position so that the path is drawn correctly
 - `nodeDragThreshold` is 1 by default instead of 0
+- a better selection box usability (capture while dragging out of the flow)
+- add `selectable`, `deletable`, `draggable` and `parentId` to `NodeProps`
+- add a warning when styles not loaded
 
 # And that's it!
 

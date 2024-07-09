@@ -353,12 +353,13 @@ There is more! Besides the new main features, we added some minor things that we
 - **[`onBeforeDelete`](/api-reference/react-flow#on-before-delete) handler**: With this handler you can prevent/ manage deletions.
 - **[`isValidConnection`](/api-reference/react-flow#is-valid-connection) prop:** This makes it possible to implement one validation function for all connections. It also gets called for programmatically added edges.
 - **[`autoPanSpeed`](/api-reference/react-flow#autoPanSpeed) prop:** For controlling the speed while auto panning.
+- **[`paneClickDistance`](/api-reference/react-flow#paneClickDistance) prop:** max distance between mousedown/up that will trigger a click.
 - **Background component**: add [`patternClassName`](/api-reference/components/background#pattern-class-name) prop to be able to style the background pattern by using a class name. This is useful if you want to style the background pattern with Tailwind for example.
 - **`onMove` callback** gets triggered for library-invoked viewport updates (like fitView or zoom-in)
 - **`deleteElements`** now returns deleted nodes and deleted edges
 - add **`origin` attribute** for nodes
 - add **`selectable` attribute** for edges
-- Node Resizer: child nodes don't move when the group is resized, extent and expand is recognized correctly
+- **Node Resizer updates**: child nodes don't move when the group is resized, extent and expand is recognized correctly
 - Correct types for `BezierEdge`, `StepEdge`, `SmoothStepEdge` and `StraightEdge` components
 - New edges created by the library only have `sourceHandle` and `targetHandle` attributes when those attributes are set. (We used to pass `sourceHandle: null` and `targetHandle: null`)
 - Edges do not mount/unmount when their z-index change
