@@ -4,9 +4,10 @@ import {
   getBezierPath,
   EdgeLabelRenderer,
   BaseEdge,
+  Edge,
 } from '@xyflow/react';
 
-const CustomEdge: FC<EdgeProps> = ({
+const CustomEdge: FC<EdgeProps<Edge<{ label: string }>>> = ({
   id,
   sourceX,
   sourceY,
