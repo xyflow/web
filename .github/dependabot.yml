@@ -12,11 +12,11 @@ updates:
     schedule:
       interval: 'daily'
     allow:
-      dependency-name: '@xyflow/react'
+      - dependency-name: '@xyflow/react'
   - package-ecosystem: 'npm'
     directory: '/sites/svelteflow.dev'
     schedule:
       interval: 'daily'
     allow:
-      dependency-name: '@xyflow/svelte'
-      dependency-name: '@xyflow/react'
+      - dependency-name: '@xyflow/svelte'
+      - dependency-name: '@xyflow/react'
