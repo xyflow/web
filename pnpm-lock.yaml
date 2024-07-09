@@ -300,7 +300,7 @@ importers:
     dependencies:
       '@codesandbox/sandpack-react':
         specifier: ^2.6.9
-        version: 2.11.2(@lezer/common@1.2.1)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        version: 2.11.2(@lezer/common@1.2.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@docsearch/css':
         specifier: ^3.5.2
         version: 3.5.2
@@ -564,8 +564,8 @@ importers:
         specifier: ^0.155.1
         version: 0.155.1
       '@xyflow/react':
-        specifier: ^12.0.0-next.24
-        version: 12.0.0-next.24(@types/react@18.2.47)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        specifier: ^12.0.0
+        version: 12.0.0(@types/react@18.2.47)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@xyflow/xy-ui':
         specifier: workspace:*
         version: link:../../packages/xy-ui
@@ -613,13 +613,13 @@ importers:
         version: 4.4.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       next-sitemap:
         specifier: ^4.2.2
-        version: 4.2.3(next@13.5.6(@babel/core@7.23.7)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))
+        version: 4.2.3(next@13.5.6(react-dom@18.2.0(react@18.2.0))(react@18.2.0))
       nextra:
         specifier: ^2.13.3
-        version: 2.13.3(next@13.5.6(@babel/core@7.23.7)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        version: 2.13.3(next@13.5.6(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       nextra-theme-docs:
         specifier: ^2.13.3
-        version: 2.13.3(next@13.5.6(@babel/core@7.23.7)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(nextra@2.13.3(next@13.5.6(@babel/core@7.23.7)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        version: 2.13.3(next@13.5.6(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(nextra@2.13.3(next@13.5.6(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       raw-loader:
         specifier: ^4.0.2
         version: 4.0.2(webpack@5.91.0(@swc/core@1.3.102))
@@ -727,11 +727,11 @@ importers:
         specifier: ^0.155.1
         version: 0.155.1
       '@xyflow/react':
-        specifier: 12.0.0-next.19
-        version: 12.0.0-next.19(@types/react@18.2.47)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        specifier: 12.0.0
+        version: 12.0.0(@types/react@18.2.47)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@xyflow/svelte':
-        specifier: 0.1.8
-        version: 0.1.8(@babel/core@7.23.7)(less@4.2.0)(postcss-load-config@4.0.2(postcss@8.4.33)(ts-node@10.9.2(@swc/core@1.3.102)(@types/node@20.11.0)(typescript@5.3.3)))(postcss@8.4.33)(svelte@4.2.12)(typescript@5.3.3)
+        specifier: 0.1.10
+        version: 0.1.10(@babel/core@7.23.7)(less@4.2.0)(postcss-load-config@4.0.2(postcss@8.4.33)(ts-node@10.9.2(@swc/core@1.3.102)(@types/node@20.11.0)(typescript@5.3.3)))(postcss@8.4.33)(svelte@4.2.12)(typescript@5.3.3)
       '@xyflow/xy-ui':
         specifier: workspace:*
         version: link:../../packages/xy-ui
@@ -755,13 +755,13 @@ importers:
         version: 4.4.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       next-sitemap:
         specifier: ^4.2.2
-        version: 4.2.3(next@13.5.6(@babel/core@7.23.7)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))
+        version: 4.2.3(next@13.5.6(react-dom@18.2.0(react@18.2.0))(react@18.2.0))
       nextra:
         specifier: ^2.13.3
-        version: 2.13.3(next@13.5.6(@babel/core@7.23.7)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        version: 2.13.3(next@13.5.6(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       nextra-theme-docs:
         specifier: ^2.13.3
-        version: 2.13.3(next@13.5.6(@babel/core@7.23.7)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(nextra@2.13.3(next@13.5.6(@babel/core@7.23.7)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        version: 2.13.3(next@13.5.6(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(nextra@2.13.3(next@13.5.6(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -828,7 +828,7 @@ importers:
     dependencies:
       '@codesandbox/sandpack-react':
         specifier: ^2.6.9
-        version: 2.11.2(@lezer/common@1.2.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        version: 2.11.2(@lezer/common@1.2.1)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@docsearch/react':
         specifier: '3'
         version: 3.5.2(@algolia/client-search@4.23.3)(@types/react@18.2.47)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(search-insights@2.13.0)
@@ -854,8 +854,8 @@ importers:
         specifier: ^0.155.1
         version: 0.155.1
       '@xyflow/react':
-        specifier: 12.0.0-next.21
-        version: 12.0.0-next.21(@types/react@18.2.47)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        specifier: 12.0.0
+        version: 12.0.0(@types/react@18.2.47)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@xyflow/xy-ui':
         specifier: workspace:*
         version: link:../../packages/xy-ui
@@ -876,13 +876,13 @@ importers:
         version: 13.5.6(@babel/core@7.23.7)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       next-sitemap:
         specifier: ^4.2.2
-        version: 4.2.3(next@13.5.6(@babel/core@7.23.7)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))
+        version: 4.2.3(next@13.5.6(react-dom@18.2.0(react@18.2.0))(react@18.2.0))
       nextra:
         specifier: ^2.13.3
-        version: 2.13.3(next@13.5.6(@babel/core@7.23.7)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        version: 2.13.3(next@13.5.6(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       nextra-theme-docs:
         specifier: ^2.13.3
-        version: 2.13.3(next@13.5.6(@babel/core@7.23.7)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(nextra@2.13.3(next@13.5.6(@babel/core@7.23.7)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        version: 2.13.3(next@13.5.6(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(nextra@2.13.3(next@13.5.6(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       raw-loader:
         specifier: ^4.0.2
         version: 4.0.2(webpack@5.91.0(@swc/core@1.3.102))
@@ -4195,8 +4195,8 @@ packages:
   '@xtuc/long@4.2.2':
     resolution: {integrity: sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==}
 
-  '@xyflow/react@12.0.0-next.19':
-    resolution: {integrity: sha512-cxPvVutOy3FfF+gSu3ubJCwKAJ/EiBxeCD210fegF+DzPIysjTmqZSo8e4IkN0H/5WoMWFN3bgXMGzzqEOXhMQ==}
+  '@xyflow/react@12.0.0':
+    resolution: {integrity: sha512-f0cboW5ZbKR+xGUr2QtYiIZwGvxDHzCjdtp2KBSNcQCmyc9xgaJ2PMCKBpwAUF0u+RoA7mEW2jE3mPI9WCBy0A==}
     peerDependencies:
       react: '>=17'
       react-dom: '>=17'
@@ -4213,21 +4213,18 @@ packages:
       react: '>=17'
       react-dom: '>=17'
 
+  '@xyflow/svelte@0.1.10':
+    resolution: {integrity: sha512-B8u9yUR2r18kIyvbq5UT4MwNvTGoXXYdvJcWRkXESe98i/g+HrXPn9N5g/g0bg/yZBhiaf6f1/6F/1J0oPZQvA==}
+    peerDependencies:
+      svelte: ^3.0.0 || ^4.0.0
+
   '@xyflow/svelte@0.1.3':
     resolution: {integrity: sha512-bqvN1/hIVdD8/r1Qqs4jJC3ScObxcX5PwDhvnE9VpQCfUWTszCd6ex6k38CIcu+m6CZUZWefJrg3kjOEV4disg==}
     peerDependencies:
       svelte: ^3.0.0 || ^4.0.0
 
-  '@xyflow/svelte@0.1.8':
-    resolution: {integrity: sha512-PDM1vGA7ti6DJH58GjrZ4vEND0FfFuJ9r56pnABgALSY9/U4vTDHjswQ5+DBWIUh2zTUBPyP8mYufMc9Gq71xw==}
-    peerDependencies:
-      svelte: ^3.0.0 || ^4.0.0
-
   '@xyflow/system@0.0.25':
     resolution: {integrity: sha512-xukvOg6620ZO+w1UccS+LFTCl4mTptswUOjlcLkdLQJDSu7BJfNBGDN0qL/q/a05GSVFRIP8hlaqgOdi3fDsWw==}
-
-  '@xyflow/system@0.0.27':
-    resolution: {integrity: sha512-byGYC/4ZfdAUAqZOwVqIU+KwcZrO/hkjODaUr74x1ozpA87AlxLJaeQsBIHrezys+2rxRquulYtu6Q+1qCoayg==}
 
   '@xyflow/system@0.0.29':
     resolution: {integrity: sha512-by8nF9a1ZNeoDPoyD4F7useNM9ziDTHw7sabJ9XEmMb2lW4wJLmsKDhqmgwzMaMzm8YrmjdEbjysJsq2fOuRGQ==}
@@ -4235,8 +4232,8 @@ packages:
   '@xyflow/system@0.0.30':
     resolution: {integrity: sha512-/Tq9w6QzvjlyGHW+AWoYE68vtyGS8sdp5CYgbs857pfl1ZdLNFQ4lxXvV4nFv+5z2aPp/y1iOgXLdZJT3aHX0g==}
 
-  '@xyflow/system@0.0.31':
-    resolution: {integrity: sha512-L3oUY3CWbDpoVdEueHE+HdamcGkA1erXtiStIznMZy4MKb1hKsYnEU/d6Nbus10BPJ7EIz1x5pk/NgJfVXoeEg==}
+  '@xyflow/system@0.0.34':
+    resolution: {integrity: sha512-Gcc2aSPZX5YMn+Rv6a2lxRes005YLc6LRaMtzRsobCcIEMpBUWzEx8/OrvpAYOCM3UCxlqfUOK2ekglxbjzYEQ==}
 
   '@yarnpkg/esbuild-plugin-pnp@3.0.0-rc.15':
     resolution: {integrity: sha512-kYzDJO5CA9sy+on/s2aIW0411AklfCi8Ck/4QDivOqsMKpStZA2SsR+X27VTggGwpStWaLrjJcDcdDMowtG8MA==}
@@ -14009,9 +14006,9 @@ snapshots:
 
   '@xtuc/long@4.2.2': {}
 
-  '@xyflow/react@12.0.0-next.19(@types/react@18.2.47)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
+  '@xyflow/react@12.0.0(@types/react@18.2.47)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
-      '@xyflow/system': 0.0.27
+      '@xyflow/system': 0.0.34
       classcat: 5.0.5
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -14031,17 +14028,6 @@ snapshots:
       - '@types/react'
       - immer
 
-  '@xyflow/react@12.0.0-next.24(@types/react@18.2.47)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
-    dependencies:
-      '@xyflow/system': 0.0.30
-      classcat: 5.0.5
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      zustand: 4.5.2(@types/react@18.2.47)(react@18.2.0)
-    transitivePeerDependencies:
-      - '@types/react'
-      - immer
-
   '@xyflow/react@12.0.0-next.24(@types/react@18.3.1)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
       '@xyflow/system': 0.0.30
@@ -14052,6 +14038,25 @@ snapshots:
     transitivePeerDependencies:
       - '@types/react'
       - immer
+
+  '@xyflow/svelte@0.1.10(@babel/core@7.23.7)(less@4.2.0)(postcss-load-config@4.0.2(postcss@8.4.33)(ts-node@10.9.2(@swc/core@1.3.102)(@types/node@20.11.0)(typescript@5.3.3)))(postcss@8.4.33)(svelte@4.2.12)(typescript@5.3.3)':
+    dependencies:
+      '@svelte-put/shortcut': 3.1.0
+      '@xyflow/system': 0.0.34
+      classcat: 5.0.5
+      svelte: 4.2.12
+      svelte-preprocess: 5.1.4(@babel/core@7.23.7)(less@4.2.0)(postcss-load-config@4.0.2(postcss@8.4.33)(ts-node@10.9.2(@swc/core@1.3.102)(@types/node@20.11.0)(typescript@5.3.3)))(postcss@8.4.33)(svelte@4.2.12)(typescript@5.3.3)
+    transitivePeerDependencies:
+      - '@babel/core'
+      - coffeescript
+      - less
+      - postcss
+      - postcss-load-config
+      - pug
+      - sass
+      - stylus
+      - sugarss
+      - typescript
 
   '@xyflow/svelte@0.1.3(@babel/core@7.23.7)(less@4.2.0)(postcss-load-config@4.0.2(postcss@8.4.36)(ts-node@10.9.2(@swc/core@1.3.102)(@types/node@20.14.9)(typescript@5.4.2)))(postcss@8.4.36)(svelte@4.2.12)(typescript@5.4.2)':
     dependencies:
@@ -14072,40 +14077,11 @@ snapshots:
       - sugarss
       - typescript
 
-  '@xyflow/svelte@0.1.8(@babel/core@7.23.7)(less@4.2.0)(postcss-load-config@4.0.2(postcss@8.4.33)(ts-node@10.9.2(@swc/core@1.3.102)(@types/node@20.11.0)(typescript@5.3.3)))(postcss@8.4.33)(svelte@4.2.12)(typescript@5.3.3)':
-    dependencies:
-      '@svelte-put/shortcut': 3.1.0
-      '@xyflow/system': 0.0.31
-      classcat: 5.0.5
-      svelte: 4.2.12
-      svelte-preprocess: 5.1.4(@babel/core@7.23.7)(less@4.2.0)(postcss-load-config@4.0.2(postcss@8.4.33)(ts-node@10.9.2(@swc/core@1.3.102)(@types/node@20.11.0)(typescript@5.3.3)))(postcss@8.4.33)(svelte@4.2.12)(typescript@5.3.3)
-    transitivePeerDependencies:
-      - '@babel/core'
-      - coffeescript
-      - less
-      - postcss
-      - postcss-load-config
-      - pug
-      - sass
-      - stylus
-      - sugarss
-      - typescript
-
   '@xyflow/system@0.0.25':
     dependencies:
       '@types/d3': 7.4.3
       '@types/d3-drag': 3.0.7
       '@types/d3-selection': 3.0.10
-      '@types/d3-zoom': 3.0.8
-      d3-drag: 3.0.0
-      d3-selection: 3.0.0
-      d3-zoom: 3.0.0
-
-  '@xyflow/system@0.0.27':
-    dependencies:
-      '@types/d3-drag': 3.0.7
-      '@types/d3-selection': 3.0.10
-      '@types/d3-transition': 3.0.8
       '@types/d3-zoom': 3.0.8
       d3-drag: 3.0.0
       d3-selection: 3.0.0
@@ -14131,7 +14107,7 @@ snapshots:
       d3-selection: 3.0.0
       d3-zoom: 3.0.0
 
-  '@xyflow/system@0.0.31':
+  '@xyflow/system@0.0.34':
     dependencies:
       '@types/d3-drag': 3.0.7
       '@types/d3-selection': 3.0.10
@@ -18020,13 +17996,13 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  next-seo@6.5.0(next@13.5.6(@babel/core@7.23.7)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
+  next-seo@6.5.0(next@13.5.6(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
       next: 13.5.6(@babel/core@7.23.7)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
 
-  next-sitemap@4.2.3(next@13.5.6(@babel/core@7.23.7)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)):
+  next-sitemap@4.2.3(next@13.5.6(react-dom@18.2.0(react@18.2.0))(react@18.2.0)):
     dependencies:
       '@corex/deepmerge': 4.0.43
       '@next/env': 13.5.6
@@ -18034,7 +18010,7 @@ snapshots:
       minimist: 1.2.8
       next: 13.5.6(@babel/core@7.23.7)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
 
-  next-themes@0.2.1(next@13.5.6(@babel/core@7.23.7)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
+  next-themes@0.2.1(next@13.5.6(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
       next: 13.5.6(@babel/core@7.23.7)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react: 18.2.0
@@ -18067,7 +18043,7 @@ snapshots:
       - '@babel/core'
       - babel-plugin-macros
 
-  nextra-theme-docs@2.13.3(next@13.5.6(@babel/core@7.23.7)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(nextra@2.13.3(next@13.5.6(@babel/core@7.23.7)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
+  nextra-theme-docs@2.13.3(next@13.5.6(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(nextra@2.13.3(next@13.5.6(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
       '@headlessui/react': 1.7.18(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@popperjs/core': 2.11.8
@@ -18079,9 +18055,9 @@ snapshots:
       intersection-observer: 0.12.2
       match-sorter: 6.3.4
       next: 13.5.6(@babel/core@7.23.7)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      next-seo: 6.5.0(next@13.5.6(@babel/core@7.23.7)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      next-themes: 0.2.1(next@13.5.6(@babel/core@7.23.7)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      nextra: 2.13.3(next@13.5.6(@babel/core@7.23.7)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      next-seo: 6.5.0(next@13.5.6(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      next-themes: 0.2.1(next@13.5.6(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      nextra: 2.13.3(next@13.5.6(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       scroll-into-view-if-needed: 3.1.0
@@ -18121,7 +18097,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  nextra@2.13.3(next@13.5.6(@babel/core@7.23.7)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
+  nextra@2.13.3(next@13.5.6(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
       '@headlessui/react': 1.7.18(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@mdx-js/mdx': 2.3.0

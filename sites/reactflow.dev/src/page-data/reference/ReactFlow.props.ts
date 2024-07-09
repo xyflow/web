@@ -218,12 +218,6 @@ export const edgeProps: PropsTableProps = {
       name: 'reconnectRadius',
       type: 'number',
       default: '10',
-      description: `deprecated: Please use reconnectRadius`,
-    },
-    {
-      name: 'reconnectRadius',
-      type: 'number',
-      default: '10',
       description: `The radius around an edge connection that can trigger an edge
       reconnection.`,
     },
