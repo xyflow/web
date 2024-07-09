@@ -9,7 +9,6 @@ updates:
       - '/packages/xy-shared'
       - '/sites/reactflow.dev'
       - '/sites/xyflow.com'
-      - '/sites/svelteflow.dev'
     schedule:
       interval: 'daily'
     allow:
@@ -20,3 +19,4 @@ updates:
       interval: 'daily'
     allow:
       dependency-name: '@xyflow/svelte'
+      dependency-name: '@xyflow/react'
