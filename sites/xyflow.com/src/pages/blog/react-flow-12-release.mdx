@@ -24,7 +24,7 @@ This release also brings the final piece of the “xyflow” puzzle, as our pack
 
 React Flow 12 has been in beta since January and we’ve been tending to bugs since then, so we’re confident in sending this out now as a stable release. Shout-out to the brave souls who have already tried it out and submitted your issues, we appreciate you! 🙏🏻
 
-If you want to skip the details and just migrate your project, head over to our [migration guide](https://reactflow.dev/learn/troubleshooting/migrate-to-12).
+If you want to skip the details and just migrate your project, head over to our [migration guide](https://reactflow.dev/learn/troubleshooting/migrate-to-v12).
 
 ### TL;DR
 
@@ -129,13 +129,13 @@ We worked with [Ivan Akulov](https://3perf.com/) to improve the performance of R
 
 Besides the new main features listed above, we added some other things that we wanted to include for a long time.
 
-- **[`useConnection` hook](https://www.notion.so/api-reference/hooks/use-connection):** With this hook you can access the ongoing connection. For example, you can use it for colorizing handles styling a custom connection line based on the current start / end handles.
-- **Controlled `viewport`:** This is an advanced feature. Possible use cases are to animate the viewport or round the transform for lower res screens for example. This features brings two new props: [`viewport`](https://www.notion.so/api-reference/react-flow#viewport) and [`onViewportChange`](https://www.notion.so/api-reference/react-flow#on-viewport-change).
-- **[`ViewportPortal`](https://www.notion.so/api-reference/components/viewport-portal) component:** This makes it possible to render elements in the viewport without the need to implement a custom node.
-- **[`onDelete`](https://www.notion.so/api-reference/react-flow#on-delete) handler:** We added a combined handler for `onDeleteNodes` and `onDeleteEdges` to make it easier to react to deletions.
-- \*\*[`onBeforeDelete`](https://www.notion.so/api-reference/react-flow#on-before-delete) handler\*\*: With this handler you can prevent/ manage deletions.
-- **[`isValidConnection`](https://www.notion.so/api-reference/react-flow#is-valid-connection) prop:** This makes it possible to implement one validation function for all connections. It also gets called for programmatically added edges.
-- **Background component**: add [`patternClassName`](https://www.notion.so/api-reference/components/background#pattern-class-name) prop to be able to style the background pattern by using a class name. This is useful if you want to style the background pattern with Tailwind for example.
+- **[`useConnection` hook](https://reactflow.dev/api-reference/hooks/use-connection):** With this hook you can access the ongoing connection. For example, you can use it for colorizing handles styling a custom connection line based on the current start / end handles.
+- **Controlled `viewport`:** This is an advanced feature. Possible use cases are to animate the viewport or round the transform for lower res screens for example. This features brings two new props: [`viewport`](https://reactflow.dev/api-reference/react-flow#viewport) and [`onViewportChange`](https://reactflow.dev/api-reference/react-flow#on-viewport-change).
+- **[`ViewportPortal`](https://reactflow.dev/api-reference/components/viewport-portal) component:** This makes it possible to render elements in the viewport without the need to implement a custom node.
+- **[`onDelete`](https://reactflow.dev/api-reference/react-flow#on-delete) handler:** We added a combined handler for `onDeleteNodes` and `onDeleteEdges` to make it easier to react to deletions.
+- **[`onBeforeDelete`](https://reactflow.dev/api-reference/react-flow#on-before-delete) handler:** With this handler you can prevent/ manage deletions.
+- **[`isValidConnection`](https://reactflow.dev/api-reference/react-flow#is-valid-connection) prop:** This makes it possible to implement one validation function for all connections. It also gets called for programmatically added edges.
+- **Background component:** add [`patternClassName`](https://reactflow.dev/api-reference/components/background#pattern-class-name) prop to be able to style the background pattern by using a class name. This is useful if you want to style the background pattern with Tailwind for example.
 - **`onMove` callback** gets triggered for library-invoked viewport updates (like fitView or zoom-in)
 - **`deleteElements`** now returns deleted nodes and deleted edges
 - add **`origin` attribute** for nodes
@@ -147,6 +147,6 @@ Besides the new main features listed above, we added some other things that we w
 
 # And that's it!
 
-That's all for this release, thanks for sticking around and using React Flow 😊🌻 If you have any questions or feedback, please reach out on discord, github, or our [contact form](http://localhost:3001/contact).
+That's all for this release, thanks for sticking around and using React Flow 😊🌻 If you have any questions or feedback, please reach out on discord, github, or our [contact form](/contact).
 
 </BlogPostLayout>
