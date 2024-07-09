@@ -8,7 +8,7 @@ export type SubscribeSectionProps = {
 };
 
 export default function SubscribeSection({
-  btnLink = '/pro',
+  btnLink = 'https://reactflow.dev/pro',
   btnLabel = 'React Flow Pro',
 }: SubscribeSectionProps) {
   return (

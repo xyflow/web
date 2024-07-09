@@ -24,7 +24,7 @@ export default function ({
       <div className={teaserClasses}>
         <Text className="flex-1 basis-full max-w-xl">
           <strong>This is a Pro example.</strong> Get{' '}
-          <Link className="underline" href="/pro/examples">
+          <Link className="underline" href="https://reactflow.dev/pro/examples">
             all pro examples
           </Link>
           , 1:1 support from the xyflow team and prioritized Github issues with

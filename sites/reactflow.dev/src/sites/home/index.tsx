@@ -19,7 +19,6 @@ import FlowB from './flows/flow-b';
 import FlowC from './flows/flow-c';
 
 import type { InternalRoute } from '@/utils';
-import WhatsNewPreview from '@/components/whats-new-preview';
 
 const features = [
   {
@@ -90,7 +89,7 @@ const sliderItems = [
 ];
 
 export default function ReactFlowHome() {
-  const { stars = 16000, downloads = 4000, whatsNew = [] } = useSSG();
+  const { stars = 16000, downloads = 4000 } = useSSG();
 
   return (
     <BaseLayout>
@@ -107,7 +106,7 @@ export default function ReactFlowHome() {
               </Link>
             </Button>
             <Button size="lg" variant="pro" asChild>
-              <Link href="/pro">
+              <Link href="https://reactflow.dev/pro">
                 <SparklesIcon className="w-5 h-5 mr-1" /> React Flow Pro
               </Link>
             </Button>
@@ -126,7 +125,7 @@ export default function ReactFlowHome() {
             { label: 'License', value: 'MIT' },
           ]}
           description="React Flow is a MIT-licensed open source library. You can help us to ensure the further development and maintenance by subscribing to React Flow Pro."
-          link="/pro"
+          link="https://reactflow.dev/pro"
           linkLabel={
             <>
               <SparklesIcon className="w-5 h-5 mr-1" /> React Flow Pro
@@ -145,12 +144,10 @@ export default function ReactFlowHome() {
         <ClientLogos />
       </Section>
 
-      <ImageSlider items={sliderItems} />
-
-      <Section className="relative">
-        <WhatsNewPreview items={whatsNew} variant="compact" />
-        <div className="lg:hidden h-[50%] w-full bg-gradient-to-b from-transparent via-white/70 to-white absolute bottom-0 pointer-events-none" />
-      </Section>
+      <ImageSlider
+        buttonLink="https://reactflow.dev/showcase"
+        items={sliderItems}
+      />
 
       <AboutSection />
       <ProjectCards projects={['svelteflow', 'xyflow']} />

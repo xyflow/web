@@ -5,18 +5,15 @@ description: Highly customizable React library for workflow builders, no-code ap
 
 import ReactFlowPage from '@/sites/home';
 import getStaticPropsStats from '@/utils/get-static-props/github-npm-stats';
-import { getMdxContentUnderRoute } from '@/utils/get-static-props/mdx-content-under-route';
 
 export async function getStaticProps() {
-  const whatsNew = await getMdxContentUnderRoute('/whats-new');
-  const whatsNewItems = whatsNew.slice(0, 3).map(entry => entry.frontmatter)
-  const { stars, downloads, revalidate } = await getStaticPropsStats();  
-  
+  const { stars, downloads, revalidate } = await getStaticPropsStats();
+
   return {
     props: {
-      ssg: { whatsNew: whatsNewItems, stars, downloads }
+      ssg: { stars, downloads },
     },
-    revalidate
+    revalidate,
   };
 }
 

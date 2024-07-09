@@ -4,12 +4,7 @@ import { useConfig, Navbar } from 'nextra-theme-docs';
 import { Footer, Button, LogoLabel, cn } from '@xyflow/xy-ui';
 import { Search, SidebarTitle } from 'xy-shared';
 import { SparklesIcon } from '@heroicons/react/24/outline';
-import { getMdxPagesUnderRoute, type Route } from '@/utils';
-
-function useIsPro() {
-  const router = useRouter();
-  return router.pathname.startsWith('/pro');
-}
+import { type Route } from '@/utils';
 
 const baseUrl =
   process.env.NODE_ENV === 'production'
@@ -44,60 +39,24 @@ export default {
   sidebar: {
     titleComponent: SidebarTitle,
   },
-  // banner: {
-  //   key: '2023-survey-results',
-  //   text: (
-  //     <Link
-  //       className="flex justify-center items-center max-w-xs mx-auto hover:underline"
-  //       href="https://reactflow.dev/developer-survey-2023"
-  //     >
-  //       📬 2023 year-end survey results are here! See what the community says
-  //       about React Flow
-  //     </Link>
-  //   ),
-  // },
+  banner: {
+    key: 'legacy-v11',
+    text: (
+      <>
+        💡 This is the legacy site for v11. If you are looking for the latest
+        docs, please visit{' '}
+        <Link className="underline" href="https://reactflow.dev">
+          React Flow
+        </Link>
+      </>
+    ),
+    dismissible: false,
+  },
   navbar: {
-    component: (props) => {
-      const router = useRouter();
-      const isPro = useIsPro();
-      const isProSubpage = isPro && router.pathname !== '/pro';
-      const proHomePageKey = isProSubpage ? 'href' : 'route';
-
-      if (isPro) {
-        return (
-          <Navbar
-            {...props}
-            items={
-              [
-                // hack: the item only gets highlighted when it has a "route", not when it has a "href"
-                // by doing this we prevent the "Pricing" item to be highlighted on sub routes
-                { title: 'Pricing', [proHomePageKey]: '/pro' },
-                { title: 'Pro Examples', route: '/pro/examples' },
-                { title: 'Case Studies', route: '/pro/case-studies' },
-              ] satisfies { title: string; route?: Route; href?: Route }[]
-            }
-          />
-        );
-      }
-
-      return <Navbar {...props} />;
-    },
     extraContent: () => {
-      const isPro = useIsPro();
-
-      if (isPro) {
-        return (
-          <Button asChild>
-            <Link href={`${process.env.NEXT_PUBLIC_PRO_PLATFORM_URL}/signup`}>
-              Sign Up
-            </Link>
-          </Button>
-        );
-      }
-
       return (
         <Button className="px-4" asChild>
-          <Link href="/pro">
+          <Link href="https://reactflow.dev/pro">
             <SparklesIcon className="w-4 h-4 mr-1" />
             <span>
               <span className="hidden lg:inline">React Flow </span>
@@ -110,107 +69,42 @@ export default {
   },
   footer: {
     component: () => {
-      const isPro = useIsPro();
-
       return (
         <Footer
           internal={{
-            title: isPro ? 'React Flow Pro' : 'React Flow',
-            items: isPro
-              ? [
-                  { title: 'Pricing', route: '/pro/pricing' },
-                  { title: 'Pro Examples', route: '/pro/examples' },
-                  { title: 'Case Studies', route: '/pro/case-studies' },
-                  { title: 'Request a Quote', route: '/pro/quote-request' },
-                  {
-                    title: 'Sign Up',
-                    route: `${process.env.NEXT_PUBLIC_PRO_PLATFORM_URL}/signup`,
-                  },
-                  {
-                    title: 'Sign In',
-                    route: `${process.env.NEXT_PUBLIC_PRO_PLATFORM_URL}/login`,
-                  },
-                ]
-              : ([
-                  { title: 'Quickstart Guide', route: '/learn' },
-                  { title: 'API Reference', route: '/api-reference' },
-                  { title: 'Examples', route: '/examples' },
-                  { title: 'Showcase', route: '/showcase' },
-                  { title: 'Case Studies', route: '/pro/case-studies' },
-                  { title: 'React Flow Pro', route: '/pro' },
-                ] satisfies { title: string; route: Route }[]),
+            title: 'React Flow',
+            items: [
+              { title: 'Quickstart Guide', route: '/learn' },
+              { title: 'API Reference', route: '/api-reference' },
+              { title: 'Examples', route: '/examples' },
+              { title: 'Showcase', route: 'https://reactflow.dev/showcase' },
+              {
+                title: 'Case Studies',
+                route: 'https://reactflow.dev/pro/case-studies',
+              },
+              { title: 'React Flow Pro', route: 'https://reactflow.dev/pro' },
+            ],
           }}
-          legal={
-            isPro
-              ? [
-                  {
-                    title: 'Terms of Use',
-                    route: 'https://xyflow.com/terms-of-use',
-                  },
-                  {
-                    title: 'Ethical Standards',
-                    route: 'https://xyflow.com/ethical-standards',
-                  },
-                  {
-                    title: 'Privacy Policy',
-                    route: 'https://xyflow.com/privacy',
-                  },
-                  { title: 'Imprint', route: 'https://xyflow.com/imprint' },
-                ]
-              : [
-                  {
-                    title: 'MIT License',
-                    route: 'https://github.com/xyflow/xyflow/blob/main/LICENSE',
-                  },
-                  {
-                    title: 'Code of Conduct',
-                    route:
-                      'https://github.com/xyflow/xyflow/blob/main/CODE_OF_CONDUCT.md',
-                  },
-                  { title: 'Imprint', route: 'https://xyflow.com/imprint' },
-                ]
-          }
+          legal={[
+            {
+              title: 'MIT License',
+              route: 'https://github.com/xyflow/xyflow/blob/main/LICENSE',
+            },
+            {
+              title: 'Code of Conduct',
+              route:
+                'https://github.com/xyflow/xyflow/blob/main/CODE_OF_CONDUCT.md',
+            },
+            { title: 'Imprint', route: 'https://xyflow.com/imprint' },
+          ]}
           // imageSrc={isHomePage ? undefined : aboutImage}
-          baseUrl="https://reactflow.dev"
+          baseUrl="https://v11.reactflow.dev"
         />
       );
     },
   },
   search: {
-    component: (props) => {
-      const isPro = useIsPro();
-
-      if (isPro) {
-        return null;
-      }
-
-      return <Search {...props} />;
-    },
-  },
-  toc: {
-    extraContent: () => {
-      const className =
-        'nx-text-xs nx-font-medium nx-text-gray-500 hover:nx-text-gray-900 dark:nx-text-gray-400 dark:hover:nx-text-gray-100 contrast-more:nx-text-gray-800 contrast-more:dark:nx-text-gray-50';
-
-      return (
-        <div className="nx-mt-4 nx-flex nx-flex-col nx-gap-2">
-          <p className="nx-text-xs nx-font-semibold nx-tracking-tight nx-text-gray-600 dark:nx-text-gray-200 contrast-more:nx-text-gray-900 contrast-more:dark:nx-text-gray-50">
-            What's new?
-          </p>
-          {getMdxPagesUnderRoute('/whats-new')
-            .sort()
-            .slice(0, 3)
-            .map(({ route, frontMatter }) => (
-              <Link key={route} href={route} className={className}>
-                {frontMatter.title}
-              </Link>
-            ))}
-          <Link href="/whats-new" className={className}>
-            ...and more!
-          </Link>
-        </div>
-      );
-    },
+    component: Search,
   },
   feedback: {
     useLink: () => 'https://xyflow.com/contact',
@@ -262,6 +156,8 @@ export default {
           },
         ],
       },
+      noindex: true,
+      nofollow: true,
     };
   },
   head: null,

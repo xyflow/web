@@ -14,11 +14,11 @@
     "items": {
       "showcase": {
         "title": "Showcase",
-        "href": "/showcase"
+        "href": "https://reactflow.dev/showcase"
       },
       "whats-new": {
         "title": "What's new?",
-        "href": "/whats-new"
+        "href": "https://reactflow.dev/whats-new"
       },
       "blog": {
         "title": "Blog",
@@ -46,35 +46,8 @@
       "layout": "raw"
     }
   },
-  "showcase": {
-    "title": "Showcase",
-    "display": "hidden",
-    "theme": {
-      "layout": "raw"
-    }
-  },
-  "pro": {
-    "title": "Pro",
-    "display": "hidden",
-    "theme": {
-      "layout": "raw"
-    }
-  },
-  "whats-new": {
-    "title": "What's new?",
-    "display": "hidden",
-    "theme": {
-      "layout": "full"
-    }
-  },
   "404": {
     "title": "404",
-    "theme": {
-      "layout": "raw"
-    }
-  },
-  "developer-survey-2023": {
-    "display": "hidden",
     "theme": {
       "layout": "raw"
     }
