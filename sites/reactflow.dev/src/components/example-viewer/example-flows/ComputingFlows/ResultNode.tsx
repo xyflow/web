@@ -14,7 +14,6 @@ function ResultNode() {
   const nodesData = useNodesData<MyNode>(
     connections.map((connection) => connection.source),
   );
-
   const textNodes = nodesData.filter(isTextNode);
 
   return (
