@@ -429,7 +429,7 @@ const onConnectEnd: OnConnectEnd = useCallback(
 );
 ```
 
-First we are getting the `nodeInternals` from the React Flow store via `store.getState()`. `nodeInternals` is a map that contains all nodes and their current state. We need it to get the position and dimensions of the clicked node. Then we check if the target of the onConnectEnd event is the React Flow pane. If it is, we want to add a new node. For this we are using our `addChildNode` and the newly created `getChildNodePosition` helper function.
+First we are getting the `nodeLookup` from the React Flow store via `store.getState()`. `nodeLookup` is a map that contains all nodes and their current state. We need it to get the position and dimensions of the clicked node. Then we check if the target of the onConnectEnd event is the React Flow pane. If it is, we want to add a new node. For this we are using our `addChildNode` and the newly created `getChildNodePosition` helper function.
 
 #### Helper function in src/App/index.tsx
 
