@@ -89,6 +89,12 @@ export const commonProps: PropsTableProps = {
           clicks don't trigger drag events.
         `,
     },
+    {
+      name: 'paneClickDistance',
+      type: 'number',
+      default: `0`,
+      description: `The max distance between mousedown/up that will trigger a click.`,
+    },
     { name: 'style', type: 'React.CSSProperties' },
     { name: 'className', type: 'string' },
     {
