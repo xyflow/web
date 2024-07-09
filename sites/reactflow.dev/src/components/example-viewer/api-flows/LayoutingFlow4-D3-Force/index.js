@@ -13,6 +13,7 @@ import {
   useNodesState,
   useEdgesState,
   useReactFlow,
+  useNodesInitialized,
 } from '@xyflow/react';
 
 import { initialNodes, initialEdges } from './nodes-edges.js';
@@ -91,13 +92,13 @@ const useLayoutedElements = () => {
     const isRunning = () => running;
 
     return [true, { toggle, isRunning }];
-  }, [initialised]);
+  }, [initialized]);
 };
 
 const LayoutFlow = () => {
   const [nodes, , onNodesChange] = useNodesState(initialNodes);
   const [edges, , onEdgesChange] = useEdgesState(initialEdges);
-  const [initialised, { toggle, isRunning }] = useLayoutedElements();
+  const [initialized, { toggle, isRunning }] = useLayoutedElements();
 
   return (
     <ReactFlow
@@ -107,7 +108,7 @@ const LayoutFlow = () => {
       onEdgesChange={onEdgesChange}
     >
       <Panel>
-        {initialised && (
+        {initialized && (
           <button onClick={toggle}>
             {isRunning() ? 'Stop' : 'Start'} force simulation
           </button>
