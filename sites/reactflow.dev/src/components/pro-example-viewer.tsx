@@ -32,7 +32,7 @@ export default function ({
         </Text>
         <div className="flex space-x-4">
           <Button asChild className="shrink-0">
-            <Link href="/pro">See Pricing Plans</Link>
+            <Link href="https://reactflow.dev/pro">See Pricing Plans</Link>
           </Button>
           <Button asChild variant="secondary" className="text-primary shrink-0">
             <a href={`https://pro.reactflow.dev/examples/react/${slug}`}>
