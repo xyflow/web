@@ -15,7 +15,7 @@ export const nodePropsFields: PropsTableProps = {
     { name: 'selected', type: 'boolean;' },
     { name: 'isConnectable', type: 'boolean;' },
     { name: 'zIndex', type: 'number;' },
-    { name: 'positionAbsoluteY', type: 'number;' },
+    { name: 'positionAbsoluteX', type: 'number;' },
     { name: 'positionAbsoluteY', type: 'number;' },
     { name: 'dragging', type: 'boolean;' },
     { name: 'targetPosition', type: 'Position;' },
