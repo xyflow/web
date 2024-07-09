@@ -1,3 +1,7 @@
+const REACT_FLOW_VERSION = require('./package.json').dependencies[
+  '@xyflow/react'
+]?.replace('^', '');
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Configure pageExtensions to include md and mdx
@@ -15,6 +19,9 @@ const nextConfig = {
         pathname: '/svg',
       },
     ],
+  },
+  env: {
+    REACT_FLOW_VERSION,
   },
 };
 

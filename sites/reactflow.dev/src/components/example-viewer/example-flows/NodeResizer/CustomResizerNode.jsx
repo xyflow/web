@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { Handle, Position, NodeResizeControl } from 'reactflow';
+import { Handle, Position, NodeResizeControl } from '@xyflow/react';
 
 const controlStyle = {
   background: 'transparent',

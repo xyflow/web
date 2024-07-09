@@ -5,9 +5,15 @@ description: Use this guide to migrate from React Flow v10 to v11.
 
 # Migrate to v11
 
-A lot changed in v11 but this time we've tried to keep the breaking changes small. The biggest change is the new package name `reactflow` and the new repo structure. React Flow is now managed as a monorepo and separated into multiple packages that can be installed separately. In addition to that, there are some API changes and new APIs introduced in v11. This guide explains the changes in detail and helps you to migrate from v10 to v11.
-
 import { Callout } from 'nextra/components';
+
+<Callout type="info">
+  You can find the docs for old versions of React Flow here:
+  [v11](https://v11.reactflow.dev), [v10](https://v10.reactflow.dev),
+  [v9](https://v9.reactflow.dev)
+</Callout>
+
+A lot changed in v11 but this time we've tried to keep the breaking changes small. The biggest change is the new package name `reactflow` and the new repo structure. React Flow is now managed as a monorepo and separated into multiple packages that can be installed separately. In addition to that, there are some API changes and new APIs introduced in v11. This guide explains the changes in detail and helps you to migrate from v10 to v11.
 
 <Callout>React Flow 11 only works with **React 17** or greater</Callout>
 
@@ -56,7 +62,7 @@ import ReactFlow from 'react-flow-renderer';
 
 ```js
 // npm install reactflow
-import ReactFlow from 'reactflow';
+import { ReactFlow } from '@xyflow/react';
 ```
 
 ### 2. Importing CSS is mandatory
@@ -65,10 +71,10 @@ We are not injecting CSS anymore. **React Flow won't work if you are not loading
 
 ```js
 // default styling
-import 'reactflow/dist/style.css';
+import '@xyflow/react/dist/style.css';
 
 // or if you just want basic styles
-import 'reactflow/dist/base.css';
+import '@xyflow/react/dist/base.css';
 ```
 
 #### 2.1. Removal of the nocss entrypoint
@@ -92,7 +98,7 @@ export default Flow;
 #### New API
 
 ```jsx
-import ReactFlow from 'reactflow';
+import { ReactFlow } from '@xyflow/react';
 
 const defaultViewport: Viewport = { x: 10, y: 15, zoom: 5 };
 
@@ -122,7 +128,7 @@ const [centerX, centerY] = getBezierEdgeCenter(params);
 #### New API
 
 ```jsx
-import { getBezierPath } from 'reactflow';
+import { getBezierPath } from '@xyflow/react';
 
 const [path, labelX, labelY] = getBezierPath(edgeParams);
 ```
@@ -155,7 +161,7 @@ export default Flow;
 #### New API
 
 ```jsx
-import ReactFlow from 'reactflow';
+import { ReactFlow } from '@xyflow/react';
 
 const Flow = () => {
   const onConnectEnd = () => console.log('on connect stop');

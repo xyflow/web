@@ -23,8 +23,8 @@ const items: FAQItem[] = [
         <Link variant="primary" href="https://pro.reactflow.dev/signup">
           create a React Flow Pro account
         </Link>
-        , you can log in to the pro platform and access the Helper Lines pro example for
-        free. If you subscribe, you can access all of the pro
+        , you can log in to the pro platform and access the Helper Lines pro
+        example for free. If you subscribe, you can access all of the pro
         examples.
       </>
     ),

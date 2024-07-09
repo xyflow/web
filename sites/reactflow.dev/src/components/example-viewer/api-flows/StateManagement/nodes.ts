@@ -1,4 +1,4 @@
-import { Node } from 'reactflow';
+import { AppNode } from './types';
 
 export default [
   {
@@ -19,4 +19,4 @@ export default [
     data: { label: 'Output' },
     position: { x: 250, y: 250 },
   },
-] as Node[];
+] as AppNode[];

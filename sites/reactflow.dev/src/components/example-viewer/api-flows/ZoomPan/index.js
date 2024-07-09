@@ -1,6 +1,11 @@
 import { useCallback } from 'react';
-import ReactFlow, { addEdge, useEdgesState, useNodesState } from 'reactflow';
-import 'reactflow/dist/style.css';
+import {
+  ReactFlow,
+  addEdge,
+  useEdgesState,
+  useNodesState,
+} from '@xyflow/react';
+import '@xyflow/react/dist/style.css';
 
 import initialNodes from './nodes.js';
 import initialEdges from './edges.js';
@@ -11,7 +16,7 @@ function Flow() {
 
   const onConnect = useCallback(
     (connection) => setEdges((eds) => addEdge(connection, eds)),
-    [setEdges]
+    [setEdges],
   );
 
   return (

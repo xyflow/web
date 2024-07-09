@@ -16,13 +16,9 @@ export const defaultEdgeFields: PropsTableProps = {
     { name: 'hidden', type: 'boolean' },
     { name: 'animated', type: 'boolean' },
     { name: 'selected', type: 'boolean' },
+    { name: 'selectable', type: 'boolean' },
     { name: 'deletable', type: 'boolean' },
     { name: 'focusable', type: 'boolean' },
-    {
-      name: 'updatable?',
-      type: 'boolean | "source" | "target"',
-      description: 'deprecated: Please use reconnectable',
-    },
     {
       name: 'reconnectable?',
       type: 'boolean | "source" | "target"',

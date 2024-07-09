@@ -1,4 +1,4 @@
-import { Position, internalsSymbol } from 'reactflow';
+import { Position } from '@xyflow/react';
 
 // returns the position (top,right,bottom or right) passed node compared to
 function getParams(nodeA, nodeB) {
@@ -24,8 +24,8 @@ function getParams(nodeA, nodeB) {
 
 function getHandleCoordsByPosition(node, handlePosition) {
   // all handles are from type source, that's why we use handleBounds.source here
-  const handle = node[internalsSymbol].handleBounds.source.find(
-    (h) => h.position === handlePosition
+  const handle = node.internals.handleBounds.source.find(
+    (h) => h.position === handlePosition,
   );
 
   let offsetX = handle.width / 2;
@@ -49,16 +49,16 @@ function getHandleCoordsByPosition(node, handlePosition) {
       break;
   }
 
-  const x = node.positionAbsolute.x + handle.x + offsetX;
-  const y = node.positionAbsolute.y + handle.y + offsetY;
+  const x = node.internals.positionAbsolute.x + handle.x + offsetX;
+  const y = node.internals.positionAbsolute.y + handle.y + offsetY;
 
   return [x, y];
 }
 
 function getNodeCenter(node) {
   return {
-    x: node.positionAbsolute.x + node.width / 2,
-    y: node.positionAbsolute.y + node.height / 2,
+    x: node.internals.positionAbsolute.x + node.measured.width / 2,
+    y: node.internals.positionAbsolute.y + node.measured.height / 2,
   };
 }
 

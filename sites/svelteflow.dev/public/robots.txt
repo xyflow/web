@@ -4,3 +4,6 @@ Allow: /
 
 # Host
 Host: https://svelteflow.dev
+
+# Sitemaps
+Sitemap: https://svelteflow.dev/sitemap.xml

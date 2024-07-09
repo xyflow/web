@@ -113,7 +113,7 @@ export default function SvelteFlowHome() {
           stats={[
             {
               label: 'Current Version',
-              value: process.env.NEXT_PUBLIC_SVELTE_FLOW_VERSION,
+              value: process.env.SVELTE_FLOW_VERSION,
             },
             {
               label: 'Weekly Installs',

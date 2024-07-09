@@ -7,7 +7,9 @@
     "GITHUB_API_URL",
     "NPM_SVELTE_FLOW",
     "NPM_REACT_FLOW",
-    "NPM_REACT_FLOW_LEGACY"
+    "NPM_REACT_FLOW_LEGACY",
+    "SVELTE_FLOW_VERSION",
+    "REACT_FLOW_VERSION"
   ],
   "pipeline": {
     "build": {

@@ -1,67 +1,45 @@
 import { create } from 'zustand';
-import {
-  Connection,
-  Edge,
-  EdgeChange,
-  Node,
-  NodeChange,
-  addEdge,
-  OnNodesChange,
-  OnEdgesChange,
-  OnConnect,
-  applyNodeChanges,
-  applyEdgeChanges,
-} from 'reactflow';
+import { addEdge, applyNodeChanges, applyEdgeChanges } from '@xyflow/react';
 
 import initialNodes from './nodes';
 import initialEdges from './edges';
+import { AppNode, AppState, ColorNode } from './types';
 
-export type NodeData = {
-  color: string;
-};
-
-export type RFState = {
-  nodes: Node<NodeData>[];
-  edges: Edge[];
-  onNodesChange: OnNodesChange;
-  onEdgesChange: OnEdgesChange;
-  onConnect: OnConnect;
-  setNodes: (nodes: Node[]) => void;
-  setEdges: (edges: Edge[]) => void;
-  updateNodeColor: (nodeId: string, color: string) => void;
-};
+function isColorChooserNode(node: AppNode): node is ColorNode {
+  return node.type === 'colorChooser';
+}
 
 // this is our useStore hook that we can use in our components to get parts of the store and call actions
-const useStore = create<RFState>((set, get) => ({
+const useStore = create<AppState>((set, get) => ({
   nodes: initialNodes,
   edges: initialEdges,
-  onNodesChange: (changes: NodeChange[]) => {
+  onNodesChange: (changes) => {
     set({
       nodes: applyNodeChanges(changes, get().nodes),
     });
   },
-  onEdgesChange: (changes: EdgeChange[]) => {
+  onEdgesChange: (changes) => {
     set({
       edges: applyEdgeChanges(changes, get().edges),
     });
   },
-  onConnect: (connection: Connection) => {
+  onConnect: (connection) => {
     set({
       edges: addEdge(connection, get().edges),
     });
   },
-  setNodes: (nodes: Node[]) => {
+  setNodes: (nodes) => {
     set({ nodes });
   },
-  setEdges: (edges: Edge[]) => {
+  setEdges: (edges) => {
     set({ edges });
   },
-  updateNodeColor: (nodeId: string, color: string) => {
+  updateNodeColor: (nodeId, color) => {
     set({
       nodes: get().nodes.map((node) => {
-        if (node.id === nodeId) {
-          // it's important to create a new object here, to inform React Flow about the changes
-          node.data = { ...node.data, color };
+        if (node.id === nodeId && isColorChooserNode(node)) {
+          // it's important to create a new object here, to inform React Flow about the cahnges
+          return { ...node, data: { ...node.data, color } };
         }
 
         return node;

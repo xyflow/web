@@ -46,5 +46,11 @@ export const nodeFields: PropsTableProps = {
     { name: 'focusable?', type: 'boolean' },
     { name: 'style?', type: 'React.CSSProperties' },
     { name: 'className?', type: 'string' },
+    { name: 'handles?', type: 'NodeHandle[]' },
+    { name: 'origin?', type: 'NodeOrigin' },
+    {
+      name: 'measured?',
+      type: '{ width?: number, height?: number }',
+    },
   ],
 };

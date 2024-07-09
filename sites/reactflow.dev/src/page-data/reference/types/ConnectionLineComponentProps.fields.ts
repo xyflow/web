@@ -11,7 +11,7 @@ export const connectionLineComponentPropsFields: PropsTableProps = {
     },
     {
       name: 'fromHandle?',
-      type: 'HandleElement',
+      type: 'Handle',
       description: `The handle on the fromNode that the connection line originates
       from.`,
     },

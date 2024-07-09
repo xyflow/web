@@ -1,4 +1,4 @@
-import { Node } from 'reactflow';
+import { AppNode } from './types';
 
 export default [
   {
@@ -20,4 +20,4 @@ export default [
     data: { color: '#B794F4' },
     position: { x: 250, y: 250 },
   },
-] as Node[];
+] as AppNode[];

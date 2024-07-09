@@ -24,8 +24,8 @@ _either_ nodes or edges changes.
 </Callout>
 
 ```jsx
-import { useState, useCallback } from 'react';
-import ReactFlow, { useOnSelectionChange } from 'reactflow';
+import { useState } from 'react';
+import { ReactFlow, useOnSelectionChange } from '@xyflow/react';
 
 function SelectionDisplay() {
   const [selectedNodes, setSelectedNodes] = useState([]);
@@ -35,10 +35,10 @@ function SelectionDisplay() {
   const onChange = useCallback(({ nodes, edges }) => {
     setSelectedNodes(nodes.map((node) => node.id));
     setSelectedEdges(edges.map((edge) => edge.id));
-  }, [])
+  }, []);
 
   useOnSelectionChange({
-    onChange
+    onChange,
   });
 
   return (

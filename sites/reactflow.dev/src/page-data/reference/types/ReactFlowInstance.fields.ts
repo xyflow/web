@@ -3,6 +3,10 @@ import { type PropsTableProps } from 'xy-shared';
 export const nodesAndEdgesFields: PropsTableProps = {
   props: [
     { name: 'getNode', type: '(id: string) => Node<T> | undefined' },
+    {
+      name: 'getInternalNode',
+      type: '(id: string) => InternalNode<T> | undefined',
+    },
     { name: 'getNodes', type: '() => Node<T>[]' },
     {
       name: 'addNodes',
@@ -44,11 +48,23 @@ export const nodesAndEdgesFields: PropsTableProps = {
     },
     {
       name: 'deleteElements',
-      type: '(payload: { nodes?: (Partial<Node> & { id: Node["id"] })[]; edges?: (Partial<Edge> & { id: Edge["id"] })[]; }) => void',
-      description: `Remove multiple nodes and edges from a flow at once. Any nodes
-      and edges in the flow found with ids that match those in the payload will
-      be removed. This will trigger both the onNodesChange and onEdgesChange
-      handlers in a controlled flow.`,
+      type: 'DeleteElements',
+    },
+    {
+      name: 'updateNode',
+      type: '(id: string, nodeUpdate: Partial<NodeType> | ((node: NodeType) => Partial<NodeType>), options?: { replace: boolean }) => void',
+    },
+    {
+      name: 'updateNodeData',
+      type: `( id: string, dataUpdate: Partial<NodeType['data']> | ((edge: NodeType) => Partial<NodeType['data']>), options?: { replace: boolean }) => void`,
+    },
+    {
+      name: 'updateEdge',
+      type: '(id: string, edgeUpdate: Partial<EdgeType> | ((node: EdgeType) => Partial<EdgeType>), options?: { replace: boolean }) => void',
+    },
+    {
+      name: 'updateEdgeData',
+      type: `( id: string, dataUpdate: Partial<EdgeType['data']> | ((edge: EdgeType) => Partial<EdgeType['data']>), options?: { replace: boolean }) => void`,
     },
   ],
 };
@@ -112,13 +128,6 @@ export const viewportFields: PropsTableProps = {
       rectangle. By pasing in a duration, the viewport will animate from its
       current position to the new position. The padding option can be used to
       add space around the bounds.`,
-    },
-    {
-      name: 'project',
-      type: '(position: { x: number; y: number; }) => { x: number; y: number; }',
-      description: `⚠️ This function is deprecated and will be removed in v12.
-      Please use screenToFlowPosition instead. When using screenToFlowPosition,
-      you do not need to subtract the react flow bounds anymore.`,
     },
     {
       name: 'screenToFlowPosition',
