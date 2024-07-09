@@ -1,10 +1,9 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useConfig, Navbar } from 'nextra-theme-docs';
-import { Footer, Button, LogoLabel, cn } from '@xyflow/xy-ui';
-import { Search, SidebarTitle } from 'xy-shared';
+import { useConfig } from 'nextra-theme-docs';
+import { Footer, Button, LogoLabel } from '@xyflow/xy-ui';
+import { SidebarTitle } from 'xy-shared';
 import { SparklesIcon } from '@heroicons/react/24/outline';
-import { type Route } from '@/utils';
 
 const baseUrl =
   process.env.NODE_ENV === 'production'
@@ -104,7 +103,7 @@ export default {
     },
   },
   search: {
-    component: Search,
+    component: null,
   },
   feedback: {
     useLink: () => 'https://xyflow.com/contact',
