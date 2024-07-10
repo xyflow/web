@@ -37,8 +37,8 @@ importers:
   apps/react-screenshots:
     dependencies:
       '@xyflow/react':
-        specifier: 12.0.0-next.24
-        version: 12.0.0-next.24(@types/react@18.2.66)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        specifier: 12.0.0
+        version: 12.0.0(@types/react@18.2.66)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       d3-drag:
         specifier: ^3.0.0
         version: 3.0.0
@@ -503,18 +503,6 @@ importers:
       xy-tsconfig:
         specifier: workspace:*
         version: link:../xy-tsconfig
-
-  scripts/check-flow-libs:
-    dependencies:
-      '@actions/exec':
-        specifier: ^1.1.1
-        version: 1.1.1
-      envfile:
-        specifier: ^7.1.0
-        version: 7.1.0
-      latest-version:
-        specifier: ^9.0.0
-        version: 9.0.0
 
   scripts/create-whats-new:
     dependencies:
@@ -4246,12 +4234,6 @@ packages:
       react: '>=17'
       react-dom: '>=17'
 
-  '@xyflow/react@12.0.0-next.24':
-    resolution: {integrity: sha512-FwvTUG7AxThzD4Y1Cuc0OX0eErAFpn7tBNJbCrzcSffrqQw9H4ZnFj+SUDtmxQnAISqs40dTf8szrC8+x9zQPg==}
-    peerDependencies:
-      react: '>=17'
-      react-dom: '>=17'
-
   '@xyflow/svelte@0.1.10':
     resolution: {integrity: sha512-B8u9yUR2r18kIyvbq5UT4MwNvTGoXXYdvJcWRkXESe98i/g+HrXPn9N5g/g0bg/yZBhiaf6f1/6F/1J0oPZQvA==}
     peerDependencies:
@@ -4267,9 +4249,6 @@ packages:
 
   '@xyflow/system@0.0.29':
     resolution: {integrity: sha512-by8nF9a1ZNeoDPoyD4F7useNM9ziDTHw7sabJ9XEmMb2lW4wJLmsKDhqmgwzMaMzm8YrmjdEbjysJsq2fOuRGQ==}
-
-  '@xyflow/system@0.0.30':
-    resolution: {integrity: sha512-/Tq9w6QzvjlyGHW+AWoYE68vtyGS8sdp5CYgbs857pfl1ZdLNFQ4lxXvV4nFv+5z2aPp/y1iOgXLdZJT3aHX0g==}
 
   '@xyflow/system@0.0.34':
     resolution: {integrity: sha512-Gcc2aSPZX5YMn+Rv6a2lxRes005YLc6LRaMtzRsobCcIEMpBUWzEx8/OrvpAYOCM3UCxlqfUOK2ekglxbjzYEQ==}
@@ -14092,6 +14071,17 @@ snapshots:
       - '@types/react'
       - immer
 
+  '@xyflow/react@12.0.0(@types/react@18.2.66)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
+    dependencies:
+      '@xyflow/system': 0.0.34
+      classcat: 5.0.5
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      zustand: 4.5.2(@types/react@18.2.66)(react@18.2.0)
+    transitivePeerDependencies:
+      - '@types/react'
+      - immer
+
   '@xyflow/react@12.0.0-next.21(@types/react@18.2.47)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
       '@xyflow/system': 0.0.29
@@ -14099,17 +14089,6 @@ snapshots:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       zustand: 4.5.2(@types/react@18.2.47)(react@18.2.0)
-    transitivePeerDependencies:
-      - '@types/react'
-      - immer
-
-  '@xyflow/react@12.0.0-next.24(@types/react@18.2.66)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
-    dependencies:
-      '@xyflow/system': 0.0.30
-      classcat: 5.0.5
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      zustand: 4.5.2(@types/react@18.2.66)(react@18.2.0)
     transitivePeerDependencies:
       - '@types/react'
       - immer
@@ -14163,16 +14142,6 @@ snapshots:
       d3-zoom: 3.0.0
 
   '@xyflow/system@0.0.29':
-    dependencies:
-      '@types/d3-drag': 3.0.7
-      '@types/d3-selection': 3.0.10
-      '@types/d3-transition': 3.0.8
-      '@types/d3-zoom': 3.0.8
-      d3-drag: 3.0.0
-      d3-selection: 3.0.0
-      d3-zoom: 3.0.0
-
-  '@xyflow/system@0.0.30':
     dependencies:
       '@types/d3-drag': 3.0.7
       '@types/d3-selection': 3.0.10
@@ -20051,7 +20020,7 @@ snapshots:
       estree-walker: 3.0.3
       is-reference: 3.0.2
       locate-character: 3.0.0
-      magic-string: 0.30.9
+      magic-string: 0.30.10
       periscopic: 3.1.0
 
   svgo@3.2.0:
