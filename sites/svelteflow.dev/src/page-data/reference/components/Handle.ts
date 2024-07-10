@@ -3,7 +3,7 @@ import { type PropsTableProps } from 'xy-shared';
 export const handleProps: PropsTableProps = {
   props: [
     { name: 'id?', type: 'string' },
-    { name: 'type', type: 'HandleType' },
+    { name: 'type', type: '"source" | "target"' },
     { name: 'class?', type: 'string' },
     { name: 'style?', type: 'string' },
     {

@@ -8,7 +8,7 @@ import { handleFields } from '@/page-data/reference/types/Handle.fields.ts';
 
 # Handle
 
-[Source on GitHub](https://github.com/xyflow/xyflow/blob/v11/packages/core/src/types/general.ts/#L57)
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/types/handles.ts/#L5)
 
 The `Handle` type represents the attributes of a handle.
 
@@ -19,7 +19,7 @@ export type Handle = {
   x: number;
   y: number;
   position: Position;
-  type: HandleType;
+  type: 'source' | 'target';
   width: number;
   height: number;
 };

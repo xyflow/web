@@ -246,7 +246,7 @@ export const connectionEventHandlerProps: PropsTableProps = {
       type: `(event: MouseEvent | TouchEvent, params: {
         nodeId?: string;
         handleId?: string;
-        handleType?: HandleType;
+        handleType?: 'source' | 'target';
       }) => void`,
       description: `When a user starts to drag a connection line, this event gets fired.`,
     },

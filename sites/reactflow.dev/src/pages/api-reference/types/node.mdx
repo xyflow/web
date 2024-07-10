@@ -18,18 +18,21 @@ import { nodeFields } from '@/page-data/reference/types/Node.fields.ts';
   but will be removed in version 12.
 </Callout>
 
-[Source on GitHub](https://github.com/xyflow/xyflow/blob/v11/packages/core/src/types/nodes.ts/#L8)
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/types/nodes.ts/#L10)
 
 The `Node` type represents everything React Flow needs to know about a given node.
 Many of these properties can be manipulated both by React Flow or by you, but
 some such as `width` and `height` should be considered read-only.
 
 ```ts
-export type Node<T, U extends string> = {
+export type Node<
+  NodeData extends Record<string, unknown> = Record<string, unknown>,
+  NodeType extends string = string,
+> = {
   id: string;
   position: XYPosition;
-  data: T;
-  type?: U;
+  data: NodeData;
+  type?: NodeType;
   sourcePosition?: Position;
   targetPosition?: Position;
   hidden?: boolean;

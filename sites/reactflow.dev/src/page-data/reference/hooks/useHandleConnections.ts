@@ -5,7 +5,7 @@ export const signature: PropsTableProps = {
     { name: 'Params' },
     {
       name: 'type',
-      type: 'HandleType',
+      type: '"source" | "target"',
       description: `What type of handle connections do you want to observer?`,
     },
     { name: 'id?', type: 'string', description: 'ID of the handle' },

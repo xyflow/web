@@ -14,7 +14,7 @@ import {
 
 # useReactFlow
 
-[Source on GitHub](https://github.com/xyflow/xyflow/blob/v11/packages/core/src/hooks/useReactFlow.ts/#L22)
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/hooks/useReactFlow.ts)
 
 This hook returns a [`ReactFlowInstance`](/api-reference/types/react-flow-instance) that can
 be used to update nodes and edges, manipulate the viewport, or query the current
@@ -29,8 +29,8 @@ export function NodeCounter() {
   const [count, setCount] = useState(0);
   const countNodes = useCallback(() => {
     setCount(reactFlow.getNodes().length);
-  // you need to pass it as a dependency if you are using it with useEffect or useCallback
-  // because at the first render, it's not initialized yet and some functions might not work.
+    // you need to pass it as a dependency if you are using it with useEffect or useCallback
+    // because at the first render, it's not initialized yet and some functions might not work.
   }, [reactFlow]);
 
   return (

@@ -47,5 +47,11 @@ export const controlsProps: PropsTableProps = {
       description: `Called when the interactive (lock) button is clicked.`,
     },
     { name: 'position?', type: 'PanelPosition', default: '"bottom-left"' },
+    { name: 'ariaLabel?', type: 'string', default: '"React Flow controls"' },
+    {
+      name: 'orientation?',
+      type: '"horizontal" | "vertical"',
+      default: '"vertical"',
+    },
   ],
 };

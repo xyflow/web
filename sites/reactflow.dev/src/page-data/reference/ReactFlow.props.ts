@@ -384,12 +384,12 @@ export const connectionEventHandlerProps: PropsTableProps = {
     },
     {
       name: 'onConnectStart',
-      type: '(event: React.MouseEvent, params: { nodeId: string | null; handleId: string | null; handleType: HandleType | null; }) => void',
+      type: '(event: React.MouseEvent, params: { nodeId: string | null; handleId: string | null; handleType: "source" | "target" | null; }) => void',
     },
     { name: 'onConnectEnd', type: '(event: React.MouseEvent) => void' },
     {
       name: 'onClickConnectStart',
-      type: '(event: React.MouseEvent, params: { nodeId: string | null; handleId: string | null; handleType: HandleType | null; }) => void',
+      type: '(event: React.MouseEvent, params: { nodeId: string | null; handleId: string | null; handleType: "source" | "target" | null; }) => void',
     },
     { name: 'onClickConnectEnd', type: '(event: React.MouseEvent) => void' },
     {
