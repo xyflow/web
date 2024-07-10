@@ -9,7 +9,7 @@ export const signature: PropsTableProps = {
     },
     {
       name: 'type',
-      type: 'HandleType',
+      type: '"source" | "target"',
       description: 'The type of the handle',
     },
     {

@@ -10,16 +10,16 @@ import { edgePropsFields } from '@/page-data/reference/types/EdgeProps.ts';
 
 # EdgeProps
 
-[Source on GitHub](https://github.com/xyflow/xyflow/blob/v11/packages/core/src/types/edges.ts/#L99)
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/types/edges.ts/#L100)
 
 When you implement a custom edge it is wrapped in a component that enables some
 basic functionality. Your custom edge component receives the following props:
 
 ```ts
-export type EdgeProps<T> = {
+export type EdgeProps<EdgeType extends Edge = Edge> = {
   id: string;
   animated: boolean;
-  data: T;
+  data: EdgeType['data'];
   style: React.CSSProperties;
   selected: boolean;
   source: string;

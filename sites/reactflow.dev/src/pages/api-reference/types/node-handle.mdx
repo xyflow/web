@@ -10,13 +10,13 @@ description:
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/13897512d3c57e72c2e27b14ffa129412289d948/packages/system/src/types/nodes.ts#L139)
 
 ```ts
-export enum NodeHandle {
+export type NodeHandle {
   x: number,
   y: number,
   position: Position,
   id?: string | null,
   width?: number,
   height?: number,
-  type?: HandleType
+  type?: 'source' | 'target',
 }
 ```

@@ -11,16 +11,16 @@ import { nodePropsFields } from '@/page-data/reference/types/NodeProps.fields.ts
 
 # NodeProps&lt;T>
 
-[Source on GitHub](https://github.com/xyflow/xyflow/blob/v11/packages/core/src/types/nodes.ts/#L78)
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/types/nodes.ts/#L89)
 
 When you implement a [custom node](/learn/customization/custom-nodes) it is
 wrapped in a component that enables basic functionality like selection and
 dragging. Your custom node receives the following props:
 
 ```ts
-export type NodeProps<T = any> = {
+export type NodeProps<NodeType extends Node = Node> = {
   id: string;
-  data: T;
+  data: Node['data'];
   dragHandle?: boolean;
   type?: string;
   selected?: boolean;
@@ -37,14 +37,17 @@ export type NodeProps<T = any> = {
 ## Usage
 
 ```tsx
-import { NodeProps } from '@xyflow/react';
 import { useState } from 'react';
+import { NodeProps, Node } from '@xyflow/react';
 
-export type CounterData = {
-  initialCount?: number;
-};
+export type CounterNode = Node<
+  {
+    initialCount?: number;
+  },
+  'counter'
+>;
 
-export default function CounterNode(props: NodeProps<CounterData>) {
+export default function CounterNode(props: NodeProps<CounterNode>) {
   const [count, setCount] = useState(props.data?.initialCount ?? 0);
 
   return (
@@ -63,7 +66,7 @@ Remember to register your custom node by adding it to the
 `<ReactFlow />` component.
 
 ```tsx
-import { ReactFlow } from '@xyflow/react';
+import { ReactFlow } from '@xyflow/react';
 import CounterNode from './CounterNode';
 
 const nodeTypes = {
