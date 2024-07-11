@@ -100,7 +100,7 @@
     margin-top: 10px;
   }
 
-  :gloabl(.updatenode__checkboxwrapper) {
+  :global(.updatenode__checkboxwrapper) {
     margin-top: 10px;
     display: flex;
     align-items: center;
