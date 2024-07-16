@@ -1,3 +1,4 @@
+import { Edge, Node } from 'reactflow';
 import { SLIDE_WIDTH, SLIDE_HEIGHT, SLIDE_PADDING, SlideData } from './Slide';
 
 const slide01 = {
@@ -61,16 +62,16 @@ export const slides = Object.fromEntries(
 ) as Record<string, SlideData>;
 
 export const slidesToElements = (
-  start: string,
+  initial: string,
   slides: Record<string, SlideData>,
 ) => {
-  const stack = [{ id: start, position: { x: 0, y: 0 } }];
+  const stack = [{ id: initial, position: { x: 0, y: 0 } }];
   const visited = new Set();
-  const nodes = [];
-  const edges = [];
+  const nodes: Node<SlideData>[] = [];
+  const edges: Edge[] = [];
 
   while (stack.length) {
-    const { id, position } = stack.pop();
+    const { id, position } = stack.pop()!;
     const data = slides[id];
     const node = { id, type: 'slide', position, data };
 
@@ -122,7 +123,7 @@ export const slidesToElements = (
       edges.push({
         id: `${id}->${data.down}`,
         source: id,
-        target: data.down,
+        target: data.right,
       });
     }
 
@@ -130,5 +131,5 @@ export const slidesToElements = (
     visited.add(id);
   }
 
-  return { start, nodes, edges };
+  return { nodes, edges };
 };

@@ -5,6 +5,9 @@ import ReactFlow, {
   NodeMouseHandler,
 } from 'reactflow';
 
+import 'reactflow/dist/style.css';
+import './index.css';
+
 import { Slide, SlideData } from './Slide';
 import { slides, slidesToElements } from './slides';
 

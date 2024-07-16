@@ -29,7 +29,6 @@ body,
   display: flex;
   justify-content: end;
   gap: 4px;
-  pointer-events: all;
 }
 
 .slide__controls button {
