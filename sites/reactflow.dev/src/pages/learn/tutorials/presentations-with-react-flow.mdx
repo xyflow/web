@@ -32,7 +32,7 @@ By the end of this tutorial, you will have built a presentation app with
 - Support for markdown slides
 - Keyboard navigation around the viewport
 - Automatic layouting
-- Click-drag panning navigation (a la Prezi)
+- Click-drag panning navigation (à la Prezi)
 
 Along the way, you'll learn a bit about the basics of layouting algorithms, creating static flows, and custom nodes.
 
@@ -106,7 +106,7 @@ We'll modify the generated `main.tsx` to include React Flow's styles, as well as
 wrap the app in a `<ReactFlowProvider />` to make sure we can access the React Flow
 instance inside our components;
 
-```tsx filename="main.tsx" {3,7,12-14}
+```tsx filename="main.tsx" {3,7,12,20}
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { ReactFlowProvider } from 'reactflow';
@@ -119,7 +119,13 @@ import './index.css';
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ReactFlowProvider>
-      <App />
+      {/* The parent element of the React Flow component needs a width and a height
+          to work properly. If you're styling your app as you follow along, you
+          can remove this div and apply styles to the #root element in your CSS.
+       */}
+      <div style={{ width: '100vw', height: '100vh' }}>
+        <App />
+      </div>
     </ReactFlowProvider>
   </React.StrictMode>,
 );
@@ -130,6 +136,12 @@ any CSS framework or styling solution you're familiar with. If you're going to
 style your app differently from just writing CSS, for example with
 [Styled Components](/examples/styling/styled-components) or
 [Tailwind CSS](/examples/styling/tailwind), you can skip the import to `index.css`.
+
+<Callout>
+  How you style your app is up to you, but you must **always** include React Flow's
+  styles! If you don't need the default styles, at a minimum you should include the
+  base styles from `reactflow/dist/base.css`.
+</Callout>
 
 Each slide of our presentation will be a node on the canvas, so let's create a new file `Slide.tsx` that will be our custom node used to render each slide.
 
