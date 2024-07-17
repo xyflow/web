@@ -24,8 +24,8 @@ body,
 
 .slide__controls {
   position: absolute;
-  bottom: 2rem;
-  right: 2rem;
+  bottom: 4rem;
+  right: 4rem;
   display: flex;
   justify-content: end;
   gap: 4px;
