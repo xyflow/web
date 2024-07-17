@@ -466,7 +466,7 @@ this tutorial. If you give a shot, be sure to share your solution with us on the
 With our layouting algorithm written, we can hop back to `App.tsx` and remove the
 hardcoded nodes array in favor of the new `slidesToElements` function.
 
-```tsx filename="App.tsx" {2,3,5-9,16,24}
+```tsx filename="App.tsx" {2,3,5-9,15-16,24}
 import { ReactFlow } from 'reactflow';
 import { slidesToElements } from './slides';
 import { Slide, SlideData, SLIDE_WIDTH } from './Slide';
@@ -532,7 +532,7 @@ to pan the canvas thanks to the `fitView` method.
 Flow instance, and we can get access to it by using the [`useReactFlow`](/api-reference/react-flow-instance#use-react-flow)
 hook.
 
-```tsx filename="App.tsx" {1-2,17-23,28}
+```tsx filename="App.tsx" {1-2,17-23,29}
 import { useCallback } from 'react';
 import { ReactFlow, useReactFlow, type NodeMouseHandler } from 'reactflow';
 import { Slide, SlideData, SLIDE_WIDTH } from './Slide';
@@ -639,7 +639,7 @@ its id, but actually that's not necessary! If we look at the type of
 [`FitViewOptions`](/api-reference/types/FitViewOptions) we can see that the array
 of nodes we pass in only _needs_ to have an `id` property:
 
-```ts {7}
+```ts filename="https://reactflow.dev/api-reference/types/fit-view-options" {7}
 export type FitViewOptions = {
   padding?: number;
   includeHiddenNodes?: boolean;
