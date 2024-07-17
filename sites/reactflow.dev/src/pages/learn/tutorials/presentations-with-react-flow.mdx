@@ -531,9 +531,9 @@ to pan the canvas thanks to the `fitView` method.
 Flow instance, and we can get access to it by using the [`useReactFlow`](/api-reference/react-flow-instance#use-react-flow)
 hook.
 
-```tsx filename="App.tsx" {1-2,16,17-20,25}
+```tsx filename="App.tsx" {1-2,17-21,26}
 import { useCallback } from 'react';
-import { ReactFlow, useReactFlow } from 'reactflow';
+import { ReactFlow, useReactFlow, type NodeMouseHandler } from 'reactflow';
 import { Slide, SlideData, SLIDE_WIDTH } from './Slide';
 
 const slides: Record<string, SlideData> = {
@@ -544,7 +544,8 @@ const nodeTypes = {
   slide: Slide,
 };
 
-const { nodes, edges } = slidesToElements('0', slides);
+const initialSlide = '0';
+const { nodes, edges } = slidesToElements(initialSlide, slides);
 
 export default function App() {
   const { fitView } = useReactFlow();
@@ -558,7 +559,7 @@ export default function App() {
   return (
     <ReactFlow
       ...
-      fitViewOptions={{ nodes: [{ id: start }] }}
+      fitViewOptions={{ nodes: [{ id: initialSlide }] }}
       onNodeClick={handleNodeClick}
     />
   );
