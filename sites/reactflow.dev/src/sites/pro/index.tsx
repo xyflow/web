@@ -53,10 +53,6 @@ const sliderItems = [
 ];
 
 export default function ReactFlowPro() {
-  const { proPricing } = useSSG();
-
-  console.log(proPricing);
-
   return (
     <BaseLayout>
       <Hero
