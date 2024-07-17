@@ -183,7 +183,7 @@ const nodeTypes = {
   slide: Slide,
 };
 
-export default function App() {
+export default export default function App() {
   const nodes = [
     { id: '0', type: 'slide', position: { x: 0, y: 0 }, data: {} },
   ];
@@ -264,7 +264,7 @@ const nodeTypes = {
   slide: Slide,
 };
 
-export default function App() {
+export default export default function App() {
   const nodes = [
     {
       id: '0',
@@ -483,7 +483,7 @@ const nodeTypes = {
 
 const { nodes, edges } = slidesToElements('0', slides);
 
-export default function App() {
+export default export default function App() {
   return (
     <ReactFlow
       nodes={nodes}
@@ -546,7 +546,7 @@ const nodeTypes = {
 
 const { nodes, edges } = slidesToElements('0', slides);
 
-function Flow() {
+export default function App() {
   const { fitView } = useReactFlow();
   const handleNodeClick = useCallback<NodeMouseHandler>(
     (_, node) => {
@@ -711,7 +711,7 @@ const nodeTypes = {
 const initialSlide = '0';
 const { nodes, edges } = slidesToElements(initialSlide, slides)
 
-function Flow() {
+export default function App() {
   const [currentSlide, setCurrentSlide] = useState(initialSlide);
   const { fitView } = useReactFlow();
 
@@ -737,7 +737,7 @@ making sure to update it whenever a node is clicked. Next, we'll write a callbac
 to handle keyboard events on the canvas:
 
 ```tsx filename="App.tsx"
-function Flow() {
+export default function App() {
   const [currentSlide, setCurrentSlide] = useState(initialSlide);
   const { fitView } = useReactFlow();
 
