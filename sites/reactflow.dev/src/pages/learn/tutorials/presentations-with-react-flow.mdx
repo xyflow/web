@@ -256,7 +256,7 @@ In this case we're storing the markdown content to display by adding a `source`
 property to the `SlideData` type and passing that to the `<Remark />` component.
 We can update our hardcoded nodes with some markdown content to see it in action:
 
-```tsx filename="App.tsx" {2, 10-27}
+```tsx filename="App.tsx" {2, 10-27, 34}
 import { ReactFlow } from 'reactflow';
 import { Slide, SLIDE_WIDTH } from './Slide';
 
@@ -286,9 +286,18 @@ export default function App() {
     },
   ];
 
-  return <ReactFlow nodes={nodes} nodeTypes={nodeTypes} fitView />;
+  return <ReactFlow
+    nodes={nodes}
+    nodeTypes={nodeTypes}
+    fitView
+    minZoom={0.1}
+  />;
 }
 ```
+
+Note that we've added the `minZoom` prop to the `<ReactFlow />` component. Our
+slides are quite large, and the default minimum zoom level is not enough to zoom
+out and see multiple slides at once.
 
 <Bleed>
   <BlogExampleViewer
@@ -481,6 +490,7 @@ export default function App() {
       nodeTypes={nodeTypes}
       fitView
       fitViewOptions={{ nodes: [{ id: '0' }] }}
+      minZoom={0.1}
     />
   );
 }
