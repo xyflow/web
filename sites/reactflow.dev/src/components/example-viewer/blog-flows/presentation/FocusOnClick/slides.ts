@@ -9,7 +9,7 @@ const slide01 = {
 # Slide 1
 
 - This is the first slide
-- It has a right arrow to go to the next slide
+- Zoom out and click on another slide to focus on it!
 `,
   },
 };
@@ -23,10 +23,7 @@ const slide02 = {
     source: `
 # Slide 2
 
-- This is the second slide
-- It has a left arrow to go back to the first slide
-- It has an up arrow to go to the third slide
-- It has a right arrow to go to the fourth slide
+- ...
 `,
   },
 };
@@ -38,8 +35,7 @@ const slide03 = {
     source: `
 # Slide 3
 
-- This is the third slide
-- It has a down arrow to go back to the second slide
+- ...
 `,
   },
 };
@@ -51,8 +47,7 @@ const slide04 = {
     source: `
 # Slide 4
 
-- This is the fourth slide
-- It has a left arrow to go back to the second slide
+- ...
 `,
   },
 };

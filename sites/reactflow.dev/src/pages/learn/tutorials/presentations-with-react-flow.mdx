@@ -466,7 +466,7 @@ this tutorial. If you give a shot, be sure to share your solution with us on the
 With our layouting algorithm written, we can hop back to `App.tsx` and remove the
 hardcoded nodes array in favor of the new `slidesToElements` function.
 
-```tsx filename="App.tsx" {2,3,5-9,15,23}
+```tsx filename="App.tsx" {2,3,5-9,16,24}
 import { ReactFlow } from 'reactflow';
 import { slidesToElements } from './slides';
 import { Slide, SlideData, SLIDE_WIDTH } from './Slide';
@@ -481,7 +481,8 @@ const nodeTypes = {
   slide: Slide,
 };
 
-const { nodes, edges } = slidesToElements('0', slides);
+const initialSlide = '0';
+const { nodes, edges } = slidesToElements(initialSlide, slides);
 
 export default export default function App() {
   return (
@@ -489,7 +490,7 @@ export default export default function App() {
       nodes={nodes}
       nodeTypes={nodeTypes}
       fitView
-      fitViewOptions={{ nodes: [{ id: '0' }] }}
+      fitViewOptions={{ nodes: [{ id: initialSlide }] }}
       minZoom={0.1}
     />
   );
@@ -531,7 +532,7 @@ to pan the canvas thanks to the `fitView` method.
 Flow instance, and we can get access to it by using the [`useReactFlow`](/api-reference/react-flow-instance#use-react-flow)
 hook.
 
-```tsx filename="App.tsx" {1-2,17-21,26}
+```tsx filename="App.tsx" {1-2,17-23,28}
 import { useCallback } from 'react';
 import { ReactFlow, useReactFlow, type NodeMouseHandler } from 'reactflow';
 import { Slide, SlideData, SLIDE_WIDTH } from './Slide';
@@ -553,7 +554,7 @@ export default function App() {
     (_, node) => {
       fitView({ nodes: [node], duration: 150 });
     },
-    [currentSlide],
+    [fitView],
   );
 
   return (
