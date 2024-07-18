@@ -1,6 +1,8 @@
 body {
   margin: 0;
   background-color: #f8f8f8;
+  font-family: sans-serif;
+  color: #111;
 }
 
 html,
@@ -11,27 +13,51 @@ body,
 
 .slide {
   box-sizing: border-box;
+  box-shadow: 0rem 1rem 4rem 0.25rem rgba(0, 0, 0, 0.06);
   width: 1920px;
   height: 1080px;
   overflow: hidden;
   position: relative;
-  background: white;
+  background: #fff;
   border: 1px solid #e0e0e0;
-  border-radius: 4px;
-  padding: 4rem;
+  border-radius: 8px;
+  padding: 6rem;
+  padding-top: 10rem;
+  padding-left: 8rem;
   font-size: 4rem;
+}
+
+.slide h1 {
+  font-size: 8rem;
+  margin-bottom: 1rem;
+}
+
+.slide ul li {
+  margin-bottom: 1rem;
 }
 
 .slide__controls {
   position: absolute;
-  bottom: 2rem;
-  right: 2rem;
+  bottom: 4rem;
+  right: 4rem;
   display: flex;
   justify-content: end;
-  gap: 4px;
-  pointer-events: all;
+  gap: 1rem;
 }
 
 .slide__controls button {
-  font-size: 2rem;
+  font-size: 4rem;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  border: 2px solid #000;
+  background-color: #fff;
+  color: #111;
+
+  &:hover {
+    background-color: #f8f8f8;
+  }
+
+  &:active {
+    background-color: #e0e0e0;
+  }
 }

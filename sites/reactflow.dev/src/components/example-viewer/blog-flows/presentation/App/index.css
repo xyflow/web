@@ -13,6 +13,7 @@ body,
 
 .slide {
   box-sizing: border-box;
+  box-shadow: 0rem 1rem 4rem 0.25rem rgba(0, 0, 0, 0.06);
   width: 1920px;
   height: 1080px;
   overflow: hidden;
@@ -26,12 +27,12 @@ body,
   font-size: 4rem;
 }
 
-h1 {
+.slide h1 {
   font-size: 8rem;
   margin-bottom: 1rem;
 }
 
-ul li {
+.slide ul li {
   margin-bottom: 1rem;
 }
 
@@ -41,18 +42,22 @@ ul li {
   right: 4rem;
   display: flex;
   justify-content: end;
-  gap: 4px;
+  gap: 1rem;
 }
 
 .slide__controls button {
   font-size: 4rem;
-  padding: 2rem;
+  padding: 1rem 2rem;
   border-radius: 1rem;
   border: 2px solid #000;
   background-color: #fff;
   color: #111;
-}
 
-.react-flow__node {
-  box-shadow: 0rem 1rem 4rem 0.25rem rgba(0, 0, 0, 0.06);
+  &:hover {
+    background-color: #f8f8f8;
+  }
+
+  &:active {
+    background-color: #e0e0e0;
+  }
 }

@@ -3,6 +3,8 @@ import ReactFlow, {
   NodeMouseHandler,
   ReactFlowProvider,
   useReactFlow,
+  Background,
+  BackgroundVariant,
 } from 'reactflow';
 import { Slide } from './Slide';
 import { slides, slidesToElements } from './slides';
@@ -35,7 +37,9 @@ function App() {
       fitView
       fitViewOptions={{ nodes: [{ id: start }] }}
       onNodeClick={handleNodeClick}
-    />
+    >
+      <Background color="#f2f2f2" variant={BackgroundVariant.Lines} />
+    </ReactFlow>
   );
 }
 

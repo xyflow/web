@@ -1,4 +1,9 @@
-import { ReactFlow, ReactFlowProvider } from 'reactflow';
+import {
+  ReactFlow,
+  ReactFlowProvider,
+  Background,
+  BackgroundVariant,
+} from 'reactflow';
 import { Slide } from './Slide';
 
 import 'reactflow/dist/style.css';
@@ -14,7 +19,9 @@ function App() {
   ];
 
   return (
-    <ReactFlow nodes={nodes} nodeTypes={nodeTypes} minZoom={0.1} fitView />
+    <ReactFlow nodes={nodes} nodeTypes={nodeTypes} minZoom={0.1} fitView>
+      <Background color="#f2f2f2" variant={BackgroundVariant.Lines} />
+    </ReactFlow>
   );
 }
 

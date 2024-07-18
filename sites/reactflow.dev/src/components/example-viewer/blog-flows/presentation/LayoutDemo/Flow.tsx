@@ -1,4 +1,4 @@
-import { ReactFlow } from 'reactflow';
+import { ReactFlow, Background, BackgroundVariant } from 'reactflow';
 
 import 'reactflow/dist/style.css';
 import './index.css';
@@ -95,6 +95,8 @@ export default function Flow({ slides }) {
   }, [slides]);
 
   return (
-    <ReactFlow nodes={nodes} nodeTypes={nodeTypes} edges={edges} fitView />
+    <ReactFlow nodes={nodes} nodeTypes={nodeTypes} edges={edges} fitView>
+      <Background color="#f2f2f2" variant={BackgroundVariant.Lines} />
+    </ReactFlow>
   );
 }

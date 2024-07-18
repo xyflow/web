@@ -9,6 +9,8 @@ import ReactFlow, {
   useReactFlow,
   ReactFlowProvider,
   NodeMouseHandler,
+  Background,
+  BackgroundVariant,
 } from 'reactflow';
 
 import slides from './slides';
@@ -125,7 +127,9 @@ function Flow() {
       fitViewOptions={{ nodes: [{ id: start }] }}
       minZoom={0.1}
       onNodeClick={handleNodeClick}
-    ></ReactFlow>
+    >
+      <Background color="#f2f2f2" variant={BackgroundVariant.Lines} />
+    </ReactFlow>
   );
 }
 
