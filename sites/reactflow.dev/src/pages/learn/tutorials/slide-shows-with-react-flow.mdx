@@ -7,6 +7,7 @@ intro:
 date: 2024/01/07
 authors: ['hayleigh']
 tags: ['react-flow', 'presentation', 'slide-show']
+image: /img/tutorials/presentation/slideshow-thumb.png
 ---
 
 import { Cards, Card, Callout, Tab, Tabs } from 'nextra/components';
@@ -24,6 +25,7 @@ We recently published the findings from our React Flow 2023 end-of-year survey w
     src="/img/tutorials/presentation/survey.png"
     caption="Our 2023 end of year survey app was made up of many static nodes
     and buttons to navigate between them."
+    alt="Screenshot of slides layed out on an infinite canvas, each with information pulled from a survey of React Flow users"
   />
 </Bleed>
 
@@ -36,7 +38,7 @@ By the end of this tutorial, you will have built a presentation app with
 
 Along the way, you'll learn a bit about the basics of layouting algorithms, creating static flows, and custom nodes.
 
-And once you're done, the app will look like this!
+Once you're done, the app will look like this!
 
 <Bleed>
   <BlogExampleViewer
@@ -138,9 +140,9 @@ style your app differently from just writing CSS, for example with
 [Tailwind CSS](/examples/styling/tailwind), you can skip the import to `index.css`.
 
 <Callout>
-  How you style your app is up to you, but you must **always** include React Flow's
-  styles! If you don't need the default styles, at a minimum you should include the
-  base styles from `reactflow/dist/base.css`.
+  How you style your app is up to you, but you must **always** include React
+  Flow's styles! If you don't need the default styles, at a minimum you should
+  include the base styles from `reactflow/dist/base.css`.
 </Callout>
 
 Each slide of our presentation will be a node on the canvas, so let's create a new file `Slide.tsx` that will be our custom node used to render each slide.
