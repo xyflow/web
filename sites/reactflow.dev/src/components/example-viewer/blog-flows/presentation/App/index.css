@@ -1,6 +1,8 @@
 body {
   margin: 0;
   background-color: #f8f8f8;
+  font-family: sans-serif;
+  color: #111;
 }
 
 html,
@@ -15,11 +17,22 @@ body,
   height: 1080px;
   overflow: hidden;
   position: relative;
-  background: white;
+  background: #fff;
   border: 1px solid #e0e0e0;
-  border-radius: 4px;
-  padding: 4rem;
+  border-radius: 8px;
+  padding: 6rem;
+  padding-top: 10rem;
+  padding-left: 8rem;
   font-size: 4rem;
+}
+
+h1 {
+  font-size: 8rem;
+  margin-bottom: 1rem;
+}
+
+ul li {
+  margin-bottom: 1rem;
 }
 
 .slide__controls {
@@ -32,5 +45,14 @@ body,
 }
 
 .slide__controls button {
-  font-size: 2rem;
+  font-size: 4rem;
+  padding: 2rem;
+  border-radius: 1rem;
+  border: 2px solid #000;
+  background-color: #fff;
+  color: #111;
+}
+
+.react-flow__node {
+  box-shadow: 0rem 1rem 4rem 0.25rem rgba(0, 0, 0, 0.06);
 }

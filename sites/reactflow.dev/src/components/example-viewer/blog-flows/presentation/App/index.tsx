@@ -3,6 +3,8 @@ import ReactFlow, {
   ReactFlowProvider,
   useReactFlow,
   NodeMouseHandler,
+  Background,
+  BackgroundVariant,
 } from 'reactflow';
 
 import 'reactflow/dist/style.css';
@@ -69,7 +71,9 @@ function App() {
       minZoom={0.1}
       onKeyDown={handleKeyPress}
       onNodeClick={handleNodeClick}
-    />
+    >
+      <Background color="#f2f2f2" variant={BackgroundVariant.Lines} />
+    </ReactFlow>
   );
 }
 
