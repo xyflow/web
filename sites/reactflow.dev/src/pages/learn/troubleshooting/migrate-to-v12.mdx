@@ -94,7 +94,7 @@ const nodeHeight = node.measured?.height;
 
 {<h3>3. New dimension handling `node.width` / `node.height` vs `node.measured.width` / `node.measured.height`</h3>}
 
-In order to support server side rendering we had to restructure the API a bit, so that users can pass node dimensions more easily. For this we changed the behaviour of the `node.width` and `node.height` attributes. In React Flow 11, those attributes were measured values and only used as a reference. In React Flow 12 those attributes are used as inline styles to specify the node dimensions. If you load nodes from a database, you probably want to remove the `width` and `height` attributes from your nodes, because the bahaviour is slightly different now. Using `width` and `height` now means that the dimensions are not dynamic based on the content but fixed.
+In order to support server side rendering we had to restructure the API a bit, so that users can pass node dimensions more easily. For this we changed the behaviour of the `node.width` and `node.height` attributes. In React Flow 11, those attributes were measured values and only used as a reference. In React Flow 12 those attributes are used as inline styles to specify the node dimensions. If you load nodes from a database, you probably want to remove the `width` and `height` attributes from your nodes, because the behaviour is slightly different now. Using `width` and `height` now means that the dimensions are not dynamic based on the content but fixed.
 
 {<h4>Old API</h4>}
 
