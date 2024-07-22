@@ -1,17 +1,13 @@
-import React, {
-  KeyboardEventHandler,
-  useCallback,
-  useMemo,
-  useState,
-} from 'react';
-import ReactFlow, {
+import React, { useCallback, useMemo } from 'react';
+import {
+  ReactFlow,
   Node,
   useReactFlow,
   ReactFlowProvider,
   NodeMouseHandler,
   Background,
   BackgroundVariant,
-} from 'reactflow';
+} from '@xyflow/react';
 
 import slides from './slides';
 import './index.css';

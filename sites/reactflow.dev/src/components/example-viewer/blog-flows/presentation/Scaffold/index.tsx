@@ -3,7 +3,7 @@ import {
   ReactFlowProvider,
   Background,
   BackgroundVariant,
-} from 'reactflow';
+} from '@xyflow/react';
 import { Slide } from './Slide';
 
 import 'reactflow/dist/style.css';

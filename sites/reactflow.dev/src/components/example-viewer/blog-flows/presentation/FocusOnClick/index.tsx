@@ -1,11 +1,12 @@
 import { useCallback, useMemo } from 'react';
-import ReactFlow, {
+import {
+  ReactFlow,
   NodeMouseHandler,
   ReactFlowProvider,
   useReactFlow,
   Background,
   BackgroundVariant,
-} from 'reactflow';
+} from '@xyflow/react';
 import { Slide } from './Slide';
 import { slides, slidesToElements } from './slides';
 

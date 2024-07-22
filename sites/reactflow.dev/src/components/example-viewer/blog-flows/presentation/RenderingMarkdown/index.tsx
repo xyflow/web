@@ -1,8 +1,9 @@
-import ReactFlow, {
+import {
+  ReactFlow,
   ReactFlowProvider,
   Background,
   BackgroundVariant,
-} from 'reactflow';
+} from '@xyflow/react';
 import { Slide, SLIDE_WIDTH } from './Slide';
 
 import 'reactflow/dist/style.css';

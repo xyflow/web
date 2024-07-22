@@ -1,4 +1,4 @@
-import { Edge, Node } from 'reactflow';
+import { Edge, Node } from '@xyflow/react';
 import { SLIDE_WIDTH, SLIDE_HEIGHT, SLIDE_PADDING, SlideData } from './Slide';
 
 const slide01 = {
