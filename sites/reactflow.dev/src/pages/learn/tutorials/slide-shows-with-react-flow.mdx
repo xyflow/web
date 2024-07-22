@@ -111,7 +111,7 @@ instance inside our components;
 ```tsx filename="main.tsx" {3,7,12,20}
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { ReactFlowProvider } from 'reactflow';
+import { ReactFlowProvider } from '@xyflow/react';
 
 import App from './App';
 
@@ -148,7 +148,7 @@ style your app differently from just writing CSS, for example with
 Each slide of our presentation will be a node on the canvas, so let's create a new file `Slide.tsx` that will be our custom node used to render each slide.
 
 ```tsx filename="Slide.tsx"
-import { type NodeProps } from 'reactflow';
+import { type NodeProps } from '@xyflow/react';
 
 export const SLIDE_WIDTH = 1920;
 export const SLIDE_HEIGHT = 1080;
@@ -160,7 +160,7 @@ const style = {
   height: `${SLIDE_HEIGHT}px`,
 } satisfies React.CSSProperties;
 
-export function Slide({ data }: NodeProps<SlideData>) {
+export function Slide({ data }: NodeProps<SlideNide>) {
   return (
     <article className="slide nodrag" style={style}>
       <div>Hello, React Flow!</div>
@@ -178,7 +178,7 @@ The last thing to do is to register our new custom node and show something on th
 screen.
 
 ```tsx filename="App.tsx"
-import ReactFlow from 'reactflow';
+import { ReactFlow } from '@xyflow/react';
 import { Slide } from './Slide.tsx';
 
 const nodeTypes = {
@@ -229,11 +229,13 @@ earlier, this step is a simple one. We can use the `<Remark />` component to ren
 content into our slides.
 
 ```tsx filename="Slide.tsx" {2,7-9,19}
-import { type NodeProps } from 'reactflow';
+import { type Node, type NodeProps } from '@xyflow/react';
 import { Remark } from 'react-remark';
 
 export const SLIDE_WIDTH = 1920;
 export const SLIDE_HEIGHT = 1080;
+
+export type SlideNode = Node<SlideData, 'slide'>
 
 export type SlideData = {
   source: string;
@@ -244,7 +246,7 @@ const style = {
   height: `${SLIDE_HEIGHT}px`,
 } satisfies React.CSSProperties;
 
-export function Slide({ data }: NodeProps<SlideData>) {
+export function Slide({ data }: NodeProps<SlideNode>) {
   return (
     <article className="slide nodrag" style={style}>
       <Remark>{data.source}</Remark>
@@ -259,7 +261,7 @@ property to the `SlideData` type and passing that to the `<Remark />` component.
 We can update our hardcoded nodes with some markdown content to see it in action:
 
 ```tsx filename="App.tsx" {2, 10-27, 34}
-import { ReactFlow } from 'reactflow';
+import { ReactFlow } from '@xyflow/react';
 import { Slide, SLIDE_WIDTH } from './Slide';
 
 const nodeTypes = {
@@ -469,7 +471,7 @@ With our layouting algorithm written, we can hop back to `App.tsx` and remove th
 hardcoded nodes array in favor of the new `slidesToElements` function.
 
 ```tsx filename="App.tsx" {2,3,5-9,15-16,24}
-import { ReactFlow } from 'reactflow';
+import { ReactFlow } from '@xyflow/react';
 import { slidesToElements } from './slides';
 import { Slide, SlideData, SLIDE_WIDTH } from './Slide';
 
@@ -536,7 +538,7 @@ hook.
 
 ```tsx filename="App.tsx" {1-2,17-23,29}
 import { useCallback } from 'react';
-import { ReactFlow, useReactFlow, type NodeMouseHandler } from 'reactflow';
+import { ReactFlow, useReactFlow, type NodeMouseHandler } from '@xyflow/react';
 import { Slide, SlideData, SLIDE_WIDTH } from './Slide';
 
 const slides: Record<string, SlideData> = {
@@ -607,13 +609,13 @@ direction with a connected slide. We'll also preemptively create a `moveToNextSl
 callback that we'll use in a moment.
 
 ```tsx filename="Slide.tsx" {3,8,13-18}
-import { type NodeProps, fitView } from 'reactflow';
+import { type NodeProps, fitView } from '@xyflow/react';
 import { Remark } from 'react-remark';
 import { useCallback } from 'react';
 
 ...
 
-export function Slide({ data }: NodeProps<SlideData>) {
+export function Slide({ data }: NodeProps<SlideNide>) {
   const moveToNextSlide = useCallback((id: string) => {}, []);
 
   return (
@@ -658,9 +660,9 @@ the `id` field is always required. This means we can just pass in an object with
 an `id` property and nothing else, and `fitView` will know what to do with it!
 
 ```tsx filename="Slide.tsx" {1,4,6-9}
-import { type NodeProps, useReactFlow } from 'reactflow';
+import { type NodeProps, useReactFlow } from '@xyflow/react';
 
-export function Slide({ data }: NodeProps<SlideData>) {
+export function Slide({ data }: NodeProps<SlideNide>) {
   const { fitView } = useReactFlow();
 
   const moveToNextSlide = useCallback(
@@ -701,7 +703,7 @@ navigate to when an arrow key is pressed!
 
 ```tsx filename="App.tsx" {1,2,13-14,17,23}
 import { useState, useCallback } from 'react';
-import { ReactFlow, useReactFlow } from 'reactflow';
+import { ReactFlow, useReactFlow } from '@xyflow/react';
 import { Slide, SlideData, SLIDE_WIDTH } from './Slide';
 
 const slides: Record<string, SlideData> = {
