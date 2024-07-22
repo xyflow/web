@@ -148,10 +148,12 @@ style your app differently from just writing CSS, for example with
 Each slide of our presentation will be a node on the canvas, so let's create a new file `Slide.tsx` that will be our custom node used to render each slide.
 
 ```tsx filename="Slide.tsx"
-import { type NodeProps } from '@xyflow/react';
+import { type Node, type NodeProps } from '@xyflow/react';
 
 export const SLIDE_WIDTH = 1920;
 export const SLIDE_HEIGHT = 1080;
+
+export type SlideNode = Node<SlideData, 'slide'>
 
 export type SlideData = {};
 
@@ -160,7 +162,7 @@ const style = {
   height: `${SLIDE_HEIGHT}px`,
 } satisfies React.CSSProperties;
 
-export function Slide({ data }: NodeProps<SlideNide>) {
+export function Slide({ data }: NodeProps<SlideNode>) {
   return (
     <article className="slide nodrag" style={style}>
       <div>Hello, React Flow!</div>
@@ -228,7 +230,7 @@ Thanks to the `react-remark` package we installed
 earlier, this step is a simple one. We can use the `<Remark />` component to render a string of markdown
 content into our slides.
 
-```tsx filename="Slide.tsx" {2,7-9,19}
+```tsx filename="Slide.tsx" {2,9-11,21}
 import { type Node, type NodeProps } from '@xyflow/react';
 import { Remark } from 'react-remark';
 
