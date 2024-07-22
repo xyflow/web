@@ -1,0 +1,28 @@
+---
+title: New tutorial – Create a slide show presentation with React Flow
+description:
+  We recently published the findings from our React Flow 2023 end-of-year survey
+  with an interactive presentation of the key findings, using React Flow itself.
+  There were lots of useful bits built into this slideshow app, so we wanted to
+  share how we built it!
+authors: [hayleigh]
+date: '2024-07-22'
+---
+
+import ExampleViewer from '@/components/example-viewer';
+
+# New tutorial – Create a slide show presentation with React Flow
+
+We recently published the findings from our React Flow 2023 end-of-year survey
+with an [interactive presentation](/developer-survey-2023) of the key findings,
+using React Flow itself. There were lots of useful bits built into this slideshow
+app, so we wanted to share how we built it!
+
+<ExampleViewer
+style={{ aspectRatio: '16 / 9' }}
+codePath="blog-flows/presentation/App"
+additionalFiles={['Slide.tsx', 'slides.ts', 'index.css']}
+dependencies={{ 'react-remark': '2.1.0' }}
+showEditor={false}
+isTypescript
+/>
