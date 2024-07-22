@@ -29,7 +29,7 @@ export default function ExampleViewer({
   // sandpack does not support using .jsx extension with the react template
   const sandpackExtension = scriptExtension === 'jsx' ? 'js' : scriptExtension;
   const dependenciesWithDefault = {
-    reactflow: process.env.NEXT_PUBLIC_REACT_FLOW_VERSION,
+    '@xyflow/react': process.env.REACT_FLOW_VERSION,
     ...dependencies,
   };
 

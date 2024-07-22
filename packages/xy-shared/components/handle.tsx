@@ -1,5 +1,5 @@
 import { type ReactNode } from 'react';
-import { Position } from '@xyflow/system';
+import { Position } from '@xyflow/react';
 import { cn } from '@xyflow/xy-ui';
 
 type HandleProps = {

@@ -13,12 +13,12 @@ import {
   nodeSelectionChangeFields,
   nodeRemoveChangeFields,
   nodeAddChangeFields,
-  nodeResetChangeFields,
+  nodeReplaceChangeFields,
 } from '@/page-data/reference/types/NodeChange.fields.ts';
 
 # NodeChange
 
-[Source on GitHub](https://github.com/xyflow/xyflow/blob/v11/packages/core/src/types/changes.ts/#L44)
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/487b13c9ad8903789f56c6fcfd8222f9cb74b812/packages/system/src/types/changes.ts/#L47)
 
 The [`onNodesChange`](/api-reference/react-flow#on-nodes-change) callback takes
 an array of `NodeChange` objects that you should use to update your flow's state.
@@ -32,7 +32,7 @@ export type NodeChange =
   | NodeSelectionChange
   | NodeRemoveChange
   | NodeAddChange
-  | NodeResetChange;
+  | NodeReplaceChange;
 ```
 
 ## Variant types
@@ -53,10 +53,10 @@ export type NodeChange =
 
 <PropsTable {...nodeRemoveChangeFields} />
 
-### NodeAddChange&lt;T = any>
+### NodeAddChange
 
 <PropsTable {...nodeAddChangeFields} />
 
-### NodeResetChange&lt;T = any>
+### NodeReplaceChange
 
-<PropsTable {...nodeResetChangeFields} />
+<PropsTable {...nodeReplaceChangeFields} />

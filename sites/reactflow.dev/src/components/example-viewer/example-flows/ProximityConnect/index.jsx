@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
-import ReactFlow, {
+import {
+  ReactFlow,
   addEdge,
   useNodesState,
   useEdgesState,
@@ -7,9 +8,10 @@ import ReactFlow, {
   BackgroundVariant,
   ReactFlowProvider,
   useStoreApi,
-} from 'reactflow';
+  useReactFlow,
+} from '@xyflow/react';
 
-import 'reactflow/dist/style.css';
+import '@xyflow/react/dist/style.css';
 import './style.css';
 
 import { initialEdges, initialNodes } from './nodes-and-edges';
@@ -20,6 +22,7 @@ const Flow = () => {
   const store = useStoreApi();
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+  const { getInternalNode } = useReactFlow();
 
   const onConnect = useCallback(
     (params) => setEdges((eds) => addEdge(params, eds)),
@@ -27,14 +30,18 @@ const Flow = () => {
   );
 
   const getClosestEdge = useCallback((node) => {
-    const { nodeInternals } = store.getState();
-    const storeNodes = Array.from(nodeInternals.values());
+    const { nodeLookup } = store.getState();
+    const internalNode = getInternalNode(node.id);
 
-    const closestNode = storeNodes.reduce(
+    const closestNode = Array.from(nodeLookup.values()).reduce(
       (res, n) => {
-        if (n.id !== node.id) {
-          const dx = n.positionAbsolute.x - node.positionAbsolute.x;
-          const dy = n.positionAbsolute.y - node.positionAbsolute.y;
+        if (n.id !== internalNode.id) {
+          const dx =
+            n.internals.positionAbsolute.x -
+            internalNode.internals.positionAbsolute.x;
+          const dy =
+            n.internals.positionAbsolute.y -
+            internalNode.internals.positionAbsolute.y;
           const d = Math.sqrt(dx * dx + dy * dy);
 
           if (d < res.distance && d < MIN_DISTANCE) {
@@ -56,7 +63,8 @@ const Flow = () => {
     }
 
     const closeNodeIsSource =
-      closestNode.node.positionAbsolute.x < node.positionAbsolute.x;
+      closestNode.node.internals.positionAbsolute.x <
+      internalNode.internals.positionAbsolute.x;
 
     return {
       id: closeNodeIsSource

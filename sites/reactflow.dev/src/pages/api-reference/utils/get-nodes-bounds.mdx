@@ -12,19 +12,18 @@ import { signature } from '@/page-data/reference/utils/getRectOfNodes.ts';
 
 # getNodesBounds()
 
-[Source on GitHub](https://github.com/xyflow/xyflow/blob/v11/packages/core/src/utils/graph.ts/#L194)
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/utils/graph.ts/#L133)
 
 Returns the bounding box that contains all the given nodes in an array. This can
 be useful when combined with [`getViewportForBounds`](/api-reference/utils/get-viewport-for-bounds)
 to calculate the correct transform to fit the given nodes in a viewport.
 
 <Callout type="info" emoji="ℹ️">
-  This function was previously called `getRectOfNodes`, which will be removed in
-  v12.
+  This function was previously called `getRectOfNodes`
 </Callout>
 
 ```js
-import { getNodesBounds } from 'reactflow';
+import { getNodesBounds } from '@xyflow/react';
 
 const nodes = [
   {

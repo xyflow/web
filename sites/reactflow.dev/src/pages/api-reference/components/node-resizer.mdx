@@ -12,14 +12,14 @@ import { nodeResizerProps } from '@/page-data/reference/components/NodeResizer.t
 
 # &lt;NodeResizer />
 
-[Source on GitHub](https://github.com/xyflow/xyflow/blob/v11/packages/node-resizer/src/NodeResizer.tsx/#L9)
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/additional-components/NodeResizer/NodeResizer.tsx)
 
 The `<NodeResizer />` component can be used to add a resize functionality to your
 nodes. It renders draggable controls around the node to resize in all directions.
 
 ```jsx
 import { memo } from 'react';
-import { Handle, Position, NodeResizer } from 'reactflow';
+import { Handle, Position, NodeResizer } from '@xyflow/react';
 
 const ResizableNode = ({ data }) => {
   return (

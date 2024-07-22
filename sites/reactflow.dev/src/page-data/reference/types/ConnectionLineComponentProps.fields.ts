@@ -4,8 +4,17 @@ export const connectionLineComponentPropsFields: PropsTableProps = {
   props: [
     { name: 'connectionLineStyle?', type: 'React.CSSProperties' },
     { name: 'connectionLineType', type: 'ConnectionLineType' },
-    { name: 'fromNode?', type: 'Node' },
-    { name: 'fromHandle?', type: 'HandleElement' },
+    {
+      name: 'fromNode?',
+      type: 'Node',
+      description: `The node the connection line originates from.`,
+    },
+    {
+      name: 'fromHandle?',
+      type: 'Handle',
+      description: `The handle on the fromNode that the connection line originates
+      from.`,
+    },
     { name: 'fromX', type: 'number' },
     { name: 'fromY', type: 'number' },
     { name: 'toX', type: 'number' },

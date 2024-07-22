@@ -1,5 +1,5 @@
 import React from 'react';
-import { useStoreApi, useReactFlow, Panel } from 'reactflow';
+import { useStoreApi, useReactFlow, Panel } from '@xyflow/react';
 
 const panelStyle = {
   color: '#777',
@@ -17,14 +17,14 @@ export default () => {
   const { zoomIn, zoomOut, setCenter } = useReactFlow();
 
   const focusNode = () => {
-    const { nodeInternals } = store.getState();
-    const nodes = Array.from(nodeInternals).map(([, node]) => node);
+    const { nodeLookup } = store.getState();
+    const nodes = Array.from(nodeLookup).map(([, node]) => node);
 
     if (nodes.length > 0) {
       const node = nodes[0];
 
-      const x = node.position.x + node.width / 2;
-      const y = node.position.y + node.height / 2;
+      const x = node.position.x + node.measured.width / 2;
+      const y = node.position.y + node.measured.height / 2;
       const zoom = 1.85;
 
       setCenter(x, y, { zoom, duration: 1000 });

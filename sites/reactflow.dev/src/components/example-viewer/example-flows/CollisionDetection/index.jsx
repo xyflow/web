@@ -1,19 +1,13 @@
-import React, { useEffect, useState, useRef } from "react";
-import ReactFlow, {
-  ReactFlowProvider,
-  useReactFlow,
-  useNodesState,
-  useEdgesState,
-  Panel,
-} from "reactflow";
+import React, { useEffect, useState, useRef } from 'react';
+import { ReactFlow, ReactFlowProvider, useNodesState, useEdgesState, Panel, useReactFlow } from '@xyflow/react';
 
 import {
   nodes as initialNodes,
   edges as initialEdges,
-} from "./initial-elements";
+} from './initial-elements';
 
-import "reactflow/dist/style.css";
-import "./style.css";
+import '@xyflow/react/dist/style.css';
+import './style.css';
 
 const panelStyle = {
   fontSize: 12,
@@ -38,8 +32,8 @@ const CollisionDetectionFlow = () => {
 
   const onNodeDrag = (evt, node) => {
     // calculate the center point of the node from position and dimensions
-    const centerX = node.position.x + node.width / 2;
-    const centerY = node.position.y + node.height / 2;
+    const centerX = node.position.x + node.measured.width / 2;
+    const centerY = node.position.y + node.measured.height / 2;
 
     // find overlapping nodes
     const intersectingNodes = getIntersectingNodes(node);
@@ -69,7 +63,7 @@ const CollisionDetectionFlow = () => {
           }
         }
         return node;
-      })
+      }),
     );
   }, [target]);
 

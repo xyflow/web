@@ -12,14 +12,14 @@ import { baseEdgeProps } from '@/page-data/reference/components/BaseEdge.ts';
 
 # &lt;BaseEdge />
 
-[Source on GitHub](https://github.com/xyflow/xyflow/blob/v11/packages/core/src/components/Edges/BaseEdge.tsx/#L7)
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/components/Edges/BaseEdge.tsx)
 
 The `<BaseEdge />` component gets used internally for all the edges. It can be
 used inside a custom edge and handles the invisible helper edge and the edge label
 for you.
 
 ```jsx
-import { BaseEdge } from 'reactflow';
+import { BaseEdge } from '@xyflow/react';
 
 export function CustomEdge({ sourceX, sourceY, targetX, targetY, ...props }) {
   const [edgePath] = getStraightPath({

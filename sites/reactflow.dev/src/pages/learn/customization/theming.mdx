@@ -1,6 +1,7 @@
 ---
 title: Theming
 description: React Flow comes with a minimal default theme. It's common to overwrite the default styles with your own CSS or use third-party libraries like TailwindCSS or Styled Components.
+created_at: 2024-07-01
 ---
 
 import { Callout } from 'nextra/components';
@@ -23,13 +24,14 @@ edges. You can see what they look like below:
   codePath="example-flows/DefaultStyle"
   showEditor={false}
   options={{ wrapContent: true }}
+  editorHeight={500}
 />
 
 You'll typically load these default styles by importing them in you `App.jsx`
 file or other entry point:
 
 ```js
-import 'reactflow/dist/style.css';
+import '@xyflow/react/dist/style.css';
 ```
 
 Without dipping into [custom nodes](/examples/nodes/custom-node) and
@@ -40,6 +42,32 @@ React Flow's basic look:
 - Overriding the built-in classes with custom CSS
 - Overriding the CSS variables React Flow uses
 
+### Built in dark and light mode
+
+You can chose one of the built-in color modes by using the `colorMode` prop ('dark', 'light' or 'system') as seen in the [dark mode example](/examples/styling/dark-mode).
+
+```jsx
+import ReactFlow from '@xyflow/react';
+
+export default function Flow() {
+  return <ReactFlow colorMode="dark" nodes={[...]} edges={[...]} />
+}
+```
+
+When you use the `colorMode` prop, React Flow adds a class to the root element (`.react-flow`) that you can use to style your flow based on the color mode:
+
+```css
+.dark .react-flow__node {
+  background: #777;
+  color: white;
+}
+
+.light .react-flow__node {
+  background: white;
+  color: #111;
+}
+```
+
 ### Customizing with `style` props
 
 The easiest way to start customising the look and feel of your flows is to use
@@ -47,7 +75,7 @@ the `style` prop found on many of React Flow's components to inline your own
 CSS.
 
 ```jsx
-import ReactFlow from 'reactflow'
+import ReactFlow from '@xyflow/react'
 
 const styles = {
   background: 'red',
@@ -59,6 +87,48 @@ export default function Flow() {
   return <ReactFlow style={styles} nodes={[...]} edges={[...]} />
 }
 ```
+
+### CSS variables
+
+If you don't want to replace the default styles entirely but just want to tweak
+the overall look and feel, you can override some of the CSS variables we use
+throughout the library.
+
+These variables are mostly self-explanatory. Below is a table of all the variables
+you might want to tweak and their default values for reference:
+
+| Variable name                                      | Default                             |
+| :------------------------------------------------- | :---------------------------------- |
+| `--edge-stroke-default`                            | `#b1b1b7`                           |
+| `--edge-stroke-width-default`                      | `1`                                 |
+| `--edge-stroke-selected-default`                   | `#555`                              |
+| `--connectionline-stroke-default`                  | `#b1b1b7`                           |
+| `--connectionline-stroke-width-default`            | `1`                                 |
+| `--attribution-background-color-default`           | `rgba(255, 255, 255, 0.5)`          |
+| `--minimap-background-color-default`               | `#fff`                              |
+| `--background-pattern-dot-color-default`           | `#91919a`                           |
+| `--background-pattern-line-color-default`          | `#eee`                              |
+| `--background-pattern-cross-color-default`         | `#e2e2e2`                           |
+| `--node-color-default`                             | `inherit`                           |
+| `--node-border-default`                            | `1px solid #1a192b`                 |
+| `--node-background-color-default`                  | `#fff`                              |
+| `--node-group-background-color-default`            | `rgba(240, 240, 240, 0.25)`         |
+| `--node-boxshadow-hover-default`                   | `0 1px 4px 1px rgba(0, 0, 0, 0.08)` |
+| `--node-boxshadow-selected-default`                | `0 0 0 0.5px #1a192b`               |
+| `--handle-background-color-default`                | `#1a192b`                           |
+| `--handle-border-color-default`                    | `#fff`                              |
+| `--selection-background-color-default`             | `rgba(0, 89, 220, 0.08)`            |
+| `--selection-border-default`                       | `1px dotted rgba(0, 89, 220, 0.8)`  |
+| `--controls-button-background-color-default`       | `#fefefe`                           |
+| `--controls-button-background-color-hover-default` | `#f4f4f4`                           |
+| `--controls-button-color-default`                  | `inherit`                           |
+| `--controls-button-color-hover-default`            | `inherit`                           |
+| `--controls-button-border-color-default`           | `#eee`                              |
+| `--controls-box-shadow-default`                    | `0 0 2px 1px rgba(0, 0, 0, 0.08)`   |
+
+These variables are used to define the _defaults_ for the various elements of
+React Flow. This means they can still be overriden by inline styles or custom
+classes on a per-element basis.
 
 ### Overriding built-in classes
 
@@ -78,7 +148,7 @@ ones you'll likely want to override are listed below:
 | `.react-flow__edge`                | Applied to each [`Edge`](/api-reference/types/edge) in the flow                          |
 | `.react-flow__edge.selected`       | Added to an [`Edge`](/api-reference/types/edge) when selected                            |
 | `.react-flow__edge.animated`       | Added to an [`Edge`](/api-reference/types/edge) when its `animated` prop is `true`       |
-| `.react-flow__edge.updating`       | Added to an [`Edge`](/api-reference/types/edge) while it gets updated via `onEdgeUpdate` |
+| `.react-flow__edge.updating`       | Added to an [`Edge`](/api-reference/types/edge) while it gets updated via `onReconnect`  |
 | `.react-flow__edge-path`           | The SVG `<path />` element of an [`Edge`](/api-reference/types/edge)                     |
 | `.react-flow__edge-text`           | The SVG `<text />` element of an [`Edge`](/api-reference/types/edge) label               |
 | `.react-flow__edge-textbg`         | The SVG `<text />` element behind an [`Edge`](/api-reference/types/edge) label           |
@@ -117,7 +187,7 @@ third-party styling solution instead. If you want to do this, you must make sure
 you still import the base styles.
 
 ```js
-import 'reactflow/dist/base.css';
+import '@xyflow/react/dist/base.css';
 ```
 
 <Callout type="warning">
@@ -129,7 +199,7 @@ import 'reactflow/dist/base.css';
 <ExampleViewer
   codePath="example-flows/BaseStyle"
   showEditor={false}
-  options={{ editorHeight: 500, editorWidthPercentage: 45, wrapContent: true }}
+  editorHeight={500}
 />
 
 ### Styled Components
@@ -140,7 +210,7 @@ Many of the components you render directly, such as the
 [Styled Components](https://styled-components.com/):
 
 ```jsx
-import { MiniMap } from 'reactflow';
+import { MiniMap } from '@xyflow/react';
 
 const StyledMiniMap = styled(MiniMap)`
   background-color: ${(props) => props.theme.bg};
@@ -200,7 +270,7 @@ function CustomNode({ data }) {
 </Callout>
 
 ```js
-import 'reactflow/dist/style.css';
+import '@xyflow/react/dist/style.css';
 import 'tailwind.css';
 ```
 

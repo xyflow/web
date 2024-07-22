@@ -1,17 +1,18 @@
 import React, { useCallback } from 'react';
-import ReactFlow, {
+import {
+  ReactFlow,
   addEdge,
   ConnectionLineType,
   Panel,
   useNodesState,
   useEdgesState,
-} from 'reactflow';
+} from '@xyflow/react';
 
 import CustomNode from './CustomNode';
 import { initialTree, treeRootId } from './nodes-edges';
 import { layoutElements } from './layout-elements';
 
-import 'reactflow/dist/style.css';
+import '@xyflow/react/dist/style.css';
 
 const nodeTypes = {
   custom: CustomNode,

@@ -8,7 +8,7 @@ import {
   applyNodeChanges,
   applyEdgeChanges,
   XYPosition,
-} from 'reactflow';
+} from '@xyflow/react';
 import { create } from 'zustand';
 import { nanoid } from 'nanoid/non-secure';
 

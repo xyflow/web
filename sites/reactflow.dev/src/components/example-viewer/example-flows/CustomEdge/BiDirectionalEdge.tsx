@@ -1,5 +1,11 @@
 import React from 'react';
-import { getBezierPath, BaseEdge, useStore, EdgeProps, ReactFlowState } from 'reactflow';
+import {
+  getBezierPath,
+  BaseEdge,
+  useStore,
+  EdgeProps,
+  ReactFlowState,
+} from '@xyflow/react';
 
 export type GetSpecialPathParams = {
   sourceX: number;
@@ -10,12 +16,14 @@ export type GetSpecialPathParams = {
 
 export const getSpecialPath = (
   { sourceX, sourceY, targetX, targetY }: GetSpecialPathParams,
-  offset: number
+  offset: number,
 ) => {
   const centerX = (sourceX + targetX) / 2;
   const centerY = (sourceY + targetY) / 2;
 
-  return `M ${sourceX} ${sourceY} Q ${centerX} ${centerY + offset} ${targetX} ${targetY}`;
+  return `M ${sourceX} ${sourceY} Q ${centerX} ${
+    centerY + offset
+  } ${targetX} ${targetY}`;
 };
 
 export default function CustomEdge({
@@ -32,7 +40,8 @@ export default function CustomEdge({
   const isBiDirectionEdge = useStore((s: ReactFlowState) => {
     const edgeExists = s.edges.some(
       (e) =>
-        (e.source === target && e.target === source) || (e.target === source && e.source === target)
+        (e.source === target && e.target === source) ||
+        (e.target === source && e.source === target),
     );
 
     return edgeExists;

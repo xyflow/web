@@ -1,4 +1,4 @@
-import { Edge } from 'reactflow';
+import { Edge } from '@xyflow/react';
 
 export default [
   { id: 'e1-2', source: '1', target: '2' },

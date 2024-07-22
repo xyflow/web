@@ -5,6 +5,14 @@ description: Use this guide to migrate from React Flow v9 to v10.
 
 # Migrate to v10
 
+import { Callout } from 'nextra/components';
+
+<Callout type="info">
+  You can find the docs for old versions of React Flow here:
+  [v11](https://v11.reactflow.dev), [v10](https://v10.reactflow.dev),
+  [v9](https://v9.reactflow.dev)
+</Callout>
+
 Welcome to React Flow v10! With the major version update, there are coming many new features but also some breaking changes.
 
 ## New Features
@@ -44,7 +52,7 @@ If you want to have the full control and use nodes and edges from your local sta
 
 ```jsx
 import { useState, useCallback } from 'react';
-import ReactFlow, { removeElements, addEdge } from 'react-flow-renderer';
+import { ReactFlow, removeElements, addEdge } from 'react-flow-renderer';
 
 const initialElements = [
   { id: '1', data: { label: 'Node 1' }, position: { x: 250, y: 0 } },
@@ -79,7 +87,8 @@ export default BasicFlow;
 
 ```jsx
 import { useState, useCallback } from 'react';
-import ReactFlow, {
+import {
+  ReactFlow,
   applyNodeChanges,
   applyEdgeChanges,
   addEdge,

@@ -19,7 +19,6 @@ export const defaultEdgeFields: PropsTableProps = {
     { name: 'selected', type: 'boolean' },
     { name: 'deletable', type: 'boolean' },
     { name: 'selectable', type: 'boolean' },
-    { name: 'updatable?', type: 'boolean | "source" | "target"' },
     { name: 'markerStart', type: 'string | EdgeMarker' },
     { name: 'markerEnd', type: 'string | EdgeMarker' },
     { name: 'zIndex?', type: 'number' },

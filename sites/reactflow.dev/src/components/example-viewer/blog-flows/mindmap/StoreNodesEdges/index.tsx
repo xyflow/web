@@ -1,11 +1,17 @@
 import React from 'react';
-import ReactFlow, { Controls, Panel, NodeOrigin, ConnectionLineType } from 'reactflow';
+import {
+  ReactFlow,
+  Controls,
+  Panel,
+  NodeOrigin,
+  ConnectionLineType,
+} from '@xyflow/react';
 import { shallow } from 'zustand/shallow';
 
 import useStore, { RFState } from './store';
 
 // we need to import the React Flow styles to make it work
-import 'reactflow/dist/style.css';
+import '@xyflow/react/dist/style.css';
 
 const selector = (state: RFState) => ({
   nodes: state.nodes,
@@ -21,7 +27,10 @@ const defaultEdgeOptions = { style: connectionLineStyle, type: 'mindmap' };
 
 function Flow() {
   // whenever you use multiple values, you should use shallow for making sure that the component only re-renders when one of the values change
-  const { nodes, edges, onNodesChange, onEdgesChange } = useStore(selector, shallow);
+  const { nodes, edges, onNodesChange, onEdgesChange } = useStore(
+    selector,
+    shallow,
+  );
 
   return (
     <ReactFlow

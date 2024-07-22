@@ -1,7 +1,8 @@
 'use client';
 
-import { useCallback, useState, useEffect } from 'react';
-import ReactFlow, {
+import { useCallback, useEffect } from 'react';
+import {
+  ReactFlow,
   Background,
   ReactFlowProvider,
   useReactFlow,
@@ -11,7 +12,7 @@ import ReactFlow, {
   useStore,
   ReactFlowState,
   getNodesBounds,
-} from 'reactflow';
+} from '@xyflow/react';
 
 import HeroNode from './hero-node';
 import ColorPickerNode from './color-picker-node';
@@ -31,18 +32,12 @@ const proOptions = {
   hideAttribution: true,
 };
 
-const initialState = {
-  color: '#777',
-  zoom: 12,
-  shape: 'cube',
-};
-
 const defaultNodes: Node[] = [
   {
     id: 'hero',
     type: 'hero',
     position: { x: 390, y: 50 },
-    data: { ...initialState, label: 'output' },
+    data: { label: 'output' },
     className: 'w-[200px] lg:w-[300px]',
     style: { opacity: 0 },
   },
@@ -50,7 +45,7 @@ const defaultNodes: Node[] = [
     id: 'color',
     type: 'colorpicker',
     position: { x: 50, y: 0 },
-    data: { ...initialState, label: 'shape color' },
+    data: { value: '#ff0071', label: 'shape color' },
     className: 'w-[150px]',
     style: { opacity: 0 },
   },
@@ -59,7 +54,7 @@ const defaultNodes: Node[] = [
     type: 'switcher',
     position: { x: 0, y: 125 },
     data: {
-      ...initialState,
+      value: 'cube',
       label: 'shape type',
     },
     className: 'w-[150px]',
@@ -70,7 +65,7 @@ const defaultNodes: Node[] = [
     type: 'slider',
     position: { x: 40, y: 280 },
     data: {
-      ...initialState,
+      value: 12,
       label: 'zoom level',
     },
     className: 'w-[150px]',
@@ -124,14 +119,10 @@ type FlowProps = {
 
 const viewportWidthSelector = (state: ReactFlowState) => state.width;
 
-function Flow({ initialColor = '#777', className }: FlowProps) {
+function Flow({ className }: FlowProps) {
   const { getNodes, setNodes, setEdges, setViewport } = useReactFlow();
   const viewportWidth = useStore(viewportWidthSelector);
   const store = useStoreApi();
-  const [flowState, setFlowState] = useState({
-    ...initialState,
-    color: initialColor,
-  });
 
   const adjustViewport = useCallback(() => {
     const nodes = getNodes();
@@ -167,15 +158,6 @@ function Flow({ initialColor = '#777', className }: FlowProps) {
       eds.map((e) => ({ ...e, style: { ...e.style, opacity: 1 } })),
     );
   }, [setViewport, getNodes, store]);
-
-  useEffect(() => {
-    setNodes((nds) =>
-      nds.map((n) => ({
-        ...n,
-        data: { ...n.data, ...flowState, setState: setFlowState },
-      })),
-    );
-  }, [flowState]);
 
   useEffect(() => {
     adjustViewport();

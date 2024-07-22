@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import ReactFlow, { Background, Node, ReactFlowProvider } from 'reactflow';
+import { ReactFlow, Background, Node, ReactFlowProvider } from '@xyflow/react';
 import { ArrowDownIcon, ArrowRightIcon } from '@heroicons/react/20/solid';
 import { Button, Emoji, Link, Text } from '@xyflow/xy-ui';
 

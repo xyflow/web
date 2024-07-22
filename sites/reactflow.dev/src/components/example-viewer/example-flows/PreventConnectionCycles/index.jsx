@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
-import ReactFlow, {
+import {
+  ReactFlow,
   Background,
   useNodesState,
   useEdgesState,
@@ -7,10 +8,10 @@ import ReactFlow, {
   getOutgoers,
   useReactFlow,
   ReactFlowProvider,
-} from 'reactflow';
+} from '@xyflow/react';
 import { nodes as initialNodes, edges as initialEdges } from './nodes-edges';
 
-import 'reactflow/dist/style.css';
+import '@xyflow/react/dist/style.css';
 
 const Flow = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);

@@ -1,11 +1,12 @@
 import React from 'react';
-import ReactFlow, {
+import {
+  ReactFlow,
   Background,
   Controls,
   ReactFlowProvider,
   useStore,
-} from 'reactflow';
-import 'reactflow/dist/base.css';
+} from '@xyflow/react';
+import '@xyflow/react/dist/base.css';
 
 const selector = (s) => s.transform;
 
@@ -33,11 +34,11 @@ const nodeStyle = {
     'rgb(0 0 0 / 10%) 0px 4px 6px -1px, rgb(0 0 0 / 6%) 0px 2px 4px -1px',
 };
 
-function XYNode({ xPos, yPos }) {
+function XYNode({ positionAbsoluteX, positionAbsoluteY }) {
   return (
     <div style={nodeStyle}>
-      <div>x: {xPos.toFixed(2)}</div>
-      <div>y: {yPos.toFixed(2)}</div>
+      <div>x: {positionAbsoluteX.toFixed(2)}</div>
+      <div>y: {positionAbsoluteY.toFixed(2)}</div>
     </div>
   );
 }

@@ -20,7 +20,7 @@ const setup = ({ dependencies = {}, tailwind = false } = {}) => {
         preview: 'vite preview',
       },
       dependencies: {
-        '@xyflow/svelte': `${process.env.NEXT_PUBLIC_SVELTE_FLOW_VERSION}`,
+        '@xyflow/svelte': `${process.env.SVELTE_FLOW_VERSION}`,
         ...dependencies,
       },
       devDependencies: {

@@ -1,7 +1,7 @@
 import React from 'react';
-import ReactFlow, { Background } from 'reactflow';
+import { ReactFlow, Background } from '@xyflow/react';
 
-import 'reactflow/dist/style.css';
+import '@xyflow/react/dist/style.css';
 
 import ResizeRotateNode from './ResizeRotateNode';
 import { nodes, edges } from './nodes-edges';
