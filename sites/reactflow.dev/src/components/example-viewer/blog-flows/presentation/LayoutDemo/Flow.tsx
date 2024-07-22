@@ -1,6 +1,6 @@
 import { ReactFlow, Background, BackgroundVariant } from '@xyflow/react';
 
-import 'reactflow/dist/style.css';
+import '@xyflow/react/dist/style.css';
 import './index.css';
 import { useMemo } from 'react';
 

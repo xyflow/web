@@ -6,7 +6,7 @@ import {
 } from '@xyflow/react';
 import { Slide, SLIDE_WIDTH } from './Slide';
 
-import 'reactflow/dist/style.css';
+import '@xyflow/react/dist/style.css';
 import './index.css';
 
 const nodeTypes = {

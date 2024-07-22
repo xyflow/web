@@ -10,7 +10,7 @@ import {
 import { Slide } from './Slide';
 import { slides, slidesToElements } from './slides';
 
-import 'reactflow/dist/style.css';
+import '@xyflow/react/dist/style.css';
 import './index.css';
 
 const nodeTypes = {

@@ -13,7 +13,7 @@ import slides from './slides';
 import './index.css';
 
 // we need to import the React Flow styles to make it work
-import 'reactflow/dist/style.css';
+import '@xyflow/react/dist/style.css';
 import {
   Slide,
   SlideData,
