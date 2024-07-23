@@ -22,10 +22,10 @@
 
 }
 
-.validationflow .react-flow__handle-connecting {
+.validationflow .react-flow__handle.connectingto {
   background: #ff6060;
 }
 
-.validationflow .react-flow__handle-valid {
+.validationflow .react-flow__handle.valid {
   background: #55dd99;
 }
