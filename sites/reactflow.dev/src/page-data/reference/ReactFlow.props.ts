@@ -107,7 +107,7 @@ export const commonProps: PropsTableProps = {
       name: 'colorMode',
       type: '"system" | "light" | "dark"',
       default: '"system"',
-      description: `React Flow has 2 built-in color themes: light and dark. 
+      description: `React Flow has 2 built-in color themes: light and dark.
       By default it will try to adopt the users systems color theme.`,
     },
   ],
@@ -263,7 +263,7 @@ export const generalEventHandlerProps: PropsTableProps = {
     {
       name: 'onBeforeDelete',
       type: '({nodes: Node[], edges: Edge[]}) => Promise<boolean | {nodes: Node[], edges: Edge[]}>',
-      description: `This handler gets before Nodes or Edges are about to be deleted. 
+      description: `This handler gets before Nodes or Edges are about to be deleted.
       Deletion can be aborted by returning false or the nodes and edges to be deleted can be modified.`,
     },
   ],
@@ -655,6 +655,37 @@ export const keyboardProps: PropsTableProps = {
       default: 'false',
       description: `You can use this prop to disable keyboard accessibility features
       such as selecting nodes or moving selected nodes with the arrow keys.`,
+    },
+  ],
+};
+
+export const styleProps: PropsTableProps = {
+  props: [
+    {
+      name: 'noPanClassName',
+      type: 'string',
+      default: '"nopan"',
+      description: `If an element in the canvas does not stop mouse events frmo
+      propagating, clicking and dragging that element will pan the viewport. Adding
+      the "nopan" class prevents this behaviour and this prop allows you to change
+      the name of that class.`,
+    },
+    {
+      name: 'noDragClassName',
+      type: 'string',
+      default: '"nodrag"',
+      description: `If a node is draggable, clicking and dragging that node will
+      move it around the canvas. Adding the "nodrag" class prevents this behaviour
+      and this prop allows you to change the name of that class.`,
+    },
+    {
+      name: 'noWheelClassName',
+      type: 'string',
+      default: '"nowheel"',
+      description: `Typically, scrolling the mouse wheel when the mouse is over
+      the canvas will zoom the viewport. Adding the "nowheel" class to an element
+      in the canvas will prevent this behaviour and this prop allows you to change
+      the name of that class.`,
     },
   ],
 };
