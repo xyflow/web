@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import {
   ReactFlow,
   Background,
@@ -19,6 +19,7 @@ import ColorPickerNode from './color-picker-node';
 import SliderNode from './slider-node';
 import SwitcherNode from './switcher-node';
 import SwoopyNode from './swoopy-node';
+import { init } from 'next/dist/compiled/webpack/webpack';
 
 const nodeTypes = {
   hero: HeroNode,
@@ -119,10 +120,17 @@ type FlowProps = {
 
 const viewportWidthSelector = (state: ReactFlowState) => state.width;
 
-function Flow({ className }: FlowProps) {
+function Flow({ className, initialColor }: FlowProps) {
   const { getNodes, setNodes, setEdges, setViewport } = useReactFlow();
   const viewportWidth = useStore(viewportWidthSelector);
   const store = useStoreApi();
+
+  // fix for wrong color on svelte site
+  const initial = useRef(true);
+  if (initial.current) {
+    defaultNodes[1].data.value = initialColor;
+    initial.current = false;
+  }
 
   const adjustViewport = useCallback(() => {
     const nodes = getNodes();
