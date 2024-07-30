@@ -16,9 +16,13 @@ function FloatingConnectionLine({
 
   const targetNode = {
     id: 'connection-target',
-    width: 1,
-    height: 1,
-    positionAbsolute: { x: toX, y: toY },
+    measured: {
+      width: 1,
+      height: 1,
+    },
+    internals: {
+      positionAbsolute: { x: toX, y: toY },
+    },
   };
 
   const { sx, sy } = getEdgeParams(fromNode, targetNode);

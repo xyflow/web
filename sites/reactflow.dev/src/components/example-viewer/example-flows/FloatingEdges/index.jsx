@@ -24,7 +24,6 @@ const edgeTypes = {
 const NodeAsHandleFlow = () => {
   const [nodes, , onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
-
   const onConnect = useCallback(
     (params) =>
       setEdges((eds) =>
