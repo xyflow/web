@@ -4,6 +4,7 @@ description: Pro example that demonstrates how to use React Flow to statically g
 is_pro_example: true
 ---
 
+import { Button } from '@xyflow/xy-ui';
 import ProExampleViewer from '@/components/pro-example-viewer';
 import ExampleLayout from '@/layouts/example-with-frontmatter';
 
@@ -11,5 +12,12 @@ import ExampleLayout from '@/layouts/example-with-frontmatter';
 This is a _full-stack application_ that demonstrates how to use React Flow to statically render a flow. It is composed of a small [Express](https://expressjs.com/) server and a simple React frontend. You can make adjustments in the flow data editor on the bottom left or the change the format besides other things on the bottom right. When you you make changes, a request is sent to the server that responds with an HTML preview or an image (top right output).
 
 <ProExampleViewer slug="static-server-side-generation" />
+
+<a
+  target="_blank"
+  href={`${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/static-server-side-generation`}
+>
+  <Button variant="link">Open example in a new tab</Button>
+</a>
 
 </ExampleLayout>
