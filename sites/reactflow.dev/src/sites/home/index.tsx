@@ -90,7 +90,7 @@ const sliderItems = [
 ];
 
 export default function ReactFlowHome() {
-  const { stars = 16000, downloads = 4000, whatsNew = [] } = useSSG();
+  const { stars = 23000, downloads = 4000, whatsNew = [] } = useSSG();
 
   return (
     <BaseLayout>
