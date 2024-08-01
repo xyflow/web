@@ -5,7 +5,6 @@
   "get-bezier-path": "getBezierPath()",
   "get-connected-edges": "getConnectedEdges()",
   "get-incomers": "getIncomers()",
-  "get-marker-end": "getMarkerEnd()",
   "get-nodes-bounds": "getNodesBounds()",
   "get-outgoers": "getOutgoers()",
   "get-simple-bezier-path": "getSimpleBezierPath()",
