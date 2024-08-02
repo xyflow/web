@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { useSSG } from 'nextra/ssg';
 import {
   Button,
   PricingTable,

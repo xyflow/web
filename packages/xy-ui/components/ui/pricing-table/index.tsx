@@ -102,19 +102,39 @@ const PricingTable = ({
   );
 };
 
+const currencyConfigs = [
+  {
+    currency: Currency.EUR,
+    search: ['europe'],
+  },
+  {
+    currency: Currency.INR,
+    search: ['kolkata', 'calcutta'],
+  },
+];
+
+const defaultCurrency = Currency.USD;
+
 function getDefaultCurrency(): Currency {
-  let isEurope = false;
+  let currency = Currency.USD;
 
-  try {
-    isEurope = Intl.DateTimeFormat()
-      .resolvedOptions()
-      .timeZone.toLowerCase()
-      .includes('europe');
-  } catch (err) {
-    console.log(err);
-  }
+  currencyConfigs.forEach((config) => {
+    try {
+      const timezone = Intl.DateTimeFormat()
+        .resolvedOptions()
+        .timeZone.toLowerCase();
 
-  return isEurope ? Currency.EUR : Currency.USD;
+      config.search.forEach((search) => {
+        if (timezone.includes(search)) {
+          currency = config.currency;
+        }
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  });
+
+  return currency;
 }
 
 PricingTable.displayName = 'PricingTable';
