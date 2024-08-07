@@ -5,6 +5,7 @@ const nodes = [
   {
     id: '1',
     position: { x: 0, y: 0 },
+    data: { label: 'Hello' },
   },
 ];
 
