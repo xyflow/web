@@ -92,14 +92,16 @@ We get started by stacking together the most important components of Svelte Flow
     Controls,
     Background,
     BackgroundVariant,
-    MiniMap
+    MiniMap,
+    type Node,
+    type Edge
   } from '@xyflow/svelte';
 
   // 👇 this is important! You need to import the styles for Svelte Flow to work
   import '@xyflow/svelte/dist/style.css';
 
   // We are using writables for the nodes and edges to sync them easily. When a user drags a node for example, Svelte Flow updates its position.
-  const nodes = writable([
+  const nodes = writable<Node[]>([
     {
       id: '1',
       type: 'input',
@@ -115,7 +117,7 @@ We get started by stacking together the most important components of Svelte Flow
   ]);
 
   // same for edges
-  const edges = writable([
+  const edges = writable<Edge[]>([
     {
       id: '1-2',
       type: 'default',
