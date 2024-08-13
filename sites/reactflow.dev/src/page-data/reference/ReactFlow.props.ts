@@ -665,7 +665,7 @@ export const styleProps: PropsTableProps = {
       name: 'noPanClassName',
       type: 'string',
       default: '"nopan"',
-      description: `If an element in the canvas does not stop mouse events frmo
+      description: `If an element in the canvas does not stop mouse events from
       propagating, clicking and dragging that element will pan the viewport. Adding
       the "nopan" class prevents this behaviour and this prop allows you to change
       the name of that class.`,
