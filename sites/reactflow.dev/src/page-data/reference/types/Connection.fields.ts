@@ -4,15 +4,13 @@ export const connectionFields: PropsTableProps = {
   props: [
     {
       name: 'source',
-      type: 'string | null',
-      description: `When not null, the id of the node this connection originates
-      from.`,
+      type: 'string',
+      description: `The id of the node this connection originates from.`,
     },
     {
       name: 'target',
-      type: 'string | null',
-      description: `When not null, the id of the node this connection terminates
-      at.`,
+      type: 'string',
+      description: `The id of the node this connection terminates at.`,
     },
     {
       name: 'sourceHandle',
