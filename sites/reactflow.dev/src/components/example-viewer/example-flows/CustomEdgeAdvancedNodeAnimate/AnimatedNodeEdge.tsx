@@ -5,7 +5,6 @@ import {
   EdgeProps,
   getBezierPath,
   useReactFlow,
-  updateNode,
 } from '@xyflow/react';
 
 export type AnimatedNodeEdge = Edge<{ node: string }, 'animatedNode'>;
