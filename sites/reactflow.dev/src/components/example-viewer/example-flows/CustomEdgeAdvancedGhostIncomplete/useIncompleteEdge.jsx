@@ -9,7 +9,12 @@ import {
 
 export const GhostNode = () => (
   <div style={{ width: 5, height: 5 }}>
-    <Handle type="target" position={Position.Top} isConnectable={false} />
+    <Handle
+      type="target"
+      position={Position.Top}
+      isConnectable={false}
+      style={{ background: '#aaa' }}
+    />
   </div>
 );
 

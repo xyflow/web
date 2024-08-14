@@ -22,7 +22,7 @@ export function AnimatedSVGEdge({
   return (
     <>
       <BaseEdge id={id} path={edgePath} />
-      <circle r="10" fill="red">
+      <circle r="10" fill="#ff0073">
         <animateMotion dur="2s" repeatCount="indefinite" path={edgePath} />
       </circle>
     </>
