@@ -534,8 +534,8 @@ callback that fires when _any_ node is clicked. Along with the mouse event itsel
 we also receive a reference to the node that was clicked on, and we can use that
 to pan the canvas thanks to the `fitView` method.
 
-[`fitView`](/api-reference/react-flow-instance#fit-view) is a method on the React
-Flow instance, and we can get access to it by using the [`useReactFlow`](/api-reference/react-flow-instance#use-react-flow)
+[`fitView`](/api-reference/types/react-flow-instance#fit-view) is a method on the React
+Flow instance, and we can get access to it by using the [`useReactFlow`](/api-reference/types/react-flow-instance#use-react-flow)
 hook.
 
 ```tsx filename="App.tsx" {1-2,17-23,29}
@@ -584,7 +584,7 @@ export default function App() {
 
 Calling `fitView` with no arguments would attempt to fit every node in the graph
 into view, but we only want to focus on the node that was clicked! The
-[`FitViewOptions`](/api-reference/types/FitViewOptions) object lets us provide an
+[`FitViewOptions`](/api-reference/types/fit-view-options) object lets us provide an
 array of just the nodes we want to focus on: in this case, that's just the node
 that was clicked.
 
@@ -642,7 +642,7 @@ To implement `moveToSlide` we'll make use of `fitView` agan. Previously we had a
 reference to the actual node that was clicked on to pass to `fitView`, but this
 time we only have a node's id. You might be tempted to look up the target node by
 its id, but actually that's not necessary! If we look at the type of
-[`FitViewOptions`](/api-reference/types/FitViewOptions) we can see that the array
+[`FitViewOptions`](/api-reference/types/fit-view-options) we can see that the array
 of nodes we pass in only _needs_ to have an `id` property:
 
 ```ts filename="https://reactflow.dev/api-reference/types/fit-view-options" {7}
