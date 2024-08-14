@@ -1,8 +1,11 @@
 import React from 'react';
+import { useDnD } from './DnDContext';
 
 export default () => {
+  const [_, setType] = useDnD();
+
   const onDragStart = (event, nodeType) => {
-    event.dataTransfer.setData('application/reactflow', nodeType);
+    setType(nodeType);
     event.dataTransfer.effectAllowed = 'move';
   };
 

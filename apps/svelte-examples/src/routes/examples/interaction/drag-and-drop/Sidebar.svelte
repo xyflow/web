@@ -1,10 +1,15 @@
 <script lang="ts">
+  import { useDnD } from './utils';
+
+  const type = useDnD();
+
   const onDragStart = (event: DragEvent, nodeType: string) => {
     if (!event.dataTransfer) {
       return null;
     }
 
-    event.dataTransfer.setData('application/svelteflow', nodeType);
+    type.set(nodeType);
+
     event.dataTransfer.effectAllowed = 'move';
   };
 </script>
