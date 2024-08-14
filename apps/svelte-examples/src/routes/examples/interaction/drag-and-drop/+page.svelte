@@ -2,8 +2,11 @@
   import { SvelteFlowProvider } from '@xyflow/svelte';
 
   import Flow from './Flow.svelte';
+  import DnDProvider from './DnDProvider.svelte';
 </script>
 
 <SvelteFlowProvider>
-  <Flow />
+  <DnDProvider>
+    <Flow />
+  </DnDProvider>
 </SvelteFlowProvider>
