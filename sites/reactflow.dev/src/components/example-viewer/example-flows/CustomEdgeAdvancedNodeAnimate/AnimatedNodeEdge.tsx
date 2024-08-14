@@ -40,6 +40,12 @@ export function AnimatedNodeEdge({
 
     node.style.offsetPath = `path('${edgePath}')`;
     node.style.offsetRotate = '0deg';
+    // This property is fairly new and not all versions of TypeScript have it
+    // in the lib.dom.d.ts file. If you get an error here, you can either
+    // ignore it or add the property to the CSSStyleDeclaration interface
+    // yourself.
+    //
+    // @ts-expect-error
     node.style.offsetAnchor = 'center';
 
     let wasDraggable = getNode(data.node).draggable;
