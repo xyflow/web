@@ -93,6 +93,7 @@ export type InternalRoute =
   | '/api-reference/utils/reconnect-edge'
   | '/developer-survey-2023'
   | '/examples'
+  | '/examples/edges/animating-edges'
   | '/examples/edges/custom-connectionline'
   | '/examples/edges/custom-edges'
   | '/examples/edges/delete-edge-on-drop'
@@ -104,9 +105,11 @@ export type InternalRoute =
   | '/examples/edges/multi-connection-line'
   | '/examples/edges/reconnect-edge'
   | '/examples/edges/simple-floating-edges'
+  | '/examples/edges/temporary-edges'
   | '/examples/interaction/collaborative'
   | '/examples/interaction/collision-detection'
   | '/examples/interaction/computing-flows'
+  | '/examples/interaction/connection-events'
   | '/examples/interaction/context-menu'
   | '/examples/interaction/contextual-zoom'
   | '/examples/interaction/copy-paste'
@@ -210,4 +213,5 @@ export type InternalRoute =
   | '/whats-new/2024-05-06'
   | '/whats-new/2024-06-11'
   | '/whats-new/2024-07-09'
-  | '/whats-new/2024-07-22';
+  | '/whats-new/2024-07-22'
+  | '/whats-new/2024-08-14';
