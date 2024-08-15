@@ -90,6 +90,12 @@ export const commonProps: PropsTableProps = {
         `,
     },
     {
+      name: 'nodeClickDistance',
+      type: 'number',
+      default: `0`,
+      description: `The max distance between mousedown/up that will trigger a click.`,
+    },
+    {
       name: 'paneClickDistance',
       type: 'number',
       default: `0`,
