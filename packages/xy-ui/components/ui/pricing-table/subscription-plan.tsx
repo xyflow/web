@@ -99,7 +99,9 @@ function PricingDisplay({
             {priceStrikeThrough.label}
           </div>
         )}
-        <div className="font-bold">{currentPrice.label}</div>
+        <div suppressHydrationWarning className="font-bold">
+          {currentPrice.label}
+        </div>
       </div>
       <div className="text-light">per month</div>
     </div>
