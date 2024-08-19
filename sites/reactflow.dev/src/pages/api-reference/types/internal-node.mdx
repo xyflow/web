@@ -13,43 +13,13 @@ import { internalNodeFields } from '@/page-data/reference/types/InternalNode.fie
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/99985b52026cf4ac65a1033178cf8c2bea4e14fa/packages/system/src/types/nodes.ts#L68)
 
-The `InternalNode` type is identical to the base [`Node`](/api-references/types/node).
+The `InternalNode` type is identical to the base [`Node`](/api-references/types/node)
 type but is extended with some additional properties used internall by React
 Flow. Some functions and callbacks that return nodes may return an `InternalNode`.
 
 ```ts
-export type InternalNode<
-  NodeData extends Record<string, unknown> = Record<string, unknown>,
-  NodeType extends string = string,
-> = {
-  id: string;
-  position: XYPosition;
-  data: NodeData;
-  type?: NodeType;
-  sourcePosition?: Position;
-  targetPosition?: Position;
-  hidden?: boolean;
-  selected?: boolean;
-  dragging?: boolean;
-  draggable?: boolean;
-  selectable?: boolean;
-  connectable?: boolean;
-  resizing?: boolean;
-  deletable?: boolean;
-  dragHandle?: string;
-  width?: number | null;
-  height?: number | null;
-  parentId?: string;
-  zIndex?: number;
-  extent?: 'parent' | CoordinateExtent;
-  expandParent?: boolean;
-  ariaLabel?: string;
-  focusable?: boolean;
-  style?: React.CSSProperties;
-  className?: string;
-  origin?: NodeOrigin;
-  handles?: NodeHandle[];
-  measured?: {
+export type InternalNodeBase<NodeType extends NodeBase = NodeBase> = NodeType & {
+  measured: {
     width?: number;
     height?: number;
   };
