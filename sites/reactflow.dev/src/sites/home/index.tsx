@@ -90,7 +90,7 @@ const sliderItems = [
 ];
 
 export default function ReactFlowHome() {
-  const { stars = 16000, downloads = 4000, whatsNew = [] } = useSSG();
+  const { stars = 23000, downloads = 4000, whatsNew = [] } = useSSG();
 
   return (
     <BaseLayout>
@@ -135,7 +135,7 @@ export default function ReactFlowHome() {
         />
       </Section>
 
-      <GettingStarted libraryName="React Flow" packageName="reactflow" />
+      <GettingStarted libraryName="React Flow" packageName="@xyflow/react" />
 
       <Section>
         <Features features={features} />

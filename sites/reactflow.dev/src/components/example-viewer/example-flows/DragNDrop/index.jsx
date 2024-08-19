@@ -1,15 +1,17 @@
 import React, { useRef, useCallback } from 'react';
-import ReactFlow, {
+import {
+  ReactFlow,
   ReactFlowProvider,
   addEdge,
   useNodesState,
   useEdgesState,
   Controls,
   useReactFlow,
-} from 'reactflow';
-import 'reactflow/dist/style.css';
+} from '@xyflow/react';
+import '@xyflow/react/dist/style.css';
 
 import Sidebar from './Sidebar';
+import { DnDProvider, useDnD } from './DnDContext';
 
 import './index.css';
 
@@ -30,6 +32,7 @@ const DnDFlow = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   const { screenToFlowPosition } = useReactFlow();
+  const [type] = useDnD();
 
   const onConnect = useCallback(
     (params) => setEdges((eds) => addEdge(params, eds)),
@@ -45,10 +48,8 @@ const DnDFlow = () => {
     (event) => {
       event.preventDefault();
 
-      const type = event.dataTransfer.getData('application/reactflow');
-
       // check if the dropped element is valid
-      if (typeof type === 'undefined' || !type) {
+      if (!type) {
         return;
       }
 
@@ -68,7 +69,7 @@ const DnDFlow = () => {
 
       setNodes((nds) => nds.concat(newNode));
     },
-    [screenToFlowPosition],
+    [screenToFlowPosition, type],
   );
 
   return (
@@ -94,6 +95,8 @@ const DnDFlow = () => {
 
 export default () => (
   <ReactFlowProvider>
-    <DnDFlow />
+    <DnDProvider>
+      <DnDFlow />
+    </DnDProvider>
   </ReactFlowProvider>
 );

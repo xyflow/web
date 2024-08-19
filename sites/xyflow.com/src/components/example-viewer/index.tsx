@@ -11,7 +11,7 @@ type ExampleViewerProps = CodeViewerProps & {
 
 export default function ExampleViewer({
   codePath,
-  additionalFiles,
+  additionalFiles = [],
   activeFile,
   isTypescript,
   editorHeight,
@@ -21,7 +21,7 @@ export default function ExampleViewer({
   const [files, setFiles] = useState(null);
   const scriptExtension = isTypescript ? 'tsx' : 'js';
   const dependenciesWithDefault = {
-    reactflow: process.env.NEXT_PUBLIC_REACT_FLOW_VERSION,
+    '@xyflow/react': process.env.REACT_FLOW_VERSION,
     ...dependencies,
   };
 

@@ -4,7 +4,7 @@ title: The ReactFlowProvider component
 
 # &lt;ReactFlowProvider />
 
-[Source on GitHub](https://github.com/xyflow/xyflow/blob/v11/packages/core/src/components/ReactFlowProvider/index.tsx/#L9)
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/components/ReactFlowProvider/index.tsx/#L9)
 
 The `<ReactFlowProvider />` component is a
 [context provider](https://react.dev/learn/passing-data-deeply-with-context#) that
@@ -13,7 +13,7 @@ makes it possible to access a flow's internal state outside of the
 provide rely on this component to work.
 
 ```tsx
-import ReactFlow, { ReactFlowProvider, useNodes } from 'reactflow'
+import { ReactFlow,  ReactFlowProvider, useNodes } from '@xyflow/react'
 
 export default function Flow() {
   return (

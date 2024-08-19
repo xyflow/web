@@ -1,18 +1,25 @@
-import { forceSimulation, forceLink, forceManyBody, forceX, forceY } from 'd3-force';
-import React, { useEffect, useLayoutEffect, useMemo, useState } from 'react';
-import ReactFlow, {
+import {
+  forceSimulation,
+  forceLink,
+  forceManyBody,
+  forceX,
+  forceY,
+} from 'd3-force';
+import React, { useMemo } from 'react';
+import {
+  ReactFlow,
   ReactFlowProvider,
   Panel,
   useNodesState,
   useEdgesState,
   useReactFlow,
-  useStore,
-} from 'reactflow';
+  useNodesInitialized,
+} from '@xyflow/react';
 
 import { initialNodes, initialEdges } from './nodes-edges.js';
 import { collide } from './collide.js';
 
-import 'reactflow/dist/style.css';
+import '@xyflow/react/dist/style.css';
 
 const simulation = forceSimulation()
   .force('charge', forceManyBody().strength(-1000))
@@ -24,32 +31,36 @@ const simulation = forceSimulation()
 
 const useLayoutedElements = () => {
   const { getNodes, setNodes, getEdges, fitView } = useReactFlow();
-  const initialised = useStore((store) =>
-    [...store.nodeInternals.values()].every((node) => node.width && node.height)
-  );
+  const initialized = useNodesInitialized();
 
   return useMemo(() => {
-    let nodes = getNodes().map((node) => ({ ...node, x: node.position.x, y: node.position.y }));
+    let nodes = getNodes().map((node) => ({
+      ...node,
+      x: node.position.x,
+      y: node.position.y,
+    }));
     let edges = getEdges().map((edge) => edge);
     let running = false;
 
-    // If React Flow hasn't initialised our nodes with a width and height yet, or
+    // If React Flow hasn't initialized our nodes with a width and height yet, or
     // if there are no nodes in the flow, then we can't run the simulation!
-    if (!initialised || nodes.length === 0) return [false, {}];
+    if (!initialized || nodes.length === 0) return [false, {}];
 
     simulation.nodes(nodes).force(
       'link',
       forceLink(edges)
         .id((d) => d.id)
         .strength(0.05)
-        .distance(100)
+        .distance(100),
     );
 
     // The tick function is called every animation frame while the simulation is
     // running and progresses the simulation one step forward each time.
     const tick = () => {
       getNodes().forEach((node, i) => {
-        const dragging = Boolean(document.querySelector(`[data-id="${node.id}"].dragging`));
+        const dragging = Boolean(
+          document.querySelector(`[data-id="${node.id}"].dragging`),
+        );
 
         // Setting the fx/fy properties of a node tells the simulation to "fix"
         // the node at that position and ignore any forces that would normally
@@ -59,7 +70,9 @@ const useLayoutedElements = () => {
       });
 
       simulation.tick();
-      setNodes(nodes.map((node) => ({ ...node, position: { x: node.x, y: node.y } })));
+      setNodes(
+        nodes.map((node) => ({ ...node, position: { x: node.x, y: node.y } })),
+      );
 
       window.requestAnimationFrame(() => {
         // Give React and React Flow a chance to update and render the new node
@@ -79,13 +92,13 @@ const useLayoutedElements = () => {
     const isRunning = () => running;
 
     return [true, { toggle, isRunning }];
-  }, [initialised]);
+  }, [initialized]);
 };
 
 const LayoutFlow = () => {
   const [nodes, , onNodesChange] = useNodesState(initialNodes);
   const [edges, , onEdgesChange] = useEdgesState(initialEdges);
-  const [initialised, { toggle, isRunning }] = useLayoutedElements();
+  const [initialized, { toggle, isRunning }] = useLayoutedElements();
 
   return (
     <ReactFlow
@@ -95,8 +108,10 @@ const LayoutFlow = () => {
       onEdgesChange={onEdgesChange}
     >
       <Panel>
-        {initialised && (
-          <button onClick={toggle}>{isRunning() ? 'Stop' : 'Start'} force simulation</button>
+        {initialized && (
+          <button onClick={toggle}>
+            {isRunning() ? 'Stop' : 'Start'} force simulation
+          </button>
         )}
       </Panel>
     </ReactFlow>

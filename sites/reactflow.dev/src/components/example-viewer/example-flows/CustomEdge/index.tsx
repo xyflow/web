@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
-import ReactFlow, {
+import {
+  ReactFlow,
   useNodesState,
   useEdgesState,
   addEdge,
@@ -11,8 +12,8 @@ import ReactFlow, {
   Position,
   ConnectionMode,
   MarkerType,
-} from 'reactflow';
-import 'reactflow/dist/style.css';
+} from '@xyflow/react';
+import '@xyflow/react/dist/style.css';
 
 import ButtonEdge from './ButtonEdge';
 import SelfConnectingEdge from './SelfConnectingEdge';
@@ -26,7 +27,11 @@ const initialNodes: Node[] = [
     data: { label: 'Button Edge 1' },
     position: { x: 125, y: 0 },
   },
-  { id: 'button-2', data: { label: 'Button Edge 2' }, position: { x: 125, y: 200 } },
+  {
+    id: 'button-2',
+    data: { label: 'Button Edge 2' },
+    position: { x: 125, y: 200 },
+  },
   {
     id: 'bi-1',
     data: { label: 'Bi Directional 1' },
@@ -100,7 +105,10 @@ const EdgesFlow = () => {
   const [nodes, , onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
-  const onConnect = useCallback((params) => setEdges((eds) => addEdge(params, eds)), []);
+  const onConnect = useCallback(
+    (params) => setEdges((eds) => addEdge(params, eds)),
+    [],
+  );
 
   return (
     <ReactFlow

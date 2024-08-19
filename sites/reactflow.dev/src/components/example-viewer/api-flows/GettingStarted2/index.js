@@ -1,10 +1,11 @@
-import ReactFlow, { Controls, Background } from 'reactflow';
-import 'reactflow/dist/style.css';
+import { ReactFlow, Controls, Background } from '@xyflow/react';
+import '@xyflow/react/dist/style.css';
 
 const nodes = [
   {
     id: '1',
     position: { x: 0, y: 0 },
+    data: { label: 'Hello' },
   },
 ];
 

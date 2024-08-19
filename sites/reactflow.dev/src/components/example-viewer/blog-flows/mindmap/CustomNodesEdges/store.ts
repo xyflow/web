@@ -7,7 +7,7 @@ import {
   OnEdgesChange,
   applyNodeChanges,
   applyEdgeChanges,
-} from 'reactflow';
+} from '@xyflow/react';
 import { create } from 'zustand';
 
 export type RFState = {

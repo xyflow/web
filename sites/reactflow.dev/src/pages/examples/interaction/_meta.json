@@ -1,7 +1,9 @@
 {
   "interaction-props": "Interaction Props",
   "drag-and-drop": "Drag and Drop",
+  "computing-flows": "Computing Flows",
   "validation": "Validation",
+  "connection-events": "Connection Events",
   "prevent-cycles": "Preventing Cycles",
   "undo-redo": "Undo and Redo",
   "copy-paste": "Copy and Paste",

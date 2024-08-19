@@ -6,11 +6,15 @@ description:
 ---
 
 import { PropsTable } from '@/components/props-table';
-import { signature } from '@/page-data/reference/hooks/useReactFlow.ts';
+import {
+  nodesAndEdgesFields,
+  intersectionFields,
+  viewportFields,
+} from '@/page-data/reference/types/ReactFlowInstance.fields.ts';
 
 # useReactFlow
 
-[Source on GitHub](https://github.com/xyflow/xyflow/blob/v11/packages/core/src/hooks/useReactFlow.ts/#L22)
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/hooks/useReactFlow.ts)
 
 This hook returns a [`ReactFlowInstance`](/api-reference/types/react-flow-instance) that can
 be used to update nodes and edges, manipulate the viewport, or query the current
@@ -18,15 +22,15 @@ state of the flow.
 
 ```jsx
 import { useCallback, useState } from 'react';
-import { useReactFlow } from 'reactflow';
+import { useReactFlow } from '@xyflow/react';
 
 export function NodeCounter() {
   const reactFlow = useReactFlow();
   const [count, setCount] = useState(0);
   const countNodes = useCallback(() => {
     setCount(reactFlow.getNodes().length);
-  // you need to pass it as a dependency if you are using it with useEffect or useCallback
-  // because at the first render, it's not initialized yet and some functions might not work.
+    // you need to pass it as a dependency if you are using it with useEffect or useCallback
+    // because at the first render, it's not initialized yet and some functions might not work.
   }, [reactFlow]);
 
   return (
@@ -40,7 +44,26 @@ export function NodeCounter() {
 
 ## Signature
 
-<PropsTable {...signature} />
+### Nodes and edges
+
+<PropsTable {...nodesAndEdgesFields} />
+
+### Intersections
+
+<PropsTable {...intersectionFields} />
+
+### Viewport fields
+
+<PropsTable {...viewportFields} />
+
+## Typescript
+
+This hook accepts a generic type argument of custom node & edge types. See this
+[section in our Typescript guide](/learn/advanced-use/typescript#nodetype-edgetype-unions) for more information.
+
+```tsx
+const reactFlow = useReactFlow<CustomNodeType, CustomEdgeType>();
+```
 
 ## Notes
 

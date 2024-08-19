@@ -16,14 +16,14 @@ import {
 
 # &lt;MiniMap />
 
-[Source on GitHub](https://github.com/xyflow/xyflow/blob/v11/packages/minimap/src/MiniMap.tsx/#L36)
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/additional-components/MiniMap/MiniMap.tsx)
 
 The `<MiniMap />` component can be used to render an overview of your flow. It
 renders each node as an SVG element and visualizes where the current viewport is
 in relation to the rest of the flow.
 
 ```jsx
-import ReactFlow, { MiniMap } from 'reactflow';
+import { ReactFlow, MiniMap } from '@xyflow/react';
 
 export default function Flow() {
   return (
@@ -50,7 +50,7 @@ viewport by panning or zooming the minimap, you can set either of the `zoomable`
 or `pannable` (or both!) props to `true`.
 
 ```jsx
-import ReactFlow, { MiniMap } from 'reactflow';
+import { ReactFlow,  MiniMap } from '@xyflow/react';
 
 export default function Flow() {
   return (
@@ -68,7 +68,7 @@ how nodes are rendered in the mini map. If you do this you **must** use only
 SVG elements in your component if you want it to work correctly.
 
 ```jsx
-import ReactFlow, { MiniMap } from 'reactflow';
+import { ReactFlow,  MiniMap } from '@xyflow/react';
 
 export default function Flow() {
   return (
@@ -95,7 +95,7 @@ be used to customise the appearance of each mini map node.
 This example shows how to color each mini map node based on the node's type:
 
 ```jsx
-import ReactFlow, { MiniMap } from 'reactflow';
+import { ReactFlow,  MiniMap } from '@xyflow/react';
 
 export default function Flow() {
   return (
@@ -115,4 +115,13 @@ function nodeColor(node) {
       return '#ff0072';
   }
 }
+```
+
+## Typescript
+
+This component accepts a generic type argument of custom node types. See this
+[section in our Typescript guide](/learn/advanced-use/typescript#nodetype-edgetype-unions) for more information.
+
+```tsx
+<MiniMap<CustomNodeType> nodeColor={nodeColor} />
 ```

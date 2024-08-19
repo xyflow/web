@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useConfig, Navbar } from 'nextra-theme-docs';
+
 import { Footer, Button, LogoLabel, cn } from '@xyflow/xy-ui';
 import { Search, SidebarTitle } from 'xy-shared';
 import { SparklesIcon } from '@heroicons/react/24/outline';
@@ -44,18 +45,17 @@ export default {
   sidebar: {
     titleComponent: SidebarTitle,
   },
-  // banner: {
-  //   key: '2023-survey-results',
-  //   text: (
-  //     <Link
-  //       className="flex justify-center items-center max-w-xs mx-auto hover:underline"
-  //       href="https://reactflow.dev/developer-survey-2023"
-  //     >
-  //       📬 2023 year-end survey results are here! See what the community says
-  //       about React Flow
-  //     </Link>
-  //   ),
-  // },
+  banner: {
+    key: 'react-flow-12',
+    text: (
+      <Link
+        className="flex justify-center items-center max-w-xs mx-auto hover:underline"
+        href="/learn/troubleshooting/migrate-to-v12"
+      >
+        🔥 React Flow 12 is here! SSR, dark mode, computing flows, and more
+      </Link>
+    ),
+  },
   navbar: {
     component: (props) => {
       const router = useRouter();

@@ -11,14 +11,14 @@ import { signature } from '@/page-data/reference/hooks/useNodesInitialized.ts';
 
 # useNodesInitialized
 
-[Source on GitHub](https://github.com/xyflow/xyflow/blob/v11/packages/core/src/hooks/useNodesInitialized.ts/#L24)
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/hooks/useNodesInitialized.ts)
 
 This hook tells you whether all the nodes in a flow have been measured and given
 a width and height. When you add a node to the flow, this hook will return
 `false` and then `true` again once the node has been measured.
 
 ```jsx
-import { useReactFlow, useNodesInitialized } from 'reactflow';
+import { useReactFlow, useNodesInitialized } from '@xyflow/react';
 import { useEffect, useState } from 'react';
 
 const options = {

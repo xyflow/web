@@ -1,11 +1,12 @@
 import React, { useCallback } from 'react';
-import ReactFlow, {
+import {
+  ReactFlow,
   useNodesState,
   useEdgesState,
   addEdge,
   Background,
-} from 'reactflow';
-import 'reactflow/dist/style.css';
+} from '@xyflow/react';
+import '@xyflow/react/dist/style.css';
 
 import CustomNode from './CustomNode';
 import ConnectionLine from './ConnectionLine';

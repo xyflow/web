@@ -18,10 +18,10 @@
     type: 'target'
   });
 
-  $: nodesData = useNodesData($connections[0]?.source);
+  $: nodeData = useNodesData($connections[0]?.source);
 
   $: {
-    updateNodeData(id, { text: $nodesData?.data.text?.toUpperCase() || '' });
+    updateNodeData(id, { text: $nodeData?.data?.text?.toUpperCase() || '' });
   }
 </script>
 

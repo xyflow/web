@@ -5,7 +5,7 @@ export const signature: PropsTableProps = {
     { name: 'Returns' },
     {
       name: '',
-      type: 'ReactFlowInstance<T, U>',
+      type: 'ReactFlowInstance<NodeType, EdgeType>',
       description: '',
     },
   ],

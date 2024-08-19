@@ -20,7 +20,7 @@ function ListWrapper({
   subtitle,
   className,
   children,
-  id
+  id,
 }: ListWrapperProps) {
   return (
     <div className={cn('flex justify-center', className)} id={id}>

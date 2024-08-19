@@ -1,12 +1,13 @@
 import React, { useCallback } from 'react';
-import ReactFlow, {
+import {
+  ReactFlow,
   addEdge,
   MiniMap,
   Controls,
   Background,
   useNodesState,
   useEdgesState,
-} from 'reactflow';
+} from '@xyflow/react';
 
 import {
   nodes as initialNodes,
@@ -19,7 +20,7 @@ import CircleNode from './CircleNode';
 import TextNode from './TextNode';
 import ButtonEdge from './ButtonEdge';
 
-import 'reactflow/dist/style.css';
+import '@xyflow/react/dist/style.css';
 import './overview.css';
 
 const nodeTypes = {

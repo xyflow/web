@@ -11,19 +11,25 @@ import { signature } from '@/page-data/reference/utils/getConnectedEdges.ts';
 
 # getConnectedEdges()
 
-[Source on GitHub](https://github.com/xyflow/xyflow/blob/v11/packages/core/src/utils/graph.ts/#L267)
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/utils/graph.ts/#L224)
 
-Given an array of nodes that may be connected to one another and an array of
-_all_ your edges, this util gives you an array of edges that connect any of the
-given nodes together.
+This util will filter a given an array of edges to keep only edges whether either
+the source or target node is in the given array of nodes.
 
 ```js
-import { getConnectedEdges } from 'reactflow';
+import { getConnectedEdges } from '@xyflow/react';
 
-const nodes = [];
-const edges = [];
+const nodes = [
+  { id: 'a', position: { x: 0, y: 0 } },
+  { id: 'b', position: { x: 100, y: 0 } },
+];
+const edges = [
+  { id: 'a->c', source: 'a', target: 'c' },
+  { id: 'c->d', source: 'c', target: 'd' }
+];
 
 const connectedEdges = getConnectedEdges(nodes, edges);
+// => [{ id: 'a->c', source: 'a', target: 'c' }]
 ```
 
 ## Signature

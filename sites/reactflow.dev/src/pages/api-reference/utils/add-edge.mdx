@@ -11,7 +11,7 @@ import { signature } from '@/page-data/reference/utils/addEdge.ts';
 
 # addEdge()
 
-[Source on GitHub](https://github.com/xyflow/xyflow/blob/v11/packages/core/src/utils/graph.ts/#L73)
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/utils/edges/general.ts/#L100)
 
 This util is a convenience function to add a new [`Edge`](/api-reference/types/edge) to an
 array of edges. It also performs some validation to make sure you don't add an
@@ -19,7 +19,12 @@ invalid edge or duplicate an existing one.
 
 ```js
 import { useCallback } from 'react';
-import ReactFlow, { addEdge, useNodesState, useEdgesState } from 'reactflow';
+import {
+  ReactFlow,
+  addEdge,
+  useNodesState,
+  useEdgesState,
+} from '@xyflow/react';
 
 export default function Flow() {
   const [nodes, setNodes, onNodesChange] = useNodesState([]);

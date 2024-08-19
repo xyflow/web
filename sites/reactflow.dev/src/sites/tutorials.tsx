@@ -9,7 +9,7 @@ export default function CaseStudies() {
     <BaseLayout>
       <Hero
         title="Learn more with tutorials"
-        subtitle="Our tutorials provide step-by-step instructions for building MVP apps like mindmaps and audio playgrounds."
+        subtitle="Step-by-step instructions on how to build React Flow apps and integrating with other libraries. Follow along to learn, or use them as a starting template for your own projects."
         kicker="Tutorials"
         kickerIcon={BookOpenIcon}
         align="center"

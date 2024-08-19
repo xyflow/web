@@ -1,6 +1,12 @@
-import ReactFlow, { MiniMap, Background, BackgroundVariant, Controls } from 'reactflow';
+import {
+  ReactFlow,
+  MiniMap,
+  Background,
+  BackgroundVariant,
+  Controls,
+} from '@xyflow/react';
 
-import 'reactflow/dist/style.css';
+import '@xyflow/react/dist/style.css';
 
 import ResizableNode from './ResizableNode';
 import ResizableNodeSelected from './ResizableNodeSelected';
@@ -18,14 +24,24 @@ const initialNodes = [
     type: 'ResizableNode',
     data: { label: 'NodeResizer' },
     position: { x: 0, y: 50 },
-    style: { background: '#fff', border: '1px solid black', borderRadius: 15, fontSize: 12 },
+    style: {
+      background: '#fff',
+      border: '1px solid black',
+      borderRadius: 15,
+      fontSize: 12,
+    },
   },
   {
     id: '2',
     type: 'ResizableNodeSelected',
     data: { label: 'NodeResizer when selected' },
     position: { x: 100, y: 300 },
-    style: { background: '#fff', border: '1px solid black', borderRadius: 15, fontSize: 12 },
+    style: {
+      background: '#fff',
+      border: '1px solid black',
+      borderRadius: 15,
+      fontSize: 12,
+    },
   },
   {
     id: '3',

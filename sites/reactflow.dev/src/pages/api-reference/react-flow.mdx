@@ -17,18 +17,19 @@ import {
   connectionEventHandlerProps,
   paneEventHandlerProps,
   selectionEventHandlerProps,
+  styleProps
 } from '@/page-data/reference/ReactFlow.props.ts';
 
 # &lt;ReactFlow />
 
-[Source on GitHub](https://github.com/xyflow/xyflow/blob/v11/packages/core/src/container/ReactFlow/index.tsx/#L47)
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/container/ReactFlow/index.tsx/#L47)
 
 The `<ReactFlow />` component is the heart of your React Flow application. It
 renders your nodes and edges, handles user interaction, and can manage its own
 state if used as an [uncontrolled flow](/learn/advanced-use/uncontrolled-flow).
 
 ```tsx
-import ReactFlow from 'reactflow'
+import { ReactFlow } from '@xyflow/react'
 
 export default function Flow() {
   return <ReactFlow
@@ -110,6 +111,14 @@ To disable any of these shortcuts, pass in `null` to to the prop you want to
 disable.
 
 <PropsTable {...keyboardProps} />
+
+## Style props
+
+Applying certain classes to elements rendered inside the canvas will change how
+interactions are handled. These props let you configure those class names if you
+need to.
+
+<PropsTable {...styleProps} />
 
 ## Notes
 

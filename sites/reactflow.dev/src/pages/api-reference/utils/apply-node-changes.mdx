@@ -12,7 +12,7 @@ import { signature } from '@/page-data/reference/utils/applyNodeChanges.ts';
 
 # applyNodeChanges()
 
-[Source on GitHub](https://github.com/xyflow/xyflow/blob/v11/packages/core/src/utils/changes.ts/#L119-L121)
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/utils/changes.ts/#L140)
 
 Various events on the [`<ReactFlow />`](/api-reference/react-flow) component can produce an
 [`NodeChange`](/api-reference/types/node-change) that describes how to update the edges of your
@@ -21,7 +21,7 @@ take an array of these changes and apply them to your edges.
 
 ```js
 import { useState, useCallback } from 'react';
-import ReactFlow, { applyNodeChanges } from 'reactflow';
+import { ReactFlow, applyNodeChanges } from '@xyflow/react';
 
 export default function Flow() {
   const [nodes, setNodes] = useState([]);
@@ -34,7 +34,7 @@ export default function Flow() {
   );
 
   return (
-    <ReactFLow nodes={nodes} edges={edges} onNodesChange={onNodesChange} />
+    <ReactFlow nodes={nodes} edges={edges} onNodesChange={onNodesChange} />
   );
 }
 ```

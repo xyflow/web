@@ -1,0 +1,24 @@
+---
+title: Computing Flows
+description: This examples demonstrates how to use the helpers to handle data flow
+created_at: 2024-07-15
+---
+
+import ExampleViewer from '@/components/example-viewer';
+import ExampleLayout from '@/layouts/example-with-frontmatter';
+
+<ExampleLayout>
+This example shows how to use the computing flow helpers `useNodesData`, `useHandleConnections` and `updateNode`. You can find more detailed information about this in the [computing flows guide](/learn/advanced-use/computing-flows)
+
+<ExampleViewer
+  codePath="example-flows/ComputingFlows"
+  additionalFiles={[
+    'ResultNode.tsx',
+    'TextNode.tsx',
+    'UppercaseNode.tsx',
+    'utils.ts',
+  ]}
+  isTypescript
+/>
+
+</ExampleLayout>

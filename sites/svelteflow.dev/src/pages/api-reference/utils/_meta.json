@@ -10,6 +10,5 @@
   "get-straight-path": "getStraightPath()",
   "get-viewport-for-bounds": "getViewportForBounds()",
   "is-edge": "isEdge()",
-  "is-node": "isNode()",
-  "update-edge": "updateEdge()"
+  "is-node": "isNode()"
 }

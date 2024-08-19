@@ -1,6 +1,6 @@
 import { type ReactNode } from 'react';
 import Link from 'next/link';
-import { Position } from '@xyflow/system';
+import { Position } from '@xyflow/react';
 import { Heading, Text, Button, Container, cn } from '@xyflow/xy-ui';
 
 import { Handle } from '../../';
