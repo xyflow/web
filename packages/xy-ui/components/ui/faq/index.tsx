@@ -27,7 +27,7 @@ export function FAQ({
       iconClassName="text-react"
       className={className}
     >
-      {children}
+      <>{children}</>
       <Accordion type="multiple">
         {items.map((item, index) => (
           <AccordionItem
