@@ -3,7 +3,7 @@
 
 version: 2
 updates:
-  - package-ecosystem: 'pnpm'
+  - package-ecosystem: 'npm'
     directories:
       - '/apps/react-screenshots'
       - '/packages/xy-shared'
@@ -13,7 +13,7 @@ updates:
       interval: 'daily'
     allow:
       - dependency-name: '@xyflow/react'
-  - package-ecosystem: 'pnpm'
+  - package-ecosystem: 'npm'
     directory: '/sites/svelteflow.dev'
     schedule:
       interval: 'daily'
