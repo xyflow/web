@@ -8,7 +8,13 @@ import {
   FAQ,
   reactFlowProFaqItems,
 } from '@xyflow/xy-ui';
-import { BaseLayout, Hero, ImageSlider, SubscribeSection } from 'xy-shared';
+import {
+  BaseLayout,
+  Hero,
+  ImageSlider,
+  SubscribeSection,
+  ReactPlayer,
+} from 'xy-shared';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 
 import ClientLogos from '@/components/client-logos';
@@ -107,7 +113,27 @@ export default function ReactFlowPro() {
         items={sliderItems}
       />
 
-      <FAQ items={reactFlowProFaqItems} className="mt-32" />
+      <FAQ items={reactFlowProFaqItems} className="mt-32">
+        <ReactPlayer
+          className="mb-8"
+          url="https://www.youtube.com/watch?v=jm_UoZXEEnU"
+          width="100%"
+          height="100%"
+          style={{ aspectRatio: '16 / 9', width: '100%' }}
+          config={{
+            youtube: {
+              embedOptions: {
+                playerVars: {
+                  color: 'white',
+                  cc_load_policy: 1,
+                  cc_lang_pref: 'en',
+                  controls: 1,
+                },
+              },
+            },
+          }}
+        />
+      </FAQ>
       <SubscribeSection
         btnLink={`${process.env.NEXT_PUBLIC_PRO_PLATFORM_URL}/signup`}
         btnLabel="Sign Up Now"

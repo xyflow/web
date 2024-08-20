@@ -1,5 +1,4 @@
 import { InformationCircleIcon } from '@heroicons/react/24/outline';
-import { ReactPlayer } from '../../../../xy-shared';
 
 import {
   Accordion,
@@ -18,7 +17,8 @@ export type FAQItem = {
 export function FAQ({
   className,
   items = [],
-}: { className?: string; items?: FAQItem[] } = {}) {
+  children = null,
+}: { className?: string; items?: FAQItem[]; children?: React.ReactNode } = {}) {
   return (
     <ListWrapper
       id="FAQ"
@@ -27,25 +27,7 @@ export function FAQ({
       iconClassName="text-react"
       className={className}
     >
-      <ReactPlayer
-        className="mb-8"
-        url="https://www.youtube.com/watch?v=jm_UoZXEEnU"
-        width="100%"
-        height="100%"
-        style={{ aspectRatio: '16 / 9', width: '100%' }}
-        config={{
-          youtube: {
-            embedOptions: {
-              playerVars: {
-                color: 'white',
-                cc_load_policy: 1,
-                cc_lang_pref: 'en',
-                controls: 1,
-              },
-            },
-          },
-        }}
-      />
+      {children}
       <Accordion type="multiple">
         {items.map((item, index) => (
           <AccordionItem

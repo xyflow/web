@@ -80,6 +80,9 @@ const PricingTable = ({
             <SelectContent>
               <SelectItem value="usd">$ USD</SelectItem>
               <SelectItem value="eur">€ EUR</SelectItem>
+              <SelectItem hidden value="inr">
+                ₹ INR
+              </SelectItem>
             </SelectContent>
           </Select>
         </div>
