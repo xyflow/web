@@ -139,7 +139,7 @@ export const signature: PropsTableProps = {
     {
       name: 'getHandleConnections',
       type: `({ type, nodeId, id }: { type: HandleType, nodeId: string, id?: string | null }) => HandleConnection[]`,
-      description: `Get all the connections of a handle belonging to a specific node. The type parameter be either 'source' or 'target'.`,
+      description: `Get all the connections of a handle belonging to a specific node. The type parameter can be either 'source' or 'target'.`,
     },
   ],
 };
