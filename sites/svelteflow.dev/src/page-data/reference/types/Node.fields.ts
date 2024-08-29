@@ -23,7 +23,6 @@ export const nodeFields: PropsTableProps = {
     { name: 'zIndex?', type: 'number' },
     { name: 'extent?', type: '"parent" | CoordinateExtent' },
     { name: 'expandParent?', type: 'boolean' },
-    { name: 'positionAbsolute?', type: 'XYPosition' },
     { name: 'ariaLabel?', type: 'string' },
     { name: 'origin?', type: 'NodeOrigin' },
     { name: 'style?', type: 'string' },
