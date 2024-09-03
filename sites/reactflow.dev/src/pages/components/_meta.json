@@ -1,0 +1,13 @@
+{
+  "index": {
+    "title": "Components",
+    "theme": {
+      "breadcrumb": false,
+      "toc": false
+    }
+  },
+  "---": {
+    "type": "separator"
+  },
+  "zoom-slider": "Zoom Slider"
+}
