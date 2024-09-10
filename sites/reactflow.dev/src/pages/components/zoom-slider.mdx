@@ -9,12 +9,29 @@ import { Steps, Tabs, Tab } from 'nextra/components';
 
 A zoom control that lets you zoom in and out seamlessly using a slider.
 
+Dependencies: shadcn-ui/slider, @xyflow/react
+
 <iframe
   className="w-full h-[500px] rounded-md mt-5"
   src="https://pro-examples.reactflow.dev/shapes"
 />
 
-<Steps>
-### Hello World
-### Hello World
-</Steps>
+### Installation
+
+```sh
+npx shadcn add https://components.reactflow.dev/zoom-slider.json
+```
+
+### Usage
+
+```jsx
+import ZoomSlider from '@/components/ui/zoom-slider';
+
+export default function() {
+  return (
+    <ReactFlow>
+      <ZoomSlider>
+    </ReactFlow>
+  )
+}
+```
