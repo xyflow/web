@@ -52,7 +52,6 @@
     "reactflow": "^11.11.4",
     "styled-components": "^6.1.11",
     "timeago-react": "^3.0.6",
-    "use-error-boundary": "^2.0.6",
     "xy-shared": "workspace:*",
     "zustand": "^4.5.2"
   },
