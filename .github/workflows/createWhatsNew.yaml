@@ -1,11 +1,12 @@
 name: Add What's New & post to Discord
+run-name: Add What's New & post to Discord for ${{ github.event.client_payload.tag_name }}
 
 on:
   repository_dispatch:
     types: [library-release]
 
 jobs:
-  myEvent:
+  process_release:
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
