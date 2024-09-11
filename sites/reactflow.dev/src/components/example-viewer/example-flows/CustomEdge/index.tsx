@@ -4,7 +4,6 @@ import {
   useNodesState,
   useEdgesState,
   addEdge,
-  MiniMap,
   Controls,
   Background,
   Node,
@@ -12,6 +11,7 @@ import {
   Position,
   ConnectionMode,
   MarkerType,
+  OnConnect,
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 
@@ -105,7 +105,7 @@ const EdgesFlow = () => {
   const [nodes, , onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
-  const onConnect = useCallback(
+  const onConnect: OnConnect = useCallback(
     (params) => setEdges((eds) => addEdge(params, eds)),
     [],
   );
