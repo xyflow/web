@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback } from 'react';
 import {
   addEdge,
   useReactFlow,
@@ -19,58 +19,52 @@ export const GhostNode = () => (
 );
 
 export function useIncompleteEdge() {
-  const connectingNodeId = useRef(null);
   const { setNodes, setEdges, screenToFlowPosition } = useReactFlow();
 
-  const onConnectStart = useCallback((_, { nodeId, handleType }) => {
-    if (handleType === 'source') {
-      connectingNodeId.current = nodeId;
-    }
-  }, []);
-
   const onConnect = useCallback(
-    (connection) => {
-      connectingNodeId.current = null;
-      setEdges((edges) => addEdge(connection, edges));
-    },
+    (connection) => setEdges((edges) => addEdge(connection, edges)),
     [setEdges],
   );
 
   const onConnectEnd = useCallback(
-    (event) => {
-      if (!connectingNodeId.current) return;
-      if (!event.target.classList.contains('react-flow__pane')) return;
+    (event, connectionState) => {
+      if (
+        connectionState.isValid ||
+        connectionState.fromHandle.type === 'target'
+      ) {
+        return;
+      }
 
+      const fromNodeId = connectionState.fromNode.id;
       const id = `ghost-${Date.now()}`;
+      const { clientX, clientY } =
+        'changedTouches' in event ? event.changedTouches[0] : event;
       const newNode = {
         id,
         type: 'ghost',
         position: screenToFlowPosition({
-          x: event.clientX,
-          y: event.clientY,
+          x: clientX,
+          y: clientY,
         }),
         data: {},
       };
 
       const newEdge = {
-        id: `${connectingNodeId.current}->${id}`,
-        source: connectingNodeId.current,
+        id: `${fromNodeId}->${id}`,
+        source: fromNodeId,
         target: id,
         reconnectable: 'target',
       };
 
       setNodes((nodes) => nodes.concat(newNode));
       setEdges((edges) => addEdge(newEdge, edges));
-      connectingNodeId.current = null;
     },
     [setNodes, setEdges, screenToFlowPosition],
   );
 
   const onReconnect = useCallback(
-    (oldEdge, newConnection) => {
-      connectingNodeId.current = null;
-      setEdges((edges) => reconnectEdge(oldEdge, newConnection, edges));
-    },
+    (oldEdge, newConnection) =>
+      setEdges((edges) => reconnectEdge(oldEdge, newConnection, edges)),
     [setEdges],
   );
 
@@ -112,7 +106,6 @@ export function useIncompleteEdge() {
   );
 
   return {
-    onConnectStart,
     onConnect,
     onConnectEnd,
     onReconnect,

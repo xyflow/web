@@ -5,8 +5,8 @@ import {
   useEdgesState,
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
+
 import { GhostNode, useIncompleteEdge } from './useIncompleteEdge';
-import { useCallback } from 'react';
 
 const nodeTypes = {
   ghost: GhostNode,
@@ -20,6 +20,7 @@ const initialNodes = [
 const IncompleteEdge = () => {
   const [nodes, , onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
+
   const handlers = useIncompleteEdge();
 
   return (
