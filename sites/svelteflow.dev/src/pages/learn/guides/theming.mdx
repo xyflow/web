@@ -91,36 +91,48 @@ If you don't want to replace the default styles entirely but just want to tweak 
 
 These variables are mostly self-explanatory. Below is a table of all the variables you might want to tweak and their default values for reference:
 
-| Variable name                                      | Default                             |
-| :------------------------------------------------- | :---------------------------------- |
-| `--edge-stroke-default`                            | `#b1b1b7`                           |
-| `--edge-stroke-width-default`                      | `1`                                 |
-| `--edge-stroke-selected-default`                   | `#555`                              |
-| `--connectionline-stroke-default`                  | `#b1b1b7`                           |
-| `--connectionline-stroke-width-default`            | `1`                                 |
-| `--attribution-background-color-default`           | `rgba(255, 255, 255, 0.5)`          |
-| `--minimap-background-color-default`               | `#fff`                              |
-| `--background-pattern-dot-color-default`           | `#91919a`                           |
-| `--background-pattern-line-color-default`          | `#eee`                              |
-| `--background-pattern-cross-color-default`         | `#e2e2e2`                           |
-| `--node-color-default`                             | `inherit`                           |
-| `--node-border-default`                            | `1px solid #1a192b`                 |
-| `--node-background-color-default`                  | `#fff`                              |
-| `--node-group-background-color-default`            | `rgba(240, 240, 240, 0.25)`         |
-| `--node-boxshadow-hover-default`                   | `0 1px 4px 1px rgba(0, 0, 0, 0.08)` |
-| `--node-boxshadow-selected-default`                | `0 0 0 0.5px #1a192b`               |
-| `--handle-background-color-default`                | `#1a192b`                           |
-| `--handle-border-color-default`                    | `#fff`                              |
-| `--selection-background-color-default`             | `rgba(0, 89, 220, 0.08)`            |
-| `--selection-border-default`                       | `1px dotted rgba(0, 89, 220, 0.8)`  |
-| `--controls-button-background-color-default`       | `#fefefe`                           |
-| `--controls-button-background-color-hover-default` | `#f4f4f4`                           |
-| `--controls-button-color-default`                  | `inherit`                           |
-| `--controls-button-color-hover-default`            | `inherit`                           |
-| `--controls-button-border-color-default`           | `#eee`                              |
-| `--controls-box-shadow-default`                    | `0 0 2px 1px rgba(0, 0, 0, 0.08)`   |
+| Variable name                                         | Default                             |
+| :---------------------------------------------------- | :---------------------------------- |
+| `--xy-edge-stroke-default`                            | `#b1b1b7`                           |
+| `--xy-edge-stroke-width-default`                      | `1`                                 |
+| `--xy-edge-stroke-selected-default`                   | `#555`                              |
+| `--xy-connectionline-stroke-default`                  | `#b1b1b7`                           |
+| `--xy-connectionline-stroke-width-default`            | `1`                                 |
+| `--xy-attribution-background-color-default`           | `rgba(255, 255, 255, 0.5)`          |
+| `--xy-minimap-background-color-default`               | `#fff`                              |
+| `--xy-background-pattern-dot-color-default`           | `#91919a`                           |
+| `--xy-background-pattern-line-color-default`          | `#eee`                              |
+| `--xy-background-pattern-cross-color-default`         | `#e2e2e2`                           |
+| `--xy-node-color-default`                             | `inherit`                           |
+| `--xy-node-border-default`                            | `1px solid #1a192b`                 |
+| `--xy-node-background-color-default`                  | `#fff`                              |
+| `--xy-node-group-background-color-default`            | `rgba(240, 240, 240, 0.25)`         |
+| `--xy-node-boxshadow-hover-default`                   | `0 1px 4px 1px rgba(0, 0, 0, 0.08)` |
+| `--xy-node-boxshadow-selected-default`                | `0 0 0 0.5px #1a192b`               |
+| `--xy-handle-background-color-default`                | `#1a192b`                           |
+| `--xy-handle-border-color-default`                    | `#fff`                              |
+| `--xy-selection-background-color-default`             | `rgba(0, 89, 220, 0.08)`            |
+| `--xy-selection-border-default`                       | `1px dotted rgba(0, 89, 220, 0.8)`  |
+| `--xy-controls-button-background-color-default`       | `#fefefe`                           |
+| `--xy-controls-button-background-color-hover-default` | `#f4f4f4`                           |
+| `--xy-controls-button-color-default`                  | `inherit`                           |
+| `--xy-controls-button-color-hover-default`            | `inherit`                           |
+| `--xy-controls-button-border-color-default`           | `#eee`                              |
+| `--xy-controls-box-shadow-default`                    | `0 0 2px 1px rgba(0, 0, 0, 0.08)`   |
 
-These variables are used to define the _defaults_ for the various elements of Svelte Flow. This means they can still be overriden by inline styles or custom classes on a per-element basis.
+These variables are used to define the _defaults_ for the various elements of Svelte Flow. This means they can still be overriden by inline styles or custom classes on a per-element basis. If you want to override a variable, you can do so
+by adding:
+
+```css
+.react-flow {
+  --xy-node-background-color-default: #ff5050;
+}
+```
+
+<Callout type="warning">
+  Be aware that these variables are defined under `.react-flow` and under
+  `:root`.
+</Callout>
 
 ### Tailwind
 
