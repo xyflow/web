@@ -5,12 +5,14 @@ import { globSync } from 'glob';
 import { resolve } from 'node:path';
 import { svelte } from '@sveltejs/vite-plugin-svelte';
 
-const examplesGlob = './{react,svelte}/**/{index.html,_source.js}';
+const examplesGlob = './{react,svelte}/**/index.html';
+const examples = globSync(examplesGlob);
 
 export default defineConfig({
   plugins: [svelte(), react()],
   server: {
     host: '0.0.0.0',
+    cors: true,
   },
   build: {
     rollupOptions: {
@@ -18,7 +20,7 @@ export default defineConfig({
       // uses its own system internally. Because of that we just use the index
       // of any given input as the "key".
       input: Object.fromEntries(
-        globSync(examplesGlob).map((path, i) => [i, resolve(__dirname, path)]),
+        examples.map((path, i) => [i, resolve(__dirname, path)]),
       ),
     },
   },
