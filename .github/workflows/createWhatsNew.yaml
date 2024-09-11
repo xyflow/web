@@ -41,6 +41,8 @@ jobs:
             BODY="${BODY}" node .github/workflows/scripts/removeThanks.js
             echo EOF
           } >> "$GITHUB_ENV"
+      - name: 'Post to Discord'
+        run: DISCORD_URL=${{secrets.DISCORD_RELEASE_WEBHOOK}} node .github/workflows/scripts/postToDiscord.js
       - name: 'Add file'
         # Using ${{ CLEAN_BODY }} instead of ${CLEAN_BODY} strips backticks from the string
         run: |

@@ -3,6 +3,6 @@ const regex =
 
 (async function removeThanks() {
   const body = process.env.BODY;
-  const newBody = body.replaceAll(regex, "");
+  const newBody = body.replaceAll(regex, '');
   console.log(newBody);
 })();
