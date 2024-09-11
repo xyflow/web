@@ -19,7 +19,7 @@
     "@mdx-js/loader": "^2.3.0",
     "@mdx-js/react": "^2.3.0",
     "@next/mdx": "^13.4.19",
-    "@react-three/fiber": "^8.13.7",
+    "@react-three/fiber": "^8.17.7",
     "@stackblitz/sdk": "^1.9.0",
     "@typeform/embed-react": "^3.9.0",
     "@types/d3-force": "^3.0.9",
@@ -52,6 +52,7 @@
     "reactflow": "^11.11.4",
     "styled-components": "^6.1.11",
     "timeago-react": "^3.0.6",
+    "use-error-boundary": "^2.0.6",
     "xy-shared": "workspace:*",
     "zustand": "^4.5.2"
   },
