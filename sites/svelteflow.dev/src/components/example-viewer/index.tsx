@@ -11,6 +11,7 @@ type SvelteExampleProps = {
   activeFile?: string;
   editorHeight: number | string;
   dependencies?: { [key: string]: string };
+  orientation?: 'horizontal' | 'vertical';
   tailwind?: boolean;
 };
 
@@ -20,10 +21,12 @@ export default function SvelteExample({
   activeFile,
   dependencies = {},
   tailwind = false,
+  orientation = 'horizontal',
   ...rest
 }: SvelteExampleProps) {
   const [files, setFiles] = useState<{ [key: string]: string }>(null);
   const [fileFetchFailed, setFileFetchFailed] = useState(false);
+  const _orientation = codePath.includes('examples') ? 'vertical' : orientation;
 
   function openInStackblitz() {
     const svelteSetup = setup({
@@ -118,6 +121,7 @@ export default function SvelteExample({
           Open in Stackblitz
         </Button>
       }
+      orientation={_orientation}
       {...rest}
     />
   );
