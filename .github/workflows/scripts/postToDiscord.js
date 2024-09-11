@@ -1,9 +1,4 @@
 (async function removeThanks() {
-  const mention =
-    process.env.FRAMEWORK_LOWERCASE === 'react'
-      ? '@react-flow-dev'
-      : '@svelte-flow-dev';
-
   const content = `Hey [INSERT MENTION HERE],
 
 [INSERT NICE MESSAGE]
