@@ -1,6 +1,13 @@
 <script lang="ts">
   import { writable } from 'svelte/store';
-  import { SvelteFlow, useSvelteFlow, Background, type Edge, type Node } from '@xyflow/svelte';
+  import {
+    SvelteFlow,
+    useSvelteFlow,
+    Background,
+    type Edge,
+    type Node,
+    type OnConnectEnd
+  } from '@xyflow/svelte';
 
   import '@xyflow/svelte/dist/style.css';
 
@@ -16,42 +23,40 @@
   const nodes = writable<Node[]>(initialNodes);
   const edges = writable<Edge[]>([]);
 
-  let connectingNodeId: string | null = '0';
   let rect: DOMRectReadOnly;
   let id = 1;
   const getId = () => `${id++}`;
 
   const { screenToFlowPosition } = useSvelteFlow();
 
-  function handleConnectEnd(event: MouseEvent | TouchEvent) {
-    if (connectingNodeId === null) return;
+  const handleConnectEnd: OnConnectEnd = (event, connectionState) => {
+    if (connectionState.isValid) return;
 
-    // See of connection landed inside the flow pane
-    const targetIsPane = (event.target as Element)?.classList.contains('svelte-flow__pane');
-    if (targetIsPane) {
-      const id = getId();
-      const newNode: Node = {
-        id,
-        data: { label: `Node ${id}` },
-        // project the screen coordinates to pane coordinates
-        position: screenToFlowPosition({
-          x: event.clientX,
-          y: event.clientY
-        }),
-        // set the origin of the new node so it is centered
-        origin: [0.5, 0.0]
-      };
-      $nodes.push(newNode);
-      $edges.push({
-        source: connectingNodeId,
-        target: id,
-        id: `${connectingNodeId}--${id}`
-      });
+    const sourceNodeId = connectionState.fromNode?.id ?? '1';
+    const id = getId();
+    const { clientX, clientY } = 'changedTouches' in event ? event.changedTouches[0] : event;
 
-      $nodes = $nodes;
-      $edges = $edges;
-    }
-  }
+    const newNode: Node = {
+      id,
+      data: { label: `Node ${id}` },
+      // project the screen coordinates to pane coordinates
+      position: screenToFlowPosition({
+        x: clientX,
+        y: clientY
+      }),
+      // set the origin of the new node so it is centered
+      origin: [0.5, 0.0]
+    };
+    $nodes.push(newNode);
+    $edges.push({
+      source: sourceNodeId,
+      target: id,
+      id: `${sourceNodeId}--${id}`
+    });
+
+    $nodes = $nodes;
+    $edges = $edges;
+  };
 </script>
 
 <svelte:window />
@@ -62,10 +67,6 @@
     {edges}
     fitView
     fitViewOptions={{ padding: 2 }}
-    onconnectstart={(_, { nodeId }) => {
-      // Memorize the nodeId you start draggin a connection line from a node
-      connectingNodeId = nodeId;
-    }}
     onconnectend={handleConnectEnd}
   >
     <Background />
