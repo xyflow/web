@@ -19,7 +19,7 @@ export default function IframeViewer({
   const [fileFetchFailed, setFileFetchFailed] = useState(false);
 
   // function openInStackblitz() {
-  //   const svelteSetup = setup({
+  //   const reactSetup = setup({
   //     dependencies: tailwind
   //       ? {
   //           ...dependencies,
@@ -43,9 +43,9 @@ export default function IframeViewer({
 
   //   sdk.openProject(
   //     {
-  //       title: 'Svelte Example',
+  //       title: 'react Example',
   //       files: {
-  //         ...svelteSetup,
+  //         ...reactSetup,
   //         ...stackblitzFiles,
   //       },
   //       template: 'node',
@@ -53,7 +53,7 @@ export default function IframeViewer({
   //     {
   //       openFile: activeFile
   //         ? `src/example/${activeFile}`
-  //         : 'src/example/App.svelte',
+  //         : 'src/example/App.react',
   //     },
   //   );
   // }
@@ -79,7 +79,7 @@ export default function IframeViewer({
         style={{ height: editorHeight }}
         className={`w-full color nx-bg-primary-100 flex justify-center content-center flex-wrap`}
       >
-        <p className="text-svelte">Example failed to load</p>
+        <p className="text-react">Example failed to load</p>
       </div>
     );
   }
