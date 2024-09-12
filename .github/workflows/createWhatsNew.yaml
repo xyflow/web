@@ -51,7 +51,7 @@ jobs:
           ---
           title: "${{ env.FRAMEWORK }} Flow ${{ env.VERSION }}"
           description: "Changelog for ${{ env.FRAMEWORK }} Flow version ${{ env.VERSION }}"
-          authors: [author]
+          authors: [xyflow]
           date: '${{ env.DATE }}'
           ---
           # Whats New in ${{ env.FRAMEWORK }} Flow ${{ env.VERSION }}
