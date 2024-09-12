@@ -76,6 +76,11 @@ export const signature: PropsTableProps = {
       description: '',
     },
     {
+      name: 'getNodesBounds',
+      type: `(nodes: (NodeType | InternalNode | string)[]) => Rect`,
+      description: 'Returns the bounds of the given nodes or node ids.',
+    },
+    {
       name: 'getIntersectingNodes',
       type: `(
         nodeOrRect: Node | { id: string } | Rect,
