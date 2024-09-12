@@ -184,6 +184,8 @@ function Flow({ className, initialColor }: FlowProps) {
         className={className}
         onInit={onInit}
         id="hero"
+        autoPanOnNodeDrag={false}
+        autoPanOnConnect={false}
       >
         <Background />
       </ReactFlow>
