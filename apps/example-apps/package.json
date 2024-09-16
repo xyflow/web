@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "node scripts/serve.js",
-    "build": "node scripts/build.js",
+    "dev": "vite dev",
+    "build": "vite build",
     "scaffold": "node scripts/scaffold.js"
   },
   "devDependencies": {
