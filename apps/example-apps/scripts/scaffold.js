@@ -60,8 +60,7 @@ async function main() {
 // TEMPLATES AND UTILS ---------------------------------------------------------
 
 function indexHtml() {
-  return `
-<!doctype html>
+  return `<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -77,8 +76,7 @@ function indexHtml() {
 }
 
 function indexCss() {
-  return `
-html,
+  return `html,
 body {
   margin: 0;
 }
@@ -94,11 +92,11 @@ function indexJs() {
   switch (framework.toLowerCase()) {
     case 'react':
       return `
-import './index.css';
-import '@xyflow/react/dist/style.css';
-
 import { App } from './App';
 import { createRoot } from 'react-dom/client';
+
+import './index.css';
+import '@xyflow/react/dist/style.css';
 
 const container = document.querySelector('#app');
 const root = createRoot(container);
@@ -108,10 +106,10 @@ root.render(<App />);
 
     case 'svelte':
       return `
+import App from './App.svelte';
+
 import './index.css';
 import '@xyflow/svelte/dist/style.css';
-
-import App from './App.svelte';
 
 const app = new App({
 	target: document.querySelector('#app'),
