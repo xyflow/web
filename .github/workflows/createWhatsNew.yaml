@@ -1,0 +1,66 @@
+name: Add What's New & post to Discord
+run-name: Add What's New & post to Discord for ${{ github.event.client_payload.tag_name }}
+
+on:
+  repository_dispatch:
+    types: [library-release]
+
+jobs:
+  process_release:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      TAG: ${{ github.event.client_payload.tag_name }}
+      BODY: ${{ github.event.client_payload.body }}
+      BRANCH: 'whats-new-${{ github.event.client_payload.tag_name }}'
+      PR_NAME: "What's new in ${{ github.event.client_payload.tag_name }}"
+      PR_BODY: "Add What's New section for ${{ github.event.client_payload.tag_name }}"
+      FRAMEWORK: ${{ contains(github.event.client_payload.tag_name, 'react') && 'React' || 'Svelte' }}
+      FRAMEWORK_LOWERCASE: ${{ contains(github.event.client_payload.tag_name, 'react') && 'react' || 'svelte' }}
+    steps:
+      - name: Determine current day & date
+        id: date
+        run: |
+          echo "DATE=$(date +'%Y-%m-%dT12:00:00')" >> $GITHUB_ENV
+          echo "DAY=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
+      - name: Determine package version
+        id: version
+        run: echo "VERSION=$([[ "${{env.TAG}}" =~ \@.*@(.*) ]] && echo ${BASH_REMATCH[1]})" >> $GITHUB_ENV
+      - name: Checkout Repo
+        id: test-action
+        uses: actions/checkout@v4
+      - name: 'Identify as Github Actions Bot'
+        run: |
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git config --global user.name 'github-actions[bot]'
+      - name: 'Create branch'
+        run: git checkout -b ${{ env.BRANCH }}
+      - name: 'Remove Thanks'
+        run: |
+          {
+            echo 'CLEAN_BODY<<EOF'
+            BODY="${BODY}" node .github/workflows/scripts/removeThanks.js
+            echo EOF
+          } >> "$GITHUB_ENV"
+      - name: 'Post to Discord'
+        run: DISCORD_URL=${{secrets.DISCORD_RELEASE_WEBHOOK}} node .github/workflows/scripts/postToDiscord.js
+      - name: 'Add file'
+        # Using ${{ CLEAN_BODY }} instead of ${CLEAN_BODY} strips backticks from the string
+        run: |
+          cat > sites/${{env.FRAMEWORK_LOWERCASE}}flow.dev/src/pages/whats-new/${{ env.DAY }}.mdx << EOL
+          ---
+          title: "${{ env.FRAMEWORK }} Flow ${{ env.VERSION }}"
+          description: "Changelog for ${{ env.FRAMEWORK }} Flow version ${{ env.VERSION }}"
+          authors: [xyflow]
+          date: '${{ env.DATE }}'
+          ---
+          # Whats New in ${{ env.FRAMEWORK }} Flow ${{ env.VERSION }}
+          ${CLEAN_BODY}
+          EOL
+      - name: 'Commit changes'
+        run: git add . && git commit -m "${{ env.PR_BODY }}"
+      - name: 'Create Remote Branch'
+        run: git push --set-upstream origin ${{ env.BRANCH }}
+      - name: 'Create Pull Request'
+        run: |
+          gh pr create --title "${{ env.PR_NAME }}" --body "${{ env.PR_BODY }}" --base main --head ${{ env.BRANCH }}

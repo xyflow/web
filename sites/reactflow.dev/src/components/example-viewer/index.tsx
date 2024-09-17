@@ -21,17 +21,16 @@ export default function ExampleViewer({
   ...rest
 }: ExampleViewerProps) {
   const [files, setFiles] = useState(null);
-  const scriptExtension = isTypescript
-    ? 'tsx'
-    : codePath.includes('example-flows')
-      ? 'jsx'
-      : 'js';
+  const isExample = codePath.includes('example-flows');
+  const scriptExtension = isTypescript ? 'tsx' : isExample ? 'jsx' : 'js';
   // sandpack does not support using .jsx extension with the react template
   const sandpackExtension = scriptExtension === 'jsx' ? 'js' : scriptExtension;
   const dependenciesWithDefault = {
     '@xyflow/react': process.env.REACT_FLOW_VERSION,
     ...dependencies,
   };
+
+  const _orientation = isExample ? 'vertical' : orientation;
 
   useEffect(() => {
     const loadFiles = async () => {
@@ -62,7 +61,7 @@ export default function ExampleViewer({
       isTypescript={isTypescript}
       dependencies={dependenciesWithDefault}
       editorHeight={editorHeight}
-      orientation={orientation}
+      orientation={_orientation}
       {...rest}
     />
   );

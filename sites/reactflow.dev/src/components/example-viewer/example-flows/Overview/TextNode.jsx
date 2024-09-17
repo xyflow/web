@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { Fragment, memo } from 'react';
 import { Handle, useStore, Position, useReactFlow } from '@xyflow/react';
 
 const dimensionAttrs = ['width', 'height'];
@@ -46,7 +46,7 @@ export default memo(({ id }) => {
       <div className="wrapper gradient">
         <div className="inner">
           {dimensionAttrs.map((attr) => (
-            <>
+            <Fragment key={attr}>
               <label>node {attr}</label>
               <input
                 type="number"
@@ -55,7 +55,7 @@ export default memo(({ id }) => {
                 className="nodrag"
                 disabled={!dimensions}
               />
-            </>
+            </Fragment>
           ))}
           {!dimensionAttrs && 'no node connected'}
         </div>

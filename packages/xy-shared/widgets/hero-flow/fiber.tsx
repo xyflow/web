@@ -1,5 +1,6 @@
 import { Suspense, useEffect, useRef, useMemo } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import { useErrorBoundary } from 'use-error-boundary';
 
 const randomVector = (r: number) => [
   r / 2 - Math.random() * r,
@@ -14,6 +15,14 @@ const randomEuler = () => [
 ];
 
 const canvasResize = { scroll: false };
+
+function WebGLFallback() {
+  return (
+    <div className="text-light text-sm">
+      Your browser doesn't support WebGL 😢
+    </div>
+  );
+}
 
 function Shape({ type, random, color, ...props }: any) {
   const ref = useRef<any>();
@@ -51,6 +60,8 @@ function Cam({ zoom }: { zoom: number }) {
 }
 
 export default function App({ color, zoom, shape, count = 150 }: any) {
+  const { ErrorBoundary, didCatch, error } = useErrorBoundary();
+
   const randomData = useMemo(
     () =>
       Array.from({ length: count }, (r: number = 10) => ({
@@ -61,17 +72,23 @@ export default function App({ color, zoom, shape, count = 150 }: any) {
     [count],
   );
 
-  return (
-    <Canvas resize={canvasResize} dpr={2}>
-      <Cam zoom={zoom} />
-      <ambientLight intensity={0.5} />
-      <directionalLight intensity={3} position={[0, 0, 100]} />
+  if (didCatch) {
+    return <WebGLFallback />;
+  }
 
-      <Suspense fallback={null}>
-        {randomData.map((props, i) => (
-          <Shape key={i} {...props} color={color} type={shape} />
-        ))}
-      </Suspense>
-    </Canvas>
+  return (
+    <ErrorBoundary>
+      <Canvas resize={canvasResize} dpr={2} fallback={<WebGLFallback />}>
+        <Cam zoom={zoom} />
+        <ambientLight intensity={0.5} />
+        <directionalLight intensity={3} position={[0, 0, 100]} />
+
+        <Suspense fallback={null}>
+          {randomData.map((props, i) => (
+            <Shape key={i} {...props} color={color} type={shape} />
+          ))}
+        </Suspense>
+      </Canvas>
+    </ErrorBoundary>
   );
 }

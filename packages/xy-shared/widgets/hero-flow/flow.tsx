@@ -19,7 +19,6 @@ import ColorPickerNode from './color-picker-node';
 import SliderNode from './slider-node';
 import SwitcherNode from './switcher-node';
 import SwoopyNode from './swoopy-node';
-import { init } from 'next/dist/compiled/webpack/webpack';
 
 const nodeTypes = {
   hero: HeroNode,
@@ -184,6 +183,8 @@ function Flow({ className, initialColor }: FlowProps) {
         className={className}
         onInit={onInit}
         id="hero"
+        autoPanOnNodeDrag={false}
+        autoPanOnConnect={false}
       >
         <Background />
       </ReactFlow>

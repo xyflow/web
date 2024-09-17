@@ -1,4 +1,10 @@
 export default {
+  xyflow: {
+    name: 'xyflow team',
+    title: '✌️',
+    url: 'https://twitter.com/xyflowdev',
+    image: 'https://github.com/xyflow.png',
+  },
   christopher: {
     name: 'Christopher Möller',
     title: 'xyflow',

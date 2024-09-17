@@ -69,7 +69,8 @@ export function CodeViewer({
   activeFile,
   orientation = 'horizontal',
 }: CodeViewerProps) {
-  const panelStyle = { height: editorHeight };
+  const _editorHeight = orientation === 'horizontal' ? editorHeight : '50vh';
+  const panelStyle = { height: _editorHeight };
   sandpackOptions.readOnly = !!customPreview;
   // @ todo refactor this. activeFile should be passed separately or within the sandpackOptions
   sandpackOptions.activeFile = sandpackOptions.activeFile || activeFile;
@@ -77,7 +78,7 @@ export function CodeViewer({
   return (
     <div
       className={cn('my-4', 'sandpack-wrapper', orientation)}
-      style={{ minHeight: editorHeight }}
+      style={{ minHeight: _editorHeight }}
     >
       <SandpackProvider
         template={
@@ -96,7 +97,7 @@ export function CodeViewer({
           )}
           {showPreview && customPreview ? (
             <>
-              <SandpackStack style={{ height: editorHeight }}>
+              <SandpackStack style={{ height: _editorHeight }}>
                 <div
                   className="sp-preview-container"
                   style={{ height: '100%' }}

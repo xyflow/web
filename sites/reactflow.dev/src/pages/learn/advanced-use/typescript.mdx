@@ -108,6 +108,13 @@ export default function NumberNode({ data }: NodeProps<NumberNode>) {
 }
 ```
 
+⚠️ If you specify the node data separately, you need to use `type` (an `interface` would not work here):
+
+```ts
+type NumberNodeData = { number: number };
+type NumberNode = Node<NumberNodeData, 'number'>;
+```
+
 2. If you have **one custom node** that renders different content based on the node type, you want to pass your `Node` union type as a generic to `NodeProps`:
 
 ```tsx filename="CustomNode.tsx"

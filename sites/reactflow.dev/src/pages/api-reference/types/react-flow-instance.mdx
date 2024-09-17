@@ -40,6 +40,7 @@ export type ReactFlowInstance<T, U> = {
     nodes?: (Partial<Node> & { id: Node['id'] })[];
     edges?: (Partial<Edge> & { id: Edge['id'] })[];
   }) => void;
+  getNodesBounds: (nodes: (NodeType | InternalNode | string)[]) => Rect;
 
   // Intersections
   getIntersectingNodes: (
