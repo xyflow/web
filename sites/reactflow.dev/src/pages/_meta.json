@@ -8,11 +8,9 @@
   "learn": "Learn",
   "examples": "Examples",
   "api-reference": "Reference",
-  "components": "Components",
   "community": {
     "title": "Community",
     "type": "menu",
-    "display": "hidden",
     "items": {
       "showcase": {
         "title": "Showcase",
@@ -40,7 +38,7 @@
       }
     }
   },
-
+  "ui": "UI",
   "index": {
     "title": "Home",
     "display": "hidden",

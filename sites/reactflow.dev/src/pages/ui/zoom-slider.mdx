@@ -4,17 +4,16 @@ title: Zoom Slider
 
 import { Heading } from '@xyflow/xy-ui';
 import { Steps, Tabs, Tab } from 'nextra/components';
+import UiComponentViewer from '@/components/ui-component-viewer';
+import getUiComponentConfig from '@/utils/get-static-props/ui-component-config';
+
+export const getStaticProps = getUiComponentConfig('zoom-slider');
 
 # Zoom Slider
 
 A zoom control that lets you zoom in and out seamlessly using a slider.
 
-Dependencies: shadcn-ui/slider, @xyflow/react
-
-<iframe
-  className="w-full h-[500px] rounded-md mt-5"
-  src="https://pro-examples.reactflow.dev/shapes"
-/>
+<UiComponentViewer />
 
 ### Installation
 
