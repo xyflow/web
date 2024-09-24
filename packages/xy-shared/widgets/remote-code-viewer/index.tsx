@@ -16,22 +16,6 @@ import { useEffect, useState } from 'react';
 import { OpenInCodesandbox } from './open-in-codesandbox';
 import { OpenInStackblitz } from './open-in-stackblitz';
 
-const hiddenBaseStyles = {
-  '/styles.css': {
-    code: `
-html, body, #root {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: sans-serif;
-}
-`,
-    hidden: true,
-  },
-};
-
 const defaultOptions = {
   editorHeight: '60vh',
   editorWidthPercentage: 45,
@@ -155,7 +139,6 @@ export function RemoteCodeViewer({
           customSetup={{ dependencies, entry: 'index.html' }}
           files={{
             ...files,
-            ...hiddenBaseStyles,
           }}
         >
           <SandpackLayout>
@@ -181,7 +164,11 @@ export function RemoteCodeViewer({
                     right: 10,
                   }}
                 >
-                  <OpenInStackblitz files={files} dependencies={dependencies} />
+                  <OpenInStackblitz
+                    files={files}
+                    dependencies={dependencies}
+                    framework={framework}
+                  />
                   <OpenInCodesandbox />
                 </div>
               </div>
