@@ -1,6 +1,8 @@
 html,
 body {
   margin: 0;
+  font-family: sans-serif;
+  box-sizing: border-box;
 }
 
 #app {
@@ -19,7 +21,10 @@ body {
 }
 
 .react-flow__node {
-  transition: background-color 0.3s, padding-left 0.3s, padding-right 0.3s;
+  transition:
+    background-color 0.3s,
+    padding-left 0.3s,
+    padding-right 0.3s;
   border-radius: 20px;
   padding: 10px 10px;
   width: auto;

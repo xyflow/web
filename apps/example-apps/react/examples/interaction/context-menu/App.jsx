@@ -11,7 +11,6 @@ import { initialNodes, initialEdges } from './nodes-edges';
 import ContextMenu from './ContextMenu';
 
 import '@xyflow/react/dist/style.css';
-import './style.css';
 
 const Flow = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);

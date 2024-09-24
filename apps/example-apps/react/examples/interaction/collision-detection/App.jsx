@@ -1,5 +1,12 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { ReactFlow, ReactFlowProvider, useNodesState, useEdgesState, Panel, useReactFlow } from '@xyflow/react';
+import {
+  ReactFlow,
+  ReactFlowProvider,
+  useNodesState,
+  useEdgesState,
+  Panel,
+  useReactFlow,
+} from '@xyflow/react';
 
 import {
   nodes as initialNodes,
@@ -7,11 +14,10 @@ import {
 } from './initial-elements';
 
 import '@xyflow/react/dist/style.css';
-import './style.css';
 
 const panelStyle = {
   fontSize: 12,
-  color: "#777",
+  color: '#777',
 };
 
 const CollisionDetectionFlow = () => {
@@ -60,7 +66,7 @@ const CollisionDetectionFlow = () => {
             data: {
               label: target.style.background,
             },
-          }
+          };
         }
         return node;
       }),

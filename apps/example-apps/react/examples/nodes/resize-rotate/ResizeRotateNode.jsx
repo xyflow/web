@@ -8,8 +8,6 @@ import {
 import { drag } from 'd3-drag';
 import { select } from 'd3-selection';
 
-import styles from './style.module.css';
-
 export default function ResizeRotateNode({
   id,
   sourcePosition = Position.Left,
@@ -46,7 +44,7 @@ export default function ResizeRotateNode({
         style={{
           transform: `rotate(${rotation}deg)`,
         }}
-        className={styles.node}
+        className="node"
       >
         <NodeResizer isVisible={resizable} minWidth={180} minHeight={100} />
         <div
@@ -54,7 +52,7 @@ export default function ResizeRotateNode({
           style={{
             display: rotatable ? 'block' : 'none',
           }}
-          className={`nodrag ${styles.rotateHandle}`}
+          className={`nodrag rotateHandle`}
         />
         <div>
           {data?.label}

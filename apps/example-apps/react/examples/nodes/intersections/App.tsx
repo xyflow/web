@@ -9,9 +9,8 @@ import {
   type Edge,
   type Node,
 } from '@xyflow/react';
-import '@xyflow/react/dist/style.css';
 
-import './style.css';
+import '@xyflow/react/dist/style.css';
 
 const initialNodes: Node[] = [
   {

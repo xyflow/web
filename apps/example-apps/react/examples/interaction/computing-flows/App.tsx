@@ -15,7 +15,7 @@ import '@xyflow/react/dist/style.css';
 import TextNode from './TextNode';
 import ResultNode from './ResultNode';
 import UppercaseNode from './UppercaseNode';
-import { MyNode } from './utils';
+import { type MyNode } from './utils';
 
 const nodeTypes = {
   text: TextNode,

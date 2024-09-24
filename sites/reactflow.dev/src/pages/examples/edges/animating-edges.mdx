@@ -1,9 +1,6 @@
 ---
-sidebar_position: 0
 title: Animating Edges
 description: Create edge animations that go beyond the built in animated edge.
-hide_table_of_contents: true
-created_at: 2024-08-13
 ---
 
 import { RemoteCodeViewer } from 'xy-shared';
@@ -22,10 +19,10 @@ It is possible to animate an SVG element along a path using the `<animateMotion 
 element. This example creates a custom edge that animates a circle along the edge
 path.
 
-<ExampleViewer
-  codePath="example-flows/CustomEdgeAdvancedSVGAnimate"
-  additionalFiles={['AnimatedSVGEdge.tsx']}
-  isTypescript
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/examples/edges/animating-edges-svg/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/examples/edges/animating-edges-svg/index.html`}
+  framework="react"
 />
 
 ## Animating other nodes
@@ -35,10 +32,10 @@ Web Animations API. This example demonstrates how to animate another node in the
 flow along an edge path by using the `offsetPath` property and animating the
 `offsetDistance` property.
 
-<ExampleViewer
-  codePath="example-flows/CustomEdgeAdvancedNodeAnimate"
-  additionalFiles={['AnimatedNodeEdge.tsx']}
-  isTypescript
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/examples/edges/animating-edges-node/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/examples/edges/animating-edges-node/index.html`}
+  framework="react"
 />
 
 There are some important details in this example to take note of:
@@ -52,8 +49,3 @@ There are some important details in this example to take note of:
   is recalculated (for example when the source or target nodes are dragged.)
 
 </ExampleLayout>
-<RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/examples/edges/animating-edges/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/examples/edges/animating-edges/index.html`}
-  framework="react"
-/>

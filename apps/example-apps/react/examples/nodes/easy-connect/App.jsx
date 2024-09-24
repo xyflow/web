@@ -8,12 +8,11 @@ import {
   MarkerType,
 } from '@xyflow/react';
 
+import '@xyflow/react/dist/style.css';
+
 import CustomNode from './CustomNode';
 import FloatingEdge from './FloatingEdge';
 import CustomConnectionLine from './CustomConnectionLine';
-
-import '@xyflow/react/dist/style.css';
-import './style.css';
 
 const initialNodes = [
   {
