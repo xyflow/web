@@ -1,13 +1,31 @@
 {
+  "introduction": {
+    "type": "separator",
+    "title": "React Flow UI"
+  },
   "index": {
-    "title": "React Flow UI",
+    "title": "Introduction",
     "theme": {
       "breadcrumb": false,
       "toc": false
     }
   },
   "---": {
+    "type": "separator",
+    "title": "Components"
+  },
+  "zoom-slider": "Zoom Slider",
+  "button-edge": "Button Edge",
+  "database-schema-node": "Database Schema Node",
+  "labeled-handle": "Labeled Handle",
+  "tooltip-node": "Tooltip Node",
+  "base-node": "Base Node",
+  "----": {
     "type": "separator"
   },
-  "zoom-slider": "Zoom Slider"
+  "request-component": {
+    "title": "Request a Component",
+    "href": "https://github.com/xyflow/web",
+    "newWindow": true
+  }
 }
