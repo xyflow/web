@@ -15,12 +15,13 @@ export * from './widgets/contact-form';
 export * from './widgets/features';
 export * from './widgets/getting-started';
 export * from './widgets/hero';
+export * from './widgets/hero-flow';
+export * from './widgets/image-slider';
 export * from './widgets/project-cards';
 export * from './widgets/project-preview';
 export * from './widgets/props-table';
 export * from './widgets/react-player-lazy';
-export * from './widgets/hero-flow';
-export * from './widgets/image-slider';
+export * from './widgets/remote-code-viewer';
 export * from './widgets/search';
 export * from './widgets/subscribe-section';
 
