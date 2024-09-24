@@ -1,0 +1,44 @@
+html,
+body {
+  margin: 0;
+}
+
+#app {
+  width: 100vw;
+  height: 100vh;
+}
+
+.react-flow__node-elk {
+  background: #f8f8f8;
+  border-radius: 4px;
+}
+
+.react-flow__handle {
+  position: relative;
+  top: auto;
+  transform: none;
+  background: #224466;
+}
+
+.label {
+  padding: 10px;
+  font-size: 12px;
+}
+
+.label {
+  flex-grow: 1;
+}
+
+.handles {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 10px;
+  height: 100%;
+  position: absolute;
+}
+
+.handles.sources {
+  right: -2px;
+  top: 0;
+}

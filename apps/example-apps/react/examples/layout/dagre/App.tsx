@@ -9,6 +9,9 @@ import {
 } from '@xyflow/react';
 import dagre from '@dagrejs/dagre';
 
+import './index.css';
+import '@xyflow/react/dist/style.css';
+
 import { initialNodes, initialEdges } from './nodes-edges';
 
 const dagreGraph = new dagre.graphlib.Graph().setDefaultEdgeLabel(() => ({}));
