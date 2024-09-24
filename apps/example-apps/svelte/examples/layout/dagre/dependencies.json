@@ -1,1 +1,1 @@
-["@xyflow/svelte", "svelte"]
+["@dagrejs/dagre", "@xyflow/svelte", "svelte"]
