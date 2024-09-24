@@ -5,9 +5,9 @@ import {
   useNodesState,
   useEdgesState,
   addEdge,
-  Node,
-  Edge,
-  OnConnect,
+  type Node,
+  type Edge,
+  type OnConnect,
 } from '@xyflow/react';
 import { FiFile } from 'react-icons/fi';
 

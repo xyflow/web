@@ -1,10 +1,10 @@
 import React, { useEffect, useMemo } from 'react';
 import {
   BaseEdge,
-  Edge,
-  EdgeProps,
   getBezierPath,
   useReactFlow,
+  type Edge,
+  type EdgeProps,
 } from '@xyflow/react';
 
 export type AnimatedNodeEdge = Edge<{ node: string }, 'animatedNode'>;

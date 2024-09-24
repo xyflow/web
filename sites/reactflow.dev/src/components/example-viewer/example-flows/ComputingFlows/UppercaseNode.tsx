@@ -1,11 +1,11 @@
 import { memo, useEffect } from 'react';
 import {
   Position,
-  NodeProps,
   useReactFlow,
   Handle,
   useHandleConnections,
   useNodesData,
+  type NodeProps,
 } from '@xyflow/react';
 
 import { isTextNode, type MyNode } from './utils';

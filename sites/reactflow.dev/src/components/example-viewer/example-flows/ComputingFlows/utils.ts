@@ -1,4 +1,4 @@
-import { Node } from '@xyflow/react';
+import { type Node } from '@xyflow/react';
 
 export type TextNode = Node<{ text: string }, 'text'>;
 export type ResultNode = Node<{}, 'result'>;

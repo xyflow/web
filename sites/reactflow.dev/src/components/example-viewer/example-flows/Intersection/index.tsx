@@ -4,10 +4,10 @@ import {
   Background,
   Controls,
   ReactFlowProvider,
-  Node,
-  Edge,
   useReactFlow,
   useNodesState,
+  type Edge,
+  type Node,
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 

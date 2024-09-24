@@ -1,6 +1,6 @@
 import React, { memo, ReactNode } from 'react';
-import { Handle, NodeProps, Position, Node } from '@xyflow/react';
 import { FiCloud } from 'react-icons/fi';
+import { Handle, Position, type Node, type NodeProps } from '@xyflow/react';
 
 export type TurboNodeData = {
   title: string;

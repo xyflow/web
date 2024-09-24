@@ -2,9 +2,9 @@ import React from 'react';
 import {
   BaseEdge,
   EdgeLabelRenderer,
-  EdgeProps,
   getBezierPath,
   useReactFlow,
+  type EdgeProps,
 } from '@xyflow/react';
 
 import './buttonedge.css';

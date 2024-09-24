@@ -3,15 +3,16 @@ title: Entitree Flex Tree
 description: Create tree layouts that have sibling nodes and support nodes with different dimensions for family tree type layouts
 ---
 
-import ExampleViewer from '@/components/example-viewer';
+import { RemoteCodeViewer } from 'xy-shared';
 import ExampleLayout from '@/layouts/example-with-frontmatter';
 
 <ExampleLayout>
 This example shows how you can integrate [entitree-flex](https://github.com/codeledge/entitree-flex) with React Flow to create tree layouts that can have sibling nodes and support nodes with different dimensions.
 
-<ExampleViewer
-  codePath="example-flows/EntitreeFlexTree"
-  additionalFiles={['nodes-edges.js', 'CustomNode.jsx', 'layout-elements.js']}
-  dependencies={{ 'entitree-flex': 'latest' }}
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/examples/layout/entitree-flex/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/examples/layout/entitree-flex/index.html`}
+  framework="react"
 />
+
 </ExampleLayout>

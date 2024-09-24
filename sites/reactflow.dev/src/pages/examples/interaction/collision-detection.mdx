@@ -1,18 +1,18 @@
 ---
-sidebar_position: 7
 title: Collision Detection
-hide_table_of_contents: true
 description: Find out if two nodes overlap each other
 ---
 
-import ExampleViewer from '@/components/example-viewer';
+import { RemoteCodeViewer } from 'xy-shared';
 import ExampleLayout from '@/layouts/example-with-frontmatter';
 
 <ExampleLayout>
 This example shows a simple method to find out if two nodes overlap each other. It can be useful for interactively grouping or connecting nodes.
 
-<ExampleViewer
-  codePath="example-flows/CollisionDetection"
-  additionalFiles={['initial-elements.js', 'style.css']}
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/examples/interaction/collision-detection/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/examples/interaction/collision-detection/index.html`}
+  framework="react"
 />
+
 </ExampleLayout>

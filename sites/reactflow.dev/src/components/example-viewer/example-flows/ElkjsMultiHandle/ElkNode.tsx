@@ -1,6 +1,6 @@
-import { Handle, NodeProps, Position } from '@xyflow/react';
+import { Handle, Position, type NodeProps } from '@xyflow/react';
 
-import { ElkNode as ElkNodeType } from './nodes';
+import { type ElkNode as ElkNodeType } from './nodes';
 
 export default function ElkNode({ data }: NodeProps<ElkNodeType>) {
   return (

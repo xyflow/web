@@ -3,8 +3,8 @@ import {
   getBezierPath,
   BaseEdge,
   useStore,
-  EdgeProps,
-  ReactFlowState,
+  type EdgeProps,
+  type ReactFlowState,
 } from '@xyflow/react';
 
 export type GetSpecialPathParams = {

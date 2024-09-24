@@ -1,5 +1,5 @@
 import React from 'react';
-import { BaseEdge, EdgeProps, getSmoothStepPath } from '@xyflow/react';
+import { BaseEdge, getSmoothStepPath, type EdgeProps } from '@xyflow/react';
 
 export function AnimatedSVGEdge({
   id,

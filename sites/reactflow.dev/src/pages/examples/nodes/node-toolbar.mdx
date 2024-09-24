@@ -1,11 +1,10 @@
 ---
 title: Node Toolbar
 description: A toolbar with buttons appears next to the selected node
-created_at: 2024-01-18
 ---
 
 import { Callout } from 'nextra/components';
-import ExampleViewer from '@/components/example-viewer';
+import { RemoteCodeViewer } from 'xy-shared';
 import ExampleLayout from '@/layouts/example-with-frontmatter';
 
 <ExampleLayout>
@@ -19,7 +18,11 @@ it easy to add this functionality to your custom nodes!
   means it should always be visible.
 </Callout>
 
-<ExampleViewer codePath="example-flows/NodeToolbar" />
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/examples/nodes/node-toolbar/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/examples/nodes/node-toolbar/index.html`}
+  framework="react"
+/>
 
 For more information on the `<NodeToolbar />` component and its props, check out
 the [API reference](/api-reference/components/node-toolbar).
