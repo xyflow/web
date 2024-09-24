@@ -1,8 +1,14 @@
 import { useSSG } from 'nextra/ssg';
 import { PencilSquareIcon } from '@heroicons/react/24/outline';
-import { BaseLayout, Hero, TimelineEvent, TimelineEventProps } from 'xy-shared';
+import {
+  BaseLayout,
+  Hero,
+  RemoteCodeViewer,
+  TimelineEvent,
+  TimelineEventProps,
+} from 'xy-shared';
 
-import { RemoteCodeViewer } from 'xy-shared';
+import ExampleViewer from '@/components/example-viewer';
 import ProExampleViewer from '@/components/pro-example-viewer';
 
 export default function WhatsNew() {
@@ -30,6 +36,8 @@ export default function WhatsNew() {
           {...src}
           exampleViewer={ExampleViewer}
           proExampleViewer={ProExampleViewer}
+          remoteCodeViewer={RemoteCodeViewer}
+          exampleUrl={process.env.NEXT_PUBLIC_EXAMPLES_URL}
         />
       ))}
     </BaseLayout>

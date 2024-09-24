@@ -39,7 +39,7 @@ export function indexJs(framework) {
     case 'react':
       return `
 import { createRoot } from 'react-dom/client';
-import App from './App';
+import { App } from './App';
 
 import './index.css';
 
@@ -125,7 +125,7 @@ export function App() {
   }
 }
 
-function ext({
+export function ext({
   kind = 'script',
   framework = 'react',
   isTypescript = true,

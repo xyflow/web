@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
-    "scaffold": "node scripts/scaffold.js"
+    "scaffold": "node scripts/scaffold/index.js"
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^3.1.1",

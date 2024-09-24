@@ -9,7 +9,7 @@ authors: [moritz]
 date: '2024-05-06'
 ---
 
-import ExampleViewer from '@/components/example-viewer';
+import { RemoteCodeViewer } from 'xy-shared';
 
 # Devtools and a fresh overview example
 
@@ -21,17 +21,9 @@ feature overview example.
 
 Check it out below!
 
-<ExampleViewer
-  codePath="example-flows/Overview"
-  additionalFiles={[
-    'initial-elements.jsx',
-    'AnnotationNode.jsx',
-    'ToolbarNode.jsx',
-    'ResizerNode.jsx',
-    'TextNode.jsx',
-    'CircleNode.jsx',
-    'ButtonEdge.jsx',
-    'overview.css',
-  ]}
+<RemoteCodeViewer
+  source={`${exampleUrl}/examples/misc/overview/source.json`}
+  preview={`${exampleUrl}/examples/misc/overview/index.html`}
+  framework="react"
   showEditor={false}
 />
