@@ -6,8 +6,8 @@ import {
   useNodesState,
   useEdgesState,
   Background,
-  Edge,
-  OnConnect,
+  type Edge,
+  type OnConnect,
 } from '@xyflow/react';
 
 import '@xyflow/react/dist/style.css';

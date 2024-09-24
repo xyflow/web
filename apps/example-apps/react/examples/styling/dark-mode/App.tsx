@@ -1,18 +1,18 @@
-import { ChangeEventHandler, useCallback, useState } from 'react';
+import { useCallback, useState, type ChangeEventHandler } from 'react';
 import {
   ReactFlow,
   addEdge,
-  Node,
   useNodesState,
   useEdgesState,
-  OnConnect,
-  Edge,
   MiniMap,
   Background,
   Controls,
   Panel,
-  ColorMode,
   Position,
+  type Node,
+  type Edge,
+  type ColorMode,
+  type OnConnect,
 } from '@xyflow/react';
 
 import '@xyflow/react/dist/style.css';

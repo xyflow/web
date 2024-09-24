@@ -1,5 +1,10 @@
 import React, { memo } from 'react';
-import { BuiltInNode, Handle, NodeProps, Position } from '@xyflow/react';
+import {
+  type BuiltInNode,
+  type NodeProps,
+  Handle,
+  Position,
+} from '@xyflow/react';
 
 const style = {
   padding: 10,

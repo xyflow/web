@@ -6,12 +6,12 @@ import {
   addEdge,
   Controls,
   Background,
-  Node,
-  Edge,
   Position,
   ConnectionMode,
   MarkerType,
-  OnConnect,
+  type OnConnect,
+  type Node,
+  type Edge,
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 

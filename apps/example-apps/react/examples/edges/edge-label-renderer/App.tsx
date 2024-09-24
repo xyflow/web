@@ -4,12 +4,12 @@ import {
   Controls,
   Background,
   addEdge,
-  Edge,
   EdgeTypes,
-  Node,
   useEdgesState,
   useNodesState,
-  OnConnect,
+  type Edge,
+  type OnConnect,
+  type Node,
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 

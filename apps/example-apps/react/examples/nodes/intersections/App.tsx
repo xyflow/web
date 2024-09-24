@@ -1,13 +1,13 @@
-import React, { useCallback, MouseEvent } from 'react';
+import React, { useCallback, type MouseEvent } from 'react';
 import {
   ReactFlow,
   Background,
   Controls,
   ReactFlowProvider,
-  Node,
-  Edge,
   useReactFlow,
   useNodesState,
+  type Edge,
+  type Node,
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 

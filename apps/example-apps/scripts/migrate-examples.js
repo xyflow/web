@@ -40,8 +40,6 @@ for (const exampleCategory of examples) {
           `../../example-apps/react/examples/${exampleCategory}/${exampleSlug}`,
         );
 
-        await adjustExampleSite();
-
         await createExample({
           pathName: newExamplePath,
           category: exampleCategory,
@@ -70,7 +68,7 @@ async function createExample({ pathName, category, mdxFile, slug }) {
   const mdxContent = await readFile(mdxPath, 'utf-8');
 
   if (!mdxContent.includes('<RemoteCodeViewer')) {
-    adjustExampleSite({ mdxPath, mdxContent, categor, slug });
+    await adjustExampleSite({ mdxPath, mdxContent, category, slug });
   }
 
   // get the codePath from the mdx file
@@ -101,7 +99,7 @@ async function createExample({ pathName, category, mdxFile, slug }) {
     framework: 'react',
     deps: depsString ? [depsString] : [],
   });
-  let cssContent = indexCss('react');
+  let cssContent = indexCss();
 
   await writeFile(resolve(pathName, 'index.html'), htmlContent);
   await writeFile(
@@ -126,5 +124,6 @@ async function createExample({ pathName, category, mdxFile, slug }) {
     }
   }
 
+  console.log(cssContent);
   await writeFile(resolve(pathName, 'index.css'), cssContent);
 }

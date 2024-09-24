@@ -1,10 +1,10 @@
-import React, { FC } from 'react';
+import React, { type FC } from 'react';
 import {
-  EdgeProps,
   getBezierPath,
   EdgeLabelRenderer,
   BaseEdge,
-  Edge,
+  type Edge,
+  type EdgeProps,
 } from '@xyflow/react';
 
 // this is a little helper component to render the actual edge label

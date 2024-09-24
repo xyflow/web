@@ -5,7 +5,7 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "dev:docs": "turbo run dev --filter reactflow-website --filter svelteflow-website --filter svelte-examples --filter example-apps",
-    "dev:reactflow.dev": "turbo run dev --filter reactflow-website --filter example-apps",
+    "dev:reactflow.dev": "turbo run dev --filter reactflow-website",
     "dev:svelteflow.dev": "turbo run dev --filter svelteflow-website --filter example-apps",
     "dev:xyflow.com": "turbo run dev --filter xyflow-website --filter example-apps",
     "dev:style": "turbo run dev --filter xy-styleguide",

@@ -1,10 +1,10 @@
 import React from 'react';
 import {
   getBezierPath,
-  BaseEdge,
   useStore,
-  EdgeProps,
-  ReactFlowState,
+  BaseEdge,
+  type EdgeProps,
+  type ReactFlowState,
 } from '@xyflow/react';
 
 export type GetSpecialPathParams = {

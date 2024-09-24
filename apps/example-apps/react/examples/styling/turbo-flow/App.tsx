@@ -5,15 +5,15 @@ import {
   useNodesState,
   useEdgesState,
   addEdge,
-  Node,
-  Edge,
-  OnConnect,
+  type Node,
+  type Edge,
+  type OnConnect,
 } from '@xyflow/react';
 import { FiFile } from 'react-icons/fi';
 
 import '@xyflow/react/dist/base.css';
-import './index.css';
-import TurboNode, { TurboNodeData } from './TurboNode';
+
+import TurboNode, { type TurboNodeData } from './TurboNode';
 import TurboEdge from './TurboEdge';
 import FunctionIcon from './FunctionIcon';
 

@@ -29,8 +29,15 @@
     "@dagrejs/dagre": "^1.1.1",
     "@xyflow/react": "^12.1.1",
     "@xyflow/svelte": "^0.1.16",
+    "d3-drag": "^3.0.0",
+    "d3-selection": "^3.0.0",
+    "elkjs": "^0.9.3",
+    "entitree-flex": "^0.4.1",
+    "html-to-image": "^1.11.11",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.10.1",
+    "styled-components": "^6.1.11",
     "svelte": "^4.2.18"
   }
 }

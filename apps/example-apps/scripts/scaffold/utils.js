@@ -23,6 +23,7 @@ export function indexCss() {
   return `html,
 body {
   margin: 0;
+  font-family: sans-serif;
 }
 
 #app {
@@ -40,6 +41,8 @@ export function indexJs(framework) {
 import { createRoot } from 'react-dom/client';
 import App from './App';
 
+import './index.css';
+
 const container = document.querySelector('#app');
 const root = createRoot(container);
 
@@ -49,6 +52,8 @@ root.render(<App />);
     case 'svelte':
       return `
 import App from './App.svelte';
+
+import './index.css';
 
 const app = new App({
 	target: document.querySelector('#app'),
@@ -75,7 +80,6 @@ import {
   useEdgesState,
 } from '@xyflow/react';
 
-import './index.css';
 import '@xyflow/react/dist/style.css';
 
 function Flow() {
@@ -110,7 +114,6 @@ export function App() {
   import { writable } from 'svelte/store';
   import { SvelteFlow, type Node, type Edge } from '@xyflow/svelte';
 
-  import './index.css';
   import '@xyflow/svelte/dist/style.css';
 
   const nodes = writable<Node[]>([]);
