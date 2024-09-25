@@ -16,7 +16,7 @@ const REACT_SITE_DIR = resolve(__dirname, '../../../sites/reactflow.dev');
 const TUTORIAL_DIR = resolve(
   __dirname,
   REACT_SITE_DIR,
-  'src/components/example-viewer/blog-flows/mindmap',
+  'src/components/example-viewer/blog-flows/presentation',
 );
 
 const examples = await readdir(TUTORIAL_DIR);
@@ -36,7 +36,7 @@ async function createExample({ exampleFolder }) {
 
   const newExamplePath = resolve(
     __dirname,
-    `../../example-apps/react/tutorials/mindmap/${exampleSlug}`,
+    `../../example-apps/react/tutorials/presentation/${exampleSlug}`,
   );
 
   await mkdir(newExamplePath, { recursive: true });
