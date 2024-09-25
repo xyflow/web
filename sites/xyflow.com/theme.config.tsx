@@ -68,15 +68,15 @@ export default {
   primaryHue: 333,
   primarySaturation: 100,
   banner: {
-    key: 'react-flow12',
-    text: (
-      <Link
-        className="flex justify-center items-center max-w-xs mx-auto hover:underline"
-        href="https://reactflow.dev/learn/troubleshooting/migrate-to-v12"
-      >
-        🔥 React Flow 12 is here! SSR, dark mode, computing flows, and more
-      </Link>
-    ),
+    // key: 'react-flow12',
+    // text: (
+    //   <Link
+    //     className="flex justify-center items-center max-w-xs mx-auto hover:underline"
+    //     href="https://reactflow.dev/learn/troubleshooting/migrate-to-v12"
+    //   >
+    //     🔥 React Flow 12 is here! SSR, dark mode, computing flows, and more
+    //   </Link>
+    // ),
   },
   useNextSeoProps() {
     const router = useRouter();
