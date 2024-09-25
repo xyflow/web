@@ -1,0 +1,17 @@
+html,
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+#app {
+  width: 100vw;
+  height: 100vh;
+}
+
+.btn-add {
+  position: absolute;
+  z-index: 10;
+  top: 10px;
+  left: 10px;
+}

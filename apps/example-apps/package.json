@@ -38,6 +38,8 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.10.1",
     "styled-components": "^6.1.11",
-    "svelte": "^4.2.18"
+    "svelte": "^4.2.18",
+    "webcola": "^3.4.0",
+    "zustand": "5.0.0-rc.2"
   }
 }
