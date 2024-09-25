@@ -16,22 +16,6 @@ import { useEffect, useState } from 'react';
 import { OpenInCodesandbox } from './open-in-codesandbox';
 import { OpenInStackblitz } from './open-in-stackblitz';
 
-const hiddenBaseStyles = {
-  '/styles.css': {
-    code: `
-html, body, #root {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: sans-serif;
-}
-`,
-    hidden: true,
-  },
-};
-
 const defaultOptions = {
   editorHeight: '60vh',
   editorWidthPercentage: 45,
@@ -83,7 +67,7 @@ export function RemoteCodeViewer({
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>React Flow Example</title>
+    <title>Example</title>
   </head>
   <body>
     <div id="app"></div>
@@ -134,8 +118,6 @@ export function RemoteCodeViewer({
   sandpackOptions.readOnly = true;
   sandpackOptions.activeFile = sandpackOptions.activeFile || activeFile;
 
-  console.log(files);
-
   return (
     <div
       className={cn('my-4 bg-gray-100', 'sandpack-wrapper', orientation)}
@@ -146,10 +128,7 @@ export function RemoteCodeViewer({
           template={framework === 'react' ? 'vite-react-ts' : 'vite-svelte-ts'}
           options={sandpackOptions}
           customSetup={{ dependencies, entry: 'index.html' }}
-          files={{
-            ...files,
-            ...hiddenBaseStyles,
-          }}
+          files={files}
         >
           <SandpackLayout>
             {showEditor && (
@@ -174,7 +153,11 @@ export function RemoteCodeViewer({
                     right: 10,
                   }}
                 >
-                  <OpenInStackblitz files={files} dependencies={dependencies} />
+                  <OpenInStackblitz
+                    framework={framework}
+                    files={files}
+                    dependencies={dependencies}
+                  />
                   <OpenInCodesandbox />
                 </div>
               </div>
