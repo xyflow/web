@@ -11,7 +11,7 @@ import { Tab, Tabs, Cards, Card } from 'nextra/components';
 
 import { Emoji } from '@xyflow/xy-ui';
 import { ReactPlayer } from 'xy-shared';
-import ExampleViewer from '@/components/example-viewer';
+import { RemoteCodeViewer } from 'xy-shared';
 
 If you want to get up-and-running as soon as possible you're in the right place!
 This page will take you from zero to a working React Flow app in a few minutes.
@@ -305,9 +305,10 @@ export default function App() {
 }
 ```
 
-<ExampleViewer
-  codePath="api-flows/Quickstart"
-  applyStyles={false}
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/learn/quickstart/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/learn/quickstart/index.html`}
+  framework="react"
   showEditor={false}
 />
 

@@ -1,5 +1,5 @@
+import React, { useCallback } from 'react';
 import { stratify, tree } from 'd3-hierarchy';
-import React, { useCallback, useMemo } from 'react';
 import {
   ReactFlow,
   ReactFlowProvider,
@@ -9,7 +9,7 @@ import {
   useReactFlow,
 } from '@xyflow/react';
 
-import { initialNodes, initialEdges } from './nodes-edges.js';
+import { initialNodes, initialEdges } from './nodes-edges';
 import '@xyflow/react/dist/style.css';
 
 const g = tree();

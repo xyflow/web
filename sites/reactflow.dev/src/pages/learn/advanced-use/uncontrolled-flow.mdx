@@ -9,14 +9,13 @@ There are two ways to use React Flow - controlled or uncontrolled. Controlled me
 
 An implementation of an uncontrolled flow is simpler, because you don't need to pass any handlers:
 
-import ExampleViewer from '@/components/example-viewer';
 import { Callout } from 'nextra/components';
+import { RemoteCodeViewer } from 'xy-shared';
 
-<ExampleViewer
-  codePath="api-flows/Uncontrolled"
-  applyStyles={false}
-  options={{ editorHeight: 500, editorWidthPercentage: 45, wrapContent: true }}
-  additionalFiles={['nodes.js', 'edges.js']}
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/learn/uncontrolled/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/learn/uncontrolled/index.html`}
+  framework="react"
 />
 
 As you can see, we are passing `defaultEdgeOptions` to define that edges are animated. This is helpful, because you can't use the `onConnect` handler anymore to pass custom options to a newly created edge. Try to connect "Node B" with "Node C" and you see that the new edge is animated.
@@ -30,9 +29,8 @@ Since you don't have nodes and edges in your local state, you can't update them 
   to use the `useReactFlow` hook.
 </Callout>
 
-<ExampleViewer
-  codePath="api-flows/Uncontrolled2"
-  applyStyles={false}
-  options={{ editorHeight: 500, editorWidthPercentage: 45, wrapContent: true }}
-  additionalFiles={['nodes.js', 'edges.js', 'button.css']}
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/learn/uncontrolled-2/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/learn/uncontrolled-2/index.html`}
+  framework="react"
 />

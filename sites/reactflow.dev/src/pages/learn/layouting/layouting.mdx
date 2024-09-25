@@ -6,7 +6,7 @@ description: React Flow doesn't include any layouting algorithms out of the box.
 # Layouting
 
 import { Callout } from 'nextra/components';
-import ExampleViewer from '@/components/example-viewer';
+import { RemoteCodeViewer } from 'xy-shared';
 
 We regularly get asked how to handle layouting in React Flow. While we could build
 some basic layouting into React Flow, we believe that **you know your app's
@@ -21,11 +21,10 @@ and resources for routing edges.
 To start let's put together a simple example flow that we can use as a base for
 testing out the different layouting options.
 
-<ExampleViewer
-  codePath="api-flows/LayoutingFlow1-Empty"
-  options={{ editorHeight: '50vh' }}
-  applyStyles={true}
-  additionalFiles={['nodes-edges.js']}
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/learn/layouting-flow-1-empty/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/learn/layouting-flow-1-empty/index.html`}
+  framework="react"
 />
 
 Each of the examples that follow will be built on this empty flow. Where possible
@@ -64,12 +63,10 @@ Dagre is a simple library for layouting directed graphs. It has minimal configur
 options and a focus on speed over choosing the most optimal layout. If you need
 to organise your flows into a tree, _we highly recommend dagre_.
 
-<ExampleViewer
-  codePath="api-flows/LayoutingFlow2-Dagre"
-  options={{ editorHeight: '50vh' }}
-  applyStyles={false}
-  additionalFiles={['nodes-edges.js']}
-  dependencies={{ '@dagrejs/dagre': 'latest' }}
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/learn/layouting-flow-2-dagre/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/learn/layouting-flow-2-dagre/index.html`}
+  framework="react"
 />
 
 With no effort at all we get a well-organised tree layout! Whenever
@@ -96,12 +93,10 @@ provide a handful of interesting layouting options. While the library can layout
 a simple tree just fine, it also has layouting algorithms for tree maps, partition
 layouts, and enclosure diagrams.
 
-<ExampleViewer
-  codePath="api-flows/LayoutingFlow3-D3-Hierarchy"
-  options={{ editorHeight: '50vh' }}
-  applyStyles={false}
-  additionalFiles={['nodes-edges.js']}
-  dependencies={{ 'd3-hierarchy': 'latest' }}
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/learn/layouting-flow-3-d3-hierarchy/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/learn/layouting-flow-3-d3-hierarchy/index.html`}
+  framework="react"
 />
 
 <Callout>
@@ -126,12 +121,10 @@ so we need a way to keep computing the layout across multiple renders.
 
 First, let's see what it does:
 
-<ExampleViewer
-  codePath="api-flows/LayoutingFlow4-D3-Force"
-  options={{ editorHeight: '50vh' }}
-  applyStyles={false}
-  additionalFiles={['nodes-edges.js', 'collide.js']}
-  dependencies={{ 'd3-force': 'latest', 'd3-quadtree': 'latest' }}
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/learn/layouting-flow-4-d3-force/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/learn/layouting-flow-4-d3-force/index.html`}
+  framework="react"
 />
 
 We've changed our `getLayoutedElements` to a hook called `useLayoutedElements`
@@ -174,12 +167,10 @@ Elkjs is certainly the most configurable option available, but it's also the mos
 complicated. Elkjs is a Java library that's been ported to JavaScript, and it
 provides a huge number of options for configuring the layout of your graph.
 
-<ExampleViewer
-  codePath="api-flows/LayoutingFlow6-Elkjs"
-  options={{ editorHeight: '50vh' }}
-  applyStyles={false}
-  additionalFiles={['nodes-edges.js']}
-  dependencies={{ elkjs: 'latest' }}
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/learn/layouting-flow-6-elkjs/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/learn/layouting-flow-6-elkjs/index.html`}
+  framework="react"
 />
 
 At it's most basic we can compute layouts similar to dagre, but because the layouting
