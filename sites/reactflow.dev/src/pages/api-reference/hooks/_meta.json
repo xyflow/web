@@ -6,6 +6,7 @@
   "use-key-press": "useKeyPress()",
   "use-node-id": "useNodeId()",
   "use-nodes": "useNodes()",
+  "use-internal-node": "useInternalNode()",
   "use-nodes-data": "useNodesData()",
   "use-nodes-initialized": "useNodesInitialized()",
   "use-nodes-state": "useNodesState()",
