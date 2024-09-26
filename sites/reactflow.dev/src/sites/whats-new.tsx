@@ -8,7 +8,6 @@ import {
   TimelineEventProps,
 } from 'xy-shared';
 
-import ExampleViewer from '@/components/example-viewer';
 import ProExampleViewer from '@/components/pro-example-viewer';
 
 export default function WhatsNew() {
@@ -34,9 +33,9 @@ export default function WhatsNew() {
         <TimelineEvent
           key={i}
           {...src}
-          exampleViewer={ExampleViewer}
           proExampleViewer={ProExampleViewer}
           remoteCodeViewer={RemoteCodeViewer}
+          // We need to pass the env var here, because we don't have access to it inside the mdx when using MDXRemote
           exampleUrl={process.env.NEXT_PUBLIC_EXAMPLES_URL}
         />
       ))}
