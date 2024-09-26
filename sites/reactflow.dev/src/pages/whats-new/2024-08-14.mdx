@@ -17,8 +17,12 @@ edge path, how to create temporary edges, and a demo of every connection event.
 We hope this new bundle of examples will help you level up your flow game!
 
 <RemoteCodeViewer
-  source={`${exampleUrl}/examples/edges/animating-edges-node/source.json`}
-  preview={`${exampleUrl}/examples/edges/animating-edges-node/index.html`}
+  source={`${
+    process?.env?.NEXT_PUBLIC_EXAMPLES_URL ?? exampleUrl
+  }/examples/edges/animating-edges-node/source.json`}
+  preview={`${
+    process?.env?.NEXT_PUBLIC_EXAMPLES_URL ?? exampleUrl
+  }/examples/edges/animating-edges-node/index.html`}
   framework="react"
   showEditor={false}
 />

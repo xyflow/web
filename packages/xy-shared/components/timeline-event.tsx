@@ -21,7 +21,6 @@ export type TimelineEventProps = MDXRemoteSerializeResult & {
 
 export function TimelineEvent({
   frontmatter,
-
   proExampleViewer: ProExampleViewer,
   remoteCodeViewer: RemoteCodeViewer,
   exampleUrl = '',

@@ -20,8 +20,12 @@ This example was very kindly contributed by GitHub user [@kaustubhxd](https://gi
 thanks Kaustubh! Check it out below.
 
 <RemoteCodeViewer
-  source={`${exampleUrl}/examples/layout/entitree-flex/source.json`}
-  preview={`${exampleUrl}/examples/layout/entitree-flex/index.html`}
+  source={`${
+    process?.env?.NEXT_PUBLIC_EXAMPLES_URL ?? exampleUrl
+  }/examples/layout/entitree-flex/source.json`}
+  preview={`${
+    process?.env?.NEXT_PUBLIC_EXAMPLES_URL ?? exampleUrl
+  }/examples/layout/entitree-flex/index.html`}
   framework="react"
   showEditor={false}
 />

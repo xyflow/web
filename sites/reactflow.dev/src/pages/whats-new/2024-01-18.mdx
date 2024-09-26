@@ -18,8 +18,12 @@ an example to accompany it though, so we've published a new example to show how
 it can be used. Check it out [here](/examples/nodes/node-toolbar).
 
 <RemoteCodeViewer
-  source={`${exampleUrl}/examples/nodes/node-toolbar/source.json`}
-  preview={`${exampleUrl}/examples/nodes/node-toolbar/index.html`}
+  source={`${
+    process?.env?.NEXT_PUBLIC_EXAMPLES_URL ?? exampleUrl
+  }/examples/nodes/node-toolbar/source.json`}
+  preview={`${
+    process?.env?.NEXT_PUBLIC_EXAMPLES_URL ?? exampleUrl
+  }/examples/nodes/node-toolbar/index.html`}
   framework="react"
   showEditor={false}
 />

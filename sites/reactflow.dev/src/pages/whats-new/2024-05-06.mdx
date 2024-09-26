@@ -22,8 +22,12 @@ feature overview example.
 Check it out below!
 
 <RemoteCodeViewer
-  source={`${exampleUrl}/examples/misc/overview/source.json`}
-  preview={`${exampleUrl}/examples/misc/overview/index.html`}
+  source={`${
+    process?.env?.NEXT_PUBLIC_EXAMPLES_URL ?? exampleUrl
+  }/examples/misc/overview/source.json`}
+  preview={`${
+    process?.env?.NEXT_PUBLIC_EXAMPLES_URL ?? exampleUrl
+  }/examples/misc/overview/index.html`}
   framework="react"
   showEditor={false}
 />
