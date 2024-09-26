@@ -4,7 +4,7 @@ description: Svelte Flow comes with a minimal default theme. It's common to over
 ---
 
 import { Callout } from 'nextra/components';
-import ExampleViewer from '@/components/example-viewer';
+import { RemoteCodeViewer } from 'xy-shared';
 
 # Theming
 
@@ -18,8 +18,12 @@ Svelte Flow's default styles are enough to get going with the built-in nodes. Th
 import '@xyflow/svelte/dist/style.css';
 ```
 
-<ExampleViewer codePath="guides/theming/a" editorHeight={400} />
-
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_SVELTE_EXAMPLES_URL}/guides/theming/a/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_SVELTE_EXAMPLES_URL}/guides/theming/a/index.html`}
+  framework="svelte"
+  editorHeight={500}
+/>
 ## Base styles
 
 If you just want to load the very basic styles that are necessary for Svelte Flow to work, you can import the base styles instead:
@@ -28,8 +32,12 @@ If you just want to load the very basic styles that are necessary for Svelte Flo
 import '@xyflow/svelte/dist/base.css';
 ```
 
-<ExampleViewer codePath="guides/theming/b" editorHeight={400} />
-
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_SVELTE_EXAMPLES_URL}/guides/theming/b/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_SVELTE_EXAMPLES_URL}/guides/theming/b/index.html`}
+  framework="svelte"
+  editorHeight={500}
+/>
 ## Customization
 
 There are different ways how you can customize the appearance of Svelte Flow:

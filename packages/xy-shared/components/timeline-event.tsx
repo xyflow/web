@@ -7,7 +7,6 @@ import { Emoji, Text } from '@xyflow/xy-ui';
 import { Author, AuthorList, Image } from '../';
 
 export type TimelineEventProps = MDXRemoteSerializeResult & {
-  exampleViewer: React.ComponentProps<any>;
   proExampleViewer: React.ComponentProps<any>;
   remoteCodeViewer: React.ComponentProps<any>;
   exampleUrl: string;
@@ -22,7 +21,7 @@ export type TimelineEventProps = MDXRemoteSerializeResult & {
 
 export function TimelineEvent({
   frontmatter,
-  exampleViewer: ExampleViewer = () => null,
+
   proExampleViewer: ProExampleViewer,
   remoteCodeViewer: RemoteCodeViewer,
   exampleUrl = '',
@@ -44,7 +43,6 @@ export function TimelineEvent({
         <MDXRemote
           frontmatter={frontmatter}
           components={{
-            ExampleViewer,
             ProExampleViewer,
             RemoteCodeViewer,
             Image,

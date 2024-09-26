@@ -5,7 +5,7 @@ description: A quick guide that shows you how to get started with Svelte Flow
 
 # Building a flow
 
-import ExampleViewer from '@/components/example-viewer';
+import { RemoteCodeViewer } from 'xy-shared';
 
 In the following section we will show you how to create a Svelte component that displays a simple flow. We assume that you've installed Svelte Flow and hope that you are ready to create your first component with Svelte Flow.
 
@@ -21,7 +21,12 @@ import '@xyflow/svelte/dist/style.css';
 
 Now you can use them in your component like this:
 
-<ExampleViewer codePath="guides/getting-started/a" editorHeight={400} />
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_SVELTE_EXAMPLES_URL}/guides/getting-started/a/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_SVELTE_EXAMPLES_URL}/guides/getting-started/a/index.html`}
+  framework="svelte"
+  editorHeight={400}
+/>
 
 You can now pan around by dragging the canvas, as well as zoom in and out by scrolling the mouse or using the control panel buttons.
 
@@ -54,7 +59,12 @@ const nodes = writable([
 
 If we add these nodes to our `SvelteFlow` component, we can see them on the screen:
 
-<ExampleViewer codePath="guides/getting-started/b" editorHeight={400} />
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_SVELTE_EXAMPLES_URL}/guides/getting-started/b/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_SVELTE_EXAMPLES_URL}/guides/getting-started/b/index.html`}
+  framework="svelte"
+  editorHeight={400}
+/>
 
 There are lots of options to configure nodes. You can see the full list of options on the [node option site](/api-reference/types/node).
 
@@ -77,7 +87,12 @@ import { writable } from 'svelte/store';
 const edges = writable([{ id: '1-2', source: '1', target: '2' }]);
 ```
 
-<ExampleViewer codePath="guides/getting-started/c" editorHeight={400} />
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_SVELTE_EXAMPLES_URL}/guides/getting-started/c/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_SVELTE_EXAMPLES_URL}/guides/getting-started/c/index.html`}
+  framework="svelte"
+  editorHeight={400}
+/>
 
 Just like nodes, edges have a lot of options too. You can choose a type, define start and end markers, labels, and change the styling. You can see the full list of options on the [edge option site](/api-reference/types/edge).
 
@@ -89,6 +104,11 @@ If you want something besides a white background, you can easily adjust it by us
 
 By default the controls panel comes with a zoom-in, zoom-out, fit view and lock button. You can remove the lock button for example by setting `showLock={false}`.
 
-<ExampleViewer codePath="guides/getting-started/d" editorHeight={400} />
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_SVELTE_EXAMPLES_URL}/guides/getting-started/d/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_SVELTE_EXAMPLES_URL}/guides/getting-started/d/index.html`}
+  framework="svelte"
+  editorHeight={400}
+/>
 
 There are way more things you can do! You can get a good overview by checking out the [examples](/examples) or the [API reference](/api-reference).

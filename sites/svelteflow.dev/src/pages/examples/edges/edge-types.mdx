@@ -4,10 +4,14 @@ description: example showing different kinds of edge types in svelte flow
 ---
 
 import ExampleLayout from '@/layouts/example-with-frontmatter';
-import ExampleViewer from '@/components/example-viewer';
+import { RemoteCodeViewer } from 'xy-shared';
 
 <ExampleLayout>
 You can choose different kinds of [edge types](/api-reference/types/edge) in Svelte Flow: `default` (bezier), `straight`, `step` and `smoothstep`. As you can see, you can define a type for each edge and mix them in one graph.
 
-<ExampleViewer codePath="examples/edges/edge-types" />
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_SVELTE_EXAMPLES_URL}/examples/edges/edge-types/source.json`} 
+  preview={`${process.env.NEXT_PUBLIC_SVELTE_EXAMPLES_URL}/examples/edges/edge-types/index.html`}
+  framework="svelte"
+/>
 </ExampleLayout>

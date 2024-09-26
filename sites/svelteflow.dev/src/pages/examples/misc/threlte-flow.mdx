@@ -3,19 +3,17 @@ title: Threlte Flow
 ---
 
 import ExampleLayout from '@/layouts/example-with-frontmatter';
-import ExampleViewer from '@/components/example-viewer';
+import { RemoteCodeViewer } from 'xy-shared';
 import UnusedPropWarning from '@/components/unused-prop-warning';
 
 <ExampleLayout>
 You may have noticed that the hero flow on our [our homepage](/) is actually written in React 🙈.
 For all the non-believers, here it is written in Svelte Flow with help from the [amazing Threlte library](https://threlte.xyz/).
 
-<ExampleViewer
-  codePath="examples/misc/hero-flow"
-  dependencies={{
-    '@threlte/core': 'latest',
-  }}
-  tailwind
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_SVELTE_EXAMPLES_URL}/examples/misc/hero-flow/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_SVELTE_EXAMPLES_URL}/examples/misc/hero-flow/index.html`}
+  framework="svelte"
 />
 
 </ExampleLayout>

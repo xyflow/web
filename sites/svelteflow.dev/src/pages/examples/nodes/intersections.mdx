@@ -3,10 +3,14 @@ title: Intersections
 ---
 
 import ExampleLayout from '@/layouts/example-with-frontmatter';
-import ExampleViewer from '@/components/example-viewer';
+import { RemoteCodeViewer } from 'xy-shared';
 
 <ExampleLayout>
 The `useSvelteFlow` hook exports helpers to check intersections of nodes and areas. In this example you can drag a node and get a visual feedback when it intersects with another node.
 
-<ExampleViewer codePath="examples/nodes/intersections" />
+  <RemoteCodeViewer
+    source={`${process.env.NEXT_PUBLIC_SVELTE_EXAMPLES_URL}/examples/nodes/intersections/source.json`}
+    preview={`${process.env.NEXT_PUBLIC_SVELTE_EXAMPLES_URL}/examples/nodes/intersections/index.html`}
+    framework="svelte"
+  />
 </ExampleLayout>
