@@ -1,5 +1,5 @@
 import { SandpackFile } from '@codesandbox/sandpack-react/types';
-import sdk from '@stackblitz/sdk';
+import sdk, { Project, ProjectTemplate, OpenOptions } from '@stackblitz/sdk';
 import { Button, Framework } from '@xyflow/xy-ui';
 import { useCallback } from 'react';
 
@@ -35,17 +35,27 @@ function prepare(
   framework: Framework,
   files: Record<string, string | SandpackFile>,
   dependencies: Record<string, string>,
-) {
+): { project: Project; options: OpenOptions } {
   switch (framework) {
     case 'react': {
-      const project = prepareReactProject(files, dependencies);
+      const projectFiles = prepareReactProject(files, dependencies);
+      const project = {
+        title: 'ReactFlow example',
+        template: 'node' as ProjectTemplate,
+        files: projectFiles,
+      };
       const options = { openFile: 'App.tsx' };
 
       return { project, options };
     }
 
     case 'svelte': {
-      const project = prepareSvelteProject(files, dependencies);
+      const projectFiles = prepareSvelteProject(files, dependencies);
+      const project = {
+        title: 'SvelteFlow example',
+        template: 'node' as ProjectTemplate,
+        files: projectFiles,
+      };
       const options = { openFile: 'App.svelte' };
 
       return { project, options };
@@ -88,6 +98,20 @@ function prepareReactProject(
     }),
     'vite.config.js': `import { defineConfig } from 'vite'\nimport react from '@vitejs/plugin-react'\n\n// https://vitejs.dev/config/\nexport default defineConfig({\n  plugins: [react()],\n})`,
     'vite-env.d.ts': `/// <reference types="vite/client" />\n`,
+    'tsconfig.json': `{
+  "compilerOptions": {
+    "target": "ESNext",
+    "jsx": "react-jsx",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "useDefineForClassFields": true,
+    "module": "ESNext",
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "checkJs": true,
+    "isolatedModules": true
+  },
+  "include": ["./**/*.d.ts", "./**/*.{js,jsx,ts,tsx}"],
+}`,
   };
 }
 
@@ -116,6 +140,7 @@ function prepareSvelteProject(
       dependencies,
       devDependencies: {
         '@sveltejs/vite-plugin-svelte': '^2.4.0',
+        '@tsconfig/svelte': '^5.0.0',
         svelte: '^3.58.0',
         'svelte-check': '^3.3.0',
         tslib: '^2.5.0',
@@ -145,7 +170,7 @@ export default {
     "checkJs": true,
     "isolatedModules": true
   },
-  "include": ["src/**/*.d.ts", "src/**/*.ts", "src/**/*.js", "src/**/*.svelte"],
+  "include": ["./**/*.d.ts", "src/**/*.{js,ts,svelte}"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }`,
     'tsconfig.node.json': `{

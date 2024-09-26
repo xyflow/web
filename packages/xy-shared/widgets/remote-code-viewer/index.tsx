@@ -67,7 +67,7 @@ export function RemoteCodeViewer({
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>React Flow Example</title>
+    <title>Example</title>
   </head>
   <body>
     <div id="app"></div>
@@ -137,9 +137,7 @@ export function RemoteCodeViewer({
           template={framework === 'react' ? 'vite-react-ts' : 'vite-svelte-ts'}
           options={sandpackOptions}
           customSetup={{ dependencies, entry: 'index.html' }}
-          files={{
-            ...files,
-          }}
+          files={files}
         >
           <SandpackLayout>
             {showEditor && (
@@ -165,9 +163,9 @@ export function RemoteCodeViewer({
                   }}
                 >
                   <OpenInStackblitz
+                    framework={framework}
                     files={files}
                     dependencies={dependencies}
-                    framework={framework}
                   />
                   <OpenInCodesandbox />
                 </div>
