@@ -1,6 +1,6 @@
 import { dirname, resolve } from 'path';
 import { fileURLToPath } from 'url';
-import { readdir, readFile, mkdir, writeFile, copyFile } from 'fs/promises';
+import { readdir, readFile, mkdir, writeFile, copyFile, cp } from 'fs/promises';
 
 import { indexCss, indexJs, indexHtml, deps } from './scaffold/utils.js';
 
@@ -16,7 +16,7 @@ const REACT_SITE_DIR = resolve(__dirname, '../../../sites/reactflow.dev');
 const TUTORIAL_DIR = resolve(
   __dirname,
   REACT_SITE_DIR,
-  'src/components/example-viewer/blog-flows/presentation',
+  'src/components/example-viewer/blog-flows/webaudio',
 );
 
 const examples = await readdir(TUTORIAL_DIR);
@@ -36,7 +36,7 @@ async function createExample({ exampleFolder }) {
 
   const newExamplePath = resolve(
     __dirname,
-    `../../example-apps/react/tutorials/presentation/${exampleSlug}`,
+    `../../example-apps/react/tutorials/webaudio/${exampleSlug}`,
   );
 
   await mkdir(newExamplePath, { recursive: true });
@@ -78,7 +78,7 @@ async function createExample({ exampleFolder }) {
     } else {
       const srcFile = resolve(exampleFilesPath, file);
       const destFile = resolve(newExamplePath, file);
-      await copyFile(srcFile, destFile);
+      await cp(srcFile, destFile, { recursive: true });
     }
   }
 

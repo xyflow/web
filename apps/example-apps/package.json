@@ -44,6 +44,7 @@
     "react-remark": "^2.1.0",
     "styled-components": "^6.1.11",
     "svelte": "^4.2.18",
+    "twind": "^0.16.19",
     "webcola": "^3.4.0",
     "zustand": "5.0.0-rc.2"
   }

@@ -9,7 +9,7 @@ image: /img/tutorials/webaudio/web-audio-blog-thumb.png
 
 import { Callout, Tab, Tabs } from 'nextra/components';
 import { Bleed } from 'nextra-theme-docs';
-import { Embed, Image } from 'xy-shared';
+import { Embed, Image, RemoteCodeViewer } from 'xy-shared';
 import { Emoji } from '@xyflow/xy-ui';
 
 import { BlogExampleViewer } from '@/components/example-viewer/blog-embed';
@@ -206,9 +206,10 @@ And that's everything we need to start making some sounds with the Web Audio API
 Here's what we put together, in case you weren't following along at home:
 
 <Bleed>
-  <BlogExampleViewer
-    codePath="blog-flows/webaudio/MouseTheremin"
-    additionalFiles={['index.css']}
+  <RemoteCodeViewer
+    source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/tutorials/webaudio/mouse-theremin/source.json`}
+    preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/tutorials/webaudio/mouse-theremin/index.html`}
+    framework="react"
     showEditor={false}
   />
 </Bleed>
@@ -325,9 +326,9 @@ Go ahead and create a new file, `store.js`, and add the following:
 ```js filename="./src/store.js"
 import { applyNodeChanges, applyEdgeChanges } from '@xyflow/react';
 import { nanoid } from 'nanoid';
-import { create } from 'zustand';
+import { createWithEqualityFn } from 'zustand/traditional';
 
-export const useStore = create((set, get) => ({
+export const useStore = createWithEqualityFn((set, get) => ({
   nodes: [],
   edges: [],
 
@@ -418,7 +419,7 @@ connect them together, and remove them. To demonstrate, _temporarily_ add some
 dummy nodes to your store:
 
 ```js filename="./store.jsx" {2-6}
-const useStore = create((set, get) => ({
+const useStore = createWithEqualityFn((set, get) => ({
   nodes: [
     { id: 'a', data: { label: 'oscillator' }, position: { x: 0, y: 0 } },
     { id: 'b', data: { label: 'gain' }, position: { x: 50, y: 50 } },
@@ -429,11 +430,10 @@ const useStore = create((set, get) => ({
 ```
 
 <Bleed>
-  <BlogExampleViewer
-    codePath="blog-flows/webaudio/StateManagement"
-    additionalFiles={['store.js']}
-    dependencies={{ nanoid: 'latest', zustand: '4.3.6' }}
-    showEditor={true}
+  <RemoteCodeViewer
+    source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/tutorials/webaudio/state-management/source.json`}
+    preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/tutorials/webaudio/state-management/index.html`}
+    framework="react"
   />
 </Bleed>
 
@@ -508,7 +508,7 @@ data!
 To fix the situation we need to jump back to our store and add an `updateNode` action:
 
 ```js filename="./src/store.js"
-export const useStore = create((set, get) => ({
+export const useStore = createWithEqualityFn((set, get) => ({
   ...
 
   updateNode(id, data) {
@@ -642,7 +642,7 @@ be an `osc` with some initial values for `frequency` and `type` we should see
 our custom node being rendered.
 
 ```js title"./src/store.js"
-const useStore = create((set, get) => ({
+const useStore = createWithEqualityFn((set, get) => ({
   nodes: [
     { type: 'osc',
       id: 'a',
@@ -656,10 +656,10 @@ const useStore = create((set, get) => ({
 ```
 
 <Bleed>
-  <BlogExampleViewer
-    codePath="blog-flows/webaudio/CustomNode"
-    additionalFiles={['store.js', 'nodes/Osc.js']}
-    dependencies={{ nanoid: 'latest', zustand: '4.3.6', twind: 'latest' }}
+  <RemoteCodeViewer
+    source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/tutorials/webaudio/custom-node/source.json`}
+    preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/tutorials/webaudio/custom-node/index.html`}
+    framework="react"
     showEditor={false}
   />
 </Bleed>
@@ -684,7 +684,7 @@ That's a bit difficult right now when we haven't implemented any audio code yet,
 so in the meantime we'll add just a flag to our store and an action to toggle it.
 
 ```js filename="./src/store.js"
-const useStore = create((set, get) => ({
+const useStore = createWithEqualityFn((set, get) => ({
   ...
 
   isRunning: false,
@@ -740,15 +740,10 @@ export default function Out({ id, data }) {
 Things are starting to shape up quite nicely!
 
 <Bleed>
-  <BlogExampleViewer
-    codePath="blog-flows/webaudio/CustomNodes"
-    additionalFiles={[
-      'store.js',
-      'nodes/Osc.js',
-      'nodes/Out.js',
-      'nodes/Amp.js',
-    ]}
-    dependencies={{ nanoid: 'latest', zustand: '4.3.6', twind: 'latest' }}
+  <RemoteCodeViewer
+    source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/tutorials/webaudio/custom-nodes/source.json`}
+    preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/tutorials/webaudio/custom-nodes/index.html`}
+    framework="react"
     showEditor={false}
   />
 </Bleed>
@@ -836,7 +831,7 @@ as part of the update:
 ```js filename="./src/store.js"
 import { updateAudioNode } from './audio';
 
-export const useStore = create((set, get) => ({
+export const useStore = createWithEqualityFn((set, get) => ({
   ...
 
   updateNode(id, data) {
@@ -878,7 +873,7 @@ export function removeAudioNode(id) {
 ```js
 import { ..., removeAudioNode } from './audio';
 
-export const useStore = create((set, get) => ({
+export const useStore = createWithEqualityFn((set, get) => ({
   ...
 
   removeNodes(nodes) {
@@ -950,7 +945,7 @@ export function connect(sourceId, targetId) {
 ```js
 import { ..., connect } from './audio';
 
-export const useStore = create((set, get) => ({
+export const useStore = createWithEqualityFn((set, get) => ({
   ...
 
   addEdge(data) {
@@ -995,7 +990,7 @@ asynchronous and we don't want to update the store prematurely!
 ```js filename="./src/store.js"
 import { ..., isRunning, toggleAudio } from './audio'
 
-export const useStore = create((set, get) => ({
+export const useStore = createWithEqualityFn((set, get) => ({
   ...
 
   isRunning: isRunning(),
@@ -1012,16 +1007,10 @@ Et voilà, we did it! We've now put enough together to actually _make sounds_!
 Let's see what we have in action.
 
 <Bleed>
-  <BlogExampleViewer
-    codePath="blog-flows/webaudio/HardcodedAudio"
-    additionalFiles={[
-      'store.js',
-      'audio.js',
-      'nodes/Osc.js',
-      'nodes/Amp.js',
-      'nodes/Out.js',
-    ]}
-    dependencies={{ nanoid: 'latest', zustand: '4.3.6', twind: 'latest' }}
+  <RemoteCodeViewer
+    source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/tutorials/webaudio/hardcoded-audio/source.json`}
+    preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/tutorials/webaudio/hardcoded-audio/index.html`}
+    framework="react"
     showEditor={false}
   />
 </Bleed>
@@ -1068,7 +1057,7 @@ only thing we need to pass in is the type of node to create:
 ```js filename="./src/store.js"
 import { ..., createAudioNode } from './audio';
 
-export const useStore = create((set, get) => ({
+export const useStore = createWithEqualityFn((set, get) => ({
   ...
 
   createNode(type) {
@@ -1154,17 +1143,10 @@ Here's the demo from the beginning, but this time you can see the source code to
 make sure you haven't missed anything.
 
 <Bleed>
-  <BlogExampleViewer
-    codePath="blog-flows/webaudio/Demo"
-    additionalFiles={[
-      'store.js',
-      'audio.js',
-      'nodes/Osc.js',
-      'nodes/Amp.js',
-      'nodes/Out.js',
-    ]}
-    dependencies={{ nanoid: 'latest', zustand: '4.3.6', twind: 'latest' }}
-    showEditor={true}
+  <RemoteCodeViewer
+    source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/tutorials/webaudio/demo/source.json`}
+    preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/tutorials/webaudio/demo/index.html`}
+    framework="react"
   />
 </Bleed>
 
