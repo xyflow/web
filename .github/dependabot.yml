@@ -5,7 +5,6 @@ version: 2
 updates:
   - package-ecosystem: 'npm'
     directories:
-      - '/apps/react-screenshots'
       - '/packages/xy-shared'
       - '/sites/reactflow.dev'
       - '/sites/xyflow.com'
