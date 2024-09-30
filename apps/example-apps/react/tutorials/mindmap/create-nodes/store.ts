@@ -1,13 +1,13 @@
 import {
-  Edge,
-  EdgeChange,
-  Node,
-  NodeChange,
-  OnNodesChange,
-  OnEdgesChange,
   applyNodeChanges,
   applyEdgeChanges,
-  XYPosition,
+  type Edge,
+  type EdgeChange,
+  type Node,
+  type NodeChange,
+  type OnNodesChange,
+  type OnEdgesChange,
+  type XYPosition,
 } from '@xyflow/react';
 import { create } from 'zustand';
 import { nanoid } from 'nanoid/non-secure';

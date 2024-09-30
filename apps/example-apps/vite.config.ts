@@ -83,6 +83,8 @@ function walkExamples(dir: string) {
 
           source.dependencies[pkg] = dependencies[pkg];
         }
+      } else if (file === 'preview.jpg') {
+        Fs.cpSync(filePath, Path.join(out, relative, 'preview.jpg'));
       } else {
         source.files[file] = content;
       }
