@@ -2,7 +2,6 @@
   import { writable } from 'svelte/store';
   import { SvelteFlow, Background, type Node, type Edge } from '@xyflow/svelte';
 
-  import './tailwind.css';
   import '@xyflow/svelte/dist/style.css';
 
   import { initialNodes, initialEdges } from './nodes-and-edges';
@@ -18,7 +17,7 @@
     colorpicker: ColorPickerNode,
     slider: SliderNode,
     hero: ThrelteNode,
-    switcher: SwitcherNode
+    switcher: SwitcherNode,
   };
 </script>
 

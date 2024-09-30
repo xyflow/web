@@ -1,5 +1,5 @@
 import React from 'react';
-import { Handle, NodeProps, Position, Node } from '@xyflow/react';
+import { Handle, Position, type NodeProps, type Node } from '@xyflow/react';
 
 export type NodeData = {
   label: string;

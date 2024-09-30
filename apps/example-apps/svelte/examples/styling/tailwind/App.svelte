@@ -1,8 +1,12 @@
 <script lang="ts">
   import { writable } from 'svelte/store';
-  import { SvelteFlow, Controls, MiniMap, type Node, type Edge } from '@xyflow/svelte';
-
-  import './tailwind.css';
+  import {
+    SvelteFlow,
+    Controls,
+    MiniMap,
+    type Node,
+    type Edge,
+  } from '@xyflow/svelte';
   import '@xyflow/svelte/dist/style.css';
 
   import { initialNodes, initialEdges } from './nodes-and-edges';
@@ -12,7 +16,7 @@
   const edges = writable<Edge[]>(initialEdges);
 
   const nodeTypes = {
-    custom: CustomNode
+    custom: CustomNode,
   };
 </script>
 
