@@ -1,3 +1,4 @@
+/* eslint react/no-unescaped-entities: 0 */
 import Link from 'next/link';
 import { Heading, Text, Section } from '@xyflow/xy-ui';
 import { BaseLayout, Hero, slugify } from 'xy-shared';
