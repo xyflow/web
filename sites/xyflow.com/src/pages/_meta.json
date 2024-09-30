@@ -21,7 +21,7 @@
   },
   "careers": {
     "title": "Careers",
-    "display": "normal"
+    "display": "hidden"
   },
   "libraries": {
     "title": "Libraries",

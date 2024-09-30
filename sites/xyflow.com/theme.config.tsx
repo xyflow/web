@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useConfig } from 'nextra-theme-docs';
-import { Footer, Button, LogoLabel } from '@xyflow/xy-ui';
+import { Footer, Button, Logo, Text, cn } from '@xyflow/xy-ui';
 
 const baseUrl =
   process.env.NODE_ENV === 'production'
@@ -9,7 +9,20 @@ const baseUrl =
     : 'http://localhost:3001';
 
 export default {
-  logo: () => <LogoLabel label="xyflow" />,
+  logo: () => (
+    <div className="flex space-x-2 items-center">
+      <Link className="flex space-x-2 items-center" href="/">
+        <Logo className="h-9 w-9" />
+        <Text className="font-black text-xl leading-none">xyflow</Text>
+      </Link>
+      <Link
+        className="bg-primary rounded-full px-2 font-bold text-primary-foreground text-sm hover:opacity-80"
+        href="/careers"
+      >
+        hiring
+      </Link>
+    </div>
+  ),
   logoLink: false,
   docsRepositoryBase:
     'https://github.com/xyflow/web/tree/main/sites/xyflow.com',

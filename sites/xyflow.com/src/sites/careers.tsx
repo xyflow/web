@@ -2,13 +2,15 @@
 import Link from 'next/link';
 import { Heading, Text, Section } from '@xyflow/xy-ui';
 import { BaseLayout, Hero, slugify } from 'xy-shared';
+import { MapPinIcon } from '@heroicons/react/24/solid';
 
 const openings: JobOpeningProps[] = [
   {
-    title: 'Mid/Senior Full-stack Developer (Berlin-based)',
+    location: 'Berlin',
+    title: 'Fullstack Developer',
     description: [
       "Our libraries React Flow and Svelte Flow are at the core of what we do, \
-       but it's not the only thing we work on. We also maintain a SaaS product \
+       but it's not the only thing we work on. We also maintain a platform \
        for our Pro subscribers, regularly update our documentation with new \
        examples, and provide support to our users on GitHub, Discord, and by \
        email.",
@@ -66,57 +68,9 @@ export default function About() {
           Berlin-based product development team and are looking for talented web
           developers to join us. Below is a list of our current job openings:
         </Text>
-
-        <ul className="ml-2">
-          {openings.map(({ title }) => (
-            <li key={title} className="w-full">
-              <Link
-                href={`#${slugify(title)}`}
-                className="block border-b w-full pl-1 py-2 hover:bg-gray-50 rounded-none"
-              >
-                {title}
-              </Link>
-            </li>
-          ))}
-        </ul>
-
-        <Text size="lg" className="leading-8">
-          If you can't find a job opening that fits your skills, but you think
-          you'd be a great fit for our team, we'd still love to hear from you.
-          Just drop us an email at jobs@xyflow.com.
-        </Text>
       </Section>
 
-      <Section className="max-w-screen-md mx-auto mt-12 lg:my-12 space-y-6">
-        <Heading size="md" className="mb-12">
-          How we work
-        </Heading>
-
-        <Text size="lg" className="leading-8">
-          We work in three-week cycles followed by one-week cooldown period.
-          During the cooldown week we create “pitches” of new ideas, features,
-          edits, or improvements. At the end of our cooldown week as a team we
-          decide which ones we'll work on in the next cycle. We work on some
-          pitches collaboratively, some alone. At the end of the cycle we talk
-          about how the cycle was for us and show what we worked on.
-        </Text>
-
-        <Text size="lg" className="leading-8">
-          We are currently a team of five all working less than 40-hours per
-          week. Four of us are in Berlin and regularly work in our office in
-          Kreuzberg while one of us is in the UK. We all meet up in-person about
-          twice a year. We communicate over Discord and have one weekly
-          synchronous call.
-        </Text>
-
-        <Text size="lg" className="leading-8">
-          We don't accept money from people like the military or agencies who
-          conduct mass surveillance. Our libraries are MIT Licensed which
-          translates to a core principle of transparency about our work. We do
-          make money from our Pro subscriptions, but we are not seeking investor
-          funding. We are anti-hustle culture.
-        </Text>
-      </Section>
+      {openings.map(JobOpening)}
 
       <Section className="max-w-screen-md mx-auto mt-12 lg:my-12 space-y-6">
         <Heading size="md" className="mb-12">
@@ -155,20 +109,36 @@ export default function About() {
         </ol>
       </Section>
 
-      {openings.map(JobOpening)}
-
       <Section className="max-w-screen-md mx-auto mt-12 lg:my-12 space-y-6">
         <Heading size="md" className="mb-12">
-          Should I apply?
+          How we work
         </Heading>
 
         <Text size="lg" className="leading-8">
-          If you don't fit everything we wrote above or need some on-the-job
-          skill-building, but you feel excited about the position, we would love
-          to hear from you! We prioritize your excitement and interests over
-          things like hard coding skills. We also have a flexible schedule,
-          which can work well with any responsibilities you may have during the
-          week such as student obligations or family / medical needs.
+          We are currently a team of five all working less than 40-hours per
+          week. Four of us are in Berlin and regularly work in our office in
+          Kreuzberg while one of us is in the UK. We all meet up in-person about
+          twice a year. We communicate over Discord and have one weekly
+          synchronous call. We also have a flexible schedule, which can work
+          well with any responsibilities you may have during the week such as
+          student obligations or family / medical needs.
+        </Text>
+
+        <Text size="lg" className="leading-8">
+          We work in three-week cycles followed by one-week cooldown period.
+          During the cooldown week we create “pitches” of new ideas, features,
+          edits, or improvements. At the end of our cooldown week as a team we
+          decide which ones we'll work on in the next cycle. We work on some
+          pitches collaboratively, some alone. At the end of the cycle we talk
+          about how the cycle was for us and show what we worked on.
+        </Text>
+
+        <Text size="lg" className="leading-8">
+          We don't accept money from people like the military or agencies who
+          conduct mass surveillance. Our libraries are MIT Licensed which
+          translates to a core principle of transparency about our work. We do
+          make money from our Pro subscriptions, but we are not seeking investor
+          funding. We are anti-hustle culture.
         </Text>
 
         <Text size="lg" className="leading-8">
@@ -182,6 +152,7 @@ export default function About() {
 }
 
 type JobOpeningProps = {
+  location: string;
   title: string;
   description: string[];
   candidate: string[];
@@ -197,8 +168,14 @@ function JobOpening({
   benefits,
 }: JobOpeningProps) {
   return (
-    <Section className="max-w-screen-md mx-auto mt-12 lg:my-12 space-y-6">
-      <Heading size="md" className="mb-12" id={slugify(title)}>
+    <Section
+      id={slugify(title)}
+      className="max-w-screen-lg bg-slate-50 rounded-lg lg:py-12 lg:px-12 mx-auto mt-12 lg:my-12 space-y-6"
+    >
+      <div className="flex gap-2 items-center text-md">
+        <MapPinIcon className="w-5 h-5" /> Berlin
+      </div>
+      <Heading size="md" className="mb-12">
         {title}
       </Heading>
 
@@ -241,10 +218,11 @@ function JobOpening({
       <Heading size="sm">How to apply:</Heading>
 
       <Text size="lg" className="leading-8">
-        If you're interested in this role, we'd love to hear from you! To apply,
-        send us an answer to the following questions with a paragraph or two of
-        text (no more than 300 words) or a video / loom / audio clip (no more
-        than 2 minutes):
+        If you don't fit everything we wrote above or need some on-the-job
+        skill-building, but you feel excited about the position, we would love
+        to hear from you! To apply, send us an answer to the following questions
+        with a paragraph or two of text (no more than 300 words) or a video /
+        loom / audio clip (no more than 2 minutes):
       </Text>
 
       <ol className="list-decimal ml-8 space-y-2">

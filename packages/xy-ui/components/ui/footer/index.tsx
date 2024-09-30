@@ -1,6 +1,8 @@
 import { useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { cva, type VariantProps } from 'class-variance-authority';
+import { cn } from '../../../lib/utils';
 
 import { Text } from '../../../';
 
@@ -30,7 +32,20 @@ const baseCategories = [
   },
 ];
 
-type FooterProps = {
+const footerVariants = cva('bg-black print:bg-transparent py-12 lg:py-18', {
+  variants: {
+    variant: {
+      dark: 'bg-black text-white',
+      light: 'bg-slate-100 text-black',
+    },
+  },
+  defaultVariants: {
+    variant: 'dark',
+  },
+});
+export interface FooterProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof footerVariants> {
   message?: {
     title: string;
     text: string;
@@ -42,7 +57,7 @@ type FooterProps = {
   legal?: { title: string; route: string }[];
   imageSrc?: string;
   baseUrl?: string;
-};
+}
 
 // we can pass a baseurl that gets removed from the links in order to have site specific relative links
 export default function Footer({
@@ -54,6 +69,8 @@ export default function Footer({
   legal,
   imageSrc,
   baseUrl = '',
+  variant,
+  className,
 }: FooterProps) {
   const allCategories = useMemo(() => {
     const categories = [...baseCategories];
@@ -70,8 +87,8 @@ export default function Footer({
   }, [internal, legal]);
 
   return (
-    <footer className="bg-black print:bg-transparent py-12 lg:py-18">
-      <div className="mx-auto lg:flex text-white max-w-[90rem] pl-[max(env(safe-area-inset-left),1.5rem)] pr-[max(env(safe-area-inset-right),1.5rem)]">
+    <footer className={cn(footerVariants({ variant, className }))}>
+      <div className="mx-auto lg:flex max-w-[90rem] pl-[max(env(safe-area-inset-left),1.5rem)] pr-[max(env(safe-area-inset-right),1.5rem)]">
         <div className="lg:max-w-[300px] md:max-w-[600px] lg:mr-24 shrink-0">
           {message && (
             <>
@@ -131,4 +148,4 @@ export default function Footer({
   );
 }
 
-export { Footer, type FooterProps };
+export { Footer };
