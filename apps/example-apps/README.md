@@ -1,4 +1,4 @@
-# Xyflow example apps
+# xyflow example apps
 
 ## Scripts
 
@@ -22,3 +22,8 @@ the entry `index.html` and a minimal React or Svelte component.
 
 Runs the `vite build` command. The same plugin that we use to generate the
 `source.json` files during dev will be used here at the beginning of the build.
+
+### `pnpm screenshots`
+
+This command updates all preview screenshots for everything under /react and 
+/svelte.
