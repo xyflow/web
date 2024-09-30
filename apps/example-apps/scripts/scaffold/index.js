@@ -53,7 +53,10 @@ async function main() {
 
   await Fs.mkdir(dir, { recursive: true });
   await Fs.writeFile(Path.join(dir, 'index.html'), indexHtml());
-  await Fs.writeFile(Path.join(dir, 'index.css'), indexCss());
+  await Fs.writeFile(
+    Path.join(dir, framework === 'react' ? 'index.css' : 'styles.css'),
+    indexCss(),
+  );
   await Fs.writeFile(
     Path.join(dir, `index.${ext({ framework })}`),
     indexJs(framework),

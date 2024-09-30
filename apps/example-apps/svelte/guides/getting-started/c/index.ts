@@ -1,10 +1,7 @@
 import App from './App.svelte';
 
-import './index.css';
+import './styles.css';
 
 const app = new App({
-	target: document.querySelector('#app'),
-	props: {
-		name: 'world'
-	}
+  target: document.querySelector('#app'),
 });

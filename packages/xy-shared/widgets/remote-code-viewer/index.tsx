@@ -76,6 +76,7 @@ export function RemoteCodeViewer({
         }
       : source.files,
   );
+
   const [dependencies, setDependencies] = useState<Record<string, string>>(
     typeof source === 'string' ? {} : source.dependencies,
   );
@@ -95,6 +96,21 @@ export function RemoteCodeViewer({
         if (framework === 'react' && files['App.jsx']) {
           files['App.tsx'] = files['App.jsx'];
           delete files['App.jsx'];
+        } else if (framework === 'svelte') {
+          for (const file of Object.keys(files)) {
+            if (file === 'index.html') {
+              files[file] = files[file]?.replace('./index.ts', './src/main.ts');
+              continue;
+            }
+
+            if (file === 'index.ts') {
+              files['src/main.ts'] = files[file];
+            } else {
+              files[`src/${file}`] = files[file];
+            }
+
+            delete files[file];
+          }
         }
 
         setFiles(json.files);
