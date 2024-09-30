@@ -6,7 +6,7 @@ export function indexHtml({ framework, isTypescript = true } = {}) {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>React Flow Example</title>
+    <title>${framework === 'svelte' ? 'Svelte' : 'React'} Flow Example</title>
   </head>
   <body>
     <div id="app"></div>

@@ -21,8 +21,6 @@
   };
 </script>
 
-<div class="h-screen">
-  <SvelteFlow {nodes} {nodeTypes} {edges} fitView>
-    <Background />
-  </SvelteFlow>
-</div>
+<SvelteFlow {nodes} {nodeTypes} {edges} fitView>
+  <Background />
+</SvelteFlow>
