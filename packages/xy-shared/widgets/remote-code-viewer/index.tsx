@@ -113,6 +113,16 @@ export function RemoteCodeViewer({
           }
         }
 
+        // we want to hide these files in the editor on website to reduce the noise
+        ['index.html', 'index.jsx', 'index.tsx', 'src/main.ts'].forEach(
+          (file) => {
+            files[file] = {
+              code: files[file],
+              hidden: true,
+            };
+          },
+        );
+
         setFiles(json.files);
         setDependencies(json.dependencies);
       } else {
