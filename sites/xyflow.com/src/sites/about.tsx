@@ -16,6 +16,7 @@ import christopher from '@/../public/img/christopher.jpg';
 import hayleigh from '@/../public/img/hayleigh.jpg';
 import moritz from '@/../public/img/moritz.jpg';
 import peter from '@/../public/img/peter.jpg';
+import burak from '@/../public/img/burak.jpg';
 
 export default function About() {
   return (
@@ -117,6 +118,7 @@ export default function About() {
         />
         <TeamCard
           name="Burak"
+          teampic={burak}
           description="Burak created Vue Flow while aboard a pirate ship, hoping the motley crew could better organize themselves with a node-based cleaning schedule. Even after his ship was commandeered on the shores of Hamburg, he continues to seek those harsh bone-breaking conditions on land through Brazilian Jiu Jitsu, skateboarding, and open source software development.
           "
           links={[
