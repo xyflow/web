@@ -51,7 +51,10 @@ export function TimelineEvent({
             Emoji,
           }}
           {...src}
-          scope={{ exampleUrl }}
+          scope={{
+            exampleUrl,
+            process: typeof process !== 'undefined' ? process : {},
+          }}
         />
 
         <Text size="sm" variant="primary" className="text-right mt-4">

@@ -10,8 +10,8 @@ import ExampleLayout from '@/layouts/example-with-frontmatter';
 This example shows how you can integrate [dagre.js](https://github.com/dagrejs/dagre) with Svelte Flow to create simple tree layouts. Good alternatives to dagre are [d3-hierarchy](https://github.com/d3/d3-hierarchy) or [elkjs](https://github.com/kieler/elkjs) if you are looking for a more advanced layouting library.
 
 <RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_SVELTE_EXAMPLES_URL}/examples/layout/dagre/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_SVELTE_EXAMPLES_URL}/examples/layout/dagre/index.html`}
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/examples/layout/dagre/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/examples/layout/dagre/index.html`}
   framework="svelte"
 />
 
@@ -19,4 +19,5 @@ This example is a demonstration of _static_ layouting. If the nodes or edges in
 the graph change, the layout _won't_ recalculate! It is possible to do dynamic
 layouting with dagre (and other libraries), but we don't have an example for
 that right now!
+
 </ExampleLayout>

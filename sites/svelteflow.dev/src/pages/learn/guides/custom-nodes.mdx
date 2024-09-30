@@ -81,8 +81,8 @@ const nodes = writable([
 The `data` field of a node can be used to store whatever data you like. In this case we are storing the current color value in a [writable store](https://svelte.dev/docs/svelte-store#writable). This makes it easy to update it from within the custom node later. After putting it all together and adding some basic styles, we get a nice looking custom node with a color picker.
 
 <RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_SVELTE_EXAMPLES_URL}/guides/custom-nodes/a/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_SVELTE_EXAMPLES_URL}/guides/custom-nodes/a/index.html`}
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/guides/custom-nodes/a/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/guides/custom-nodes/a/index.html`}
   framework="svelte"
   editorHeight={500}
 />
@@ -93,8 +93,8 @@ Now that we have a custom node with a color picker, we want to update the backgr
 For this we add another node to the nodes array and then subscribe to the color stores of both nodes. Whenever one of the colors changes, we update the background color of the flow:
 
 <RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_SVELTE_EXAMPLES_URL}/guides/custom-nodes/b/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_SVELTE_EXAMPLES_URL}/guides/custom-nodes/b/index.html`}
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/guides/custom-nodes/b/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/guides/custom-nodes/b/index.html`}
   framework="svelte"
   editorHeight={500}
 />

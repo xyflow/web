@@ -31,7 +31,7 @@ export default function WhatsNew() {
           key={i}
           {...src}
           remoteCodeViewer={RemoteCodeViewer}
-          exampleUrl={process.env.NEXT_PUBLIC_SVELTE_EXAMPLES_URL}
+          exampleUrl={process.env.NEXT_PUBLIC_EXAMPLES_URL}
         />
       ))}
     </BaseLayout>
