@@ -6,17 +6,17 @@ const openings: JobOpeningProps[] = [
   {
     title: 'Mid/Senior Full-stack Developer (Berlin-based)',
     description: [
-      'Our libraries React Flow and Svelte Flow are at the core of what we do, \
-       but it’s not the only thing we work on. We also maintain a SaaS product \
+      "Our libraries React Flow and Svelte Flow are at the core of what we do, \
+       but it's not the only thing we work on. We also maintain a SaaS product \
        for our Pro subscribers, regularly update our documentation with new \
        examples, and provide support to our users on GitHub, Discord, and by \
-       email.',
-      'We’re looking for a full-stack developer to join our small team and get \
-       stuck in to everything we do!',
+       email.",
+      "We're looking for a full-stack developer to join our small team and get \
+       stuck in to everything we do!",
     ],
     candidate: [
-      'Experienced at full-stack or frontend JavaScript development. Bonus points \
-       if you have worked with Next.js. Bonus-er points if you’ve worked with Nhost.',
+      "Experienced at full-stack or frontend JavaScript development. Bonus points \
+       if you have worked with Next.js. Bonus-er points if you've worked with Nhost.",
       'Comfortable communicating in both written and spoken English.',
       'Able to take ownership and work independently on some projects.',
       'Passionate about independent open-source software.',
@@ -53,7 +53,7 @@ export default function About() {
 
       <Section className="max-w-screen-md mx-auto mt-12 lg:my-12 space-y-8">
         <Text size="lg" className="leading-8">
-          Hi! We’re xyflow and we build open source node-based UI libraries like{' '}
+          Hi! We're xyflow and we build open source node-based UI libraries like{' '}
           <Link href="https://reactflow.dev" className="text-pink-500">
             React Flow
           </Link>{' '}
@@ -95,7 +95,7 @@ export default function About() {
           We work in three-week cycles followed by one-week cooldown period.
           During the cooldown week we create “pitches” of new ideas, features,
           edits, or improvements. At the end of our cooldown week as a team we
-          decide which ones we’ll work on in the next cycle. We work on some
+          decide which ones we'll work on in the next cycle. We work on some
           pitches collaboratively, some alone. At the end of the cycle we talk
           about how the cycle was for us and show what we worked on.
         </Text>
@@ -109,7 +109,7 @@ export default function About() {
         </Text>
 
         <Text size="lg" className="leading-8">
-          We don’t accept money from people like the military or agencies who
+          We don't accept money from people like the military or agencies who
           conduct mass surveillance. Our libraries are MIT Licensed which
           translates to a core principle of transparency about our work. We do
           make money from our Pro subscriptions, but we are not seeking investor
@@ -124,7 +124,7 @@ export default function About() {
 
         <Text size="lg" className="leading-8">
           We consider applications on a rolling basis, and will add and remove
-          job openings as the team grows. Here’s how our hiring process works:
+          job openings as the team grows. Here's how our hiring process works:
         </Text>
 
         <ol className="list-decimal ml-8 space-y-2">
@@ -162,7 +162,7 @@ export default function About() {
         </Heading>
 
         <Text size="lg" className="leading-8">
-          If you don’t fit everything we wrote above or need some on-the-job
+          If you don't fit everything we wrote above or need some on-the-job
           skill-building, but you feel excited about the position, we would love
           to hear from you! We prioritize your excitement and interests over
           things like hard coding skills. We also have a flexible schedule,
@@ -260,7 +260,7 @@ function JobOpening({
       </ol>
 
       <Text size="lg" className="leading-8">
-        Send this along with your first name and preferred pronouns (if you’d
+        Send this along with your first name and preferred pronouns (if you'd
         like) and a document with your past working experience in any format you
         like over to <span className="font-bold">jobs@xyflow.com</span>. We aim
         to get back to applications within one week.
