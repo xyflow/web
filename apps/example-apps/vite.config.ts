@@ -72,7 +72,10 @@ function walkExamples(dir: string) {
       recursive: true,
       encoding: 'utf-8',
     })) {
-      const content = Fs.readFileSync(Path.join(dir, file), 'utf-8');
+      const filePath = Path.join(dir, file);
+      if (Fs.lstatSync(filePath)?.isDirectory()) continue;
+
+      const content = Fs.readFileSync(filePath, 'utf-8');
 
       if (file == 'dependencies.json') {
         for (const pkg of JSON.parse(content)) {

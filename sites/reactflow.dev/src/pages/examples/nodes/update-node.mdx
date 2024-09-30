@@ -3,9 +3,9 @@ title: Updating Nodes
 description: Update the data field of a specific node
 ---
 
-import ExampleViewer from '@/components/example-viewer';
-import ExampleLayout from '@/layouts/example-with-frontmatter';
 import { Callout } from 'nextra/components';
+import { RemoteCodeViewer } from 'xy-shared';
+import ExampleLayout from '@/layouts/example-with-frontmatter';
 
 <ExampleLayout>
 You can update properties of nodes and edges freely as long as you pass a newly created `nodes` or `edges` array to `ReactFlow`.
@@ -18,8 +18,10 @@ You can update properties of nodes and edges freely as long as you pass a newly 
 </Callout>
 <br />
 
-<ExampleViewer
-  codePath="example-flows/UpdateNode"
-  additionalFiles={['updatenode.css']}
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/examples/nodes/update-node/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/examples/nodes/update-node/index.html`}
+  framework="react"
 />
+
 </ExampleLayout>

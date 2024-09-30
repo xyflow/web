@@ -9,10 +9,9 @@ image: '/img/blog/v11-reactflow-header.png'
 
 import { Emoji } from '@xyflow/xy-ui';
 import { BlogPostLayout } from '@/layouts/blog-post-with-frontmatter';
-import { BlogExampleViewer } from '@/components/example-viewer';
 
 import { Bleed } from 'nextra-theme-docs';
-import { Embed, Text } from 'xy-shared';
+import { Embed, Text, RemoteCodeViewer } from 'xy-shared';
 
 import Image from 'next/image';
 
@@ -53,17 +52,10 @@ Here's a sneak-peek of the findings:
 **Devtools:** One response from the end-of-the-year survey was _"... i find myself constantly printing out the values of edges, nodes and how they change. Maybe a small tool that displays the details of the current element on click (only enabled in dev mode) would help a lot for new comers willing to deep dive."_ Here's an answer to that, and maybe a React Flow DevTools package in the future! [See the code here](https://reactflow.dev/learn/advanced-use/devtools-and-debugging)
 
 <Bleed>
-  <BlogExampleViewer
-    codePath="api-flows/Devtools"
-    additionalFiles={[
-      'Devtools.tsx',
-      'ChangeLogger.tsx',
-      'NodeInspector.tsx',
-      'ViewportLogger.tsx',
-      'style.css',
-    ]}
-    isTypescript
-    editorHeight={200}
+  <RemoteCodeViewer
+    source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/learn/devtools/source.json`}
+    preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/learn/devtools/index.html`}
+    framework="react"
     showEditor={false}
   />
 </Bleed>

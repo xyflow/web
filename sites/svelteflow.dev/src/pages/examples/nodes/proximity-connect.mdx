@@ -4,10 +4,14 @@ description: Example showing how to automatically create edges when nodes get cl
 ---
 
 import ExampleLayout from '@/layouts/example-with-frontmatter';
-import ExampleViewer from '@/components/example-viewer';
+import { RemoteCodeViewer } from 'xy-shared';
 
 <ExampleLayout>
 This example shows how to automatically create edges when a node is dropped in close proximity to another one. While dragging, a dotted connection line is displayed to show which edge will be created if you drop the node.
 
-<ExampleViewer codePath="examples/nodes/proximity-connect" />
+  <RemoteCodeViewer
+    source={`${process.env.NEXT_PUBLIC_SVELTE_EXAMPLES_URL}/examples/nodes/proximity-connect/source.json`}
+    preview={`${process.env.NEXT_PUBLIC_SVELTE_EXAMPLES_URL}/examples/nodes/proximity-connect/index.html`}
+    framework="svelte"
+  />
 </ExampleLayout>

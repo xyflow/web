@@ -1,11 +1,10 @@
 ---
 title: Devtools and Debugging
 description: Copy pastable devtools for React Flow
-created_at: 2024-04-09
 ---
 
-import ExampleViewer from '@/components/example-viewer';
 import { Callout } from 'nextra/components';
+import { RemoteCodeViewer } from 'xy-shared';
 
 # Devtools and Debugging
 
@@ -31,23 +30,10 @@ you might also find them useful for debugging your applications as your flows an
 their interactions become more complex.
 
 <div className="nestedSandpack">
-  <ExampleViewer
-    codePath="api-flows/Devtools"
-    options={{
-      editorHeight: 500,
-      editorWidthPercentage: 45,
-      wrapContent: true,
-    }}
-    additionalFiles={[
-      'Devtools.tsx',
-      'ChangeLogger.tsx',
-      'NodeInspector.tsx',
-      'ViewportLogger.tsx',
-      'style.css',
-    ]}
-    isTypescript
-    editorHeight={400}
-    orientation="vertical"
+  <RemoteCodeViewer
+    source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/learn/devtools/source.json`}
+    preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/learn/devtools/index.html`}
+    framework="react"
   />
 </div>
 

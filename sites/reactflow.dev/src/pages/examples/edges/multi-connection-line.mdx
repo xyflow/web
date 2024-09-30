@@ -3,9 +3,9 @@ title: Multi Connection Line
 description: Draw multiple connection lines at once from any selected nodes.
 ---
 
-import ExampleViewer from '@/components/example-viewer';
-import ExampleLayout from '@/layouts/example-with-frontmatter';
 import { Callout } from 'nextra/components';
+import { RemoteCodeViewer } from 'xy-shared';
+import ExampleLayout from '@/layouts/example-with-frontmatter';
 
 <ExampleLayout>
 
@@ -19,9 +19,10 @@ once.
   only one connection will be created even if you have multiple selected nodes!
 </Callout>
 
-<ExampleViewer
-  codePath="example-flows/MultiConnectionLine"
-  additionalFiles={['ConnectionLine.jsx']}
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/examples/edges/multi-connection-line/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/examples/edges/multi-connection-line/index.html`}
+  framework="react"
 />
 
 <Callout type="warning">

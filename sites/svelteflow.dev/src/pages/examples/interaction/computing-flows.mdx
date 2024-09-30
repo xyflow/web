@@ -4,11 +4,15 @@ description: This example combines some hooks and helper functions for computing
 ---
 
 import ExampleLayout from '@/layouts/example-with-frontmatter';
-import ExampleViewer from '@/components/example-viewer';
+import { RemoteCodeViewer } from 'xy-shared';
 
 <ExampleLayout>
 This example combines [`useHandleConnections`](/api-reference/hooks/use-handle-connections),[`useNodesData`](/api-reference/hooks/use-nodes-data) and [`updateNodeData`](/api-reference/hooks/use-svelte-flow) helpers for handling data flow between nodes.
 
-<ExampleViewer codePath="examples/interaction/reactive-flow" />
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_SVELTE_EXAMPLES_URL}/examples/interaction/reactive-flow/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_SVELTE_EXAMPLES_URL}/examples/interaction/reactive-flow/index.html`}
+  framework="svelte"
+/>
 
 </ExampleLayout>

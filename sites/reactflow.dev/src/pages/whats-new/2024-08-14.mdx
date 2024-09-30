@@ -8,7 +8,7 @@ authors: [hayleigh]
 date: '2024-08-14'
 ---
 
-import ExampleViewer from '@/components/example-viewer';
+import { RemoteCodeViewer } from 'xy-shared';
 
 # New edge examples
 
@@ -16,11 +16,15 @@ Here's a care drop of new edge examples including how to animate nodes along an
 edge path, how to create temporary edges, and a demo of every connection event.
 We hope this new bundle of examples will help you level up your flow game!
 
-<ExampleViewer
-  codePath="example-flows/CustomEdgeAdvancedNodeAnimate"
-  additionalFiles={['AnimatedNodeEdge.tsx']}
+<RemoteCodeViewer
+  source={`${
+    process?.env?.NEXT_PUBLIC_EXAMPLES_URL ?? exampleUrl
+  }/examples/edges/animating-edges-node/source.json`}
+  preview={`${
+    process?.env?.NEXT_PUBLIC_EXAMPLES_URL ?? exampleUrl
+  }/examples/edges/animating-edges-node/index.html`}
+  framework="react"
   showEditor={false}
-  isTypescript
 />
 
 This is a breakdown of what's been added:

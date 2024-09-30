@@ -8,6 +8,7 @@ description: When and how to remove the React Flow attribution from your flows.
 This example demonstrates how you can remove the React Flow attribution from the renderer.
 
 import { Callout } from 'nextra/components';
+import { RemoteCodeViewer } from 'xy-shared';
 
 <Callout type="info">
 If you’re considering removing the attribution, we’d first like to mention:
@@ -22,12 +23,8 @@ Thank you for supporting the React Flow team ✌🏻
 
 </Callout>
 
-import ExampleViewer from '@/components/example-viewer';
-
-<ExampleViewer
-  codePath="api-flows/RemoveAttribution"
-  applyStyles={false}
-  options={{ editorHeight: 700, editorWidthPercentage: 45, wrapContent: true }}
-  activeFile="index.js"
-  additionalFiles={['initialElements.js']}
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/learn/remove-attribution/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/learn/remove-attribution/index.html`}
+  framework="react"
 />

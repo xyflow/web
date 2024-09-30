@@ -3,14 +3,15 @@ title: Add Node On Edge Drop
 description: A new node appears wherever you drop the connection line
 ---
 
-import ExampleViewer from '@/components/example-viewer';
+import { RemoteCodeViewer } from 'xy-shared';
 import ExampleLayout from '@/layouts/example-with-frontmatter';
 
 <ExampleLayout>
 You can create a new node when you drop the connection line on the pane by using the `onConnectStart` and `onConnectEnd` handlers.
 
-<ExampleViewer
-  codePath="example-flows/AddNodeOnEdgeDrop"
-  additionalFiles={['index.css']}
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/examples/nodes/add-node-on-edge-drop/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/examples/nodes/add-node-on-edge-drop/index.html`}
+  framework="react"
 />
 </ExampleLayout>

@@ -4,15 +4,16 @@ description: "If you're looking for a more powerful alternative to dagre, you ca
 also use elkjs to layout your Svelte Flow graphs. "
 ---
 
-import ExampleViewer from '@/components/example-viewer';
+import { RemoteCodeViewer } from 'xy-shared';
 import ExampleLayout from '@/layouts/example-with-frontmatter';
 
 <ExampleLayout>
 Like our [dagre example](examples/layout/dagre), this example shows how you can integrate [elkjs](https://github.com/kieler/elkjs) with Svelte Flow for more advanced tree layouts. The code for this example builds a similar tree to the dagre example, but you can look at the reference [here](https://www.eclipse.org/elk/reference.html) to see what you can configure (hint: it's a lot).
 
-<ExampleViewer
-  codePath="examples/layout/elk"
-  dependencies={{ elkjs: 'latest' }}
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_SVELTE_EXAMPLES_URL}/examples/layout/elk/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_SVELTE_EXAMPLES_URL}/examples/layout/elk/index.html`}
+  framework="svelte"
   activeFile="Flow.svelte"
 />
 </ExampleLayout>

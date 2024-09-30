@@ -3,21 +3,21 @@ title: Connection Events
 description:
   React Flow emits different events during the connection process. Use this example
   to get an overview of those events and what order they are called in.
-created_at: 2024-08-13
 ---
 
-import ExampleViewer from '@/components/example-viewer';
-import ExampleLayout from '@/layouts/example-with-frontmatter';
 import { Callout } from 'nextra/components';
+import { RemoteCodeViewer } from 'xy-shared';
+import ExampleLayout from '@/layouts/example-with-frontmatter';
 
 <ExampleLayout>
 React Flow emits different events during the connection process that you can use
 to update your UI or your flow in different ways. The example below demonstrates
 which events are fired and when.
 
-<ExampleViewer
-  codePath="example-flows/ConnectionEvents"
-  additionalFiles={['index.css']}
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/examples/interaction/connection-events/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/examples/interaction/connection-events/index.html`}
+  framework="react"
 />
 
 For a **new connection** created by dragging from a handle, the following events
@@ -61,8 +61,9 @@ are called in order:
   type of the stable handle.
 
 <Callout type="info">
-  You can see many of these events in use in our [add node on edge drop](/examples/nodes/add-node-on-edge-drop)
-  and [temporary edges](/examples/edges/temporary-edges) examples!
+  You can see many of these events in use in our [add node on edge
+  drop](/examples/nodes/add-node-on-edge-drop) and [temporary
+  edges](/examples/edges/temporary-edges) examples!
 </Callout>
 
 </ExampleLayout>

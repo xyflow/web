@@ -27,16 +27,12 @@ As mentioned above, the default controls are:
 - zoom: scroll
 - create selection: Shift + drag
 
-import ExampleViewer from '@/components/example-viewer';
+import { RemoteCodeViewer } from 'xy-shared';
 
-<ExampleViewer
-  codePath="api-flows/ZoomPan"
-  additionalFiles={['nodes.js', 'edges.js']}
-  editorOptions={{
-    editorHeight: 500,
-    editorWidthPercentage: 45,
-    wrapContent: true,
-  }}
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/learn/zoom-pan/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/learn/zoom-pan/index.html`}
+  framework="react"
 />
 
 ## Figma-like Viewport Controls
@@ -47,14 +43,10 @@ If you prefer figma/sketch/design tool controls you can set `panOnScroll={true}`
 - zoom: pitch or cmd + scroll
 - create selection: drag mouse
 
-<ExampleViewer
-  codePath="api-flows/ZoomPan2"
-  additionalFiles={['nodes.js', 'edges.js']}
-  editorOptions={{
-    editorHeight: 500,
-    editorWidthPercentage: 45,
-    wrapContent: true,
-  }}
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/learn/zoom-pan-2/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/learn/zoom-pan-2/index.html`}
+  framework="react"
 />
 
 In this example we also set `selectionMode={SelectionMode.Partial}` to be able to add nodes to a selection that are only partially selected.

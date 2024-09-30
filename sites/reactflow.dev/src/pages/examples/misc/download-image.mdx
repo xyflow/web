@@ -3,23 +3,16 @@ title: Download Image
 description: Save a flow as a png with the html-to-image library
 ---
 
-import ExampleViewer from '@/components/example-viewer';
-import DownloadImageExample from '@/components/example-viewer/example-flows/DownloadImage';
+import { RemoteCodeViewer } from 'xy-shared';
 import ExampleLayout from '@/layouts/example-with-frontmatter';
 
 <ExampleLayout>
 This example shows how to download a flow as an image with [html-to-image](https://github.com/bubkoo/html-to-image).
 
-<ExampleViewer
-  codePath="example-flows/DownloadImage"
-  dependencies={{ 'html-to-image': 'latest' }}
-  additionalFiles={[
-    'CustomNode.jsx',
-    'nodes-edges.js',
-    'DownloadButton.jsx',
-    'index.css',
-  ]}
-  customPreview={<DownloadImageExample />}
-  activeFile="DownloadButton.jsx"
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/examples/misc/download-image/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/examples/misc/download-image/index.html`}
+  framework="react"
 />
+
 </ExampleLayout>

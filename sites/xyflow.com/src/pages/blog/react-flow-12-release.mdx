@@ -10,10 +10,9 @@ image: '/img/blog/v11-reactflow-header.png'
 ---
 
 import { Bleed } from 'nextra-theme-docs';
-import { Embed, Text, Image } from 'xy-shared';
+import { Embed, Text, Image, RemoteCodeViewer } from 'xy-shared';
 
 import { BlogPostLayout } from '@/layouts/blog-post-with-frontmatter';
-import ExampleViewer from '@/components/example-viewer';
 import SSRFlow from '@/components/SSRFlow';
 
 <BlogPostLayout>
@@ -67,18 +66,11 @@ Check out our [server side rendering guide](https://reactflow.dev/learn/advanced
 ## 2. Computing flows - hooks and helpers
 
 <Bleed>
-  <ExampleViewer
-    codePath="api-flows/ComputingFlow"
-    editorHeight={400}
-    applyStyles={false}
+  <RemoteCodeViewer
+    source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/learn/computing-6/source.json`}
+    preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/learn/computing-6/index.html`}
     showEditor={false}
-    additionalFiles={[
-      'NumberInput.js',
-      'ColorPreview.js',
-      'Lightness.js',
-      'Log.js',
-      'style.css',
-    ]}
+    framework="react"
   />
 </Bleed>
 
@@ -91,12 +83,11 @@ Check out our [computing flows guide](https://reactflow.dev/learn/advanced-use/c
 ## 3. Dark mode
 
 <Bleed>
-  <ExampleViewer
-    codePath="api-flows/DarkMode"
-    editorHeight={400}
-    applyStyles={false}
+  <RemoteCodeViewer
+    source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/examples/styling/dark-mode/source.json`}
+    preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/examples/styling/dark-mode/index.html`}
     showEditor={false}
-    isTypescript
+    framework="react"
   />
 </Bleed>
 

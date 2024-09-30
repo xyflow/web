@@ -1,8 +1,12 @@
 import { useSSG } from 'nextra/ssg';
 import { PencilSquareIcon } from '@heroicons/react/24/outline';
-import { BaseLayout, Hero, TimelineEvent, TimelineEventProps } from 'xy-shared';
-
-import ExampleViewer from '@/components/example-viewer';
+import {
+  BaseLayout,
+  Hero,
+  TimelineEvent,
+  TimelineEventProps,
+  RemoteCodeViewer,
+} from 'xy-shared';
 
 export default function WhatsNew() {
   const mdx = useSSG('mdx') as TimelineEventProps[];
@@ -23,7 +27,12 @@ export default function WhatsNew() {
       />
 
       {mdx.map((src, i) => (
-        <TimelineEvent key={i} {...src} exampleViewer={ExampleViewer} />
+        <TimelineEvent
+          key={i}
+          {...src}
+          remoteCodeViewer={RemoteCodeViewer}
+          exampleUrl={process.env.NEXT_PUBLIC_SVELTE_EXAMPLES_URL}
+        />
       ))}
     </BaseLayout>
   );

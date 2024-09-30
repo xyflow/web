@@ -6,7 +6,7 @@ description: Remove a node without breaking the flow
 import { Callout, Cards, Card } from 'nextra/components';
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
 
-import ExampleViewer from '@/components/example-viewer';
+import { RemoteCodeViewer } from 'xy-shared';
 import ExampleLayout from '@/layouts/example-with-frontmatter';
 
 <ExampleLayout>
@@ -28,7 +28,11 @@ To achieve this, we need to make use of a few bits:
 All together, this allows us to take all the nodes connected to the deleted
 node, and reconnect them to any nodes the deleted node was connected to.
 
-<ExampleViewer codePath="example-flows/DeleteMiddleNode" />
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/examples/nodes/delete-middle-node/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/examples/nodes/delete-middle-node/index.html`}
+  framework="react"
+/>
 
 Although this example is less than 20 lines of code there's quite a lot to digest.
 Let's break some of it down:

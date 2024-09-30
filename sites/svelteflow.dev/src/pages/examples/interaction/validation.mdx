@@ -4,11 +4,15 @@ description: This example explains how to validte new connections between nodes.
 ---
 
 import ExampleLayout from '@/layouts/example-with-frontmatter';
-import ExampleViewer from '@/components/example-viewer';
+import { RemoteCodeViewer } from 'xy-shared';
 
 <ExampleLayout>
 For validating new connections between nodes, you can use the `isValidConnection` prop as shown in this example.
 
-<ExampleViewer codePath="examples/interaction/validation" />
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_SVELTE_EXAMPLES_URL}/examples/interaction/validation/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_SVELTE_EXAMPLES_URL}/examples/interaction/validation/index.html`}
+  framework="svelte"
+/>
 
 </ExampleLayout>
