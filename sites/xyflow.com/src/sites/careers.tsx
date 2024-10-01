@@ -49,7 +49,7 @@ export default function About() {
     <BaseLayout className="space-y-24">
       <Hero
         kicker="About Us"
-        title="Careers at Xyflow"
+        title="Careers at xyflow"
         subtitle="Learn about how we work and see our open positions"
         align="center"
       />
