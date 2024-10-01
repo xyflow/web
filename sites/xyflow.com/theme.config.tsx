@@ -65,8 +65,10 @@ export default {
   feedback: {
     useLink: () => 'https://xyflow.com/contact',
   },
-  primaryHue: 333,
-  primarySaturation: 100,
+  color: {
+    hue: 333,
+    saturation: 100,
+  },
   banner: {
     // key: 'react-flow12',
     // text: (

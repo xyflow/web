@@ -110,14 +110,16 @@ export default {
     extraContent: () => (
       <Link
         href="/whats-new"
-        className="nx-text-xs nx-font-medium nx-text-gray-500 hover:nx-text-gray-900 dark:nx-text-gray-400 dark:hover:nx-text-gray-100 contrast-more:nx-text-gray-800 contrast-more:dark:nx-text-gray-50"
+        className="_text-xs _font-medium _text-gray-500 hover:_text-gray-900 dark:_text-gray-400 dark:hover:_text-gray-100 contrast-more:_text-gray-800 contrast-more:dark:_text-gray-50"
       >
         What's new here?
       </Link>
     ),
   },
-  primaryHue: 15,
-  primarySaturation: 90,
+  color: {
+    hue: 15,
+    saturation: 90,
+  },
   useNextSeoProps() {
     const router = useRouter();
     const { frontMatter } = useConfig();

@@ -44,7 +44,7 @@ nav a:has(svg.nav-github-logo) {
   @apply max-sm:hidden;
 }
 
-nav.nx-bg-transparent {
+nav._bg-transparent {
   background-color: white;
 }
 
@@ -71,12 +71,12 @@ div.nextra-nav-container-blur {
   --gradientAngle: 258deg;
 }
 
-main .nx-text-primary-600,
-nav .nx-text-primary-600 {
+main ._text-primary-600,
+nav ._text-primary-600 {
   @apply text-primary;
 }
 
-main .nx-border-primary-500 {
+main ._border-primary-500 {
   @apply border-primary;
 }
 
@@ -272,7 +272,7 @@ article.nextra-content ol li p {
 }
 
 @media screen and (min-width: 2000px) {
-  main .nx-max-w-\[90rem\],
+  main ._max-w-\[90rem\],
   main .max-w-\[90rem\] {
     max-width: 90rem;
   }

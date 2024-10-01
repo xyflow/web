@@ -72,7 +72,10 @@ export default {
                 // hack: the item only gets highlighted when it has a "route", not when it has a "href"
                 // by doing this we prevent the "Pricing" item to be highlighted on sub routes
                 { title: 'Pricing', [proHomePageKey]: '/pro' },
-                { title: 'Pro Examples', route: '/pro/examples' },
+                {
+                  title: 'Pro Examples',
+                  route: '/pro/examples',
+                },
                 { title: 'Case Studies', route: '/pro/case-studies' },
               ] satisfies { title: string; route?: Route; href?: Route }[]
             }
@@ -190,11 +193,11 @@ export default {
   toc: {
     extraContent: () => {
       const className =
-        'nx-text-xs nx-font-medium nx-text-gray-500 hover:nx-text-gray-900 dark:nx-text-gray-400 dark:hover:nx-text-gray-100 contrast-more:nx-text-gray-800 contrast-more:dark:nx-text-gray-50';
+        '_text-xs _font-medium _text-gray-500 hover:_text-gray-900 dark:_text-gray-400 dark:hover:_text-gray-100 contrast-more:_text-gray-800 contrast-more:dark:_text-gray-50';
 
       return (
-        <div className="nx-mt-4 nx-flex nx-flex-col nx-gap-2">
-          <p className="nx-text-xs nx-font-semibold nx-tracking-tight nx-text-gray-600 dark:nx-text-gray-200 contrast-more:nx-text-gray-900 contrast-more:dark:nx-text-gray-50">
+        <div className="_mt-4 _flex _flex-col _gap-2">
+          <p className="_text-xs _font-semibold _tracking-tight _text-gray-600 dark:_text-gray-200 contrast-more:_text-gray-900 contrast-more:dark:_text-gray-50">
             What's new?
           </p>
           {getMdxPagesUnderRoute('/whats-new')
@@ -215,8 +218,10 @@ export default {
   feedback: {
     useLink: () => 'https://xyflow.com/contact',
   },
-  primaryHue: 333,
-  primarySaturation: 80,
+  color: {
+    hue: 333,
+    saturation: 80,
+  },
   useNextSeoProps() {
     const router = useRouter();
     const { frontMatter } = useConfig();

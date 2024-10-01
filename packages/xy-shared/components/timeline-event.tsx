@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { MDXRemote, type MDXRemoteSerializeResult } from 'next-mdx-remote';
 import TimeAgo from 'timeago-react';
-import { Callout, Tabs, Tab } from 'nextra/components';
+import { Callout, Tabs } from 'nextra/components';
 import { Emoji, Text } from '@xyflow/xy-ui';
 
 import { Author, AuthorList, Image } from '../';
@@ -46,7 +46,6 @@ export function TimelineEvent({
             RemoteCodeViewer,
             Image,
             Tabs,
-            Tab,
             Callout,
             Emoji,
           }}
