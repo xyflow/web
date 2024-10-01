@@ -1,7 +1,7 @@
 import { PropsTable, type PropsTableProps } from 'xy-shared';
 import React, { useMemo } from 'react';
 
-import reactFlowTypes from '@/pages/api-reference/types/_meta.json';
+import reactFlowTypes from '@/pages/api-reference/types/_meta';
 
 export const reactFlowLinks = Object.entries(reactFlowTypes).reduce<
   Record<string, string>

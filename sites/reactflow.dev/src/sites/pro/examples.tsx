@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { getPagesUnderRoute } from 'nextra/context';
-import { useSSG } from 'nextra/ssg';
+import { useData } from 'nextra/hooks';
 import {
   ContentGrid,
   ContentGridItem,
@@ -47,7 +47,7 @@ function getProExamples() {
 }
 
 export default function ProExamples() {
-  const { remoteProExamples } = useSSG();
+  const { remoteProExamples } = useData();
   const proExamples = getProExamples();
 
   const examples = proExamples.reduce((result, curr) => {

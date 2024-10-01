@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { PropsTable, type PropsTableProps } from 'xy-shared';
 
-import svelteFlowTypes from '@/pages/api-reference/types/_meta.json';
+import svelteFlowTypes from '@/pages/api-reference/types/_meta';
 
 export const svelteFlowLinks = Object.entries(svelteFlowTypes).reduce<
   Record<string, string>

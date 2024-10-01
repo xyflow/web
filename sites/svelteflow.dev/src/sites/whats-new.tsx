@@ -1,4 +1,4 @@
-import { useSSG } from 'nextra/ssg';
+import { useData } from 'nextra/hooks';
 import { PencilSquareIcon } from '@heroicons/react/24/outline';
 import {
   BaseLayout,
@@ -9,7 +9,7 @@ import {
 } from 'xy-shared';
 
 export default function WhatsNew() {
-  const mdx = useSSG('mdx') as TimelineEventProps[];
+  const mdx = useData('mdx') as TimelineEventProps[];
 
   return (
     <BaseLayout className="space-y-32 max-w-screen-lg mx-auto">

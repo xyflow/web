@@ -15,7 +15,7 @@ export async function extractRoutes(path = '/', set = new Set()) {
   const dir = `${ROUTES_PATH}/${path}`;
 
   for (const dirent of await Fs.readdir(dir, { withFileTypes: true })) {
-    if (dirent.name === '_meta.json') continue;
+    if (dirent.name === '_meta.ts') continue;
     if (dirent.name === '404.mdx') continue;
     if (dirent.name === '_app.tsx') continue;
 

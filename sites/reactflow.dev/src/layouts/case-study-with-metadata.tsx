@@ -53,5 +53,5 @@ function getMdxPagesUnderRoute(route: string) {
 }
 
 function isMdxPage(page: MdxFile | any): page is MdxFile {
-  return page?.kind === 'MdxPage';
+  return !!page?.frontMatter;
 }
