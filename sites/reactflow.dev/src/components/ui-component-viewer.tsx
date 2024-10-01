@@ -22,10 +22,19 @@ function UiComponentViewer() {
     url: `https://www.npmjs.com/package/${dep}`,
   }));
 
-  const shadcnDependencies = (data.registryDependencies || []).map((dep) => ({
-    label: `shadcn/ui/${dep}`,
-    url: `https://ui.shadcn.com/docs/components/${dep}`,
-  }));
+  const shadcnDependencies = (data.registryDependencies || []).map((dep) => {
+    if (dep.startsWith('https://ui.reactflow')) {
+      const depName = dep.split('/').pop().split('.').shift();
+      return {
+        label: `xyflow/${depName}`,
+        url: `/ui/${depName}`,
+      };
+    }
+    return {
+      label: `shadcn/ui/${dep}`,
+      url: `https://ui.shadcn.com/docs/components/${dep}`,
+    };
+  });
 
   const jsonUrl = `${process.env.NEXT_PUBLIC_UI_COMPONENTS_URL}/registry/${data.name}.json`;
   const componentSrc = data.files?.[0]?.content;
