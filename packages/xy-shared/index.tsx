@@ -10,7 +10,6 @@ export * from './layouts/text-only';
 export * from './widgets/about-section';
 export * from './widgets/authors-list';
 export * from './widgets/blog-post';
-export * from './widgets/code-viewer';
 export * from './widgets/contact-form';
 export * from './widgets/features';
 export * from './widgets/getting-started';
