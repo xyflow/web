@@ -26,8 +26,8 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'xyflow-example-apps.vercel.app',
-        pathname: '/react/**',
+        hostname: 'example-apps.xyflow.com',
+        pathname: '/svelte/**',
       },
     ],
   },
