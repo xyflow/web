@@ -46,7 +46,7 @@ const openings: JobOpeningProps[] = [
 
 export default function About() {
   return (
-    <BaseLayout>
+    <BaseLayout className="space-y-24">
       <Hero
         kicker="About Us"
         title="Careers at xyflow"
@@ -54,7 +54,7 @@ export default function About() {
         align="center"
       />
 
-      <Section className="max-w-screen-md mx-auto mt-12 lg:my-12 space-y-8">
+      <Section className="max-w-screen-md mx-auto lg:my-12 space-y-8">
         <Text size="lg" className="leading-8">
           Hi! We're xyflow and we build open source node-based UI libraries like{' '}
           <Link href="https://reactflow.dev" className="text-pink-500">
@@ -72,7 +72,7 @@ export default function About() {
 
       {openings.map(JobOpening)}
 
-      <Section className="max-w-screen-md mx-auto mt-12 lg:my-12 space-y-6">
+      <Section className="max-w-screen-md mx-auto lg:my-12 space-y-6">
         <Heading size="md" className="mb-12">
           How we hire
         </Heading>
@@ -113,7 +113,7 @@ export default function About() {
         </ol>
       </Section>
 
-      <Section className="max-w-screen-md mx-auto mt-12 lg:my-12 space-y-6">
+      <Section className="max-w-screen-md mx-auto lg:my-12 space-y-6">
         <Heading size="md" className="mb-12">
           How we work
         </Heading>
@@ -174,7 +174,7 @@ function JobOpening({
   return (
     <Section
       id={slugify(title)}
-      className="max-w-screen-lg bg-slate-50 rounded-lg lg:py-12 lg:px-12 mx-auto mt-12 lg:my-12 space-y-6"
+      className="max-w-screen-lg bg-slate-50 rounded-xl p-4 md:p-8 lg:p-12 mx-auto space-y-6"
     >
       <div className="flex gap-2 items-center text-md">
         <MapPinIcon className="w-5 h-5" /> Berlin
