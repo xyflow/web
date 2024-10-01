@@ -114,7 +114,9 @@ export default function ExamplesOverviewPage({
                       image={
                         example.frontMatter.is_pro_example
                           ? `https://pro-examples.reactflow.dev/${example.name}/thumbnail.jpg`
-                          : `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react${example.route}/preview.jpg`
+                          : example.frontMatter.preview_path
+                            ? `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/${example.frontMatter.preview_path}`
+                            : `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react${example.route}/preview.jpg`
                       }
                       title={
                         <div className="flex items-center">

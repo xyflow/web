@@ -55,7 +55,7 @@ export function RemoteCodeViewer({
   showOpenInCodeSandbox = framework === 'react',
   editorHeight = '60vh',
   activeFile,
-  orientation = 'horizontal',
+  orientation,
 }: RemoteCodeViewerProps) {
   const [filesFetched, setFilesFetched] = useState(typeof source === 'string');
   const [fileFetchFailed, setFileFetchFailed] = useState(false);
@@ -76,6 +76,12 @@ export function RemoteCodeViewer({
         }
       : source.files,
   );
+
+  const _orientation = orientation
+    ? orientation
+    : typeof source === 'string' && source.includes('/examples/')
+      ? 'vertical'
+      : 'horizontal';
 
   const [dependencies, setDependencies] = useState<Record<string, string>>(
     typeof source === 'string' ? {} : source.dependencies,
@@ -155,7 +161,7 @@ export function RemoteCodeViewer({
 
   return (
     <div
-      className={cn('my-4 bg-gray-100', 'sandpack-wrapper', orientation)}
+      className={cn('my-4 bg-gray-100', 'sandpack-wrapper', _orientation)}
       style={{ minHeight: editorHeight }}
     >
       {filesFetched && (
