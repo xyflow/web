@@ -78,7 +78,7 @@ export default function QuoteRequestPage() {
         subtitle="Use the form below to get an official quote for one of our annual subscription plans."
         kickerIcon={SparklesIcon}
         align="center"
-        backgroundVariant="gradient"
+        backgroundVariant="image"
       />
       <Card className="p-8 bg-white relative max-w-xl mx-auto mt-16">
         <Accordion

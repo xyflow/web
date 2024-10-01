@@ -46,7 +46,7 @@ export function Hero({
 
       {backgroundVariant === 'image' && (
         <div className="relative">
-          <div className="absolute w-full h-[70vw] bg-gradient bg-no-repeat bg-contain lg:bg-[length:50%] bg-[90%_top]  pointer-events-none -z-10" />
+          <div className="absolute w-full h-[50vw] bg-gradient bg-no-repeat bg-contain lg:bg-[length:50%] bg-[90%_top] pointer-events-none -z-10" />
         </div>
       )}
 
