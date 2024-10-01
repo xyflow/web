@@ -44,17 +44,26 @@ connection source matches a given id.
 
 ```svelte
 <script>
-import { Handle, Position } from '@xyflow/svelte';
+	import { Handle, Position } from '@xyflow/svelte';
+
+	export let position;
+	export let source;
+
+	function isValidConnection(connection) {
+		if (connection.source === source) {
+			return true;
+		}
+		return false;
+	}
+
 </script>
 
-export const TargetHandleWithValidation = ({ position, source }) => (
-  <Handle
-    type="target"
-    position={position}
-    isValidConnection={(connection) => connection.source === source}
-    style={{ background: '#fff' }}
-  />
-);
+<Handle
+	type="target"
+	position={position}
+	{isValidConnection}
+	style="background: #fff"
+/>
 ```
 
 ### Style handles when connecting

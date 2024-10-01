@@ -365,9 +365,11 @@ export const edgeEventHandlerProps: PropsTableProps = {
     },
     {
       name: 'onReconnectEnd',
-      type: '(event: React.MouseEvent, edge: Edge, handleType: "source" | "target") => void',
+      type: '(event: React.MouseEvent, edge: Edge, handleType: "source" | "target", connectionState: Omit<ConnectionState, \'inProgress\'>) => void',
       description: `This event fires when the user releases the source or target
-      of an editable edge. It is called even if an edge update does not occur.`,
+      of an editable edge. It is called even if an edge update does not occur.
+      You can use the fourth connectionState parameter to have different behaviour
+      when a reconnection was unsuccessful.`,
     },
     { name: 'onEdgesDelete', type: '(edges: Edge[]) => void' },
     {
@@ -392,7 +394,13 @@ export const connectionEventHandlerProps: PropsTableProps = {
       name: 'onConnectStart',
       type: '(event: React.MouseEvent, params: { nodeId: string | null; handleId: string | null; handleType: "source" | "target" | null; }) => void',
     },
-    { name: 'onConnectEnd', type: '(event: React.MouseEvent) => void' },
+    {
+      name: 'onConnectEnd',
+      type: "(event: React.MouseEvent, connectionState: Omit<ConnectionState, 'inProgress'>) => void",
+      description: `This callback will fire regardless of whether a valid connection
+      could be made or not. You can use the second connectionState parameter to
+      have different behaviour when a connection was unsuccessful.`,
+    },
     {
       name: 'onClickConnectStart',
       type: '(event: React.MouseEvent, params: { nodeId: string | null; handleId: string | null; handleType: "source" | "target" | null; }) => void',

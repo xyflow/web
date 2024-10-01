@@ -3,11 +3,11 @@ import {
   ReactFlow,
   Controls,
   addEdge,
-  Connection,
   useNodesState,
   useEdgesState,
   Background,
   Edge,
+  OnConnect,
 } from '@xyflow/react';
 
 import '@xyflow/react/dist/style.css';
@@ -76,8 +76,8 @@ const CustomNodeFlow = () => {
   const [nodes, , onNodesChange] = useNodesState(initNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initEdges);
 
-  const onConnect = useCallback(
-    (connection: Connection) => setEdges((eds) => addEdge(connection, eds)),
+  const onConnect: OnConnect = useCallback(
+    (connection) => setEdges((eds) => addEdge(connection, eds)),
     [setEdges],
   );
 

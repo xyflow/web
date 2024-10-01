@@ -41,7 +41,6 @@ export const nodeFields: PropsTableProps = {
       description: `When true, the parent node will automatically expand if this
       node is dragged to the edge of the parent node's bounds.`,
     },
-    { name: 'positionAbsolute?', type: 'XYPosition' },
     { name: 'ariaLabel?', type: 'string' },
     { name: 'focusable?', type: 'boolean' },
     { name: 'style?', type: 'React.CSSProperties' },

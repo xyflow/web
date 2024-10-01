@@ -56,7 +56,7 @@ export const nodesAndEdgesFields: PropsTableProps = {
     },
     {
       name: 'updateNodeData',
-      type: `( id: string, dataUpdate: Partial<NodeType['data']> | ((edge: NodeType) => Partial<NodeType['data']>), options?: { replace: boolean }) => void`,
+      type: `(id: string, dataUpdate: Partial<NodeType['data']> | ((edge: NodeType) => Partial<NodeType['data']>), options?: { replace: boolean }) => void`,
     },
     {
       name: 'updateEdge',
@@ -64,7 +64,17 @@ export const nodesAndEdgesFields: PropsTableProps = {
     },
     {
       name: 'updateEdgeData',
-      type: `( id: string, dataUpdate: Partial<EdgeType['data']> | ((edge: EdgeType) => Partial<EdgeType['data']>), options?: { replace: boolean }) => void`,
+      type: `(id: string, dataUpdate: Partial<EdgeType['data']> | ((edge: EdgeType) => Partial<EdgeType['data']>), options?: { replace: boolean }) => void`,
+    },
+    {
+      name: 'getHandleConnections',
+      type: `({ type, nodeId, id }: { type: HandleType, nodeId: string, id?: string | null }) => HandleConnection[]`,
+      description: `Get all the connections of a handle belonging to a specific node. The type parameter be either 'source' or 'target'.`,
+    },
+    {
+      name: 'getNodesBounds',
+      type: `(nodes: (NodeType | InternalNode | string)[]) => Rect`,
+      description: 'Returns the bounds of the given nodes or node ids.',
     },
   ],
 };

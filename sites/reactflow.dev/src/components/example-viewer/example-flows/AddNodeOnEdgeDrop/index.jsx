@@ -22,37 +22,32 @@ const initialNodes = [
 
 let id = 1;
 const getId = () => `${id++}`;
+const nodeOrigin = [0.5, 0];
 
 const AddNodeOnEdgeDrop = () => {
   const reactFlowWrapper = useRef(null);
-  const connectingNodeId = useRef(null);
+
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   const { screenToFlowPosition } = useReactFlow();
-  const onConnect = useCallback((params) => {
-    // reset the start node on connections
-    connectingNodeId.current = null;
-    setEdges((eds) => addEdge(params, eds));
-  }, []);
-
-  const onConnectStart = useCallback((_, { nodeId }) => {
-    connectingNodeId.current = nodeId;
-  }, []);
+  const onConnect = useCallback(
+    (params) => setEdges((eds) => addEdge(params, eds)),
+    [],
+  );
 
   const onConnectEnd = useCallback(
-    (event) => {
-      if (!connectingNodeId.current) return;
-
-      const targetIsPane = event.target.classList.contains('react-flow__pane');
-
-      if (targetIsPane) {
+    (event, connectionState) => {
+      // when a connection is dropped on the pane it's not valid
+      if (!connectionState.isValid) {
         // we need to remove the wrapper bounds, in order to get the correct position
         const id = getId();
+        const { clientX, clientY } =
+          'changedTouches' in event ? event.changedTouches[0] : event;
         const newNode = {
           id,
           position: screenToFlowPosition({
-            x: event.clientX,
-            y: event.clientY,
+            x: clientX,
+            y: clientY,
           }),
           data: { label: `Node ${id}` },
           origin: [0.5, 0.0],
@@ -60,7 +55,7 @@ const AddNodeOnEdgeDrop = () => {
 
         setNodes((nds) => nds.concat(newNode));
         setEdges((eds) =>
-          eds.concat({ id, source: connectingNodeId.current, target: id }),
+          eds.concat({ id, source: connectionState.fromNode.id, target: id }),
         );
       }
     },
@@ -75,11 +70,10 @@ const AddNodeOnEdgeDrop = () => {
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
-        onConnectStart={onConnectStart}
         onConnectEnd={onConnectEnd}
         fitView
         fitViewOptions={{ padding: 2 }}
-        nodeOrigin={[0.5, 0]}
+        nodeOrigin={nodeOrigin}
       />
     </div>
   );

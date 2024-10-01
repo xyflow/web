@@ -76,6 +76,11 @@ export const signature: PropsTableProps = {
       description: '',
     },
     {
+      name: 'getNodesBounds',
+      type: `(nodes: (NodeType | InternalNode | string)[]) => Rect`,
+      description: 'Returns the bounds of the given nodes or node ids.',
+    },
+    {
       name: 'getIntersectingNodes',
       type: `(
         nodeOrRect: Node | { id: string } | Rect,
@@ -135,6 +140,11 @@ export const signature: PropsTableProps = {
       type: `() => { nodes: Node[]; edges: Edge[]; viewport: Viewport };`,
       description:
         'This function returns a JSON representation of your current Svelte Flow graph.',
+    },
+    {
+      name: 'getHandleConnections',
+      type: `({ type, nodeId, id }: { type: HandleType, nodeId: string, id?: string | null }) => HandleConnection[]`,
+      description: `Get all the connections of a handle belonging to a specific node. The type parameter be either 'source' or 'target'.`,
     },
   ],
 };

@@ -1000,8 +1000,7 @@ const initialNodes = ({
             .
           </Text>
           <Text>
-            Catch you next time! <Emoji content="✌️" /> The xyflow team –
-            Christopher, Hayleigh, John, Moritz, and Peter
+            Catch you next time! <Emoji content="✌️" /> The xyflow team
           </Text>
         </>
       ),

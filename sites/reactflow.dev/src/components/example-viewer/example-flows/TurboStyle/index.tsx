@@ -7,6 +7,7 @@ import {
   addEdge,
   Node,
   Edge,
+  OnConnect,
 } from '@xyflow/react';
 import { FiFile } from 'react-icons/fi';
 
@@ -100,7 +101,7 @@ const Flow = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
-  const onConnect = useCallback(
+  const onConnect: OnConnect = useCallback(
     (params) => setEdges((els) => addEdge(params, els)),
     [],
   );

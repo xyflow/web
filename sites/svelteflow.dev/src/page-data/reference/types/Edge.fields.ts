@@ -9,8 +9,6 @@ export const defaultEdgeFields: PropsTableProps = {
     { name: 'label?', type: 'string' },
     { name: 'source', type: 'string' },
     { name: 'target', type: 'string' },
-    { name: 'sourceNode?', type: 'Node' },
-    { name: 'targetNode?', type: 'Node' },
     { name: 'sourceHandle', type: 'string | null' },
     { name: 'targetHandle', type: 'string | null' },
     { name: 'data', type: 'T' },

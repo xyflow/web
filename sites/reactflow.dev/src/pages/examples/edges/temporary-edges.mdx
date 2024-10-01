@@ -1,8 +1,6 @@
 ---
-sidebar_position: 0
 title: Temporary Edges
 description: Push what React Flow edges are capable of by rendering invisible ghost nodes.
-hide_table_of_contents: true
 created_at: 2024-08-13
 ---
 
@@ -30,36 +28,34 @@ connection at which point the ghost node is removed!
 
 <ExampleViewer
   codePath="example-flows/CustomEdgeAdvancedGhostIncomplete"
-  additionalFiles={[ 'useIncompleteEdge.jsx' ]}
+  additionalFiles={['useIncompleteEdge.jsx']}
 />
 
 We've defined a `useIncompleteEdge` hook that encapsulates the logic for creating
 and managing a "ghost node". It returns a number of event handlers intended to be
 passed to the `<ReactFlow />` component.
 
-- [`onConnectStart`](/api-reference/react-flow#on-connect-start) is called when
-  the user starts dragging a new connection line. It updates a `connectingNodeId`
-  ref with the id of the source node.
-
 - [`onConnect`](/api-reference/react-flow#on-connect) is called when a complete
-  connection is made. It updates the  `connectingNodeId` ref to `null`.
+  connection is made.
 
 - [`onConnectEnd`](/api-reference/react-flow#on-connect-end) is called when the
-  user releases a connection line. This callback creates a ghost node and a
-  temporary edge from the `connectingNodeId` to that ghost node. The temporary
+  user releases a connection line. The seconed `connectionState` param can be used
+  to determine if the connection was successful or not and where it started
+  (and ended if the connection is valid). This callback creates a ghost node and a
+  temporary edge from the `connectionState.fromNode.id` to that ghost node. The temporary
   edge is marked as `reconnectable` so that the user can pick it back up and
   complete the connection.
 
 - [`onReconnect`](/api-reference/react-flow#on-reconnect) is called when a complete
-  reconnection is made. It updates the `connectingNodeId` ref to `null`.
+  reconnection is made.
 
 - [`onReconnectEnd`](/api-reference/react-flow#on-reconnect-start) is called when
   the user releases a reconnection line. This callback removes the ghost node and
   temporary edge. A new one may be added back when `onConnectEnd` is called.
 
 <Callout type="info">
-  This example is an adaptation of our [add node on edge drop](/examples/nodes/add-node-on-edge-drop)
-  example!
+  This example is an adaptation of our [add node on edge
+  drop](/examples/nodes/add-node-on-edge-drop) example!
 </Callout>
 
 </ExampleLayout>

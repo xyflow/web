@@ -12,11 +12,11 @@ import {
 } from '@xyflow/xy-ui';
 import { BaseLayout, Hero } from 'xy-shared';
 
-import john from '@/../public/img/john.jpg';
 import christopher from '@/../public/img/christopher.jpg';
 import hayleigh from '@/../public/img/hayleigh.jpg';
 import moritz from '@/../public/img/moritz.jpg';
 import peter from '@/../public/img/peter.jpg';
+import burak from '@/../public/img/burak.jpg';
 
 export default function About() {
   return (
@@ -45,20 +45,20 @@ export default function About() {
           the many they had used.
         </Text>
         <Text size="lg" className="leading-8 mb-8">
-          John, Hayleigh, and Peter joined the team to help out with the many
-          things that revolve around an open source library. In 2023, we
-          generalized the core of React Flow to support other frameworks beyond
-          React. In order to keep all of our ducks in a row, we created xyflow
-          to be the house where all of our projects could live. Now, here we
-          are- happy maintainers of a couple of libraries we&apos;re proud of
-          with wonderful communities behind them :)
+          Hayleigh and Peter joined the team to help out with the many things
+          that revolve around an open source library. In 2023, we generalized
+          the core of React Flow to support other frameworks beyond React. In
+          order to keep all of our ducks in a row, we created xyflow to be the
+          house where all of our projects could live. Now, here we are- happy
+          maintainers of a couple of libraries we&apos;re proud of with
+          wonderful communities behind them :)
         </Text>
         <Text size="lg" className="leading-8 mb-8">
           If you need anything, have an idea, or just want to say hi, we&apos;re
           an email away at info@xyflow.com.
         </Text>
         <Text size="lg" className="leading-8">
-          ✌🏻 Christopher, Hayleigh, John, Moritz, and Peter
+          ✌🏻 the xyflow team
         </Text>
       </Section>
 
@@ -100,19 +100,6 @@ export default function About() {
           ]}
         />
         <TeamCard
-          name="John"
-          teampic={john}
-          description="John works on all things un-code at xyflow, which is a lot of writing and talking about where xyflow is headed, how we get there, and open source in general. Before jumping into the world of open source, UX design and research were his bread and butter. Besides that, he likes looking at birds, playing music, and designing puzzles."
-          links={[
-            { linkName: 'Website', route: 'https://johnrobbdesign.com/' },
-
-            {
-              linkName: 'Mastodon',
-              route: 'https://mastodon.social/@johnrobbjr',
-            },
-          ]}
-        />
-        <TeamCard
           name="Moritz"
           teampic={moritz}
           description="Moritz was raised in the depths of Teutoburger Wald by a pack of wolves, learning how to hunt, survive, and develop front-end applications. He abandoned his pack after a disagreement in 2019, where he fled to the streets of Berlin. He now maintains React Flow, and dreams of one day rejoining his pack."
@@ -131,6 +118,7 @@ export default function About() {
         />
         <TeamCard
           name="Burak"
+          teampic={burak}
           description="Burak created Vue Flow while aboard a pirate ship, hoping the motley crew could better organize themselves with a node-based cleaning schedule. Even after his ship was commandeered on the shores of Hamburg, he continues to seek those harsh bone-breaking conditions on land through Brazilian Jiu Jitsu, skateboarding, and open source software development.
           "
           links={[

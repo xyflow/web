@@ -1,31 +1,37 @@
 export default {
+  xyflow: {
+    name: 'xyflow team',
+    title: '✌️',
+    url: 'https://twitter.com/xyflowdev',
+    image: 'https://github.com/xyflow.png',
+  },
   christopher: {
     name: 'Christopher Möller',
-    title: 'xyflow',
+    title: 'Co-Founder',
     url: 'https://twitter.com/chrtze',
     image: 'https://github.com/chrtze.png',
   },
   hayleigh: {
     name: 'Hayleigh Thompson',
-    title: 'Developer Relations',
+    title: 'Software Engineer',
     url: 'https://twitter.com/hayleighdotdev',
     image: 'https://github.com/hayleigh-dot-dev.png',
   },
   john: {
     name: 'John Robb',
-    title: 'is typing...',
+    title: 'Community Manager',
     url: 'http://johnrobbdesign.com/',
     image: 'https://github.com/johnrobbjr.png',
   },
   moritz: {
     name: 'Moritz Klack',
-    title: 'xyflow',
+    title: 'Co-Founder',
     url: 'https://twitter.com/moklick',
     image: 'https://github.com/moklick.png',
   },
   peter: {
     name: 'Peter Gorzo',
-    title: 'xyflow',
+    title: 'Software Engineer',
     url: '',
     image: 'https://github.com/peterkogo.png',
   },
