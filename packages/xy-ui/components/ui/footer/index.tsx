@@ -120,4 +120,4 @@ const Footer = forwardRef<HTMLDivElement, FooterProps>(
   },
 );
 
-export { Footer };
+export { Footer, defaultCategories as defaultFooterCategories };

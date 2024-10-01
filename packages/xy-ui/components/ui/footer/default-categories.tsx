@@ -8,7 +8,7 @@ export const defaultCategories = {
     { title: 'React Flow', route: 'https://reactflow.dev/' },
     { title: 'Svelte Flow', route: 'https://svelteflow.dev/' },
   ],
-  Community: [
+  Social: [
     { title: 'Discord', route: 'https://discord.gg/RVmnytFmGW' },
     { title: 'Github', route: 'https://github.com/xyflow' },
     { title: 'X / Twitter', route: 'https://x.com/xyflowdev' },
