@@ -49,7 +49,7 @@ export default function About() {
     <BaseLayout>
       <Hero
         kicker="About Us"
-        title="Careers at Xyflow"
+        title="Careers at xyflow"
         subtitle="Learn about how we work and see our open positions"
         align="center"
       />
@@ -66,7 +66,7 @@ export default function About() {
           </Link>
           , which are used by thousands of developers. We are expanding our
           Berlin-based product development team and are looking for talented web
-          developers to join us. Below is a list of our current job openings:
+          developers to join us. Below is a list of our current job openings.
         </Text>
       </Section>
 
@@ -84,27 +84,31 @@ export default function About() {
 
         <ol className="list-decimal ml-8 space-y-2">
           <li>
-            <Text size="lg">Our team goes through your application.</Text>
+            <Text className="leading-8" size="lg">
+              Our team goes through your application.
+            </Text>
           </li>
           <li>
-            <Text size="lg">
+            <Text className="leading-8" size="lg">
               We invite you for a short 15 minute “vibe check” video call.
             </Text>
           </li>
           <li>
-            <Text size="lg">
+            <Text className="leading-8" size="lg">
               A small take-home assignment based on an old real-world support
               request that involves creating a small React Flow app.
             </Text>
           </li>
           <li>
-            <Text size="lg">
+            <Text className="leading-8" size="lg">
               We invite you for a one hour in person interview with one of the
               founders and some of the team.
             </Text>
           </li>
           <li>
-            <Text size="lg">We send you an offer.</Text>
+            <Text className="leading-8" size="lg">
+              We send you an offer.
+            </Text>
           </li>
         </ol>
       </Section>
@@ -190,7 +194,9 @@ function JobOpening({
       <ul className="list-disc ml-8 space-y-2">
         {candidate.map((text, i) => (
           <li key={i}>
-            <Text size="lg">{text}</Text>
+            <Text className="leading-8" size="lg">
+              {text}
+            </Text>
           </li>
         ))}
       </ul>
@@ -200,7 +206,9 @@ function JobOpening({
       <ul className="list-disc ml-8 space-y-2">
         {tasks.map((text, i) => (
           <li key={i}>
-            <Text size="lg">{text}</Text>
+            <Text className="leading-8" size="lg">
+              {text}
+            </Text>
           </li>
         ))}
       </ul>
@@ -210,7 +218,9 @@ function JobOpening({
       <ul className="list-disc ml-8 space-y-2">
         {benefits.map((text, i) => (
           <li key={i}>
-            <Text size="lg">{text}</Text>
+            <Text className="leading-8" size="lg">
+              {text}
+            </Text>
           </li>
         ))}
       </ul>
@@ -227,12 +237,12 @@ function JobOpening({
 
       <ol className="list-decimal ml-8 space-y-2">
         <li>
-          <Text size="lg">
+          <Text className="leading-8" size="lg">
             What is most interesting to you about this job posting?
           </Text>
         </li>
         <li>
-          <Text size="lg">
+          <Text className="leading-8" size="lg">
             What past experience do you have that is relevant to this position?
           </Text>
         </li>

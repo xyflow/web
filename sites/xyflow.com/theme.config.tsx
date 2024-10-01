@@ -50,23 +50,6 @@ export default {
             title: 'Hello from the xyflow team',
             text: 'xyflow is building and maintaining open source software for node-based UIs since 2019.',
           }}
-          internal={{
-            title: 'Libraries',
-            items: [
-              { title: 'React Flow', route: 'https://reactflow.dev/' },
-              { title: 'Svelte Flow', route: 'https://svelteflow.dev/' },
-            ],
-          }}
-          legal={[
-            { title: 'Terms of Use', route: 'https://xyflow.com/terms-of-use' },
-            {
-              title: 'Ethical Standards',
-              route: 'https://xyflow.com/ethical-standards',
-            },
-            { title: 'Privacy Policy', route: 'https://xyflow.com/privacy' },
-            { title: 'Imprint', route: 'https://xyflow.com/imprint' },
-          ]}
-          // imageSrc={isHomePage ? undefined : aboutImage}
           baseUrl="https://xyflow.com"
         />
       );
