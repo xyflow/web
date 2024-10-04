@@ -1,3 +1,47 @@
+import { Callout } from 'nextra/components';
+
 # React Flow UI
 
-Useful components that you can integrate into your React Flow app.
+This is a collection of useful components that you can easily integrate into your React Flow application. It utilizes the new [shadcn CLI](https://ui.shadcn.com/docs/cli), which builds on top of [Tailwind CSS](https://tailwindcss.com/) and [shadcn/ui](https://ui.shadcn.com/) components.
+
+## Prequisites
+
+You need to have `shadcn` and `tailwind` configured in your project. This can be done automatically by running the follwing command in your project root directory. If you want to understand why we are building this on top of shadcn, skip to our [Motivation](#motivation).
+
+```bash copy
+npx shadcn init
+```
+
+## Usage
+
+Find a component you like and run the command to add it to your project.
+
+```bash copy
+npx shadcn add https://ui.reactflow.dev/component-name
+```
+
+- This command copies the component code inside your components folder. You can change this folder by adding an alias inside your `shadcn.config.js`.
+
+- It automatically installs all necessary dependencies
+
+- It utilizes previously added and even modified components or asks you if you'd like to overwrite them.
+
+- It uses your existing tailwind configuration.
+
+<Callout type="info">
+  These components are **not black-boxes** and are meant to be **modified and
+  owned by you**.
+</Callout>
+
+For more information visit the [shadcn documentation](https://ui.shadcn.com/docs).
+
+## Motivation
+
+We were pondering on how to make it easier for developers to build applications with React Flow for a long time. The first thing that comes to mind is obviously a component library with a set of custom nodes and edges. However, there is always a certain burden laid on users and developers of component libraries: users will always be limited by the features exposed by the library and the developers will always be playing catch-up with the growing needs of the users.
+This is one of the reasons headless UI libraries and ultimately solutions like shadcn became more popular in the last couple of years. They are very flexible and extensible.
+
+Looking at all the amazing and wildly differnet things built with React Flow, we knew that there was no singular path or set of components that would satisfy everyone. But there are a couple of things that needed to be solved for this to work:
+
+1. **Ease of use**: It should be easy to add components to your project.
+2. **Customizability**: You should be able to modify the components to your liking.
+3. **Compatibility**: The components should work with your existing setup.

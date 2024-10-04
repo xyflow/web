@@ -89,8 +89,10 @@ function UiComponentViewer() {
           </a>
         ))}
       </div>
-      <div>
-        <Heading size="sm">Installation</Heading>
+      <div className="mt-20">
+        <Heading className="mb-5" size="sm">
+          Installation
+        </Heading>
         <Tabs defaultValue="shadcn">
           <TabsList>
             <TabsTrigger value="shadcn">CLI</TabsTrigger>
