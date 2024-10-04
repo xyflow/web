@@ -7,8 +7,13 @@ import {
 } from '@xyflow/xy-ui';
 import { useData } from 'nextra/data';
 import { Code } from 'nextra/components';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { ghcolors as theme } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import { MDXRemote } from 'next-mdx-remote';
+import clsx from 'clsx';
+
+function kebabCaseToTitleCase(str: string) {
+  const newString = str.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
+  return newString.charAt(0).toUpperCase() + newString.slice(1);
+}
 
 function UiComponentViewer() {
   const data = useData();
@@ -25,20 +30,19 @@ function UiComponentViewer() {
   const shadcnDependencies = (data.registryDependencies || []).map((dep) => {
     if (dep.startsWith('https://ui.reactflow')) {
       const depName = dep.split('/').pop().split('.').shift();
+      const label = kebabCaseToTitleCase(depName);
       return {
-        label: `xyflow/${depName}`,
+        label,
         url: `/ui/${depName}`,
+        highlight: true,
       };
     }
     return {
       label: `shadcn/ui/${dep}`,
       url: `https://ui.shadcn.com/docs/components/${dep}`,
+      highlight: false,
     };
   });
-
-  const jsonUrl = `${process.env.NEXT_PUBLIC_UI_COMPONENTS_URL}/registry/${data.name}.json`;
-  const componentSrc = data.files?.[0]?.content;
-  const demoSrc = data.demo?.files?.[0]?.content;
 
   return (
     <div className="mt-5">
@@ -54,17 +58,11 @@ function UiComponentViewer() {
         >
           <iframe
             className="w-full h-[500px] rounded-md border border-gray-200 "
-            src={`${process.env.NEXT_PUBLIC_UI_COMPONENTS_URL}/${data.name}`}
+            src={`${process.env.NEXT_PUBLIC_UI_COMPONENTS_URL}/components/${data.name}`}
           />
         </TabsContent>
         <TabsContent className="min-h-[500px]" value="code">
-          <SyntaxHighlighter
-            className="[&>code]:block"
-            language="tsx"
-            style={theme}
-          >
-            {demoSrc}
-          </SyntaxHighlighter>
+          <MDXRemote {...data.demoMDX} components={{ code: Code }} scope={{}} />
         </TabsContent>
       </Tabs>
       <div className="flex gap-2 items-center my-5">
@@ -80,7 +78,10 @@ function UiComponentViewer() {
         ))}
         {shadcnDependencies.map((dep) => (
           <a
-            className="bg-gray-100 rounded-md px-1 py-0.5"
+            className={clsx(
+              'rounded-md px-1 py-0.5',
+              dep.highlight ? 'text-primary bg-primary/5' : 'bg-gray-100',
+            )}
             key={dep.label}
             href={dep.url}
           >
@@ -96,33 +97,25 @@ function UiComponentViewer() {
             <TabsTrigger value="manual">Manual</TabsTrigger>
           </TabsList>
           <TabsContent value="shadcn">
-            <SyntaxHighlighter
-              className="[&>code]:block"
-              language="bash"
-              style={theme}
-            >
-              {`npx shadcn add ${jsonUrl}`}
-            </SyntaxHighlighter>
+            <MDXRemote
+              {...data.installMDX}
+              components={{ code: Code }}
+              scope={{}}
+            />
           </TabsContent>
           <TabsContent value="manual">
             <Heading size="xs">1. Install Dependencies</Heading>
-            <SyntaxHighlighter
-              className="[&>code]:block"
-              language="bash"
-              style={theme}
-            >
-              {`npm install ${npmDependencies
-                .map((dep) => dep.label)
-                .join(' ')}`}
-            </SyntaxHighlighter>
+            <MDXRemote
+              {...data.npmMDX}
+              components={{ code: Code }}
+              scope={{}}
+            />
             <Heading size="xs">2. Copy Paste into your app</Heading>
-            <SyntaxHighlighter
-              className="[&>code]:block"
-              language="tsx"
-              style={theme}
-            >
-              {componentSrc}
-            </SyntaxHighlighter>
+            <MDXRemote
+              {...data.componentMDX}
+              components={{ code: Code }}
+              scope={{}}
+            />
             <Heading size="xs">
               3. Update the import paths to match your project setup.
             </Heading>

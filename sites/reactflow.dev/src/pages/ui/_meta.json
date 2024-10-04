@@ -15,11 +15,15 @@
     "title": "Components"
   },
   "zoom-slider": "Zoom Slider",
-  "button-edge": "Button Edge",
+  "tooltip-node": "Tooltip Node",
   "database-schema-node": "Database Schema Node",
   "labeled-handle": "Labeled Handle",
-  "tooltip-node": "Tooltip Node",
+  "button-edge": "Button Edge",
+  "_": {
+    "type": "separator"
+  },
   "base-node": "Base Node",
+  "base-handle": "Base Handle",
   "----": {
     "type": "separator"
   },
