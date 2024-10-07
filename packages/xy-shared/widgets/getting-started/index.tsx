@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { ArrowLongRightIcon } from '@heroicons/react/24/outline';
 import { Button, Text, Container } from '@xyflow/xy-ui';
+import { Code } from 'nextra/components';
 
 import { LayoutBreakout } from '../../';
 import { AppWindow } from './app-window';
@@ -28,11 +29,9 @@ function GettingStarted({ libraryName, packageName }: GettingStartedProps) {
           </Text>
 
           <AppWindow>
-            <pre className="!pl-0">
-              <code className="inline text-md">
-                npm install <span className="text-primary">{packageName}</span>
-              </code>
-            </pre>
+            <div className="!pl-0 inline text-md font-mono">
+              npm install <span className="text-primary">{packageName}</span>
+            </div>
           </AppWindow>
         </div>
 
