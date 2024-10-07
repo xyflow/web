@@ -69,6 +69,12 @@ export default {
     hue: 333,
     saturation: 100,
   },
+  toc: {
+    backToTop: null,
+  },
+  sidebar: {
+    toggleButton: false,
+  },
   banner: {
     // key: 'react-flow12',
     // text: (

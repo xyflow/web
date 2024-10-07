@@ -58,6 +58,7 @@ export default {
     ),
   },
   sidebar: {
+    toggleButton: false,
     titleComponent: SidebarTitle,
   },
   navbar: {
@@ -107,6 +108,7 @@ export default {
     useLink: () => 'https://xyflow.com/contact',
   },
   toc: {
+    backToTop: null,
     extraContent: () => (
       <Link
         href="/whats-new"

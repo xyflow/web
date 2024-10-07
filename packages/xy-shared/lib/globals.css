@@ -57,6 +57,11 @@ div.nextra-nav-container-blur {
   background: white;
 }
 
+.nextra-toc-footer {
+  box-shadow: none;
+  background-color: transparent;
+}
+
 .pro-button {
   transition: all 0.3s ease;
 }
