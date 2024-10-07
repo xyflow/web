@@ -1,4 +1,6 @@
-export default {
+import { getMetaConfigFromTitleLookup } from 'xy-shared';
+
+const titleLookup = {
   accessibility: 'Accessibility',
   testing: 'Testing',
   typescript: 'TypeScript',
@@ -8,3 +10,5 @@ export default {
   'ssr-ssg-configuration': 'Server Side Rendering',
   'devtools-and-debugging': 'Devtools',
 };
+
+export default getMetaConfigFromTitleLookup(titleLookup, '/learn/advanced-use');

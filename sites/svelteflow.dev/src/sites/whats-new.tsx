@@ -29,7 +29,8 @@ export default function WhatsNew() {
       {mdx.map((src, i) => (
         <TimelineEvent
           key={i}
-          {...src}
+          mdx={src.mdx}
+          frontmatter={src.frontmatter}
           remoteCodeViewer={RemoteCodeViewer}
           exampleUrl={process.env.NEXT_PUBLIC_EXAMPLES_URL}
         />

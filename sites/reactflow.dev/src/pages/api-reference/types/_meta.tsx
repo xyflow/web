@@ -1,4 +1,6 @@
-export default {
+import { getMetaConfigFromTitleLookup } from 'xy-shared';
+
+const titleLookup = {
   'background-variant': 'BackgroundVariant',
   connection: 'Connection',
   'connection-line-component-props': 'ConnectionLineComponentProps',
@@ -34,3 +36,8 @@ export default {
   viewport: 'Viewport',
   'xy-position': 'XYPosition',
 };
+
+export default getMetaConfigFromTitleLookup(
+  titleLookup,
+  '/api-reference/types',
+);

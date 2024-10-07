@@ -1,4 +1,6 @@
-export default {
+import { getMetaConfigFromTitleLookup } from 'xy-shared';
+
+const titleLookup = {
   'add-edge': 'addEdge()',
   'apply-edge-changes': 'applyEdgeChanges()',
   'apply-node-changes': 'applyNodeChanges()',
@@ -15,3 +17,8 @@ export default {
   'is-node': 'isNode()',
   'reconnect-edge': 'reconnectEdge()',
 };
+
+export default getMetaConfigFromTitleLookup(
+  titleLookup,
+  '/api-reference/utils',
+);

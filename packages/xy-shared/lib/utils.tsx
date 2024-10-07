@@ -1,4 +1,8 @@
+import { ReactNode } from 'react';
+import { Folder, MdxFile, Page } from 'nextra';
 import { getAllPages } from 'nextra/context';
+
+import { SidebarTitle } from '../components/sidebar-title';
 
 // Well this is a pretty funky class, huh. I'm gonna try and break it down a bit
 // so we can understand what's going on here:
@@ -31,20 +35,29 @@ export const wideNegativeMargin = 'sm:-mx-[min(calc((100vw-768px)/2),12rem)]';
 const RELEVANT_FRONTMATTER_KEYS = ['is_pro_example', 'is_free', 'created_at'];
 let pageFrontMattersMap: Map<string, any> | undefined = undefined;
 
+function isMdxFile(element: Page): element is MdxFile {
+  return 'frontMatter' in element;
+}
+
+function isFolder(element: Page): element is Folder {
+  return 'children' in element;
+}
+
 function addToMap(
   map: Map<string, any>,
   elements: ReturnType<typeof getAllPages>,
 ) {
   elements.forEach((element) => {
-    if (element.kind === 'MdxPage' && element.frontMatter) {
+    if (isMdxFile(element)) {
       for (const key of RELEVANT_FRONTMATTER_KEYS) {
-        if (element.frontMatter[key]) {
+        if (element.frontMatter?.[key]) {
           map.set(element.route, element.frontMatter);
           break;
         }
       }
     }
-    if (element.kind === 'Folder') {
+
+    if (isFolder(element)) {
       addToMap(map, element.children);
     }
   });
@@ -73,4 +86,26 @@ export function getFrontmatterTag(route: string, tag: string) {
   }
 
   return frontMatter[tag];
+}
+
+// this helper function is used to generate the _meta.tsx config structure
+// for the sidebar
+export function getMetaConfigFromTitleLookup(
+  titleLookup: Record<string, string | { title: string }>,
+  reoutePrefix: string = '',
+) {
+  return Object.keys(titleLookup).reduce<Record<string, { title: ReactNode }>>(
+    (acc, key) => {
+      const title =
+        typeof titleLookup[key] === 'string'
+          ? titleLookup[key]
+          : titleLookup[key].title;
+      acc[key] = {
+        title: <SidebarTitle title={title} route={`${reoutePrefix}/${key}`} />,
+      };
+
+      return acc;
+    },
+    {},
+  );
 }

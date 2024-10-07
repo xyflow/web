@@ -7,7 +7,7 @@ import { Emoji, Text } from '@xyflow/xy-ui';
 import { Author, AuthorList, Image } from '../';
 
 export type TimelineEventProps = {
-  proExampleViewer: React.ComponentProps<any>;
+  proExampleViewer?: React.ComponentProps<any>;
   remoteCodeViewer: React.ComponentProps<any>;
   exampleUrl: string;
   frontmatter: {
@@ -17,6 +17,7 @@ export type TimelineEventProps = {
     date: `${number}-${number}-${number}}`;
     route: string;
   };
+  mdx: string;
 };
 
 export function TimelineEvent({
@@ -24,7 +25,7 @@ export function TimelineEvent({
   proExampleViewer: ProExampleViewer,
   remoteCodeViewer: RemoteCodeViewer,
   exampleUrl = '',
-  ...src
+  mdx = '',
 }: TimelineEventProps) {
   return (
     <div className="flex-col lg:flex-row flex gap-4">
@@ -40,7 +41,6 @@ export function TimelineEvent({
       </div>
       <div className="pl-2">
         <RemoteContent
-          frontmatter={frontmatter}
           components={{
             ProExampleViewer,
             RemoteCodeViewer,
@@ -49,7 +49,7 @@ export function TimelineEvent({
             Callout,
             Emoji,
           }}
-          {...src}
+          mdx={mdx}
           scope={{
             exampleUrl,
             process: typeof process !== 'undefined' ? process : {},

@@ -1,4 +1,6 @@
-export default {
+import { getMetaConfigFromTitleLookup } from 'xy-shared';
+
+const titleLookup = {
   background: '<Background />',
   'base-edge': '<BaseEdge />',
   'control-button': '<ControlButton />',
@@ -13,3 +15,8 @@ export default {
   panel: '<Panel />',
   'viewport-portal': '<ViewportPortal />',
 };
+
+export default getMetaConfigFromTitleLookup(
+  titleLookup,
+  '/api-reference/components',
+);

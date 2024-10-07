@@ -32,7 +32,8 @@ export default function WhatsNew() {
       {mdx.map((src, i) => (
         <TimelineEvent
           key={i}
-          {...src}
+          mdx={src.mdx}
+          frontmatter={src.frontmatter}
           proExampleViewer={ProExampleViewer}
           remoteCodeViewer={RemoteCodeViewer}
           // We need to pass the env var here, because we don't have access to it inside the mdx when using MDXRemote

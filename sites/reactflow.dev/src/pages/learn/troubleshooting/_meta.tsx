@@ -1,4 +1,6 @@
-export default {
+import { getMetaConfigFromTitleLookup } from 'xy-shared';
+
+const titleLookup = {
   index: 'Common Errors',
   'remove-attribution': 'Remove Attribution',
   'migrate-to-v12': 'Migrate to v12',
@@ -10,3 +12,8 @@ export default {
     },
   },
 };
+
+export default getMetaConfigFromTitleLookup(
+  titleLookup,
+  '/learn/troubleshooting',
+);

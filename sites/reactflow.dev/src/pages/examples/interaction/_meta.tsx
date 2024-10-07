@@ -1,4 +1,6 @@
-export default {
+import { getMetaConfigFromTitleLookup } from 'xy-shared';
+
+const titleLookup = {
   'interaction-props': 'Interaction Props',
   'drag-and-drop': 'Drag and Drop',
   'computing-flows': 'Computing Flows',
@@ -15,3 +17,8 @@ export default {
   collaborative: 'Collaborative',
   'contextual-zoom': 'Contextual Zoom',
 };
+
+export default getMetaConfigFromTitleLookup(
+  titleLookup,
+  '/examples/interaction',
+);

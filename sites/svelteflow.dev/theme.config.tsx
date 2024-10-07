@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useConfig } from 'nextra-theme-docs';
 import { Footer, Button, LogoLabel } from '@xyflow/xy-ui';
-import { Head, Search, SidebarTitle } from 'xy-shared';
+import { Head, Search } from 'xy-shared';
 
 import { InternalRoute } from '@/utils';
 
@@ -66,7 +66,6 @@ export default {
   },
   sidebar: {
     toggleButton: false,
-    titleComponent: SidebarTitle,
   },
   navbar: {
     extraContent: () => {
