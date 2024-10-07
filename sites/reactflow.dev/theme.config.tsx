@@ -2,8 +2,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useConfig, Navbar } from 'nextra-theme-docs';
 
-import { Footer, Button, LogoLabel, cn } from '@xyflow/xy-ui';
-import { Search, SidebarTitle } from 'xy-shared';
+import { Footer, Button, LogoLabel } from '@xyflow/xy-ui';
+import { Search, SidebarTitle, Head } from 'xy-shared';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 import { getMdxPagesUnderRoute, type Route } from '@/utils';
 
@@ -11,6 +11,13 @@ function useIsPro() {
   const router = useRouter();
   return router.pathname.startsWith('/pro');
 }
+
+const defaultDescription =
+  'React Flow - Customizable library for rendering workflows, diagrams and node-based UIs.';
+
+const ogImage = {
+  url: `https://reactflow.dev/img/og/react-flow-og.jpg`,
+};
 
 const baseUrl =
   process.env.NODE_ENV === 'production'
@@ -224,52 +231,23 @@ export default {
     hue: 333,
     saturation: 80,
   },
-  useNextSeoProps() {
+  head() {
     const router = useRouter();
     const { frontMatter } = useConfig();
-    const url = `${baseUrl}${router.asPath}`;
 
-    return {
-      defaultTitle: 'React Flow',
-      titleTemplate: '%s – React Flow',
-      title: frontMatter.title || 'React Flow',
-      description:
-        frontMatter.description ||
-        'React Flow - Customizable library for rendering workflows, diagrams and node-based UIs.',
+    const title = frontMatter.title
+      ? `${frontMatter.title} - React Flow`
+      : 'React Flow';
 
-      additionalLinkTags: [
-        {
-          rel: 'icon',
-          href: `${baseUrl}/img/favicon.ico`,
-        },
-      ],
-
-      additionalMetaTags: [
-        {
-          name: 'docsearch:site',
-          content: 'react',
-        },
-      ],
-
-      twitter: {
-        handle: '@xyflow',
-        site: '@xyflow',
-        cardType: 'summary_large_image',
-      },
-
-      openGraph: {
-        url,
-        type: 'website',
-        images: [
-          {
-            url: `${baseUrl}/img/og/react-flow-og.jpg`,
-            width: 1200,
-            height: 640,
-            alt: 'React Flow Teaser',
-          },
-        ],
-      },
-    };
+    return (
+      <Head
+        title={title}
+        description={frontMatter.description ?? defaultDescription}
+        pageUrl={`${baseUrl}${router.asPath}`}
+        faviconUrl={`${baseUrl}/img/favicon.ico`}
+        ogImage={ogImage}
+        framework="react"
+      />
+    );
   },
-  head: null,
 };

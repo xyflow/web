@@ -3,9 +3,16 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useConfig } from 'nextra-theme-docs';
 import { Footer, Button, LogoLabel } from '@xyflow/xy-ui';
-import { Search, SidebarTitle } from 'xy-shared';
+import { Head, Search, SidebarTitle } from 'xy-shared';
 
 import { InternalRoute } from '@/utils';
+
+const defaultDescription =
+  'Svelte Flow - Customizable library for rendering workflows, diagrams and node-based UIs.';
+
+const ogImage = {
+  url: `https://svelteflow.dev/img/og/svelte-flow-og.jpg`,
+};
 
 const baseUrl =
   process.env.NODE_ENV === 'production'
@@ -128,7 +135,7 @@ export default {
     const url = `${baseUrl}${router.asPath}`;
 
     return {
-      defaultTitle: 'Svelte Flow',
+      defaultDescription: 'Svelte Flow',
       titleTemplate: '%s – Svelte Flow',
       title: frontMatter.title || 'Svelte Flow',
       description:
@@ -169,5 +176,23 @@ export default {
       },
     };
   },
-  head: null,
+  head() {
+    const router = useRouter();
+    const { frontMatter } = useConfig();
+
+    const title = frontMatter.title
+      ? `${frontMatter.title} - Svelte Flow`
+      : 'Svelte Flow';
+
+    return (
+      <Head
+        title={title}
+        description={frontMatter.description ?? defaultDescription}
+        pageUrl={`${baseUrl}${router.asPath}`}
+        faviconUrl={`${baseUrl}/img/favicon.ico`}
+        ogImage={ogImage}
+        framework="svelte"
+      />
+    );
+  },
 };
