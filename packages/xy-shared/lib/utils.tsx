@@ -35,11 +35,11 @@ export const wideNegativeMargin = 'sm:-mx-[min(calc((100vw-768px)/2),12rem)]';
 const RELEVANT_FRONTMATTER_KEYS = ['is_pro_example', 'is_free', 'created_at'];
 let pageFrontMattersMap: Map<string, any> | undefined = undefined;
 
-function isMdxFile(element: Page): element is MdxFile {
+export function isMdxFile(element: Page): element is MdxFile {
   return 'frontMatter' in element;
 }
 
-function isFolder(element: Page): element is Folder {
+export function isFolder(element: Page): element is Folder {
   return 'children' in element;
 }
 
