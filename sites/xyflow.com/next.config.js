@@ -18,6 +18,21 @@ const nextConfig = {
         port: '',
         pathname: '/svg',
       },
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '5173',
+      },
+      {
+        protocol: 'https',
+        hostname: 'example-apps.xyflow.com',
+        pathname: '/svelte/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'example-apps.xyflow.com',
+        pathname: '/react/**',
+      },
     ],
   },
   env: {

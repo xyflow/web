@@ -6,8 +6,7 @@ description:
 ---
 
 import { Callout } from 'nextra/components';
-import ExampleViewer from '@/components/example-viewer';
-import { Image } from 'xy-shared';
+import { Image, RemoteCodeViewer } from 'xy-shared';
 
 # Custom edges
 
@@ -81,10 +80,10 @@ export function Flow() {
 After defining the `edgeTypes` object, we can use our new custom edge by setting
 the `type` field of an edge to `"custom-edge"`.
 
-<ExampleViewer
-  codePath="api-flows/CustomEdge"
-  options={{ editorHeight: 500, editorWidthPercentage: 45, wrapContent: true }}
-  additionalFiles={['CustomEdge.js']}
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/custom-edge/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/custom-edge/index.html`}
+  framework="react"
 />
 
 ## Adding an edge label
@@ -186,8 +185,8 @@ Here's an interactive example with our updated custom edge. Clicking the delete
 button will remove that edge from the flow. Creating a new edge will use the
 custom node.
 
-<ExampleViewer
-  codePath="api-flows/CustomEdge2"
-  options={{ editorHeight: 500, editorWidthPercentage: 45, wrapContent: true }}
-  additionalFiles={['CustomEdge.js']}
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/custom-edge-2/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/custom-edge-2/index.html`}
+  framework="react"
 />

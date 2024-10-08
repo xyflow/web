@@ -1,18 +1,18 @@
 ---
-sidebar_position: 5
 title: Touch Device
-hide_table_of_contents: true
 description: Tap two handles to connect them, and make handles bigger for smaller devices
 ---
 
-import ExampleViewer from '@/components/example-viewer';
+import { RemoteCodeViewer } from 'xy-shared';
 import ExampleLayout from '@/layouts/example-with-frontmatter';
 
 <ExampleLayout>
 You can connect nodes on a touch device by tapping two handles in a row. In this example we increased the size of the handles so that they are better tappable. You can disable this behavoir by setting the [`connectOnClick` prop](/api-reference/react-flow#interaction) to `false`.
 
-<ExampleViewer
-  codePath="example-flows/TouchDevice"
-  additionalFiles={['index.css']}
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/interaction/touch-device/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/interaction/touch-device/index.html`}
+  framework="react"
 />
+
 </ExampleLayout>

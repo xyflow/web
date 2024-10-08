@@ -1,21 +1,20 @@
 ---
 title: Threlte Flow
+description: This example shows how you can use Svelte Flow in combination with Threlte to create a flow that controls a 3D scene.
 ---
 
+import { RemoteCodeViewer } from 'xy-shared';
 import ExampleLayout from '@/layouts/example-with-frontmatter';
-import ExampleViewer from '@/components/example-viewer';
 import UnusedPropWarning from '@/components/unused-prop-warning';
 
 <ExampleLayout>
 You may have noticed that the hero flow on our [our homepage](/) is actually written in React 🙈.
-For all the non-believers, here it is written in Svelte Flow with help from the [amazing Threlte library](https://threlte.xyz/).
+For all the non-believers, here it is written in Svelte with help from the [amazing Threlte library](https://threlte.xyz/).
 
-<ExampleViewer
-  codePath="examples/misc/hero-flow"
-  dependencies={{
-    '@threlte/core': 'latest',
-  }}
-  tailwind
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/examples/misc/threlte-flow/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/examples/misc/threlte-flow/index.html`}
+  framework="svelte"
 />
 
 </ExampleLayout>

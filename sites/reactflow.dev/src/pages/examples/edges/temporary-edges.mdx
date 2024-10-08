@@ -1,10 +1,9 @@
 ---
 title: Temporary Edges
 description: Push what React Flow edges are capable of by rendering invisible ghost nodes.
-created_at: 2024-08-13
 ---
 
-import ExampleViewer from '@/components/example-viewer';
+import { RemoteCodeViewer } from 'xy-shared';
 import ExampleLayout from '@/layouts/example-with-frontmatter';
 import { Callout } from 'nextra/components';
 
@@ -26,9 +25,10 @@ connection at which point the ghost node is removed!
   connection line in an empty space to create a temporary edge!
 </Callout>
 
-<ExampleViewer
-  codePath="example-flows/CustomEdgeAdvancedGhostIncomplete"
-  additionalFiles={['useIncompleteEdge.jsx']}
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/edges/temporary-edges/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/edges/temporary-edges/index.html`}
+  framework="react"
 />
 
 We've defined a `useIncompleteEdge` hook that encapsulates the logic for creating

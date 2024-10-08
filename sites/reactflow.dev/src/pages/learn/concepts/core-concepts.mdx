@@ -20,31 +20,22 @@ import { Callout } from 'nextra/components';
   properly.
 </Callout>
 
-import ExampleViewer from '@/components/example-viewer';
+import { RemoteCodeViewer } from 'xy-shared';
 
-<ExampleViewer
-  codePath="api-flows/IntroductionFlow"
-  applyStyles={false}
-  options={{
-    editorHeight: 500,
-    editorWidthPercentage: 45,
-    wrapContent: true,
-  }}
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/introduction-flow/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/introduction-flow/index.html`}
+  framework="react"
 />
 
 ## Basic Functionality
 
 By default React Flow doesn't do any internal state updates besides handling the viewport when you setup a controlled flow. As with an `<input />` component you need to pass handlers to apply the changes that are triggered by React Flow to your nodes and edges. In order to **select**, **drag** and **remove** nodes and edges you need to implement an `onNodesChange` and an `onEdgesChange` handler:
 
-<ExampleViewer
-  codePath="api-flows/IntroductionFlow2"
-  applyStyles={false}
-  options={{
-    editorHeight: 500,
-    editorWidthPercentage: 45,
-    wrapContent: true,
-  }}
-  additionalFiles={['nodes.js', 'edges.js']}
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/introduction-flow-2/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/introduction-flow-2/index.html`}
+  framework="react"
 />
 
 What is happening here? Whenever React Flow triggers a change (node init, node drag, edge select, etc.), the `onNodesChange` handler gets called. We export an `applyNodeChanges` handler so that you don't need to handle the changes by yourself. The `applyNodeChanges` handler returns an updated array of nodes that is your new nodes array. You now have an interactive flow with the following kinds of interactions:
@@ -66,15 +57,10 @@ const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
 The last piece that is missing to get the full interactivity is the `onConnect` handler. You need to implement it, in order to handle new connections.
 
-<ExampleViewer
-  codePath="api-flows/IntroductionFlow3"
-  applyStyles={false}
-  options={{
-    editorHeight: 500,
-    editorWidthPercentage: 45,
-    wrapContent: true,
-  }}
-  additionalFiles={['nodes.js', 'edges.js']}
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/introduction-flow-3/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/introduction-flow-3/index.html`}
+  framework="react"
 />
 
 In this example we are using the `addEdge` handler that returns an array of edges with the newly created one. If you want to set a certain edge option whenever an edge gets created you pass your options like this:

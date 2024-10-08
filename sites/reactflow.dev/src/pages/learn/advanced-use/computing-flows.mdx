@@ -1,13 +1,12 @@
 ---
 title: Computing Flows
 description: Learn how to extend React Flow to compute data going through flow graphs.
-created_at: 2024-07-15
 ---
 
 # Computing Flows
 
 import { Callout } from 'nextra/components';
-import ExampleViewer from '@/components/example-viewer';
+import { RemoteCodeViewer } from 'xy-shared';
 
 <Callout type="info">
   For this guide we assume that you already know about the [core
@@ -21,21 +20,10 @@ Usually with React Flow, developers handle their data outside of React Flow by s
 
 By the end of this guide, you will build an interactive flow graph that generates a color out of three separate number input fields (red, green and blue), and determines whether white or black text would be more readable on that background color.
 
-<ExampleViewer
-  codePath="api-flows/Computing6"
-  editorHeight={500}
-  applyStyles={false}
-  showEditor={false}
-  options={{
-    editorHeight: 500,
-  }}
-  additionalFiles={[
-    'NumberInput.js',
-    'ColorPreview.js',
-    'Lightness.js',
-    'Log.js',
-    'style.css',
-  ]}
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/computing-6/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/computing-6/index.html`}
+  framework="react"
 />
 
 ## Creating custom nodes
@@ -86,13 +74,11 @@ Next, we'll add a new custom node (`ColorPreview.js`) with one target handle for
 Let's also add edges going from the input nodes to the color node to our `initialEdges`
 array while we are at it.
 
-<ExampleViewer
-  activeFile="ColorPreview.js"
-  codePath="api-flows/Computing"
-  applyStyles={false}
-  options={{ editorHeight: 500, editorWidthPercentage: 45, wrapContent: true }}
-  additionalFiles={['NumberInput.js', 'ColorPreview.js', 'style.css']}
-  editorHeight={500}
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/computing/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/computing/index.html`}
+  framework="react"
+  activeFile="ColorPreview.jsx"
 />
 
 ## Computing data
@@ -111,13 +97,11 @@ Then we'll grab the function [`updateNodeData`](/api-reference/types/react-flow-
 By default, the data you pass to [`updateNodeData`](/api-reference/types/react-flow-instance#update-node-data) will be merged with the old data object. This makes it easier to do partial updates and saves you in case you forget to add `{...data}`. You can pass `{ replace: true }` as an option to replace the object instead.
 </Callout>
 
-<ExampleViewer
-  activeFile="NumberInput.js"
-  codePath="api-flows/Computing2"
-  applyStyles={false}
-  options={{ editorHeight: 500, editorWidthPercentage: 45, wrapContent: true }}
-  additionalFiles={['NumberInput.js', 'ColorPreview.js', 'style.css']}
-  editorHeight={500}
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/computing-2/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/computing-2/index.html`}
+  framework="react"
+  activeFile="NumberInput.jsx"
 />
 
 <Callout type="warning">
@@ -143,13 +127,11 @@ We start by determining all connections for each handle with the [`useHandleConn
 <b>And there you go!</b> Try changing the input values and see the color change in
 real time.
 
-<ExampleViewer
-  activeFile="ColorPreview.js"
-  codePath="api-flows/Computing3"
-  applyStyles={false}
-  options={{ editorHeight: 500, editorWidthPercentage: 45, wrapContent: true }}
-  additionalFiles={['NumberInput.js', 'ColorPreview.js', 'style.css']}
-  editorHeight={500}
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/computing-3/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/computing-3/index.html`}
+  framework="react"
+  activeFile="ColorPreview.jsx"
 />
 
 ### Improving the code
@@ -239,18 +221,11 @@ Next, we add a new node (`Lightness.js`) that takes in a color object and determ
 `luminance = 0.2126 * color.r + 0.7152 * color.g + 0.0722 * color.b`
 to calculate the perceived brightness of a color (0 being the darkest and 255 being the brightest). We can assume everything >= 128 is a light color.
 
-<ExampleViewer
-  activeFile="Lightness.js"
-  codePath="api-flows/Computing4"
-  applyStyles={false}
-  options={{ editorHeight: 500, editorWidthPercentage: 45, wrapContent: true }}
-  additionalFiles={[
-    'NumberInput.js',
-    'ColorPreview.js',
-    'Lightness.js',
-    'style.css',
-  ]}
-  editorHeight={500}
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/computing-4/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/computing-4/index.html`}
+  framework="react"
+  activeFile="Lightness.jsx"
 />
 
 ### Conditional branching
@@ -261,35 +236,20 @@ But what does it mean to "take a different route"? One solution would be to assu
 
 Don't forget to add `flex-direction: column;` and `align-items: end;` to reposition the handle labels.
 
-<ExampleViewer
-  activeFile="Lightness.js"
-  codePath="api-flows/Computing5"
-  applyStyles={false}
-  editorHeight={500}
-  options={{ editorHeight: 500, editorWidthPercentage: 45, wrapContent: true }}
-  additionalFiles={[
-    'NumberInput.js',
-    'ColorPreview.js',
-    'Lightness.js',
-    'style.css',
-  ]}
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/computing-5/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/computing-5/index.html`}
+  framework="react"
+  activeFile="Lightness.jsx"
 />
 
 Cool! Now we only need a last node to see if it actually works... We can create a custom debugging node (`Log.js`) that displays the hooked up data, and we're done!
 
-<ExampleViewer
-  activeFile="Log.js"
-  codePath="api-flows/Computing6"
-  applyStyles={false}
-  editorHeight={500}
-  options={{ editorHeight: 500, editorWidthPercentage: 45, wrapContent: true }}
-  additionalFiles={[
-    'NumberInput.js',
-    'ColorPreview.js',
-    'Lightness.js',
-    'Log.js',
-    'style.css',
-  ]}
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/computing-6/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/computing-6/index.html`}
+  framework="react"
+  activeFile="Log.jsx"
 />
 
 ## Summary

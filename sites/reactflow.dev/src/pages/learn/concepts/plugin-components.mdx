@@ -11,44 +11,40 @@ React Flow comes with several additional plugin components. In this guide we sho
 
 If your flow gets bigger, you might want to get an overview quickly. For this we have built the [`MiniMap` component](/api-reference/components/minimap). You can easily add it to your flow by adding it as a children:
 
-import ExampleViewer from '@/components/example-viewer';
+import { RemoteCodeViewer } from 'xy-shared';
 
-<ExampleViewer
-  codePath="api-flows/MiniMap"
-  applyStyles={false}
-  options={{ editorHeight: 500, editorWidthPercentage: 45, wrapContent: true }}
-  additionalFiles={['nodes.js', 'edges.js']}
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/mini-map/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/mini-map/index.html`}
+  framework="react"
 />
 
 ## Controls
 
 React Flow comes with a customizable controls bar, that you can use by importing the [`Controls` component](/api-reference/components/controls)
 
-<ExampleViewer
-  codePath="api-flows/Controls"
-  applyStyles={false}
-  options={{ editorHeight: 500, editorWidthPercentage: 45, wrapContent: true }}
-  additionalFiles={['nodes.js', 'edges.js']}
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/controls/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/controls/index.html`}
+  framework="react"
 />
 
 ## Background
 
 If you want to display the pattern background, you can use the [`Background` component](/api-reference/components/background)
 
-<ExampleViewer
-  codePath="api-flows/Background"
-  applyStyles={false}
-  options={{ editorHeight: 500, editorWidthPercentage: 45, wrapContent: true }}
-  additionalFiles={['nodes.js', 'edges.js']}
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/background/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/background/index.html`}
+  framework="react"
 />
 
 ## Panel
 
 A helper component to display content on top of the React Flow viewport. [`Panel` component](/api-reference/components/panel)
 
-<ExampleViewer
-  codePath="api-flows/Panel"
-  applyStyles={false}
-  options={{ editorHeight: 500, editorWidthPercentage: 45, wrapContent: true }}
-  additionalFiles={['style.css']}
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/panel/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/panel/index.html`}
+  framework="react"
 />

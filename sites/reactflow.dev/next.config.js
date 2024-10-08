@@ -19,6 +19,17 @@ const nextConfig = {
         protocol: 'https',
         hostname: '**.reactflow.dev',
       },
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '5173',
+        pathname: '/react/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'example-apps.xyflow.com',
+        pathname: '/react/**',
+      },
     ],
   },
   env: {

@@ -3,20 +3,21 @@ title: Dagre Tree
 description: Integrate dagre js with React Flow to create simple tree layouts
 ---
 
-import ExampleViewer from '@/components/example-viewer';
+import { RemoteCodeViewer } from 'xy-shared';
 import ExampleLayout from '@/layouts/example-with-frontmatter';
 
 <ExampleLayout>
 This example shows how you can integrate [dagre.js](https://github.com/dagrejs/dagre) with React Flow to create simple tree layouts. Good alternatives to dagre are [d3-hierarchy](https://github.com/d3/d3-hierarchy) or [elkjs](https://github.com/kieler/elkjs) if you are looking for a more advanced layouting library.
 
-<ExampleViewer
-  codePath="example-flows/DagreTree"
-  additionalFiles={['nodes-edges.js']}
-  dependencies={{ dagre: 'latest' }}
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/layout/dagre/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/layout/dagre/index.html`}
+  framework="react"
 />
-</ExampleLayout>
 
 This example is a demonstration of _static_ layouting. If the nodes or edges in
 the graph change, the layout _won't_ recalculate! It is possible to do dynamic
 layouting with dagre (and other libraries), though: see the [auto layout](/examples/layout/auto-layout)
 pro example for an example of this.
+
+</ExampleLayout>

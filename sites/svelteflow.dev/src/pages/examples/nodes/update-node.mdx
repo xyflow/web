@@ -4,7 +4,7 @@ description: This example shows how to update the data field of a specific node.
 ---
 
 import ExampleLayout from '@/layouts/example-with-frontmatter';
-import ExampleViewer from '@/components/example-viewer';
+import { RemoteCodeViewer } from 'xy-shared';
 import { Callout } from 'nextra/components';
 
 <ExampleLayout>
@@ -16,5 +16,11 @@ import { Callout } from 'nextra/components';
     data changes.
   </Callout>
   <br />
-  <ExampleViewer codePath="examples/nodes/update-node" />
+
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/examples/nodes/update-node/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/examples/nodes/update-node/index.html`}
+  framework="svelte"
+/>
+
 </ExampleLayout>

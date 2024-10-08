@@ -61,7 +61,7 @@ export default function ExamplesOverviewPage({
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
             <Container className="col-span-2 aspect-video">
               <Image
-                src="/img/examples/overview.jpg"
+                src={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/misc/overview/preview.jpg`}
                 width={1024}
                 height={768}
                 alt="Feature Overview Example Preview"
@@ -111,7 +111,13 @@ export default function ExamplesOverviewPage({
                     className="border-none py-6 lg:py-8 lg:px-0 hover:bg-white group"
                   >
                     <ProjectPreview
-                      image={`/img${example.route}.jpg`}
+                      image={
+                        example.frontMatter.is_pro_example
+                          ? `https://pro-examples.reactflow.dev/${example.name}/thumbnail.jpg`
+                          : example.frontMatter.preview_path
+                            ? `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/${example.frontMatter.preview_path}`
+                            : `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react${example.route}/preview.jpg`
+                      }
                       title={
                         <div className="flex items-center">
                           {example.frontMatter?.title}

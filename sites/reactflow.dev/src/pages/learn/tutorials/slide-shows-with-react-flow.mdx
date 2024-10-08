@@ -12,9 +12,8 @@ image: /img/tutorials/presentation/slideshow-thumb.png
 
 import { Cards, Card, Callout, Tab, Tabs } from 'nextra/components';
 import { Bleed } from 'nextra-theme-docs';
-import { Image } from 'xy-shared';
+import { Image, RemoteCodeViewer } from 'xy-shared';
 import { Emoji } from '@xyflow/xy-ui';
-import { BlogExampleViewer } from '@/components/example-viewer/blog-embed';
 import { TutorialLayout } from '@/layouts/tutorial-with-frontmatter';
 
 <TutorialLayout>
@@ -41,13 +40,11 @@ Along the way, you'll learn a bit about the basics of layouting algorithms, crea
 Once you're done, the app will look like this!
 
 <Bleed>
-  <BlogExampleViewer
-    style={{ aspectRatio: '16 / 9' }}
-    codePath="blog-flows/presentation/App"
-    additionalFiles={['Slide.tsx', 'slides.ts', 'index.css']}
-    dependencies={{ 'react-remark': '2.1.0' }}
+  <RemoteCodeViewer
+    source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/presentation/app/source.json`}
+    preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/presentation/app/index.html`}
+    framework="react"
     showEditor={false}
-    isTypescript
   />
 </Bleed>
 
@@ -153,7 +150,7 @@ import { type Node, type NodeProps } from '@xyflow/react';
 export const SLIDE_WIDTH = 1920;
 export const SLIDE_HEIGHT = 1080;
 
-export type SlideNode = Node<SlideData, 'slide'>
+export type SlideNode = Node<SlideData, 'slide'>;
 
 export type SlideData = {};
 
@@ -206,13 +203,11 @@ With the basics put together, you can start the development server by running
 `npm run dev` and see the following:
 
 <Bleed>
-  <BlogExampleViewer
-    style={{ aspectRatio: '16 / 9' }}
-    codePath="blog-flows/presentation/Scaffold"
-    additionalFiles={['Slide.tsx', 'index.css']}
-    dependencies={{ 'react-remark': '2.1.0' }}
+  <RemoteCodeViewer
+    source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/presentation/scaffold/source.json`}
+    preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/presentation/scaffold/index.html`}
     showEditor={false}
-    isTypescript
+    framework="react"
   />
 </Bleed>
 
@@ -237,7 +232,7 @@ import { Remark } from 'react-remark';
 export const SLIDE_WIDTH = 1920;
 export const SLIDE_HEIGHT = 1080;
 
-export type SlideNode = Node<SlideData, 'slide'>
+export type SlideNode = Node<SlideData, 'slide'>;
 
 export type SlideData = {
   source: string;
@@ -306,13 +301,11 @@ slides are quite large, and the default minimum zoom level is not enough to zoom
 out and see multiple slides at once.
 
 <Bleed>
-  <BlogExampleViewer
-    style={{ aspectRatio: '16 / 9' }}
-    codePath="blog-flows/presentation/RenderingMarkdown"
-    additionalFiles={['Slide.tsx', 'index.css']}
-    dependencies={{ 'react-remark': '2.1.0' }}
+  <RemoteCodeViewer
+    source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/presentation/rendering-markdown/source.json`}
+    preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/presentation/rendering-markdown/index.html`}
     showEditor={false}
-    isTypescript
+    framework="react"
   />
 </Bleed>
 
@@ -448,12 +441,10 @@ to see how adding slides to different directions affects the layout. For example
 try extending 4's data to include `down: '5'` and see how the layout updates.
 
 <Bleed>
-  <BlogExampleViewer
-    style={{ aspectRatio: '16 / 9' }}
-    codePath="blog-flows/presentation/LayoutDemo"
-    additionalFiles={['Flow.tsx', 'index.css']}
-    showEditor
-    isTypescript
+  <RemoteCodeViewer
+    source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/presentation/layout-demo/source.json`}
+    preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/presentation/layout-demo/index.html`}
+    framework="react"
   />
 </Bleed>
 
@@ -589,13 +580,11 @@ array of just the nodes we want to focus on: in this case, that's just the node
 that was clicked.
 
 <Bleed>
-  <BlogExampleViewer
-    style={{ aspectRatio: '16 / 9' }}
-    codePath="blog-flows/presentation/FocusOnClick"
-    additionalFiles={['Slide.tsx', 'slides.ts', 'index.css']}
-    dependencies={{ 'react-remark': '2.1.0' }}
+  <RemoteCodeViewer
+    source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/presentation/focus-on-click/source.json`}
+    preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/presentation/focus-on-click/index.html`}
+    framework="react"
     showEditor={false}
-    isTypescript
   />
 </Bleed>
 
@@ -681,12 +670,10 @@ export function Slide({ data }: NodeProps<SlideNide>) {
 ```
 
 <Bleed>
-  <BlogExampleViewer
-    style={{ aspectRatio: '16 / 9' }}
-    codePath="blog-flows/presentation/SlideControls"
-    additionalFiles={['Slide.tsx', 'slides.ts', 'index.css']}
-    dependencies={{ 'react-remark': '2.1.0' }}
-    isTypescript
+  <RemoteCodeViewer
+    source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/presentation/slide-controls/source.json`}
+    preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/presentation/slide-controls/index.html`}
+    framework="react"
   />
 </Bleed>
 
@@ -796,13 +783,11 @@ And that's everything! To recap let's look at the final result and talk about
 what we've learned.
 
 <Bleed>
-  <BlogExampleViewer
-    style={{ aspectRatio: '16 / 9' }}
-    codePath="blog-flows/presentation/App"
-    additionalFiles={['Slide.tsx', 'slides.ts', 'index.css']}
-    dependencies={{ 'react-remark': '2.1.0' }}
+  <RemoteCodeViewer
+    source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/presentation/app/source.json`}
+    preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/presentation/app/index.html`}
+    framework="react"
     showEditor={false}
-    isTypescript
   />
 </Bleed>
 

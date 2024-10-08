@@ -2,14 +2,16 @@
 title: Context Menu
 ---
 
-import ExampleViewer from '@/components/example-viewer';
+import { RemoteCodeViewer } from 'xy-shared';
 import ExampleLayout from '@/layouts/example-with-frontmatter';
 
 <ExampleLayout>
 The [onNodeContextMenu](/api-reference/svelte-flow#event-on:nodecontextmenu) event can be used to show a custom menu when right-clicking a node. This example shows a simple menu with buttons to duplicate or delete the clicked node.
 
-<ExampleViewer
-  codePath="examples/interaction/context-menu"
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/examples/interaction/context-menu/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/examples/interaction/context-menu/index.html`}
   framework="svelte"
 />
+
 </ExampleLayout>

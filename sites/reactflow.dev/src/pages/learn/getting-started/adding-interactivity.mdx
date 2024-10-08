@@ -5,7 +5,7 @@ description: This guide will show you how to add basic interactivity to your flo
 
 # Adding Interactivity
 
-import ExampleViewer from '@/components/example-viewer';
+import { RemoteCodeViewer } from 'xy-shared';
 import { Callout } from 'nextra/components';
 
 Let's make it so we can select, drag, and remove nodes and edges.
@@ -49,10 +49,10 @@ const onEdgesChange = useCallback(
 
 When you drag or select a node, the `onNodesChange` handler gets called. With help of the `applyNodeChanges` function you can then apply those changes to your current node state. Putting everything together, it should look like this:
 
-<ExampleViewer
-  codePath="api-flows/MakeItInteractive1"
-  applyStyles={false}
-  options={{ editorHeight: 400, editorWidthPercentage: 45, wrapContent: true }}
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/make-it-interactive-1/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/make-it-interactive-1/index.html`}
+  framework="react"
 />
 
 Now if you run your application, you'll be able to click and drag the components, and the UI will update based on those movements.
@@ -61,10 +61,10 @@ Now if you run your application, you'll be able to click and drag the components
 
 One last piece is missing: connecting nodes manually. For this we need to implement an `onConnect` handler and pass it to the `<ReactFlow />` component as well:
 
-<ExampleViewer
-  codePath="api-flows/MakeItInteractive2"
-  applyStyles={false}
-  options={{ editorHeight: 400, editorWidthPercentage: 45, wrapContent: true }}
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/make-it-interactive-2/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/make-it-interactive-2/index.html`}
+  framework="react"
 />
 
 Try to connect the two nodes by dragging from on handle to another one. That's it. You've built a fully interactive flow.

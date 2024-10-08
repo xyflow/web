@@ -8,7 +8,7 @@ authors: [hayleigh]
 date: '2024-06-11'
 ---
 
-import ExampleViewer from '@/components/example-viewer';
+import { RemoteCodeViewer } from 'xy-shared';
 
 # Layouting example for Entitree Flex
 
@@ -19,9 +19,13 @@ nodes as well as nodes with different dimensions.
 This example was very kindly contributed by GitHub user [@kaustubhxd](https://github.com/kaustubhxd),
 thanks Kaustubh! Check it out below.
 
-<ExampleViewer
-  codePath="example-flows/EntitreeFlexTree"
-  additionalFiles={['nodes-edges.js', 'CustomNode.jsx', 'layout-elements.js']}
-  dependencies={{ 'entitree-flex': 'latest' }}
+<RemoteCodeViewer
+  source={`${
+    process?.env?.NEXT_PUBLIC_EXAMPLES_URL ?? exampleUrl
+  }/react/examples/layout/entitree-flex/source.json`}
+  preview={`${
+    process?.env?.NEXT_PUBLIC_EXAMPLES_URL ?? exampleUrl
+  }/react/examples/layout/entitree-flex/index.html`}
+  framework="react"
   showEditor={false}
 />

@@ -8,7 +8,7 @@ authors: [hayleigh]
 date: '2023-11-14'
 ---
 
-import ExampleViewer from '@/components/example-viewer';
+import { RemoteCodeViewer } from 'xy-shared';
 
 # New custom edges guide!
 
@@ -18,10 +18,15 @@ and [`<EdgeLabelRenderer />`](/api-reference/components/edge-label-renderer)
 components are for, and shows how to use some of the
 [path utilities](/api-reference/utils) React Flow provides.
 
-<ExampleViewer
-codePath="api-flows/CustomEdge2"
-additionalFiles={['CustomEdge.js']}
-editorHeight={500}
+<RemoteCodeViewer
+  source={`${
+    process?.env?.NEXT_PUBLIC_EXAMPLES_URL ?? exampleUrl
+  }/react/learn/custom-edge-2/source.json`}
+  preview={`${
+    process?.env?.NEXT_PUBLIC_EXAMPLES_URL ?? exampleUrl
+  }/react/learn/custom-edge-2/index.html`}
+  framework="react"
+  showEditor={false}
 />
 
 You can check it out in the customization section of our learning resources
