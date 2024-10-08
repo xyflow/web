@@ -1,9 +1,8 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalDotEnv": [".env"],
   "globalEnv": [
     "NODE_ENV",
-    "NEXT_PUBLIC_*",
+    "NEXT_PUBLIC_\\*",
     "GITHUB_API_URL",
     "NPM_SVELTE_FLOW",
     "NPM_REACT_FLOW",
@@ -12,16 +11,22 @@
     "SVELTE_FLOW_VERSION",
     "REACT_FLOW_VERSION"
   ],
-  "pipeline": {
+  "globalDependencies": [
+    ".env"
+  ],
+  "tasks": {
     "build": {
-      "dependsOn": ["^build"],
+      "dependsOn": [
+        "^build"
+      ],
       "outputs": [
         ".next/**",
         "!.next/cache/**",
         ".svelte-kit/**",
         ".vercel/**"
       ],
-      "dotEnv": [
+      "inputs": [
+        "$TURBO_DEFAULT$",
         ".env.production.local",
         ".env.local",
         ".env.production",
@@ -29,9 +34,15 @@
       ]
     },
     "reactflow-website#build": {
-      "dependsOn": ["^ui-components#build"],
-      "outputs": [".next/**", "!.next/cache/**"],
-      "dotEnv": [
+      "dependsOn": [
+        "^ui-components#build"
+      ],
+      "outputs": [
+        ".next/**",
+        "!.next/cache/**"
+      ],
+      "inputs": [
+        "$TURBO_DEFAULT$",
         ".env.production.local",
         ".env.local",
         ".env.production",
@@ -39,7 +50,8 @@
       ]
     },
     "lint": {
-      "dotEnv": [
+      "inputs": [
+        "$TURBO_DEFAULT$",
         ".env.development.local",
         ".env.local",
         ".env.development",
@@ -49,7 +61,8 @@
     "dev": {
       "cache": false,
       "persistent": true,
-      "dotEnv": [
+      "inputs": [
+        "$TURBO_DEFAULT$",
         ".env.development.local",
         ".env.local",
         ".env.development",
@@ -57,7 +70,12 @@
       ]
     },
     "test": {
-      "dotEnv": [".env.test.local", ".env.test", ".env"]
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        ".env.test.local",
+        ".env.test",
+        ".env"
+      ]
     }
   }
 }
