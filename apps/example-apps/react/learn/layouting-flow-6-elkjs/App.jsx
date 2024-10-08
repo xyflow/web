@@ -27,7 +27,11 @@ const useLayoutedElements = () => {
     const graph = {
       id: 'root',
       layoutOptions: layoutOptions,
-      children: getNodes(),
+      children: getNodes().map((node) => ({
+        ...node,
+        width: node.measured.width,
+        height: node.measured.height,
+      })),
       edges: getEdges(),
     };
 
