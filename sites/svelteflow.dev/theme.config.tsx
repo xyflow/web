@@ -131,53 +131,6 @@ export default {
     hue: 15,
     saturation: 90,
   },
-  useNextSeoProps() {
-    const router = useRouter();
-    const { frontMatter } = useConfig();
-    const url = `${baseUrl}${router.asPath}`;
-
-    return {
-      defaultDescription: 'Svelte Flow',
-      titleTemplate: '%s – Svelte Flow',
-      title: frontMatter.title || 'Svelte Flow',
-      description:
-        frontMatter.description ||
-        'Svelte Flow - Customizable library for rendering workflows, diagrams and node-based UIs.',
-
-      additionalLinkTags: [
-        {
-          rel: 'icon',
-          href: `${baseUrl}/img/favicon.ico`,
-        },
-      ],
-
-      additionalMetaTags: [
-        {
-          name: 'docsearch:site',
-          content: 'svelte',
-        },
-      ],
-
-      twitter: {
-        handle: '@xyflow',
-        site: '@xyflow',
-        cardType: 'summary_large_image',
-      },
-
-      openGraph: {
-        url,
-        type: 'website',
-        images: [
-          {
-            url: `${baseUrl}/img/og/svelte-flow-og.jpg`,
-            width: 1200,
-            height: 640,
-            alt: 'Svelte Flow Teaser',
-          },
-        ],
-      },
-    };
-  },
   head() {
     const router = useRouter();
     const { frontMatter } = useConfig();

@@ -7,7 +7,7 @@ import { Emoji, Text } from '@xyflow/xy-ui';
 import { Author, AuthorList, Image } from '../';
 
 export type TimelineEventProps = {
-  proExampleViewer?: React.ComponentProps<any>;
+  proExampleViewer: React.ComponentProps<any>;
   remoteCodeViewer: React.ComponentProps<any>;
   exampleUrl: string;
   frontmatter: {

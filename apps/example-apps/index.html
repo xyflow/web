@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>xyflow example apps</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer>
+      const addLink = (container, prefix, path) => {
+        const li = document.createElement('li');
+        const href = path + '/index.html';
+        const label = path.replace(prefix, '');
+
+        li.innerHTML = `<a href="${href}" class="hover:underline">${label}</a>`;
+        container.appendChild(li);
+      };
+
+      fetch('/all.json')
+        .then((res) => res.json())
+        .then(({ react, svelte }) => {
+          const reactList = document.getElementById('examples-react');
+          react.forEach((path) => {
+            addLink(reactList, 'react/', path);
+          });
+
+          const svelteList = document.getElementById('examples-svelte');
+          svelte.forEach((path) => {
+            addLink(svelteList, 'svelte/', path);
+          });
+        });
+    </script>
+  </head>
+  <body class="[&>*]:max-w-3xl [&>*]:mx-auto space-y-12 py-12">
+    <header class="space-y-8">
+      <h1 class="text-4xl font-bold mb-4">xyflow examples directory</h1>
+      <p>
+        Hello stranger! You've found your way over to the little app we have
+        hosting all of our examples here at xyflow. If you're not one of the
+        xyflow team, you're probably looking for one of our documentation sites:
+      </p>
+
+      <div
+        class="flex gap-4 [&>*]:flex-1 [&>*]:text-center [&>*]:rounded [&>*]:border [&>*]:p-4"
+      >
+        <a class="hover:bg-gray-50" href="https://www.reactflow.dev"
+          >reactflow.dev</a
+        >
+        <a class="hover:bg-gray-50" href="https://www.svelteflow.dev"
+          >svelteflow.dev</a
+        >
+      </div>
+
+      <p>
+        If you're still here, why not head over to our
+        <a class="underline" href="https://xyflow.com/careers">careers page</a>
+        and see if we're hiring, we'd love to chat ✌️
+      </p>
+    </header>
+
+    <main class="flex justify-between">
+      <section>
+        <h2 class="text-2xl font-bold mb-2">React examples</h2>
+        <ul id="examples-react"></ul>
+      </section>
+      <section>
+        <h2 class="text-2xl font-bold mb-2">Svelte examples</h2>
+        <ul id="examples-svelte"></ul>
+      </section>
+    </main>
+  </body>
+</html>

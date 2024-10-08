@@ -1,5 +1,1 @@
-[
-  "@xyflow/react",
-  "react-dom",
-  "react"
-]
+["@xyflow/react", "react-dom", "react", "tailwind"]
