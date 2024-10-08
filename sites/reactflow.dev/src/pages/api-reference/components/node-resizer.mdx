@@ -6,7 +6,7 @@ description:
   nodes. It renders draggable controls around the node to resize in all directions.'
 ---
 
-import ExampleViewer from '@/components/example-viewer';
+import { RemoteCodeViewer } from 'xy-shared';
 import { PropsTable } from '@/components/props-table';
 import { nodeResizerProps } from '@/page-data/reference/components/NodeResizer.ts';
 
@@ -46,16 +46,10 @@ as `NodeResizerProps`.
 
 Head over to the [example page](/examples/nodes/node-resizer) to see how this is done.
 
-<ExampleViewer
-  codePath="example-flows/NodeResizer"
-  additionalFiles={[
-    'ResizableNode.jsx',
-    'ResizableNodeSelected.jsx',
-    'CustomResizerNode.jsx',
-  ]}
-  showEditor={false}
-  applyStyles={false}
-  options={{ editorHeight: 400, editorWidthPercentage: 45, wrapContent: true }}
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/nodes/node-resizer/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/nodes/node-resizer/index.html`}
+  framework="react"
 />
 
 ### Custom Resize Controls

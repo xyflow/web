@@ -3,14 +3,19 @@ title: Easy Connect
 ---
 
 import ExampleLayout from '@/layouts/example-with-frontmatter';
-import ExampleViewer from '@/components/example-viewer';
+import { RemoteCodeViewer } from 'xy-shared';
 import UnusedPropWarning from '@/components/unused-prop-warning';
 
 <ExampleLayout>
   Fed up with tiny little connection handles? Make your whole node act as one!
   Keep in mind though that you need to define seperate drag handles in this case
   to still be able to drag the node.
-  <ExampleViewer codePath="examples/nodes/easy-connect" />
+
+  <RemoteCodeViewer
+    source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/examples/nodes/easy-connect/source.json`}
+    preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/examples/nodes/easy-connect/index.html`}
+    framework="svelte"
+  />
 </ExampleLayout>
 
 <UnusedPropWarning />

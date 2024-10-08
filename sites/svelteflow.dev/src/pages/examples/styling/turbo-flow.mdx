@@ -3,16 +3,17 @@ title: Turbo Flow
 description: This example showcases how you can recreate the style that is used in the turbo docs.
 ---
 
-import ExampleViewer from '@/components/example-viewer';
+import { RemoteCodeViewer } from 'xy-shared';
 import ExampleLayout from '@/layouts/example-with-frontmatter';
 import UnusedPropWarning from '@/components/unused-prop-warning';
 
 <ExampleLayout>
 Every part of the Svelte Flow UI is customizable. As the name implies the look is taken from the beautiful [turbo.build](https://turbo.build/pack/docs/core-concepts#function-level-caching) website. You can find more information about custom styles in the [theming guide](/learn/guides/theming). (Svelte Flow uses Turborepo and we love it 💜)
 
-<ExampleViewer
-  codePath="examples/styling/turbo-flow"
-  dependencies={{ 'svelte-feather-icons': 'latest'}}
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/examples/styling/turbo-flow/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/examples/styling/turbo-flow/index.html`}
+  framework="svelte"
   sandpackOptions={{
     externalResources: ['https://code.cdn.mozilla.net/fonts/fira.css'],
   }}

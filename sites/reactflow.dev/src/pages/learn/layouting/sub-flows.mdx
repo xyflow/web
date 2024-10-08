@@ -4,6 +4,7 @@ description: Learn how to use sub flows to group nodes together in a flow.
 ---
 
 import { Callout } from 'nextra/components';
+import { RemoteCodeViewer } from 'xy-shared';
 
 # Sub Flows
 
@@ -27,14 +28,10 @@ If you want to add a node as a child of another node you need to use the `parent
 
 In this example we are setting a fixed width and height of the parent node by passing the style option. Additionally, we set the child extent to `'parent'` so that we can't move the child nodes out of the parent node.
 
-import ExampleViewer from '@/components/example-viewer';
-
-<ExampleViewer
-  codePath="api-flows/SubFlows"
-  applyStyles={false}
-  options={{ editorHeight: 500, editorWidthPercentage: 45, wrapContent: true }}
-  activeFile="nodes.js"
-  additionalFiles={['nodes.js', 'edges.js']}
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/sub-flows/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/sub-flows/index.html`}
+  framework="react"
 />
 
 ### Using Child Specific Options
@@ -45,22 +42,18 @@ In the example above we are using the `group` type for the parent node but you c
 
 Now we are going to add some more nodes and edges. As you can see, we can connect nodes within a group and create connections that go from a sub flow to an outer node:
 
-<ExampleViewer
-  codePath="api-flows/SubFlows2"
-  applyStyles={false}
-  options={{ editorHeight: 500, editorWidthPercentage: 45, wrapContent: true }}
-  activeFile="nodes.js"
-  additionalFiles={['nodes.js', 'edges.js']}
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/sub-flows-2/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/sub-flows-2/index.html`}
+  framework="react"
 />
 
 ### Using a Default Node Type as a Parent
 
 Let's remove the label of node B and add some child nodes. In this example you can see that you can use one of the default node types as parents, too. We also set the child nodes to `draggable: false` so that they are not draggable anymore.
 
-<ExampleViewer
-  codePath="api-flows/SubFlows3"
-  applyStyles={false}
-  options={{ editorHeight: 500, editorWidthPercentage: 45, wrapContent: true }}
-  activeFile="nodes.js"
-  additionalFiles={['nodes.js', 'edges.js']}
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/sub-flows-3/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/sub-flows-3/index.html`}
+  framework="react"
 />

@@ -10,8 +10,8 @@ image: /img/tutorials/mindmap/mindmap.png
 import { Callout, Tab, Tabs } from 'nextra/components';
 import { Bleed } from 'nextra-theme-docs';
 import { Emoji } from '@xyflow/xy-ui';
+import { RemoteCodeViewer } from 'xy-shared';
 
-import { BlogExampleViewer } from '@/components/example-viewer/blog-embed';
 import { TutorialLayout } from '@/layouts/tutorial-with-frontmatter';
 
 <TutorialLayout>
@@ -22,17 +22,11 @@ In this tutorial, you will learn to create a simple mind map tool with React Flo
 Before we get our hands dirty, I want to show you the mindmapping tool we'll have by the end of this tutorial:
 
 <Bleed>
-  <BlogExampleViewer
-    codePath="blog-flows/mindmap/App"
-    additionalFiles={[
-      'index.css',
-      'MindMapNode.tsx',
-      'MindMapEdge.tsx',
-      'store.ts',
-    ]}
-    dependencies={{ nanoid: 'latest', zustand: '4.3.1' }}
+  <RemoteCodeViewer
+    source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/mindmap/app/source.json`}
+    preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/mindmap/app/index.html`}
+    framework="react"
     showEditor={false}
-    isTypescript
   />
 </Bleed>
 
@@ -127,11 +121,11 @@ body,
 We are adding all styles of our app to the `index.css` file (you could also use a CSS-in-JS library like [Styled Components](/examples/styling/styled-components) or [Tailwind](/examples/styling/tailwind)). Now you can start the development server with `npm run dev` and you should see the following:
 
 <Bleed>
-  <BlogExampleViewer
-    codePath="blog-flows/mindmap/GettingStarted"
-    additionalFiles={['index.css']}
-    dependencies={{ nanoid: 'latest', zustand: '4.3.1' }}
-    isTypescript
+  <RemoteCodeViewer
+    source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/mindmap/getting-started/source.json`}
+    preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/mindmap/getting-started/index.html`}
+    framework="react"
+    showEditor={false}
   />
 </Bleed>
 
@@ -239,11 +233,10 @@ export default Flow;
 We access the nodes, edges and change handlers from the store and pass them to the React Flow component. We also use the `fitView` prop to make sure that the initial node is centered in the view and set the node origin to `[0.5, 0.5]` to set the origin to the center of a node. After this, your app should look like this:
 
 <Bleed>
-  <BlogExampleViewer
-    codePath="blog-flows/mindmap/StoreNodesEdges"
-    additionalFiles={['store.ts', 'index.css']}
-    dependencies={{ nanoid: 'latest', zustand: '4.3.1' }}
-    isTypescript
+  <RemoteCodeViewer
+    source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/mindmap/store-nodes-edges/source.json`}
+    preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/mindmap/store-nodes-edges/index.html`}
+    framework="react"
   />
 </Bleed>
 
@@ -334,16 +327,10 @@ const edgeTypes = {
 
 and then pass the newly created types to the React Flow component.
 
-<BlogExampleViewer
-  codePath="blog-flows/mindmap/CustomNodesEdges"
-  additionalFiles={[
-    'store.ts',
-    'MindMapNode.tsx',
-    'MindMapEdge.tsx',
-    'index.css',
-  ]}
-  dependencies={{ nanoid: 'latest', zustand: '4.3.1' }}
-  isTypescript
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/mindmap/custom-nodes-edges/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/mindmap/custom-nodes-edges/index.html`}
+  framework="react"
 />
 
 Nice! We can already change the labels of our nodes by clicking in the input field and typing something.
@@ -470,16 +457,10 @@ const getChildNodePosition = (event: MouseEvent, parentNode?: Node) => {
 This function returns the position of the new node we want to add to our store. We are using the [`project` function](/api-reference/types/react-flow-instance#project) to convert screen coordinates into React Flow coordinates. As mentioned earlier, child nodes are positioned relative to their parents. That's why we need to subtract the parent position from the child node position. That was a lot to take in, let's see it in action:
 
 <Bleed>
-  <BlogExampleViewer
-    codePath="blog-flows/mindmap/CreateNodes"
-    additionalFiles={[
-      'store.ts',
-      'MindMapNode.tsx',
-      'MindMapEdge.tsx',
-      'index.css',
-    ]}
-    dependencies={{ nanoid: 'latest', zustand: '4.3.1' }}
-    isTypescript
+  <RemoteCodeViewer
+    source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/mindmap/create-nodes/source.json`}
+    preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/mindmap/create-nodes/index.html`}
+    framework="react"
   />
 </Bleed>
 
@@ -579,16 +560,10 @@ In order to make the whole node a handle, we also update the style of the source
 ```
 
 <Bleed>
-  <BlogExampleViewer
-    codePath="blog-flows/mindmap/NodeAsHandle"
-    additionalFiles={[
-      'index.css',
-      'MindMapNode.tsx',
-      'MindMapEdge.tsx',
-      'store.ts',
-    ]}
-    dependencies={{ nanoid: 'latest', zustand: '4.3.1' }}
-    isTypescript
+  <RemoteCodeViewer
+    source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/mindmap/node-as-handle/source.json`}
+    preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/mindmap/node-as-handle/index.html`}
+    framework="react"
   />
 </Bleed>
 
@@ -671,16 +646,10 @@ We add a wrapper div with the class name `inputWrapper` and a div with the class
 ```
 
 <Bleed>
-  <BlogExampleViewer
-    codePath="blog-flows/mindmap/NodeAsHandle2"
-    additionalFiles={[
-      'index.css',
-      'MindMapNode.tsx',
-      'MindMapEdge.tsx',
-      'store.ts',
-    ]}
-    dependencies={{ nanoid: 'latest', zustand: '4.3.1' }}
-    isTypescript
+  <RemoteCodeViewer
+    source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/mindmap/node-as-handle-2/source.json`}
+    preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/mindmap/node-as-handle-2/index.html`}
+    framework="react"
   />
 </Bleed>
 
@@ -764,16 +733,10 @@ As you see we are focusing the input field if the user releases the mouse button
 ```
 
 <Bleed>
-  <BlogExampleViewer
-    codePath="blog-flows/mindmap/NodeAsHandle3"
-    additionalFiles={[
-      'index.css',
-      'MindMapNode.tsx',
-      'MindMapEdge.tsx',
-      'store.ts',
-    ]}
-    dependencies={{ nanoid: 'latest', zustand: '4.3.1' }}
-    isTypescript
+  <RemoteCodeViewer
+    source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/mindmap/node-as-handle-3/source.json`}
+    preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/mindmap/node-as-handle-3/index.html`}
+    framework="react"
   />
 </Bleed>
 
@@ -806,17 +769,11 @@ useEffect(() => {
 ```
 
 <Bleed>
-  <BlogExampleViewer
-    codePath="blog-flows/mindmap/NodeAsHandle4"
-    additionalFiles={[
-      'index.css',
-      'MindMapNode.tsx',
-      'MindMapEdge.tsx',
-      'store.ts',
-    ]}
-    dependencies={{ nanoid: 'latest', zustand: '4.3.1' }}
+  <RemoteCodeViewer
+    source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/mindmap/node-as-handle-4/source.json`}
+    preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/mindmap/node-as-handle-4/index.html`}
+    framework="react"
     activeFile="MindMapNode.tsx"
-    isTypescript
   />
 </Bleed>
 
@@ -866,17 +823,11 @@ body {
 Nicely done! <Emoji content="💯" /> You can find the final code here:
 
 <Bleed>
-  <BlogExampleViewer
-    codePath="blog-flows/mindmap/NodeAsHandle4"
-    additionalFiles={[
-      'index.css',
-      'MindMapNode.tsx',
-      'MindMapEdge.tsx',
-      'store.ts',
-    ]}
-    dependencies={{ nanoid: 'latest', zustand: '4.3.1' }}
+  <RemoteCodeViewer
+    source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/mindmap/node-as-handle-4/source.json`}
+    preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/mindmap/node-as-handle-4/index.html`}
+    framework="react"
     activeFile="MindMapNode.tsx"
-    isTypescript
   />
 </Bleed>
 

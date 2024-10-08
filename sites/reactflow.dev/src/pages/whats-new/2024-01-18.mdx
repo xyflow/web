@@ -8,7 +8,7 @@ authors: [hayleigh]
 date: '2024-01-18'
 ---
 
-import ExampleViewer from '@/components/example-viewer';
+import { RemoteCodeViewer } from 'xy-shared';
 
 # New node toolbar example!
 
@@ -17,8 +17,13 @@ Buried away in our API reference is the documentation for our
 an example to accompany it though, so we've published a new example to show how
 it can be used. Check it out [here](/examples/nodes/node-toolbar).
 
-<ExampleViewer
-  codePath="example-flows/NodeToolbar"
+<RemoteCodeViewer
+  source={`${
+    process?.env?.NEXT_PUBLIC_EXAMPLES_URL ?? exampleUrl
+  }/react/examples/nodes/node-toolbar/source.json`}
+  preview={`${
+    process?.env?.NEXT_PUBLIC_EXAMPLES_URL ?? exampleUrl
+  }/react/examples/nodes/node-toolbar/index.html`}
+  framework="react"
   showEditor={false}
-  editorHeight="600px"
 />

@@ -1,13 +1,13 @@
 ---
 title: The NodeResizer component
-created_at: 2024-01-11
 displayTitle: '<NodeResizer />'
 description:
   'The NodeResizer component can be used to add a resize functionality to your
   nodes. It renders draggable controls around the node to resize in all directions.'
 ---
 
-import ExampleViewer from '@/components/example-viewer';
+import { RemoteCodeViewer } from 'xy-shared';
+
 import { PropsTable } from '@/components/props-table';
 import { nodeResizerProps } from '@/page-data/reference/components/NodeResizer.ts';
 
@@ -42,7 +42,12 @@ as `NodeResizerProps`.
 
 Head over to the [example page](/examples/nodes/node-resizer) to see how this is done.
 
-<ExampleViewer codePath="examples/nodes/node-resizer" showEditor={false} />
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/examples/nodes/node-resizer/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/examples/nodes/node-resizer/index.html`}
+  framework="svelte"
+  editorHeight={500}
+/>
 
 ### Custom Resize Controls
 

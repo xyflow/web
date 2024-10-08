@@ -8,7 +8,7 @@ image: /img/blog/v10-header.png
 ---
 
 import { Bleed } from 'nextra-theme-docs';
-import { BlogExampleViewer } from '@/components/example-viewer';
+import { RemoteCodeViewer } from 'xy-shared';
 import { BlogPostLayout } from '@/layouts/blog-post-with-frontmatter';
 
 <BlogPostLayout>
@@ -18,9 +18,11 @@ We are super happy about the progress and the community that has developed aroun
 After several months of hard work, today we can finally announce the release of React Flow version 10. Together with the new library version, we are also releasing a fully revised documentation that is now powered by [Docusaurus](https://docusaurus.io/). Last but not least, we are releasing [React Flow Pro](https://pro.reactflow.dev/pricing), our new subscription model for React Flow which we want to establish to secure the further development and maintenance of the library. In this post we describe all the news around React Flow version 10. If you want to migrate from v9 to v10, please refer to the [migration guide](https://reactflow.dev/learn/troubleshooting/migrate-to-v10).
 
 <Bleed>
-  <BlogExampleViewer
-    codePath="api-flows/SubFlows3"
-    additionalFiles={['nodes.js', 'edges.js']}
+  <RemoteCodeViewer
+    source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/sub-flows-3/source.json`}
+    preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/sub-flows-3/index.html`}
+    showEditor={false}
+    framework="react"
   />
 </Bleed>
 

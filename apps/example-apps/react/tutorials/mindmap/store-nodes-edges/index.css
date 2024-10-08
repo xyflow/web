@@ -1,0 +1,20 @@
+html,
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+#app {
+  width: 100vw;
+  height: 100vh;
+}
+
+body {
+  margin: 0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}

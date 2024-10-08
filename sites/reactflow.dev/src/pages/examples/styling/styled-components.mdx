@@ -3,17 +3,16 @@ title: Styled Components
 description: Change the color of the background and nodes with the Styled Components library
 ---
 
-import ExampleViewer from '@/components/example-viewer';
+import { RemoteCodeViewer } from 'xy-shared';
 import ExampleLayout from '@/layouts/example-with-frontmatter';
 
 <ExampleLayout>
 In this example we are using [styled components](https://styled-components.com/) to show how to implement a dark and light mode.
 
-<ExampleViewer
-  codePath="example-flows/StyledComponents"
-  additionalFiles={['CustomNode.jsx', 'theme.js', 'nodes-edges.js']}
-  dependencies={{
-    'styled-components': 'latest',
-  }}
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/styling/styled-components/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/styling/styled-components/index.html`}
+  framework="react"
 />
+
 </ExampleLayout>

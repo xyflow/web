@@ -1,8 +1,13 @@
 import { useSSG } from 'nextra/ssg';
 import { PencilSquareIcon } from '@heroicons/react/24/outline';
-import { BaseLayout, Hero, TimelineEvent, TimelineEventProps } from 'xy-shared';
+import {
+  BaseLayout,
+  Hero,
+  RemoteCodeViewer,
+  TimelineEvent,
+  TimelineEventProps,
+} from 'xy-shared';
 
-import ExampleViewer from '@/components/example-viewer';
 import ProExampleViewer from '@/components/pro-example-viewer';
 
 export default function WhatsNew() {
@@ -28,8 +33,10 @@ export default function WhatsNew() {
         <TimelineEvent
           key={i}
           {...src}
-          exampleViewer={ExampleViewer}
           proExampleViewer={ProExampleViewer}
+          remoteCodeViewer={RemoteCodeViewer}
+          // We need to pass the env var here, because we don't have access to it inside the mdx when using MDXRemote
+          exampleUrl={process.env.NEXT_PUBLIC_EXAMPLES_URL}
         />
       ))}
     </BaseLayout>

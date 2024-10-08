@@ -74,3 +74,19 @@ export function getFrontmatterTag(route: string, tag: string) {
 
   return frontMatter[tag];
 }
+
+export function slugify(input: string): string {
+  return (
+    input
+      // make lower case
+      .toLowerCase()
+      // replace invalid chars with spaces
+      .replace(/[^a-z0-9\s-]/g, ' ')
+      .trim()
+      // remove accents from charaters
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      // replace multiple spaces or hyphens with a single hyphen
+      .replace(/[\s-]+/g, '-')
+  );
+}

@@ -9,7 +9,7 @@ authors: [hayleigh]
 date: '2024-02-09'
 ---
 
-import ExampleViewer from '@/components/example-viewer';
+import { RemoteCodeViewer } from 'xy-shared';
 
 # New multi-connection line example!
 
@@ -19,8 +19,13 @@ don't have any plans to add this to the library itself, but we hope this example
 helps folks who need this functionality in their own apps. Check it out
 [here](/examples/edges/multi-connection-line).
 
-<ExampleViewer
-  codePath="example-flows/MultiConnectionLine"
-  additionalFiles={['ConnectionLine.jsx']}
+<RemoteCodeViewer
+  source={`${
+    process?.env?.NEXT_PUBLIC_EXAMPLES_URL ?? exampleUrl
+  }/react/examples/edges/multi-connection-line/source.json`}
+  preview={`${
+    process?.env?.NEXT_PUBLIC_EXAMPLES_URL ?? exampleUrl
+  }/react/examples/edges/multi-connection-line/index.html`}
+  framework="react"
   showEditor={false}
 />

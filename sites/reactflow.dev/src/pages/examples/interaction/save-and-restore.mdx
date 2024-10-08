@@ -1,16 +1,19 @@
 ---
-sidebar_position: 6
 title: Save and Restore
-hide_table_of_contents: true
 description: Save the state of the diagram, and reload it after refreshing the page
 ---
 
-import ExampleViewer from '@/components/example-viewer';
+import { RemoteCodeViewer } from 'xy-shared';
 import ExampleLayout from '@/layouts/example-with-frontmatter';
 
 <ExampleLayout>
 If you want to save and restore a flow you can use the [`toObject` function](/api-reference/types/react-flow-instance#to-object) of the React Flow instance or your local nodes and edges state.
 In this example you can move nodes around, add ones and save the diagram. Then reload the page and click restore to restore your diagram.
 
-<ExampleViewer codePath="example-flows/SaveRestore" />
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/interaction/save-and-restore/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/interaction/save-and-restore/index.html`}
+  framework="react"
+/>
+
 </ExampleLayout>

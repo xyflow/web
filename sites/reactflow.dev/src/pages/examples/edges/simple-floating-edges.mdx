@@ -1,23 +1,18 @@
 ---
-sidebar_position: 6
 title: Simple Floating Edges
 description: Edges connect to the closest available handle
-hide_table_of_contents: true
 ---
 
-import ExampleViewer from '@/components/example-viewer';
+import { RemoteCodeViewer } from 'xy-shared';
 import ExampleLayout from '@/layouts/example-with-frontmatter';
 
 <ExampleLayout>
 This is a simplified version of the [Floating Edges](/examples/edges/floating-edges) example. It's not as flexible as the floating edges example, but the edges stick to the top, right, bottom or left side of the nodes. You can find the implementation details in the utils.js file.
 
-<ExampleViewer
-  codePath="example-flows/SimpleFloatingEdges"
-  additionalFiles={[
-    'SimpleFloatingEdge.jsx',
-    'CustomNode.jsx',
-    'utils.js',
-    'index.css',
-  ]}
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/edges/simple-floating-edges/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/edges/simple-floating-edges/index.html`}
+  framework="react"
 />
+
 </ExampleLayout>

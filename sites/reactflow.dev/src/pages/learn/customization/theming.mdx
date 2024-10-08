@@ -1,11 +1,10 @@
 ---
 title: Theming
 description: React Flow comes with a minimal default theme. It's common to overwrite the default styles with your own CSS or use third-party libraries like TailwindCSS or Styled Components.
-created_at: 2024-07-15
 ---
 
 import { Callout } from 'nextra/components';
-import ExampleViewer from '@/components/example-viewer';
+import { RemoteCodeViewer } from 'xy-shared';
 
 # Theming
 
@@ -20,11 +19,11 @@ React Flow's default styles are enough to get going with the built-in nodes. The
 provide some sensible defaults for styles like padding, border radius, and animated
 edges. You can see what they look like below:
 
-<ExampleViewer
-  codePath="example-flows/DefaultStyle"
+<RemoteCodeViewer
   showEditor={false}
-  options={{ wrapContent: true }}
-  editorHeight={500}
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/styling/default-style/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/styling/default-style/index.html`}
+  framework="react"
 />
 
 You'll typically load these default styles by importing them in you `App.jsx`
@@ -209,10 +208,11 @@ import '@xyflow/react/dist/base.css';
   might not work as expected!
 </Callout>
 
-<ExampleViewer
-  codePath="example-flows/BaseStyle"
+<RemoteCodeViewer
   showEditor={false}
-  editorHeight={500}
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/styling/base-style/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/styling/base-style/index.html`}
+  framework="react"
 />
 
 ### Styled Components

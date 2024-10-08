@@ -1,0 +1,28 @@
+html,
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+#app {
+  width: 100vw;
+  height: 100vh;
+}
+
+body {
+  margin: 0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+.react-flow__node-mindmap {
+  background: #f6ad55;
+  border-radius: 2px;
+  border: 1px solid transparent;
+  padding: 2px 5px;
+  font-weight: 700;
+}

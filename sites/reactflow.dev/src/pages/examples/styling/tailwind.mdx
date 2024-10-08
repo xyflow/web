@@ -4,7 +4,7 @@ description: Use Tailwind CDN to easily make nice looking flows
 ---
 
 import { Callout } from 'nextra/components';
-import ExampleViewer from '@/components/example-viewer';
+import { RemoteCodeViewer } from 'xy-shared';
 import ExampleLayout from '@/layouts/example-with-frontmatter';
 
 <ExampleLayout>
@@ -22,12 +22,10 @@ differently, and can ignore this warning.
 
 </Callout>
 
-<ExampleViewer
-  codePath="example-flows/Tailwind"
-  additionalFiles={['CustomNode.jsx', 'tailwind-config.js']}
-  activeFile="CustomNode.jsx"
-  sandpackOptions={{
-    externalResources: ['https://cdn.tailwindcss.com'],
-  }}
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/styling/tailwind/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/styling/tailwind/index.html`}
+  framework="react"
 />
+
 </ExampleLayout>

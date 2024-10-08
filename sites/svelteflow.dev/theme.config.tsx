@@ -2,10 +2,13 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useConfig } from 'nextra-theme-docs';
-import { Footer, Button, LogoLabel } from '@xyflow/xy-ui';
+import {
+  Footer,
+  Button,
+  LogoLabel,
+  defaultFooterCategories,
+} from '@xyflow/xy-ui';
 import { Search, SidebarTitle } from 'xy-shared';
-
-import { InternalRoute } from '@/utils';
 
 const baseUrl =
   process.env.NODE_ENV === 'production'
@@ -71,32 +74,32 @@ export default {
   },
   footer: {
     component: () => {
+      const { Projects, ...remainingCategories } = defaultFooterCategories;
+
+      const categories = {
+        Docs: [
+          { title: 'Quickstart Guide', route: '/learn' },
+          { title: 'API Reference', route: '/api-reference' },
+          { title: 'Examples', route: '/examples' },
+          { title: 'Showcase', route: '/showcase' },
+          { title: 'Support Us', route: '/support-us' },
+        ],
+        ...remainingCategories,
+        Legal: [
+          {
+            title: 'MIT License',
+            route: 'https://github.com/xyflow/xyflow/blob/main/LICENSE',
+          },
+          {
+            title: 'Code of Conduct',
+            route:
+              'https://github.com/xyflow/xyflow/blob/main/CODE_OF_CONDUCT.md',
+          },
+        ],
+      };
+
       return (
-        <Footer
-          internal={{
-            title: 'Svelte Flow',
-            items: [
-              { title: 'Quickstart Guide', route: '/learn' },
-              { title: 'API Reference', route: '/api-reference' },
-              { title: 'Examples', route: '/examples' },
-              { title: 'Showcase', route: '/showcase' },
-              { title: 'Support Us', route: '/support-us' },
-            ] satisfies { title: string; route: InternalRoute }[],
-          }}
-          legal={[
-            {
-              title: 'MIT License',
-              route: 'https://github.com/xyflow/xyflow/blob/main/LICENSE',
-            },
-            {
-              title: 'Code of Conduct',
-              route:
-                'https://github.com/xyflow/xyflow/blob/main/CODE_OF_CONDUCT.md',
-            },
-          ]}
-          // imageSrc={isHomePage ? undefined : aboutImage}
-          baseUrl="https://svelteflow.dev"
-        />
+        <Footer categories={categories} baseUrl="https://svelteflow.dev" />
       );
     },
   },
@@ -146,8 +149,8 @@ export default {
       ],
 
       twitter: {
-        handle: '@xyflow',
-        site: '@xyflow',
+        handle: '@xyflowdev',
+        site: '@xyflowdev',
         cardType: 'summary_large_image',
       },
 

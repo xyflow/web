@@ -16,8 +16,6 @@ import FlowA from './flows/flow-a';
 import FlowB from './flows/flow-b';
 import FlowC from './flows/flow-c';
 
-import IframePreview from '@/components/example-viewer/iframe-preview';
-
 import type { InternalRoute } from '@/utils';
 
 const sliderItems = [
@@ -25,9 +23,12 @@ const sliderItems = [
     name: 'Feature Overview',
     text: 'Many features of Svelte Flow require zero configuration',
     content: (
-      <IframePreview
+      <iframe
+        src={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/examples/misc/feature-overview/index.html`}
+        loading="lazy"
+        width="100%"
+        height="100%"
         className="rounded-xl overflow-hidden pointer-events-none"
-        path="examples/feature-overview"
       />
     ),
   },
@@ -35,9 +36,12 @@ const sliderItems = [
     name: 'Subflows',
     text: 'Svelte Flow supports nested graphs out of the box',
     content: (
-      <IframePreview
+      <iframe
+        src={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/examples/layout/subflows/index.html`}
+        loading="lazy"
+        width="100%"
+        height="100%"
         className="rounded-xl overflow-hidden pointer-events-none"
-        path="examples/layout/subflows"
       />
     ),
   },
@@ -45,9 +49,12 @@ const sliderItems = [
     name: 'Edge Types',
     text: 'The component comes with a set of common edge types',
     content: (
-      <IframePreview
+      <iframe
+        src={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/examples/edges/edge-types/index.html`}
+        loading="lazy"
+        width="100%"
+        height="100%"
         className="rounded-xl overflow-hidden pointer-events-none"
-        path="examples/edges/edge-types"
       />
     ),
   },

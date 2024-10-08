@@ -3,26 +3,16 @@ title: Turbo Flow
 description: Nodes with glowing animated gradient borders, inspired by the turbo.build website
 ---
 
-import ExampleViewer from '@/components/example-viewer';
+import { RemoteCodeViewer } from 'xy-shared';
 import ExampleLayout from '@/layouts/example-with-frontmatter';
 
 <ExampleLayout>
 Every part of the React Flow UI is customizable. As the name implies the look is taken from the beautiful [turbo.build](https://turbo.build/pack/docs/core-concepts#function-level-caching) website. You can find more information about custom styles in the [theming guide](/learn/customization/theming). (React Flow uses Turborepo and we love it 💜)
 
-<ExampleViewer
-  codePath="example-flows/TurboStyle"
-  additionalFiles={[
-    'index.css',
-    'TurboNode.tsx',
-    'TurboEdge.tsx',
-    'FunctionIcon.tsx',
-  ]}
-  dependencies={{
-    'react-icons': 'latest',
-  }}
-  isTypescript
-  sandpackOptions={{
-    externalResources: ['https://code.cdn.mozilla.net/fonts/fira.css'],
-  }}
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/styling/turbo-flow/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/styling/turbo-flow/index.html`}
+  framework="react"
 />
+
 </ExampleLayout>

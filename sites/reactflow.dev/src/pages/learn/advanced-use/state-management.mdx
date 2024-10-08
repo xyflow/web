@@ -5,7 +5,8 @@ description: Learn how to use React Flow with a state management library like Zu
 
 # Using a State Management Library
 
-import { Callout } from 'nextra/components';
+import { Callout, Tab, Tabs } from 'nextra/components';
+import { RemoteCodeViewer } from 'xy-shared';
 
 <Callout type="info">
   For this guide we assume that you already know about the [core
@@ -21,8 +22,6 @@ As you might have seen in the previous guides and examples, React Flow can easil
 ## Install Zustand
 
 As mentioned above we are using Zustand in this example. Zustand is a bit like Redux: you have a central store with actions to alter your state and hooks to access your state. You can install Zustand via:
-
-import { Tab, Tabs } from 'nextra/components';
 
 <Tabs items={['npm', 'pnpm', 'yarn', 'bun']}>
 <Tab>
@@ -59,16 +58,10 @@ bun add zustand
 
 Zustand lets you create a hook for accessing the values and functions of your store. We put the `nodes` and `edges` and the `onNodesChange`, `onEdgesChange`, `onConnect`, `setNodes` and `setEdges` functions in the store to get the basic interactivity for our graph:
 
-import ExampleViewer from '@/components/example-viewer';
-
-<ExampleViewer
-  activeFile="store.ts"
-  codePath="api-flows/StateManagement"
-  applyStyles={false}
-  editorHeight={500}
-  options={{ editorWidthPercentage: 45, wrapContent: true }}
-  additionalFiles={['store.ts', 'nodes.ts', 'edges.ts', 'types.ts']}
-  isTypescript
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/state-management/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/state-management/index.html`}
+  framework="react"
 />
 
 That's the basic setup. We now have a store with nodes and edges that can handle the changes (dragging, selecting or removing a node or edge) triggered by React Flow. When you take a look at the `App.tsx` file, you can see that it's kept nice and clean. All the data and actions are now part of the store and can be accessed with the `useStore` hook.
@@ -115,20 +108,11 @@ In this step we implement the `ColorChooserNode` component and call the `updateN
 
 We add the `nodrag` class name so that the user doesn't drag the node by mistake when changing the color and call the `updateNodeColor` in the `onChange` event handler.
 
-<ExampleViewer
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/state-management-2/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/state-management-2/index.html`}
+  framework="react"
   activeFile="ColorChooserNode.tsx"
-  codePath="api-flows/StateManagement2"
-  applyStyles={false}
-  editorHeight={500}
-  options={{ editorWidthPercentage: 45, wrapContent: true }}
-  additionalFiles={[
-    'ColorChooserNode.tsx',
-    'store.ts',
-    'nodes.ts',
-    'edges.ts',
-    'types.ts',
-  ]}
-  isTypescript
 />
 
 You can now click on a color chooser and change the background of a node.

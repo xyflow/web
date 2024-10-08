@@ -1,18 +1,18 @@
 ---
-sidebar_position: 3
 title: Validation
-hide_table_of_contents: true
 description: Check if a new connection is valid and should be added
 ---
 
-import ExampleViewer from '@/components/example-viewer';
+import { RemoteCodeViewer } from 'xy-shared';
 import ExampleLayout from '@/layouts/example-with-frontmatter';
 
 <ExampleLayout>
 Custom nodes need to have at least one [`Handle` component](/api-reference/components/handle) to be connectable. You can pass a validation function [`isValidConnection`](/api-reference/react-flow#isvalidconnection-1) to the ReactFlow component in order to check if a new connection is valid and should be added.
 
-<ExampleViewer
-  codePath="example-flows/Validation"
-  additionalFiles={['index.css']}
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/interaction/validation/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/interaction/validation/index.html`}
+  framework="react"
 />
+
 </ExampleLayout>

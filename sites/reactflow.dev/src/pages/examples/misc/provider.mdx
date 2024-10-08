@@ -3,15 +3,17 @@ title: ReactFlowProvider
 description: For working with multiple flows on a page, so that each has a separate store instance
 ---
 
-import ExampleViewer from '@/components/example-viewer';
+import { RemoteCodeViewer } from 'xy-shared';
 import ExampleLayout from '@/layouts/example-with-frontmatter';
 
 <ExampleLayout>
 If you are working with multiple flows on a page or if you are using a client side router you need to wrap each flow with a [`ReactFlowProvider`](/api-reference/react-flow-provider) so that every flow has its own store instance.
 Using a `ReactFlowProvider` is also mandatory if you want to access the internal state outside of the `ReactFlow` component.
 
-<ExampleViewer
-  codePath="example-flows/Provider"
-  additionalFiles={['Sidebar.jsx', 'index.css']}
+<RemoteCodeViewer
+  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/misc/provider/source.json`}
+  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/misc/provider/index.html`}
+  framework="react"
 />
+
 </ExampleLayout>

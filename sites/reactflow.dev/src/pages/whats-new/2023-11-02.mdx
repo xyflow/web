@@ -7,7 +7,7 @@ authors: [hayleigh]
 date: '2023-11-02'
 ---
 
-import ExampleViewer from '@/components/example-viewer';
+import { RemoteCodeViewer } from 'xy-shared';
 
 # New "prevent connection cycles" example!
 
@@ -15,8 +15,13 @@ The "Prevent connection cycles" example shows how to use the
 [`getOutgoers`](/api-reference/utils/get-outgoers) util to check if a new
 connection would cause a cycle in the flow. Check it out [here](/examples/interaction/prevent-cycles).
 
-<ExampleViewer
-codePath="example-flows/PreventConnectionCycles"
-additionalFiles={['nodes-edges.js']}
-showEditor={false}
+<RemoteCodeViewer
+  source={`${
+    process?.env?.NEXT_PUBLIC_EXAMPLES_URL ?? exampleUrl
+  }/react/examples/interaction/prevent-cycles/source.json`}
+  preview={`${
+    process?.env?.NEXT_PUBLIC_EXAMPLES_URL ?? exampleUrl
+  }/react/examples/interaction/prevent-cycles/index.html`}
+  framework="react"
+  showEditor={false}
 />

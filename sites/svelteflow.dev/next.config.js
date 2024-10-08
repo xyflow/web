@@ -12,6 +12,25 @@ const nextConfig = {
   env: {
     SVELTE_FLOW_VERSION,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**.svelteflow.dev',
+      },
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '5173',
+        pathname: '/svelte/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'example-apps.xyflow.com',
+        pathname: '/svelte/**',
+      },
+    ],
+  },
 };
 
 const withNextra = require('nextra')({
