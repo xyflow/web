@@ -1,4 +1,3 @@
-import { fetchJSON } from '..';
 import { compileCodeSnippet } from './compile-code-snippet';
 import { readFileSync } from 'fs';
 
@@ -18,14 +17,6 @@ function kebabCaseToCamelCase(str: string) {
 
 export default function getUiComponentConfig(id: string) {
   return async () => {
-    // const data = await fetchJSON(
-    //   `${process.env.NEXT_PUBLIC_UI_COMPONENTS_URL}/registry/${id}.json`,
-    // );
-
-    // const demo = await fetchJSON(
-    //   `${process.env.NEXT_PUBLIC_UI_COMPONENTS_URL}/demo/${id}.json`,
-    // );
-
     const data = loadJSONFile(
       `../../apps/ui-components/public/registry/${id}.json`,
     );
