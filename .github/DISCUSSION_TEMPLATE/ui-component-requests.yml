@@ -1,4 +1,4 @@
-title: '[component]: '
+title: ''
 labels: ['UI Component Request']
 body:
   - type: markdown
@@ -7,7 +7,7 @@ body:
         ### Thanks for taking the time to create a React Flow UI Component request! Please search open/closed requests before submitting, as the block or a similar one may have already been requested.
 
   - type: textarea
-    id: bdescription
+    id: description
     attributes:
       label: Description
       description: Describe the functionality of the component in detail. Include images or similar examples if possible.
