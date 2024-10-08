@@ -96,10 +96,9 @@ export function getMetaConfigFromTitleLookup(
 ) {
   return Object.keys(titleLookup).reduce<Record<string, { title: ReactNode }>>(
     (acc, key) => {
-      const title =
-        typeof titleLookup[key] === 'string'
-          ? titleLookup[key]
-          : titleLookup[key].title;
+      const current = titleLookup[key];
+      const title = typeof current === 'string' ? current : current.title;
+
       acc[key] = {
         title: <SidebarTitle title={title} route={`${reoutePrefix}/${key}`} />,
       };
