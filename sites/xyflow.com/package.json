@@ -21,6 +21,7 @@
     "@mdx-js/react": "^2.3.0",
     "@next/mdx": "^13.4.19",
     "@react-three/fiber": "^8.13.7",
+    "@sindresorhus/slugify": "^2.2.1",
     "@stackblitz/sdk": "^1.9.0",
     "@types/three": "^0.155.1",
     "@xyflow/react": "12.2.1",

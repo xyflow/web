@@ -1,7 +1,8 @@
 /* eslint react/no-unescaped-entities: 0 */
 import Link from 'next/link';
+import slugify from '@sindresorhus/slugify';
 import { Heading, Text, Section } from '@xyflow/xy-ui';
-import { BaseLayout, Hero, slugify } from 'xy-shared';
+import { BaseLayout, Hero } from 'xy-shared';
 import { MapPinIcon } from '@heroicons/react/24/solid';
 
 const openings: JobOpeningProps[] = [
