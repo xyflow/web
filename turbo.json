@@ -29,7 +29,7 @@
       ]
     },
     "reactflow-website#build": {
-      "dependsOn": ["^ui-components#deploy"],
+      "dependsOn": ["^ui-components#build"],
       "outputs": [".next/**", "!.next/cache/**"],
       "dotEnv": [
         ".env.production.local",
