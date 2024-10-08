@@ -4,7 +4,7 @@ import { NodeProps, Position } from "@xyflow/react";
 import { BaseHandle } from "@/registry/components/base-handle";
 import { BaseNode } from "@/registry/components/base-node";
 
-// You can use Handle components only inside of custom nodes. this is a test gugugaga
+// You can use Handle components only inside of custom nodes.
 const CustomNode = memo(({ selected }: NodeProps) => {
   return (
     <BaseNode className="flex px-0 py-5" selected={selected}>
