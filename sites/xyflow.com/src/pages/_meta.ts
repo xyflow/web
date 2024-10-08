@@ -19,6 +19,10 @@ export default {
     title: 'Open Source',
     display: 'normal',
   },
+  careers: {
+    title: 'Careers',
+    display: 'hidden',
+  },
   libraries: {
     title: 'Libraries',
     display: 'normal',
