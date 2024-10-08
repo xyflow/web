@@ -16,9 +16,9 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const ZoomSlider = React.forwardRef<
-  HTMLButtonElement,
+  HTMLDivElement,
   Omit<PanelProps, "children">
->(({ className, ...props }, ref) => {
+>(({ className, ...props }) => {
   const { zoom } = useViewport();
   const { zoomTo, zoomIn, zoomOut, fitView } = useReactFlow();
 
@@ -30,34 +30,16 @@ const ZoomSlider = React.forwardRef<
     (a, b) => a.minZoom !== b.minZoom || a.maxZoom !== b.maxZoom,
   );
 
-  // @todo do we need to wrap these with useCallback?
-  const onValueChange = (value: number[]) => {
-    zoomTo(value[0]);
-  };
-
-  const onZoomInButton = () => {
-    zoomIn({ duration: 300 });
-  };
-
-  const onZoomOutButton = () => {
-    zoomOut({ duration: 300 });
-  };
-
-  const onZoomInitButton = () => {
-    zoomTo(1, { duration: 300 });
-  };
-
-  const onFitViewButton = () => {
-    fitView({ duration: 300 });
-  };
-
-  // @todo forward ref here, not possible atm because panel doesn't accept ref as prop
   return (
     <Panel
       className={cn("flex bg-primary-foreground text-foreground", className)}
       {...props}
     >
-      <Button variant="ghost" size="icon" onClick={onZoomOutButton}>
+      <Button
+        variant="ghost"
+        size="icon"
+        onClick={() => zoomOut({ duration: 300 })}
+      >
         <Minus className="h-4 w-4" />
       </Button>
       <Slider
@@ -66,19 +48,27 @@ const ZoomSlider = React.forwardRef<
         min={minZoom}
         max={maxZoom}
         step={0.01}
-        onValueChange={onValueChange}
+        onValueChange={(values) => zoomTo(values[0])}
       />
-      <Button variant="ghost" size="icon" onClick={onZoomInButton}>
+      <Button
+        variant="ghost"
+        size="icon"
+        onClick={() => zoomIn({ duration: 300 })}
+      >
         <Plus className="h-4 w-4" />
       </Button>
       <Button
         className="min-w-20 tabular-nums"
         variant="ghost"
-        onClick={onZoomInitButton}
+        onClick={() => zoomTo(1, { duration: 300 })}
       >
         {(100 * zoom).toFixed(0)}%
       </Button>
-      <Button variant="ghost" size="icon" onClick={onFitViewButton}>
+      <Button
+        variant="ghost"
+        size="icon"
+        onClick={() => fitView({ duration: 300 })}
+      >
         <Maximize className="h-4 w-4" />
       </Button>
     </Panel>
