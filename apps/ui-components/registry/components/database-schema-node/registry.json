@@ -1,0 +1,20 @@
+{
+  "name": "database-schema-node",
+  "type": "registry:component",
+  "dependencies": ["@xyflow/react"],
+  "devDependencies": [],
+  "registryDependencies": [
+    "table",
+    "https://ui.reactflow.dev/base-node",
+    "https://ui.reactflow.dev/labeled-handle"
+  ],
+  "files": [
+    {
+      "type": "registry:component",
+      "path": "database-schema-node.tsx"
+    }
+  ],
+  "tailwind": {},
+  "cssVars": {},
+  "meta": {}
+}

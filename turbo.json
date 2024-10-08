@@ -28,6 +28,16 @@
         ".env"
       ]
     },
+    "reactflow-website#build": {
+      "dependsOn": ["^ui-compponents#deploy"],
+      "outputs": [".next/**", "!.next/cache/**"],
+      "dotEnv": [
+        ".env.production.local",
+        ".env.local",
+        ".env.production",
+        ".env"
+      ]
+    },
     "lint": {
       "dotEnv": [
         ".env.development.local",
