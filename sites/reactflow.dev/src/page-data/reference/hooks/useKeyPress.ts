@@ -2,7 +2,6 @@ import { type PropsTableProps } from 'xy-shared';
 
 export const signature: PropsTableProps = {
   props: [
-    { name: 'Params' },
     {
       name: 'keyCode',
       type: 'string | string[] | null',
@@ -13,9 +12,15 @@ export const signature: PropsTableProps = {
     { name: 'options', type: 'object' },
     {
       name: 'options.target',
-      type: 'Window | Document | HTMLElement | ShadowRoot | null;',
+      type: 'Window | Document | HTMLElement | ShadowRoot | null',
       description: `You may want to listen to key presses on a specific element.
       This field lets you configure that!`,
+    },
+    {
+      name: 'options.actInsideInputWithModifier',
+      type: 'boolean',
+      description: `You can use this flag to prevent triggering the key press hook when an input field is focused.`,
+      default: 'true',
     },
     { name: 'Returns' },
     { name: '', type: 'boolean' },
