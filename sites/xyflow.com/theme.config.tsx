@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useConfig } from 'nextra-theme-docs';
-import { Footer, Button, LogoLabel } from '@xyflow/xy-ui';
+import { Footer, Button, Logo, Text } from '@xyflow/xy-ui';
 import { Head } from 'xy-shared';
 
 const defaultDescription =
@@ -13,7 +13,20 @@ const baseUrl =
     : 'http://localhost:3001';
 
 export default {
-  logo: () => <LogoLabel label="xyflow" />,
+  logo: () => (
+    <div className="flex space-x-2 items-center">
+      <Link className="flex space-x-2 items-center" href="/">
+        <Logo className="h-9 w-9" />
+        <Text className="font-black text-xl leading-none">xyflow</Text>
+      </Link>
+      <Link
+        className="bg-primary rounded-full px-2 font-bold text-primary-foreground text-sm hover:opacity-80"
+        href="/careers"
+      >
+        hiring
+      </Link>
+    </div>
+  ),
   logoLink: false,
   docsRepositoryBase:
     'https://github.com/xyflow/web/tree/main/sites/xyflow.com',
@@ -41,23 +54,6 @@ export default {
             title: 'Hello from the xyflow team',
             text: 'xyflow is building and maintaining open source software for node-based UIs since 2019.',
           }}
-          internal={{
-            title: 'Libraries',
-            items: [
-              { title: 'React Flow', route: 'https://reactflow.dev/' },
-              { title: 'Svelte Flow', route: 'https://svelteflow.dev/' },
-            ],
-          }}
-          legal={[
-            { title: 'Terms of Use', route: 'https://xyflow.com/terms-of-use' },
-            {
-              title: 'Ethical Standards',
-              route: 'https://xyflow.com/ethical-standards',
-            },
-            { title: 'Privacy Policy', route: 'https://xyflow.com/privacy' },
-            { title: 'Imprint', route: 'https://xyflow.com/imprint' },
-          ]}
-          // imageSrc={isHomePage ? undefined : aboutImage}
           baseUrl="https://xyflow.com"
         />
       );
