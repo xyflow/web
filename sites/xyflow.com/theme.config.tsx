@@ -101,15 +101,11 @@ export default {
           name: 'docsearch:site',
           content: 'svelte',
         },
-        {
-          name: 'testxy',
-          content: 'xyflow',
-        },
       ],
 
       twitter: {
-        handle: '@xyflow',
-        site: '@xyflow',
+        handle: '@xyflowdev',
+        site: '@xyflowdev',
         cardType: 'summary_large_image',
       },
 

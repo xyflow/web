@@ -226,8 +226,8 @@ export default {
       ],
 
       twitter: {
-        handle: '@xyflow',
-        site: '@xyflow',
+        handle: '@xyflowdev',
+        site: '@xyflowdev',
         cardType: 'summary_large_image',
       },
 
