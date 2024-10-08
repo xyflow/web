@@ -1,5 +1,15 @@
 import { fetchJSON } from '..';
 import { compileCodeSnippet } from './compile-code-snippet';
+import { readFileSync } from 'fs';
+
+function loadJSONFile(url: string) {
+  try {
+    const file = readFileSync(url, 'utf-8');
+    return JSON.parse(file.toString());
+  } catch (err) {
+    console.log(err);
+  }
+}
 
 function kebabCaseToCamelCase(str: string) {
   const newString = str.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
@@ -8,12 +18,20 @@ function kebabCaseToCamelCase(str: string) {
 
 export default function getUiComponentConfig(id: string) {
   return async () => {
-    const data = await fetchJSON(
-      `${process.env.NEXT_PUBLIC_UI_COMPONENTS_URL}/registry/${id}.json`,
+    // const data = await fetchJSON(
+    //   `${process.env.NEXT_PUBLIC_UI_COMPONENTS_URL}/registry/${id}.json`,
+    // );
+
+    // const demo = await fetchJSON(
+    //   `${process.env.NEXT_PUBLIC_UI_COMPONENTS_URL}/demo/${id}.json`,
+    // );
+
+    const data = loadJSONFile(
+      `../../apps/ui-components/public/registry/${id}.json`,
     );
 
-    const demo = await fetchJSON(
-      `${process.env.NEXT_PUBLIC_UI_COMPONENTS_URL}/demo/${id}.json`,
+    const demo = loadJSONFile(
+      `../../apps/ui-components/public/demo/${id}.json`,
     );
 
     const componentName = kebabCaseToCamelCase(id);
