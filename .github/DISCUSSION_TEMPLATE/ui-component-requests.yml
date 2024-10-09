@@ -1,5 +1,6 @@
-title: ''
-labels: ['UI Component Request']
+title: 'New Request'
+labels:
+  - 'UI Component Request'
 body:
   - type: markdown
     attributes:
