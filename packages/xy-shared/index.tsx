@@ -32,5 +32,7 @@ export * from './components/headline-node';
 export * from './components/node-wrapper';
 export * from './components/timeline-event';
 export * from './components/sidebar-title';
+export * from './components/remote-content';
+export * from './components/head';
 
 export * from './lib/utils';

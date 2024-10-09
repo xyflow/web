@@ -3,7 +3,7 @@ title: Quickstart
 description: How to get tarted with Svelte Flow in your Svelte project
 ---
 
-import { Callout, Tab, Tabs, Cards, Card } from 'nextra/components';
+import { Callout, Tabs, Cards } from 'nextra/components';
 
 # Quickstart
 
@@ -20,7 +20,7 @@ Svelte Flow is a highly customizable component for building interactive graphs a
 You can try Svelte Flow without setting anything up locally by checking out the starter projects we have on [Stackblitz](https://stackblitz.com):
 
 <Cards num={2}>
-  <Card
+  <Cards.Card
     title="new.svelteflow.dev/js"
     href="https://new.svelteflow.dev/js"
     icon={
@@ -29,7 +29,7 @@ You can try Svelte Flow without setting anything up locally by checking out the 
       </div>
     }
   />
-  <Card
+  <Cards.Card
     title="new.svelteflow.dev/ts"
     href="https://new.svelteflow.dev/ts"
     icon={
@@ -53,30 +53,30 @@ npx degit xyflow/vite-svelte-flow-template app-name
 The easiest way to get the latest version of Svelte Flow is to install it via npm, yarn or pnpm:
 
 <Tabs items={['npm', 'pnpm', 'yarn', 'bun']}>
-  <Tab>
+  <Tabs.Tab>
     ```bash copy
     npm install @xyflow/svelte
     ```
 
-  </Tab>
-  <Tab>
+  </Tabs.Tab>
+  <Tabs.Tab>
     ```bash copy
     pnpm add @xyflow/svelte
     ```
 
-  </Tab>
-  <Tab>
+  </Tabs.Tab>
+  <Tabs.Tab>
     ```bash copy
     yarn add @xyflow/svelte
     ```
 
-  </Tab>
-  <Tab>
+  </Tabs.Tab>
+  <Tabs.Tab>
     ```bash copy
     bun add @xyflow/svelte
     ```
 
-  </Tab>
+  </Tabs.Tab>
 </Tabs>
 
 ## Creating your first flow

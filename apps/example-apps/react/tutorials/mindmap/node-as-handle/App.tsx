@@ -18,8 +18,6 @@ import useStore, { type RFState } from './store';
 import MindMapNode from './MindMapNode';
 import MindMapEdge from './MindMapEdge';
 
-import './index.css';
-
 // we need to import the React Flow styles to make it work
 import '@xyflow/react/dist/style.css';
 

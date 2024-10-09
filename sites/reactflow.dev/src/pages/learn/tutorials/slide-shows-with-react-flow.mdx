@@ -10,7 +10,7 @@ tags: ['react-flow', 'presentation', 'slide-show']
 image: /img/tutorials/presentation/slideshow-thumb.png
 ---
 
-import { Cards, Card, Callout, Tab, Tabs } from 'nextra/components';
+import { Cards, Callout } from 'nextra/components';
 import { Bleed } from 'nextra-theme-docs';
 import { Image, RemoteCodeViewer } from 'xy-shared';
 import { Emoji } from '@xyflow/xy-ui';
@@ -74,7 +74,7 @@ template instead. You can also follow along in your browser by using our codesan
 templates:
 
 <Cards num={2}>
-  <Card
+  <Cards.Card
     title="new.reactflow.dev/js"
     href="https://new.reactflow.dev/js"
     icon={
@@ -83,7 +83,7 @@ templates:
       </div>
     }
   />
-  <Card
+  <Cards.Card
     title="new.reactflow.dev/ts"
     href="https://new.reactflow.dev/ts"
     icon={

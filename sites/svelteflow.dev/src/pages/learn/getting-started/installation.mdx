@@ -8,37 +8,37 @@ description: This is how to install the Svelte Flow package using npm, and how t
 In order to start, you need node.js and npm, yarn or pnpm installed on your machine.
 The Svelte Flow package is published on npm under [`@xyflow/svelte`](https://www.npmjs.com/package/@xyflow/svelte) and installable via:
 
-import { Tab, Tabs } from 'nextra/components';
+import { Tabs } from 'nextra/components';
 
 <Tabs items={['npm', 'pnpm', 'yarn', 'bun']}>
-  <Tab>
+  <Tabs.Tab>
 
 ```bash copy
 npm install @xyflow/svelte
 ```
 
-  </Tab>
-  <Tab >
+  </Tabs.Tab>
+  <Tabs.Tab>
 
 ```bash copy
 pnpm add @xyflow/svelte
 ```
 
-  </Tab>
-  <Tab>
+  </Tabs.Tab>
+  <Tabs.Tab>
 
 ```bash copy
 yarn add @xyflow/svelte
 ```
 
-  </Tab>
-  <Tab>
+  </Tabs.Tab>
+  <Tabs.Tab>
 
 ```bash copy
 bun add @xyflow/svelte
 ```
 
-</Tab>
+</Tabs.Tab>
 </Tabs>
 
 Now you can import the Svelte Flow component and the styles in your application:

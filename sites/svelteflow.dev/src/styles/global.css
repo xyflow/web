@@ -18,16 +18,16 @@
 
 /* this override adds some space for the api docs */
 
-.learn article main.md\:nx-px-12,
-.api-reference article main.md\:nx-px-12,
-.examples article main.md\:nx-px-12 {
+.learn article main.md\:_px-12,
+.api-reference article main.md\:_px-12,
+.examples article main.md\:_px-12 {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 }
 
 /* this unifies the /examples content width with /api-refernce and /learn */
 
-.examples main.nx-max-w-6xl {
+.examples main._max-w-6xl {
   max-width: none;
 }
 
@@ -35,11 +35,11 @@
 even though the body is supposed to have overflow:hidden set. The following two
 rules make it work almost correctly, but they don't feel great. */
 
-html:has(body.nx-overflow-hidden) {
+html:has(body._overflow-hidden) {
   overflow-y: hidden;
 }
 
-html:has(body.nx-overflow-hidden) nav {
+html:has(body._overflow-hidden) nav {
   position: fixed;
   width: 100%;
 }

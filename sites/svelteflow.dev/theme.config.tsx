@@ -8,7 +8,14 @@ import {
   LogoLabel,
   defaultFooterCategories,
 } from '@xyflow/xy-ui';
-import { Search, SidebarTitle } from 'xy-shared';
+import { Head, Search } from 'xy-shared';
+
+const defaultDescription =
+  'Svelte Flow - Customizable library for rendering workflows, diagrams and node-based UIs.';
+
+const ogImage = {
+  url: `https://svelteflow.dev/img/og/svelte-flow-og.jpg`,
+};
 
 const baseUrl =
   process.env.NODE_ENV === 'production'
@@ -61,7 +68,7 @@ export default {
     ),
   },
   sidebar: {
-    titleComponent: SidebarTitle,
+    toggleButton: false,
   },
   navbar: {
     extraContent: () => {
@@ -110,63 +117,37 @@ export default {
     useLink: () => 'https://xyflow.com/contact',
   },
   toc: {
+    backToTop: null,
     extraContent: () => (
       <Link
         href="/whats-new"
-        className="nx-text-xs nx-font-medium nx-text-gray-500 hover:nx-text-gray-900 dark:nx-text-gray-400 dark:hover:nx-text-gray-100 contrast-more:nx-text-gray-800 contrast-more:dark:nx-text-gray-50"
+        className="_text-xs _font-medium _text-gray-500 hover:_text-gray-900 dark:_text-gray-400 dark:hover:_text-gray-100 contrast-more:_text-gray-800 contrast-more:dark:_text-gray-50"
       >
         What's new here?
       </Link>
     ),
   },
-  primaryHue: 15,
-  primarySaturation: 90,
-  useNextSeoProps() {
+  color: {
+    hue: 15,
+    saturation: 90,
+  },
+  head() {
     const router = useRouter();
     const { frontMatter } = useConfig();
-    const url = `${baseUrl}${router.asPath}`;
 
-    return {
-      defaultTitle: 'Svelte Flow',
-      titleTemplate: '%s – Svelte Flow',
-      title: frontMatter.title || 'Svelte Flow',
-      description:
-        frontMatter.description ||
-        'Svelte Flow - Customizable library for rendering workflows, diagrams and node-based UIs.',
+    const title = frontMatter.title
+      ? `${frontMatter.title} - Svelte Flow`
+      : 'Svelte Flow';
 
-      additionalLinkTags: [
-        {
-          rel: 'icon',
-          href: `${baseUrl}/img/favicon.ico`,
-        },
-      ],
-
-      additionalMetaTags: [
-        {
-          name: 'docsearch:site',
-          content: 'svelte',
-        },
-      ],
-
-      twitter: {
-        handle: '@xyflowdev',
-        site: '@xyflowdev',
-        cardType: 'summary_large_image',
-      },
-
-      openGraph: {
-        url,
-        type: 'website',
-        images: [
-          {
-            url: `${baseUrl}/img/og/svelte-flow-og.jpg`,
-            width: 1200,
-            height: 640,
-            alt: 'Svelte Flow Teaser',
-          },
-        ],
-      },
-    };
+    return (
+      <Head
+        title={title}
+        description={frontMatter.description ?? defaultDescription}
+        pageUrl={`${baseUrl}${router.asPath}`}
+        faviconUrl={`${baseUrl}/img/favicon.ico`}
+        ogImage={ogImage}
+        framework="svelte"
+      />
+    );
   },
-  head: null,
 };

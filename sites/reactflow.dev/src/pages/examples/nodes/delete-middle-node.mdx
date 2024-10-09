@@ -3,7 +3,7 @@ title: Delete Middle Node
 description: Remove a node without breaking the flow
 ---
 
-import { Callout, Cards, Card } from 'nextra/components';
+import { Callout, Cards } from 'nextra/components';
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
 
 import { RemoteCodeViewer } from 'xy-shared';
@@ -60,17 +60,17 @@ don't need to do this
 ## Quick Reference
 
 <Cards num={2}>
-  <Card
+  <Cards.Card
     title="getConnectedEdges"
     href="/api-reference/utils/getConnectedEdges"
   />
-  <Card title="getIncomers" href="/api-reference/utils/getIncomers" />
-  <Card
+  <Cards.Card title="getIncomers" href="/api-reference/utils/getIncomers" />
+  <Cards.Card
     title="Array.prototype.flatMap"
     href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flatMap"
     icon={<ArrowTopRightOnSquareIcon />}
   />
-  <Card
+  <Cards.Card
     title="Destructuring assignment"
     href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#assigning_to_new_variable_names"
     icon={<ArrowTopRightOnSquareIcon />}

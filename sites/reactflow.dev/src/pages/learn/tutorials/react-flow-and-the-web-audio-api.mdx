@@ -7,7 +7,7 @@ tags: ['react-flow', 'web-audio-api', 'how-to']
 image: /img/tutorials/webaudio/web-audio-blog-thumb.png
 ---
 
-import { Callout, Tab, Tabs } from 'nextra/components';
+import { Callout, Tabs } from 'nextra/components';
 import { Bleed } from 'nextra-theme-docs';
 import { Embed, Image, RemoteCodeViewer } from 'xy-shared';
 import { Emoji } from '@xyflow/xy-ui';
@@ -853,7 +853,7 @@ This is actually pretty simple, so I'll save you some reading and present the ne
 three snippets of code without comment.
 
 <Tabs items={['./src/audio.js', ',/src/store.js', './src/App.jsx']}>
-  <Tab>
+  <Tabs.Tab>
 
 ```js
 export function removeAudioNode(id) {
@@ -866,8 +866,8 @@ export function removeAudioNode(id) {
 }
 ```
 
-  </Tab>
-  <Tab>
+  </Tabs.Tab>
+  <Tabs.Tab>
 
 ```js
 import { ..., removeAudioNode } from './audio';
@@ -885,8 +885,8 @@ export const useStore = createWithEqualityFn((set, get) => ({
 }));
 ```
 
-  </Tab>
-  <Tab>
+  </Tabs.Tab>
+  <Tabs.Tab>
 
 ```jsx
 const selector = store => ({
@@ -908,7 +908,7 @@ export default function App() {
 };
 ```
 
-  </Tab>
+  </Tabs.Tab>
 </Tabs>
 
 The only thing to note is that `onNodesDelete` calls the provided callback with
@@ -927,7 +927,7 @@ edge created in our `addEdge` action. Then we can just look up the two nodes in
 our `Map` and connect them up.
 
 <Tabs items={["./src/audio.js", "./src/store.js"]}>
-  <Tab >
+  <Tabs.Tab>
 
 ```js
 export function connect(sourceId, targetId) {
@@ -938,8 +938,8 @@ export function connect(sourceId, targetId) {
 }
 ```
 
-  </Tab>
-  <Tab >
+  </Tabs.Tab>
+  <Tabs.Tab>
 
 ```js
 import { ..., connect } from './audio';
@@ -957,7 +957,7 @@ export const useStore = createWithEqualityFn((set, get) => ({
 }));
 ```
 
-  </Tab>
+  </Tabs.Tab>
 </Tabs>
 
 We saw React Flow accepted an `onNodesDelete` handler and wouldn't you know it,

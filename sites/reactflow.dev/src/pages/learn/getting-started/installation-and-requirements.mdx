@@ -8,37 +8,37 @@ description: You can install React Flow using npm, pnpm, or yarn.
 For this set-up we assume you already have node.js and npm, yarn or pnpm already installed.
 The React Flow package is published under [`@xyflow/react`](https://www.npmjs.com/package/@xyflow/react) on npm and installable via:
 
-import { Tab, Tabs } from 'nextra/components';
+import { Tabs } from 'nextra/components';
 
 <Tabs items={['npm', 'pnpm', 'yarn', 'bun']}>
-<Tab>
+  <Tabs.Tab>
 
 ```bash copy
 npm install @xyflow/react
 ```
 
-  </Tab>
-  <Tab >
+  </Tabs.Tab>
+  <Tabs.Tab>
 
 ```bash copy
 pnpm add @xyflow/react
 ```
 
-  </Tab>
-    <Tab>
+  </Tabs.Tab>
+    <Tabs.Tab>
 
 ```bash copy
 yarn add @xyflow/react
 ```
 
-  </Tab>
-  <Tab>
+  </Tabs.Tab>
+  <Tabs.Tab>
 
 ```bash copy
 bun add @xyflow/react
 ```
 
-</Tab>
+</Tabs.Tab>
 </Tabs>
 
 Now you can import the React Flow component and the styles in your application:

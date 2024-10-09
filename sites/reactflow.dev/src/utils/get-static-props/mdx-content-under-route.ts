@@ -1,5 +1,5 @@
+import { buildDynamicMDX } from 'nextra/remote';
 import { readFile, readdir, stat } from 'fs/promises';
-import { serialize } from 'next-mdx-remote/serialize';
 import { type InternalRoute } from '../routes';
 import * as Path from 'path';
 import * as Url from 'url';
@@ -15,11 +15,12 @@ export async function getMdxContentUnderRoute(route: InternalRoute) {
   for (const file of files) {
     if (file.endsWith('.mdx')) {
       const raw = await readFile(Path.join(path, file), 'utf8');
-      const parsed = await serialize(raw, { parseFrontmatter: true });
 
-      parsed.frontmatter.route = Path.join(route, Path.basename(file, '.mdx'));
+      const parsed = await buildDynamicMDX(raw, {});
+      const frontmatter = parsed.__nextra_dynamic_opts.frontMatter;
+      frontmatter.route = Path.join(route, Path.basename(file, '.mdx'));
 
-      if (!parsed.frontmatter.date) {
+      if (!frontmatter.date) {
         let lastModified;
         try {
           const { mtime } = await stat(Path.join(path, file));
@@ -30,10 +31,14 @@ export async function getMdxContentUnderRoute(route: InternalRoute) {
 
         const [date] = new Date(lastModified).toISOString().split('T');
 
-        parsed.frontmatter.date = date;
+        frontmatter.date = date;
       }
 
-      mdx.push(parsed);
+      mdx.push({
+        mdx: parsed.__nextra_dynamic_mdx,
+        frontmatter,
+        title: parsed.__nextra_dynamic_opts.title,
+      });
     }
   }
 

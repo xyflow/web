@@ -1,6 +1,8 @@
+import { type ReactNode } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { getPagesUnderRoute } from 'nextra/context';
-import { useSSG } from 'nextra/ssg';
+import { useData } from 'nextra/hooks';
 import {
   ContentGrid,
   ContentGridItem,
@@ -23,8 +25,6 @@ import {
 } from '@heroicons/react/24/outline';
 
 import { getMdxPagesUnderRoute } from '@/utils';
-import Image from 'next/image';
-import { ReactNode } from 'react';
 import starsvg from '../../../public/img/pro/star.svg';
 
 function getProExamplesUnderRoute(route) {
@@ -35,7 +35,7 @@ function getProExamplesUnderRoute(route) {
 
 function getProExamples() {
   const exampleFolders = getPagesUnderRoute('/examples').filter(
-    (page) => page.kind === 'Folder',
+    (page) => !('frontMatter' in page),
   );
 
   return exampleFolders
@@ -47,7 +47,7 @@ function getProExamples() {
 }
 
 export default function ProExamples() {
-  const { remoteProExamples } = useSSG();
+  const { remoteProExamples } = useData();
   const proExamples = getProExamples();
 
   const examples = proExamples.reduce((result, curr) => {

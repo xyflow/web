@@ -1,12 +1,14 @@
 import React, { useMemo } from 'react';
 import { PropsTable, type PropsTableProps } from 'xy-shared';
 
-import svelteFlowTypes from '@/pages/api-reference/types/_meta.json';
+import svelteFlowTypes from '@/pages/api-reference/types/_meta';
 
 export const svelteFlowLinks = Object.entries(svelteFlowTypes).reduce<
   Record<string, string>
 >((curr, [slug, name]) => {
-  curr[name] = `/api-reference/types/${slug}`;
+  if (typeof name === 'string') {
+    curr[name] = `/api-reference/types/${slug}`;
+  }
   return curr;
 }, {});
 

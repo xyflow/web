@@ -146,7 +146,7 @@ export function RemoteCodeViewer({
     return (
       <div
         style={{ height: editorHeight }}
-        className={`w-full color nx-bg-primary-100 flex justify-center content-center flex-wrap`}
+        className={`w-full color _bg-primary-100 flex justify-center content-center flex-wrap`}
       >
         <p className="text-react">Example failed to load</p>
       </div>

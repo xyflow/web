@@ -1,5 +1,5 @@
+import { Callout } from 'nextra/components';
 import { Link } from 'nextra-theme-docs';
-import { Callout } from 'nextra-theme-docs';
 
 export default function UnusedPropWarning() {
   return (

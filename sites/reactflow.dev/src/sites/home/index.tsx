@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { useSSG } from 'nextra/ssg';
+import { useData } from 'nextra/hooks';
 import { Button, Section, Stats } from '@xyflow/xy-ui';
 import {
   BaseLayout,
@@ -90,7 +90,7 @@ const sliderItems = [
 ];
 
 export default function ReactFlowHome() {
-  const { stars = 23000, downloads = 4000, whatsNew = [] } = useSSG();
+  const { stars = 23000, downloads = 4000, whatsNew = [] } = useData();
 
   return (
     <BaseLayout>
