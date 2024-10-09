@@ -5,8 +5,8 @@ body:
   - type: markdown
     attributes:
       value: |
-        ### Thanks for taking the time to request a new React Flow UI Component! 
-        ## Please search open/closed requests before submitting, as the block or a similar one may have already been requested.
+        ## Thanks for taking the time to request a new React Flow UI Component! 
+        ### Please search open/closed requests before submitting, as the block or a similar one may have already been requested.
 
   - type: textarea
     id: description
