@@ -10,7 +10,11 @@ export default async function getStaticProps() {
   const { downloads: reactFlowDownloads = 0 } = await fetchJSON(
     process.env.NPM_REACT_FLOW,
   );
-  const downloads = reactFlowLegacyDownloads + reactFlowDownloads;
+  const { downloads: xyflowReactDownloads = 0 } = await fetchJSON(
+    process.env.NPM_XYFLOW_REACT,
+  );
+  const downloads =
+    reactFlowLegacyDownloads + reactFlowDownloads + xyflowReactDownloads;
 
   if (!downloads || !stars) {
     console.log('could not fetch downloads and stars. please try again.');
