@@ -24,7 +24,7 @@
     "@stackblitz/sdk": "^1.9.0",
     "@types/three": "^0.155.1",
     "@xyflow/react": "12.2.1",
-    "@xyflow/svelte": "0.1.18",
+    "@xyflow/svelte": "0.1.21",
     "@xyflow/xy-ui": "workspace:*",
     "clsx": "^1.2.1",
     "fast-xml-parser": "^4.2.6",
