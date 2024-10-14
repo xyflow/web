@@ -38,7 +38,7 @@ export default {
     //     className="flex justify-center items-center max-w-xs mx-auto hover:underline"
     //     href="/learn/troubleshooting/migrate-to-v12"
     //   >
-    //     🔥 React Flow 12 is here! SSR, dark mode, computing flows, and more
+    //     🔥 React Flow 12 is here! SSR, dark mode, computing flows, and
     //   </Link>
     // ),
   },
