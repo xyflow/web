@@ -1,8 +1,4 @@
 {
-  "introduction": {
-    "type": "separator",
-    "title": "React Flow UI"
-  },
   "index": {
     "title": "Introduction",
     "theme": {
