@@ -42,6 +42,12 @@ const nextConfig = {
 const withNextra = nextra({
   theme: 'nextra-theme-docs',
   themeConfig: './theme.config.tsx',
+  mdxOptions: {
+    rehypePrettyCodeOptions: {
+      // theme: 'nord',
+      // keepBackground: true,
+    },
+  },
 });
 
 // Merge MDX config with Next.js config

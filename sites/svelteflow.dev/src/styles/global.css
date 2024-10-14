@@ -51,3 +51,13 @@ html:has(body._overflow-hidden) nav {
 .sandpack-wrapper.vertical .sp-stack {
   flex: none;
 }
+
+.nextra-code > div:first-child {
+  @apply bg-primary/10;
+  border: none;
+}
+
+.nextra-code pre {
+  @apply bg-primary/5;
+  box-shadow: none;
+}
