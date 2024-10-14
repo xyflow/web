@@ -41,6 +41,10 @@
         ".env"
       ]
     },
+    "ui-components#generate-registry": {
+      "outputs": ["public/**"],
+      "inputs": ["$TURBO_DEFAULT$"]
+    },
     "lint": {
       "inputs": [
         "$TURBO_DEFAULT$",
