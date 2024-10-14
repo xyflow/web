@@ -31,7 +31,7 @@
       ]
     },
     "reactflow-website#build": {
-      "dependsOn": ["^ui-components#build"],
+      "dependsOn": ["^ui-components#generate-registry"],
       "outputs": [".next/**", "!.next/cache/**"],
       "inputs": [
         "$TURBO_DEFAULT$",

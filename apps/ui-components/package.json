@@ -5,10 +5,11 @@
   "packageManager": "pnpm@9.11.0",
   "scripts": {
     "dev": "next dev --port 3004",
-    "build": "node ./scripts/generate-registry.js && next build",
+    "build": "pnpm run generate-registry && next build",
     "start": "next start",
     "lint": "next lint",
-    "add-component": "node ./scripts/init-new-component.js"
+    "add-component": "node ./scripts/init-new-component.js",
+    "generate-registry": "node ./scripts/generate-registry.js"
   },
   "dependencies": {
     "@radix-ui/react-icons": "^1.3.0",
