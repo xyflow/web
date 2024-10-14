@@ -1,16 +1,18 @@
-title: ''
-labels: ['UI Component Request']
+title: '[component]: '
+labels:
+  - 'components'
 body:
   - type: markdown
     attributes:
       value: |
-        ### Thanks for taking the time to create a React Flow UI Component request! Please search open/closed requests before submitting, as the block or a similar one may have already been requested.
+        ## Thanks for taking the time to request a new React Flow UI Component! 
+        ### Please search open/closed requests before submitting, as the block or a similar one may have already been requested.
 
   - type: textarea
     id: description
     attributes:
       label: Description
       description: Describe the functionality of the component in detail. Include images or similar examples if possible.
-      placeholder: 'A color picker node which consist of a...'
+      placeholder: 'A color picker node which can be used to select a color. [...]'
     validations:
       required: true
