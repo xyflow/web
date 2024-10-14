@@ -33,7 +33,7 @@ function UiComponentViewer() {
       const label = kebabCaseToTitleCase(depName);
       return {
         label,
-        url: `/ui/${depName}`,
+        url: `/components/${depName}`,
         highlight: true,
       };
     }

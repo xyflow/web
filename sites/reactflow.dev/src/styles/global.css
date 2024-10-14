@@ -44,6 +44,20 @@ html:has(body.nx-overflow-hidden) nav {
   width: 100%;
 }
 
+.nextra-nav-container nav > div:first-child {
+  @apply !mr-8;
+}
+
+.nextra-nav-container nav > a[href='/components']:after {
+  content: 'beta';
+  position: absolute;
+  top: 4px;
+  /* right: -10px; */
+  font-weight: 700;
+  font-size: 0.6rem;
+  color: hsl(var(--primary));
+}
+
 .nextra-banner-container {
   @apply bg-[linear-gradient(1deg,#383838,#212121)];
 }
