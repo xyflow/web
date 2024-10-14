@@ -1,7 +1,7 @@
 {
   "name": "zoom-slider",
   "type": "registry:component",
-  "dependencies": ["@xyflow/react"],
+  "dependencies": ["@xyflow/react", "lucide-react"],
   "devDependencies": [],
   "registryDependencies": ["slider"],
   "files": [
