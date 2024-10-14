@@ -44,6 +44,10 @@ html:has(body.nx-overflow-hidden) nav {
   width: 100%;
 }
 
+.nextra-nav-container nav > div:first-child {
+  @apply !mr-5;
+}
+
 .sandpack-wrapper.vertical > .sp-wrapper > .sp-layout {
   flex-direction: column-reverse;
 }
