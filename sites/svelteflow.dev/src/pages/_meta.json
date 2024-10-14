@@ -10,6 +10,7 @@
   "examples": "Examples",
   "community": {
     "title": "Community",
+    "display": "hidden",
     "type": "menu",
     "items": {
       "showcase": {
@@ -62,7 +63,6 @@
   },
   "whats-new": {
     "title": "What's new?",
-    "display": "hidden",
     "theme": {
       "layout": "full"
     }
