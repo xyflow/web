@@ -38,7 +38,9 @@
       }
     }
   },
-  "ui": "React Flow UI",
+  "ui": {
+    "display": "hidden"
+  },
   "index": {
     "title": "Home",
     "display": "hidden",
