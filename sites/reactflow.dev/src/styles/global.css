@@ -45,7 +45,7 @@ html:has(body.nx-overflow-hidden) nav {
 }
 
 .nextra-nav-container nav > div:first-child {
-  @apply !mr-8;
+  @apply !mr-5;
 }
 
 .nextra-nav-container nav > a[href='/components']:after {

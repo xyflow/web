@@ -27,9 +27,9 @@ export default {
     link: 'https://github.com/xyflow/xyflow',
     icon: (
       <svg
-        className="nav-github-logo"
-        width="24"
-        height="24"
+        className="nav-github-logo text-gray-700 hover:text-gray-900"
+        width="18"
+        height="18"
         fill="currentColor"
         viewBox="3 3 18 18"
       >
@@ -104,9 +104,9 @@ export default {
             className="mr-2"
           >
             <svg
-              className="nav-github-logo"
-              width="24"
-              height="24"
+              className="nav-github-logo text-gray-700 hover:text-gray-900"
+              width="20"
+              height="20"
               fill="currentColor"
               viewBox="0 0 125 90"
             >
