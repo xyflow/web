@@ -95,8 +95,8 @@ export default {
               >
                 <svg
                   className="nav-github-logo ml-2 text-gray-700 hover:text-gray-900"
-                  width="18"
-                  height="18"
+                  width="20"
+                  height="20"
                   fill="currentColor"
                   viewBox="3 3 18 18"
                 >
@@ -111,10 +111,10 @@ export default {
               >
                 <svg
                   className="nav-github-logo text-gray-700 hover:text-gray-900"
-                  width="20"
-                  height="20"
+                  width="23"
+                  height="23"
                   fill="currentColor"
-                  viewBox="0 0 125 90"
+                  viewBox="0 0 130 90"
                 >
                   <title>Discord</title>
                   <path

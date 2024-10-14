@@ -1,4 +1,8 @@
 {
+  "Getting Started": {
+    "type": "separator",
+    "title": "Getting Started"
+  },
   "index": {
     "title": "Introduction",
     "theme": {
@@ -6,7 +10,10 @@
       "toc": false
     }
   },
-  "---": {
+  "motivation": {
+    "title": "Motivation"
+  },
+  "components": {
     "type": "separator",
     "title": "Components"
   },
