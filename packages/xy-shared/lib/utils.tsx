@@ -91,20 +91,19 @@ export function getFrontmatterTag(route: string, tag: string) {
 // this helper function is used to generate the _meta.tsx config structure
 // for the sidebar
 export function getMetaConfigFromTitleLookup(
-  titleLookup: Record<string, string | { title: string }>,
-  reoutePrefix: string = '',
+  titleLookup: Record<string, string | { title: string; href?: string }>,
+  reroutePrefix: string = '',
 ) {
-  return Object.keys(titleLookup).reduce<Record<string, { title: ReactNode }>>(
-    (acc, key) => {
-      const current = titleLookup[key];
-      const title = typeof current === 'string' ? current : current.title;
-
-      acc[key] = {
-        title: <SidebarTitle title={title} route={`${reoutePrefix}/${key}`} />,
-      };
-
-      return acc;
-    },
-    {},
-  );
+  return Object.entries(titleLookup).reduce<
+    Record<string, { title: ReactNode; href?: string }>
+  >((acc, [key, entry]) => {
+    const title = typeof entry === 'string' ? entry : entry.title;
+    const href = typeof entry === 'string' ? undefined : entry.href;
+    const route = href ?? `${reroutePrefix}/${key}`;
+    acc[key] = {
+      title: <SidebarTitle title={title} route={route} />,
+      href,
+    };
+    return acc;
+  }, {});
 }
