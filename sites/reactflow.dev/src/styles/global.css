@@ -49,11 +49,10 @@ html:has(body._overflow-hidden) nav {
   @apply !mr-5;
 }
 
-.nextra-nav-container nav > a[href='/components']:after {
+.nextra-nav-container nav .nextra-scrollbar > a[href='/components']:after {
   content: 'beta';
   position: absolute;
-  top: 4px;
-  /* right: -10px; */
+  top: 17px;
   font-weight: 700;
   font-size: 0.6rem;
   color: hsl(var(--primary));

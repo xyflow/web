@@ -5,9 +5,9 @@ import {
   TabsList,
   TabsTrigger,
 } from '@xyflow/xy-ui';
-import { useData } from 'nextra/data';
+import { useData } from 'nextra/hooks';
 import { Code } from 'nextra/components';
-import { MDXRemote } from 'next-mdx-remote';
+import { RemoteContent } from 'xy-shared';
 import clsx from 'clsx';
 
 function kebabCaseToTitleCase(str: string) {
@@ -62,7 +62,12 @@ function UiComponentViewer() {
           />
         </TabsContent>
         <TabsContent className="min-h-[500px]" value="code">
-          <MDXRemote {...data.demoMDX} components={{ code: Code }} scope={{}} />
+          <RemoteContent
+            {...data.demoMDX}
+            mdx={data.demoMDX.compiledSource}
+            components={{ code: Code }}
+            scope={{}}
+          />
         </TabsContent>
       </Tabs>
       <div className="flex gap-2 items-center my-5">
@@ -99,22 +104,25 @@ function UiComponentViewer() {
             <TabsTrigger value="manual">Manual</TabsTrigger>
           </TabsList>
           <TabsContent value="shadcn">
-            <MDXRemote
+            <RemoteContent
               {...data.installMDX}
+              mdx={data.installMDX.compiledSource}
               components={{ code: Code }}
               scope={{}}
             />
           </TabsContent>
           <TabsContent value="manual">
             <Heading size="xs">1. Install Dependencies</Heading>
-            <MDXRemote
+            <RemoteContent
               {...data.npmMDX}
+              mdx={data.npmMDX.compiledSource}
               components={{ code: Code }}
               scope={{}}
             />
             <Heading size="xs">2. Copy Paste into your app</Heading>
-            <MDXRemote
+            <RemoteContent
               {...data.componentMDX}
+              mdx={data.componentMDX.compiledSource}
               components={{ code: Code }}
               scope={{}}
             />
