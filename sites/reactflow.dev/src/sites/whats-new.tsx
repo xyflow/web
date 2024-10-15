@@ -1,4 +1,4 @@
-import { useSSG } from 'nextra/ssg';
+import { useData } from 'nextra/hooks';
 import { PencilSquareIcon } from '@heroicons/react/24/outline';
 import {
   BaseLayout,
@@ -11,7 +11,7 @@ import {
 import ProExampleViewer from '@/components/pro-example-viewer';
 
 export default function WhatsNew() {
-  const mdx = useSSG('mdx') as TimelineEventProps[];
+  const mdx = useData('mdx') as TimelineEventProps[];
 
   return (
     <BaseLayout className="space-y-32 max-w-screen-lg mx-auto">
@@ -32,7 +32,8 @@ export default function WhatsNew() {
       {mdx.map((src, i) => (
         <TimelineEvent
           key={i}
-          {...src}
+          mdx={src.mdx}
+          frontmatter={src.frontmatter}
           proExampleViewer={ProExampleViewer}
           remoteCodeViewer={RemoteCodeViewer}
           // We need to pass the env var here, because we don't have access to it inside the mdx when using MDXRemote

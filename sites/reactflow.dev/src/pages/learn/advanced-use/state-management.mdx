@@ -5,7 +5,7 @@ description: Learn how to use React Flow with a state management library like Zu
 
 # Using a State Management Library
 
-import { Callout, Tab, Tabs } from 'nextra/components';
+import { Callout, Tabs } from 'nextra/components';
 import { RemoteCodeViewer } from 'xy-shared';
 
 <Callout type="info">
@@ -24,34 +24,34 @@ As you might have seen in the previous guides and examples, React Flow can easil
 As mentioned above we are using Zustand in this example. Zustand is a bit like Redux: you have a central store with actions to alter your state and hooks to access your state. You can install Zustand via:
 
 <Tabs items={['npm', 'pnpm', 'yarn', 'bun']}>
-<Tab>
+<Tabs.Tab>
 
 ```bash copy
 npm install --save zustand
 ```
 
-  </Tab>
-  <Tab>
+  </Tabs.Tab>
+  <Tabs.Tab>
 
 ```bash copy
 pnpm add zustand
 ```
 
-  </Tab>
-  <Tab>
+  </Tabs.Tab>
+  <Tabs.Tab>
 
 ```bash copy
 yarn add zustand
 ```
 
-  </Tab>
-  <Tab>
+  </Tabs.Tab>
+  <Tabs.Tab>
 
 ```bash copy
 bun add zustand
 ```
 
-</Tab>
+</Tabs.Tab>
 </Tabs>
 
 ## Create a Store

@@ -1,12 +1,14 @@
 import { PropsTable, type PropsTableProps } from 'xy-shared';
 import React, { useMemo } from 'react';
 
-import reactFlowTypes from '@/pages/api-reference/types/_meta.json';
+import reactFlowTypes from '@/pages/api-reference/types/_meta';
 
 export const reactFlowLinks = Object.entries(reactFlowTypes).reduce<
   Record<string, string>
 >((curr, [slug, name]) => {
-  curr[name] = `/api-reference/types/${slug}`;
+  if (typeof name === 'string') {
+    curr[name] = `/api-reference/types/${slug}`;
+  }
   return curr;
 }, {});
 

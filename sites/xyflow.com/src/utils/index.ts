@@ -1,14 +1,10 @@
-import { MdxFile } from 'nextra';
 import { getPagesUnderRoute } from 'nextra/context';
+import { isMdxFile } from 'xy-shared';
 
 import { type Route, type ExternalRoute, type InternalRoute } from './routes';
 
-export function isMdxPage(page: MdxFile | any): page is MdxFile {
-  return page?.kind === 'MdxPage';
-}
-
 export function getMdxPagesUnderRoute(route: InternalRoute) {
-  return getPagesUnderRoute(route).filter(isMdxPage);
+  return getPagesUnderRoute(route).filter(isMdxFile);
 }
 
 // used for pagination for blog and case studies to display prev and next post/ case study

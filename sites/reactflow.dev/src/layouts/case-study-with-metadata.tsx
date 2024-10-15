@@ -1,9 +1,9 @@
 import { ReactNode } from 'react';
 import { useConfig } from 'nextra-theme-docs';
 import { getPagesUnderRoute } from 'nextra/context';
-import { type MdxFile } from 'nextra';
 import {
   CaseStudyLayout as BaseCaseStudyLayout,
+  isMdxFile,
   type CaseStudyFrontmatter,
 } from 'xy-shared';
 
@@ -49,9 +49,5 @@ function getPrevAndNextPagesByTitle(title: string, route: string) {
 }
 
 function getMdxPagesUnderRoute(route: string) {
-  return getPagesUnderRoute(route).filter(isMdxPage);
-}
-
-function isMdxPage(page: MdxFile | any): page is MdxFile {
-  return page?.kind === 'MdxPage';
+  return getPagesUnderRoute(route).filter(isMdxFile);
 }

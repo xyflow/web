@@ -36,8 +36,15 @@ export default function App({ Component, pageProps }) {
   useFathom(fathomOptions);
 
   return (
-    <div className={cn(className, routeSegment)}>
-      <Component {...pageProps} />
-    </div>
+    <>
+      <style jsx global>{`
+        html {
+          font-family: ${ntDapperFont.style.fontFamily}, sans-serif;
+        }
+      `}</style>
+      <div className={cn(className, routeSegment)}>
+        <Component {...pageProps} />
+      </div>
+    </>
   );
 }

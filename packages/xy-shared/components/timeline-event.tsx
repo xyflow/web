@@ -1,13 +1,13 @@
 import Link from 'next/link';
-import { MDXRemote, type MDXRemoteSerializeResult } from 'next-mdx-remote';
+import { RemoteContent } from './remote-content';
 import TimeAgo from 'timeago-react';
-import { Callout, Tabs, Tab } from 'nextra/components';
+import { Callout, Tabs } from 'nextra/components';
 import { Emoji, Text } from '@xyflow/xy-ui';
 
 import { Author, AuthorList, Image } from '../';
 
-export type TimelineEventProps = MDXRemoteSerializeResult & {
-  proExampleViewer: React.ComponentProps<any>;
+export type TimelineEventProps = {
+  proExampleViewer?: React.ComponentProps<any>;
   remoteCodeViewer: React.ComponentProps<any>;
   exampleUrl: string;
   frontmatter: {
@@ -17,6 +17,7 @@ export type TimelineEventProps = MDXRemoteSerializeResult & {
     date: `${number}-${number}-${number}}`;
     route: string;
   };
+  mdx: string;
 };
 
 export function TimelineEvent({
@@ -24,7 +25,7 @@ export function TimelineEvent({
   proExampleViewer: ProExampleViewer,
   remoteCodeViewer: RemoteCodeViewer,
   exampleUrl = '',
-  ...src
+  mdx = '',
 }: TimelineEventProps) {
   return (
     <div className="flex-col lg:flex-row flex gap-4">
@@ -39,18 +40,16 @@ export function TimelineEvent({
         </div>
       </div>
       <div className="pl-2">
-        <MDXRemote
-          frontmatter={frontmatter}
+        <RemoteContent
           components={{
             ProExampleViewer,
             RemoteCodeViewer,
             Image,
             Tabs,
-            Tab,
             Callout,
             Emoji,
           }}
-          {...src}
+          mdx={mdx}
           scope={{
             exampleUrl,
             process: typeof process !== 'undefined' ? process : {},

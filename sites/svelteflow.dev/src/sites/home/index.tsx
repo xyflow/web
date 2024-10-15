@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { useSSG } from 'nextra/ssg';
+import { useData } from 'nextra/hooks';
 import { HeartIcon, BoltIcon } from '@heroicons/react/24/outline';
 import { Button, Section, Stats } from '@xyflow/xy-ui';
 import {
@@ -90,7 +90,7 @@ const features = [
 ];
 
 export default function SvelteFlowHome() {
-  const { downloads = 450 } = useSSG();
+  const { downloads = 450 } = useData();
 
   return (
     <BaseLayout>
