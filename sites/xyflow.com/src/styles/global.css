@@ -9,7 +9,6 @@
   :root {
     --primary: 0 0% 0%;
     --primary-foreground: 210 40% 98%;
-
     --secondary-foreground: 0 0% 0%;
   }
 }
@@ -18,11 +17,11 @@
 even though the body is supposed to have overflow:hidden set. The following two
 rules make it work almost correctly, but they don't feel great. */
 
-html:has(body.nx-overflow-hidden) {
+html:has(body._overflow-hidden) {
   overflow-y: hidden;
 }
 
-html:has(body.nx-overflow-hidden) nav {
+html:has(body._overflow-hidden) nav {
   position: fixed;
   width: 100%;
 }

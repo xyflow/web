@@ -1,4 +1,4 @@
-import { useSSG } from 'nextra/ssg';
+import { useData } from 'nextra/hooks';
 import { PencilSquareIcon } from '@heroicons/react/24/outline';
 import {
   BaseLayout,
@@ -9,7 +9,7 @@ import {
 } from 'xy-shared';
 
 export default function WhatsNew() {
-  const mdx = useSSG('mdx') as TimelineEventProps[];
+  const mdx = useData('mdx') as TimelineEventProps[];
 
   return (
     <BaseLayout className="space-y-32 max-w-screen-lg mx-auto">
@@ -29,7 +29,8 @@ export default function WhatsNew() {
       {mdx.map((src, i) => (
         <TimelineEvent
           key={i}
-          {...src}
+          mdx={src.mdx}
+          frontmatter={src.frontmatter}
           remoteCodeViewer={RemoteCodeViewer}
           exampleUrl={process.env.NEXT_PUBLIC_EXAMPLES_URL}
         />

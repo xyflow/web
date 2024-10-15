@@ -1,13 +1,12 @@
 ---
 title: Quickstart
 description: React Flow quickstart that shows how to install the package, use it and where to find example apps
-sidebar_position: 1
 pagination_next: null
 ---
 
 # Quickstart
 
-import { Tab, Tabs, Cards, Card } from 'nextra/components';
+import { Tabs, Cards } from 'nextra/components';
 
 import { Emoji } from '@xyflow/xy-ui';
 import { ReactPlayer } from 'xy-shared';
@@ -36,7 +35,7 @@ You can try React Flow without setting anything up locally by checking out the
 starter projects we have on [CodeSandbox](https://codesandbox.io/):
 
 <Cards num={2}>
-  <Card
+  <Cards.Card
     title="new.reactflow.dev/js"
     href="https://new.reactflow.dev/js"
     icon={
@@ -45,7 +44,7 @@ starter projects we have on [CodeSandbox](https://codesandbox.io/):
       </div>
     }
   />
-  <Card
+  <Cards.Card
     title="new.reactflow.dev/ts"
     href="https://new.reactflow.dev/ts"
     icon={
@@ -78,93 +77,93 @@ First, spin up a new [React](https://reactjs.org/) project however you like; we
 recommend using [Vite](https://vitejs.dev/) but the choice is yours.
 
 <Tabs items={['npm', 'pnpm', 'yarn']}>
-  <Tab>
+  <Tabs.Tab>
 
 ```bash copy
 npm create vite@latest my-react-flow-app -- --template react
 ```
 
-  </Tab>
-  <Tab >
+  </Tabs.Tab>
+  <Tabs.Tab>
 
 ```bash copy
 pnpm create vite my-react-flow-app -- --template react
 ```
 
-  </Tab>
-  <Tab >
+  </Tabs.Tab>
+  <Tabs.Tab>
 
 ```bash copy
 yarn create vite my-react-flow-app -- --template react
 ```
 
-  </Tab>
+  </Tabs.Tab>
 </Tabs>
 
 React Flow is published on npm as [`@xyflow/react`](https://npmjs.com/package/@xyflow/react), so go ahead and add it next.
 
 <Tabs items={['npm', 'pnpm', 'yarn', 'bun']}>
-  <Tab >
+  <Tabs.Tab>
 
 ```bash copy
 npm install @xyflow/react
 ```
 
-  </Tab>
-    <Tab >
+  </Tabs.Tab>
+    <Tabs.Tab>
 
 ```bash copy
 pnpm add @xyflow/react
 ```
 
-  </Tab>
-  <Tab >
+  </Tabs.Tab>
+  <Tabs.Tab>
 
 ```bash copy
 yarn add @xyflow/react
 ```
 
-  </Tab>
-  <Tab>
+  </Tabs.Tab>
+  <Tabs.Tab>
 
 ```bash copy
 bun add @xyflow/react
 ```
 
-</Tab>
+</Tabs.Tab>
 </Tabs>
 
 Lastly, spin up the dev server and we're good to go!
 
 <Tabs items={['npm', 'pnpm', 'yarn', 'bun']}>
-  <Tab>
+  <Tabs.Tab>
 
 ```bash copy
 npm run dev
 ```
 
-  </Tab>
-  <Tab>
+  </Tabs.Tab>
+  <Tabs.Tab>
 
 ```bash copy
 pnpm dev
 ```
 
-  </Tab>
-  <Tab>
+  </Tabs.Tab>
+  <Tabs.Tab>
 
 ```bash copy
 yarn dev
 ```
 
-  </Tab>
-  <Tab>
+  </Tabs.Tab>
+  <Tabs.Tab>
 
 ```bash copy
 bun run dev
 ```
 
-</Tab>
+</Tabs.Tab>
 </Tabs>
 
 ## Creating your first flow
@@ -318,12 +317,12 @@ Check out the links below on where to head next.
 ## Next Steps
 
 <Cards>
-  <Card title="Concepts" href="/learn/concepts/introduction" />
-  <Card title="Customization" href="/learn/customization/custom-nodes" />
-  <Card title="Examples" href="/examples" />
-  <Card title="API Reference" href="/api-reference" />
-  <Card title="Discord" href="https://discord.gg/RVmnytFmGW" />
-  <Card
+  <Cards.Card title="Concepts" href="/learn/concepts/introduction" />
+  <Cards.Card title="Customization" href="/learn/customization/custom-nodes" />
+  <Cards.Card title="Examples" href="/examples" />
+  <Cards.Card title="API Reference" href="/api-reference" />
+  <Cards.Card title="Discord" href="https://discord.gg/RVmnytFmGW" />
+  <Cards.Card
     title="Template Projects"
     href="https://github.com/xyflow/react-flow-example-apps"
   />

@@ -1,7 +1,11 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useConfig } from 'nextra-theme-docs';
-import { Footer, Button, Logo, Text, cn } from '@xyflow/xy-ui';
+import { Footer, Button, Logo, Text } from '@xyflow/xy-ui';
+import { Head } from 'xy-shared';
+
+const defaultDescription =
+  'Open source libraries for creating interactive workflows, dynamic diagrams and custom node-based UIs.';
 
 const baseUrl =
   process.env.NODE_ENV === 'production'
@@ -61,8 +65,16 @@ export default {
   feedback: {
     useLink: () => 'https://xyflow.com/contact',
   },
-  primaryHue: 333,
-  primarySaturation: 100,
+  color: {
+    hue: 333,
+    saturation: 100,
+  },
+  toc: {
+    backToTop: null,
+  },
+  sidebar: {
+    toggleButton: false,
+  },
   banner: {
     // key: 'react-flow12',
     // text: (
@@ -74,54 +86,29 @@ export default {
     //   </Link>
     // ),
   },
-  useNextSeoProps() {
+  head() {
     const router = useRouter();
     const { frontMatter } = useConfig();
-    const url = `${baseUrl}${router.asPath}`;
+
+    const title = frontMatter.title
+      ? `${frontMatter.title} - xyflow`
+      : 'xyflow';
+
     const hasImage =
       frontMatter.image && frontMatter.imageWidth && frontMatter.imageHeight;
 
-    return {
-      defaultTitle: 'xyflow',
-      titleTemplate: '%s – xyflow',
-      title: frontMatter.title || 'xyflow',
-      description:
-        frontMatter.description ||
-        'xyflow - Customizable library for rendering workflows, diagrams and node-based UIs.',
-
-      additionalLinkTags: [
-        {
-          rel: 'icon',
-          href: `${baseUrl}/img/favicon.ico`,
-        },
-      ],
-
-      additionalMetaTags: [
-        {
-          name: 'docsearch:site',
-          content: 'svelte',
-        },
-      ],
-
-      twitter: {
-        handle: '@xyflowdev',
-        site: '@xyflowdev',
-        cardType: 'summary_large_image',
-      },
-
-      openGraph: {
-        url,
-        type: 'website',
-        images: [
-          {
-            url: `${baseUrl}${hasImage || '/img/og/xyflow.jpg'}`,
-            width: hasImage ? frontMatter.imageWidth : 1200,
-            height: hasImage ? frontMatter.imageHeight : 640,
-            alt: 'xyflow Teaser',
-          },
-        ],
-      },
-    };
+    return (
+      <Head
+        title={title}
+        description={frontMatter.description ?? defaultDescription}
+        pageUrl={`${baseUrl}${router.asPath}`}
+        faviconUrl={`${baseUrl}/img/favicon.ico`}
+        ogImage={{
+          url: `${baseUrl}${hasImage || '/img/og/xyflow.jpg'}`,
+          width: frontMatter.imageWidth,
+          height: frontMatter.imageHeight,
+        }}
+      />
+    );
   },
-  head: null,
 };

@@ -4,7 +4,7 @@ description: Use this guide to migrate from React Flow 11 to 12.
 created_at: 2024-07-15
 ---
 
-import { Tabs, Tab } from 'nextra/components';
+import { Tabs } from 'nextra/components';
 import { Emoji } from '@xyflow/xy-ui';
 
 # Migrate to React Flow 12
@@ -24,27 +24,27 @@ Before you can use the **[new features](#new-features)** that come with React Fl
 Before you start to migrate, you need to install the new package.
 
 <Tabs items={['npm', 'pnpm', 'yarn']}>
-  <Tab>
+  <Tabs.Tab>
 
 ```bash
 npm install @xyflow/react
 ```
 
-  </Tab>
-  <Tab>
+  </Tabs.Tab>
+  <Tabs.Tab>
 
 ```bash
 pnpm add @xyflow/react
 ```
 
-  </Tab>
-  <Tab>
+  </Tabs.Tab>
+  <Tabs.Tab>
 
 ```bash
 yarn add @xyflow/react
 ```
 
-  </Tab>
+  </Tabs.Tab>
 </Tabs>
 
 {/* this is a workaround to hide headlines from the TOC */}
