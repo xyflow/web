@@ -191,7 +191,9 @@ export default {
             What's new?
           </p>
           {getMdxPagesUnderRoute('/whats-new')
-            .sort()
+            .sort((a, b) =>
+              b.frontMatter.date.localeCompare(a.frontMatter.date),
+            )
             .slice(0, 3)
             .map(({ route, frontMatter }) => (
               <Link key={route} href={route} className={className}>
