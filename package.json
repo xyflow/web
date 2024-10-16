@@ -9,7 +9,6 @@
     "dev:svelteflow.dev": "turbo run dev --filter svelteflow-website --filter example-apps",
     "dev:ui-components": "turbo run dev --filter ui-components",
     "dev:xyflow.com": "turbo run dev --filter xyflow-website --filter example-apps",
-    "dev:style": "turbo run dev --filter xy-styleguide",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "clean": "pnpm -r --parallel exec rimraf dist .turbo node_modules"
