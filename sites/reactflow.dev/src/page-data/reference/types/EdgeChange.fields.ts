@@ -4,6 +4,7 @@ export const edgeAddChangeFields: PropsTableProps = {
   props: [
     { name: 'type', type: '"add"' },
     { name: 'item', type: 'Edge<T>' },
+    { name: 'index', type: 'number | undefined' },
   ],
 };
 
@@ -14,9 +15,10 @@ export const edgeRemoveChangeFields: PropsTableProps = {
   ],
 };
 
-export const edgeResetChangeFields: PropsTableProps = {
+export const edgeReplaceChangeFields: PropsTableProps = {
   props: [
-    { name: 'type', type: '"reset"' },
+    { name: 'type', type: '"replace"' },
+    { name: 'id', type: 'string' },
     { name: 'item', type: 'Edge<T>' },
   ],
 };
