@@ -7,6 +7,7 @@ export * from './layouts/case-study';
 export * from './layouts/example';
 export * from './layouts/showcase';
 export * from './layouts/text-only';
+export * from './layouts/tutorial';
 
 export * from './widgets/about-section';
 export * from './widgets/authors-list';
