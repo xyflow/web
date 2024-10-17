@@ -1,14 +1,22 @@
 import { buildDynamicMDX } from 'nextra/remote';
 import { readFile, readdir, stat } from 'fs/promises';
-import { type InternalRoute } from '../routes';
 import * as Path from 'path';
 import * as Url from 'url';
 
 const __dirname = Url.fileURLToPath(import.meta.url);
 
 // @todo can we put this in xy-shared=
-export async function getMdxContentUnderRoute(route: InternalRoute) {
-  const path = Path.join(__dirname, '../../../pages', route);
+export async function getMdxContentUnderRoute<T extends string>(
+  site: string,
+  route: T,
+) {
+  const path = Path.join(
+    __dirname,
+    '../../../../../sites',
+    site,
+    'src/pages',
+    route,
+  );
   const files = await readdir(path);
   const mdx = [];
 
