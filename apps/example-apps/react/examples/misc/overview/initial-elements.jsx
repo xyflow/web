@@ -12,9 +12,9 @@ export const nodes = [
       label:
         'Built-in node and edge types. Draggable, deletable and connectable!',
       arrowStyle: {
-        right: 0,
-        bottom: 0,
-        transform: 'translate(-30px,10px) rotate(-80deg)',
+        left: 20,
+        bottom: -20,
+        transform: 'rotate(-30deg)',
       },
     },
     position: { x: -80, y: -30 },
@@ -52,19 +52,19 @@ export const nodes = [
       level: 2,
       label: 'Sub flows, toolbars and resizable nodes!',
       arrowStyle: {
-        left: 0,
-        bottom: 0,
-        transform: 'translate(5px, 25px) scale(1, -1) rotate(100deg)',
+        left: 10,
+        bottom: -10,
+        transform: 'scale(1, -1) rotate(130deg)',
       },
     },
-    position: { x: 220, y: 200 },
+    position: { x: 25, y: 200 },
   },
   {
     id: '2-1',
     type: 'group',
     position: {
-      x: -170,
-      y: 250,
+      x: -370,
+      y: 200,
     },
     style: {
       width: 380,
@@ -82,7 +82,6 @@ export const nodes = [
     style: {
       width: 80,
       height: 80,
-      background: 'rgb(208, 192, 247)',
     },
     parentId: '2-1',
     extent: 'parent',
@@ -97,8 +96,6 @@ export const nodes = [
     style: {
       width: 80,
       height: 80,
-      background: 'rgb(208, 192, 247)',
-      color: 'white',
     },
     parentId: '2-1',
     extent: 'parent',
@@ -110,25 +107,25 @@ export const nodes = [
     selectable: false,
     data: {
       level: 3,
-      label: <>Nodes and edges can be anything and are fully customizable!</>,
+      label: "Nodes and edges can be anything and are fully customizable!",
       arrowStyle: {
-        right: 0,
+        right: 100,
         bottom: 0,
-        transform: 'translate(-35px, 20px) rotate(-80deg)',
+        transform: 'translate(5px, 25px) scale(1, -1) rotate(180deg)',
       },
     },
-    position: { x: -40, y: 570 },
+    position: { x: 340, y: 200 },
   },
   {
     id: '3-2',
     type: 'textinput',
-    position: { x: 150, y: 650 },
+    position: { x: 250, y: 300 },
     data: {},
   },
   {
     id: '3-1',
     type: 'circle',
-    position: { x: 350, y: 500 },
+    position: { x: 130, y: 400 },
     data: {},
   },
 ];
@@ -167,20 +164,20 @@ export const edges = [
     },
   },
   {
-    id: 'e3-3',
-    source: '2-3',
-    sourceHandle: 'a',
-    target: '3-2',
-    type: 'button',
-    animated: true,
-    style: { stroke: 'rgb(158, 118, 255)', strokeWidth: 2 },
-  },
-  {
     id: 'e3-4',
     source: '2-3',
-    sourceHandle: 'b',
+    sourceHandle: 'a',
     target: '3-1',
     type: 'button',
     style: { strokeWidth: 2 },
+  },
+  {
+    id: 'e3-3',
+    source: '2-3',
+    sourceHandle: 'b',
+    target: '3-2',
+    type: 'button',
+    animated: true,
+    style: { stroke: '#FE4C96', strokeWidth: 2 },
   },
 ];

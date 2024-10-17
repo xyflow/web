@@ -46,7 +46,7 @@ export default function CustomEdge({
           }}
           className="nodrag nopan"
         >
-          <button className="edgebutton" onClick={onEdgeClick}>
+          <button className="react-flow__button react-flow__button--edge" onClick={onEdgeClick}>
             ×
           </button>
         </div>

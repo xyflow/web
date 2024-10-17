@@ -9,7 +9,8 @@ import {
   useEdgesState,
 } from '@xyflow/react';
 
-import '@xyflow/react/dist/style.css';
+// TODO: Port to Library
+import './xy-theme-tmp.css';
 
 import {
   nodes as initialNodes,
