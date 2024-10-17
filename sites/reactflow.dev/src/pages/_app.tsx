@@ -4,7 +4,7 @@ import { cn } from '@xyflow/xy-ui';
 import { useFathom } from 'xy-shared';
 import { ntDapperFont, fontClassNames } from 'xy-shared/fonts';
 
-import 'styles/global.css';
+import '../global.css';
 
 const fathomOptions = {
   id: 'LXMRMWLB',
