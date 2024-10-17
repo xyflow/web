@@ -7,7 +7,7 @@ description:
 ---
 
 import { PropsTable } from '@/components/props-table';
-import { signature } from '@/page-data/reference/utils/getConnectedEdges.ts';
+import { signature } from '@/references/utils/getConnectedEdges.ts';
 
 # getConnectedEdges()
 
@@ -25,7 +25,7 @@ const nodes = [
 ];
 const edges = [
   { id: 'a->c', source: 'a', target: 'c' },
-  { id: 'c->d', source: 'c', target: 'd' }
+  { id: 'c->d', source: 'c', target: 'd' },
 ];
 
 const connectedEdges = getConnectedEdges(nodes, edges);

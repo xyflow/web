@@ -3,9 +3,9 @@ import { useRouter } from 'next/router';
 import { useConfig, Navbar } from 'nextra-theme-docs';
 
 import { Footer, Button, LogoLabel } from '@xyflow/xy-ui';
-import { Search, SidebarTitle, Head } from 'xy-shared';
+import { Search, SidebarTitle, Head, getMdxPagesUnderRoute } from 'xy-shared';
 import { SparklesIcon } from '@heroicons/react/24/outline';
-import { getMdxPagesUnderRoute, type Route } from '@/utils';
+import { type Route } from '@/utils';
 import { defaultFooterCategories } from '@xyflow/xy-ui';
 
 function useIsPro() {

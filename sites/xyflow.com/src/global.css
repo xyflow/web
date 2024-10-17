@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import '@xyflow/react/dist/style.css';
+@import 'xy-shared/styles/globals.css';
+
+@layer base {
+  :root {
+    --primary: 0 0% 0%;
+    --primary-foreground: 210 40% 98%;
+    --secondary-foreground: 0 0% 0%;
+  }
+}
+
+.nextra-nav-container nav .nextra-scrollbar {
+  margin-right: auto;
+}
