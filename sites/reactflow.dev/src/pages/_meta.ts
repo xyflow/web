@@ -8,8 +8,13 @@ export default {
   learn: 'Learn',
   examples: 'Examples',
   'api-reference': 'Reference',
+  components: {
+    title: 'Components',
+    display: 'visible',
+  },
   community: {
     title: 'Community',
+    display: 'hidden',
     type: 'menu',
     items: {
       showcase: {

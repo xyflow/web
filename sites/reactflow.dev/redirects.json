@@ -1038,5 +1038,10 @@
     "source": "/examples/edges/updatable-edge",
     "destination": "/examples/edges/reconnect-edge",
     "permanent": true
+  },
+  {
+    "source": "/learn/concepts/plugin-components",
+    "destination": "/learn/concepts/built-in-components",
+    "permanent": true
   }
 ]

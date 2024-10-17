@@ -1,0 +1,16 @@
+{
+  "name": "button-edge",
+  "type": "registry:component",
+  "dependencies": ["@xyflow/react", "lucide-react"],
+  "devDependencies": [],
+  "registryDependencies": ["button"],
+  "files": [
+    {
+      "type": "registry:component",
+      "path": "button-edge.tsx"
+    }
+  ],
+  "tailwind": {},
+  "cssVars": {},
+  "meta": {}
+}
