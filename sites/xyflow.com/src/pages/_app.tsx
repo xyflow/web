@@ -1,5 +1,6 @@
-import { useFathom } from 'xy-shared';
+import { useFathom, UseConfigContext } from 'xy-shared';
 import { ntDapperFont, fontClassNames } from 'xy-shared/fonts';
+import { useConfig } from 'nextra-theme-docs';
 
 import '../global.css';
 
@@ -18,7 +19,9 @@ export default function App({ Component, pageProps }) {
         }
       `}</style>
       <div className={fontClassNames}>
-        <Component {...pageProps} />
+        <UseConfigContext.Provider value={useConfig}>
+          <Component {...pageProps} />
+        </UseConfigContext.Provider>
       </div>
     </>
   );

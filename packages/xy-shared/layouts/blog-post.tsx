@@ -1,14 +1,16 @@
-import { useConfig } from 'nextra-theme-docs';
-
-import { getPrevAndNextPagesByTitle } from '@/lib';
+import { useContext } from 'react';
+import { getPrevAndNextPagesByTitle } from '../lib';
 import { BaseBlogPostLayout, BlogPostFrontmatter } from './blog-post-base';
+import { UseConfigContext } from '../context/UseConfigContext';
 
-export type BlogPostLayoutProps = {
+type BlogPostLayoutProps = {
   children: React.ReactNode;
 };
 
 export function BlogPostLayout({ children }: BlogPostLayoutProps) {
+  const useConfig = useContext(UseConfigContext);
   const { title, frontMatter } = useConfig<BlogPostFrontmatter>();
+
   const { prev, next } = getPrevAndNextPagesByTitle(title, '/blog');
 
   return (
@@ -17,5 +19,3 @@ export function BlogPostLayout({ children }: BlogPostLayoutProps) {
     </BaseBlogPostLayout>
   );
 }
-
-export default BlogPostLayout;
