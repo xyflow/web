@@ -54,7 +54,7 @@
     "eslint-config-xyflow": "workspace:*",
     "postcss": "^8.4.28",
     "tailwindcss": "^3.3.3",
-    "typescript": "^5.1.3",
+    "typescript": "^5.5.4",
     "xy-tailwind-config": "workspace:*",
     "xy-tsconfig": "workspace:*"
   }
