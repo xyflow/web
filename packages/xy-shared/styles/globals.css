@@ -261,7 +261,8 @@ article.nextra-content ol li p {
 .DocSearch-Button .DocSearch-Button-Keys {
   font-size: 14px;
   min-width: 0;
-  margin-left: 8px;
+  margin-left: 10px;
+  margin-right: 5px;
 }
 
 .DocSearch-Button .DocSearch-Button-Key {
@@ -349,4 +350,57 @@ article.nextra-content ol li p {
     -webkit-font-smoothing: initial !important;
     overflow-x: hidden;
   }
+}
+
+/* style of code blocks */
+.nextra-code > div:first-child {
+  @apply bg-primary/10;
+  border: none;
+}
+
+.nextra-code pre {
+  @apply bg-primary/5;
+  box-shadow: none;
+}
+
+/* needed for moving navbar elements to the left */
+.nextra-nav-container nav > div:first-child {
+  @apply !mr-5;
+}
+
+/* stack example code and preview vertically */
+.sandpack-wrapper.vertical > .sp-wrapper > .sp-layout {
+  flex-direction: column-reverse;
+}
+
+.sandpack-wrapper.vertical .sp-stack {
+  flex: none;
+}
+
+/* We have this weird bug where the mobile top navbar can be scrolled out of view
+even though the body is supposed to have overflow:hidden set. The following two
+rules make it work almost correctly, but they don't feel great. */
+
+html:has(body._overflow-hidden) {
+  overflow-y: hidden;
+}
+
+html:has(body._overflow-hidden) nav {
+  position: fixed;
+  width: 100%;
+}
+
+/* this override adds some space for the api docs */
+
+.learn article main.md\:_px-12,
+.api-reference article main.md\:_px-12,
+.examples article main.md\:_px-12 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+/* this unifies the /examples content width with /api-refernce and /learn */
+
+.examples main._max-w-6xl {
+  max-width: none;
 }

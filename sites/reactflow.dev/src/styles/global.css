@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @import '@xyflow/react/dist/style.css';
-@import 'xy-shared/lib/globals.css';
+@import 'xy-shared/styles/globals.css';
 
 @layer base {
   :root {
@@ -15,38 +15,6 @@
     --accent: 333 100% 50%;
     --shiki-color-background: red;
   }
-}
-
-/* this override adds some space for the api docs */
-
-.learn article main.md\:_px-12,
-.api-reference article main.md\:_px-12,
-.examples article main.md\:_px-12 {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-}
-
-/* this unifies the /examples content width with /api-refernce and /learn */
-
-.examples main._max-w-6xl {
-  max-width: none;
-}
-
-/* We have this weird bug where the mobile top navbar can be scrolled out of view
-even though the body is supposed to have overflow:hidden set. The following two
-rules make it work almost correctly, but they don't feel great. */
-
-html:has(body._overflow-hidden) {
-  overflow-y: hidden;
-}
-
-html:has(body._overflow-hidden) nav {
-  position: fixed;
-  width: 100%;
-}
-
-.nextra-nav-container nav > div:first-child {
-  @apply !mr-5;
 }
 
 .nextra-nav-container nav .nextra-scrollbar > a[href='/components']:after {
@@ -75,22 +43,4 @@ html:has(body._overflow-hidden) nav {
 
 .developer-survey-2023 footer {
   display: none;
-}
-
-.sandpack-wrapper.vertical > .sp-wrapper > .sp-layout {
-  flex-direction: column-reverse;
-}
-
-.sandpack-wrapper.vertical .sp-stack {
-  flex: none;
-}
-
-.nextra-code > div:first-child {
-  @apply bg-primary/10;
-  border: none;
-}
-
-.nextra-code pre {
-  @apply bg-primary/5;
-  box-shadow: none;
 }
