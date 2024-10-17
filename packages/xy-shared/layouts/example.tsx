@@ -1,7 +1,7 @@
-import { type ReactNode } from 'react';
+import { UseConfigContext } from '../context/UseConfigContext';
+import { useContext, type ReactNode } from 'react';
 
-export type ExampleLayoutProps = {
-  frontMatter: { title: string; is_pro_example?: boolean; is_free?: boolean };
+type ExampleLayoutProps = {
   children: ReactNode;
 };
 
@@ -10,7 +10,14 @@ export type ExampleLayoutProps = {
  * svelteflow.dev.
  *
  */
-export function ExampleLayout({ frontMatter, children }: ExampleLayoutProps) {
+export function ExampleLayout({ children }: ExampleLayoutProps) {
+  const useConfig = useContext(UseConfigContext);
+  const { frontMatter } = useConfig<{
+    title: string;
+    is_pro_example?: boolean;
+    is_free?: boolean;
+  }>();
+
   return (
     <>
       <div className="mt-2 flex items-center space-x-2">

@@ -4,7 +4,7 @@ description: For working with multiple flows on a page, so that each has a separ
 ---
 
 import { RemoteCodeViewer } from 'xy-shared';
-import ExampleLayout from '@/layouts/example-with-frontmatter';
+import { ExampleLayout } from 'xy-shared';
 
 <ExampleLayout>
 If you are working with multiple flows on a page or if you are using a client side router you need to wrap each flow with a [`ReactFlowProvider`](/api-reference/react-flow-provider) so that every flow has its own store instance.
