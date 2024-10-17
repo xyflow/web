@@ -10,9 +10,8 @@ import {
   Button,
   Link,
 } from '@xyflow/xy-ui';
-import { ProjectPreview } from 'xy-shared';
+import { ProjectPreview, getMdxPagesUnderRoute } from 'xy-shared';
 
-import { getMdxPagesUnderRoute } from '@/utils';
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 
 export default function ExamplesOverviewPage({

@@ -1,9 +1,8 @@
 import { useConfig } from 'nextra-theme-docs';
-import { getPagesUnderRoute } from 'nextra/context';
 import {
-  BlogPostLayout as BaseBlogPostLayout,
-  isMdxFile,
+  BaseBlogPostLayout,
   type BlogPostFrontmatter,
+  getPrevAndNextPagesByTitle,
 } from 'xy-shared';
 
 export type BlogPostLayoutProps = {
@@ -22,27 +21,3 @@ export function BlogPostLayout({ children }: BlogPostLayoutProps) {
 }
 
 export default BlogPostLayout;
-
-// UTILS -----------------------------------------------------------------------
-
-function getPrevAndNextPagesByTitle(title: string, route: string) {
-  const pages = getMdxPagesUnderRoute(route).sort((a, b) => {
-    const aDate = new Date(a.frontMatter?.date);
-    const bDate = new Date(b.frontMatter?.date);
-
-    return aDate.getTime() - bDate.getTime();
-  });
-
-  const currentIndex = pages.findIndex(
-    (page) => page.frontMatter?.title === title,
-  );
-
-  const prev = pages[currentIndex - 1];
-  const next = pages[currentIndex + 1];
-
-  return { prev, next };
-}
-
-function getMdxPagesUnderRoute(route: string) {
-  return getPagesUnderRoute(route).filter(isMdxFile);
-}

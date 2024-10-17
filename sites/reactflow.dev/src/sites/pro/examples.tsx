@@ -15,7 +15,13 @@ import {
   Section,
   ListWrapper,
 } from '@xyflow/xy-ui';
-import { BaseLayout, Hero, ProjectPreview, LayoutBreakout } from 'xy-shared';
+import {
+  BaseLayout,
+  Hero,
+  ProjectPreview,
+  LayoutBreakout,
+  getMdxPagesUnderRoute,
+} from 'xy-shared';
 import {
   ArrowDownCircleIcon,
   ArrowRightCircleIcon,
@@ -24,7 +30,6 @@ import {
   StarIcon,
 } from '@heroicons/react/24/outline';
 
-import { getMdxPagesUnderRoute } from '@/utils';
 import starsvg from '../../../public/img/pro/star.svg';
 
 function getProExamplesUnderRoute(route) {

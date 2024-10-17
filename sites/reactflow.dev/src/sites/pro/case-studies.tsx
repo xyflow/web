@@ -1,8 +1,12 @@
 import { SparklesIcon } from '@heroicons/react/24/outline';
 import { ContentGrid, ContentGridItem } from '@xyflow/xy-ui';
-import { BaseLayout, Hero, ProjectPreview, SubscribeSection } from 'xy-shared';
-
-import { getMdxPagesUnderRoute } from '@/utils';
+import {
+  BaseLayout,
+  Hero,
+  ProjectPreview,
+  SubscribeSection,
+  getMdxPagesUnderRoute,
+} from 'xy-shared';
 
 export default function CaseStudies() {
   return (

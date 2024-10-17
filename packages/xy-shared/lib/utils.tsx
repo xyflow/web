@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { Folder, MdxFile, Page } from 'nextra';
-import { getAllPages } from 'nextra/context';
+import { getAllPages, getPagesUnderRoute } from 'nextra/context';
 
 import { SidebarTitle } from '../components/sidebar-title';
 
@@ -106,4 +106,42 @@ export function getMetaConfigFromTitleLookup(
     };
     return acc;
   }, {});
+}
+
+export function getMdxPagesUnderRoute<InternalRoute extends string>(
+  route: InternalRoute,
+) {
+  return getPagesUnderRoute(route).filter(isMdxFile);
+}
+
+// used for pagination for blog and case studies to display prev and next post/ case study
+export function getPrevAndNextPagesByTitle<InternalRoute extends string>(
+  title,
+  route: InternalRoute,
+) {
+  const pages = getMdxPagesUnderRoute(route);
+
+  const currentIndex = pages.findIndex(
+    (page) => page.frontMatter?.title === title,
+  );
+  const prevIndex = currentIndex === 0 ? pages.length - 1 : currentIndex - 1;
+  const nextIndex = currentIndex === pages.length - 1 ? 0 : currentIndex + 1;
+
+  const prev = pages[prevIndex];
+  const next = pages[nextIndex];
+
+  return { prev, next };
+}
+
+export async function fetchJSON(url: string): Promise<Record<string, any>> {
+  let json = {};
+
+  try {
+    const resp = await fetch(url, { headers: { 'User-Agent': 'webkid' } });
+    json = await resp.json();
+  } catch (err) {
+    console.log(err);
+  }
+
+  return json;
 }
