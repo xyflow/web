@@ -1,4 +1,4 @@
-import { type ReactNode } from 'react';
+import { useContext, type ReactNode } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { type MdxFile } from 'nextra';
@@ -11,7 +11,14 @@ import {
   ContentGridItem,
 } from '@xyflow/xy-ui';
 
-import { AuthorList, Author, ProjectPreview, SubscribeSection } from '../';
+import {
+  AuthorList,
+  Author,
+  ProjectPreview,
+  SubscribeSection,
+  UseConfigContext,
+  getPrevAndNextPagesByTitle,
+} from '../';
 
 export type CaseStudyFrontmatter = {
   title: string;
@@ -27,18 +34,14 @@ export type CaseStudyFrontmatter = {
 };
 
 export type CaseStudyLayoutProps = {
-  frontMatter: CaseStudyFrontmatter;
-  prev?: MdxFile;
-  next?: MdxFile;
   children: ReactNode;
 };
 
-export function CaseStudyLayout({
-  frontMatter,
-  prev,
-  next,
-  children,
-}: CaseStudyLayoutProps) {
+export function CaseStudyLayout({ children }: CaseStudyLayoutProps) {
+  const useConfig = useContext(UseConfigContext);
+  const { title, frontMatter } = useConfig<CaseStudyFrontmatter>();
+
+  const { prev, next } = getPrevAndNextPagesByTitle(title, '/pro/case-studies');
   return (
     <>
       <div className="max-w-3xl mx-auto px-6">

@@ -6,8 +6,8 @@ export default async function Home() {
       <header className="space-y-8">
         <h1 className="mb-4 text-4xl font-bold">xyflow components registry</h1>
         <p>
-          Here you can find all the components we've built and are available for
-          you to use in your projects.
+          Here you can find all the components we&apos;ve built and are
+          available for you to use in your projects.
         </p>
 
         <div className="flex gap-4 [&>*]:flex-1 [&>*]:rounded [&>*]:border [&>*]:p-4 [&>*]:text-center">

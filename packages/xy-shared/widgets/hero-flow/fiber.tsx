@@ -44,7 +44,8 @@ function Shape({ type, random, color, ...props }: any) {
       ) : (
         <tetrahedronGeometry args={[1, 0]} />
       )}
-      <meshLambertMaterial color={color} />
+      {/** @ts-ignore */}
+      <meshLambertMaterial color={color as Color} />
     </mesh>
   );
 }

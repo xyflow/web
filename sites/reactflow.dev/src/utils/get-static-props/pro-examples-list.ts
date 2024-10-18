@@ -1,4 +1,4 @@
-import { fetchJSON } from '..';
+import { fetchJSON } from 'xy-shared';
 
 export default async function getStaticProps() {
   const data = await fetchJSON(
