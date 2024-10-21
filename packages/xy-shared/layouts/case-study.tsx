@@ -16,7 +16,7 @@ import {
   Author,
   ProjectPreview,
   SubscribeSection,
-  UseConfigContext,
+  SharedContext,
   getPrevAndNextPagesByTitle,
 } from '../';
 
@@ -38,7 +38,7 @@ export type CaseStudyLayoutProps = {
 };
 
 export function CaseStudyLayout({ children }: CaseStudyLayoutProps) {
-  const useConfig = useContext(UseConfigContext);
+  const { useConfig } = useContext(SharedContext);
   const { title, frontMatter } = useConfig<CaseStudyFrontmatter>();
 
   const { prev, next } = getPrevAndNextPagesByTitle(title, '/pro/case-studies');

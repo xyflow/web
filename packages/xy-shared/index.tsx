@@ -39,4 +39,4 @@ export * from './components/head';
 
 export * from './lib/utils';
 
-export * from './context/UseConfigContext';
+export * from './context/shared-context';

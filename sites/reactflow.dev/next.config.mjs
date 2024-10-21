@@ -45,7 +45,6 @@ const withNextra = nextra({
   mdxOptions: {
     rehypePrettyCodeOptions: {
       // theme: 'nord',
-      // keepBackground: true,
     },
   },
 });

@@ -1,4 +1,4 @@
-import { compileCodeSnippet } from './compile-code-snippet';
+import { compileCodeSnippet } from 'xy-shared/lib/get-static-props/compile-code-snippet';
 import { readFileSync } from 'fs';
 
 function loadJSONFile(url: string) {
