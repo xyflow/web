@@ -22,21 +22,13 @@ import { Callout } from 'nextra/components';
 
 import { RemoteCodeViewer } from 'xy-shared';
 
-<RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/introduction-flow/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/introduction-flow/index.html`}
-  framework="react"
-/>
+<RemoteCodeViewer route="learn/introduction-flow" framework="react" />
 
 ## Basic Functionality
 
 By default React Flow doesn't do any internal state updates besides handling the viewport when you setup a controlled flow. As with an `<input />` component you need to pass handlers to apply the changes that are triggered by React Flow to your nodes and edges. In order to **select**, **drag** and **remove** nodes and edges you need to implement an `onNodesChange` and an `onEdgesChange` handler:
 
-<RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/introduction-flow-2/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/introduction-flow-2/index.html`}
-  framework="react"
-/>
+<RemoteCodeViewer route="learn/introduction-flow-2" framework="react" />
 
 What is happening here? Whenever React Flow triggers a change (node init, node drag, edge select, etc.), the `onNodesChange` handler gets called. We export an `applyNodeChanges` handler so that you don't need to handle the changes by yourself. The `applyNodeChanges` handler returns an updated array of nodes that is your new nodes array. You now have an interactive flow with the following kinds of interactions:
 
@@ -57,11 +49,7 @@ const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
 The last piece that is missing to get the full interactivity is the `onConnect` handler. You need to implement it, in order to handle new connections.
 
-<RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/introduction-flow-3/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/introduction-flow-3/index.html`}
-  framework="react"
-/>
+<RemoteCodeViewer route="learn/introduction-flow-3" framework="react" />
 
 In this example we are using the `addEdge` handler that returns an array of edges with the newly created one. If you want to set a certain edge option whenever an edge gets created you pass your options like this:
 

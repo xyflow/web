@@ -12,8 +12,8 @@ import { RemoteCodeViewer } from 'xy-shared';
 
 <Callout type="warning">
   <strong>Order of Nodes:</strong>
-  It's important that your parent nodes appear before their children in the `nodes`
-  array to get processed correctly.
+  It's important that your parent nodes appear before their children in the
+  `nodes` array to get processed correctly.
 </Callout>
 
 ### Defining child nodes
@@ -42,8 +42,7 @@ const nodes = writable([
 In the following example, we define a fixed width and height of the parent node by using the `style` option. Additionally, we configure the child extent to 'parent' to restrict the movement of child nodes beyond the boundaries of the parent node.
 
 <RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/guides/subflows/a/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/guides/subflows/a/index.html`}
+  route="guides/subflows/a"
   framework="svelte"
   editorHeight={500}
 />
@@ -56,8 +55,7 @@ In the provided example, we use the `group` type for the parent node. The 'group
 Let's continue by adding more nodes and edges. As you can see, we can connect nodes within a group and create connections that go from a sub flow to an outer node:
 
 <RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/guides/subflows/b/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/guides/subflows/b/index.html`}
+  route="guides/subflows/b"
   framework="svelte"
   editorHeight={500}
 />
@@ -66,8 +64,7 @@ Let's continue by adding more nodes and edges. As you can see, we can connect no
 To demonstrate, let's remove the label from node B and add some child nodes. This example highlights the flexibility of using one of the default node types as a parent. Furthermore, we set the child nodes to have `draggable: false`, rendering them non-movable.
 
 <RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/guides/subflows/c/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/guides/subflows/c/index.html`}
+  route="guides/subflows/c"
   framework="svelte"
   editorHeight={500}
 />
