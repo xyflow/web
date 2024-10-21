@@ -7,22 +7,19 @@ export default memo(({ id }) => {
   const { setNodes } = useReactFlow();
   const dimensions = useStore((s) => {
     const node = s.nodeLookup.get('2-3');
-
     if (
       !node ||
-      !node.width ||
-      !node.height ||
+      !node.measured.width ||
+      !node.measured.height ||
       !s.edges.some((edge) => edge.target === id)
     ) {
       return null;
     }
-
     return {
-      width: node.width,
-      height: node.height,
+      width: node.measured.width,
+      height: node.measured.height,
     };
   });
-
   const updateDimension = (attr) => (event) => {
     setNodes((nds) =>
       nds.map((n) => {
@@ -40,26 +37,22 @@ export default memo(({ id }) => {
       }),
     );
   };
-
+  
   return (
     <>
-      <div className="wrapper gradient">
-        <div className="inner">
-          {dimensionAttrs.map((attr) => (
-            <Fragment key={attr}>
-              <label>node {attr}</label>
-              <input
-                type="number"
-                value={dimensions ? parseInt(dimensions[attr]) : 0}
-                onChange={updateDimension(attr)}
-                className="nodrag"
-                disabled={!dimensions}
-              />
-            </Fragment>
-          ))}
-          {!dimensionAttrs && 'no node connected'}
-        </div>
-      </div>
+      {dimensionAttrs.map((attr) => (
+        <Fragment key={attr}>
+          <label>node {attr}</label>
+          <input
+            type="number"
+            value={dimensions ? parseInt(dimensions[attr]) : 0}
+            onChange={updateDimension(attr)}
+            className="nodrag"
+            disabled={!dimensions}
+          />
+        </Fragment>
+      ))}
+      {!dimensionAttrs && 'no node connected'}
       <Handle type="target" position={Position.Top} />
     </>
   );

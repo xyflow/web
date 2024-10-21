@@ -16,9 +16,7 @@ export default memo(({ id }) => {
 
   return (
     <>
-      <div className="wrapper gradient">
-        <div className="inner">{label || 'no node connected'}</div>
-      </div>
+      <div>{label || 'no node connected'}</div>
       <Handle type="target" position={Position.Left} />
     </>
   );
