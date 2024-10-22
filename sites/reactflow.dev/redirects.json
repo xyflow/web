@@ -1038,5 +1038,10 @@
     "source": "/examples/edges/updatable-edge",
     "destination": "/examples/edges/reconnect-edge",
     "permanent": true
+  },
+  {
+    "source": "/examples/nodes/resize-rotate",
+    "destination": "/examples/nodes/rotatable-node",
+    "permanent": true
   }
 ]
