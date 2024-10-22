@@ -114,8 +114,10 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  padding: 10px;
   flex-direction: column;
   border: var(--xy-node-border-default);
+  color: var(--xy-node-color, var(--xy-node-color-default));
 }
 
 .react-flow__node-resizer {
@@ -179,7 +181,6 @@
   border-color: var(--xy-theme-hover);
   background-color: var(--xy-theme-hover);
 }
-
 
 .react-flow__resize-control.handle {
   background-color: #ffffff;

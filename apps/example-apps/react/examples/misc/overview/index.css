@@ -6,7 +6,6 @@ body {
   margin: 0;
   font-family: sans-serif;
   box-sizing: border-box;
-  font-size: 12px;
 }
 
 input {
@@ -80,7 +79,7 @@ input {
 }
 
 .react-flow__node-circle--inner {
-  background-color: #f8f6fa;
+  background-color: inherit;
   position: absolute;
   top: 0;
   left: 0; 
@@ -100,18 +99,18 @@ input {
 
 .react-flow__node-textinput {
   border: 0;
+  padding: 0;
   background-image: linear-gradient(270deg, #659DF7 0%, #F57DBD 100%);
 }
 
 .react-flow__node-textinput--inner {
-  background-color: #f8f6fa;
+  background-color: inherit;
   z-index: -1;
   margin: 1.5px;
   padding: 10px;
   text-align: left;
   border-radius: 7px;
 }
-
 
 /* Custom Handles */
 
