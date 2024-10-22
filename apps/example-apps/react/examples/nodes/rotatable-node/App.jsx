@@ -3,11 +3,11 @@ import { ReactFlow, Background } from '@xyflow/react';
 
 import '@xyflow/react/dist/style.css';
 
-import ResizeRotateNode from './ResizeRotateNode';
+import RotatableNode from './RotatableNode';
 import { nodes, edges } from './nodes-edges';
 
 const nodeTypes = {
-  resizeRotate: ResizeRotateNode,
+  rotatableNode: RotatableNode,
 };
 
 function Flow() {

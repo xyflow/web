@@ -4,21 +4,18 @@ export const nodes = [
   {
     id: '1',
     position: { x: 0, y: 0 },
-    data: { label: 'Node 1', resizable: true },
-    type: 'resizeRotate',
+    data: { label: 'Rotate Me!' },
+    type: 'rotatableNode',
     targetPosition: Position.Left,
     sourcePosition: Position.Right,
-    selected: true,
-    style: { width: 180, height: 100 },
   },
   {
     id: '2',
     position: { x: 300, y: 0 },
-    data: { label: 'Node 2', rotatable: true },
-    type: 'resizeRotate',
+    data: { label: 'Rotate Me!' },
+    type: 'rotatableNode',
     targetPosition: Position.Left,
     sourcePosition: Position.Right,
-    style: { width: 180, height: 100 },
   },
 ];
 
