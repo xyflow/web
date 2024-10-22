@@ -6,6 +6,12 @@ description: Step by step guide about how to work with custom nodes in Svelte Fl
 import { Callout } from 'nextra/components';
 import { RemoteCodeViewer } from 'xy-shared';
 
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode([
+  'guides/custom-nodes/a',
+  'guides/custom-nodes/b',
+]);
+
 # Custom Nodes
 
 A powerful feature of Svelte Flow is the ability to add custom nodes. You can render everything you want in your custom nodes. You can define multiple source and target handles and render form inputs or even interactive charts. In this guide we will implement two nodes with color input fields that update the background color of the flow.
@@ -54,6 +60,7 @@ You can add a new node type to Svelte Flow by adding it to the [`nodeTypes` prop
 <script>
   import { SvelteFlow } from '@xyflow/svelte';
   import ColorPickerNode from './ColorPickerNode.svelte';
+
 
   const nodeTypes = {
     'color-picker': ColorPickerNode

@@ -1,5 +1,5 @@
 import { compileMdx } from 'nextra/compile';
-import { CompiledMdx } from '../../types';
+import { CompiledMdx } from '../types';
 
 type CompileCodeSnippetOptions = {
   filetype?: string;

@@ -15,6 +15,17 @@ import { Bleed } from 'nextra-theme-docs';
 import { Image, RemoteCodeViewer, TutorialLayout } from 'xy-shared';
 import { Emoji } from '@xyflow/xy-ui';
 
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode([
+  'tutorials/presentation/app',
+  'tutorials/presentation/scaffold',
+  'tutorials/presentation/rendering-markdown',
+  'tutorials/presentation/layout-demo',
+  'tutorials/presentation/focus-on-click',
+  'tutorials/presentation/slide-controls',
+  'tutorials/presentation/app',
+]);
+
 <TutorialLayout>
 We recently published the findings from our React Flow 2023 end-of-year survey with an [interactive presentation](/developer-survey-2023) of the key findings, using React Flow itself. There were lots of useful bits built into this slideshow app, so we wanted to share how we built it!
 

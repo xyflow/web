@@ -6,6 +6,10 @@ created_at: 2024-01-11
 import { ExampleLayout } from 'xy-shared';
 import { RemoteCodeViewer } from 'xy-shared';
 
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['examples/nodes/node-resizer']);
+
+
 <ExampleLayout>
 The [`<NodeResizer />`](/api-reference/components/node-resizer) component can be used to add a resize UI for a custom node. The `@xyflow/svelte` package also exports a [`<NodeResizeControl />`](/api-reference/components/node-resize-control) component for implementing a custom resizing UI as shown in this example.
 

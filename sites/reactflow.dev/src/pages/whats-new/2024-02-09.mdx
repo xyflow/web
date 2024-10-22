@@ -11,6 +11,11 @@ date: '2024-02-09'
 
 import { RemoteCodeViewer } from 'xy-shared';
 
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode([
+  'examples/edges/multi-connection-line',
+]);
+
 # New multi-connection line example!
 
 Quite a while back, a user opened a [GitHub issue](https://github.com/xyflow/web/issues/315)

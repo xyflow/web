@@ -10,6 +10,10 @@ A sub flow is essentially a flow contained within a node. A sub flow can either 
 import { Callout } from 'nextra/components';
 import { RemoteCodeViewer } from 'xy-shared';
 
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['guides/subflows/a', 'guides/subflows/b', 'guides/subflows/c']);
+
+
 <Callout type="warning">
   <strong>Order of Nodes:</strong>
   It's important that your parent nodes appear before their children in the

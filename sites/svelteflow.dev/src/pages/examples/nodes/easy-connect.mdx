@@ -6,6 +6,10 @@ import { ExampleLayout } from 'xy-shared';
 import { RemoteCodeViewer } from 'xy-shared';
 import UnusedPropWarning from '@/components/unused-prop-warning';
 
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['examples/nodes/easy-connect']);
+
+
 <ExampleLayout>
   Fed up with tiny little connection handles? Make your whole node act as one!
   Keep in mind though that you need to define seperate drag handles in this case

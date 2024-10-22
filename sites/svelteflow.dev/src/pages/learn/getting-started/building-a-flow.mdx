@@ -6,6 +6,13 @@ description: A quick guide that shows you how to get started with Svelte Flow
 # Building a flow
 
 import { RemoteCodeViewer } from 'xy-shared';
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode([
+  'guides/getting-started/a',
+  'guides/getting-started/b',
+  'guides/getting-started/c',
+  'guides/getting-started/d',
+]);
 
 In the following section we will show you how to create a Svelte component that displays a simple flow. We assume that you've installed Svelte Flow and hope that you are ready to create your first component with Svelte Flow.
 

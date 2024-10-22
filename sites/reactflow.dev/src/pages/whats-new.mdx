@@ -1,10 +1,21 @@
 import WhatsNewPage from '@/layouts/whats-new';
 import { getMdxContentUnderRoute } from 'xy-shared/server';
+import { getStaticCode } from 'xy-shared/server';
 
 export async function getStaticProps() {
   const mdx = await getMdxContentUnderRoute('reactflow.dev', '/whats-new');
+  const codeSnippets = await getStaticCode([
+    'examples/edges/animating-edges-node',
+    'tutorials/presentation/app',
+    'examples/layout/entitree-flex',
+    'examples/misc/overview',
+    'examples/edges/multi-connection-line',
+    'examples/nodes/node-toolbar',
+    'learn/custom-edge-2',
+    'examples/interaction/prevent-cycles',
+  ])();
   return {
-    props: { mdx },
+    props: { mdx, ...codeSnippets.props },
   };
 }
 

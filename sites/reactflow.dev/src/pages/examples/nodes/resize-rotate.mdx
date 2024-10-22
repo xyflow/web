@@ -6,6 +6,10 @@ description: Spin and scale nodes using the NodeResizer component
 import { RemoteCodeViewer } from 'xy-shared';
 import { ExampleLayout } from 'xy-shared';
 
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['examples/nodes/resize-rotate']);
+
+
 <ExampleLayout>
 This example shows how to implement a [custom node](/learn/customization/custom-nodes)
 that can be resized and rotated using the [`<NodeResizer />`](/api-reference/components/node-resizer).

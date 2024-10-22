@@ -78,7 +78,7 @@ export function RemoteCodeViewer({
       </div>
       <div className="border-[1px]">
         {snippets && (
-          <Tabs defaultValue="App.jsx">
+          <Tabs>
             <TabsList className="mb-0 overflow-x-auto overflow-y-hidden">
               {Object.keys(snippets).map((filename) => (
                 <TabsTrigger

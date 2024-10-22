@@ -22,6 +22,10 @@ import { Callout } from 'nextra/components';
 
 import { RemoteCodeViewer } from 'xy-shared';
 
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['learn/introduction-flow', 'learn/introduction-flow-2', 'learn/introduction-flow-3']);
+
+
 <RemoteCodeViewer route="learn/introduction-flow" framework="react" />
 
 ## Basic Functionality

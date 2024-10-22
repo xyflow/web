@@ -8,6 +8,10 @@ description: Learn how to use React Flow with a state management library like Zu
 import { Callout, Tabs } from 'nextra/components';
 import { RemoteCodeViewer } from 'xy-shared';
 
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['learn/state-management', 'learn/state-management-2']);
+
+
 <Callout type="info">
   For this guide we assume that you already know about the [core
   concepts](/learn/concepts/core-concepts) of React Flow and how to implement

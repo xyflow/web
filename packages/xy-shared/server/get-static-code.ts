@@ -1,6 +1,6 @@
 import { Framework } from '@xyflow/xy-ui';
 import { compileCodeSnippet } from './compile-code-snippet';
-import { CompiledMdx, ExampleCode } from '../../types';
+import { CompiledMdx, ExampleCode } from '../types';
 import { loadJSONFile } from './utils';
 
 import path from 'path';
@@ -21,6 +21,7 @@ export function getStaticCode(routes: string[], framework?: Framework) {
         route,
         'source.json',
       );
+
       const json = loadJSONFile<ExampleCode>(p);
 
       if (!json || !('files' in json) || !('dependencies' in json)) {
