@@ -1,5 +1,5 @@
 import WhatsNewPage from '@/layouts/whats-new';
-import { getMdxContentUnderRoute } from 'xy-shared/lib/get-static-props/mdx-content-under-route';
+import { getMdxContentUnderRoute } from 'xy-shared/server';
 
 export async function getStaticProps() {
   const mdx = await getMdxContentUnderRoute('reactflow.dev', '/whats-new');

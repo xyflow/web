@@ -11,6 +11,9 @@ import { Tabs, Cards } from 'nextra/components';
 import { Emoji } from '@xyflow/xy-ui';
 import { ReactPlayer } from 'xy-shared';
 import { RemoteCodeViewer } from 'xy-shared';
+import { getStaticCode } from 'xy-shared/server';
+
+export const getStaticProps = getStaticCode(['learn/quickstart']);
 
 If you want to get up-and-running as soon as possible you're in the right place!
 This page will take you from zero to a working React Flow app in a few minutes.

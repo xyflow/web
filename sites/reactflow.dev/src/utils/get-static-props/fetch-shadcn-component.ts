@@ -1,5 +1,5 @@
-import { compileCodeSnippet } from 'xy-shared/lib/get-static-props/compile-code-snippet';
-import { loadJSONFile } from 'xy-shared/lib/get-static-props/utils';
+import { compileCodeSnippet } from 'xy-shared/server';
+import { loadJSONFile } from 'xy-shared/server';
 
 type Demo = {
   files: [{ content: string }];
