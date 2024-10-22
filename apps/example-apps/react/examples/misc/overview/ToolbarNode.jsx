@@ -1,30 +1,27 @@
 import { memo, useState } from 'react';
 import { Handle, Position, NodeToolbar } from '@xyflow/react';
 
-const labelStyle = {
-  position: 'absolute',
-  color: '#555',
-  bottom: -15,
-  fontSize: 8,
-};
+const emojis = ['🚀', '🔥', '✨'];
 
 function ToolbarNode({ data }) {
-  const [emoji, setEmoji] = useState(() => '🚀');
+  const [emoji, setEmoji] = useState('🚀');
 
   return (
     <>
       <NodeToolbar isVisible>
-        <button onClick={() => setEmoji('🚀')}>🚀</button>
-        <button onClick={() => setEmoji('🔥')}>🔥</button>
-        <button onClick={() => setEmoji('✨')}>✨</button>
+        {emojis.map(emoji => (
+          <button key={emoji} onClick={() => setEmoji(emoji)} aria-label={`Select emoji ${emoji}`}>
+            {emoji}
+          </button>
+        ))}
       </NodeToolbar>
-      <div style={{ padding: '10px 20px' }}>
+      <div>
         <div>{emoji}</div>
       </div>
       <Handle type="target" position={Position.Left} />
       <Handle type="source" position={Position.Right} />
 
-      <div style={labelStyle}>{data.label}</div>
+      <div>{data.label}</div>
     </>
   );
 }
