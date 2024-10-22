@@ -3,6 +3,7 @@ import { cn } from '@xyflow/xy-ui';
 
 import { useConfig } from 'nextra-theme-docs';
 import { compileMdx } from 'nextra/compile';
+import { useData } from 'nextra/hooks';
 
 import { SharedContext, useFathom } from 'xy-shared';
 import { ntDapperFont, fontClassNames } from 'xy-shared/fonts';
@@ -13,7 +14,7 @@ const fathomOptions = {
   id: 'PFWQXXRR',
 };
 
-const sharedContext = { useConfig, compileMdx };
+const sharedContext = { useConfig, compileMdx, useData };
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();

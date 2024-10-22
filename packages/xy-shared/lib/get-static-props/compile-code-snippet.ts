@@ -1,4 +1,5 @@
 import { compileMdx } from 'nextra/compile';
+import { CompiledMdx } from '../../types';
 
 type CompileCodeSnippetOptions = {
   filetype?: string;
@@ -32,12 +33,7 @@ function createMDXString(snippet: string, options: CompileCodeSnippetOptions) {
 export async function compileCodeSnippet(
   snippet: string,
   options?: CompileCodeSnippetOptions,
-): Promise<{
-  compiledSource: string;
-  frontMatter: {
-    [key: string]: any;
-  };
-}> {
+): Promise<CompiledMdx> {
   const opts = { ...defaultOptions, ...options };
 
   const { result: compiledSource, frontMatter } = await compileMdx(

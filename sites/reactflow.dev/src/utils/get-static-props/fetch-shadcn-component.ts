@@ -1,14 +1,18 @@
 import { compileCodeSnippet } from 'xy-shared/lib/get-static-props/compile-code-snippet';
-import { readFileSync } from 'fs';
+import { loadJSONFile } from 'xy-shared/lib/get-static-props/utils';
 
-function loadJSONFile(url: string) {
-  try {
-    const file = readFileSync(url, 'utf-8');
-    return JSON.parse(file.toString());
-  } catch (err) {
-    console.log(err);
-  }
-}
+type Demo = {
+  files: [{ content: string }];
+};
+
+type RegistryComponent = {
+  name: string;
+  description: string;
+  dependencies: string[];
+  files: [{ content: string }];
+  tags: string[];
+  version: string;
+};
 
 function kebabCaseToCamelCase(str: string) {
   const newString = str.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
@@ -17,11 +21,11 @@ function kebabCaseToCamelCase(str: string) {
 
 export default function getUiComponentConfig(id: string) {
   return async () => {
-    const data = loadJSONFile(
+    const data = loadJSONFile<RegistryComponent>(
       `../../apps/ui-components/public/registry/${id}.json`,
     );
 
-    const demo = loadJSONFile(
+    const demo = loadJSONFile<Demo>(
       `../../apps/ui-components/public/demo/${id}.json`,
     );
 
