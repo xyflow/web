@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import { cn } from '@xyflow/xy-ui';
 
+import { useData } from 'nextra/hooks';
 import { useConfig } from 'nextra-theme-docs';
 import { compileMdx } from 'nextra/compile';
 
@@ -8,7 +9,6 @@ import { SharedContext, useFathom } from 'xy-shared';
 import { ntDapperFont, fontClassNames } from 'xy-shared/fonts';
 
 import '../global.css';
-import { useData } from 'nextra/hooks';
 
 const fathomOptions = {
   id: 'LXMRMWLB',
