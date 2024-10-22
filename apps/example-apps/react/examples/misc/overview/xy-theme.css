@@ -126,32 +126,14 @@
   border: none;
 }
 
-.react-flow__node-input.selectable:hover, 
-.react-flow__node-input.draggable:hover,
-.react-flow__node-default.selectable:hover, 
-.react-flow__node-default.draggable:hover,
-.react-flow__node-output.selectable:hover, 
-.react-flow__node-output.draggable:hover,
-.react-flow__node-group.selectable:hover, 
-.react-flow__node-group.draggable:hover {
+.react-flow__node.selectable:hover, 
+.react-flow__node.draggable:hover {
   border-color: var(--xy-theme-hover);
 }
 
-.react-flow__node-input.selectable.selected,
-.react-flow__node-input.selectable:focus,
-.react-flow__node-input.selectable:focus-visible,
-.react-flow__node-default.selectable.selected,
-.react-flow__node-default.selectable:focus,  
-.react-flow__node-default.selectable:focus-visible,
-.react-flow__node-output.selectable.selected,
-.react-flow__node-output.selectable:focus,
-.react-flow__node-output.selectable:focus-visible,
-.react-flow__node-tools.selectable.selected, 
-.react-flow__node-tools.selectable:focus,
-.react-flow__node-tools.selectable:focus-visible,
-.react-flow__node-group.selectable.selected, 
-.react-flow__node-group.selectable:focus,
-.react-flow__node-group.selectable:focus-visible {
+.react-flow__node.selectable.selected,
+.react-flow__node.selectable:focus,
+.react-flow__node.selectable:focus-visible {
   border-color: var(--xy-theme-selected);
   box-shadow: var(--xy-node-boxshadow-default);
 }
@@ -159,18 +141,6 @@
 .react-flow__node-group {
   background-color: rgba(207, 182, 255, 0.4);
   border-color: #9E86ED;
-}
-
-.react-flow__node-group.selectable.selected, 
-.react-flow__node-group.selectable:focus,
-.react-flow__node-group.selectable:focus-visible {
-  border-color: red;
-}
-
-.react-flow__node-group.selectable.selected, 
-.react-flow__node-group.selectable:focus,
-.react-flow__node-group.selectable:focus-visible {
-  border-color: red;
 }
 
 .react-flow__edge:hover .react-flow__edge-path {
@@ -184,7 +154,7 @@
   background-color: var(--xy-theme-hover);
 }
 
-.react-flow__resize-control.handle {
+.react-flow__resize-.handle {
   background-color: #ffffff;
   border-color: var(--xy-resize-background-color-default);
   border-radius: 0;
