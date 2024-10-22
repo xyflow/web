@@ -4,4 +4,10 @@ import { useData } from 'nextra/hooks';
 
 import { createContext } from 'react';
 
-export const SharedContext = createContext({ useConfig, compileMdx, useData });
+type SharedContext = {
+  useConfig: typeof useConfig;
+  compileMdx: typeof compileMdx;
+  useData: typeof useData;
+};
+
+export const SharedContext = createContext<SharedContext>({} as SharedContext);

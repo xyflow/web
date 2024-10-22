@@ -10,6 +10,9 @@ const nextConfig = {
   // Optionally, add any other Next.js config below
   reactStrictMode: true,
   transpilePackages: ['@xyflow/xy-ui', 'xy-shared'],
+  experimental: {
+    optimizePackageImports: ['@xyflow/xy-ui', 'xy-shared'],
+  },
   images: {
     dangerouslyAllowSVG: true,
     remotePatterns: [

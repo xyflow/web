@@ -1,5 +1,5 @@
-import { ReactNode } from 'react';
-import { Folder, MdxFile, Page } from 'nextra';
+import type { ReactNode } from 'react';
+import type { Folder, MdxFile, Page } from 'nextra';
 import { getAllPages, getPagesUnderRoute } from 'nextra/context';
 
 import { SidebarTitle } from '../components/sidebar-title';
