@@ -69,20 +69,16 @@ export const nodes = [
     style: {
       width: 380,
       height: 180,
-      backgroundColor: 'rgba(208, 192, 247, 0.2)',
     },
   },
   {
     id: '2-2',
-    data: {
-      label: 'Node with Toolbar',
-    },
+    data: {},
     type: 'tools',
     position: { x: 50, y: 50 },
     style: {
       width: 80,
       height: 80,
-      background: 'rgb(208, 192, 247)',
     },
     parentId: '2-1',
     extent: 'parent',
@@ -97,8 +93,6 @@ export const nodes = [
     style: {
       width: 80,
       height: 80,
-      background: 'rgb(208, 192, 247)',
-      color: 'white',
     },
     parentId: '2-1',
     extent: 'parent',

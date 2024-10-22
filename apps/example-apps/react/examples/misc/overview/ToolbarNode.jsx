@@ -18,7 +18,7 @@ function ToolbarNode({ data }) {
         <button onClick={() => setEmoji('🔥')}>🔥</button>
         <button onClick={() => setEmoji('✨')}>✨</button>
       </NodeToolbar>
-      <div style={{ padding: '10px 20px' }}>
+      <div>
         <div>{emoji}</div>
       </div>
       <Handle type="target" position={Position.Left} />

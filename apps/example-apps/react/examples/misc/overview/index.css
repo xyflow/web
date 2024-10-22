@@ -1,107 +1,6 @@
 /* this gets exported as xy-theme.css and can be used for the default theming */
 /* these are the necessary styles for React/Svelte Flow, they get used by base.css and style.css */
 
-
-.react-flow {
-  direction: ltr;
-  --xy-theme-selected: #FF0072;
-  --xy-theme-hover: #FE4C96;
-  --xy-transition: all .1s ease-in-out;
-
-  --xy-edge-stroke-default: #C7C9CA;
-  --xy-edge-stroke-width-default: 1;
-  --xy-edge-stroke-selected-default: #FF0072;
-
-  --xy-connectionline-stroke-default: #b1b1b7;
-  --xy-connectionline-stroke-width-default: 1;
-
-  --xy-attribution-background-color-default: rgba(255, 255, 255, 0.5);
-
-  --xy-minimap-background-color-default: #fff;
-  --xy-minimap-mask-background-color-default: rgb(240, 240, 240, 0.6);
-  --xy-minimap-mask-stroke-color-default: transparent;
-  --xy-minimap-mask-stroke-width-default: 1;
-  --xy-minimap-node-background-color-default: #e2e2e2;
-  --xy-minimap-node-stroke-color-default: transparent;
-  --xy-minimap-node-stroke-width-default: 2;
-
-  --xy-background-color-default: transparent;
-  --xy-background-pattern-dots-color-default: #91919a;
-  --xy-background-pattern-lines-color-default: #eee;
-  --xy-background-pattern-cross-color-default: #e2e2e2;
-  background-color: var(--xy-background-color, var(--xy-background-color-default));
-
-  --xy-node-color-default: inherit;
-  --xy-node-border-default: 1px solid #e5e7eb;
-  --xy-node-background-color-default: #fff;
-  --xy-node-group-background-color-default: rgba(240, 240, 240, 0.25);
-  --xy-node-boxshadow-default: 0 1px 4px 1px rgba(227,227,227,0.85);
-  --xy-node-boxshadow-hover-default: 0 1px 4px 1px rgba(227,227,227,0.85);
-  --xy-node-border-radius-default: 5px;
-
-  --xy-handle-background-color-default: #ffffff;
-  --xy-handle-border-color-default: #C7C9CA;
-
-  --xy-selection-background-color-default: rgba(0, 89, 220, 0.08);
-  --xy-selection-border-default: 1px dotted rgba(0, 89, 220, 0.8);
-
-  --xy-controls-button-background-color-default: #fefefe;
-  --xy-controls-button-background-color-hover-default: #f4f4f4;
-  --xy-controls-button-color-default: inherit;
-  --xy-controls-button-color-hover-default: inherit;
-  --xy-controls-button-border-color-default: #eee;
-  --xy-controls-box-shadow-default: 0 0 2px 1px rgba(0, 0, 0, 0.08);
-
-  --xy-edge-label-background-color-default: #ffffff;
-  --xy-edge-label-color-default: inherit;
-  --xy-resize-background-color-default: #3367d9;
-
-}
-.react-flow.dark {
-  --xy-edge-stroke-default: #3e3e3e;
-  --xy-edge-stroke-width-default: 1;
-  --xy-edge-stroke-selected-default: #727272;
-
-  --xy-connectionline-stroke-default: #b1b1b7;
-  --xy-connectionline-stroke-width-default: 1;
-
-  --xy-attribution-background-color-default: rgba(150, 150, 150, 0.25);
-
-  --xy-minimap-background-color-default: #141414;
-  --xy-minimap-mask-background-color-default: rgb(60, 60, 60, 0.6);
-  --xy-minimap-mask-stroke-color-default: transparent;
-  --xy-minimap-mask-stroke-width-default: 1;
-  --xy-minimap-node-background-color-default: #2b2b2b;
-  --xy-minimap-node-stroke-color-default: transparent;
-  --xy-minimap-node-stroke-width-default: 2;
-
-  --xy-background-color-default: #141414;
-  --xy-background-pattern-dots-color-default: #777;
-  --xy-background-pattern-lines-color-default: #777;
-  --xy-background-pattern-cross-color-default: #777;
-  --xy-node-color-default: #f8f8f8;
-  --xy-node-border-default: 1px solid #3c3c3c;
-  --xy-node-background-color-default: #1e1e1e;
-  --xy-node-group-background-color-default: rgba(240, 240, 240, 0.25);
-  --xy-node-boxshadow-hover-default: 0 1px 4px 1px rgba(255, 255, 255, 0.08);
-
-  --xy-handle-background-color-default: #bebebe;
-  --xy-handle-border-color-default: #1e1e1e;
-
-  --xy-selection-background-color-default: rgba(200, 200, 220, 0.08);
-  --xy-selection-border-default: 1px dotted rgba(200, 200, 220, 0.8);
-
-  --xy-controls-button-background-color-default: #2b2b2b;
-  --xy-controls-button-background-color-hover-default: #3e3e3e;
-  --xy-controls-button-color-default: #f8f8f8;
-  --xy-controls-button-color-hover-default: #fff;
-  --xy-controls-button-border-color-default: #5b5b5b;
-  --xy-controls-box-shadow-default: 0 0 2px 1px rgba(0, 0, 0, 0.08);
-
-  --xy-edge-label-background-color-default: #141414;
-  --xy-edge-label-color-default: #f8f8f8;
-}
-
 html,
 body {
   margin: 0;
@@ -112,6 +11,7 @@ body {
 
 input {
   width: 100%;
+  margin-bottom: 5px;
 }
 
 #app {
@@ -166,9 +66,50 @@ input {
   width: 100px;
   display: flex;                
   justify-content: center;    
-  align-items: center;          
+  align-items: center;     
+  font-family: monospace;     
+  text-align: center;
+  padding: 20px;
 }
 
+/* Custom Handles */
+
+.react-flow__node-resizer .react-flow__handle,
+.react-flow__node-circle .react-flow__handle,
+.react-flow__node-textinput .react-flow__handle {
+  background: #bbb;
+  border-radius: 0;
+  width: 8px;
+  height: 4px;
+  border: none;
+  min-width: 2px;
+  min-height: 2px;
+}
+
+.react-flow__node-resizer .react-flow__handle-bottom,
+.react-flow__node-circle .react-flow__handle-bottom,
+.react-flow__node-textinput .react-flow__handle-bottom {
+  bottom: -5px;
+  transform: none;
+  border-radius: 0 0 2px 2px;
+}
+
+.react-flow__node-resizer .react-flow__handle-top,
+.react-flow__node-circle .react-flow__handle-top,
+.react-flow__node-textinput .react-flow__handle-top {
+  top: -5px;
+  transform: none;
+  border-radius: 2px 2px 0 0;
+}
+
+.react-flow__node-resizer .react-flow__handle-left,
+.react-flow__node-circle .react-flow__handle-left,
+.react-flow__node-textinput .react-flow__handle-left {
+  height: 8px;
+  width: 4px;
+  left: -5px;
+  border-radius: 2px 0 0 2px;
+}
 
 /* Annotation */
 
@@ -177,6 +118,9 @@ input {
   width: 200px;
   color: #ff0071;
   position: absolute;
+  box-shadow: none;
+  background-color: transparent;
+  border: none;
 }
 
 .react-flow__node-annotation .arrow {
@@ -184,28 +128,26 @@ input {
   font-size: 24px;
 }
 
-
-/* Added Classes */
-
 .react-flow__node-toolbar button {
   cursor: pointer;
-  background-color: #ffffff;
-  border: var(--xy-node-border-default);
+  background-color: #000000;
+  border: none;
+  padding: 3px 7px;
   box-shadow: var(--xy-node-boxshadow-default);
 }
 
 .react-flow__node-toolbar button:hover {
-  background: #f5f5f6;
+  background: #4d4d4d;
 }
 
 .react-flow__node-toolbar button:first-child {
-  border-radius: 5px 0 0 5px;
-  border-right: none;
+  border-radius: 16px 0 0 16px;
+  border-right: 2px solid #4d4d4d;
 }
 
 .react-flow__node-toolbar button:last-child {
-  border-radius: 0 5px 5px 0;
-  border-left: none;
+  border-radius: 0 16px 16px 0;
+  border-left: 2px solid #4d4d4d;
 }
 
 .react-flow__button--edge {
@@ -219,50 +161,10 @@ input {
   line-height: 1;
 }
 
-.react-flow__button:hover {
+.react-flow__button-edge:hover {
   box-shadow: var(--xy-node-boxshadow-hover-default);
   background-color: var(--xy-theme-hover);
   border-color: var(--xy-theme-hover);
   color: #ffffff;
 }
 
-
-/* TO ADD TO BASE */
-
-.react-flow__node-input.selectable.selected,
-.react-flow__node-input.selectable:focus,
-.react-flow__node-input.selectable:focus-visible,
-.react-flow__node-default.selectable.selected,
-.react-flow__node-default.selectable:focus,  
-.react-flow__node-default.selectable:focus-visible,
-.react-flow__node-output.selectable.selected,
-.react-flow__node-output.selectable:focus,
-.react-flow__node-output.selectable:focus-visible,
-.react-flow__node-group.selectable.selected, 
-.react-flow__node-group.selectable:focus,
-.react-flow__node-group.selectable:focus-visible {
-  border-color: var(--xy-theme-selected);
-}
-
-.react-flow__edge:hover .react-flow__edge-path {
-  stroke: var(--xy-edge-stroke-selected, var(--xy-theme-hover));
-}
-
-.react-flow__handle.connectionindicator:hover, 
-.react-flow__handle.connectingfrom {
-  pointer-events: all;
-  border-color: var(--xy-theme-hover);
-  background-color: var(--xy-theme-hover);
-}
-
-.react-flow__node.selectable:hover, 
-.react-flow__node.draggable:hover {
-  border-color: var(--xy-theme-hover);
-}
-
-.react-flow__button:hover {
-  box-shadow: var(--xy-node-boxshadow-hover-default);
-  background-color: var(--xy-theme-hover);
-  border-color: var(--xy-theme-hover);
-  color: #ffffff;
-}
