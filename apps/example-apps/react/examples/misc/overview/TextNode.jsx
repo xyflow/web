@@ -39,7 +39,7 @@ export default memo(({ id }) => {
   };
   
   return (
-    <>
+    <div className='react-flow__node-textinput--inner'>
       {dimensionAttrs.map((attr) => (
         <Fragment key={attr}>
           <label>node {attr}</label>
@@ -54,6 +54,6 @@ export default memo(({ id }) => {
       ))}
       {!dimensionAttrs && 'no node connected'}
       <Handle type="target" position={Position.Top} />
-    </>
+    </div>
   );
 });

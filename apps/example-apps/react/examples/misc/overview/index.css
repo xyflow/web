@@ -11,13 +11,17 @@ body {
 
 input {
   width: 100%;
-  margin-bottom: 5px;
+  margin: 5px 0px;
+  font-family: monospace;
+  border-radius: 6px;
+  border: var(--xy-node-border-default);
 }
 
 #app {
   width: 100vw;
   height: 100vh;
 }
+
 
 .overview * {
   box-sizing: border-box;
@@ -57,22 +61,56 @@ input {
 /* Circle Node */
 
 .react-flow__node-circle {
-  z-index: 1000;
   transform: translate(13.3214px, 390.276px);
   pointer-events: all;
   visibility: visible;
-  border-radius: 100%;
+  border-radius: 50%;
   height: 100px;
   width: 100px;
-  display: flex;                
-  justify-content: center;    
-  align-items: center;     
   font-family: monospace;     
   text-align: center;
   padding: 20px;
+  border: none;
+  background-image: linear-gradient(270deg, #659DF7 0%, #F57DBD 100%);
+
 }
 
+.react-flow__node-circle--inner {
+  background-color: #f8f6fa;
+  position: absolute;
+  top: 0;
+  left: 0; 
+  right: 0; 
+  bottom: 0; 
+  z-index: -1;
+  border-radius: 50%;
+  display: flex;                
+  justify-content: center;    
+  align-items: center;     
+  margin: 1.5px;
+  pointer-events: none;
+}
+
+/* Text Input */
+
+
+.react-flow__node-textinput {
+  border: 0;
+  background-image: linear-gradient(270deg, #659DF7 0%, #F57DBD 100%);
+}
+
+.react-flow__node-textinput--inner {
+  background-color: #f8f6fa;
+  z-index: -1;
+  margin: 1.5px;
+  padding: 10px;
+  text-align: left;
+  border-radius: 7px;
+}
+
+
 /* Custom Handles */
+
 
 .react-flow__node-resizer .react-flow__handle,
 .react-flow__node-circle .react-flow__handle,
@@ -151,20 +189,19 @@ input {
 }
 
 .react-flow__button--edge {
-  width: 20px;
-  height: 20px;
-  background-color: var(--xy-node-background-color-default);
-  border: var(--xy-node-border-default);
+  width: 30px;
+  height: 30px;
+  border: 5px solid var(--xy-edge-label-background-color-default);
+  color: var(--xy-edge-label-color-default);
+  background-color: #F3F3F4;
   cursor: pointer;
   border-radius: 50%;
   font-size: 12px;
-  line-height: 1;
+  padding-top: 0px;
 }
 
-.react-flow__button-edge:hover {
-  box-shadow: var(--xy-node-boxshadow-hover-default);
+.react-flow__button--edge:hover {
   background-color: var(--xy-theme-hover);
-  border-color: var(--xy-theme-hover);
   color: #ffffff;
 }
 

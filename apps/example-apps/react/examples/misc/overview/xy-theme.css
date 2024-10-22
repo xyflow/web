@@ -109,7 +109,6 @@
   box-shadow: var(--xy-node-boxshadow-default);
   border-radius: var(--xy-node-border-radius-default);
   background-color: var(--xy-node-background-color-default);
-  padding: 10px;
   width: 150px;
   display: flex;
   justify-content: center;
@@ -121,6 +120,7 @@
 
 .react-flow__node-resizer {
   border-radius: 0;
+  border: none;
 }
 
 .react-flow__node-input.selectable:hover, 
