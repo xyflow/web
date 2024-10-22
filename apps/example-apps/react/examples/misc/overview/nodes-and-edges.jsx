@@ -17,7 +17,7 @@ export const nodes = [
         transform: 'translate(-30px,10px) rotate(-80deg)',
       },
     },
-    position: { x: -80, y: -30 },
+    position: { x: -200, y: -30 },
   },
   {
     id: '1-1',
@@ -87,7 +87,7 @@ export const nodes = [
     id: '2-3',
     type: 'resizer',
     data: {
-      label: 'resizable node',
+      label: 'Resize Me',
     },
     position: { x: 250, y: 50 },
     style: {

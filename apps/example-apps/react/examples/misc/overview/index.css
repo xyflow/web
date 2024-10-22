@@ -72,7 +72,6 @@ input {
   width: 100px;
   font-family: monospace;     
   text-align: center;
-  padding: 20px;
   border: none;
   background-image: linear-gradient(270deg, #659DF7 0%, #F57DBD 100%);
 
@@ -85,7 +84,6 @@ input {
   left: 0; 
   right: 0; 
   bottom: 0; 
-  z-index: -1;
   border-radius: 50%;
   display: flex;                
   justify-content: center;    
@@ -157,9 +155,11 @@ input {
 .react-flow__node-annotation {
   font-size: 16px;
   width: 200px;
-  color: #ff0071;
+  color: #683BFA;
   position: absolute;
   box-shadow: none;
+  font-family: monospace;
+  text-align: left;
   background-color: transparent;
   border: none;
 }

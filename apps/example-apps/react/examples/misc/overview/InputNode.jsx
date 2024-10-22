@@ -21,28 +21,48 @@ export default memo(({ id }) => {
     };
   });
   const updateDimension = (attr) => (event) => {
+    const value = parseInt(event.target.value);
+    
     setNodes((nds) =>
       nds.map((n) => {
         if (n.id === '2-3') {
+
+          const parentNode = nds.find(node => node.id === '2-1');
+          const parentWidth = parentNode ? parentNode.style.width : Infinity;
+          const parentHeight = parentNode ? parentNode.style.height : Infinity;
+          
+          const currentNode = nds.find(node => node.id === '2-3');
+          const currentPosX = currentNode.position.x;
+          const currentPosY = currentNode.position.y;
+  
+          const maxWidth = Math.max(parentWidth - currentPosX, 0);
+          const maxHeight = Math.max(parentHeight - currentPosY, 0);
+  
+          const newSize = {
+            width: attr === 'width' ? Math.min(value, maxWidth) : currentNode.style.width,
+            height: attr === 'height' ? Math.min(value, maxHeight) : currentNode.style.height,
+          };
+  
           return {
             ...n,
             style: {
               ...n.style,
-              [attr]: parseInt(event.target.value),
+              [attr]: newSize[attr],
             },
           };
         }
-
+  
         return n;
       }),
     );
   };
   
+  
   return (
     <div className='react-flow__node-textinput--inner'>
       {dimensionAttrs.map((attr) => (
         <Fragment key={attr}>
-          <label>node {attr}</label>
+          <label>Node {attr}</label>
           <input
             type="number"
             value={dimensions ? parseInt(dimensions[attr]) : 0}

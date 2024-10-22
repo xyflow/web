@@ -115,6 +115,7 @@
   align-items: center;
   text-align: center;
   padding: 10px;
+  font-size: 12px;
   flex-direction: column;
   border: var(--xy-node-border-default);
   color: var(--xy-node-color, var(--xy-node-color-default));
@@ -157,6 +158,7 @@
 
 .react-flow__node-group {
   background-color: rgba(207, 182, 255, 0.4);
+  border-color: #9E86ED;
 }
 
 .react-flow__node-group.selectable.selected, 
@@ -186,4 +188,6 @@
   background-color: #ffffff;
   border-color: var(--xy-resize-background-color-default);
   border-radius: 0;
+  width: 5px;
+  height: 5px;
 }

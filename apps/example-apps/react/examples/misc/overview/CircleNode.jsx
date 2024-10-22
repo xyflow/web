@@ -9,7 +9,7 @@ export default memo(({ id }) => {
       return null;
     }
 
-    return `position x:${parseInt(node.position.x)} y:${parseInt(
+    return `Position x:${parseInt(node.position.x)} y:${parseInt(
       node.position.y,
     )}`;
   });
