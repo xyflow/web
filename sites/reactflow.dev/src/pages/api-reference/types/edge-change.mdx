@@ -10,7 +10,7 @@ import { PropsTable } from '@/components/props-table';
 import {
   edgeAddChangeFields,
   edgeRemoveChangeFields,
-  edgeResetChangeFields,
+  edgeReplaceChangeFields,
   edgeSelectionChangeFields,
 } from '@/page-data/reference/types/EdgeChange.fields.ts';
 
@@ -41,9 +41,9 @@ export type EdgeChange =
 
 <PropsTable {...edgeRemoveChangeFields} />
 
-### EdgeResetChange
+### EdgeReplaceChange
 
-<PropsTable {...edgeResetChangeFields} />
+<PropsTable {...edgeReplaceChangeFields} />
 
 ### EdgeSelectionChange
 
