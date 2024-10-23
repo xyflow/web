@@ -21,7 +21,7 @@ export default function ImageSliderItem({
     <TabsTrigger
       value={item.name}
       className={cn(
-        'w-full sm:flex flex-col group',
+        'w-full sm:flex flex-col group border-none',
         isActive ? 'flex' : 'hidden',
       )}
       onClick={() => onClick(item.name)}
