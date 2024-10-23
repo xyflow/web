@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { useConfig, Navbar } from 'nextra-theme-docs';
 
 import { Footer, Button, LogoLabel } from '@xyflow/xy-ui';
-import { Search, SidebarTitle, Head, getMdxPagesUnderRoute } from 'xy-shared';
+import { Search, SidebarTitle, getMdxPagesUnderRoute } from 'xy-shared';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 import { type Route } from '@/utils';
 import { defaultFooterCategories } from '@xyflow/xy-ui';
@@ -24,6 +24,8 @@ const baseUrl =
   process.env.NODE_ENV === 'production'
     ? 'https://reactflow.dev'
     : 'http://localhost:3002';
+
+const faviconUrl = `${baseUrl}/img/favicon.ico`;
 
 export default {
   logo: () => <LogoLabel label="React Flow" labelClassName="mr-5" />,
@@ -251,15 +253,37 @@ export default {
       ? `${frontMatter.title} - React Flow`
       : 'React Flow';
 
+    const description = frontMatter.description ?? defaultDescription;
+    const pageUrl = `${baseUrl}${router.asPath}`;
+
+    // We are not allowed to render components inside head!
+    // https://github.com/shuding/nextra/issues/3529
     return (
-      <Head
-        title={title}
-        description={frontMatter.description ?? defaultDescription}
-        pageUrl={`${baseUrl}${router.asPath}`}
-        faviconUrl={`${baseUrl}/img/favicon.ico`}
-        ogImage={ogImage}
-        framework="react"
-      />
+      <>
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <meta name="robots" content="index,follow" />
+
+        <link rel="icon" href={faviconUrl} />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="https://x.com/xyflowdev" />
+        <meta name="twitter:creator" content="@xyflowdev" />
+
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={pageUrl} />
+        <meta property="og:type" content="website" />
+        {ogImage && (
+          <>
+            <meta property="og:image" content={ogImage.url} />
+            <meta property="og:image:alt" content="Teaser" />
+            <meta property="og:image:width" content={'1200'} />
+            <meta property="og:image:height" content={'640'} />
+          </>
+        )}
+        <meta name="docsearch:site" content="react" />
+      </>
     );
   },
 };
