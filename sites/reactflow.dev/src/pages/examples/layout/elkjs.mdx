@@ -4,15 +4,11 @@ description: For a more powerful alternative to dagre, you can also use elkjs to
 ---
 
 import { RemoteCodeViewer } from 'xy-shared';
-import ExampleLayout from '@/layouts/example-with-frontmatter';
+import { ExampleLayout } from 'xy-shared';
 
 <ExampleLayout>
 Like our [dagre example](/examples/layout/dagre), this example shows how you can integrate [elkjs](https://github.com/kieler/elkjs) with React Flow for more advanced tree layouts. The code for this example builds a similar tree to the dagre example, but you can look at the reference [here](https://www.eclipse.org/elk/reference.html) to see what you can configure (hint: it's a lot).
 
-<RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/layout/elkjs/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/layout/elkjs/index.html`}
-  framework="react"
-/>
+<RemoteCodeViewer route="examples/layout/elkjs" framework="react" />
 
 </ExampleLayout>

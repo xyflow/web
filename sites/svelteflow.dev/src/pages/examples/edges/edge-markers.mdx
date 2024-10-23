@@ -4,14 +4,14 @@ description: Example for demonstrating edge markers in Svelte Flow.
 ---
 
 import { RemoteCodeViewer } from 'xy-shared';
-import ExampleLayout from '@/layouts/example-with-frontmatter';
+import { ExampleLayout } from 'xy-shared';
 
 <ExampleLayout>
 Svelte Flow has built-in support for different marker types for your edges. It's possible to add your own [SVG markers](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/marker), too.
 
 <RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/examples/edges/edge-markers/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/examples/edges/edge-markers/index.html`}
+  route="examples/edges/edge-markers"
+  
   framework="svelte"
 />
 </ExampleLayout>

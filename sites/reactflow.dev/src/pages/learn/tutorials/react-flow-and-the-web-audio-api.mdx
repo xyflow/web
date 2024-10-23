@@ -9,10 +9,8 @@ image: /img/tutorials/webaudio/web-audio-blog-thumb.png
 
 import { Callout, Tabs } from 'nextra/components';
 import { Bleed } from 'nextra-theme-docs';
-import { Embed, Image, RemoteCodeViewer } from 'xy-shared';
+import { Embed, Image, RemoteCodeViewer, TutorialLayout } from 'xy-shared';
 import { Emoji } from '@xyflow/xy-ui';
-
-import { TutorialLayout } from '@/layouts/tutorial-with-frontmatter';
 
 <TutorialLayout>
 Today we'll be looking at how to create an interactive audio playground using React
@@ -206,8 +204,7 @@ Here's what we put together, in case you weren't following along at home:
 
 <Bleed>
   <RemoteCodeViewer
-    source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/webaudio/mouse-theremin/source.json`}
-    preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/webaudio/mouse-theremin/index.html`}
+    route="tutorials/webaudio/mouse-theremin"
     framework="react"
     showEditor={false}
   />
@@ -430,8 +427,7 @@ const useStore = createWithEqualityFn((set, get) => ({
 
 <Bleed>
   <RemoteCodeViewer
-    source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/webaudio/state-management/source.json`}
-    preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/webaudio/state-management/index.html`}
+    route="tutorials/webaudio/state-management"
     framework="react"
   />
 </Bleed>
@@ -656,8 +652,7 @@ const useStore = createWithEqualityFn((set, get) => ({
 
 <Bleed>
   <RemoteCodeViewer
-    source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/webaudio/custom-node/source.json`}
-    preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/webaudio/custom-node/index.html`}
+    route="tutorials/webaudio/custom-node"
     framework="react"
     showEditor={false}
   />
@@ -740,8 +735,7 @@ Things are starting to shape up quite nicely!
 
 <Bleed>
   <RemoteCodeViewer
-    source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/webaudio/custom-nodes/source.json`}
-    preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/webaudio/custom-nodes/index.html`}
+    route="tutorials/webaudio/custom-nodes"
     framework="react"
     showEditor={false}
   />
@@ -1007,8 +1001,7 @@ Let's see what we have in action.
 
 <Bleed>
   <RemoteCodeViewer
-    source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/webaudio/hardcoded-audio/source.json`}
-    preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/webaudio/hardcoded-audio/index.html`}
+    route="tutorials/webaudio/hardcoded-audio"
     framework="react"
     showEditor={false}
   />
@@ -1092,7 +1085,7 @@ to keep things simple we'll just hardcode it to `{ x: 0, y: 0 }` for now.
 
 The final piece of the puzzle is to create a toolbar component that can trigger
 the new `createNode` action. To do that we'll jump back to `App.jsx` and make use
-of the [`<Panel />`](https://reactflow.dev/docs/api/plugin-components/panel/)
+of the [`<Panel />`](https://reactflow.dev/docs//api-reference/components/panel/)
 plugin component.
 
 ```jsx filename="./src/App.jsx"
@@ -1142,11 +1135,7 @@ Here's the demo from the beginning, but this time you can see the source code to
 make sure you haven't missed anything.
 
 <Bleed>
-  <RemoteCodeViewer
-    source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/webaudio/demo/source.json`}
-    preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/webaudio/demo/index.html`}
-    framework="react"
-  />
+  <RemoteCodeViewer route="tutorials/webaudio/demo" framework="react" />
 </Bleed>
 
 ## Final thoughts

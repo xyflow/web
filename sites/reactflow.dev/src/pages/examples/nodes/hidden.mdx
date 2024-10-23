@@ -4,15 +4,11 @@ description: Hide a node or edge for expandable/collapsible diagrams
 ---
 
 import { RemoteCodeViewer } from 'xy-shared';
-import ExampleLayout from '@/layouts/example-with-frontmatter';
+import { ExampleLayout } from 'xy-shared';
 
 <ExampleLayout>
 Nodes and edges can be hidden by using the [`hidden` attribute](/api-reference/types/node). This can be used for implementing expandable/collapsible diagrams.
 
-<RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/nodes/hidden/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/nodes/hidden/index.html`}
-  framework="react"
-/>
+<RemoteCodeViewer route="examples/nodes/hidden" framework="react" />
 
 </ExampleLayout>

@@ -4,16 +4,12 @@ description: A diagram that flows from left to right
 ---
 
 import { RemoteCodeViewer } from 'xy-shared';
-import ExampleLayout from '@/layouts/example-with-frontmatter';
+import { ExampleLayout } from 'xy-shared';
 
 <ExampleLayout>
 A diagram can go from left to right or from top to bottom, but you can also create mixed ones.
 For controlling the direction of a diagram you can adjust the handle positions of a node with the [`sourcePosition` and `targetPosition`](/api-reference/types/node) props.
 
-<RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/layout/horizontal/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/layout/horizontal/index.html`}
-  framework="react"
-/>
+<RemoteCodeViewer route="examples/layout/horizontal" framework="react" />
 
 </ExampleLayout>

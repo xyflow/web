@@ -29,11 +29,7 @@ As mentioned above, the default controls are:
 
 import { RemoteCodeViewer } from 'xy-shared';
 
-<RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/zoom-pan/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/zoom-pan/index.html`}
-  framework="react"
-/>
+<RemoteCodeViewer route="learn/zoom-pan" framework="react" />
 
 ## Figma-like Viewport Controls
 
@@ -43,10 +39,6 @@ If you prefer figma/sketch/design tool controls you can set `panOnScroll={true}`
 - zoom: pitch or cmd + scroll
 - create selection: drag mouse
 
-<RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/zoom-pan-2/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/zoom-pan-2/index.html`}
-  framework="react"
-/>
+<RemoteCodeViewer route="learn/zoom-pan-2" framework="react" />
 
 In this example we also set `selectionMode={SelectionMode.Partial}` to be able to add nodes to a selection that are only partially selected.

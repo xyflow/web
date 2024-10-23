@@ -3,16 +3,12 @@ title: Horizontal Flow
 ---
 
 import { RemoteCodeViewer } from 'xy-shared';
-import ExampleLayout from '@/layouts/example-with-frontmatter';
+import { ExampleLayout } from 'xy-shared';
 
 <ExampleLayout>
 A diagram can go from left to right or from top to bottom, but you can also create mixed ones.
 For controlling the direction of a diagram you can adjust the handle positions of a node with the [`sourcePosition` and `targetPosition`](/api-reference/types/node#sourceposition?) props.
 
-<RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/examples/layout/horizontal-flow/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/examples/layout/horizontal-flow/index.html`}
-  framework="svelte"
-/>
+<RemoteCodeViewer route="examples/layout/horizontal-flow" framework="svelte" />
 
 </ExampleLayout>

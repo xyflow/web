@@ -24,8 +24,7 @@ const defaultOptions = {
 };
 
 export type RemoteCodeViewerProps = {
-  source: RemoteCodeViewerSource;
-  preview: string;
+  route: string;
   framework: Framework;
   options?: typeof defaultOptions;
   activeFile?: string;
@@ -38,16 +37,8 @@ export type RemoteCodeViewerProps = {
   orientation?: 'horizontal' | 'vertical';
 };
 
-export type RemoteCodeViewerSource =
-  | string
-  | {
-      files: SandpackFiles;
-      dependencies: Record<string, string>;
-    };
-
 export function RemoteCodeViewer({
-  source,
-  preview,
+  route,
   framework,
   showEditor = true,
   customOpenButton = null,
@@ -57,12 +48,10 @@ export function RemoteCodeViewer({
   activeFile,
   orientation,
 }: RemoteCodeViewerProps) {
-  const [filesFetched, setFilesFetched] = useState(typeof source === 'string');
+  const [filesFetched, setFilesFetched] = useState(true);
   const [fileFetchFailed, setFileFetchFailed] = useState(false);
-  const [files, setFiles] = useState<SandpackFiles>(
-    typeof source === 'string'
-      ? {
-          'index.html': `<!doctype html>
+  const [files, setFiles] = useState<SandpackFiles>({
+    'index.html': `<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -73,19 +62,18 @@ export function RemoteCodeViewer({
     <div id="app"></div>
   </body>
 </html>`,
-        }
-      : source.files,
-  );
+  });
+
+  const routeURL = `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/${framework}/${route}/source.json`;
+  const preview = `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/${framework}/${route}/index.html`;
 
   const _orientation = orientation
     ? orientation
-    : typeof source === 'string' && source.includes('/examples/')
+    : route.includes('examples/')
       ? 'vertical'
       : 'horizontal';
 
-  const [dependencies, setDependencies] = useState<Record<string, string>>(
-    typeof source === 'string' ? {} : source.dependencies,
-  );
+  const [dependencies, setDependencies] = useState<Record<string, string>>({});
 
   useEffect(() => {
     const loadFiles = async (url: string) => {
@@ -136,9 +124,7 @@ export function RemoteCodeViewer({
       }
     };
 
-    if (typeof source === 'string') {
-      loadFiles(source);
-    }
+    loadFiles(routeURL);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

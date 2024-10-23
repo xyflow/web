@@ -3,7 +3,7 @@ title: Connection Limit
 description: This is an example of a custom node limiting the amount of connections a handle can have using the `isConnectalbe` prop.
 ---
 
-import ExampleLayout from '@/layouts/example-with-frontmatter';
+import { ExampleLayout } from 'xy-shared';
 import { RemoteCodeViewer } from 'xy-shared';
 import UnusedPropWarning from '@/components/unused-prop-warning';
 
@@ -12,11 +12,7 @@ This is an example of a custom node with a custom handle that can limit the amou
 You can use a boolean, a number (the number of max. connections the handle should have) or a callback function that returns a boolean
 as an arg for the `isConnectable` prop of the CustomHandle component.
 
-<RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/examples/nodes/connection-limit/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/examples/nodes/connection-limit/index.html`}
-  framework="svelte"
-/>
+<RemoteCodeViewer route="examples/nodes/connection-limit" framework="svelte" />
 
 </ExampleLayout>
 

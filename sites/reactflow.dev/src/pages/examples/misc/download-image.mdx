@@ -4,15 +4,11 @@ description: Save a flow as a png with the html-to-image library
 ---
 
 import { RemoteCodeViewer } from 'xy-shared';
-import ExampleLayout from '@/layouts/example-with-frontmatter';
+import { ExampleLayout } from 'xy-shared';
 
 <ExampleLayout>
 This example shows how to download a flow as an image with [html-to-image](https://github.com/bubkoo/html-to-image).
 
-<RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/misc/download-image/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/misc/download-image/index.html`}
-  framework="react"
-/>
+<RemoteCodeViewer route="examples/misc/download-image" framework="react" />
 
 </ExampleLayout>

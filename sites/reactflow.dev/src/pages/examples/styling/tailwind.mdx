@@ -5,7 +5,7 @@ description: Use Tailwind CDN to easily make nice looking flows
 
 import { Callout } from 'nextra/components';
 import { RemoteCodeViewer } from 'xy-shared';
-import ExampleLayout from '@/layouts/example-with-frontmatter';
+import { ExampleLayout } from 'xy-shared';
 
 <ExampleLayout>
 In this example we are using [Tailwind](https://tailwindcss.com/) for styling the flow.
@@ -22,10 +22,6 @@ differently, and can ignore this warning.
 
 </Callout>
 
-<RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/styling/tailwind/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/styling/tailwind/index.html`}
-  framework="react"
-/>
+<RemoteCodeViewer route="examples/styling/tailwind" framework="react" />
 
 </ExampleLayout>

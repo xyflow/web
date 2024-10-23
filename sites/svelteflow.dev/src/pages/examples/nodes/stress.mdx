@@ -3,15 +3,15 @@ title: Stress Test
 description: A stress test with a lot of nodes and edges.
 ---
 
-import ExampleLayout from '@/layouts/example-with-frontmatter';
+import { ExampleLayout } from 'xy-shared';
 import { RemoteCodeViewer } from 'xy-shared';
 
 <ExampleLayout>
 This example shows a flow with 450 nodes and edges.
 
   <RemoteCodeViewer
-    source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/examples/nodes/stress/source.json`}
-    preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/examples/nodes/stress/index.html`}
+    route="examples/nodes/stress"
+    
     framework="svelte"
   />
 </ExampleLayout>

@@ -80,11 +80,7 @@ export function Flow() {
 After defining the `edgeTypes` object, we can use our new custom edge by setting
 the `type` field of an edge to `"custom-edge"`.
 
-<RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/custom-edge/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/custom-edge/index.html`}
-  framework="react"
-/>
+<RemoteCodeViewer route="learn/custom-edge" framework="react" />
 
 ## Adding an edge label
 
@@ -185,8 +181,4 @@ Here's an interactive example with our updated custom edge. Clicking the delete
 button will remove that edge from the flow. Creating a new edge will use the
 custom node.
 
-<RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/custom-edge-2/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/custom-edge-2/index.html`}
-  framework="react"
-/>
+<RemoteCodeViewer route="learn/custom-edge-2" framework="react" />

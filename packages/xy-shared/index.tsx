@@ -1,11 +1,13 @@
 export * from './layouts/404';
 export * from './layouts/base';
+export * from './layouts/blog-post-base';
 export * from './layouts/blog-post';
 export * from './layouts/breakout';
 export * from './layouts/case-study';
 export * from './layouts/example';
 export * from './layouts/showcase';
 export * from './layouts/text-only';
+export * from './layouts/tutorial';
 
 export * from './widgets/about-section';
 export * from './widgets/authors-list';
@@ -36,3 +38,5 @@ export * from './components/remote-content';
 export * from './components/head';
 
 export * from './lib/utils';
+
+export * from './context/UseConfigContext';

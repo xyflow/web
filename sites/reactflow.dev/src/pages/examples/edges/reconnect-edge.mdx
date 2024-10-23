@@ -4,7 +4,7 @@ description: Click-drag to move an existing edge from one handle to another
 ---
 
 import { RemoteCodeViewer } from 'xy-shared';
-import ExampleLayout from '@/layouts/example-with-frontmatter';
+import { ExampleLayout } from 'xy-shared';
 
 <ExampleLayout>
 An edge is reconnectable by dragging it to another handle if you are using the
@@ -13,11 +13,7 @@ called after the edge gets dropped to a new handle. You can use the
 [`reconnectEdge`](/api-reference/utils/reconnect-edge) helper function to update your
 edges state accordingly.
 
-<RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/edges/reconnect-edge/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/edges/reconnect-edge/index.html`}
-  framework="react"
-/>
+<RemoteCodeViewer route="examples/edges/reconnect-edge" framework="react" />
 
 A couple of properties interact with one another to determine whether an edge is
 updatable or not:

@@ -5,14 +5,14 @@ created_at: 2024-07-15
 ---
 
 import { RemoteCodeViewer } from 'xy-shared';
-import ExampleLayout from '@/layouts/example-with-frontmatter';
+import { ExampleLayout } from 'xy-shared';
 
 <ExampleLayout>
 React Flow comes with a built-in light & dark mode. You can set the [`colorMode`](/api-reference/react-flow#colorMode) prop that allows you to switch between `'dark'`, `'light'` and `'system'`.
 
 <RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/styling/dark-mode/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/styling/dark-mode/index.html`}
+  route="examples/styling/dark-mode"
+  
   framework="react"
 />
 </ExampleLayout>

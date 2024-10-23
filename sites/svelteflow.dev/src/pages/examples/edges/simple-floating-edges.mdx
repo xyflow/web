@@ -3,15 +3,15 @@ title: Simple Floating Edges
 ---
 
 import { RemoteCodeViewer } from 'xy-shared';
-import ExampleLayout from '@/layouts/example-with-frontmatter';
+import { ExampleLayout } from 'xy-shared';
 import UnusedPropWarning from '@/components/unused-prop-warning';
 
 <ExampleLayout>
 This example shows how to implement an edge type that dynamically connects to the closest handle.
 
 <RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/examples/edges/simple-floating-edges/source.json`} 
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/examples/edges/simple-floating-edges/index.html`}
+  route="examples/edges/simple-floating-edges" 
+  
   framework="svelte"
 />
 </ExampleLayout>

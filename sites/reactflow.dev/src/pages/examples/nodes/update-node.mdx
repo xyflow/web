@@ -5,7 +5,7 @@ description: Update the data field of a specific node
 
 import { Callout } from 'nextra/components';
 import { RemoteCodeViewer } from 'xy-shared';
-import ExampleLayout from '@/layouts/example-with-frontmatter';
+import { ExampleLayout } from 'xy-shared';
 
 <ExampleLayout>
 You can update properties of nodes and edges freely as long as you pass a newly created `nodes` or `edges` array to `ReactFlow`.
@@ -18,10 +18,6 @@ You can update properties of nodes and edges freely as long as you pass a newly 
 </Callout>
 <br />
 
-<RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/nodes/update-node/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/nodes/update-node/index.html`}
-  framework="react"
-/>
+<RemoteCodeViewer route="examples/nodes/update-node" framework="react" />
 
 </ExampleLayout>

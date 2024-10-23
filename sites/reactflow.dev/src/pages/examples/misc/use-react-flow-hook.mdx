@@ -4,15 +4,11 @@ description: A hook with useful helpers for your nodes, edges, and the viewport
 ---
 
 import { RemoteCodeViewer } from 'xy-shared';
-import ExampleLayout from '@/layouts/example-with-frontmatter';
+import { ExampleLayout } from 'xy-shared';
 
 <ExampleLayout>
 This example illustrates how to use the [`useReactFlow` hook](/api-reference/hooks/use-react-flow). It comes with a lot of useful helpers to update your nodes and edges or adjust the viewport of your diagram. The hook returns a [`ReactFlow instance`](/api-reference/types/react-flow-instance).
 
-<RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/misc/use-react-flow-hook/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/misc/use-react-flow-hook/index.html`}
-  framework="react"
-/>
+<RemoteCodeViewer route="examples/misc/use-react-flow-hook" framework="react" />
 
 </ExampleLayout>
