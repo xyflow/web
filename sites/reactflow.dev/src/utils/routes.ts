@@ -168,7 +168,7 @@ export type InternalRoute =
   | '/learn/advanced-use/uncontrolled-flow'
   | '/learn/concepts/core-concepts'
   | '/learn/concepts/introduction'
-  | '/learn/concepts/plugin-components'
+  | '/learn/concepts/built-in-components'
   | '/learn/concepts/terms-and-definitions'
   | '/learn/concepts/the-viewport'
   | '/learn/customization/custom-edges'
