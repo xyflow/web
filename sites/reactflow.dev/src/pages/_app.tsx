@@ -3,7 +3,6 @@ import { cn } from '@xyflow/xy-ui';
 
 import { useData } from 'nextra/hooks';
 import { useConfig } from 'nextra-theme-docs';
-import { compileMdx } from 'nextra/compile';
 
 import { SharedContext, useFathom } from 'xy-shared';
 import { ntDapperFont, fontClassNames } from 'xy-shared/fonts';
@@ -15,7 +14,7 @@ const fathomOptions = {
   domains: ['reactflow.dev'],
 };
 
-const sharedContext = { useConfig, compileMdx, useData };
+const sharedContext = { useConfig, useData };
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();

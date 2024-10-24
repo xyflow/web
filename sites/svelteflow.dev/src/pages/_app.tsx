@@ -2,7 +2,6 @@ import { useRouter } from 'next/router';
 import { cn } from '@xyflow/xy-ui';
 
 import { useConfig } from 'nextra-theme-docs';
-import { compileMdx } from 'nextra/compile';
 import { useData } from 'nextra/hooks';
 
 import { SharedContext, useFathom } from 'xy-shared';
@@ -14,7 +13,7 @@ const fathomOptions = {
   id: 'PFWQXXRR',
 };
 
-const sharedContext = { useConfig, compileMdx, useData };
+const sharedContext = { useConfig, useData };
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();

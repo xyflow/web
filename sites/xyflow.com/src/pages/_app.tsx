@@ -1,5 +1,4 @@
 import { useConfig } from 'nextra-theme-docs';
-import { compileMdx } from 'nextra/compile';
 import { useData } from 'nextra/hooks';
 
 import { useFathom, SharedContext } from 'xy-shared';
@@ -11,7 +10,7 @@ const fathomOptions = {
   id: 'JQTCQNLV',
 };
 
-const sharedContext = { useConfig, compileMdx, useData };
+const sharedContext = { useConfig, useData };
 
 export default function App({ Component, pageProps }) {
   useFathom(fathomOptions);
