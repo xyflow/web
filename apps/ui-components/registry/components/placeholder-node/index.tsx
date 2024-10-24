@@ -56,5 +56,4 @@ export function PlaceholderNode({ data, id, selected }: NodeProps<PlaceholderNod
   );
 }
 
-// Setting the display name for easier debugging
 PlaceholderNode.displayName = "PlaceholderNode";

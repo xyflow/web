@@ -36,3 +36,5 @@ export function Annotation({ data }: NodeProps<Annotation>) {
     </div>
   );
 }
+
+Annotation.displayName = "Annotation";
