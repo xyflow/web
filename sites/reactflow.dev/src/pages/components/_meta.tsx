@@ -22,6 +22,7 @@ export default {
   'database-schema-node': 'Database Schema Node',
   'labeled-handle': 'Labeled Handle',
   'button-edge': 'Button Edge',
+  'placeholder-node': 'Placeholder Node',
   _: {
     type: 'separator',
   },
