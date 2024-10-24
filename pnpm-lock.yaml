@@ -2291,6 +2291,9 @@ packages:
   '@theguild/remark-npm2yarn@0.3.2':
     resolution: {integrity: sha512-H9T/GOuS/+4H7AY1cfD5DJIIIcGIIw1zMCB8OeTgXk7azJULsnuOurZ/CR54rvuTD+Krx0MVQccaUCvCWfP+vw==}
 
+  '@theguild/remark-npm2yarn@0.3.3':
+    resolution: {integrity: sha512-ma6DvR03gdbvwqfKx1omqhg9May/VYGdMHvTzB4VuxkyS7KzfZ/lzrj43hmcsggpMje0x7SADA/pcMph0ejRnA==}
+
   '@threlte/core@7.3.1':
     resolution: {integrity: sha512-qGfpboBL5PWYGqPIpnRmvp0ssW551ULRZsXRpWAwSPWGughiOSL9dBZjiwWQTQHUFMEErgquo6hbFJCuWE0uTg==}
     peerDependencies:
@@ -8931,6 +8934,11 @@ snapshots:
       npm-to-yarn: 3.0.0
       unist-util-visit: 5.0.0
 
+  '@theguild/remark-npm2yarn@0.3.3':
+    dependencies:
+      npm-to-yarn: 3.0.0
+      unist-util-visit: 5.0.0
+
   '@threlte/core@7.3.1(svelte@4.2.19)(three@0.158.0)':
     dependencies:
       mitt: 3.0.1
@@ -12926,7 +12934,7 @@ snapshots:
       '@napi-rs/simple-git': 0.1.19
       '@shikijs/twoslash': 1.22.0(typescript@5.5.4)
       '@theguild/remark-mermaid': 0.1.3(react@18.3.1)
-      '@theguild/remark-npm2yarn': 0.3.2
+      '@theguild/remark-npm2yarn': 0.3.3
       better-react-mathjax: 2.0.3(react@18.3.1)
       clsx: 2.1.1
       estree-util-to-js: 2.0.0
