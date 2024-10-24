@@ -17,6 +17,7 @@ export default {
     type: 'separator',
     title: 'Components',
   },
+  'annotation': 'Annotation',
   'zoom-slider': 'Zoom Slider',
   'tooltip-node': 'Tooltip Node',
   'database-schema-node': 'Database Schema Node',
