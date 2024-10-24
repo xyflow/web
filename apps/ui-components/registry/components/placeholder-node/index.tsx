@@ -42,13 +42,13 @@ export function PlaceholderNode({ data, id, selected }: NodeProps<PlaceholderNod
       {data.label}
       <Handle
         type="target"
-        style={{ visibility: 'visible' }} 
+        style={{ visibility: 'hidden' }} 
         position={Position.Top}
         isConnectable={false} 
       />
       <Handle
         type="source"
-        style={{ visibility: 'visible' }} 
+        style={{ visibility: 'hidden' }} 
         position={Position.Bottom}
         isConnectable={false}
       />
