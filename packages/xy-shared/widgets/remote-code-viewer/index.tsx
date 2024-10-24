@@ -66,7 +66,7 @@ export function RemoteCodeViewer({
   }
 
   return (
-    <div className="remote-code-viewer mt-5">
+    <div className="remote-code-viewer mt-5 rounded-lg">
       <div style={{ height: editorHeight }}>
         <iframe
           src={preview}
@@ -76,13 +76,14 @@ export function RemoteCodeViewer({
           className="example"
         />
       </div>
-      <div className="border-[1px]">
+      <div className="rounded-t-none rounded-lg overflow-hidden">
         {snippets && (
-          <Tabs>
-            <TabsList className="mb-0 overflow-x-auto overflow-y-hidden">
+          <Tabs defaultValue={Object.keys(snippets)[0]}>
+            <TabsList className="tablist border-none mb-0 overflow-x-auto overflow-y-hidden text-nowrap bg-primary/5">
               {Object.keys(snippets).map((filename) => (
                 <TabsTrigger
-                  className="font-light text-gray-500 text-sm data-[state=active]:bg-primary/5"
+                  key={filename}
+                  className="font-light text-sm data-[state=active]:bg-primary/5 pt-3"
                   value={filename}
                 >
                   {filename}
@@ -91,10 +92,14 @@ export function RemoteCodeViewer({
             </TabsList>
             <div
               style={{ height: editorHeight }}
-              className="overflow-y-scroll bg-primary/5"
+              className="tabcontent overflow-y-scroll bg-primary/5 rounded-xl rounded-t-none"
             >
               {Object.entries(snippets).map(([filename, file]) => (
-                <TabsContent className="min-h-[500px]" value={filename}>
+                <TabsContent
+                  key={filename}
+                  className="min-h-[500px]"
+                  value={filename}
+                >
                   <RemoteContent
                     mdx={file.compiledSource}
                     components={{ code: Code }}
