@@ -1,13 +1,12 @@
 import React from "react";
-import { cn } from "@/lib/utils";
-import { useReactFlow } from "@xyflow/react";
+import { useReactFlow, Handle, Position, NodeProps, Node } from "@xyflow/react";
 import { BaseNode } from "@/registry/components/base-node"; 
 
+type PlaceholderNodeData = Node<{
+  label: string;
+}>;
 
-export const PlaceholderNode = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement> & { selected?: boolean; id: string }
->(({ className, selected, id, ...props }, ref) => {
+export function PlaceholderNode({ data, id, selected }: NodeProps<PlaceholderNodeData>) {
   
   const { setNodes, setEdges } = useReactFlow();
 
@@ -17,12 +16,13 @@ export const PlaceholderNode = React.forwardRef<
         edge.target === id ? { ...edge, animated: false } : edge
       )
     );
+
     setNodes((nodes) => {
       const updatedNodes = nodes.map((node) => {
         if (node.id === id) {
           return {
             ...node,
-            data: { ...node.data, label: "New Node" },
+            data: { ...node.data, label: "New Node" }, 
             type: "default",
           };
         }
@@ -34,15 +34,27 @@ export const PlaceholderNode = React.forwardRef<
 
   return (
     <BaseNode
-      ref={ref}
+      id={id}
+      selected={selected}
+      className="bg-card text-center w-40 border-dashed border-gray-400 text-gray-400 shadow-none"
       onClick={handleClick}
-      className={cn(
-        "bg-card text-center w-40 border-dashed border-gray-400 text-gray-400 shadow-none",
-        className,
-      )}
-      {...props}
-    />
+    >
+      {data.label}
+      <Handle
+        type="target"
+        style={{ visibility: 'visible' }} 
+        position={Position.Top}
+        isConnectable={false} 
+      />
+      <Handle
+        type="source"
+        style={{ visibility: 'visible' }} 
+        position={Position.Bottom}
+        isConnectable={false}
+      />
+    </BaseNode>
   );
-});
+}
 
+// Setting the display name for easier debugging
 PlaceholderNode.displayName = "PlaceholderNode";

@@ -2,12 +2,14 @@
 
 import {
   Background,
-  Handle,
-  NodeProps,
-  Position,
   ReactFlow,
 } from "@xyflow/react";
 import { PlaceholderNode } from "@/registry/components/placeholder-node"; 
+
+const nodeTypes = {
+  placeholder: PlaceholderNode,
+};
+
 
 const defaultNodes = [
   {
@@ -33,41 +35,6 @@ const defaultEdges = [
     animated: true,
   },
 ];
-
-const nodeTypes = {
-  placeholder: CustomNode, 
-};
-
-type CustomNodeProps = NodeProps & {
-  data: {
-    label: string;
-  };
-};
-
-
-function CustomNode({ id, data, selected }: CustomNodeProps) {
-  return (
-    <PlaceholderNode 
-      id={id}
-      selected={selected} 
-    >
-      {data.label}
-      <Handle
-        type="target"
-        style={{ visibility: 'hidden' }}
-        position={Position.Top}
-        isConnectable={false}
-      />
-      <Handle
-        type="source"
-        style={{ visibility: 'hidden' }}
-        position={Position.Bottom}
-        isConnectable={false}
-      />
-    </PlaceholderNode>
-  );
-}
-
 
 export default function Demo() {
   return (
