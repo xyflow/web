@@ -14,6 +14,7 @@ import { Code } from 'nextra/components';
 import { CompiledMdx } from '../../types';
 
 import './style.css';
+import { clsx } from 'clsx';
 
 const defaultOptions = {
   editorHeight: '60vh',
@@ -29,8 +30,6 @@ export type RemoteCodeViewerProps = {
   activeFile?: string;
   showEditor?: boolean;
   showPreview?: boolean;
-  customOpenButton?: React.ReactNode;
-  sandpackOptions?: Record<string, any>;
   showOpenInCodeSandbox?: boolean;
   editorHeight?: string | number;
   orientation?: 'horizontal' | 'vertical';
@@ -40,24 +39,25 @@ export function RemoteCodeViewer({
   route,
   framework,
   showEditor = true,
-  customOpenButton = null,
-  sandpackOptions = {},
   showOpenInCodeSandbox = framework === 'react',
   editorHeight = '60vh',
   activeFile,
   orientation,
 }: RemoteCodeViewerProps) {
   const _framework = framework ?? process.env.NEXT_PUBLIC_Framework ?? 'react';
+
   const preview = `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/${_framework}/${route}/index.html`;
 
-  const _orientation = orientation
-    ? orientation
-    : route.includes('examples/')
-      ? 'vertical'
-      : 'horizontal';
+  const isExample = route.includes('examples/');
+  const isHorizontal = orientation
+    ? orientation === 'horizontal'
+    : isExample
+      ? false
+      : true;
 
   const { useData } = useContext(SharedContext);
-  const snippets: CompiledMdx[] | undefined = useData('codeSnippets')?.[route];
+  const snippets: Record<string, CompiledMdx> | undefined =
+    useData('codeSnippets')?.[route];
 
   if (!snippets) {
     throw new Error(
@@ -65,9 +65,28 @@ export function RemoteCodeViewer({
     );
   }
 
+  if (isExample) {
+    delete snippets['index.html'];
+    delete snippets['index.jsx'];
+  }
+
+  const _initialActiveFile =
+    activeFile ??
+    (Object.keys(snippets).includes('App.jsx')
+      ? 'App.jsx'
+      : Object.keys(snippets)[0]);
+
   return (
-    <div className="remote-code-viewer mt-5 rounded-lg">
-      <div style={{ height: editorHeight }}>
+    <div
+      className={clsx(
+        'remote-code-viewer mt-5 rounded-lg flex',
+        isHorizontal ? 'flex-row' : 'flex-col',
+      )}
+    >
+      <div
+        style={{ height: editorHeight }}
+        className={clsx(isHorizontal ? 'w-1/2' : '')}
+      >
         <iframe
           src={preview}
           loading="lazy"
@@ -76,41 +95,48 @@ export function RemoteCodeViewer({
           className="example"
         />
       </div>
-      <div className="rounded-t-none rounded-lg overflow-hidden">
-        {snippets && (
-          <Tabs defaultValue={Object.keys(snippets)[0]}>
-            <TabsList className="tablist border-none mb-0 overflow-x-auto overflow-y-hidden text-nowrap bg-primary/5">
-              {Object.keys(snippets).map((filename) => (
-                <TabsTrigger
-                  key={filename}
-                  className="font-light text-sm data-[state=active]:bg-primary/5 pt-3"
-                  value={filename}
-                >
-                  {filename}
-                </TabsTrigger>
-              ))}
-            </TabsList>
-            <div
-              style={{ height: editorHeight }}
-              className="tabcontent overflow-y-scroll bg-primary/5 rounded-xl rounded-t-none"
-            >
-              {Object.entries(snippets).map(([filename, file]) => (
-                <TabsContent
-                  key={filename}
-                  className="min-h-[500px]"
-                  value={filename}
-                >
-                  <RemoteContent
-                    mdx={file.compiledSource}
-                    components={{ code: Code }}
-                    scope={{}}
-                  />
-                </TabsContent>
-              ))}
-            </div>
-          </Tabs>
-        )}
-      </div>
+      {showEditor && (
+        <div
+          className={clsx(
+            'rounded-xl overflow-hidden',
+            isHorizontal ? 'w-1/2 rounded-l-none' : 'rounded-t-none ',
+          )}
+        >
+          {snippets && (
+            <Tabs defaultValue={_initialActiveFile}>
+              <TabsList className="tablist border-none mb-0 overflow-x-auto overflow-y-hidden text-nowrap bg-primary/5">
+                {Object.keys(snippets).map((filename) => (
+                  <TabsTrigger
+                    key={filename}
+                    className="font-light text-sm data-[state=active]:bg-primary/5 pt-3"
+                    value={filename}
+                  >
+                    {filename}
+                  </TabsTrigger>
+                ))}
+              </TabsList>
+              <div
+                style={{ height: editorHeight }}
+                className="tabcontent overflow-y-scroll bg-primary/5"
+              >
+                {Object.entries(snippets).map(([filename, file]) => (
+                  <TabsContent
+                    key={filename}
+                    className="min-h-[500px]"
+                    value={filename}
+                  >
+                    <RemoteContent
+                      mdx={file.compiledSource}
+                      components={{ code: Code }}
+                      scope={{}}
+                    />
+                  </TabsContent>
+                ))}
+              </div>
+            </Tabs>
+          )}
+        </div>
+      )}
     </div>
   );
 }
