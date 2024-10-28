@@ -24,6 +24,7 @@ export default {
   'tooltip-node': 'Tooltip Node',
   'labeled-handle': 'Labeled Handle',
   'button-edge': 'Button Edge',
+  'devtools': 'DevTools',
   'zoom-select': 'Zoom Select',
   'zoom-slider': 'Zoom Slider',
   _: {

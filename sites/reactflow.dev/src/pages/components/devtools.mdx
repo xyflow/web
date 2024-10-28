@@ -1,0 +1,15 @@
+---
+title: DevTools
+description: A debugging tool that provides data on the viewport, the state of each node, and logs change events. 
+---
+
+import UiComponentViewer from '@/components/ui-component-viewer';
+import fetchShadcnComponent from '@/utils/get-static-props/fetch-shadcn-component';
+
+export const getStaticProps = fetchShadcnComponent('devtools');
+
+# DevTools
+
+A debugging tool that provides data on the viewport, the state of each node, and logs change events. 
+
+<UiComponentViewer />
