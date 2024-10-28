@@ -1,4 +1,7 @@
 import { useContext } from 'react';
+import { clsx } from 'clsx';
+import { Code } from 'nextra/components';
+import { SandpackProvider } from '@codesandbox/sandpack-react';
 
 import {
   Framework,
@@ -10,11 +13,10 @@ import {
 
 import { RemoteContent } from '../../components/remote-content';
 import { SharedContext } from '../../context/shared-context';
-import { Code } from 'nextra/components';
 import { CompiledMdx } from '../../types';
 
 import './style.css';
-import { clsx } from 'clsx';
+import { OpenInStackblitz } from './open-in-stackblitz';
 
 const defaultOptions = {
   editorHeight: '60vh',
@@ -33,6 +35,7 @@ export type RemoteCodeViewerProps = {
   showOpenInCodeSandbox?: boolean;
   editorHeight?: string | number;
   orientation?: 'horizontal' | 'vertical';
+  sandpackOptions?: Record<string, any>;
 };
 
 export function RemoteCodeViewer({
@@ -40,11 +43,13 @@ export function RemoteCodeViewer({
   framework,
   showEditor = true,
   showOpenInCodeSandbox = framework === 'react',
+  sandpackOptions = {},
   editorHeight = '60vh',
   activeFile,
   orientation,
 }: RemoteCodeViewerProps) {
-  const _framework = framework ?? process.env.NEXT_PUBLIC_Framework ?? 'react';
+  const _framework: Framework =
+    framework ?? (process.env.NEXT_PUBLIC_Framework as Framework) ?? 'react';
 
   const preview = `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/${_framework}/${route}/index.html`;
 
@@ -85,7 +90,7 @@ export function RemoteCodeViewer({
     >
       <div
         style={{ height: editorHeight }}
-        className={clsx(isHorizontal ? 'w-1/2' : '')}
+        className={clsx('relative', isHorizontal ? 'w-1/2' : '')}
       >
         <iframe
           src={preview}
@@ -94,6 +99,9 @@ export function RemoteCodeViewer({
           height="100%"
           className="example"
         />
+        <div className="absolute bottom-5 right-5 flex">
+          <OpenInStackblitz framework={_framework} route={route} />
+        </div>
       </div>
       {showEditor && (
         <div
