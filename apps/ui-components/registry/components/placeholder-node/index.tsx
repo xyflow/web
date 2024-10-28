@@ -36,7 +36,7 @@ export function PlaceholderNode({ data, id, selected }: NodeProps<PlaceholderNod
     <BaseNode
       id={id}
       selected={selected}
-      className="bg-card text-center w-40 border-dashed border-gray-400 text-gray-400 shadow-none"
+      className="bg-card text-center w-40 border-dashed border-gray-400 text-gray-400 shadow-none p-2"
       onClick={handleClick}
     >
       {data.label}
