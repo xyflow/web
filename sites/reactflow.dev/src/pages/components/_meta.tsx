@@ -18,6 +18,7 @@ export default {
     title: 'Components',
   },
   'annotation': 'Annotation',
+  'labeled-group-node': 'Labeled Group Node',
   'zoom-slider': 'Zoom Slider',
   'tooltip-node': 'Tooltip Node',
   'database-schema-node': 'Database Schema Node',
