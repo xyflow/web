@@ -363,23 +363,6 @@ article.nextra-content ol li p {
   box-shadow: none;
 }
 
-.remote-code-viewer .tablist::-webkit-scrollbar,
-.remote-code-viewer .tabcontent::-webkit-scrollbar {
-  border-color: transparent;
-  background: hsl(var(--primary) / 0.05);
-  height: 7px;
-  width: 7px;
-}
-.remote-code-viewer .tablist::-webkit-scrollbar-thumb,
-.remote-code-viewer .tabcontent::-webkit-scrollbar-thumb {
-  background-color: hsl(var(--primary) / 0.1);
-  border-radius: 10px;
-}
-
-.remote-code-viewer .tabcontent::-webkit-scrollbar {
-  background-color: transparent;
-}
-
 /* needed for moving navbar elements to the left */
 .nextra-nav-container nav > div:first-child {
   @apply !mr-5;
