@@ -1,7 +1,6 @@
 import { useContext } from 'react';
 import { clsx } from 'clsx';
 import { Code } from 'nextra/components';
-import { SandpackProvider } from '@codesandbox/sandpack-react';
 
 import {
   Framework,
@@ -17,6 +16,7 @@ import { CompiledMdx } from '../../types';
 
 import './style.css';
 import { OpenInStackblitz } from './open-in-stackblitz';
+import { OpenInCodesandbox } from './open-in-codesandbox';
 
 const defaultOptions = {
   editorHeight: '60vh',
@@ -101,6 +101,13 @@ export function RemoteCodeViewer({
         />
         <div className="absolute bottom-5 right-5 flex">
           <OpenInStackblitz framework={_framework} route={route} />
+          {showOpenInCodeSandbox && (
+            <OpenInCodesandbox
+              framework={_framework}
+              route={route}
+              sandpackOptions={sandpackOptions}
+            />
+          )}
         </div>
       </div>
       {showEditor && (

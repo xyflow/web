@@ -1,14 +1,18 @@
 import { useCallback } from 'react';
 import sdk, { Project, ProjectTemplate, OpenOptions } from '@stackblitz/sdk';
 
-import { type SandpackFile } from '@codesandbox/sandpack-react/types';
-
 import { Button, Framework } from '@xyflow/xy-ui';
 import { fetchFiles } from './fetchFiles';
 
 type OpenInStackblitzProps = {
   framework: Framework;
   route: string;
+};
+
+type Files = {
+  [path: string]: {
+    code: string;
+  };
 };
 
 export function OpenInStackblitz({ framework, route }: OpenInStackblitzProps) {
@@ -32,7 +36,7 @@ export function OpenInStackblitz({ framework, route }: OpenInStackblitzProps) {
 
 function prepare(
   framework: Framework,
-  files: Record<string, string | string>,
+  files: Files,
   dependencies: Record<string, string>,
 ): { project: Project; options: OpenOptions } {
   switch (framework) {
@@ -66,7 +70,7 @@ function prepare(
 }
 
 function prepareReactProject(
-  files: Record<string, string | SandpackFile>,
+  files: Files,
   dependencies: Record<string, string>,
 ) {
   return {
@@ -115,7 +119,7 @@ function prepareReactProject(
 }
 
 function prepareSvelteProject(
-  files: Record<string, string | SandpackFile>,
+  files: Files,
   dependencies: Record<string, string>,
 ) {
   return {
