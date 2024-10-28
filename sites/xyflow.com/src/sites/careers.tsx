@@ -7,7 +7,7 @@ import { MapPinIcon } from '@heroicons/react/24/solid';
 
 const openings: JobOpeningProps[] = [
   {
-    location: 'Berlin',
+    location: 'Berlin (hybrid)',
     title: 'Fullstack Developer',
     description: [
       "Our libraries React Flow and Svelte Flow are at the core of what we do, \
@@ -26,6 +26,7 @@ const openings: JobOpeningProps[] = [
       'Passionate about independent open-source software.',
       'Interested in the different parts of our daily business: libraries, \
        pro-platform, docs, website, discord, support.',
+      'Based in or around Berlin',
     ],
     tasks: [
       'Improve the checkout flow with Stripe on the Pro Platform.',
@@ -41,6 +42,7 @@ const openings: JobOpeningProps[] = [
       'Six weeks of vacation per year',
       'Salary range: 50k - 80k',
       'Monthly 1:1s, semi annual reviews',
+      'Hybrid work model',
     ],
   },
 ];
@@ -171,6 +173,7 @@ function JobOpening({
   candidate,
   tasks,
   benefits,
+  location,
 }: JobOpeningProps) {
   return (
     <Section
@@ -178,7 +181,7 @@ function JobOpening({
       className="max-w-screen-lg bg-slate-50 rounded-xl p-4 md:p-8 lg:p-12 mx-auto space-y-6"
     >
       <div className="flex gap-2 items-center text-md">
-        <MapPinIcon className="w-5 h-5" /> Berlin
+        <MapPinIcon className="w-5 h-5" /> {location}
       </div>
       <Heading size="md" className="mb-12">
         {title}
