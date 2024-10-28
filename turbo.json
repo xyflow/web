@@ -41,6 +41,28 @@
         ".env"
       ]
     },
+    "svelteflow-website#build": {
+      "dependsOn": ["^example-apps#build"],
+      "outputs": [".next/**", "!.next/cache/**"],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        ".env.production.local",
+        ".env.local",
+        ".env.production",
+        ".env"
+      ]
+    },
+    "xyflow-website#build": {
+      "dependsOn": ["^example-apps#build"],
+      "outputs": [".next/**", "!.next/cache/**"],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        ".env.production.local",
+        ".env.local",
+        ".env.production",
+        ".env"
+      ]
+    },
     "ui-components#generate-registry": {
       "outputs": ["public/**"],
       "inputs": ["$TURBO_DEFAULT$"]
