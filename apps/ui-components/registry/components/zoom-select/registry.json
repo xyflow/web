@@ -1,0 +1,16 @@
+{
+  "name": "zoom-select",
+  "type": "registry:component",
+  "dependencies": ["@xyflow/react"],
+  "devDependencies": [],
+  "registryDependencies": ["select"],
+  "files": [
+    {
+      "type": "registry:component",
+      "path": "zoom-select.tsx"
+    }
+  ],
+  "tailwind": {},
+  "cssVars": {},
+  "meta": {}
+}
