@@ -31,11 +31,6 @@
       ]
     },
     "reactflow-website#build": {
-      "dependsOn": [
-        "^ui-components#generate-registry",
-        "^example-apps#build",
-        "^xy-shared"
-      ],
       "outputs": [".next/**", "!.next/cache/**"],
       "inputs": [
         "$TURBO_DEFAULT$",
@@ -46,7 +41,6 @@
       ]
     },
     "svelteflow-website#build": {
-      "dependsOn": ["^example-apps#build", "^xy-shared"],
       "outputs": [".next/**", "!.next/cache/**"],
       "inputs": [
         "$TURBO_DEFAULT$",
@@ -57,7 +51,6 @@
       ]
     },
     "xyflow-website#build": {
-      "dependsOn": ["^example-apps#build", "^xy-shared"],
       "outputs": [".next/**", "!.next/cache/**"],
       "inputs": [
         "$TURBO_DEFAULT$",
