@@ -17,6 +17,7 @@ import hayleigh from '@/../public/img/hayleigh.jpg';
 import moritz from '@/../public/img/moritz.jpg';
 import peter from '@/../public/img/peter.jpg';
 import burak from '@/../public/img/burak.jpg';
+import abbey from '@/../public/img/abbey.jpg';
 
 export default function About() {
   return (
@@ -127,6 +128,14 @@ export default function About() {
               linkName: 'Website',
               route: 'https://www.scheissaufdeinmarketingdusalamiwurst.de/',
             },
+          ]}
+        />
+        <TeamCard
+          name="Abbey"
+          teampic={abbey}
+          description="Abbey spent the first twenty years of her career finely crafting an innovative sea bass fishing technique. The world of sea bass became all too political for her, but luckily she found xyflow, which she wrongly assumed was another commercial fishing company. She is still figuring out how to turn on a computer, but once she does, she is excited to start contributing to the team."
+          links={[
+            { linkName: 'Github', route: 'https://github.com/printerscanner' },
           ]}
         />
       </ContentGrid>
