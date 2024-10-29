@@ -6,7 +6,7 @@ export default async function getStaticProps() {
   );
   const { downloads = 0 } = await fetchJSON(process.env.NPM_SVELTE_FLOW);
 
-  const { version } = await fetchJSON(process.env.NPM_VERSION_SVELTE_FLOW);
+  const { version } = await fetchJSON(process.env.NPM_SVELTE_FLOW_VERSION);
 
   if (!downloads || !stars || !version) {
     console.log(
