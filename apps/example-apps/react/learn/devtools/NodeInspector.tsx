@@ -1,33 +1,41 @@
-import { useNodes, EdgeLabelRenderer } from '@xyflow/react';
+import {
+  useNodes,
+  ViewportPortal,
+  useReactFlow,
+  type XYPosition,
+} from '@xyflow/react';
 
 export default function NodeInspector() {
+  const { getInternalNode } = useReactFlow();
   const nodes = useNodes();
 
   return (
-    <EdgeLabelRenderer>
+    <ViewportPortal>
       <div className="react-flow__devtools-nodeinspector">
         {nodes.map((node) => {
-          const x = node.position.x || 0;
-          const y = node.position.y || 0;
-          const width = node.width || 0;
-          const height = node.height || 0;
+          const internalNode = getInternalNode(node.id);
+          if (!internalNode) {
+            return null;
+          }
+
+          const absPosition = internalNode?.internals.positionAbsolute;
 
           return (
             <NodeInfo
               key={node.id}
               id={node.id}
-              selected={node.selected}
+              selected={!!node.selected}
               type={node.type || 'default'}
-              x={x}
-              y={y}
-              width={width}
-              height={height}
+              position={node.position}
+              absPosition={absPosition}
+              width={node.measured?.width ?? 0}
+              height={node.measured?.height ?? 0}
               data={node.data}
             />
           );
         })}
       </div>
-    </EdgeLabelRenderer>
+    </ViewportPortal>
   );
 }
 
@@ -35,8 +43,8 @@ type NodeInfoProps = {
   id: string;
   type: string;
   selected: boolean;
-  x: number;
-  y: number;
+  position: XYPosition;
+  absPosition: XYPosition;
   width?: number;
   height?: number;
   data: any;
@@ -46,8 +54,8 @@ function NodeInfo({
   id,
   type,
   selected,
-  x,
-  y,
+  position,
+  absPosition,
   width,
   height,
   data,
@@ -61,7 +69,7 @@ function NodeInfo({
       className="react-flow__devtools-nodeinfo"
       style={{
         position: 'absolute',
-        transform: `translate(${x}px, ${y + height}px)`,
+        transform: `translate(${absPosition.x}px, ${absPosition.y + height}px)`,
         width: width * 2,
       }}
     >
@@ -69,7 +77,7 @@ function NodeInfo({
       <div>type: {type}</div>
       <div>selected: {selected ? 'true' : 'false'}</div>
       <div>
-        position: {x.toFixed(1)}, {y.toFixed(1)}
+        position: {position.x.toFixed(1)}, {position.y.toFixed(1)}
       </div>
       <div>
         dimensions: {width} × {height}
