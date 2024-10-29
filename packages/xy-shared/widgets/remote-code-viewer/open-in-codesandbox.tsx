@@ -39,9 +39,11 @@ export function OpenInCodesandbox({
   }>(null);
 
   const openInCodesandbox = useCallback(async () => {
-    const { files, dependencies } = await fetchFiles(route, framework);
+    try {
+      const { files, dependencies } = await fetchFiles(route, framework);
 
-    setMountReroute({ files, dependencies });
+      setMountReroute({ files, dependencies });
+    } catch (e) {}
   }, [framework, route]);
 
   return (
@@ -80,10 +82,8 @@ function VirtualCodeSandboxButton() {
     codesandboxInitiated.current = true;
   }, []);
 
-  // all the relevant logic for creating the sandbox is inside
-  // the UnstyledOpenInCodeSandboxButton component
-  // there is even a 600ms delay implemented in the source code,
-  // which I am not in the position to question.
+  // all the relevant logic for creating the sandbox is inside the UnstyledOpenInCodeSandboxButton component
+  // there is even a 600ms delay implemented in the source code, which I am not in the position to question.
   // https://github.com/codesandbox/sandpack/blob/8716a577694885b53e0696a275ecbf0b87097fc1/sandpack-react/src/components/common/OpenInCodeSandboxButton/UnstyledOpenInCodeSandboxButton.tsx#L112
   return (
     <UnstyledOpenInCodeSandboxButton>
@@ -100,9 +100,8 @@ function RerouteToCodeSandbox({
   return (
     <span
       ref={(ref) => {
-        // This component waits to be rerendered
-        // after the parent component has mounted.
-        // It should only rerender once more when the url of the sandbox is determined.
+        // This component waits to be rerendered after the parent component has mounted.
+        // It should only rerender once the url of the sandbox is determined.
         if (codesandboxInitiated.current && ref) {
           ref.click();
         }

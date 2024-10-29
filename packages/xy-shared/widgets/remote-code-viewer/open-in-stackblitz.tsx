@@ -17,10 +17,12 @@ type Files = {
 
 export function OpenInStackblitz({ framework, route }: OpenInStackblitzProps) {
   const openInStackblitz = useCallback(async () => {
-    const { files, dependencies } = await fetchFiles(route, framework);
-    const { project, options } = prepare(framework, files, dependencies);
+    try {
+      const { files, dependencies } = await fetchFiles(route, framework);
+      const { project, options } = prepare(framework, files, dependencies);
 
-    sdk.openProject(project, options);
+      sdk.openProject(project, options);
+    } catch (e) {}
   }, [framework, route]);
 
   return (
