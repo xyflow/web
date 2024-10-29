@@ -12,7 +12,7 @@ export function LabeledGroupNode({ data, selected }: NodeProps<LabeledGroupNode>
       className="bg-white bg-opacity-50 h-full rounded-sm overflow-hidden p-0" 
     >
       {data.label && (
-        <div className="bg-gray-200 w-fit p-2 text-xs rounded-br-sm" >
+        <div className="bg-gray-200 w-fit p-2 text-xs rounded-br-sm bg-secondary text-card-foreground" >
           {data.label}
         </div>
       )}
