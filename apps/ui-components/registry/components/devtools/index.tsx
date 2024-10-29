@@ -20,11 +20,6 @@ import {
   useReactFlow
 } from '@xyflow/react';
 
-import {
-  ToggleGroup,
-  ToggleGroupItem,
-} from "@/components/ui/toggle-group"
-
 import { Button } from "@/components/ui/button";
 
 export function ViewportLogger() {
