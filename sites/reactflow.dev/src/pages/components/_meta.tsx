@@ -17,6 +17,7 @@ export default {
     type: 'separator',
     title: 'Components',
   },
+  'animated-svg-edge': 'Animated SVG Edge',
   'annotation': 'Annotation',
   'database-schema-node': 'Database Schema Node',
   'labeled-group-node': 'Labeled Group Node',
