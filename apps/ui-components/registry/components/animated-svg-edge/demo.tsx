@@ -25,9 +25,8 @@ const defaultEdges = [
     type: "animatedSvgEdge",
     data: {
       duration: 2,
-      direction: "alternate",
-      shape: "triangle",
-      path: "bezier",
+      shape: "package",
+      path: "smoothstep",
     },
   } satisfies AnimatedSvgEdge,
 ];
