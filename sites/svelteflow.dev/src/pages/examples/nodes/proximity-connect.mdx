@@ -6,6 +6,10 @@ description: Example showing how to automatically create edges when nodes get cl
 import { ExampleLayout } from 'xy-shared';
 import { RemoteCodeViewer } from 'xy-shared';
 
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['examples/nodes/proximity-connect']);
+
+
 <ExampleLayout>
 This example shows how to automatically create edges when a node is dropped in close proximity to another one. While dragging, a dotted connection line is displayed to show which edge will be created if you drop the node.
 

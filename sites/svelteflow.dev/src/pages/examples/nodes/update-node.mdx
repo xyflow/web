@@ -7,6 +7,10 @@ import { ExampleLayout } from 'xy-shared';
 import { RemoteCodeViewer } from 'xy-shared';
 import { Callout } from 'nextra/components';
 
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['examples/nodes/update-node']);
+
+
 <ExampleLayout>
   You can update properties of nodes and edges freely.Don't forget to [self
   assign](https://svelte.dev/docs/svelte-components#script-2-assignments-are-reactive)

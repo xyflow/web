@@ -6,16 +6,16 @@ type arrowStyleProps = {
   transform?: string; 
 };
 
-type Annotation = Node<{
+type AnnotationNode = Node<{
   label: string;
   level: number;
   arrow: string;
   arrowStyle: arrowStyleProps;
 }>;
 
-export function Annotation({ data }: NodeProps<Annotation>) {
+export function AnnotationNode({ data }: NodeProps<AnnotationNode>) {
   return (
-    <div className="relative p-2 w-40">
+    <div className="relative p-2 w-40 text-card-foreground nodrag">
       <div className="flex items-start"> 
         <div className="mr-1 leading-snug">{data.level}.</div> 
         <div className="leading-snug">{data.label}</div> 
@@ -37,4 +37,4 @@ export function Annotation({ data }: NodeProps<Annotation>) {
   );
 }
 
-Annotation.displayName = "Annotation";
+AnnotationNode.displayName = "AnnotationNode";

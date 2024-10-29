@@ -6,6 +6,10 @@ description: Check if a new connection is valid and should be added
 import { RemoteCodeViewer } from 'xy-shared';
 import { ExampleLayout } from 'xy-shared';
 
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['examples/interaction/validation']);
+
+
 <ExampleLayout>
 Custom nodes need to have at least one [`Handle` component](/api-reference/components/handle) to be connectable. You can pass a validation function [`isValidConnection`](/api-reference/react-flow#isvalidconnection-1) to the ReactFlow component in order to check if a new connection is valid and should be added.
 

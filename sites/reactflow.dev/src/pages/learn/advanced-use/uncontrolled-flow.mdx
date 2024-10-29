@@ -12,6 +12,10 @@ An implementation of an uncontrolled flow is simpler, because you don't need to 
 import { Callout } from 'nextra/components';
 import { RemoteCodeViewer } from 'xy-shared';
 
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['learn/uncontrolled', 'learn/uncontrolled-2']);
+
+
 <RemoteCodeViewer route="learn/uncontrolled" framework="react" />
 
 As you can see, we are passing `defaultEdgeOptions` to define that edges are animated. This is helpful, because you can't use the `onConnect` handler anymore to pass custom options to a newly created edge. Try to connect "Node B" with "Node C" and you see that the new edge is animated.

@@ -12,7 +12,7 @@ export async function getMdxContentUnderRoute<T extends string>(
 ) {
   const path = Path.join(
     __dirname,
-    '../../../../../sites',
+    '../../../../sites',
     site,
     'src/pages',
     route,

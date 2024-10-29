@@ -10,6 +10,10 @@ date: '2024-06-11'
 
 import { RemoteCodeViewer } from 'xy-shared';
 
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['examples/layout/entitree-flex']);
+
+
 # Layouting example for Entitree Flex
 
 We add a new layouting algorithm to our example lineup with the addition of

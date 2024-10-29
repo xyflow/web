@@ -10,6 +10,10 @@ date: '2024-08-14'
 
 import { RemoteCodeViewer } from 'xy-shared';
 
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['examples/edges/animating-edges-node']);
+
+
 # New edge examples
 
 Here's a care drop of new edge examples including how to animate nodes along an

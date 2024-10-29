@@ -9,6 +9,10 @@ date: '2023-11-02'
 
 import { RemoteCodeViewer } from 'xy-shared';
 
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['examples/interaction/prevent-cycles']);
+
+
 # New "prevent connection cycles" example!
 
 The "Prevent connection cycles" example shows how to use the

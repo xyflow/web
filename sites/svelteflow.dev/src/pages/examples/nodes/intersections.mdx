@@ -5,6 +5,10 @@ title: Intersections
 import { ExampleLayout } from 'xy-shared';
 import { RemoteCodeViewer } from 'xy-shared';
 
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['examples/nodes/intersections']);
+
+
 <ExampleLayout>
 The `useSvelteFlow` hook exports helpers to check intersections of nodes and areas. In this example you can drag a node and get a visual feedback when it intersects with another node.
 

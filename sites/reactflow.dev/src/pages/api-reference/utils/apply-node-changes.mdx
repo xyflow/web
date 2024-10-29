@@ -1,10 +1,10 @@
 ---
 title: applyNodeChanges()
 description:
-  "Various events on the ReactFlow component can produce an NodeChange that
-  describes how to update the edges of your flow in some way. If you don't need
+  "Various events on the ReactFlow component can produce a NodeChange that
+  describes how to update the nodes of your flow in some way. If you don't need
   any custom behaviour, this util can be used to take an array of these changes
-  and apply them to your edges."
+  and apply them to your nodes."
 ---
 
 import { PropsTable } from '@/components/props-table';
@@ -14,10 +14,10 @@ import { signature } from '@/references/utils/applyNodeChanges.ts';
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/utils/changes.ts/#L140)
 
-Various events on the [`<ReactFlow />`](/api-reference/react-flow) component can produce an
-[`NodeChange`](/api-reference/types/node-change) that describes how to update the edges of your
+Various events on the [`<ReactFlow />`](/api-reference/react-flow) component can produce a
+[`NodeChange`](/api-reference/types/node-change) that describes how to update the nodes of your
 flow in some way. If you don't need any custom behaviour, this util can be used to
-take an array of these changes and apply them to your edges.
+take an array of these changes and apply them to your nodes.
 
 ```js
 import { useState, useCallback } from 'react';

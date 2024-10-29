@@ -6,6 +6,10 @@ description: Change the appearance and behavior of the connection line
 import { RemoteCodeViewer } from 'xy-shared';
 import { ExampleLayout } from 'xy-shared';
 
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['examples/edges/custom-connectionline']);
+
+
 <ExampleLayout>
 A Connection Line is what you see when you click and drag out from a handle. It represents a possible edge and can snap to valid handles in close proximity.
 You can implement your own Connection Line by passing a React component rendering the line. You can find the passed props in the [custom connection line docs](/api-reference/types/connection-line-component-props).

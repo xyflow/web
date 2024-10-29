@@ -6,6 +6,10 @@ description: Restrict dragging to a specific part of node
 import { RemoteCodeViewer } from 'xy-shared';
 import { ExampleLayout } from 'xy-shared';
 
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['examples/nodes/drag-handle']);
+
+
 <ExampleLayout>
 You can restrict dragging to a specific part of node, by specifiying a class that will act as a [`dragHandle`](/api-reference/types/node).
 

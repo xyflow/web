@@ -7,12 +7,14 @@ import { RemoteCodeViewer } from 'xy-shared';
 import { ExampleLayout } from 'xy-shared';
 import UnusedPropWarning from '@/components/unused-prop-warning';
 
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['examples/styling/turbo-flow']);
+
 <ExampleLayout>
 Every part of the Svelte Flow UI is customizable. As the name implies the look is taken from the beautiful [turbo.build](https://turbo.build/pack/docs/core-concepts#function-level-caching) website. You can find more information about custom styles in the [theming guide](/learn/guides/theming). (Svelte Flow uses Turborepo and we love it 💜)
 
 <RemoteCodeViewer
   route="examples/styling/turbo-flow"
-  
   framework="svelte"
   sandpackOptions={{
     externalResources: ['https://code.cdn.mozilla.net/fonts/fira.css'],

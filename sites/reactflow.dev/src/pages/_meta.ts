@@ -6,15 +6,21 @@ export default {
     },
   },
   learn: 'Learn',
-  examples: 'Examples',
   'api-reference': 'Reference',
+  examples: 'Examples',
   components: {
     title: 'Components',
     display: 'visible',
   },
+  showcase: {
+    title: 'Showcase',
+    theme: {
+      layout: 'raw',
+    },
+  },
   community: {
-    title: 'Community',
-    display: 'hidden',
+    title: 'More',
+    // display: 'hidden',
     type: 'menu',
     items: {
       showcase: {
@@ -22,21 +28,21 @@ export default {
         href: '/showcase',
       },
       'whats-new': {
-        title: "What's new?",
+        title: 'Changelog',
         href: '/whats-new',
       },
       blog: {
         title: 'Blog',
         href: 'https://xyflow.com/blog',
       },
-      discord: {
-        title: 'Discord',
-        href: 'https://discord.gg/RVmnytFmGW',
-      },
-      github: {
-        title: 'Github',
-        href: 'https://github.com/xyflow/xyflow',
-      },
+      // discord: {
+      //   title: 'Discord',
+      //   href: 'https://discord.gg/RVmnytFmGW',
+      // },
+      // github: {
+      //   title: 'Github',
+      //   href: 'https://github.com/xyflow/xyflow',
+      // },
       contact: {
         title: 'Contact Us',
         href: 'https://xyflow.com/contact',
@@ -51,13 +57,13 @@ export default {
       layout: 'raw',
     },
   },
-  showcase: {
-    title: 'Showcase',
-    display: 'hidden',
-    theme: {
-      layout: 'raw',
-    },
-  },
+  // showcase: {
+  //   title: 'Showcase',
+  //   display: 'hidden',
+  //   theme: {
+  //     layout: 'raw',
+  //   },
+  // },
   pro: {
     title: 'Pro',
     display: 'hidden',
