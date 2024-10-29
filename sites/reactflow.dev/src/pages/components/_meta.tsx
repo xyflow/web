@@ -21,7 +21,7 @@ export default {
   'database-schema-node': 'Database Schema',
   'labeled-group-node': 'Labeled Group',
   'placeholder-node': 'Placeholder',
-  annotation: 'Annotation',
+  'annotation-node': 'Annotation',
   edges: {
     type: 'separator',
     title: 'Edges',
