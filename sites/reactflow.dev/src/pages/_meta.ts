@@ -23,10 +23,6 @@ export default {
     // display: 'hidden',
     type: 'menu',
     items: {
-      showcase: {
-        title: 'Showcase',
-        href: '/showcase',
-      },
       'whats-new': {
         title: 'Changelog',
         href: '/whats-new',

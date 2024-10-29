@@ -44,15 +44,3 @@
 .developer-survey-2023 footer {
   display: none;
 }
-
-@media (max-width: 850px) {
-  .DocSearch-Button-Placeholder {
-    display: none;
-  }
-}
-
-@media (max-width: 900px) {
-  .DocSearch-Button-Keys {
-    display: none;
-  }
-}

@@ -29,7 +29,7 @@ const faviconUrl = `${baseUrl}/img/favicon.ico`;
 
 export default {
   logo: () => (
-    <LogoLabel label="React Flow" labelClassName="mr-5 max-lg:hidden" />
+    <LogoLabel label="React Flow" labelClassName="mr-5 md:max-lg:hidden" />
   ),
   logoLink: false,
   docsRepositoryBase:
@@ -93,7 +93,10 @@ export default {
       if (isPro) {
         return (
           <Button asChild className="ml-auto">
-            <Link href={`${process.env.NEXT_PUBLIC_PRO_PLATFORM_URL}/signup`}>
+            <Link
+              className="shrink-0"
+              href={`${process.env.NEXT_PUBLIC_PRO_PLATFORM_URL}/signup`}
+            >
               Sign Up
             </Link>
           </Button>

@@ -404,3 +404,17 @@ html:has(body._overflow-hidden) nav {
 .examples main._max-w-6xl {
   max-width: none;
 }
+
+@media (max-width: 950px) {
+  .DocSearch-Button-Keys {
+    display: none;
+  }
+
+  .DocSearch-Button-Placeholder {
+    display: none;
+  }
+
+  .nextra-nav-container > nav {
+    @apply p-2 gap-2;
+  }
+}
