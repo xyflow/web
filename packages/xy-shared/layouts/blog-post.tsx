@@ -1,14 +1,14 @@
 import { useContext } from 'react';
 import { getPrevAndNextPagesByTitle } from '../lib';
 import { BaseBlogPostLayout, BlogPostFrontmatter } from './blog-post-base';
-import { UseConfigContext } from '../context/UseConfigContext';
+import { SharedContext } from '../context/shared-context';
 
 type BlogPostLayoutProps = {
   children: React.ReactNode;
 };
 
 export function BlogPostLayout({ children }: BlogPostLayoutProps) {
-  const useConfig = useContext(UseConfigContext);
+  const { useConfig } = useContext(SharedContext);
   const { title, frontMatter } = useConfig<BlogPostFrontmatter>();
 
   const { prev, next } = getPrevAndNextPagesByTitle(title, '/blog');

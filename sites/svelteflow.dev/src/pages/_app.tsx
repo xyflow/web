@@ -1,15 +1,19 @@
 import { useRouter } from 'next/router';
 import { cn } from '@xyflow/xy-ui';
 
-import { UseConfigContext, useFathom } from 'xy-shared';
+import { useConfig } from 'nextra-theme-docs';
+import { useData } from 'nextra/hooks';
+
+import { SharedContext, useFathom } from 'xy-shared';
 import { ntDapperFont, fontClassNames } from 'xy-shared/fonts';
 
 import '../global.css';
-import { useConfig } from 'nextra-theme-docs';
 
 const fathomOptions = {
   id: 'PFWQXXRR',
 };
+
+const sharedContext = { useConfig, useData };
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
@@ -26,9 +30,9 @@ export default function App({ Component, pageProps }) {
         }
       `}</style>
       <div className={cn(fontClassNames, routeSegment)}>
-        <UseConfigContext.Provider value={useConfig}>
+        <SharedContext.Provider value={sharedContext}>
           <Component {...pageProps} />
-        </UseConfigContext.Provider>
+        </SharedContext.Provider>
       </div>
     </>
   );

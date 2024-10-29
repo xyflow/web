@@ -7,6 +7,10 @@ import { RemoteCodeViewer } from 'xy-shared';
 import { ExampleLayout } from 'xy-shared';
 import { Callout } from 'nextra/components';
 
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['examples/edges/temporary-edges']);
+
+
 <ExampleLayout>
 
 In React Flow, almost everything is built around the concepts of nodes and edges.

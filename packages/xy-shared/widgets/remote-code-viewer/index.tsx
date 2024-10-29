@@ -1,20 +1,22 @@
-'use client';
+import { useContext } from 'react';
+import { clsx } from 'clsx';
+import { Code } from 'nextra/components';
 
 import {
-  SandpackProvider,
-  SandpackLayout,
-  SandpackCodeEditor,
-  SandpackPreview,
-  SandpackStack,
-  OpenInCodeSandboxButton,
-  SandpackFiles,
-  SandpackPredefinedTemplate,
-} from '@codesandbox/sandpack-react';
-import { Framework } from '@xyflow/xy-ui';
-import cn from 'clsx';
-import { useEffect, useState } from 'react';
-import { OpenInCodesandbox } from './open-in-codesandbox';
+  Framework,
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from '@xyflow/xy-ui';
+
+import { RemoteContent } from '../../components/remote-content';
+import { SharedContext } from '../../context/shared-context';
+import { CompiledMdx } from '../../types';
+
+import './style.css';
 import { OpenInStackblitz } from './open-in-stackblitz';
+import { OpenInCodesandbox } from './open-in-codesandbox';
 
 const defaultOptions = {
   editorHeight: '60vh',
@@ -25,172 +27,130 @@ const defaultOptions = {
 
 export type RemoteCodeViewerProps = {
   route: string;
-  framework: Framework;
+  framework?: Framework;
   options?: typeof defaultOptions;
   activeFile?: string;
   showEditor?: boolean;
   showPreview?: boolean;
-  customOpenButton?: React.ReactNode;
-  sandpackOptions?: Record<string, any>;
   showOpenInCodeSandbox?: boolean;
   editorHeight?: string | number;
   orientation?: 'horizontal' | 'vertical';
+  sandpackOptions?: Record<string, any>;
 };
 
 export function RemoteCodeViewer({
   route,
   framework,
   showEditor = true,
-  customOpenButton = null,
-  sandpackOptions = {},
   showOpenInCodeSandbox = framework === 'react',
+  sandpackOptions = {},
   editorHeight = '60vh',
   activeFile,
   orientation,
 }: RemoteCodeViewerProps) {
-  const [filesFetched, setFilesFetched] = useState(true);
-  const [fileFetchFailed, setFileFetchFailed] = useState(false);
-  const [files, setFiles] = useState<SandpackFiles>({
-    'index.html': `<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Example</title>
-  </head>
-  <body>
-    <div id="app"></div>
-  </body>
-</html>`,
-  });
+  const _framework: Framework =
+    framework ?? (process.env.NEXT_PUBLIC_Framework as Framework) ?? 'react';
 
-  const routeURL = `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/${framework}/${route}/source.json`;
-  const preview = `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/${framework}/${route}/index.html`;
+  const preview = `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/${_framework}/${route}/index.html`;
 
-  const _orientation = orientation
-    ? orientation
-    : route.includes('examples/')
-      ? 'vertical'
-      : 'horizontal';
+  const isExample = route.includes('examples/');
+  const isHorizontal = orientation
+    ? orientation === 'horizontal'
+    : isExample
+      ? false
+      : true;
 
-  const [dependencies, setDependencies] = useState<Record<string, string>>({});
+  const { useData } = useContext(SharedContext);
+  const snippets: Record<string, CompiledMdx> | undefined =
+    useData('codeSnippets')?.[route];
 
-  useEffect(() => {
-    const loadFiles = async (url: string) => {
-      const res = await fetch(url);
-      const json = await res.json();
-
-      setFilesFetched(true);
-
-      if ('files' in json && 'dependencies' in json) {
-        const files = json.files;
-
-        // this is a workaround for the examples that are using jsx
-        // if we don't do this, sandpack will generate a default App.tsx file
-        if (framework === 'react' && files['App.jsx']) {
-          files['App.tsx'] = files['App.jsx'];
-          delete files['App.jsx'];
-        } else if (framework === 'svelte') {
-          for (const file of Object.keys(files)) {
-            if (file === 'index.html') {
-              files[file] = files[file]?.replace('./index.ts', './src/main.ts');
-              continue;
-            }
-
-            if (file === 'index.ts') {
-              files['src/main.ts'] = files[file];
-            } else {
-              files[`src/${file}`] = files[file];
-            }
-
-            delete files[file];
-          }
-        }
-
-        // we want to hide these files in the editor on website to reduce the noise
-        ['index.html', 'index.jsx', 'index.tsx', 'src/main.ts'].forEach(
-          (file) => {
-            files[file] = {
-              code: files[file],
-              hidden: true,
-            };
-          },
-        );
-
-        setFiles(json.files);
-        setDependencies(json.dependencies);
-      } else {
-        setFileFetchFailed(true);
-      }
-    };
-
-    loadFiles(routeURL);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  if (fileFetchFailed) {
-    return (
-      <div
-        style={{ height: editorHeight }}
-        className={`w-full color _bg-primary-100 flex justify-center content-center flex-wrap`}
-      >
-        <p className="text-react">Example failed to load</p>
-      </div>
+  if (!snippets) {
+    throw new Error(
+      `Example code not found! Did you forget to call "export const getStaticProps = getStaticCode(["${route}"])" inside your route?`,
     );
   }
 
-  const panelStyle = { height: editorHeight };
+  if (isExample) {
+    delete snippets['index.html'];
+    delete snippets['index.jsx'];
+  }
 
-  // @ todo refactor this. activeFile should be passed separately or within the sandpackOptions
-  sandpackOptions.readOnly = true;
-  sandpackOptions.activeFile = sandpackOptions.activeFile || activeFile;
+  const _initialActiveFile =
+    activeFile ??
+    (Object.keys(snippets).includes('App.jsx')
+      ? 'App.jsx'
+      : Object.keys(snippets)[0]);
 
   return (
     <div
-      className={cn('my-4 bg-gray-100', 'sandpack-wrapper', _orientation)}
-      style={{ minHeight: editorHeight }}
+      className={clsx(
+        'remote-code-viewer mt-5 rounded-lg flex',
+        isHorizontal ? 'flex-row' : 'flex-col',
+      )}
     >
-      {filesFetched && (
-        <SandpackProvider
-          template={framework === 'react' ? 'vite-react-ts' : 'vite-svelte-ts'}
-          options={sandpackOptions}
-          customSetup={{ dependencies, entry: 'index.html' }}
-          files={files}
+      <div
+        style={{ height: editorHeight }}
+        className={clsx('relative', isHorizontal ? 'w-1/2' : '')}
+      >
+        <iframe
+          src={preview}
+          loading="lazy"
+          width="100%"
+          height="100%"
+          className="example"
+        />
+        <div className="absolute bottom-5 right-5 flex">
+          <OpenInStackblitz framework={_framework} route={route} />
+          {showOpenInCodeSandbox && (
+            <OpenInCodesandbox
+              framework={_framework}
+              route={route}
+              sandpackOptions={sandpackOptions}
+            />
+          )}
+        </div>
+      </div>
+      {showEditor && (
+        <div
+          className={clsx(
+            'rounded-xl overflow-hidden',
+            isHorizontal ? 'w-1/2 rounded-l-none' : 'rounded-t-none ',
+          )}
         >
-          <SandpackLayout>
-            {showEditor && (
-              <SandpackCodeEditor readOnly={true} style={panelStyle} />
-            )}
-
-            <SandpackStack style={{ height: editorHeight }}>
-              <div className="sp-preview-container" style={{ height: '100%' }}>
-                <iframe
-                  src={preview}
-                  loading="lazy"
-                  width="100%"
-                  height="100%"
-                  className="example"
-                />
-                <div
-                  className="sp-preview-actions flex items-center gap-4"
-                  style={{
-                    zIndex: 10,
-                    position: 'absolute',
-                    bottom: 10,
-                    right: 10,
-                  }}
-                >
-                  <OpenInStackblitz
-                    framework={framework}
-                    files={files}
-                    dependencies={dependencies}
-                  />
-                  <OpenInCodesandbox />
-                </div>
+          {snippets && (
+            <Tabs defaultValue={_initialActiveFile}>
+              <TabsList className="tablist border-none mb-0 overflow-x-auto overflow-y-hidden text-nowrap bg-primary/5">
+                {Object.keys(snippets).map((filename) => (
+                  <TabsTrigger
+                    key={filename}
+                    className="font-light text-sm data-[state=active]:bg-primary/5 pt-3"
+                    value={filename}
+                  >
+                    {filename}
+                  </TabsTrigger>
+                ))}
+              </TabsList>
+              <div
+                style={{ height: editorHeight }}
+                className="tabcontent overflow-y-scroll bg-primary/5"
+              >
+                {Object.entries(snippets).map(([filename, file]) => (
+                  <TabsContent
+                    key={filename}
+                    className="min-h-[500px]"
+                    value={filename}
+                  >
+                    <RemoteContent
+                      mdx={file.compiledSource}
+                      components={{ code: Code }}
+                      scope={{}}
+                    />
+                  </TabsContent>
+                ))}
               </div>
-            </SandpackStack>
-          </SandpackLayout>
-        </SandpackProvider>
+            </Tabs>
+          )}
+        </div>
       )}
     </div>
   );

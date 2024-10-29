@@ -5,7 +5,7 @@ description: Highly customizable React library for workflow builders, no-code ap
 
 import ReactFlowPage from '@/layouts/home';
 import getStaticPropsStats from '@/utils/get-static-props/github-npm-stats';
-import { getMdxContentUnderRoute } from 'xy-shared/lib/get-static-props/mdx-content-under-route';
+import { getMdxContentUnderRoute } from 'xy-shared/server';
 
 export async function getStaticProps() {
   const whatsNew = await getMdxContentUnderRoute('reactflow.dev','/whats-new');

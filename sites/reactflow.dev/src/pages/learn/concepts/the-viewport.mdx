@@ -29,6 +29,10 @@ As mentioned above, the default controls are:
 
 import { RemoteCodeViewer } from 'xy-shared';
 
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['learn/zoom-pan', 'learn/zoom-pan-2']);
+
+
 <RemoteCodeViewer route="learn/zoom-pan" framework="react" />
 
 ## Figma-like Viewport Controls

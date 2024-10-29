@@ -11,6 +11,19 @@ import { Callout, Tab, Tabs } from 'nextra/components';
 import { Bleed } from 'nextra-theme-docs';
 import { Emoji } from '@xyflow/xy-ui';
 import { RemoteCodeViewer, TutorialLayout } from 'xy-shared';
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode([
+  'tutorials/mindmap/app',
+  'tutorials/mindmap/getting-started',
+  'tutorials/mindmap/store-nodes-edges',
+  'tutorials/mindmap/custom-nodes-edges',
+  'tutorials/mindmap/create-nodes',
+  'tutorials/mindmap/node-as-handle',
+  'tutorials/mindmap/node-as-handle-2',
+  'tutorials/mindmap/node-as-handle-3',
+  'tutorials/mindmap/node-as-handle-4',
+  'tutorials/mindmap/node-as-handle-4',
+]);
 
 <TutorialLayout>
 In this tutorial, you will learn to create a simple mind map tool with React Flow that can be used for brainstorming, organizing an idea, or mapping your thoughts in a visual way. To build this app, we'll be using state management, custom nodes and edges, and more.
@@ -35,19 +48,19 @@ To do this tutorial you will need some knowledge of [React](https://reactjs.org/
 
 We'll be using [Vite](https://vitejs.dev/) to develop our app, but you can also use [Create React App](https://create-react-app.dev/) or any other tool you like. To scaffold a new React app with Vite you need to do:
 
-```bash
+```bash npm2yarn
 npm create vite@latest reactflow-mind-map -- --template react
 ```
 
 if you would like to use Typescript:
 
-```bash
+```bash npm2yarn
 npm create vite@latest reactflow-mind-map -- --template react-ts
 ```
 
 After the initial setup, you need to install some packages:
 
-```bash
+```bash npm2yarn
 npm install reactflow zustand classcat nanoid
 ```
 

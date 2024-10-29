@@ -9,6 +9,7 @@
     "NPM_REACT_FLOW",
     "NPM_REACT_FLOW_LEGACY",
     "NPM_XYFLOW_REACT",
+    "NPM_SVELTE_FLOW_VERSION",
     "SVELTE_FLOW_VERSION",
     "REACT_FLOW_VERSION"
   ],
@@ -32,7 +33,33 @@
       ]
     },
     "reactflow-website#build": {
-      "dependsOn": ["^ui-components#generate-registry"],
+      "dependsOn": [
+        "^build",
+        "^ui-components#generate-registry",
+        "^example-apps#build"
+      ],
+      "outputs": [".next/**", "!.next/cache/**"],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        ".env.production.local",
+        ".env.local",
+        ".env.production",
+        ".env"
+      ]
+    },
+    "svelteflow-website#build": {
+      "dependsOn": ["^build", "^example-apps#build"],
+      "outputs": [".next/**", "!.next/cache/**"],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        ".env.production.local",
+        ".env.local",
+        ".env.production",
+        ".env"
+      ]
+    },
+    "xyflow-website#build": {
+      "dependsOn": ["^build", "^example-apps#build"],
       "outputs": [".next/**", "!.next/cache/**"],
       "inputs": [
         "$TURBO_DEFAULT$",

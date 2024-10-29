@@ -12,6 +12,16 @@ import { Bleed } from 'nextra-theme-docs';
 import { Embed, Image, RemoteCodeViewer, TutorialLayout } from 'xy-shared';
 import { Emoji } from '@xyflow/xy-ui';
 
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode([
+  'tutorials/webaudio/mouse-theremin',
+  'tutorials/webaudio/state-management',
+  'tutorials/webaudio/custom-node',
+  'tutorials/webaudio/custom-nodes',
+  'tutorials/webaudio/hardcoded-audio',
+  'tutorials/webaudio/demo',
+]);
+
 <TutorialLayout>
 Today we'll be looking at how to create an interactive audio playground using React
 Flow and the Web Audio API. We'll start from scratch, first learning about the Web
@@ -97,7 +107,7 @@ all do largely the same thing. You could also choose to use TypeScript instead
 of JavaScript. To keep things simple we won't use it today, but React Flow is
 fully typed (and written entirely in TypeScript) so it's a breeze to use!
 
-```bash
+```bash npm2yarn
 npm create vite@latest -- --template react
 ```
 
@@ -235,7 +245,7 @@ We only need three additional dependencies for this project: `@xyflow/react` for
 UI (obviously!), `zustand` as our simple state management library (that's what we use
 under the hood at React Flow) and `nanoid` as a lightweight id generator.
 
-```bash
+```bash npm2yarn
 npm install @xyflow/react zustand nanoid
 ```
 

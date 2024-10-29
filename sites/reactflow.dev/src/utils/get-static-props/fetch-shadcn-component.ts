@@ -1,14 +1,18 @@
-import { compileCodeSnippet } from './compile-code-snippet';
-import { readFileSync } from 'fs';
+import { compileCodeSnippet } from 'xy-shared/server';
+import { loadJSONFile } from 'xy-shared/server';
 
-function loadJSONFile(url: string) {
-  try {
-    const file = readFileSync(url, 'utf-8');
-    return JSON.parse(file.toString());
-  } catch (err) {
-    console.log(err);
-  }
-}
+type Demo = {
+  files: [{ content: string }];
+};
+
+type RegistryComponent = {
+  name: string;
+  description: string;
+  dependencies: string[];
+  files: [{ content: string }];
+  tags: string[];
+  version: string;
+};
 
 function kebabCaseToCamelCase(str: string) {
   const newString = str.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
@@ -17,11 +21,11 @@ function kebabCaseToCamelCase(str: string) {
 
 export default function getUiComponentConfig(id: string) {
   return async () => {
-    const data = loadJSONFile(
+    const data = loadJSONFile<RegistryComponent>(
       `../../apps/ui-components/public/registry/${id}.json`,
     );
 
-    const demo = loadJSONFile(
+    const demo = loadJSONFile<Demo>(
       `../../apps/ui-components/public/demo/${id}.json`,
     );
 
@@ -45,6 +49,7 @@ export default function getUiComponentConfig(id: string) {
     const installMDX = await compileCodeSnippet(`npx shadcn add ${jsonUrl}`, {
       filetype: 'bash',
       showCopy: true,
+      npm2yarn: true,
     });
 
     const npmDependencies = (data.dependencies || []).map((dep) => ({
@@ -57,6 +62,7 @@ export default function getUiComponentConfig(id: string) {
     const npmMDX = await compileCodeSnippet(npmString, {
       filetype: 'bash',
       showCopy: true,
+      npm2yarn: true,
     });
 
     return {

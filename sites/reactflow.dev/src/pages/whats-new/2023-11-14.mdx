@@ -10,6 +10,10 @@ date: '2023-11-14'
 
 import { RemoteCodeViewer } from 'xy-shared';
 
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['learn/custom-edge-2']);
+
+
 # New custom edges guide!
 
 We've added a new guide to show folks how to create their own custom edges. This

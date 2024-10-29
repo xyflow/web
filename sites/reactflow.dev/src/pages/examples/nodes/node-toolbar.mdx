@@ -7,6 +7,10 @@ import { Callout } from 'nextra/components';
 import { RemoteCodeViewer } from 'xy-shared';
 import { ExampleLayout } from 'xy-shared';
 
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['examples/nodes/node-toolbar']);
+
+
 <ExampleLayout>
 For many types of applications, having a toolbar or set of controls appear when
 a node is selected can be quite useful. It's so useful, in fact, that we've built

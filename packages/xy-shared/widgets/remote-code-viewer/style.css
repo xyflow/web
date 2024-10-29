@@ -1,0 +1,4 @@
+.remote-code-viewer .nextra-code pre {
+  background-color: transparent !important;
+  overflow: visible;
+}

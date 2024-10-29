@@ -6,6 +6,10 @@ description: Find out if two nodes overlap each other
 import { RemoteCodeViewer } from 'xy-shared';
 import { ExampleLayout } from 'xy-shared';
 
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['examples/interaction/collision-detection']);
+
+
 <ExampleLayout>
 This example shows a simple method to find out if two nodes overlap each other. It can be useful for interactively grouping or connecting nodes.
 
