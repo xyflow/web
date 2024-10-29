@@ -6,8 +6,12 @@ export default async function getStaticProps() {
   );
   const { downloads = 0 } = await fetchJSON(process.env.NPM_SVELTE_FLOW);
 
-  if (!downloads || !stars) {
-    console.log('could not fetch downloads and stars. please try again.');
+  const { version } = await fetchJSON(process.env.NPM_VERSION_SVELTE_FLOW);
+
+  if (!downloads || !stars || !version) {
+    console.log(
+      'could not fetch downloads, stars or version. please try again.',
+    );
   }
 
   return {
@@ -15,6 +19,7 @@ export default async function getStaticProps() {
       ssg: {
         stars,
         downloads,
+        version,
       },
     },
     revalidate: 60 * 60,
