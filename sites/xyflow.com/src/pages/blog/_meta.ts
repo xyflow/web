@@ -8,6 +8,8 @@ export default {
       layout: 'full',
     },
   },
+  'react-flow-components':
+    'Introducing React Flow Components - powered by shadcn CLI',
   'react-flow-12-release':
     'React Flow 12: Server Side Rendering, Computing Flows, Dark Mode',
   'react-flow-developer-survey-2023':

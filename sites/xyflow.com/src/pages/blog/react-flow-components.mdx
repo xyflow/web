@@ -1,0 +1,125 @@
+---
+title: 'Introducing React Flow Components - powered by shadcn CLI'
+description: Some words
+date: 4 November 2024
+authors: ['hayleigh']
+tags: ['react-flow', 'components', 'update']
+---
+
+import { Bleed } from 'nextra-theme-docs';
+import { Embed, Text, Image, BlogPostLayout } from 'xy-shared';
+
+<BlogPostLayout>
+
+At xyflow we try to pay close attention to the developer experience when using
+our libraries or our docs: we have a huge collection of examples, tutorials that
+walk you through development from scratch, and [starter apps on CodeSandbox](https://codesandbox.io/p/sandbox/react-flow-starter-ts-r69228)
+This great experience starts to fall away once you move to your own apps, though.
+
+Our users have always been excited to show us what they've been building, and over
+time we noticed that many React Flow projects are defining similar components in
+their flows. This got us thinking: how can we cut down on all the duplicated work
+folks are doing and make it easier for our users to hit the ground running?
+
+## The initial idea: a ui library for React Flow
+
+Our first instinct was to build a companion ui package that provides some pre-built
+nodes and edges. We had some experience with this in the past, our node resizer
+component started as a separate package before being brought into the core library.
+
+On the surface this sounds like a great idea, but after a bit of thinking we
+realised there was a big downside to taking this approach. Compared to similar
+libraries, React Flow is designed to be fairly low-level and with a high amount of
+customisability. How would users customise and style components hidden away inside
+a library?
+
+After some consideration, we decided this approach wasn't going to work for us
+for a few reasons:
+
+- It would be too complicated to build the things we wanted to build while also 
+  making the components flexible enough to be styled or used in different
+  applications.
+
+- If users needed features we didn't anticipate they would have to fork the
+  library and add it themselves; negating a lot of the benefits of us developing
+  a library in the first place.
+
+- We didn't want work on issues and feature requests to distract us from working
+  on the React Flow library itself.
+
+## Shadcn and a new approach to component libraries
+
+Shadcn is a component "library" that has been steadily gaining hype and adoption
+for some time now. The premise is simple: instead of providing an opaque package
+of components, shadcn provides the source code for each component and expects you
+to vendor the code into your own projects. It harkens back to the days before
+npm and bundlers and honestly it can feel quite nice; when we rebuilt our docs
+site we lent heavily into shadcn for many of our ui components.
+
+This approach felt like it solved a lot of the problems we had with publishing
+a standalone package, and so at the beginning of the year a handful of us got to
+work trying to build a collection of components and code snippets that folks could
+vendor into their own projects.
+
+We spent a while developing this but eventually decided to shelf the project
+after we were disastified with some of the compromises we ended up making along
+the way.
+
+The biggest open-ended question we kept running into was what to do about _styling_.
+On the one hand we wanted to provide components that were easy to use and looked
+good out of the box, but on the other hand we couldn't make any assumptions about
+what styling approach folks would be taking and we couldn't easily pull in external
+dependencies without making the installation process confusing.
+
+Although we had benched the idea, it was a frequent topic of conversation in our
+team meetings. We knew the value of shipping _something_ would be high, we just
+couldn't work out _how_...
+
+## A new hope: the shadcn CLI
+
+Shadcn has had a simple CLI to install their components into your codebase for
+a while now, but more recently the CLI was given the ability to install _external_
+components as long as they followed a simple JSON schema.
+
+This solved a bunch of problems for us:
+
+- All shadcn components use Tailwind CSS, so we can add styles to our components
+  without needing to worry about the user installing additional dependencies.
+
+- Shadcn components can depend on _other shadcn components_, so we can build out
+  more sophisticated components that take advantage on the great collection of
+  shadcn components that already exist.
+
+- These components are vendored into the user's codebase meaning we don't need to
+  worry about covering every single use case or feature request: folks can implement
+  what they need!
+
+## Introducing React Flow Components
+
+This was the kick we needed to jump into the project again. We've been working
+hard to build out a collection of initial components that we think will make it
+easier for folks to put together React Flow projects going forward. Some interesting
+components from the initial set include:
+
+- A database schema node that makes it easy to visualise tables and relationships
+  between columns.
+
+- A zoom slider for more convenient control over the viewport zoom level.
+
+- Debugging components that make it easier to inspect a node's properties and the
+  state of your flow.
+
+We've also laid the foundation to build out more advanced components in the future.
+We're still not sure if this is something we're going to commit to, so please try
+out the components and let us know what you think! You can find the documentation
+for these components and a brief guide on how to install them by heading over to
+[reactflow.dev/components](https://reactflow.dev/components), or you can learn
+more about shadcn and the CLI [over on their docs](https://ui.shadcn.com/docs).
+
+We're excited to see what you build with these components, and we're looking
+forward to hearing your feedback! Please open issues on our [web repo](https://github.com/xyflow/web/issues)
+if you run into any problems or have any suggestions for new components, and definitely
+tweet at us at [@xyflowdev](https://x.com/xyflowdev) if you build something cool
+with them!
+
+</BlogPostLayout>

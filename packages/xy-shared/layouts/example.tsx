@@ -14,8 +14,6 @@ export function ExampleLayout({ children }: ExampleLayoutProps) {
   const { useConfig } = useContext(SharedContext);
   const { frontMatter } = useConfig<{
     title: string;
-    is_pro_example?: boolean;
-    is_free?: boolean;
   }>();
 
   return (
@@ -24,11 +22,6 @@ export function ExampleLayout({ children }: ExampleLayoutProps) {
         <h1 className="text-4xl font-bold tracking-tight text-slate-900 leading-normal">
           {frontMatter.title}
         </h1>
-        {frontMatter.is_pro_example && (
-          <div className="bg-primary/5 border border-primary text-primary px-2 pb-0.5 font-bold rounded-full">
-            Pro {frontMatter.is_free && 'Trial'}
-          </div>
-        )}
       </div>
       {children}
     </>

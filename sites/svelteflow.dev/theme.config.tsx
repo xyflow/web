@@ -8,7 +8,7 @@ import {
   LogoLabel,
   defaultFooterCategories,
 } from '@xyflow/xy-ui';
-import { Head, Search } from 'xy-shared';
+import { Search } from 'xy-shared';
 
 const defaultDescription =
   'Svelte Flow - Customizable library for rendering workflows, diagrams and node-based UIs.';
@@ -21,6 +21,8 @@ const baseUrl =
   process.env.NODE_ENV === 'production'
     ? 'https://svelteflow.dev'
     : 'http://localhost:3003';
+
+const faviconUrl = `${baseUrl}/img/favicon.ico`;
 
 export default {
   logo: () => <LogoLabel label="Svelte Flow" />,
@@ -161,15 +163,37 @@ export default {
       ? `${frontMatter.title} - Svelte Flow`
       : 'Svelte Flow';
 
+    const description = frontMatter.description ?? defaultDescription;
+    const pageUrl = `${baseUrl}${router.asPath}`;
+
+    // We are not allowed to render components inside head!
+    // https://github.com/shuding/nextra/issues/3529
     return (
-      <Head
-        title={title}
-        description={frontMatter.description ?? defaultDescription}
-        pageUrl={`${baseUrl}${router.asPath}`}
-        faviconUrl={`${baseUrl}/img/favicon.ico`}
-        ogImage={ogImage}
-        framework="svelte"
-      />
+      <>
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <meta name="robots" content="index,follow" />
+
+        <link rel="icon" href={faviconUrl} />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="https://x.com/xyflowdev" />
+        <meta name="twitter:creator" content="@xyflowdev" />
+
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={pageUrl} />
+        <meta property="og:type" content="website" />
+        {ogImage && (
+          <>
+            <meta property="og:image" content={ogImage.url} />
+            <meta property="og:image:alt" content="Teaser" />
+            <meta property="og:image:width" content={'1200'} />
+            <meta property="og:image:height" content={'640'} />
+          </>
+        )}
+        <meta name="docsearch:site" content="svelte" />
+      </>
     );
   },
 };
