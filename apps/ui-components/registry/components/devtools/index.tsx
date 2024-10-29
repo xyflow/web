@@ -15,21 +15,26 @@ import {
   useStoreApi,
   type OnNodesChange,
   type NodeChange,
+  type XYPosition,
+  ViewportPortal,
+  useReactFlow
 } from '@xyflow/react';
+
+import {
+  ToggleGroup,
+  ToggleGroupItem,
+} from "@/components/ui/toggle-group"
 
 import { Button } from "@/components/ui/button";
 
-function ViewportLogger() {
+export function ViewportLogger() {
   const viewport = useStore(
     (s) =>
-      `x: ${s.transform[0].toFixed(2)}, y: ${s.transform[1].toFixed(
-        2,
-      )}, zoom: ${s.transform[2].toFixed(2)}`,
+      `x: ${s.transform[0].toFixed(2)}, y: ${s.transform[1].toFixed(2)}, zoom: ${s.transform[2].toFixed(2)}`,
   );
 
-  return <Panel position="bottom-left">{viewport}</Panel>;
+  return <Panel position="bottom-left" className='text-secondary-foreground'>{viewport}</Panel>;
 }
-
 
 type ChangeLoggerProps = {
   color?: string;
@@ -52,9 +57,7 @@ function ChangeInfo({ change }: ChangeInfoProps) {
           ? `dimensions: ${change.dimensions?.width} × ${change.dimensions?.height}`
           : null}
         {type === 'position'
-          ? `position: ${change.position?.x.toFixed(
-              1,
-            )}, ${change.position?.y.toFixed(1)}`
+          ? `position: ${change.position?.x.toFixed(1)}, ${change.position?.y.toFixed(1)}`
           : null}
         {type === 'remove' ? 'remove' : null}
         {type === 'select' ? (change.selected ? 'select' : 'unselect') : null}
@@ -63,7 +66,7 @@ function ChangeInfo({ change }: ChangeInfoProps) {
   );
 }
 
-function ChangeLogger({ limit = 20 }: ChangeLoggerProps) {
+export function ChangeLogger({ limit = 20 }: ChangeLoggerProps) {
   const [changes, setChanges] = useState<NodeChange[]>([]);
   const store = useStoreApi();
 
@@ -90,37 +93,86 @@ function ChangeLogger({ limit = 20 }: ChangeLoggerProps) {
   );
 }
 
-
-function NodeInspector() {
+export function NodeInspector() {
+  const { getInternalNode } = useReactFlow();
   const nodes = useNodes();
 
   return (
-    <Panel className="text-xs p-4 bg-white rounded shadow-md max-h-[50%] overflow-y-auto mt-20" position="top-left">
+    <ViewportPortal>
+      <div className='text-xs text-secondary-foreground'>
         {nodes.map((node) => {
-          const x = node.position.x || 0;
-          const y = node.position.y || 0;
-          const width = node.measured?.width || 0;
-          const height = node.measured?.height || 0;
+          const internalNode = getInternalNode(node.id);
+          if (!internalNode) {
+            return null;
+          }
+
+          const absPosition = internalNode?.internals.positionAbsolute;
 
           return (
-            <div key={node.id} className="border-b border-gray-300 pb-3 pt-3">
-              <div>id: {node.id}</div>
-              <div>type: {node.type}</div>
-              <div>selected: {node.selected ? 'true' : 'false'}</div>
-              <div>
-                position: {x.toFixed(1)}, {y.toFixed(1)}
-              </div>
-              <div>
-                dimensions: {width} × {height}
-              </div>
-              <div>data: {JSON.stringify(node.data, null, 2)}</div>
-            </div>
+            <NodeInfo
+              key={node.id}
+              id={node.id}
+              selected={!!node.selected}
+              type={node.type || 'default'}
+              position={node.position}
+              absPosition={absPosition}
+              width={node.measured?.width ?? 0}
+              height={node.measured?.height ?? 0}
+              data={node.data}
+            />
           );
         })}
-    </Panel>
+      </div>
+    </ViewportPortal>
   );
 }
 
+type NodeInfoProps = {
+  id: string;
+  type: string;
+  selected: boolean;
+  position: XYPosition;
+  absPosition: XYPosition;
+  width?: number;
+  height?: number;
+  data: any;
+};
+
+function NodeInfo({
+  id,
+  type,
+  selected,
+  position,
+  absPosition,
+  width,
+  height,
+  data,
+}: NodeInfoProps) {
+  if (!width || !height) {
+    return null;
+  }
+
+  return (
+    <div
+      style={{
+        position: 'absolute',
+        transform: `translate(${absPosition.x}px, ${absPosition.y + height}px)`,
+        width: width * 2,
+      }}
+    >
+      <div>id: {id}</div>
+      <div>type: {type}</div>
+      <div>selected: {selected ? 'true' : 'false'}</div>
+      <div>
+        position: {position.x.toFixed(1)}, {position.y.toFixed(1)}
+      </div>
+      <div>
+        dimensions: {width} × {height}
+      </div>
+      <div>data: {JSON.stringify(data, null, 2)}</div>
+    </div>
+  );
+}
 
 function DevToolButton({
   active,
@@ -134,9 +186,13 @@ function DevToolButton({
 } & HTMLAttributes<HTMLButtonElement>) {
   return (
     <Button
-    onClick={() => setActive((a) => !a)}
-    className={`transition-colors ${active ? "bg-gray-200 mr-1" : "mr-1"} hover:bg-gray-200`}
-    variant="outline"
+      onClick={() => setActive((a) => !a)}
+      className={`
+        transition-colors duration-300
+        ${active ? 'bg-white text-gray-700' : 'bg-transparent hover:bg-white hover:text-gray-700'}
+        ${active ? 'hover:bg-white hover:text-gray-700' : ''}
+      `}
+      variant="ghost"
       {...rest}
     >
       {children}
@@ -144,39 +200,57 @@ function DevToolButton({
   );
 }
 
-export function DevTools() {
+
+interface DevToolsProps { 
+  ViewportLogger?: () => JSX.Element;
+  ChangeLogger?: (props: ChangeLoggerProps) => JSX.Element;
+  NodeInspector?: () => JSX.Element;
+}
+export function DevTools({ ViewportLogger, ChangeLogger, NodeInspector }: DevToolsProps) {
   const [nodeInspectorActive, setNodeInspectorActive] = useState(false);
   const [changeLoggerActive, setChangeLoggerActive] = useState(false);
   const [viewportLoggerActive, setViewportLoggerActive] = useState(false);
 
+  const hasActiveToolProps = ViewportLogger || ChangeLogger || NodeInspector;
+
   return (
     <div>
-      <Panel>
-        <DevToolButton
-          setActive={setNodeInspectorActive}
-          active={nodeInspectorActive}
-          title="Toggle Node Inspector"
-        >
-          Node Inspector
-        </DevToolButton>
-        <DevToolButton
-          setActive={setChangeLoggerActive}
-          active={changeLoggerActive}
-          title="Toggle Change Logger"
-        >
-          Change Logger
-        </DevToolButton>
-        <DevToolButton
-          setActive={setViewportLoggerActive}
-          active={viewportLoggerActive}
-          title="Toggle Viewport Logger"
-        >
-          Viewport Logger
-        </DevToolButton>
-      </Panel>
-      {changeLoggerActive && <ChangeLogger />}
-      {nodeInspectorActive && <NodeInspector />}
-      {viewportLoggerActive && <ViewportLogger />}
+      {hasActiveToolProps && (
+        <Panel className="flex bg-secondary text-foreground rounded-lg border shadow-sm p-1">
+          {NodeInspector && (
+            <DevToolButton
+              setActive={setNodeInspectorActive}
+              active={nodeInspectorActive}
+              title="Toggle Node Inspector"
+            >
+              Node Inspector
+            </DevToolButton>
+          )}
+          {ChangeLogger && (
+            <div className="mx-1">
+              <DevToolButton
+                setActive={setChangeLoggerActive}
+                active={changeLoggerActive}
+                title="Toggle Change Logger"
+              >
+                Change Logger
+              </DevToolButton>
+            </div>
+          )}
+          {ViewportLogger && (
+            <DevToolButton
+              setActive={setViewportLoggerActive}
+              active={viewportLoggerActive}
+              title="Toggle Viewport Logger"
+            >
+              Viewport Logger
+            </DevToolButton>
+          )}
+        </Panel>
+      )}
+      {changeLoggerActive && ChangeLogger && <ChangeLogger />}
+      {nodeInspectorActive && NodeInspector && <NodeInspector />}
+      {viewportLoggerActive && ViewportLogger && <ViewportLogger />}
     </div>
   );
 }
