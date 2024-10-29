@@ -1,5 +1,5 @@
-import redirects from './redirects.json' assert { type: 'json' };
-import pkg from './package.json' assert { type: 'json' };
+import redirects from './redirects.json' with { type: 'json' };
+import pkg from './package.json' with { type: 'json' };
 
 import nextra from 'nextra';
 

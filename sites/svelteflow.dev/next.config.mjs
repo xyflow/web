@@ -1,4 +1,4 @@
-import pkg from './package.json' assert { type: 'json' };
+import pkg from './package.json' with { type: 'json' };
 import nextra from 'nextra';
 
 const SVELTE_FLOW_VERSION = pkg.dependencies['@xyflow/svelte']?.replace(

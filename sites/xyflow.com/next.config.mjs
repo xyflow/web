@@ -1,4 +1,4 @@
-import pkg from './package.json' assert { type: 'json' };
+import pkg from './package.json' with { type: 'json' };
 import nextra from 'nextra';
 
 const REACT_FLOW_VERSION = pkg.dependencies['@xyflow/react']?.replace('^', '');
