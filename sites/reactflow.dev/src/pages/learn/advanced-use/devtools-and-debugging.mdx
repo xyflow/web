@@ -9,7 +9,6 @@ import { RemoteCodeViewer } from 'xy-shared';
 import { getStaticCode } from 'xy-shared/server';
 export const getStaticProps = getStaticCode(['learn/devtools']);
 
-
 # Devtools and Debugging
 
 <Callout type="info">
@@ -34,7 +33,12 @@ you might also find them useful for debugging your applications as your flows an
 their interactions become more complex.
 
 <div className="nestedSandpack">
-  <RemoteCodeViewer route="learn/devtools" framework="react" />
+  <RemoteCodeViewer
+    route="learn/devtools"
+    framework="react"
+    orientation="vertical"
+    editorHeight="50vh"
+  />
 </div>
 
 We encourage you to copy any or all of the components from this example into your
