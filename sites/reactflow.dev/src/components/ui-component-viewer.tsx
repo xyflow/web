@@ -112,7 +112,7 @@ function UiComponentViewer() {
           </TabsList>
           <TabsContent value="shadcn">
             <Text className="mt-5">
-              Make sure you have followed the{' '}
+              Make sure to follow the{' '}
               <Link href="/components#prequisites" variant="primary">
                 prequisites
               </Link>{' '}
