@@ -1,5 +1,5 @@
 import DemoWrapper from "@/components/demo-wrapper";
-import Demo from "@/registry/components/annotation/demo";
+import Demo from "@/registry/components/annotation-node/demo";
 
 export default function DemoPage() {
   return (

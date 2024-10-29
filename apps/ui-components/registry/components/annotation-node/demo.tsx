@@ -1,10 +1,10 @@
 "use client";
 
 import { Background, ReactFlow } from "@xyflow/react";
-import { Annotation } from "@/registry/components/annotation";
+import { AnnotationNode } from "@/registry/components/annotation-node";
 
 const nodeTypes = {
-  annotation: Annotation,
+  annotationNode: AnnotationNode,
 };
 
 const defaultNodes = [
@@ -22,7 +22,7 @@ const defaultNodes = [
       },
       arrow: "⤹",
     },
-    type: "annotation",
+    type: "annotationNode",
   },
   {
     id: "2",
@@ -32,7 +32,7 @@ const defaultNodes = [
   },
 ];
 
-export default function AnnotationDemo() {
+export default function AnnotationNodeDemo() {
   return (
     <div className="h-full w-full">
       <ReactFlow nodeTypes={nodeTypes} defaultNodes={defaultNodes} fitView>

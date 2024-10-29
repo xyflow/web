@@ -17,7 +17,7 @@ export default {
     type: 'separator',
     title: 'Components',
   },
-  'annotation': 'Annotation',
+  'annotation-node': 'Annotation Node',
   'database-schema-node': 'Database Schema Node',
   'labeled-group-node': 'Labeled Group Node',
   'placeholder-node': 'Placeholder Node',
