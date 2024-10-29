@@ -184,8 +184,8 @@ function DevToolButton({
       onClick={() => setActive((a) => !a)}
       className={`
         transition-colors duration-300
-        ${active ? 'bg-white text-gray-700' : 'bg-transparent hover:bg-white hover:text-gray-700'}
-        ${active ? 'hover:bg-white hover:text-gray-700' : ''}
+        ${active ? 'bg-white text-gray-900' : 'bg-transparent hover:bg-white hover:text-gray-900'}
+        ${active ? 'hover:bg-white hover:text-gray-900' : ''}
       `}
       variant="ghost"
       {...rest}
