@@ -7,24 +7,15 @@ function ResizerNode({ data }) {
       <NodeResizer minWidth={50} minHeight={50} />
       <Handle type="target" position={Position.Left} />
       <div>{data.label}</div>
-      <div
-        style={{
-          display: 'flex',
-          position: 'absolute',
-          bottom: 0,
-          width: '100%',
-          justifyContent: 'space-evenly',
-          left: 0,
-        }}
-      >
+      <div className="resizer-node__handles">
         <Handle
-          style={{ position: 'relative', left: 0, transform: 'none' }}
+          className="resizer-node__handle"
           id="a"
           type="source"
           position={Position.Bottom}
         />
         <Handle
-          style={{ position: 'relative', left: 0, transform: 'none' }}
+          className="resizer-node__handle"
           id="b"
           type="source"
           position={Position.Bottom}

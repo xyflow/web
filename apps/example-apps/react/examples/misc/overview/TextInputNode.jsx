@@ -59,7 +59,7 @@ export default memo(({ id }) => {
   
   
   return (
-    <div className='react-flow__node-textinput--inner'>
+    <div>
       {dimensionAttrs.map((attr) => (
         <Fragment key={attr}>
           <label>Node {attr}</label>

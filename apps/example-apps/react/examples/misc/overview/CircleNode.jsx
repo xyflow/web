@@ -15,7 +15,7 @@ export default memo(({ id }) => {
   });
 
   return (
-    <div className='react-flow__node-circle--inner'>
+    <div>
       <div>{label || 'no node connected'}</div>
       <Handle type="target" position={Position.Left} />
     </div>

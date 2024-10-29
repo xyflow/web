@@ -1,6 +1,3 @@
-/* this gets exported as xy-theme.css and can be used for the default theming */
-/* these are the necessary styles for React/Svelte Flow, they get used by base.css and style.css */
-
 html,
 body {
   margin: 0;
@@ -13,7 +10,6 @@ input {
   margin: 5px 0px;
   font-family: monospace;
   border-radius: 3px;
-  box-shadow: 0px 5.02px 6.46px 0px rgba(0, 0, 0, 0.05), 0px 0.72px 1.44px 0px rgba(0, 0, 0, 0.1);
   border: var(--xy-node-border-default);
   outline: 0;
 }
@@ -21,15 +17,6 @@ input {
 #app {
   width: 100vw;
   height: 100vh;
-}
-
-
-.overview * {
-  box-sizing: border-box;
-}
-
-.overview .react-flow__controls button {
-  box-sizing: content-box;
 }
 
 
@@ -46,10 +33,6 @@ input {
   fill: rgb(208, 192, 247);
 }
 
-.react-flow__minimap .resizer {
-  fill: rgb(208, 192, 247);
-}
-
 .react-flow__minimap .circle {
   rx: 100%;
   ry: 100%;
@@ -62,54 +45,14 @@ input {
 /* Circle Node */
 
 .react-flow__node-circle {
-  transform: translate(13.3214px, 390.276px);
-  pointer-events: all;
-  visibility: visible;
   border-radius: 50%;
   height: 100px;
   width: 100px;
   font-family: monospace;     
   text-align: center;
-  border: none;
-  background-image: linear-gradient(270deg, #659DF7 0%, #F57DBD 100%);
-
-}
-
-.react-flow__node-circle--inner {
-  background-color: inherit;
-  position: absolute;
-  top: 0;
-  left: 0; 
-  right: 0; 
-  bottom: 0; 
-  border-radius: 50%;
-  display: flex;                
-  justify-content: center;    
-  align-items: center;     
-  margin: 1.5px;
-  pointer-events: none;
-}
-
-/* Text Input */
-
-
-.react-flow__node-textinput {
-  border: 0;
-  padding: 0;
-  background-image: linear-gradient(270deg, #659DF7 0%, #F57DBD 100%);
-}
-
-.react-flow__node-textinput--inner {
-  background-color: inherit;
-  z-index: -1;
-  margin: 1.5px;
-  padding: 10px;
-  text-align: left;
-  border-radius: 7px;
 }
 
 /* Custom Handles */
-
 
 .react-flow__node-resizer .react-flow__handle,
 .react-flow__node-circle .react-flow__handle,
@@ -148,7 +91,7 @@ input {
   border-radius: 2px 0 0 2px;
 }
 
-/* Annotation */
+/* Annotation Node */
 
 .react-flow__node-annotation {
   font-size: 16px;
@@ -162,12 +105,21 @@ input {
   border: none;
 }
 
-.react-flow__node-annotation .arrow {
+.react-flow__node-annotation .annotation-content {
+  padding: 10px;
+  display: flex;
+}
+
+.react-flow__node-annotation .annotation-level {
+  margin-right: 4px;
+}
+
+.react-flow__node-annotation .annotation-arrow {
   position: absolute;
   font-size: 24px;
 }
 
-/* Toolbar */
+/* Toolbar Node */
 
 .react-flow__node-toolbar button {
   cursor: pointer;
@@ -191,7 +143,15 @@ input {
   border-left: 2px solid #4d4d4d;
 }
 
-.react-flow__button--edge {
+/* Button Edge */
+
+.button-edge__label {
+  position: absolute;
+  pointer-events: all; /* Enable pointer events for interactivity */
+  transform-origin: center; /* Center the transform origin for translate */
+}
+
+.button-edge__button {
   width: 30px;
   height: 30px;
   border: 5px solid var(--xy-edge-label-background-color-default);
@@ -203,8 +163,24 @@ input {
   padding-top: 0px;
 }
 
-.react-flow__button--edge:hover {
+.button-edge__button:hover {
   background-color: var(--xy-theme-hover);
   color: #ffffff;
 }
 
+/* Resizer Node */
+
+.resizer-node__handles {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  justify-content: space-evenly;
+  left: 0;
+}
+
+.resizer-node__handle {
+  position: relative;
+  left: 0;
+  transform: none;
+}

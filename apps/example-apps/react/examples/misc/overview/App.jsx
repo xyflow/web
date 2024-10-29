@@ -16,12 +16,12 @@ import './xy-theme.css';
 import {
   nodes as initialNodes,
   edges as initialEdges,
-} from './nodes-and-edges';
+} from './initial-elements';
 import AnnotationNode from './AnnotationNode';
 import ToolbarNode from './ToolbarNode';
 import ResizerNode from './ResizerNode';
 import CircleNode from './CircleNode';
-import InputNode from './InputNode';
+import TextInputNode from './TextInputNode';
 import ButtonEdge from './ButtonEdge';
 
 const nodeTypes = {
@@ -29,7 +29,7 @@ const nodeTypes = {
   tools: ToolbarNode,
   resizer: ResizerNode,
   circle: CircleNode,
-  textinput: InputNode,
+  textinput: TextInputNode,
 };
 
 const edgeTypes = {
