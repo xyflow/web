@@ -7,20 +7,11 @@ import { Callout } from 'nextra/components';
 import { RemoteCodeViewer } from 'xy-shared';
 import { ExampleLayout } from 'xy-shared';
 
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['examples/styling/tailwind']);
+
 <ExampleLayout>
 In this example we are using [Tailwind](https://tailwindcss.com/) for styling the flow.
-
-<Callout type="warning">
-  We are using the Tailwind CDN for this example. Because of a [bug](https://github.com/codesandbox/sandpack/issues/624)
-  with SandPack, opening the sandbox below will not have the script added to the
-  HTML document. To make sure the example works correctly, make sure you add
-  `<script src="https://cdn.tailwindcss.com"></script>` to the HTML document
-  in `public/index.html` manually.
-
-If you are copying the example locally, you will likely have Tailwind set up
-differently, and can ignore this warning.
-
-</Callout>
 
 <RemoteCodeViewer route="examples/styling/tailwind" framework="react" />
 

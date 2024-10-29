@@ -12,6 +12,9 @@ const nextConfig = {
   // Optionally, add any other Next.js config below
   reactStrictMode: true,
   transpilePackages: ['@xyflow/xy-ui', 'xy-shared'],
+  experimental: {
+    optimizePackageImports: ['@xyflow/xy-ui', 'xy-shared'],
+  },
   async redirects() {
     return redirects;
   },
@@ -42,12 +45,6 @@ const nextConfig = {
 const withNextra = nextra({
   theme: 'nextra-theme-docs',
   themeConfig: './theme.config.tsx',
-  mdxOptions: {
-    rehypePrettyCodeOptions: {
-      // theme: 'nord',
-      // keepBackground: true,
-    },
-  },
 });
 
 // Merge MDX config with Next.js config

@@ -11,7 +11,7 @@ const titleLookup = {
   'proximity-connect': 'Proximity Connect',
   'node-resizer': 'Node Resizer',
   'node-toolbar': 'Node Toolbar',
-  'resize-rotate': 'Resize and Rotate',
+  'rotatable-node': 'Rotatable Node',
   'dynamic-grouping': 'Dynamic Grouping',
   intersections: 'Intersections',
   shapes: 'Shapes',

@@ -10,6 +10,10 @@ date: '2024-01-18'
 
 import { RemoteCodeViewer } from 'xy-shared';
 
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['examples/nodes/node-toolbar']);
+
+
 # New node toolbar example!
 
 Buried away in our API reference is the documentation for our

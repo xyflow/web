@@ -5,6 +5,11 @@ description: React Flow comes with a minimal default theme. It's common to overw
 
 import { Callout } from 'nextra/components';
 import { RemoteCodeViewer } from 'xy-shared';
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode([
+  'examples/styling/default-style',
+  'examples/styling/base-style',
+]);
 
 # Theming
 

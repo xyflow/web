@@ -28,7 +28,9 @@ const baseUrl =
 const faviconUrl = `${baseUrl}/img/favicon.ico`;
 
 export default {
-  logo: () => <LogoLabel label="React Flow" labelClassName="mr-5" />,
+  logo: () => (
+    <LogoLabel label="React Flow" labelClassName="mr-5 md:max-lg:hidden" />
+  ),
   logoLink: false,
   docsRepositoryBase:
     'https://github.com/xyflow/web/tree/main/sites/reactflow.dev',
@@ -73,6 +75,7 @@ export default {
                   route: '/pro/examples',
                 },
                 { title: 'Case Studies', route: '/pro/case-studies' },
+                { title: 'Contact Us', href: 'https://xyflow.com/contact' },
               ] satisfies { title: string; route?: Route; href?: Route }[]
             }
           />
@@ -90,7 +93,10 @@ export default {
       if (isPro) {
         return (
           <Button asChild className="ml-auto">
-            <Link href={`${process.env.NEXT_PUBLIC_PRO_PLATFORM_URL}/signup`}>
+            <Link
+              className="shrink-0"
+              href={`${process.env.NEXT_PUBLIC_PRO_PLATFORM_URL}/signup`}
+            >
               Sign Up
             </Link>
           </Button>
@@ -142,7 +148,7 @@ export default {
             <Link href="/pro">
               <SparklesIcon className="w-4 h-4 mr-1" />
               <span>
-                <span className="hidden lg:inline">React Flow </span>
+                <span className="max-[1100px]:hidden">React Flow </span>
                 <span>Pro</span>
               </span>
             </Link>

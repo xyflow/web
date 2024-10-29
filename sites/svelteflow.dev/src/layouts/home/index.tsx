@@ -90,7 +90,7 @@ const features = [
 ];
 
 export default function SvelteFlowHome() {
-  const { downloads = 450 } = useData();
+  const { downloads = 450, version = '0.1.21' } = useData();
 
   return (
     <BaseLayout>
@@ -120,7 +120,7 @@ export default function SvelteFlowHome() {
           stats={[
             {
               label: 'Current Version',
-              value: process.env.SVELTE_FLOW_VERSION,
+              value: version,
             },
             {
               label: 'Weekly Installs',

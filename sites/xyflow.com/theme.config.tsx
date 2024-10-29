@@ -21,7 +21,7 @@ export default {
         <Text className="font-black text-xl leading-none">xyflow</Text>
       </Link>
       <Link
-        className="bg-primary rounded-full px-2 font-bold text-primary-foreground text-sm hover:opacity-80"
+        className="max-md:hidden bg-primary rounded-full px-2 font-bold text-primary-foreground text-sm hover:opacity-80"
         href="/careers"
       >
         hiring
@@ -42,7 +42,9 @@ export default {
     extraContent: () => {
       return (
         <Button asChild>
-          <Link href="/contact">Contact Us</Link>
+          <Link href="/contact" className="shrink-0">
+            Contact Us
+          </Link>
         </Button>
       );
     },

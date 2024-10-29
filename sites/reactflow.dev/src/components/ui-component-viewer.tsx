@@ -1,14 +1,21 @@
 import {
   Heading,
+  Text,
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
+  Link,
 } from '@xyflow/xy-ui';
 import { useData } from 'nextra/hooks';
-import { Code } from 'nextra/components';
+import { Code, Tabs as NextraTabs } from 'nextra/components';
 import { RemoteContent } from 'xy-shared';
 import clsx from 'clsx';
+
+const components = {
+  code: Code,
+  $Tabs: NextraTabs,
+};
 
 function kebabCaseToTitleCase(str: string) {
   const newString = str.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
@@ -65,7 +72,7 @@ function UiComponentViewer() {
           <RemoteContent
             {...data.demoMDX}
             mdx={data.demoMDX.compiledSource}
-            components={{ code: Code }}
+            components={components}
             scope={{}}
           />
         </TabsContent>
@@ -104,29 +111,40 @@ function UiComponentViewer() {
             <TabsTrigger value="manual">Manual</TabsTrigger>
           </TabsList>
           <TabsContent value="shadcn">
+            <Text className="mt-5">
+              Make sure to follow the{' '}
+              <Link href="/components#prequisites" variant="primary">
+                prequisites
+              </Link>{' '}
+              before installing the component.
+            </Text>
             <RemoteContent
               {...data.installMDX}
               mdx={data.installMDX.compiledSource}
-              components={{ code: Code }}
+              components={components}
               scope={{}}
             />
           </TabsContent>
           <TabsContent value="manual">
-            <Heading size="xs">1. Install Dependencies</Heading>
+            <Heading size="xs" className="mt-5">
+              1. Install Dependencies
+            </Heading>
             <RemoteContent
               {...data.npmMDX}
               mdx={data.npmMDX.compiledSource}
-              components={{ code: Code }}
+              components={components}
               scope={{}}
             />
-            <Heading size="xs">2. Copy Paste into your app</Heading>
+            <Heading size="xs" className="mt-10">
+              2. Copy Paste into your app
+            </Heading>
             <RemoteContent
               {...data.componentMDX}
               mdx={data.componentMDX.compiledSource}
-              components={{ code: Code }}
+              components={components}
               scope={{}}
             />
-            <Heading size="xs">
+            <Heading size="xs" className="mt-10">
               3. Update the import paths to match your project setup.
             </Heading>
           </TabsContent>

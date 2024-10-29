@@ -1,4 +1,5 @@
 import { compileMdx } from 'nextra/compile';
+import { CompiledMdx } from '../types';
 
 type CompileCodeSnippetOptions = {
   filetype?: string;
@@ -6,6 +7,7 @@ type CompileCodeSnippetOptions = {
   showLineNumbers?: boolean;
   highlight?: string;
   filename?: string;
+  npm2yarn?: boolean;
 };
 
 const defaultOptions = {
@@ -14,6 +16,7 @@ const defaultOptions = {
   showLineNumbers: false,
   highlight: '',
   filename: '',
+  npm2yarn: false,
 };
 
 function createMDXString(snippet: string, options: CompileCodeSnippetOptions) {
@@ -21,9 +24,10 @@ function createMDXString(snippet: string, options: CompileCodeSnippetOptions) {
     '```' +
     options.filetype +
     (options.showCopy ? ' copy ' : '') +
-    (options.showLineNumbers ? ' showLineNumbers ' : '') +
+    (options.showLineNumbers ? ' showLineNumbers' : '') +
     (options.highlight ? ` /${options.highlight}/ ` : '') +
     (options.filename ? ` filename="${options.filename}" ` : '') +
+    (options.npm2yarn ? ' npm2yarn' : '') +
     '\n' +
     snippet
   );
@@ -32,12 +36,7 @@ function createMDXString(snippet: string, options: CompileCodeSnippetOptions) {
 export async function compileCodeSnippet(
   snippet: string,
   options?: CompileCodeSnippetOptions,
-): Promise<{
-  compiledSource: string;
-  frontMatter: {
-    [key: string]: any;
-  };
-}> {
+): Promise<CompiledMdx> {
   const opts = { ...defaultOptions, ...options };
 
   const { result: compiledSource, frontMatter } = await compileMdx(

@@ -1,4 +1,4 @@
-import { UseConfigContext } from '../context/UseConfigContext';
+import { SharedContext } from '../context/shared-context';
 import { useContext, type ReactNode } from 'react';
 
 type ExampleLayoutProps = {
@@ -11,7 +11,7 @@ type ExampleLayoutProps = {
  *
  */
 export function ExampleLayout({ children }: ExampleLayoutProps) {
-  const useConfig = useContext(UseConfigContext);
+  const { useConfig } = useContext(SharedContext);
   const { frontMatter } = useConfig<{
     title: string;
   }>();

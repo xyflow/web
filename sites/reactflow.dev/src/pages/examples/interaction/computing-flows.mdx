@@ -6,6 +6,10 @@ description: This examples demonstrates how to use the helpers to handle data fl
 import { RemoteCodeViewer } from 'xy-shared';
 import { ExampleLayout } from 'xy-shared';
 
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['examples/interaction/computing-flows']);
+
+
 <ExampleLayout>
 This example shows how to use the computing flow helpers `useNodesData`, `useHandleConnections` and `updateNode`. You can find more detailed information about this in the [computing flows guide](/learn/advanced-use/computing-flows)
 

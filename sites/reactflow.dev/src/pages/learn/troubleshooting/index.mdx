@@ -90,9 +90,9 @@ export default FlowWithProvider;
 ```
 
 <div id="002" />
-### It looks like you have created a new nodeTypes or edgeTypes object. If this wasn't
-on purpose please define the nodeTypes/edgeTypes outside of the component or memoize
-them.
+### It looks like you have created a new nodeTypes or edgeTypes object. If this
+wasn't on purpose please define the nodeTypes/edgeTypes outside of the component
+or memoize them.
 
 This warning appears when the `nodeTypes` or `edgeTypes` properties change after the initial render. The `nodeTypes` or `edgeTypes` should only be changed dynamically in very rare cases. Usually they are defined once with all the types that you are using in your application. It can happen easily that you are defining the nodeTypes or edgeTypes object inside of your component render function, which will cause React Flow to re-render every time your component re-renders.
 
@@ -239,7 +239,8 @@ function Flow(props) {
 ```
 
 <div id="004" />
-### The React Flow parent container needs a width and a height to render the graph.
+### The React Flow parent container needs a width and a height to render the
+graph.
 
 Under the hood, React Flow measures the parent DOM element to adjust the renderer. If you try to render React Flow in a regular div without a height, we cannot display the graph. If you encounter this warning, you need to make sure that your wrapper component has some CSS attached to it so that it gets a fixed height or inherits the height of its parent.
 
@@ -367,7 +368,8 @@ function Flow(props) {
 This can happen when you are trying to [reconnect an edge](/examples/edges/reconnect-edge) but the edge you want to update is already removed from the state. This is a very rare case. Please see the [Reconnect Edge example](/examples/edges/reconnect-edge) for implementation details.
 
 <div id="008" />
-### Couldn't create edge for source/target handle id: "some-id"; edge id: "some-id".
+### Couldn't create edge for source/target handle id: "some-id"; edge id:
+"some-id".
 
 This can happen if you are working with multiple handles and a handle is not found by its `id` property or if you haven't [updated the node internals after adding or removing handles](/api-reference/hooks/use-update-node-internals) programmatically. Please see the [Custom Node Example](/examples/nodes/custom-node) for an example of working with multiple handles.
 
@@ -397,8 +399,8 @@ doesn't know how to handle React Flow.
 
 You need to add a number of babel plugins to your webpack config to make it work:
 
-```sh
-$ npm i --save-dev babel-loader@8.2.5 @babel/preset-env @babel/preset-react @babel/plugin-proposal-optional-chaining @babel/plugin-proposal-nullish-coalescing-operator
+```sh npm2yarn copy
+npm i --save-dev babel-loader@8.2.5 @babel/preset-env @babel/preset-react @babel/plugin-proposal-optional-chaining @babel/plugin-proposal-nullish-coalescing-operator
 ```
 
 and configure the loader like this:

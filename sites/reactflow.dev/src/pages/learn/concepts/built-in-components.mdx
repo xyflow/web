@@ -13,6 +13,10 @@ If your flow gets bigger, you might want to get an overview quickly. For this we
 
 import { RemoteCodeViewer } from 'xy-shared';
 
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['learn/mini-map', 'learn/controls', 'learn/background', 'learn/panel']);
+
+
 <RemoteCodeViewer route="learn/mini-map" framework="react" />
 
 ## Controls

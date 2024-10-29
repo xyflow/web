@@ -7,6 +7,16 @@ description: Learn how to extend React Flow to compute data going through flow g
 
 import { Callout } from 'nextra/components';
 import { RemoteCodeViewer } from 'xy-shared';
+import { getStaticCode } from 'xy-shared/server';
+
+export const getStaticProps = getStaticCode([
+  'learn/computing',
+  'learn/computing-2',
+  'learn/computing-3',
+  'learn/computing-4',
+  'learn/computing-5',
+  'learn/computing-6',
+]);
 
 <Callout type="info">
   For this guide we assume that you already know about the [core
@@ -29,6 +39,10 @@ Let's start by creating a custom input node (`NumberInput.js`) and add three ins
 ```jsx
 import { useCallback, useState } from 'react';
 import { Handle, Position } from '@xyflow/react';
+
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['learn/computing-6', 'learn/computing', 'learn/computing-2', 'learn/computing-3', 'learn/computing-4', 'learn/computing-5', 'learn/computing-6']);
+
 
 function NumberInput({ id, data }) {
   const [number, setNumber] = useState(0);

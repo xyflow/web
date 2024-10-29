@@ -70,6 +70,10 @@ After putting all together and adding some basic styles we get a custom node tha
 
 import { RemoteCodeViewer } from 'xy-shared';
 
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['learn/custom-node', 'learn/custom-node-2']);
+
+
 <RemoteCodeViewer route="learn/custom-node" framework="react" />
 
 ## Using Multiple Handles

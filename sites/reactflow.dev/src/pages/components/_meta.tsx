@@ -13,21 +13,33 @@ export default {
   motivation: {
     title: 'Motivation',
   },
-  components: {
+  nodes: {
     type: 'separator',
-    title: 'Components',
+    title: 'Nodes',
+  },
+  'tooltip-node': 'Tooltip',
+  'database-schema-node': 'Database Schema',
+  'labeled-group-node': 'Labeled Group',
+  'placeholder-node': 'Placeholder',
+  'annotation-node': 'Annotation',
+  edges: {
+    type: 'separator',
+    title: 'Edges',
   },
   'animated-svg-edge': 'Animated SVG Edge',
-  'annotation': 'Annotation',
-  'database-schema-node': 'Database Schema Node',
-  'labeled-group-node': 'Labeled Group Node',
-  'placeholder-node': 'Placeholder Node',
-  'tooltip-node': 'Tooltip Node',
-  'labeled-handle': 'Labeled Handle',
-  'button-edge': 'Button Edge',
-  'devtools': 'DevTools',
+  'button-edge': 'Button',
+  controls: {
+    type: 'separator',
+    title: 'Controls',
+  },
   'zoom-select': 'Zoom Select',
   'zoom-slider': 'Zoom Slider',
+  misc: {
+    type: 'separator',
+    title: 'Misc',
+  },
+  'labeled-handle': 'Labeled Handle',
+  devtools: 'DevTools',
   _: {
     type: 'separator',
   },

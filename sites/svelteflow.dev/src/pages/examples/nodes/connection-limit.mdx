@@ -7,6 +7,10 @@ import { ExampleLayout } from 'xy-shared';
 import { RemoteCodeViewer } from 'xy-shared';
 import UnusedPropWarning from '@/components/unused-prop-warning';
 
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['examples/nodes/connection-limit']);
+
+
 <ExampleLayout>
 This is an example of a custom node with a custom handle that can limit the amount of connections a handle can have using the `isConnectable` prop.
 You can use a boolean, a number (the number of max. connections the handle should have) or a callback function that returns a boolean

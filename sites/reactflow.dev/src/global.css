@@ -17,14 +17,14 @@
   }
 }
 
-.nextra-nav-container nav .nextra-scrollbar > a[href='/components']:after {
+/* .nextra-nav-container nav .nextra-scrollbar > a[href='/components']:after {
   content: 'beta';
   position: absolute;
   top: 17px;
   font-weight: 700;
   font-size: 0.6rem;
   color: hsl(var(--primary));
-}
+} */
 
 .nextra-banner-container {
   @apply bg-[linear-gradient(1deg,#383838,#212121)];

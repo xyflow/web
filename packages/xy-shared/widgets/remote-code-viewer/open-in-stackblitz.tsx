@@ -1,24 +1,29 @@
-import { SandpackFile } from '@codesandbox/sandpack-react/types';
-import sdk, { Project, ProjectTemplate, OpenOptions } from '@stackblitz/sdk';
-import { Button, Framework } from '@xyflow/xy-ui';
 import { useCallback } from 'react';
+import sdk, { Project, ProjectTemplate, OpenOptions } from '@stackblitz/sdk';
+
+import { Button, Framework } from '@xyflow/xy-ui';
+import { fetchFiles } from './fetchFiles';
 
 type OpenInStackblitzProps = {
-  files: Record<string, string | SandpackFile>;
-  dependencies: Record<string, string>;
   framework: Framework;
+  route: string;
 };
 
-export function OpenInStackblitz({
-  files,
-  dependencies,
-  framework,
-}: OpenInStackblitzProps) {
-  const openInStackblitz = useCallback(() => {
-    const { project, options } = prepare(framework, files, dependencies);
+type Files = {
+  [path: string]: {
+    code: string;
+  };
+};
 
-    sdk.openProject(project, options);
-  }, [framework, files, dependencies]);
+export function OpenInStackblitz({ framework, route }: OpenInStackblitzProps) {
+  const openInStackblitz = useCallback(async () => {
+    try {
+      const { files, dependencies } = await fetchFiles(route, framework);
+      const { project, options } = prepare(framework, files, dependencies);
+
+      sdk.openProject(project, options);
+    } catch (e) {}
+  }, [framework, route]);
 
   return (
     <Button
@@ -33,7 +38,7 @@ export function OpenInStackblitz({
 
 function prepare(
   framework: Framework,
-  files: Record<string, string | SandpackFile>,
+  files: Files,
   dependencies: Record<string, string>,
 ): { project: Project; options: OpenOptions } {
   switch (framework) {
@@ -67,7 +72,7 @@ function prepare(
 }
 
 function prepareReactProject(
-  files: Record<string, string | SandpackFile>,
+  files: Files,
   dependencies: Record<string, string>,
 ) {
   return {
@@ -116,7 +121,7 @@ function prepareReactProject(
 }
 
 function prepareSvelteProject(
-  files: Record<string, string | SandpackFile>,
+  files: Files,
   dependencies: Record<string, string>,
 ) {
   return {

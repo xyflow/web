@@ -12,7 +12,6 @@ const titleLookup = {
   'helper-lines': 'Helper Lines',
   'touch-device': 'Touch Device',
   'save-and-restore': 'Save and Restore',
-  'collision-detection': 'Collision Detection',
   'zoom-transitions': 'Zoom Transitions',
   collaborative: 'Collaborative',
   'contextual-zoom': 'Contextual Zoom',
