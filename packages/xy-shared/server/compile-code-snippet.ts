@@ -7,6 +7,7 @@ type CompileCodeSnippetOptions = {
   showLineNumbers?: boolean;
   highlight?: string;
   filename?: string;
+  npm2yarn?: boolean;
 };
 
 const defaultOptions = {
@@ -15,6 +16,7 @@ const defaultOptions = {
   showLineNumbers: false,
   highlight: '',
   filename: '',
+  npm2yarn: false,
 };
 
 function createMDXString(snippet: string, options: CompileCodeSnippetOptions) {
@@ -22,9 +24,10 @@ function createMDXString(snippet: string, options: CompileCodeSnippetOptions) {
     '```' +
     options.filetype +
     (options.showCopy ? ' copy ' : '') +
-    (options.showLineNumbers ? ' showLineNumbers ' : '') +
+    (options.showLineNumbers ? ' showLineNumbers' : '') +
     (options.highlight ? ` /${options.highlight}/ ` : '') +
     (options.filename ? ` filename="${options.filename}" ` : '') +
+    (options.npm2yarn ? ' npm2yarn' : '') +
     '\n' +
     snippet
   );

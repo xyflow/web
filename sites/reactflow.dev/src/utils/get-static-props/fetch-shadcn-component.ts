@@ -49,6 +49,7 @@ export default function getUiComponentConfig(id: string) {
     const installMDX = await compileCodeSnippet(`npx shadcn add ${jsonUrl}`, {
       filetype: 'bash',
       showCopy: true,
+      npm2yarn: true,
     });
 
     const npmDependencies = (data.dependencies || []).map((dep) => ({
@@ -61,6 +62,7 @@ export default function getUiComponentConfig(id: string) {
     const npmMDX = await compileCodeSnippet(npmString, {
       filetype: 'bash',
       showCopy: true,
+      npm2yarn: true,
     });
 
     return {
