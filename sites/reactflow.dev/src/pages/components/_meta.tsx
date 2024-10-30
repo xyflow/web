@@ -19,6 +19,7 @@ export default {
     type: 'separator',
     title: 'Edges',
   },
+  'animated-svg-edge': 'Animated SVG Edge',
   'button-edge': 'Button',
   controls: {
     type: 'separator',
