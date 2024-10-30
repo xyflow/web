@@ -4,12 +4,18 @@ description: Some words
 date: 4 November 2024
 authors: ['hayleigh']
 tags: ['react-flow', 'components', 'update']
+image: '/img/blog/react-flow-components/header.png'
 ---
 
 import { Bleed } from 'nextra-theme-docs';
 import { Embed, Text, Image, BlogPostLayout } from 'xy-shared';
 
 <BlogPostLayout>
+
+  <Image
+    src="/img/blog/react-flow-components/header.png"
+    alt="A terminal command that reads 'npx shadcn add https://ui.reactflow.dev/database-schema-node'"
+  />
 
 At xyflow we try to pay close attention to the developer experience when using
 our libraries or our docs: we have a huge collection of examples, tutorials that
@@ -36,7 +42,7 @@ a library?
 After some consideration, we decided this approach wasn't going to work for us
 for a few reasons:
 
-- It would be too complicated to build the things we wanted to build while also 
+- It would be too complicated to build the things we wanted to build while also
   making the components flexible enough to be styled or used in different
   applications.
 
@@ -60,6 +66,19 @@ This approach felt like it solved a lot of the problems we had with publishing
 a standalone package, and so at the beginning of the year a handful of us got to
 work trying to build a collection of components and code snippets that folks could
 vendor into their own projects.
+
+<Bleed>
+  <Image
+    src="/img/blog/react-flow-components/multiverse.png"
+    alt=""
+    caption={
+      <span>
+        We built out an internal project called &quot;Multiverse&quot; that let
+        you inspect elements in a flow and copy their source code.
+      </span>
+    }
+  />
+</Bleed>
 
 We spent a while developing this but eventually decided to shelf the project
 after we were disastified with some of the compromises we ended up making along
@@ -101,12 +120,23 @@ hard to build out a collection of initial components that we think will make it
 easier for folks to put together React Flow projects going forward. Some interesting
 components from the initial set include:
 
-- A database schema node that makes it easy to visualise tables and relationships
-  between columns.
+- A [**database schema node**](https://reactflow.dev/components/database-schema-node)
+  that makes it easy to visualise tables and relationships between columns.
 
-- A zoom slider for more convenient control over the viewport zoom level.
+<Embed
+  className="rounded-md border border-gray-200"
+  src={`${process.env.NEXT_PUBLIC_UI_COMPONENTS_URL}/components/database-schema-node`}
+/>
 
-- Debugging components that make it easier to inspect a node's properties and the
+- A [**zoom slider**](https://reactflow.dev/components/zoom-slider) for more
+  convenient control over the viewport zoom level.
+
+<Embed
+  className="rounded-md border border-gray-200"
+  src={`${process.env.NEXT_PUBLIC_UI_COMPONENTS_URL}/components/zoom-slider`}
+/>
+
+- **Debugging components** that make it easier to inspect a node's properties and the
   state of your flow.
 
 We've also laid the foundation to build out more advanced components in the future.
