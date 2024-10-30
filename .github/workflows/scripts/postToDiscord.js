@@ -2,6 +2,7 @@
   const content = `Hey [INSERT MENTION HERE],
 
 **${process.env.FRAMEWORK} Flow ${process.env.VERSION}** is out!
+
 ${process.env.CLEAN_BODY}
   `;
 
