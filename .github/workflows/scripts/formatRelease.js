@@ -2,7 +2,7 @@ const removeThanks =
   /Thanks \[@(?:moklick|peterkogo|hayleigh-dot-dev|chrtze|bcakmakoglu)\]\(.*\)! \- */g;
 const removeCommits = /(\[.*\]\(.*\)) (\[.*\]\(.*\)) /g;
 const removeDeps = /- *Updated dependencies.*/gs;
-const removeNewlines = /\n\n/g;
+const removeNewlines = /[\r\n]+/g;
 
 (async () => {
   const body = process.env.BODY;
@@ -10,6 +10,6 @@ const removeNewlines = /\n\n/g;
     .replaceAll(removeThanks, '')
     .replaceAll(removeCommits, '$1 ')
     .replaceAll(removeDeps, '')
-    .replaceAll(removeNewlines, '');
+    .replaceAll(removeNewlines, '\n');
   console.log(newBody);
 })();
