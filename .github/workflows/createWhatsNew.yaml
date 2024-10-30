@@ -49,6 +49,13 @@ jobs:
             BODY="${CLEAN_BODY}" node .github/workflows/scripts/removeCommits.js
             echo EOF
           } >> "$GITHUB_ENV"
+      - name: 'Remove Updated Dependencies'
+        run: |
+          {
+            echo 'CLEAN_BODY<<EOF'
+            BODY="${CLEAN_BODY}" node .github/workflows/scripts/removeUpdateDeps.js
+            echo EOF
+          } >> "$GITHUB_ENV"
       - name: 'Post to Discord'
         run: DISCORD_URL=${{secrets.DISCORD_RELEASE_WEBHOOK}} node .github/workflows/scripts/postToDiscord.js
       - name: 'Add file'
