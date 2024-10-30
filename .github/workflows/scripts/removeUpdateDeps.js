@@ -1,4 +1,4 @@
-const regex = /- *Updated dependencies .*\n.*/g;
+const regex = /- *Updated dependencies *.*\n.*/g;
 
 (async () => {
   const body = process.env.BODY;
