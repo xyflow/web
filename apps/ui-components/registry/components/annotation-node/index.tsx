@@ -30,21 +30,45 @@ export function AnnotationNode({
   const internalNode = useInternalNode(id);
 
   let path: string | null = null;
+  let angleDeg: number | null = null;
   if (parentNode && internalNode) {
     const edgeParams = getEdgeParams(internalNode, parentNode);
     [path] = getBezierPath(edgeParams);
+
+    const p2 = parentNode?.internals.positionAbsolute;
+    const p1 = internalNode?.internals.positionAbsolute;
+    angleDeg = (Math.atan2(p2.y - p1.y, p2.x - p1.x) * 180) / Math.PI;
   }
 
+  console.log(angleDeg);
+
   return (
-    <div className="relative w-40 p-2 text-secondary-foreground">
-      <div className="flex items-start">
-        <div className="mr-1 leading-snug">{data.level}.</div>
-        <div className="leading-snug">{data.label}</div>
-      </div>
-      {path && (
+    <div className="relative flex max-w-[180px] items-start p-2 text-sm text-secondary-foreground">
+      <div className="mr-1 leading-snug">{data.level}.</div>
+      <div className="leading-snug">{data.label}</div>
+      {path && angleDeg !== null && (
         <ViewportPortal>
           <svg className="absolute overflow-visible">
-            <path d={path} fill="none" stroke="currentColor" strokeWidth="1" />
+            <defs>
+              <marker
+                id={`head${id}`}
+                orient={`${angleDeg}deg`}
+                viewBox="0 0 5 4"
+                markerWidth="10"
+                markerHeight="10"
+                refX="0.1"
+                refY="2"
+              >
+                <path d="M0,0 V4 L2,2 Z" fill="black" />
+              </marker>
+            </defs>
+            <path
+              d={path}
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1"
+              markerEnd={`url(#head${id})`}
+            />
           </svg>
         </ViewportPortal>
       )}
@@ -66,25 +90,51 @@ export function AnnotationNode({
 
 AnnotationNode.displayName = "AnnotationNode";
 
+// returns the parameters (sx, sy, tx, ty, sourcePos, targetPos) you need to create an edge
+export function getEdgeParams(source: InternalNode, target: InternalNode) {
+  const sourceIntersectionPoint = getNodeIntersection(source, target);
+  const targetIntersectionPoint = getNodeIntersection(target, source, 20);
+
+  const sourcePosition = getEdgePosition(source, sourceIntersectionPoint);
+  const targetPosition = getEdgePosition(target, targetIntersectionPoint);
+
+  return {
+    sourceX: sourceIntersectionPoint.x,
+    sourceY: sourceIntersectionPoint.y,
+    targetX: targetIntersectionPoint.x,
+    targetY: targetIntersectionPoint.y,
+    sourcePosition,
+    targetPosition,
+  };
+}
+
 // this helper function returns the intersection point
 // of the line between the center of the intersectionNode and the target node
 function getNodeIntersection(
   intersectionNode: InternalNode,
   targetNode: InternalNode,
+  margin = 0,
 ) {
   // https://math.stackexchange.com/questions/1724792/an-algorithm-for-finding-the-intersection-point-between-a-center-of-vision-and-a
-  const { width: intersectionNodeWidth, height: intersectionNodeHeight } =
-    intersectionNode.measured;
-  const intersectionNodePosition = intersectionNode.internals.positionAbsolute;
+  const intersectionNodeWidth =
+    (intersectionNode.measured.width ?? 1) + margin * 2;
+  const intersectionNodeHeight =
+    (intersectionNode.measured.height ?? 1) + margin * 2;
+  // const { width: intersectionNodeWidth, height: intersectionNodeHeight } =
+  //   intersectionNode.measured;
+  const intersectionNodePosition = {
+    x: intersectionNode.internals.positionAbsolute.x - margin,
+    y: intersectionNode.internals.positionAbsolute.y - margin,
+  };
   const targetPosition = targetNode.internals.positionAbsolute;
 
-  const w = (intersectionNodeWidth ?? 0) / 2;
-  const h = (intersectionNodeHeight ?? 0) / 2;
+  const w = (intersectionNodeWidth ?? 1) / 2;
+  const h = (intersectionNodeHeight ?? 1) / 2;
 
   const x2 = intersectionNodePosition.x + w;
   const y2 = intersectionNodePosition.y + h;
-  const x1 = targetPosition.x + (targetNode.measured.width ?? 0) / 2;
-  const y1 = targetPosition.y + (targetNode.measured.height ?? 0) / 2;
+  const x1 = targetPosition.x + (targetNode.measured.width ?? 1) / 2;
+  const y1 = targetPosition.y + (targetNode.measured.height ?? 1) / 2;
 
   const xx1 = (x1 - x2) / (2 * w) - (y1 - y2) / (2 * h);
   const yy1 = (x1 - x2) / (2 * w) + (y1 - y2) / (2 * h);
@@ -119,22 +169,4 @@ function getEdgePosition(node: InternalNode, intersectionPoint: XYPosition) {
   }
 
   return Position.Top;
-}
-
-// returns the parameters (sx, sy, tx, ty, sourcePos, targetPos) you need to create an edge
-export function getEdgeParams(source: InternalNode, target: InternalNode) {
-  const sourceIntersectionPoint = getNodeIntersection(source, target);
-  const targetIntersectionPoint = getNodeIntersection(target, source);
-
-  const sourcePosition = getEdgePosition(source, sourceIntersectionPoint);
-  const targetPosition = getEdgePosition(target, targetIntersectionPoint);
-
-  return {
-    sourceX: sourceIntersectionPoint.x,
-    sourceY: sourceIntersectionPoint.y,
-    targetX: targetIntersectionPoint.x,
-    targetY: targetIntersectionPoint.y,
-    sourcePosition,
-    targetPosition,
-  };
 }
