@@ -40,8 +40,6 @@ export function AnnotationNode({
     angleDeg = (Math.atan2(p2.y - p1.y, p2.x - p1.x) * 180) / Math.PI;
   }
 
-  console.log(angleDeg);
-
   return (
     <div className="relative flex max-w-[180px] items-start p-2 text-sm text-secondary-foreground">
       <div className="mr-1 leading-snug">{data.level}.</div>
