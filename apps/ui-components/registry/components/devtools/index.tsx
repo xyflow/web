@@ -1,11 +1,9 @@
 import {
   useEffect, 
-  useRef,
   useState,
   type Dispatch,
   type SetStateAction,
-  type ReactNode,
-  type HTMLAttributes,
+  useCallback
 } from 'react';
 
 import { 
@@ -20,7 +18,10 @@ import {
   useReactFlow
 } from '@xyflow/react';
 
-import { Button } from "@/components/ui/button";
+import {
+  ToggleGroup,
+  ToggleGroupItem,
+} from "@/components/ui/toggle-group"
 
 export function ViewportLogger() {
   const viewport = useStore(
@@ -28,7 +29,7 @@ export function ViewportLogger() {
       `x: ${s.transform[0].toFixed(2)}, y: ${s.transform[1].toFixed(2)}, zoom: ${s.transform[2].toFixed(2)}`,
   );
 
-  return <Panel position="bottom-left" className='text-secondary-foreground'>{viewport}</Panel>;
+  return <div>{viewport}</div>;
 }
 
 type ChangeLoggerProps = {
@@ -43,6 +44,7 @@ type ChangeInfoProps = {
 function ChangeInfo({ change }: ChangeInfoProps) {
   const id = 'id' in change ? change.id : '-';
   const { type } = change;
+
   return (
     <div className="mb-3">
       <div>node id: {id}</div>
@@ -65,26 +67,30 @@ export function ChangeLogger({ limit = 20 }: ChangeLoggerProps) {
   const [changes, setChanges] = useState<NodeChange[]>([]);
   const store = useStoreApi();
 
-  useEffect(() => {
-    const onNodesChangeLogger: OnNodesChange = (newChanges) => {
-      setChanges((oldChanges) => [...newChanges, ...oldChanges].slice(0, limit));
-    };
+  // Memoize the callback for handling node changes
+  const handleNodeChanges: OnNodesChange = useCallback(
+    (newChanges: NodeChange[]) => {
+      setChanges((prevChanges) => [...newChanges, ...prevChanges].slice(0, limit));
+    },
+    [limit]
+  );
 
-    store.setState({ onNodesChange: onNodesChangeLogger });
+  useEffect(() => {
+    store.setState({ onNodesChange: handleNodeChanges });
 
     return () => store.setState({ onNodesChange: undefined });
-  }, [limit, store]);
+  }, [handleNodeChanges, store]);
+
+  const NoChanges = () => <div>No Changes Triggered</div>;
 
   return (
-    <Panel className="text-xs p-5 bg-white rounded shadow-md overflow-y-auto max-h-[50%] mt-20" position="bottom-right">
+    <>
       {changes.length === 0 ? (
-        <>No Changes Triggered</>
+        <NoChanges />
       ) : (
-        changes.map((change, index) => (
-          <ChangeInfo key={index} change={change} />
-        ))
+        changes.map((change, index) => <ChangeInfo key={index} change={change} />)
       )}
-    </Panel>
+    </>
   );
 }
 
@@ -94,7 +100,7 @@ export function NodeInspector() {
 
   return (
     <ViewportPortal>
-      <div className='text-xs text-secondary-foreground'>
+      <div className='text-secondary-foreground'>
         {nodes.map((node) => {
           const internalNode = getInternalNode(node.id);
           if (!internalNode) {
@@ -143,110 +149,95 @@ function NodeInfo({
   height,
   data,
 }: NodeInfoProps) {
-  if (!width || !height) {
-    return null;
-  }
+  if (!width || !height) return null;
+
+  const absoluteTransform = `translate(${absPosition.x}px, ${absPosition.y + height}px)`;
+  const formattedPosition = `${position.x.toFixed(1)}, ${position.y.toFixed(1)}`;
+  const formattedDimensions = `${width} × ${height}`;
+  const selectionStatus = selected ? 'Selected' : 'Not Selected';
 
   return (
     <div
       style={{
         position: 'absolute',
-        transform: `translate(${absPosition.x}px, ${absPosition.y + height}px)`,
+        transform: absoluteTransform,
         width: width * 2,
       }}
+      className='text-xs'
     >
       <div>id: {id}</div>
       <div>type: {type}</div>
-      <div>selected: {selected ? 'true' : 'false'}</div>
-      <div>
-        position: {position.x.toFixed(1)}, {position.y.toFixed(1)}
-      </div>
-      <div>
-        dimensions: {width} × {height}
-      </div>
+      <div>selected: {selectionStatus}</div>
+      <div>position: {formattedPosition}</div>
+      <div>dimensions: {formattedDimensions}</div>
       <div>data: {JSON.stringify(data, null, 2)}</div>
     </div>
   );
 }
 
-function DevToolButton({
-  active,
-  setActive,
-  children,
-  ...rest
-}: {
+
+type Tool = {
   active: boolean;
   setActive: Dispatch<SetStateAction<boolean>>;
-  children: ReactNode;
-} & HTMLAttributes<HTMLButtonElement>) {
+  label: string;
+  value: string;
+};
+
+type DevToolsToggleProps = {
+  tools: Tool[];
+};
+
+function DevToolsToggle({ tools }: DevToolsToggleProps) {
   return (
-    <Button
-      onClick={() => setActive((a) => !a)}
-      className={`
-        transition-colors duration-300
-        ${active ? 'bg-white text-gray-900' : 'bg-transparent hover:bg-white hover:text-gray-900'}
-        ${active ? 'hover:bg-white hover:text-gray-900' : ''}
-      `}
-      variant="ghost"
-      {...rest}
-    >
-      {children}
-    </Button>
+    <Panel position="top-left" className="bg-white p-1 border rounded shadow-sm">
+      <ToggleGroup type="multiple">
+        {tools.map(({ active, setActive, label, value }) => (
+          <ToggleGroupItem
+            key={value}
+            value={value}
+            onClick={() => setActive((prev) => !prev)}
+            aria-pressed={active}
+            className="bg-card text-card-foreground transition-colors duration-300 hover:bg-secondary hover:text-secondary-foreground"
+          >
+            {label}
+          </ToggleGroupItem>
+        ))}
+      </ToggleGroup>
+    </Panel>
   );
 }
 
 
-interface DevToolsProps { 
-  ViewportLogger?: () => JSX.Element;
-  ChangeLogger?: (props: ChangeLoggerProps) => JSX.Element;
-  NodeInspector?: () => JSX.Element;
-}
-export function DevTools({ ViewportLogger, ChangeLogger, NodeInspector }: DevToolsProps) {
+export function DevTools() {
   const [nodeInspectorActive, setNodeInspectorActive] = useState(false);
   const [changeLoggerActive, setChangeLoggerActive] = useState(false);
   const [viewportLoggerActive, setViewportLoggerActive] = useState(false);
 
-  const hasActiveToolProps = ViewportLogger || ChangeLogger || NodeInspector;
+
+  const tools = [
+    { active: nodeInspectorActive, setActive: setNodeInspectorActive, label: 'Node Inspector', value: 'node-inspector' },
+    { active: changeLoggerActive, setActive: setChangeLoggerActive, label: 'Change Logger', value: 'change-logger' },
+    { active: viewportLoggerActive, setActive: setViewportLoggerActive, label: 'Viewport Logger', value: 'viewport-logger' },
+  ];
 
   return (
-    <div>
-      {hasActiveToolProps && (
-        <Panel className="flex bg-secondary text-foreground rounded-lg border shadow-sm p-1">
-          {NodeInspector && (
-            <DevToolButton
-              setActive={setNodeInspectorActive}
-              active={nodeInspectorActive}
-              title="Toggle Node Inspector"
-            >
-              Node Inspector
-            </DevToolButton>
-          )}
-          {ChangeLogger && (
-            <div className="mx-1">
-              <DevToolButton
-                setActive={setChangeLoggerActive}
-                active={changeLoggerActive}
-                title="Toggle Change Logger"
-              >
-                Change Logger
-              </DevToolButton>
-            </div>
-          )}
-          {ViewportLogger && (
-            <DevToolButton
-              setActive={setViewportLoggerActive}
-              active={viewportLoggerActive}
-              title="Toggle Viewport Logger"
-            >
-              Viewport Logger
-            </DevToolButton>
-          )}
+    <>
+      <DevToolsToggle tools={tools} />
+      
+      {changeLoggerActive && (
+        <Panel className="text-xs p-5 bg-white rounded shadow-md overflow-y-auto max-h-[50%] mt-20" position="bottom-right">
+          <ChangeLogger />
         </Panel>
       )}
-      {changeLoggerActive && ChangeLogger && <ChangeLogger />}
-      {nodeInspectorActive && NodeInspector && <NodeInspector />}
-      {viewportLoggerActive && ViewportLogger && <ViewportLogger />}
-    </div>
+
+      {nodeInspectorActive && <NodeInspector />}
+      
+      {viewportLoggerActive && (
+        <Panel position="bottom-left" className="text-secondary-foreground">
+          <ViewportLogger />
+        </Panel>
+      )}
+    </>
   );
 }
 
