@@ -10,6 +10,6 @@ const removeNewlines = /\n\n/g;
     .replaceAll(removeThanks, '')
     .replaceAll(removeCommits, '$1 ')
     .replaceAll(removeDeps, '')
-    .replaceAll(removeNewlines, '\n');
+    .replaceAll(removeNewlines, '');
   console.log(newBody);
 })();
