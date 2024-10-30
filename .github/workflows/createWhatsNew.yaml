@@ -46,7 +46,7 @@ jobs:
         run: |
           {
             echo 'CLEAN_BODY<<EOF'
-            BODY="${BODY}" node .github/workflows/scripts/removeCommits.js
+            BODY="${CLEAN_BODY}" node .github/workflows/scripts/removeCommits.js
             echo EOF
           } >> "$GITHUB_ENV"
       - name: 'Post to Discord'
