@@ -1,17 +1,10 @@
 export default {
-  'Getting Started': {
-    type: 'separator',
-    title: 'Getting Started',
-  },
   index: {
     title: 'Introduction',
     theme: {
       breadcrumb: false,
       toc: false,
     },
-  },
-  motivation: {
-    title: 'Motivation',
   },
   nodes: {
     type: 'separator',
