@@ -43,6 +43,7 @@ export default function Demo() {
         defaultNodes={defaultNodes}
         defaultEdges={defaultEdges}
         nodeTypes={nodeTypes}
+        nodeClickDistance={5}
         fitView
       >
         <Background />
