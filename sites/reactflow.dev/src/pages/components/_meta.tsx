@@ -6,40 +6,14 @@ export default {
       toc: false,
     },
   },
-  nodes: {
+  nodes: 'Nodes',
+  edges: 'Edges',
+  controls: 'Controls',
+  handles: 'Handles',
+  misc: 'Misc',
+  'separator-1': {
     type: 'separator',
-    title: 'Nodes',
-  },
-  'tooltip-node': 'Tooltip',
-  'database-schema-node': 'Database Schema',
-  'labeled-group-node': 'Labeled Group',
-  'placeholder-node': 'Placeholder',
-  'annotation-node': 'Annotation',
-  edges: {
-    type: 'separator',
-    title: 'Edges',
-  },
-  'animated-svg-edge': 'Animated SVG Edge',
-  'button-edge': 'Button',
-  controls: {
-    type: 'separator',
-    title: 'Controls',
-  },
-  'zoom-select': 'Zoom Select',
-  'zoom-slider': 'Zoom Slider',
-  misc: {
-    type: 'separator',
-    title: 'Misc',
-  },
-  'labeled-handle': 'Labeled Handle',
-  devtools: 'DevTools',
-  _: {
-    type: 'separator',
-  },
-  'base-node': 'Base Node',
-  'base-handle': 'Base Handle',
-  '----': {
-    type: 'separator',
+    title: ' ',
   },
   'request-component': {
     title: 'Request a Component',
