@@ -1,13 +1,13 @@
 {
-  "name": "devtools",
+  "name": "animated-svg-edge",
   "type": "registry:component",
   "dependencies": ["@xyflow/react"],
   "devDependencies": [],
-  "registryDependencies": ["toggle-group"],
+  "registryDependencies": [],
   "files": [
     {
       "type": "registry:component",
-      "path": "devtools.tsx"
+      "path": "animated-svg-edge.tsx"
     }
   ],
   "tailwind": {},

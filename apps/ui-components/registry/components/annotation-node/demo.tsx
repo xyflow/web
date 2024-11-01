@@ -16,7 +16,7 @@ const defaultNodes = [
   },
   {
     id: "1b",
-    position: { x: -150, y: -120 },
+    position: { x: -150, y: -50 },
     parentId: "1a",
     data: {
       level: 1,
@@ -42,15 +42,15 @@ const defaultNodes = [
   },
   {
     id: "3b",
-    position: { x: 140, y: -140 },
+    position: { x: 100, y: -110 },
     parentId: "3a",
     data: {
       level: 2,
       label: "Connect annotations to nodes to adjust interactively.",
       arrowStyle: {
-        right: 20,
-        bottom: -10,
-        transform: "rotate(-150deg) scaleY(-1)",
+        left: 20,
+        bottom: -25,
+        transform: "rotate(-10deg) ",
       },
       arrow: "⤹",
     },

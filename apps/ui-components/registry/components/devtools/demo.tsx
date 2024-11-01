@@ -2,7 +2,7 @@
 
 import { Background, ReactFlow } from "@xyflow/react";
 
-import { DevTools, ViewportLogger, ChangeLogger, NodeInspector } from "@/registry/components/devtools";
+import { DevTools } from "@/registry/components/devtools";
 
 const defaultNodes = [
   {
@@ -33,7 +33,7 @@ export default function DevtoolsDemo() {
     <div className="h-full w-full">
       <ReactFlow defaultNodes={defaultNodes} defaultEdges={defaultEdges} fitView>
         <Background />
-        <DevTools ViewportLogger={ViewportLogger} ChangeLogger={ChangeLogger} NodeInspector={NodeInspector} />
+        <DevTools />
       </ReactFlow>
     </div>
   );

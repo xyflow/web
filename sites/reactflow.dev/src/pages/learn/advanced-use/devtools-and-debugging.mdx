@@ -55,7 +55,7 @@ The `width` and `height` properties are added to each node by React Flow after i
 the node's dimensions. We pass those dimensions, as well as other information like
 the node's id and type, to a custom `<NodeInfo />` component.
 
-We make use of the [`<EdgeLabelRenderer />`](/api-reference/components/edge-label-renderer)
+We make use of the [`<ViewportPortal />`](/api-reference/components/viewport-portal)
 component to let us render the inspector into React Flow's viewport. That means
 it's content will be positioned and transformed along with the rest of the flow
 as the user pans and zooms.
