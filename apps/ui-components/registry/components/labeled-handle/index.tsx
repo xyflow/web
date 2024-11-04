@@ -25,52 +25,20 @@ const LabeledHandle = React.forwardRef<
       handleClassName?: string;
       labelClassName?: string;
     }
->(
-  (
-    {
+>(({ className, labelClassName, title, position, ...props }, ref) => (
+  <div
+    ref={ref}
+    title={title}
+    className={cn(
+      "relative flex items-center",
+      getFlexDirection(position),
       className,
-      handleClassName,
-      labelClassName,
-      title,
-      id,
-      type,
-      position,
-      isConnectable,
-      isConnectableStart,
-      isConnectableEnd,
-      onConnect,
-      isValidConnection,
-      ...props
-    },
-    ref,
-  ) => (
-    <div
-      ref={ref}
-      title={title}
-      className={cn(
-        "relative flex items-center",
-        getFlexDirection(position),
-        className,
-      )}
-    >
-      <BaseHandle
-        id={id}
-        type={type}
-        position={position}
-        isConnectable={isConnectable}
-        isConnectableStart={isConnectableStart}
-        isConnectableEnd={isConnectableEnd}
-        onConnect={onConnect}
-        isValidConnection={isValidConnection}
-        className={handleClassName}
-        {...props}
-      />
-      <label className={`px-3 text-foreground ${labelClassName}`}>
-        {title}
-      </label>
-    </div>
-  ),
-);
+    )}
+  >
+    <BaseHandle position={position} {...props} />
+    <label className={`px-3 text-foreground ${labelClassName}`}>{title}</label>
+  </div>
+));
 
 LabeledHandle.displayName = "LabeledHandle";
 
