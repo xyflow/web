@@ -11,7 +11,6 @@ import { useData } from 'nextra/hooks';
 import { Code, Tabs as NextraTabs } from 'nextra/components';
 import { RemoteContent } from 'xy-shared';
 import clsx from 'clsx';
-import BetaCallout from './components-beta-callout';
 
 const components = {
   code: Code,
@@ -102,7 +101,6 @@ function UiComponentViewer() {
           </a>
         ))}
       </div>
-      <BetaCallout />
       <div className="mt-20">
         <Heading className="mb-5" size="sm">
           Installation
