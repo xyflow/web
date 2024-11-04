@@ -1,11 +1,10 @@
 
 .react-flow {
-  --xy-theme-selected-default: #B2004F;
-  --xy-theme-hover-default: #FE4C96;
+  /* Custom Variables */
+  --xy-theme-selected: #B2004F;
+  --xy-theme-hover: #FE4C96;
 
-  --xy-edge-stroke-default: #AAAAAA;
-  --xy-edge-stroke-selected-default: #FF0072;
-
+  /* Built-in Variables see https://reactflow.dev/learn/customization/theming */
   --xy-node-border-default: 1px solid #EDEDED;
 
   --xy-node-boxshadow-default: 
@@ -13,14 +12,12 @@
     0px 3.54px 4.55px 0px #0000000D, 
     0px 0.51px 1.01px 0px #0000001A;
 
-  --xy-node-boxshadow-hover-default: 0 1px 4px 1px rgba(227, 227, 227, 0.85);
   --xy-node-border-radius-default: 8px;
 
   --xy-handle-background-color-default: #ffffff;
   --xy-handle-border-color-default: #AAAAAA;
 
   --xy-edge-label-color-default: #505050;
-  --xy-resize-background-color-default: #9E86ED;
 }
 
 html,
@@ -35,7 +32,7 @@ body {
   height: 100vh;
 }
 
-/* General Nodes */
+/* Customizing Default Theming */
 
 .react-flow__node {
   box-shadow: var(--xy-node-boxshadow-default);
@@ -55,13 +52,12 @@ body {
 
 .react-flow__node.selectable:hover, 
 .react-flow__node.draggable:hover {
-  border-color: var(--xy-theme-hover-default);
+  border-color: var(--xy-theme-hover);
 }
 
 .react-flow__node.selectable.selected,
-.react-flow__node.selectable:focus,
-.react-flow__node.selectable:focus-visible {
-  border-color: var(--xy-theme-selected-default);
+.react-flow__node.selectable:focus {
+  border-color: var(--xy-theme-selected);
   box-shadow: var(--xy-node-boxshadow-default);
 }
 
@@ -71,70 +67,29 @@ body {
 }
 
 .react-flow__edge.selectable:hover .react-flow__edge-path {
-  stroke: var(--xy-theme-hover-default);
+  stroke: var(--xy-theme-hover);
 }
 
 .react-flow__edge.selectable.selected .react-flow__edge-path {
-  stroke: var(--xy-theme-selected-default);
+  stroke: var(--xy-theme-selected);
 }
 
-.react-flow__handle.connectionindicator:hover, 
-.react-flow__handle.connectingfrom {
+.react-flow__handle.connectionindicator:hover {
   pointer-events: all;
-  border-color: var(--xy-theme-hover-default);
-  background-color: var(--xy-theme-hover-default);
+  border-color: var(--xy-theme-hover);
+  background-color: var(--xy-theme-hover);
 }
 
 .react-flow__handle.connectionindicator:focus, 
-.react-flow__handle.connectingfrom {
-  pointer-events: all;
-  border-color: var(--xy-theme-selected-default);
-  background-color: var(--xy-theme-selected-default);
-}
-
-
-.react-flow__node-resizer {
-  border-radius: 0;
-  border: none;
-}
-
-.react-flow__resize-control.handle {
-  background-color: #ffffff;
-  border-color: var(--xy-resize-background-color-default);
-  border-radius: 0;
-  width: 5px;
-  height: 5px;
-}
-
-
-/* Minimap */
-
-.react-flow__minimap .group {
-  fill-opacity: 0.4;
-}
-
-.react-flow__minimap .resizer,
-.react-flow__minimap .tools,
-.react-flow__minimap .circle,
-.react-flow__minimap .textinput {
-  fill: rgb(208, 192, 247);
-}
-
-.react-flow__minimap .circle {
-  rx: 100%;
-  ry: 100%;
-}
-
-.react-flow__minimap .annotation {
-  display: none;
+.react-flow__handle.connectingfrom,
+.react-flow__handle.connectingto {
+  border-color: var(--xy-theme-selected);
+  background-color: var(--xy-theme-selected);
 }
 
 /* Circle Node */
 
 .react-flow__node-circle {
-  transform: translate(13.3214px, 390.276px);
-  pointer-events: all;
-  visibility: visible;
   border-radius: 50%;
   height: 100px;
   width: 100px;
@@ -148,29 +103,25 @@ body {
 .circle-node__inner {
   background-color: inherit;
   position: absolute;
-  top: 0;
-  left: 0; 
-  right: 0; 
-  bottom: 0; 
+  inset: 0;
   border-radius: 50%;
   display: flex;                
   justify-content: center;    
   align-items: center;     
-  margin: 1.5px;
-  pointer-events: none;
+  margin: 1.5px; 
 }
 
-/* Text Input */
+/* Text Input Node */
 
 .react-flow__node-textinput {
-  border: 0;
+  border: none;
   padding: 0;
+  font-family: monospace;
   background-image: linear-gradient(270deg, #659DF7 0%, #F57DBD 100%);
 }
 
 .text-input-node__inner {
   background-color: inherit;
-  z-index: -1;
   margin: 1.5px;
   padding: 10px;
   text-align: left;
@@ -181,11 +132,8 @@ body {
   width: 100%;
   box-sizing: border-box;
   margin: 5px 0px;
-  overflow: hidden;
-  font-family: monospace;
   border-radius: 3px;
   border: var(--xy-node-border-default);
-  outline: 0;
 }
 
 .text-input-node__input::-webkit-outer-spin-button,
@@ -196,45 +144,6 @@ input[type="number"]::-webkit-inner-spin-button {
 .text-input-node__input {
   -moz-appearance: textfield;
   appearance: textfield;
-}
-
-/* Custom Handles */
-
-.react-flow__node-resizer .react-flow__handle,
-.react-flow__node-circle .react-flow__handle,
-.react-flow__node-textinput .react-flow__handle {
-  background: #bbb;
-  border-radius: 0;
-  width: 8px;
-  height: 4px;
-  border: none;
-  min-width: 2px;
-  min-height: 2px;
-}
-
-.react-flow__node-resizer .react-flow__handle-bottom,
-.react-flow__node-circle .react-flow__handle-bottom,
-.react-flow__node-textinput .react-flow__handle-bottom {
-  bottom: -5px;
-  transform: none;
-  border-radius: 0 0 2px 2px;
-}
-
-.react-flow__node-resizer .react-flow__handle-top,
-.react-flow__node-circle .react-flow__handle-top,
-.react-flow__node-textinput .react-flow__handle-top {
-  top: -5px;
-  transform: none;
-  border-radius: 2px 2px 0 0;
-}
-
-.react-flow__node-resizer .react-flow__handle-left,
-.react-flow__node-circle .react-flow__handle-left,
-.react-flow__node-textinput .react-flow__handle-left {
-  height: 8px;
-  width: 4px;
-  left: -5px;
-  border-radius: 2px 0 0 2px;
 }
 
 /* Annotation Node */
@@ -289,6 +198,37 @@ input[type="number"]::-webkit-inner-spin-button {
   border-left: 2px solid #4d4d4d;
 }
 
+/* Resizer Node */
+
+.react-flow__node-resizer {
+  border-radius: 0;
+  border: none;
+}
+
+.react-flow__resize-control.handle {
+  background-color: #ffffff;
+  border-color: #9E86ED;
+  border-radius: 0;
+  width: 5px;
+  height: 5px;
+}
+
+.resizer-node__handles {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  justify-content: space-evenly;
+  left: 0;
+}
+
+.resizer-node__handle {
+  position: relative;
+  left: 0;
+  transform: none;
+}
+
+
 /* Button Edge */
 
 .button-edge__label {
@@ -310,23 +250,68 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .button-edge__button:hover {
-  background-color: var(--xy-theme-hover-default);
+  background-color: var(--xy-theme-hover);
   color: #ffffff;
 }
 
-/* Resizer Node */
+/* Custom Handles */
 
-.resizer-node__handles {
-  display: flex;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  justify-content: space-evenly;
-  left: 0;
+.react-flow__node-resizer .react-flow__handle,
+.react-flow__node-circle .react-flow__handle,
+.react-flow__node-textinput .react-flow__handle {
+  background: #bbb;
+  border-radius: 0;
+  width: 8px;
+  height: 4px;
+  border: none;
+  min-width: 2px;
+  min-height: 2px;
 }
 
-.resizer-node__handle {
-  position: relative;
-  left: 0;
+.react-flow__node-resizer .react-flow__handle-bottom,
+.react-flow__node-circle .react-flow__handle-bottom,
+.react-flow__node-textinput .react-flow__handle-bottom {
+  bottom: -5px;
   transform: none;
+  border-radius: 0 0 2px 2px;
+}
+
+.react-flow__node-resizer .react-flow__handle-top,
+.react-flow__node-circle .react-flow__handle-top,
+.react-flow__node-textinput .react-flow__handle-top {
+  top: -5px;
+  transform: none;
+  border-radius: 2px 2px 0 0;
+}
+
+.react-flow__node-resizer .react-flow__handle-left,
+.react-flow__node-circle .react-flow__handle-left,
+.react-flow__node-textinput .react-flow__handle-left {
+  height: 8px;
+  width: 4px;
+  left: -5px;
+  border-radius: 2px 0 0 2px;
+}
+
+
+/* Minimap */
+
+.react-flow__minimap .group {
+  fill-opacity: 0.4;
+}
+
+.react-flow__minimap .resizer,
+.react-flow__minimap .tools,
+.react-flow__minimap .circle,
+.react-flow__minimap .textinput {
+  fill: rgb(208, 192, 247);
+}
+
+.react-flow__minimap .circle {
+  rx: 100%;
+  ry: 100%;
+}
+
+.react-flow__minimap .annotation {
+  display: none;
 }
