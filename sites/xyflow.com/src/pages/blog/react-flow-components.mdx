@@ -19,7 +19,7 @@ import { Embed, Text, Image, BlogPostLayout } from 'xy-shared';
 
 At xyflow we try to pay close attention to the developer experience when using
 our libraries or our docs: we have a huge collection of examples, tutorials that
-walk you through development from scratch, and [starter apps on CodeSandbox](https://codesandbox.io/p/sandbox/react-flow-starter-ts-r69228)
+walk you through development from scratch, and [starter apps on CodeSandbox](https://codesandbox.io/p/sandbox/react-flow-starter-ts-r69228).
 This great experience starts to fall away once you move to your own apps, though.
 
 Our users have always been excited to show us what they've been building, and over
@@ -42,25 +42,25 @@ a library?
 After some consideration, we decided this approach wasn't going to work for us
 for a few reasons:
 
-- It would be too complicated to build the things we wanted to build while also
-  making the components flexible enough to be styled or used in different
-  applications.
+- Building flexible, reusable components that could be styled and used across
+  different apps would be too complex.
 
-- If users needed features we didn't anticipate they would have to fork the
-  library and add it themselves; negating a lot of the benefits of us developing
-  a library in the first place.
+- If users needed features we didn't anticipate, they would have to fork the
+  component library and add it themselves; negating a lot of the benefits of us
+  developing a library in the first place.
 
-- We didn't want work on issues and feature requests to distract us from working
-  on the React Flow library itself.
+- It's important that React Flow stays our primary focus, and maintaining a separate
+  component library would take too much time away from the core library.
 
 ## Shadcn and a new approach to component libraries
 
-Shadcn is a component "library" that has been steadily gaining hype and adoption
-for some time now. The premise is simple: instead of providing an opaque package
-of components, shadcn provides the source code for each component and expects you
-to vendor the code into your own projects. It harkens back to the days before
-npm and bundlers and honestly it can feel quite nice; when we rebuilt our docs
-site we lent heavily into shadcn for many of our ui components.
+[Shadcn/ui](https://ui.shadcn.com) is a component "library" that has been steadily
+gaining hype and adoption for some time now. The premise is simple: instead of
+providing an opaque package of components, shadcn provides the source code for
+each component and expects you to vendor the code into your own projects. It
+calls back to the days before npm and bundlers and honestly it can feel quite
+nice; when we rebuilt our docs site we lent heavily into shadcn for many of our
+ui components.
 
 This approach felt like it solved a lot of the problems we had with publishing
 a standalone package, and so at the beginning of the year a handful of us got to
@@ -81,7 +81,7 @@ vendor into their own projects.
 </Bleed>
 
 We spent a while developing this but eventually decided to shelf the project
-after we were disastified with some of the compromises we ended up making along
+after we were dissatisfied with some of the compromises we ended up making along
 the way.
 
 The biggest open-ended question we kept running into was what to do about _styling_.
@@ -120,7 +120,7 @@ hard to build out a collection of initial components that we think will make it
 easier for folks to put together React Flow projects going forward. Some interesting
 components from the initial set include:
 
-- A [**database schema node**](https://reactflow.dev/components/database-schema-node)
+- A [**database schema node**](https://reactflow.dev/components/nodes/database-schema-node)
   that makes it easy to visualise tables and relationships between columns.
 
 <Embed
@@ -128,7 +128,7 @@ components from the initial set include:
   src={`${process.env.NEXT_PUBLIC_UI_COMPONENTS_URL}/components/database-schema-node`}
 />
 
-- A [**zoom slider**](https://reactflow.dev/components/zoom-slider) for more
+- A [**zoom slider**](https://reactflow.dev/components/controls/zoom-slider) for more
   convenient control over the viewport zoom level.
 
 <Embed
@@ -136,8 +136,13 @@ components from the initial set include:
   src={`${process.env.NEXT_PUBLIC_UI_COMPONENTS_URL}/components/zoom-slider`}
 />
 
-- **Debugging components** that make it easier to inspect a node's properties and the
-  state of your flow.
+- [**Debugging components**](https://reactflow.dev/components/misc/devtools) that
+  make it easier to inspect a node's properties and the state of your flow.
+
+<Embed
+  className="rounded-md border border-gray-200"
+  src={`${process.env.NEXT_PUBLIC_UI_COMPONENTS_URL}/components/devtools`}
+/>
 
 We've also laid the foundation to build out more advanced components in the future.
 We're still not sure if this is something we're going to commit to, so please try
