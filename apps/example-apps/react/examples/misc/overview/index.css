@@ -1,4 +1,3 @@
-
 .react-flow {
   /* Custom Variables */
   --xy-theme-selected: #B2004F;
@@ -72,6 +71,10 @@ body {
 
 .react-flow__edge.selectable.selected .react-flow__edge-path {
   stroke: var(--xy-theme-selected);
+}
+
+.react-flow__handle {
+  background-color: var(--xy-handle-background-color-default);
 }
 
 .react-flow__handle.connectionindicator:hover {
