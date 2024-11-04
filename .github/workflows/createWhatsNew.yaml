@@ -35,11 +35,11 @@ jobs:
           git config --global user.name 'github-actions[bot]'
       - name: 'Create branch'
         run: git checkout -b ${{ env.BRANCH }}
-      - name: 'Remove Thanks'
+      - name: 'Format Release Message'
         run: |
           {
             echo 'CLEAN_BODY<<EOF'
-            BODY="${BODY}" node .github/workflows/scripts/removeThanks.js
+            BODY="${BODY}" node .github/workflows/scripts/formatRelease.js
             echo EOF
           } >> "$GITHUB_ENV"
       - name: 'Post to Discord'

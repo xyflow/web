@@ -6,25 +6,25 @@
   let path = '';
 
   $: {
-    const { sourceX, sourceY, targetX, targetY } = $connection;
-    path = `M${sourceX},${sourceY} C ${sourceX} ${targetY} ${sourceX} ${targetY} ${targetX},${targetY}`;
+    const { from, to } = $connection;
+    path = `M${from.x},${from.y} C ${from.x} ${to.y} ${from.x} ${to.y} ${to.x},${to.y}`;
   }
 </script>
 
-{#if $connection.path}
+{#if path}
   <path
     fill="none"
     stroke-width={1.5}
     class="animated"
-    stroke={$connection.startHandle?.handleId}
+    stroke={$connection.fromHandle?.id}
     d={path}
   />
   <circle
-    cx={$connection.targetX}
-    cy={$connection.targetY}
+    cx={$connection.to.x}
+    cy={$connection.to.y}
     fill="#fff"
     r={3}
-    stroke={$connection.startHandle?.handleId}
+    stroke={$connection.fromHandle?.id}
     stroke-width={1.5}
   />
 {/if}

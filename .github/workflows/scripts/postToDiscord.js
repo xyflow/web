@@ -1,9 +1,8 @@
 (async function removeThanks() {
   const content = `Hey [INSERT MENTION HERE],
 
-[INSERT NICE MESSAGE]
+**${process.env.FRAMEWORK} Flow ${process.env.VERSION}** is out!
 
-${process.env.FRAMEWORK} Flow ${process.env.VERSION} is out!
 ${process.env.CLEAN_BODY}
   `;
 
