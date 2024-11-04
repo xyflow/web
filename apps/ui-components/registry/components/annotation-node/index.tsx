@@ -1,15 +1,11 @@
 import { type Node, type NodeProps } from "@xyflow/react";
-type arrowStyleProps = {
-  right?: number;
-  bottom?: number;
-  transform?: string;
-};
+import { CSSProperties } from "react";
 
 type AnnotationNode = Node<{
   label: string;
   level: number;
   arrow: string;
-  arrowStyle: arrowStyleProps;
+  arrowStyle: CSSProperties; 
 }>;
 
 export function AnnotationNode({ data }: NodeProps<AnnotationNode>) {
