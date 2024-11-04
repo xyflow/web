@@ -10,8 +10,6 @@ import {
 } from '@xyflow/react';
 
 import '@xyflow/react/dist/style.css';
-import './xy-theme.css';
-
 
 import {
   nodes as initialNodes,

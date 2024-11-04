@@ -59,7 +59,7 @@ export default memo(({ id }) => {
   
   
   return (
-    <div>
+    <div className='text-input-node__inner '>
       {dimensionAttrs.map((attr) => (
         <Fragment key={attr}>
           <label>Node {attr}</label>
@@ -67,7 +67,7 @@ export default memo(({ id }) => {
             type="number"
             value={dimensions ? parseInt(dimensions[attr]) : 0}
             onChange={updateDimension(attr)}
-            className="nodrag"
+            className="text-input-node__input nodrag"
             disabled={!dimensions}
           />
         </Fragment>

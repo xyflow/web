@@ -167,7 +167,7 @@ export const edges = [
     target: '3-2',
     type: 'button',
     animated: true,
-    style: { stroke: 'rgb(158, 118, 255)', strokeWidth: 2 },
+    style: { stroke: 'rgb(158, 118, 255)' },
   },
   {
     id: 'e3-4',
@@ -175,6 +175,5 @@ export const edges = [
     sourceHandle: 'b',
     target: '3-1',
     type: 'button',
-    style: { strokeWidth: 2 },
   },
 ];

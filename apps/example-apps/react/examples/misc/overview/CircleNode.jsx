@@ -15,7 +15,7 @@ export default memo(({ id }) => {
   });
 
   return (
-    <div>
+    <div className='circle-node__inner'>
       <div>{label || 'no node connected'}</div>
       <Handle type="target" position={Position.Left} />
     </div>
