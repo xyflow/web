@@ -46,11 +46,14 @@ export default function getUiComponentConfig(id: string) {
     });
 
     const jsonUrl = `${process.env.NEXT_PUBLIC_UI_COMPONENTS_URL}/${data.name}`;
-    const installMDX = await compileCodeSnippet(`npx shadcn add ${jsonUrl}`, {
-      filetype: 'bash',
-      showCopy: true,
-      npm2yarn: true,
-    });
+    const installMDX = await compileCodeSnippet(
+      `npx shadcn@latest add ${jsonUrl}`,
+      {
+        filetype: 'bash',
+        showCopy: true,
+        npm2yarn: true,
+      },
+    );
 
     const npmDependencies = (data.dependencies || []).map((dep) => ({
       label: dep,
