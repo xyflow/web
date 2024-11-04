@@ -34,20 +34,19 @@ const ZoomSelect = React.forwardRef<
     }
   };
 
-  const { minZoom, maxZoom } = useStore(
-    (state) => ({
-      minZoom: state.minZoom,
-      maxZoom: state.maxZoom,
-    }),
-    (a, b) => a.minZoom !== b.minZoom || a.maxZoom !== b.maxZoom,
-  );
+  const { zoomLevels } = useStore((state) => {
+    const minZoom = state.minZoom;
+    const maxZoom = state.maxZoom;
 
-  // Increment Zoom Levels between minZoom and maxZoom Value: default 50
-  const zoomLevels = [];
-  const zoomIncrement = 50;
-  for (let i = Math.ceil(minZoom * 100); i <= Math.floor(maxZoom * 100); i += zoomIncrement) {
-    zoomLevels.push((i / 100).toString());
-  }
+    const levels = [];
+    const zoomIncrement = 50;
+    for (let i = Math.ceil(minZoom * 100); i <= Math.floor(maxZoom * 100); i += zoomIncrement) {
+      levels.push((i / 100).toString());
+    }
+
+    return { zoomLevels: levels }; 
+  });
+
 
   return (
     <Panel
