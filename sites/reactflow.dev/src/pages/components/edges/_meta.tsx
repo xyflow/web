@@ -1,4 +1,4 @@
 export default {
-  button: 'Edge with Button',
+  'button-edge': 'Edge with Button',
   'animated-svg-edge': 'Animated SVG Edge',
 };

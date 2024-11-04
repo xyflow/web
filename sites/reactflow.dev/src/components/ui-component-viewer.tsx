@@ -116,7 +116,7 @@ function UiComponentViewer() {
             <Text className="mt-5">
               Make sure to follow the{' '}
               <Link href="/components#prerequisites" variant="primary">
-                Prerequisites
+                prerequisites
               </Link>{' '}
               before installing the component.
             </Text>

@@ -1,4 +1,4 @@
 export default {
-  labeled: 'Handle with Label',
-  base: 'Base Handle',
+  'labeled-handle': 'Handle with Label',
+  'base-handle': 'Base Handle',
 };
