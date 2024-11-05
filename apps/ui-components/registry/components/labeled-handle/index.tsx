@@ -6,7 +6,7 @@ import { HandleProps } from "@xyflow/react";
 import { BaseHandle } from "@/registry/components/base-handle";
 
 function getFlexDirection(position: string) {
-  let flexDirection =
+  const flexDirection =
     position === "top" || position === "bottom" ? "flex-col" : "flex-row";
   switch (position) {
     case "bottom":
