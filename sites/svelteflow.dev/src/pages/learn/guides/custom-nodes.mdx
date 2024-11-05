@@ -6,6 +6,12 @@ description: Step by step guide about how to work with custom nodes in Svelte Fl
 import { Callout } from 'nextra/components';
 import { RemoteCodeViewer } from 'xy-shared';
 
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode([
+  'guides/custom-nodes/a',
+  'guides/custom-nodes/b',
+]);
+
 # Custom Nodes
 
 A powerful feature of Svelte Flow is the ability to add custom nodes. You can render everything you want in your custom nodes. You can define multiple source and target handles and render form inputs or even interactive charts. In this guide we will implement two nodes with color input fields that update the background color of the flow.
@@ -55,6 +61,7 @@ You can add a new node type to Svelte Flow by adding it to the [`nodeTypes` prop
   import { SvelteFlow } from '@xyflow/svelte';
   import ColorPickerNode from './ColorPickerNode.svelte';
 
+
   const nodeTypes = {
     'color-picker': ColorPickerNode
   };
@@ -81,8 +88,7 @@ const nodes = writable([
 The `data` field of a node can be used to store whatever data you like. In this case we are storing the current color value in a [writable store](https://svelte.dev/docs/svelte-store#writable). This makes it easy to update it from within the custom node later. After putting it all together and adding some basic styles, we get a nice looking custom node with a color picker.
 
 <RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/guides/custom-nodes/a/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/guides/custom-nodes/a/index.html`}
+  route="guides/custom-nodes/a"
   framework="svelte"
   editorHeight={500}
 />
@@ -93,8 +99,7 @@ Now that we have a custom node with a color picker, we want to update the backgr
 For this we add another node to the nodes array and then subscribe to the color stores of both nodes. Whenever one of the colors changes, we update the background color of the flow:
 
 <RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/guides/custom-nodes/b/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/guides/custom-nodes/b/index.html`}
+  route="guides/custom-nodes/b"
   framework="svelte"
   editorHeight={500}
 />

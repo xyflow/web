@@ -6,6 +6,13 @@ description: A quick guide that shows you how to get started with Svelte Flow
 # Building a flow
 
 import { RemoteCodeViewer } from 'xy-shared';
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode([
+  'guides/getting-started/a',
+  'guides/getting-started/b',
+  'guides/getting-started/c',
+  'guides/getting-started/d',
+]);
 
 In the following section we will show you how to create a Svelte component that displays a simple flow. We assume that you've installed Svelte Flow and hope that you are ready to create your first component with Svelte Flow.
 
@@ -22,8 +29,7 @@ import '@xyflow/svelte/dist/style.css';
 Now you can use them in your component like this:
 
 <RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/guides/getting-started/a/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/guides/getting-started/a/index.html`}
+  route="guides/getting-started/a"
   framework="svelte"
   editorHeight={400}
 />
@@ -60,8 +66,7 @@ const nodes = writable([
 If we add these nodes to our `SvelteFlow` component, we can see them on the screen:
 
 <RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/guides/getting-started/b/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/guides/getting-started/b/index.html`}
+  route="guides/getting-started/b"
   framework="svelte"
   editorHeight={400}
 />
@@ -88,8 +93,7 @@ const edges = writable([{ id: '1-2', source: '1', target: '2' }]);
 ```
 
 <RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/guides/getting-started/c/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/guides/getting-started/c/index.html`}
+  route="guides/getting-started/c"
   framework="svelte"
   editorHeight={400}
 />
@@ -105,8 +109,7 @@ If you want something besides a white background, you can easily adjust it by us
 By default the controls panel comes with a zoom-in, zoom-out, fit view and lock button. You can remove the lock button for example by setting `showLock={false}`.
 
 <RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/guides/getting-started/d/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/guides/getting-started/d/index.html`}
+  route="guides/getting-started/d"
   framework="svelte"
   editorHeight={400}
 />

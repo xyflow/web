@@ -10,6 +10,10 @@ date: '2024-06-11'
 
 import { RemoteCodeViewer } from 'xy-shared';
 
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['examples/layout/entitree-flex']);
+
+
 # Layouting example for Entitree Flex
 
 We add a new layouting algorithm to our example lineup with the addition of
@@ -20,12 +24,7 @@ This example was very kindly contributed by GitHub user [@kaustubhxd](https://gi
 thanks Kaustubh! Check it out below.
 
 <RemoteCodeViewer
-  source={`${
-    process?.env?.NEXT_PUBLIC_EXAMPLES_URL ?? exampleUrl
-  }/react/examples/layout/entitree-flex/source.json`}
-  preview={`${
-    process?.env?.NEXT_PUBLIC_EXAMPLES_URL ?? exampleUrl
-  }/react/examples/layout/entitree-flex/index.html`}
+  route="examples/layout/entitree-flex"
   framework="react"
   showEditor={false}
 />

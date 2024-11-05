@@ -1,0 +1,16 @@
+{
+  "name": "labeled-handle",
+  "type": "registry:component",
+  "dependencies": ["@xyflow/react"],
+  "devDependencies": [],
+  "registryDependencies": ["https://ui.reactflow.dev/base-handle"],
+  "files": [
+    {
+      "type": "registry:component",
+      "path": "labeled-handle.tsx"
+    }
+  ],
+  "tailwind": {},
+  "cssVars": {},
+  "meta": {}
+}

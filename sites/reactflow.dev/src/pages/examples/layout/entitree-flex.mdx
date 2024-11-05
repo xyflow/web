@@ -4,15 +4,15 @@ description: Create tree layouts that have sibling nodes and support nodes with 
 ---
 
 import { RemoteCodeViewer } from 'xy-shared';
-import ExampleLayout from '@/layouts/example-with-frontmatter';
+import { ExampleLayout } from 'xy-shared';
+
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['examples/layout/entitree-flex']);
+
 
 <ExampleLayout>
 This example shows how you can integrate [entitree-flex](https://github.com/codeledge/entitree-flex) with React Flow to create tree layouts that can have sibling nodes and support nodes with different dimensions.
 
-<RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/layout/entitree-flex/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/layout/entitree-flex/index.html`}
-  framework="react"
-/>
+<RemoteCodeViewer route="examples/layout/entitree-flex" framework="react" />
 
 </ExampleLayout>

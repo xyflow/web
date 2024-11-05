@@ -4,14 +4,17 @@ description: The most popular props used for interactivity of a diagram
 ---
 
 import { RemoteCodeViewer } from 'xy-shared';
-import ExampleLayout from '@/layouts/example-with-frontmatter';
+import { ExampleLayout } from 'xy-shared';
+
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['examples/interaction/interaction-props']);
+
 
 <ExampleLayout>
 This example shows the different props like `nodesDraggable`, `zoomOnScroll` or `panOnDrag` that control the interactivity of a diagram. You can find a list with all props that can be used to manage the interactivity in the [interaction props section](/api-reference/react-flow#interaction).
 
 <RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/interaction/interaction-props/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/interaction/interaction-props/index.html`}
+  route="examples/interaction/interaction-props"
   framework="react"
 />
 

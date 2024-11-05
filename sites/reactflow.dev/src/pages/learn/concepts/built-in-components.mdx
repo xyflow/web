@@ -1,0 +1,38 @@
+---
+title: Built-In Components
+description: React Flow comes with several built-in components. Here's an overview of the minimap, controls, background, and panel components.
+---
+
+# Built-In Components
+
+React Flow comes with several additional components. In this guide we show you how to use them. We are using our [previous example code](/learn/concepts/core-concepts) here.
+
+## MiniMap
+
+If your flow gets bigger, you might want to get an overview quickly. For this we have built the [`MiniMap` component](/api-reference/components/minimap). You can easily add it to your flow by adding it as a children:
+
+import { RemoteCodeViewer } from 'xy-shared';
+
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['learn/mini-map', 'learn/controls', 'learn/background', 'learn/panel']);
+
+
+<RemoteCodeViewer route="learn/mini-map" framework="react" />
+
+## Controls
+
+React Flow comes with a customizable controls bar, that you can use by importing the [`Controls` component](/api-reference/components/controls)
+
+<RemoteCodeViewer route="learn/controls" framework="react" />
+
+## Background
+
+If you want to display the pattern background, you can use the [`Background` component](/api-reference/components/background)
+
+<RemoteCodeViewer route="learn/background" framework="react" />
+
+## Panel
+
+A helper component to display content on top of the React Flow viewport. [`Panel` component](/api-reference/components/panel)
+
+<RemoteCodeViewer route="learn/panel" framework="react" />

@@ -5,7 +5,11 @@ description: Draw multiple connection lines at once from any selected nodes.
 
 import { Callout } from 'nextra/components';
 import { RemoteCodeViewer } from 'xy-shared';
-import ExampleLayout from '@/layouts/example-with-frontmatter';
+import { ExampleLayout } from 'xy-shared';
+
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['examples/edges/multi-connection-line']);
+
 
 <ExampleLayout>
 
@@ -20,8 +24,7 @@ once.
 </Callout>
 
 <RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/edges/multi-connection-line/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/edges/multi-connection-line/index.html`}
+  route="examples/edges/multi-connection-line"
   framework="react"
 />
 

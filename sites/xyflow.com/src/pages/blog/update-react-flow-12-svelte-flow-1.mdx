@@ -8,12 +8,16 @@ image: '/img/blog/v11-reactflow-header.png'
 ---
 
 import { Emoji } from '@xyflow/xy-ui';
-import { BlogPostLayout } from '@/layouts/blog-post-with-frontmatter';
+import { BlogPostLayout } from 'xy-shared';
 
 import { Bleed } from 'nextra-theme-docs';
 import { Embed, Text, RemoteCodeViewer } from 'xy-shared';
 
 import Image from 'next/image';
+
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['learn/devtools']);
+
 
 <BlogPostLayout>
 
@@ -53,8 +57,7 @@ Here's a sneak-peek of the findings:
 
 <Bleed>
   <RemoteCodeViewer
-    source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/devtools/source.json`}
-    preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/devtools/index.html`}
+    route="learn/devtools"
     framework="react"
     showEditor={false}
   />

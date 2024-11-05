@@ -10,6 +10,10 @@ date: '2023-11-14'
 
 import { RemoteCodeViewer } from 'xy-shared';
 
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['learn/custom-edge-2']);
+
+
 # New custom edges guide!
 
 We've added a new guide to show folks how to create their own custom edges. This
@@ -19,12 +23,7 @@ components are for, and shows how to use some of the
 [path utilities](/api-reference/utils) React Flow provides.
 
 <RemoteCodeViewer
-  source={`${
-    process?.env?.NEXT_PUBLIC_EXAMPLES_URL ?? exampleUrl
-  }/react/learn/custom-edge-2/source.json`}
-  preview={`${
-    process?.env?.NEXT_PUBLIC_EXAMPLES_URL ?? exampleUrl
-  }/react/learn/custom-edge-2/index.html`}
+  route="learn/custom-edge-2"
   framework="react"
   showEditor={false}
 />

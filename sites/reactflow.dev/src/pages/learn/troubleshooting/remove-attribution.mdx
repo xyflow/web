@@ -10,6 +10,10 @@ This example demonstrates how you can remove the React Flow attribution from the
 import { Callout } from 'nextra/components';
 import { RemoteCodeViewer } from 'xy-shared';
 
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['learn/remove-attribution']);
+
+
 <Callout type="info">
 If you’re considering removing the attribution, we’d first like to mention:
 
@@ -23,8 +27,4 @@ Thank you for supporting the React Flow team ✌🏻
 
 </Callout>
 
-<RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/remove-attribution/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/remove-attribution/index.html`}
-  framework="react"
-/>
+<RemoteCodeViewer route="learn/remove-attribution" framework="react" />

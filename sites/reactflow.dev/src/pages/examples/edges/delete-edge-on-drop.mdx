@@ -4,14 +4,17 @@ description: Delete an edge when it doesn't find a handle
 ---
 
 import { RemoteCodeViewer } from 'xy-shared';
-import ExampleLayout from '@/layouts/example-with-frontmatter';
+import { ExampleLayout } from 'xy-shared';
+
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['examples/edges/delete-edge-on-drop']);
+
 
 <ExampleLayout>
 In this example we are showing how to delete an edge by using the [`onReconnect`, `onReconnectStart` and `onReconnectEnd` handlers](/api-reference/react-flow#onReconnect). If you drag an existing edge and drop it on the pane, it gets deleted from the `edges` array.
 
 <RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/edges/delete-edge-on-drop/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/edges/delete-edge-on-drop/index.html`}
+  route="examples/edges/delete-edge-on-drop"
   framework="react"
 />
 

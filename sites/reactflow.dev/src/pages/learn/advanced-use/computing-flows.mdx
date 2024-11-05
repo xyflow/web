@@ -7,6 +7,16 @@ description: Learn how to extend React Flow to compute data going through flow g
 
 import { Callout } from 'nextra/components';
 import { RemoteCodeViewer } from 'xy-shared';
+import { getStaticCode } from 'xy-shared/server';
+
+export const getStaticProps = getStaticCode([
+  'learn/computing',
+  'learn/computing-2',
+  'learn/computing-3',
+  'learn/computing-4',
+  'learn/computing-5',
+  'learn/computing-6',
+]);
 
 <Callout type="info">
   For this guide we assume that you already know about the [core
@@ -20,11 +30,7 @@ Usually with React Flow, developers handle their data outside of React Flow by s
 
 By the end of this guide, you will build an interactive flow graph that generates a color out of three separate number input fields (red, green and blue), and determines whether white or black text would be more readable on that background color.
 
-<RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/computing-6/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/computing-6/index.html`}
-  framework="react"
-/>
+<RemoteCodeViewer route="learn/computing-6" framework="react" />
 
 ## Creating custom nodes
 
@@ -33,6 +39,10 @@ Let's start by creating a custom input node (`NumberInput.js`) and add three ins
 ```jsx
 import { useCallback, useState } from 'react';
 import { Handle, Position } from '@xyflow/react';
+
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['learn/computing-6', 'learn/computing', 'learn/computing-2', 'learn/computing-3', 'learn/computing-4', 'learn/computing-5', 'learn/computing-6']);
+
 
 function NumberInput({ id, data }) {
   const [number, setNumber] = useState(0);
@@ -71,12 +81,11 @@ Next, we'll add a new custom node (`ColorPreview.js`) with one target handle for
   Whenever you have multiple handles of the same kind on a single node, don't
   forget to give each one a seperate id!
 </Callout>
-Let's also add edges going from the input nodes to the color node to our `initialEdges`
-array while we are at it.
+Let's also add edges going from the input nodes to the color node to our
+`initialEdges` array while we are at it.
 
 <RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/computing/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/computing/index.html`}
+  route="learn/computing"
   framework="react"
   activeFile="ColorPreview.jsx"
 />
@@ -98,8 +107,7 @@ By default, the data you pass to [`updateNodeData`](/api-reference/types/react-f
 </Callout>
 
 <RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/computing-2/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/computing-2/index.html`}
+  route="learn/computing-2"
   framework="react"
   activeFile="NumberInput.jsx"
 />
@@ -109,8 +117,8 @@ By default, the data you pass to [`updateNodeData`](/api-reference/types/react-f
     When dealing with input fields you don't want to use a nodes `data` object
     as UI state directly.
   </b>
-  There is a delay in updating the data object and the cursor might jump around erraticly
-  and lead to unwanted inputs.
+  There is a delay in updating the data object and the cursor might jump around
+  erraticly and lead to unwanted inputs.
 </Callout>
 
 ### Step 2: Getting data from connected nodes
@@ -124,12 +132,11 @@ We start by determining all connections for each handle with the [`useHandleConn
   example](/examples/nodes/connection-limit) to see how to do that.
 </Callout>
 
-<b>And there you go!</b> Try changing the input values and see the color change in
-real time.
+<b>And there you go!</b> Try changing the input values and see the color change
+in real time.
 
 <RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/computing-3/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/computing-3/index.html`}
+  route="learn/computing-3"
   framework="react"
   activeFile="ColorPreview.jsx"
 />
@@ -222,8 +229,7 @@ Next, we add a new node (`Lightness.js`) that takes in a color object and determ
 to calculate the perceived brightness of a color (0 being the darkest and 255 being the brightest). We can assume everything >= 128 is a light color.
 
 <RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/computing-4/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/computing-4/index.html`}
+  route="learn/computing-4"
   framework="react"
   activeFile="Lightness.jsx"
 />
@@ -237,8 +243,7 @@ But what does it mean to "take a different route"? One solution would be to assu
 Don't forget to add `flex-direction: column;` and `align-items: end;` to reposition the handle labels.
 
 <RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/computing-5/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/computing-5/index.html`}
+  route="learn/computing-5"
   framework="react"
   activeFile="Lightness.jsx"
 />
@@ -246,8 +251,7 @@ Don't forget to add `flex-direction: column;` and `align-items: end;` to reposit
 Cool! Now we only need a last node to see if it actually works... We can create a custom debugging node (`Log.js`) that displays the hooked up data, and we're done!
 
 <RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/computing-6/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/computing-6/index.html`}
+  route="learn/computing-6"
   framework="react"
   activeFile="Log.jsx"
 />

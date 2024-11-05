@@ -11,6 +11,10 @@ date: '2024-05-06'
 
 import { RemoteCodeViewer } from 'xy-shared';
 
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['examples/misc/overview']);
+
+
 # Devtools and a fresh overview example
 
 Sometimes it's hard to understand what's going on in your React Flow app. That's
@@ -22,12 +26,7 @@ feature overview example.
 Check it out below!
 
 <RemoteCodeViewer
-  source={`${
-    process?.env?.NEXT_PUBLIC_EXAMPLES_URL ?? exampleUrl
-  }/react/examples/misc/overview/source.json`}
-  preview={`${
-    process?.env?.NEXT_PUBLIC_EXAMPLES_URL ?? exampleUrl
-  }/react/examples/misc/overview/index.html`}
+  route="examples/misc/overview"
   framework="react"
   showEditor={false}
 />

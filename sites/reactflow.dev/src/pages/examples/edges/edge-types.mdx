@@ -4,15 +4,15 @@ description: Make edges straight, stepped, smooth-stepped, or bezier curved
 ---
 
 import { RemoteCodeViewer } from 'xy-shared';
-import ExampleLayout from '@/layouts/example-with-frontmatter';
+import { ExampleLayout } from 'xy-shared';
+
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['examples/edges/edge-types']);
+
 
 <ExampleLayout>
 You can choose different kinds of [edge types](/api-reference/react-flow#edgeTypes) in React Flow: `default` (bezier), `straight`, `step` and `smoothstep`. As you can see, you can define a type for each edge and mix them in one graph.
 
-<RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/edges/edge-types/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/edges/edge-types/index.html`}
-  framework="react"
-/>
+<RemoteCodeViewer route="examples/edges/edge-types" framework="react" />
 
 </ExampleLayout>

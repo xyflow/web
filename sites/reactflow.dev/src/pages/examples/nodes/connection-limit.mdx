@@ -4,17 +4,17 @@ description: Use the `isConnectable` prop to limit the number of connections a h
 ---
 
 import { RemoteCodeViewer } from 'xy-shared';
-import ExampleLayout from '@/layouts/example-with-frontmatter';
+import { ExampleLayout } from 'xy-shared';
+
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['examples/nodes/connection-limit']);
+
 
 <ExampleLayout>
 This is an example of a custom node with a custom handle that can limit the amount of connections a handle can have using the `isConnectable` prop.
 You can use a boolean, a number (the number of max. connections the handle should have) or a callback function that returns a boolean
 as an arg for the `isConnectable` prop of the CustomHandle component.
 
-<RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/nodes/connection-limit/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/nodes/connection-limit/index.html`}
-  framework="react"
-/>
+<RemoteCodeViewer route="examples/nodes/connection-limit" framework="react" />
 
 </ExampleLayout>

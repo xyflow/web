@@ -4,15 +4,15 @@ description: Tap two handles to connect them, and make handles bigger for smalle
 ---
 
 import { RemoteCodeViewer } from 'xy-shared';
-import ExampleLayout from '@/layouts/example-with-frontmatter';
+import { ExampleLayout } from 'xy-shared';
+
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['examples/interaction/touch-device']);
+
 
 <ExampleLayout>
 You can connect nodes on a touch device by tapping two handles in a row. In this example we increased the size of the handles so that they are better tappable. You can disable this behavoir by setting the [`connectOnClick` prop](/api-reference/react-flow#interaction) to `false`.
 
-<RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/interaction/touch-device/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/interaction/touch-device/index.html`}
-  framework="react"
-/>
+<RemoteCodeViewer route="examples/interaction/touch-device" framework="react" />
 
 </ExampleLayout>

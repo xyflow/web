@@ -4,14 +4,17 @@ description: Change the color of the background and nodes with the Styled Compon
 ---
 
 import { RemoteCodeViewer } from 'xy-shared';
-import ExampleLayout from '@/layouts/example-with-frontmatter';
+import { ExampleLayout } from 'xy-shared';
+
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['examples/styling/styled-components']);
+
 
 <ExampleLayout>
 In this example we are using [styled components](https://styled-components.com/) to show how to implement a dark and light mode.
 
 <RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/styling/styled-components/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/styling/styled-components/index.html`}
+  route="examples/styling/styled-components"
   framework="react"
 />
 

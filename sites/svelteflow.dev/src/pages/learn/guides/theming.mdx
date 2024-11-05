@@ -5,6 +5,11 @@ description: Svelte Flow comes with a minimal default theme. It's common to over
 
 import { Callout } from 'nextra/components';
 import { RemoteCodeViewer } from 'xy-shared';
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode([
+  'guides/theming/a',
+  'guides/theming/b',
+]);
 
 # Theming
 
@@ -19,8 +24,7 @@ import '@xyflow/svelte/dist/style.css';
 ```
 
 <RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/guides/theming/a/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/guides/theming/a/index.html`}
+  route="guides/theming/a"
   framework="svelte"
   editorHeight={500}
 />
@@ -33,8 +37,7 @@ import '@xyflow/svelte/dist/base.css';
 ```
 
 <RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/guides/theming/b/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/guides/theming/b/index.html`}
+  route="guides/theming/b"
   framework="svelte"
   editorHeight={500}
 />

@@ -8,6 +8,10 @@ description: Learn how to use React Flow with a state management library like Zu
 import { Callout, Tabs } from 'nextra/components';
 import { RemoteCodeViewer } from 'xy-shared';
 
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['learn/state-management', 'learn/state-management-2']);
+
+
 <Callout type="info">
   For this guide we assume that you already know about the [core
   concepts](/learn/concepts/core-concepts) of React Flow and how to implement
@@ -23,46 +27,15 @@ As you might have seen in the previous guides and examples, React Flow can easil
 
 As mentioned above we are using Zustand in this example. Zustand is a bit like Redux: you have a central store with actions to alter your state and hooks to access your state. You can install Zustand via:
 
-<Tabs items={['npm', 'pnpm', 'yarn', 'bun']}>
-<Tabs.Tab>
-
-```bash copy
+```bash copy npm2yarn
 npm install --save zustand
 ```
-
-  </Tabs.Tab>
-  <Tabs.Tab>
-
-```bash copy
-pnpm add zustand
-```
-
-  </Tabs.Tab>
-  <Tabs.Tab>
-
-```bash copy
-yarn add zustand
-```
-
-  </Tabs.Tab>
-  <Tabs.Tab>
-
-```bash copy
-bun add zustand
-```
-
-</Tabs.Tab>
-</Tabs>
 
 ## Create a Store
 
 Zustand lets you create a hook for accessing the values and functions of your store. We put the `nodes` and `edges` and the `onNodesChange`, `onEdgesChange`, `onConnect`, `setNodes` and `setEdges` functions in the store to get the basic interactivity for our graph:
 
-<RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/state-management/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/state-management/index.html`}
-  framework="react"
-/>
+<RemoteCodeViewer route="learn/state-management" framework="react" />
 
 That's the basic setup. We now have a store with nodes and edges that can handle the changes (dragging, selecting or removing a node or edge) triggered by React Flow. When you take a look at the `App.tsx` file, you can see that it's kept nice and clean. All the data and actions are now part of the store and can be accessed with the `useStore` hook.
 
@@ -109,8 +82,7 @@ In this step we implement the `ColorChooserNode` component and call the `updateN
 We add the `nodrag` class name so that the user doesn't drag the node by mistake when changing the color and call the `updateNodeColor` in the `onChange` event handler.
 
 <RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/state-management-2/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/state-management-2/index.html`}
+  route="learn/state-management-2"
   framework="react"
   activeFile="ColorChooserNode.tsx"
 />

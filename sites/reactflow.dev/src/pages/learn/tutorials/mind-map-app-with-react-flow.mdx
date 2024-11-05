@@ -10,9 +10,20 @@ image: /img/tutorials/mindmap/mindmap.png
 import { Callout, Tab, Tabs } from 'nextra/components';
 import { Bleed } from 'nextra-theme-docs';
 import { Emoji } from '@xyflow/xy-ui';
-import { RemoteCodeViewer } from 'xy-shared';
-
-import { TutorialLayout } from '@/layouts/tutorial-with-frontmatter';
+import { RemoteCodeViewer, TutorialLayout } from 'xy-shared';
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode([
+  'tutorials/mindmap/app',
+  'tutorials/mindmap/getting-started',
+  'tutorials/mindmap/store-nodes-edges',
+  'tutorials/mindmap/custom-nodes-edges',
+  'tutorials/mindmap/create-nodes',
+  'tutorials/mindmap/node-as-handle',
+  'tutorials/mindmap/node-as-handle-2',
+  'tutorials/mindmap/node-as-handle-3',
+  'tutorials/mindmap/node-as-handle-4',
+  'tutorials/mindmap/node-as-handle-4',
+]);
 
 <TutorialLayout>
 In this tutorial, you will learn to create a simple mind map tool with React Flow that can be used for brainstorming, organizing an idea, or mapping your thoughts in a visual way. To build this app, we'll be using state management, custom nodes and edges, and more.
@@ -23,8 +34,7 @@ Before we get our hands dirty, I want to show you the mindmapping tool we'll hav
 
 <Bleed>
   <RemoteCodeViewer
-    source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/mindmap/app/source.json`}
-    preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/mindmap/app/index.html`}
+    route="tutorials/mindmap/app"
     framework="react"
     showEditor={false}
   />
@@ -38,19 +48,19 @@ To do this tutorial you will need some knowledge of [React](https://reactjs.org/
 
 We'll be using [Vite](https://vitejs.dev/) to develop our app, but you can also use [Create React App](https://create-react-app.dev/) or any other tool you like. To scaffold a new React app with Vite you need to do:
 
-```bash
+```bash npm2yarn
 npm create vite@latest reactflow-mind-map -- --template react
 ```
 
 if you would like to use Typescript:
 
-```bash
+```bash npm2yarn
 npm create vite@latest reactflow-mind-map -- --template react-ts
 ```
 
 After the initial setup, you need to install some packages:
 
-```bash
+```bash npm2yarn
 npm install reactflow zustand classcat nanoid
 ```
 
@@ -122,8 +132,7 @@ We are adding all styles of our app to the `index.css` file (you could also use 
 
 <Bleed>
   <RemoteCodeViewer
-    source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/mindmap/getting-started/source.json`}
-    preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/mindmap/getting-started/index.html`}
+    route="tutorials/mindmap/getting-started"
     framework="react"
     showEditor={false}
   />
@@ -234,8 +243,7 @@ We access the nodes, edges and change handlers from the store and pass them to t
 
 <Bleed>
   <RemoteCodeViewer
-    source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/mindmap/store-nodes-edges/source.json`}
-    preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/mindmap/store-nodes-edges/index.html`}
+    route="tutorials/mindmap/store-nodes-edges"
     framework="react"
   />
 </Bleed>
@@ -328,8 +336,7 @@ const edgeTypes = {
 and then pass the newly created types to the React Flow component.
 
 <RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/mindmap/custom-nodes-edges/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/mindmap/custom-nodes-edges/index.html`}
+  route="tutorials/mindmap/custom-nodes-edges"
   framework="react"
 />
 
@@ -457,11 +464,7 @@ const getChildNodePosition = (event: MouseEvent, parentNode?: Node) => {
 This function returns the position of the new node we want to add to our store. We are using the [`project` function](/api-reference/types/react-flow-instance#project) to convert screen coordinates into React Flow coordinates. As mentioned earlier, child nodes are positioned relative to their parents. That's why we need to subtract the parent position from the child node position. That was a lot to take in, let's see it in action:
 
 <Bleed>
-  <RemoteCodeViewer
-    source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/mindmap/create-nodes/source.json`}
-    preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/mindmap/create-nodes/index.html`}
-    framework="react"
-  />
+  <RemoteCodeViewer route="tutorials/mindmap/create-nodes" framework="react" />
 </Bleed>
 
 To test the new functionality you can start a connection from a handle and then end it on the pane. You should see a new node being added to the mind map.
@@ -561,8 +564,7 @@ In order to make the whole node a handle, we also update the style of the source
 
 <Bleed>
   <RemoteCodeViewer
-    source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/mindmap/node-as-handle/source.json`}
-    preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/mindmap/node-as-handle/index.html`}
+    route="tutorials/mindmap/node-as-handle"
     framework="react"
   />
 </Bleed>
@@ -647,8 +649,7 @@ We add a wrapper div with the class name `inputWrapper` and a div with the class
 
 <Bleed>
   <RemoteCodeViewer
-    source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/mindmap/node-as-handle-2/source.json`}
-    preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/mindmap/node-as-handle-2/index.html`}
+    route="tutorials/mindmap/node-as-handle-2"
     framework="react"
   />
 </Bleed>
@@ -734,8 +735,7 @@ As you see we are focusing the input field if the user releases the mouse button
 
 <Bleed>
   <RemoteCodeViewer
-    source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/mindmap/node-as-handle-3/source.json`}
-    preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/mindmap/node-as-handle-3/index.html`}
+    route="tutorials/mindmap/node-as-handle-3"
     framework="react"
   />
 </Bleed>
@@ -770,8 +770,7 @@ useEffect(() => {
 
 <Bleed>
   <RemoteCodeViewer
-    source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/mindmap/node-as-handle-4/source.json`}
-    preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/mindmap/node-as-handle-4/index.html`}
+    route="tutorials/mindmap/node-as-handle-4"
     framework="react"
     activeFile="MindMapNode.tsx"
   />
@@ -824,8 +823,7 @@ Nicely done! <Emoji content="💯" /> You can find the final code here:
 
 <Bleed>
   <RemoteCodeViewer
-    source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/mindmap/node-as-handle-4/source.json`}
-    preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/mindmap/node-as-handle-4/index.html`}
+    route="tutorials/mindmap/node-as-handle-4"
     framework="react"
     activeFile="MindMapNode.tsx"
   />

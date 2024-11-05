@@ -2,16 +2,20 @@
 title: Drag Handle
 ---
 
-import ExampleLayout from '@/layouts/example-with-frontmatter';
+import { ExampleLayout } from 'xy-shared';
 import { RemoteCodeViewer } from 'xy-shared';
 import UnusedPropWarning from '@/components/unused-prop-warning';
+
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['examples/nodes/drag-handle']);
+
 
 <ExampleLayout>
 You can restrict dragging to a specific part of node, by specifiying a class that will act as a [`dragHandle`](/api-reference/types/node).
 
 <RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/examples/nodes/drag-handle/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/examples/nodes/drag-handle/index.html`}
+  route="examples/nodes/drag-handle"
+  
   framework="svelte"
 />
 </ExampleLayout>

@@ -1040,6 +1040,11 @@
     "permanent": true
   },
   {
+    "source": "/learn/concepts/plugin-components",
+    "destination": "/learn/concepts/built-in-components",
+    "permanent": true
+  },
+  {
     "source": "/examples/nodes/resize-rotate",
     "destination": "/examples/nodes/rotatable-node",
     "permanent": true

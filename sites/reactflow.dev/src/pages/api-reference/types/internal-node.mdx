@@ -7,7 +7,7 @@ description:
 
 import { Callout } from 'nextra/components';
 import { PropsTable } from '@/components/props-table';
-import { internalNodeFields } from '@/page-data/reference/types/InternalNode.fields.ts';
+import { internalNodeFields } from '@/references/types/InternalNode.fields.ts';
 
 # InternalNode
 
@@ -18,19 +18,20 @@ type but is extended with some additional properties used internall by React
 Flow. Some functions and callbacks that return nodes may return an `InternalNode`.
 
 ```ts
-export type InternalNodeBase<NodeType extends NodeBase = NodeBase> = NodeType & {
-  measured: {
-    width?: number;
-    height?: number;
+export type InternalNodeBase<NodeType extends NodeBase = NodeBase> =
+  NodeType & {
+    measured: {
+      width?: number;
+      height?: number;
+    };
+    internals: {
+      positionAbsolute: XYPosition;
+      z: number;
+      userNode: NodeType;
+      handleBounds?: NodeHandleBounds;
+      bounds?: NodeBounds;
+    };
   };
-  internals: {
-    positionAbsolute: XYPosition;
-    z: number;
-    userNode: NodeType;
-    handleBounds?: NodeHandleBounds;
-    bounds?: NodeBounds;
-  };
-};
 ```
 
 ## Fields

@@ -5,6 +5,11 @@ description: React Flow comes with a minimal default theme. It's common to overw
 
 import { Callout } from 'nextra/components';
 import { RemoteCodeViewer } from 'xy-shared';
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode([
+  'examples/styling/default-style',
+  'examples/styling/base-style',
+]);
 
 # Theming
 
@@ -21,8 +26,7 @@ edges. You can see what they look like below:
 
 <RemoteCodeViewer
   showEditor={false}
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/styling/default-style/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/styling/default-style/index.html`}
+  route="examples/styling/default-style"
   framework="react"
 />
 
@@ -210,8 +214,7 @@ import '@xyflow/react/dist/base.css';
 
 <RemoteCodeViewer
   showEditor={false}
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/styling/base-style/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/styling/base-style/index.html`}
+  route="examples/styling/base-style"
   framework="react"
 />
 

@@ -9,6 +9,10 @@ date: '2023-11-02'
 
 import { RemoteCodeViewer } from 'xy-shared';
 
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['examples/interaction/prevent-cycles']);
+
+
 # New "prevent connection cycles" example!
 
 The "Prevent connection cycles" example shows how to use the
@@ -16,12 +20,7 @@ The "Prevent connection cycles" example shows how to use the
 connection would cause a cycle in the flow. Check it out [here](/examples/interaction/prevent-cycles).
 
 <RemoteCodeViewer
-  source={`${
-    process?.env?.NEXT_PUBLIC_EXAMPLES_URL ?? exampleUrl
-  }/react/examples/interaction/prevent-cycles/source.json`}
-  preview={`${
-    process?.env?.NEXT_PUBLIC_EXAMPLES_URL ?? exampleUrl
-  }/react/examples/interaction/prevent-cycles/index.html`}
+  route="examples/interaction/prevent-cycles"
   framework="react"
   showEditor={false}
 />

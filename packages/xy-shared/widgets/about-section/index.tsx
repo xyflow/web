@@ -16,7 +16,7 @@ function AboutSection({ imageSrc, colorizeImage = true }: AboutSectionProps) {
         A project by the xyflow team
       </Heading>
       <Text className="text-center max-w-xl mx-auto mb-6" variant="light">
-        We are Christopher, Hayleigh, Peter and Moritz. We are the maintainers
+        We are Christopher, Hayleigh, Peter, Abbey and Moritz. We are the maintainers
         of React Flow, Svelte Flow, and the communities around them
       </Text>
 

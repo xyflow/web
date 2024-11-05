@@ -4,15 +4,15 @@ description: Instead of having the handle at a fixed point, let it move with the
 ---
 
 import { RemoteCodeViewer } from 'xy-shared';
-import ExampleLayout from '@/layouts/example-with-frontmatter';
+import { ExampleLayout } from 'xy-shared';
+
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['examples/edges/floating-edges']);
+
 
 <ExampleLayout>
 This is an example implementation for floating edges. The source and target position of the edges are getting calculated dynamically. You can find the implementation details in the utils.js file.
 
-<RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/edges/floating-edges/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/edges/floating-edges/index.html`}
-  framework="react"
-/>
+<RemoteCodeViewer route="examples/edges/floating-edges" framework="react" />
 
 </ExampleLayout>

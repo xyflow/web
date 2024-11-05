@@ -1,34 +1,81 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalDotEnv": [".env"],
+  "ui": "tui",
   "globalEnv": [
     "NODE_ENV",
-    "NEXT_PUBLIC_*",
+    "NEXT_PUBLIC_\\*",
     "GITHUB_API_URL",
     "NPM_SVELTE_FLOW",
     "NPM_REACT_FLOW",
     "NPM_REACT_FLOW_LEGACY",
+    "NPM_XYFLOW_REACT",
+    "NPM_SVELTE_FLOW_VERSION",
     "SVELTE_FLOW_VERSION",
     "REACT_FLOW_VERSION"
   ],
-  "pipeline": {
+  "globalDependencies": [".env"],
+  "tasks": {
     "build": {
       "dependsOn": ["^build"],
       "outputs": [
         ".next/**",
         "!.next/cache/**",
         ".svelte-kit/**",
-        ".vercel/**"
+        ".vercel/**",
+        "public/**"
       ],
-      "dotEnv": [
+      "inputs": [
+        "$TURBO_DEFAULT$",
         ".env.production.local",
         ".env.local",
         ".env.production",
         ".env"
       ]
     },
+    "reactflow-website#build": {
+      "dependsOn": [
+        "^build",
+        "^ui-components#generate-registry",
+        "^example-apps#build"
+      ],
+      "outputs": [".next/**", "!.next/cache/**"],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        ".env.production.local",
+        ".env.local",
+        ".env.production",
+        ".env"
+      ]
+    },
+    "svelteflow-website#build": {
+      "dependsOn": ["^build", "^example-apps#build"],
+      "outputs": [".next/**", "!.next/cache/**"],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        ".env.production.local",
+        ".env.local",
+        ".env.production",
+        ".env"
+      ]
+    },
+    "xyflow-website#build": {
+      "dependsOn": ["^build", "^example-apps#build"],
+      "outputs": [".next/**", "!.next/cache/**"],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        ".env.production.local",
+        ".env.local",
+        ".env.production",
+        ".env"
+      ]
+    },
+    "ui-components#generate-registry": {
+      "outputs": ["public/**"],
+      "inputs": ["$TURBO_DEFAULT$"]
+    },
     "lint": {
-      "dotEnv": [
+      "inputs": [
+        "$TURBO_DEFAULT$",
         ".env.development.local",
         ".env.local",
         ".env.development",
@@ -38,7 +85,8 @@
     "dev": {
       "cache": false,
       "persistent": true,
-      "dotEnv": [
+      "inputs": [
+        "$TURBO_DEFAULT$",
         ".env.development.local",
         ".env.local",
         ".env.development",
@@ -46,7 +94,7 @@
       ]
     },
     "test": {
-      "dotEnv": [".env.test.local", ".env.test", ".env"]
+      "inputs": ["$TURBO_DEFAULT$", ".env.test.local", ".env.test", ".env"]
     }
   }
 }

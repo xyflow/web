@@ -12,12 +12,14 @@ function Search() {
   }
 
   return (
-    <DocSearch
-      appId={appId}
-      apiKey={apiKey}
-      indexName={indexName}
-      placeholder={undefined}
-    />
+    <div className="ml-auto">
+      <DocSearch
+        appId={appId}
+        apiKey={apiKey}
+        indexName={indexName}
+        placeholder={undefined}
+      />
+    </div>
   );
 }
 

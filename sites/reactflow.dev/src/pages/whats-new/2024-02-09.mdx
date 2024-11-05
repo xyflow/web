@@ -11,6 +11,11 @@ date: '2024-02-09'
 
 import { RemoteCodeViewer } from 'xy-shared';
 
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode([
+  'examples/edges/multi-connection-line',
+]);
+
 # New multi-connection line example!
 
 Quite a while back, a user opened a [GitHub issue](https://github.com/xyflow/web/issues/315)
@@ -20,12 +25,7 @@ helps folks who need this functionality in their own apps. Check it out
 [here](/examples/edges/multi-connection-line).
 
 <RemoteCodeViewer
-  source={`${
-    process?.env?.NEXT_PUBLIC_EXAMPLES_URL ?? exampleUrl
-  }/react/examples/edges/multi-connection-line/source.json`}
-  preview={`${
-    process?.env?.NEXT_PUBLIC_EXAMPLES_URL ?? exampleUrl
-  }/react/examples/edges/multi-connection-line/index.html`}
+  route="examples/edges/multi-connection-line"
   framework="react"
   showEditor={false}
 />
