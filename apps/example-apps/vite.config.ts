@@ -31,13 +31,6 @@ export default defineConfig({
       },
     },
   },
-  css: {
-    preprocessorOptions: {
-      css: {
-        order: 'prepend', // Ensures Vite processes CSS in a consistent order
-      },
-    },
-  },
 });
 
 //
