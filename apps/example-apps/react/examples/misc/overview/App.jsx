@@ -10,8 +10,8 @@ import {
 } from '@xyflow/react';
 
 
-import '@xyflow/react/dist/style.css?v=1.2.3';
-import './index.css?v=1.2.4';
+import '@xyflow/react/dist/style.css';
+import './index.css';
 
 
 import {
