@@ -1,4 +1,4 @@
-import { getMdxPagesUnderRoute } from '../index';
+import { getMdxPagesUnderRoute } from 'xy-shared';
 import { type InternalRoute } from '../routes';
 
 export type Category = 'components' | 'hooks' | 'types';

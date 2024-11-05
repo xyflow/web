@@ -11,6 +11,10 @@ date: '2024-07-22'
 
 import { RemoteCodeViewer } from 'xy-shared';
 
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['tutorials/presentation/app']);
+
+
 # New tutorial – Create a slide show presentation with React Flow
 
 We recently published the findings from our React Flow 2023 end-of-year survey
@@ -19,12 +23,7 @@ using React Flow itself. There were lots of useful bits built into this slidesho
 app, so we wanted to share how we built it!
 
 <RemoteCodeViewer
-  source={`${
-    process?.env?.NEXT_PUBLIC_EXAMPLES_URL ?? exampleUrl
-  }/react/tutorials/presentation/app/source.json`}
-  preview={`${
-    process?.env?.NEXT_PUBLIC_EXAMPLES_URL ?? exampleUrl
-  }/react/tutorials/presentation/app/index.html`}
+  route="tutorials/presentation/app"
   framework="react"
   showEditor={false}
 />

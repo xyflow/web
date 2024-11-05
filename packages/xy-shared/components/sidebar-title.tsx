@@ -1,5 +1,5 @@
 import { cn } from '@xyflow/xy-ui';
-import { getFrontmatterTag } from '../lib/utils';
+import { getFrontmatterTag } from '../lib';
 
 const NUM_DAYS_NEW = 30;
 const DAYS_IN_MS = 1000 * 3600 * 24;

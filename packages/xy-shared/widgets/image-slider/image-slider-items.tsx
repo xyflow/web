@@ -90,7 +90,7 @@ export default function ImageSliderItems({
         ))}
       </div>
 
-      <TabsList className="flex justify-around gap-8 mt-8 bg-transparent">
+      <TabsList className="flex justify-around gap-8 mt-8 bg-transparent border-none">
         {items.map((item, index) => (
           <ImageSliderItem
             key={index}

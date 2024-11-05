@@ -4,15 +4,15 @@ description: Make your edges into arrows, add custom icons, or SVGs
 ---
 
 import { RemoteCodeViewer } from 'xy-shared';
-import ExampleLayout from '@/layouts/example-with-frontmatter';
+import { ExampleLayout } from 'xy-shared';
+
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['examples/edges/markers']);
+
 
 <ExampleLayout>
 React Flow has built-in support for different marker types for your edges. It's possible to add your own [SVG markers](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/marker), too.
 
-<RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/edges/markers/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/edges/markers/index.html`}
-  framework="react"
-/>
+<RemoteCodeViewer route="examples/edges/markers" framework="react" />
 
 </ExampleLayout>

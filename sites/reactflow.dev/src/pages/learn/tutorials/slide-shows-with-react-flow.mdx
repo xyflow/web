@@ -12,9 +12,19 @@ image: /img/tutorials/presentation/slideshow-thumb.png
 
 import { Cards, Callout } from 'nextra/components';
 import { Bleed } from 'nextra-theme-docs';
-import { Image, RemoteCodeViewer } from 'xy-shared';
+import { Image, RemoteCodeViewer, TutorialLayout } from 'xy-shared';
 import { Emoji } from '@xyflow/xy-ui';
-import { TutorialLayout } from '@/layouts/tutorial-with-frontmatter';
+
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode([
+  'tutorials/presentation/app',
+  'tutorials/presentation/scaffold',
+  'tutorials/presentation/rendering-markdown',
+  'tutorials/presentation/layout-demo',
+  'tutorials/presentation/focus-on-click',
+  'tutorials/presentation/slide-controls',
+  'tutorials/presentation/app',
+]);
 
 <TutorialLayout>
 We recently published the findings from our React Flow 2023 end-of-year survey with an [interactive presentation](/developer-survey-2023) of the key findings, using React Flow itself. There were lots of useful bits built into this slideshow app, so we wanted to share how we built it!
@@ -41,8 +51,7 @@ Once you're done, the app will look like this!
 
 <Bleed>
   <RemoteCodeViewer
-    source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/presentation/app/source.json`}
-    preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/presentation/app/index.html`}
+    route="tutorials/presentation/app"
     framework="react"
     showEditor={false}
   />
@@ -65,7 +74,7 @@ We like to recommend using [Vite](https://vitejs.dev) when starting new React Fl
 projects, and this time we'll use TypeScript too. You can scaffold a new project
 with the following command:
 
-```bash
+```bash npm2yarn
 npm create vite@latest -- --template react-ts
 ```
 
@@ -97,7 +106,7 @@ templates:
 Besides React Flow we only need to pull in one dependency, [`react-remark`](https://www.npmjs.com/package/react-remark),
 to help us render markdown in our slides.
 
-```bash
+```bash npm2yarn
 npm install reactflow react-remark
 ```
 
@@ -204,8 +213,7 @@ With the basics put together, you can start the development server by running
 
 <Bleed>
   <RemoteCodeViewer
-    source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/presentation/scaffold/source.json`}
-    preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/presentation/scaffold/index.html`}
+    route="tutorials/presentation/scaffold"
     showEditor={false}
     framework="react"
   />
@@ -302,8 +310,7 @@ out and see multiple slides at once.
 
 <Bleed>
   <RemoteCodeViewer
-    source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/presentation/rendering-markdown/source.json`}
-    preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/presentation/rendering-markdown/index.html`}
+    route="tutorials/presentation/rendering-markdown"
     showEditor={false}
     framework="react"
   />
@@ -442,8 +449,7 @@ try extending 4's data to include `down: '5'` and see how the layout updates.
 
 <Bleed>
   <RemoteCodeViewer
-    source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/presentation/layout-demo/source.json`}
-    preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/presentation/layout-demo/index.html`}
+    route="tutorials/presentation/layout-demo"
     framework="react"
   />
 </Bleed>
@@ -581,8 +587,7 @@ that was clicked.
 
 <Bleed>
   <RemoteCodeViewer
-    source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/presentation/focus-on-click/source.json`}
-    preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/presentation/focus-on-click/index.html`}
+    route="tutorials/presentation/focus-on-click"
     framework="react"
     showEditor={false}
   />
@@ -671,8 +676,7 @@ export function Slide({ data }: NodeProps<SlideNide>) {
 
 <Bleed>
   <RemoteCodeViewer
-    source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/presentation/slide-controls/source.json`}
-    preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/presentation/slide-controls/index.html`}
+    route="tutorials/presentation/slide-controls"
     framework="react"
   />
 </Bleed>
@@ -784,8 +788,7 @@ what we've learned.
 
 <Bleed>
   <RemoteCodeViewer
-    source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/presentation/app/source.json`}
-    preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/tutorials/presentation/app/index.html`}
+    route="tutorials/presentation/app"
     framework="react"
     showEditor={false}
   />

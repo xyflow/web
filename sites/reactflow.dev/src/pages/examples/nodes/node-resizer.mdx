@@ -6,15 +6,15 @@ description: Change the size of a node with a bounding box or draggable icon
 
 import { Callout } from 'nextra/components';
 import { RemoteCodeViewer } from 'xy-shared';
-import ExampleLayout from '@/layouts/example-with-frontmatter';
+import { ExampleLayout } from 'xy-shared';
+
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['examples/nodes/node-resizer']);
+
 
 <ExampleLayout>
 The [`<NodeResizer />`](/api-reference/components/node-resizer) component can be used to add a resize UI for a custom node. The `reactflow` package also exports a `<NodeResizeControl />` component for implementing a custom resizing UI as shown in this example.
 
-<RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/nodes/node-resizer/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/nodes/node-resizer/index.html`}
-  framework="react"
-/>
+<RemoteCodeViewer route="examples/nodes/node-resizer" framework="react" />
 
 </ExampleLayout>

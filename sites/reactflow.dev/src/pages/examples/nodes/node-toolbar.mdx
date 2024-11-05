@@ -5,7 +5,11 @@ description: A toolbar with buttons appears next to the selected node
 
 import { Callout } from 'nextra/components';
 import { RemoteCodeViewer } from 'xy-shared';
-import ExampleLayout from '@/layouts/example-with-frontmatter';
+import { ExampleLayout } from 'xy-shared';
+
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['examples/nodes/node-toolbar']);
+
 
 <ExampleLayout>
 For many types of applications, having a toolbar or set of controls appear when
@@ -18,11 +22,7 @@ it easy to add this functionality to your custom nodes!
   means it should always be visible.
 </Callout>
 
-<RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/nodes/node-toolbar/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/nodes/node-toolbar/index.html`}
-  framework="react"
-/>
+<RemoteCodeViewer route="examples/nodes/node-toolbar" framework="react" />
 
 For more information on the `<NodeToolbar />` component and its props, check out
 the [API reference](/api-reference/components/node-toolbar).

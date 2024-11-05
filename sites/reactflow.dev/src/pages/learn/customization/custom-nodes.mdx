@@ -70,11 +70,11 @@ After putting all together and adding some basic styles we get a custom node tha
 
 import { RemoteCodeViewer } from 'xy-shared';
 
-<RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/custom-node/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/custom-node/index.html`}
-  framework="react"
-/>
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['learn/custom-node', 'learn/custom-node-2']);
+
+
+<RemoteCodeViewer route="learn/custom-node" framework="react" />
 
 ## Using Multiple Handles
 
@@ -89,14 +89,12 @@ const initialEdges = [
 
 In this case the source node is `node-1` for both handles but the handle ids are different. One comes from handle id `"a"` and the other one from `"b"`. Both edges also have different target nodes:
 
-<RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/custom-node-2/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/custom-node-2/index.html`}
-  framework="react"
-/>
+<RemoteCodeViewer route="learn/custom-node-2" framework="react" />
 Note that if you are programmatically changing the position or number of handles
-in your custom node, you will need to use the [`useUpdateNodeInternals`](/api-reference/hooks/use-update-node-internals)
-hook to properly notify ReactFlow of changes. From here you should be able to build
-your custom nodes. In most cases we recommend to use custom nodes only. The built-in
-ones are just basic examples. You can find a list of the passed props and more information
-in the [custom node API section](/api-reference/types/node-props).
+in your custom node, you will need to use the
+[`useUpdateNodeInternals`](/api-reference/hooks/use-update-node-internals) hook
+to properly notify ReactFlow of changes. From here you should be able to build
+your custom nodes. In most cases we recommend to use custom nodes only. The
+built-in ones are just basic examples. You can find a list of the passed props
+and more information in the [custom node API
+section](/api-reference/types/node-props).

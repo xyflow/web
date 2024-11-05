@@ -3,16 +3,15 @@ title: Subflows
 description: You can create nested flows - known as subflows - with Svelte Flow. Here you can see how to implement them.
 ---
 
-import ExampleLayout from '@/layouts/example-with-frontmatter';
-import { RemoteCodeViewer } from 'xy-shared';
+import { RemoteCodeViewer, ExampleLayout } from 'xy-shared';
+
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['examples/layout/subflows']);
+
 
 <ExampleLayout>
 Svelte Flow supports rendering nested graphs and grouping of nodes. You can configure the behaviour of the child nodes using `extent: parent` and render group elements without handles by passing `type: group` to the node configuration. See [Sub Flows](/learn/guides/sub-flows) for more information.
 
-<RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/examples/layout/subflows/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/examples/layout/subflows/index.html`}
-  framework="svelte"
-/>
+<RemoteCodeViewer route="examples/layout/subflows" framework="svelte" />
 
 </ExampleLayout>

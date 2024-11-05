@@ -1,0 +1,16 @@
+{
+  "name": "devtools",
+  "type": "registry:component",
+  "dependencies": ["@xyflow/react"],
+  "devDependencies": [],
+  "registryDependencies": ["toggle-group"],
+  "files": [
+    {
+      "type": "registry:component",
+      "path": "devtools.tsx"
+    }
+  ],
+  "tailwind": {},
+  "cssVars": {},
+  "meta": {}
+}

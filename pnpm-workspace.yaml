@@ -3,3 +3,4 @@ packages:
   - 'sites/*'
   - 'packages/*'
   - 'scripts/*'
+  - 'configs/*'

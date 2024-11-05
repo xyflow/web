@@ -1,11 +1,17 @@
+import { fetchJSON } from 'xy-shared';
+
 export default async function getStaticProps() {
   const { stargazers_count: stars = 0 } = await fetchJSON(
     process.env.GITHUB_API_URL,
   );
   const { downloads = 0 } = await fetchJSON(process.env.NPM_SVELTE_FLOW);
 
-  if (!downloads || !stars) {
-    console.log('could not fetch downloads and stars. please try again.');
+  const { version } = await fetchJSON(process.env.NPM_SVELTE_FLOW_VERSION);
+
+  if (!downloads || !stars || !version) {
+    console.log(
+      'could not fetch downloads, stars or version. please try again.',
+    );
   }
 
   return {
@@ -13,22 +19,9 @@ export default async function getStaticProps() {
       ssg: {
         stars,
         downloads,
+        version,
       },
     },
     revalidate: 60 * 60,
   };
-}
-
-// @todo use generic for the return type here?
-async function fetchJSON(url: string): Promise<Record<string, any>> {
-  let json = {};
-
-  try {
-    const resp = await fetch(url, { headers: { 'User-Agent': 'webkid' } });
-    json = await resp.json();
-  } catch (err) {
-    console.log(err);
-  }
-
-  return json;
 }

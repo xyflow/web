@@ -1,0 +1,16 @@
+{
+  "name": "zoom-slider",
+  "type": "registry:component",
+  "dependencies": ["@xyflow/react", "lucide-react"],
+  "devDependencies": [],
+  "registryDependencies": ["button", "slider"],
+  "files": [
+    {
+      "type": "registry:component",
+      "path": "zoom-slider.tsx"
+    }
+  ],
+  "tailwind": {},
+  "cssVars": {},
+  "meta": {}
+}

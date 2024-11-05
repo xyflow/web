@@ -1,0 +1,16 @@
+{
+  "name": "annotation-node",
+  "type": "registry:component",
+  "dependencies": ["@xyflow/react"],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "type": "registry:component",
+      "path": "annotation-node.tsx"
+    }
+  ],
+  "tailwind": {},
+  "cssVars": {},
+  "meta": {}
+}

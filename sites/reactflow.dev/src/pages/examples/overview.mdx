@@ -4,15 +4,15 @@ description: The most used features of React Flow - controls, MiniMap, node type
 ---
 
 import { RemoteCodeViewer } from 'xy-shared';
-import ExampleLayout from '@/layouts/example-with-frontmatter';
+import { ExampleLayout } from 'xy-shared';
+
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['examples/misc/overview']);
+
 
 <ExampleLayout>
 This is an overview example of what's possible with React Flow. Below you can see features like: built-in node and edge types, [sub flows](/learn/layouting/sub-flows), [`NodeToolbar`](/api-reference/components/node-toolbar), [`NodeResizer`](/api-reference/components/node-resizer) components. On the bottom you see the [Controls](/api-reference/components/controls) and the [MiniMap](/api-reference/components/minimap) components.
 
-<RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/misc/overview/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/misc/overview/index.html`}
-  framework="react"
-/>
+<RemoteCodeViewer route="examples/misc/overview" framework="react" />
 
 </ExampleLayout>

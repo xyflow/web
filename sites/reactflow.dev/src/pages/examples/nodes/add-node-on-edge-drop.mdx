@@ -4,14 +4,18 @@ description: A new node appears wherever you drop the connection line
 ---
 
 import { RemoteCodeViewer } from 'xy-shared';
-import ExampleLayout from '@/layouts/example-with-frontmatter';
+import { ExampleLayout } from 'xy-shared';
+
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['examples/nodes/add-node-on-edge-drop']);
+
 
 <ExampleLayout>
 You can create a new node when you drop the connection line on the pane by using the `onConnectStart` and `onConnectEnd` handlers.
 
 <RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/nodes/add-node-on-edge-drop/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/nodes/add-node-on-edge-drop/index.html`}
+  route="examples/nodes/add-node-on-edge-drop"
+  
   framework="react"
 />
 </ExampleLayout>

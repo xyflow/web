@@ -4,15 +4,15 @@ description: Automatically create edges when nodes get close to each other
 ---
 
 import { RemoteCodeViewer } from 'xy-shared';
-import ExampleLayout from '@/layouts/example-with-frontmatter';
+import { ExampleLayout } from 'xy-shared';
+
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['examples/nodes/proximity-connect']);
+
 
 <ExampleLayout>
 This example shows how to automatically create edges when a node is dropped in close proximity to another one. While dragging, a dotted connection line is displayed to show which edge will be created if you drop the node.
 
-<RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/nodes/proximity-connect/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/nodes/proximity-connect/index.html`}
-  framework="react"
-/>
+<RemoteCodeViewer route="examples/nodes/proximity-connect" framework="react" />
 
 </ExampleLayout>

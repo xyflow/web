@@ -4,18 +4,18 @@ description: This example shows how you can use Svelte Flow in combination with 
 ---
 
 import { RemoteCodeViewer } from 'xy-shared';
-import ExampleLayout from '@/layouts/example-with-frontmatter';
+import { ExampleLayout } from 'xy-shared';
 import UnusedPropWarning from '@/components/unused-prop-warning';
+
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['examples/misc/threlte-flow']);
+
 
 <ExampleLayout>
 You may have noticed that the hero flow on our [our homepage](/) is actually written in React 🙈.
 For all the non-believers, here it is written in Svelte with help from the [amazing Threlte library](https://threlte.xyz/).
 
-<RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/examples/misc/threlte-flow/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/examples/misc/threlte-flow/index.html`}
-  framework="svelte"
-/>
+<RemoteCodeViewer route="examples/misc/threlte-flow" framework="svelte" />
 
 </ExampleLayout>
 

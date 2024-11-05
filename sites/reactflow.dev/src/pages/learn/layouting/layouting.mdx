@@ -8,6 +8,10 @@ description: React Flow doesn't include any layouting algorithms out of the box.
 import { Callout } from 'nextra/components';
 import { RemoteCodeViewer } from 'xy-shared';
 
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['learn/layouting-flow-1-empty', 'learn/layouting-flow-2-dagre', 'learn/layouting-flow-3-d3-hierarchy', 'learn/layouting-flow-4-d3-force', 'learn/layouting-flow-6-elkjs']);
+
+
 We regularly get asked how to handle layouting in React Flow. While we could build
 some basic layouting into React Flow, we believe that **you know your app's
 requirements best** and with so many options out there we think it's better you
@@ -21,11 +25,7 @@ and resources for routing edges.
 To start let's put together a simple example flow that we can use as a base for
 testing out the different layouting options.
 
-<RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/layouting-flow-1-empty/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/layouting-flow-1-empty/index.html`}
-  framework="react"
-/>
+<RemoteCodeViewer route="learn/layouting-flow-1-empty" framework="react" />
 
 Each of the examples that follow will be built on this empty flow. Where possible
 we've tried to keep the examples confined to just one `index.js` file so it's easy
@@ -63,11 +63,7 @@ Dagre is a simple library for layouting directed graphs. It has minimal configur
 options and a focus on speed over choosing the most optimal layout. If you need
 to organise your flows into a tree, _we highly recommend dagre_.
 
-<RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/layouting-flow-2-dagre/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/layouting-flow-2-dagre/index.html`}
-  framework="react"
-/>
+<RemoteCodeViewer route="learn/layouting-flow-2-dagre" framework="react" />
 
 With no effort at all we get a well-organised tree layout! Whenever
 `getLayoutedElements` is called, we'll reset the dagre graph and set the graph's
@@ -94,8 +90,7 @@ a simple tree just fine, it also has layouting algorithms for tree maps, partiti
 layouts, and enclosure diagrams.
 
 <RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/layouting-flow-3-d3-hierarchy/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/layouting-flow-3-d3-hierarchy/index.html`}
+  route="learn/layouting-flow-3-d3-hierarchy"
   framework="react"
 />
 
@@ -121,11 +116,7 @@ so we need a way to keep computing the layout across multiple renders.
 
 First, let's see what it does:
 
-<RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/layouting-flow-4-d3-force/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/layouting-flow-4-d3-force/index.html`}
-  framework="react"
-/>
+<RemoteCodeViewer route="learn/layouting-flow-4-d3-force" framework="react" />
 
 We've changed our `getLayoutedElements` to a hook called `useLayoutedElements`
 instead. Additonally, instead of passing in the nodes and edges explicitly, we'll
@@ -140,10 +131,10 @@ of d3-force [here](https://d3js.org/d3-force).
 
 <Callout>
   <strong>Rectangular collisions</strong>
-  D3-Force has a built-in collision force, but it assumes nodes are circles. We've
-  thrown together a custom force in `collision.js` that uses a similar algorithm
-  but accounts for our rectangular nodes instead. Feel free to steal it or let us
-  know if you have any suggestions for improvements!
+  D3-Force has a built-in collision force, but it assumes nodes are circles.
+  We've thrown together a custom force in `collision.js` that uses a similar
+  algorithm but accounts for our rectangular nodes instead. Feel free to steal
+  it or let us know if you have any suggestions for improvements!
 </Callout>
 
 The tick function progresses the simulation by one step and then updates React
@@ -167,11 +158,7 @@ Elkjs is certainly the most configurable option available, but it's also the mos
 complicated. Elkjs is a Java library that's been ported to JavaScript, and it
 provides a huge number of options for configuring the layout of your graph.
 
-<RemoteCodeViewer
-  source={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/layouting-flow-6-elkjs/source.json`}
-  preview={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/learn/layouting-flow-6-elkjs/index.html`}
-  framework="react"
-/>
+<RemoteCodeViewer route="learn/layouting-flow-6-elkjs" framework="react" />
 
 At it's most basic we can compute layouts similar to dagre, but because the layouting
 algorithm runs asynchronously we need to create a `useLayoutedElements` hook similar
@@ -179,10 +166,10 @@ to the one we created for d3-force.
 
 <Callout>
   <strong>The ELK reference is your new best friend</strong>
-  We don't often recommend elkjs because it's complexity makes it difficult for us
-  to support folks when they need it. If you do decide to use it, you'll want to
-  keep the original [Java API reference](https://eclipse.dev/elk/reference.html)
-  handy.
+  We don't often recommend elkjs because it's complexity makes it difficult for
+  us to support folks when they need it. If you do decide to use it, you'll want
+  to keep the original [Java API
+  reference](https://eclipse.dev/elk/reference.html) handy.
 </Callout>
 
 We've also included a few examples of some of the other layouting algorithms
