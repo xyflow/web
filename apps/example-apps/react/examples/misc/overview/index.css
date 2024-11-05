@@ -19,6 +19,10 @@
   --xy-edge-label-color-default: #505050;
 }
 
+.test-class {
+  border: 1px solid red;
+}
+
 html,
 body {
   margin: 0;
