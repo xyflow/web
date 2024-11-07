@@ -44,15 +44,15 @@ export default {
     titleComponent: SidebarTitle,
   },
   banner: {
-    // key: 'react-flow-12',
-    // text: (
-    //   <Link
-    //     className="flex justify-center items-center max-w-xs mx-auto hover:underline"
-    //     href="/learn/troubleshooting/migrate-to-v12"
-    //   >
-    //     🔥 React Flow 12 is here! SSR, dark mode, computing flows, and
-    //   </Link>
-    // ),
+    key: 'components',
+    content: (
+      <Link
+        className="flex justify-center items-center max-w-xs mx-auto hover:underline"
+        href="/components"
+      >
+        🔥 We just released React Flow Components powered by shadcn CLI
+      </Link>
+    ),
   },
   navbar: {
     component: (props) => {

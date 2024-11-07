@@ -34,26 +34,26 @@ export default {
     forcedTheme: 'light',
     defaultTheme: 'light',
   },
-  banner: {
-    key: 'whats-new',
-    text: (
-      <Link
-        className="flex justify-center items-center max-w-xs mx-auto hover:underline"
-        href="/whats-new"
-      >
-        <Image
-          alt=""
-          width={15}
-          height={25}
-          src="/img/svelte-logo.svg"
-          className="mr-2"
-        />
-        <span>
-          Svelte Flow is still alpha! Check out the latest changes here.
-        </span>
-      </Link>
-    ),
-  },
+  // banner: {
+  //   key: 'whats-new',
+  //   content: (
+  //     <Link
+  //       className="flex justify-center items-center max-w-xs mx-auto hover:underline"
+  //       href="/whats-new"
+  //     >
+  //       <Image
+  //         alt=""
+  //         width={15}
+  //         height={25}
+  //         src="/img/svelte-logo.svg"
+  //         className="mr-2"
+  //       />
+  //       <span>
+  //         Svelte Flow is still alpha! Check out the latest changes here.
+  //       </span>
+  //     </Link>
+  //   ),
+  // },
   sidebar: {
     toggleButton: false,
   },

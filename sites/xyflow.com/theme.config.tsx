@@ -80,7 +80,7 @@ export default {
   },
   banner: {
     // key: 'react-flow12',
-    // text: (
+    // content: (
     //   <Link
     //     className="flex justify-center items-center max-w-xs mx-auto hover:underline"
     //     href="https://reactflow.dev/learn/troubleshooting/migrate-to-v12"
