@@ -58,7 +58,7 @@ export default function ExamplesOverviewPage({
       <Section className="!px-0">
         <Link href="/examples/overview" className="hover:no-underline group">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-            <Container className="col-span-2 aspect-video">
+            <Container className="col-span-2 aspect-video p-0">
               <Image
                 src={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/misc/overview/preview.jpg`}
                 width={1024}
