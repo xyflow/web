@@ -1,5 +1,6 @@
 import React, { useCallback, useRef } from 'react';
 import {
+  Background,
   ReactFlow,
   useNodesState,
   useEdgesState,
@@ -7,9 +8,6 @@ import {
   useReactFlow,
   ReactFlowProvider,
 } from '@xyflow/react';
-import '@xyflow/react/dist/style.css';
-
-import './index.css';
 
 const initialNodes = [
   {
@@ -65,6 +63,7 @@ const AddNodeOnEdgeDrop = () => {
   return (
     <div className="wrapper" ref={reactFlowWrapper}>
       <ReactFlow
+        style={{ backgroundColor: "#F7F9FB" }}
         nodes={nodes}
         edges={edges}
         onNodesChange={onNodesChange}
@@ -74,7 +73,9 @@ const AddNodeOnEdgeDrop = () => {
         fitView
         fitViewOptions={{ padding: 2 }}
         nodeOrigin={nodeOrigin}
-      />
+    >
+      <Background  />
+    </ReactFlow>
     </div>
   );
 };

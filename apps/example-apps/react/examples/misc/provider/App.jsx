@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
 import {
+  Background,
   ReactFlow,
   ReactFlowProvider,
   useNodesState,
@@ -7,11 +8,8 @@ import {
   addEdge,
   Controls,
 } from '@xyflow/react';
-import '@xyflow/react/dist/style.css';
 
 import Sidebar from './Sidebar';
-
-import './index.css';
 
 const initialNodes = [
   {
@@ -54,8 +52,10 @@ const ProviderFlow = () => {
             onEdgesChange={onEdgesChange}
             onConnect={onConnect}
             fitView
+            style={{ backgroundColor: "#F7F9FB" }}
           >
             <Controls />
+            <Background />
           </ReactFlow>
         </div>
         <Sidebar nodes={nodes} setNodes={setNodes} />

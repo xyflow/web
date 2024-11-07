@@ -7,7 +7,6 @@ import {
   Position,
   Panel,
 } from '@xyflow/react';
-import '@xyflow/react/dist/style.css';
 
 import CustomNode from './CustomNode';
 import TooltipNode from './TooltipNode';

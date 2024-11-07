@@ -3,15 +3,9 @@ import { Position } from '@xyflow/react';
 
 import CustomHandle from './CustomHandle';
 
-const nodeStyle = {
-  background: 'white',
-  padding: 16,
-  border: '1px solid black',
-};
-
 const CustomNode = () => {
   return (
-    <div style={nodeStyle}>
+    <div>
       <CustomHandle
         type="target"
         position={Position.Left}

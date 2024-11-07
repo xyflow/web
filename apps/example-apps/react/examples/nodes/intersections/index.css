@@ -1,3 +1,7 @@
+@import url('@xyflow/react/dist/style.css');
+@import url('./../../../../xy-theme.css');
+
+
 html,
 body {
   margin: 0;
@@ -11,25 +15,8 @@ body {
 }
 
 .react-flow__node.highlight {
-  background-color: #ff0072;
+  background-color: #918FBE;
   color: white;
-}
-
-.intersection-flow .react-flow__node {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: 700;
-  border-radius: 1px;
-  border-width: 2px;
-  box-shadow: 6px 6px 0 1px rgba(0, 0, 0, 0.7);
-}
-
-.intersection-flow .react-flow__node.selected,
-.intersection-flow .react-flow__node:hover,
-.intersection-flow .react-flow__node:focus {
-  box-shadow: 6px 6px 0 1px rgba(0, 0, 0, 0.7);
-  background-color: #eee;
 }
 
 .intersection-flow .react-flow__handle {

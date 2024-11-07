@@ -8,7 +8,6 @@ import {
   type OnConnect,
   type Node,
 } from '@xyflow/react';
-import '@xyflow/react/dist/style.css';
 
 import DevTools from './Devtools';
 

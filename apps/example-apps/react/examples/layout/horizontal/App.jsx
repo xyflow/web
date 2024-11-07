@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
 import {
+  Background,
   ReactFlow,
   useNodesState,
   useEdgesState,
@@ -135,7 +136,10 @@ const HorizontalFlow = () => {
       onConnect={onConnect}
       fitView
       attributionPosition="bottom-left"
-    ></ReactFlow>
+      style={{ backgroundColor: "#F7F9FB" }}
+      >
+        <Background />
+      </ReactFlow>  
   );
 };
 

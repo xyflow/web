@@ -1,5 +1,6 @@
 import React, { useCallback, useRef } from 'react';
 import {
+  Background,
   ReactFlow,
   useNodesState,
   useEdgesState,
@@ -7,7 +8,6 @@ import {
   reconnectEdge,
   addEdge,
 } from '@xyflow/react';
-import '@xyflow/react/dist/style.css';
 
 const initialNodes = [
   {
@@ -71,9 +71,12 @@ const DeleteEdgeDrop = () => {
       onConnect={onConnect}
       fitView
       attributionPosition="top-right"
-    >
-      <Controls />
-    </ReactFlow>
+      style={{ backgroundColor: "#F7F9FB" }}
+      >
+        <Controls />
+        <Background />
+      </ReactFlow>
+  
   );
 };
 

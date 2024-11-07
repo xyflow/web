@@ -1,3 +1,7 @@
+@import url('@xyflow/react/dist/style.css');
+@import url('./../../../../xy-theme.css');
+
+
 html,
 body {
   margin: 0;
@@ -8,4 +12,8 @@ body {
 #app {
   width: 100vw;
   height: 100vh;
+}
+
+.react-flow__node-custom {
+  border-color: blue;
 }

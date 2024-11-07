@@ -13,7 +13,6 @@ import {
   type Node,
   type Edge,
 } from '@xyflow/react';
-import '@xyflow/react/dist/style.css';
 
 import ButtonEdge from './ButtonEdge';
 import SelfConnectingEdge from './SelfConnectingEdge';
@@ -123,10 +122,11 @@ const EdgesFlow = () => {
       fitView
       attributionPosition="top-right"
       connectionMode={ConnectionMode.Loose}
-    >
-      <Controls />
-      <Background />
-    </ReactFlow>
+      style={{ backgroundColor: "#F7F9FB" }}
+      >
+        <Controls />
+        <Background />
+      </ReactFlow>
   );
 };
 

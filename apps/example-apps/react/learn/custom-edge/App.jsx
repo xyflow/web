@@ -7,7 +7,6 @@ import {
 } from '@xyflow/react';
 import CustomEdge from './CustomEdge';
 
-import '@xyflow/react/dist/style.css';
 
 const initialNodes = [
   { id: 'a', position: { x: 0, y: 0 }, data: { label: 'Node A' } },

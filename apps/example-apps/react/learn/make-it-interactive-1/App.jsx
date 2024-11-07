@@ -6,7 +6,6 @@ import {
   applyNodeChanges,
   applyEdgeChanges,
 } from '@xyflow/react';
-import '@xyflow/react/dist/style.css';
 
 const initialNodes = [
   {

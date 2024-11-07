@@ -1,5 +1,6 @@
 import { useCallback } from 'react';
 import {
+  Background,
   ReactFlow,
   ReactFlowProvider,
   Panel,
@@ -7,7 +8,6 @@ import {
   Position,
   useNodesState,
 } from '@xyflow/react';
-import '@xyflow/react/dist/style.css';
 
 const initialNodes = [
   {
@@ -33,7 +33,7 @@ function NodeWithToolbar({ data }) {
         <button>copy</button>
         <button>paste</button>
       </NodeToolbar>
-      <div className="react-flow__node-default">{data?.label}</div>
+      <div>{data?.label}</div>
     </>
   );
 }
@@ -66,6 +66,7 @@ function Flow() {
         onNodesChange={onNodesChange}
         nodeTypes={nodeTypes}
         fitView
+        style={{ backgroundColor: "#F7F9FB" }}
         preventScrolling={false}
       >
         <Panel>
@@ -83,6 +84,7 @@ function Flow() {
             <span>Always show toolbar</span>
           </label>
         </Panel>
+        <Background  />
       </ReactFlow>
     </ReactFlowProvider>
   );

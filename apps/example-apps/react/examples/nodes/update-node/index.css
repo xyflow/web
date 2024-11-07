@@ -1,3 +1,7 @@
+@import url('@xyflow/react/dist/style.css');
+@import url('./../../../../xy-theme.css');
+
+
 html,
 body {
   margin: 0;
@@ -10,7 +14,7 @@ body {
   height: 100vh;
 }
 
-.updatenode__controls {
+.update-node__controls {
   position: absolute;
   right: 10px;
   top: 10px;
@@ -18,15 +22,15 @@ body {
   font-size: 12px;
 }
 
-.updatenode__controls label {
+.update-node__controls label {
   display: block;
 }
 
-.updatenode__bglabel {
+.update-node__bg-label {
   margin-top: 10px;
 }
 
-.updatenode__checkboxwrapper {
+.update-node__checkbox-wrapper {
   margin-top: 10px;
   display: flex;
   align-items: center;

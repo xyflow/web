@@ -10,7 +10,6 @@ import {
 } from '@xyflow/react';
 
 import { initialNodes, initialEdges } from './nodes-edges.js';
-import '@xyflow/react/dist/style.css';
 
 const getLayoutedElements = (nodes, edges, options) => {
   const g = new Dagre.graphlib.Graph().setDefaultEdgeLabel(() => ({}));

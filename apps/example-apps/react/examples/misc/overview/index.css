@@ -1,25 +1,5 @@
 @import url('@xyflow/react/dist/style.css');
-
-.react-flow {
-  /* Custom Variables */
-  --xy-theme-selected: #B2004F;
-  --xy-theme-hover: #FE4C96;
-
-  /* Built-in Variables see https://reactflow.dev/learn/customization/theming */
-  --xy-node-border-default: 1px solid #EDEDED;
-
-  --xy-node-boxshadow-default: 
-    0px 3.54px 4.55px 0px #00000005, 
-    0px 3.54px 4.55px 0px #0000000D, 
-    0px 0.51px 1.01px 0px #0000001A;
-
-  --xy-node-border-radius-default: 8px;
-
-  --xy-handle-background-color-default: #ffffff;
-  --xy-handle-border-color-default: #AAAAAA;
-
-  --xy-edge-label-color-default: #505050;
-}
+@import url('./../../../../xy-theme.css');
 
 html,
 body {
@@ -33,65 +13,6 @@ body {
   height: 100vh;
 }
 
-/* Customizing Default Theming */
-
-.react-flow__node {
-  box-shadow: var(--xy-node-boxshadow-default);
-  border-radius: var(--xy-node-border-radius-default);
-  background-color: var(--xy-node-background-color-default);
-  width: 150px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 10px;
-  font-size: 12px;
-  flex-direction: column;
-  border: var(--xy-node-border-default);
-  color: var(--xy-node-color, var(--xy-node-color-default));
-}
-
-.react-flow__node.selectable:hover, 
-.react-flow__node.draggable:hover {
-  border-color: var(--xy-theme-hover);
-}
-
-.react-flow__node.selectable.selected,
-.react-flow__node.selectable:focus {
-  border-color: var(--xy-theme-selected);
-  box-shadow: var(--xy-node-boxshadow-default);
-}
-
-.react-flow__node-group {
-  background-color: rgba(207, 182, 255, 0.4);
-  border-color: #9E86ED;
-}
-
-.react-flow__edge.selectable:hover .react-flow__edge-path {
-  stroke: var(--xy-theme-hover);
-}
-
-.react-flow__edge.selectable.selected .react-flow__edge-path {
-  stroke: var(--xy-theme-selected);
-}
-
-.react-flow__handle {
-  background-color: var(--xy-handle-background-color-default);
-}
-
-.react-flow__handle.connectionindicator:hover {
-  pointer-events: all;
-  border-color: var(--xy-theme-hover);
-  background-color: var(--xy-theme-hover);
-}
-
-.react-flow__handle.connectionindicator:focus, 
-.react-flow__handle.connectingfrom,
-.react-flow__handle.connectingto {
-  border-color: var(--xy-theme-selected);
-  background-color: var(--xy-theme-selected);
-}
-
 /* Circle Node */
 
 .react-flow__node-circle {
@@ -100,37 +21,14 @@ body {
   width: 100px;
   font-family: monospace;     
   text-align: center;
-  border: none;
-  background-image: linear-gradient(270deg, #659DF7 0%, #F57DBD 100%);
-
-}
-
-.circle-node__inner {
-  background-color: inherit;
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  display: flex;                
-  justify-content: center;    
-  align-items: center;     
-  margin: 1.5px; 
 }
 
 /* Text Input Node */
 
 .react-flow__node-textinput {
-  border: none;
-  padding: 0;
+  width: 150px;
   font-family: monospace;
-  background-image: linear-gradient(270deg, #659DF7 0%, #F57DBD 100%);
-}
-
-.text-input-node__inner {
-  background-color: inherit;
-  margin: 1.5px;
-  padding: 10px;
   text-align: left;
-  border-radius: 7px;
 }
 
 .text-input-node__input {
@@ -181,11 +79,19 @@ input[type="number"]::-webkit-inner-spin-button {
 
 /* Toolbar Node */
 
+.react-flow__node-toolbar {
+  background-color: #000000;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
 .react-flow__node-toolbar button {
   cursor: pointer;
-  background-color: #000000;
+  background: inherit;
   border: none;
-  padding: 3px 7px;
+  padding: 5px 7px;
+  margin: 3px;
+  border-radius: 50%;
   box-shadow: var(--xy-node-boxshadow-default);
 }
 
@@ -193,30 +99,7 @@ input[type="number"]::-webkit-inner-spin-button {
   background: #4d4d4d;
 }
 
-.react-flow__node-toolbar button:first-child {
-  border-radius: 16px 0 0 16px;
-  border-right: 2px solid #4d4d4d;
-}
-
-.react-flow__node-toolbar button:last-child {
-  border-radius: 0 16px 16px 0;
-  border-left: 2px solid #4d4d4d;
-}
-
 /* Resizer Node */
-
-.react-flow__node-resizer {
-  border-radius: 0;
-  border: none;
-}
-
-.react-flow__resize-control.handle {
-  background-color: #ffffff;
-  border-color: #9E86ED;
-  border-radius: 0;
-  width: 5px;
-  height: 5px;
-}
 
 .resizer-node__handles {
   display: flex;
@@ -245,8 +128,8 @@ input[type="number"]::-webkit-inner-spin-button {
 .button-edge__button {
   width: 30px;
   height: 30px;
-  border: 5px solid var(--xy-edge-label-background-color-default);
-  color: var(--xy-edge-label-color-default);
+  border: 5px solid #F7F9FB;
+  color: var(--xy-edge-node-color-default);
   background-color: #F3F3F4;
   cursor: pointer;
   border-radius: 50%;
@@ -259,13 +142,15 @@ input[type="number"]::-webkit-inner-spin-button {
   color: #ffffff;
 }
 
+.react-flow__edge-textbg {
+  fill: #F7F9FB;
+}
+
 /* Custom Handles */
 
-.react-flow__node-resizer .react-flow__handle,
-.react-flow__node-circle .react-flow__handle,
-.react-flow__node-textinput .react-flow__handle {
-  background: #bbb;
-  border-radius: 0;
+.react-flow__handle.custom-handle {
+  background-color: var(--xy-handle-border-color-default);
+  border-radius: 1px;
   width: 8px;
   height: 4px;
   border: none;
@@ -273,29 +158,27 @@ input[type="number"]::-webkit-inner-spin-button {
   min-height: 2px;
 }
 
-.react-flow__node-resizer .react-flow__handle-bottom,
-.react-flow__node-circle .react-flow__handle-bottom,
-.react-flow__node-textinput .react-flow__handle-bottom {
+.react-flow__handle.custom-handle:hover,
+.react-flow__handle.custom-handle.connectionindicator:focus, 
+.react-flow__handle.custom-handle.connectingfrom,
+.react-flow__handle.custom-handle.connectingto {
+  background-color: var(--xy-theme-edge-hover);
+}
+
+.react-flow__handle-bottom.custom-handle  {
   bottom: -5px;
   transform: none;
-  border-radius: 0 0 2px 2px;
 }
 
-.react-flow__node-resizer .react-flow__handle-top,
-.react-flow__node-circle .react-flow__handle-top,
-.react-flow__node-textinput .react-flow__handle-top {
+.react-flow__handle-top.custom-handle  {
   top: -5px;
   transform: none;
-  border-radius: 2px 2px 0 0;
 }
 
-.react-flow__node-resizer .react-flow__handle-left,
-.react-flow__node-circle .react-flow__handle-left,
-.react-flow__node-textinput .react-flow__handle-left {
+.react-flow__handle-left.custom-handle {
   height: 8px;
   width: 4px;
-  left: -5px;
-  border-radius: 2px 0 0 2px;
+  left: -3px;
 }
 
 

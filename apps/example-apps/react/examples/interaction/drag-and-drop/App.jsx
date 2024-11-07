@@ -7,13 +7,11 @@ import {
   useEdgesState,
   Controls,
   useReactFlow,
+  Background,
 } from '@xyflow/react';
-import '@xyflow/react/dist/style.css';
 
 import Sidebar from './Sidebar';
 import { DnDProvider, useDnD } from './DnDContext';
-
-import './index.css';
 
 const initialNodes = [
   {
@@ -84,8 +82,10 @@ const DnDFlow = () => {
           onDrop={onDrop}
           onDragOver={onDragOver}
           fitView
+          style={{ backgroundColor: "#F7F9FB" }}
         >
           <Controls />
+          <Background />
         </ReactFlow>
       </div>
       <Sidebar />

@@ -10,7 +10,6 @@ import {
   getConnectedEdges,
 } from '@xyflow/react';
 
-import '@xyflow/react/dist/style.css';
 
 const initialNodes = [
   {
@@ -87,8 +86,9 @@ export default function Flow() {
       onConnect={onConnect}
       fitView
       attributionPosition="top-right"
-    >
-      <Background variant="dots" gap={12} size={1} />
-    </ReactFlow>
+      style={{ backgroundColor: "#F7F9FB" }}
+      >
+        <Background />
+      </ReactFlow>
   );
 }

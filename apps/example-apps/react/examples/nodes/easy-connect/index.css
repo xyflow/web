@@ -1,3 +1,7 @@
+@import url('@xyflow/react/dist/style.css');
+@import url('./../../../../xy-theme.css');
+
+
 html,
 body {
   margin: 0;
@@ -13,31 +17,12 @@ body {
 .customNodeBody {
   width: 150px;
   height: 80px;
-  border: 3px solid black;
   position: relative;
-  overflow: hidden;
   border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-weight: bold;
-}
-
-.customNode:before {
-  content: '';
-  position: absolute;
-  top: -10px;
-  left: 50%;
-  height: 20px;
-  width: 40px;
-  transform: translate(-50%, 0);
-  background: #d6d5e6;
-  z-index: 1000;
-  line-height: 1;
-  border-radius: 4px;
-  color: #fff;
-  font-size: 9px;
-  border: 2px solid #222138;
 }
 
 div.customHandle {

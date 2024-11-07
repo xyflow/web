@@ -6,7 +6,6 @@ import {
   useEdgesState,
   useNodesState,
 } from '@xyflow/react';
-import '@xyflow/react/dist/style.css';
 
 import { initialNodes } from './nodes';
 import { initialEdges } from './edges';

@@ -1,13 +1,12 @@
 import { useCallback } from 'react';
 import {
+  Background,
   ReactFlow,
   addEdge,
   Position,
   useNodesState,
   useEdgesState,
 } from '@xyflow/react';
-
-import '@xyflow/react/dist/style.css';
 
 import CustomNode from './CustomNode';
 
@@ -54,7 +53,10 @@ const CustomNodeFlow = () => {
       onConnect={onConnect}
       nodeTypes={nodeTypes}
       fitView
-    />
+      style={{ backgroundColor: "#F7F9FB" }}
+      >
+      <Background />
+    </ReactFlow>
   );
 };
 

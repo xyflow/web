@@ -1,7 +1,7 @@
 import React from 'react';
 import { getBezierPath } from '@xyflow/react';
 
-import { getEdgeParams } from './utils.js';
+import { getEdgeParams } from './initialElements.js';
 
 function FloatingConnectionLine({
   toX,

@@ -1,14 +1,13 @@
 import React, { useCallback } from 'react';
 
 import {
+  Background,
   ReactFlow,
   addEdge,
   useNodesState,
   useEdgesState,
   MarkerType,
 } from '@xyflow/react';
-
-import '@xyflow/react/dist/style.css';
 
 import CustomNode from './CustomNode';
 import FloatingEdge from './FloatingEdge';
@@ -40,8 +39,7 @@ const initialNodes = [
 const initialEdges = [];
 
 const connectionLineStyle = {
-  strokeWidth: 3,
-  stroke: 'black',
+  stroke: '#b1b1b7',
 };
 
 const nodeTypes = {
@@ -53,11 +51,10 @@ const edgeTypes = {
 };
 
 const defaultEdgeOptions = {
-  style: { strokeWidth: 3, stroke: 'black' },
   type: 'floating',
   markerEnd: {
     type: MarkerType.ArrowClosed,
-    color: 'black',
+    color: '#b1b1b7',
   },
 };
 
@@ -80,10 +77,13 @@ const EasyConnectExample = () => {
       fitView
       nodeTypes={nodeTypes}
       edgeTypes={edgeTypes}
+      style={{ backgroundColor: "#F7F9FB" }}
       defaultEdgeOptions={defaultEdgeOptions}
       connectionLineComponent={CustomConnectionLine}
       connectionLineStyle={connectionLineStyle}
-    />
+    >
+      <Background />
+    </ReactFlow>
   );
 };
 

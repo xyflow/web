@@ -1,14 +1,12 @@
 import { useCallback } from 'react';
 import {
+  Background,
   ReactFlow,
   useNodesState,
   useEdgesState,
   Position,
   addEdge,
 } from '@xyflow/react';
-
-import '@xyflow/react/dist/style.css';
-import './index.css';
 
 const initialNodes = [
   {
@@ -46,7 +44,10 @@ const TouchDeviceFlow = () => {
       onEdgesChange={onEdgesChange}
       className="touch-flow"
       fitView
-    />
+      style={{ backgroundColor: "#F7F9FB" }}
+      >
+        <Background />
+      </ReactFlow>  
   );
 };
 

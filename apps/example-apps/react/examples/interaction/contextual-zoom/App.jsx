@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
 import {
+  Background,
   ReactFlow,
   useNodesState,
   useEdgesState,
@@ -9,9 +10,6 @@ import {
 } from '@xyflow/react';
 
 import ZoomNode from './ZoomNode';
-
-import '@xyflow/react/dist/style.css';
-import './index.css';
 
 const snapGrid = [20, 20];
 const nodeTypes = {
@@ -79,7 +77,9 @@ const ContextualZoomFlow = () => {
       defaultViewport={defaultViewport}
       attributionPosition="top-right"
       fitView
-    >
+      style={{ backgroundColor: "#F7F9FB" }}
+      >
+      <Background />
       <MiniMap />
       <Controls />
     </ReactFlow>

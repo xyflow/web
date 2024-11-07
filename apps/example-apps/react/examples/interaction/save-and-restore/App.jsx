@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import {
+  Background,
   ReactFlow,
   ReactFlowProvider,
   useNodesState,
@@ -8,7 +9,6 @@ import {
   useReactFlow,
   Panel,
 } from '@xyflow/react';
-import '@xyflow/react/dist/style.css';
 
 const flowKey = 'example-flow';
 
@@ -75,7 +75,9 @@ const SaveRestore = () => {
       onInit={setRfInstance}
       fitView
       fitViewOptions={{ padding: 2 }}
-    >
+      style={{ backgroundColor: "#F7F9FB" }}
+      >
+        <Background />
       <Panel position="top-right">
         <button onClick={onSave}>save</button>
         <button onClick={onRestore}>restore</button>

@@ -1,3 +1,6 @@
+@import url('@xyflow/react/dist/style.css');
+@import url('./../../../../xy-theme.css');
+
 html,
 body {
   margin: 0;
@@ -10,17 +13,17 @@ body {
   height: 100vh;
 }
 
-.node {
-  width: 100%;
-  height: 100%;
-  border-radius: 15px;
-  border: 1px solid #000;
-  background-color: #fff;
-  padding: 20px;
+.react-flow__node-rotatableNode {
+  border: 0;
+  box-shadow: 0;
+}
+
+.rotatable-node {
+  transform-origin: center center;
   box-sizing: border-box;
 }
 
-.rotateHandle {
+.rotatable-node__handle {
   position: absolute;
   width: 10px;
   height: 10px;
@@ -32,7 +35,7 @@ body {
   cursor: alias;
 }
 
-.rotateHandle:after {
+.rotatable-node__handle:after {
   content: '';
   display: block;
   position: absolute;

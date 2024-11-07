@@ -8,7 +8,7 @@ import {
   type NodeProps,
 } from '@xyflow/react';
 
-import { isTextNode, type MyNode } from './utils';
+import { isTextNode, type MyNode } from './initialElements';
 
 function UppercaseNode({ id }: NodeProps) {
   const { updateNodeData } = useReactFlow();
@@ -23,15 +23,7 @@ function UppercaseNode({ id }: NodeProps) {
   }, [textNode]);
 
   return (
-    <div
-      style={{
-        background: '#eee',
-        color: '#222',
-        padding: 10,
-        fontSize: 12,
-        borderRadius: 10,
-      }}
-    >
+    <div>
       <Handle
         type="target"
         position={Position.Left}

@@ -37,9 +37,9 @@ export default function RotatableNode({
         style={{
           transform: `rotate(${rotation}deg)`,
         }}
-        className="node"
+        className="react-flow__node rotatable-node"
       >
-        <div ref={rotateControlRef} className={`nodrag rotateHandle`} />
+        <div ref={rotateControlRef} className={`nodrag rotatable-node__handle`} />
         <div>{data?.label}</div>
         <Handle position={sourcePosition} type="source" />
         <Handle position={targetPosition} type="target" />

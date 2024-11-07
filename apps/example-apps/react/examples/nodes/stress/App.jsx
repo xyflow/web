@@ -8,11 +8,10 @@ import {
   Controls,
   Background,
 } from '@xyflow/react';
-import '@xyflow/react/dist/style.css';
 
-import { createNodesAndEdges } from './utils.js';
+import { initialElements } from './initialElements.js';
 
-const { nodes: initialNodes, edges: initialEdges } = createNodesAndEdges(
+const { nodes: initialNodes, edges: initialEdges } = initialElements(
   15,
   30,
 );
@@ -48,6 +47,7 @@ const StressFlow = () => {
       onConnect={onConnect}
       fitView
       minZoom={0}
+      style={{ backgroundColor: "#F7F9FB" }}
     >
       <MiniMap />
       <Controls />
@@ -55,7 +55,7 @@ const StressFlow = () => {
 
       <button
         onClick={updatePos}
-        style={{ position: 'absolute', right: 10, top: 30, zIndex: 4 }}
+        className='stress-test__button'
       >
         change pos
       </button>

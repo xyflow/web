@@ -1,5 +1,4 @@
 import { ReactFlow, Controls, Background } from '@xyflow/react';
-import '@xyflow/react/dist/style.css';
 
 const edges = [
   { id: '1-2', source: '1', target: '2', label: 'to the', type: 'step' },

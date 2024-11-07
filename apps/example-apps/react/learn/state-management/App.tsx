@@ -2,7 +2,6 @@ import React from 'react';
 import { useShallow } from 'zustand/react/shallow';
 import { ReactFlow } from '@xyflow/react';
 
-import '@xyflow/react/dist/style.css';
 
 import useStore from './store';
 

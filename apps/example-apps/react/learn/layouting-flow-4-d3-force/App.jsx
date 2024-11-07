@@ -19,7 +19,6 @@ import {
 import { initialNodes, initialEdges } from './nodes-edges.js';
 import { collide } from './collide.js';
 
-import '@xyflow/react/dist/style.css';
 
 const simulation = forceSimulation()
   .force('charge', forceManyBody().strength(-1000))

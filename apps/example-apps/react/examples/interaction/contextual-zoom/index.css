@@ -1,3 +1,6 @@
+@import url('@xyflow/react/dist/style.css');
+@import url('./../../../../xy-theme.css');
+
 html,
 body {
   margin: 0;
@@ -13,7 +16,7 @@ body {
 .react-flow__node-zoom {
   font-size: 12px;
   background: #fff;
-  border: 1px solid #555;
+  border: 1px solid inherit;
   border-radius: 5px;
   text-align: center;
   width: 150px;

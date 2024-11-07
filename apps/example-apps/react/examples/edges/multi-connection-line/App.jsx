@@ -1,11 +1,11 @@
 import { useCallback } from 'react';
 import {
   ReactFlow,
+  Background,
   useNodesState,
   useEdgesState,
   addEdge,
 } from '@xyflow/react';
-import '@xyflow/react/dist/style.css';
 
 import ConnectionLine from './ConnectionLine';
 
@@ -13,19 +13,19 @@ const initialNodes = [
   {
     id: 'a',
     type: 'input',
-    data: { label: 'Select' },
+    data: { label: 'Click to select' },
     position: { x: 100, y: -100 },
   },
   {
     id: 'b',
     type: 'input',
-    data: { label: 'these' },
+    data: { label: 'these nodes' },
     position: { x: 300, y: -50 },
   },
   {
     id: 'c',
     type: 'input',
-    data: { label: 'nodes...' },
+    data: { label: 'then drag... ' },
     position: { x: 150, y: 0 },
   },
   {
@@ -65,7 +65,10 @@ const ConnectionLineFlow = () => {
       fitViewOptions={{
         padding: 0.2,
       }}
-    />
+      style={{ backgroundColor: "#F7F9FB" }}
+      >
+        <Background />
+      </ReactFlow>  
   );
 };
 

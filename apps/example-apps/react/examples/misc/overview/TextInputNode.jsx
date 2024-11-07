@@ -59,7 +59,7 @@ export default memo(({ id }) => {
   
   
   return (
-    <div className='text-input-node__inner '>
+    <div>
       {dimensionAttrs.map((attr) => (
         <Fragment key={attr}>
           <label>Node {attr}</label>
@@ -73,7 +73,7 @@ export default memo(({ id }) => {
         </Fragment>
       ))}
       {!dimensionAttrs && 'no node connected'}
-      <Handle type="target" position={Position.Top} />
+      <Handle type="target" position={Position.Top} className='custom-handle' />
     </div>
   );
 });

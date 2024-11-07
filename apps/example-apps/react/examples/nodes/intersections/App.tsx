@@ -10,8 +10,6 @@ import {
   type Node,
 } from '@xyflow/react';
 
-import '@xyflow/react/dist/style.css';
-
 const initialNodes: Node[] = [
   {
     id: '1',
@@ -62,6 +60,7 @@ const BasicFlow = () => {
 
   return (
     <ReactFlow
+      style={{ backgroundColor: "#F7F9FB" }}
       nodes={nodes}
       edges={initialEdges}
       onNodesChange={onNodesChange}

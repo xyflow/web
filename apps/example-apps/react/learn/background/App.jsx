@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { ReactFlow, Background, Panel } from '@xyflow/react';
 
-import '@xyflow/react/dist/style.css';
 
 import { defaultNodes } from './nodes';
 import { defaultEdges } from './edges';

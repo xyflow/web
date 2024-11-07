@@ -54,11 +54,11 @@ const OverviewFlow = () => {
       attributionPosition="top-right"
       nodeTypes={nodeTypes}
       edgeTypes={edgeTypes}
-      className="overview"
+      style={{ backgroundColor: "#F7F9FB" }}
     >
       <MiniMap zoomable pannable nodeClassName={nodeClassName} />
       <Controls />
-      <Background />
+    <Background  />
     </ReactFlow>
   );
 };

@@ -10,12 +10,7 @@ import {
 
 import DownloadButton from './DownloadButton';
 import CustomNode from './CustomNode';
-import { initialNodes, initialEdges } from './nodes-edges';
-
-import '@xyflow/react/dist/style.css';
-
-// @todo how to handle this?
-// import './index.css';
+import { initialNodes, initialEdges } from './initialElements';
 
 const connectionLineStyle = { stroke: '#ffff' };
 const snapGrid = [25, 25];
@@ -56,9 +51,10 @@ const DownloadImageFlow = () => {
       attributionPosition="bottom-left"
       defaultEdgeOptions={defaultEdgeOptions}
       className="download-image"
+      style={{ backgroundColor: "#F7F9FB" }}
     >
       <Controls />
-      <Background gap={25} />
+      <Background />
       <DownloadButton />
     </ReactFlow>
   );

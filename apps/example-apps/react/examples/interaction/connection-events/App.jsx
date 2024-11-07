@@ -1,8 +1,5 @@
 import React, { useCallback } from 'react';
-import { ReactFlow } from '@xyflow/react';
-
-import '@xyflow/react/dist/style.css';
-import './index.css';
+import { ReactFlow, Background } from '@xyflow/react';
 
 import { useState } from 'react';
 import { useEffect } from 'react';
@@ -122,7 +119,10 @@ const Flow = () => {
         onReconnect={onReconnect}
         onReconnectEnd={onReconnectEnd}
         fitView
-      />
+        style={{ backgroundColor: "#F7F9FB" }}
+        >
+          <Background />
+        </ReactFlow>
       <div id="event-list">
         {Object.entries(events).map(([name, active]) => (
           <p key={name} style={{ opacity: active ? 1 : 0.2 }}>

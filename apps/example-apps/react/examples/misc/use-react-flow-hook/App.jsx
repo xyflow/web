@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
 import {
+  Background,
   ReactFlow,
   ReactFlowProvider,
   addEdge,
@@ -8,8 +9,6 @@ import {
 } from '@xyflow/react';
 
 import Buttons from './Buttons';
-
-import '@xyflow/react/dist/style.css';
 
 const initialNodes = [
   {
@@ -49,9 +48,11 @@ const ProviderFlow = () => {
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
         fitView
-      >
-        <Buttons />
-      </ReactFlow>
+        style={{ backgroundColor: "#F7F9FB" }}
+        >
+          <Buttons />
+          <Background />
+        </ReactFlow>
     </ReactFlowProvider>
   );
 };

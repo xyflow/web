@@ -5,7 +5,7 @@ import {
   useHandleConnections,
   useNodesData,
 } from '@xyflow/react';
-import { isTextNode, type MyNode } from './utils';
+import { isTextNode, type MyNode } from './initialElements';
 
 function ResultNode() {
   const connections = useHandleConnections({
@@ -17,15 +17,7 @@ function ResultNode() {
   const textNodes = nodesData.filter(isTextNode);
 
   return (
-    <div
-      style={{
-        background: '#eee',
-        color: '#222',
-        padding: 10,
-        fontSize: 12,
-        borderRadius: 10,
-      }}
-    >
+    <div>
       <Handle type="target" position={Position.Left} />
       <div>
         incoming texts:{' '}
