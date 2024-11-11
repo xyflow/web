@@ -11,9 +11,7 @@
     "NPM_XYFLOW_REACT",
     "NPM_SVELTE_FLOW_VERSION",
     "SVELTE_FLOW_VERSION",
-    "REACT_FLOW_VERSION",
-    "VERCEL_ENV",
-    "VERCEL_GIT_COMMIT_REF"
+    "REACT_FLOW_VERSION"
   ],
   "globalDependencies": [".env"],
   "tasks": {
@@ -46,9 +44,7 @@
         ".env.production.local",
         ".env.local",
         ".env.production",
-        ".env",
-        "VERCEL_ENV",
-        "VERCEL_GIT_COMMIT_REF"
+        ".env"
       ]
     },
     "svelteflow-website#build": {
