@@ -14,6 +14,12 @@ import { ProjectPreview, getMdxPagesUnderRoute } from 'xy-shared';
 
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 
+const examplesUrl =
+  process.env.VERCEL_ENV === 'preview' && process.env.VERCEL_BRANCH_URL
+    ? process.env.VERCEL_BRANCH_URL
+    : process.env.NEXT_PUBLIC_EXAMPLES_URL;
+
+
 export default function ExamplesOverviewPage({
   category,
 }: {
@@ -60,7 +66,7 @@ export default function ExamplesOverviewPage({
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
             <Container className="col-span-2 aspect-video p-0">
               <Image
-                src={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/misc/overview/preview.jpg`}
+                src={`${examplesUrl}/react/examples/misc/overview/preview.jpg`}
                 width={1024}
                 height={768}
                 alt="Feature Overview Example Preview"
@@ -114,8 +120,8 @@ export default function ExamplesOverviewPage({
                         example.frontMatter.is_pro_example
                           ? `https://pro-examples.reactflow.dev/${example.name}/thumbnail.jpg`
                           : example.frontMatter.preview_path
-                            ? `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/${example.frontMatter.preview_path}`
-                            : `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react${example.route}/preview.jpg`
+                            ? `${examplesUrl}/${example.frontMatter.preview_path}`
+                            : `${examplesUrl}/react${example.route}/preview.jpg`
                       }
                       title={
                         <div className="flex items-center">
