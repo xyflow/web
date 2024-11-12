@@ -13,6 +13,8 @@ import {
 import { RemoteContent } from '../../components/remote-content';
 import { SharedContext } from '../../context/shared-context';
 import { CompiledMdx } from '../../types';
+import { examplesUrl } from '../../utils';
+
 
 import './style.css';
 import { OpenInStackblitz } from './open-in-stackblitz';
@@ -51,12 +53,6 @@ export function RemoteCodeViewer({
 }: RemoteCodeViewerProps) {
   const _framework: Framework =
     framework ?? (process.env.NEXT_PUBLIC_Framework as Framework) ?? 'react';
-
-    const examplesUrl: string =
-    process.env.VERCEL_ENV === 'preview' && process.env.VERCEL_GIT_COMMIT_REF
-      ? `https://example-apps-git-${process.env.VERCEL_GIT_COMMIT_REF}-xyflow.vercel.app`
-      : (process.env.NEXT_PUBLIC_EXAMPLES_URL as string);
-  
 
   const preview = `${examplesUrl}/${_framework}/${route}/index.html`;
 
