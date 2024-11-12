@@ -1,6 +1,9 @@
 import React from 'react';
 import { ReactFlow, Background, MarkerType } from '@xyflow/react';
 
+import '@xyflow/react/dist/style.css';
+
+
 const defaultNodes = [
   {
     id: 'A',

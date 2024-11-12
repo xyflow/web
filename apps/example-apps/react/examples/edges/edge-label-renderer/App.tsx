@@ -12,6 +12,9 @@ import {
   type Node,
 } from '@xyflow/react';
 
+import '@xyflow/react/dist/style.css';
+
+
 import CustomEdge from './CustomEdge';
 import CustomEdgeStartEnd from './CustomEdgeStartEnd';
 

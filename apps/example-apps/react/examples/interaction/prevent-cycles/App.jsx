@@ -9,7 +9,13 @@ import {
   useReactFlow,
   ReactFlowProvider,
 } from '@xyflow/react';
+
+import '@xyflow/react/dist/style.css';
+
+
 import { nodes as initialNodes, edges as initialEdges } from './initialElements';
+
+
 
 const Flow = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);

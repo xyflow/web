@@ -9,6 +9,7 @@ import {
 } from '@xyflow/react';
 
 import Buttons from './Buttons';
+import '@xyflow/react/dist/style.css';
 
 const initialNodes = [
   {

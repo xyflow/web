@@ -9,6 +9,9 @@ import {
   Controls,
 } from '@xyflow/react';
 
+import '@xyflow/react/dist/style.css';
+
+
 const initialNodes = [
   {
     id: '1',

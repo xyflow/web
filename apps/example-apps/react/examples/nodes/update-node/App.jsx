@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { ReactFlow, useNodesState, useEdgesState, Background } from '@xyflow/react';
 
+import '@xyflow/react/dist/style.css';
+
+
 const initialNodes = [
   { id: '1', data: { label: '-' }, position: { x: 100, y: 100 } },
   { id: '2', data: { label: 'Node 2' }, position: { x: 100, y: 200 } },

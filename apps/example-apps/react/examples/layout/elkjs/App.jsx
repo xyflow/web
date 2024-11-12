@@ -12,6 +12,8 @@ import {
   useReactFlow,
 } from '@xyflow/react';
 
+import '@xyflow/react/dist/style.css';
+
 
 const elk = new ELK();
 

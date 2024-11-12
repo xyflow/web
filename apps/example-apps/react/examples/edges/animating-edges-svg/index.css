@@ -1,5 +1,4 @@
-@import url('@xyflow/react/dist/style.css');
-@import url('@/xy-theme.css');
+@import url('./xy-theme.css');
 
 html,
 body {
@@ -11,4 +10,3 @@ body {
   width: 100vw;
   height: 100vh;
 }
-

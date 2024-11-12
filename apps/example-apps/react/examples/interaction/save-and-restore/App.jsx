@@ -10,6 +10,9 @@ import {
   Panel,
 } from '@xyflow/react';
 
+import '@xyflow/react/dist/style.css';
+
+
 const flowKey = 'example-flow';
 
 const getNodeId = () => `randomnode_${+new Date()}`;

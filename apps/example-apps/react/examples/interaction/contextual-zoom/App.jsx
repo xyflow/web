@@ -9,6 +9,9 @@ import {
   Controls,
 } from '@xyflow/react';
 
+import '@xyflow/react/dist/style.css';
+
+
 import ZoomNode from './ZoomNode';
 
 const snapGrid = [20, 20];

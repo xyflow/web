@@ -10,6 +10,9 @@ import {
   useReactFlow,
 } from '@xyflow/react';
 
+import '@xyflow/react/dist/style.css';
+
+
 import { initialEdges, initialNodes } from './initialElements';
 
 const MIN_DISTANCE = 150;

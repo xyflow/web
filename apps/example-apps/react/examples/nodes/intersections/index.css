@@ -1,5 +1,3 @@
-@import url('@xyflow/react/dist/style.css');
-@import url('@/xy-theme.css');
 
 
 html,
@@ -15,10 +13,11 @@ body {
 }
 
 .react-flow__node.highlight {
-  background-color: #918FBE;
+  background-color: #918fbe;
   color: white;
 }
 
 .intersection-flow .react-flow__handle {
   display: none;
 }
+@import url('./xy-theme.css');

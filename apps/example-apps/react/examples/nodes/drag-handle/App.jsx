@@ -7,6 +7,8 @@ import {
 } from '@xyflow/react';
 
 import DragHandleNode from './DragHandleNode';
+import '@xyflow/react/dist/style.css';
+
 
 const nodeTypes = {
   dragHandleNode: DragHandleNode,

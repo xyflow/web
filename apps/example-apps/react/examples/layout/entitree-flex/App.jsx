@@ -9,6 +9,9 @@ import {
   useEdgesState,
 } from '@xyflow/react';
 
+import '@xyflow/react/dist/style.css';
+
+
 import CustomNode from './CustomNode';
 import { initialTree, treeRootId } from './initialElements';
 import { layoutElements } from './layout-elements';

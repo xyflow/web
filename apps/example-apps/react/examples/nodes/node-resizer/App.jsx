@@ -10,6 +10,9 @@ import ResizableNode from './ResizableNode';
 import ResizableNodeSelected from './ResizableNodeSelected';
 import CustomResizerNode from './CustomResizerNode';
 
+import '@xyflow/react/dist/style.css';
+
+
 const nodeTypes = {
   ResizableNode,
   ResizableNodeSelected,

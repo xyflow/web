@@ -1,5 +1,4 @@
-@import url('@xyflow/react/dist/style.css');
-@import url('@/xy-theme.css');
+@import url('./xy-theme.css');
 
 html,
 body {
@@ -14,5 +13,5 @@ body {
 }
 
 .react-flow__edge-textbg {
-  fill: #F7F9FB;
+  fill: #f7f9fb;
 }

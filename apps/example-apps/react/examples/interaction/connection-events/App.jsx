@@ -4,6 +4,9 @@ import { ReactFlow, Background } from '@xyflow/react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
+import '@xyflow/react/dist/style.css';
+
+
 const initialNodes = [
   { id: 'a', position: { x: -100, y: 0 }, data: { label: 'A' } },
   { id: 'b', position: { x: 100, y: 0 }, data: { label: 'B' } },

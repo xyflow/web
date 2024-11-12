@@ -9,6 +9,9 @@ import {
   Background,
 } from '@xyflow/react';
 
+import '@xyflow/react/dist/style.css';
+
+
 import { initialElements } from './initialElements.js';
 
 const { nodes: initialNodes, edges: initialEdges } = initialElements(

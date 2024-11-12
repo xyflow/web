@@ -8,6 +8,9 @@ import {
   MarkerType,
 } from '@xyflow/react';
 
+import '@xyflow/react/dist/style.css';
+
+
 import FloatingEdge from './FloatingEdge';
 import FloatingConnectionLine from './FloatingConnectionLine';
 import { initialElements } from './initialElements';

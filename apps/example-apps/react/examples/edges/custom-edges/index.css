@@ -1,5 +1,4 @@
-@import url('@xyflow/react/dist/style.css');
-@import url('@/xy-theme.css');
+@import url('./xy-theme.css');
 
 html,
 body {
@@ -16,15 +15,15 @@ body {
 .button-edge__label {
   position: absolute;
   pointer-events: all;
-  transform-origin: center; 
+  transform-origin: center;
 }
 
 .button-edge__button {
   width: 30px;
   height: 30px;
-  border: 5px solid #F7F9FB;
+  border: 5px solid #f7f9fb;
   color: var(--xy-edge-label-color-default);
-  background-color: #F3F3F4;
+  background-color: #f3f3f4;
   cursor: pointer;
   border-radius: 50%;
   font-size: 12px;

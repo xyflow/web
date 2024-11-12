@@ -9,6 +9,9 @@ import {
   ConnectionMode,
 } from '@xyflow/react';
 
+import '@xyflow/react/dist/style.css';
+
+
 import SimpleFloatingEdge from './SimpleFloatingEdge';
 import CustomNode from './CustomNode';
 

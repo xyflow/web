@@ -6,6 +6,9 @@ import {
   Background,
 } from '@xyflow/react';
 
+import '@xyflow/react/dist/style.css';
+
+
 import { AnimatedNodeEdge } from './AnimatedNodeEdge';
 
 const initialNodes = [

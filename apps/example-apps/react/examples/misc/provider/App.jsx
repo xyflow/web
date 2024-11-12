@@ -10,6 +10,8 @@ import {
 } from '@xyflow/react';
 
 import Sidebar from './Sidebar';
+import '@xyflow/react/dist/style.css';
+
 
 const initialNodes = [
   {

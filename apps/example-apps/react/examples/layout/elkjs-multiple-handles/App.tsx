@@ -8,6 +8,8 @@ import {
   ReactFlowProvider,
 } from '@xyflow/react';
 
+import '@xyflow/react/dist/style.css';
+
 
 import ElkNode from './ElkNode';
 import { nodes as initNodes } from './nodes';

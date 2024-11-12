@@ -1,5 +1,7 @@
 import React from 'react';
 import { ReactFlow, Background } from '@xyflow/react';
+import '@xyflow/react/dist/style.css';
+
 
 import RotatableNode from './RotatableNode';
 import { nodes, edges } from './initialElements';

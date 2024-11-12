@@ -7,6 +7,9 @@ import {
   addEdge,
 } from '@xyflow/react';
 
+import '@xyflow/react/dist/style.css';
+
+
 import ConnectionLine from './ConnectionLine';
 
 const initialNodes = [

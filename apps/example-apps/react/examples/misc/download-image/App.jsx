@@ -8,6 +8,9 @@ import {
   Background,
 } from '@xyflow/react';
 
+import '@xyflow/react/dist/style.css';
+
+
 import DownloadButton from './DownloadButton';
 import CustomNode from './CustomNode';
 import { initialNodes, initialEdges } from './initialElements';

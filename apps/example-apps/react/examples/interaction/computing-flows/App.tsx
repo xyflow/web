@@ -10,6 +10,9 @@ import {
   type OnConnect,
 } from '@xyflow/react';
 
+import '@xyflow/react/dist/style.css';
+
+
 import TextNode from './TextNode';
 import ResultNode from './ResultNode';
 import UppercaseNode from './UppercaseNode';

@@ -14,6 +14,9 @@ import {
   type Edge,
 } from '@xyflow/react';
 
+import '@xyflow/react/dist/style.css';
+
+
 import ButtonEdge from './ButtonEdge';
 import SelfConnectingEdge from './SelfConnectingEdge';
 import BiDirectionalEdge from './BiDirectionalEdge';

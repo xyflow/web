@@ -14,11 +14,6 @@ const examples = globSync(examplesGlob);
 
 export default defineConfig({
   plugins: [generatePublicAssets(), svelte(), react()],
-  resolve: {
-    alias: {
-      '@': Path.resolve(__dirname, '.'), // <--- Add this line
-    },
-  },
   server: {
     host: '0.0.0.0',
     cors: true,

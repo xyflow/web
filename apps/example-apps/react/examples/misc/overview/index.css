@@ -1,5 +1,4 @@
-@import url('@xyflow/react/dist/style.css');
-@import url('@/xy-theme.css');
+@import url('./xy-theme.css');
 
 html,
 body {
@@ -19,7 +18,7 @@ body {
   border-radius: 50%;
   height: 100px;
   width: 100px;
-  font-family: monospace;     
+  font-family: monospace;
   text-align: center;
 }
 
@@ -40,7 +39,7 @@ body {
 }
 
 .text-input-node__input::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
+input[type='number']::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
 
@@ -54,7 +53,7 @@ input[type="number"]::-webkit-inner-spin-button {
 .react-flow__node-annotation {
   font-size: 16px;
   width: 200px;
-  color: #683BFA;
+  color: #683bfa;
   position: absolute;
   box-shadow: none;
   font-family: monospace;
@@ -116,21 +115,20 @@ input[type="number"]::-webkit-inner-spin-button {
   transform: none;
 }
 
-
 /* Button Edge */
 
 .button-edge__label {
   position: absolute;
   pointer-events: all;
-  transform-origin: center; 
+  transform-origin: center;
 }
 
 .button-edge__button {
   width: 30px;
   height: 30px;
-  border: 5px solid #F7F9FB;
+  border: 5px solid #f7f9fb;
   color: var(--xy-edge-node-color-default);
-  background-color: #F3F3F4;
+  background-color: #f3f3f4;
   cursor: pointer;
   border-radius: 50%;
   font-size: 12px;
@@ -143,7 +141,7 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .react-flow__edge-textbg {
-  fill: #F7F9FB;
+  fill: #f7f9fb;
 }
 
 /* Custom Handles */
@@ -159,18 +157,18 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .react-flow__handle.custom-handle:hover,
-.react-flow__handle.custom-handle.connectionindicator:focus, 
+.react-flow__handle.custom-handle.connectionindicator:focus,
 .react-flow__handle.custom-handle.connectingfrom,
 .react-flow__handle.custom-handle.connectingto {
   background-color: var(--xy-theme-edge-hover);
 }
 
-.react-flow__handle-bottom.custom-handle  {
+.react-flow__handle-bottom.custom-handle {
   bottom: -5px;
   transform: none;
 }
 
-.react-flow__handle-top.custom-handle  {
+.react-flow__handle-top.custom-handle {
   top: -5px;
   transform: none;
 }
@@ -180,7 +178,6 @@ input[type="number"]::-webkit-inner-spin-button {
   width: 4px;
   left: -3px;
 }
-
 
 /* Minimap */
 
