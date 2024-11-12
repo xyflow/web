@@ -14,6 +14,17 @@ import { ProjectPreview, getMdxPagesUnderRoute } from 'xy-shared';
 
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 
+const examplesUrl =
+process.env.VERCEL_ENV === 'preview' && process.env.VERCEL_GIT_COMMIT_REF
+  ? `https://example-apps-git-${process.env.VERCEL_GIT_COMMIT_REF}-xyflow.vercel.app`
+  : process.env.NEXT_PUBLIC_EXAMPLES_URL;
+
+console.log('####################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################')
+
+console.log("VERCEL ENV: ", process.env.VERCEL_ENV)
+console.log("GIT COMMIT ENV: ", process.env.VERCEL_GIT_COMMIT_REF)
+
+
 export default function ExamplesOverviewPage({
   category,
 }: {
@@ -52,12 +63,7 @@ export default function ExamplesOverviewPage({
         }, {}),
     [],
   );
-  const examplesUrl =
-  process.env.VERCEL_ENV === 'preview' && process.env.VERCEL_GIT_COMMIT_REF
-    ? `https://example-apps-git-${process.env.VERCEL_GIT_COMMIT_REF}-xyflow.vercel.app`
-    : process.env.NEXT_PUBLIC_EXAMPLES_URL;
     
-
   return (
     <>
       <Section className="!px-0">
