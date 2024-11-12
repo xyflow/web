@@ -6,6 +6,7 @@ import {
   useEdgesState,
   addEdge,
 } from '@xyflow/react';
+import '@xyflow/react/dist/style.css';
 
 import NumberInput from './NumberInput';
 import ColorPreview from './ColorPreview';

@@ -1,4 +1,5 @@
 import { ReactFlow, Background, Panel } from '@xyflow/react';
+import '@xyflow/react/dist/style.css';
 
 const nodes = [
   {

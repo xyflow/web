@@ -10,6 +10,7 @@ import {
 } from '@xyflow/react';
 
 import { initialNodes, initialEdges } from './nodes-edges';
+import '@xyflow/react/dist/style.css';
 
 const g = tree();
 

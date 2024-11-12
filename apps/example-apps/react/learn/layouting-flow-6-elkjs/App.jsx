@@ -10,6 +10,7 @@ import {
 } from '@xyflow/react';
 
 import { initialNodes, initialEdges } from './nodes-edges.js';
+import '@xyflow/react/dist/style.css';
 
 const elk = new ELK();
 

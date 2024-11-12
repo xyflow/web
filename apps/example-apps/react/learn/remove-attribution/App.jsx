@@ -1,5 +1,6 @@
 import React from 'react';
 import { ReactFlow, Background } from '@xyflow/react';
+import '@xyflow/react/dist/style.css';
 
 import { nodes, edges } from './initialElements';
 

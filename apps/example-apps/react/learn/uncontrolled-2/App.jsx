@@ -1,5 +1,6 @@
 import { useCallback } from 'react';
 import { ReactFlow, ReactFlowProvider, useReactFlow } from '@xyflow/react';
+import '@xyflow/react/dist/style.css';
 
 import { defaultNodes } from './nodes';
 import { defaultEdges } from './edges';

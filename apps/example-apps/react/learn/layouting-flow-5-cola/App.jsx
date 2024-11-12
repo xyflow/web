@@ -12,6 +12,7 @@ import {
 
 import { initialNodes, initialEdges } from './nodes-edges.js';
 
+import '@xyflow/react/dist/style.css';
 
 const useLayoutedElements = () => {
   const { getNodes, setNodes, getEdges, fitView } = useReactFlow();
