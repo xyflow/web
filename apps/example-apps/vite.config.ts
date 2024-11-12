@@ -10,7 +10,7 @@ import { resolve } from 'node:path';
 import { svelte } from '@sveltejs/vite-plugin-svelte';
 
 // make index.css entrypoints, too to fix css import odering issues
-const examplesGlob = './{react,svelte}/**/{index.html, index.css}';
+const examplesGlob = './{react,svelte}/**/{index.html,index.css}';
 const examples = globSync(examplesGlob);
 
 export default defineConfig({
