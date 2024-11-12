@@ -9,14 +9,14 @@ import { globSync } from 'glob';
 import { resolve } from 'node:path';
 import { svelte } from '@sveltejs/vite-plugin-svelte';
 
-const examplesGlob = './{react,svelte}/**/index.html';
+const examplesGlob = './{react,svelte}/**/{index.html, index.css}';
 const examples = globSync(examplesGlob);
 
 export default defineConfig({
   plugins: [generatePublicAssets(), svelte(), react()],
   resolve: {
     alias: {
-      '@': Path.resolve(__dirname, '.'),  // <--- Add this line
+      '@': Path.resolve(__dirname, '.'), // <--- Add this line
     },
   },
   server: {
