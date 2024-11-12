@@ -35,6 +35,11 @@ const nextConfig = {
         hostname: 'example-apps.xyflow.com',
         pathname: '/react/**',
       },
+      {
+        protocol: 'https',
+        hostname: '*.vercel.app',
+        pathname: '/react/**',
+      },
     ],
   },
   env: {

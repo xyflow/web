@@ -52,6 +52,14 @@ export default function ExamplesOverviewPage({
         }, {}),
     [],
   );
+  const examplesUrl =
+  process.env.VERCEL_ENV === 'development' && process.env.VERCEL_GIT_COMMIT_REF
+    ? `https://example-apps-git-${process.env.VERCEL_GIT_COMMIT_REF}-xyflow.vercel.app`
+    : process.env.NEXT_PUBLIC_EXAMPLES_URL;
+
+    console.log('VERCEL_ENV:', process.env.VERCEL_ENV);
+    console.log('VERCEL_GIT_COMMIT_REF:', process.env.VERCEL_GIT_COMMIT_REF);
+    
 
   return (
     <>
@@ -60,7 +68,7 @@ export default function ExamplesOverviewPage({
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
             <Container className="col-span-2 aspect-video p-0">
               <Image
-                src={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/misc/overview/preview.jpg`}
+                src={`${examplesUrl}/react/examples/misc/overview/preview.jpg`}
                 width={1024}
                 height={768}
                 alt="Feature Overview Example Preview"
@@ -114,8 +122,8 @@ export default function ExamplesOverviewPage({
                         example.frontMatter.is_pro_example
                           ? `https://pro-examples.reactflow.dev/${example.name}/thumbnail.jpg`
                           : example.frontMatter.preview_path
-                            ? `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/${example.frontMatter.preview_path}`
-                            : `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react${example.route}/preview.jpg`
+                            ? `${examplesUrl}/${example.frontMatter.preview_path}`
+                            : `${examplesUrl}/react${example.route}/preview.jpg`
                       }
                       title={
                         <div className="flex items-center">
