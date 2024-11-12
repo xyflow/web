@@ -17,6 +17,7 @@ import { fetchFiles } from './fetchFiles';
 type OpenInCodesandboxProps = {
   framework: Framework;
   route: string;
+  examplesUrl: string;
   sandpackOptions?: Record<string, any>;
 };
 
@@ -31,6 +32,7 @@ type Dependencies = Record<string, string>;
 export function OpenInCodesandbox({
   framework,
   route,
+  examplesUrl,
   sandpackOptions,
 }: OpenInCodesandboxProps) {
   const [mountReroute, setMountReroute] = useState<null | {
@@ -40,7 +42,7 @@ export function OpenInCodesandbox({
 
   const openInCodesandbox = useCallback(async () => {
     try {
-      const { files, dependencies } = await fetchFiles(route, framework);
+      const { files, dependencies } = await fetchFiles(route, framework, examplesUrl);
 
       setMountReroute({ files, dependencies });
     } catch (e) {}

@@ -25,6 +25,7 @@ const defaultOptions = {
   readOnly: false,
 };
 
+
 export type RemoteCodeViewerProps = {
   route: string;
   framework?: Framework;
@@ -51,7 +52,13 @@ export function RemoteCodeViewer({
   const _framework: Framework =
     framework ?? (process.env.NEXT_PUBLIC_Framework as Framework) ?? 'react';
 
-  const preview = `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/${_framework}/${route}/index.html`;
+    const examplesUrl: string =
+    process.env.VERCEL_ENV === 'preview' && process.env.VERCEL_GIT_COMMIT_REF
+      ? `https://example-apps-git-${process.env.VERCEL_GIT_COMMIT_REF}-xyflow.vercel.app`
+      : (process.env.NEXT_PUBLIC_EXAMPLES_URL as string);
+  
+
+  const preview = `${examplesUrl}/${_framework}/${route}/index.html`;
 
   const isExample = route.includes('examples/');
   const isHorizontal = orientation
@@ -100,11 +107,12 @@ export function RemoteCodeViewer({
           className="example"
         />
         <div className="absolute bottom-5 right-5 flex">
-          <OpenInStackblitz framework={_framework} route={route} />
+          <OpenInStackblitz framework={_framework} route={route} examplesUrl={examplesUrl} />
           {showOpenInCodeSandbox && (
             <OpenInCodesandbox
               framework={_framework}
               route={route}
+              examplesUrl={examplesUrl} 
               sandpackOptions={sandpackOptions}
             />
           )}
