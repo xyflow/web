@@ -2,11 +2,12 @@ import { Framework } from '@xyflow/xy-ui';
 import { compileCodeSnippet } from './compile-code-snippet';
 import { CompiledMdx, ExampleCode } from '../types';
 import { loadJSONFile } from './utils';
-import { examplesUrl } from './../utils';
+import { ExamplesUrl } from './../utils';
 
 import path from 'path';
 
 export function getStaticCode(routes: string[], framework?: Framework) {
+  const examplesUrl = ExamplesUrl();
   return async () => {
     const _framework =
       framework ?? process.env.NEXT_PUBLIC_FRAMEWORK ?? 'react';

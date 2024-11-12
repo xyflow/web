@@ -13,7 +13,7 @@ import {
 import { RemoteContent } from '../../components/remote-content';
 import { SharedContext } from '../../context/shared-context';
 import { CompiledMdx } from '../../types';
-import { examplesUrl } from '../../utils';
+import { ExamplesUrl } from '../../utils';
 
 
 import './style.css';
@@ -53,7 +53,8 @@ export function RemoteCodeViewer({
 }: RemoteCodeViewerProps) {
   const _framework: Framework =
     framework ?? (process.env.NEXT_PUBLIC_Framework as Framework) ?? 'react';
-
+  
+  const examplesUrl = ExamplesUrl();
   const preview = `${examplesUrl}/${_framework}/${route}/index.html`;
 
   const isExample = route.includes('examples/');
