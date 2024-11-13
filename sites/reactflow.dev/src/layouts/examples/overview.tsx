@@ -10,7 +10,7 @@ import {
   Button,
   Link,
 } from '@xyflow/xy-ui';
-import { ProjectPreview, getMdxPagesUnderRoute, ExamplesUrl, ExamplesUrlTest } from 'xy-shared';
+import { ProjectPreview, getMdxPagesUnderRoute, ExamplesUrl } from 'xy-shared';
 
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 
@@ -20,7 +20,6 @@ export default function ExamplesOverviewPage({
   category?: string;
 }) {
   const examplesUrl = ExamplesUrl();
-  const examplesUrlTest = ExamplesUrlTest();
 
   const examples = useMemo(
     () =>
@@ -59,7 +58,6 @@ export default function ExamplesOverviewPage({
   return (
     <>
     {examplesUrl}
-    {examplesUrlTest}
       <Section className="!px-0">
         <Link href="/examples/overview" className="hover:no-underline group">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
@@ -115,7 +113,6 @@ export default function ExamplesOverviewPage({
                     className="border-none py-6 lg:py-8 lg:px-0 hover:bg-white group"
                   >
                     {examplesUrl}
-                    {examplesUrlTest}
                     <ProjectPreview
                       image={
                         example.frontMatter.is_pro_example

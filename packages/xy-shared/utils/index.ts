@@ -1,12 +1,15 @@
-export function ExamplesUrl() {
-    if (process.env.VERCEL_ENV === 'preview' && process.env.VERCEL_GIT_COMMIT_REF) {
-        return `https://example-apps-git-${process.env.VERCEL_GIT_COMMIT_REF}-xyflow.vercel.app`
-    }
-    // return process.env.NEXT_PUBLIC_EXAMPLES_URL
-    return "https://example-apps-git-test-xyflow.vercel.app"
-}
+import { useEffect, useState } from 'react';
 
-export function ExamplesUrlTest() {
-  const statement = `${process.env.VERCEL_ENV || 'unknown'}-${process.env.VERCEL_GIT_COMMIT_REF || 'unknown'}`;
-  return statement;
+export function ExamplesUrl() {
+    const [url, setUrl] = useState("");
+
+    useEffect(() => {
+        if (process.env.VERCEL_ENV === 'preview' && process.env.VERCEL_GIT_COMMIT_REF) {
+            setUrl(`https://example-apps-git-${process.env.VERCEL_GIT_COMMIT_REF}-xyflow.vercel.app`);
+        } else {
+            setUrl("https://example-apps-git-test-xyflow.vercel.app");
+        }
+    }, []);
+
+    return url;
 }
