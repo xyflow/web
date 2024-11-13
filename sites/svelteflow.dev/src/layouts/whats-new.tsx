@@ -31,6 +31,7 @@ export default function WhatsNew() {
           mdx={src.mdx}
           frontmatter={src.frontmatter}
           remoteCodeViewer={RemoteCodeViewer}
+          exampleUrl={process.env.NEXT_PUBLIC_EXAMPLES_URL}
         />
       ))}
     </BaseLayout>
