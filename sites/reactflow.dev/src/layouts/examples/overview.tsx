@@ -10,7 +10,27 @@ import {
   Button,
   Link,
 } from '@xyflow/xy-ui';
-import { ProjectPreview, getMdxPagesUnderRoute, ExamplesUrl } from 'xy-shared';
+import { ProjectPreview, getMdxPagesUnderRoute } from 'xy-shared';
+
+
+// export const getStaticProps = async () => {
+//   console.log('VERCEL_ENV:', process.env.VERCEL_ENV);
+//   console.log('VERCEL_GIT_COMMIT_REF:', process.env.VERCEL_GIT_COMMIT_REF);
+//   console.log('NEXT_PUBLIC_EXAMPLES_URL:', process.env.NEXT_PUBLIC_EXAMPLES_URL);
+
+//   let examplesUrl;
+
+//   if (process.env.VERCEL_ENV === 'preview' && process.env.VERCEL_GIT_COMMIT_REF) {
+//       examplesUrl = `https://example-apps-git-${process.env.VERCEL_GIT_COMMIT_REF}-xyflow.vercel.app`;
+//   } else {
+//       examplesUrl = process.env.NEXT_PUBLIC_EXAMPLES_URL || '';
+//   }
+
+//   return {
+//       props: { examplesUrl }
+//   };
+// };
+
 
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 
@@ -19,7 +39,6 @@ export default function ExamplesOverviewPage({
 }: {
   category?: string;
 }) {
-  const examplesUrl = ExamplesUrl();
 
   const examples = useMemo(
     () =>
@@ -57,13 +76,12 @@ export default function ExamplesOverviewPage({
     
   return (
     <>
-    {examplesUrl}
       <Section className="!px-0">
         <Link href="/examples/overview" className="hover:no-underline group">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
             <Container className="col-span-2 aspect-video p-0">
               <Image
-                src={`${examplesUrl}/react/examples/misc/overview/preview.jpg`}
+                src={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/misc/overview/preview.jpg`}
                 width={1024}
                 height={768}
                 alt="Feature Overview Example Preview"
@@ -112,14 +130,13 @@ export default function ExamplesOverviewPage({
                     route={example.route}
                     className="border-none py-6 lg:py-8 lg:px-0 hover:bg-white group"
                   >
-                    {examplesUrl}
                     <ProjectPreview
                       image={
                         example.frontMatter.is_pro_example
                           ? `https://pro-examples.reactflow.dev/${example.name}/thumbnail.jpg`
                           : example.frontMatter.preview_path
-                            ? `${examplesUrl}/${example.frontMatter.preview_path}`
-                            : `${examplesUrl}/react${example.route}/preview.jpg`
+                            ? `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/${example.frontMatter.preview_path}`
+                            : `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react${example.route}/preview.jpg`
                       }
                       title={
                         <div className="flex items-center">
