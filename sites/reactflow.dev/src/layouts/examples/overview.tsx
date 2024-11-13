@@ -110,6 +110,7 @@ export default function ExamplesOverviewPage({
                     route={example.route}
                     className="border-none py-6 lg:py-8 lg:px-0 hover:bg-white group"
                   >
+                    {examplesUrl}
                     <ProjectPreview
                       image={
                         example.frontMatter.is_pro_example
