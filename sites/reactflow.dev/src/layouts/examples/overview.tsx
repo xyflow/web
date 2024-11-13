@@ -12,26 +12,6 @@ import {
 } from '@xyflow/xy-ui';
 import { ProjectPreview, getMdxPagesUnderRoute } from 'xy-shared';
 
-
-// export const getStaticProps = async () => {
-//   console.log('VERCEL_ENV:', process.env.VERCEL_ENV);
-//   console.log('VERCEL_GIT_COMMIT_REF:', process.env.VERCEL_GIT_COMMIT_REF);
-//   console.log('NEXT_PUBLIC_EXAMPLES_URL:', process.env.NEXT_PUBLIC_EXAMPLES_URL);
-
-//   let examplesUrl;
-
-//   if (process.env.VERCEL_ENV === 'preview' && process.env.VERCEL_GIT_COMMIT_REF) {
-//       examplesUrl = `https://example-apps-git-${process.env.VERCEL_GIT_COMMIT_REF}-xyflow.vercel.app`;
-//   } else {
-//       examplesUrl = process.env.NEXT_PUBLIC_EXAMPLES_URL || '';
-//   }
-
-//   return {
-//       props: { examplesUrl }
-//   };
-// };
-
-
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 
 export default function ExamplesOverviewPage({

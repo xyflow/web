@@ -2,7 +2,6 @@ import { useData } from 'nextra/hooks';
 import { PencilSquareIcon } from '@heroicons/react/24/outline';
 import {
   BaseLayout,
-  ExamplesUrl,
   Hero,
   RemoteCodeViewer,
   TimelineEvent,
@@ -15,7 +14,6 @@ import ProExampleViewer from '@/components/pro-example-viewer';
 
 export default function WhatsNew() {
   const mdx = useData('mdx') as TimelineEventProps[];
-  const examplesUrl = ExamplesUrl();
   return (
     <BaseLayout className="space-y-32 max-w-screen-lg mx-auto">
       <Hero
@@ -40,7 +38,7 @@ export default function WhatsNew() {
           proExampleViewer={ProExampleViewer}
           remoteCodeViewer={RemoteCodeViewer}
           // We need to pass the env var here, because we don't have access to it inside the mdx when using MDXRemote
-          exampleUrl={examplesUrl}
+          exampleUrl={process.env.NEXT_PUBLIC_EXAMPLES_URL}
         />
       ))}
     </BaseLayout>
