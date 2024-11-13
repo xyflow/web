@@ -57,7 +57,7 @@ const demoOutputPath = path.join(__dirname, "../public/demo");
       // Read demo.tsx file and add it to the demo object
       // TODO: support multiple demo files
       const demoTsx = fs.readFileSync(demoPath, "utf8");
-      const demoClean = demoTsx.replace(/\/registry\//g, "");
+      const demoClean = demoTsx.replace(/registry\//g, "");
       const demoFile = {
         files: [
           {
