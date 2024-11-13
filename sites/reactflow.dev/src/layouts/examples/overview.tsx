@@ -13,13 +13,14 @@ import {
 import { ProjectPreview, getMdxPagesUnderRoute, ExamplesUrl } from 'xy-shared';
 
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
-const examplesUrl = ExamplesUrl();
 
 export default function ExamplesOverviewPage({
   category,
 }: {
   category?: string;
 }) {
+  const examplesUrl = ExamplesUrl();
+
   const examples = useMemo(
     () =>
       [
@@ -56,6 +57,7 @@ export default function ExamplesOverviewPage({
     
   return (
     <>
+    {examplesUrl}
       <Section className="!px-0">
         <Link href="/examples/overview" className="hover:no-underline group">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
