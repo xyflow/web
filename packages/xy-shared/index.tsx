@@ -41,5 +41,3 @@ export * from './lib';
 export * from './context/shared-context';
 
 export * from './types';
-
-export * from './utils';

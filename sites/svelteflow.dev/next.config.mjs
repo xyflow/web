@@ -18,6 +18,10 @@ const nextConfig = {
   },
   env: {
     SVELTE_FLOW_VERSION,
+    NEXT_PUBLIC_EXAMPLES_URL:
+    process.env.VERCEL_ENV === 'preview'
+      ? `https://example-apps-git-${process.env.VERCEL_GIT_COMMIT_REF}-xyflow.vercel.app`
+      : process.env.NEXT_PUBLIC_EXAMPLES_URL,
   },
   images: {
     remotePatterns: [
@@ -35,6 +39,11 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'example-apps.xyflow.com',
         pathname: '/svelte/**',
+      },
+      {
+        protocol: 'https',
+        hostname: '*.vercel.app',
+        pathname: '/react/**',
       },
     ],
   },

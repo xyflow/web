@@ -10,7 +10,7 @@ import {
   Button,
   Link,
 } from '@xyflow/xy-ui';
-import { ProjectPreview, getMdxPagesUnderRoute, ExamplesUrl } from 'xy-shared';
+import { ProjectPreview, getMdxPagesUnderRoute } from 'xy-shared';
 
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 
@@ -19,7 +19,6 @@ export default function ExamplesOverviewPage({
 }: {
   category?: string;
 }) {
-  const examplesUrl = ExamplesUrl();
 
   const examples = useMemo(
     () =>
@@ -62,7 +61,7 @@ export default function ExamplesOverviewPage({
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
             <Container className="col-span-2 aspect-video">
               <Image
-                src={`${examplesUrl}/svelte/examples/misc/feature-overview/preview.jpg`}
+                src={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/examples/misc/feature-overview/preview.jpg`}
                 width={1024}
                 height={768}
                 alt="Feature Overview Example Preview"
@@ -112,7 +111,7 @@ export default function ExamplesOverviewPage({
                     className="border-none py-6 lg:py-8 lg:px-0 hover:bg-white group"
                   >
                     <ProjectPreview
-                      image={`${examplesUrl}/svelte${example.route}/preview.jpg`}
+                      image={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte${example.route}/preview.jpg`}
                       title={
                         <div className="flex items-center">
                           {example.frontMatter?.title}

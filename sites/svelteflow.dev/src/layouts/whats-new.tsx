@@ -3,7 +3,6 @@ import { PencilSquareIcon } from '@heroicons/react/24/outline';
 import {
   BaseLayout,
   Hero,
-  ExamplesUrl,
   TimelineEvent,
   TimelineEventProps,
   RemoteCodeViewer,
@@ -11,7 +10,6 @@ import {
 
 export default function WhatsNew() {
   const mdx = useData('mdx') as TimelineEventProps[];
-  const examplesUrl = ExamplesUrl();
   return (
     <BaseLayout className="space-y-32 max-w-screen-lg mx-auto">
       <Hero
@@ -33,7 +31,6 @@ export default function WhatsNew() {
           mdx={src.mdx}
           frontmatter={src.frontmatter}
           remoteCodeViewer={RemoteCodeViewer}
-          exampleUrl={examplesUrl}
         />
       ))}
     </BaseLayout>

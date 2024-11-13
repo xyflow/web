@@ -6,7 +6,6 @@ import {
   BaseLayout,
   AboutSection,
   ImageSlider,
-  ExamplesUrl,
   HeroFlow,
   Features,
   GettingStarted,
@@ -19,15 +18,13 @@ import FlowC from './flows/flow-c';
 
 import type { InternalRoute } from '@/utils';
 
-const examplesUrl = ExamplesUrl();
-
 const sliderItems = [
   {
     name: 'Feature Overview',
     text: 'Many features of Svelte Flow require zero configuration',
     content: (
       <iframe
-        src={`${examplesUrl}/svelte/examples/misc/feature-overview/index.html`}
+        src={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/examples/misc/feature-overview/index.html`}
         loading="lazy"
         width="100%"
         height="100%"
@@ -40,7 +37,7 @@ const sliderItems = [
     text: 'Svelte Flow supports nested graphs out of the box',
     content: (
       <iframe
-        src={`${examplesUrl}/svelte/examples/layout/subflows/index.html`}
+        src={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/examples/layout/subflows/index.html`}
         loading="lazy"
         width="100%"
         height="100%"
@@ -53,7 +50,7 @@ const sliderItems = [
     text: 'The component comes with a set of common edge types',
     content: (
       <iframe
-        src={`${examplesUrl}/svelte/examples/edges/edge-types/index.html`}
+        src={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/examples/edges/edge-types/index.html`}
         loading="lazy"
         width="100%"
         height="100%"

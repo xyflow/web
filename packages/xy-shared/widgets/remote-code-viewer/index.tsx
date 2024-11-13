@@ -13,7 +13,6 @@ import {
 import { RemoteContent } from '../../components/remote-content';
 import { SharedContext } from '../../context/shared-context';
 import { CompiledMdx } from '../../types';
-import { ExamplesUrl } from '../../utils';
 
 
 import './style.css';
@@ -54,8 +53,7 @@ export function RemoteCodeViewer({
   const _framework: Framework =
     framework ?? (process.env.NEXT_PUBLIC_Framework as Framework) ?? 'react';
   
-  const examplesUrl = ExamplesUrl();
-  const preview = `${examplesUrl}/${_framework}/${route}/index.html`;
+  const preview = `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/${_framework}/${route}/index.html`;
 
   const isExample = route.includes('examples/');
   const isHorizontal = orientation
@@ -104,12 +102,11 @@ export function RemoteCodeViewer({
           className="example"
         />
         <div className="absolute bottom-5 right-5 flex">
-          <OpenInStackblitz framework={_framework} route={route} examplesUrl={examplesUrl} />
+          <OpenInStackblitz framework={_framework} route={route} />
           {showOpenInCodeSandbox && (
             <OpenInCodesandbox
               framework={_framework}
               route={route}
-              examplesUrl={examplesUrl} 
               sandpackOptions={sandpackOptions}
             />
           )}

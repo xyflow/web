@@ -7,7 +7,6 @@ import { fetchFiles } from './fetchFiles';
 type OpenInStackblitzProps = {
   framework: Framework;
   route: string;
-  examplesUrl: string;
 };
 
 type Files = {
@@ -16,10 +15,10 @@ type Files = {
   };
 };
 
-export function OpenInStackblitz({ framework, route, examplesUrl }: OpenInStackblitzProps) {
+export function OpenInStackblitz({ framework, route }: OpenInStackblitzProps) {
   const openInStackblitz = useCallback(async () => {
     try {
-      const { files, dependencies } = await fetchFiles(route, framework, examplesUrl);
+      const { files, dependencies } = await fetchFiles(route, framework);
       const { project, options } = prepare(framework, files, dependencies);
 
       sdk.openProject(project, options);
