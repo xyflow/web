@@ -43,7 +43,7 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: '*.vercel.app',
-        pathname: '/react/**',
+        pathname: '/svelte/**',
       },
     ],
   },
