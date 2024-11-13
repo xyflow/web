@@ -13,13 +13,14 @@ import {
 import { ProjectPreview, getMdxPagesUnderRoute, ExamplesUrl } from 'xy-shared';
 
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
-const examplesUrl = ExamplesUrl();
 
 export default function ExamplesOverviewPage({
   category,
 }: {
   category?: string;
 }) {
+  const examplesUrl = ExamplesUrl();
+
   const examples = useMemo(
     () =>
       [
