@@ -53,6 +53,11 @@
     border-color: #d9d9d9;
 }
 
+.react-flow__node.selectable:focus:active {
+    box-shadow: var(--xy-node-boxshadow-default);
+}
+
+
 .react-flow__node.selectable:hover, 
 .react-flow__node.draggable:hover {
     border-color: var(--xy-theme-hover);
