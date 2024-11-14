@@ -12,10 +12,11 @@ import {
 
 import '@xyflow/react/dist/style.css';
 
+
 import TextNode from './TextNode';
 import ResultNode from './ResultNode';
 import UppercaseNode from './UppercaseNode';
-import { type MyNode } from './utils';
+import { type MyNode } from './initialElements';
 
 const nodeTypes = {
   text: TextNode,
@@ -90,6 +91,7 @@ const CustomNodeFlow = () => {
       onConnect={onConnect}
       nodeTypes={nodeTypes}
       fitView
+      style={{ backgroundColor: "#F7F9FB" }}
     >
       <Controls />
       <Background />

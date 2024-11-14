@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
 import {
+  Background,
   ReactFlow,
   addEdge,
   ConnectionLineType,
@@ -8,11 +9,12 @@ import {
   useEdgesState,
 } from '@xyflow/react';
 
-import CustomNode from './CustomNode';
-import { initialTree, treeRootId } from './nodes-edges';
-import { layoutElements } from './layout-elements';
-
 import '@xyflow/react/dist/style.css';
+
+
+import CustomNode from './CustomNode';
+import { initialTree, treeRootId } from './initialElements';
+import { layoutElements } from './layout-elements';
 
 const nodeTypes = {
   custom: CustomNode,
@@ -62,11 +64,13 @@ const LayoutFlow = () => {
       connectionLineType={ConnectionLineType.SmoothStep}
       fitView
       nodeTypes={nodeTypes}
+      style={{ backgroundColor: "#F7F9FB" }}
     >
       <Panel position="top-right">
         <button onClick={() => onLayout('TB')}>vertical layout</button>
         <button onClick={() => onLayout('LR')}>horizontal layout</button>
       </Panel>
+      <Background />
     </ReactFlow>
   );
 };

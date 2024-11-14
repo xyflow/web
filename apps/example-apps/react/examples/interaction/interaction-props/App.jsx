@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import {
+  Background,
   ReactFlow,
   useNodesState,
   useEdgesState,
@@ -10,6 +11,8 @@ import {
 } from '@xyflow/react';
 
 import '@xyflow/react/dist/style.css';
+
+
 
 const initialNodes = [
   {
@@ -95,6 +98,7 @@ const InteractionFlow = () => {
       onPaneContextMenu={captureZoomClick ? onPaneContextMenu : undefined}
       fitView
       attributionPosition="top-right"
+      style={{ backgroundColor: "#F7F9FB" }}
     >
       <MiniMap />
       <Controls />
@@ -236,6 +240,7 @@ const InteractionFlow = () => {
           </label>
         </div>
       </Panel>
+      <Background />
     </ReactFlow>
   );
 };

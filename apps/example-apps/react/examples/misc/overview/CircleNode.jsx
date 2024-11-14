@@ -9,17 +9,15 @@ export default memo(({ id }) => {
       return null;
     }
 
-    return `position x:${parseInt(node.position.x)} y:${parseInt(
+    return `Position x:${parseInt(node.position.x)} y:${parseInt(
       node.position.y,
     )}`;
   });
 
   return (
-    <>
-      <div className="wrapper gradient">
-        <div className="inner">{label || 'no node connected'}</div>
-      </div>
-      <Handle type="target" position={Position.Left} />
-    </>
+    <div>
+      <div>{label || 'no node connected'}</div>
+      <Handle type="target" position={Position.Left} className='custom-handle' />
+    </div>
   );
 });

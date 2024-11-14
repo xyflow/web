@@ -1,3 +1,6 @@
+import '@xyflow/react/dist/style.css';
+
+
 import React, { useCallback, useState } from 'react';
 import {
   ReactFlow,
@@ -5,16 +8,15 @@ import {
   useEdgesState,
   addEdge,
   MiniMap,
+  Background,
   Controls,
   Panel,
 } from '@xyflow/react';
 import styled, { ThemeProvider } from 'styled-components';
 
-import { nodes as initialNodes, edges as initialEdges } from './nodes-edges';
+import { nodes as initialNodes, edges as initialEdges } from './initialElements';
 import { darkTheme, lightTheme } from './theme';
 import CustomNode from './CustomNode';
-
-import '@xyflow/react/dist/style.css';
 
 const nodeTypes = {
   custom: CustomNode,
@@ -74,6 +76,7 @@ const Flow = ({ children }) => {
     >
       <MiniMapStyled />
       <ControlsStyled />
+      <Background />
       {children}
     </ReactFlowStyled>
   );

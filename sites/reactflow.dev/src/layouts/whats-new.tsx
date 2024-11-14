@@ -8,11 +8,12 @@ import {
   TimelineEventProps,
 } from 'xy-shared';
 
+
+
 import ProExampleViewer from '@/components/pro-example-viewer';
 
 export default function WhatsNew() {
   const mdx = useData('mdx') as TimelineEventProps[];
-
   return (
     <BaseLayout className="space-y-32 max-w-screen-lg mx-auto">
       <Hero

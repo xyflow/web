@@ -6,7 +6,9 @@ import {
   addEdge,
   Background,
 } from '@xyflow/react';
+
 import '@xyflow/react/dist/style.css';
+
 
 import CustomNode from './CustomNode';
 import ConnectionLine from './ConnectionLine';
@@ -45,9 +47,12 @@ const ConnectionLineFlow = () => {
       fitViewOptions={{
         padding: 0.2,
       }}
-    >
-      <Background variant="lines" />
-    </ReactFlow>
+      style={{ backgroundColor: "#F7F9FB" }}
+      >
+        <Background />
+      </ReactFlow>
+  
+  
   );
 };
 

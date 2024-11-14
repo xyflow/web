@@ -5,7 +5,6 @@ import {
   useNodesState,
   useEdgesState,
   Background,
-  BackgroundVariant,
   ReactFlowProvider,
   useStoreApi,
   useReactFlow,
@@ -13,7 +12,8 @@ import {
 
 import '@xyflow/react/dist/style.css';
 
-import { initialEdges, initialNodes } from './nodes-and-edges';
+
+import { initialEdges, initialNodes } from './initialElements';
 
 const MIN_DISTANCE = 150;
 
@@ -130,9 +130,10 @@ const Flow = () => {
       onNodeDrag={onNodeDrag}
       onNodeDragStop={onNodeDragStop}
       onConnect={onConnect}
+      style={{ backgroundColor: "#F7F9FB" }}
       fitView
     >
-      <Background variant={BackgroundVariant.Cross} gap={50} />
+      <Background  />
     </ReactFlow>
   );
 };

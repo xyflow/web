@@ -11,17 +11,9 @@ function TextNode({ id, data }: NodeProps<Node<{ text: string }>>) {
   const { updateNodeData } = useReactFlow();
 
   return (
-    <div
-      style={{
-        background: '#eee',
-        color: '#222',
-        padding: 10,
-        fontSize: 12,
-        borderRadius: 10,
-      }}
-    >
+    <div>
       <div>node {id}</div>
-      <div style={{ marginTop: 5 }}>
+      <div>
         <input
           onChange={(evt) => updateNodeData(id, { text: evt.target.value })}
           value={data.text}

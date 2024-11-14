@@ -1,3 +1,5 @@
+@import url('./xy-theme.css');
+
 html,
 body {
   margin: 0;
@@ -20,7 +22,6 @@ body {
 .simple-floatingedges .react-flow__handle {
   width: 8px;
   height: 8px;
-  background-color: #bbb;
 }
 
 .simple-floatingedges .react-flow__handle-top {
@@ -37,15 +38,4 @@ body {
 
 .simple-floatingedges .react-flow__handle-right {
   right: -15px;
-}
-
-.simple-floatingedges .react-flow__node-custom {
-  background: #fff;
-  border: 1px solid #1a192b;
-  border-radius: 3px;
-  color: #222;
-  font-size: 12px;
-  padding: 10px;
-  text-align: center;
-  width: 150px;
 }

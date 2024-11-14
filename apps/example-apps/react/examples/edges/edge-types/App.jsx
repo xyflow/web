@@ -7,7 +7,9 @@ import {
   Controls,
   Background,
 } from '@xyflow/react';
+
 import '@xyflow/react/dist/style.css';
+
 
 const initialNodes = [
   {
@@ -100,10 +102,11 @@ const EdgeTypesFlow = () => {
       onConnect={onConnect}
       fitView
       minZoom={0.2}
-    >
-      <Controls />
-      <Background />
-    </ReactFlow>
+      style={{ backgroundColor: "#F7F9FB" }}
+      >
+        <Controls />
+        <Background />
+      </ReactFlow>
   );
 };
 

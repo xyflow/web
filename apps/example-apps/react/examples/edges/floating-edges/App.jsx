@@ -7,15 +7,15 @@ import {
   useEdgesState,
   MarkerType,
 } from '@xyflow/react';
+
 import '@xyflow/react/dist/style.css';
+
 
 import FloatingEdge from './FloatingEdge';
 import FloatingConnectionLine from './FloatingConnectionLine';
-import { createNodesAndEdges } from './utils';
+import { initialElements } from './initialElements';
 
-import './index.css';
-
-const { nodes: initialNodes, edges: initialEdges } = createNodesAndEdges();
+const { nodes: initialNodes, edges: initialEdges } = initialElements();
 
 const edgeTypes = {
   floating: FloatingEdge,
@@ -40,7 +40,7 @@ const NodeAsHandleFlow = () => {
   );
 
   return (
-    <div className="floatingedges">
+    <div className="floating-edges">
       <ReactFlow
         nodes={nodes}
         edges={edges}
@@ -50,6 +50,7 @@ const NodeAsHandleFlow = () => {
         fitView
         edgeTypes={edgeTypes}
         connectionLineComponent={FloatingConnectionLine}
+        style={{ backgroundColor: "#F7F9FB" }}
       >
         <Background />
       </ReactFlow>

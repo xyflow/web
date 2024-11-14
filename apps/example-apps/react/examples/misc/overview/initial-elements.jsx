@@ -17,7 +17,7 @@ export const nodes = [
         transform: 'translate(-30px,10px) rotate(-80deg)',
       },
     },
-    position: { x: -80, y: -30 },
+    position: { x: -200, y: -30 },
   },
   {
     id: '1-1',
@@ -69,20 +69,16 @@ export const nodes = [
     style: {
       width: 380,
       height: 180,
-      backgroundColor: 'rgba(208, 192, 247, 0.2)',
     },
   },
   {
     id: '2-2',
-    data: {
-      label: 'Node with Toolbar',
-    },
+    data: {},
     type: 'tools',
     position: { x: 50, y: 50 },
     style: {
       width: 80,
       height: 80,
-      background: 'rgb(208, 192, 247)',
     },
     parentId: '2-1',
     extent: 'parent',
@@ -91,14 +87,12 @@ export const nodes = [
     id: '2-3',
     type: 'resizer',
     data: {
-      label: 'resizable node',
+      label: 'Resize Me',
     },
     position: { x: 250, y: 50 },
     style: {
       width: 80,
       height: 80,
-      background: 'rgb(208, 192, 247)',
-      color: 'white',
     },
     parentId: '2-1',
     extent: 'parent',
@@ -173,7 +167,7 @@ export const edges = [
     target: '3-2',
     type: 'button',
     animated: true,
-    style: { stroke: 'rgb(158, 118, 255)', strokeWidth: 2 },
+    style: { stroke: 'rgb(158, 118, 255)' },
   },
   {
     id: 'e3-4',
@@ -181,6 +175,5 @@ export const edges = [
     sourceHandle: 'b',
     target: '3-1',
     type: 'button',
-    style: { strokeWidth: 2 },
   },
 ];

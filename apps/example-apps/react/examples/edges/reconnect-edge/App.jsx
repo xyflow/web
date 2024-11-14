@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import {
   ReactFlow,
+  Background,
   useNodesState,
   useEdgesState,
   Controls,
@@ -9,6 +10,7 @@ import {
 } from '@xyflow/react';
 
 import '@xyflow/react/dist/style.css';
+
 
 const initialNodes = [
   {
@@ -47,7 +49,6 @@ const initialNodes = [
     style: {
       background: '#D6D5E6',
       color: '#333',
-      border: '1px solid #222138',
       width: 180,
     },
   },
@@ -134,9 +135,11 @@ const EdgeReconnect = () => {
       onConnect={onConnect}
       fitView
       attributionPosition="top-right"
-    >
-      <Controls />
-    </ReactFlow>
+      style={{ backgroundColor: "#F7F9FB" }}
+      >
+        <Controls />
+        <Background />
+      </ReactFlow>
   );
 };
 

@@ -24,7 +24,7 @@ export function TimelineEvent({
   frontmatter,
   proExampleViewer: ProExampleViewer,
   remoteCodeViewer: RemoteCodeViewer,
-  exampleUrl = '',
+  exampleUrl,
   mdx = '',
 }: TimelineEventProps) {
   return (

@@ -11,6 +11,7 @@ import {
 
 import '@xyflow/react/dist/style.css';
 
+
 import {
   nodes as initialNodes,
   edges as initialEdges,
@@ -19,7 +20,7 @@ import AnnotationNode from './AnnotationNode';
 import ToolbarNode from './ToolbarNode';
 import ResizerNode from './ResizerNode';
 import CircleNode from './CircleNode';
-import TextNode from './TextNode';
+import TextInputNode from './TextInputNode';
 import ButtonEdge from './ButtonEdge';
 
 const nodeTypes = {
@@ -27,7 +28,7 @@ const nodeTypes = {
   tools: ToolbarNode,
   resizer: ResizerNode,
   circle: CircleNode,
-  textinput: TextNode,
+  textinput: TextInputNode,
 };
 
 const edgeTypes = {
@@ -55,11 +56,11 @@ const OverviewFlow = () => {
       attributionPosition="top-right"
       nodeTypes={nodeTypes}
       edgeTypes={edgeTypes}
-      className="overview"
+      style={{ backgroundColor: "#F7F9FB" }}
     >
       <MiniMap zoomable pannable nodeClassName={nodeClassName} />
       <Controls />
-      <Background />
+    <Background  />
     </ReactFlow>
   );
 };

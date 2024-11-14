@@ -1,3 +1,5 @@
+@import url('./xy-theme.css');
+
 html,
 body {
   margin: 0;
@@ -10,80 +12,143 @@ body {
   height: 100vh;
 }
 
-.overview * {
-  box-sizing: border-box;
-}
+/* Circle Node */
 
-.overview .react-flow__controls button {
-  box-sizing: content-box;
-}
-
-.overview .react-flow__node {
-  font-size: 12px;
-}
-
-.edgebutton {
-  width: 20px;
-  height: 20px;
-  background: #eee;
-  border: 1px solid #fff;
-  cursor: pointer;
+.react-flow__node-circle {
   border-radius: 50%;
-  font-size: 12px;
-  line-height: 1;
-}
-
-.edgebutton:hover {
-  box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.08);
-}
-
-.react-flow__node-tools {
-  border: 1px solid #333;
-  background: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 100px;
+  width: 100px;
+  font-family: monospace;
   text-align: center;
 }
 
+/* Text Input Node */
+
+.react-flow__node-textinput {
+  width: 150px;
+  font-family: monospace;
+  text-align: left;
+}
+
+.text-input-node__input {
+  width: 100%;
+  box-sizing: border-box;
+  margin: 5px 0px;
+  border-radius: 3px;
+  border: var(--xy-node-border-default);
+}
+
+.text-input-node__input::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.text-input-node__input {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+/* Annotation Node */
+
+.react-flow__node-annotation {
+  font-size: 16px;
+  width: 200px;
+  color: #683bfa;
+  position: absolute;
+  box-shadow: none;
+  font-family: monospace;
+  text-align: left;
+  background-color: transparent;
+  border: none;
+}
+
+.react-flow__node-annotation .annotation-content {
+  padding: 10px;
+  display: flex;
+}
+
+.react-flow__node-annotation .annotation-level {
+  margin-right: 4px;
+}
+
+.react-flow__node-annotation .annotation-arrow {
+  position: absolute;
+  font-size: 24px;
+}
+
+/* Toolbar Node */
+
 .react-flow__node-toolbar {
-  border-radius: 5px;
-  box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.08);
+  background-color: #000000;
+  border-radius: 16px;
+  overflow: hidden;
 }
 
 .react-flow__node-toolbar button {
-  border: 1px solid #eee;
-  background: white;
   cursor: pointer;
+  background: inherit;
+  border: none;
+  padding: 5px 7px;
+  margin: 3px;
+  border-radius: 50%;
+  box-shadow: var(--xy-node-boxshadow-default);
 }
 
 .react-flow__node-toolbar button:hover {
-  background: #f5f5f6;
+  background: #4d4d4d;
 }
 
-.react-flow__node-toolbar button:first-child {
-  border-radius: 5px 0 0 5px;
-  border-right: none;
-}
+/* Resizer Node */
 
-.react-flow__node-toolbar button:last-child {
-  border-radius: 0 5px 5px 0;
-  border-left: none;
-}
-
-.react-flow__node-resizer {
-  background: white;
+.resizer-node__handles {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  justify-content: space-evenly;
+  left: 0;
 }
 
-.react-flow__node-resizer .react-flow__handle,
-.react-flow__node-circle .react-flow__handle,
-.react-flow__node-textinput .react-flow__handle {
-  background: #bbb;
-  border-radius: 0;
+.resizer-node__handle {
+  position: relative;
+  left: 0;
+  transform: none;
+}
+
+/* Button Edge */
+
+.button-edge__label {
+  position: absolute;
+  pointer-events: all;
+  transform-origin: center;
+}
+
+.button-edge__button {
+  width: 30px;
+  height: 30px;
+  border: 5px solid #f7f9fb;
+  color: var(--xy-edge-node-color-default);
+  background-color: #f3f3f4;
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: 12px;
+  padding-top: 0px;
+}
+
+.button-edge__button:hover {
+  background-color: var(--xy-theme-hover);
+  color: #ffffff;
+}
+
+.react-flow__edge-textbg {
+  fill: #f7f9fb;
+}
+
+/* Custom Handles */
+
+.react-flow__handle.custom-handle {
+  background-color: var(--xy-handle-border-color-default);
+  border-radius: 1px;
   width: 8px;
   height: 4px;
   border: none;
@@ -91,127 +156,30 @@ body {
   min-height: 2px;
 }
 
-.react-flow__node-resizer .react-flow__handle-bottom,
-.react-flow__node-circle .react-flow__handle-bottom,
-.react-flow__node-textinput .react-flow__handle-bottom {
+.react-flow__handle.custom-handle:hover,
+.react-flow__handle.custom-handle.connectionindicator:focus,
+.react-flow__handle.custom-handle.connectingfrom,
+.react-flow__handle.custom-handle.connectingto {
+  background-color: var(--xy-theme-edge-hover);
+}
+
+.react-flow__handle-bottom.custom-handle {
   bottom: -5px;
   transform: none;
-  border-radius: 0 0 2px 2px;
 }
 
-.react-flow__node-resizer .react-flow__handle-top,
-.react-flow__node-circle .react-flow__handle-top,
-.react-flow__node-textinput .react-flow__handle-top {
+.react-flow__handle-top.custom-handle {
   top: -5px;
   transform: none;
-  border-radius: 2px 2px 0 0;
 }
 
-.react-flow__node-resizer .react-flow__handle-left,
-.react-flow__node-circle .react-flow__handle-left,
-.react-flow__node-textinput .react-flow__handle-left {
+.react-flow__handle-left.custom-handle {
   height: 8px;
   width: 4px;
-  left: -5px;
-  border-radius: 2px 0 0 2px;
+  left: -3px;
 }
 
-.react-flow__node-annotation {
-  font-size: 16px;
-  width: 200px;
-  color: rgb(158, 118, 255);
-  font-family: monospace;
-  position: absolute;
-}
-
-.react-flow__node-annotation .arrow {
-  position: absolute;
-  font-size: 24px;
-}
-
-.react-flow__node-circle,
-.react-flow__node-textinput {
-  color: #fff;
-  border-radius: 100%;
-  display: flex;
-  height: 75px;
-  width: 75px;
-  box-shadow:
-    6px 2px 15px rgba(42, 138, 246, 0.3),
-    -6px 2px 15px rgba(233, 42, 103, 0.3);
-  font-family: monospace;
-}
-
-.react-flow__node-circle .wrapper,
-.react-flow__node-textinput .wrapper {
-  overflow: hidden;
-  display: flex;
-  padding: 2px;
-  position: relative;
-  border-radius: 100%;
-  flex-grow: 1;
-}
-
-.react-flow__node-circle .inner {
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  flex-grow: 1;
-  position: relative;
-  text-align: center;
-}
-
-.react-flow__node-textinput {
-  border-radius: 5px;
-  width: 150px;
-  text-align: left;
-  height: auto;
-}
-
-.react-flow__node-textinput .wrapper {
-  border-radius: 5px;
-  height: 100%;
-}
-
-.react-flow__node-textinput .inner {
-  background: rgba(255, 255, 255, 0.5);
-  flex-grow: 1;
-  position: relative;
-  padding: 10px;
-  border-radius: 4px;
-  height: 100%;
-}
-
-.react-flow__node-textinput input {
-  width: 100%;
-  font-size: 12px;
-  border: none;
-  border-radius: 2px;
-  margin-bottom: 10px;
-  margin-top: 2px;
-  padding: 2px 4px;
-  color: #555;
-}
-
-.gradient:before {
-  content: '';
-  position: absolute;
-  padding-bottom: calc(100% * 1.41421356237);
-  width: calc(100% * 1.41421356237);
-  background: conic-gradient(
-    from -160deg at 50% 50%,
-    #e92a67 0deg,
-    #a853ba 120deg,
-    #2a8af6 240deg,
-    #e92a67 360deg
-  );
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 100%;
-}
+/* Minimap */
 
 .react-flow__minimap .group {
   fill-opacity: 0.4;
@@ -221,10 +189,6 @@ body {
 .react-flow__minimap .tools,
 .react-flow__minimap .circle,
 .react-flow__minimap .textinput {
-  fill: rgb(208, 192, 247);
-}
-
-.react-flow__minimap .resizer {
   fill: rgb(208, 192, 247);
 }
 

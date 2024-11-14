@@ -5,26 +5,17 @@ function ResizerNode({ data }) {
   return (
     <>
       <NodeResizer minWidth={50} minHeight={50} />
-      <Handle type="target" position={Position.Left} />
-      <div style={{ padding: 10 }}>{data.label}</div>
-      <div
-        style={{
-          display: 'flex',
-          position: 'absolute',
-          bottom: 0,
-          width: '100%',
-          justifyContent: 'space-evenly',
-          left: 0,
-        }}
-      >
+      <Handle type="target" position={Position.Left} className='custom-handle' />
+      <div>{data.label}</div>
+      <div className="resizer-node__handles">
         <Handle
-          style={{ position: 'relative', left: 0, transform: 'none' }}
+          className="resizer-node__handle custom-handle"
           id="a"
           type="source"
           position={Position.Bottom}
         />
         <Handle
-          style={{ position: 'relative', left: 0, transform: 'none' }}
+          className="resizer-node__handle custom-handle "
           id="b"
           type="source"
           position={Position.Bottom}

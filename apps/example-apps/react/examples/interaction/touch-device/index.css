@@ -1,3 +1,5 @@
+@import url('./xy-theme.css');
+
 html,
 body {
   margin: 0;
@@ -13,8 +15,6 @@ body {
 .react-flow.touch-flow .react-flow__handle {
   width: 20px;
   height: 20px;
-  border-radius: 3px;
-  background-color: #9f7aea;
 }
 
 .touch-flow .react-flow__handle-right {

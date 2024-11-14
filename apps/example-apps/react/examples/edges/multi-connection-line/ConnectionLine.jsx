@@ -34,7 +34,7 @@ export default ({ toX, toY }) => {
 
     return (
       <g key={`${id}-${bounds.id}`}>
-        <path fill="none" strokeWidth={1.5} stroke="black" d={d} />
+        <path fill="none" strokeWidth={1} stroke="#b1b1b7" d={d} />
         <circle
           cx={toX}
           cy={toY}

@@ -11,7 +11,9 @@ import {
   type OnConnect,
   type Node,
 } from '@xyflow/react';
+
 import '@xyflow/react/dist/style.css';
+
 
 import CustomEdge from './CustomEdge';
 import CustomEdgeStartEnd from './CustomEdgeStartEnd';
@@ -72,10 +74,11 @@ const EdgesFlow = () => {
       onConnect={onConnect}
       edgeTypes={edgeTypes}
       fitView
-    >
-      <Controls />
-      <Background />
-    </ReactFlow>
+      style={{ backgroundColor: "#F7F9FB" }}
+      >
+        <Controls />
+        <Background />
+      </ReactFlow>
   );
 };
 

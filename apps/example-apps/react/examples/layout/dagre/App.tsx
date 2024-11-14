@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
 import {
+  Background,
   ReactFlow,
   addEdge,
   ConnectionLineType,
@@ -9,10 +10,9 @@ import {
 } from '@xyflow/react';
 import dagre from '@dagrejs/dagre';
 
-import './index.css';
 import '@xyflow/react/dist/style.css';
 
-import { initialNodes, initialEdges } from './nodes-edges';
+import { initialNodes, initialEdges } from './initialElements';
 
 const dagreGraph = new dagre.graphlib.Graph().setDefaultEdgeLabel(() => ({}));
 
@@ -92,11 +92,13 @@ const Flow = () => {
       onConnect={onConnect}
       connectionLineType={ConnectionLineType.SmoothStep}
       fitView
+      style={{ backgroundColor: "#F7F9FB" }}
     >
       <Panel position="top-right">
         <button onClick={() => onLayout('TB')}>vertical layout</button>
         <button onClick={() => onLayout('LR')}>horizontal layout</button>
       </Panel>
+      <Background />
     </ReactFlow>
   );
 };

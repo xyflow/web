@@ -10,6 +10,7 @@ import {
 
 import '@xyflow/react/dist/style.css';
 
+
 import ElkNode from './ElkNode';
 import { nodes as initNodes } from './nodes';
 import { edges as initEdges } from './edges';
@@ -33,6 +34,7 @@ function App() {
       onEdgesChange={onEdgesChange}
       fitView
       nodeTypes={nodeTypes}
+      style={{ backgroundColor: "#F7F9FB" }}
     >
       <Background />
       <Controls />

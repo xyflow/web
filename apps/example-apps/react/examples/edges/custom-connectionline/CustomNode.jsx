@@ -10,12 +10,7 @@ const DEFAULT_HANDLE_STYLE = {
 export default memo(({ data, isConnectable }) => {
   return (
     <>
-      <div
-        style={{
-          background: '#DDD',
-          padding: 25,
-        }}
-      >
+      <div style={{ padding: 25}} >
         <div>Node</div>
         <Handle
           type="source"

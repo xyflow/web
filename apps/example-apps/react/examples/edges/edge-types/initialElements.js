@@ -6,10 +6,6 @@ const sourceTargetPositions = [
   { source: 'bottom', target: 'top' },
   { source: 'right', target: 'left' },
 ];
-const nodeColors = [
-  ['#1e9e99', '#4cb3ac', '#6ec9c0', '#8ddfd4'],
-  ['#0f4c75', '#1b5d8b', '#276fa1', '#3282b8'],
-];
 const edgeTypes = ['default', 'step', 'smoothstep', 'straight'];
 const offsets = [
   {
@@ -66,10 +62,6 @@ export function getNodesAndEdges() {
       for (let offsetIndex = 0; offsetIndex < offsets.length; offsetIndex++) {
         const currOffset = offsets[offsetIndex];
 
-        const style = {
-          ...nodeStyle,
-          background: nodeColors[sourceTargetIndex][edgeTypeIndex],
-        };
         const sourcePosition = {
           x: offsetIndex * nodeWidth * 4,
           y: edgeTypeIndex * 300 + sourceTargetIndex * edgeTypes.length * 300,
@@ -78,7 +70,6 @@ export function getNodesAndEdges() {
         const sourceData = { label: `Source ${sourceId}` };
         const sourceNode = {
           id: sourceId,
-          style,
           data: sourceData,
           position: sourcePosition,
           sourcePosition: currSourceTargetPos.source,
@@ -93,7 +84,6 @@ export function getNodesAndEdges() {
         };
         const targetNode = {
           id: targetId,
-          style,
           data: targetData,
           position: targetPosition,
           sourcePosition: currSourceTargetPos.source,

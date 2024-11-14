@@ -3,15 +3,6 @@ import { Handle, Position } from '@xyflow/react';
 
 const { Top, Bottom, Left, Right } = Position;
 
-const nodeStyle = {
-  height: 36,
-  minWidth: 150,
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  border: '1px solid black',
-  borderRadius: '4px',
-};
 
 export default memo(({ data }) => {
   const { isSpouse, isSibling, label, direction } = data;
@@ -69,7 +60,7 @@ export default memo(({ data }) => {
           id={getTargetPosition()}
         />
       )}
-      <div style={nodeStyle}>{label}</div>
+      <div>{label}</div>
     </div>
   );
 });

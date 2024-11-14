@@ -43,6 +43,16 @@ async function makeScreenshots(dir, selector) {
 
       console.log('screenshot:', exampleUrl);
 
+      // Hide the elements before taking the screenshot
+      await page.evaluate(() => {
+        const hideElement = (selector) => {
+          const elements = document.querySelectorAll(selector);
+          elements.forEach(element => element.style.display = 'none');
+        };
+        hideElement('.react-flow__attribution a');
+        hideElement('.react-flow__panel');
+      });
+
       try {
         await page.waitForSelector(selector, { timeout: 1000 });
         await page.screenshot({

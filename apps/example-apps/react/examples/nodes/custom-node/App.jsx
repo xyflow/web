@@ -7,15 +7,14 @@ import {
   MiniMap,
   Controls,
 } from '@xyflow/react';
+
 import '@xyflow/react/dist/style.css';
+
 
 import ColorSelectorNode from './ColorSelectorNode';
 
-import './index.css';
+const initBgColor = '#c9f1dd';
 
-const initBgColor = '#1A192B';
-
-const connectionLineStyle = { stroke: '#fff' };
 const snapGrid = [20, 20];
 const nodeTypes = {
   selectorNode: ColorSelectorNode,
@@ -63,7 +62,6 @@ const CustomNodeFlow = () => {
         id: '2',
         type: 'selectorNode',
         data: { onChange: onChange, color: initBgColor },
-        style: { border: '1px solid #777', padding: 10 },
         position: { x: 300, y: 50 },
       },
       {
@@ -88,7 +86,6 @@ const CustomNodeFlow = () => {
         source: '1',
         target: '2',
         animated: true,
-        style: { stroke: '#fff' },
       },
       {
         id: 'e2a-3',
@@ -96,7 +93,6 @@ const CustomNodeFlow = () => {
         target: '3',
         sourceHandle: 'a',
         animated: true,
-        style: { stroke: '#fff' },
       },
       {
         id: 'e2b-4',
@@ -104,7 +100,6 @@ const CustomNodeFlow = () => {
         target: '4',
         sourceHandle: 'b',
         animated: true,
-        style: { stroke: '#fff' },
       },
     ]);
   }, []);
@@ -112,7 +107,7 @@ const CustomNodeFlow = () => {
   const onConnect = useCallback(
     (params) =>
       setEdges((eds) =>
-        addEdge({ ...params, animated: true, style: { stroke: '#fff' } }, eds),
+        addEdge({ ...params, animated: true }, eds),
       ),
     [],
   );
@@ -125,7 +120,6 @@ const CustomNodeFlow = () => {
       onConnect={onConnect}
       style={{ background: bgColor }}
       nodeTypes={nodeTypes}
-      connectionLineStyle={connectionLineStyle}
       snapToGrid={true}
       snapGrid={snapGrid}
       defaultViewport={defaultViewport}

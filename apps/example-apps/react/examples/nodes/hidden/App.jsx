@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import {
+  Background,
   ReactFlow,
   useNodesState,
   useEdgesState,
@@ -7,7 +8,9 @@ import {
   MiniMap,
   Controls,
 } from '@xyflow/react';
+
 import '@xyflow/react/dist/style.css';
+
 
 const initialNodes = [
   {
@@ -57,11 +60,12 @@ const HiddenFlow = () => {
       onEdgesChange={onEdgesChange}
       onConnect={onConnect}
       fitView
+      style={{ backgroundColor: "#F7F9FB" }}
     >
       <MiniMap />
       <Controls />
 
-      <div style={{ position: 'absolute', left: 10, top: 10, zIndex: 4 }}>
+      <div className='isHidden__button'>
         <div>
           <label htmlFor="ishidden">
             isHidden
@@ -75,6 +79,7 @@ const HiddenFlow = () => {
           </label>
         </div>
       </div>
+      <Background  />
     </ReactFlow>
   );
 };

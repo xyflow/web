@@ -5,9 +5,10 @@ import {
   useEdgesState,
   Background,
 } from '@xyflow/react';
-import '@xyflow/react/dist/style.css';
 
 import DragHandleNode from './DragHandleNode';
+import '@xyflow/react/dist/style.css';
+
 
 const nodeTypes = {
   dragHandleNode: DragHandleNode,
@@ -19,13 +20,7 @@ const initialNodes = [
     type: 'dragHandleNode',
 
     // Specify the custom class acting as a drag handle
-    dragHandle: '.custom-drag-handle',
-
-    style: {
-      border: '1px solid #ddd',
-      padding: '20px 40px',
-      background: 'white',
-    },
+    dragHandle: '.drag-handle__custom',
     position: { x: 200, y: 200 },
   },
 ];
@@ -36,6 +31,7 @@ const DragHandleFlow = () => {
 
   return (
     <ReactFlow
+      style={{ backgroundColor: "#F7F9FB" }}
       nodes={nodes}
       edges={edges}
       onNodesChange={onNodesChange}

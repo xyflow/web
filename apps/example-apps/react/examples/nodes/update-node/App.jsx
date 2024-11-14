@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { ReactFlow, useNodesState, useEdgesState } from '@xyflow/react';
+import { ReactFlow, useNodesState, useEdgesState, Background } from '@xyflow/react';
 
 import '@xyflow/react/dist/style.css';
+
 
 const initialNodes = [
   { id: '1', data: { label: '-' }, position: { x: 100, y: 100 } },
@@ -16,7 +17,7 @@ const UpdateNode = () => {
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
   const [nodeName, setNodeName] = useState('Node 1');
-  const [nodeBg, setNodeBg] = useState('#eee');
+  const [nodeBg, setNodeBg] = useState('#dbdbdb');
   const [nodeHidden, setNodeHidden] = useState(false);
 
   useEffect(() => {
@@ -96,22 +97,23 @@ const UpdateNode = () => {
       onEdgesChange={onEdgesChange}
       defaultViewport={defaultViewport}
       minZoom={0.2}
+      style={{ background: '#F7F9FB' }}
       maxZoom={4}
       attributionPosition="bottom-left"
       fitView
       fitViewOptions={{ padding: 0.5 }}
     >
-      <div className="updatenode__controls">
+      <div className="update-node__controls">
         <label>label:</label>
         <input
           value={nodeName}
           onChange={(evt) => setNodeName(evt.target.value)}
         />
 
-        <label className="updatenode__bglabel">background:</label>
-        <input value={nodeBg} onChange={(evt) => setNodeBg(evt.target.value)} />
+        <label className="update-node__bg-label">background:</label>
+        <input value={nodeBg} onChange={(evt) => setNodeBg(evt.target.  value)} />
 
-        <div className="updatenode__checkboxwrapper">
+        <div className="update-node__checkbox-wrapper">
           <label>hidden:</label>
           <input
             type="checkbox"
@@ -120,6 +122,7 @@ const UpdateNode = () => {
           />
         </div>
       </div>
+      <Background  />
     </ReactFlow>
   );
 };

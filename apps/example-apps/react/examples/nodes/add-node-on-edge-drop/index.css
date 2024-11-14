@@ -1,3 +1,5 @@
+@import url('./xy-theme.css');
+
 html,
 body {
   margin: 0;
@@ -8,36 +10,6 @@ body {
 #app {
   width: 100vw;
   height: 100vh;
-}
-
-.react-flow .react-flow__handle {
-  width: 30px;
-  height: 14px;
-  border-radius: 3px;
-  background-color: #784be8;
-}
-
-.react-flow .react-flow__handle-top {
-  top: -10px;
-}
-
-.react-flow .react-flow__handle-bottom {
-  bottom: -10px;
-}
-
-.react-flow .react-flow__node {
-  height: 40px;
-  width: 150px;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  border-width: 2px;
-  font-weight: 700;
-}
-
-.react-flow .react-flow__edge path,
-.react-flow__connectionline path {
-  stroke-width: 2;
 }
 
 .wrapper {

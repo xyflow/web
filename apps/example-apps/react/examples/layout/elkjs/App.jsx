@@ -1,7 +1,8 @@
-import { initialNodes, initialEdges } from './nodes-edges.js';
+import { initialNodes, initialEdges } from './initialElements.js';
 import ELK from 'elkjs/lib/elk.bundled.js';
 import React, { useCallback, useLayoutEffect } from 'react';
 import {
+  Background,
   ReactFlow,
   ReactFlowProvider,
   addEdge,
@@ -12,6 +13,7 @@ import {
 } from '@xyflow/react';
 
 import '@xyflow/react/dist/style.css';
+
 
 const elk = new ELK();
 
@@ -100,6 +102,7 @@ function LayoutFlow() {
       onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
       fitView
+      style={{ backgroundColor: "#F7F9FB" }}
     >
       <Panel position="top-right">
         <button onClick={() => onLayout({ direction: 'DOWN' })}>
@@ -110,6 +113,7 @@ function LayoutFlow() {
           horizontal layout
         </button>
       </Panel>
+      <Background />
     </ReactFlow>
   );
 }

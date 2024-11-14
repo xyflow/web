@@ -1,3 +1,5 @@
+@import url('./xy-theme.css');
+
 html,
 body {
   margin: 0;
@@ -10,10 +12,6 @@ body {
   height: 100vh;
 }
 
-.react-flow__edge-path {
-  stroke: #333;
-  stroke-width: 2;
-}
 
 .temp .react-flow__edge-path {
   stroke: #bbb;

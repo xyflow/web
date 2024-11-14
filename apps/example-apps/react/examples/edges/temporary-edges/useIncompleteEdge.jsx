@@ -13,7 +13,7 @@ export const GhostNode = () => (
       type="target"
       position={Position.Top}
       isConnectable={false}
-      style={{ background: '#aaa' }}
+      style={{ background: 'white' }}
     />
   </div>
 );

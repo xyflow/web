@@ -1,4 +1,4 @@
-export function createNodesAndEdges(xNodes = 10, yNodes = 10) {
+export function initialElements(xNodes = 10, yNodes = 10) {
   const nodes = [];
   const edges = [];
   let nodeId = 1;

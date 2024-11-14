@@ -1,10 +1,13 @@
 import {
+  Background,
   ReactFlow,
   ReactFlowProvider,
   useNodesState,
   useEdgesState,
 } from '@xyflow/react';
+
 import '@xyflow/react/dist/style.css';
+
 
 import { GhostNode, useIncompleteEdge } from './useIncompleteEdge';
 
@@ -32,7 +35,10 @@ const IncompleteEdge = () => {
       onEdgesChange={onEdgesChange}
       fitView
       {...handlers}
-    />
+      style={{ backgroundColor: "#F7F9FB" }}
+      >
+        <Background />
+      </ReactFlow>  
   );
 };
 
