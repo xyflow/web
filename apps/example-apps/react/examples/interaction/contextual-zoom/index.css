@@ -27,6 +27,10 @@ body {
   pointer-events: none;
 }
 
+.placeholder {
+  display: contents;
+}
+
 .placeholder div {
   background: #eee;
   width: 100%;

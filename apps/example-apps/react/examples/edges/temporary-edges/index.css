@@ -17,4 +17,5 @@ body {
 .react-flow__node-ghost.selectable:focus {
   border: 0;
   box-shadow: none;
+  background-color: transparent;
 }
