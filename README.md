@@ -98,18 +98,6 @@ pnpm write-showcases
 > You must have a `.env` file in the project with a key called `NOTION_API_SECRET`
 > for this script to work.
 
-### Generate a what's new page for a release
-
-There is a little helper script that pulls the latest release from Github and
-creates a new what's new page with the release notes as the new content.
-
-```sh
-pnpm whatsnew
-```
-
-You might want to adjust the author and check the actual content before you push
-the changes to Github.
-
 ### Update React Flow and Svelte Flow dependencies
 
 There is a Github action that checks the latest React Flow and Svelte Flow versions
