@@ -9,8 +9,10 @@ import { Callout, Tabs } from 'nextra/components';
 import { RemoteCodeViewer } from 'xy-shared';
 
 import { getStaticCode } from 'xy-shared/server';
-export const getStaticProps = getStaticCode(['learn/state-management', 'learn/state-management-2']);
-
+export const getStaticProps = getStaticCode([
+  'learn/state-management',
+  'learn/state-management-2',
+]);
 
 <Callout type="info">
   For this guide we assume that you already know about the [core
@@ -19,9 +21,9 @@ export const getStaticProps = getStaticCode(['learn/state-management', 'learn/st
   with the concepts of state management libraries and how to use them.
 </Callout>
 
-In this guide we are explaining how you could use React Flow with the state management library [Zustand](https://github.com/pmndrs/zustand). We will build a little app where every node has a color chooser that updates its background color. In this guide we are using Zustand, because we are already using it internally for React Flow, but of course you can use any other library like [Redux](https://redux.js.org/), [Recoil](https://recoiljs.org/) or [Jotai](https://jotai.org/) as well.
+In this guide, we explain how to use React Flow with the state management library [Zustand](https://github.com/pmndrs/zustand). We will build a small app where each node features a color chooser that updates its background color. We chose Zustand for this guide because React Flow already uses it internally, but you can easily use other state management libraries such as [Redux](https://redux.js.org/), [Recoil](https://recoiljs.org/) or [Jotai](https://jotai.org/)
 
-As you might have seen in the previous guides and examples, React Flow can easily be used with a local component state for handling the nodes and edges of your diagram. When your app grows and you want to alter your state from within your nodes for example, things can get more complex. To avoid passing down functions through the node data field, you could use a [React context](https://reactjs.org/docs/context.html) or add a state management library as explained in this guide.
+As demonstrated in previous guides and examples, React Flow can easily be used with a local component state to manage nodes and edges in your diagram. However, as your application grows and you need to update the state from within individual nodes, managing this state can become more complex. Instead of passing functions through the node's data field, you can use a [React context](https://reactjs.org/docs/context.html) or integrate a state management library like Zustand, as outlined in this guide.
 
 ## Install Zustand
 
