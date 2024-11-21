@@ -14,8 +14,8 @@ export const signature: PropsTableProps = {
       name: 'equalityFn?',
       type: '(prev: T, next: T) => boolean',
       description: `A function to compare the previous and next value. This is
-      incredibly useful for preventing uneccessary re-renders. Good sensible
-      defaults are using Object.is or importing zustand/shaddlow, but you can
+      incredibly useful for preventing unnecessary re-renders. Good sensible
+      defaults are using Object.is or importing zustand/shallow, but you can
       be as granular as you like.`,
     },
     { name: 'Returns' },

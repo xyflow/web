@@ -40,7 +40,7 @@ const nodes = useEdges<CustomEdgeType>();
 
 ## Notes
 
-- Relying on `useEdges` unecessarily can be a common cause of performance
+- Relying on `useEdges` unnecessarily can be a common cause of performance
   issues. Whenever any edge changes, this hook will cause the component to
   re-render. Often we actually care about something more specific, like when
   the _number_ of edges changes: where possible try to use
