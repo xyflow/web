@@ -26,6 +26,8 @@ const baseUrl =
     : 'http://localhost:3002';
 
 const faviconUrl = `${baseUrl}/img/favicon.ico`;
+const faviconAppletouchUrl = `${baseUrl}/img/apple-touch-icon.png`;
+const faviconSvgUrl = `${baseUrl}/img/favicon.svg`;
 
 export default {
   logo: () => (
@@ -271,6 +273,12 @@ export default {
         <meta name="robots" content="index,follow" />
 
         <link rel="icon" href={faviconUrl} />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href={faviconAppletouchUrl}
+        />
+        <link rel="icon" href={faviconSvgUrl} type="image/svg+xml" />
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="https://x.com/xyflowdev" />
