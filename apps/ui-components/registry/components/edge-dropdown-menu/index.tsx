@@ -24,7 +24,7 @@ export function EdgeDropdownMenu({
   style = {},
   markerEnd,
 }: EdgeProps) {
-  const [isToolbarVisible, setIsToolbarVisible] = useState(false);
+  const [isDropdownVisible, setIsDropdownVisible] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
   const [edgePath, labelX, labelY] = getBezierPath({
@@ -36,21 +36,21 @@ export function EdgeDropdownMenu({
     targetPosition,
   });
 
-  const toggleToolbarVisibility = (
+  const toggleDropdownVisibility = (
     event: React.MouseEvent<HTMLButtonElement>,
   ) => {
     event.stopPropagation();
-    setIsToolbarVisible((prev) => !prev);
+    setIsDropdownVisible((prev) => !prev);
   };
 
   const handleClickOutside = (event: MouseEvent) => {
     if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-      setIsToolbarVisible(false);
+      setIsDropdownVisible(false);
     }
   };
 
   useEffect(() => {
-    if (isToolbarVisible) {
+    if (isDropdownVisible) {
       document.addEventListener("click", handleClickOutside);
     } else {
       document.removeEventListener("click", handleClickOutside);
@@ -58,7 +58,7 @@ export function EdgeDropdownMenu({
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
-  }, [isToolbarVisible]);
+  }, [isDropdownVisible]);
 
   return (
     <>
@@ -76,7 +76,7 @@ export function EdgeDropdownMenu({
           }}
         >
           <Button
-            onClick={toggleToolbarVisibility}
+            onClick={toggleDropdownVisibility}
             size="icon"
             variant="secondary"
           >
@@ -84,7 +84,7 @@ export function EdgeDropdownMenu({
           </Button>
         </div>
 
-        {isToolbarVisible && (
+        {isDropdownVisible && (
           <div
             ref={menuRef}
             style={{
