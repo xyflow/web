@@ -107,7 +107,7 @@ Besides React Flow we only need to pull in one dependency, [`react-remark`](http
 to help us render markdown in our slides.
 
 ```bash npm2yarn
-npm install reactflow react-remark
+npm install @xyflow/react react-remark
 ```
 
 We'll modify the generated `main.tsx` to include React Flow's styles, as well as
@@ -121,7 +121,7 @@ import { ReactFlowProvider } from '@xyflow/react';
 
 import App from './App';
 
-import 'reactflow/dist/style.css';
+import '@xyflow/react/dist/style.css';
 import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -148,7 +148,7 @@ style your app differently from just writing CSS, for example with
 <Callout>
   How you style your app is up to you, but you must **always** include React
   Flow's styles! If you don't need the default styles, at a minimum you should
-  include the base styles from `reactflow/dist/base.css`.
+  include the base styles from `@xyflow/react/dist/base.css`.
 </Callout>
 
 Each slide of our presentation will be a node on the canvas, so let's create a new file `Slide.tsx` that will be our custom node used to render each slide.
@@ -193,7 +193,7 @@ const nodeTypes = {
   slide: Slide,
 };
 
-export default export default function App() {
+export default function App() {
   const nodes = [
     { id: '0', type: 'slide', position: { x: 0, y: 0 }, data: {} },
   ];
