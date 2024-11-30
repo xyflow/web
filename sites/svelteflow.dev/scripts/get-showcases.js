@@ -31,8 +31,8 @@ const downloadImage = (source, target) => {
         },
         {
           property: 'library',
-          rich_text: {
-            equals: 'svelte',
+          select: {
+            equals: 'react',
           },
         },
       ],
