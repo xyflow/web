@@ -1,0 +1,338 @@
+---
+title: 'Getting started with React Flow Components'
+intro:
+  words
+date: 2024/12/16
+authors: ['hayleigh']
+tags: ['react-flow', 'components', 'shadcn', 'computational']
+image: ''
+---
+
+import { Callout, Tabs } from 'nextra/components';
+import { Bleed } from 'nextra-theme-docs';
+import { Embed, Image, RemoteCodeViewer, TutorialLayout } from 'xy-shared';
+import { Emoji } from '@xyflow/xy-ui';
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode([
+  'tutorials/components/tooltip',
+]);
+
+<TutorialLayout>
+Recently, we launched an exciting new addition to our open-source roster: React
+Flow Components. These are pre-built nodes, edges, and other ui elements that you
+can quickly add to your React Flow applications to get up and running. The catch
+is these components are built on top of [shadcn/ui](https://ui.shadcn.com) and
+the shadcn CLI.
+
+We've previously written about our experience and what led us to choosing shadcn
+over on the [xyflow blog](https://xyflow.com/blog/react-flow-components), but in
+this tutorial we're going to focus on how to get started from scratch with shadcn,
+Tailwind CSS, and React Flow Components.
+
+<Callout>
+**Wait, what's shadcn?**
+
+No what, **who**! Shadcn is the author of a collection of pre-designed components
+known as `shadcn/ui`. Notice how we didn't say _library_ there? Shadcn takes a
+different approach where components are added to your project's source code and
+are "owned" by you: once you add a component you're free to modify it to suit your
+needs!
+</Callout>
+
+## Getting started
+
+To begin with, we'll set up a new [`vite`](https://vitejs.dev) project along with
+all the dependencies and config we'll need. Start by running the following command:
+
+```bash copy npm2yarn
+npx create-vite@latest
+```
+
+Vite is able to scaffold projects for many popular frameworks, but we only care
+about React! Additionally, make sure to set up a **TypeScript** project. React
+Flow's documentation is a mix of JavaScript and TypeScript, but for shadcn components
+TypeScript is _required_!
+
+All shadcn and React Flow components are styled with [Tailwind CSS](https://tailwindcss.com/docs/utility-first),
+so we'll need to install that and a few other dependencies next:
+
+```bash copy npm2yarn
+npm install -D tailwindcss postcss autoprefixer
+```
+
+Tailwind is a heavily customisable utility-first CSS framework and much of that
+customisation is done in a `tailwind.config.js` file. Fortunately, the package
+can generate a default config for us:
+
+```bash copy npm2yarn
+npx tailwindcss init -p
+```
+
+Tailwind works by scanning your project's source code and building a CSS file that
+contains only the utilities you're using. To make sure that happens we need to
+change two things:
+
+1. Update the `content` field in `tailwind.config.js` to include any source files
+   that might contain Tailwind classes.
+
+```js filename="tailwind,config.js" {3}
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ["./index.html", "./src/**/*.{ts,tsx,js,jsx}"],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+```
+
+2. Replace the generated `src/index.css` file with the Tailwind directives:
+
+```css filename="src/index.css"
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+Finally, we can go ahead and delete the generated `src/App.css` file and update
+`src/App.jsx` to just render an empty `div`:
+
+```jsx filename="src/App.jsx"
+function App() {
+  return <div className="w-screen h-screen p-8"></div>;
+}
+
+export default App;
+```
+
+<Callout>
+    The classes `w-screen` and `h-screen` are two examples of Tailwind's utility
+    classes. If you're used to styling React apps using a different approach, you
+    might find this a bit strange at first. You can think of Tailwind classes as
+    supercharged inline styles: they're constrained to a set design system and
+    you have access to responsive media queries or pseudo-classes like `hover`
+    and `focus`.
+</Callout>
+
+### Setting up shadcn/ui
+
+Vite scaffolds some `tsconfig` files for us when generating a TypeScript project
+and we'll need to make some changes to these so the shadcn components can work
+correctly. The shadcn CLI is pretty clever (we'll get to that in a second) but
+it can't account for every project structure so instead shadcn components that
+depend on one another make use of TypeScript's import paths.
+
+In both `tsconfig.json` and `tsconfig.app.json` add the following to the `compilerOptions`
+object:
+
+```json filename="tsconfig.json" {3-8}
+{
+  ...
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}
+```
+
+And then we need to teach Vite how to resolve these paths:
+
+```bash copy npm2yarn
+npm i -D @types/node
+```
+
+```js filename="vite.config.js" {3, 7-11}
+import { defineConfig } from "vite"
+import react from "@vitejs/plugin-react"
+import path from "node:path"
+
+export default defineConfig({
+  plugins: [react()],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
+})
+```
+
+At this point feel free to pat yourself on the back and take a tea break. There's
+a lot of up-front configuration to get through but once we have the shadcn CLI
+set up we'll be able to add new components to our project with a single command -
+even if they have dependencies or need to modify existing files!
+
+We can now run the following command to set up shadcn/ui in our project:
+
+```bash copy npm2yarn
+npx shadcn@latest init
+```
+
+The CLI will ask you a few questions about your project and then it will generate
+a `components.json` file in the root of your project, and update your
+`tailwind.config.js` with some extensions to your theme. We can take all the
+default options for now:
+
+```
+✔ Which style would you like to use? › New York
+✔ Which color would you like to use as the base color? › Neutral
+✔ Would you like to use CSS variables for theming? yes
+```
+
+## Adding your first components
+
+To demonstrate how powerful shadcn can be, let's dive right into making a new
+**React Flow** app! Now everything is set up, we can add the [`<BaseNode />`](https://reactflow.dev/components/nodes/base-node)
+component with a single command:
+
+```bash copy npm2yarn
+npx shadcn@latest add https://ui.reactflow.dev/base-node
+```
+
+This command will generate a new file `src/components/base-node.tsx` as well as
+update our dependencies to include `@xyflow/react`!
+
+That `<BaseNode />` component is not a React Flow node directly. Instead, as the
+name implies, it's a base that many of our other nodes build upon. Let's see what
+it looks like by updating our `App.jsx` file:
+
+```jsx filename="src/App.jsx" {1,3,7-11}
+import "@xyflow/react/dist/style.css"
+
+import { BaseNode } from '@/components/base-node'
+
+function App() {
+  return (
+    <div className="w-screen h-screen p-8">
+      <BaseNode selected={false}>
+        Hi! 👋
+      </BaseNode>
+    </div>
+  );
+}
+
+export default App;
+```
+
+Ok, not super exciting...
+
+<Image
+  src="/img/tutorials/components/base-node.png"
+  alt="A screenshot of a simple React application. It renders one element, a
+  rounded container with a blue border and the text 'Hi! 👋' inside."
+/>
+
+Remember that the `<BaseNode />` component is used by any _other_ React Flow
+components we add using the shadcn CLI, so what happens if we change it? Let's
+update the `<BaseNode />` component to render any text as bold monospace instead:
+
+```jsx filename="src/components/base-node.tsx" {11}
+import React from "react";
+import { cn } from "@/lib/utils";
+
+export const BaseNode = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement> & { selected?: boolean }
+>(({ className, selected, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn(
+      "rounded-md border bg-card p-5 text-card-foreground font-mono font-bold",
+      className,
+      selected ? "border-muted-foreground shadow-lg" : "",
+      "hover:ring-1",
+    )}
+    {...props}
+  />
+));
+BaseNode.displayName = "BaseNode";
+```
+
+Now we'll add an actual node from the React Flow Components registry and see what
+happens:
+
+```bash copy npm2yarn
+npx shadcn@latest add https://ui.reactflow.dev/tooltip-node
+```
+
+And we'll update our `App.tsx` file to render a proper flow. We'll use the same
+basic setup as most of our examples so we won't break down the individual pieces
+here. If you're still new to React Flow and want to learn a bit more about how to
+set up a basic flow from scratch, check out our [quickstart guide](/learn).
+
+```tsx filename="src/App.tsx" {14,16-18,20-33,}
+import "@xyflow/react/dist/style.css";
+
+import {
+  ReactFlow,
+  OnConnect,
+  Position,
+  useNodesState,
+  useEdgesState,
+  addEdge,
+  Edge,
+  Node,
+} from "@xyflow/react";
+
+import { TooltipNode } from "@/components/tooltip-node";
+
+const nodeTypes = {
+  tooltip: TooltipNode,
+};
+
+const initialNodes: Node[] = [
+  {
+    id: "1",
+    position: { x: 0, y: 0 },
+    data: {
+      label: "Hover me",
+      tooltip: {
+        label: "Boo!",
+        position: Position.Bottom,
+      },
+    },
+    type: "tooltip",
+  },
+];
+
+const initialEdges: Edge[] = [];
+
+function App() {
+  const [nodes, , onNodesChange] = useNodesState(initialNodes);
+  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+
+  const onConnect: OnConnect = (params) => {
+    setEdges((edges) => addEdge(params, edges));
+  };
+
+  return (
+    <div className="h-screen w-screen p-8">
+      <ReactFlow
+        nodes={nodes}
+        edges={edges}
+        onNodesChange={onNodesChange}
+        onEdgesChange={onEdgesChange}
+        onConnect={onConnect}
+        nodeTypes={nodeTypes}
+        fitView
+      />
+    </div>
+  );
+}
+
+export default App;
+```
+
+And would you look at that, the tooltip node we added automatically uses the
+`<BaseNode />` component we customised!
+
+<Bleed>
+    <RemoteCodeViewer
+        route="tutorials/components/tooltip"
+        framework="react"
+        showEditor={false}
+    />
+</Bleed>
+
+</TutorialLayout>
