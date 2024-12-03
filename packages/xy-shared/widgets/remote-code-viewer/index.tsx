@@ -14,7 +14,6 @@ import { RemoteContent } from '../../components/remote-content';
 import { SharedContext } from '../../context/shared-context';
 import { CompiledMdx } from '../../types';
 
-
 import './style.css';
 import { OpenInStackblitz } from './open-in-stackblitz';
 import { OpenInCodesandbox } from './open-in-codesandbox';
@@ -25,7 +24,6 @@ const defaultOptions = {
   wrapContent: true,
   readOnly: false,
 };
-
 
 export type RemoteCodeViewerProps = {
   route: string;
@@ -52,7 +50,7 @@ export function RemoteCodeViewer({
 }: RemoteCodeViewerProps) {
   const _framework: Framework =
     framework ?? (process.env.NEXT_PUBLIC_Framework as Framework) ?? 'react';
-  
+
   const preview = `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/${_framework}/${route}/index.html`;
 
   const isExample = route.includes('examples/');
@@ -91,7 +89,7 @@ export function RemoteCodeViewer({
       )}
     >
       <div
-        style={{ height: editorHeight }}
+        style={isHorizontal ? {} : { height: editorHeight }}
         className={clsx('relative', isHorizontal ? 'w-1/2' : '')}
       >
         <iframe
