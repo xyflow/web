@@ -17,6 +17,11 @@
   }
 }
 
+html body[data-scroll-locked] {
+  overflow: visible !important;
+  margin-right: 0 !important;
+}
+
 /* .nextra-nav-container nav .nextra-scrollbar > a[href='/components']:after {
   content: 'beta';
   position: absolute;
