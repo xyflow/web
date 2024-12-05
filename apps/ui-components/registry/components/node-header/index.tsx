@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React from "react";
 
 import { cn } from "@/lib/utils";
 import { Slot } from "@radix-ui/react-slot";
@@ -8,8 +8,7 @@ import {
   DropdownMenuTrigger,
   DropdownMenuContent,
 } from "@/components/ui/dropdown-menu";
-import { useNodeId, useReactFlow } from "@xyflow/react";
-import { Copy, EllipsisVertical, Trash } from "lucide-react";
+import { EllipsisVertical } from "lucide-react";
 
 /* NODE HEADER -------------------------------------------------------------- */
 
