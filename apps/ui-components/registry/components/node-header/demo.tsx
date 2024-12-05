@@ -1,22 +1,30 @@
 "use client";
 
-import { Background, Node, NodeProps, ReactFlow } from "@xyflow/react";
+import {
+  Background,
+  Node,
+  NodeProps,
+  ReactFlow,
+  useNodeId,
+  useReactFlow,
+} from "@xyflow/react";
 
 import { BaseNode } from "@/registry/components/base-node";
 import {
   NodeHeader,
   NodeHeaderTitle,
   NodeHeaderActions,
-  NodeHeaderDeleteAction,
   NodeHeaderMenuAction,
   NodeHeaderIcon,
+  NodeHeaderAction,
 } from "@/registry/components/node-header";
 import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
-import { Languages } from "lucide-react";
+import { Languages, Trash } from "lucide-react";
+import { useCallback } from "react";
 
 function NodeHeaderDemoNode({
   data,
@@ -37,7 +45,7 @@ function NodeHeaderDemoNode({
             <DropdownMenuItem>Team</DropdownMenuItem>
             <DropdownMenuItem>Subscription</DropdownMenuItem>
           </NodeHeaderMenuAction>
-          <NodeHeaderDeleteAction label="Delete node" />
+          <NodeHeaderDeleteAction />
         </NodeHeaderActions>
       </NodeHeader>
 
@@ -47,6 +55,35 @@ function NodeHeaderDemoNode({
     </BaseNode>
   );
 }
+
+const NodeHeaderDeleteAction = () => {
+  const id = useNodeId();
+  const { setNodes } = useReactFlow();
+
+  const handleClick = useCallback(() => {
+    setNodes((prevNodes) =>
+      prevNodes.filter((node) => {
+        if (node.id === id) {
+          window.setTimeout(() => {
+            setNodes((prevNodes) => [...prevNodes, node]);
+          }, 2000);
+
+          return false;
+        }
+
+        return true;
+      }),
+    );
+  }, []);
+
+  return (
+    <NodeHeaderAction onClick={handleClick} variant="ghost" label="Delete node">
+      <Trash />
+    </NodeHeaderAction>
+  );
+};
+
+NodeHeaderDeleteAction.displayName = "NodeHeaderDeleteAction";
 
 const nodeTypes = {
   demo: NodeHeaderDemoNode,
