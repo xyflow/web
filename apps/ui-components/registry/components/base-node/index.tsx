@@ -13,6 +13,7 @@ export const BaseNode = React.forwardRef<
       selected ? "border-muted-foreground shadow-lg" : "",
       "hover:ring-1",
     )}
+    tabIndex={0}
     {...props}
   />
 ));
