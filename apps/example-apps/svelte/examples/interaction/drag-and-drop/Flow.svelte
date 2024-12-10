@@ -78,7 +78,7 @@
       id: `${Math.random()}`,
       type: $type,
       position,
-      data: { label: `${type} node` },
+      data: { label: `${$type} node` },
       origin: [0.5, 0.0]
     } satisfies Node;
 
