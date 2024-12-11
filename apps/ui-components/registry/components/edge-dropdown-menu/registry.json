@@ -1,0 +1,16 @@
+{
+  "name": "edge-dropdown-menu",
+  "type": "registry:component",
+  "dependencies": ["@xyflow/react"],
+  "devDependencies": [],
+  "registryDependencies": ["dropdown-menu", "button"],
+  "files": [
+    {
+      "type": "registry:component",
+      "path": "edge-dropdown-menu.tsx"
+    }
+  ],
+  "tailwind": {},
+  "cssVars": {},
+  "meta": {}
+}
