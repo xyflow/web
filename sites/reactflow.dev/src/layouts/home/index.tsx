@@ -118,10 +118,10 @@ export default function ReactFlowHome() {
       <Section className="mt-6 lg:mt-10">
         <Stats
           stats={[
-            { label: 'Github Stars', value: `${(stars / 1000).toFixed(1)}k` },
+            { label: 'Github Stars', value: `${(stars / 1000).toFixed(1)}K` },
             {
               label: 'Weekly Installs',
-              value: `${(downloads / 1000).toFixed(0)}k`,
+              value: `${(downloads / 1000000).toFixed(2)}M`,
             },
             { label: 'License', value: 'MIT' },
           ]}
