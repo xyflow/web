@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { T, useThrelte, useFrame } from '@threlte/core';
+  import { T, useThrelte, useTask } from '@threlte/core';
   import type { FlowState } from './nodes-and-edges';
   import type { Writable } from 'svelte/store';
 
@@ -28,9 +28,9 @@
 
   $: $camera.position.set(0, 0, +$flowState.zoom);
 
-  let t: number;
-  useFrame(({ clock }) => {
-    t = clock.getElapsedTime();
+  let t: number = 0;
+  useTask((delta: number) => {
+    t += delta;
   });
 </script>
 
