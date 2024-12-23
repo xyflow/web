@@ -73,4 +73,10 @@ export default {
       layout: 'raw',
     },
   },
+  'developer-survey-2024': {
+    display: 'hidden',
+    theme: {
+      layout: 'full',
+    },
+  },
 };

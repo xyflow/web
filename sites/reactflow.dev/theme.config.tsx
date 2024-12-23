@@ -46,13 +46,13 @@ export default {
     titleComponent: SidebarTitle,
   },
   banner: {
-    key: 'components',
+    key: 'survey-2024',
     content: (
       <Link
         className="flex justify-center items-center max-w-xs mx-auto hover:underline"
-        href="/components"
+        href="/developer-survey-2024"
       >
-        🔥 We just released React Flow Components powered by shadcn CLI
+        📣 Take the 2024 React Flow Developer Survey
       </Link>
     ),
   },

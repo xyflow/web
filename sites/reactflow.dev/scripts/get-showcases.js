@@ -31,7 +31,7 @@ const downloadImage = (source, target) => {
         },
         {
           property: 'library',
-          rich_text: {
+          select: {
             equals: 'react',
           },
         },
