@@ -7,6 +7,7 @@ export default {
     },
   },
   nodes: 'Nodes',
+  'node-blocks': 'Node blocks',
   edges: 'Edges',
   controls: 'Controls',
   handles: 'Handles',

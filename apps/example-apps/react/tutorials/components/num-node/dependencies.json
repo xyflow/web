@@ -1,0 +1,11 @@
+[
+  "@radix-ui/react-slot",
+  "@xyflow/react",
+  "class-variance-authority",
+  "clsx",
+  "lucide-react",
+  "react-dom",
+  "react",
+  "tailwind-merge",
+  "tailwindcss"
+]
