@@ -14,7 +14,7 @@ import {
 } from "@xyflow/react";
 import { useMemo } from "react";
 
-export type DataEdge<T extends Node> = Edge<{
+export type DataEdge<T extends Node = Node> = Edge<{
   /**
    * The key to lookup in the source node's `data` object. For additional safety,
    * you can parameterize the `DataEdge` over the type of one of your nodes to
