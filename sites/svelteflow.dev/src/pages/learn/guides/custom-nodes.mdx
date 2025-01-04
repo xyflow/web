@@ -24,14 +24,19 @@ Let's start to implement the `ColorPickerNode`. We are using the [`Handle` compo
 
 ```svelte filename="ColorPickerNode.svelte"
 <script lang="ts">
-  import { Handle, Position, type NodeProps } from '@xyflow/svelte';
+  import { Handle, Position, type NodeProps, type Node } from '@xyflow/svelte';
   import type { Writable } from 'svelte/store';
 
-  type $$Props = NodeProps;
+  type $$Props = NodeProps<Node<{ color: Writable<string> }>>;
 
   export let data: { color: Writable<string> };
 
   const { color } = data;
+
+  function handleInput(evt: Event) {
+    const target = evt.target as HTMLInputElement;
+    data.color.set(target?.value);
+  }
 </script>
 
 <div class="colorpicker">
@@ -42,7 +47,7 @@ Let's start to implement the `ColorPickerNode`. We are using the [`Handle` compo
   <input
     class="nodrag"
     type="color"
-    on:input={(evt) => data.color.set(evt.target?.value)}
+    on:input={handleInput}
     value={$color}
   />
   <Handle type="source" position={Position.Right} />
