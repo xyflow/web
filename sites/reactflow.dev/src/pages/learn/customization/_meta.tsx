@@ -1,6 +1,6 @@
-import { getMetaConfigFromTitleLookup } from 'xy-shared';
 
-const titleLookup = {
+
+export default {
   'custom-nodes': {
     title: 'Custom Nodes',
     theme: {
@@ -29,7 +29,4 @@ const titleLookup = {
   },
 };
 
-export default getMetaConfigFromTitleLookup(
-  titleLookup,
-  '/learn/customization',
-);
+

@@ -1,8 +1,7 @@
-import { getMetaConfigFromTitleLookup } from 'xy-shared';
 
-const titleLookup = {
+export default {
   layouting: 'Layouting Libraries',
   'sub-flows': 'Sub-Flows',
 };
 
-export default getMetaConfigFromTitleLookup(titleLookup, '/learn/layouting');
+

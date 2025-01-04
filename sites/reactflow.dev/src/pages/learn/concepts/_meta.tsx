@@ -1,6 +1,5 @@
-import { getMetaConfigFromTitleLookup } from 'xy-shared';
 
-const titleLookup = {
+export default {
   introduction: 'Introduction',
   'terms-and-definitions': 'Terms and Definitions',
   'core-concepts': 'Core Concepts',
@@ -8,4 +7,4 @@ const titleLookup = {
   'built-in-components': 'Built-In Components',
 };
 
-export default getMetaConfigFromTitleLookup(titleLookup, '/learn/concepts');
+
