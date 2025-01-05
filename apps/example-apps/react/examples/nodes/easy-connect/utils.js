@@ -30,7 +30,7 @@ function getNodeIntersection(intersectionNode, targetNode) {
 
 // returns the position (top,right,bottom or right) passed node compared to the intersection point
 function getEdgePosition(node, intersectionPoint) {
-  const n = { ...node.measured.positionAbsolute, ...node };
+  const n = { ...node.internals.positionAbsolute, ...node };
   const nx = Math.round(n.x);
   const ny = Math.round(n.y);
   const px = Math.round(intersectionPoint.x);
