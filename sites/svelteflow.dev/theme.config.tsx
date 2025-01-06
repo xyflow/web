@@ -36,17 +36,17 @@ export default {
     forcedTheme: 'light',
     defaultTheme: 'light',
   },
-  banner: {
-    key: 'survey-2024',
-    content: (
-      <Link
-        className="flex justify-center items-center max-w-xs mx-auto hover:underline"
-        href="/developer-survey-2024"
-      >
-        📣 Take the 2024 Svelte Flow Developer Survey
-      </Link>
-    ),
-  },
+  // banner: {
+  //   key: 'survey-2024',
+  //   content: (
+  //     <Link
+  //       className="flex justify-center items-center max-w-xs mx-auto hover:underline"
+  //       href="/developer-survey-2024"
+  //     >
+  //       📣 Take the 2024 Svelte Flow Developer Survey
+  //     </Link>
+  //   ),
+  // },
   sidebar: {
     toggleButton: false,
   },

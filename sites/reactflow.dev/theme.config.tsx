@@ -45,17 +45,17 @@ export default {
     toggleButton: false,
     titleComponent: SidebarTitle,
   },
-  banner: {
-    key: 'survey-2024',
-    content: (
-      <Link
-        className="flex justify-center items-center max-w-xs mx-auto hover:underline"
-        href="/developer-survey-2024"
-      >
-        📣 Take the 2024 React Flow Developer Survey
-      </Link>
-    ),
-  },
+  // banner: {
+  //   key: 'survey-2024',
+  //   content: (
+  //     <Link
+  //       className="flex justify-center items-center max-w-xs mx-auto hover:underline"
+  //       href="/developer-survey-2024"
+  //     >
+  //       📣 Take the 2024 React Flow Developer Survey
+  //     </Link>
+  //   ),
+  // },
   navbar: {
     component: (props) => {
       const router = useRouter();
