@@ -5,6 +5,7 @@ const titleLookup = {
   'use-edges': 'useEdges()',
   'use-edges-state': 'useEdgesState()',
   'use-handle-connections': 'useHandleConnections()',
+  'use-node-connections': 'useNodeConnections()',
   'use-key-press': 'useKeyPress()',
   'use-node-id': 'useNodeId()',
   'use-nodes': 'useNodes()',

@@ -17,6 +17,7 @@ const titleLookup = {
   node: 'Node',
   'node-props': 'NodeProps',
   'node-origin': 'NodeOrigin',
+  'node-connection': 'NodeConnection',
   'panel-position': 'PanelPosition',
   position: 'Position',
   'svelte-flow-store': 'SvelteFlowStore',
