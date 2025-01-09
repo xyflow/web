@@ -51,12 +51,13 @@ root.render(<App />);
 
     case 'svelte':
       return `
+import { mount } from 'svelte';
 import App from './App.svelte';
 
 import './styles.css';
 
-const app = new App({
-	target: document.querySelector('#app')
+mount(App, {
+  target: document.getElementById('app')!,
 });
       `.trim();
 
