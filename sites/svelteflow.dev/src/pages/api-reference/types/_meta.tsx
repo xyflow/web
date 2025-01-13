@@ -1,4 +1,6 @@
-export default {
+import { getMetaConfigFromTitleLookup } from 'xy-shared';
+
+const titleLookup = {
   'background-variant': 'BackgroundVariant',
   'color-mode': 'ColorMode',
   connection: 'Connection',
@@ -21,3 +23,8 @@ export default {
   viewport: 'Viewport',
   'xy-position': 'XYPosition',
 };
+
+export default getMetaConfigFromTitleLookup(
+  titleLookup,
+  '/api-reference/types',
+);

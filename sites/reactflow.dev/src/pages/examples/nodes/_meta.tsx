@@ -1,4 +1,6 @@
-export default {
+import { getMetaConfigFromTitleLookup } from 'xy-shared';
+
+const titleLookup = {
   'custom-node': 'Custom Nodes',
   'update-node': 'Updating Nodes',
   stress: 'Stress Test',
@@ -16,3 +18,5 @@ export default {
   'connection-limit': 'Connection Limit',
   'delete-middle-node': 'Delete Middle Node',
 };
+
+export default getMetaConfigFromTitleLookup(titleLookup, '/examples/nodes');

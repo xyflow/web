@@ -2,10 +2,7 @@ export default {
   index: 'Quickstart',
   'getting-started': 'Getting Started',
   guides: 'Guides',
-  '---': {
-    type: 'separator',
-  },
-  api: {
+  'api-link': {
     title: 'API Reference',
     href: '/api-reference',
   },

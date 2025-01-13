@@ -12,9 +12,6 @@ export default {
     },
   },
   troubleshooting: 'Troubleshooting',
-  '---': {
-    type: 'separator',
-  },
   'api-link': {
     title: 'API Reference',
     href: '/api-reference',
