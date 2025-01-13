@@ -1,6 +1,4 @@
-import { getMetaConfigFromTitleLookup } from 'xy-shared';
-
-const titleLookup = {
+export default {
   'sub-flows': 'Sub Flow',
   horizontal: 'Horizontal Flow',
   dagre: 'Dagre Tree',
@@ -12,5 +10,3 @@ const titleLookup = {
   'expand-collapse': 'Expand and Collapse',
   'workflow-builder': 'Workflow Builder',
 };
-
-export default getMetaConfigFromTitleLookup(titleLookup, '/examples/layout');

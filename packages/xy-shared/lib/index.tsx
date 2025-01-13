@@ -88,26 +88,6 @@ export function getFrontmatterTag(route: string, tag: string) {
   return frontMatter[tag];
 }
 
-// this helper function is used to generate the _meta.tsx config structure
-// for the sidebar
-export function getMetaConfigFromTitleLookup(
-  titleLookup: Record<string, string | { title: string; href?: string }>,
-  reroutePrefix: string = '',
-) {
-  return Object.entries(titleLookup).reduce<
-    Record<string, { title: ReactNode; href?: string }>
-  >((acc, [key, entry]) => {
-    const title = typeof entry === 'string' ? entry : entry.title;
-    const href = typeof entry === 'string' ? undefined : entry.href;
-    const route = href ?? `${reroutePrefix}/${key}`;
-    acc[key] = {
-      title: <SidebarTitle title={title} route={route} />,
-      href,
-    };
-    return acc;
-  }, {});
-}
-
 export function getMdxPagesUnderRoute<InternalRoute extends string>(
   route: InternalRoute,
 ) {

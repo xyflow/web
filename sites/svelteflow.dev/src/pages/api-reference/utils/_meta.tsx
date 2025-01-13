@@ -1,6 +1,4 @@
-import { getMetaConfigFromTitleLookup } from 'xy-shared';
-
-const titleLookup = {
+export default {
   'add-edge': 'addEdge()',
   'get-bezier-path': 'getBezierPath()',
   'get-connected-edges': 'getConnectedEdges()',
@@ -14,8 +12,3 @@ const titleLookup = {
   'is-edge': 'isEdge()',
   'is-node': 'isNode()',
 };
-
-export default getMetaConfigFromTitleLookup(
-  titleLookup,
-  '/api-reference/utils',
-);

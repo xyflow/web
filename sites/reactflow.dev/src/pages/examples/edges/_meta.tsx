@@ -1,6 +1,4 @@
-import { getMetaConfigFromTitleLookup } from 'xy-shared';
-
-const titleLookup = {
+export default {
   'custom-edges': 'Custom Edges',
   'animating-edges': 'Animating Edges',
   'edge-types': 'Edge Types',
@@ -15,5 +13,3 @@ const titleLookup = {
   'edge-label-renderer': 'Edge Label Renderer',
   'temporary-edges': 'Temporary Edges',
 };
-
-export default getMetaConfigFromTitleLookup(titleLookup, '/examples/edges');

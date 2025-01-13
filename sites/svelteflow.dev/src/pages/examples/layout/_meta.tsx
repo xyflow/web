@@ -1,10 +1,6 @@
-import { getMetaConfigFromTitleLookup } from 'xy-shared';
-
-const titleLookup = {
+export default {
   dagre: 'Dagre',
   elkjs: 'Elkjs',
   'horizontal-flow': 'Horizontal Flow',
   subflows: 'Subflows',
 };
-
-export default getMetaConfigFromTitleLookup(titleLookup, '/examples/layout');

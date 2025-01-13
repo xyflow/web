@@ -1,6 +1,4 @@
-import { getMetaConfigFromTitleLookup } from 'xy-shared';
-
-const titleLookup = {
+export default {
   'use-connection': 'useConnection()',
   'use-edges': 'useEdges()',
   'use-handle-connections': 'useHandleConnections()',
@@ -12,8 +10,3 @@ const titleLookup = {
   'use-store': 'useStore()',
   'use-update-node-internals': 'useUpdateNodeInternals()',
 };
-
-export default getMetaConfigFromTitleLookup(
-  titleLookup,
-  '/api-reference/hooks',
-);
