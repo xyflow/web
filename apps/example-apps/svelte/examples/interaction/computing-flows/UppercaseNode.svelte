@@ -19,18 +19,12 @@
 
   const { updateNodeData } = useSvelteFlow();
 
-  const connections = useNodeConnections({
-    handleType: 'target',
-  });
-
-  $inspect(connections.current);
+  const connections = useNodeConnections();
 
   let nodeData = $derived(useNodesData(connections.current[0]?.source));
   let textNodeData = $derived(
     isTextNode(nodeData.current) ? nodeData.current.data : null,
   );
-
-  $inspect(nodeData.current);
 
   $effect.pre(() => {
     const input = textNodeData?.text.toUpperCase() ?? '';

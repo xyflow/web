@@ -84,6 +84,8 @@
       target: '3',
     },
   ]);
+
+  $inspect(nodes);
 </script>
 
 <main>
