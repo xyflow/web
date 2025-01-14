@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { writable } from 'svelte/store';
   import { SvelteFlow, Background, type Edge, type Node } from '@xyflow/svelte';
 
   import '@xyflow/svelte/dist/style.css';
@@ -11,12 +10,12 @@
   // by using the markerStart and markerEnd edge options.
   import CustomEdgeMarker from './CustomEdgeMarker.svelte';
 
-  const nodes = writable<Node[]>(initialNodes);
-  const edges = writable<Edge[]>(initialEdges);
+  let nodes = $state.raw<Node[]>(initialNodes);
+  let edges = $state.raw<Edge[]>(initialEdges);
 </script>
 
 <div style="height:100vh;">
-  <SvelteFlow {nodes} {edges} fitView>
+  <SvelteFlow bind:nodes bind:edges fitView>
     <CustomEdgeMarker />
     <Background />
   </SvelteFlow>

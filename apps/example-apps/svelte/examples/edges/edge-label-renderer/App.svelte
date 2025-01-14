@@ -24,7 +24,7 @@
 </script>
 
 <div style="height:100vh;">
-  <SvelteFlow bind:nodes bind:edges {edgeTypes} fitView>
+  <SvelteFlow {nodes} {edges} {edgeTypes} fitView>
     <Background />
   </SvelteFlow>
 </div>
