@@ -4,34 +4,36 @@
     BaseEdge,
     type EdgeProps,
     EdgeLabelRenderer,
-    useEdges
+    useEdges,
   } from '@xyflow/svelte';
 
-  type $$Props = EdgeProps;
-
-  export let id: $$Props['id'];
-  export let sourceX: $$Props['sourceX'];
-  export let sourceY: $$Props['sourceY'];
-  export let sourcePosition: $$Props['sourcePosition'];
-  export let targetX: $$Props['targetX'];
-  export let targetY: $$Props['targetY'];
-  export let targetPosition: $$Props['targetPosition'];
-  export let markerEnd: $$Props['markerEnd'] = undefined;
-  export let style: $$Props['style'] = undefined;
-  $$restProps;
-
-  $: [edgePath, labelX, labelY] = getBezierPath({
+  let {
+    id,
     sourceX,
     sourceY,
     sourcePosition,
     targetX,
     targetY,
-    targetPosition
-  });
+    targetPosition,
+    markerEnd,
+    style,
+  }: EdgeProps = $props();
+
+  let [edgePath, labelX, labelY] = $derived(
+    getBezierPath({
+      sourceX,
+      sourceY,
+      sourcePosition,
+      targetX,
+      targetY,
+      targetPosition,
+    }),
+  );
 
   const edges = useEdges();
 
-  const onEdgeClick = () => edges.update((eds) => eds.filter((edge) => edge.id !== id));
+  const onEdgeClick = () =>
+    edges.update((eds) => eds.filter((edge) => edge.id !== id));
 </script>
 
 <BaseEdge path={edgePath} {markerEnd} {style} />
@@ -40,7 +42,7 @@
     class="edgeButtonContainer nodrag nopan"
     style:transform="translate(-50%, -50%) translate({labelX}px,{labelY}px)"
   >
-    <button class="edgeButton" on:click={onEdgeClick}> × </button>
+    <button class="edgeButton" onclick={onEdgeClick}> × </button>
   </div>
 </EdgeLabelRenderer>
 

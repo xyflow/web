@@ -1,5 +1,4 @@
 import type { Node, Edge } from '@xyflow/svelte';
-import { writable, type Writable } from 'svelte/store';
 
 export type FlowState = {
   color: string;
@@ -7,14 +6,15 @@ export type FlowState = {
   shape: string;
 };
 
-const flowState = writable<FlowState>({
-  color: '#ff4000',
-  zoom: 17,
-  shape: 'cube'
-});
+class FlowStateInstance {
+  color = $state('#ff4000');
+  zoom = $state(17);
+  shape = $state('cube');
+}
+
+export const flowState = new FlowStateInstance();
 
 export type NodeData = {
-  flowState: Writable<FlowState>;
   label: string;
 };
 
@@ -24,41 +24,37 @@ export const initialNodes: Node[] = [
     type: 'hero',
     position: { x: 390, y: 50 },
     data: {
-      flowState,
-      label: 'output'
+      label: 'output',
     },
-    class: 'w-[200px] lg:w-[300px]'
+    class: 'w-[200px] lg:w-[300px]',
   },
   {
     id: 'color',
     type: 'colorpicker',
     position: { x: 50, y: 0 },
     data: {
-      flowState,
-      label: 'shape color'
+      label: 'shape color',
     },
-    class: 'w-[150px]'
+    class: 'w-[150px]',
   },
   {
     id: 'shape',
     type: 'switcher',
     position: { x: 0, y: 125 },
     data: {
-      flowState,
-      label: 'shape type'
+      label: 'shape type',
     },
-    class: 'w-[150px]'
+    class: 'w-[150px]',
   },
   {
     id: 'zoom',
     type: 'slider',
     position: { x: 40, y: 280 },
     data: {
-      flowState,
-      label: 'zoom level'
+      label: 'zoom level',
     },
-    class: 'w-[150px]'
-  }
+    class: 'w-[150px]',
+  },
 ];
 
 const edgeStyle = 'stroke:#D2D2D2; stroke-width:2;';
@@ -70,7 +66,7 @@ export const initialEdges: Edge[] = [
     target: 'hero',
     targetHandle: 'color',
     style: edgeStyle,
-    animated: true
+    animated: true,
   },
   {
     id: 'shape->hero',
@@ -78,7 +74,7 @@ export const initialEdges: Edge[] = [
     target: 'hero',
     targetHandle: 'shape',
     style: edgeStyle,
-    animated: true
+    animated: true,
   },
   {
     id: 'zoom->hero',
@@ -86,6 +82,6 @@ export const initialEdges: Edge[] = [
     target: 'hero',
     targetHandle: 'zoom',
     style: edgeStyle,
-    animated: true
-  }
+    animated: true,
+  },
 ];

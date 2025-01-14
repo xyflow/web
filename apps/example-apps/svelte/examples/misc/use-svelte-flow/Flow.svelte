@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { writable } from 'svelte/store';
   import {
     SvelteFlow,
     Controls,
@@ -12,7 +11,7 @@
 
   import '@xyflow/svelte/dist/style.css';
 
-  const nodes = writable([
+  let nodes = $state.raw([
     {
       id: '1',
       type: 'input',
@@ -33,7 +32,7 @@
     },
   ]);
 
-  const edges = writable([
+  let edges = $state.raw([
     {
       id: '1-2',
       type: 'default',
@@ -51,7 +50,7 @@
 </script>
 
 <main>
-  <SvelteFlow {nodes} {edges} fitView>
+  <SvelteFlow bind:nodes bind:edges fitView>
     <Controls />
     <Background variant={BackgroundVariant.Dots} />
     <MiniMap />

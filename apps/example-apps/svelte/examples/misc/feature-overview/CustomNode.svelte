@@ -4,45 +4,40 @@
   const options = [
     {
       value: 'smoothstep',
-      label: 'Smoothstep'
+      label: 'Smoothstep',
     },
     {
       value: 'step',
-      label: 'Step'
+      label: 'Step',
     },
     {
       value: 'default',
-      label: 'Bezier (default)'
+      label: 'Bezier (default)',
     },
     {
       value: 'straight',
-      label: 'Straight'
-    }
+      label: 'Straight',
+    },
   ];
 
-  type $$Props = NodeProps;
-
-  export let data: $$Props['data'];
-  export let id: $$Props['id'];
+  let { id, data }: NodeProps = $props();
 
   const nodes = useNodes();
 
   function handleInput(evt: InputEvent, handleId: string) {
-    nodes.set(
-      Array.from($nodes.values()).map((node) => {
-        if (node.id === id) {
-          node.data = {
-            ...node.data,
-            selects: {
-              ...node.data.selects,
-              [handleId]: evt.target?.value
-            }
-          };
-        }
+    nodes.current = nodes.current.map((node) => {
+      if (node.id === id) {
+        node.data = {
+          ...node.data,
+          selects: {
+            ...node.data.selects,
+            [handleId]: evt.target?.value,
+          },
+        };
+      }
 
-        return node;
-      })
-    );
+      return node;
+    });
   }
 </script>
 
@@ -56,7 +51,7 @@
         <div>Edge Type</div>
         <select
           class="nodrag"
-          bind:value
+          bind:value={data.selects[handleId]}
           on:input={(e) => {
             handleInput(e, handleId);
           }}

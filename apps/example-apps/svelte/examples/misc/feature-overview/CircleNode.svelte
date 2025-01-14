@@ -1,15 +1,16 @@
+<script module>
+  export type CircleNode = Node<{}>;
+</script>
+
 <script lang="ts">
-  import { type NodeProps, Handle, Position } from '@xyflow/svelte';
+  import { type NodeProps, Handle, type Node, Position } from '@xyflow/svelte';
 
-  import type { CircleNode } from './types';
+  let { positionAbsoluteX, positionAbsoluteY }: NodeProps<CircleNode> =
+    $props();
 
-  type $$Props = NodeProps<CircleNode>;
-
-  export let positionAbsoluteX: $$Props['positionAbsoluteX'];
-  export let positionAbsoluteY: $$Props['positionAbsoluteY'];
-  $$restProps;
-
-  $: label = `position x:${Math.round(positionAbsoluteX)} y:${Math.round(positionAbsoluteY)}`;
+  let label = $derived(
+    `position x:${Math.round(positionAbsoluteX)} y:${Math.round(positionAbsoluteY)}`,
+  );
 </script>
 
 <div class="wrapper gradient">

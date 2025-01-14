@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { writable } from 'svelte/store';
   import {
     SvelteFlow,
     Background,
@@ -7,11 +6,13 @@
     MiniMap,
     type NodeTypes,
     type EdgeTypes,
+    type Edge,
+    type Node,
   } from '@xyflow/svelte';
 
   import '@xyflow/svelte/dist/style.css';
 
-  import { nodes, edges } from './nodes-and-edges';
+  import { initialNodes, initialEdges } from './nodes-and-edges';
   import CustomNode from './CustomNode.svelte';
   import AnnotationNode from './AnnotationNode.svelte';
   import ButtonEdge from './ButtonEdge.svelte';
@@ -32,6 +33,9 @@
   const edgeTypes: EdgeTypes = {
     button: ButtonEdge,
   };
+
+  let nodes = $state.raw<Node[]>(initialNodes);
+  let edges = $state.raw<Edge[]>(initialEdges);
 </script>
 
 <div style="height:100vh;" class="overview">

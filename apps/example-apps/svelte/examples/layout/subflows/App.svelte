@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { writable } from 'svelte/store';
   import {
     SvelteFlow,
     Controls,
@@ -15,7 +14,6 @@
   import '@xyflow/svelte/dist/style.css';
 
   let nodes = $state.raw<Node[]>(initialNodes);
-
   let edges = $state.raw<Edge[]>(initialEdges);
 </script>
 
