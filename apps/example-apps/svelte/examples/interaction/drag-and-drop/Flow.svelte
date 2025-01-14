@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { writable } from 'svelte/store';
   import {
     SvelteFlow,
     Controls,
@@ -7,50 +6,51 @@
     BackgroundVariant,
     MiniMap,
     useSvelteFlow,
-    type Node
+    type Node,
   } from '@xyflow/svelte';
+
+  import { useDnD } from './DnDProvider.svelte';
   import Sidebar from './Sidebar.svelte';
 
   import '@xyflow/svelte/dist/style.css';
-  import { useDnD } from './utils';
 
-  const nodes = writable([
+  let nodes = $state.raw([
     {
       id: '1',
       type: 'input',
       data: { label: 'Input Node' },
-      position: { x: 150, y: 5 }
+      position: { x: 150, y: 5 },
     },
     {
       id: '2',
       type: 'default',
       data: { label: 'Default Node' },
-      position: { x: 0, y: 150 }
+      position: { x: 0, y: 150 },
     },
     {
       id: '3',
       type: 'output',
       data: { label: 'Output Node' },
-      position: { x: 300, y: 150 }
-    }
+      position: { x: 300, y: 150 },
+    },
   ]);
 
-  const edges = writable([
+  let edges = $state.raw([
     {
       id: '1-2',
       type: 'default',
       source: '1',
-      target: '2'
+      target: '2',
     },
     {
       id: '1-3',
       type: 'smoothstep',
       source: '1',
-      target: '3'
-    }
+      target: '3',
+    },
   ]);
 
-  const { screenToFlowPosition } = useSvelteFlow();
+  const { screenToFlowPosition } = $derived(useSvelteFlow());
 
   const type = useDnD();
 
@@ -65,30 +65,35 @@
   const onDrop = (event: DragEvent) => {
     event.preventDefault();
 
-    if (!$type) {
+    if (!type.current) {
       return;
     }
 
     const position = screenToFlowPosition({
       x: event.clientX,
-      y: event.clientY
+      y: event.clientY,
     });
 
     const newNode = {
       id: `${Math.random()}`,
-      type: $type,
+      type: type.current,
       position,
-      data: { label: `${$type} node` },
-      origin: [0.5, 0.0]
+      data: { label: `${type.current} node` },
+      origin: [0.5, 0.0],
     } satisfies Node;
 
-    $nodes.push(newNode);
-    $nodes = $nodes;
+    nodes = [...nodes, newNode];
   };
 </script>
 
 <main>
-  <SvelteFlow {nodes} {edges} fitView on:dragover={onDragOver} on:drop={onDrop}>
+  <SvelteFlow
+    bind:nodes
+    bind:edges
+    fitView
+    ondragover={onDragOver}
+    ondrop={onDrop}
+  >
     <Controls />
     <Background variant={BackgroundVariant.Dots} />
     <MiniMap />

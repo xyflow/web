@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { useDnD } from './utils';
+  import { useDnD } from './DnDProvider.svelte';
 
   const type = useDnD();
 
@@ -8,7 +8,7 @@
       return null;
     }
 
-    type.set(nodeType);
+    type.current = nodeType;
 
     event.dataTransfer.effectAllowed = 'move';
   };

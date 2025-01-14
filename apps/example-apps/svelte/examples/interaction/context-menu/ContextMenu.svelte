@@ -1,48 +1,59 @@
 <script lang="ts">
-  import { useEdges, useNodes } from '@xyflow/svelte';
+  import { useEdges, useNodes, useSvelteFlow } from '@xyflow/svelte';
 
-  export let onClick: () => void;
-  export let id: string;
-  export let top: number | undefined;
-  export let left: number | undefined;
-  export let right: number | undefined;
-  export let bottom: number | undefined;
+  let {
+    id,
+    top,
+    left,
+    right,
+    bottom,
+    onclick,
+  }: {
+    id: string;
+    top: number | undefined;
+    left: number | undefined;
+    right: number | undefined;
+    bottom: number | undefined;
+    onclick: () => void;
+  } = $props();
+
+  const { deleteElements } = useSvelteFlow();
 
   const nodes = useNodes();
-  const edges = useEdges();
 
   function duplicateNode() {
-    const node = $nodes.find((node) => node.id === id);
+    const node = nodes.current.find((node) => node.id === id);
     if (node) {
-      $nodes.push({
-        ...node,
-        // You should use a better id than this in production
-        id: `${id}-copy${Math.random()}`,
-        position: {
-          x: node.position.x,
-          y: node.position.y + 50
-        }
-      });
+      nodes.current = [
+        ...nodes.current,
+        {
+          ...node,
+          // You should use a better id than this in production
+          id: `${id}-copy${Math.random()}`,
+          position: {
+            x: node.position.x,
+            y: node.position.y + 50,
+          },
+        },
+      ];
     }
-    $nodes = $nodes;
   }
 
   function deleteNode() {
-    $nodes = $nodes.filter((node) => node.id !== id);
-    $edges = $edges.filter((edge) => edge.source !== id && edge.target !== id);
+    deleteElements({ nodes: [{ id }] });
   }
 </script>
 
 <div
   style="top: {top}px; left: {left}px; right: {right}px; bottom: {bottom}px;"
   class="context-menu"
-  on:click={onClick}
+  {onclick}
 >
   <p style="margin: 0.5em;">
     <small>node: {id}</small>
   </p>
-  <button on:click={duplicateNode}>duplicate</button>
-  <button on:click={deleteNode}>delete</button>
+  <button onclick={duplicateNode}>duplicate</button>
+  <button onclick={deleteNode}>delete</button>
 </div>
 
 <style>

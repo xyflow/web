@@ -1,14 +1,30 @@
+<script module>
+  import { getContext } from 'svelte';
+
+  export const useDnD = () => {
+    return getContext('dnd') as { current: string | null };
+  };
+</script>
+
 <script lang="ts">
-  import { onDestroy, setContext } from 'svelte';
-  import { writable } from 'svelte/store';
+  import { onDestroy, setContext, type Snippet } from 'svelte';
 
-  const dndType = writable(null);
+  let { children }: { children: Snippet } = $props();
 
-  setContext('dnd', dndType);
+  let dndType = $state(null);
+
+  setContext('dnd', {
+    set current(value) {
+      dndType = value;
+    },
+    get current() {
+      return dndType;
+    },
+  });
 
   onDestroy(() => {
     dndType.set(null);
   });
 </script>
 
-<slot />
+{@render children()}
