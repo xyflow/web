@@ -1,24 +1,31 @@
 <script lang="ts">
-  import { type EdgeProps, getBezierPath, BaseEdge, EdgeLabelRenderer } from '@xyflow/svelte';
+  import {
+    type EdgeProps,
+    getBezierPath,
+    BaseEdge,
+    EdgeLabelRenderer,
+  } from '@xyflow/svelte';
 
-  type $$Props = EdgeProps;
-
-  export let sourceX: $$Props['sourceX'];
-  export let sourceY: $$Props['sourceY'];
-  export let sourcePosition: $$Props['sourcePosition'];
-  export let targetX: $$Props['targetX'];
-  export let targetY: $$Props['targetY'];
-  export let targetPosition: $$Props['targetPosition'];
-  export let data: $$Props['data'] = undefined;
-
-  $: [edgePath, labelX, labelY] = getBezierPath({
+  let {
     sourceX,
     sourceY,
     sourcePosition,
     targetX,
     targetY,
-    targetPosition
-  });
+    targetPosition,
+    data,
+  }: EdgeProps = $props();
+
+  let [edgePath, labelX, labelY] = $derived(
+    getBezierPath({
+      sourceX,
+      sourceY,
+      sourcePosition,
+      targetX,
+      targetY,
+      targetPosition,
+    }),
+  );
 </script>
 
 <BaseEdge path={edgePath} />

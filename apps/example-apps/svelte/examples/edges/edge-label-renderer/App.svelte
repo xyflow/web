@@ -1,6 +1,11 @@
 <script lang="ts">
-  import { writable } from 'svelte/store';
-  import { SvelteFlow, Background, type Node, type Edge, type EdgeTypes } from '@xyflow/svelte';
+  import {
+    SvelteFlow,
+    Background,
+    type Node,
+    type Edge,
+    type EdgeTypes,
+  } from '@xyflow/svelte';
 
   import '@xyflow/svelte/dist/style.css';
 
@@ -9,17 +14,17 @@
   import CustomEdge from './CustomEdge.svelte';
   import CustomEdgeStartEnd from './CustomEdgeStartEnd.svelte';
 
-  const nodes = writable<Node[]>(initialNodes);
-  const edges = writable<Edge[]>(initialEdges);
+  let nodes = $state.raw<Node[]>(initialNodes);
+  let edges = $state.raw<Edge[]>(initialEdges);
 
   const edgeTypes: EdgeTypes = {
     custom: CustomEdge,
-    'start-end': CustomEdgeStartEnd
+    'start-end': CustomEdgeStartEnd,
   };
 </script>
 
 <div style="height:100vh;">
-  <SvelteFlow {nodes} {edges} {edgeTypes} fitView>
+  <SvelteFlow bind:nodes bind:edges {edgeTypes} fitView>
     <Background />
   </SvelteFlow>
 </div>
