@@ -39,7 +39,7 @@
 </script>
 
 <div style="height:100vh;" class="overview">
-  <SvelteFlow {nodes} {edges} {nodeTypes} {edgeTypes} fitView>
+  <SvelteFlow bind:nodes bind:edges {nodeTypes} {edgeTypes} fitView>
     <Background patternColor="#aaa" gap={16} />
     <Controls />
     <MiniMap zoomable pannable height={120} />

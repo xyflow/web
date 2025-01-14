@@ -6,7 +6,7 @@
 
   const nodeDefaults = {
     sourcePosition: Position.Right,
-    targetPosition: Position.Left
+    targetPosition: Position.Left,
   };
 
   const nodes = writable([
@@ -14,49 +14,49 @@
       id: '1',
       position: { x: 0, y: 150 },
       data: { label: 'default style 1' },
-      ...nodeDefaults
+      ...nodeDefaults,
     },
     {
       id: '2',
       position: { x: 250, y: 0 },
       data: { label: 'default style 2' },
-      ...nodeDefaults
+      ...nodeDefaults,
     },
     {
       id: '3',
       position: { x: 250, y: 150 },
       data: { label: 'default style 3' },
-      ...nodeDefaults
+      ...nodeDefaults,
     },
     {
       id: '4',
       position: { x: 250, y: 300 },
       data: { label: 'default style 4' },
-      ...nodeDefaults
-    }
+      ...nodeDefaults,
+    },
   ]);
   const edges = writable([
     {
       id: 'e1-2',
       source: '1',
       target: '2',
-      animated: true
+      animated: true,
     },
     {
       id: 'e1-3',
       source: '1',
-      target: '3'
+      target: '3',
     },
     {
       id: 'e1-4',
       source: '1',
-      target: '4'
-    }
+      target: '4',
+    },
   ]);
 </script>
 
 <main>
-  <SvelteFlow {nodes} {edges}>
+  <SvelteFlow bind:nodes bind:edges>
     <Background />
     <Controls />
   </SvelteFlow>

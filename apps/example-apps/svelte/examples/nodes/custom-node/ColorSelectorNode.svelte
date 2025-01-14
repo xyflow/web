@@ -1,26 +1,20 @@
 <script lang="ts">
   import { Handle, Position, type NodeProps } from '@xyflow/svelte';
+  import { bgColor } from './App.svelte';
 
-  type $$Props = NodeProps;
-
-  export let data: $$Props['data'];
-  export let isConnectable: $$Props['isConnectable'];
-
-  const { color } = data;
+  let { isConnectable }: NodeProps = $props();
 </script>
 
-<Handle type="target" position={Position.Left} style="background: #555;" {isConnectable} />
-<div>
-  Custom Color Picker Node: <strong>{$color}</strong>
-</div>
-<input
-  class="nodrag"
-  type="color"
-  on:input={(event) => {
-    $color = event.currentTarget.value;
-  }}
-  value={$color}
+<Handle
+  type="target"
+  position={Position.Left}
+  style="background: #555;"
+  {isConnectable}
 />
+<div>
+  Custom Color Picker Node: <strong>{bgColor.current}</strong>
+</div>
+<input class="nodrag" type="color" bind:value={bgColor.current} />
 <Handle
   type="source"
   position={Position.Right}

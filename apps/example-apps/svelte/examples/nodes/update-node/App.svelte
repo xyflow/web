@@ -1,82 +1,74 @@
 <script lang="ts">
-  import { writable } from 'svelte/store';
+  import { untrack } from 'svelte';
   import { SvelteFlow, Background, type Edge, type Node } from '@xyflow/svelte';
 
   import '@xyflow/svelte/dist/style.css';
 
   const initialNodes: Node[] = [
     { id: '1', data: { label: '-' }, position: { x: 100, y: 100 } },
-    { id: '2', data: { label: 'Node 2' }, position: { x: 100, y: 200 } }
+    { id: '2', data: { label: 'Node 2' }, position: { x: 100, y: 200 } },
   ];
 
   const initialEdges: Edge[] = [{ id: 'e1-2', source: '1', target: '2' }];
 
-  const nodes = writable<Node[]>(initialNodes);
-  const edges = writable(initialEdges);
+  let nodes = $state.raw<Node[]>(initialNodes);
+  let edges = $state.raw(initialEdges);
 
-  let nodeName = 'Node 1';
-  let nodeBg = '#eee';
-  let nodeHidden = false;
+  let nodeName = $state('Node 1');
+  let nodeBg = $state('#eee');
+  let nodeHidden = $state(false);
 
-  $: updateNode({ nodeName, nodeBg, nodeHidden });
+  $effect(() => {
+    updateNode({ nodeName, nodeBg, nodeHidden });
+  });
 
   function updateNode({
     nodeName,
     nodeBg,
-    nodeHidden
+    nodeHidden,
   }: {
     nodeName?: string;
     nodeBg?: string;
     nodeHidden?: boolean;
   }) {
-    $nodes.forEach((node) => {
+    nodes = untrack(() => nodes).map((node) => {
       if (node.id === '1') {
-        if (nodeName) {
-          // IMPORTANT: You need to mutate the data object
-          // otherwise the node will not be updated
-          node.data = {
+        return {
+          ...node,
+          data: {
             ...node.data,
-            label: nodeName
-          };
-        }
-
-        if (nodeBg) {
-          node.style = `background: ${nodeBg}`;
-        }
-
-        if (nodeHidden !== undefined) {
-          node.hidden = nodeHidden;
-
-          $edges.forEach((edge) => {
-            if (edge.id === 'e1-2') {
-              edge.hidden = nodeHidden;
-            }
-          });
-        }
-
-        $nodes = $nodes;
-        $edges = $edges;
+            label: nodeName,
+          },
+          style: `background: ${nodeBg}`,
+          hidden: nodeHidden,
+        };
       }
+      return node;
+    });
+    edges = untrack(() => edges).map((edge) => {
+      if (edge.id === 'e1-2') {
+        return {
+          ...edge,
+          hidden: nodeHidden,
+        };
+      }
+      return edge;
     });
   }
 </script>
 
 <div style="height:100vh;">
-  <SvelteFlow {nodes} {edges} fitView>
+  <SvelteFlow bind:nodes bind:edges fitView>
     <div class="updatenode__controls">
       <label>label:</label>
-      <input value={nodeName} on:input={(evt) => (nodeName = evt.target?.value)} />
+      <input bind:value={nodeName} />
 
       <label class="updatenode__bglabel">background:</label>
-      <input value={nodeBg} on:input={(evt) => (nodeBg = evt.target?.value)} />
+      <input bind:value={nodeBg} />
 
       <div class="updatenode__checkboxwrapper">
         <label>hidden:</label>
-        <input
-          type="checkbox"
-          checked={nodeHidden}
-          on:input={(evt) => (nodeHidden = evt.target?.checked)}
-        />
+        <input type="checkbox" bind:checked={nodeHidden} />
       </div>
     </div>
     <Background />

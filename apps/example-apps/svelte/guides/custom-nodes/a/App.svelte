@@ -11,17 +11,23 @@
       id: '1',
       type: 'colorPicker',
       data: { color: writable('#ff4000') },
-      position: { x: 0, y: 0 }
-    }
+      position: { x: 0, y: 0 },
+    },
   ]);
 
   const edges = writable([]);
 
   const nodeTypes = {
-    colorPicker: ColorPickerNode
+    colorPicker: ColorPickerNode,
   };
 </script>
 
 <div style="height:100vh;">
-  <SvelteFlow {nodes} {edges} {nodeTypes} fitView attributionPosition="top-right" />
+  <SvelteFlow
+    bind:nodes
+    bind:edges
+    {nodeTypes}
+    fitView
+    attributionPosition="top-right"
+  />
 </div>

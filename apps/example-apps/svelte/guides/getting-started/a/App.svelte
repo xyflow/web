@@ -9,7 +9,7 @@
 </script>
 
 <main>
-  <SvelteFlow {nodes} {edges}>
+  <SvelteFlow bind:nodes bind:edges>
     <Background />
     <Controls />
   </SvelteFlow>

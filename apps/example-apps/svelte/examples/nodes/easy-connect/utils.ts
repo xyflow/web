@@ -1,11 +1,23 @@
-import { Position, MarkerType, type XYPosition, type InternalNode } from '@xyflow/svelte';
+import {
+  Position,
+  MarkerType,
+  type XYPosition,
+  type InternalNode,
+} from '@xyflow/svelte';
 
 // this helper function returns the intersection point
 // of the line between the center of the intersectionNode and the target node
-function getNodeIntersection(intersectionNode: InternalNode, targetNode: InternalNode) {
+function getNodeIntersection(
+  intersectionNode: InternalNode,
+  targetNode: InternalNode,
+) {
   // https://math.stackexchange.com/questions/1724792/an-algorithm-for-finding-the-intersection-point-between-a-center-of-vision-and-a
-  const intersectionNodePosition = intersectionNode.internals.positionAbsolute || { x: 0, y: 0 };
-  const targetPosition = targetNode.internals.positionAbsolute || { x: 0, y: 0 };
+  const intersectionNodePosition = intersectionNode.internals
+    .positionAbsolute || { x: 0, y: 0 };
+  const targetPosition = targetNode.internals.positionAbsolute || {
+    x: 0,
+    y: 0,
+  };
 
   const w = (intersectionNode.measured.width ?? 0) / 2;
   const h = (intersectionNode.measured.height ?? 0) / 2;
@@ -66,35 +78,6 @@ export function getEdgeParams(source: InternalNode, target: InternalNode) {
     tx: targetIntersectionPoint.x,
     ty: targetIntersectionPoint.y,
     sourcePos,
-    targetPos
+    targetPos,
   };
-}
-
-export function createNodesAndEdges() {
-  const nodes = [];
-  const edges = [];
-  const center = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
-
-  nodes.push({ id: 'target', data: { label: 'Target' }, position: center });
-
-  for (let i = 0; i < 8; i++) {
-    const degrees = i * (360 / 8);
-    const radians = degrees * (Math.PI / 180);
-    const x = 250 * Math.cos(radians) + center.x;
-    const y = 250 * Math.sin(radians) + center.y;
-
-    nodes.push({ id: `${i}`, data: { label: 'Source' }, position: { x, y } });
-
-    edges.push({
-      id: `edge-${i}`,
-      target: 'target',
-      source: `${i}`,
-      type: 'floating',
-      markerEnd: {
-        type: MarkerType.Arrow
-      }
-    });
-  }
-
-  return { nodes, edges };
 }

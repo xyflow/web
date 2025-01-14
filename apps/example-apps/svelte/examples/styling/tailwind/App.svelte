@@ -12,8 +12,8 @@
   import { initialNodes, initialEdges } from './nodes-and-edges';
   import CustomNode from './CustomNode.svelte';
 
-  const nodes = writable<Node[]>(initialNodes);
-  const edges = writable<Edge[]>(initialEdges);
+  let nodes = $state.raw<Node[]>(initialNodes);
+  let edges = $state.raw<Edge[]>(initialEdges);
 
   const nodeTypes = {
     custom: CustomNode,
@@ -21,7 +21,7 @@
 </script>
 
 <div style="height:100vh;">
-  <SvelteFlow {nodes} {nodeTypes} {edges} fitView class="bg-teal-50">
+  <SvelteFlowbind:nodes {nodeTypes}bind:edges fitView class="bg-teal-50">
     <MiniMap />
     <Controls />
   </SvelteFlow>

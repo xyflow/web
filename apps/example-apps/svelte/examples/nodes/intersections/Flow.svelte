@@ -1,35 +1,43 @@
 <script lang="ts">
-  import { writable } from 'svelte/store';
   import {
     SvelteFlow,
     Background,
     Controls,
     useSvelteFlow,
     type Node,
-    type Edge
+    type Edge,
   } from '@xyflow/svelte';
 
   import '@xyflow/svelte/dist/style.css';
 
   import { initialNodes, initialEdges } from './nodes-and-edges';
 
-  const nodes = writable<Node[]>(initialNodes);
-  const edges = writable<Edge[]>(initialEdges);
+  let nodes = $state.raw<Node[]>(initialNodes);
+  let edges = $state.raw<Edge[]>(initialEdges);
 
-  const { getIntersectingNodes } = useSvelteFlow();
+  const { getIntersectingNodes } = $derived(useSvelteFlow());
 
-  function onNodeDrag({ detail: { targetNode } }) {
+  function onNodeDrag({ targetNode }) {
     const intersections = getIntersectingNodes(targetNode).map((n) => n.id);
 
-    $nodes.forEach((n) => {
-      n.class = intersections.includes(n.id) ? 'highlight' : '';
+    nodes = nodes.map((n) => {
+      const clas = intersections.includes(n.id) ? 'highlight' : '';
+      if (n.class !== clas) {
+        return { ...n, class: clas };
+      }
+      return n;
     });
-    $nodes = $nodes;
   }
 </script>
 
 <div style="height:100vh;">
-  <SvelteFlow {nodes} {edges} fitView class="intersection-flow" on:nodedrag={onNodeDrag}>
+  <SvelteFlow
+    bind:nodes
+    bind:edges
+    fitView
+    class="intersection-flow"
+    onnodedrag={onNodeDrag}
+  >
     <Background />
     <Controls />
   </SvelteFlow>

@@ -11,20 +11,20 @@
       id: '1',
       type: 'colorPicker',
       data: { color: writable('#ff4000') },
-      position: { x: 0, y: 0 }
+      position: { x: 0, y: 0 },
     },
     {
       id: '2',
       type: 'colorPicker',
       data: { color: writable('#ffffff') },
-      position: { x: 200, y: 0 }
-    }
+      position: { x: 200, y: 0 },
+    },
   ]);
 
   const edges = writable([]);
 
   const nodeTypes = {
-    colorPicker: ColorPickerNode
+    colorPicker: ColorPickerNode,
   };
 
   $: colorA = $nodes[0].data.color;
@@ -33,8 +33,8 @@
 
 <div style="height:100vh;">
   <SvelteFlow
-    {nodes}
-    {edges}
+    bind:nodes
+    bind:edges
     {nodeTypes}
     fitView
     style="background-color: color-mix(in srgb, {$colorA}, {$colorB});"

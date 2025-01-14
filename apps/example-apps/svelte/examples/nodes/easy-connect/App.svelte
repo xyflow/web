@@ -1,12 +1,11 @@
 <script lang="ts">
-  import { writable } from 'svelte/store';
   import {
     ConnectionLineType,
     MarkerType,
     SvelteFlow,
     Background,
     type Node,
-    type Edge
+    type Edge,
   } from '@xyflow/svelte';
 
   import CustomNode from './CustomNode.svelte';
@@ -16,15 +15,15 @@
   import { initialNodes, initialEdges } from './nodes-and-edges';
   import FloatingEdge from './FloatingEdge.svelte';
 
-  const nodes = writable<Node[]>(initialNodes);
-  const edges = writable<Edge[]>(initialEdges);
+  let nodes = $state.raw<Node[]>(initialNodes);
+  let edges = $state.raw<Edge[]>(initialEdges);
 
   const nodeTypes = {
-    custom: CustomNode
+    custom: CustomNode,
   };
 
   const edgeTypes = {
-    floating: FloatingEdge
+    floating: FloatingEdge,
   };
 
   const defaultEdgeOptions = {
@@ -32,8 +31,8 @@
     type: 'floating',
     markerEnd: {
       type: MarkerType.ArrowClosed,
-      color: 'black'
-    }
+      color: 'black',
+    },
   };
 
   const connectionLineStyle = 'stroke: black; stroke-width: 3;';
@@ -41,9 +40,9 @@
 
 <div style="height:100vh;">
   <SvelteFlow
-    {nodes}
+    bind:nodes
     {nodeTypes}
-    {edges}
+    bind:edges
     {edgeTypes}
     {defaultEdgeOptions}
     connectionLineType={ConnectionLineType.Straight}

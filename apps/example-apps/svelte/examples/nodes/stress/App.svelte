@@ -1,31 +1,36 @@
 <script>
-  import { writable } from 'svelte/store';
   import { SvelteFlow, Background, Controls, MiniMap } from '@xyflow/svelte';
   import { createNodesAndEdges } from './utils';
 
   import '@xyflow/svelte/dist/style.css';
 
-  const { nodes: initialNodes, edges: initialEdges } = createNodesAndEdges(15, 30);
-  const nodes = writable(initialNodes);
-  const edges = writable(initialEdges);
+  const { nodes: initialNodes, edges: initialEdges } = createNodesAndEdges(
+    15,
+    30,
+  );
+
+  let nodes = $state.raw(initialNodes);
+  let edges = $state.raw(initialEdges);
 
   function updatePos() {
-    $nodes.forEach((node) => {
-      node.position = {
-        x: Math.random() * 1500,
-        y: Math.random() * 1500
+    nodes = nodes.map((node) => {
+      return {
+        ...node,
+        position: {
+          x: Math.random() * 1500,
+          y: Math.random() * 1500,
+        },
       };
     });
-    $nodes = $nodes;
   }
 </script>
 
 <div style="height:100vh;">
-  <SvelteFlow {nodes} {edges} minZoom={0} fitView>
+  <SvelteFlow bind:nodes bind:edges minZoom={0} fitView>
     <Background />
     <MiniMap />
     <Controls />
-    <button on:click={updatePos} class="scramble-button"> change pos </button>
+    <button onclick={updatePos} class="scramble-button"> change pos </button>
   </SvelteFlow>
 </div>
 
