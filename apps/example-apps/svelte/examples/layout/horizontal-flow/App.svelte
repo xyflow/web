@@ -8,20 +8,20 @@
     MiniMap,
     type NodeTypes,
     type Node,
-    type Edge
+    type Edge,
   } from '@xyflow/svelte';
 
   import { initialNodes, initialEdges } from './nodes-and-edges';
 
   import '@xyflow/svelte/dist/style.css';
 
-  const nodes = writable<Node[]>(initialNodes);
+  let nodes = $state.raw<Node[]>(initialNodes);
 
-  const edges = writable<Edge[]>(initialEdges);
+  let edges = $state.raw<Edge[]>(initialEdges);
 </script>
 
 <main>
-  <SvelteFlow {nodes} {edges} fitView minZoom={0.1} maxZoom={2.5}>
+  <SvelteFlow bind:nodes bind:edges fitView minZoom={0.1} maxZoom={2.5}>
     <Controls />
     <Background variant={BackgroundVariant.Dots} />
     <MiniMap />

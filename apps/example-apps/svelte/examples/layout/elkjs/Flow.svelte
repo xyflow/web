@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { writable } from 'svelte/store';
   import ELK from 'elkjs/lib/elk.bundled.js';
   import {
     SvelteFlow,
@@ -9,18 +8,17 @@
     Panel,
     useSvelteFlow,
     type Node,
-    type Edge
+    type Edge,
   } from '@xyflow/svelte';
 
   import '@xyflow/svelte/dist/style.css';
 
   import { initialNodes, initialEdges } from './nodes-and-edges';
   import { onMount } from 'svelte';
+  let nodes = $state.raw<Node[]>([]);
+  let edges = $state.raw<Edge[]>([]);
 
-  const nodes = writable<Node[]>([]);
-  const edges = writable<Edge[]>([]);
-
-  const { fitView } = useSvelteFlow();
+  const { fitView } = $derived(useSvelteFlow());
 
   const elk = new ELK();
 
@@ -32,7 +30,7 @@
   const elkOptions = {
     'elk.algorithm': 'layered',
     'elk.layered.spacing.nodeNodeBetweenLayers': '100',
-    'elk.spacing.nodeNode': '80'
+    'elk.spacing.nodeNode': '80',
   };
 
   function getLayoutedElements(nodes: Node[], edges: Edge[], options = {}) {
@@ -49,9 +47,9 @@
 
         // Hardcode a width and height for elk to use when layouting.
         width: 150,
-        height: 50
+        height: 50,
       })),
-      edges: edges
+      edges: edges,
     };
 
     return elk
@@ -59,29 +57,31 @@
       .then((layoutedGraph) => ({
         nodes: layoutedGraph.children.map((node) => ({
           ...node,
-          // React Flow expects a position property on the node instead of `x`
+          // Svelte Flow expects a position property on the node instead of `x`
           // and `y` fields.
-          position: { x: node.x, y: node.y }
+          position: { x: node.x, y: node.y },
         })),
 
-        edges: layoutedGraph.edges
+        edges: layoutedGraph.edges,
       }))
       .catch(console.error);
   }
 
   function onLayout(direction: string, useInitialNodes = false) {
     const opts = { 'elk.direction': direction, ...elkOptions };
-    const ns = useInitialNodes ? initialNodes : $nodes;
-    const es = useInitialNodes ? initialEdges : $edges;
+    const ns = useInitialNodes ? initialNodes : nodes;
+    const es = useInitialNodes ? initialEdges : edges;
 
-    getLayoutedElements(ns, es, opts).then(({ nodes: layoutedNodes, edges: layoutedEdges }) => {
-      $nodes = layoutedNodes;
-      $edges = layoutedEdges;
+    getLayoutedElements(ns, es, opts).then(
+      ({ nodes: layoutedNodes, edges: layoutedEdges }) => {
+        nodes = layoutedNodes;
+        edges = layoutedEdges;
 
-      fitView();
+        fitView();
 
-      window.requestAnimationFrame(() => fitView());
-    });
+        window.requestAnimationFrame(() => fitView());
+      },
+    );
   }
 
   onMount(() => {
@@ -91,15 +91,15 @@
 
 <div style="height:100vh;">
   <SvelteFlow
-    {nodes}
-    {edges}
+    bind:nodes
+    bind:edges
     fitView
     connectionLineType={ConnectionLineType.SmoothStep}
     defaultEdgeOptions={{ type: 'smoothstep', animated: true }}
   >
     <Panel position="top-right">
-      <button on:click={() => onLayout('DOWN')}>vertical layout</button>
-      <button on:click={() => onLayout('RIGHT')}>horizontal layout</button>
+      <button onclick={() => onLayout('DOWN')}>vertical layout</button>
+      <button onclick={() => onLayout('RIGHT')}>horizontal layout</button>
     </Panel>
     <Background />
   </SvelteFlow>
