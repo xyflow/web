@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { writable } from 'svelte/store';
   import {
     SvelteFlow,
     Background,
@@ -18,7 +17,7 @@
   let nodes = $state.raw<Node[]>(initialNodes);
   let edges = $state.raw<Edge[]>(initialEdges);
 
-  let colorMode: ColorMode = 'dark';
+  let colorMode: ColorMode = $state('system');
 </script>
 
 <div style="height:100vh;">

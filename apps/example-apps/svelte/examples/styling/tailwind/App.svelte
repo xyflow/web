@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { writable } from 'svelte/store';
   import {
     SvelteFlow,
     Controls,
@@ -21,7 +20,7 @@
 </script>
 
 <div style="height:100vh;">
-  <SvelteFlowbind:nodes {nodeTypes}bind:edges fitView class="bg-teal-50">
+  <SvelteFlow bind:nodes {nodeTypes} bind:edges fitView class="bg-teal-50">
     <MiniMap />
     <Controls />
   </SvelteFlow>
