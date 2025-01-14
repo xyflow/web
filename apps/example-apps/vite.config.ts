@@ -42,16 +42,15 @@ function generatePublicAssets(): Plugin {
   return {
     name: 'generate-public-assets',
     options() {
+      examples = { react: [], svelte: [] };
       walkExamples(Path.join(Process.cwd(), 'react'), (dir) => {
         const relative = Path.relative(Process.cwd(), dir);
-
         examples.react.push(relative);
         generateAssetsForExample(dir);
       });
 
       walkExamples(Path.join(Process.cwd(), 'svelte'), (dir) => {
         const relative = Path.relative(Process.cwd(), dir);
-
         examples.svelte.push(relative);
         generateAssetsForExample(dir);
       });
