@@ -1,0 +1,30 @@
+---
+title: useNodeConnections()
+description:
+  'This hook returns an array of connected edges. Components that use this hook
+  will re-render whenever any edge changes.'
+created_at: 2025-01-15
+---
+
+import { PropsTable } from '@/components/props-table';
+import { signature } from '@/references/hooks/useNodeConnections.ts';
+
+# useNodeConnections
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/hooks/useNodeConnections.ts)
+
+This hook returns an array of connections on a specific node, handle type ('source', 'target') or handle ID.
+
+```svelte
+
+<script>
+  import { useNodeConnections } from '@xyflow/svelte';
+  const connections = useNodeConnections({ type: 'target', handleId: 'my-handle' });
+</script>
+
+<div>There are currently {connections.length} incoming connections!</div>
+```
+
+## Signature
+
+<PropsTable {...signature} />

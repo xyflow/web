@@ -5,8 +5,14 @@ description: This hook can be used to get notified when the connections of a han
 
 import { PropsTable } from '@/components/props-table';
 import { signature } from '@/references/hooks/useHandleConnections.ts';
+import { Callout } from 'nextra/components';
 
 # useHandleConnections
+
+<Callout type="warning">
+  `useHandleConnections` is deprecated in favor of the more capable
+  [useNodeConnections](/api-reference/hooks/use-node-connections).
+</Callout>
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/hooks/useHandleConnections.ts)
 

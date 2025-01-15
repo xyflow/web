@@ -72,9 +72,19 @@ export const nodesAndEdgesFields: PropsTableProps = {
       description: `Get all the connections of a handle belonging to a specific node. The type parameter be either 'source' or 'target'.`,
     },
     {
+      name: 'getNodeConnections',
+      type: `({ nodeId, type, handleId }: { nodeId: string, type?: HandleType, handleId?: string | null }) => NodeConnection[]`,
+      description: `Get all the connections to a specific node. Can be filtered by handle type or id.`,
+    },
+    {
       name: 'getNodesBounds',
       type: `(nodes: (NodeType | InternalNode | string)[]) => Rect`,
       description: 'Returns the bounds of the given nodes or node ids.',
+    },
+    {
+      name: 'getNodeConnections',
+      type: '({type?: HandleType, nodeId: string, handleId?: string | null }) => NodeConnection[]',
+      description: `Get all the connections to a specific node. Can be filtered by handle type or id.`,
     },
   ],
 };
