@@ -32,19 +32,8 @@
 <EdgeLabelRenderer>
   <div
     style:transform="translate(-50%, -50%) translate({labelX}px,{labelY}px)"
-    class="edge-label nodrag nopan"
+    class="edge-label-renderer__custom-edge nodrag nopan"
   >
     {data.label}
   </div>
 </EdgeLabelRenderer>
-
-<style>
-  .edge-label {
-    position: absolute;
-    background: #ffcc00;
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 12px;
-    font-weight: 700;
-  }
-</style>

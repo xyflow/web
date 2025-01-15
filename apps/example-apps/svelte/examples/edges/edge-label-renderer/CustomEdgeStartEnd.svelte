@@ -54,8 +54,11 @@
   .edge-label {
     position: absolute;
     background: rgba(255, 255, 255, 0.75);
-    padding: 4px 10px;
+    padding: 5px 10px;
+    font-weight: 700;
+    font-size: 12;
     border-radius: 5px;
     font-size: 12px;
+    color: #ff5050;
   }
 </style>

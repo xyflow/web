@@ -103,3 +103,7 @@
   width: 5px;
   height: 5px;
 }
+
+.react-flow__edge-textbg {
+  fill: #f7f9fb;
+}

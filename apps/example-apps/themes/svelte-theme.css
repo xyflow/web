@@ -103,3 +103,7 @@
   width: 5px;
   height: 5px;
 }
+
+.svelte-flow__edge-label {
+  background: #f7f9fb;
+}
