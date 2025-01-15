@@ -4,11 +4,9 @@ title: Drag Handle
 
 import { ExampleLayout } from 'xy-shared';
 import { RemoteCodeViewer } from 'xy-shared';
-import UnusedPropWarning from '@/components/unused-prop-warning';
 
 import { getStaticCode } from 'xy-shared/server';
 export const getStaticProps = getStaticCode(['examples/nodes/drag-handle']);
-
 
 <ExampleLayout>
 You can restrict dragging to a specific part of node, by specifiying a class that will act as a [`dragHandle`](/api-reference/types/node).
@@ -19,5 +17,3 @@ You can restrict dragging to a specific part of node, by specifiying a class tha
   framework="svelte"
 />
 </ExampleLayout>
-
-<UnusedPropWarning />

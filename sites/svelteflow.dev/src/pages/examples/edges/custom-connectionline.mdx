@@ -4,11 +4,11 @@ title: Connection Line
 
 import { RemoteCodeViewer } from 'xy-shared';
 import { ExampleLayout } from 'xy-shared';
-import UnusedPropWarning from '@/components/unused-prop-warning';
 
 import { getStaticCode } from 'xy-shared/server';
-export const getStaticProps = getStaticCode(['examples/edges/custom-connectionline']);
-
+export const getStaticProps = getStaticCode([
+  'examples/edges/custom-connectionline',
+]);
 
 <ExampleLayout>
 A Connection Line is what you see when you click and drag out from a handle. It represents a possible edge and can snap to valid handles in close proximity.
@@ -20,5 +20,3 @@ You can implement your own Connection Line by passing a Svelte component with `s
   framework="svelte"
 />
 </ExampleLayout>
-
-<UnusedPropWarning />

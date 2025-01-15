@@ -4,11 +4,11 @@ title: Simple Floating Edges
 
 import { RemoteCodeViewer } from 'xy-shared';
 import { ExampleLayout } from 'xy-shared';
-import UnusedPropWarning from '@/components/unused-prop-warning';
 
 import { getStaticCode } from 'xy-shared/server';
-export const getStaticProps = getStaticCode(['examples/edges/simple-floating-edges']);
-
+export const getStaticProps = getStaticCode([
+  'examples/edges/simple-floating-edges',
+]);
 
 <ExampleLayout>
 This example shows how to implement an edge type that dynamically connects to the closest handle.
@@ -19,5 +19,3 @@ This example shows how to implement an edge type that dynamically connects to th
   framework="svelte"
 />
 </ExampleLayout>
-
-<UnusedPropWarning />
