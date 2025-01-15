@@ -144,7 +144,6 @@ function injectXYTheme(): Plugin {
     enforce: 'pre',
     async transform(code, id) {
       if (id.endsWith('index.css')) {
-        console.log(id);
         return code.replace('./xy-theme.css', getSharedThemePath(id));
       }
       return code;
