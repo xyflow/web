@@ -11,7 +11,6 @@ import {
 
 import '@xyflow/react/dist/style.css';
 
-
 import CustomNode from './CustomNode';
 import { initialTree, treeRootId } from './initialElements';
 import { layoutElements } from './layout-elements';
@@ -64,7 +63,6 @@ const LayoutFlow = () => {
       connectionLineType={ConnectionLineType.SmoothStep}
       fitView
       nodeTypes={nodeTypes}
-      style={{ backgroundColor: "#F7F9FB" }}
     >
       <Panel position="top-right">
         <button onClick={() => onLayout('TB')}>vertical layout</button>

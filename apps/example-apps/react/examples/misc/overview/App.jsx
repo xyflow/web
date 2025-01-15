@@ -11,7 +11,6 @@ import {
 
 import '@xyflow/react/dist/style.css';
 
-
 import {
   nodes as initialNodes,
   edges as initialEdges,
@@ -56,11 +55,10 @@ const OverviewFlow = () => {
       attributionPosition="top-right"
       nodeTypes={nodeTypes}
       edgeTypes={edgeTypes}
-      style={{ backgroundColor: "#F7F9FB" }}
     >
       <MiniMap zoomable pannable nodeClassName={nodeClassName} />
       <Controls />
-    <Background  />
+      <Background />
     </ReactFlow>
   );
 };

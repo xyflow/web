@@ -40,14 +40,17 @@ importers:
         specifier: ^1.1.4
         version: 1.1.4
       '@threlte/core':
-        specifier: ^7.3.1
-        version: 7.3.1(svelte@5.17.2)(three@0.169.0)
+        specifier: ^8.0.0-next.39
+        version: 8.0.0-next.39(svelte@5.17.2)(three@0.169.0)
       '@xyflow/react':
         specifier: ^12.3.6
         version: 12.3.6(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@xyflow/svelte':
-        specifier: file:.yalc/@xyflow/svelte
-        version: file:apps/example-apps/.yalc/@xyflow/svelte(svelte@5.17.2)
+        specifier: '@xyflow/svelte'
+        version: link:../../../xyflow/packages/svelte
+      '@xyflow/system':
+        specifier: '@xyflow/system'
+        version: link:../../../xyflow/packages/system
       d3-drag:
         specifier: ^3.0.0
         version: 3.0.0
@@ -2121,11 +2124,6 @@ packages:
   '@stitches/core@1.2.8':
     resolution: {integrity: sha512-Gfkvwk9o9kE9r9XNBmJRfV8zONvXThnm1tcuojL04Uy5uRyqg93DC83lDebl0rocZCfKSjUv+fWYtMQmEDJldg==}
 
-  '@svelte-put/shortcut@4.1.0':
-    resolution: {integrity: sha512-wImNEIkbxAIWFqlfuhcbC+jRPDeRa/uJGIXHMEVVD+jqL9xCwWNnkGQJ6Qb2XVszuRLHlb8SGZDL3Io/h3vs8w==}
-    peerDependencies:
-      svelte: ^5.1.0
-
   '@sveltejs/vite-plugin-svelte-inspector@4.0.1':
     resolution: {integrity: sha512-J/Nmb2Q2y7mck2hyCX4ckVHcR5tu2J+MtBEQqpDrrgELZ2uvraQcK/ioCV61AqkdXFgriksOKIceDcQmqnGhVw==}
     engines: {node: ^18.0.0 || ^20.0.0 || >=22}
@@ -2167,11 +2165,11 @@ packages:
   '@theguild/remark-npm2yarn@0.3.3':
     resolution: {integrity: sha512-ma6DvR03gdbvwqfKx1omqhg9May/VYGdMHvTzB4VuxkyS7KzfZ/lzrj43hmcsggpMje0x7SADA/pcMph0ejRnA==}
 
-  '@threlte/core@7.3.1':
-    resolution: {integrity: sha512-qGfpboBL5PWYGqPIpnRmvp0ssW551ULRZsXRpWAwSPWGughiOSL9dBZjiwWQTQHUFMEErgquo6hbFJCuWE0uTg==}
+  '@threlte/core@8.0.0-next.39':
+    resolution: {integrity: sha512-TChf59J4YzfErfnO1mkmxCdnYDYYgNpk8iv3+W5JFjKLn8zsgb5yhB9HFmM4UVcF9AtOZ4ay3ekxT50NTtnIww==}
     peerDependencies:
-      svelte: '>=4'
-      three: '>=0.152'
+      svelte: '>=5'
+      three: '>=0.155'
 
   '@tootallnate/quickjs-emscripten@0.23.0':
     resolution: {integrity: sha512-C5Mc6rdnsaJDjO3UpGW/CQTHtCKaYlScZTly4JIu97Jxo/odCiH0ITnDXSJPTOrEKk/ycSZ0AOgTmkDtkOsvIA==}
@@ -2540,11 +2538,6 @@ packages:
     peerDependencies:
       react: '>=17'
       react-dom: '>=17'
-
-  '@xyflow/svelte@file:apps/example-apps/.yalc/@xyflow/svelte':
-    resolution: {directory: apps/example-apps/.yalc/@xyflow/svelte, type: directory}
-    peerDependencies:
-      svelte: ^5.7.0
 
   '@xyflow/system@0.0.43':
     resolution: {integrity: sha512-1zHgad1cWr1mKm2xbFaarK0Jg8WRgaQ8ubSBIo/pRdq3fEgCuqgNkL9NSAP6Rvm8zi3+Lu4JPUMN+EEx5QgX9A==}
@@ -8385,10 +8378,6 @@ snapshots:
 
   '@stitches/core@1.2.8': {}
 
-  '@svelte-put/shortcut@4.1.0(svelte@5.17.2)':
-    dependencies:
-      svelte: 5.17.2
-
   '@sveltejs/vite-plugin-svelte-inspector@4.0.1(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.17.2)(vite@6.0.7(@types/node@22.8.2)(jiti@1.21.6)(yaml@2.6.0)))(svelte@5.17.2)(vite@6.0.7(@types/node@22.8.2)(jiti@1.21.6)(yaml@2.6.0))':
     dependencies:
       '@sveltejs/vite-plugin-svelte': 5.0.3(svelte@5.17.2)(vite@6.0.7(@types/node@22.8.2)(jiti@1.21.6)(yaml@2.6.0))
@@ -8443,7 +8432,7 @@ snapshots:
       npm-to-yarn: 3.0.0
       unist-util-visit: 5.0.0
 
-  '@threlte/core@7.3.1(svelte@5.17.2)(three@0.169.0)':
+  '@threlte/core@8.0.0-next.39(svelte@5.17.2)(three@0.169.0)':
     dependencies:
       mitt: 3.0.1
       svelte: 5.17.2
@@ -8924,13 +8913,6 @@ snapshots:
     transitivePeerDependencies:
       - '@types/react'
       - immer
-
-  '@xyflow/svelte@file:apps/example-apps/.yalc/@xyflow/svelte(svelte@5.17.2)':
-    dependencies:
-      '@svelte-put/shortcut': 4.1.0(svelte@5.17.2)
-      '@xyflow/system': 0.0.47
-      classcat: 5.0.5
-      svelte: 5.17.2
 
   '@xyflow/system@0.0.43':
     dependencies:

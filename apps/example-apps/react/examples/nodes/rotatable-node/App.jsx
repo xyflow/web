@@ -2,7 +2,6 @@ import React from 'react';
 import { ReactFlow, Background } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 
-
 import RotatableNode from './RotatableNode';
 import { nodes, edges } from './initialElements';
 
@@ -17,7 +16,6 @@ function Flow() {
       defaultNodes={nodes}
       defaultEdges={edges}
       fitView
-      style={{ backgroundColor: "#F7F9FB" }}
     >
       <Background />
     </ReactFlow>

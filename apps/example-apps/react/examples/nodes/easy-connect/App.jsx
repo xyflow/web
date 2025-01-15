@@ -11,7 +11,6 @@ import {
 
 import '@xyflow/react/dist/style.css';
 
-
 import CustomNode from './CustomNode';
 import FloatingEdge from './FloatingEdge';
 import CustomConnectionLine from './CustomConnectionLine';
@@ -80,7 +79,6 @@ const EasyConnectExample = () => {
       fitView
       nodeTypes={nodeTypes}
       edgeTypes={edgeTypes}
-      style={{ backgroundColor: "#F7F9FB" }}
       defaultEdgeOptions={defaultEdgeOptions}
       connectionLineComponent={CustomConnectionLine}
       connectionLineStyle={connectionLineStyle}

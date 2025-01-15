@@ -11,7 +11,6 @@ import {
 
 import '@xyflow/react/dist/style.css';
 
-
 const initialNodes = [
   {
     id: 'hidden-1',
@@ -60,12 +59,11 @@ const HiddenFlow = () => {
       onEdgesChange={onEdgesChange}
       onConnect={onConnect}
       fitView
-      style={{ backgroundColor: "#F7F9FB" }}
     >
       <MiniMap />
       <Controls />
 
-      <div className='isHidden__button'>
+      <div className="isHidden__button">
         <div>
           <label htmlFor="ishidden">
             isHidden
@@ -79,7 +77,7 @@ const HiddenFlow = () => {
           </label>
         </div>
       </div>
-      <Background  />
+      <Background />
     </ReactFlow>
   );
 };

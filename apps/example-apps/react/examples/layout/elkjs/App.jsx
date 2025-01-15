@@ -14,7 +14,6 @@ import {
 
 import '@xyflow/react/dist/style.css';
 
-
 const elk = new ELK();
 
 // Elk has a *huge* amount of options to configure. To see everything you can
@@ -102,7 +101,6 @@ function LayoutFlow() {
       onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
       fitView
-      style={{ backgroundColor: "#F7F9FB" }}
     >
       <Panel position="top-right">
         <button onClick={() => onLayout({ direction: 'DOWN' })}>

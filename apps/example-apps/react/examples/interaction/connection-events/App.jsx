@@ -6,7 +6,6 @@ import { useEffect } from 'react';
 
 import '@xyflow/react/dist/style.css';
 
-
 const initialNodes = [
   { id: 'a', position: { x: -100, y: 0 }, data: { label: 'A' } },
   { id: 'b', position: { x: 100, y: 0 }, data: { label: 'B' } },
@@ -122,10 +121,9 @@ const Flow = () => {
         onReconnect={onReconnect}
         onReconnectEnd={onReconnectEnd}
         fitView
-        style={{ backgroundColor: "#F7F9FB" }}
-        >
-          <Background />
-        </ReactFlow>
+      >
+        <Background />
+      </ReactFlow>
       <div id="event-list">
         {Object.entries(events).map(([name, active]) => (
           <p key={name} style={{ opacity: active ? 1 : 0.2 }}>

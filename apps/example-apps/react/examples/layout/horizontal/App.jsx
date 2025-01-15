@@ -136,10 +136,9 @@ const HorizontalFlow = () => {
       onConnect={onConnect}
       fitView
       attributionPosition="bottom-left"
-      style={{ backgroundColor: "#F7F9FB" }}
-      >
-        <Background />
-      </ReactFlow>  
+    >
+      <Background />
+    </ReactFlow>
   );
 };
 

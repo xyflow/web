@@ -14,7 +14,7 @@ const examplesGlob = './{react,svelte}/**/{index.html,index.css}';
 const examples = globSync(examplesGlob);
 
 export default defineConfig({
-  plugins: [generatePublicAssets(), svelte(), react()],
+  plugins: [injectXYTheme(), generatePublicAssets(), svelte(), react()],
   server: {
     host: '0.0.0.0',
     cors: true,
@@ -33,8 +33,6 @@ export default defineConfig({
     },
   },
 });
-
-//
 
 function generatePublicAssets(): Plugin {
   let examples = { react: [] as string[], svelte: [] as string[] };
@@ -123,6 +121,12 @@ function generateAssetsForExample(dir: string) {
       }
     } else if (file === 'preview.jpg') {
       Fs.cpSync(filePath, Path.join(out, relative, 'preview.jpg'));
+    } else if (
+      file === 'index.css' &&
+      content.startsWith("@import url('./xy-theme.css')")
+    ) {
+      const content = Fs.readFileSync(getSharedThemePath(dir), 'utf-8');
+      source.files['xy-theme.css'] = content;
     } else {
       source.files[file] = content;
     }
@@ -132,4 +136,23 @@ function generateAssetsForExample(dir: string) {
 
   Fs.mkdirSync(Path.join(out, relative), { recursive: true });
   Fs.writeFileSync(Path.join(out, relative, 'source.json'), json);
+}
+
+function injectXYTheme(): Plugin {
+  return {
+    name: 'inject-xy-theme-css',
+    enforce: 'pre',
+    async transform(code, id) {
+      if (id.endsWith('index.css')) {
+        console.log(id);
+        return code.replace('./xy-theme.css', getSharedThemePath(id));
+      }
+      return code;
+    },
+  };
+}
+
+function getSharedThemePath(dir: string) {
+  const framework = dir.includes('react') ? 'react' : 'svelte';
+  return resolve(__dirname, `themes/${framework}-theme.css`);
 }

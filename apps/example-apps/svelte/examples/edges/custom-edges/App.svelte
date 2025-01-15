@@ -1,9 +1,9 @@
 <script lang="ts">
-  import { writable } from 'svelte/store';
   import {
     SvelteFlow,
     Background,
     ConnectionMode,
+    Controls,
     type Node,
     type Edge,
   } from '@xyflow/svelte';
@@ -31,15 +31,14 @@
   };
 </script>
 
-<div style="height:100vh;">
-  <SvelteFlow
-    bind:nodes
-    {nodeTypes}
-    bind:edges
-    {edgeTypes}
-    connectionMode={ConnectionMode.Loose}
-    fitView
-  >
-    <Background />
-  </SvelteFlow>
-</div>
+<SvelteFlow
+  bind:nodes
+  {nodeTypes}
+  bind:edges
+  {edgeTypes}
+  connectionMode={ConnectionMode.Loose}
+  fitView
+>
+  <Controls />
+  <Background />
+</SvelteFlow>

@@ -11,7 +11,6 @@ import {
 
 import '@xyflow/react/dist/style.css';
 
-
 import SimpleFloatingEdge from './SimpleFloatingEdge';
 import CustomNode from './CustomNode';
 
@@ -88,7 +87,6 @@ const NodeAsHandleFlow = () => {
         fitView
         fitViewOptions={fitViewOptions}
         connectionMode={ConnectionMode.Loose}
-        style={{ backgroundColor: "#F7F9FB" }}
       >
         <Background />
       </ReactFlow>
