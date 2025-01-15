@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { untrack } from 'svelte';
   import { SvelteFlow, Background, type Edge, type Node } from '@xyflow/svelte';
 
   import '@xyflow/svelte/dist/style.css';
@@ -18,20 +17,8 @@
   let nodeBg = $state('#eee');
   let nodeHidden = $state(false);
 
-  $effect(() => {
-    updateNode({ nodeName, nodeBg, nodeHidden });
-  });
-
-  function updateNode({
-    nodeName,
-    nodeBg,
-    nodeHidden,
-  }: {
-    nodeName?: string;
-    nodeBg?: string;
-    nodeHidden?: boolean;
-  }) {
-    nodes = untrack(() => nodes).map((node) => {
+  function updateNode() {
+    nodes = nodes.map((node) => {
       if (node.id === '1') {
         return {
           ...node,
@@ -45,7 +32,7 @@
       }
       return node;
     });
-    edges = untrack(() => edges).map((edge) => {
+    edges = edges.map((edge) => {
       if (edge.id === 'e1-2') {
         return {
           ...edge,
@@ -55,20 +42,37 @@
       return edge;
     });
   }
+
+  updateNode();
+
+  function updateNodeName(event) {
+    nodeName = event.target.value;
+    updateNode();
+  }
+
+  function updateNodeBg(event) {
+    nodeBg = event.target.value;
+    updateNode();
+  }
+
+  function updateNodeHidden(event) {
+    nodeHidden = event.target.checked;
+    updateNode();
+  }
 </script>
 
 <div style="height:100vh;">
   <SvelteFlow bind:nodes bind:edges fitView>
     <div class="updatenode__controls">
       <label>label:</label>
-      <input bind:value={nodeName} />
+      <input value={nodeName} oninput={updateNodeName} />
 
       <label class="updatenode__bglabel">background:</label>
-      <input bind:value={nodeBg} />
+      <input value={nodeBg} oninput={updateNodeBg} />
 
       <div class="updatenode__checkboxwrapper">
         <label>hidden:</label>
-        <input type="checkbox" bind:checked={nodeHidden} />
+        <input type="checkbox" oninput={updateNodeHidden} />
       </div>
     </div>
     <Background />
