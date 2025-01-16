@@ -1,4 +1,4 @@
-import { MarkerType, type Edge } from '@xyflow/svelte';
+import { MarkerType, type Node, type Edge } from '@xyflow/svelte';
 
 import { type BuiltInNode } from '@xyflow/svelte';
 import { type AnnotationNode } from './AnnotationNode.svelte';
@@ -6,7 +6,7 @@ import { type CircleNode } from './CircleNode.svelte';
 
 export type AppNode = BuiltInNode | AnnotationNode | CircleNode;
 
-export const initialNodes: AppNode[] = [
+export const initialNodes: Node[] = [
   {
     id: 'annotation-1',
     type: 'annotation',
@@ -16,13 +16,10 @@ export const initialNodes: AppNode[] = [
       level: 1,
       label:
         'Built-in node and edge types. Draggable, deletable and connectable!',
-      arrowStyle: `
-        right: 0;
-        bottom: 0;
-        transform: translate(-30px,10px) rotate(-80deg);
-      `,
+      arrowStyle:
+        'right: 0; bottom: 0; transform: translate(-30px,10px) rotate(-80deg);',
     },
-    position: { x: -80, y: -30 },
+    position: { x: -200, y: -30 },
   },
   {
     id: '1-1',
@@ -56,11 +53,8 @@ export const initialNodes: AppNode[] = [
     data: {
       level: 2,
       label: 'Sub flows, toolbars and resizable nodes!',
-      arrowStyle: `
-        left: 0;
-        bottom: 0;
-        transform: translate(5px, 25px) scale(1, -1) rotate(100deg);
-      `,
+      arrowStyle:
+        'left: 0; bottom: 0; transform: translate(5px, 25px) scale(1, -1) rotate(100deg);',
     },
     position: { x: 220, y: 200 },
   },
@@ -72,24 +66,14 @@ export const initialNodes: AppNode[] = [
       y: 250,
     },
     data: {},
-    style: `
-      backgroundColor: rgba(208, 192, 247, 0.2);
-      width: 380px;
-      height: 180px;
-    `,
+    style: 'width: 380px; height: 180px;',
   },
   {
     id: '2-2',
-    data: {
-      label: 'Node with Toolbar',
-    },
+    data: {},
     type: 'tools',
     position: { x: 50, y: 50 },
-    style: `
-      background: rgb(208, 192, 247);
-      width: 80px;
-      height: 80px;
-    `,
+    style: 'width: 80px; height: 80px;',
     parentId: '2-1',
     extent: 'parent',
   },
@@ -97,15 +81,10 @@ export const initialNodes: AppNode[] = [
     id: '2-3',
     type: 'resizer',
     data: {
-      label: 'resizable node',
+      label: 'Resize Me',
     },
     position: { x: 250, y: 50 },
-    style: `
-      background: rgb(208, 192, 247);
-      color: white;
-      width: 80px;
-      height: 80px;
-    `,
+    style: 'width: 80px; height: 80px;',
     parentId: '2-1',
     extent: 'parent',
   },
@@ -117,11 +96,8 @@ export const initialNodes: AppNode[] = [
     data: {
       level: 3,
       label: 'Nodes and edges can be anything and are fully customizable!',
-      arrowStyle: `
-        right: 0;
-        bottom: 0;
-        transform: translate(-35px, 20px) rotate(-80deg);
-      `,
+      arrowStyle:
+        'right: 0; bottom: 0; transform: translate(-35px, 20px) rotate(-80deg);',
     },
     position: { x: -40, y: 570 },
   },
@@ -179,7 +155,7 @@ export const initialEdges: Edge[] = [
     target: '3-2',
     type: 'button',
     animated: true,
-    style: `stroke: rgb(158, 118, 255); strokeWidth: 2px`,
+    style: 'stroke: rgb(158, 118, 255);',
   },
   {
     id: 'e3-4',
@@ -187,6 +163,5 @@ export const initialEdges: Edge[] = [
     sourceHandle: 'b',
     target: '3-1',
     type: 'button',
-    style: `strokeWidth: 2px`,
   },
 ];

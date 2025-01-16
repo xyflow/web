@@ -55,10 +55,10 @@ const initialNodes = [
 
 const initialEdges = [
   {
+    id: '1',
     type: 'straight',
     source: '1',
     target: '2',
-    id: '1',
     label: 'straight',
   },
   {

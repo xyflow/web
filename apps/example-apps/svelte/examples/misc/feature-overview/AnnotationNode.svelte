@@ -12,10 +12,10 @@
   let { data }: NodeProps<AnnotationNode> = $props();
 </script>
 
-<div style="padding: 10px; display: flex">
-  <div style="marginRight: 4px">{data.level}.</div>
+<div class="annotation-content">
+  <div class="annotation-level">{data.level}.</div>
   <div>{data.label}</div>
 </div>
 {#if data.arrowStyle}
-  <div class="arrow" style={data.arrowStyle}>⤹</div>
+  <div class="annotation-arrow" style={data.arrowStyle}>⤹</div>
 {/if}

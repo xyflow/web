@@ -48,22 +48,18 @@
   };
 </script>
 
-<div class="wrapper gradient">
-  <div class="inner">
-    {#each ['width', 'height'] as attr}
-      <label>node {attr}</label>
-      <input
-        type="number"
-        value={dimensions ? parseInt(dimensions[attr]) : 0}
-        on:change={updateDimension(attr)}
-        class="nodrag"
-        disabled={!dimensions}
-      />
-    {/each}
+{#each ['width', 'height'] as attr}
+  <label>node {attr}</label>
+  <input
+    type="number"
+    value={dimensions ? parseInt(dimensions[attr]) : 0}
+    onchange={updateDimension(attr)}
+    class="text-input-node__input nodrag"
+    disabled={!dimensions}
+  />
+{/each}
 
-    {#if dimensions === null}
-      no node connected
-    {/if}
-  </div>
-</div>
-<Handle type="target" position={Position.Top} />
+{#if dimensions === null}
+  no node connected
+{/if}
+<Handle type="target" position={Position.Top} class="custom-handle" />

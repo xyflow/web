@@ -15,6 +15,7 @@ import {
   nodes as initialNodes,
   edges as initialEdges,
 } from './initial-elements';
+
 import AnnotationNode from './AnnotationNode';
 import ToolbarNode from './ToolbarNode';
 import ResizerNode from './ResizerNode';
