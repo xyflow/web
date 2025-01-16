@@ -1,11 +1,11 @@
 import { getMetaConfigFromTitleLookup } from 'xy-shared';
 
 const titleLookup = {
-  'custom-connectionline': 'Connection Line',
   'custom-edges': 'Custom Edges',
-  'edge-label-renderer': 'Edge Label Renderer',
-  'edge-markers': 'Edge Markers',
   'edge-types': 'Edge Types',
+  'edge-labels': 'Edge Labels',
+  'edge-markers': 'Edge Markers',
+  'custom-connectionline': 'Connection Line',
   'simple-floating-edges': 'Simple Floating Edges',
 };
 

@@ -80,6 +80,7 @@ export function RemoteCodeViewer({
   if (isExample) {
     delete snippets['index.html'];
     delete snippets['index.jsx'];
+    delete snippets['index.ts'];
   }
 
   const _initialActiveFile =
@@ -119,6 +120,7 @@ export function RemoteCodeViewer({
       </div>
       {showEditor && (
         <div
+          id={isExample ? 'example-code' : ''}
           className={clsx(
             'rounded-xl overflow-hidden',
             isHorizontal ? 'w-1/2 rounded-l-none' : 'rounded-t-none ',

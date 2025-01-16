@@ -11,12 +11,11 @@ export const getStaticProps = getStaticCode([
 ]);
 
 <ExampleLayout>
-A Connection Line is what you see when you click and drag out from a handle. It represents a possible edge and can snap to valid handles in close proximity.
-You can implement your own Connection Line by passing a Svelte component with `slot="connectionLine"`. The `useConnection` hook gives you access to the current `connection`.
+A Connection Line is the edge that appears when you click on a handle and drag. It represents a possible edge and can snap to other valid handles in close proximity.
+You can implement your own Connection Line by passing a snippet to the `connectionLine` prop. We do not pass any additional props to the snippet as the `useConnection` hook gives you access to the current `connection`.
 
 <RemoteCodeViewer
   route="examples/edges/custom-connectionline"
-  
   framework="svelte"
 />
 </ExampleLayout>

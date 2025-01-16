@@ -14,9 +14,7 @@
   let edges = $state.raw<Edge[]>(initialEdges);
 </script>
 
-<div style="height:100vh;">
-  <SvelteFlow bind:nodes bind:edges fitView>
-    <CustomEdgeMarker />
-    <Background />
-  </SvelteFlow>
-</div>
+<SvelteFlow bind:nodes bind:edges fitView>
+  <CustomEdgeMarker />
+  <Background />
+</SvelteFlow>

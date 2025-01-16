@@ -3,7 +3,7 @@
     type EdgeProps,
     getBezierPath,
     BaseEdge,
-    EdgeLabelRenderer,
+    EdgeLabel,
   } from '@xyflow/svelte';
 
   let {
@@ -29,11 +29,19 @@
 </script>
 
 <BaseEdge path={edgePath} />
-<EdgeLabelRenderer>
-  <div
-    style:transform="translate(-50%, -50%) translate({labelX}px,{labelY}px)"
-    class="edge-label-renderer__custom-edge nodrag nopan"
-  >
+<EdgeLabel x={labelX} y={labelY}>
+  <div class="edge-label">
     {data.label}
   </div>
-</EdgeLabelRenderer>
+</EdgeLabel>
+
+<style>
+  .edge-label {
+    background-color: #ffcc00;
+    color: #000;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 700;
+  }
+</style>

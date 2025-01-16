@@ -1,0 +1,29 @@
+---
+title: Edge Labels
+description: Rendering labels on edges in Svelte Flow. Uses Edge Label Renderer internally.
+---
+
+import { ExampleLayout } from 'xy-shared';
+import { RemoteCodeViewer } from 'xy-shared';
+
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['examples/edges/edge-label']);
+
+<ExampleLayout>
+You can simply render an edge label by using the `<EdgeLabel />` component. You can simply pass the label positions to it that our path helper functions (`getBezierPath`, `getSmoothStepPath` etc.) returns and it will handle the rest. See [CustomEdge.svelte](#example-code).
+
+If you need more control of your edge labels, you can use the `<EdgeLabelRenderer />` component. It's a portal component that lets you render edge labels (or anything you like really) on top of the edges container. `<Edge Label>` uses `<EdgeLabelRenderer />` internally. See [CustomEdgeStartEnd.svelte](#example-code).
+
+If you want to mimic the behaviour of `<Edge Label>` you need to handle some things yourself:
+
+- make sure the `<div />` you pass has `position: absolute;` and `translate(-50%, -50%)`
+- to add mouse interactions you need to set `pointer-events: all`
+- to select the node when clicking on the label you can call the `handleEdgeSelect` helper from the store via `useStore`
+
+<br />
+
+<RemoteCodeViewer
+  route="examples/edges/edge-label"
+  framework="svelte"
+/>
+</ExampleLayout>

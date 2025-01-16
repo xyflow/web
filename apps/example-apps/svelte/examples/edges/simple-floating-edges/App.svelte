@@ -25,15 +25,13 @@
   };
 </script>
 
-<div style="height:100vh;">
-  <SvelteFlow
-    bind:nodes
-    {nodeTypes}
-    bind:edges
-    {edgeTypes}
-    fitView
-    connectionMode={ConnectionMode.Loose}
-  >
-    <Background />
-  </SvelteFlow>
-</div>
+<SvelteFlow
+  bind:nodes
+  {nodeTypes}
+  bind:edges
+  {edgeTypes}
+  fitView
+  connectionMode={ConnectionMode.Loose}
+>
+  <Background />
+</SvelteFlow>
