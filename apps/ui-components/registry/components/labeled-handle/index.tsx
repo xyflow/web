@@ -1,21 +1,17 @@
 "use client";
+
 import React from "react";
 import { cn } from "@/lib/utils";
 import { HandleProps } from "@xyflow/react";
 
 import { BaseHandle } from "@/registry/components/base-handle";
 
-function getFlexDirection(position: string) {
-  const flexDirection =
-    position === "top" || position === "bottom" ? "flex-col" : "flex-row";
-  switch (position) {
-    case "bottom":
-    case "right":
-      return flexDirection + "-reverse justify-end";
-    default:
-      return flexDirection;
-  }
-}
+const flexDirections = {
+  top: "flex-col",
+  right: "flex-row-reverse justify-end",
+  bottom: "flex-col-reverse justify-end",
+  left: "flex-row",
+};
 
 const LabeledHandle = React.forwardRef<
   HTMLDivElement,
@@ -25,20 +21,27 @@ const LabeledHandle = React.forwardRef<
       handleClassName?: string;
       labelClassName?: string;
     }
->(({ className, labelClassName, title, position, ...props }, ref) => (
-  <div
-    ref={ref}
-    title={title}
-    className={cn(
-      "relative flex items-center",
-      getFlexDirection(position),
-      className,
-    )}
-  >
-    <BaseHandle position={position} {...props} />
-    <label className={`px-3 text-foreground ${labelClassName}`}>{title}</label>
-  </div>
-));
+>(
+  (
+    { className, labelClassName, handleClassName, title, position, ...props },
+    ref,
+  ) => (
+    <div
+      ref={ref}
+      title={title}
+      className={cn(
+        "relative flex items-center",
+        flexDirections[position],
+        className,
+      )}
+    >
+      <BaseHandle position={position} className={handleClassName} {...props} />
+      <label className={cn("px-3 text-foreground", labelClassName)}>
+        {title}
+      </label>
+    </div>
+  ),
+);
 
 LabeledHandle.displayName = "LabeledHandle";
 

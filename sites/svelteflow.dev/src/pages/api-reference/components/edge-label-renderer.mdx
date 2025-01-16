@@ -26,7 +26,10 @@ the EdgeLabelRenderer internally to render edge labels.
 <script lang="ts">
   import { getBezierPath, EdgeLabelRenderer, BaseEdge } from '@xyflow/svelte';
 
-  $: [edgePath, labelX, labelY] = getBezierPath(props);
+  export let id: $$Props['id'];
+  export let data: $$Props['data'];
+
+  $: [edgePath, labelX, labelY] = getBezierPath($$props);
 </script>
 
 <BaseEdge id={id} path={edgePath} />
@@ -41,7 +44,7 @@ the EdgeLabelRenderer internally to render edge labels.
       fontSize: 12,
       fontWeight: 700,
     }}
-    className="nodrag nopan"
+    class="nodrag nopan"
   >
     {data.label}
   </div>

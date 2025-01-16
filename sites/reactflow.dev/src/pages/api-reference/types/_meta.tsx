@@ -16,6 +16,7 @@ const titleLookup = {
   'fit-view-options': 'FitViewOptions',
   handle: 'Handle',
   'handle-connection': 'HandleConnection',
+  'node-connection': 'NodeConnection',
   'internal-node': 'InternalNode',
   'marker-type': 'MarkerType',
   'mini-map-node-props': 'MiniMapNodeProps',
