@@ -6,8 +6,11 @@ export default {
       toc: false,
     },
   },
+  tutorial: {
+    title: 'Getting Started',
+    href: '/learn/tutorials/getting-started-with-react-flow-components',
+  },
   nodes: 'Nodes',
-  'node-blocks': 'Node blocks',
   edges: 'Edges',
   controls: 'Controls',
   handles: 'Handles',

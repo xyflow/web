@@ -196,7 +196,7 @@ This command will generate a new file `src/components/base-node.tsx` as well as
 update our dependencies to include `@xyflow/react`!
 
 That `<BaseNode />` component is not a React Flow node directly. Instead, as the
-name implies, it's a base that many of our other nodes build upon. Let's see what
+name implies, it's a base that many of our other nodes build upon. You can use it to have a unified style for all of your nodes as well. Let's see what
 it looks like by updating our `App.jsx` file:
 
 ```jsx filename="src/App.jsx" {1,3,7-11}
@@ -569,7 +569,6 @@ import {
   Node,
 } from '@xyflow/react';
 
-
 import { NumNode } from '@/components/nodes/num-node';
 import { SumNode } from '@/components/nodes/sum-node';
 
@@ -593,10 +592,38 @@ const edgeTypes = {
 };
 
 const initialEdges: Edge[] = [
-  { id: 'a->c', type: 'data', data: { key: 'value' }, source: 'a', target: 'c', targetHandle: 'x' },
-  { id: 'b->c', type: 'data', data: { key: 'value' }, source: 'b', target: 'c', targetHandle: 'y' },
-  { id: 'c->e', type: 'data', data: { key: 'value' }, source: 'c', target: 'e', targetHandle: 'x' },
-  { id: 'd->e', type: 'data', data: { key: 'value' }, source: 'd', target: 'e', targetHandle: 'y' },
+  {
+    id: 'a->c',
+    type: 'data',
+    data: { key: 'value' },
+    source: 'a',
+    target: 'c',
+    targetHandle: 'x',
+  },
+  {
+    id: 'b->c',
+    type: 'data',
+    data: { key: 'value' },
+    source: 'b',
+    target: 'c',
+    targetHandle: 'y',
+  },
+  {
+    id: 'c->e',
+    type: 'data',
+    data: { key: 'value' },
+    source: 'c',
+    target: 'e',
+    targetHandle: 'x',
+  },
+  {
+    id: 'd->e',
+    type: 'data',
+    data: { key: 'value' },
+    source: 'd',
+    target: 'e',
+    targetHandle: 'y',
+  },
 ];
 
 function App() {
@@ -662,7 +689,7 @@ We've learned:
 - That React Flow Components also provides custom edges like the [`<DataEdge />`](/components/edges/data-edge)
   to drop into our applications.
 
-And thanks to the power of Tailwind, tweaking the visual style of these components 
+And thanks to the power of Tailwind, tweaking the visual style of these components
 is as simple as editing `tailwind.config.js` and editing the variables in your CSS
 file.
 

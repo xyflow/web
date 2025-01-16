@@ -23,17 +23,17 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
-import { Languages, Trash } from "lucide-react";
+import { Rocket, Trash } from "lucide-react";
 import { useCallback } from "react";
 
 function NodeHeaderDemoNode({
   data,
 }: NodeProps<Node<{ title: string; label: string }>>) {
   return (
-    <BaseNode>
-      <NodeHeader className="bg-pink-300 text-pink-900">
+    <BaseNode className="px-3 py-2">
+      <NodeHeader className="-mx-3 -mt-2 border-b">
         <NodeHeaderIcon>
-          <Languages />
+          <Rocket />
         </NodeHeaderIcon>
         <NodeHeaderTitle>{data.title}</NodeHeaderTitle>
         <NodeHeaderActions>
@@ -49,9 +49,7 @@ function NodeHeaderDemoNode({
         </NodeHeaderActions>
       </NodeHeader>
 
-      <div className="flex h-32 w-64 items-center justify-center rounded bg-pink-500 text-sm text-white">
-        Some actual node content here.
-      </div>
+      <div className="text-sm">{data.label}</div>
     </BaseNode>
   );
 }
@@ -95,8 +93,8 @@ const defaultNodes = [
     type: "demo",
     position: { x: 200, y: 200 },
     data: {
-      title: "Detect language",
-      label: "Node",
+      title: "Node Header",
+      label: "This is the content of the node.",
     },
   },
 ];

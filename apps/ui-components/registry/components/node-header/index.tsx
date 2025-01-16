@@ -25,11 +25,11 @@ export const NodeHeader = React.forwardRef<HTMLElement, NodeHeaderProps>(
         ref={ref}
         {...props}
         className={cn(
-          "mb-4 flex items-center justify-between gap-2 py-2",
-          className,
+          "mb-4 flex items-center justify-between gap-2 px-3 py-2",
           // Remove or modify these classes if you modify the padding in the
           // `<BaseNode />` component.
-          "-mx-5 -mt-5 pl-5 pr-2",
+          "-mx-5 -mt-5",
+          className,
         )}
       />
     );
