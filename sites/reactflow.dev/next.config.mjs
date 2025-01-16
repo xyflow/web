@@ -45,9 +45,13 @@ const nextConfig = {
   env: {
     REACT_FLOW_VERSION,
     NEXT_PUBLIC_EXAMPLES_URL:
-    process.env.VERCEL_ENV === 'preview'
-      ? `https://example-apps-git-${process.env.VERCEL_GIT_COMMIT_REF}-xyflow.vercel.app`
-      : process.env.NEXT_PUBLIC_EXAMPLES_URL,
+      process.env.VERCEL_ENV === 'preview'
+        ? `https://example-apps-git-${process.env.VERCEL_GIT_COMMIT_REF}-xyflow.vercel.app`
+        : process.env.NEXT_PUBLIC_EXAMPLES_URL,
+    NEXT_PUBLIC_UI_COMPONENTS_URL:
+      process.env.VERCEL_ENV === 'preview'
+        ? `https://ui-components-git-${process.env.VERCEL_GIT_COMMIT_REF}-xyflow.vercel.app`
+        : process.env.NEXT_PUBLIC_UI_COMPONENTS_URL,
   },
 };
 
