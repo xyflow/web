@@ -36,7 +36,7 @@
     "@react-three/fiber": "^8.17.10",
     "@sindresorhus/slugify": "^2.2.1",
     "@stackblitz/sdk": "^1.11.0",
-    "@xyflow/react": "^12.3.2",
+    "@xyflow/react": "^12.4.0",
     "@xyflow/xy-ui": "workspace:*",
     "clsx": "^2.1.1",
     "fathom-client": "^3.7.2",
