@@ -100,36 +100,12 @@
   }
 </script>
 
-<div style="height:100vh;">
-  <SvelteFlow
-    bind:nodes
-    bind:edges
-    fitView
-    onnodedrag={onNodeDrag}
-    onnodedragstop={onNodeDragStop}
-  >
-    <Background />
-  </SvelteFlow>
-</div>
-
-<style>
-  :global(.svelte-flow .svelte-flow__edge-path) {
-    stroke: #333;
-    stroke-width: 2;
-  }
-
-  :global(.svelte-flow .temp .svelte-flow__edge-path) {
-    stroke: #bbb;
-    stroke-dasharray: 5 5;
-  }
-
-  :global(.svelte-flow .svelte-flow__node) {
-    border-radius: 100%;
-    background-color: #fff;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-</style>
+<SvelteFlow
+  bind:nodes
+  bind:edges
+  fitView
+  onnodedrag={onNodeDrag}
+  onnodedragstop={onNodeDragStop}
+>
+  <Background />
+</SvelteFlow>

@@ -14,7 +14,7 @@
   let edges = $state.raw(initialEdges);
 
   let nodeName = $state('Node 1');
-  let nodeBg = $state('#eee');
+  let nodeBg = $state('#F58A6A');
   let nodeHidden = $state(false);
 
   function updateNode() {
@@ -61,23 +61,21 @@
   }
 </script>
 
-<div style="height:100vh;">
-  <SvelteFlow bind:nodes bind:edges fitView>
-    <div class="updatenode__controls">
-      <label>label:</label>
-      <input value={nodeName} oninput={updateNodeName} />
+<SvelteFlow bind:nodes bind:edges fitView maxZoom={2}>
+  <div class="updatenode__controls">
+    <label>label:</label>
+    <input value={nodeName} oninput={updateNodeName} />
 
-      <label class="updatenode__bglabel">background:</label>
-      <input value={nodeBg} oninput={updateNodeBg} />
+    <label class="updatenode__bglabel">background:</label>
+    <input value={nodeBg} oninput={updateNodeBg} />
 
-      <div class="updatenode__checkboxwrapper">
-        <label>hidden:</label>
-        <input type="checkbox" oninput={updateNodeHidden} />
-      </div>
+    <div class="updatenode__checkboxwrapper">
+      <label>hidden:</label>
+      <input type="checkbox" oninput={updateNodeHidden} />
     </div>
-    <Background />
-  </SvelteFlow>
-</div>
+  </div>
+  <Background />
+</SvelteFlow>
 
 <style>
   :global(.updatenode__controls) {

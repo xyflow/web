@@ -19,11 +19,9 @@
     {
       id: '2',
       type: 'dragHandleNode',
-
       // Specify the custom class acting as a drag handle
       dragHandle: '.custom-drag-handle',
-
-      style: 'border: 1px solid #ddd; padding: 20px 40px; background: white;',
+      style: 'border: 1px solid #ddd;',
       position: { x: 200, y: 200 },
       data: {
         label: 'Drag Handle',
@@ -34,9 +32,7 @@
   let edges = $state.raw<Edge[]>([]);
 </script>
 
-<div style="height:100vh">
-  <SvelteFlow bind:nodes bind:edges {nodeTypes} fitView>
-    <Controls />
-    <Background />
-  </SvelteFlow>
-</div>
+<SvelteFlow bind:nodes bind:edges {nodeTypes} fitView>
+  <Controls />
+  <Background />
+</SvelteFlow>

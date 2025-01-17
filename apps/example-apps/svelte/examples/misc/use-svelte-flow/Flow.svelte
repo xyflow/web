@@ -45,16 +45,7 @@
   ]);
 </script>
 
-<main>
-  <SvelteFlow bind:nodes bind:edges fitView>
-    <Controls />
-    <Background variant={BackgroundVariant.Dots} />
-  </SvelteFlow>
-</main>
-
-<style>
-  main {
-    height: 100vh;
-    display: flex;
-  }
-</style>
+<SvelteFlow bind:nodes bind:edges fitView>
+  <Controls />
+  <Background variant={BackgroundVariant.Dots} />
+</SvelteFlow>

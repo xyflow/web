@@ -25,14 +25,12 @@
   }
 </script>
 
-<div style="height:100vh;">
-  <SvelteFlow bind:nodes bind:edges minZoom={0} fitView>
-    <Background />
-    <MiniMap />
-    <Controls />
-    <button onclick={updatePos} class="scramble-button"> change pos </button>
-  </SvelteFlow>
-</div>
+<SvelteFlow bind:nodes bind:edges minZoom={0} fitView>
+  <Background />
+  <MiniMap />
+  <Controls />
+  <button onclick={updatePos} class="scramble-button"> change pos </button>
+</SvelteFlow>
 
 <style>
   .scramble-button {
