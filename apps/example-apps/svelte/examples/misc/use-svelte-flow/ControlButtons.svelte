@@ -1,22 +1,13 @@
 <script lang="ts">
   import { useSvelteFlow, useNodes, useViewport } from '@xyflow/svelte';
 
-  const {
-    zoomIn,
-    zoomOut,
-    setZoom,
-    fitView,
-    setCenter,
-    setViewport,
-    getViewport,
-  } = $derived(useSvelteFlow()); // use $dervied when calling outside of Svelte component
+  const { zoomIn, zoomOut, setZoom, fitView, setCenter, setViewport } =
+    $derived(useSvelteFlow()); // use $dervied when calling outside of the main Svelte Flow component
 
-  const nodes = useNodes();
   const viewport = useViewport();
 </script>
 
-<aside>
-  <div class="label">Functions:</div>
+<div class="container">
   <button onclick={() => zoomIn()}>zoom in</button>
   <button onclick={() => zoomOut({ duration: 1000 })}
     >zoom out transition</button
@@ -27,41 +18,31 @@
   <button onclick={() => setViewport({ x: 100, y: 100, zoom: 2 })}
     >setViewport</button
   >
-  <button onclick={() => console.log(getViewport())}>getViewport</button>
-
-  <div class="label">Nodes:</div>
-  {#each nodes.current as node (node.id)}
-    <div>
-      id: {node.id} | x: {node.position.x.toFixed(1)} y: {node.position.y.toFixed(
-        1,
-      )}
-    </div>
-  {/each}
-
-  <div class="label">Viewport:</div>
-  <div>
+  <div class="viewport">
     x: {viewport.current.x.toFixed(1)} y: {viewport.current.y.toFixed(1)} zoom: {viewport.current.zoom.toFixed(
       1,
     )}
   </div>
-</aside>
+</div>
 
 <style>
-  .label {
-    font-weight: 700;
-    margin: 0.5rem 0 0.25rem 0;
+  .container {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    display: flex;
+    align-items: center;
   }
 
-  aside {
-    width: 20vw;
-    background: #f4f4f4;
-    padding: 0.4rem 0.8rem;
-    font-size: 12px;
+  .viewport {
+    margin-left: 10px;
+    font-family: monospace;
   }
 
   button {
     display: block;
     margin-bottom: 0.5rem;
     font-size: 12px;
+    margin: 5px;
   }
 </style>

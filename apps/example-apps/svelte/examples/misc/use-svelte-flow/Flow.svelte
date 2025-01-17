@@ -4,10 +4,7 @@
     Controls,
     Background,
     BackgroundVariant,
-    MiniMap,
   } from '@xyflow/svelte';
-
-  import Sidebar from './Sidebar.svelte';
 
   import '@xyflow/svelte/dist/style.css';
 
@@ -21,7 +18,7 @@
     {
       id: '2',
       type: 'default',
-      data: { label: 'Node' },
+      data: { label: 'Default Node' },
       position: { x: 0, y: 150 },
     },
     {
@@ -38,7 +35,6 @@
       type: 'default',
       source: '1',
       target: '2',
-      label: 'Edge Text',
     },
     {
       id: '1-3',
@@ -53,9 +49,7 @@
   <SvelteFlow bind:nodes bind:edges fitView>
     <Controls />
     <Background variant={BackgroundVariant.Dots} />
-    <MiniMap />
   </SvelteFlow>
-  <Sidebar />
 </main>
 
 <style>

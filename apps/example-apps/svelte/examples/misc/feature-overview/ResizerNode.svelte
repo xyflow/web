@@ -9,7 +9,7 @@
   let { data }: NodeProps = $props();
 </script>
 
-<NodeResizer minWidth={100} minHeight={30} />
+<NodeResizer minWidth={1} minHeight={1} />
 <Handle type="target" position={Position.Left} class="custom-handle" />
 <div>{data.label}</div>
 <div class="resizer-node__handles">

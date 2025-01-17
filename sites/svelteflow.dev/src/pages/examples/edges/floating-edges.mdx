@@ -1,20 +1,19 @@
 ---
-title: Simple Floating Edges
+title: Floating Edges
+description: This example shows how to implement an edge type that dynamically connects to the closest handle.
 ---
 
 import { RemoteCodeViewer } from 'xy-shared';
 import { ExampleLayout } from 'xy-shared';
 
 import { getStaticCode } from 'xy-shared/server';
-export const getStaticProps = getStaticCode([
-  'examples/edges/simple-floating-edges',
-]);
+export const getStaticProps = getStaticCode(['examples/edges/floating-edges']);
 
 <ExampleLayout>
 This example shows how to implement an edge type that dynamically connects to the closest handle.
 
 <RemoteCodeViewer
-  route="examples/edges/simple-floating-edges" 
+  route="examples/edges/floating-edges" 
   
   framework="svelte"
 />

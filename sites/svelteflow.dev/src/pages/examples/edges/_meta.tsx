@@ -6,7 +6,7 @@ const titleLookup = {
   'edge-labels': 'Edge Labels',
   'edge-markers': 'Edge Markers',
   'custom-connectionline': 'Connection Line',
-  'simple-floating-edges': 'Simple Floating Edges',
+  'floating-edges': 'Floating Edges',
 };
 
 export default getMetaConfigFromTitleLookup(titleLookup, '/examples/edges');

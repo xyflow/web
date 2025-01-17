@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { writable } from 'svelte/store';
   import { SvelteFlow, Controls, Background, MiniMap } from '@xyflow/svelte';
 
   import '@xyflow/svelte/dist/style.css';
