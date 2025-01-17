@@ -1,4 +1,5 @@
 import {
+  CaseStudy,
   getMdxPagesUnderRoute,
   ShowcaseLayout,
   SubscribeSection,
@@ -19,7 +20,7 @@ export default function Showcase() {
       title="See what you can build with React Flow"
       subtitle="We've seen React Flow used to create data processing tools, chatbot builders, machine learning, musical synthesizers, and more. Explore some of our favorite projects from around the internet."
       showcases={visibleShowcases}
-      caseStudies={caseStudies}
+      caseStudies={caseStudies as CaseStudy[]}
     >
       <SubscribeSection />
     </ShowcaseLayout>

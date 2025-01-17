@@ -16,11 +16,18 @@ import { type MdxFile } from 'nextra';
 
 import { BaseLayout, ProjectPreview, Hero } from '../';
 
+export type CaseStudyFrontMatter = {
+  title: string;
+  client: string;
+};
+
+export type CaseStudy = MdxFile<CaseStudyFrontMatter>;
+
 export type ShowcaseLayoutProps = {
   title: string;
   subtitle: string;
   showcases?: ShowcaseItem[];
-  caseStudies?: MdxFile[];
+  caseStudies?: CaseStudy[];
   children?: ReactNode;
 };
 
@@ -34,7 +41,7 @@ export type ShowcaseItem = {
   tags: { id: string; name: string }[];
 };
 
-function isCaseStudy(item: MdxFile | ShowcaseItem): item is MdxFile {
+function isCaseStudy(item: CaseStudy | ShowcaseItem): item is CaseStudy {
   return item.hasOwnProperty('frontMatter');
 }
 
@@ -67,11 +74,9 @@ export function ShowcaseLayout({
         }
         return list;
       },
-      [] as (ShowcaseItem | MdxFile)[],
+      [] as (ShowcaseItem | CaseStudy)[],
     );
   }, [selected, showcases, caseStudies]);
-
-  console.log(caseStudies);
 
   return (
     <BaseLayout>
@@ -196,11 +201,7 @@ function useTags(showcases: ShowcaseItem[]) {
   return { all, selected, toggle };
 }
 
-function CaseStudyPreview({
-  data,
-}: {
-  data: MdxFile<{ title: string; client: string }>['frontMatter'];
-}) {
+function CaseStudyPreview({ data }: { data?: CaseStudyFrontMatter }) {
   return (
     <Container
       variant="dark"
