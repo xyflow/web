@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { writable } from 'svelte/store';
   import { SvelteFlow, Controls, type Node, type Edge } from '@xyflow/svelte';
 
   import '@xyflow/svelte/dist/style.css';
@@ -8,8 +7,8 @@
   import TurboNode from './TurboNode.svelte';
   import TurboEdge from './TurboEdge.svelte';
 
-  const nodes = writable<Node[]>(initialNodes);
-  const edges = writable<Edge[]>(initialEdges);
+  let nodes = $state.raw<Node[]>(initialNodes);
+  let edges = $state.raw<Edge[]>(initialEdges);
 
   const nodeTypes = {
     turbo: TurboNode,
@@ -27,9 +26,9 @@
 
 <div style="height:100vh;">
   <SvelteFlow
-    {nodes}
+    bind:nodes
     {nodeTypes}
-    {edges}
+    bind:edges
     {edgeTypes}
     {defaultEdgeOptions}
     fitView

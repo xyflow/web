@@ -8,7 +8,6 @@ import {
 
 import '@xyflow/react/dist/style.css';
 
-
 import { AnimatedSVGEdge } from './AnimatedSVGEdge';
 
 const initialNodes = [
@@ -36,10 +35,9 @@ const EdgesFlow = () => {
       onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
       fitView
-      style={{ backgroundColor: "#F7F9FB" }}
-      >
-        <Background />
-      </ReactFlow>
+    >
+      <Background />
+    </ReactFlow>
   );
 };
 

@@ -1,21 +1,21 @@
-<!-- <svelte:options immutable /> -->
-
 <script lang="ts">
-  import { Handle, Position, useConnection, type NodeProps } from '@xyflow/svelte';
+  import {
+    Handle,
+    Position,
+    useConnection,
+    type NodeProps,
+  } from '@xyflow/svelte';
 
-  type $$Props = NodeProps;
-
-  export let id: NodeProps['id'];
+  let { id }: NodeProps = $props();
 
   const connection = useConnection();
 
-  let isConnecting = false;
-  let isTarget = false;
+  let isTarget = $derived(
+    connection.current.inProgress &&
+      connection.current.fromHandle?.nodeId !== id,
+  );
 
-  $: isConnecting = !!$connection.startHandle?.nodeId;
-  $: isTarget = !!$connection.startHandle && $connection.startHandle?.nodeId !== id;
-
-  $: label = isTarget ? 'Drop here' : 'Drag to connect';
+  let label = $derived(isTarget ? 'Drop here' : 'Drag to connect');
 </script>
 
 <div class="customNode">
@@ -24,13 +24,16 @@
     style:border-style={isTarget ? 'dashed' : 'solid'}
     style:background-color={isTarget ? '#ffcce3' : '#ccd9f6'}
   >
-    <!-- If handles are conditionally rendered and not present initially, you need to update the node internals https://reactflow.dev/docs/api/hooks/use-update-node-internals/
+    <!-- If handles are conditionally rendered and not present initially, you need to update the node internals https://svelteflow.dev/docs/api/hooks/use-update-node-internals/
     In this case we don't need to use useUpdateNodeInternals, since !isConnecting is true at the beginning and all handles are rendered initially. -->
-    {#if !isConnecting}
-      <Handle class="customHandle" position={Position.Right} type="source" style="z-index: 1;" />
+    {#if !connection.current.inProgress}
+      <Handle
+        class="customHandle"
+        position={Position.Right}
+        type="source"
+        style="z-index: 1;"
+      />
     {/if}
-    <!-- <Handle class="customHandle" position={Position.Right} type="source" /> -->
-
     <Handle
       class="customHandle"
       position={Position.Left}

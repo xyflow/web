@@ -1,6 +1,12 @@
 <script lang="ts">
-  import { writable } from 'svelte/store';
-  import { SvelteFlow, Background, ConnectionMode, type Node, type Edge } from '@xyflow/svelte';
+  import {
+    SvelteFlow,
+    Background,
+    ConnectionMode,
+    Controls,
+    type Node,
+    type Edge,
+  } from '@xyflow/svelte';
 
   import '@xyflow/svelte/dist/style.css';
 
@@ -11,22 +17,28 @@
   import BiDirectionalNode from './BiDirectionalNode.svelte';
   import SelfConnectingEdge from './SelfConnectingEdge.svelte';
 
-  const nodes = writable<Node[]>(initialNodes);
-  const edges = writable<Edge[]>(initialEdges);
+  let nodes = $state.raw<Node[]>(initialNodes);
+  let edges = $state.raw<Edge[]>(initialEdges);
 
   const nodeTypes = {
-    bidirectional: BiDirectionalNode
+    bidirectional: BiDirectionalNode,
   };
 
   const edgeTypes = {
     buttonedge: ButtonEdge,
     bidirectional: BiDirectionalEdge,
-    selfconnecting: SelfConnectingEdge
+    selfconnecting: SelfConnectingEdge,
   };
 </script>
 
-<div style="height:100vh;">
-  <SvelteFlow {nodes} {nodeTypes} {edges} {edgeTypes} connectionMode={ConnectionMode.Loose} fitView>
-    <Background />
-  </SvelteFlow>
-</div>
+<SvelteFlow
+  bind:nodes
+  {nodeTypes}
+  bind:edges
+  {edgeTypes}
+  connectionMode={ConnectionMode.Loose}
+  fitView
+>
+  <Controls />
+  <Background />
+</SvelteFlow>

@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { writable } from 'svelte/store';
   import { SvelteFlow, Background, type Node, type Edge } from '@xyflow/svelte';
 
   import ResizableNode from './ResizableNode.svelte';
@@ -18,36 +17,36 @@
       type: 'ResizableNode',
       data: { label: 'NodeResizer' },
       position: { x: 0, y: 50 },
-      style: nodeStyle
+      style: nodeStyle,
     },
     {
       id: '2',
       type: 'ResizableNodeSelected',
       data: { label: 'NodeResizer when selected' },
       position: { x: 100, y: 300 },
-      style: nodeStyle
+      style: nodeStyle,
     },
     {
       id: '3',
       type: 'CustomResizerNode',
       data: { label: 'Custom Resize Icon' },
       position: { x: 150, y: 150 },
-      style: nodeStyle + 'padding: 5px; height: 100px;'
-    }
+      style: nodeStyle + 'padding: 5px; height: 100px;',
+    },
   ];
 
-  const nodes = writable<Node[]>(initialNodes);
-  const edges = writable<Edge[]>(initialEdges);
+  let nodes = $state.raw<Node[]>(initialNodes);
+  let edges = $state.raw<Edge[]>(initialEdges);
 
   const nodeTypes = {
     ResizableNode,
     CustomResizerNode,
-    ResizableNodeSelected
+    ResizableNodeSelected,
   };
 </script>
 
 <div style="height:100vh;">
-  <SvelteFlow {nodes} {nodeTypes} {edges} fitView>
+  <SvelteFlow bind:nodes {nodeTypes} bind:edges fitView>
     <Background />
   </SvelteFlow>
 </div>

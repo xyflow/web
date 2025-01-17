@@ -4,8 +4,12 @@ import { Handle, Position, NodeResizer } from '@xyflow/react';
 function ResizerNode({ data }) {
   return (
     <>
-      <NodeResizer minWidth={50} minHeight={50} />
-      <Handle type="target" position={Position.Left} className='custom-handle' />
+      <NodeResizer minWidth={1} minHeight={1} />
+      <Handle
+        type="target"
+        position={Position.Left}
+        className="custom-handle"
+      />
       <div>{data.label}</div>
       <div className="resizer-node__handles">
         <Handle

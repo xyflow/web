@@ -1,9 +1,12 @@
 <script lang="ts">
-  import { Handle, NodeResizer, Position, type NodeProps } from '@xyflow/svelte';
+  import {
+    Handle,
+    NodeResizer,
+    Position,
+    type NodeProps,
+  } from '@xyflow/svelte';
 
-  type $$Props = NodeProps;
-
-  export let data: $$Props['data'] = undefined;
+  let { data }: NodeProps = $props();
 </script>
 
 <NodeResizer minWidth={100} minHeight={30} />

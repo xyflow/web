@@ -3,34 +3,34 @@
     type NodeProps,
     Handle,
     Position,
-    useHandleConnections,
+    useNodeConnections,
     useInternalNode,
     type BuiltInNode,
-    type Dimensions
+    type Dimensions,
+    useNodes,
   } from '@xyflow/svelte';
 
-  import { nodes } from './nodes-and-edges';
+  let {}: NodeProps<BuiltInNode> = $props();
 
-  type $$Props = NodeProps<BuiltInNode>;
-  $$restProps;
+  const nodes = useNodes();
 
-  $: handleConnections = useHandleConnections({
-    type: 'target'
+  const handleConnections = useNodeConnections({
+    handleType: 'target',
   });
 
-  $: connectedNode = useInternalNode($handleConnections[0]?.source);
-  let dimensions: null | Dimensions = null;
-
-  $: {
-    if ($connectedNode?.measured.width && $connectedNode?.measured.height) {
-      dimensions = {
-        width: $connectedNode.measured.width,
-        height: $connectedNode.measured.height
+  let connectedNode = useInternalNode(handleConnections.current[0]?.source);
+  let dimensions: null | Dimensions = $derived.by(() => {
+    if (
+      connectedNode.current?.measured.width &&
+      connectedNode.current.measured.height
+    ) {
+      return {
+        width: connectedNode.current.measured.width,
+        height: connectedNode.current.measured.height,
       };
-    } else {
-      dimensions = null;
     }
-  }
+    return null;
+  });
 
   const updateDimension = (attr: string) => (event) => {
     nodes.update((nds) =>
@@ -38,34 +38,28 @@
         if (n.id === '2-3') {
           return {
             ...n,
-            [attr]: parseInt(event.target.value)
+            [attr]: parseInt(event.target.value),
           };
         }
 
         return n;
-      })
+      }),
     );
-
-    $nodes = $nodes;
   };
 </script>
 
-<div class="wrapper gradient">
-  <div class="inner">
-    {#each ['width', 'height'] as attr}
-      <label>node {attr}</label>
-      <input
-        type="number"
-        value={dimensions ? parseInt(dimensions[attr]) : 0}
-        on:change={updateDimension(attr)}
-        class="nodrag"
-        disabled={!dimensions}
-      />
-    {/each}
+{#each ['width', 'height'] as attr}
+  <label>node {attr}</label>
+  <input
+    type="number"
+    value={dimensions ? parseInt(dimensions[attr]) : 0}
+    onchange={updateDimension(attr)}
+    class="text-input-node__input nodrag"
+    disabled={!dimensions}
+  />
+{/each}
 
-    {#if dimensions === null}
-      no node connected
-    {/if}
-  </div>
-</div>
-<Handle type="target" position={Position.Top} />
+{#if dimensions === null}
+  no node connected
+{/if}
+<Handle type="target" position={Position.Top} class="custom-handle" />

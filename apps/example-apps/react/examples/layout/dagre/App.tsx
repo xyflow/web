@@ -92,7 +92,6 @@ const Flow = () => {
       onConnect={onConnect}
       connectionLineType={ConnectionLineType.SmoothStep}
       fitView
-      style={{ backgroundColor: "#F7F9FB" }}
     >
       <Panel position="top-right">
         <button onClick={() => onLayout('TB')}>vertical layout</button>

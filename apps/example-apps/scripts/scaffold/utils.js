@@ -51,12 +51,13 @@ root.render(<App />);
 
     case 'svelte':
       return `
+import { mount } from 'svelte';
 import App from './App.svelte';
 
 import './styles.css';
 
-const app = new App({
-	target: document.querySelector('#app')
+mount(App, {
+  target: document.getElementById('app')!,
 });
       `.trim();
 
@@ -113,11 +114,11 @@ export function App() {
 
   import '@xyflow/svelte/dist/style.css';
 
-  const nodes = writable<Node[]>([]);
-  const edges = writable<Edge[]>([]);
+  let nodes = $state.raw<Node[]>([]);
+  let edges = $state.raw<Edge[]>([]);
 </script>
 
-<SvelteFlow {nodes} {edges} fitView />
+<SvelteFlow bind:nodes bind:edges fitView />
       `.trim();
   }
 }

@@ -11,7 +11,6 @@ import {
 
 import '@xyflow/react/dist/style.css';
 
-
 const initialNodes = [
   {
     id: '1',
@@ -69,7 +68,6 @@ function Flow() {
         onNodesChange={onNodesChange}
         nodeTypes={nodeTypes}
         fitView
-        style={{ backgroundColor: "#F7F9FB" }}
         preventScrolling={false}
       >
         <Panel>
@@ -87,7 +85,7 @@ function Flow() {
             <span>Always show toolbar</span>
           </label>
         </Panel>
-        <Background  />
+        <Background />
       </ReactFlow>
     </ReactFlowProvider>
   );

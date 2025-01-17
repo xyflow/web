@@ -11,7 +11,6 @@ import {
 
 import '@xyflow/react/dist/style.css';
 
-
 const initialNodes = [
   {
     id: '1',
@@ -135,11 +134,10 @@ const EdgeReconnect = () => {
       onConnect={onConnect}
       fitView
       attributionPosition="top-right"
-      style={{ backgroundColor: "#F7F9FB" }}
-      >
-        <Controls />
-        <Background />
-      </ReactFlow>
+    >
+      <Controls />
+      <Background />
+    </ReactFlow>
   );
 };
 

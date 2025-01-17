@@ -1,10 +1,17 @@
+<script module>
+  export type TextNodeType = Node<{ text: string }, 'text'>;
+</script>
+
 <script lang="ts">
-  import { Handle, Position, type NodeProps, useSvelteFlow } from '@xyflow/svelte';
+  import {
+    Handle,
+    Position,
+    useSvelteFlow,
+    type NodeProps,
+    type Node,
+  } from '@xyflow/svelte';
 
-  type $$Props = NodeProps;
-
-  export let id: $$Props['id'];
-  export let data: $$Props['data'];
+  let { id, data }: NodeProps<TextNodeType> = $props();
 
   const { updateNodeData } = useSvelteFlow();
 </script>
@@ -14,7 +21,7 @@
   <div>
     <input
       value={data.text}
-      on:input={(evt) => updateNodeData(id, { text: evt.currentTarget.value })}
+      oninput={(evt) => updateNodeData(id, { text: evt.currentTarget.value })}
     />
   </div>
   <Handle type="source" position={Position.Right} />

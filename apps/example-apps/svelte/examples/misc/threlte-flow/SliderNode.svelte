@@ -1,22 +1,15 @@
 <script lang="ts">
-  import { Handle, Position, type NodeProps } from '@xyflow/svelte';
+  import { Handle, type Node, Position, type NodeProps } from '@xyflow/svelte';
   import NodeWrapper from './NodeWrapper.svelte';
-  import type { NodeData } from './nodes-and-edges';
+  import { flowState, type NodeData } from './nodes-and-edges.svelte';
 
-  type $$Props = NodeProps;
-  export let data: NodeData;
-  const { label, flowState } = data;
-
-  let value = $flowState.zoom;
-  $: {
-    $flowState.zoom = value;
-  }
+  let { data }: NodeProps<Node<NodeData>> = $props();
 
   const min = 0;
   const max = 40;
 </script>
 
-<NodeWrapper {label}>
+<NodeWrapper label={data.label}>
   <Handle type="source" position={Position.Right} />
   <input
     class="nodrag accent-[#ff4000]"
@@ -24,6 +17,6 @@
     type="range"
     {min}
     {max}
-    bind:value
+    bind:value={flowState.zoom}
   />
 </NodeWrapper>

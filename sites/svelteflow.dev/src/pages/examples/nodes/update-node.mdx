@@ -10,16 +10,14 @@ import { Callout } from 'nextra/components';
 import { getStaticCode } from 'xy-shared/server';
 export const getStaticProps = getStaticCode(['examples/nodes/update-node']);
 
-
 <ExampleLayout>
-  You can update properties of nodes and edges freely.Don't forget to [self
-  assign](https://svelte.dev/docs/svelte-components#script-2-assignments-are-reactive)
-  `$nodes = $nodes` to trigger an update.
-  <Callout type="info">
-    You have to create a new `data` object on a node to notify Svelte Flow about
-    data changes.
-  </Callout>
-  <br />
+To update a single node you can use the updateNode function provided by the useSvelteFlow hook. If you want to update more nodes at once, it is recommended to use the updateNodes function. Naturally, you can also update your nodes and edges manually.
+
+<Callout type="info">
+  Nodes, Edges and their Data objects are immutable! You have to create new
+  objects to notify Svelte Flow about the update!
+</Callout>
+<br />
 
 <RemoteCodeViewer route="examples/nodes/update-node" framework="svelte" />
 

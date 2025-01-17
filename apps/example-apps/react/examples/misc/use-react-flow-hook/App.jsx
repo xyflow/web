@@ -49,11 +49,10 @@ const ProviderFlow = () => {
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
         fitView
-        style={{ backgroundColor: "#F7F9FB" }}
-        >
-          <Buttons />
-          <Background />
-        </ReactFlow>
+      >
+        <Buttons />
+        <Background />
+      </ReactFlow>
     </ReactFlowProvider>
   );
 };
