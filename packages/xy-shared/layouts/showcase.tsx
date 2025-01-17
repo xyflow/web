@@ -2,7 +2,17 @@
 
 import { useCallback, useMemo, useState, ReactNode } from 'react';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
-import { cn, ContentGrid, ContentGridItem } from '@xyflow/xy-ui';
+import {
+  Button,
+  cn,
+  Container,
+  ContentGrid,
+  ContentGridItem,
+  Heading,
+  Link,
+  Text,
+} from '@xyflow/xy-ui';
+import { type MdxFile } from 'nextra';
 
 import { BaseLayout, ProjectPreview, Hero } from '../';
 
@@ -10,6 +20,7 @@ export type ShowcaseLayoutProps = {
   title: string;
   subtitle: string;
   showcases?: ShowcaseItem[];
+  caseStudies?: MdxFile[];
   children?: ReactNode;
 };
 
@@ -23,23 +34,44 @@ export type ShowcaseItem = {
   tags: { id: string; name: string }[];
 };
 
+function isCaseStudy(item: MdxFile | ShowcaseItem): item is MdxFile {
+  return item.hasOwnProperty('frontMatter');
+}
+
 export function ShowcaseLayout({
   title,
   subtitle,
   showcases = [],
+  caseStudies = [],
   children,
 }: ShowcaseLayoutProps) {
   const { all, selected, toggle } = useTags(showcases);
-  const visibleShowcases = useMemo(() => {
-    if (selected.size === 0) {
-      return showcases;
-    }
-    return showcases.filter(({ tags }) =>
-      Array.from(selected).every((tag) =>
-        tags.some(({ name }) => name === tag),
-      ),
+
+  const visibleItems = useMemo(() => {
+    const visibleShowcases = showcases.filter(
+      ({ tags }) =>
+        selected.size === 0 ||
+        Array.from(selected).every((tag) =>
+          tags.some(({ name }) => name === tag),
+        ),
     );
-  }, [selected, showcases]);
+
+    let currentCaseStudy = caseStudies[0];
+
+    return visibleShowcases.reduce(
+      (list, showcase, i) => {
+        list.push(showcase);
+        if (currentCaseStudy && (i + 1) % 6 === 0) {
+          list.push(currentCaseStudy);
+          currentCaseStudy = caseStudies[(i + 1) / 6];
+        }
+        return list;
+      },
+      [] as (ShowcaseItem | MdxFile)[],
+    );
+  }, [selected, showcases, caseStudies]);
+
+  console.log(caseStudies);
 
   return (
     <BaseLayout>
@@ -62,42 +94,46 @@ export function ShowcaseLayout({
         ))}
       </div>
 
-      <ContentGrid className="mt-8">
-        {visibleShowcases.map((showcase) => (
-          <ContentGridItem key={showcase.id}>
-            <ProjectPreview
-              image={`/img/showcase/${showcase.image}`}
-              title={showcase.title}
-              subtitle={
-                <>
-                  <span className="flex gap-2">
-                    {showcase.tags.map((tag) => (
-                      <Tag
-                        key={tag.id}
-                        name={tag.name}
-                        selected={selected.has(tag.name)}
-                        onClick={toggle}
-                      />
-                    ))}
-                  </span>
-                </>
-              }
-              description={showcase.description}
-              route={showcase.url}
-              altRoute={
-                showcase.demoUrl
-                  ? { href: showcase.demoUrl, label: 'Demo' }
-                  : undefined
-              }
-              linkLabel="Website"
-            />
-          </ContentGridItem>
-        ))}
+      <ContentGrid className="mt-8 md:grid-cols-2 lg:grid-cols-3 border-none gap-4 lg:gap-8">
+        {visibleItems.map((item) =>
+          isCaseStudy(item) ? (
+            <CaseStudyPreview key={item.name} data={item.frontMatter} />
+          ) : (
+            <ContentGridItem
+              key={item.id}
+              className="border-none py-6 lg:py-8 lg:px-0 hover:bg-white group"
+            >
+              <ProjectPreview
+                image={`/img/showcase/${item.image}`}
+                title={item.title}
+                subtitle={
+                  <>
+                    <span className="flex gap-2">
+                      {item.tags.map((tag) => (
+                        <Tag
+                          key={tag.id}
+                          name={tag.name}
+                          selected={selected.has(tag.name)}
+                          onClick={toggle}
+                        />
+                      ))}
+                    </span>
+                  </>
+                }
+                description={item.description}
+                route={item.url}
+                altRoute={
+                  item.demoUrl
+                    ? { href: item.demoUrl, label: 'Demo' }
+                    : undefined
+                }
+                linkLabel="Website"
+              />
+            </ContentGridItem>
+          ),
+        )}
 
-        <ContentGridItem
-          route="https://github.com/xyflow/web/issues/new?labels=content&template=submit-showcase.yaml"
-          className={showcases.length % 2 === 0 ? 'lg:col-span-2' : ''}
-        >
+        <ContentGridItem route="https://github.com/xyflow/web/issues/new?labels=content&template=submit-showcase.yaml">
           <ProjectPreview
             title="Your project here?"
             description="Have you built something exciting you want to show off? We want to feature it here!"
@@ -158,4 +194,49 @@ function useTags(showcases: ShowcaseItem[]) {
   );
 
   return { all, selected, toggle };
+}
+
+function CaseStudyPreview({
+  data,
+}: {
+  data: MdxFile<{ title: string; client: string }>['frontMatter'];
+}) {
+  return (
+    <Container
+      variant="dark"
+      className="max-lg:rounded-none col-span-full"
+      innerClassName="px-4 py-8 flex flex-wrap gap-4 relative w-full items-center shadow-none bg-none bg-gray-100/10 lg:px-20 lg:py-20"
+    >
+      <div className="max-md:w-full md:flex-1">
+        <Text className="text-gray-400 mb-4">{data?.client}</Text>
+        <Heading size="md">{data?.title}</Heading>
+      </div>
+      <div className="max-md:w-full md:flex-1">
+        <Text className="mb-8 text-gray-300">
+          Get all 10 pro examples with just one month of a Pro subscription from
+          129€
+        </Text>
+        <div className="flex flex-wrap gap-2 mt-4">
+          <Button
+            asChild
+            size="lg"
+            variant="secondary"
+            className="text-black hover:bg-gray-100 w-full md:w-auto"
+          >
+            <Link href={`${process.env.NEXT_PUBLIC_PRO_PLATFORM_URL}/signup`}>
+              Try it out
+            </Link>
+          </Button>
+          <Button
+            asChild
+            size="lg"
+            variant="black"
+            className="bg-white/10 hover:bg-white/20 w-full md:w-auto"
+          >
+            <Link href="/pro/pricing">See subscription plans</Link>
+          </Button>
+        </div>
+      </div>
+    </Container>
+  );
 }
