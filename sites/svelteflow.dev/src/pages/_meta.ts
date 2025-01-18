@@ -8,29 +8,23 @@ export default {
   learn: 'Learn',
   'api-reference': 'Reference',
   examples: 'Examples',
-  community: {
-    title: 'Community',
+  showcase: {
+    title: 'Showcase',
+    theme: {
+      layout: 'raw',
+    },
+  },
+  more: {
+    title: 'More',
     type: 'menu',
     items: {
-      showcase: {
-        title: 'Showcase',
-        href: '/showcase',
-      },
-      'whats-new': {
-        title: "What's new?",
+      changelog: {
+        title: 'Changelog',
         href: '/whats-new',
       },
       blog: {
         title: 'Blog',
         href: 'https://xyflow.com/blog',
-      },
-      discord: {
-        title: 'Discord',
-        href: 'https://discord.gg/RVmnytFmGW',
-      },
-      github: {
-        title: 'Github',
-        href: 'https://github.com/xyflow/xyflow',
       },
       contact: {
         title: 'Contact Us',
@@ -41,13 +35,6 @@ export default {
 
   index: {
     title: 'Home',
-    display: 'hidden',
-    theme: {
-      layout: 'raw',
-    },
-  },
-  showcase: {
-    title: 'Showcase',
     display: 'hidden',
     theme: {
       layout: 'raw',
