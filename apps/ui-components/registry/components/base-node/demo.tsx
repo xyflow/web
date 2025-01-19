@@ -24,9 +24,9 @@ const nodeTypes = {
   customNode: CustomNode,
 };
 
-function CustomNode({ data }: NodeProps) {
+function CustomNode({ selected, data }: NodeProps) {
   return (
-    <BaseNode>
+    <BaseNode selected={selected}>
       <>
         {data.label}
         <Handle type="source" position={Position.Right} />
