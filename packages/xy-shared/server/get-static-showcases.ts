@@ -19,6 +19,7 @@ export default function getStaticProps(
   framework: 'React Flow' | 'Svelte Flow' = 'React Flow',
 ) {
   return async () => {
+    console.log('Fetching showcases for', framework);
     const { results } = (await notion.databases.query({
       database_id: SHOWCASES_DATABASE_ID,
       filter: {
@@ -66,6 +67,7 @@ export default function getStaticProps(
 
         const blob = await put(imageFileName, imageFile, {
           access: 'public',
+          addRandomSuffix: false,
         });
 
         return {
