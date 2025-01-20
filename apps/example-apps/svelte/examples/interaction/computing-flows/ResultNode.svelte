@@ -38,13 +38,6 @@
 </div>
 
 <style>
-  .custom {
-    background-color: #eee;
-    padding: 10px;
-    border-radius: 10px;
-    font-size: 12px;
-  }
-
   .label {
     margin-bottom: 5px;
   }

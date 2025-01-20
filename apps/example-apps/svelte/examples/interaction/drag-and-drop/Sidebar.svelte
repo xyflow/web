@@ -44,7 +44,7 @@
 <style>
   aside {
     width: 100%;
-    background: #f4f4f4;
+    background: #fff;
     font-size: 12px;
     display: flex;
     flex-direction: column;
@@ -68,8 +68,7 @@
     border: 1px solid #111;
     padding: 0.5rem 1rem;
     font-weight: 700;
-    border-radius: 3px;
+    border-radius: 5px;
     cursor: grab;
-    width: 50px;
   }
 </style>

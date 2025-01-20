@@ -45,12 +45,3 @@
   <div>uppercase transform</div>
   <Handle type="source" position={Position.Right} />
 </div>
-
-<style>
-  .custom {
-    background-color: #eee;
-    padding: 10px;
-    border-radius: 10px;
-    font-size: 12px;
-  }
-</style>

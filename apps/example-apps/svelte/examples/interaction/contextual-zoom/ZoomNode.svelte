@@ -35,14 +35,7 @@
 
 <style>
   .zoom-node {
-    font-size: 12px;
-    background: #fff;
-    border: 1px solid #555;
-    border-radius: 5px;
-    text-align: center;
     width: 150px;
-    padding: 10px;
-    line-height: 1.2;
   }
 
   .placeholder div {

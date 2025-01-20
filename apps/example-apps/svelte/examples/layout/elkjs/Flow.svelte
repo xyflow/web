@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
   import ELK from 'elkjs/lib/elk.bundled.js';
   import {
     SvelteFlow,
@@ -14,7 +15,6 @@
   import '@xyflow/svelte/dist/style.css';
 
   import { initialNodes, initialEdges } from './nodes-and-edges';
-  import { onMount } from 'svelte';
   let nodes = $state.raw<Node[]>([]);
   let edges = $state.raw<Edge[]>([]);
 

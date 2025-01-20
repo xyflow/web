@@ -28,12 +28,6 @@
 </div>
 
 <style>
-  .custom {
-    background-color: #eee;
-    padding: 10px;
-    border-radius: 10px;
-  }
-
   .label {
     font-size: 12px;
     margin-bottom: 5px;
