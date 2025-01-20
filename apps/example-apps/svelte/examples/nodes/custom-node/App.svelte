@@ -1,6 +1,6 @@
 <script module>
   class BgColor {
-    current = $state('#1A192B');
+    current = $state('#c9f1dd');
   }
   export const bgColor = new BgColor();
 </script>
@@ -8,7 +8,6 @@
 <script lang="ts">
   import {
     SvelteFlow,
-    Background,
     Controls,
     MiniMap,
     Position,
@@ -36,7 +35,6 @@
       id: '2',
       type: 'selectorNode',
       data: {},
-      style: 'border: 1px solid #777; padding: 10px;',
       position: { x: 300, y: 50 },
     },
     {
@@ -61,23 +59,18 @@
       source: '1',
       target: '2',
       animated: true,
-      style: 'stroke: #fff;',
     },
     {
       id: 'e2a-3',
       source: '2',
       target: '3',
-      sourceHandle: 'a',
       animated: true,
-      style: 'stroke: #fff;',
     },
     {
       id: 'e2b-4',
       source: '2',
       target: '4',
-      sourceHandle: 'b',
       animated: true,
-      style: 'stroke: #fff;',
     },
   ];
 
@@ -85,16 +78,13 @@
   let edges = $state.raw<Edge[]>(initialEdges);
 </script>
 
-<div style="height:100vh;">
-  <SvelteFlow
-    bind:nodes
-    bind:edges
-    {nodeTypes}
-    style="background: {bgColor.current}"
-    fitView
-  >
-    <Background />
-    <Controls />
-    <MiniMap />
-  </SvelteFlow>
-</div>
+<SvelteFlow
+  bind:nodes
+  bind:edges
+  {nodeTypes}
+  style="background: {bgColor.current};"
+  fitView
+>
+  <Controls />
+  <MiniMap />
+</SvelteFlow>
