@@ -15,11 +15,54 @@ const downloadImage = (source: string): Promise<Buffer> => {
   });
 };
 
+// this is being used for only fetching the showcases once in development
+// we don't want to query notion every time the page reloads
+let devShowcaseCache: any = undefined;
+
+// this is some fake content that is being used when no notion api key and vercel blob token is present
+const devShowcasePlaceholders = Array.from({ length: 20 }).map((_, i) => ({
+  id: `${i}`,
+  title: `React Flow ${i}`,
+  url: 'https://reactflow.dev',
+  demoUrl: 'https://reactflow.dev',
+  description:
+    'A customizable React component for building node-based editors and interactive diagrams.',
+  image: '/img/showcase/placeholder.png',
+  tags: [
+    { id: '1', name: 'Workflow Builder' },
+    { id: '2', name: 'AI' },
+    { id: '3', name: 'Open Source' },
+  ],
+  featured: false,
+}));
+
 export default function getStaticProps(
   framework: 'React Flow' | 'Svelte Flow' = 'React Flow',
 ) {
   return async () => {
-    console.log('Fetching showcases for', framework);
+    if (!process.env.NOTION_API_SECRET || !process.env.BLOB_READ_WRITE_TOKEN) {
+      console.log(
+        'You need to set NOTION_API_SECRET and BLOB_READ_WRITE_TOKEN in your .env.local file to get the showcases.',
+      );
+      return {
+        props: {
+          ssg: {
+            showcases: devShowcasePlaceholders,
+          },
+        },
+      };
+    }
+
+    if (process.env.NODE_ENV === 'development' && devShowcaseCache) {
+      return {
+        props: {
+          ssg: {
+            showcases: devShowcaseCache,
+          },
+        },
+      };
+    }
+
     const { results } = (await notion.databases.query({
       database_id: SHOWCASES_DATABASE_ID,
       filter: {
@@ -82,6 +125,8 @@ export default function getStaticProps(
         };
       }),
     );
+
+    devShowcaseCache = showcases;
 
     return {
       props: {

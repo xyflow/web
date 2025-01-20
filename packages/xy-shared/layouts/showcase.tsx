@@ -106,11 +106,13 @@ export function ShowcaseLayout({
           ) : (
             <ContentGridItem
               key={item.id}
-              className="border-none py-6 lg:py-8 lg:px-0 hover:bg-white group"
+              className="border-none py-6 lg:py-8 lg:px-0 hover:bg-white relative"
             >
               <ProjectPreview
                 image={item.image}
                 title={item.title}
+                className="relative h-full flex-col flex"
+                imageWrapperClassName="w-full"
                 subtitle={
                   <>
                     <span className="flex gap-2">
@@ -138,11 +140,11 @@ export function ShowcaseLayout({
           ),
         )}
 
-        <ContentGridItem route="https://github.com/xyflow/web/issues/new?labels=content&template=submit-showcase.yaml">
+        <ContentGridItem route="https://wbkd.notion.site/17bf4645224281e4bf61ce34fa671059">
           <ProjectPreview
             title="Your project here?"
             description="Have you built something exciting you want to show off? We want to feature it here!"
-            linkLabel="Open an issue on GitHub"
+            linkLabel="Submit your project"
           />
         </ContentGridItem>
       </ContentGrid>
