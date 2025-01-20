@@ -2,8 +2,8 @@
   import { SvelteFlow, Background, type Node, type Edge } from '@xyflow/svelte';
   import '@xyflow/svelte/dist/style.css';
 
-  import CustomNode from './CustomNode.svelte';
   import { initialNodes, initialEdges } from './nodes-and-edges';
+  import CustomNode from './CustomNode.svelte';
 
   let nodes = $state.raw<Node[]>(initialNodes);
   let edges = $state.raw<Edge[]>(initialEdges);
@@ -13,8 +13,6 @@
   };
 </script>
 
-<div style="height:100vh;">
-  <SvelteFlow bind:nodes bind:edges {nodeTypes} fitView>
-    <Background />
-  </SvelteFlow>
-</div>
+<SvelteFlow bind:nodes bind:edges {nodeTypes} fitView>
+  <Background />
+</SvelteFlow>

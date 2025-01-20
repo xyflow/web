@@ -1,3 +1,5 @@
+@import url('./xy-theme.css');
+
 html,
 body {
   margin: 0;
@@ -9,3 +11,11 @@ body {
   height: 100vh;
 }
 
+.svelte-flow__node-custom .svelte-flow__handle.connectable {
+  border-color: var(--xy-theme-selected);
+  background: var(--xy-theme-selected);
+
+  &:hover {
+    background: var(--xy-theme-selected);
+  }
+}
