@@ -1,5 +1,4 @@
 <script>
-  import { writable } from 'svelte/store';
   import { SvelteFlow, Background, Controls, Position } from '@xyflow/svelte';
 
   import '@xyflow/svelte/dist/style.css';
@@ -9,7 +8,7 @@
     targetPosition: Position.Left,
   };
 
-  const nodes = writable([
+  let nodes = $state.raw([
     {
       id: '1',
       position: { x: 0, y: 150 },
@@ -35,7 +34,8 @@
       ...nodeDefaults,
     },
   ]);
-  const edges = writable([
+
+  let edges = $state.raw([
     {
       id: 'e1-2',
       source: '1',

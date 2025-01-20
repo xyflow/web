@@ -1,10 +1,9 @@
 <script lang="ts">
-  import { writable } from 'svelte/store';
   import { SvelteFlow, Background, type Node } from '@xyflow/svelte';
 
   import '@xyflow/svelte/dist/style.css';
 
-  const nodes = writable<Node[]>([
+  let nodes = $state.raw<Node[]>([
     {
       id: 'A',
       type: 'group',
@@ -29,7 +28,7 @@
     },
   ]);
 
-  const edges = writable([]);
+  let edges = $state.raw([]);
 </script>
 
 <div style="height:100vh;">

@@ -1,10 +1,9 @@
 <script>
-  import { writable } from 'svelte/store';
   import { SvelteFlow, Background, Controls } from '@xyflow/svelte';
 
   import '@xyflow/svelte/dist/style.css';
 
-  const nodes = writable([
+  let nodes = $state.raw([
     {
       id: '1', // required and needs to be a string
       position: { x: 0, y: 0 }, // required
@@ -17,7 +16,7 @@
     },
   ]);
 
-  const edges = writable([{ id: '1-2', source: '1', target: '2' }]);
+  let edges = $state.raw([{ id: '1-2', source: '1', target: '2' }]);
 </script>
 
 <main>
