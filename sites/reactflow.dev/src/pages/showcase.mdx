@@ -3,9 +3,9 @@ title: Showcase
 description: Projects and examples using React Flow
 ---
 
-import getStaticPropsShowcases from '@/utils/get-static-props/showcases';
+import getStaticPropsShowcases from 'xy-shared/server/get-static-showcases.ts';
 
-export const getStaticProps = getStaticPropsShowcases;
+export const getStaticProps = getStaticPropsShowcases('React Flow');
 
 import ShowcasePage from '@/layouts/showcase';
 

@@ -109,7 +109,7 @@ export function ShowcaseLayout({
               className="border-none py-6 lg:py-8 lg:px-0 hover:bg-white group"
             >
               <ProjectPreview
-                image={`/img/showcase/${item.image}`}
+                image={item.image}
                 title={item.title}
                 subtitle={
                   <>

@@ -40,14 +40,18 @@ const nextConfig = {
         hostname: '*.vercel.app',
         pathname: '/react/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'f20vdoobtdxrjemr.public.blob.vercel-storage.com',
+      },
     ],
   },
   env: {
     REACT_FLOW_VERSION,
     NEXT_PUBLIC_EXAMPLES_URL:
-    process.env.VERCEL_ENV === 'preview'
-      ? `https://example-apps-git-${process.env.VERCEL_GIT_COMMIT_REF}-xyflow.vercel.app`
-      : process.env.NEXT_PUBLIC_EXAMPLES_URL,
+      process.env.VERCEL_ENV === 'preview'
+        ? `https://example-apps-git-${process.env.VERCEL_GIT_COMMIT_REF}-xyflow.vercel.app`
+        : process.env.NEXT_PUBLIC_EXAMPLES_URL,
   },
 };
 

@@ -1,8 +1,9 @@
 import { ShowcaseLayout } from 'xy-shared';
-
-import showcases from '../../public/data/showcases.json';
+import { useData } from 'nextra/hooks';
 
 export default function Showcase() {
+  const { showcases } = useData();
+
   return (
     <ShowcaseLayout
       title="See what you can build with Svelte Flow"
