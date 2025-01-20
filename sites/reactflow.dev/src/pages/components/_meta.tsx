@@ -6,10 +6,10 @@ export default {
       toc: false,
     },
   },
-  tutorial: {
-    title: 'Getting Started',
-    href: '/learn/tutorials/getting-started-with-react-flow-components',
-  },
+  // tutorial: {
+  //   title: 'Getting Started',
+  //   href: '/learn/tutorials/getting-started-with-react-flow-components',
+  // },
   nodes: 'Nodes',
   edges: 'Edges',
   controls: 'Controls',
