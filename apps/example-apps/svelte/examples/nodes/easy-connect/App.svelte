@@ -27,28 +27,22 @@
   };
 
   const defaultEdgeOptions = {
-    style: 'stroke-width: 3; stroke: black;',
     type: 'floating',
     markerEnd: {
       type: MarkerType.ArrowClosed,
       color: 'black',
     },
   };
-
-  const connectionLineStyle = 'stroke: black; stroke-width: 3;';
 </script>
 
-<div style="height:100vh;">
-  <SvelteFlow
-    bind:nodes
-    {nodeTypes}
-    bind:edges
-    {edgeTypes}
-    {defaultEdgeOptions}
-    connectionLineType={ConnectionLineType.Straight}
-    {connectionLineStyle}
-    fitView
-  >
-    <Background />
-  </SvelteFlow>
-</div>
+<SvelteFlow
+  bind:nodes
+  {nodeTypes}
+  bind:edges
+  {edgeTypes}
+  {defaultEdgeOptions}
+  connectionLineType={ConnectionLineType.Straight}
+  fitView
+>
+  <Background />
+</SvelteFlow>

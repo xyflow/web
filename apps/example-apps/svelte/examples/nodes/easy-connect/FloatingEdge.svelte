@@ -1,5 +1,6 @@
 <script lang="ts">
   import {
+    BaseEdge,
     getStraightPath,
     useInternalNode,
     type EdgeProps,
@@ -7,12 +8,12 @@
 
   import { getEdgeParams } from './utils';
 
-  let { source, target, markerEnd, style, id }: EdgeProps = $props();
+  let { id, source, target, markerEnd }: EdgeProps = $props();
 
   const sourceNode = useInternalNode(source);
   const targetNode = useInternalNode(target);
 
-  let edgePath: string | undefined = $derived.by(() => {
+  let path: string | undefined = $derived.by(() => {
     if (sourceNode.current && targetNode.current) {
       const edgeParams = getEdgeParams(sourceNode.current, targetNode.current);
       return getStraightPath({
@@ -26,4 +27,4 @@
   });
 </script>
 
-<path {id} marker-end={markerEnd} d={edgePath} {style} />
+<BaseEdge {id} {path} {markerEnd} />
