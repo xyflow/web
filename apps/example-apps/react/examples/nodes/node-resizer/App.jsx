@@ -1,6 +1,5 @@
 import {
   ReactFlow,
-  MiniMap,
   Background,
   BackgroundVariant,
   Controls,
@@ -29,7 +28,7 @@ const initialNodes = [
     id: '2',
     type: 'ResizableNodeSelected',
     data: { label: 'NodeResizer when selected' },
-    position: { x: 100, y: 300 },
+    position: { x: -100, y: 150 },
   },
   {
     id: '3',
@@ -53,9 +52,9 @@ export default function NodeToolbarExample() {
       maxZoom={4}
       fitView
       nodeTypes={nodeTypes}
+      fitViewOptions={{ padding: 0.5 }}
     >
       <Background variant={BackgroundVariant.Dots} />
-      <MiniMap />
       <Controls />
     </ReactFlow>
   );

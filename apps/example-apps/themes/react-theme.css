@@ -20,6 +20,8 @@
   --xy-handle-border-color-default: #aaaaaa;
 
   --xy-edge-label-color-default: #505050;
+
+  --xy-resize-background-color-default: #9e86ed;
 }
 
 .react-flow.dark {
@@ -91,15 +93,13 @@
   border-color: var(--xy-theme-edge-hover);
 }
 
-.react-flow__node-resizer {
+.react-flow__node:has(.react-flow__resize-control.line) {
   border-radius: 0;
-  border: none;
 }
 
 .react-flow__resize-control.handle {
-  background-color: #ffffff;
-  border-color: #9e86ed;
   border-radius: 0;
+  border: none;
   width: 5px;
   height: 5px;
 }

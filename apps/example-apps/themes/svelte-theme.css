@@ -20,6 +20,8 @@
   --xy-handle-border-color-default: #aaaaaa;
 
   --xy-edge-label-color-default: #505050;
+
+  --xy-resize-background-color-default: #9e86ed;
 }
 
 .svelte-flow.dark {
@@ -91,14 +93,12 @@
   border-color: var(--xy-theme-edge-hover);
 }
 
-.svelte-flow__node-resizer {
+.svelte-flow__node:has(.svelte-flow__resize-control.line) {
   border-radius: 0;
-  border: none;
 }
 
 .svelte-flow__resize-control.handle {
-  background-color: #ffffff;
-  border-color: #9e86ed;
+  border: none;
   border-radius: 0;
   width: 5px;
   height: 5px;
