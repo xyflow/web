@@ -1,23 +1,10 @@
 require('dotenv').config({ path: '.env.local' });
 const { Client } = require('@notionhq/client');
 const path = require('path');
-const fs = require('fs');
-const https = require('https');
 
 const SHOWCASES_DATABASE_ID = '17bf4645224280ff9710d495e21ed13d';
 const notion = new Client({ auth: process.env.NOTION_API_SECRET });
 const OUTPUT_IMAGE_PATH = path.resolve(__dirname, '../public/img/showcase');
-
-const downloadImage = (source, target) => {
-  return new Promise((resolve) => {
-    https.get(source, (res) => {
-      res.pipe(fs.createWriteStream(target));
-      resolve(true);
-    });
-  });
-};
-
-// https://www.notion.so/wbkd/17bf4645224280ff9710d495e21ed13d?v=17bf4645224281c6a574000c4f316554&pvs=4
 
 export default async function getStaticProps() {
   const { results } = await notion.databases.query({
@@ -62,8 +49,6 @@ export default async function getStaticProps() {
       const imageSrc = result.properties.Image.files[0].file.url;
       const imageFileName = `${id}.png`;
       const imageFilePath = path.resolve(OUTPUT_IMAGE_PATH, imageFileName);
-
-      await downloadImage(imageSrc, imageFilePath);
 
       return {
         id,
