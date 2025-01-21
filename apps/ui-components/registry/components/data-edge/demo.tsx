@@ -10,9 +10,9 @@ import {
   useReactFlow,
 } from "@xyflow/react";
 
-import { DataEdge } from "@/registry/components/data-edge";
 import { useCallback } from "react";
-import { BaseNode } from "../base-node";
+import { DataEdge } from "@/registry/components/data-edge";
+import { BaseNode } from "@/registry/components/base-node";
 import { Button } from "@/components/ui/button";
 import { Minus, Plus } from "lucide-react";
 
