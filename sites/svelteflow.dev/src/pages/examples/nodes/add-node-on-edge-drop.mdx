@@ -1,13 +1,15 @@
 ---
 title: Add Node On Edge Drop
+description: A new node appears wherever you drop the connection line
 ---
 
 import { ExampleLayout } from 'xy-shared';
 import { RemoteCodeViewer } from 'xy-shared';
 
 import { getStaticCode } from 'xy-shared/server';
-export const getStaticProps = getStaticCode(['examples/nodes/add-node-on-edge-drop']);
-
+export const getStaticProps = getStaticCode([
+  'examples/nodes/add-node-on-edge-drop',
+]);
 
 <ExampleLayout>
 You can create a new node when you drop the connection line on the pane by using the `onConnectionStart` and `onConnectionStop` handlers.

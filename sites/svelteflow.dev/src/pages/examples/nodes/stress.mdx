@@ -1,6 +1,6 @@
 ---
 title: Stress Test
-description: A stress test with a lot of nodes and edges.
+description: Render hundreds of nodes and edges at once
 ---
 
 import { ExampleLayout } from 'xy-shared';
@@ -8,7 +8,6 @@ import { RemoteCodeViewer } from 'xy-shared';
 
 import { getStaticCode } from 'xy-shared/server';
 export const getStaticProps = getStaticCode(['examples/nodes/stress']);
-
 
 <ExampleLayout>
 This example shows a flow with 450 nodes and edges.

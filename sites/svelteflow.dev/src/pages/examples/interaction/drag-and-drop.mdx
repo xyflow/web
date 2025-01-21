@@ -1,14 +1,15 @@
 ---
 title: Drag and Drop
-description: This example shows how to implement a sidebar with a drag and drop functionality.
+description: Drag and drop outside of the Svelte Flow pane with native HTML Drag and Drop API
 ---
 
 import { ExampleLayout } from 'xy-shared';
 import { RemoteCodeViewer } from 'xy-shared';
 
 import { getStaticCode } from 'xy-shared/server';
-export const getStaticProps = getStaticCode(['examples/interaction/drag-and-drop']);
-
+export const getStaticProps = getStaticCode([
+  'examples/interaction/drag-and-drop',
+]);
 
 <ExampleLayout>
 This example shows how to implement a sidebar with a drag and drop functionality using the native [drag and drop events](https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API).

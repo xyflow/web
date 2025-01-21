@@ -1,14 +1,15 @@
 ---
 title: Computing Flows
-description: This example combines some hooks and helper functions for computing the data flow between nodes.
+description: How to use the useNodesData helpers to handle data flow
 ---
 
 import { ExampleLayout } from 'xy-shared';
 import { RemoteCodeViewer } from 'xy-shared';
 
 import { getStaticCode } from 'xy-shared/server';
-export const getStaticProps = getStaticCode(['examples/interaction/computing-flows']);
-
+export const getStaticProps = getStaticCode([
+  'examples/interaction/computing-flows',
+]);
 
 <ExampleLayout>
 This example combines [`useHandleConnections`](/api-reference/hooks/use-handle-connections),[`useNodesData`](/api-reference/hooks/use-nodes-data) and [`updateNodeData`](/api-reference/hooks/use-svelte-flow) helpers for handling data flow between nodes.

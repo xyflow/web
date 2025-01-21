@@ -1,6 +1,6 @@
 ---
 title: Elkjs Tree
-description: "If you're looking for a more powerful alternative to dagre, you can also use elkjs to layout your Svelte Flow graphs."
+description: For a more powerful alternative to dagre, you can also use elkjs to layout your graphs
 ---
 
 import { RemoteCodeViewer } from 'xy-shared';
@@ -8,7 +8,6 @@ import { ExampleLayout } from 'xy-shared';
 
 import { getStaticCode } from 'xy-shared/server';
 export const getStaticProps = getStaticCode(['examples/layout/elkjs']);
-
 
 <ExampleLayout>
 Like our [dagre example](examples/layout/dagre), this example shows how you can integrate [elkjs](https://github.com/kieler/elkjs) with Svelte Flow for more advanced tree layouts. The code for this example builds a similar tree to the dagre example, but you can look at the reference [here](https://www.eclipse.org/elk/reference.html) to see what you can configure (hint: it's a lot).

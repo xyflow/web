@@ -1,6 +1,6 @@
 ---
 title: Dark Mode
-description: Svelte Flow comes with a default style and a base style. This example shows how the base style looks.
+description: Svelte Flow comes with a color mode prop that allows you to switch between dark, light and system mode.
 ---
 
 import { RemoteCodeViewer } from 'xy-shared';
@@ -8,7 +8,6 @@ import { ExampleLayout } from 'xy-shared';
 
 import { getStaticCode } from 'xy-shared/server';
 export const getStaticProps = getStaticCode(['examples/styling/dark-mode']);
-
 
 <ExampleLayout>
 Svelte Flow comes with a built-in light & dark mode. You can set the [`colorMode`](/api-reference/svelte-flow#color-mode) prop that allows you to switch between `'dark'`, `'light'` and `'system'`.

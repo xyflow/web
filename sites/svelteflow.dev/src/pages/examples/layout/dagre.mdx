@@ -1,6 +1,6 @@
 ---
 title: Dagre Tree
-description: You can integrate dagre.js with Svelte Flow to create tree layouts. A good alternative to dagre is elkjs if you are looking for a more advanced layouting library.
+description: Integrate dagre js with Svelte Flow to create simple tree layouts
 ---
 
 import { RemoteCodeViewer } from 'xy-shared';
@@ -8,7 +8,6 @@ import { ExampleLayout } from 'xy-shared';
 
 import { getStaticCode } from 'xy-shared/server';
 export const getStaticProps = getStaticCode(['examples/layout/dagre']);
-
 
 <ExampleLayout>
 This example shows how you can integrate [dagre.js](https://github.com/dagrejs/dagre) with Svelte Flow to create simple tree layouts. Good alternatives to dagre are [d3-hierarchy](https://github.com/d3/d3-hierarchy) or [elkjs](https://github.com/kieler/elkjs) if you are looking for a more advanced layouting library.

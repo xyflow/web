@@ -1,14 +1,15 @@
 ---
 title: Validation
-description: This example explains how to validte new connections between nodes.
+description: Check if a new connection is valid and should be added
 ---
 
 import { ExampleLayout } from 'xy-shared';
 import { RemoteCodeViewer } from 'xy-shared';
 
 import { getStaticCode } from 'xy-shared/server';
-export const getStaticProps = getStaticCode(['examples/interaction/validation']);
-
+export const getStaticProps = getStaticCode([
+  'examples/interaction/validation',
+]);
 
 <ExampleLayout>
 For validating new connections between nodes, you can use the `isValidConnection` prop as shown in this example.
