@@ -7,7 +7,7 @@ import { ExampleLayout } from 'xy-shared';
 import { RemoteCodeViewer } from 'xy-shared';
 
 import { getStaticCode } from 'xy-shared/server';
-export const getStaticProps = getStaticCode(['examples/edges/edge-label']);
+export const getStaticProps = getStaticCode(['examples/edges/edge-labels']);
 
 <ExampleLayout>
 You can simply render an edge label by using the `<EdgeLabel />` component. You can simply pass the label positions to it that our path helper functions (`getBezierPath`, `getSmoothStepPath` etc.) returns and it will handle the rest. See [CustomEdge.svelte](#example-code).
@@ -23,7 +23,7 @@ If you want to mimic the behaviour of `<Edge Label>` you need to handle some thi
 <br />
 
 <RemoteCodeViewer
-  route="examples/edges/edge-label"
+  route="examples/edges/edge-labels"
   framework="svelte"
 />
 </ExampleLayout>

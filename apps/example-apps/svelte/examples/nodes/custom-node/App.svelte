@@ -1,6 +1,6 @@
 <script module>
   class BgColor {
-    current = $state('#c9f1dd');
+    current = $state('#f7f9fb');
   }
   export const bgColor = new BgColor();
 </script>
