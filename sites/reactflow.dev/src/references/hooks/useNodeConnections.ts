@@ -10,7 +10,7 @@ export const signature: PropsTableProps = {
     },
     { name: 'handleId?', type: 'string', description: 'ID of the handle' },
     {
-      name: 'nodeId?',
+      name: 'id?',
       type: 'string',
       description:
         'ID of the node, filled in automatically if used inside custom node',
