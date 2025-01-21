@@ -32,7 +32,10 @@ const ZoomSlider = React.forwardRef<
 
   return (
     <Panel
-      className={cn("flex bg-primary-foreground text-foreground", className)}
+      className={cn(
+        "flex gap-1 rounded-md bg-primary-foreground p-1 text-foreground",
+        className,
+      )}
       {...props}
     >
       <Button

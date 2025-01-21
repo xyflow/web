@@ -4,6 +4,7 @@ const titleLookup = {
   'use-connection': 'useConnection()',
   'use-edges': 'useEdges()',
   'use-handle-connections': 'useHandleConnections()',
+  'use-node-connections': 'useNodeConnections()',
   'use-internal-node': 'useInternalNode()',
   'use-nodes': 'useNodes()',
   'use-nodes-data': 'useNodesData()',

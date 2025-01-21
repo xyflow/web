@@ -42,7 +42,7 @@ const nodes = useNodes<CustomNodeType>();
 
 ## Notes
 
-- Relying on `useNodes` unecessarily can be a common cause of performance
+- Relying on `useNodes` unnecessarily can be a common cause of performance
   issues. Whenever any node changes, this hook will cause the component to
   re-render. Often we actually care about something more specific, like when
   the _number_ of nodes changes: where possible try to use

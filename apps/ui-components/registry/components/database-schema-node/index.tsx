@@ -35,7 +35,7 @@ export function DatabaseSchemaNode({
               <TableCell className="pr-0 text-right font-thin">
                 <LabeledHandle
                   id={entry.title}
-                  title={entry.title}
+                  title={entry.type}
                   type="source"
                   position={Position.Right}
                   className="p-0"

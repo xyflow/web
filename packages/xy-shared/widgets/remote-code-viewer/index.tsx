@@ -14,7 +14,6 @@ import { RemoteContent } from '../../components/remote-content';
 import { SharedContext } from '../../context/shared-context';
 import { CompiledMdx } from '../../types';
 
-
 import './style.css';
 import { OpenInStackblitz } from './open-in-stackblitz';
 import { OpenInCodesandbox } from './open-in-codesandbox';
@@ -25,7 +24,6 @@ const defaultOptions = {
   wrapContent: true,
   readOnly: false,
 };
-
 
 export type RemoteCodeViewerProps = {
   route: string;
@@ -52,15 +50,22 @@ export function RemoteCodeViewer({
 }: RemoteCodeViewerProps) {
   const _framework: Framework =
     framework ?? (process.env.NEXT_PUBLIC_Framework as Framework) ?? 'react';
-  
+
   const preview = `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/${_framework}/${route}/index.html`;
 
+  // 1. If showEditor is false, the layout is vertical (isHorizontal = false).
+  // 2. If orientation is provided, it is horizontal only if orientation === 'horizontal'.
+  // 3. If the route includes 'examples/', the layout is vertical (isHorizontal = false).
+  // 4. Default fallback: the layout is horizontal (isHorizontal = true).
   const isExample = route.includes('examples/');
-  const isHorizontal = orientation
-    ? orientation === 'horizontal'
-    : isExample
+  const isHorizontal =
+    showEditor === false
       ? false
-      : true;
+      : orientation
+        ? orientation === 'horizontal'
+        : isExample
+          ? false
+          : true;
 
   const { useData } = useContext(SharedContext);
   const snippets: Record<string, CompiledMdx> | undefined =
@@ -91,7 +96,7 @@ export function RemoteCodeViewer({
       )}
     >
       <div
-        style={{ height: editorHeight }}
+        style={isHorizontal ? {} : { height: editorHeight }}
         className={clsx('relative', isHorizontal ? 'w-1/2' : '')}
       >
         <iframe
