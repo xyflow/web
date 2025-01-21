@@ -6,7 +6,7 @@
 
   import '@xyflow/svelte/dist/style.css';
 
-  const nodes = writable([
+  let nodes = $state.raw([
     {
       id: '1',
       type: 'colorPicker',
@@ -21,14 +21,11 @@
     },
   ]);
 
-  const edges = writable([]);
+  let edges = $state.raw([]);
 
   const nodeTypes = {
     colorPicker: ColorPickerNode,
   };
-
-  $: colorA = $nodes[0].data.color;
-  $: colorB = $nodes[1].data.color;
 </script>
 
 <div style="height:100vh;">
@@ -37,7 +34,8 @@
     bind:edges
     {nodeTypes}
     fitView
-    style="background-color: color-mix(in srgb, {$colorA}, {$colorB});"
+    style="background-color: color-mix(in srgb, {nodes[0].data.color}, {nodes[1]
+      .data.color});"
     attributionPosition="top-right"
   />
 </div>
