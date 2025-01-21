@@ -32,7 +32,7 @@ export const downloadImageToVercelBlob = async (
 ): Promise<string> => {
   const imageFile = await downloadImage(source);
 
-  const blob = await put(`${id}.png`, imageFile, {
+  const blob = await put(`showcases/${id}.png`, imageFile, {
     access: 'public',
     addRandomSuffix: false,
   });
