@@ -47,7 +47,11 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'f20vdoobtdxrjemr.public.blob.vercel-storage.com',
+        hostname: '*.public.blob.vercel-storage.com',
+      },
+      {
+        protocol: 'https',
+        hostname: '*.amazonaws.com',
       },
     ],
   },

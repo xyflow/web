@@ -104,6 +104,7 @@ export function ShowcaseLayout({
             <CaseStudyPreview
               key={item.name}
               data={item.frontMatter as CaseStudyFrontmatter}
+              route={item.route}
             />
           ) : (
             <ContentGridItem
@@ -205,43 +206,42 @@ function useTags(showcases: ShowcaseItem[]) {
   return { all, selected, toggle };
 }
 
-function CaseStudyPreview({ data }: { data: CaseStudyFrontmatter }) {
+function CaseStudyPreview({
+  data,
+  route,
+}: {
+  data: CaseStudyFrontmatter;
+  route: string;
+}) {
   return (
     <Container
       variant="dark"
-      className="max-lg:rounded-none col-span-full"
-      innerClassName="px-4 py-8 flex flex-wrap gap-4 relative w-full items-center shadow-none bg-none bg-gray-100/10 lg:px-20 lg:py-20"
+      className="col-span-full"
+      innerClassName="px-4 py-8 flex flex-wrap gap-12 relative w-full items-center shadow-none bg-none bg-gray-100/10 lg:px-12 lg:py-12"
     >
-      <div className="max-md:w-full md:flex-1">
+      <div className="max-md:w-full max-md:order-2 md:w-1/2">
         <Text className="text-primary mb-4">{data.client}</Text>
-        <Heading size="sm">{data.title}</Heading>
-        <Text>{data.description}</Text>
+        <Heading size="sm" className="mb-4">
+          {data.title}
+        </Heading>
+        <Text className="mb-6">{data.description}</Text>
         <Button
           asChild
           size="lg"
           variant="secondary"
           className="text-black hover:bg-gray-100 w-full md:w-auto"
         >
-          <Link href={`${process.env.NEXT_PUBLIC_PRO_PLATFORM_URL}/signup`}>
-            Try it out
-          </Link>
+          <Link href={route}>See Case Study</Link>
         </Button>
       </div>
-      <div className="max-md:w-full md:flex-1">
-        <Text className="mb-8 text-gray-300">
-          Get all 10 pro examples with just one month of a Pro subscription from
-          129€
-        </Text>
-        <div className="flex flex-wrap gap-2 mt-4">
-          <Button
-            asChild
-            size="lg"
-            variant="black"
-            className="bg-white/10 hover:bg-white/20 w-full md:w-auto"
-          >
-            <Link href="/pro/pricing">See subscription plans</Link>
-          </Button>
-        </div>
+      <div className="max-md:w-full max-md:order-1 aspect-video md:w-1/2 relative flex-1 rounded-md overflow-hidden">
+        <Image
+          src={data.image}
+          alt={data.title}
+          fill
+          className="object-cover w-full h-full"
+          sizes="(max-width: 768px) 100vw, 500px"
+        />
       </div>
     </Container>
   );
