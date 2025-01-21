@@ -13,15 +13,14 @@ import {
   Text,
 } from '@xyflow/xy-ui';
 import { type MdxFile } from 'nextra';
+import Image from 'next/image';
 
-import { BaseLayout, ProjectPreview, Hero } from '../';
+import { BaseLayout } from './base';
+import { ProjectPreview } from '../widgets/project-preview';
+import { Hero } from '../widgets/hero';
+import { type CaseStudyFrontmatter } from './case-study';
 
-export type CaseStudyFrontMatter = {
-  title: string;
-  client: string;
-};
-
-export type CaseStudy = MdxFile<CaseStudyFrontMatter>;
+export type CaseStudy = MdxFile<CaseStudyFrontmatter>;
 
 export type ShowcaseLayoutProps = {
   title: string;
@@ -102,7 +101,10 @@ export function ShowcaseLayout({
       <ContentGrid className="mt-8 md:grid-cols-2 lg:grid-cols-3 border-none gap-4 lg:gap-8">
         {visibleItems.map((item) =>
           isCaseStudy(item) ? (
-            <CaseStudyPreview key={item.name} data={item.frontMatter} />
+            <CaseStudyPreview
+              key={item.name}
+              data={item.frontMatter as CaseStudyFrontmatter}
+            />
           ) : (
             <ContentGridItem
               key={item.id}
@@ -203,7 +205,7 @@ function useTags(showcases: ShowcaseItem[]) {
   return { all, selected, toggle };
 }
 
-function CaseStudyPreview({ data }: { data?: CaseStudyFrontMatter }) {
+function CaseStudyPreview({ data }: { data: CaseStudyFrontmatter }) {
   return (
     <Container
       variant="dark"
@@ -211,8 +213,19 @@ function CaseStudyPreview({ data }: { data?: CaseStudyFrontMatter }) {
       innerClassName="px-4 py-8 flex flex-wrap gap-4 relative w-full items-center shadow-none bg-none bg-gray-100/10 lg:px-20 lg:py-20"
     >
       <div className="max-md:w-full md:flex-1">
-        <Text className="text-gray-400 mb-4">{data?.client}</Text>
-        <Heading size="md">{data?.title}</Heading>
+        <Text className="text-primary mb-4">{data.client}</Text>
+        <Heading size="sm">{data.title}</Heading>
+        <Text>{data.description}</Text>
+        <Button
+          asChild
+          size="lg"
+          variant="secondary"
+          className="text-black hover:bg-gray-100 w-full md:w-auto"
+        >
+          <Link href={`${process.env.NEXT_PUBLIC_PRO_PLATFORM_URL}/signup`}>
+            Try it out
+          </Link>
+        </Button>
       </div>
       <div className="max-md:w-full md:flex-1">
         <Text className="mb-8 text-gray-300">
@@ -220,16 +233,6 @@ function CaseStudyPreview({ data }: { data?: CaseStudyFrontMatter }) {
           129€
         </Text>
         <div className="flex flex-wrap gap-2 mt-4">
-          <Button
-            asChild
-            size="lg"
-            variant="secondary"
-            className="text-black hover:bg-gray-100 w-full md:w-auto"
-          >
-            <Link href={`${process.env.NEXT_PUBLIC_PRO_PLATFORM_URL}/signup`}>
-              Try it out
-            </Link>
-          </Button>
           <Button
             asChild
             size="lg"

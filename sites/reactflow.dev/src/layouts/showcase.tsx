@@ -6,13 +6,16 @@ import {
 } from 'xy-shared';
 
 import { useData } from 'nextra/hooks';
+import { useMemo } from 'react';
 
 export default function Showcase() {
   const { showcases } = useData();
 
-  const caseStudies = getMdxPagesUnderRoute('/pro/case-studies').filter(
-    (page) => page.name !== 'index',
-  );
+  const caseStudies = useMemo(() => {
+    return getMdxPagesUnderRoute('/pro/case-studies').filter(
+      (page) => page.name !== 'index',
+    );
+  }, []);
 
   return (
     <ShowcaseLayout
