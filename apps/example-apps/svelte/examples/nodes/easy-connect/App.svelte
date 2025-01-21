@@ -30,7 +30,6 @@
     type: 'floating',
     markerEnd: {
       type: MarkerType.ArrowClosed,
-      color: 'black',
     },
   };
 </script>

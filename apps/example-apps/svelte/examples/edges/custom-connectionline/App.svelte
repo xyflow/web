@@ -1,5 +1,11 @@
 <script lang="ts">
-  import { SvelteFlow, Background, type Edge, type Node } from '@xyflow/svelte';
+  import {
+    SvelteFlow,
+    Background,
+    type Edge,
+    type Node,
+    MiniMap,
+  } from '@xyflow/svelte';
 
   import CustomNode from './CustomNode.svelte';
   import ConnectionLine from './ConnectionLine.svelte';
@@ -22,9 +28,13 @@
   let edges = $state.raw<Edge[]>([]);
 </script>
 
-<SvelteFlow bind:nodes bind:edges {nodeTypes} fitView>
-  {#snippet connectionLine()}
-    <ConnectionLine />
-  {/snippet}
+<SvelteFlow
+  bind:nodes
+  bind:edges
+  {nodeTypes}
+  fitView
+  connectionLineComponent={ConnectionLine}
+>
   <Background />
+  <MiniMap />
 </SvelteFlow>
