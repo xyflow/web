@@ -12,7 +12,7 @@ import { EllipsisVertical } from "lucide-react";
 
 /* NODE HEADER -------------------------------------------------------------- */
 
-export interface NodeHeaderProps extends React.HTMLAttributes<HTMLElement> {}
+export type NodeHeaderProps = React.HTMLAttributes<HTMLElement>;
 
 /**
  * A container for a consistent header layout intended to be used inside the
@@ -68,8 +68,7 @@ NodeHeaderTitle.displayName = "NodeHeaderTitle";
 
 /* NODE HEADER ICON --------------------------------------------------------- */
 
-export interface NodeHeaderIconProps
-  extends React.HTMLAttributes<HTMLSpanElement> {}
+export type NodeHeaderIconProps = React.HTMLAttributes<HTMLSpanElement>;
 
 export const NodeHeaderIcon = React.forwardRef<
   HTMLSpanElement,
@@ -84,8 +83,7 @@ NodeHeaderIcon.displayName = "NodeHeaderIcon";
 
 /* NODE HEADER ACTIONS ------------------------------------------------------ */
 
-export interface NodeHeaderActionsProps
-  extends React.HTMLAttributes<HTMLDivElement> {}
+export type NodeHeaderActionsProps = React.HTMLAttributes<HTMLDivElement>;
 
 /**
  * A container for right-aligned action buttons in the node header.
