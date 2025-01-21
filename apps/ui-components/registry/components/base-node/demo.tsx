@@ -6,6 +6,7 @@ import {
   NodeProps,
   Position,
   ReactFlow,
+  Node,
 } from "@xyflow/react";
 import { BaseNode } from "@/registry/components/base-node";
 
@@ -24,9 +25,9 @@ const nodeTypes = {
   customNode: CustomNode,
 };
 
-function CustomNode({ data }: NodeProps) {
+function CustomNode({ selected, data }: NodeProps<Node<{ label: string }>>) {
   return (
-    <BaseNode>
+    <BaseNode selected={selected}>
       <>
         {data.label}
         <Handle type="source" position={Position.Right} />

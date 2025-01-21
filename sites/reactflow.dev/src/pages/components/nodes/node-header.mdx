@@ -1,0 +1,100 @@
+---
+title: Node Header
+description: A header block for custom nodes.
+---
+
+import UiComponentViewer from '@/components/ui-component-viewer';
+import fetchShadcnComponent from '@/utils/get-static-props/fetch-shadcn-component';
+
+export const getStaticProps = fetchShadcnComponent('node-header');
+
+# Node Header
+
+A header designed to work with the [`<BaseNode />`](/components/base-node) component.
+It can contain a title, icon, and list of actions.
+
+<UiComponentViewer />
+
+## Custom node actions
+
+Many node header actions will be useful across multiple custom nodes. Below are
+some examples of custom node actions that you might define.
+
+### Delete action
+
+```tsx copy
+export type NodeHeaderDeleteActionProps = Omit<
+  NodeHeaderActionProps,
+  "onClick"
+>;
+
+/**
+ * A delete action button that removes the node from the graph when clicked.
+ */
+export const NodeHeaderDeleteAction = React.forwardRef<
+  HTMLButtonElement,
+  NodeHeaderDeleteActionProps
+>((props, ref) => {
+  const id = useNodeId();
+  const { setNodes } = useReactFlow();
+
+  const handleClick = useCallback(() => {
+    setNodes((prevNodes) => prevNodes.filter((node) => node.id !== id));
+  }, []);
+
+  return (
+    <NodeHeaderAction
+      ref={ref}
+      onClick={handleClick}
+      variant="ghost"
+      {...props}
+    >
+      <Trash />
+    </NodeHeaderAction>
+  );
+});
+
+NodeHeaderDeleteAction.displayName = "NodeHeaderDeleteAction";
+```
+
+### Copy action
+
+```tsx copy
+export interface NodeHeaderCopyActionProps
+  extends Omit<NodeHeaderActionProps, "onClick"> {
+  onClick?: (nodeId: string, event: React.MouseEvent) => void;
+}
+
+/**
+ * A copy action button that passes the node's id to the `onClick` handler when
+ * clicked.
+ */
+export const NodeHeaderCopyAction = React.forwardRef<
+  HTMLButtonElement,
+  NodeHeaderCopyActionProps
+>(({ onClick, ...props }, ref) => {
+  const id = useNodeId();
+
+  const handleClick = useCallback(
+    (event: React.MouseEvent) => {
+      if (!onClick || !id) return;
+
+      onClick(id, event);
+    },
+    [onClick],
+  );
+
+  return (
+    <NodeHeaderAction
+      ref={ref}
+      onClick={handleClick}
+      variant="ghost"
+      {...props}
+    >
+      <Copy />
+    </NodeHeaderAction>
+  );
+});
+
+NodeHeaderCopyAction.displayName = "NodeHeaderCopyAction";
+```
