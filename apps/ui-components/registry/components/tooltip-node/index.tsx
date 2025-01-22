@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useCallback } from "react";
 import { NodeToolbar, NodeProps, NodeToolbarProps } from "@xyflow/react";
 import { BaseNode } from "@/registry/components/base-node";
 
@@ -19,19 +19,18 @@ export const TooltipNode = React.forwardRef<HTMLDivElement, TooltipNodeProps>(
   ({ selected, children }, ref) => {
     const [isTooltipVisible, setTooltipVisible] = useState(false);
 
-    const handleFocus = () => setTooltipVisible(true);
-    const handleBlur = () => setTooltipVisible(false);
+    const showTooltip = useCallback(() => setTooltipVisible(true), []);
+    const hideTooltip = useCallback(() => setTooltipVisible(false), []);
 
     return (
       <TooltipContext.Provider value={isTooltipVisible}>
         <BaseNode
           ref={ref}
-          onMouseEnter={() => setTooltipVisible(true)}
-          onMouseLeave={() => setTooltipVisible(false)}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
+          onMouseEnter={showTooltip}
+          onMouseLeave={hideTooltip}
+          onFocus={showTooltip}
+          onBlur={hideTooltip}
           tabIndex={0}
-          selected={selected}
         >
           {children}
         </BaseNode>
