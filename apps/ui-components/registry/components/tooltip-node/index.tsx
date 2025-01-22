@@ -1,49 +1,92 @@
-import { useState } from "react";
-import {
-  Node,
-  NodeProps,
-  NodeToolbar,
-  NodeToolbarProps,
-  Handle,
-  Position,
-} from "@xyflow/react";
+import React, { createContext, useContext, useState } from "react";
+import { NodeToolbar, NodeProps, NodeToolbarProps } from "@xyflow/react";
 import { BaseNode } from "@/registry/components/base-node";
 
-export type TooltipNodeType = Node<{
-  label: string;
-  tooltip?: {
-    label: string;
-    position?: NodeToolbarProps["position"];
-  };
-}>;
+/* TOOLTIP CONTEXT ---------------------------------------------------------- */
 
-export function TooltipNode({ data, selected }: NodeProps<TooltipNodeType>) {
-  const [isTooltipVisible, setTooltipVisible] = useState(false);
+const TooltipContext = createContext(false);
 
-  const handleFocus = () => setTooltipVisible(true);
+/* TOOLTIP NODE ------------------------------------------------------------- */
 
-  const handleBlur = () => setTooltipVisible(false);
+export interface TooltipNodeProps extends Partial<NodeProps> {
+  children?: React.ReactNode;
+}
+
+/**
+ * A component that wraps a node and provides tooltip visibility context.
+ */
+export const TooltipNode = React.forwardRef<HTMLDivElement, TooltipNodeProps>(
+  ({ selected, children }, ref) => {
+    const [isTooltipVisible, setTooltipVisible] = useState(false);
+
+    const handleFocus = () => setTooltipVisible(true);
+    const handleBlur = () => setTooltipVisible(false);
+
+    return (
+      <TooltipContext.Provider value={isTooltipVisible}>
+        <BaseNode
+          ref={ref}
+          onMouseEnter={() => setTooltipVisible(true)}
+          onMouseLeave={() => setTooltipVisible(false)}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+          tabIndex={0}
+          selected={selected}
+        >
+          {children}
+        </BaseNode>
+      </TooltipContext.Provider>
+    );
+  },
+);
+
+TooltipNode.displayName = "TooltipNode";
+
+/* TOOLTIP CONTENT ---------------------------------------------------------- */
+
+export interface TooltipContentProps extends NodeToolbarProps {}
+
+/**
+ * A component that displays the tooltip content based on visibility context.
+ */
+export const TooltipContent = React.forwardRef<
+  HTMLDivElement,
+  TooltipContentProps
+>(({ position, children }, ref) => {
+  const isTooltipVisible = useContext(TooltipContext);
 
   return (
-    <BaseNode
-      onMouseEnter={() => setTooltipVisible(true)}
-      onMouseLeave={() => setTooltipVisible(false)}
-      onFocus={handleFocus}
-      onBlur={handleBlur}
-      selected={selected}
-      tabIndex={0}
+    <NodeToolbar
+      ref={ref}
+      isVisible={isTooltipVisible}
+      className="rounded-sm bg-primary p-2 text-primary-foreground"
+      tabIndex={1}
+      position={position}
     >
-      <NodeToolbar
-        isVisible={isTooltipVisible || selected}
-        className="rounded-sm bg-primary p-2 text-primary-foreground"
-        position={data.tooltip?.position}
-        tabIndex={1}
-      >
-        {data.tooltip?.label}
-      </NodeToolbar>
-      <div>{data.label}</div>
-      <Handle type="target" position={Position.Top} />
-      <Handle type="source" position={Position.Bottom} />
-    </BaseNode>
+      {children}
+    </NodeToolbar>
   );
-}
+});
+
+TooltipContent.displayName = "TooltipContent";
+
+/* TOOLTIP TRIGGER ---------------------------------------------------------- */
+
+export interface TooltipTriggerProps
+  extends React.HTMLAttributes<HTMLParagraphElement> {}
+
+/**
+ * A component that triggers the tooltip visibility.
+ */
+export const TooltipTrigger = React.forwardRef<
+  HTMLParagraphElement,
+  TooltipTriggerProps
+>(({ children, ...props }, ref) => {
+  return (
+    <div ref={ref} {...props}>
+      {children}
+    </div>
+  );
+});
+
+TooltipTrigger.displayName = "TooltipTrigger";
