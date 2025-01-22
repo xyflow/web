@@ -18,12 +18,8 @@ there's a lot going on.
 The apps directory contains projects that run on the backend or applications we
 might want to run during development:
 
-- `apps/svelte-examples` is a SvelteKit app that contains all the examples we use
-  throughout our Svelte docs. We like to use [sandpack](https://sandpack.codesandbox.io)
-  for our React examples but it doesn't support Svelte yet, so we built our own
-  example viewer!
-- `apps/xy-styleguide` is a a [Storybook](https://storybook.js.org/) app that
-  tries to document and demo all the components in our `packages/xy-ui` package.
+- `apps/example-apps` contains all of our examples and tutorials for ReactFlow and SvelteFlow.
+- `apps/ui-components` houses all of the components for [React Flow Components](https://reactflow.dev/components).
 
 ### packages/
 
