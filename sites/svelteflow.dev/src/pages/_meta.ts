@@ -6,7 +6,10 @@ export default {
     },
   },
   learn: 'Learn',
-  'api-reference': 'Reference',
+  'api-reference': {
+    title: 'Reference',
+    display: 'hidden',
+  },
   examples: 'Examples',
   community: {
     title: 'Community',

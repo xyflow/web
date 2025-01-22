@@ -5,5 +5,7 @@ export default {
   'api-link': {
     title: 'API Reference',
     href: '/api-reference',
+    display: 'hidden',
   },
+  troubleshooting: 'Troubleshooting',
 };
