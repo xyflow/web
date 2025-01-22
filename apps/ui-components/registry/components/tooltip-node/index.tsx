@@ -56,15 +56,16 @@ export const TooltipContent = React.forwardRef<
   const isTooltipVisible = useContext(TooltipContext);
 
   return (
-    <NodeToolbar
-      ref={ref}
-      isVisible={isTooltipVisible}
-      className="rounded-sm bg-primary p-2 text-primary-foreground"
-      tabIndex={1}
-      position={position}
-    >
-      {children}
-    </NodeToolbar>
+    <div ref={ref}>
+      <NodeToolbar
+        isVisible={isTooltipVisible}
+        className="rounded-sm bg-primary p-2 text-primary-foreground"
+        tabIndex={1}
+        position={position}
+      >
+        {children}
+      </NodeToolbar>
+    </div>
   );
 });
 
