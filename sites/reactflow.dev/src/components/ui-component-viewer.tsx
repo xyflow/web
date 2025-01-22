@@ -56,7 +56,8 @@ function UiComponentViewer() {
       <Tabs defaultValue="preview">
         <TabsList>
           <TabsTrigger value="preview">Preview</TabsTrigger>
-          <TabsTrigger value="code">Demo Code</TabsTrigger>
+          <TabsTrigger value="code">Code</TabsTrigger>
+          <TabsTrigger value="boilerplate">Boilerplate</TabsTrigger>
         </TabsList>
         <TabsContent
           className="data-[state=inactive]:hidden min-h-[500px]"
@@ -72,6 +73,14 @@ function UiComponentViewer() {
           <RemoteContent
             {...data.demoMDX}
             mdx={data.demoMDX.compiledSource}
+            components={components}
+            scope={{}}
+          />
+        </TabsContent>
+        <TabsContent className="min-h-[500px]" value="boilerplate">
+          <RemoteContent
+            {...data.pageMDX}
+            mdx={data.pageMDX.compiledSource}
             components={components}
             scope={{}}
           />

@@ -2,14 +2,14 @@ import { compileCodeSnippet } from 'xy-shared/server';
 import { loadJSONFile } from 'xy-shared/server';
 
 type Demo = {
-  files: [{ content: string }];
+  files: [{ content: string; page: string }];
 };
 
 type RegistryComponent = {
   name: string;
   description: string;
   dependencies: string[];
-  files: [{ content: string }];
+  files: [{ content: string; page: string }];
   tags: string[];
   version: string;
 };
@@ -33,6 +33,13 @@ export default function getUiComponentConfig(id: string) {
 
     const demoString = demo.files[0].content;
     const demoMDX = await compileCodeSnippet(demoString, {
+      filetype: 'tsx',
+      showCopy: true,
+      highlight: componentName,
+    });
+
+    const pageString = demo.files[0].page;
+    const pageMDX = await compileCodeSnippet(pageString, {
       filetype: 'tsx',
       showCopy: true,
       highlight: componentName,
@@ -74,6 +81,7 @@ export default function getUiComponentConfig(id: string) {
           ...data,
           demo,
           demoMDX,
+          pageMDX,
           componentMDX,
           installMDX,
           npmMDX,

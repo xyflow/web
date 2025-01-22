@@ -7,7 +7,6 @@ import {
   TooltipTrigger,
 } from "@/registry/components/tooltip-node";
 
-// You can use Tooltip Node only inside of custom nodes.
 const Tooltip = memo(({ selected }: NodeProps) => {
   return (
     <TooltipNode selected={selected}>

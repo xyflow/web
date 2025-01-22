@@ -4,6 +4,7 @@ const path = require("path");
 const componentsPath = path.join(__dirname, "../registry/components/");
 const registryOutputPath = path.join(__dirname, "../public/registry");
 const demoOutputPath = path.join(__dirname, "../public/demo");
+const componentPagesBasePath = path.join(__dirname, "../app/components/");
 
 (async () => {
   console.log("Generating registry files...");
@@ -35,6 +36,8 @@ const demoOutputPath = path.join(__dirname, "../public/demo");
 
       // Gather relevant file paths
       const componentPath = path.join(componentsPath, folder.name);
+      const componentPagePath = path.join(componentPagesBasePath, folder.name);
+      const pagePath = path.join(componentPagePath, "page.tsx");
       const indexPath = path.join(componentPath, "index.tsx");
       const registryPath = path.join(componentPath, "registry.json");
       const demoPath = path.join(componentPath, "demo.tsx");
@@ -45,6 +48,7 @@ const demoOutputPath = path.join(__dirname, "../public/demo");
 
       // Read index file and add it to the registry object
       const index = fs.readFileSync(indexPath, "utf8");
+      const page = fs.readFileSync(pagePath, "utf8");
       registry.files[0].content = index;
 
       // Write the registry object into the build folder
@@ -62,6 +66,7 @@ const demoOutputPath = path.join(__dirname, "../public/demo");
         files: [
           {
             content: demoClean,
+            page: page,
           },
         ],
       };

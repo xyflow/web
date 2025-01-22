@@ -2,20 +2,20 @@
 
 import { Background, ReactFlow } from "@xyflow/react";
 import DemoWrapper from "@/components/demo-wrapper";
-import Demo from "@/registry/components/tooltip-node/demo";
+import TooltipNode from "@/registry/components/tooltip-node/demo";
+
+const nodeTypes = {
+  tooltipNode: TooltipNode,
+};
 
 const defaultNodes = [
   {
     id: "1",
     position: { x: 200, y: 200 },
     data: {},
-    type: "customNode",
+    type: "tooltipNode",
   },
 ];
-
-const nodeTypes = {
-  customNode: Demo,
-};
 
 export default function DemoPage() {
   return (
