@@ -63,6 +63,6 @@
     {:else if flowState.shape === 'pyramid'}
       <T.TetrahedronGeometry args={[1, 0]} />
     {/if}
-    <T.MeshLambertMaterial color={flowState.color} />
+    <T.MeshLambertMaterial color={flowState.color} toneMapped={false} />
   </T.Mesh>
 {/each}
