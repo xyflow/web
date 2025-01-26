@@ -4,17 +4,17 @@ export const signature: PropsTableProps = {
   props: [
     { name: 'Params' },
     {
-      name: 'type?',
-      type: '"source" | "target"',
-      description: `What type of handle connections do you want to observer?`,
-    },
-    { name: 'handleId?', type: 'string', description: 'ID of the handle' },
-    {
       name: 'id?',
       type: 'string',
       description:
         'ID of the node, filled in automatically if used inside custom node',
     },
+    {
+      name: 'handleType?',
+      type: '"source" | "target"',
+      description: `What type of handle connections do you want to observer?`,
+    },
+    { name: 'handleId?', type: 'string', description: 'ID of the handle' },
     {
       name: 'onConnect?',
       type: '(connections: Connection[]) => void',
