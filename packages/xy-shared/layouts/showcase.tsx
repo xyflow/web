@@ -1,7 +1,8 @@
 'use client';
 
 import { useCallback, useMemo, useState, ReactNode } from 'react';
-import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
+import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
+import { RocketLaunchIcon } from '@heroicons/react/24/outline';
 import {
   Button,
   cn,
@@ -37,6 +38,8 @@ export type ShowcaseItem = {
   image: string;
   url: string;
   demoUrl?: string;
+  repoUrl?: string;
+  openSource?: boolean;
   tags: { id: string; name: string }[];
 };
 
@@ -81,10 +84,11 @@ export function ShowcaseLayout({
     <BaseLayout>
       <Hero
         kicker="Showcase"
-        kickerIcon={MagnifyingGlassIcon}
+        kickerIcon={RocketLaunchIcon}
         title={title}
         subtitle={subtitle}
         align="center"
+        backgroundVariant="gradient"
       />
 
       <div className="flex justify-center items-center flex-wrap gap-x-2 gap-y-4 max-w-4xl mx-auto">
@@ -135,7 +139,9 @@ export function ShowcaseLayout({
                 altRoute={
                   item.demoUrl
                     ? { href: item.demoUrl, label: 'Demo' }
-                    : undefined
+                    : item.repoUrl
+                      ? { href: item.repoUrl, label: 'Repo' }
+                      : undefined
                 }
                 linkLabel="Website"
               />
@@ -225,14 +231,25 @@ function CaseStudyPreview({
           {data.title}
         </Heading>
         <Text className="mb-6">{data.description}</Text>
-        <Button
-          asChild
-          size="lg"
-          variant="secondary"
-          className="text-black hover:bg-gray-100 w-full md:w-auto"
-        >
-          <Link href={route}>See Case Study</Link>
-        </Button>
+        <div className="grid md:flex gap-4">
+          <Button
+            asChild
+            size="lg"
+            variant="secondary"
+            className="text-black hover:bg-gray-100 w-full md:w-auto"
+          >
+            <Link href={route}>Read Case Study</Link>
+          </Button>
+          <Button asChild variant="link" className="text-md font-bold">
+            <a
+              href={data.project_url}
+              target="_blank"
+              className="flexitems-center"
+            >
+              Project Website <ArrowRightCircleIcon className="ml-1 w-4 h-4" />
+            </a>
+          </Button>
+        </div>
       </div>
       <div className="max-md:w-full max-md:order-1 aspect-video md:w-1/2 relative flex-1 rounded-md overflow-hidden">
         <Image

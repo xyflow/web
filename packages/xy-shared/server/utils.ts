@@ -78,8 +78,8 @@ export async function fetchNotionShowcases(
     },
     sorts: [
       {
-        property: 'Featured',
-        direction: 'descending',
+        property: 'Priority',
+        direction: 'ascending',
       },
       {
         property: 'title',
@@ -94,10 +94,16 @@ export async function fetchNotionShowcases(
       const title = result.properties.Name.title[0].plain_text;
       const projectUrl = result.properties['Project Website'].url;
       const demoUrl = result.properties['Demo URL'].url;
+      const repoUrl = result.properties['Repository URL'].url;
+      const openSource = result.properties['Open Source'].checkbox;
       const tags = result.properties.Tags.multi_select;
       const featured = result.properties.Featured.checkbox;
       const description = result.properties.Description.rich_text[0].plain_text;
       const imageSrc = result.properties.Image.files[0].file.url;
+
+      if (openSource) {
+        tags.push({ id: 'open-source', name: 'Open Source' });
+      }
 
       const image =
         process.env.BLOB_READ_WRITE_TOKEN &&
@@ -110,6 +116,8 @@ export async function fetchNotionShowcases(
         title,
         url: projectUrl,
         demoUrl,
+        repoUrl,
+        openSource,
         description,
         image,
         tags,

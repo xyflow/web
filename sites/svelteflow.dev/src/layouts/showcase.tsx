@@ -6,8 +6,8 @@ export default function Showcase() {
 
   return (
     <ShowcaseLayout
-      title="See what you can build with Svelte Flow"
-      subtitle="We've seen people create data processing tools, chatbot builders, ML pipelines, and more with React Flow. Now we're bringing the same power to Svelte. In this showcase we collect our favorite projects."
+      title="Built with Svelte Flow"
+      subtitle="Svelte Flow is being used in a large variety of projects. Explore some of our favorite examples from the web."
       showcases={showcases}
     />
   );

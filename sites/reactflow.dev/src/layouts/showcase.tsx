@@ -19,8 +19,8 @@ export default function Showcase() {
 
   return (
     <ShowcaseLayout
-      title="See what you can build with React Flow"
-      subtitle="We've seen React Flow used to create data processing tools, chatbot builders, machine learning, musical synthesizers, and more. Explore some of our favorite projects from around the internet."
+      title="Built with React Flow"
+      subtitle="React Flow is used in all kinds of projects, from open-source side projects to big enterprise apps. Explore some of our favorite examples from the web."
       showcases={showcases}
       caseStudies={caseStudies as CaseStudy[]}
     >
