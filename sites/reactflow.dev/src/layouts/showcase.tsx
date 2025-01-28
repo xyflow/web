@@ -1,16 +1,28 @@
-import { ShowcaseLayout, SubscribeSection } from 'xy-shared';
-import showcases from '../../public/data/showcases.json';
+import {
+  CaseStudy,
+  getMdxPagesUnderRoute,
+  ShowcaseLayout,
+  SubscribeSection,
+} from 'xy-shared';
 
-// @todo this should be moved into getStaticProps
-// if we have the data, it should be filtering out the react showcases from the list
-const visibleShowcases = showcases;
+import { useData } from 'nextra/hooks';
+import { useMemo } from 'react';
 
 export default function Showcase() {
+  const { showcases } = useData();
+
+  const caseStudies = useMemo(() => {
+    return getMdxPagesUnderRoute('/pro/case-studies').filter(
+      (page) => page.name !== 'index',
+    );
+  }, []);
+
   return (
     <ShowcaseLayout
-      title="See what you can build with React Flow"
-      subtitle="We've seen React Flow used to create data processing tools, chatbot builders, machine learning, musical synthesizers, and more. Explore some of our favorite projects from around the internet."
-      showcases={visibleShowcases}
+      title="Built with React Flow"
+      subtitle="React Flow is used in all kinds of projects, from open-source side projects to big enterprise apps. Explore some of our favorite examples from the web."
+      showcases={showcases}
+      caseStudies={caseStudies as CaseStudy[]}
     >
       <SubscribeSection />
     </ShowcaseLayout>

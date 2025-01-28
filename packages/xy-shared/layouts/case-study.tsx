@@ -9,6 +9,7 @@ import {
   Container,
   ContentGrid,
   ContentGridItem,
+  Button,
 } from '@xyflow/xy-ui';
 
 import {
@@ -31,6 +32,7 @@ export type CaseStudyFrontmatter = {
   image: string;
   image_width: number;
   image_height: number;
+  project_url: string;
 };
 
 export type CaseStudyLayoutProps = {
@@ -42,6 +44,7 @@ export function CaseStudyLayout({ children }: CaseStudyLayoutProps) {
   const { title, frontMatter } = useConfig<CaseStudyFrontmatter>();
 
   const { prev, next } = getPrevAndNextPagesByTitle(title, '/pro/case-studies');
+
   return (
     <>
       <div className="max-w-3xl mx-auto px-6">
@@ -68,7 +71,12 @@ export function CaseStudyLayout({ children }: CaseStudyLayoutProps) {
       </Container>
 
       <div className="max-w-3xl mx-auto px-6">
-        <>{children}</>
+        {children}
+        <Button asChild>
+          <a href={frontMatter.project_url} target="_blank">
+            Visit Project Website
+          </a>
+        </Button>
       </div>
 
       <div className="mx-auto max-w-screen-xl">

@@ -119,7 +119,9 @@ export function getPrevAndNextPagesByTitle<InternalRoute extends string>(
   title: string,
   route: InternalRoute,
 ) {
-  const pages = getMdxPagesUnderRoute(route);
+  const pages = getMdxPagesUnderRoute(route).filter(
+    (page) => page.name !== 'index',
+  );
 
   const currentIndex = pages.findIndex(
     (page) => page.frontMatter?.title === title,
