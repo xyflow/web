@@ -77,22 +77,10 @@ For everything else, there is an individual script to run each app independently
 - `pnpm run dev:xyflow.com`
 - `pnpm run dev:style`
 
-### Update showcases
+### Displaying Showcase Projects
 
 We have a database of projects that use our libraries stored in notion. Both the
-React Flow and Svelte Flow sites have a script that will generate the JSON used
-to populate those showcases that you will need to run if you change or update the
-showcases in notion.
-
-Navigate into either `sites/reactflow.dev` or `sites/svelteflow.dev` and run:
-
-```sh
-pnpm write-showcases
-```
-
-> [!IMPORTANT]  
-> You must have a `.env` file in the project with a key called `NOTION_API_SECRET`
-> for this script to work.
+React Flow and Svelte Flow sites are fetching this data at build time using `getStaticProps`. You need to have a `.env.local` file with a `NOTION_API_SECRET` to make this work locally. Otherwise, placeholder showcases are shown.
 
 ### Update React Flow and Svelte Flow dependencies
 
