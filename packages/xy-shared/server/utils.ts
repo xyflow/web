@@ -48,7 +48,6 @@ export const fakeShowcases = Array.from({ length: 10 }, (_, i) => ({
   description: 'This is a showcase',
   image: '/img/showcase/placeholder.png',
   tags: [],
-  featured: false,
 }));
 
 export async function fetchNotionShowcases(
@@ -97,7 +96,6 @@ export async function fetchNotionShowcases(
       const repoUrl = result.properties['Repository URL'].url;
       const openSource = result.properties['Open Source'].checkbox;
       const tags = result.properties.Tags.multi_select;
-      const featured = result.properties.Featured.checkbox;
       const description = result.properties.Description.rich_text[0].plain_text;
       const imageSrc = result.properties.Image.files[0].file.url;
 
@@ -121,7 +119,6 @@ export async function fetchNotionShowcases(
         description,
         image,
         tags,
-        featured,
       };
     }),
   );
