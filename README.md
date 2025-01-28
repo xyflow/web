@@ -97,7 +97,7 @@ like Stripe and Linkedin to build their node-based apps. With so many active
 users, it takes time and effort to maintain the library, docs, and community.
 We can’t do that without your support.
 
-[<img src="./assets/readme-pro.png">](https://pro.reactflow.dev/pricing)
+[<img src="./assets/readme-pro.png">](https://reactflow.dev/pro)
 
 Why Subscribe? With your subscription, you are ensuring the sustainable
 maintenance and development of both React Flow and Svelte Flow. This is how we
