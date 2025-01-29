@@ -56,8 +56,8 @@ function UiComponentViewer() {
       <Tabs defaultValue="preview">
         <TabsList>
           <TabsTrigger value="preview">Preview</TabsTrigger>
-          <TabsTrigger value="code">Code</TabsTrigger>
-          <TabsTrigger value="boilerplate">Boilerplate</TabsTrigger>
+          <TabsTrigger value="component">Component</TabsTrigger>
+          <TabsTrigger value="app">App</TabsTrigger>
         </TabsList>
         <TabsContent
           className="data-[state=inactive]:hidden min-h-[500px]"
@@ -69,7 +69,7 @@ function UiComponentViewer() {
             src={`${process.env.NEXT_PUBLIC_UI_COMPONENTS_URL}/components/${data.name}`}
           />
         </TabsContent>
-        <TabsContent className="min-h-[500px]" value="code">
+        <TabsContent className="min-h-[500px]" value="component">
           <RemoteContent
             {...data.demoMDX}
             mdx={data.demoMDX.compiledSource}
@@ -77,7 +77,7 @@ function UiComponentViewer() {
             scope={{}}
           />
         </TabsContent>
-        <TabsContent className="min-h-[500px]" value="boilerplate">
+        <TabsContent className="min-h-[500px]" value="app">
           <RemoteContent
             {...data.pageMDX}
             mdx={data.pageMDX.compiledSource}
@@ -159,6 +159,29 @@ function UiComponentViewer() {
           </TabsContent>
         </Tabs>
       </div>
+      <div className="mt-20">
+        <Heading className="mb-5" size="sm">
+          Usage
+        </Heading>
+        <Heading size="xs" className="mt-10">
+          1. Copy the component into your app
+        </Heading>
+        <RemoteContent
+          {...data.demoMDX}
+          mdx={data.demoMDX.compiledSource}
+          components={components}
+          scope={{}}
+        />
+      </div>
+      <Heading size="xs" className="mt-10">
+        2. Connect the component with your React Flow application.
+      </Heading>
+      <RemoteContent
+        {...data.pageMDX}
+        mdx={data.pageMDX.compiledSource}
+        components={components}
+        scope={{}}
+      />
     </div>
   );
 }
