@@ -31,6 +31,7 @@ export const TooltipNode = React.forwardRef<HTMLDivElement, TooltipNodeProps>(
           onFocus={showTooltip}
           onBlur={hideTooltip}
           tabIndex={0}
+          selected={selected}
         >
           {children}
         </BaseNode>
