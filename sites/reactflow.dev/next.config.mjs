@@ -40,6 +40,14 @@ const nextConfig = {
         hostname: '*.vercel.app',
         pathname: '/react/**',
       },
+      {
+        protocol: 'https',
+        hostname: '*.public.blob.vercel-storage.com',
+      },
+      {
+        protocol: 'https',
+        hostname: '*.amazonaws.com',
+      },
     ],
   },
   env: {

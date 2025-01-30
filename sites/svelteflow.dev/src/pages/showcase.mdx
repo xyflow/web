@@ -3,6 +3,10 @@ title: Showcase
 description: Projects and examples using Svelte Flow
 ---
 
+import getStaticPropsShowcases from '@/utils/get-static-props/fetch-showcases';
+
+export const getStaticProps = getStaticPropsShowcases;
+
 import ShowcasePage from '@/layouts/showcase';
 
 <ShowcasePage />
