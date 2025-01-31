@@ -28,9 +28,9 @@
 
   $: $camera.position.set(0, 0, +$flowState.zoom);
 
-  let t: number;
-  useFrame(({ clock }) => {
-    t = clock.getElapsedTime();
+  let t = 0;
+  useFrame((ctx, delta) => {
+    t += delta;
   });
 </script>
 
