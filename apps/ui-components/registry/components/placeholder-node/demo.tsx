@@ -1,53 +1,13 @@
-"use client";
+import { memo } from "react";
+import { NodeProps } from "@xyflow/react";
+import { PlaceholderNode } from "@/registry/components/placeholder-node";
 
-import {
-  Background,
-  ReactFlow,
-} from "@xyflow/react";
-import { PlaceholderNode } from "@/registry/components/placeholder-node"; 
-
-const nodeTypes = {
-  placeholder: PlaceholderNode,
-};
-
-
-const defaultNodes = [
-  {
-    id: '1',
-    data: { label: 'Original Node' },
-    position: { x: 0, y: 0 },
-    type: 'default',
-  },
-  {
-    id: '2',
-    data: { label: '+' }, 
-    position: { x: 0, y: 150 },
-    type: 'placeholder',
-  },
-];
-
-const defaultEdges = [
-  {
-    id: '1=>2',
-    source: '1',
-    target: '2',
-    type: 'default',
-    animated: true,
-  },
-];
-
-export default function Demo() {
+const CustomNode = memo(({ selected }: NodeProps) => {
   return (
-    <div className="h-full w-full">
-      <ReactFlow
-        defaultNodes={defaultNodes}
-        defaultEdges={defaultEdges}
-        nodeTypes={nodeTypes}
-        nodeClickDistance={5}
-        fitView
-      >
-        <Background />
-      </ReactFlow>
-    </div>
+    <PlaceholderNode selected={selected}>
+      <div>+</div>
+    </PlaceholderNode>
   );
-}
+});
+
+export default CustomNode;
