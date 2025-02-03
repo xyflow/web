@@ -1,13 +1,6 @@
-"use client";
+import { memo } from "react";
 
-import {
-  Background,
-  Node,
-  NodeProps,
-  ReactFlow,
-  useNodeId,
-  useReactFlow,
-} from "@xyflow/react";
+import { NodeProps } from "@xyflow/react";
 
 import { BaseNode } from "@/registry/components/base-node";
 import {
@@ -16,26 +9,23 @@ import {
   NodeHeaderActions,
   NodeHeaderMenuAction,
   NodeHeaderIcon,
-  NodeHeaderAction,
+  NodeHeaderDeleteAction,
 } from "@/registry/components/node-header";
 import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
-import { Rocket, Trash } from "lucide-react";
-import { useCallback } from "react";
+import { Rocket } from "lucide-react";
 
-function NodeHeaderDemoNode({
-  data,
-}: NodeProps<Node<{ title: string; label: string }>>) {
+const CustomNode = memo(({ selected }: NodeProps) => {
   return (
-    <BaseNode className="px-3 py-2">
+    <BaseNode selected={selected} className="px-3 py-2">
       <NodeHeader className="-mx-3 -mt-2 border-b">
         <NodeHeaderIcon>
           <Rocket />
         </NodeHeaderIcon>
-        <NodeHeaderTitle>{data.title}</NodeHeaderTitle>
+        <NodeHeaderTitle>Node Title</NodeHeaderTitle>
         <NodeHeaderActions>
           <NodeHeaderMenuAction label="Expand account options">
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
@@ -48,63 +38,9 @@ function NodeHeaderDemoNode({
           <NodeHeaderDeleteAction />
         </NodeHeaderActions>
       </NodeHeader>
-
-      <div className="text-sm">{data.label}</div>
+      <div className="mt-2">Node Content</div>
     </BaseNode>
   );
-}
+});
 
-const NodeHeaderDeleteAction = () => {
-  const id = useNodeId();
-  const { setNodes } = useReactFlow();
-
-  const handleClick = useCallback(() => {
-    setNodes((prevNodes) =>
-      prevNodes.filter((node) => {
-        if (node.id === id) {
-          window.setTimeout(() => {
-            setNodes((prevNodes) => [...prevNodes, node]);
-          }, 2000);
-
-          return false;
-        }
-
-        return true;
-      }),
-    );
-  }, []);
-
-  return (
-    <NodeHeaderAction onClick={handleClick} variant="ghost" label="Delete node">
-      <Trash />
-    </NodeHeaderAction>
-  );
-};
-
-NodeHeaderDeleteAction.displayName = "NodeHeaderDeleteAction";
-
-const nodeTypes = {
-  demo: NodeHeaderDemoNode,
-};
-
-const defaultNodes = [
-  {
-    id: "1",
-    type: "demo",
-    position: { x: 200, y: 200 },
-    data: {
-      title: "Node Header",
-      label: "This is the content of the node.",
-    },
-  },
-];
-
-export default function NodeHeaderDemo() {
-  return (
-    <div className="h-full w-full">
-      <ReactFlow defaultNodes={defaultNodes} nodeTypes={nodeTypes} fitView>
-        <Background />
-      </ReactFlow>
-    </div>
-  );
-}
+export default CustomNode;

@@ -1,5 +1,5 @@
-import React from "react";
-
+import React, { useCallback } from "react";
+import { useNodeId, useReactFlow } from "@xyflow/react";
 import { cn } from "@/lib/utils";
 import { Slot } from "@radix-ui/react-slot";
 import { Button, ButtonProps } from "@/components/ui/button";
@@ -8,7 +8,7 @@ import {
   DropdownMenuTrigger,
   DropdownMenuContent,
 } from "@/components/ui/dropdown-menu";
-import { EllipsisVertical } from "lucide-react";
+import { EllipsisVertical, Trash } from "lucide-react";
 
 /* NODE HEADER -------------------------------------------------------------- */
 
@@ -25,10 +25,9 @@ export const NodeHeader = React.forwardRef<HTMLElement, NodeHeaderProps>(
         ref={ref}
         {...props}
         className={cn(
-          "mb-4 flex items-center justify-between gap-2 px-3 py-2",
+          "flex items-center justify-between gap-2 px-3 py-2",
           // Remove or modify these classes if you modify the padding in the
           // `<BaseNode />` component.
-          "-mx-5 -mt-5",
           className,
         )}
       />
@@ -174,3 +173,22 @@ export const NodeHeaderMenuAction = React.forwardRef<
 });
 
 NodeHeaderMenuAction.displayName = "NodeHeaderMenuAction";
+
+/* NODE HEADER DELETE ACTION --------------------------------------- */
+
+export const NodeHeaderDeleteAction = () => {
+  const id = useNodeId();
+  const { setNodes } = useReactFlow();
+
+  const handleClick = useCallback(() => {
+    setNodes((prevNodes) => prevNodes.filter((node) => node.id !== id));
+  }, [id, setNodes]);
+
+  return (
+    <NodeHeaderAction onClick={handleClick} variant="ghost" label="Delete node">
+      <Trash />
+    </NodeHeaderAction>
+  );
+};
+
+NodeHeaderDeleteAction.displayName = "NodeHeaderDeleteAction";
