@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.1.5",
+    "@nhost/nextjs": "^2.2.2",
     "@typeform/embed-react": "^3.9.0",
     "@vercel/blob": "^0.27.1",
     "@xyflow/react": "^12.3.2",

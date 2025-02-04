@@ -7,6 +7,8 @@ import { useConfig } from 'nextra-theme-docs';
 import { SharedContext, useFathom } from 'xy-shared';
 import { ntDapperFont, fontClassNames } from 'xy-shared/fonts';
 
+import { NhostClient, NhostProvider } from '@nhost/nextjs';
+
 import '../global.css';
 
 const fathomOptions = {
@@ -15,6 +17,8 @@ const fathomOptions = {
 };
 
 const sharedContext = { useConfig, useData };
+
+const nhost = new NhostClient({ subdomain: 'local', devTools: true });
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
@@ -30,9 +34,11 @@ export default function App({ Component, pageProps }) {
         }
       `}</style>
       <div className={cn(fontClassNames, routeSegment)}>
-        <SharedContext.Provider value={sharedContext}>
-          <Component {...pageProps} />
-        </SharedContext.Provider>
+        <NhostProvider nhost={nhost} initial={pageProps.nhostSession}>
+          <SharedContext.Provider value={sharedContext}>
+            <Component {...pageProps} />
+          </SharedContext.Provider>
+        </NhostProvider>
       </div>
     </>
   );
