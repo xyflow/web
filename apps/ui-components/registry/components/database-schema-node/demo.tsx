@@ -11,7 +11,7 @@ import {
 
 export type DatabaseSchemaNodeData = {
   selected?: boolean;
-  data?: {
+  data: {
     label: string;
     schema: { title: string; type: string }[];
   };
