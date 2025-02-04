@@ -1,7 +1,11 @@
 "use client";
 
 import { Background, Edge, ReactFlow } from "@xyflow/react";
-import DatabaseSchemaNode from "@/registry/components/database-schema-node/demo";
+import DatabaseSchemaExample from "@/registry/components/database-schema-node/demo";
+
+const nodeTypes = {
+  databaseSchema: DatabaseSchemaExample,
+};
 
 const defaultNodes = [
   {
@@ -67,10 +71,6 @@ const defaultEdges: Edge[] = [
     targetHandle: "id",
   },
 ];
-
-const nodeTypes = {
-  databaseSchema: DatabaseSchemaNode,
-};
 
 export default function Demo() {
   return (
