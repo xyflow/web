@@ -2,11 +2,9 @@
 
 import { Background, ReactFlow, Node } from "@xyflow/react";
 import LabeledGroupNode from "@/registry/components/labeled-group-node/demo";
-import { BaseNode } from "@/registry/components/base-node";
 
 const nodeTypes = {
   labeledGroupNode: LabeledGroupNode,
-  baseNode: BaseNode,
 };
 
 const defaultNodes: Node[] = [
@@ -22,14 +20,15 @@ const defaultNodes: Node[] = [
     id: "2",
     position: { x: 50, y: 100 },
     data: { label: "Node" },
-    type: "baseNode",
+    type: "default",
     parentId: "1",
+    extent: "parent",
   },
   {
     id: "3",
     position: { x: 200, y: 50 },
     data: { label: "Node" },
-    type: "baseNode",
+    type: "default",
     parentId: "1",
     extent: "parent",
   },
