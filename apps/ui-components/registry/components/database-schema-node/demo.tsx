@@ -17,7 +17,7 @@ export type DatabaseSchemaNodeData = {
   };
 };
 
-const DatabaseSchemaExample = memo(
+const DatabaseSchemaDemo = memo(
   ({ data, selected }: DatabaseSchemaNodeData) => {
     return (
       <DatabaseSchemaNode className="p-0" selected={selected}>
@@ -52,4 +52,4 @@ const DatabaseSchemaExample = memo(
   },
 );
 
-export default DatabaseSchemaExample;
+export default DatabaseSchemaDemo;

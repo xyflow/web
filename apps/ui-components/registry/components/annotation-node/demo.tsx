@@ -7,7 +7,7 @@ import {
   AnnotationNodeNumber,
 } from "@/registry/components/annotation-node";
 
-const CustomNode = () => {
+const AnnotationNodeDemo = () => {
   return (
     <AnnotationNode>
       <AnnotationNodeNumber>1.</AnnotationNodeNumber>
@@ -21,4 +21,4 @@ const CustomNode = () => {
   );
 };
 
-export default CustomNode;
+export default AnnotationNodeDemo;

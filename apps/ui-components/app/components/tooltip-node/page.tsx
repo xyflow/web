@@ -2,10 +2,10 @@
 
 import { Background, ReactFlow } from "@xyflow/react";
 import DemoWrapper from "@/components/demo-wrapper";
-import TooltipNode from "@/registry/components/tooltip-node/demo";
+import TooltipNodeDemo from "@/registry/components/tooltip-node/demo";
 
 const nodeTypes = {
-  tooltipNode: TooltipNode,
+  tooltipNode: TooltipNodeDemo,
 };
 
 const defaultNodes = [

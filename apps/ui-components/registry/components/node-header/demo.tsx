@@ -18,7 +18,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Rocket } from "lucide-react";
 
-const CustomNode = memo(({ selected }: NodeProps) => {
+const NodeHeaderDemo = memo(({ selected }: NodeProps) => {
   return (
     <BaseNode selected={selected} className="px-3 py-2">
       <NodeHeader className="-mx-3 -mt-2 border-b">
@@ -43,4 +43,4 @@ const CustomNode = memo(({ selected }: NodeProps) => {
   );
 });
 
-export default CustomNode;
+export default NodeHeaderDemo;

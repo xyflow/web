@@ -6,7 +6,7 @@ import {
   GroupNodeLabel,
 } from "@/registry/components/labeled-group-node";
 
-const LabeledGroupNode = memo(({ selected }: NodeProps) => {
+const LabeledGroupNodeDemo = memo(({ selected }: NodeProps) => {
   return (
     <GroupNode selected={selected}>
       <GroupNodeLabel>Label</GroupNodeLabel>
@@ -14,4 +14,4 @@ const LabeledGroupNode = memo(({ selected }: NodeProps) => {
   );
 });
 
-export default LabeledGroupNode;
+export default LabeledGroupNodeDemo;

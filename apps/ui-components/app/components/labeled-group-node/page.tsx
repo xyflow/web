@@ -1,10 +1,10 @@
 "use client";
 
 import { Background, ReactFlow, Node } from "@xyflow/react";
-import LabeledGroupNode from "@/registry/components/labeled-group-node/demo";
+import LabeledGroupNodeDemo from "@/registry/components/labeled-group-node/demo";
 
 const nodeTypes = {
-  labeledGroupNode: LabeledGroupNode,
+  labeledGroupNode: LabeledGroupNodeDemo,
 };
 
 const defaultNodes: Node[] = [
@@ -34,7 +34,7 @@ const defaultNodes: Node[] = [
   },
 ];
 
-export default function LabeledGroupNodeDemo() {
+export default function DemoPage() {
   return (
     <div className="h-full w-full">
       <ReactFlow defaultNodes={defaultNodes} nodeTypes={nodeTypes} fitView>

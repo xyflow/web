@@ -4,7 +4,7 @@ import { NodeProps, Position } from "@xyflow/react";
 import { LabeledHandle } from "@/registry/components/labeled-handle";
 import { BaseNode } from "@/registry/components/base-node";
 
-const CustomNode = memo(({ selected }: NodeProps) => {
+const LabeledHandleDemo = memo(({ selected }: NodeProps) => {
   return (
     <BaseNode className="flex px-0 py-5" selected={selected}>
       <LabeledHandle
@@ -23,6 +23,4 @@ const CustomNode = memo(({ selected }: NodeProps) => {
   );
 });
 
-CustomNode.displayName = "LabeledHandleDemo";
-
-export default CustomNode;
+export default LabeledHandleDemo;

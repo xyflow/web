@@ -1,10 +1,10 @@
 "use client";
 
 import { Background, ReactFlow } from "@xyflow/react";
-import PlaceholderNode from "@/registry/components/placeholder-node/demo";
+import PlaceholderNodeDemo from "@/registry/components/placeholder-node/demo";
 
 const nodeTypes = {
-  placeholder: PlaceholderNode,
+  placeholderNode: PlaceholderNodeDemo,
 };
 
 const defaultNodes = [
@@ -18,7 +18,7 @@ const defaultNodes = [
     id: "2",
     data: {},
     position: { x: 0, y: 150 },
-    type: "placeholder",
+    type: "placeholderNode",
   },
 ];
 
@@ -32,7 +32,7 @@ const defaultEdges = [
   },
 ];
 
-export default function Demo() {
+export default function DemoPage() {
   return (
     <div className="h-full w-full">
       <ReactFlow

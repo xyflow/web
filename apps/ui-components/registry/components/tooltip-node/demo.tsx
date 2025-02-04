@@ -7,7 +7,7 @@ import {
   TooltipTrigger,
 } from "@/registry/components/tooltip-node";
 
-const Tooltip = memo(({ selected }: NodeProps) => {
+const TooltipNodeDemo = memo(({ selected }: NodeProps) => {
   return (
     <TooltipNode selected={selected}>
       <TooltipContent position={Position.Top}>Hidden Content</TooltipContent>
@@ -16,4 +16,4 @@ const Tooltip = memo(({ selected }: NodeProps) => {
   );
 });
 
-export default Tooltip;
+export default TooltipNodeDemo;
