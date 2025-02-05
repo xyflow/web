@@ -100,7 +100,9 @@ export function getMetaConfigFromTitleLookup(
     const title = typeof entry === 'string' ? entry : entry.title;
     const href = typeof entry === 'string' ? undefined : entry.href;
     const route = href ?? `${reroutePrefix}/${key}`;
+    const addData = typeof entry === 'object' ? { ...entry } : {};
     acc[key] = {
+      ...addData,
       title: <SidebarTitle title={title} route={route} />,
       href,
     };

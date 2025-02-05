@@ -126,11 +126,21 @@ export const ProPlan: SubscriptionPlan = {
   ],
   features: [
     features.proExamples,
+    {
+      label: (
+        <span>
+          Access to all{' '}
+          <Link variant="primary" href="https://reactflow.dev/pro/templates">
+            Pro Templates
+          </Link>
+        </span>
+      ),
+    },
     features.prioritizedIssues,
     features.teamMembers5,
     features.mitLicense,
     {
-      label: 'Up to 1 hour of individual support via email per month',
+      label: 'Email Support',
     },
     {
       label: 'Introduction call with one of the creators of React Flow',
@@ -156,11 +166,21 @@ export const EnterprisePlan: SubscriptionPlan = {
         </span>
       ),
     },
+    {
+      label: (
+        <span>
+          Perpetual access to all{' '}
+          <Link variant="primary" href="https://reactflow.dev/pro/templates">
+            Pro Templates
+          </Link>
+        </span>
+      ),
+    },
     features.prioritizedIssues,
     features.teamMembers10,
     features.mitLicense,
     {
-      label: '1 hour of individual support via voice, video or email per month',
+      label: 'Custom Support',
     },
     {
       label: 'Custom procurement and payment process',
