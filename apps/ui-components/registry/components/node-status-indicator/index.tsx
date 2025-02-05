@@ -1,7 +1,7 @@
 import React, { memo, ReactNode } from "react";
 
 interface NodeStatusIndicatorProps {
-  status?: "loading" | "success" | "error";
+  status?: "loading" | "success" | "error" | "initial";
   children: ReactNode;
 }
 
