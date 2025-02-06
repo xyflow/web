@@ -1,4 +1,4 @@
-import React, { forwardRef, HTMLAttributes } from "react";
+import React, { forwardRef, HTMLAttributes, ReactNode } from "react";
 import { NodeProps } from "@xyflow/react";
 import { BaseNode } from "@/registry/components/base-node";
 import { cn } from "@/lib/utils";
