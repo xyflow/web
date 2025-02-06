@@ -1,9 +1,5 @@
-import {
-  BaseEdge,
-  EdgeLabelRenderer,
-  EdgeProps,
-  getBezierPath,
-} from "@xyflow/react";
+import { EdgeProps } from "@xyflow/react";
+import { memo } from "react";
 
 import { Button } from "@/components/ui/button";
 import { MousePointerClick } from "lucide-react";
@@ -21,10 +17,12 @@ function EdgeButton() {
   );
 }
 
-export function ButtonEdgeDemo(props: EdgeProps) {
+const ButtonEdgeDemo = memo((props: EdgeProps) => {
   return (
     <ButtonEdge {...props}>
       <EdgeButton />
     </ButtonEdge>
   );
-}
+});
+
+export default ButtonEdgeDemo;

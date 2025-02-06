@@ -4,21 +4,7 @@ import {
   EdgeProps,
   getBezierPath,
 } from "@xyflow/react";
-
-import { Button } from "@/components/ui/button";
-import { MousePointerClick } from "lucide-react";
-
-function EdgeButton() {
-  const onEdgeClick = () => {
-    window.alert(`Edge has been clicked!`);
-  };
-
-  return (
-    <Button onClick={onEdgeClick} size="icon" variant="secondary">
-      <MousePointerClick size={16} />
-    </Button>
-  );
-}
+import { ReactNode } from "react";
 
 export function ButtonEdge({
   sourceX,
@@ -29,7 +15,8 @@ export function ButtonEdge({
   targetPosition,
   style = {},
   markerEnd,
-}: EdgeProps) {
+  children,
+}: EdgeProps & { children: ReactNode }) {
   const [edgePath, labelX, labelY] = getBezierPath({
     sourceX,
     sourceY,
@@ -49,7 +36,7 @@ export function ButtonEdge({
             transform: `translate(-50%, -50%) translate(${labelX}px,${labelY}px)`,
           }}
         >
-          <EdgeButton />
+          {children}
         </div>
       </EdgeLabelRenderer>
     </>

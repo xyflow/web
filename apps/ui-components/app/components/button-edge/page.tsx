@@ -1,7 +1,7 @@
 "use client";
 
 import { Background, ReactFlow } from "@xyflow/react";
-import { ButtonEdge } from "@/registry/components/button-edge";
+import ButtonEdgeDemo from "@/registry/components/button-edge/demo";
 
 const defaultNodes = [
   {
@@ -26,7 +26,7 @@ const defaultEdges = [
 ];
 
 const edgeTypes = {
-  buttonEdge: ButtonEdge,
+  buttonEdge: ButtonEdgeDemo,
 };
 
 export default function Demo() {
