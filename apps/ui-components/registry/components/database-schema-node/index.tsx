@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { BaseNode } from "@/registry/components/base-node";
 import { TableBody, TableRow, TableCell } from "@/components/ui/table";
 
@@ -7,7 +7,7 @@ import { TableBody, TableRow, TableCell } from "@/components/ui/table";
  * A container for the database schema node header.
  */
 interface DatabaseSchemaNodeHeaderProps {
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 export function DatabaseSchemaNodeHeader({
@@ -25,7 +25,7 @@ export function DatabaseSchemaNodeHeader({
  * A container for the database schema node body that wraps the table.
  */
 interface DatabaseSchemaNodeBodyProps {
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 export function DatabaseSchemaNodeBody({
@@ -44,7 +44,7 @@ export function DatabaseSchemaNodeBody({
  */
 
 interface DatabaseSchemaTableRowProps {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
 }
 
@@ -66,7 +66,7 @@ export function DatabaseSchemaTableRow({
  */
 interface DatabaseSchemaTableCellProps {
   className?: string;
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 export function DatabaseSchemaTableCell({
@@ -84,7 +84,7 @@ export function DatabaseSchemaTableCell({
 interface DatabaseSchemaNodeProps {
   className?: string;
   selected?: boolean;
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 export function DatabaseSchemaNode({

@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { forwardRef, HTMLAttributes } from "react";
 import { cn } from "@/lib/utils";
 import { HandleProps } from "@xyflow/react";
 
@@ -13,10 +13,10 @@ const flexDirections = {
   left: "flex-row",
 };
 
-const LabeledHandle = React.forwardRef<
+const LabeledHandle = forwardRef<
   HTMLDivElement,
   HandleProps &
-    React.HTMLAttributes<HTMLDivElement> & {
+    HTMLAttributes<HTMLDivElement> & {
       title: string;
       handleClassName?: string;
       labelClassName?: string;

@@ -1,11 +1,11 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef, HTMLAttributes } from "react";
 import { NodeProps } from "@xyflow/react";
 import { BaseNode } from "@/registry/components/base-node";
 import { cn } from "@/lib/utils";
 
 /* GROUP NODE Label ------------------------------------------------------- */
 
-interface GroupNodeLabelProps extends React.HTMLAttributes<HTMLDivElement> {}
+interface GroupNodeLabelProps extends HTMLAttributes<HTMLDivElement> {}
 
 export const GroupNodeLabel = forwardRef<HTMLDivElement, GroupNodeLabelProps>(
   ({ children, className, ...props }, ref) => {
@@ -24,7 +24,7 @@ GroupNodeLabel.displayName = "GroupNodeLabel";
 /* GROUP NODE TYPES --------------------------------------------------------- */
 
 export interface GroupNodeProps extends Partial<NodeProps> {
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 /* GROUP NODE -------------------------------------------------------------- */

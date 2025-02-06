@@ -1,11 +1,10 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef, HTMLAttributes } from "react";
 import { cn } from "@/lib/utils";
 
 /* ANNOTATION NODE -----------------------------------------------------------
    A container for an annotation node.
 */
-export interface AnnotationNodeProps
-  extends React.HTMLAttributes<HTMLDivElement> {}
+export interface AnnotationNodeProps extends HTMLAttributes<HTMLDivElement> {}
 
 export const AnnotationNode = forwardRef<HTMLDivElement, AnnotationNodeProps>(
   ({ className, children, ...props }, ref) => {
@@ -30,7 +29,7 @@ AnnotationNode.displayName = "AnnotationNode";
    Renders the annotation node number.
 */
 export interface AnnotationNodeNumberProps
-  extends React.HTMLAttributes<HTMLDivElement> {}
+  extends HTMLAttributes<HTMLDivElement> {}
 
 export const AnnotationNodeNumber = forwardRef<
   HTMLDivElement,
@@ -49,7 +48,7 @@ AnnotationNodeNumber.displayName = "AnnotationNodeNumber";
    Renders the main content of the annotation node.
 */
 export interface AnnotationNodeContentProps
-  extends React.HTMLAttributes<HTMLDivElement> {}
+  extends HTMLAttributes<HTMLDivElement> {}
 
 export const AnnotationNodeContent = forwardRef<
   HTMLDivElement,
@@ -68,7 +67,7 @@ AnnotationNodeContent.displayName = "AnnotationNodeContent";
    Renders the icon for the annotation node.
 */
 export interface AnnotationNodeIconProps
-  extends React.HTMLAttributes<HTMLDivElement> {}
+  extends HTMLAttributes<HTMLDivElement> {}
 
 export const AnnotationNodeIcon = forwardRef<
   HTMLDivElement,
