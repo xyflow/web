@@ -1,9 +1,3 @@
-/**
- * This component can be imported directly into React Flow without
- * the need to create a custom edge type. The component tab is for reference
- * and will be imported along with your component installation:
- */
-
 import React, { FC } from "react";
 import type { Edge, EdgeProps, Position } from "@xyflow/react";
 import {
