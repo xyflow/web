@@ -1,19 +1,17 @@
-import React, { memo, ReactNode } from "react";
+import React, { ReactNode } from "react";
+import clsx from "clsx";
 
-interface NodeStatusIndicatorProps {
+export type NodeStatusIndicatorProps = {
   status?: "loading" | "success" | "error" | "initial";
   children: ReactNode;
-}
+};
 
-export interface IndicatorProps {
-  children: ReactNode;
-}
-
-export function LoadingIndicator({ children }: IndicatorProps) {
+export function LoadingIndicator({ children }: { children: ReactNode }) {
   return (
-    <div className="relative p-0.5">
-      <style>
-        {`
+    <>
+      <div className="absolute -left-[1px] -top-[1px] h-[calc(100%+2px)] w-[calc(100%+2px)]">
+        <style>
+          {`
         @keyframes spin {
           from { transform: translate(-50%, -50%) rotate(0deg); }
           to { transform: translate(-50%, -50%) rotate(360deg); }
@@ -28,24 +26,33 @@ export function LoadingIndicator({ children }: IndicatorProps) {
           transform-origin: center;
         }
       `}
-      </style>
-      <div className="absolute inset-0 overflow-hidden rounded-lg">
-        <div className="spinner rounded-full bg-[conic-gradient(from_0deg_at_50%_50%,_rgb(42,67,233)_0deg,_rgba(42,138,246,0)_360deg)]" />
+        </style>
+        <div className="absolute inset-0 overflow-hidden rounded-[7px]">
+          <div className="spinner rounded-full bg-[conic-gradient(from_0deg_at_50%_50%,_rgb(42,67,233)_0deg,_rgba(42,138,246,0)_360deg)]" />
+        </div>
       </div>
-      <div className="relative z-10">{children}</div>
-    </div>
+      {children}
+    </>
   );
 }
 
-export function SuccessIndicator({ children }: IndicatorProps) {
+function StatusBorder({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
   return (
-    <div className="rounded-[8px] border-2 border-emerald-600">{children}</div>
-  );
-}
-
-export function ErrorIndicator({ children }: IndicatorProps) {
-  return (
-    <div className="rounded-[8px] border-2 border-red-400">{children}</div>
+    <>
+      <div
+        className={clsx(
+          "absolute -left-[1px] -top-[1px] h-[calc(100%+2px)] w-[calc(100%+2px)] rounded-[7px] border-2",
+          className,
+        )}
+      />
+      {children}
+    </>
   );
 }
 
@@ -57,9 +64,11 @@ export function NodeStatusIndicator({
     case "loading":
       return <LoadingIndicator>{children}</LoadingIndicator>;
     case "success":
-      return <SuccessIndicator>{children}</SuccessIndicator>;
+      return (
+        <StatusBorder className="border-emerald-600">{children}</StatusBorder>
+      );
     case "error":
-      return <ErrorIndicator>{children}</ErrorIndicator>;
+      return <StatusBorder className="border-red-400">{children}</StatusBorder>;
     default:
       return <>{children}</>;
   }
