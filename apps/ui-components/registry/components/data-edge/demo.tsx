@@ -1,72 +1,15 @@
 "use client";
 
-import {
-  Background,
-  Handle,
-  Node,
-  NodeProps,
-  Position,
-  ReactFlow,
-  useReactFlow,
-} from "@xyflow/react";
+import { Handle, Node, NodeProps, Position, useReactFlow } from "@xyflow/react";
 
 import { useCallback } from "react";
-import { DataEdge } from "@/registry/components/data-edge";
 import { BaseNode } from "@/registry/components/base-node";
 import { Button } from "@/components/ui/button";
 import { Minus, Plus } from "lucide-react";
 
-const defaultNodes = [
-  {
-    id: "1",
-    position: { x: 100, y: 100 },
-    type: "counterNode",
-    data: { value: 10 },
-  },
-  {
-    id: "2",
-    position: { x: 300, y: 300 },
-    data: { label: "Output" },
-  },
-];
+export type CounterNodeType = Node<{ value: number }>;
 
-const nodeTypes = {
-  counterNode: CounterNode,
-};
-
-const defaultEdges = [
-  {
-    id: "1->2",
-    source: "1",
-    target: "2",
-    type: "dataEdge",
-    data: { key: "value" },
-  } satisfies DataEdge<CounterNode>,
-];
-
-const edgeTypes = {
-  dataEdge: DataEdge,
-};
-
-export default function DataEdgeDemo() {
-  return (
-    <div className="h-full w-full">
-      <ReactFlow
-        defaultNodes={defaultNodes}
-        nodeTypes={nodeTypes}
-        defaultEdges={defaultEdges}
-        edgeTypes={edgeTypes}
-        fitView
-      >
-        <Background />
-      </ReactFlow>
-    </div>
-  );
-}
-
-type CounterNode = Node<{ value: number }>;
-
-function CounterNode({ id, data }: NodeProps<CounterNode>) {
+export function CounterNode({ id, data }: NodeProps<CounterNodeType>) {
   const { updateNodeData } = useReactFlow();
   const handleIncr = useCallback(() => {
     updateNodeData(id, ({ data }) => {
