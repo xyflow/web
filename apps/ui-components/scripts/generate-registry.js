@@ -58,14 +58,22 @@ const componentPagesBasePath = path.join(__dirname, "../app/components/");
       );
       fs.writeFileSync(componentOutputPath, JSON.stringify(registry, null, 2));
 
-      // Read demo.tsx file and add it to the demo object
-      // TODO: support multiple demo files
-      const demoTsx = fs.readFileSync(demoPath, "utf8");
-      const demoClean = demoTsx.replace(/registry\//g, "");
+      // Read demo.tsx file if it exists, otherwise use index file
+      let demoContent = index; // Default to index content
+      try {
+        const demoExists = fs.existsSync(demoPath);
+        if (demoExists) {
+          demoContent = fs.readFileSync(demoPath, "utf8");
+          demoContent = demoContent.replace(/registry\//g, "");
+        }
+      } catch (error) {
+        console.log(`No demo file found for ${folder.name}, using index.`);
+      }
+
       const demoFile = {
         files: [
           {
-            content: demoClean,
+            content: demoContent,
             page: page,
           },
         ],
@@ -74,16 +82,16 @@ const componentPagesBasePath = path.join(__dirname, "../app/components/");
       // Write demo.json
       fs.writeFileSync(
         path.join(demoOutputPath, folder.name + ".json"),
-        JSON.stringify(demoFile),
+        JSON.stringify(demoFile, null, 2),
       );
     }
 
-    // Write overview registry file
+    // Write all.json
     fs.writeFileSync(
-      registryOutputPath + "/all-available-components.json",
-      JSON.stringify(all),
+      path.join(registryOutputPath, "all.json"),
+      JSON.stringify(all, null, 2),
     );
   });
 
-  console.log("Registry files successfully generated!");
+  console.log("Registry files generated successfully!");
 })();
