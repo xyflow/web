@@ -2,6 +2,7 @@
 
 import { Background, ReactFlow } from "@xyflow/react";
 
+import AnimatedSvgEdgeDemo from "@/registry/components/animated-svg-edge/demo";
 import { AnimatedSvgEdge } from "@/registry/components/animated-svg-edge";
 
 const defaultNodes = [
@@ -23,19 +24,14 @@ const defaultEdges = [
     source: "1",
     target: "2",
     type: "animatedSvgEdge",
-    data: {
-      duration: 2,
-      shape: "package",
-      path: "smoothstep",
-    },
   } satisfies AnimatedSvgEdge,
 ];
 
 const edgeTypes = {
-  animatedSvgEdge: AnimatedSvgEdge,
+  animatedSvgEdge: AnimatedSvgEdgeDemo,
 };
 
-export default function AnimatedSvgEdgeDemo() {
+export default function DemoPage() {
   return (
     <div className="h-full w-full">
       <ReactFlow
