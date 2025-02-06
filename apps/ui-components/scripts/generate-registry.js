@@ -88,7 +88,7 @@ const componentPagesBasePath = path.join(__dirname, "../app/components/");
 
     // Write all.json
     fs.writeFileSync(
-      path.join(registryOutputPath, "all.json"),
+      registryOutputPath + "/all-available-components.json",
       JSON.stringify(all, null, 2),
     );
   });
