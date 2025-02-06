@@ -30,22 +30,22 @@ export function SourceHandle({
     }
   > = {
     [Position.Top]: {
-      line: "h-10 w-[1px] -translate-y-12",
+      line: "h-10 w-[1px] -translate-y-11",
       button: "-translate-y-16",
       dropdownSide: "top",
     },
     [Position.Bottom]: {
-      line: "h-10 w-[1px] translate-y-2",
+      line: "h-10 w-[1px] translate-y-3",
       button: "translate-y-11",
       dropdownSide: "bottom",
     },
     [Position.Left]: {
-      line: "w-10 h-[1px] -translate-x-12 translate-y-[1.5px]",
+      line: "w-10 h-[1px] -translate-x-12 translate-y-[3.5px]",
       button: "absolute top-1/2 -translate-y-1/2 -translate-x-16",
       dropdownSide: "left",
     },
     [Position.Right]: {
-      line: "w-10 h-[1px] translate-x-2 translate-y-[1.5px]",
+      line: "w-10 h-[1px] translate-x-2 translate-y-[3.5px]",
       button: "absolute top-1/2 -translate-y-1/2 translate-x-11",
       dropdownSide: "right",
     },
@@ -76,7 +76,7 @@ export function SourceHandle({
                 variant="secondary"
                 className="grid h-6 w-6 place-items-center rounded-xl border p-0 hover:bg-card"
               >
-                <span className="inline-flex translate-y-[-2px] text-base">
+                <span className="inline-flex translate-y-[-2.5px] text-base">
                   +
                 </span>
               </Button>

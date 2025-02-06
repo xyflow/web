@@ -1,0 +1,31 @@
+---
+title: Workflow Node
+description: A feature-packed node for creating workflows in React Flow.
+---
+
+import UiComponentViewer from '@/components/ui-component-viewer';
+import fetchShadcnComponent from '@/utils/get-static-props/fetch-shadcn-component';
+
+export const getStaticProps = fetchShadcnComponent('workflow-node');
+
+# Workflow Node
+
+A node component for building workflow diagrams with React Flow. Supports multiple handle configurations and status states.
+
+### Handle Types
+
+- `default`: Top target + bottom source handles
+- `source`: Single bottom source handle
+- `target`: Single top target handle
+- `join`: Two target handles + source
+- `branch`: Top target + two source handles
+- `none`: No handles
+
+### Status Options
+
+- `loading`: Shows spinning indicator
+- `success`: Shows green border
+- `error`: Shows red border
+- `initial`: Default state
+
+<UiComponentViewer />
