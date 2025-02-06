@@ -29,7 +29,7 @@ const edgeTypes = {
   buttonEdge: ButtonEdgeDemo,
 };
 
-export default function Demo() {
+export default function DemoPage() {
   return (
     <div className="h-full w-full">
       <ReactFlow

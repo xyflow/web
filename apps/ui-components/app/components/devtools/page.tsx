@@ -28,7 +28,7 @@ const defaultEdges = [
   { id: "e1-3", source: "1a", target: "3a" },
 ];
 
-export default function DevtoolsDemo() {
+export default function DemoPage() {
   return (
     <div className="h-full w-full">
       <ReactFlow

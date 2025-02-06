@@ -40,7 +40,7 @@ const edgeTypes = {
   dataEdge: DataEdge,
 };
 
-export default function DataEdgeDemo() {
+export default function DemoPage() {
   return (
     <div className="h-full w-full">
       <ReactFlow

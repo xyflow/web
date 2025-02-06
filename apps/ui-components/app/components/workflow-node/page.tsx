@@ -1,7 +1,6 @@
 "use client";
 
 import { Background, ReactFlow } from "@xyflow/react";
-
 import WorkflowNodeDemo from "@/registry/components/workflow-node/demo";
 
 const defaultNodes = [
