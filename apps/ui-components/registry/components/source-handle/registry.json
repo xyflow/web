@@ -1,0 +1,21 @@
+{
+  "name": "source-handle",
+  "type": "registry:component",
+  "dependencies": ["@xyflow/react"],
+  "devDependencies": [],
+  "registryDependencies": [
+    "https://ui.reactflow.dev/base-node",
+    "https://ui.reactflow.dev/base-handle",
+    "button",
+    "dropdown-menu"
+  ],
+  "files": [
+    {
+      "type": "registry:component",
+      "path": "source-handle.tsx"
+    }
+  ],
+  "tailwind": {},
+  "cssVars": {},
+  "meta": {}
+}
