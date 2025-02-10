@@ -1,3 +1,5 @@
+'use client'
+
 import { useCallback, useState, useEffect } from 'react';
 import {
   Card,
@@ -76,7 +78,7 @@ export default function QuoteRequestPage() {
         kicker="React Flow Pro"
         title="Request a Quote"
         subtitle="Use the form below to get an official quote for one of our annual subscription plans."
-        kickerIcon={SparklesIcon}
+        kickerIcon={<SparklesIcon/>}
         align="center"
         backgroundVariant="image"
       />
