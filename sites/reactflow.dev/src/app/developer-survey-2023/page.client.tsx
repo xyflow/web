@@ -1,3 +1,5 @@
+'use client'
+
 import { useEffect, useState } from 'react';
 import { ReactFlow, Background, Node, ReactFlowProvider } from '@xyflow/react';
 import { ArrowDownIcon, ArrowRightIcon } from '@heroicons/react/20/solid';
@@ -8,7 +10,7 @@ import { FocusParams, useFocus } from './flow/hooks';
 import { nodeTypes, section, project, action, chatBubble } from './flow/nodes';
 import { edgeTypes, focusEdge } from './flow/edges';
 
-export default function ReactFlow2023Survey() {
+export function Page() {
   return (
     <ReactFlowProvider>
       <Flow />
@@ -39,7 +41,7 @@ function Flow() {
   useFocus(focus);
 
   return (
-    <div className="w-full h-full">
+    <div className="h-screen w-screen">
       <ReactFlow
         fitView
         nodes={nodes}
