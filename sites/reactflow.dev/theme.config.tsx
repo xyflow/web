@@ -2,11 +2,10 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { Navbar } from 'nextra-theme-docs';
 
-import { Footer, Button, LogoLabel } from '@xyflow/xy-ui';
-import { Search, SidebarTitle, getMdxPagesUnderRoute } from 'xy-shared';
+import { Button } from '@xyflow/xy-ui';
+import { SidebarTitle, getMdxPagesUnderRoute } from 'xy-shared';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 import { type Route } from '@/utils';
-import { defaultFooterCategories } from '@xyflow/xy-ui';
 
 const ogImage = {
   url: `https://reactflow.dev/img/og/react-flow-og.jpg`,
@@ -159,10 +158,6 @@ export default {
   },
   feedback: {
     useLink: () => 'https://xyflow.com/contact',
-  },
-  color: {
-    hue: 333,
-    saturation: 80,
   },
   head() {
     // We are not allowed to render components inside head!
