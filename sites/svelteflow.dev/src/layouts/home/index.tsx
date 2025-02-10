@@ -141,7 +141,10 @@ export default function SvelteFlowHome() {
         />
       </Section>
 
-      <GettingStarted libraryName="Svelte Flow" packageName="@xyflow/svelte" />
+      <GettingStarted
+        libraryName="Svelte Flow"
+        packageName="@xyflow/svelte@next"
+      />
 
       <Section>
         <Features features={features} />
