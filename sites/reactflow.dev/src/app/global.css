@@ -1,11 +1,13 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@layer l-base, l-nextra;
 
+@import 'tailwindcss/base' layer(l-base);
+@import 'nextra-theme-docs/dist/style-prefixed.css' layer(l-nextra);
+@import 'tailwindcss/utilities';
+@import 'tailwindcss/components';
 @import '@xyflow/react/dist/style.css';
 @import 'xy-shared/styles/globals.css';
 
-@layer base {
+@layer l-base {
   :root {
     --primary: 333 100% 50%;
     --primary-foreground: 210 40% 98%;

@@ -4,7 +4,7 @@ import { Head } from 'nextra/components'
 import { getPageMap } from 'nextra/page-map'
 import type { FC, ReactNode } from 'react'
 import reactFlowPackageJson from '@xyflow/react/package.json';
-import '../global.css';
+import './global.css'
 
 export const metadata: Metadata = {
   description: 'React Flow - Customizable library for rendering workflows, diagrams and node-based UIs.',
@@ -39,17 +39,8 @@ export const metadata: Metadata = {
 
 const navbar = (
   <Navbar
-    // logo={
-    //   <NextraLogo
-    //     height="20"
-    //     className={cn(
-    //       'hover:transition-all hover:duration-1000 motion-reduce:hover:transition-none',
-    //       '[mask-image:linear-gradient(60deg,#000_25%,rgba(0,0,0,.2)_50%,#000_75%)] [mask-position:0] [mask-size:400%]',
-    //       'hover:[mask-position:100%]'
-    //     )}
-    //   />
-    // }
-    logo={<b>Hello</b>}
+    logo={<LogoLabel label="React Flow" labelClassName="mr-5 md:max-lg:hidden" />}
+    logoLink={false}
     projectLink="https://github.com/shuding/nextra"
   />
 )
@@ -72,6 +63,7 @@ const footer = (
 )
 
 import { ntDapperFont, fontClassNames } from 'xy-shared/fonts';
+import { LogoLabel } from '@xyflow/xy-ui';
 
 const RootLayout: FC<{
   children: ReactNode

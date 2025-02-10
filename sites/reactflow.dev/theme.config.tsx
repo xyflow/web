@@ -27,10 +27,6 @@ const faviconAppletouchUrl = `${baseUrl}/img/apple-touch-icon.png`;
 const faviconSvgUrl = `${baseUrl}/img/favicon.svg`;
 
 export default {
-  logo: () => (
-    <LogoLabel label="React Flow" labelClassName="mr-5 md:max-lg:hidden" />
-  ),
-  logoLink: false,
   sidebar: {
     toggleButton: false,
     titleComponent: SidebarTitle,

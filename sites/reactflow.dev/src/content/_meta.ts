@@ -45,13 +45,8 @@ export default {
       },
     },
   },
-
   index: {
-    title: 'Home',
-    display: 'hidden',
-    theme: {
-      layout: 'raw',
-    },
+    display: 'hidden'
   },
   // showcase: {
   //   title: 'Showcase',

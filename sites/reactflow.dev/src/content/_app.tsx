@@ -7,8 +7,6 @@ import { useConfig } from 'nextra-theme-docs';
 import { SharedContext, useFathom } from 'xy-shared';
 import { ntDapperFont, fontClassNames } from 'xy-shared/fonts';
 
-import '../global.css';
-
 const fathomOptions = {
   id: 'LXMRMWLB',
   domains: ['reactflow.dev'],
