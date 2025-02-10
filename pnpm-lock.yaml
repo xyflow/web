@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  '@xyflow/react':
+    hash: e64xb6zqbxrh4vae2vjzjtvi7u
+    path: patches/@xyflow__react.patch
+
 importers:
 
   .:
@@ -50,7 +55,7 @@ importers:
         version: 7.3.1(svelte@4.2.19)(three@0.171.0)
       '@xyflow/react':
         specifier: ^12.3.2
-        version: 12.3.2(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 12.3.2(patch_hash=e64xb6zqbxrh4vae2vjzjtvi7u)(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@xyflow/svelte':
         specifier: ^0.1.21
         version: 0.1.25(svelte@4.2.19)
@@ -204,7 +209,7 @@ importers:
         version: 1.4.1(next@14.2.15(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)(svelte@4.2.19)
       '@xyflow/react':
         specifier: ^12.3.6
-        version: 12.3.6(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 12.3.6(patch_hash=e64xb6zqbxrh4vae2vjzjtvi7u)(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       class-variance-authority:
         specifier: ^0.7.0
         version: 0.7.1
@@ -355,7 +360,7 @@ importers:
         version: 0.27.1
       '@xyflow/react':
         specifier: ^12.3.2
-        version: 12.3.2(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 12.3.2(patch_hash=e64xb6zqbxrh4vae2vjzjtvi7u)(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@xyflow/xy-ui':
         specifier: workspace:*
         version: link:../xy-ui
@@ -516,7 +521,7 @@ importers:
         version: 0.27.1
       '@xyflow/react':
         specifier: ^12.3.2
-        version: 12.3.2(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 12.3.2(patch_hash=e64xb6zqbxrh4vae2vjzjtvi7u)(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@xyflow/xy-ui':
         specifier: workspace:*
         version: link:../../packages/xy-ui
@@ -613,7 +618,7 @@ importers:
         version: 3.20.0(react@18.3.1)
       '@xyflow/react':
         specifier: 12.3.2
-        version: 12.3.2(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 12.3.2(patch_hash=e64xb6zqbxrh4vae2vjzjtvi7u)(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@xyflow/xy-ui':
         specifier: workspace:*
         version: link:../../packages/xy-ui
@@ -698,7 +703,7 @@ importers:
         version: 2.2.1
       '@xyflow/react':
         specifier: 12.3.2
-        version: 12.3.2(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 12.3.2(patch_hash=e64xb6zqbxrh4vae2vjzjtvi7u)(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@xyflow/xy-ui':
         specifier: workspace:*
         version: link:../../packages/xy-ui
@@ -9614,7 +9619,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@xyflow/react@12.3.2(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@xyflow/react@12.3.2(patch_hash=e64xb6zqbxrh4vae2vjzjtvi7u)(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@xyflow/system': 0.0.43
       classcat: 5.0.5
@@ -9625,7 +9630,7 @@ snapshots:
       - '@types/react'
       - immer
 
-  '@xyflow/react@12.3.6(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@xyflow/react@12.3.6(patch_hash=e64xb6zqbxrh4vae2vjzjtvi7u)(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@xyflow/system': 0.0.47
       classcat: 5.0.5

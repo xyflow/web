@@ -22,6 +22,5 @@ export default {
   'request-component': {
     title: 'Request a Component',
     href: 'https://github.com/xyflow/web/discussions/new?category=ui-component-requests',
-    newWindow: true,
   },
 };

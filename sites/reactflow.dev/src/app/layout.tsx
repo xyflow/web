@@ -1,50 +1,41 @@
-// import { NextraLogo, VercelLogo } from '@components/icons'
-import cn from 'clsx'
 import type { Metadata } from 'next'
-import { Footer, Layout, Link, Navbar } from 'nextra-theme-docs'
-import { Banner, Head } from 'nextra/components'
+import { Footer, Layout, Navbar } from 'nextra-theme-docs'
+import { Head } from 'nextra/components'
 import { getPageMap } from 'nextra/page-map'
 import type { FC, ReactNode } from 'react'
+import reactFlowPackageJson from '@xyflow/react/package.json';
 import '../global.css';
 
 export const metadata: Metadata = {
-  description: 'Make beautiful websites with Next.js & MDX.',
-  metadataBase: new URL('https://nextra.site'),
-  keywords: [
-    'Nextra',
-    'Next.js',
-    'React',
-    'JavaScript',
-    'MDX',
-    'Markdown',
-    'Static Site Generator'
-  ],
+  description: 'React Flow - Customizable library for rendering workflows, diagrams and node-based UIs.',
+  // metadataBase: new URL('https://nextra.site'),
+  keywords: reactFlowPackageJson.keywords,
   generator: 'Next.js',
-  applicationName: 'Nextra',
-  appleWebApp: {
-    title: 'Nextra'
-  },
-  title: {
-    default: 'Nextra – Next.js Static Site Generator',
-    template: '%s | Nextra'
-  },
-  openGraph: {
-    // https://github.com/vercel/next.js/discussions/50189#discussioncomment-10826632
-    url: './',
-    siteName: 'Nextra',
-    locale: 'en_US',
-    type: 'website'
-  },
-  other: {
-    'msapplication-TileColor': '#fff'
-  },
-  twitter: {
-    site: 'https://nextra.site'
-  },
-  alternates: {
-    // https://github.com/vercel/next.js/discussions/50189#discussioncomment-10826632
-    canonical: './'
-  }
+  applicationName: 'React Flow',
+  // appleWebApp: {
+  //   title: 'Nextra'
+  // },
+  // title: {
+  //   default: 'Nextra – Next.js Static Site Generator',
+  //   template: '%s | Nextra'
+  // },
+  // openGraph: {
+  //   // https://github.com/vercel/next.js/discussions/50189#discussioncomment-10826632
+  //   url: './',
+  //   siteName: 'Nextra',
+  //   locale: 'en_US',
+  //   type: 'website'
+  // },
+  // other: {
+  //   'msapplication-TileColor': '#fff'
+  // },
+  // twitter: {
+  //   site: 'https://nextra.site'
+  // },
+  // alternates: {
+  //   // https://github.com/vercel/next.js/discussions/50189#discussioncomment-10826632
+  //   canonical: './'
+  // }
 }
 
 const navbar = (

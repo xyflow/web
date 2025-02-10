@@ -26,5 +26,10 @@
   "name": "docs",
   "dependencies": {
     "dotenv-cli": "^7.4.2"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "@xyflow/react": "patches/@xyflow__react.patch"
+    }
   }
 }
