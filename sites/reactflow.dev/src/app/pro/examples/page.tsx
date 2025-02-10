@@ -1,8 +1,6 @@
-import { type ReactNode } from 'react';
+import { FC, type ReactNode } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { getPagesUnderRoute } from 'nextra/context';
-import { useData } from 'nextra/hooks';
 import {
   ContentGrid,
   ContentGridItem,
@@ -20,7 +18,7 @@ import {
   Hero,
   ProjectPreview,
   LayoutBreakout,
-  getMdxPagesUnderRoute,
+  fetchJSON,
 } from 'xy-shared';
 import {
   ArrowDownCircleIcon,
@@ -30,30 +28,28 @@ import {
   StarIcon,
 } from '@heroicons/react/24/outline';
 
-import starsvg from '../../../public/img/pro/star.svg';
+import starsvg from '../../../../public/img/pro/star.svg';
+import { Metadata } from 'next';
+import { getPageMap } from 'nextra/page-map';
+import { MdxFile } from 'nextra';
 
-function getProExamplesUnderRoute(route) {
-  return getMdxPagesUnderRoute(route).filter(
-    (page) => page.frontMatter?.is_pro_example,
+export const revalidate = 60 * 60 * 24;
+export const metadata: Metadata = {
+  title: 'React Flow Pro Examples',
+  description:
+    'Advanced React Flow code examples to use in your node-based UIs, crafted by the React Flow core team.',
+};
+
+const ProExamples: FC = async () => {
+  const remoteProExamples = await fetchJSON(
+    `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/examples.json`,
   );
-}
-
-function getProExamples() {
-  const exampleFolders = getPagesUnderRoute('/examples').filter(
-    (page) => !('frontMatter' in page),
+  const allExamples = (await getPageMap('/examples')).flatMap((item) =>
+    'children' in item ? (item.children as MdxFile[]) : [],
   );
-
-  return exampleFolders
-    .reduce((acc, folder) => {
-      const proExamplesInFolder = getProExamplesUnderRoute(folder.route);
-      return [...acc, ...proExamplesInFolder];
-    }, [])
-    .sort((a, b) => a.frontMatter?.title?.localeCompare(b.frontMatter?.title));
-}
-
-export default function ProExamples() {
-  const { remoteProExamples } = useData();
-  const proExamples = getProExamples();
+  const proExamples = allExamples
+    .filter((item) => item.frontMatter.is_pro_example)
+    .sort((a, b) => a.frontMatter.title.localeCompare(b.frontMatter.title));
 
   const examples = proExamples.reduce((result, curr) => {
     const remote = remoteProExamples.find((remote) => remote.id === curr.name);
@@ -272,7 +268,7 @@ export default function ProExamples() {
       </Section>
     </BaseLayout>
   );
-}
+};
 
 function ListItem({ title, text }) {
   return (
@@ -367,3 +363,5 @@ function SignUpButton({
     </div>
   );
 }
+
+export default ProExamples;
