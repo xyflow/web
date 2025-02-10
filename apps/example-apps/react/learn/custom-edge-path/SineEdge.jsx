@@ -1,8 +1,8 @@
 import { BaseEdge } from '@xyflow/react';
 
 export default function SineEdge({ id, sourceX, sourceY, targetX, targetY }) {
-  const centerY = (targetY - sourceY) / 2 + sourceY;
   const centerX = (targetX - sourceX) / 2 + sourceX;
+  const centerY = (targetY - sourceY) / 2 + sourceY;
 
   const edgePath = `
   M ${sourceX} ${sourceY} 
@@ -10,9 +10,5 @@ export default function SineEdge({ id, sourceX, sourceY, targetX, targetY }) {
   Q ${(targetX - sourceX) * 0.8 + sourceX} ${sourceY * 0.9} ${targetX} ${targetY}
   `;
 
-  return (
-    <>
-      <BaseEdge id={id} path={edgePath} />
-    </>
-  );
+  return <BaseEdge id={id} path={edgePath} />;
 }
