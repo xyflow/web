@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { useData } from 'nextra/hooks';
 import {
   Button,
   PricingTable,
@@ -18,6 +17,12 @@ import {
 import { SparklesIcon } from '@heroicons/react/24/outline';
 
 import ClientLogos from '@/components/client-logos';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'React Flow Pro',
+  description: 'Subscribe to React Flow Pro to get access to exclusive features of React Flow, a highly customizable library for building node-based editors, interactive graphs and flow charts'
+}
 
 const sliderItems = [
   {
@@ -70,7 +75,7 @@ export default function ReactFlowPro() {
         }
         subtitle="Thanks for checking out React Flow Pro! We are Christopher, Hayleigh, Moritz, Abbey and Peter, and we are the team building and maintaining React Flow"
         kicker="React Flow Pro"
-        kickerIcon={SparklesIcon}
+        kickerIcon={<SparklesIcon/>}
         action={
           <Button asChild size="lg" variant="pro">
             <Link href={process.env.NEXT_PUBLIC_PRO_PLATFORM_URL}>

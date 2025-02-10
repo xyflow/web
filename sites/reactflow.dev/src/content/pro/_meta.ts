@@ -2,7 +2,6 @@ export default {
   '*': {
     type: 'page',
     theme: {
-      layout: 'raw',
       toc: false,
     },
   },

@@ -10,7 +10,7 @@ const SHOWCASES_DATABASE_ID = '17bf4645224280ff9710d495e21ed13d';
 export function loadJSONFile<T>(url: string): T | undefined {
   try {
     const file = readFileSync(url, 'utf-8');
-    return JSON.parse(file.toString()) as T;
+    return JSON.parse(file) as T;
   } catch (err) {
     console.log(err);
   }
