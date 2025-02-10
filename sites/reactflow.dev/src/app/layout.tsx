@@ -1,10 +1,12 @@
 import type { Metadata } from 'next'
-import { Footer, Layout, Navbar } from 'nextra-theme-docs'
+import { Layout, Navbar } from 'nextra-theme-docs'
 import { Head } from 'nextra/components'
 import { getPageMap } from 'nextra/page-map'
 import type { FC, ReactNode } from 'react'
 import reactFlowPackageJson from '@xyflow/react/package.json';
 import './global.css'
+import { Search } from './search';
+import { Footer } from './footer';
 
 export const metadata: Metadata = {
   description: 'React Flow - Customizable library for rendering workflows, diagrams and node-based UIs.',
@@ -45,21 +47,7 @@ const navbar = (
   />
 )
 const footer = (
-  <Footer className="flex-col items-center md:items-start">
-    <a
-      className="x:focus-visible:nextra-focus flex items-center gap-1"
-      target="_blank"
-      rel="noreferrer"
-      title="vercel.com homepage"
-      href="https://vercel.com?utm_source=nextra.site"
-    >
-      Powered by
-      {/*<VercelLogo height="20" />*/}
-    </a>
-    <p className="mt-6 text-xs">
-      © {new Date().getFullYear()} The Nextra Project.
-    </p>
-  </Footer>
+  <Footer />
 )
 
 import { ntDapperFont, fontClassNames } from 'xy-shared/fonts';

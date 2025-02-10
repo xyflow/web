@@ -8,11 +8,6 @@ import { SparklesIcon } from '@heroicons/react/24/outline';
 import { type Route } from '@/utils';
 import { defaultFooterCategories } from '@xyflow/xy-ui';
 
-function useIsPro() {
-  const router = useRouter();
-  return router.pathname.startsWith('/pro');
-}
-
 const ogImage = {
   url: `https://reactflow.dev/img/og/react-flow-og.jpg`,
 };
@@ -132,65 +127,6 @@ export default {
           </Button>
         </>
       );
-    },
-  },
-  footer: {
-    component: () => {
-      const isPro = useIsPro();
-      const { Projects, ...remainingCategories } = defaultFooterCategories;
-
-      const categories = isPro
-        ? {
-            'React Flow Pro': [
-              { title: 'Pricing', route: '/pro/pricing' },
-              { title: 'Pro Examples', route: '/pro/examples' },
-              { title: 'Case Studies', route: '/pro/case-studies' },
-              { title: 'Request a Quote', route: '/pro/quote-request' },
-              {
-                title: 'Sign Up',
-                route: `${process.env.NEXT_PUBLIC_PRO_PLATFORM_URL}/signup`,
-              },
-              {
-                title: 'Sign In',
-                route: `${process.env.NEXT_PUBLIC_PRO_PLATFORM_URL}/login`,
-              },
-            ],
-            ...remainingCategories,
-          }
-        : {
-            Docs: [
-              { title: 'Getting Started', route: '/learn' },
-              { title: 'API Reference', route: '/api-reference' },
-              { title: 'Examples', route: '/examples' },
-              { title: 'Showcase', route: '/showcase' },
-            ],
-            ...remainingCategories,
-            Legal: [
-              {
-                title: 'MIT License',
-                route: 'https://github.com/xyflow/xyflow/blob/main/LICENSE',
-              },
-              {
-                title: 'Code of Conduct',
-                route:
-                  'https://github.com/xyflow/xyflow/blob/main/CODE_OF_CONDUCT.md',
-              },
-              { title: 'Imprint', route: 'https://xyflow.com/imprint' },
-            ],
-          };
-
-      return <Footer categories={categories} baseUrl="https://reactflow.dev" />;
-    },
-  },
-  search: {
-    component: (props) => {
-      const isPro = useIsPro();
-
-      if (isPro) {
-        return null;
-      }
-
-      return <Search {...props} />;
     },
   },
   toc: {
