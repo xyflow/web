@@ -83,15 +83,15 @@ const RootLayout: FC<{
     <body>
     <Layout
       navbar={navbar}
-      pageMap={pageMap}
-      docsRepositoryBase="https://github.com/shuding/nextra/tree/main/docs"
-      editLink="Edit this page on GitHub"
-      sidebar={{ defaultMenuCollapseLevel: 1 }}
       footer={footer}
-      // darkMode={false}
+      pageMap={pageMap}
+      docsRepositoryBase="https://github.com/xyflow/web/tree/main/sites/reactflow.dev"
+      editLink="Edit this page on GitHub"
+      darkMode={false}
+      search={null}
       nextThemes={{
-       // forcedTheme: 'light',
-       // defaultTheme: 'light',
+       forcedTheme: 'light',
+       defaultTheme: 'light',
      }}
     >
       {children}

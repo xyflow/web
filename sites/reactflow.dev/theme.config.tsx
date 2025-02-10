@@ -31,13 +31,6 @@ export default {
     <LogoLabel label="React Flow" labelClassName="mr-5 md:max-lg:hidden" />
   ),
   logoLink: false,
-  docsRepositoryBase:
-    'https://github.com/xyflow/web/tree/main/sites/reactflow.dev',
-  darkMode: false,
-  nextThemes: {
-    forcedTheme: 'light',
-    defaultTheme: 'light',
-  },
   sidebar: {
     toggleButton: false,
     titleComponent: SidebarTitle,
