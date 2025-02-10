@@ -74,12 +74,6 @@ export default {
       layout: 'full',
     },
   },
-  '404': {
-    title: '404',
-    theme: {
-      layout: 'raw',
-    },
-  },
   'developer-survey-2023': {
     display: 'hidden',
     theme: {
