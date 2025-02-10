@@ -9,7 +9,7 @@ import { Minus, Plus } from "lucide-react";
 
 export type CounterNodeType = Node<{ value: number }>;
 
-export const CounterNode = memo(({ id, data }: NodeProps<CounterNodeType>) {
+export const CounterNode = memo(({ id, data }: NodeProps<CounterNodeType>) => {
   const { updateNodeData } = useReactFlow();
   const handleIncr = useCallback(() => {
     updateNodeData(id, ({ data }) => {
