@@ -440,3 +440,19 @@ To remedy this in event handlers you control, you can scale your computed relati
 position by `1 / zoom` where `zoom` is the current zoom level of the flow. To get
 the current zoom level, you can use the `getZoom` method from the
 [`useReactFlow`](/api-reference/hooks/use-react-flow) hook.
+
+### Edges are not displaying.
+
+A lot of times developers run into problems regarding edges not displaying. This might happen due to the following reasons:
+
+- You have not imported the reactflow stylesheet. If you haven't imported it, you can import it like `import '@xyflow/react/dist/style.css';`
+- If you have replaced your default nodes with a custom node, check if that custom node has appropriate source/target handles.
+- If you are using some external styling library like tailwind, bulma etc, check if that particular library is not overriding the edge styles. If yes, debug which styles are being effected by that particular styling library and override those styles with reactflow compatible styles. e.g in some cases styling libraries override the `.react-flow__edges svg` styles to have `overflow: hidden` which results in the edge not showing. 
+- If edges were displaying before and not displaying now, check if you have added more than 1 handles of the same type(`source` or `target`) in your custom node component. If that is the case, assign ids to them. Multiple handles on a node of the same type need to have distinguishable ids. 
+- If edges were displaying before and not displaying now, also check if you have not changed the handle ids by mistake since edges are made corresponding to those handle ids in case of multiple node handles of the same type. If that is the case, revert the handle id to what it was before.
+- If you are hiding your handles using an async operation(a request to the backend etc), 
+
+
+### Edges are not displaying properly.
+- If you want to hide your handles, do not use `display: none` to hide them, you can use either `opacity: 0` or `visibility: hidden` on those handles.
+- If your edges are 
