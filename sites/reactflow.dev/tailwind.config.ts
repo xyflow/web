@@ -1,6 +1,6 @@
 import xyTailwindConfig from 'xy-tailwind-config';
+import { Config } from 'tailwindcss'
 
-/** @type {import('tailwindcss').Config} */
 export default {
   ...xyTailwindConfig,
   theme: {
@@ -12,4 +12,4 @@ export default {
       },
     },
   },
-};
+} satisfies Config;

@@ -7,9 +7,8 @@ tags: ['react-flow', 'release']
 image: /img/blog/v10-header.png
 ---
 
-import { Bleed } from 'nextra-theme-docs';
-import { RemoteCodeViewer } from 'xy-shared';
-import { BlogPostLayout } from 'xy-shared';
+import { Bleed } from 'nextra/components';
+import { BlogPostLayout, RemoteCodeViewer } from 'xy-shared';
 
 import { getStaticCode } from 'xy-shared/server';
 export const getStaticProps = getStaticCode(['learn/sub-flows-3']);

@@ -2,11 +2,11 @@ import redirects from './redirects.json' with { type: 'json' };
 import pkg from './package.json' with { type: 'json' };
 
 import nextra from 'nextra';
+import { NextConfig } from 'next';
 
 const REACT_FLOW_VERSION = pkg.dependencies['@xyflow/react']?.replace('^', '');
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig: NextConfig = {
   // Configure pageExtensions to include md and mdx
   pageExtensions: ['ts', 'tsx', 'js', 'jsx'],
   // Optionally, add any other Next.js config below
@@ -63,10 +63,7 @@ const nextConfig = {
   },
 };
 
-const withNextra = nextra({
-  theme: 'nextra-theme-docs',
-  themeConfig: './theme.config.tsx',
-});
+const withNextra = nextra({});
 
 // Merge MDX config with Next.js config
 export default withNextra(nextConfig);
