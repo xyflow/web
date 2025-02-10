@@ -40,10 +40,9 @@ NodeHeader.displayName = "NodeHeader";
 
 /* NODE HEADER TITLE -------------------------------------------------------- */
 
-export interface NodeHeaderTitleProps
-  extends HTMLAttributes<HTMLHeadingElement> {
+export type NodeHeaderTitleProps = HTMLAttributes<HTMLHeadingElement> & {
   asChild?: boolean;
-}
+};
 
 /**
  * The title text for the node. To maintain a native application feel, the title
@@ -107,9 +106,9 @@ NodeHeaderActions.displayName = "NodeHeaderActions";
 
 /* NODE HEADER ACTION ------------------------------------------------------- */
 
-export interface NodeHeaderActionProps extends ButtonProps {
+export type NodeHeaderActionProps = ButtonProps & {
   label: string;
-}
+};
 
 /**
  * A thin wrapper around the `<Button />` component with a fixed sized suitable

@@ -8,9 +8,9 @@ import {
 } from "@xyflow/react";
 import { BaseNode } from "@/registry/components/base-node";
 
-export interface PlaceholderNodeProps extends Partial<NodeProps> {
+export type PlaceholderNodeProps = Partial<NodeProps> & {
   children?: ReactNode;
-}
+};
 
 export const PlaceholderNode = forwardRef<HTMLDivElement, PlaceholderNodeProps>(
   ({ selected, children }, ref) => {

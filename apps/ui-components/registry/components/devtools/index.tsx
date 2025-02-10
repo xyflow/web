@@ -21,14 +21,14 @@ import {
 
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 
-export function ViewportLogger() {
+export const ViewportLogger = () => {
   const viewport = useStore(
     (s) =>
       `x: ${s.transform[0].toFixed(2)}, y: ${s.transform[1].toFixed(2)}, zoom: ${s.transform[2].toFixed(2)}`,
   );
 
   return <div>{viewport}</div>;
-}
+};
 
 type ChangeLoggerProps = {
   color?: string;
@@ -39,7 +39,7 @@ type ChangeInfoProps = {
   change: NodeChange;
 };
 
-function ChangeInfo({ change }: ChangeInfoProps) {
+const ChangeInfo = ({ change }: ChangeInfoProps) => {
   const id = "id" in change ? change.id : "-";
   const { type } = change;
 
@@ -59,9 +59,9 @@ function ChangeInfo({ change }: ChangeInfoProps) {
       </div>
     </div>
   );
-}
+};
 
-export function ChangeLogger({ limit = 20 }: ChangeLoggerProps) {
+export const ChangeLogger = ({ limit = 20 }: ChangeLoggerProps) => {
   const [changes, setChanges] = useState<NodeChange[]>([]);
   const store = useStoreApi();
 
@@ -94,9 +94,9 @@ export function ChangeLogger({ limit = 20 }: ChangeLoggerProps) {
       )}
     </>
   );
-}
+};
 
-export function NodeInspector() {
+export const NodeInspector = () => {
   const { getInternalNode } = useReactFlow();
   const nodes = useNodes();
 
@@ -128,7 +128,7 @@ export function NodeInspector() {
       </div>
     </ViewportPortal>
   );
-}
+};
 
 type NodeInfoProps = {
   id: string;
@@ -141,7 +141,7 @@ type NodeInfoProps = {
   data: any;
 };
 
-function NodeInfo({
+const NodeInfo = ({
   id,
   type,
   selected,
@@ -150,7 +150,7 @@ function NodeInfo({
   width,
   height,
   data,
-}: NodeInfoProps) {
+}: NodeInfoProps) => {
   if (!width || !height) return null;
 
   const absoluteTransform = `translate(${absPosition.x}px, ${absPosition.y + height}px)`;
@@ -175,7 +175,7 @@ function NodeInfo({
       <div>data: {JSON.stringify(data, null, 2)}</div>
     </div>
   );
-}
+};
 
 type Tool = {
   active: boolean;
@@ -189,7 +189,7 @@ type DevToolsToggleProps = {
   position: PanelPosition;
 };
 
-function DevToolsToggle({ tools, position }: DevToolsToggleProps) {
+const DevToolsToggle = ({ tools, position }: DevToolsToggleProps) => {
   return (
     <Panel position={position} className="rounded border bg-card p-1 shadow-sm">
       <ToggleGroup type="multiple">
@@ -207,13 +207,13 @@ function DevToolsToggle({ tools, position }: DevToolsToggleProps) {
       </ToggleGroup>
     </Panel>
   );
-}
+};
 
 type DevToolsProps = {
   position: PanelPosition;
 };
 
-export function DevTools({ position }: DevToolsProps) {
+export const DevTools = ({ position }: DevToolsProps) => {
   const [nodeInspectorActive, setNodeInspectorActive] = useState(false);
   const [changeLoggerActive, setChangeLoggerActive] = useState(false);
   const [viewportLoggerActive, setViewportLoggerActive] = useState(false);
@@ -261,6 +261,6 @@ export function DevTools({ position }: DevToolsProps) {
       )}
     </>
   );
-}
+};
 
 DevTools.displayName = "DevTools";

@@ -6,7 +6,7 @@ export type NodeStatusIndicatorProps = {
   children: ReactNode;
 };
 
-export function LoadingIndicator({ children }: { children: ReactNode }) {
+export const LoadingIndicator = ({ children }: { children: ReactNode }) => {
   return (
     <>
       <div className="absolute -left-[1px] -top-[1px] h-[calc(100%+2px)] w-[calc(100%+2px)]">
@@ -34,15 +34,15 @@ export function LoadingIndicator({ children }: { children: ReactNode }) {
       {children}
     </>
   );
-}
+};
 
-function StatusBorder({
+const StatusBorder = ({
   children,
   className,
 }: {
   children: ReactNode;
   className?: string;
-}) {
+}) => {
   return (
     <>
       <div
@@ -54,12 +54,12 @@ function StatusBorder({
       {children}
     </>
   );
-}
+};
 
-export function NodeStatusIndicator({
+export const NodeStatusIndicator = ({
   status,
   children,
-}: NodeStatusIndicatorProps) {
+}: NodeStatusIndicatorProps) => {
   switch (status) {
     case "loading":
       return <LoadingIndicator>{children}</LoadingIndicator>;
@@ -72,4 +72,4 @@ export function NodeStatusIndicator({
     default:
       return <>{children}</>;
   }
-}
+};

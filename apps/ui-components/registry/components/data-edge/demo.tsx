@@ -2,14 +2,14 @@
 
 import { Handle, Node, NodeProps, Position, useReactFlow } from "@xyflow/react";
 
-import { useCallback } from "react";
+import { useCallback, memo } from "react";
 import { BaseNode } from "@/registry/components/base-node";
 import { Button } from "@/components/ui/button";
 import { Minus, Plus } from "lucide-react";
 
 export type CounterNodeType = Node<{ value: number }>;
 
-export function CounterNode({ id, data }: NodeProps<CounterNodeType>) {
+export const CounterNode = memo(({ id, data }: NodeProps<CounterNodeType>) {
   const { updateNodeData } = useReactFlow();
   const handleIncr = useCallback(() => {
     updateNodeData(id, ({ data }) => {
@@ -42,4 +42,4 @@ export function CounterNode({ id, data }: NodeProps<CounterNodeType>) {
       <Handle type="source" position={Position.Bottom} />
     </BaseNode>
   );
-}
+});

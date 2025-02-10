@@ -15,12 +15,11 @@ export type SourceHandleProps = {
   position: Position;
   id?: string;
 };
-
-export function SourceHandle({
+export const SourceHandle = ({
   className,
   position,
   ...props
-}: SourceHandleProps) {
+}: SourceHandleProps) => {
   const positionStyles: Record<
     Position,
     {
@@ -96,4 +95,4 @@ export function SourceHandle({
       </>
     </BaseHandle>
   );
-}
+};

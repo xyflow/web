@@ -20,11 +20,11 @@ export type Handles =
 
 /* WORKFLOW NODE HANDLES ---------------------------------------------------- */
 
-export function WorkflowNodeHandles({
+export const WorkflowNodeHandles = ({
   handles = "default",
 }: {
   handles?: Handles;
-}) {
+}) => {
   return (
     <>
       {handles === "default" && (
@@ -71,7 +71,7 @@ export function WorkflowNodeHandles({
       )}
     </>
   );
-}
+};
 
 /* WORKFLOW NODE CONTENT -------------------------------------------------------------- */
 
@@ -101,19 +101,19 @@ WorkflowNodeContent.displayName = "WorkflowNodeContent";
 
 /* WORKFLOW NODE ------------------------------------------------------------ */
 
-export function WorkflowNode({
+export const WorkflowNode = ({
   status,
   children,
 }: {
   status?: "loading" | "success" | "error" | "initial";
   children?: ReactNode;
-}) {
+}) => {
   return (
     <NodeStatusIndicator status={status}>
       <BaseNode className="p-0">{children}</BaseNode>
     </NodeStatusIndicator>
   );
-}
+};
 
 /* EXPORTS ------------------------------------------------------------------ */
 

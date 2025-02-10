@@ -16,9 +16,9 @@ const TooltipContext = createContext(false);
 
 /* TOOLTIP NODE ------------------------------------------------------------- */
 
-export interface TooltipNodeProps extends Partial<NodeProps> {
+export type TooltipNodeProps = Partial<NodeProps> & {
   children?: ReactNode;
-}
+};
 
 /**
  * A component that wraps a node and provides tooltip visibility context.
@@ -52,7 +52,7 @@ TooltipNode.displayName = "TooltipNode";
 
 /* TOOLTIP CONTENT ---------------------------------------------------------- */
 
-export interface TooltipContentProps extends NodeToolbarProps {}
+export type TooltipContentProps = NodeToolbarProps;
 
 /**
  * A component that displays the tooltip content based on visibility context.
@@ -80,8 +80,7 @@ TooltipContent.displayName = "TooltipContent";
 
 /* TOOLTIP TRIGGER ---------------------------------------------------------- */
 
-export interface TooltipTriggerProps
-  extends HTMLAttributes<HTMLParagraphElement> {}
+export type TooltipTriggerProps = HTMLAttributes<HTMLParagraphElement>;
 
 /**
  * A component that triggers the tooltip visibility.

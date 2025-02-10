@@ -13,7 +13,7 @@ const flexDirections = {
   left: "flex-row",
 };
 
-const LabeledHandle = forwardRef<
+export const LabeledHandle = forwardRef<
   HTMLDivElement,
   HandleProps &
     HTMLAttributes<HTMLDivElement> & {
@@ -44,5 +44,3 @@ const LabeledHandle = forwardRef<
 );
 
 LabeledHandle.displayName = "LabeledHandle";
-
-export { LabeledHandle };

@@ -1,12 +1,13 @@
+import { ReactNode } from "react";
+
 import {
   BaseEdge,
   EdgeLabelRenderer,
   EdgeProps,
   getBezierPath,
 } from "@xyflow/react";
-import { ReactNode } from "react";
 
-export function ButtonEdge({
+export const ButtonEdge = ({
   sourceX,
   sourceY,
   targetX,
@@ -16,7 +17,7 @@ export function ButtonEdge({
   style = {},
   markerEnd,
   children,
-}: EdgeProps & { children: ReactNode }) {
+}: EdgeProps & { children: ReactNode }) => {
   const [edgePath, labelX, labelY] = getBezierPath({
     sourceX,
     sourceY,
@@ -41,4 +42,4 @@ export function ButtonEdge({
       </EdgeLabelRenderer>
     </>
   );
-}
+};

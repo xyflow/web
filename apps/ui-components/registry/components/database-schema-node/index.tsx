@@ -6,95 +6,95 @@ import { TableBody, TableRow, TableCell } from "@/components/ui/table";
 /**
  * A container for the database schema node header.
  */
-interface DatabaseSchemaNodeHeaderProps {
+export type DatabaseSchemaNodeHeaderProps = {
   children?: ReactNode;
-}
+};
 
-export function DatabaseSchemaNodeHeader({
+export const DatabaseSchemaNodeHeader = ({
   children,
-}: DatabaseSchemaNodeHeaderProps) {
+}: DatabaseSchemaNodeHeaderProps) => {
   return (
     <h2 className="rounded-tl-md rounded-tr-md bg-secondary p-2 text-center text-sm text-muted-foreground">
       {children}
     </h2>
   );
-}
+};
 
 /* DATABASE SCHEMA NODE BODY -------------------------------------------------- */
 /**
  * A container for the database schema node body that wraps the table.
  */
-interface DatabaseSchemaNodeBodyProps {
+export type DatabaseSchemaNodeBodyProps = {
   children?: ReactNode;
-}
+};
 
-export function DatabaseSchemaNodeBody({
+export const DatabaseSchemaNodeBody = ({
   children,
-}: DatabaseSchemaNodeBodyProps) {
+}: DatabaseSchemaNodeBodyProps) => {
   return (
     <table className="border-spacing-10 overflow-visible">
       <TableBody>{children}</TableBody>
     </table>
   );
-}
+};
 
 /* DATABASE SCHEMA TABLE ROW -------------------------------------------------- */
 /**
  * A wrapper for individual table rows in the database schema node.
  */
 
-interface DatabaseSchemaTableRowProps {
+export type DatabaseSchemaTableRowProps = {
   children: ReactNode;
   className?: string;
-}
+};
 
-export function DatabaseSchemaTableRow({
+export const DatabaseSchemaTableRow = ({
   children,
   className,
-}: DatabaseSchemaTableRowProps) {
+}: DatabaseSchemaTableRowProps) => {
   return (
     <TableRow className={`relative text-xs ${className || ""}`}>
       {children}
     </TableRow>
   );
-}
+};
 
 /* DATABASE SCHEMA TABLE CELL ------------------------------------------------- */
 /**
  * A simplified table cell for the database schema node.
  * Renders static content without additional dynamic props.
  */
-interface DatabaseSchemaTableCellProps {
+export type DatabaseSchemaTableCellProps = {
   className?: string;
   children?: ReactNode;
-}
+};
 
-export function DatabaseSchemaTableCell({
+export const DatabaseSchemaTableCell = ({
   className,
   children,
-}: DatabaseSchemaTableCellProps) {
+}: DatabaseSchemaTableCellProps) => {
   return <TableCell className={className}>{children}</TableCell>;
-}
+};
 
 /* DATABASE SCHEMA NODE ------------------------------------------------------- */
 /**
  * The main DatabaseSchemaNode component that wraps the header and body.
  * It maps over the provided schema data to render rows and cells.
  */
-interface DatabaseSchemaNodeProps {
+export type DatabaseSchemaNodeProps = {
   className?: string;
   selected?: boolean;
   children?: ReactNode;
-}
+};
 
-export function DatabaseSchemaNode({
+export const DatabaseSchemaNode = ({
   className,
   selected,
   children,
-}: DatabaseSchemaNodeProps) {
+}: DatabaseSchemaNodeProps) => {
   return (
     <BaseNode className={className} selected={selected}>
       {children}
     </BaseNode>
   );
-}
+};

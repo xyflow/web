@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 
 /* GROUP NODE Label ------------------------------------------------------- */
 
-interface GroupNodeLabelProps extends HTMLAttributes<HTMLDivElement> {}
+export type GroupNodeLabelProps = HTMLAttributes<HTMLDivElement>;
 
 export const GroupNodeLabel = forwardRef<HTMLDivElement, GroupNodeLabelProps>(
   ({ children, className, ...props }, ref) => {
@@ -23,9 +23,9 @@ GroupNodeLabel.displayName = "GroupNodeLabel";
 
 /* GROUP NODE TYPES --------------------------------------------------------- */
 
-export interface GroupNodeProps extends Partial<NodeProps> {
+export type GroupNodeProps = Partial<NodeProps> & {
   children?: ReactNode;
-}
+};
 
 /* GROUP NODE -------------------------------------------------------------- */
 

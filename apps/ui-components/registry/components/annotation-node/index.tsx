@@ -4,7 +4,8 @@ import { cn } from "@/lib/utils";
 /* ANNOTATION NODE -----------------------------------------------------------
    A container for an annotation node.
 */
-export interface AnnotationNodeProps extends HTMLAttributes<HTMLDivElement> {}
+
+export type AnnotationNodeProps = HTMLAttributes<HTMLDivElement>;
 
 export const AnnotationNode = forwardRef<HTMLDivElement, AnnotationNodeProps>(
   ({ className, children, ...props }, ref) => {
@@ -28,8 +29,8 @@ AnnotationNode.displayName = "AnnotationNode";
 /* ANNOTATION NODE NUMBER -----------------------------------------------------
    Renders the annotation node number.
 */
-export interface AnnotationNodeNumberProps
-  extends HTMLAttributes<HTMLDivElement> {}
+
+export type AnnotationNodeNumberProps = HTMLAttributes<HTMLDivElement>;
 
 export const AnnotationNodeNumber = forwardRef<
   HTMLDivElement,
@@ -47,8 +48,8 @@ AnnotationNodeNumber.displayName = "AnnotationNodeNumber";
 /* ANNOTATION NODE CONTENT ----------------------------------------------------
    Renders the main content of the annotation node.
 */
-export interface AnnotationNodeContentProps
-  extends HTMLAttributes<HTMLDivElement> {}
+
+export type AnnotationNodeContentProps = HTMLAttributes<HTMLDivElement>;
 
 export const AnnotationNodeContent = forwardRef<
   HTMLDivElement,
@@ -66,8 +67,8 @@ AnnotationNodeContent.displayName = "AnnotationNodeContent";
 /* ANNOTATION NODE ICON -------------------------------------------------------
    Renders the icon for the annotation node.
 */
-export interface AnnotationNodeIconProps
-  extends HTMLAttributes<HTMLDivElement> {}
+
+export type AnnotationNodeIconProps = HTMLAttributes<HTMLDivElement>;
 
 export const AnnotationNodeIcon = forwardRef<
   HTMLDivElement,
