@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useConfig, Navbar } from 'nextra-theme-docs';
+import { Navbar } from 'nextra-theme-docs';
 
 import { Footer, Button, LogoLabel } from '@xyflow/xy-ui';
 import { Search, SidebarTitle, getMdxPagesUnderRoute } from 'xy-shared';
@@ -240,24 +240,11 @@ export default {
     saturation: 80,
   },
   head() {
-    const router = useRouter();
-    const { frontMatter } = useConfig();
-
-    const title = frontMatter.title
-      ? `${frontMatter.title} - React Flow`
-      : 'React Flow';
-
-    const description = frontMatter.description ?? defaultDescription;
-    const pageUrl = `${baseUrl}${router.asPath}`;
-
     // We are not allowed to render components inside head!
     // https://github.com/shuding/nextra/issues/3529
     return (
       <>
-        <title>{title}</title>
-        <meta name="description" content={description} />
         <meta name="robots" content="index,follow" />
-
         <link rel="icon" href={faviconUrl} />
         <link
           rel="apple-touch-icon"
@@ -265,15 +252,6 @@ export default {
           href={faviconAppletouchUrl}
         />
         <link rel="icon" href={faviconSvgUrl} type="image/svg+xml" />
-
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="https://x.com/xyflowdev" />
-        <meta name="twitter:creator" content="@xyflowdev" />
-
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
-        <meta property="og:url" content={pageUrl} />
-        <meta property="og:type" content="website" />
         {ogImage && (
           <>
             <meta property="og:image" content={ogImage.url} />

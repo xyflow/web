@@ -12,30 +12,29 @@ export const metadata: Metadata = {
   keywords: reactFlowPackageJson.keywords,
   generator: 'Next.js',
   applicationName: 'React Flow',
-  // appleWebApp: {
-  //   title: 'Nextra'
-  // },
-  // title: {
-  //   default: 'Nextra – Next.js Static Site Generator',
-  //   template: '%s | Nextra'
-  // },
-  // openGraph: {
-  //   // https://github.com/vercel/next.js/discussions/50189#discussioncomment-10826632
-  //   url: './',
-  //   siteName: 'Nextra',
-  //   locale: 'en_US',
-  //   type: 'website'
-  // },
-  // other: {
-  //   'msapplication-TileColor': '#fff'
-  // },
-  // twitter: {
-  //   site: 'https://nextra.site'
-  // },
-  // alternates: {
-  //   // https://github.com/vercel/next.js/discussions/50189#discussioncomment-10826632
-  //   canonical: './'
-  // }
+  appleWebApp: {
+    title: 'React Flow'
+  },
+  title: {
+    default: 'Node-Based UIs in React',
+    template: '%s - React Flow'
+  },
+  openGraph: {
+    // https://github.com/vercel/next.js/discussions/50189#discussioncomment-10826632
+    url: './',
+    siteName: 'React Flow',
+    locale: 'en_US',
+    type: 'website'
+  },
+  twitter: {
+    site: 'https://x.com/xyflowdev',
+    card: 'summary_large_image',
+    creator: '@xyflowdev'
+  },
+  alternates: {
+    // https://github.com/vercel/next.js/discussions/50189#discussioncomment-10826632
+    canonical: './'
+  }
 }
 
 const navbar = (
