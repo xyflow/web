@@ -10,7 +10,6 @@ export default {
   examples: 'Examples',
   components: {
     title: 'Components',
-    display: 'visible',
   },
   showcase: {
     title: 'Showcase',
