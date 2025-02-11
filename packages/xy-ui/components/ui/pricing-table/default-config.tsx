@@ -129,9 +129,12 @@ export const ProPlan: SubscriptionPlan = {
     {
       label: (
         <span>
-          Access to all{' '}
-          <Link variant="primary" href="https://reactflow.dev/pro/templates">
-            Pro Templates
+          Access the{' '}
+          <Link
+            variant="primary"
+            href="https://reactflow.dev/components/templates/workflow-editor"
+          >
+            Workflow Editor Template
           </Link>
         </span>
       ),
@@ -169,9 +172,12 @@ export const EnterprisePlan: SubscriptionPlan = {
     {
       label: (
         <span>
-          Perpetual access to all{' '}
-          <Link variant="primary" href="https://reactflow.dev/pro/templates">
-            Pro Templates
+          Perpetual access to the{' '}
+          <Link
+            variant="primary"
+            href="https://reactflow.dev/components/templates/workflow-editor"
+          >
+            Workflow Editor Template
           </Link>
         </span>
       ),
