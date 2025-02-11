@@ -46,7 +46,16 @@ const metaRecord = {
           'ssr-ssg-configuration': ''
         }
       },
-      tutorials: '',
+      tutorials: {
+        theme: {
+          toc: false,
+        },
+        items: {
+          'slide-shows-with-react-flow': '',
+          'react-flow-and-the-web-audio-api': '',
+          'mind-map-app-with-react-flow': ''
+        }
+      },
       troubleshooting: '',
       'api-reference': {
         href: '/api-reference',

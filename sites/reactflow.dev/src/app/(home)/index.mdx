@@ -3,21 +3,18 @@ title: Node-Based UIs in React
 description: Highly customizable React library for workflow builders, no-code apps, image processing, visualizers, and more
 ---
 
-import ReactFlowPage from '@/layouts/home';
 import getStaticPropsStats from '@/utils/get-static-props/github-npm-stats';
 import { getMdxContentUnderRoute } from 'xy-shared/server';
 
 export async function getStaticProps() {
-  const whatsNew = await getMdxContentUnderRoute('reactflow.dev','/whats-new');
+  const whatsNew = await getMdxContentUnderRoute('reactflow.dev', '/whats-new');
   const whatsNewItems = whatsNew.slice(0, 3).map((entry) => entry.frontmatter);
   const { stars, downloads, revalidate } = await getStaticPropsStats();
-
-return {
-props: {
-ssg: { whatsNew: whatsNewItems, stars, downloads },
-},
-revalidate,
-};
+  return {
+    props: {
+      ssg: { whatsNew: whatsNewItems, stars, downloads },
+    },
+    revalidate,
+  };
 }
 
-<ReactFlowPage />
