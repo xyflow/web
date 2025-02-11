@@ -113,7 +113,7 @@ export function ShowcaseLayout({
           ) : (
             <ContentGridItem
               key={item.id}
-              className="border-none py-6 lg:py-8 lg:px-0 hover:bg-white relative"
+              className="border-none py-6 lg:py-8 lg:px-0 hover:bg-transparent relative"
             >
               <ProjectPreview
                 image={item.image}

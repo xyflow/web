@@ -36,17 +36,19 @@ export default {
     forcedTheme: 'light',
     defaultTheme: 'light',
   },
-  // banner: {
-  //   key: 'survey-2024',
-  //   content: (
-  //     <Link
-  //       className="flex justify-center items-center max-w-xs mx-auto hover:underline"
-  //       href="/developer-survey-2024"
-  //     >
-  //       📣 Take the 2024 Svelte Flow Developer Survey
-  //     </Link>
-  //   ),
-  // },
+  banner: {
+    key: 'svelte-flow-1',
+    content: (
+      <Link
+        className="flex justify-center items-center max-w-xs mx-auto hover:underline"
+        href="https://next.svelteflow.dev"
+        target="_blank"
+      >
+        📣 We just released Svelte Flow 1.0 Alpha — try it out and give us your
+        feedback!
+      </Link>
+    ),
+  },
   sidebar: {
     toggleButton: false,
   },
