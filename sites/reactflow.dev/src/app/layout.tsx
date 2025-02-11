@@ -43,6 +43,10 @@ export const metadata: Metadata = {
     // https://github.com/vercel/next.js/discussions/50189#discussioncomment-10826632
     canonical: './',
   },
+  other: {
+    robots: 'index,follow',
+    'docsearch:site': 'react',
+  },
 };
 
 const RootLayout: FC<{

@@ -11,13 +11,6 @@ const ogImage = {
   url: `https://reactflow.dev/img/og/react-flow-og.jpg`,
 };
 
-const baseUrl =
-  process.env.NODE_ENV === 'production'
-    ? 'https://reactflow.dev'
-    : 'http://localhost:3002';
-
-const faviconAppletouchUrl = `${baseUrl}/img/apple-touch-icon.png`;
-
 export default {
   sidebar: {
     toggleButton: false,
@@ -160,24 +153,13 @@ export default {
   head() {
     // We are not allowed to render components inside head!
     // https://github.com/shuding/nextra/issues/3529
-    return (
+    return ogImage && (
       <>
-        <meta name="robots" content="index,follow" />
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href={faviconAppletouchUrl}
-        />
-        {ogImage && (
-          <>
-            <meta property="og:image" content={ogImage.url} />
-            <meta property="og:image:alt" content="Teaser" />
-            <meta property="og:image:width" content={'1200'} />
-            <meta property="og:image:height" content={'640'} />
-          </>
-        )}
-        <meta name="docsearch:site" content="react" />
+        <meta property="og:image" content={ogImage.url} />
+        <meta property="og:image:alt" content="Teaser" />
+        <meta property="og:image:width" content={'1200'} />
+        <meta property="og:image:height" content={'640'} />
       </>
-    );
+    )
   },
 };
