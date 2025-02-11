@@ -1,22 +1,20 @@
-import { MetaRecord } from 'nextra';
-
-const concepts: MetaRecord = {
+const concepts = {
   introduction: '',
   'terms-and-definitions': '',
   'core-concepts': '',
   'the-viewport': '',
 };
-const gettingStarted: MetaRecord = {
+const gettingStarted = {
   'installation-and-requirements': '',
   'building-a-flow': '',
 };
-const customization: MetaRecord = {
+const customization = {
   'custom-nodes': '',
   'custom-node-props': { href: '/api-reference/types/node-props' },
   'custom-edges': '',
   'custom-edge-props': { href: '/api-reference/types/edge-props' },
 };
-const advanced: MetaRecord = {
+const advanced = {
   accessibility: '',
   testing: '',
   typescript: '',
@@ -25,12 +23,12 @@ const advanced: MetaRecord = {
   'computing-flows': '',
   'ssr-ssg-configuration': '',
 };
-const tutorials: MetaRecord = {
+const tutorials = {
   'slide-shows-with-react-flow': '',
   'react-flow-and-the-web-audio-api': '',
   'mind-map-app-with-react-flow': '',
 };
-const troubleshooting: MetaRecord = {
+const troubleshooting = {
   index: '',
   'remove-attribution': '',
   'migrate-to-v12': '',
