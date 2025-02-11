@@ -1,9 +1,8 @@
-export default {
+import { MetaRecord } from 'nextra';
+
+const metaRecord = {
   '*': {
-    type: 'page',
-    theme: {
-      layout: 'default',
-    },
+    type: 'page'
   },
   learn: 'Learn',
   'api-reference': {
@@ -71,3 +70,5 @@ export default {
     },
   },
 };
+
+export default metaRecord;
