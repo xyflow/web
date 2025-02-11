@@ -6,7 +6,14 @@ export default {
     },
   },
   learn: 'Learn',
-  'api-reference': 'Reference',
+  'api-reference': {
+    title: 'Reference',
+    items: {
+      'index': '',
+      'react-flow': '',
+      'react-flow-provider': ''
+    }
+  },
   examples: 'Examples',
   components: {
     title: 'Components',
