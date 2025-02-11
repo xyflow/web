@@ -16,9 +16,7 @@ const baseUrl =
     ? 'https://reactflow.dev'
     : 'http://localhost:3002';
 
-const faviconUrl = `${baseUrl}/img/favicon.ico`;
 const faviconAppletouchUrl = `${baseUrl}/img/apple-touch-icon.png`;
-const faviconSvgUrl = `${baseUrl}/img/favicon.svg`;
 
 export default {
   sidebar: {
@@ -165,13 +163,11 @@ export default {
     return (
       <>
         <meta name="robots" content="index,follow" />
-        <link rel="icon" href={faviconUrl} />
         <link
           rel="apple-touch-icon"
           sizes="180x180"
           href={faviconAppletouchUrl}
         />
-        <link rel="icon" href={faviconSvgUrl} type="image/svg+xml" />
         {ogImage && (
           <>
             <meta property="og:image" content={ogImage.url} />
