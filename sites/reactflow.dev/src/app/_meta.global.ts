@@ -36,13 +36,13 @@ const troubleshooting: MetaRecord = {
   'migrate-to-v12': '',
   'migrate-to-v11': '',
   'migrate-to-v10': '',
-}
+};
 const components = {
-  'index': {
+  index: {
     title: 'Introduction',
     theme: {
-      toc: false
-    }
+      toc: false,
+    },
   },
   nodes: {
     items: {
@@ -52,45 +52,62 @@ const components = {
       'annotation-node': '',
       'labeled-group-node': '',
       'node-header': '',
-    }
+    },
   },
   edges: {
     items: {
       'button-edge': '',
       'data-edge': '',
-    }
+    },
   },
   controls: {
     items: {
-      'zoom-slider': ''
-    }
+      'zoom-slider': '',
+    },
   },
   handles: {
     items: {
       'labeled-handle': '',
-    }
+    },
   },
   misc: '',
   _: {
-    type: 'separator'
+    type: 'separator',
   },
   'request-a-component': {
     href: 'https://github.com/xyflow/web/discussions/new?category=ui-component-requests',
   },
-}
-const examples: MetaRecord = {
+};
+const examples = {
   index: {
     theme: {
-      breadcrumb: false
-    }
+      breadcrumb: false,
+    },
   },
   overview: '',
-  nodes: '',
+  nodes: {
+    items: {
+      'custom-node': '',
+      'update-node': '',
+      stress: '',
+      hidden: '',
+      'drag-handle': '',
+      'easy-connect': '',
+      'add-node-on-edge-drop': '',
+      'proximity-connect': '',
+      'node-resizer': '',
+      'node-toolbar': '',
+      'rotatable-node': '',
+      'dynamic-grouping': '',
+      intersections: '',
+      shapes: '',
+    },
+  },
   edges: '',
   layout: '',
   interaction: '',
-  styling: ''
-}
+  styling: '',
+};
 const metaRecord = {
   '*': {
     type: 'page',
@@ -127,8 +144,8 @@ const metaRecord = {
   examples: {
     items: examples,
     theme: {
-      toc: false
-    }
+      toc: false,
+    },
   },
   components: { items: components },
   showcase: '',

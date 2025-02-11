@@ -429,11 +429,11 @@ and configure the loader like this:
 ### Mouse events aren't working consistently when my nodes contain a `<canvas />` element.
 
 If you're using a `<canvas />` element inside your custom node, you might run into
-problems with seemingly-incorrect coordinates in mouse events from the cavnas.
+problems with seemingly-incorrect coordinates in mouse events from the canvas.
 
 React Flow uses CSS transforms to scale nodes as you zoom in and out. From the DOM's
 perspective, however, the element is still the same size. This can cause problems
-if you have event listeners that want to calcuate the mouse position relative to
+if you have event listeners that want to calculate the mouse position relative to
 the canvas element.
 
 To remedy this in event handlers you control, you can scale your computed relative
