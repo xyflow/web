@@ -4,7 +4,28 @@ const metaRecord = {
   '*': {
     type: 'page'
   },
-  learn: 'Learn',
+  learn: {
+    items: {
+      index: '',
+      concepts: {
+        items: {
+          introduction: '',
+          'terms-and-definitions': '',
+          'core-concepts': '',
+          'the-viewport': ''
+        }
+      },
+      'getting-started': '',
+      customization: 'Customizing React Flow',
+      layouting: '',
+      'advanced-use': '',
+      tutorials: '',
+      troubleshooting: '',
+      'api-reference': {
+        href: '/api-reference',
+      },
+    }
+  },
   'api-reference': {
     title: 'Reference',
     items: {

@@ -102,6 +102,7 @@ const RootLayout: FC<{
           }}
           sidebar={{
             toggleButton: false,
+            defaultMenuCollapseLevel: 1
           }}
         >
           {children}
