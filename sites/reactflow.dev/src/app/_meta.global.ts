@@ -35,15 +35,6 @@ const metaRecord = {
   '*': {
     type: 'page',
   },
-  index: {
-    display: 'hidden',
-  },
-  'developer-survey-2023': {
-    display: 'hidden',
-  },
-  'developer-survey-2024': {
-    display: 'hidden'
-  },
   learn: {
     items: {
       index: '',
@@ -73,50 +64,23 @@ const metaRecord = {
       'react-flow-provider': '',
     },
   },
-  examples: 'Examples',
-  components: {
-    title: 'Components',
-  },
-  showcase: {
-    title: 'Showcase',
-  },
-  community: {
+  examples: '',
+  components: '',
+  showcase: '',
+  more: {
     title: 'More',
     type: 'menu',
     items: {
-      'whats-new': {
-        title: 'Changelog',
-        href: '/whats-new',
-      },
-      blog: {
-        title: 'Blog',
-        href: 'https://xyflow.com/blog',
-      },
-      // discord: {
-      //   title: 'Discord',
-      //   href: 'https://discord.gg/RVmnytFmGW',
-      // },
-      // github: {
-      //   title: 'Github',
-      //   href: 'https://github.com/xyflow/xyflow',
-      // },
-      contact: {
-        title: 'Contact Us',
-        href: 'https://xyflow.com/contact',
-      },
+      changelog: { href: '/whats-new' },
+      blog: { href: 'https://xyflow.com/blog' },
+      'contact-us': { href: 'https://xyflow.com/contact' },
     },
   },
-  pro: {
-    title: 'Pro',
-    display: 'hidden',
-  },
-  'whats-new': {
-    title: "What's new?",
-    display: 'hidden',
-    theme: {
-      layout: 'full',
-    },
-  }
+  index: { display: 'hidden' },
+  'developer-survey-2023': { display: 'hidden' },
+  'developer-survey-2024': { display: 'hidden' },
+  pro: { display: 'hidden' },
+  'whats-new': { display: 'hidden' },
 };
 
 export default metaRecord;
