@@ -1,16 +1,17 @@
-import { getMdxPagesUnderRoute } from 'xy-shared';
 import { type InternalRoute } from '../routes';
+import { getPageMap } from 'nextra/page-map';
+import { MdxFile } from 'nextra';
 
 export type Category = 'components' | 'hooks' | 'types' | 'utils';
 
-export function getApiReferenceByCategory(
+export async function getApiReferenceByCategory(
   category: Category,
-): { title: string; description: string; route: InternalRoute }[] {
+): Promise<{ title: string; description: string; route: InternalRoute}[]> {
   const route = `/api-reference/${category}` satisfies InternalRoute;
-  const pages = getMdxPagesUnderRoute(route);
+  const pages = await getPageMap(route) as MdxFile[];
 
   return pages.map((page) => ({
-    title: page.frontMatter.displayTitle ?? page.frontMatter.title,
+    title: page.frontMatter.sidebarTitle ?? page.frontMatter.title,
     description: page.frontMatter.description,
     route: page.route as InternalRoute,
   }));
