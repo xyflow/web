@@ -7,13 +7,8 @@ import { SidebarTitle, getMdxPagesUnderRoute } from 'xy-shared';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 import { type Route } from '@/utils';
 
-const ogImage = {
-  url: `https://reactflow.dev/img/og/react-flow-og.jpg`,
-};
-
 export default {
   sidebar: {
-    toggleButton: false,
     titleComponent: SidebarTitle,
   },
   navbar: {
@@ -149,17 +144,5 @@ export default {
   },
   feedback: {
     useLink: () => 'https://xyflow.com/contact',
-  },
-  head() {
-    // We are not allowed to render components inside head!
-    // https://github.com/shuding/nextra/issues/3529
-    return ogImage && (
-      <>
-        <meta property="og:image" content={ogImage.url} />
-        <meta property="og:image:alt" content="Teaser" />
-        <meta property="og:image:width" content={'1200'} />
-        <meta property="og:image:height" content={'640'} />
-      </>
-    )
   },
 };

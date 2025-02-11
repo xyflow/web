@@ -6,7 +6,7 @@ import type { FC, ReactNode } from 'react';
 import reactFlowPackageJson from '@xyflow/react/package.json';
 import { Search } from './search';
 import { Footer } from './footer';
-import { ntDapperFont, fontClassNames } from 'xy-shared/fonts';
+import { ntDapperFont } from 'xy-shared/fonts';
 import { LogoLabel } from '@xyflow/xy-ui';
 import { Folder, MdxFile } from 'nextra';
 import { SidebarTitle } from 'xy-shared';
@@ -16,7 +16,7 @@ const APP_NAME = 'React Flow';
 
 export const metadata: Metadata = {
   description: `${APP_NAME} - Customizable library for rendering workflows, diagrams and node-based UIs.`,
-  // metadataBase: new URL('https://nextra.site'),
+  metadataBase: new URL(reactFlowPackageJson.homepage),
   keywords: reactFlowPackageJson.keywords,
   generator: 'Next.js',
   applicationName: APP_NAME,
