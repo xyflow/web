@@ -5,23 +5,31 @@ import {
   Hero,
   ProjectPreview,
   SubscribeSection,
-  getMdxPagesUnderRoute,
 } from 'xy-shared';
+import { Metadata } from 'next';
+import { getPageMap } from 'nextra/page-map';
+import { MdxFile } from 'nextra';
+import { FC } from 'react';
 
-export default function CaseStudies() {
+export const metadata: Metadata = {
+  title: 'React Flow Pro Case Studies',
+  description: 'Case studies and success stories from some of our React Flow Pro subscribers.'
+}
+
+const Page: FC = async () => {
   return (
     <BaseLayout>
       <Hero
         title="What Pro Subscribers build with React Flow"
         subtitle="See how our users build custom node-based apps like workflow editors and diagramming tools"
         kicker="Case Studies"
-        kickerIcon={SparklesIcon}
+        kickerIcon={<SparklesIcon/>}
         align="center"
         backgroundVariant="image"
       />
       <ContentGrid className="mt-20">
-        {getMdxPagesUnderRoute('/pro/case-studies')
-          .filter((page) => page.name !== 'index')
+        {(await getPageMap('/pro/case-studies'))
+          .filter((page): page is MdxFile => 'name' in page && page.name !== 'index')
           .map((page) => {
             return (
               <ContentGridItem key={page.route} route={page.route}>
@@ -43,3 +51,5 @@ export default function CaseStudies() {
     </BaseLayout>
   );
 }
+
+export default Page
