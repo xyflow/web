@@ -3,7 +3,6 @@ export * from './layouts/base';
 export * from './layouts/blog-post-base';
 export * from './layouts/blog-post';
 export * from './layouts/breakout';
-export * from './layouts/case-study';
 export * from './layouts/example';
 export * from './layouts/showcase';
 export * from './layouts/text-only';
