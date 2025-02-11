@@ -37,17 +37,39 @@ const troubleshooting: MetaRecord = {
   'migrate-to-v11': '',
   'migrate-to-v10': '',
 }
-const components: MetaRecord = {
+const components = {
   'index': {
     title: 'Introduction',
     theme: {
       toc: false
     }
   },
-  nodes: '',
-  edges: '',
-  controls: '',
-  handles: '',
+  nodes: {
+    items: {
+      'tooltip-node': '',
+      'placeholder-node': '',
+      'database-schema-node': '',
+      'annotation-node': '',
+      'labeled-group-node': '',
+      'node-header': '',
+    }
+  },
+  edges: {
+    items: {
+      'button-edge': '',
+      'data-edge': '',
+    }
+  },
+  controls: {
+    items: {
+      'zoom-slider': ''
+    }
+  },
+  handles: {
+    items: {
+      'labeled-handle': '',
+    }
+  },
   misc: '',
   _: {
     type: 'separator'
@@ -55,6 +77,19 @@ const components: MetaRecord = {
   'request-a-component': {
     href: 'https://github.com/xyflow/web/discussions/new?category=ui-component-requests',
   },
+}
+const examples: MetaRecord = {
+  index: {
+    theme: {
+      breadcrumb: false
+    }
+  },
+  overview: '',
+  nodes: '',
+  edges: '',
+  layout: '',
+  interaction: '',
+  styling: ''
 }
 const metaRecord = {
   '*': {
@@ -89,7 +124,12 @@ const metaRecord = {
       'react-flow-provider': '',
     },
   },
-  examples: '',
+  examples: {
+    items: examples,
+    theme: {
+      toc: false
+    }
+  },
   components: { items: components },
   showcase: '',
   more: {
