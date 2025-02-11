@@ -443,16 +443,20 @@ the current zoom level, you can use the `getZoom` method from the
 
 ### Edges are not displaying.
 
-A lot of times developers run into problems regarding edges not displaying. This might happen due to the following reasons:
+A lot of times edges are not displaying in reactflow. This might happen due to one of the following reasons:
 
-- You have not imported the reactflow stylesheet. If you haven't imported it, you can import it like `import '@xyflow/react/dist/style.css';`
-- If you have replaced your default nodes with a custom node, check if that custom node has appropriate source/target handles.
-- If you are using some external styling library like tailwind, bulma etc, check if that particular library is not overriding the edge styles. If yes, debug which styles are being effected by that particular styling library and override those styles with reactflow compatible styles. e.g in some cases styling libraries override the `.react-flow__edges svg` styles to have `overflow: hidden` which results in the edge not showing. 
-- If edges were displaying before and not displaying now, check if you have added more than 1 handles of the same type(`source` or `target`) in your custom node component. If that is the case, assign ids to them. Multiple handles on a node of the same type need to have distinguishable ids. 
-- If edges were displaying before and not displaying now, also check if you have not changed the handle ids by mistake since edges are made corresponding to those handle ids in case of multiple node handles of the same type. If that is the case, revert the handle id to what it was before.
-- If you are hiding your handles using an async operation(a request to the backend etc), 
+- You have not imported the reactflow stylesheet. If you haven't imported it, you can import it like `import '@xyflow/react/dist/style.css';`.
+- If you have replaced your default nodes with a custom node, check if that custom node has appropriate `source/target` handles present in the custom node component. An edge cannot be made without a handle.
+- If you are using some external styling library like `tailwind`, `bulma` etc, check if that particular library is not overriding the edge styles. If yes, debug which styles are being affected by that particular styling library and override those styles with reactflow compatible styles. e.g, in some cases styling libraries override the `.react-flow__edges svg` selector to have a `overflow: hidden` style, which results in the edges not displaying. 
+- If you are showing your handles using an async operation(a request to the backend etc), make sure to call the `updateNodeInternals` function returned by the [`useUpdateNodeInternals`](/api-reference/hooks/use-update-node-internals) hook, after the async operation, to tell reactflow to update handle position internally.
 
 
 ### Edges are not displaying properly.
-- If you want to hide your handles, do not use `display: none` to hide them, you can use either `opacity: 0` or `visibility: hidden` on those handles.
-- If your edges are 
+
+A lot of times edges are displaying, but not as they should. This could happen due to one of the following reasons:
+
+- If you want to hide your handles, do not use `display: none` to hide them. You can either use `opacity: 0` or `visibility: hidden`.
+- If edges are not displaying against the appropriate handle, check if you have added more than 1 handles of the same type(`source` or `target`) in your custom node component. If that is the case, assign ids to them. Multiple handles of the same type, on a node, need to have distinguishable ids, so that reactflow knows which handle does an edge correspond to. 
+- If you are changing the position of the handles(via reordering etc), make sure to call the `updateNodeInternals` function returned by the [`useUpdateNodeInternals`](/api-reference/hooks/use-update-node-internals) hook, after you do that operation, to tell reactflow to update handle position internally.
+- If you are using a custom edge and you want your edge to go from the source handle to a target handle, make sure to properly pass the `sourceX, sourceY, targetX, targetY` props you get from the custom edge component in the edge path creation function(e.g [`getBezierPath`](https://reactflow.dev/api-reference/utils/get-bezier-path) etc). `sourceX, sourceY` and `targetX, targetY` represent the `x,y` coordinates for the source and target handle respectively.
+- If the custom edge from the source or target side is not going towards the handle as expected, make sure to pass the `sourcePosition, targetPosition` props you get from the custom edge component in the edge path creation function(e.g [`getBezierPath`](https://reactflow.dev/api-reference/utils/get-bezier-path) etc). Passing the `source/target` handle position in the path creation function, is necessary for the edge, to properly start or end at a handle.
