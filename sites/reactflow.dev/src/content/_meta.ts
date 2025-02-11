@@ -14,13 +14,9 @@ export default {
   },
   showcase: {
     title: 'Showcase',
-    theme: {
-      layout: 'raw',
-    },
   },
   community: {
     title: 'More',
-    // display: 'hidden',
     type: 'menu',
     items: {
       'whats-new': {
@@ -48,19 +44,9 @@ export default {
   index: {
     display: 'hidden'
   },
-  // showcase: {
-  //   title: 'Showcase',
-  //   display: 'hidden',
-  //   theme: {
-  //     layout: 'raw',
-  //   },
-  // },
   pro: {
     title: 'Pro',
     display: 'hidden',
-    theme: {
-      layout: 'raw',
-    },
   },
   'whats-new': {
     title: "What's new?",
@@ -71,9 +57,6 @@ export default {
   },
   'developer-survey-2023': {
     display: 'hidden',
-    theme: {
-      layout: 'raw',
-    },
   },
   'developer-survey-2024': {
     display: 'hidden',

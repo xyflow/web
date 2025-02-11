@@ -7,9 +7,6 @@ export default {
   'advanced-use': 'Advanced Use',
   tutorials: {
     title: 'Tutorials',
-    theme: {
-      layout: 'raw',
-    },
   },
   troubleshooting: 'Troubleshooting',
   'api-link': {

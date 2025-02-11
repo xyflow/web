@@ -5,7 +5,6 @@ export default {
       toc: false,
       sidebar: false,
       pagination: false,
-      layout: 'raw',
     },
   },
   index: {
