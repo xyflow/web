@@ -1,3 +1,5 @@
+'use client'
+
 import { useRouter } from 'next/router';
 import { cn } from '@xyflow/xy-ui';
 
@@ -12,7 +14,7 @@ const fathomOptions = {
   domains: ['reactflow.dev'],
 };
 
-const sharedContext = { useConfig, useData };
+// const sharedContext = { useConfig, useData };
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
@@ -28,9 +30,9 @@ export default function App({ Component, pageProps }) {
         }
       `}</style>
       <div className={cn(fontClassNames, routeSegment)}>
-        <SharedContext.Provider value={sharedContext}>
+        {/*<SharedContext.Provider value={sharedContext}>*/}
           <Component {...pageProps} />
-        </SharedContext.Provider>
+        {/*</SharedContext.Provider>*/}
       </div>
     </>
   );

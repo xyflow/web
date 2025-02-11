@@ -1,74 +1,77 @@
 import { MetaRecord } from 'nextra';
 
+const concepts: MetaRecord = {
+  introduction: '',
+  'terms-and-definitions': '',
+  'core-concepts': '',
+  'the-viewport': '',
+};
+const gettingStarted: MetaRecord = {
+  'installation-and-requirements': '',
+  'building-a-flow': '',
+};
+const customization: MetaRecord = {
+  'custom-nodes': '',
+  'custom-node-props': { href: '/api-reference/types/node-props' },
+  'custom-edges': '',
+  'custom-edge-props': { href: '/api-reference/types/edge-props' },
+};
+const advanced: MetaRecord = {
+  accessibility: '',
+  testing: '',
+  typescript: '',
+  'uncontrolled-flow': '',
+  'state-management': '',
+  'computing-flows': '',
+  'ssr-ssg-configuration': '',
+};
+const tutorials: MetaRecord = {
+  'slide-shows-with-react-flow': '',
+  'react-flow-and-the-web-audio-api': '',
+  'mind-map-app-with-react-flow': '',
+};
+
 const metaRecord = {
   '*': {
-    type: 'page'
+    type: 'page',
+  },
+  index: {
+    display: 'hidden',
+  },
+  'developer-survey-2023': {
+    display: 'hidden',
+  },
+  'developer-survey-2024': {
+    display: 'hidden'
   },
   learn: {
     items: {
       index: '',
-      concepts: {
-        items: {
-          introduction: '',
-          'terms-and-definitions': '',
-          'core-concepts': '',
-          'the-viewport': ''
-        }
-      },
-      'getting-started': {
-        items: {
-          'installation-and-requirements': '',
-          'building-a-flow': ''
-        }
-      },
+      concepts: { items: concepts },
+      'getting-started': { items: gettingStarted },
       customization: {
+        items: customization,
         title: 'Customizing React Flow',
-        items: {
-          'custom-nodes': '',
-          'custom-node-props': {
-            href: '/api-reference/types/node-props'
-          },
-          'custom-edges': '',
-          'custom-edge-props': {
-            href: '/api-reference/types/edge-props'
-          }
-        }
       },
       layouting: '',
-      'advanced-use': {
-        items: {
-          accessibility: '',
-          testing: '',
-          typescript: '',
-          'uncontrolled-flow': '',
-          'state-management': '',
-          'computing-flows': '',
-          'ssr-ssg-configuration': ''
-        }
-      },
+      'advanced-use': { items: advanced },
       tutorials: {
+        items: tutorials,
         theme: {
           toc: false,
         },
-        items: {
-          'slide-shows-with-react-flow': '',
-          'react-flow-and-the-web-audio-api': '',
-          'mind-map-app-with-react-flow': ''
-        }
       },
       troubleshooting: '',
-      'api-reference': {
-        href: '/api-reference',
-      },
-    }
+      'api-reference': { href: '/api-reference' },
+    },
   },
   'api-reference': {
     title: 'Reference',
     items: {
-      'index': '',
+      index: '',
       'react-flow': '',
-      'react-flow-provider': ''
-    }
+      'react-flow-provider': '',
+    },
   },
   examples: 'Examples',
   components: {
@@ -103,9 +106,6 @@ const metaRecord = {
       },
     },
   },
-  index: {
-    display: 'hidden'
-  },
   pro: {
     title: 'Pro',
     display: 'hidden',
@@ -116,16 +116,7 @@ const metaRecord = {
     theme: {
       layout: 'full',
     },
-  },
-  'developer-survey-2023': {
-    display: 'hidden',
-  },
-  'developer-survey-2024': {
-    display: 'hidden',
-    theme: {
-      layout: 'full',
-    },
-  },
+  }
 };
 
 export default metaRecord;
