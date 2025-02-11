@@ -30,7 +30,32 @@ const tutorials: MetaRecord = {
   'react-flow-and-the-web-audio-api': '',
   'mind-map-app-with-react-flow': '',
 };
-
+const troubleshooting: MetaRecord = {
+  index: '',
+  'remove-attribution': '',
+  'migrate-to-v12': '',
+  'migrate-to-v11': '',
+  'migrate-to-v10': '',
+}
+const components: MetaRecord = {
+  'index': {
+    title: 'Introduction',
+    theme: {
+      toc: false
+    }
+  },
+  nodes: '',
+  edges: '',
+  controls: '',
+  handles: '',
+  misc: '',
+  _: {
+    type: 'separator'
+  },
+  'request-a-component': {
+    href: 'https://github.com/xyflow/web/discussions/new?category=ui-component-requests',
+  },
+}
 const metaRecord = {
   '*': {
     type: 'page',
@@ -52,7 +77,7 @@ const metaRecord = {
           toc: false,
         },
       },
-      troubleshooting: '',
+      troubleshooting: { items: troubleshooting },
       'api-reference': { href: '/api-reference' },
     },
   },
@@ -65,7 +90,7 @@ const metaRecord = {
     },
   },
   examples: '',
-  components: '',
+  components: { items: components },
   showcase: '',
   more: {
     title: 'More',
