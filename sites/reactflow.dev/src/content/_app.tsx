@@ -3,9 +3,6 @@
 import { useRouter } from 'next/router';
 import { cn } from '@xyflow/xy-ui';
 
-import { useData } from 'nextra/hooks';
-import { useConfig } from 'nextra-theme-docs';
-
 import { SharedContext, useFathom } from 'xy-shared';
 import { ntDapperFont, fontClassNames } from 'xy-shared/fonts';
 
