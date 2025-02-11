@@ -15,10 +15,37 @@ const metaRecord = {
           'the-viewport': ''
         }
       },
-      'getting-started': '',
-      customization: 'Customizing React Flow',
+      'getting-started': {
+        items: {
+          'installation-and-requirements': '',
+          'building-a-flow': ''
+        }
+      },
+      customization: {
+        title: 'Customizing React Flow',
+        items: {
+          'custom-nodes': '',
+          'custom-node-props': {
+            href: '/api-reference/types/node-props'
+          },
+          'custom-edges': '',
+          'custom-edge-props': {
+            href: '/api-reference/types/edge-props'
+          }
+        }
+      },
       layouting: '',
-      'advanced-use': '',
+      'advanced-use': {
+        items: {
+          accessibility: '',
+          testing: '',
+          typescript: '',
+          'uncontrolled-flow': '',
+          'state-management': '',
+          'computing-flows': '',
+          'ssr-ssg-configuration': ''
+        }
+      },
       tutorials: '',
       troubleshooting: '',
       'api-reference': {
