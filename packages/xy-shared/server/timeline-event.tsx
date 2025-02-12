@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Text } from '@xyflow/xy-ui';
-import { Author, AuthorList } from '../';
-import { TimeAgo } from './time-ago';
+import { Author, AuthorList } from '../index';
+import { TimeAgo } from '../components/time-ago';
 import { importPage } from 'nextra/pages';
 
 export type TimelineEventProps = {

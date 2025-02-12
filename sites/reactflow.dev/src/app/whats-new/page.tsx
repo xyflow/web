@@ -1,5 +1,6 @@
 import { PencilSquareIcon } from '@heroicons/react/24/outline';
-import { BaseLayout, Hero, TimelineEvent, TimelineEventProps } from 'xy-shared';
+import { BaseLayout, Hero } from 'xy-shared';
+import { TimelineEvent, TimelineEventProps } from 'xy-shared/server';
 import { FC } from 'react';
 import { Metadata } from 'next';
 import { getLastChangelog } from '@/utils';
@@ -11,7 +12,6 @@ export const metadata: Metadata = {
 
 const Page: FC = async () => {
   const pageMap = await getLastChangelog();
-
   return (
     <BaseLayout className="space-y-32 max-w-screen-lg mx-auto">
       <Hero

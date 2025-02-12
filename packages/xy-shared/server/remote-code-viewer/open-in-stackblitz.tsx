@@ -1,3 +1,5 @@
+'use client'
+
 import { useCallback } from 'react';
 import sdk, { Project, ProjectTemplate, OpenOptions } from '@stackblitz/sdk';
 
