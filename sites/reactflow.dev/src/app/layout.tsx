@@ -1,17 +1,17 @@
-import type { Metadata } from 'next';
-import { Navbar, Layout } from 'nextra-theme-docs';
-import { Head } from 'nextra/components';
-import { getPageMap } from 'nextra/page-map';
 import type { FC, ReactNode } from 'react';
+import type { Metadata } from 'next';
+import { Folder, MdxFile } from 'nextra';
+import { getPageMap } from 'nextra/page-map';
+import { Head, Anchor } from 'nextra/components';
+import { Navbar, Layout } from 'nextra-theme-docs';
+import { SparklesIcon } from '@heroicons/react/24/outline';
 import reactFlowPackageJson from '@xyflow/react/package.json';
+import { Button, LogoLabel } from '@xyflow/xy-ui';
+import { SidebarTitle, Search } from 'xy-shared';
+import { ntDapperFont } from 'xy-shared/fonts';
+import { getLastChangelog } from '@/utils';
 import { Footer } from '@/components/footer';
 import { ClientNavbar } from '@/components/navbar.client';
-import { ntDapperFont } from 'xy-shared/fonts';
-import { Button, LogoLabel } from '@xyflow/xy-ui';
-import { Folder, MdxFile } from 'nextra';
-import { SidebarTitle, Search } from 'xy-shared';
-import Link from 'next/link';
-import { SparklesIcon } from '@heroicons/react/24/outline';
 import './global.css';
 
 const APP_NAME = 'React Flow';
@@ -99,9 +99,6 @@ const RootLayout: FC<{
           pageMap={pageMap}
           docsRepositoryBase="https://github.com/xyflow/web/tree/main/sites/reactflow.dev"
           editLink="Edit this page on GitHub"
-          darkMode={false}
-          // Set to null to avoid rendering search in mobile nav, since we added search in navbar already
-          search={null}
           nextThemes={{
             forcedTheme: 'light',
             defaultTheme: 'light',
@@ -110,8 +107,13 @@ const RootLayout: FC<{
             toggleButton: false,
             defaultMenuCollapseLevel: 1,
           }}
+          // Set to null to avoid rendering search in mobile nav, since we added search in navbar already
+          search={null}
+          feedback={{ content: null }}
+          darkMode={false}
           toc={{
             backToTop: null,
+            extraContent: <Toc />,
           }}
         >
           {children}
@@ -121,6 +123,10 @@ const RootLayout: FC<{
   );
 };
 
+const classes = {
+  tocLink:
+    'x:focus-visible:nextra-focus x:transition x:text-gray-600 x:dark:text-gray-400 x:hover:text-gray-800 x:dark:hover:text-gray-200 x:contrast-more:text-gray-700 x:contrast-more:dark:text-gray-100',
+};
 const navbar = (
   <Navbar
     logo={
@@ -165,14 +171,32 @@ const navbar = (
         </svg>
       </a>
       <Button className="px-4 flex gap-1" asChild>
-        <Link href="/pro">
+        <Anchor href="/pro">
           <SparklesIcon className="w-4 h-4" />
           <span className="max-[1100px]:hidden">React Flow</span>
           Pro
-        </Link>
+        </Anchor>
       </Button>
     </ClientNavbar>
   </Navbar>
 );
+const Toc: FC = async () => {
+  const changelog = await getLastChangelog();
+  return (
+    <div className="grid gap-2 x:text-xs x:font-medium">
+      <Anchor href="https://xyflow.com/contact" className={classes.tocLink}>
+        Question? Give us feedback
+      </Anchor>
+      <p className="font-bold mt-4">What's new?</p>
+      {[...changelog, { route: '/whats-new', title: '...and more!' }]
+        .slice(0, 3)
+        .map(({ route, title }) => (
+          <Anchor key={route} href={route} className={classes.tocLink}>
+            {title}
+          </Anchor>
+        ))}
+    </div>
+  );
+};
 
 export default RootLayout;

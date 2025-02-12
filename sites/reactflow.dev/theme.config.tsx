@@ -36,34 +36,4 @@ export default {
       return <Navbar {...props} />;
     },
   },
-  toc: {
-    extraContent: () => {
-      const className =
-        '_text-xs _font-medium _text-gray-500 hover:_text-gray-900 dark:_text-gray-400 dark:hover:_text-gray-100 contrast-more:_text-gray-800 contrast-more:dark:_text-gray-50';
-
-      return (
-        <div className="_mt-4 _flex _flex-col _gap-2">
-          <p className="_text-xs _font-semibold _tracking-tight _text-gray-600 dark:_text-gray-200 contrast-more:_text-gray-900 contrast-more:dark:_text-gray-50">
-            What's new?
-          </p>
-          {getMdxPagesUnderRoute('/whats-new')
-            .sort((a, b) =>
-              b.frontMatter.date.localeCompare(a.frontMatter.date),
-            )
-            .slice(0, 3)
-            .map(({ route, frontMatter }) => (
-              <Link key={route} href={route} className={className}>
-                {frontMatter.title}
-              </Link>
-            ))}
-          <Link href="/whats-new" className={className}>
-            ...and more!
-          </Link>
-        </div>
-      );
-    },
-  },
-  feedback: {
-    useLink: () => 'https://xyflow.com/contact',
-  },
 };
