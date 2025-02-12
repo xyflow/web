@@ -1,10 +1,8 @@
 ---
-title: Node-Based UIs in React
-description: Highly customizable React library for workflow builders, no-code apps, image processing, visualizers, and more
+
 ---
 
 import getStaticPropsStats from '@/utils/get-static-props/github-npm-stats';
-import { getMdxContentUnderRoute } from 'xy-shared/server';
 
 export async function getStaticProps() {
   const whatsNew = await getMdxContentUnderRoute('reactflow.dev', '/whats-new');

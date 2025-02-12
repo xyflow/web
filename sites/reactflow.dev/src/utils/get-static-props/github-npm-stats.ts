@@ -23,6 +23,5 @@ export default async function getStaticProps() {
   return {
     stars,
     downloads,
-    revalidate: 60 * 60,
   };
 }

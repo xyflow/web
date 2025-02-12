@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { useData } from 'nextra/hooks';
 import { Button, Section, Stats } from '@xyflow/xy-ui';
 import {
   BaseLayout,
@@ -20,6 +19,14 @@ import FlowC from './flows/flow-c';
 
 import type { InternalRoute } from '@/utils';
 import WhatsNewPreview from '@/components/whats-new-preview';
+import { Metadata } from 'next';
+
+export const revalidate = 3600 // 60 * 60
+
+export const metadata: Metadata = {
+  title: 'Node-Based UIs in React',
+  description: 'Highly customizable React library for workflow builders, no-code apps, image processing, visualizers, and more'
+}
 
 const features = [
   {
@@ -27,7 +34,7 @@ const features = [
     text: 'The things you need are already there: dragging nodes, zooming, panning, selecting multiple nodes, and adding/removing elements are all built-in.',
     route: '/learn' satisfies InternalRoute,
     linkLabel: 'Get started',
-    flowComponent: FlowA,
+    flowComponent: <FlowA />,
   },
   {
     title: (
@@ -40,13 +47,13 @@ const features = [
     text: 'React Flow nodes are simply React components, ready for your interactive elements. We play nice with Tailwind and plain old CSS.',
     route: '/learn/customization/custom-nodes' satisfies InternalRoute,
     linkLabel: 'Custom nodes guide',
-    flowComponent: FlowB,
+    flowComponent: <FlowB />,
   },
   {
     title: 'All the right plugins',
     text: 'Make more advanced apps with the Background, Minimap, Controls, Panel, NodeToolbar, and NodeResizer components.',
     route: '/learn/concepts/built-in-components' satisfies InternalRoute,
-    flowComponent: FlowC,
+    flowComponent: <FlowC />,
   },
 ];
 
@@ -90,8 +97,7 @@ const sliderItems = [
 ];
 
 export default function ReactFlowHome() {
-  const { stars = 23000, downloads = 4000, whatsNew = [] } = useData();
-
+  const { stars = 23000, downloads = 4000, whatsNew = [] } = {} //useData();
   return (
     <BaseLayout>
       <HeroFlow
