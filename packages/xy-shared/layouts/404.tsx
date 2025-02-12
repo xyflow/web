@@ -79,7 +79,7 @@ export function NotFoundLayout({ children }: NotFoundLayoutProps) {
       >
         <div className="flex flex-col items-center -mt-[40px]">
           <Text size="lg" className="block">
-            We couldn't find that page.
+            We couldn&apos;t find that page.
           </Text>
           <Link href="/">
             <Text>

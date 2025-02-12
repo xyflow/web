@@ -1,5 +1,8 @@
+import { FC } from 'react';
+import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
+import { SparklesIcon, BoltIcon } from '@heroicons/react/24/outline';
 import { Button, Section, Stats } from '@xyflow/xy-ui';
 import {
   BaseLayout,
@@ -10,17 +13,12 @@ import {
   AboutSection,
   ProjectCards,
 } from 'xy-shared';
-import { SparklesIcon, BoltIcon } from '@heroicons/react/24/outline';
 import ClientLogos from '@/components/client-logos';
-
-import FlowA from './flows/flow-a';
-import FlowB from './flows/flow-b';
-import FlowC from './flows/flow-c';
-
-import { fetchGitHubNpmStats, getLastChangelog, InternalRoute } from '@/utils';
 import WhatsNewPreview from '@/components/whats-new-preview';
-import { Metadata } from 'next';
-import { FC } from 'react';
+import { fetchGitHubNpmStats, getLastChangelog, InternalRoute } from '@/utils';
+import { FlowA } from './flows/flow-a';
+import { FlowB } from './flows/flow-b';
+import { FlowC } from './flows/flow-c';
 
 export const revalidate = 3600 // 60 * 60
 

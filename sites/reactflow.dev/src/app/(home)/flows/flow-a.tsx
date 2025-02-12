@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import { ReactFlow, Background, Controls } from '@xyflow/react';
 
 const nodes = [
@@ -26,7 +27,7 @@ const edges = [
 const proOptions = { hideAttribution: true };
 const fitViewOptions = { padding: 0.4 };
 
-export default function Flow() {
+export const FlowA: FC = () => {
   return (
     <ReactFlow
       id="a"

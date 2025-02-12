@@ -1,10 +1,10 @@
 import { useRouter } from 'next/router';
-import { Navbar } from 'nextra-theme-docs';
 import { type Route } from '@/utils';
+import { useIsPro } from '@/utils/use-is-pro';
 
-export default {
+const config = {
   navbar: {
-    component: (props) => {
+    component: function Navbar(props) {
       const router = useRouter();
       const isPro = useIsPro();
       const isProSubpage = isPro && router.pathname !== '/pro';

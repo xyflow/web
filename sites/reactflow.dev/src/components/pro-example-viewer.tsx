@@ -1,13 +1,11 @@
+import { FC } from 'react';
 import Link from 'next/link';
 import { Container, ContainerProps, Text, Button, cn } from '@xyflow/xy-ui';
 
-export default function ({
-  slug,
-  variant = 'default',
-}: {
+const ProExampleViewer: FC<{
   slug: string;
   variant?: ContainerProps['variant'];
-}) {
+}> = ({ slug, variant = 'default' }) => {
   const isLightMode = variant === 'default';
 
   const teaserClasses = cn(
@@ -50,4 +48,6 @@ export default function ({
       </div>
     </Container>
   );
-}
+};
+
+export default ProExampleViewer;

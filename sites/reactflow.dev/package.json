@@ -7,7 +7,7 @@
     "build": "next build",
     "postbuild": "next-sitemap",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint --ext ts,tsx .",
     "write-showcases": "rm -rf static/img/showcase && mkdir -p static/img/showcase && node scripts/get-showcases.js",
     "check-sitemap": "node scripts/check-sitemap.mjs",
     "generate-routes-type": "node scripts/generate-routes-type.mjs",

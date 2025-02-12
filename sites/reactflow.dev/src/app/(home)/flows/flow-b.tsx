@@ -1,6 +1,7 @@
-'use client'
+'use client';
 
-import { useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
+import { NodeWrapper } from 'xy-shared';
 import {
   ReactFlow,
   Controls,
@@ -11,7 +12,6 @@ import {
   useNodesInitialized,
   useReactFlow,
 } from '@xyflow/react';
-import { NodeWrapper } from 'xy-shared';
 import {
   Input,
   Select,
@@ -120,7 +120,7 @@ function Flow() {
   );
 }
 
-export default () => (
+export const FlowB: FC = () => (
   <ReactFlowProvider>
     <Flow />
   </ReactFlowProvider>

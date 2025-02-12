@@ -1,5 +1,6 @@
 'use client'
 
+import { FC } from 'react';
 import {
   ReactFlow,
   Background,
@@ -100,7 +101,7 @@ const proOptions = { hideAttribution: true };
 const fitViewOptions = { padding: 0.2 };
 const nodeColor = (node) => node.style.backgroundColor || '#eee';
 
-export default function Flow() {
+export const FlowC: FC = () => {
   return (
     <ReactFlow
       id="c"

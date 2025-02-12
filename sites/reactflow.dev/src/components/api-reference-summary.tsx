@@ -1,21 +1,21 @@
 import { ArrowRightIcon } from '@heroicons/react/24/solid';
 import Link from 'next/link';
-
 import {
   getApiReferenceByCategory,
   type Category,
 } from '@/utils/api-reference-by-category';
-import { useMDXComponents } from '@/mdx-components';
+import { useMDXComponents as getMdxComponents } from '@/mdx-components';
 
 export type ApiReferenceSummaryProps = {
   category: Category;
 };
 
+const { h2: H2, p: P } = getMdxComponents();
+
 export async function ApiReferenceSummary({
   category,
 }: ApiReferenceSummaryProps) {
   const pages = await getApiReferenceByCategory(category);
-  const { h2: H2, p: P } = useMDXComponents();
   return (
     <div>
       {pages.map(({ title, description, route }) => {
