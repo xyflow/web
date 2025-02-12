@@ -9,18 +9,9 @@ image: /img/tutorials/webaudio/web-audio-blog-thumb.png
 ---
 
 import { Callout, Tabs, Bleed } from 'nextra/components';
-import { Embed, Image, RemoteCodeViewer, TutorialLayout } from 'xy-shared';
+import { Embed, Image, TutorialLayout } from 'xy-shared';
 import { Emoji } from '@xyflow/xy-ui';
-
-import { getStaticCode } from 'xy-shared/server';
-export const getStaticProps = getStaticCode([
-  'tutorials/webaudio/mouse-theremin',
-  'tutorials/webaudio/state-management',
-  'tutorials/webaudio/custom-node',
-  'tutorials/webaudio/custom-nodes',
-  'tutorials/webaudio/hardcoded-audio',
-  'tutorials/webaudio/demo',
-]);
+import { RemoteCodeViewer } from 'xy-shared/server';
 
 <TutorialLayout>
 Today we'll be looking at how to create an interactive audio playground using React

@@ -3,6 +3,8 @@ sidebarTitle: The Viewport
 description: Learn how to customize the panning and zooming behaviour of React Flow.
 ---
 
+import { RemoteCodeViewer } from 'xy-shared/server';
+
 # Panning and Zooming
 
 The default pan and zoom behaviour of React Flow is inspired by [slippy maps](https://wiki.openstreetmap.org/wiki/Slippy_map). You pan by dragging and zoom by scrolling. You can customize this behaviour easily with the provided props:
@@ -26,12 +28,6 @@ As mentioned above, the default controls are:
 - pan: drag mouse
 - zoom: scroll
 - create selection: Shift + drag
-
-import { RemoteCodeViewer } from 'xy-shared';
-
-import { getStaticCode } from 'xy-shared/server';
-export const getStaticProps = getStaticCode(['learn/zoom-pan', 'learn/zoom-pan-2']);
-
 
 <RemoteCodeViewer route="learn/zoom-pan" framework="react" />
 

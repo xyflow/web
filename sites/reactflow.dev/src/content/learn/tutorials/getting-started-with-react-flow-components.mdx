@@ -9,14 +9,9 @@ image: ''
 ---
 
 import { Callout, Bleed } from 'nextra/components';
-import { Image, RemoteCodeViewer, TutorialLayout } from 'xy-shared';
+import { Image, TutorialLayout } from 'xy-shared';
 import { Emoji } from '@xyflow/xy-ui';
-import { getStaticCode } from 'xy-shared/server';
-export const getStaticProps = getStaticCode([
-  'tutorials/components/tooltip',
-  'tutorials/components/num-node',
-  'tutorials/components/complete',
-]);
+import { RemoteCodeViewer } from 'xy-shared/server';
 
 <TutorialLayout>
 Recently, we launched an exciting new addition to our open-source roster: React

@@ -12,19 +12,9 @@ image: /img/tutorials/presentation/slideshow-thumb.png
 ---
 
 import { Cards, Callout, Bleed } from 'nextra/components';
-import { Image, RemoteCodeViewer, TutorialLayout } from 'xy-shared';
+import { Image, TutorialLayout } from 'xy-shared';
 import { Emoji } from '@xyflow/xy-ui';
-
-import { getStaticCode } from 'xy-shared/server';
-export const getStaticProps = getStaticCode([
-  'tutorials/presentation/app',
-  'tutorials/presentation/scaffold',
-  'tutorials/presentation/rendering-markdown',
-  'tutorials/presentation/layout-demo',
-  'tutorials/presentation/focus-on-click',
-  'tutorials/presentation/slide-controls',
-  'tutorials/presentation/app',
-]);
+import { RemoteCodeViewer } from 'xy-shared/server';
 
 <TutorialLayout>
 We recently published the findings from our React Flow 2023 end-of-year survey with an [interactive presentation](/developer-survey-2023) of the key findings, using React Flow itself. There were lots of useful bits built into this slideshow app, so we wanted to share how we built it!
@@ -32,8 +22,7 @@ We recently published the findings from our React Flow 2023 end-of-year survey w
 <Bleed>
   <Image
     src="/img/tutorials/presentation/survey.png"
-    caption="Our 2023 end of year survey app was made up of many static nodes
-    and buttons to navigate between them."
+    caption="Our 2023 end of year survey app was made up of many static nodes and buttons to navigate between them."
     alt="Screenshot of slides layed out on an infinite canvas, each with information pulled from a survey of React Flow users"
   />
 </Bleed>

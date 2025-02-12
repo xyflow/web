@@ -3,12 +3,8 @@ title: Intersections
 description: Detect when a node overlaps with another node
 ---
 
-import { RemoteCodeViewer } from 'xy-shared';
 import { ExampleLayout } from 'xy-shared';
-
-import { getStaticCode } from 'xy-shared/server';
-export const getStaticProps = getStaticCode(['examples/nodes/intersections']);
-
+import { RemoteCodeViewer } from 'xy-shared/server';
 
 <ExampleLayout>
 The `useReactFlow` hook exports [helpers to check intersections](/api-reference/types/react-flow-instance#intersections) of nodes and areas. In this example you can drag a node and get a visual feedback when it intersects with another node.

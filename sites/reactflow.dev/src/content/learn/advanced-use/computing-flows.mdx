@@ -5,17 +5,7 @@ description: Learn how to extend React Flow to compute data going through flow g
 # Computing Flows
 
 import { Callout } from 'nextra/components';
-import { RemoteCodeViewer } from 'xy-shared';
-import { getStaticCode } from 'xy-shared/server';
-
-export const getStaticProps = getStaticCode([
-  'learn/computing',
-  'learn/computing-2',
-  'learn/computing-3',
-  'learn/computing-4',
-  'learn/computing-5',
-  'learn/computing-6',
-]);
+import { RemoteCodeViewer } from 'xy-shared/server';
 
 <Callout type="info">
   For this guide we assume that you already know about the [core
@@ -78,7 +68,7 @@ Next, we'll add a new custom node (`ColorPreview.js`) with one target handle for
 
 <Callout type="info">
   Whenever you have multiple handles of the same kind on a single node, don't
-  forget to give each one a seperate id!
+  forget to give each one a separate id!
 </Callout>
 Let's also add edges going from the input nodes to the color node to our
 `initialEdges` array while we are at it.

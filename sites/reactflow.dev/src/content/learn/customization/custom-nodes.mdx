@@ -2,6 +2,8 @@
 description: Custom nodes in React Flow are just React components. This guide shows you how to implement your own nodes complete with target/source handles.
 ---
 
+import { RemoteCodeViewer } from 'xy-shared/server';
+
 # Custom Nodes
 
 A powerful feature of React Flow is the ability to add custom nodes. Within your custom nodes you can render everything you want. You can define multiple source and target handles and render form inputs or charts for example. In this section we will implement a node with an input field that updates some text in another part of the application.
@@ -67,12 +69,6 @@ const nodes = [
 
 After putting all together and adding some basic styles we get a custom node that prints text to the console:
 
-import { RemoteCodeViewer } from 'xy-shared';
-
-import { getStaticCode } from 'xy-shared/server';
-export const getStaticProps = getStaticCode(['learn/custom-node', 'learn/custom-node-2']);
-
-
 <RemoteCodeViewer route="learn/custom-node" framework="react" />
 
 ## Using Multiple Handles
@@ -89,6 +85,7 @@ const initialEdges = [
 In this case the source node is `node-1` for both handles but the handle ids are different. One comes from handle id `"a"` and the other one from `"b"`. Both edges also have different target nodes:
 
 <RemoteCodeViewer route="learn/custom-node-2" framework="react" />
+
 Note that if you are programmatically changing the position or number of handles
 in your custom node, you will need to use the
 [`useUpdateNodeInternals`](/api-reference/hooks/use-update-node-internals) hook

@@ -2,18 +2,14 @@
 description: Uncontrolled inputs in React manage their own state internally. This guide shows you how to set up and use an uncontrolled flow.
 ---
 
+import { Callout } from 'nextra/components';
+import { RemoteCodeViewer } from 'xy-shared/server';
+
 # Uncontrolled Flow
 
 There are two ways to use React Flow - controlled or uncontrolled. Controlled means, that you are in control of the state of the nodes and edges. In an uncontrolled flow the state of the nodes and edges is handled by React Flow internally. In this part we will show you how to work with an uncontrolled flow.
 
 An implementation of an uncontrolled flow is simpler, because you don't need to pass any handlers:
-
-import { Callout } from 'nextra/components';
-import { RemoteCodeViewer } from 'xy-shared';
-
-import { getStaticCode } from 'xy-shared/server';
-export const getStaticProps = getStaticCode(['learn/uncontrolled', 'learn/uncontrolled-2']);
-
 
 <RemoteCodeViewer route="learn/uncontrolled" framework="react" />
 

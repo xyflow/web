@@ -3,14 +3,10 @@ sidebarTitle: Layouting Libraries
 description: React Flow doesn't include any layouting algorithms out of the box. This guide surveys some of the options out there and shows you how to use them with React Flow.
 ---
 
-# Layouting
-
 import { Callout } from 'nextra/components';
-import { RemoteCodeViewer } from 'xy-shared';
+import { RemoteCodeViewer } from 'xy-shared/server';
 
-import { getStaticCode } from 'xy-shared/server';
-export const getStaticProps = getStaticCode(['learn/layouting-flow-1-empty', 'learn/layouting-flow-2-dagre', 'learn/layouting-flow-3-d3-hierarchy', 'learn/layouting-flow-4-d3-force', 'learn/layouting-flow-6-elkjs']);
-
+# Layouting
 
 We regularly get asked how to handle layouting in React Flow. While we could build
 some basic layouting into React Flow, we believe that **you know your app's
@@ -119,7 +115,7 @@ First, let's see what it does:
 <RemoteCodeViewer route="learn/layouting-flow-4-d3-force" framework="react" />
 
 We've changed our `getLayoutedElements` to a hook called `useLayoutedElements`
-instead. Additonally, instead of passing in the nodes and edges explicitly, we'll
+instead. Additionally, instead of passing in the nodes and edges explicitly, we'll
 use get `getNodes` and `getEdges` functions from the `useReactFlow` hook. This
 is important when combined with the store selector in `initialised` because it
 will prevent us from reconfiguring the simulation any time the nodes update.

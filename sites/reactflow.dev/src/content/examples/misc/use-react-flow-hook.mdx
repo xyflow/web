@@ -3,12 +3,8 @@ title: useReactFlow
 description: A hook with useful helpers for your nodes, edges, and the viewport
 ---
 
-import { RemoteCodeViewer } from 'xy-shared';
 import { ExampleLayout } from 'xy-shared';
-
-import { getStaticCode } from 'xy-shared/server';
-export const getStaticProps = getStaticCode(['examples/misc/use-react-flow-hook']);
-
+import { RemoteCodeViewer } from 'xy-shared/server';
 
 <ExampleLayout>
 This example illustrates how to use the [`useReactFlow` hook](/api-reference/hooks/use-react-flow). It comes with a lot of useful helpers to update your nodes and edges or adjust the viewport of your diagram. The hook returns a [`ReactFlow instance`](/api-reference/types/react-flow-instance).

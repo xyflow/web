@@ -2,15 +2,10 @@
 description: This guide will show you how to add basic interactivity to your flow.
 ---
 
-# Adding Interactivity
-
-import { RemoteCodeViewer } from 'xy-shared';
 import { Callout } from 'nextra/components';
-import { getStaticCode } from 'xy-shared/server';
-export const getStaticProps = getStaticCode([
-  'learn/make-it-interactive-1',
-  'learn/make-it-interactive-2',
-]);
+import { RemoteCodeViewer } from 'xy-shared/server';
+
+# Adding Interactivity
 
 Let's make it so we can select, drag, and remove nodes and edges.
 

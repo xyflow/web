@@ -3,12 +3,7 @@ description: React Flow comes with a minimal default theme. It's common to overw
 ---
 
 import { Callout } from 'nextra/components';
-import { RemoteCodeViewer } from 'xy-shared';
-import { getStaticCode } from 'xy-shared/server';
-export const getStaticProps = getStaticCode([
-  'examples/styling/default-style',
-  'examples/styling/base-style',
-]);
+import { RemoteCodeViewer } from 'xy-shared/server';
 
 # Theming
 
@@ -46,7 +41,7 @@ React Flow's basic look:
 
 ### Built in dark and light mode
 
-You can chose one of the built-in color modes by using the `colorMode` prop ('dark', 'light' or 'system') as seen in the [dark mode example](/examples/styling/dark-mode).
+You can choose one of the built-in color modes by using the `colorMode` prop ('dark', 'light' or 'system') as seen in the [dark mode example](/examples/styling/dark-mode).
 
 ```jsx
 import ReactFlow from '@xyflow/react';

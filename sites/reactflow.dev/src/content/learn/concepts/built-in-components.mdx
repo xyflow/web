@@ -2,6 +2,8 @@
 description: React Flow comes with several built-in components. Here's an overview of the minimap, controls, background, and panel components.
 ---
 
+import { RemoteCodeViewer } from 'xy-shared/server';
+
 # Built-In Components
 
 React Flow comes with several additional components. In this guide we show you how to use them. We are using our [previous example code](/learn/concepts/core-concepts) here.
@@ -9,12 +11,6 @@ React Flow comes with several additional components. In this guide we show you h
 ## MiniMap
 
 If your flow gets bigger, you might want to get an overview quickly. For this we have built the [`MiniMap` component](/api-reference/components/minimap). You can easily add it to your flow by adding it as a children:
-
-import { RemoteCodeViewer } from 'xy-shared';
-
-import { getStaticCode } from 'xy-shared/server';
-export const getStaticProps = getStaticCode(['learn/mini-map', 'learn/controls', 'learn/background', 'learn/panel']);
-
 
 <RemoteCodeViewer route="learn/mini-map" framework="react" />
 
