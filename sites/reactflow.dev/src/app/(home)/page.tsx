@@ -17,7 +17,7 @@ import FlowA from './flows/flow-a';
 import FlowB from './flows/flow-b';
 import FlowC from './flows/flow-c';
 
-import { getLastChangelog, InternalRoute } from '@/utils';
+import { fetchGitHubNpmStats, getLastChangelog, InternalRoute } from '@/utils';
 import WhatsNewPreview from '@/components/whats-new-preview';
 import { Metadata } from 'next';
 import { FC } from 'react';
@@ -98,7 +98,7 @@ const sliderItems = [
 ];
 
 const Page: FC = async () => {
-  const { stars = 23000, downloads = 4000 } = {} //useData();
+  const { stars = 23000, downloads = 4000 } = await fetchGitHubNpmStats()
   const pageMap = await getLastChangelog();
   const whatsNew = pageMap.slice(0, 3);
 

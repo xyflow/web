@@ -2,7 +2,7 @@
 
 import { defaultFooterCategories, Footer as XYFooter } from '@xyflow/xy-ui';
 import { FC } from 'react';
-import { useIsPro } from '@/utils';
+import { useIsPro } from '@/utils/use-is-pro';
 
 export const Footer: FC =  ()  => {
   const isPro = useIsPro();

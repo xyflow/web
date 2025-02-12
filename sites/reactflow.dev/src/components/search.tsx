@@ -1,7 +1,7 @@
 'use client'
 
 import { FC } from 'react';
-import { useIsPro } from '@/utils';
+import { useIsPro } from '@/utils/use-is-pro';
 import { Search as XYSearch } from 'xy-shared';
 
 export const Search: FC = (props) => {
