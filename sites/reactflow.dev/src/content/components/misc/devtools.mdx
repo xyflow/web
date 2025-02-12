@@ -1,12 +1,9 @@
 ---
 title: DevTools
-description: A debugging tool that provides data on the viewport, the state of each node, and logs change events. 
+description: A debugging tool that provides data on the viewport, the state of each node, and logs change events.
 ---
 
 import UiComponentViewer from '@/components/ui-component-viewer';
-import fetchShadcnComponent from '@/utils/get-static-props/fetch-shadcn-component';
-
-export const getStaticProps = fetchShadcnComponent('devtools');
 
 # DevTools
 
@@ -19,7 +16,7 @@ You can import the entire `<DevTools />` component, or optionally, import indivi
 - A `<NodeInspector />` component that reveals the state of each node.
 - A `<ChangeLogger />` that wraps your flow’s onNodesChange handler and logs each change as it is dispatched.
 
-You can read more about the individual components at [DevTools and Debugging](/learn/advanced-use/devtools-and-debugging). While we find these tools useful for making sure React Flow is working properly, you might also find them useful for debugging your applications as your flows and their interactions become more complex. 
+You can read more about the individual components at [DevTools and Debugging](/learn/advanced-use/devtools-and-debugging). While we find these tools useful for making sure React Flow is working properly, you might also find them useful for debugging your applications as your flows and their interactions become more complex.
 
-<UiComponentViewer />
+<UiComponentViewer id="devtools" />
 

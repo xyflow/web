@@ -4,15 +4,12 @@ description: A custom edge component that shows a value from the source node's d
 ---
 
 import UiComponentViewer from '@/components/ui-component-viewer';
-import fetchShadcnComponent from '@/utils/get-static-props/fetch-shadcn-component';
-
-export const getStaticProps = fetchShadcnComponent('data-edge');
 
 # Data Edge
 
 An edge that displays one field from the source node's `data` object.
 
-<UiComponentViewer />
+<UiComponentViewer id="data-edge" />
 
 ## Additional type safety
 

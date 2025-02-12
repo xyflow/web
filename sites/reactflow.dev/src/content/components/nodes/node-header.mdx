@@ -3,16 +3,13 @@ description: A header block for custom nodes.
 ---
 
 import UiComponentViewer from '@/components/ui-component-viewer';
-import fetchShadcnComponent from '@/utils/get-static-props/fetch-shadcn-component';
-
-export const getStaticProps = fetchShadcnComponent('node-header');
 
 # Node Header
 
 A header designed to work with the [`<BaseNode />`](/components/nodes/base-node) component.
 It can contain a title, icon, and list of actions.
 
-<UiComponentViewer />
+<UiComponentViewer id="node-header" />
 
 ## Custom node actions
 
