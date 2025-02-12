@@ -17,9 +17,10 @@ import FlowA from './flows/flow-a';
 import FlowB from './flows/flow-b';
 import FlowC from './flows/flow-c';
 
-import type { InternalRoute } from '@/utils';
+import { getLastChangelog, InternalRoute } from '@/utils';
 import WhatsNewPreview from '@/components/whats-new-preview';
 import { Metadata } from 'next';
+import { FC } from 'react';
 
 export const revalidate = 3600 // 60 * 60
 
@@ -96,8 +97,11 @@ const sliderItems = [
   },
 ];
 
-export default function ReactFlowHome() {
-  const { stars = 23000, downloads = 4000, whatsNew = [] } = {} //useData();
+const Page: FC = async () => {
+  const { stars = 23000, downloads = 4000 } = {} //useData();
+  const pageMap = await getLastChangelog();
+  const whatsNew = pageMap.slice(0, 3);
+
   return (
     <BaseLayout>
       <HeroFlow
@@ -163,3 +167,5 @@ export default function ReactFlowHome() {
     </BaseLayout>
   );
 }
+
+export default Page

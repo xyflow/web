@@ -1,17 +1,16 @@
 import { PencilSquareIcon } from '@heroicons/react/24/outline';
 import { BaseLayout, Hero, TimelineEvent, TimelineEventProps } from 'xy-shared';
 import { FC } from 'react';
-import { getPageMap } from 'nextra/page-map';
-import { MdxFile } from 'nextra';
+import { Metadata } from 'next';
+import { getLastChangelog } from '@/utils';
+
+export const metadata: Metadata = {
+  title: "What's new?",
+  description: "We're always working on the React Flow docs and the library. This is a timeline of the things we've added or changed so far."
+}
 
 const Page: FC = async () => {
-  const pageMap = (await getPageMap('/whats-new'))
-    .filter((item): item is MdxFile => 'name' in item && item.name !== 'index')
-    .sort(
-      (a, b) =>
-        new Date(b.frontMatter.date).getTime() -
-        new Date(a.frontMatter.date).getTime(),
-    );
+  const pageMap = await getLastChangelog();
 
   return (
     <BaseLayout className="space-y-32 max-w-screen-lg mx-auto">

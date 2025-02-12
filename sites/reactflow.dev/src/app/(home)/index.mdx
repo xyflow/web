@@ -5,14 +5,11 @@
 import getStaticPropsStats from '@/utils/get-static-props/github-npm-stats';
 
 export async function getStaticProps() {
-  const whatsNew = await getMdxContentUnderRoute('reactflow.dev', '/whats-new');
-  const whatsNewItems = whatsNew.slice(0, 3).map((entry) => entry.frontmatter);
-  const { stars, downloads, revalidate } = await getStaticPropsStats();
+  const { stars, downloads } = await getStaticPropsStats();
   return {
     props: {
-      ssg: { whatsNew: whatsNewItems, stars, downloads },
+      ssg: { stars, downloads },
     },
-    revalidate,
   };
 }
 
