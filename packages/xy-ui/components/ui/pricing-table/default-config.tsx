@@ -12,9 +12,16 @@ const features: Record<string, FeatureConfig> = {
   proExamples: {
     label: (
       <span>
-        Access to all{' '}
+        Access to{' '}
         <Link variant="primary" href="https://reactflow.dev/pro/examples">
           Pro Examples
+        </Link>{' '}
+        and{' '}
+        <Link
+          variant="primary"
+          href="https://reactflow.dev/components/templates/workflow-editor"
+        >
+          Templates
         </Link>
       </span>
     ),
@@ -126,19 +133,6 @@ export const ProPlan: SubscriptionPlan = {
   ],
   features: [
     features.proExamples,
-    {
-      label: (
-        <span>
-          Access the{' '}
-          <Link
-            variant="primary"
-            href="https://reactflow.dev/components/templates/workflow-editor"
-          >
-            Workflow Editor Template
-          </Link>
-        </span>
-      ),
-    },
     features.prioritizedIssues,
     features.teamMembers5,
     features.mitLicense,
@@ -162,22 +156,16 @@ export const EnterprisePlan: SubscriptionPlan = {
     {
       label: (
         <span>
-          Perpetual access to all{' '}
+          Perpetual access to{' '}
           <Link variant="primary" href="https://reactflow.dev/pro/examples">
             Pro Examples
-          </Link>
-        </span>
-      ),
-    },
-    {
-      label: (
-        <span>
-          Perpetual access to the{' '}
+          </Link>{' '}
+          and{' '}
           <Link
             variant="primary"
             href="https://reactflow.dev/components/templates/workflow-editor"
           >
-            Workflow Editor Template
+            Templates
           </Link>
         </span>
       ),
@@ -187,6 +175,9 @@ export const EnterprisePlan: SubscriptionPlan = {
     features.mitLicense,
     {
       label: 'Custom Support',
+    },
+    {
+      label: 'Introduction call with one of the creators of React Flow',
     },
     {
       label: 'Custom procurement and payment process',
