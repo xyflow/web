@@ -1,3 +1,5 @@
+'use client'
+
 import { DocSearch } from '@docsearch/react';
 import { FC } from 'react';
 import '@docsearch/css';
