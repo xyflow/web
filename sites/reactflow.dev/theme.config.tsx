@@ -37,7 +37,6 @@ export default {
     },
   },
   toc: {
-    backToTop: null,
     extraContent: () => {
       const className =
         '_text-xs _font-medium _text-gray-500 hover:_text-gray-900 dark:_text-gray-400 dark:hover:_text-gray-100 contrast-more:_text-gray-800 contrast-more:dark:_text-gray-50';
