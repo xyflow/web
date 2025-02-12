@@ -4,16 +4,18 @@ import Link from 'next/link';
 import {
   getApiReferenceByCategory,
   type Category,
-} from '@/utils/get-static-props/api-reference-by-category';
+} from '@/utils/api-reference-by-category';
 import { useMDXComponents } from '@/mdx-components';
 
 export type ApiReferenceSummaryProps = {
   category: Category;
 };
 
-export async function ApiReferenceSummary({ category }: ApiReferenceSummaryProps) {
-  const pages = await getApiReferenceByCategory(category)
-  const { h2: H2, p: P } = useMDXComponents()
+export async function ApiReferenceSummary({
+  category,
+}: ApiReferenceSummaryProps) {
+  const pages = await getApiReferenceByCategory(category);
+  const { h2: H2, p: P } = useMDXComponents();
   return (
     <div>
       {pages.map(({ title, description, route }) => {

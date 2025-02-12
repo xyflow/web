@@ -1,4 +1,4 @@
-import { type InternalRoute } from '../routes';
+import { type InternalRoute } from './routes';
 import { getPageMap } from 'nextra/page-map';
 import { MdxFile } from 'nextra';
 
