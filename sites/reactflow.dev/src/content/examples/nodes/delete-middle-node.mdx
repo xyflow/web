@@ -5,13 +5,8 @@ description: Remove a node without breaking the flow
 
 import { Callout, Cards } from 'nextra/components';
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
-
-import { RemoteCodeViewer } from 'xy-shared';
 import { ExampleLayout } from 'xy-shared';
-
-import { getStaticCode } from 'xy-shared/server';
-export const getStaticProps = getStaticCode(['examples/nodes/delete-middle-node']);
-
+import { RemoteCodeViewer } from 'xy-shared/server';
 
 <ExampleLayout>
 This example shows you how to recover deleted edges when you remove a node from the

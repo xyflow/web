@@ -3,12 +3,8 @@ title: Custom Nodes
 description: Display any content inside of a node
 ---
 
-import { ExampleLayout } from 'xy-shared';
 import { RemoteCodeViewer } from 'xy-shared';
-
-import { getStaticCode } from 'xy-shared/server';
-export const getStaticProps = getStaticCode(['examples/nodes/custom-node']);
-
+import { ExampleLayout } from 'xy-shared/server';
 
 <ExampleLayout>
 Creating your own nodes is as easy as creating a regular React component and passing them to `nodeTypes`. Being just regular components, you can essentially display any content and implement any functionality you like. Inside, you have access to a number of props that let you implement and extend default node behaviour.

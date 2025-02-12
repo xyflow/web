@@ -6,12 +6,8 @@ description:
 ---
 
 import { Callout } from 'nextra/components';
-import { RemoteCodeViewer } from 'xy-shared';
 import { ExampleLayout } from 'xy-shared';
-
-import { getStaticCode } from 'xy-shared/server';
-export const getStaticProps = getStaticCode(['examples/interaction/connection-events']);
-
+import { RemoteCodeViewer } from 'xy-shared/server';
 
 <ExampleLayout>
 React Flow emits different events during the connection process that you can use

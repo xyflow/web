@@ -3,12 +3,8 @@ title: Horizontal Flow
 description: A diagram that flows from left to right
 ---
 
-import { RemoteCodeViewer } from 'xy-shared';
 import { ExampleLayout } from 'xy-shared';
-
-import { getStaticCode } from 'xy-shared/server';
-export const getStaticProps = getStaticCode(['examples/layout/horizontal']);
-
+import { RemoteCodeViewer } from 'xy-shared/server';
 
 <ExampleLayout>
 A diagram can go from left to right or from top to bottom, but you can also create mixed ones.

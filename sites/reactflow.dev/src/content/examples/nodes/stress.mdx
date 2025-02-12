@@ -3,12 +3,8 @@ title: Stress Test
 description: Render hundreds of nodes and edges at once
 ---
 
-import { RemoteCodeViewer } from 'xy-shared';
 import { ExampleLayout } from 'xy-shared';
-
-import { getStaticCode } from 'xy-shared/server';
-export const getStaticProps = getStaticCode(['examples/nodes/stress']);
-
+import { RemoteCodeViewer } from 'xy-shared/server';
 
 <ExampleLayout>
 You doubt we can render a lot of nodes and edges? See for yourself.
