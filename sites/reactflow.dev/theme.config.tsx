@@ -1,7 +1,5 @@
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { Navbar } from 'nextra-theme-docs';
-import { getMdxPagesUnderRoute } from 'xy-shared';
 import { type Route } from '@/utils';
 
 export default {
