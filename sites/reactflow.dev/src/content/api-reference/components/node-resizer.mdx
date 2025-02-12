@@ -6,13 +6,11 @@ description:
   nodes. It renders draggable controls around the node to resize in all directions.'
 ---
 
-import { RemoteCodeViewer } from 'xy-shared';
 import { PropsTable } from '@/components/props-table';
-import { nodeResizerProps } from '@/references/components/NodeResizer.ts';
-import { getStaticCode } from 'xy-shared/server';
-export const getStaticProps = getStaticCode(['examples/nodes/node-resizer']);
+import { nodeResizerProps } from '@/references/components/NodeResizer';
+import { RemoteCodeViewer } from 'xy-shared/server';
 
-# &lt;NodeResizer />
+# \<NodeResizer />
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/additional-components/NodeResizer/NodeResizer.tsx)
 
