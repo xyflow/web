@@ -6,10 +6,13 @@ import type { FC, ReactNode } from 'react';
 import reactFlowPackageJson from '@xyflow/react/package.json';
 import { Search } from '@/components/search';
 import { Footer } from '@/components/footer';
+import { ClientNavbar } from '@/components/navbar.client';
 import { ntDapperFont } from 'xy-shared/fonts';
-import { LogoLabel } from '@xyflow/xy-ui';
+import { Button, LogoLabel } from '@xyflow/xy-ui';
 import { Folder, MdxFile } from 'nextra';
 import { SidebarTitle } from 'xy-shared';
+import Link from 'next/link';
+import { SparklesIcon } from '@heroicons/react/24/outline';
 import './global.css';
 
 const APP_NAME = 'React Flow';
@@ -90,7 +93,7 @@ const RootLayout: FC<{
           saturation: 80,
         }}
       />
-      <body>
+      <body className="[&_.nextra-navbar>nav]:justify-start [&_.nextra-navbar>nav>div]:me-0">
         <Layout
           navbar={
             <Navbar
@@ -101,15 +104,26 @@ const RootLayout: FC<{
                 />
               }
               logoLink={false}
-              projectLink="https://github.com/shuding/nextra"
-            />
+              // className="justify-start"
+            >
+              <Search />
+              <ClientNavbar />
+              <Button className="px-4 flex gap-1" asChild>
+                <Link href="/pro">
+                  <SparklesIcon className="w-4 h-4" />
+                  <span className="max-[1100px]:hidden">React Flow</span>
+                  Pro
+                </Link>
+              </Button>
+            </Navbar>
           }
           footer={<Footer />}
           pageMap={pageMap}
           docsRepositoryBase="https://github.com/xyflow/web/tree/main/sites/reactflow.dev"
           editLink="Edit this page on GitHub"
           darkMode={false}
-          search={<Search />}
+          // Set to null to avoid rendering search in mobile nav, since we added search in navbar already
+          search={null}
           nextThemes={{
             forcedTheme: 'light',
             defaultTheme: 'light',
