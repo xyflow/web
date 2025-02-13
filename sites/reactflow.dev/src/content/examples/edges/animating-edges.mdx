@@ -4,10 +4,7 @@ description: Create edge animations that go beyond the built-in animated edge.
 preview_path: react/examples/edges/animating-edges-svg/preview.jpg
 ---
 
-import { ExampleLayout } from 'xy-shared';
 import { RemoteCodeViewer } from 'xy-shared/server';
-
-<ExampleLayout>
 
 React Flow provides a simple built-in animation for the default edge type, but
 it is possible to create more advanced animations by using custom edges. Below
@@ -46,5 +43,3 @@ There are some important details in this example to take note of:
 - The animation path and the animation itself are set up in separate `useEffect`
   hooks. This lets the animation continue playing smoothly even if the edge path
   is recalculated (for example when the source or target nodes are dragged.)
-
-</ExampleLayout>

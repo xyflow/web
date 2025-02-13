@@ -5,13 +5,11 @@ is_pro_example: true
 ---
 
 import ProExampleViewer from '@/components/pro-example-viewer';
-import { ExampleLayout } from 'xy-shared';
 
-<ExampleLayout>
-  This example shows how you can automatically arrange nodes after adding items
-  from a sidebar. This a common UI pattern for workflow editors and lets you
-  create a flow quickly. The layout is calculated every time the graph changes.
-  <ProExampleViewer variant="dark" slug="auto-layout" />
+This example shows how you can automatically arrange nodes after adding items
+from a sidebar. This a common UI pattern for workflow editors and lets you
+create a flow quickly. The layout is calculated every time the graph changes.
+<ProExampleViewer variant="dark" slug="auto-layout" />
 
 ### About this Pro Example
 
@@ -19,5 +17,3 @@ import { ExampleLayout } from 'xy-shared';
   other one using [dagre.js](https://github.com/dagrejs/dagre) as a layout
   engine.
 - Dependencies: [reactflow](https://www.npmjs.com/package/reactflow), [d3-hierarchy](https://www.npmjs.com/package/d3-hierarchy) or [dagre](https://www.npmjs.com/package/dagre)
-
-</ExampleLayout>

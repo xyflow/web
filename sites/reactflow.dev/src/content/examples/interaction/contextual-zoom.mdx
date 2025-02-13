@@ -3,10 +3,8 @@ title: Contextual Zoom
 description: Only display the content of a node when you are zoomed in close enough
 ---
 
-import { ExampleLayout } from 'xy-shared';
 import { RemoteCodeViewer } from 'xy-shared/server';
 
-<ExampleLayout>
 This example shows how the current zoom level can be used by a node to decide which content to show.
 We are using selecting the zoom via the [`useStore` hook](/api-reference/hooks/use-store) to update our custom node whenever the zoom changes.
 
@@ -14,5 +12,3 @@ We are using selecting the zoom via the [`useStore` hook](/api-reference/hooks/u
   route="examples/interaction/contextual-zoom"
   framework="react"
 />
-
-</ExampleLayout>
