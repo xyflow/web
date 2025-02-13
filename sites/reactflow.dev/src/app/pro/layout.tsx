@@ -18,24 +18,31 @@ const Layout: FC<{ children: ReactNode }> = async ({ children }) => {
     'pro-examples': { display: 'normal' },
     'case-studies': { display: 'normal' },
     'contact-us': { display: 'normal' },
-  })
-  return <NextraLayout pageMap={proPageMap} footerCategories={{
-    'React Flow Pro': [
-      { title: 'Pricing', route: '/pro/pricing' },
-      { title: 'Pro Examples', route: '/pro/examples' },
-      { title: 'Case Studies', route: '/pro/case-studies' },
-      { title: 'Request a Quote', route: '/pro/quote-request' },
-      {
-        title: 'Sign Up',
-        route: `${process.env.NEXT_PUBLIC_PRO_PLATFORM_URL}/signup`,
-      },
-      {
-        title: 'Sign In',
-        route: `${process.env.NEXT_PUBLIC_PRO_PLATFORM_URL}/login`,
-      },
-    ],
-    ...remainingCategories,
-  }}>{children}</NextraLayout>
-}
+  });
+  return (
+    <NextraLayout
+      pageMap={proPageMap}
+      footerCategories={{
+        'React Flow Pro': [
+          { title: 'Pricing', route: '/pro/pricing' },
+          { title: 'Pro Examples', route: '/pro/examples' },
+          { title: 'Case Studies', route: '/pro/case-studies' },
+          { title: 'Request a Quote', route: '/pro/quote-request' },
+          {
+            title: 'Sign Up',
+            route: `${process.env.NEXT_PUBLIC_PRO_PLATFORM_URL}/signup`,
+          },
+          {
+            title: 'Sign In',
+            route: `${process.env.NEXT_PUBLIC_PRO_PLATFORM_URL}/login`,
+          },
+        ],
+        ...remainingCategories,
+      }}
+    >
+      {children}
+    </NextraLayout>
+  );
+};
 
-export default Layout
+export default Layout;

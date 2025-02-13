@@ -26,7 +26,7 @@ const Layout: FC<{ children: ReactNode }> = async ({ children }) => {
       (item: MdxFile & { title: string }) => ({
         ...item,
         title:
-        // On dev somehow we can have duplicate badges without this check
+          // On dev somehow we can have duplicate badges without this check
           typeof item.title === 'string' ? (
             <SidebarTitle frontMatter={item.frontMatter} title={item.title} />
           ) : (
@@ -35,27 +35,34 @@ const Layout: FC<{ children: ReactNode }> = async ({ children }) => {
       }),
     );
   }
-  return <NextraLayout pageMap={pageMap} footerCategories={{
-    Docs: [
-      { title: 'Getting Started', route: '/learn' },
-      { title: 'API Reference', route: '/api-reference' },
-      { title: 'Examples', route: '/examples' },
-      { title: 'Showcase', route: '/showcase' },
-    ],
-    ...remainingCategories,
-    Legal: [
-      {
-        title: 'MIT License',
-        route: 'https://github.com/xyflow/xyflow/blob/main/LICENSE',
-      },
-      {
-        title: 'Code of Conduct',
-        route:
-          'https://github.com/xyflow/xyflow/blob/main/CODE_OF_CONDUCT.md',
-      },
-      { title: 'Imprint', route: 'https://xyflow.com/imprint' },
-    ],
-  }}>{children}</NextraLayout>
-}
+  return (
+    <NextraLayout
+      pageMap={pageMap}
+      footerCategories={{
+        Docs: [
+          { title: 'Getting Started', route: '/learn' },
+          { title: 'API Reference', route: '/api-reference' },
+          { title: 'Examples', route: '/examples' },
+          { title: 'Showcase', route: '/showcase' },
+        ],
+        ...remainingCategories,
+        Legal: [
+          {
+            title: 'MIT License',
+            route: 'https://github.com/xyflow/xyflow/blob/main/LICENSE',
+          },
+          {
+            title: 'Code of Conduct',
+            route:
+              'https://github.com/xyflow/xyflow/blob/main/CODE_OF_CONDUCT.md',
+          },
+          { title: 'Imprint', route: 'https://xyflow.com/imprint' },
+        ],
+      }}
+    >
+      {children}
+    </NextraLayout>
+  );
+};
 
-export default Layout
+export default Layout;
