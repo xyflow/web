@@ -400,7 +400,7 @@ const initialNodes = ({
         <>
           <Text size="lg">
             <span className="font-bold">
-              Our docs are the most common place for people to go for help.
+              Our docs is the most common place for people to go for help.
             </span>
             <sup className="mx-1 italic">thank goodness</sup>
           </Text>

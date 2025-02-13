@@ -8,11 +8,6 @@ overrides:
   nextra: file:/Users/dmytro/Desktop/nextra/packages/nextra
   nextra-theme-docs: file:/Users/dmytro/Desktop/nextra/packages/nextra-theme-docs
 
-patchedDependencies:
-  '@xyflow/react':
-    hash: e64xb6zqbxrh4vae2vjzjtvi7u
-    path: patches/@xyflow__react.patch
-
 importers:
 
   .:
@@ -59,7 +54,7 @@ importers:
         version: 7.3.1(svelte@4.2.19)(three@0.171.0)
       '@xyflow/react':
         specifier: ^12.3.2
-        version: 12.3.2(patch_hash=e64xb6zqbxrh4vae2vjzjtvi7u)(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 12.3.2(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@xyflow/svelte':
         specifier: ^0.1.21
         version: 0.1.25(svelte@4.2.19)
@@ -213,7 +208,7 @@ importers:
         version: 1.4.1(next@14.2.15(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)(svelte@4.2.19)
       '@xyflow/react':
         specifier: ^12.3.6
-        version: 12.3.6(patch_hash=e64xb6zqbxrh4vae2vjzjtvi7u)(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 12.3.6(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       class-variance-authority:
         specifier: ^0.7.0
         version: 0.7.1
@@ -364,7 +359,7 @@ importers:
         version: 0.27.1
       '@xyflow/react':
         specifier: ^12.3.2
-        version: 12.3.2(patch_hash=e64xb6zqbxrh4vae2vjzjtvi7u)(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 12.3.2(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@xyflow/xy-ui':
         specifier: workspace:*
         version: link:../xy-ui
@@ -521,8 +516,8 @@ importers:
         specifier: ^3.9.0
         version: 3.20.0(react@18.3.1)
       '@xyflow/react':
-        specifier: ^12.3.2
-        version: 12.3.2(patch_hash=e64xb6zqbxrh4vae2vjzjtvi7u)(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^12.4.3
+        version: 12.4.3(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@xyflow/xy-ui':
         specifier: workspace:*
         version: link:../../packages/xy-ui
@@ -604,7 +599,7 @@ importers:
         version: 3.20.0(react@18.3.1)
       '@xyflow/react':
         specifier: 12.3.2
-        version: 12.3.2(patch_hash=e64xb6zqbxrh4vae2vjzjtvi7u)(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 12.3.2(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@xyflow/xy-ui':
         specifier: workspace:*
         version: link:../../packages/xy-ui
@@ -689,7 +684,7 @@ importers:
         version: 2.2.1
       '@xyflow/react':
         specifier: 12.3.2
-        version: 12.3.2(patch_hash=e64xb6zqbxrh4vae2vjzjtvi7u)(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 12.3.2(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@xyflow/xy-ui':
         specifier: workspace:*
         version: link:../../packages/xy-ui
@@ -2765,6 +2760,12 @@ packages:
       react: '>=17'
       react-dom: '>=17'
 
+  '@xyflow/react@12.4.3':
+    resolution: {integrity: sha512-oO50TIY4rbgOURK5pmvL4LwLOQdh6YkvrvOBZPBedltJ1TINCRp0FiyYKfYhLnaDcW8/aayvGtFpUcSkPQxpGg==}
+    peerDependencies:
+      react: '>=17'
+      react-dom: '>=17'
+
   '@xyflow/svelte@0.1.25':
     resolution: {integrity: sha512-oavfqFGsXrSBSWDAPFEtMdM38Z3SU8pcC/rFwul9p8RbWhIc7B95JdcCc3NRZ2UbeOhNhltYRiWju9fOnFWXWA==}
     peerDependencies:
@@ -2775,6 +2776,9 @@ packages:
 
   '@xyflow/system@0.0.47':
     resolution: {integrity: sha512-aUXJPIvsCFxGX70ccRG8LPsR+A8ExYXfh/noYNpqn8udKerrLdSHxMG2VsvUrQ1PGex10fOpbJwFU4A+I/Xv8w==}
+
+  '@xyflow/system@0.0.51':
+    resolution: {integrity: sha512-cYnuM3oWQQjx2Rdz0LdZCnbUaWZdZDiik20kPDYsa5SIlq++ZDIcKiDF6a93ncfMv9Ej5GWfDkouE7bObrdRqQ==}
 
   accepts@1.3.8:
     resolution: {integrity: sha512-PYAthTa2m2VKxuvSD3DPC/Gy+U+sOA1LAuT8mkmRuvw+NACSaeXEQ+NHcVF7rONl6qcaxV3Uuemwawk+7+SJLw==}
@@ -9435,7 +9439,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@xyflow/react@12.3.2(patch_hash=e64xb6zqbxrh4vae2vjzjtvi7u)(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@xyflow/react@12.3.2(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@xyflow/system': 0.0.43
       classcat: 5.0.5
@@ -9446,9 +9450,20 @@ snapshots:
       - '@types/react'
       - immer
 
-  '@xyflow/react@12.3.6(patch_hash=e64xb6zqbxrh4vae2vjzjtvi7u)(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@xyflow/react@12.3.6(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@xyflow/system': 0.0.47
+      classcat: 5.0.5
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+      zustand: 4.5.5(@types/react@18.3.17)(react@18.3.1)
+    transitivePeerDependencies:
+      - '@types/react'
+      - immer
+
+  '@xyflow/react@12.4.3(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      '@xyflow/system': 0.0.51
       classcat: 5.0.5
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
@@ -9475,6 +9490,16 @@ snapshots:
       d3-zoom: 3.0.0
 
   '@xyflow/system@0.0.47':
+    dependencies:
+      '@types/d3-drag': 3.0.7
+      '@types/d3-selection': 3.0.11
+      '@types/d3-transition': 3.0.9
+      '@types/d3-zoom': 3.0.8
+      d3-drag: 3.0.0
+      d3-selection: 3.0.0
+      d3-zoom: 3.0.0
+
+  '@xyflow/system@0.0.51':
     dependencies:
       '@types/d3-drag': 3.0.7
       '@types/d3-selection': 3.0.11
