@@ -1,6 +1,4 @@
-export async function GET(
-  req: Request,
-) {
+export async function GET(req: Request) {
   try {
     // This should be the actual path not a rewritten path
     // e.g. for "/posts/[id]" this should be "/posts/1"

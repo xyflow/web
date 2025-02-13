@@ -7,8 +7,9 @@ import { getLastChangelog } from '@/utils';
 
 export const metadata: Metadata = {
   title: "What's new?",
-  description: "We're always working on the React Flow docs and the library. This is a timeline of the things we've added or changed so far."
-}
+  description:
+    "We're always working on the React Flow docs and the library. This is a timeline of the things we've added or changed so far.",
+};
 
 const Page: FC = async () => {
   const pageMap = await getLastChangelog();

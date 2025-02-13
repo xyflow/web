@@ -20,12 +20,13 @@ import { FlowA } from '@/components/flows/flow-a';
 import { FlowB } from '@/components/flows/flow-b';
 import { FlowC } from '@/components/flows/flow-c';
 
-export const revalidate = 3600 // 60 * 60
+export const revalidate = 3600; // 60 * 60
 
 export const metadata: Metadata = {
   title: 'Node-Based UIs in React',
-  description: 'Highly customizable React library for workflow builders, no-code apps, image processing, visualizers, and more'
-}
+  description:
+    'Highly customizable React library for workflow builders, no-code apps, image processing, visualizers, and more',
+};
 
 const features = [
   {
@@ -96,7 +97,7 @@ const sliderItems = [
 ];
 
 const Page: FC = async () => {
-  const { stars = 23000, downloads = 4000 } = await fetchGitHubNpmStats()
+  const { stars = 23000, downloads = 4000 } = await fetchGitHubNpmStats();
   const pageMap = await getLastChangelog();
   const whatsNew = pageMap.slice(0, 3);
 
@@ -164,6 +165,6 @@ const Page: FC = async () => {
       <ProjectCards projects={['svelteflow', 'xyflow']} />
     </BaseLayout>
   );
-}
+};
 
-export default Page
+export default Page;

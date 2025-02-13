@@ -5,8 +5,8 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'React Flow Pro Pricing',
-  description: 'Pricing plans for a React Flow Pro subscription.'
-}
+  description: 'Pricing plans for a React Flow Pro subscription.',
+};
 
 export default function ReactFlowProPricing() {
   return (
@@ -15,7 +15,7 @@ export default function ReactFlowProPricing() {
         title="Pricing"
         subtitle="Your subscription goes directly towards the development and maintenance of React Flow and allows us to keep the library independent and open source."
         kicker="React Flow Pro"
-        kickerIcon={<SparklesIcon/>}
+        kickerIcon={<SparklesIcon />}
         align="center"
         backgroundVariant="image"
       />

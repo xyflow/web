@@ -1,5 +1,5 @@
 import xyTailwindConfig from 'xy-tailwind-config';
-import { Config } from 'tailwindcss'
+import { Config } from 'tailwindcss';
 
 export default {
   ...xyTailwindConfig,

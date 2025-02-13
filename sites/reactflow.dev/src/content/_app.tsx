@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { useRouter } from 'next/router';
 import { cn } from '@xyflow/xy-ui';

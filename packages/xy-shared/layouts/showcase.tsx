@@ -84,7 +84,7 @@ export function ShowcaseLayout({
     <BaseLayout>
       <Hero
         kicker="Showcase"
-        kickerIcon={RocketLaunchIcon}
+        kickerIcon={<RocketLaunchIcon />}
         title={title}
         subtitle={subtitle}
         align="center"

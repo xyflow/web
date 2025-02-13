@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { DocSearch } from '@docsearch/react';
 import { FC } from 'react';
@@ -20,4 +20,4 @@ export const Search: FC = () => {
       placeholder={undefined}
     />
   );
-}
+};

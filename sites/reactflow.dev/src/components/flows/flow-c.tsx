@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { FC } from 'react';
 import {
@@ -131,4 +131,4 @@ export const FlowC: FC = () => {
       <MiniMap style={{ height: 100 }} nodeColor={nodeColor} />
     </ReactFlow>
   );
-}
+};

@@ -124,8 +124,7 @@ const RootLayout: FC<{
 };
 
 const classes = {
-  link:
-    'x:focus-visible:nextra-focus x:transition x:text-gray-600 x:dark:text-gray-400 x:hover:text-gray-800 x:dark:hover:text-gray-200 x:contrast-more:text-gray-700 x:contrast-more:dark:text-gray-100',
+  link: 'x:focus-visible:nextra-focus x:transition x:text-gray-600 x:dark:text-gray-400 x:hover:text-gray-800 x:dark:hover:text-gray-200 x:contrast-more:text-gray-700 x:contrast-more:dark:text-gray-100',
 };
 const navbar = (
   <Navbar

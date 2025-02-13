@@ -47,12 +47,7 @@ function WhatsNewItemPreview({
   variant,
   featured = false,
   item: {
-    frontMatter: {
-      title,
-      description,
-      authors,
-      date
-    },
+    frontMatter: { title, description, authors, date },
     route,
   },
 }: WhatsNewItemPreviewProps) {

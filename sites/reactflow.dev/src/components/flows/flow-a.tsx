@@ -42,4 +42,4 @@ export const FlowA: FC = () => {
       <Controls showInteractive={false} />
     </ReactFlow>
   );
-}
+};

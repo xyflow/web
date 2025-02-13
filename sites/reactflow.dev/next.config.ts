@@ -64,7 +64,7 @@ const nextConfig: NextConfig = {
 };
 
 const withNextra = nextra({
-  search: false
+  search: false,
 });
 
 // Merge MDX config with Next.js config

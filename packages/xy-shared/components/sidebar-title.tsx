@@ -14,7 +14,7 @@ export function SidebarTitle({
   frontMatter,
 }: {
   title: string;
-  frontMatter: Record<string, any>
+  frontMatter: Record<string, any>;
 }) {
   const isProExample = frontMatter.is_pro_example;
   const isFree = frontMatter.is_free;

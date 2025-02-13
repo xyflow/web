@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { Widget } from '@typeform/embed-react';
 export function Page() {

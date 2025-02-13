@@ -37,18 +37,21 @@ export interface FooterProps
 
 // we can pass a baseurl that gets removed from the links in order to have site specific relative links
 const Footer = forwardRef<HTMLDivElement, FooterProps>(
-  ({
-    message = {
-      title: 'A project by the xyflow team',
-      text: 'We are building and maintaining open source software for node-based UIs since 2019.',
+  (
+    {
+      message = {
+        title: 'A project by the xyflow team',
+        text: 'We are building and maintaining open source software for node-based UIs since 2019.',
+      },
+      categories = defaultCategories,
+      imageSrc,
+      baseUrl = '',
+      variant,
+      className,
+      showDesignCredits = true,
     },
-    categories = defaultCategories,
-    imageSrc,
-    baseUrl = '',
-    variant,
-    className,
-    showDesignCredits = true,
-  }, ref) => {
+    ref,
+  ) => {
     return (
       <footer className={cn(footerVariants({ variant, className }))} ref={ref}>
         <div className="mx-auto lg:flex max-w-[90rem] pl-[max(env(safe-area-inset-left),1.5rem)] pr-[max(env(safe-area-inset-right),1.5rem)]">
