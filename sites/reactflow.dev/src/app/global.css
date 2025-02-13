@@ -49,13 +49,9 @@ html body[data-scroll-locked] {
   flex-direction: column;
 }
 
-.developer-survey-2023 ._mx-auto {
+.developer-survey-2023 .x\:mx-auto {
   flex-grow: 1;
   width: 100%;
-}
-
-.developer-survey-2023 footer {
-  display: none;
 }
 
 .xy-link-gray {
