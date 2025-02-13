@@ -79,7 +79,6 @@ const RootLayout: FC<{
     'case-studies': { display: 'normal' },
     'contact-us': { display: 'normal' },
   })
-  console.log('proPageMap',proPageMap)
   for (const folder of folders) {
     folder.children = folder.children.map(
       (item: MdxFile & { title: string }) => ({

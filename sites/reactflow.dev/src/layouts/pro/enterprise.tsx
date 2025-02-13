@@ -9,7 +9,7 @@ export default function Enterprise() {
         title="React Flow Pro Enterprise"
         subtitle="Pro subscribers have access to advanced examples and guides that can be used as a starting point or inspiration for building node-based UIs."
         kicker="React Flow Pro"
-        kickerIcon={SparklesIcon}
+        kickerIcon={<SparklesIcon />}
         align="center"
         backgroundVariant="gradient"
       />
