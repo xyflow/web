@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import { ArrowRightIcon } from '@heroicons/react/24/solid';
 import Link from 'next/link';
 import {
@@ -12,9 +13,9 @@ export type ApiReferenceSummaryProps = {
 
 const { h2: H2, p: P } = getMdxComponents();
 
-export async function ApiReferenceSummary({
+export const ApiReferenceSummary: FC<ApiReferenceSummaryProps> = async ({
   category,
-}: ApiReferenceSummaryProps) {
+}) => {
   const pages = await getApiReferenceByCategory(category);
   return (
     <div>
@@ -24,7 +25,6 @@ export async function ApiReferenceSummary({
             <H2>
               <Link href={route}>{title}</Link>
             </H2>
-
             <P>{description}</P>
 
             <Link
@@ -38,4 +38,4 @@ export async function ApiReferenceSummary({
       })}
     </div>
   );
-}
+};

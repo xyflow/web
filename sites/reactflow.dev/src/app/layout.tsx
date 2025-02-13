@@ -12,7 +12,7 @@ import { Button, LogoLabel } from '@xyflow/xy-ui';
 import { SidebarTitle, Search } from 'xy-shared';
 import { ntDapperFont } from 'xy-shared/fonts';
 import { getLastChangelog } from '@/utils';
-import { Footer } from '@/components/footer';
+import { Footer } from '@/components/footer.client';
 import { ClientNavbar } from '@/components/navbar.client';
 import './global.css';
 

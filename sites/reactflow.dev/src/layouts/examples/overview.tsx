@@ -14,9 +14,10 @@ import { ProjectPreview } from 'xy-shared';
 
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 import { getPageMap } from 'nextra/page-map';
+import { Folder } from 'nextra';
 
 const Page: FC = async () => {
-  const pageMap = await getPageMap('/examples')
+  const pageMap = await getPageMap('/examples');
   return (
     <>
       <Section className="!px-0">
@@ -105,6 +106,6 @@ const Page: FC = async () => {
       ))}
     </>
   );
-}
+};
 
 export default Page;

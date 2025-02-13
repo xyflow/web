@@ -1,20 +1,16 @@
+import { FC } from 'react';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 import { ContentGrid, ContentGridItem } from '@xyflow/xy-ui';
-import {
-  BaseLayout,
-  Hero,
-  ProjectPreview,
-  SubscribeSection,
-} from 'xy-shared';
+import { BaseLayout, Hero, ProjectPreview, SubscribeSection } from 'xy-shared';
 import { Metadata } from 'next';
 import { getPageMap } from 'nextra/page-map';
 import { MdxFile } from 'nextra';
-import { FC } from 'react';
 
 export const metadata: Metadata = {
   title: 'React Flow Pro Case Studies',
-  description: 'Case studies and success stories from some of our React Flow Pro subscribers.'
-}
+  description:
+    'Case studies and success stories from some of our React Flow Pro subscribers.',
+};
 
 const Page: FC = async () => {
   return (
@@ -23,13 +19,15 @@ const Page: FC = async () => {
         title="What Pro Subscribers build with React Flow"
         subtitle="See how our users build custom node-based apps like workflow editors and diagramming tools"
         kicker="Case Studies"
-        kickerIcon={<SparklesIcon/>}
+        kickerIcon={<SparklesIcon />}
         align="center"
         backgroundVariant="image"
       />
       <ContentGrid className="mt-20">
         {(await getPageMap('/pro/case-studies'))
-          .filter((page): page is MdxFile => 'name' in page && page.name !== 'index')
+          .filter(
+            (page): page is MdxFile => 'name' in page && page.name !== 'index',
+          )
           .map((page) => {
             return (
               <ContentGridItem key={page.route} route={page.route}>
@@ -50,6 +48,6 @@ const Page: FC = async () => {
       />
     </BaseLayout>
   );
-}
+};
 
-export default Page
+export default Page;
