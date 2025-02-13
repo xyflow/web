@@ -1,7 +1,8 @@
 import { FC, ReactNode } from 'react';
 import { getPageMap, mergeMetaWithPageMap } from 'nextra/page-map';
 import { NextraLayout } from '@/components/nextra-layout';
-import { defaultFooterCategories } from '@xyflow/xy-ui';
+import { Button, defaultFooterCategories } from '@xyflow/xy-ui';
+import Link from 'next/link';
 
 const Layout: FC<{ children: ReactNode }> = async ({ children }) => {
   const { Projects: _, ...remainingCategories } = defaultFooterCategories;
@@ -39,6 +40,16 @@ const Layout: FC<{ children: ReactNode }> = async ({ children }) => {
         ],
         ...remainingCategories,
       }}
+      navbar={
+        <Button asChild className="ml-auto">
+          <Link
+            className="shrink-0"
+            href={`${process.env.NEXT_PUBLIC_PRO_PLATFORM_URL}/signup`}
+          >
+            Sign Up
+          </Link>
+        </Button>
+      }
     >
       {children}
     </NextraLayout>
