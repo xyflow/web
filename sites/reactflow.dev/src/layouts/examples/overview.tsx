@@ -60,50 +60,58 @@ const Page: FC = async () => {
         </Link>
       </Section>
 
-      {pageMap.map((category) => 'children' in category && (
-        <Fragment key={category.title}>
-          <Heading className="mt-20" size="sm">
-            {category.title}
-          </Heading>
-          <ContentGrid className="lg:grid-cols-3 border-none gap-4 lg:gap-8">
-            {category.children.map((example) => 'frontMatter' in example && (
-              <ContentGridItem
-                key={example.route}
-                route={example.route}
-                className="border-none py-6 lg:py-8 lg:px-0 hover:bg-white group"
-              >
-                <ProjectPreview
-                  image={
-                    example.frontMatter.is_pro_example
-                      ? `https://pro-examples.reactflow.dev/${example.name}/thumbnail.jpg`
-                      : example.frontMatter.preview_path
-                        ? `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/${example.frontMatter.preview_path}`
-                        : `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react${example.route}/preview.jpg`
-                  }
-                  title={
-                    <div className="flex items-center">
-                      {example.frontMatter.title}
-                      {example.frontMatter.is_pro_example ? (
-                        <span className="bg-primary text-white ml-2 px-2 text-sm rounded-lg">
-                          Pro
-                        </span>
-                      ) : null}
-                    </div>
-                  }
-                  titleSize="xs"
-                  description={example.frontMatter.description}
-                  descriptionVariant="light"
-                  linkLabel="See example"
-                  linkClassName="text-gray-900 font-medium text-sm group-hover:text-primary"
-                  kicker={category.toUpperCase()}
-                  kickerSize="xs"
-                  imageWrapperClassName="p-0 shadow-md border-none"
-                />
-              </ContentGridItem>
-            ))}
-          </ContentGrid>
-        </Fragment>
-      ))}
+      {pageMap.map((_category) => {
+        const hasChildren = 'children' in _category;
+        if (!hasChildren) return;
+        const category = _category as Folder & { title };
+        return (
+          <Fragment key={category.title}>
+            <Heading className="mt-20" size="sm">
+              {category.title}
+            </Heading>
+            <ContentGrid className="lg:grid-cols-3 border-none gap-4 lg:gap-8">
+              {category.children.map(
+                (example) =>
+                  'frontMatter' in example && (
+                    <ContentGridItem
+                      key={example.route}
+                      route={example.route}
+                      className="border-none py-6 lg:py-8 lg:px-0 hover:bg-white group"
+                    >
+                      <ProjectPreview
+                        image={
+                          example.frontMatter.is_pro_example
+                            ? `https://pro-examples.reactflow.dev/${example.name}/thumbnail.jpg`
+                            : example.frontMatter.preview_path
+                              ? `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/${example.frontMatter.preview_path}`
+                              : `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react${example.route}/preview.jpg`
+                        }
+                        title={
+                          <div className="flex items-center">
+                            {example.frontMatter.title}
+                            {example.frontMatter.is_pro_example ? (
+                              <span className="bg-primary text-white ml-2 px-2 text-sm rounded-lg">
+                                Pro
+                              </span>
+                            ) : null}
+                          </div>
+                        }
+                        titleSize="xs"
+                        description={example.frontMatter.description}
+                        descriptionVariant="light"
+                        linkLabel="See example"
+                        linkClassName="text-gray-900 font-medium text-sm group-hover:text-primary"
+                        kicker={category.toUpperCase()}
+                        kickerSize="xs"
+                        imageWrapperClassName="p-0 shadow-md border-none"
+                      />
+                    </ContentGridItem>
+                  ),
+              )}
+            </ContentGrid>
+          </Fragment>
+        );
+      })}
     </>
   );
 };
