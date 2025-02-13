@@ -13,12 +13,12 @@ import {
   AboutSection,
   ProjectCards,
 } from 'xy-shared';
+import { fetchGitHubNpmStats, getLastChangelog, InternalRoute } from '@/utils';
 import ClientLogos from '@/components/client-logos';
 import WhatsNewPreview from '@/components/whats-new-preview';
-import { fetchGitHubNpmStats, getLastChangelog, InternalRoute } from '@/utils';
-import { FlowA } from './flows/flow-a';
-import { FlowB } from './flows/flow-b';
-import { FlowC } from './flows/flow-c';
+import { FlowA } from '@/components/flows/flow-a';
+import { FlowB } from '@/components/flows/flow-b';
+import { FlowC } from '@/components/flows/flow-c';
 
 export const revalidate = 3600 // 60 * 60
 

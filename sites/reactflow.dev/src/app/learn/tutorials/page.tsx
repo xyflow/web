@@ -3,11 +3,9 @@ import { ContentGrid, ContentGridItem } from '@xyflow/xy-ui';
 import { BaseLayout, Hero, ProjectPreview, SubscribeSection } from 'xy-shared';
 import { FC } from 'react';
 import { getPageMap } from 'nextra/page-map';
-import { Metadata } from 'next';
-import { MdxFile } from 'nextra';
+import { MdxFile, NextraMetadata } from 'nextra';
 
-export const metadata: Metadata = {
-  // @ts-expect-error -- used by Nextra
+export const metadata: NextraMetadata = {
   asIndexPage: true,
   sidebarTitle: 'Tutorials',
   description: 'Tutorials and in-depth guides on how to build with React Flow.',
