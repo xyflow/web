@@ -102,20 +102,31 @@ const examples = {
     },
   },
   edges: '',
-  layout: '',
+  layout: {
+    items: {
+      'sub-flows': '',
+      horizontal: '',
+      dagre: '',
+      'entitree-flex': '',
+      elkjs: '',
+      'elkjs-multiple-handles': '',
+      'auto-layout': '',
+      'force-layout': '',
+    },
+  },
   interaction: '',
   styling: {
     items: {
       'styled-components': '',
       tailwind: '',
-      'turbo-flow': ''
-    }
+      'turbo-flow': '',
+    },
   },
   misc: {
     items: {
-      'static-server-side-generation': ''
-    }
-  }
+      'static-server-side-generation': '',
+    },
+  },
 };
 const metaRecord = {
   '*': {
