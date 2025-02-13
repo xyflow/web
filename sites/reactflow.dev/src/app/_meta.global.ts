@@ -159,7 +159,10 @@ const metaRecord = {
   },
 
   // 2. Pro Routes
-  pro: { display: 'hidden', title: 'Pricing' },
+  pro: { display: 'hidden' },
+  // This we prevent the "Pricing" `/pro` link to be highlighted on sub routes,
+  // like "Pro Examples" `/pro/examples`
+  pricing: { href: '/pro' },
   'pro-examples': { display: 'hidden', href: '/pro/examples' },
   'case-studies': { display: 'hidden', href: '/pro/case-studies' },
   'contact-us': { display: 'hidden', href: 'https://xyflow.com/contact' },

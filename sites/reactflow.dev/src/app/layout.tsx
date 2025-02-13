@@ -74,7 +74,7 @@ const RootLayout: FC<{
     components: { display: 'hidden' },
     showcase: { display: 'hidden' },
     more: { display: 'hidden' },
-    pro: { display: 'normal' },
+    pricing: { display: 'normal' },
     'pro-examples': { display: 'normal' },
     'case-studies': { display: 'normal' },
     'contact-us': { display: 'normal' },
