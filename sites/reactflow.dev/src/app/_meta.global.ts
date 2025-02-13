@@ -101,7 +101,21 @@ const examples = {
       shapes: '',
     },
   },
-  edges: '',
+  edges: {
+    items: {
+      'custom-edges': '',
+      'animating-edges': '',
+      'edge-types': '',
+      'editable-edge': '',
+      'reconnect-edge': '',
+      'custom-connectionline': '',
+      'multi-connection-line': '',
+      markers: '',
+      'delete-edge-on-drop': '',
+      'floating-edges': '',
+      'simple-floating-edges': '',
+    },
+  },
   layout: {
     items: {
       'sub-flows': '',
