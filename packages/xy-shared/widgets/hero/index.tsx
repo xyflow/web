@@ -1,5 +1,7 @@
-import { type ReactNode } from 'react';
-import { Heading, HeroIcon, Text, cn } from '@xyflow/xy-ui';
+'use client';
+
+import { cloneElement, ReactElement, type ReactNode } from 'react';
+import { Heading, Text, cn } from '@xyflow/xy-ui';
 
 import { useConnectionDrawer } from '../../';
 
@@ -7,7 +9,7 @@ export type HeroProps = {
   title?: ReactNode;
   subtitle?: ReactNode;
   kicker?: ReactNode;
-  kickerIcon?: HeroIcon;
+  kickerIcon?: ReactElement;
   action?: ReactNode;
   className?: string;
   align?: 'left' | 'center';
@@ -20,7 +22,7 @@ export function Hero({
   title,
   subtitle,
   kicker,
-  kickerIcon: KickerIcon,
+  kickerIcon,
   action,
   children,
   className,
@@ -67,9 +69,9 @@ export function Hero({
                 isCenter && 'justify-center',
               )}
             >
-              {KickerIcon && (
-                <KickerIcon className="inline-block w-6 h-6 mr-1" />
-              )}
+              {kickerIcon && cloneElement(kickerIcon, {
+                className: 'inline-block w-6 h-6 mr-1',
+              })}
               {kicker}
             </h3>
           )}

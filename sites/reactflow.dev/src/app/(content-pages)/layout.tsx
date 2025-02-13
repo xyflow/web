@@ -3,9 +3,10 @@ import NextLink from 'next/link';
 import { Folder, MdxFile } from 'nextra';
 import { getPageMap } from 'nextra/page-map';
 import { SparklesIcon } from '@heroicons/react/24/outline';
-import { Search, SidebarTitle } from 'xy-shared';
+import { Search } from 'xy-shared';
 import { Button, defaultFooterCategories } from '@xyflow/xy-ui';
 import { NextraLayout } from '@/components/nextra-layout';
+import { SidebarTitle } from '@/components/sidebar-title';
 
 const Layout: FC<{ children: ReactNode }> = async ({ children }) => {
   const { Projects: _, ...remainingCategories } = defaultFooterCategories;
