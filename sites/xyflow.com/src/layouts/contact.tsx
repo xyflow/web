@@ -10,7 +10,7 @@ export default function ContactPage() {
       <Hero
         align="center"
         kicker="Contact Us"
-        kickerIcon={EnvelopeIcon}
+        kickerIcon={<EnvelopeIcon />}
         title="We're happy to answer any questions you have"
         subtitle="Messages go to our email inbox and we aim to respond within a couple of days."
       />

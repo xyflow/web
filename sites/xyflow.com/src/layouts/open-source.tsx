@@ -11,7 +11,7 @@ export default function OpenSource() {
     <BaseLayout>
       <Hero
         kicker="Open Source"
-        kickerIcon={UserGroupIcon}
+        kickerIcon={<UserGroupIcon />}
         title="Open Source at xyflow"
         subtitle="How and why we keep xyflow transparent, free, and MIT licensed"
         align="center"

@@ -36,4 +36,6 @@ export * from './components/sidebar-title';
 
 export * from './lib';
 
+export * from './context/shared-context';
+
 export * from './types';
