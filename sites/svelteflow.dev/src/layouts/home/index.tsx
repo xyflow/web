@@ -66,7 +66,7 @@ const features = [
     text: 'The things you need are already there: dragging nodes, zooming, panning, selecting multiple nodes, and adding/removing edges are all built-in.',
     route: '/learn' satisfies InternalRoute,
     linkLabel: 'Get started',
-    flowComponent: FlowA,
+    flowComponent: <FlowA />,
   },
   {
     title: (
@@ -79,13 +79,13 @@ const features = [
     text: 'We play nice with Tailwind and good old CSS. Svelte Flow nodes are just Svelte components. Create custom nodes to have full control with interactive components.',
     route: '/learn/guides/custom-nodes' satisfies InternalRoute,
     linkLabel: 'Custom nodes guide',
-    flowComponent: FlowB,
+    flowComponent: <FlowB />,
   },
   {
     title: 'All the right plugins',
     text: 'Make more advanced apps with the Background, Minimap, Controls, and Panel components.',
     route: '/learn' satisfies InternalRoute,
-    flowComponent: FlowC,
+    flowComponent: <FlowC />,
   },
 ];
 
