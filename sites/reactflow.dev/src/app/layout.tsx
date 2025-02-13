@@ -34,9 +34,9 @@ export const metadata: Metadata = {
   openGraph: {
     // https://github.com/vercel/next.js/discussions/50189#discussioncomment-10826632
     url: './',
-    siteName: APP_NAME,
     locale: 'en_US',
     type: 'website',
+    siteName: APP_NAME,
   },
   twitter: {
     site: 'https://x.com/xyflowdev',
@@ -67,24 +67,24 @@ const RootLayout: FC<{
   const folders = [...apiReference.children, ...examples.children].filter(
     (item): item is Folder<MdxFile> => 'children' in item,
   );
-  const proPageMap = mergeMetaWithPageMap(pageMap, {
-    learn: { display: 'hidden' },
-    'api-reference': { display: 'hidden' },
-    examples: { display: 'hidden' },
-    components: { display: 'hidden' },
-    showcase: { display: 'hidden' },
-    more: { display: 'hidden' },
-    pricing: { display: 'normal' },
-    'pro-examples': { display: 'normal' },
-    'case-studies': { display: 'normal' },
-    'contact-us': { display: 'normal' },
-  })
+  // const proPageMap = mergeMetaWithPageMap(pageMap, {
+  //   learn: { display: 'hidden' },
+  //   'api-reference': { display: 'hidden' },
+  //   examples: { display: 'hidden' },
+  //   components: { display: 'hidden' },
+  //   showcase: { display: 'hidden' },
+  //   more: { display: 'hidden' },
+  //   pricing: { display: 'normal' },
+  //   'pro-examples': { display: 'normal' },
+  //   'case-studies': { display: 'normal' },
+  //   'contact-us': { display: 'normal' },
+  // })
   for (const folder of folders) {
     folder.children = folder.children.map(
       (item: MdxFile & { title: string }) => ({
         ...item,
         title:
-          // On dev somehow we can duplicate banners without this check
+          // On dev somehow we can have duplicate badges without this check
           typeof item.title === 'string' ? (
             <SidebarTitle frontMatter={item.frontMatter} title={item.title} />
           ) : (
@@ -110,7 +110,7 @@ const RootLayout: FC<{
           footer={<Footer />}
           navbar={navbar}
           nextThemes={{ forcedTheme: 'light', defaultTheme: 'light' }}
-          pageMap={proPageMap}
+          pageMap={pageMap}
           // Set to null to avoid rendering search in mobile nav, since we added search in navbar already
           search={null}
           sidebar={{ toggleButton: false, defaultMenuCollapseLevel: 1 }}

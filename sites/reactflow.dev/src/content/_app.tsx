@@ -3,15 +3,13 @@
 import { useRouter } from 'next/router';
 import { cn } from '@xyflow/xy-ui';
 
-import { SharedContext, useFathom } from 'xy-shared';
+import { useFathom } from 'xy-shared';
 import { ntDapperFont, fontClassNames } from 'xy-shared/fonts';
 
 const fathomOptions = {
   id: 'LXMRMWLB',
   domains: ['reactflow.dev'],
 };
-
-// const sharedContext = { useConfig, useData };
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
@@ -27,9 +25,7 @@ export default function App({ Component, pageProps }) {
         }
       `}</style>
       <div className={cn(fontClassNames, routeSegment)}>
-        {/*<SharedContext.Provider value={sharedContext}>*/}
-          <Component {...pageProps} />
-        {/*</SharedContext.Provider>*/}
+        <Component {...pageProps} />
       </div>
     </>
   );
