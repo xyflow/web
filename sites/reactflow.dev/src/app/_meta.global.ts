@@ -114,7 +114,24 @@ const examples = {
       'force-layout': '',
     },
   },
-  interaction: '',
+  interaction: {
+    items: {
+      'interaction-props': '',
+      'drag-and-drop': '',
+      'computing-flows': '',
+      validation: '',
+      'connection-events': '',
+      'prevent-cycles': '',
+      'undo-redo': '',
+      'copy-paste': '',
+      'helper-lines': '',
+      'touch-device': '',
+      'save-and-restore': '',
+      'zoom-transitions': '',
+      collaborative: '',
+      'contextual-zoom': '',
+    },
+  },
   styling: {
     items: {
       'styled-components': '',
