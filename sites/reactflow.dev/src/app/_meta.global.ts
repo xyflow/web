@@ -235,8 +235,8 @@ const metaRecord = {
   'developer-survey-2023': {
     display: 'hidden',
     theme: {
-      footer: false
-    }
+      footer: false,
+    },
   },
   'developer-survey-2024': { display: 'hidden' },
   'whats-new': { display: 'hidden' },

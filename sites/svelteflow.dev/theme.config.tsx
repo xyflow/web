@@ -130,7 +130,9 @@ export default {
     },
   },
   search: {
-    component: Search,
+    component: () => {
+      return <div className="ml-auto">Search</div>;
+    },
   },
   feedback: {
     useLink: () => 'https://xyflow.com/contact',
