@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 import { MdxFile } from 'nextra';
 
 export const metadata: Metadata = {
-  // @ts-expect-error
+  // @ts-expect-error -- used by Nextra
   asIndexPage: true,
   sidebarTitle: 'Tutorials',
   description: 'Tutorials and in-depth guides on how to build with React Flow.',

@@ -33,7 +33,7 @@ import { Metadata } from 'next';
 import { getPageMap } from 'nextra/page-map';
 import { MdxFile } from 'nextra';
 
-export const revalidate = 60 * 60 * 24;
+export const revalidate = 86_400 // 60 * 60 * 24;
 export const metadata: Metadata = {
   title: 'React Flow Pro Examples',
   description:
@@ -44,10 +44,11 @@ const ProExamples: FC = async () => {
   const remoteProExamples = await fetchJSON(
     `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/examples.json`,
   );
-  const allExamples = (await getPageMap('/examples')).flatMap((item) =>
-    'children' in item ? (item.children as MdxFile[]) : [],
-  );
-  const proExamples = allExamples
+  const pageMap = (await getPageMap('/examples'));
+  const proExamples = pageMap
+    .flatMap((item) =>
+      'children' in item ? (item.children.filter((child): child is MdxFile => 'frontMatter' in child)) : [],
+    )
     .filter((item) => item.frontMatter.is_pro_example)
     .sort((a, b) => a.frontMatter.title.localeCompare(b.frontMatter.title));
 

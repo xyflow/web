@@ -110,6 +110,8 @@ const metaRecord = {
   '*': {
     type: 'page',
   },
+
+  // 1. Default Routes
   learn: {
     items: {
       index: '',
@@ -148,7 +150,6 @@ const metaRecord = {
   components: { items: components },
   showcase: '',
   more: {
-    title: 'More',
     type: 'menu',
     items: {
       changelog: { href: '/whats-new' },
@@ -156,10 +157,17 @@ const metaRecord = {
       'contact-us': { href: 'https://xyflow.com/contact' },
     },
   },
+
+  // 2. Pro Routes
+  pro: { display: 'hidden', title: 'Pricing' },
+  'pro-examples': { display: 'hidden', href: '/pro/examples' },
+  'case-studies': { display: 'hidden', href: '/pro/case-studies' },
+  'contact-us': { display: 'hidden', href: 'https://xyflow.com/contact' },
+
+  // 3. Hidden Routes
   index: { display: 'hidden' },
   'developer-survey-2023': { display: 'hidden' },
   'developer-survey-2024': { display: 'hidden' },
-  pro: { display: 'hidden' },
   'whats-new': { display: 'hidden' },
 };
 

@@ -13,13 +13,11 @@ export const Search: FC = () => {
     return null;
   }
   return (
-    <div className="ml-auto">
-      <DocSearch
-        appId={appId}
-        apiKey={apiKey}
-        indexName={indexName}
-        placeholder={undefined}
-      />
-    </div>
+    <DocSearch
+      appId={appId}
+      apiKey={apiKey}
+      indexName={indexName}
+      placeholder={undefined}
+    />
   );
 }

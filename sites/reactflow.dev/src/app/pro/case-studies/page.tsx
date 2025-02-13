@@ -35,10 +35,10 @@ const Page: FC = async () => {
               <ContentGridItem key={page.route} route={page.route}>
                 <ProjectPreview
                   image={page.frontMatter.image}
-                  title={page.frontMatter?.title}
-                  description={page.frontMatter?.description}
-                  authors={page.frontMatter?.authors}
-                  kicker={page.frontMatter?.client}
+                  title={page.frontMatter.title}
+                  description={page.frontMatter.description}
+                  authors={page.frontMatter.authors}
+                  kicker={page.frontMatter.client}
                 />
               </ContentGridItem>
             );
