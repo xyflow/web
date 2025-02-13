@@ -104,7 +104,13 @@ const examples = {
   edges: '',
   layout: '',
   interaction: '',
-  styling: '',
+  styling: {
+    items: {
+      'styled-components': '',
+      tailwind: '',
+      'turbo-flow': ''
+    }
+  },
 };
 const metaRecord = {
   '*': {
