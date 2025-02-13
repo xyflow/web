@@ -67,18 +67,18 @@ const RootLayout: FC<{
   const folders = [...apiReference.children, ...examples.children].filter(
     (item): item is Folder<MdxFile> => 'children' in item,
   );
-  // const proPageMap = mergeMetaWithPageMap(pageMap, {
-  //   learn: { display: 'hidden' },
-  //   'api-reference': { display: 'hidden' },
-  //   examples: { display: 'hidden' },
-  //   components: { display: 'hidden' },
-  //   showcase: { display: 'hidden' },
-  //   more: { display: 'hidden' },
-  //   pricing: { display: 'normal' },
-  //   'pro-examples': { display: 'normal' },
-  //   'case-studies': { display: 'normal' },
-  //   'contact-us': { display: 'normal' },
-  // })
+  const proPageMap = mergeMetaWithPageMap(pageMap, {
+    learn: { display: 'hidden' },
+    'api-reference': { display: 'hidden' },
+    examples: { display: 'hidden' },
+    components: { display: 'hidden' },
+    showcase: { display: 'hidden' },
+    more: { display: 'hidden' },
+    pro: { display: 'normal' },
+    'pro-examples': { display: 'normal' },
+    'case-studies': { display: 'normal' },
+    'contact-us': { display: 'normal' },
+  })
   for (const folder of folders) {
     folder.children = folder.children.map(
       (item: MdxFile & { title: string }) => ({
@@ -110,7 +110,7 @@ const RootLayout: FC<{
           footer={<Footer />}
           navbar={navbar}
           nextThemes={{ forcedTheme: 'light', defaultTheme: 'light' }}
-          pageMap={pageMap}
+          pageMap={proPageMap}
           // Set to null to avoid rendering search in mobile nav, since we added search in navbar already
           search={null}
           sidebar={{ toggleButton: false, defaultMenuCollapseLevel: 1 }}
