@@ -111,6 +111,11 @@ const examples = {
       'turbo-flow': ''
     }
   },
+  misc: {
+    items: {
+      'static-server-side-generation': ''
+    }
+  }
 };
 const metaRecord = {
   '*': {
