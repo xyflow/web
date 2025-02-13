@@ -1,3 +1,4 @@
+// TODO: remove this file and use `sites/reactflow.dev/src/components/tutorial-layout.tsx` instead after Nextra 4 migration
 import { ReactNode, useContext } from 'react';
 import { BaseBlogPostLayout, BlogPostFrontmatter } from './blog-post-base';
 import { getPrevAndNextPagesByTitle } from '../lib';
