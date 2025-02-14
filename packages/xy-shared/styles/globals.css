@@ -40,7 +40,7 @@ nav a:has(svg.nav-github-logo) {
   @apply max-sm:hidden;
 }
 
-nav._bg-transparent {
+nav.x\:bg-transparent {
   background-color: white;
 }
 
@@ -72,12 +72,12 @@ div.nextra-nav-container-blur {
   --gradientAngle: 258deg;
 }
 
-main ._text-primary-600,
-nav ._text-primary-600 {
+main .x\:text-primary-600,
+nav .x\:text-primary-600 {
   @apply text-primary;
 }
 
-main ._border-primary-500 {
+main .x\:border-primary-500 {
   @apply border-primary;
 }
 
@@ -287,7 +287,7 @@ article.nextra-content ol li p {
 }
 
 @media screen and (min-width: 2000px) {
-  main ._max-w-\[90rem\],
+  main .x\:max-w-\[90rem\],
   main .max-w-\[90rem\] {
     max-width: 90rem;
   }
@@ -377,27 +377,27 @@ article.nextra-content ol li p {
 even though the body is supposed to have overflow:hidden set. The following two
 rules make it work almost correctly, but they don't feel great. */
 
-html:has(body._overflow-hidden) {
+html:has(body.x\:overflow-hidden) {
   overflow-y: hidden;
 }
 
-html:has(body._overflow-hidden) nav {
+html:has(body.x\:overflow-hidden) nav {
   position: fixed;
   width: 100%;
 }
 
 /* this override adds some space for the api docs */
 
-.learn article main.md\:_px-12,
-.api-reference article main.md\:_px-12,
-.examples article main.md\:_px-12 {
+.learn article main.x\:md\:px-12,
+.api-reference article main.x\:md\:px-12,
+.examples article main.x\:md\:px-12 {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 }
 
-/* this unifies the /examples content width with /api-refernce and /learn */
+/* this unifies the /examples content width with /api-reference and /learn */
 
-.examples main._max-w-6xl {
+.examples main.x\:max-w-6xl {
   max-width: none;
 }
 
