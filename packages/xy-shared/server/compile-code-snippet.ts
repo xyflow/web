@@ -1,4 +1,6 @@
+// TODO: remove this file after nextra 4 migration in favour of `sites/reactflow.dev/src/utils/compile-code-snippet.ts`
 import { compileMdx } from 'nextra/compile';
+import { CompiledMdx } from '../types';
 
 type CompileCodeSnippetOptions = {
   filetype?: string;
@@ -9,28 +11,38 @@ type CompileCodeSnippetOptions = {
   npm2yarn?: boolean;
 };
 
-function createMDXString(
-  snippet: string,
-  options: CompileCodeSnippetOptions = {},
-) {
-  const codeblockMetadata = [
-    options.showCopy && 'copy',
-    options.showLineNumbers && 'showLineNumbers',
-    options.highlight && `/${options.highlight}/`,
-    options.filename && `filename="${options.filename}"`,
-    options.npm2yarn && 'npm2yarn',
-  ]
-    .filter(Boolean)
-    .join(' ');
-  const filetype = options.filetype ?? 'js';
-  return `~~~${filetype} ${codeblockMetadata}
-${snippet}`;
+const defaultOptions = {
+  filetype: 'js',
+  showCopy: false,
+  showLineNumbers: false,
+  highlight: '',
+  filename: '',
+  npm2yarn: false,
+};
+
+function createMDXString(snippet: string, options: CompileCodeSnippetOptions) {
+  return (
+    '```' +
+    options.filetype +
+    (options.showCopy ? ' copy ' : '') +
+    (options.showLineNumbers ? ' showLineNumbers' : '') +
+    (options.highlight ? ` /${options.highlight}/ ` : '') +
+    (options.filename ? ` filename="${options.filename}" ` : '') +
+    (options.npm2yarn ? ' npm2yarn' : '') +
+    '\n' +
+    snippet
+  );
 }
 
-export function compileCodeSnippet(
+export async function compileCodeSnippet(
   snippet: string,
   options?: CompileCodeSnippetOptions,
-): Promise<string> {
-  const rawMdx = createMDXString(snippet, options);
-  return compileMdx(rawMdx);
+): Promise<CompiledMdx> {
+  const opts = { ...defaultOptions, ...options };
+
+  const { result: compiledSource, frontMatter } = await compileMdx(
+    createMDXString(snippet, opts),
+  );
+
+  return { compiledSource, frontMatter };
 }

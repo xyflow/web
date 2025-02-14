@@ -1,23 +1,17 @@
-import { clsx } from 'clsx';
-import { Code } from 'nextra/components';
-
+import path from 'path';
+import { FC } from 'react';
+import { MDXRemote } from 'nextra/mdx-remote';
+import { loadJSONFile } from 'xy-shared/server';
+import { ExampleCode, OpenInCodesandbox, OpenInStackblitz } from 'xy-shared';
 import {
+  cn,
   Framework,
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
 } from '@xyflow/xy-ui';
-
-import { MDXRemote } from 'nextra/mdx-remote';
-import { ExampleCode } from '../../types';
-
-import { OpenInStackblitz } from './open-in-stackblitz';
-import { OpenInCodesandbox } from './open-in-codesandbox';
-import path from 'path';
-import { compileCodeSnippet } from '../compile-code-snippet';
-import { loadJSONFile } from '../utils';
-import { FC } from 'react';
+import { compileCodeSnippet } from '@/utils';
 
 const defaultOptions = {
   editorHeight: '60vh',
@@ -96,14 +90,14 @@ export const RemoteCodeViewer: FC<RemoteCodeViewerProps> = async ({
 
   return (
     <div
-      className={clsx(
+      className={cn(
         'remote-code-viewer mt-5 rounded-lg flex',
         isHorizontal ? 'flex-row' : 'flex-col',
       )}
     >
       <div
         style={isHorizontal ? {} : { height: editorHeight }}
-        className={clsx('relative', isHorizontal ? 'w-1/2' : '')}
+        className={cn('relative', isHorizontal && 'w-1/2')}
       >
         <iframe
           src={preview}
@@ -125,9 +119,9 @@ export const RemoteCodeViewer: FC<RemoteCodeViewerProps> = async ({
       </div>
       {showEditor && (
         <div
-          className={clsx(
+          className={cn(
             'rounded-xl overflow-hidden',
-            isHorizontal ? 'w-1/2 rounded-l-none' : 'rounded-t-none ',
+            isHorizontal ? 'w-1/2 rounded-l-none' : 'rounded-t-none',
           )}
         >
           {snippets && (
@@ -153,10 +147,7 @@ export const RemoteCodeViewer: FC<RemoteCodeViewerProps> = async ({
                     className="min-h-[500px]"
                     value={filename}
                   >
-                    <MDXRemote
-                      compiledSource={compiledSource}
-                      components={{ code: Code }}
-                    />
+                    <MDXRemote compiledSource={compiledSource} />
                   </TabsContent>
                 ))}
               </div>
