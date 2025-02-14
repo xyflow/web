@@ -1,5 +1,5 @@
 import { generateStaticParamsFor, importPage } from 'nextra/pages';
-import { BaseBlogPostLayout } from 'xy-shared';
+import { BaseBlogPostLayout, CaseStudyLayoutWrapper } from 'xy-shared';
 import { useMDXComponents as getMdxComponents } from '@/mdx-components';
 
 type PageProps = Readonly<{
@@ -15,23 +15,41 @@ export default async function Page(props: PageProps) {
   const params = await props.params;
   const result = await importPage(params.mdxPath);
   const { default: MDXContent, toc, metadata } = result;
-  const isExamples = params.mdxPath[0] === 'examples';
-  const isTutorials =
-    params.mdxPath[0] === 'learn' && params.mdxPath[1] === 'tutorials';
   const mdx = <MDXContent {...props} params={params} />;
 
   return (
     <Wrapper toc={toc} metadata={metadata}>
-      {isExamples ? (
-        <>
-          <H1>{metadata.title}</H1>
-          {mdx}
-        </>
-      ) : isTutorials ? (
-        <BaseBlogPostLayout frontMatter={metadata}>{mdx}</BaseBlogPostLayout>
-      ) : (
-        mdx
-      )}
+      {(function (slug: string[]) {
+        const isExamples = slug[0] === 'examples';
+        if (isExamples) {
+          return (
+            <>
+              <H1>{metadata.title}</H1>
+              {mdx}
+            </>
+          );
+        }
+
+        const isTutorials = slug[0] === 'learn' && slug[1] === 'tutorials';
+        if (isTutorials) {
+          return (
+            <BaseBlogPostLayout frontMatter={metadata}>
+              {mdx}
+            </BaseBlogPostLayout>
+          );
+        }
+
+        const isCaseStudies = slug[0] === 'pro' && slug[1] === 'case-studies';
+        if (isCaseStudies) {
+          return (
+            <CaseStudyLayoutWrapper frontMatter={metadata}>
+              {mdx}
+            </CaseStudyLayoutWrapper>
+          );
+        }
+
+        return mdx;
+      })(params.mdxPath)}
     </Wrapper>
   );
 }

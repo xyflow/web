@@ -69,9 +69,10 @@ export function Hero({
                 isCenter && 'justify-center',
               )}
             >
-              {kickerIcon && cloneElement(kickerIcon, {
-                className: 'inline-block w-6 h-6 mr-1',
-              })}
+              {kickerIcon &&
+                cloneElement(kickerIcon, {
+                  className: 'inline-block w-6 h-6 mr-1',
+                })}
               {kicker}
             </h3>
           )}

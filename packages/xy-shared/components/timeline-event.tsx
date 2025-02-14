@@ -1,7 +1,7 @@
 // TODO: remove this file after Nextra 4 migration
 import Link from 'next/link';
 import { RemoteContent } from './remote-content';
-import TimeAgo from 'timeago-react';
+import { TimeAgo } from './time-ago';
 import { Callout, Tabs } from 'nextra/components';
 import { Emoji, Text } from '@xyflow/xy-ui';
 
