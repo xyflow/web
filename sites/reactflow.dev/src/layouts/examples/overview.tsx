@@ -101,7 +101,7 @@ const Page: FC = async () => {
                         descriptionVariant="light"
                         linkLabel="See example"
                         linkClassName="text-gray-900 font-medium text-sm group-hover:text-primary"
-                        kicker={category.toUpperCase()}
+                        kicker={category.title.toUpperCase()}
                         kickerSize="xs"
                         imageWrapperClassName="p-0 shadow-md border-none"
                       />
