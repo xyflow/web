@@ -11,7 +11,7 @@
 @import 'tailwindcss/utilities';
 @import 'tailwindcss/components';
 @import '@xyflow/react/dist/style.css';
-@import 'xy-shared/styles/globals.css';
+@import 'xy-shared/styles/globals-nextra-4.css';
 
 @layer l-base {
   :root {
