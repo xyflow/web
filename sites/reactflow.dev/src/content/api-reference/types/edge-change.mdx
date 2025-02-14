@@ -9,7 +9,7 @@ import { PropsTable } from '@/components/props-table';
 import {
   edgeAddChangeFields,
   edgeRemoveChangeFields,
-  edgeResetChangeFields,
+  edgeReplaceChangeFields,
   edgeSelectionChangeFields,
 } from '@/references/types/EdgeChange.fields';
 
@@ -26,7 +26,7 @@ various ways an edge can change in a flow.
 export type EdgeChange =
   | EdgeAddChange
   | EdgeRemoveChange
-  | EdgeResetChange
+  | EdgeReplaceChange
   | EdgeSelectionChange;
 ```
 
@@ -40,9 +40,9 @@ export type EdgeChange =
 
 <PropsTable {...edgeRemoveChangeFields} />
 
-### EdgeResetChange
+### EdgeReplaceChange
 
-<PropsTable {...edgeResetChangeFields} />
+<PropsTable {...edgeReplaceChangeFields} />
 
 ### EdgeSelectionChange
 
