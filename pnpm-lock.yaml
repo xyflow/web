@@ -530,11 +530,11 @@ importers:
         specifier: ^4.2.3
         version: 4.2.3(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
       nextra:
-        specifier: ^4.2.10
-        version: 4.2.10(acorn@8.14.0)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2)
+        specifier: ^4.2.11
+        version: 4.2.11(acorn@8.14.0)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2)
       nextra-theme-docs:
-        specifier: ^4.2.10
-        version: 4.2.10(@types/react@18.3.17)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(nextra@4.2.10(acorn@8.14.0)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(use-sync-external-store@1.2.2(react@18.3.1))
+        specifier: ^4.2.11
+        version: 4.2.11(@types/react@18.3.17)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(nextra@4.2.11(acorn@8.14.0)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(use-sync-external-store@1.2.2(react@18.3.1))
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -5473,11 +5473,11 @@ packages:
       react: '>=18'
       react-dom: '>=18'
 
-  nextra-theme-docs@4.2.10:
-    resolution: {integrity: sha512-hEAFVYg1K23cfCEl5tsQ9ukqFAmiI0kfJWKweCRSS3NoxWK/0sU0/Nh0MZgZvVY4VuIN3X6kZpAh/lNAUN/dGw==}
+  nextra-theme-docs@4.2.11:
+    resolution: {integrity: sha512-Ml9kfF4X41F9Fv2+lkAI9Kh6Jtiv4UY9hy/RlAbshj4Fzxu7A18v5CMFEvyfxCVMS63MB5zRz/Njsg57cNkvaQ==}
     peerDependencies:
       next: '>=14'
-      nextra: 4.2.10
+      nextra: 4.2.11
       react: '>=18'
       react-dom: '>=18'
 
@@ -5489,8 +5489,8 @@ packages:
       react: '>=18'
       react-dom: '>=18'
 
-  nextra@4.2.10:
-    resolution: {integrity: sha512-c2heNrLi9wWWA1WnUu7DMVp/y/lk5xsuhmbBXrIF/oB54tfNbuqBPGD9aZDg/8ZMuxlNUqBpigXXs7RXW34qlw==}
+  nextra@4.2.11:
+    resolution: {integrity: sha512-vzkbIDpym3cvHecEUnTYK44ebFHwCu7lxBeVMbX+ikQyiY8ARhyE/3Pr1z2kOkBrCMdLxlgN3aYkrmEMv1FFMg==}
     engines: {node: '>=18'}
     peerDependencies:
       next: '>=14'
@@ -13215,13 +13215,13 @@ snapshots:
       scroll-into-view-if-needed: 3.1.0
       zod: 3.24.1
 
-  nextra-theme-docs@4.2.10(@types/react@18.3.17)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(nextra@4.2.10(acorn@8.14.0)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(use-sync-external-store@1.2.2(react@18.3.1)):
+  nextra-theme-docs@4.2.11(@types/react@18.3.17)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(nextra@4.2.11(acorn@8.14.0)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(use-sync-external-store@1.2.2(react@18.3.1)):
     dependencies:
       '@headlessui/react': 2.2.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       clsx: 2.1.1
       next: 15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       next-themes: 0.4.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      nextra: 4.2.10(acorn@8.14.0)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2)
+      nextra: 4.2.11(acorn@8.14.0)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2)
       react: 18.3.1
       react-compiler-runtime: 0.0.0-experimental-22c6e49-20241219(react@18.3.1)
       react-dom: 18.3.1(react@18.3.1)
@@ -13280,7 +13280,7 @@ snapshots:
       - supports-color
       - typescript
 
-  nextra@4.2.10(acorn@8.14.0)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2):
+  nextra@4.2.11(acorn@8.14.0)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2):
     dependencies:
       '@formatjs/intl-localematcher': 0.6.0
       '@headlessui/react': 2.2.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)

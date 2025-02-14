@@ -69,7 +69,7 @@ const nextConfig: NextConfig = {
       // overriding package version to 9-rc which supports Next.js 16
       '@react-three/fiber': require.resolve('@react-three/fiber'),
     };
-  }
+  },
 };
 
 const withNextra = nextra({
