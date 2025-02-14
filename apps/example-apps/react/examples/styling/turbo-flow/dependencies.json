@@ -1,5 +1,6 @@
 [
   "@xyflow/react",
   "react-dom",
-  "react"
+  "react",
+  "react-icons"
 ]
