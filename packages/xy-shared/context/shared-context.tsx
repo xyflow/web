@@ -1,4 +1,6 @@
 // TODO: remove this file after Nextra 4 migration
+'use client';
+
 import { useConfig } from 'nextra-theme-docs';
 import { useData } from 'nextra/hooks';
 

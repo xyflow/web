@@ -23,6 +23,8 @@ export * from './widgets/project-preview';
 export * from './widgets/props-table';
 export * from './widgets/react-player-lazy';
 export * from './widgets/remote-code-viewer'; // TODO: remove this after Nextra 4 migration
+export * from './widgets/remote-code-viewer/open-in-codesandbox'; // TODO: remove this after Nextra 4 migration
+export * from './widgets/remote-code-viewer/open-in-stackblitz'; // TODO: remove this after Nextra 4 migration
 export * from './widgets/search';
 export * from './widgets/subscribe-section';
 
@@ -35,6 +37,7 @@ export * from './components/node-wrapper';
 export * from './components/timeline-event'; // TODO: remove this after Nextra 4 migration
 export * from './components/time-ago';
 export * from './components/sidebar-title';
+export * from './types';
 
 export * from './lib';
 

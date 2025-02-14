@@ -1,6 +1,6 @@
 import { PencilSquareIcon } from '@heroicons/react/24/outline';
 import { BaseLayout, Hero } from 'xy-shared';
-import { TimelineEvent, TimelineEventProps } from 'xy-shared/server';
+import { TimelineEvent, TimelineEventProps } from '@/components/timeline-event';
 import { FC } from 'react';
 import { Metadata } from 'next';
 import { getLastChangelog } from '@/utils';
