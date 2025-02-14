@@ -1,4 +1,5 @@
 // TODO: remove this file after Nextra 4 migration
+'use client';
 import { evaluate } from 'nextra/components';
 import { useData } from 'nextra/hooks';
 import { MDXComponents } from 'nextra/mdx';

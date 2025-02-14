@@ -108,4 +108,4 @@ const CaseStudyPreviews: FC<CaseStudyPreviewsProps> = ({ prev, next }) => {
       </ContentGridItem>
     </ContentGrid>
   );
-}
+};

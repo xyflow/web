@@ -1,6 +1,8 @@
 import { generateStaticParamsFor, importPage } from 'nextra/pages';
 import { BaseBlogPostLayout, CaseStudyLayoutWrapper } from 'xy-shared';
 import { useMDXComponents as getMdxComponents } from '@/mdx-components';
+import { normalizePages } from 'nextra/normalize-pages';
+import { getPageMap } from 'nextra/page-map';
 
 type PageProps = Readonly<{
   params: Promise<{
@@ -19,7 +21,7 @@ export default async function Page(props: PageProps) {
 
   return (
     <Wrapper toc={toc} metadata={metadata}>
-      {(function (slug: string[]) {
+      {(async function (slug: string[]) {
         const isExamples = slug[0] === 'examples';
         if (isExamples) {
           return (
@@ -41,8 +43,19 @@ export default async function Page(props: PageProps) {
 
         const isCaseStudies = slug[0] === 'pro' && slug[1] === 'case-studies';
         if (isCaseStudies) {
+          const pageMap = await getPageMap('/pro/case-studies');
+          const { activeIndex, flatDocsDirectories } = normalizePages({
+            list: pageMap.filter(
+              (item) => 'name' in item && item.name !== 'index',
+            ),
+            route: ['', ...slug].join('/'),
+          });
           return (
-            <CaseStudyLayoutWrapper frontMatter={metadata}>
+            <CaseStudyLayoutWrapper
+              frontMatter={metadata}
+              prev={flatDocsDirectories[activeIndex - 1]}
+              next={flatDocsDirectories[activeIndex + 1]}
+            >
               {mdx}
             </CaseStudyLayoutWrapper>
           );
