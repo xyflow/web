@@ -22,9 +22,11 @@ export const ApiReferenceSummary: FC<ApiReferenceSummaryProps> = async ({
       {pages.map(({ title, description, route }) => {
         return (
           <article key={route}>
+            {/* @ts-expect-error -- false positive */}
             <H2>
               <Link href={route}>{title}</Link>
             </H2>
+            {/* @ts-expect-error -- false positive */}
             <P>{description}</P>
 
             <Link
