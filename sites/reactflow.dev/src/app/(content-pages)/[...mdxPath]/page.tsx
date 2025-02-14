@@ -1,4 +1,5 @@
 import { generateStaticParamsFor, importPage } from 'nextra/pages';
+import { BaseBlogPostLayout } from 'xy-shared';
 import { useMDXComponents as getMdxComponents } from '@/mdx-components';
 
 type PageProps = Readonly<{
@@ -14,12 +15,23 @@ export default async function Page(props: PageProps) {
   const params = await props.params;
   const result = await importPage(params.mdxPath);
   const { default: MDXContent, toc, metadata } = result;
-  const isExamples =
-    params.mdxPath[0] === 'examples' && Boolean(params.mdxPath[1]);
+  const isExamples = params.mdxPath[0] === 'examples';
+  const isTutorials =
+    params.mdxPath[0] === 'learn' && params.mdxPath[1] === 'tutorials';
+  const mdx = <MDXContent {...props} params={params} />;
+
   return (
     <Wrapper toc={toc} metadata={metadata}>
-      {isExamples && <H1>{metadata.title}</H1>}
-      <MDXContent {...props} params={params} />
+      {isExamples ? (
+        <>
+          <H1>{metadata.title}</H1>
+          {mdx}
+        </>
+      ) : isTutorials ? (
+        <BaseBlogPostLayout frontMatter={metadata}>{mdx}</BaseBlogPostLayout>
+      ) : (
+        mdx
+      )}
     </Wrapper>
   );
 }
