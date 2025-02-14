@@ -1,5 +1,5 @@
-import { compileCodeSnippet } from 'xy-shared/server';
 import { loadJSONFile } from 'xy-shared/server';
+import { compileCodeSnippet } from '@/utils/compile-code-snippet';
 
 type Demo = {
   files: [{ content: string }];

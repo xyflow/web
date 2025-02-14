@@ -19,7 +19,7 @@ import Image from 'next/image';
 import { BaseLayout } from './base';
 import { ProjectPreview } from '../widgets/project-preview';
 import { Hero } from '../widgets/hero';
-import { type CaseStudyFrontmatter } from './case-study';
+import { type CaseStudyFrontmatter } from './case-study-wrapper';
 
 export type CaseStudy = MdxFile<CaseStudyFrontmatter>;
 

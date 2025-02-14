@@ -40,8 +40,8 @@ export const NextraLayout: FC<{
       feedback={{ content: null }}
       footer={
         <XYFooter
-          categories={footerCategories}
           baseUrl="https://reactflow.dev"
+          categories={footerCategories}
         />
       }
       navbar={
