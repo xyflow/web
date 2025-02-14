@@ -2,7 +2,7 @@ import type { FC, ReactNode } from 'react';
 import type { Metadata } from 'next';
 import { Head } from 'nextra/components';
 import reactFlowPackageJson from '@xyflow/react/package.json';
-import { ntDapperFont } from 'xy-shared/fonts';
+import { Html } from '@/components/html.client';
 import './global.css';
 
 const APP_NAME = 'React Flow';
@@ -46,15 +46,10 @@ const RootLayout: FC<{
   children: ReactNode;
 }> = async ({ children }) => {
   return (
-    <html
-      className={ntDapperFont.className}
-      dir="ltr"
-      lang="en"
-      suppressHydrationWarning
-    >
+    <Html>
       <Head color={{ hue: 333, saturation: 80 }} />
       <body>{children}</body>
-    </html>
+    </Html>
   );
 };
 
