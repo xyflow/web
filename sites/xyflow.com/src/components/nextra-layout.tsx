@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { getPageMap } from 'nextra/page-map';
 import { Layout, Navbar } from 'nextra-theme-docs';
 import { Button, Footer, Logo, Text } from '@xyflow/xy-ui';
+import { Anchor } from 'nextra/components';
 
 export const NextraLayout: FC<{
   children: ReactNode;
@@ -13,8 +14,8 @@ export const NextraLayout: FC<{
     <Layout
       darkMode={false}
       docsRepositoryBase="https://github.com/xyflow/web/tree/main/sites/xyflow.com"
-      // editLink="Edit this page on GitHub"
-      // feedback={{ content: null }}
+      editLink="Edit this page on GitHub"
+      feedback={{ content: null }}
       footer={
         <Footer
           message={{
@@ -54,7 +55,17 @@ export const NextraLayout: FC<{
       pageMap={pageMap}
       search={null}
       // sidebar={{ toggleButton: false, defaultMenuCollapseLevel: 1 }}
-      toc={{ backToTop: null }}
+      toc={{
+        backToTop: null,
+        extraContent: (
+          <Anchor
+            className="xy-link-gray x:text-xs x:font-medium"
+            href="https://xyflow.com/contact"
+          >
+            Question? Give us feedback
+          </Anchor>
+        ),
+      }}
     >
       {children}
     </Layout>
