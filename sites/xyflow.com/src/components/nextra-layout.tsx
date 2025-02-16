@@ -1,10 +1,11 @@
 /* eslint react/jsx-sort-props: 'error' */
 import { ComponentProps, FC, ReactNode } from 'react';
 // import NextLink from 'next/link';
-import { PageMapItem } from 'nextra';
 // import { Anchor } from 'nextra/components';
 import { Layout, Navbar } from 'nextra-theme-docs';
-import { Footer as XYFooter, LogoLabel } from '@xyflow/xy-ui';
+import { Button, Footer, Logo, Text } from '@xyflow/xy-ui';
+import Link from 'next/link';
+import { getPageMap } from 'nextra/page-map';
 // import { getLastChangelog } from '@/utils';
 
 const Toc: FC = async () => {
@@ -28,38 +29,51 @@ const Toc: FC = async () => {
 
 export const NextraLayout: FC<{
   children: ReactNode;
-  pageMap: PageMapItem[];
-  footerCategories: ComponentProps<typeof XYFooter>['categories'];
-  navbar: ReactNode;
-}> = ({ children, pageMap, footerCategories, navbar }) => {
+}> = async ({ children }) => {
+  const pageMap = await getPageMap()
   return (
     <Layout
       // darkMode={false}
       // docsRepositoryBase="https://github.com/xyflow/web/tree/main/sites/reactflow.dev"
       // editLink="Edit this page on GitHub"
       // feedback={{ content: null }}
-      // footer={
-      //   <XYFooter
-      //     baseUrl="https://reactflow.dev"
-      //     categories={footerCategories}
-      //   />
-      // }
-      // navbar={
-      //   <Navbar
-      //     align="left"
-      //     logo={
-      //       <LogoLabel
-      //         label="React Flow"
-      //         labelClassName="mr-5 md:max-lg:hidden"
-      //       />
-      //     }
-      //     logoLink={false}
-      //   >
-      //     {navbar}
-      //   </Navbar>
-      // }
+      footer={
+        <Footer
+          message={{
+            title: 'Hello from the xyflow team',
+            text: 'xyflow is building and maintaining open source software for node-based UIs since 2019.',
+          }}
+          baseUrl="https://xyflow.com"
+        />
+      }
+      navbar={
+        <Navbar
+          align="left"
+          logo={
+            <div className="flex space-x-2 items-center">
+              <Link className="flex space-x-2 items-center" href="/">
+                <Logo className="h-9 w-9" />
+                <Text className="font-black text-xl leading-none">xyflow</Text>
+              </Link>
+              <Link
+                className="max-md:hidden bg-primary rounded-full px-2 font-bold text-primary-foreground text-sm hover:opacity-80"
+                href="/careers"
+              >
+                hiring
+              </Link>
+            </div>
+          }
+          logoLink={false}
+        >
+          <Button asChild>
+            <Link href="/contact" className="shrink-0">
+              Contact Us
+            </Link>
+          </Button>
+        </Navbar>
+      }
       // nextThemes={{ forcedTheme: 'light', defaultTheme: 'light' }}
-      // pageMap={pageMap}
+      pageMap={pageMap}
       // // Set to null to avoid rendering search in mobile nav, since we added search in navbar already
       // search={null}
       // sidebar={{ toggleButton: false, defaultMenuCollapseLevel: 1 }}
