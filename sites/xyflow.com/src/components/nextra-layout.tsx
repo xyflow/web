@@ -18,11 +18,11 @@ export const NextraLayout: FC<{
       feedback={{ content: null }}
       footer={
         <Footer
+          baseUrl="https://xyflow.com"
           message={{
             title: 'Hello from the xyflow team',
             text: 'xyflow is building and maintaining open source software for node-based UIs since 2019.',
           }}
-          baseUrl="https://xyflow.com"
         />
       }
       navbar={
@@ -45,7 +45,7 @@ export const NextraLayout: FC<{
           logoLink={false}
         >
           <Button asChild>
-            <Link href="/contact" className="shrink-0">
+            <Link className="shrink-0" href="/contact">
               Contact Us
             </Link>
           </Button>

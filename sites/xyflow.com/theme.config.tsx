@@ -5,6 +5,7 @@ const baseUrl =
 
 export default {
   head() {
+    const frontMatter = {} as any
     const hasImage =
       frontMatter.image && frontMatter.imageWidth && frontMatter.imageHeight;
 
