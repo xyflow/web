@@ -1,7 +1,5 @@
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useConfig } from 'nextra-theme-docs';
-import { Footer, Button, Logo, Text } from '@xyflow/xy-ui';
 
 const defaultDescription =
   'Open source libraries for creating interactive workflows, dynamic diagrams and custom node-based UIs.';
@@ -16,27 +14,14 @@ const faviconAppletouchUrl = `${baseUrl}/img/apple-touch-icon.png`;
 const faviconSvgUrl = `${baseUrl}/img/favicon.svg`;
 
 export default {
-  docsRepositoryBase:
-    'https://github.com/xyflow/web/tree/main/sites/xyflow.com',
   // this is necessary to hide the github icon
   project: {},
-  darkMode: false,
-  nextThemes: {
-    forcedTheme: 'light',
-    defaultTheme: 'light',
-  },
-  search: {
-    component: undefined,
-  },
   feedback: {
     useLink: () => 'https://xyflow.com/contact',
   },
   color: {
     hue: 333,
     saturation: 100,
-  },
-  toc: {
-    backToTop: null,
   },
   sidebar: {
     toggleButton: false,
