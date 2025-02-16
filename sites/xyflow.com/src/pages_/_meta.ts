@@ -8,16 +8,6 @@ export default {
     title: 'Blog',
     display: 'normal',
   },
-  careers: {
-    title: 'Careers',
-    display: 'hidden',
-  },
-  '404': {
-    title: '404',
-    theme: {
-      layout: 'raw',
-    },
-  },
   'terms-of-use': {
     title: 'Terms Of Use',
     theme: {

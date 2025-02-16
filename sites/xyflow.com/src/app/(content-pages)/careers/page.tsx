@@ -4,6 +4,13 @@ import slugify from '@sindresorhus/slugify';
 import { Heading, Text, Section } from '@xyflow/xy-ui';
 import { BaseLayout, Hero } from 'xy-shared';
 import { MapPinIcon } from '@heroicons/react/24/solid';
+import { Metadata } from 'next';
+import { FC } from 'react';
+
+export const metadata: Metadata = {
+  title: 'Careers',
+  description: 'Keep up to date with our open jobs and opportunities.',
+};
 
 const openings: JobOpeningProps[] = [
   {
@@ -47,7 +54,7 @@ const openings: JobOpeningProps[] = [
   },
 ];
 
-export default function About() {
+const Page: FC = () => {
   return (
     <BaseLayout className="space-y-24">
       <Hero
@@ -156,7 +163,7 @@ export default function About() {
       </Section>
     </BaseLayout>
   );
-}
+};
 
 type JobOpeningProps = {
   location: string;
@@ -261,3 +268,5 @@ function JobOpening({
     </Section>
   );
 }
+
+export default Page;
