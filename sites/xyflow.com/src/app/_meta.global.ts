@@ -230,8 +230,8 @@ const metaRecord = {
   // 'case-studies': { display: 'hidden', href: '/pro/case-studies' },
   // 'contact-us': { display: 'hidden', href: 'https://xyflow.com/contact' },
   //
-  // // 3. Hidden Routes from Navigation
-  // index: { display: 'hidden' },
+  // 3. Hidden Routes from Navigation
+  index: { display: 'hidden' },
   // 'developer-survey-2023': {
   //   display: 'hidden',
   //   theme: {

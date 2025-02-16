@@ -9,6 +9,7 @@ import {
   ProjectCards,
   AboutSection,
 } from 'xy-shared';
+import { FC } from 'react';
 
 const sliderItems = [
   {
@@ -49,7 +50,7 @@ const sliderItems = [
   },
 ];
 
-export default function XYFlowHome() {
+const Page: FC = () => {
   return (
     <BaseLayout>
       <Hero
@@ -128,4 +129,6 @@ export default function XYFlowHome() {
       <ProjectCards projects={['reactflow', 'svelteflow']} />
     </BaseLayout>
   );
-}
+};
+
+export default Page;

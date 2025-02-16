@@ -2,9 +2,6 @@ export default {
   '*': {
     type: 'page',
     display: 'hidden',
-    theme: {
-      layout: 'raw',
-    },
   },
 
   blog: {
@@ -38,8 +35,6 @@ export default {
       },
     },
   },
-
-  index: 'xyflow',
   '404': {
     title: '404',
     theme: {
