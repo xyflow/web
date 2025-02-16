@@ -16,10 +16,6 @@ export default {
   feedback: {
     useLink: () => 'https://xyflow.com/contact',
   },
-  color: {
-    hue: 333,
-    saturation: 100,
-  },
   sidebar: {
     toggleButton: false,
   },

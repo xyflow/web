@@ -43,7 +43,6 @@ export const metadata: Metadata = {
   // },
   other: {
     robots: 'index,follow',
-    //   'docsearch:site': 'react',
   },
 };
 
@@ -52,9 +51,7 @@ const RootLayout: FC<{
 }> = async ({ children }) => {
   return (
     <Html>
-      <Head
-      // color={{ hue: 333, saturation: 80 }}
-      />
+      <Head color={{ hue: 333, saturation: 100 }} />
       <body>
         <NextraLayout>{children}</NextraLayout>
       </body>
