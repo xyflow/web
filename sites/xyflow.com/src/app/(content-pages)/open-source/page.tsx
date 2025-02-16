@@ -1,12 +1,20 @@
+import { FC } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Heading, Text, Section } from '@xyflow/xy-ui';
 import { BaseLayout, Hero } from 'xy-shared';
 import { UserGroupIcon } from '@heroicons/react/24/outline';
 
-import ossImage from '@/../public/img/open-source/thincrustopencore.png';
+import ossImage from '../../../../public/img/open-source/thincrustopencore.png';
+import { Metadata } from 'next';
 
-export default function OpenSource() {
+export const metadata: Metadata = {
+  title: 'Open Source',
+  description:
+    "At xyflow we're committed to open source. We believe that the best way to build software is in the open.",
+};
+
+const Page: FC = () => {
   return (
     <BaseLayout>
       <Hero
@@ -155,4 +163,6 @@ export default function OpenSource() {
       </Section>
     </BaseLayout>
   );
-}
+};
+
+export default Page;

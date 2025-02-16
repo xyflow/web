@@ -12,28 +12,9 @@ export default {
     title: 'About Us',
     display: 'normal',
   },
-  'open-source': {
-    title: 'Open Source',
-    display: 'normal',
-  },
   careers: {
     title: 'Careers',
     display: 'hidden',
-  },
-  libraries: {
-    title: 'Libraries',
-    display: 'normal',
-    type: 'menu',
-    items: {
-      'react-flow': {
-        title: 'React Flow',
-        href: 'https://reactflow.dev',
-      },
-      'svelte-flow': {
-        title: 'Svelte Flow',
-        href: 'https://svelteflow.dev',
-      },
-    },
   },
   '404': {
     title: '404',
