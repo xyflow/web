@@ -10,21 +10,21 @@ import './global.css';
 // import { SparklesIcon } from '@heroicons/react/24/outline';
 import { NextraLayout } from '@/components/nextra-layout';
 
-const APP_NAME = 'React Flow';
+const APP_NAME = 'xyflow';
 
 export const metadata: Metadata = {
-  // description: `${APP_NAME} - Customizable library for rendering workflows, diagrams and node-based UIs.`,
+  description: `${APP_NAME} - Open source libraries for creating interactive workflows, dynamic diagrams and custom node-based UIs.`,
   // metadataBase: new URL(reactFlowPackageJson.homepage),
   // keywords: reactFlowPackageJson.keywords,
-  // generator: 'Next.js',
-  // applicationName: APP_NAME,
-  // appleWebApp: {
-  //   title: APP_NAME,
-  // },
-  // title: {
-  //   default: 'Node-Based UIs in React',
-  //   template: `%s - ${APP_NAME}`,
-  // },
+  generator: 'Next.js',
+  applicationName: APP_NAME,
+  appleWebApp: {
+    title: APP_NAME,
+  },
+  title: {
+    default: 'Node-Based UIs for React and Svelte',
+    template: `%s - ${APP_NAME}`,
+  },
   // openGraph: {
   //   // https://github.com/vercel/next.js/discussions/50189#discussioncomment-10826632
   //   url: './',

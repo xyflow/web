@@ -10,6 +10,12 @@ import {
   AboutSection,
 } from 'xy-shared';
 import { FC } from 'react';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  description:
+    'Powerful open source libraries for building node-based UIs with React or Svelte. Ready out-of-the-box and infinitely customizable.',
+};
 
 const sliderItems = [
   {

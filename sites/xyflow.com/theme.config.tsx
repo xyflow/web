@@ -1,9 +1,6 @@
 import { useRouter } from 'next/router';
 import { useConfig } from 'nextra-theme-docs';
 
-const defaultDescription =
-  'Open source libraries for creating interactive workflows, dynamic diagrams and custom node-based UIs.';
-
 const baseUrl =
   process.env.NODE_ENV === 'production'
     ? 'https://xyflow.com'
@@ -30,10 +27,6 @@ export default {
     const router = useRouter();
     const { frontMatter } = useConfig();
 
-    const title = frontMatter.title
-      ? `${frontMatter.title} - xyflow`
-      : 'xyflow';
-
     const hasImage =
       frontMatter.image && frontMatter.imageWidth && frontMatter.imageHeight;
 
@@ -43,16 +36,12 @@ export default {
       height: frontMatter.imageHeight,
     };
 
-    const description = frontMatter.description ?? defaultDescription;
     const pageUrl = `${baseUrl}${router.asPath}`;
 
     // We are not allowed to render components inside head!
     // https://github.com/shuding/nextra/issues/3529
     return (
       <>
-        <title>{title}</title>
-        <meta name="description" content={description} />
-
         <link rel="icon" href={faviconUrl} />
         <link
           rel="apple-touch-icon"
