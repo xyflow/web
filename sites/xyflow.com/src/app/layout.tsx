@@ -1,21 +1,26 @@
 import type { FC, ReactNode } from 'react';
 import type { Metadata } from 'next';
 import { Head } from 'nextra/components';
-// import reactFlowPackageJson from '@xyflow/react/package.json';
 import { Html } from '@/components/html.client';
-import './global.css';
-// import { Search } from 'xy-shared';
-// import NextLink from 'next/link';
-// import { Button } from '@xyflow/xy-ui';
-// import { SparklesIcon } from '@heroicons/react/24/outline';
 import { NextraLayout } from '@/components/nextra-layout';
+import './global.css';
 
 const APP_NAME = 'xyflow';
 
 export const metadata: Metadata = {
   description: `${APP_NAME} - Open source libraries for creating interactive workflows, dynamic diagrams and custom node-based UIs.`,
-  // metadataBase: new URL(reactFlowPackageJson.homepage),
-  // keywords: reactFlowPackageJson.keywords,
+  metadataBase: new URL('https://xyflow.com'),
+  keywords: [
+    APP_NAME,
+    'node-based UI',
+    'graph',
+    'diagram',
+    'workflow',
+    'react-flow',
+    'svelte-flow',
+    'react',
+    'svelte',
+  ],
   generator: 'Next.js',
   applicationName: APP_NAME,
   appleWebApp: {
