@@ -2,8 +2,8 @@ import { ContentGrid, ContentGridItem } from '@xyflow/xy-ui';
 import { BaseLayout, BlogPostPreview, Hero } from 'xy-shared';
 
 import { FC } from 'react';
-import { getPageMap } from 'nextra/page-map';
-import { MdxFile, NextraMetadata } from 'nextra';
+import { NextraMetadata } from 'nextra';
+import { getBlogs } from '@/components/get-blogs';
 
 export const metadata: NextraMetadata = {
   asIndexPage: true,
@@ -13,12 +13,7 @@ export const metadata: NextraMetadata = {
 };
 
 const Page: FC = async () => {
-  const pageMap = (await getPageMap('/blog')) as MdxFile[];
-  const blogs = pageMap.sort(
-    (a, b) =>
-      new Date(b.frontMatter.date).getTime() -
-      new Date(a.frontMatter.date).getTime(),
-  );
+  const blogs = await getBlogs()
   return (
     <BaseLayout>
       <Hero

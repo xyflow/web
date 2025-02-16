@@ -1,5 +1,8 @@
 import { generateStaticParamsFor, importPage } from 'nextra/pages';
 import { useMDXComponents as getMdxComponents } from '@/mdx-components';
+import { BaseBlogPostLayout } from 'xy-shared';
+import { normalizePages } from 'nextra/normalize-pages';
+import { getBlogs } from '@/components/get-blogs';
 
 type PageProps = Readonly<{
   params: Promise<{
@@ -15,9 +18,21 @@ export default async function Page(props: PageProps) {
   const { default: MDXContent, toc, metadata } = result;
   const mdx = <MDXContent {...props} params={params} />;
 
+  const pageMap = await getBlogs();
+  const route = ['/blog', ...params.mdxPath].join('/')
+  const { activeIndex, flatDocsDirectories } = normalizePages({
+    list: pageMap,
+    route,
+  });
   return (
     <Wrapper toc={toc} metadata={metadata}>
-      {mdx}
+      <BaseBlogPostLayout
+        frontMatter={metadata}
+        prev={flatDocsDirectories[activeIndex - 1]}
+        next={flatDocsDirectories[activeIndex + 1]}
+      >
+        {mdx}
+      </BaseBlogPostLayout>
     </Wrapper>
   );
 }
