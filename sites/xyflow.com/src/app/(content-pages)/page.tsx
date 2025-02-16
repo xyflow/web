@@ -13,6 +13,7 @@ import { FC } from 'react';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
+  title: 'Node-Based UIs for React and Svelte',
   description:
     'Powerful open source libraries for building node-based UIs with React or Svelte. Ready out-of-the-box and infinitely customizable.',
 };

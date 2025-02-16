@@ -54,8 +54,6 @@ export default {
         <meta name="twitter:site" content="https://x.com/xyflowdev" />
         <meta name="twitter:creator" content="@xyflowdev" />
 
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
         <meta property="og:url" content={pageUrl} />
         <meta property="og:type" content="website" />
         {ogImage && (

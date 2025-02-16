@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     title: APP_NAME,
   },
   title: {
-    default: 'Node-Based UIs for React and Svelte',
+    default: APP_NAME,
     template: `%s - ${APP_NAME}`,
   },
   // openGraph: {
