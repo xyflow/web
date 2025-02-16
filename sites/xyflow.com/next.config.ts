@@ -52,7 +52,8 @@ const nextConfig: NextConfig = {
 };
 
 const withNextra = nextra({
-  search: false
+  search: false,
+  contentDirBasePath: '/blog'
 });
 
 // Merge MDX config with Next.js config

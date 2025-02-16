@@ -12,14 +12,10 @@ image: '/img/blog/v11-reactflow-header.png'
 import { Bleed } from 'nextra-theme-docs';
 import { Text, Image, RemoteCodeViewer } from 'xy-shared';
 
-import { BlogPostLayout } from 'xy-shared';
 import SSRFlow from '@/components/SSRFlow';
 
 import { getStaticCode } from 'xy-shared/server';
 export const getStaticProps = getStaticCode(['learn/computing-6', 'examples/styling/dark-mode']);
-
-
-<BlogPostLayout>
 
 For the last few months we’ve been wrapping up a solid React Flow 12 release for y’all. Since the last major release, we’ve grown our core team to five people, reached more than 22k stars on Github, rebranded to xyflow, launched Svelte Flow (many great side-effects of this are baked into this release), and kept all of our office plants alive.
 
@@ -149,5 +145,3 @@ Besides the new main features listed above, we added some other things that we w
 # And that's it!
 
 That's all for this release, thanks for sticking around and using React Flow 😊🌻 If you have any questions or feedback, please reach out on discord, github, or our [contact form](/contact).
-
-</BlogPostLayout>

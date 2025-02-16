@@ -2,18 +2,17 @@ import { ContentGrid, ContentGridItem } from '@xyflow/xy-ui';
 import { BaseLayout, BlogPostPreview, Hero } from 'xy-shared';
 
 import { FC } from 'react';
-import { Metadata } from 'next';
 import { getPageMap } from 'nextra/page-map';
-import { MdxFile } from 'nextra';
+import { MdxFile, NextraMetadata } from 'nextra';
 
-export const metadata: Metadata = {
+export const metadata: NextraMetadata = {
+  asIndexPage: true,
   title: 'Blog',
   description: 'All the latest news and updates from React Flow and Svelte Flow'
 }
 
 const Page: FC = async () => {
-  const pageMap = (await getPageMap('/')) as MdxFile[]
-  console.log({pageMap})
+  const pageMap = (await getPageMap('/blog')) as MdxFile[]
   return (
     <BaseLayout>
       <Hero
@@ -23,13 +22,13 @@ const Page: FC = async () => {
       />
       <div className="-mx-6 sm:mx-auto">
         <ContentGrid>
-          {getMdxPagesUnderRoute('/blog').map((page) => (
+          {pageMap.map((page) => (
             <ContentGridItem key={page.route} route={page.route}>
               <BlogPostPreview
-                title={page.frontMatter?.title}
-                intro={page.frontMatter?.intro}
-                date={page.frontMatter?.date}
-                authors={page.frontMatter?.authors}
+                title={page.frontMatter.title}
+                intro={page.frontMatter.intro}
+                date={page.frontMatter.date}
+                authors={page.frontMatter.authors}
                 headingSize="md"
               />
             </ContentGridItem>
@@ -39,3 +38,5 @@ const Page: FC = async () => {
     </BaseLayout>
   );
 }
+
+export default Page
