@@ -52,7 +52,6 @@ export default {
       <>
         <title>{title}</title>
         <meta name="description" content={description} />
-        <meta name="robots" content="index,follow" />
 
         <link rel="icon" href={faviconUrl} />
         <link
