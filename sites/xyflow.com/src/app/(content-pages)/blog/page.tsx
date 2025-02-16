@@ -1,9 +1,19 @@
 import { ContentGrid, ContentGridItem } from '@xyflow/xy-ui';
 import { BaseLayout, BlogPostPreview, Hero } from 'xy-shared';
 
-import { getMdxPagesUnderRoute } from 'xy-shared';
+import { FC } from 'react';
+import { Metadata } from 'next';
+import { getPageMap } from 'nextra/page-map';
+import { MdxFile } from 'nextra';
 
-export default function Blog() {
+export const metadata: Metadata = {
+  title: 'Blog',
+  description: 'All the latest news and updates from React Flow and Svelte Flow'
+}
+
+const Page: FC = async () => {
+  const pageMap = (await getPageMap('/')) as MdxFile[]
+  console.log({pageMap})
   return (
     <BaseLayout>
       <Hero

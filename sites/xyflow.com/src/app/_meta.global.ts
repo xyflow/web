@@ -4,6 +4,7 @@ const metaRecord = {
   },
 
   // 1. Default Routes
+  blog: '',
   about: '',
   'open-source': '',
   libraries: {
