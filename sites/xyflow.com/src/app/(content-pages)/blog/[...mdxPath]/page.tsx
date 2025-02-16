@@ -1,8 +1,8 @@
 import { generateStaticParamsFor, importPage } from 'nextra/pages';
-import { useMDXComponents as getMdxComponents } from '@/mdx-components';
-import { BaseBlogPostLayout } from 'xy-shared';
 import { normalizePages } from 'nextra/normalize-pages';
-import { getBlogs } from '@/components/get-blogs';
+import { BaseBlogPostLayout } from 'xy-shared';
+import { getBlogs } from '@/utils';
+import { useMDXComponents as getMdxComponents } from '@/mdx-components';
 
 type PageProps = Readonly<{
   params: Promise<{

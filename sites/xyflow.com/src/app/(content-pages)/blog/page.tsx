@@ -3,7 +3,7 @@ import { BaseLayout, BlogPostPreview, Hero } from 'xy-shared';
 
 import { FC } from 'react';
 import { NextraMetadata } from 'nextra';
-import { getBlogs } from '@/components/get-blogs';
+import { getBlogs } from '@/utils';
 
 export const metadata: NextraMetadata = {
   asIndexPage: true,
