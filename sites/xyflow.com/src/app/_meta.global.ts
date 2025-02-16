@@ -17,6 +17,7 @@ const metaRecord = {
   // 2. Hidden Routes from Navigation
   index: { display: 'hidden' },
   careers: { display: 'hidden' },
+  contact: { display: 'hidden' },
 };
 
 export default metaRecord;

@@ -22,7 +22,7 @@ import burak from '../../../../public/img/burak.jpg';
 import abbey from '../../../../public/img/abbey.jpg';
 
 export const metadata: Metadata = {
-  title: 'About',
+  title: 'About Us',
   description:
     'Get to know the team behind xyflow, React Flow, and Svelte Flow.',
 };

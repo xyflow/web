@@ -3,8 +3,16 @@ import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 import { EnvelopeIcon } from '@heroicons/react/24/outline';
 import { Card, Input, InputLabel, Text } from '@xyflow/xy-ui';
 import { BaseLayout, ContactForm, Hero } from 'xy-shared';
+import { FC } from 'react';
+import { Metadata } from 'next';
 
-export default function ContactPage() {
+export const metadata: Metadata = {
+  title: 'Contact Us',
+  description:
+    "Got questions about xyflow or any of our libraries? Here's how to reach us.",
+};
+
+const Page: FC = () => {
   return (
     <BaseLayout>
       <Hero
@@ -58,7 +66,7 @@ export default function ContactPage() {
         <div className="py-8 px-24 space-y-8">
           <Text size="lg">You can also find us on...</Text>
 
-          <div className="divide-y">
+          <div className="divide-y divide-gray-200">
             {externalLinks.map(({ name, href }) => (
               <Link
                 key={name}
@@ -84,7 +92,7 @@ export default function ContactPage() {
       </Card>
     </BaseLayout>
   );
-}
+};
 
 const externalLinks = [
   { name: 'GitHub', href: 'https://github.com/xyflow' },
@@ -93,3 +101,5 @@ const externalLinks = [
 ];
 
 const toFormName = (name: string) => name.toLowerCase().replace(' ', '-');
+
+export default Page;
