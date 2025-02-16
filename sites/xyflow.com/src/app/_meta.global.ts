@@ -25,6 +25,7 @@ const metaRecord = {
     }
   },
   imprint: { display: 'hidden' },
+  privacy: { display: 'hidden' },
 };
 
 export default metaRecord;
