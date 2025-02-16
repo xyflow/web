@@ -25,22 +25,22 @@ export const metadata: Metadata = {
     default: APP_NAME,
     template: `%s - ${APP_NAME}`,
   },
-  // openGraph: {
-  //   // https://github.com/vercel/next.js/discussions/50189#discussioncomment-10826632
-  //   url: './',
-  //   locale: 'en_US',
-  //   type: 'website',
-  //   siteName: APP_NAME,
-  // },
-  // twitter: {
-  //   site: 'https://x.com/xyflowdev',
-  //   card: 'summary_large_image',
-  //   creator: '@xyflowdev',
-  // },
-  // alternates: {
-  //   // https://github.com/vercel/next.js/discussions/50189#discussioncomment-10826632
-  //   canonical: './',
-  // },
+  openGraph: {
+    // https://github.com/vercel/next.js/discussions/50189#discussioncomment-10826632
+    url: './',
+    locale: 'en_US',
+    type: 'website',
+    siteName: APP_NAME,
+  },
+  twitter: {
+    site: 'https://x.com/xyflowdev',
+    card: 'summary_large_image',
+    creator: '@xyflowdev',
+  },
+  alternates: {
+    // https://github.com/vercel/next.js/discussions/50189#discussioncomment-10826632
+    canonical: './',
+  },
   other: {
     robots: 'index,follow',
   },
