@@ -1,16 +1,9 @@
-import { useConfig } from 'nextra-theme-docs';
-import { useData } from 'nextra/hooks';
-
-import { useFathom, SharedContext } from 'xy-shared';
+import { useFathom } from 'xy-shared';
 import { ntDapperFont, fontClassNames } from 'xy-shared/fonts';
-
-import '../global.css';
 
 const fathomOptions = {
   id: 'JQTCQNLV',
 };
-
-const sharedContext = { useConfig, useData };
 
 export default function App({ Component, pageProps }) {
   useFathom(fathomOptions);
@@ -23,9 +16,7 @@ export default function App({ Component, pageProps }) {
         }
       `}</style>
       <div className={fontClassNames}>
-        <SharedContext.Provider value={sharedContext}>
-          <Component {...pageProps} />
-        </SharedContext.Provider>
+        <Component {...pageProps} />
       </div>
     </>
   );

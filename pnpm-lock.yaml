@@ -687,33 +687,27 @@ importers:
       '@xyflow/xy-ui':
         specifier: workspace:*
         version: link:../../packages/xy-ui
-      clsx:
-        specifier: ^1.2.1
-        version: 1.2.1
       fast-xml-parser:
         specifier: ^4.5.0
         version: 4.5.1
       next:
-        specifier: ^14.2.15
-        version: 14.2.15(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^15.1.7
+        version: 15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       next-sitemap:
         specifier: ^4.2.3
-        version: 4.2.3(next@14.2.15(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
+        version: 4.2.3(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
       nextra:
-        specifier: 3.0.15
-        version: 3.0.15(@types/react@18.3.17)(acorn@8.14.0)(next@14.2.15(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2)
+        specifier: ^4.2.11
+        version: 4.2.11(acorn@8.14.0)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2)
       nextra-theme-docs:
-        specifier: 3.0.15
-        version: 3.0.15(next@14.2.15(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(nextra@3.0.15(@types/react@18.3.17)(acorn@8.14.0)(next@14.2.15(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^4.2.11
+        version: 4.2.11(@types/react@18.3.17)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(nextra@4.2.11(acorn@8.14.0)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(use-sync-external-store@1.2.2(react@18.3.1))
       react:
         specifier: ^18.3.1
         version: 18.3.1
       react-dom:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
-      react-icons:
-        specifier: ^4.10.1
-        version: 4.12.0(react@18.3.1)
       xy-shared:
         specifier: workspace:*
         version: link:../../packages/xy-shared
@@ -727,24 +721,15 @@ importers:
       '@types/react':
         specifier: ^18.3.12
         version: 18.3.17
-      '@types/react-dom':
-        specifier: ^18.3.1
-        version: 18.3.5(@types/react@18.3.17)
-      autoprefixer:
-        specifier: ^10.4.20
-        version: 10.4.20(postcss@8.4.49)
-      cssnano:
-        specifier: ^6.0.1
-        version: 6.1.2(postcss@8.4.49)
-      dotenv:
-        specifier: ^16.4.5
-        version: 16.4.7
       eslint-config-xyflow:
         specifier: workspace:*
         version: link:../../configs/eslint-config-xyflow
-      postcss:
-        specifier: ^8.4.47
-        version: 8.4.49
+      postcss-import:
+        specifier: ^16.1.0
+        version: 16.1.0(postcss@8.4.49)
+      postcss-lightningcss:
+        specifier: ^1.0.1
+        version: 1.0.1(postcss@8.4.49)
       tailwindcss:
         specifier: ^3.4.14
         version: 3.4.17(ts-node@10.9.2(@types/node@20.17.10)(typescript@5.7.2))

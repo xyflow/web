@@ -1,10 +1,8 @@
-import pkg from './package.json' with { type: 'json' };
+import { NextConfig } from 'next';
 import nextra from 'nextra';
+import reactFlowPackageJson from '@xyflow/react/package.json' with { type: 'json' };
 
-const REACT_FLOW_VERSION = pkg.dependencies['@xyflow/react']?.replace('^', '');
-
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig: NextConfig = {
   // Configure pageExtensions to include md and mdx
   pageExtensions: ['ts', 'tsx', 'js', 'jsx'],
   // Optionally, add any other Next.js config below
@@ -45,7 +43,7 @@ const nextConfig = {
     ],
   },
   env: {
-    REACT_FLOW_VERSION,
+    REACT_FLOW_VERSION: reactFlowPackageJson.version,
     NEXT_PUBLIC_EXAMPLES_URL:
     process.env.VERCEL_ENV === 'preview'
       ? `https://example-apps-git-${process.env.VERCEL_GIT_COMMIT_REF}-xyflow.vercel.app`
@@ -54,8 +52,7 @@ const nextConfig = {
 };
 
 const withNextra = nextra({
-  theme: 'nextra-theme-docs',
-  themeConfig: './theme.config.tsx',
+  search: false
 });
 
 // Merge MDX config with Next.js config
