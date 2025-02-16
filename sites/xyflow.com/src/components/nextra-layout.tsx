@@ -54,7 +54,7 @@ export const NextraLayout: FC<{
       nextThemes={{ forcedTheme: 'light', defaultTheme: 'light' }}
       pageMap={pageMap}
       search={null}
-      // sidebar={{ toggleButton: false, defaultMenuCollapseLevel: 1 }}
+      sidebar={{ toggleButton: false, defaultMenuCollapseLevel: 1 }}
       toc={{
         backToTop: null,
         extraContent: (

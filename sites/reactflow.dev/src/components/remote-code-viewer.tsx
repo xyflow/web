@@ -11,7 +11,7 @@ import {
   TabsList,
   TabsTrigger,
 } from '@xyflow/xy-ui';
-import { compileCodeSnippet } from '@/utils';
+import { compileCodeSnippet } from '../utils';
 
 const defaultOptions = {
   editorHeight: '60vh',

@@ -4,11 +4,6 @@ const baseUrl =
     : 'http://localhost:3001';
 
 export default {
-  // this is necessary to hide the github icon
-  project: {},
-  sidebar: {
-    toggleButton: false,
-  },
   head() {
     const hasImage =
       frontMatter.image && frontMatter.imageWidth && frontMatter.imageHeight;
