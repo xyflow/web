@@ -1,3 +1,5 @@
+import { FC } from 'react';
+import { Metadata } from 'next';
 import { UserGroupIcon } from '@heroicons/react/24/outline';
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 import Image, { StaticImageData } from 'next/image';
@@ -12,14 +14,20 @@ import {
 } from '@xyflow/xy-ui';
 import { BaseLayout, Hero } from 'xy-shared';
 
-import christopher from '@/../public/img/christopher.jpg';
-import hayleigh from '@/../public/img/hayleigh.jpg';
-import moritz from '@/../public/img/moritz.jpg';
-import peter from '@/../public/img/peter.jpg';
-import burak from '@/../public/img/burak.jpg';
-import abbey from '@/../public/img/abbey.jpg';
+import christopher from '../../../../public/img/christopher.jpg';
+import hayleigh from '../../../../public/img/hayleigh.jpg';
+import moritz from '../../../../public/img/moritz.jpg';
+import peter from '../../../../public/img/peter.jpg';
+import burak from '../../../../public/img/burak.jpg';
+import abbey from '../../../../public/img/abbey.jpg';
 
-export default function About() {
+export const metadata: Metadata = {
+  title: 'About',
+  description:
+    'Get to know the team behind xyflow, React Flow, and Svelte Flow.',
+};
+
+const Page: FC = () => {
   return (
     <BaseLayout>
       <Hero
@@ -32,11 +40,11 @@ export default function About() {
       <Section className="max-w-screen-md mx-auto mt-12 lg:my-12">
         <Text size="lg" className="leading-8 mb-8">
           Since 2014, Moritz and Christopher have been creating infographics,
-          tools, and projects together through their interactive news agency, 
+          tools, and projects together through their interactive news agency,
           <Link href="https://webkid.io/" className="text-pink-500">
             webkid
           </Link>
-          . Along the way to creating 
+          . Along the way to creating
           <Link href="https://datablocks.pro/" className="text-pink-500">
             Datablocks
           </Link>{' '}
@@ -59,7 +67,7 @@ export default function About() {
           an email away at info@xyflow.com.
         </Text>
         <Text size="lg" className="leading-8">
-          ✌🏻 the xyflow team
+          ✌🏻 the xyflow team
         </Text>
       </Section>
 
@@ -141,7 +149,7 @@ export default function About() {
       </ContentGrid>
     </BaseLayout>
   );
-}
+};
 
 function TeamCard({
   name,
@@ -196,3 +204,5 @@ function TeamCard({
     </ContentGridItem>
   );
 }
+
+export default Page;

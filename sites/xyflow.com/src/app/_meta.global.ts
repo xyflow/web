@@ -4,6 +4,7 @@ const metaRecord = {
   },
 
   // 1. Default Routes
+  about: '',
   'open-source': '',
   libraries: {
     type: 'menu',

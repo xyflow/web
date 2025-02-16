@@ -8,10 +8,6 @@ export default {
     title: 'Blog',
     display: 'normal',
   },
-  about: {
-    title: 'About Us',
-    display: 'normal',
-  },
   careers: {
     title: 'Careers',
     display: 'hidden',
