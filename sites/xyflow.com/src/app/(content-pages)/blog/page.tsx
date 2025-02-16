@@ -8,11 +8,17 @@ import { MdxFile, NextraMetadata } from 'nextra';
 export const metadata: NextraMetadata = {
   asIndexPage: true,
   title: 'Blog',
-  description: 'All the latest news and updates from React Flow and Svelte Flow'
-}
+  description:
+    'All the latest news and updates from React Flow and Svelte Flow',
+};
 
 const Page: FC = async () => {
-  const pageMap = (await getPageMap('/blog')) as MdxFile[]
+  const pageMap = (await getPageMap('/blog')) as MdxFile[];
+  const blogs = pageMap.sort(
+    (a, b) =>
+      new Date(b.frontMatter.date).getTime() -
+      new Date(a.frontMatter.date).getTime(),
+  );
   return (
     <BaseLayout>
       <Hero
@@ -22,7 +28,7 @@ const Page: FC = async () => {
       />
       <div className="-mx-6 sm:mx-auto">
         <ContentGrid>
-          {pageMap.map((page) => (
+          {blogs.map((page) => (
             <ContentGridItem key={page.route} route={page.route}>
               <BlogPostPreview
                 title={page.frontMatter.title}
@@ -37,6 +43,6 @@ const Page: FC = async () => {
       </div>
     </BaseLayout>
   );
-}
+};
 
-export default Page
+export default Page;
