@@ -7,7 +7,6 @@ export * from './layouts/case-study'; // TODO: remove this after Nextra 4 migrat
 export * from './layouts/case-study-wrapper';
 export * from './layouts/example';
 export * from './layouts/showcase';
-export * from './layouts/text-only';
 export * from './layouts/tutorial';
 
 export * from './widgets/about-section';
