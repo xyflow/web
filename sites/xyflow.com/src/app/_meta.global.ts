@@ -18,6 +18,12 @@ const metaRecord = {
   index: { display: 'hidden' },
   careers: { display: 'hidden' },
   contact: { display: 'hidden' },
+  'ethical-standards': {
+    display: 'hidden',
+    theme: {
+      toc: false,
+    }
+  },
 };
 
 export default metaRecord;
