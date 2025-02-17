@@ -7,7 +7,6 @@ import { getPageMap } from 'nextra/page-map';
 type PageProps = Readonly<{
   params: Promise<{
     mdxPath: string[];
-    lang: string;
   }>;
 }>;
 
