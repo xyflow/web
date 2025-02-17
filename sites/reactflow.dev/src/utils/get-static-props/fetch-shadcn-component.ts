@@ -32,11 +32,16 @@ export default function getUiComponentConfig(id: string) {
     const componentName = kebabCaseToCamelCase(id);
 
     const demoString = demo.files[0].content;
-    const demoMDX = await compileCodeSnippet(demoString, {
-      filetype: 'tsx',
-      showCopy: true,
-      highlight: componentName,
-    });
+    console.log('Demo content:', demoString);
+
+    // Only compile if we have content
+    const demoMDX = demoString
+      ? await compileCodeSnippet(demoString, {
+          filetype: 'tsx',
+          showCopy: true,
+          highlight: componentName,
+        })
+      : null;
 
     const pageString = demo.files[0].page;
     const pageMDX = await compileCodeSnippet(pageString, {

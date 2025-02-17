@@ -58,28 +58,29 @@ const componentPagesBasePath = path.join(__dirname, "../app/components/");
       );
       fs.writeFileSync(componentOutputPath, JSON.stringify(registry, null, 2));
 
-      // Read demo.tsx file if it exists, otherwise use index file
-      let demoContent = index; // Default to index content
+      let demoContent = null;
       try {
         const demoExists = fs.existsSync(demoPath);
         if (demoExists) {
           demoContent = fs.readFileSync(demoPath, "utf8");
+          // Only replace registry paths if we have actual content
           demoContent = demoContent.replace(/registry\//g, "");
         }
       } catch (error) {
-        console.log(`No demo file found for ${folder.name}, using index.`);
+        console.log(`No demo file found for ${folder.name}`);
       }
 
+      // Create demo file object
       const demoFile = {
         files: [
           {
-            content: demoContent,
+            content: demoContent || null, // Ensure null is used when no content exists
             page: page,
           },
         ],
       };
 
-      // Write demo.json
+      // Write the demo file
       fs.writeFileSync(
         path.join(demoOutputPath, folder.name + ".json"),
         JSON.stringify(demoFile, null, 2),

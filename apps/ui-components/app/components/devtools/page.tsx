@@ -2,7 +2,7 @@
 
 import { Background, ReactFlow } from "@xyflow/react";
 
-import DevToolsDemo from "@/registry/components/devtools/demo";
+import { DevTools } from "@/registry/components/devtools/";
 
 const defaultNodes = [
   {
@@ -37,7 +37,7 @@ export default function DemoPage() {
         fitView
       >
         <Background />
-        <DevToolsDemo />
+        <DevTools position="top-left" />
       </ReactFlow>
     </div>
   );

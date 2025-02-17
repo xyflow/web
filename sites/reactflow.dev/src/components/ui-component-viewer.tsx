@@ -134,18 +134,26 @@ function UiComponentViewer() {
         <Heading className="mb-5" size="sm">
           Usage
         </Heading>
-        <Heading size="xs" className="mt-10">
-          1. Copy the component into your app
-        </Heading>
-        <RemoteContent
-          {...data.demoMDX}
-          mdx={data.demoMDX.compiledSource}
-          components={components}
-          scope={{}}
-        />
+        {data.demoMDX?.compiledSource && (
+          <>
+            <Heading size="xs" className="mt-10">
+              1. Copy the component into your app
+            </Heading>
+
+            <RemoteContent
+              {...data.demoMDX}
+              mdx={data.demoMDX.compiledSource}
+              components={components}
+              scope={{}}
+            />
+          </>
+        )}
       </div>
+
       <Heading size="xs" className="mt-10">
-        2. Connect the component with your React Flow application.
+        {data.demoMDX?.compiledSource
+          ? '2. Connect the component with your React Flow application.'
+          : '1. Connect the component with your React Flow application.'}
       </Heading>
       <RemoteContent
         {...data.pageMDX}
