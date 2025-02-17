@@ -131,7 +131,7 @@ export default {
   },
   search: {
     component: () => {
-      return <div className="ml-auto">Search</div>;
+      return <div className="ml-auto"><Search /></div>;
     },
   },
   feedback: {
