@@ -4,8 +4,8 @@
   "dependencies": ["@xyflow/react"],
   "devDependencies": [],
   "registryDependencies": [
-    "https://ui.reactflow.dev/base-node",
-    "https://ui.reactflow.dev/base-handle",
+    "reactflow/base-node",
+    "reactflow/base-handle",
     "button",
     "dropdown-menu"
   ],

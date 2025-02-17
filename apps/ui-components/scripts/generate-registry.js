@@ -1,6 +1,10 @@
 const fs = require("fs");
 const path = require("path");
 
+const deploymentURL = (process.env.VERCEL_ENV && process.env.VERCEL_URL) 
+  ? (process.env.VERCEL_ENV ==='preview' ? process.env.VERCEL_URL : 'https://ui.reactflow.dev') 
+  : "http://localhost:3004";
+
 const componentsPath = path.join(__dirname, "../registry/components/");
 const registryOutputPath = path.join(__dirname, "../public/registry");
 const demoOutputPath = path.join(__dirname, "../public/demo");
@@ -50,6 +54,14 @@ const componentPagesBasePath = path.join(__dirname, "../app/components/");
       const index = fs.readFileSync(indexPath, "utf8");
       const page = fs.readFileSync(pagePath, "utf8");
       registry.files[0].content = index;
+
+      registry.registryDependencies = registry.registryDependencies.map((dependency) => {
+        if (dependency.startsWith('reactflow/')) {
+          const component = dependency.split('/')[1];
+          return `${deploymentURL}/registry/${component}.json`;
+        }
+        return dependency;
+      });
 
       // Write the registry object into the build folder
       const componentOutputPath = path.join(
