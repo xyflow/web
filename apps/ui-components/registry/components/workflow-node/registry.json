@@ -4,10 +4,10 @@
   "dependencies": ["@xyflow/react"],
   "devDependencies": [],
   "registryDependencies": [
-    "https://ui.reactflow.dev/base-node",
-    "https://ui.reactflow.dev/base-handle",
-    "https://ui.reactflow.dev/source-node",
-    "https://ui.reactflow.dev/node-status-indicator"
+    "reactflow/base-node",
+    "reactflow/base-handle",
+    "reactflow/source-node",
+    "reactflow/node-status-indicator"
   ],
   "files": [
     {
