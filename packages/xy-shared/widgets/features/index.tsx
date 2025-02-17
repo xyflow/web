@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode } from 'react';
+import { ReactElement, ReactNode } from 'react';
 import { useConnectionDrawer } from '../../hooks/use-connection-drawer';
 import { Feature, type FeatureProps } from './feature';
 
@@ -8,7 +8,7 @@ type Feature = {
   title: ReactNode;
   text: string;
   route: string;
-  flowComponent?: React.ComponentType;
+  flowComponent: ReactElement;
 };
 
 type FeaturesProps = {

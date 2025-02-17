@@ -22,7 +22,7 @@ export default function WhatsNew() {
           </>
         }
         kicker="Timeline"
-        kickerIcon={PencilSquareIcon}
+        kickerIcon={<PencilSquareIcon />}
       />
 
       {mdx.map((src, i) => (

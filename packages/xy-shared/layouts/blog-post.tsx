@@ -1,3 +1,4 @@
+// TODO: Extract `<BaseBlogPostLayout />` after Nextra 4 migration
 import { useContext } from 'react';
 import { getPrevAndNextPagesByTitle } from '../lib';
 import { BaseBlogPostLayout, BlogPostFrontmatter } from './blog-post-base';

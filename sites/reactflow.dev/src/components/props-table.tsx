@@ -1,16 +1,7 @@
+import React from 'react';
+import { MdxFile } from 'nextra';
+import { getPageMap } from 'nextra/page-map';
 import { PropsTable, type PropsTableProps } from 'xy-shared';
-import React, { useMemo } from 'react';
-
-import reactFlowTypes from '@/pages/api-reference/types/_meta';
-
-export const reactFlowLinks = Object.entries(reactFlowTypes).reduce<
-  Record<string, string>
->((curr, [slug, name]) => {
-  if (typeof name === 'string') {
-    curr[name] = `/api-reference/types/${slug}`;
-  }
-  return curr;
-}, {});
 
 const externalReactLinks = {
   ComponentType:
@@ -38,17 +29,22 @@ const externalLinks = {
     'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type',
 };
 
-export default function PropsTableWrapper(tableProps: PropsTableProps) {
-  const allLinks = useMemo(
-    () => ({
-      ...tableProps.links,
-      ...reactFlowLinks,
-      ...externalReactLinks,
-      ...externalLinks,
-    }),
-    [tableProps.links],
+export default async function PropsTableWrapper(tableProps: PropsTableProps) {
+  const pageMap = await getPageMap('/api-reference/types');
+  const reactFlowLinks = Object.fromEntries(
+    pageMap
+      .filter((item): item is MdxFile => 'frontMatter' in item)
+      .map((item) => [
+        item.frontMatter.title,
+        `/api-reference/types/${item.name}`,
+      ]),
   );
-
+  const allLinks = {
+    ...tableProps.links,
+    ...reactFlowLinks,
+    ...externalReactLinks,
+    ...externalLinks,
+  };
   return <PropsTable {...tableProps} links={allLinks} />;
 }
 

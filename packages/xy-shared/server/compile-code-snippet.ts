@@ -1,3 +1,4 @@
+// TODO: remove this file after nextra 4 migration in favour of `sites/reactflow.dev/src/utils/compile-code-snippet.ts`
 import { compileMdx } from 'nextra/compile';
 import { CompiledMdx } from '../types';
 

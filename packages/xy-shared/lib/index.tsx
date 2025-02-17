@@ -1,8 +1,10 @@
+// TODO: remove this after Nextra 4 migration -- START
 import type { ReactNode } from 'react';
 import type { Folder, MdxFile, Page } from 'nextra';
 import { getAllPages, getPagesUnderRoute } from 'nextra/context';
 
 import { SidebarTitle } from '../components/sidebar-title';
+// TODO: remove this after Nextra 4 migration -- END
 
 // Well this is a pretty funky class, huh. I'm gonna try and break it down a bit
 // so we can understand what's going on here:
@@ -29,6 +31,7 @@ import { SidebarTitle } from '../components/sidebar-title';
 //
 export const wideNegativeMargin = 'sm:-mx-[min(calc((100vw-768px)/2),12rem)]';
 
+// TODO: remove this after Nextra 4 migration -- START
 // Collect all frontmatters for fast access so we can display pills
 // in the sidebar more efficiently
 // Add all keys you want to check for here
@@ -134,15 +137,16 @@ export function getPrevAndNextPagesByTitle<InternalRoute extends string>(
 
   return { prev, next };
 }
+// TODO: remove this after Nextra 4 migration -- END
 
 export async function fetchJSON(url: string): Promise<Record<string, any>> {
   let json = {};
 
   try {
-    const resp = await fetch(url, { headers: { 'User-Agent': 'webkid' } });
-    json = await resp.json();
-  } catch (err) {
-    console.log(err);
+    const response = await fetch(url, { headers: { 'User-Agent': 'webkid' } });
+    json = await response.json();
+  } catch (error) {
+    console.error(error);
   }
 
   return json;

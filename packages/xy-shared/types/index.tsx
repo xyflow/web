@@ -3,6 +3,7 @@ export type ExampleCode = {
   dependencies: Record<string, string>;
 };
 
+// TODO: remove this type after Nextra 4 migration
 export type CompiledMdx = {
   compiledSource: string;
   frontMatter: {

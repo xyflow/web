@@ -19,7 +19,6 @@ export default function ExamplesOverviewPage({
 }: {
   category?: string;
 }) {
-
   const examples = useMemo(
     () =>
       [

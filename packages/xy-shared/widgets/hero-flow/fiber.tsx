@@ -19,7 +19,7 @@ const canvasResize = { scroll: false };
 function WebGLFallback() {
   return (
     <div className="text-light text-sm">
-      Your browser doesn't support WebGL 😢
+      Your browser doesn&apos;t support WebGL 😢
     </div>
   );
 }

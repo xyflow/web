@@ -1,3 +1,4 @@
+// TODO: remove this after Nextra 4 migration
 import { Framework } from '@xyflow/xy-ui';
 import { compileCodeSnippet } from './compile-code-snippet';
 import { CompiledMdx, ExampleCode } from '../types';

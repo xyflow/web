@@ -1,0 +1,122 @@
+---
+description:
+  'The ReactFlowInstance provides a collection of methods to query and manipulate
+  the internal state of your flow. You can get an instance by using the useReactFlow
+  hook or attaching a listener to the onInit event.'
+---
+
+import { PropsTable } from '@/components/props-table';
+import {
+  nodesAndEdgesFields,
+  intersectionFields,
+  viewportFields,
+} from '@/references/types/ReactFlowInstance.fields';
+
+# ReactFlowInstance
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/types/instance.ts/#L178-L179)
+
+The `ReactFlowInstance` provides a collection of methods to query and manipulate
+the internal state of your flow. You can get an instance by using the
+[`useReactFlow`](/api-reference/hooks/use-react-flow) hook or attaching a listener to the
+[`onInit`](/api-reference/react-flow#event-oninit) event.
+
+```ts
+export type ReactFlowInstance<T, U> = {
+  // Nodes and Edges
+  getNode: (id: string) => Node<T> | undefined;
+  getNodes: () => Node<T>[];
+  addNodes: (payload: Node<T>[] | Node<T>) => void;
+  setNodes: (payload: Node<T>[] | ((nodes: Node<T>[]) => Node<T>[])) => void;
+
+  getEdge: (id: string) => Edge<U> | undefined;
+  getEdges: () => Edge<U>[];
+  addEdges: (payload: Edge<U>[] | Edge<U>) => void;
+  setEdges: (payload: Edge<U>[] | ((edges: Edge<U>[]) => Edge<U>[])) => void;
+
+  toObject: () => ReactFlowJsonObject<T, U>;
+  deleteElements: (payload: {
+    nodes?: (Partial<Node> & { id: Node['id'] })[];
+    edges?: (Partial<Edge> & { id: Edge['id'] })[];
+  }) => void;
+  getNodesBounds: (nodes: (NodeType | InternalNode | string)[]) => Rect;
+
+  // Intersections
+  getIntersectingNodes: (
+    node: (Partial<Node<T>> & { id: Node['id'] }) | Rect,
+    partially?: boolean,
+    nodes?: Node<T>[],
+  ) => Node<T>[];
+
+  isNodeIntersecting: (
+    node: (Partial<Node<T>> & { id: Node['id'] }) | Rect,
+    area: Rect,
+    partially?: boolean,
+  ) => boolean;
+
+  // Viewport
+  viewportInitialized: boolean;
+  zoomIn: (options?: { duration: number }) => void;
+  zoomOut: (options?: { duration: number }) => void;
+  zoomTo: (zoomLevel: number, options?: { duration: number }) => void;
+  getZoom: () => number;
+  setViewport: (viewport: Viewport, options?: { duration: number }) => void;
+  getViewport: () => Viewport;
+  fitView: (fitViewOptions?: FitViewOptions) => boolean;
+  setCenter: (
+    x: number,
+    y: number,
+    options?: { duration: number; zoom: number },
+  ) => void;
+  fitBounds: (
+    bounds: Rect,
+    options?: { duration: number; padding: number },
+  ) => void;
+  screenToFlowPosition: (position: { x: number; y: number }) => {
+    x: number;
+    y: number;
+  };
+  flowToScreenPosition: (position: { x: number; y: number }) => {
+    x: number;
+    y: number;
+  };
+  updateNode: (
+    id: string,
+    nodeUpdate: Partial<NodeType> | ((node: NodeType) => Partial<NodeType>),
+    options?: { replace: boolean },
+  ) => void;
+  updateNodeData: (
+    id: string,
+    dataUpdate:
+      | Partial<NodeType>['data']
+      | ((node: Node) => Partial<NodeType>['data']),
+    options?: { replace: boolean },
+  ) => void;
+  updateEdge: (
+    id: string,
+    edgeUpdate: Partial<EdgeType> | ((node: EdgeType) => Partial<EdgeType>),
+    options?: { replace: boolean },
+  ) => void;
+  updateEdgeData: (
+    id: string,
+    dataUpdate:
+      | Partial<EdgeType>['data']
+      | ((node: Edge) => Partial<EdgeType>['data']),
+    options?: { replace: boolean },
+  ) => void;
+};
+```
+
+## Fields
+
+### Nodes and edges
+
+<PropsTable {...nodesAndEdgesFields} />
+
+### Intersections
+
+<PropsTable {...intersectionFields} />
+
+### Viewport fields
+
+<PropsTable {...viewportFields} />

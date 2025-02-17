@@ -1,3 +1,4 @@
+// TODO: remove this file after Nextra 4 migration
 import { buildDynamicMDX } from 'nextra/remote';
 import { readFile, readdir, stat } from 'fs/promises';
 import * as Path from 'path';

@@ -1,0 +1,19 @@
+---
+title: Static Server Side Generation
+description: A full-stack app that demonstrates how to use React Flow to statically generate a flow on the server.
+is_pro_example: true
+---
+
+import { Button } from '@xyflow/xy-ui';
+import ProExampleViewer from '@/components/pro-example-viewer';
+
+A full-stack app that statically renders a flow with React Flow on the server. It is composed of a small [Express](https://expressjs.com/) server and a simple React frontend. Edit the displayed nodes and edges, adjust the export format, aspect ratio, and output dimensions. When you make changes, a request is sent to the server, which responds with a downloadable HTML preview or an image.
+
+<ProExampleViewer slug="static-server-side-generation" />
+
+<a
+  target="_blank"
+  href={`${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/static-server-side-generation`}
+>
+  <Button variant="link">Open example in a new tab</Button>
+</a>

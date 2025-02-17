@@ -88,17 +88,17 @@ main ._border-primary-500 {
 .pro-button:before {
   transition: --gradientAngle 0.3s ease;
   background: linear-gradient(
-      var(--gradientAngle),
-      hsl(var(--primary)) 36.34%,
-      hsl(var(--secondary)) 50.92%,
-      rgba(240, 240, 240, 1) 63.72%
-    ),
-    linear-gradient(
-      var(--gradientAngle),
-      hsl(var(--primary)) 2.22%,
-      hsl(var(--secondary)) 18.5%,
-      rgba(240, 240, 240, 1) 32.77%
-    );
+          var(--gradientAngle),
+          hsl(var(--primary)) 36.34%,
+          hsl(var(--secondary)) 50.92%,
+          rgba(240, 240, 240, 1) 63.72%
+  ),
+  linear-gradient(
+          var(--gradientAngle),
+          hsl(var(--primary)) 2.22%,
+          hsl(var(--secondary)) 18.5%,
+          rgba(240, 240, 240, 1) 32.77%
+  );
 }
 
 .pro-button:hover:before {
@@ -301,35 +301,35 @@ article.nextra-content ol li p {
   :root {
     --primary: 333 100% 50%;
     --primary-foreground: 210 40% 98%;
-
+    
     --background: 0 0% 100%;
     --foreground: 222.2 47.4% 11.2%;
-
+    
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
-
+    
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 47.4% 11.2%;
-
+    
     --card: 0 0% 100%;
     --card-foreground: 222.2 47.4% 11.2%;
-
+    
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-
+    
     --secondary: 0 100% 100%;
     --secondary-foreground: 222.2 47.4% 11.2%;
-
+    
     --accent: 210 40% 96.1%;
     --accent-foreground: 222.2 47.4% 11.2%;
-
+    
     --destructive: 0 100% 50%;
     --destructive-foreground: 210 40% 98%;
-
+    
     --ring: 215 20.2% 65.1%;
-
+    
     --radius: 0.5rem;
-
+    
     --light: 0 0% 46%;
   }
 }
@@ -341,8 +341,8 @@ article.nextra-content ol li p {
   body {
     @apply bg-background text-foreground;
     font-feature-settings:
-      'rlig' 1,
-      'calt' 1;
+            'rlig' 1,
+            'calt' 1;
   }
   html {
     /* this is a nextra default we need to overwrite */
@@ -409,11 +409,11 @@ html:has(body._overflow-hidden) nav {
   .DocSearch-Button-Keys {
     display: none;
   }
-
+  
   .DocSearch-Button-Placeholder {
     display: none;
   }
-
+  
   .nextra-nav-container > nav {
     @apply p-2 gap-2;
   }

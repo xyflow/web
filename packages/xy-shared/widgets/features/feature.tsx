@@ -1,4 +1,4 @@
-import { type ReactNode } from 'react';
+import { ReactElement, type ReactNode } from 'react';
 import Link from 'next/link';
 import { Position } from '@xyflow/react';
 import { Heading, Text, Button, Container, cn } from '@xyflow/xy-ui';
@@ -25,7 +25,7 @@ type FeatureProps = {
   index: number;
   featureCount: number;
   linkLabel?: string;
-  flowComponent?: React.ComponentType;
+  flowComponent: ReactElement;
 };
 
 function Feature({
@@ -34,7 +34,7 @@ function Feature({
   title,
   text,
   route,
-  flowComponent: FlowComponent = () => null,
+  flowComponent,
   linkLabel = 'Read more',
 }: FeatureProps) {
   const sourceHandleId = `source-${index}`;
@@ -71,7 +71,7 @@ function Feature({
       <div className={index % 2 === 0 ? order2Class : order1Class}>
         <Container className="relative" innerClassName="overflow-visible">
           <div className="h-[300px] md:h-[400px] rounded-[18px] overflow-hidden bg-gradient-to-br from-white to-gray-50">
-            <FlowComponent />
+            {flowComponent}
           </div>
 
           {index > 0 && (

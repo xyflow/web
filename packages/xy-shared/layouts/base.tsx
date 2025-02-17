@@ -6,7 +6,7 @@ export type BaseLayoutProps = {
   children: ReactNode;
 };
 
-// used to center center the content on the page
+// used to center the content on the page
 export function BaseLayout({ children, className }: BaseLayoutProps) {
   return (
     <main

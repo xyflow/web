@@ -1,3 +1,4 @@
+// TODO: Remove this file in favour of `sites/reactflow.dev/src/components/remote-code-viewer.tsx` after Nextra 4 migration
 import { useContext } from 'react';
 import { clsx } from 'clsx';
 import { Code } from 'nextra/components';
