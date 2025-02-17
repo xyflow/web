@@ -1,7 +1,9 @@
 "use client";
 
 import { Background, ReactFlow } from "@xyflow/react";
-import ButtonEdgeDemo from "@/registry/components/button-edge/demo";
+
+// Update this route with the path to your component
+import ButtonEdgeDemo from "@/demo/button-edge";
 
 const defaultNodes = [
   {

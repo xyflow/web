@@ -2,7 +2,8 @@
 
 import { Background, ReactFlow } from "@xyflow/react";
 
-import SourceHandleDemo from "@/registry/components/source-handle/demo";
+// Update this route with the path to your component
+import SourceHandleDemo from "@/demo/source-handle";
 
 const defaultNodes = [
   {

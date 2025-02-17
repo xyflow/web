@@ -6,6 +6,7 @@ import {
   CounterNode,
   type CounterNodeType,
 } from "@/registry/components/data-edge/demo";
+
 import { DataEdge } from "@/registry/components/data-edge/";
 
 const defaultNodes = [

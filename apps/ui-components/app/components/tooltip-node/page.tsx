@@ -2,7 +2,9 @@
 
 import { Background, ReactFlow } from "@xyflow/react";
 import DemoWrapper from "@/components/demo-wrapper";
-import TooltipNodeDemo from "@/registry/components/tooltip-node/demo";
+
+// Update this route with the path to your component
+import TooltipNodeDemo from "@/demo/tooltip-node";
 
 const nodeTypes = {
   tooltipNode: TooltipNodeDemo,

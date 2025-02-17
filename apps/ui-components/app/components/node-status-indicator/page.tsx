@@ -2,7 +2,8 @@
 
 import { Background, ReactFlow } from "@xyflow/react";
 
-import NodeStatusIndicatorDemo from "@/registry/components/node-status-indicator/demo";
+// Update this route with the path to your component
+import NodeStatusIndicatorDemo from "@/demo/node-status-indicator";
 
 const defaultNodes = [
   {

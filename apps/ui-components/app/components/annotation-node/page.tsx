@@ -1,7 +1,9 @@
 "use client";
 
 import { Background, ReactFlow } from "@xyflow/react";
-import AnnotationNodeDemo from "@/registry/components/annotation-node/demo";
+
+// Update this route with the path to your component
+import AnnotationNodeDemo from "@/demo/annotation-node/";
 
 const nodeTypes = {
   annotationNode: AnnotationNodeDemo,
