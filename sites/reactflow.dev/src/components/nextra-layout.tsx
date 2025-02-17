@@ -62,7 +62,7 @@ export const NextraLayout: FC<{
       pageMap={pageMap}
       // Set to null to avoid rendering search in mobile nav, since we added search in navbar already
       search={null}
-      sidebar={{ toggleButton: false, defaultMenuCollapseLevel: 1 }}
+      sidebar={{ toggleButton: false }}
       toc={{ backToTop: null, extraContent: <Toc /> }}
     >
       {children}

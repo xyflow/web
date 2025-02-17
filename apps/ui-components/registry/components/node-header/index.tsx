@@ -116,7 +116,7 @@ export interface NodeHeaderActionProps extends ButtonProps {
  * A thin wrapper around the `<Button />` component with a fixed sized suitable
  * for icons.
  *
- * Beacuse the `<NodeHeaderAction />` component is intended to render icons, it's
+ * Because the `<NodeHeaderAction />` component is intended to render icons, it's
  * important to provide a meaningful and accessible `label` prop that describes
  * the action.
  */
