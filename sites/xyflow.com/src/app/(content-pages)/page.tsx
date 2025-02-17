@@ -1,3 +1,5 @@
+import { FC } from 'react';
+import { Metadata } from 'next';
 import Image from 'next/image';
 import { Position } from '@xyflow/react';
 import {
@@ -9,8 +11,6 @@ import {
   ProjectCards,
   AboutSection,
 } from 'xy-shared';
-import { FC } from 'react';
-import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Node-Based UIs for React and Svelte',

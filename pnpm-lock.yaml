@@ -530,11 +530,11 @@ importers:
         specifier: ^4.2.3
         version: 4.2.3(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
       nextra:
-        specifier: ^4.2.11
-        version: 4.2.11(acorn@8.14.0)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2)
+        specifier: ^4.2.12
+        version: 4.2.12(acorn@8.14.0)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2)
       nextra-theme-docs:
-        specifier: ^4.2.11
-        version: 4.2.11(@types/react@18.3.17)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(nextra@4.2.11(acorn@8.14.0)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(use-sync-external-store@1.2.2(react@18.3.1))
+        specifier: ^4.2.12
+        version: 4.2.12(@types/react@18.3.17)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(nextra@4.2.12(acorn@8.14.0)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(use-sync-external-store@1.2.2(react@18.3.1))
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -678,6 +678,9 @@ importers:
       '@heroicons/react':
         specifier: ^2.1.5
         version: 2.2.0(react@18.3.1)
+      '@react-three/fiber':
+        specifier: ^9.0.0-rc.7
+        version: 9.0.0-rc.7(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.171.0)
       '@sindresorhus/slugify':
         specifier: ^2.2.1
         version: 2.2.1
@@ -697,11 +700,11 @@ importers:
         specifier: ^4.2.3
         version: 4.2.3(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
       nextra:
-        specifier: ^4.2.11
-        version: 4.2.11(acorn@8.14.0)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2)
+        specifier: ^4.2.12
+        version: 4.2.12(acorn@8.14.0)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2)
       nextra-theme-docs:
-        specifier: ^4.2.11
-        version: 4.2.11(@types/react@18.3.17)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(nextra@4.2.11(acorn@8.14.0)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(use-sync-external-store@1.2.2(react@18.3.1))
+        specifier: ^4.2.12
+        version: 4.2.12(@types/react@18.3.17)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(nextra@4.2.12(acorn@8.14.0)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(use-sync-external-store@1.2.2(react@18.3.1))
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -5469,11 +5472,11 @@ packages:
       react: '>=18'
       react-dom: '>=18'
 
-  nextra-theme-docs@4.2.11:
-    resolution: {integrity: sha512-Ml9kfF4X41F9Fv2+lkAI9Kh6Jtiv4UY9hy/RlAbshj4Fzxu7A18v5CMFEvyfxCVMS63MB5zRz/Njsg57cNkvaQ==}
+  nextra-theme-docs@4.2.12:
+    resolution: {integrity: sha512-pxoBChhfdGDupwL0JfP3w77rRxgRpIM05p6JYS0VQogq7XjP/mWhxqSC9+bwaTHgzKrgYP9zjR4QDOgJ9zWdJw==}
     peerDependencies:
       next: '>=14'
-      nextra: 4.2.11
+      nextra: 4.2.12
       react: '>=18'
       react-dom: '>=18'
 
@@ -5485,8 +5488,8 @@ packages:
       react: '>=18'
       react-dom: '>=18'
 
-  nextra@4.2.11:
-    resolution: {integrity: sha512-vzkbIDpym3cvHecEUnTYK44ebFHwCu7lxBeVMbX+ikQyiY8ARhyE/3Pr1z2kOkBrCMdLxlgN3aYkrmEMv1FFMg==}
+  nextra@4.2.12:
+    resolution: {integrity: sha512-SW72daXqoDAQfL9phN77gFNlS1vXpH/a9xVIve4Jpyn0OfigKaNzRf74t6GGECezfb84CSAG6cnWEfwyzHlD5Q==}
     engines: {node: '>=18'}
     peerDependencies:
       next: '>=14'
@@ -13212,13 +13215,13 @@ snapshots:
       scroll-into-view-if-needed: 3.1.0
       zod: 3.24.1
 
-  nextra-theme-docs@4.2.11(@types/react@18.3.17)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(nextra@4.2.11(acorn@8.14.0)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(use-sync-external-store@1.2.2(react@18.3.1)):
+  nextra-theme-docs@4.2.12(@types/react@18.3.17)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(nextra@4.2.12(acorn@8.14.0)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(use-sync-external-store@1.2.2(react@18.3.1)):
     dependencies:
       '@headlessui/react': 2.2.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       clsx: 2.1.1
       next: 15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       next-themes: 0.4.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      nextra: 4.2.11(acorn@8.14.0)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2)
+      nextra: 4.2.12(acorn@8.14.0)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2)
       react: 18.3.1
       react-compiler-runtime: 0.0.0-experimental-22c6e49-20241219(react@18.3.1)
       react-dom: 18.3.1(react@18.3.1)
@@ -13277,7 +13280,7 @@ snapshots:
       - supports-color
       - typescript
 
-  nextra@4.2.11(acorn@8.14.0)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2):
+  nextra@4.2.12(acorn@8.14.0)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2):
     dependencies:
       '@formatjs/intl-localematcher': 0.6.0
       '@headlessui/react': 2.2.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
