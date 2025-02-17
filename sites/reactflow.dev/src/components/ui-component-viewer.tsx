@@ -53,30 +53,10 @@ function UiComponentViewer() {
 
   return (
     <div className="mt-5">
-      <Tabs defaultValue="preview">
-        <TabsList>
-          <TabsTrigger value="preview">Preview</TabsTrigger>
-          <TabsTrigger value="code">Demo Code</TabsTrigger>
-        </TabsList>
-        <TabsContent
-          className="data-[state=inactive]:hidden min-h-[500px]"
-          forceMount
-          value="preview"
-        >
-          <iframe
-            className="w-full h-[500px] rounded-md border border-gray-200 "
-            src={`${process.env.NEXT_PUBLIC_UI_COMPONENTS_URL}/components/${data.name}`}
-          />
-        </TabsContent>
-        <TabsContent className="min-h-[500px]" value="code">
-          <RemoteContent
-            {...data.demoMDX}
-            mdx={data.demoMDX.compiledSource}
-            components={components}
-            scope={{}}
-          />
-        </TabsContent>
-      </Tabs>
+      <iframe
+        className="w-full h-[500px] rounded-md border border-gray-200 "
+        src={`${process.env.NEXT_PUBLIC_UI_COMPONENTS_URL}/components/${data.name}`}
+      />
       <div className="flex gap-2 items-center my-5">
         <div>Dependencies:</div>
         {npmDependencies.map((dep) => (
@@ -150,6 +130,37 @@ function UiComponentViewer() {
           </TabsContent>
         </Tabs>
       </div>
+      <div className="mt-20">
+        <Heading className="mb-5" size="sm">
+          Usage
+        </Heading>
+        {data.demoMDX?.compiledSource && (
+          <>
+            <Heading size="xs" className="mt-10">
+              1. Copy the component into your app
+            </Heading>
+
+            <RemoteContent
+              {...data.demoMDX}
+              mdx={data.demoMDX.compiledSource}
+              components={components}
+              scope={{}}
+            />
+          </>
+        )}
+      </div>
+
+      <Heading size="xs" className="mt-10">
+        {data.demoMDX?.compiledSource
+          ? '2. Connect the component with your React Flow application.'
+          : '1. Connect the component with your React Flow application.'}
+      </Heading>
+      <RemoteContent
+        {...data.pageMDX}
+        mdx={data.pageMDX.compiledSource}
+        components={components}
+        scope={{}}
+      />
     </div>
   );
 }

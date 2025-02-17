@@ -12,9 +12,16 @@ const features: Record<string, FeatureConfig> = {
   proExamples: {
     label: (
       <span>
-        Access to all{' '}
+        Access to{' '}
         <Link variant="primary" href="https://reactflow.dev/pro/examples">
           Pro Examples
+        </Link>{' '}
+        and{' '}
+        <Link
+          variant="primary"
+          href="https://reactflow.dev/components/templates/workflow-editor"
+        >
+          Templates
         </Link>
       </span>
     ),
@@ -130,7 +137,7 @@ export const ProPlan: SubscriptionPlan = {
     features.teamMembers5,
     features.mitLicense,
     {
-      label: 'Up to 1 hour of individual support via email per month',
+      label: 'Email Support',
     },
     {
       label: 'Introduction call with one of the creators of React Flow',
@@ -149,9 +156,16 @@ export const EnterprisePlan: SubscriptionPlan = {
     {
       label: (
         <span>
-          Perpetual access to all{' '}
+          Perpetual access to{' '}
           <Link variant="primary" href="https://reactflow.dev/pro/examples">
             Pro Examples
+          </Link>{' '}
+          and{' '}
+          <Link
+            variant="primary"
+            href="https://reactflow.dev/components/templates/workflow-editor"
+          >
+            Templates
           </Link>
         </span>
       ),
@@ -160,7 +174,10 @@ export const EnterprisePlan: SubscriptionPlan = {
     features.teamMembers10,
     features.mitLicense,
     {
-      label: '1 hour of individual support via voice, video or email per month',
+      label: 'Custom Support',
+    },
+    {
+      label: 'Introduction call with one of the creators of React Flow',
     },
     {
       label: 'Custom procurement and payment process',

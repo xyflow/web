@@ -15,6 +15,7 @@ export default {
   controls: 'Controls',
   handles: 'Handles',
   misc: 'Misc',
+  templates: 'Templates',
   'separator-1': {
     type: 'separator',
     title: ' ',

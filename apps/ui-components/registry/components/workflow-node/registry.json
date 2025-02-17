@@ -1,0 +1,21 @@
+{
+  "name": "workflow-node",
+  "type": "registry:component",
+  "dependencies": ["@xyflow/react"],
+  "devDependencies": [],
+  "registryDependencies": [
+    "reactflow/base-node",
+    "reactflow/base-handle",
+    "reactflow/source-node",
+    "reactflow/node-status-indicator"
+  ],
+  "files": [
+    {
+      "type": "registry:component",
+      "path": "workflow-node.tsx"
+    }
+  ],
+  "tailwind": {},
+  "cssVars": {},
+  "meta": {}
+}

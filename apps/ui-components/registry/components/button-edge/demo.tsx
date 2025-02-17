@@ -1,45 +1,21 @@
-"use client";
+import { EdgeProps } from "@xyflow/react";
+import { memo } from "react";
 
-import { Background, ReactFlow } from "@xyflow/react";
+import { Button } from "@/components/ui/button";
+import { MousePointerClick } from "lucide-react";
 import { ButtonEdge } from "@/registry/components/button-edge";
 
-const defaultNodes = [
-  {
-    id: "1",
-    position: { x: 200, y: 200 },
-    data: { label: "Node" },
-  },
-  {
-    id: "2",
-    position: { x: 500, y: 500 },
-    data: { label: "Node" },
-  },
-];
-
-const defaultEdges = [
-  {
-    id: "e1-2",
-    source: "1",
-    target: "2",
-    type: "buttonEdge",
-  },
-];
-
-const edgeTypes = {
-  buttonEdge: ButtonEdge,
-};
-
-export default function Demo() {
+const ButtonEdgeDemo = memo((props: EdgeProps) => {
+  const onEdgeClick = () => {
+    window.alert(`Edge has been clicked!`);
+  };
   return (
-    <div className="h-full w-full">
-      <ReactFlow
-        defaultNodes={defaultNodes}
-        defaultEdges={defaultEdges}
-        edgeTypes={edgeTypes}
-        fitView
-      >
-        <Background />
-      </ReactFlow>
-    </div>
+    <ButtonEdge {...props}>
+      <Button onClick={onEdgeClick} size="icon" variant="secondary">
+        <MousePointerClick size={16} />
+      </Button>
+    </ButtonEdge>
   );
-}
+});
+
+export default ButtonEdgeDemo;

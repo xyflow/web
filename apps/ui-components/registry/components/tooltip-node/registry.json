@@ -3,7 +3,7 @@
   "type": "registry:component",
   "dependencies": ["@xyflow/react"],
   "devDependencies": [],
-  "registryDependencies": ["https://ui.reactflow.dev/base-node"],
+  "registryDependencies": ["reactflow/base-node"],
   "files": [
     {
       "type": "registry:component",

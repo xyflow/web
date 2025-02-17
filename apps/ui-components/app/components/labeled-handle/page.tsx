@@ -2,19 +2,19 @@
 
 import { Background, ReactFlow } from "@xyflow/react";
 import DemoWrapper from "@/components/demo-wrapper";
-import Demo from "@/registry/components/labeled-handle/demo";
+import LabeledHandleDemo from "@/registry/components/labeled-handle/demo";
 
 const defaultNodes = [
   {
     id: "1",
     position: { x: 200, y: 200 },
     data: {},
-    type: "customNode",
+    type: "labeledHandle",
   },
 ];
 
 const nodeTypes = {
-  customNode: Demo,
+  labeledHandle: LabeledHandleDemo,
 };
 
 export default function DemoPage() {
