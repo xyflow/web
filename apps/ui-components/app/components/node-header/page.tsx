@@ -2,8 +2,7 @@
 
 import { Background, ReactFlow } from "@xyflow/react";
 
-// Update this route with the path to your component
-import NodeHeaderDemoNode from "@/demo/node-header";
+import NodeHeaderDemoNode from "@/registry/components/node-header/demo";
 
 const nodeTypes = {
   nodeHeaderNode: NodeHeaderDemoNode,

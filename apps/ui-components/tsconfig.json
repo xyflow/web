@@ -18,8 +18,7 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"],
-      "@/demo/*": ["./registry/components/*/demo"]
+      "@/*": ["./*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

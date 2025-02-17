@@ -1,9 +1,7 @@
 "use client";
 
 import { Background, Edge, ReactFlow } from "@xyflow/react";
-
-// Update this route with the path to your component
-import DatabaseSchemaDemo from "@/demo/database-schema-node";
+import DatabaseSchemaDemo from "@/registry/components/database-schema-node/demo";
 
 const nodeTypes = {
   databaseSchema: DatabaseSchemaDemo,

@@ -1,9 +1,7 @@
 "use client";
 
 import { Background, ReactFlow, Node } from "@xyflow/react";
-
-// Update this route with the path to your component
-import LabeledGroupNodeDemo from "@/demo/labeled-group-node";
+import LabeledGroupNodeDemo from "@/registry/components/labeled-group-node/demo";
 
 const nodeTypes = {
   labeledGroupNode: LabeledGroupNodeDemo,

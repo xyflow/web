@@ -1,9 +1,7 @@
 "use client";
 
 import { Background, ReactFlow } from "@xyflow/react";
-
-// Update this route with the path to your component
-import PlaceholderNodeDemo from "@/demo/placeholder-node";
+import PlaceholderNodeDemo from "@/registry/components/placeholder-node/demo";
 
 const nodeTypes = {
   placeholderNode: PlaceholderNodeDemo,
