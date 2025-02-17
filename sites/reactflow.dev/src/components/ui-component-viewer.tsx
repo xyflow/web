@@ -53,39 +53,10 @@ function UiComponentViewer() {
 
   return (
     <div className="mt-5">
-      <Tabs defaultValue="preview">
-        <TabsList>
-          <TabsTrigger value="preview">Preview</TabsTrigger>
-          <TabsTrigger value="component">Component</TabsTrigger>
-          <TabsTrigger value="app">App</TabsTrigger>
-        </TabsList>
-        <TabsContent
-          className="data-[state=inactive]:hidden min-h-[500px]"
-          forceMount
-          value="preview"
-        >
-          <iframe
-            className="w-full h-[500px] rounded-md border border-gray-200 "
-            src={`${process.env.NEXT_PUBLIC_UI_COMPONENTS_URL}/components/${data.name}`}
-          />
-        </TabsContent>
-        <TabsContent className="min-h-[500px]" value="component">
-          <RemoteContent
-            {...data.demoMDX}
-            mdx={data.demoMDX.compiledSource}
-            components={components}
-            scope={{}}
-          />
-        </TabsContent>
-        <TabsContent className="min-h-[500px]" value="app">
-          <RemoteContent
-            {...data.pageMDX}
-            mdx={data.pageMDX.compiledSource}
-            components={components}
-            scope={{}}
-          />
-        </TabsContent>
-      </Tabs>
+      <iframe
+        className="w-full h-[500px] rounded-md border border-gray-200 "
+        src={`${process.env.NEXT_PUBLIC_UI_COMPONENTS_URL}/components/${data.name}`}
+      />
       <div className="flex gap-2 items-center my-5">
         <div>Dependencies:</div>
         {npmDependencies.map((dep) => (
