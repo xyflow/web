@@ -10,7 +10,7 @@ import { signature } from '@/references/hooks/useNodeConnections';
 
 # useNodeConnections()
 
-[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/hooks/useHandleConnections.ts)
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/hooks/useNodeConnections.ts)
 
 This hook returns an array of connections on a specific node, handle type ('source', 'target') or handle ID.
 
@@ -19,7 +19,7 @@ import { useNodeConnections } from '@xyflow/react';
 
 export default function () {
   const connections = useNodeConnections({
-    type: 'target',
+    handleType: 'target',
     handleId: 'my-handle',
   });
 

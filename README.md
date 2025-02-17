@@ -32,7 +32,7 @@ tools we use:
 - `packages/xy-tsconfig`
 - `packages/xy-ui` is a React component library that contains any components that
   we want to share across our websites. The package encompasses everything from
-  page layouts, UI building blocks, and complex widgets. We use often use
+  page layouts, UI building blocks, and complex widgets. We often use
   [Shadcn](https://ui.shadcn.com) when looking to add new components, and we style
   everything with [Tailwind](https://tailwindcss.com).
 

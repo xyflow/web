@@ -19,7 +19,7 @@ This hook returns an array of connections on a specific node, handle type ('sour
 
 <script>
   import { useNodeConnections } from '@xyflow/svelte';
-  const connections = useNodeConnections({ type: 'target', handleId: 'my-handle' });
+  const connections = useNodeConnections({ handleType: 'target', handleId: 'my-handle' });
 </script>
 
 <div>There are currently {connections.length} incoming connections!</div>
