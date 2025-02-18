@@ -2,13 +2,14 @@
 
 import { Background, ReactFlow } from "@xyflow/react";
 
-import $CAMELCOMPONENTDemo from "@/registry/components/$COMPONENT/demo";
+import { DevTools } from "@/registry/components/devtools/";
 
 const defaultNodes = [
   {
-    id: "1",
-    position: { x: 200, y: 200 },
-    data: { label: "Node" },
+    id: "1a",
+    type: "input",
+    data: { label: "Node 1" },
+    position: { x: 250, y: 5 },
   },
 ];
 
@@ -17,6 +18,7 @@ export default function App() {
     <div className="h-full w-full">
       <ReactFlow defaultNodes={defaultNodes} fitView>
         <Background />
+        <DevTools position="top-left" />
       </ReactFlow>
     </div>
   );

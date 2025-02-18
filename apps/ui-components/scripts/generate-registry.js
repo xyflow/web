@@ -11,7 +11,6 @@ const deploymentURL =
 const componentsPath = path.join(__dirname, "../registry/components/");
 const registryOutputPath = path.join(__dirname, "../public/registry");
 const demoOutputPath = path.join(__dirname, "../public/demo");
-const componentPagesBasePath = path.join(__dirname, "../app/components/");
 
 (async () => {
   console.log("Generating registry files...");
@@ -43,11 +42,11 @@ const componentPagesBasePath = path.join(__dirname, "../app/components/");
 
       // Gather relevant file paths
       const componentPath = path.join(componentsPath, folder.name);
-      const componentPagePath = path.join(componentPagesBasePath, folder.name);
-      const pagePath = path.join(componentPagePath, "page.tsx");
+      const componentPagePath = path.join(componentsPath, folder.name);
+      const pagePath = path.join(componentPagePath, "app-example.tsx");
       const indexPath = path.join(componentPath, "index.tsx");
       const registryPath = path.join(componentPath, "registry.json");
-      const demoPath = path.join(componentPath, "demo.tsx");
+      const demoPath = path.join(componentPath, "component-example.tsx");
 
       // Read registry file and convert it to an object
       const registryRaw = fs.readFileSync(registryPath, "utf8");

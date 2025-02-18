@@ -1,8 +1,5 @@
-"use client";
-
 import { Background, ReactFlow } from "@xyflow/react";
-
-import $CAMELCOMPONENTDemo from "@/registry/components/$COMPONENT/demo";
+import { ZoomSelect } from "@/registry/components/zoom-select/";
 
 const defaultNodes = [
   {
@@ -17,6 +14,7 @@ export default function App() {
     <div className="h-full w-full">
       <ReactFlow defaultNodes={defaultNodes} fitView>
         <Background />
+        <ZoomSelect position="top-left" />
       </ReactFlow>
     </div>
   );
