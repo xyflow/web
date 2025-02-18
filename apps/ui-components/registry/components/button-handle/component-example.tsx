@@ -1,10 +1,5 @@
 import { Plus } from "lucide-react";
-import {
-  ConnectionState,
-  Position,
-  ReactFlowState,
-  useConnection,
-} from "@xyflow/react";
+import { ConnectionState, Position, useConnection } from "@xyflow/react";
 
 import { ButtonHandle } from "@/registry/components/button-handle";
 import { BaseNode } from "@/registry/components/base-node";

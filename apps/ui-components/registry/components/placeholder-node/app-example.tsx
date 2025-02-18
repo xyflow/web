@@ -1,5 +1,3 @@
-"use client";
-
 import { Background, ReactFlow } from "@xyflow/react";
 import PlaceholderNodeDemo from "./component-example";
 

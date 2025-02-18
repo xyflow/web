@@ -1,5 +1,3 @@
-"use client";
-
 import { Background, Edge, ReactFlow } from "@xyflow/react";
 import DatabaseSchemaDemo from "./component-example";
 

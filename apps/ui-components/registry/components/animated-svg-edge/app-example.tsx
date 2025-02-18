@@ -1,5 +1,3 @@
-"use client";
-
 import { Background, ReactFlow } from "@xyflow/react";
 
 import { AnimatedSvgEdge } from "@/registry/components/animated-svg-edge";

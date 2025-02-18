@@ -1,5 +1,3 @@
-"use client";
-
 import React, { forwardRef, HTMLAttributes } from "react";
 import { cn } from "@/lib/utils";
 import { HandleProps } from "@xyflow/react";
