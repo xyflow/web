@@ -5,7 +5,7 @@ import { Position } from "@xyflow/react";
 
 import { BaseNode } from "@/registry/components/base-node";
 import { BaseHandle } from "@/registry/components/base-handle";
-import { SourceHandle } from "@/registry/components/source-handle";
+import { ButtonHandle } from "@/registry/components/button-handle";
 import { NodeStatusIndicator } from "@/registry/components/node-status-indicator";
 
 /* HANDLES PROPS ------------------------------------------------------------ */
@@ -30,10 +30,12 @@ export const WorkflowNodeHandles = ({
       {handles === "default" && (
         <>
           <BaseHandle position={Position.Top} type="target" />
-          <SourceHandle position={Position.Bottom} />
+          <ButtonHandle type="source" position={Position.Bottom} />
         </>
       )}
-      {handles === "source" && <SourceHandle position={Position.Bottom} />}
+      {handles === "source" && (
+        <ButtonHandle type="source" position={Position.Bottom} />
+      )}
       {handles === "target" && (
         <BaseHandle position={Position.Top} type="target" />
       )}
@@ -51,18 +53,20 @@ export const WorkflowNodeHandles = ({
             id="false"
             className="!left-auto !right-4"
           />
-          <SourceHandle position={Position.Bottom} />
+          <ButtonHandle type="source" position={Position.Bottom} />
         </>
       )}
       {handles === "branch" && (
         <>
           <BaseHandle position={Position.Top} type="target" />
-          <SourceHandle
+          <ButtonHandle
+            type="source"
             position={Position.Bottom}
             id="true"
             className="!left-4"
           />
-          <SourceHandle
+          <ButtonHandle
+            type="source"
             position={Position.Bottom}
             id="false"
             className="!left-auto !right-4"
@@ -103,14 +107,16 @@ WorkflowNodeContent.displayName = "WorkflowNodeContent";
 
 export const WorkflowNode = ({
   status,
+  className,
   children,
 }: {
   status?: "loading" | "success" | "error" | "initial";
+  className?: string;
   children?: ReactNode;
 }) => {
   return (
     <NodeStatusIndicator status={status}>
-      <BaseNode className="p-0">{children}</BaseNode>
+      <BaseNode className={cn("p-0", className)}>{children}</BaseNode>
     </NodeStatusIndicator>
   );
 };

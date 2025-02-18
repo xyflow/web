@@ -1,18 +1,13 @@
 {
-  "name": "source-handle",
+  "name": "button-handle",
   "type": "registry:component",
   "dependencies": ["@xyflow/react"],
   "devDependencies": [],
-  "registryDependencies": [
-    "reactflow/base-node",
-    "reactflow/base-handle",
-    "button",
-    "dropdown-menu"
-  ],
+  "registryDependencies": ["reactflow/base-handle"],
   "files": [
     {
       "type": "registry:component",
-      "path": "source-handle.tsx"
+      "path": "button-handle.tsx"
     }
   ],
   "tailwind": {},

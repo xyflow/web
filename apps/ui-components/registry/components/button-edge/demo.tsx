@@ -9,6 +9,7 @@ const ButtonEdgeDemo = memo((props: EdgeProps) => {
   const onEdgeClick = () => {
     window.alert(`Edge has been clicked!`);
   };
+
   return (
     <ButtonEdge {...props}>
       <Button onClick={onEdgeClick} size="icon" variant="secondary">

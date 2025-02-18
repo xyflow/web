@@ -2,19 +2,19 @@
 
 import { Background, ReactFlow } from "@xyflow/react";
 
-import SourceHandleDemo from "@/registry/components/source-handle/demo";
+import ButtonHandleDemo from "@/registry/components/button-handle/demo";
 
 const defaultNodes = [
   {
     id: "1",
     position: { x: 0, y: 0 },
     data: { label: "Node" },
-    type: "sourceHandleDemo",
+    type: "ButtonHandleDemo",
   },
 ];
 
 const nodeTypes = {
-  sourceHandleDemo: SourceHandleDemo,
+  ButtonHandleDemo,
 };
 
 export default function DemoPage() {
