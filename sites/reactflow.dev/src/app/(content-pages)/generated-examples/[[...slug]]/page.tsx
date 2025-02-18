@@ -64,7 +64,11 @@ const genRefPageMap = mergeMetaWithPageMap(generatedExamplesPage, {
 
 export const pageMap = normalizePageMap(genRefPageMap);
 
-const { wrapper: Wrapper, ...components } = useMDXComponents({
+const {
+  wrapper: Wrapper,
+  h1: H1,
+  ...components
+} = useMDXComponents({
   $Tabs: Tabs,
   Callout,
 });
@@ -97,7 +101,10 @@ export default async function Page(props: PageProps) {
 
   return (
     <Wrapper toc={toc} metadata={metadata}>
-      <MDXContent />
+      <>
+        <H1>{metadata.title}</H1>
+        <MDXContent />
+      </>
     </Wrapper>
   );
 }
