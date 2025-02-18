@@ -29,13 +29,18 @@ function copyMdxFiles(srcDir, destDir) {
   const mdxFiles = getAllFiles(srcDir).filter((file) => file.endsWith('.mdx'));
 
   mdxFiles.forEach((mdxFile) => {
+    const category = path.basename(path.dirname(mdxFile));
     const fileName = path.basename(mdxFile);
     const destFolder = path.parse(fileName).name;
-    const destFolderPath = path.join(destDir, destFolder);
+    const destFolderPath = path.join(destDir, category, destFolder);
 
     const readmePath = path.join(destFolderPath, 'README.mdx');
-    fs.copyFileSync(mdxFile, readmePath);
-    console.log(`Copied ${mdxFile} to ${readmePath}`);
+
+    if (!fs.existsSync(destFolderPath)) {
+      console.log('[Warning]: this path does not exist:', destFolderPath);
+    } else {
+      fs.copyFileSync(mdxFile, readmePath);
+    }
   });
 }
 

@@ -1,0 +1,13 @@
+---
+title: Zoom Transitions
+description: Change the animation speed when the viewport is zoomed or moved
+---
+
+import { RemoteCodeViewer } from '@/components/remote-code-viewer';
+
+Smooth transitions from one viewport to another are built-in. You can pass a `duration` option parameter to define the animation duration for every function that alters the viewport ([`zoomIn`, `zoomOut`, `zoomTo`, `setViewport`, `fitView`, `setCenter`, `fitBounds`](/api-reference/types/react-flow-instance#viewport)).
+
+<RemoteCodeViewer
+  route="examples/interaction/zoom-transitions"
+  framework="react"
+/>
