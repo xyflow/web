@@ -1,5 +1,3 @@
-"use client";
-
 import { Background, ReactFlow } from "@xyflow/react";
 
 import SourceHandleDemo from "./component-example";

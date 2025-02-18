@@ -1,5 +1,3 @@
-"use client";
-
 import { Background, ReactFlow, Node } from "@xyflow/react";
 import LabeledGroupNodeDemo from "./component-example";
 

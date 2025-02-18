@@ -1,5 +1,3 @@
-"use client";
-
 import { Background, ReactFlow } from "@xyflow/react";
 
 import AnnotationNode from "./component-example";
