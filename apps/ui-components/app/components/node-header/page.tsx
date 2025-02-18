@@ -2,4 +2,12 @@
 
 import NodeHeaderApp from "@/registry/components/node-header/app-example";
 
-export default NodeHeaderApp;
+import DemoWrapper from "@/components/demo-wrapper";
+
+export default function Page() {
+  return (
+    <DemoWrapper>
+      <NodeHeaderApp />
+    </DemoWrapper>
+  );
+}

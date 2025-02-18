@@ -2,4 +2,12 @@
 
 import PlaceholderNodeApp from "@/registry/components/placeholder-node/app-example";
 
-export default PlaceholderNodeApp;
+import DemoWrapper from "@/components/demo-wrapper";
+
+export default function Page() {
+  return (
+    <DemoWrapper>
+      <PlaceholderNodeApp />
+    </DemoWrapper>
+  );
+}

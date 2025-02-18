@@ -1,5 +1,4 @@
 import { Background, ReactFlow } from "@xyflow/react";
-import DemoWrapper from "@/components/demo-wrapper";
 import LabeledHandleDemo from "./component-example";
 
 const defaultNodes = [
@@ -17,12 +16,10 @@ const nodeTypes = {
 
 export default function App() {
   return (
-    <DemoWrapper>
-      <div className="h-full w-full">
-        <ReactFlow defaultNodes={defaultNodes} nodeTypes={nodeTypes} fitView>
-          <Background />
-        </ReactFlow>
-      </div>
-    </DemoWrapper>
+    <div className="h-full w-full">
+      <ReactFlow defaultNodes={defaultNodes} nodeTypes={nodeTypes} fitView>
+        <Background />
+      </ReactFlow>
+    </div>
   );
 }

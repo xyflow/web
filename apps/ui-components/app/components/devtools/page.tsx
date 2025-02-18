@@ -2,4 +2,12 @@
 
 import DevtoolsApp from "@/registry/components/devtools/app-example";
 
-export default DevtoolsApp;
+import DemoWrapper from "@/components/demo-wrapper";
+
+export default function Page() {
+  return (
+    <DemoWrapper>
+      <DevtoolsApp />
+    </DemoWrapper>
+  );
+}

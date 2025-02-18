@@ -2,4 +2,12 @@
 
 import BaseNodeApp from "@/registry/components/base-node/app-example";
 
-export default BaseNodeApp;
+import DemoWrapper from "@/components/demo-wrapper";
+
+export default function Page() {
+  return (
+    <DemoWrapper>
+      <BaseNodeApp />
+    </DemoWrapper>
+  );
+}

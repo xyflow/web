@@ -2,4 +2,12 @@
 
 import WorkflowNodeApp from "@/registry/components/workflow-node/app-example";
 
-export default WorkflowNodeApp;
+import DemoWrapper from "@/components/demo-wrapper";
+
+export default function Page() {
+  return (
+    <DemoWrapper>
+      <WorkflowNodeApp />
+    </DemoWrapper>
+  );
+}
