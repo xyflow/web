@@ -1,23 +1,13 @@
 "use client";
 
-import { Background, ReactFlow } from "@xyflow/react";
+import $CAMELCOMPONENTApp from "@/registry/components/$COMPONENT/app-example";
 
-import $CAMELCOMPONENTDemo from "@/registry/components/$COMPONENT/demo";
+import DemoWrapper from "@/components/demo-wrapper";
 
-const defaultNodes = [
-  {
-    id: "1",
-    position: { x: 200, y: 200 },
-    data: { label: "Node" },
-  },
-];
-
-export default function App() {
+export default function Page() {
   return (
-    <div className="h-full w-full">
-      <ReactFlow defaultNodes={defaultNodes} fitView>
-        <Background />
-      </ReactFlow>
-    </div>
+    <DemoWrapper>
+      <$CAMELCOMPONENTApp />
+    </DemoWrapper>
   );
 }
