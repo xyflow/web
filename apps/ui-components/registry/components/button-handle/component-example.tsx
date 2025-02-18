@@ -1,57 +1,42 @@
-import { ButtonHandle } from "@/registry/components/button-handle";
+import { Plus } from "lucide-react";
+import {
+  ConnectionState,
+  Position,
+  ReactFlowState,
+  useConnection,
+} from "@xyflow/react";
 
+import { ButtonHandle } from "@/registry/components/button-handle";
 import { BaseNode } from "@/registry/components/base-node";
 
-import { Position } from "@xyflow/react";
 import { Button } from "@/components/ui/button";
-import { MousePointerClick } from "lucide-react";
 
 const onClick = () => {
   window.alert(`Handle button has been clicked!`);
 };
 
+const selector = (connection: ConnectionState) => {
+  return connection.inProgress;
+};
+
 const ButtonHandleDemo = () => {
+  const connectionInProgress = useConnection(selector);
+
   return (
     <BaseNode>
-      Base Node
-      <ButtonHandle id="top" type="target" position={Position.Top}>
+      Node with a handle button
+      <ButtonHandle
+        type="target"
+        position={Position.Bottom}
+        showButton={!connectionInProgress}
+      >
         <Button
           onClick={onClick}
-          size="icon"
+          size="sm"
           variant="secondary"
           className="rounded-full"
         >
-          <MousePointerClick size={16} />
-        </Button>
-      </ButtonHandle>
-      <ButtonHandle id="right" type="source" position={Position.Right}>
-        <Button
-          onClick={onClick}
-          size="icon"
-          variant="secondary"
-          className="rounded-full"
-        >
-          <MousePointerClick size={16} />
-        </Button>
-      </ButtonHandle>
-      <ButtonHandle id="bottom" type="source" position={Position.Bottom}>
-        <Button
-          onClick={onClick}
-          size="icon"
-          variant="secondary"
-          className="rounded-full"
-        >
-          <MousePointerClick size={16} />
-        </Button>
-      </ButtonHandle>
-      <ButtonHandle id="left" type="target" position={Position.Left}>
-        <Button
-          onClick={onClick}
-          size="icon"
-          variant="secondary"
-          className="rounded-full"
-        >
-          <MousePointerClick size={16} />
+          <Plus size={10} />
         </Button>
       </ButtonHandle>
     </BaseNode>
