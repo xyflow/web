@@ -62,7 +62,7 @@ const componentPagesBasePath = path.join(__dirname, "../app/components/");
         (dependency) => {
           if (dependency.startsWith("reactflow/")) {
             const component = dependency.split("/")[1];
-            return `${deploymentURL}/${component}`;
+            return `https://${deploymentURL}/${component}`;
           }
           return dependency;
         },
