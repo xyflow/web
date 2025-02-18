@@ -10,6 +10,7 @@ import {
   mergeMetaWithPageMap,
   normalizePageMap,
 } from 'nextra/page-map';
+import { Folder, PageMapItem } from 'nextra';
 
 import { useMDXComponents as getMDXComponents } from '../../../../mdx-components';
 import { RemoteCodeViewer } from '@/components/remote-code-viewer';
@@ -23,16 +24,16 @@ const exampleCategories = readdirSync(examplesPath);
 const filePaths = ['index.mdx', 'overview.mdx'];
 const exampleMeta = {
   index: {
+    title: 'Examples',
     theme: {
       breadcrumb: false,
     },
   },
-  overview: '',
+  overview: 'Feature Overview',
 };
 
 for (let category of exampleCategories) {
   exampleMeta[category] = {
-    title: category,
     items: {},
   };
 
@@ -51,16 +52,18 @@ const { mdxPages, pageMap: _pageMap } = convertToPageMap({
 
 export const [generatedExamplesPage] = _pageMap;
 export const generatedExampleMeta = exampleMeta;
-
-const genRefPageMap = mergeMetaWithPageMap(generatedExamplesPage, {
-  index: {
-    theme: {
-      breadcrumb: false,
+const genRefPageMap = mergeMetaWithPageMap(
+  generatedExamplesPage as Folder<PageMapItem>,
+  {
+    index: {
+      theme: {
+        breadcrumb: false,
+      },
     },
+    overview: '',
+    ...exampleMeta,
   },
-  overview: '',
-  ...exampleMeta,
-});
+);
 
 export const pageMap = normalizePageMap(genRefPageMap);
 
@@ -79,13 +82,13 @@ type PageProps = Readonly<{
   }>;
 }>;
 
-export default async function Page(props: PageProps) {
+async function evaluateProps(props: PageProps) {
   const params = await props.params;
   const route = params.slug?.join('/') ?? '';
   const filePath = mdxPages[route];
 
   if (!filePath) {
-    notFound();
+    return false;
   }
 
   const readmeContent = await readFile(
@@ -93,20 +96,34 @@ export default async function Page(props: PageProps) {
     'utf-8',
   );
   const rawJs = await compileMdx(readmeContent, { filePath });
-  const {
-    default: MDXContent,
-    toc,
-    metadata,
-  } = evaluate(rawJs, { ...components, RemoteCodeViewer });
+  return evaluate(rawJs, { ...components, RemoteCodeViewer });
+}
+
+export default async function Page(props: PageProps) {
+  const result = await evaluateProps(props);
+
+  if (!result) {
+    notFound();
+  }
+
+  const { default: MDXContent, toc, metadata } = result;
 
   return (
     <Wrapper toc={toc} metadata={metadata}>
-      <>
-        <H1>{metadata.title}</H1>
-        <MDXContent />
-      </>
+      <H1>{metadata.title}</H1>
+      <MDXContent />
     </Wrapper>
   );
+}
+
+export async function generateMetadata(props: PageProps) {
+  const result = await evaluateProps(props);
+
+  if (!result) {
+    return {};
+  }
+
+  return result.metadata;
 }
 
 export function generateStaticParams() {
