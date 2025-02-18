@@ -13,7 +13,7 @@ export const metadata: NextraMetadata = {
 };
 
 const Page: FC = async () => {
-  const blogs = await getBlogs()
+  const blogs = await getBlogs();
   return (
     <BaseLayout>
       <Hero

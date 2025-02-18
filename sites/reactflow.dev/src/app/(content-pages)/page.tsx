@@ -13,7 +13,8 @@ import {
   AboutSection,
   ProjectCards,
 } from 'xy-shared';
-import { fetchGitHubNpmStats, getLastChangelog, InternalRoute } from '@/utils';
+import { getLastChangelog } from 'xy-shared/server';
+import { fetchGitHubNpmStats, InternalRoute } from '@/utils';
 import ClientLogos from '@/components/client-logos';
 import WhatsNewPreview from '@/components/whats-new-preview';
 import { FlowA } from '@/components/flows/flow-a';

@@ -1,11 +1,7 @@
-import { createRequire } from 'node:module';
+import { NextConfig } from 'next';
+import nextra from 'nextra';
 import redirects from './redirects.json' with { type: 'json' };
 import reactFlowPackageJson from '@xyflow/react/package.json' with { type: 'json' };
-
-import nextra from 'nextra';
-import { NextConfig } from 'next';
-
-const require = createRequire(import.meta.url);
 
 const nextConfig: NextConfig = {
   // Configure pageExtensions to include md and mdx
@@ -61,14 +57,6 @@ const nextConfig: NextConfig = {
       process.env.VERCEL_ENV === 'preview'
         ? `https://ui-components-git-${process.env.VERCEL_GIT_COMMIT_REF}-xyflow.vercel.app`
         : process.env.NEXT_PUBLIC_UI_COMPONENTS_URL,
-  },
-  webpack(config) {
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      // Fixes TypeError: Cannot read properties of undefined (reading 'ReactCurrentOwner') by
-      // overriding package version to 9-rc which supports Next.js 16
-      '@react-three/fiber': require.resolve('@react-three/fiber'),
-    };
   },
 };
 

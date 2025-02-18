@@ -1,16 +1,7 @@
-import React, { useMemo } from 'react';
-import { PropsTable, type PropsTableProps } from 'xy-shared';
-
-import svelteFlowTypes from '@/pages/api-reference/types/_meta';
-
-export const svelteFlowLinks = Object.entries(svelteFlowTypes).reduce<
-  Record<string, string>
->((curr, [slug, name]) => {
-  if (typeof name === 'string') {
-    curr[name] = `/api-reference/types/${slug}`;
-  }
-  return curr;
-}, {});
+import { FC } from 'react';
+import { MdxFile } from 'nextra';
+import { getPageMap } from 'nextra/page-map';
+import { PropsTable as XYPropsTable, type PropsTableProps } from 'xy-shared';
 
 const externalReactLinks = {
   Writable:
@@ -31,18 +22,22 @@ const externalLinks = {
   CustomEvent: 'https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent',
 };
 
-export default function PropsTableWrapper(tableProps: PropsTableProps) {
-  const allLinks = useMemo(
-    () => ({
-      ...tableProps.links,
-      ...svelteFlowLinks,
-      ...externalReactLinks,
-      ...externalLinks,
-    }),
-    [tableProps.links],
+export const PropsTable: FC<PropsTableProps> = async (tableProps) => {
+  const pageMap = await getPageMap('/api-reference/types');
+  const svelteFlowLinks = Object.fromEntries(
+    pageMap
+      .filter((item): item is MdxFile => 'frontMatter' in item)
+      .map((item) => [
+        item.frontMatter.title,
+        `/api-reference/types/${item.name}`,
+      ]),
   );
+  const allLinks = {
+    ...tableProps.links,
+    ...svelteFlowLinks,
+    ...externalReactLinks,
+    ...externalLinks,
+  };
 
-  return <PropsTable {...tableProps} links={allLinks} />;
-}
-
-export { PropsTableWrapper as PropsTable };
+  return <XYPropsTable {...tableProps} links={allLinks} />;
+};

@@ -1,0 +1,55 @@
+---
+description:
+  When you implement a custom node it is wrapped in a component that enables
+  basic functionality like drag, select and remove. A custom node gets the
+  following props.
+---
+
+# NodeProps
+
+When you implement a [custom node](/learn/guides/custom-nodes) it is wrapped in a component that enables basic functionality like drag, select and remove. A custom node gets the following props:
+
+```ts
+export type NodeProps<NodeType extends Node = Node> = {
+  id: string;
+  data: NodeType['data'];
+  width: number;
+  height: number;
+  dragHandle?: boolean;
+  type?: NodeType['type'];
+  selected?: boolean;
+  isConnectable?: boolean;
+  zIndex?: number;
+  positionAbsolute: XYPosition;
+  dragging: boolean;
+  targetPosition?: Position;
+  sourcePosition?: Position;
+};
+```
+
+## Notes
+
+- If you have controls (like a slider or an input) or other elements inside your custom node
+  that **should not drag the node** you can add the class `nodrag` to those elements.
+  This prevents the default drag behaviour as well as the default node selection
+  behvaiour when elements with this class are clicked.
+
+  ```svelte filename="CustomNode.svelte"
+  <div>
+    <input className="nodrag" type="range" min={0} max={100} />
+  </div>
+  ```
+
+- If you have scroll containers inside your custom node you can add the class
+  `nowheel` to **disable the default canvas pan behaviour when scrolling** inside
+  your custom nodes.
+
+  ```svelte filename="CustomNode.svelte"
+  <div className="nowheel" style={{ overflow: 'auto' }}>
+    <p>Scrollable content...</p>
+  </div>
+  ```
+
+- When creating your own custom nodes, you will also need to remember to style
+  them! Custom nodes have no default styles unlike the built-in nodes so you
+  can use any [styling method you like](/learn/guides/theming).
