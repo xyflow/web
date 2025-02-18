@@ -1,28 +1,13 @@
 "use client";
 
-import { Background, ReactFlow } from "@xyflow/react";
+import NodeStatusIndicatorApp from "@/registry/components/node-status-indicator/app-example";
 
-import NodeStatusIndicatorDemo from "@/registry/components/node-status-indicator/demo";
+import DemoWrapper from "@/components/demo-wrapper";
 
-const defaultNodes = [
-  {
-    id: "1",
-    position: { x: 200, y: 200 },
-    data: { label: "Node" },
-    type: "nodeStatusIndicatorDemo",
-  },
-];
-
-const nodeTypes = {
-  nodeStatusIndicatorDemo: NodeStatusIndicatorDemo,
-};
-
-export default function DemoPage() {
+export default function Page() {
   return (
-    <div className="h-full w-full">
-      <ReactFlow defaultNodes={defaultNodes} nodeTypes={nodeTypes} fitView>
-        <Background />
-      </ReactFlow>
-    </div>
+    <DemoWrapper>
+      <NodeStatusIndicatorApp />
+    </DemoWrapper>
   );
 }

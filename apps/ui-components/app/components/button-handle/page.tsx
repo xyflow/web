@@ -1,28 +1,12 @@
 "use client";
 
-import { Background, ReactFlow } from "@xyflow/react";
+import ButtonHandleApp from "@/registry/components/button-handle/app-example";
+import DemoWrapper from "@/components/demo-wrapper";
 
-import ButtonHandleDemo from "@/registry/components/button-handle/demo";
-
-const defaultNodes = [
-  {
-    id: "1",
-    position: { x: 0, y: 0 },
-    data: { label: "Node" },
-    type: "ButtonHandleDemo",
-  },
-];
-
-const nodeTypes = {
-  ButtonHandleDemo,
-};
-
-export default function DemoPage() {
+export default function Page() {
   return (
-    <div className="h-full w-full">
-      <ReactFlow defaultNodes={defaultNodes} nodeTypes={nodeTypes} fitView>
-        <Background />
-      </ReactFlow>
-    </div>
+    <DemoWrapper>
+      <ButtonHandleApp />
+    </DemoWrapper>
   );
 }

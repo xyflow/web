@@ -1,27 +1,13 @@
 "use client";
 
-import { Background, ReactFlow } from "@xyflow/react";
-import WorkflowNodeDemo from "@/registry/components/workflow-node/demo";
+import WorkflowNodeApp from "@/registry/components/workflow-node/app-example";
 
-const defaultNodes = [
-  {
-    id: "1",
-    position: { x: 200, y: 200 },
-    data: { label: "Node" },
-    type: "workflowNode",
-  },
-];
+import DemoWrapper from "@/components/demo-wrapper";
 
-const nodeTypes = {
-  workflowNode: WorkflowNodeDemo,
-};
-
-export default function DemoPage() {
+export default function Page() {
   return (
-    <div className="h-full w-full">
-      <ReactFlow defaultNodes={defaultNodes} nodeTypes={nodeTypes} fitView>
-        <Background />
-      </ReactFlow>
-    </div>
+    <DemoWrapper>
+      <WorkflowNodeApp />
+    </DemoWrapper>
   );
 }

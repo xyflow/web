@@ -1,21 +1,13 @@
-import { Background, ReactFlow } from "@xyflow/react";
-import { ZoomSelect } from "@/registry/components/zoom-select/";
+"use client";
 
-const defaultNodes = [
-  {
-    id: "1",
-    position: { x: 200, y: 200 },
-    data: { label: "Node" },
-  },
-];
+import ZoomSelectApp from "@/registry/components/zoom-select/app-example";
 
-export default function DemoPage() {
+import DemoWrapper from "@/components/demo-wrapper";
+
+export default function Page() {
   return (
-    <div className="h-full w-full">
-      <ReactFlow defaultNodes={defaultNodes} fitView>
-        <Background />
-        <ZoomSelect position="top-left" />
-      </ReactFlow>
-    </div>
+    <DemoWrapper>
+      <ZoomSelectApp />
+    </DemoWrapper>
   );
 }

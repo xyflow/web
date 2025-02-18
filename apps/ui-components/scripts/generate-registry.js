@@ -11,7 +11,6 @@ const deploymentURL =
 const componentsPath = path.join(__dirname, "../registry/components/");
 const registryOutputPath = path.join(__dirname, "../public/registry");
 const demoOutputPath = path.join(__dirname, "../public/demo");
-const componentPagesBasePath = path.join(__dirname, "../app/components/");
 
 (async () => {
   console.log("Generating registry files...");
@@ -43,11 +42,10 @@ const componentPagesBasePath = path.join(__dirname, "../app/components/");
 
       // Gather relevant file paths
       const componentPath = path.join(componentsPath, folder.name);
-      const componentPagePath = path.join(componentPagesBasePath, folder.name);
-      const pagePath = path.join(componentPagePath, "page.tsx");
+      const appExamplePath = path.join(componentPath, "app-example.tsx");
       const indexPath = path.join(componentPath, "index.tsx");
       const registryPath = path.join(componentPath, "registry.json");
-      const demoPath = path.join(componentPath, "demo.tsx");
+      const demoPath = path.join(componentPath, "component-example.tsx");
 
       // Read registry file and convert it to an object
       const registryRaw = fs.readFileSync(registryPath, "utf8");
@@ -55,7 +53,7 @@ const componentPagesBasePath = path.join(__dirname, "../app/components/");
 
       // Read index file and add it to the registry object
       const index = fs.readFileSync(indexPath, "utf8");
-      const page = fs.readFileSync(pagePath, "utf8");
+      const page = fs.readFileSync(appExamplePath, "utf8");
       registry.files[0].content = index;
 
       registry.registryDependencies = registry.registryDependencies.map(
@@ -87,11 +85,10 @@ const componentPagesBasePath = path.join(__dirname, "../app/components/");
         console.log(`No demo file found for ${folder.name}`);
       }
 
-      // Create demo file object
       const demoFile = {
         files: [
           {
-            content: demoContent || null, // Ensure null is used when no content exists
+            content: demoContent || null,
             page: page,
           },
         ],
