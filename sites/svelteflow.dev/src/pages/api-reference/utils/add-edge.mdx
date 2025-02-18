@@ -23,8 +23,13 @@ import { addEdge } from '@xyflow/svelte';
 
 const edges = writable([]);
 
-const onAddEdge = (connection) => {
-  $edges = addEdge(connection, $edges);
+const onAddEdge = () => {
+  const newEdge = {
+    id: '1-2',
+    source: '1',
+    target: '2'
+  };
+  $edges = addEdge(newEdge, $edges);
 }
 ```
 
