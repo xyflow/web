@@ -11,7 +11,7 @@ import {
   normalizePageMap,
 } from 'nextra/page-map';
 
-import { useMDXComponents } from '../../../../mdx-components';
+import { useMDXComponents as getMDXComponents } from '../../../../mdx-components';
 import { RemoteCodeViewer } from '@/components/remote-code-viewer';
 
 const examplesPath = resolve(
@@ -68,7 +68,7 @@ const {
   wrapper: Wrapper,
   h1: H1,
   ...components
-} = useMDXComponents({
+} = getMDXComponents({
   $Tabs: Tabs,
   Callout,
 });
