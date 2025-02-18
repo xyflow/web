@@ -54,15 +54,7 @@ export const [generatedExamplesPage] = _pageMap;
 export const generatedExampleMeta = exampleMeta;
 const genRefPageMap = mergeMetaWithPageMap(
   generatedExamplesPage as Folder<PageMapItem>,
-  {
-    index: {
-      theme: {
-        breadcrumb: false,
-      },
-    },
-    overview: '',
-    ...exampleMeta,
-  },
+  exampleMeta,
 );
 
 export const pageMap = normalizePageMap(genRefPageMap);
