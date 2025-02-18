@@ -8,6 +8,7 @@ import {
   Link,
 } from '@xyflow/xy-ui';
 import { useData } from 'nextra/hooks';
+import { getPagesUnderRoute } from 'nextra/context';
 import { Code, Tabs as NextraTabs } from 'nextra/components';
 import { RemoteContent } from 'xy-shared';
 import clsx from 'clsx';
@@ -34,13 +35,31 @@ function UiComponentViewer() {
     url: `https://www.npmjs.com/package/${dep}`,
   }));
 
+  const componentPages = getPagesUnderRoute('/components').reduce(
+    (acc, folder) => {
+      const pages = getPagesUnderRoute(folder.route);
+      for (const page of pages) {
+        acc.set(page.name, page.route);
+      }
+      return acc;
+    },
+    new Map<string, string>(),
+  );
+
   const shadcnDependencies = (data.registryDependencies || []).map((dep) => {
-    if (dep.startsWith('https://ui.reactflow')) {
+    if (dep.startsWith('https://')) {
       const depName = dep.split('/').pop().split('.').shift();
       const label = kebabCaseToTitleCase(depName);
+
+      const url = componentPages.get(depName);
+
+      if (!url) {
+        throw new Error('No page found for component: ' + depName);
+      }
+
       return {
         label,
-        url: `/components/${depName}`,
+        url: url,
         highlight: true,
       };
     }
