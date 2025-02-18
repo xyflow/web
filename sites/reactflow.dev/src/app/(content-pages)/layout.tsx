@@ -8,9 +8,11 @@ import { Button, defaultFooterCategories } from '@xyflow/xy-ui';
 import { NextraLayout } from '@/components/nextra-layout';
 import { SidebarTitle } from '@/components/sidebar-title';
 
+import { pageMap as examplesPageMap } from './generated-examples/[[...slug]]/page';
+
 const Layout: FC<{ children: ReactNode }> = async ({ children }) => {
   const { Projects: _, ...remainingCategories } = defaultFooterCategories;
-  const pageMap = await getPageMap();
+  const pageMap = [...(await getPageMap()), examplesPageMap];
 
   // Add badges
   const apiReference = pageMap.find(

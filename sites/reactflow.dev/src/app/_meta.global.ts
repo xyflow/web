@@ -1,3 +1,5 @@
+import { generatedExampleMeta } from './(content-pages)/generated-examples/[[...slug]]/page';
+
 const concepts = {
   introduction: '',
   'terms-and-definitions': '',
@@ -76,6 +78,7 @@ const components = {
     href: 'https://github.com/xyflow/web/discussions/new?category=ui-component-requests',
   },
 };
+
 const examples = {
   index: {
     theme: {
@@ -200,6 +203,12 @@ const metaRecord = {
       toc: false,
     },
   },
+  // generatedExamples: {
+  //   items: generatedExampleMeta,
+  //   theme: {
+  //     toc: false,
+  //   },
+  // },
   components: { items: components },
   showcase: '',
   more: {
