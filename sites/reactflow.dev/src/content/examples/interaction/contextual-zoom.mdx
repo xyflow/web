@@ -3,7 +3,7 @@ title: Contextual Zoom
 description: Only display the content of a node when you are zoomed in close enough
 ---
 
-import { RemoteCodeViewer } from '@/components/remote-code-viewer';
+import { RemoteCodeViewer } from 'xy-shared/server';
 
 This example shows how the current zoom level can be used by a node to decide which content to show.
 We are using selecting the zoom via the [`useStore` hook](/api-reference/hooks/use-store) to update our custom node whenever the zoom changes.

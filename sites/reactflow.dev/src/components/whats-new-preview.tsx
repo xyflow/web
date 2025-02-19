@@ -3,7 +3,7 @@ import { AuthorList, TimeAgo } from 'xy-shared';
 import Link from 'next/link';
 import { ArrowRightCircleIcon } from '@heroicons/react/20/solid';
 import { MdxFile } from 'nextra';
-import { WhatsNewItemFrontMatter } from '@/utils';
+import { WhatsNewItemFrontMatter } from 'xy-shared/server';
 
 export type WhatsNewPreviewProps = {
   items: MdxFile<WhatsNewItemFrontMatter>[];

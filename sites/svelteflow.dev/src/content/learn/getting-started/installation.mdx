@@ -1,0 +1,26 @@
+---
+sidebarTitle: Installation
+description: This is how to install the Svelte Flow package using npm, and how to include it in your project
+---
+
+# Installation and Requirements
+
+In order to start, you need node.js and npm, yarn or pnpm installed on your machine.
+The Svelte Flow package is published on npm under [`@xyflow/svelte`](https://www.npmjs.com/package/@xyflow/svelte) and installable via:
+
+```bash copy npm2yarn
+npm install @xyflow/svelte
+```
+
+Now you can import the Svelte Flow component and the styles in your application:
+
+```js
+import { SvelteFlow } from '@xyflow/svelte';
+
+// 👇 this is important! You need to import the styles for Svelte Flow to work
+import '@xyflow/svelte/dist/style.css';
+```
+
+## Prior Experience Needed
+
+As the name implies Svelte Flow is a [Svelte](https://svelte.dev/) library. That means Svelte developers will likely find it easy to work with. If you’re not already familiar with fundamental Svelte terms and concepts such as stores, props, and components you may need to get a better understanding of Svelte basics before you can make full use of Svelte Flow. If you've never used Svelte before, we suggest starting your journey with the ["Welcome to Svelte" tutorial](https://learn.svelte.dev/tutorial/welcome-to-svelte).

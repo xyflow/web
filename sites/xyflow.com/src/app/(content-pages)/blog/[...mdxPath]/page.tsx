@@ -19,7 +19,7 @@ export default async function Page(props: PageProps) {
   const mdx = <MDXContent {...props} params={params} />;
 
   const pageMap = await getBlogs();
-  const route = ['/blog', ...params.mdxPath].join('/')
+  const route = ['/blog', ...params.mdxPath].join('/');
   const { activeIndex, flatDocsDirectories } = normalizePages({
     list: pageMap,
     route,
