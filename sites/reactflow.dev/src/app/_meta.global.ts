@@ -40,6 +40,7 @@ const components = {
     title: 'Introduction',
     theme: {
       toc: false,
+      layout: 'full',
     },
   },
   nodes: {
@@ -198,6 +199,7 @@ const metaRecord = {
     items: examples,
     theme: {
       toc: false,
+      layout: 'full',
     },
   },
   components: { items: components },

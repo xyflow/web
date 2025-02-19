@@ -1,0 +1,32 @@
+---
+description:
+  The Viewport type tells you where in the coordinate system your flow is
+  currently being display at and how zoomed in or out it is.
+---
+
+import { PropsTable } from '@/components/props-table';
+import { viewportFields } from '@/references/types/Viewport.fields.ts';
+
+# Viewport
+
+Internally, Svelte Flow maintains a coordinate system that is independent of the
+rest of the page. The `Viewport` type tells you where in that system your flow
+is currently being display at and how zoomed in or out it is.
+
+```ts
+export type Viewport = {
+  x: number;
+  y: number;
+  zoom: number;
+};
+```
+
+## Fields
+
+<PropsTable {...viewportFields} />
+
+## Notes
+
+- A `Transform` has the same properties as the viewport, but they represent
+  different things. Make sure you don't get them muddled up or things will start
+  to look weird!

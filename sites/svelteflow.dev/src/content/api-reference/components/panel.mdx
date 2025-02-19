@@ -1,0 +1,44 @@
+---
+title: The Panel component
+sidebarTitle: '<Panel />'
+description:
+  The Panel component helps you position content above the viewport. It is used
+  internally by the MiniMap and Controls components.
+---
+
+import { PropsTable } from '@/components/props-table';
+import { panelProps } from '@/references/components/Panel.ts';
+
+# &lt;Panel />
+
+[Source on GitHub](hthttps://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/container/Panel/Panel.svelte)
+
+The `<Panel />` component helps you position content above the viewport. It is
+used internally by the [`<MiniMap />`](/api-reference/components/mini-map) and [`<Controls />`](/api-reference/components/controls)
+components.
+
+```svelte
+<script lang="ts">
+  import { writable } from 'svelte/store';
+  import { SvelteFlow, Panel } from '@xyflow/svelte';
+
+  const nodes = writable([]);
+  const edges = writable([]);
+</script>
+
+<SvelteFlow nodes={nodes} edges={edges}>
+  <Panel position="top-left">top-left</Panel>
+  <Panel position="top-center">top-center</Panel>
+  <Panel position="top-right">top-right</Panel>
+  <Panel position="bottom-left">bottom-left</Panel>
+  <Panel position="bottom-center">bottom-center</Panel>
+  <Panel position="bottom-right">bottom-right</Panel>
+</SvelteFlow>
+```
+
+## Props
+
+For TypeScript users, the props type for the `<Panel />` component is exported
+as `PanelProps`.
+
+<PropsTable {...panelProps} />
