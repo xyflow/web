@@ -5,6 +5,8 @@ import svelteFlowPackageJson from '@xyflow/svelte/package.json';
 import { Html } from '@/components/html.client';
 import { NextraLayout } from '@/components/nextra-layout';
 import { generateRootMetadata } from 'xy-shared/server';
+import { Fathom } from 'xy-shared';
+
 import './global.css';
 
 export const metadata = generateRootMetadata('Svelte Flow', {
@@ -24,6 +26,7 @@ const RootLayout: FC<{
     <Html>
       <Head color={{ hue: 15, saturation: 90 }} />
       <body>
+        <Fathom id="PFWQXXRR" />
         <NextraLayout>{children}</NextraLayout>
       </body>
     </Html>

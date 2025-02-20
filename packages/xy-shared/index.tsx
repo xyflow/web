@@ -22,13 +22,14 @@ export * from './widgets/search';
 export * from './widgets/subscribe-section';
 
 export * from './hooks/use-connection-drawer';
-export * from './hooks/use-fathom';
 
 export * from './components/handle';
 export * from './components/headline-node';
 export * from './components/node-wrapper';
 export * from './components/time-ago';
 export * from './components/sidebar-title';
+export * from './components/fathom';
+
 export * from './types';
 
 export * from './lib';
