@@ -9,9 +9,6 @@ const slugRegex = /-git-(.*?)\.vercel\.app/;
 export function parsePreviewDeploySlug(branchUrl: string) {
   return branchUrl.match(slugRegex)?.[1];
 }
-const previewDeploySlug = parsePreviewDeploySlug(
-  process.env.NEXT_PUBLIC_VERCEL_URL,
-);
 
 const nextConfig: NextConfig = {
   // Configure pageExtensions to include md and mdx
@@ -26,7 +23,7 @@ const nextConfig: NextConfig = {
     SVELTE_FLOW_VERSION: svelteFlowPackageJson.version,
     NEXT_PUBLIC_EXAMPLES_URL:
       process.env.VERCEL_ENV === 'preview'
-        ? `https://example-apps-git-${previewDeploySlug}.vercel.app`
+        ? `https://example-apps-git-${parsePreviewDeploySlug(process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL)}.vercel.app`
         : process.env.NEXT_PUBLIC_EXAMPLES_URL,
   },
   images: {
