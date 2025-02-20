@@ -1,0 +1,61 @@
+---
+title: The Edge Label component
+sidebarTitle: '<EdgeLabel />'
+description: The Edge Label component can be used to add labels to edges.
+---
+
+import { PropsTable } from '@/components/props-table';
+import { edgeLabelProps } from '@/references/components/EdgeLabel.ts';
+
+# &lt;EdgeLabel />
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/components/EdgeLabel/EdgeLabel.svelte)
+
+The `<EdgeLabel />` component is used in your custom edges
+to display an edge label that selects the edge when it is clicked.
+
+```svelte filename="CustomEdge.svelte"
+<script lang="ts">
+  import { getBezierPath, type EdgeProps } from '@xyflow/svelte';
+
+  type $$Props = EdgeProps;
+
+  export let id: $$Props['id'] = undefined;
+  export let label: $$Props['label'] = undefined;
+  export let labelStyle: $$Props['labelStyle'] = undefined;
+
+  export let sourceX: $$Props['sourceX'];
+  export let sourceY: $$Props['sourceY'];
+  export let sourcePosition: $$Props['sourcePosition'];
+
+  export let targetX: $$Props['targetX'];
+  export let targetY: $$Props['targetY'];
+  export let targetPosition: $$Props['targetPosition'];
+
+  $: [path, labelX, labelY] = getBezierPath({
+    sourceX,
+    sourceY,
+    targetX,
+    targetY,
+    sourcePosition,
+    targetPosition,
+    curvature: pathOptions?.curvature
+  });
+</script>
+
+<path
+  {id}
+  d={path}
+  fill="none"
+/>
+
+{#if label}
+  <EdgeLabel x={labelX} y={labelY} style={labelStyle}>
+    {label}
+  </EdgeLabel>
+{/if}
+```
+
+## Props
+
+<PropsTable {...edgeLabelProps} />

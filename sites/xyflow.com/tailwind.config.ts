@@ -1,7 +1,7 @@
 import xyTailwindConfig from 'xy-tailwind-config';
+import { Config } from 'tailwindcss';
 
-/** @type {import('tailwindcss').Config} */
-export default {
+const config: Config = {
   ...xyTailwindConfig,
   theme: {
     ...xyTailwindConfig.theme,
@@ -14,3 +14,5 @@ export default {
     },
   },
 };
+
+export default config;

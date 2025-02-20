@@ -1,11 +1,15 @@
 import { PencilSquareIcon } from '@heroicons/react/24/outline';
 import { BaseLayout, Hero } from 'xy-shared';
-import { TimelineEvent, TimelineEventProps } from '@/components/timeline-event';
+import {
+  TimelineEvent,
+  TimelineEventProps,
+  getLastChangelog,
+} from 'xy-shared/server';
 import { FC } from 'react';
-import { Metadata } from 'next';
-import { getLastChangelog } from '@/utils';
+import { NextraMetadata } from 'nextra';
 
-export const metadata: Metadata = {
+export const metadata: NextraMetadata = {
+  asIndexPage: true,
   title: "What's new?",
   description:
     "We're always working on the React Flow docs and the library. This is a timeline of the things we've added or changed so far.",

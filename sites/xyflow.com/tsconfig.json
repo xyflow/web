@@ -4,6 +4,7 @@
     "plugins": [{ "name": "next" }],
     "target": "ES6",
     "baseUrl": "src/",
+    "moduleResolution": "bundler",
     "paths": {
       "@/*": ["./*"]
     }
@@ -12,9 +13,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts",
-    "theme.config.tsx",
-    "tailwind.config.ts"
+    ".next/types/**/*.ts"
   ],
   "exclude": ["node_modules"]
 }

@@ -1,3 +1,7 @@
+.xy-link-gray {
+  @apply x:transition x:text-gray-600 x:dark:text-gray-400 x:hover:text-gray-800 x:dark:hover:text-gray-200 x:contrast-more:text-gray-700 x:contrast-more:dark:text-gray-100;
+}
+
 /* adds labels to the sidebar items */
 .sidebar-title.pro:after {
   content: 'Pro';
@@ -31,11 +35,6 @@ li.active > .sidebar-title.pro:after {
   @apply bg-transparent text-primary;
 }
 
-/* if there is no content in the toc, we don't want it to take up the space */
-nav.nextra-toc:empty {
-  display: none;
-}
-
 nav a:has(svg.nav-github-logo) {
   @apply max-sm:hidden;
 }
@@ -51,11 +50,6 @@ nav.x\:bg-transparent {
 div.nextra-nav-container-blur {
   backdrop-filter: none;
   background: white;
-}
-
-.nextra-toc-footer {
-  box-shadow: none;
-  background-color: transparent;
 }
 
 .pro-button {
@@ -236,7 +230,7 @@ article.nextra-content ol li p {
 }
 
 /* Docsearch overwrite */
-.nextra-nav-container {
+.nextra-navbar {
   --docsearch-searchbox-background: #eee;
   --docsearch-searchbox-focus-background: #eee;
   --docsearch-primary-color: hsl(var(--primary));
@@ -244,12 +238,11 @@ article.nextra-content ol li p {
   --docsearch-searchbox-shadow: inset 0 0 0 2px var(--docsearch-primary-color);
 }
 
-.nextra-nav-container .DocSearch-Button {
-  margin-left: 0;
+.DocSearch-Button {
   @apply bg-gray-100;
 }
 
-.nextra-nav-container .DocSearch-Button .DocSearch-Search-Icon {
+.DocSearch-Button .DocSearch-Search-Icon {
   width: 16px;
   height: 16px;
 }
@@ -282,13 +275,8 @@ article.nextra-content ol li p {
   box-shadow: none;
 }
 
-.nextra-sidebar-container .DocSearch.DocSearch-Button {
-  display: none;
-}
-
 @media screen and (min-width: 2000px) {
-  main .x\:max-w-\[90rem\],
-  main .max-w-\[90rem\] {
+  .x\:max-w-\(--nextra-content-width\) {
     max-width: 90rem;
   }
 }
@@ -359,11 +347,6 @@ article.nextra-content ol li p {
   box-shadow: none;
 }
 
-/* needed for moving navbar elements to the left */
-.nextra-nav-container nav > div:first-child {
-  @apply !mr-5;
-}
-
 /* stack example code and preview vertically */
 .sandpack-wrapper.vertical > .sp-wrapper > .sp-layout {
   flex-direction: column-reverse;
@@ -408,9 +391,5 @@ html:has(body.x\:overflow-hidden) nav {
 
   .DocSearch-Button-Placeholder {
     display: none;
-  }
-
-  .nextra-nav-container > nav {
-    @apply p-2 gap-2;
   }
 }

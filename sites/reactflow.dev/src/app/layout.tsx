@@ -1,45 +1,25 @@
 import type { FC, ReactNode } from 'react';
-import type { Metadata } from 'next';
 import { Head } from 'nextra/components';
 import reactFlowPackageJson from '@xyflow/react/package.json';
 import { Html } from '@/components/html.client';
+import { generateRootMetadata } from 'xy-shared/server';
+import { Fathom } from 'xy-shared';
+
 import './global.css';
 
-const APP_NAME = 'React Flow';
-
-export const metadata: Metadata = {
-  description: `${APP_NAME} - Customizable library for rendering workflows, diagrams and node-based UIs.`,
+export const metadata = generateRootMetadata('React Flow', {
+  description:
+    'Customizable library for rendering workflows, diagrams and node-based UIs.',
   metadataBase: new URL(reactFlowPackageJson.homepage),
   keywords: reactFlowPackageJson.keywords,
-  generator: 'Next.js',
-  applicationName: APP_NAME,
-  appleWebApp: {
-    title: APP_NAME,
-  },
-  title: {
-    default: 'Node-Based UIs in React',
-    template: `%s - ${APP_NAME}`,
-  },
-  openGraph: {
-    // https://github.com/vercel/next.js/discussions/50189#discussioncomment-10826632
-    url: './',
-    locale: 'en_US',
-    type: 'website',
-    siteName: APP_NAME,
-  },
-  twitter: {
-    site: 'https://x.com/xyflowdev',
-    card: 'summary_large_image',
-    creator: '@xyflowdev',
-  },
-  alternates: {
-    // https://github.com/vercel/next.js/discussions/50189#discussioncomment-10826632
-    canonical: './',
-  },
   other: {
-    robots: 'index,follow',
     'docsearch:site': 'react',
   },
+});
+
+const fathomOptions = {
+  id: 'LXMRMWLB',
+  domains: ['reactflow.dev'],
 };
 
 const RootLayout: FC<{
@@ -48,7 +28,10 @@ const RootLayout: FC<{
   return (
     <Html>
       <Head color={{ hue: 333, saturation: 80 }} />
-      <body>{children}</body>
+      <body>
+        <Fathom {...fathomOptions} />
+        {children}
+      </body>
     </Html>
   );
 };
