@@ -15,7 +15,6 @@ import {
 import { BaseLayout, Hero } from 'xy-shared';
 
 import christopher from '../../../../public/img/christopher.jpg';
-import hayleigh from '../../../../public/img/hayleigh.jpg';
 import moritz from '../../../../public/img/moritz.jpg';
 import peter from '../../../../public/img/peter.jpg';
 import burak from '../../../../public/img/burak.jpg';
@@ -91,21 +90,6 @@ const Page: FC = () => {
           links={[
             { linkName: 'Twitter', route: 'https://twitter.com/chrtze' },
             { linkName: 'Github', route: 'https://github.com/chrtze' },
-          ]}
-        />
-        <TeamCard
-          name="Hayleigh"
-          teampic={hayleigh}
-          description="Hayleigh is a time traveller who arrived in the year 2023 on accident trying to get to the year 2032 (her home-year). While she and her 2 cats wait another 7 years until the time machine is re-invented, she decided to take to coding in languages (archaic to her) such as React, Javascript, and Elm. "
-          links={[
-            {
-              linkName: 'Twitter',
-              route: 'https://twitter.com/hayleighdotdev',
-            },
-            {
-              linkName: 'Github',
-              route: 'https://github.com/hayleigh-dot-dev',
-            },
           ]}
         />
         <TeamCard

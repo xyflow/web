@@ -74,7 +74,7 @@ export default function ReactFlowPro() {
             <span className="text-primary">React Flow</span>
           </>
         }
-        subtitle="Thanks for checking out React Flow Pro! We are Christopher, Hayleigh, Moritz, Abbey and Peter, and we are the team building and maintaining React Flow"
+        subtitle="Thanks for checking out React Flow Pro! We are Christopher, Moritz, Abbey and Peter, and we are the team building and maintaining React Flow"
         kicker="React Flow Pro"
         kickerIcon={<SparklesIcon />}
         action={
