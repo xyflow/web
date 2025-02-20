@@ -3,6 +3,11 @@ import nextra from 'nextra';
 import redirects from './redirects.json' with { type: 'json' };
 import reactFlowPackageJson from '@xyflow/react/package.json' with { type: 'json' };
 
+const slugRegex = /-git-(.*?)\.vercel\.app/;
+function getDeploySlug(branchUrl: string) {
+  return branchUrl.match(slugRegex)?.[1];
+}
+
 const nextConfig: NextConfig = {
   // Configure pageExtensions to include md and mdx
   pageExtensions: ['ts', 'tsx', 'js', 'jsx'],
@@ -51,7 +56,7 @@ const nextConfig: NextConfig = {
     REACT_FLOW_VERSION: reactFlowPackageJson.version,
     NEXT_PUBLIC_EXAMPLES_URL:
       process.env.VERCEL_ENV === 'preview'
-        ? `https://example-apps-git-${process.env.VERCEL_GIT_COMMIT_REF}-xyflow.vercel.app`
+        ? `https://example-apps-git-${getDeploySlug(process.env.VERCEL_BRANCH_URL)}-xyflow.vercel.app`
         : process.env.NEXT_PUBLIC_EXAMPLES_URL,
     NEXT_PUBLIC_UI_COMPONENTS_URL:
       process.env.VERCEL_ENV === 'preview'
