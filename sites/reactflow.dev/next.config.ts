@@ -2,11 +2,9 @@ import { NextConfig } from 'next';
 import nextra from 'nextra';
 import redirects from './redirects.json' with { type: 'json' };
 import reactFlowPackageJson from '@xyflow/react/package.json' with { type: 'json' };
+import { parsePreviewDeploySlug } from 'xy-shared';
 
-const slugRegex = /-git-(.*?)\.vercel\.app/;
-function getDeploySlug(branchUrl: string) {
-  return branchUrl.match(slugRegex)?.[1];
-}
+const previewDeploySlug = parsePreviewDeploySlug(process.env.VERCEL_URL);
 
 const nextConfig: NextConfig = {
   // Configure pageExtensions to include md and mdx
@@ -56,11 +54,11 @@ const nextConfig: NextConfig = {
     REACT_FLOW_VERSION: reactFlowPackageJson.version,
     NEXT_PUBLIC_EXAMPLES_URL:
       process.env.VERCEL_ENV === 'preview'
-        ? `https://example-apps-git-${getDeploySlug(process.env.VERCEL_BRANCH_URL)}-xyflow.vercel.app`
+        ? `https://example-apps-git-${previewDeploySlug}.vercel.app`
         : process.env.NEXT_PUBLIC_EXAMPLES_URL,
     NEXT_PUBLIC_UI_COMPONENTS_URL:
       process.env.VERCEL_ENV === 'preview'
-        ? `https://ui-components-git-${process.env.VERCEL_GIT_COMMIT_REF}-xyflow.vercel.app`
+        ? `https://ui-components-git-${previewDeploySlug}-xyflow.vercel.app`
         : process.env.NEXT_PUBLIC_UI_COMPONENTS_URL,
   },
 };

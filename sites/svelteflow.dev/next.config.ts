@@ -2,6 +2,9 @@ import { NextConfig } from 'next';
 import nextra from 'nextra';
 // @ts-expect-error -- we use patch, remove patch after merge https://github.com/xyflow/xyflow/pull/5019
 import svelteFlowPackageJson from '@xyflow/svelte/package.json';
+import { parsePreviewDeploySlug } from 'xy-shared';
+
+const previewDeploySlug = parsePreviewDeploySlug(process.env.VERCEL_URL);
 
 const nextConfig: NextConfig = {
   // Configure pageExtensions to include md and mdx
@@ -16,7 +19,7 @@ const nextConfig: NextConfig = {
     SVELTE_FLOW_VERSION: svelteFlowPackageJson.version,
     NEXT_PUBLIC_EXAMPLES_URL:
       process.env.VERCEL_ENV === 'preview'
-        ? `https://example-apps-git-${process.env.VERCEL_GIT_COMMIT_REF}-xyflow.vercel.app`
+        ? `https://example-apps-git-${previewDeploySlug}.vercel.app`
         : process.env.NEXT_PUBLIC_EXAMPLES_URL,
   },
   images: {

@@ -35,3 +35,10 @@ export async function fetchJSON(url: string): Promise<Record<string, any>> {
 
   return json;
 }
+
+// This is used for finding out the real deploy slug for a preview deployment
+// afaik this is the only way because Vercel doesn't expose this information
+const slugRegex = /-git-(.*?)\.vercel\.app/;
+export function parsePreviewDeploySlug(branchUrl: string) {
+  return branchUrl.match(slugRegex)?.[1];
+}
