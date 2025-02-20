@@ -1,6 +1,5 @@
-import { readdirSync } from 'fs';
 import { readFile } from 'fs/promises';
-import { join, resolve } from 'path';
+import { resolve } from 'path';
 import { notFound } from 'next/navigation';
 import { compileMdx } from 'nextra/compile';
 import { Callout, Tabs } from 'nextra/components';
@@ -12,38 +11,27 @@ import {
 } from 'nextra/page-map';
 import { Folder, PageMapItem } from 'nextra';
 
+import { RemoteCodeViewer } from 'xy-shared/server/remote-code-viewer';
+import { ExamplesOverview } from '@/components/examples-overview';
 import { useMDXComponents as getMDXComponents } from '../../../../mdx-components';
-import { RemoteCodeViewer } from '@/components/remote-code-viewer';
+import { meta, metadata as configMetadata, mdxPathOverrides } from './config';
 
 const examplesPath = resolve(
   process.cwd(),
   '../../apps/example-apps/react/examples',
 );
 
-const exampleCategories = readdirSync(examplesPath);
-const filePaths = ['index.mdx', 'overview.mdx'];
-const exampleMeta = {
-  index: {
-    title: 'Examples',
-    theme: {
-      breadcrumb: false,
-    },
-  },
-  overview: 'Feature Overview',
-};
-
-for (let category of exampleCategories) {
-  exampleMeta[category] = {
-    items: {},
-  };
-
-  const categoryPath = join(examplesPath, category);
-  const examples = readdirSync(categoryPath);
-  for (let example of examples) {
-    filePaths.push(`${category}/${example}.mdx`);
-    exampleMeta[category].items[example] = '';
+const filePaths = Object.keys(meta).reduce<string[]>((res, item) => {
+  if (meta[item].items) {
+    Object.keys(meta[item].items).forEach((subItem) => {
+      res.push(`${item}/${subItem}.mdx`);
+    });
+  } else {
+    res.push(`${item}.mdx`);
   }
-}
+
+  return res;
+}, []);
 
 const { mdxPages, pageMap: _pageMap } = convertToPageMap({
   filePaths,
@@ -51,10 +39,10 @@ const { mdxPages, pageMap: _pageMap } = convertToPageMap({
 });
 
 export const [generatedExamplesPage] = _pageMap;
-export const generatedExampleMeta = exampleMeta;
+export const generatedExampleMeta = meta;
 const genRefPageMap = mergeMetaWithPageMap(
   generatedExamplesPage as Folder<PageMapItem>,
-  exampleMeta,
+  meta,
 );
 
 export const pageMap = normalizePageMap(genRefPageMap);
@@ -74,17 +62,16 @@ type PageProps = Readonly<{
   }>;
 }>;
 
-async function evaluateProps(props: PageProps) {
-  const params = await props.params;
-  const route = params.slug?.join('/') ?? '';
+async function evaluateRoute(route: string) {
   const filePath = mdxPages[route];
 
   if (!filePath) {
     return false;
   }
 
+  const _route = mdxPathOverrides[route] ?? route;
   const readmeContent = await readFile(
-    resolve(examplesPath, route, 'README.mdx'),
+    resolve(examplesPath, _route, 'README.mdx'),
     'utf-8',
   );
   const rawJs = await compileMdx(readmeContent, { filePath });
@@ -92,7 +79,24 @@ async function evaluateProps(props: PageProps) {
 }
 
 export default async function Page(props: PageProps) {
-  const result = await evaluateProps(props);
+  const params = await props.params;
+  const route = params.slug?.join('/') ?? '';
+
+  if (route === '') {
+    return (
+      <Wrapper toc={[]} metadata={configMetadata.index}>
+        <H1>Examples</H1>
+        Browse our examples for practical copy-paste solutions to common use
+        cases with React Flow. Here you can find our MIT Licensed examples,
+        which you are free to use in your projects without restrictions, as well
+        as our Pro examples that come with our React Flow Pro subscription
+        plans.
+        <ExamplesOverview />
+      </Wrapper>
+    );
+  }
+
+  const result = await evaluateRoute(route);
 
   if (!result) {
     notFound();
@@ -109,7 +113,14 @@ export default async function Page(props: PageProps) {
 }
 
 export async function generateMetadata(props: PageProps) {
-  const result = await evaluateProps(props);
+  const params = await props.params;
+  const route = params.slug?.join('/') ?? '';
+
+  if (route === '') {
+    return configMetadata.index;
+  }
+
+  const result = await evaluateRoute(route);
 
   if (!result) {
     return {};

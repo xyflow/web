@@ -1,5 +1,3 @@
-import { generatedExampleMeta } from './(content-pages)/generated-examples/[[...slug]]/page';
-
 const concepts = {
   introduction: '',
   'terms-and-definitions': '',
