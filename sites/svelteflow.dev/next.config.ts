@@ -2,8 +2,13 @@ import { NextConfig } from 'next';
 import nextra from 'nextra';
 // @ts-expect-error -- we use patch, remove patch after merge https://github.com/xyflow/xyflow/pull/5019
 import svelteFlowPackageJson from '@xyflow/svelte/package.json';
-import { parsePreviewDeploySlug } from 'xy-shared';
 
+// This is used for finding out the real deploy slug for a preview deployment
+// afaik this is the only way because Vercel doesn't expose this information
+const slugRegex = /-git-(.*?)\.vercel\.app/;
+export function parsePreviewDeploySlug(branchUrl: string) {
+  return branchUrl.match(slugRegex)?.[1];
+}
 const previewDeploySlug = parsePreviewDeploySlug(process.env.VERCEL_URL);
 
 const nextConfig: NextConfig = {

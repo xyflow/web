@@ -2,8 +2,13 @@ import { NextConfig } from 'next';
 import nextra from 'nextra';
 import redirects from './redirects.json' with { type: 'json' };
 import reactFlowPackageJson from '@xyflow/react/package.json' with { type: 'json' };
-import { parsePreviewDeploySlug } from 'xy-shared';
 
+// This is used for finding out the real deploy slug for a preview deployment
+// afaik this is the only way because Vercel doesn't expose this information
+const slugRegex = /-git-(.*?)\.vercel\.app/;
+export function parsePreviewDeploySlug(branchUrl: string) {
+  return branchUrl.match(slugRegex)?.[1];
+}
 const previewDeploySlug = parsePreviewDeploySlug(process.env.VERCEL_URL);
 
 const nextConfig: NextConfig = {
