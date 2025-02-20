@@ -9,9 +9,6 @@ const slugRegex = /-git-(.*?)\.vercel\.app/;
 export function parsePreviewDeploySlug(branchUrl: string) {
   return branchUrl.match(slugRegex)?.[1];
 }
-const previewDeploySlug = parsePreviewDeploySlug(
-  process.env.NEXT_PUBLIC_VERCEL_URL,
-);
 
 const nextConfig: NextConfig = {
   // Configure pageExtensions to include md and mdx
@@ -61,11 +58,11 @@ const nextConfig: NextConfig = {
     REACT_FLOW_VERSION: reactFlowPackageJson.version,
     NEXT_PUBLIC_EXAMPLES_URL:
       process.env.VERCEL_ENV === 'preview'
-        ? `https://example-apps-git-${previewDeploySlug}.vercel.app`
+        ? `https://example-apps-git-${parsePreviewDeploySlug(process.env.VERCEL_URL)}.vercel.app`
         : process.env.NEXT_PUBLIC_EXAMPLES_URL,
     NEXT_PUBLIC_UI_COMPONENTS_URL:
       process.env.VERCEL_ENV === 'preview'
-        ? `https://ui-components-git-${previewDeploySlug}-xyflow.vercel.app`
+        ? `https://ui-components-git-${parsePreviewDeploySlug(process.env.VERCEL_URL)}.vercel.app`
         : process.env.NEXT_PUBLIC_UI_COMPONENTS_URL,
   },
 };
