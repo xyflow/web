@@ -67,7 +67,7 @@ const Page: FC = () => {
               Wire
               <Handle
                 type="source"
-                position={Position.Right}
+                position={'right' as Position}
                 id="xy-wire-source"
                 to="xy-wire-target"
                 className="-left-[100vw] top-1/2"
@@ -76,7 +76,7 @@ const Page: FC = () => {
               />
               <Handle
                 type="target"
-                position={Position.Left}
+                position={'left' as Position}
                 id="xy-wire-target"
                 className="top-1/2 -left-[9px]"
                 svgClassName="stroke-purple-600"
@@ -87,7 +87,7 @@ const Page: FC = () => {
             <HeadlineNode>
               <Handle
                 type="source"
-                position={Position.Bottom}
+                position={'bottom' as Position}
                 id="xy-ideas"
                 to="xy-xyflow"
                 className="-bottom-[9px] right-4"
@@ -101,7 +101,7 @@ const Page: FC = () => {
               <Handle
                 type="target"
                 id="xy-xyflow"
-                position={Position.Right}
+                position={'right' as Position}
                 className="top-1/2 -translate-y-1/2 -right-[9px]"
                 svgClassName="stroke-purple-600"
                 handleClassName="border-purple-600"

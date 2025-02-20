@@ -52,23 +52,17 @@ export function useConnectionDrawer() {
             'data-position',
           ) as Position;
 
-          // TODO: this try-catch block fix TypeError: Cannot read properties of undefined (reading 'x')
-          // error on landing page of xyflow.com
-          try {
-            const [edgePath] = getSmoothStepPath({
-              sourceX: isRTL || isSmallScreen ? width : 0,
-              sourceY: 0,
-              targetX: isRTL || isSmallScreen ? 0 : width,
-              targetY: height,
-              sourcePosition: sourcePosition,
-              targetPosition: targetPosition,
-              borderRadius: 24,
-            });
+          const [edgePath] = getSmoothStepPath({
+            sourceX: isRTL || isSmallScreen ? width : 0,
+            sourceY: 0,
+            targetX: isRTL || isSmallScreen ? 0 : width,
+            targetY: height,
+            sourcePosition: sourcePosition,
+            targetPosition: targetPosition,
+            borderRadius: 24,
+          });
 
-            path.setAttribute('d', edgePath);
-          } catch (error) {
-            console.error(error);
-          }
+          path.setAttribute('d', edgePath);
         }
       }
     }
