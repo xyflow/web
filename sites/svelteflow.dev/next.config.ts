@@ -9,7 +9,9 @@ const slugRegex = /-git-(.*?)\.vercel\.app/;
 export function parsePreviewDeploySlug(branchUrl: string) {
   return branchUrl.match(slugRegex)?.[1];
 }
-const previewDeploySlug = parsePreviewDeploySlug(process.env.VERCEL_URL);
+const previewDeploySlug = parsePreviewDeploySlug(
+  process.env.NEXT_PUBLIC_VERCEL_URL,
+);
 
 const nextConfig: NextConfig = {
   // Configure pageExtensions to include md and mdx
