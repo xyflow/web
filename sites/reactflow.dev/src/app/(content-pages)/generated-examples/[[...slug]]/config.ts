@@ -1,3 +1,8 @@
+/**
+ * This meta object is used to define which examples we want to display.
+ * We are not using the exact folder structure of apps/example-apps/react/examples
+ * because we want to have more control over the order and which examples are displayed.
+ */
 export const meta = {
   index: {
     title: 'Examples',
@@ -90,12 +95,17 @@ export const meta = {
 /**
  * There are some example pages that are not directly accessible via their file path.
  * This object allows you to override the default path to the MDX file.
+ *
+ * [route]: [actual README.mdx file path]
  */
 export const mdxPathOverrides = {
   'edges/animating-edges': 'edges/animating-edges-node',
   overview: 'misc/overview',
 };
 
+/**
+ * There is no mdx page for the index page, so we need to provide the metadata here.
+ */
 export const metadata = {
   index: {
     title: 'Examples',

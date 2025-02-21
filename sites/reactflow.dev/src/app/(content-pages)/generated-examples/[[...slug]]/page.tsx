@@ -40,6 +40,8 @@ export default async function Page(props: PageProps) {
   const params = await props.params;
   const route = params.slug?.join('/') ?? '';
 
+  // the index page is special because it doesn't show a specific example
+  // but an overview of all examples.
   if (route === '') {
     return (
       <Wrapper toc={[]} metadata={configMetadata.index}>
