@@ -24,6 +24,7 @@ export const meta = {
       'rotatable-node': '',
       stress: '',
       'update-node': '',
+      shapes: '',
     },
   },
   edges: {

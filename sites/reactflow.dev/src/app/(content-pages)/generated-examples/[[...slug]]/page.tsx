@@ -1,9 +1,4 @@
-import { readFile } from 'fs/promises';
-import { resolve } from 'path';
 import { notFound } from 'next/navigation';
-import { compileMdx } from 'nextra/compile';
-import { Callout, Tabs } from 'nextra/components';
-import { evaluate } from 'nextra/evaluate';
 import {
   convertToPageMap,
   mergeMetaWithPageMap,
@@ -11,28 +6,16 @@ import {
 } from 'nextra/page-map';
 import { Folder, PageMapItem } from 'nextra';
 
-import { RemoteCodeViewer } from 'xy-shared/server/remote-code-viewer';
 import { ExamplesOverview } from '@/components/examples-overview';
-import { useMDXComponents as getMDXComponents } from '../../../../mdx-components';
-import { meta, metadata as configMetadata, mdxPathOverrides } from './config';
+import { meta, metadata as configMetadata } from './config';
+import { evaluateRoute, generateFilePaths, H1, Wrapper } from './utils';
 
-const examplesPath = resolve(
-  process.cwd(),
-  '../../apps/example-apps/react/examples',
-);
+const filePaths = generateFilePaths(meta);
 
-const filePaths = Object.keys(meta).reduce<string[]>((res, item) => {
-  if (meta[item].items) {
-    Object.keys(meta[item].items).forEach((subItem) => {
-      res.push(`${item}/${subItem}.mdx`);
-    });
-  } else {
-    res.push(`${item}.mdx`);
-  }
-
-  return res;
-}, []);
-
+// @TODO: the returned pageMap doesn't include frontMatter
+// how can we pass this information to convertToPageMap or somewhere else?
+// we need the frontMatter in layout.tsx in order to render the badges for
+// the sidebar items.
 const { mdxPages, pageMap: _pageMap } = convertToPageMap({
   filePaths,
   basePath: 'generated-examples',
@@ -40,43 +23,18 @@ const { mdxPages, pageMap: _pageMap } = convertToPageMap({
 
 export const [generatedExamplesPage] = _pageMap;
 export const generatedExampleMeta = meta;
-const genRefPageMap = mergeMetaWithPageMap(
+const examplesPageMap = mergeMetaWithPageMap(
   generatedExamplesPage as Folder<PageMapItem>,
   meta,
 );
 
-export const pageMap = normalizePageMap(genRefPageMap);
-
-const {
-  wrapper: Wrapper,
-  h1: H1,
-  ...components
-} = getMDXComponents({
-  $Tabs: Tabs,
-  Callout,
-});
+export const pageMap = normalizePageMap(examplesPageMap);
 
 type PageProps = Readonly<{
   params: Promise<{
     slug?: string[];
   }>;
 }>;
-
-async function evaluateRoute(route: string) {
-  const filePath = mdxPages[route];
-
-  if (!filePath) {
-    return false;
-  }
-
-  const _route = mdxPathOverrides[route] ?? route;
-  const readmeContent = await readFile(
-    resolve(examplesPath, _route, 'README.mdx'),
-    'utf-8',
-  );
-  const rawJs = await compileMdx(readmeContent, { filePath });
-  return evaluate(rawJs, { ...components, RemoteCodeViewer });
-}
 
 export default async function Page(props: PageProps) {
   const params = await props.params;
@@ -96,7 +54,7 @@ export default async function Page(props: PageProps) {
     );
   }
 
-  const result = await evaluateRoute(route);
+  const result = await evaluateRoute(route, mdxPages);
 
   if (!result) {
     notFound();
@@ -120,13 +78,9 @@ export async function generateMetadata(props: PageProps) {
     return configMetadata.index;
   }
 
-  const result = await evaluateRoute(route);
+  const result = await evaluateRoute(route, mdxPages);
 
-  if (!result) {
-    return {};
-  }
-
-  return result.metadata;
+  return result?.metadata ?? {};
 }
 
 export function generateStaticParams() {
