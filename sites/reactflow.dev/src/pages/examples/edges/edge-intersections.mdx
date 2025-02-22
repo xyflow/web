@@ -1,0 +1,29 @@
+---
+title: Edge Node Intersections
+description: Detect Edge Intersections with Nodes while dragging a Node.
+preview_path: react/examples/edge-node-intersection/preview.jpg
+---
+
+import { RemoteCodeViewer, ExampleLayout } from 'xy-shared';
+
+import { getStaticCode } from 'xy-shared/server';
+export const getStaticProps = getStaticCode(['examples/edges/edge-node-intersection']);
+
+<ExampleLayout>
+
+Often times you would want that when you are dragging a node over an edge, you could detect the intersection between the node and that respective edge, so that you could perform any desired action. e.g when dropping a node over an edge, you may want to delete that edge and create new edges with the node which was dropped.
+
+In this example, there are two nodes, `Node A` and `Node B` connected with an edge. When we drag a node, `Node C`, on top of the edge connecting `Node A/Node B`, the edge shows an indication, that a node is on top of it, via a color change(the edge's `stroke` changes to `black`). Then when the `Node C` is dropped on the edge, the respective edge is updated to point to `Node C` and a new edge is created from `Node C` to `Node B`. In this way we get two new edges, `Node A -> Node C` and `Node C -> Node B`. 
+
+The `onNodeDrag` function in this example, gets the Node's DOM Element via [`document.querySelector`](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector). We then calculate the center point of this node by finding the Node's `Rect` via [`getBoundingClientRect`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect). We then pass those center coordinates `centerX`, `centerY` in [`document.getElementsFromPoint`](https://developer.mozilla.org/en-US/docs/Web/API/Document/elementsFromPoint) to see if there are other DOM Elements(in our case, an edge) on that particular point. If there is an edge on that particular point where the node is, that means that the node is on top of an edge, therefore we store its `id` in a `ref`. We also set that particular edge's `stroke` to `black`.
+
+The `onNodeDragStop` function gets the edge `id`, if any, and then edits the current edge `target` to the dropped node. It also creates a new edge from the dropped node to `Node B`.
+
+The default [`interactionWidth`](/api-reference/types/default-edge-options#interaction-width) of the edges, is set to `75`, via the [`defaultEdgeOptions`](/api-reference/react-flow#default-edge-options) to have a wider interaction area, so that the intersection between the edge and node can be found out easily.
+
+<RemoteCodeViewer
+  route="examples/edges/edge-node-intersection"
+  framework="react"
+/>
+
+</ExampleLayout>
