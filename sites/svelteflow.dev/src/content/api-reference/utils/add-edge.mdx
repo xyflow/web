@@ -17,19 +17,18 @@ array of edges. It also performs some validation to make sure you don't add an
 invalid edge or duplicate an existing one.
 
 ```js
-import { SvelteFlow, addEdge } from '@xyflow/svelte';
+import { writable } from 'svelte/store';
+import { addEdge } from '@xyflow/svelte';
 
-export default function Flow() {
-  const [nodes, setNodes, onNodesChange] = useNodesState([]);
-  const [edges, setEdges, onEdgesChange] = useEdgesState([]);
-  const onConnect = useCallback(
-    (connection) => {
-      setEdges((oldEdges) => addEdge(connection, oldEdges));
-    },
-    [setEdges],
-  );
+const edges = writable([]);
 
-  return <SvelteFlow nodes={nodes} edges={edges} onConnect={onConnect} />;
+const onAddEdge = () => {
+  const newEdge = {
+    id: '1-2',
+    source: '1',
+    target: '2'
+  };
+  $edges = addEdge(newEdge, $edges);
 }
 ```
 
