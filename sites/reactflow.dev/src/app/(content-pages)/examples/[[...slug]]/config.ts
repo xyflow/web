@@ -77,7 +77,6 @@ export const meta = {
     items: {
       'base-style': '',
       'dark-mode': '',
-      'default-style': '',
       'styled-components': '',
       tailwind: '',
       'turbo-flow': '',
@@ -88,6 +87,7 @@ export const meta = {
       'download-image': '',
       provider: '',
       'use-react-flow-hook': '',
+      'static-server-side-generation': '',
     },
   },
 };
