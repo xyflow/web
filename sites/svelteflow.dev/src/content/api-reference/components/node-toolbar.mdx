@@ -1,0 +1,46 @@
+---
+title: The NodeToolbar component
+sidebarTitle: '<NodeToolbar />'
+description: 'The NodeToolbar component can be used to display a toolbar on a side of a node or display a tooltip for example.'
+---
+
+import { PropsTable } from '@/components/props-table';
+import { nodetoolbarProps } from '@/references/components/NodeToolbar.ts';
+
+# &lt;NodeToolbar />
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/plugins/NodeToolbar/NodeToolbar.svelte)
+
+The NodeToolbar component can be used to display a toolbar on a side of a node or display a tooltip for example.
+
+```svelte filename="CustomNode.svelte"
+<script lang="ts">
+	import { NodeToolbar, type NodeProps, Handle, Position } from '@xyflow/svelte';
+
+	type $$Props = NodeProps;
+
+	export let data: $$Props['data'];
+</script>
+
+<NodeToolbar>
+	<button>delete</button>
+	<button>copy</button>
+	<button>expand</button>
+</NodeToolbar>
+<div class="node">
+	<div>{data.label}</div>
+	<Handle type="target" position={Position.Left} />
+	<Handle type="source" position={Position.Right} />
+</div>
+```
+
+## Props
+
+<PropsTable {...nodetoolbarProps} />
+
+## Notes
+
+- By default, the toolbar is only visible when a node is selected. If multiple
+  nodes are selected it will not be visible to prevent overlapping toolbars or
+  clutter. You can override this behavior by setting the `isVisible` prop to
+  `true`.

@@ -1,0 +1,68 @@
+---
+title: 'v11.5.0 Release'
+intro: Hello again! I am super excited to share the latest improvements of React Flow. The new auto pan features and connection radius makes it way easier to connect nodes and work with bigger flows. On top of that we improved the usability on touch devices.
+date: 26 January 2023
+authors: ['moritz']
+tags: ['react-flow', 'update']
+image: /img/blog/v10-header.png
+---
+
+import { Bleed } from 'nextra/components';
+import { Emoji } from '@xyflow/xy-ui';
+import { Image } from 'xy-shared';
+
+Hello again! I am super excited to share the latest improvements of React Flow. The new auto pan features and connection radius makes it way easier to connect nodes and work with bigger flows. On top of that we improved the usability on touch devices.
+
+## Auto pan
+
+After working a bit with Blender geometry nodes I knew that I wanted to add this feature. Whenever you drag a node, a selection box or a connection line to the border of the pane, it automatically pans into that direction. This enables the users to connect nodes without having to scroll around and organize nodes more easily. If you don't like it, you can disable this new feature with [`autoPanOnConnect={false}`](https://reactflow.dev/api-reference/react-flow#autopanonconnect-1) and [`autoPanOnNodeDrag={false}`](https://reactflow.dev/api-reference/react-flow/#autopanonnodedrag-1).
+
+<Bleed>
+  <Image
+    src="/img/blog/v11-5/auto-pan.gif"
+    alt="Auto pan demo."
+    wide
+    width={822}
+    height={468}
+  />
+</Bleed>
+
+## Connection radius
+
+There are [several](https://reactflow.dev/examples/nodes/easy-connect/) [ways](https://reactflow.dev/examples/nodes/proximity-connect/) to connect nodes. The built-in way is to drag a connection line from one handle to another. To make this easier we added the [`connectionRadius` prop](https://reactflow.dev/api-reference/react-flow/#connectionradius-1). The connection radius specifies the radius around a handle where you can drop the connection line. There is no need to drop it directly above a handle any more <Emoji content="🙌" />.
+
+<Bleed>
+  <Image
+    src="/img/blog/v11-5/connection-radius.gif"
+    alt="Conneciton radius demo."
+    wide
+    width={822}
+    height={468}
+  />
+</Bleed>
+
+## Error handling
+
+We added a new [`onError`](https://reactflow.dev/api-reference/react-flow/#onerror-1) handler that you can use to get notified when an error happens. This can be useful if you want to log errors or show a notification to the user.
+
+## Touch support
+
+Since v10 we support connections on touch devices via tap connect. From now on you can also drag a connection line on touch devices as you would do it with a mouse. Of course the auto pan and connection radius features work on touch devices, too!
+
+## Node types (TS only)
+
+We extended the generic `Node` type so that you can now specify the `type` by passing a second param to `Node`.
+
+```ts
+type MyCustomNode = Node<MyCustomNodeData, 'custom-node-type'>;
+```
+
+This allows you to create more specific node types that are aware of their `data` structure and `type`.
+
+# <Emoji content="👉" /> Node Resizer 2.0 <Emoji content="👈" />
+
+We also released a new major version of the [`@reactflow/node-resizer` package](https://reactflow.dev/api-reference/components/node-resizer). You can now pass a `shouldResize` handler that allows you to cancel a resize event. In addition we added a `direction` attribute to the resize params for `onResize` and `shouldResize`.
+
+## That's it!
+
+If you have any questions or feedback, you can contact me on [Twitter](https://twitter.com/moklick) or join our [Discord](https://discord.com/invite/RVmnytFmGW). React Flow is an independent company financed by its users. If you want to support us you can [sponsor us](https://github.com/sponsors/xyflow) on Github or subscribe to one of our [Pro plans](https://pro.reactflow.dev/).

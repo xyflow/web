@@ -1,0 +1,34 @@
+---
+title: Reconnect Edge
+description: Click-drag to move an existing edge from one handle to another
+---
+
+import { RemoteCodeViewer } from 'xy-shared/server';
+
+An edge is reconnectable by dragging it to another handle if you are using the
+[`onReconnect` handler prop](/api-reference/react-flow#edges). The handler gets
+called after the edge gets dropped to a new handle. You can use the
+[`reconnectEdge`](/api-reference/utils/reconnect-edge) helper function to update your
+edges state accordingly.
+
+<RemoteCodeViewer route="examples/edges/reconnect-edge" framework="react" />
+
+A couple of properties interact with one another to determine whether an edge is
+updatable or not:
+
+- By default the [`edgesReconnectable`](/api-reference/react-flow#edgesReconnectable) is
+  set to `true`.
+
+- For edges to actually be draggable, though, it is also necessary to define a
+  [`onReconnect`](/api-reference/react-flow#onReconnect) handler.
+
+- Individual edges can refine or override the [`edgesReconnectable`](/api-reference/react-flow#edgesReconnectable)
+  prop by setting their [`updatable`](/api-reference/types/edge#updatable) property.
+
+  - `true` means the edge is updatable even if [`edgesReconnectable`](/api-reference/react-flow#edgesReconnectable)
+
+  - `"source"` or `"target"` means the edge is updatable only from the source or
+    target handle regardless of the [`edgesReconnectable`](/api-reference/react-flow#edgesReconnectable) prop.
+
+  - `false` means the edge is not updatable even if [`edgesReconnectable`](/api-reference/react-flow#edgesReconnectable)
+    is set to `true`.

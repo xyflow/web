@@ -1,0 +1,26 @@
+---
+description: You can customize the built-in edge markers with the edgeMarker prop.
+---
+
+import { PropsTable } from '@/components/props-table';
+import { edgeMarkerFields } from '@/references/types/EdgeMarker.ts';
+
+# EdgeMarker
+
+You can customize the built-in edge markers with the `edgeMarker` [Edge](/api-reference/types/edge) prop.
+
+```ts
+export type EdgeMarker = {
+  type: MarkerType;
+  color?: string;
+  width?: number;
+  height?: number;
+  markerUnits?: string;
+  orient?: string;
+  strokeWidth?: number;
+};
+```
+
+## Fields
+
+<PropsTable {...edgeMarkerFields} />

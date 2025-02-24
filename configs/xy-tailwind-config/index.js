@@ -2,11 +2,11 @@
 export default {
   content: [
     './src/**/*.{js,ts,jsx,tsx,mdx}',
-    '../../packages/xy-ui/components/**/*.{js,ts,jsx,tsx,mdx}',
-    '../../packages/xy-shared/widgets/**/*.{js,ts,jsx,tsx,mdx}',
-    '../../packages/xy-shared/layouts/**/*.{js,ts,jsx,tsx,mdx}',
-    '../../packages/xy-shared/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './theme.config.{js,ts,jsx,tsx}',
+    '../../packages/xy-ui/components/**/*.{js,ts,jsx,tsx}',
+    '../../packages/xy-shared/components/**/*.{js,ts,jsx,tsx}',
+    '../../packages/xy-shared/layouts/**/*.{js,ts,jsx,tsx}',
+    '../../packages/xy-shared/server/**/*.{js,ts,jsx,tsx}',
+    '../../packages/xy-shared/widgets/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     container: {
