@@ -1,5 +1,5 @@
 import { Background, ReactFlow } from "@xyflow/react";
-import { ZoomSlider } from "@/registry/components/zoom-slider";
+import { ZoomSelect } from "@/registry/components/zoom-select/";
 
 const defaultNodes = [
   {
@@ -9,12 +9,12 @@ const defaultNodes = [
   },
 ];
 
-export default function ZoomSliderDemo() {
+export default function App() {
   return (
     <div className="h-full w-full">
       <ReactFlow defaultNodes={defaultNodes} fitView>
         <Background />
-        <ZoomSlider />
+        <ZoomSelect position="top-left" />
       </ReactFlow>
     </div>
   );

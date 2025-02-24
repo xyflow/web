@@ -58,7 +58,8 @@ function toCamelCase(str) {
 
   // Replace template strings
   replaceTemplateStrings(path.join(componentDir, "index.tsx"));
-  replaceTemplateStrings(path.join(componentDir, "demo.tsx"));
+  replaceTemplateStrings(path.join(componentDir, "component-example.tsx"));
+  replaceTemplateStrings(path.join(componentDir, "app-example.tsx"));
   replaceTemplateStrings(path.join(componentDir, "registry.json"));
 
   replaceTemplateStrings(path.join(pageDir, "page.tsx"));

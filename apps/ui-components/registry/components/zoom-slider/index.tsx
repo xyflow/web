@@ -1,6 +1,4 @@
-"use client";
-
-import * as React from "react";
+import React, { forwardRef } from "react";
 import { Maximize, Minus, Plus } from "lucide-react";
 
 import {
@@ -15,7 +13,7 @@ import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-const ZoomSlider = React.forwardRef<
+export const ZoomSlider = forwardRef<
   HTMLDivElement,
   Omit<PanelProps, "children">
 >(({ className, ...props }) => {
@@ -79,5 +77,3 @@ const ZoomSlider = React.forwardRef<
 });
 
 ZoomSlider.displayName = "ZoomSlider";
-
-export { ZoomSlider };

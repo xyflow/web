@@ -1,52 +1,100 @@
-import { Node, NodeProps, Position } from "@xyflow/react";
-
-import { TableBody, TableCell, TableRow } from "@/components/ui/table";
-
+import React, { ReactNode } from "react";
 import { BaseNode } from "@/registry/components/base-node";
-import { LabeledHandle } from "@/registry/components/labeled-handle";
+import { TableBody, TableRow, TableCell } from "@/components/ui/table";
 
-type DatabaseSchemaNode = Node<{
-  label: string;
-  schema: { title: string; type: string }[];
-}>;
+/* DATABASE SCHEMA NODE HEADER ------------------------------------------------ */
+/**
+ * A container for the database schema node header.
+ */
+export type DatabaseSchemaNodeHeaderProps = {
+  children?: ReactNode;
+};
 
-export function DatabaseSchemaNode({
-  data,
-  selected,
-}: NodeProps<DatabaseSchemaNode>) {
+export const DatabaseSchemaNodeHeader = ({
+  children,
+}: DatabaseSchemaNodeHeaderProps) => {
   return (
-    <BaseNode className="p-0" selected={selected}>
-      <h2 className="rounded-tl-md rounded-tr-md bg-secondary p-2 text-center text-sm text-muted-foreground">
-        {data.label}
-      </h2>
-      {/* shadcn Table cannot be used because of hardcoded overflow-auto */}
-      <table className="border-spacing-10 overflow-visible">
-        <TableBody>
-          {data.schema.map((entry) => (
-            <TableRow key={entry.title} className="relative text-xs">
-              <TableCell className="pl-0 pr-6 font-light">
-                <LabeledHandle
-                  id={entry.title}
-                  title={entry.title}
-                  type="target"
-                  position={Position.Left}
-                />
-              </TableCell>
-              <TableCell className="pr-0 text-right font-thin">
-                <LabeledHandle
-                  id={entry.title}
-                  title={entry.type}
-                  type="source"
-                  position={Position.Right}
-                  className="p-0"
-                  handleClassName="p-0"
-                  labelClassName="p-0"
-                />
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </table>
+    <h2 className="rounded-tl-md rounded-tr-md bg-secondary p-2 text-center text-sm text-muted-foreground">
+      {children}
+    </h2>
+  );
+};
+
+/* DATABASE SCHEMA NODE BODY -------------------------------------------------- */
+/**
+ * A container for the database schema node body that wraps the table.
+ */
+export type DatabaseSchemaNodeBodyProps = {
+  children?: ReactNode;
+};
+
+export const DatabaseSchemaNodeBody = ({
+  children,
+}: DatabaseSchemaNodeBodyProps) => {
+  return (
+    <table className="border-spacing-10 overflow-visible">
+      <TableBody>{children}</TableBody>
+    </table>
+  );
+};
+
+/* DATABASE SCHEMA TABLE ROW -------------------------------------------------- */
+/**
+ * A wrapper for individual table rows in the database schema node.
+ */
+
+export type DatabaseSchemaTableRowProps = {
+  children: ReactNode;
+  className?: string;
+};
+
+export const DatabaseSchemaTableRow = ({
+  children,
+  className,
+}: DatabaseSchemaTableRowProps) => {
+  return (
+    <TableRow className={`relative text-xs ${className || ""}`}>
+      {children}
+    </TableRow>
+  );
+};
+
+/* DATABASE SCHEMA TABLE CELL ------------------------------------------------- */
+/**
+ * A simplified table cell for the database schema node.
+ * Renders static content without additional dynamic props.
+ */
+export type DatabaseSchemaTableCellProps = {
+  className?: string;
+  children?: ReactNode;
+};
+
+export const DatabaseSchemaTableCell = ({
+  className,
+  children,
+}: DatabaseSchemaTableCellProps) => {
+  return <TableCell className={className}>{children}</TableCell>;
+};
+
+/* DATABASE SCHEMA NODE ------------------------------------------------------- */
+/**
+ * The main DatabaseSchemaNode component that wraps the header and body.
+ * It maps over the provided schema data to render rows and cells.
+ */
+export type DatabaseSchemaNodeProps = {
+  className?: string;
+  selected?: boolean;
+  children?: ReactNode;
+};
+
+export const DatabaseSchemaNode = ({
+  className,
+  selected,
+  children,
+}: DatabaseSchemaNodeProps) => {
+  return (
+    <BaseNode className={className} selected={selected}>
+      {children}
     </BaseNode>
   );
-}
+};

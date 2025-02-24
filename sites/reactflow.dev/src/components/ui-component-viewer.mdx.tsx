@@ -1,8 +1,3 @@
-/*
- * Nextra enhance its `toc` with imported `toc`s from `.md`/`.mdx` files,
- * so we can use `.mdx` prefix on `.tsx` file and export `toc` variable from here
- */
-
 import {
   Heading,
   Text,
@@ -13,13 +8,12 @@ import {
   Link,
   cn,
 } from '@xyflow/xy-ui';
+import { getPageMap } from 'nextra/page-map';
 import { Tabs as NextraTabs } from 'nextra/components';
 import { MDXRemote } from 'nextra/mdx-remote';
 import { fetchShadcnComponent } from '@/utils';
 import { FC } from 'react';
 import { useMDXComponents as getMDXComponents } from '@/mdx-components';
-
-export const toc = [{ depth: 2, value: 'Installation', id: 'installation' }];
 
 function kebabCaseToTitleCase(str: string) {
   const newString = str.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
@@ -40,14 +34,36 @@ const UiComponentViewer: FC<{ id: string }> = async ({ id }) => {
     url: `https://www.npmjs.com/package/${dep}`,
   }));
 
-  // @ts-expect-error -- fixme I think it never exist? can be removed?
+  const componentPages = (await getPageMap('/components')).reduce(
+    (acc, pageMapItem) => {
+      if ('children' in pageMapItem) {
+        for (const page of pageMapItem.children) {
+          if ('name' in page && 'route' in page) {
+            acc.set(page.name, page.route);
+          }
+        }
+      }
+
+      return acc;
+    },
+    new Map<string, string>(),
+  );
+
   const shadcnDependencies = (data.registryDependencies || []).map((dep) => {
-    if (dep.startsWith('https://ui.reactflow')) {
+    if (dep.startsWith('https://')) {
+      // handle internal dependencies from React Flow components
       const depName = dep.split('/').pop().split('.').shift();
       const label = kebabCaseToTitleCase(depName);
+
+      const url = componentPages.get(depName);
+
+      if (!url) {
+        throw new Error('No page found for component: ' + depName);
+      }
+
       return {
         label,
-        url: `/components/${depName}`,
+        url,
         highlight: true,
       };
     }
@@ -57,29 +73,15 @@ const UiComponentViewer: FC<{ id: string }> = async ({ id }) => {
       highlight: false,
     };
   });
+
   const components = { $Tabs: NextraTabs };
 
   return (
     <div className="mt-5">
-      <Tabs defaultValue="preview">
-        <TabsList>
-          <TabsTrigger value="preview">Preview</TabsTrigger>
-          <TabsTrigger value="code">Demo Code</TabsTrigger>
-        </TabsList>
-        <TabsContent
-          className="data-[state=inactive]:hidden min-h-[500px]"
-          forceMount
-          value="preview"
-        >
-          <iframe
-            className="w-full h-[500px] rounded-md border border-gray-200 "
-            src={`${process.env.NEXT_PUBLIC_UI_COMPONENTS_URL}/components/${data.name}`}
-          />
-        </TabsContent>
-        <TabsContent className="min-h-[500px]" value="code">
-          <MDXRemote compiledSource={data.demoMDX} />
-        </TabsContent>
-      </Tabs>
+      <iframe
+        className="w-full h-[500px] rounded-md border border-gray-200 "
+        src={`${process.env.NEXT_PUBLIC_UI_COMPONENTS_URL}/components/${data.name}`}
+      />
       <div className="flex gap-2 items-center my-5">
         <div>Dependencies:</div>
         {npmDependencies.map((dep) => (
@@ -140,8 +142,37 @@ const UiComponentViewer: FC<{ id: string }> = async ({ id }) => {
           </TabsContent>
         </Tabs>
       </div>
+      <div className="mt-20">
+        {/* @ts-expect-error -- false positive */}
+        <H2 id="usage">Usage</H2>
+        {data.demoMDX && (
+          <>
+            <Heading size="xs" className="mt-10">
+              1. Copy the component into your app
+            </Heading>
+
+            <MDXRemote compiledSource={data.demoMDX} />
+          </>
+        )}
+      </div>
+
+      <Heading size="xs" className="mt-10">
+        {data.demoMDX
+          ? '2. Connect the component with your React Flow application.'
+          : '1. Connect the component with your React Flow application.'}
+      </Heading>
+      <MDXRemote compiledSource={data.pageMDX} />
     </div>
   );
 };
+
+/*
+ * Nextra enhance its `toc` with imported `toc`s from `.md`/`.mdx` files,
+ * so we can use `.mdx` prefix on `.tsx` file and export `toc` variable from here
+ */
+export const toc = [
+  { depth: 2, value: 'Installation', id: 'installation' },
+  { depth: 2, value: 'Usage', id: 'usage' },
+];
 
 export default UiComponentViewer;

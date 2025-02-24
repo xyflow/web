@@ -70,6 +70,12 @@ const components = {
     },
   },
   misc: '',
+  templates: {
+    theme: {
+      toc: false,
+      layout: 'full',
+    },
+  },
   _: {
     type: 'separator',
   },

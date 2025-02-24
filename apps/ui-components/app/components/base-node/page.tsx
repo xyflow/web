@@ -1,10 +1,13 @@
-import DemoWrapper from "@/components/demo-wrapper";
-import Demo from "@/registry/components/base-node/demo";
+"use client";
 
-export default function DemoPage() {
+import BaseNodeApp from "@/registry/components/base-node/app-example";
+
+import DemoWrapper from "@/components/demo-wrapper";
+
+export default function Page() {
   return (
     <DemoWrapper>
-      <Demo />
+      <BaseNodeApp />
     </DemoWrapper>
   );
 }

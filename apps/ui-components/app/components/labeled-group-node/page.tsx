@@ -1,10 +1,13 @@
-import DemoWrapper from "@/components/demo-wrapper";
-import Demo from "@/registry/components/labeled-group-node/demo";
+"use client";
 
-export default function DemoPage() {
+import LabeledGroupNodeApp from "@/registry/components/labeled-group-node/app-example";
+
+import DemoWrapper from "@/components/demo-wrapper";
+
+export default function Page() {
   return (
     <DemoWrapper>
-      <Demo />
+      <LabeledGroupNodeApp />
     </DemoWrapper>
   );
 }

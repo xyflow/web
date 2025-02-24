@@ -1,10 +1,13 @@
-import DemoWrapper from "@/components/demo-wrapper";
-import Demo from "@/registry/components/annotation-node/demo";
+"use client";
 
-export default function DemoPage() {
+import AnnotationNodeApp from "@/registry/components/annotation-node/app-example";
+
+import DemoWrapper from "@/components/demo-wrapper";
+
+export default function Page() {
   return (
     <DemoWrapper>
-      <Demo />
+      <AnnotationNodeApp />
     </DemoWrapper>
   );
 }
