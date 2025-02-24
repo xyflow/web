@@ -7,7 +7,7 @@ import { evaluate } from 'nextra/evaluate';
 
 import ProExampleViewer from '@/components/pro-example-viewer';
 import { RemoteCodeViewer } from 'xy-shared/server/remote-code-viewer';
-import { useMDXComponents as getMDXComponents } from '../../../../mdx-components';
+import { useMDXComponents as getMDXComponents } from '@/mdx-components';
 import { mdxPathOverrides } from './config';
 
 const examplesPath = resolve(

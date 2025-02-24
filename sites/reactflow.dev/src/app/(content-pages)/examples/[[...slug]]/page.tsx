@@ -45,6 +45,7 @@ export default async function Page(props: PageProps) {
   if (route === '') {
     return (
       <Wrapper toc={[]} metadata={configMetadata.index}>
+        {/* @ts-expect-error -- false positive */}
         <H1>Examples</H1>
         Browse our examples for practical copy-paste solutions to common use
         cases with React Flow. Here you can find our MIT Licensed examples,
@@ -66,6 +67,7 @@ export default async function Page(props: PageProps) {
 
   return (
     <Wrapper toc={toc} metadata={metadata}>
+      {/* @ts-expect-error -- false positive */}
       <H1>{metadata.title}</H1>
       <MDXContent />
     </Wrapper>
