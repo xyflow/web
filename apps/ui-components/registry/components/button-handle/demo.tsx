@@ -1,10 +1,10 @@
-import { ButtonHandle } from "@/registry/components/button-handle";
+import { Position } from "@xyflow/react";
+import { MousePointerClick } from "lucide-react";
 
+import { ButtonHandle } from "@/registry/components/button-handle";
 import { BaseNode } from "@/registry/components/base-node";
 
-import { Position } from "@xyflow/react";
 import { Button } from "@/components/ui/button";
-import { MousePointerClick } from "lucide-react";
 
 const onClick = () => {
   window.alert(`Handle button has been clicked!`);

@@ -22,7 +22,9 @@ export const ButtonHandle = ({
   return (
     <BaseHandle position={position} id={props.id} {...props}>
       {showButton && (
-        <div className={`absolute flex items-center ${wrapperClassName}`}>
+        <div
+          className={`absolute flex items-center ${wrapperClassName} pointer-events-none`}
+        >
           <div
             className={`bg-gray-300 ${vertical ? "h-10 w-[1px]" : "h-[1px] w-10"}`}
           />
