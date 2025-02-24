@@ -1,0 +1,45 @@
+---
+title: The BaseEdge component
+sidebarTitle: '<BaseEdge />'
+description:
+  'The BaseEdge component gets used internally for all the edges. It can be used
+  inside a custom edge and handles the invisible helper edge and the edge label
+  for you.'
+---
+
+import { PropsTable } from '@/components/props-table';
+import { baseEdgeProps } from '@/references/components/BaseEdge.ts';
+
+# &lt;BaseEdge />
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/components/BaseEdge/BaseEdge.svelte)
+
+The `<BaseEdge />` component gets used internally for all the edges. It can be
+used inside a custom edge and handles the invisible helper edge and the edge label
+for you.
+
+```svelte filename="CustomEdge.svelte"
+<script lang="ts">
+  import { BaseEdge, getStraightPath } from '@xyflow/svelte';
+
+  const [edgePath] = getStraightPath({
+    sourceX,
+    sourceY,
+    targetX,
+    targetY,
+  });
+</script>
+
+<BaseEdge path={edgePath} {...$$props} />
+```
+
+## Props
+
+<PropsTable {...baseEdgeProps} />
+
+## Notes
+
+- If you want to use an edge marker with the `<BaseEdge />` component, you can
+  pass the `markerStart` or `markerEnd` props passed to your custom edge through
+  to the `<BaseEdge />` component. You can see all the props passed to a custom
+  edge by looking at the [`EdgeProps`](/api-reference/types/edge-props) type.

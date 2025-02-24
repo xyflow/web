@@ -1,0 +1,63 @@
+---
+description: This guide will show you how to add basic interactivity to your flow.
+---
+
+import { Callout } from 'nextra/components';
+import { RemoteCodeViewer } from 'xy-shared/server';
+
+# Adding Interactivity
+
+Let's make it so we can select, drag, and remove nodes and edges.
+
+<Callout type="info">
+  In this Getting Started tutorial, we are going to use a ["controlled
+  component"](https://reactjs.org/docs/forms.html#controlled-components), which
+  is typically the best and most flexible way to use React Flow in your own
+  applications. You can also use React Flow in an [uncontrolled
+  way](/docs/guides/uncontrolled-flow/).
+</Callout>
+
+## Handle Change Events
+
+First let's import a few things. To manage the changes in React Flow, we'll be using `useState` and the two helper function `applyEdgeChanges` and `applyNodeChanges` from React Flow.
+
+```js
+import { useState, useCallback } from 'react';
+import { ReactFlow, applyEdgeChanges, applyNodeChanges } from '@xyflow/react';
+```
+
+We're going to set up states for both the nodes and edges:
+
+```js
+const [nodes, setNodes] = useState(initialNodes);
+const [edges, setEdges] = useState(initialEdges);
+```
+
+Directly beneath that, we'll add these two functions:
+
+```js
+const onNodesChange = useCallback(
+  (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
+  [],
+);
+const onEdgesChange = useCallback(
+  (changes) => setEdges((eds) => applyEdgeChanges(changes, eds)),
+  [],
+);
+```
+
+When you drag or select a node, the `onNodesChange` handler gets called. With help of the `applyNodeChanges` function you can then apply those changes to your current node state. Putting everything together, it should look like this:
+
+<RemoteCodeViewer route="learn/make-it-interactive-1" framework="react" />
+
+Now if you run your application, you'll be able to click and drag the components, and the UI will update based on those movements.
+
+## Handle Connections
+
+One last piece is missing: connecting nodes manually. For this we need to implement an `onConnect` handler and pass it to the `<ReactFlow />` component as well:
+
+<RemoteCodeViewer route="learn/make-it-interactive-2" framework="react" />
+
+Try to connect the two nodes by dragging from on handle to another one. That's it. You've built a fully interactive flow.
+
+That's it for now :) You made it! If you want to move on, we recommend to check out the ["Custom Nodes" guide](/learn/customization/custom-nodes).
