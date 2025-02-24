@@ -1,0 +1,43 @@
+---
+title: Animating Edges
+description: Create edge animations that go beyond the built-in animated edge.
+preview_path: react/examples/edges/animating-edges-svg/preview.jpg
+---
+
+React Flow provides a simple built-in animation for the default edge type, but
+it is possible to create more advanced animations by using custom edges. Below
+are a collection of examples showing different ways an edge path might be used
+in
+
+## Animating SVG elements
+
+It is possible to animate an SVG element along a path using the `<animateMotion />`
+element. This example creates a custom edge that animates a circle along the edge
+path.
+
+<RemoteCodeViewer
+  route="examples/edges/animating-edges-svg"
+  framework="react"
+/>
+
+## Animating other nodes
+
+If you want to animate more than SVG along an edge, you can do that with the
+Web Animations API. This example demonstrates how to animate another node in the
+flow along an edge path by using the `offsetPath` property and animating the
+`offsetDistance` property.
+
+<RemoteCodeViewer
+  route="examples/edges/animating-edges-node"
+  framework="react"
+/>
+
+There are some important details in this example to take note of:
+
+- The animated node has its [`draggable`](/api-reference/types/node#draggable)
+  property set to `false` while the animation is running. This prevents a user
+  moving the node around and breaking the animation path.
+
+- The animation path and the animation itself are set up in separate `useEffect`
+  hooks. This lets the animation continue playing smoothly even if the edge path
+  is recalculated (for example when the source or target nodes are dragged.)

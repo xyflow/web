@@ -5,23 +5,29 @@ import { getPageMap } from 'nextra/page-map';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 import { Search, SidebarTitle } from 'xy-shared';
 import { Button, defaultFooterCategories } from '@xyflow/xy-ui';
+
 import { NextraLayout } from '@/components/nextra-layout';
+import { pageMap as examplesPageMap } from './examples/[[...slug]]/page';
 
 const Layout: FC<{ children: ReactNode }> = async ({ children }) => {
   const { Projects: _, ...remainingCategories } = defaultFooterCategories;
-  const pageMap = await getPageMap();
+  const pageMap = [...(await getPageMap()), examplesPageMap];
 
   // Add badges
   const apiReference = pageMap.find(
     (item): item is Folder =>
       'children' in item && item.name === 'api-reference',
   );
-  const examples = pageMap.find(
+
+  const generatedExamples = pageMap.find(
     (item): item is Folder => 'children' in item && item.name === 'examples',
   );
-  const folders = [...apiReference.children, ...examples.children].filter(
-    (item): item is Folder<MdxFile> => 'children' in item,
-  );
+
+  const folders = [
+    ...apiReference.children,
+    // @TODO: this thing has no frontMatter and therefore no badges
+    ...generatedExamples.children,
+  ].filter((item): item is Folder<MdxFile> => 'children' in item);
 
   for (const folder of folders) {
     folder.children = folder.children.map(

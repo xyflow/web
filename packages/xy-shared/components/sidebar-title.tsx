@@ -12,11 +12,11 @@ function daysFromNow(dateString: string) {
 
 export const SidebarTitle: FC<{
   title: string;
-  frontMatter: Record<string, any>;
+  frontMatter?: Record<string, any>;
 }> = ({ title, frontMatter }) => {
-  const isProExample = frontMatter.is_pro_example;
-  const isFree = frontMatter.is_free;
-  const createdAt = frontMatter.created_at;
+  const isProExample = frontMatter?.is_pro_example;
+  const isFree = frontMatter?.is_free;
+  const createdAt = frontMatter?.created_at;
   const isNew = createdAt && daysFromNow(createdAt) < NUM_DAYS_NEW;
 
   const className = cn(

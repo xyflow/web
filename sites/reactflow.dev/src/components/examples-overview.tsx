@@ -11,13 +11,12 @@ import {
   Link,
 } from '@xyflow/xy-ui';
 import { ProjectPreview } from 'xy-shared';
-
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
-import { getPageMap } from 'nextra/page-map';
 import { Folder } from 'nextra';
 
+import { generatedExamplesPage as pageMap } from '@/app/(content-pages)/examples/[[...slug]]/page';
+
 export const ExamplesOverview: FC = async () => {
-  const pageMap = await getPageMap('/examples');
   return (
     <>
       <Section className="!px-0">
@@ -60,14 +59,15 @@ export const ExamplesOverview: FC = async () => {
         </Link>
       </Section>
 
-      {pageMap.map((_category) => {
+      {/* @ts-expect-error -- false positive */}
+      {pageMap.children.map((_category) => {
         const hasChildren = 'children' in _category;
         if (!hasChildren) return;
-        const category = _category as Folder & { title };
+        const category = _category as Folder & { name };
         return (
-          <Fragment key={category.title}>
+          <Fragment key={category.name}>
             <Heading className="mt-20" size="sm">
-              {category.title}
+              {category.name}
             </Heading>
             <ContentGrid className="lg:grid-cols-3 border-none gap-4 lg:gap-8">
               {category.children.map(
@@ -101,7 +101,7 @@ export const ExamplesOverview: FC = async () => {
                         descriptionVariant="light"
                         linkLabel="See example"
                         linkClassName="text-gray-900 font-medium text-sm group-hover:text-primary"
-                        kicker={category.title.toUpperCase()}
+                        kicker={category.name.toUpperCase()}
                         kickerSize="xs"
                         imageWrapperClassName="p-0 shadow-md border-none"
                       />
