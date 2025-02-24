@@ -18,13 +18,13 @@ const filePaths = generateFilePaths(meta);
 // the sidebar items.
 const { mdxPages, pageMap: _pageMap } = convertToPageMap({
   filePaths,
-  basePath: 'generated-examples',
+  basePath: 'examples',
 });
 
-export const [generatedExamplesPage] = _pageMap;
+export const generatedExamplesPage = _pageMap;
 export const generatedExampleMeta = meta;
 const examplesPageMap = mergeMetaWithPageMap(
-  generatedExamplesPage as Folder<PageMapItem>,
+  generatedExamplesPage[0] as Folder<PageMapItem>,
   meta,
 );
 

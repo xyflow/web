@@ -7,7 +7,7 @@ import { Search, SidebarTitle } from 'xy-shared';
 import { Button, defaultFooterCategories } from '@xyflow/xy-ui';
 
 import { NextraLayout } from '@/components/nextra-layout';
-import { pageMap as examplesPageMap } from './generated-examples/[[...slug]]/page';
+import { pageMap as examplesPageMap } from './examples/[[...slug]]/page';
 
 const Layout: FC<{ children: ReactNode }> = async ({ children }) => {
   const { Projects: _, ...remainingCategories } = defaultFooterCategories;
@@ -18,18 +18,13 @@ const Layout: FC<{ children: ReactNode }> = async ({ children }) => {
     (item): item is Folder =>
       'children' in item && item.name === 'api-reference',
   );
-  const examples = pageMap.find(
-    (item): item is Folder => 'children' in item && item.name === 'examples',
-  );
+
   const generatedExamples = pageMap.find(
-    (item): item is Folder =>
-      'children' in item && item.name === 'generated-examples',
+    (item): item is Folder => 'children' in item && item.name === 'examples',
   );
 
   const folders = [
     ...apiReference.children,
-    ...examples.children,
-
     // @TODO: this thing has no frontMatter and therefore no badges
     ...generatedExamples.children,
   ].filter((item): item is Folder<MdxFile> => 'children' in item);

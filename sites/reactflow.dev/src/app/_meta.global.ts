@@ -78,89 +78,6 @@ const components = {
   },
 };
 
-const examples = {
-  index: {
-    theme: {
-      breadcrumb: false,
-    },
-  },
-  overview: '',
-  nodes: {
-    items: {
-      'custom-node': '',
-      'update-node': '',
-      stress: '',
-      hidden: '',
-      'drag-handle': '',
-      'easy-connect': '',
-      'add-node-on-edge-drop': '',
-      'proximity-connect': '',
-      'node-resizer': '',
-      'node-toolbar': '',
-      'rotatable-node': '',
-      'dynamic-grouping': '',
-      intersections: '',
-      shapes: '',
-    },
-  },
-  edges: {
-    items: {
-      'custom-edges': '',
-      'animating-edges': '',
-      'edge-types': '',
-      'editable-edge': '',
-      'reconnect-edge': '',
-      'custom-connectionline': '',
-      'multi-connection-line': '',
-      markers: '',
-      'delete-edge-on-drop': '',
-      'floating-edges': '',
-      'simple-floating-edges': '',
-    },
-  },
-  layout: {
-    items: {
-      'sub-flows': '',
-      horizontal: '',
-      dagre: '',
-      'entitree-flex': '',
-      elkjs: '',
-      'elkjs-multiple-handles': '',
-      'auto-layout': '',
-      'force-layout': '',
-    },
-  },
-  interaction: {
-    items: {
-      'interaction-props': '',
-      'drag-and-drop': '',
-      'computing-flows': '',
-      validation: '',
-      'connection-events': '',
-      'prevent-cycles': '',
-      'undo-redo': '',
-      'copy-paste': '',
-      'helper-lines': '',
-      'touch-device': '',
-      'save-and-restore': '',
-      'zoom-transitions': '',
-      collaborative: '',
-      'contextual-zoom': '',
-    },
-  },
-  styling: {
-    items: {
-      'styled-components': '',
-      tailwind: '',
-      'turbo-flow': '',
-    },
-  },
-  misc: {
-    items: {
-      'static-server-side-generation': '',
-    },
-  },
-};
 const metaRecord = {
   '*': {
     type: 'page',
@@ -196,17 +113,12 @@ const metaRecord = {
       'react-flow-provider': '',
     },
   },
-  examples: {
-    items: examples,
-    theme: {
-      toc: false,
-      layout: 'full',
-    },
-  },
-  // generatedExamples: {
+  // @TODO: why is this nor working?
+  // examples: {
   //   items: generatedExampleMeta,
   //   theme: {
   //     toc: false,
+  //     layout: 'full',
   //   },
   // },
   components: { items: components },
