@@ -119,7 +119,10 @@ function LogoLabel({
   label = null,
 }: LogoLabelProps) {
   return (
-    <Link href="/" className="flex space-x-2 items-center">
+    <Link
+      href="/"
+      className="flex space-x-2 items-center x:focus-visible:nextra-focus"
+    >
       <Logo className={cn('h-7 w-7 md:h-8 md:w-8 shrink-0', logoClassName)} />
       <Text
         className={cn(

@@ -1,0 +1,101 @@
+---
+description: The internal data structure of the Svelte Flow store.
+---
+
+import { Callout } from 'nextra/components';
+import { PropsTable } from '@/components/props-table';
+import { svelteFlowStoreFields } from '@/references/types/SvelteFlowStore.ts';
+
+# SvelteFlowStore
+
+The `SvelteFlowStore` type is the structure of the internal Svelte Flow Store, that you can access via the [useStore](/api-reference/hooks/use-store) hook.
+
+<Callout type="info">
+  The internal Svelte Flow store should only be used for advanced use cases.
+  It's not recommended to be used directly.
+</Callout>
+
+```ts
+export type SvelteFlowStore = {
+  flowId: Writable<string | null>;
+  nodes: NodesStore;
+  nodeLookup: Readable<NodeLookup>;
+  edgeLookup: Readable<EdgeLookup>;
+  visibleNodes: Readable<Node[]>;
+  edges: EdgesStore;
+  visibleEdges: Readable<EdgeLayouted[]>;
+  connectionLookup: Readable<ConnectionLookup>;
+  height: Writable<number>;
+  width: Writable<number>;
+  minZoom: Writable<number>;
+  maxZoom: Writable<number>;
+  nodeOrigin: Writable<NodeOrigin>;
+  nodeDragThreshold: Writable<number>;
+  nodeExtent: Writable<CoordinateExtent>;
+  translateExtent: Writable<CoordinateExtent>;
+  autoPanOnNodeDrag: Writable<boolean>;
+  autoPanOnConnect: Writable<boolean>;
+  fitViewOnInit: Writable<boolean>;
+  fitViewOnInitDone: Writable<boolean>;
+  fitViewOptions: Writable<FitViewOptions>;
+  panZoom: Writable<PanZoomInstance | null>;
+  snapGrid: Writable<SnapGrid | null>;
+  dragging: Writable<boolean>;
+  selectionRect: Writable<SelectionRect | null>;
+  selectionKeyPressed: Writable<boolean>;
+  multiselectionKeyPressed: Writable<boolean>;
+  deleteKeyPressed: Writable<boolean>;
+  panActivationKeyPressed: Writable<boolean>;
+  zoomActivationKeyPressed: Writable<boolean>;
+  selectionRectMode: Writable<string | null>;
+  selectionMode: Writable<SelectionMode>;
+  nodeTypes: Writable<NodeTypes>;
+  edgeTypes: Writable<EdgeTypes>;
+  viewport: Writable<Viewport>;
+  connectionMode: Writable<ConnectionMode>;
+  domNode: Writable<HTMLDivElement | null>;
+  connection: Readable<ConnectionProps>;
+  connectionLineType: Writable<ConnectionLineType>;
+  connectionRadius: Writable<number>;
+  isValidConnection: Writable<IsValidConnection>;
+  nodesDraggable: Writable<boolean>;
+  nodesConnectable: Writable<boolean>;
+  elementsSelectable: Writable<boolean>;
+  selectNodesOnDrag: Writable<boolean>;
+  markers: Readable<MarkerProps[]>;
+  defaultMarkerColor: Writable<string>;
+  lib: Readable<string>;
+  onlyRenderVisibleElements: Writable<boolean>;
+  onerror: Writable<OnError>;
+  ondelete: Writable<OnDelete>;
+  onedgecreate: Writable<OnEdgeCreate>;
+  onconnect: Writable<OnConnect>;
+  onconnectstart: Writable<OnConnectStart>;
+  onconnectend: Writable<OnConnectEnd>;
+  onbeforedelete: Writable<OnBeforeDelete>;
+
+  setNodeTypes: (nodeTypes: NodeTypes) => void;
+  setEdgeTypes: (edgeTypes: EdgeTypes) => void;
+  addEdge: (edge: Edge | Connection) => void;
+  zoomIn: (options?: ViewportHelperFunctionOptions) => void;
+  zoomOut: (options?: ViewportHelperFunctionOptions) => void;
+  setMinZoom: (minZoom: number) => void;
+  setMaxZoom: (maxZoom: number) => void;
+  setTranslateExtent: (extent: CoordinateExtent) => void;
+  fitView: (options?: FitViewOptions) => boolean;
+  updateNodePositions: UpdateNodePositions;
+  updateNodeDimensions: (updates: Map<string, NodeDimensionUpdate>) => void;
+  unselectNodesAndEdges: (params?: { nodes?: Node[]; edges?: Edge[] }) => void;
+  addSelectedNodes: (ids: string[]) => void;
+  addSelectedEdges: (ids: string[]) => void;
+  handleNodeSelection: (id: string) => void;
+  panBy: (delta: XYPosition) => boolean;
+  updateConnection: UpdateConnection;
+  cancelConnection: () => void;
+  reset(): void;
+};
+```
+
+## Fields
+
+<PropsTable {...svelteFlowStoreFields} />
