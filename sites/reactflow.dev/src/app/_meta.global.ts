@@ -115,6 +115,7 @@ const examples = {
       'delete-edge-on-drop': '',
       'floating-edges': '',
       'simple-floating-edges': '',
+      'edge-intersection': '',
     },
   },
   layout: {
