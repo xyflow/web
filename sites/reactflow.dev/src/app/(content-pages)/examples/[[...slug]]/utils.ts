@@ -4,6 +4,7 @@ import { resolve } from 'path';
 import { compileMdx } from 'nextra/compile';
 import { Callout, Tabs } from 'nextra/components';
 import { evaluate } from 'nextra/evaluate';
+import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
 
 import ProExampleViewer from '@/components/pro-example-viewer';
 import { RemoteCodeViewer } from 'xy-shared/server/remote-code-viewer';
@@ -53,5 +54,10 @@ export async function evaluateRoute(
     'utf-8',
   );
   const rawJs = await compileMdx(readmeContent, { filePath });
-  return evaluate(rawJs, { ...components, RemoteCodeViewer, ProExampleViewer });
+  return evaluate(rawJs, {
+    ...components,
+    ArrowTopRightOnSquareIcon,
+    RemoteCodeViewer,
+    ProExampleViewer,
+  });
 }
