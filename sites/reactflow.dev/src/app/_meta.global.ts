@@ -77,7 +77,6 @@ const components = {
     href: 'https://github.com/xyflow/web/discussions/new?category=ui-component-requests',
   },
 };
-
 const metaRecord = {
   '*': {
     type: 'page',
