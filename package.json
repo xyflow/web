@@ -10,7 +10,7 @@
     "dev:ui-components": "turbo run dev --filter ui-components",
     "dev:xyflow.com": "turbo run dev --filter xyflow-website --filter example-apps",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "format": "prettier --ignore-path .gitignore --write \"**/*.{ts,tsx,md}\"",
     "clean": "pnpm -r --parallel exec rimraf dist .turbo node_modules"
   },
   "devDependencies": {
@@ -26,5 +26,10 @@
   "name": "docs",
   "dependencies": {
     "dotenv-cli": "^7.4.2"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "@xyflow/svelte": "patches/@xyflow__svelte.patch"
+    }
   }
 }

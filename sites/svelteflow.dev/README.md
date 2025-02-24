@@ -10,7 +10,7 @@ $ pnpm install
 
 ### Development
 
-This starts a dev server on http://localhost:3001
+This starts a dev server on http://localhost:3003
 
 ```
 $ pnpm start

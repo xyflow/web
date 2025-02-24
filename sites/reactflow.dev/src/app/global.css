@@ -1,0 +1,55 @@
+@layer l-base, l-nextra;
+
+/*
+ * We specify layers because it's a working way to make works
+ * Tailwind CSS 4 in Nextra 4 with Tailwind CSS 3 in this app
+ *
+ * Originally done in https://github.com/the-guild-org/docs/blob/bdfe4f564ee68f8b670828f425e32a3add973883/packages/components/style.css
+**/
+@import 'tailwindcss/base' layer(l-base);
+@import 'nextra-theme-docs/dist/style-prefixed.css' layer(l-nextra);
+@import 'tailwindcss/utilities';
+@import 'tailwindcss/components';
+@import '@xyflow/react/dist/style.css';
+@import 'xy-shared/styles/globals-nextra-4.css';
+
+@layer l-base {
+  :root {
+    --primary: 333 100% 50%;
+    --primary-foreground: 210 40% 98%;
+    --docsearch-primary-color: hsl(var(--primary));
+
+    --secondary-foreground: 333 100% 50%;
+    --accent: 333 100% 50%;
+    --shiki-color-background: red;
+  }
+}
+
+html body[data-scroll-locked] {
+  overflow: visible !important;
+  margin-right: 0 !important;
+}
+
+/* .nextra-nav-container nav .nextra-scrollbar > a[href='/components']:after {
+  content: 'beta';
+  position: absolute;
+  top: 17px;
+  font-weight: 700;
+  font-size: 0.6rem;
+  color: hsl(var(--primary));
+} */
+
+.nextra-banner-container {
+  @apply bg-[linear-gradient(1deg,#383838,#212121)];
+}
+
+.developer-survey-2023 [dir='ltr'] {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.developer-survey-2023 .x\:mx-auto {
+  flex-grow: 1;
+  width: 100%;
+}
