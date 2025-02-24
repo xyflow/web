@@ -59,14 +59,15 @@ export const ExamplesOverview: FC = async () => {
         </Link>
       </Section>
 
-      {pageMap.map((_category) => {
+      {/* @ts-expect-error -- false positive */}
+      {pageMap.children.map((_category) => {
         const hasChildren = 'children' in _category;
         if (!hasChildren) return;
-        const category = _category as Folder & { title };
+        const category = _category as Folder & { name };
         return (
-          <Fragment key={category.title}>
+          <Fragment key={category.name}>
             <Heading className="mt-20" size="sm">
-              {category.title}
+              {category.name}
             </Heading>
             <ContentGrid className="lg:grid-cols-3 border-none gap-4 lg:gap-8">
               {category.children.map(

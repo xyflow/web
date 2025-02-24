@@ -21,10 +21,10 @@ const { mdxPages, pageMap: _pageMap } = convertToPageMap({
   basePath: 'examples',
 });
 
-export const generatedExamplesPage = _pageMap;
+export const [generatedExamplesPage] = _pageMap;
 export const generatedExampleMeta = meta;
 const examplesPageMap = mergeMetaWithPageMap(
-  generatedExamplesPage[0] as Folder<PageMapItem>,
+  generatedExamplesPage as Folder<PageMapItem>,
   meta,
 );
 

@@ -2,7 +2,7 @@ import { readFile } from 'fs/promises';
 import { resolve } from 'path';
 
 import { compileMdx } from 'nextra/compile';
-import { Callout, Tabs } from 'nextra/components';
+import { Callout, Cards, Tabs } from 'nextra/components';
 import { evaluate } from 'nextra/evaluate';
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
 
@@ -36,6 +36,7 @@ export const {
 } = getMDXComponents({
   $Tabs: Tabs,
   Callout,
+  Cards,
 });
 
 export async function evaluateRoute(
