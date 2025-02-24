@@ -137,7 +137,7 @@ export const ProPlan: SubscriptionPlan = {
     features.teamMembers5,
     features.mitLicense,
     {
-      label: 'Email Support',
+      label: 'Up to 1 hour of individual support via email per month',
     },
     {
       label: 'Introduction call with one of the creators of React Flow',
@@ -174,7 +174,7 @@ export const EnterprisePlan: SubscriptionPlan = {
     features.teamMembers10,
     features.mitLicense,
     {
-      label: 'Custom Support',
+      label: '1 hour of individual support via voice, video or email per month',
     },
     {
       label: 'Introduction call with one of the creators of React Flow',

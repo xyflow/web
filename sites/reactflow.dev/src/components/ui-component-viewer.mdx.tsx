@@ -1,8 +1,3 @@
-/*
- * Nextra enhance its `toc` with imported `toc`s from `.md`/`.mdx` files,
- * so we can use `.mdx` prefix on `.tsx` file and export `toc` variable from here
- */
-
 import {
   Heading,
   Text,
@@ -19,8 +14,6 @@ import { MDXRemote } from 'nextra/mdx-remote';
 import { fetchShadcnComponent } from '@/utils';
 import { FC } from 'react';
 import { useMDXComponents as getMDXComponents } from '@/mdx-components';
-
-export const toc = [{ depth: 2, value: 'Installation', id: 'installation' }];
 
 function kebabCaseToTitleCase(str: string) {
   const newString = str.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
@@ -150,9 +143,8 @@ const UiComponentViewer: FC<{ id: string }> = async ({ id }) => {
         </Tabs>
       </div>
       <div className="mt-20">
-        <Heading className="mb-5" size="sm">
-          Usage
-        </Heading>
+        {/* @ts-expect-error -- false positive */}
+        <H2 id="usage">Usage</H2>
         {data.demoMDX && (
           <>
             <Heading size="xs" className="mt-10">
@@ -173,5 +165,14 @@ const UiComponentViewer: FC<{ id: string }> = async ({ id }) => {
     </div>
   );
 };
+
+/*
+ * Nextra enhance its `toc` with imported `toc`s from `.md`/`.mdx` files,
+ * so we can use `.mdx` prefix on `.tsx` file and export `toc` variable from here
+ */
+export const toc = [
+  { depth: 2, value: 'Installation', id: 'installation' },
+  { depth: 2, value: 'Usage', id: 'usage' },
+];
 
 export default UiComponentViewer;
