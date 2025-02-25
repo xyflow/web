@@ -19,9 +19,15 @@ const Layout: FC<{ children: ReactNode }> = async ({ children }) => {
   const examples = pageMap.find(
     (item): item is Folder => 'children' in item && item.name === 'examples',
   );
-  const folders = [...apiReference.children, ...examples.children].filter(
-    (item): item is Folder<MdxFile> => 'children' in item,
+  const components = pageMap.find(
+    (item): item is Folder => 'children' in item && item.name === 'components',
   );
+
+  const folders = [
+    ...apiReference.children,
+    ...examples.children,
+    ...components.children,
+  ].filter((item): item is Folder<MdxFile> => 'children' in item);
 
   for (const folder of folders) {
     folder.children = folder.children.map(

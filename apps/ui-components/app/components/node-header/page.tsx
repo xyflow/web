@@ -1,10 +1,13 @@
-import DemoWrapper from "@/components/demo-wrapper";
-import Demo from "@/registry/components/node-header/demo";
+"use client";
 
-export default function DemoPage() {
+import NodeHeaderApp from "@/registry/components/node-header/app-example";
+
+import DemoWrapper from "@/components/demo-wrapper";
+
+export default function Page() {
   return (
     <DemoWrapper>
-      <Demo />
+      <NodeHeaderApp />
     </DemoWrapper>
   );
 }

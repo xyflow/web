@@ -1,7 +1,9 @@
-"use client";
-
 import { Background, Edge, ReactFlow } from "@xyflow/react";
-import { DatabaseSchemaNode } from "@/registry/components/database-schema-node";
+import DatabaseSchemaDemo from "./component-example";
+
+const nodeTypes = {
+  databaseSchema: DatabaseSchemaDemo,
+};
 
 const defaultNodes = [
   {
@@ -68,11 +70,7 @@ const defaultEdges: Edge[] = [
   },
 ];
 
-const nodeTypes = {
-  databaseSchema: DatabaseSchemaNode,
-};
-
-export default function Demo() {
+export default function App() {
   return (
     <div className="h-full w-full">
       <ReactFlow

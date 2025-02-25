@@ -1,41 +1,45 @@
-"use client";
-
 import { Background, ReactFlow } from "@xyflow/react";
-import { ButtonEdge } from "@/registry/components/button-edge";
+
+import { AnimatedSvgEdge } from "@/registry/components/animated-svg-edge";
 
 const defaultNodes = [
   {
     id: "1",
     position: { x: 200, y: 200 },
-    data: { label: "Node" },
+    data: { label: "A" },
   },
   {
     id: "2",
-    position: { x: 500, y: 500 },
-    data: { label: "Node" },
+    position: { x: 400, y: 400 },
+    data: { label: "B" },
   },
 ];
 
 const defaultEdges = [
   {
-    id: "e1-2",
+    id: "1->2",
     source: "1",
     target: "2",
-    type: "buttonEdge",
-  },
+    type: "animatedSvgEdge",
+    data: {
+      duration: 2,
+      shape: "package",
+      path: "smoothstep",
+    },
+  } satisfies AnimatedSvgEdge,
 ];
 
 const edgeTypes = {
-  buttonEdge: ButtonEdge,
+  animatedSvgEdge: AnimatedSvgEdge,
 };
 
-export default function Demo() {
+export default function App() {
   return (
     <div className="h-full w-full">
       <ReactFlow
         defaultNodes={defaultNodes}
-        defaultEdges={defaultEdges}
         edgeTypes={edgeTypes}
+        defaultEdges={defaultEdges}
         fitView
       >
         <Background />

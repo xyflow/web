@@ -43,6 +43,12 @@ const components = {
       layout: 'full',
     },
   },
+  templates: {
+    theme: {
+      toc: false,
+      layout: 'full',
+    },
+  },
   nodes: {
     items: {
       'tooltip-node': '',

@@ -1,10 +1,13 @@
-import DemoWrapper from "@/components/demo-wrapper";
-import Demo from "@/registry/components/devtools/demo";
+"use client";
 
-export default function DemoPage() {
+import DevtoolsApp from "@/registry/components/devtools/app-example";
+
+import DemoWrapper from "@/components/demo-wrapper";
+
+export default function Page() {
   return (
     <DemoWrapper>
-      <Demo />
+      <DevtoolsApp />
     </DemoWrapper>
   );
 }
