@@ -43,6 +43,12 @@ const components = {
       layout: 'full',
     },
   },
+  templates: {
+    theme: {
+      toc: false,
+      layout: 'full',
+    },
+  },
   nodes: {
     items: {
       'tooltip-node': '',
@@ -70,12 +76,6 @@ const components = {
     },
   },
   misc: '',
-  templates: {
-    theme: {
-      toc: false,
-      layout: 'full',
-    },
-  },
   _: {
     type: 'separator',
   },
