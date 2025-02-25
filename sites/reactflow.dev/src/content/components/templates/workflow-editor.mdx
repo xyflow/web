@@ -8,15 +8,22 @@ import ProExampleViewer from '@/components/pro-example-viewer';
 
 # Workflow Editor
 
-This example shows how you can automatically arrange nodes after adding items
-from a sidebar. This a common UI pattern for workflow editors and lets you
-create a flow quickly. The layout is calculated every time the graph changes.
+The Workflow Editor template is a Next.js-based application designed to help you quickly create, manage, and visualize workflows. Built with [React Flow Components](https://reactflow.dev/components) and styled using [Tailwind CSS](https://tailwindcss.com/) and [shadcn/ui](https://ui.shadcn.com/), this project provides a highly customizable foundation for building and extending workflow editors.
 
-<ProExampleViewer variant="dark" slug="auto-layout" />
+<ProExampleViewer slug="workflow-editor" type="template" />
 
-### About this Pro Example
+## Tech Stack
 
-- Once subscribed, you'll get access to **two different versions** of this example: One using [d3-hierarchy](https://github.com/d3/d3-hierarchy) and the
-  other one using [dagre.js](https://github.com/dagrejs/dagre) as a layout
-  engine.
-- Dependencies: [reactflow](https://www.npmjs.com/package/reactflow), [d3-hierarchy](https://www.npmjs.com/package/d3-hierarchy) or [dagre](https://www.npmjs.com/package/dagre)
+- **React Flow Components**: The project uses [React Flow Components](https://reactflow.dev/components) to build nodes. These components are designed to help you quickly get up to speed on projects.
+
+- **shadcn CLI**: The project uses the [shadcn CLI](https://ui.shadcn.com/docs/cli) to manage UI components. This tool builds on top of [Tailwind CSS](https://tailwindcss.com/) and [shadcn/ui](https://ui.shadcn.com/) components, making it easy to add and customize UI elements.
+
+- **State Management with Zustand**: The application uses Zustand for state management, providing a simple and efficient way to manage the state of nodes, edges, and other workflow-related data.
+
+## Features
+
+- **Automatic Layouting**: Utilizes the [ELKjs](https://github.com/kieler/elkjs) layout engine to automatically arrange nodes and edges.
+- **Drag-and-Drop Sidebar**: Add and arrange nodes using a drag-and-drop mechanism.
+- **Customizable Components**: Uses React Flow Components and the shadcn library to create highly-customizable nodes and edges.
+- **Dark Mode**: Toggles between light and dark themes, managed through the Zustand store.
+- **Runner Functionality**: Executes and monitors nodes sequentially with a workflow runner.

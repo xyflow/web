@@ -1061,7 +1061,7 @@
   },
   {
     "source": "/examples/layout/workflow-builder",
-    "destination": "/examples/layout/dynamic-layout",
+    "destination": "/examples/layout/dynamic-layouting",
     "permanent": true
   }
 ]
