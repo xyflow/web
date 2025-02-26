@@ -102,7 +102,7 @@ export function ProjectPreview({
       <Text className="leading-snug my-4" variant={descriptionVariant}>
         {description}
       </Text>
-      <div className="flex gap-4">
+      <div className="flex gap-4 mt-auto">
         <Button asChild variant="link" className={cn('text-md', linkClassName)}>
           <LinkOrSpan className="flex items-center">
             {linkLabel} <ArrowRightCircleIcon className="ml-1 w-4 h-4" />

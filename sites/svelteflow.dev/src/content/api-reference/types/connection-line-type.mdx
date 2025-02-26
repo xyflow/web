@@ -1,0 +1,21 @@
+---
+description:
+  With the connectionLineType prop on your SvelteFlow component, you can
+  configure the type of the connection line. Svelte Flow comes with built-in support
+  for the following types; default (bezier), straight, step, smoothstep, and
+  simplebezier.
+---
+
+# ConnectionLineType
+
+With the `connectionLineType` prop on your [`<SvelteFlow />`](/api-reference/svelte-flow#connection-connectionLineType) component, you can configure the type of the connection line. Svelte Flow comes with built-in support for the following types: 'default' (bezier), 'straight', 'step', 'smoothstep' and 'simplebezier'.
+
+```ts
+export enum ConnectionLineType {
+  Bezier = 'default',
+  Straight = 'straight',
+  Step = 'step',
+  SmoothStep = 'smoothstep',
+  SimpleBezier = 'simplebezier',
+}
+```

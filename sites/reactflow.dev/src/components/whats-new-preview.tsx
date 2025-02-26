@@ -1,20 +1,13 @@
 import { Text, cn } from '@xyflow/xy-ui';
-import { AuthorList, type Author } from 'xy-shared';
-import TimeAgo from 'timeago-react';
+import { AuthorList, TimeAgo } from 'xy-shared';
 import Link from 'next/link';
 import { ArrowRightCircleIcon } from '@heroicons/react/20/solid';
+import { MdxFile } from 'nextra';
+import { WhatsNewItemFrontMatter } from 'xy-shared/server';
 
 export type WhatsNewPreviewProps = {
-  items: WhatsNewItemFrontmatter[];
+  items: MdxFile<WhatsNewItemFrontMatter>[];
   variant?: 'full' | 'compact' | 'mini';
-};
-
-export type WhatsNewItemFrontmatter = {
-  title: string;
-  description: string;
-  authors: Author[];
-  date: `${number}-${number}-${number}`;
-  route: string;
 };
 
 export default function WhatsNewPreview({
@@ -33,14 +26,19 @@ export default function WhatsNewPreview({
             'p-4 py-8',
           )}
         >
-          <WhatsNewItemPreview variant={variant} featured={i === 0} {...item} />
+          <WhatsNewItemPreview
+            variant={variant}
+            featured={i === 0}
+            item={item}
+          />
         </li>
       ))}
     </ol>
   );
 }
 
-type WhatsNewItemPreviewProps = WhatsNewItemFrontmatter & {
+type WhatsNewItemPreviewProps = {
+  item: MdxFile<WhatsNewItemFrontMatter>;
   featured?: boolean;
   variant: 'full' | 'compact' | 'mini';
 };
@@ -48,11 +46,10 @@ type WhatsNewItemPreviewProps = WhatsNewItemFrontmatter & {
 function WhatsNewItemPreview({
   variant,
   featured = false,
-  title,
-  description,
-  authors,
-  date,
-  route,
+  item: {
+    frontMatter: { title, description, authors, date },
+    route,
+  },
 }: WhatsNewItemPreviewProps) {
   return (
     <div className="space-y-4">

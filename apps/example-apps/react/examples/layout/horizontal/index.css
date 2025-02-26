@@ -1,6 +1,4 @@
-
 @import url('./xy-theme.css');
-
 
 html,
 body {
@@ -12,4 +10,8 @@ body {
 #app {
   width: 100vw;
   height: 100vh;
+}
+
+.react-flow__edge-textbg {
+  fill: #f7f9fb;
 }

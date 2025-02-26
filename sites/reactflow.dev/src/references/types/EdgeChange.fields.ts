@@ -14,7 +14,7 @@ export const edgeRemoveChangeFields: PropsTableProps = {
   ],
 };
 
-export const edgeResetChangeFields: PropsTableProps = {
+export const edgeReplaceChangeFields: PropsTableProps = {
   props: [
     { name: 'type', type: '"reset"' },
     { name: 'item', type: 'Edge<T>' },

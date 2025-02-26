@@ -1,3 +1,4 @@
+import React, { FC } from "react";
 import type { Edge, EdgeProps, Position } from "@xyflow/react";
 import {
   BaseEdge,
@@ -102,7 +103,7 @@ type AnimateMotionProps = {
   path: string;
 };
 
-type AnimatedSvg = React.FC<{ animateMotionProps: AnimateMotionProps }>;
+type AnimatedSvg = FC<{ animateMotionProps: AnimateMotionProps }>;
 
 const shapes = {
   circle: ({ animateMotionProps }) => (
