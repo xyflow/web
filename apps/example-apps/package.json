@@ -52,7 +52,7 @@
     "react-icons": "^5.4.0",
     "react-remark": "^2.1.0",
     "styled-components": "^6.1.13",
-    "svelte": "^4.2.19",
+    "svelte": "^5.20.4",
     "svelte-feather-icons": "^4.1.0",
     "tailwind-merge": "^2.5.4",
     "twind": "^0.16.19",
