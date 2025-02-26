@@ -1,36 +1,30 @@
-<svelte:options immutable />
-
 <script lang="ts">
-  import { getStraightPath, useInternalNode, type EdgeProps } from '@xyflow/svelte';
+  import {
+    BaseEdge,
+    getStraightPath,
+    useInternalNode,
+    type EdgeProps,
+  } from '@xyflow/svelte';
 
   import { getEdgeParams } from './utils';
 
-  type $$Props = EdgeProps;
+  let { id, source, target, markerEnd }: EdgeProps = $props();
 
-  export let source: EdgeProps['source'];
-  export let target: EdgeProps['target'];
-  export let markerEnd: EdgeProps['markerEnd'] = undefined;
-  export let style: EdgeProps['style'] = undefined;
-  export let id: EdgeProps['id'];
+  const sourceNode = useInternalNode(source);
+  const targetNode = useInternalNode(target);
 
-  $: sourceNode = useInternalNode(source);
-  $: targetNode = useInternalNode(target);
-
-  let edgePath: string | undefined;
-
-  $: {
-    if ($sourceNode && $targetNode) {
-      const edgeParams = getEdgeParams($sourceNode, $targetNode);
-      edgePath = getStraightPath({
+  let path: string | undefined = $derived.by(() => {
+    if (sourceNode.current && targetNode.current) {
+      const edgeParams = getEdgeParams(sourceNode.current, targetNode.current);
+      return getStraightPath({
         sourceX: edgeParams.sx,
         sourceY: edgeParams.sy,
         targetX: edgeParams.tx,
-        targetY: edgeParams.ty
+        targetY: edgeParams.ty,
       })[0];
-    } else {
-      edgePath = undefined;
     }
-  }
+    return undefined;
+  });
 </script>
 
-<path {id} marker-end={markerEnd} d={edgePath} {style} />
+<BaseEdge {id} {path} {markerEnd} />

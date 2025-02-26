@@ -10,7 +10,6 @@ import {
 
 import '@xyflow/react/dist/style.css';
 
-
 import ColorSelectorNode from './ColorSelectorNode';
 
 const initBgColor = '#c9f1dd';
@@ -91,24 +90,19 @@ const CustomNodeFlow = () => {
         id: 'e2a-3',
         source: '2',
         target: '3',
-        sourceHandle: 'a',
         animated: true,
       },
       {
         id: 'e2b-4',
         source: '2',
         target: '4',
-        sourceHandle: 'b',
         animated: true,
       },
     ]);
   }, []);
 
   const onConnect = useCallback(
-    (params) =>
-      setEdges((eds) =>
-        addEdge({ ...params, animated: true }, eds),
-      ),
+    (params) => setEdges((eds) => addEdge({ ...params, animated: true }, eds)),
     [],
   );
   return (

@@ -11,7 +11,7 @@ const CustomNode = () => {
         position={Position.Left}
         connectionCount={1}
       />
-      <div>Connection Limit 1</div>
+      <div>{'← Only one edge allowed'}</div>
     </div>
   );
 };

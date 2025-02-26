@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { writable } from 'svelte/store';
   import {
     SvelteFlow,
     Background,
@@ -8,21 +7,21 @@
     Panel,
     type Node,
     type Edge,
-    type ColorMode
+    type ColorMode,
   } from '@xyflow/svelte';
 
   import '@xyflow/svelte/dist/style.css';
 
   import { initialNodes, initialEdges } from './nodes-and-edges';
 
-  const nodes = writable<Node[]>(initialNodes);
-  const edges = writable<Edge[]>(initialEdges);
+  let nodes = $state.raw<Node[]>(initialNodes);
+  let edges = $state.raw<Edge[]>(initialEdges);
 
-  let colorMode: ColorMode = 'dark';
+  let colorMode: ColorMode = $state('system');
 </script>
 
 <div style="height:100vh;">
-  <SvelteFlow {nodes} {edges} {colorMode} fitView>
+  <SvelteFlow bind:nodes bind:edges {colorMode} fitView>
     <Background />
     <Controls />
     <MiniMap />

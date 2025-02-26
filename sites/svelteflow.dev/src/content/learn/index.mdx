@@ -52,7 +52,7 @@ npx degit xyflow/vite-svelte-flow-template app-name
 The easiest way to get the latest version of Svelte Flow is to install it via npm, yarn or pnpm:
 
 ```bash copy npm2yarn
-npm install @xyflow/svelte
+npm install @xyflow/svelte@next
 ```
 
 ## Creating your first flow
@@ -61,7 +61,6 @@ We get started by stacking together the most important components of Svelte Flow
 
 ```svelte
 <script>
-  import { writable } from 'svelte/store';
   import {
     SvelteFlow,
     Controls,
@@ -73,8 +72,8 @@ We get started by stacking together the most important components of Svelte Flow
   // 👇 this is important! You need to import the styles for Svelte Flow to work
   import '@xyflow/svelte/dist/style.css';
 
-  // We are using writables for the nodes and edges to sync them easily. When a user drags a node for example, Svelte Flow updates its position.
-  const nodes = writable([
+  // We are using $state.raw for the nodes and edges. When a user drags a node for example, Svelte Flow updates its position.
+  const nodes = $state.raw([
     {
       id: '1',
       type: 'input',
@@ -90,7 +89,7 @@ We get started by stacking together the most important components of Svelte Flow
   ]);
 
   // same for edges
-  const edges = writable([
+  const edges = $state.raw([
     {
       id: '1-2',
       type: 'default',
@@ -109,11 +108,11 @@ This means that the parent container needs a height to render the flow.
 -->
 <div style:height="500px">
   <SvelteFlow
-    {nodes}
-    {edges}
+    bind:nodes
+    bind:edges
     {snapGrid}
     fitView
-    on:nodeclick={(event) => console.log('on node click', event.detail.node)}
+    onnodeclick={(event) => console.log('on node click', event.detail.node)}
   >
     <Controls />
     <Background variant={BackgroundVariant.Dots} />

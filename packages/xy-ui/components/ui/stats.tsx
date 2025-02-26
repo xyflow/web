@@ -20,7 +20,7 @@ type StatsProps = {
 function StatsDisplay({ value, label, className }: StatsDisplayProps) {
   return (
     <div className={cn('text-center', className)}>
-      <Heading className="font-bold tabular-nums whitespace-nowrap text-primary text-4xl md:text-5xl lg:text-6xl">
+      <Heading className="font-bold tabular-nums whitespace-nowrap text-primary text-4xl md:text-5xl lg:text-5xl">
         {value}
       </Heading>
       <Text className="whitespace-nowrap mt-2 text-md md:text-lg lg:text-lg">

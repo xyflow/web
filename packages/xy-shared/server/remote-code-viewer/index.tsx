@@ -82,6 +82,7 @@ export const RemoteCodeViewer: FC<RemoteCodeViewerProps> = async ({
   if (isExample) {
     delete snippets['index.html'];
     delete snippets['index.jsx'];
+    delete snippets['index.ts'];
   }
 
   const _initialActiveFile =

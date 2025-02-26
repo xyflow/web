@@ -4,8 +4,7 @@
 
   import FunctionIcon from './FunctionIcon.svelte';
 
-  type $$Props = NodeProps;
-  export let data: $$Props['data'];
+  let { data }: NodeProps = $props();
 </script>
 
 <div class="cloud gradient">

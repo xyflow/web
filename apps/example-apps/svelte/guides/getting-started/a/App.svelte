@@ -1,15 +1,14 @@
 <script>
-  import { writable } from 'svelte/store';
   import { SvelteFlow, Background, Controls } from '@xyflow/svelte';
 
   import '@xyflow/svelte/dist/style.css';
 
-  const nodes = writable([]);
-  const edges = writable([]);
+  let nodes = $state.raw([]);
+  let edges = $state.raw([]);
 </script>
 
 <main>
-  <SvelteFlow {nodes} {edges}>
+  <SvelteFlow bind:nodes bind:edges>
     <Background />
     <Controls />
   </SvelteFlow>

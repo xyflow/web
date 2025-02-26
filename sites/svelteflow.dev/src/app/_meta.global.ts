@@ -12,12 +12,15 @@ export default {
           'building-a-flow': '',
         },
       },
-      guides: '',
+      guides: {
+        display: 'hidden',
+      },
       'api-reference': { href: '/api-reference' },
     },
   },
   'api-reference': {
     title: 'Reference',
+    display: 'hidden',
     items: {
       index: '',
       'svelte-flow': '',

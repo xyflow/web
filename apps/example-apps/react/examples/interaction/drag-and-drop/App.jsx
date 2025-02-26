@@ -12,7 +12,6 @@ import {
 
 import '@xyflow/react/dist/style.css';
 
-
 import Sidebar from './Sidebar';
 import { DnDProvider, useDnD } from './DnDContext';
 
@@ -85,7 +84,6 @@ const DnDFlow = () => {
           onDrop={onDrop}
           onDragOver={onDragOver}
           fitView
-          style={{ backgroundColor: "#F7F9FB" }}
         >
           <Controls />
           <Background />

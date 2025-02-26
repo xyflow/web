@@ -1,12 +1,19 @@
 <script lang="ts">
-  import { Handle, Position, type NodeProps, NodeResizeControl } from '@xyflow/svelte';
+  import {
+    Handle,
+    Position,
+    type NodeProps,
+    NodeResizeControl,
+  } from '@xyflow/svelte';
 
-  type $$Props = NodeProps;
-
-  export let data: $$Props['data'] = undefined;
+  let { data }: NodeProps = $props();
 </script>
 
-<NodeResizeControl minWidth={100} minHeight={5} style="background: transparent; border: none;">
+<NodeResizeControl
+  minWidth={100}
+  minHeight={5}
+  style="background: transparent; border: none;"
+>
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="20"

@@ -12,6 +12,11 @@ body {
   height: 100vh;
 }
 
-.react-flow__node-custom {
-  border-color: blue;
+.react-flow__node-custom .react-flow__handle.connectable {
+  border-color: var(--xy-theme-selected);
+  background: var(--xy-theme-selected);
+
+  &:hover {
+    background: var(--xy-theme-selected);
+  }
 }

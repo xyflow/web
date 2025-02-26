@@ -1,0 +1,38 @@
+@import url('./xy-theme.css');
+
+html,
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+#app {
+  width: 100vw;
+  height: 100vh;
+}
+
+.svelte-flow.intersection-flow .svelte-flow__node.highlight {
+  background-color: var(--xy-theme-selected) !important;
+  color: white;
+}
+
+.svelte-flow.intersection-flow .svelte-flow__node {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  border-radius: 1px;
+  border-width: 2px;
+  box-shadow: 6px 6px 0 1px rgba(0, 0, 0, 0.7);
+}
+
+.svelte-flow.intersection-flow .svelte-flow__node.selected,
+.svelte-flow.intersection-flow .svelte-flow__node:hover,
+.svelte-flow.intersection-flow .svelte-flow__node:focus {
+  box-shadow: 6px 6px 0 1px rgba(0, 0, 0, 0.7);
+  background-color: #eee;
+}
+
+.svelte-flow.intersection-flow .svelte-flow__handle {
+  display: none;
+}

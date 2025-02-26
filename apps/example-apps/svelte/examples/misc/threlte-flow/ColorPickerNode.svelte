@@ -1,22 +1,19 @@
 <script lang="ts">
-  import { Handle, Position, type NodeProps } from '@xyflow/svelte';
+  import { Handle, Position, type NodeProps, type Node } from '@xyflow/svelte';
   import NodeWrapper from './NodeWrapper.svelte';
-  import type { NodeData } from './nodes-and-edges';
+  import { flowState, type NodeData } from './nodes-and-edges.svelte';
 
-  type $$Props = NodeProps;
-  export let data: NodeData;
-  const { label, flowState } = data;
-
-  let value = $flowState.color;
-  $: {
-    $flowState.color = value;
-  }
+  let { data }: NodeProps<Node<NodeData>> = $props();
 </script>
 
-<NodeWrapper {label}>
+<NodeWrapper label={data.label}>
   <div class="flex items-center space-x-2">
-    <input bind:value class="nodrag border-md w-6 h-6" type="color" />
-    <p>{value}</p>
+    <input
+      bind:value={flowState.color}
+      class="nodrag border-md w-6 h-6"
+      type="color"
+    />
+    <p>{flowState.color}</p>
   </div>
   <Handle type="source" position={Position.Right} />
 </NodeWrapper>

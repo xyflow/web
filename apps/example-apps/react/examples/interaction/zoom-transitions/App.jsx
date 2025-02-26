@@ -12,7 +12,6 @@ import {
 
 import '@xyflow/react/dist/style.css';
 
-
 const initialNodes = [
   {
     id: '1',
@@ -56,7 +55,6 @@ const ZoomTransition = () => {
       onEdgesChange={onEdgesChange}
       onConnect={onConnect}
       fitView
-      style={{ backgroundColor: "#F7F9FB" }}
     >
       <Panel position="top-right">
         <button onClick={() => zoomIn({ duration: 800 })}>zoom in</button>

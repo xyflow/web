@@ -12,10 +12,10 @@ import {
 
 import '@xyflow/react/dist/style.css';
 
-
-import { nodes as initialNodes, edges as initialEdges } from './initialElements';
-
-
+import {
+  nodes as initialNodes,
+  edges as initialEdges,
+} from './initialElements';
 
 const Flow = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
@@ -60,7 +60,6 @@ const Flow = () => {
       onConnect={onConnect}
       isValidConnection={isValidConnection}
       fitView
-      style={{ backgroundColor: "#F7F9FB" }}
     >
       <Background />
     </ReactFlow>

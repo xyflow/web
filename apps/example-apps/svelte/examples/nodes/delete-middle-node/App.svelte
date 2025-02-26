@@ -1,21 +1,27 @@
 <script lang="ts">
-  import { writable } from 'svelte/store';
-  import { SvelteFlow, Background, type Node, type Edge } from '@xyflow/svelte';
+  import {
+    SvelteFlow,
+    Background,
+    type Node,
+    type Edge,
+    type OnBeforeDelete,
+  } from '@xyflow/svelte';
 
   import '@xyflow/svelte/dist/style.css';
 
   import { initialNodes, initialEdges } from './nodes-and-edges';
 
-  const nodes = writable<Node[]>(initialNodes);
-  const edges = writable<Edge[]>(initialEdges);
+  let nodes = $state.raw<Node[]>(initialNodes);
+  let edges = $state.raw<Edge[]>(initialEdges);
 
-  function onNodesDelete(e) {
-    console.log(e);
-  }
+  const onbeforedelete: OnBeforeDelete = async ({ nodes, edges }) => {
+    // TODO
+    return true;
+  };
 </script>
 
 <div style="height:100vh;">
-  <SvelteFlow {nodes} {edges} on:nodedelete={onNodesDelete} fitView>
+  <SvelteFlow bind:nodes bind:edges {onbeforedelete} fitView>
     <Background />
   </SvelteFlow>
 </div>
