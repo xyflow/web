@@ -4,7 +4,7 @@ const path = require("path");
 const deploymentURL =
   process.env.VERCEL_ENV && process.env.VERCEL_URL
     ? process.env.VERCEL_ENV === "preview"
-      ? process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
       : "https://ui.reactflow.dev"
     : "http://localhost:3004";
 
@@ -60,7 +60,7 @@ const demoOutputPath = path.join(__dirname, "../public/demo");
         (dependency) => {
           if (dependency.startsWith("reactflow/")) {
             const component = dependency.split("/")[1];
-            return `https://${deploymentURL}/${component}`;
+            return `${deploymentURL}/${component}`;
           }
           return dependency;
         },
