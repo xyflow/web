@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { T, useThrelte, useTask } from '@threlte/core';
+  import { T, useThrelte, useFrame } from '@threlte/core';
   import { flowState } from './nodes-and-edges.svelte';
 
   const { camera } = useThrelte();
@@ -33,8 +33,8 @@
     $camera.position.set(0, 0, +flowState.zoom);
   });
 
-  let t: number = $state(0.0);
-  useTask((delta) => {
+  let t = 0;
+  useFrame((ctx, delta) => {
     t += delta;
   });
 </script>

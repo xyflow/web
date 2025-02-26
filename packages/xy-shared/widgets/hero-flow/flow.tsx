@@ -133,13 +133,13 @@ function Flow({ className, initialColor }: FlowProps) {
 
   const adjustViewport = useCallback(() => {
     const nodes = getNodes();
-    const { width, height } = store.getState();
+    const { width, height, nodeLookup } = store.getState();
     const {
       x: xMin,
       y: yMin,
       width: xMax,
       height: yMax,
-    } = getNodesBounds(nodes);
+    } = getNodesBounds(nodes, { nodeLookup });
 
     const zoom = width < 1240 ? (width < 500 ? 0.65 : 0.8) : 1;
     const mobileView = width < 1024;

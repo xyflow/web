@@ -11,3 +11,31 @@ body {
   width: 100vw;
   height: 100vh;
 }
+
+.handles {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.handles.sources {
+  right: 0;
+  top: 0;
+  height: 100%;
+  transform: translate(50%, 0);
+}
+
+.handles.targets {
+  left: 0;
+  top: 0;
+  height: 100%;
+  transform: translate(-50%, 0);
+}
+
+.handles .react-flow__handle {
+  position: relative;
+  top: 0;
+  left: 0;
+  transform: none;
+}

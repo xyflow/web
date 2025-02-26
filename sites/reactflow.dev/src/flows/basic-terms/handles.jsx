@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { ReactFlow, ReactFlowProvider, Handle, Position } from '@xyflow/react';
 import '@xyflow/react/dist/base.css';

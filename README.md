@@ -18,12 +18,8 @@ there's a lot going on.
 The apps directory contains projects that run on the backend or applications we
 might want to run during development:
 
-- `apps/svelte-examples` is a SvelteKit app that contains all the examples we use
-  throughout our Svelte docs. We like to use [sandpack](https://sandpack.codesandbox.io)
-  for our React examples but it doesn't support Svelte yet, so we built our own
-  example viewer!
-- `apps/xy-styleguide` is a a [Storybook](https://storybook.js.org/) app that
-  tries to document and demo all the components in our `packages/xy-ui` package.
+- `apps/example-apps` contains all of our examples and tutorials for ReactFlow and SvelteFlow.
+- `apps/ui-components` houses all of the components for [React Flow Components](https://reactflow.dev/components).
 
 ### packages/
 
@@ -36,7 +32,7 @@ tools we use:
 - `packages/xy-tsconfig`
 - `packages/xy-ui` is a React component library that contains any components that
   we want to share across our websites. The package encompasses everything from
-  page layouts, UI building blocks, and complex widgets. We use often use
+  page layouts, UI building blocks, and complex widgets. We often use
   [Shadcn](https://ui.shadcn.com) when looking to add new components, and we style
   everything with [Tailwind](https://tailwindcss.com).
 
@@ -81,22 +77,10 @@ For everything else, there is an individual script to run each app independently
 - `pnpm run dev:xyflow.com`
 - `pnpm run dev:style`
 
-### Update showcases
+### Displaying Showcase Projects
 
 We have a database of projects that use our libraries stored in notion. Both the
-React Flow and Svelte Flow sites have a script that will generate the JSON used
-to populate those showcases that you will need to run if you change or update the
-showcases in notion.
-
-Navigate into either `sites/reactflow.dev` or `sites/svelteflow.dev` and run:
-
-```sh
-pnpm write-showcases
-```
-
-> [!IMPORTANT]  
-> You must have a `.env` file in the project with a key called `NOTION_API_SECRET`
-> for this script to work.
+React Flow and Svelte Flow sites are fetching this data at build time using `getStaticProps`. You need to have a `.env.local` file with a `NOTION_API_SECRET` to make this work locally. Otherwise, placeholder showcases are shown.
 
 ### Update React Flow and Svelte Flow dependencies
 
@@ -113,7 +97,7 @@ like Stripe and Linkedin to build their node-based apps. With so many active
 users, it takes time and effort to maintain the library, docs, and community.
 We can’t do that without your support.
 
-[<img src="./assets/readme-pro.png">](https://pro.reactflow.dev/pricing)
+[<img src="./assets/readme-pro.png">](https://reactflow.dev/pro)
 
 Why Subscribe? With your subscription, you are ensuring the sustainable
 maintenance and development of both React Flow and Svelte Flow. This is how we

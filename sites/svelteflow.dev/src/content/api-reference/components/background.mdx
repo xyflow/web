@@ -1,0 +1,37 @@
+---
+title: The Background component
+sidebarTitle: '<Background />'
+description:
+  'The Background component makes it convenient to render different types of
+  backgrounds common in node-based UIs. It comes with three variants: lines,
+  dots and cross.'
+---
+
+import { PropsTable } from '@/components/props-table';
+import { backgroundProps } from '@/references/components/Background.ts';
+
+# &lt;Background />
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/plugins/Background/Background.svelte)
+
+The `<Background />` component makes it convenient to render different types of
+backgrounds common in node-based UIs. It comes with three variants: `lines`,
+`dots` and `cross`.
+
+```svelte
+<script lang="ts">
+  import { writable } from 'svelte/store';
+  import { SvelteFlow, Background, BackgroundVariant } from '@xyflow/svelte';
+
+  const nodes = writable([]);
+  const edges = writable([]);
+</script>
+
+<SvelteFlow nodes={nodes} edges={edges}>
+  <Background bgColor="#ccc" variant={BackgroundVariant.Dots} />
+</SvelteFlow>
+```
+
+## Props
+
+<PropsTable {...backgroundProps} />

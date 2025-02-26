@@ -1,0 +1,15 @@
+---
+title: Connection Limit
+description: Use the `isConnectable` prop to limit the number of connections a handle can have
+---
+
+import { RemoteCodeViewer } from 'xy-shared/server';
+import UnusedPropWarning from '@/components/unused-prop-warning';
+
+This is an example of a custom node with a custom handle that can limit the amount of connections a handle can have using the `isConnectable` prop.
+You can use a boolean, a number (the number of max. connections the handle should have) or a callback function that returns a boolean
+as an arg for the `isConnectable` prop of the CustomHandle component.
+
+<RemoteCodeViewer route="examples/nodes/connection-limit" framework="svelte" />
+
+<UnusedPropWarning />

@@ -1,0 +1,16 @@
+---
+sidebarTitle: Dagre
+title: Dagre Tree
+description: Integrate dagre js with Svelte Flow to create simple tree layouts
+---
+
+import { RemoteCodeViewer } from 'xy-shared/server';
+
+This example shows how you can integrate [dagre.js](https://github.com/dagrejs/dagre) with Svelte Flow to create simple tree layouts. Good alternatives to dagre are [d3-hierarchy](https://github.com/d3/d3-hierarchy) or [elkjs](https://github.com/kieler/elkjs) if you are looking for a more advanced layouting library.
+
+<RemoteCodeViewer route="examples/layout/dagre" framework="svelte" />
+
+This example is a demonstration of _static_ layouting. If the nodes or edges in
+the graph change, the layout _won't_ recalculate! It is possible to do dynamic
+layouting with dagre (and other libraries), but we don't have an example for
+that right now!
