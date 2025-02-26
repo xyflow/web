@@ -35,11 +35,6 @@ yarn-error.log*
 # vercel
 .vercel
 
-<<<<<<< HEAD
-.yalc
-yalc.lock
-=======
 tmp
 vite.config.ts.*
 .idea/
->>>>>>> main
