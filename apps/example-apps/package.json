@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite dev --force",
+    "dev": "vite dev",
     "build": "vite build",
     "scaffold": "node scripts/scaffold/index.js",
     "screenshots": "concurrently \"vite dev\" \"node scripts/generate-screenshots.js\""
@@ -31,9 +31,9 @@
     "@dagrejs/dagre": "^1.1.4",
     "@radix-ui/react-dropdown-menu": "^2.1.2",
     "@radix-ui/react-slot": "^1.1.1",
-    "@threlte/core": "^7.3.1",
-    "@xyflow/react": "^12.3.2",
-    "@xyflow/svelte": "^0.1.21",
+    "@threlte/core": "^8.0.1",
+    "@xyflow/react": "^12.4.4",
+    "@xyflow/svelte": "1.0.0-next.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "d3-drag": "^3.0.0",
