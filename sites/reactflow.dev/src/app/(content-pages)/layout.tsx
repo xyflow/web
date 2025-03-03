@@ -6,6 +6,7 @@ import { SparklesIcon } from '@heroicons/react/24/outline';
 import { Search, SidebarTitle } from 'xy-shared';
 import { Button, defaultFooterCategories } from '@xyflow/xy-ui';
 import { NextraLayout } from '@/components/nextra-layout';
+import { pageMap as examplesPageMap } from './examples/[...slug]/page';
 
 const Layout: FC<{ children: ReactNode }> = async ({ children }) => {
   const { Projects: _, ...remainingCategories } = defaultFooterCategories;
@@ -17,16 +18,13 @@ const Layout: FC<{ children: ReactNode }> = async ({ children }) => {
       'children' in item && item.name === 'api-reference',
   );
   const examples = pageMap.find(
-    (item): item is Folder => 'children' in item && item.name === 'examples',
+    (item): item is Folder => 'name' in item && item.name === 'examples',
   );
-  const components = pageMap.find(
-    (item): item is Folder => 'children' in item && item.name === 'components',
-  );
+  examples.children = examplesPageMap.children;
 
   const folders = [
     ...apiReference.children,
-    ...examples.children,
-    ...components.children,
+    ...examplesPageMap.children,
   ].filter((item): item is Folder<MdxFile> => 'children' in item);
 
   for (const folder of folders) {
