@@ -1,0 +1,19 @@
+---
+title: Edge Intersection
+description: Detect edge intersections with nodes while dragging.
+---
+
+import { Callout } from 'nextra/components';
+
+This example shows how you can detect an intersection between a dragged node and an edge.
+
+<Callout type="info">
+  The default
+  [`interactionWidth`](/api-reference/types/default-edge-options#interaction-width)
+  of the edges is set to `75` via the
+  [`defaultEdgeOptions`](/api-reference/react-flow#default-edge-options). We set
+  a wider interaction area so that we can easily find the edge and node
+  intersections.
+</Callout>
+
+<RemoteCodeViewer route="examples/edges/edge-intersection" framework="react" />

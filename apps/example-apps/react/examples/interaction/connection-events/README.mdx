@@ -1,0 +1,63 @@
+---
+title: Connection Events
+description:
+  React Flow emits different events during the connection process. Use this example
+  to get an overview of those events and what order they are called in.
+---
+
+import { Callout } from 'nextra/components';
+
+React Flow emits different events during the connection process that you can use
+to update your UI or your flow in different ways. The example below demonstrates
+which events are fired and when.
+
+<RemoteCodeViewer
+  route="examples/interaction/connection-events"
+  framework="react"
+/>
+
+For a **new connection** created by dragging from a handle, the following events
+are called in order:
+
+- [`onConnectStart`](/api-reference/react-flow#on-connect-start) is called with
+  the mouse event and an object containing the source node, potentially the source
+  handle id, and the handle type.
+
+- [`onConnect`](/api-reference/react-flow#on-connect) is only called when the
+  connection is released on a handle that [is connectable](/api-reference/components/handle#is-connectable).
+  It is called with a complete [connection object](/api-reference/types/connection)
+  containing the source and target node, and the source and target handle ids if
+  present.
+
+- [`onConnectEnd`](/api-reference/react-flow#on-connect-end) is called when a
+  connection is released, regardless of whether it was successful or not. It is
+  called with the mouse event.
+
+When an edge is **reconnected** by dragging an existing edge, the following events
+are called in order:
+
+- [`onReconnectStart`](/api-reference/react-flow#on-reconnect-start) is called when
+  a [reconnectable edge](/api-reference/types/edge#reconnectable) is picked up.
+  It is called with the mouse event, the edge object that is being reconnected,
+  and the type of the stable handle.
+
+- [`onConnectStart`](/api-reference/react-flow#on-connect-start) is called as
+  above.
+
+- [`onReconnect`](/api-reference/react-flow#on-reconnect) is called when the edge
+  is released on a handle that is [reconnectable](/api-reference/types/edge#reconnectable).
+  It is called with the old [edge object](/api-reference/types/edge) and the new
+  [connection object](/api-reference/types/connection).
+
+- [`onConnectEnd`](/api-reference/react-flow#on-connect-end) is called as above.
+
+- [`onReconnectEnd`](/api-reference/react-flow#on-reconnect-end) is called when
+  the edge is released, regardless of whether the reconnection whas successful or
+  not. It is called with the mouse event, the edge that was picked up, and the
+  type of the stable handle.
+
+<Callout type="info">
+  You can see many of these events in use in our [add node on edge
+  drop](/examples/nodes/add-node-on-edge-drop) and [temporary
+  edges](/examples/edges/temporary-edges) examples!
+</Callout>
