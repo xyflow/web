@@ -117,6 +117,15 @@ const metaRecord = {
       toc: false,
       layout: 'full',
     },
+    items: {
+      index: {
+        theme: {
+          breadcrumb: false,
+        },
+      },
+      overview: '',
+      // Rest of examples are added in `(content-pages)/layout.tsx` file
+    }
   },
   components: { items: components },
   showcase: '',

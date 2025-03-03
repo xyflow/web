@@ -4,15 +4,6 @@
  * because we want to have more control over the order and which examples are displayed.
  */
 export const meta = {
-  index: {
-    title: 'Examples',
-    theme: {
-      breadcrumb: false,
-    },
-  },
-  overview: {
-    title: 'Feature Overview',
-  },
   nodes: {
     items: {
       'add-node-on-edge-drop': '',
