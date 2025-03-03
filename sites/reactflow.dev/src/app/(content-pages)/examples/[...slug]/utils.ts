@@ -29,7 +29,7 @@ export async function getAllExamples(): Promise<string[]> {
   return result.map((filePath) => filePath.replace('/README.mdx', ''));
 }
 
-export async function getPageMap(): Folder {
+export async function getPageMap(): Promise<Folder> {
   const filePaths = await getAllExamples();
 
   const { mdxPages, pageMap: _pageMap } = convertToPageMap({
@@ -51,17 +51,21 @@ function addFrontMatter(item: PageMapItem) {
     };
   }
   if ('name' in item) {
-    const result = require(
-      // The static analyzer needs to know the import path as precisely as possible.
-      // To achieve this, we keep `examples/` in the import path.
-      `@/../../apps/example-apps/react/examples/${item.route.replace('/examples/', '')}/README.mdx?metadata`,
-    );
     return {
       ...item,
-      frontMatter: result.metadata,
+      frontMatter: importMetadata(item.route),
     };
   }
   return item;
+}
+
+export function importMetadata(route: string) {
+  const result = require(
+    // The static analyzer needs to know the import path as precisely as possible.
+    // To achieve this, we keep `examples/` in the import path.
+    `@/../../apps/example-apps/react/examples/${route.replace('/examples/', '')}/README.mdx?metadata`,
+  );
+  return result.metadata;
 }
 
 const examplesPath = path.resolve('../../apps/example-apps/react/examples');

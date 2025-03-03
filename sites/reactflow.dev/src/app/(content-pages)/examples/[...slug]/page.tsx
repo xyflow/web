@@ -1,33 +1,10 @@
-import { notFound } from 'next/navigation';
 import {
-  convertToPageMap,
-  mergeMetaWithPageMap,
-  normalizePageMap,
-} from 'nextra/page-map';
-import { Folder, PageMapItem } from 'nextra';
-
-import { meta } from './config';
-import { evaluateRoute, generateFilePaths, H1, Wrapper } from './utils';
-
-const filePaths = generateFilePaths(meta);
-
-// @TODO: the returned pageMap doesn't include frontMatter
-// how can we pass this information to convertToPageMap or somewhere else?
-// we need the frontMatter in layout.tsx in order to render the badges for
-// the sidebar items.
-const { mdxPages, pageMap: _pageMap } = convertToPageMap({
-  filePaths,
-  basePath: 'examples',
-});
-
-export const [generatedExamplesPage] = _pageMap;
-
-const examplesPageMap = mergeMetaWithPageMap(
-  generatedExamplesPage as Folder<PageMapItem>,
-  meta,
-);
-
-export const pageMap = normalizePageMap(examplesPageMap);
+  evaluateRoute,
+  getAllExamples,
+  importMetadata,
+  H1,
+  Wrapper,
+} from './utils';
 
 type PageProps = Readonly<{
   params: Promise<{
@@ -38,14 +15,7 @@ type PageProps = Readonly<{
 export default async function Page(props: PageProps) {
   const params = await props.params;
   const route = params.slug.join('/');
-  const result = await evaluateRoute(route, mdxPages);
-
-  if (!result) {
-    notFound();
-  }
-
-  const { default: MDXContent, toc, metadata } = result;
-
+  const { default: MDXContent, toc, metadata } = await evaluateRoute(route);
   return (
     <Wrapper toc={toc} metadata={metadata}>
       {/* @ts-expect-error -- false positive */}
@@ -58,14 +28,11 @@ export default async function Page(props: PageProps) {
 export async function generateMetadata(props: PageProps) {
   const params = await props.params;
   const route = params.slug.join('/');
-  const result = await evaluateRoute(route, mdxPages);
-  return result.metadata;
+  return importMetadata(route);
 }
 
-export function generateStaticParams() {
-  const params = Object.keys(mdxPages).map((route) => ({
-    slug: route.split('/'),
-  }));
-
+export async function generateStaticParams() {
+  const filePaths = await getAllExamples();
+  const params = filePaths.map((route) => ({ slug: route.split('/') }));
   return params;
 }
