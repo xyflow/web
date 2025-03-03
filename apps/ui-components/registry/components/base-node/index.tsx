@@ -1,10 +1,9 @@
-import { forwardRef, HTMLAttributes } from "react";
-
+import React from "react";
 import { cn } from "@/lib/utils";
 
-export const BaseNode = forwardRef<
+export const BaseNode = React.forwardRef<
   HTMLDivElement,
-  HTMLAttributes<HTMLDivElement> & { selected?: boolean }
+  React.HTMLAttributes<HTMLDivElement> & { selected?: boolean }
 >(({ className, selected, ...props }, ref) => (
   <div
     ref={ref}
@@ -16,7 +15,6 @@ export const BaseNode = forwardRef<
     )}
     tabIndex={0}
     {...props}
-  />
+  ></div>
 ));
-
 BaseNode.displayName = "BaseNode";

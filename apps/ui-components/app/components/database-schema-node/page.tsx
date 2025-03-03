@@ -1,13 +1,10 @@
-"use client";
-
-import DatabaseSchemaNodeApp from "@/registry/components/database-schema-node/app-example";
-
 import DemoWrapper from "@/components/demo-wrapper";
+import Demo from "@/registry/components/database-schema-node/demo";
 
-export default function Page() {
+export default function DemoPage() {
   return (
     <DemoWrapper>
-      <DatabaseSchemaNodeApp />
+      <Demo />
     </DemoWrapper>
   );
 }

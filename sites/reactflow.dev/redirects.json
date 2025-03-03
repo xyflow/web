@@ -1058,10 +1058,5 @@
     "source": "/api-reference/hooks/useNodeConnections",
     "destination": "/api-reference/hooks/use-node-connections",
     "permanent": true
-  },
-  {
-    "source": "/examples/layout/workflow-builder",
-    "destination": "/examples/layout/dynamic-layouting",
-    "permanent": true
   }
 ]

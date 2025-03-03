@@ -1,13 +1,10 @@
-"use client";
-
-import ZoomSelectApp from "@/registry/components/zoom-select/app-example";
-
 import DemoWrapper from "@/components/demo-wrapper";
+import Demo from "@/registry/components/zoom-select/demo";
 
-export default function Page() {
+export default function DemoPage() {
   return (
     <DemoWrapper>
-      <ZoomSelectApp />
+      <Demo />
     </DemoWrapper>
   );
 }

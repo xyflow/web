@@ -529,11 +529,11 @@ importers:
         specifier: ^4.2.3
         version: 4.2.3(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
       nextra:
-        specifier: ^4.2.13
-        version: 4.2.13(acorn@8.14.0)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2)
+        specifier: ^4.2.14
+        version: 4.2.14(acorn@8.14.0)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2)
       nextra-theme-docs:
-        specifier: ^4.2.13
-        version: 4.2.13(@types/react@18.3.17)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(nextra@4.2.13(acorn@8.14.0)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(use-sync-external-store@1.2.2(react@18.3.1))
+        specifier: ^4.2.14
+        version: 4.2.14(@types/react@18.3.17)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(nextra@4.2.14(acorn@8.14.0)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(use-sync-external-store@1.2.2(react@18.3.1))
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -611,11 +611,11 @@ importers:
         specifier: ^4.2.3
         version: 4.2.3(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
       nextra:
-        specifier: ^4.2.13
-        version: 4.2.13(acorn@8.14.0)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2)
+        specifier: ^4.2.14
+        version: 4.2.14(acorn@8.14.0)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2)
       nextra-theme-docs:
-        specifier: ^4.2.13
-        version: 4.2.13(@types/react@18.3.17)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(nextra@4.2.13(acorn@8.14.0)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(use-sync-external-store@1.2.2(react@18.3.1))
+        specifier: ^4.2.14
+        version: 4.2.14(@types/react@18.3.17)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(nextra@4.2.14(acorn@8.14.0)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(use-sync-external-store@1.2.2(react@18.3.1))
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -681,11 +681,11 @@ importers:
         specifier: ^4.2.3
         version: 4.2.3(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
       nextra:
-        specifier: ^4.2.13
-        version: 4.2.13(acorn@8.14.0)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2)
+        specifier: ^4.2.14
+        version: 4.2.14(acorn@8.14.0)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2)
       nextra-theme-docs:
-        specifier: ^4.2.13
-        version: 4.2.13(@types/react@18.3.17)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(nextra@4.2.13(acorn@8.14.0)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(use-sync-external-store@1.2.2(react@18.3.1))
+        specifier: ^4.2.14
+        version: 4.2.14(@types/react@18.3.17)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(nextra@4.2.14(acorn@8.14.0)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(use-sync-external-store@1.2.2(react@18.3.1))
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -5218,16 +5218,24 @@ packages:
       sass:
         optional: true
 
-  nextra-theme-docs@4.2.13:
-    resolution: {integrity: sha512-PO+ltZFtKXe2Jt4hgdJi5JahQHOjt2qmz5wVSfhS+PZDMAuFCa0UubBvkCyQDF3YdKjUI2gJ8CW0fGw84yeseQ==}
+  nextra-theme-docs@4.2.14:
+    resolution: {integrity: sha512-Z+eRIRMbssB8kgDjkucfqAd894+lga78cPiAcCD2YQY7VPyFFeYmXJIwpEiLmV3/13FtT1QVoJuMmRaUTjtJIQ==}
     peerDependencies:
       next: '>=14'
-      nextra: 4.2.13
+      nextra: 4.2.14
       react: '>=18'
       react-dom: '>=18'
 
   nextra@4.2.13:
     resolution: {integrity: sha512-ZjcIuDXaZoMn8s11iXGCp0UHTYZp3xCS6JFZbyj8Fh+RIKh9ZZlD+e6YlmXkA7t71PVjDWoF5URwMW/r7dYNjQ==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      next: '>=14'
+      react: '>=18'
+      react-dom: '>=18'
+
+  nextra@4.2.14:
+    resolution: {integrity: sha512-Ur5hiWDLZUlSR4faLl7R1z6MEelH1vRWBIlcBP97N2qmQMFPfMIOMwjm+tscHcPlL5DoQ2F332P3RzTqdktyLQ==}
     engines: {node: '>=18'}
     peerDependencies:
       next: '>=14'
@@ -12378,13 +12386,13 @@ snapshots:
       - '@babel/core'
       - babel-plugin-macros
 
-  nextra-theme-docs@4.2.13(@types/react@18.3.17)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(nextra@4.2.13(acorn@8.14.0)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(use-sync-external-store@1.2.2(react@18.3.1)):
+  nextra-theme-docs@4.2.14(@types/react@18.3.17)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(nextra@4.2.14(acorn@8.14.0)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(use-sync-external-store@1.2.2(react@18.3.1)):
     dependencies:
       '@headlessui/react': 2.2.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       clsx: 2.1.1
       next: 15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       next-themes: 0.4.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      nextra: 4.2.13(acorn@8.14.0)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2)
+      nextra: 4.2.14(acorn@8.14.0)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2)
       react: 18.3.1
       react-compiler-runtime: 0.0.0-experimental-22c6e49-20241219(react@18.3.1)
       react-dom: 18.3.1(react@18.3.1)
@@ -12445,7 +12453,7 @@ snapshots:
       - supports-color
       - typescript
 
-  nextra@4.2.13(acorn@8.14.0)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2):
+  nextra@4.2.14(acorn@8.14.0)(next@15.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2):
     dependencies:
       '@formatjs/intl-localematcher': 0.6.0
       '@headlessui/react': 2.2.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)

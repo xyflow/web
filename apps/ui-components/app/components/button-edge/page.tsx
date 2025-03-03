@@ -1,13 +1,10 @@
-"use client";
-
-import ButtonEdgeApp from "@/registry/components/button-edge/app-example";
-
 import DemoWrapper from "@/components/demo-wrapper";
+import Demo from "@/registry/components/button-edge/demo";
 
-export default function Page() {
+export default function DemoPage() {
   return (
     <DemoWrapper>
-      <ButtonEdgeApp />
+      <Demo />
     </DemoWrapper>
   );
 }
