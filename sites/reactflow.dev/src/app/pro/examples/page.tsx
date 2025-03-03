@@ -190,7 +190,7 @@ const ProExamples: FC = async () => {
       </ContentGrid>
 
       <Section className="lg:px-0">
-        <LayoutBreakout className="max-w-[78rem] lg:ml-0 lg:mr-0 lg:right-0 lg:left-0 lg:w-full lg:px-0 !mt-0">
+        <LayoutBreakout className="x:max-w-(--nextra-content-width) lg:ml-0 lg:mr-0 lg:right-0 lg:left-0 lg:w-full lg:px-0 !mt-0">
           <Container
             variant="dark"
             className="max-lg:rounded-none"

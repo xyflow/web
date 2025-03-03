@@ -13,7 +13,7 @@ type GettingStartedProps = {
 
 function GettingStarted({ libraryName, packageName }: GettingStartedProps) {
   return (
-    <LayoutBreakout className="max-w-[78rem] lg:ml-0 lg:mr-0 lg:right-0 lg:left-0 lg:w-full lg:px-4 !mt-0">
+    <LayoutBreakout className="x:max-w-(--nextra-content-width) lg:ml-0 lg:mr-0 lg:right-0 lg:left-0 lg:w-full !mt-0">
       <Container
         variant="dark"
         className="rounded-none border-none p-0 mt-16 lg:mt-24 lg:p-1.5 lg:rounded-3xl"
