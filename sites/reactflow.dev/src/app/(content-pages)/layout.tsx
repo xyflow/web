@@ -1,33 +1,48 @@
 import { FC, ReactNode } from 'react';
 import NextLink from 'next/link';
-import { Folder, MdxFile } from 'nextra';
+import { Folder, MdxFile, MetaJsonFile } from 'nextra';
 import { getPageMap } from 'nextra/page-map';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 import { Search, SidebarTitle } from 'xy-shared';
 import { Button, defaultFooterCategories } from '@xyflow/xy-ui';
-
 import { NextraLayout } from '@/components/nextra-layout';
-import { pageMap as examplesPageMap } from './examples/[[...slug]]/page';
+import { getPageMap as getExamplesPageMap } from './examples/[...slug]/utils';
 
 const Layout: FC<{ children: ReactNode }> = async ({ children }) => {
   const { Projects: _, ...remainingCategories } = defaultFooterCategories;
-  const pageMap = [...(await getPageMap()), examplesPageMap];
+  const pageMap = [...(await getPageMap())];
 
   // Add badges
   const apiReference = pageMap.find(
     (item): item is Folder =>
       'children' in item && item.name === 'api-reference',
   );
-
-  const generatedExamples = pageMap.find(
-    (item): item is Folder => 'children' in item && item.name === 'examples',
+  const examplesIndex = pageMap.findIndex(
+    (item): item is Folder => 'name' in item && item.name === 'examples',
   );
-
-  const folders = [
-    ...apiReference.children,
-    // @TODO: this thing has no frontMatter and therefore no badges
-    ...generatedExamples.children,
-  ].filter((item): item is Folder<MdxFile> => 'children' in item);
+  const [examplesMeta, ...examples] = (pageMap[examplesIndex] as Folder)
+    .children;
+  const [catchAllExamplesMeta, ...catchAllExamples] = (
+    await getExamplesPageMap()
+  ).children;
+  // Merge on disk examples with examples from catch-all [...slug] route
+  pageMap[examplesIndex] = {
+    ...pageMap[examplesIndex],
+    children: [
+      {
+        // Merge meta records
+        data: {
+          ...(examplesMeta as MetaJsonFile).data,
+          ...(catchAllExamplesMeta as MetaJsonFile).data,
+        },
+      },
+      ...examples,
+      ...catchAllExamples,
+    ],
+  };
+  const folders = [...apiReference.children, ...catchAllExamples].filter(
+    (item): item is Folder<MdxFile> => 'children' in item,
+  );
 
   for (const folder of folders) {
     folder.children = folder.children.map(

@@ -112,14 +112,21 @@ const metaRecord = {
       'react-flow-provider': '',
     },
   },
-  // @TODO: why is this nor working?
-  // examples: {
-  //   items: generatedExampleMeta,
-  //   theme: {
-  //     toc: false,
-  //     layout: 'full',
-  //   },
-  // },
+  examples: {
+    theme: {
+      toc: false,
+      layout: 'full',
+    },
+    items: {
+      index: {
+        theme: {
+          breadcrumb: false,
+        },
+      },
+      overview: '',
+      // Rest of examples are added in `(content-pages)/layout.tsx` file
+    }
+  },
   components: { items: components },
   showcase: '',
   more: {
