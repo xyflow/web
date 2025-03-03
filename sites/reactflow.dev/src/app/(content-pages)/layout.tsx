@@ -1,6 +1,6 @@
 import { FC, ReactNode } from 'react';
 import NextLink from 'next/link';
-import { Folder, MdxFile } from 'nextra';
+import { Folder, MdxFile, MetaJsonFile } from 'nextra';
 import { getPageMap } from 'nextra/page-map';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 import { Search, SidebarTitle } from 'xy-shared';
@@ -20,7 +20,8 @@ const Layout: FC<{ children: ReactNode }> = async ({ children }) => {
   const examplesIndex = pageMap.findIndex(
     (item): item is Folder => 'name' in item && item.name === 'examples',
   );
-  const [examplesMeta, ...examples] = pageMap[examplesIndex].children;
+  const [examplesMeta, ...examples] = (pageMap[examplesIndex] as Folder)
+    .children;
   const [catchAllExamplesMeta, ...catchAllExamples] = (
     await getExamplesPageMap()
   ).children;
@@ -31,8 +32,8 @@ const Layout: FC<{ children: ReactNode }> = async ({ children }) => {
       {
         // Merge meta records
         data: {
-          ...examplesMeta.data,
-          ...catchAllExamplesMeta.data,
+          ...(examplesMeta as MetaJsonFile).data,
+          ...(catchAllExamplesMeta as MetaJsonFile).data,
         },
       },
       ...examples,

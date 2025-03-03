@@ -8,11 +8,12 @@ import {
   normalizePageMap,
 } from 'nextra/page-map';
 import { compileMdx } from 'nextra/compile';
-import { Callout, Cards, Tabs } from 'nextra/components';
+import { Callout, Cards } from 'nextra/components';
 import { evaluate } from 'nextra/evaluate';
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
 import ProExampleViewer from '@/components/pro-example-viewer';
 import { RemoteCodeViewer } from 'xy-shared/server/remote-code-viewer';
+import { Button } from '@xyflow/xy-ui';
 import { useMDXComponents as getMDXComponents } from '@/mdx-components';
 import { meta } from './config';
 
@@ -75,12 +76,12 @@ export const {
   h1: H1,
   ...components
 } = getMDXComponents({
-  $Tabs: Tabs,
   Callout,
   Cards,
   ArrowTopRightOnSquareIcon,
   RemoteCodeViewer,
   ProExampleViewer,
+  Button
 });
 
 export async function evaluateRoute(route: string) {
