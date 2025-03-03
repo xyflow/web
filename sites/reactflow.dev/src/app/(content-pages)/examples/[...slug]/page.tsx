@@ -18,6 +18,8 @@ export default async function Page(props: PageProps) {
   const params = await props.params;
   const route = params.slug.join('/');
   const { default: MDXContent, toc, metadata } = require(
+    // The static analyzer needs to know the import path as precisely as possible.
+    // To achieve this, we keep `examples/` in the import path.
     `@/../../apps/example-apps/react/examples/${route.replace('/examples/', '')}/README.mdx`,
   );
   return (
