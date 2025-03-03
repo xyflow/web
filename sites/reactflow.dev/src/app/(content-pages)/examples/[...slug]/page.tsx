@@ -1,10 +1,10 @@
-import {
-  evaluateRoute,
-  getAllExamples,
-  importMetadata,
-  H1,
-  Wrapper,
-} from './utils';
+import { Callout, Cards } from 'nextra/components';
+import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
+import { RemoteCodeViewer } from 'xy-shared/server';
+import { Button } from '@xyflow/xy-ui';
+import { useMDXComponents as getMDXComponents } from '@/mdx-components';
+import ProExampleViewer from '@/components/pro-example-viewer';
+import { getAllExamples, importMetadata } from './utils';
 
 type PageProps = Readonly<{
   params: Promise<{
@@ -12,15 +12,28 @@ type PageProps = Readonly<{
   }>;
 }>;
 
+const { wrapper: Wrapper, h1: H1 } = getMDXComponents();
+
 export default async function Page(props: PageProps) {
   const params = await props.params;
   const route = params.slug.join('/');
-  const { default: MDXContent, toc, metadata } = await evaluateRoute(route);
+  const { default: MDXContent, toc, metadata } = require(
+    `@/../../apps/example-apps/react/examples/${route.replace('/examples/', '')}/README.mdx`,
+  );
   return (
     <Wrapper toc={toc} metadata={metadata}>
       {/* @ts-expect-error -- false positive */}
       <H1>{metadata.title}</H1>
-      <MDXContent />
+      <MDXContent
+        components={{
+          Callout,
+          Cards,
+          ArrowTopRightOnSquareIcon,
+          RemoteCodeViewer,
+          ProExampleViewer,
+          Button,
+        }}
+      />
     </Wrapper>
   );
 }
