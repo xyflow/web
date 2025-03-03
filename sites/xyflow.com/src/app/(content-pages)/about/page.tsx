@@ -39,11 +39,11 @@ const Page: FC = () => {
       <Section className="max-w-screen-md mx-auto mt-12 lg:my-12">
         <Text size="lg" className="leading-8 mb-8">
           Since 2014, Moritz and Christopher have been creating infographics,
-          tools, and projects together through their interactive news agency,
+          tools, and projects together through their interactive news agency,{' '}
           <Link href="https://webkid.io/" className="text-pink-500">
             webkid
           </Link>
-          . Along the way to creating
+          . Along the way to creating{' '}
           <Link href="https://datablocks.pro/" className="text-pink-500">
             Datablocks
           </Link>{' '}
@@ -53,13 +53,12 @@ const Page: FC = () => {
           the many they had used.
         </Text>
         <Text size="lg" className="leading-8 mb-8">
-          Hayleigh and Peter joined the team to help out with the many things
-          that revolve around an open source library. In 2023, we generalized
-          the core of React Flow to support other frameworks beyond React. In
-          order to keep all of our ducks in a row, we created xyflow to be the
-          house where all of our projects could live. Now, here we are- happy
-          maintainers of a couple of libraries we&apos;re proud of with
-          wonderful communities behind them :)
+          While expanding the team, we generalized the core of React Flow to
+          support other frameworks beyond React. In order to keep all of our
+          ducks in a row, we created xyflow to be the house where all of our
+          projects could live. Now, here we are- happy maintainers of a couple
+          of libraries we&apos;re proud of with wonderful communities behind
+          them :)
         </Text>
         <Text size="lg" className="leading-8 mb-8">
           If you need anything, have an idea, or just want to say hi, we&apos;re
@@ -82,7 +81,7 @@ const Page: FC = () => {
         </div>
       </div>
 
-      <ContentGrid className="mt-16 lg:mt-20">
+      <ContentGrid className="mt-16 lg:mt-20 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
         <TeamCard
           name="Christopher"
           teampic={christopher}
@@ -110,6 +109,14 @@ const Page: FC = () => {
           ]}
         />
         <TeamCard
+          name="Abbey"
+          teampic={abbey}
+          description="Abbey spent the first twenty years of her career finely crafting an innovative sea bass fishing technique. The world of sea bass became all too political for her, but luckily she found xyflow, which she wrongly assumed was another commercial fishing company. She is still figuring out how to turn on a computer, but once she does, she is excited to start contributing to the team."
+          links={[
+            { linkName: 'Github', route: 'https://github.com/printerscanner' },
+          ]}
+        />
+        <TeamCard
           name="Burak"
           teampic={burak}
           description="Burak created Vue Flow while aboard a pirate ship, hoping the motley crew could better organize themselves with a node-based cleaning schedule. Even after his ship was commandeered on the shores of Hamburg, he continues to seek those harsh bone-breaking conditions on land through Brazilian Jiu Jitsu, skateboarding, and open source software development.
@@ -120,14 +127,6 @@ const Page: FC = () => {
               linkName: 'Website',
               route: 'https://www.scheissaufdeinmarketingdusalamiwurst.de/',
             },
-          ]}
-        />
-        <TeamCard
-          name="Abbey"
-          teampic={abbey}
-          description="Abbey spent the first twenty years of her career finely crafting an innovative sea bass fishing technique. The world of sea bass became all too political for her, but luckily she found xyflow, which she wrongly assumed was another commercial fishing company. She is still figuring out how to turn on a computer, but once she does, she is excited to start contributing to the team."
-          links={[
-            { linkName: 'Github', route: 'https://github.com/printerscanner' },
           ]}
         />
       </ContentGrid>
