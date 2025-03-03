@@ -1,33 +1,70 @@
 import { readFile } from 'fs/promises';
-import { resolve } from 'path';
-
+import path from 'path';
+import fg from 'fast-glob';
+import { Folder, PageMapItem } from 'nextra';
+import {
+  convertToPageMap,
+  mergeMetaWithPageMap,
+  normalizePageMap,
+} from 'nextra/page-map';
 import { compileMdx } from 'nextra/compile';
 import { Callout, Cards, Tabs } from 'nextra/components';
 import { evaluate } from 'nextra/evaluate';
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
-
 import ProExampleViewer from '@/components/pro-example-viewer';
 import { RemoteCodeViewer } from 'xy-shared/server/remote-code-viewer';
 import { useMDXComponents as getMDXComponents } from '@/mdx-components';
-import { mdxPathOverrides } from './config';
+import { meta } from './config';
 
-const examplesPath = resolve(
-  process.cwd(),
-  '../../apps/example-apps/react/examples',
-);
+export async function getAllExamples(): Promise<string[]> {
+  const result = await fg(
+    [
+      '**/README.mdx',
+      '!**/misc/overview/README.mdx', // ignore because we need to put it in `examples/overview`
+    ],
+    {
+      cwd: examplesPath,
+    },
+  );
+  return result.map((filePath) => filePath.replace('/README.mdx', ''));
+}
 
-export const generateFilePaths = (meta) =>
-  Object.keys(meta).reduce<string[]>((res, item) => {
-    if (meta[item].items) {
-      Object.keys(meta[item].items).forEach((subItem) => {
-        res.push(`${item}/${subItem}.mdx`);
-      });
-    } else {
-      res.push(`${item}.mdx`);
-    }
+export async function getPageMap(): Folder {
+  const filePaths = await getAllExamples();
 
-    return res;
-  }, []);
+  const { mdxPages, pageMap: _pageMap } = convertToPageMap({
+    filePaths,
+    basePath: 'examples',
+  });
+
+  const examplesPageMap = mergeMetaWithPageMap(_pageMap[0], meta);
+
+  const pageMap = normalizePageMap(examplesPageMap);
+  return addFrontMatter(pageMap);
+}
+
+function addFrontMatter(item: PageMapItem) {
+  if ('children' in item) {
+    return {
+      ...item,
+      children: item.children.map((i) => addFrontMatter(i)),
+    };
+  }
+  if ('name' in item) {
+    const result = require(
+      // The static analyzer needs to know the import path as precisely as possible.
+      // To achieve this, we keep `examples/` in the import path.
+      `../../../../../../../apps/example-apps/react/examples/${item.route.replace('/examples/', '')}/README.mdx?metadata`,
+    );
+    return {
+      ...item,
+      frontMatter: result.metadata,
+    };
+  }
+  return item;
+}
+
+const examplesPath = path.resolve('../../apps/example-apps/react/examples');
 
 export const {
   wrapper: Wrapper,
@@ -42,21 +79,11 @@ export const {
   ProExampleViewer,
 });
 
-export async function evaluateRoute(
-  route: string,
-  mdxPages: Record<string, string>,
-) {
-  const filePath = mdxPages[route];
-
-  if (!filePath) {
-    throw new Error(`File path "${filePath}" doesn't exist`)
-  }
-
-  const _route = mdxPathOverrides[route] ?? route;
-  const readmeContent = await readFile(
-    resolve(examplesPath, _route, 'README.mdx'),
-    'utf-8',
+export async function evaluateRoute(route: string) {
+  const rawMdx = await readFile(
+    path.resolve(examplesPath, route, 'README.mdx'),
+    'utf8',
   );
-  const rawJs = await compileMdx(readmeContent, { filePath });
+  const rawJs = await compileMdx(rawMdx);
   return evaluate(rawJs, components);
 }
