@@ -54,7 +54,7 @@ function addFrontMatter(item: PageMapItem) {
     const result = require(
       // The static analyzer needs to know the import path as precisely as possible.
       // To achieve this, we keep `examples/` in the import path.
-      `../../../../../../../apps/example-apps/react/examples/${item.route.replace('/examples/', '')}/README.mdx?metadata`,
+      `@/../../apps/example-apps/react/examples/${item.route.replace('/examples/', '')}/README.mdx?metadata`,
     );
     return {
       ...item,
