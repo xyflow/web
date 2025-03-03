@@ -25,7 +25,7 @@ export const meta = {
   },
   edges: {
     items: {
-      'animating-edges': '',
+      'animating-edges-node': '',
       'custom-connectionline': '',
       'custom-edges': '',
       'delete-edge-on-drop': '',
@@ -81,15 +81,4 @@ export const meta = {
       'static-server-side-generation': '',
     },
   },
-};
-
-/**
- * There are some example pages that are not directly accessible via their file path.
- * This object allows you to override the default path to the MDX file.
- *
- * [route]: [actual README.mdx file path]
- */
-export const mdxPathOverrides = {
-  'edges/animating-edges': 'edges/animating-edges-node',
-  overview: 'misc/overview',
 };
