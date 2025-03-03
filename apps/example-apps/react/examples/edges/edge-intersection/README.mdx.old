@@ -3,6 +3,11 @@ title: Edge Intersection
 description: Detect edge intersections with nodes while dragging.
 ---
 
+<<<<<<<< HEAD:apps/example-apps/react/examples/edges/edge-intersection/README.mdx.old
+========
+import { Callout } from 'nextra/components';
+
+>>>>>>>> feat/generated-examples:apps/example-apps/react/examples/edges/edge-intersection/README.mdx
 This example shows how you can detect an intersection between a dragged node and an edge.
 
 <Callout type="info">
