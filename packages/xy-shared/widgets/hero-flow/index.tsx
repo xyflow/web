@@ -29,7 +29,7 @@ function HeroFlow({
           style={headlineStyle}
           className="text-center mx-auto lg:mx-0 lg:text-left max-w-lg relative bg-white/10 backdrop-blur-[2px] px-3 lg:px-[35px]"
         >
-          <Heading size="lg" className="mb-4 font-black">
+          <Heading size="lg" as="h1" className="mb-4 font-black">
             Wire Your Ideas with <span className="text-primary">{title}</span>
           </Heading>
 
