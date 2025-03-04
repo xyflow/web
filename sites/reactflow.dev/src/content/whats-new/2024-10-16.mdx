@@ -9,8 +9,6 @@ date: '2024-10-16'
 
 import { Emoji } from '@xyflow/xy-ui';
 
-# We've updated our example viewer!
-
 For a long time now our examples have been built on top of [Sandpack](https://sandpack.codesandbox.io).
 This has been a powerful tool for us to provide interactive examples in our docs
 but it's also come at a cost.
@@ -21,21 +19,21 @@ We liked Sandpack, but we kept brushing up against some pain points that ultimat
 we decided we couldn't ignore.
 
 - **Our examples were slow to load.** Sandpack is an impressive tool, but it is also
-a heavy one. The sandpack client itself takes a moment to load, and then if an
-example included dependencies those would need to be fetched as well. For one-off
-example pages this wasn't terrible, but particularly for longer docs pages like
-our guides or tutorials this could really kill the momentum.
+  a heavy one. The sandpack client itself takes a moment to load, and then if an
+  example included dependencies those would need to be fetched as well. For one-off
+  example pages this wasn't terrible, but particularly for longer docs pages like
+  our guides or tutorials this could really kill the momentum.
 
 - **Sandpack didn't properly support Svelte** when we first released Svelte Flow.
-Ultimately we ended up developing a separate SvelteKit app to host our Svelte
-examples and adapted our example viewer to switch between Sandpack examples and
-simple iframe embeds.
+  Ultimately we ended up developing a separate SvelteKit app to host our Svelte
+  examples and adapted our example viewer to switch between Sandpack examples and
+  simple iframe embeds.
 
 - Finally, **developing new examples was a pain.** The source code for our
-React examples lived in folders deep inside our example viewer component and had
-special handling of certain files or formats that made authoring examples quite
-difficult: each change to an example would trigger a hot reload of our docs, which
-meant waiting for sandpack to reload and re-render the example again and again.
+  React examples lived in folders deep inside our example viewer component and had
+  special handling of certain files or formats that made authoring examples quite
+  difficult: each change to an example would trigger a hot reload of our docs, which
+  meant waiting for sandpack to reload and re-render the example again and again.
 
 And on top of all that we had an entirely separate app we used to generate the
 screenshots for our [examples overview page](/examples)!
@@ -61,27 +59,27 @@ script to help us quickly create new examples:
 ```md
 The scaffold script helps you quickly put together a new example for either
 reactflow.dev or svelteflow.dev by copying over the boilerplate. All arguments
-are *required*.
+are _required_.
 
 USAGE:
 
-  pnpm scaffold <FRAMEWORK> <ROUTE>
+pnpm scaffold <FRAMEWORK> <ROUTE>
 
 EXAMPLES:
 
-  pnpm scaffold react blog/web-audio/demo
+pnpm scaffold react blog/web-audio/demo
 
-  pnpm scaffold svelte guides/getting-started
+pnpm scaffold svelte guides/getting-started
 
 ARGUMENTS:
 
-  FRAMEWORK   'react' | 'svelte'
+FRAMEWORK 'react' | 'svelte'
 
               The framework the example will be written in. This affects where
               the generated files are placed in conjuction with the ROUTE
               argument.
 
-  ROUTE       string
+ROUTE string
 
               The route fragment the example app will be served at when combined
               with the FRAMEWORK argument. For example, calling the script as
