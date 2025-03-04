@@ -54,7 +54,6 @@ jobs:
           authors: [xyflow]
           date: '${{ env.DATE }}'
           ---
-          # Whats New in ${{ env.FRAMEWORK }} Flow ${{ env.VERSION }}
           ${CLEAN_BODY}
           EOL
       - name: 'Commit changes'
