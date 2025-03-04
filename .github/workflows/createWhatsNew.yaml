@@ -21,7 +21,7 @@ jobs:
       - name: Determine current day & date
         id: date
         run: |
-          echo "DATE=$(date +'%Y-%m-%dT12:00:00')" >> $GITHUB_ENV
+          echo "DATE=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
           echo "DAY=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
       - name: Determine package version
         id: version
