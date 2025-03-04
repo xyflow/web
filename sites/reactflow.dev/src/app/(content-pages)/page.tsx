@@ -125,7 +125,7 @@ const Page: FC = async () => {
         }
       />
 
-      <Section className="mt-6 lg:mt-10 lg:px-5">
+      <Section className="mt-6 lg:mt-10 lg:px-10">
         <Stats
           stats={[
             { label: 'Github Stars', value: `${(stars / 1000).toFixed(1)}K` },
