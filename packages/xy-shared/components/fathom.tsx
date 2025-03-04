@@ -18,10 +18,8 @@ function TrackPageView({ id, domains }: { id: string; domains?: string[] }) {
 
   // Record a pageview when route changes
   useEffect(() => {
-    if (!pathname) return;
-
     trackPageview({
-      url: pathname + searchParams?.toString(),
+      url: pathname + searchParams.toString(),
       referrer: document.referrer,
     });
   }, [pathname, searchParams]);
@@ -30,6 +28,9 @@ function TrackPageView({ id, domains }: { id: string; domains?: string[] }) {
 }
 
 export function Fathom(props: { id: string; domains?: string[] }) {
+  if (process.env.NODE_ENV !== 'production') {
+    return null;
+  }
   return (
     <Suspense fallback={null}>
       <TrackPageView {...props} />
