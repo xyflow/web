@@ -33,7 +33,7 @@ import { Metadata } from 'next';
 import { getPageMap } from 'nextra/page-map';
 import { MdxFile } from 'nextra';
 
-export const revalidate = 86_400; // 60 * 60 * 24;
+export const revalidate = 86400; // 60 * 60 * 24;
 export const metadata: Metadata = {
   title: 'React Flow Pro Examples',
   description:
