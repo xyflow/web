@@ -54,7 +54,7 @@ const Footer = forwardRef<HTMLDivElement, FooterProps>(
   ) => {
     return (
       <footer className={cn(footerVariants({ variant, className }))} ref={ref}>
-        <div className="mx-auto lg:flex max-w-[90rem] pl-[max(env(safe-area-inset-left),1.5rem)] pr-[max(env(safe-area-inset-right),1.5rem)]">
+        <div className="mx-auto lg:flex x:max-w-(--nextra-content-width) pl-[max(env(safe-area-inset-left),1.5rem)] pr-[max(env(safe-area-inset-right),1.5rem)]">
           <div className="lg:max-w-[300px] md:max-w-[600px] lg:mr-24 shrink-0">
             {message && (
               <>

@@ -125,7 +125,7 @@ const Page: FC = async () => {
         }
       />
 
-      <Section className="mt-6 lg:mt-10">
+      <Section className="mt-6 lg:mt-10 lg:px-10">
         <Stats
           stats={[
             { label: 'Github Stars', value: `${(stars / 1000).toFixed(1)}K` },
@@ -159,6 +159,7 @@ const Page: FC = async () => {
 
       <Section className="relative">
         <WhatsNewPreview items={whatsNew} variant="compact" />
+
         <div className="lg:hidden h-[50%] w-full bg-gradient-to-b from-transparent via-white/70 to-white absolute bottom-0 pointer-events-none" />
       </Section>
 
