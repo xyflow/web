@@ -135,7 +135,7 @@ It might seem awkward to get the connections first, and then the data seperately
 function CustomHandle({ id, label, onChange }) {
   const connections = useNodeConnections({
     handleType: 'target',
-    id,
+    handleId: id,
   });
 
   const nodeData = useNodesData(connections?.[0].source);
