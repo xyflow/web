@@ -80,7 +80,7 @@ Let's also add edges going from the input nodes to the color node to our
 How do we get the data from the input nodes to the color node? This is a two step process that involves two hooks created for this exact purpose:
 
 1. Store each number input value inside the node's `data` object with help of the [`updateNodeData`](/api-reference/types/react-flow-instance#update-node-data) callback.
-2. Find out which nodes are connected by using [`useHandleConnections`](/api-reference/hooks/use-handle-connections) and then use [`useNodesData`](/api-reference/hooks/use-nodes-data) for receiving the data from the connected nodes.
+2. Find out which nodes are connected by using [`useNodeConnections`](/api-reference/hooks/use-node-connections) and then use [`useNodesData`](/api-reference/hooks/use-nodes-data) for receiving the data from the connected nodes.
 
 ### Step 1: Writing values to the data object
 
@@ -108,7 +108,7 @@ By default, the data you pass to [`updateNodeData`](/api-reference/types/react-f
 
 ### Step 2: Getting data from connected nodes
 
-We start by determining all connections for each handle with the [`useHandleConnections`](/api-reference/hooks/use-handle-connections) hook and then fetching the data for the first connected node with [`updateNodeData`](/api-reference/types/react-flow-instance#update-node-data).
+We start by determining all connections for each node with the [`useNodeConnections`](/api-reference/hooks/use-node-connections) hook and then fetching the data for the first connected node with [`updateNodeData`](/api-reference/types/react-flow-instance#update-node-data).
 
 <Callout type="info">
   Note that each handle can have multiple nodes connected to it and you might
@@ -133,8 +133,8 @@ It might seem awkward to get the connections first, and then the data seperately
 ```jsx filename="ColorPreview.js"
 // {...}
 function CustomHandle({ id, label, onChange }) {
-  const connections = useHandleConnections({
-    type: 'target',
+  const connections = useNodeConnections({
+    handleType: 'target',
     id,
   });
 
@@ -247,7 +247,7 @@ You have learned how to move data through the flow and transform it along the wa
 All you need to do is
 
 1. store data inside the node's `data` object with help of [`updateNodeData`](/api-reference/types/react-flow-instance#update-node-data) callback.
-2. find out which nodes are connected by using [`useHandleConnections`](/api-reference/hooks/use-handle-connections) and then use [`useNodesData`](/api-reference/hooks/use-nodes-data) for receiving the data from the connected nodes.
+2. find out which nodes are connected by using [`useNodeConnections`](/api-reference/hooks/use-node-connections) and then use [`useNodesData`](/api-reference/hooks/use-nodes-data) for receiving the data from the connected nodes.
 
 You can implement branching for example by interpreting incoming data that is undefined as a "stop". As a side note, most flowgraphs that also have a branching usually seperate the triggering of nodes from the actual data hooked up to the nodes. Unreal Engines Blueprints are a good example for this.
 
