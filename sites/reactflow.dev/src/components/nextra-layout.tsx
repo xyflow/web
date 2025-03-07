@@ -1,15 +1,16 @@
 /* eslint react/jsx-sort-props: 'error' */
 import { ComponentProps, FC, ReactNode } from 'react';
 import { PageMapItem } from 'nextra';
-import { Layout, Navbar } from 'nextra-theme-docs';
-import { Footer as XYFooter, LogoLabel } from '@xyflow/xy-ui';
+import { Layout } from 'nextra-theme-docs';
+import { Footer as XYFooter } from '@xyflow/xy-ui';
 import { TOC, getLastChangelog } from 'xy-shared/server';
+import { Navbar } from './navbar';
 
 export const NextraLayout: FC<{
   children: ReactNode;
   pageMap: PageMapItem[];
   footerCategories: ComponentProps<typeof XYFooter>['categories'];
-  navbar: ReactNode;
+  navbar?: ReactNode;
 }> = async ({ children, pageMap, footerCategories, navbar }) => {
   return (
     <Layout
@@ -23,20 +24,7 @@ export const NextraLayout: FC<{
           categories={footerCategories}
         />
       }
-      navbar={
-        <Navbar
-          align="left"
-          logo={
-            <LogoLabel
-              label="React Flow"
-              labelClassName="mr-5 md:max-lg:hidden"
-            />
-          }
-          logoLink={false}
-        >
-          {navbar}
-        </Navbar>
-      }
+      navbar={<Navbar>{navbar}</Navbar>}
       nextThemes={{ forcedTheme: 'light', defaultTheme: 'light' }}
       pageMap={pageMap}
       // Set to null to avoid rendering search in mobile nav, since we added search in navbar already

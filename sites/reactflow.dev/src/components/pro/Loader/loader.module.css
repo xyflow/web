@@ -1,0 +1,121 @@
+.wrapper {
+  position: relative;
+}
+
+.node {
+  width: 45%;
+  height: 45%;
+  border-radius: 15%;
+  border: 4px solid #111;
+  position: absolute;
+}
+
+.node:before,
+.node:after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background-color: #111;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid white;
+}
+
+.node.topRight {
+  top: 0;
+  right: 0;
+  border-color: #ff0071;
+  animation: bounceTopRight 4s infinite;
+}
+
+.node.topRight:before,
+.node.topRight:after {
+  background-color: #ff0071;
+}
+
+.node.topRight:before {
+  left: 0;
+  top: 50%;
+}
+
+.node.topRight:after {
+  top: 100%;
+  left: 50%;
+}
+
+.node.bottomRight {
+  bottom: 0;
+  right: 0;
+  animation: bounceBottomRight 3s infinite;
+  animation-delay: 1s;
+}
+
+.node.bottomRight:before {
+  left: 50%;
+  top: 0;
+}
+
+.node.bottomRight:after {
+  top: 50%;
+  left: 0;
+}
+
+.node.bottomLeft {
+  bottom: 0;
+  left: 0;
+  animation: bounceBottomRight 2s infinite;
+  animation-delay: 2s;
+}
+
+.node.bottomLeft:before {
+  left: 100%;
+  top: 50%;
+}
+
+.node.bottomLeft:after {
+  display: none;
+}
+
+.node.topLeft {
+  top: 0;
+  left: 0;
+  animation: bounceBottomRight 1s infinite;
+  animation-delay: 3s;
+}
+
+.node.topLeft:before {
+  display: none;
+}
+
+.node.topLeft:after {
+  top: 50%;
+  left: 100%;
+}
+
+@keyframes bounceTopRight {
+  0% {
+    transform: scale(1) rotate(0) translate(0, 0);
+    background-color: #fff;
+  }
+  25% {
+    transform: scale(1.5) rotate(20deg) translate(15%, -15%);
+    background-color: #ff0071;
+  }
+  100% {
+    transform: scale(1) rotate(0) translate(0, 0);
+    background-color: #fff;
+  }
+}
+
+@keyframes bounceBottomRight {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
