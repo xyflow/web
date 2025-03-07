@@ -40,16 +40,6 @@ const Layout: FC<{ children: ReactNode }> = async ({ children }) => {
         ],
         ...remainingCategories,
       }}
-      navbar={
-        <Button asChild className="ml-auto">
-          <Link
-            className="shrink-0"
-            href={`${process.env.NEXT_PUBLIC_PRO_PLATFORM_URL}/signup`}
-          >
-            Sign Up
-          </Link>
-        </Button>
-      }
     >
       {children}
     </NextraLayout>

@@ -247,6 +247,12 @@ const metaRecord = {
   },
   'developer-survey-2024': { display: 'hidden' },
   'whats-new': { display: 'hidden' },
+  // TODO by @dima -- maybe by default make `display: 'hidden'` ?
+  dashboard: { display: 'hidden' },
+  'email-verification': { display: 'hidden' },
+  'reset-password': { display: 'hidden' },
+  signin: { display: 'hidden' },
+  signup: { display: 'hidden' },
 };
 
 export default metaRecord;

@@ -4,7 +4,7 @@ import reactFlowPackageJson from '@xyflow/react/package.json';
 import { Html } from '@/components/html.client';
 import { generateRootMetadata } from 'xy-shared/server';
 import { Fathom } from 'xy-shared';
-
+import { Providers } from '@/components/pro/Providers';
 import './global.css';
 
 export const metadata = generateRootMetadata('React Flow', {
@@ -30,7 +30,7 @@ const RootLayout: FC<{
       <Head color={{ hue: 333, saturation: 80 }} />
       <body>
         <Fathom {...fathomOptions} />
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </Html>
   );
