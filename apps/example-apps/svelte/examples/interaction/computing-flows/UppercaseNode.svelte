@@ -2,7 +2,7 @@
   import {
     Handle,
     Position,
-    useHandleConnections,
+    useNodeConnections,
     useNodesData,
     useSvelteFlow,
     type NodeProps
@@ -13,9 +13,9 @@
   export let id: $$Props['id'];
 
   const { updateNodeData } = useSvelteFlow();
-  const connections = useHandleConnections({
-    nodeId: id,
-    type: 'target'
+  const connections = useNodeConnections({
+    handleId: id,
+    handleType: 'target'
   });
 
   $: nodeData = useNodesData($connections[0]?.source);

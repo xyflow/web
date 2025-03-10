@@ -225,7 +225,7 @@ The type unions can also be used to type the return values of many hooks.
 ```tsx filename="FlowComponent.tsx"
 import {
   useReactFlow,
-  useHandleConnections,
+  useNodeConnections,
   useNodesData,
   useStore,
 } from '@xyflow/react';
@@ -239,8 +239,8 @@ export default function FlowComponent() {
     nodes: s.nodes,
   }));
 
-  const connections = useHandleConnections({
-    type: 'target',
+  const connections = useNodeConnections({
+    handleType: 'target',
   });
 
   const nodesData = useNodesData<CustomNodeType>(connections?.[0].source);
