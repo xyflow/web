@@ -1,9 +1,9 @@
 import React from 'react';
-import { Handle, useHandleConnections } from '@xyflow/react';
+import { Handle, useNodeConnections } from '@xyflow/react';
 
 const CustomHandle = (props) => {
-  const connections = useHandleConnections({
-    type: props.type,
+  const connections = useNodeConnections({
+    handleType: props.type,
   });
 
   return (

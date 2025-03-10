@@ -2,25 +2,25 @@ import {
   Handle,
   Position,
   useNodesData,
-  useHandleConnections,
+  useNodeConnections,
 } from '@xyflow/react';
 
 function ColorPreview() {
-  const redConnections = useHandleConnections({
-    type: 'target',
-    id: 'red',
+  const redConnections = useNodeConnections({
+    handleType: 'target',
+    handleId: 'red',
   });
   const redNodeData = useNodesData(redConnections?.[0].source);
 
-  const greenConnections = useHandleConnections({
-    type: 'target',
-    id: 'green',
+  const greenConnections = useNodeConnections({
+    handleType: 'target',
+    handleId: 'green',
   });
   const greenNodeData = useNodesData(greenConnections?.[0].source);
 
-  const blueConnections = useHandleConnections({
-    type: 'target',
-    id: 'blue',
+  const blueConnections = useNodeConnections({
+    handleType: 'target',
+    handleId: 'blue',
   });
   const blueNodeData = useNodesData(blueConnections?.[0].source);
 

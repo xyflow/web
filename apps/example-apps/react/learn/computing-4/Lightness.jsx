@@ -2,12 +2,12 @@ import { useState, useEffect } from 'react';
 import {
   Handle,
   Position,
-  useHandleConnections,
+  useNodeConnections,
   useNodesData,
 } from '@xyflow/react';
 
 function LightnessNode() {
-  const connections = useHandleConnections({ type: 'target' });
+  const connections = useNodeConnections({ handleType: 'target' });
   const nodesData = useNodesData(connections?.[0].source);
 
   const [lightness, setLightness] = useState('dark');
