@@ -14,12 +14,11 @@
 
   const { updateNodeData } = useSvelteFlow();
   const connections = useNodeConnections({
-    handleId: id,
+    id,
     handleType: 'target'
   });
 
   $: nodeData = useNodesData($connections[0]?.source);
-
   $: {
     updateNodeData(id, { text: $nodeData?.data?.text?.toUpperCase() || '' });
   }

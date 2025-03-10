@@ -4,7 +4,7 @@
 
   export let id: $$Props['id'];
 
-  const connections = useNodeConnections({ handleId: id, handleType: 'target' });
+  const connections = useNodeConnections({ id, handleType: 'target' });
 
   $: isConnectable = $connections.length === 0;
 </script>

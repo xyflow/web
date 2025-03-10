@@ -12,7 +12,7 @@
   export let id: $$Props['id'];
 
   const connections = useNodeConnections({
-    handleId: id,
+    id,
     handleType: 'target'
   });
 
