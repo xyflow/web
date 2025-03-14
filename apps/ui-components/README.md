@@ -34,4 +34,4 @@ app/
 
 ## Deploying components
 
-Inside the `scripts/` folder you will find a script called `generate-registry.js`. This script is executed when running `pnpm build`. It generates registry files for the cli (`regsitry/<component-name>.json`), as well as a `demo/<component-name>.json` file with the example code for each component and saves them inside the `public/` folder. This way by building and deploying the app we can directly host all neccessary files needed for the cli and integrating it with our website.
+Inside the `scripts/` folder you will find a script called `generate-registry.js`. This script is executed when running `pnpm build`. It generates registry files for the cli (`registry/<component-name>.json`), as well as a `demo/<component-name>.json` file with the example code for each component and saves them inside the `public/` folder. This way by building and deploying the app we can directly host all necessary files needed for the cli and integrating it with our website.
