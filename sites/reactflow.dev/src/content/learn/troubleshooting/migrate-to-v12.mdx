@@ -50,7 +50,7 @@ import '@xyflow/react/dist/base.css';
 
 ### 2. Node <code>measured</code> attribute for measured <code>width</code> and <code>height</code>
 
-All measured node values are now stored in `node.measured`. Besides the new package name, this is the biggest change. After React Flow measures your nodes, it writes the dimesions to `node.measured.width` and `node.measured.height`. If you are using any layouting library like dagre or elk, you now need to take the dimesions from `node.measured` instead of `node`. If you are using `width` and `height`, those values will now be used as inline styles to specify the node dimensions.
+All measured node values are now stored in `node.measured`. Besides the new package name, this is the biggest change. After React Flow measures your nodes, it writes the dimensions to `node.measured.width` and `node.measured.height`. If you are using any layouting library like dagre or elk, you now need to take the dimensions from `node.measured` instead of `node`. If you are using `width` and `height`, those values will now be used as inline styles to specify the node dimensions.
 
 **Old API**
 

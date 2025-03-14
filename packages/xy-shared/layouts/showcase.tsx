@@ -244,7 +244,7 @@ function CaseStudyPreview({
             <a
               href={data.project_url}
               target="_blank"
-              className="flexitems-center"
+              className="flex items-center"
             >
               Project Website <ArrowRightCircleIcon className="ml-1 w-4 h-4" />
             </a>
