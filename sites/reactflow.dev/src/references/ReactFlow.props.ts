@@ -256,7 +256,7 @@ export const generalEventHandlerProps: PropsTableProps = {
     {
       name: 'onError',
       type: '(code: string, message: string) => void',
-      description: `Ocassionally something may happen that causes React Flow to
+      description: `Occasionally something may happen that causes React Flow to
       error. Instead of exploding your application, we log a message to the console
       and then call this event handler. You might use it for additional logging
       or to show a message to the user.`,
@@ -499,7 +499,7 @@ export const interactionProps: PropsTableProps = {
       type: 'boolean',
       default: 'true',
       description: `When true, focus between nodes can be cycled with the Tab key
-      and selected with the Enter key. This option can be overriden by individual
+      and selected with the Enter key. This option can be overridden by individual
       nodes by setting their focusable prop.`,
     },
     {
@@ -507,7 +507,7 @@ export const interactionProps: PropsTableProps = {
       type: 'boolean',
       default: 'true',
       description: `When true, focus between edges can be cycled with the Tab key
-      and selected with the Enter key. This option can be overriden by individual
+      and selected with the Enter key. This option can be overridden by individual
       edges by setting their focusable prop.`,
     },
     {
@@ -515,7 +515,7 @@ export const interactionProps: PropsTableProps = {
       type: 'boolean',
       default: 'true',
       description: `When true, elements (nodes and edges) can be selected by clicking
-      on them. This option can be overriden by individual elements by setting their
+      on them. This option can be overridden by individual elements by setting their
       selectable prop.`,
     },
     {
@@ -629,7 +629,7 @@ export const keyboardProps: PropsTableProps = {
       type: 'string | string[] | null',
       default: '"Backspace"',
       description: `If set, pressing the key or chord will delete any selected
-      nodes and edges. Passing an array represents mutliple keys that can be
+      nodes and edges. Passing an array represents multiple keys that can be
       pressed. For example, ["Delete", "Backspace"] will delete selected elements
       when either key is pressed.`,
     },
@@ -639,7 +639,7 @@ export const keyboardProps: PropsTableProps = {
       default: '"Shift"',
       description: `If set, holding this key will let you click and drag to draw
       a selection box around multiple nodes and edges. Passing an array represents
-      mutliple keys that can be pressed. For example, ["Shift", "Meta"] will
+      multiple keys that can be pressed. For example, ["Shift", "Meta"] will
       allow you to draw a selection box when either key is pressed.`,
     },
     {
