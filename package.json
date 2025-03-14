@@ -10,6 +10,7 @@
     "dev:ui-components": "turbo run dev --filter ui-components",
     "dev:xyflow.com": "turbo run dev --filter xyflow-website --filter example-apps",
     "lint": "turbo run lint",
+    "lint:spell": "cspell --color .",
     "format": "prettier --ignore-path .gitignore --write \"**/*.{ts,tsx,md}\"",
     "clean": "pnpm -r --parallel exec rimraf dist .turbo node_modules"
   },
@@ -20,7 +21,9 @@
     "prettier": "^3.3.3",
     "rimraf": "^6.0.1",
     "turbo": "^2.2.3",
-    "typescript": "^5.5.4"
+    "typescript": "^5.5.4",
+    "cspell": "^8.17.5",
+    "@cspell/cspell-types": "^8.17.5"
   },
   "packageManager": "pnpm@9.12.2",
   "name": "docs",

@@ -60,7 +60,7 @@ function Flow() {
 
     if (
       !domNode ||
-      // we need to check if these properites exist, because when a node is not initialized yet,
+      // we need to check if these properties exist, because when a node is not initialized yet,
       // it doesn't have a positionAbsolute nor a width or height
       !parentNode?.internals.positionAbsolute ||
       !parentNode?.measured.width ||
