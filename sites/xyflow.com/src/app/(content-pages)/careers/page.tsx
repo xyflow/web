@@ -158,7 +158,7 @@ const Page: FC = () => {
         <Text size="lg" className="leading-8">
           Diversity and inclusion are a priority for us. We are open to
           discussions about how to make xyflow a more inclusive space and if we
-          can make accomodations in our hiring process, please reach out to us.
+          can make accommodations in our hiring process, please reach out to us.
         </Text>
       </Section>
     </BaseLayout>

@@ -153,7 +153,7 @@ export const generalEventHandlerProps: PropsTableProps = {
     {
       name: 'onerror',
       type: '(code: string, message: string) => void',
-      description: `Ocassionally something may happen that causes Svelte Flow to
+      description: `Occasionally something may happen that causes Svelte Flow to
       error. Instead of exploding your application, we log a message to the console
       and then call this handler. You might use it for additional logging
       or to show a message to the user.`,
