@@ -38,3 +38,4 @@ yarn-error.log*
 tmp
 vite.config.ts.*
 .idea/
+tsconfig.tsbuildinfo

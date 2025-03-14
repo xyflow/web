@@ -11,8 +11,8 @@ const Orientation = {
 
 const entitreeSettings = {
   clone: true, // returns a copy of the input, if your application does not allow editing the original object
-  enableFlex: true, // has slightly better perfomance if turned off (node.width, node.height will not be read)
-  firstDegreeSpacing: 100, // spacing in px between nodes belonging to the same source, eg children with same parent
+  enableFlex: true, // has slightly better performance if turned off (node.width, node.height will not be read)
+  firstDegreeSpacing: 100, // spacing in px between nodes belonging to the same source, e.g. children with same parent
   nextAfterAccessor: 'spouses', // the side node prop used to go sideways, AFTER the current node
   nextAfterSpacing: 100, // the spacing of the "side" nodes AFTER the current node
   nextBeforeAccessor: 'siblings', // the side node prop used to go sideways, BEFORE the current node

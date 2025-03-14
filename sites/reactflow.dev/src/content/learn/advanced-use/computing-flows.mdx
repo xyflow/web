@@ -103,7 +103,7 @@ By default, the data you pass to [`updateNodeData`](/api-reference/types/react-f
     as UI state directly.
   </b>
   There is a delay in updating the data object and the cursor might jump around
-  erraticly and lead to unwanted inputs.
+  erratically and lead to unwanted inputs.
 </Callout>
 
 ### Step 2: Getting data from connected nodes
@@ -128,7 +128,7 @@ in real time.
 
 ### Improving the code
 
-It might seem awkward to get the connections first, and then the data seperately for each handle. For nodes with multiple handles like these, you should consider creating a custom handle component that isolates connection states and node data binding. We can create one inline.
+It might seem awkward to get the connections first, and then the data separately for each handle. For nodes with multiple handles like these, you should consider creating a custom handle component that isolates connection states and node data binding. We can create one inline.
 
 ```jsx filename="ColorPreview.js"
 // {...}
@@ -249,7 +249,7 @@ All you need to do is
 1. store data inside the node's `data` object with help of [`updateNodeData`](/api-reference/types/react-flow-instance#update-node-data) callback.
 2. find out which nodes are connected by using [`useNodeConnections`](/api-reference/hooks/use-node-connections) and then use [`useNodesData`](/api-reference/hooks/use-nodes-data) for receiving the data from the connected nodes.
 
-You can implement branching for example by interpreting incoming data that is undefined as a "stop". As a side note, most flowgraphs that also have a branching usually seperate the triggering of nodes from the actual data hooked up to the nodes. Unreal Engines Blueprints are a good example for this.
+You can implement branching for example by interpreting incoming data that is undefined as a "stop". As a side note, most flowgraphs that also have a branching usually separate the triggering of nodes from the actual data hooked up to the nodes. Unreal Engines Blueprints are a good example for this.
 
 <Callout type="info">
   One last note before you go: you should find a consistent way of structuring

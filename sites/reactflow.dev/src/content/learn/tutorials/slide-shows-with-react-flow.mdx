@@ -22,7 +22,7 @@ We recently published the findings from our React Flow 2023 end-of-year survey w
   <Image
     src="/img/tutorials/presentation/survey.png"
     caption="Our 2023 end of year survey app was made up of many static nodes and buttons to navigate between them."
-    alt="Screenshot of slides layed out on an infinite canvas, each with information pulled from a survey of React Flow users"
+    alt="Screenshot of slides laid out on an infinite canvas, each with information pulled from a survey of React Flow users"
   />
 </Bleed>
 
@@ -585,7 +585,7 @@ that was clicked.
 
 Clicking to focus a node is handy for zooming out to see the big picture before
 focusing back in on a specific slide, but it's not a very practical way for
-navigating around a prsentation. In this step we'll add some controls to each
+navigating around a presentation. In this step we'll add some controls to each
 slide that allow us to move to a connected slide in any direction.
 
 Let's add a `<footer>` to each slide that conditionally renders a button in any
@@ -620,7 +620,7 @@ You can style the footer however you like, but it's important to add the `"nopan
 class to prevent prevent the canvas from panning as you interact with any of the
 buttons.
 
-To implement `moveToSlide` we'll make use of `fitView` agan. Previously we had a
+To implement `moveToSlide`, we'll make use of `fitView` again. Previously we had a
 reference to the actual node that was clicked on to pass to `fitView`, but this
 time we only have a node's id. You might be tempted to look up the target node by
 its id, but actually that's not necessary! If we look at the type of

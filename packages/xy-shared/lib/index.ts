@@ -18,7 +18,7 @@
 // min(...,12rem)
 //  As the display gets wider, we want to limit the width of our embeds to do
 //  something sensible so they don't end up spanning the entire width of someone's
-//  ultrawide monitor. 12rem was chosen as an arbitrary sensible limit, it corresponds
+//  ultra-wide monitor. 12rem was chosen as an arbitrary sensible limit, it corresponds
 //  to tailwind's `mx-44` utility.
 //
 export const wideNegativeMargin = 'sm:-mx-[min(calc((100vw-768px)/2),12rem)]';

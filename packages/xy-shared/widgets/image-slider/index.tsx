@@ -21,7 +21,7 @@ function ImageSlider({
   description = `
   From solo open-source developers, to companies like Stripe and
   Typeform. We’ve seen the library used for data processing tools,
-  chatbot builders, machine learning, musical synthezisers, and
+  chatbot builders, machine learning, musical synthesizers, and
   more.
   `,
   buttonText = 'See all projects',

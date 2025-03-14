@@ -206,7 +206,7 @@ function getAnimateMotionProps({
     repeatCount: repeat,
     // The default calcMode for the `<animateMotion />` element is "paced", which
     // is not compatible with the `keyPoints` attribute. Setting this to "linear"
-    // ensures that the shape correc follows the path.
+    // ensures that the shape correct follows the path.
     calcMode: "linear",
   };
 

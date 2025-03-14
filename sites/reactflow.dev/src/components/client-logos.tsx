@@ -3,7 +3,7 @@ import { Text, cn } from '@xyflow/xy-ui';
 
 import zapier from '../../public/img/clients/zapier.svg';
 import stripe from '../../public/img/clients/stripe.svg';
-import cartoworkflows from '../../public/img/clients/carto.svg';
+import cartoWorkflows from '../../public/img/clients/carto.svg';
 import railway from '../../public/img/clients/railway.svg';
 import retool from '../../public/img/clients/retool.svg';
 import doubleloop from '../../public/img/clients/doubleloop.svg';
@@ -26,7 +26,7 @@ export default function ClientLogos({
         <Image src={zapier} alt="zapier" className="h-7 w-auto" />
         <Image src={stripe} alt="stripe" className="h-7 w-auto" />
         <Image
-          src={cartoworkflows}
+          src={cartoWorkflows}
           alt="carto workflows"
           className="h-9 w-auto"
         />

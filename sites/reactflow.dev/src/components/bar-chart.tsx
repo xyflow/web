@@ -26,7 +26,7 @@ export const BarChart = ({
   const boundsWidth = width - MARGIN.right - MARGIN.left;
   const boundsHeight = height - MARGIN.top - MARGIN.bottom;
 
-  // Y axis is for groups since the barplot is horizontal
+  // Y axis is for groups since the bar plot is horizontal
   const groups = (sorted ? data.sort((a, b) => b.value - a.value) : data).map(
     (d) => d.name,
   );

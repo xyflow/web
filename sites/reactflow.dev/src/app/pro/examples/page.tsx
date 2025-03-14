@@ -28,7 +28,7 @@ import {
   StarIcon,
 } from '@heroicons/react/24/outline';
 
-import starsvg from '../../../../public/img/pro/star.svg';
+import starSvg from '../../../../public/img/pro/star.svg';
 import { Metadata } from 'next';
 import { getPageMap } from 'nextra/page-map';
 import { MdxFile } from 'nextra';
@@ -330,17 +330,17 @@ function StarText() {
     <span className="inline-flex relative text-transparent bg-clip-text bg-gradient-to-r from-primary to-[#FF99C7]">
       <span>Pro</span>
       <Image
-        src={starsvg}
+        src={starSvg}
         alt="star"
         className="absolute h-5 w-5 left-[40%] opacity-50"
       />
       <Image
-        src={starsvg}
+        src={starSvg}
         alt="star"
         className="absolute h-4 w-4 -right-[10px] top-1/2 opacity-20"
       />
       <Image
-        src={starsvg}
+        src={starSvg}
         alt="star"
         className="absolute h-3 w-3 left-[16px] bottom-[6px] opacity-70"
       />
