@@ -1,13 +1,23 @@
-/** @type { import('@cspell/cspell-types').CSpellUserSettings } */
-module.exports = {
+/** @type {import('@cspell/cspell-types').CSpellUserSettings} */
+export default {
+  // Enable both language locale, e.g. to match `behaviour` word
+  language: 'en,en-GB',
   // Do not lint files from gitignore
   useGitignore: true,
+  ignorePaths: ['pnpm-lock.yaml', 'package.json', '*.svg'],
+  ignoreRegExpList: [
+    // <Fathom id="..."
+    // <YoutubeEmbed id="..."
+    /id=".+?"/g,
+    /id: '.+?',/g,
+    // Ignore GitHub usernames
+    /Thanks \[@.+?]/g,
+  ],
   cache: {
     // Cache result in node_modules/.cache instead of root of the project
     useCache: true,
     cacheLocation: 'node_modules/.cache',
   },
-  ignorePaths: ['pnpm-lock.yaml', 'package.json', '*.svg'],
   // List of words to be always considered correct
   words: [
     // Names
@@ -15,12 +25,17 @@ module.exports = {
     'reactflow',
     'xyflow',
     'xyflowdev',
-    'moritz',
-    'turborepo',
-    'nhost',
+    'Sandpack',
+    'hayleigh',
+    'elkjs',
+    'dagre',
+    'Turborepo',
     'shadcn',
-    'opengraph',
     'nextra',
+    'Codesandbox',
+    'moritz',
+    'nhost',
+    'opengraph',
     'lightningcss',
     'waku',
     'Fira',
@@ -28,9 +43,7 @@ module.exports = {
     'quadtree',
     'publica',
     'FOSSY',
-    'dima',
     'svelvet',
-    'Codesandbox',
     'CISG',
     'VSBG',
     'solidjs',
@@ -39,19 +52,12 @@ module.exports = {
     'Straße',
     'Kohlfurter',
     'classcat',
-    'sandpack',
     'spacebar',
     'Kreuzberg',
     'Teutoburger',
     'shiki',
     'Sumit',
     'npmtrends',
-    'waynetee',
-    'crimx',
-    'mhuggins',
-    'gmvrpw',
-    'sjdemartini',
-    'mistic',
     'kaustubhxd',
     'Prezi',
     'MBSE',
@@ -72,7 +78,6 @@ module.exports = {
     'Telemedia',
     'rankdir',
     'rebrushing',
-    'jrmoynihan',
     'lcsfort',
     'Kaustubh',
     'Facu',
@@ -103,8 +108,6 @@ module.exports = {
     'signup',
     'fallblog',
     'nodrag',
-    'elkjs',
-    'dagre',
     'onbeforedelete',
     'onconnectend',
     'onconnectstart',
@@ -118,7 +121,6 @@ module.exports = {
     'connectingto',
     'connectingfrom',
     'connectionindicator',
-    'hayleigh',
     'textbg',
     'buttonedge',
     'selfconnecting',
@@ -243,16 +245,7 @@ module.exports = {
     'checkboxwrapper',
     'bglabel',
     'tabcontent',
-
-    // keys
-    'PFWQXXRR',
-    'HTCFP',
-    'JQTCQNLV',
-    'LXMRMWLB',
-    'UBWE',
     // rename below
     'nodetoolbar',
   ],
-  // Enable both language locale, e.g. to match `behaviour` word
-  language: 'en,en-GB',
 };
