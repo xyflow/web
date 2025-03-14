@@ -10,7 +10,7 @@
     "dev:ui-components": "turbo run dev --filter ui-components",
     "dev:xyflow.com": "turbo run dev --filter xyflow-website --filter example-apps",
     "lint": "turbo run lint",
-    "lint:spell": "cspell --color .",
+    "lint:spell": "cspell --color --quiet .",
     "format": "prettier --ignore-path .gitignore --write \"**/*.{ts,tsx,md}\"",
     "clean": "pnpm -r --parallel exec rimraf dist .turbo node_modules"
   },
