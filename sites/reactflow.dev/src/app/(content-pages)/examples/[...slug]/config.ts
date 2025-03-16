@@ -25,7 +25,7 @@ export const meta = {
   },
   edges: {
     items: {
-      'animating-edges-node': '',
+      'animating-edges': '',
       'custom-connectionline': '',
       'custom-edges': '',
       'delete-edge-on-drop': '',

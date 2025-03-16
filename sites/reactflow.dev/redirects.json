@@ -1055,11 +1055,6 @@
     "permanent": true
   },
   {
-    "source": "/examples/edges/animating-edges",
-    "destination": "/examples/edges/animating-edges-node",
-    "permanent": true
-  },
-  {
     "source": "/api-reference/hooks/useNodeConnections",
     "destination": "/api-reference/hooks/use-node-connections",
     "permanent": true

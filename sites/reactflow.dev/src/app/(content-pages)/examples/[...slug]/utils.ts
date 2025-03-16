@@ -6,6 +6,7 @@ import {
   mergeMetaWithPageMap,
   normalizePageMap,
 } from 'nextra/page-map';
+
 import { meta } from './config';
 
 export async function getAllExamples(): Promise<string[]> {
@@ -24,14 +25,11 @@ export async function getAllExamples(): Promise<string[]> {
 
 export async function getPageMap(): Promise<Folder> {
   const filePaths = await getAllExamples();
-
-  const { mdxPages, pageMap: _pageMap } = convertToPageMap({
+  const { pageMap: _pageMap } = convertToPageMap({
     filePaths,
     basePath: 'examples',
   });
-
   const examplesPageMap = mergeMetaWithPageMap(_pageMap[0], meta);
-
   const pageMap = normalizePageMap(examplesPageMap);
   return addFrontMatter(pageMap);
 }

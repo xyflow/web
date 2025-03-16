@@ -1,7 +1,8 @@
 import { Callout, Cards } from 'nextra/components';
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
-import { RemoteCodeViewer } from 'xy-shared/server';
 import { Button } from '@xyflow/xy-ui';
+import { RemoteCodeViewer } from 'xy-shared/server';
+
 import { useMDXComponents as getMDXComponents } from '@/mdx-components';
 import ProExampleViewer from '@/components/pro-example-viewer';
 import { getAllExamples, importMetadata } from './utils';
