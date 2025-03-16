@@ -30,6 +30,7 @@ export const meta = {
       'custom-edges': '',
       'delete-edge-on-drop': '',
       'edge-label-renderer': '',
+      'edge-intersection': '',
       'edge-types': '',
       'floating-edges': '',
       markers: '',
