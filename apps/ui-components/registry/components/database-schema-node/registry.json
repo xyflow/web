@@ -5,8 +5,8 @@
   "devDependencies": [],
   "registryDependencies": [
     "table",
-    "reactflow/base-node",
-    "reactflow/labeled-handle"
+    "https://ui.reactflow.dev/base-node",
+    "https://ui.reactflow.dev/labeled-handle"
   ],
   "files": [
     {

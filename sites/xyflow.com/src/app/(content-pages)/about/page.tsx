@@ -39,11 +39,11 @@ const Page: FC = () => {
       <Section className="max-w-screen-md mx-auto mt-12 lg:my-12">
         <Text size="lg" className="leading-8 mb-8">
           Since 2014, Moritz and Christopher have been creating infographics,
-          tools, and projects together through their interactive news agency,{' '}
+          tools, and projects together through their interactive news agency,
           <Link href="https://webkid.io/" className="text-pink-500">
             webkid
           </Link>
-          . Along the way to creating{' '}
+          . Along the way to creating
           <Link href="https://datablocks.pro/" className="text-pink-500">
             Datablocks
           </Link>{' '}
@@ -53,12 +53,13 @@ const Page: FC = () => {
           the many they had used.
         </Text>
         <Text size="lg" className="leading-8 mb-8">
-          While expanding the team, we generalized the core of React Flow to
-          support other frameworks beyond React. In order to keep all of our
-          ducks in a row, we created xyflow to be the house where all of our
-          projects could live. Now, here we are- happy maintainers of a couple
-          of libraries we&apos;re proud of with wonderful communities behind
-          them :)
+          Hayleigh and Peter joined the team to help out with the many things
+          that revolve around an open source library. In 2023, we generalized
+          the core of React Flow to support other frameworks beyond React. In
+          order to keep all of our ducks in a row, we created xyflow to be the
+          house where all of our projects could live. Now, here we are- happy
+          maintainers of a couple of libraries we&apos;re proud of with
+          wonderful communities behind them :)
         </Text>
         <Text size="lg" className="leading-8 mb-8">
           If you need anything, have an idea, or just want to say hi, we&apos;re
@@ -81,7 +82,7 @@ const Page: FC = () => {
         </div>
       </div>
 
-      <ContentGrid className="mt-16 lg:mt-20 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
+      <ContentGrid className="mt-16 lg:mt-20">
         <TeamCard
           name="Christopher"
           teamPic={christopher}

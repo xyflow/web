@@ -258,44 +258,56 @@ set up a basic flow from scratch, check out our [quickstart guide](/learn).
 ```tsx filename="src/App.tsx" {14,16-18,20-33,}
 import '@xyflow/react/dist/style.css';
 
-import { ReactFlow, Position, useNodesState, Node } from '@xyflow/react';
-
 import {
-  TooltipNode,
-  TooltipContent,
-  TooltipTrigger,
-} from '@/components/tooltip-node';
+  ReactFlow,
+  OnConnect,
+  Position,
+  useNodesState,
+  useEdgesState,
+  addEdge,
+  Edge,
+  Node,
+} from '@xyflow/react';
 
-function Tooltip() {
-  return (
-    <TooltipNode>
-      <TooltipContent position={Position.Top}>Hidden Content</TooltipContent>
-      <TooltipTrigger>Hover</TooltipTrigger>
-    </TooltipNode>
-  );
-}
+import { TooltipNode } from '@/components/tooltip-node';
 
 const nodeTypes = {
-  tooltip: Tooltip,
+  tooltip: TooltipNode,
 };
 
 const initialNodes: Node[] = [
   {
     id: '1',
     position: { x: 0, y: 0 },
-    data: {},
+    data: {
+      label: 'Hover me',
+      tooltip: {
+        label: 'Boo!',
+        position: Position.Bottom,
+      },
+    },
     type: 'tooltip',
   },
 ];
 
+const initialEdges: Edge[] = [];
+
 function App() {
   const [nodes, , onNodesChange] = useNodesState(initialNodes);
+  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+
+  const onConnect: OnConnect = (params) => {
+    setEdges((edges) => addEdge(params, edges));
+  };
 
   return (
     <div className="h-screen w-screen p-8">
       <ReactFlow
         nodes={nodes}
+        edges={edges}
         onNodesChange={onNodesChange}
+        onEdgesChange={onEdgesChange}
+        onConnect={onConnect}
         nodeTypes={nodeTypes}
         fitView
       />

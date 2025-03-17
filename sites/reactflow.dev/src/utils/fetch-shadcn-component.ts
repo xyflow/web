@@ -2,14 +2,13 @@ import { loadJSONFile } from 'xy-shared/server';
 import { compileCodeSnippet } from 'xy-shared/server';
 
 type Demo = {
-  files: [{ content: string; page: string }];
+  files: [{ content: string }];
 };
 
 type RegistryComponent = {
   name: string;
   description: string;
   dependencies: string[];
-  registryDependencies: string[];
   files: [{ content: string }];
   tags: string[];
   version: string;
@@ -40,13 +39,6 @@ export async function fetchShadcnComponent(id: string) {
       highlight: componentName,
     });
   }
-
-  const pageString = demo.files[0].page;
-  const pageMDX = await compileCodeSnippet(pageString, {
-    filetype: 'tsx',
-    showCopy: true,
-    highlight: componentName,
-  });
 
   const componentString = data.files[0].content;
   const componentMDX = await compileCodeSnippet(componentString, {
@@ -85,6 +77,5 @@ export async function fetchShadcnComponent(id: string) {
     componentMDX,
     installMDX,
     npmMDX,
-    pageMDX,
   };
 }

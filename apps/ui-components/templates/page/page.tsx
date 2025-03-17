@@ -1,13 +1,10 @@
-"use client";
-
-import $CAMELCOMPONENTApp from "@/registry/components/$COMPONENT/app-example";
-
 import DemoWrapper from "@/components/demo-wrapper";
+import Demo from "@/registry/components/$COMPONENT/demo";
 
-export default function Page() {
+export default function DemoPage() {
   return (
     <DemoWrapper>
-      <$CAMELCOMPONENTApp />
+      <Demo />
     </DemoWrapper>
   );
 }
