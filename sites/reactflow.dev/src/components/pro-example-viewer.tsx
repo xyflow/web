@@ -5,8 +5,7 @@ import { Container, ContainerProps, Text, Button, cn } from '@xyflow/xy-ui';
 const ProExampleViewer: FC<{
   slug: string;
   variant?: ContainerProps['variant'];
-  type?: 'example' | 'template';
-}> = async ({ slug, variant = 'default', type = 'example' }) => {
+}> = ({ slug, variant = 'default' }) => {
   const isLightMode = variant === 'default';
 
   const teaserClasses = cn(
@@ -18,45 +17,34 @@ const ProExampleViewer: FC<{
     },
   );
 
-  let iframeSrc = `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${slug}`;
-
-  if (type === 'template') {
-    const config = await fetch(
-      `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${slug}/config.json`,
-    );
-
-    const { previewUrl } = await config.json();
-    iframeSrc = previewUrl;
-  }
-
-  const signInLink =
-    type === 'template'
-      ? `https://pro.reactflow.dev/templates/${slug}`
-      : `https://pro.reactflow.dev/examples/react/${slug}`;
-
   return (
     <Container className="mt-7" variant={variant}>
       <div className={teaserClasses}>
         <Text className="flex-1 basis-full max-w-xl">
-          <strong>This is a Pro {type}.</strong> Get{' '}
+          <strong>This is a Pro example.</strong> Get{' '}
           <Link className="underline" href="/pro/examples">
             all pro examples
           </Link>
-          , templates, 1:1 support from the xyflow team and prioritized Github
-          issues with a React Flow Pro subscription.
+          , 1:1 support from the xyflow team and prioritized Github issues with
+          a React Flow Pro subscription.
         </Text>
         <div className="flex space-x-4">
           <Button asChild className="shrink-0">
             <Link href="/pro">See Pricing Plans</Link>
           </Button>
           <Button asChild variant="secondary" className="text-primary shrink-0">
-            <a href={signInLink}>Sign In</a>
+            <a href={`https://pro.reactflow.dev/examples/react/${slug}`}>
+              Sign In
+            </a>
           </Button>
         </div>
       </div>
 
       <div>
-        <iframe src={iframeSrc} className="block h-[645px] w-full bg-white" />
+        <iframe
+          src={`${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${slug}`}
+          className="block h-[645px] w-full bg-white"
+        />
       </div>
     </Container>
   );

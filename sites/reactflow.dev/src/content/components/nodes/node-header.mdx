@@ -16,20 +16,20 @@ It can contain a title, icon, and list of actions.
 Many node header actions will be useful across multiple custom nodes. Below are
 some examples of custom node actions that you might define.
 
-### Custom Delete action
+### Delete action
 
 ```tsx copy
-export type NodeHeaderCustomDeleteActionProps = Omit<
+export type NodeHeaderDeleteActionProps = Omit<
   NodeHeaderActionProps,
-  'onClick'
+  "onClick"
 >;
 
 /**
- * A custom delete action button that removes the node from the graph when clicked.
+ * A delete action button that removes the node from the graph when clicked.
  */
-export const NodeHeaderCustomDeleteAction = React.forwardRef<
+export const NodeHeaderDeleteAction = React.forwardRef<
   HTMLButtonElement,
-  NodeHeaderCustomDeleteActionProps
+  NodeHeaderDeleteActionProps
 >((props, ref) => {
   const id = useNodeId();
   const { setNodes } = useReactFlow();
@@ -50,14 +50,14 @@ export const NodeHeaderCustomDeleteAction = React.forwardRef<
   );
 });
 
-NodeHeaderCustomDeleteAction.displayName = 'NodeHeaderCustomDeleteAction';
+NodeHeaderDeleteAction.displayName = "NodeHeaderDeleteAction";
 ```
 
 ### Copy action
 
 ```tsx copy
 export interface NodeHeaderCopyActionProps
-  extends Omit<NodeHeaderActionProps, 'onClick'> {
+  extends Omit<NodeHeaderActionProps, "onClick"> {
   onClick?: (nodeId: string, event: React.MouseEvent) => void;
 }
 
@@ -92,5 +92,5 @@ export const NodeHeaderCopyAction = React.forwardRef<
   );
 });
 
-NodeHeaderCopyAction.displayName = 'NodeHeaderCopyAction';
+NodeHeaderCopyAction.displayName = "NodeHeaderCopyAction";
 ```

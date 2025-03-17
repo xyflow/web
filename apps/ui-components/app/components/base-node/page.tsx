@@ -1,13 +1,10 @@
-"use client";
-
-import BaseNodeApp from "@/registry/components/base-node/app-example";
-
 import DemoWrapper from "@/components/demo-wrapper";
+import Demo from "@/registry/components/base-node/demo";
 
-export default function Page() {
+export default function DemoPage() {
   return (
     <DemoWrapper>
-      <BaseNodeApp />
+      <Demo />
     </DemoWrapper>
   );
 }

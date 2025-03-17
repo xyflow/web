@@ -1,4 +1,6 @@
-import React, { forwardRef, useCallback } from "react";
+"use client";
+
+import * as React from "react";
 import { Panel, useReactFlow, PanelProps, useStore } from "@xyflow/react";
 
 import {
@@ -10,13 +12,13 @@ import {
 } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
 
-export const ZoomSelect = forwardRef<
+const ZoomSelect = React.forwardRef<
   HTMLDivElement,
   Omit<PanelProps, "children">
 >(({ className, ...props }, ref) => {
   const { zoomTo, fitView } = useReactFlow();
 
-  const handleZoomChange = useCallback(
+  const handleZoomChange = React.useCallback(
     (value: string) => {
       if (value === "best-fit") {
         fitView();
@@ -71,3 +73,5 @@ export const ZoomSelect = forwardRef<
 });
 
 ZoomSelect.displayName = "ZoomSelect";
+
+export { ZoomSelect };

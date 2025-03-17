@@ -1,13 +1,10 @@
-"use client";
-
-import PlaceholderNodeApp from "@/registry/components/placeholder-node/app-example";
-
 import DemoWrapper from "@/components/demo-wrapper";
+import Demo from "@/registry/components/placeholder-node/demo";
 
-export default function Page() {
+export default function DemoPage() {
   return (
     <DemoWrapper>
-      <PlaceholderNodeApp />
+      <Demo />
     </DemoWrapper>
   );
 }

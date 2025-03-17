@@ -1,13 +1,10 @@
-"use client";
-
-import TooltipNodeApp from "@/registry/components/tooltip-node/app-example";
-
 import DemoWrapper from "@/components/demo-wrapper";
+import Demo from "@/registry/components/tooltip-node/demo";
 
-export default function Page() {
+export default function DemoPage() {
   return (
     <DemoWrapper>
-      <TooltipNodeApp />
+      <Demo />
     </DemoWrapper>
   );
 }

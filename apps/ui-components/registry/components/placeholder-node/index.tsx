@@ -1,71 +1,59 @@
-import React, { useCallback, ReactNode, forwardRef } from "react";
-import {
-  useReactFlow,
-  useNodeId,
-  NodeProps,
-  Handle,
-  Position,
-} from "@xyflow/react";
-import { BaseNode } from "@/registry/components/base-node";
+import React from "react";
+import { useReactFlow, Handle, Position, NodeProps, Node } from "@xyflow/react";
+import { BaseNode } from "@/registry/components/base-node"; 
 
-export type PlaceholderNodeProps = Partial<NodeProps> & {
-  children?: ReactNode;
-};
+type PlaceholderNodeData = Node<{
+  label: string;
+}>;
 
-export const PlaceholderNode = forwardRef<HTMLDivElement, PlaceholderNodeProps>(
-  ({ selected, children }, ref) => {
-    const id = useNodeId();
-    const { setNodes, setEdges } = useReactFlow();
+export function PlaceholderNode({ data, id, selected }: NodeProps<PlaceholderNodeData>) {
+  
+  const { setNodes, setEdges } = useReactFlow();
 
-    const handleClick = useCallback(() => {
-      if (!id) return;
-
-      setEdges((edges) =>
-        edges.map((edge) =>
-          edge.target === id ? { ...edge, animated: false } : edge,
-        ),
-      );
-
-      setNodes((nodes) => {
-        const updatedNodes = nodes.map((node) => {
-          if (node.id === id) {
-            // Customize this function to update the node's data as needed.
-            // For example, you can change the label or other properties of the node.
-            return {
-              ...node,
-              data: { ...node.data, label: "Node" },
-              type: "default",
-            };
-          }
-          return node;
-        });
-        return updatedNodes;
-      });
-    }, [id, setEdges, setNodes]);
-
-    return (
-      <BaseNode
-        ref={ref}
-        selected={selected}
-        className="w-[150px] border-dashed border-gray-400 bg-card p-2 text-center text-gray-400 shadow-none"
-        onClick={handleClick}
-      >
-        {children}
-        <Handle
-          type="target"
-          style={{ visibility: "hidden" }}
-          position={Position.Top}
-          isConnectable={false}
-        />
-        <Handle
-          type="source"
-          style={{ visibility: "hidden" }}
-          position={Position.Bottom}
-          isConnectable={false}
-        />
-      </BaseNode>
+  const handleClick = () => {
+    setEdges((edges) =>
+      edges.map((edge) =>
+        edge.target === id ? { ...edge, animated: false } : edge
+      )
     );
-  },
-);
+
+    setNodes((nodes) => {
+      const updatedNodes = nodes.map((node) => {
+        if (node.id === id) {
+          return {
+            ...node,
+            data: { ...node.data, label: "New Node" }, 
+            type: "default",
+          };
+        }
+        return node;
+      });
+      return updatedNodes;
+    });
+  };
+
+  return (
+    <BaseNode
+      id={id}
+      selected={selected}
+      className="bg-card text-center w-[150px] border-dashed border-gray-400 text-gray-400 shadow-none p-2"
+      onClick={handleClick}
+    >
+      {data.label}
+      <Handle
+        type="target"
+        style={{ visibility: 'hidden' }} 
+        position={Position.Top}
+        isConnectable={false} 
+      />
+      <Handle
+        type="source"
+        style={{ visibility: 'hidden' }} 
+        position={Position.Bottom}
+        isConnectable={false}
+      />
+    </BaseNode>
+  );
+}
 
 PlaceholderNode.displayName = "PlaceholderNode";

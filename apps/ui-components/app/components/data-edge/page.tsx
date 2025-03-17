@@ -1,13 +1,10 @@
-"use client";
-
-import DataEdgeApp from "@/registry/components/data-edge/app-example";
-
 import DemoWrapper from "@/components/demo-wrapper";
+import Demo from "@/registry/components/data-edge/demo";
 
-export default function Page() {
+export default function DemoPage() {
   return (
     <DemoWrapper>
-      <DataEdgeApp />
+      <Demo />
     </DemoWrapper>
   );
 }

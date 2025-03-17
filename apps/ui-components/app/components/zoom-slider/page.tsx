@@ -1,13 +1,10 @@
-"use client";
-
-import ZoomSliderApp from "@/registry/components/zoom-slider/app-example";
-
 import DemoWrapper from "@/components/demo-wrapper";
+import ZoomSliderDemo from "@/registry/components/zoom-slider/demo";
 
-export default function Page() {
+export default function ZoomSliderDemoPage() {
   return (
     <DemoWrapper>
-      <ZoomSliderApp />
+      <ZoomSliderDemo />
     </DemoWrapper>
   );
 }
