@@ -13,10 +13,10 @@ import {
 import { ProjectPreview } from 'xy-shared';
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 import { Folder } from 'nextra';
-
-import { generatedExamplesPage as pageMap } from '@/app/(content-pages)/examples/[[...slug]]/page';
+import { getPageMap as getExamplesPageMap } from '@/app/(content-pages)/examples/[...slug]/utils';
 
 export const ExamplesOverview: FC = async () => {
+  const { children: pageMap } = await getExamplesPageMap();
   return (
     <>
       <Section className="!px-0">
@@ -58,16 +58,14 @@ export const ExamplesOverview: FC = async () => {
           </div>
         </Link>
       </Section>
-
-      {/* @ts-expect-error -- false positive */}
-      {pageMap.children.map((_category) => {
+      {pageMap.map((_category) => {
         const hasChildren = 'children' in _category;
         if (!hasChildren) return;
-        const category = _category as Folder & { name };
+        const category = _category as Folder & { title };
         return (
-          <Fragment key={category.name}>
+          <Fragment key={category.title}>
             <Heading className="mt-20" size="sm">
-              {category.name}
+              {category.title}
             </Heading>
             <ContentGrid className="lg:grid-cols-3 border-none gap-4 lg:gap-8">
               {category.children.map(
@@ -101,7 +99,7 @@ export const ExamplesOverview: FC = async () => {
                         descriptionVariant="light"
                         linkLabel="See example"
                         linkClassName="text-gray-900 font-medium text-sm group-hover:text-primary"
-                        kicker={category.name.toUpperCase()}
+                        kicker={category.title.toUpperCase()}
                         kickerSize="xs"
                         imageWrapperClassName="p-0 shadow-md border-none"
                       />
