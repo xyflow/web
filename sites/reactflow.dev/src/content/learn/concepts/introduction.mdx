@@ -1,0 +1,48 @@
+---
+description: React Flow is a library for building node-based applications from static diagrams to complex editors. It comes with built-in plugins like a mini map and graph controls, and nodes and edges are highly customizable.
+---
+
+import { Emoji } from '@xyflow/xy-ui';
+
+# Introduction
+
+React Flow is a library for building node-based applications. These can be anything
+from simple static diagrams to data visualisations to complex visual editors. You
+can implement custom node types and edges and it comes with components like a
+minimap and viewport controls out of the box.
+
+If you're looking to get started quickly check out the [quickstart guide](/learn),
+otherwise, let's take a look at React Flow's key features.
+
+## Key Features
+
+**<Emoji content="👌" /> Easy to use**: React Flow already comes with many of the features you want out of the box. Dragging
+nodes around, zooming and panning, selecting multiple nodes and edges, and
+adding/removing edges are all built-in.
+
+**<Emoji content="🎨" /> Customizable**: React Flow supports custom node types and edge types. Because custom nodes are just
+React components, you can implement anything you need: you're not locked into
+the built-in node types. Custom edges let you add labels, controls, and bespoke
+logic to node edges.
+
+**<Emoji content="⚡️" /> Fast rendering**: React Flow only renders nodes that have changed, and makes sure only those that
+are in the viewport are displayed at all.
+
+**<Emoji content="🧩" /> Built-in plugins**: We ship React Flow with a few plugins out of the box:
+
+- The [`<Background />`](/api-reference/components/background) plugin implements some basic customisable background patterns.
+- The [`<MiniMap />`](/api-reference/components/minimap) plugin displays a small version of the graph in the corner of the screen.
+- The [`<Controls />`](/api-reference/components/controls) plugin adds controls to zoom, center, and lock the viewport.
+- The [`<Panel />`](/api-reference/components/panel) plugin makes it easy to position content on top of the viewport.
+- The [`<NodeToolbar />`](/api-reference/components/node-toolbar) plugin lets you render a toolbar attached to a node.
+- The [`<NodeResizer />`](/api-reference/components/node-resizer) plugin makes it easy to add resize functionality to your nodes.
+
+**<Emoji content="💪" /> Reliable:** React Flow is entirely written in TypeScript to catch bugs early and make fixes
+easy. For everything else, we have a robust cypress test suite so you can depend
+on React Flow with confidence.
+
+## Moving on
+
+Now that you have a better idea of what React Flow is all about, the next page
+will walk through some common terminology that you will see repeated throughout
+the documentation: nodes, edges, and handles.

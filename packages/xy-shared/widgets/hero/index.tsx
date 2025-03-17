@@ -1,5 +1,7 @@
-import { type ReactNode } from 'react';
-import { Heading, HeroIcon, Text, cn } from '@xyflow/xy-ui';
+'use client';
+
+import { cloneElement, ReactElement, type ReactNode } from 'react';
+import { Heading, Text, cn } from '@xyflow/xy-ui';
 
 import { useConnectionDrawer } from '../../';
 
@@ -7,7 +9,7 @@ export type HeroProps = {
   title?: ReactNode;
   subtitle?: ReactNode;
   kicker?: ReactNode;
-  kickerIcon?: HeroIcon;
+  kickerIcon?: ReactElement;
   action?: ReactNode;
   className?: string;
   align?: 'left' | 'center';
@@ -20,7 +22,7 @@ export function Hero({
   title,
   subtitle,
   kicker,
-  kickerIcon: KickerIcon,
+  kickerIcon,
   action,
   children,
   className,
@@ -36,7 +38,7 @@ export function Hero({
     <div ref={ref}>
       {backgroundVariant === 'gradient' && (
         <div
-          className="absolute -mt-16 opacity-10 w-[100vw] h-[70vw] left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none -z-10"
+          className="absolute -mt-16 opacity-10 w-[100vw] h-[70vw] left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
           style={{
             background:
               'radial-gradient(rgba(68,91,222,1) 0%, rgba(215,78,243,1) 25%, rgba(255,255,255,1) 50%)',
@@ -67,14 +69,15 @@ export function Hero({
                 isCenter && 'justify-center',
               )}
             >
-              {KickerIcon && (
-                <KickerIcon className="inline-block w-6 h-6 mr-1" />
-              )}
+              {kickerIcon &&
+                cloneElement(kickerIcon, {
+                  className: 'inline-block w-6 h-6 mr-1',
+                })}
               {kicker}
             </h3>
           )}
           {title && (
-            <Heading size={size} className="mb-6 font-black">
+            <Heading as="h1" size={size} className="mb-6 font-black">
               {title}
             </Heading>
           )}

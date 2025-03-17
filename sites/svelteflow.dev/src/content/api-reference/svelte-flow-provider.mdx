@@ -1,0 +1,58 @@
+---
+title: The SvelteFlowProvider component
+description:
+  The SvelteFlowProvider component wraps its child nodes with a Svelte context
+  that makes it possible to access a flow's internal state outside of the SvelteFlow
+  component.
+sidebarTitle: <SvelteFlowProvider />
+---
+
+# \<SvelteFlowProvider />
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/components/SvelteFlowProvider/SvelteFlowProvider.svelte)
+
+The `<SvelteFlowProvider />` component wraps its child nodes with a Svelte context that
+makes it possible to access a flow's internal state outside of the
+[`<SvelteFlow />`](/api-reference/svelte-flow) component. Many of the hooks we
+provide rely on this component to work.
+
+```svelte filename="App.svelte"
+<script>
+import { SvelteFlow, SvelteFlowProvider } from '@xyflow/svelte';
+
+import Sidebar from './Sidebar.svelte';
+</script>
+
+<SvelteFlowProvider>
+  <SvelteFlow nodes={...} edges={...} />
+  <Sidebar />
+</SvelteFlowProvider>
+```
+
+```svelte filename="Sidebar.svelte"
+<script>
+  import { SvelteFlow, SvelteFlowProvider } from '@xyflow/svelte'
+
+  // This hook will only work if the component it's used in is a child of a
+  // <SvelteFlowProvider />.
+  const nodes = useNodes()
+</script>
+
+<aside>
+  {#each $nodes as node (node.id)}
+    <div key={node.id}>
+      Node {node.id} -
+        x: {node.position.x.toFixed(2)},
+        y: {node.position.y.toFixed(2)}
+    </div>
+  {/each}
+</aside>
+```
+
+## Notes
+
+- If you're using a router and want your flow's state to persist across routes,
+  it's vital that you place the `<SvelteFlowProvider />` component _outside_ of
+  your router.
+- If you have multiple flows on the same page you will need to use a separate
+  `<SvelteFlowProvider />`.

@@ -61,7 +61,7 @@ type BlogPostPreviewsProps = {
 function BlogPostPreviews({ prev, next }: BlogPostPreviewsProps) {
   return (
     <div className="mt-20 relative right-1/2 left-1/2 ml-[-50vw] mr-[-50vw] w-[100vw]">
-      <ContentGrid className="max-w-[90rem] mx-auto">
+      <ContentGrid className="x:max-w-(--nextra-content-width) mx-auto">
         {prev && (
           <ContentGridItem route={prev?.route}>
             <BlogPostPreview

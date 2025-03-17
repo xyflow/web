@@ -1,0 +1,22 @@
+<svg viewBox="0 0 157 157" fill="#fff" xmlns="http://www.w3.org/2000/svg">
+<rect width="157" height="157" rx="21" />
+<rect x="88.5627" y="88.562" width="51.0417" height="51.0417" rx="7.29167" stroke="#1A192B" stroke-width="7.29167"/>
+<rect x="88.5627" y="15.6458" width="51.0417" height="51.0417" rx="7.29167" stroke="#FF0072" stroke-width="7.29167"/>
+<rect x="15.6458" y="88.562" width="51.0417" height="51.0417" rx="7.29167" stroke="#1A192B" stroke-width="7.29167"/>
+<rect x="15.6462" y="15.6463" width="51.0417" height="51.0417" rx="7.29167" stroke="#1A192B" stroke-width="7.29167"/>
+<circle cx="66.6871" cy="41.1664" r="10.9375" />
+<circle cx="88.5625" cy="41.1664" r="10.9375" />
+<circle cx="114.083" cy="66.6877" r="10.9375" />
+<circle cx="114.083" cy="88.5625" r="10.9375" />
+<circle cx="66.6871" cy="114.084" r="10.9375" />
+<circle cx="88.5625" cy="114.084" r="10.9375" />
+<circle cx="114.084" cy="88.5626" r="7.29167" fill="#1A192B"/>
+<circle cx="66.6865" cy="114.083" r="7.29167" fill="#1A192B"/>
+<circle cx="88.562" cy="114.083" r="7.29167" fill="#1A192B"/>
+<rect opacity="0.35" x="70.3332" y="39.344" width="14.5833" height="3.64584" fill="#1A192B"/>
+<rect opacity="0.35" x="112.261" y="83.0936" width="14.5833" height="3.64584" transform="rotate(-90 112.261 83.0936)" fill="#1A192B"/>
+<rect opacity="0.35" x="70.3332" y="112.26" width="14.5833" height="3.64584" fill="#1A192B"/>
+<circle cx="66.6865" cy="41.1665" r="7.29167" fill="#1A192B"/>
+<circle cx="88.562" cy="41.1665" r="7.29167" fill="#FF0072"/>
+<circle cx="114.084" cy="66.6878" r="7.29167" fill="#FF0072"/>
+</svg>

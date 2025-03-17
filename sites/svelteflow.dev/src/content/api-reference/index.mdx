@@ -1,0 +1,71 @@
+import { Callout } from 'nextra/components';
+import { ContentGrid, ContentGridItem } from '@xyflow/xy-ui';
+import { BlogPostPreview } from 'xy-shared';
+
+# API Reference
+
+This reference attempts to document every function, hook, component, and type
+exported by Svelte Flow. If you are looking for guides, please refer to our [learn section](/learn).
+
+<Callout>
+  This package is currently in an alpha state and under heavy development. The
+  API is likely to change. You can read about the latest changes in the ["What's
+  New" section](/whats-new).
+</Callout>
+
+## How to use this reference
+
+We think that documentation should answer two broad
+questions: "what is this thing?" and "how do I use it?"
+
+To that end, our API reference aims to **concisely** answer that first question, while guides go into more detail on the second. If you find yourself clicking
+around the reference wondering what the heck any of this means, maybe we have a
+guide that can help you out!
+
+<ContentGrid className="mt-8">
+  <ContentGridItem route="/learn/guides/custom-nodes">
+    <BlogPostPreview
+      title="Custom nodes"
+      intro="A powerful feature of Svelte Flow is the ability to add custom nodes. Within your custom nodes you can render everything you want. You can define multiple source and target handles and render form inputs or charts for example. In this guide we will implement a node with an input field that updates some text in another part of the application."
+    />
+  </ContentGridItem>
+  <ContentGridItem route="/learn/guides/sub-flows">
+    <BlogPostPreview
+      title="Subflows"
+      intro="Is this a flow within a flow? Yes! Sometimes you want to treat parts of a flow as a group or even as a single node. This is where subflows come into play. In this guide you will learn how to create a child-parent relationship between nodes and implement different types of subflows.
+"
+    />
+  </ContentGridItem>
+</ContentGrid>
+
+## A note for JavaScript users
+
+Svelte Flow is written in TypeScript, but we know that not everyone uses it. We
+encourage developers to use the technology that works best for them, and
+throughout our documentation there is a blend of TypeScript and JavaScript
+examples.
+
+For our API reference, however, we use TypeScript's syntax to document the types
+of props and functions. Here's a quick crash course on how to read it:
+
+• `?` means that the field or argument is optional.
+
+• `<T>` in a type definition represents a generic type parameter. Like a function
+argument but for types! The definition `type Array<T> = ...` means a type called
+`Array` that takes a generic type parameter `T`.
+
+• `<T>` when referring to a type is like "filling in" a generic type parameter.
+It's like calling a function but for types! The type `Array<number>` is the
+type `Array` with the generic type parameter `T` filled in with the type
+`number`.
+
+• `T | U` means that the type is either `T` or `U`: this is often called a
+_union_.
+
+• `T & U` means that the type is both `T` and `U`: this is often called an
+_intersection_.
+
+The TypeScript folks have their own
+[handy guide for reading types](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html)
+that you might find useful. If you're still stuck on something, feel free to
+drop by our [Discord](https://discord.com/invite/RVmnytFmGW) and ask for help!

@@ -1,0 +1,33 @@
+---
+description: With this hook you can receive the data of the passed node ids.
+---
+
+import { PropsTable } from '@/components/props-table';
+import { signature } from '@/references/hooks/useNodesData.ts';
+
+# useNodesData()
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/hooks/useNodesData.ts)
+
+With this hook you can receive the data of the passed node ids.
+
+```svelte
+<script lang="ts">
+  import { useNodesData } from '@xyflow/svelte';
+
+  const nodeData = useNodesData(['node-id-a', 'node-id-b']);
+
+  $: {
+    // nodeData changes whenever the data of the passed node ids get updated
+    console.log($nodeData);
+  }
+</script>
+```
+
+## Signature
+
+<PropsTable {...signature} />
+
+## Notes
+
+- Check the [Computing Flows example](/examples/interaction/computing-flows) to see how this hook can be used

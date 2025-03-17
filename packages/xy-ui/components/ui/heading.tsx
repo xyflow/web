@@ -26,12 +26,12 @@ export interface HeadingProps
 }
 
 const Heading = React.forwardRef<HTMLHeadingElement, HeadingProps>(
-  ({ className, size, as: asProp = null, ...props }, ref) => {
-    const Comp = asProp ? asProp : 'h1';
+  ({ className, size, as: asProp = 'h2', ...props }, ref) => {
+    const Comp = asProp;
 
     return (
       <Comp
-        className={cn(headingSizes({ size, className }))}
+        className={cn(headingSizes({ size }), className)}
         ref={ref}
         {...props}
       />

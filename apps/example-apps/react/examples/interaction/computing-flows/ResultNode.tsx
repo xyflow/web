@@ -2,14 +2,14 @@ import { memo } from 'react';
 import {
   Handle,
   Position,
-  useHandleConnections,
+  useNodeConnections,
   useNodesData,
 } from '@xyflow/react';
 import { isTextNode, type MyNode } from './initialElements';
 
 function ResultNode() {
-  const connections = useHandleConnections({
-    type: 'target',
+  const connections = useNodeConnections({
+    handleType: 'target',
   });
   const nodesData = useNodesData<MyNode>(
     connections.map((connection) => connection.source),

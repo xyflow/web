@@ -4,6 +4,7 @@
     "plugins": [{ "name": "next" }],
     "target": "ES6",
     "baseUrl": "src/",
+    "moduleResolution": "bundler",
     "paths": {
       "@/*": ["./*"]
     }

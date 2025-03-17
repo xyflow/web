@@ -1,0 +1,22 @@
+@layer l-base, l-nextra;
+
+/*
+ * We specify layers because it's a working way to make works
+ * Tailwind CSS 4 in Nextra 4 with Tailwind CSS 3 in this app
+ *
+ * Originally done in https://github.com/the-guild-org/docs/blob/bdfe4f564ee68f8b670828f425e32a3add973883/packages/components/style.css
+**/
+@import 'tailwindcss/base' layer(l-base);
+@import 'nextra-theme-docs/dist/style-prefixed.css' layer(l-nextra);
+@import 'tailwindcss/utilities';
+@import 'tailwindcss/components';
+@import '@xyflow/react/dist/style.css';
+@import 'xy-shared/styles/globals-nextra-4.css';
+
+@layer base {
+  :root {
+    --primary: 0 0% 0%;
+    --primary-foreground: 210 40% 98%;
+    --secondary-foreground: 0 0% 0%;
+  }
+}

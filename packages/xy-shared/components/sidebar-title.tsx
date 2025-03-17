@@ -1,5 +1,5 @@
 import { cn } from '@xyflow/xy-ui';
-import { getFrontmatterTag } from '../lib';
+import { FC } from 'react';
 
 const NUM_DAYS_NEW = 30;
 const DAYS_IN_MS = 1000 * 3600 * 24;
@@ -10,16 +10,13 @@ function daysFromNow(dateString: string) {
   );
 }
 
-export function SidebarTitle({
-  title,
-  route,
-}: {
+export const SidebarTitle: FC<{
   title: string;
-  route: string;
-}) {
-  const isProExample = getFrontmatterTag(route, 'is_pro_example');
-  const isFree = getFrontmatterTag(route, 'is_free');
-  const createdAt = getFrontmatterTag(route, 'created_at');
+  frontMatter?: Record<string, any>;
+}> = ({ title, frontMatter }) => {
+  const isProExample = frontMatter?.is_pro_example;
+  const isFree = frontMatter?.is_free;
+  const createdAt = frontMatter?.created_at;
   const isNew = createdAt && daysFromNow(createdAt) < NUM_DAYS_NEW;
 
   const className = cn(
@@ -31,4 +28,4 @@ export function SidebarTitle({
   );
 
   return <div className={className}>{title}</div>;
-}
+};
