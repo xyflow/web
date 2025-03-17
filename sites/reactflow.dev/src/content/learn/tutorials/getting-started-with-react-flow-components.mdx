@@ -56,8 +56,8 @@ so we'll need to install that and a few other dependencies next:
 npm install -D tailwindcss postcss autoprefixer
 ```
 
-Tailwind is a heavily customisable utility-first CSS framework and much of that
-customisation is done in a `tailwind.config.js` file. Fortunately, the package
+Tailwind is a heavily customizable utility-first CSS framework and much of that
+customization is done in a `tailwind.config.js` file. Fortunately, the package
 can generate a default config for us:
 
 ```bash copy npm2yarn
@@ -307,7 +307,7 @@ export default App;
 ```
 
 And would you look at that, the tooltip node we added automatically uses the
-`<BaseNode />` component we customised!
+`<BaseNode />` component we customized!
 
 <Bleed>
   <RemoteCodeViewer
@@ -325,7 +325,7 @@ everything React Flow Components has to offer let's build out a simple calculato
 flow.
 
 First let's remove the `<TooltipNode />` and undo our changes to `<BaseNode />`.
-In addition to premade nodes, React Flow Components also contains building blocks
+In addition to pre-made nodes, React Flow Components also contains building blocks
 for creating your own custom nodes. To see them, we'll add the `node-header` and
 `labeled-handle` components:
 
@@ -523,7 +523,7 @@ React Flow Components doesn't just provide components for building nodes. We als
 provide pre-built edges and other UI elements you can drop into your flows for
 quick building.
 
-To better visualise data in our calculator flow, let's pull in the `data-edge`
+To better visualize data in our calculator flow, let's pull in the `data-edge`
 component. This edge renders a field from the source node's data object as a label
 on the edge itself. Add the `data-edge` component to your project:
 

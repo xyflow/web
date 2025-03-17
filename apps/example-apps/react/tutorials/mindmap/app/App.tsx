@@ -30,16 +30,16 @@ const selector = (state: RFState) => ({
 });
 
 const nodeTypes = {
-  mindmap: MindMapNode,
+  mindMap: MindMapNode,
 };
 
 const edgeTypes = {
-  mindmap: MindMapEdge,
+  mindMap: MindMapEdge,
 };
 
 const nodeOrigin: NodeOrigin = [0.5, 0.5];
 const connectionLineStyle = { stroke: '#F6AD55', strokeWidth: 3 };
-const defaultEdgeOptions = { style: connectionLineStyle, type: 'mindmap' };
+const defaultEdgeOptions = { style: connectionLineStyle, type: 'mindMap' };
 
 function Flow() {
   // whenever you use multiple values, you should use shallow for making sure that the component only re-renders when one of the values change

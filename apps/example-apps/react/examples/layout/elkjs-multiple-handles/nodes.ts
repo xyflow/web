@@ -14,7 +14,7 @@ export const nodes: ElkNode[] = [
     data: {
       label: 'A',
       // we need unique ids for the handles (called 'ports' in elkjs) for the layouting
-      // an id is structured like: nodeid-source/target-id
+      // an id is structured like: nodeId-source/target-id
       sourceHandles: [{ id: 'a-s-a' }, { id: 'a-s-b' }, { id: 'a-s-c' }],
       targetHandles: [],
     },

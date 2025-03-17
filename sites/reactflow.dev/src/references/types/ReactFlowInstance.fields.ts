@@ -114,7 +114,7 @@ export const viewportFields: PropsTableProps = {
       name: 'viewportInitialized',
       type: 'boolean',
       description: `React Flow needs to mount the viewport to the DOM and initialize
-      its zoom and pan behaviour. This property tells you when`,
+      its zoom and pan behavior. This property tells you when`,
     },
     { name: 'zoomIn', type: '(options?: { duration: number; }) => void' },
     { name: 'zoomOut', type: '(options?: { duration: number; }) => void' },
