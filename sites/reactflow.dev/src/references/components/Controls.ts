@@ -26,13 +26,13 @@ export const controlsProps: PropsTableProps = {
     {
       name: 'onZoomIn?',
       type: '() => void',
-      description: `Called in addition the default zoom behaviour when the zoom
+      description: `Called in addition the default zoom behavior when the zoom
       in button is clicked.`,
     },
     {
       name: 'onZoomOut?',
       type: '() => void',
-      description: `Called in addition the default zoom behaviour when the zoom
+      description: `Called in addition the default zoom behavior when the zoom
       out button is clicked.`,
     },
     {

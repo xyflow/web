@@ -249,7 +249,7 @@ All you need to do is
 1. store data inside the node's `data` object with help of [`updateNodeData`](/api-reference/types/react-flow-instance#update-node-data) callback.
 2. find out which nodes are connected by using [`useNodeConnections`](/api-reference/hooks/use-node-connections) and then use [`useNodesData`](/api-reference/hooks/use-nodes-data) for receiving the data from the connected nodes.
 
-You can implement branching for example by interpreting incoming data that is undefined as a "stop". As a side note, most flowgraphs that also have a branching usually separate the triggering of nodes from the actual data hooked up to the nodes. Unreal Engines Blueprints are a good example for this.
+You can implement branching for example by interpreting incoming data that is undefined as a "stop". As a side note, most flow graphs that also have a branching usually separate the triggering of nodes from the actual data hooked up to the nodes. Unreal Engines Blueprints are a good example for this.
 
 <Callout type="info">
   One last note before you go: you should find a consistent way of structuring

@@ -67,7 +67,7 @@ npm create vite@latest -- --template react-ts
 ```
 
 If you'd prefer to follow along with JavaScript feel free to use the `react`
-template instead. You can also follow along in your browser by using our codesandbox
+template instead. You can also follow along in your browser by using our Codesandbox
 templates:
 
 <Cards num={2}>
@@ -283,12 +283,9 @@ export default function App() {
     },
   ];
 
-  return <ReactFlow
-    nodes={nodes}
-    nodeTypes={nodeTypes}
-    fitView
-    minZoom={0.1}
-  />;
+  return (
+    <ReactFlow nodes={nodes} nodeTypes={nodeTypes} fitView minZoom={0.1} />
+  );
 }
 ```
 
@@ -561,7 +558,7 @@ export default function App() {
 <Callout>
   It's important to remember to include `fitView` as in the dependency array of
   our `handleNodeClick` callback. That's because the `fitView` function is
-  replaced once React Flow has initialised the viewport. If you forget this step
+  replaced once React Flow has initialized the viewport. If you forget this step
   you'll likely find out that `handleNodeClick` does nothing at all (and yes, we
   also forget this ourselves sometimes too <Emoji content="🫠" />
   ).
@@ -766,7 +763,7 @@ user pressed `'ArrowLeft'` we'll get `'left'` and so on. Then, if there is actua
 a slide connected in that direction we'll update the current slide and call `fitView`
 to navigate to it!
 
-We're also preventing the default behaviour of the arrow keys to prevent the window
+We're also preventing the default behavior of the arrow keys to prevent the window
 from scrolling up and down. This is necessary for this tutorial because the canvas
 is only one part of the page, but for an app where the canvas is the entire
 viewport you might not need to do this.

@@ -9,7 +9,7 @@
   const { color } = data;
 </script>
 
-<div class="colorpicker">
+<div class="color-picker">
   <Handle type="target" position={Position.Left} />
   <div>
     mix color: <strong>{$color}</strong>
@@ -24,7 +24,7 @@
 </div>
 
 <style>
-  .colorpicker {
+  .color-picker {
     padding: 1rem;
     background: #eee;
     border-radius: 0.125rem;

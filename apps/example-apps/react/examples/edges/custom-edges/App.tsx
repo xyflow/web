@@ -16,7 +16,6 @@ import {
 
 import '@xyflow/react/dist/style.css';
 
-
 import ButtonEdge from './ButtonEdge';
 import SelfConnectingEdge from './SelfConnectingEdge';
 import BiDirectionalEdge from './BiDirectionalEdge';
@@ -38,7 +37,7 @@ const initialNodes: Node[] = [
     id: 'bi-1',
     data: { label: 'Bi Directional 1' },
     position: { x: 0, y: 300 },
-    type: 'bidirectional',
+    type: 'biDirectional',
     sourcePosition: Position.Right,
     targetPosition: Position.Left,
   },
@@ -46,7 +45,7 @@ const initialNodes: Node[] = [
     id: 'bi-2',
     data: { label: 'Bi Directional 2' },
     position: { x: 250, y: 300 },
-    type: 'bidirectional',
+    type: 'biDirectional',
     sourcePosition: Position.Right,
     targetPosition: Position.Left,
   },
@@ -64,13 +63,13 @@ const initialEdges: Edge[] = [
     id: 'edge-button',
     source: 'button-1',
     target: 'button-2',
-    type: 'buttonedge',
+    type: 'buttonEdge',
   },
   {
     id: 'edge-bi-1',
     source: 'bi-1',
     target: 'bi-2',
-    type: 'bidirectional',
+    type: 'biDirectional',
     sourceHandle: 'right',
     targetHandle: 'left',
     markerEnd: { type: MarkerType.ArrowClosed },
@@ -79,7 +78,7 @@ const initialEdges: Edge[] = [
     id: 'edge-bi-2',
     source: 'bi-2',
     target: 'bi-1',
-    type: 'bidirectional',
+    type: 'biDirectional',
     sourceHandle: 'left',
     targetHandle: 'right',
     markerEnd: { type: MarkerType.ArrowClosed },
@@ -88,15 +87,15 @@ const initialEdges: Edge[] = [
     id: 'edge-self',
     source: 'self-1',
     target: 'self-1',
-    type: 'selfconnecting',
+    type: 'selfConnecting',
     markerEnd: { type: MarkerType.Arrow },
   },
 ];
 
 const edgeTypes = {
-  bidirectional: BiDirectionalEdge,
-  selfconnecting: SelfConnectingEdge,
-  buttonedge: ButtonEdge,
+  biDirectional: BiDirectionalEdge,
+  selfConnecting: SelfConnectingEdge,
+  buttonEdge: ButtonEdge,
 };
 
 const nodeTypes = {
@@ -125,11 +124,11 @@ const EdgesFlow = () => {
       fitView
       attributionPosition="top-right"
       connectionMode={ConnectionMode.Loose}
-      style={{ backgroundColor: "#F7F9FB" }}
-      >
-        <Controls />
-        <Background />
-      </ReactFlow>
+      style={{ backgroundColor: '#F7F9FB' }}
+    >
+      <Controls />
+      <Background />
+    </ReactFlow>
   );
 };
 
