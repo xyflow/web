@@ -107,7 +107,7 @@ const UiComponentViewer: FC<{ id: string }> = async ({ id }) => {
       <div className="mt-20">
         {/* @ts-expect-error -- false positive */}
         <H2 id="installation">Installation</H2>
-        <Tabs defaultValue="shadcn">
+        <Tabs defaultValue="shadcn" className="mt-5">
           <TabsList>
             <TabsTrigger value="shadcn">CLI</TabsTrigger>
             <TabsTrigger value="manual">Manual</TabsTrigger>

@@ -33,7 +33,7 @@ import { Metadata } from 'next';
 import { getPageMap } from 'nextra/page-map';
 import { MdxFile } from 'nextra';
 
-export const revalidate = 86_400; // 60 * 60 * 24;
+export const revalidate = 86400; // 60 * 60 * 24;
 export const metadata: Metadata = {
   title: 'React Flow Pro Examples',
   description:
@@ -190,7 +190,7 @@ const ProExamples: FC = async () => {
       </ContentGrid>
 
       <Section className="lg:px-0">
-        <LayoutBreakout className="max-w-[78rem] lg:ml-0 lg:mr-0 lg:right-0 lg:left-0 lg:w-full lg:px-0 !mt-0">
+        <LayoutBreakout className="x:max-w-(--nextra-content-width) lg:ml-0 lg:mr-0 lg:right-0 lg:left-0 lg:w-full lg:px-0 !mt-0">
           <Container
             variant="dark"
             className="max-lg:rounded-none"

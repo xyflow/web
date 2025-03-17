@@ -10,9 +10,7 @@ const gettingStarted = {
 };
 const customization = {
   'custom-nodes': '',
-  'custom-node-props': { href: '/api-reference/types/node-props' },
   'custom-edges': '',
-  'custom-edge-props': { href: '/api-reference/types/edge-props' },
 };
 const advanced = {
   accessibility: '',
