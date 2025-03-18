@@ -25,23 +25,21 @@ const selector = (state: RFState) => ({
 });
 
 const nodeTypes = {
-  mindMap: MindMapNode,
+  mindmap: MindMapNode,
 };
 
 const edgeTypes = {
-  mindMap: MindMapEdge,
+  mindmap: MindMapEdge,
 };
 
 // this makes the node origin to be in the center of a node
 const nodeOrigin: NodeOrigin = [0.5, 0.5];
 const connectionLineStyle = { stroke: '#F6AD55', strokeWidth: 3 };
-const defaultEdgeOptions = { style: connectionLineStyle, type: 'mindMap' };
+const defaultEdgeOptions = { style: connectionLineStyle, type: 'mindmap' };
 
 function Flow() {
   // whenever you use multiple values, you should use shallow for making sure that the component only re-renders when one of the values change
-  const { nodes, edges, onNodesChange, onEdgesChange } = useStore(
-    useShallow(selector),
-  );
+  const { nodes, edges, onNodesChange, onEdgesChange } = useStore(useShallow(selector));
 
   return (
     <ReactFlow
