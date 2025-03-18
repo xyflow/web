@@ -151,7 +151,7 @@ export const viewportProps: PropsTableProps = {
       name: 'fitViewOptions',
       type: 'FitViewOptions',
       description: `When you typically call fitView on a ReactFlowInstance, you
-      can provide an object of options to customize its behaviour. This prop lets
+      can provide an object of options to customize its behavior. This prop lets
       you do the same for the initial fitView call.`,
     },
     { name: 'minZoom', type: 'number', default: '0.5' },
@@ -173,7 +173,7 @@ export const viewportProps: PropsTableProps = {
       name: 'onlyRenderVisibleElements',
       type: 'boolean',
       default: 'false',
-      description: `You can enable this optimisation to instruct React Flow to
+      description: `You can enable this optimization to instruct React Flow to
       only render nodes and edges that would be visible in the viewport.`,
     },
     {
@@ -256,7 +256,7 @@ export const generalEventHandlerProps: PropsTableProps = {
     {
       name: 'onError',
       type: '(code: string, message: string) => void',
-      description: `Ocassionally something may happen that causes React Flow to
+      description: `Occasionally something may happen that causes React Flow to
       error. Instead of exploding your application, we log a message to the console
       and then call this event handler. You might use it for additional logging
       or to show a message to the user.`,
@@ -368,7 +368,7 @@ export const edgeEventHandlerProps: PropsTableProps = {
       type: '(event: React.MouseEvent, edge: Edge, handleType: "source" | "target", connectionState: Omit<ConnectionState, \'inProgress\'>) => void',
       description: `This event fires when the user releases the source or target
       of an editable edge. It is called even if an edge update does not occur.
-      You can use the fourth connectionState parameter to have different behaviour
+      You can use the fourth connectionState parameter to have different behavior
       when a reconnection was unsuccessful.`,
     },
     { name: 'onEdgesDelete', type: '(edges: Edge[]) => void' },
@@ -399,7 +399,7 @@ export const connectionEventHandlerProps: PropsTableProps = {
       type: "(event: React.MouseEvent, connectionState: Omit<ConnectionState, 'inProgress'>) => void",
       description: `This callback will fire regardless of whether a valid connection
       could be made or not. You can use the second connectionState parameter to
-      have different behaviour when a connection was unsuccessful.`,
+      have different behavior when a connection was unsuccessful.`,
     },
     {
       name: 'onClickConnectStart',
@@ -499,7 +499,7 @@ export const interactionProps: PropsTableProps = {
       type: 'boolean',
       default: 'true',
       description: `When true, focus between nodes can be cycled with the Tab key
-      and selected with the Enter key. This option can be overriden by individual
+      and selected with the Enter key. This option can be overridden by individual
       nodes by setting their focusable prop.`,
     },
     {
@@ -507,7 +507,7 @@ export const interactionProps: PropsTableProps = {
       type: 'boolean',
       default: 'true',
       description: `When true, focus between edges can be cycled with the Tab key
-      and selected with the Enter key. This option can be overriden by individual
+      and selected with the Enter key. This option can be overridden by individual
       edges by setting their focusable prop.`,
     },
     {
@@ -515,7 +515,7 @@ export const interactionProps: PropsTableProps = {
       type: 'boolean',
       default: 'true',
       description: `When true, elements (nodes and edges) can be selected by clicking
-      on them. This option can be overriden by individual elements by setting their
+      on them. This option can be overridden by individual elements by setting their
       selectable prop.`,
     },
     {
@@ -629,7 +629,7 @@ export const keyboardProps: PropsTableProps = {
       type: 'string | string[] | null',
       default: '"Backspace"',
       description: `If set, pressing the key or chord will delete any selected
-      nodes and edges. Passing an array represents mutliple keys that can be
+      nodes and edges. Passing an array represents multiple keys that can be
       pressed. For example, ["Delete", "Backspace"] will delete selected elements
       when either key is pressed.`,
     },
@@ -639,7 +639,7 @@ export const keyboardProps: PropsTableProps = {
       default: '"Shift"',
       description: `If set, holding this key will let you click and drag to draw
       a selection box around multiple nodes and edges. Passing an array represents
-      mutliple keys that can be pressed. For example, ["Shift", "Meta"] will
+      multiple keys that can be pressed. For example, ["Shift", "Meta"] will
       allow you to draw a selection box when either key is pressed.`,
     },
     {
@@ -681,7 +681,7 @@ export const styleProps: PropsTableProps = {
       default: '"nopan"',
       description: `If an element in the canvas does not stop mouse events from
       propagating, clicking and dragging that element will pan the viewport. Adding
-      the "nopan" class prevents this behaviour and this prop allows you to change
+      the "nopan" class prevents this behavior and this prop allows you to change
       the name of that class.`,
     },
     {
@@ -689,7 +689,7 @@ export const styleProps: PropsTableProps = {
       type: 'string',
       default: '"nodrag"',
       description: `If a node is draggable, clicking and dragging that node will
-      move it around the canvas. Adding the "nodrag" class prevents this behaviour
+      move it around the canvas. Adding the "nodrag" class prevents this behavior
       and this prop allows you to change the name of that class.`,
     },
     {
@@ -698,7 +698,7 @@ export const styleProps: PropsTableProps = {
       default: '"nowheel"',
       description: `Typically, scrolling the mouse wheel when the mouse is over
       the canvas will zoom the viewport. Adding the "nowheel" class to an element
-      in the canvas will prevent this behaviour and this prop allows you to change
+      in the canvas will prevent this behavior and this prop allows you to change
       the name of that class.`,
     },
   ],

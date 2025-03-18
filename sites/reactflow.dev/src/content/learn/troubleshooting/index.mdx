@@ -105,7 +105,7 @@ import MyCustomNode from './MyCustomNode';
 
 function Flow(props) {
   // new object being created on every render
-  // causing unneccessary re-renders
+  // causing unnecessary re-renders
   const nodeTypes = {
     myCustomNode: MyCustomNode,
   };
@@ -136,7 +136,7 @@ export default Flow;
 
 <Callout type="info">Alternative implementation:</Callout>
 
-You can use this to change your nodeTypes dynamically without causing unnecessary re-renders.
+You can use this if you want to change your nodeTypes dynamically without causing unnecessary re-renders.
 
 ```jsx
 import { useMemo } from 'react';

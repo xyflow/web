@@ -12,9 +12,9 @@ image: '/img/blog/v11-reactflow-header.png'
 import { Bleed } from 'nextra/components';
 import { Text, Image } from 'xy-shared';
 import SSRFlow from '@/components/SSRFlow';
-import { RemoteCodeViewer } from 'xy-shared/server'
+import { RemoteCodeViewer } from 'xy-shared/server';
 
-For the last few months we’ve been wrapping up a solid React Flow 12 release for y’all. Since the last major release, we’ve grown our core team to five people, reached more than 22k stars on Github, rebranded to xyflow, launched Svelte Flow (many great side-effects of this are baked into this release), and kept all of our office plants alive.
+For the last few months we’ve been wrapping up a solid React Flow 12 release for y’all. Since the last major release, we’ve grown our core team to five people, reached more than 22k stars on Github, re-branded to xyflow, launched Svelte Flow (many great side-effects of this are baked into this release), and kept all of our office plants alive.
 
 This release also brings the final piece of the “xyflow” puzzle, as our package name changes from `reactflow` to `@xyflow/react`. We pinky promise that we won’t change our package name again anytime soon!
 
@@ -50,12 +50,12 @@ React Flow 12 is here, and the main features are
   on the client.
 </div>
 
-React is heading towards server side rendering, with tools like [Nextjs](https://nextjs.org/), [Astro](https://astro.build/), and [waku](https://waku.gg/). We’ve gotten asked to support server side rendering more than a [couple](https://github.com/xyflow/xyflow/issues/3168) of [times](https://github.com/xyflow/xyflow/issues/3384) due to difficulties using React Flow with these tools. In React Flow 11, Astro just renders a blank screen by default when using React Flow- that’s no good.
+React is heading towards server side rendering, with tools like [Nextjs](https://nextjs.org/), [Astro](https://astro.build/), and [Waku](https://waku.gg/). We’ve gotten asked to support server side rendering more than a [couple](https://github.com/xyflow/xyflow/issues/3168) of [times](https://github.com/xyflow/xyflow/issues/3384) due to difficulties using React Flow with these tools. In React Flow 11, Astro just renders a blank screen by default when using React Flow- that’s no good.
 
 With React Flow 12, you can now:
 
 - Display static HTML diagrams for docs sites (even if the client has no JS)
-- Dynamically generate opengraph images that appear as embeds when sharing a link to your flow
+- Dynamically generate open graph images that appear as embeds when sharing a link to your flow
 - Pre-render flows for crawlable content
 
 Check out our [server side rendering guide](https://reactflow.dev/learn/advanced-use/ssr-ssg-configuration)

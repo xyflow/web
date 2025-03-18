@@ -103,7 +103,7 @@ body {
   line-height: 1;
 }
 
-.react-flow__node-turbo .subline {
+.react-flow__node-turbo .subtitle {
   font-size: 12px;
   color: #777;
 }

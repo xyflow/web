@@ -114,7 +114,7 @@ export const viewportFields: PropsTableProps = {
       name: 'viewportInitialized',
       type: 'boolean',
       description: `React Flow needs to mount the viewport to the DOM and initialize
-      its zoom and pan behaviour. This property tells you when `,
+      its zoom and pan behavior. This property tells you when`,
     },
     { name: 'zoomIn', type: '(options?: { duration: number; }) => void' },
     { name: 'zoomOut', type: '(options?: { duration: number; }) => void' },
@@ -122,7 +122,7 @@ export const viewportFields: PropsTableProps = {
       name: 'zoomTo',
       type: '(zoomLevel: number, options?: { duration: number; }) => void',
       description: `Zoom the viewport to a given zoom level. Passing in a duration
-      will animate the viewport to the new zoom level. `,
+      will animate the viewport to the new zoom level.`,
     },
     {
       name: 'getZoom',
@@ -145,7 +145,7 @@ export const viewportFields: PropsTableProps = {
       name: 'fitBounds',
       type: '(bounds: Rect, options?: { duration: number, padding: number; }) => void',
       description: `A low-level utility function to fit the viewport to a given
-      rectangle. By pasing in a duration, the viewport will animate from its
+      rectangle. By passing in a duration, the viewport will animate from its
       current position to the new position. The padding option can be used to
       add space around the bounds.`,
     },
@@ -153,7 +153,7 @@ export const viewportFields: PropsTableProps = {
       name: 'screenToFlowPosition',
       type: '(position: { x: number; y: number; }) => { x: number; y: number; }',
       description: `With this function you can translate a screen pixel position
-      to a flow position. It is useful for implemting drag and drop from a sidebar
+      to a flow position. It is useful for implementing drag and drop from a sidebar
       for example.`,
     },
     {

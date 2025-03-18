@@ -2,7 +2,7 @@ module.exports = {
   async redirects() {
     return [
       {
-        // Match all routes without file extention
+        // Match all routes without file extension
         // that adhere to *-*-*.json pattern
         source: "/:slug(\\w+\\-*\\w*\\-*\\w*)",
         destination: "/registry/:slug.json",

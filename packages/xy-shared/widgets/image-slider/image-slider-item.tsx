@@ -28,8 +28,8 @@ export default function ImageSliderItem({
     >
       <div className="w-full relative mb-8 h-1.5 rounded bg-black/20">
         {/* I'm sure there's a fancy type way to say that `activeBarWidth` only
-            exists when `isActive` is true but I couldn't work out a nice solution
-            and it's probably overengineering anyway.
+            exists when `isActive` is true, but I couldn't work out a nice solution,
+            and it's probably over-engineering anyway.
         */}
         {isActive && (
           <div

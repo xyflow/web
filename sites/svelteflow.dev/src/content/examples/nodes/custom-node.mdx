@@ -6,11 +6,8 @@ description: This is an example of a custom node implementation. Svelte Flow nod
 import { RemoteCodeViewer } from 'xy-shared/server';
 import UnusedPropWarning from '@/components/unused-prop-warning';
 
-Creating your own nodes is as easy as creating a regular Svelte component and passing them to `nodeTypes`. Being just regular components, you can essentially display any content and implement any functionality you like. Inside, you have access to a number of props that let you implement and extend default node behaviour.
+Creating your own nodes is as easy as creating a regular Svelte component and passing them to `nodeTypes`. Being just regular components, you can essentially display any content and implement any functionality you like. Inside, you have access to a number of props that let you implement and extend default node behavior.
 
-<RemoteCodeViewer
-  route="examples/nodes/custom-node"
-  framework="svelte"
-/>
+<RemoteCodeViewer route="examples/nodes/custom-node" framework="svelte" />
 
 <UnusedPropWarning />
