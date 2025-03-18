@@ -9,9 +9,9 @@ import { Callout, Cards } from 'nextra/components';
 Svelte Flow is a highly customizable component for building interactive graphs and node-based editors, built by the creators of React Flow.
 
 <Callout>
-  This package is currently in an alpha state and under heavy development. The
-  API is likely to change. You can read about the latest changes in the ["What's
-  New" section](/whats-new).
+  This package is currently in an alpha state and under heavy development. The API is
+  likely to change. You can read about the latest changes in the ["What's New"
+  section](/whats-new).
 </Callout>
 
 ## Play online
@@ -73,7 +73,7 @@ We get started by stacking together the most important components of Svelte Flow
   // 👇 this is important! You need to import the styles for Svelte Flow to work
   import '@xyflow/svelte/dist/style.css';
 
-  // We are using writable's for the nodes and edges to sync them easily. When a user drags a node for example, Svelte Flow updates its position.
+  // We are using writables for the nodes and edges to sync them easily. When a user drags a node for example, Svelte Flow updates its position.
   const nodes = writable([
     {
       id: '1',

@@ -86,5 +86,6 @@ export default {
     'onconnectstart',
     'onconnectend',
     'onbeforedelete',
+    'writables',
   ],
 };

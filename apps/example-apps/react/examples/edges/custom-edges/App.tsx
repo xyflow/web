@@ -37,7 +37,7 @@ const initialNodes: Node[] = [
     id: 'bi-1',
     data: { label: 'Bi Directional 1' },
     position: { x: 0, y: 300 },
-    type: 'biDirectional',
+    type: 'bidirectional',
     sourcePosition: Position.Right,
     targetPosition: Position.Left,
   },
@@ -45,7 +45,7 @@ const initialNodes: Node[] = [
     id: 'bi-2',
     data: { label: 'Bi Directional 2' },
     position: { x: 250, y: 300 },
-    type: 'biDirectional',
+    type: 'bidirectional',
     sourcePosition: Position.Right,
     targetPosition: Position.Left,
   },
@@ -63,13 +63,13 @@ const initialEdges: Edge[] = [
     id: 'edge-button',
     source: 'button-1',
     target: 'button-2',
-    type: 'buttonEdge',
+    type: 'buttonedge',
   },
   {
     id: 'edge-bi-1',
     source: 'bi-1',
     target: 'bi-2',
-    type: 'biDirectional',
+    type: 'bidirectional',
     sourceHandle: 'right',
     targetHandle: 'left',
     markerEnd: { type: MarkerType.ArrowClosed },
@@ -78,7 +78,7 @@ const initialEdges: Edge[] = [
     id: 'edge-bi-2',
     source: 'bi-2',
     target: 'bi-1',
-    type: 'biDirectional',
+    type: 'bidirectional',
     sourceHandle: 'left',
     targetHandle: 'right',
     markerEnd: { type: MarkerType.ArrowClosed },
@@ -87,15 +87,15 @@ const initialEdges: Edge[] = [
     id: 'edge-self',
     source: 'self-1',
     target: 'self-1',
-    type: 'selfConnecting',
+    type: 'selfconnecting',
     markerEnd: { type: MarkerType.Arrow },
   },
 ];
 
 const edgeTypes = {
-  biDirectional: BiDirectionalEdge,
-  selfConnecting: SelfConnectingEdge,
-  buttonEdge: ButtonEdge,
+  bidirectional: BiDirectionalEdge,
+  selfconnecting: SelfConnectingEdge,
+  buttonedge: ButtonEdge,
 };
 
 const nodeTypes = {

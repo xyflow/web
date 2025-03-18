@@ -15,13 +15,13 @@
   const edges = writable<Edge[]>(initialEdges);
 
   const nodeTypes = {
-    biDirectional: BiDirectionalNode
+    bidirectional: BiDirectionalNode
   };
 
   const edgeTypes = {
-    buttonEdge: ButtonEdge,
-    biDirectional: BiDirectionalEdge,
-    selfConnecting: SelfConnectingEdge
+    buttonedge: ButtonEdge,
+    bidirectional: BiDirectionalEdge,
+    selfconnecting: SelfConnectingEdge
   };
 </script>
 
