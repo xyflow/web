@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { Tabs, TabsContent, TabsList, cn } from '@xyflow/xy-ui';
 
 import { SliderItem } from './types';
