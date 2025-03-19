@@ -11,13 +11,12 @@ import {
   Link,
 } from '@xyflow/xy-ui';
 import { ProjectPreview } from 'xy-shared';
-
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
-import { getPageMap } from 'nextra/page-map';
 import { Folder } from 'nextra';
+import { getPageMap as getExamplesPageMap } from '@/app/(content-pages)/examples/[...slug]/utils';
 
 export const ExamplesOverview: FC = async () => {
-  const pageMap = await getPageMap('/examples');
+  const { children: pageMap } = await getExamplesPageMap();
   return (
     <>
       <Section className="!px-0">
@@ -59,7 +58,6 @@ export const ExamplesOverview: FC = async () => {
           </div>
         </Link>
       </Section>
-
       {pageMap.map((_category) => {
         const hasChildren = 'children' in _category;
         if (!hasChildren) return;
