@@ -63,6 +63,7 @@ export const meta = {
       'entitree-flex': '',
       horizontal: '',
       'sub-flows': '',
+      'dynamic-layouting': '',
     },
   },
   styling: {
