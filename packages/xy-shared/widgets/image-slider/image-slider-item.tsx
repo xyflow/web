@@ -2,7 +2,7 @@
 
 import { TabsTrigger, Text, cn } from '@xyflow/xy-ui';
 import { SliderItem } from './types';
-import ProgressBarController from './progress-bar-controller';
+import ProgressBar from './progress-bar';
 
 export type ImageSliderItemProps = {
   item: SliderItem;
@@ -28,15 +28,9 @@ export default function ImageSliderItem({
       )}
       onClick={() => onClick(item.name)}
     >
-      <div className="w-full relative mb-8 h-1.5 rounded bg-black/20">
-        {isActive && (
-          <ProgressBarController
-            duration={duration}
-            isActive={isActive}
-            onComplete={onComplete}
-          />
-        )}
-      </div>
+      {isActive && (
+        <ProgressBar duration={duration} isActive={isActive} onComplete={onComplete} />
+      )}
 
       <div
         className={cn(
