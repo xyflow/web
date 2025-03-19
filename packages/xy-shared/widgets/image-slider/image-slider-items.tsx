@@ -53,14 +53,33 @@ export default function ImageSliderItems({
       return () => clearTimeout(resume);
     }
 
-    window.requestAnimationFrame(() => {
-      if (elapsed >= duration) {
-        setNext();
-      } else {
-        setElapsed(elapsed + 16.66);
+    let animationFrameId: number;
+
+    const updateElapsed = () => {
+      setElapsed((prev) => {
+        const nextElapsed = prev + 16.66;
+        if (nextElapsed >= duration) {
+          setNext();
+          return 0;
+        }
+        return nextElapsed;
+      });
+
+      if (shouldCycle) {
+        animationFrameId = window.requestAnimationFrame(updateElapsed);
       }
-    });
-  }, [active, duration, elapsed, shouldCycle]);
+    };
+
+    if (shouldCycle) {
+      animationFrameId = window.requestAnimationFrame(updateElapsed);
+    }
+
+    return () => {
+      if (animationFrameId) {
+        window.cancelAnimationFrame(animationFrameId);
+      }
+    };
+  }, [duration, shouldCycle, setNext]);
 
   return (
     <Tabs value={active} onValueChange={onValueChange} className="relative">
@@ -79,9 +98,7 @@ export default function ImageSliderItems({
             <div
               className={cn(
                 'transition duration-300 motion-reduce:transition-none h-full relative',
-                active === item.name
-                  ? 'ease-out opacity-100'
-                  : 'ease-in opacity-0',
+                active === item.name ? 'ease-out opacity-100' : 'ease-in opacity-0',
               )}
             >
               {item.content}
