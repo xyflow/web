@@ -47,12 +47,10 @@ export default function ProgressBar({
   }, [duration, isActive, onComplete]);
 
   return (
-    <div className="h-1.5 rounded bg-black/20">
-      <div
-        ref={progressBarRef}
-        className="h-full rounded bg-gradient-to-r from-accent/40 to-accent/70 transition-all duration-200 ease-linear"
-        style={{ width: '0%' }}
-      />
-    </div>
+    <div
+      ref={progressBarRef}
+      className="h-full rounded bg-gradient-to-r from-accent/40 to-accent/70 transition-all duration-200 ease-linear"
+      style={{ width: '0%' }}
+    />
   );
 }

@@ -28,9 +28,11 @@ export default function ImageSliderItem({
       )}
       onClick={() => onClick(item.name)}
     >
-      {isActive && (
-        <ProgressBar duration={duration} isActive={isActive} onComplete={onComplete} />
-      )}
+      <div className="h-1.5 rounded bg-black/20 w-full">
+        {isActive && (
+          <ProgressBar duration={duration} isActive={isActive} onComplete={onComplete} />
+        )}
+      </div>
 
       <div
         className={cn(
