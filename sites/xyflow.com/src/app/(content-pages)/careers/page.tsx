@@ -139,9 +139,9 @@ const Page: FC = () => {
         </Text>
 
         <Text size="lg" className="leading-8">
-          We work in three-week cycles followed by one-week cooldown period.
-          During the cooldown week we create “pitches” of new ideas, features,
-          edits, or improvements. At the end of our cooldown week as a team we
+          We work in three-week cycles followed by one-week cool-down period.
+          During the cool-down week we create “pitches” of new ideas, features,
+          edits, or improvements. At the end of our cool-down week as a team we
           decide which ones we'll work on in the next cycle. We work on some
           pitches collaboratively, some alone. At the end of the cycle we talk
           about how the cycle was for us and show what we worked on.
@@ -158,7 +158,7 @@ const Page: FC = () => {
         <Text size="lg" className="leading-8">
           Diversity and inclusion are a priority for us. We are open to
           discussions about how to make xyflow a more inclusive space and if we
-          can make accomodations in our hiring process, please reach out to us.
+          can make accommodations in our hiring process, please reach out to us.
         </Text>
       </Section>
     </BaseLayout>

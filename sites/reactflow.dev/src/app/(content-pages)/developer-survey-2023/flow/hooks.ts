@@ -17,7 +17,7 @@ export const useFocus = ({
   then,
 }: FocusParams) => {
   const { getNodes, fitView } = useReactFlow();
-  const predelay = 50;
+  const preDelay = 50;
 
   useEffect(() => {
     let actions = then ? [...then] : [];
@@ -42,7 +42,7 @@ export const useFocus = ({
       };
 
       timer = window.setTimeout(next, duration);
-    }, predelay);
+    }, preDelay);
 
     return () => window.clearTimeout(timer);
   }, [id, fitView, includeChildren, duration, then]);

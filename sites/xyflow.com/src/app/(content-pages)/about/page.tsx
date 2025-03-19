@@ -84,7 +84,7 @@ const Page: FC = () => {
       <ContentGrid className="mt-16 lg:mt-20 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
         <TeamCard
           name="Christopher"
-          teampic={christopher}
+          teamPic={christopher}
           description="Christopher doesn't remember anything before 2015. He woke up on the shores of the Spree, where he wandered into the offices of the newspaper Zeit and they gave him a job as a front-end developer, mistaking him for the potential new hire. He quickly rose through the ranks there. Now he codes at xyflow, hoping one day he will remember how he got here, and what the meaning of all this is anyway."
           links={[
             { linkName: 'Twitter', route: 'https://twitter.com/chrtze' },
@@ -93,7 +93,7 @@ const Page: FC = () => {
         />
         <TeamCard
           name="Moritz"
-          teampic={moritz}
+          teamPic={moritz}
           description="Moritz was raised in the depths of Teutoburger Wald by a pack of wolves, learning how to hunt, survive, and develop front-end applications. He abandoned his pack after a disagreement in 2019, where he fled to the streets of Berlin. He now maintains React Flow, and dreams of one day rejoining his pack."
           links={[
             { linkName: 'Twitter', route: 'https://twitter.com/moklick' },
@@ -102,7 +102,7 @@ const Page: FC = () => {
         />
         <TeamCard
           name="Peter"
-          teampic={peter}
+          teamPic={peter}
           description="Peter has been directing a mockumentary of the xyflow team a la The Office since he broke into our building during the summer of 2023. Luckily for our team, the footage will never be released since he never asked us to sign a talent waiver, and none of us have the heart to tell him. Once he's done editing the footage (he keeps saying 'one more week'), we're hoping he'll make some contributions to the Svelte Flow library and docs."
           links={[
             { linkName: 'Github', route: 'https://github.com/peterkogo' },
@@ -110,7 +110,7 @@ const Page: FC = () => {
         />
         <TeamCard
           name="Abbey"
-          teampic={abbey}
+          teamPic={abbey}
           description="Abbey spent the first twenty years of her career finely crafting an innovative sea bass fishing technique. The world of sea bass became all too political for her, but luckily she found xyflow, which she wrongly assumed was another commercial fishing company. She is still figuring out how to turn on a computer, but once she does, she is excited to start contributing to the team."
           links={[
             { linkName: 'Github', route: 'https://github.com/printerscanner' },
@@ -118,7 +118,7 @@ const Page: FC = () => {
         />
         <TeamCard
           name="Burak"
-          teampic={burak}
+          teamPic={burak}
           description="Burak created Vue Flow while aboard a pirate ship, hoping the motley crew could better organize themselves with a node-based cleaning schedule. Even after his ship was commandeered on the shores of Hamburg, he continues to seek those harsh bone-breaking conditions on land through Brazilian Jiu Jitsu, skateboarding, and open source software development.
           "
           links={[
@@ -138,26 +138,26 @@ function TeamCard({
   name,
   description,
   links,
-  teampic,
+  teamPic,
 }: {
   name: string;
   description: string;
-  teampic?: StaticImageData;
+  teamPic?: StaticImageData;
 
   links?: Array<{ route: string; linkName: string }>;
 }) {
   return (
     <ContentGridItem>
-      {teampic && (
+      {teamPic && (
         <Image
-          src={teampic}
+          src={teamPic}
           alt={name}
           className="mb-8 lg:-mt-8"
           width="260"
           height="304"
         />
       )}
-      {!teampic && (
+      {!teamPic && (
         <div className="mb-8 lg:-mt-8" style={{ width: 260, height: 304 }} />
       )}
 

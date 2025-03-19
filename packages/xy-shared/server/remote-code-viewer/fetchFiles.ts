@@ -12,7 +12,7 @@ export async function fetchFiles(route: string, framework: Framework) {
   const files = json.files;
 
   // this is a workaround for the examples that are using jsx
-  // if we don't do this, sandpack will generate a default App.tsx file
+  // if we don't do this, Sandpack will generate a default App.tsx file
   if (framework === 'react' && files['App.jsx']) {
     files['App.tsx'] = files['App.jsx'];
     delete files['App.jsx'];

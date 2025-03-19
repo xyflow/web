@@ -21,31 +21,31 @@ const initialNodes: Node<TurboNodeData>[] = [
   {
     id: '1',
     position: { x: 0, y: 0 },
-    data: { icon: <FunctionIcon />, title: 'readFile', subline: 'api.ts' },
+    data: { icon: <FunctionIcon />, title: 'readFile', subtitle: 'api.ts' },
     type: 'turbo',
   },
   {
     id: '2',
     position: { x: 250, y: 0 },
-    data: { icon: <FunctionIcon />, title: 'bundle', subline: 'apiContents' },
+    data: { icon: <FunctionIcon />, title: 'bundle', subtitle: 'apiContents' },
     type: 'turbo',
   },
   {
     id: '3',
     position: { x: 0, y: 250 },
-    data: { icon: <FunctionIcon />, title: 'readFile', subline: 'sdk.ts' },
+    data: { icon: <FunctionIcon />, title: 'readFile', subtitle: 'sdk.ts' },
     type: 'turbo',
   },
   {
     id: '4',
     position: { x: 250, y: 250 },
-    data: { icon: <FunctionIcon />, title: 'bundle', subline: 'sdkContents' },
+    data: { icon: <FunctionIcon />, title: 'bundle', subtitle: 'sdkContents' },
     type: 'turbo',
   },
   {
     id: '5',
     position: { x: 500, y: 125 },
-    data: { icon: <FunctionIcon />, title: 'concat', subline: 'api, sdk' },
+    data: { icon: <FunctionIcon />, title: 'concat', subtitle: 'api, sdk' },
     type: 'turbo',
   },
   {

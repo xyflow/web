@@ -29,8 +29,8 @@ Examples of unacceptable behavior by participants include:
 ## Our Responsibilities
 
 Project maintainers are responsible for clarifying the standards of acceptable
-behaviour and are expected to take appropriate and fair corrective and/or
-restorative action in response to any instances of unacceptable behaviour.
+behavior and are expected to take appropriate and fair corrective and/or
+restorative action in response to any instances of unacceptable behavior.
 
 Project maintainers have the right and responsibility to remove, edit, or reject
 comments, commits, code, wiki edits, issues, and other contributions that are
@@ -55,5 +55,5 @@ this Code of Conduct to create a safe and welcome space for all.
 
 ## Attribution
 
-This Code of Conduct is a direct decendant of the [Gleam Code of Conduct](https://github.com/gleam-lang/gleam/blob/f793b5d28a3102276a8b861c7e16a19c5231426e/CODE_OF_CONDUCT.md),
-which is itself a decendant of the [Contributor Covenant (v1.4)](https://www.contributor-covenant.org/version/1/4/code-of-conduct.html).
+This Code of Conduct is a direct descendant of the [Gleam Code of Conduct](https://github.com/gleam-lang/gleam/blob/f793b5d28a3102276a8b861c7e16a19c5231426e/CODE_OF_CONDUCT.md),
+which is itself a descendant of the [Contributor Covenant (v1.4)](https://www.contributor-covenant.org/version/1/4/code-of-conduct.html).

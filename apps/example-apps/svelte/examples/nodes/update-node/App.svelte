@@ -63,14 +63,14 @@
 
 <div style="height:100vh;">
   <SvelteFlow {nodes} {edges} fitView>
-    <div class="updatenode__controls">
+    <div class="update-node__controls">
       <label>label:</label>
       <input value={nodeName} on:input={(evt) => (nodeName = evt.target?.value)} />
 
-      <label class="updatenode__bglabel">background:</label>
+      <label class="update-node__bg-label">background:</label>
       <input value={nodeBg} on:input={(evt) => (nodeBg = evt.target?.value)} />
 
-      <div class="updatenode__checkboxwrapper">
+      <div class="update-node__checkbox-wrapper">
         <label>hidden:</label>
         <input
           type="checkbox"
@@ -84,7 +84,7 @@
 </div>
 
 <style>
-  :global(.updatenode__controls) {
+  :global(.update-node__controls) {
     position: absolute;
     right: 10px;
     top: 10px;
@@ -92,15 +92,15 @@
     font-size: 12px;
   }
 
-  :global(.updatenode__controls label) {
+  :global(.update-node__controls label) {
     display: block;
   }
 
-  :global(.updatenode__bglabel) {
+  :global(.update-node__bg-label) {
     margin-top: 10px;
   }
 
-  :global(.updatenode__checkboxwrapper) {
+  :global(.update-node__checkbox-wrapper) {
     margin-top: 10px;
     display: flex;
     align-items: center;

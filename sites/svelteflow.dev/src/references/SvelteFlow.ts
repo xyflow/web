@@ -81,7 +81,7 @@ export const viewportProps: PropsTableProps = {
       name: 'fitViewOptions',
       type: 'FitViewOptions',
       description: `When you typically call fitView on a Svelte Flow instance, you
-      can provide an object of options to customize its behaviour. This prop lets
+      can provide an object of options to customize its behavior. This prop lets
       you do the same for the initial fitView call.`,
     },
     { name: 'minZoom', type: 'number', default: '0.5' },
@@ -96,7 +96,7 @@ export const viewportProps: PropsTableProps = {
       name: 'onlyRenderVisibleElements',
       type: 'boolean',
       default: 'false',
-      description: `You can enable this optimisation to instruct Svelte Flow to
+      description: `You can enable this optimization to instruct Svelte Flow to
       only render nodes and edges that would be visible in the viewport.`,
     },
     {
@@ -153,7 +153,7 @@ export const generalEventHandlerProps: PropsTableProps = {
     {
       name: 'onerror',
       type: '(code: string, message: string) => void',
-      description: `Ocassionally something may happen that causes Svelte Flow to
+      description: `Occasionally something may happen that causes Svelte Flow to
       error. Instead of exploding your application, we log a message to the console
       and then call this handler. You might use it for additional logging
       or to show a message to the user.`,
