@@ -1,11 +1,10 @@
 'use client';
 
-import { useState, useCallback, useEffect, useMemo } from 'react';
+import { useState, useCallback } from 'react';
 import { Tabs, TabsContent, TabsList, cn } from '@xyflow/xy-ui';
 
 import { SliderItem } from './types';
 import ImageSliderItem from './image-slider-item';
-import { useProgressBar } from './use-progress-bar';
 
 export type ImageSliderItemsProps = {
   items: SliderItem[];
@@ -26,8 +25,6 @@ export default function ImageSliderItems({
     const nextIndex = (index + 1) % items.length;
     setActive(items[nextIndex].name);
   }, [active, items]);
-
-  const progress = useProgressBar(duration, shouldCycle, setNext);
 
   const onValueChange = useCallback((value: string) => {
     setActive(value);
@@ -72,8 +69,9 @@ export default function ImageSliderItems({
             key={index}
             item={item}
             isActive={active === item.name}
-            activeBarWidth={active === item.name ? progress : undefined}
+            duration={duration}
             onClick={onValueChange}
+            onComplete={setNext}
           />
         ))}
       </TabsList>

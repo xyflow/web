@@ -1,8 +1,19 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
+import ProgressBar from './progress-bar';
 
-export function useProgressBar(duration: number, isActive: boolean, onComplete: () => void) {
+type ProgressBarControllerProps = {
+  duration: number;
+  isActive: boolean;
+  onComplete: () => void;
+};
+
+function ProgressBarController({
+  duration,
+  isActive,
+  onComplete,
+}: ProgressBarControllerProps) {
   const [elapsed, setElapsed] = useState(0);
 
   useEffect(() => {
@@ -34,5 +45,7 @@ export function useProgressBar(duration: number, isActive: boolean, onComplete: 
 
   const progress = (elapsed / duration) * 100;
 
-  return progress;
+  return <ProgressBar width={progress} />;
 }
+
+export default ProgressBarController;
