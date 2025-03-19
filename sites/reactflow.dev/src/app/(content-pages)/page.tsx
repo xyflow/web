@@ -7,7 +7,7 @@ import { Button, Section, Stats } from '@xyflow/xy-ui';
 import {
   BaseLayout,
   HeroFlow,
-  ImageSlider,
+  // ImageSlider,
   Features,
   GettingStarted,
   AboutSection,
@@ -155,7 +155,7 @@ const Page: FC = async () => {
         <ClientLogos />
       </Section>
 
-      <ImageSlider items={sliderItems} />
+      {/* <ImageSlider items={sliderItems} /> */}
 
       <Section className="relative">
         <WhatsNewPreview items={whatsNew} variant="compact" />
