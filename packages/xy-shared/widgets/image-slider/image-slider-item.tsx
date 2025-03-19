@@ -1,8 +1,8 @@
 'use client';
 
 import { TabsTrigger, Text, cn } from '@xyflow/xy-ui';
-
 import { SliderItem } from './types';
+import ProgressBar from './progress-bar';
 
 export type ImageSliderItemProps = {
   item: SliderItem;
@@ -15,7 +15,7 @@ export default function ImageSliderItem({
   item,
   isActive,
   onClick,
-  ...props
+  activeBarWidth,
 }: ImageSliderItemProps) {
   return (
     <TabsTrigger
@@ -32,11 +32,9 @@ export default function ImageSliderItem({
             and it's probably over-engineering anyway.
         */}
         {isActive && (
-          <div
-            style={{ width: `${props.activeBarWidth!}%` }}
-            className={cn(
-              'absolute h-full rounded bg-gradient-to-r from-accent/40 to-accent/70',
-            )}
+          <ProgressBar
+            width={activeBarWidth!}
+            className="transition-all duration-200 ease-linear"
           />
         )}
       </div>
