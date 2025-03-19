@@ -33,7 +33,6 @@ export default function ProgressBar({
       if (elapsed < duration) {
         animationFrameId = requestAnimationFrame(updateProgress);
       } else {
-        console.log('Progress bar completed!'); // Log when progress bar completes
         onComplete();
       }
     };

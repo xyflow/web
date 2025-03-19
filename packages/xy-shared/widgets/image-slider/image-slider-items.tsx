@@ -21,14 +21,12 @@ export default function ImageSliderItems({
   const [shouldCycle, setShouldCycle] = useState(Boolean(duration));
 
   const setNext = useCallback(() => {
-    console.log('Moving to the next item!'); // Log when setNext is called
     const index = items.findIndex((item) => item.name === active);
     const nextIndex = (index + 1) % items.length;
     setActive(items[nextIndex].name);
   }, [active, items]);
 
   const onValueChange = useCallback((value: string) => {
-    console.log('Tab manually changed to:', value); // Log when a tab is manually changed
     setActive(value);
     setShouldCycle(false);
   }, []);
@@ -36,7 +34,6 @@ export default function ImageSliderItems({
   useEffect(() => {
     if (!shouldCycle && duration) {
       const resume = setTimeout(() => {
-        console.log('Resuming auto-cycling!'); // Log when auto-cycling resumes
         setShouldCycle(true);
       }, 1000 * 10);
 
