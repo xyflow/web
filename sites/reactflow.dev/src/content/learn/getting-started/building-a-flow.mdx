@@ -96,23 +96,23 @@ const nodes = [
 
 <RemoteCodeViewer route="learn/getting-started-3" framework="react" />
 
-There are many ways to configure nodes. For example, you might use different types or add custom data based on your application's needs. You can see the full list of node options on the [node option site](/api-reference/types/node).
-
-This setup attaches the nodes to your flow, paving the way for further customizations, like adding edges to connect them.
+There are many ways to configure nodes in React Flow. We have several built-in options that you can explore in the [node](/api-reference/types/node) documentation. However, when it comes to customizing nodes, the possibilities are endless. For more details, check out our guide on [customizing nodes](/api-reference/types/node).
 
 ## Adding an Edge
 
 Now that we have two nodes, let's connect them with an edge.
 
-To make an edge, we need to specify two attributes: the source node (where the edge begins) and the target node (where the edge ends). We use the `id` of the two nodes to specify this (in our example, our two nodes have ids of "1" and "2"):
+To create an edge, we define a unique edge id and specify two attributes: the source (where the edge begins) and the target (where it ends). In this example, we use the `id` values of the two nodes we created so far—"1" and "2"—to define the edge:
 
 ```js
 const edges = [{ id: '1-2', source: '1', target: '2' }];
 ```
 
+This edge connects the node with `id` "1" (the source) to the node with `id` "2" (the target).
+
 <RemoteCodeViewer route="learn/getting-started-4" framework="react" />
 
-Let's give this edge two properties that are built into React Flow, a `label` and a different `type`.
+Let's give this edge two properties that are built into React Flow, a `label` and a "step" `type`.
 
 <RemoteCodeViewer route="learn/getting-started-5" framework="react" />
 
