@@ -5,11 +5,9 @@ const concepts = {
   'the-viewport': '',
 };
 const gettingStarted = {
-  'installation-and-requirements': '',
   'building-a-flow': '',
 };
 const customization = {
-  'custom-nodes': '',
   'custom-edges': '',
 };
 const advanced = {
@@ -90,8 +88,8 @@ const metaRecord = {
   learn: {
     items: {
       index: '',
-      concepts: { items: concepts },
       'getting-started': { items: gettingStarted },
+      concepts: { items: concepts },
       customization: {
         items: customization,
         title: 'Customizing React Flow',

@@ -10,10 +10,7 @@ import { RemoteCodeViewer } from 'xy-shared/server';
 
 # Quickstart
 
-If you want to get up-and-running as soon as possible you're in the right place!
-This page will take you from zero to a working React Flow app in a few minutes.
-From there, you can take a deeper look at what React Flow is all about, check out
-the examples, or dive into the API docs.
+If you want to get up and running as soon as possible, you’re in the right place! This page will take you from zero to a working React Flow app in a few minutes. From there, you can take a deeper look at what React Flow is all about, check out the examples, or dive into the API docs.
 
 ## React Flow in 60 seconds
 
@@ -63,7 +60,7 @@ npx degit xyflow/vite-react-flow-template app-name
 
 ## Installation
 
-To get started locally you should have a few things:
+To get started locally, you should have a few things:
 
 - [Node.js](https://nodejs.org/en/) installed.
 - Either npm or another package manager like [yarn](https://yarnpkg.com/) or
@@ -88,7 +85,7 @@ Lastly, spin up the dev server and we're good to go!
 
 ## Creating your first flow
 
-The `reactflow` package exports the `<ReactFlow />` component as the default export.
+The `@xyflow/react` package exports the `<ReactFlow />` component as the default export.
 That and a handful of nodes and edges are all we need to get something going! Get
 rid of everything inside `App.jsx` and add the following:
 
@@ -116,14 +113,12 @@ export default function App() {
 There are a few things to pay attention to here:
 
 - <Emoji content="🎨" /> You must import the React Flow stylesheet.
-- <Emoji content="📐" /> The `<ReactFlow />` component must be wrapped in an
-  element with a width and height.
+- <Emoji content="📐" /> The `<ReactFlow />` component must be wrapped in an element with
+  a width and height.
 
 ## Adding interactivity
 
-Graphs created with React Flow are fully interactive. We can move nodes around,
-connect them together, delete them, ... To get the basic functionality we need
-to add three things:
+Graphs created with React Flow are fully interactive. We can move nodes around, connect, delete, and more. To get the basic functionality, we need to add three things:
 
 - A callback for what to do when [nodes change](/api-reference/react-flow#on-nodes-change).
 - A callback for what to do when [edges change](/api-reference/react-flow#on-edges-change).
@@ -133,12 +128,7 @@ Fortunately for you, we provide some hooks to make this easy!
 
 ```jsx
 import React, { useCallback } from 'react';
-import {
-  ReactFlow,
-  useNodesState,
-  useEdgesState,
-  addEdge,
-} from '@xyflow/react';
+import { ReactFlow, useNodesState, useEdgesState, addEdge } from '@xyflow/react';
 
 import '@xyflow/react/dist/style.css';
 
@@ -173,7 +163,7 @@ export default function App() {
 
 ## Some extra goodies
 
-Finally, React Flow ships with some plugins out of the box for things like a
+Finally, React Flow ships with some components out of the box for things like a
 [`<Minimap />`](/api-reference/components/minimap) or viewport
 [`<Controls />`](/api-reference/components/controls).
 
@@ -224,14 +214,10 @@ export default function App() {
 }
 ```
 
-<RemoteCodeViewer
-  route="learn/quickstart"
-  framework="react"
-  showEditor={false}
-/>
+<RemoteCodeViewer route="learn/quickstart" framework="react" showEditor={false} />
 
-<Emoji content="🎉" /> Et voila. You've already created your first interactive
-flow! Check out the links below on where to head next.
+<Emoji content="🎉" /> Et voila. You've already created your first interactive flow! Check
+out the links below on where to head next.
 
 ## Next Steps
 

@@ -3,28 +3,60 @@ description: Learn how to build your first static flow with React Flow.
 ---
 
 import { RemoteCodeViewer } from 'xy-shared/server';
+import { Tabs } from 'nextra/components';
 
 # Building a Flow
 
-In this section we are explaining how to create a controlled flow component. Now that you've installed React Flow into your React project, all files are in place to start using React Flow.
+In this section, we’ll introduce you to the basics of React Flow and guide you through creating your first flow. We assume you have Node.js installed, along with a package manager such as npm, yarn, or pnpm. The React Flow package is published on npm under `@xyflow/react` and can be installed with:
+
+<Tabs items={['npm', 'pnpm', 'yarn', 'bun']}>
+  <Tabs.Tab>
+```bash copy
+npm install @xyflow/react
+```
+
+  </Tabs.Tab>
+  <Tabs.Tab>
+
+```bash copy
+pnpm add @xyflow/react
+```
+
+  </Tabs.Tab>
+    <Tabs.Tab>
+
+```bash copy
+yarn add @xyflow/react
+```
+
+  </Tabs.Tab>
+  <Tabs.Tab>
+
+```bash copy
+bun add @xyflow/react
+```
+
+</Tabs.Tab>
+</Tabs>
 
 ## Getting Started
 
-Let's create an empty flow with a controls panel and a background. For this we need to import the components from the `reactflow` package:
+Let's start by creating an empty flow with a controls panel and a background. First, we need to import some basic components from the `@xyflow/react` package:
 
 ```js
 import { ReactFlow, Background, Controls } from '@xyflow/react';
+import '@xyflow/react/dist/style.css';
 ```
 
-We can now use the components to render an empty flow:
+We can now use these components to render an empty flow. There are three important things to keep in mind here:
+
+1. Don't forget to **import the styles**. Otherwise, React Flow won't work.
+
+2. The **parent container needs a width and a height** because React Flow uses its parent dimensions.
+
+3. If you have **multiple flows on one page**, you need to pass a unique `id` prop to each component to make React Flow work properly.
 
 <RemoteCodeViewer route="learn/getting-started-1" framework="react" />
-
-There are three important things to keep in mind here:
-
-1. You need to **import the styles**. Otherwise React Flow won't work.
-2. The **parent container needs a width and a height**, because React Flow uses its parent dimensions.
-3. If you have **multiple flows on one page**, you need to pass a unique `id` prop to each component to make React Flow work properly.
 
 ## Adding Nodes
 
