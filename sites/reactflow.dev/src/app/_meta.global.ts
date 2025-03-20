@@ -8,6 +8,7 @@ const gettingStarted = {
   'building-a-flow': '',
 };
 const customization = {
+  'custom-nodes': '',
   'custom-edges': '',
 };
 const advanced = {
