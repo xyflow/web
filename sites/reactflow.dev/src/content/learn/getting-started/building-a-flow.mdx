@@ -50,7 +50,7 @@ import '@xyflow/react/dist/style.css';
 
 We can now use these components to render an empty flow. There are three important things to keep in mind here:
 
-1. Don't forget to **import the styles**. Otherwise, React Flow won't work.
+1. Don't forget to **import the stylesheet**. Otherwise, React Flow won't work.
 
 2. The **parent container needs a width and a height** because React Flow uses its parent dimensions.
 
@@ -60,7 +60,7 @@ We can now use these components to render an empty flow. There are three importa
 
 ## Adding Nodes
 
-Now that the flow is set up, let's add some nodes. To do this, you need to create an array with [node objects](/api-reference/types/node) like this:
+Now that the flow is set up, it's time to add nodes—each node represents an element in your diagram with a specific position and content. Create an array of [node objects](/api-reference/types/node) like this:
 
 ```js
 const nodes = [
@@ -72,11 +72,11 @@ const nodes = [
 ];
 ```
 
-These nodes can now be added to the flow:
+Then we can add our first node to the flow like this:
 
 <RemoteCodeViewer route="learn/getting-started-2" framework="react" />
 
-Let's add another node, configure labels and use the node type `input` for the first node.
+Let's add another node, and apply the node type `input` to the first node. React Flow uses different node types to indicate their roles. An **input node**—designated by the type `input`—typically serves as the entry point to your flow.
 
 ```js
 const nodes = [
@@ -96,9 +96,9 @@ const nodes = [
 
 <RemoteCodeViewer route="learn/getting-started-3" framework="react" />
 
-There are plenty of ways to configure nodes. You can see the full list of options on the [node option site](/api-reference/types/node).
+There are many ways to configure nodes. For example, you might use different types or add custom data based on your application's needs. You can see the full list of node options on the [node option site](/api-reference/types/node).
 
-This looks good. Let's attach these two nodes.
+This setup attaches the nodes to your flow, paving the way for further customizations, like adding edges to connect them.
 
 ## Adding an Edge
 
