@@ -82,7 +82,7 @@ async function mapProperty(
   }
 }
 
-export interface RemarkAutoTypeTableOptions {
+interface RemarkAutoTypeTableOptions {
   /**
    * @defaultValue 'auto-type-table'
    */

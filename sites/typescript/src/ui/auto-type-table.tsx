@@ -8,7 +8,7 @@ import type { BaseTypeTableProps } from '../utils/type-table.js'
 import { getTypeTableOutput } from '../utils/type-table.js'
 import { PropsTable } from './props-table.js'
 
-export interface AutoTypeTableProps extends BaseTypeTableProps {
+interface AutoTypeTableProps extends BaseTypeTableProps {
   /**
    * Override the function to render markdown into JSX nodes
    */
@@ -35,7 +35,7 @@ export function createTypeTable(options: GenerateDocumentationOptions = {}): {
  *
  * Display properties in an exported interface via Type Table
  */
-export async function AutoTypeTable({
+async function AutoTypeTable({
   renderMarkdown = renderMarkdownDefault,
   ...props
 }: AutoTypeTableProps): Promise<ReactNode> {

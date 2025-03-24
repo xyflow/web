@@ -35,7 +35,7 @@ type Transformer = (
   propertySymbol: TsSymbol
 ) => void
 
-export interface GenerateOptions {
+interface GenerateOptions {
   /**
    * Allow fields with `@internal` tag
    *
@@ -85,7 +85,7 @@ export function generateDocumentation(
   return out
 }
 
-export function generate(
+function generate(
   program: Project,
   name: string,
   declaration: ExportedDeclarations,
