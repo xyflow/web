@@ -11,6 +11,7 @@ const Info: FC<{ children: ReactNode }> = ({ children }) => {
         <InfoIcon className="size-4" />
       </Popup.Button>
       <Popup.Panel className="max-h-[400px] max-w-[400px] min-w-[220px] overflow-auto text-sm">
+        {/* @ts-expect-error */}
         {children}
       </Popup.Panel>
     </Popup>
