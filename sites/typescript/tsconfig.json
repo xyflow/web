@@ -5,8 +5,7 @@
     "moduleResolution": "bundler",
     "target": "es2022",
     "module": "esnext",
-    "noPropertyAccessFromIndexSignature": false,
-    "types": ["vitest/globals"]
+    "noPropertyAccessFromIndexSignature": false
   },
   "exclude": ["node_modules", "dist"]
 }

@@ -12,4 +12,5 @@ export default defineConfig({
     '!**/__tests__',
     '!**/*.{test,spec}.{ts,tsx}',
   ],
+  clean: process.env.NODE_ENV === 'production',
 });

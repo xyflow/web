@@ -1,7 +1,7 @@
 import { useMDXComponents as getDocsMDXComponents } from 'nextra-theme-docs';
 import { createTypeTable } from '@nextra/typescript';
 import { getPageMap } from 'nextra/page-map';
-import { MdxFile } from 'nextra';
+import type { MdxFile } from 'nextra';
 
 const externalReactLinks = {
   ComponentType:
@@ -23,9 +23,8 @@ const externalReactLinks = {
 };
 
 const externalLinks = {
-  Partial: 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype',
-  Record:
-    'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type',
+  Partial: 'https://typescriptlang.org/docs/handbook/utility-types.html#partialtype',
+  Record: 'https://typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type',
 };
 
 const { AutoTypeTable } = createTypeTable();
@@ -39,12 +38,12 @@ const docsComponents = getDocsMDXComponents({
         .map((item) => [item.frontMatter.title, `/api-reference/types/${item.name}`]),
     );
     const allLinks = {
-      ...props.typeLinkMap,
+      ...typeLinkMap,
       ...reactFlowLinks,
       ...externalReactLinks,
       ...externalLinks,
     };
-
+    // @ts-expect-error -- fixme
     return <AutoTypeTable typeLinkMap={allLinks} {...props} />;
   },
 });
