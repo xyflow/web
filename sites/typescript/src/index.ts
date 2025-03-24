@@ -1,1 +1,1 @@
-export { createTypeTable } from './ui/auto-type-table'
+export { createTypeTable } from './ui/auto-type-table';

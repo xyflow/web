@@ -1,39 +1,34 @@
-import type {
-  ExportedDeclarations,
-  Project,
-  Symbol as TsSymbol,
-  Type
-} from 'ts-morph'
-import { ts } from 'ts-morph'
-import { getProject, type TypescriptConfig } from '../get-project.js'
+import type { ExportedDeclarations, Project, Symbol as TsSymbol, Type } from 'ts-morph';
+import { ts } from 'ts-morph';
+import { getProject, type TypescriptConfig } from '../get-project.js';
 
 export interface GeneratedDoc {
-  name: string
-  description: string
-  entries: DocEntry[]
+  name: string;
+  description: string;
+  entries: DocEntry[];
 }
 
 export interface DocEntry {
-  name: string
-  description: string
-  type: string
-  tags: Record<string, string>
-  required: boolean
+  name: string;
+  description: string;
+  type: string;
+  tags: Record<string, string>;
+  required: boolean;
 }
 
 interface EntryContext {
-  program: Project
-  transform?: Transformer
-  type: Type
-  declaration: ExportedDeclarations
+  program: Project;
+  transform?: Transformer;
+  type: Type;
+  declaration: ExportedDeclarations;
 }
 
 type Transformer = (
   this: EntryContext,
   entry: DocEntry,
   propertyType: Type,
-  propertySymbol: TsSymbol
-) => void
+  propertySymbol: TsSymbol,
+) => void;
 
 interface GenerateOptions {
   /**
@@ -41,20 +36,20 @@ interface GenerateOptions {
    *
    * @defaultValue false
    */
-  allowInternal?: boolean
+  allowInternal?: boolean;
 
   /**
    * Modify output property entry
    */
-  transform?: Transformer
+  transform?: Transformer;
 }
 
 export interface GenerateDocumentationOptions extends GenerateOptions {
   /**
    * Typescript configurations
    */
-  config?: TypescriptConfig
-  project?: Project
+  config?: TypescriptConfig;
+  project?: Project;
 }
 
 /**
@@ -64,46 +59,42 @@ export function generateDocumentation(
   file: string,
   name: string | undefined,
   content: string,
-  options: GenerateDocumentationOptions = {}
+  options: GenerateDocumentationOptions = {},
 ): GeneratedDoc[] {
-  const project = options.project ?? getProject(options.config)
+  const project = options.project ?? getProject(options.config);
   const sourceFile = project.createSourceFile(file, content, {
-    overwrite: true
-  })
-  const out: GeneratedDoc[] = []
+    overwrite: true,
+  });
+  const out: GeneratedDoc[] = [];
 
   for (const [k, d] of sourceFile.getExportedDeclarations()) {
-    if (name && name !== k) continue
+    if (name && name !== k) continue;
 
     if (d.length > 1)
-      console.warn(
-        `export ${k} should not have more than one type declaration.`
-      )
-    out.push(generate(project, k, d[0]!, options))
+      console.warn(`export ${k} should not have more than one type declaration.`);
+    out.push(generate(project, k, d[0]!, options));
   }
 
-  return out
+  return out;
 }
 
 function generate(
   program: Project,
   name: string,
   declaration: ExportedDeclarations,
-  { allowInternal = false, transform }: GenerateOptions
+  { allowInternal = false, transform }: GenerateOptions,
 ): GeneratedDoc {
   // @ts-expect-error -- fixme
   const entryContext: EntryContext = {
     transform,
     program,
     type: declaration.getType(),
-    declaration
-  }
+    declaration,
+  };
 
   const comment = declaration
     .getSymbol()
-    ?.compilerSymbol.getDocumentationComment(
-      program.getTypeChecker().compilerObject
-    )
+    ?.compilerSymbol.getDocumentationComment(program.getTypeChecker().compilerObject);
 
   return {
     name,
@@ -111,57 +102,54 @@ function generate(
     entries: declaration
       .getType()
       .getProperties()
-      .map(prop => getDocEntry(prop, entryContext))
+      .map((prop) => getDocEntry(prop, entryContext))
       .filter(
-        entry => entry && (allowInternal || !('internal' in entry.tags))
-      ) as DocEntry[]
-  }
+        (entry) => entry && (allowInternal || !('internal' in entry.tags)),
+      ) as DocEntry[],
+  };
 }
 
 function getDocEntry(prop: TsSymbol, context: EntryContext): DocEntry | void {
-  const { transform, program } = context
+  const { transform, program } = context;
 
   if (context.type.isClass() && prop.getName().startsWith('#')) {
-    return
+    return;
   }
 
   const subType = program
     .getTypeChecker()
-    .getTypeOfSymbolAtLocation(prop, context.declaration)
+    .getTypeOfSymbolAtLocation(prop, context.declaration);
   const tags = Object.fromEntries(
     prop
       .getJsDocTags()
-      .map(tag => [tag.getName(), ts.displayPartsToString(tag.getText())])
-  )
+      .map((tag) => [tag.getName(), ts.displayPartsToString(tag.getText())]),
+  );
 
   let typeName = subType
     .getNonNullableType()
-    .getText(undefined, ts.TypeFormatFlags.UseAliasDefinedOutsideCurrentScope)
+    .getText(undefined, ts.TypeFormatFlags.UseAliasDefinedOutsideCurrentScope);
 
-  if (
-    subType.getAliasSymbol() &&
-    subType.getAliasTypeArguments().length === 0
-  ) {
-    typeName = subType.getAliasSymbol()?.getEscapedName() ?? typeName
+  if (subType.getAliasSymbol() && subType.getAliasTypeArguments().length === 0) {
+    typeName = subType.getAliasSymbol()?.getEscapedName() ?? typeName;
   }
 
   if ('remarks' in tags) {
-    typeName = /^`(?<name>.+)`/.exec(tags.remarks)?.[1] ?? typeName
+    typeName = /^`(?<name>.+)`/.exec(tags.remarks)?.[1] ?? typeName;
   }
 
   const entry: DocEntry = {
     name: prop.getName(),
     description: ts.displayPartsToString(
       prop.compilerSymbol.getDocumentationComment(
-        program.getTypeChecker().compilerObject
-      )
+        program.getTypeChecker().compilerObject,
+      ),
     ),
     tags,
     type: typeName,
-    required: !prop.isOptional()
-  }
+    required: !prop.isOptional(),
+  };
 
-  transform?.call(context, entry, subType, prop)
+  transform?.call(context, entry, subType, prop);
 
-  return entry
+  return entry;
 }

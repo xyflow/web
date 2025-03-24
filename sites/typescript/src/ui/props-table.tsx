@@ -1,8 +1,8 @@
-import slugify from '@sindresorhus/slugify'
-import cn from 'clsx'
-import { Code } from 'nextra/components'
-import { Link } from 'nextra-theme-docs'
-import type { FC, ReactNode } from 'react'
+import slugify from '@sindresorhus/slugify';
+import cn from 'clsx';
+import { Code } from 'nextra/components';
+import { Link } from 'nextra-theme-docs';
+import type { FC, ReactNode } from 'react';
 
 // type PropsTableProps = {
 //   props: {
@@ -22,33 +22,38 @@ interface ObjectType {
   /**
    * Additional description of the field
    */
-  description: ReactNode
-  type: string
-  typeDescription: ReactNode
+  description: ReactNode;
+  type: string;
+  typeDescription: ReactNode;
   /**
    * Optional link to the type
    */
-  typeDescriptionLink?: string
-  default?: string
-  required?: boolean
+  typeDescriptionLink?: string;
+  default?: string;
+  required?: boolean;
 }
 
-export const PropsTable: FC<{ type: Record<string, ObjectType>, typeLinkMap: Record<string, string> }> = ({
-  type,
-  typeLinkMap
-}) => {
+export const PropsTable: FC<{
+  type: Record<string, ObjectType>;
+  typeLinkMap: Record<string, string>;
+}> = ({ type, typeLinkMap }) => {
   // We can hide the default column entirely if none of the props have a default
   // value to document.
-  const showDefaultColumn = true as any // data.some(prop => prop.default)
+  const showDefaultColumn = true as any; // data.some(prop => prop.default)
 
   // This function takes a string representing some type and attempts to turn any
   // types referenced inside into links, either internal or external.
   const linkify = (type: string) => {
-    const [rootType, ...rest] = type.split('.')
-    if (rest.length) rest.unshift('')
-    const href = typeLinkMap[rootType!]
-    return <Code>{href ? <Link href={href}>{rootType}</Link> : type}{rest.join('.')}</Code>
-  }
+    const [rootType, ...rest] = type.split('.');
+    if (rest.length) rest.unshift('');
+    const href = typeLinkMap[rootType!];
+    return (
+      <Code>
+        {href ? <Link href={href}>{rootType}</Link> : type}
+        {rest.join('.')}
+      </Code>
+    );
+  };
 
   return (
     <table className="my-8 w-full text-sm">
@@ -60,7 +65,7 @@ export const PropsTable: FC<{ type: Record<string, ObjectType>, typeLinkMap: Rec
         </tr>
       </thead>
       {Object.entries(type).map(([key, prop]) => {
-        const id = slugify(key)
+        const id = slugify(key);
         return (
           <tbody
             key={id}
@@ -76,7 +81,7 @@ export const PropsTable: FC<{ type: Record<string, ObjectType>, typeLinkMap: Rec
                   className={cn(
                     'absolute top-0 right-0 text-lg font-black lg:top-1/2 lg:right-full lg:-translate-y-1/2',
                     'group-hover:!opacity-100 before:content-["#"]',
-                    'p-3' // Increase hit box
+                    'p-3', // Increase hit box
                   )}
                 />
                 <Code>
@@ -107,7 +112,7 @@ export const PropsTable: FC<{ type: Record<string, ObjectType>, typeLinkMap: Rec
                     'max-lg:block',
                     prop.default
                       ? 'py-3 max-lg:px-3 max-lg:before:content-["Default:_"]'
-                      : 'lg:after:content-["–"]'
+                      : 'lg:after:content-["–"]',
                   )}
                 >
                   {prop.default && linkify(prop.default)}
@@ -115,8 +120,8 @@ export const PropsTable: FC<{ type: Record<string, ObjectType>, typeLinkMap: Rec
               )}
             </tr>
           </tbody>
-        )
+        );
       })}
     </table>
-  )
-}
+  );
+};

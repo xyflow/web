@@ -1,5 +1,5 @@
 import { useMDXComponents as getDocsMDXComponents } from 'nextra-theme-docs';
-import { createTypeTable } from '@nextra/typescript'
+import { createTypeTable } from '@nextra/typescript';
 import { getPageMap } from 'nextra/page-map';
 import { MdxFile } from 'nextra';
 
@@ -23,14 +23,12 @@ const externalReactLinks = {
 };
 
 const externalLinks = {
-  Partial:
-    'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype',
+  Partial: 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype',
   Record:
     'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type',
 };
 
-
-const { AutoTypeTable } = createTypeTable()
+const { AutoTypeTable } = createTypeTable();
 
 const docsComponents = getDocsMDXComponents({
   async AutoTypeTable({ typeLinkMap, ...props }) {
@@ -38,10 +36,7 @@ const docsComponents = getDocsMDXComponents({
     const reactFlowLinks = Object.fromEntries(
       pageMap
         .filter((item): item is MdxFile => 'frontMatter' in item)
-        .map((item) => [
-          item.frontMatter.title,
-          `/api-reference/types/${item.name}`,
-        ]),
+        .map((item) => [item.frontMatter.title, `/api-reference/types/${item.name}`]),
     );
     const allLinks = {
       ...props.typeLinkMap,
@@ -50,8 +45,8 @@ const docsComponents = getDocsMDXComponents({
       ...externalLinks,
     };
 
-    return <AutoTypeTable typeLinkMap={allLinks} {...props} />
-  }
+    return <AutoTypeTable typeLinkMap={allLinks} {...props} />;
+  },
 });
 
 export const useMDXComponents: typeof getDocsMDXComponents = (components) => ({
