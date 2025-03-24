@@ -42,6 +42,11 @@ interface GenerateOptions {
    * Modify output property entry
    */
   transform?: Transformer;
+
+  /**
+   * @default true
+   */
+  ignoreExternalProperties?: boolean;
 }
 
 export interface GenerateDocumentationOptions extends GenerateOptions {
@@ -82,7 +87,7 @@ function generate(
   program: Project,
   name: string,
   declaration: ExportedDeclarations,
-  { allowInternal = false, transform }: GenerateOptions,
+  { allowInternal = false, transform, ignoreExternalProperties = true }: GenerateOptions,
 ): GeneratedDoc {
   // @ts-expect-error -- fixme
   const entryContext: EntryContext = {
@@ -95,17 +100,40 @@ function generate(
   const comment = declaration
     .getSymbol()
     ?.compilerSymbol.getDocumentationComment(program.getTypeChecker().compilerObject);
+  const ownProperties = [];
+  const externalEntries: DocEntry[] = [];
+
+  // Get all possible intersection types
+  const type = declaration.getType();
+  const intersectionTypes = type.getIntersectionTypes();
+
+  for (const intersectionType of intersectionTypes) {
+    const text = intersectionType.getText();
+    // TODO: Improve this code to check external types and not only React.
+    if (text.includes('React.')) {
+      externalEntries.push({
+        name: '...restProperties' + (externalEntries.length || ''),
+        description: '',
+        type: text,
+        tags: {},
+        required: false,
+      });
+    } else {
+      const properties = intersectionType.getProperties();
+      ownProperties.push(...properties);
+    }
+  }
+
+  const entries = ownProperties
+    .map((prop) => getDocEntry(prop, entryContext))
+    .filter(
+      (entry) => entry && (allowInternal || !('internal' in entry.tags)),
+    ) as DocEntry[];
 
   return {
     name,
     description: comment ? ts.displayPartsToString(comment) : '',
-    entries: declaration
-      .getType()
-      .getProperties()
-      .map((prop) => getDocEntry(prop, entryContext))
-      .filter(
-        (entry) => entry && (allowInternal || !('internal' in entry.tags)),
-      ) as DocEntry[],
+    entries: [...entries, ...externalEntries],
   };
 }
 
