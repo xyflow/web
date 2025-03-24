@@ -67,7 +67,7 @@ export const PropsTable: FC<{ type: Record<string, ObjectType>, typeLinkMap: Rec
             className="group nextra-border hover:bg-gray-100 dark:hover:bg-primary-100/5 mb-5 rounded-xl max-lg:block max-lg:border"
           >
             <tr
-              className="nextra-border max-lg:block lg:border-b lg:not-target:[&>td>a]:opacity-0"
+              className="nextra-border max-lg:block lg:border-b lg:[&:not(:target)>td>a]:opacity-0"
               id={id}
             >
               <td className="relative py-3 max-lg:block max-lg:px-3">
@@ -75,7 +75,7 @@ export const PropsTable: FC<{ type: Record<string, ObjectType>, typeLinkMap: Rec
                   href={`#${id}`}
                   className={cn(
                     'absolute top-0 right-0 text-lg font-black lg:top-1/2 lg:right-full lg:-translate-y-1/2',
-                    'group-hover:!opacity-100 before:content-["#"] hover:text-black dark:hover:text-white',
+                    'group-hover:!opacity-100 before:content-["#"]',
                     'p-3' // Increase hit box
                   )}
                 />
