@@ -1,7 +1,7 @@
 import 'server-only'
 import { compileMdx } from 'nextra/compile'
 import { MDXRemote } from 'nextra/mdx-remote'
-import type { ReactNode } from 'react'
+import type { ComponentProps, ReactNode } from 'react';
 import { getProject } from '../get-project.js'
 import type { GenerateDocumentationOptions } from '../lib/base.js'
 import type { BaseTypeTableProps } from '../utils/type-table.js'
@@ -13,6 +13,7 @@ interface AutoTypeTableProps extends BaseTypeTableProps {
    * Override the function to render markdown into JSX nodes
    */
   renderMarkdown?: typeof renderMarkdownDefault
+  typeLinkMap: ComponentProps<typeof PropsTable>['typeLinkMap']
 }
 
 export function createTypeTable(options: GenerateDocumentationOptions = {}): {
@@ -37,6 +38,7 @@ export function createTypeTable(options: GenerateDocumentationOptions = {}): {
  */
 async function AutoTypeTable({
   renderMarkdown = renderMarkdownDefault,
+  typeLinkMap,
   ...props
 }: AutoTypeTableProps): Promise<ReactNode> {
   const output = await getTypeTableOutput(props)
@@ -62,6 +64,7 @@ async function AutoTypeTable({
         key={item.name}
         // @ts-expect-error -- fixme
         type={type}
+        typeLinkMap={typeLinkMap}
       />
     )
   })

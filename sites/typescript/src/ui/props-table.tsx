@@ -1,7 +1,7 @@
 import slugify from '@sindresorhus/slugify'
 import cn from 'clsx'
-// import Link from 'next/link'
 import { Code } from 'nextra/components'
+import { Link } from 'nextra-theme-docs'
 import type { FC, ReactNode } from 'react'
 
 // type PropsTableProps = {
@@ -33,8 +33,9 @@ interface ObjectType {
   required?: boolean
 }
 
-export const PropsTable: FC<{ type: Record<string, ObjectType> }> = ({
-  type
+export const PropsTable: FC<{ type: Record<string, ObjectType>, typeLinkMap: Record<string, string> }> = ({
+  type,
+  typeLinkMap
 }) => {
   // We can hide the default column entirely if none of the props have a default
   // value to document.
@@ -42,20 +43,12 @@ export const PropsTable: FC<{ type: Record<string, ObjectType> }> = ({
 
   // This function takes a string representing some type and attempts to turn any
   // types referenced inside into links, either internal or external.
-  const linkify = (type?: string) => type
-  // type?.match(/(\w+|\W+)/g)?.map((chunk, i) =>
-  //   chunk in links ? (
-  //     <Link
-  //       key={`${chunk}-${i}`}
-  //       href={links[chunk] ?? ''}
-  //       className="text-primary-600"
-  //     >
-  //       {chunk}
-  //     </Link>
-  //   ) : (
-  //     chunk
-  //   )
-  // )
+  const linkify = (type: string) => {
+    const [rootType, ...rest] = type.split('.')
+    if (rest.length) rest.unshift('')
+    const href = typeLinkMap[rootType!]
+    return <Code>{href ? <Link href={href}>{rootType}</Link> : type}{rest.join('.')}</Code>
+  }
 
   return (
     <table className="my-8 w-full text-sm">
@@ -82,7 +75,7 @@ export const PropsTable: FC<{ type: Record<string, ObjectType> }> = ({
                   href={`#${id}`}
                   className={cn(
                     'absolute top-0 right-0 text-lg font-black lg:top-1/2 lg:right-full lg:-translate-y-1/2',
-                    'group-hover:opacity-100! before:content-["#"] hover:text-black dark:hover:text-white',
+                    'group-hover:!opacity-100 before:content-["#"] hover:text-black dark:hover:text-white',
                     'p-3' // Increase hit box
                   )}
                 />
@@ -92,7 +85,7 @@ export const PropsTable: FC<{ type: Record<string, ObjectType> }> = ({
                 </Code>
               </td>
               <td className='p-3 max-lg:block max-lg:before:content-["Type:_"]'>
-                <Code>{linkify(prop.type)}</Code>
+                {linkify(prop.type)}
                 {prop.description && (
                   <div className="mt-2 text-sm">{prop.description}</div>
                 )}
@@ -117,7 +110,7 @@ export const PropsTable: FC<{ type: Record<string, ObjectType> }> = ({
                       : 'lg:after:content-["–"]'
                   )}
                 >
-                  {prop.default && <Code>{linkify(prop.default)}</Code>}
+                  {prop.default && linkify(prop.default)}
                 </td>
               )}
             </tr>
