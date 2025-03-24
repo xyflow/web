@@ -1,0 +1,55 @@
+---
+title: 'xyflow update – Libraries, docs and community'
+intro: ''
+date: 24 March 2025
+authors: ['moritz']
+tags: ['react-flow', 'update']
+image: '/img/blog/v10-header.png'
+---
+
+import { Bleed } from 'nextra/components';
+import { Image, YoutubeEmbed } from 'xy-shared';
+
+Hello again 👋 A lot has happened in the last few months. In this post we'll give you an overview on what we worked onand what’s next.
+
+# Current state of React Flow
+
+A while ago, we've updated our package name in order to use our new umbrella brand "xyflow" from `reactflow` to `@xyflow/react`. Since then, we released a few versions - we are on 12.4.4 already! As you can see we've almost reached the downloads from the previous reactflow flow package.
+
+<Image
+  src="/img/blog/2025-spring/npmtrends.png"
+  alt="A chart showing the downloads from xyflow react vs. reactflow package."
+  width={1400}
+  height={502}
+/>
+
+This is great and I really hope that we are not going to change the package name ever again :D
+
+# React Flow components and templates
+
+End of last year we've released [React Flow components](https://reactflow.dev/components). A suite of components that you can easily integrate into your node based editor or workflow application. It's based on [shadcn/ui](https://ui.shadcn.com/) and is constantly being expanded. Based on the new components, we've also published a first template. A [workflow editor UI template](https://reactflow.dev/components/templates/workflow-editor) with auto-layout, a drag-and-drop sidebar, dark mode and a simplified workflow logic. It’s a pro template and comes with the [starter subscription](https://reactflow.dev/pro).
+
+<Image
+  src="/img/blog/2025-spring/workflow-editor.png"
+  alt="A screenshot of the workflow editor template"
+  width={1400}
+  height={783}
+/>
+
+# Svelte Flow and Svelte 5
+
+Svelte 5 was released a few months ago and we (especially Peter 🤙) worked hard to keep up with all the changes. In January we've published an alpha version of Svelte Flow 1.0, which is built on Svelte 5. You can already try it out by installing it via: `npm install @xyflow/svelte@next`. We had to do a lot of adjustments and rewrites, but Svelte 5 makes it easier for library maintainers and we could throw away a lot of code. Since there is no business model for Svelte Flow yet, we can’t work with the same pace as with React Flow, but we want to keep up with all the new features wherever it’s possible and hope to be able to release a stable Svelte Flow 1.0 version in the upcoming months. If you want to get started with Svelte Flow 1.0 alpha, you can check out the [migration guide](https://next.svelteflow.dev/learn/troubleshooting/migrate-to-v1) or the [webiste for the next version](https://next.svelteflow.dev/).
+
+# The docs
+
+Besides the libraries, our websites are the heart of our product. A few weeks ago, we've migrated to Next.js app router and [nextra 4](https://nextra.site/). Thanks Dima for your help! Abbey revised all of our examples, so that we can now present them with a nice and clean theme. It’s not 100% sure for now, but we are also thinking about moving the pro platform to our docs so that we can provide our subscribers a better experience with one website where there can find everything. Another thing we are working on are generated api references from the codebase. For this we already moved all descriptions and examples to the source code which improved the DX a lot :)
+
+# Community updates
+
+Our [Discord server](https://discord.gg/Bqt6xrs) is steadily growing and we now have over 6k members. If you need help just join and read reach out. The community support is great and a lot of issues can be solved over there.
+
+It's not only us but alsop other people working on very interesting projets with React Flow! One project we really liked is called [simple AI](https://www.simple-ai.dev/ai-agents). It comes with components like "Generate Text Node" or an "Editable Handle". It also ... AI workflow quickly. Synergy codes published a very helpful article about [how to improve performance in a React Flow application](https://community.synergycodes.com/topic/18/the-ultimate-guide-to-optimize-react-flow-project-performance). The team behind Liam ERD published an article about [how to create more performance edge animations](https://liambx.com/blog/tuning-edge-animations-reactflow-optimal-performance). And Usman created another super cool [video about how to create custom edges](https://www.youtube.com/watch?v=FrJtdxqY4GE&t=1109s). It’s great to see such a high-quality content from our community. Thanks for being part in it!
+
+That’s it for now. Thanks a lot to our subscribers and make it possible for us to work on React Flow. If you have any questions or feedback, please reach out!
+
+The xyflow team
