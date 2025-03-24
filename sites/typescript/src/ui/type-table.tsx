@@ -8,9 +8,9 @@ const Info: FC<{ children: ReactNode }> = ({ children }) => {
   return (
     <Popup>
       <Popup.Button>
-        <InfoIcon className="x:size-4" />
+        <InfoIcon className="size-4" />
       </Popup.Button>
-      <Popup.Panel className="x:max-h-[400px] x:max-w-[400px] x:min-w-[220px] x:overflow-auto x:text-sm">
+      <Popup.Panel className="max-h-[400px] max-w-[400px] min-w-[220px] overflow-auto text-sm">
         {children}
       </Popup.Panel>
     </Popup>
@@ -33,8 +33,8 @@ interface ObjectType {
 }
 
 const classes = {
-  field: cn('x:inline-flex x:items-center x:gap-1'),
-  code: cn('x:rounded-md bg-fd-secondary x:p-1 text-fd-secondary-foreground'),
+  field: cn('inline-flex items-center gap-1'),
+  code: cn('rounded-md bg-fd-secondary p-1 text-fd-secondary-foreground'),
   blue: 'bg-fd-primary/10 text-fd-primary'
 }
 
@@ -42,11 +42,11 @@ export const TypeTable: FC<{ type: Record<string, ObjectType> }> = ({
   type
 }) => {
   return (
-    <div className="x:my-6 x:overflow-x-auto nextra-scrollbar">
-      <table className="text-fd-muted-foreground x:text-sm">
+    <div className="my-6 overflow-x-auto nextra-scrollbar">
+      <table className="text-fd-muted-foreground text-sm">
         <thead>
           <tr>
-            <th align="left" className="x:w-1/3">
+            <th align="left" className="w-1/3">
               Name
             </th>
             <th align="left">Type</th>
@@ -70,7 +70,7 @@ export const TypeTable: FC<{ type: Record<string, ObjectType> }> = ({
                 {value.typeDescription && <Info>{value.typeDescription}</Info>}
                 {value.typeDescriptionLink && (
                   <Link href={value.typeDescriptionLink}>
-                    <InfoIcon className="x:size-4" />
+                    <InfoIcon className="size-4" />
                   </Link>
                 )}
               </td>

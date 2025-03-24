@@ -1,5 +1,4 @@
 import { defineConfig } from 'tsup'
-import { defaultEntry } from '../nextra/default-entry.js'
 import packageJson from './package.json'
 
 export default defineConfig({
@@ -7,5 +6,10 @@ export default defineConfig({
   format: 'esm',
   dts: true,
   bundle: false,
-  entry: defaultEntry
+  entry: [
+    'src/**/*.{ts,tsx}',
+    '!**/*.d.ts',
+    '!**/__tests__',
+    '!**/*.{test,spec}.{ts,tsx}'
+  ]
 })
