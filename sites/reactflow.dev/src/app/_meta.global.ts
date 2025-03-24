@@ -1,10 +1,10 @@
 const concepts = {
-  introduction: '',
   'terms-and-definitions': '',
   'core-concepts': '',
   'the-viewport': '',
 };
 const gettingStarted = {
+  introduction: '',
   'building-a-flow': '',
 };
 const customization = {
