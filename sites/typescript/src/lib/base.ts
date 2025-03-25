@@ -107,12 +107,15 @@ function generate(
   // Get all possible intersection types
   const type = declaration.getType();
   const intersectionTypes = type.getIntersectionTypes();
-  const ownProperties = intersectionTypes.length
-    ? []
-    : declaration.getType().getProperties();
+  const ownProperties: TsSymbol[] = []
 
-  for (const intersectionType of intersectionTypes) {
-    const text = intersectionType.getText();
+  function getName(t: Type) {
+    const text = t.getText()
+    return (text.startsWith('import("') && t.getAliasSymbol()?.getName()) || text
+  }
+
+  for (const intersectionType of intersectionTypes.length ? intersectionTypes : [declaration.getType()]) {
+    const text = getName(intersectionType)
     // TODO: Improve this code to check external types and not only React.
     if (ignoreExternalProperties && text.includes('React.')) {
       externalEntries.push({
