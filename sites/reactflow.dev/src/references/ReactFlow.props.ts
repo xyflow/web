@@ -589,9 +589,7 @@ export const interactionProps: PropsTableProps = {
       name: 'connectionMode',
       type: '"loose" | "strict"',
       default: '"strict"',
-      description: `A loose connection mode will allow you to connect handles of
-      any type to one another. The strict mode will only allow you to connect
-      source handles to target handles.`,
+      description: `A loose connection mode will allow you to connect handles with differing types, including source-to-source connections. However, it does not support target-to-target connections. Strict mode allows only connections between source handles and target handles.`,
     },
   ],
 };
