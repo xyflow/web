@@ -71,13 +71,15 @@ export function generateDocumentation(
     overwrite: true,
   });
   const out: GeneratedDoc[] = [];
-
   for (const [k, d] of sourceFile.getExportedDeclarations()) {
     if (name && name !== k) continue;
-
-    if (d.length > 1)
+    if (!d[0]) {
+      throw new Error(`declaration '${k}' isn't found`);
+    }
+    if (d.length > 1) {
       console.warn(`export ${k} should not have more than one type declaration.`);
-    out.push(generate(project, k, d[0]!, options));
+    }
+    out.push(generate(project, k, d[0], options));
   }
 
   return out;
@@ -100,17 +102,19 @@ function generate(
   const comment = declaration
     .getSymbol()
     ?.compilerSymbol.getDocumentationComment(program.getTypeChecker().compilerObject);
-  const ownProperties = [];
   const externalEntries: DocEntry[] = [];
 
   // Get all possible intersection types
   const type = declaration.getType();
   const intersectionTypes = type.getIntersectionTypes();
+  const ownProperties = intersectionTypes.length
+    ? []
+    : declaration.getType().getProperties();
 
   for (const intersectionType of intersectionTypes) {
     const text = intersectionType.getText();
     // TODO: Improve this code to check external types and not only React.
-    if (text.includes('React.')) {
+    if (ignoreExternalProperties && text.includes('React.')) {
       externalEntries.push({
         name: '...restProperties' + (externalEntries.length || ''),
         description: '',
