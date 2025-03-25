@@ -15,7 +15,7 @@ In this section, we'll walk through creating a custom node featuring an input fi
 
 To create a custom node, all you need to do is create a React component. React Flow will automatically wrap it in an interactive container that injects essential props like the node's id, position, and data, and provides functionality for selection, dragging, and connecting handles. For a full reference on all available custom node props, see the [Custom Node Props](/api-reference/types/node-props).
 
-Let's dive into an example by creating a custom node called `TextUpdaterNode`. For this, we've added a simple input field with a change handler. React Flow has a few handy [pre-built components](/api-reference/components) to simplify the process of creating custom nodes. We will use the [`Handle` component](/api-reference/components/handle) allow our custom node to connect with other nodes.
+Let's dive into an example by creating a custom node called `TextUpdaterNode`. For this, we've added a simple input field with a change handler. React Flow has a few handy [pre-built components](/api-reference/components) to simplify the process of creating custom nodes. We will use the [`Handle` component](/api-reference/components/handle) to allow our custom node to connect with other nodes.
 
 ```jsx
 import { useCallback } from 'react';
@@ -44,7 +44,31 @@ function TextUpdaterNode({ data }) {
 
 ## Adding the Node Type
 
-You can add a new node type to React Flow by adding it to the `nodeTypes` prop. **`nodeTypes` must be memoized or defined outside of the component.** Otherwise, React creates a new object on every render, which leads to performance issues and bugs.
+You can add a new node type to React Flow by adding it to the `nodeTypes` prop like below. We define the `nodeTypes` outside of the component to prevent re-renderings.
+
+```jsx
+const nodeTypes = {
+  textUpdater: TextUpdaterNode
+};
+
+function Flow() {
+  ...
+  return (
+    <ReactFlow
+      nodes={nodes}
+      edges={edges}
+      onNodesChange={onNodesChange}
+      onEdgesChange={onEdgesChange}
+      onConnect={onConnect}
+      nodeTypes={nodeTypes}
+      fitView
+      style={rfStyle}
+    />
+  );
+}
+```
+
+If **`nodeTypes` are defined inside a component, they must be memoized.** Otherwise, React creates a new object on every render, which leads to performance issues and bugs. Here's how you can memoize the `nodeTypes` object inside a component using the `useMemo` hook:
 
 ```jsx
 const nodeTypes = useMemo(() => ({ textUpdater: TextUpdaterNode }), []);
