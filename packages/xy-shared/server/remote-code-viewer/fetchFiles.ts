@@ -33,13 +33,5 @@ export async function fetchFiles(route: string, framework: Framework) {
     }
   }
 
-  // we want to hide these files in the editor on website to reduce the noise
-  ['index.html', 'index.jsx', 'index.tsx', 'src/main.ts'].forEach((file) => {
-    files[file] = {
-      code: files[file],
-      hidden: true,
-    };
-  });
-
   return { files, dependencies: json.dependencies };
 }
