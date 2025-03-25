@@ -434,8 +434,8 @@ export const paneEventHandlerProps: PropsTableProps = {
     {
       name: 'onMoveEnd',
       type: '(event: React.MouseEvent | React.TouchEvent | null, data: Viewport) => void',
-      description: `This event handler is called while the user stops either
-      panning or zooming the viewport.`,
+      description:
+        'This event handler is called when panning or zooming viewport movement stops. If the movement is not user-initiated, the event parameter will be null.',
     },
     { name: 'onPaneClick', type: '(event: React.MouseEvent) => void' },
     { name: 'onPaneContextMenu', type: '(event: React.MouseEvent) => void' },
