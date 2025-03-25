@@ -33,24 +33,24 @@ const Page: FC = () => {
       <Section className="max-w-screen-md mx-auto mt-12 lg:my-12">
         <Text size="lg" className="leading-8 mb-8">
           Since 2014, Moritz and Christopher have been creating infographics, tools, and
-          projects together through their interactive news agency,{' '}
+          interactive projects through their agency,{' '}
           <Link href="https://webkid.io/" className="text-pink-500">
             webkid
           </Link>
-          . Along the way to creating{' '}
+          . While developing{' '}
           <Link href="https://datablocks.pro/" className="text-pink-500">
             Datablocks
           </Link>{' '}
-          in 2019, they developed React Flow and decided to open-source it. More and more
-          people started using it, to the point they decided to work on it full-time in
-          2021 to create a sustainable open-source project like the many they had used.
+          in 2019, they created React Flow and decided to open-source it. As adoption
+          grew, they began working on it full-time in 2021 to develop it into a
+          sustainable open-source project, just like the ones they loved using.
         </Text>
         <Text size="lg" className="leading-8 mb-8">
-          While expanding the team, we generalized the core of React Flow to support other
-          frameworks beyond React. In order to keep all of our ducks in a row, we created
-          xyflow to be the house where all of our projects could live. Now, here we are-
-          happy maintainers of a couple of libraries we&apos;re proud of with wonderful
-          communities behind them :)
+          Today, we&apos;ve expanded the team and generalized the core of React Flow to
+          support frameworks beyond React. To keep everything organized, we launched
+          xyflow—a home for all our projects. Now, here we are–happy maintainers of a
+          couple of libraries we&apos;re proud of with wonderful communities behind them
+          :)
         </Text>
         <Text size="lg" className="leading-8 mb-8">
           If you need anything, have an idea, or just want to say hi, we&apos;re an email
