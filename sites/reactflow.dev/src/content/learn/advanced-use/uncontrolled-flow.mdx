@@ -5,6 +5,18 @@ description: Uncontrolled inputs in React manage their own state internally. Thi
 import { Callout } from 'nextra/components';
 import { RemoteCodeViewer } from 'xy-shared/server';
 
+## Controlled or Uncontrolled
+
+With React Flow you have two ways to setup a flow. You can either create a controlled or an [uncontrolled one](/learn/advanced-use/uncontrolled-flow).
+We recommend to use a controlled one but for simpler use cases you can also setup an uncontrolled flow. **In the following part we will setup a controlled flow.** Let's start by adding some nodes and edges to the ReactFlow component:
+
+<Callout type="warning">
+  The dimensions of your React Flow component depend on the parent dimensions. That means
+  that the parent needs a width and height to render React Flow properly.
+</Callout>
+
+<RemoteCodeViewer route="learn/introduction-flow" framework="react" />
+
 # Uncontrolled Flow
 
 There are two ways to use React Flow - controlled or uncontrolled. Controlled means, that you are in control of the state of the nodes and edges. In an uncontrolled flow the state of the nodes and edges is handled by React Flow internally. In this part we will show you how to work with an uncontrolled flow.
@@ -20,8 +32,8 @@ As you can see, we are passing `defaultEdgeOptions` to define that edges are ani
 Since you don't have nodes and edges in your local state, you can't update them directly. To do so, you need to use the [React Flow instance](/api-reference/types/react-flow-instance) that comes with functions for updating the internal state. You can receive the instance via the `onInit` callback or better by using the [`useReactFlow` hook](/api-reference/hooks/use-react-flow). Let's create a button that adds a new node at a random position. For this, we are wrapping our flow with the [`ReactFlowProvider`](/api-reference/react-flow-provider) and use the [`addNodes` function](/api-reference/types/react-flow-instance#nodes-and-edges).
 
 <Callout>
-  The `Flow` component in this example is wrapped with the `ReactFlowProvider`
-  to use the `useReactFlow` hook.
+  The `Flow` component in this example is wrapped with the `ReactFlowProvider` to use the
+  `useReactFlow` hook.
 </Callout>
 
 <RemoteCodeViewer route="learn/uncontrolled-2" framework="react" />

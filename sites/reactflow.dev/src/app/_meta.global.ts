@@ -6,16 +6,18 @@ const concepts = {
 const gettingStarted = {
   introduction: '',
   'building-a-flow': '',
-};
-const customization = {
+  'built-in-components': '',
+  'adding-interactivity': '',
   'custom-nodes': '',
   'custom-edges': '',
+  theming: '',
 };
+
 const advanced = {
   accessibility: '',
   testing: '',
   typescript: '',
-  'uncontrolled-flow': '',
+  'uncontrolled-flow': 'Controlled vs. Uncontrolled',
   'state-management': '',
   'computing-flows': '',
   'ssr-ssg-configuration': '',
@@ -89,12 +91,8 @@ const metaRecord = {
   learn: {
     items: {
       index: '',
-      'getting-started': { items: gettingStarted },
+      'getting-started': { items: gettingStarted, title: '' },
       concepts: { items: concepts },
-      customization: {
-        items: customization,
-        title: 'Customizing React Flow',
-      },
       layouting: '',
       'advanced-use': { items: advanced },
       tutorials: {
