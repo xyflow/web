@@ -2,15 +2,20 @@
 description: Learn about the basic terms and definitions of React Flow
 ---
 
-# Terms and Definitions
+import { RemoteCodeViewer } from 'xy-shared/server';
 
-import NodesFlow from '@/flows/basic-terms/nodes';
+# Terms and Definitions
 
 In this part of the docs, we explain some basic React Flow terms and definitions. Three things you’ll be using a lot in React Flow are nodes, edges, and handles.
 
 ## Nodes
 
-<NodesFlow />
+<RemoteCodeViewer
+  route="learn/basic-terms-nodes"
+  editorHeight="30vh"
+  framework="react"
+  showEditor={false}
+/>
 
 A node in React Flow is a React component. That means it can render anything you like. Each node has an x- and y-coordinate, which tells it where it is placed in the viewport. By default, a node looks like in the example above. You can find all the options for customizing your nodes in the [Node options](/api-reference/types/node) documentation.
 
@@ -26,17 +31,23 @@ Please refer to the [custom node docs](/learn/customization/custom-nodes) for fu
 
 ## Handles
 
-import HandlesFlow from '@/flows/basic-terms/handles';
-
-<HandlesFlow />
+<RemoteCodeViewer
+  route="learn/basic-terms-handles"
+  editorHeight="30vh"
+  framework="react"
+  showEditor={false}
+/>
 
 A handle (also called “port” in other libraries) is the place where an edge attaches to a node. The handle can be placed anywhere, and styled as you like. It’s just a div element. By default, it appears as a grey circle on the top, bottom, left, or right of the node. When creating a custom node, you can have as many handles as you need in your node. More information can be found in the [handle docs](/api-reference/components/handle).
 
 ## Edges
 
-import EdgesFlow from '@/flows/basic-terms/edges';
-
-<EdgesFlow />
+<RemoteCodeViewer
+  route="learn/basic-terms-edges"
+  editorHeight="30vh"
+  framework="react"
+  showEditor={false}
+/>
 
 An edge connects two nodes. Every edge needs a target and a source node. React Flow comes with four built-in [edges types](/examples/edges/edge-types): default (bezier), smoothstep, step and straight. An edge is SVG path that can be styled with CSS and is completely customizable. If you are using multiple handles, you can reference them individually to create multiple connections for a node.
 
@@ -56,8 +67,12 @@ React Flow has built-in functionality to click-and-drag from one handle to anoth
 
 ## Viewport
 
-import ViewportFlow from '@/flows/basic-terms/viewport';
-
-<ViewportFlow />
-
-All of React Flow exists inside of the viewport. The viewport has x, y and zoom values. When you drag the pane, you change the x and y coordinates and when you zoom in or out you alter the zoom level.
+<RemoteCodeViewer
+  route="learn/basic-terms-viewport"
+  editorHeight="40vh"
+  framework="react"
+  showEditor={false}
+/>
+All of React Flow exists inside of the viewport. The viewport has x, y and zoom values.
+When you drag the pane, you change the x and y coordinates and when you zoom in or out you
+alter the zoom level.

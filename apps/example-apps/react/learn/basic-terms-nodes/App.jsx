@@ -15,18 +15,11 @@ function Flow() {
   return (
     <div
       style={{
-        height: 250,
-        background: '#FAF5FF',
-        border: '1px solid #333',
-        marginBottom: 20,
+        height: '100%',
       }}
     >
       <ReactFlowProvider>
-        <ReactFlow
-          defaultNodes={initialNodes}
-          fitView
-          preventScrolling={false}
-        />
+        <ReactFlow defaultNodes={initialNodes} fitView preventScrolling={false} />
       </ReactFlowProvider>
     </div>
   );
