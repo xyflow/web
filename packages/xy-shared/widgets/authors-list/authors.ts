@@ -17,6 +17,12 @@ export default {
     url: 'https://twitter.com/hayleighdotdev',
     image: 'https://github.com/hayleigh-dot-dev.png',
   },
+  abbey: {
+    name: 'Abbey Yacoe',
+    title: 'Software Engineer',
+    url: 'https://github.com/printerscanner',
+    image: 'https://github.com/printerscanner.png',
+  },
   john: {
     name: 'John Robb',
     title: 'Community Manager',

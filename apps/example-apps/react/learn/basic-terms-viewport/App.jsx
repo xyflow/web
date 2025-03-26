@@ -18,8 +18,7 @@ function ViewportInfo() {
   return (
     <div style={{ marginBottom: 20 }}>
       <div style={{ fontSize: 14, fontWeight: 700 }}>
-        Current Viewport: x: {x.toFixed(2)}, y: {y.toFixed(2)}, zoom:{' '}
-        {zoom.toFixed(2)}{' '}
+        Current Viewport: x: {x.toFixed(2)}, y: {y.toFixed(2)}, zoom: {zoom.toFixed(2)}{' '}
       </div>
     </div>
   );
@@ -32,8 +31,7 @@ const nodeStyle = {
   width: 100,
   textAlign: 'left',
   borderRadius: 2,
-  boxShadow:
-    'rgb(0 0 0 / 10%) 0px 4px 6px -1px, rgb(0 0 0 / 6%) 0px 2px 4px -1px',
+  boxShadow: 'rgb(0 0 0 / 10%) 0px 4px 6px -1px, rgb(0 0 0 / 6%) 0px 2px 4px -1px',
 };
 
 function XYNode({ positionAbsoluteX, positionAbsoluteY }) {
@@ -82,17 +80,10 @@ function Flow() {
     <ReactFlowProvider>
       <div
         style={{
-          height: 400,
-          border: '3px solid #333',
-          background: '#FAF5FF',
-          position: 'relative',
+          height: '90%',
         }}
       >
-        <ReactFlow
-          defaultNodes={nodes}
-          preventScrolling={false}
-          nodeTypes={nodeTypes}
-        >
+        <ReactFlow defaultNodes={nodes} preventScrolling={false} nodeTypes={nodeTypes}>
           <Background gap={25} />
           <Controls position="top-right" showInteractive={false} />
         </ReactFlow>
