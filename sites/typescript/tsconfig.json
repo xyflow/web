@@ -1,0 +1,11 @@
+{
+  "extends": ["@tsconfig/strictest/tsconfig.json"],
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "moduleResolution": "bundler",
+    "target": "es2022",
+    "module": "esnext",
+    "noPropertyAccessFromIndexSignature": false
+  },
+  "exclude": ["node_modules", "dist"]
+}
