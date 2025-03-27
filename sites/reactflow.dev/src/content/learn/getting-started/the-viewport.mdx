@@ -5,6 +5,18 @@ description: Learn how to customize the panning and zooming behavior of React Fl
 
 import { RemoteCodeViewer } from 'xy-shared/server';
 
+## Viewport
+
+<RemoteCodeViewer
+  route="learn/basic-terms-viewport"
+  editorHeight="40vh"
+  framework="react"
+  showEditor={false}
+/>
+All of React Flow exists inside of the viewport. The viewport has x, y and zoom values.
+When you drag the pane, you change the x and y coordinates and when you zoom in or out you
+alter the zoom level.
+
 # Panning and Zooming
 
 The default pan and zoom behavior of React Flow is inspired by [slippy maps](https://wiki.openstreetmap.org/wiki/Slippy_map). You pan by dragging and zoom by scrolling. You can customize this behavior easily with the provided props:

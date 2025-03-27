@@ -1,8 +1,3 @@
-const concepts = {
-  'terms-and-definitions': '',
-  'core-concepts': '',
-  'the-viewport': '',
-};
 const gettingStarted = {
   introduction: '',
   'building-a-flow': '',
@@ -11,6 +6,7 @@ const gettingStarted = {
   'custom-nodes': '',
   'custom-edges': '',
   theming: '',
+  'the-viewport': '',
 };
 
 const advanced = {
@@ -92,7 +88,6 @@ const metaRecord = {
     items: {
       index: '',
       'getting-started': { items: gettingStarted, title: '' },
-      concepts: { items: concepts },
       layouting: '',
       'advanced-use': { items: advanced },
       tutorials: {
