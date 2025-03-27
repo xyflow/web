@@ -1,19 +1,23 @@
-const gettingStarted = {
+const concepts = {
   introduction: '',
-  'building-a-flow': '',
-  'built-in-components': '',
-  'adding-interactivity': '',
-  'custom-nodes': '',
-  'custom-edges': '',
-  theming: '',
+  'terms-and-definitions': '',
+  'core-concepts': '',
   'the-viewport': '',
 };
-
+const gettingStarted = {
+  // 'installation-and-requirements': '',
+  'building-a-flow': '',
+};
+const customization = {
+  'custom-nodes': '',
+  'custom-edges': '',
+  handles: '', // new
+};
 const advanced = {
   accessibility: '',
   testing: '',
   typescript: '',
-  'uncontrolled-flow': 'Controlled vs. Uncontrolled',
+  'uncontrolled-flow': '',
   'state-management': '',
   'computing-flows': '',
   'ssr-ssg-configuration': '',
@@ -87,7 +91,12 @@ const metaRecord = {
   learn: {
     items: {
       index: '',
-      'getting-started': { items: gettingStarted, title: '' },
+      concepts: { items: concepts },
+      'getting-started': { items: gettingStarted },
+      customization: {
+        items: customization,
+        title: 'Customizing React Flow',
+      },
       layouting: '',
       'advanced-use': { items: advanced },
       tutorials: {

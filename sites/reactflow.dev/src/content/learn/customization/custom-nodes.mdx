@@ -5,27 +5,6 @@ description: Custom nodes in React Flow are just React components. This guide sh
 import { RemoteCodeViewer } from 'xy-shared/server';
 import { Callout } from 'nextra/components';
 
-## Nodes
-
-<RemoteCodeViewer
-  route="learn/basic-terms-nodes"
-  editorHeight="30vh"
-  framework="react"
-  showEditor={false}
-/>
-
-A node in React Flow is a React component. That means it can render anything you like. Each node has an x- and y-coordinate, which tells it where it is placed in the viewport. By default, a node looks like in the example above. You can find all the options for customizing your nodes in the [Node options](/api-reference/types/node) documentation.
-
-### Custom Nodes
-
-This is where the magic of React Flow happens. You can customize nodes to look and act however you would like. Much of the functionality you might create is not built-in to React Flow. Some of the things you might do with a custom node are:
-
-- Render form elements
-- Visualize data
-- Support multiple handles
-
-Please refer to the [custom node docs](/learn/customization/custom-nodes) for further information.
-
 # Custom Nodes
 
 A powerful feature of React Flow is the ability to create custom nodes. This gives you the flexibility to render anything you want within your nodes. We generally recommend creating your own custom nodes rather than relying on built-in ones. With custom nodes, you can add as many source and target handles as you like—or even embed form inputs, charts, and other interactive elements.

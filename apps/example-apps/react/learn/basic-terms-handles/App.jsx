@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { ReactFlow, ReactFlowProvider, Handle, Position } from '@xyflow/react';
-import '@xyflow/react/dist/base.css';
+import '@xyflow/react/dist/style.css';
 
 const initialNodes = [
   {
@@ -22,12 +22,13 @@ const handleStyle = {
 
 const nodeStyle = {
   background: 'white',
-  border: '1px solid #bbb',
-  padding: 12,
-  width: 300,
-  borderRadius: 2,
+  padding: '10px',
+  width: '150px',
+  fontSize: '12px',
+  color: 'inherit',
   textAlign: 'center',
-  height: 50,
+  border: '1px solid #1a192b',
+  borderRadius: '3px',
   boxShadow: 'none',
 };
 

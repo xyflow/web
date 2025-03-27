@@ -8,29 +8,6 @@ import { Callout } from 'nextra/components';
 import { Image } from 'xy-shared';
 import { RemoteCodeViewer } from 'xy-shared/server';
 
-<RemoteCodeViewer
-  route="learn/basic-terms-edges"
-  editorHeight="30vh"
-  framework="react"
-  showEditor={false}
-/>
-
-An edge connects two nodes. Every edge needs a target and a source node. React Flow comes with four built-in [edges types](/examples/edges/edge-types): default (bezier), smoothstep, step and straight. An edge is SVG path that can be styled with CSS and is completely customizable. If you are using multiple handles, you can reference them individually to create multiple connections for a node.
-
-## Connection Line
-
-React Flow has built-in functionality to click-and-drag from one handle to another in order to create a new edge. While dragging, the placeholder edge is called a connection line. The connection line also comes with four types built-in and is customizable. You can find the props for configuring the connection line in the [props section](/api-reference/react-flow#connection-line).
-
-### Custom Edges
-
-Like custom nodes, you can also customize edges. Things that people do with custom edges are:
-
-- Add a button to remove an edge
-- Custom routing behavior
-- Complex styling or interactions that cannot be solved with just one SVG path
-
-You can find more information on the [custom edges api](/api-reference/types/edge-props) site.
-
 # Custom Edges
 
 Like [custom nodes](/learn/customization/custom-nodes), parts of a custom edge in
