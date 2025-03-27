@@ -32,7 +32,7 @@
     "@radix-ui/react-dropdown-menu": "^2.1.2",
     "@radix-ui/react-slot": "^1.1.1",
     "@threlte/core": "^7.3.1",
-    "@xyflow/react": "^12.4.4",
+    "@xyflow/react": "^12.5.1",
     "@xyflow/svelte": "^0.1.31",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",

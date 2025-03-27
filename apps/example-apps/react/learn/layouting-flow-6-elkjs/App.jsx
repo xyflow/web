@@ -43,9 +43,7 @@ const useLayoutedElements = () => {
       });
 
       setNodes(children);
-      window.requestAnimationFrame(() => {
-        fitView();
-      });
+      fitView();
     });
   }, []);
 
