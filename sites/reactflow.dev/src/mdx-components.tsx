@@ -1,5 +1,5 @@
 import { useMDXComponents as getDocsMDXComponents } from 'nextra-theme-docs';
-import { createTypeTable } from '@nextra/typescript';
+import { TSDoc } from 'nextra/tsdoc';
 import { getPageMap } from 'nextra/page-map';
 import type { MdxFile } from 'nextra';
 
@@ -27,10 +27,9 @@ const externalLinks = {
   Record: 'https://typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type',
 };
 
-const { AutoTypeTable } = createTypeTable();
 
 const docsComponents = getDocsMDXComponents({
-  async AutoTypeTable({ typeLinkMap, ...props }) {
+  async TSDoc({ typeLinkMap, ...props }) {
     const pageMap = await getPageMap('/api-reference/types');
     const reactFlowLinks = Object.fromEntries(
       pageMap
@@ -43,8 +42,7 @@ const docsComponents = getDocsMDXComponents({
       ...externalReactLinks,
       ...externalLinks,
     };
-    // @ts-expect-error -- fixme
-    return <AutoTypeTable typeLinkMap={allLinks} {...props} />;
+    return <TSDoc typeLinkMap={allLinks} {...props} />;
   },
 });
 
