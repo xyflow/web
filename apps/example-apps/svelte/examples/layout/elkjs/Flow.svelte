@@ -9,7 +9,7 @@
     Panel,
     useSvelteFlow,
     type Node,
-    type Edge
+    type Edge,
   } from '@xyflow/svelte';
 
   import '@xyflow/svelte/dist/style.css';
@@ -32,7 +32,7 @@
   const elkOptions = {
     'elk.algorithm': 'layered',
     'elk.layered.spacing.nodeNodeBetweenLayers': '100',
-    'elk.spacing.nodeNode': '80'
+    'elk.spacing.nodeNode': '80',
   };
 
   function getLayoutedElements(nodes: Node[], edges: Edge[], options = {}) {
@@ -49,9 +49,9 @@
 
         // Hardcode a width and height for elk to use when layouting.
         width: 150,
-        height: 50
+        height: 50,
       })),
-      edges: edges
+      edges: edges,
     };
 
     return elk
@@ -61,10 +61,10 @@
           ...node,
           // React Flow expects a position property on the node instead of `x`
           // and `y` fields.
-          position: { x: node.x, y: node.y }
+          position: { x: node.x, y: node.y },
         })),
 
-        edges: layoutedGraph.edges
+        edges: layoutedGraph.edges,
       }))
       .catch(console.error);
   }
@@ -74,14 +74,14 @@
     const ns = useInitialNodes ? initialNodes : $nodes;
     const es = useInitialNodes ? initialEdges : $edges;
 
-    getLayoutedElements(ns, es, opts).then(({ nodes: layoutedNodes, edges: layoutedEdges }) => {
-      $nodes = layoutedNodes;
-      $edges = layoutedEdges;
+    getLayoutedElements(ns, es, opts).then(
+      ({ nodes: layoutedNodes, edges: layoutedEdges }) => {
+        $nodes = layoutedNodes;
+        $edges = layoutedEdges;
 
-      fitView();
-
-      window.requestAnimationFrame(() => fitView());
-    });
+        fitView();
+      },
+    );
   }
 
   onMount(() => {
