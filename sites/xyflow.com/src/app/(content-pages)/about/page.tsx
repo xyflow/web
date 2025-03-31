@@ -21,6 +21,7 @@ import burak from '../../../../public/img/burak.jpg';
 import abbey from '../../../../public/img/abbey.jpg';
 import dima from '../../../../public/img/dima.jpg';
 import usman from '../../../../public/img/usman.jpg';
+import facu from '../../../../public/img/facu.jpg';
 
 export const metadata: Metadata = {
   title: 'About Us',
@@ -158,6 +159,18 @@ const Page: FC = () => {
             },
           ]}
         />
+        <TeamCard
+          name="Facu"
+          role="Designer"
+          teamPic={facu}
+          description="As the maintainer of Nextra, the framework powering xyflow’s documentation, Dima continuously enhances the platform. He works on adding new features to xyflow’s websites, ensuring a smooth and user-friendly experience."
+          links={[
+            {
+              linkName: 'Website',
+              route: 'https://www.facumontanaro.com/',
+            },
+          ]}
+        />
       </ContentGrid>
 
       <div className="flex justify-center mt-16 lg:mt-32">
@@ -165,9 +178,14 @@ const Page: FC = () => {
           <div className="flex justify-center items-center mb-2">
             <UserGroupIcon className="w-8 h-8" />
           </div>
-          <Heading className="text-center">Work with us!</Heading>
+          <Heading className="text-center">Join our team</Heading>
           <Text size="lg" className="text-center text-light  mt-2">
-            Besides our core team, we are working with these external contributors
+            We are expanding our Berlin-based product development team and are looking for
+            talented web developers to join us. To see our open positions, check out our{' '}
+            <Link className="text-pink-500" href="/careers">
+              careers page
+            </Link>
+            .
           </Text>
         </div>
       </div>
