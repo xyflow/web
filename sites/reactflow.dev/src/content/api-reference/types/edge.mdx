@@ -5,11 +5,7 @@ description:
   in order to render it.'
 ---
 
-import { PropsTable } from '@/components/props-table';
-import {
-  smoothStepEdgeTypeFields,
-  bezierEdgeTypeFields,
-} from '@/references/types/Edge.fields';
+import { unstable_TSDoc as TSDoc } from 'nextra/tsdoc'
 
 # Edge
 
@@ -37,7 +33,14 @@ export type Edge<T> = DefaultEdge<T> | SmoothStepEdge<T> | BezierEdge<T>;
 
 The `SmoothStepEdge` variant has all the same fields as an `Edge`, but it also has the following additional fields:
 
-<PropsTable {...smoothStepEdgeTypeFields} />
+{/* type SmoothStepEdge isn't exported, and conflicts with SmoothStepEdge component name */}
+<TSDoc code={`
+type $ = {
+  type: "smoothstep"
+  pathOptions?: { offset?: number; borderRadius?: number }
+}
+export default $
+`} />
 
 ### BezierEdge
 
@@ -45,7 +48,14 @@ The `SmoothStepEdge` variant has all the same fields as an `Edge`, but it also h
 
 The `BezierEdge` variant has all the same fields as an `Edge`, but it also has the following additional fields:
 
-<PropsTable {...bezierEdgeTypeFields} />
+{/* type BezierEdge isn't exported, and conflicts with BezierEdge component name */}
+<TSDoc code={`
+type $ = {
+  type: "default"
+  pathOptions?: { curvature?: number }
+}
+export default $
+`} />
 
 ## Default edge types
 
