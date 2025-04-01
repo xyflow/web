@@ -53,10 +53,16 @@ const ProExamples: FC = async () => {
           )
         : [],
     )
-    .filter((item) => item.frontMatter.is_pro_example)
-    .sort((a, b) => a.frontMatter.title.localeCompare(b.frontMatter.title));
+    .filter((item) => item.frontMatter!.is_pro_example)
+    .sort((a, b) => a.frontMatter!.title.localeCompare(b.frontMatter!.title));
 
-  const examples = proExamples.reduce((result, curr) => {
+  const examples = proExamples.reduce<{
+    route: string,
+    image: string,
+    id: string,
+    name: string,
+    description: string,
+  }[]>((result, curr) => {
     const remote = remoteProExamples.find((remote) => remote.id === curr.name);
 
     if (remote) {

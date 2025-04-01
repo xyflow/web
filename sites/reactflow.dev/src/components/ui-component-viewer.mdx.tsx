@@ -52,7 +52,7 @@ const UiComponentViewer: FC<{ id: string }> = async ({ id }) => {
   const shadcnDependencies = (data.registryDependencies || []).map((dep) => {
     if (dep.startsWith('https://')) {
       // handle internal dependencies from React Flow components
-      const depName = dep.split('/').pop().split('.').shift();
+      const depName = dep.split('/').pop()!.split('.').shift()!;
       const label = kebabCaseToTitleCase(depName);
 
       const url = componentPages.get(depName);

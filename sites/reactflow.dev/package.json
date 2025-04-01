@@ -11,19 +11,21 @@
     "write-showcases": "rm -rf static/img/showcase && mkdir -p static/img/showcase && node scripts/get-showcases.js",
     "check-sitemap": "node scripts/check-sitemap.mjs",
     "generate-routes-type": "node scripts/generate-routes-type.mjs",
-    "check-links": "node scripts/check-mdx-links.mjs"
+    "check-links": "node scripts/check-mdx-links.mjs",
+    "types:check": "tsc --noEmit"
   },
   "dependencies": {
     "@heroicons/react": "^2.1.5",
     "@typeform/embed-react": "^3.9.0",
     "@xyflow/react": "^12.5.3",
+    "@xyflow/system": "^0.0.53",
     "@xyflow/xy-ui": "workspace:*",
     "d3": "^7.9.0",
     "fast-glob": "^3.3.3",
-    "next": "^15.1.7",
+    "next": "^15.2.4",
     "next-sitemap": "^4.2.3",
-    "nextra": "^4.3.0-alpha.2",
-    "nextra-theme-docs": "^4.3.0-alpha.2",
+    "nextra": "^4.3.0-alpha.3",
+    "nextra-theme-docs": "^4.3.0-alpha.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-icons": "^4.10.1",
@@ -32,6 +34,7 @@
     "xy-shared": "workspace:*"
   },
   "devDependencies": {
+    "source-map-support": "0.5.21",
     "@notionhq/client": "^2.2.15",
     "@types/d3": "^7.4.3",
     "@types/node": "^20.17.2",

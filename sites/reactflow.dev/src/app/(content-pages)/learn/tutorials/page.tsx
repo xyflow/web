@@ -28,11 +28,11 @@ const Page: FC = async () => {
         {pageMap.map((page) => (
           <ContentGridItem key={page.route} route={page.route}>
             <ProjectPreview
-              image={page.frontMatter.image}
-              title={page.frontMatter.title}
-              description={page.frontMatter.intro}
-              authors={page.frontMatter.authors}
-              kicker={page.frontMatter.client}
+              image={page.frontMatter!.image}
+              title={page.frontMatter!.title}
+              description={page.frontMatter!.intro}
+              authors={page.frontMatter!.authors}
+              kicker={page.frontMatter!.client}
             />
           </ContentGridItem>
         ))}

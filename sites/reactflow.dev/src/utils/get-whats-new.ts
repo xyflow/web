@@ -7,7 +7,7 @@ export async function getWhatsNew() {
     .filter((item) => 'frontMatter' in item)
     .sort(
       (a, b) =>
-        new Date(b.frontMatter.date).getTime() -
-        new Date(a.frontMatter.date).getTime(),
+        new Date(b.frontMatter!.date).getTime() -
+        new Date(a.frontMatter!.date).getTime(),
     );
 }

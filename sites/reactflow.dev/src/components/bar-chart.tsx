@@ -64,7 +64,7 @@ export const BarChart = ({
         />
         <text
           x={xScale(d.value) - 7}
-          y={y + yScale.bandwidth() / 2}
+          y={y! + yScale.bandwidth() / 2}
           textAnchor="end"
           alignmentBaseline="central"
           fontSize={12}
@@ -74,7 +74,7 @@ export const BarChart = ({
         </text>
         <text
           x={xScale(0) + 7}
-          y={y + yScale.bandwidth() / 2}
+          y={y! + yScale.bandwidth() / 2}
           textAnchor="start"
           alignmentBaseline="central"
           fontSize={12}

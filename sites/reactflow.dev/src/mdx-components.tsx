@@ -43,12 +43,6 @@ const docsComponents = getDocsMDXComponents({
       EdgeMarkerType: '/api-reference/types/edge-marker',
       EdgeType: '/api-reference/types/edge',
     };
-    const packagePath =
-      packageName === 'system'
-        ? // Since `@xyflow/system` isn't directly installed in `package.json`,
-          // import fails to resolve `@xyflow/system`
-          require.resolve('@xyflow/system')
-        : '@xyflow/react';
     if (props.code) {
       return <TSDoc typeLinkMap={allLinks} {...props} />;
     }
@@ -68,7 +62,7 @@ type WithGroupedProps = Omit<MyProps, keyof ${groupKeys}> & {
 export default WithGroupedProps`
         : 'export default MyProps';
     } else {
-      code = `export type { ${typeName} as default } from '${packagePath}'`;
+      code = `export type { ${typeName} as default } from '@xyflow/${packageName}'`;
     }
     return <TSDoc typeLinkMap={allLinks} code={code} {...props} />;
   },
