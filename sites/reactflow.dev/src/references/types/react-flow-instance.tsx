@@ -16,7 +16,7 @@ import type { ReactFlowInstance, ViewportHelperFunctions } from '@xyflow/react'
 
 type $ = Omit<
   ReactFlowInstance,
-  ${INTERSECTION_FIELDS.map((v) => `"${v}"`).join('|')}
+  ${[...INTERSECTION_FIELDS, ...VIEWPORT_FIELDS].map((v) => `"${v}"`).join('|')}
   |
   keyof ViewportHelperFunctions
 >
