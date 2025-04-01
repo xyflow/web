@@ -40,7 +40,8 @@ const docsComponents = getDocsMDXComponents({
       ...reactFlowLinks,
       ...externalReactLinks,
       ...externalLinks,
-      NodeType: '/api-reference/types/node'
+      NodeType: '/api-reference/types/node',
+      EdgeMarkerType: '/api-reference/types/edge-marker'
     };
     return <TSDoc
       typeLinkMap={allLinks}

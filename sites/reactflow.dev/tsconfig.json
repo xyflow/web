@@ -22,6 +22,7 @@
     "skipLibCheck": true,
     "strict": false,
     "strictNullChecks": true, /* For API Docs properties table */
+    "exactOptionalPropertyTypes": true, /* For API Docs do not show undefined for optional properties */
     "noEmit": true,
     "incremental": true,
     "module": "esnext",
