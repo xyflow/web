@@ -49,6 +49,9 @@ const docsComponents = getDocsMDXComponents({
           // import fails to resolve `@xyflow/system`
           require.resolve('@xyflow/system')
         : '@xyflow/react';
+    if (props.code) {
+      return <TSDoc typeLinkMap={allLinks} {...props} />;
+    }
     let code: string;
 
     if (componentName) {
