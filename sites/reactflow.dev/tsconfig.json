@@ -21,6 +21,7 @@
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
+    "strictNullChecks": true, /* For API Docs properties table */
     "noEmit": true,
     "incremental": true,
     "module": "esnext",
@@ -34,9 +35,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts",
-    "theme.config.tsx",
-    "tailwind.config.ts"
+    ".next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"

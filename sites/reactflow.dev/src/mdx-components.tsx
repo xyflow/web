@@ -1,5 +1,5 @@
 import { useMDXComponents as getDocsMDXComponents } from 'nextra-theme-docs';
-import { TSDoc } from 'nextra/tsdoc';
+import { unstable_TSDoc as TSDoc } from 'nextra/tsdoc';
 import { getPageMap } from 'nextra/page-map';
 import type { MdxFile } from 'nextra';
 
@@ -29,7 +29,7 @@ const externalLinks = {
 
 
 const docsComponents = getDocsMDXComponents({
-  async TSDoc({ typeLinkMap, ...props }) {
+  async APIDocs({ typeName, ...props }) {
     const pageMap = await getPageMap('/api-reference/types');
     const reactFlowLinks = Object.fromEntries(
       pageMap
@@ -37,12 +37,15 @@ const docsComponents = getDocsMDXComponents({
         .map((item) => [item.frontMatter.title, `/api-reference/types/${item.name}`]),
     );
     const allLinks = {
-      ...typeLinkMap,
       ...reactFlowLinks,
       ...externalReactLinks,
       ...externalLinks,
     };
-    return <TSDoc typeLinkMap={allLinks} {...props} />;
+    return <TSDoc
+      typeLinkMap={allLinks}
+      code={`export type { ${typeName} as default } from '@xyflow/react'`}
+      {...props}
+    />;
   },
 });
 
