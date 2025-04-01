@@ -1,12 +1,10 @@
 import type { FC } from 'react';
-import { useMDXComponents } from '@/mdx-components';
+import { useMDXComponents as getMDXComponents } from '@/mdx-components';
 
 const INTERSECTION_FIELDS = ['getIntersectingNodes', 'isNodeIntersecting'];
-
 const VIEWPORT_FIELDS = ['viewportInitialized', 'fitView'];
 
-// @ts-expect-error -- false positive
-const { APIDocs } = useMDXComponents();
+const { APIDocs } = getMDXComponents() as unknown as { APIDocs: FC<{ code?: string }> };
 
 export const NodesAndEdgesFields: FC = () => {
   return (
