@@ -5,11 +5,11 @@ description:
   hook or attaching a listener to the onInit event.'
 ---
 
-import { PropsTable } from '@/components/props-table';
 import {
-  intersectionFields,
-  viewportFields,
-} from '@/references/types/ReactFlowInstance.fields';
+  NodesAndEdgesFields,
+  IntersectionFields,
+  ViewportFields,
+} from '@/references/types/react-flow-instance';
 
 # ReactFlowInstance
 
@@ -110,12 +110,12 @@ export type ReactFlowInstance<T, U> = {
 
 ### Nodes and edges
 
-<APIDocs typeName="ReactFlowInstance" />
+<NodesAndEdgesFields />
 
 ### Intersections
 
-<PropsTable {...intersectionFields} />
+<IntersectionFields />
 
-### Viewport fields
+### Viewport
 
-<PropsTable {...viewportFields} />
+<ViewportFields />
