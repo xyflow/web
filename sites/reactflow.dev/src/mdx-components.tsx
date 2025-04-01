@@ -40,6 +40,7 @@ const docsComponents = getDocsMDXComponents({
       ...reactFlowLinks,
       ...externalReactLinks,
       ...externalLinks,
+      NodeType: '/api-reference/types/node'
     };
     return <TSDoc
       typeLinkMap={allLinks}
