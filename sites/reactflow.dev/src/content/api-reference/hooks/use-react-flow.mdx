@@ -4,12 +4,11 @@ description:
   edges, manipulate the viewport, or query the current state of the flow.'
 ---
 
-import { PropsTable } from '@/components/props-table';
 import {
-  nodesAndEdgesFields,
-  intersectionFields,
-  viewportFields,
-} from '@/references/types/ReactFlowInstance.fields';
+  NodesAndEdgesFields,
+  IntersectionFields,
+  ViewportFields,
+} from '@/references/types/react-flow-instance';
 
 # useReactFlow()
 
@@ -45,17 +44,17 @@ export function NodeCounter() {
 
 ### Nodes and edges
 
-<PropsTable {...nodesAndEdgesFields} />
+<NodesAndEdgesFields />
 
 ### Intersections
 
-<PropsTable {...intersectionFields} />
+<IntersectionFields />
 
-### Viewport fields
+### Viewport
 
-<PropsTable {...viewportFields} />
+<ViewportFields />
 
-## Typescript
+## TypeScript
 
 This hook accepts a generic type argument of custom node & edge types. See this
 [section in our Typescript guide](/learn/advanced-use/typescript#nodetype-edgetype-unions) for more information.
