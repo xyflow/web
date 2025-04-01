@@ -5,8 +5,6 @@ description:
   in order to render it.'
 ---
 
-import { unstable_TSDoc as TSDoc } from 'nextra/tsdoc'
-
 # Edge
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/types/edges.ts/#L34-L353)
@@ -34,7 +32,7 @@ export type Edge<T> = DefaultEdge<T> | SmoothStepEdge<T> | BezierEdge<T>;
 The `SmoothStepEdge` variant has all the same fields as an `Edge`, but it also has the following additional fields:
 
 {/* type SmoothStepEdge isn't exported, and conflicts with SmoothStepEdge component name */}
-<TSDoc code={`
+<APIDocs code={`
 type $ = {
   type: "smoothstep"
   pathOptions?: { offset?: number; borderRadius?: number }
@@ -49,7 +47,7 @@ export default $
 The `BezierEdge` variant has all the same fields as an `Edge`, but it also has the following additional fields:
 
 {/* type BezierEdge isn't exported, and conflicts with BezierEdge component name */}
-<TSDoc code={`
+<APIDocs code={`
 type $ = {
   type: "default"
   pathOptions?: { curvature?: number }
