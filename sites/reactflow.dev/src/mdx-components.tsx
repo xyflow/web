@@ -33,7 +33,7 @@ const docsComponents = getDocsMDXComponents({
     const reactFlowLinks = Object.fromEntries(
       pageMap
         .filter((item): item is MdxFile => 'frontMatter' in item)
-        .map((item) => [item.frontMatter.title, `/api-reference/types/${item.name}`]),
+        .map((item) => [item.frontMatter!.title, `/api-reference/types/${item.name}`]),
     );
     const allLinks = {
       ...reactFlowLinks,
@@ -49,20 +49,24 @@ const docsComponents = getDocsMDXComponents({
           // import fails to resolve `@xyflow/system`
           require.resolve('@xyflow/system')
         : '@xyflow/react';
-    const code = componentName
-      ? `
+    let code: string;
+
+    if (componentName) {
+      code = `
 import type { ComponentProps, HTMLAttributes, SVGAttributes } from 'react'
 import type { ${componentName} } from '@xyflow/react'
-type MyProps = ComponentProps<typeof ${componentName}>
+type MyProps = ComponentProps<typeof ${componentName}>`;
 
-${
-  groupKeys
-    ? `type WithGroupedProps = Omit<MyProps, keyof ${groupKeys}> & { '...props': ${groupKeys} }
-
+      code += groupKeys
+        ? `
+type WithGroupedProps = Omit<MyProps, keyof ${groupKeys}> & {
+  '...props': ${groupKeys}
+}
 export default WithGroupedProps`
-    : `export default MyProps`
-}`
-      : `export type { ${typeName} as default } from '${packagePath}'`;
+        : 'export default MyProps';
+    } else {
+      code = `export type { ${typeName} as default } from '${packagePath}'`;
+    }
     return <TSDoc typeLinkMap={allLinks} code={code} {...props} />;
   },
 });
