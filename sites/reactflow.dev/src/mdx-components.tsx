@@ -27,9 +27,8 @@ const externalLinks = {
   Record: 'https://typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type',
 };
 
-
 const docsComponents = getDocsMDXComponents({
-  async APIDocs({ typeName, ...props }) {
+  async APIDocs({ typeName, packageName = 'react', ...props }) {
     const pageMap = await getPageMap('/api-reference/types');
     const reactFlowLinks = Object.fromEntries(
       pageMap
@@ -44,11 +43,14 @@ const docsComponents = getDocsMDXComponents({
       EdgeMarkerType: '/api-reference/types/edge-marker',
       EdgeType: '/api-reference/types/edge',
     };
-    return <TSDoc
-      typeLinkMap={allLinks}
-      code={`export type { ${typeName} as default } from '@xyflow/react'`}
-      {...props}
-    />;
+    const packagePath =
+      packageName === 'system'
+        ? // Since `@xyflow/system` isn't directly installed in `package.json`,
+          // import fails to resolve `@xyflow/system`
+          require.resolve('@xyflow/system')
+        : '@xyflow/react';
+    const code = `export type { ${typeName} as default } from '${packagePath}'`;
+    return <TSDoc typeLinkMap={allLinks} code={code} {...props} />;
   },
 });
 
