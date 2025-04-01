@@ -1,9 +1,9 @@
 {
   "name": "node-header",
   "type": "registry:component",
-  "dependencies": ["@xyflow/react"],
+  "dependencies": ["@xyflow/react", "lucide-react"],
   "devDependencies": [],
-  "registryDependencies": [],
+  "registryDependencies": ["button", "dropdown"],
   "files": [
     {
       "type": "registry:component",
