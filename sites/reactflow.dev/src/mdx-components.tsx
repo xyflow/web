@@ -51,7 +51,7 @@ const docsComponents = getDocsMDXComponents({
         : '@xyflow/react';
     const code = componentName
       ? `
-import type { ComponentProps, HTMLAttributes } from 'react'
+import type { ComponentProps, HTMLAttributes, SVGAttributes } from 'react'
 import type { ${componentName} } from '@xyflow/react'
 type MyProps = ComponentProps<typeof ${componentName}>
 
