@@ -28,7 +28,6 @@ import {
   type OnNodesChange,
   type OnEdgesChange,
   type OnNodeDrag,
-  type NodeTypes,
   type DefaultEdgeOptions,
 } from '@xyflow/react';
 
@@ -72,7 +71,6 @@ function Flow() {
     <ReactFlow
       nodes={nodes}
       edges={edges}
-      edgeTypes={edgeTypes}
       onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
       onConnect={onConnect}
