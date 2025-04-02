@@ -81,7 +81,7 @@ const Page: FC = () => {
           name="Christopher"
           teamPic={christopher}
           role="Co-Founder"
-          description="Christopher is handling support, finances, and strategy. He keeps things organized and makes sure everything runs smoothly behind the scenes."
+          description="Christopher doesn't remember anything before 2015. He woke up on the shores of the Spree, where he wandered into the offices of the newspaper Zeit and they gave him a job as a front-end developer, mistaking him for the potential new hire. He quickly rose through the ranks there. Now he codes at xyflow, hoping one day he will remember how he got here, and what the meaning of all this is anyway."
           links={[
             { linkName: 'Twitter', route: 'https://twitter.com/chrtze' },
             { linkName: 'Github', route: 'https://github.com/chrtze' },
@@ -91,7 +91,7 @@ const Page: FC = () => {
           name="Moritz"
           role="Co-Founder"
           teamPic={moritz}
-          description="Passionate about open-source development, Moritz is responsible for maintaining and improving all of xyflow's open-source projects. His technical expertise keeps the project moving forward."
+          description="Moritz was raised in the depths of Teutoburger Wald by a pack of wolves, learning how to hunt, survive, and develop front-end applications. He abandoned his pack after a disagreement in 2019, where he fled to the streets of Berlin. He now maintains React Flow, and dreams of one day rejoining his pack."
           links={[
             { linkName: 'Twitter', route: 'https://twitter.com/moklick' },
             { linkName: 'Github', route: 'https://github.com/moklick' },
@@ -101,14 +101,14 @@ const Page: FC = () => {
           name="Abbey"
           role="Software Engineer"
           teamPic={abbey}
-          description="Since joining in 2024, Abbey has been focused on refining xyflow's documentation, building React Flow components and improving the overall experience of our websites. She is dedicated to making xyflow more accessible and user-friendly."
+          description="Abbey spent the first twenty years of her career finely crafting an innovative sea bass fishing technique. The world of sea bass became all too political for her, but luckily she found xyflow, which she wrongly assumed was another commercial fishing company. She is still figuring out how to turn on a computer, but once she does, she is excited to start contributing to the team."
           links={[{ linkName: 'Github', route: 'https://github.com/printerscanner' }]}
         />
         <TeamCard
           name="Peter"
           role="Software Engineer"
           teamPic={peter}
-          description="Peter joined xyflow in 2023, bringing his enthusiasm for Svelte and React development. He primarily works on Svelte Flow and his dedication ensures the project stays polished and responsive to user needs."
+          description="Peter has been directing a mockumentary of the xyflow team a la The Office since he broke into our building during the summer of 2023. Luckily for our team, the footage will never be released since he never asked us to sign a talent waiver, and none of us have the heart to tell him. Once he's done editing the footage (he keeps saying 'one more week'), we're hoping he'll make some contributions to the Svelte Flow library and docs."
           links={[{ linkName: 'Github', route: 'https://github.com/peterkogo' }]}
         />
       </ContentGrid>
@@ -130,7 +130,7 @@ const Page: FC = () => {
           name="Burak"
           role="Maintainer of Vue Flow"
           teamPic={burak}
-          description="Burak is the maintainer of Vue Flow, bringing his expertise to xyflow’s ecosystem. He actively supports users on Discord and GitHub, helping developers troubleshoot issues and improve their workflow with Vue Flow."
+          description="Burak is the maintainer of Vue Flow, bringing his expertise to xyflow's ecosystem. He actively supports users on Discord and GitHub, helping developers troubleshoot issues and improve their workflow with Vue Flow."
           links={[
             { linkName: 'Github', route: 'https://github.com/bcakmakoglu' },
             {
@@ -150,7 +150,7 @@ const Page: FC = () => {
           name="Dima"
           role="Maintainer of Nextra"
           teamPic={dima}
-          description="As the maintainer of Nextra, the framework powering xyflow’s documentation, Dima continuously enhances the platform. He works on adding new features to xyflow’s websites, ensuring a smooth and user-friendly experience."
+          description="As the maintainer of Nextra, the framework powering xyflow's documentation, Dima continuously enhances the platform. He works on adding new features to xyflow's websites, ensuring a smooth and user-friendly experience."
           links={[
             { linkName: 'Github', route: 'https://github.com/dimaMachina' },
             {
@@ -163,7 +163,7 @@ const Page: FC = () => {
           name="Facu"
           role="Designer"
           teamPic={facu}
-          description="As the maintainer of Nextra, the framework powering xyflow’s documentation, Dima continuously enhances the platform. He works on adding new features to xyflow’s websites, ensuring a smooth and user-friendly experience."
+          description="Since redesigning the xyflow websites in 2023, Facu has been collaborating with the team on all design-related tasks. He currently works for Clerk and has his own studio called Kundo."
           links={[
             {
               linkName: 'Website',
