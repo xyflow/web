@@ -28,7 +28,14 @@ const externalLinks = {
 };
 
 const docsComponents = getDocsMDXComponents({
-  async APIDocs({ typeName, packageName = 'react', componentName, groupKeys, ...props }) {
+  async APIDocs({
+    typeName,
+    packageName = 'react',
+    componentName,
+    groupKeys,
+    functionName,
+    ...props
+  }) {
     const pageMap = await getPageMap('/api-reference/types');
     const reactFlowLinks = Object.fromEntries(
       pageMap
@@ -45,6 +52,15 @@ const docsComponents = getDocsMDXComponents({
     };
     if (props.code) {
       return <TSDoc typeLinkMap={allLinks} {...props} />;
+    }
+    if (functionName) {
+      return (
+        <TSDoc
+          typeLinkMap={allLinks}
+          code={`export type { ${functionName} as default } from '@xyflow/react'`}
+          {...props}
+        />
+      );
     }
     let code: string;
 
