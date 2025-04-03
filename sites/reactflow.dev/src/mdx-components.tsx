@@ -58,6 +58,7 @@ const docsComponents = getDocsMDXComponents({
         <TSDoc
           typeLinkMap={allLinks}
           code={`export type { ${functionName} as default } from '@xyflow/react'`}
+          flattened
           {...props}
         />
       );
