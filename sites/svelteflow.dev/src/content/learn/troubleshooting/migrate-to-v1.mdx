@@ -48,6 +48,26 @@ This means that `nodes` and `edges` are to be treated as immutable from now on. 
 <SvelteFlow bind:nodes bind:edges />
 ```
 
+If `nodes` and `edges` live in a separate module, you can use [function bindings](https://svelte.dev/docs/svelte/bind#Function-bindings).
+
+```js
+// store.svelte.js
+
+let nodes = $state.raw(...);
+let edges = $state.raw(...);
+
+export const getNodes = () => nodes;
+export const getEdges = () => edges;
+export const setNodes = (newNodes) => { nodes = newNodes; }
+export const setEdges = (newEdges) => { edges = newEdges; }
+
+// CustomNode.svelte
+
+import { getNodes, getEdges, setNodes, setEdges } from 'store.svelte.js';
+
+<SvelteFlow bind:nodes={getNodes, setNodes} bind:edges={getEdges, setEdges} />
+```
+
 ### Custom Node & Edge Props
 
 This is by enlarge a general change in Svelte 5 but it does have quite a big impact on typing the props of Custom Nodes & Edges.
