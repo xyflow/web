@@ -53,8 +53,8 @@ If `nodes` and `edges` live in a separate module, you can use [function bindings
 ```js
 // store.svelte.js
 
-let nodes = $state.raw(...);
-let edges = $state.raw(...);
+let nodes = $state.raw([...]);
+let edges = $state.raw([...]);
 
 export const getNodes = () => nodes;
 export const getEdges = () => edges;
