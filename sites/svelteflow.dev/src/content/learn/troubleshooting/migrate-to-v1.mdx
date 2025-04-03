@@ -62,9 +62,11 @@ export const setNodes = (newNodes) => nodes = newNodes;
 export const setEdges = (newEdges) => edges = newEdges;
 ```
 ```js
-// CustomNode.svelte
+// BaseComponent.svelte
 
-import { getNodes, getEdges, setNodes, setEdges } from 'store.svelte.js';
+<script>
+  import { getNodes, getEdges, setNodes, setEdges } from 'store.svelte.js';
+</script>
 
 <SvelteFlow bind:nodes={getNodes, setNodes} bind:edges={getEdges, setEdges} />
 ```
