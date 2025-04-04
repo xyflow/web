@@ -6,8 +6,6 @@ description:
 ---
 
 import { Callout } from 'nextra/components';
-import { PropsTable } from '@/components/props-table';
-import { signature } from '@/references/hooks/useStore';
 
 # useStore()
 
@@ -61,7 +59,7 @@ can choose the approach that works best for your use-case.
 
 ## Signature
 
-<PropsTable {...signature} />
+<APIDocs functionName="useStore" />
 
 ## Examples
 
@@ -83,10 +81,10 @@ function MinZoomSetter() {
 }
 ```
 
-## Typescript
+## TypeScript
 
 This hook can be typed by typing the selector function. See this
-[section in our Typescript guide](/learn/advanced-use/typescript#nodetype-edgetype-unions) for more information.
+[section in our TypeScript guide](/learn/advanced-use/typescript#nodetype-edgetype-unions) for more information.
 
 ```tsx
 const nodes = useStore((s: ReactFlowState<CustomNodeType>) => ({
