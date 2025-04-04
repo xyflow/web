@@ -56,6 +56,8 @@ export const ReactFlowAPIProps: FC<{ group: keyof typeof FIELDS | 'common' }> = 
   const myType =
     group === 'common'
       ? `
+type GroupedProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'onError'>
+      
 type $ = Omit<
   ReactFlowProps,
   ${Object.values(FIELDS)
@@ -63,8 +65,10 @@ type $ = Omit<
     .map((v) => `"${v}"`)
     .join('|')}
   |
-  Omit<HTMLAttributes<HTMLDivElement>, 'onError'>
->`
+  keyof GroupedProps
+> & {
+  '...props': GroupedProps
+}`
       : `
 type $ = Pick<
   ReactFlowProps,
