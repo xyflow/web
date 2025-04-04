@@ -5,9 +5,6 @@ description:
   duplicate an existing one."
 ---
 
-import { PropsTable } from '@/components/props-table';
-import { signature } from '@/references/utils/addEdge';
-
 # addEdge()
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/utils/edges/general.ts/#L100)
@@ -35,13 +32,13 @@ export default function Flow() {
     [setEdges],
   );
 
-  return <ReactFLow nodes={nodes} edges={edges} onConnect={onConnect} />;
+  return <ReactFlow nodes={nodes} edges={edges} onConnect={onConnect} />;
 }
 ```
 
 ## Signature
 
-<PropsTable {...signature} />
+<APIDocs functionName="addEdge" />
 
 ## Notes
 
