@@ -27,10 +27,23 @@ const FIELDS = {
     'defaultEdgeOptions',
     'reconnectRadius',
     'edgesReconnectable'
+  ],
+  nodeEvents: [
+    'onNodeClick',
+    'onNodeDoubleClick',
+    'onNodeDragStart',
+    'onNodeDrag',
+    'onNodeDragStop',
+    'onNodeMouseEnter',
+    'onNodeMouseMove',
+    'onNodeMouseLeave',
+    'onNodeContextMenu',
+    'onNodesDelete',
+    'onNodesChange'
   ]
 };
 
-export const ReactFlowAPIProps: FC<{ group: 'common' | 'viewport' | 'edge' }> = ({ group }) => {
+export const ReactFlowAPIProps: FC<{ group: keyof typeof FIELDS | 'common' }> = ({ group }) => {
   const myType =
     group === 'common'
       ? `
@@ -208,54 +221,6 @@ export const generalEventHandlerProps: PropsTableProps = {
       type: '({nodes: Node[], edges: Edge[]}) => Promise<boolean | {nodes: Node[], edges: Edge[]}>',
       description: `This handler gets before Nodes or Edges are about to be deleted.
       Deletion can be aborted by returning false or the nodes and edges to be deleted can be modified.`,
-    },
-  ],
-};
-
-export const nodeEventHandlerProps: PropsTableProps = {
-  props: [
-    {
-      name: 'onNodeClick',
-      type: '(event: React.MouseEvent, node: Node) => void',
-    },
-    {
-      name: 'onNodeDoubleClick',
-      type: '(event: React.MouseEvent, node: Node) => void',
-    },
-    {
-      name: 'onNodeDragStart',
-      type: '(event: React.MouseEvent, node: Node, nodes: Node[]) => void',
-    },
-    {
-      name: 'onNodeDrag',
-      type: '(event: React.MouseEvent, node: Node, nodes: Node[]) => void',
-    },
-    {
-      name: 'onNodeDragStop',
-      type: '(event: React.MouseEvent, node: Node, nodes: Node[]) => void',
-    },
-    {
-      name: 'onNodeMouseEnter',
-      type: '(event: React.MouseEvent, node: Node) => void',
-    },
-    {
-      name: 'onNodeMouseMove',
-      type: '(event: React.MouseEvent, node: Node) => void',
-    },
-    {
-      name: 'onNodeMouseLeave',
-      type: '(event: React.MouseEvent, node: Node) => void',
-    },
-    {
-      name: 'onNodeContextMenu',
-      type: '(event: React.MouseEvent, node: Node) => void',
-    },
-    { name: 'onNodesDelete', type: '(nodes: Node[]) => void' },
-    {
-      name: 'onNodesChange',
-      type: 'OnNodesChange',
-      description: `Use this event handler to add interactivity to a controlled
-      flow. It is called on node drag, select, and move.`,
     },
   ],
 };
