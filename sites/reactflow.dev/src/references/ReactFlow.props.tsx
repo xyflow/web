@@ -1,4 +1,60 @@
 import { type PropsTableProps } from 'xy-shared';
+import type { FC } from 'react';
+import { useMDXComponents as getMDXComponents } from '@/mdx-components';
+
+const { APIDocs } = getMDXComponents() as unknown as { APIDocs: FC<{ code?: string }> };
+
+const FIELDS = {
+  viewport: [
+    'defaultViewport',
+    'viewport',
+    'onViewportChange',
+    'fitView',
+    'fitViewOptions',
+    'minZoom',
+    'maxZoom',
+    'snapToGrid',
+    'snapGrid',
+    'onlyRenderVisibleElements',
+    'translateExtent',
+    'nodeExtent',
+    'preventScrolling',
+    'attributionPosition'
+  ],
+};
+
+export const ReactFlowAPIProps: FC<{ group: 'common' | 'viewport' }> = ({ group }) => {
+  const myType =
+    group === 'common'
+      ? `
+type $ = Omit<
+  ReactFlowProps,
+  ${Object.values(FIELDS)
+    .flat()
+    .map((v) => `"${v}"`)
+    .join('|')}
+  |
+  Omit<HTMLAttributes<HTMLDivElement>, 'onError'>
+>`
+      : `
+type $ = Pick<
+  ReactFlowProps,
+  ${FIELDS[group].map((v) => `"${v}"`).join('|')}
+>`;
+
+  return (
+    <APIDocs
+      code={`
+import type { ReactFlow } from '@xyflow/react'
+
+type ReactFlowProps = React.ComponentProps<typeof ReactFlow>
+
+${myType}
+
+export default $`}
+    />
+  );
+};
 
 export const commonProps: PropsTableProps = {
   props: [
@@ -115,96 +171,6 @@ export const commonProps: PropsTableProps = {
       default: '"system"',
       description: `React Flow has 2 built-in color themes: light and dark.
       By default it will try to adopt the users systems color theme.`,
-    },
-  ],
-};
-
-export const viewportProps: PropsTableProps = {
-  props: [
-    {
-      name: 'defaultViewport',
-      type: 'Viewport',
-      default: '{ x: 0, y: 0, zoom: 1 }',
-      description: `Sets the initial position and zoom of the viewport. If a
-      default viewport is provided but fitView is enabled, the default viewport
-      will be ignored.`,
-    },
-    {
-      name: 'viewport',
-      type: 'Viewport',
-      default: '{ x: 0, y: 0, zoom: 1 }',
-      description: `When you pass a viewport prop, it's controlled and you also need to pass onViewportChange to handle internal changes.`,
-    },
-    {
-      name: 'onViewportChange',
-      type: '(viewport: Viewport) => void',
-      description: `Used when working with a controlled viewport for updating the user viewport state.`,
-    },
-    {
-      name: 'fitView',
-      type: 'boolean',
-      default: 'false',
-      description: `When true, the flow will be zoomed and panned to fit all the
-      nodes initially provided.`,
-    },
-    {
-      name: 'fitViewOptions',
-      type: 'FitViewOptions',
-      description: `When you typically call fitView on a ReactFlowInstance, you
-      can provide an object of options to customize its behavior. This prop lets
-      you do the same for the initial fitView call.`,
-    },
-    { name: 'minZoom', type: 'number', default: '0.5' },
-    { name: 'maxZoom', type: 'number', default: '2' },
-    {
-      name: 'snapToGrid',
-      type: 'boolean',
-      default: 'false',
-      description: `When enabled, nodes will snap to the grid when dragged.`,
-    },
-    {
-      name: 'snapGrid',
-      type: '[number, number]',
-      default: '[25,25]',
-      description: `If snapToGrid is enabled, this prop configures the grid that
-      nodes will snap to.`,
-    },
-    {
-      name: 'onlyRenderVisibleElements',
-      type: 'boolean',
-      default: 'false',
-      description: `You can enable this optimization to instruct React Flow to
-      only render nodes and edges that would be visible in the viewport.`,
-    },
-    {
-      name: 'translateExtent',
-      type: 'CoordinateExtent',
-      default: '[[-∞,-∞], [+∞,+∞]]',
-      description: `By default the viewport extends infinitely. You can use this
-      prop to set a boundary. The first pair of coordinates is the top left
-      boundary and the second pair is the bottom right.`,
-    },
-    {
-      name: 'nodeExtent',
-      type: 'CoordinateExtent',
-      default: '[[-∞,-∞], [+∞,+∞]]',
-      description: `As with translateExtent, this prop lets you set a boundary
-      for governing where nodes can be placed.`,
-    },
-    {
-      name: 'preventScrolling',
-      type: 'boolean',
-      default: 'true',
-      description: `Disabling this prop will allow the user to scroll the page
-      even when their pointer is over the flow.`,
-    },
-    {
-      name: 'attributionPosition',
-      type: 'PanelPosition',
-      default: '"bottom-right"',
-      description: `By default, React Flow will render a small attribution in
-      the bottom right corner of the flow. You can use this prop to change its
-      position in case you want to place something else there.`,
     },
   ],
 };

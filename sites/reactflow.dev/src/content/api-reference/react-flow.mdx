@@ -3,11 +3,9 @@ title: The ReactFlow component
 sidebarTitle: <ReactFlow />
 ---
 
-import { Callout } from 'nextra/components';
 import { PropsTable } from '@/components/props-table';
 import {
   commonProps,
-  viewportProps,
   edgeProps,
   interactionProps,
   connectionLineProps,
@@ -19,6 +17,7 @@ import {
   paneEventHandlerProps,
   selectionEventHandlerProps,
   styleProps,
+  ReactFlowAPIProps
 } from '@/references/ReactFlow.props';
 
 # \<ReactFlow />
@@ -53,9 +52,11 @@ almost all of these!
 
 <PropsTable {...commonProps} />
 
+<ReactFlowAPIProps group="common" />
+
 ## Viewport props
 
-<PropsTable {...viewportProps} />
+<ReactFlowAPIProps group="viewport" />
 
 ## Edge props
 
@@ -63,11 +64,11 @@ almost all of these!
 
 ## Event handlers
 
-<Callout type="warning">
-  It's important to remember to define any event handlers outside of your
-  component or using React's `useCallback` hook. If you don't, this can cause
-  React Flow to enter an infinite re-render loop!
-</Callout>
+> [!WARNING]
+>
+> It's important to remember to define any event handlers outside of your
+> component or using React's `useCallback` hook. If you don't, this can cause
+> React Flow to enter an infinite re-render loop!
 
 ### General Events
 
