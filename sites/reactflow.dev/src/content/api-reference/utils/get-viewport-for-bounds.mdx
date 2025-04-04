@@ -6,8 +6,6 @@ description: 'This util returns the viewport for the given bounds.
 ---
 
 import { Callout } from 'nextra/components';
-import { PropsTable } from '@/components/props-table';
-import { signature } from '@/references/utils/getViewportForBounds';
 
 # getViewportForBounds()
 
@@ -18,7 +16,7 @@ You might use this to pre-calculate the viewport for a given set of nodes on the
 server or calculate the viewport for the given bounds _without_ changing the
 viewport directly.
 
-<Callout type="info" emoji="ℹ️">
+<Callout type="info">
   This function was previously called `getTransformForBounds`
 </Callout>
 
@@ -41,7 +39,7 @@ const { x, y, zoom } = getViewportForBounds(
 
 ## Signature
 
-<PropsTable {...signature} />
+<APIDocs functionName="getViewportForBounds" />
 
 ## Notes
 
