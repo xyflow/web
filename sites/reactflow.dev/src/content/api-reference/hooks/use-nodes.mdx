@@ -5,9 +5,6 @@ description:
   moved.'
 ---
 
-import { PropsTable } from '@/components/props-table';
-import { signature } from '@/references/hooks/useNodes';
-
 # useNodes()
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/hooks/useNodes.ts)
@@ -28,12 +25,12 @@ export default function () {
 
 ## Signature
 
-<PropsTable {...signature} />
+<APIDocs functionName="useNodes" />
 
-## Typescript
+## TypeScript
 
 This hook accepts a generic type argument of custom node types. See this
-[section in our Typescript guide](/learn/advanced-use/typescript#nodetype-edgetype-unions) for more information.
+[section in our TypeScript guide](/learn/advanced-use/typescript#nodetype-edgetype-unions) for more information.
 
 ```tsx
 const nodes = useNodes<CustomNodeType>();
