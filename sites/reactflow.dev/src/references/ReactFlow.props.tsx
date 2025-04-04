@@ -40,6 +40,15 @@ const FIELDS = {
     'onNodeContextMenu',
     'onNodesDelete',
     'onNodesChange'
+  ],
+  selectionEvents: [
+    'onSelectionChange',
+    'onSelectionDragStart',
+    'onSelectionDrag',
+    'onSelectionDragStop',
+    'onSelectionStart',
+    'onSelectionEnd',
+    'onSelectionContextMenu'
   ]
 };
 
@@ -345,36 +354,6 @@ export const paneEventHandlerProps: PropsTableProps = {
     { name: 'onPaneMouseMove', type: '(event: React.MouseEvent) => void' },
     { name: 'onPaneMouseEnter', type: '(event: React.MouseEvent) => void' },
     { name: 'onPaneMouseLeave', type: '(event: React.MouseEvent) => void' },
-  ],
-};
-
-export const selectionEventHandlerProps: PropsTableProps = {
-  props: [
-    {
-      name: 'onSelectionChange',
-      type: '(params: { nodes: Node[]; edges: Edge[]; }) => void',
-      description: ``,
-    },
-    {
-      name: 'onSelectionDragStart',
-      type: '(event: React.MouseEvent, nodes: Node[]) => void',
-    },
-    {
-      name: 'onSelectionDrag',
-      type: '(event: React.MouseEvent, nodes: Node[]) => void',
-    },
-    {
-      name: 'onSelectionDragStop',
-      type: '(event: React.MouseEvent, nodes: Node[]) => void',
-    },
-    { name: 'onSelectionStart', type: '() => void' },
-    { name: 'onSelectionEnd', type: '() => void' },
-    {
-      name: 'onSelectionContextMenu',
-      type: '(event: React.MouseEvent, nodes: Node[]) => void',
-      description: `This event handler is called when a user right-clicks on a
-      node selection.`,
-    },
   ],
 };
 
