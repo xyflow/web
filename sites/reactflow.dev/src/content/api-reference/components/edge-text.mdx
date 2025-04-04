@@ -6,10 +6,7 @@ description:
   your custom edges.'
 ---
 
-import { PropsTable } from '@/components/props-table';
-import { edgeTextProps } from '@/references/components/EdgeText';
-
-# &lt;EdgeText />
+# \<EdgeText />
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/components/Edges/EdgeText.tsx)
 
@@ -40,7 +37,7 @@ export function CustomEdgeLabel({ label }) {
 For TypeScript users, the props type for the `<EdgeText />` component is exported
 as `EdgeTextProps`.
 
-<PropsTable {...edgeTextProps} />
+<APIDocs componentName="EdgeText" groupKeys="Omit<SVGAttributes<SVGElement>, 'x' | 'y'>" />
 
 Additionally, you may also pass any standard React HTML attributes such as `onClick`,
 `className` and so on.

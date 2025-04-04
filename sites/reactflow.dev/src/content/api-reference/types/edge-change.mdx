@@ -5,14 +5,6 @@ description:
   object types that represent that various ways an edge can change in a flow.
 ---
 
-import { PropsTable } from '@/components/props-table';
-import {
-  edgeAddChangeFields,
-  edgeRemoveChangeFields,
-  edgeReplaceChangeFields,
-  edgeSelectionChangeFields,
-} from '@/references/types/EdgeChange.fields';
-
 # EdgeChange
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/types/changes.ts/#L68-L72)
@@ -34,16 +26,16 @@ export type EdgeChange =
 
 ### EdgeAddChange
 
-<PropsTable {...edgeAddChangeFields} />
+<APIDocs typeName="EdgeAddChange" />
 
 ### EdgeRemoveChange
 
-<PropsTable {...edgeRemoveChangeFields} />
+<APIDocs typeName="EdgeRemoveChange" />
 
 ### EdgeReplaceChange
 
-<PropsTable {...edgeReplaceChangeFields} />
+<APIDocs typeName="EdgeReplaceChange" />
 
 ### EdgeSelectionChange
 
-<PropsTable {...edgeSelectionChangeFields} />
+<APIDocs typeName="EdgeSelectionChange" />

@@ -35,7 +35,7 @@ export default async function PropsTableWrapper(tableProps: PropsTableProps) {
     pageMap
       .filter((item): item is MdxFile => 'frontMatter' in item)
       .map((item) => [
-        item.frontMatter.title,
+        item.frontMatter!.title,
         `/api-reference/types/${item.name}`,
       ]),
   );

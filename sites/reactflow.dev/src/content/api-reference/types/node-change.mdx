@@ -5,16 +5,6 @@ description:
   object types that represent that various ways an node can change in a flow.
 ---
 
-import { PropsTable } from '@/components/props-table';
-import {
-  nodeDimensionChangeFields,
-  nodePositionChangeFields,
-  nodeSelectionChangeFields,
-  nodeRemoveChangeFields,
-  nodeAddChangeFields,
-  nodeReplaceChangeFields,
-} from '@/references/types/NodeChange.fields';
-
 # NodeChange
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/487b13c9ad8903789f56c6fcfd8222f9cb74b812/packages/system/src/types/changes.ts/#L47)
@@ -38,24 +28,24 @@ export type NodeChange =
 
 ### NodeDimensionChange
 
-<PropsTable {...nodeDimensionChangeFields} />
+<APIDocs typeName="NodeDimensionChange" />
 
 ### NodePositionChange
 
-<PropsTable {...nodePositionChangeFields} />
+<APIDocs typeName="NodePositionChange" />
 
 ### NodeSelectionChange
 
-<PropsTable {...nodeSelectionChangeFields} />
+<APIDocs typeName="NodeSelectionChange" />
 
 ### NodeRemoveChange
 
-<PropsTable {...nodeRemoveChangeFields} />
+<APIDocs typeName="NodeRemoveChange" />
 
 ### NodeAddChange
 
-<PropsTable {...nodeAddChangeFields} />
+<APIDocs typeName="NodeAddChange" />
 
 ### NodeReplaceChange
 
-<PropsTable {...nodeReplaceChangeFields} />
+<APIDocs typeName="NodeReplaceChange" />

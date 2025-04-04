@@ -5,9 +5,6 @@ description:
   some such as width and height should be considered read-only.'
 ---
 
-import { PropsTable } from '@/components/props-table';
-import { nodeFields } from '@/references/types/Node.fields';
-
 # Node
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/types/nodes.ts/#L10)
@@ -57,7 +54,7 @@ export type Node<
 
 ## Fields
 
-<PropsTable {...nodeFields} />
+<APIDocs typeName="NodeBase" packageName="system" />
 
 ## Default node types
 
