@@ -63,6 +63,19 @@ const FIELDS = {
   ],
   style: ['noPanClassName', 'noDragClassName', 'noWheelClassName'],
   generalEvents: ['onInit', 'onError', 'onDelete', 'onBeforeDelete'],
+  edgeEvents: [
+    'onEdgeClick',
+    'onEdgeDoubleClick',
+    'onEdgeMouseEnter',
+    'onEdgeMouseMove',
+    'onEdgeMouseLeave',
+    'onEdgeContextMenu',
+    'onReconnect',
+    'onReconnectStart',
+    'onReconnectEnd',
+    'onEdgesDelete',
+    'onEdgesChange',
+  ],
 };
 
 export const ReactFlowAPIProps: FC<{ group: keyof typeof FIELDS | 'common' }> = ({
@@ -215,64 +228,6 @@ export const commonProps: PropsTableProps = {
       default: '"system"',
       description: `React Flow has 2 built-in color themes: light and dark.
       By default it will try to adopt the users systems color theme.`,
-    },
-  ],
-};
-
-export const edgeEventHandlerProps: PropsTableProps = {
-  props: [
-    {
-      name: 'onEdgeClick',
-      type: '(event: React.MouseEvent, edge: Edge) => void',
-    },
-    {
-      name: 'onEdgeDoubleClick',
-      type: '(event: React.MouseEvent, edge: Edge) => void',
-    },
-    {
-      name: 'onEdgeMouseEnter',
-      type: '(event: React.MouseEvent, edge: Edge) => void',
-    },
-    {
-      name: 'onEdgeMouseMove',
-      type: '(event: React.MouseEvent, edge: Edge) => void',
-    },
-    {
-      name: 'onEdgeMouseLeave',
-      type: '(event: React.MouseEvent, edge: Edge) => void',
-    },
-    {
-      name: 'onEdgeContextMenu',
-      type: '(event: React.MouseEvent, edge: Edge) => void',
-    },
-    {
-      name: 'onReconnect',
-      type: '(oldEdge: Edge, newConnection: Connection) => void',
-      description: `This handler is called when the source or target of an reconnectable
-      edge is dragged from the current node. It will fire even if the edge's source
-      or target do not end up changing. You can use the reconnectEdge utility to
-      convert the connection to a new edge.`,
-    },
-    {
-      name: 'onReconnectStart',
-      type: '(event: React.MouseEvent, edge: Edge, handleType: "source" | "target") => void',
-      description: `This event fires when the user begins dragging the source or
-      target of an editable edge. `,
-    },
-    {
-      name: 'onReconnectEnd',
-      type: '(event: React.MouseEvent, edge: Edge, handleType: "source" | "target", connectionState: Omit<ConnectionState, \'inProgress\'>) => void',
-      description: `This event fires when the user releases the source or target
-      of an editable edge. It is called even if an edge update does not occur.
-      You can use the fourth connectionState parameter to have different behavior
-      when a reconnection was unsuccessful.`,
-    },
-    { name: 'onEdgesDelete', type: '(edges: Edge[]) => void' },
-    {
-      name: 'onEdgesChange',
-      type: 'OnEdgesChange',
-      description: `Use this event handler to add interactivity to a controlled
-      flow. It is called on edge select and remove.`,
     },
   ],
 };
