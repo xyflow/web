@@ -21,9 +21,16 @@ const FIELDS = {
     'preventScrolling',
     'attributionPosition'
   ],
+  edge: [
+    'elevateEdgesOnSelect',
+    'defaultMarkerColor',
+    'defaultEdgeOptions',
+    'reconnectRadius',
+    'edgesReconnectable'
+  ]
 };
 
-export const ReactFlowAPIProps: FC<{ group: 'common' | 'viewport' }> = ({ group }) => {
+export const ReactFlowAPIProps: FC<{ group: 'common' | 'viewport' | 'edge' }> = ({ group }) => {
   const myType =
     group === 'common'
       ? `
@@ -171,42 +178,6 @@ export const commonProps: PropsTableProps = {
       default: '"system"',
       description: `React Flow has 2 built-in color themes: light and dark.
       By default it will try to adopt the users systems color theme.`,
-    },
-  ],
-};
-
-export const edgeProps: PropsTableProps = {
-  props: [
-    {
-      name: 'elevateEdgesOnSelect',
-      type: 'boolean',
-      default: 'false',
-      description: `Enabling this option will raise the z-index of edges connected
-      to a node when selected.`,
-    },
-    { name: 'defaultMarkerColor', type: 'string', default: '"#b1b1b7"' },
-    {
-      name: 'defaultEdgeOptions',
-      type: 'DefaultEdgeOptions',
-      description: `Any defaults set here will be applied to all new edges that
-      are added to the flow. Properties on a new edge will override these defaults
-      if they exist.`,
-    },
-    {
-      name: 'reconnectRadius',
-      type: 'number',
-      default: '10',
-      description: `The radius around an edge connection that can trigger an edge
-      reconnection.`,
-    },
-    {
-      name: 'edgesReconnectable',
-      type: 'boolean',
-      default: 'true',
-      description: `Whether or not edges can be updated once they are created.
-      When both this prop is true and an onReconnect handler is provided, the
-      user can drag an existing edge to a new source or target. Individual edges
-      can override this value with their reconnectable property.`,
     },
   ],
 };
