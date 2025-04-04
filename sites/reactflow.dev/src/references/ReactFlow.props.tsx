@@ -62,6 +62,7 @@ const FIELDS = {
     'onPaneMouseLeave',
   ],
   style: ['noPanClassName', 'noDragClassName', 'noWheelClassName'],
+  generalEvents: ['onInit', 'onError', 'onDelete', 'onBeforeDelete'],
 };
 
 export const ReactFlowAPIProps: FC<{ group: keyof typeof FIELDS | 'common' }> = ({
@@ -214,36 +215,6 @@ export const commonProps: PropsTableProps = {
       default: '"system"',
       description: `React Flow has 2 built-in color themes: light and dark.
       By default it will try to adopt the users systems color theme.`,
-    },
-  ],
-};
-
-export const generalEventHandlerProps: PropsTableProps = {
-  props: [
-    {
-      name: 'onInit',
-      type: '(instance: ReactFlowInstance) => void',
-      description: `The onInit callback is called when the viewport is initialized.
-      At this point you can use the instance to call methods like fitView or zoomTo.`,
-    },
-    {
-      name: 'onError',
-      type: '(code: string, message: string) => void',
-      description: `Occasionally something may happen that causes React Flow to
-      error. Instead of exploding your application, we log a message to the console
-      and then call this event handler. You might use it for additional logging
-      or to show a message to the user.`,
-    },
-    {
-      name: 'onDelete',
-      type: '({nodes: Node[], edges: Edge[]}) => void',
-      description: `This handler gets called when a Node or Edge is deleted.`,
-    },
-    {
-      name: 'onBeforeDelete',
-      type: '({nodes: Node[], edges: Edge[]}) => Promise<boolean | {nodes: Node[], edges: Edge[]}>',
-      description: `This handler gets before Nodes or Edges are about to be deleted.
-      Deletion can be aborted by returning false or the nodes and edges to be deleted can be modified.`,
     },
   ],
 };
