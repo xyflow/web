@@ -19,14 +19,14 @@ const FIELDS = {
     'translateExtent',
     'nodeExtent',
     'preventScrolling',
-    'attributionPosition'
+    'attributionPosition',
   ],
   edge: [
     'elevateEdgesOnSelect',
     'defaultMarkerColor',
     'defaultEdgeOptions',
     'reconnectRadius',
-    'edgesReconnectable'
+    'edgesReconnectable',
   ],
   nodeEvents: [
     'onNodeClick',
@@ -39,7 +39,7 @@ const FIELDS = {
     'onNodeMouseLeave',
     'onNodeContextMenu',
     'onNodesDelete',
-    'onNodesChange'
+    'onNodesChange',
   ],
   selectionEvents: [
     'onSelectionChange',
@@ -48,32 +48,41 @@ const FIELDS = {
     'onSelectionDragStop',
     'onSelectionStart',
     'onSelectionEnd',
-    'onSelectionContextMenu'
-  ]
+    'onSelectionContextMenu',
+  ],
+  paneEvents: [
+    'onMove',
+    'onMoveStart',
+    'onMoveEnd',
+    'onPaneClick',
+    'onPaneContextMenu',
+    'onPaneScroll',
+    'onPaneMouseMove',
+    'onPaneMouseEnter',
+    'onPaneMouseLeave',
+  ],
 };
 
-export const ReactFlowAPIProps: FC<{ group: keyof typeof FIELDS | 'common' }> = ({ group }) => {
-  const myType =
-    group === 'common'
-      ? `
+export const ReactFlowAPIProps: FC<{ group: keyof typeof FIELDS | 'common' }> = ({
+  group,
+}) => {
+  let myType: string;
+  if (group === 'common') {
+    const omittedFields = Object.values(FIELDS)
+      .flat()
+      .map((v) => `"${v}"`)
+      .join('|');
+
+    myType = `
 type GroupedProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'onError'>
       
-type $ = Omit<
-  ReactFlowProps,
-  ${Object.values(FIELDS)
-    .flat()
-    .map((v) => `"${v}"`)
-    .join('|')}
-  |
-  keyof GroupedProps
-> & {
+type $ = Omit<ReactFlowProps, ${omittedFields} | keyof GroupedProps> & {
   '...props': GroupedProps
-}`
-      : `
-type $ = Pick<
-  ReactFlowProps,
-  ${FIELDS[group].map((v) => `"${v}"`).join('|')}
->`;
+}`;
+  } else {
+    const pickedFields = FIELDS[group].map((v) => `"${v}"`).join('|');
+    myType = `type $ = Pick<ReactFlowProps, ${pickedFields}>`;
+  }
 
   return (
     <APIDocs
@@ -329,35 +338,6 @@ export const connectionEventHandlerProps: PropsTableProps = {
       connection logic its preferred to use this callback over the isValidConnection
       prop on the handle component for performance reasons.`,
     },
-  ],
-};
-
-export const paneEventHandlerProps: PropsTableProps = {
-  props: [
-    {
-      name: 'onMove',
-      type: '(event: React.MouseEvent | React.TouchEvent | null, data: Viewport) => void',
-      description: `This event handler is called while the user is either panning
-      or zooming the viewport.`,
-    },
-    {
-      name: 'onMoveStart',
-      type: '(event: React.MouseEvent | React.TouchEvent | null, data: Viewport) => void',
-      description: `This event handler is called when the user begins to pan or
-      zoom the viewport.`,
-    },
-    {
-      name: 'onMoveEnd',
-      type: '(event: React.MouseEvent | React.TouchEvent | null, data: Viewport) => void',
-      description:
-        'This event handler is called when panning or zooming viewport movement stops. If the movement is not user-initiated, the event parameter will be null.',
-    },
-    { name: 'onPaneClick', type: '(event: React.MouseEvent) => void' },
-    { name: 'onPaneContextMenu', type: '(event: React.MouseEvent) => void' },
-    { name: 'onPaneScroll', type: '(event: React.MouseEvent) => void' },
-    { name: 'onPaneMouseMove', type: '(event: React.MouseEvent) => void' },
-    { name: 'onPaneMouseEnter', type: '(event: React.MouseEvent) => void' },
-    { name: 'onPaneMouseLeave', type: '(event: React.MouseEvent) => void' },
   ],
 };
 
