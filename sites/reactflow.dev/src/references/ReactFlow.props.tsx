@@ -76,6 +76,14 @@ const FIELDS = {
     'onEdgesDelete',
     'onEdgesChange',
   ],
+  connectionEvents: [
+    'onConnect',
+    'onConnectStart',
+    'onConnectEnd',
+    'onClickConnectStart',
+    'onClickConnectEnd',
+    'isValidConnection',
+  ],
 };
 
 export const ReactFlowAPIProps: FC<{ group: keyof typeof FIELDS | 'common' }> = ({
@@ -228,42 +236,6 @@ export const commonProps: PropsTableProps = {
       default: '"system"',
       description: `React Flow has 2 built-in color themes: light and dark.
       By default it will try to adopt the users systems color theme.`,
-    },
-  ],
-};
-
-export const connectionEventHandlerProps: PropsTableProps = {
-  props: [
-    {
-      name: 'onConnect',
-      type: '(connection: Connection) => void',
-      description: `When a connection line is completed and two nodes are connected
-      by the user, this event fires with the new connection. You can use the
-      addEdge utility to convert the connection to a complete edge.`,
-    },
-    {
-      name: 'onConnectStart',
-      type: '(event: React.MouseEvent, params: { nodeId: string | null; handleId: string | null; handleType: "source" | "target" | null; }) => void',
-    },
-    {
-      name: 'onConnectEnd',
-      type: "(event: React.MouseEvent, connectionState: Omit<ConnectionState, 'inProgress'>) => void",
-      description: `This callback will fire regardless of whether a valid connection
-      could be made or not. You can use the second connectionState parameter to
-      have different behavior when a connection was unsuccessful.`,
-    },
-    {
-      name: 'onClickConnectStart',
-      type: '(event: React.MouseEvent, params: { nodeId: string | null; handleId: string | null; handleType: "source" | "target" | null; }) => void',
-    },
-    { name: 'onClickConnectEnd', type: '(event: React.MouseEvent) => void' },
-    {
-      name: 'isValidConnection',
-      type: '(connection: Connection) => boolean',
-      description: `This callback can be used to validate a new connection. If
-      you return false, the edge will not be added to your flow. If you have custom
-      connection logic its preferred to use this callback over the isValidConnection
-      prop on the handle component for performance reasons.`,
     },
   ],
 };
