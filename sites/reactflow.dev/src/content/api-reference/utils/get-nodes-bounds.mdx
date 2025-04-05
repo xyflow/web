@@ -1,11 +1,10 @@
 ---
 description:
   'Returns the bounding box that contains all the given nodes in an array. This can
-  be useful when combined with getTransformForBounds to calculate the correct
+  be useful when combined with `getViewportForBounds` to calculate the correct
   transform to fit the given nodes in a viewport.'
 ---
 
-import { Callout } from 'nextra/components';
 import { PropsTable } from '@/components/props-table';
 import { signature } from '@/references/utils/getRectOfNodes';
 
@@ -17,9 +16,9 @@ Returns the bounding box that contains all the given nodes in an array. This can
 be useful when combined with [`getViewportForBounds`](/api-reference/utils/get-viewport-for-bounds)
 to calculate the correct transform to fit the given nodes in a viewport.
 
-<Callout type="info" emoji="ℹ️">
-  This function was previously called `getRectOfNodes`
-</Callout>
+> [!INFO]
+>
+> This function was previously called `getRectOfNodes`
 
 ```js
 import { getNodesBounds } from '@xyflow/react';
