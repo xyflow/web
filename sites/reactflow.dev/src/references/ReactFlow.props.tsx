@@ -84,6 +84,29 @@ const FIELDS = {
     'onClickConnectEnd',
     'isValidConnection',
   ],
+  interaction: [
+    'nodesDraggable',
+    'nodesConnectable',
+    'nodesFocusable',
+    'edgesFocusable',
+    'elementsSelectable',
+    'autoPanOnConnect',
+    'autoPanOnNodeDrag',
+    'autoPanSpeed',
+    'panOnDrag',
+    'selectionOnDrag',
+    'selectionMode',
+    'panOnScroll',
+    'panOnScrollSpeed',
+    'panOnScrollMode',
+    'zoomOnScroll',
+    'zoomOnPinch',
+    'zoomOnDoubleClick',
+    'selectNodesOnDrag',
+    'elevateNodesOnSelect',
+    'connectOnClick',
+    'connectionMode',
+  ],
 };
 
 export const ReactFlowAPIProps: FC<{ group: keyof typeof FIELDS | 'common' }> = ({
@@ -236,124 +259,6 @@ export const commonProps: PropsTableProps = {
       default: '"system"',
       description: `React Flow has 2 built-in color themes: light and dark.
       By default it will try to adopt the users systems color theme.`,
-    },
-  ],
-};
-
-export const interactionProps: PropsTableProps = {
-  props: [
-    {
-      name: 'nodesDraggable',
-      type: 'boolean',
-      default: 'true',
-      description: `Controls whether all nodes should be draggable or not. Individual
-      nodes can override this setting by setting their draggable prop. If you want
-      to use the mouse handlers on non-draggable nodes, you need to add the "nopan"
-      class to those nodes.`,
-    },
-    {
-      name: 'nodesConnectable',
-      type: 'boolean',
-      default: 'true',
-      description: `Controls whether all nodes should be connectable or not. Individual
-      nodes can override this setting by setting their connectable prop.`,
-    },
-    {
-      name: 'nodesFocusable',
-      type: 'boolean',
-      default: 'true',
-      description: `When true, focus between nodes can be cycled with the Tab key
-      and selected with the Enter key. This option can be overridden by individual
-      nodes by setting their focusable prop.`,
-    },
-    {
-      name: 'edgesFocusable',
-      type: 'boolean',
-      default: 'true',
-      description: `When true, focus between edges can be cycled with the Tab key
-      and selected with the Enter key. This option can be overridden by individual
-      edges by setting their focusable prop.`,
-    },
-    {
-      name: 'elementsSelectable',
-      type: 'boolean',
-      default: 'true',
-      description: `When true, elements (nodes and edges) can be selected by clicking
-      on them. This option can be overridden by individual elements by setting their
-      selectable prop.`,
-    },
-    {
-      name: 'autoPanOnConnect',
-      type: 'boolean',
-      default: 'true',
-      description: `When try, the viewport will pan automatically when the cursor
-      moves to the edge of the viewport while creating a connection.`,
-    },
-    {
-      name: 'autoPanOnNodeDrag',
-      type: 'boolean',
-      default: 'true',
-      description: `When true, the viewport will pan automatically when the cursor
-      moves to the edge of the viewport while dragging a node.`,
-    },
-    {
-      name: 'autoPanSpeed',
-      type: 'number',
-      default: `20`,
-      description: `The speed at which the viewport will pan for autoPanOnNodeDrag and autoPanOnConnect`,
-    },
-    {
-      name: 'panOnDrag',
-      type: 'boolean | (0 | 1 | 2 | 3 | 4)[]',
-      default: 'true',
-      description: `Enabling this prop allows users to pan the viewport by clicking
-      and dragging. You can also set this prop to an array of numbers to limit
-      which mouse buttons can activate panning. For example, [0,2] would allow
-      panning with the left and right mouse buttons.`,
-    },
-    { name: 'selectionOnDrag', type: 'boolean', default: 'false' },
-    {
-      name: 'selectionMode',
-      type: '"partial" | "full"',
-      default: '"full"',
-      description: `When set to "partial", when the user creates a selection box
-      by click and dragging nodes that are only partially in the box are still
-      selected.`,
-    },
-    { name: 'panOnScroll', type: 'boolean', default: 'false' },
-    { name: 'panOnScrollSpeed', type: 'number' },
-    {
-      name: 'panOnScrollMode',
-      type: 'PanOnScrollMode',
-      default: 'PanOnScrollMode.Free',
-      description: `This prop is used to limit the direction of panning when
-      panOnScroll is enabled. The "free" option allows panning in any direction.`,
-    },
-    { name: 'zoomOnScroll', type: 'boolean', default: 'true' },
-    { name: 'zoomOnPinch', type: 'boolean', default: 'true' },
-    { name: 'zoomOnDoubleClick', type: 'boolean', default: 'true' },
-    { name: 'selectNodesOnDrag', type: 'boolean', default: 'true' },
-    {
-      name: 'elevateNodesOnSelect',
-      type: 'boolean',
-      default: 'true',
-      description: `Enabling this option will raise the z-index of nodes when
-      they are selected.`,
-    },
-    {
-      name: 'connectOnClick',
-      type: 'boolean',
-      default: 'true',
-      description: `The connectOnClick option lets you click or tap on a source
-      handle to start a connection and then click on a target handle to complete
-      the connection. If you set this option to false, users will need to drag
-      the connection line to the target handle to create a connection.`,
-    },
-    {
-      name: 'connectionMode',
-      type: '"loose" | "strict"',
-      default: '"strict"',
-      description: `A loose connection mode will allow you to connect handles with differing types, including source-to-source connections. However, it does not support target-to-target connections. Strict mode allows only connections between source handles and target handles.`,
     },
   ],
 };
