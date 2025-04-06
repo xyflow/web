@@ -107,6 +107,13 @@ const FIELDS = {
     'connectOnClick',
     'connectionMode',
   ],
+  connectionLine: [
+    'connectionRadius',
+    'connectionLineType',
+    'connectionLineStyle',
+    'connectionLineComponent',
+    'connectionLineContainerStyle',
+  ],
 };
 
 export const ReactFlowAPIProps: FC<{ group: keyof typeof FIELDS | 'common' }> = ({
@@ -260,32 +267,6 @@ export const commonProps: PropsTableProps = {
       description: `React Flow has 2 built-in color themes: light and dark.
       By default it will try to adopt the users systems color theme.`,
     },
-  ],
-};
-
-export const connectionLineProps: PropsTableProps = {
-  props: [
-    {
-      name: 'connectionRadius',
-      type: 'number',
-      default: '20',
-      description: `The radius around a handle where you drop a connection line
-      to create a new edge.`,
-    },
-    {
-      name: 'connectionLineType',
-      type: 'ConnectionLineType',
-      default: 'ConnectionLineType.Bezier',
-      description: `The type of edge path to use for connection lines. Although
-      created edges can be of any type, React Flow needs to know what type of
-      path to render for the connection line before the edge is created!`,
-    },
-    { name: 'connectionLineStyle', type: 'React.CSSProperties' },
-    {
-      name: 'connectionLineComponent',
-      type: 'React.ComponentType<ConnectionLineComponentProps>',
-    },
-    { name: 'connectionLineWrapperStyles', type: 'React.CSSProperties' },
   ],
 };
 
