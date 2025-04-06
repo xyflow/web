@@ -114,6 +114,14 @@ const FIELDS = {
     'connectionLineComponent',
     'connectionLineContainerStyle',
   ],
+  keyboard: [
+    'deleteKeyCode',
+    'selectionKeyCode',
+    'multiSelectionKeyCode',
+    'zoomActivationKeyCode',
+    'panActivationKeyCode',
+    'disableKeyboardA11y',
+  ],
 };
 
 export const ReactFlowAPIProps: FC<{ group: keyof typeof FIELDS | 'common' }> = ({
@@ -266,57 +274,6 @@ export const commonProps: PropsTableProps = {
       default: '"system"',
       description: `React Flow has 2 built-in color themes: light and dark.
       By default it will try to adopt the users systems color theme.`,
-    },
-  ],
-};
-
-export const keyboardProps: PropsTableProps = {
-  props: [
-    {
-      name: 'deleteKeyCode',
-      type: 'string | string[] | null',
-      default: '"Backspace"',
-      description: `If set, pressing the key or chord will delete any selected
-      nodes and edges. Passing an array represents multiple keys that can be
-      pressed. For example, ["Delete", "Backspace"] will delete selected elements
-      when either key is pressed.`,
-    },
-    {
-      name: 'selectionKeyCode',
-      type: 'string | string[] | null',
-      default: '"Shift"',
-      description: `If set, holding this key will let you click and drag to draw
-      a selection box around multiple nodes and edges. Passing an array represents
-      multiple keys that can be pressed. For example, ["Shift", "Meta"] will
-      allow you to draw a selection box when either key is pressed.`,
-    },
-    {
-      name: 'multiSelectionKeyCode',
-      type: 'string | string[] | null',
-      default: '"Meta" for MacOs, "Control" for other systems',
-    },
-    {
-      name: 'zoomActivationKeyCode',
-      type: 'string | string[] | null',
-      default: '"Meta" for MacOs, "Control" for other systems',
-      description: `If a key is set, you can zoom the viewport while that key is
-      held down even if panOnScroll is set to false. By setting this prop to null
-      you can disable this functionality.`,
-    },
-    {
-      name: 'panActivationKeyCode',
-      type: 'string | string[] | null',
-      default: '"Space"',
-      description: `If a key is set, you can pan the viewport while that key is
-      held down even if panOnScroll is set to false. By setting this prop to null
-      you can disable this functionality.`,
-    },
-    {
-      name: 'disableKeyboardA11y',
-      type: 'boolean',
-      default: 'false',
-      description: `You can use this prop to disable keyboard accessibility features
-      such as selecting nodes or moving selected nodes with the arrow keys.`,
     },
   ],
 };

@@ -4,11 +4,7 @@ sidebarTitle: <ReactFlow />
 ---
 
 import { PropsTable } from '@/components/props-table';
-import {
-  commonProps,
-  keyboardProps,
-  ReactFlowAPIProps
-} from '@/references/ReactFlow.props';
+import { commonProps, ReactFlowAPIProps } from '@/references/ReactFlow.props';
 
 # \<ReactFlow />
 
@@ -102,7 +98,7 @@ set your own.
 To disable any of these shortcuts, pass in `null` to to the prop you want to
 disable.
 
-<PropsTable {...keyboardProps} />
+<ReactFlowAPIProps group="keyboard" />
 
 ## Style props
 
