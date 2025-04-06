@@ -135,12 +135,14 @@ export const ReactFlowAPIProps: FC<{ group: keyof typeof FIELDS | 'common' }> = 
     const groupedProps = "Omit<React.ComponentProps<'div'>, 'onError'>"
 
     myType = `
-type $ = Omit<ReactFlowProps, ${omittedFields} | keyof ${groupedProps}> & {
-  '...props': ${groupedProps}
-}`;
+Omit<
+  ReactFlowProps,
+  ${omittedFields} | keyof ${groupedProps}
+> &
+{ '...props': ${groupedProps} }`;
   } else {
     const pickedFields = FIELDS[group].map((v) => `"${v}"`).join('|');
-    myType = `type $ = Pick<ReactFlowProps, ${pickedFields}>`;
+    myType = `Pick<ReactFlowProps, ${pickedFields}>`;
   }
 
   return (
@@ -150,7 +152,7 @@ import type { ReactFlow } from '@xyflow/react'
 
 type ReactFlowProps = React.ComponentProps<typeof ReactFlow>
 
-${myType}
+type $ = ${myType}
 
 export default $`}
     />

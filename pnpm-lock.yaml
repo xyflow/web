@@ -209,7 +209,7 @@ importers:
         version: 1.4.1(next@14.2.15(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)(svelte@4.2.19)
       '@xyflow/react':
         specifier: ^12.5.1
-        version: 12.5.1(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 12.5.4(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       class-variance-authority:
         specifier: ^0.7.0
         version: 0.7.1
@@ -360,7 +360,7 @@ importers:
         version: 0.27.1
       '@xyflow/react':
         specifier: ^12.5.1
-        version: 12.5.1(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 12.5.4(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@xyflow/xy-ui':
         specifier: workspace:*
         version: link:../xy-ui
@@ -2782,12 +2782,6 @@ packages:
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       vite: ^4.2.0 || ^5.0.0 || ^6.0.0
-
-  '@xyflow/react@12.5.1':
-    resolution: {integrity: sha512-jMKQVqGwCz0x6pUyvxTIuCMbyehfua7CfEEWDj29zQSHigQpCy0/5d8aOmZrqK4cwur/pVHLQomT6Rm10gXfHg==}
-    peerDependencies:
-      react: '>=17'
-      react-dom: '>=17'
 
   '@xyflow/react@12.5.4':
     resolution: {integrity: sha512-ITCW3h/pXVKwb0j3w8CxPyfmmxIqToctE55R+BcfTAe9j+qr/6Uc+NUsbIgnvEyiziJKq/sS0ovVfZ4482txww==}
@@ -9325,17 +9319,6 @@ snapshots:
       vite: 5.4.11(@types/node@22.10.7)(lightningcss@1.29.1)
     transitivePeerDependencies:
       - supports-color
-
-  '@xyflow/react@12.5.1(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
-    dependencies:
-      '@xyflow/system': 0.0.53
-      classcat: 5.0.5
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
-      zustand: 4.5.5(@types/react@18.3.17)(react@18.3.1)
-    transitivePeerDependencies:
-      - '@types/react'
-      - immer
 
   '@xyflow/react@12.5.4(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
