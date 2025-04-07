@@ -303,13 +303,13 @@ importers:
     dependencies:
       '@codesandbox/sandpack-react':
         specifier: ^2.19.9
-        version: 2.19.10(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 2.19.10(react@18.3.1)
       '@docsearch/css':
         specifier: ^3.6.2
         version: 3.8.2
       '@docsearch/react':
         specifier: ^3.6.2
-        version: 3.8.2(@algolia/client-search@5.17.1)(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(search-insights@2.17.3)
+        version: 3.8.2(@algolia/client-search@5.17.1)(@types/react@18.3.17)(react@18.3.1)(search-insights@2.17.3)
       '@heroicons/react':
         specifier: ^2.1.5
         version: 2.2.0(react@18.3.1)
@@ -348,7 +348,7 @@ importers:
         version: 1.1.2(@types/react-dom@18.3.5(@types/react@18.3.17))(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@react-three/fiber':
         specifier: 9.0.0-rc.7
-        version: 9.0.0-rc.7(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.171.0)
+        version: 9.0.0-rc.7(@types/react@18.3.17)(react@18.3.1)(three@0.171.0)
       '@sindresorhus/slugify':
         specifier: ^2.2.1
         version: 2.2.1
@@ -359,8 +359,8 @@ importers:
         specifier: ^0.27.1
         version: 0.27.1
       '@xyflow/react':
-        specifier: ^12.5.1
-        version: 12.5.4(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^12.5.5
+        version: 12.5.5(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@xyflow/xy-ui':
         specifier: workspace:*
         version: link:../xy-ui
@@ -375,7 +375,7 @@ importers:
         version: 14.2.15(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       nextra:
         specifier: 4.3.0-alpha.4
-        version: 4.3.0-alpha.4(acorn@8.14.1)(next@14.2.15(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2)
+        version: 4.3.0-alpha.4(acorn@8.14.1)(next@14.2.15(react@18.3.1))(react@18.3.1)(typescript@5.7.2)
       react-dom:
         specifier: ^18.2.0
         version: 18.3.1(react@18.3.1)
@@ -393,7 +393,7 @@ importers:
         version: 3.0.6(react@18.3.1)
       use-error-boundary:
         specifier: ^2.0.6
-        version: 2.0.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 2.0.6(react@18.3.1)
     devDependencies:
       '@types/node':
         specifier: ^22.10.7
@@ -514,8 +514,8 @@ importers:
         specifier: ^3.9.0
         version: 3.20.0(react@18.3.1)
       '@xyflow/react':
-        specifier: ^12.5.4
-        version: 12.5.4(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^12.5.5
+        version: 12.5.5(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@xyflow/system':
         specifier: ^0.0.53
         version: 0.0.53
@@ -605,8 +605,8 @@ importers:
         specifier: ^3.9.0
         version: 3.20.0(react@18.3.1)
       '@xyflow/react':
-        specifier: 12.5.4
-        version: 12.5.4(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: 12.5.5
+        version: 12.5.5(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@xyflow/xy-ui':
         specifier: workspace:*
         version: link:../../packages/xy-ui
@@ -675,8 +675,8 @@ importers:
         specifier: ^2.2.1
         version: 2.2.1
       '@xyflow/react':
-        specifier: 12.5.4
-        version: 12.5.4(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: 12.5.5
+        version: 12.5.5(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@xyflow/xy-ui':
         specifier: workspace:*
         version: link:../../packages/xy-ui
@@ -2789,6 +2789,12 @@ packages:
       react: '>=17'
       react-dom: '>=17'
 
+  '@xyflow/react@12.5.5':
+    resolution: {integrity: sha512-mAtHuS4ktYBL1ph5AJt7X/VmpzzlmQBN3+OXxyT/1PzxwrVto6AKc3caerfxzwBsg3cA4J8lB63F3WLAuPMmHw==}
+    peerDependencies:
+      react: '>=17'
+      react-dom: '>=17'
+
   '@xyflow/svelte@0.1.31':
     resolution: {integrity: sha512-K56rWuPCKOUFCDO1Pbb4v+aIbtz9iwkO4Y0IRlpFcVAU+lPDiruofS7Y4DyKawW7IyFaZshUXVIIk3/bHpltQg==}
     peerDependencies:
@@ -2802,6 +2808,9 @@ packages:
 
   '@xyflow/system@0.0.54':
     resolution: {integrity: sha512-DBoQTcSQ2620WMfakCcjRLrlqalWcZBPgMNrfSAybnVeyZm73rT1592GAXPcC3eoVmWcvGfBgqwAmmNtlrowdw==}
+
+  '@xyflow/system@0.0.55':
+    resolution: {integrity: sha512-6cngWlE4oMXm+zrsbJxerP3wUNUFJcv/cE5kDfu0qO55OWK3fAeSOLW9td3xEVQlomjIW5knds1MzeMnBeCfqw==}
 
   accepts@1.3.8:
     resolution: {integrity: sha512-PYAthTa2m2VKxuvSD3DPC/Gy+U+sOA1LAuT8mkmRuvw+NACSaeXEQ+NHcVF7rONl6qcaxV3Uuemwawk+7+SJLw==}
@@ -7509,7 +7518,7 @@ snapshots:
       outvariant: 1.4.0
       static-browser-server: 1.0.3
 
-  '@codesandbox/sandpack-react@2.19.10(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@codesandbox/sandpack-react@2.19.10(react@18.3.1)':
     dependencies:
       '@codemirror/autocomplete': 6.18.4
       '@codemirror/commands': 6.7.1
@@ -7530,7 +7539,6 @@ snapshots:
       lz-string: 1.5.0
       react: 18.3.1
       react-devtools-inline: 4.4.0
-      react-dom: 18.3.1(react@18.3.1)
       react-is: 17.0.2
 
   '@corex/deepmerge@4.0.43': {}
@@ -7547,7 +7555,7 @@ snapshots:
 
   '@docsearch/css@3.8.2': {}
 
-  '@docsearch/react@3.8.2(@algolia/client-search@5.17.1)(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(search-insights@2.17.3)':
+  '@docsearch/react@3.8.2(@algolia/client-search@5.17.1)(@types/react@18.3.17)(react@18.3.1)(search-insights@2.17.3)':
     dependencies:
       '@algolia/autocomplete-core': 1.17.7(@algolia/client-search@5.17.1)(algoliasearch@5.17.1)(search-insights@2.17.3)
       '@algolia/autocomplete-preset-algolia': 1.17.7(@algolia/client-search@5.17.1)(algoliasearch@5.17.1)
@@ -7556,7 +7564,6 @@ snapshots:
     optionalDependencies:
       '@types/react': 18.3.17
       react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
       search-insights: 2.17.3
     transitivePeerDependencies:
       - '@algolia/client-search'
@@ -8651,7 +8658,7 @@ snapshots:
       '@swc/helpers': 0.5.15
       react: 18.3.1
 
-  '@react-three/fiber@9.0.0-rc.7(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.171.0)':
+  '@react-three/fiber@9.0.0-rc.7(@types/react@18.3.17)(react@18.3.1)(three@0.171.0)':
     dependencies:
       '@babel/runtime': 7.26.0
       '@types/react-reconciler': 0.28.9(@types/react@18.3.17)
@@ -8661,13 +8668,11 @@ snapshots:
       its-fine: 1.2.5(@types/react@18.3.17)(react@18.3.1)
       react: 18.3.1
       react-reconciler: 0.31.0(react@18.3.1)
-      react-use-measure: 2.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      react-use-measure: 2.1.7(react@18.3.1)
       scheduler: 0.25.0
       suspend-react: 0.1.3(react@18.3.1)
       three: 0.171.0
       zustand: 4.5.5(@types/react@18.3.17)(react@18.3.1)
-    optionalDependencies:
-      react-dom: 18.3.1(react@18.3.1)
     transitivePeerDependencies:
       - '@types/react'
       - immer
@@ -9331,6 +9336,17 @@ snapshots:
       - '@types/react'
       - immer
 
+  '@xyflow/react@12.5.5(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      '@xyflow/system': 0.0.55
+      classcat: 5.0.5
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+      zustand: 4.5.6(@types/react@18.3.17)(react@18.3.1)
+    transitivePeerDependencies:
+      - '@types/react'
+      - immer
+
   '@xyflow/svelte@0.1.31(patch_hash=wso7lvu4kl67t2o5powauarbf4)(svelte@4.2.19)':
     dependencies:
       '@svelte-put/shortcut': 3.1.1(svelte@4.2.19)
@@ -9359,6 +9375,16 @@ snapshots:
       d3-zoom: 3.0.0
 
   '@xyflow/system@0.0.54':
+    dependencies:
+      '@types/d3-drag': 3.0.7
+      '@types/d3-selection': 3.0.11
+      '@types/d3-transition': 3.0.9
+      '@types/d3-zoom': 3.0.8
+      d3-drag: 3.0.0
+      d3-selection: 3.0.0
+      d3-zoom: 3.0.0
+
+  '@xyflow/system@0.0.55':
     dependencies:
       '@types/d3-drag': 3.0.7
       '@types/d3-selection': 3.0.11
@@ -12643,7 +12669,7 @@ snapshots:
       - immer
       - use-sync-external-store
 
-  nextra@4.3.0-alpha.4(acorn@8.14.1)(next@14.2.15(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2):
+  nextra@4.3.0-alpha.4(acorn@8.14.1)(next@14.2.15(react@18.3.1))(react@18.3.1)(typescript@5.7.2):
     dependencies:
       '@formatjs/intl-localematcher': 0.6.0
       '@headlessui/react': 2.2.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -12667,7 +12693,6 @@ snapshots:
       next: 14.2.15(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react: 18.3.1
       react-compiler-runtime: 0.0.0-experimental-e993439-20250328(react@18.3.1)
-      react-dom: 18.3.1(react@18.3.1)
       react-medium-image-zoom: 5.2.14(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       rehype-katex: 7.0.1
       rehype-pretty-code: 0.14.1(shiki@3.2.1)
@@ -13373,11 +13398,9 @@ snapshots:
     optionalDependencies:
       '@types/react': 18.3.17
 
-  react-use-measure@2.1.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  react-use-measure@2.1.7(react@18.3.1):
     dependencies:
       react: 18.3.1
-    optionalDependencies:
-      react-dom: 18.3.1(react@18.3.1)
 
   react@18.3.1:
     dependencies:
@@ -14695,11 +14718,9 @@ snapshots:
     optionalDependencies:
       '@types/react': 18.3.17
 
-  use-error-boundary@2.0.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  use-error-boundary@2.0.6(react@18.3.1):
     dependencies:
       react: 18.3.1
-    optionalDependencies:
-      react-dom: 18.3.1(react@18.3.1)
 
   use-sidecar@1.1.3(@types/react@18.3.17)(react@18.3.1):
     dependencies:

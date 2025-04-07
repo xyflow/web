@@ -17,7 +17,7 @@
   "dependencies": {
     "@heroicons/react": "^2.1.5",
     "@typeform/embed-react": "^3.9.0",
-    "@xyflow/react": "^12.5.4",
+    "@xyflow/react": "^12.5.5",
     "@xyflow/system": "^0.0.53",
     "@xyflow/xy-ui": "workspace:*",
     "d3": "^7.9.0",
@@ -34,7 +34,6 @@
     "xy-shared": "workspace:*"
   },
   "devDependencies": {
-    "source-map-support": "0.5.21",
     "@notionhq/client": "^2.2.15",
     "@types/d3": "^7.4.3",
     "@types/node": "^20.17.2",
@@ -42,6 +41,7 @@
     "eslint-config-xyflow": "workspace:*",
     "postcss-import": "^16.1.0",
     "postcss-lightningcss": "^1.0.1",
+    "source-map-support": "0.5.21",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.5.4",
     "xy-tailwind-config": "workspace:*",
