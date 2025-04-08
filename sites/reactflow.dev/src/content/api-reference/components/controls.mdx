@@ -6,9 +6,6 @@ description:
   to zoom in, zoom out, fit the view, and lock the viewport.'
 ---
 
-import { PropsTable } from '@/components/props-table';
-import { controlsProps } from '@/references/components/Controls';
-
 # \<Controls />
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/additional-components/Controls/Controls.tsx)
@@ -17,7 +14,7 @@ The `<Controls />` component renders a small panel that contains convenient
 buttons to zoom in, zoom out, fit the view, and lock the viewport.
 
 ```tsx
-import { ReactFlow,  Controls } from '@xyflow/react'
+import { ReactFlow, Controls } from '@xyflow/react'
 
 export default function Flow() {
   return (
@@ -33,7 +30,7 @@ export default function Flow() {
 For TypeScript users, the props type for the `<Controls />` component is exported
 as `ControlProps`.
 
-<PropsTable {...controlsProps} />
+<APIDocs componentName="Controls" />
 
 ## Notes
 

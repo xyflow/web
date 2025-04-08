@@ -3,9 +3,6 @@ description: 'With this hook you can subscribe to changes of a node data of a sp
 created_at: 2024-07-09
 ---
 
-import { PropsTable } from '@/components/props-table';
-import { signature } from '@/references/hooks/useNodesData';
-
 # useNodesData()
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/hooks/useNodesData.ts)
@@ -24,12 +21,12 @@ export default function () {
 
 ## Signature
 
-<PropsTable {...signature} />
+<APIDocs functionName="useNodesData" />
 
-## Typescript
+## TypeScript
 
 This hook accepts a generic type argument of custom node types. See this
-[section in our Typescript guide](/learn/advanced-use/typescript#nodetype-edgetype-unions) for more information.
+[section in our TypeScript guide](/learn/advanced-use/typescript#nodetype-edgetype-unions) for more information.
 
 ```tsx
 const nodesData = useNodesData<NodesType>(['nodeId-1', 'nodeId-2']);

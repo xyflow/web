@@ -2,9 +2,6 @@
 description: 'This hook returns an InternalNode object for the given node ID.'
 ---
 
-import { PropsTable } from '@/components/props-table';
-import { signature } from '@/references/hooks/useInternalNode';
-
 # useInternalNode()
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/hooks/useInternalNode.ts)
@@ -32,12 +29,12 @@ export default function () {
 
 ## Signature
 
-<PropsTable {...signature} />
+<APIDocs functionName="useInternalNode" />
 
-## Typescript
+## TypeScript
 
 This hook accepts a generic type argument of custom node types. See this
-[section in our Typescript guide](/learn/advanced-use/typescript#nodetype-edgetype-unions) for more information.
+[section in our TypeScript guide](/learn/advanced-use/typescript#nodetype-edgetype-unions) for more information.
 
 ```tsx
 const internalNode = useInternalNode<CustomNodeType>();

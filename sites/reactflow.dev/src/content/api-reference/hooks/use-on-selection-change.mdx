@@ -5,9 +5,6 @@ description:
   either nodes or edges changes.'
 ---
 
-import { PropsTable } from '@/components/props-table';
-import { signature } from '@/references/hooks/useOnSelectionChange';
-
 # useOnSelectionChange()
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/hooks/useOnSelectionChange.ts)
@@ -18,8 +15,8 @@ _either_ nodes or edges changes.
 
 > [!WARNING]
 >
->  You need to memoize the passed `onChange` handler, otherwise the hook will not
->  work correctly.
+> You need to memoize the passed `onChange` handler, otherwise the hook will not
+> work correctly.
 
 ```jsx
 import { useState } from 'react';
@@ -50,7 +47,7 @@ function SelectionDisplay() {
 
 ## Signature
 
-<PropsTable {...signature} />
+<APIDocs functionName="useOnSelectionChange" />
 
 ## Notes
 

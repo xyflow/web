@@ -5,9 +5,6 @@ description:
   like React's `useState` hook with an additional helper callback."
 ---
 
-import { PropsTable } from '@/components/props-table';
-import { signature } from '@/references/hooks/useNodesState';
-
 # useNodesState()
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/hooks/useNodesEdgesState.ts)
@@ -39,12 +36,12 @@ export default function () {
 
 ## Signature
 
-<PropsTable {...signature} />
+<APIDocs functionName="useNodesState" />
 
-## Typescript
+## TypeScript
 
 This hook accepts a generic type argument of custom node types. See this
-[section in our Typescript guide](/learn/advanced-use/typescript#nodetype-edgetype-unions) for more information.
+[section in our TypeScript guide](/learn/advanced-use/typescript#nodetype-edgetype-unions) for more information.
 
 ```tsx
 const nodes = useNodesState<CustomNodeType>();

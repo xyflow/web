@@ -8,10 +8,7 @@ description:
   You can see an example usage of the component in the edge label renderer example.'
 ---
 
-import { PropsTable } from '@/components/props-table';
-import { edgeLabelRendererProps } from '@/references/components/EdgeLabelRenderer';
-
-# &lt;EdgeLabelRenderer />
+# \<EdgeLabelRenderer />
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/components/EdgeLabelRenderer/index.tsx)
 
@@ -56,10 +53,10 @@ export default CustomEdge;
 
 ## Props
 
-<PropsTable {...edgeLabelRendererProps} />
+<APIDocs componentName="EdgeLabelRenderer" />
 
 ## Notes
 
 - The `<EdgeLabelRenderer />` has no pointer events by default. If you want to
-  add mouse interactions you need to set the style `pointerEvents: all` and add
+  add mouse interactions you need to set the style `pointerEvents: 'all'` and add
   the `nopan` class on the label or the element you want to interact with.

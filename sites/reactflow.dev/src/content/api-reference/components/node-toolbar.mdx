@@ -7,10 +7,7 @@ description:
   is always visible."
 ---
 
-import { PropsTable } from '@/components/props-table';
-import { nodeToolbarProps } from '@/references/components/NodeToolbar';
-
-# &lt;NodeToolbar />
+# \<NodeToolbar />
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/additional-components/NodeToolbar/NodeToolbar.tsx)
 
@@ -46,9 +43,10 @@ export default memo(CustomNode);
 ## Props
 
 For TypeScript users, the props type for the `<NodeToolbar />` component is exported
-as `NodeToolbarProps`.
+as `NodeToolbarProps`. Additionally, the `<NodeToolbar />` component accepts all props of the HTML `<div />`
+element.
 
-<PropsTable {...nodeToolbarProps} />
+<APIDocs componentName="NodeToolbar" groupKeys="HTMLAttributes<HTMLDivElement>" />
 
 ## Notes
 

@@ -36,7 +36,7 @@ export const Form: FC = () => {
   useEffect(() => {
     const plan = searchParams.get('plan');
 
-    if (['starter', 'pro', 'enterprise'].includes(plan)) {
+    if (plan && ['starter', 'pro', 'enterprise'].includes(plan)) {
       setFormData((fd) => ({ ...fd, plan }));
     }
   }, [searchParams]);

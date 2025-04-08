@@ -39,3 +39,4 @@ tmp
 vite.config.ts.*
 .idea/
 tsconfig.tsbuildinfo
+dist/

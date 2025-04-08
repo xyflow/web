@@ -5,22 +5,19 @@ description:
   actions.'
 ---
 
-import { Callout } from 'nextra/components';
-import { PropsTable } from '@/components/props-table';
-import { signature } from '@/references/hooks/useStoreApi';
-
 # useStoreApi()
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/hooks/useStore.ts)
 
 In some cases, you might need to access the store directly. This hook returns the store object which can be used on demand to access the state or dispatch actions.
 
-<Callout type="info">
-  This hook should only be used if there is no other way to access the internal
-  state. For many of the common use cases, there are dedicated hooks available
-  such as [`useReactFlow`](/api-reference/hooks/use-react-flow),
-  [`useViewport`](/api-reference/hooks/use-viewport), etc.
-</Callout>
+> [!NOTE]
+>
+> This hook should only be used if there is no other way to access the internal
+> state. For many of the common use cases, there are dedicated hooks available
+> such as [`useReactFlow`](/api-reference/hooks/use-react-flow),
+> [`useViewport`](/api-reference/hooks/use-viewport), etc.
+
 
 ```tsx
 import { useState, useCallback } from 'react';
@@ -69,12 +66,12 @@ choose the approach that works best for your use-case.
 
 ## Signature
 
-<PropsTable {...signature} />
+<APIDocs functionName="useStoreApi" />
 
-## Typescript
+## TypeScript
 
 This hook accepts a generic type argument of custom node & edge types. See this
-[section in our Typescript guide](/learn/advanced-use/typescript#nodetype-edgetype-unions) for more information.
+[section in our TypeScript guide](/learn/advanced-use/typescript#nodetype-edgetype-unions) for more information.
 
 ```tsx
 const store = useStoreApi<CustomNodeType, CustomEdgeType>();

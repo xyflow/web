@@ -31,6 +31,7 @@ function Flow() {
 
   useEffect(() => {
     setNodes(
+      // @ts-expect-error -- I think has an issue, he contains comma expression
       initialNodes({
         focus: setFocus,
         update: setNodes,
