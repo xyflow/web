@@ -1,8 +1,7 @@
 ---
 sidebarTitle: Slideshow App
 title: Create a slide show presentation with React Flow
-intro:
-  We recently published the results of our 2023 end of year survey using React
+intro: We recently published the results of our 2023 end of year survey using React
   Flow. This tutorial is an opportunity to share what we learned and show you how
   to build something similar!
 date: 2024/01/07
@@ -11,20 +10,18 @@ tags: ['react-flow', 'presentation', 'slide-show']
 image: /img/tutorials/presentation/slideshow-thumb.png
 ---
 
-import { Cards, Callout, Bleed } from 'nextra/components';
+import { Cards, Callout } from 'nextra/components';
 import { Image } from 'xy-shared';
 import { Emoji } from '@xyflow/xy-ui';
 import { RemoteCodeViewer } from 'xy-shared/server';
 
 We recently published the findings from our React Flow 2023 end-of-year survey with an [interactive presentation](/developer-survey-2023) of the key findings, using React Flow itself. There were lots of useful bits built into this slideshow app, so we wanted to share how we built it!
 
-<Bleed>
-  <Image
-    src="/img/tutorials/presentation/survey.png"
-    caption="Our 2023 end of year survey app was made up of many static nodes and buttons to navigate between them."
-    alt="Screenshot of slides laid out on an infinite canvas, each with information pulled from a survey of React Flow users"
-  />
-</Bleed>
+<Image
+  src="/img/tutorials/presentation/survey.png"
+  caption="Our 2023 end of year survey app was made up of many static nodes and buttons to navigate between them."
+  alt="Screenshot of slides laid out on an infinite canvas, each with information pulled from a survey of React Flow users"
+/>
 
 By the end of this tutorial, you will have built a presentation app with
 
@@ -37,13 +34,11 @@ Along the way, you'll learn a bit about the basics of layouting algorithms, crea
 
 Once you're done, the app will look like this!
 
-<Bleed>
-  <RemoteCodeViewer
-    route="tutorials/presentation/app"
-    framework="react"
-    showEditor={false}
-  />
-</Bleed>
+<RemoteCodeViewer
+  route="tutorials/presentation/app"
+  framework="react"
+  showEditor={false}
+/>
 
 To follow along
 with this tutorial we'll assume you have a basic understanding of
@@ -134,9 +129,9 @@ style your app differently from just writing CSS, for example with
 [Tailwind CSS](/examples/styling/tailwind), you can skip the import to `index.css`.
 
 <Callout>
-  How you style your app is up to you, but you must **always** include React
-  Flow's styles! If you don't need the default styles, at a minimum you should
-  include the base styles from `@xyflow/react/dist/base.css`.
+  How you style your app is up to you, but you must **always** include React Flow's
+  styles! If you don't need the default styles, at a minimum you should include the base
+  styles from `@xyflow/react/dist/base.css`.
 </Callout>
 
 Each slide of our presentation will be a node on the canvas, so let's create a new file `Slide.tsx` that will be our custom node used to render each slide.
@@ -182,30 +177,26 @@ const nodeTypes = {
 };
 
 export default function App() {
-  const nodes = [
-    { id: '0', type: 'slide', position: { x: 0, y: 0 }, data: {} },
-  ];
+  const nodes = [{ id: '0', type: 'slide', position: { x: 0, y: 0 }, data: {} }];
 
   return <ReactFlow nodes={nodes} nodeTypes={nodeTypes} fitView />;
 }
 ```
 
 <Callout>
-  It's important to remember to define your `nodeTypes` object _outside_ of the
-  component (or to use React's `useMemo` hook)! When the `nodeTypes` object
-  changes, the entire flow is re-rendered.
+  It's important to remember to define your `nodeTypes` object _outside_ of the component
+  (or to use React's `useMemo` hook)! When the `nodeTypes` object changes, the entire flow
+  is re-rendered.
 </Callout>
 
 With the basics put together, you can start the development server by running
 `npm run dev` and see the following:
 
-<Bleed>
-  <RemoteCodeViewer
-    route="tutorials/presentation/scaffold"
-    showEditor={false}
-    framework="react"
-  />
-</Bleed>
+<RemoteCodeViewer
+  route="tutorials/presentation/scaffold"
+  showEditor={false}
+  framework="react"
+/>
 
 Not super exciting yet, but let's add markdown rendering and create a few slides
 side by side!
@@ -283,9 +274,7 @@ export default function App() {
     },
   ];
 
-  return (
-    <ReactFlow nodes={nodes} nodeTypes={nodeTypes} fitView minZoom={0.1} />
-  );
+  return <ReactFlow nodes={nodes} nodeTypes={nodeTypes} fitView minZoom={0.1} />;
 }
 ```
 
@@ -293,13 +282,11 @@ Note that we've added the `minZoom` prop to the `<ReactFlow />` component. Our
 slides are quite large, and the default minimum zoom level is not enough to zoom
 out and see multiple slides at once.
 
-<Bleed>
-  <RemoteCodeViewer
-    route="tutorials/presentation/rendering-markdown"
-    showEditor={false}
-    framework="react"
-  />
-</Bleed>
+<RemoteCodeViewer
+  route="tutorials/presentation/rendering-markdown"
+  showEditor={false}
+  framework="react"
+/>
 
 In the nodes array above, we've made sure to space the slides out by doing some
 manual math with the `SLIDE_WIDTH` constant. In the next section we'll come up
@@ -376,10 +363,7 @@ Let's see the code. In a file called `slides.ts` add the following:
 ```tsx filename="slides.ts"
 import { SlideData, SLIDE_WIDTH, SLIDE_HEIGHT } from './Slide';
 
-export const slidesToElements = (
-  initial: string,
-  slides: Record<string, SlideData>,
-) => {
+export const slidesToElements = (initial: string, slides: Record<string, SlideData>) => {
   // Push the initial slide's id and the position `{ x: 0, y: 0 }` onto a stack.
   const stack = [{ id: initial, position: { x: 0, y: 0 } }];
   const visited = new Set();
@@ -432,12 +416,7 @@ Below is a demo app of the layouting algorithm, you can edit the `slides` object
 to see how adding slides to different directions affects the layout. For example,
 try extending 4's data to include `down: '5'` and see how the layout updates.
 
-<Bleed>
-  <RemoteCodeViewer
-    route="tutorials/presentation/layout-demo"
-    framework="react"
-  />
-</Bleed>
+<RemoteCodeViewer route="tutorials/presentation/layout-demo" framework="react" />
 
 If you spend a little time playing with this demo, you'll likely run across two
 limitations of this algorithm:
@@ -556,11 +535,11 @@ export default function App() {
 ```
 
 <Callout>
-  It's important to remember to include `fitView` as in the dependency array of
-  our `handleNodeClick` callback. That's because the `fitView` function is
-  replaced once React Flow has initialized the viewport. If you forget this step
-  you'll likely find out that `handleNodeClick` does nothing at all (and yes, we
-  also forget this ourselves sometimes too <Emoji content="🫠" />
+  It's important to remember to include `fitView` as in the dependency array of our
+  `handleNodeClick` callback. That's because the `fitView` function is replaced once React
+  Flow has initialized the viewport. If you forget this step you'll likely find out that
+  `handleNodeClick` does nothing at all (and yes, we also forget this ourselves sometimes
+  too <Emoji content="🫠" />
   ).
 </Callout>
 
@@ -570,13 +549,11 @@ into view, but we only want to focus on the node that was clicked! The
 array of just the nodes we want to focus on: in this case, that's just the node
 that was clicked.
 
-<Bleed>
-  <RemoteCodeViewer
-    route="tutorials/presentation/focus-on-click"
-    framework="react"
-    showEditor={false}
-  />
-</Bleed>
+<RemoteCodeViewer
+  route="tutorials/presentation/focus-on-click"
+  framework="react"
+  showEditor={false}
+/>
 
 ### Slide controls
 
@@ -659,12 +636,11 @@ export function Slide({ data }: NodeProps<SlideNide>) {
 }
 ```
 
-<Bleed>
-  <RemoteCodeViewer
-    route="tutorials/presentation/slide-controls"
-    framework="react"
-  />
-</Bleed>
+<RemoteCodeViewer
+  orientation="vertical"
+  route="tutorials/presentation/slide-controls"
+  framework="react"
+/>
 
 ### Keyboard navigation
 
@@ -771,13 +747,11 @@ viewport you might not need to do this.
 And that's everything! To recap let's look at the final result and talk about
 what we've learned.
 
-<Bleed>
-  <RemoteCodeViewer
-    route="tutorials/presentation/app"
-    framework="react"
-    showEditor={false}
-  />
-</Bleed>
+<RemoteCodeViewer
+  route="tutorials/presentation/app"
+  framework="react"
+  showEditor={false}
+/>
 
 ## Final thoughts
 

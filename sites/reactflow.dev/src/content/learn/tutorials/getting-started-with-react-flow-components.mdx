@@ -8,7 +8,7 @@ tags: ['react-flow', 'components', 'shadcn', 'computational']
 image: ''
 ---
 
-import { Callout, Bleed } from 'nextra/components';
+import { Callout } from 'nextra/components';
 import { Image } from 'xy-shared';
 import { Emoji } from '@xyflow/xy-ui';
 import { RemoteCodeViewer } from 'xy-shared/server';
@@ -102,12 +102,11 @@ export default App;
 ```
 
 <Callout>
-  The classes `w-screen` and `h-screen` are two examples of Tailwind's utility
-  classes. If you're used to styling React apps using a different approach, you
-  might find this a bit strange at first. You can think of Tailwind classes as
-  supercharged inline styles: they're constrained to a set design system and you
-  have access to responsive media queries or pseudo-classes like `hover` and
-  `focus`.
+  The classes `w-screen` and `h-screen` are two examples of Tailwind's utility classes. If
+  you're used to styling React apps using a different approach, you might find this a bit
+  strange at first. You can think of Tailwind classes as supercharged inline styles:
+  they're constrained to a set design system and you have access to responsive media
+  queries or pseudo-classes like `hover` and `focus`.
 </Callout>
 
 ### Setting up shadcn/ui
@@ -260,11 +259,7 @@ import '@xyflow/react/dist/style.css';
 
 import { ReactFlow, Position, useNodesState, Node } from '@xyflow/react';
 
-import {
-  TooltipNode,
-  TooltipContent,
-  TooltipTrigger,
-} from '@/components/tooltip-node';
+import { TooltipNode, TooltipContent, TooltipTrigger } from '@/components/tooltip-node';
 
 function Tooltip() {
   return (
@@ -309,13 +304,11 @@ export default App;
 And would you look at that, the tooltip node we added automatically uses the
 `<BaseNode />` component we customized!
 
-<Bleed>
-  <RemoteCodeViewer
-    route="tutorials/components/tooltip"
-    framework="react"
-    showEditor={false}
-  />
-</Bleed>
+<RemoteCodeViewer
+  route="tutorials/components/tooltip"
+  framework="react"
+  showEditor={false}
+/>
 
 ## Moving fast and making things
 
@@ -336,10 +329,9 @@ npx shadcn@latest add \
 ```
 
 <Callout type="info">
-  Notice how adding the `node-header` component also brought with it some
-  standard shadcn/ui components! This lets us at React Flow build richer
-  components for you to use without re-inventing the wheel for things like
-  dropdowns and popovers.
+  Notice how adding the `node-header` component also brought with it some standard
+  shadcn/ui components! This lets us at React Flow build richer components for you to use
+  without re-inventing the wheel for things like dropdowns and popovers.
 </Callout>
 
 The first node we'll create is a simple number node with some buttons to increment
@@ -350,12 +342,7 @@ Paste the following into the new file:
 
 ```tsx filename="src/components/nodes/num-node.tsx" {9-18,44-53,56,58,62,64}
 import React, { useCallback } from 'react';
-import {
-  type Node,
-  type NodeProps,
-  Position,
-  useReactFlow,
-} from '@xyflow/react';
+import { type Node, type NodeProps, Position, useReactFlow } from '@xyflow/react';
 
 import { BaseNode } from '@/components/base-node';
 import { LabeledHandle } from '@/components/labeled-handle';
@@ -418,23 +405,21 @@ export function NumNode({ id, data }: NodeProps<NumNode>) {
 ```
 
 <Callout>
-  This isn't a tutorial for basic React Flow concepts like flows and custom
-  nodes so we're **skipping over some of the basics**. If you're new to React
-  Flow and want to learn how to add custom nodes and edges to a flow, check out
-  the [guide on custom nodes](/learn/customization/custom-nodes).
+  This isn't a tutorial for basic React Flow concepts like flows and custom nodes so we're
+  **skipping over some of the basics**. If you're new to React Flow and want to learn how
+  to add custom nodes and edges to a flow, check out the [guide on custom
+  nodes](/learn/customization/custom-nodes).
 </Callout>
 
 In the snippet above we've highlighted the imports and components that come from
 shadcn/ui and React Flow Components. In just a few lines of code we already have
 quite a capable node:
 
-<Bleed>
-  <RemoteCodeViewer
-    route="tutorials/components/num-node"
-    framework="react"
-    showEditor={false}
-  />
-</Bleed>
+<RemoteCodeViewer
+  route="tutorials/components/num-node"
+  framework="react"
+  showEditor={false}
+/>
 
 Our `<NumNode />` component...
 
@@ -488,18 +473,8 @@ export function SumNode({ id }: NodeProps<SumNode>) {
       </NodeHeader>
 
       <footer className="bg-gray-100 -m-5">
-        <LabeledHandle
-          title="x"
-          id="x"
-          type="target"
-          position={Position.Left}
-        />
-        <LabeledHandle
-          title="y"
-          id="y"
-          type="target"
-          position={Position.Left}
-        />
+        <LabeledHandle title="x" id="x" type="target" position={Position.Left} />
+        <LabeledHandle title="y" id="y" type="target" position={Position.Left} />
         <LabeledHandle title="out" type="source" position={Position.Right} />
       </footer>
     </BaseNode>
@@ -642,13 +617,11 @@ export default App;
 
 Putting everything together we end up with quite a capable little calculator!
 
-<Bleed>
-  <RemoteCodeViewer
-    route="tutorials/components/complete"
-    framework="react"
-    showEditor={false}
-  />
-</Bleed>
+<RemoteCodeViewer
+  route="tutorials/components/complete"
+  framework="react"
+  showEditor={false}
+/>
 
 You could continue to improve this flow by adding nodes to perform other operations
 or to take user input using additional components from the [shadcn/ui registry](https://ui.shadcn.com/docs/components/slider).

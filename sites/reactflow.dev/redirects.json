@@ -1063,5 +1063,10 @@
     "source": "/examples/layout/workflow-builder",
     "destination": "/examples/layout/dynamic-layouting",
     "permanent": true
+  },
+  {
+    "source": "/learn/tutorials",
+    "destination": "/learn/tutorials/mind-map-app-with-react-flow",
+    "permanent": true
   }
 ]
