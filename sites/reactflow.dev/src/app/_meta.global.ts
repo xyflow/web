@@ -139,6 +139,7 @@ const metaRecord = {
       changelog: { href: '/whats-new' },
       blog: { href: 'https://xyflow.com/blog' },
       'contact-us': { href: 'https://xyflow.com/contact' },
+      playground: { href: 'https://play.reactflow.dev' },
     },
   },
 
