@@ -14,17 +14,14 @@ const Layout: FC<{ children: ReactNode }> = async ({ children }) => {
 
   // Add badges
   const apiReference = pageMap.find(
-    (item): item is Folder =>
-      'children' in item && item.name === 'api-reference',
+    (item): item is Folder => 'children' in item && item.name === 'api-reference',
   );
   const examplesIndex = pageMap.findIndex(
     (item): item is Folder => 'name' in item && item.name === 'examples',
   );
-  const [examplesMeta, ...examples] = (pageMap[examplesIndex] as Folder)
+  const [examplesMeta, ...examples] = (pageMap[examplesIndex] as Folder).children;
+  const [catchAllExamplesMeta, ...catchAllExamples] = (await getExamplesPageMap())
     .children;
-  const [catchAllExamplesMeta, ...catchAllExamples] = (
-    await getExamplesPageMap()
-  ).children;
   // Merge on disk examples with examples from catch-all [...slug] route
   pageMap[examplesIndex] = {
     ...pageMap[examplesIndex],
@@ -71,7 +68,9 @@ const Layout: FC<{ children: ReactNode }> = async ({ children }) => {
           { title: 'Getting Started', route: '/learn' },
           { title: 'API Reference', route: '/api-reference' },
           { title: 'Examples', route: '/examples' },
+          { title: 'Components', route: '/components' },
           { title: 'Showcase', route: '/showcase' },
+          { title: 'Playground', route: 'https://play.reactflow.dev' },
         ],
         ...remainingCategories,
         Legal: [
@@ -81,8 +80,7 @@ const Layout: FC<{ children: ReactNode }> = async ({ children }) => {
           },
           {
             title: 'Code of Conduct',
-            route:
-              'https://github.com/xyflow/xyflow/blob/main/CODE_OF_CONDUCT.md',
+            route: 'https://github.com/xyflow/xyflow/blob/main/CODE_OF_CONDUCT.md',
           },
           { title: 'Imprint', route: 'https://xyflow.com/imprint' },
         ],
