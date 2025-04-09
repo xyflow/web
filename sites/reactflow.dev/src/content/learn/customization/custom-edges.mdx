@@ -50,8 +50,8 @@ export default function CustomEdge({ id, sourceX, sourceY, targetX, targetY }) {
 ```
 
 <Callout type="info">
-  All the props passed to your custom edge component can be found in the API
-  reference under the [`EdgeProps`](/api-reference/types/edge-props) type.
+  All the props passed to your custom edge component can be found in the API reference
+  under the [`EdgeProps`](/api-reference/types/edge-props) type.
 </Callout>
 
 This gives us a straight edge that behaves the same as the default `"straight"`
@@ -117,9 +117,7 @@ export default function CustomEdge({ id, sourceX, sourceY, targetX, targetY }) {
     <>
       <BaseEdge id={id} path={edgePath} />
       <EdgeLabelRenderer>
-        <button
-          onClick={() => setEdges((edges) => edges.filter((e) => e.id !== id))}
-        >
+        <button onClick={() => setEdges((edges) => edges.filter((e) => e.id !== id))}>
           delete
         </button>
       </EdgeLabelRenderer>

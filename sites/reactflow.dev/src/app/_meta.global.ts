@@ -5,12 +5,13 @@ const concepts = {
   'the-viewport': '',
 };
 const gettingStarted = {
-  'installation-and-requirements': '',
+  // 'installation-and-requirements': '',
   'building-a-flow': '',
 };
 const customization = {
   'custom-nodes': '',
   'custom-edges': '',
+  handles: '', // new
 };
 const advanced = {
   accessibility: '',

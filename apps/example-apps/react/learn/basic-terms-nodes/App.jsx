@@ -7,7 +7,7 @@ const initialNodes = [
     id: '1',
     position: { x: 0, y: 0 },
     data: { label: 'This is a node' },
-    style: { borderWidth: 2 },
+    style: { borderWidth: 1 },
   },
 ];
 
