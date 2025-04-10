@@ -43,7 +43,7 @@
     "d3-selection": "^3.0.0",
     "elkjs": "^0.9.3",
     "entitree-flex": "^0.4.1",
-    "html-to-image": "^1.11.11",
+    "html-to-image": "1.11.11",
     "lucide-react": "^0.453.0",
     "nanoid": "^5.0.7",
     "puppeteer": "^22.7.1",
