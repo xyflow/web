@@ -1,5 +1,5 @@
 import { useMDXComponents as getDocsMDXComponents } from 'nextra-theme-docs';
-import { unstable_TSDoc as TSDoc } from 'nextra/tsdoc';
+import { TSDoc, generateDocumentation } from 'nextra/tsdoc';
 import { getPageMap } from 'nextra/page-map';
 import type { MdxFile } from 'nextra';
 
@@ -51,17 +51,16 @@ const docsComponents = getDocsMDXComponents({
       EdgeType: '/api-reference/types/edge',
     };
     if (props.code) {
-      return <TSDoc typeLinkMap={allLinks} {...props} />;
+      const definition = await generateDocumentation(props);
+      return <TSDoc definition={definition} typeLinkMap={allLinks} />;
     }
     if (functionName) {
-      return (
-        <TSDoc
-          typeLinkMap={allLinks}
-          code={`export type { ${functionName} as default } from '@xyflow/react'`}
-          flattened
-          {...props}
-        />
-      );
+      const definition = await generateDocumentation({
+        code: `export type { ${functionName} as default } from '@xyflow/react'`,
+        flattened: true,
+        ...props,
+      });
+      return <TSDoc definition={definition} typeLinkMap={allLinks} />;
     }
     let code: string;
 
@@ -81,7 +80,11 @@ export default WithGroupedProps`
     } else {
       code = `export type { ${typeName} as default } from '@xyflow/${packageName}'`;
     }
-    return <TSDoc typeLinkMap={allLinks} code={code} {...props} />;
+    const definition = await generateDocumentation({
+      code,
+      ...props,
+    });
+    return <TSDoc definition={definition} typeLinkMap={allLinks} />;
   },
 });
 
