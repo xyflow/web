@@ -3,8 +3,13 @@ title: Download Image
 ---
 
 import { RemoteCodeViewer } from 'xy-shared/server';
+import { Callout } from 'nextra/components';
 
 This example shows how to download a flow as an image with [html-to-image](https://github.com/bubkoo/html-to-image).
+
+<Callout type="info">
+  The `version` of the [html-to-image](https://www.npmjs.com/package/html-to-image) package used in this example, has been locked to `1.11.11`, which is the latest working `version` for the package. The recent versions, after `1.11.11`, are not exporting images properly and there is open [issue](https://github.com/bubkoo/html-to-image/issues/516) for this on Github.
+</Callout>
 
 <RemoteCodeViewer
   route="examples/misc/download-image"
