@@ -103,25 +103,20 @@
   height: 5px;
 }
 
-/* Custom Example CSS  - This CSS is to improve the example experience. You can remove it if you want to use the default styles. */
-:root {
-  --color-primary: #ff0073;
-  --color-background: #fefefe;
-  --color-hover-bg: #f6f6f6;
-  --color-disabled: #76797e;
-}
+/* 
+  Custom Example CSS  - This CSS is to improve the example experience.
+  You can remove it if you want to use the default styles.
 
-/* Custom Button Styling (excluding React Flow control buttons) */
-:root {
-  --color-primary: #ff0073;
-  --color-background: #fefefe;
-  --color-hover-bg: #f6f6f6;
-  --color-disabled: #76797e;
-}
+  New Theme Classes:
+    .xy-theme__button   - Styles for buttons.
+    .xy-theme__input    - Styles for text inputs.
+    .xy-theme__checkbox - Styles for checkboxes.
+    .xy-theme__select   - Styles for dropdown selects.
+    .xy-theme__label    - Styles for labels.
+  
+  Use these classes to apply consistent theming across your components.
+*/
 
-/* Custom Example CSS – apply these classes to your elements */
-
-/* Custom CSS Variables */
 :root {
   --color-primary: #ff0073;
   --color-background: #fefefe;
