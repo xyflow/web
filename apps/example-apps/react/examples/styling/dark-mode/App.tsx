@@ -17,7 +17,6 @@ import {
 
 import '@xyflow/react/dist/style.css';
 
-
 const nodeDefaults = {
   sourcePosition: Position.Right,
   targetPosition: Position.Left,
@@ -98,7 +97,11 @@ const ColorModeFlow = () => {
       <Controls />
 
       <Panel position="top-right">
-        <select onChange={onChange} data-testid="colormode-select">
+        <select
+          className="xy-theme__select"
+          onChange={onChange}
+          data-testid="colormode-select"
+        >
           <option value="dark">dark</option>
           <option value="light">light</option>
           <option value="system">system</option>
