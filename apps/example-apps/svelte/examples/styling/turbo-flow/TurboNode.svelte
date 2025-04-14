@@ -27,8 +27,8 @@
       {/if}
       <div>
         <div class="title">{data.title}</div>
-        {#if data.subline}
-          <div class="subline">{data.subline}</div>
+        {#if data.subtitle}
+          <div class="subtitle">{data.subtitle}</div>
         {/if}
       </div>
     </div>

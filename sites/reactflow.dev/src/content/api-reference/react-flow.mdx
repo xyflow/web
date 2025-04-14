@@ -3,23 +3,7 @@ title: The ReactFlow component
 sidebarTitle: <ReactFlow />
 ---
 
-import { Callout } from 'nextra/components';
-import { PropsTable } from '@/components/props-table';
-import {
-  commonProps,
-  viewportProps,
-  edgeProps,
-  interactionProps,
-  connectionLineProps,
-  keyboardProps,
-  generalEventHandlerProps,
-  nodeEventHandlerProps,
-  edgeEventHandlerProps,
-  connectionEventHandlerProps,
-  paneEventHandlerProps,
-  selectionEventHandlerProps,
-  styleProps,
-} from '@/references/ReactFlow.props';
+import { ReactFlowAPIProps } from '@/references/ReactFlow.props';
 
 # \<ReactFlow />
 
@@ -51,55 +35,55 @@ These are the props you will most commonly use when working with React Flow. If
 you are working with a controlled flow with custom nodes, you will likely use
 almost all of these!
 
-<PropsTable {...commonProps} />
+<ReactFlowAPIProps group="common" />
 
 ## Viewport props
 
-<PropsTable {...viewportProps} />
+<ReactFlowAPIProps group="viewport" />
 
 ## Edge props
 
-<PropsTable {...edgeProps} />
+<ReactFlowAPIProps group="edge" />
 
 ## Event handlers
 
-<Callout type="warning">
-  It's important to remember to define any event handlers outside of your
-  component or using React's `useCallback` hook. If you don't, this can cause
-  React Flow to enter an infinite re-render loop!
-</Callout>
+> [!WARNING]
+>
+> It's important to remember to define any event handlers outside of your
+> component or using React's `useCallback` hook. If you don't, this can cause
+> React Flow to enter an infinite re-render loop!
 
 ### General Events
 
-<PropsTable {...generalEventHandlerProps} />
+<ReactFlowAPIProps group="generalEvents" />
 
 ### Node Events
 
-<PropsTable {...nodeEventHandlerProps} />
+<ReactFlowAPIProps group="nodeEvents" />
 
 ### Edge Events
 
-<PropsTable {...edgeEventHandlerProps} />
+<ReactFlowAPIProps group="edgeEvents" />
 
 ### Connection Events
 
-<PropsTable {...connectionEventHandlerProps} />
+<ReactFlowAPIProps group="connectionEvents" />
 
 ### Pane Events
 
-<PropsTable {...paneEventHandlerProps} />
+<ReactFlowAPIProps group="paneEvents" />
 
 ### Selection Events
 
-<PropsTable {...selectionEventHandlerProps} />
+<ReactFlowAPIProps group="selectionEvents" />
 
 ## Interaction props
 
-<PropsTable {...interactionProps} />
+<ReactFlowAPIProps group="interaction" />
 
 ## Connection line props
 
-<PropsTable {...connectionLineProps} />
+<ReactFlowAPIProps group="connectionLine" />
 
 ## Keyboard props
 
@@ -108,10 +92,10 @@ to interact with your flow. We've tried to set up sensible defaults like using
 backspace to delete any selected nodes or edges, but you can use these props to
 set your own.
 
-To disable any of these shortcuts, pass in `null` to to the prop you want to
+To disable any of these shortcuts, pass in `null` to the prop you want to
 disable.
 
-<PropsTable {...keyboardProps} />
+<ReactFlowAPIProps group="keyboard" />
 
 ## Style props
 
@@ -119,7 +103,7 @@ Applying certain classes to elements rendered inside the canvas will change how
 interactions are handled. These props let you configure those class names if you
 need to.
 
-<PropsTable {...styleProps} />
+<ReactFlowAPIProps group="style" />
 
 ## Notes
 

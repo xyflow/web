@@ -29,8 +29,8 @@ Examples of unacceptable behavior by participants include:
 ## Our Responsibilities
 
 Project maintainers are responsible for clarifying the standards of acceptable
-behaviour and are expected to take appropriate and fair corrective and/or
-restorative action in response to any instances of unacceptable behaviour.
+behavior and are expected to take appropriate and fair corrective and/or
+restorative action in response to any instances of unacceptable behavior.
 
 Project maintainers have the right and responsibility to remove, edit, or reject
 comments, commits, code, wiki edits, issues, and other contributions that are

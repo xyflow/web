@@ -42,8 +42,8 @@ const ProExampleViewer: FC<{
           <Link className="underline" href="/pro/examples">
             all pro examples
           </Link>
-          , templates, 1:1 support from the xyflow team and prioritized Github
-          issues with a React Flow Pro subscription.
+          , templates, 1:1 support from the xyflow team and prioritized Github issues with
+          a React Flow Pro subscription.
         </Text>
         <div className="flex space-x-4">
           <Button asChild className="shrink-0">

@@ -57,11 +57,11 @@ and [here](/examples/layout/elkjs).
 
 Dagre is a simple library for layouting directed graphs. It has minimal configuration
 options and a focus on speed over choosing the most optimal layout. If you need
-to organise your flows into a tree, _we highly recommend dagre_.
+to organize your flows into a tree, _we highly recommend dagre_.
 
 <RemoteCodeViewer route="learn/layouting-flow-2-dagre" framework="react" />
 
-With no effort at all we get a well-organised tree layout! Whenever
+With no effort at all we get a well-organized tree layout! Whenever
 `getLayoutedElements` is called, we'll reset the dagre graph and set the graph's
 direction (either left-to-right or top-to-bottom) based on the `direction` prop.
 Dagre needs to know the dimensions of each node in order to lay them out, so we
@@ -117,7 +117,7 @@ First, let's see what it does:
 We've changed our `getLayoutedElements` to a hook called `useLayoutedElements`
 instead. Additionally, instead of passing in the nodes and edges explicitly, we'll
 use get `getNodes` and `getEdges` functions from the `useReactFlow` hook. This
-is important when combined with the store selector in `initialised` because it
+is important when combined with the store selector in `initialized` because it
 will prevent us from reconfiguring the simulation any time the nodes update.
 
 The simulation is configured with a number of different forces applied so you

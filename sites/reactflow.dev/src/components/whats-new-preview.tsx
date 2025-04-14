@@ -47,6 +47,7 @@ function WhatsNewItemPreview({
   variant,
   featured = false,
   item: {
+    // @ts-expect-error -- fixme
     frontMatter: { title, description, authors, date },
     route,
   },

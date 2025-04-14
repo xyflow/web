@@ -1,21 +1,23 @@
 'use client';
 
 import { TabsTrigger, Text, cn } from '@xyflow/xy-ui';
-
 import { SliderItem } from './types';
+import ProgressBar from './progress-bar';
 
 export type ImageSliderItemProps = {
   item: SliderItem;
   isActive: boolean;
-  activeBarWidth?: number;
+  duration?: number;
   onClick: (name: string) => void;
+  onComplete: () => void;
 };
 
 export default function ImageSliderItem({
   item,
   isActive,
+  duration = 1000,
   onClick,
-  ...props
+  onComplete,
 }: ImageSliderItemProps) {
   return (
     <TabsTrigger
@@ -26,18 +28,9 @@ export default function ImageSliderItem({
       )}
       onClick={() => onClick(item.name)}
     >
-      <div className="w-full relative mb-8 h-1.5 rounded bg-black/20">
-        {/* I'm sure there's a fancy type way to say that `activeBarWidth` only
-            exists when `isActive` is true, but I couldn't work out a nice solution,
-            and it's probably over-engineering anyway.
-        */}
+      <div className="h-1.5 rounded bg-black/20 w-full">
         {isActive && (
-          <div
-            style={{ width: `${props.activeBarWidth!}%` }}
-            className={cn(
-              'absolute h-full rounded bg-gradient-to-r from-accent/40 to-accent/70',
-            )}
-          />
+          <ProgressBar duration={duration} isActive={isActive} onComplete={onComplete} />
         )}
       </div>
 

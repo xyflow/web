@@ -1,6 +1,6 @@
 import { type PropsTableProps } from 'xy-shared';
 
-export const nodetoolbarProps: PropsTableProps = {
+export const nodeToolbarProps: PropsTableProps = {
   props: [
     { name: 'nodeId?', type: 'string | string[]' },
     { name: 'position?', type: 'Position' },

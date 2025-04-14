@@ -15,7 +15,7 @@ export type AnimatedSvgEdge = Edge<{
   duration: number;
   /**
    * The direction in which the shape moves along the edge path. Each value
-   * corresponds to the following behaviour:
+   * corresponds to the following behavior:
    *
    * - `forward`: The shape moves from the source node to the target node.
    *

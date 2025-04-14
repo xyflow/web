@@ -11,13 +11,12 @@ import {
   Link,
 } from '@xyflow/xy-ui';
 import { ProjectPreview } from 'xy-shared';
-
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
-import { getPageMap } from 'nextra/page-map';
 import { Folder } from 'nextra';
+import { getPageMap as getExamplesPageMap } from '@/app/(content-pages)/examples/[...slug]/utils';
 
 export const ExamplesOverview: FC = async () => {
-  const pageMap = await getPageMap('/examples');
+  const { children: pageMap } = await getExamplesPageMap();
   return (
     <>
       <Section className="!px-0">
@@ -59,7 +58,6 @@ export const ExamplesOverview: FC = async () => {
           </div>
         </Link>
       </Section>
-
       {pageMap.map((_category) => {
         const hasChildren = 'children' in _category;
         if (!hasChildren) return;
@@ -80,16 +78,16 @@ export const ExamplesOverview: FC = async () => {
                     >
                       <ProjectPreview
                         image={
-                          example.frontMatter.is_pro_example
+                          example.frontMatter!.is_pro_example
                             ? `https://pro-examples.reactflow.dev/${example.name}/thumbnail.jpg`
-                            : example.frontMatter.preview_path
-                              ? `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/${example.frontMatter.preview_path}`
+                            : example.frontMatter!.preview_path
+                              ? `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/${example.frontMatter!.preview_path}`
                               : `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react${example.route}/preview.jpg`
                         }
                         title={
                           <div className="flex items-center">
-                            {example.frontMatter.title}
-                            {example.frontMatter.is_pro_example ? (
+                            {example.frontMatter!.title}
+                            {example.frontMatter!.is_pro_example ? (
                               <span className="bg-primary text-white ml-2 px-2 text-sm rounded-lg">
                                 Pro
                               </span>
@@ -97,7 +95,7 @@ export const ExamplesOverview: FC = async () => {
                           </div>
                         }
                         titleSize="xs"
-                        description={example.frontMatter.description}
+                        description={example.frontMatter!.description}
                         descriptionVariant="light"
                         linkLabel="See example"
                         linkClassName="text-gray-900 font-medium text-sm group-hover:text-primary"

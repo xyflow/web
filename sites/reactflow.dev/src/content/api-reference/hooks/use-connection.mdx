@@ -6,12 +6,9 @@ description:
   based on a certain condition (e.g. if the connection is valid or not).
 ---
 
-import { PropsTable } from '@/components/props-table';
-import { signature } from '@/references/hooks/useConnection';
-
 # useConnection()
 
-[Source on GitHub]()
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/hooks/useConnection.ts)
 
 The `useConnection` hook returns the current connection state when there is an active connection interaction. If no connection interaction is active, it returns `null` for every property. A typical use case for this hook is to colorize handles based on a certain condition (e.g. if the connection is valid or not).
 
@@ -31,4 +28,4 @@ export default function App() {
 
 ## Signature
 
-<PropsTable {...signature} />
+<APIDocs functionName="useConnection" />

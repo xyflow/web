@@ -19,12 +19,12 @@ const defaultEdges = [
     id: "e1-2",
     source: "1",
     target: "2",
-    type: "buttonEdge",
+    type: "buttonedge",
   },
 ];
 
 const edgeTypes = {
-  buttonEdge: ButtonEdgeDemo,
+  buttonedge: ButtonEdgeDemo,
 };
 
 export default function App() {

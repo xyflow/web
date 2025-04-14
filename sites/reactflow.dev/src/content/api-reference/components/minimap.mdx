@@ -7,12 +7,7 @@ description:
   relation to the rest of the flow.'
 ---
 
-import { PropsTable } from '@/components/props-table';
-import {
-  miniMapProps,
-} from '@/references/components/MiniMap';
-
-# &lt;MiniMap />
+# \<MiniMap />
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/additional-components/MiniMap/MiniMap.tsx)
 
@@ -37,7 +32,7 @@ export default function Flow() {
 For TypeScript users, the props type for the `<MiniMap />` component is exported
 as `MiniMapProps`.
 
-<PropsTable {...miniMapProps} />
+<APIDocs componentName="MiniMap" groupKeys="Omit<HTMLAttributes<SVGSVGElement>, 'onClick'>" />
 
 ## Examples
 
@@ -48,7 +43,7 @@ viewport by panning or zooming the minimap, you can set either of the `zoomable`
 or `pannable` (or both!) props to `true`.
 
 ```jsx
-import { ReactFlow,  MiniMap } from '@xyflow/react';
+import { ReactFlow, MiniMap } from '@xyflow/react';
 
 export default function Flow() {
   return (
@@ -66,7 +61,7 @@ how nodes are rendered in the mini map. If you do this you **must** use only
 SVG elements in your component if you want it to work correctly.
 
 ```jsx
-import { ReactFlow,  MiniMap } from '@xyflow/react';
+import { ReactFlow, MiniMap } from '@xyflow/react';
 
 export default function Flow() {
   return (
@@ -88,12 +83,12 @@ to see what props are passed to your custom component.
 
 The `nodeColor`, `nodeStrokeColor`, and `nodeClassName` props can be a function
 that takes a [`Node`](/api-reference/types/node) and computes a value for the prop. This can
-be used to customise the appearance of each mini map node.
+be used to customize the appearance of each mini map node.
 
 This example shows how to color each mini map node based on the node's type:
 
 ```jsx
-import { ReactFlow,  MiniMap } from '@xyflow/react';
+import { ReactFlow, MiniMap } from '@xyflow/react';
 
 export default function Flow() {
   return (
@@ -115,7 +110,7 @@ function nodeColor(node) {
 }
 ```
 
-## Typescript
+## TypeScript
 
 This component accepts a generic type argument of custom node types. See this
 [section in our Typescript guide](/learn/advanced-use/typescript#nodetype-edgetype-unions) for more information.

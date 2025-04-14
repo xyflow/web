@@ -81,7 +81,7 @@ export const viewportProps: PropsTableProps = {
       name: 'fitViewOptions',
       type: 'FitViewOptions',
       description: `When you typically call fitView on a Svelte Flow instance, you
-      can provide an object of options to customize its behaviour. This prop lets
+      can provide an object of options to customize its behavior. This prop lets
       you do the same for the initial fitView call.`,
     },
     { name: 'minZoom', type: 'number', default: '0.5' },
@@ -96,7 +96,7 @@ export const viewportProps: PropsTableProps = {
       name: 'onlyRenderVisibleElements',
       type: 'boolean',
       default: 'false',
-      description: `You can enable this optimisation to instruct Svelte Flow to
+      description: `You can enable this optimization to instruct Svelte Flow to
       only render nodes and edges that would be visible in the viewport.`,
     },
     {
@@ -161,8 +161,7 @@ export const generalEventHandlerProps: PropsTableProps = {
     {
       name: 'ondelete',
       type: '(params: { nodes: Node[]; edges: Edge[] }) => void',
-      description:
-        'This handler gets called when the user deletes nodes or edges.',
+      description: 'This handler gets called when the user deletes nodes or edges.',
     },
     {
       name: 'onbeforedelete',
@@ -331,9 +330,7 @@ export const interactionProps: PropsTableProps = {
       name: 'connectionMode',
       type: '"loose" | "strict"',
       default: '"strict"',
-      description: `A loose connection mode will allow you to connect handles of
-      any type to one another. The strict mode will only allow you to connect
-      source handles to target handles.`,
+      description: `A loose connection mode will allow you to connect handles with differing types, including source-to-source connections. However, it does not support target-to-target connections. Strict mode allows only connections between source handles and target handles.`,
     },
   ],
 };

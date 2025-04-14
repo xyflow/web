@@ -54,9 +54,7 @@ const LayoutFlow = () => {
       setNodes([...layouted.nodes]);
       setEdges([...layouted.edges]);
 
-      window.requestAnimationFrame(() => {
-        fitView();
-      });
+      fitView();
     },
     [nodes, edges],
   );

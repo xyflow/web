@@ -61,9 +61,7 @@ export const getLayoutedNodes = async (nodes: ElkNode[], edges: Edge[]) => {
   const layoutedGraph = await elk.layout(graph);
 
   const layoutedNodes = nodes.map((node) => {
-    const layoutedNode = layoutedGraph.children?.find(
-      (lgNode) => lgNode.id === node.id,
-    );
+    const layoutedNode = layoutedGraph.children?.find((lgNode) => lgNode.id === node.id);
 
     return {
       ...node,
@@ -84,13 +82,10 @@ export default function useLayoutNodes() {
   useEffect(() => {
     if (nodesInitialized) {
       const layoutNodes = async () => {
-        const layoutedNodes = await getLayoutedNodes(
-          getNodes() as ElkNode[],
-          getEdges(),
-        );
+        const layoutedNodes = await getLayoutedNodes(getNodes() as ElkNode[], getEdges());
 
         setNodes(layoutedNodes);
-        setTimeout(() => fitView(), 0);
+        fitView();
       };
 
       layoutNodes();
