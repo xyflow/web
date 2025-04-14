@@ -99,6 +99,11 @@ export default {
     'destructures',
     'writables',
     'overwritable',
+    'dima',
+    'usman',
+    'yacoe',
+    'simpleai',
+    'kundo',
 
     // Rest
     'deeplink',
