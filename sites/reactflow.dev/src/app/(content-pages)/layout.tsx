@@ -41,22 +41,24 @@ const Layout: FC<{ children: ReactNode }> = async ({ children }) => {
     (item): item is Folder => 'children' in item && item.name === 'components',
   );
   const folders = [
-    ...apiReference.children,
-    ...components.children,
+    ...apiReference!.children,
+    ...components!.children,
     ...catchAllExamples,
   ].filter((item): item is Folder<MdxFile> => 'children' in item);
 
   for (const folder of folders) {
-    folder.children = folder.children.map((item: MdxFile & { title: string }) => ({
-      ...item,
-      title:
-        // On dev somehow we can have duplicate badges without this check
-        typeof item.title === 'string' ? (
-          <SidebarTitle frontMatter={item.frontMatter} title={item.title} />
-        ) : (
-          item.title
-        ),
-    }));
+    folder.children = folder.children.map(
+      (item: MdxFile & { title: string }) => ({
+        ...item,
+        title:
+          // On dev somehow we can have duplicate badges without this check
+          typeof item.title === 'string' ? (
+            <SidebarTitle frontMatter={item.frontMatter!} title={item.title} />
+          ) : (
+            item.title
+          ),
+      }),
+    );
   }
   return (
     <NextraLayout

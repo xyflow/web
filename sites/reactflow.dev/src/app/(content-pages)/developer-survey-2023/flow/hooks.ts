@@ -33,7 +33,7 @@ export const useFocus = ({
 
       const next = () => {
         if (!actions.length) return;
-        const [delay, action] = actions.shift();
+        const [delay, action] = actions.shift()!;
 
         timer = window.setTimeout(() => {
           action();

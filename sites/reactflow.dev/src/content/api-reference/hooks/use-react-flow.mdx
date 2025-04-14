@@ -4,13 +4,6 @@ description:
   edges, manipulate the viewport, or query the current state of the flow.'
 ---
 
-import { PropsTable } from '@/components/props-table';
-import {
-  nodesAndEdgesFields,
-  intersectionFields,
-  viewportFields,
-} from '@/references/types/ReactFlowInstance.fields';
-
 # useReactFlow()
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/hooks/useReactFlow.ts)
@@ -43,22 +36,12 @@ export function NodeCounter() {
 
 ## Signature
 
-### Nodes and edges
+<APIDocs functionName="useReactFlow" />
 
-<PropsTable {...nodesAndEdgesFields} />
-
-### Intersections
-
-<PropsTable {...intersectionFields} />
-
-### Viewport fields
-
-<PropsTable {...viewportFields} />
-
-## Typescript
+## TypeScript
 
 This hook accepts a generic type argument of custom node & edge types. See this
-[section in our Typescript guide](/learn/advanced-use/typescript#nodetype-edgetype-unions) for more information.
+[section in our TypeScript guide](/learn/advanced-use/typescript#nodetype-edgetype-unions) for more information.
 
 ```tsx
 const reactFlow = useReactFlow<CustomNodeType, CustomEdgeType>();

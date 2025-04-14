@@ -23,10 +23,10 @@ function kebabCaseToCamelCase(str: string) {
 export async function fetchShadcnComponent(id: string) {
   const data = loadJSONFile<RegistryComponent>(
     `../../apps/ui-components/public/registry/${id}.json`,
-  );
+  )!;
   const demo = loadJSONFile<Demo>(
     `../../apps/ui-components/public/demo/${id}.json`,
-  );
+  )!;
 
   const componentName = kebabCaseToCamelCase(id);
 
