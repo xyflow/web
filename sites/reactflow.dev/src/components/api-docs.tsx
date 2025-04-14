@@ -1,7 +1,7 @@
 import { TSDoc, generateDocumentation } from 'nextra/tsdoc';
 import { getPageMap } from 'nextra/page-map';
 import type { MdxFile } from 'nextra';
-import { FC } from 'react';
+import { ComponentProps, FC } from 'react';
 
 const externalReactLinks = {
   ComponentType:
@@ -28,19 +28,19 @@ const externalLinks = {
 };
 
 export const APIDocs: FC<{
-  typeName?: string;
-  /** @default react */
-  packageName?: string;
-  componentName?: string;
-  groupKeys?: string;
-  functionName?: string;
   code?: string;
+  componentName?: string;
+  typeName?: string;
+  functionName?: string;
+  /** @default "react" */
+  packageName?: string;
+  groupKeys?: string;
 }> = async ({
-  typeName,
-  packageName = 'react',
   componentName,
-  groupKeys,
+  typeName,
   functionName,
+  packageName = 'react',
+  groupKeys,
   ...props
 }) => {
   const pageMap = await getPageMap('/api-reference/types');
@@ -49,17 +49,29 @@ export const APIDocs: FC<{
       .filter((item): item is MdxFile => 'frontMatter' in item)
       .map((item) => [item.frontMatter!.title, `/api-reference/types/${item.name}`]),
   );
-  const allLinks = {
-    ...reactFlowLinks,
-    ...externalReactLinks,
-    ...externalLinks,
-    NodeType: '/api-reference/types/node',
-    EdgeMarkerType: '/api-reference/types/edge-marker',
-    EdgeType: '/api-reference/types/edge',
+  const defaultTSDocProps: Pick<
+    ComponentProps<typeof TSDoc>,
+    'noParametersContent' | 'typeLinkMap'
+  > = {
+    noParametersContent: (
+      <p className="x:not-first:mt-[1.25em]">
+        This function does not accept any parameters.
+      </p>
+    ),
+    typeLinkMap: {
+      ...reactFlowLinks,
+      ...externalReactLinks,
+      ...externalLinks,
+      NodeType: '/api-reference/types/node',
+      EdgeMarkerType: '/api-reference/types/edge-marker',
+      EdgeType: '/api-reference/types/edge',
+    },
   };
+
   if (props.code) {
+    // @ts-expect-error -- fixme
     const definition = await generateDocumentation(props);
-    return <TSDoc definition={definition} typeLinkMap={allLinks} />;
+    return <TSDoc definition={definition} {...defaultTSDocProps} />;
   }
   if (functionName) {
     const definition = await generateDocumentation({
@@ -67,7 +79,7 @@ export const APIDocs: FC<{
       flattened: true,
       ...props,
     });
-    return <TSDoc definition={definition} typeLinkMap={allLinks} />;
+    return <TSDoc definition={definition} {...defaultTSDocProps} />;
   }
   let code: string;
 
@@ -87,9 +99,6 @@ export default WithGroupedProps`
   } else {
     code = `export type { ${typeName} as default } from '@xyflow/${packageName}'`;
   }
-  const definition = await generateDocumentation({
-    code,
-    ...props,
-  });
-  return <TSDoc definition={definition} typeLinkMap={allLinks} />;
+  const definition = await generateDocumentation({ code, ...props });
+  return <TSDoc definition={definition} {...defaultTSDocProps} />;
 };
