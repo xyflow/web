@@ -57,8 +57,15 @@ export const meta = {
     },
   },
   grouping: {
+    title: 'Subflows & Grouping',
     items: {
       'dynamic-grouping': '',
+    },
+  },
+  ssr: {
+    title: 'Server Side Rendering',
+    items: {
+      'image-creation': '',
     },
   },
   layout: {
