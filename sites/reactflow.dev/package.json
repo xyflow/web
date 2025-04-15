@@ -17,7 +17,7 @@
   "dependencies": {
     "@heroicons/react": "^2.1.5",
     "@typeform/embed-react": "^3.9.0",
-    "@xyflow/react": "^12.5.5",
+    "@xyflow/react": "^12.5.6",
     "@xyflow/system": "^0.0.53",
     "@xyflow/xy-ui": "workspace:*",
     "d3": "^7.9.0",
