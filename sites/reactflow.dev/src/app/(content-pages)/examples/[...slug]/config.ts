@@ -11,6 +11,7 @@ export const meta = {
       'custom-node': '',
       'delete-middle-node': '',
       'drag-handle': '',
+      'dynamic-layouting': '',
       'easy-connect': '',
       hidden: '',
       intersections: '',
@@ -55,6 +56,11 @@ export const meta = {
       'zoom-transitions': '',
     },
   },
+  grouping: {
+    items: {
+      'dynamic-grouping': '',
+    },
+  },
   layout: {
     items: {
       dagre: '',
@@ -63,7 +69,6 @@ export const meta = {
       'entitree-flex': '',
       horizontal: '',
       'sub-flows': '',
-      'dynamic-layouting': '',
     },
   },
   styling: {
