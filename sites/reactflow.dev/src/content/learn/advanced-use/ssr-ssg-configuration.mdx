@@ -118,6 +118,7 @@ The `initial-` prefix means that these values are only used for the first render
 If you want to create static HTML, you can use the `renderToStaticMarkup` function from React. This will render the React Flow component to a string of HTML. You can then use this string to create a static HTML file or send it as a response to an HTTP request.
 
 ```js
+import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { ReactFlow, Background } from '@xyflow/react';
 
@@ -126,12 +127,12 @@ function toHTML({ nodes, edges, width, height }) {
     React.createElement(
       ReactFlow,
       {
-        nodes: nodes,
-        edges: edges,
-        fitView: true,
-        minZoom: 0.2,
+        nodes,
+        edges,
         width,
         height,
+        minZoom: 0.2,
+        fitView: true,
       },
       React.createElement(Background, null),
     ),
