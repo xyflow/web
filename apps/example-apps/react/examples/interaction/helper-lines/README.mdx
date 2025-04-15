@@ -1,11 +1,13 @@
 ---
 title: Helper Lines
-description: Display lines that help to visually align nodes, and enable nodes to be snapped into place when dropped
+description: Display lines that help to visually align nodes, with automatic snapping for precise positioning and layout control.
 is_pro_example: true
 is_free: true
 ---
 
-This example demonstrates how to display helper lines in a React Flow graph while a node is being dragged.
+This example demonstrates how to implement alignment helper lines. As you drag nodes around, these visual guides appear automatically to help align nodes with each other, while a snapping mechanism ensures precise positioning.
+
+The implementation handles both horizontal and vertical alignment and works correctly with the viewport's transform and scale, ensuring the guides remain accurate even when zoomed or panned.
 
 <ProExampleViewer slug="helper-lines" />
 

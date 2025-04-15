@@ -54,6 +54,10 @@ export const meta = {
       'touch-device': '',
       validation: '',
       'zoom-transitions': '',
+      'helper-lines': '',
+      collaborative: '',
+      'copy-paste': '',
+      'undo-redo': '',
     },
   },
   grouping: {
@@ -76,6 +80,10 @@ export const meta = {
       'entitree-flex': '',
       horizontal: '',
       'sub-flows': '',
+      'expand-collapse': '',
+      'auto-layout': '',
+      'force-layout': '',
+      'layout-animation': '',
     },
   },
   styling: {
