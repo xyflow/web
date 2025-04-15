@@ -1,12 +1,14 @@
 ---
 title: Shapes
-description: Custom node that can render different shapes like a circle, diamond or hexagon that are commonly used in flow charts
+description: Render Custom Nodes with different shapes that are commonly used in flow charts
 is_pro_example: true
 ---
 
-This example shows how to implement a [custom node](/learn/customization/custom-nodes) that can render different shapes like a circle, diamond or hexagon that are commonly used in flow charts. It also shows how to implement a sidebar component, custom minimap nodes and a node toolbar to change the color of the shapes.
+This example shows how to render [Custom Nodes](/learn/customization/custom-nodes) with different shapes commonly used in flow charts like circles, diamonds, or hexagons. It also showcases how to create a sidebar component, custom minimap nodes, and a node toolbar for changing the color of the shapes.
 
-<ProExampleViewer variant="dark" slug="shapes" />
+The example uses a centralized Shape component that renders different SVG paths based on the shape type. By defining node data with `{ type: 'shape', data: { type: 'diamond', color: '#ff0071' }}`, you can control which shape gets rendered and how it appears, all while using a single node type implementation.
+
+<ProExampleViewer slug="shapes" />
 
 ### About this Pro Example
 
