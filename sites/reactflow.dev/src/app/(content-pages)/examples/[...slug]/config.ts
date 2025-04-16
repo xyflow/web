@@ -63,8 +63,9 @@ export const meta = {
   grouping: {
     title: 'Subflows & Grouping',
     items: {
-      'dynamic-selection-grouping': '',
-      'dynamic-parent-child-relation': '',
+      'selection-grouping': '',
+      'parent-child-relation': '',
+      'sub-flows': '',
     },
   },
   layout: {
@@ -74,7 +75,6 @@ export const meta = {
       'elkjs-multiple-handles': '',
       'entitree-flex': '',
       horizontal: '',
-      'sub-flows': '',
       'expand-collapse': '',
       'auto-layout': '',
       'force-layout': '',
