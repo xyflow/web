@@ -63,7 +63,8 @@ export const meta = {
   grouping: {
     title: 'Subflows & Grouping',
     items: {
-      'dynamic-grouping': '',
+      'dynamic-selection-grouping': '',
+      'dynamic-parent-child-relation': '',
     },
   },
   ssr: {
