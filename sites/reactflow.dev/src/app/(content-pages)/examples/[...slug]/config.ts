@@ -67,12 +67,6 @@ export const meta = {
       'dynamic-parent-child-relation': '',
     },
   },
-  ssr: {
-    title: 'Server Side Rendering',
-    items: {
-      'server-side-image-creation': '',
-    },
-  },
   layout: {
     items: {
       dagre: '',
@@ -101,7 +95,7 @@ export const meta = {
       'download-image': '',
       provider: '',
       'use-react-flow-hook': '',
-      'static-server-side-generation': '',
+      'server-side-image-creation': '',
     },
   },
 };
