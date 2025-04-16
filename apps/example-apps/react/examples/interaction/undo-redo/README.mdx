@@ -1,10 +1,10 @@
 ---
 title: Undo and Redo
-description: Implement an undo and redo functionality for moving, adding, and deleting nodes and edges
+description: Undo and redo functionality for moving, adding, and deleting nodes and edges
 is_pro_example: true
 ---
 
-This example shows how to implement a simple undo and redo functionality for a React Flow graph.
+This example demonstrates how to implement undo and redo functionality for a React Flow graph. Users can track and revert changes when moving, adding, or deleting nodes and edges. The implementation uses a snapshot-based approach with the `useUndoRedo` hook that manages past and future states, allowing users to navigate through their editing history with button clicks or keyboard shortcuts (Ctrl+Z and Ctrl+Shift+Z).
 
 <ProExampleViewer slug="undo-redo" />
 
