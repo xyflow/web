@@ -4,10 +4,15 @@ description: Animate smooth transitions between different graph layouts with int
 is_pro_example: true
 ---
 
-This example demonstrates how to create fluid, animated transitions between different graph layouts. When you click the "toggle layout" button, nodes smoothly animate to their new positions.
+This example demonstrates how to create fluid, animated transitions between different graph layouts. When you click the "toggle layout" button, nodes smoothly animate to their new positions, creating a visually appealing way to switch between different arrangements.
 
-<ProExampleViewer slug="layout-animation" />
+<ProExampleViewer variant="dark" slug="layout-animation" />
 
 ### About this Pro Example
 
 - Dependencies: [@xyflow/react](https://www.npmjs.com/package/@xyflow/react), [d3-timer](https://www.npmjs.com/package/d3-timer)
+- Implements a reusable `useAnimatedNodes` hook for smooth transitions
+- Uses linear interpolation to animate node positions
+- Demonstrates position tweening between horizontal and vertical layouts
+- Provides a simple toggle control to switch between different layouts
+- React Flow supports server-side rendering since version 12
