@@ -70,7 +70,7 @@ export const meta = {
   ssr: {
     title: 'Server Side Rendering',
     items: {
-      'image-creation': '',
+      'server-side-image-creation': '',
     },
   },
   layout: {
