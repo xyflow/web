@@ -11,25 +11,3 @@ body {
   width: 100vw;
   height: 100vh;
 }
-
-.update-node__controls {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  z-index: 4;
-  font-size: 12px;
-}
-
-.update-node__controls label {
-  display: block;
-}
-
-.update-node__bg-label {
-  margin-top: 10px;
-}
-
-.update-node__checkbox-wrapper {
-  margin-top: 10px;
-  display: flex;
-  align-items: center;
-}
