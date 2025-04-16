@@ -1,18 +1,16 @@
 ---
 title: Auto Layout
-description: Automatically arrange nodes after adding items from a sidebar.
+description: Automatically arrange nodes using various layout engines like dagre, d3-hierarchy, or elkjs
 is_pro_example: true
 ---
 
-This example shows how you can automatically arrange nodes after adding items
-from a sidebar. This a common UI pattern for workflow editors and lets you
-create a flow quickly. The layout is calculated every time the graph changes.
+This example demonstrates how to automatically arrange nodes after adding items from a sidebar, a common UI pattern for workflow editors. It introduces a reusable `useAutoLayout` hook and showcases three popular layout engines that you can switch between at runtime: [dagre](https://github.com/dagrejs/dagre), [d3-hierarchy](https://github.com/d3/d3-hierarchy), and [elk](https://github.com/kieler/elkjs).
 
-<ProExampleViewer variant="dark" slug="auto-layout" />
+<ProExampleViewer slug="auto-layout" />
 
 ### About this Pro Example
 
-- Once subscribed, you'll get access to **two different versions** of this example: One using [d3-hierarchy](https://github.com/d3/d3-hierarchy) and the
-  other one using [dagre.js](https://github.com/dagrejs/dagre) as a layout
-  engine.
-- Dependencies: [@xyflow/react](https://www.npmjs.com/package/@xyflow/react), [d3-hierarchy](https://www.npmjs.com/package/d3-hierarchy) or [dagre](https://www.npmjs.com/package/dagre)
+- Dependencies: [@xyflow/react](https://www.npmjs.com/package/@xyflow/react), [@dagrejs/dagre](https://www.npmjs.com/package/@dagrejs/dagre), [d3-hierarchy](https://www.npmjs.com/package/d3-hierarchy), [elkjs](https://www.npmjs.com/package/elkjs)
+- Includes a configurable `useAutoLayout` hook that can be reused in your applications
+- Provides a comparison of different layout algorithms with interactive controls
+- Note: In your own applications, you typically only need to choose one layout engine
