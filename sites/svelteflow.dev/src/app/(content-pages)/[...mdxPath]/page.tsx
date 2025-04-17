@@ -1,5 +1,8 @@
 import { generateStaticParamsFor, importPage } from 'nextra/pages';
 import { useMDXComponents as getMdxComponents } from '@/mdx-components';
+import { getWhatsNew } from '@/utils';
+import { normalizePages } from 'nextra/normalize-pages';
+import { BaseBlogPostLayout } from 'xy-shared';
 
 type PageProps = Readonly<{
   params: Promise<{
@@ -28,6 +31,30 @@ export default async function Page(props: PageProps) {
             </>
           );
         }
+        const isWhatsNew = slug[0] === 'whats-new';
+        if (isWhatsNew) {
+          const pageMap = await getWhatsNew();
+          const route = ['/whats-new', ...slug.slice(1)].join('/');
+          const { activeIndex, flatDocsDirectories } = normalizePages({
+            list: pageMap,
+            route,
+          });
+          return (
+            <BaseBlogPostLayout
+              // @ts-expect-error -- fixme
+              frontMatter={metadata}
+              prev={activeIndex > 0 ? flatDocsDirectories[activeIndex - 1] : undefined}
+              next={
+                activeIndex < flatDocsDirectories.length - 1
+                  ? flatDocsDirectories[activeIndex + 1]
+                  : undefined
+              }
+            >
+              {mdx}
+            </BaseBlogPostLayout>
+          );
+        }
+
         return mdx;
       })(params.mdxPath)}
     </Wrapper>
