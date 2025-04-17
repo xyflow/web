@@ -20,13 +20,12 @@ export default ({ nodes, setNodes }) => {
   return (
     <aside>
       <div className="description">
-        This is an example of how you can access the internal state outside of
-        the ReactFlow component.
+        This is an example of how you can access the internal state outside of the
+        ReactFlow component.
       </div>
       <div className="title">Zoom & pan transform</div>
       <div className="transform">
-        [{transform[0].toFixed(2)}, {transform[1].toFixed(2)},{' '}
-        {transform[2].toFixed(2)}]
+        [{transform[0].toFixed(2)}, {transform[1].toFixed(2)}, {transform[2].toFixed(2)}]
       </div>
       <div className="title">Nodes</div>
       {nodes.map((node) => (
@@ -37,7 +36,9 @@ export default ({ nodes, setNodes }) => {
       ))}
 
       <div className="selectall">
-        <button onClick={selectAll}>select all nodes</button>
+        <button className="xy-theme__button" onClick={selectAll}>
+          select all nodes
+        </button>
       </div>
     </aside>
   );

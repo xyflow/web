@@ -37,13 +37,13 @@ export default () => {
         This is an example of how you can use the zoom pan helper hook
       </div>
       <div>
-        <button onClick={focusNode} style={buttonStyle}>
+        <button className="xy-theme__button" onClick={focusNode} style={buttonStyle}>
           focus node
         </button>
-        <button onClick={zoomIn} style={buttonStyle}>
+        <button className="xy-theme__button" onClick={zoomIn} style={buttonStyle}>
           zoom in
         </button>
-        <button onClick={zoomOut} style={buttonStyle}>
+        <button className="xy-theme__button" onClick={zoomOut} style={buttonStyle}>
           zoom out
         </button>
       </div>

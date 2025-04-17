@@ -11,6 +11,7 @@ export const meta = {
       'custom-node': '',
       'delete-middle-node': '',
       'drag-handle': '',
+      'dynamic-layouting': '',
       'easy-connect': '',
       hidden: '',
       intersections: '',
@@ -26,7 +27,7 @@ export const meta = {
   edges: {
     items: {
       'animating-edges': '',
-      'custom-connectionline': '',
+      'custom-connectionline': 'Custom Connection Line',
       'custom-edges': '',
       'delete-edge-on-drop': '',
       'edge-label-renderer': '',
@@ -53,6 +54,18 @@ export const meta = {
       'touch-device': '',
       validation: '',
       'zoom-transitions': '',
+      'helper-lines': '',
+      collaborative: '',
+      'copy-paste': '',
+      'undo-redo': '',
+    },
+  },
+  grouping: {
+    title: 'Subflows & Grouping',
+    items: {
+      'selection-grouping': '',
+      'parent-child-relation': '',
+      'sub-flows': '',
     },
   },
   layout: {
@@ -62,8 +75,10 @@ export const meta = {
       'elkjs-multiple-handles': '',
       'entitree-flex': '',
       horizontal: '',
-      'sub-flows': '',
-      'dynamic-layouting': '',
+      'expand-collapse': '',
+      'auto-layout': '',
+      'force-layout': '',
+      'layout-animation': '',
     },
   },
   styling: {
@@ -80,7 +95,7 @@ export const meta = {
       'download-image': '',
       provider: '',
       'use-react-flow-hook': '',
-      'static-server-side-generation': '',
+      'server-side-image-creation': '',
     },
   },
 };

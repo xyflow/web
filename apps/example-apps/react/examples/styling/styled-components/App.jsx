@@ -1,6 +1,5 @@
 import '@xyflow/react/dist/style.css';
 
-
 import React, { useCallback, useState } from 'react';
 import {
   ReactFlow,
@@ -59,10 +58,7 @@ const Flow = ({ children }) => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
-  const onConnect = useCallback(
-    (params) => setEdges((eds) => addEdge(params, eds)),
-    [],
-  );
+  const onConnect = useCallback((params) => setEdges((eds) => addEdge(params, eds)), []);
 
   return (
     <ReactFlowStyled
@@ -94,7 +90,9 @@ export default () => {
     <ThemeProvider theme={theme}>
       <Flow>
         <Panel position="top-left">
-          <button onClick={toggleMode}>switch mode</button>
+          <button className="xy-theme__button" onClick={toggleMode}>
+            switch mode
+          </button>
         </Panel>
       </Flow>
     </ThemeProvider>

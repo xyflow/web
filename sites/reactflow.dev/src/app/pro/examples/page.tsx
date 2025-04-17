@@ -48,13 +48,15 @@ const ProExamples: FC = async () => {
     .filter((item) => item.frontMatter!.is_pro_example)
     .sort((a, b) => a.frontMatter!.title.localeCompare(b.frontMatter!.title));
 
-  const examples = proExamples.reduce<{
-    route: string,
-    image: string,
-    id: string,
-    name: string,
-    description: string,
-  }[]>((result, curr) => {
+  const examples = proExamples.reduce<
+    {
+      route: string;
+      image: string;
+      id: string;
+      name: string;
+      description: string;
+    }[]
+  >((result, curr) => {
     const remote = remoteProExamples.find((remote) => remote.id === curr.name);
 
     if (remote) {
@@ -192,8 +194,8 @@ const ProExamples: FC = async () => {
             </div>
             <div className="max-md:w-full md:flex-1">
               <Text className="mb-8 text-gray-300">
-                Get all 10 pro examples with just one month of a Pro subscription from
-                129€
+                Get full access to all pro examples with just one month with a Pro
+                subscription — from €129.
               </Text>
               <div className="flex flex-wrap gap-2 mt-4">
                 <Button

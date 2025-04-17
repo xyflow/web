@@ -12,7 +12,6 @@ import {
 
 import '@xyflow/react/dist/style.css';
 
-
 const initialNodes = [
   {
     id: '1',
@@ -37,10 +36,7 @@ const initialEdges = [
 const ZoomTransition = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
-  const onConnect = useCallback(
-    (params) => setEdges((eds) => addEdge(params, eds)),
-    [],
-  );
+  const onConnect = useCallback((params) => setEdges((eds) => addEdge(params, eds)), []);
 
   const { setViewport, zoomIn, zoomOut } = useReactFlow();
 
@@ -56,12 +52,18 @@ const ZoomTransition = () => {
       onEdgesChange={onEdgesChange}
       onConnect={onConnect}
       fitView
-      style={{ backgroundColor: "#F7F9FB" }}
+      style={{ backgroundColor: '#F7F9FB' }}
     >
       <Panel position="top-right">
-        <button onClick={() => zoomIn({ duration: 800 })}>zoom in</button>
-        <button onClick={() => zoomOut({ duration: 800 })}>zoom out</button>
-        <button onClick={handleTransform}>pan to center(0,0,1)</button>
+        <button className="xy-theme__button" onClick={() => zoomIn({ duration: 800 })}>
+          zoom in
+        </button>
+        <button className="xy-theme__button" onClick={() => zoomOut({ duration: 800 })}>
+          zoom out
+        </button>
+        <button className="xy-theme__button" onClick={handleTransform}>
+          pan to center(0,0,1)
+        </button>
       </Panel>
       <Background />
     </ReactFlow>

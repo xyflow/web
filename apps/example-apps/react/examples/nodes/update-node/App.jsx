@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { ReactFlow, useNodesState, useEdgesState, Background } from '@xyflow/react';
+import {
+  ReactFlow,
+  useNodesState,
+  useEdgesState,
+  Background,
+  Panel,
+} from '@xyflow/react';
 
 import '@xyflow/react/dist/style.css';
-
 
 const initialNodes = [
   { id: '1', data: { label: '-' }, position: { x: 100, y: 100 } },
@@ -103,26 +108,30 @@ const UpdateNode = () => {
       fitView
       fitViewOptions={{ padding: 0.5 }}
     >
-      <div className="update-node__controls">
-        <label>label:</label>
+      <Panel position="top-left" style={{ width: 200 }}>
+        <label className="xy-theme__label">Label: </label>
         <input
           value={nodeName}
           onChange={(evt) => setNodeName(evt.target.value)}
+          className="xy-theme__input"
         />
 
-        <label className="update-node__bg-label">background:</label>
-        <input value={nodeBg} onChange={(evt) => setNodeBg(evt.target.  value)} />
+        <label className="xy-theme__label">Background: </label>
+        <input
+          value={nodeBg}
+          onChange={(evt) => setNodeBg(evt.target.value)}
+          className="xy-theme__input"
+        />
 
-        <div className="update-node__checkbox-wrapper">
-          <label>hidden:</label>
-          <input
-            type="checkbox"
-            checked={nodeHidden}
-            onChange={(evt) => setNodeHidden(evt.target.checked)}
-          />
-        </div>
-      </div>
-      <Background  />
+        <label className="xy-theme__label">Hidden:</label>
+        <input
+          type="checkbox"
+          checked={nodeHidden}
+          onChange={(evt) => setNodeHidden(evt.target.checked)}
+          className="xy-theme__checkbox"
+        />
+      </Panel>
+      <Background />
     </ReactFlow>
   );
 };

@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  Panel,
-  useReactFlow,
-  getNodesBounds,
-  getViewportForBounds,
-} from '@xyflow/react';
+import { Panel, useReactFlow, getNodesBounds, getViewportForBounds } from '@xyflow/react';
 import { toPng } from 'html-to-image';
 
 function downloadImage(dataUrl) {
@@ -25,13 +20,7 @@ function DownloadButton() {
     // we then overwrite the transform of the `.react-flow__viewport` element
     // with the style option of the html-to-image library
     const nodesBounds = getNodesBounds(getNodes());
-    const viewport = getViewportForBounds(
-      nodesBounds,
-      imageWidth,
-      imageHeight,
-      0.5,
-      2,
-    );
+    const viewport = getViewportForBounds(nodesBounds, imageWidth, imageHeight, 0.5, 2);
 
     toPng(document.querySelector('.react-flow__viewport'), {
       backgroundColor: '#1a365d',
@@ -47,7 +36,7 @@ function DownloadButton() {
 
   return (
     <Panel position="top-right">
-      <button className="download-btn" onClick={onClick}>
+      <button className="download-btn xy-theme__button" onClick={onClick}>
         Download Image
       </button>
     </Panel>

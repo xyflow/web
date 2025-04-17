@@ -100,9 +100,17 @@ function LayoutFlow() {
       style={{ backgroundColor: '#F7F9FB' }}
     >
       <Panel position="top-right">
-        <button onClick={() => onLayout({ direction: 'DOWN' })}>vertical layout</button>
+        <button
+          className="xy-theme__button"
+          onClick={() => onLayout({ direction: 'DOWN' })}
+        >
+          vertical layout
+        </button>
 
-        <button onClick={() => onLayout({ direction: 'RIGHT' })}>
+        <button
+          className="xy-theme__button"
+          onClick={() => onLayout({ direction: 'RIGHT' })}
+        >
           horizontal layout
         </button>
       </Panel>

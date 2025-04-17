@@ -47,18 +47,21 @@ const Layout: FC<{ children: ReactNode }> = async ({ children }) => {
   ].filter((item): item is Folder<MdxFile> => 'children' in item);
 
   for (const folder of folders) {
-    folder.children = folder.children.map(
-      (item: MdxFile & { title: string }) => ({
+    // First filter out hidden items
+    folder.children = folder.children
+      .filter((item: MdxFile) => {
+        // Skip items where frontMatter.hidden is true
+        return !('frontMatter' in item && item.frontMatter?.hidden === true);
+      })
+      .map((item: MdxFile & { title: string }) => ({
         ...item,
         title:
-          // On dev somehow we can have duplicate badges without this check
           typeof item.title === 'string' ? (
             <SidebarTitle frontMatter={item.frontMatter!} title={item.title} />
           ) : (
             item.title
           ),
-      }),
-    );
+      }));
   }
   return (
     <NextraLayout
