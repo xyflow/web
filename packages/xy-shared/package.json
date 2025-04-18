@@ -40,7 +40,7 @@
     "@sindresorhus/slugify": "^2.2.1",
     "@stackblitz/sdk": "^1.11.0",
     "@vercel/blob": "^0.27.1",
-    "@xyflow/react": "^12.5.6",
+    "@xyflow/react": "^12.6.0",
     "@xyflow/xy-ui": "workspace:*",
     "clsx": "^2.1.1",
     "fathom-client": "^3.7.2",
