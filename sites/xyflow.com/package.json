@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next --port 3001",
+    "dev": "next --turbopack --port 3001",
     "build": "next build",
     "postbuild": "next-sitemap",
     "start": "next start",
@@ -19,10 +19,10 @@
     "@xyflow/react": "12.6.0",
     "@xyflow/xy-ui": "workspace:*",
     "fast-xml-parser": "^4.5.0",
-    "next": "^15.1.7",
+    "next": "^15.3.1",
     "next-sitemap": "^4.2.3",
-    "nextra": "^4.3.0-alpha.19",
-    "nextra-theme-docs": "^4.3.0-alpha.19",
+    "nextra": "^4.3.0-alpha.21",
+    "nextra-theme-docs": "^4.3.0-alpha.21",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "xy-shared": "workspace:*"
