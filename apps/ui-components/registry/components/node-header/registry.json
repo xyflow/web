@@ -3,7 +3,7 @@
   "type": "registry:component",
   "dependencies": ["@xyflow/react", "lucide-react"],
   "devDependencies": [],
-  "registryDependencies": ["button", "dropdown"],
+  "registryDependencies": ["button", "dropdown-menu"],
   "files": [
     {
       "type": "registry:component",
