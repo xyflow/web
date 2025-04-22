@@ -25,7 +25,6 @@ export default async function Page(props: PageProps) {
   );
   return (
     <Wrapper toc={toc} metadata={metadata}>
-      {/* @ts-expect-error -- false positive */}
       <H1>{metadata.title}</H1>
       <MDXContent
         components={{
