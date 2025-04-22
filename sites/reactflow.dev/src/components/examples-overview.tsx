@@ -20,7 +20,11 @@ export const ExamplesOverview: FC = async () => {
   return (
     <>
       <Section className="!px-0">
-        <Link href="/examples/overview" className="hover:no-underline group">
+        <Link
+          href="/examples/overview"
+          className="hover:no-underline group"
+          prefetch={false}
+        >
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
             <Container className="col-span-2 aspect-video">
               <Image
@@ -38,9 +42,9 @@ export const ExamplesOverview: FC = async () => {
                 Feature Overview
               </Heading>
               <Text variant="light">
-                This is an overview example React Flow{"'"}s basic features. You
-                can see built-in node and edge types, sub flows as well as
-                NodeToolbar and NodeResizer components.
+                This is an overview example React Flow{"'"}s basic features. You can see
+                built-in node and edge types, sub flows as well as NodeToolbar and
+                NodeResizer components.
               </Text>
               <div className="mt-6 flex flex-wrap gap-2 items-center group-hover:text-primary">
                 <Button
