@@ -3,13 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "packageManager": "pnpm@10.9.0",
+  "type": "module",
   "scripts": {
     "dev": "pnpm run generate-registry && next dev --port 3004",
     "build": "pnpm run generate-registry && next build",
     "start": "next start",
     "lint": "next lint",
-    "add-component": "node ./scripts/init-new-component.js",
-    "generate-registry": "node ./scripts/generate-registry.js"
+    "add-component": "node ./scripts/init-new-component.cjs",
+    "generate-registry": "node ./scripts/generate-registry.cjs"
   },
   "dependencies": {
     "@radix-ui/react-dropdown-menu": "^2.1.11",
