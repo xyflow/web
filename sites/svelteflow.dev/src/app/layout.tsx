@@ -1,6 +1,5 @@
 import type { FC, ReactNode } from 'react';
 import { Head } from 'nextra/components';
-// @ts-expect-error -- we use patch, remove patch after merge https://github.com/xyflow/xyflow/pull/5019
 import svelteFlowPackageJson from '@xyflow/svelte/package.json';
 import { Html } from '@/components/html.client';
 import { NextraLayout } from '@/components/nextra-layout';
