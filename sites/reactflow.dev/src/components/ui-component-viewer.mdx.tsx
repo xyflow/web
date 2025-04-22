@@ -107,7 +107,6 @@ const UiComponentViewer: FC<{ id: string }> = async ({ id }) => {
         ))}
       </div>
       <div className="mt-20">
-        {/* @ts-expect-error -- false positive */}
         <H2 id="installation">Installation</H2>
         <Tabs defaultValue="shadcn" className="mt-5">
           <TabsList>
@@ -143,7 +142,6 @@ const UiComponentViewer: FC<{ id: string }> = async ({ id }) => {
         </Tabs>
       </div>
       <div className="mt-20">
-        {/* @ts-expect-error -- false positive */}
         <H2 id="usage">Usage</H2>
         {data.demoMDX && (
           <>
