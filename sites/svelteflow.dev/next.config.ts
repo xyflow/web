@@ -27,6 +27,7 @@ const nextConfig: NextConfig = {
         : process.env.NEXT_PUBLIC_EXAMPLES_URL,
   },
   images: {
+    minimumCacheTTL: 2678400, // 31 days
     remotePatterns: [
       {
         protocol: 'https',

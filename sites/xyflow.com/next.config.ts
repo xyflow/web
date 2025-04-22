@@ -12,6 +12,7 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ['@xyflow/xy-ui', 'xy-shared'],
   },
   images: {
+    minimumCacheTTL: 2678400, // 31 days
     dangerouslyAllowSVG: true,
     remotePatterns: [
       {
