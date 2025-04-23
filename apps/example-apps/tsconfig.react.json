@@ -19,5 +19,11 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["react"]
+  "exclude": [
+    "svelte",
+    "vite.config.ts",
+    "vite.config.js",
+    "vite-env.d.ts",
+    "svelte-config.js"
+  ]
 }

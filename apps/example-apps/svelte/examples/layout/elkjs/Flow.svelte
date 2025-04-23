@@ -10,7 +10,6 @@
     useSvelteFlow,
     type Node,
     type Edge,
-    type Edge,
   } from '@xyflow/svelte';
 
   import '@xyflow/svelte/dist/style.css';

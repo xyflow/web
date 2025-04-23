@@ -26,9 +26,7 @@ export default defineConfig({
       // of any given input as the "key".
       input: {
         index: resolve(__dirname, 'index.html'),
-        ...Object.fromEntries(
-          examples.map((path, i) => [i, resolve(__dirname, path)]),
-        ),
+        ...Object.fromEntries(examples.map((path, i) => [i, resolve(__dirname, path)])),
       },
     },
   },
@@ -53,10 +51,7 @@ function generatePublicAssets(): Plugin {
         generateAssetsForExample(dir);
       });
 
-      Fs.writeFileSync(
-        Path.join(out, 'all.json'),
-        JSON.stringify(examples, null, 2),
-      );
+      Fs.writeFileSync(Path.join(out, 'all.json'), JSON.stringify(examples, null, 2));
     },
     handleHotUpdate({ modules }) {
       if (!modules.length) return modules;
@@ -78,10 +73,7 @@ const { dependencies } = JSON.parse(
   Fs.readFileSync(Path.join(Process.cwd(), 'package.json'), 'utf-8'),
 );
 
-function walkExamples(
-  dir: string,
-  cb: (dir: string) => void = generateAssetsForExample,
-) {
+function walkExamples(dir: string, cb: (dir: string) => void = generateAssetsForExample) {
   // If the directory contains a `dependencies.json` file, we know it's an example.
   // In that case we recursively read every file in the directory and construct
   // a JSON object mapping file paths to their content.
