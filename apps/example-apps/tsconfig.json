@@ -3,5 +3,17 @@
   "references": [
     { "path": "./tsconfig.svelte.json" },
     { "path": "./tsconfig.react.json" }
+  ],
+  "exclude": [
+    "dist",
+    "node_modules",
+    "public",
+    "vite.config.ts",
+    "vite.config.js",
+    "vite-env.d.ts",
+    "svelte-config.js",
+    "scripts",
+    "svelte.config.js",
+    "**/tailwind.config.js"
   ]
 }

@@ -17,9 +17,15 @@
   },
   "exclude": [
     "react",
+    "dist",
+    "node_modules",
+    "public",
     "vite.config.ts",
     "vite.config.js",
     "vite-env.d.ts",
-    "svelte-config.js"
+    "svelte-config.js",
+    "scripts",
+    "svelte.config.js",
+    "**/tailwind.config.js"
   ]
 }

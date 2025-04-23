@@ -1,10 +1,8 @@
 <script lang="ts">
   import type { Writable } from 'svelte/store';
-  import { Handle, Position, type NodeProps } from '@xyflow/svelte';
+  import { Handle, Position, type Node, type NodeProps } from '@xyflow/svelte';
 
-  type $$Props = NodeProps;
-
-  export let data: { color: Writable<string> };
+  let { data }: NodeProps<Node<{ color: Writable<string> }>> = $props();
 
   const { color } = data;
 </script>
