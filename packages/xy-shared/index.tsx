@@ -20,6 +20,7 @@ export * from './widgets/props-table';
 export * from './widgets/react-player-lazy';
 export * from './widgets/search';
 export * from './widgets/subscribe-section';
+export * from './widgets/liteyoutube-embed';
 
 export * from './hooks/use-connection-drawer';
 
