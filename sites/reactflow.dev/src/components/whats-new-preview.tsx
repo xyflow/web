@@ -26,11 +26,7 @@ export default function WhatsNewPreview({
             'p-4 py-8',
           )}
         >
-          <WhatsNewItemPreview
-            variant={variant}
-            featured={i === 0}
-            item={item}
-          />
+          <WhatsNewItemPreview variant={variant} featured={i === 0} item={item} />
         </li>
       ))}
     </ol>
@@ -59,18 +55,16 @@ function WhatsNewItemPreview({
           <TimeAgo datetime={date} />
         </Text>
         <h1 className={cn(featured ? 'text-2xl' : 'text-lg', 'font-semibold')}>
-          <Link href={route}>{title}</Link>
+          <Link href={route} prefetch={false}>
+            {title}
+          </Link>
         </h1>
         <AuthorList authors={authors} slim={variant !== 'full'} />
       </header>
       {variant !== 'mini' && <p>{description}</p>}
       {featured && (
         <footer>
-          <Text
-            size="sm"
-            variant="primary"
-            className="mt-4 inline-flex items-center"
-          >
+          <Text size="sm" variant="primary" className="mt-4 inline-flex items-center">
             <Link className="hover:underline" href={route}>
               Check it out here
             </Link>

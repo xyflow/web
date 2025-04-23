@@ -64,7 +64,9 @@ function Feature({
             {text}
           </Text>
           <Button asChild>
-            <Link href={route}>{linkLabel}</Link>
+            <Link href={route} prefetch={false}>
+              {linkLabel}
+            </Link>
           </Button>
         </div>
       </div>
