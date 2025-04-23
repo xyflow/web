@@ -15,7 +15,7 @@
   <input
     class="nodrag"
     type="color"
-    on:input={(evt) => data.color.set(evt.target?.value)}
+    oninput={(evt) => data.color.set(evt.target?.value)}
     value={$color}
   />
   <Handle type="source" position={Position.Right} />
