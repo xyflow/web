@@ -3,10 +3,19 @@ description: How to get tarted with Svelte Flow in your Svelte project
 ---
 
 import { Callout, Cards } from 'nextra/components';
+import { Emoji } from '@xyflow/xy-ui';
 
 # Quickstart
 
-Svelte Flow is a highly customizable component for building interactive graphs and node-based editors, built by the creators of React Flow.
+If you want to get up and running as soon as possible, you’re in the right place! This page will take you from zero to a working Svelte Flow app in a few minutes. From there, you can take a deeper look at what Svelte Flow is all about, check out the examples, or dive into the API docs.
+
+## Dependency
+
+Svelte Flow is published on npm as [`@xyflow/svelte`](https://npmjs.com/package/@xyflow/svelte).
+
+```bash copy npm2yarn
+npm install @xyflow/svelte@next
+```
 
 ## Play online
 
@@ -41,9 +50,24 @@ If you want to get started right away, you can use our [vite template](https://g
 npx degit xyflow/vite-svelte-flow-template app-name
 ```
 
-## Installation
+## Project Setup
 
-The easiest way to get the latest version of Svelte Flow is to install it via npm, yarn or pnpm:
+To get started locally, you should have a few things:
+
+- [Node.js](https://nodejs.org/en/) installed.
+- Either npm or another package manager like [yarn](https://yarnpkg.com/) or
+  [pnpm](https://pnpm.io/).
+- Some knowledge of [Svelte](https://svelte.dev/). You don't need to be an
+  expert, but you should be comfortable with the basics.
+
+First, spin up a new [Svelte](https://svelte.dev/) project however you like; we
+recommend using [Vite](https://vitejs.dev/) and [SvelteKit](https://svelte.dev/docs/kit/introduction) but the choice is yours.
+
+```bash copy npm2yarn
+npx sv create my-svelte-flow-app
+```
+
+Then, navigate to your project directory and install the Svelte Flow package:
 
 ```bash copy npm2yarn
 npm install @xyflow/svelte@next
@@ -51,78 +75,36 @@ npm install @xyflow/svelte@next
 
 ## Creating your first flow
 
-We get started by stacking together the most important components of Svelte Flow: `SvelteFlow`, `Controls`, `Background` and `MiniMap`. A basic flow looks like this:
+The `@xyflow/svelte` package exports the `<SvelteFlow />` component, which is the entrypoint for you flow.
+Importing the default styles and defining a handful of nodes and edges are all we need to get started!
+
+There are a few things to pay attention to here:
+
+- <Emoji content="🎨" /> You must import the Svelte Flow stylesheet.
+- <Emoji content="📐" /> `<SvelteFlow />` inherits the size of its parent. Wrap it in an
+  element with dimensions.
+- <Emoji content="⚡" /> Use
+  [`$state.raw`](https://svelte.dev/docs/svelte/$state#$state.raw) instead of deeply
+  reactive state for the `nodes` and `edges` for [performance
+  reasons](https://github.com/sveltejs/svelte/issues/11851).
 
 ```svelte
 <script>
-  import {
-    SvelteFlow,
-    Controls,
-    Background,
-    BackgroundVariant,
-    MiniMap
-  } from '@xyflow/svelte';
+  import { SvelteFlow } from '@xyflow/svelte';
 
-  // 👇 this is important! You need to import the styles for Svelte Flow to work
   import '@xyflow/svelte/dist/style.css';
 
-  // We are using $state.raw for the nodes and edges. When a user drags a node for example, Svelte Flow updates its position.
   const nodes = $state.raw([
-    {
-      id: '1',
-      type: 'input',
-      data: { label: 'Input Node' },
-      position: { x: 0, y: 0 }
-    },
-    {
-      id: '2',
-      type: 'default',
-      data: { label: 'Node' },
-      position: { x: 0, y: 150 }
-    }
+    { id: '1', position: { x: 0, y: 0 }, data: { label: '1' } },
+    { id: '2', position: { x: 0, y: 100 }, data: { label: '2' } },
   ]);
 
-  // same for edges
   const edges = $state.raw([
-    {
-      id: '1-2',
-      type: 'default',
-      source: '1',
-      target: '2',
-      label: 'Edge Text'
-    }
+    { id: 'e1-2', source: '1', target: '2' },
   ]);
-
-  const snapGrid = [25, 25];
 </script>
 
-<!--
-👇 By default, the Svelte Flow container has a height of 100%.
-This means that the parent container needs a height to render the flow.
--->
-<div style:height="500px">
-  <SvelteFlow
-    bind:nodes
-    bind:edges
-    {snapGrid}
-    fitView
-    onnodeclick={(event) => console.log('on node click', event.detail.node)}
-  >
-    <Controls />
-    <Background variant={BackgroundVariant.Dots} />
-    <MiniMap />
-  </SvelteFlow>
+<div style:width="100vh" style:height="100vh">
+  <SvelteFlow bind:nodes bind:edges />
 </div>
 ```
-
-## How to Contribute
-
-**Show us what you make:** Drop it in into our [Discord Server](https://discord.com/invite/Bqt6xrs), [tweet](https://twitter.com/xyflowdev) at us, or email us at info@xyflow.com
-
-**Community Participation:** Ask and answer questions in our [Discord Server](https://discord.com/invite/Bqt6xrs) or jump in on Github discussions.
-
-**Squash Bugs:** We can’t catch them all. Check existing issues and discussions first, then create a new issue to tell us what’s up.
-
-**Financial Support:** If you are an organization who wants to make sure Svelte Flow continues to be maintained, reach out to us at info@xyflow.com
-
-And of course, we love Github stars ⭐

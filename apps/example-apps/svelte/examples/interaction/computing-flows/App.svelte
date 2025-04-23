@@ -1,15 +1,11 @@
 <script module>
   import TextNode, { type TextNodeType } from './TextNode.svelte';
-  import UppercaseNode, {
-    type UppercaseNodeType,
-  } from './UppercaseNode.svelte';
+  import UppercaseNode, { type UppercaseNodeType } from './UppercaseNode.svelte';
   import ResultNode, { type ResultNodeType } from './ResultNode.svelte';
 
   export type CustomNodes = TextNodeType | UppercaseNodeType | ResultNodeType;
 
-  export function isTextNode(
-    node: any,
-  ): node is TextNodeType | UppercaseNodeType {
+  export function isTextNode(node: any): node is TextNodeType | UppercaseNodeType {
     return !node || !node.type
       ? false
       : node.type === 'text' || node.type === 'uppercase';
@@ -84,8 +80,6 @@
       target: '3',
     },
   ]);
-
-  $inspect(nodes);
 </script>
 
 <main>
