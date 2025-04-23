@@ -26,7 +26,6 @@ export default async function Page(props: PageProps) {
         if (isExamples) {
           return (
             <>
-              {/* @ts-expect-error -- false positive */}
               <H1>{metadata.title}</H1>
               {mdx}
             </>
