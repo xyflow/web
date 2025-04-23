@@ -2,22 +2,19 @@
 title: The Controls component
 sidebarTitle: '<Controls />'
 description:
-  'The Controls component renders a small panel that contain convenient buttons
+  'The Controls component renders a small panel that contains convenient buttons
   to zoom in, zoom out, fit the view, and lock the viewport.'
 ---
 
-import { PropsTable } from '@/components/props-table';
-import { controlsProps } from '@/references/components/Controls';
-
-# &lt;Controls />
+# \<Controls />
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/additional-components/Controls/Controls.tsx)
 
-The `<Controls />` component renders a small panel that contain convenient
+The `<Controls />` component renders a small panel that contains convenient
 buttons to zoom in, zoom out, fit the view, and lock the viewport.
 
 ```tsx
-import { ReactFlow,  Controls } from '@xyflow/react'
+import { ReactFlow, Controls } from '@xyflow/react'
 
 export default function Flow() {
   return (
@@ -31,14 +28,11 @@ export default function Flow() {
 ## Props
 
 For TypeScript users, the props type for the `<Controls />` component is exported
-as `ControlsProps`.
+as `ControlProps`.
 
-<PropsTable {...controlsProps} />
-
-Additionally, the `<Controls />` component accepts any prop valid on a `<div />`
-element.
+<APIDocs componentName="Controls" />
 
 ## Notes
 
-- To extend or customise the controls, you can use the [`<ControlButton />`](/api-reference/components/control-button)
+- To extend or customize the controls, you can use the [`<ControlButton />`](/api-reference/components/control-button)
   component

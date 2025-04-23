@@ -66,10 +66,7 @@ function LayoutFlow() {
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   const { fitView } = useReactFlow();
 
-  const onConnect = useCallback(
-    (params) => setEdges((eds) => addEdge(params, eds)),
-    [],
-  );
+  const onConnect = useCallback((params) => setEdges((eds) => addEdge(params, eds)), []);
   const onLayout = useCallback(
     ({ direction, useInitialNodes = false }) => {
       const opts = { 'elk.direction': direction, ...elkOptions };
@@ -80,8 +77,7 @@ function LayoutFlow() {
         ({ nodes: layoutedNodes, edges: layoutedEdges }) => {
           setNodes(layoutedNodes);
           setEdges(layoutedEdges);
-
-          window.requestAnimationFrame(() => fitView());
+          fitView();
         },
       );
     },
@@ -101,11 +97,10 @@ function LayoutFlow() {
       onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
       fitView
+      style={{ backgroundColor: '#F7F9FB' }}
     >
       <Panel position="top-right">
-        <button onClick={() => onLayout({ direction: 'DOWN' })}>
-          vertical layout
-        </button>
+        <button onClick={() => onLayout({ direction: 'DOWN' })}>vertical layout</button>
 
         <button onClick={() => onLayout({ direction: 'RIGHT' })}>
           horizontal layout

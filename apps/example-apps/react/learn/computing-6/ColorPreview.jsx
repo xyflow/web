@@ -2,17 +2,16 @@ import { useEffect } from 'react';
 import {
   Handle,
   Position,
-  useHandleConnections,
+  useNodeConnections,
   useNodesData,
   useReactFlow,
 } from '@xyflow/react';
 
 function CustomHandle({ id, label, onChange }) {
-  const connections = useHandleConnections({
-    type: 'target',
-    id,
+  const connections = useNodeConnections({
+    handleType: 'target',
+    handleId: id,
   });
-
   const nodeData = useNodesData(connections?.[0].source);
 
   useEffect(() => {

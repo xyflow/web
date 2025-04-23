@@ -13,13 +13,7 @@ import {
   Section,
   ListWrapper,
 } from '@xyflow/xy-ui';
-import {
-  BaseLayout,
-  Hero,
-  ProjectPreview,
-  LayoutBreakout,
-  fetchJSON,
-} from 'xy-shared';
+import { BaseLayout, Hero, ProjectPreview, LayoutBreakout, fetchJSON } from 'xy-shared';
 import {
   ArrowDownCircleIcon,
   ArrowRightCircleIcon,
@@ -28,12 +22,12 @@ import {
   StarIcon,
 } from '@heroicons/react/24/outline';
 
-import starsvg from '../../../../public/img/pro/star.svg';
+import starSvg from '../../../../public/img/pro/star.svg';
 import { Metadata } from 'next';
-import { getPageMap } from 'nextra/page-map';
 import { MdxFile } from 'nextra';
+import { getPageMap as getExamplesPageMap } from '../../(content-pages)/examples/[...slug]/utils';
 
-export const revalidate = 86_400; // 60 * 60 * 24;
+export const revalidate = 86400; // 60 * 60 * 24;
 export const metadata: Metadata = {
   title: 'React Flow Pro Examples',
   description:
@@ -44,19 +38,23 @@ const ProExamples: FC = async () => {
   const remoteProExamples = await fetchJSON(
     `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/examples.json`,
   );
-  const pageMap = await getPageMap('/examples');
-  const proExamples = pageMap
+  const pageMap = await getExamplesPageMap();
+  const proExamples = pageMap.children
     .flatMap((item) =>
       'children' in item
-        ? item.children.filter(
-            (child): child is MdxFile => 'frontMatter' in child,
-          )
+        ? item.children.filter((child): child is MdxFile => 'frontMatter' in child)
         : [],
     )
-    .filter((item) => item.frontMatter.is_pro_example)
-    .sort((a, b) => a.frontMatter.title.localeCompare(b.frontMatter.title));
+    .filter((item) => item.frontMatter!.is_pro_example)
+    .sort((a, b) => a.frontMatter!.title.localeCompare(b.frontMatter!.title));
 
-  const examples = proExamples.reduce((result, curr) => {
+  const examples = proExamples.reduce<{
+    route: string,
+    image: string,
+    id: string,
+    name: string,
+    description: string,
+  }[]>((result, curr) => {
     const remote = remoteProExamples.find((remote) => remote.id === curr.name);
 
     if (remote) {
@@ -145,10 +143,7 @@ const ProExamples: FC = async () => {
           />
         </Container>
         <div className="flex flex-wrap mt-10 gap-2">
-          <Heading
-            className="w-full md:w-auto mb-auto flex gap-3 items-center"
-            size="md"
-          >
+          <Heading className="w-full md:w-auto mb-auto flex gap-3 items-center" size="md">
             Helper Lines{' '}
             <span className="text-sm text-primary bg-gray-100 px-3 py-1 rounded-full">
               Free Trial
@@ -156,18 +151,13 @@ const ProExamples: FC = async () => {
           </Heading>
           <div className="md:max-w-lg ml-auto">
             <Text>
-              Have guiding lines appear when the sides of your nodes are nearly
-              lined up to assist users in aligning and positioning nodes in a
-              diagram. Great for precise layouting and visual consistency like
-              in design tools such as Figma and Miro.
+              Have guiding lines appear when the sides of your nodes are nearly lined up
+              to assist users in aligning and positioning nodes in a diagram. Great for
+              precise layouting and visual consistency like in design tools such as Figma
+              and Miro.
             </Text>
             <div className="mt-6 flex flex-wrap gap-2 items-center">
-              <Button
-                asChild
-                size="lg"
-                variant="black"
-                className="w-full md:w-auto"
-              >
+              <Button asChild size="lg" variant="black" className="w-full md:w-auto">
                 <Link href="/examples/interaction/helper-lines">Demo</Link>
               </Button>
               <SignUpButton description="to get this example for free" />
@@ -190,7 +180,7 @@ const ProExamples: FC = async () => {
       </ContentGrid>
 
       <Section className="lg:px-0">
-        <LayoutBreakout className="max-w-[78rem] lg:ml-0 lg:mr-0 lg:right-0 lg:left-0 lg:w-full lg:px-0 !mt-0">
+        <LayoutBreakout className="x:max-w-(--nextra-content-width) lg:ml-0 lg:mr-0 lg:right-0 lg:left-0 lg:w-full lg:px-0 !mt-0">
           <Container
             variant="dark"
             className="max-lg:rounded-none"
@@ -202,8 +192,8 @@ const ProExamples: FC = async () => {
             </div>
             <div className="max-md:w-full md:flex-1">
               <Text className="mb-8 text-gray-300">
-                Get all 10 pro examples with just one month of a Pro
-                subscription from 129€
+                Get all 10 pro examples with just one month of a Pro subscription from
+                129€
               </Text>
               <div className="flex flex-wrap gap-2 mt-4">
                 <Button
@@ -212,9 +202,7 @@ const ProExamples: FC = async () => {
                   variant="secondary"
                   className="text-black hover:bg-gray-100 w-full md:w-auto"
                 >
-                  <Link
-                    href={`${process.env.NEXT_PUBLIC_PRO_PLATFORM_URL}/signup`}
-                  >
+                  <Link href={`${process.env.NEXT_PUBLIC_PRO_PLATFORM_URL}/signup`}>
                     Try it out
                   </Link>
                 </Button>
@@ -243,10 +231,7 @@ const ProExamples: FC = async () => {
             text={
               <>
                 Email us at{' '}
-                <Link
-                  className="font-bold hover:underline"
-                  href="mailto:info@xyflow.com"
-                >
+                <Link className="font-bold hover:underline" href="mailto:info@xyflow.com">
                   info@xyflow.com
                 </Link>{' '}
                 using your university email address
@@ -314,8 +299,7 @@ function GridItem({
                 className="text-primary text-md"
               >
                 <Link href={link.route} target={link.target}>
-                  {link.linkName}{' '}
-                  <ArrowRightCircleIcon className="ml-1 w-4 h-4" />
+                  {link.linkName} <ArrowRightCircleIcon className="ml-1 w-4 h-4" />
                 </Link>
               </Button>
             );
@@ -330,17 +314,17 @@ function StarText() {
     <span className="inline-flex relative text-transparent bg-clip-text bg-gradient-to-r from-primary to-[#FF99C7]">
       <span>Pro</span>
       <Image
-        src={starsvg}
+        src={starSvg}
         alt="star"
         className="absolute h-5 w-5 left-[40%] opacity-50"
       />
       <Image
-        src={starsvg}
+        src={starSvg}
         alt="star"
         className="absolute h-4 w-4 -right-[10px] top-1/2 opacity-20"
       />
       <Image
-        src={starsvg}
+        src={starSvg}
         alt="star"
         className="absolute h-3 w-3 left-[16px] bottom-[6px] opacity-70"
       />

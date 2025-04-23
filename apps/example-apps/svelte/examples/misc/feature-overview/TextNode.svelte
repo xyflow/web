@@ -20,10 +20,7 @@
 
   let connectedNode = useInternalNode(handleConnections.current[0]?.source);
   let dimensions: null | Dimensions = $derived.by(() => {
-    if (
-      connectedNode.current?.measured.width &&
-      connectedNode.current.measured.height
-    ) {
+    if (connectedNode.current?.measured.width && connectedNode.current.measured.height) {
       return {
         width: connectedNode.current.measured.width,
         height: connectedNode.current.measured.height,

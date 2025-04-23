@@ -6,10 +6,7 @@ description:
   internally by the MiniMap and Controls components.'
 ---
 
-import { PropsTable } from '@/components/props-table';
-import { panelProps } from '@/references/components/Panel';
-
-# &lt;Panel />
+# \<Panel />
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/components/Panel/index.tsx)
 
@@ -18,7 +15,7 @@ used internally by the [`<MiniMap />`](/api-reference/components/minimap) and [`
 components.
 
 ```jsx
-import { ReactFlow, Background, Panel } from '@xyflow/react';
+import { ReactFlow, Panel } from '@xyflow/react';
 
 export default function Flow() {
   return (
@@ -37,9 +34,7 @@ export default function Flow() {
 ## Props
 
 For TypeScript users, the props type for the `<Panel />` component is exported
-as `PanelProps`.
-
-<PropsTable {...panelProps} />
-
-Additionally, the `<Panel />` component accepts all props of the HTML `<div />`
+as `PanelProps`. Additionally, the `<Panel />` component accepts all props of the HTML `<div />`
 element.
+
+<APIDocs componentName="Panel" groupKeys="ComponentProps<'div'>" />

@@ -14,6 +14,7 @@ function FloatingConnectionLine({
     return null;
   }
 
+  // Create a mock target node at the cursor position
   const targetNode = {
     id: 'connection-target',
     measured: {
@@ -25,14 +26,18 @@ function FloatingConnectionLine({
     },
   };
 
-  const { sx, sy } = getEdgeParams(fromNode, targetNode);
+  const { sx, sy, tx, ty, sourcePos, targetPos } = getEdgeParams(
+    fromNode,
+    targetNode,
+  );
+
   const [edgePath] = getBezierPath({
     sourceX: sx,
     sourceY: sy,
-    sourcePosition: fromPosition,
-    targetPosition: toPosition,
-    targetX: toX,
-    targetY: toY,
+    sourcePosition: sourcePos || fromPosition,
+    targetPosition: targetPos || toPosition,
+    targetX: tx || toX,
+    targetY: ty || toY,
   });
 
   return (
@@ -45,8 +50,8 @@ function FloatingConnectionLine({
         d={edgePath}
       />
       <circle
-        cx={toX}
-        cy={toY}
+        cx={tx || toX}
+        cy={ty || toY}
         fill="#fff"
         r={3}
         stroke="#222"

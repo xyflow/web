@@ -8,7 +8,7 @@ tags: ['react-flow', 'web-audio-api', 'how-to']
 image: /img/tutorials/webaudio/web-audio-blog-thumb.png
 ---
 
-import { Callout, Tabs, Bleed } from 'nextra/components';
+import { Callout, Tabs } from 'nextra/components';
 import { Embed, Image } from 'xy-shared';
 import { Emoji } from '@xyflow/xy-ui';
 import { RemoteCodeViewer } from 'xy-shared/server';
@@ -18,24 +18,21 @@ Flow and the Web Audio API. We'll start from scratch, first learning about the W
 Audio API before looking at how to handle many common scenarios in React Flow:
 state management, implementing custom nodes, and adding interactivity.
 
-<Bleed>
-  <Image
-    src="/img/tutorials/webaudio/bleep-cafe.png"
-    alt="A screenshot of bleep.cafe, a visual audio programming environment. In it,
+<Image
+  src="/img/tutorials/webaudio/bleep-cafe.png"
+  alt="A screenshot of bleep.cafe, a visual audio programming environment. In it,
     there are four nodes connected together: an xy pad, an oscillator node, a
     volume node, and a master output."
-    wide
-    caption="This is bleep.cafe. We're going to learn everything we need to know to
+  wide
+  caption="This is bleep.cafe. We're going to learn everything we need to know to
     build something just like it!"
-  />
-</Bleed>
-
-A while back I shared a project I was working on to the React Flow
-[discord server](https://discord.com/invite/RVmnytFmGW). It's called
-[bleep.cafe](https://bleep.cafe) and it's a little web app for learning digital
-synthesis all inside the browser. A lot of folks were interested to see how something
-like that was put together: most people don't even know **their browser has a whole
-synth engine built in!**
+/>
+A while back I shared a project I was working on to the React Flow [discord
+server](https://discord.com/invite/RVmnytFmGW). It's called
+[bleep.cafe](https://bleep.cafe) and it's a little web app for learning digital synthesis
+all inside the browser. A lot of folks were interested to see how something like that was
+put together: most people don't even know **their browser has a whole synth engine built
+in!**
 
 This tutorial will take us step-by-step to build something similar. We may skip
 over some bits here and there, but for the most part if you're new to React Flow
@@ -50,16 +47,10 @@ But first...
 
 ## A demo!
 
-<Bleed>
-  <Embed src="https://xyflow.github.io/react-flow-web-audio/" />
-</Bleed>
-
+<Embed src="https://xyflow.github.io/react-flow-web-audio/" />
 <Callout type="warning">
-This and other examples in this tutorial _make sound_.
-
-To avoid creating an avant-garde masterpiece, remember to mute each example before
-moving on!
-
+  This and other examples in this tutorial _make sound_. To avoid creating an avant-garde
+  masterpiece, remember to mute each example before moving on!
 </Callout>
 
 ## The Web Audio API
@@ -156,12 +147,7 @@ const updateValues = (e) => {
 };
 
 export default function App() {
-  return (
-    <div
-      style={{ width: '100vw', height: '100vh' }}
-      onMouseMove={updateValues}
-    />
-  );
+  return <div style={{ width: '100vw', height: '100vh' }} onMouseMove={updateValues} />;
 }
 ```
 
@@ -202,22 +188,19 @@ export default function App() {
 And that's everything we need to start making some sounds with the Web Audio API!
 Here's what we put together, in case you weren't following along at home:
 
-<Bleed>
-  <RemoteCodeViewer
-    route="tutorials/webaudio/mouse-theremin"
-    framework="react"
-    showEditor={false}
-  />
-</Bleed>
-
-Now let's put this knowledge to one side and take a look at how to build a React
-Flow project from scratch.
+<RemoteCodeViewer
+  route="tutorials/webaudio/mouse-theremin"
+  framework="react"
+  showEditor={false}
+/>
+Now let's put this knowledge to one side and take a look at how to build a React Flow
+project from scratch.
 
 <Callout type="info">
   Already a React Flow pro? If you're already familiar with React Flow, you can
-  comfortably skip over the next section and head straight on over to [making
-  some sounds](#do-sound-to-it). For everyone else, let's take a look at how to
-  build a React Flow project from scratch.
+  comfortably skip over the next section and head straight on over to [making some
+  sounds](#do-sound-to-it). For everyone else, let's take a look at how to build a React
+  Flow project from scratch.
 </Callout>
 
 ## Scaffolding a React Flow project
@@ -425,13 +408,7 @@ const useStore = createWithEqualityFn((set, get) => ({
 }));
 ```
 
-<Bleed>
-  <RemoteCodeViewer
-    route="tutorials/webaudio/state-management"
-    framework="react"
-  />
-</Bleed>
-
+<RemoteCodeViewer route="tutorials/webaudio/state-management" framework="react" />
 ### 2. Custom nodes
 
 OK great, we have an interactive React Flow instance we can start playing with.
@@ -650,14 +627,11 @@ const useStore = createWithEqualityFn((set, get) => ({
 }));
 ```
 
-<Bleed>
   <RemoteCodeViewer
     route="tutorials/webaudio/custom-node"
     framework="react"
     showEditor={false}
   />
-</Bleed>
-
 <Callout type="info">
 Stuck on styling?
 
@@ -733,14 +707,11 @@ export default function Out({ id, data }) {
 
 Things are starting to shape up quite nicely!
 
-<Bleed>
-  <RemoteCodeViewer
-    route="tutorials/webaudio/custom-nodes"
-    framework="react"
-    showEditor={false}
-  />
-</Bleed>
-
+<RemoteCodeViewer
+  route="tutorials/webaudio/custom-nodes"
+  framework="react"
+  showEditor={false}
+/>
 The next step, then, is to…
 
 ## Do sound to it
@@ -814,8 +785,8 @@ export function updateAudioNode(id, data) {
 ```
 
 <Callout type="info">
-  Remember that properties on an audio node may be special `AudioParams` that
-  must be updated differently to regular object properties.
+  Remember that properties on an audio node may be special `AudioParams` that must be
+  updated differently to regular object properties.
 </Callout>
 
 Now we'll want to update our `updateNode` action in the store to call this function
@@ -999,14 +970,11 @@ export const useStore = createWithEqualityFn((set, get) => ({
 Et voilà, we did it! We've now put enough together to actually _make sounds_!
 Let's see what we have in action.
 
-<Bleed>
-  <RemoteCodeViewer
-    route="tutorials/webaudio/hardcoded-audio"
-    framework="react"
-    showEditor={false}
-  />
-</Bleed>
-
+<RemoteCodeViewer
+  route="tutorials/webaudio/hardcoded-audio"
+  framework="react"
+  showEditor={false}
+/>
 ### 4. Creating new nodes
 
 Up until now we have been dealing with a hard-coded set of nodes in our graph.
@@ -1134,10 +1102,7 @@ that can:
 Here's the demo from the beginning, but this time you can see the source code to
 make sure you haven't missed anything.
 
-<Bleed>
-  <RemoteCodeViewer route="tutorials/webaudio/demo" framework="react" />
-</Bleed>
-
+<RemoteCodeViewer route="tutorials/webaudio/demo" framework="react" />
 ## Final thoughts
 
 Whew that was a long one, but we made it! For our efforts we've come out the other
@@ -1161,7 +1126,7 @@ working on it, here are some ideas:
 - Anything else you can think of!
 
 And if you're looking for inspiration, there are quite a few projects out in the
-wild that are using node-based UIs for audio things. Some of my favourites are
+wild that are using node-based UIs for audio things. Some of my favorites are
 [Max/MSP](https://cycling74.com/products/max/),
 [Reaktor](https://www.native-instruments.com/en/products/komplete/synths/reaktor-6/),
 and [Pure Data](https://puredata.info/). Max and Reaktor are closed-source commercial

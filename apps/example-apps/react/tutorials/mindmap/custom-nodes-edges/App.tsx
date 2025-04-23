@@ -39,9 +39,7 @@ const defaultEdgeOptions = { style: connectionLineStyle, type: 'mindmap' };
 
 function Flow() {
   // whenever you use multiple values, you should use shallow for making sure that the component only re-renders when one of the values change
-  const { nodes, edges, onNodesChange, onEdgesChange } = useStore(
-    useShallow(selector),
-  );
+  const { nodes, edges, onNodesChange, onEdgesChange } = useStore(useShallow(selector));
 
   return (
     <ReactFlow

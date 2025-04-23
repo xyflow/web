@@ -249,4 +249,5 @@ export type InternalRoute =
   | '/whats-new/2024-09-12'
   | '/whats-new/2024-09-26'
   | '/whats-new/2024-10-10'
-  | '/whats-new/2024-11-04';
+  | '/whats-new/2024-11-04'
+  | '/whats-new/2025-02-12';

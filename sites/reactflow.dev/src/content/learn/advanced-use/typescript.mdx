@@ -1,7 +1,6 @@
 ---
 sidebarTitle: TypeScript
 description: In this guide we explain how to work with React Flow and TypeScript.
-created_at: 2024-07-01
 ---
 
 import { Callout } from 'nextra/components';
@@ -13,7 +12,7 @@ We export all the types you need for correctly typing data structures and functi
 
 ## Basic usage
 
-Let's start with the most basic types you need for a simple starting point. Typescript might already infer some of these types, but we will define them explicitly nontheless.
+Let's start with the most basic types you need for a simple starting point. Typescript might already infer some of these types, but we will define them explicitly nonetheless.
 
 ```tsx
 import { useState, useCallback } from 'react';
@@ -29,7 +28,6 @@ import {
   type OnNodesChange,
   type OnEdgesChange,
   type OnNodeDrag,
-  type NodeTypes,
   type DefaultEdgeOptions,
 } from '@xyflow/react';
 
@@ -46,11 +44,6 @@ const fitViewOptions: FitViewOptions = {
 
 const defaultEdgeOptions: DefaultEdgeOptions = {
   animated: true,
-};
-
-const nodeTypes: NodeTypes = {
-  num: NumberNode,
-  txt: TextNode,
 };
 
 const onNodeDrag: OnNodeDrag = (_, node) => {
@@ -77,9 +70,7 @@ function Flow() {
   return (
     <ReactFlow
       nodes={nodes}
-      nodeTypes={nodeTypes}
       edges={edges}
-      edgeTypes={edgeTypes}
       onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
       onConnect={onConnect}
@@ -136,15 +127,10 @@ export default function CustomNode({ data }: NodeProps<AppNode>) {
 
 ### Custom edges
 
-For [custom edges](/learn/customization/custom-nodes) you have the same possiblity as for custom nodes.
+For [custom edges](/learn/customization/custom-nodes) you have the same possibility as for custom nodes.
 
 ```tsx filename="CustomEdge.tsx"
-import {
-  getStraightPath,
-  BaseEdge,
-  type EdgeProps,
-  type Edge,
-} from '@xyflow/react';
+import { getStraightPath, BaseEdge, type EdgeProps, type Edge } from '@xyflow/react';
 
 type CustomEdge = Edge<{ value: number }, 'custom'>;
 
@@ -175,8 +161,8 @@ As long as you have typed the data objects correctly (see previous section), you
 
 <Callout type="info">
   If you use any of the built-in nodes ('input', 'output', 'default') or edges
-  ('straight', 'step', 'smoothstep', 'bezier'), you can add the `BuiltInNode`
-  and `BuiltInEdge` types exported from `@xyflow/react` to your union type.
+  ('straight', 'step', 'smoothstep', 'bezier'), you can add the `BuiltInNode` and
+  `BuiltInEdge` types exported from `@xyflow/react` to your union type.
 </Callout>
 
 ```tsx
@@ -223,12 +209,7 @@ const onNodesChange: OnNodesChange<CustomNodeType> = useCallback(
 The type unions can also be used to type the return values of many hooks.
 
 ```tsx filename="FlowComponent.tsx"
-import {
-  useReactFlow,
-  useHandleConnections,
-  useNodesData,
-  useStore,
-} from '@xyflow/react';
+import { useReactFlow, useNodeConnections, useNodesData, useStore } from '@xyflow/react';
 
 export default function FlowComponent() {
   // returned nodes and edges are correctly typed now
@@ -239,8 +220,8 @@ export default function FlowComponent() {
     nodes: s.nodes,
   }));
 
-  const connections = useHandleConnections({
-    type: 'target',
+  const connections = useNodeConnections({
+    handleType: 'target',
   });
 
   const nodesData = useNodesData<CustomNodeType>(connections?.[0].source);

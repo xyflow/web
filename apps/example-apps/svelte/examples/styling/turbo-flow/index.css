@@ -102,7 +102,7 @@ body {
   line-height: 1;
 }
 
-.svelte-flow__node-turbo .subline {
+.svelte-flow__node-turbo .subtitle {
   font-size: 12px;
   color: #777;
 }

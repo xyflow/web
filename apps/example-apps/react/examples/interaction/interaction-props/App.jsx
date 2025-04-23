@@ -68,7 +68,7 @@ const InteractionFlow = () => {
   const [panOnScroll, setPanOnScroll] = useState(false);
   const [panOnScrollMode, setPanOnScrollMode] = useState('free');
   const [zoomOnDoubleClick, setZoomOnDoubleClick] = useState(false);
-  const [panOnDrag, setpanOnDrag] = useState(true);
+  const [panOnDrag, setPanOnDrag] = useState(true);
   const [captureZoomClick, setCaptureZoomClick] = useState(false);
   const [captureZoomScroll, setCaptureZoomScroll] = useState(false);
   const [captureElementClick, setCaptureElementClick] = useState(false);
@@ -194,7 +194,7 @@ const InteractionFlow = () => {
               id="panOnDrag"
               type="checkbox"
               checked={panOnDrag}
-              onChange={(event) => setpanOnDrag(event.target.checked)}
+              onChange={(event) => setPanOnDrag(event.target.checked)}
               className="react-flow__panOnDrag"
             />
             panOnDrag

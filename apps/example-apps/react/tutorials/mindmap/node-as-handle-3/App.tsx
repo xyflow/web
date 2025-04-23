@@ -60,7 +60,7 @@ function Flow() {
 
     if (
       !domNode ||
-      // we need to check if these properites exist, because when a node is not initialized yet,
+      // we need to check if these properties exist, because when a node is not initialized yet,
       // it doesn't have a positionAbsolute nor a width or height
       !parentNode?.internals.positionAbsolute ||
       !parentNode?.measured.width ||
@@ -101,8 +101,11 @@ function Flow() {
       const targetIsPane = (event.target as Element).classList.contains(
         'react-flow__pane',
       );
+      const node = (event.target as Element).closest('.react-flow__node');
 
-      if (targetIsPane && connectingNodeId.current) {
+      if (node) {
+        node.querySelector('input')?.focus({ preventScroll: true });
+      } else if (targetIsPane && connectingNodeId.current) {
         const parentNode = nodeLookup.get(connectingNodeId.current);
         const childNodePosition = getChildNodePosition(event, parentNode);
 

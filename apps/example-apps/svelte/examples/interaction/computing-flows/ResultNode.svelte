@@ -7,6 +7,7 @@
     Handle,
     Position,
     useNodeConnections,
+    useNodeConnections,
     useNodesData,
     type NodeProps,
     type Node,

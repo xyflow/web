@@ -34,10 +34,7 @@ const DnDFlow = () => {
   const { screenToFlowPosition } = useReactFlow();
   const [type] = useDnD();
 
-  const onConnect = useCallback(
-    (params) => setEdges((eds) => addEdge(params, eds)),
-    [],
-  );
+  const onConnect = useCallback((params) => setEdges((eds) => addEdge(params, eds)), []);
 
   const onDragOver = useCallback((event) => {
     event.preventDefault();
@@ -72,6 +69,12 @@ const DnDFlow = () => {
     [screenToFlowPosition, type],
   );
 
+  const onDragStart = (event, nodeType) => {
+    setType(nodeType);
+    event.dataTransfer.setData('text/plain', nodeType);
+    event.dataTransfer.effectAllowed = 'move';
+  };
+
   return (
     <div className="dndflow">
       <div className="reactflow-wrapper" ref={reactFlowWrapper}>
@@ -82,8 +85,10 @@ const DnDFlow = () => {
           onEdgesChange={onEdgesChange}
           onConnect={onConnect}
           onDrop={onDrop}
+          onDragStart={onDragStart}
           onDragOver={onDragOver}
           fitView
+          style={{ backgroundColor: '#F7F9FB' }}
         >
           <Controls />
           <Background />

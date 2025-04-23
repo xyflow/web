@@ -34,25 +34,22 @@ const UiComponentViewer: FC<{ id: string }> = async ({ id }) => {
     url: `https://www.npmjs.com/package/${dep}`,
   }));
 
-  const componentPages = (await getPageMap('/components')).reduce(
-    (acc, pageMapItem) => {
-      if ('children' in pageMapItem) {
-        for (const page of pageMapItem.children) {
-          if ('name' in page && 'route' in page) {
-            acc.set(page.name, page.route);
-          }
+  const componentPages = (await getPageMap('/components')).reduce((acc, pageMapItem) => {
+    if ('children' in pageMapItem) {
+      for (const page of pageMapItem.children) {
+        if ('name' in page && 'route' in page) {
+          acc.set(page.name, page.route);
         }
       }
+    }
 
-      return acc;
-    },
-    new Map<string, string>(),
-  );
+    return acc;
+  }, new Map<string, string>());
 
   const shadcnDependencies = (data.registryDependencies || []).map((dep) => {
     if (dep.startsWith('https://')) {
       // handle internal dependencies from React Flow components
-      const depName = dep.split('/').pop().split('.').shift();
+      const depName = dep.split('/').pop()!.split('.').shift()!;
       const label = kebabCaseToTitleCase(depName);
 
       const url = componentPages.get(depName);
@@ -107,9 +104,8 @@ const UiComponentViewer: FC<{ id: string }> = async ({ id }) => {
         ))}
       </div>
       <div className="mt-20">
-        {/* @ts-expect-error -- false positive */}
         <H2 id="installation">Installation</H2>
-        <Tabs defaultValue="shadcn">
+        <Tabs defaultValue="shadcn" className="mt-5">
           <TabsList>
             <TabsTrigger value="shadcn">CLI</TabsTrigger>
             <TabsTrigger value="manual">Manual</TabsTrigger>
@@ -122,10 +118,7 @@ const UiComponentViewer: FC<{ id: string }> = async ({ id }) => {
               </Link>{' '}
               before installing the component.
             </Text>
-            <MDXRemote
-              compiledSource={data.installMDX}
-              components={components}
-            />
+            <MDXRemote compiledSource={data.installMDX} components={components} />
           </TabsContent>
           <TabsContent value="manual">
             <Heading size="xs" className="mt-5">
@@ -143,7 +136,6 @@ const UiComponentViewer: FC<{ id: string }> = async ({ id }) => {
         </Tabs>
       </div>
       <div className="mt-20">
-        {/* @ts-expect-error -- false positive */}
         <H2 id="usage">Usage</H2>
         {data.demoMDX && (
           <>

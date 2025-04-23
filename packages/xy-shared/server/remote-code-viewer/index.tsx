@@ -3,14 +3,7 @@ import { FC } from 'react';
 import { MDXRemote } from 'nextra/mdx-remote';
 import { OpenInCodesandbox } from './open-in-codesandbox';
 import { OpenInStackblitz } from './open-in-stackblitz';
-import {
-  cn,
-  Framework,
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from '@xyflow/xy-ui';
+import { cn, Framework, Tabs, TabsContent, TabsList, TabsTrigger } from '@xyflow/xy-ui';
 import { ExampleCode } from '../../types';
 import { compileCodeSnippet } from '../compile-code-snippet';
 import { loadJSONFile } from '../utils';
@@ -49,12 +42,7 @@ export const RemoteCodeViewer: FC<RemoteCodeViewerProps> = async ({
   const _framework: Framework =
     framework ?? (process.env.NEXT_PUBLIC_Framework as Framework) ?? 'react';
   const preview = `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/${_framework}/${route}/index.html`;
-  const p = path.join(
-    '../../apps/example-apps/public',
-    _framework,
-    route,
-    'source.json',
-  );
+  const p = path.join('../../apps/example-apps/public', _framework, route, 'source.json');
 
   const json = loadJSONFile<ExampleCode>(p);
   const isOk = !!json && 'files' in json && 'dependencies' in json;
@@ -83,13 +71,12 @@ export const RemoteCodeViewer: FC<RemoteCodeViewerProps> = async ({
     delete snippets['index.html'];
     delete snippets['index.jsx'];
     delete snippets['index.ts'];
+    delete snippets['README.mdx'];
   }
 
   const _initialActiveFile =
     activeFile ??
-    (Object.keys(snippets).includes('App.jsx')
-      ? 'App.jsx'
-      : Object.keys(snippets)[0]);
+    (Object.keys(snippets).includes('App.jsx') ? 'App.jsx' : Object.keys(snippets)[0]);
 
   return (
     <div
@@ -145,11 +132,7 @@ export const RemoteCodeViewer: FC<RemoteCodeViewerProps> = async ({
                 className="tabcontent overflow-y-scroll bg-primary/5"
               >
                 {Object.entries(snippets).map(([filename, compiledSource]) => (
-                  <TabsContent
-                    key={filename}
-                    className="min-h-[500px]"
-                    value={filename}
-                  >
+                  <TabsContent key={filename} className="min-h-[500px]" value={filename}>
                     <MDXRemote compiledSource={compiledSource} />
                   </TabsContent>
                 ))}

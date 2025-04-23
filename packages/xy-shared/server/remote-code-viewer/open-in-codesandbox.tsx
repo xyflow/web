@@ -62,7 +62,7 @@ export function OpenInCodesandbox({
           }}
           files={mountReroute.files}
         >
-          {/* Inside we mount a component that will acess the context created by the provider  */}
+          {/* Inside we mount a component that will access the context created by the provider  */}
           <VirtualCodeSandboxButton />
         </SandpackProvider>
       )}

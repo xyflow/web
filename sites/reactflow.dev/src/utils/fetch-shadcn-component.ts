@@ -23,19 +23,23 @@ function kebabCaseToCamelCase(str: string) {
 export async function fetchShadcnComponent(id: string) {
   const data = loadJSONFile<RegistryComponent>(
     `../../apps/ui-components/public/registry/${id}.json`,
-  );
+  )!;
   const demo = loadJSONFile<Demo>(
     `../../apps/ui-components/public/demo/${id}.json`,
-  );
+  )!;
 
   const componentName = kebabCaseToCamelCase(id);
 
-  const demoString = demo.files[0].content;
-  const demoMDX = await compileCodeSnippet(demoString, {
-    filetype: 'tsx',
-    showCopy: true,
-    highlight: componentName,
-  });
+  const demoString = demo.files[0]?.content;
+  let demoMDX;
+
+  if (demoString) {
+    demoMDX = await compileCodeSnippet(demoString, {
+      filetype: 'tsx',
+      showCopy: true,
+      highlight: componentName,
+    });
+  }
 
   const pageString = demo.files[0].page;
   const pageMDX = await compileCodeSnippet(pageString, {

@@ -3,6 +3,7 @@ import { BaseBlogPostLayout, CaseStudyLayoutWrapper } from 'xy-shared';
 import { useMDXComponents as getMdxComponents } from '@/mdx-components';
 import { normalizePages } from 'nextra/normalize-pages';
 import { getPageMap } from 'nextra/page-map';
+import { getWhatsNew } from '@/utils';
 
 type PageProps = Readonly<{
   params: Promise<{
@@ -25,7 +26,6 @@ export default async function Page(props: PageProps) {
         if (isExamples) {
           return (
             <>
-              {/* @ts-expect-error -- false positive */}
               <H1>{metadata.title}</H1>
               {mdx}
             </>
@@ -35,9 +35,8 @@ export default async function Page(props: PageProps) {
         const isTutorials = slug[0] === 'learn' && slug[1] === 'tutorials';
         if (isTutorials) {
           return (
-            <BaseBlogPostLayout frontMatter={metadata}>
-              {mdx}
-            </BaseBlogPostLayout>
+            // @ts-expect-error -- fixme
+            <BaseBlogPostLayout frontMatter={metadata}>{mdx}</BaseBlogPostLayout>
           );
         }
 
@@ -45,19 +44,42 @@ export default async function Page(props: PageProps) {
         if (isCaseStudies) {
           const pageMap = await getPageMap('/pro/case-studies');
           const { activeIndex, flatDocsDirectories } = normalizePages({
-            list: pageMap.filter(
-              (item) => 'name' in item && item.name !== 'index',
-            ),
+            list: pageMap.filter((item) => 'name' in item && item.name !== 'index'),
             route: ['', ...slug].join('/'),
           });
           return (
             <CaseStudyLayoutWrapper
+              // @ts-expect-error -- fixme
               frontMatter={metadata}
               prev={flatDocsDirectories[activeIndex - 1]}
               next={flatDocsDirectories[activeIndex + 1]}
             >
               {mdx}
             </CaseStudyLayoutWrapper>
+          );
+        }
+
+        const isWhatsNew = slug[0] === 'whats-new';
+        if (isWhatsNew) {
+          const pageMap = await getWhatsNew();
+          const route = ['/whats-new', ...slug.slice(1)].join('/');
+          const { activeIndex, flatDocsDirectories } = normalizePages({
+            list: pageMap,
+            route,
+          });
+          return (
+            <BaseBlogPostLayout
+              // @ts-expect-error -- fixme
+              frontMatter={metadata}
+              prev={activeIndex > 0 ? flatDocsDirectories[activeIndex - 1] : undefined}
+              next={
+                activeIndex < flatDocsDirectories.length - 1
+                  ? flatDocsDirectories[activeIndex + 1]
+                  : undefined
+              }
+            >
+              {mdx}
+            </BaseBlogPostLayout>
           );
         }
 

@@ -6,7 +6,7 @@ import { Handle, Position, type Node, type NodeProps } from '@xyflow/react';
 export type TurboNodeData = {
   title: string;
   icon?: ReactNode;
-  subline?: string;
+  subtitle?: string;
 };
 
 export default memo(({ data }: NodeProps<Node<TurboNodeData>>) => {
@@ -23,7 +23,7 @@ export default memo(({ data }: NodeProps<Node<TurboNodeData>>) => {
             {data.icon && <div className="icon">{data.icon}</div>}
             <div>
               <div className="title">{data.title}</div>
-              {data.subline && <div className="subline">{data.subline}</div>}
+              {data.subtitle && <div className="subtitle">{data.subtitle}</div>}
             </div>
           </div>
           <Handle type="target" position={Position.Left} />

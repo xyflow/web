@@ -31,6 +31,7 @@ function Flow() {
 
   useEffect(() => {
     setNodes(
+      // @ts-expect-error -- I think has an issue, he contains comma expression
       initialNodes({
         focus: setFocus,
         update: setNodes,
@@ -367,7 +368,7 @@ const initialNodes = ({
         'A multiplayer entity relationship diagram',
         'Tournament bracket builder',
         'A visual knowledge management system',
-        'Mindmapping',
+        'Mind-mapping',
         'Graph topology viewer',
         'Interactive lineage diagram',
       ],
@@ -725,7 +726,7 @@ const initialNodes = ({
           <MessageCloud
             messages={[
               'Auto layout helpers not based on other third party libraries. Better way to trigger layout changes and recalculation.',
-              '...It‘s also hard to do auto layout on data change like getting new nodes from the database... it wasn‘t as straightforward as I hoped for.',
+              "...It's also hard to do auto layout on data change like getting new nodes from the database... it wasn't as straightforward as I hoped for.",
               'Auto layout options and doing the custom math for my layout. Learning to think the way a layout engine wants',
             ]}
           />
@@ -788,9 +789,9 @@ const initialNodes = ({
           <MessageCloud
             messages={[
               'I find myself constantly printing out the values of edges, nodes and how they change. Maybe a small tool that displays the details of the current element on click (only enabled in dev mode.)',
-              'The innerworkings of the edge APIs, the tricks with nodeinternals to get edges to choose the nearest side of a node. It‘s great that it‘s possible, but also those APIs are pretty confusing.',
-              'Accessing the internal states are sometimes not working as expected. e.g. getNodes might not return the latest data. We ended up using some work-arounds. I guess this is more of a React problem.',
-              'Something like a hashtable to query data from node / edge without searching the whole array',
+              'The inner workings of the edge APIs, the tricks with node internals to get edges to choose the nearest side of a node. It‘s great that it‘s possible, but also those APIs are pretty confusing.',
+              'Accessing the internal states are sometimes not working as expected. e.g. getNodes might not return the latest data. We ended up using some workarounds. I guess this is more of a React problem.',
+              'Something like a hash table to query data from node / edge without searching the whole array',
             ]}
           />
           <button

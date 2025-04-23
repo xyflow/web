@@ -6,10 +6,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 
 import { cn } from '../../../lib/utils';
 import { Text } from '../../../';
-import {
-  defaultCategories,
-  type FooterCategoryConfig,
-} from './default-categories';
+import { defaultCategories, type FooterCategoryConfig } from './default-categories';
 
 const footerVariants = cva('bg-black print:bg-transparent py-12 lg:py-18', {
   variants: {
@@ -54,7 +51,7 @@ const Footer = forwardRef<HTMLDivElement, FooterProps>(
   ) => {
     return (
       <footer className={cn(footerVariants({ variant, className }))} ref={ref}>
-        <div className="mx-auto lg:flex max-w-[90rem] pl-[max(env(safe-area-inset-left),1.5rem)] pr-[max(env(safe-area-inset-right),1.5rem)]">
+        <div className="mx-auto lg:flex x:max-w-(--nextra-content-width) pl-[max(env(safe-area-inset-left),1.5rem)] pr-[max(env(safe-area-inset-right),1.5rem)]">
           <div className="lg:max-w-[300px] md:max-w-[600px] lg:mr-24 shrink-0">
             {message && (
               <>
@@ -97,8 +94,8 @@ const Footer = forwardRef<HTMLDivElement, FooterProps>(
               </div>
 
               <Text variant="light" className="pt-6 text-sm mt-auto">
-                <a href="mailto:info@xyflow.com">info@xyflow.com</a> — Copyright
-                © {new Date().getFullYear()}{' '}
+                <a href="mailto:info@xyflow.com">info@xyflow.com</a> — Copyright ©{' '}
+                {new Date().getFullYear()}{' '}
                 <a href="https://webkid.io" target="_blank">
                   webkid GmbH
                 </a>

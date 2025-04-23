@@ -10,9 +10,7 @@ const gettingStarted = {
 };
 const customization = {
   'custom-nodes': '',
-  'custom-node-props': { href: '/api-reference/types/node-props' },
   'custom-edges': '',
-  'custom-edge-props': { href: '/api-reference/types/edge-props' },
 };
 const advanced = {
   accessibility: '',
@@ -83,90 +81,6 @@ const components = {
     href: 'https://github.com/xyflow/web/discussions/new?category=ui-component-requests',
   },
 };
-const examples = {
-  index: {
-    theme: {
-      breadcrumb: false,
-    },
-  },
-  overview: '',
-  nodes: {
-    items: {
-      'custom-node': '',
-      'update-node': '',
-      stress: '',
-      hidden: '',
-      'drag-handle': '',
-      'easy-connect': '',
-      'add-node-on-edge-drop': '',
-      'proximity-connect': '',
-      'node-resizer': '',
-      'node-toolbar': '',
-      'rotatable-node': '',
-      'dynamic-grouping': '',
-      intersections: '',
-      shapes: '',
-    },
-  },
-  edges: {
-    items: {
-      'custom-edges': '',
-      'animating-edges': '',
-      'edge-types': '',
-      'editable-edge': '',
-      'reconnect-edge': '',
-      'custom-connectionline': '',
-      'multi-connection-line': '',
-      markers: '',
-      'delete-edge-on-drop': '',
-      'floating-edges': '',
-      'simple-floating-edges': '',
-      'edge-intersection': '',
-    },
-  },
-  layout: {
-    items: {
-      'sub-flows': '',
-      horizontal: '',
-      dagre: '',
-      'entitree-flex': '',
-      elkjs: '',
-      'elkjs-multiple-handles': '',
-      'auto-layout': '',
-      'force-layout': '',
-    },
-  },
-  interaction: {
-    items: {
-      'interaction-props': '',
-      'drag-and-drop': '',
-      'computing-flows': '',
-      validation: '',
-      'connection-events': '',
-      'prevent-cycles': '',
-      'undo-redo': '',
-      'copy-paste': '',
-      'helper-lines': '',
-      'touch-device': '',
-      'save-and-restore': '',
-      'zoom-transitions': '',
-      collaborative: '',
-      'contextual-zoom': '',
-    },
-  },
-  styling: {
-    items: {
-      'styled-components': '',
-      tailwind: '',
-      'turbo-flow': '',
-    },
-  },
-  misc: {
-    items: {
-      'static-server-side-generation': '',
-    },
-  },
-};
 const metaRecord = {
   '*': {
     type: 'page',
@@ -203,10 +117,18 @@ const metaRecord = {
     },
   },
   examples: {
-    items: examples,
     theme: {
       toc: false,
       layout: 'full',
+    },
+    items: {
+      index: {
+        theme: {
+          breadcrumb: false,
+        },
+      },
+      overview: '',
+      // Rest of examples are added in `(content-pages)/layout.tsx` file
     },
   },
   components: { items: components },
@@ -217,6 +139,7 @@ const metaRecord = {
       changelog: { href: '/whats-new' },
       blog: { href: 'https://xyflow.com/blog' },
       'contact-us': { href: 'https://xyflow.com/contact' },
+      playground: { href: 'https://play.reactflow.dev' },
     },
   },
 

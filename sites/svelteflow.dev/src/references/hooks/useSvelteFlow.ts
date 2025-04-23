@@ -127,13 +127,13 @@ export const signature: PropsTableProps = {
       name: 'updateNode',
       type: `(id: string, node: Node | (node: Node) => Partial<Node>, options?: { replace: boolean }) => void`,
       description:
-        'Function for updating a node. The passed node or function result gets merged into to the existing node. You can change that behaviour and replace the node by passing `options.replace = true`.',
+        'Function for updating a node. The passed node or function result gets merged into to the existing node. You can change that behavior and replace the node by passing `options.replace = true`.',
     },
     {
       name: 'updateNodeData',
       type: `(id: string, data: object | (node: Node) => object, options?: { replace: boolean }) => void`,
       description:
-        'Function for updating node data. The passed data or function result gets merged into to the existing node data. You can change that behaviour and replace the node by passing `options.replace = true`.',
+        'Function for updating node data. The passed data or function result gets merged into to the existing node data. You can change that behavior and replace the node by passing `options.replace = true`.',
     },
     {
       name: 'toObject',

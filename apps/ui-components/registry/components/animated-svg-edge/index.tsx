@@ -15,7 +15,7 @@ export type AnimatedSvgEdge = Edge<{
   duration: number;
   /**
    * The direction in which the shape moves along the edge path. Each value
-   * corresponds to the following behaviour:
+   * corresponds to the following behavior:
    *
    * - `forward`: The shape moves from the source node to the target node.
    *
@@ -206,7 +206,7 @@ function getAnimateMotionProps({
     repeatCount: repeat,
     // The default calcMode for the `<animateMotion />` element is "paced", which
     // is not compatible with the `keyPoints` attribute. Setting this to "linear"
-    // ensures that the shape correc follows the path.
+    // ensures that the shape correct follows the path.
     calcMode: "linear",
   };
 

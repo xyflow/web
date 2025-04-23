@@ -21,7 +21,7 @@ jobs:
       - name: Determine current day & date
         id: date
         run: |
-          echo "DATE=$(date +'%Y-%m-%dT12:00:00')" >> $GITHUB_ENV
+          echo "DATE=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
           echo "DAY=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
       - name: Determine package version
         id: version
@@ -47,14 +47,13 @@ jobs:
       - name: 'Add file'
         # Using ${{ CLEAN_BODY }} instead of ${CLEAN_BODY} strips backticks from the string
         run: |
-          cat > sites/${{env.FRAMEWORK_LOWERCASE}}flow.dev/src/pages/whats-new/${{ env.DAY }}.mdx << EOL
+          cat > sites/${{env.FRAMEWORK_LOWERCASE}}flow.dev/src/content/whats-new/${{ env.DAY }}.mdx << EOL
           ---
           title: "${{ env.FRAMEWORK }} Flow ${{ env.VERSION }}"
           description: "Changelog for ${{ env.FRAMEWORK }} Flow version ${{ env.VERSION }}"
           authors: [xyflow]
           date: '${{ env.DATE }}'
           ---
-          # Whats New in ${{ env.FRAMEWORK }} Flow ${{ env.VERSION }}
           ${CLEAN_BODY}
           EOL
       - name: 'Commit changes'

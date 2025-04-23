@@ -78,7 +78,7 @@
 </SvelteFlow>
 
 <style>
-  :global(.updatenode__controls) {
+  :global(.update-node__controls) {
     position: absolute;
     right: 10px;
     top: 10px;
@@ -86,15 +86,15 @@
     font-size: 12px;
   }
 
-  :global(.updatenode__controls label) {
+  :global(.update-node__controls label) {
     display: block;
   }
 
-  :global(.updatenode__bglabel) {
+  :global(.update-node__bg-label) {
     margin-top: 10px;
   }
 
-  :global(.updatenode__checkboxwrapper) {
+  :global(.update-node__checkbox-wrapper) {
     margin-top: 10px;
     display: flex;
     align-items: center;
