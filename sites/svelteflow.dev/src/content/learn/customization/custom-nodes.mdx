@@ -11,13 +11,11 @@ A powerful feature of Svelte Flow is the ability to create custom nodes. This gi
 
 In this section, we'll walk through creating a custom node featuring an input field that updates text elsewhere in your application. For further examples, we recommend checking out our [Custom Node Example](/examples/nodes/custom-node).
 
-## Implementing a Custom Node
+## Creating a Custom Node
 
 To create a custom node, all you need to do is create a Svelte component. Svelte Flow will automatically wrap it in an interactive container that injects essential props like the node's id, position, and data, and provides functionality for selection, dragging, and connecting handles. For a full reference on all available custom node props, take a look at the [Node Props](/api-reference/types/node-props).
 
-Let's dive into an example by creating a custom node called `TextUpdaterNode`. For this, we've added a controlled input field with a oninput handler. We simply use the 'text' property from the node's data for the input and we update the nodes data via the [`updateNodeData`](/api-reference/hooks/use-svelte-flow#update-node-data) function, that can be accessed through the [`useSvelteFlow`](/api-reference/hooks/use-svelte-flow) hook.
-
-Svelte Flow has a few handy [pre-built components](/api-reference/components) to simplify the process of creating custom nodes. We will use the [`Handle`](/api-reference/components/handle) component to allow our custom node to connect with other nodes.
+Let's dive into an example by creating a custom node called `TextUpdaterNode`. For this, we've added a controlled input field with a oninput handler. We simply use the 'text' property from the node's data for the input and we update the node's data via the [`updateNodeData`](/api-reference/hooks/use-svelte-flow#update-node-data) function, that can be accessed through the [`useSvelteFlow`](/api-reference/hooks/use-svelte-flow) hook.
 
 ```svelte
 <script lang="ts">
@@ -82,9 +80,111 @@ const nodes = $state.raw([
 ]);
 ```
 
-After putting all together and adding some basic styles we get a custom node that prints text to the console:
+After putting it all together and adding some basic styles we get a custom node that prints text to the console:
 
 <RemoteCodeViewer route="guides/custom-nodes" framework="svelte" />
+
+## Adding Handles
+
+Svelte Flow provides a [`Handle`](/api-reference/components/handle) component that can be used to add handles to your custom nodes. It's as easy as mounting the component.
+
+```svelte filename="CustomNode.svelte" highlight="Handle"
+<script>
+  import { Handle } from '@xyflow/svelte';
+</script>
+
+<Handle type="target" position={Position.Top} />
+<Handle type="source" position={Position.Bottom} />
+```
+
+#### Multiple Handles
+
+If you need more than just one source and target handle, you can use the `id` prop to distinguish between them. You only need the `id` prop if you have multiple handles of the same type.
+
+<Callout type="info">
+  The `id` of the handle just needs to be unique within a custom node type.
+</Callout>
+
+```svelte filename="CustomNode.svelte"
+<Handle type="target" position={Position.Top} />
+<Handle type="source" position={Position.Bottom} id="source-1" />
+<Handle type="source" position={Position.Bottom} id="source-2" />
+```
+
+#### Positioning Handles
+
+Though, the `position` prop is required for rendering connected edges, you can freely position your handles using CSS!
+
+<Callout type="warning">
+  There are some aggressive styles applied based on the `position`. You have to override
+  them first, like shown in the snippet below. We are planning to improve this in the
+  future.
+</Callout>
+
+```svelte filename="CustomNode.svelte"
+  <div class="handle-container">
+    <Handle type="source" position={Position.Bottom} id="source-1" />
+    <Handle type="source" position={Position.Bottom} id="source-2" />
+  </div>
+
+<style>
+  .handle-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    transform: translateY(100%);
+  }
+
+  .handle-container > :global(.svelte-flow__handle) {
+    top: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    right: auto !important;
+    position: relative !important;
+    transform: none !important;
+  }
+</style>
+```
+
+#### Connecting to Handles
+
+An edge is defined by a source node and a target node. However, if you have multiple source or target handles on a node, you need to specify a `sourceHandleId` or `targetHandleId` so the edge knows which handle to connect to.
+
+Here, we only have a single target handle, so we just need to specify the `sourceHandleId` on the edges.
+
+```svelte filename="App.svelte"
+let edges = $state.raw([
+  { id: 'edge-1', source: 'node-1', sourceHandle: 'source-1', target: 'node-2' },
+  { id: 'edge-2', source: 'node-1', sourceHandle: 'source-2', target: 'node-3' },
+]);
+```
+
+Putting it all together we end up with a flow like this:
+
+<RemoteCodeViewer
+  route="guides/custom-nodes-multiple-handles"
+  framework="svelte"
+  orientation="vertical"
+/>
+
+#### Updating Handle Positions
+
+Svelte Flow figuring out where all your Handles are might seem like magic, but it's just [`boundingClientRect`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect). Because it might cause reflows, it can be computationally expensive at times, so we make sure it is only called when the node resizes.
+
+However, if you want to programmatically change the position or number of handles in your custom node, you have to call the [`useUpdateNodeInternals`](/api-reference/hooks/use-update-node-internals) context function to notify Svelte Flow of the changes.
+
+```svelte filename="CustomNode.svelte"
+<script>
+  import { useUpdateNodeInternals } from '@xyflow/svelte';
+
+  const updateNodeInternals = useUpdateNodeInternals();
+</script>
+```
+
+<Callout type="info">
+  When calling `updateNodeInternals` outside of a custom node, you have to pass a `nodeId`
+  or an array of `nodeId`s you'd like to update.
+</Callout>
 
 ## Utility Classes
 
@@ -119,25 +219,3 @@ Applying these utility classes helps you control interaction on a granular level
   Unlike the built-in nodes, custom nodes have no default styles, so feel free to use any
   styling method you prefer, such as Svelte's scoped CSS.
 </Callout>
-
-## Adding Handles
-
-When defining edge connections to other nodes using these handles, simply using the node `id` isn't enough. You will also need to specify a handle `id`. In this case, we assign an id `a` to one source handle and an id `b` to the other source handle.
-
-In Svelte Flow, edges can be connected to specific handles within a node using the properties `sourceHandle` (for the edge's starting point) and `targetHandle` (for the edge's ending point). When you have multiple handles on a node—for example, two source handles labeled "`a`" and "`b`", simply specifying the node's `id` isn't enough for Svelte Flow to know which connection point to use. By defining `sourceHandle` or `targetHandle` with the appropriate handle `id`, you instruct Svelte Flow to attach the edge to that specific handle, ensuring that connections are made where you intend.
-
-```js
-const initialEdges = [
-  { id: 'edge-1', source: 'node-1', sourceHandle: 'a', target: 'node-2' },
-  { id: 'edge-2', source: 'node-1', sourceHandle: 'b', target: 'node-3' },
-];
-```
-
-In this case, the source node is `node-1` for both handles but the handle `id`s are different. One comes from handle id `"a"` and the other one from `"b"`. Both edges also have different target nodes:
-
-<RemoteCodeViewer route="guides/custom-nodes-multiple-handles" framework="svelte" />
-
-If you are programmatically changing the position or number of handles
-in your custom node, you will need to use the
-[`useUpdateNodeInternals`](/api-reference/hooks/use-update-node-internals) context function
-to properly notify Svelte Flow of changes.

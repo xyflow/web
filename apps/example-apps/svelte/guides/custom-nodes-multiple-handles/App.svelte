@@ -4,6 +4,10 @@
 
   import TextUpdaterNode from './TextUpdaterNode.svelte';
 
+  const nodeTypes = {
+    textUpdater: TextUpdaterNode,
+  };
+
   let nodes = $state.raw([
     {
       id: 'node-1',
@@ -13,36 +17,22 @@
     },
     {
       id: 'node-2',
-      type: 'output',
-      targetPosition: 'top',
       position: { x: 0, y: 200 },
       data: { label: 'node 2' },
     },
     {
       id: 'node-3',
-      type: 'output',
-      targetPosition: 'top',
       position: { x: 200, y: 200 },
       data: { label: 'node 3' },
     },
   ]);
 
   let edges = $state.raw([
-    { id: 'edge-1', source: 'node-1', target: 'node-2', sourceHandle: 'a' },
-    { id: 'edge-2', source: 'node-1', target: 'node-3', sourceHandle: 'b' },
+    { id: 'edge-1', source: 'node-1', sourceHandle: 'source-1', target: 'node-2' },
+    { id: 'edge-2', source: 'node-1', sourceHandle: 'source-2', target: 'node-3' },
   ]);
-
-  const nodeTypes = {
-    textUpdater: TextUpdaterNode,
-  };
-
-  const rfStyle = {
-    backgroundColor: '#B8CEFF',
-  };
 </script>
 
-<div style:width="100vw" style:height="100vh">
-  <SvelteFlow bind:nodes bind:edges {nodeTypes} fitView style={rfStyle}>
-    <Background />
-  </SvelteFlow>
-</div>
+<SvelteFlow bind:nodes bind:edges {nodeTypes} fitView>
+  <Background />
+</SvelteFlow>

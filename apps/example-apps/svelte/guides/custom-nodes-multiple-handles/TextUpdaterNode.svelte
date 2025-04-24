@@ -1,44 +1,45 @@
 <script lang="ts">
-  import { Handle, Position } from '@xyflow/svelte';
+  import { useSvelteFlow, Handle, Position, type NodeProps } from '@xyflow/svelte';
 
-  export let data;
-  export let isConnectable;
+  let { id, data }: NodeProps = $props();
 
-  const handleStyle = 'left: 10px';
-
-  function onChange(evt: Event) {
-    console.log((evt.target as HTMLInputElement).value);
-  }
+  let { updateNodeData } = useSvelteFlow();
 </script>
 
 <div class="text-updater-node">
-  <Handle type="target" position={Position.Top} {isConnectable} />
+  <Handle type="target" position={Position.Top} />
   <div>
     <label for="text">Text:</label>
-    <input id="text" name="text" on:change={onChange} class="nodrag" />
+    <input
+      id="text"
+      name="text"
+      value={data.text}
+      oninput={(evt) => {
+        updateNodeData(id, { text: evt.target.value });
+      }}
+      class="nodrag"
+    />
   </div>
-  <Handle
-    type="source"
-    position={Position.Bottom}
-    id="a"
-    style={handleStyle}
-    {isConnectable}
-  />
-  <Handle type="source" position={Position.Bottom} id="b" {isConnectable} />
+  <div class="handle-container">
+    <Handle type="source" position={Position.Bottom} id="source-1" />
+    <Handle type="source" position={Position.Bottom} id="source-2" />
+  </div>
 </div>
 
 <style>
-  .text-updater-node {
-    height: 50px;
-    border: 1px solid #eee;
-    padding: 5px;
-    border-radius: 5px;
-    background: white;
+  .handle-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    transform: translateY(100%);
   }
 
-  .text-updater-node label {
-    display: block;
-    color: #777;
-    font-size: 12px;
+  .handle-container > :global(.svelte-flow__handle) {
+    top: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    right: auto !important;
+    position: relative !important;
+    transform: none !important;
   }
 </style>
