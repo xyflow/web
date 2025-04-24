@@ -55,15 +55,7 @@
   ]);
 </script>
 
-<main>
-  <SvelteFlow bind:nodes bind:edges>
-    <Background />
-    <Controls />
-  </SvelteFlow>
-</main>
-
-<style>
-  main {
-    height: 100vh;
-  }
-</style>
+<SvelteFlow bind:nodes bind:edges fitView>
+  <Background />
+  <Controls />
+</SvelteFlow>

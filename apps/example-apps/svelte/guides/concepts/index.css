@@ -60,6 +60,7 @@ input[type='number']::-webkit-inner-spin-button {
   text-align: left;
   background-color: transparent;
   border: none;
+  pointer-events: none;
 }
 
 .svelte-flow__node-annotation .annotation-content {
