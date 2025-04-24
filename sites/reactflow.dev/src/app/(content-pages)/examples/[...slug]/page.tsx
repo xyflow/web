@@ -14,6 +14,14 @@ type PageProps = Readonly<{
 }>;
 
 const { wrapper: Wrapper, h1: H1 } = getMDXComponents();
+const mdxComponents = {
+  Callout,
+  Cards,
+  ArrowTopRightOnSquareIcon,
+  RemoteCodeViewer,
+  ProExampleViewer,
+  Button,
+};
 
 export default async function Page(props: PageProps) {
   const params = await props.params;
@@ -23,19 +31,11 @@ export default async function Page(props: PageProps) {
     // To achieve this, we keep `examples/` in the import path.
     `@/../../apps/example-apps/react/examples/${route.replace('/examples/', '')}/README.mdx`,
   );
+
   return (
     <Wrapper toc={toc} metadata={metadata}>
       <H1>{metadata.title}</H1>
-      <MDXContent
-        components={{
-          Callout,
-          Cards,
-          ArrowTopRightOnSquareIcon,
-          RemoteCodeViewer,
-          ProExampleViewer,
-          Button,
-        }}
-      />
+      <MDXContent components={mdxComponents} />
     </Wrapper>
   );
 }
