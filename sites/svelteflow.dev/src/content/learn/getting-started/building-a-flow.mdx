@@ -164,22 +164,6 @@ let edges = $state.raw([
 ]);
 ```
 
-#### Minmap and Controls
-
-To make the flow much more user friendly we should add some additional functinality. Let's import the `Minimap` and the `Controls` components and add overlay them on the viewport.
-
-```svelte
-<script>
-import { SvelteFlow, Background, Minimap, Controls } from '@xyflow/svelte';
-</script>
-
-<SvelteFlow bind:nodes bind:edges fitView>
-    <Background />
-    <Minimap />
-    <Controls />
-</SvelteFlow>
-```
-
 ## Finished Flow
 
 Et voilà! We have a flow that looks like this:

@@ -1,12 +1,9 @@
 <script>
   import { SvelteFlow, Panel, Background } from '@xyflow/svelte';
   import '@xyflow/svelte/dist/style.css';
-
-  let nodes = $state.raw([]);
-  let edges = $state.raw([]);
 </script>
 
-<SvelteFlow bind:nodes bind:edges fitView>
+<SvelteFlow>
   <Panel position="top-left">top-left</Panel>
   <Panel position="top-center">top-center</Panel>
   <Panel position="top-right">top-right</Panel>

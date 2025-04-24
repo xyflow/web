@@ -1,5 +1,5 @@
 <script>
-  import { SvelteFlow, Background, MiniMap, Controls } from '@xyflow/svelte';
+  import { SvelteFlow, Background } from '@xyflow/svelte';
   import '@xyflow/svelte/dist/style.css';
 
   let nodes = $state.raw([
@@ -25,7 +25,5 @@
 <div style:width="100vw" style:height="100vh">
   <SvelteFlow bind:nodes bind:edges fitView>
     <Background />
-    <MiniMap />
-    <Controls />
   </SvelteFlow>
 </div>
