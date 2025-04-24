@@ -4,8 +4,6 @@ body {
   font-family: sans-serif;
 }
 
-#app {
-  width: 100vw;
-  height: 100vh;
+.svelte-flow {
+  --xy-background-color: #f7f9fb;
 }
-

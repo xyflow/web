@@ -1,33 +1,31 @@
 <script>
-  import { SvelteFlow, Background, Controls } from '@xyflow/svelte';
-
+  import { SvelteFlow, Background, MiniMap, Controls } from '@xyflow/svelte';
   import '@xyflow/svelte/dist/style.css';
 
   let nodes = $state.raw([
     {
-      id: '1', // required and needs to be a string
-      position: { x: 0, y: 0 }, // required
-      data: { label: 'hey' }, // required
+      id: '1',
+      type: 'input',
+      position: { x: 0, y: 0 },
+      data: { label: 'Hello' },
     },
     {
       id: '2',
+      type: 'output',
       position: { x: 100, y: 100 },
-      data: { label: 'world' },
+      data: { label: 'World' },
     },
   ]);
 
-  let edges = $state.raw([{ id: '1-2', source: '1', target: '2' }]);
+  let edges = $state.raw([
+    { id: 'e1-2', source: '1', target: '2', type: 'smoothstep', label: 'to the' },
+  ]);
 </script>
 
-<main>
+<div style:width="100vw" style:height="100vh">
   <SvelteFlow bind:nodes bind:edges fitView>
-    <Background bgColor="rgba(126,159,219,0.5)" patternColor="white" />
-    <Controls showInteractive={false} />
+    <Background />
+    <MiniMap />
+    <Controls />
   </SvelteFlow>
-</main>
-
-<style>
-  main {
-    height: 100vh;
-  }
-</style>
+</div>

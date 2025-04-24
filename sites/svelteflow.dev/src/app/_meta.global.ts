@@ -8,9 +8,10 @@ export default {
       index: '',
       'getting-started': {
         items: {
-          concepts: '',
-          'nodes-and-edges': { title: 'Nodes & Edges' },
-          'building-a-flow': { display: 'hidden' },
+          installation: '',
+          'key-concepts': '',
+          'building-a-flow': '',
+          'building-a-flow-old': { display: 'hidden' },
         },
       },
       guides: {

@@ -1,105 +1,193 @@
----
-description: A quick guide that shows you how to get started with Svelte Flow
----
+import { RemoteCodeViewer } from 'xy-shared/server';
+
+import { Callout } from 'nextra/components';
 
 # Building a Flow
 
-import { RemoteCodeViewer } from 'xy-shared/server';
-
-In the following section we will show you how to create a Svelte component that displays a simple flow. We assume that you've installed Svelte Flow and hope that you are ready to create your first component with Svelte Flow.
+Let's not beat around the bush: You're here because you want to learn how to build a flow. If you haven't learned about our [Key Concepts](/learn/getting-started/key-concepts) yet, we recommend you do that first.
 
 ## Getting Started
 
-Let's add a `SvelteFlow` component with a `Controls` and a `Background` component. For this we import the components from the `@xyflow/svelte` package:
+First, you need to import the Svelte Flow Component and the required styles into your project. We also go ahead an import the `Background` component.
 
-```js
-import { SvelteFlow, Background, Controls } from '@xyflow/svelte';
-// 👇 always import the styles
+```svelte
+<script>
+import { SvelteFlow, Background } from '@xyflow/svelte';
 import '@xyflow/svelte/dist/style.css';
+</script>
 ```
 
-Now you can use them in your component like this:
+Next, make sure you render the main component inside an element that has a defined width and height and put the `Background` component inside the `SvelteFlow` component.
+
+<Callout type="info">
+  Anything rendered inside the `SvelteFlow` component will be overlayed on top of the
+  viewport. This is useful for additional UI elements that are fixed and should **not
+  move** with the viewport.
+</Callout>
+
+```svelte
+<div style:width="100vw" style:height="100vh">
+    <SvelteFlow>
+        <Background />
+    </SvelteFlow>
+</div>
+```
+
+If you successfully rendered the component, you should see a blank canvas like this:
 
 <RemoteCodeViewer
   route="guides/getting-started/a"
   framework="svelte"
   editorHeight={400}
+  showOpenInStackblitz={false}
+  showEditor={false}
 />
-
-You can now pan around by dragging the canvas, as well as zoom in and out by scrolling the mouse or using the control panel buttons.
-
-There are three important things to keep in mind here:
-
-1. You need to **import the styles**. Otherwise Svelte Flow looks weird and doesn't work.
-2. The **parent container needs a width and height**, because Svelte Flow uses its parent dimensions.
-3. If you have **multiple flows on one page**, you need to pass a unique `id` prop to each component to make Svelte Flow work properly.
 
 ## Adding nodes
 
-Now that the basics are set up, we can add a few nodes. For this, you need to create a [writable store](https://svelte.dev/docs/svelte-store#writable) with an array of [node objects](/api-reference/types/node) like this:
+Now that the flow is set up, let's add some nodes. To do this, you need to create an array with [node objects](/api-reference/types/node).
+Required properties for node objects are:
+
+- `id`: unique identifier
+- `position`: x and y coordinate
+- `data`: an object for storing custom data
+
+To make the array reactive, we will use the [`$state`](https://svelte.dev/docs/svelte/$state) rune.
+
+<Callout color="yellow">
+  Simply using `$state` would not only make the array reactive, but every property of each
+  node object, too. This harbours [performance
+  issues](https://github.com/sveltejs/svelte/issues/11851), so we use
+  [`$state.raw`](https://svelte.dev/docs/svelte/$state#$state.raw) instead.
+</Callout>
 
 ```js
 let nodes = $state.raw([
   {
-    id: '1', // required and needs to be a string
-    position: { x: 0, y: 0 }, // required
-    data: { label: 'hey' }, // required, but can be an empty object
+    id: '1',
+    position: { x: 0, y: 0 },
+    data: { label: 'Hello' },
   },
   {
     id: '2',
     position: { x: 100, y: 100 },
-    data: { label: 'world' },
+    data: { label: 'World' },
   },
 ]);
 ```
 
-If we add these nodes to our `SvelteFlow` component, we can see them on the screen:
+Next, we [bind](https://svelte.dev/docs/svelte/$bindable) the nodes to the `SvelteFlow` component. We are using bind here because both us and the `SvelteFlow` component need to make changes to the nodes.
+
+```svelte
+<SvelteFlow bind:nodes>
+```
+
+If you followed the steps above you should end up with a flow that looks like this:
 
 <RemoteCodeViewer
   route="guides/getting-started/b"
   framework="svelte"
   editorHeight={400}
+  showOpenInStackblitz={false}
+  showEditor={false}
 />
 
-There are lots of options to configure nodes. You can see the full list of options on the [node option site](/api-reference/types/node).
+## Adding edges
 
-This is a good start! You can already do a lot of things:
+Let's connect the nodes with an edge. To do this, we go ahead and create a [`$state.raw`](https://svelte.dev/docs/svelte/$state#$state.raw) array with [edge objects](/api-reference/types/edge).
+Required properties for edge objects are:
 
-- **drag nodes** around
-- **select nodes** by clicking on them
-- **delete nodes** by pressing the `Backspace` key
-- **multi select nodes** by holding down the `Shift` key create a selection box
-
-## Connecting nodes with an edge
-
-Now that we have two nodes, let's connect them with an edge.
-
-To make an edge, we need to specify two attributes: the source node (edge start) and the target node (edge end). We use the `id` of the two nodes to specify this (in our example, our two nodes have ids of "1" and "2"). The edges are stored in a writable store, just like the nodes:
+- `id`: unique identifier
+- `source`: id of the source node
+- `target`: id of the target node
 
 ```js
-let edges = $state.raw([{ id: '1-2', source: '1', target: '2' }]);
+let edges = $state.raw([{ id: 'e1-2', source: '1', target: '2' }]);
 ```
+
+Same as with the nodes, we [bind](https://svelte.dev/docs/svelte/$bindable) the edges to the `SvelteFlow` component.
+
+```svelte
+<SvelteFlow bind:nodes bind:edges>
+```
+
+If you followed the steps above you should end up with a flow that looks like this:
 
 <RemoteCodeViewer
   route="guides/getting-started/c"
   framework="svelte"
   editorHeight={400}
+  showOpenInStackblitz={false}
+  showEditor={false}
 />
 
-Just like nodes, edges have a lot of options too. You can choose a type, define start and end markers, labels, and change the styling. You can see the full list of options on the [edge option site](/api-reference/types/edge).
+## Polishing the flow
 
-## Fine-tuning the flow
+This all might already go into the right drection but it still looks a little bland and lopsided, doesn't it?
 
-Now that we have a basic flow, let's fine-tune it a bit. You can automatically fit all nodes into the viewport by using the `fitView` prop.
+#### `fitView`
 
-If you want something besides a white background, you can easily adjust it by using the `bgColor` prop of the `Background` component. As you can see, we also used the `patternColor` prop to change the color of the background pattern. You can also change the pattern with the `variant` prop.
+We can pass [`fitView`](/api-reference/components/svelte-flow#fitview) to the `SvelteFlow` component to fit the initial viewport to the visible nodes.
 
-By default the controls panel comes with a zoom-in, zoom-out, fit view and lock button. You can remove the lock button for example by setting `showLock={false}`.
+```svelte
+<SvelteFlow bind:nodes bind:edges fitView>
+```
+
+#### Built-in node types
+
+Let's change the `type` of the first node to `input` and the second node to `output`. These are built-in node types, that come with a different set of handles.
+
+```js
+let nodes = $state.raw([
+  {
+    id: '1',
+    type: 'input',
+    position: { x: 0, y: 0 },
+    data: { label: 'Hello' },
+  },
+  {
+    id: '2',
+    type: 'output',
+    position: { x: 100, y: 100 },
+    data: { label: 'World' },
+  },
+]);
+```
+
+#### Built-in edge types
+
+Finally, we change the edge to type `smoothstep` and also give it a label!
+
+```js
+let edges = $state.raw([
+  { id: 'e1-2', source: '1', target: '2', type: 'smoothstep', label: 'Hello World' },
+]);
+```
+
+#### Minmap and Controls
+
+To make the flow much more user friendly we should add some additional functinality. Let's import the `Minimap` and the `Controls` components and add overlay them on the viewport.
+
+```svelte
+<script>
+import { SvelteFlow, Background, Minimap, Controls } from '@xyflow/svelte';
+</script>
+
+<SvelteFlow bind:nodes bind:edges fitView>
+    <Background />
+    <Minimap />
+    <Controls />
+</SvelteFlow>
+```
+
+## Finished Flow
+
+Et voilà! We have a flow that looks like this:
 
 <RemoteCodeViewer
   route="guides/getting-started/d"
   framework="svelte"
   editorHeight={400}
+  showOpenInStackblitz={false}
+  orientation="vertical"
 />
-
-There are way more things you can do! You can get a good overview by checking out the [examples](/examples) or the [API reference](/api-reference).

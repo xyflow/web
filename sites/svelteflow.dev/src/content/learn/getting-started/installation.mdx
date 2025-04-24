@@ -1,0 +1,40 @@
+---
+sidebarTitle: Installation
+description: You can install Svelte Flow using npm, pnpm, or yarn.
+---
+
+# Installation and Requirements
+
+For this set-up we assume you already have node.js and npm, yarn or pnpm already installed.
+The Svelte Flow package is published under [`@xyflow/svelte`](https://www.npmjs.com/package/@xyflow/svelte) on npm and installable via:
+
+```bash copy npm2yarn
+npm install @xyflow/svelte@next
+```
+
+Now you can import the Svelte Flow component and the styles in your application:
+
+```js
+import { SvelteFlow } from '@xyflow/svelte';
+import '@xyflow/svelte/dist/style.css';
+```
+
+## Hit the ground running
+
+To get folks building quickly, we have a template repository on GitHub that uses
+Vite and Svelte. You can find the template [here](https://github.com/xyflow/vite-svelte-flow-template).
+
+To use it, you can either create a new repository from the template, or use `degit`
+to grab the template's files without the git history:
+
+```bash copy
+npx degit xyflow/vite-svelte-flow-template your-app-name
+```
+
+## Prior Experience Needed
+
+Svelte Flow is a Svelte library. That means Svelte developers will feel comfortable
+using it. If basic Svelte terms and concepts like reactive state, props, components, and
+lifecycle methods are unfamiliar to you, you might need to learn more about Svelte before being
+able to use Svelte Flow fully. If you've never used Svelte before, we recommend
+first getting started on Svelte through the [official tutorial](https://svelte.dev/tutorial/basics).

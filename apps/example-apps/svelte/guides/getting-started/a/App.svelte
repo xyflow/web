@@ -1,21 +1,10 @@
 <script>
-  import { SvelteFlow, Background, Controls } from '@xyflow/svelte';
-
+  import { SvelteFlow, Background } from '@xyflow/svelte';
   import '@xyflow/svelte/dist/style.css';
-
-  let nodes = $state.raw([]);
-  let edges = $state.raw([]);
 </script>
 
-<main>
-  <SvelteFlow bind:nodes bind:edges>
+<div style:width="100vw" style:height="100vh">
+  <SvelteFlow>
     <Background />
-    <Controls />
   </SvelteFlow>
-</main>
-
-<style>
-  main {
-    height: 100vh;
-  }
-</style>
+</div>
