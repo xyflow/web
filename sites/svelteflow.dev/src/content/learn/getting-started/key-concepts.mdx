@@ -5,7 +5,7 @@ import { RemoteCodeViewer } from 'xy-shared/server';
 Take a couple of nodes and draw an edge between them: You got yourself a flowgraph. This might seem like a very brief definition, but it is the essence of what Svelte Flow solves:
 
 - An interactive, infinite canvas
-- Position nodes connected by edgeson the canvas
+- Render nodes connected by edges on the canvas
 - **It's all just regular Svelte components**
 
 To get up to speed with the terminologies we use, check out the flow below.
@@ -21,10 +21,10 @@ To get up to speed with the terminologies we use, check out the flow below.
 Some terminologies you need to be aware when we talk about working with Svelte Flow in your code:
 
 - **Svelte Flow Component**: The main component that renders the flowgraph
-- [**Svelte Flow Props**](/api-reference/svelte-flow): All configuration and data is passed via props
-- **Viewport**: The visible area of the flowgraph, that can be panned and zoomed.
-  - _"In the viewport"_ means something is moving with the transformation of the viewport.
-- **Base Styles**: The minimal css that needs to be imported to make Svelte Flow work
-- **Built-In Components**: Some additional plug and play components that are included in the package
+  - [**Svelte Flow Props**](/api-reference/svelte-flow): All configuration and data is passed as props
+- **Viewport**: The visible area of the flowgraph, that can be panned and zoomed
+  - _"In the viewport"_ means something is moving with the transformation of the viewport
+- [**Base Styles**](/learn/customization/theming): The minimal css that needs to be imported to make Svelte Flow work
+- [**Built-In Components**](/learn/getting-started/built-in-components): additional plug and play components that are included like Controls and a MiniMap
 
-Now you know everything you need to understand pretty much everything we refer to in the docs. Next, let's build our [first flow](/learn/getting-started/building-a-flow)!
+Now you know everything you need to understand pretty much everything we refer to in the docs. Next, let's [install Svelte Flow](/learn/getting-started/installation) and build our [first flow](/learn/getting-started/building-a-flow)!

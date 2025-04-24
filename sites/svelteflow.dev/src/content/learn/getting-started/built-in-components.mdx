@@ -1,0 +1,66 @@
+---
+description: Svelte Flow comes with several built-in components. Here's an overview of the minimap, controls, background, and panel components.
+---
+
+import { RemoteCodeViewer } from 'xy-shared/server';
+
+# Built-In Components
+
+Svelte Flow comes with several additional components that you can plug into your flow. All you have to do is import and add them as children to the `SvelteFlow` component.
+
+```svelte filename="BuiltInComponents.svelte"
+<script>
+  import { SvelteFlow, MiniMap, Controls, Background, Panel } from '@xyflow/svelte';
+
+  import '@xyflow/svelte/dist/style.css';
+</script>
+
+<SvelteFlow>
+  <MiniMap />
+  <Controls />
+  <Background />
+  <Panel position="top-left">
+    <h1>My Flow</h1>
+  </Panel>
+</SvelteFlow>
+```
+
+## MiniMap
+
+Especially for bigger flows, a [`MiniMap`](/api-reference/components/minimap) can help with navigation. You can easily modify the appearance of each node by providing a `nodeColor` function.
+
+<RemoteCodeViewer
+  route="guides/built-in-components/minimap"
+  framework="svelte"
+  showOpenInStackblitz={false}
+/>
+
+## Controls
+
+Svelte Flow comes with a set of customizable [`Controls`](/api-reference/components/controls) for the viewport. You can zoom in and out, fit the viewport and toggle if the user can move, select and edit the nodes.
+
+<RemoteCodeViewer
+  route="guides/built-in-components/controls"
+  framework="svelte"
+  showOpenInStackblitz={false}
+/>
+
+## Background
+
+It is helpful for orientation to display a repeating pattern in the viewport. With the [`Background`](/api-reference/components/background) component you can choose between different variants. If you want to implement your own pattern or maybe even do more advanced things, take a look at the [source code](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/plugins/Background/Background.svelte) for the `Background` component.
+
+<RemoteCodeViewer
+  route="guides/built-in-components/background"
+  framework="svelte"
+  showOpenInStackblitz={false}
+/>
+
+## Panel
+
+To quickly overlay things on top of the viewport, you can use the [`Panel`](/api-reference/components/panel) component.
+
+<RemoteCodeViewer
+  route="guides/built-in-components/panel"
+  framework="svelte"
+  showOpenInStackblitz={false}
+/>

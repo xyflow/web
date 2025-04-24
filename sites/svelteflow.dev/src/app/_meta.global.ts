@@ -8,10 +8,33 @@ export default {
       index: '',
       'getting-started': {
         items: {
-          installation: '',
           'key-concepts': '',
+          installation: '',
           'building-a-flow': '',
+          'built-in-components': 'Built-in Components',
           'building-a-flow-old': { display: 'hidden' },
+        },
+      },
+      customization: {
+        title: 'Customizing Svelte Flow',
+        items: {
+          'custom-nodes': '',
+          'custom-edges': '',
+          theming: '',
+        },
+      },
+      layouting: {
+        items: {
+          'layouting-libraries': '',
+          'sub-flows': '',
+        },
+      },
+      advanced: {
+        title: 'Advanced Use',
+        items: {
+          typescript: '',
+          'state-management': '',
+          'server-side-rendering': '',
         },
       },
       guides: {

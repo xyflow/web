@@ -105,7 +105,7 @@ function generateAssetsForExample(dir: string) {
 
     const content = Fs.readFileSync(filePath, 'utf-8');
 
-    if (file == 'dependencies.json') {
+    if (file === 'dependencies.json') {
       for (const pkg of JSON.parse(content)) {
         if (!dependencies[pkg]) continue;
 
