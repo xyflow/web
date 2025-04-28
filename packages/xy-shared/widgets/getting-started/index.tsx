@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { ArrowLongRightIcon } from '@heroicons/react/24/outline';
 import { Button, Text, Container } from '@xyflow/xy-ui';
-import { Code } from 'nextra/components';
 
 import { LayoutBreakout } from '../../';
 import { AppWindow } from './app-window';

@@ -1,7 +1,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button, PricingTable, Section, FAQ, reactFlowProFaqItems } from '@xyflow/xy-ui';
-import { BaseLayout, Hero, ImageSlider, SubscribeSection, ReactPlayer } from 'xy-shared';
+import {
+  BaseLayout,
+  Hero,
+  ImageSlider,
+  SubscribeSection,
+  LiteYouTubeEmbed,
+} from 'xy-shared';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 
 import ClientLogos from '@/components/client-logos';
@@ -106,24 +112,11 @@ export default function ReactFlowPro() {
       />
 
       <FAQ items={reactFlowProFaqItems} className="mt-32">
-        <ReactPlayer
-          className="mb-8"
-          url="https://www.youtube.com/watch?v=jm_UoZXEEnU"
-          width="100%"
-          height="100%"
+        <LiteYouTubeEmbed
+          id="jm_UoZXEEnU"
+          title="React Flow Pro plans"
           style={{ aspectRatio: '16 / 9', width: '100%' }}
-          config={{
-            youtube: {
-              embedOptions: {
-                playerVars: {
-                  color: 'white',
-                  cc_load_policy: 1,
-                  cc_lang_pref: 'en',
-                  controls: 1,
-                },
-              },
-            },
-          }}
+          poster="sddefault"
         />
       </FAQ>
       <SubscribeSection

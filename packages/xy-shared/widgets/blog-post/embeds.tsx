@@ -10,7 +10,7 @@
 import NxImage from 'next/image';
 import { cn } from '@xyflow/xy-ui';
 
-import { ReactPlayer, wideNegativeMargin } from '../../';
+import { LiteYouTubeEmbed, wideNegativeMargin } from '../../';
 
 // IMAGES ----------------------------------------------------------------------
 
@@ -38,9 +38,7 @@ export function Image({
   imageClassName,
 }: ImageProps) {
   return (
-    <figure
-      className={cn('my-8', 'mx-0', wide && wideNegativeMargin, className)}
-    >
+    <figure className={cn('my-8', 'mx-0', wide && wideNegativeMargin, className)}>
       <NxImage
         src={src}
         alt={alt}
@@ -52,10 +50,7 @@ export function Image({
         className={cn('w-full', 'h-auto', 'rounded-xl', imageClassName)}
       />
       {attribution && (
-        <a
-          href={attribution}
-          className="block mt-2 text-xs text-right text-gray-400"
-        >
+        <a href={attribution} className="block mt-2 text-xs text-right text-gray-400">
           source: {attribution}
         </a>
       )}
@@ -103,19 +98,19 @@ export function Embed({ src, lazy, className }: EmbedProps) {
 
 export type YoutubeEmbedProps = {
   id: string;
+  title?: string;
 };
 
-export function YoutubeEmbed({ id }: YoutubeEmbedProps) {
+export function YoutubeEmbed({ id, title = 'youtube embed' }: YoutubeEmbedProps) {
   return (
     <div
       className={`relative aspect-video my-8 mx-0 ${wideNegativeMargin} rounded-xl bg-gray-50`}
     >
-      <ReactPlayer
-        controls
-        url={`https://www.youtube.com/watch?v=${id}`}
-        width="100%"
-        height="100%"
-        style={{ position: 'absolute', top: 0, left: 0 }}
+      <LiteYouTubeEmbed
+        id={id}
+        style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+        title={title}
+        poster="maxresdefault"
       />
     </div>
   );

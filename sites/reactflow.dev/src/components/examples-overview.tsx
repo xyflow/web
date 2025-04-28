@@ -20,7 +20,11 @@ export const ExamplesOverview: FC = async () => {
   return (
     <>
       <Section className="!px-0">
-        <Link href="/examples/overview" className="hover:no-underline group">
+        <Link
+          href="/examples/overview"
+          className="hover:no-underline group"
+          prefetch={false}
+        >
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
             <Container className="col-span-2 aspect-video">
               <Image

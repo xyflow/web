@@ -23,9 +23,9 @@ export default async function Page(props: PageProps) {
     // To achieve this, we keep `examples/` in the import path.
     `@/../../apps/example-apps/react/examples/${route.replace('/examples/', '')}/README.mdx`,
   );
+
   return (
     <Wrapper toc={toc} metadata={metadata}>
-      {/* @ts-expect-error -- false positive */}
       <H1>{metadata.title}</H1>
       <MDXContent
         components={{

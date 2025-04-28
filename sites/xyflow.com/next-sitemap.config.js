@@ -1,5 +1,5 @@
 /** @type {import('next-sitemap').IConfig} */
-module.exports = {
+export default {
   siteUrl: 'https://xyflow.com',
   generateRobotsTxt: true,
   generateIndexSitemap: false,
