@@ -21,10 +21,10 @@ import {
   SparklesIcon,
   StarIcon,
 } from '@heroicons/react/24/outline';
+import { MdxFile } from 'nextra';
+import { Metadata } from 'next';
 
 import starSvg from '../../../../public/img/pro/star.svg';
-import { Metadata } from 'next';
-import { MdxFile } from 'nextra';
 import { getPageMap as getExamplesPageMap } from '../../(content-pages)/examples/[...slug]/utils';
 
 export const revalidate = 86400; // 60 * 60 * 24;
@@ -79,7 +79,7 @@ const ProExamples: FC = async () => {
             Upgrade your apps with React Flow <StarText /> Examples
           </div>
         }
-        subtitle="Get 10 advanced React Flow code examples to use in your node-based UIs, crafted by the React Flow core team."
+        subtitle="Get advanced React Flow code examples to use in your node-based UIs, crafted by the React Flow core team."
         action={
           <div className="flex flex-wrap gap-2 items-center">
             <Button
@@ -141,7 +141,7 @@ const ProExamples: FC = async () => {
             height={474}
             alt="Shapes Example Preview"
             priority
-            style={{ objectFit: 'contain', display: 'block' }}
+            style={{ objectFit: 'contain', display: 'block', width: '100%' }}
           />
         </Container>
         <div className="flex flex-wrap mt-10 gap-2">
