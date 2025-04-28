@@ -495,7 +495,12 @@
     "permanent": true
   },
   {
-    "source": "/docs/examples/grouping/sub-flows",
+    "source": "/docs/examples/layout/sub-flows",
+    "destination": "/examples/grouping/sub-flows",
+    "permanent": true
+  },
+  {
+    "source": "/examples/layout/sub-flows",
     "destination": "/examples/grouping/sub-flows",
     "permanent": true
   },
