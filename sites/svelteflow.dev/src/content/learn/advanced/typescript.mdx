@@ -10,9 +10,9 @@ import { Callout } from 'nextra/components';
 Svelte Flow is written in TypeScript because we value the additional safety barrier it provides.
 We export all the types you need for correctly typing data structures and functions you pass to the Svelte Flow component. We also provide a way to extend the types of nodes and edges.
 
-## Basic usage
+## Basic Usage
 
-Let's start with the most basic types you need for a simple starting point. TypeScript might already infer some of these types, but we will define them explicitly nonetheless.
+Let's start with the essential types needed for a basic implementation. While TypeScript can infer some types automatically, we'll define them explicitly for clarity.
 
 ```svelte
 <script lang="ts">
@@ -69,11 +69,11 @@ Let's start with the most basic types you need for a simple starting point. Type
 </SvelteFlow>
 ```
 
-### Custom nodes
+### Custom Nodes
 
-When working with [custom nodes](/learn/customization/custom-nodes) you have the possibility to pass a custom `Node` type to the `NodeProps` type. There are basically two ways to work with custom nodes:
+When working with [custom nodes](/learn/customization/custom-nodes), you can extend the base `Node` type to include your custom data. There are two main approaches:
 
-1. If you have **multiple custom nodes**, you want to pass a specific `Node` type as a generic to the `NodeProps` type:
+1. For **multiple custom nodes**, specify a custom `Node` type as a generic to `NodeProps`:
 
 ```svelte
 <script module>
@@ -92,14 +92,14 @@ When working with [custom nodes](/learn/customization/custom-nodes) you have the
 </div>
 ```
 
-⚠️ If you specify the node data separately, you need to use `type` (an `interface` would not work here):
+⚠️ When defining node data separately, you must use `type` (interfaces won't work):
 
 ```ts
 type NumberNodeData = { number: number };
 type NumberNodeType = Node<NumberNodeData, 'number'>;
 ```
 
-2. If you have **one custom node** that renders different content based on the node type, you want to pass your `Node` union type as a generic to `NodeProps`:
+2. For **a single custom node** that renders different content based on the node type, use a union type:
 
 ```svelte
 <script module>
@@ -125,9 +125,9 @@ type NumberNodeType = Node<NumberNodeData, 'number'>;
 </div>
 ```
 
-### Custom edges
+### Custom Edges
 
-For [custom edges](/learn/customization/custom-edges) you have the same possibility as for custom nodes.
+Similar to custom nodes, you can extend the base `Edge` type for [custom edges](/learn/customization/custom-edges):
 
 ```svelte
 <script module>
@@ -145,22 +145,19 @@ For [custom edges](/learn/customization/custom-edges) you have the same possibil
 <BaseEdge {id} path={edgePath} />
 ```
 
-## Advanced usage
+## Advanced Usage
 
-When creating complex applications with Svelte Flow, you will have a number of custom nodes & edges, each with different kinds of data attached to them.
-When we operate on these nodes & edges through built-in functions and hooks, we have to make sure that we [narrow down](https://www.typescriptlang.org/docs/handbook/2/narrowing.html)
-the types of nodes & edges to prevent runtime errors.
+In complex applications, you'll likely have multiple custom nodes and edges with different data structures. When using built-in functions and hooks, you'll need to properly [narrow down](https://www.typescriptlang.org/docs/handbook/2/
+narrowing.html) the types to prevent runtime errors.
 
-### `Node` and `Edge` type unions
+### `Node` and `Edge` Type Unions
 
-You will see many functions, callbacks and hooks (even the SvelteFlow component itself) that expect a `NodeType` or `EdgeType` generic. These generics are simply
-[unions](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#union-types) of all the different types of nodes & edges you have in your application.
-As long as you have typed the data objects correctly (see previous section), you can use their exported type.
+Many functions, callbacks, and hooks (including the SvelteFlow component) expect `NodeType` or `EdgeType` generics. These are unions of all your custom node and edge types. As long as you've properly typed your data objects, you can use their exported types.
 
 <Callout type="info">
-  If you use any of the built-in nodes ('input', 'output', 'default') or edges
-  ('straight', 'step', 'smoothstep', 'bezier'), you can add the `BuiltInNode` and
-  `BuiltInEdge` types exported from `@xyflow/svelte` to your union type.
+  If you're using any built-in nodes ('input', 'output', 'default') or edges ('straight',
+  'step', 'smoothstep', 'bezier'), include the `BuiltInNode` and `BuiltInEdge` types from
+  `@xyflow/svelte` in your union type.
 </Callout>
 
 ```svelte
@@ -204,14 +201,14 @@ As long as you have typed the data objects correctly (see previous section), you
 
 ### Hooks
 
-The type unions can also be used to type the return values of many hooks.
+You can use these type unions to properly type the return values of hooks:
 
 ```svelte
 <script lang="ts">
   import { useSvelteFlow, useNodeConnections, useNodesData } from '@xyflow/svelte';
   import type { NodeType, EdgeType } from './types';
 
-  // returned nodes and edges are correctly typed now
+  // Nodes and edges are now correctly typed
   const { getNodes, getEdges } = useSvelteFlow<NodeType, EdgeType>();
 
   const connections = useNodeConnections({
@@ -223,7 +220,7 @@ The type unions can also be used to type the return values of many hooks.
   $effect(() => {
     nodesData.current.forEach(({ type, data }) => {
       if (type === 'number') {
-        // This is type-safe because we have narrowed down the type
+        // Type-safe access to number property
         console.log(data.number);
       }
     });
@@ -231,16 +228,15 @@ The type unions can also be used to type the return values of many hooks.
 </script>
 ```
 
-### Type guards
+### Type Guards
 
-There are multiple ways you can define [type guards](https://www.typescriptlang.org/docs/handbook/2/narrowing.html#typeof-type-guards) in TypeScript.
-One way is to define type guard functions like `isNumberNode` or `isTextNode` to filter out specific nodes from a list of nodes.
+TypeScript provides several ways to implement [type guards](https://www.typescriptlang.org/docs/handbook/2/narrowing.html#typeof-type-guards). One common approach is to create type guard functions like `isNumberNode` or `isTextNode` to filter specific nodes from a list:
 
 ```ts
 function isNumberNode(node: NodeType): node is NumberNodeType {
   return node.type === 'number';
 }
 
-// numberNodes is of type NumberNodeType[]
+// numberNodes is now correctly typed as NumberNodeType[]
 let numberNodes = $derived(nodes.filter(isNumberNode));
 ```

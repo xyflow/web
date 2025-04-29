@@ -25,6 +25,7 @@
   "packageManager": "pnpm@10.9.0",
   "name": "docs",
   "dependencies": {
+    "@xyflow/svelte": "link:../xyflow/packages/svelte",
     "dotenv-cli": "^8.0.0"
   }
 }

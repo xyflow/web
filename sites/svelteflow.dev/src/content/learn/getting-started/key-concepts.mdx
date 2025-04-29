@@ -2,13 +2,13 @@ import { RemoteCodeViewer } from 'xy-shared/server';
 
 # Key Concepts
 
-Take a couple of nodes and draw an edge between them: You got yourself a flowgraph. This might seem like a very brief definition, but it is the essence of what Svelte Flow solves:
+At its core, Svelte Flow is about creating interactive flowgraphs - a collection of nodes connected by edges. While this might sound simple in theory, Svelte Flow provides the foundation for building complex interactive diagrams:
 
-- An interactive, infinite canvas
-- Render nodes connected by edges on the canvas
-- **It's all just regular Svelte components**
+- An infinite, interactive canvas for your flowgraph
+- The ability to render and connect nodes with edges
+- **Everything is built using standard Svelte components**
 
-To get up to speed with the terminologies we use, check out the flow below.
+To help you understand the terminology we use throughout the documentation, take a look at the example flow below.
 
 <RemoteCodeViewer
   framework="svelte"
@@ -18,13 +18,13 @@ To get up to speed with the terminologies we use, check out the flow below.
   showOpenInStackblitz={false}
 />
 
-Some terminologies you need to be aware when we talk about working with Svelte Flow in your code:
+Here are the key terms you'll encounter when working with Svelte Flow:
 
-- **Svelte Flow Component**: The main component that renders the flowgraph
-  - [**Svelte Flow Props**](/api-reference/svelte-flow): All configuration and data is passed as props
-- **Viewport**: The visible area of the flowgraph, that can be panned and zoomed
-  - _"In the viewport"_ means something is moving with the transformation of the viewport
-- [**Base Styles**](/learn/customization/theming): The minimal css that needs to be imported to make Svelte Flow work
-- [**Built-In Components**](/learn/getting-started/built-in-components): additional plug and play components that are included like Controls and a MiniMap
+- **Svelte Flow Component**: The main component that renders your flowgraph
+  - [**Svelte Flow Props**](/api-reference/svelte-flow): All configuration and data is passed through props
+- **Viewport**: The visible area of your flowgraph that can be panned and zoomed
+  - When we say something is "in the viewport," it means it moves with the viewport's transformation
+- [**Base Styles**](/learn/customization/theming): The essential CSS required for Svelte Flow to function properly
+- [**Built-In Components**](/learn/getting-started/built-in-components): Ready-to-use components like Controls and MiniMap that enhance your flowgraph
 
-Now you know everything you need to understand pretty much everything we refer to in the docs. Next, let's [install Svelte Flow](/learn/getting-started/installation) and build our [first flow](/learn/getting-started/building-a-flow)!
+With these concepts in mind, you're ready to [install Svelte Flow](/learn/getting-started/installation) and start [building your first flow](/learn/getting-started/building-a-flow)!

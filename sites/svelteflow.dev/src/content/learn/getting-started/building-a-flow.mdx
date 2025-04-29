@@ -4,11 +4,11 @@ import { Callout } from 'nextra/components';
 
 # Building a Flow
 
-Let's not beat around the bush: You're here because you want to learn how to build a flow. If you haven't learned about our [Key Concepts](/learn/getting-started/key-concepts) yet, we recommend you do that first.
+Ready to create your first flow? This guide will walk you through the process step by step. If you haven't reviewed our [Key Concepts](/learn/getting-started/key-concepts) yet, we recommend doing that first.
 
 ## Getting Started
 
-First, you need to import the Svelte Flow Component and the required styles into your project. We also go ahead an import the `Background` component.
+First, import the Svelte Flow Component and its required styles into your project. We'll also import the `Background` component for visual enhancement.
 
 ```svelte
 <script>
@@ -17,12 +17,12 @@ import '@xyflow/svelte/dist/style.css';
 </script>
 ```
 
-Next, make sure you render the main component inside an element that has a defined width and height and put the `Background` component inside the `SvelteFlow` component.
+Next, render the main component inside an element with defined dimensions and place the `Background` component inside `SvelteFlow`.
 
 <Callout type="info">
-  Anything rendered inside the `SvelteFlow` component will be overlayed on top of the
-  viewport. This is useful for additional UI elements that are fixed and should **not
-  move** with the viewport.
+  Any content rendered inside the `SvelteFlow` component will be overlaid on top of the
+  viewport. This is perfect for UI elements that should remain fixed and not move with the
+  viewport. The Background component is fixed but
 </Callout>
 
 ```svelte
@@ -33,7 +33,7 @@ Next, make sure you render the main component inside an element that has a defin
 </div>
 ```
 
-If you successfully rendered the component, you should see a blank canvas like this:
+If everything is set up correctly, you should see a blank canvas like this:
 
 <RemoteCodeViewer
   route="guides/getting-started/a"
@@ -45,18 +45,17 @@ If you successfully rendered the component, you should see a blank canvas like t
 
 ## Adding nodes
 
-Now that the flow is set up, let's add some nodes. To do this, you need to create an array with [node objects](/api-reference/types/node).
-Required properties for node objects are:
+Now that the flow is set up, let's add some nodes. Create an array of [node objects](/api-reference/types/node) with these required properties:
 
-- `id`: unique identifier
-- `position`: x and y coordinate
-- `data`: an object for storing custom data
+- `id`: A unique identifier for each node
+- `position`: The x and y coordinates
+- `data`: An object for storing custom data
 
-To make the array reactive, we will use the [`$state`](https://svelte.dev/docs/svelte/$state) rune.
+We'll use the [`$state`](https://svelte.dev/docs/svelte/$state) rune to make the array reactive.
 
 <Callout color="yellow">
-  Simply using `$state` would not only make the array reactive, but every property of each
-  node object, too. This harbours [performance
+  Simply using `$state` would not only make the array reactive, but every property of
+  eachnode object, too. This could lead to [performance
   issues](https://github.com/sveltejs/svelte/issues/11851), so we use
   [`$state.raw`](https://svelte.dev/docs/svelte/$state#$state.raw) instead.
 </Callout>
@@ -76,13 +75,13 @@ let nodes = $state.raw([
 ]);
 ```
 
-Next, we [bind](https://svelte.dev/docs/svelte/$bindable) the nodes to the `SvelteFlow` component. We are using bind here because both us and the `SvelteFlow` component need to make changes to the nodes.
+Next, we [bind](https://svelte.dev/docs/svelte/$bindable) the nodes to the `SvelteFlow` component. This two-way binding allows both the component and your code to modify the nodes.
 
 ```svelte
 <SvelteFlow bind:nodes>
 ```
 
-If you followed the steps above you should end up with a flow that looks like this:
+If you've followed these steps, you should see a flow that looks like this:
 
 <RemoteCodeViewer
   route="guides/getting-started/b"
@@ -94,24 +93,23 @@ If you followed the steps above you should end up with a flow that looks like th
 
 ## Adding edges
 
-Let's connect the nodes with an edge. To do this, we go ahead and create a [`$state.raw`](https://svelte.dev/docs/svelte/$state#$state.raw) array with [edge objects](/api-reference/types/edge).
-Required properties for edge objects are:
+Let's connect the nodes with an edge. Create a [`$state.raw`](https://svelte.dev/docs/svelte/$state#$state.raw) array with [edge objects](/api-reference/types/edge) that have these required properties:
 
-- `id`: unique identifier
-- `source`: id of the source node
-- `target`: id of the target node
+- `id`: A unique identifier for the edge
+- `source`: The ID of the source node
+- `target`: The ID of the target node
 
 ```js
 let edges = $state.raw([{ id: 'e1-2', source: '1', target: '2' }]);
 ```
 
-Same as with the nodes, we [bind](https://svelte.dev/docs/svelte/$bindable) the edges to the `SvelteFlow` component.
+As with nodes, we [bind](https://svelte.dev/docs/svelte/$bindable) the edges to the `SvelteFlow` component.
 
 ```svelte
 <SvelteFlow bind:nodes bind:edges>
 ```
 
-If you followed the steps above you should end up with a flow that looks like this:
+Your flow should now look like this:
 
 <RemoteCodeViewer
   route="guides/getting-started/c"
@@ -127,7 +125,7 @@ This all might already go into the right drection but it still looks a little bl
 
 #### `fitView`
 
-We can pass [`fitView`](/api-reference/components/svelte-flow#fitview) to the `SvelteFlow` component to fit the initial viewport to the visible nodes.
+Add the [`fitView`](/api-reference/components/svelte-flow#fitview) prop to automatically fit the initial viewport to the visible nodes.
 
 ```svelte
 <SvelteFlow bind:nodes bind:edges fitView>
@@ -156,7 +154,7 @@ let nodes = $state.raw([
 
 #### Built-in edge types
 
-Finally, we change the edge to type `smoothstep` and also give it a label!
+Finally, let's enhance the edge by changing its type to `smoothstep` and adding a label:
 
 ```js
 let edges = $state.raw([
@@ -166,7 +164,7 @@ let edges = $state.raw([
 
 ## Finished Flow
 
-Et voilà! We have a flow that looks like this:
+And there you have it! Your completed flow should look like this:
 
 <RemoteCodeViewer
   route="guides/getting-started/d"

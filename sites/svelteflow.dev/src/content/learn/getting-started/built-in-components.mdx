@@ -27,7 +27,7 @@ Svelte Flow comes with several additional components that you can plug into your
 
 ## MiniMap
 
-Especially for bigger flows, a [`MiniMap`](/api-reference/components/minimap) can help with navigation. You can easily modify the appearance of each node by providing a `nodeColor` function.
+The [`MiniMap`](/api-reference/components/minimap) provides a bird's-eye view of your flowgraph, making navigation easier, especially for larger flows. You can customize the appearance of nodes in the minimap by providing a `nodeColor` function.
 
 <RemoteCodeViewer
   route="guides/built-in-components/minimap"
@@ -47,7 +47,7 @@ Svelte Flow comes with a set of customizable [`Controls`](/api-reference/compone
 
 ## Background
 
-It is helpful for orientation to display a repeating pattern in the viewport. With the [`Background`](/api-reference/components/background) component you can choose between different variants. If you want to implement your own pattern or maybe even do more advanced things, take a look at the [source code](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/plugins/Background/Background.svelte) for the `Background` component.
+The [`Background`](/api-reference/components/background) component adds a visual grid pattern to your flowgraph, helping users maintain orientation. You can choose from different pattern variants, or if you need more advanced customization, you can explore the [source code](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/plugins/Background/Background.svelte) to implement your own pattern.
 
 <RemoteCodeViewer
   route="guides/built-in-components/background"
@@ -57,7 +57,7 @@ It is helpful for orientation to display a repeating pattern in the viewport. Wi
 
 ## Panel
 
-To quickly overlay things on top of the viewport, you can use the [`Panel`](/api-reference/components/panel) component.
+The [`Panel`](/api-reference/components/panel) component allows you to add fixed overlays to your flowgraph, perfect for titles, controls, or any other UI elements that should remain stationary.
 
 <RemoteCodeViewer
   route="guides/built-in-components/panel"
