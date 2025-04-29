@@ -55,6 +55,7 @@ const ProExamples: FC = async () => {
       id: string;
       name: string;
       description: string;
+      detailedDescription: string;
     }[]
   >((result, curr) => {
     const remote = remoteProExamples.find((remote) => remote.id === curr.name);
@@ -174,7 +175,7 @@ const ProExamples: FC = async () => {
             <ProjectPreview
               image={example.image}
               title={example.name}
-              description={example.description}
+              description={example.detailedDescription}
               linkLabel="Demo"
             />
           </ContentGridItem>
