@@ -1,0 +1,56 @@
+---
+description: Learn how to use sub flows
+---
+
+import { Callout } from 'nextra/components';
+import { RemoteCodeViewer } from 'xy-shared/server';
+
+# Sub Flows
+
+A sub flow is essentially a flow contained within a node. A sub flow can either function as an independent entity or can be interconnected with nodes outside of its parent node. This feature can be used for grouping nodes. In this section of the documentation, we will implement a flow with sub flows and explain available options for child nodes.
+
+### Defining child nodes
+
+To define a node as a child of another node, you need to use the `parentId` option (you can find a list of all options in the [node options section](/api-reference/types/node)). Once we do that, the child node is positioned relative to its parent. A position of `{ x: 0, y: 0 }` is at the top left corner of the parent.
+
+```js highlight="parentId: 'A'"
+let nodes = $state.raw([
+  {
+    id: 'A',
+    data: { label: 'parent' },
+    position: { x: 0, y: 0 },
+  },
+  {
+    id: 'B',
+    data: { label: 'child' },
+    position: { x: 10, y: 10 },
+    parentId: 'A',
+  },
+]);
+```
+
+<Callout type="info">
+  <strong>Order of Nodes:</strong>
+  Children have to appear before their parent nodes in the `nodes` array!
+</Callout>
+
+#### `extent: 'parent'`
+
+When the parent node has a certain width and height, we can restrict the child node's movement to the parent's boundaries. This is done by setting the `extent` option to `'parent'`. The child node will then be limited to the parent's dimensions, and it won't be possible to drag it outside of the parent node.
+
+<RemoteCodeViewer route="guides/subflows/a" framework="svelte" editorHeight={500} />
+
+### How child nodes work
+
+When you drag the parent node, you will notice that the child nodes move accordingly. Adding a node to another node with the `parentId` option positions it relative to its parent. In terms of markup, the child node is not a subordinate. You can drag or position the child outside of its parent (when the `extent: 'parent'` option is not set). Nevertheless, when you drag the parent, the child moves too.
+
+In the provided example, we use the `group` type for the parent node. It's a built-in node type that has a transparent background and a border. Of course you can use [any custom node](/learn/layouting/sub-flows#any-node-can-be-a-parent-node) type as parent node.
+
+Let's continue by adding more nodes and edges. As you can see, we can connect nodes within a group and create connections that go from a sub flow to an outer node:
+
+<RemoteCodeViewer route="guides/subflows/b" framework="svelte" editorHeight={500} />
+### Any node can be a parent node
+
+To demonstrate, let's remove the label from node B and add some child nodes. This example highlights the flexibility of using one of the default node types as a parent. Furthermore, we set the child nodes to have `draggable: false`, rendering them non-movable.
+
+<RemoteCodeViewer route="guides/subflows/c" framework="svelte" editorHeight={500} />

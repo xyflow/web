@@ -12,7 +12,6 @@ export default {
           installation: '',
           'building-a-flow': '',
           'built-in-components': 'Built-in Components',
-          'building-a-flow-old': { display: 'hidden' },
         },
       },
       customization: {
@@ -36,9 +35,6 @@ export default {
           'state-management': '',
           'server-side-rendering': '',
         },
-      },
-      guides: {
-        display: 'hidden',
       },
       'api-reference': { href: '/api-reference' },
     },

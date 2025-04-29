@@ -12,17 +12,16 @@
       style: 'width: 170px; height: 140px;',
     },
     {
-      id: 'B',
+      id: 'A-1',
       type: 'input',
-      data: { label: 'child 1' },
+      data: { label: 'child' },
       position: { x: 10, y: 10 },
       parentId: 'A',
-      extent: 'parent',
     },
     {
-      id: 'C',
-      data: { label: 'child 2' },
-      position: { x: 10, y: 90 },
+      id: 'A-2',
+      data: { label: "child with extent: 'parent'" },
+      position: { x: 10, y: 80 },
       parentId: 'A',
       extent: 'parent',
     },
@@ -31,14 +30,6 @@
   let edges = $state.raw([]);
 </script>
 
-<div style="height:100vh;">
-  <SvelteFlow
-    bind:nodes
-    bind:edges
-    fitView
-    autoPanOnNodeDrag={false}
-    attributionPosition="top-right"
-  >
-    <Background bgColor="rgba(255, 240, 137, 0.25)" />
-  </SvelteFlow>
-</div>
+<SvelteFlow bind:nodes bind:edges fitView autoPanOnNodeDrag={false}>
+  <Background />
+</SvelteFlow>
