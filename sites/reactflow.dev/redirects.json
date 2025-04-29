@@ -496,7 +496,12 @@
   },
   {
     "source": "/docs/examples/layout/sub-flows",
-    "destination": "/examples/layout/sub-flows",
+    "destination": "/examples/grouping/sub-flows",
+    "permanent": true
+  },
+  {
+    "source": "/examples/layout/sub-flows",
+    "destination": "/examples/grouping/sub-flows",
     "permanent": true
   },
   {
@@ -547,6 +552,11 @@
   {
     "source": "/docs/examples/nodes/dynamic-grouping",
     "destination": "/examples/nodes/dynamic-grouping",
+    "permanent": true
+  },
+  {
+    "source": "/examples/nodes/dynamic-grouping",
+    "destination": "/examples/grouping/selection-grouping",
     "permanent": true
   },
   {
@@ -981,7 +991,7 @@
   },
   {
     "source": "/docs/examples/sub-flows",
-    "destination": "/examples/layout/sub-flows",
+    "destination": "/examples/grouping/sub-flows",
     "permanent": true
   },
   {
@@ -1061,7 +1071,7 @@
   },
   {
     "source": "/examples/layout/workflow-builder",
-    "destination": "/examples/layout/dynamic-layouting",
+    "destination": "/examples/nodes/dynamic-layouting",
     "permanent": true
   },
   {

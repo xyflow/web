@@ -2,7 +2,7 @@
   import {
     getBezierPath,
     BaseEdge,
-    EdgeLabelRenderer,
+    EdgeLabel,
     useStore,
     type EdgeProps,
   } from '@xyflow/svelte';
@@ -33,7 +33,7 @@
 </script>
 
 <BaseEdge path={edgePath} />
-<EdgeLabelRenderer>
+<EdgeLabel>
   {#if data.startLabel}
     <div
       onclick={() => store.handleEdgeSelection(id)}
@@ -52,7 +52,7 @@
       {data.endLabel}
     </div>
   {/if}
-</EdgeLabelRenderer>
+</EdgeLabel>
 
 <style>
   .edge-label {

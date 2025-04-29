@@ -33,19 +33,7 @@ body {
 .text-input-node__input {
   width: 100%;
   box-sizing: border-box;
-  margin: 5px 0px;
-  border-radius: 3px;
-  border: var(--xy-node-border-default);
-}
-
-.text-input-node__input::-webkit-outer-spin-button,
-input[type='number']::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-}
-
-.text-input-node__input {
-  -moz-appearance: textfield;
-  appearance: textfield;
+  margin: 5px 0;
 }
 
 /* Annotation Node */

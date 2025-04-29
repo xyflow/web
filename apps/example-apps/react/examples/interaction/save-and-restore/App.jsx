@@ -77,12 +77,19 @@ const SaveRestore = () => {
       onInit={setRfInstance}
       fitView
       fitViewOptions={{ padding: 2 }}
+      style={{ backgroundColor: '#F7F9FB' }}
     >
       <Background />
       <Panel position="top-right">
-        <button onClick={onSave}>save</button>
-        <button onClick={onRestore}>restore</button>
-        <button onClick={onAdd}>add node</button>
+        <button className="xy-theme__button" onClick={onSave}>
+          save
+        </button>
+        <button className="xy-theme__button" onClick={onRestore}>
+          restore
+        </button>
+        <button className="xy-theme__button" onClick={onAdd}>
+          add node
+        </button>
       </Panel>
     </ReactFlow>
   );

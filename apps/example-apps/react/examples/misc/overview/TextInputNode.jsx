@@ -38,14 +38,9 @@ export default memo(({ id }) => {
           const maxHeight = Math.max(parentHeight - currentPosY, 0);
 
           const newSize = {
-            width:
-              attr === 'width'
-                ? Math.min(value, maxWidth)
-                : currentNode.style.width,
+            width: attr === 'width' ? Math.min(value, maxWidth) : currentNode.style.width,
             height:
-              attr === 'height'
-                ? Math.min(value, maxHeight)
-                : currentNode.style.height,
+              attr === 'height' ? Math.min(value, maxHeight) : currentNode.style.height,
           };
 
           return {
@@ -71,7 +66,7 @@ export default memo(({ id }) => {
             type="number"
             value={dimensions ? parseInt(dimensions[attr]) : 0}
             onChange={updateDimension(attr)}
-            className="text-input-node__input nodrag"
+            className="text-input-node__input xy-theme__input nodrag"
             disabled={!dimensions}
           />
         </Fragment>

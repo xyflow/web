@@ -72,15 +72,30 @@ function Flow() {
       >
         <Panel>
           <h3>Node Toolbar position:</h3>
-          <button onClick={() => setPosition(Position.Top)}>top</button>
-          <button onClick={() => setPosition(Position.Right)}>right</button>
-          <button onClick={() => setPosition(Position.Bottom)}>bottom</button>
-          <button onClick={() => setPosition(Position.Left)}>left</button>
+          <button className="xy-theme__button" onClick={() => setPosition(Position.Top)}>
+            top
+          </button>
+          <button
+            className="xy-theme__button"
+            onClick={() => setPosition(Position.Right)}
+          >
+            right
+          </button>
+          <button
+            className="xy-theme__button"
+            onClick={() => setPosition(Position.Bottom)}
+          >
+            bottom
+          </button>
+          <button className="xy-theme__button" onClick={() => setPosition(Position.Left)}>
+            left
+          </button>
           <h3>Override Node Toolbar visibility</h3>
           <label>
             <input
               type="checkbox"
               onChange={(e) => forceToolbarVisible(e.target.checked)}
+              className="xy-theme__checkbox"
             />
             <span>Always show toolbar</span>
           </label>

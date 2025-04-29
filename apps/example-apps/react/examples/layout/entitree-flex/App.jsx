@@ -32,10 +32,7 @@ const LayoutFlow = () => {
   const onConnect = useCallback(
     (params) =>
       setEdges((eds) =>
-        addEdge(
-          { ...params, type: ConnectionLineType.SmoothStep, animated: true },
-          eds,
-        ),
+        addEdge({ ...params, type: ConnectionLineType.SmoothStep, animated: true }, eds),
       ),
     [],
   );
@@ -63,10 +60,15 @@ const LayoutFlow = () => {
       connectionLineType={ConnectionLineType.SmoothStep}
       fitView
       nodeTypes={nodeTypes}
+      style={{ backgroundColor: '#F7F9FB' }}
     >
       <Panel position="top-right">
-        <button onClick={() => onLayout('TB')}>vertical layout</button>
-        <button onClick={() => onLayout('LR')}>horizontal layout</button>
+        <button className="xy-theme__button" onClick={() => onLayout('TB')}>
+          vertical layout
+        </button>
+        <button className="xy-theme__button" onClick={() => onLayout('LR')}>
+          horizontal layout
+        </button>
       </Panel>
       <Background />
     </ReactFlow>

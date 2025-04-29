@@ -21,10 +21,10 @@ import {
   SparklesIcon,
   StarIcon,
 } from '@heroicons/react/24/outline';
+import { MdxFile } from 'nextra';
+import { Metadata } from 'next';
 
 import starSvg from '../../../../public/img/pro/star.svg';
-import { Metadata } from 'next';
-import { MdxFile } from 'nextra';
 import { getPageMap as getExamplesPageMap } from '../../(content-pages)/examples/[...slug]/utils';
 
 export const revalidate = 86400; // 60 * 60 * 24;
@@ -48,13 +48,16 @@ const ProExamples: FC = async () => {
     .filter((item) => item.frontMatter!.is_pro_example)
     .sort((a, b) => a.frontMatter!.title.localeCompare(b.frontMatter!.title));
 
-  const examples = proExamples.reduce<{
-    route: string,
-    image: string,
-    id: string,
-    name: string,
-    description: string,
-  }[]>((result, curr) => {
+  const examples = proExamples.reduce<
+    {
+      route: string;
+      image: string;
+      id: string;
+      name: string;
+      description: string;
+      detailedDescription: string;
+    }[]
+  >((result, curr) => {
     const remote = remoteProExamples.find((remote) => remote.id === curr.name);
 
     if (remote) {
@@ -77,7 +80,7 @@ const ProExamples: FC = async () => {
             Upgrade your apps with React Flow <StarText /> Examples
           </div>
         }
-        subtitle="Get 10 advanced React Flow code examples to use in your node-based UIs, crafted by the React Flow core team."
+        subtitle="Get advanced React Flow code examples to use in your node-based UIs, crafted by the React Flow core team."
         action={
           <div className="flex flex-wrap gap-2 items-center">
             <Button
@@ -139,7 +142,7 @@ const ProExamples: FC = async () => {
             height={474}
             alt="Shapes Example Preview"
             priority
-            style={{ objectFit: 'contain', display: 'block' }}
+            style={{ objectFit: 'contain', display: 'block', width: '100%' }}
           />
         </Container>
         <div className="flex flex-wrap mt-10 gap-2">
@@ -172,7 +175,7 @@ const ProExamples: FC = async () => {
             <ProjectPreview
               image={example.image}
               title={example.name}
-              description={example.description}
+              description={example.detailedDescription}
               linkLabel="Demo"
             />
           </ContentGridItem>
@@ -192,8 +195,8 @@ const ProExamples: FC = async () => {
             </div>
             <div className="max-md:w-full md:flex-1">
               <Text className="mb-8 text-gray-300">
-                Get all 10 pro examples with just one month of a Pro subscription from
-                129€
+                Get full access to all pro examples with just one month with a Pro
+                subscription — from €129.
               </Text>
               <div className="flex flex-wrap gap-2 mt-4">
                 <Button

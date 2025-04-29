@@ -151,7 +151,7 @@ export type InternalRoute =
   | '/examples/layout/expand-collapse'
   | '/examples/layout/force-layout'
   | '/examples/layout/horizontal'
-  | '/examples/layout/sub-flows'
+  | '/examples/grouping/sub-flows'
   | '/examples/layout/workflow-builder'
   | '/examples/misc/_meta.tsx'
   | '/examples/misc/download-image'

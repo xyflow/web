@@ -1,17 +1,17 @@
 ---
 title: Expand and Collapse
-description: Click on parent nodes to toggle the visibility of their children
+description: Create hierarchical trees with expandable and collapsible nodes using dagre for automatic layouts
 is_pro_example: true
 ---
 
-Interactive example to demonstrate how you can navigate hierarchical data structures. You can click on a node to toggle its child nodes and animate the layout changes.
+This example demonstrates how to implement expandable and collapsible nodes in a hierarchical tree structure. Nodes with children can be expanded or collapsed by clicking on them, revealing or hiding their descendants. The implementation uses a custom `useExpandCollapse` hook that maintains the complete graph structure while only rendering the currently visible portions.
 
 <ProExampleViewer slug="expand-collapse" />
 
 ### About this Pro Example
 
-- Once subscribed, you'll get access to **two different versions** of this example: One using [d3-hierarchy](https://github.com/d3/d3-hierarchy) and the
-  other one using [dagre.js](https://github.com/dagrejs/dagre) as a layout
-  engine.
-- The animation can be switched off easily and is implemented using [d3-timer](https://www.npmjs.com/package/d3-timer)
-- Dependencies: [reactflow](https://www.npmjs.com/package/reactflow), [d3-hierarchy](https://www.npmjs.com/package/d3-hierarchy), [d3-timer](https://www.npmjs.com/package/d3-timer)
+- Dependencies: [@xyflow/react](https://www.npmjs.com/package/@xyflow/react), [@dagrejs/dagre](https://www.npmjs.com/package/@dagrejs/dagre)
+- Implements a reusable `useExpandCollapse` hook that handles visibility logic
+- Demonstrates dynamic node addition with automatic layout recalculation
+- Uses node data properties to track expanded/collapsed state
+- Provides interactive controls to expand/collapse nodes and add children

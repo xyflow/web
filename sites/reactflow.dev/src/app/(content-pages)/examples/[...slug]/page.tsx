@@ -14,14 +14,6 @@ type PageProps = Readonly<{
 }>;
 
 const { wrapper: Wrapper, h1: H1 } = getMDXComponents();
-const mdxComponents = {
-  Callout,
-  Cards,
-  ArrowTopRightOnSquareIcon,
-  RemoteCodeViewer,
-  ProExampleViewer,
-  Button,
-};
 
 export default async function Page(props: PageProps) {
   const params = await props.params;
@@ -35,7 +27,16 @@ export default async function Page(props: PageProps) {
   return (
     <Wrapper toc={toc} metadata={metadata}>
       <H1>{metadata.title}</H1>
-      <MDXContent components={mdxComponents} />
+      <MDXContent
+        components={{
+          Callout,
+          Cards,
+          ArrowTopRightOnSquareIcon,
+          RemoteCodeViewer,
+          ProExampleViewer,
+          Button,
+        }}
+      />
     </Wrapper>
   );
 }
