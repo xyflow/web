@@ -20,12 +20,12 @@
     "concurrently": "^9.1.2",
     "cors": "^2.8.5",
     "express": "^5.1.0",
-    "glob": "^11.0.1",
+    "glob": "^11.0.2",
     "picocolors": "^1.1.1",
     "svelte-check": "^4.1.6",
     "tslib": "^2.8.1",
     "typescript": "^5.8.3",
-    "vite": "^6.3.2"
+    "vite": "^6.3.3"
   },
   "dependencies": {
     "@dagrejs/dagre": "^1.1.4",
@@ -33,7 +33,7 @@
     "@radix-ui/react-slot": "^1.2.0",
     "@threlte/core": "^8.0.2",
     "@xyflow/react": "^12.6.0",
-    "@xyflow/svelte": "1.0.0-next.9",
+    "@xyflow/svelte": "1.0.0-next.10",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "d3-drag": "^3.0.0",
@@ -46,7 +46,7 @@
     "html-to-image": "1.11.13",
     "lucide-react": "^0.503.0",
     "nanoid": "^5.1.5",
-    "puppeteer": "^24.7.1",
+    "puppeteer": "^24.7.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-icons": "^5.5.0",
