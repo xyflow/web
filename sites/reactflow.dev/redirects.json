@@ -555,6 +555,11 @@
     "permanent": true
   },
   {
+    "source": "/examples/nodes/dynamic-grouping",
+    "destination": "/examples/grouping/selection-grouping",
+    "permanent": true
+  },
+  {
     "source": "/docs/examples/nodes/easy-connect",
     "destination": "/examples/nodes/easy-connect",
     "permanent": true
