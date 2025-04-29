@@ -1,0 +1,150 @@
+---
+title: Server Side Rendering
+description: Step-by-step guide to render SvelteFlow apps on the server for displaying static flows, dynamically generating images from flows, or rendering graphs in non-javascript environments
+---
+
+# Server side rendering, server side generation
+
+import { Callout } from 'nextra/components';
+
+<Callout type="info">Server side rendering is supported since SvelteFlow 1.0</Callout>
+
+This is an advanced use case and assumes you are already familiar with SvelteFlow. If you're new to SvelteFlow, check out our [getting started guide](/learn/getting-started/key-concepts).
+
+In this guide you will learn how to configure SvelteFlow to render a flow on the server, which will allow you to
+
+- Display static HTML diagrams in documentation
+- Render SvelteFlow diagrams in non-js environments
+- Dynamically generate open graph images that appear as embeds when sharing a link to your flow
+
+(If you want to download an image of your flow, there's an easier way to do that on the client-side in our [download image example](/examples/misc/download-image).)
+
+### Why rendering on the server is not trivial
+
+If you are interested in why we need to do the things we need do, here's a quick rundown what essential steps Svelte Flow performs on the client-side:
+
+1. **Measures the dimensions of your nodes**
+
+   You can render anything you want inside your nodes. This means, the size of it is determined by your browser layouting and rendering your markup.
+
+2. **Finds out the positions of your handles**
+
+   To draw edges, Svelte Flow needs to know the positions of your handles. You can position your handles with CSS anywhere you want.
+
+3. **Renders your flow inside any enclosing element**
+
+   Svelte Flow can be mounted inside any element you want. The size of the flow is determined by the size of the enclosing element.
+
+### Node dimensions
+
+You need to configure a few things to make SvelteFlow work on the server, the most important being the node dimensions. SvelteFlow only renders nodes if they have a width and height. Usually you pass nodes without a specific `width` and `height`, they are then measured and the dimensions get written to `measured.width` and `measured.height`. Since we can't measure the dimensions on the server, we need to pass them explicitly. This can be done either by setting a fixed `width` and `height` or if you want to have dynamic dimensions once the flow is mounted on the client, you can use the `initialWidth` and `initialHeight` node properties.
+
+```svelte
+<script>
+  const nodes = [
+    {
+      id: '1',
+      type: 'default',
+      position: { x: 0, y: 0 },
+      data: { label: 'Node 1' },
+      width: 100,
+      height: 50,
+    },
+  ];
+</script>
+```
+
+SvelteFlow now knows the dimensions of the node and can render it on the server. The `width` and `height` properties are used as an inline style for the node. If you expect nodes to have different dimensions on the client or if the dimensions should be dynamic based on the content, you can use the `initialWidth` and `initialHeight` properties. They are only used for the first render (on the server or on the client) as long as the nodes are not measured and `measured.width` and `measured.height` are not set.
+
+<Callout type="default">
+  <strong>
+    There are two ways to specify node dimensions for server side rendering:
+  </strong>
+  <div>
+    1. `width` and `height` for static dimensions that are known in advance and don't
+    change.
+  </div>
+  <div>
+    2. `initialWidth` and `initialHeight` for dynamic dimensions that are not known in
+    advance or change.
+  </div>
+</Callout>
+
+### Handle positions
+
+You probably also want to render the edges on the server. On the client, SvelteFlow checks the positions of the handles and stores that information to draw the edges. Since we can't measure the handle positions on the server, we need to pass this information, too. This can be done with the `handles` property of a node.
+
+```svelte
+<script>
+  import { Position } from '@xyflow/svelte';
+
+  const nodes = [
+    {
+      id: '1',
+      type: 'default',
+      position: { x: 0, y: 0 },
+      data: { label: 'Node 1' },
+      width: 100,
+      height: 50,
+      handles: [
+        {
+          type: 'target',
+          position: Position.Top,
+          x: 100 / 2,
+          y: 0,
+        },
+        {
+          type: 'source',
+          position: Position.Bottom,
+          x: 100 / 2,
+          y: 50,
+        },
+      ],
+    },
+  ];
+</script>
+```
+
+With this additional information, SvelteFlow knows enough about the handles to render the edges on the server. If you are fine with just rendering the nodes, you can skip this step.
+
+### Using `fitView` on the server
+
+If you know the dimensions of the SvelteFlow container itself, you can even use `fitView` on the server. For this, you need to pass `width` and `height` of the container to the `SvelteFlow` component.
+
+```svelte
+<script>
+  import { SvelteFlow } from '@xyflow/svelte';
+
+  let nodes = $state.raw([/* ... */]);
+  let edges = $state.raw([/* ... */]);
+</script>
+
+<SvelteFlow {nodes} {edges} fitView width={1000} height={500} />
+```
+
+### Creating static HTML
+
+If you want to create static HTML, you can use Svelte's server-side rendering capabilities. This will render the SvelteFlow component to a string of HTML. You can then use this string to create a static HTML file or send it as a response to an HTTP request.
+
+```svelte
+<script>
+  import { SvelteFlow, Background } from '@xyflow/svelte';
+  import { render } from 'svelte/server';
+
+  function toHTML({ nodes, edges, width, height }) {
+    const { html } = render(SvelteFlow, {
+      props: {
+        nodes,
+        edges,
+        width,
+        height,
+        minZoom: 0.2,
+        fitView: true,
+      },
+      children: [Background],
+    });
+
+    return html;
+  }
+</script>
+```
