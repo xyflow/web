@@ -64,11 +64,11 @@ export default function ReactFlowPro() {
       <Hero
         title={
           <>
-            Build Better Node-Based UIs with{' '}
-            <span className="text-primary">React Flow</span>
+            Build Better Node-Based UIs with <br />
+            <span className="text-primary">React Flow Pro</span>
           </>
         }
-        subtitle="With React Flow Pro, you get advanced code examples, technical support, and help fund our development — while the library remains fully open source under the MIT license."
+        subtitle="Get advanced code examples, technical support, and help funding our development — while keeping the library open source and under the MIT license."
         kicker="React Flow Pro"
         kickerIcon={<SparklesIcon />}
         action={

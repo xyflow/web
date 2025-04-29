@@ -990,11 +990,6 @@
     "permanent": true
   },
   {
-    "source": "/examples/layout/sub-flows",
-    "destination": "/examples/grouping/sub-flows",
-    "permanent": true
-  },
-  {
     "source": "/docs/examples/use-react-flow-hook",
     "destination": "/examples/misc/use-react-flow-hook",
     "permanent": true
