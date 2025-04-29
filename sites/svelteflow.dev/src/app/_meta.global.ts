@@ -32,7 +32,6 @@ export default {
         title: 'Advanced Use',
         items: {
           typescript: '',
-          'state-management': '',
           'server-side-rendering': '',
         },
       },
