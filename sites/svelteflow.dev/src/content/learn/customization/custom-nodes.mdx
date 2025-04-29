@@ -17,7 +17,7 @@ To create a custom node, all you need to do is create a Svelte component. Svelte
 
 Let's dive into an example by creating a custom node called `TextUpdaterNode`. For this, we've added a controlled input field with a oninput handler. We simply use the 'text' property from the node's data for the input and we update the node's data via the [`updateNodeData`](/api-reference/hooks/use-svelte-flow#update-node-data) function, that can be accessed through the [`useSvelteFlow`](/api-reference/hooks/use-svelte-flow) hook.
 
-```svelte
+```svelte filename="TextUpdaterNode.svelte"
 <script lang="ts">
   import { Position, useSvelteFlow, type NodeProps } from '@xyflow/svelte';
 
@@ -46,7 +46,7 @@ Let's dive into an example by creating a custom node called `TextUpdaterNode`. F
 
 Now we need to communicate the new custom node to Svelte Flow. You can add custom nodes by passing the [`nodeTypes`](/api-reference/svelte-flow#node-types) prop.
 
-```svelte
+```svelte filename="App.svelte"
 <script>
   import { SvelteFlow } from '@xyflow/svelte';
   import TextUpdaterNode from './TextUpdaterNode.svelte';

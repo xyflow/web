@@ -30,7 +30,7 @@ the actual SVG path to render, Svelte Flow comes with some handy utility functio
 To kick start our custom edge, we'll just render a straight path between the
 source and target.
 
-```svelte
+```svelte filename="CustomEdge.svelte"
 <script lang="ts">
   import { BaseEdge, getStraightPath, type EdgeProps } from '@xyflow/svelte';
 
@@ -63,7 +63,7 @@ It's important to define the `edgeTypes` object _outside of the component_ or to
 use Svelte's `$derived` to prevent unnecessary re-renders. Svelte Flow will
 show a warning in the console if you forget to do this.
 
-```svelte
+```svelte filename="App.svelte"
 <script lang="ts">
   import { SvelteFlow, type EdgeTypes } from '@xyflow/svelte';
   import CustomEdge from './CustomEdge.svelte';
@@ -92,7 +92,7 @@ Because Svelte Flows edges are mounted inside a SVG component, we need to escape
 Let's add a button to our custom edge that can be used to delete the edge it's
 attached to:
 
-```svelte
+```svelte filename="CustomEdge.svelte"
 <script lang="ts">
   import {
     BaseEdge,
