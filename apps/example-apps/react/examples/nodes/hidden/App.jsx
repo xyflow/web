@@ -7,10 +7,10 @@ import {
   addEdge,
   MiniMap,
   Controls,
+  Panel,
 } from '@xyflow/react';
 
 import '@xyflow/react/dist/style.css';
-
 
 const initialNodes = [
   {
@@ -42,10 +42,7 @@ const HiddenFlow = () => {
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   const [hidden, setHidden] = useState(false);
 
-  const onConnect = useCallback(
-    (params) => setEdges((els) => addEdge(params, els)),
-    [],
-  );
+  const onConnect = useCallback((params) => setEdges((els) => addEdge(params, els)), []);
 
   useEffect(() => {
     setNodes((nds) => nds.map(hide(hidden)));
@@ -60,26 +57,24 @@ const HiddenFlow = () => {
       onEdgesChange={onEdgesChange}
       onConnect={onConnect}
       fitView
-      style={{ backgroundColor: "#F7F9FB" }}
+      style={{ backgroundColor: '#F7F9FB' }}
     >
       <MiniMap />
       <Controls />
 
-      <div className='isHidden__button'>
-        <div>
-          <label htmlFor="ishidden">
-            isHidden
-            <input
-              id="ishidden"
-              type="checkbox"
-              checked={hidden}
-              onChange={(event) => setHidden(event.target.checked)}
-              className="react-flow__ishidden"
-            />
-          </label>
-        </div>
-      </div>
-      <Background  />
+      <Panel>
+        <label htmlFor="ishidden">
+          isHidden
+          <input
+            id="ishidden"
+            type="checkbox"
+            checked={hidden}
+            onChange={(event) => setHidden(event.target.checked)}
+            className="react-flow__ishidden xy-theme__checkbox"
+          />
+        </label>
+      </Panel>
+      <Background />
     </ReactFlow>
   );
 };

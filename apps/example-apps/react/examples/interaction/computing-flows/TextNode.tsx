@@ -1,11 +1,5 @@
 import { memo } from 'react';
-import {
-  Position,
-  Handle,
-  useReactFlow,
-  type NodeProps,
-  type Node,
-} from '@xyflow/react';
+import { Position, Handle, useReactFlow, type NodeProps, type Node } from '@xyflow/react';
 
 function TextNode({ id, data }: NodeProps<Node<{ text: string }>>) {
   const { updateNodeData } = useReactFlow();
@@ -17,7 +11,7 @@ function TextNode({ id, data }: NodeProps<Node<{ text: string }>>) {
         <input
           onChange={(evt) => updateNodeData(id, { text: evt.target.value })}
           value={data.text}
-          style={{ display: 'block' }}
+          className="xy-theme__input"
         />
       </div>
       <Handle type="source" position={Position.Right} />

@@ -11,8 +11,8 @@ export const meta = {
       'custom-node': '',
       'delete-middle-node': '',
       'drag-handle': '',
+      'dynamic-layouting': '',
       'easy-connect': '',
-      hidden: '',
       intersections: '',
       'node-resizer': '',
       'node-toolbar': '',
@@ -26,7 +26,7 @@ export const meta = {
   edges: {
     items: {
       'animating-edges': '',
-      'custom-connectionline': '',
+      'custom-connectionline': 'Custom Connection Line',
       'custom-edges': '',
       'delete-edge-on-drop': '',
       'edge-label-renderer': '',
@@ -47,12 +47,22 @@ export const meta = {
       'context-menu': '',
       'contextual-zoom': '',
       'drag-and-drop': '',
-      'interaction-props': '',
       'prevent-cycles': '',
       'save-and-restore': '',
       'touch-device': '',
       validation: '',
-      'zoom-transitions': '',
+      'helper-lines': '',
+      collaborative: '',
+      'copy-paste': '',
+      'undo-redo': '',
+    },
+  },
+  grouping: {
+    title: 'Subflows & Grouping',
+    items: {
+      'selection-grouping': '',
+      'parent-child-relation': '',
+      'sub-flows': '',
     },
   },
   layout: {
@@ -60,17 +70,17 @@ export const meta = {
       dagre: '',
       elkjs: '',
       'elkjs-multiple-handles': '',
-      'entitree-flex': '',
       horizontal: '',
-      'sub-flows': '',
-      'dynamic-layouting': '',
+      'expand-collapse': '',
+      'auto-layout': '',
+      'force-layout': '',
+      'layout-animation': '',
     },
   },
   styling: {
     items: {
       'base-style': '',
       'dark-mode': '',
-      'styled-components': '',
       tailwind: '',
       'turbo-flow': '',
     },
@@ -78,9 +88,7 @@ export const meta = {
   misc: {
     items: {
       'download-image': '',
-      provider: '',
-      'use-react-flow-hook': '',
-      'static-server-side-generation': '',
+      'server-side-image-creation': '',
     },
   },
 };
