@@ -44,17 +44,17 @@ If everything is set up correctly, you should see a blank canvas like this:
 
 ## Adding nodes
 
-Now that the flow is set up, let's add some nodes. Create an array of [node objects](/api-reference/types/node) with these required properties:
+Now that the flow is set up, let's add some nodes. Create an array of [node objects](/api-reference/types/node) with these **required** properties:
 
 - `id`: A unique identifier for each node
 - `position`: The x and y coordinates
 - `data`: An object for storing custom data
 
-We'll use the [`$state`](https://svelte.dev/docs/svelte/$state) rune to make the array reactive.
+We'll use the [`$state.raw`](https://svelte.dev/docs/svelte/$state) rune to make the array reactive.
 
 <Callout color="yellow">
-  Simply using `$state` would not only make the array reactive, but every property of
-  eachnode object, too. This could lead to [performance
+  Simply using `$state` would **not only** make the array reactive, but **every property
+  of each node**, too. This could lead to [performance
   issues](https://github.com/sveltejs/svelte/issues/11851), so we use
   [`$state.raw`](https://svelte.dev/docs/svelte/$state#$state.raw) instead.
 </Callout>
@@ -92,7 +92,7 @@ If you've followed these steps, you should see a flow that looks like this:
 
 ## Adding edges
 
-Let's connect the nodes with an edge. Create a [`$state.raw`](https://svelte.dev/docs/svelte/$state#$state.raw) array with [edge objects](/api-reference/types/edge) that have these required properties:
+Let's connect the nodes with an edge. Initialize a [`$state.raw`](https://svelte.dev/docs/svelte/$state#$state.raw) with an array of [edge objects](/api-reference/types/edge) that have these **required** properties:
 
 - `id`: A unique identifier for the edge
 - `source`: The ID of the source node
@@ -134,6 +134,41 @@ Add the [`fitView`](/api-reference/components/svelte-flow#fitview) prop to autom
 
 Let's change the `type` of the first node to `input` and the second node to `output`. These are built-in node types, that come with a different set of handles.
 
+```js
+let nodes = $state.raw([
+  {
+    id: '1',
+    type: 'input',
+    position: { x: 0, y: 0 },
+    data: { label: 'Hello' },
+  },
+  {
+    id: '2',
+    type: 'output',
+    position: { x: 100, y: 100 },
+    data: { label: 'World' },
+  },
+]);
 ```
 
+#### Built-in edge types
+
+We change the edge to type `smoothstep` and also give it a label!
+
+```js
+let edges = $state.raw([
+  { id: 'e1-2', source: '1', target: '2', type: 'smoothstep', label: 'Hello World' },
+]);
 ```
+
+## Finished Flow
+
+And there you have it! Your completed flow should look like this:
+
+<RemoteCodeViewer
+  route="guides/getting-started/d"
+  framework="svelte"
+  editorHeight={400}
+  showOpenInStackblitz={false}
+  orientation="vertical"
+/>
