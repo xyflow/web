@@ -50,6 +50,39 @@ export default {
       types: '',
     },
   },
+  // examples: {
+  //   theme: {
+  //     toc: false,
+  //     layout: 'full',
+  //   },
+  //   items: {
+  //     index: {
+  //       theme: {
+  //         breadcrumb: false,
+  //       },
+  //     },
+  //     overview: '',
+  //     nodes: {
+  //       items: {
+  //         'custom-node': '',
+  //         'update-node': '',
+  //         stress: '',
+  //         'drag-handle': '',
+  //         'add-node-on-edge-drop': '',
+  //         'proximity-connect': '',
+  //         'node-resizer': '',
+  //         'easy-connect': '',
+  //         'connection-limit': '',
+  //         intersections: '',
+  //       },
+  //     },
+  //     edges: '',
+  //     layout: '',
+  //     interaction: '',
+  //     styling: '',
+  //     misc: '',
+  //   },
+  // },
   examples: {
     theme: {
       toc: false,
@@ -62,25 +95,7 @@ export default {
         },
       },
       overview: '',
-      nodes: {
-        items: {
-          'custom-node': '',
-          'update-node': '',
-          stress: '',
-          'drag-handle': '',
-          'add-node-on-edge-drop': '',
-          'proximity-connect': '',
-          'node-resizer': '',
-          'easy-connect': '',
-          'connection-limit': '',
-          intersections: '',
-        },
-      },
-      edges: '',
-      layout: '',
-      interaction: '',
-      styling: '',
-      misc: '',
+      // Rest of examples are added in `(content-pages)/layout.tsx` file
     },
   },
   showcase: '',

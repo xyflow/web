@@ -5,19 +5,39 @@ import { Banner } from 'nextra/components';
 import { getPageMap } from 'nextra/page-map';
 import { Layout, Navbar } from 'nextra-theme-docs';
 import { Search } from 'xy-shared';
-import {
-  Button,
-  defaultFooterCategories,
-  Footer,
-  LogoLabel,
-} from '@xyflow/xy-ui';
+import { Button, defaultFooterCategories, Footer, LogoLabel } from '@xyflow/xy-ui';
 import { TOC, getLastChangelog } from 'xy-shared/server';
+
+import { getPageMap as getExamplesPageMap } from '../app/(content-pages)/examples/[...slug]/utils';
+import { Folder, MetaJsonFile } from 'nextra';
 
 export const NextraLayout: FC<{
   children: ReactNode;
 }> = async ({ children }) => {
   const pageMap = await getPageMap();
   const { Projects: _, ...remainingCategories } = defaultFooterCategories;
+
+  const examplesIndex = pageMap.findIndex(
+    (item): item is Folder => 'name' in item && item.name === 'examples',
+  );
+  const [examplesMeta, ...examples] = (pageMap[examplesIndex] as Folder).children;
+  const [catchAllExamplesMeta, ...catchAllExamples] = (await getExamplesPageMap())
+    .children;
+  // Merge on disk examples with examples from catch-all [...slug] route
+  pageMap[examplesIndex] = {
+    ...pageMap[examplesIndex],
+    children: [
+      {
+        // Merge meta records
+        data: {
+          ...(examplesMeta as MetaJsonFile).data,
+          ...(catchAllExamplesMeta as MetaJsonFile).data,
+        },
+      },
+      ...examples,
+      ...catchAllExamples,
+    ],
+  };
 
   const categories = {
     Docs: [
@@ -49,8 +69,8 @@ export const NextraLayout: FC<{
             rel="noreferrer"
             target="_blank"
           >
-            📣 We just released Svelte Flow 1.0 Alpha — try it out and give us
-            your feedback!
+            📣 We just released Svelte Flow 1.0 Alpha — try it out and give us your
+            feedback!
           </a>
         </Banner>
       }
@@ -58,15 +78,9 @@ export const NextraLayout: FC<{
       docsRepositoryBase="https://github.com/xyflow/web/tree/main/sites/svelteflow.dev"
       editLink="Edit this page on GitHub"
       feedback={{ content: null }}
-      footer={
-        <Footer baseUrl="https://svelteflow.dev" categories={categories} />
-      }
+      footer={<Footer baseUrl="https://svelteflow.dev" categories={categories} />}
       navbar={
-        <Navbar
-          align="left"
-          logo={<LogoLabel label="Svelte Flow" />}
-          logoLink={false}
-        >
+        <Navbar align="left" logo={<LogoLabel label="Svelte Flow" />} logoLink={false}>
           <Search />
           <a
             className="xy-link-gray x:focus-visible:nextra-focus"
