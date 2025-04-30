@@ -23,6 +23,7 @@ export default async function Page(props: PageProps) {
     // To achieve this, we keep `examples/` in the import path.
     `private-next-root-dir/../../apps/example-apps/react/examples/${route.replace('/examples/', '')}/README.mdx`,
   );
+
   return (
     <Wrapper toc={toc} metadata={metadata}>
       <H1>{metadata.title}</H1>

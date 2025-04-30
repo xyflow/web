@@ -34,20 +34,17 @@ const UiComponentViewer: FC<{ id: string }> = async ({ id }) => {
     url: `https://www.npmjs.com/package/${dep}`,
   }));
 
-  const componentPages = (await getPageMap('/components')).reduce(
-    (acc, pageMapItem) => {
-      if ('children' in pageMapItem) {
-        for (const page of pageMapItem.children) {
-          if ('name' in page && 'route' in page) {
-            acc.set(page.name, page.route);
-          }
+  const componentPages = (await getPageMap('/components')).reduce((acc, pageMapItem) => {
+    if ('children' in pageMapItem) {
+      for (const page of pageMapItem.children) {
+        if ('name' in page && 'route' in page) {
+          acc.set(page.name, page.route);
         }
       }
+    }
 
-      return acc;
-    },
-    new Map<string, string>(),
-  );
+    return acc;
+  }, new Map<string, string>());
 
   const shadcnDependencies = (data.registryDependencies || []).map((dep) => {
     if (dep.startsWith('https://')) {
@@ -121,10 +118,7 @@ const UiComponentViewer: FC<{ id: string }> = async ({ id }) => {
               </Link>{' '}
               before installing the component.
             </Text>
-            <MDXRemote
-              compiledSource={data.installMDX}
-              components={components}
-            />
+            <MDXRemote compiledSource={data.installMDX} components={components} />
           </TabsContent>
           <TabsContent value="manual">
             <Heading size="xs" className="mt-5">

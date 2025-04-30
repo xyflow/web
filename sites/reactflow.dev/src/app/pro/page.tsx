@@ -1,18 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import {
-  Button,
-  PricingTable,
-  Section,
-  FAQ,
-  reactFlowProFaqItems,
-} from '@xyflow/xy-ui';
+import { Button, PricingTable, Section, FAQ, reactFlowProFaqItems } from '@xyflow/xy-ui';
 import {
   BaseLayout,
   Hero,
   ImageSlider,
   SubscribeSection,
-  ReactPlayer,
+  LiteYouTubeEmbed,
 } from 'xy-shared';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 
@@ -70,11 +64,11 @@ export default function ReactFlowPro() {
       <Hero
         title={
           <>
-            Build Better Node-Based UIs with{' '}
-            <span className="text-primary">React Flow</span>
+            Build Better Node-Based UIs with <br />
+            <span className="text-primary">React Flow Pro</span>
           </>
         }
-        subtitle="Thanks for checking out React Flow Pro! We are Christopher, Moritz, Abbey and Peter, and we are the team building and maintaining React Flow"
+        subtitle="Get advanced code examples, technical support, and help funding our development — while keeping the library open source and under the MIT license."
         kicker="React Flow Pro"
         kickerIcon={<SparklesIcon />}
         action={
@@ -87,20 +81,18 @@ export default function ReactFlowPro() {
         backgroundVariant="image"
       >
         <p className="mt-4 mb-2">
-          <strong>React Flow is open-source MIT-licensed software</strong>, and
-          it will be forever. Our library enables thousands of solo developers
-          and organizations like Stripe and Linkedin to build their node-based
-          apps. With so many active users, it takes time and effort to maintain
-          the library, docs, and community. We can’t do that without your
-          support.
+          <strong>React Flow is open-source MIT-licensed software</strong>, and it will be
+          forever. Our library enables thousands of solo developers and organizations like
+          Stripe and Linkedin to build their node-based apps. With so many active users,
+          it takes time and effort to maintain the library, docs, and community. We can’t
+          do that without your support.
         </p>
         <p>
-          <strong>Why Subscribe?</strong> With your subscription, you are
-          ensuring the sustainable maintenance and development of the React Flow
-          library. This is how we make sure React Flow stays MIT-licensed. In
-          return, you get a high-quality, maintained, updated library, along
-          with benefits like direct support, prioritized feature requests, and
-          access to our Pro Examples.
+          <strong>Why Subscribe?</strong> With your subscription, you are ensuring the
+          sustainable maintenance and development of the React Flow library. This is how
+          we make sure React Flow stays MIT-licensed. In return, you get a high-quality,
+          maintained, updated library, along with benefits like direct support,
+          prioritized feature requests, and access to our Pro Examples.
         </p>
       </Hero>
 
@@ -120,24 +112,11 @@ export default function ReactFlowPro() {
       />
 
       <FAQ items={reactFlowProFaqItems} className="mt-32">
-        <ReactPlayer
-          className="mb-8"
-          url="https://www.youtube.com/watch?v=jm_UoZXEEnU"
-          width="100%"
-          height="100%"
+        <LiteYouTubeEmbed
+          id="jm_UoZXEEnU"
+          title="React Flow Pro plans"
           style={{ aspectRatio: '16 / 9', width: '100%' }}
-          config={{
-            youtube: {
-              embedOptions: {
-                playerVars: {
-                  color: 'white',
-                  cc_load_policy: 1,
-                  cc_lang_pref: 'en',
-                  controls: 1,
-                },
-              },
-            },
-          }}
+          poster="sddefault"
         />
       </FAQ>
       <SubscribeSection

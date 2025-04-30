@@ -9,8 +9,8 @@
 
 import NxImage from 'next/image';
 import { cn } from '@xyflow/xy-ui';
-import { wideNegativeMargin } from '../../lib';
-import { ReactPlayer } from '../react-player-lazy';
+
+import { LiteYouTubeEmbed, wideNegativeMargin } from '../../';
 
 // IMAGES ----------------------------------------------------------------------
 
@@ -99,9 +99,10 @@ export function Embed({ src, lazy, className }: EmbedProps) {
 
 export type YoutubeEmbedProps = {
   id: string;
+  title?: string;
 };
 
-export function YoutubeEmbed({ id }: YoutubeEmbedProps) {
+export function YoutubeEmbed({ id, title = 'youtube embed' }: YoutubeEmbedProps) {
   return (
     <div
       className={cn(
@@ -109,12 +110,11 @@ export function YoutubeEmbed({ id }: YoutubeEmbedProps) {
         wideNegativeMargin,
       )}
     >
-      <ReactPlayer
-        controls
-        url={`https://www.youtube.com/watch?v=${id}`}
-        width="100%"
-        height="100%"
-        style={{ position: 'absolute', top: 0, left: 0 }}
+      <LiteYouTubeEmbed
+        id={id}
+        style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+        title={title}
+        poster="maxresdefault"
       />
     </div>
   );
