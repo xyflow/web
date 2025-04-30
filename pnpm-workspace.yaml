@@ -4,6 +4,3 @@ packages:
   - packages/*
   - scripts/*
   - configs/*
-
-overrides:
-  '@xyflow/svelte': link:../xyflow/packages/svelte
