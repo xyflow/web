@@ -20,9 +20,8 @@ import '@xyflow/svelte/dist/style.css';
 Next, render the main component inside an element with defined dimensions and place the `Background` component inside `SvelteFlow`.
 
 <Callout type="info">
-  Any content rendered inside the `SvelteFlow` component will be overlaid on top of the
-  viewport. This is perfect for UI elements that should remain fixed and not move with the
-  viewport. The Background component is fixed but
+  Content inside `SvelteFlow` stays fixed on top of the viewport. The `Background`
+  component transforms its pattern to match viewport movement.
 </Callout>
 
 ```svelte
@@ -135,41 +134,6 @@ Add the [`fitView`](/api-reference/components/svelte-flow#fitview) prop to autom
 
 Let's change the `type` of the first node to `input` and the second node to `output`. These are built-in node types, that come with a different set of handles.
 
-```js
-let nodes = $state.raw([
-  {
-    id: '1',
-    type: 'input',
-    position: { x: 0, y: 0 },
-    data: { label: 'Hello' },
-  },
-  {
-    id: '2',
-    type: 'output',
-    position: { x: 100, y: 100 },
-    data: { label: 'World' },
-  },
-]);
 ```
 
-#### Built-in edge types
-
-Finally, let's enhance the edge by changing its type to `smoothstep` and adding a label:
-
-```js
-let edges = $state.raw([
-  { id: 'e1-2', source: '1', target: '2', type: 'smoothstep', label: 'Hello World' },
-]);
 ```
-
-## Finished Flow
-
-And there you have it! Your completed flow should look like this:
-
-<RemoteCodeViewer
-  route="guides/getting-started/d"
-  framework="svelte"
-  editorHeight={400}
-  showOpenInStackblitz={false}
-  orientation="vertical"
-/>
