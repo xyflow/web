@@ -58,8 +58,8 @@ importers:
         specifier: ^12.6.0
         version: 12.6.0(@types/react@18.3.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@xyflow/svelte':
-        specifier: link:../../../xyflow/packages/svelte
-        version: link:../../../xyflow/packages/svelte
+        specifier: 1.0.0-next.11
+        version: 1.0.0-next.11(svelte@5.28.2)
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -2391,6 +2391,11 @@ packages:
   '@stitches/core@1.2.8':
     resolution: {integrity: sha512-Gfkvwk9o9kE9r9XNBmJRfV8zONvXThnm1tcuojL04Uy5uRyqg93DC83lDebl0rocZCfKSjUv+fWYtMQmEDJldg==}
 
+  '@svelte-put/shortcut@4.1.0':
+    resolution: {integrity: sha512-wImNEIkbxAIWFqlfuhcbC+jRPDeRa/uJGIXHMEVVD+jqL9xCwWNnkGQJ6Qb2XVszuRLHlb8SGZDL3Io/h3vs8w==}
+    peerDependencies:
+      svelte: ^5.1.0
+
   '@sveltejs/acorn-typescript@1.0.5':
     resolution: {integrity: sha512-IwQk4yfwLdibDlrXVE04jTZYlLnwsTT2PIOQQGNLWfjavGifnk1JD1LcZjZaBTRcxZu2FfPfNLOE04DSu9lqtQ==}
     peerDependencies:
@@ -2863,6 +2868,14 @@ packages:
     peerDependencies:
       react: '>=17'
       react-dom: '>=17'
+
+  '@xyflow/svelte@1.0.0-next.11':
+    resolution: {integrity: sha512-wRejGbix5awjdAovLRHT6DMHGX4jLXK96JIzmH9n2ewVvGP1MI/SmHB5F32dpNjemvkdezGFMSxOEDUGqidt0Q==}
+    peerDependencies:
+      svelte: ^5.25.0
+
+  '@xyflow/system@0.0.55':
+    resolution: {integrity: sha512-6cngWlE4oMXm+zrsbJxerP3wUNUFJcv/cE5kDfu0qO55OWK3fAeSOLW9td3xEVQlomjIW5knds1MzeMnBeCfqw==}
 
   '@xyflow/system@0.0.57':
     resolution: {integrity: sha512-1YpBo0WgmZLR5wQw9Jvk3Tu0gISi/oYc4uSimrDuAsA/G2rGleulLrKkM59uuT/QU5m6DYC2VdBDAzjSNMGuBA==}
@@ -8805,6 +8818,10 @@ snapshots:
 
   '@stitches/core@1.2.8': {}
 
+  '@svelte-put/shortcut@4.1.0(svelte@5.28.2)':
+    dependencies:
+      svelte: 5.28.2
+
   '@sveltejs/acorn-typescript@1.0.5(acorn@8.14.1)':
     dependencies:
       acorn: 8.14.1
@@ -9414,6 +9431,22 @@ snapshots:
     transitivePeerDependencies:
       - '@types/react'
       - immer
+
+  '@xyflow/svelte@1.0.0-next.11(svelte@5.28.2)':
+    dependencies:
+      '@svelte-put/shortcut': 4.1.0(svelte@5.28.2)
+      '@xyflow/system': 0.0.55
+      svelte: 5.28.2
+
+  '@xyflow/system@0.0.55':
+    dependencies:
+      '@types/d3-drag': 3.0.7
+      '@types/d3-selection': 3.0.11
+      '@types/d3-transition': 3.0.9
+      '@types/d3-zoom': 3.0.8
+      d3-drag: 3.0.0
+      d3-selection: 3.0.0
+      d3-zoom: 3.0.0
 
   '@xyflow/system@0.0.57':
     dependencies:
