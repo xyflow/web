@@ -625,6 +625,9 @@ importers:
       '@xyflow/react':
         specifier: 12.6.0
         version: 12.6.0(@types/react@18.3.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@xyflow/svelte':
+        specifier: 1.0.0-next.11
+        version: 1.0.0-next.11(svelte@5.28.2)
       '@xyflow/xy-ui':
         specifier: workspace:*
         version: link:../../packages/xy-ui
