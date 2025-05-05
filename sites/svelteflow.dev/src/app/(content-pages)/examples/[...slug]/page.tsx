@@ -5,7 +5,6 @@ import { Button } from '@xyflow/xy-ui';
 import { RemoteCodeViewer, getAllExamples } from 'xy-shared/server';
 
 import { useMDXComponents as getMDXComponents } from '@/mdx-components';
-import ProExampleViewer from '@/components/pro-example-viewer';
 import { importMetadata } from './utils';
 
 type PageProps = Readonly<{
@@ -22,7 +21,7 @@ export default async function Page(props: PageProps) {
   const { default: MDXContent, toc, metadata } = require(
     // The static analyzer needs to know the import path as precisely as possible.
     // To achieve this, we keep `examples/` in the import path.
-    `@/../../apps/example-apps/react/examples/${route.replace('/examples/', '')}/README.mdx`,
+    `@/../../apps/example-apps/svelte/examples/${route.replace('/examples/', '')}/README.mdx`,
   );
 
   return (
@@ -34,7 +33,6 @@ export default async function Page(props: PageProps) {
           Cards,
           ArrowTopRightOnSquareIcon,
           RemoteCodeViewer,
-          ProExampleViewer,
           Button,
         }}
       />
@@ -49,7 +47,7 @@ export async function generateMetadata(props: PageProps) {
 }
 
 export async function generateStaticParams() {
-  const examplesPath = path.resolve('../../apps/example-apps/react/examples');
+  const examplesPath = path.resolve('../../apps/example-apps/svelte/examples');
   const filePaths = await getAllExamples(examplesPath);
   const params = filePaths.map((route) => ({ slug: route.split('/') }));
   return params;
