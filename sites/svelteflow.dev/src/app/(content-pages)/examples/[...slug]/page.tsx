@@ -1,10 +1,11 @@
+import path from 'path';
 import { Callout, Cards } from 'nextra/components';
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
 import { Button } from '@xyflow/xy-ui';
-import { RemoteCodeViewer } from 'xy-shared/server';
+import { RemoteCodeViewer, getAllExamples } from 'xy-shared/server';
 
 import { useMDXComponents as getMDXComponents } from '@/mdx-components';
-import { getAllExamples, importMetadata } from './utils';
+import { importMetadata } from './utils';
 
 type PageProps = Readonly<{
   params: Promise<{
@@ -46,7 +47,8 @@ export async function generateMetadata(props: PageProps) {
 }
 
 export async function generateStaticParams() {
-  const filePaths = await getAllExamples();
+  const examplesPath = path.resolve('../../apps/example-apps/svelte/examples');
+  const filePaths = await getAllExamples(examplesPath);
   const params = filePaths.map((route) => ({ slug: route.split('/') }));
   return params;
 }

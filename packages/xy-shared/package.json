@@ -43,6 +43,7 @@
     "@xyflow/react": "^12.6.0",
     "@xyflow/xy-ui": "workspace:*",
     "clsx": "^2.1.1",
+    "fast-glob": "^3.3.3",
     "fathom-client": "^3.7.2",
     "next": "^14.2.15",
     "nextra": "4.3.0-alpha.19",
