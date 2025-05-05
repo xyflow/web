@@ -5,7 +5,7 @@ const docsComponents = getDocsMDXComponents({
   APIDocs,
 });
 
-export function useMDXComponents(components) {
+export function useMDXComponents(components = {}) {
   return {
     ...docsComponents,
     ...components,
