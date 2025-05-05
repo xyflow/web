@@ -20,7 +20,9 @@ for you.
 
 ```svelte filename="CustomEdge.svelte"
 <script lang="ts">
-  import { BaseEdge, getStraightPath } from '@xyflow/svelte';
+  import { BaseEdge, getStraightPath, type EdgeProps } from '@xyflow/svelte';
+
+  let { sourceX, sourceY, targetX, targetY, ...props } : EdgeProps = $props();
 
   const [edgePath] = getStraightPath({
     sourceX,
@@ -30,12 +32,15 @@ for you.
   });
 </script>
 
-<BaseEdge path={edgePath} {...$$props} />
+<BaseEdge path={edgePath} {...props} />
 ```
 
 ## Props
 
-<PropsTable {...baseEdgeProps} />
+<APIDocs
+  componentName="BaseEdge"
+  groupKeys="Omit<HTMLAttributes<SVGPathElement>, 'd' | 'path' | 'markerStart' | 'markerEnd'>"
+/>
 
 ## Notes
 
