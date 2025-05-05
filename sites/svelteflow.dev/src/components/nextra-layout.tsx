@@ -9,18 +9,21 @@ import { Button, defaultFooterCategories, Footer, LogoLabel } from '@xyflow/xy-u
 import { TOC, getLastChangelog } from 'xy-shared/server';
 
 import { getPageMap as getExamplesPageMap } from '../app/(content-pages)/examples/[...slug]/utils';
-import { Folder, MetaJsonFile } from 'nextra';
+import { Folder, MdxFile, MetaJsonFile } from 'nextra';
 
 export const NextraLayout: FC<{
   children: ReactNode;
 }> = async ({ children }) => {
   const pageMap = await getPageMap();
   const { Projects: _, ...remainingCategories } = defaultFooterCategories;
-
+  const apiReference = pageMap.find(
+    (item): item is Folder => 'children' in item && item.name === 'api-reference',
+  );
   const examplesIndex = pageMap.findIndex(
     (item): item is Folder => 'name' in item && item.name === 'examples',
   );
   const [examplesMeta, ...examples] = (pageMap[examplesIndex] as Folder).children;
+
   const [catchAllExamplesMeta, ...catchAllExamples] = (await getExamplesPageMap())
     .children;
   // Merge on disk examples with examples from catch-all [...slug] route
@@ -38,6 +41,18 @@ export const NextraLayout: FC<{
       ...catchAllExamples,
     ],
   };
+
+  const folders = [...apiReference!.children, ...catchAllExamples].filter(
+    (item): item is Folder<MdxFile> => 'children' in item,
+  );
+
+  for (const folder of folders) {
+    // First filter out hidden items
+    folder.children = folder.children.filter((item: MdxFile) => {
+      // Skip items where frontMatter.hidden is true
+      return !('frontMatter' in item && item.frontMatter?.hidden === true);
+    });
+  }
 
   const categories = {
     Docs: [
