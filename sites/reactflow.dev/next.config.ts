@@ -67,6 +67,13 @@ const nextConfig: NextConfig = {
         ? `https://ui-components-git-${parsePreviewDeploySlug(process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL!)}.vercel.app`
         : process.env.NEXT_PUBLIC_UI_COMPONENTS_URL,
   },
+  turbopack: {
+    resolveAlias: {
+      // Fix an error when `--turbopack` is enabled
+      // Module not found: Can't resolve 'next-mdx-import-source-file'
+      'next-mdx-import-source-file': './src/mdx-components.tsx',
+    },
+  },
 };
 
 const withNextra = nextra({

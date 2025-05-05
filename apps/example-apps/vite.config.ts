@@ -117,8 +117,9 @@ function generateAssetsForExample(dir: string) {
       file === 'index.css' &&
       content.startsWith("@import url('./xy-theme.css')")
     ) {
-      const content = Fs.readFileSync(getSharedThemePath(dir), 'utf-8');
-      source.files['xy-theme.css'] = content;
+      const xyThemeContent = Fs.readFileSync(getSharedThemePath(dir), 'utf-8');
+      source.files['xy-theme.css'] = xyThemeContent;
+      source.files['index.css'] = content;
     } else {
       source.files[file] = content;
     }
