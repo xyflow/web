@@ -1,6 +1,5 @@
 import { NextConfig } from 'next';
 import nextra from 'nextra';
-// @ts-expect-error -- we use patch, remove patch after merge https://github.com/xyflow/xyflow/pull/5019
 import svelteFlowPackageJson from '@xyflow/svelte/package.json';
 
 // This is used for finding out the real deploy slug for a preview deployment
@@ -59,6 +58,13 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  turbopack: {
+    resolveAlias: {
+      // Fix an error when `--turbopack` is enabled
+      // Module not found: Can't resolve 'next-mdx-import-source-file'
+      'next-mdx-import-source-file': "./src/mdx-components.tsx",
+    }
+  }
 };
 
 const withNextra = nextra({

@@ -21,7 +21,7 @@ export default async function Page(props: PageProps) {
   const { default: MDXContent, toc, metadata } = require(
     // The static analyzer needs to know the import path as precisely as possible.
     // To achieve this, we keep `examples/` in the import path.
-    `@/../../apps/example-apps/react/examples/${route.replace('/examples/', '')}/README.mdx`,
+    `private-next-root-dir/../../apps/example-apps/react/examples/${route.replace('/examples/', '')}/README.mdx`,
   );
 
   return (
