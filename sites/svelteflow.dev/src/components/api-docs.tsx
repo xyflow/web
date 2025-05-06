@@ -1,4 +1,4 @@
-import { TSDoc, generateDocumentation } from 'nextra/tsdoc';
+import { TSDoc, generateDefinition } from 'nextra/tsdoc';
 import { getPageMap } from 'nextra/page-map';
 import type { MdxFile } from 'nextra';
 import { ComponentProps, FC } from 'react';
@@ -70,12 +70,12 @@ export const APIDocs: FC<{
 
   if (props.code) {
     // @ts-expect-error -- fixme
-    const definition = await generateDocumentation(props);
+    const definition = await generateDefinition(props);
     return <TSDoc definition={definition} {...defaultTSDocProps} />;
   }
 
   if (functionName) {
-    const definition = await generateDocumentation({
+    const definition = await generateDefinition({
       code: `export type { ${functionName} as default } from '@xyflow/svelte'`,
       flattened: true,
       ...props,
@@ -101,6 +101,6 @@ export default WithGroupedProps`
   } else {
     code = `export type { ${typeName} as default } from '@xyflow/${packageName}'`;
   }
-  const definition = await generateDocumentation({ code, ...props });
+  const definition = await generateDefinition({ code, ...props });
   return <TSDoc definition={definition} {...defaultTSDocProps} />;
 };
