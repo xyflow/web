@@ -86,13 +86,8 @@ export const SvelteFlowAPIProps: FC<{ group: keyof typeof FIELDS }> = ({ group }
   return (
     <APIDocs
       code={`
-import type { ComponentProps } from 'svelte'
-import type { SvelteFlow } from '@xyflow/svelte'
-
-type SvelteFlowProps = ComponentProps<typeof SvelteFlow>
-
+import type { SvelteFlowProps } from '@xyflow/svelte'
 type $ = ${myType}
-
 export default $`}
     />
   );
