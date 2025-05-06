@@ -1,40 +1,35 @@
 ---
-description:
-  "This util is a convenience function to add a new Edge to an array of edges.
+description: "This util is a convenience function to add a new Edge to an array of edges.
   It also performs some validation to make sure you don't add an invalid edge or
   duplicate an existing one."
 ---
 
-import { PropsTable } from '@/components/props-table';
-import { signature } from '@/references/utils/addEdge.ts';
-
 # addEdge()
 
-[Source on GitHub](https://github.com/xyflow/xyflow/blob/v11/packages/core/src/utils/graph.ts/#L73)
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/utils/edges/general.ts/#L104-L138)
 
 This util is a convenience function to add a new [`Edge`](/api-reference/types/edge) to an
 array of edges. It also performs some validation to make sure you don't add an
 invalid edge or duplicate an existing one.
 
 ```js
-import { writable } from 'svelte/store';
 import { addEdge } from '@xyflow/svelte';
 
-const edges = writable([]);
+const edges = $state.raw([]);
 
 const onAddEdge = () => {
   const newEdge = {
     id: '1-2',
     source: '1',
-    target: '2'
+    target: '2',
   };
-  $edges = addEdge(newEdge, $edges);
-}
+  edges.value = addEdge(newEdge, $edges);
+};
 ```
 
 ## Signature
 
-<PropsTable {...signature} />
+<APIDocs functionName="addEdge" />
 
 ## Notes
 
