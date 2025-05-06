@@ -6,9 +6,6 @@ description: 'The Background component makes it convenient to render different t
   dots and cross.'
 ---
 
-import { PropsTable } from '@/components/props-table';
-import { backgroundProps } from '@/references/components/Background.ts';
-
 # &lt;Background />
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/plugins/Background/Background.svelte)
@@ -19,14 +16,13 @@ backgrounds common in node-based UIs. It comes with three variants: `lines`,
 
 ```svelte
 <script lang="ts">
-  import { writable } from 'svelte/store';
   import { SvelteFlow, Background, BackgroundVariant } from '@xyflow/svelte';
 
-  const nodes = writable([]);
-  const edges = writable([]);
+  let nodes = $state.raw([]);
+  let edges = $state.raw([]);
 </script>
 
-<SvelteFlow nodes={nodes} edges={edges}>
+<SvelteFlow bind:nodes bind:edges>
   <Background bgColor="#ccc" variant={BackgroundVariant.Dots} />
 </SvelteFlow>
 ```
