@@ -1,7 +1,6 @@
 ---
 title: The SvelteFlowProvider component
-description:
-  The SvelteFlowProvider component wraps its child nodes with a Svelte context
+description: The SvelteFlowProvider component wraps its child nodes with a Svelte context
   that makes it possible to access a flow's internal state outside of the SvelteFlow
   component.
 sidebarTitle: <SvelteFlowProvider />
@@ -21,10 +20,12 @@ provide rely on this component to work.
 import { SvelteFlow, SvelteFlowProvider } from '@xyflow/svelte';
 
 import Sidebar from './Sidebar.svelte';
+
+/* ... */
 </script>
 
 <SvelteFlowProvider>
-  <SvelteFlow nodes={...} edges={...} />
+  <SvelteFlow bind:nodes bind:edges />
   <Sidebar />
 </SvelteFlowProvider>
 ```
@@ -33,13 +34,13 @@ import Sidebar from './Sidebar.svelte';
 <script>
   import { SvelteFlow, SvelteFlowProvider } from '@xyflow/svelte'
 
-  // This hook will only work if the component it's used in is a child of a
-  // <SvelteFlowProvider />.
+  // This hook will only work if the component it's used in
+  // is a child of <SvelteFlowProvider />
   const nodes = useNodes()
 </script>
 
 <aside>
-  {#each $nodes as node (node.id)}
+  {#each nodes.current as node (node.id)}
     <div key={node.id}>
       Node {node.id} -
         x: {node.position.x.toFixed(2)},

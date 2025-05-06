@@ -3,58 +3,13 @@ title: InternalNode
 description: The internal node is an extension of the user nod. It is used internally and has some more information that is not exposed to the user directly, like `positionAbsolute` and `handleBounds`.
 ---
 
-import { PropsTable } from '@/components/props-table';
-import { nodeFields } from '@/references/types/Node.fields.ts';
-
-# InternalNode&lt;NodeType>
+# InternalNode\<NodeType>
 
 The internal node is an extension of the user nod. It is used internally and has some more information that is not exposed to the user directly, like `positionAbsolute` and `handleBounds`.
 
-```ts
-export type InternalNode<NodeType extends Node = Node> = {
-  id: string;
-  position: XYPosition;
-  data: Node['data'];
-  type?: Node['type'];
-  sourcePosition?: Position;
-  targetPosition?: Position;
-  hidden?: boolean;
-  selected?: boolean;
-  dragging?: boolean;
-  draggable?: boolean;
-  selectable?: boolean;
-  connectable?: boolean;
-  resizing?: boolean;
-  deletable?: boolean;
-  dragHandle?: string;
-  width?: number | null;
-  height?: number | null;
-  parentId?: string;
-  zIndex?: number;
-  extent?: 'parent' | CoordinateExtent;
-  expandParent?: boolean;
-  ariaLabel?: string;
-  origin?: NodeOrigin;
-  style?: string;
-  class?: string;
-  measured: {
-    width?: number;
-    height?: number;
-  };
-  internals: {
-    positionAbsolute: XYPosition;
-    z: number;
-    /** Holds a reference to the original node object provided by the user.
-     * Used as an optimization to avoid certain operations. */
-    userNode: NodeType;
-    handleBounds?: NodeHandleBounds;
-  };
-};
-```
-
 ## Fields
 
-<PropsTable {...nodeFields} />
+<APIDocs typeName="InternalNode" />
 
 ## Notes
 

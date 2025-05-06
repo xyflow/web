@@ -6,10 +6,7 @@ description:
   zoom in, zoom out, fit the view, and lock the viewport.
 ---
 
-import { PropsTable } from '@/components/props-table';
-import { controlsProps } from '@/references/components/Controls.ts';
-
-# &lt;Controls />
+# \<Controls />
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/plugins/Controls/Controls.svelte)
 
@@ -18,27 +15,23 @@ buttons to zoom in, zoom out, fit the view, and lock the viewport.
 
 ```svelte
 <script lang="ts">
-  import { writable } from 'svelte/store';
   import { SvelteFlow, Controls } from '@xyflow/svelte';
 
-  const nodes = writable([]);
-  const edges = writable([]);
+  let nodes = $state.raw([]);
+  let edges = $state.raw([]);
 </script>
 
-<SvelteFlow nodes={nodes} edges={edges}>
+<SvelteFlow bind:nodes bind:edges>
   <Controls />
 </SvelteFlow>
 ```
 
 ## Props
 
-For TypeScript users, the props type for the `<Controls />` component is exported
-as `ControlsProps`.
+The type for props of `<Controls />` component is exported as `ControlsProps`.
+Additionally, it extends the props of `<div />`.
 
-<PropsTable {...controlsProps} />
-
-Additionally, the `<Controls />` component accepts any prop valid on a `<div />`
-element.
+<APIDocs componentName="Controls" groupKeys="HTMLAttributes<HTMLDivElement>" />
 
 ## Notes
 

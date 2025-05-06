@@ -40,7 +40,6 @@ export default {
   },
   'api-reference': {
     title: 'Reference',
-    display: 'hidden',
     items: {
       index: '',
       'svelte-flow': '',
