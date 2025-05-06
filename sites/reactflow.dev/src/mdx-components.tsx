@@ -5,7 +5,9 @@ const docsComponents = getDocsMDXComponents({
   APIDocs,
 });
 
-export const useMDXComponents: typeof getDocsMDXComponents = (components) => ({
-  ...docsComponents,
-  ...components,
-});
+export function useMDXComponents(components = {}) {
+  return {
+    ...docsComponents,
+    ...components,
+  };
+}

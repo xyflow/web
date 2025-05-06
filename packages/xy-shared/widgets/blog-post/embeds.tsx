@@ -1,9 +1,9 @@
-// Nextra's markdown rendering is pretty nice, but for certain types of embeddable
+// Nextra's Markdown rendering is pretty nice, but for certain types of embeddable
 // content like images and our interactive code viewer, we'd like to style them
 // a bit differently.
 //
-// All of the embeds in this file are designed to be used in our blog posts and
-// reflect our figma designs: occupying more horizontal space than the text
+// All the embeds in this file are designed to be used in our blog posts and
+// reflect our Figma designs: occupying more horizontal space than the text
 // content and having a rounded border.
 //
 
@@ -38,7 +38,7 @@ export function Image({
   imageClassName,
 }: ImageProps) {
   return (
-    <figure className={cn('my-8', 'mx-0', wide && wideNegativeMargin, className)}>
+    <figure className={cn('my-8 mx-0', wide && wideNegativeMargin, className)}>
       <NxImage
         src={src}
         alt={alt}
@@ -47,7 +47,7 @@ export function Image({
         width={width}
         height={height}
         sizes="100vw"
-        className={cn('w-full', 'h-auto', 'rounded-xl', imageClassName)}
+        className={cn('w-full h-auto rounded-xl', imageClassName)}
       />
       {attribution && (
         <a href={attribution} className="block mt-2 text-xs text-right text-gray-400">
@@ -85,7 +85,8 @@ export function Embed({ src, lazy, className }: EmbedProps) {
   return (
     <div
       className={cn(
-        `relative aspect-video my-8 mx-0 ${wideNegativeMargin} rounded-xl bg-gray-50`,
+        'relative aspect-video my-8 mx-0 rounded-xl bg-gray-50',
+        wideNegativeMargin,
         className,
       )}
     >
@@ -104,7 +105,10 @@ export type YoutubeEmbedProps = {
 export function YoutubeEmbed({ id, title = 'youtube embed' }: YoutubeEmbedProps) {
   return (
     <div
-      className={`relative aspect-video my-8 mx-0 ${wideNegativeMargin} rounded-xl bg-gray-50`}
+      className={cn(
+        'relative aspect-video my-8 mx-0 rounded-xl bg-gray-50',
+        wideNegativeMargin,
+      )}
     >
       <LiteYouTubeEmbed
         id={id}

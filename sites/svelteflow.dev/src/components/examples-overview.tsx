@@ -13,11 +13,12 @@ import {
 import { ProjectPreview } from 'xy-shared';
 
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
-import { getPageMap } from 'nextra/page-map';
 import { Folder } from 'nextra';
+import { getPageMap as getExamplesPageMap } from '@/app/(content-pages)/examples/[...slug]/utils';
 
 export const ExamplesOverview: FC = async () => {
-  const pageMap = await getPageMap('/examples');
+  const { children: pageMap } = await getExamplesPageMap();
+
   return (
     <>
       <Section className="!px-0">
@@ -39,9 +40,9 @@ export const ExamplesOverview: FC = async () => {
                 Feature Overview
               </Heading>
               <Text variant="light">
-                This is an overview example Svelte Flow{"'"}s basic features.
-                You can see built-in node and edge types, sub flows as well as
-                NodeToolbar and NodeResizer components.
+                This is an overview example Svelte Flow{"'"}s basic features. You can see
+                built-in node and edge types, sub flows as well as NodeToolbar and
+                NodeResizer components.
               </Text>
               <div className="mt-6 flex flex-wrap gap-2 items-center group-hover:text-primary">
                 <Button
