@@ -22,7 +22,7 @@ to calculate the correct transform to fit the given nodes in a viewport.
 ```js
 import { getNodesBounds } from '@xyflow/svelte';
 
-const nodes = $state.raw([
+let nodes = $state.raw([
   {
     id: 'a',
     position: { x: 0, y: 0 },

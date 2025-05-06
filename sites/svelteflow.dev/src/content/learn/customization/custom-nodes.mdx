@@ -70,7 +70,7 @@ Now we need to communicate the new custom node to Svelte Flow. You can add custo
 After defining your new node type, you can refer to it by using the `type` node option:
 
 ```js
-const nodes = $state.raw([
+let nodes = $state.raw([
   {
     id: 'node-1',
     type: 'textUpdater',

@@ -14,8 +14,8 @@ as the _target_ of an edge.
 ```ts
 import { getOutgoers } from '@xyflow/svelte';
 
-const nodes = $state.raw([]);
-const edges = $state.raw([]);
+let nodes = $state.raw([]);
+let edges = $state.raw([]);
 
 const incomers = getOutgoers(
   { id: '1', position: { x: 0, y: 0 }, data: { label: 'node' } },

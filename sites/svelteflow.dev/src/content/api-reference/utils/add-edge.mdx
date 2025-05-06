@@ -15,7 +15,7 @@ invalid edge or duplicate an existing one.
 ```js
 import { addEdge } from '@xyflow/svelte';
 
-const edges = $state.raw([]);
+let edges = $state.raw([]);
 
 const onAddEdge = () => {
   const newEdge = {
@@ -23,7 +23,7 @@ const onAddEdge = () => {
     source: '1',
     target: '2',
   };
-  edges.value = addEdge(newEdge, $edges);
+  edges = addEdge(newEdge, edges.current);
 };
 ```
 
