@@ -3,6 +3,10 @@ import { TSDoc, generateDefinition } from 'nextra/tsdoc';
 import { getPageMap } from 'nextra/page-map';
 import type { MdxFile } from 'nextra';
 
+const externalSvelteLinks = {
+  Snippet: 'https://svelte.dev/docs/svelte/snippet#Typing-snippets',
+};
+
 const externalLinks = {
   Partial: 'https://typescriptlang.org/docs/handbook/utility-types.html#partialtype',
   Record: 'https://typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type',
@@ -41,6 +45,7 @@ export const APIDocs: FC<{
     ),
     typeLinkMap: {
       ...svelteFlowLinks,
+      ...externalSvelteLinks,
       ...externalLinks,
       NodeType: '/api-reference/types/node',
       EdgeMarkerType: '/api-reference/types/edge-marker',
