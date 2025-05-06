@@ -20,10 +20,12 @@ provide rely on this component to work.
 import { SvelteFlow, SvelteFlowProvider } from '@xyflow/svelte';
 
 import Sidebar from './Sidebar.svelte';
+
+/* ... */
 </script>
 
 <SvelteFlowProvider>
-  <SvelteFlow bind:nodes={...} bind:edges={...} />
+  <SvelteFlow bind:nodes bind:edges />
   <Sidebar />
 </SvelteFlowProvider>
 ```
@@ -32,8 +34,8 @@ import Sidebar from './Sidebar.svelte';
 <script>
   import { SvelteFlow, SvelteFlowProvider } from '@xyflow/svelte'
 
-  // This hook will only work if the component it's used in is a child of a
-  // <SvelteFlowProvider />.
+  // This hook will only work if the component it's used in
+  // is a child of <SvelteFlowProvider />
   const nodes = useNodes()
 </script>
 
