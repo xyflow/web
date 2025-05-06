@@ -7,9 +7,6 @@ description:
   rest of the flow.
 ---
 
-import { PropsTable } from '@/components/props-table';
-import { miniMapProps } from '@/references/components/MiniMap.ts';
-
 # &lt;MiniMap />
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/plugins/Minimap/Minimap.svelte)
@@ -20,24 +17,22 @@ in relation to the rest of the flow.
 
 ```svelte
 <script lang="ts">
-  import { writable } from 'svelte/store';
   import { SvelteFlow, MiniMap } from '@xyflow/svelte';
 
-  const nodes = writable([]);
-  const edges = writable([]);
+  let nodes = $state.raw([]);
+  let edges = $state.raw([]);
 </script>
 
-<SvelteFlow nodes={nodes} edges={edges}>
+<SvelteFlow bind:nodes bind:edges>
   <MiniMap nodeStrokeWidth={3} />
 </SvelteFlow>
 ```
 
 ## Props
 
-For TypeScript users, the props type for the `<MiniMap />` component is exported
-as `MiniMapProps`.
+The type for props of `<MiniMap />` component is exported as `MiniMapProps`. Additionally, it extends the props of `<div />`.
 
-<PropsTable {...miniMapProps} />
+<APIDocs componentName="MiniMap" groupKeys="HTMLAttributes<HTMLDivElement>" />
 
 ## Examples
 
@@ -49,14 +44,14 @@ or `pannable` (or both!) props to `true`.
 
 ```svelte
 <script lang="ts">
-  import { writable } from 'svelte/store';
   import { SvelteFlow, MiniMap } from '@xyflow/svelte';
 
-  const nodes = writable([]);
-  const edges = writable([]);
+  let nodes = $state.raw([]);
+  let edges = $state.raw([]);
 </script>
 
-<SvelteFlow nodes={nodes} edges={edges}>
+
+<SvelteFlow bind:nodes bind:edges>
   <MiniMap pannable zoomable />
 </SvelteFlow>
 ```
@@ -71,18 +66,17 @@ This example shows how to color each mini map node based on the node's type:
 
 ```svelte
 <script lang="ts">
-  import { writable } from 'svelte/store';
   import { SvelteFlow, MiniMap } from '@xyflow/svelte';
 
-  const nodes = writable([]);
-  const edges = writable([]);
+  let nodes = $state.raw([]);
+  let edges = $state.raw([]);
 
   function nodeColor(node) {
     return node.type === 'input' ? 'blue' : 'red';
   }
 </script>
 
-<SvelteFlow nodes={nodes} edges={edges}>
+<SvelteFlow bind:nodes bind:edges>
   <MiniMap nodeColor={nodeColor} />
 </SvelteFlow>
 ```

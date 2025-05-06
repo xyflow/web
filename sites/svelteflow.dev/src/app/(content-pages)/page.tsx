@@ -87,7 +87,7 @@ const features = [
       </>
     ),
     text: 'We play nice with Tailwind and good old CSS. Svelte Flow nodes are just Svelte components. Create custom nodes to have full control with interactive components.',
-    route: '/learn/guides/custom-nodes' satisfies InternalRoute,
+    route: '/learn/customization/custom-nodes' satisfies InternalRoute,
     linkLabel: 'Custom nodes guide',
     flowComponent: <FlowB />,
   },

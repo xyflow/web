@@ -4,19 +4,18 @@ sidebarTitle: '<Handle />'
 description: The Handle component is used in your custom nodes to define connection points.
 ---
 
-import { PropsTable } from '@/components/props-table';
-import { handleProps } from '@/references/components/Handle.ts';
-
 # &lt;Handle />
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/components/Handle/Handle.svelte)
 
-The `<Handle />` component is used in your [custom nodes](/learn/guides/custom-nodes)
+The `<Handle />` component is used in your [custom nodes](/learn/customization/custom-nodes)
 to define connection points.
 
 ```svelte filename="CustomNode.svelte"
 <script lang="ts">
-  import { Handle, Position } from '@xyflow/svelte';
+  import { Handle, Position, type NodeProps } from '@xyflow/svelte';
+
+  let { data } : NodeProps = $props();
 </script>
 
 <div>
@@ -29,10 +28,9 @@ to define connection points.
 
 ## Props
 
-For TypeScript users, the props type for the `<Handle />` component is exported
-as `HandleProps`.
+The type for props of `<Handle />` component is exported as `HandleProps`. Additionally, it extends the props of `<div />`.
 
-<PropsTable {...handleProps} />
+<APIDocs componentName="Handle" groupKeys="HTMLAttributes<HTMLDivElement>" />
 
 ## Examples
 
@@ -43,26 +41,20 @@ This example shows a custom handle that only allows connections when the
 connection source matches a given id.
 
 ```svelte
-<script>
-	import { Handle, Position } from '@xyflow/svelte';
+<script lang="ts">
+	import { Handle, type HandleProps  } from '@xyflow/svelte';
 
-	export let position;
-	export let source;
+	let { source, ...rest } : HandleProps = $props();
 
 	function isValidConnection(connection) {
-		if (connection.source === source) {
-			return true;
-		}
-		return false;
+		return connection.source === source;
 	}
-
 </script>
 
 <Handle
 	type="target"
-	position={position}
 	{isValidConnection}
-	style="background: #fff"
+	{...rest}
 />
 ```
 
@@ -79,8 +71,8 @@ custom node. Normally you just use the id of a node for the `source` or `target`
 of an edge. If you have multiple source or target handles you need to pass an id
 to these handles. These ids can be used by an edge with the `sourceHandle` and
 `targetHandle` options, so that you can connect a specific handle. If you have a
-node with an id = `1` and a handle with an id = `a` you can connect this handle
-by using the node `source=1` and the `sourceHandle=a`.
+node with `id: 'node-1'` and a handle with `id: 'handle-1'` you can connect an edge to this handle
+by defining it with `source: 'node-1'` and `sourceHandle: 'hadnle-1'`.
 
 ### Dynamic handles
 
@@ -89,7 +81,7 @@ custom node, you need to update the node internals with the
 [`useUpdateNodeInternals`](/api-reference/hooks/use-update-node-internals) hook.
 
 You can find an example of how to implement a custom node with multiple handles
-in the [custom node guide](/learn/guides/custom-nodes) or in the
+in the [custom node guide](/learn/customization/custom-nodes) or in the
 [custom node example](/examples/nodes/custom-node).
 
 ### Custom handle styles

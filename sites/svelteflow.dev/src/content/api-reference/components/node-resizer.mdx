@@ -1,15 +1,11 @@
 ---
 title: The NodeResizer component
 sidebarTitle: '<NodeResizer />'
-description:
-  'The NodeResizer component can be used to add a resize functionality to your
+description: 'The NodeResizer component can be used to add a resize functionality to your
   nodes. It renders draggable controls around the node to resize in all directions.'
 ---
 
 import { RemoteCodeViewer } from 'xy-shared/server';
-
-import { PropsTable } from '@/components/props-table';
-import { nodeResizerProps } from '@/references/components/NodeResizer.ts';
 
 # &lt;NodeResizer />
 
@@ -20,12 +16,13 @@ nodes. It renders draggable controls around the node to resize in all directions
 
 ```svelte filename="CustomNode.svelte"
 <script lang="ts">
-  import { Handle, Position, NodeResizer } from '@xyflow/svelte';
+  import { Handle, Position, NodeResizer, type NodeProps } from '@xyflow/svelte';
 
-  export let data;
+  let { data } : NodeProps = $props();
 </script>
 
 <NodeResizer minWidth={100} minHeight={30} />
+
 <Handle type="target" position={Position.Left} />
 <div style={{ padding: 10 }}>{data.label}</div>
 <Handle type="source" position={Position.Right} />
@@ -33,10 +30,9 @@ nodes. It renders draggable controls around the node to resize in all directions
 
 ## Props
 
-For TypeScript users, the props type for the `<NodeResizer />` component is exported
-as `NodeResizerProps`.
+The type for props of `<NodeResizer />` component is exported as `NodeResizerProps`. Additionally, it extends the props of `<div />`.
 
-<PropsTable {...nodeResizerProps} />
+<APIDocs componentName="NodeResizer" groupKeys="HTMLAttributes<HTMLDivElement>" />
 
 ## Examples
 
@@ -55,5 +51,5 @@ To build custom resize controls, you can use the [NodeResizeControl](/api-refere
 ## Notes
 
 - Take a look at the docs for the [`NodeProps`](/api-reference/types/node-props) type or the
-  guide on [custom nodes](/learn/guides/custom-nodes) to see how to
+  guide on [custom nodes](/learn/customization/custom-nodes) to see how to
   implement your own nodes.

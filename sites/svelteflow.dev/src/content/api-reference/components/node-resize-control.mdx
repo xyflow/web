@@ -2,13 +2,9 @@
 title: The NodeResizeControl component
 created_at: 2024-01-11
 sidebarTitle: '<NodeResizeControl />'
-description:
-  'To create your own resizing UI, you can use the NodeResizeControl component
+description: 'To create your own resizing UI, you can use the NodeResizeControl component
   where you can pass children (such as icons).'
 ---
-
-import { PropsTable } from '@/components/props-table';
-import { nodeResizeControlProps } from '@/references/components/NodeResizeControl.ts';
 
 # &lt;NodeResizeControl />
 
@@ -18,7 +14,6 @@ To create your own resizing UI, you can use the `NodeResizeControl` component wh
 
 ## Props
 
-For TypeScript users, the props type for the `<NodeResizeControl />` component is exported
-as `ResizeControlProps`.
+The type for props of `<NodeResizeControl />` component is exported as `NodeResizeControlProps`. Additionally, it extends the props of `<div />`.
 
-<PropsTable {...nodeResizeControlProps} />
+<APIDocs componentName="NodeResizeControl" groupKeys="HTMLAttributes<HTMLDivElement>" />

@@ -71,7 +71,7 @@ export type InternalRoute =
   | '/learn'
   | '/learn/getting-started/building-a-flow'
   | '/learn/getting-started/installation'
-  | '/learn/guides/custom-nodes'
+  | '/learn/customization/custom-nodes'
   | '/learn/guides/sub-flows'
   | '/learn/guides/theming'
   | '/showcase'
