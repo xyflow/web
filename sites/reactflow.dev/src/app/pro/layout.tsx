@@ -1,8 +1,7 @@
 import { FC, ReactNode } from 'react';
 import { getPageMap, mergeMetaWithPageMap } from 'nextra/page-map';
 import { NextraLayout } from '@/components/nextra-layout';
-import { Button, defaultFooterCategories } from '@xyflow/xy-ui';
-import Link from 'next/link';
+import { defaultFooterCategories } from '@xyflow/xy-ui';
 
 const Layout: FC<{ children: ReactNode }> = async ({ children }) => {
   const { Projects: _, ...remainingCategories } = defaultFooterCategories;

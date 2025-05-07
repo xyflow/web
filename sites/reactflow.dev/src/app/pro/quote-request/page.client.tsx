@@ -63,7 +63,7 @@ export const Form: FC = () => {
         if (response.ok) {
           return setFormState({ error: false, loading: false, success: true });
         }
-      } catch (err) {
+      } catch {
         return setFormState({ error: true, loading: false, success: false });
       }
 

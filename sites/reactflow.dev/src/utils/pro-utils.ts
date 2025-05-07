@@ -2,7 +2,9 @@ import { Framework, ProExampleConfig, Currency } from '@/types';
 
 export async function getExampleList({
   framework,
-}: { framework?: Framework } = {}): Promise<ProExampleConfig[]> {
+}: {
+  framework?: Framework;
+} = {}): Promise<ProExampleConfig[]> {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/examples.json`,
     {
@@ -15,13 +17,7 @@ export async function getExampleList({
     .map((example) => ({ ...example, framework: 'react' }));
 }
 
-export async function getExampleConfig({
-  id,
-  framework,
-}: {
-  id: string;
-  framework?: Framework;
-}) {
+export async function getExampleConfig({ id }: { id: string }) {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${id}/config.json`,
     {
