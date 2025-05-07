@@ -20,18 +20,16 @@
   let colorMode: ColorMode = $state('system');
 </script>
 
-<div style="height:100vh;">
-  <SvelteFlow bind:nodes bind:edges {colorMode} fitView>
-    <Background />
-    <Controls />
-    <MiniMap />
+<SvelteFlow bind:nodes bind:edges {colorMode} fitView>
+  <Background />
+  <Controls />
+  <MiniMap />
 
-    <Panel>
-      <select bind:value={colorMode}>
-        <option value="dark">dark</option>
-        <option value="light">light</option>
-        <option value="system">system</option>
-      </select>
-    </Panel>
-  </SvelteFlow>
-</div>
+  <Panel>
+    <select bind:value={colorMode}>
+      <option value="dark">dark</option>
+      <option value="light">light</option>
+      <option value="system">system</option>
+    </select>
+  </Panel>
+</SvelteFlow>

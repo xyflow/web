@@ -9,8 +9,6 @@
   let edges = $state.raw<Edge[]>(initialEdges);
 </script>
 
-<div style="height:100vh;">
-  <SvelteFlow bind:nodes bind:edges fitView>
-    <Background />
-  </SvelteFlow>
-</div>
+<SvelteFlow bind:nodes bind:edges fitView>
+  <Background />
+</SvelteFlow>

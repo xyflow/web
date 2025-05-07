@@ -1,11 +1,5 @@
 <script lang="ts">
-  import {
-    SvelteFlow,
-    Controls,
-    MiniMap,
-    type Node,
-    type Edge,
-  } from '@xyflow/svelte';
+  import { SvelteFlow, Controls, MiniMap, type Node, type Edge } from '@xyflow/svelte';
   import '@xyflow/svelte/dist/style.css';
 
   import { initialNodes, initialEdges } from './nodes-and-edges';
@@ -19,9 +13,7 @@
   };
 </script>
 
-<div style="height:100vh;">
-  <SvelteFlow bind:nodes {nodeTypes} bind:edges fitView class="bg-teal-50">
-    <MiniMap />
-    <Controls />
-  </SvelteFlow>
-</div>
+<SvelteFlow bind:nodes {nodeTypes} bind:edges fitView class="bg-teal-50">
+  <MiniMap />
+  <Controls />
+</SvelteFlow>

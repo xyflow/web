@@ -20,8 +20,6 @@
   };
 </script>
 
-<div style="height:100vh;">
-  <SvelteFlow bind:nodes bind:edges {onbeforedelete} fitView>
-    <Background />
-  </SvelteFlow>
-</div>
+<SvelteFlow bind:nodes bind:edges {onbeforedelete} fitView>
+  <Background />
+</SvelteFlow>

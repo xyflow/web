@@ -69,18 +69,16 @@
   }
 </script>
 
-<div style="height:100vh;">
-  <SvelteFlow
-    bind:nodes
-    bind:edges
-    fitView
-    connectionLineType={ConnectionLineType.SmoothStep}
-    defaultEdgeOptions={{ type: 'smoothstep', animated: true }}
-  >
-    <Panel position="top-right">
-      <button onclick={() => onLayout('TB')}>vertical layout</button>
-      <button onclick={() => onLayout('LR')}>horizontal layout</button>
-    </Panel>
-    <Background />
-  </SvelteFlow>
-</div>
+<SvelteFlow
+  bind:nodes
+  bind:edges
+  fitView
+  connectionLineType={ConnectionLineType.SmoothStep}
+  defaultEdgeOptions={{ type: 'smoothstep', animated: true }}
+>
+  <Panel position="top-right">
+    <button onclick={() => onLayout('TB')}>vertical layout</button>
+    <button onclick={() => onLayout('LR')}>horizontal layout</button>
+  </Panel>
+  <Background />
+</SvelteFlow>
