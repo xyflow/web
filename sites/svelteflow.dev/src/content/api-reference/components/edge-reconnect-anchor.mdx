@@ -23,12 +23,12 @@ If you want a way to make your edges updatable, you can use the `<EdgeReconnectA
 
   let { sourceX, sourceY, targetX, targetY, selected, data, ...props }: EdgeProps = $props();
 
-  const [edgePath] = getBezierPath({
+  const [edgePath] = $derived(getBezierPath({
     sourceX,
     sourceY,
     targetX,
     targetY,
-  });
+  }));
 
   let reconnecting = $state(false);
 </script>

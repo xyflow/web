@@ -17,16 +17,16 @@ for you.
 
 ```svelte filename="CustomEdge.svelte"
 <script lang="ts">
-  import { BaseEdge, getStraightPath, type EdgeProps } from '@xyflow/svelte';
+  import { BaseEdge, getBezierPath, type EdgeProps } from '@xyflow/svelte';
 
   let { sourceX, sourceY, targetX, targetY, ...props } : EdgeProps = $props();
 
-  const [edgePath] = getStraightPath({
+  const [edgePath] = $derived(getBezierPath({
     sourceX,
     sourceY,
     targetX,
     targetY,
-  });
+  }));
 </script>
 
 <BaseEdge path={edgePath} {...props} />

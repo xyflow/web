@@ -26,7 +26,7 @@ to display an edge label that selects the edge when it is clicked.
     targetPosition
   } : EdgeProps = $props();
 
-  let [path, labelX, labelY] = getBezierPath({
+  let [path, labelX, labelY] = $derived(getBezierPath({
     sourceX,
     sourceY,
     targetX,
@@ -34,7 +34,7 @@ to display an edge label that selects the edge when it is clicked.
     sourcePosition,
     targetPosition,
     curvature: pathOptions?.curvature
-  });
+  }));
 </script>
 
 <BaseEdge
