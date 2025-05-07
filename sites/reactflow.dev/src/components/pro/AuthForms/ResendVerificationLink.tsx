@@ -8,12 +8,12 @@ import { Button, Input, InputLabel } from '@xyflow/xy-ui';
 import { AuthErrorNotification, AuthNotification } from './AuthNotification';
 
 function ResendVerificationLink() {
-  const defaultEmail = useSearchParams()?.get('email');
-  const [email, setEmail] = useState<string>(defaultEmail || '');
+  const defaultEmail = useSearchParams().get('email') ?? '';
+  const [email, setEmail] = useState(defaultEmail);
   const { signInEmailPasswordless, isSuccess, isLoading, isError, error } =
     useSignInEmailPasswordless();
 
-  const handleSubmit = async (evt: React.SyntheticEvent) => {
+  const handleSubmit = (evt: React.SyntheticEvent) => {
     evt.preventDefault();
     signInEmailPasswordless(email);
   };

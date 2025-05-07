@@ -7,7 +7,7 @@ import { Alert, AlertTitle, AlertDescription, Button, cn } from '@xyflow/xy-ui';
 import { ErrorPayload } from '@nhost/nhost-js';
 
 type AuthErrorProps = {
-  error?: ErrorPayload<string>;
+  error: ErrorPayload<string> | null;
 };
 
 type AuthNotificationProps = {

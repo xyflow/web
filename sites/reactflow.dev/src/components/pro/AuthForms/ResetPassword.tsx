@@ -7,11 +7,10 @@ import { Button, Input, InputLabel } from '@xyflow/xy-ui';
 import { AuthErrorNotification, AuthNotification } from './AuthNotification';
 
 function ResetPassword() {
-  const [email, setEmail] = useState<string>('');
-  const { resetPassword, isLoading, isSent, isError, error } =
-    useResetPassword();
+  const [email, setEmail] = useState('');
+  const { resetPassword, isLoading, isSent, isError, error } = useResetPassword();
 
-  const handleSubmit = async (evt: React.SyntheticEvent) => {
+  const handleSubmit = (evt: React.SyntheticEvent) => {
     evt.preventDefault();
     resetPassword(email, { redirectTo: '/account' });
   };
