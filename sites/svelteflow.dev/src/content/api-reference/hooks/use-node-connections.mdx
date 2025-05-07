@@ -1,12 +1,7 @@
 ---
-description:
-  'This hook returns an array of connected edges. Components that use this hook
+description: 'This hook returns an array of connected edges. Components that use this hook
   will re-render whenever any edge changes.'
-created_at: 2025-01-15
 ---
-
-import { PropsTable } from '@/components/props-table';
-import { signature } from '@/references/hooks/useNodeConnections.ts';
 
 # useNodeConnections()
 
@@ -15,7 +10,6 @@ import { signature } from '@/references/hooks/useNodeConnections.ts';
 This hook returns an array of connections on a specific node, handle type ('source', 'target') or handle ID.
 
 ```svelte
-
 <script>
   import { useNodeConnections } from '@xyflow/svelte';
   const connections = useNodeConnections({ handleType: 'target', handleId: 'my-handle' });
@@ -26,4 +20,4 @@ This hook returns an array of connections on a specific node, handle type ('sour
 
 ## Signature
 
-<PropsTable {...signature} />
+<APIDocs functionName="useNodeConnections" />

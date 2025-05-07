@@ -7,10 +7,7 @@ description:
   for you.'
 ---
 
-import { PropsTable } from '@/components/props-table';
-import { baseEdgeProps } from '@/references/components/BaseEdge.ts';
-
-# &lt;BaseEdge />
+# \<BaseEdge />
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/components/BaseEdge/BaseEdge.svelte)
 
@@ -20,22 +17,29 @@ for you.
 
 ```svelte filename="CustomEdge.svelte"
 <script lang="ts">
-  import { BaseEdge, getStraightPath } from '@xyflow/svelte';
+  import { BaseEdge, getBezierPath, type EdgeProps } from '@xyflow/svelte';
 
-  const [edgePath] = getStraightPath({
+  let { sourceX, sourceY, targetX, targetY, ...props } : EdgeProps = $props();
+
+  const [edgePath] = $derived(getBezierPath({
     sourceX,
     sourceY,
     targetX,
     targetY,
-  });
+  }));
 </script>
 
-<BaseEdge path={edgePath} {...$$props} />
+<BaseEdge path={edgePath} {...props} />
 ```
 
 ## Props
 
-<PropsTable {...baseEdgeProps} />
+The type for props of `<BaseEdge />` component is exported as `BaseEdgeProps`. Additionally, it extends the props of `<svg />`.
+
+<APIDocs
+  componentName="BaseEdge"
+  groupKeys="Omit<HTMLAttributes<SVGPathElement>, 'd' | 'path' | 'markerStart' | 'markerEnd'>"
+/>
 
 ## Notes
 

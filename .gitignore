@@ -35,6 +35,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# cursor
+.cursor
+
 tmp
 vite.config.ts.*
 .idea/

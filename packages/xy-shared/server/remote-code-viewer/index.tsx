@@ -24,6 +24,7 @@ export type RemoteCodeViewerProps = {
   showEditor?: boolean;
   showPreview?: boolean;
   showOpenInCodeSandbox?: boolean;
+  showOpenInStackblitz?: boolean;
   editorHeight?: string | number;
   orientation?: 'horizontal' | 'vertical';
   sandpackOptions?: Record<string, any>;
@@ -34,6 +35,7 @@ export const RemoteCodeViewer: FC<RemoteCodeViewerProps> = async ({
   framework,
   showEditor = true,
   showOpenInCodeSandbox = framework === 'react',
+  showOpenInStackblitz = true,
   sandpackOptions = {},
   editorHeight = '60vh',
   activeFile,
@@ -70,6 +72,7 @@ export const RemoteCodeViewer: FC<RemoteCodeViewerProps> = async ({
   if (isExample) {
     delete snippets['index.html'];
     delete snippets['index.jsx'];
+    delete snippets['index.ts'];
     delete snippets['README.mdx'];
   }
 
@@ -96,7 +99,9 @@ export const RemoteCodeViewer: FC<RemoteCodeViewerProps> = async ({
           className="example"
         />
         <div className="absolute bottom-5 right-5 flex">
-          <OpenInStackblitz framework={_framework} route={route} />
+          {showOpenInStackblitz && (
+            <OpenInStackblitz framework={_framework} route={route} />
+          )}
           {showOpenInCodeSandbox && (
             <OpenInCodesandbox
               framework={_framework}

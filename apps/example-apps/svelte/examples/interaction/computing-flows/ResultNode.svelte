@@ -1,45 +1,43 @@
+<script module>
+  export type ResultNodeType = Node<{}, 'result'>;
+</script>
+
 <script lang="ts">
   import {
     Handle,
     Position,
     useNodeConnections,
     useNodesData,
-    type NodeProps
+    type NodeProps,
+    type Node,
   } from '@xyflow/svelte';
 
-  type $$Props = NodeProps;
-
-  export let id: $$Props['id'];
+  let { id }: NodeProps<ResultNodeType> = $props();
 
   const connections = useNodeConnections({
     id,
-    handleType: 'target'
+    handleType: 'target',
   });
 
-  $: nodesData = useNodesData($connections.map((connection) => connection.source));
+  const nodesData = useNodesData(
+    connections.current.map((connection) => connection.source),
+  );
 </script>
 
 <div class="custom">
   <Handle type="target" position={Position.Left} />
   <div class="label">incoming texts:</div>
 
-  {#if $nodesData.length === 0}
+  {#if nodesData.current.length === 0}
     <div>no connected nodes</div>
   {:else}
-    {#each $nodesData as nodeData}
+    {#each nodesData.current as nodeData}
       <div>{nodeData.data.text}</div>
     {/each}
   {/if}
 </div>
 
 <style>
-  .custom {
-    background-color: #eee;
-    padding: 10px;
-    border-radius: 10px;
-    font-size: 12px;
-  }
-
   .label {
     margin-bottom: 5px;
   }

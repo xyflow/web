@@ -5,12 +5,9 @@ description: 'This util returns the viewport for the given bounds.
   viewport directly.'
 ---
 
-import { PropsTable } from '@/components/props-table';
-import { signature } from '@/references/utils/getViewportForBounds.ts';
-
 # getViewportForBounds()
 
-[Source on Github](https://github.com/xyflow/xyflow/blob/v11/packages/core/src/utils/graph.ts/#L273)
+[Source on Github](https://github.com/xyflow/xyflow/blob/main/packages/system/src/utils/general.ts/#L293-L294)
 
 This util returns the viewport for the given bounds.
 You might use this to pre-calculate the viewport for a given set of nodes on the
@@ -36,11 +33,11 @@ const { x, y, zoom } = getViewportForBounds(
 
 ## Signature
 
-<PropsTable {...signature} />
+<APIDocs functionName="getViewportForBounds" />
 
 ## Notes
 
 - This is quite a low-level utility. You might want to look at the
-  [`fitView`](/api-reference/types/react-flow-instance#fitview) or
-  [`fitBounds`](/api-reference/types/react-flow-instance#fitbounds) methods for a more practical
+  [`fitView`](/api-reference/types/svelte-flow-instance#fitview) or
+  [`fitBounds`](/api-reference/types/svelte-flow-instance#fitbounds) methods for a more practical
   api.

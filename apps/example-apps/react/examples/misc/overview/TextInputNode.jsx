@@ -58,7 +58,7 @@ export default memo(({ id }) => {
   };
 
   return (
-    <div>
+    <>
       {dimensionAttrs.map((attr) => (
         <Fragment key={attr}>
           <label>Node {attr}</label>
@@ -73,6 +73,6 @@ export default memo(({ id }) => {
       ))}
       {!dimensionAttrs && 'no node connected'}
       <Handle type="target" position={Position.Top} className="custom-handle" />
-    </div>
+    </>
   );
 });

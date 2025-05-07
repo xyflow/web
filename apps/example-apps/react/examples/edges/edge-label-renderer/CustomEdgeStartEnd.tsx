@@ -13,8 +13,8 @@ function EdgeLabel({ transform, label }: { transform: string; label: string }) {
     <div
       style={{
         position: 'absolute',
-        background: 'transparent',
-        padding: 10,
+        background: 'rgba(255, 255, 255, 0.75)',
+        padding: '5px 10px',
         color: '#ff5050',
         fontSize: 12,
         fontWeight: 700,

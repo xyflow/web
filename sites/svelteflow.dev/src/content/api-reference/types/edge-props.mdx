@@ -4,38 +4,10 @@ description:
   basic functionality.
 ---
 
-import { PropsTable } from '@/components/props-table';
-import { edgePropsFields } from '@/references/types/EdgeProps.ts';
-
 # EdgeProps
 
 When you implement a custom edge it is wrapped in a component that enables some basic functionality. Your custom edge component receives the following props:
 
-```ts
-export type EdgeProps<T> = {
-  id: string;
-  animated: boolean;
-  data: T;
-  style: string;
-  selected: boolean;
-  source: string;
-  target: string;
-  sourceHandleId?: string | null;
-  targetHandleId?: string | null;
-  interactionWidth: number;
-  sourceX: number;
-  sourceY: number;
-  targetX: number;
-  targetY: number;
-  sourcePosition: Position;
-  targetPosition: Position;
-  label?: string;
-  markerStart?: string;
-  markerEnd?: string;
-  pathOptions?: any;
-};
-```
-
 ## Fields
 
-<PropsTable {...edgePropsFields} />
+<APIDocs typeName="EdgeProps" />

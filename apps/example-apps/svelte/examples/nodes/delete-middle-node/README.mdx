@@ -1,0 +1,64 @@
+---
+title: Delete Middle Node
+description: Remove a node without breaking the flow
+---
+
+This example shows you how to recover deleted edges when you remove a node from the
+middle of a chain. In other words, if we have three nodes connected in sequence -
+`a->b->c` - and we deleted the middle node `b`, this example shows you how to end
+up with the graph `a->c`.
+
+To achieve this, we need to make use of a few bits:
+
+- The [`onNodesDelete`](/api-reference/svelte-flow#event-onnodesdelete) callback lets
+  us know when a node is deleted.
+- [`getConnectedEdges`](/api-reference/utils/get-connected-edges) gives us
+  all the edges connected to a node, either as source or target.
+- [`getIncomers`](/api-reference/utils/get-incomers) and
+  [`getOutgoers`](/api-reference/utils/get-outgoers) give us the nodes
+  connected to a node as source or target.
+
+All together, this allows us to take all the nodes connected to the deleted
+node, and reconnect them to any nodes the deleted node was connected to.
+
+<RemoteCodeViewer route="examples/nodes/delete-middle-node" framework="svelte" />
+
+Although this example is less than 20 lines of code there's quite a lot to digest.
+Let's break some of it down:
+
+- Our `onNodesDelete` callback is called with one argument - `deleted` - that is an
+  array of every node that was just deleted. If you select an individual node and
+  press the delete key, `deleted` will contain just that node, but if you make a
+  selection _all_ the nodes in that selection will be in `deleted`.
+
+- We create a new array of edges - `remainingEdges` - that contains all the edges
+  in the flow that have nothing to do with the node(s) we just deleted.
+
+- We create another array of edges by _flatMapping_ over the array of `incomers`.
+  These are nodes that were connected to the deleted node as a source. For each
+  of these nodes, we create a new edge that connects to each node in the array of
+  `outgoers`. These are nodes that were connected to the deleted node as a target.
+
+<Callout type="info">
+For brevity, we're using object destructuring while at the same time renaming
+the variable bound (e.g. `({ id: source }) => ...)` destructures the `id`
+property of the object and binds it to a new variable called `source`) but you
+don't need to do this
+</Callout>
+
+## Quick Reference
+
+<Cards num={2}>
+  <Cards.Card title="getConnectedEdges" href="/api-reference/utils/getConnectedEdges" />
+  <Cards.Card title="getIncomers" href="/api-reference/utils/getIncomers" />
+  <Cards.Card
+    title="Array.prototype.flatMap"
+    href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flatMap"
+    icon={<ArrowTopRightOnSquareIcon />}
+  />
+  <Cards.Card
+    title="Destructuring assignment"
+    href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#assigning_to_new_variable_names"
+    icon={<ArrowTopRightOnSquareIcon />}
+  />
+</Cards>

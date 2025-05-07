@@ -1,0 +1,45 @@
+---
+title: The ViewportPortal component
+sidebarTitle: '<ViewportPortal />'
+description: 'The ViewportPortal component can be used to add components to the same viewport of the flow where nodes and edges are rendered. This is useful when you want to render your own components that are adhere to the same coordinate system as the nodes & edges and are also affected by zooming and panning'
+---
+
+# &lt;ViewportPortal />
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/components/ViewportPortal/index.tsx)
+
+`<ViewportPortal />` component can be used to add components to the same viewport of the flow where nodes and edges are rendered.
+This is useful when you want to render your own components that are adhere to the same coordinate system as the nodes & edges and are also
+affected by zooming and panning
+
+```svelte
+<script lang="ts">
+import { ViewportPortal } from '@xyflow/svelte';
+</script>
+
+<ViewportPortal>
+  <div style:transform="translate(100px, 100px)" style:position="absolute">
+    This div is positioned at [100, 100] on the flow.
+  </div>
+</ViewportPortal>
+```
+
+You can also define if you want to render the component below or above the nodes and edges by using the `target` prop.
+
+```svelte
+<script lang="ts">
+import { ViewportPortal } from '@xyflow/svelte';
+</script>
+
+<ViewportPortal target="front">
+  <div style:transform="translate(100px, 100px)" style:position="absolute">
+    This div is positioned at [100, 100] on the flow.
+  </div>
+</ViewportPortal>
+```
+
+## Props
+
+The type for props of `<Panel />` component is exported as `PanelProps`. Additionally, it extends the props of `<div />`.
+
+<APIDocs componentName="ViewportPortal" groupKeys="HTMLAttributes<HTMLDivElement>" />

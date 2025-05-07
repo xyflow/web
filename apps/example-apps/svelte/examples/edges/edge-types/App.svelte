@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { writable } from 'svelte/store';
   import { SvelteFlow, Background, type Node, type Edge } from '@xyflow/svelte';
 
   import '@xyflow/svelte/dist/style.css';
@@ -10,41 +9,41 @@
       data: { label: 'choose' },
       position: {
         x: 0,
-        y: 0
-      }
+        y: 0,
+      },
     },
     {
       id: '2',
       data: { label: 'your' },
       position: {
         x: 100,
-        y: 100
-      }
+        y: 100,
+      },
     },
     {
       id: '3',
       data: { label: 'desired' },
       position: {
         x: 0,
-        y: 200
-      }
+        y: 200,
+      },
     },
     {
       id: '4',
       data: { label: 'edge' },
       position: {
         x: 100,
-        y: 300
-      }
+        y: 300,
+      },
     },
     {
       id: '5',
       data: { label: 'type' },
       position: {
         x: 0,
-        y: 400
-      }
-    }
+        y: 400,
+      },
+    },
   ];
 
   const initialEdges: Edge[] = [
@@ -53,37 +52,35 @@
       source: '1',
       target: '2',
       id: '1',
-      label: 'straight'
+      label: 'straight',
     },
     {
       type: 'step',
       source: '2',
       target: '3',
       id: '2',
-      label: 'step'
+      label: 'step',
     },
     {
       type: 'smoothstep',
       source: '3',
       target: '4',
       id: '3',
-      label: 'smoothstep'
+      label: 'smoothstep',
     },
     {
       type: 'bezier',
       source: '4',
       target: '5',
       id: '4',
-      label: 'bezier'
-    }
+      label: 'bezier',
+    },
   ];
 
-  const nodes = writable<Node[]>(initialNodes);
-  const edges = writable<Edge[]>(initialEdges);
+  let nodes = $state.raw<Node[]>(initialNodes);
+  let edges = $state.raw<Edge[]>(initialEdges);
 </script>
 
-<div style="height:100vh;">
-  <SvelteFlow {nodes} {edges} fitView>
-    <Background />
-  </SvelteFlow>
-</div>
+<SvelteFlow bind:nodes bind:edges fitView>
+  <Background />
+</SvelteFlow>

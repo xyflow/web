@@ -11,7 +11,6 @@ import {
 
 import '@xyflow/react/dist/style.css';
 
-
 const initialNodes = [
   {
     id: '1',
@@ -103,14 +102,11 @@ const NestedFlow = () => {
       onConnect={onConnect}
       className="react-flow-subflows-example"
       fitView
-      style={{ backgroundColor: "#F7F9FB" }}
-      >
-        <MiniMap />
-        <Controls />
-        <Background color='#E6E6E6' />
-      </ReactFlow>
-  
-  
+    >
+      <MiniMap />
+      <Controls />
+      <Background color="#E6E6E6" />
+    </ReactFlow>
   );
 };
 

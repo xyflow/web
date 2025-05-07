@@ -68,7 +68,6 @@ function Flow() {
         onNodesChange={onNodesChange}
         nodeTypes={nodeTypes}
         fitView
-        style={{ backgroundColor: '#F7F9FB' }}
         preventScrolling={false}
       >
         <Panel>

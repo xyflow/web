@@ -4,12 +4,9 @@ description:
   as the source of an edge.'
 ---
 
-import { PropsTable } from '@/components/props-table';
-import { signature } from '@/references/utils/getIncomers.ts';
-
 # getIncomers()
 
-[Source on GitHub](https://github.com/xyflow/xyflow/blob/v11/packages/core/src/utils/graph.ts/#L34)
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/utils/graph.ts/#L121-L137)
 
 This util is used to tell you what nodes, if any, are connected to the given node
 as the _source_ of an edge.
@@ -17,16 +14,16 @@ as the _source_ of an edge.
 ```ts
 import { getIncomers } from '@xyflow/svelte';
 
-const nodes = [];
-const edges = [];
+let nodes = $state.raw([]);
+let edges = $state.raw([]);
 
 const incomers = getIncomers(
   { id: '1', position: { x: 0, y: 0 }, data: { label: 'node' } },
-  nodes,
-  edges,
+  nodes.value,
+  edges.value,
 );
 ```
 
 ## Signature
 
-<PropsTable {...signature} />
+<APIDocs functionName="getIncomers" />

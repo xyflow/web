@@ -1,9 +1,11 @@
+import { DynamicMeta } from 'nextra';
+
 /**
  * This meta object is used to define which examples we want to display.
  * We are not using the exact folder structure of apps/example-apps/react/examples
  * because we want to have more control over the order and which examples are displayed.
  */
-export const meta = {
+export const meta: DynamicMeta = {
   nodes: {
     items: {
       'add-node-on-edge-drop': '',

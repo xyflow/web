@@ -1,31 +1,14 @@
 ---
-description:
-  When you implement a custom node it is wrapped in a component that enables
+description: When you implement a custom node it is wrapped in a component that enables
   basic functionality like drag, select and remove. A custom node gets the
   following props.
 ---
 
 # NodeProps
 
-When you implement a [custom node](/learn/guides/custom-nodes) it is wrapped in a component that enables basic functionality like drag, select and remove. A custom node gets the following props:
+When you implement a [custom node](/learn/customization/custom-nodes) it is wrapped in a component that enables basic functionality like drag, select and remove. A custom node gets the following props:
 
-```ts
-export type NodeProps<NodeType extends Node = Node> = {
-  id: string;
-  data: NodeType['data'];
-  width: number;
-  height: number;
-  dragHandle?: boolean;
-  type?: NodeType['type'];
-  selected?: boolean;
-  isConnectable?: boolean;
-  zIndex?: number;
-  positionAbsolute: XYPosition;
-  dragging: boolean;
-  targetPosition?: Position;
-  sourcePosition?: Position;
-};
-```
+<APIDocs typeName="NodeProps" />
 
 ## Notes
 

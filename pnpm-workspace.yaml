@@ -1,6 +1,6 @@
 packages:
-  - 'apps/*'
-  - 'sites/*'
-  - 'packages/*'
-  - 'scripts/*'
-  - 'configs/*'
+  - apps/*
+  - sites/*
+  - packages/*
+  - scripts/*
+  - configs/*

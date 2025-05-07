@@ -9,7 +9,6 @@ import {
 
 import '@xyflow/react/dist/style.css';
 
-
 import ConnectionLine from './ConnectionLine';
 
 const initialNodes = [
@@ -68,10 +67,9 @@ const ConnectionLineFlow = () => {
       fitViewOptions={{
         padding: 0.2,
       }}
-      style={{ backgroundColor: "#F7F9FB" }}
-      >
-        <Background />
-      </ReactFlow>  
+    >
+      <Background />
+    </ReactFlow>
   );
 };
 

@@ -1,0 +1,66 @@
+---
+description: Learn about Svelte Flow's essential built-in components including the minimap for navigation, viewport controls, customizable background patterns, and overlay panels. These components enhance the user experience and provide core functionality for flow diagrams.
+---
+
+import { RemoteCodeViewer } from 'xy-shared/server';
+
+# Built-In Components
+
+Svelte Flow comes with several additional components that you can plug into your flow. All you have to do is import and add them as children to the `SvelteFlow` component.
+
+```svelte filename="BuiltInComponents.svelte"
+<script>
+  import { SvelteFlow, MiniMap, Controls, Background, Panel } from '@xyflow/svelte';
+
+  import '@xyflow/svelte/dist/style.css';
+</script>
+
+<SvelteFlow>
+  <MiniMap />
+  <Controls />
+  <Background />
+  <Panel position="top-left">
+    <h1>My Flow</h1>
+  </Panel>
+</SvelteFlow>
+```
+
+## MiniMap
+
+The [`MiniMap`](/api-reference/components/minimap) provides a bird's-eye view of your flowgraph, making navigation easier, especially for larger flows. You can customize the appearance of nodes in the minimap by providing a `nodeColor` function.
+
+<RemoteCodeViewer
+  route="guides/built-in-components/minimap"
+  framework="svelte"
+  showOpenInStackblitz={false}
+/>
+
+## Controls
+
+Svelte Flow comes with a set of customizable [`Controls`](/api-reference/components/controls) for the viewport. You can zoom in and out, fit the viewport and toggle if the user can move, select and edit the nodes.
+
+<RemoteCodeViewer
+  route="guides/built-in-components/controls"
+  framework="svelte"
+  showOpenInStackblitz={false}
+/>
+
+## Background
+
+The [`Background`](/api-reference/components/background) component adds a visual grid pattern to your flowgraph, helping users maintain orientation. You can choose from different pattern variants, or if you need more advanced customization, you can explore the [source code](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/plugins/Background/Background.svelte) to implement your own pattern.
+
+<RemoteCodeViewer
+  route="guides/built-in-components/background"
+  framework="svelte"
+  showOpenInStackblitz={false}
+/>
+
+## Panel
+
+The [`Panel`](/api-reference/components/panel) component allows you to add fixed overlays to your flowgraph, perfect for titles, controls, or any other UI elements that should remain stationary.
+
+<RemoteCodeViewer
+  route="guides/built-in-components/panel"
+  framework="svelte"
+  showOpenInStackblitz={false}
+/>

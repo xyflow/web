@@ -1,16 +1,12 @@
 ---
-description:
-  'Given an array of nodes that may be connected to one another and an array of
+description: 'Given an array of nodes that may be connected to one another and an array of
   all your edges, this util gives you an array of edges that connect any of the
   given nodes together.'
 ---
 
-import { PropsTable } from '@/components/props-table';
-import { signature } from '@/references/utils/getConnectedEdges.ts';
-
 # getConnectedEdges()
 
-[Source on GitHub](https://github.com/xyflow/xyflow/blob/v11/packages/core/src/utils/graph.ts/#L267)
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/utils/graph.ts/#L327-L337)
 
 Given an array of nodes that may be connected to one another and an array of
 _all_ your edges, this util gives you an array of edges that connect any of the
@@ -19,12 +15,12 @@ given nodes together.
 ```js
 import { getConnectedEdges } from '@xyflow/svelte';
 
-const nodes = [];
-const edges = [];
+let nodes = $state.raw([]);
+let edges = $state.raw([]);
 
-const connectedEdges = getConnectedEdges(nodes, edges);
+const connectedEdges = getConnectedEdges(nodes.value, edges.value);
 ```
 
 ## Signature
 
-<PropsTable {...signature} />
+<APIDocs functionName="getConnectedEdges" />

@@ -11,7 +11,6 @@ import {
 
 import '@xyflow/react/dist/style.css';
 
-
 const initialNodes = [
   {
     id: '0',
@@ -66,7 +65,6 @@ const AddNodeOnEdgeDrop = () => {
   return (
     <div className="wrapper" ref={reactFlowWrapper}>
       <ReactFlow
-        style={{ backgroundColor: "#F7F9FB" }}
         nodes={nodes}
         edges={edges}
         onNodesChange={onNodesChange}
@@ -76,9 +74,9 @@ const AddNodeOnEdgeDrop = () => {
         fitView
         fitViewOptions={{ padding: 2 }}
         nodeOrigin={nodeOrigin}
-    >
-      <Background  />
-    </ReactFlow>
+      >
+        <Background />
+      </ReactFlow>
     </div>
   );
 };

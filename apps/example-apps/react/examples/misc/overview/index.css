@@ -128,10 +128,6 @@ body {
   color: #ffffff;
 }
 
-.react-flow__edge-textbg {
-  fill: #f7f9fb;
-}
-
 /* Custom Handles */
 
 .react-flow__handle.custom-handle {

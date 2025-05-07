@@ -1,59 +1,19 @@
 ---
 title: Node
-description:
-  The Node type represents everything Svelte Flow needs to know about a given
+description: The Node type represents everything Svelte Flow needs to know about a given
   node. Many of these properties can be manipulated both by Svelte Flow or by
   you, but some such as width and height should be considered read-only.
 ---
 
-import { PropsTable } from '@/components/props-table';
-import { nodeFields } from '@/references/types/Node.fields.ts';
-
-# Node&lt;NodeData, NodeType>
+# Node\<NodeData, NodeType>
 
 The `Node` type represents everything Svelte Flow needs to know about a given node.
 Many of these properties can be manipulated both by Svelte Flow or by you, but
 some such as `width` and `height` should be considered read-only.
 
-```ts
-export type Node<
-  NodeData extends Record<string, unknown>,
-  NodeType extends string,
-> = {
-  id: string;
-  position: XYPosition;
-  data: NodeData;
-  type?: NodeType;
-  sourcePosition?: Position;
-  targetPosition?: Position;
-  hidden?: boolean;
-  selected?: boolean;
-  dragging?: boolean;
-  draggable?: boolean;
-  selectable?: boolean;
-  connectable?: boolean;
-  resizing?: boolean;
-  deletable?: boolean;
-  dragHandle?: string;
-  width?: number;
-  height?: number;
-  parentId?: string;
-  zIndex?: number;
-  extent?: 'parent' | CoordinateExtent;
-  ariaLabel?: string;
-  origin?: NodeOrigin;
-  style?: string;
-  class?: string;
-  measured?: {
-    width?: number;
-    height?: number;
-  };
-};
-```
-
 ## Fields
 
-<PropsTable {...nodeFields} />
+<APIDocs typeName="Node" />
 
 ## Notes
 

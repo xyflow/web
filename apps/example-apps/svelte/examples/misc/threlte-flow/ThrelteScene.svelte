@@ -1,35 +1,40 @@
 <script lang="ts">
-  import { T, useThrelte, useFrame } from '@threlte/core';
-  import type { FlowState } from './nodes-and-edges';
-  import type { Writable } from 'svelte/store';
+  import { T, useThrelte, useTask } from '@threlte/core';
+  import { flowState } from './nodes-and-edges.svelte';
 
-  export let flowState: Writable<FlowState>;
   const { camera } = useThrelte();
 
-  const randomVector: (r: number) => [x: number, y: number, z: number] = (r: number) => [
+  const randomVector: (r: number) => [x: number, y: number, z: number] = (
+    r: number,
+  ) => [
     r / 2 - Math.random() * r,
     r / 2 - Math.random() * r,
-    r / 2 - Math.random() * r
+    r / 2 - Math.random() * r,
   ];
 
   const randomEuler: () => [x: number, y: number, z: number] = () => [
     Math.random() * Math.PI,
     Math.random() * Math.PI,
-    Math.random() * Math.PI
+    Math.random() * Math.PI,
   ];
 
   const NUMBER_OF_OBJECTS = 150;
 
-  const randomAssets = Array.from({ length: NUMBER_OF_OBJECTS }, (r: number = 10) => ({
-    random: Math.random(),
-    position: randomVector(r),
-    rotation: randomEuler()
-  }));
+  const randomAssets = Array.from(
+    { length: NUMBER_OF_OBJECTS },
+    (r: number = 10) => ({
+      random: Math.random(),
+      position: randomVector(r),
+      rotation: randomEuler(),
+    }),
+  );
 
-  $: $camera.position.set(0, 0, +$flowState.zoom);
+  $effect(() => {
+    $camera.position.set(0, 0, +flowState.zoom);
+  });
 
-  let t = 0;
-  useFrame((ctx, delta) => {
+  let t: number = $state(0.0);
+  useTask((delta) => {
     t += delta;
   });
 </script>
@@ -50,14 +55,14 @@
     rotation={[
       asset.rotation[0] + Math.cos((t * asset.random) / 1.5) / 2,
       asset.rotation[1] + Math.sin(t * asset.random) / 2,
-      asset.rotation[2] + Math.cos((t * asset.random) / 1.5) / 2
+      asset.rotation[2] + Math.cos((t * asset.random) / 1.5) / 2,
     ]}
   >
-    {#if $flowState.shape === 'cube'}
+    {#if flowState.shape === 'cube'}
       <T.BoxGeometry args={[1, 1, 1]} />
-    {:else if $flowState.shape === 'pyramid'}
+    {:else if flowState.shape === 'pyramid'}
       <T.TetrahedronGeometry args={[1, 0]} />
     {/if}
-    <T.MeshLambertMaterial color={$flowState.color} />
+    <T.MeshLambertMaterial color={flowState.color} toneMapped={false} />
   </T.Mesh>
 {/each}

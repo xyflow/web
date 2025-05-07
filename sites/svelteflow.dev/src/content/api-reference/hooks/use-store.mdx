@@ -3,8 +3,6 @@ description: The useStore hook can be used to access the internal store of the S
 ---
 
 import { Callout } from 'nextra/components';
-import { PropsTable } from '@/components/props-table';
-import { signature } from '@/references/hooks/useStore.ts';
 
 # useStore()
 
@@ -13,9 +11,9 @@ import { signature } from '@/references/hooks/useStore.ts';
 This hook can be used to access the internal store of the Svelte Flow.
 
 <Callout type="info">
-  This hook is only needed for advanced use cases. It should only be used if
-  there is no other way to access the internal state. For many of the common use
-  cases, there are dedicated hooks available such as
+  This hook is only needed for advanced use cases. It should only be used if there is no
+  other way to access the internal state. For many of the common use cases, there are
+  dedicated hooks available such as
   [`useConnection`](/api-reference/hooks/use-connection),
   [`useNodes`](/api-reference/hooks/use-nodes), etc.
 </Callout>
@@ -32,4 +30,4 @@ This hook can be used to access the internal store of the Svelte Flow.
 
 ## Signature
 
-<PropsTable {...signature} />
+<APIDocs functionName="useStore" />

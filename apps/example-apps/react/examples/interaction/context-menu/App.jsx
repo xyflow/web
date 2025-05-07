@@ -9,10 +9,8 @@ import {
 
 import '@xyflow/react/dist/style.css';
 
-
 import { initialNodes, initialEdges } from './initialElements';
 import ContextMenu from './ContextMenu';
-
 
 const Flow = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
@@ -59,7 +57,6 @@ const Flow = () => {
       onPaneClick={onPaneClick}
       onNodeContextMenu={onNodeContextMenu}
       fitView
-      style={{ backgroundColor: "#F7F9FB" }}
     >
       <Background />
       {menu && <ContextMenu onClick={onPaneClick} {...menu} />}

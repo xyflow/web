@@ -23,7 +23,7 @@ const nodes: Node[] = [
     position: { x: 0, y: 0 },
     style: {
       width: 50,
-      backgroundColor: '#fdba74',
+      backgroundColor: '#FC4545',
       borderColor: 'white',
       color: 'white',
       fontWeight: 'bold',
@@ -34,10 +34,10 @@ const nodes: Node[] = [
   {
     id: 'b',
     data: { label: 'B' },
-    position: { x: 150, y: 0 },
+    position: { x: 150, y: -50 },
     style: {
       width: 50,
-      backgroundColor: '#f97316',
+      backgroundColor: '#fb6432',
       borderColor: 'white',
       color: 'white',
       fontWeight: 'bold',
@@ -48,10 +48,10 @@ const nodes: Node[] = [
   {
     id: 'c',
     data: { label: 'C' },
-    position: { x: 300, y: -50 },
+    position: { x: 150, y: 50 },
     style: {
       width: 50,
-      backgroundColor: '#c2410c',
+      backgroundColor: '#fb6432',
       borderColor: 'white',
       color: 'white',
       fontWeight: 'bold',
@@ -62,10 +62,10 @@ const nodes: Node[] = [
   {
     id: 'd',
     data: { label: 'D' },
-    position: { x: 300, y: 50 },
+    position: { x: 300, y: 0 },
     style: {
       width: 50,
-      backgroundColor: '#c2410c',
+      backgroundColor: '#FFBA42',
       borderColor: 'white',
       color: 'white',
       fontWeight: 'bold',
@@ -83,8 +83,8 @@ const edges = [
     type: 'smoothstep',
   },
   {
-    id: 'b-c',
-    source: 'b',
+    id: 'a-c',
+    source: 'a',
     target: 'c',
     type: 'smoothstep',
   },

@@ -1,22 +1,10 @@
 <script>
-  import { writable } from 'svelte/store';
-  import { SvelteFlow, Background, Controls } from '@xyflow/svelte';
-
+  import { SvelteFlow, Background } from '@xyflow/svelte';
   import '@xyflow/svelte/dist/style.css';
-
-  const nodes = writable([]);
-  const edges = writable([]);
 </script>
 
-<main>
-  <SvelteFlow {nodes} {edges}>
+<div style:width="100vw" style:height="100vh">
+  <SvelteFlow>
     <Background />
-    <Controls />
   </SvelteFlow>
-</main>
-
-<style>
-  main {
-    height: 100vh;
-  }
-</style>
+</div>

@@ -22,7 +22,6 @@
     "@xyflow/system": "^0.0.57",
     "@xyflow/xy-ui": "workspace:*",
     "d3": "^7.9.0",
-    "fast-glob": "^3.3.3",
     "next": "^15.3.1",
     "next-sitemap": "^4.2.3",
     "nextra": "^4.3.0-alpha.22",

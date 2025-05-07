@@ -87,7 +87,7 @@ const features = [
       </>
     ),
     text: 'We play nice with Tailwind and good old CSS. Svelte Flow nodes are just Svelte components. Create custom nodes to have full control with interactive components.',
-    route: '/learn/guides/custom-nodes' satisfies InternalRoute,
+    route: '/learn/customization/custom-nodes' satisfies InternalRoute,
     linkLabel: 'Custom nodes guide',
     flowComponent: <FlowB />,
   },
@@ -107,7 +107,7 @@ const Page: FC = async () => {
       <HeroFlow
         title="Svelte Flow"
         initialColor="#ff4000"
-        subtitle="A customizable Svelte component for building node-based editors and interactive diagrams by the creators of React Flow"
+        subtitle="A customizable Svelte component for building node-based editors and interactive diagrams"
         action={
           <div className="flex">
             <Button asChild className="mr-3" size="lg">
@@ -134,10 +134,7 @@ const Page: FC = async () => {
             },
             {
               label: 'Weekly Installs',
-              value:
-                downloads >= 1000
-                  ? `${(downloads / 1000).toFixed(0)}k`
-                  : downloads,
+              value: downloads >= 1000 ? `${(downloads / 1000).toFixed(0)}k` : downloads,
             },
             { label: 'License', value: 'MIT' },
           ]}
@@ -151,7 +148,7 @@ const Page: FC = async () => {
         />
       </Section>
 
-      <GettingStarted libraryName="Svelte Flow" packageName="@xyflow/svelte" />
+      <GettingStarted libraryName="Svelte Flow" packageName="@xyflow/svelte@next" />
 
       <Section>
         <Features features={features} />

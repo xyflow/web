@@ -10,7 +10,6 @@ import {
 
 import '@xyflow/react/dist/style.css';
 
-
 import CustomNode from './CustomNode';
 
 const nodeTypes = {
@@ -56,8 +55,7 @@ const CustomNodeFlow = () => {
       onConnect={onConnect}
       nodeTypes={nodeTypes}
       fitView
-      style={{ backgroundColor: "#F7F9FB" }}
-      >
+    >
       <Background />
     </ReactFlow>
   );

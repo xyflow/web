@@ -2,7 +2,6 @@ import type { FC, ReactNode } from 'react';
 import { Head } from 'nextra/components';
 import svelteFlowPackageJson from '@xyflow/svelte/package.json';
 import { Html } from '@/components/html.client';
-import { NextraLayout } from '@/components/nextra-layout';
 import { generateRootMetadata } from 'xy-shared/server';
 import { Fathom } from 'xy-shared';
 
@@ -26,7 +25,7 @@ const RootLayout: FC<{
       <Head color={{ hue: 15, saturation: 90 }} />
       <body>
         <Fathom id="PFWQXXRR" />
-        <NextraLayout>{children}</NextraLayout>
+        {children}
       </body>
     </Html>
   );
