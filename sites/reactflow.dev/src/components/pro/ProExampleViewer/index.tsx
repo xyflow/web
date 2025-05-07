@@ -22,13 +22,13 @@ function ProExampleViewer({
   frameworkId: Framework;
   config: ProExampleConfig;
 }) {
-  const [files, setFiles] = useState<SandpackFiles>(null);
+  const [files, setFiles] = useState<SandpackFiles | undefined>();
   const downloadExample = useDownloadExample({
     exampleId,
     framework: frameworkId,
   });
   const { isSubscribed } = useSubscription();
-  const isUnlocked = isSubscribed || config.free;
+  const isUnlocked = (isSubscribed || config.free) ?? false;
   const isTemplate = config.type === 'template';
 
   useEffect(() => {

@@ -34,8 +34,7 @@ function SubscriptionFeature({
   requireAdminSubscription = false,
 }: SubscriptionFeatureProps) {
   const { plan, isAdmin, isTeamSubscribed } = useSubscription();
-  const isActive =
-    plans.includes(plan) && (requireAdminSubscription ? isAdmin : true);
+  const isActive = plans.includes(plan) && (requireAdminSubscription ? isAdmin : true);
 
   return (
     <Card
@@ -65,8 +64,7 @@ function SubscriptionFeature({
           <>
             <div className="flex flex-wrap items-center space-x-1.5">
               <div className="text-muted-foreground text-sm">
-                Available on the <span className="font-bold">{plans[0]}</span>{' '}
-                plan.
+                Available on the <span className="font-bold">{plans[0]}</span> plan.
               </div>
             </div>
             {isAdmin ? (
@@ -80,11 +78,7 @@ function SubscriptionFeature({
               </div>
             ) : (
               <div className="ml-auto">
-                <Button
-                  asChild
-                  className="text-react font-bold text-sm"
-                  variant="link"
-                >
+                <Button asChild className="text-react font-bold text-sm" variant="link">
                   <Link href="/subscribe">Subscribe</Link>
                 </Button>
               </div>
@@ -100,12 +94,17 @@ function ActionButton({
   href,
   label,
   action = () => {},
-}: SubscriptionFeatureProps['button']) {
+}: NonNullable<SubscriptionFeatureProps['button']>) {
+  const children = (
+    <>
+      {label} <ArrowLongRightIcon className="ml-1 h-4 w-4" />
+    </>
+  );
   if (href) {
     return (
       <Link href={href}>
         <Button className="text-md font-bold" variant="link">
-          {label} <ArrowLongRightIcon className="ml-1 h-4 w-4" />
+          {children}
         </Button>
       </Link>
     );
@@ -113,7 +112,7 @@ function ActionButton({
 
   return (
     <Button onClick={action} className="text-md font-bold" variant="link">
-      {label} <ArrowLongRightIcon className="ml-1 h-4 w-4" />
+      {children}
     </Button>
   );
 }
