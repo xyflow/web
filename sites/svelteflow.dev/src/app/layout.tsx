@@ -23,9 +23,11 @@ const RootLayout: FC<{
 }> = async ({ children }) => {
   return (
     <Html>
-      <Head color={{ hue: 15, saturation: 90 }} />
+      <Head color={{ hue: 15, saturation: 90 }}>
+        <meta name="robots" content="noindex, nofollow" />
+      </Head>
       <body>
-        <Fathom id="PFWQXXRR" />
+        <Fathom id="XLBRAGEV" />
         <NextraLayout>{children}</NextraLayout>
       </body>
     </Html>

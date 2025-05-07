@@ -5,12 +5,7 @@ import { Banner } from 'nextra/components';
 import { getPageMap } from 'nextra/page-map';
 import { Layout, Navbar } from 'nextra-theme-docs';
 import { Search } from 'xy-shared';
-import {
-  Button,
-  defaultFooterCategories,
-  Footer,
-  LogoLabel,
-} from '@xyflow/xy-ui';
+import { Button, defaultFooterCategories, Footer, LogoLabel } from '@xyflow/xy-ui';
 import { TOC, getLastChangelog } from 'xy-shared/server';
 
 export const NextraLayout: FC<{
@@ -42,15 +37,16 @@ export const NextraLayout: FC<{
   return (
     <Layout
       banner={
-        <Banner storageKey="svelte-flow-1">
+        <Banner storageKey="svelte-flow-legacy">
+          💡 Legacy Notice: You're viewing Svelte Flow for Svelte 4. For the latest
+          documentation,{' '}
           <a
             className="hover:underline x:focus-visible:nextra-focus"
-            href="https://next.svelteflow.dev"
+            href="https://svelteflow.dev"
             rel="noreferrer"
             target="_blank"
           >
-            📣 We just released Svelte Flow 1.0 Alpha — try it out and give us
-            your feedback!
+            click here.
           </a>
         </Banner>
       }
@@ -58,15 +54,9 @@ export const NextraLayout: FC<{
       docsRepositoryBase="https://github.com/xyflow/web/tree/main/sites/svelteflow.dev"
       editLink="Edit this page on GitHub"
       feedback={{ content: null }}
-      footer={
-        <Footer baseUrl="https://svelteflow.dev" categories={categories} />
-      }
+      footer={<Footer baseUrl="https://svelteflow.dev" categories={categories} />}
       navbar={
-        <Navbar
-          align="left"
-          logo={<LogoLabel label="Svelte Flow" />}
-          logoLink={false}
-        >
+        <Navbar align="left" logo={<LogoLabel label="Svelte Flow" />} logoLink={false}>
           <Search />
           <a
             className="xy-link-gray x:focus-visible:nextra-focus"
