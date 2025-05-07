@@ -1,0 +1,49 @@
+---
+title: EdgeReconnectAnchor component
+sidebarTitle: '<EdgeReconnectAnchor />'
+description: 'The EdgeReconnectAnchor component is used to create a reconnection point on your custom edges.'
+---
+
+# &lt;EdgeReconnectAnchor />
+
+If you want a way to make your edges updatable, you can use the `<EdgeReconnectAnchor />` component. This component is used to create a reconnection point on your custom edges. These points behave the same way as handles:
+
+1. You can start dragging on an `<EdgeReconnectAnchor />`
+2. This starts a new connection process and from the oppsite side of the edge
+3. You can finish the connection the same way as it had been started from a handle
+
+```svelte filename="CustomEdge.svelte"
+<script lang="ts">
+  import { BaseEdge, getStraightPath, type EdgeProps } from '@xyflow/svelte';
+
+  let { sourceX, sourceY, targetX, targetY, selected, ...props } : EdgeProps = $props();
+
+  const [edgePath] = getStraightPath({
+    sourceX,
+    sourceY,
+    targetX,
+    targetY,
+  });
+
+  let reconnecting = $state(false);
+</script>
+
+<!-- We want to hide the initial edge while reconnecting -->
+{#if !reconnecting}
+  <BaseEdge path={edgePath} {...props} />
+{/if}
+
+<!-- We only want to be able to reconnect when an edge is selected  -->
+{#if selected}
+  <EdgeReconnectAnchor bind:reconnecting type="source" position={{ x: sourceX, y: sourceY }} />
+  <EdgeReconnectAnchor bind:reconnecting type="target" position={{ x: targetX, y: targetY }} />
+{/if}
+```
+
+This example renders invisible reconnection points. Naturally, you can also render an icon inside the `<EdgeReconnectAnchor />` component.
+
+## Props
+
+The type for props of `<EdgeReconnectAnchor />` component is exported as `EdgeReconnectAnchorProps`. Additionally, it extends the props of `<div />`.
+
+<APIDocs componentName="EdgeReconnectAnchor" groupKeys="HTMLAttributes<HTMLDivElement>" />

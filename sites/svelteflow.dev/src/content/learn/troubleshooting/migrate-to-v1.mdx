@@ -3,6 +3,8 @@ title: Migrate to v1
 description: A comprehensive guide to migrating from Svelte Flow v0 to v1. Learn about state management changes, component binding updates, hook modifications, and new features for a smooth transition to the latest version.
 ---
 
+import { Callout } from 'nextra/components';
+
 # Migrate to Svelte Flow 1.0
 
 ## Migration Guide
@@ -33,6 +35,27 @@ This means that `nodes` and `edges` are to be treated as immutable from now on. 
 
 1. create a new node/edge object, when updating a property.
 2. reassign the nodes/edges array (this was technically required before anyway)
+
+```js
+nodes[0].position.x = 100; // won't work
+
+const newNode = { ...nodes[0] };
+newNode.position.x = 100;
+nodes[0] = newNode; // not enough to trigger an update
+nodes = [...nodes]; // this will make it work
+
+nodes = nodes.map((node) => {
+  if (node.id === '1') {
+    return { ...node, position: { ...node.position, x: 100 } };
+  }
+  return node;
+}); // also works
+
+updateNode('1', (node) => ({
+  ...node,
+  position: { ...node.position, x: 100 },
+})); // using the updateNode helper from useSvelteFlow
+```
 
 ### `nodes` & `edges` need to be bound from `<SvelteFlow />`
 
@@ -132,7 +155,11 @@ function updateNodes() {
 const { updateNode, screenToFlowPosition } = useSvelteFlow(); //still works
 ```
 
-However, if you are using the `<SvelteFlowProvider />` to extend the scope of internal store to components outside of the main `<SvelteFlow />` component, you will have to wrap the hook call in a `$derived`.
+<Callout>
+  You have to use `$derived(useSvelteFlow());` if you are using the hook outside of the
+  main `<SvelteFlow />` component via the `<SvelteFlowProvider />
+  `.
+</Callout>
 
 **Old API**
 
@@ -152,6 +179,8 @@ let { addNode, deleteNodes, fitView } = $derived(useSvelteFlow());
 
 ### Binding the viewport
 
+Binding the viewport now works natively in Svelte 5. You can either access the internal viewport or bind your very own viewport object to be used instead.
+
 **Old API**
 
 ```js
@@ -170,7 +199,7 @@ let viewport = $state < Viewport > { x: 100, y: 100, zoom: 1.25 };
 
 ### Custom Connection Line
 
-Using a custom Connection Line was possible before by passing it to a slot. In Svelte Flow 1.0 we introduced a `connectionLineComponent` prop for this:
+Using a custom Connection Line was possible before by passing it to a [slot](https://svelte.dev/docs/svelte/legacy-slots). In Svelte Flow 1.0 we introduced a new prop called `connectionLineComponent`for this.
 
 **Old API**
 
@@ -189,8 +218,49 @@ Using a custom Connection Line was possible before by passing it to a slot. In S
 </SvelteFlow>
 ```
 
-## New Features
+### `onEdgeCreate` becomes `onbeforeconnect`
 
-### colorModeSSR
+`onedgecreate` was called before a new edge was created. This is now called `onbeforeconnect` to better align with events like [`onbeforeconnect`](/api-reference/svelte-flow#onbeforedelete).
 
-You can pass a fallback color mode for server side rendering when `colorMode` is set to `'system'`.
+**Old API**
+
+```js
+<SvelteFlow
+  {nodes}
+  {edges}
+  onEdgeCreate={(connection) => ({...connection, id: crypto.randomUUID()})}
+/>
+```
+
+**New API**
+
+```js
+<SvelteFlow
+  bind:nodes
+  bind:edges
+  onbeforeconnect={(connection) => ({ ...connection, id: crypto.randomUUID() })}
+/>
+```
+
+### `<EdgeLabelRenderer/>` becomes [`<EdgeLabel />`](/api-reference/components/edge-label)
+
+The `EdgeLabelRenderer` component is now called `EdgeLabel`. As it was just a simple Portal to begin with, the naming of it being a "renderer" was a bit misleading.
+To add to this, the new `EdgeLabel` component now also handles clicks on the label automatically and is aware of what edge it belongs to.
+
+**Old API**
+
+```js filename="CustomEdge.svelte"
+<BaseEdge id={id} path={path} />
+<EdgeLabelRenderer>
+  <div>My Edge Label</div>
+</EdgeLabelRenderer>
+```
+
+**New API**
+
+```js filename="CustomEdge.svelte"
+<BaseEdge path={path} />
+<EdgeLabel>
+  <div>My Edge Label</div>
+</EdgeLabel>
+```
