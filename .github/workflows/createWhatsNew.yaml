@@ -47,7 +47,7 @@ jobs:
       - name: 'Add file'
         # Using ${{ CLEAN_BODY }} instead of ${CLEAN_BODY} strips backticks from the string
         run: |
-          cat > sites/${{env.FRAMEWORK_LOWERCASE}}flow.dev/src/pages/whats-new/${{ env.DAY }}.mdx << EOL
+          cat > sites/${{env.FRAMEWORK_LOWERCASE}}flow.dev/src/content/whats-new/${{ env.DAY }}.mdx << EOL
           ---
           title: "${{ env.FRAMEWORK }} Flow ${{ env.VERSION }}"
           description: "Changelog for ${{ env.FRAMEWORK }} Flow version ${{ env.VERSION }}"

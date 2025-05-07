@@ -27,6 +27,7 @@ export default async function Page(props: PageProps) {
   return (
     <Wrapper toc={toc} metadata={metadata}>
       <BaseBlogPostLayout
+        // @ts-expect-error -- fixme
         frontMatter={metadata}
         prev={flatDocsDirectories[activeIndex - 1]}
         next={flatDocsDirectories[activeIndex + 1]}

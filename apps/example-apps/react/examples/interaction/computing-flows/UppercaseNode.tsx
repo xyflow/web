@@ -3,7 +3,7 @@ import {
   Position,
   Handle,
   useReactFlow,
-  useHandleConnections,
+  useNodeConnections,
   useNodesData,
   type NodeProps,
 } from '@xyflow/react';
@@ -12,8 +12,8 @@ import { isTextNode, type MyNode } from './initialElements';
 
 function UppercaseNode({ id }: NodeProps) {
   const { updateNodeData } = useReactFlow();
-  const connections = useHandleConnections({
-    type: 'target',
+  const connections = useNodeConnections({
+    handleType: 'target',
   });
   const nodesData = useNodesData<MyNode>(connections[0]?.source);
   const textNode = isTextNode(nodesData) ? nodesData : null;

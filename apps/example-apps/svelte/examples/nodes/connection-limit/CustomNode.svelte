@@ -1,10 +1,10 @@
 <script lang="ts">
-  import { Position, type NodeProps, Handle, useHandleConnections } from '@xyflow/svelte';
+  import { Position, type NodeProps, Handle, useNodeConnections } from '@xyflow/svelte';
   type $$Props = NodeProps;
 
   export let id: $$Props['id'];
 
-  const connections = useHandleConnections({ nodeId: id, type: 'target' });
+  const connections = useNodeConnections({ id, handleType: 'target' });
 
   $: isConnectable = $connections.length === 0;
 </script>

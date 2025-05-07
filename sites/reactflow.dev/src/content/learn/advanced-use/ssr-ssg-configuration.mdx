@@ -7,9 +7,7 @@ description: Step-by-step guide render React Flow apps on the server for display
 
 import { Callout } from 'nextra/components';
 
-<Callout type="info">
-  Server side rendering is supported since React Flow 12
-</Callout>
+<Callout type="info">Server side rendering is supported since React Flow 12</Callout>
 
 This is an advanced use case and assumes you are already familiar with React Flow. If you're new to React Flow, check out our [getting started guide](/learn/getting-started/installation-and-requirements).
 
@@ -17,7 +15,7 @@ In this guide you will learn how to configure React Flow to render a flow on the
 
 - Display static HTML diagrams in documentation
 - Render React Flow diagrams in non-js environments
-- Dynamically generate opengraph images that appear as embeds when sharing a link to your flow
+- Dynamically generate open graph images that appear as embeds when sharing a link to your flow
 
 (If you want to download an image of your flow, there's an easier way to do that on the client-side in our [download image example](/examples/misc/download-image).)
 
@@ -45,12 +43,12 @@ React Flow now knows the dimensions of the node and can render it on the server.
     There are two ways to specify node dimensions for server side rendering:
   </strong>
   <div>
-    1. `width` and `height` for static dimensions that are known in advance and
-    don't change.
+    1. `width` and `height` for static dimensions that are known in advance and don't
+    change.
   </div>
   <div>
-    2. `initialWidth` and `initialHeight` for dynamic dimensions that are not
-    known in advance or change.
+    2. `initialWidth` and `initialHeight` for dynamic dimensions that are not known in
+    advance or change.
   </div>
 </Callout>
 
@@ -111,4 +109,35 @@ If you are using the `ReactFlowProvider`, you can pass `initialNodes`, `initialE
 >
   <App />
 </ReactFlowProvider>
+```
+
+The `initial-` prefix means that these values are only used for the first render. After that, the provider will use the `nodes` and `edges` from the context.
+
+### Creating static HTML
+
+If you want to create static HTML, you can use the `renderToStaticMarkup` function from React. This will render the React Flow component to a string of HTML. You can then use this string to create a static HTML file or send it as a response to an HTTP request.
+
+```js
+import React from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
+import { ReactFlow, Background } from '@xyflow/react';
+
+function toHTML({ nodes, edges, width, height }) {
+  const html = renderToStaticMarkup(
+    React.createElement(
+      ReactFlow,
+      {
+        nodes,
+        edges,
+        width,
+        height,
+        minZoom: 0.2,
+        fitView: true,
+      },
+      React.createElement(Background, null),
+    ),
+  );
+
+  return html;
+}
 ```

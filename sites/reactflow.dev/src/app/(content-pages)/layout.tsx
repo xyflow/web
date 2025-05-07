@@ -1,47 +1,67 @@
 import { FC, ReactNode } from 'react';
 import NextLink from 'next/link';
-import { Folder, MdxFile } from 'nextra';
+import { Folder, MdxFile, MetaJsonFile } from 'nextra';
 import { getPageMap } from 'nextra/page-map';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 import { Search, SidebarTitle } from 'xy-shared';
 import { Button, defaultFooterCategories } from '@xyflow/xy-ui';
 import { NextraLayout } from '@/components/nextra-layout';
+import { getPageMap as getExamplesPageMap } from './examples/[...slug]/utils';
 
 const Layout: FC<{ children: ReactNode }> = async ({ children }) => {
   const { Projects: _, ...remainingCategories } = defaultFooterCategories;
-  const pageMap = await getPageMap();
+  const pageMap = [...(await getPageMap())];
 
   // Add badges
   const apiReference = pageMap.find(
-    (item): item is Folder =>
-      'children' in item && item.name === 'api-reference',
+    (item): item is Folder => 'children' in item && item.name === 'api-reference',
   );
-  const examples = pageMap.find(
-    (item): item is Folder => 'children' in item && item.name === 'examples',
+  const examplesIndex = pageMap.findIndex(
+    (item): item is Folder => 'name' in item && item.name === 'examples',
   );
+  const [examplesMeta, ...examples] = (pageMap[examplesIndex] as Folder).children;
+  const [catchAllExamplesMeta, ...catchAllExamples] = (await getExamplesPageMap())
+    .children;
+  // Merge on disk examples with examples from catch-all [...slug] route
+  pageMap[examplesIndex] = {
+    ...pageMap[examplesIndex],
+    children: [
+      {
+        // Merge meta records
+        data: {
+          ...(examplesMeta as MetaJsonFile).data,
+          ...(catchAllExamplesMeta as MetaJsonFile).data,
+        },
+      },
+      ...examples,
+      ...catchAllExamples,
+    ],
+  };
   const components = pageMap.find(
     (item): item is Folder => 'children' in item && item.name === 'components',
   );
-
   const folders = [
-    ...apiReference.children,
-    ...examples.children,
-    ...components.children,
+    ...apiReference!.children,
+    ...components!.children,
+    ...catchAllExamples,
   ].filter((item): item is Folder<MdxFile> => 'children' in item);
 
   for (const folder of folders) {
-    folder.children = folder.children.map(
-      (item: MdxFile & { title: string }) => ({
+    // First filter out hidden items
+    folder.children = folder.children
+      .filter((item: MdxFile) => {
+        // Skip items where frontMatter.hidden is true
+        return !('frontMatter' in item && item.frontMatter?.hidden === true);
+      })
+      .map((item: MdxFile & { title: string }) => ({
         ...item,
         title:
-          // On dev somehow we can have duplicate badges without this check
           typeof item.title === 'string' ? (
-            <SidebarTitle frontMatter={item.frontMatter} title={item.title} />
+            <SidebarTitle frontMatter={item.frontMatter!} title={item.title} />
           ) : (
             item.title
           ),
-      }),
-    );
+      }));
   }
   return (
     <NextraLayout
@@ -51,7 +71,9 @@ const Layout: FC<{ children: ReactNode }> = async ({ children }) => {
           { title: 'Getting Started', route: '/learn' },
           { title: 'API Reference', route: '/api-reference' },
           { title: 'Examples', route: '/examples' },
+          { title: 'Components', route: '/components' },
           { title: 'Showcase', route: '/showcase' },
+          { title: 'Playground', route: 'https://play.reactflow.dev' },
         ],
         ...remainingCategories,
         Legal: [
@@ -61,8 +83,7 @@ const Layout: FC<{ children: ReactNode }> = async ({ children }) => {
           },
           {
             title: 'Code of Conduct',
-            route:
-              'https://github.com/xyflow/xyflow/blob/main/CODE_OF_CONDUCT.md',
+            route: 'https://github.com/xyflow/xyflow/blob/main/CODE_OF_CONDUCT.md',
           },
           { title: 'Imprint', route: 'https://xyflow.com/imprint' },
         ],

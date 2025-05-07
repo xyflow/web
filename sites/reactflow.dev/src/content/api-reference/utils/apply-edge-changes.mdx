@@ -2,12 +2,9 @@
 description:
   "Various events on the ReactFlow component can produce an EdgeChange that
   describes how to update the edges of your flow in some way. If you don't need
-  any custom behaviour, this util can be used to take an array of these changes
+  any custom behavior, this util can be used to take an array of these changes
   and apply them to your edges."
 ---
-
-import { PropsTable } from '@/components/props-table';
-import { signature } from '@/references/utils/applyEdgeChanges';
 
 # applyEdgeChanges()
 
@@ -15,7 +12,7 @@ import { signature } from '@/references/utils/applyEdgeChanges';
 
 Various events on the [`<ReactFlow />`](/api-reference/react-flow) component can produce an
 [`EdgeChange`](/api-reference/types/edge-change) that describes how to update the edges of your
-flow in some way. If you don't need any custom behaviour, this util can be used to
+flow in some way. If you don't need any custom behavior, this util can be used to
 take an array of these changes and apply them to your edges.
 
 ```js
@@ -40,10 +37,10 @@ export default function Flow() {
 
 ## Signature
 
-<PropsTable {...signature} />
+<APIDocs functionName="applyEdgeChanges" />
 
 ## Notes
 
-- If you don't need any custom behaviour, the [`useEdgesState`](/api-reference/hooks/use-edges-state)
-  hook conviniently wraps this util and React's `useState` hook for you and might
+- If you don't need any custom behavior, the [`useEdgesState`](/api-reference/hooks/use-edges-state)
+  hook conveniently wraps this util and React's `useState` hook for you and might
   be simpler to use.

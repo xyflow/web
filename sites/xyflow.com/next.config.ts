@@ -12,6 +12,7 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ['@xyflow/xy-ui', 'xy-shared'],
   },
   images: {
+    minimumCacheTTL: 2678400, // 31 days
     dangerouslyAllowSVG: true,
     remotePatterns: [
       {
@@ -49,6 +50,13 @@ const nextConfig: NextConfig = {
         ? `https://example-apps-git-${process.env.VERCEL_GIT_COMMIT_REF}-xyflow.vercel.app`
         : process.env.NEXT_PUBLIC_EXAMPLES_URL,
   },
+  turbopack: {
+    resolveAlias: {
+      // Fix an error when `--turbopack` is enabled
+      // Module not found: Can't resolve 'next-mdx-import-source-file'
+      'next-mdx-import-source-file': "./src/mdx-components.tsx",
+    }
+  }
 };
 
 const withNextra = nextra({

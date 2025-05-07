@@ -17,9 +17,9 @@ export * from './widgets/image-slider';
 export * from './widgets/project-cards';
 export * from './widgets/project-preview';
 export * from './widgets/props-table';
-export * from './widgets/react-player-lazy';
 export * from './widgets/search';
 export * from './widgets/subscribe-section';
+export * from './widgets/liteyoutube-embed';
 
 export * from './hooks/use-connection-drawer';
 

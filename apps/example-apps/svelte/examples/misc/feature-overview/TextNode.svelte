@@ -3,7 +3,7 @@
     type NodeProps,
     Handle,
     Position,
-    useHandleConnections,
+    useNodeConnections,
     useInternalNode,
     type BuiltInNode,
     type Dimensions
@@ -14,8 +14,8 @@
   type $$Props = NodeProps<BuiltInNode>;
   $$restProps;
 
-  $: handleConnections = useHandleConnections({
-    type: 'target'
+  $: handleConnections = useNodeConnections({
+    handleType: 'target'
   });
 
   $: connectedNode = useInternalNode($handleConnections[0]?.source);

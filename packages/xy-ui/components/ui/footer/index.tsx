@@ -6,10 +6,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 
 import { cn } from '../../../lib/utils';
 import { Text } from '../../../';
-import {
-  defaultCategories,
-  type FooterCategoryConfig,
-} from './default-categories';
+import { defaultCategories, type FooterCategoryConfig } from './default-categories';
 
 const footerVariants = cva('bg-black print:bg-transparent py-12 lg:py-18', {
   variants: {
@@ -97,8 +94,8 @@ const Footer = forwardRef<HTMLDivElement, FooterProps>(
               </div>
 
               <Text variant="light" className="pt-6 text-sm mt-auto">
-                <a href="mailto:info@xyflow.com">info@xyflow.com</a> — Copyright
-                © {new Date().getFullYear()}{' '}
+                <a href="mailto:info@xyflow.com">info@xyflow.com</a> — Copyright ©{' '}
+                {new Date().getFullYear()}{' '}
                 <a href="https://webkid.io" target="_blank">
                   webkid GmbH
                 </a>

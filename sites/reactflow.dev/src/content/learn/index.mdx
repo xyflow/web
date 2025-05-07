@@ -5,7 +5,7 @@ pagination_next: null
 
 import { Cards } from 'nextra/components';
 import { Emoji } from '@xyflow/xy-ui';
-import { ReactPlayer } from 'xy-shared';
+import { LiteYouTubeEmbed } from 'xy-shared';
 import { RemoteCodeViewer } from 'xy-shared/server';
 
 # Quickstart
@@ -18,12 +18,11 @@ the examples, or dive into the API docs.
 ## React Flow in 60 seconds
 
 <div style={{ position: 'relative', paddingTop: '56.25%' }}>
-  <ReactPlayer
-    controls
-    url="https://www.youtube.com/watch?v=aUBWE41a900"
-    width="100%"
-    height="100%"
-    style={{ position: 'absolute', top: 0, left: 0 }}
+  <LiteYouTubeEmbed
+    id="aUBWE41a900"
+    title="React Flow in 60 seconds"
+    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+    poster="maxresdefault"
   />
 </div>
 
@@ -116,8 +115,8 @@ export default function App() {
 There are a few things to pay attention to here:
 
 - <Emoji content="🎨" /> You must import the React Flow stylesheet.
-- <Emoji content="📐" /> The `<ReactFlow />` component must be wrapped in an
-  element with a width and height.
+- <Emoji content="📐" /> The `<ReactFlow />` component must be wrapped in an element with
+  a width and height.
 
 ## Adding interactivity
 
@@ -133,12 +132,7 @@ Fortunately for you, we provide some hooks to make this easy!
 
 ```jsx
 import React, { useCallback } from 'react';
-import {
-  ReactFlow,
-  useNodesState,
-  useEdgesState,
-  addEdge,
-} from '@xyflow/react';
+import { ReactFlow, useNodesState, useEdgesState, addEdge } from '@xyflow/react';
 
 import '@xyflow/react/dist/style.css';
 
@@ -224,14 +218,10 @@ export default function App() {
 }
 ```
 
-<RemoteCodeViewer
-  route="learn/quickstart"
-  framework="react"
-  showEditor={false}
-/>
+<RemoteCodeViewer route="learn/quickstart" framework="react" showEditor={false} />
 
-<Emoji content="🎉" /> Et voila. You've already created your first interactive
-flow! Check out the links below on where to head next.
+<Emoji content="🎉" /> Et voila. You've already created your first interactive flow! Check
+out the links below on where to head next.
 
 ## Next Steps
 

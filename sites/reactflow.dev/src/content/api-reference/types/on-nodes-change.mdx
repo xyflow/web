@@ -2,9 +2,6 @@
 description: ''
 ---
 
-import { PropsTable } from '@/components/props-table';
-import { fields } from '@/references/types/OnNodesChange';
-
 # OnNodesChange
 
 This type is used for typing the [`onNodesChange`](/api-reference/react-flow#on-nodes-change) function.
@@ -17,12 +14,12 @@ export type OnNodesChange<NodeType extends Node = Node> = (
 
 ## Fields
 
-<PropsTable {...fields} />
+<APIDocs typeName="OnNodesChange" />
 
 ## Usage
 
 This type accepts a generic type argument of custom nodes types. See this
-[section in our Typescript guide](/learn/advanced-use/typescript#nodetype-edgetype-unions) for more information.
+[section in our TypeScript guide](/learn/advanced-use/typescript#nodetype-edgetype-unions) for more information.
 
 ```tsx
 const onNodesChange: OnNodesChange = useCallback(

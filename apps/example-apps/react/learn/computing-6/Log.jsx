@@ -1,7 +1,7 @@
-import { Handle, useHandleConnections, useNodesData } from '@xyflow/react';
+import { Handle, useNodeConnections, useNodesData } from '@xyflow/react';
 
 function Log({ data }) {
-  const connections = useHandleConnections({ type: 'target' });
+  const connections = useNodeConnections({ handleType: 'target' });
 
   const nodeData = useNodesData(connections?.[0].source);
 

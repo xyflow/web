@@ -1,0 +1,17 @@
+---
+title: Expand and Collapse
+description: Create hierarchical trees with expandable and collapsible nodes using dagre for automatic layouts
+is_pro_example: true
+---
+
+This example demonstrates how to implement expandable and collapsible nodes in a hierarchical tree structure. Nodes with children can be expanded or collapsed by clicking on them, revealing or hiding their descendants. The implementation uses a custom `useExpandCollapse` hook that maintains the complete graph structure while only rendering the currently visible portions.
+
+<ProExampleViewer slug="expand-collapse" />
+
+### About this Pro Example
+
+- Dependencies: [@xyflow/react](https://www.npmjs.com/package/@xyflow/react), [@dagrejs/dagre](https://www.npmjs.com/package/@dagrejs/dagre)
+- Implements a reusable `useExpandCollapse` hook that handles visibility logic
+- Demonstrates dynamic node addition with automatic layout recalculation
+- Uses node data properties to track expanded/collapsed state
+- Provides interactive controls to expand/collapse nodes and add children

@@ -1,8 +1,13 @@
 import { useMDXComponents as getDocsMDXComponents } from 'nextra-theme-docs';
+import { APIDocs } from '@/components/api-docs';
 
-const docsComponents = getDocsMDXComponents();
-
-export const useMDXComponents: typeof getDocsMDXComponents = (components) => ({
-  ...docsComponents,
-  ...components,
+const docsComponents = getDocsMDXComponents({
+  APIDocs,
 });
+
+export function useMDXComponents(components = {}) {
+  return {
+    ...docsComponents,
+    ...components,
+  };
+}

@@ -8,7 +8,7 @@ image: /img/blog/v10-header.png
 ---
 
 import { Bleed } from 'nextra/components';
-import { RemoteCodeViewer } from 'xy-shared/server'
+import { RemoteCodeViewer } from 'xy-shared/server';
 
 Almost two years ago we [open sourced React Flow](https://webkid.io/blog/react-flow-node-based-graph-library/) that was built for our flow-based data processing tool [Datablocks](https://datablocks.pro). Since then we invested more and more time in React Flow and it got a lot of traction (25k+ website visitors per month, 9k+ stars on Github, 1k+ Discord members, 100k+ weekly downloads on npm).
 We are super happy about the progress and the community that has developed around React Flow. We think that the library has a lot of potential to solve problems that many developer teams face when building node-based editors.
@@ -40,7 +40,7 @@ Version 10 comes with many new features and improvements. Besides a complete rew
 - **Fit View Property**: Fit all nodes and edges initially without writing custom logic
 - **Edge Marker**: More options to configure the start and end markers of the edges
 
-The biggest and most awaited new feature (when you look at the [Github discussions](https://github.com/xyflow/xyflow/discussions/1024)) is the support of sub flows and groups. In React Flow v10, a node can specify a `parentNode` which affects its positioning and dragging behaviour. Child nodes get positioned relatively to their parents and are being moved together with their parent node. It is also possible to limit child nodes to the boundaries of their parents. This gives React Flow users the ability to visualize nested data structures and implement features like collapse/expand or zooming into a sub flow.
+The biggest and most awaited new feature (when you look at the [Github discussions](https://github.com/xyflow/xyflow/discussions/1024)) is the support of sub flows and groups. In React Flow v10, a node can specify a `parentNode` which affects its positioning and dragging behavior. Child nodes get positioned relatively to their parents and are being moved together with their parent node. It is also possible to limit child nodes to the boundaries of their parents. This gives React Flow users the ability to visualize nested data structures and implement features like collapse/expand or zooming into a sub flow.
 
 Another very important improvement is the support of touch devices. Because we designed [datablocks](https://datablocks.pro) as a desktop-only app, it was not possible to connect nodes on touch devices in the former versions. With v10 you can create connections by tapping two handles in succession.
 

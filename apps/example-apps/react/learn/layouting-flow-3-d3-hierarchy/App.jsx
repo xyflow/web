@@ -41,17 +41,18 @@ const LayoutFlow = () => {
 
   const onLayout = useCallback(
     (direction) => {
-      const { nodes: layoutedNodes, edges: layoutedEdges } =
-        getLayoutedElements(nodes, edges, {
+      const { nodes: layoutedNodes, edges: layoutedEdges } = getLayoutedElements(
+        nodes,
+        edges,
+        {
           direction,
-        });
+        },
+      );
 
       setNodes([...layoutedNodes]);
       setEdges([...layoutedEdges]);
 
-      window.requestAnimationFrame(() => {
-        fitView();
-      });
+      fitView();
     },
     [nodes, edges],
   );
