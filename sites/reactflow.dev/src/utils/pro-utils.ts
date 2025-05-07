@@ -32,7 +32,7 @@ export async function getExampleConfig({
   return config;
 }
 
-export function getCurrencySign(currency: Currency) {
+export function getCurrencySign(currency?: Currency) {
   switch (currency) {
     case Currency.EUR:
       return '€';

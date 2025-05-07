@@ -19,7 +19,7 @@ function VariantSelect({
     return null;
   }
 
-  const currentVariant = variants.find((variant) => variant.id === exampleId);
+  const currentVariant = variants.find((variant) => variant.id === exampleId)!;
 
   return (
     <Select value={currentVariant.id}>
