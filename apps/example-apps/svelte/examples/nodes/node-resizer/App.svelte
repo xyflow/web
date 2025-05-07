@@ -43,14 +43,6 @@
   };
 </script>
 
-<SvelteFlow
-  bind:nodes
-  {nodeTypes}
-  bind:edges
-  minZoom={0.2}
-  maxZoom={4}
-  fitView
-  fitViewOptions={{ padding: 0.5 }}
->
+<SvelteFlow bind:nodes {nodeTypes} bind:edges fitView>
   <Background />
 </SvelteFlow>

@@ -58,12 +58,6 @@
   };
 </script>
 
-<SvelteFlow
-  bind:nodes
-  bind:edges
-  fitView
-  fitViewOptions={{ padding: 2 }}
-  onconnectend={handleConnectEnd}
->
+<SvelteFlow bind:nodes bind:edges fitView onconnectend={handleConnectEnd}>
   <Background />
 </SvelteFlow>
