@@ -54,7 +54,7 @@ export default function ManageTeamCard() {
   const userId = useUserId();
   const [status, setStatus] = useState<TeamStatus | null>(null);
   const [confirmPayment, setConfirmPayment] = useState<boolean>(false);
-  const [confirmDeleteMember, setConfirmDeleteMember] = useState<string>(null);
+  const [confirmDeleteMember, setConfirmDeleteMember] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isDeleteLoading, setIsDeleteLoading] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<null | string>(null);

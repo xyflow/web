@@ -73,12 +73,12 @@ export default function ProExampleViewerTabs({
 }: {
   exampleId: string;
   frameworkId: Framework;
-  files: null | SandpackFiles;
+  files?: SandpackFiles;
   isUnlocked: boolean;
   isTemplate?: boolean;
   previewUrl?: string;
 }) {
-  // @ts-ignore
+  // @ts-expect-error -- fixme
   const readme = files?.['/README.mdx']?.code || files?.['/README.md']?.code;
   const iframePreviewUrl =
     previewUrl ?? `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${exampleId}`;

@@ -25,7 +25,7 @@ const theme = {
   colors: { ...aquaBlue.colors, accent: 'hsl(var(--primary))' },
 };
 
-function ProExampleCodeEditor({ files }: { files: SandpackFiles }) {
+function ProExampleCodeEditor({ files }: { files?: SandpackFiles }) {
   const visibleFiles = files
     ? Object.keys(files).filter((file) => !ignoreFiles.includes(file))
     : [];

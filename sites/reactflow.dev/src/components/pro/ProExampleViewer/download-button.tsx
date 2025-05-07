@@ -17,11 +17,11 @@ export default function DownloadButton({
   frameworkId,
 }: {
   fileName: string;
-  files: null | SandpackFiles;
+  files?: SandpackFiles;
   exampleId: string;
   frameworkId: Framework;
 }) {
-  const [isDownloading, setIsDownloading] = useState<boolean>(false);
+  const [isDownloading, setIsDownloading] = useState(false);
   const downloadExample = useDownloadExample({
     exampleId,
     framework: frameworkId,
@@ -37,8 +37,7 @@ export default function DownloadButton({
         return;
       }
 
-      const content =
-        typeof fileContent === 'string' ? fileContent : fileContent.code;
+      const content = typeof fileContent === 'string' ? fileContent : fileContent.code;
 
       zip.file(fileName.replace(/^\//, ''), content);
     });

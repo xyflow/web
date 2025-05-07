@@ -8,7 +8,7 @@ import { NhostClient } from '@nhost/react';
 const nhost = new NhostClient({
   subdomain: process.env.NEXT_PUBLIC_NHOST_SUBDOMAIN,
   region: process.env.NEXT_PUBLIC_NHOST_REGION,
-  // Change storage type so we can parse cookies in RSC
+  // Change a storage type so we can parse cookies in RSC
   clientStorageType: 'cookie',
 });
 
