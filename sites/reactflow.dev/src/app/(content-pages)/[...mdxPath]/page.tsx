@@ -87,3 +87,5 @@ export async function generateMetadata(props: PageProps) {
 }
 
 export const generateStaticParams = generateStaticParamsFor('mdxPath');
+
+export const dynamic = 'force-static';
