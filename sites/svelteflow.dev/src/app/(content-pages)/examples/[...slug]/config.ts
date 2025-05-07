@@ -29,6 +29,7 @@ export const meta: DynamicMeta = {
       'edge-markers': '',
       'edge-types': '',
       'floating-edges': '',
+      'reconnect-edge': '',
     },
   },
   interaction: {
