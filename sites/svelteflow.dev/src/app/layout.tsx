@@ -15,6 +15,7 @@ export const metadata = generateRootMetadata('Svelte Flow', {
   keywords: svelteFlowPackageJson.keywords,
   other: {
     'docsearch:site': 'svelte',
+    robots: 'noindex,nofollow',
   },
 });
 
@@ -23,9 +24,7 @@ const RootLayout: FC<{
 }> = async ({ children }) => {
   return (
     <Html>
-      <Head color={{ hue: 15, saturation: 90 }}>
-        <meta name="robots" content="noindex, nofollow" />
-      </Head>
+      <Head color={{ hue: 15, saturation: 90 }} />
       <body>
         <Fathom id="XLBRAGEV" />
         <NextraLayout>{children}</NextraLayout>
