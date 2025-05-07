@@ -52,3 +52,7 @@ export async function generateStaticParams() {
   const params = filePaths.map((route) => ({ slug: route.split('/') }));
   return params;
 }
+
+export const dynamic = 'force-static';
+
+export const dynamicParams = false;
