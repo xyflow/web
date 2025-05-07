@@ -5,6 +5,7 @@ import type { MdxFile } from 'nextra';
 
 const externalSvelteLinks = {
   Snippet: 'https://svelte.dev/docs/svelte/snippet#Typing-snippets',
+  ClassValue: 'https://svelte.dev/docs/svelte/class',
 };
 
 const externalLinks = {
