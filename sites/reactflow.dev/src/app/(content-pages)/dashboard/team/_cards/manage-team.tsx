@@ -23,7 +23,7 @@ import {
   AlertDialogTitle,
   CardTitle,
 } from '@xyflow/xy-ui';
-import useNhostFunction from '@/hooks/useNhostFunction';
+import { callNhostFunction } from '@/server-actions';
 import { PlanLabel } from '@/components/pro/SubscriptionStatus';
 import Loader from '@/components/pro/Loader';
 import { Currency } from '@/types';
@@ -62,12 +62,11 @@ export default function ManageTeamCard() {
   const { data, refetch } = useAuthQuery(GET_TEAM_MEMBERS, {
     variables: { userId },
   });
-  const nhostFunction = useNhostFunction();
   const userEmail = useUserEmail();
 
   useEffect(() => {
     const updateStatus = async () => {
-      const status = await nhostFunction('/team/status', {});
+      const status = await callNhostFunction('/team/status', {});
 
       if (!status || status.error) {
         return;
@@ -77,13 +76,12 @@ export default function ManageTeamCard() {
     };
 
     updateStatus();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const removeMember = async (email: string) => {
     setErrorMessage(null);
     setIsDeleteLoading(true);
-    const { error } = await nhostFunction('/team/remove', { email });
+    const { error } = await callNhostFunction('/team/remove', { email });
 
     if (error) {
       setErrorMessage(
@@ -106,7 +104,7 @@ export default function ManageTeamCard() {
     setIsLoading(true);
     setErrorMessage(null);
 
-    const response = await nhostFunction('/team/invite', {
+    const response = await callNhostFunction('/team/invite', {
       email: memberEmail,
       paymentConfirmed,
     });

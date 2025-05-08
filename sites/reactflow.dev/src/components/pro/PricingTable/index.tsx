@@ -1,6 +1,5 @@
 'use client';
 
-import useNhostFunction from '@/hooks/useNhostFunction';
 import { useState } from 'react';
 import {
   PricingTable,
@@ -8,9 +7,9 @@ import {
   BillingInterval,
   SubscriptionPlanId,
 } from '@xyflow/xy-ui';
+import { callNhostFunction } from '@/server-actions';
 
 export default function PricingTableComponent() {
-  const callNhostFunction = useNhostFunction();
   const [plans, setPlans] = useState(defaultSubscriptionPlans);
 
   const setLoading = (planId: SubscriptionPlanId, isLoading: boolean) => {

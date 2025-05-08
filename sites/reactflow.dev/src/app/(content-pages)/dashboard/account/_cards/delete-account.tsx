@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useSignOut, useUserEmail } from '@nhost/react';
+import { useUserEmail } from '@nhost/react';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -20,21 +20,20 @@ import {
   Button,
   Input,
 } from '@xyflow/xy-ui';
-import useNhostFunction from '@/hooks/useNhostFunction';
+import { callNhostFunction } from '@/server-actions';
+import { signOut } from '@/server-actions';
 
 export default function DeleteAccountCard() {
   const userEmail = useUserEmail();
   const [confirmUserEmail, setConfirmUserEmail] = useState('');
   const [isDeleteLoading, setIsDeleteLoading] = useState(false);
-  const nhostFunction = useNhostFunction();
-  const { signOut } = useSignOut();
   const isDeleteConfirmed = userEmail === confirmUserEmail;
 
   const deleteAccount = async () => {
     if (isDeleteConfirmed) {
       setIsDeleteLoading(true);
 
-      const { success } = await nhostFunction('/users/delete', {});
+      const { success } = await callNhostFunction('/users/delete', {});
 
       if (success) {
         await signOut();

@@ -1,19 +1,16 @@
-'use client';
-
-import { useProviderLink } from '@nhost/react';
 import { Button } from '@xyflow/xy-ui';
+import { getNhost } from '@/utils/nhost';
 
-const SignInOAuth = () => {
-  const { github } = useProviderLink({ metadata: {} });
+const SignInOAuth = async () => {
+  const nhost = await getNhost();
 
+  const { providerUrl } = await nhost.auth.signIn({
+    provider: 'github',
+  });
   return (
-    <div>
-      <a href={github}>
-        <Button size="lg" className="w-full" variant="outline">
-          Sign in with Github
-        </Button>
-      </a>
-    </div>
+    <Button size="lg" className="w-full" variant="outline" asChild>
+      <a href={providerUrl}>Sign in with GitHub</a>
+    </Button>
   );
 };
 

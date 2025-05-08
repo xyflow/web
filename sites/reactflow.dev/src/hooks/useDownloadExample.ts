@@ -1,7 +1,6 @@
 import { useCallback } from 'react';
-
-import useNhostFunction from './useNhostFunction';
 import { SandpackFiles } from '@codesandbox/sandpack-react';
+import { callNhostFunction } from '@/server-actions';
 
 export type UseDownloadProExampleOptions = {
   exampleId?: string;
@@ -14,8 +13,6 @@ function useDownloadExample({
   framework,
   ignoreFiles = [],
 }: UseDownloadProExampleOptions = {}) {
-  const callNhostFunction = useNhostFunction();
-
   const fetchExample = useCallback(async (): Promise<SandpackFiles> => {
     const data = await callNhostFunction('/pro-examples/download', {
       id: exampleId,
@@ -36,7 +33,7 @@ function useDownloadExample({
     }, {});
 
     return sandpackFiles;
-  }, [exampleId, framework, callNhostFunction, ignoreFiles]);
+  }, [exampleId, framework, ignoreFiles]);
 
   return fetchExample;
 }

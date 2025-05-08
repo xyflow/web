@@ -1,7 +1,6 @@
 'use client';
 
-import useNhostFunction from '@/hooks/useNhostFunction';
-import { useState } from 'react';
+import { useTransition } from 'react';
 import {
   Button,
   Card,
@@ -9,6 +8,8 @@ import {
   CardHeader,
   CardTitle,
 } from '@xyflow/xy-ui';
+import { callNhostFunction } from '@/server-actions';
+import { redirect } from 'next/navigation';
 
 type PricingPlanProps = {
   plan: 'starter' | 'pro' | 'enterprise';
@@ -23,25 +24,20 @@ export default function PricingPlan({
   currency = 'usd',
   seats = 0,
 }: PricingPlanProps) {
-  const callNhostFunction = useNhostFunction();
-  const [isLoading, setLoading] = useState(false);
+  const [isLoading, startTransition] = useTransition();
 
-  const subscribe = async () => {
-    setLoading(true);
+  const subscribe = () => {
+    startTransition(async () => {
+      const response = await callNhostFunction('/stripe/create-checkout', {
+        plan,
+        interval,
+        currency,
+      });
 
-    const response = await callNhostFunction('/stripe/create-checkout', {
-      plan,
-      interval,
-      currency,
-    });
-
-    if (response.url) {
-      window.location.href = response.res.data.url;
-      setTimeout(() => setLoading(false), 500);
-      return;
-    }
-
-    setLoading(false);
+      if (response.url) {
+        redirect(response.res.data.url)
+      }
+    })
   };
 
   return (

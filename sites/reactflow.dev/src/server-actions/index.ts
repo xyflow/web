@@ -1,2 +1,5 @@
-export { signUp } from './sign-up-email-password'
+export { callNhostFunction } from './call-nhost-function'
+export { openStripeCustomerPortal } from './open-stripe-customer-portal'
 export { signIn } from './sign-in-email-password'
+export { signOut } from './sign-out'
+export { signUp } from './sign-up-email-password'

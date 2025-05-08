@@ -18,7 +18,7 @@ export interface InputProps
 function Input({ variant = 'default', className, ...rest }: InputProps) {
   return (
     <input
-      className={cn('px-4 py-2', inputVariants({ variant, className }))}
+      className={cn('px-4 py-2 disabled:cursor-not-allowed', inputVariants({ variant, className }))}
       {...rest}
     />
   );
