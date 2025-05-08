@@ -7,7 +7,12 @@ import BillingCard from './_cards/billing';
 import { getNhost } from '@/utils/nhost';
 
 async function AccountPage() {
-  const nhost = await getNhost()
+  const nhost = await getNhost();
+  const user = nhost.auth.getUser();
+  if (!user?.email) {
+    throw new Error('User email must exist');
+  }
+
   return (
     <div className="max-w-3xl">
       <DashboardHeader
@@ -16,9 +21,9 @@ async function AccountPage() {
       />
       <div className="flex-1 space-y-7">
         <BillingCard />
-        <ChangeEmailCard email={nhost.auth.getUser()!.email!} />
+        <ChangeEmailCard userEmail={user.email} />
         <ChangePasswordCard />
-        <DeleteAccountCard />
+        <DeleteAccountCard userEmail={user.email} />
       </div>
     </div>
   );

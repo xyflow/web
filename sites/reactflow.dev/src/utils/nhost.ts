@@ -1,7 +1,6 @@
 import { cookies } from 'next/headers';
-import { NhostClient } from '@nhost/nhost-js';
+import { NhostClient, NhostSession } from '@nhost/nhost-js';
 import { type NextRequest, NextResponse } from 'next/server';
-import type { NhostSession } from '@nhost/react';
 import type { RequestCookies } from 'next/dist/compiled/@edge-runtime/cookies';
 import type { ReadonlyRequestCookies } from 'next/dist/server/web/spec-extension/adapters/request-cookies';
 

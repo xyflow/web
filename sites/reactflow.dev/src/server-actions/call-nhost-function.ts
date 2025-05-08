@@ -19,7 +19,10 @@ export async function callNhostFunction(
       revalidate: 0,
     },
   });
-
+  const contentType = response.headers.get('content-type');
+  if (!contentType?.includes('application/json')) {
+    throw new Error(await response.text());
+  }
   const data = await response.json();
 
   if (response.status !== 200) {

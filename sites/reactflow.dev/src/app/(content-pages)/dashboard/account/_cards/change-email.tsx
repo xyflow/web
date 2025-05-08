@@ -14,11 +14,11 @@ import {
 import type { AuthErrorPayload } from '@nhost/nhost-js';
 import { changeEmail } from '@/server-actions';
 
-const ChangeEmailCard: FC<{ email: string }> = ({ email }) => {
+const ChangeEmailCard: FC<{ userEmail: string }> = ({ userEmail }) => {
   const [isLoading, startTransition] = useTransition();
   const [error, setError] = useState<AuthErrorPayload | null>(null);
   const [needsEmailVerification, setNeedsEmailVerification] = useState(false);
-  const [newEmail, setNewEmail] = useState(email);
+  const [newEmail, setNewEmail] = useState(userEmail);
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     // Prevent resubmitting the form when an error is set
@@ -58,7 +58,7 @@ const ChangeEmailCard: FC<{ email: string }> = ({ email }) => {
               required
               name="email"
               id="email"
-              placeholder={email}
+              placeholder={userEmail}
               disabled={isLoading || needsEmailVerification}
             />
           </div>

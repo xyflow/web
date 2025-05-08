@@ -1,7 +1,6 @@
 'use client';
 
-import { useState } from 'react';
-import { useUserEmail } from '@nhost/react';
+import { FC, useState, useTransition } from 'react';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -23,25 +22,19 @@ import {
 import { callNhostFunction } from '@/server-actions';
 import { signOut } from '@/server-actions';
 
-export default function DeleteAccountCard() {
-  const userEmail = useUserEmail();
+const DeleteAccountCard: FC<{ userEmail: string }> = ({ userEmail }) => {
   const [confirmUserEmail, setConfirmUserEmail] = useState('');
-  const [isDeleteLoading, setIsDeleteLoading] = useState(false);
+  const [isDeleteLoading, startTransition] = useTransition();
   const isDeleteConfirmed = userEmail === confirmUserEmail;
 
-  const deleteAccount = async () => {
-    if (isDeleteConfirmed) {
-      setIsDeleteLoading(true);
-
+  function deleteAccount() {
+    startTransition(async () => {
       const { success } = await callNhostFunction('/users/delete', {});
-
       if (success) {
         await signOut();
       }
-
-      setIsDeleteLoading(false);
-    }
-  };
+    });
+  }
 
   return (
     <AlertDialog>
@@ -52,36 +45,33 @@ export default function DeleteAccountCard() {
           <AlertDialogContent>
             <AlertDialogHeader>
               <AlertDialogTitle>Are you sure?</AlertDialogTitle>
-              <AlertDialogDescription className="flex flex-col gap-y-3">
-                <div>
-                  By clicking the button below, you will delete your React Flow
-                  Pro account. This action is irreversible. Please confirm that
-                  you want to:
+              <AlertDialogDescription asChild>
+                <div className="flex flex-col gap-y-3">
+                  <p>
+                    By clicking the button below, you will delete your React Flow Pro
+                    account. This action is irreversible. Please confirm that you want to:
+                  </p>
+                  <ul className="list-disc font-bold">
+                    <li>
+                      Delete your React Flow Pro account and all the data associated with
+                      it
+                    </li>
+                    <li>
+                      Cancel your subscription and lose access for the remaining time
+                    </li>
+                    <li>Remove access to the pro features for invited team members</li>
+                  </ul>
+                  <p>
+                    If you want to proceed, please enter your email in the form below:
+                  </p>
+                  <Input
+                    onChange={(evt) => setConfirmUserEmail(evt.target.value)}
+                    value={confirmUserEmail}
+                    type="email"
+                    placeholder={`Type ${userEmail} to confirm...`}
+                    required
+                  />
                 </div>
-                <ul className="list-disc font-bold">
-                  <li>
-                    Delete your React Flow Pro account and all the data
-                    associated with it
-                  </li>
-                  <li>
-                    Cancel your subscription and lose access for the remaining
-                    time
-                  </li>
-                  <li>
-                    Remove access to the pro features for invited team members
-                  </li>
-                </ul>
-                <div>
-                  If you want to proceed, please enter your email in the form
-                  below:
-                </div>
-                <Input
-                  onChange={(evt) => setConfirmUserEmail(evt.target.value)}
-                  value={confirmUserEmail}
-                  type="email"
-                  placeholder={`Type ${userEmail} to confirm...`}
-                  required
-                />
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
@@ -96,8 +86,8 @@ export default function DeleteAccountCard() {
             </AlertDialogFooter>
           </AlertDialogContent>
           <CardDescription>
-            Use this button to delete your account and all your data. This
-            action is irreversible.
+            Use this button to delete your account and all your data. This action is
+            irreversible.
           </CardDescription>
         </CardHeader>
         <CardFooter>
@@ -116,4 +106,6 @@ export default function DeleteAccountCard() {
       </Card>
     </AlertDialog>
   );
-}
+};
+
+export default DeleteAccountCard;
