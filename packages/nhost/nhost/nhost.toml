@@ -1,0 +1,190 @@
+[global]
+[[global.environment]]
+name = 'STRIPE_SECRET_KEY'
+value = '{{ secrets.STRIPE_SECRET_KEY }}'
+
+[[global.environment]]
+name = 'STRIPE_WEBHOOK_SECRET'
+value = '{{ secrets.STRIPE_WEBHOOK_SECRET }}'
+
+[[global.environment]]
+name = 'MAILJET_APIKEY_PRIVATE'
+value = '{{ secrets.MAILJET_APIKEY_PRIVATE }}'
+
+[[global.environment]]
+name = 'MAILJET_APIKEY_PUBLIC'
+value = '{{ secrets.MAILJET_APIKEY_PUBLIC }}'
+
+[[global.environment]]
+name = 'DISCORD_NOTIFICATIONS_WEBHOOK'
+value = '{{ secrets.DISCORD_NOTIFICATIONS_WEBHOOK }}'
+
+[[global.environment]]
+name = 'UPSTASH_REDIS_URL'
+value = '{{ secrets.UPSTASH_REDIS_URL }}'
+
+[[global.environment]]
+name = 'UPSTASH_REDIS_TOKEN'
+value = '{{ secrets.UPSTASH_REDIS_TOKEN }}'
+
+[hasura]
+version = 'v2.25.1-ce'
+adminSecret = '{{ secrets.HASURA_GRAPHQL_ADMIN_SECRET }}'
+webhookSecret = '{{ secrets.NHOST_WEBHOOK_SECRET }}'
+
+[[hasura.jwtSecrets]]
+type = 'HS256'
+key = '{{ secrets.HASURA_GRAPHQL_JWT_SECRET }}'
+
+[hasura.settings]
+corsDomain = ['*']
+devMode = true
+enableAllowList = false
+enableConsole = true
+enableRemoteSchemaPermissions = false
+enabledAPIs = ['metadata', 'graphql', 'pgdump', 'config']
+
+[hasura.logs]
+level = 'warn'
+
+[hasura.events]
+httpPoolSize = 100
+
+[functions]
+[functions.node]
+version = 18
+
+[auth]
+version = '0.19.1'
+
+[auth.redirections]
+clientUrl = 'http://localhost:3000'
+allowedUrls = ['http://localhost:3000', 'https://*.vercel.app', 'https://*.netlify.app', 'https://pro.reactflow.dev']
+
+[auth.signUp]
+enabled = true
+
+[auth.user]
+[auth.user.roles]
+default = 'user'
+allowed = ['user', 'me']
+
+[auth.user.locale]
+default = 'en'
+allowed = ['en']
+
+[auth.user.gravatar]
+enabled = true
+default = 'blank'
+rating = 'g'
+
+[auth.user.email]
+
+[auth.user.emailDomains]
+
+[auth.session]
+[auth.session.accessToken]
+expiresIn = 900
+
+[auth.session.refreshToken]
+expiresIn = 2592000
+
+[auth.method]
+[auth.method.anonymous]
+enabled = false
+
+[auth.method.emailPasswordless]
+enabled = true
+
+[auth.method.emailPassword]
+hibpEnabled = false
+emailVerificationRequired = true
+passwordMinLength = 8
+
+[auth.method.smsPasswordless]
+enabled = false
+
+[auth.method.oauth]
+[auth.method.oauth.apple]
+enabled = false
+
+[auth.method.oauth.azuread]
+tenant = 'common'
+enabled = false
+
+[auth.method.oauth.bitbucket]
+enabled = false
+
+[auth.method.oauth.discord]
+enabled = false
+
+[auth.method.oauth.facebook]
+enabled = false
+
+[auth.method.oauth.github]
+enabled = true
+clientId = '{{ secrets.GITHUB_CLIENT_ID }}'
+clientSecret = '{{ secrets.GITHUB_CLIENT_SECRET }}'
+
+[auth.method.oauth.gitlab]
+enabled = false
+
+[auth.method.oauth.google]
+enabled = false
+
+[auth.method.oauth.linkedin]
+enabled = false
+
+[auth.method.oauth.spotify]
+enabled = false
+
+[auth.method.oauth.strava]
+enabled = false
+
+[auth.method.oauth.twitch]
+enabled = false
+
+[auth.method.oauth.twitter]
+enabled = false
+
+[auth.method.oauth.windowslive]
+enabled = false
+
+[auth.method.oauth.workos]
+enabled = false
+
+[auth.method.webauthn]
+enabled = false
+
+[auth.method.webauthn.relyingParty]
+name = 'reactflow'
+
+[auth.method.webauthn.attestation]
+timeout = 0
+
+[auth.totp]
+enabled = false
+issuer = 'nhost'
+
+[postgres]
+version = '14.5-20221009-1'
+
+[postgres.resources.storage]
+capacity = 10
+
+[provider]
+[provider.smtp]
+user = 'noreply@reactflow.dev'
+password = '{{ secrets.SMTP_PASSWORD }}'
+sender = 'noreply@reactflow.dev'
+host = 'smtp-moklick.alwaysdata.net'
+port = 465
+secure = true
+method = 'LOGIN'
+
+[storage]
+version = '0.3.0'
+
+[observability]
+[observability.grafana]
+adminPassword = '{{ secrets.GRAFANA_ADMIN_PASSWORD }}'
