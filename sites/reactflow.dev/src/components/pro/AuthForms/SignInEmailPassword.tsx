@@ -19,7 +19,8 @@ const SignInEmailPassword: FC = () => {
     startTransition(async () => {
       const formData = new FormData(event.currentTarget);
       const redirectTo = searchParams.get('redirectTo') ?? undefined;
-      setError(await signIn(formData, redirectTo));
+      const error = await signIn(formData, redirectTo)
+      setError(error);
     });
   }
 

@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useSignOut, useUserEmail } from '@nhost/react';
+import { useUserEmail } from '@nhost/react';
 import {
   Select,
   SelectContent,
@@ -14,11 +14,11 @@ import { UserIcon } from '@heroicons/react/24/solid';
 import useStripeCustomerPortal from '@/hooks/useStripeCustomerPortal';
 import { PlanLabel, Subscribed } from '@/components/pro/SubscriptionStatus';
 import { FC } from 'react';
+import { signOut } from '@/server-actions';
 
 export const UserMenu: FC = () => {
   const userEmail = useUserEmail();
   const { openCustomerPortal } = useStripeCustomerPortal();
-  const { signOut } = useSignOut();
   return (
     <Select>
       <SelectTrigger className="w-auto">

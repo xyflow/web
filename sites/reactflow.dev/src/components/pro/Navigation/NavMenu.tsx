@@ -1,26 +1,13 @@
-'use client';
-
-import { FC, useEffect, useState } from 'react';
+import { FC } from 'react';
 import Link from 'next/link';
 import { Button } from '@xyflow/xy-ui';
 import { UserMenu } from './UserMenu';
-import { useAuthenticationStatus } from '@nhost/react';
-import Loader from '@/components/pro/Loader';
+import { getNhost } from '@/utils/nhost';
 
-const NavMenu: FC = () => {
-  // Use isAuthenticated instead of using `<SignedIn />` or `<SignedOut />` components from
-  // https://github.com/nhost/nhost/blob/main/packages/react/src/components/SignedIn.tsx
-  // https://github.com/nhost/nhost/blob/main/packages/react/src/components/SignedOut.tsx
-  const { isAuthenticated, isLoading } = useAuthenticationStatus();
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (isLoading || !mounted) {
-    return <Loader />;
-  }
-  if (isAuthenticated) {
+const NavMenu: FC = async () => {
+  const nhost = await getNhost()
+  const user = nhost.auth.getUser()
+  if (user) {
     return <UserMenu />;
   }
   return (

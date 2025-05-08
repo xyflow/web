@@ -16,7 +16,8 @@ const Signup: FC = () => {
     event.preventDefault();
     startTransition(async () => {
       const formData = new FormData(event.currentTarget);
-      setError(await signUp(formData));
+      const error = await signUp(formData)
+      setError(error);
     });
   }
 
