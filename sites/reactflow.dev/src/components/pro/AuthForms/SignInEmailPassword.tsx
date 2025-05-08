@@ -33,6 +33,7 @@ const SignInEmailPassword: FC = () => {
             Email
           </InputLabel>
           <Input
+            id="email"
             name="email"
             disabled={isLoading}
             type="email"
@@ -47,6 +48,7 @@ const SignInEmailPassword: FC = () => {
             Password
           </InputLabel>
           <Input
+            id="password"
             name="password"
             disabled={isLoading}
             type="password"

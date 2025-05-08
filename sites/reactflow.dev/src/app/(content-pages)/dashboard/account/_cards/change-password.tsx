@@ -24,7 +24,8 @@ function ChangePasswordCard() {
     event.preventDefault();
     startTransition(async () => {
       const formData = new FormData(event.currentTarget);
-      const { error } = await changePassword(formData);
+      const newPassword = formData.get('password') as string;
+      const { error } = await changePassword(newPassword);
       setError(error);
       setIsSuccess(!error);
     });
@@ -53,6 +54,7 @@ function ChangePasswordCard() {
               type="password"
               required
               name="password"
+              id="password"
               placeholder="Enter password..."
             />
           </div>

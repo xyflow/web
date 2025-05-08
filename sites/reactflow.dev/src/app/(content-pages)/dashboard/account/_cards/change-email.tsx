@@ -1,7 +1,6 @@
 'use client';
 
-import { useState } from 'react';
-import { useUserEmail, useChangeEmail } from '@nhost/react';
+import { FC, FormEvent, useState, useTransition } from 'react';
 import {
   Card,
   CardHeader,
@@ -12,17 +11,27 @@ import {
   Input,
   InputLabel,
 } from '@xyflow/xy-ui';
+import type { AuthErrorPayload } from '@nhost/nhost-js';
+import { changeEmail } from '@/server-actions';
 
-function ChangeEmailCard() {
-  const email = useUserEmail();
-  const { changeEmail, isLoading, needsEmailVerification, isError, error } =
-    useChangeEmail();
-  const [newEmail, setNewEmail] = useState<string>('');
+const ChangeEmailCard: FC<{ email: string }> = ({ email }) => {
+  const [isLoading, startTransition] = useTransition();
+  const [error, setError] = useState<AuthErrorPayload | null>(null);
+  const [needsEmailVerification, setNeedsEmailVerification] = useState(false);
+  const [newEmail, setNewEmail] = useState(email);
 
-  const handleSubmit = async (evt: React.SyntheticEvent) => {
-    evt.preventDefault();
-    await changeEmail(newEmail);
-  };
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    // Prevent resubmitting the form when an error is set
+    event.preventDefault();
+    startTransition(async () => {
+      const formData = new FormData(event.currentTarget);
+      const newEmail = formData.get('email') as string;
+      const { error } = await changeEmail(newEmail);
+      setError(error);
+      setNeedsEmailVerification(!error);
+      setNewEmail(newEmail);
+    });
+  }
 
   return (
     <Card>
@@ -34,10 +43,8 @@ function ChangeEmailCard() {
             <span className="font-bold">{newEmail}</span>.
           </CardDescription>
         )}
-        {isError && (
-          <CardDescription className="text-red-500">
-            {error ? error.message : 'Something went wrong.'}
-          </CardDescription>
+        {error && (
+          <CardDescription className="text-red-500">{error.message}</CardDescription>
         )}
       </CardHeader>
       <CardFooter className="bg-muted space-x-10">
@@ -48,9 +55,8 @@ function ChangeEmailCard() {
               variant="square"
               className="max-w-xs"
               type="email"
-              value={newEmail}
-              onChange={(evt) => setNewEmail(evt.target.value)}
               required
+              name="email"
               id="email"
               placeholder={email}
               disabled={isLoading || needsEmailVerification}
@@ -68,6 +74,6 @@ function ChangeEmailCard() {
       </CardFooter>
     </Card>
   );
-}
+};
 
 export default ChangeEmailCard;

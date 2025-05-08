@@ -30,6 +30,7 @@ const Signup: FC = () => {
         </InputLabel>
         <Input
           variant="square"
+          id="email"
           name="email"
           disabled={isLoading}
           type="email"
@@ -44,6 +45,7 @@ const Signup: FC = () => {
         </InputLabel>
         <Input
           variant="square"
+          id="password"
           name="password"
           disabled={isLoading}
           type="password"

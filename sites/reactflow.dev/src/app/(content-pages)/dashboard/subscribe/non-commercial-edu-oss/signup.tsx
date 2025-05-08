@@ -12,9 +12,9 @@ function Signup() {
   const [isLoading, setLoading] = useState(false);
   const [isError, setError] = useState(false);
   const [isSuccess, setSuccess] = useState(false);
-  const [email, setEmail] = useState<string>('');
-  const [url, setUrl] = useState<string>('');
-  const [confirmed, setConfirmed] = useState<boolean>(false);
+  const [email, setEmail] = useState('');
+  const [url, setUrl] = useState('');
+  const [confirmed, setConfirmed] = useState(false);
   const [projectType, setProjectType] = useState<'oss' | 'student' | undefined>(
     undefined,
   );
