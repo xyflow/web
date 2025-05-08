@@ -1,6 +1,8 @@
 export { callNhostFunction } from './call-nhost-function'
 export { changePassword } from './change-password'
+export { changeEmail } from './change-email'
 export { openStripeCustomerPortal } from './open-stripe-customer-portal'
 export { signIn } from './sign-in-email-password'
+export { resetPassword } from './reset-password'
 export { signOut } from './sign-out'
 export { signUp } from './sign-up-email-password'

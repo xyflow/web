@@ -5,7 +5,7 @@ import { cache } from 'react';
 // If manually saved, e.g., in server actions
 export const NHOST_SESSION_KEY = 'nhostSession';
 // Saved by sign-in
-export const NHOST_REFRESH_TOKEN = 'nhostRefreshToken';
+export const NHOST_REFRESH_KEY = 'nhostRefreshToken';
 
 export const getNhost = cache(async (): Promise<NhostClient> => {
   const cookieStore = await cookies();
@@ -15,7 +15,7 @@ export const getNhost = cache(async (): Promise<NhostClient> => {
     start: false,
   });
 
-  const refreshTokenValue = cookieStore.get(NHOST_REFRESH_TOKEN)?.value;
+  const refreshTokenValue = cookieStore.get(NHOST_REFRESH_KEY)?.value;
   // @ts-expect-error -- `auth.initWithSession` must be called even with `null`, otherwise will get an error from @nhost/hasura-auth-js - Auth interpreter not set
   await nhost.auth.initWithSession({ session: null });
   if (refreshTokenValue) {

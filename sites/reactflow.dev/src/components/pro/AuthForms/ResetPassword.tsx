@@ -1,23 +1,31 @@
 'use client';
 
-import { useState } from 'react';
-import { useResetPassword } from '@nhost/react';
-
+import { FormEvent, useState, useTransition } from 'react';
 import { Button, Input, InputLabel } from '@xyflow/xy-ui';
 import { AuthErrorNotification, AuthNotification } from './AuthNotification';
+import type { AuthErrorPayload } from '@nhost/nhost-js';
+import { resetPassword } from '@/server-actions';
 
 function ResetPassword() {
-  const [email, setEmail] = useState('');
-  const { resetPassword, isLoading, isSent, isError, error } = useResetPassword();
+  const [isLoading, startTransition] = useTransition();
+  const [error, setError] = useState<AuthErrorPayload | null>(null);
+  const [isSent, setIsSent] = useState(false);
 
-  const handleSubmit = (evt: React.SyntheticEvent) => {
-    evt.preventDefault();
-    resetPassword(email, { redirectTo: '/account' });
-  };
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    // Prevent resubmitting the form when an error is set
+    event.preventDefault();
+    startTransition(async () => {
+      const formData = new FormData(event.currentTarget);
+      const email = formData.get('email') as string;
+      const { error } = await resetPassword(email);
+      setError(error);
+      setIsSent(!error);
+    });
+  }
 
   return (
     <form onSubmit={handleSubmit}>
-      {isError && <AuthErrorNotification error={error} />}
+      {error && <AuthErrorNotification error={error} />}
       {isSent && (
         <AuthNotification
           variant="success"
@@ -31,13 +39,13 @@ function ResetPassword() {
           variant="square"
           placeholder="Your Email"
           id="email"
+          name="email"
+          disabled={isSent}
           type="email"
-          value={email}
-          onChange={(evt) => setEmail(evt.target.value)}
         />
       </div>
       <Button
-        disabled={isLoading}
+        disabled={isLoading || isSent}
         loading={isLoading}
         size="lg"
         className="w-full"
