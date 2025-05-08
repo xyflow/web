@@ -4,7 +4,7 @@ import { FC } from 'react';
 import { SearchParams } from '@/types';
 
 type PageProps = {
-  searchParams: SearchParams;
+  searchParams: Promise<SearchParams>;
 };
 
 const VerifyEmailPage: FC<PageProps> = async (props) => {

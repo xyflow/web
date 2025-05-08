@@ -4,8 +4,10 @@ import ChangeEmailCard from './_cards/change-email';
 import ChangePasswordCard from './_cards/change-password';
 import DeleteAccountCard from './_cards/delete-account';
 import BillingCard from './_cards/billing';
+import { getNhost } from '@/utils/nhost';
 
-function AccountPage() {
+async function AccountPage() {
+  const nhost = await getNhost()
   return (
     <div className="max-w-3xl">
       <DashboardHeader
@@ -14,7 +16,7 @@ function AccountPage() {
       />
       <div className="flex-1 space-y-7">
         <BillingCard />
-        <ChangeEmailCard />
+        <ChangeEmailCard email={nhost.auth.getUser()!.email!} />
         <ChangePasswordCard />
         <DeleteAccountCard />
       </div>

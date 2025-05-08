@@ -9,8 +9,8 @@ export async function signIn(formData: FormData, redirectTo = '/dashboard') {
   const email = formData.get('email') as string;
   const password = formData.get('password') as string;
 
-  const { session, error, ...args } = await nhost.auth.signIn({ email, password });
-  console.log({ email, session, password, error, args });
+  const { session, error } = await nhost.auth.signIn({ email, password });
+
   if (error) {
     if (error.error === 'unverified-user') {
       // use encodeURIComponent because email can contain special characters such as +

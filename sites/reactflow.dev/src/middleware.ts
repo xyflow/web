@@ -1,25 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { manageAuthSession } from '@/utils/nhost';
 
 export const config = {
   matcher: ['/auth-redirect'],
 };
 
-export function middleware(request: NextRequest) {
-  if (request.nextUrl.pathname.startsWith('/auth-redirect')) {
-    const path = request.nextUrl.searchParams.get('path') ?? '';
-    const fallback = request.nextUrl.searchParams.get('fallback') ?? '';
-
-    const isProbablyAuthenticated = request.cookies.get('nhostRefreshToken');
-
-    try {
-      return isProbablyAuthenticated
-        ? NextResponse.redirect(new URL(path, request.url))
-        : NextResponse.redirect(new URL(fallback, request.headers.get('referer') ?? ''));
-    } catch (error) {
-      console.error(error);
-    }
-    return NextResponse.rewrite(new URL('/', request.url));
-  }
-
-  return NextResponse.next();
+export async function middleware(request: NextRequest) {
+  return manageAuthSession(request, () =>
+    NextResponse.redirect(new URL('/auth/signin', request.url)),
+  );
 }

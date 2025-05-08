@@ -25,4 +25,37 @@ export const getNhost = cache(async (): Promise<NhostClient> => {
     }
   }
   return nhost;
-});
+}
+
+export async function manageAuthSession(
+  request: NextRequest,
+  onError?: (error: AuthErrorPayload) => NextResponse,
+) {
+  const nhost = await getNhost(request.cookies);
+  const session = nhost.auth.getSession();
+
+  const url = new URL(request.url);
+  const refreshToken = url.searchParams.get('refreshToken') ?? undefined;
+
+  const currentTime = Math.floor(Date.now() / 1000);
+  const tokenExpirationTime = nhost.auth.getDecodedAccessToken()?.exp;
+  const accessTokenExpired =
+    session && tokenExpirationTime && currentTime > tokenExpirationTime;
+
+  if (accessTokenExpired || refreshToken) {
+    const { session: newSession, error } = await nhost.auth.refreshSession(refreshToken);
+    if (error) {
+      onError?.(error);
+    }
+    // remove the refreshToken from the url
+    url.searchParams.delete('refreshToken');
+    url.pathname = '/dashboard';
+
+    // overwrite the session cookie with the new session
+    return NextResponse.redirect(url, {
+      headers: {
+        'Set-Cookie': `${NHOST_SESSION_KEY}=${btoa(JSON.stringify(newSession))}; Path=/`,
+      },
+    });
+  }
+}
