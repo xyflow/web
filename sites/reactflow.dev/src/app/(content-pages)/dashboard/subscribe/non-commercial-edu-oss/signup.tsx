@@ -5,7 +5,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
 import { Button, Heading, Input, InputLabel } from '@xyflow/xy-ui';
-import useNhostFunction from '@/hooks/useNhostFunction';
+import { callNhostFunction } from '@/server-actions';
 import useSubscription from '@/hooks/useSubscription';
 
 function Signup() {
@@ -18,7 +18,6 @@ function Signup() {
   const [projectType, setProjectType] = useState<'oss' | 'student' | undefined>(
     undefined,
   );
-  const callNhostFunction = useNhostFunction();
   const { isSubscribed } = useSubscription();
 
   const handleSubmit = async (evt: React.SyntheticEvent) => {

@@ -1,7 +1,6 @@
 'use client';
 
-import { useState } from 'react';
-import { useChangePassword } from '@nhost/react';
+import { FormEvent, useState, useTransition } from 'react';
 import {
   Card,
   CardHeader,
@@ -12,18 +11,24 @@ import {
   Input,
   InputLabel,
 } from '@xyflow/xy-ui';
+import { changePassword } from '@/server-actions';
+import type { AuthErrorPayload } from '@nhost/nhost-js';
 
 function ChangePasswordCard() {
-  const [isLoading, setIsLoading] = useState(false);
-  const { changePassword, isSuccess, isError, error } = useChangePassword();
-  const [newPassword, setNewPassword] = useState<string>('');
+  const [isLoading, startTransition] = useTransition();
+  const [error, setError] = useState<AuthErrorPayload | null>(null);
+  const [isSuccess, setIsSuccess] = useState(false);
 
-  const handleSubmit = async (evt: React.SyntheticEvent) => {
-    evt.preventDefault();
-    setIsLoading(true);
-    await changePassword(newPassword);
-    setIsLoading(false);
-  };
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    // Prevent resubmitting the form when an error is set
+    event.preventDefault();
+    startTransition(async () => {
+      const formData = new FormData(event.currentTarget);
+      const { error } = await changePassword(formData);
+      setError(error);
+      setIsSuccess(!error);
+    });
+  }
 
   return (
     <Card>
@@ -34,27 +39,20 @@ function ChangePasswordCard() {
             Your password has been updated.
           </CardDescription>
         )}
-        {isError && (
-          <CardDescription className="text-red-500">
-            {error ? error.message : 'Something went wrong.'}
-          </CardDescription>
+        {error && (
+          <CardDescription className="text-red-500">{error.message}</CardDescription>
         )}
       </CardHeader>
       <CardFooter className="bg-muted">
-        <form
-          onSubmit={handleSubmit}
-          className="flex space-x-2 justify-between w-full"
-        >
+        <form onSubmit={handleSubmit} className="flex space-x-2 justify-between w-full">
           <div className="flex-1">
             <InputLabel htmlFor="password">New Password</InputLabel>
             <Input
               variant="square"
               className="max-w-xs"
               type="password"
-              value={newPassword}
-              onChange={(evt) => setNewPassword(evt.target.value)}
               required
-              id="password"
+              name="password"
               placeholder="Enter password..."
             />
           </div>
