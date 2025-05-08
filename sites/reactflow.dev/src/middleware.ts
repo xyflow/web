@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest } from 'next/server';
 import { manageAuthSession } from '@/utils/nhost';
 
 export const config = {
@@ -6,7 +6,5 @@ export const config = {
 };
 
 export async function middleware(request: NextRequest) {
-  return manageAuthSession(request, () =>
-    NextResponse.redirect(new URL('/auth/signin', request.url)),
-  );
+  return manageAuthSession(request);
 }
