@@ -19,10 +19,6 @@ export const defaultCategories = {
     { title: 'Open Source', route: 'https://xyflow.com/open-source' },
     { title: 'About', route: 'https://xyflow.com/about' },
     { title: 'Contact', route: 'https://xyflow.com/contact' },
-    {
-      title: 'Careers',
-      route: 'https://xyflow.com/careers',
-    },
   ],
   Legal: [
     { title: 'Terms of Use', route: 'https://xyflow.com/terms-of-use' },
