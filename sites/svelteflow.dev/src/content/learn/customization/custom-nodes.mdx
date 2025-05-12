@@ -49,6 +49,8 @@ Now we need to communicate the new custom node to Svelte Flow. You can add custo
 ```svelte filename="App.svelte"
 <script>
   import { SvelteFlow } from '@xyflow/svelte';
+  import '@xyflow/svelte/dist/style.css';
+
   import TextUpdaterNode from './TextUpdaterNode.svelte';
 
   const nodeTypes = { textUpdater: TextUpdaterNode };

@@ -18,6 +18,7 @@ in relation to the rest of the flow.
 ```svelte
 <script lang="ts">
   import { SvelteFlow, MiniMap } from '@xyflow/svelte';
+  import '@xyflow/svelte/dist/style.css';
 
   let nodes = $state.raw([]);
   let edges = $state.raw([]);
@@ -45,6 +46,7 @@ or `pannable` (or both!) props to `true`.
 ```svelte
 <script lang="ts">
   import { SvelteFlow, MiniMap } from '@xyflow/svelte';
+  import '@xyflow/svelte/dist/style.css';
 
   let nodes = $state.raw([]);
   let edges = $state.raw([]);
@@ -67,6 +69,7 @@ This example shows how to color each mini map node based on the node's type:
 ```svelte
 <script lang="ts">
   import { SvelteFlow, MiniMap } from '@xyflow/svelte';
+  import '@xyflow/svelte/dist/style.css';
 
   let nodes = $state.raw([]);
   let edges = $state.raw([]);
