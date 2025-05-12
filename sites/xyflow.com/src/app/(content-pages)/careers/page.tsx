@@ -6,53 +6,14 @@ import { BaseLayout, Hero } from 'xy-shared';
 import { MapPinIcon } from '@heroicons/react/24/solid';
 import { Metadata } from 'next';
 import { FC } from 'react';
+import { Callout } from 'nextra/components';
 
 export const metadata: Metadata = {
   title: 'Careers',
   description: 'Keep up to date with our open jobs and opportunities.',
 };
 
-const openings: JobOpeningProps[] = [
-  {
-    location: 'Berlin (hybrid)',
-    title: 'Fullstack Developer',
-    description: [
-      "Our libraries React Flow and Svelte Flow are at the core of what we do, \
-       but it's not the only thing we work on. We also maintain a platform \
-       for our Pro subscribers, regularly update our documentation with new \
-       examples, and provide support to our users on GitHub, Discord, and by \
-       email.",
-      "We're looking for a full-stack developer to join our small team and get \
-       stuck in to everything we do!",
-    ],
-    candidate: [
-      'Experienced at full-stack or TypeScript development',
-      'Passionate about independent open-source software.',
-      'Able to take ownership and work independently on some projects.',
-      'Comfortable communicating in both written and spoken English.',
-      'Interested in the different parts of our daily business: libraries, \
-       pro-platform, docs, website, discord, support.',
-      'Based in or around Berlin',
-    ],
-    tasks: [
-      'Improve the checkout flow with Stripe on the Pro Platform.',
-      'Work on improving the performance of Svelte Flow.',
-      'Write a tutorial on how to build an AI chatbot with React Flow.',
-      'Answer technical questions from our users over Discord or by email.',
-      'Create a new example for our documentation.',
-      'Pitch your own ideas and work on them.',
-    ],
-    benefits: [
-      'Work on an interesting open source project used by thousands of developers',
-      'Nice office in Berlin Kreuzberg',
-      'Four day work-week (32 hours)',
-      'Six weeks of vacation per year',
-      'Salary range: 50k - 80k',
-      'Monthly 1:1s, semi annual reviews',
-      'Hybrid work model',
-    ],
-  },
-];
+const openings: JobOpeningProps[] = [];
 
 const Page: FC = () => {
   return (
@@ -74,10 +35,20 @@ const Page: FC = () => {
           <Link href="https://svelteflow.dev" className="text-pink-500">
             Svelte Flow
           </Link>
-          , which are used by thousands of developers. We are expanding our Berlin-based
-          product development team and are looking for talented web developers to join us.
-          Below is a list of our current job openings.
+          , which are used by thousands of developers.
         </Text>
+        {openings.length > 0 ? (
+          <Text>
+            We are expanding our Berlin-based product development team and are looking for
+            talented web developers to join us. Below is a list of our current job
+            openings.
+          </Text>
+        ) : (
+          <Callout type="info">
+            We don't have any open positions at the moment. If you are interested in
+            working with us, please check back later.
+          </Callout>
+        )}
       </Section>
 
       {openings.map((opening) => (
