@@ -1,8 +1,9 @@
 import { generateStaticParamsFor, importPage } from 'nextra/pages';
-import { BaseBlogPostLayout, CaseStudyLayoutWrapper } from 'xy-shared';
-import { useMDXComponents as getMdxComponents } from '@/mdx-components';
 import { normalizePages } from 'nextra/normalize-pages';
 import { getPageMap } from 'nextra/page-map';
+import { BaseBlogPostLayout, CaseStudyLayoutWrapper } from 'xy-shared';
+
+import { useMDXComponents as getMdxComponents } from '@/mdx-components';
 import { getWhatsNew } from '@/utils';
 
 type PageProps = Readonly<{
@@ -11,7 +12,7 @@ type PageProps = Readonly<{
   }>;
 }>;
 
-const { wrapper: Wrapper, h1: H1 } = getMdxComponents();
+const { wrapper: Wrapper } = getMdxComponents();
 
 export default async function Page(props: PageProps) {
   const params = await props.params;
@@ -22,23 +23,11 @@ export default async function Page(props: PageProps) {
   return (
     <Wrapper toc={toc} metadata={metadata}>
       {(async function (slug: string[]) {
-        const isExamples = slug[0] === 'examples';
-        if (isExamples) {
-          return (
-            <>
-              {/* @ts-expect-error -- false positive */}
-              <H1>{metadata.title}</H1>
-              {mdx}
-            </>
-          );
-        }
-
         const isTutorials = slug[0] === 'learn' && slug[1] === 'tutorials';
         if (isTutorials) {
           return (
-            <BaseBlogPostLayout frontMatter={metadata}>
-              {mdx}
-            </BaseBlogPostLayout>
+            // @ts-expect-error -- fixme
+            <BaseBlogPostLayout frontMatter={metadata}>{mdx}</BaseBlogPostLayout>
           );
         }
 
@@ -46,13 +35,12 @@ export default async function Page(props: PageProps) {
         if (isCaseStudies) {
           const pageMap = await getPageMap('/pro/case-studies');
           const { activeIndex, flatDocsDirectories } = normalizePages({
-            list: pageMap.filter(
-              (item) => 'name' in item && item.name !== 'index',
-            ),
+            list: pageMap.filter((item) => 'name' in item && item.name !== 'index'),
             route: ['', ...slug].join('/'),
           });
           return (
             <CaseStudyLayoutWrapper
+              // @ts-expect-error -- fixme
               frontMatter={metadata}
               prev={flatDocsDirectories[activeIndex - 1]}
               next={flatDocsDirectories[activeIndex + 1]}
@@ -72,12 +60,9 @@ export default async function Page(props: PageProps) {
           });
           return (
             <BaseBlogPostLayout
+              // @ts-expect-error -- fixme
               frontMatter={metadata}
-              prev={
-                activeIndex > 0
-                  ? flatDocsDirectories[activeIndex - 1]
-                  : undefined
-              }
+              prev={activeIndex > 0 ? flatDocsDirectories[activeIndex - 1] : undefined}
               next={
                 activeIndex < flatDocsDirectories.length - 1
                   ? flatDocsDirectories[activeIndex + 1]
@@ -102,3 +87,7 @@ export async function generateMetadata(props: PageProps) {
 }
 
 export const generateStaticParams = generateStaticParamsFor('mdxPath');
+
+export const dynamic = 'force-static';
+
+export const dynamicParams = false;

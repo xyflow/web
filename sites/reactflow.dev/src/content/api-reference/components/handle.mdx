@@ -4,10 +4,7 @@ sidebarTitle: '<Handle />'
 description: 'The Handle component is used in your custom nodes to define connection points.'
 ---
 
-import { PropsTable } from '@/components/props-table';
-import { handleProps } from '@/references/components/Handle';
-
-# &lt;Handle />
+# \<Handle />
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/components/Handle/index.tsx)
 
@@ -17,12 +14,10 @@ to define connection points.
 ```jsx
 import { Handle, Position } from '@xyflow/react';
 
-export CustomNode = ({ data }) => {
+export const CustomNode = ({ data }) => {
   return (
     <>
-      <div style={{ padding: '10px 20px' }}>
-        {data.label}
-      </div>
+      <div style={{ padding: '10px 20px' }}>{data.label}</div>
 
       <Handle type="target" position={Position.Left} />
       <Handle type="source" position={Position.Right} />

@@ -8,7 +8,6 @@ tags: ['react-flow', 'how-to', 'mind-map']
 image: /img/tutorials/mindmap/mindmap.png
 ---
 
-import { Bleed } from 'nextra/components';
 import { Emoji } from '@xyflow/xy-ui';
 import { RemoteCodeViewer } from 'xy-shared/server';
 
@@ -18,13 +17,7 @@ In this tutorial, you will learn to create a simple mind map tool with React Flo
 
 Before we get our hands dirty, I want to show you the mind-mapping tool we'll have by the end of this tutorial:
 
-<Bleed>
-  <RemoteCodeViewer
-    route="tutorials/mindmap/app"
-    framework="react"
-    showEditor={false}
-  />
-</Bleed>
+<RemoteCodeViewer route="tutorials/mindmap/app" framework="react" showEditor={false} />
 
 If you'd like to live dangerously and dive right into the code, you can find the source code on [Github](https://github.com/xyflow/react-flow-mindmap-app).
 
@@ -116,13 +109,11 @@ body,
 
 We are adding all styles of our app to the `index.css` file (you could also use a CSS-in-JS library like [Styled Components](/examples/styling/styled-components) or [Tailwind](/examples/styling/tailwind)). Now you can start the development server with `npm run dev` and you should see the following:
 
-<Bleed>
-  <RemoteCodeViewer
-    route="tutorials/mindmap/getting-started"
-    framework="react"
-    showEditor={false}
-  />
-</Bleed>
+<RemoteCodeViewer
+  route="tutorials/mindmap/getting-started"
+  framework="react"
+  showEditor={false}
+/>
 
 ## <Emoji content="🏪" /> A store for nodes and edges
 
@@ -202,10 +193,7 @@ const nodeOrigin: NodeOrigin = [0.5, 0.5];
 
 function Flow() {
   // whenever you use multiple values, you should use shallow to make sure the component only re-renders when one of the values changes
-  const { nodes, edges, onNodesChange, onEdgesChange } = useStore(
-    selector,
-    shallow,
-  );
+  const { nodes, edges, onNodesChange, onEdgesChange } = useStore(selector, shallow);
 
   return (
     <ReactFlow
@@ -227,12 +215,7 @@ export default Flow;
 
 We access the nodes, edges and change handlers from the store and pass them to the React Flow component. We also use the `fitView` prop to make sure that the initial node is centered in the view and set the node origin to `[0.5, 0.5]` to set the origin to the center of a node. After this, your app should look like this:
 
-<Bleed>
-  <RemoteCodeViewer
-    route="tutorials/mindmap/store-nodes-edges"
-    framework="react"
-  />
-</Bleed>
+<RemoteCodeViewer route="tutorials/mindmap/store-nodes-edges" framework="react" />
 
 You can move the node around and zoom in and out, we are getting somewhere <Emoji content="🚀" /> Now let's add some more functionality.
 
@@ -321,10 +304,7 @@ const edgeTypes = {
 
 and then pass the newly created types to the React Flow component.
 
-<RemoteCodeViewer
-  route="tutorials/mindmap/custom-nodes-edges"
-  framework="react"
-/>
+<RemoteCodeViewer route="tutorials/mindmap/custom-nodes-edges" framework="react" />
 
 Nice! We can already change the labels of our nodes by clicking in the input field and typing something.
 
@@ -345,9 +325,7 @@ const onConnectStart: OnConnectStart = useCallback((_, { nodeId }) => {
 
 const onConnectEnd: OnConnectEnd = useCallback((event) => {
   // we only want to create a new node if the connection ends on the pane
-  const targetIsPane = (event.target as Element).classList.contains(
-    'react-flow__pane',
-  );
+  const targetIsPane = (event.target as Element).classList.contains('react-flow__pane');
 
   if (targetIsPane && connectingNodeId.current) {
     console.log(`add new node with parent node ${connectingNodeId.current}`);
@@ -382,7 +360,7 @@ addChildNode: (parentNode: Node, position: XYPosition) => {
 };
 ```
 
-We are using the passed node as a parent. Normally this feature is used to implement [grouping](/examples/nodes/dynamic-grouping) or [sub flows](/examples/layout/sub-flows). Here we are using it to move all child nodes when their parent is moved. It enables us to clean up and re-order the mind map so that we don't have to move all child nodes manually. Let's use the new action in our `onConnectEnd` handler:
+We are using the passed node as a parent. Normally this feature is used to implement [grouping](/examples/nodes/dynamic-grouping) or [sub flows](/examples/grouping/sub-flows). Here we are using it to move all child nodes when their parent is moved. It enables us to clean up and re-order the mind map so that we don't have to move all child nodes manually. Let's use the new action in our `onConnectEnd` handler:
 
 #### Adjustments in src/App/index.tsx
 
@@ -392,9 +370,7 @@ const store = useStoreApi();
 const onConnectEnd: OnConnectEnd = useCallback(
   (event) => {
     const { nodeLookup } = store.getState();
-    const targetIsPane = (event.target as Element).classList.contains(
-      'react-flow__pane',
-    );
+    const targetIsPane = (event.target as Element).classList.contains('react-flow__pane');
 
     if (targetIsPane && connectingNodeId.current) {
       const parentNode = nodeLookup.get(connectingNodeId.current);
@@ -449,9 +425,7 @@ const getChildNodePosition = (event: MouseEvent, parentNode?: Node) => {
 
 This function returns the position of the new node we want to add to our store. We are using the [`project` function](/api-reference/types/react-flow-instance#project) to convert screen coordinates into React Flow coordinates. As mentioned earlier, child nodes are positioned relative to their parents. That's why we need to subtract the parent position from the child node position. That was a lot to take in, let's see it in action:
 
-<Bleed>
-  <RemoteCodeViewer route="tutorials/mindmap/create-nodes" framework="react" />
-</Bleed>
+<RemoteCodeViewer route="tutorials/mindmap/create-nodes" framework="react" />
 
 To test the new functionality you can start a connection from a handle and then end it on the pane. You should see a new node being added to the mind map.
 
@@ -548,12 +522,7 @@ In order to make the whole node a handle, we also update the style of the source
 }
 ```
 
-<Bleed>
-  <RemoteCodeViewer
-    route="tutorials/mindmap/node-as-handle"
-    framework="react"
-  />
-</Bleed>
+<RemoteCodeViewer route="tutorials/mindmap/node-as-handle" framework="react" />
 
 This works but we can't move the nodes anymore because the source handle is now the whole node and covers the input field. We fix that by using the [`dragHandle` node option](/api-reference/types/node#drag-handle). It allows us to specify a selector for a DOM element that should be used as a drag handle. For this we adjust the custom node a bit:
 
@@ -633,12 +602,7 @@ We add a wrapper div with the class name `inputWrapper` and a div with the class
 }
 ```
 
-<Bleed>
-  <RemoteCodeViewer
-    route="tutorials/mindmap/node-as-handle-2"
-    framework="react"
-  />
-</Bleed>
+<RemoteCodeViewer route="tutorials/mindmap/node-as-handle-2" framework="react" />
 
 ### 2. Activate input on focus
 
@@ -650,9 +614,7 @@ We are almost there but we need to adjust some more details. We want to start ou
 const onConnectEnd: OnConnectEnd = useCallback(
   (event) => {
     const { nodeLookup } = store.getState();
-    const targetIsPane = (event.target as Element).classList.contains(
-      'react-flow__pane',
-    );
+    const targetIsPane = (event.target as Element).classList.contains('react-flow__pane');
     const node = (event.target as Element).closest('.react-flow__node');
 
     if (node) {
@@ -719,12 +681,7 @@ As you see we are focusing the input field if the user releases the mouse button
 }
 ```
 
-<Bleed>
-  <RemoteCodeViewer
-    route="tutorials/mindmap/node-as-handle-3"
-    framework="react"
-  />
-</Bleed>
+<RemoteCodeViewer route="tutorials/mindmap/node-as-handle-3" framework="react" />
 
 ### 3. Dynamic width and auto focus
 
@@ -754,13 +711,11 @@ useEffect(() => {
 }, []);
 ```
 
-<Bleed>
-  <RemoteCodeViewer
-    route="tutorials/mindmap/node-as-handle-4"
-    framework="react"
-    activeFile="MindMapNode.tsx"
-  />
-</Bleed>
+<RemoteCodeViewer
+  route="tutorials/mindmap/node-as-handle-4"
+  framework="react"
+  activeFile="MindMapNode.tsx"
+/>
 
 Now when you adjust a node label, the width of the node will adjust accordingly. You can also create a new node and it will be focused right away.
 
@@ -807,13 +762,11 @@ body {
 
 Nicely done! <Emoji content="💯" /> You can find the final code here:
 
-<Bleed>
-  <RemoteCodeViewer
-    route="tutorials/mindmap/node-as-handle-4"
-    framework="react"
-    activeFile="MindMapNode.tsx"
-  />
-</Bleed>
+<RemoteCodeViewer
+  route="tutorials/mindmap/node-as-handle-4"
+  framework="react"
+  activeFile="MindMapNode.tsx"
+/>
 
 ## <Emoji content="👋" /> Final thoughts
 

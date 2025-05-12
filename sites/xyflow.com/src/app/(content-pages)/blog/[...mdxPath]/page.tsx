@@ -27,6 +27,7 @@ export default async function Page(props: PageProps) {
   return (
     <Wrapper toc={toc} metadata={metadata}>
       <BaseBlogPostLayout
+        // @ts-expect-error -- fixme
         frontMatter={metadata}
         prev={flatDocsDirectories[activeIndex - 1]}
         next={flatDocsDirectories[activeIndex + 1]}
@@ -44,3 +45,7 @@ export async function generateMetadata(props: PageProps) {
 }
 
 export const generateStaticParams = generateStaticParamsFor('mdxPath');
+
+export const dynamic = 'force-static';
+
+export const dynamicParams = false;
