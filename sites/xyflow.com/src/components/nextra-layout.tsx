@@ -34,12 +34,6 @@ export const NextraLayout: FC<{
                 <Logo className="h-9 w-9" />
                 <Text className="font-black text-xl leading-none">xyflow</Text>
               </Link>
-              <Link
-                className="max-md:hidden bg-primary rounded-full px-2 font-bold text-primary-foreground text-sm hover:opacity-80"
-                href="/careers"
-              >
-                hiring
-              </Link>
             </div>
           }
           logoLink={false}
