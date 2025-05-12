@@ -1,0 +1,41 @@
+---
+title: 'Svelte Flow 1.0 release'
+htmlTitle: 'Svelte Flow 1.0 release'
+description: 'The first major version for Svelte Flow, rewritten with full support for Svelte 5 and many new features.'
+intro: 'We celebrate the first major version graduation of Svelte Flow with a full Svelte 5 rewrite and many new features.'
+date: 8 May 2025
+authors: ['peter', 'moritz']
+tags: ['svelte-flow']
+image: '/img/blog/v11-reactflow-header.png'
+---
+
+import { Bleed } from 'nextra/components';
+import { Text, Image } from 'xy-shared';
+import SSRFlow from '@/components/SSRFlow';
+import { RemoteCodeViewer } from 'xy-shared/server';
+
+Man, the kids grow up so fast. It feels like yesterday when Svelte Flow was taking its first steps, and then bam – it has become a full-grown library, complaining about our lame music taste...
+
+And like any decent coming-of-age flick, there are some bumps along the way before you see the end credits roll over the sunset. For us, this meant rewriting Svelte Flow **twice** before landing where we are today. And it is better than ever! A good chunk of the glow-up comes from new possiblities in Svelte 5 and the rest comes down to building a Svelte library from the ground up.
+
+While there are many things to unpack about our journey with Svelte 5, that's a story for another day.
+
+### TL;DR
+
+<div style={{ marginTop: -10 }} />
+
+Svelte Flow 1.0 is here. The docs received a complete overhaul. Hello hokasd
+
+<div style={{ marginTop: -10 }} />
+
+- Written from the ground up in Svelte 5
+- Feature complete with React Flow
+- Overhauled learn section
+- Automatically generated API references
+- Better DX via TSDoc
+
+# Sneak Peek
+
+Let's take a quick look at some of the changes from the previous version. If you want the full rundown, check out the [migration guide](/).
+
+## `nodes` & `edges` now use `$state.raw` 🦁
