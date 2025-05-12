@@ -1,0 +1,125 @@
+---
+title: 'Svelte Flow 1.0 release'
+htmlTitle: 'Svelte Flow 1.0 release'
+description: 'The first major version for Svelte Flow, rewritten with full support for Svelte 5 and many new features.'
+intro: 'We celebrate the first major version graduation of Svelte Flow with a full Svelte 5 rewrite and many new features.'
+date: 8 May 2025
+authors: ['peter', 'moritz']
+tags: ['svelte-flow']
+image: '/img/blog/v11-reactflow-header.png'
+---
+
+import { Bleed, Callout } from 'nextra/components';
+import { Text, Image } from 'xy-shared';
+import SSRFlow from '@/components/SSRFlow';
+import { RemoteCodeViewer } from 'xy-shared/server';
+
+Man, the kids grow up so fast. It feels like yesterday when Svelte Flow was taking its first steps, and then bam – it has become a full-grown library, complaining about our lame music taste...
+
+And like any decent coming-of-age flick, there are some bumps along the way before you see the end credits roll over the sunset. For us, this meant rewriting Svelte Flow **twice** before landing where we are today. And it is better than ever! A good chunk of the glow-up comes from new possiblities in Svelte 5 and the rest comes down to building a Svelte library from the ground up.
+
+While there are many things to unpack about our journey with Svelte 5, that's a story for another day.
+
+### TL;DR
+
+<div style={{ marginTop: -10 }} />
+
+Svelte Flow 1.0 is here. The docs received a complete overhaul.
+
+<div style={{ marginTop: -10 }} />
+
+- Written from the ground up for Svelte 5
+- Feature parity with React Flow for present and upcoming features
+- Overhauled learn section
+- Automatically generated API references
+- Better DX via TSDoc comments
+
+# Embracing runes
+
+To create a stable API for the future, we fully embraced signals by converting all [stores](https://svelte.dev/docs/svelte/stores) to [runes](https://svelte.dev/docs/svelte/what-are-runes). This allowed us to simplify many parts of the library and make it more performant. Here is a quick overview of some changes to keep in mind when upgrading.
+
+<Callout type="info">
+  For a complete rundown of all changes, head over to our [migration guide](/).
+</Callout>
+
+## `nodes` & `edges` now use `$state.raw` 🦁
+
+[`$state.raw`](https://svelte.dev/docs/svelte/$state#$state.raw) makes nodes and edges immutable, which [improves performance](https://svelte.dev/playground/e6f804ba6da348bc8b6a0a13c59672cb?version=5.19.0) and allows us to better reason about state updates. Additionally, [binding](https://svelte.dev/docs/svelte/$bindable) expresses the contract behind `nodes` & `edges` passed to `<SvelteFlow />` more explicitly.
+
+**Old API**
+
+```svelte
+<script>
+  const nodes = writable([...]);
+  const edges = writable([...]);
+
+  const updatePosition = () => {
+    nodes.forEach((node) => {
+      if (node.id === 'someID') {
+        node.position.x += 10;
+      }
+    });
+    nodes = nodes;
+  };
+</script>
+
+<SvelteFlow {nodes} {edges} />
+```
+
+**New API**
+
+```svelte
+<script>
+  let nodes = $state.raw([...]);
+  let edges = $state.raw([...]);
+
+  const updatePosition = () => {
+    nodes = nodes.map((node) => {
+      if (node.id === 'someID') {
+        return {
+          ...node,
+          position: {
+            ...node.position,
+            x: node.position.x + 10,
+          },
+        };
+      }
+      return node;
+    });
+  };
+</script>
+
+<SvelteFlow bind:nodes bind:edges />
+```
+
+## Hooks return reactive values instead of `writable`
+
+Many of our hooks that used to return a store, now return a reactive value that can be accessed via `.current`.
+
+```svelte
+<script>
+  import { useNodeConnections } from '@xyflow/svelte';
+
+  const connections = useNodeConnections({ handleType: 'target', handleId: 'my-handle' });
+
+  $inspect(connections.current);
+</script>
+```
+
+## Events are lowercase & HTML attributes exposed
+
+Following the new [Svelte 5 convention](https://svelte.dev/docs/svelte/v5-migration-guide#Event-changes), all event callbacks are now lowercase.
+Plus, as a result of the [new way rest props](https://svelte.dev/docs/svelte/$props#Rest-props) can be passed on to HTML elements, almost all components now expose the props of the underlying parent element.
+
+```svelte
+<!-- Svelte Flow callbacks & root <div/> props -->
+<SvelteFlow
+  onnodeclick={handleNodeClick}
+  onbeforedelete={handleBeforeDelete}
+  onbeforeconnect={handleBeforeConnect}
+  [...]
+  ondragover={handleDragOver}
+  ondrop={handleDrop}
+  oncontextmenu={handleContextMenu}
+/>
+```
