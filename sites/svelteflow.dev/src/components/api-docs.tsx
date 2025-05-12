@@ -11,6 +11,10 @@ const externalSvelteLinks = {
 const externalLinks = {
   Partial: 'https://typescriptlang.org/docs/handbook/utility-types.html#partialtype',
   Record: 'https://typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type',
+  MouseEvent: 'https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent',
+  TouchEvent: 'https://developer.mozilla.org/en-US/docs/Web/API/TouchEvent',
+  KeyboardEvent: 'https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent',
+  PointerEvent: 'https://developer.mozilla.org/en-US/docs/Web/API/PointerEvent',
 };
 
 export const APIDocs: FC<{

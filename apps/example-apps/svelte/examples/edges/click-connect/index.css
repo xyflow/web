@@ -1,0 +1,41 @@
+@import url('./xy-theme.css');
+
+html,
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+#app {
+  width: 100vw;
+  height: 100vh;
+}
+
+/* Annotation Node */
+
+.svelte-flow__node-annotation {
+  font-size: 16px;
+  width: 250px;
+  color: #683bfa;
+  position: absolute;
+  box-shadow: none;
+  font-family: monospace;
+  text-align: left;
+  background-color: transparent;
+  border: none;
+  pointer-events: none;
+}
+
+.svelte-flow__node-annotation .annotation-content {
+  padding: 10px;
+  display: flex;
+}
+
+.svelte-flow__node-annotation .annotation-level {
+  margin-right: 4px;
+}
+
+.svelte-flow__node-annotation .annotation-arrow {
+  position: absolute;
+  font-size: 24px;
+}

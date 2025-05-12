@@ -4,20 +4,9 @@ import { useMDXComponents as getMDXComponents } from '@/mdx-components';
 const { APIDocs } = getMDXComponents() as unknown as { APIDocs: FC<{ code?: string }> };
 
 const FIELDS = {
-  common: [
-    'nodes',
-    'edges',
-    'nodeTypes',
-    'edgeTypes',
-    'colorMode',
-    'colorModeSSR',
-    'nodeOrigin',
-    'nodeDragThreshold',
-    'style',
-    'class',
-  ],
   viewport: [
     'viewport',
+    'initialViewport',
     'fitView',
     'fitViewOptions',
     'minZoom',
@@ -29,7 +18,22 @@ const FIELDS = {
     'attributionPosition',
   ],
   style: ['noPanClass', 'noDragClass', 'noWheelClass'],
-  edge: ['defaultMarkerColor', 'defaultEdgeOptions'],
+  node: [
+    'nodeOrigin',
+    'nodesDraggable',
+    'nodesConnectable',
+    'nodesFocusable',
+    'nodeDragThreshold',
+    'nodeClickDistance',
+    'nodeExtent',
+    'elevateNodesOnSelect',
+  ],
+  edge: [
+    'edgesFocusable',
+    'elevateEdgesOnSelect',
+    'defaultMarkerColor',
+    'defaultEdgeOptions',
+  ],
   nodeEvents: [
     'onnodeclick',
     'onnodedragstart',
@@ -40,7 +44,7 @@ const FIELDS = {
     'onnodepointerleave',
     'onnodecontextmenu',
   ],
-  selectionEvents: ['onselectionclick', 'onselectioncontextmenu'],
+  selectionEvents: ['onselectionchanged', 'onselectionclick', 'onselectioncontextmenu'],
   paneEvents: ['onpaneclick', 'onpanecontextmenu', 'onmovestart', 'onmove', 'onmoveend'],
   generalEvents: ['oninit', 'onflowerror', 'ondelete', 'onbeforedelete'],
   edgeEvents: [
@@ -53,13 +57,21 @@ const FIELDS = {
     'onreconnectend',
     'onbeforereconnect',
   ],
-  connectionEvents: ['onconnect', 'onconnectstart', 'onconnectend', 'isValidConnection'],
+  connectionEvents: [
+    'onconnect',
+    'onconnectstart',
+    'onbeforeconnect',
+    'onconnectend',
+    'isValidConnection',
+    'clickConnect',
+    'onclickconnectstart',
+    'onclickconnectend',
+  ],
   interaction: [
-    'nodesDraggable',
-    'nodesConnectable',
     'elementsSelectable',
     'autoPanOnConnect',
     'autoPanOnNodeDrag',
+    'selectNodesOnDrag',
     'panOnDrag',
     'selectionOnDrag',
     'selectionMode',
@@ -68,11 +80,12 @@ const FIELDS = {
     'zoomOnScroll',
     'zoomOnPinch',
     'zoomOnDoubleClick',
-    'selectNodesOnDrag',
     'connectionMode',
+    'paneClickDistance',
   ],
   connectionLine: [
     'connectionRadius',
+    'connectionLineComponent',
     'connectionLineType',
     'connectionLineStyle',
     'connectionLineContainerStyle',
@@ -83,18 +96,40 @@ const FIELDS = {
     'multiSelectionKey',
     'zoomActivationKey',
     'panActivationKey',
+    'disableKeyboardA11y',
   ],
 };
 
-export const SvelteFlowAPIProps: FC<{ group: keyof typeof FIELDS }> = ({ group }) => {
-  const pickedFields = FIELDS[group].map((v) => `"${v}"`).join('|');
-  const myType = `Pick<SvelteFlowProps, ${pickedFields}>`;
+export const SvelteFlowAPIProps: FC<{ group: keyof typeof FIELDS | 'common' }> = ({
+  group,
+}) => {
+  let myType: string;
+  if (group === 'common') {
+    const omittedFields = Object.values(FIELDS)
+      .flat()
+      .map((v) => `"${v}"`)
+      .join('|');
+    const groupedProps = 'HTMLAttributes<HTMLDivElement>';
+
+    myType = `
+Omit<
+  SvelteFlowProps,
+  ${omittedFields} | keyof ${groupedProps}
+> &
+{ '...props': ${groupedProps} }`;
+  } else {
+    const pickedFields = FIELDS[group].map((v) => `"${v}"`).join('|');
+    myType = `Pick<SvelteFlowProps, ${pickedFields}>`;
+  }
 
   return (
     <APIDocs
       code={`
 import type { SvelteFlowProps } from '@xyflow/svelte'
+import type { HTMLAttributes } from 'svelte/elements'
+
 type $ = ${myType}
+
 export default $`}
     />
   );

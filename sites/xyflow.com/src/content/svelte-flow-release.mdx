@@ -34,6 +34,42 @@ Svelte Flow 1.0 is here. The docs received a complete overhaul.
 - Automatically generated API references
 - Better DX via TSDoc comments
 
+# New features
+
+One of the goals of our first major release, was to close the last remaining gaps between Svelte Flow & React Flow. For us, this also marks a new commitment to develop new features for both libraries in tandem. So keep your eyes peeled for future releases! 👀
+
+In the meantime, let's take a look at some of the new things you can do with Svelte Flow today.
+
+## Reconnecting Edges
+
+You can reconnect your edges by using the new `<EdgeReconnectAnchor />` component. It can be used to add custom reconnection points on custom edges. Try it out below!
+
+<Bleed>
+  <RemoteCodeViewer
+    route="examples/edges/reconnect-edge"
+    framework="svelte"
+    showEditor={false}
+  />
+</Bleed>
+
+## Click Connect
+
+You can now create a new connection by clicking on a handle one by one.
+
+<Bleed>
+  <RemoteCodeViewer
+    route="examples/edges/click-connect"
+    framework="svelte"
+    showEditor={false}
+  />
+</Bleed>
+
+## Improved `fitView`
+
+## Key Navigation & A11y
+
+## Enhanced Viewport Portal
+
 # Embracing runes
 
 To create a stable API for the future, we fully embraced signals by converting all [stores](https://svelte.dev/docs/svelte/stores) to [runes](https://svelte.dev/docs/svelte/what-are-runes). This allowed us to simplify many parts of the library and make it more performant. Here is a quick overview of some changes to keep in mind when upgrading.
@@ -123,3 +159,5 @@ Plus, as a result of the [new way rest props](https://svelte.dev/docs/svelte/$pr
   oncontextmenu={handleContextMenu}
 />
 ```
+
+##
