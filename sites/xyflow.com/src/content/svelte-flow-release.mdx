@@ -24,15 +24,16 @@ While there are many things to unpack about our journey with Svelte 5, that's a 
 
 <div style={{ marginTop: -10 }} />
 
-Svelte Flow 1.0 is here. The docs received a complete overhaul.
+Svelte Flow 1.0 is here. The docs received a complete overhaul. For everyone who is new to Svelte Flow, it is a Svelte library for building node-based applications like workflow editors, data pipelines or visual programming environments.
 
 <div style={{ marginTop: -10 }} />
 
+- Lots of new features like reconnecting edges, improved fitView, key navigation, a11y updates and click connect
 - Written from the ground up for Svelte 5
-- Feature parity with React Flow for present and upcoming features
-- Overhauled learn section
-- Automatically generated API references
 - Better DX via TSDoc comments
+- Feature parity with [React Flow](https://reactflow.dev) for present and upcoming features
+- Overhauled [learn section](https://svelteflow.dev/learn)
+- Automatically generated [API references](https://svelteflow.dev/api-reference)
 
 # New features
 
@@ -75,7 +76,8 @@ You can now create a new connection by clicking on a handle one by one.
 To create a stable API for the future, we fully embraced signals by converting all [stores](https://svelte.dev/docs/svelte/stores) to [runes](https://svelte.dev/docs/svelte/what-are-runes). This allowed us to simplify many parts of the library and make it more performant. Here is a quick overview of some changes to keep in mind when upgrading.
 
 <Callout type="info">
-  For a complete rundown of all changes, head over to our [migration guide](/).
+  For a complete rundown of all changes, head over to our [migration
+  guide](https://svelteflow.dev/learn/troubleshooting/migrate-to-v1).
 </Callout>
 
 ## `nodes` & `edges` now use `$state.raw` 🦁
