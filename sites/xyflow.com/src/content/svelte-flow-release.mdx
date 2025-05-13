@@ -21,7 +21,7 @@ And like any decent coming-of-age flick, there are some bumps along the way befo
 While there are many things to unpack about our journey with Svelte 5, that's a story for another day.
 
 <Callout type="info">
-  If you just want to know how to migrate to Svelte Flow 1.0, head over to our [migration
+  If you just want to know how to migrate to Svelte Flow 1.0, head over to the [migration
   guide](https://svelteflow.dev/learn/troubleshooting/migrate-to-v1).
 </Callout>
 
@@ -29,16 +29,15 @@ While there are many things to unpack about our journey with Svelte 5, that's a 
 
 <div style={{ marginTop: -10 }} />
 
-- Lots of new features like reconnecting edges, improved fitView, key navigation, a11y updates and click connect
+- Lots of new features like reconnecting edges, improved fitView, key navigation and a better accessibility
 - Written from the ground up for Svelte 5
 - Better DX via TSDoc comments
+- An overhauled [learn section](https://svelteflow.dev/learn) and automatically generated [API references](https://svelteflow.dev/api-reference)
 - Feature parity with [React Flow](https://reactflow.dev) for present and upcoming features
-- Overhauled [learn section](https://svelteflow.dev/learn)
-- Automatically generated [API references](https://svelteflow.dev/api-reference)
 
 ## Wait, what's Svelte Flow?
 
-For everyone who is new to Svelte Flow, it is a Svelte library for building node-based applications like workflow editors, data pipelines or visual programming environments. With just a few lines of code, you get an interactive flow with zoming, panning, connecting nodes and much more.
+For everyone who is new to Svelte Flow, it is a Svelte library for building node-based applications like workflow editors, data pipelines or visual programming environments. With just a few lines of code, you get an interactive flow with zooming, panning, connecting nodes and much more.
 
 ```svelte filename="App.svelte"
 <script>
@@ -86,11 +85,11 @@ For everyone who is new to Svelte Flow, it is a Svelte library for building node
 
 One of the goals of our first major release, was to close the last remaining gaps between Svelte Flow and React Flow. For us, this also marks a new commitment to develop new features for both libraries in tandem. So keep your eyes peeled for future releases! 👀
 
-- **[Reconnecting Edges]()**: You can reconnect your edges by using the new `<EdgeReconnectAnchor />` component. It can be used to add custom reconnection points on custom edges. Try it out below!
-- **Key Navigation & A11y**: We added support for keyboard navigation and improved accessibility for screen readers. You can now navigate through nodes and edges using the arrow keys.
-- **[Click Connect]()**: You can now create a new connection by clicking on a handle one by one.
-- **[Enhanced Viewport Portal]()**: We added a new `<ViewportPortal />` component that allows you to render content in the viewport of the flow. This is useful for rendering custom overlays or tooltips.
-- **Improved fitView**: We finetuned the fitView function to better work with dynamically added nodes.
+- **[Reconnect edges](https://svelteflow.dev/examples/edges/reconnect-edge)**: You can reconnect your edges by using the new `<EdgeReconnectAnchor />` component. It can be used to add custom reconnection points on custom edges.
+- **Keyboard navigation & A11y**: We added support for keyboard navigation and improved accessibility for screen readers. You can now navigate through nodes and edges using the arrow keys.
+- **Click connect**: You can now create a new connection by clicking on a handle one by one.
+- **[Enhanced ViewportPortal](https://svelteflow.dev/api-reference/components/viewport-portal)**: We added a new `<ViewportPortal />` component that allows you to render content in the viewport of the flow. This is useful for rendering custom overlays or tooltips.
+- **Improved [fitView](https://svelteflow.dev/api-reference/hooks/use-svelte-flow#fitview)**: We finetuned the `fitView` function to better work with dynamically added nodes.
 
 # Embracing runes
 
