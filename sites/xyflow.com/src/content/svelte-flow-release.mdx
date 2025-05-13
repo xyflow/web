@@ -3,7 +3,7 @@ title: 'Svelte Flow 1.0 is here!'
 htmlTitle: 'Svelte Flow 1.0 is here!'
 description: 'The first major version for Svelte Flow, rewritten with full support for Svelte 5 and many new features.'
 intro: 'We celebrate the first major version graduation of Svelte Flow with a full Svelte 5 rewrite and many new features.'
-date: 8 May 2025
+date: 13 May 2025
 authors: ['peter', 'moritz']
 tags: ['svelte-flow']
 image: '/img/blog/v11-reactflow-header.png'
@@ -166,7 +166,7 @@ Following the new [Svelte 5 convention](https://svelte.dev/docs/svelte/v5-migrat
 Plus, as a result of the [new way rest props](https://svelte.dev/docs/svelte/$props#Rest-props) can be passed on to HTML elements, almost all components now expose the props of the underlying parent element.
 
 ```svelte
-<!-- Svelte Flow callbacks & root <div/> props -->
+<!-- Both, Svelte Flow and <div/> callbacks in one place -->
 <SvelteFlow
   onnodeclick={handleNodeClick}
   onbeforedelete={handleBeforeDelete}
@@ -178,4 +178,18 @@ Plus, as a result of the [new way rest props](https://svelte.dev/docs/svelte/$pr
 />
 ```
 
-##
+# Svelte Flow in the wild
+
+I had a great time mingeling with the community at [Svelte Summit](https://sveltesummit.com/) and even got to chat with people who are already using Svelte Flow! To prove to y'all we are not just pushing some vaporware here, take a look at some of these projects out in the wild!
+
+## [Windmill](https://windmill.dev/)
+
+An open-source developer platform and workflow engine using Svelte Flow to view and edit workflows.
+
+## [Sparrow](https://sparrowapp.dev/)
+
+A collaborative API testing workspace utilizing Svelte Flow for vizualizing shape and status of test runs.
+
+## [Whimsy](https://whimsy.rocks/)
+
+A tiny game engines visual scripting tool is powered by Svelte Flow.
