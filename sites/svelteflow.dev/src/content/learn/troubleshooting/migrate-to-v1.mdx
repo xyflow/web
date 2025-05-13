@@ -12,12 +12,14 @@ Svelte Flow 1.0 is based on Svelte 5 and introduces a lot of new features and im
 ## New features
 
 - **[Reconnect edges](/examples/edges/reconnect-edge)**: You can reconnect your edges by using the new `<EdgeReconnectAnchor />` component. It can be used to add custom reconnection points on custom edges.
-- **Keyboard navigation & A11y**: We added support for keyboard navigation and improved accessibility for screen readers. You can now tab through nodes and edges and move nodes with the arrow keys.
+- **Keyboard navigation & A11y**: We added support for keyboard navigation and improved accessibility for screen readers. You can now tab through nodes and edges and move nodes with the arrow keys. Can be disabled via [**disableKeyboardA11y**](/api-reference/svelte-flow#disablekeyboarda11y)
 - **[Click connect](/examples/edges/click-connect)**: You can now create a new connection by clicking on a handle one by one.
 - **[Enhanced ViewportPortal](/api-reference/components/viewport-portal)**: We added a new `<ViewportPortal />` component that allows you to render content in the viewport of the flow. This is useful for rendering custom overlays or tooltips.
 - **Improved [fitView](/api-reference/hooks/use-svelte-flow#fitview)**: We finetuned the `fitView` function to better work with dynamically added nodes.
 - **colorModeSSR** prop: You can pass a fallback color mode for server side rendering when colorMode is set to 'system'.
-- [**elevateNodesOnSelect**](/api-reference/svelte-flow#elevateNodesOnSelect) prop: Control if nodes should be elevated via z-index when selected.
+- [**elevateNodesOnSelect**](/api-reference/svelte-flow#elevateNodesOnSelect) & [**elevateEdgesOnSelect**](/api-reference/svelte-flow#elevateEdgesOnSelect): Control if nodes & edges should be elevated via z-index when selected.
+- [**noDragClass, noWheelClass, noPanClass**](/api-reference/svelte-flow#style-props): You can now modify the class name used to disable dragging, panning and zooming.
+- [**onselectionchanged**](/api-reference/svelte-flow#onselectionchanged): You can now listen to selection changes via a callback
 
 ## Breaking changes
 
