@@ -1,6 +1,6 @@
 ---
-title: 'Svelte Flow 1.0 release'
-htmlTitle: 'Svelte Flow 1.0 release'
+title: 'Svelte Flow 1.0 is here!'
+htmlTitle: 'Svelte Flow 1.0 is here!'
 description: 'The first major version for Svelte Flow, rewritten with full support for Svelte 5 and many new features.'
 intro: 'We celebrate the first major version graduation of Svelte Flow with a full Svelte 5 rewrite and many new features.'
 date: 8 May 2025
@@ -20,11 +20,12 @@ And like any decent coming-of-age flick, there are some bumps along the way befo
 
 While there are many things to unpack about our journey with Svelte 5, that's a story for another day.
 
+<Callout type="info">
+  If you just want to know how to migrate to Svelte Flow 1.0, head over to our [migration
+  guide](https://svelteflow.dev/learn/troubleshooting/migrate-to-v1).
+</Callout>
+
 ### TL;DR
-
-<div style={{ marginTop: -10 }} />
-
-Svelte Flow 1.0 is here. The docs received a complete overhaul. For everyone who is new to Svelte Flow, it is a Svelte library for building node-based applications like workflow editors, data pipelines or visual programming environments.
 
 <div style={{ marginTop: -10 }} />
 
@@ -35,15 +36,18 @@ Svelte Flow 1.0 is here. The docs received a complete overhaul. For everyone who
 - Overhauled [learn section](https://svelteflow.dev/learn)
 - Automatically generated [API references](https://svelteflow.dev/api-reference)
 
-# New features
+## What is Svelte Flow?
 
-One of the goals of our first major release, was to close the last remaining gaps between Svelte Flow & React Flow. For us, this also marks a new commitment to develop new features for both libraries in tandem. So keep your eyes peeled for future releases! 👀
+For everyone who is new to Svelte Flow, it is a Svelte library for building node-based applications like workflow editors, data pipelines or visual programming environments. With just a few lines of code, you get an interactive flow with zoming, panning, connecting nodes and much more.
 
-In the meantime, let's take a look at some of the new things you can do with Svelte Flow today.
+```svelte
+<script>
+  let nodes = $state.raw([...]);
+  let edges = $state.raw([...]);
+</script>
 
-## Reconnecting Edges
-
-You can reconnect your edges by using the new `<EdgeReconnectAnchor />` component. It can be used to add custom reconnection points on custom edges. Try it out below!
+<SvelteFlow bind:nodes bind:edges fitView />
+```
 
 <Bleed>
   <RemoteCodeViewer
@@ -53,32 +57,19 @@ You can reconnect your edges by using the new `<EdgeReconnectAnchor />` componen
   />
 </Bleed>
 
-## Click Connect
+# New features and improvements
 
-You can now create a new connection by clicking on a handle one by one.
+One of the goals of our first major release, was to close the last remaining gaps between Svelte Flow and React Flow. For us, this also marks a new commitment to develop new features for both libraries in tandem. So keep your eyes peeled for future releases! 👀
 
-<Bleed>
-  <RemoteCodeViewer
-    route="examples/edges/click-connect"
-    framework="svelte"
-    showEditor={false}
-  />
-</Bleed>
-
-## Improved `fitView`
-
-## Key Navigation & A11y
-
-## Enhanced Viewport Portal
+- **[Reconnecting Edges]()**: You can reconnect your edges by using the new `<EdgeReconnectAnchor />` component. It can be used to add custom reconnection points on custom edges. Try it out below!
+- **Key Navigation & A11y**: We added support for keyboard navigation and improved accessibility for screen readers. You can now navigate through nodes and edges using the arrow keys.
+- **[Click Connect]()**: You can now create a new connection by clicking on a handle one by one.
+- **[Enhanced Viewport Portal]()**: We added a new `<ViewportPortal />` component that allows you to render content in the viewport of the flow. This is useful for rendering custom overlays or tooltips.
+- **Improved fitView**: We finetuned the fitView function to better work with dynamically added nodes.
 
 # Embracing runes
 
 To create a stable API for the future, we fully embraced signals by converting all [stores](https://svelte.dev/docs/svelte/stores) to [runes](https://svelte.dev/docs/svelte/what-are-runes). This allowed us to simplify many parts of the library and make it more performant. Here is a quick overview of some changes to keep in mind when upgrading.
-
-<Callout type="info">
-  For a complete rundown of all changes, head over to our [migration
-  guide](https://svelteflow.dev/learn/troubleshooting/migrate-to-v1).
-</Callout>
 
 ## `nodes` & `edges` now use `$state.raw` 🦁
 
