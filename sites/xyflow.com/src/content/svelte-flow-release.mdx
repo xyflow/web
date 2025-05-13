@@ -36,13 +36,13 @@ While there are many things to unpack about our journey with Svelte 5, that's a 
 - Overhauled [learn section](https://svelteflow.dev/learn)
 - Automatically generated [API references](https://svelteflow.dev/api-reference)
 
-## What is Svelte Flow?
+## Wait, what's Svelte Flow?
 
 For everyone who is new to Svelte Flow, it is a Svelte library for building node-based applications like workflow editors, data pipelines or visual programming environments. With just a few lines of code, you get an interactive flow with zoming, panning, connecting nodes and much more.
 
 ```svelte filename="App.svelte"
 <script>
-  import { SvelteFlow, Background } from '@xyflow/svelte';
+  import { SvelteFlow, Background, Controls, Minimap } from '@xyflow/svelte';
   import '@xyflow/svelte/dist/style.css';
 
   let nodes = $state.raw([
@@ -67,14 +67,18 @@ For everyone who is new to Svelte Flow, it is a Svelte library for building node
 
 <SvelteFlow bind:nodes bind:edges fitView>
   <Background />
+  <Controls />
+  <Minimap />
 </SvelteFlow>
 ```
 
 <Bleed>
   <RemoteCodeViewer
-    route="guides/getting-started/d"
+    route="posts/announcement"
     framework="svelte"
     showEditor={false}
+    showOpenInStackblitz={false}
+    showOpenInCodeSandbox={false}
   />
 </Bleed>
 
