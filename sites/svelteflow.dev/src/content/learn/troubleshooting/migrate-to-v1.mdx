@@ -12,12 +12,12 @@ Svelte Flow 1.0 is based on Svelte 5 and introduces a lot of new features and im
 ## New features
 
 - **[Reconnect edges](/examples/edges/reconnect-edge)**: You can reconnect your edges by using the new `<EdgeReconnectAnchor />` component. It can be used to add custom reconnection points on custom edges.
-- **Keyboard navigation & A11y**: We added support for keyboard navigation and improved accessibility for screen readers. You can now navigate through nodes and edges using the arrow keys.
-- **Click connect**: You can now create a new connection by clicking on a handle one by one.
+- **Keyboard navigation & A11y**: We added support for keyboard navigation and improved accessibility for screen readers. You can now tab through nodes and edges and move nodes with the arrow keys.
+- **[Click connect](/examples/edges/click-connect)**: You can now create a new connection by clicking on a handle one by one.
 - **[Enhanced ViewportPortal](/api-reference/components/viewport-portal)**: We added a new `<ViewportPortal />` component that allows you to render content in the viewport of the flow. This is useful for rendering custom overlays or tooltips.
 - **Improved [fitView](/api-reference/hooks/use-svelte-flow#fitview)**: We finetuned the `fitView` function to better work with dynamically added nodes.
 - **colorModeSSR** prop: You can pass a fallback color mode for server side rendering when colorMode is set to 'system'.
-- **elevateNodesOnSelect** prop: Control if nodes should be elevated via z-index when selected.
+- [**elevateNodesOnSelect**](/api-reference/svelte-flow#elevateNodesOnSelect) prop: Control if nodes should be elevated via z-index when selected.
 
 ## Breaking changes
 
@@ -109,7 +109,7 @@ export const setEdges = (newEdges) => edges = newEdges;
 
 ### Custom Node & Edge Props
 
-This is by enlarge a general change in Svelte 5 but it does have quite a big impact on typing the props of Custom Nodes & Edges.
+This is by enlarge a general change in Svelte 5, but it does have quite a big impact on typing the props of Custom Nodes & Edges.
 
 **Old API**
 
@@ -168,9 +168,9 @@ const { updateNode, screenToFlowPosition } = useSvelteFlow(); //still works
 ```
 
 <Callout>
-  You have to use `$derived(useSvelteFlow());` if you are using the hook outside of the
-  main `<SvelteFlow />` component via the `<SvelteFlowProvider />
-  `.
+  You have to use `$derived(useSvelteFlow());` if you are using the hook outside the main
+  `<SvelteFlow />` component via the [ `<SvelteFlowProvider />`
+  ](/api-reference/svelte-flow-provider).
 </Callout>
 
 **Old API**

@@ -6,6 +6,8 @@ description: The SvelteFlowProvider component wraps its child nodes with a Svelt
 sidebarTitle: <SvelteFlowProvider />
 ---
 
+import { Callout } from 'nextra/components';
+
 # \<SvelteFlowProvider />
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/components/SvelteFlowProvider/SvelteFlowProvider.svelte)
@@ -50,6 +52,12 @@ provide rely on this component to work.
   {/each}
 </aside>
 ```
+
+<Callout type="info">
+  The state provided by `<SvelteFlowProvider />` is first initialized with default values.
+  Only after the `<SvelteFlow />` component initializes, will the state be replaced with
+  correct values. However, you can expect this to happen before the first render.
+</Callout>
 
 ## Notes
 
