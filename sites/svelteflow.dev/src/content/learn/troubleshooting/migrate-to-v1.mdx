@@ -7,7 +7,19 @@ import { Callout } from 'nextra/components';
 
 # Migrate to Svelte Flow 1.0
 
-## Migration Guide
+Svelte Flow 1.0 is based on Svelte 5 and introduces a lot of new features and improvements. However, this also means that some things have changed in the API. This guide will help you migrate from Svelte Flow 0.x to 1.0.
+
+## New features
+
+- **[Reconnect edges](/examples/edges/reconnect-edge)**: You can reconnect your edges by using the new `<EdgeReconnectAnchor />` component. It can be used to add custom reconnection points on custom edges.
+- **Keyboard navigation & A11y**: We added support for keyboard navigation and improved accessibility for screen readers. You can now navigate through nodes and edges using the arrow keys.
+- **Click connect**: You can now create a new connection by clicking on a handle one by one.
+- **[Enhanced ViewportPortal](/api-reference/components/viewport-portal)**: We added a new `<ViewportPortal />` component that allows you to render content in the viewport of the flow. This is useful for rendering custom overlays or tooltips.
+- **Improved [fitView](/api-reference/hooks/use-svelte-flow#fitview)**: We finetuned the `fitView` function to better work with dynamically added nodes.
+- **colorModeSSR** prop: You can pass a fallback color mode for server side rendering when colorMode is set to 'system'.
+- **elevateNodesOnSelect** prop: Control if nodes should be elevated via z-index when selected.
+
+## Breaking changes
 
 ### `nodes` & `edges` are now using `$state.raw` instead of `writable`
 
