@@ -90,92 +90,13 @@ One of the goals of our first major release, was to close the last remaining gap
 - **Click connect**: You can now create a new connection by clicking on a handle one by one.
 - **[Enhanced ViewportPortal](https://svelteflow.dev/api-reference/components/viewport-portal)**: We added a new `<ViewportPortal />` component that allows you to render content in the viewport of the flow. This is useful for rendering custom overlays or tooltips.
 - **Improved [fitView](https://svelteflow.dev/api-reference/hooks/use-svelte-flow#fitview)**: We finetuned the `fitView` function to better work with dynamically added nodes.
+- And countless other small improvements...
 
 # Embracing runes
 
-To create a stable API for the future, we fully embraced signals by converting all [stores](https://svelte.dev/docs/svelte/stores) to [runes](https://svelte.dev/docs/svelte/what-are-runes). This allowed us to simplify many parts of the library and make it more performant. Here is a quick overview of some changes to keep in mind when upgrading.
+To create a stable API for the future, we fully embraced signals by converting all [stores](https://svelte.dev/docs/svelte/stores) to [runes](https://svelte.dev/docs/svelte/what-are-runes). In some instances this was as easy as replacing `writable` with `$state`. Some other cases required us to rethink our general architecture. But after a fair amount of tinkering, benchmarking and restless nights dreaming about runes - we managed to simplify many parts of the library and even make it more performant!
 
-## `nodes` & `edges` now use `$state.raw` 🦁
-
-[`$state.raw`](https://svelte.dev/docs/svelte/$state#$state.raw) makes nodes and edges immutable, which [improves performance](https://svelte.dev/playground/e6f804ba6da348bc8b6a0a13c59672cb?version=5.19.0) and allows us to better reason about state updates. Additionally, [binding](https://svelte.dev/docs/svelte/$bindable) expresses the contract behind `nodes` & `edges` passed to `<SvelteFlow />` more explicitly.
-
-**Old API**
-
-```svelte
-<script>
-  const nodes = writable([...]);
-  const edges = writable([...]);
-
-  const updatePosition = () => {
-    nodes.forEach((node) => {
-      if (node.id === 'someID') {
-        node.position.x += 10;
-      }
-    });
-    nodes = nodes;
-  };
-</script>
-
-<SvelteFlow {nodes} {edges} />
-```
-
-**New API**
-
-```svelte
-<script>
-  let nodes = $state.raw([...]);
-  let edges = $state.raw([...]);
-
-  const updatePosition = () => {
-    nodes = nodes.map((node) => {
-      if (node.id === 'someID') {
-        return {
-          ...node,
-          position: {
-            ...node.position,
-            x: node.position.x + 10,
-          },
-        };
-      }
-      return node;
-    });
-  };
-</script>
-
-<SvelteFlow bind:nodes bind:edges />
-```
-
-## Hooks return reactive values instead of `writable`
-
-Many of our hooks that used to return a store, now return a reactive value that can be accessed via `.current`.
-
-```svelte
-<script>
-  import { useNodeConnections } from '@xyflow/svelte';
-
-  const connections = useNodeConnections({ handleType: 'target', handleId: 'my-handle' });
-
-  $inspect(connections.current);
-</script>
-```
-
-## Events are lowercase & HTML attributes exposed
-
-Following the new [Svelte 5 convention](https://svelte.dev/docs/svelte/v5-migration-guide#Event-changes), all event callbacks are now lowercase.
-Plus, as a result of the [new way rest props](https://svelte.dev/docs/svelte/$props#Rest-props) can be passed on to HTML elements, almost all components now expose the props of the underlying parent element.
-
-```svelte
-<!-- Both, Svelte Flow and <div/> callbacks in one place -->
-<SvelteFlow
-  onnodeclick={handleNodeClick}
-  onbeforedelete={handleBeforeDelete}
-  onbeforeconnect={handleBeforeConnect}
-  [...]
-  ondragover={handleDragOver}
-  ondrop={handleDrop}
-  oncontextmenu={handleContextMenu}
-/>
-```
+Big shoutout goes out to the Svelte team for their help during the tubulent era of the Svelte 5 Realease Candidate! Fixes were delivered either within a couple of [hours](https://github.com/sveltejs/svelte/issues/12652) or sometimes in a matter of [minutes](https://github.com/sveltejs/svelte/issues/12302)!?
 
 # Svelte Flow in the wild
 
@@ -185,10 +106,25 @@ I had a great time mingeling with the community at [Svelte Summit](https://svelt
 
 An open-source developer platform and workflow engine using Svelte Flow to view and edit workflows.
 
+<Image
+  src="/img/blog/2025-svelte-release/windmill2.png"
+  alt="A screenshot of Windmill, a workflow engine."
+/>
+
 ## [Sparrow](https://sparrowapp.dev/)
 
 A collaborative API testing workspace utilizing Svelte Flow for vizualizing shape and status of test runs.
 
+<Image
+  src="/img/blog/2025-svelte-release/sparrow.png"
+  alt="A screenshot of Sparrow, a API testing tool."
+/>
+
 ## [Whimsy](https://whimsy.rocks/)
 
 A tiny game engines visual scripting tool is powered by Svelte Flow.
+
+<Image
+  src="/img/blog/2025-svelte-release/whimsy.png"
+  alt="A screenshot of Whyimsy, a game creation engine."
+/>
