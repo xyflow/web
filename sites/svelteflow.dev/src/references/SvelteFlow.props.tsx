@@ -44,7 +44,16 @@ const FIELDS = {
     'onnodepointerleave',
     'onnodecontextmenu',
   ],
-  selectionEvents: ['onselectionchanged', 'onselectionclick', 'onselectioncontextmenu'],
+  selectionEvents: [
+    'onselectionchanged',
+    'onselectionclick',
+    'onselectioncontextmenu',
+    'onselectiondragstart',
+    'onselectiondrag',
+    'onselectiondragstop',
+    'onselectionstart',
+    'onselectionend',
+  ],
   paneEvents: ['onpaneclick', 'onpanecontextmenu', 'onmovestart', 'onmove', 'onmoveend'],
   generalEvents: ['oninit', 'onflowerror', 'ondelete', 'onbeforedelete'],
   edgeEvents: [

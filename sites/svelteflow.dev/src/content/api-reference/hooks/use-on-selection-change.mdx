@@ -1,0 +1,43 @@
+---
+description:
+  'This hook lets you listen for changes to both node and edge selection. As the
+  name implies, the callback you provide will be called whenever the selection of
+  either nodes or edges changes.'
+---
+
+# useOnSelectionChange()
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/hooks/useOnSelectionChange.svelte.ts)
+
+This hook lets you listen for changes to both node and edge selection. As the
+name implies, the callback you provide will be called whenever the selection of
+_either_ nodes or edges changes.
+
+```svelte filename="Component.svelte"
+<script>
+  import { useOnSelectionChange } from '@xyflow/svelte';
+
+  let selectedNodes = $state.raw([]);
+  let selectedEdges = $state.raw([]);
+
+  useOnSelectionChange(({ nodes, edges }) => {
+    selectedNodes = nodes.map((node) => node.id);
+    selectedEdges = edges.map((edge) => edge.id);
+  });
+</script>
+
+<div>
+    <p>Selected nodes: {selectedNodes.join(', ')}</p>
+    <p>Selected edges: {selectedEdges.join(', ')}</p>
+</div>
+```
+
+## Signature
+
+<APIDocs functionName="useOnSelectionChange" />
+
+## Notes
+
+- This hook can only be used in a component that is a child of a
+  [`<SvelteFlowProvider />`](/api-reference/svelte-flow-provider) or a
+  [`<SvelteFlow />`](/api-reference/svelte-flow) component.
