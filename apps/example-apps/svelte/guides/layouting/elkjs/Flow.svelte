@@ -95,9 +95,7 @@
       nodes = [...layoutedElements.nodes];
       edges = [...layoutedElements.edges];
 
-      setTimeout(() => {
-        fitView();
-      }, 0);
+      fitView();
     } catch (error) {
       console.error('Error during layout calculation:', error);
     } finally {
@@ -106,7 +104,7 @@
   }
 </script>
 
-<SvelteFlow bind:nodes bind:edges fitView>
+<SvelteFlow bind:nodes bind:edges fitView minZoom={0.01}>
   <Panel position="top-right">
     <div style="display: flex; gap: 5px;">
       <button disabled={layouting} onclick={() => onLayout('layered')}>

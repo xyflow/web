@@ -49,9 +49,7 @@
     nodes = [...layouted.nodes];
     edges = [...layouted.edges];
 
-    setTimeout(() => {
-      fitView();
-    }, 0);
+    fitView();
   }
 </script>
 
