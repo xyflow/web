@@ -73,10 +73,7 @@ function prepare(
   }
 }
 
-function prepareReactProject(
-  files: Files,
-  dependencies: Record<string, string>,
-) {
+function prepareReactProject(files: Files, dependencies: Record<string, string>) {
   return {
     ...Object.entries(files).reduce((acc, [key, value]) => {
       if (typeof value === 'string') {
@@ -122,10 +119,7 @@ function prepareReactProject(
   };
 }
 
-function prepareSvelteProject(
-  files: Files,
-  dependencies: Record<string, string>,
-) {
+function prepareSvelteProject(files: Files, dependencies: Record<string, string>) {
   return {
     ...Object.entries(files).reduce((acc, [key, value]) => {
       if (typeof value === 'string') {
@@ -146,13 +140,13 @@ function prepareSvelteProject(
       },
       dependencies,
       devDependencies: {
-        '@sveltejs/vite-plugin-svelte': '^2.4.0',
-        '@tsconfig/svelte': '^5.0.0',
-        svelte: '^3.58.0',
-        'svelte-check': '^3.3.0',
-        tslib: '^2.5.0',
-        typescript: '^5.0.0',
-        vite: '^4.3.0',
+        '@sveltejs/vite-plugin-svelte': '^5.0.3',
+        '@tsconfig/svelte': '^5.0.4',
+        svelte: '^5.28.6',
+        'svelte-check': '^4.1.7',
+        tslib: '^2.8.1',
+        typescript: '^5.8.3',
+        vite: '^6.3.5',
       },
     }),
     'vite.config.ts': `import { defineConfig } from 'vite'
