@@ -72,7 +72,7 @@ export type InternalRoute =
   | '/learn/getting-started/building-a-flow'
   | '/learn/getting-started/installation'
   | '/learn/customization/custom-nodes'
-  | '/learn/guides/sub-flows'
+  | '/learn/layouting/sub-flows'
   | '/learn/guides/theming'
   | '/showcase'
   | '/support-us';
