@@ -5,6 +5,7 @@ import { Html } from '@/components/html.client';
 import { generateRootMetadata } from 'xy-shared/server';
 import { Fathom } from 'xy-shared';
 import { Providers } from '@/components/pro/Providers';
+import { getSubscription } from '@/server-actions';
 import './global.css';
 
 export const metadata = generateRootMetadata('React Flow', {
@@ -30,7 +31,7 @@ const RootLayout: FC<{
       <Head color={{ hue: 333, saturation: 80 }} />
       <body>
         <Fathom {...fathomOptions} />
-        <Providers>{children}</Providers>
+        <Providers value={await getSubscription()}>{children}</Providers>
       </body>
     </Html>
   );
