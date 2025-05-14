@@ -1,3 +1,5 @@
+import { FC } from 'react';
+import { Metadata } from 'next';
 import Link from 'next/link';
 import { HeartIcon, BoltIcon } from '@heroicons/react/24/outline';
 import { Button, Section, Stats } from '@xyflow/xy-ui';
@@ -16,9 +18,8 @@ import FlowB from '@/components/flows/flow-b';
 import FlowC from '@/components/flows/flow-c';
 
 import type { InternalRoute } from '@/utils';
-import { FC } from 'react';
-import { Metadata } from 'next';
 import getStaticPropsStats from '@/utils/github-npm-stats';
+import { version } from '@xyflow/svelte/package.json';
 
 export const revalidate = 3600; // 60 * 60
 
@@ -100,7 +101,7 @@ const features = [
 ];
 
 const Page: FC = async () => {
-  const { downloads = 450, version = '0.1.21' } = await getStaticPropsStats();
+  const { downloads = 450 } = await getStaticPropsStats();
 
   return (
     <BaseLayout>
