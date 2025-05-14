@@ -1,6 +1,6 @@
 <script module>
   class BgColor {
-    current = $state('#f7f9fb');
+    current = $state('#F7F9FB');
   }
   export const bgColor = new BgColor();
 </script>
@@ -13,6 +13,7 @@
     Position,
     type Node,
     type Edge,
+    Background,
   } from '@xyflow/svelte';
 
   import ColorSelectorNode from './ColorSelectorNode.svelte';
@@ -76,15 +77,12 @@
 
   let nodes = $state.raw<Node[]>(initialNodes);
   let edges = $state.raw<Edge[]>(initialEdges);
+
+  $inspect(bgColor.current);
 </script>
 
-<SvelteFlow
-  bind:nodes
-  bind:edges
-  {nodeTypes}
-  style="background: {bgColor.current};"
-  fitView
->
+<SvelteFlow bind:nodes bind:edges {nodeTypes} fitView>
+  <Background bgColor={bgColor.current} />
   <Controls />
   <MiniMap />
 </SvelteFlow>

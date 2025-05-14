@@ -13,7 +13,7 @@
   };
 </script>
 
-<SvelteFlow bind:nodes {nodeTypes} bind:edges fitView class="bg-teal-50">
+<SvelteFlow bind:nodes {nodeTypes} bind:edges fitView class="bg-[#f7f9fB]">
   <MiniMap />
   <Controls />
 </SvelteFlow>
