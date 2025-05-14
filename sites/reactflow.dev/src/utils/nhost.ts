@@ -66,3 +66,9 @@ export async function manageAuthSession(request: NextRequest) {
     });
   }
 }
+
+export function prettifyError(
+  error: { message: string } | { message: string }[],
+): string {
+  return 'message' in error ? error.message : error.map((e) => e.message).join('\n');
+}
