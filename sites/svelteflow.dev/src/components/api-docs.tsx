@@ -77,7 +77,7 @@ export const APIDocs: FC<{
   if (componentName) {
     code = `
 import type { ComponentProps } from 'svelte'
-import type { HTMLAttributes, SVGAttributes, SVGPathElement } from 'svelte/elements'
+import type { HTMLAttributes, SVGAttributes, SVGPathElement, HTMLButtonAttributes } from 'svelte/elements'
 import type { ${componentName} } from '@xyflow/svelte'
 type MyProps = ComponentProps<typeof ${componentName}>`;
 
