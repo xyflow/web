@@ -1,9 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { gql } from '@apollo/client';
-import { useAuthQuery } from '@nhost/react-apollo';
-import { useUserEmail, useUserId } from '@nhost/react';
+import { useState, useEffect, FC, useTransition, useRef } from 'react';
 import {
   Button,
   Card,
@@ -23,22 +20,12 @@ import {
   AlertDialogTitle,
   CardTitle,
 } from '@xyflow/xy-ui';
-import { callNhostFunction } from '@/server-actions';
+import { callNhostFunction, revalidatePathFromClient } from '@/server-actions';
 import { PlanLabel } from '@/components/pro/SubscriptionStatus';
 import Loader from '@/components/pro/Loader';
 import { Currency } from '@/types';
 import { getCurrencySign } from '@/utils/pro-utils';
-
-const GET_TEAM_MEMBERS = gql`
-  query GetTeamMembers($userId: uuid) {
-    team_subscriptions(
-      where: { created_by: { _eq: $userId } }
-      order_by: { created_at: asc }
-    ) {
-      email
-    }
-  }
-`;
+import { User } from '@nhost/nhost-js';
 
 type TeamMember = {
   email: string;
@@ -50,19 +37,18 @@ type TeamStatus = {
   billingPeriod: 'month' | 'year';
 };
 
-export default function ManageTeamCard() {
-  const userId = useUserId();
+const ManageTeamCard: FC<{ user: User; teamSubscriptions: TeamMember[] }> = ({
+  user,
+  teamSubscriptions,
+}) => {
   const [status, setStatus] = useState<TeamStatus | null>(null);
-  const [confirmPayment, setConfirmPayment] = useState<boolean>(false);
+  const [confirmPayment, setConfirmPayment] = useState(false);
   const [confirmDeleteMember, setConfirmDeleteMember] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [isDeleteLoading, setIsDeleteLoading] = useState<boolean>(false);
+  const [isLoading, startTransition] = useTransition();
+  const [isDeleteLoading, startDeleteTransition] = useTransition();
   const [errorMessage, setErrorMessage] = useState<null | string>(null);
-  const [memberEmail, setMemberEmail] = useState<string>('');
-  const { data, refetch } = useAuthQuery(GET_TEAM_MEMBERS, {
-    variables: { userId },
-  });
-  const userEmail = useUserEmail();
+
+  const inputRef = useRef<HTMLInputElement>(null!);
 
   useEffect(() => {
     const updateStatus = async () => {
@@ -78,57 +64,48 @@ export default function ManageTeamCard() {
     updateStatus();
   }, []);
 
-  const removeMember = async (email: string) => {
-    setErrorMessage(null);
-    setIsDeleteLoading(true);
-    const { error } = await callNhostFunction('/team/remove', { email });
+  const removeMember = (email: string) => {
+    startDeleteTransition(async () => {
+      setErrorMessage(null);
+      const { error } = await callNhostFunction('/team/remove', { email });
 
-    if (error) {
-      setErrorMessage(
-        typeof error.message === 'string'
-          ? error.message
-          : 'Something went wrong. Please contact us.',
-      );
-    }
-
-    await refetch();
-    setIsDeleteLoading(false);
-    setConfirmDeleteMember(null);
+      if (error) {
+        setErrorMessage(
+          typeof error.message === 'string'
+            ? error.message
+            : 'Something went wrong. Please contact us.',
+        );
+      }
+      revalidatePathFromClient('/dashboard/team');
+      setConfirmDeleteMember(null);
+    });
   };
 
-  const addMember = async ({
-    paymentConfirmed,
-  }: {
-    paymentConfirmed: boolean;
-  }) => {
-    setIsLoading(true);
-    setErrorMessage(null);
+  const addMember = ({ paymentConfirmed }: { paymentConfirmed: boolean }) => {
+    startTransition(async () => {
+      const memberEmail = inputRef.current.value;
+      setErrorMessage(null);
+      const response = await callNhostFunction('/team/invite', {
+        email: memberEmail,
+        paymentConfirmed,
+      });
 
-    const response = await callNhostFunction('/team/invite', {
-      email: memberEmail,
-      paymentConfirmed,
-    });
-
-    if (!response || response.error) {
-      setIsLoading(false);
-      setErrorMessage(
-        typeof response.message === 'string'
-          ? response.message
-          : 'Something went wrong. Please contact us.',
-      );
+      if (!response || response.error) {
+        setErrorMessage(
+          typeof response.message === 'string'
+            ? response.message
+            : 'Something went wrong. Please contact us.',
+        );
+        setConfirmPayment(false);
+        return;
+      }
+      if (response.needsPaymentConfirmation) {
+        setConfirmPayment(true);
+        return;
+      }
+      revalidatePathFromClient('/dashboard/team');
       setConfirmPayment(false);
-      return;
-    }
-
-    if (response.needsPaymentConfirmation) {
-      setConfirmPayment(true);
-      setIsLoading(false);
-      return;
-    }
-
-    await refetch();
-    setIsLoading(false);
-    setConfirmPayment(false);
+    });
   };
 
   const onAdd = async (evt: React.SyntheticEvent<HTMLFormElement>) => {
@@ -139,10 +116,7 @@ export default function ManageTeamCard() {
   const currencySign = getCurrencySign(status?.currency);
   const monthlySeatPrice = status?.currency === Currency.INR ? 2000 : 20;
   const includedSeats = status?.includedSeats ?? 0;
-  const remainingSeats = Math.max(
-    0,
-    includedSeats - (data?.team_subscriptions?.length ?? 0),
-  );
+  const remainingSeats = Math.max(0, includedSeats - teamSubscriptions.length);
 
   if (!status) {
     return (
@@ -157,9 +131,8 @@ export default function ManageTeamCard() {
       <CardHeader>
         <CardTitle>Team Members</CardTitle>
         <CardDescription className="text-black">
-          You have {remainingSeats} remaining{' '}
-          {remainingSeats === 1 ? 'seat' : 'seats'} included in your{' '}
-          <PlanLabel /> plan.
+          You have {remainingSeats} remaining {remainingSeats === 1 ? 'seat' : 'seats'}{' '}
+          included in your <PlanLabel /> plan.
           {remainingSeats === 0 && (
             <span> Additional seats will be charged based on your usage.</span>
           )}
@@ -171,13 +144,13 @@ export default function ManageTeamCard() {
                 <AlertDialogTitle>Add a new team member</AlertDialogTitle>
                 <AlertDialogDescription>
                   <p>
-                    By clicking Confirm Payment, you will add one additional
-                    seat to your pro plan at the cost of {currencySign}
+                    By clicking Confirm Payment, you will add one additional seat to your
+                    pro plan at the cost of {currencySign}
                     {monthlySeatPrice} per month.
                   </p>{' '}
                   <p className="mt-2">
-                    You will only pay for the time that the seat is listed in
-                    your team and the amount will be added to your next invoice.
+                    You will only pay for the time that the seat is listed in your team
+                    and the amount will be added to your next invoice.
                   </p>
                   {/* Adding a new seat will charge {currencySign} */}
                   {/* {seatPrice} per {status.billingPeriod} with your next invoice. Please confirm to continue. */}
@@ -204,9 +177,8 @@ export default function ManageTeamCard() {
               <AlertDialogHeader>
                 <AlertDialogTitle>Are you sure?</AlertDialogTitle>
                 <AlertDialogDescription>
-                  This will remove <strong>{confirmDeleteMember}</strong> from
-                  your team. They will no longer have access to your
-                  subscription features.
+                  This will remove <strong>{confirmDeleteMember}</strong> from your team.
+                  They will no longer have access to your subscription features.
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>
@@ -228,9 +200,9 @@ export default function ManageTeamCard() {
 
       <div className="border-t">
         <CardContent className="py-4 flex items-center justify-between border-b">
-          <div className="font-semibold">{userEmail}</div>
+          <div className="font-semibold">{user.email}</div>
         </CardContent>
-        {data?.team_subscriptions?.map((member: TeamMember, i: number) => (
+        {teamSubscriptions.map((member, i) => (
           <CardContent
             className="py-4 flex items-center justify-between border-b"
             key={member.email}
@@ -260,17 +232,14 @@ export default function ManageTeamCard() {
               variant="square"
               className="max-w-xs"
               type="email"
-              value={memberEmail}
-              onChange={(evt) => setMemberEmail(evt.target.value)}
+              ref={inputRef}
               required
               id="email"
               placeholder="Member Email"
               disabled={isLoading}
             />
             {errorMessage && (
-              <InputLabel className="text-red-600 mt-1">
-                {errorMessage}
-              </InputLabel>
+              <InputLabel className="text-red-600 mt-1">{errorMessage}</InputLabel>
             )}
           </div>
           <Button
@@ -285,4 +254,6 @@ export default function ManageTeamCard() {
       </CardFooter>
     </Card>
   );
-}
+};
+
+export default ManageTeamCard;
