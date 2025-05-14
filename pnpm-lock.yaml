@@ -371,8 +371,8 @@ importers:
         specifier: ^0.27.1
         version: 0.27.3
       '@xyflow/react':
-        specifier: ^12.6.1
-        version: 12.6.1(@types/react@18.3.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^12.6.2
+        version: 12.6.2(@types/react@18.3.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@xyflow/xy-ui':
         specifier: workspace:*
         version: link:../xy-ui
@@ -2871,6 +2871,12 @@ packages:
 
   '@xyflow/react@12.6.1':
     resolution: {integrity: sha512-DQs1LOaxSIdsoxsfZSLBoID93eQvfBXDraBwalpKaVcWTueWfjnW9mQ7jviwC3zPLwyx/ioPh+C45/Ez7+CHUQ==}
+    peerDependencies:
+      react: '>=17'
+      react-dom: '>=17'
+
+  '@xyflow/react@12.6.2':
+    resolution: {integrity: sha512-vZBViza/W/70zaZj6T34tPUxhmUGLR5QvPCvxVtJ1cbcYWD2ZjvIvP94bwEwD+WLAmk1UjtqOutjNSLiBH5ddQ==}
     peerDependencies:
       react: '>=17'
       react-dom: '>=17'
@@ -9424,6 +9430,17 @@ snapshots:
   '@xyflow/react@12.6.1(@types/react@18.3.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@xyflow/system': 0.0.58
+      classcat: 5.0.5
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+      zustand: 4.5.6(@types/react@18.3.20)(react@18.3.1)
+    transitivePeerDependencies:
+      - '@types/react'
+      - immer
+
+  '@xyflow/react@12.6.2(@types/react@18.3.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      '@xyflow/system': 0.0.59
       classcat: 5.0.5
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
