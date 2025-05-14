@@ -1,37 +1,31 @@
 'use server';
 
 import { gql } from '@apollo/client';
-import { getNhost } from '@/utils/nhost';
+import { getNhost, prettifyError } from '@/utils/nhost';
 import { SubscriptionPlan } from '@/types';
+
+const GET_SUBSCRIPTION = gql`
+  query GetSubscription($userId: uuid) {
+    user_subscriptions {
+      subscription_plan_id
+    }
+    team_subscriptions(where: { user_id: { _eq: $userId } }) {
+      subscription_plan_id
+    }
+  }
+`;
 
 export async function getSubscription(): Promise<{
   plan: SubscriptionPlan;
   teamPlan: SubscriptionPlan;
 }> {
   const nhost = await getNhost();
+  const userId = nhost.auth.getUser()!.id!;
 
-  const payload = {
-    userId: nhost.auth.getUser()!.id!,
-  };
-
-  const { data, error } = await nhost.graphql.request(
-    gql`
-      query GetSubscription($userId: uuid) {
-        user_subscriptions {
-          subscription_plan_id
-        }
-        team_subscriptions(where: { user_id: { _eq: $userId } }) {
-          subscription_plan_id
-        }
-      }
-    `,
-    payload,
-  );
+  const { data, error } = await nhost.graphql.request(GET_SUBSCRIPTION, { userId });
 
   if (error) {
-    const msg =
-      'message' in error ? error.message : error.map((e) => e.message).join('\n');
-    throw new Error(msg);
+    throw new Error(prettifyError(error));
   }
 
   const plan =
