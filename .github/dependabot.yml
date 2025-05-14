@@ -4,29 +4,14 @@
 version: 2
 updates:
   - package-ecosystem: 'npm'
-    directory: '/packages/xy-shared'
+    directories:
+      - '/packages/xy-shared'
+      - '/sites/reactflow.dev'
+      - '/sites/xyflow.com'
     schedule:
       interval: 'daily'
     allow:
       - dependency-name: '@xyflow/react'
-    versioning-strategy: increase
-
-  - package-ecosystem: 'npm'
-    directory: '/sites/reactflow.dev'
-    schedule:
-      interval: 'daily'
-    allow:
-      - dependency-name: '@xyflow/react'
-    versioning-strategy: increase
-
-  - package-ecosystem: 'npm'
-    directory: '/sites/xyflow.com'
-    schedule:
-      interval: 'daily'
-    allow:
-      - dependency-name: '@xyflow/react'
-    versioning-strategy: increase
-
   - package-ecosystem: 'npm'
     directory: '/sites/svelteflow.dev'
     schedule:
@@ -34,4 +19,3 @@ updates:
     allow:
       - dependency-name: '@xyflow/svelte'
       - dependency-name: '@xyflow/react'
-    versioning-strategy: increase
