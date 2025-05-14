@@ -1,6 +1,11 @@
 <script lang="ts">
   import { toPng } from 'html-to-image';
-  import { Panel, getNodesBounds, getViewportForBounds, useNodes } from '@xyflow/svelte';
+  import {
+    Panel,
+    getNodesBounds,
+    getViewportForBounds,
+    useNodes,
+  } from '@xyflow/svelte';
 
   const nodes = useNodes();
 
@@ -8,10 +13,19 @@
   const imageHeight = 768;
 
   function handleClick() {
-    const nodesBounds = getNodesBounds($nodes);
-    const viewport = getViewportForBounds(nodesBounds, imageWidth, imageHeight, 0.5, 2.0, 0.2);
+    const nodesBounds = getNodesBounds(nodes.current);
+    const viewport = getViewportForBounds(
+      nodesBounds,
+      imageWidth,
+      imageHeight,
+      0.5,
+      2.0,
+      0.2,
+    );
 
-    const viewportDomNode = document.querySelector<HTMLElement>('.svelte-flow__viewport')!;
+    const viewportDomNode = document.querySelector<HTMLElement>(
+      '.svelte-flow__viewport',
+    )!;
 
     if (viewport) {
       toPng(viewportDomNode, {
@@ -21,8 +35,8 @@
         style: {
           width: `${imageWidth}px`,
           height: `${imageHeight}px`,
-          transform: `translate(${viewport.x}px, ${viewport.y}px) scale(${viewport.zoom})`
-        }
+          transform: `translate(${viewport.x}px, ${viewport.y}px) scale(${viewport.zoom})`,
+        },
       }).then((dataUrl) => {
         const link = document.createElement('a');
         link.download = 'svelte-flow.png';

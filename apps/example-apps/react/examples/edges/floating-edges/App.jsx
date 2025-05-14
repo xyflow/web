@@ -10,7 +10,6 @@ import {
 
 import '@xyflow/react/dist/style.css';
 
-
 import FloatingEdge from './FloatingEdge';
 import FloatingConnectionLine from './FloatingConnectionLine';
 import { initialElements } from './initialElements';
@@ -50,7 +49,6 @@ const NodeAsHandleFlow = () => {
         fitView
         edgeTypes={edgeTypes}
         connectionLineComponent={FloatingConnectionLine}
-        style={{ backgroundColor: "#F7F9FB" }}
       >
         <Background />
       </ReactFlow>

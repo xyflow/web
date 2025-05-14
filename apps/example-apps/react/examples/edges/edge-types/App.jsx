@@ -10,7 +10,6 @@ import {
 
 import '@xyflow/react/dist/style.css';
 
-
 const initialNodes = [
   {
     id: '1',
@@ -56,10 +55,10 @@ const initialNodes = [
 
 const initialEdges = [
   {
+    id: '1',
     type: 'straight',
     source: '1',
     target: '2',
-    id: '1',
     label: 'straight',
   },
   {
@@ -102,11 +101,10 @@ const EdgeTypesFlow = () => {
       onConnect={onConnect}
       fitView
       minZoom={0.2}
-      style={{ backgroundColor: "#F7F9FB" }}
-      >
-        <Controls />
-        <Background />
-      </ReactFlow>
+    >
+      <Controls />
+      <Background />
+    </ReactFlow>
   );
 };
 

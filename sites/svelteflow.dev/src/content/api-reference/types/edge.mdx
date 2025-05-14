@@ -1,44 +1,13 @@
 ---
 title: Edge
-description:
-  An Edge is the complete description with everything Svelte Flow needs to know
+description: An Edge is the complete description with everything Svelte Flow needs to know
   in order to render it.
 ---
 
-import { PropsTable } from '@/components/props-table';
-import {
-  defaultEdgeFields,
-  smoothStepEdgeTypeFields,
-  bezierEdgeTypeFields,
-} from '@/references/types/Edge.fields.ts';
-
-# Edge&lt;T>
+# Edge\<EdgeData, EdgeType>
 
 An `Edge` is the complete description with everything Svelte Flow needs to know in order to render it.
 
-```ts
-export type Edge<T> =
-  | DefaultEdge<T>
-  | SmoothStepEdgeType<T>
-  | BezierEdgeType<T>;
-```
+## Fields
 
-## Variants
-
-### DefaultEdge&lt;T>
-
-<PropsTable {...defaultEdgeFields} />
-
-### SmoothStepEdgeType&lt;T>
-
-The `SmoothStepEdgeType` variant has all the same fields as the `DefaultEdge`
-variant, but it also has the following additional fields:
-
-<PropsTable {...smoothStepEdgeTypeFields} />
-
-### BezierEdgeType&lt;T>
-
-The `BezierEdgeType` variant has all the same fields as the `DefaultEdge` variant,
-but it also has the following additional fields:
-
-<PropsTable {...bezierEdgeTypeFields} />
+<APIDocs typeName="Edge" />

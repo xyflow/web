@@ -12,7 +12,6 @@ import {
 import Sidebar from './Sidebar';
 import '@xyflow/react/dist/style.css';
 
-
 const initialNodes = [
   {
     id: 'provider-1',
@@ -54,7 +53,6 @@ const ProviderFlow = () => {
             onEdgesChange={onEdgesChange}
             onConnect={onConnect}
             fitView
-            style={{ backgroundColor: "#F7F9FB" }}
           >
             <Controls />
             <Background />

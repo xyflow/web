@@ -1,22 +1,15 @@
 import { fetchJSON } from 'xy-shared';
 
 export default async function getStaticProps() {
-  const { stargazers_count: stars = 0 } = await fetchJSON(
-    process.env.GITHUB_API_URL,
-  );
+  const { stargazers_count: stars = 0 } = await fetchJSON(process.env.GITHUB_API_URL);
   const { downloads = 0 } = await fetchJSON(process.env.NPM_SVELTE_FLOW);
 
-  const { version } = await fetchJSON(process.env.NPM_SVELTE_FLOW_VERSION);
-
-  if (!downloads || !stars || !version) {
-    console.warn(
-      'could not fetch downloads, stars or version. please try again.',
-    );
+  if (!downloads || !stars) {
+    console.warn('could not fetch downloads, stars or version. please try again.');
   }
 
   return {
     stars,
     downloads,
-    version,
   };
 }

@@ -1,11 +1,12 @@
 ---
 title: The SvelteFlowProvider component
-description:
-  The SvelteFlowProvider component wraps its child nodes with a Svelte context
+description: The SvelteFlowProvider component wraps its child nodes with a Svelte context
   that makes it possible to access a flow's internal state outside of the SvelteFlow
   component.
 sidebarTitle: <SvelteFlowProvider />
 ---
+
+import { Callout } from 'nextra/components';
 
 # \<SvelteFlowProvider />
 
@@ -18,13 +19,16 @@ provide rely on this component to work.
 
 ```svelte filename="App.svelte"
 <script>
-import { SvelteFlow, SvelteFlowProvider } from '@xyflow/svelte';
+  import { SvelteFlow, SvelteFlowProvider } from '@xyflow/svelte';
+  import '@xyflow/svelte/dist/style.css';
 
-import Sidebar from './Sidebar.svelte';
+  import Sidebar from './Sidebar.svelte';
+
+  /* ... */
 </script>
 
 <SvelteFlowProvider>
-  <SvelteFlow nodes={...} edges={...} />
+  <SvelteFlow bind:nodes bind:edges />
   <Sidebar />
 </SvelteFlowProvider>
 ```
@@ -33,13 +37,13 @@ import Sidebar from './Sidebar.svelte';
 <script>
   import { SvelteFlow, SvelteFlowProvider } from '@xyflow/svelte'
 
-  // This hook will only work if the component it's used in is a child of a
-  // <SvelteFlowProvider />.
+  // This hook will only work if the component it's used in
+  // is a child of <SvelteFlowProvider />
   const nodes = useNodes()
 </script>
 
 <aside>
-  {#each $nodes as node (node.id)}
+  {#each nodes.current as node (node.id)}
     <div key={node.id}>
       Node {node.id} -
         x: {node.position.x.toFixed(2)},
@@ -48,6 +52,12 @@ import Sidebar from './Sidebar.svelte';
   {/each}
 </aside>
 ```
+
+<Callout type="info">
+  The state provided by `<SvelteFlowProvider />` is first initialized with default values.
+  Only after the `<SvelteFlow />` component initializes, will the state be replaced with
+  correct values. However, you can expect this to happen before the first render.
+</Callout>
 
 ## Notes
 

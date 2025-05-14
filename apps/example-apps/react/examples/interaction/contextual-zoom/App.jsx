@@ -11,7 +11,6 @@ import {
 
 import '@xyflow/react/dist/style.css';
 
-
 import ZoomNode from './ZoomNode';
 
 const snapGrid = [20, 20];
@@ -80,8 +79,7 @@ const ContextualZoomFlow = () => {
       defaultViewport={defaultViewport}
       attributionPosition="top-right"
       fitView
-      style={{ backgroundColor: "#F7F9FB" }}
-      >
+    >
       <Background />
       <MiniMap />
       <Controls />

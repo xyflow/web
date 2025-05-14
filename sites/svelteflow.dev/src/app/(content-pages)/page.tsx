@@ -1,3 +1,5 @@
+import { FC } from 'react';
+import { Metadata } from 'next';
 import Link from 'next/link';
 import { HeartIcon, BoltIcon } from '@heroicons/react/24/outline';
 import { Button, Section, Stats } from '@xyflow/xy-ui';
@@ -16,9 +18,8 @@ import FlowB from '@/components/flows/flow-b';
 import FlowC from '@/components/flows/flow-c';
 
 import type { InternalRoute } from '@/utils';
-import { FC } from 'react';
-import { Metadata } from 'next';
 import getStaticPropsStats from '@/utils/github-npm-stats';
+import { version } from '@xyflow/svelte/package.json';
 
 export const revalidate = 3600; // 60 * 60
 
@@ -87,7 +88,7 @@ const features = [
       </>
     ),
     text: 'We play nice with Tailwind and good old CSS. Svelte Flow nodes are just Svelte components. Create custom nodes to have full control with interactive components.',
-    route: '/learn/guides/custom-nodes' satisfies InternalRoute,
+    route: '/learn/customization/custom-nodes' satisfies InternalRoute,
     linkLabel: 'Custom nodes guide',
     flowComponent: <FlowB />,
   },
@@ -100,14 +101,14 @@ const features = [
 ];
 
 const Page: FC = async () => {
-  const { downloads = 450, version = '0.1.21' } = await getStaticPropsStats();
+  const { downloads = 450 } = await getStaticPropsStats();
 
   return (
     <BaseLayout>
       <HeroFlow
         title="Svelte Flow"
         initialColor="#ff4000"
-        subtitle="A customizable Svelte component for building node-based editors and interactive diagrams by the creators of React Flow"
+        subtitle="A customizable Svelte component for building node-based editors and interactive diagrams"
         action={
           <div className="flex">
             <Button asChild className="mr-3" size="lg">
@@ -134,10 +135,7 @@ const Page: FC = async () => {
             },
             {
               label: 'Weekly Installs',
-              value:
-                downloads >= 1000
-                  ? `${(downloads / 1000).toFixed(0)}k`
-                  : downloads,
+              value: downloads >= 1000 ? `${(downloads / 1000).toFixed(0)}k` : downloads,
             },
             { label: 'License', value: 'MIT' },
           ]}

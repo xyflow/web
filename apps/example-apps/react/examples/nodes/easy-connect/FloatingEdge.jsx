@@ -1,4 +1,4 @@
-import { getStraightPath, useInternalNode } from '@xyflow/react';
+import { BaseEdge, getStraightPath, useInternalNode } from '@xyflow/react';
 
 import { getEdgeParams } from './utils.js';
 
@@ -12,7 +12,7 @@ function FloatingEdge({ id, source, target, markerEnd, style }) {
 
   const { sx, sy, tx, ty } = getEdgeParams(sourceNode, targetNode);
 
-  const [edgePath] = getStraightPath({
+  const [path] = getStraightPath({
     sourceX: sx,
     sourceY: sy,
     targetX: tx,
@@ -20,10 +20,10 @@ function FloatingEdge({ id, source, target, markerEnd, style }) {
   });
 
   return (
-    <path
+    <BaseEdge
       id={id}
       className="react-flow__edge-path"
-      d={edgePath}
+      path={path}
       markerEnd={markerEnd}
       style={style}
     />

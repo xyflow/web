@@ -1,6 +1,5 @@
 import {
   ReactFlow,
-  MiniMap,
   Background,
   BackgroundVariant,
   Controls,
@@ -11,7 +10,6 @@ import ResizableNodeSelected from './ResizableNodeSelected';
 import CustomResizerNode from './CustomResizerNode';
 
 import '@xyflow/react/dist/style.css';
-
 
 const nodeTypes = {
   ResizableNode,
@@ -30,7 +28,7 @@ const initialNodes = [
     id: '2',
     type: 'ResizableNodeSelected',
     data: { label: 'NodeResizer when selected' },
-    position: { x: 100, y: 300 },
+    position: { x: -100, y: 150 },
   },
   {
     id: '3',
@@ -54,10 +52,9 @@ export default function NodeToolbarExample() {
       maxZoom={4}
       fitView
       nodeTypes={nodeTypes}
-      style={{ backgroundColor: "#F7F9FB" }}
+      fitViewOptions={{ padding: 0.5 }}
     >
       <Background variant={BackgroundVariant.Dots} />
-      <MiniMap />
       <Controls />
     </ReactFlow>
   );
