@@ -15,15 +15,15 @@ export const NextraLayout: FC<{
   return (
     <Layout
       banner={
-        <Banner storageKey="svelte-flow-1">
+        <Banner storageKey="svelte-flow-stable">
           <a
             className="hover:underline x:focus-visible:nextra-focus"
-            href="https://next.svelteflow.dev"
+            href="https://xyflow.com/blog/svelte-flow-release"
             rel="noreferrer"
             target="_blank"
           >
-            📣 We just released Svelte Flow 1.0 Alpha — try it out and give us your
-            feedback!
+            ✨ Svelte Flow 1.0 is here! Rewritten for Svelte 5 with many new features and
+            improvements.
           </a>
         </Banner>
       }
