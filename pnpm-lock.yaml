@@ -620,8 +620,8 @@ importers:
         specifier: ^4.4.0
         version: 4.4.0(react@18.3.1)
       '@xyflow/react':
-        specifier: 12.6.0
-        version: 12.6.0(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: 12.6.1
+        version: 12.6.1(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@xyflow/svelte':
         specifier: ^0.1.38
         version: 0.1.38(svelte@5.28.1)
