@@ -1,5 +1,5 @@
 <script>
-  import { SvelteFlow, Background, Panel, useStore } from '@xyflow/svelte';
+  import { SvelteFlow, Background, Panel, useSvelteFlow } from '@xyflow/svelte';
   import '@xyflow/svelte/dist/style.css';
   import Dagre from '@dagrejs/dagre';
   import { initialNodes, initialEdges } from './nodes-edges.js';
@@ -7,7 +7,7 @@
   let nodes = $state.raw([...initialNodes]);
   let edges = $state.raw([...initialEdges]);
 
-  const { fitView } = $derived(useStore());
+  const { fitView } = useSvelteFlow();
 
   function getLayoutedElements(nodes, edges, options) {
     const g = new Dagre.graphlib.Graph().setDefaultEdgeLabel(() => ({}));

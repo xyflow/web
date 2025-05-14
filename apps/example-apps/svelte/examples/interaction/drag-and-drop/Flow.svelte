@@ -50,7 +50,7 @@
     },
   ]);
 
-  const { screenToFlowPosition } = $derived(useSvelteFlow());
+  const { screenToFlowPosition } = useSvelteFlow();
 
   const type = useDnD();
 
@@ -87,13 +87,7 @@
 </script>
 
 <main>
-  <SvelteFlow
-    bind:nodes
-    bind:edges
-    fitView
-    ondragover={onDragOver}
-    ondrop={onDrop}
-  >
+  <SvelteFlow bind:nodes bind:edges fitView ondragover={onDragOver} ondrop={onDrop}>
     <Controls />
     <Background variant={BackgroundVariant.Dots} />
     <MiniMap />

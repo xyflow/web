@@ -1,5 +1,5 @@
 <script>
-  import { SvelteFlow, Background, Panel, useStore } from '@xyflow/svelte';
+  import { SvelteFlow, Background, Panel, useSvelteFlow } from '@xyflow/svelte';
   import { stratify, tree } from 'd3-hierarchy';
   import { initialNodes, initialEdges } from './nodes-edges.js';
 
@@ -8,7 +8,7 @@
   let nodes = $state.raw([...initialNodes]);
   let edges = $state.raw([...initialEdges]);
 
-  const { fitView } = $derived(useStore());
+  const { fitView } = useSvelteFlow();
 
   const g = tree();
 

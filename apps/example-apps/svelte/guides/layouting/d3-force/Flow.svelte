@@ -14,7 +14,7 @@
   let initialized = $state.raw(false);
   let draggingNode = $state.raw(null);
 
-  const { fitView } = $derived(useSvelteFlow());
+  const { fitView } = useSvelteFlow();
 
   onMount(() => {
     // Set up the force simulation

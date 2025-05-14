@@ -159,38 +159,6 @@ function updateNodes() {
 }
 ```
 
-### useSvelteFlow
-
-`useSvelteFlow` provides access functions that operate on the internal state. When using the hook inside descendants of the `<SvelteFlow />` component (probably custom nodes/edges), apart from changes to some of the functions it exports there is nothing you have to change.
-
-```js
-// CustomNode.svelte
-
-const { updateNode, screenToFlowPosition } = useSvelteFlow(); //still works
-```
-
-<Callout>
-  You have to use `$derived(useSvelteFlow());` if you are using the hook outside the main
-  `<SvelteFlow />` component via the [ `<SvelteFlowProvider />`
-  ](/api-reference/svelte-flow-provider).
-</Callout>
-
-**Old API**
-
-```js
-// Sidebar.svelte
-
-const { addNode, deleteNodes, fitView } = useSvelteFlow();
-```
-
-**New API**
-
-```js
-// Sidebar.svelte
-
-let { addNode, deleteNodes, fitView } = $derived(useSvelteFlow());
-```
-
 ### Binding the viewport
 
 Binding the viewport now works natively in Svelte 5. You can either access the internal viewport or bind your very own viewport object to be used instead.

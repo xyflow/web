@@ -52,8 +52,8 @@ importers:
         specifier: ^12.6.0
         version: 12.6.0(@types/react@18.3.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@xyflow/svelte':
-        specifier: 1.0.0-next.14
-        version: 1.0.0-next.14(svelte@5.28.2)
+        specifier: 1.0.0-next.15
+        version: 1.0.0-next.15(svelte@5.28.2)
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -623,8 +623,8 @@ importers:
         specifier: 12.6.0
         version: 12.6.0(@types/react@18.3.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@xyflow/svelte':
-        specifier: 1.0.0-next.14
-        version: 1.0.0-next.14(svelte@5.28.2)
+        specifier: 1.0.0-next.15
+        version: 1.0.0-next.15(svelte@5.28.2)
       '@xyflow/xy-ui':
         specifier: workspace:*
         version: link:../../packages/xy-ui
@@ -2869,8 +2869,8 @@ packages:
       react: '>=17'
       react-dom: '>=17'
 
-  '@xyflow/svelte@1.0.0-next.14':
-    resolution: {integrity: sha512-C7qBBdHFrKvMif/oTOGdIFC5jP6shtplJky7HFdD8cFM7LZ1M6Hy9Udm0d+2wH/V8g7//Gw99MgC6jLg0JqWDA==}
+  '@xyflow/svelte@1.0.0-next.15':
+    resolution: {integrity: sha512-ZUIl/MRzV4tvcu2O/glgBVcM6FDidXQCuzkypbi0rtGAD9Y4LXdGecyu6MZ3MlhflpeCgpohqCDzJOehXPCbug==}
     peerDependencies:
       svelte: ^5.25.0
 
@@ -9412,7 +9412,7 @@ snapshots:
       - '@types/react'
       - immer
 
-  '@xyflow/svelte@1.0.0-next.14(svelte@5.28.2)':
+  '@xyflow/svelte@1.0.0-next.15(svelte@5.28.2)':
     dependencies:
       '@svelte-put/shortcut': 4.1.0(svelte@5.28.2)
       '@xyflow/system': 0.0.55

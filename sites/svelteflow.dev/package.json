@@ -17,7 +17,7 @@
     "@heroicons/react": "^2.2.0",
     "@typeform/embed-react": "^4.4.0",
     "@xyflow/react": "12.6.0",
-    "@xyflow/svelte": "1.0.0-next.14",
+    "@xyflow/svelte": "1.0.0-next.15",
     "@xyflow/xy-ui": "workspace:*",
     "fast-xml-parser": "^5.2.1",
     "next": "^15.3.1",

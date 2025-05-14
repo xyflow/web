@@ -10,7 +10,7 @@
   let layouting = $state.raw(false);
   let elk;
 
-  const { fitView } = $derived(useSvelteFlow());
+  const { fitView } = useSvelteFlow();
 
   onMount(() => {
     // Initialize ELK

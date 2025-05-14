@@ -18,7 +18,7 @@
   let nodes = $state.raw<Node[]>([]);
   let edges = $state.raw<Edge[]>([]);
 
-  const { fitView } = $derived(useSvelteFlow());
+  const { fitView } = useSvelteFlow();
 
   const elk = new ELK();
 

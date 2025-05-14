@@ -15,7 +15,7 @@
   let nodes = $state.raw<Node[]>(initialNodes);
   let edges = $state.raw<Edge[]>(initialEdges);
 
-  const { getIntersectingNodes } = $derived(useSvelteFlow());
+  const { getIntersectingNodes } = useSvelteFlow();
 
   function onNodeDrag({ targetNode }) {
     const intersections = getIntersectingNodes(targetNode).map((n) => n.id);
