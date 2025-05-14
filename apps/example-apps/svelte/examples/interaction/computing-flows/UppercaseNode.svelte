@@ -21,7 +21,7 @@
 
   const connections = useNodeConnections();
 
-  let nodeData = $derived(useNodesData(connections.current[0]?.source));
+  let nodeData = useNodesData(connections.current[0]?.source);
   let textNodeData = $derived(
     isTextNode(nodeData.current) ? nodeData.current.data : null,
   );
