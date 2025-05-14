@@ -1,13 +1,12 @@
-import { FC, ReactNode, Suspense } from 'react';
-import { PageLoader } from '@/components/pro/Loader';
+import { FC, ReactNode } from 'react';
 import { getNhost } from '@/utils/nhost';
 import { redirect } from 'next/navigation';
 
 const Layout: FC<{ children: ReactNode }> = async ({ children }) => {
   const nhost = await getNhost();
-  const isAuthenticated = nhost.auth.isAuthenticated();
+  const session = nhost.auth.getSession()
 
-  if (isAuthenticated) {
+  if (session) {
     redirect('/');
   }
 
