@@ -3,19 +3,13 @@
   import '@xyflow/svelte/dist/style.css';
   import ELK from 'elkjs/lib/elk.bundled.js';
   import { initialNodes, initialEdges } from './nodes-edges.js';
-  import { onMount } from 'svelte';
 
   let nodes = $state.raw([...initialNodes]);
   let edges = $state.raw([...initialEdges]);
   let layouting = $state.raw(false);
-  let elk;
+  const elk = new ELK();
 
   const { fitView } = useSvelteFlow();
-
-  onMount(() => {
-    // Initialize ELK
-    elk = new ELK();
-  });
 
   async function getLayoutedElements(nodes, edges, options) {
     if (!elk) return { nodes, edges };
