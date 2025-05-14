@@ -6,11 +6,10 @@ import {
   addEdge,
   Handle,
   Position,
-  Background
+  Background,
 } from '@xyflow/react';
 
 import '@xyflow/react/dist/style.css';
-
 
 const initialNodes = [
   { id: '0', type: 'custominput', position: { x: 0, y: 150 } },
@@ -68,10 +67,9 @@ const ValidationFlow = () => {
       onConnectEnd={onConnectEnd}
       fitView
       attributionPosition="bottom-left"
-      style={{ backgroundColor: "#F7F9FB" }}
-      >
-        <Background />
-      </ReactFlow>
+    >
+      <Background />
+    </ReactFlow>
   );
 };
 

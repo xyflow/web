@@ -1,0 +1,104 @@
+---
+description: Learn how to create and implement custom nodes in Svelte Flow. This guide covers node component creation, handle management, positioning, and utility classes for building interactive and flexible flow diagrams.
+---
+
+import { RemoteCodeViewer } from 'xy-shared/server';
+import { Callout } from 'nextra/components';
+
+# Custom Nodes
+
+A powerful feature of Svelte Flow is the ability to create custom nodes. This gives you the flexibility to render anything you want within your nodes. We generally recommend creating your own custom nodes rather than relying on built-in ones. With custom nodes, you can add as many source and target handles as you like—or even embed form inputs, charts, and other interactive elements.
+
+In this section, we'll walk through creating a custom node featuring an input field that updates text elsewhere in your application. For further examples, we recommend checking out our [Custom Node Example](/examples/nodes/custom-node).
+
+## Creating a Custom Node
+
+To create a custom node, all you need to do is create a Svelte component. Svelte Flow will automatically wrap it in an interactive container that injects essential props like the node's id, position, and data, and provides functionality for selection, dragging, and connecting handles. For a full reference on all available custom node props, take a look at the [Node Props](/api-reference/types/node-props).
+
+Let's dive into an example by creating a custom node called `TextUpdaterNode`. For this, we've added a controlled input field with a oninput handler. We simply use the 'text' property from the node's data for the input and we update the node's data via the [`updateNodeData`](/api-reference/hooks/use-svelte-flow#update-node-data) function, that can be accessed through the [`useSvelteFlow`](/api-reference/hooks/use-svelte-flow) hook.
+
+```svelte filename="TextUpdaterNode.svelte"
+<script lang="ts">
+  import { Position, useSvelteFlow, type NodeProps } from '@xyflow/svelte';
+
+  let { id, data }: NodeProps = $props();
+
+  let { updateNodeData } = useSvelteFlow();
+</script>
+
+<div class="text-updater-node">
+  <div>
+    <label for="text">Text:</label>
+    <input
+      id="text"
+      name="text"
+      value={data.text}
+      oninput={(evt) => {
+        updateNodeData(id, { text: evt.target.value });
+      }}
+      class="nodrag"
+    />
+  </div>
+</div>
+```
+
+## Adding the Node Type
+
+Now we need to communicate the new custom node to Svelte Flow. You can add custom nodes by passing the [`nodeTypes`](/api-reference/svelte-flow#node-types) prop.
+
+```svelte filename="App.svelte"
+<script>
+  import { SvelteFlow } from '@xyflow/svelte';
+  import '@xyflow/svelte/dist/style.css';
+
+  import TextUpdaterNode from './TextUpdaterNode.svelte';
+
+  const nodeTypes = { textUpdater: TextUpdaterNode };
+
+  // [...]
+
+</script>
+
+<SvelteFlow
+  bind:nodes
+  bind:edges
+  {nodeTypes}
+  fitView
+>
+  <!-- [...] -->
+</SvelteFlow>
+```
+
+After defining your new node type, you can refer to it by using the `type` node option:
+
+```js
+let nodes = $state.raw([
+  {
+    id: 'node-1',
+    type: 'textUpdater',
+    position: { x: 0, y: 0 },
+    data: { text: 'some text' },
+  },
+]);
+```
+
+After putting it all together and adding some basic styles we get a custom node that prints text to the console:
+
+<RemoteCodeViewer route="guides/custom-nodes" framework="svelte" />
+
+## Adding Handles
+
+Svelte Flow provides a [`Handle`](/api-reference/components/handle) component that can be used to add handles to your custom nodes. It's as easy as mounting the component.
+
+```svelte filename="CustomNode.svelte" highlight="Handle"
+<script>
+  import { Handle } from '@xyflow/svelte';
+</script>
+
+<Handle type="target" position={Position.Top} />
+<Handle type="source" position={Position.Bottom} />
+```
+
+#### Multiple Handles
+
+If you need more than just one source and target handle, you can use the `id`

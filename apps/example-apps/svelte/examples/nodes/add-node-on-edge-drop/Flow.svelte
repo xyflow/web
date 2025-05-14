@@ -1,12 +1,11 @@
 <script lang="ts">
-  import { writable } from 'svelte/store';
   import {
     SvelteFlow,
     useSvelteFlow,
     Background,
     type Edge,
     type Node,
-    type OnConnectEnd
+    type OnConnectEnd,
   } from '@xyflow/svelte';
 
   import '@xyflow/svelte/dist/style.css';
@@ -16,14 +15,13 @@
       id: '0',
       type: 'input',
       data: { label: 'Node' },
-      position: { x: 0, y: 50 }
-    }
+      position: { x: 0, y: 50 },
+    },
   ];
 
-  const nodes = writable<Node[]>(initialNodes);
-  const edges = writable<Edge[]>([]);
+  let nodes = $state.raw<Node[]>(initialNodes);
+  let edges = $state.raw<Edge[]>([]);
 
-  let rect: DOMRectReadOnly;
   let id = 1;
   const getId = () => `${id++}`;
 
@@ -34,7 +32,8 @@
 
     const sourceNodeId = connectionState.fromNode?.id ?? '1';
     const id = getId();
-    const { clientX, clientY } = 'changedTouches' in event ? event.changedTouches[0] : event;
+    const { clientX, clientY } =
+      'changedTouches' in event ? event.changedTouches[0] : event;
 
     const newNode: Node = {
       id,
@@ -42,69 +41,23 @@
       // project the screen coordinates to pane coordinates
       position: screenToFlowPosition({
         x: clientX,
-        y: clientY
+        y: clientY,
       }),
       // set the origin of the new node so it is centered
-      origin: [0.5, 0.0]
+      origin: [0.5, 0.0],
     };
-    $nodes.push(newNode);
-    $edges.push({
-      source: sourceNodeId,
-      target: id,
-      id: `${sourceNodeId}--${id}`
-    });
-
-    $nodes = $nodes;
-    $edges = $edges;
+    nodes = [...nodes, newNode];
+    edges = [
+      ...edges,
+      {
+        source: sourceNodeId,
+        target: id,
+        id: `${sourceNodeId}--${id}`,
+      },
+    ];
   };
 </script>
 
-<svelte:window />
-
-<div class="wrapper" bind:contentRect={rect}>
-  <SvelteFlow
-    {nodes}
-    {edges}
-    fitView
-    fitViewOptions={{ padding: 2 }}
-    onconnectend={handleConnectEnd}
-  >
-    <Background />
-  </SvelteFlow>
-</div>
-
-<style>
-  :global(.svelte-flow .svelte-flow__handle) {
-    width: 30px;
-    height: 14px;
-    border-radius: 3px;
-    background-color: #784be8;
-  }
-
-  :global(.svelte-flow .svelte-flow__handle-top) {
-    top: -10px;
-  }
-
-  :global(.svelte-flow .svelte-flow__handle-bottom) {
-    bottom: -10px;
-  }
-
-  :global(.svelte-flow .svelte-flow__node) {
-    height: 40px;
-    width: 150px;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    border-width: 2px;
-    font-weight: 700;
-  }
-
-  :global(.svelte-flow .svelte-flow__edge path, .svelte-flow__connectionline path) {
-    stroke-width: 2;
-  }
-
-  .wrapper {
-    height: 100vh;
-    width: 100vw;
-  }
-</style>
+<SvelteFlow bind:nodes bind:edges fitView onconnectend={handleConnectEnd}>
+  <Background />
+</SvelteFlow>

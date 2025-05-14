@@ -1,28 +1,13 @@
 ---
-description:
-  When calling fitView these options can be used to customize the behavior.
+description: When calling fitView these options can be used to customize the behavior.
   For example, the duration option can be used to transform the viewport
   smoothly over a given amount of time.
 ---
-
-import { PropsTable } from '@/components/props-table';
-import { fitViewOptionsFields } from '@/references/types/FitViewOptions.ts';
 
 # FitViewOptions
 
 When calling `fitView` these options can be used to customize the behavior. For example, the `duration` option can be used to transform the viewport smoothly over a given amount of time.
 
-```ts
-export type FitViewOptions = {
-  padding?: number;
-  includeHiddenNodes?: boolean;
-  minZoom?: number;
-  maxZoom?: number;
-  duration?: number;
-  nodes?: (Node | { id: Node['id'] })[];
-};
-```
-
 ## Fields
 
-<PropsTable {...fitViewOptionsFields} />
+<APIDocs typeName="FitViewOptions" />

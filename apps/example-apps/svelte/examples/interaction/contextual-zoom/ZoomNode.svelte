@@ -1,19 +1,22 @@
 <script lang="ts">
-  import { Handle, Position, type NodeProps, useSvelteFlow } from '@xyflow/svelte';
+  import {
+    Handle,
+    Position,
+    useViewport,
+    type NodeProps,
+    type Node,
+  } from '@xyflow/svelte';
 
-  type $$Props = NodeProps;
-  export let data: $$Props['data'];
+  type ZoomNode = Node<{
+    zoomLevel: number;
+    content: string;
+  }>;
 
-  const { viewport } = useSvelteFlow();
+  let { data }: NodeProps<ZoomNode> = $props();
 
-  let showContent = false;
-  $: {
-    if ($viewport.zoom > data.zoomLevel) {
-      showContent = true;
-    } else {
-      showContent = false;
-    }
-  }
+  const viewport = useViewport();
+
+  let showContent = $derived(viewport.current.zoom > data.zoomLevel);
 </script>
 
 <div class="zoom-node">
@@ -22,9 +25,9 @@
     <p>{data.content}</p>
   {:else}
     <div class="placeholder">
-      <div />
-      <div />
-      <div />
+      <div></div>
+      <div></div>
+      <div></div>
     </div>
   {/if}
   <Handle type="source" position={Position.Bottom} />
@@ -32,18 +35,7 @@
 
 <style>
   .zoom-node {
-    font-size: 12px;
-    background: #fff;
-    border: 1px solid #555;
-    border-radius: 5px;
-    text-align: center;
     width: 150px;
-    padding: 10px;
-    line-height: 1.2;
-  }
-
-  .zoom-node img {
-    pointer-events: none;
   }
 
   .placeholder div {

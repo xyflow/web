@@ -1,3 +1,7 @@
+<script module>
+  export type UppercaseNodeType = Node<{ text: string }, 'uppercase'>;
+</script>
+
 <script lang="ts">
   import {
     Handle,
@@ -5,36 +9,39 @@
     useNodeConnections,
     useNodesData,
     useSvelteFlow,
-    type NodeProps
+    type NodeProps,
+    type Node,
   } from '@xyflow/svelte';
+  import { isTextNode } from './App.svelte';
+  import { untrack } from 'svelte';
 
-  type $$Props = NodeProps;
-
-  export let id: $$Props['id'];
+  let { id, data }: NodeProps<Node<{ text: string }>> = $props();
 
   const { updateNodeData } = useSvelteFlow();
-  const connections = useNodeConnections({
-    id,
-    handleType: 'target'
-  });
 
-  $: nodeData = useNodesData($connections[0]?.source);
-  $: {
-    updateNodeData(id, { text: $nodeData?.data?.text?.toUpperCase() || '' });
-  }
+  const connections = useNodeConnections();
+
+  let nodeData = useNodesData(connections.current[0]?.source);
+  let textNodeData = $derived(
+    isTextNode(nodeData.current) ? nodeData.current.data : null,
+  );
+
+  $effect.pre(() => {
+    const input = textNodeData?.text.toUpperCase() ?? '';
+
+    if (input === untrack(() => data.text)) return;
+    updateNodeData(id, {
+      text: input,
+    });
+  });
 </script>
 
 <div class="custom">
-  <Handle type="target" position={Position.Left} isConnectable={$connections.length === 0} />
+  <Handle
+    type="target"
+    position={Position.Left}
+    isConnectable={connections.current.length === 0}
+  />
   <div>uppercase transform</div>
   <Handle type="source" position={Position.Right} />
 </div>
-
-<style>
-  .custom {
-    background-color: #eee;
-    padding: 10px;
-    border-radius: 10px;
-    font-size: 12px;
-  }
-</style>

@@ -10,7 +10,6 @@ import {
 
 import '@xyflow/react/dist/style.css';
 
-
 const initialNodes = [
   {
     id: '1',
@@ -47,10 +46,9 @@ const TouchDeviceFlow = () => {
       onEdgesChange={onEdgesChange}
       className="touch-flow"
       fitView
-      style={{ backgroundColor: "#F7F9FB" }}
-      >
-        <Background />
-      </ReactFlow>  
+    >
+      <Background />
+    </ReactFlow>
   );
 };
 

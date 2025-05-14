@@ -44,7 +44,6 @@ const StressFlow = () => {
       onConnect={onConnect}
       fitView
       minZoom={0}
-      style={{ backgroundColor: '#F7F9FB' }}
     >
       <MiniMap />
       <Controls />

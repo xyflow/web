@@ -11,11 +11,11 @@ import {
 
 import '@xyflow/react/dist/style.css';
 
-
 import {
   nodes as initialNodes,
   edges as initialEdges,
 } from './initial-elements';
+
 import AnnotationNode from './AnnotationNode';
 import ToolbarNode from './ToolbarNode';
 import ResizerNode from './ResizerNode';
@@ -56,11 +56,10 @@ const OverviewFlow = () => {
       attributionPosition="top-right"
       nodeTypes={nodeTypes}
       edgeTypes={edgeTypes}
-      style={{ backgroundColor: "#F7F9FB" }}
     >
       <MiniMap zoomable pannable nodeClassName={nodeClassName} />
       <Controls />
-    <Background  />
+      <Background />
     </ReactFlow>
   );
 };

@@ -1,0 +1,257 @@
+---
+title: Migrate to v1
+description: A comprehensive guide to migrating from Svelte Flow v0 to v1. Learn about state management changes, component binding updates, hook modifications, and new features for a smooth transition to the latest version.
+---
+
+import { Callout } from 'nextra/components';
+
+# Migrate to Svelte Flow 1.0
+
+Svelte Flow 1.0 is built from the ground up with Svelte 5 and includes many new features and improvements. This guide will help you migrate from Svelte Flow 0.x to 1.0.
+
+<Callout type="info">
+  If you are looking for the Svelte Flow 0.x docs, please refer to
+  [legacy.svelteflow.dev](https://legacy.svelteflow.dev).
+</Callout>
+
+## New features
+
+- **[Reconnect edges](/examples/edges/reconnect-edge)**: You can reconnect your edges by using the new `<EdgeReconnectAnchor />` component. It can be used to add custom reconnection points on custom edges.
+- **Keyboard navigation & A11y**: We added support for keyboard navigation and improved accessibility for screen readers. You can now tab through nodes and edges and move nodes with the arrow keys. Can be disabled via [**disableKeyboardA11y**](/api-reference/svelte-flow#disablekeyboarda11y)
+- **[Click connect](/examples/edges/click-connect)**: You can now create a new connection by clicking on a handle one by one.
+- **[Enhanced ViewportPortal](/api-reference/components/viewport-portal)**: You can now decide if you want to render something below or above the nodes & edges in the viewport.
+- **Improved [fitView](/api-reference/hooks/use-svelte-flow#fitview)**: We finetuned the `fitView` function to better work with dynamically added nodes.
+- **colorModeSSR** prop: You can pass a fallback color mode for server side rendering when colorMode is set to 'system'.
+- [**elevateNodesOnSelect**](/api-reference/svelte-flow#elevateNodesOnSelect) & [**elevateEdgesOnSelect**](/api-reference/svelte-flow#elevateEdgesOnSelect): Control if nodes & edges should be elevated via z-index when selected.
+- [**noDragClass, noWheelClass, noPanClass**](/api-reference/svelte-flow#style-props): You can now modify the class name used to disable dragging, panning and zooming.
+- [**onselectionchange**](/api-reference/svelte-flow#onselectionchange) & [**useOnSelectionChange**](/api-reference/hooks/use-on-selection-change): You can now listen to selection changes via a callback
+
+## Breaking changes
+
+### `nodes` & `edges` are now using `$state.raw` instead of `writable`
+
+Svelte 5 introduces runes which are now getting used for nodes and edges.
+
+**Old API**
+
+```js
+const nodes = writable([...]);
+const edges = writable([...]);
+```
+
+**New API**
+
+```js
+let nodes = $state.raw([...]);
+let edges = $state.raw([...]);
+```
+
+### Updating Nodes & Edges
+
+Previously it was possible to update single node properties. Theoretically, this would also be possible with `$state`, however the [performance implications](https://svelte.dev/playground/e6f804ba6da348bc8b6a0a13c59672cb?version=5.19.0) of this are unfortunately too great, so we opted to using `$state.raw`.
+
+This means that `nodes` and `edges` are to be treated as immutable from now on. If you are making updates manually make sure you:
+
+1. create a new node/edge object, when updating a property.
+2. reassign the nodes/edges array (this was technically required before anyway)
+
+```js
+nodes[0].position.x = 100; // won't work
+
+const newNode = { ...nodes[0] };
+newNode.position.x = 100;
+nodes[0] = newNode; // not enough to trigger an update
+nodes = [...nodes]; // this will make it work
+
+nodes = nodes.map((node) => {
+  if (node.id === '1') {
+    return { ...node, position: { ...node.position, x: 100 } };
+  }
+  return node;
+}); // also works
+
+updateNode('1', (node) => ({
+  ...node,
+  position: { ...node.position, x: 100 },
+})); // using the updateNode helper from useSvelteFlow
+```
+
+### `nodes` & `edges` need to be bound from `<SvelteFlow />`
+
+**Old API**
+
+```js
+<SvelteFlow {nodes} {edges} />
+```
+
+**New API**
+
+```js
+<SvelteFlow bind:nodes bind:edges />
+```
+
+If `nodes` and `edges` live in a separate module, you can use [function bindings](https://svelte.dev/docs/svelte/bind#Function-bindings).
+
+```js
+// store.svelte.js
+
+let nodes = $state.raw([...]);
+let edges = $state.raw([...]);
+
+export const getNodes = () => nodes;
+export const getEdges = () => edges;
+export const setNodes = (newNodes) => nodes = newNodes;
+export const setEdges = (newEdges) => edges = newEdges;
+```
+
+```js
+// BaseComponent.svelte
+
+<script>
+  import { getNodes, getEdges, setNodes, setEdges } from 'store.svelte.js';
+</script>
+
+<SvelteFlow bind:nodes={getNodes, setNodes} bind:edges={getEdges, setEdges} />
+```
+
+### Custom Node & Edge Props
+
+This is by enlarge a general change in Svelte 5, but it does have quite a big impact on typing the props of Custom Nodes & Edges.
+
+**Old API**
+
+```js
+// CustomNode.svelte
+
+type $$Props = NodeProps;
+
+export let data: $$Props['data'];
+export let position: $$Props['position'];
+export let selected: $$Props['selected'];
+```
+
+**New API**
+
+```js
+let { data, position, selected } : NodeProps = $props();
+```
+
+### Hooks
+
+Hooks now return reactive values instead of writables. Because `$state` values cannot be [returned by functions directly](https://svelte.dev/docs/svelte/$state#Passing-state-into-functions) we have to return an object with a `.current` property to keep reactivity. In this regard, we are [following the official trend](https://svelte.dev/docs/svelte/svelte-reactivity#MediaQuery) set by the Svelte library authors.
+
+**Old API**
+
+```js
+const edges = useEdges();
+$: console.log(edges);
+```
+
+**New API**
+
+```js
+const edges = useEdges();
+$inspect(edges.current);
+```
+
+Note that in case of `useNodes`, `useEdges` and `useViewport` reassignments to `.current` work!
+
+```js
+const nodes = useNodes();
+
+function updateNodes() {
+   nodes.current = [...]
+}
+```
+
+### Binding the viewport
+
+Binding the viewport now works natively in Svelte 5. You can either access the internal viewport or bind your very own viewport object to be used instead.
+
+**Old API**
+
+```js
+const viewport = writable<Viewport>({ x: 100, y: 100, zoom: 1.25 });
+
+<SvelteFlow {viewport} />
+```
+
+**New API**
+
+```js
+let viewport = $state < Viewport > { x: 100, y: 100, zoom: 1.25 };
+
+<SvelteFlow bind:viewport />;
+```
+
+### Custom Connection Line
+
+Using a custom Connection Line was possible before by passing it to a [slot](https://svelte.dev/docs/svelte/legacy-slots). In Svelte Flow 1.0 we introduced a new prop called `connectionLineComponent`for this.
+
+**Old API**
+
+```js
+<SvelteFlow {nodes} {edges}>
+  <ConnectionLine slot="connectionLine" />
+  <Background variant={BackgroundVariant.Lines} />
+</SvelteFlow>
+```
+
+**New API**
+
+```js
+<SvelteFlow {nodes} {edges} connectionLineComponent={ConnectionLine}>
+  <Background variant={BackgroundVariant.Lines} />
+</SvelteFlow>
+```
+
+### `onEdgeCreate` becomes `onbeforeconnect`
+
+`onedgecreate` was called before a new edge was created. This is now called `onbeforeconnect` to better align with events like [`onbeforeconnect`](/api-reference/svelte-flow#onbeforedelete).
+
+**Old API**
+
+```js
+<SvelteFlow
+  {nodes}
+  {edges}
+  onEdgeCreate={(connection) => ({...connection, id: crypto.randomUUID()})}
+/>
+```
+
+**New API**
+
+```js
+<SvelteFlow
+  bind:nodes
+  bind:edges
+  onbeforeconnect={(connection) => ({ ...connection, id: crypto.randomUUID() })}
+/>
+```
+
+### `<EdgeLabelRenderer/>` becomes [`<EdgeLabel />`](/api-reference/components/edge-label)
+
+The `EdgeLabelRenderer` component is now called `EdgeLabel`. As it was just a simple Portal to begin with, the naming of it being a "renderer" was a bit misleading.
+To add to this, the new `EdgeLabel` component now also handles clicks on the label automatically and is aware of what edge it belongs to.
+
+**Old API**
+
+```js filename="CustomEdge.svelte"
+<BaseEdge id={id} path={path} />
+<EdgeLabelRenderer>
+  <div
+    style:transform={`translate(${labelX}px, ${labelY}px)`}
+  >
+    My Edge Label
+  </div>
+</EdgeLabelRenderer>
+```
+
+**New API**
+
+```js filename="CustomEdge.svelte"
+<BaseEdge path={path} />
+<EdgeLabel x={labelX} y={labelY} selectEdgeOnClick>
+  <div>My Edge Label</div>
+</EdgeLabel>
+```

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { writable } from 'svelte/store';
+  import { onMount } from 'svelte';
   import ELK from 'elkjs/lib/elk.bundled.js';
   import {
     SvelteFlow,
@@ -15,10 +15,8 @@
   import '@xyflow/svelte/dist/style.css';
 
   import { initialNodes, initialEdges } from './nodes-and-edges';
-  import { onMount } from 'svelte';
-
-  const nodes = writable<Node[]>([]);
-  const edges = writable<Edge[]>([]);
+  let nodes = $state.raw<Node[]>([]);
+  let edges = $state.raw<Edge[]>([]);
 
   const { fitView } = useSvelteFlow();
 
@@ -59,7 +57,7 @@
       .then((layoutedGraph) => ({
         nodes: layoutedGraph.children.map((node) => ({
           ...node,
-          // React Flow expects a position property on the node instead of `x`
+          // Svelte Flow expects a position property on the node instead of `x`
           // and `y` fields.
           position: { x: node.x, y: node.y },
         })),
@@ -71,13 +69,13 @@
 
   function onLayout(direction: string, useInitialNodes = false) {
     const opts = { 'elk.direction': direction, ...elkOptions };
-    const ns = useInitialNodes ? initialNodes : $nodes;
-    const es = useInitialNodes ? initialEdges : $edges;
+    const ns = useInitialNodes ? initialNodes : nodes;
+    const es = useInitialNodes ? initialEdges : edges;
 
     getLayoutedElements(ns, es, opts).then(
       ({ nodes: layoutedNodes, edges: layoutedEdges }) => {
-        $nodes = layoutedNodes;
-        $edges = layoutedEdges;
+        nodes = layoutedNodes;
+        edges = layoutedEdges;
 
         fitView();
       },
@@ -91,15 +89,15 @@
 
 <div style="height:100vh;">
   <SvelteFlow
-    {nodes}
-    {edges}
+    bind:nodes
+    bind:edges
     fitView
     connectionLineType={ConnectionLineType.SmoothStep}
     defaultEdgeOptions={{ type: 'smoothstep', animated: true }}
   >
     <Panel position="top-right">
-      <button on:click={() => onLayout('DOWN')}>vertical layout</button>
-      <button on:click={() => onLayout('RIGHT')}>horizontal layout</button>
+      <button onclick={() => onLayout('DOWN')}>vertical layout</button>
+      <button onclick={() => onLayout('RIGHT')}>horizontal layout</button>
     </Panel>
     <Background />
   </SvelteFlow>

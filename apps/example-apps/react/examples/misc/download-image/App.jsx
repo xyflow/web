@@ -10,7 +10,6 @@ import {
 
 import '@xyflow/react/dist/style.css';
 
-
 import DownloadButton from './DownloadButton';
 import CustomNode from './CustomNode';
 import { initialNodes, initialEdges } from './initialElements';
@@ -54,7 +53,6 @@ const DownloadImageFlow = () => {
       attributionPosition="bottom-left"
       defaultEdgeOptions={defaultEdgeOptions}
       className="download-image"
-      style={{ backgroundColor: "#F7F9FB" }}
     >
       <Controls />
       <Background />

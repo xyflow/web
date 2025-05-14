@@ -6,3 +6,4 @@ export * from './utils';
 export * from './timeline-event';
 export * from './remote-code-viewer';
 export * from './toc';
+export * from './example-utils';

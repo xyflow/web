@@ -1,14 +1,12 @@
 <script lang="ts">
   import { Handle, Position, type NodeProps } from '@xyflow/svelte';
 
-  type $$Props = NodeProps;
-
-  export let isConnectable: $$Props['isConnectable'];
+  let { isConnectable }: NodeProps = $props();
 
   const DEFAULT_HANDLE_STYLE = 'width: 10px; height: 10px; bottom: -5px;';
 </script>
 
-<div style="background: #DDD; padding: 25px">
+<div style:padding={'25px'}>
   <div>Node</div>
   <Handle
     id="red"

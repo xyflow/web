@@ -16,8 +16,8 @@
   "dependencies": {
     "@heroicons/react": "^2.2.0",
     "@typeform/embed-react": "^4.4.0",
-    "@xyflow/react": "12.6.0",
-    "@xyflow/svelte": "^0.1.37",
+    "@xyflow/react": "12.6.1",
+    "@xyflow/svelte": "1.0.1",
     "@xyflow/xy-ui": "workspace:*",
     "fast-xml-parser": "^5.2.1",
     "next": "^15.3.1",
@@ -26,6 +26,7 @@
     "nextra-theme-docs": "^4.3.0-alpha.22",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "svelte": "^5.28.2",
     "xy-shared": "workspace:*"
   },
   "devDependencies": {

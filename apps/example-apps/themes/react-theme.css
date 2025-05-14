@@ -10,8 +10,9 @@
   /* Built-in Variables see https://reactflow.dev/learn/customization/theming */
   --xy-node-border-default: 1px solid #ededed;
 
-  --xy-node-boxshadow-default: 0px 3.54px 4.55px 0px #00000005,
-    0px 3.54px 4.55px 0px #0000000d, 0px 0.51px 1.01px 0px #0000001a;
+  --xy-node-boxshadow-default:
+    0px 3.54px 4.55px 0px #00000005, 0px 3.54px 4.55px 0px #0000000d,
+    0px 0.51px 1.01px 0px #0000001a;
 
   --xy-node-border-radius-default: 8px;
 
@@ -22,7 +23,8 @@
 }
 
 .react-flow.dark {
-  --xy-node-boxshadow-default: 0px 3.54px 4.55px 0px rgba(255, 255, 255, 0.05),
+  --xy-node-boxshadow-default:
+    0px 3.54px 4.55px 0px rgba(255, 255, 255, 0.05),
     /* light shadow */ 0px 3.54px 4.55px 0px rgba(255, 255, 255, 0.13),
     /* medium shadow */ 0px 0.51px 1.01px 0px rgba(255, 255, 255, 0.2); /* smallest shadow */
   --xy-theme-color-focus: #535353;

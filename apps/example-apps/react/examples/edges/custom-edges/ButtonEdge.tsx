@@ -18,7 +18,6 @@ export default function CustomEdge({
   style = {},
   markerEnd,
 }: EdgeProps) {
-  const { setEdges } = useReactFlow();
   const [edgePath, labelX, labelY] = getBezierPath({
     sourceX,
     sourceY,
@@ -28,6 +27,7 @@ export default function CustomEdge({
     targetPosition,
   });
 
+  const { setEdges } = useReactFlow();
   const onEdgeClick = () => {
     setEdges((edges) => edges.filter((edge) => edge.id !== id));
   };
@@ -36,7 +36,7 @@ export default function CustomEdge({
     <>
       <BaseEdge path={edgePath} markerEnd={markerEnd} style={style} />
       <EdgeLabelRenderer>
-      <div
+        <div
           className="button-edge__label nodrag nopan"
           style={{
             transform: `translate(-50%, -50%) translate(${labelX}px,${labelY}px)`,

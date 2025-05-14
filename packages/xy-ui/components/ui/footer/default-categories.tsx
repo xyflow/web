@@ -20,14 +20,7 @@ export const defaultCategories = {
     { title: 'About', route: 'https://xyflow.com/about' },
     { title: 'Contact', route: 'https://xyflow.com/contact' },
     {
-      title: (
-        <div className="flex items-center gap-1">
-          Careers{' '}
-          <span className="bg-primary-foreground text-primary rounded-full text-xs px-1 py-0.5">
-            hiring
-          </span>
-        </div>
-      ),
+      title: 'Careers',
       route: 'https://xyflow.com/careers',
     },
   ],
