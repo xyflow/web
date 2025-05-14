@@ -148,7 +148,7 @@ const Page: FC = async () => {
         />
       </Section>
 
-      <GettingStarted libraryName="Svelte Flow" packageName="@xyflow/svelte@next" />
+      <GettingStarted libraryName="Svelte Flow" packageName="@xyflow/svelte" />
 
       <Section>
         <Features features={features} />
