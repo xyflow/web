@@ -1,7 +1,7 @@
 'use client';
 
 import { FC, ReactNode } from 'react';
-import { SubscriptionProvider } from './SubscriptionProvider';
+import { SubscriptionProvider, SubscriptionContextValue } from './SubscriptionProvider';
 import { NhostApolloProvider, NhostProvider } from './index.client';
 import { NhostClient } from '@nhost/nhost-js';
 
@@ -12,11 +12,14 @@ const nhost = new NhostClient({
   clientStorageType: 'cookie',
 });
 
-export const Providers: FC<{ children: ReactNode }> = ({ children }) => {
+export const Providers: FC<{ children: ReactNode; value: SubscriptionContextValue }> = ({
+  children,
+  value,
+}) => {
   return (
     <NhostProvider nhost={nhost}>
       <NhostApolloProvider nhost={nhost}>
-        <SubscriptionProvider>{children}</SubscriptionProvider>
+        <SubscriptionProvider value={value}>{children}</SubscriptionProvider>
       </NhostApolloProvider>
     </NhostProvider>
   );
