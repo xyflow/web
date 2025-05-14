@@ -1,26 +1,18 @@
 'use client';
 
-import { FC, ReactNode } from 'react';
-import { SubscriptionProvider, SubscriptionContextValue } from './SubscriptionProvider';
-import { NhostApolloProvider, NhostProvider } from './index.client';
-import { NhostClient } from '@nhost/nhost-js';
+import { ComponentProps, createContext } from 'react';
+import { SubscriptionPlan } from '@/types';
 
-const nhost = new NhostClient({
-  subdomain: process.env.NEXT_PUBLIC_NHOST_SUBDOMAIN,
-  region: process.env.NEXT_PUBLIC_NHOST_REGION,
-  // Change a storage type so we can parse cookies in RSC
-  clientStorageType: 'cookie',
-});
-
-export const Providers: FC<{ children: ReactNode; value: SubscriptionContextValue }> = ({
-  children,
-  value,
-}) => {
-  return (
-    <NhostProvider nhost={nhost}>
-      <NhostApolloProvider nhost={nhost}>
-        <SubscriptionProvider value={value}>{children}</SubscriptionProvider>
-      </NhostApolloProvider>
-    </NhostProvider>
-  );
+export type SubscriptionContextValue = {
+  plan: SubscriptionPlan;
+  teamPlan: SubscriptionPlan;
 };
+
+export const SubscriptionContext = createContext<SubscriptionContextValue>(null!);
+
+// This doesn't work
+// export const SubscriptionProvider = SubscriptionContext.Provider;
+
+export const SubscriptionProvider = (
+  props: ComponentProps<typeof SubscriptionContext.Provider>,
+) => <SubscriptionContext.Provider {...props} />;

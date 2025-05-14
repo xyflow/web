@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 
-import { SubscriptionContext } from '@/components/pro/Providers/SubscriptionProvider';
+import { SubscriptionContext } from '@/components/pro/Providers';
 import { SubscriptionPlan } from '@/types';
 
 export type SubscriptionStatus = {
