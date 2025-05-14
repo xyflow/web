@@ -8,11 +8,15 @@ export async function callNhostFunction(
 ) {
   const nhost = await getNhost();
   const accessToken = nhost.auth.getAccessToken();
-  const response = await fetch(`${nhost.functions.url}${url}`, {
+  const fullUrl = `${nhost.functions.url}${url}`;
+
+  const response = await fetch(fullUrl, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${accessToken}`,
+      // TODO check if we still need it
+      ...(process.env.NODE_ENV !== 'production' && { Origin: 'http://localhost:3002' }),
     },
     body: JSON.stringify(body),
     next: {
