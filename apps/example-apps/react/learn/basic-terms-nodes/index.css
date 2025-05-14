@@ -1,3 +1,5 @@
+@import url('./xy-theme.css');
+
 html,
 body {
   margin: 0;
@@ -8,4 +10,70 @@ body {
   width: 100vw;
   height: 100vh;
 }
+/* Annotation Node */
 
+.react-flow__node-annotation {
+  font-size: 16px;
+  width: 250px;
+  color: #683bfa;
+  position: absolute;
+  box-shadow: none;
+  font-family: monospace;
+  text-align: left;
+  background-color: transparent;
+  border: none;
+  pointer-events: none;
+}
+
+.react-flow__node-annotation .annotation-content {
+  padding: 10px;
+  display: flex;
+}
+
+.react-flow__node-annotation .annotation-level {
+  margin-right: 4px;
+}
+
+.react-flow__node-annotation .annotation-arrow {
+  position: absolute;
+  font-size: 24px;
+}
+
+.arrow-top-right {
+  right: 0;
+  bottom: 0;
+  transform: translate(-20px, -20px) rotate(-120deg);
+  position: absolute;
+}
+
+.arrow-top-left {
+  right: 0;
+  bottom: 0;
+  transform: translate(-20px, -20px) rotate(-120deg);
+  position: absolute;
+}
+
+.arrow-bottom-left {
+  left: 0;
+  bottom: 0;
+  transform: translate(10px, -20px) rotate(90deg) scale(-1, 1);
+  position: absolute;
+}
+
+.arrow-bottom-right {
+  right: 0;
+  bottom: 0;
+  transform: translate(-30px, 10px) rotate(-40deg);
+  position: absolute;
+}
+
+.arrow-handle {
+  left: 0;
+  bottom: 0;
+  transform: translate(-15px, -25px) rotate(160deg) scale(-1, 1);
+  position: absolute;
+}
+
+.react-flow__edge-textbg {
+  fill: #f7f9fb;
+}
