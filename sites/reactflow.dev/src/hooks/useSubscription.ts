@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 
 import { SubscriptionContext } from '@/components/pro/Providers/SubscriptionProvider';
 import { SubscriptionPlan } from '@/types';
@@ -10,22 +10,10 @@ export type SubscriptionStatus = {
   plan: SubscriptionPlan;
   userPlan: SubscriptionPlan;
   teamPlan: SubscriptionPlan;
-  isLoading: boolean;
 };
 
 export default function useSubscription(): SubscriptionStatus {
-  const [isLoading, setIsLoading] = useState(true);
   const subscription = useContext(SubscriptionContext);
-
-  useEffect(() => {
-    if (!subscription.isLoading) {
-      const timeout = setTimeout(() => {
-        setIsLoading(false);
-      }, 100);
-
-      return () => clearTimeout(timeout);
-    }
-  }, [subscription.isLoading]);
 
   return {
     isSubscribed:
@@ -42,6 +30,5 @@ export default function useSubscription(): SubscriptionStatus {
         : subscription.teamPlan,
     userPlan: subscription.plan,
     teamPlan: subscription.teamPlan,
-    isLoading: isLoading,
   };
 }
