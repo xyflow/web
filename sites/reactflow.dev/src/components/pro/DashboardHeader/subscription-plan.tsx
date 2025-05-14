@@ -17,7 +17,7 @@ export default function SubscriptionPlan() {
         </span>
       </Subscribed>
       <NotSubscribed>
-        <Link href="/subscribe">
+        <Link href="/dashboard/subscribe">
           <Pill className="inline">free plan</Pill>
         </Link>
       </NotSubscribed>
