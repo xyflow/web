@@ -620,8 +620,8 @@ importers:
         specifier: ^4.4.0
         version: 4.4.0(react@18.3.1)
       '@xyflow/react':
-        specifier: 12.6.1
-        version: 12.6.1(@types/react@18.3.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: 12.6.3
+        version: 12.6.3(@types/react@18.3.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@xyflow/svelte':
         specifier: 1.0.1
         version: 1.0.1(svelte@5.28.2)
@@ -2863,14 +2863,14 @@ packages:
     peerDependencies:
       vite: ^4.2.0 || ^5.0.0 || ^6.0.0
 
-  '@xyflow/react@12.6.1':
-    resolution: {integrity: sha512-DQs1LOaxSIdsoxsfZSLBoID93eQvfBXDraBwalpKaVcWTueWfjnW9mQ7jviwC3zPLwyx/ioPh+C45/Ez7+CHUQ==}
+  '@xyflow/react@12.6.2':
+    resolution: {integrity: sha512-vZBViza/W/70zaZj6T34tPUxhmUGLR5QvPCvxVtJ1cbcYWD2ZjvIvP94bwEwD+WLAmk1UjtqOutjNSLiBH5ddQ==}
     peerDependencies:
       react: '>=17'
       react-dom: '>=17'
 
-  '@xyflow/react@12.6.2':
-    resolution: {integrity: sha512-vZBViza/W/70zaZj6T34tPUxhmUGLR5QvPCvxVtJ1cbcYWD2ZjvIvP94bwEwD+WLAmk1UjtqOutjNSLiBH5ddQ==}
+  '@xyflow/react@12.6.3':
+    resolution: {integrity: sha512-uZC/mkmNCPu6yJkgaxZQ939LRtUZSeB5yB7z1kkl/ivlYQp+bZnkNsE3CRsTSnWEj20Ic4r+FeIsmfnvSsDvZQ==}
     peerDependencies:
       react: '>=17'
       react-dom: '>=17'
@@ -2882,9 +2882,6 @@ packages:
 
   '@xyflow/system@0.0.57':
     resolution: {integrity: sha512-1YpBo0WgmZLR5wQw9Jvk3Tu0gISi/oYc4uSimrDuAsA/G2rGleulLrKkM59uuT/QU5m6DYC2VdBDAzjSNMGuBA==}
-
-  '@xyflow/system@0.0.58':
-    resolution: {integrity: sha512-f4l+/AAdWejcFrkaCbKWRWyL64G7gMR0xrwRlbG6oF4KIOMcygGFxOXdOV8QCMcQ9u++QIDpsogpUhexX4vi1Q==}
 
   '@xyflow/system@0.0.59':
     resolution: {integrity: sha512-+xgqYhoBv5F10TQx0SiKZR/DcWtuxFYR+e/LluHb7DMtX4SsMDutZWEJ4da4fDco25jZxw5G9fOlmk7MWvYd5Q==}
@@ -9413,9 +9410,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@xyflow/react@12.6.1(@types/react@18.3.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@xyflow/react@12.6.2(@types/react@18.3.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
-      '@xyflow/system': 0.0.58
+      '@xyflow/system': 0.0.59
       classcat: 5.0.5
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
@@ -9424,9 +9421,9 @@ snapshots:
       - '@types/react'
       - immer
 
-  '@xyflow/react@12.6.2(@types/react@18.3.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@xyflow/react@12.6.3(@types/react@18.3.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
-      '@xyflow/system': 0.0.59
+      '@xyflow/system': 0.0.60
       classcat: 5.0.5
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
@@ -9442,16 +9439,6 @@ snapshots:
       svelte: 5.28.2
 
   '@xyflow/system@0.0.57':
-    dependencies:
-      '@types/d3-drag': 3.0.7
-      '@types/d3-selection': 3.0.11
-      '@types/d3-transition': 3.0.9
-      '@types/d3-zoom': 3.0.8
-      d3-drag: 3.0.0
-      d3-selection: 3.0.0
-      d3-zoom: 3.0.0
-
-  '@xyflow/system@0.0.58':
     dependencies:
       '@types/d3-drag': 3.0.7
       '@types/d3-selection': 3.0.11
