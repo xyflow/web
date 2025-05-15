@@ -14,7 +14,7 @@ export const initialNodes: Node[] = [
     selectable: false,
     data: {
       label: 'this is a "node"',
-      arrowStyle: 'right: 0; bottom: 0; transform: translate(-30px,10px) rotate(-80deg);',
+      arrowStyle: 'right: 0; bottom: 0; transform: translate(-30px,10px) rotate(-70deg);',
     },
     position: { x: -80, y: -50 },
   },
@@ -34,7 +34,7 @@ export const initialNodes: Node[] = [
     data: {
       label: 'this is a "handle"',
       arrowStyle:
-        'left: 0; bottom: 0; transform: translate(0px, -25px) rotate(160deg) scale(-1, 1);',
+        'left: 0; bottom: 0; transform: translate(0px, -25px) rotate(140deg) scale(-1, 1);',
     },
     position: { x: 230, y: 30 },
   },
@@ -67,7 +67,7 @@ export const initialNodes: Node[] = [
     data: {
       label: 'try dragging the handle',
       arrowStyle:
-        'left: 0; bottom: 0; transform: translate(-15px, -25px) rotate(160deg) scale(-1, 1);',
+        'left: 0; bottom: 0; transform: translate(-15px, -25px) rotate(140deg) scale(-1, 1);',
     },
     position: { x: 450, y: 220 },
   },
