@@ -151,7 +151,7 @@ function Flow() {
   const connection = useConnection();
   const onMouseMove = useCallback(() => {
     if (connection.inProgress) {
-      const { to } = connection;
+      const { from, to } = connection;
 
       const nodePosition = {
         x: to.x,
@@ -167,6 +167,7 @@ function Flow() {
               ? {
                   ...node,
                   position: nodePosition,
+                  hidden: Math.abs(to.y - from.y) < 25 && Math.abs(to.x - from.x) < 25,
                 }
               : node,
           );
@@ -176,30 +177,13 @@ function Flow() {
             {
               ...connectionAnnotation,
               position: nodePosition,
+              hidden: Math.abs(to.y - from.y) < 25 && Math.abs(to.x - from.x) < 25,
             },
           ];
         }
       });
     }
   }, [connection]);
-
-  const onConnectStart = useCallback(() => {
-    setNodes((prevNodes) => {
-      const hasAnnotation = prevNodes.some((node) => node.id === 'connection-annotation');
-
-      if (hasAnnotation) {
-        return prevNodes;
-      }
-
-      return [
-        ...prevNodes,
-        {
-          ...connectionAnnotation,
-          position: { x: 0, y: 0 },
-        },
-      ];
-    });
-  }, []);
 
   const onConnectEnd = useCallback(() => {
     setNodes((prevNodes) =>
@@ -213,7 +197,6 @@ function Flow() {
         nodes={nodes}
         edges={edges}
         nodeTypes={nodeTypes}
-        onConnectStart={onConnectStart}
         onConnectEnd={onConnectEnd}
         fitView
         preventScrolling={false}
