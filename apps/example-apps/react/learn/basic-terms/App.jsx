@@ -39,7 +39,7 @@ const initialNodes = [
       label: 'This is a "node"',
       arrowStyle: 'arrow-bottom-right',
     },
-    position: { x: -80, y: -50 },
+    position: { x: -65, y: -50 },
   },
   {
     id: '1-1',
