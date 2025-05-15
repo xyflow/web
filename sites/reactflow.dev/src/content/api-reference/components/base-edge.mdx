@@ -26,34 +26,16 @@ export function CustomEdge({ sourceX, sourceY, targetX, targetY, ...props }) {
     targetY,
   });
 
-  const {
-    label,
-    labelStyle,
-    labelShowBg,
-    labelBgStyle,
-    labelBgPadding,
-    labelBgBorderRadius,
-    markerEnd,
-    markerStart,
-    interactionWidth,
-    labelX,
-    labelY,
-  } = props;
+  const { label, labelStyle, markerStart, markerEnd, interactionWidth } = props;
 
   return (
     <BaseEdge
       path={edgePath}
       label={label}
       labelStyle={labelStyle}
-      labelShowBg={labelShowBg}
-      labelBgStyle={labelBgStyle}
-      labelBgPadding={labelBgPadding}
-      labelBgBorderRadius={labelBgBorderRadius}
       markerEnd={markerEnd}
       markerStart={markerStart}
       interactionWidth={interactionWidth}
-      labelX={labelX}
-      labelY={labelY}
     />
   );
 }
