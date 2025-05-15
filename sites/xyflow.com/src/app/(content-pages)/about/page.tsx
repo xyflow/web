@@ -116,7 +116,7 @@ const Page: FC = () => {
           name="Alessandro"
           role="Software Engineer"
           teamPic={alessandro}
-          description="Alessandro likes to hack programming languages, compilers, synthesizers and sound systems and more."
+          description="Alessandro likes to hack programming languages, compilers, synthesizers, sound systems and more."
           links={[{ linkName: 'Website', route: 'https://cheli.dev' }, { linkName: 'Github', route: 'https://github.com/0x0f0f0f' }]}
         />
       </ContentGrid>
