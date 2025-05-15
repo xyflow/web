@@ -4,7 +4,8 @@ import reactFlowPackageJson from '@xyflow/react/package.json';
 import { Html } from '@/components/html.client';
 import { generateRootMetadata } from 'xy-shared/server';
 import { Fathom } from 'xy-shared';
-
+import { SubscriptionProvider } from '@/components/pro/Providers';
+import { getSubscription } from '@/server-actions';
 import './global.css';
 
 export const metadata = generateRootMetadata('React Flow', {
@@ -30,7 +31,9 @@ const RootLayout: FC<{
       <Head color={{ hue: 333, saturation: 80 }} />
       <body>
         <Fathom {...fathomOptions} />
-        {children}
+        <SubscriptionProvider value={await getSubscription()}>
+          {children}
+        </SubscriptionProvider>
       </body>
     </Html>
   );

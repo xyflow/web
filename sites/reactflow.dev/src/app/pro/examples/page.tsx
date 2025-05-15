@@ -111,7 +111,7 @@ const ProExamples: FC = async () => {
           <GridItem
             title="By the creators of React Flow"
             text="Feature-complete and crafted by the core team"
-            // @ts-ignore
+            // @ts-expect-error -- fixme
             icon={() => <Logo className="h-8 w-8 text-black" />}
           />
           <GridItem
