@@ -2875,24 +2875,6 @@ packages:
       react: '>=17'
       react-dom: '>=17'
 
-  '@xyflow/react@12.6.3':
-    resolution: {integrity: sha512-uZC/mkmNCPu6yJkgaxZQ939LRtUZSeB5yB7z1kkl/ivlYQp+bZnkNsE3CRsTSnWEj20Ic4r+FeIsmfnvSsDvZQ==}
-    peerDependencies:
-      react: '>=17'
-      react-dom: '>=17'
-
-  '@xyflow/react@12.6.3':
-    resolution: {integrity: sha512-uZC/mkmNCPu6yJkgaxZQ939LRtUZSeB5yB7z1kkl/ivlYQp+bZnkNsE3CRsTSnWEj20Ic4r+FeIsmfnvSsDvZQ==}
-    peerDependencies:
-      react: '>=17'
-      react-dom: '>=17'
-
-  '@xyflow/react@12.6.3':
-    resolution: {integrity: sha512-uZC/mkmNCPu6yJkgaxZQ939LRtUZSeB5yB7z1kkl/ivlYQp+bZnkNsE3CRsTSnWEj20Ic4r+FeIsmfnvSsDvZQ==}
-    peerDependencies:
-      react: '>=17'
-      react-dom: '>=17'
-
   '@xyflow/svelte@1.0.1':
     resolution: {integrity: sha512-wT2SNF4SeSqRwLieHhKOSRzojgnVuWFKGaoLyBw9oN6k7FnUZwzDfimFLnjwJPdKkS+QMKDZAQoYH9vBX8y6Sg==}
     peerDependencies:
@@ -9431,39 +9413,6 @@ snapshots:
   '@xyflow/react@12.6.2(@types/react@18.3.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@xyflow/system': 0.0.59
-      classcat: 5.0.5
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
-      zustand: 4.5.6(@types/react@18.3.20)(react@18.3.1)
-    transitivePeerDependencies:
-      - '@types/react'
-      - immer
-
-  '@xyflow/react@12.6.3(@types/react@18.3.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
-    dependencies:
-      '@xyflow/system': 0.0.60
-      classcat: 5.0.5
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
-      zustand: 4.5.6(@types/react@18.3.20)(react@18.3.1)
-    transitivePeerDependencies:
-      - '@types/react'
-      - immer
-
-  '@xyflow/react@12.6.3(@types/react@18.3.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
-    dependencies:
-      '@xyflow/system': 0.0.60
-      classcat: 5.0.5
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
-      zustand: 4.5.6(@types/react@18.3.20)(react@18.3.1)
-    transitivePeerDependencies:
-      - '@types/react'
-      - immer
-
-  '@xyflow/react@12.6.3(@types/react@18.3.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
-    dependencies:
-      '@xyflow/system': 0.0.60
       classcat: 5.0.5
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
