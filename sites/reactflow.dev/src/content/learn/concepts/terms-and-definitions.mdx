@@ -6,11 +6,11 @@ import { RemoteCodeViewer } from 'xy-shared/server';
 
 # Terms and Definitions
 
-React Flow is made up of three key components: nodes, edges and handles and a viewport. Let's go through each of them in more detail.
+React Flow is made up a few key components: nodes, edges and handles, viewports and connections. Let's go through each of them in more detail.
 
-## Nodes
+<RemoteCodeViewer route="learn/basic-terms" framework="react" showEditor={false} />
 
-<RemoteCodeViewer route="learn/basic-terms-nodes" framework="react" showEditor={false} />
+### Nodes
 
 By default, a node looks like the example above. Each node has an x- and y-coordinate, which tells it where it is placed in the viewport. React Flow comes out of the box with a few default node types, but customization is where the magic of React Flow truly happens.
 
@@ -18,25 +18,11 @@ You can design your nodes to work exactly the way you need them to—whether tha
 
 We have a guide on creating your own [Custom Nodes](/learn/customization/custom-nodes). You can find all the options for customizing your nodes in the [Node Options](/api-reference/types/node) documentation.
 
-## Handles
-
-<RemoteCodeViewer
-  route="learn/basic-terms-handles"
-  editorHeight="30vh"
-  framework="react"
-  showEditor={false}
-/>
+### Handles
 
 A handle (also known as a “port” in other libraries) is the attachment point where an edge connects to a node. By default, they appear as grey circles on the top, bottom, left, or right sides of a node. But, they are just div elements, and can be positioned and styled any way you'd like. When creating a custom node, you can include as many handles as needed. More information can be found in the [Handle](/api-reference/components/handle) docs.
 
-## Edges
-
-<RemoteCodeViewer
-  route="learn/basic-terms-edges"
-  editorHeight="30vh"
-  framework="react"
-  showEditor={false}
-/>
+### Edges
 
 Edges connect nodes together. Every edge needs a target and a source node. React Flow comes with four built-in [edges types](/examples/edges/edge-types): default (bezier), smoothstep, step and straight. An edge is SVG path that can be styled with CSS and is completely customizable. If you are using multiple handles, you can reference them individually to create multiple connections for a node.
 
@@ -48,18 +34,12 @@ Like custom nodes, you can also customize edges. Things that people do with cust
 
 You can find more information on the [custom edges api](/api-reference/types/edge-props) site.
 
-## Connection Line
+### Connection Line
 
 React Flow has built-in functionality to click-and-drag from one handle to another in order to create a new edge. While dragging, the placeholder edge is called a connection line. The connection line also comes with four types built-in and is customizable. You can find the props for configuring the connection line in the [props section](/api-reference/react-flow#connection-line-props).
 
-## Viewport
+### Viewport
 
-<RemoteCodeViewer
-  route="learn/basic-terms-viewport"
-  editorHeight="40vh"
-  framework="react"
-  showEditor={false}
-/>
 All of React Flow exists inside of the viewport. The viewport has x, y and zoom values.
 When you drag the pane, you change the x and y coordinates and when you zoom in or out you
 alter the zoom level.
