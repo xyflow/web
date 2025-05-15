@@ -27,9 +27,28 @@ for you.
     targetX,
     targetY,
   }));
+
+  const {
+    markerStart,
+    markerEnd,
+    interactionWidth,
+    label,
+    labelStyle,
+    labelX,
+    labelY
+  } = props;
 </script>
 
-<BaseEdge path={edgePath} {...props} />
+<BaseEdge
+  path={edgePath}
+  {markerStart}
+  {markerEnd}
+  {interactionWidth}
+  {label}
+  {labelStyle}
+  {labelX}
+  {labelY}
+/>
 ```
 
 ## Props
