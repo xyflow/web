@@ -14,7 +14,7 @@ body {
 
 .react-flow__node-annotation {
   font-size: 16px;
-  width: 250px;
+  max-width: 300px;
   color: #683bfa;
   position: absolute;
   box-shadow: none;
@@ -42,28 +42,28 @@ body {
 .arrow-top-right {
   right: 0;
   bottom: 0;
-  transform: translate(-20px, -20px) rotate(-120deg);
+  transform: translate(0px, -20px) rotate(-120deg);
   position: absolute;
 }
 
 .arrow-top-left {
-  right: 0;
+  left: 0;
   bottom: 0;
-  transform: translate(-20px, -20px) rotate(-120deg);
+  transform: translate(0px, -20px) rotate(110deg) scale(-1, 1);
   position: absolute;
 }
 
 .arrow-bottom-left {
   left: 0;
   bottom: 0;
-  transform: translate(10px, -20px) rotate(90deg) scale(-1, 1);
+  transform: translate(0px, -20px) rotate(90deg);
   position: absolute;
 }
 
 .arrow-bottom-right {
   right: 0;
   bottom: 0;
-  transform: translate(-30px, 10px) rotate(-40deg);
+  transform: translate(0px, 10px) rotate(-40deg);
   position: absolute;
 }
 
