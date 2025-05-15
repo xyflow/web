@@ -5,10 +5,12 @@ import {
   Background,
   Panel,
   useViewport,
+  useConnection,
 } from '@xyflow/react';
 
 import { useCallback, useState } from 'react';
 import { AnnotationNode } from './AnnotationNode';
+import NodeWrapper from './NodeWrapper';
 
 import '@xyflow/react/dist/style.css';
 
@@ -19,7 +21,6 @@ const nodeTypes = {
 const connectionAnnotation = {
   id: 'connection-annotation',
   type: 'annotation',
-  draggable: false,
   selectable: false,
   data: {
     label: 'this is a "connection"',
@@ -35,7 +36,7 @@ const initialNodes = [
     draggable: false,
     selectable: false,
     data: {
-      label: 'This is a "node".',
+      label: 'This is a "node"',
       arrowStyle: 'arrow-bottom-right',
     },
     position: { x: -80, y: -50 },
@@ -54,7 +55,7 @@ const initialNodes = [
     draggable: false,
     selectable: false,
     data: {
-      label: 'This is a "handle".',
+      label: 'This is a "handle"',
       arrowStyle: 'arrow-top-left',
     },
     position: { x: 235, y: 35 },
@@ -66,7 +67,7 @@ const initialNodes = [
     selectable: false,
     data: {
       level: 2,
-      label: 'This is an "edge".',
+      label: 'This is an "edge"',
       arrowStyle: 'arrow-top-right',
     },
     position: { x: 20, y: 120 },
@@ -85,22 +86,10 @@ const initialNodes = [
     draggable: false,
     selectable: false,
     data: {
-      label: 'Try dragging the handle.',
+      label: 'Try dragging the handle',
       arrowStyle: 'arrow-top-left',
     },
-    position: { x: 430, y: 230 },
-  },
-  {
-    id: 'viewport-annotation',
-    type: 'annotation',
-    draggable: false,
-    selectable: false,
-    data: {
-      label:
-        'The viewport is defined by x, y and zoom, which is the transform & scale applied to the flow',
-      arrowStyle: 'arrow-bottom-left',
-    },
-    position: { x: 10, y: 320 },
+    position: { x: 430, y: 240 },
   },
 ];
 
@@ -123,57 +112,78 @@ const initialEdges = [
   },
 ];
 
-function ViewportDisplay() {
-  const { x, y, zoom } = useViewport();
+function ViewportWithAnnotation() {
+  const viewport = useViewport();
 
   return (
-    <div
-      style={{
-        fontFamily: 'monospace',
-        background: 'white',
-        padding: '5px',
-        borderRadius: '3px',
-      }}
-    >
-      <div>x: {x.toFixed(2)}</div>
-      <div>y: {y.toFixed(2)}</div>
-      <div>zoom: {zoom.toFixed(2)}</div>
-    </div>
+    <>
+      <NodeWrapper bottom={100} left={0} width={420}>
+        <AnnotationNode
+          data={{
+            label:
+              'The viewport is defined by x, y and zoom, which is the transform & scale applied to the flow.',
+            arrowStyle:
+              'left: 0; bottom: 0; transform: translate(-25px, -15px) rotate(70deg) scale(1, 1);',
+          }}
+        />
+      </NodeWrapper>
+      <div
+        style={{
+          fontFamily: 'monospace',
+          background: 'white',
+          padding: '5px',
+          borderRadius: '3px',
+        }}
+      >
+        <div style={{ fontFamily: 'monospace' }}>
+          <div>x: {viewport.x.toFixed(2)}</div>
+          <div>y: {viewport.y.toFixed(2)}</div>
+          <div>zoom: {viewport.zoom.toFixed(2)}</div>
+        </div>
+      </div>
+    </>
   );
 }
 
 function Flow() {
   const [nodes, setNodes] = useState(initialNodes);
   const [edges, setEdges] = useState(initialEdges);
-  const [connectionInProgress, setConnectionInProgress] = useState(false);
+  const connection = useConnection();
+  const onMouseMove = useCallback(() => {
+    if (connection.inProgress) {
+      const { to } = connection;
 
-  const onMouseMove = useCallback(
-    (event) => {
-      if (connectionInProgress) {
-        const { clientX, clientY } = event;
-        const { top, left } = event.currentTarget.getBoundingClientRect();
-        const x = clientX - left;
-        const y = clientY - top;
+      const nodePosition = {
+        x: to.x,
+        y: to.y,
+      };
 
-        setNodes((prevNodes) => {
+      setNodes((prevNodes) => {
+        const nodeExists = prevNodes.some((node) => node.id === 'connection-annotation');
+
+        if (nodeExists) {
           return prevNodes.map((node) =>
             node.id === 'connection-annotation'
               ? {
                   ...node,
-                  position: { x: x - 100, y: y - 75 },
-                  hidden: false,
+                  position: nodePosition,
                 }
               : node,
           );
-        });
-      }
-    },
-    [connectionInProgress],
-  );
+        } else {
+          return [
+            ...prevNodes,
+            {
+              ...connectionAnnotation,
+              position: nodePosition,
+            },
+          ];
+        }
+      });
+    }
+  }, [connection]);
 
   const onConnectStart = useCallback(() => {
-    setConnectionInProgress(true);
-
     setNodes((prevNodes) => {
       const hasAnnotation = prevNodes.some((node) => node.id === 'connection-annotation');
 
@@ -185,16 +195,13 @@ function Flow() {
         ...prevNodes,
         {
           ...connectionAnnotation,
-          position: { x: 100, y: 100 },
-          hidden: true,
+          position: { x: 0, y: 0 },
         },
       ];
     });
   }, []);
 
   const onConnectEnd = useCallback(() => {
-    setConnectionInProgress(false);
-
     setNodes((prevNodes) =>
       prevNodes.filter((node) => node.id !== 'connection-annotation'),
     );
@@ -202,25 +209,31 @@ function Flow() {
 
   return (
     <div style={{ width: '100%', height: '100%' }} onMouseMove={onMouseMove}>
-      <ReactFlowProvider>
-        <ReactFlow
-          nodes={nodes}
-          edges={edges}
-          nodeTypes={nodeTypes}
-          onConnectStart={onConnectStart}
-          onConnectEnd={onConnectEnd}
-          fitView
-          preventScrolling={false}
-          style={{ backgroundColor: '#F7F9FB' }}
-        >
-          <Background />
-          <Panel position="bottom-left">
-            <ViewportDisplay />
-          </Panel>
-        </ReactFlow>
-      </ReactFlowProvider>
+      <ReactFlow
+        nodes={nodes}
+        edges={edges}
+        nodeTypes={nodeTypes}
+        onConnectStart={onConnectStart}
+        onConnectEnd={onConnectEnd}
+        fitView
+        preventScrolling={false}
+        style={{ backgroundColor: '#F7F9FB' }}
+      >
+        <Background />
+        <Panel position="bottom-left">
+          <ViewportWithAnnotation />
+        </Panel>
+      </ReactFlow>
     </div>
   );
 }
 
-export default Flow;
+function FlowWithProvider() {
+  return (
+    <ReactFlowProvider>
+      <Flow />
+    </ReactFlowProvider>
+  );
+}
+
+export default FlowWithProvider;

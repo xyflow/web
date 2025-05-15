@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import { MoveDown } from 'lucide-react';
 
 function AnnotationNode({ data }) {
   return (
@@ -6,7 +7,11 @@ function AnnotationNode({ data }) {
       <div className="annotation-content">
         <div>{data.label}</div>
       </div>
-      {data.arrowStyle && <div className={`annotation-arrow ${data.arrowStyle}`}>⤹</div>}
+      {data.arrowStyle && (
+        <div className={`annotation-arrow ${data.arrowStyle}`}>
+          <MoveDown />
+        </div>
+      )}
     </>
   );
 }

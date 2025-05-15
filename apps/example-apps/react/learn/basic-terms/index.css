@@ -42,14 +42,14 @@ body {
 .arrow-top-right {
   right: 0;
   bottom: 0;
-  transform: translate(0px, -20px) rotate(-120deg);
+  transform: translate(10px, -25px) rotate(-140deg);
   position: absolute;
 }
 
 .arrow-top-left {
   left: 0;
   bottom: 0;
-  transform: translate(0px, -20px) rotate(110deg) scale(-1, 1);
+  transform: translate(-5px, -25px) rotate(145deg) scale(-1, 1);
   position: absolute;
 }
 
@@ -63,7 +63,7 @@ body {
 .arrow-bottom-right {
   right: 0;
   bottom: 0;
-  transform: translate(0px, 10px) rotate(-40deg);
+  transform: translate(10px, 5px) rotate(-60deg);
   position: absolute;
 }
 

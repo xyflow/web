@@ -34,7 +34,7 @@
     data: {
       label: 'this is a "connection"',
       arrowStyle:
-        'right: 0; bottom: 0; transform: translate(-100px, -50px) rotate(-90deg) scale(-1, 1);',
+        'right: 0; bottom: 0; transform: translate(-120px, -50px) rotate(-70deg) scale(-1, 1);',
     },
     position: { x: 0, y: 0 },
   };
