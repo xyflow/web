@@ -1,6 +1,11 @@
 <script lang="ts">
-  import { writable } from 'svelte/store';
-  import { SvelteFlow, Background, type Node, type Edge } from '@xyflow/svelte';
+  import {
+    SvelteFlow,
+    Background,
+    type Node,
+    type Edge,
+    type NodeEventWithPointer,
+  } from '@xyflow/svelte';
 
   import ContextMenu from './ContextMenu.svelte';
 
@@ -8,14 +13,20 @@
 
   import '@xyflow/svelte/dist/style.css';
 
-  const nodes = writable<Node[]>(initialNodes);
-  const edges = writable<Edge[]>(initialEdges);
+  let nodes = $state.raw<Node[]>(initialNodes);
+  let edges = $state.raw<Edge[]>(initialEdges);
 
-  let menu: { id: string; top?: number; left?: number; right?: number; bottom?: number } | null;
-  let width: number;
-  let height: number;
+  let menu: {
+    id: string;
+    top?: number;
+    left?: number;
+    right?: number;
+    bottom?: number;
+  } | null = $state(null);
+  let clientWidth: number = $state();
+  let clientHeight: number = $state();
 
-  function handleContextMenu({ detail: { event, node } }) {
+  const handleContextMenu: NodeEventWithPointer = ({ event, node }) => {
     // Prevent native context menu from showing
     event.preventDefault();
 
@@ -23,12 +34,18 @@
     // doesn't get positioned off-screen.
     menu = {
       id: node.id,
-      top: event.clientY < height - 200 ? event.clientY : undefined,
-      left: event.clientX < width - 200 ? event.clientX : undefined,
-      right: event.clientX >= width - 200 ? width - event.clientX : undefined,
-      bottom: event.clientY >= height - 200 ? height - event.clientY : undefined
+      top: event.clientY < clientHeight - 200 ? event.clientY : undefined,
+      left: event.clientX < clientWidth - 200 ? event.clientX : undefined,
+      right:
+        event.clientX >= clientWidth - 200
+          ? clientWidth - event.clientX
+          : undefined,
+      bottom:
+        event.clientY >= clientHeight - 200
+          ? clientHeight - event.clientY
+          : undefined,
     };
-  }
+  };
 
   // Close the context menu if it's open whenever the window is clicked.
   function handlePaneClick() {
@@ -36,18 +53,18 @@
   }
 </script>
 
-<div style="height:100vh;" bind:clientWidth={width} bind:clientHeight={height}>
+<div style="height:100vh;" bind:clientWidth bind:clientHeight>
   <SvelteFlow
-    {nodes}
-    {edges}
-    on:nodecontextmenu={handleContextMenu}
-    on:paneclick={handlePaneClick}
+    bind:nodes
+    bind:edges
+    onnodecontextmenu={handleContextMenu}
+    onpaneclick={handlePaneClick}
     fitView
   >
     <Background />
     {#if menu}
       <ContextMenu
-        onClick={handlePaneClick}
+        onclick={handlePaneClick}
         id={menu.id}
         top={menu.top}
         left={menu.left}

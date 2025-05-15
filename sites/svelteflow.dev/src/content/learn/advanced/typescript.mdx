@@ -1,0 +1,242 @@
+---
+sidebarTitle: TypeScript
+description: A comprehensive guide to using Svelte Flow with TypeScript. Learn how to type nodes, edges, and custom components, handle type unions, and implement type-safe flow diagrams in your Svelte applications.
+---
+
+import { Callout } from 'nextra/components';
+
+# Usage with TypeScript
+
+Svelte Flow is written in TypeScript because we value the additional safety barrier it provides.
+We export all the types you need for correctly typing data structures and functions you pass to the Svelte Flow component. We also provide a way to extend the types of nodes and edges.
+
+## Basic Usage
+
+Let's start with the essential types needed for a basic implementation. While TypeScript can infer some types automatically, we'll define them explicitly for clarity.
+
+```svelte
+<script lang="ts">
+  import {
+    SvelteFlow,
+    Controls,
+    Background,
+    BackgroundVariant,
+    type Node,
+    type Edge,
+    type FitViewOptions,
+    type DefaultEdgeOptions,
+  } from '@xyflow/svelte';
+
+  import '@xyflow/svelte/dist/style.css';
+
+  let nodes = $state.raw<Node[]>([
+    {
+      id: '1',
+      type: 'input',
+      data: { label: 'Node 1' },
+      position: { x: 5, y: 5 },
+    },
+    {
+      id: '2',
+      type: 'default',
+      data: { label: 'Node 2' },
+      position: { x: 5, y: 100 },
+    },
+  ]);
+
+  let edges = $state.raw<Edge[]>([
+    { id: 'e1-2', source: '1', target: '2' }
+  ]);
+
+  const fitViewOptions: FitViewOptions = {
+    padding: 0.2,
+  };
+
+  const defaultEdgeOptions: DefaultEdgeOptions = {
+    animated: true,
+  };
+</script>
+
+<SvelteFlow
+  bind:nodes
+  bind:edges
+  fitView
+  {fitViewOptions}
+  {defaultEdgeOptions}
+>
+  <Controls />
+  <Background variant={BackgroundVariant.Dots} />
+</SvelteFlow>
+```
+
+### Custom Nodes
+
+When working with [custom nodes](/learn/customization/custom-nodes), you can extend the base `Node` type to include your custom data. There are two main approaches:
+
+1. For **multiple custom nodes**, specify a custom `Node` type as a generic to `NodeProps`:
+
+```svelte
+<script module>
+  export type NumberNodeType = Node<{ number: number }, 'number'>;
+</script>
+
+<script lang="ts">
+  import { Handle, Position, type NodeProps, type Node } from '@xyflow/svelte';
+
+  let { id, data }: NodeProps<NumberNodeType> = $props();
+</script>
+
+<div class="custom">
+  <div>A special number: {data.number}</div>
+  <Handle type="source" position={Position.Right} />
+</div>
+```
+
+⚠️ When defining node data separately, you must use `type` (interfaces won't work):
+
+```ts
+type NumberNodeData = { number: number };
+type NumberNodeType = Node<NumberNodeData, 'number'>;
+```
+
+2. For **a single custom node** that renders different content based on the node type, use a union type:
+
+```svelte
+<script module>
+  export type NumberNodeType = Node<{ number: number }, 'number'>;
+  export type TextNodeType = Node<{ text: string }, 'text'>;
+
+  export type NodeType = NumberNodeType | TextNodeType;
+</script>
+
+<script lang="ts">
+  import { Handle, Position, type NodeProps } from '@xyflow/svelte';
+
+  let { data }: NodeProps<NodeType> = $props();
+</script>
+
+<div class="custom">
+  {#if data.type === 'number'}
+    <div>A special number: {data.number}</div>
+  {:else}
+    <div>A special text: {data.text}</div>
+  {/if}
+  <Handle type="source" position={Position.Right} />
+</div>
+```
+
+### Custom Edges
+
+Similar to custom nodes, you can extend the base `Edge` type for [custom edges](/learn/customization/custom-edges):
+
+```svelte
+<script module>
+  export type EdgeType = Edge<{ value: number }, 'custom'>;
+</script>
+
+<script lang="ts">
+  import { getStraightPath, BaseEdge, type EdgeProps } from '@xyflow/svelte';
+
+  let { id, sourceX, sourceY, targetX, targetY }: EdgeProps<EdgeType> = $props();
+
+  let [edgePath] = $derived(getStraightPath({ sourceX, sourceY, targetX, targetY }));
+</script>
+
+<BaseEdge {id} path={edgePath} />
+```
+
+## Advanced Usage
+
+In complex applications, you'll likely have multiple custom nodes and edges with different data structures. When using built-in functions and hooks, you'll need to properly [narrow down](https://www.typescriptlang.org/docs/handbook/2/
+narrowing.html) the types to prevent runtime errors.
+
+### `Node` and `Edge` Type Unions
+
+Many functions, callbacks, and hooks (including the SvelteFlow component) expect `NodeType` or `EdgeType` generics. These are unions of all your custom node and edge types. As long as you've properly typed your data objects, you can use their exported types.
+
+<Callout type="info">
+  If you're using any built-in nodes ('input', 'output', 'default') or edges ('straight',
+  'step', 'smoothstep', 'bezier'), include the `BuiltInNode` and `BuiltInEdge` types from
+  `@xyflow/svelte` in your union type.
+</Callout>
+
+```svelte
+<script module>
+  import type { BuiltInNode, BuiltInEdge } from '@xyflow/svelte';
+
+  // Custom nodes
+  import type { NumberNodeType } from './NumberNode.svelte';
+  import type { TextNodeType } from './TextNode.svelte';
+
+  // Custom edge
+  import type { CustomEdgeType } from './CustomEdge.svelte';
+
+  export type NodeType = BuiltInNode | NumberNodeType | TextNodeType;
+  export type EdgeType = BuiltInEdge | CustomEdgeType;
+</script>
+
+<script lang="ts">
+  import { SvelteFlow, type NodeTypes, type EdgeTypes } from '@xyflow/svelte';
+  import NumberNode from './NumberNode.svelte';
+  import TextNode from './TextNode.svelte';
+  import CustomEdge from './CustomEdge.svelte';
+
+  const nodeTypes: NodeTypes = {
+    number: NumberNode,
+    text: TextNode,
+  };
+
+  const edgeTypes: EdgeTypes = {
+    custom: CustomEdge,
+  };
+
+  let nodes = $state.raw<NodeType[]>([]);
+  let edges = $state.raw<EdgeType[]>([]);
+</script>
+
+<SvelteFlow bind:nodes bind:edges {nodeTypes} {edgeTypes} fitView>
+  <!-- ... -->
+</SvelteFlow>
+```
+
+### Hooks
+
+You can use these type unions to properly type the return values of hooks:
+
+```svelte
+<script lang="ts">
+  import { useSvelteFlow, useNodeConnections, useNodesData } from '@xyflow/svelte';
+  import type { NodeType, EdgeType } from './types';
+
+  // Nodes and edges are now correctly typed
+  const { getNodes, getEdges } = useSvelteFlow<NodeType, EdgeType>();
+
+  const connections = useNodeConnections({
+    handleType: 'target',
+  });
+
+  const nodesData = useNodesData<NodeType>(connections.current.map(c => c.source));
+
+  $effect(() => {
+    nodesData.current.forEach(({ type, data }) => {
+      if (type === 'number') {
+        // Type-safe access to number property
+        console.log(data.number);
+      }
+    });
+  });
+</script>
+```
+
+### Type Guards
+
+TypeScript provides several ways to implement [type guards](https://www.typescriptlang.org/docs/handbook/2/narrowing.html#typeof-type-guards). One common approach is to create type guard functions like `isNumberNode` or `isTextNode` to filter specific nodes from a list:
+
+```ts
+function isNumberNode(node: NodeType): node is NumberNodeType {
+  return node.type === 'number';
+}
+
+// numberNodes is now correctly typed as NumberNodeType[]
+let numberNodes = $derived(nodes.filter(isNumberNode));
+```

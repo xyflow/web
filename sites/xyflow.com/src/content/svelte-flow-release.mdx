@@ -1,0 +1,140 @@
+---
+title: 'Svelte Flow 1.0 is here!'
+htmlTitle: 'Svelte Flow 1.0 is here!'
+description: 'The first major version for Svelte Flow, rewritten with full support for Svelte 5 and many new features.'
+intro: 'We celebrate the first major version graduation of Svelte Flow with a full Svelte 5 rewrite and many new features.'
+date: 14 May 2025
+authors: ['peter', 'moritz']
+tags: ['svelte-flow']
+image: '/img/blog/v11-reactflow-header.png'
+---
+
+import { Bleed, Callout } from 'nextra/components';
+import { Text, Image } from 'xy-shared';
+import SSRFlow from '@/components/SSRFlow';
+import { RemoteCodeViewer } from 'xy-shared/server';
+
+Dang, the kids grow up so fast. It feels like yesterday when Svelte Flow was taking its first steps, and then bam–its now a full-grown library, complaining about our lame music taste...
+
+And like any decent coming-of-age flick, there are some bumps along the way before you see the end credits roll over the sunset. For us, this meant rewriting Svelte Flow **twice** before landing where we are today. And it is better than ever! A good chunk of the glow-up comes from new possibilities in Svelte 5, and the rest comes down to building a Svelte library from the ground up.
+
+While there are many things to unpack about our journey with Svelte 5, that's a story for another day.
+
+<Callout type="info">
+  If you just want to know how to migrate to Svelte Flow 1.0, head over to the [migration
+  guide](https://svelteflow.dev/learn/troubleshooting/migrate-to-v1).
+</Callout>
+
+### TL;DR
+
+<div style={{ marginTop: -10 }} />
+
+- Lots of new features like reconnecting edges, improved fitView, key navigation, and better accessibility.
+- Written from the ground up for Svelte 5.
+- Better DX via TSDoc comments.
+- An overhauled [learn section](https://svelteflow.dev/learn) and automatically generated [API references](https://svelteflow.dev/api-reference).
+- Feature parity with [React Flow](https://reactflow.dev) for present and upcoming features.
+
+## Wait, what's Svelte Flow?
+
+For those new to Svelte Flow, it is a Svelte library for building node-based applications like workflow editors, data pipelines, or visual programming environments. With just a few lines of code, you get an interactive flow with zooming, panning, connecting nodes, and much more.
+
+```svelte filename="App.svelte"
+<script>
+  import { SvelteFlow, Background, Controls, Minimap } from '@xyflow/svelte';
+  import '@xyflow/svelte/dist/style.css';
+
+  let nodes = $state.raw([
+    {
+      id: '1',
+      type: 'input',
+      position: { x: 0, y: 0 },
+      data: { label: 'Hello' },
+    },
+    {
+      id: '2',
+      type: 'output',
+      position: { x: 100, y: 100 },
+      data: { label: 'World' },
+    },
+  ]);
+
+  let edges = $state.raw([
+    { id: '1-2', source: '1', target: '2', type: 'smoothstep', label: 'to the' },
+  ]);
+</script>
+
+<SvelteFlow bind:nodes bind:edges fitView>
+  <Background />
+  <Controls />
+  <Minimap />
+</SvelteFlow>
+```
+
+<Bleed>
+  <RemoteCodeViewer
+    route="posts/announcement"
+    framework="svelte"
+    showEditor={false}
+    showOpenInStackblitz={false}
+    showOpenInCodeSandbox={false}
+  />
+</Bleed>
+
+# New features and improvements
+
+One of the goals of our first major release was to close the last remaining gaps between Svelte Flow and React Flow. For us, this also marks a new commitment to develop new features for both libraries in tandem. So keep your eyes peeled for future releases! 👀
+
+- **[Reconnect edges](https://svelteflow.dev/examples/edges/reconnect-edge)**: You can reconnect your edges by using the new `<EdgeReconnectAnchor />` component. It can be used to add custom reconnection points on custom edges.
+- **Keyboard Navigation & A11y**: We added support for keyboard navigation and improved accessibility for screen readers. You can now navigate through nodes and edges using the arrow keys.
+- **Click Connect**: You can now create a new connection by clicking on a handle one by one.
+- **[Enhanced ViewportPortal](https://svelteflow.dev/api-reference/components/viewport-portal)**: We added a new `<ViewportPortal />` component that allows you to render content in the viewport of the flow. This is useful for rendering custom overlays or tooltips.
+- **Improved [fitView](https://svelteflow.dev/api-reference/hooks/use-svelte-flow#fitview)**: We finetuned the `fitView` function to better work with dynamically added nodes.
+- And countless other small improvements...
+
+# Embracing runes
+
+To create a stable API for the future, we fully embraced signals by converting all [stores](https://svelte.dev/docs/svelte/stores) to [runes](https://svelte.dev/docs/svelte/what-are-runes). In some instances, this was as easy as replacing `writable` with `$state`. In some other cases, this required us to rethink our general architecture. However, after a fair amount of tinkering, benchmarking, and restless nights spent dreaming about runes, we managed to simplify many parts of the library and even make it more performant.
+
+A big shoutout goes out to the Svelte team for their help during the turbulent era of the Svelte 5 Release Candidate! Fixes were delivered either within a couple of [hours](https://github.com/sveltejs/svelte/issues/12652) or sometimes in a matter of [minutes](https://github.com/sveltejs/svelte/issues/12302)!?
+
+# Svelte Flow in the wild
+
+I had a great time mingling with the community at [Svelte Summit](https://sveltesummit.com/)! In case you couldn't make it to Barcelona, [Ilja](https://github.com/fubits1) wrote a [highly accurate report](https://fubits.dev/notes/2025-05-10-svelte-summit-2025-spring-notes) that is worth a read. I even got to chat with people who are already using Svelte Flow - in production - today! And to prove to y'all we are not just pushing some vaporware here, take a look at some of these projects out in the wild!
+
+## [Windmill](https://windmill.dev/)
+
+An open-source developer platform and workflow engine using Svelte Flow to view and edit workflows.
+
+<Image
+  src="/img/blog/2025-svelte-release/windmill2.png"
+  alt="A screenshot of Windmill, a workflow engine."
+/>
+
+## [Sparrow](https://sparrowapp.dev/)
+
+A collaborative API testing workspace utilizing Svelte Flow for visualizing the shape and status of test runs.
+
+<Image
+  src="/img/blog/2025-svelte-release/sparrow.png"
+  alt="A screenshot of Sparrow, a API testing tool."
+/>
+
+## [Whimsy](https://whimsy.rocks/)
+
+A tiny game engine's visual scripting tool is powered by Svelte Flow.
+
+<Image
+  src="/img/blog/2025-svelte-release/whimsy.png"
+  alt="A screenshot of Whyimsy, a game creation engine."
+/>
+
+# Okay, next.
+
+Now that the cat is finally out of the bag, all that's missing is you! Do you have any feedback, ideas, need help, or just want to show us what you are building? Feel free to reach out and say hi on our [Discord](https://discord.gg/xyflow).
+
+Thanks to everyone who test, use, share, subscribe, and support our libraries and ecosystems.
+
+Sincerely, your xyflow team
+
+Abbey, Christopher, Moritz, and Peter

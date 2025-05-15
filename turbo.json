@@ -9,7 +9,6 @@
     "NPM_REACT_FLOW",
     "NPM_REACT_FLOW_LEGACY",
     "NPM_XYFLOW_REACT",
-    "NPM_SVELTE_FLOW_VERSION",
     "SVELTE_FLOW_VERSION",
     "REACT_FLOW_VERSION",
     "VERCEL_ENV",
@@ -37,11 +36,7 @@
       ]
     },
     "reactflow-website#build": {
-      "dependsOn": [
-        "^build",
-        "^ui-components#generate-registry",
-        "^example-apps#build"
-      ],
+      "dependsOn": ["^build", "^ui-components#generate-registry", "^example-apps#build"],
       "outputs": [".next/**", "!.next/cache/**"],
       "inputs": [
         "$TURBO_DEFAULT$",

@@ -118,7 +118,6 @@ const EdgesFlow = () => {
       onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
       onConnect={onConnect}
-      snapToGrid={true}
       edgeTypes={edgeTypes}
       nodeTypes={nodeTypes}
       fitView

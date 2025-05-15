@@ -4,20 +4,7 @@ description: The SvelteFlow component is the heart of your Svelte Flow applicati
 sidebarTitle: <SvelteFlow />
 ---
 
-import { PropsTable } from '@/components/props-table';
-import {
-  commonProps,
-  viewportProps,
-  edgeProps,
-  generalEventHandlerProps,
-  nodeEventHandlerProps,
-  edgeEventHandlerProps,
-  connectionEventHandlerProps,
-  paneEventHandlerProps,
-  interactionProps,
-  connectionLineProps,
-  keyboardProps,
-} from '@/references/SvelteFlow.ts';
+import { SvelteFlowAPIProps } from '@/references/SvelteFlow.props';
 
 # \<SvelteFlow />
 
@@ -27,22 +14,22 @@ The `<SvelteFlow />` component is the heart of your Svelte Flow application.
 
 ```svelte
 <script>
-  import { writable } from 'svelte/store';
   import { SvelteFlow } from '@xyflow/svelte';
+  import '@xyflow/svelte/dist/style.css';
 
-  const nodes = writable([
+  let nodes = $state.raw([
     { id: 'a', data: { label: 'node a' }, position: { x: 0, y: 0 } },
     { id: 'b', data: { label: 'node b' }, position: { x: 0, y: 100 } }
   ]);
 
-  const edges = writable([
+  let edges = $state.raw([
     { id: 'e1-2', source: 'a', target: 'b' }
   ]);
 </script>
 
 <SvelteFlow
-  nodes={nodes}
-  edges={edges}
+  bind:nodes
+  bind:edges
   fitView
 />
 ```
@@ -54,49 +41,65 @@ tried to document them in groups that make sense to help you find your way.
 
 These are the props you will most commonly use when working with Svelte Flow.
 
-<PropsTable {...commonProps} />
+<SvelteFlowAPIProps group="common" />
 
 ## Viewport props
 
-<PropsTable {...viewportProps} />
+<SvelteFlowAPIProps group="viewport" />
+
+## Node props
+
+<SvelteFlowAPIProps group="node" />
 
 ## Edge props
 
-<PropsTable {...edgeProps} />
+<SvelteFlowAPIProps group="edge" />
 
 ## Event handlers
 
 ### General Events
 
-<PropsTable {...generalEventHandlerProps} />
+<SvelteFlowAPIProps group="generalEvents" />
 
 ### Node Events
 
-<PropsTable {...nodeEventHandlerProps} />
+<SvelteFlowAPIProps group="nodeEvents" />
 
 ### Edge Events
 
-<PropsTable {...edgeEventHandlerProps} />
+<SvelteFlowAPIProps group="edgeEvents" />
 
-### Connection Events
+### Selection Events
 
-<PropsTable {...connectionEventHandlerProps} />
+<SvelteFlowAPIProps group="selectionEvents" />
 
 ### Pane Events
 
-<PropsTable {...paneEventHandlerProps} />
+<SvelteFlowAPIProps group="paneEvents" />
 
-## Keyboard props
+### Connection Events
 
-<PropsTable {...keyboardProps} />
-
-## Interaction props
-
-<PropsTable {...interactionProps} />
+<SvelteFlowAPIProps group="connectionEvents" />
 
 ## Connection line props
 
-<PropsTable {...connectionLineProps} />
+<SvelteFlowAPIProps group="connectionLine" />
+
+## Interaction props
+
+<SvelteFlowAPIProps group="interaction" />
+
+## Keyboard props
+
+<SvelteFlowAPIProps group="keyboard" />
+
+## Style props
+
+Applying certain classes to elements rendered inside the canvas will change how
+interactions are handled. These props let you configure those class names if you
+need to.
+
+<SvelteFlowAPIProps group="style" />
 
 ## Notes
 

@@ -3,7 +3,6 @@ import { ReactFlow, Background, MarkerType } from '@xyflow/react';
 
 import '@xyflow/react/dist/style.css';
 
-
 const defaultNodes = [
   {
     id: 'A',
@@ -194,7 +193,11 @@ export default function MarkersExample() {
           </marker>
         </defs>
       </svg>
-      <ReactFlow defaultNodes={defaultNodes} defaultEdges={defaultEdges} fitView style={{ backgroundColor: "#F7F9FB" }}>
+      <ReactFlow
+        defaultNodes={defaultNodes}
+        defaultEdges={defaultEdges}
+        fitView
+      >
         <Background />
       </ReactFlow>
     </>

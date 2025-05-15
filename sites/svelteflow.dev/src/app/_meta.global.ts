@@ -8,11 +8,33 @@ export default {
       index: '',
       'getting-started': {
         items: {
+          'key-concepts': '',
           installation: '',
           'building-a-flow': '',
+          'built-in-components': 'Built-in Components',
         },
       },
-      guides: '',
+      customization: {
+        title: 'Customizing Svelte Flow',
+        items: {
+          'custom-nodes': '',
+          'custom-edges': '',
+          theming: '',
+        },
+      },
+      layouting: {
+        items: {
+          'layouting-libraries': '',
+          'sub-flows': '',
+        },
+      },
+      advanced: {
+        title: 'Advanced Use',
+        items: {
+          typescript: '',
+          'server-side-rendering': '',
+        },
+      },
       'api-reference': { href: '/api-reference' },
     },
   },
@@ -39,25 +61,7 @@ export default {
         },
       },
       overview: '',
-      nodes: {
-        items: {
-          'custom-node': '',
-          'update-node': '',
-          stress: '',
-          'drag-handle': '',
-          'add-node-on-edge-drop': '',
-          'proximity-connect': '',
-          'node-resizer': '',
-          'easy-connect': '',
-          'connection-limit': '',
-          intersections: '',
-        },
-      },
-      edges: '',
-      layout: '',
-      interaction: '',
-      styling: '',
-      misc: '',
+      // Rest of examples are added in `(content-pages)/layout.tsx` file
     },
   },
   showcase: '',

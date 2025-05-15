@@ -1,34 +1,29 @@
 <script>
-  import { writable } from 'svelte/store';
-  import { SvelteFlow, Background, Controls } from '@xyflow/svelte';
-
+  import { SvelteFlow, Background } from '@xyflow/svelte';
   import '@xyflow/svelte/dist/style.css';
 
-  const nodes = writable([
+  let nodes = $state.raw([
     {
-      id: '1', // required and needs to be a string
-      position: { x: 0, y: 0 }, // required
-      data: { label: 'hey' } // required
+      id: '1',
+      type: 'input',
+      position: { x: 0, y: 0 },
+      data: { label: 'Hello' },
     },
     {
       id: '2',
+      type: 'output',
       position: { x: 100, y: 100 },
-      data: { label: 'world' }
-    }
+      data: { label: 'World' },
+    },
   ]);
 
-  const edges = writable([{ id: '1-2', source: '1', target: '2' }]);
+  let edges = $state.raw([
+    { id: 'e1-2', source: '1', target: '2', type: 'smoothstep', label: 'to the' },
+  ]);
 </script>
 
-<main>
-  <SvelteFlow {nodes} {edges} fitView>
-    <Background bgColor="rgba(126,159,219,0.5)" patternColor="white" />
-    <Controls showInteractive={false} />
+<div style:width="100vw" style:height="100vh">
+  <SvelteFlow bind:nodes bind:edges fitView>
+    <Background />
   </SvelteFlow>
-</main>
-
-<style>
-  main {
-    height: 100vh;
-  }
-</style>
+</div>

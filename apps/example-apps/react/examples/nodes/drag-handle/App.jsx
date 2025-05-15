@@ -9,7 +9,6 @@ import {
 import DragHandleNode from './DragHandleNode';
 import '@xyflow/react/dist/style.css';
 
-
 const nodeTypes = {
   dragHandleNode: DragHandleNode,
 };
@@ -31,7 +30,6 @@ const DragHandleFlow = () => {
 
   return (
     <ReactFlow
-      style={{ backgroundColor: "#F7F9FB" }}
       nodes={nodes}
       edges={edges}
       onNodesChange={onNodesChange}

@@ -1,31 +1,24 @@
 <script lang="ts">
-  import { Handle, Position, type NodeProps } from '@xyflow/svelte';
+  import { Handle, type Node, Position, type NodeProps } from '@xyflow/svelte';
   import NodeWrapper from './NodeWrapper.svelte';
-  import type { NodeData } from './nodes-and-edges';
+  import { flowState, type NodeData } from './nodes-and-edges.svelte';
 
-  type $$Props = NodeProps;
-  export let data: NodeData;
-  const { label, flowState } = data;
+  let { data }: NodeProps<Node<NodeData>> = $props();
 
   const options = ['cube', 'pyramid'];
-
-  let selectedShape = $flowState.shape;
-  $: {
-    $flowState.shape = selectedShape;
-  }
 </script>
 
-<NodeWrapper {label}>
+<NodeWrapper label={data.label}>
   <Handle type="source" position={Position.Right} />
   <div class="flex flex-col nodrag">
     {#each options as option}
       <label class="flex">
         <input
-          bind:group={selectedShape}
+          bind:group={flowState.shape}
           class="accent-[#ff4000]"
           type="radio"
           value={option}
-          checked={selectedShape === option}
+          checked={flowState.shape === option}
         />
         <span class="ml-2">{option}</span>
       </label>

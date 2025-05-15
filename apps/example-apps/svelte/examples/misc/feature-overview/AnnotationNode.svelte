@@ -1,17 +1,21 @@
-<script lang="ts">
-  import { type NodeProps } from '@xyflow/svelte';
-  import type { AnnotationNode } from './types';
+<script module>
+  import type { Node, NodeProps } from '@xyflow/svelte';
 
-  type $$Props = NodeProps<AnnotationNode>;
-  $$restProps;
-
-  export let data: $$Props['data'];
+  export type AnnotationNode = Node<{
+    label: string;
+    level: number;
+    arrowStyle?: string;
+  }>;
 </script>
 
-<div style="padding: 10px; display: flex">
-  <div style="marginRight: 4px">{data.level}.</div>
+<script lang="ts">
+  let { data }: NodeProps<AnnotationNode> = $props();
+</script>
+
+<div class="annotation-content">
+  <div class="annotation-level">{data.level}.</div>
   <div>{data.label}</div>
 </div>
 {#if data.arrowStyle}
-  <div class="arrow" style={data.arrowStyle}>⤹</div>
+  <div class="annotation-arrow" style={data.arrowStyle}>⤹</div>
 {/if}

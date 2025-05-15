@@ -5,33 +5,26 @@ export const initialNodes: Node[] = [
     id: '1',
     type: 'custom',
     position: { x: 0, y: 0 },
-    data: {}
+    data: {},
   },
   {
     id: '2',
     type: 'custom',
     position: { x: 250, y: 320 },
-    data: {}
+    data: {},
   },
   {
     id: '3',
     type: 'custom',
     position: { x: 40, y: 300 },
-    data: {}
+    data: {},
   },
   {
     id: '4',
     type: 'custom',
     position: { x: 300, y: 0 },
-    data: {}
-  }
+    data: {},
+  },
 ];
 
-export const initialEdges: Edge[] = [
-  {
-    id: '1',
-    source: '1',
-    target: '2',
-    type: 'floating'
-  }
-];
+export const initialEdges: Edge[] = [];

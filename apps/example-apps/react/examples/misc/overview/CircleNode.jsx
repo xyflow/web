@@ -1,23 +1,17 @@
 import React, { memo } from 'react';
-import { Handle, useStore, Position } from '@xyflow/react';
+import { Handle, Position } from '@xyflow/react';
 
-export default memo(({ id }) => {
-  const label = useStore((s) => {
-    const node = s.nodeLookup.get(id);
-
-    if (!node) {
-      return null;
-    }
-
-    return `Position x:${parseInt(node.position.x)} y:${parseInt(
-      node.position.y,
-    )}`;
-  });
+export default memo(({ id, positionAbsoluteX, positionAbsoluteY }) => {
+  const label = `Position x:${Math.round(positionAbsoluteX)} y:${Math.round(positionAbsoluteY)}`;
 
   return (
     <div>
       <div>{label || 'no node connected'}</div>
-      <Handle type="target" position={Position.Left} className='custom-handle' />
+      <Handle
+        type="target"
+        position={Position.Left}
+        className="custom-handle"
+      />
     </div>
   );
 });

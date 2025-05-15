@@ -13,11 +13,12 @@ import {
 import { ProjectPreview } from 'xy-shared';
 
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
-import { getPageMap } from 'nextra/page-map';
 import { Folder } from 'nextra';
+import { getPageMap as getExamplesPageMap } from '@/app/(content-pages)/examples/[...slug]/utils';
 
 export const ExamplesOverview: FC = async () => {
-  const pageMap = await getPageMap('/examples');
+  const { children: pageMap } = await getExamplesPageMap();
+
   return (
     <>
       <Section className="!px-0">
@@ -25,7 +26,7 @@ export const ExamplesOverview: FC = async () => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
             <Container className="col-span-2 aspect-video">
               <Image
-                src={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/examples/misc/feature-overview/preview.jpg`}
+                src={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/examples/misc/feature-overview/preview.jpg?v=1`}
                 width={1024}
                 height={768}
                 alt="Feature Overview Example Preview"
@@ -39,9 +40,9 @@ export const ExamplesOverview: FC = async () => {
                 Feature Overview
               </Heading>
               <Text variant="light">
-                This is an overview example Svelte Flow{"'"}s basic features.
-                You can see built-in node and edge types, sub flows as well as
-                NodeToolbar and NodeResizer components.
+                This is an overview example Svelte Flow{"'"}s basic features. You can see
+                built-in node and edge types, sub flows as well as NodeToolbar and
+                NodeResizer components.
               </Text>
               <div className="mt-6 flex flex-wrap gap-2 items-center group-hover:text-primary">
                 <Button
@@ -79,7 +80,7 @@ export const ExamplesOverview: FC = async () => {
                       className="border-none py-6 lg:py-8 lg:px-0 hover:bg-white group"
                     >
                       <ProjectPreview
-                        image={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte${example.route}/preview.jpg`}
+                        image={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte${example.route}/preview.jpg?v=1`}
                         title={
                           <div className="flex items-center">
                             {example.frontMatter.title}

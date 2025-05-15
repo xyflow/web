@@ -1,15 +1,11 @@
 ---
 title: The ControlButton component
 sidebarTitle: '<ControlButton />'
-description:
-  'The ControlButton component is used to render custom/ additional buttons for
+description: 'The ControlButton component is used to render custom/ additional buttons for
   the Controls component.'
 ---
 
-import { PropsTable } from '@/components/props-table';
-import { controlsProps } from '@/references/components/Controls.ts';
-
-# &lt;ControlButton />
+# \<ControlButton />
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/plugins/Controls/ControlButton.svelte)
 
@@ -22,8 +18,14 @@ for the `<Controls />` component.
 </script>
 
 <Controls>
-  <ControlButton on:click={() => console.log('⚡️')}>
+  <ControlButton onclick={() => console.log('⚡️')}>
     ⚡️
   </ControlButton>
 </Controls>
 ```
+
+## Props
+
+The type for props of `<ControlButton />` component is exported as `ControlButtonProps`. Additionally, it extends the props of `<button />`.
+
+<APIDocs componentName="ControlButton" groupKeys="HTMLButtonAttributes" />
