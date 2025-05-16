@@ -76,12 +76,12 @@ export async function fetchNotionShowcases(
       ],
     },
     sorts: [
+      // {
+      //   property: 'Priority',
+      //   direction: 'ascending',
+      // },
       {
-        property: 'Priority',
-        direction: 'ascending',
-      },
-      {
-        property: 'title',
+        property: 'Name',
         direction: 'ascending',
       },
     ],
@@ -104,8 +104,7 @@ export async function fetchNotionShowcases(
       }
 
       const image =
-        process.env.BLOB_READ_WRITE_TOKEN &&
-        process.env.NODE_ENV === 'production'
+        process.env.BLOB_READ_WRITE_TOKEN && process.env.NODE_ENV === 'production'
           ? await downloadImageToVercelBlob(imageSrc, id)
           : imageSrc;
 
