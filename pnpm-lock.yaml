@@ -55,8 +55,8 @@ importers:
         specifier: ^12.6.0
         version: 12.6.2(@types/react@18.3.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@xyflow/svelte':
-        specifier: 1.0.1
-        version: 1.0.1(svelte@5.28.2)
+        specifier: 1.0.2
+        version: 1.0.2(svelte@5.28.2)
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -2877,22 +2877,11 @@ packages:
       react: '>=17'
       react-dom: '>=17'
 
-  '@xyflow/react@12.6.3':
-    resolution: {integrity: sha512-uZC/mkmNCPu6yJkgaxZQ939LRtUZSeB5yB7z1kkl/ivlYQp+bZnkNsE3CRsTSnWEj20Ic4r+FeIsmfnvSsDvZQ==}
-    peerDependencies:
-      react: '>=17'
-      react-dom: '>=17'
-
   '@xyflow/react@12.6.4':
     resolution: {integrity: sha512-/dOQ43Nu217cwHzy7f8kNUrFMeJJENzftVgT2VdFFHi6fHlG83pF+gLmvkRW9Be7alCsR6G+LFxxCdsQQbazHg==}
     peerDependencies:
       react: '>=17'
       react-dom: '>=17'
-
-  '@xyflow/svelte@1.0.1':
-    resolution: {integrity: sha512-wT2SNF4SeSqRwLieHhKOSRzojgnVuWFKGaoLyBw9oN6k7FnUZwzDfimFLnjwJPdKkS+QMKDZAQoYH9vBX8y6Sg==}
-    peerDependencies:
-      svelte: ^5.25.0
 
   '@xyflow/svelte@1.0.2':
     resolution: {integrity: sha512-biNnzWRmKF/m7t7iY9wt3/KhoTyA8XGbS0Vix3HCL9vrULDF14R1VsMIOxKZib1GJfG+f1/cD2dQ9kplfPLs/Q==}
@@ -2904,9 +2893,6 @@ packages:
 
   '@xyflow/system@0.0.59':
     resolution: {integrity: sha512-+xgqYhoBv5F10TQx0SiKZR/DcWtuxFYR+e/LluHb7DMtX4SsMDutZWEJ4da4fDco25jZxw5G9fOlmk7MWvYd5Q==}
-
-  '@xyflow/system@0.0.60':
-    resolution: {integrity: sha512-vPewwUwxYfbt6+Q6uuWJAiJam6AfpqNEDsZVWZAH9XC4P644AIVlYbr/5OC6s6oQPvbGjCSTIksAuN+lBPHTgg==}
 
   '@xyflow/system@0.0.61':
     resolution: {integrity: sha512-TsZG/Ez8dzxX6/Ol44LvFqVZsYvyz6dpDlAQZZk6hTL7JLGO5vN3dboRJqMwU8/Qtr5IEv5YBzojjAwIqW1HCA==}
@@ -9447,17 +9433,6 @@ snapshots:
       - '@types/react'
       - immer
 
-  '@xyflow/react@12.6.3(@types/react@18.3.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
-    dependencies:
-      '@xyflow/system': 0.0.60
-      classcat: 5.0.5
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
-      zustand: 4.5.6(@types/react@18.3.20)(react@18.3.1)
-    transitivePeerDependencies:
-      - '@types/react'
-      - immer
-
   '@xyflow/react@12.6.4(@types/react@18.3.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@xyflow/system': 0.0.61
@@ -9468,12 +9443,6 @@ snapshots:
     transitivePeerDependencies:
       - '@types/react'
       - immer
-
-  '@xyflow/svelte@1.0.1(svelte@5.28.2)':
-    dependencies:
-      '@svelte-put/shortcut': 4.1.0(svelte@5.28.2)
-      '@xyflow/system': 0.0.60
-      svelte: 5.28.2
 
   '@xyflow/svelte@1.0.2(svelte@5.28.2)':
     dependencies:
@@ -9492,16 +9461,6 @@ snapshots:
       d3-zoom: 3.0.0
 
   '@xyflow/system@0.0.59':
-    dependencies:
-      '@types/d3-drag': 3.0.7
-      '@types/d3-selection': 3.0.11
-      '@types/d3-transition': 3.0.9
-      '@types/d3-zoom': 3.0.8
-      d3-drag: 3.0.0
-      d3-selection: 3.0.0
-      d3-zoom: 3.0.0
-
-  '@xyflow/system@0.0.60':
     dependencies:
       '@types/d3-drag': 3.0.7
       '@types/d3-selection': 3.0.11
