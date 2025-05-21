@@ -626,8 +626,8 @@ importers:
         specifier: 12.6.4
         version: 12.6.4(@types/react@18.3.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@xyflow/svelte':
-        specifier: 1.0.1
-        version: 1.0.1(svelte@5.28.2)
+        specifier: 1.0.2
+        version: 1.0.2(svelte@5.28.2)
       '@xyflow/xy-ui':
         specifier: workspace:*
         version: link:../../packages/xy-ui
@@ -2891,6 +2891,11 @@ packages:
 
   '@xyflow/svelte@1.0.1':
     resolution: {integrity: sha512-wT2SNF4SeSqRwLieHhKOSRzojgnVuWFKGaoLyBw9oN6k7FnUZwzDfimFLnjwJPdKkS+QMKDZAQoYH9vBX8y6Sg==}
+    peerDependencies:
+      svelte: ^5.25.0
+
+  '@xyflow/svelte@1.0.2':
+    resolution: {integrity: sha512-biNnzWRmKF/m7t7iY9wt3/KhoTyA8XGbS0Vix3HCL9vrULDF14R1VsMIOxKZib1GJfG+f1/cD2dQ9kplfPLs/Q==}
     peerDependencies:
       svelte: ^5.25.0
 
@@ -9468,6 +9473,12 @@ snapshots:
     dependencies:
       '@svelte-put/shortcut': 4.1.0(svelte@5.28.2)
       '@xyflow/system': 0.0.60
+      svelte: 5.28.2
+
+  '@xyflow/svelte@1.0.2(svelte@5.28.2)':
+    dependencies:
+      '@svelte-put/shortcut': 4.1.0(svelte@5.28.2)
+      '@xyflow/system': 0.0.61
       svelte: 5.28.2
 
   '@xyflow/system@0.0.57':
