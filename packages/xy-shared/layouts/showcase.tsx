@@ -60,9 +60,7 @@ export function ShowcaseLayout({
     const visibleShowcases = showcases.filter(
       ({ tags }) =>
         selected.size === 0 ||
-        Array.from(selected).every((tag) =>
-          tags.some(({ name }) => name === tag),
-        ),
+        Array.from(selected).every((tag) => tags.some(({ name }) => name === tag)),
     );
 
     let currentCaseStudy = caseStudies[0];
@@ -93,12 +91,7 @@ export function ShowcaseLayout({
 
       <div className="flex justify-center items-center flex-wrap gap-x-2 gap-y-4 max-w-4xl mx-auto">
         {Array.from(all).map((tag, i) => (
-          <Tag
-            key={i}
-            name={tag}
-            selected={selected.has(tag)}
-            onClick={toggle}
-          />
+          <Tag key={i} name={tag} selected={selected.has(tag)} onClick={toggle} />
         ))}
       </div>
 
@@ -186,10 +179,7 @@ function Tag({ name, selected = false, onClick, className }: TagProps) {
 
 function useTags(showcases: ShowcaseItem[]) {
   const all = useMemo(
-    () =>
-      new Set([
-        ...showcases.flatMap(({ tags }) => tags.map((tag) => tag.name)),
-      ]),
+    () => new Set([...showcases.flatMap(({ tags }) => tags.map((tag) => tag.name))]),
     [showcases],
   );
   const [selected, setSelected] = useState<Set<string>>(new Set());
@@ -241,11 +231,7 @@ function CaseStudyPreview({
             <Link href={route}>Read Case Study</Link>
           </Button>
           <Button asChild variant="link" className="text-md font-bold">
-            <a
-              href={data.project_url}
-              target="_blank"
-              className="flex items-center"
-            >
+            <a href={data.project_url} target="_blank" className="flex items-center">
               Project Website <ArrowRightCircleIcon className="ml-1 w-4 h-4" />
             </a>
           </Button>
