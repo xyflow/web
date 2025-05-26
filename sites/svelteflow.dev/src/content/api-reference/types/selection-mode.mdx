@@ -1,0 +1,16 @@
+---
+description: Controls how nodes are selected in SvelteFlow, offering either full or partial selection behavior.
+---
+
+# SelectionMode
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/types/general.ts#L223)
+
+The `SelectionMode` enum determines how node selection works. Use `Full` to require the entire node to be within the selection area, or `Partial` to allow any overlap.
+
+```ts
+enum SelectionMode {
+  Partial = 'partial',
+  Full = 'full',
+}
+```

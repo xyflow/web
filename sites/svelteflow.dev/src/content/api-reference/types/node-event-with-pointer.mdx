@@ -1,0 +1,18 @@
+---
+description: Event type that includes pointer information for node interactions in SvelteFlow.
+---
+
+# NodeEventWithPointer
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/types/events.ts#4)
+
+The `NodeEventWithPointer` type represents an event that occurs during node interactions, including pointer position and event details. It extends the base node event with pointer-specific information.
+
+```ts
+type NodeEventWithPointer<NodeType extends Node = Node> = {
+  event: PointerEvent;
+  node: NodeType;
+};
+```
+
+<APIDocs typeName="NodeEventWithPointer" packageName="svelte" />

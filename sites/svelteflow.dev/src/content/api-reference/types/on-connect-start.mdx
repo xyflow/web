@@ -1,0 +1,18 @@
+---
+description: Callback function triggered when starting to create a connection in SvelteFlow.
+---
+
+# OnConnectStart
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/types/general.ts#L79)
+
+The `OnConnectStart` type is a callback function that is called when starting to create a connection between nodes. It receives the mouse or touch event and parameters about the connection being started.
+
+```ts
+type OnConnectStart = (
+  event: MouseEvent | TouchEvent,
+  params: OnConnectStartParams,
+) => void;
+```
+
+<APIDocs typeName="OnConnectStart" packageName="system" />

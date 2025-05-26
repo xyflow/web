@@ -1,0 +1,20 @@
+---
+description: Callback function triggered when finishing or canceling the reconnection of an edge in SvelteFlow.
+---
+
+# OnReconnectEnd
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/types/general.ts#L89)
+
+The `OnReconnectEnd` type is a callback that fires when the reconnection process for an edge is completed or canceled. It receives the triggering event, the edge, the handle type, and the final connection state.
+
+```ts
+type OnReconnectEnd<EdgeType extends EdgeBase = EdgeBase> = (
+  event: MouseEvent | TouchEvent,
+  edge: EdgeType,
+  handleType: HandleType,
+  connectionState: FinalConnectionState,
+) => void;
+```
+
+<APIDocs typeName="OnReconnectEnd" packageName="svelte" />
