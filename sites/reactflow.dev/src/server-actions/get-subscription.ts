@@ -20,7 +20,12 @@ export async function getSubscription(): Promise<{
   teamPlan: SubscriptionPlan;
 }> {
   const nhost = await getNhost();
-  const userId = nhost.auth.getUser()!.id!;
+  if (!userId) {
+    return {
+      plan: SubscriptionPlan.FREE,
+      teamPlan: SubscriptionPlan.FREE,
+    };
+  }
 
   const { data, error } = await nhost.graphql.request(GET_SUBSCRIPTION, { userId });
 
