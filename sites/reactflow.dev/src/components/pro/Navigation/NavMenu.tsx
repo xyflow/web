@@ -71,8 +71,7 @@ const NavMenu: FC<{ user: User | null }> = ({ user }) => {
       <SelectContent align="end">
         <SelectGroup>
           <SelectLabel className="text-sm font-normal max-w-[200px] px-2 py-1">
-            You are signed in as <span className="font-bold">{user.email}</span> and
-            subscribed to the{' '}
+            You are signed in as <strong>{user.email}</strong> and subscribed to the{' '}
             <span className="text-primary font-bold">
               <PlanLabel />
             </span>{' '}
