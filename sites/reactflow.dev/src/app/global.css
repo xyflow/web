@@ -53,3 +53,8 @@ html body[data-scroll-locked] {
   flex-grow: 1;
   width: 100%;
 }
+
+:root {
+  /* Align Algolia's primary color with the primary color used in React Flow theme */
+  --docsearch-primary-color: hsl(var(--primary));
+}
