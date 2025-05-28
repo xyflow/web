@@ -21,7 +21,7 @@ export default function ReactFlowProPricing() {
       />
       <PricingTable />
       <SubscribeSection
-        btnLink={`${process.env.NEXT_PUBLIC_PRO_PLATFORM_URL}/signup`}
+        btnLink="/pro/signup"
         btnLabel="Sign Up Now"
       />
     </BaseLayout>

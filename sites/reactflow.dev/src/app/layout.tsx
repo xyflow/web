@@ -1,20 +1,20 @@
-import NextLink from 'next/link';
 import { Folder, MdxFile, MetaJsonFile } from 'nextra';
 import { getPageMap } from 'nextra/page-map';
-import { SparklesIcon } from '@heroicons/react/24/outline';
 import { Search, SidebarTitle } from 'xy-shared';
-import { Button, defaultFooterCategories } from '@xyflow/xy-ui';
-import { NextraLayout } from '@/components/nextra-layout';
+import { defaultFooterCategories, Footer as XYFooter, LogoLabel } from '@xyflow/xy-ui';
 import { getPageMap as getExamplesPageMap } from './(content-pages)/examples/[...slug]/utils';
 import type { FC, ReactNode } from 'react';
 import { Head } from 'nextra/components';
 import reactFlowPackageJson from '@xyflow/react/package.json';
 import { Html } from '@/components/html.client';
-import { generateRootMetadata } from 'xy-shared/server';
+import { generateRootMetadata, getLastChangelog, TOC } from 'xy-shared/server';
 import { Fathom } from 'xy-shared';
 import { SubscriptionProvider } from '@/components/pro/Providers';
 import { getSubscription } from '@/server-actions';
+import { Layout as NextraLayout, Navbar as NextraNavbar } from 'nextra-theme-docs';
+import NavMenu from '@/components/pro/Navigation/NavMenu';
 import './global.css';
+import { getNhost } from '@/utils/nhost';
 
 export const metadata = generateRootMetadata('React Flow', {
   description:
@@ -86,6 +86,9 @@ const RootLayout: FC<{ children: ReactNode }> = async ({ children }) => {
           ),
       }));
   }
+  const nhost = await getNhost();
+  const user = nhost.auth.getUser();
+
   return (
     <Html>
       <Head color={{ hue: 333, saturation: 80 }} />
@@ -93,31 +96,46 @@ const RootLayout: FC<{ children: ReactNode }> = async ({ children }) => {
         <Fathom {...fathomOptions} />
         <SubscriptionProvider value={await getSubscription()}>
           <NextraLayout
-            pageMap={pageMap}
-            footerCategories={{
-              Docs: [
-                { title: 'Getting Started', route: '/learn' },
-                { title: 'API Reference', route: '/api-reference' },
-                { title: 'Examples', route: '/examples' },
-                { title: 'Components', route: '/components' },
-                { title: 'Showcase', route: '/showcase' },
-                { title: 'Playground', route: 'https://play.reactflow.dev' },
-              ],
-              ...remainingCategories,
-              Legal: [
-                {
-                  title: 'MIT License',
-                  route: 'https://github.com/xyflow/xyflow/blob/main/LICENSE',
-                },
-                {
-                  title: 'Code of Conduct',
-                  route: 'https://github.com/xyflow/xyflow/blob/main/CODE_OF_CONDUCT.md',
-                },
-                { title: 'Imprint', route: 'https://xyflow.com/imprint' },
-              ],
-            }}
+            darkMode={false}
+            docsRepositoryBase="https://github.com/xyflow/web/tree/main/sites/reactflow.dev"
+            editLink="Edit this page on GitHub"
+            feedback={{ content: null }}
+            footer={
+              <XYFooter
+                baseUrl="https://reactflow.dev"
+                categories={{
+                  Docs: [
+                    { title: 'Getting Started', route: '/learn' },
+                    { title: 'API Reference', route: '/api-reference' },
+                    { title: 'Examples', route: '/examples' },
+                    { title: 'Components', route: '/components' },
+                    { title: 'Showcase', route: '/showcase' },
+                    { title: 'Playground', route: 'https://play.reactflow.dev' },
+                  ],
+                  ...remainingCategories,
+                  Legal: [
+                    {
+                      title: 'MIT License',
+                      route: 'https://github.com/xyflow/xyflow/blob/main/LICENSE',
+                    },
+                    {
+                      title: 'Code of Conduct',
+                      route:
+                        'https://github.com/xyflow/xyflow/blob/main/CODE_OF_CONDUCT.md',
+                    },
+                    { title: 'Imprint', route: 'https://xyflow.com/imprint' },
+                  ],
+                }}
+              />
+            }
             navbar={
-              <>
+              <NextraNavbar
+                align="left"
+                logo={
+                  <LogoLabel label="React Flow" labelClassName="mr-5 md:max-lg:hidden" />
+                }
+                logoLink={false}
+              >
                 <Search />
                 <a
                   className="xy-link-gray x:focus-visible:nextra-focus"
@@ -151,15 +169,18 @@ const RootLayout: FC<{ children: ReactNode }> = async ({ children }) => {
                     <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z" />
                   </svg>
                 </a>
-                <Button asChild className="px-4 flex gap-1">
-                  <NextLink href="/pro">
-                    <SparklesIcon height="16" />
-                    <span className="max-[1100px]:hidden">React Flow</span>
-                    Pro
-                  </NextLink>
-                </Button>
-              </>
+                <NavMenu user={user} />
+              </NextraNavbar>
             }
+            nextThemes={{ forcedTheme: 'light', defaultTheme: 'light' }}
+            pageMap={pageMap}
+            // Set to null to avoid rendering search in mobile nav, since we added search in navbar already
+            search={null}
+            sidebar={{ toggleButton: false }}
+            toc={{
+              backToTop: null,
+              extraContent: <TOC pageMap={await getLastChangelog()} />,
+            }}
           >
             {children}
           </NextraLayout>
