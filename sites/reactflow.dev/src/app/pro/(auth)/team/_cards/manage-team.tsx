@@ -76,7 +76,7 @@ const ManageTeamCard: FC<{ user: User; teamSubscriptions: TeamMember[] }> = ({
             : 'Something went wrong. Please contact us.',
         );
       }
-      revalidatePathFromClient('/dashboard/team');
+      revalidatePathFromClient('/pro/team');
       setConfirmDeleteMember(null);
     });
   };
@@ -103,7 +103,7 @@ const ManageTeamCard: FC<{ user: User; teamSubscriptions: TeamMember[] }> = ({
         setConfirmPayment(true);
         return;
       }
-      revalidatePathFromClient('/dashboard/team');
+      revalidatePathFromClient('/pro/team');
       setConfirmPayment(false);
     });
   };

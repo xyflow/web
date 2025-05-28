@@ -78,11 +78,11 @@ const NavMenu: FC<{ user: User | null }> = ({ user }) => {
             plan.
           </SelectLabel>
           <SelectSeparator />
-          <Link href="/dashboard">
+          <Link href="/pro/dashboard">
             <SelectLabel className="hover:bg-slate-100 px-2 py-1">Dashboard</SelectLabel>
           </Link>
           <SelectSeparator />
-          <Link href="/dashboard/account">
+          <Link href="/pro/account">
             <SelectLabel className="hover:bg-slate-100 px-2 py-1">Account</SelectLabel>
           </Link>
           <SelectSeparator />

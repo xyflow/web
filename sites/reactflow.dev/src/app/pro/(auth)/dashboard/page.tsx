@@ -45,7 +45,7 @@ const OverviewPage: FC = () => {
               SubscriptionPlan.PRO,
               SubscriptionPlan.ENTERPRISE,
             ]}
-            button={{ label: 'Invite Team', href: '/dashboard/team' }}
+            button={{ label: 'Invite Team', href: '/pro/team' }}
             requireAdminSubscription
           />
 
@@ -68,7 +68,7 @@ const OverviewPage: FC = () => {
             title="Individual Support"
             description="Your direct wire to the React Flow team. We will point you in the right direction if you encounter problems using React Flow."
             plans={[SubscriptionPlan.PRO, SubscriptionPlan.ENTERPRISE]}
-            button={{ label: 'Get Support', href: '/dashboard/support' }}
+            button={{ label: 'Get Support', href: '/pro/support' }}
           />
         </div>
       </div>

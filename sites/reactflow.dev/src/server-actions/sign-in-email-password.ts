@@ -4,7 +4,7 @@ import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { getNhost, NHOST_SESSION_KEY, NHOST_REFRESH_KEY } from '@/utils/nhost';
 
-export async function signIn(formData: FormData, redirectTo = '/dashboard') {
+export async function signIn(formData: FormData, redirectTo = '/pro/dashboard') {
   const nhost = await getNhost();
   const email = formData.get('email') as string;
   const password = formData.get('password') as string;

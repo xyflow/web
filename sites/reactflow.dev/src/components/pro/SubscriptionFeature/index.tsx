@@ -79,7 +79,7 @@ function SubscriptionFeature({
             ) : (
               <div className="ml-auto">
                 <Button asChild className="text-react font-bold text-sm" variant="link">
-                  <Link href="/dashboard/subscribe">Subscribe</Link>
+                  <Link href="/pro/subscribe">Subscribe</Link>
                 </Button>
               </div>
             )}

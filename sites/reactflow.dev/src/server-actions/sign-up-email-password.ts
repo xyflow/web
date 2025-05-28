@@ -22,5 +22,5 @@ export async function signUp(formData: FormData) {
 
   const cookieStore = await cookies();
   cookieStore.set(NHOST_SESSION_KEY, btoa(JSON.stringify(session)), { path: '/' });
-  redirect('/dashboard');
+  redirect('/pro/dashboard');
 }

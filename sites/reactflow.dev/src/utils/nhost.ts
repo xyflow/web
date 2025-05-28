@@ -56,7 +56,7 @@ export async function manageAuthSession(request: NextRequest) {
     }
     // remove the refreshToken from the url
     url.searchParams.delete('refreshToken');
-    url.pathname = '/dashboard';
+    url.pathname = '/pro/dashboard';
 
     // overwrite the session cookie with the new session
     return NextResponse.redirect(url, {

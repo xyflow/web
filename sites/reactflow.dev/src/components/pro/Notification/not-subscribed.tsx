@@ -14,7 +14,7 @@ export default function NotSubscribedNotification(props: NotificationProps) {
       <Notification
         title="You are currently not subscribed"
         description="Please subscribe to unlock all pro features"
-        button={{ label: 'Subscribe', href: '/subscribe' }}
+        button={{ label: 'Subscribe', href: '/pro/subscribe' }}
         {...props}
       />
     </NotSubscribed>
