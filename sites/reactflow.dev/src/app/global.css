@@ -15,7 +15,6 @@
 
 @layer l-base {
   :root {
-    --docsearch-primary-color: hsl(var(--primary));
     --accent: 333 100% 50%;
     --shiki-color-background: red;
     

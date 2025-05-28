@@ -127,6 +127,11 @@ const metaRecord = {
           breadcrumb: false,
         },
       },
+      pro: {
+        theme: {
+          breadcrumb: false,
+        },
+      },
       overview: '',
       // Rest of examples are added in `(content-pages)/layout.tsx` file
     },

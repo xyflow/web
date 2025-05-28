@@ -11,7 +11,7 @@ import { SparklesIcon } from '@heroicons/react/24/outline';
 
 import ClientLogos from '@/components/client-logos';
 import { Metadata } from 'next';
-import { SignUpButton } from '@/app/pro/examples/page';
+import { SignUpButton } from '@/app/(content-pages)/examples/pro/pro-page';
 
 export const metadata: Metadata = {
   title: 'React Flow Pro',

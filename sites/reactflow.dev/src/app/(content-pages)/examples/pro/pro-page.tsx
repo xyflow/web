@@ -23,17 +23,9 @@ import {
   StarIcon,
 } from '@heroicons/react/24/outline';
 import { MdxFile } from 'nextra';
-import { Metadata } from 'next';
 
-import starSvg from '../../../../public/img/pro/star.svg';
-import { getPageMap as getExamplesPageMap } from '../../(content-pages)/examples/[...slug]/utils';
-
-export const revalidate = 86400; // 60 * 60 * 24;
-export const metadata: Metadata = {
-  title: 'React Flow Pro Examples',
-  description:
-    'Advanced React Flow code examples to use in your node-based UIs, crafted by the React Flow core team.',
-};
+import starSvg from '../../../../../public/img/pro/star.svg';
+import { getPageMap as getExamplesPageMap } from '../[...slug]/utils';
 
 const ProExamples: FC = async () => {
   const remoteProExamples = await fetchJSON(
