@@ -150,8 +150,8 @@ const metaRecord = {
 
   // 2. Pro Routes
   pro: {
-    display: 'hidden',
-    title: 'Pricing',
+    // display: 'hidden',
+    // title: 'Pricing',
     items: {
       'case-studies': {
         theme: {
@@ -163,9 +163,7 @@ const metaRecord = {
       },
     },
   },
-  'pro-examples': { display: 'hidden', href: '/pro/examples' },
-  'case-studies': { display: 'hidden', href: '/pro/case-studies' },
-  'contact-us': { display: 'hidden', href: 'https://xyflow.com/contact' },
+  // 'case-studies': { display: 'hidden', href: '/pro/case-studies' },
 
   // 3. Hidden Routes from Navigation
   index: { display: 'hidden' },
@@ -178,11 +176,11 @@ const metaRecord = {
   'developer-survey-2024': { display: 'hidden' },
   'whats-new': { display: 'hidden' },
   // TODO by @dima -- maybe by default make `display: 'hidden'` ?
-  dashboard: { display: 'hidden' },
-  'email-verification': { display: 'hidden' },
-  'reset-password': { display: 'hidden' },
-  signin: { display: 'hidden' },
-  signup: { display: 'hidden' },
+  // dashboard: { display: 'hidden' },
+  // 'email-verification': { display: 'hidden' },
+  // 'reset-password': { display: 'hidden' },
+  // signin: { display: 'hidden' },
+  // signup: { display: 'hidden' },
 };
 
 export default metaRecord;

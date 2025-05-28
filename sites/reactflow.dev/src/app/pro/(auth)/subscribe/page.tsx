@@ -1,6 +1,11 @@
 import { FAQ, reactFlowProFaqItems } from '@xyflow/xy-ui';
 import DashboardHeader from '@/components/pro/DashboardHeader';
 import PricingTable from '@/components/pro/PricingTable';
+import { NextraMetadata } from 'nextra';
+
+export const metadata: NextraMetadata = {
+  asIndexPage: true
+}
 
 export default function SubscribePage() {
   return (

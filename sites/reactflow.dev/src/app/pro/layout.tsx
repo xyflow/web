@@ -1,47 +1,21 @@
 import { FC, ReactNode } from 'react';
-import { getPageMap, mergeMetaWithPageMap } from 'nextra/page-map';
-import { NextraLayout } from '@/components/nextra-layout';
-import { defaultFooterCategories } from '@xyflow/xy-ui';
 
-const Layout: FC<{ children: ReactNode }> = async ({ children }) => {
-  const { Projects: _, ...remainingCategories } = defaultFooterCategories;
-  const pageMap = await getPageMap();
-
-  const proPageMap = mergeMetaWithPageMap(pageMap, {
-    learn: { display: 'hidden' },
-    'api-reference': { display: 'hidden' },
-    examples: { display: 'hidden' },
-    components: { display: 'hidden' },
-    showcase: { display: 'hidden' },
-    more: { display: 'hidden' },
-    pro: { display: 'normal' },
-    'pro-examples': { display: 'normal' },
-    'case-studies': { display: 'normal' },
-    'contact-us': { display: 'normal' },
-  });
+const Layout: FC<{ children: ReactNode }> = ({ children }) => {
+  // const proPageMap = mergeMetaWithPageMap(pageMap, {
+  //   pro: { display: 'normal' },
+  //   'case-studies': { display: 'normal' },
+  // });
   return (
-    <NextraLayout
-      pageMap={proPageMap}
-      footerCategories={{
-        'React Flow Pro': [
-          { title: 'Pricing', route: '/pro/pricing' },
-          { title: 'Pro Examples', route: '/pro/examples' },
-          { title: 'Case Studies', route: '/pro/case-studies' },
-          { title: 'Request a Quote', route: '/pro/quote-request' },
-          {
-            title: 'Sign Up',
-            route: `${process.env.NEXT_PUBLIC_PRO_PLATFORM_URL}/signup`,
-          },
-          {
-            title: 'Sign In',
-            route: `${process.env.NEXT_PUBLIC_PRO_PLATFORM_URL}/login`,
-          },
-        ],
-        ...remainingCategories,
-      }}
-    >
-      {children}
-    </NextraLayout>
+    //   footerCategories={{
+    //     'React Flow Pro': [
+    //       { title: 'Pricing', route: '/pro/pricing' },
+    //       { title: 'Case Studies', route: '/pro/case-studies' },
+    //       { title: 'Request a Quote', route: '/pro/quote-request' },
+    //       { title: 'Sign Up', route: '/pro/signup' },
+    //       { title: 'Sign In', route: '/pro/signin' },
+    //     ],
+    //   }}
+    children
   );
 };
 
