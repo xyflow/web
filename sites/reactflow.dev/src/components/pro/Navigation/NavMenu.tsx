@@ -1,5 +1,9 @@
+'use client';
+
 import { FC } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import type { User } from '@nhost/nhost-js';
 import {
   Button,
   Select,
@@ -9,19 +13,54 @@ import {
   SelectSeparator,
   SelectTrigger,
 } from '@xyflow/xy-ui';
-import { getNhost } from '@/utils/nhost';
+import { SparklesIcon } from '@heroicons/react/24/outline';
 import { UserIcon } from '@heroicons/react/24/solid';
 import { PlanLabel, Subscribed } from '@/components/pro/SubscriptionStatus';
 import { openStripeCustomerPortal, signOut } from '@/server-actions';
 
-const NavMenu: FC = async () => {
-  const nhost = await getNhost();
-  const user = nhost.auth.getUser();
+const NavMenu: FC<{ user: User | null }> = ({ user }) => {
+  const pathname = usePathname();
+
   if (!user) {
     return (
-      <Button asChild variant="secondary">
-        <Link href="/signin">Sign In / Sign Up</Link>
-      </Button>
+      <>
+        <Button asChild className="px-4 flex gap-1">
+          <Link href="/pro">
+            <SparklesIcon height="16" />
+            <span className="max-[1100px]:hidden">React Flow</span>
+            Pro
+          </Link>
+        </Button>
+        {(() => {
+          switch (pathname) {
+            case '/pro':
+            case '/signin':
+              return (
+                <Button
+                  asChild
+                  variant="secondary"
+                  // Set fixed width to avoid navbar shifts on Sign In / Sign Out button click
+                  className="w-[100px]"
+                >
+                  <Link href="/signup">Sign Up</Link>
+                </Button>
+              );
+            case '/signup':
+              return (
+                <Button
+                  asChild
+                  variant="secondary"
+                  // Set fixed width to avoid navbar shifts on Sign In / Sign Out button click
+                  className="w-[100px]"
+                >
+                  <Link href="/signin">Sign In</Link>
+                </Button>
+              );
+            default:
+              return;
+          }
+        })()}
+      </>
     );
   }
   return (
