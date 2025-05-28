@@ -34,6 +34,10 @@ const fathomOptions = {
 const RootLayout: FC<{ children: ReactNode }> = async ({ children }) => {
   const { Projects: _, ...remainingCategories } = defaultFooterCategories;
   const pageMap = [...(await getPageMap())];
+  // const proPageMap = mergeMetaWithPageMap(pageMap, {
+  //   pro: { display: 'normal' },
+  //   'case-studies': { display: 'normal' },
+  // });
 
   // Add badges
   const apiReference = pageMap.find(
