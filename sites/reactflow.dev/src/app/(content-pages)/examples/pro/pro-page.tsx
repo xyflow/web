@@ -206,7 +206,7 @@ const ProExamples: FC = async () => {
                   variant="black"
                   className="bg-white/10 hover:bg-white/20 w-full md:w-auto"
                 >
-                  <Link href="/pro/pricing">See subscription plans</Link>
+                  <Link href="/pro/subscribe">See subscription plans</Link>
                 </Button>
               </div>
             </div>

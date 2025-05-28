@@ -138,21 +138,23 @@ const metaRecord = {
   },
   components: { items: components },
   showcase: '',
-  more: {
-    type: 'menu',
-    items: {
-      changelog: { href: '/whats-new' },
-      blog: { href: 'https://xyflow.com/blog' },
-      'contact-us': { href: 'https://xyflow.com/contact' },
-      playground: { href: 'https://play.reactflow.dev' },
-    },
-  },
-
   // 2. Pro Routes
   pro: {
-    // display: 'hidden',
-    // title: 'Pricing',
     items: {
+      index: '',
+      // Auth
+      dashboard: { display: 'hidden' },
+      support: { display: 'hidden' },
+      team: { display: 'hidden' },
+      account: { display: 'hidden' },
+      subscribe: { display: 'hidden' },
+      // No-Auth
+      signin: { display: 'normal' },
+      signup: { display: 'normal' },
+      'reset-password': { display: 'normal' },
+      'email-verification': { display: 'normal' },
+      // Both
+      'quote-request': '',
       'case-studies': {
         theme: {
           layout: 'full',
@@ -163,8 +165,15 @@ const metaRecord = {
       },
     },
   },
-  // 'case-studies': { display: 'hidden', href: '/pro/case-studies' },
-
+  more: {
+    type: 'menu',
+    items: {
+      changelog: { href: '/whats-new' },
+      blog: { href: 'https://xyflow.com/blog' },
+      'contact-us': { href: 'https://xyflow.com/contact' },
+      playground: { href: 'https://play.reactflow.dev' },
+    },
+  },
   // 3. Hidden Routes from Navigation
   index: { display: 'hidden' },
   'developer-survey-2023': {
@@ -175,12 +184,6 @@ const metaRecord = {
   },
   'developer-survey-2024': { display: 'hidden' },
   'whats-new': { display: 'hidden' },
-  // TODO by @dima -- maybe by default make `display: 'hidden'` ?
-  // dashboard: { display: 'hidden' },
-  // 'email-verification': { display: 'hidden' },
-  // 'reset-password': { display: 'hidden' },
-  // signin: { display: 'hidden' },
-  // signup: { display: 'hidden' },
 };
 
 export default metaRecord;

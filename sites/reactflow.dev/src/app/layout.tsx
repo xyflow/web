@@ -34,10 +34,31 @@ const fathomOptions = {
 const RootLayout: FC<{ children: ReactNode }> = async ({ children }) => {
   const { Projects: _, ...remainingCategories } = defaultFooterCategories;
   const pageMap = [...(await getPageMap())];
-  // const proPageMap = mergeMetaWithPageMap(pageMap, {
-  //   pro: { display: 'normal' },
-  //   'case-studies': { display: 'normal' },
-  // });
+  const nhost = await getNhost();
+  const user = nhost.auth.getUser();
+
+  const proIndex = pageMap.findIndex(
+    (item): item is Folder => 'children' in item && item.name === 'pro',
+  );
+  const [proMeta, ...proItems] = (pageMap[proIndex] as Folder).children;
+  pageMap[proIndex] = {
+    ...pageMap[proIndex],
+    children: [
+      {
+        data: Object.fromEntries(
+          Object.entries((proMeta as MetaJsonFile).data).map(([key, value]) => {
+            if (user && typeof value === 'object' && 'display' in value) {
+              const isHidden = value.display === 'hidden';
+              return [key, { display: isHidden ? 'normal' : 'hidden' }];
+            }
+
+            return [key, value];
+          }),
+        ),
+      },
+      ...proItems,
+    ],
+  };
 
   // Add badges
   const apiReference = pageMap.find(
@@ -90,8 +111,6 @@ const RootLayout: FC<{ children: ReactNode }> = async ({ children }) => {
           ),
       }));
   }
-  const nhost = await getNhost();
-  const user = nhost.auth.getUser();
 
   return (
     <Html>
@@ -117,7 +136,7 @@ const RootLayout: FC<{ children: ReactNode }> = async ({ children }) => {
                     { title: 'Playground', route: 'https://play.reactflow.dev' },
                   ],
                   // 'React Flow Pro': [
-                  //   { title: 'Pricing', route: '/pro/pricing' },
+                  //   { title: 'Pricing', route: '/pro/subscribe' },
                   //   { title: 'Case Studies', route: '/pro/case-studies' },
                   //   { title: 'Request a Quote', route: '/pro/quote-request' },
                   //   { title: 'Sign Up', route: '/pro/signup' },
