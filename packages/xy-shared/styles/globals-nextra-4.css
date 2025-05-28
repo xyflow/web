@@ -28,9 +28,6 @@ li.active > .sidebar-title.pro:after {
   @apply text-primary ml-1.5 px-1.5;
 }
 
-.nextra-menu-desktop li > a {
-}
-
 .nextra-menu-desktop li.active > a {
   @apply bg-transparent text-primary;
 }
@@ -233,9 +230,9 @@ article.nextra-content ol li p {
 .nextra-navbar {
   --docsearch-searchbox-background: #eee;
   --docsearch-searchbox-focus-background: #eee;
+}
+:root {
   --docsearch-primary-color: hsl(var(--primary));
-  --docsearch-highlight-color: hsl(var(--primary));
-  --docsearch-searchbox-shadow: inset 0 0 0 2px var(--docsearch-primary-color);
 }
 
 .DocSearch-Button {
@@ -267,12 +264,6 @@ article.nextra-content ol li p {
 
 .DocSearch-Button .DocSearch-Button-Placeholder {
   font-size: 14px;
-}
-
-.DocSearch-Input:focus,
-.DocSearch-Input:focus-visible {
-  outline: none;
-  box-shadow: none;
 }
 
 @media screen and (min-width: 2000px) {
