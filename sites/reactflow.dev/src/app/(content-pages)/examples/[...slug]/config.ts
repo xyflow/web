@@ -40,6 +40,7 @@ export const meta: DynamicMeta = {
       'reconnect-edge': '',
       'simple-floating-edges': '',
       'temporary-edges': '',
+      'editable-edge': ''
     },
   },
   interaction: {
