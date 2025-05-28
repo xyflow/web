@@ -112,6 +112,13 @@ const RootLayout: FC<{ children: ReactNode }> = async ({ children }) => {
                     { title: 'Showcase', route: '/showcase' },
                     { title: 'Playground', route: 'https://play.reactflow.dev' },
                   ],
+                  // 'React Flow Pro': [
+                  //   { title: 'Pricing', route: '/pro/pricing' },
+                  //   { title: 'Case Studies', route: '/pro/case-studies' },
+                  //   { title: 'Request a Quote', route: '/pro/quote-request' },
+                  //   { title: 'Sign Up', route: '/pro/signup' },
+                  //   { title: 'Sign In', route: '/pro/signin' },
+                  // ],
                   ...remainingCategories,
                   Legal: [
                     {
