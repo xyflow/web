@@ -4,7 +4,7 @@ import {
 } from '@/components/pro/AuthForms';
 
 const authFormLinks = [
-  { href: '/signup', label: "Don't have an account? Sign Up" },
+  { href: '/pro/signup', label: "Don't have an account? Sign Up" },
 ];
 
 const SignInEmailPasswordPage = () => {

@@ -8,7 +8,7 @@ const DashboardLayout: FC<{ children: ReactNode }> = async ({ children }) => {
   const session = nhost.auth.getSession();
 
   if (!session) {
-    redirect('/signin');
+    redirect('/pro/signin');
   }
   return (
     <>

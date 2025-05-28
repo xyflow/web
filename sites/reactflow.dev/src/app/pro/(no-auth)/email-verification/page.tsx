@@ -22,7 +22,7 @@ function VerifyEmailPage() {
         If you didn{"'"}t receive an email, you can request a new one{' '}
         <Link
           className="text-primary hover:underline"
-          href={`/email-verification/resend-link${linkQueryParams}`}
+          href={`/pro/email-verification/resend-link${linkQueryParams}`}
         >
           here
         </Link>

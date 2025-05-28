@@ -4,7 +4,7 @@ import {
 } from '@/components/pro/AuthForms';
 
 const authFormLinks = [
-  { href: '/signin', label: 'Already have an account? Sign In' },
+  { href: '/pro/signin', label: 'Already have an account? Sign In' },
 ];
 
 const SignUpPage = () => {

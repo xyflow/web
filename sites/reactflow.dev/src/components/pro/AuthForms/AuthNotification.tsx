@@ -52,7 +52,7 @@ export function ExpiredTokenNotification() {
         variant="error"
         className="flex justify-between items-center"
       >
-        <Link className="shrink-0" href="/email-verification/resend-link">
+        <Link className="shrink-0" href="/pro/email-verification/resend-link">
           <Button variant="destructive">Request a new link</Button>
         </Link>
       </AuthNotification>
@@ -80,11 +80,11 @@ export function AuthErrorNotification({ error }: AuthErrorProps) {
         description={
           <>
             Please try again,{' '}
-            <Link className="underline" href="/reset-password">
+            <Link className="underline" href="/pro/reset-password">
               reset your password
             </Link>
             , or get a{' '}
-            <Link className="underline" href="/signin/magic-link">
+            <Link className="underline" href="/pro/signin/magic-link">
               magic link
             </Link>
             .
@@ -102,11 +102,8 @@ export function AuthErrorNotification({ error }: AuthErrorProps) {
         description={
           <>
             Please use a different email or{' '}
-            <Button
-              className="text-current font-bold !m-0 !p-0 h-auto"
-              variant="link"
-            >
-              <Link href="/signin">sign in</Link>
+            <Button className="text-current font-bold !m-0 !p-0 h-auto" variant="link">
+              <Link href="/pro/signin">sign in</Link>
             </Button>
             .
           </>

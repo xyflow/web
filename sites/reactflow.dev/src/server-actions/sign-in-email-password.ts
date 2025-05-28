@@ -14,7 +14,7 @@ export async function signIn(formData: FormData, redirectTo = '/dashboard') {
   if (error) {
     if (error.error === 'unverified-user') {
       // use encodeURIComponent because email can contain special characters such as +
-      redirect(`/email-verification?email=${encodeURIComponent(email)}`);
+      redirect(`/pro/email-verification?email=${encodeURIComponent(email)}`);
     }
     return error;
   }

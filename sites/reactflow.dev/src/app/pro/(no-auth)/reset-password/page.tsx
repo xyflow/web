@@ -1,6 +1,6 @@
 import { ResetPassword, AuthFormWrapper } from '@/components/pro/AuthForms';
 
-const authFormLinks = [{ href: '/signin', label: 'Back to login' }];
+const authFormLinks = [{ href: '/pro/signin', label: 'Back to login' }];
 
 const ResetPasswordPage = () => {
   return (

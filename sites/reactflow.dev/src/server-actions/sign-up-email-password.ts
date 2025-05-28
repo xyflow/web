@@ -17,7 +17,7 @@ export async function signUp(formData: FormData) {
 
   if (!session) {
     // use encodeURIComponent because email can contain special characters such as +
-    redirect(`/email-verification?email=${encodeURIComponent(email)}`);
+    redirect(`/pro/email-verification?email=${encodeURIComponent(email)}`);
   }
 
   const cookieStore = await cookies();

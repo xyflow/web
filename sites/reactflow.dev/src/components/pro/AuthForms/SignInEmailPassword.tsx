@@ -19,7 +19,7 @@ const SignInEmailPassword: FC = () => {
     startTransition(async () => {
       const formData = new FormData(event.currentTarget);
       const redirectTo = searchParams.get('redirectTo') ?? undefined;
-      const error = await signIn(formData, redirectTo)
+      const error = await signIn(formData, redirectTo);
       setError(error);
     });
   }
@@ -58,11 +58,11 @@ const SignInEmailPassword: FC = () => {
           />
           <div className="text-light text-sm mt-2">
             Having trouble signing in?{' '}
-            <Link href="/reset-password" className="text-primary hover:underline">
+            <Link href="/pro/reset-password" className="text-primary hover:underline">
               Reset your password
             </Link>{' '}
             or{' '}
-            <Link href="/signin/magic-link" className="text-primary hover:underline">
+            <Link href="/pro/signin/magic-link" className="text-primary hover:underline">
               get a magic link
             </Link>
             .
