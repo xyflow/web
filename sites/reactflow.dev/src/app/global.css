@@ -17,8 +17,6 @@
   :root {
     --primary: 333 100% 50%;
     --primary-foreground: 210 40% 98%;
-    --docsearch-primary-color: hsl(var(--primary));
-
     --secondary-foreground: 333 100% 50%;
     --accent: 333 100% 50%;
     --shiki-color-background: red;
@@ -52,9 +50,4 @@ html body[data-scroll-locked] {
 .developer-survey-2023 .x\:mx-auto {
   flex-grow: 1;
   width: 100%;
-}
-
-:root {
-  /* Align Algolia's primary color with the primary color used in React Flow theme */
-  --docsearch-primary-color: hsl(var(--primary));
 }
