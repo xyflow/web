@@ -17,13 +17,14 @@ import { SparklesIcon } from '@heroicons/react/24/outline';
 import { UserIcon } from '@heroicons/react/24/solid';
 import { PlanLabel, Subscribed } from '@/components/pro/SubscriptionStatus';
 import { openStripeCustomerPortal, signOut } from '@/server-actions';
+import useSubscription from '@/hooks/useSubscription';
 
 const NavMenu: FC<{ user: User | null }> = ({ user }) => {
   const pathname = usePathname();
-
-  if (!user) {
-    return (
-      <>
+  const { isSubscribed } = useSubscription();
+  return (
+    <>
+      {!isSubscribed && (
         <Button asChild className="px-4 flex gap-1">
           <Link href="/pro">
             <SparklesIcon height="16" />
@@ -31,7 +32,55 @@ const NavMenu: FC<{ user: User | null }> = ({ user }) => {
             Pro
           </Link>
         </Button>
-        {(() => {
+      )}
+      {user ? (
+        <Select>
+          <SelectTrigger className="w-auto">
+            <UserIcon className="w-6 h-6 fill-gray-500" />
+          </SelectTrigger>
+          <SelectContent align="end">
+            <SelectGroup>
+              <SelectLabel className="text-sm font-normal max-w-[200px] px-2 py-1">
+                You are signed in as <strong>{user.email}</strong> and subscribed to the{' '}
+                <span className="text-primary font-bold">
+                  <PlanLabel />
+                </span>{' '}
+                plan.
+              </SelectLabel>
+              <SelectSeparator />
+              <Link href="/pro/dashboard">
+                <SelectLabel className="hover:bg-slate-100 px-2 py-1">
+                  Dashboard
+                </SelectLabel>
+              </Link>
+              <SelectSeparator />
+              <Link href="/pro/account">
+                <SelectLabel className="hover:bg-slate-100 px-2 py-1">
+                  Account
+                </SelectLabel>
+              </Link>
+              <SelectSeparator />
+              <Subscribed requireAdminSubscription>
+                <SelectLabel
+                  onClick={openStripeCustomerPortal}
+                  className="hover:bg-slate-100 cursor-pointer px-2 py-1"
+                >
+                  Billing
+                </SelectLabel>
+
+                <SelectSeparator />
+              </Subscribed>
+              <SelectLabel
+                onClick={signOut}
+                className="text-red-500 hover:bg-slate-100 cursor-pointer px-2 py-1"
+              >
+                Logout
+              </SelectLabel>
+            </SelectGroup>
+          </SelectContent>
+        </Select>
+      ) : (
+        (() => {
           switch (pathname) {
             case '/pro':
             case '/pro/sign-in':
@@ -59,52 +108,9 @@ const NavMenu: FC<{ user: User | null }> = ({ user }) => {
             default:
               return;
           }
-        })()}
-      </>
-    );
-  }
-  return (
-    <Select>
-      <SelectTrigger className="w-auto">
-        <UserIcon className="w-6 h-6 fill-gray-500" />
-      </SelectTrigger>
-      <SelectContent align="end">
-        <SelectGroup>
-          <SelectLabel className="text-sm font-normal max-w-[200px] px-2 py-1">
-            You are signed in as <strong>{user.email}</strong> and subscribed to the{' '}
-            <span className="text-primary font-bold">
-              <PlanLabel />
-            </span>{' '}
-            plan.
-          </SelectLabel>
-          <SelectSeparator />
-          <Link href="/pro/dashboard">
-            <SelectLabel className="hover:bg-slate-100 px-2 py-1">Dashboard</SelectLabel>
-          </Link>
-          <SelectSeparator />
-          <Link href="/pro/account">
-            <SelectLabel className="hover:bg-slate-100 px-2 py-1">Account</SelectLabel>
-          </Link>
-          <SelectSeparator />
-          <Subscribed requireAdminSubscription>
-            <SelectLabel
-              onClick={openStripeCustomerPortal}
-              className="hover:bg-slate-100 cursor-pointer px-2 py-1"
-            >
-              Billing
-            </SelectLabel>
-
-            <SelectSeparator />
-          </Subscribed>
-          <SelectLabel
-            onClick={signOut}
-            className="text-red-500 hover:bg-slate-100 cursor-pointer px-2 py-1"
-          >
-            Logout
-          </SelectLabel>
-        </SelectGroup>
-      </SelectContent>
-    </Select>
+        })()
+      )}
+    </>
   );
 };
 
