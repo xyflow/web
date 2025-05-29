@@ -137,9 +137,19 @@ const metaRecord = {
     },
   },
   components: { items: components },
+  showcase: '',
+  more: {
+    type: 'menu',
+    items: {
+      changelog: { href: '/whats-new' },
+      blog: { href: 'https://xyflow.com/blog' },
+      'contact-us': { href: 'https://xyflow.com/contact' },
+      playground: { href: 'https://play.reactflow.dev' },
+    },
+  },
   // 2. Pro Routes
   pro: {
-    // Hide from desktop navbar
+    // Hide from the desktop navbar
     title: <span className="md:hidden">Pro</span>,
     items: {
       index: '',
@@ -174,16 +184,6 @@ const metaRecord = {
           breadcrumb: false,
         },
       },
-    },
-  },
-  showcase: '',
-  more: {
-    type: 'menu',
-    items: {
-      changelog: { href: '/whats-new' },
-      blog: { href: 'https://xyflow.com/blog' },
-      'contact-us': { href: 'https://xyflow.com/contact' },
-      playground: { href: 'https://play.reactflow.dev' },
     },
   },
   // 3. Hidden Routes from Navigation
