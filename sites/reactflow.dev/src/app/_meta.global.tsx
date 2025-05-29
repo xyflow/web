@@ -137,22 +137,33 @@ const metaRecord = {
     },
   },
   components: { items: components },
-  showcase: '',
   // 2. Pro Routes
   pro: {
+    // Hide from desktop navbar
+    title: <span className="md:hidden">Pro</span>,
     items: {
       index: '',
       // Auth
-      dashboard: { display: 'hidden' },
-      support: { display: 'hidden' },
-      team: { display: 'hidden' },
-      account: { display: 'hidden' },
-      subscribe: { display: 'hidden' },
+      dashboard: '',
+      support: '',
+      team: '',
+      account: '',
+      subscribe: '',
       // No-Auth
-      signin: { display: 'normal' },
-      signup: { display: 'normal' },
-      'reset-password': { display: 'normal' },
-      'email-verification': { display: 'normal' },
+      'sign-in': {
+        items: {
+          'magic-link': {
+            display: 'hidden',
+          },
+        },
+      },
+      'sign-up': '',
+      'reset-password': {
+        display: 'hidden',
+      },
+      'email-verification': {
+        display: 'hidden',
+      },
       // Both
       'quote-request': '',
       'case-studies': {
@@ -165,6 +176,7 @@ const metaRecord = {
       },
     },
   },
+  showcase: '',
   more: {
     type: 'menu',
     items: {

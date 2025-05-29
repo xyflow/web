@@ -1,5 +1,5 @@
 import { Folder, MdxFile, MetaJsonFile } from 'nextra';
-import { getPageMap } from 'nextra/page-map';
+import { getPageMap, mergeMetaWithPageMap } from 'nextra/page-map';
 import { Search, SidebarTitle } from 'xy-shared';
 import { defaultFooterCategories, Footer as XYFooter, LogoLabel } from '@xyflow/xy-ui';
 import { getPageMap as getExamplesPageMap } from './(content-pages)/examples/[...slug]/utils';
@@ -33,32 +33,27 @@ const fathomOptions = {
 
 const RootLayout: FC<{ children: ReactNode }> = async ({ children }) => {
   const { Projects: _, ...remainingCategories } = defaultFooterCategories;
-  const pageMap = [...(await getPageMap())];
+  const _pageMap = [...(await getPageMap())];
   const nhost = await getNhost();
   const user = nhost.auth.getUser();
+  const hidden = { display: 'hidden' };
 
-  const proIndex = pageMap.findIndex(
-    (item): item is Folder => 'children' in item && item.name === 'pro',
-  );
-  const [proMeta, ...proItems] = (pageMap[proIndex] as Folder).children;
-  pageMap[proIndex] = {
-    ...pageMap[proIndex],
-    children: [
-      {
-        data: Object.fromEntries(
-          Object.entries((proMeta as MetaJsonFile).data).map(([key, value]) => {
-            if (user && typeof value === 'object' && 'display' in value) {
-              const isHidden = value.display === 'hidden';
-              return [key, { display: isHidden ? 'normal' : 'hidden' }];
-            }
-
-            return [key, value];
-          }),
-        ),
-      },
-      ...proItems,
-    ],
-  };
+  const pageMap = mergeMetaWithPageMap(_pageMap, {
+    pro: {
+      items: user
+        ? {
+            signin: hidden,
+            signup: hidden,
+          }
+        : {
+            dashboard: hidden,
+            support: hidden,
+            team: hidden,
+            account: hidden,
+            subscribe: hidden,
+          },
+    },
+  });
 
   // Add badges
   const apiReference = pageMap.find(
