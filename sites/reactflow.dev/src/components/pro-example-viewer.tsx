@@ -12,11 +12,6 @@ const ProExampleViewer: FC<{
 }> = ({ slug, variant = 'default', type = 'example' }) => {
   const isLightMode = variant === 'default';
   const { isSubscribed } = useSubscription();
-
-  if (type === 'template') {
-    throw new Error('Unexpected type "template" in ProExampleViewer');
-  }
-
   return (
     <Container className="mt-7" variant={variant}>
       {!isSubscribed && (
