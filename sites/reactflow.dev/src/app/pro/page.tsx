@@ -10,10 +10,11 @@ import {
 import { SparklesIcon } from '@heroicons/react/24/outline';
 
 import ClientLogos from '@/components/client-logos';
-import { Metadata } from 'next';
+import { NextraMetadata } from 'nextra';
 import { SignUpButton } from '@/app/(content-pages)/examples/pro/pro-page';
 
-export const metadata: Metadata = {
+export const metadata: NextraMetadata = {
+  asIndexPage: true,
   title: 'React Flow Pro',
   description:
     'Subscribe to React Flow Pro to get access to exclusive features of React Flow, a highly customizable library for building node-based editors, interactive graphs and flow charts',

@@ -1,7 +1,10 @@
 import { FC, ReactNode } from 'react';
-import { Sidebar } from '@/components/pro/Sidebar';
 import { redirect } from 'next/navigation';
 import { getNhost } from '@/utils/nhost';
+import { useMDXComponents as getMdxComponents } from '@/mdx-components';
+
+// Use Nextra theme docs layout with sidebar
+const { wrapper: Wrapper } = getMdxComponents();
 
 const DashboardLayout: FC<{ children: ReactNode }> = async ({ children }) => {
   const nhost = await getNhost();
@@ -11,14 +14,10 @@ const DashboardLayout: FC<{ children: ReactNode }> = async ({ children }) => {
     redirect('/pro/sign-in');
   }
   return (
-    <>
-      <div className="flex flex-col lg:flex-row w-full max-w-7xl mx-auto relative">
-        <Sidebar />
-        <div className="pt-4 pb-20 flex-1 min-h-[75vh] border-gray-200 lg:pl-6 lg:pt-0 lg:border-l min-w-0">
-          {children}
-        </div>
-      </div>
-    </>
+    // @ts-expect-error -- we explicitly provide metadata as empty object
+    <Wrapper toc={[]} metadata={{}}>
+      {children}
+    </Wrapper>
   );
 };
 

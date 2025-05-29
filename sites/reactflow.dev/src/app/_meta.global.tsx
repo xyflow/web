@@ -1,3 +1,11 @@
+import {
+  Squares2X2Icon,
+  UsersIcon,
+  ChatBubbleLeftRightIcon,
+  Cog8ToothIcon,
+  SparklesIcon,
+} from '@heroicons/react/24/outline';
+
 const concepts = {
   introduction: '',
   'terms-and-definitions': '',
@@ -149,16 +157,50 @@ const metaRecord = {
   },
   // 2. Pro Routes
   pro: {
-    // Hide from the desktop navbar
-    title: <span className="md:hidden">Pro</span>,
     items: {
-      index: '',
+      '*': {
+        theme: {
+          layout: 'full',
+          toc: false,
+          pagination: false,
+        },
+      },
       // Auth
-      dashboard: '',
-      support: '',
-      team: '',
-      account: '',
-      subscribe: '',
+      dashboard: (
+        <span className="flex items-center gap-1.5">
+          <Squares2X2Icon height="1.2em" />
+          Dashboard
+        </span>
+      ),
+      support: (
+        <span className="flex items-center gap-1.5">
+          <ChatBubbleLeftRightIcon height="1.2em" />
+          Support
+        </span>
+      ),
+      team: (
+        <span className="flex items-center gap-1.5">
+          <UsersIcon height="1.2em" />
+          Team
+        </span>
+      ),
+      account: (
+        <span className="flex items-center gap-1.5">
+          <Cog8ToothIcon height="1.2em" />
+          Account
+        </span>
+      ),
+      subscribe: {
+        title: (
+          <span className="flex items-center gap-1.5">
+            <SparklesIcon height="1.2em" />
+            Subscribe
+          </span>
+        ),
+        theme: {
+          collapsed: true,
+        },
+      },
       // No-Auth
       'sign-in': {
         items: {
@@ -177,6 +219,7 @@ const metaRecord = {
       // Both
       'quote-request': '',
       'case-studies': {
+        display: 'hidden',
         theme: {
           layout: 'full',
           toc: false,

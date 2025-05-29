@@ -81,3 +81,8 @@ html body[data-scroll-locked] {
   flex-grow: 1;
   width: 100%;
 }
+
+/* Hide `Pro` link from the desktop navbar */
+.nextra-navbar > nav > div > a[href="/pro"] {
+  display: none;
+}
