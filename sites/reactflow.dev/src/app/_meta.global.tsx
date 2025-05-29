@@ -1,3 +1,4 @@
+import { FC, ReactNode, SVGProps } from 'react';
 import {
   Squares2X2Icon,
   UsersIcon,
@@ -5,6 +6,18 @@ import {
   Cog8ToothIcon,
   SparklesIcon,
 } from '@heroicons/react/24/outline';
+
+const WithIcon: FC<{ children: ReactNode; icon: FC<SVGProps<SVGElement>> }> = ({
+  children,
+  icon: Icon,
+}) => {
+  return (
+    <span className="flex items-center gap-1.5">
+      <Icon height="1.2em" />
+      {children}
+    </span>
+  );
+};
 
 const concepts = {
   introduction: '',
@@ -166,37 +179,12 @@ const metaRecord = {
         },
       },
       // Auth
-      dashboard: (
-        <span className="flex items-center gap-1.5">
-          <Squares2X2Icon height="1.2em" />
-          Dashboard
-        </span>
-      ),
-      support: (
-        <span className="flex items-center gap-1.5">
-          <ChatBubbleLeftRightIcon height="1.2em" />
-          Support
-        </span>
-      ),
-      team: (
-        <span className="flex items-center gap-1.5">
-          <UsersIcon height="1.2em" />
-          Team
-        </span>
-      ),
-      account: (
-        <span className="flex items-center gap-1.5">
-          <Cog8ToothIcon height="1.2em" />
-          Account
-        </span>
-      ),
+      dashboard: <WithIcon icon={Squares2X2Icon}>Dashboard</WithIcon>,
+      support: <WithIcon icon={ChatBubbleLeftRightIcon}>Support</WithIcon>,
+      team: <WithIcon icon={UsersIcon}>Team</WithIcon>,
+      account: <WithIcon icon={Cog8ToothIcon}>Account</WithIcon>,
       subscribe: {
-        title: (
-          <span className="flex items-center gap-1.5">
-            <SparklesIcon height="1.2em" />
-            Subscribe
-          </span>
-        ),
+        title: <WithIcon icon={SparklesIcon}>Subscribe</WithIcon>,
         theme: {
           collapsed: true,
         },

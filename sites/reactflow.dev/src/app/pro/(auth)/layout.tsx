@@ -3,7 +3,7 @@ import { redirect } from 'next/navigation';
 import { getNhost } from '@/utils/nhost';
 import { useMDXComponents as getMdxComponents } from '@/mdx-components';
 
-// Use Nextra theme docs layout with sidebar
+// Use Nextra theme docs layout with the sidebar
 const { wrapper: Wrapper } = getMdxComponents();
 
 const DashboardLayout: FC<{ children: ReactNode }> = async ({ children }) => {

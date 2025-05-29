@@ -13,8 +13,9 @@ import { SubscriptionProvider } from '@/components/pro/Providers';
 import { getSubscription } from '@/server-actions';
 import { Layout as NextraLayout, Navbar as NextraNavbar } from 'nextra-theme-docs';
 import NavMenu from '@/components/pro/Navigation/NavMenu';
-import './global.css';
 import { getNhost } from '@/utils/nhost';
+import { normalizeSubscription } from '@/utils/pro-utils';
+import './global.css';
 
 export const metadata = generateRootMetadata('React Flow', {
   description:
@@ -30,13 +31,18 @@ const fathomOptions = {
   id: 'LXMRMWLB',
   domains: ['reactflow.dev'],
 };
+const hidden = { display: 'hidden' };
 
 const RootLayout: FC<{ children: ReactNode }> = async ({ children }) => {
   const { Projects: _, ...remainingCategories } = defaultFooterCategories;
+
   const _pageMap = [...(await getPageMap())];
+
   const nhost = await getNhost();
   const user = nhost.auth.getUser();
-  const hidden = { display: 'hidden' };
+
+  const subscriptionContext = await getSubscription();
+  const subscription = normalizeSubscription(subscriptionContext);
 
   const pageMap = mergeMetaWithPageMap(_pageMap, {
     pro: {
@@ -44,6 +50,8 @@ const RootLayout: FC<{ children: ReactNode }> = async ({ children }) => {
         ? {
             'sign-in': hidden,
             'sign-up': hidden,
+            ...(subscription.isSubscribed && { subscribe: hidden }),
+            ...(!subscription.isAdmin && { team: hidden }),
           }
         : {
             dashboard: hidden,
@@ -112,7 +120,7 @@ const RootLayout: FC<{ children: ReactNode }> = async ({ children }) => {
       <Head color={{ hue: 333, saturation: 80 }} />
       <body>
         <Fathom {...fathomOptions} />
-        <SubscriptionProvider value={await getSubscription()}>
+        <SubscriptionProvider value={subscriptionContext}>
           <NextraLayout
             darkMode={false}
             docsRepositoryBase="https://github.com/xyflow/web/tree/main/sites/reactflow.dev"
