@@ -52,7 +52,7 @@ export async function manageAuthSession(request: NextRequest) {
   if (accessTokenExpired || refreshToken) {
     const { session: newSession, error } = await nhost.auth.refreshSession(refreshToken);
     if (error) {
-      return NextResponse.redirect(new URL('/pro/signin', request.url));
+      return NextResponse.redirect(new URL('/pro/sign-in', request.url));
     }
     // remove the refreshToken from the url
     url.searchParams.delete('refreshToken');

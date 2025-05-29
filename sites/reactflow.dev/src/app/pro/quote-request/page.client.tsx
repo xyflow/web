@@ -240,7 +240,7 @@ export default function QuoteRequestPage() {
         </Accordion>
       </Card>
       <SubscribeSection
-        btnLink="/pro/signup"
+        btnLink="/pro/sign-up"
         btnLabel="Sign Up Now"
       />
     </BaseLayout>

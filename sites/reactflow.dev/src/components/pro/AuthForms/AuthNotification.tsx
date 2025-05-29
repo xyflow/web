@@ -84,7 +84,7 @@ export function AuthErrorNotification({ error }: AuthErrorProps) {
               reset your password
             </Link>
             , or get a{' '}
-            <Link className="underline" href="/pro/signin/magic-link">
+            <Link className="underline" href="/pro/sign-in/magic-link">
               magic link
             </Link>
             .
@@ -103,7 +103,7 @@ export function AuthErrorNotification({ error }: AuthErrorProps) {
           <>
             Please use a different email or{' '}
             <Button className="text-current font-bold !m-0 !p-0 h-auto" variant="link">
-              <Link href="/pro/signin">sign in</Link>
+              <Link href="/pro/sign-in">sign in</Link>
             </Button>
             .
           </>

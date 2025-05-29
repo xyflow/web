@@ -42,8 +42,8 @@ const RootLayout: FC<{ children: ReactNode }> = async ({ children }) => {
     pro: {
       items: user
         ? {
-            signin: hidden,
-            signup: hidden,
+            'sign-in': hidden,
+            'sign-up': hidden,
           }
         : {
             dashboard: hidden,
@@ -134,8 +134,8 @@ const RootLayout: FC<{ children: ReactNode }> = async ({ children }) => {
                   //   { title: 'Pricing', route: '/pro/subscribe' },
                   //   { title: 'Case Studies', route: '/pro/case-studies' },
                   //   { title: 'Request a Quote', route: '/pro/quote-request' },
-                  //   { title: 'Sign Up', route: '/pro/signup' },
-                  //   { title: 'Sign In', route: '/pro/signin' },
+                  //   { title: 'Sign Up', route: '/pro/sign-up' },
+                  //   { title: 'Sign In', route: '/pro/sign-in' },
                   // ],
                   ...remainingCategories,
                   Legal: [

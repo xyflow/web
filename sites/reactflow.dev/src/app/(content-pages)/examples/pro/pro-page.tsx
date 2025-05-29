@@ -198,7 +198,7 @@ const ProExamples: FC = async () => {
                   variant="secondary"
                   className="text-black hover:bg-gray-100 w-full md:w-auto"
                 >
-                  <Link href="/pro/signup">Try it out</Link>
+                  <Link href="/pro/sign-up">Try it out</Link>
                 </Button>
                 <Button
                   asChild
@@ -338,7 +338,7 @@ export function SignUpButton({
   return (
     <div className={cn('flex gap-2 items-center flex-wrap w-full md:w-auto', className)}>
       <Button asChild size="lg" variant="pro" className="w-full md:w-auto">
-        <Link href="/pro/signup">
+        <Link href="/pro/sign-up">
           {showIcon && <SparklesIcon className="w-5 h-5 mr-2" />}Sign Up
         </Link>
       </Button>

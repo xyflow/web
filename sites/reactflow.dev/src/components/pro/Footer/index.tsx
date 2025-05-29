@@ -3,8 +3,8 @@ import { Footer } from '@xyflow/xy-ui';
 const categories = {
   'React Flow Pro': [
     { route: '/', title: 'Dashboard' },
-    { route: '/pro/signin', title: 'Sign In' },
-    { route: '/pro/signup', title: 'Sign Up' },
+    { route: '/pro/sign-in', title: 'Sign In' },
+    { route: '/pro/sign-up', title: 'Sign Up' },
     { route: '/pro/reset-password', title: 'Reset Password' },
   ],
   'More Info': [

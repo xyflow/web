@@ -34,7 +34,7 @@ const NavMenu: FC<{ user: User | null }> = ({ user }) => {
         {(() => {
           switch (pathname) {
             case '/pro':
-            case '/pro/signin':
+            case '/pro/sign-in':
               return (
                 <Button
                   asChild
@@ -42,10 +42,10 @@ const NavMenu: FC<{ user: User | null }> = ({ user }) => {
                   // Set fixed width to avoid navbar shifts on Sign In / Sign Out button click
                   className="w-[100px]"
                 >
-                  <Link href="/pro/signup">Sign Up</Link>
+                  <Link href="/pro/sign-up">Sign Up</Link>
                 </Button>
               );
-            case '/pro/signup':
+            case '/pro/sign-up':
               return (
                 <Button
                   asChild
@@ -53,7 +53,7 @@ const NavMenu: FC<{ user: User | null }> = ({ user }) => {
                   // Set fixed width to avoid navbar shifts on Sign In / Sign Out button click
                   className="w-[100px]"
                 >
-                  <Link href="/pro/signin">Sign In</Link>
+                  <Link href="/pro/sign-in">Sign In</Link>
                 </Button>
               );
             default:

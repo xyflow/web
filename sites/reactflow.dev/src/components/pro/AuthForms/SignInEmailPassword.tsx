@@ -62,7 +62,7 @@ const SignInEmailPassword: FC = () => {
               Reset your password
             </Link>{' '}
             or{' '}
-            <Link href="/pro/signin/magic-link" className="text-primary hover:underline">
+            <Link href="/pro/sign-in/magic-link" className="text-primary hover:underline">
               get a magic link
             </Link>
             .

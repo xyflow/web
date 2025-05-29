@@ -5,7 +5,7 @@ export const metadata: NextraMetadata = {
   asIndexPage: true,
 };
 
-const authFormLinks = [{ href: '/pro/signup', label: "Don't have an account? Sign Up" }];
+const authFormLinks = [{ href: '/pro/sign-up', label: "Don't have an account? Sign Up" }];
 
 const SignInEmailPasswordPage = () => {
   return (

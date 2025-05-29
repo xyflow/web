@@ -113,7 +113,7 @@ export default function ReactFlowPro() {
           poster="sddefault"
         />
       </FAQ>
-      <SubscribeSection btnLink="/pro/signup" btnLabel="Sign Up Now" />
+      <SubscribeSection btnLink="/pro/sign-up" btnLabel="Sign Up Now" />
     </BaseLayout>
   );
 }

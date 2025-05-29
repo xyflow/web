@@ -43,7 +43,7 @@ const Page: FC = async () => {
           })}
       </ContentGrid>
       <SubscribeSection
-        btnLink="/pro/signup"
+        btnLink="/pro/sign-up"
         btnLabel="Sign Up Now"
       />
     </BaseLayout>

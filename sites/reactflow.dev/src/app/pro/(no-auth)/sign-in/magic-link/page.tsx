@@ -1,7 +1,7 @@
 import { SignInMagicLink, AuthFormWrapper } from '@/components/pro/AuthForms';
 
 const authFormLinks = [
-  { href: '/pro/signin', label: 'Sign in using Email and Password' },
+  { href: '/pro/sign-in', label: 'Sign in using Email and Password' },
 ];
 
 const SignInEmailPasswordPage = () => {
