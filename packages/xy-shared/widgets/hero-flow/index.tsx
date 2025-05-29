@@ -30,7 +30,7 @@ function HeroFlow({
           className="text-center mx-auto lg:mx-0 lg:text-left max-w-lg relative bg-white/10 backdrop-blur-[2px] px-3 lg:px-[35px]"
         >
           <Heading size="lg" as="h1" className="mb-4 font-black">
-            Wire Your Ideas with <span className="text-primary">{title}</span>
+            Wire your ideas with <span className="text-primary">{title}</span>
           </Heading>
 
           {subtitle && (
@@ -39,9 +39,7 @@ function HeroFlow({
             </Text>
           )}
 
-          {action && (
-            <div className="flex justify-center lg:justify-start">{action}</div>
-          )}
+          {action && <div className="flex justify-center lg:justify-start">{action}</div>}
         </div>
       </div>
 

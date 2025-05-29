@@ -19,6 +19,7 @@ import moritz from '../../../../public/img/moritz.jpg';
 import peter from '../../../../public/img/peter.jpg';
 import burak from '../../../../public/img/burak.jpg';
 import abbey from '../../../../public/img/abbey.jpg';
+import alessandro from '../../../../public/img/alessandro.jpg';
 import dima from '../../../../public/img/dima.jpg';
 import usman from '../../../../public/img/usman.jpg';
 import facu from '../../../../public/img/facu.jpg';
@@ -110,6 +111,13 @@ const Page: FC = () => {
           teamPic={peter}
           description="Peter has been directing a mockumentary of the xyflow team a la The Office since he broke into our building during the summer of 2023. Luckily for our team, the footage will never be released since he never asked us to sign a talent waiver, and none of us have the heart to tell him. Once he's done editing the footage (he keeps saying 'one more week'), we're hoping he'll make some contributions to the Svelte Flow library and docs."
           links={[{ linkName: 'Github', route: 'https://github.com/peterkogo' }]}
+        />
+        <TeamCard
+          name="Alessandro"
+          role="Software Engineer"
+          teamPic={alessandro}
+          description="Alessandro likes to hack programming languages, compilers, synthesizers, sound systems and more."
+          links={[{ linkName: 'Website', route: 'https://cheli.dev' }, { linkName: 'Github', route: 'https://github.com/0x0f0f0f' }]}
         />
       </ContentGrid>
 

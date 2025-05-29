@@ -26,13 +26,27 @@ export function CustomEdge({ sourceX, sourceY, targetX, targetY, ...props }) {
     targetY,
   });
 
-  return <BaseEdge path={edgePath} {...props} />;
+  const { label, labelStyle, markerStart, markerEnd, interactionWidth } = props;
+
+  return (
+    <BaseEdge
+      path={edgePath}
+      label={label}
+      labelStyle={labelStyle}
+      markerEnd={markerEnd}
+      markerStart={markerStart}
+      interactionWidth={interactionWidth}
+    />
+  );
 }
 ```
 
 ## Props
 
-<APIDocs componentName="BaseEdge" groupKeys="Omit<SVGAttributes<SVGPathElement>, 'd' | 'path' | 'markerStart' | 'markerEnd'>" />
+<APIDocs
+  componentName="BaseEdge"
+  groupKeys="Omit<SVGAttributes<SVGPathElement>, 'd' | 'path' | 'markerStart' | 'markerEnd'>"
+/>
 
 ## Notes
 

@@ -5,15 +5,13 @@ version: 2
 updates:
   - package-ecosystem: 'npm'
     directories:
+      - '/'
+      - '/apps/example-apps'
+      - '/apps/ui-components'
       - '/packages/xy-shared'
       - '/sites/reactflow.dev'
       - '/sites/xyflow.com'
-    schedule:
-      interval: 'daily'
-    allow:
-      - dependency-name: '@xyflow/react'
-  - package-ecosystem: 'npm'
-    directory: '/sites/svelteflow.dev'
+      - '/sites/svelteflow.dev'
     schedule:
       interval: 'daily'
     allow:
