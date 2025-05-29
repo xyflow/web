@@ -1,0 +1,13 @@
+---
+description: Defines the available node types and their corresponding components in SvelteFlow.
+---
+
+# NodeTypes
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/types/nodes.ts#L33)
+
+The `NodeTypes` type is a record that maps node type identifiers to their corresponding Svelte components. This allows you to define custom node types and their implementations.
+
+```ts
+type NodeTypes = Record<string, SvelteComponent>;
+```

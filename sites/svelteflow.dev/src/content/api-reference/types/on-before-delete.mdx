@@ -1,0 +1,24 @@
+---
+description: Callback function triggered before nodes or edges are deleted in SvelteFlow, allowing for deletion prevention or modification.
+---
+
+# OnBeforeDelete
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/types/general.ts#L38)
+
+The `OnBeforeDelete` type is a callback function that is called before nodes or edges are deleted. It can prevent deletion or modify the items to be deleted by returning `false` or a modified set of nodes and edges.
+
+```ts
+type OnBeforeDelete<
+  NodeType extends NodeBase = NodeBase,
+  EdgeType extends EdgeBase = EdgeBase,
+> = ({
+  nodes,
+  edges,
+}: {
+  nodes: NodeType[];
+  edges: EdgeType[];
+}) => Promise<boolean | { nodes: NodeType[]; edges: EdgeType[] }>;
+```
+
+<APIDocs typeName="OnBeforeDelete" packageName="svelte" />

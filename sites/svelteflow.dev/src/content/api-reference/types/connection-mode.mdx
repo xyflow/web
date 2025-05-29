@@ -1,0 +1,16 @@
+---
+description: Specifies the rules for how connections between nodes are established in SvelteFlow.
+---
+
+# ConnectionMode
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/types/general.ts#L68)
+
+The `ConnectionMode` enum defines the available strategies for connecting nodes. Use `Strict` to only allow connections to valid handles, or `Loose` to allow more flexible connections.
+
+```ts
+enum ConnectionMode {
+  Strict = 'strict',
+  Loose = 'loose',
+}
+```

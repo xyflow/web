@@ -1,0 +1,18 @@
+---
+description: Callback function triggered when nodes or edges are deleted in SvelteFlow.
+---
+
+# OnDelete
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/lib/types/general.ts##L26)
+
+The `OnDelete` type is a callback function that is called when nodes or edges are deleted from the flow. It receives the deleted nodes and edges.
+
+```ts
+type OnDelete<
+  NodeType extends NodeBase = NodeBase,
+  EdgeType extends EdgeBase = EdgeBase,
+> = ({ nodes, edges }: { nodes: NodeType[]; edges: EdgeType[] }) => void;
+```
+
+<APIDocs typeName="OnDelete" packageName="svelte" />
