@@ -20,6 +20,7 @@ import peter from '../../../../public/img/peter.jpg';
 import burak from '../../../../public/img/burak.jpg';
 import abbey from '../../../../public/img/abbey.jpg';
 import alessandro from '../../../../public/img/alessandro.jpg';
+import omes from '../../../../public/img/omes.jpg';
 import dima from '../../../../public/img/dima.jpg';
 import usman from '../../../../public/img/usman.jpg';
 import facu from '../../../../public/img/facu.jpg';
@@ -85,7 +86,7 @@ const Page: FC = () => {
           description="Christopher doesn't remember anything before 2015. He woke up on the shores of the Spree, where he wandered into the offices of the newspaper Zeit and they gave him a job as a front-end developer, mistaking him for the potential new hire. He quickly rose through the ranks there. Now he codes at xyflow, hoping one day he will remember how he got here, and what the meaning of all this is anyway."
           links={[
             { linkName: 'Twitter', route: 'https://twitter.com/chrtze' },
-            { linkName: 'Github', route: 'https://github.com/chrtze' },
+            { linkName: 'GitHub', route: 'https://github.com/chrtze' },
           ]}
         />
         <TeamCard
@@ -95,7 +96,7 @@ const Page: FC = () => {
           description="Moritz was raised in the depths of Teutoburger Wald by a pack of wolves, learning how to hunt, survive, and develop front-end applications. He abandoned his pack after a disagreement in 2019, where he fled to the streets of Berlin. He now maintains React Flow, and dreams of one day rejoining his pack."
           links={[
             { linkName: 'Twitter', route: 'https://twitter.com/moklick' },
-            { linkName: 'Github', route: 'https://github.com/moklick' },
+            { linkName: 'GitHub', route: 'https://github.com/moklick' },
           ]}
         />
         <TeamCard
@@ -103,21 +104,28 @@ const Page: FC = () => {
           role="Software Engineer"
           teamPic={abbey}
           description="Abbey spent the first twenty years of her career finely crafting an innovative sea bass fishing technique. The world of sea bass became all too political for her, but luckily she found xyflow, which she wrongly assumed was another commercial fishing company. She is still figuring out how to turn on a computer, but once she does, she is excited to start contributing to the team."
-          links={[{ linkName: 'Github', route: 'https://github.com/printerscanner' }]}
+          links={[{ linkName: 'GitHub', route: 'https://github.com/printerscanner' }]}
         />
         <TeamCard
           name="Peter"
           role="Software Engineer"
           teamPic={peter}
           description="Peter has been directing a mockumentary of the xyflow team a la The Office since he broke into our building during the summer of 2023. Luckily for our team, the footage will never be released since he never asked us to sign a talent waiver, and none of us have the heart to tell him. Once he's done editing the footage (he keeps saying 'one more week'), we're hoping he'll make some contributions to the Svelte Flow library and docs."
-          links={[{ linkName: 'Github', route: 'https://github.com/peterkogo' }]}
+          links={[{ linkName: 'GitHub', route: 'https://github.com/peterkogo' }]}
         />
         <TeamCard
           name="Alessandro"
           role="Software Engineer"
           teamPic={alessandro}
           description="Alessandro likes to hack programming languages, compilers, synthesizers, sound systems and more."
-          links={[{ linkName: 'Website', route: 'https://cheli.dev' }, { linkName: 'Github', route: 'https://github.com/0x0f0f0f' }]}
+          links={[{ linkName: 'Website', route: 'https://cheli.dev' }, { linkName: 'GitHub', route: 'https://github.com/0x0f0f0f' }]}
+        />
+        <TeamCard
+          name="Omes"
+          role="Software Engineer"
+          teamPic={omes}
+          description="Omes grew up with 5 siblings in a wonderful 16 year long team-building experience. Now, after inevitable exponential family growth, he is looking for a side hustle to his prolific babysitting career. He likes to daydream about graph structures, online dignity and mango sticky rice."
+          links={[{ linkName: 'GitHub', route: 'https://github.com/omesome' }]}
         />
       </ContentGrid>
 
@@ -140,7 +148,7 @@ const Page: FC = () => {
           teamPic={burak}
           description="Burak is the maintainer of Vue Flow, bringing his expertise to xyflow's ecosystem. He actively supports users on Discord and GitHub, helping developers troubleshoot issues and improve their workflow with Vue Flow."
           links={[
-            { linkName: 'Github', route: 'https://github.com/bcakmakoglu' },
+            { linkName: 'GitHub', route: 'https://github.com/bcakmakoglu' },
             {
               linkName: 'Website',
               route: 'https://www.scheissaufdeinmarketingdusalamiwurst.de/',
@@ -152,7 +160,7 @@ const Page: FC = () => {
           role="Discord Moderator"
           teamPic={usman}
           description="Working with xyflow since 2025, Usman plays a key role in community support. He provides assistance on Discord and creates video content that helps users understand and make the most of React Flow."
-          links={[{ linkName: 'Github', route: 'https://github.com/usmanabdurrehman' }]}
+          links={[{ linkName: 'GitHub', route: 'https://github.com/usmanabdurrehman' }]}
         />
         <TeamCard
           name="Dima"
@@ -160,7 +168,7 @@ const Page: FC = () => {
           teamPic={dima}
           description="As the maintainer of Nextra, the framework powering xyflow's documentation, Dima continuously enhances the platform. He works on adding new features to xyflow's websites, ensuring a smooth and user-friendly experience."
           links={[
-            { linkName: 'Github', route: 'https://github.com/dimaMachina' },
+            { linkName: 'GitHub', route: 'https://github.com/dimaMachina' },
             {
               linkName: 'Website',
               route: 'https://dimamachina.com/',
