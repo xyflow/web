@@ -37,7 +37,7 @@ const Page: FC = () => {
           Open source since the beginning
         </Heading>
         <Text className="text-lg leading-8">
-          We gave the React Flow library an MIT license as soon as we built it
+          We gave the [React Flow](https://reactflow.dev) library an MIT license as soon as we built it
           in 2019. We were lucky to see it organically grow from there, and as
           more people and organizations used it, we wanted to spend more time
           taking care of the library and its ecosystem. In 2022, we set up a
