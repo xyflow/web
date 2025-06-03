@@ -96,7 +96,7 @@ const Footer = forwardRef<HTMLDivElement, FooterProps>(
               <Text variant="light" className="pt-6 text-sm mt-auto">
                 <a href="mailto:info@xyflow.com">info@xyflow.com</a> — Copyright ©{' '}
                 {new Date().getFullYear()}{' '}
-                <a href="https://webkid.io" target="_blank">
+                <a href="https://webkid.io" target="_blank" rel="noopener noreferrer">
                   webkid GmbH
                 </a>
                 . All rights reserved
@@ -104,7 +104,11 @@ const Footer = forwardRef<HTMLDivElement, FooterProps>(
                   <>
                     {' '}
                     — website design by{' '}
-                    <a target="_blank" href="https://facumontanaro.com/">
+                    <a
+                      target="_blank"
+                      href="https://facumontanaro.com/"
+                      rel="noopener noreferrer"
+                    >
                       Facu Montanaro
                     </a>
                   </>
@@ -119,5 +123,7 @@ const Footer = forwardRef<HTMLDivElement, FooterProps>(
     );
   },
 );
+
+Footer.displayName = 'Footer';
 
 export { Footer, defaultCategories as defaultFooterCategories };

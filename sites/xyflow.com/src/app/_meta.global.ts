@@ -42,6 +42,7 @@ const metaRecord = {
   imprint: { display: 'hidden' },
   privacy: { display: 'hidden' },
   'terms-of-use': { display: 'hidden' },
+  'pro-license': { display: 'hidden' },
 };
 
 export default metaRecord;
