@@ -3,8 +3,23 @@ import { FC, ReactNode } from 'react';
 import Link from 'next/link';
 import { getPageMap } from 'nextra/page-map';
 import { Layout, Navbar } from 'nextra-theme-docs';
-import { Button, Footer, Logo, Text } from '@xyflow/xy-ui';
 import { Anchor } from 'nextra/components';
+import { Button, Footer, Logo, Text } from '@xyflow/xy-ui';
+import { defaultCategories } from '@xyflow/xy-ui/components/ui/footer/default-categories';
+
+const footerCategories = {
+  ...defaultCategories,
+  Legal: [
+    { title: 'Terms of Use', route: 'https://xyflow.com/terms-of-use' },
+    {
+      title: 'Ethical Standards',
+      route: 'https://xyflow.com/ethical-standards',
+    },
+    { title: 'Pro License', route: 'https://xyflow.com/pro-license' },
+    { title: 'Privacy Policy', route: 'https://xyflow.com/privacy' },
+    { title: 'Imprint', route: 'https://xyflow.com/imprint' },
+  ],
+};
 
 export const NextraLayout: FC<{
   children: ReactNode;
@@ -19,6 +34,7 @@ export const NextraLayout: FC<{
       footer={
         <Footer
           baseUrl="https://xyflow.com"
+          categories={footerCategories}
           message={{
             title: 'Hello from the xyflow team',
             text: 'xyflow is building and maintaining open source software for node-based UIs since 2019.',
