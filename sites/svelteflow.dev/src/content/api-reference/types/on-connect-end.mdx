@@ -1,0 +1,18 @@
+---
+description: Callback function triggered when finishing or canceling a connection attempt in SvelteFlow.
+---
+
+# OnConnectEnd
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/types/general.ts#L89)
+
+The `OnConnectEnd` type is a callback that fires when the connection process is completed or canceled. It receives the triggering event and the final connection state.
+
+```ts
+type OnConnectEnd = (
+  event: MouseEvent | TouchEvent,
+  connectionState: FinalConnectionState,
+) => void;
+```
+
+<APIDocs typeName="OnConnectEnd" packageName="system" />
