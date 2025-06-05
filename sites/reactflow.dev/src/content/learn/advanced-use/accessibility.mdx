@@ -106,11 +106,11 @@ Make sure to follow best-practice WAI-ARIA guidance when building custom nodes o
 
 This guide is helpful for learning about [ARIA best practices](https://www.w3.org/WAI/ARIA/apg/practices/read-me-first/).
 
-## WCAG 2.1 AA Compliance
+## WCAG 2.1 AA
 
-React Flow’s accessibility features map to key WCAG 2.1 AA criteria:
+React Flow provides features that can help you meet key WCAG 2.1 AA criteria when properly implemented:
 
-- **Keyboard (2.1.1):** All UI actions are operable via keyboard alone. Nodes and edges are focusable with `Tab` and interactive via `Enter`/`Space`. Moveable nodes with arrow keys and focus outlines enable full keyboard navigation.
-- **Screen Reader (1.3.1, 4.1.2):** Semantic ARIA roles and labels are used (e.g. `role="button"`, `aria-label`, and `aria-roledescription`), so that graphical nodes/edges are announced meaningfully. For instance, edge components provide a default `aria-label` and nodes can include `aria-label` text.
-- **ARIA Live Regions (4.1.3):** React Flow announces dynamic updates (like node moves) via an `aria-live` region. The `A11yDescriptions` component includes an element with `aria-live="assertive"` that notifies users whenever a selected node moves. This keeps users informed of canvas changes.
-- **Instructions and Focus Management (3.3.2):** Clear instructions are provided for using the graph. As shown in the built-in description, nodes include text like “Press enter or space to select a node…”. This satisfies the guideline for contextual help. Additionally, focusing a node scrolls it into view, ensuring focus is not lost.
+- **Keyboard:** React Flow supports keyboard operability with `Tab` navigation to nodes and edges, interaction via `Enter`/`Space`, and arrow key movement for nodes. These features help satisfy requirements for keyboard accessibility.
+- **Screen Reader:** With semantic ARIA roles and labels (e.g. `role="button"`, `aria-label`, and `aria-roledescription`), React Flow enables you to create meaningfully announced graphical nodes/edges. Edge components include a customizable `aria-label` and nodes can be given appropriate `aria-label` text.
+- **ARIA Live Regions:** Dynamic updates are announced through an `aria-live` region. The `A11yDescriptions` component includes an element with `aria-live="assertive"` that notifies users of node movements, helping you meet requirements for status messages.
+- **Instructions and Focus Management:** React Flow provides contextual help with clear instructions like "Press enter or space to select a node…". The automatic focus management ensures nodes scroll into view when focused, helping satisfy requirements for input assistance.
