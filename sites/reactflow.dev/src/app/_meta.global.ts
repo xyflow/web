@@ -12,6 +12,7 @@ const customization = {
   'custom-nodes': '',
   'handles': '',
   'custom-edges': '',
+  'edge-labels': '',
   'utility-classes': '',
 };
 const advanced = {
