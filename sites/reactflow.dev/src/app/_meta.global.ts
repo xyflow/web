@@ -10,9 +10,13 @@ const gettingStarted = {
 };
 const customization = {
   'custom-nodes': '',
+  'handles': '',
   'custom-edges': '',
+  'edge-labels': '',
+  'utility-classes': '',
 };
 const advanced = {
+  theming: '',
   accessibility: '',
   testing: '',
   typescript: '',
@@ -94,7 +98,7 @@ const metaRecord = {
       'getting-started': { items: gettingStarted },
       customization: {
         items: customization,
-        title: 'Customizing React Flow',
+        title: 'Customizing Components',
       },
       layouting: '',
       'advanced-use': { items: advanced },
