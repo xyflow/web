@@ -1,0 +1,56 @@
+---
+description: This guide shows you how to add handles to custom nodes in React Flow.
+---
+
+import { RemoteCodeViewer } from 'xy-shared/server';
+import { Callout } from 'nextra/components';
+
+# Handles
+
+Handles are the connection points on nodes in React Flow. Our standard nodes include one source and ond target handle, but you can customize your nodes with as many different handles as you need.
+
+## Creating a Node with Handles
+
+To create a custom node with handles, you can use the `<Handle />` component provided by React Flow. This component allows you to define source and target handles for your custom nodes. Here's an example of how to implement a custom node with two handles:
+
+```jsx
+import { Handle } from '@xyflow/react';
+
+export function CustomNode() {
+  return (
+    <div className="custom-node">
+      <div>Custom Node Content</div>
+      <Handle type="source" position="top" />
+      <Handle type="target" position="bottom" />
+    </div>
+  );
+}
+```
+
+## Using Multiple Handles
+
+If you want to use multiple source or target handles in your custom node, you need to specify each handle with a unique `id`. This allows React Flow to differentiate between the handles when connecting edges.
+
+```jsx
+  <Handle type="target" position="top" />
+  <Handle type="source" position="right" id="a" />
+  <Handle type="source" position="bottom" id="b" />
+```
+
+To connect an edge to a specific handle of a node, use the properties `sourceHandle` (for the edge's starting point) and `targetHandle` (for the edge's ending point). By defining `sourceHandle` or `targetHandle` with the appropriate handle `id`, you instruct React Flow to attach the edge to that specific handle, ensuring that connections are made where you intend.
+
+```js
+const initialEdges = [
+  { id: 'edge-1', source: 'node-1', sourceHandle: 'a', target: 'node-2' },
+  { id: 'edge-2', source: 'node-1', sourceHandle: 'b', target: 'node-3' },
+];
+```
+
+In this case, the source node is `node-1` for both handles but the handle `id`s are different. One comes from handle id `a` and the other one from `"b"`. Both edges also have different target nodes:
+
+<RemoteCodeViewer route="learn/custom-node-2" framework="react" />
+
+If you are programmatically changing the position or number of handles
+in your custom node, you will need to use the
+[`useUpdateNodeInternals`](/api-reference/hooks/use-update-node-internals) hook
+to properly notify React Flow of changes.

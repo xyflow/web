@@ -10,7 +10,9 @@ const gettingStarted = {
 };
 const customization = {
   'custom-nodes': '',
+  'handles': '',
   'custom-edges': '',
+  'utility-classes': '',
 };
 const advanced = {
   accessibility: '',
