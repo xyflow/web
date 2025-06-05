@@ -41,7 +41,7 @@ React Flow provides keyboard and screen-reader support to help meet accessibilit
 </Callout>
 ## ARIA Roles for Nodes and Edges
 
-By default, React Flow uses semantic ARIA roles for interactive elements. You can override a node’s role using the `ariaRole` prop (and similarly use `ariaRoleDescription` for a human-readable label). For example:
+By default, React Flow uses semantic ARIA roles for interactive elements. You can override a node’s role using the `ariaRole` prop. For example:
 
 ```js
 const nodes = [
@@ -49,7 +49,6 @@ const nodes = [
     id: '1',
     data: { label: 'Hello' },
     ariaRole: 'button',
-    ariaRoleDescription: 'Collapsible Node',
   },
 ];
 <ReactFlow nodes={nodes} edges={[]} />;
@@ -58,6 +57,26 @@ const nodes = [
 In this example, the node will have `role="button"` and an ARIA role description of “Collapsible Node”. By, default, if you don’t set a role, `role="group"` is applied. Customizing `ariaRole` lets you match any relevant ARIA role (e.g. `"listitem"`, `"region"`, etc.), improving semantic information for assistive technology.
 
 **Note:** The `ariaRole` is applied to the node wrapper. If a custom node includes interactive elements, avoid setting `ariaRole: 'button'` on the node itself. Instead, apply the appropriate ARIA role directly to the interactive element.
+
+### DOM Attributes
+
+To pass custom ARIA attributes or other DOM-level attributes (e.g., `aria-roledescription`, `data-\*`,`tabIndex`, etc.), you can use the `domAttributes prop`. This is available for both nodes and edges:
+
+```
+// Example for a node
+{
+  id: '2',
+  data: { label: 'Accessible Node' },
+  domAttributes: {
+    'aria-roledescription': 'collapsible node',
+    tabIndex: 0,
+    'data-test-id': 'node-2',
+  },
+}
+
+```
+
+This gives you full control over accessibility-related attributes while maintaining React Flow’s built-in roles and behaviors.
 
 ## Localizing Accessibility Messages
 
