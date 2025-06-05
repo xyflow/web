@@ -1,0 +1,118 @@
+---
+description: empty
+---
+
+import { RemoteCodeViewer } from 'xy-shared/server';
+import { Callout } from 'nextra/components';
+
+
+# Edge Text
+Edge text is a feature in React Flow that allows you to display text labels on edges, enhancing the visual representation of connections between nodes. This can be particularly useful for providing additional context or information about the relationship represented by the edge.
+Edge text can be customized to suit your application's needs, including positioning, styling, and content. This feature is especially beneficial in complex flows where understanding the connections between nodes is crucial for users.
+## Adding Text to Edges
+To add text to edges in React Flow, you can use the `EdgeText` component. This component allows you to specify the text content and its position relative to the edge. Here's a basic example of how to implement edge text:
+
+```jsx
+import React from 'react';
+import { ReactFlow, EdgeText } from '@xyflow/react';
+import '@xyflow/react/dist/style.css';
+const initialNodes = [
+  { id: '1', position: { x: 0, y: 0 }, data: { label: 'Node 1' } },
+  { id: '2', position: { x: 200, y: 100 }, data: { label: 'Node 2' } },
+];
+const initialEdges = [
+  { id: 'e1-2', source: '1', target: '2', label: 'Edge 1-2' },
+];
+export default function App() {
+  return (
+    <div style={{ width: '100vw', height: '100vh' }}>
+      <ReactFlow nodes={initialNodes} edges={initialEdges}>
+        <EdgeText />
+      </ReactFlow>
+    </div>
+  );
+}
+```
+This example demonstrates how to add text labels to edges in a React Flow diagram. The `EdgeText` component is used to render the text labels on the edges, providing additional context about the connections between nodes.
+## Customizing Edge Text
+You can customize the appearance and behavior of edge text in React Flow. This includes changing the font size, color, and position of the text. You can also use custom components for more complex text rendering.
+```jsx
+import React from 'react';
+import { ReactFlow, EdgeText } from '@xyflow/react';
+import '@xyflow/react/dist/style.css';
+const initialNodes = [
+  { id: '1', position: { x: 0, y: 0 }, data: { label: 'Node 1' } },
+  { id: '2', position: { x: 200, y: 100 }, data: { label: 'Node 2' } },
+];
+const initialEdges = [
+  { id: 'e1-2', source: '1', target: '2', label: 'Edge 1-2' },
+];
+export default function App() {
+  return (
+    <div style={{ width: '100vw', height: '100vh' }}>
+      <ReactFlow nodes={initialNodes} edges={initialEdges}>
+        <EdgeText
+          style={{ fontSize: '12px', fill: 'blue' }}
+          position="top"
+        />
+      </ReactFlow>
+    </div>
+  );
+}
+```
+This example shows how to customize the edge text by changing its style and position. You can adjust the `style` prop to modify the font size, color, and other CSS properties, and use the `position` prop to control where the text appears relative to the edge.
+## Edge Text with Custom Components
+You can also use custom components for edge text to achieve more complex layouts or styles. This allows you to render any React component as the edge text, providing maximum flexibility.
+```jsx
+import React from 'react';
+import { ReactFlow, EdgeText } from '@xyflow/react';
+import '@xyflow/react/dist/style.css';
+const initialNodes = [
+  { id: '1', position: { x: 0, y: 0 }, data: { label: 'Node 1' } },
+  { id: '2', position: { x: 200, y: 100 }, data: { label: 'Node 2' } },
+];
+const initialEdges = [
+  { id: 'e1-2', source: '1', target: '2', label: 'Edge 1-2' },
+];
+export default function App() {
+  const CustomEdgeText = ({ label }) => (
+    <div style={{ background: 'lightgray', padding: '2px' }}>{label}</div>
+  );
+
+  return (
+    <div style={{ width: '100vw', height: '100vh' }}>
+      <ReactFlow nodes={initialNodes} edges={initialEdges}>
+        <EdgeText component={CustomEdgeText} />
+      </ReactFlow>
+    </div>
+  );
+}
+```
+This example demonstrates how to use a custom component for edge text. The `CustomEdgeText` component is rendered as the edge label, allowing for more complex styling and layout options.
+## Conclusion
+Edge text in React Flow is a powerful feature that enhances the visual representation of connections between nodes. By using the `EdgeText` component, you can easily add, customize, and style text labels on edges, providing additional context and information about the relationships in your flow. Whether you need simple labels or complex custom components, React Flow offers the flexibility to meet your needs.
+
+```jsx
+import React, { useCallback } from 'react';
+import { useUpdateNodeInternals } from '@xyflow/react';
+  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
+  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+
+  const onConnect = useCallback(
+    (params) => setEdges((eds) => addEdge(params, eds)),
+    [setEdges],
+  );
+
+  return (
+    <div style={{ width: '100vw', height: '100vh' }}>
+      <ReactFlow
+        nodes={nodes}
+        edges={edges}
+        onNodesChange={onNodesChange}
+        onEdgesChange={onEdgesChange}
+        onConnect={onConnect}
+      />
+    </div>
+  );
+}
+```

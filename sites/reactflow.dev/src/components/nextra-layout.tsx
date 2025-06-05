@@ -28,7 +28,7 @@ export const NextraLayout: FC<{
           align="left"
           logo={
             <LogoLabel
-              label="React Flow"
+              label="React Flow DEV"
               labelClassName="mr-5 md:max-lg:hidden"
             />
           }
