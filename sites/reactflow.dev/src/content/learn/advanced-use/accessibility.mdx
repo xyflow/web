@@ -2,43 +2,115 @@
 description: React Flow is designed to be both keyboard and screen reader accessible.
 ---
 
-# Accessibility
-
-A flow is accessible with a keyboard and readable by a screen reader. Nodes and edges are focusable, selectable, moveable and deletable with the keyboard.
-
 import { Callout } from 'nextra/components';
 
+# Accessibility
+
 <Callout type="info">
-  If you have an idea how we can improve the accessibility of React Flow, please
-  feel free to [contact us](https://xyflow.com/contact).
+
+If you have suggestions for how we can improve the accessibility of React Flow, please feel free to [contact us](https://xyflow.com/contact).
+
 </Callout>
+
+React Flow provides keyboard and screen-reader support to help meet accessibility standards. By default, all nodes and edges are keyboard-focusable and operable. You can enable or disable these features with props including: [nodesFocusable](/api-reference/react-flow#nodesfocusable), [edgesFocusable](/api-reference/react-flow#edgesfocusable), and [disableKeyboardA11y](/api-reference/react-flow#disablekeyboarda11y) which are passed through `<ReactFlow />` like this:
+
+```
+<ReactFlow
+  nodesFocusable={true}
+  edgesFocusable={true}
+  disableKeyboardA11y={false}
+  nodes={nodes}
+  edges={edges}
+>
+  {/* ...other components like Controls, MiniMap... */}
+</ReactFlow>
+```
 
 ## Built-in Features
 
-### Keyboard Controls
-
-- Nodes and edges are focusable by using the `Tab` key (`tabIndex={0}` + `role="button"`)
-- Nodes and edges are selectable by using `Enter` or `Space`, un-selectable by using `Escape`
-- Nodes are moveable with arrow keys (press Shift for increasing velocity)
-- Nodes and Edges get a `aria-describedby` attribute to describe keyboard controls
-
-You can configure the keyboard controls with the props: `nodesFocusable`, `edgesFocusable` and `disableKeyboardA11y`. `nodesFocusable` and `edgesFocusable` (both true by default) need to be true if you want to be able to focus elements with Tab and then select or deselect them with Enter and Escape. If you are setting `disableKeyboardA11y={true}`, the nodes are not moveable with arrow keys anymore.
+- **Tab navigation:** Pressing `Tab` moves focus through all focusable nodes and edges. These elements receive `tabIndex={0}` and, by default, `role="button"` to ensure they are keyboard-focusable.
+- **Select/Deselect:** Press `Enter` or `Space` to select the focused node/edge, and `Escape` to clear the selection
+- **Move nodes with arrow keys:** If `nodesDraggable` and `nodesFocusable` are both true (default), you can move the selected node with the arrow keys. You can hold `Shift` to increase movement speed. If you set `disableKeyboardA11y={true}`, arrow-key movement is disabled (but tab-focus and selection still work).
+- **Automatic panning:** When a node receives focus, React Flow automatically pans/zooms the canvas to bring that node into view. This ensures focused nodes are visible to the user. (This behavior can be controlled via the new `enablePanOnFocus` prop if needed.)
+- **ARIA descriptions:** React Flow automatically adds hidden descriptions for keyboard guidance. For example, a focused node has an `aria-describedby` link to a message like: “Press enter or space to select a node… arrow keys to move… delete to remove… escape to cancel”. These live instructions help meet WCAG requirements for user guidance (3.3.2).
 
 <Callout type="info">
-  Nodes are only moveable with arrow keys when `nodesDraggable` and
-  `nodesFocusable` are true (default behavior).
+  To enable full keyboard accessibility, ensure both `nodesFocusable` and `edgesFocusable`
+  are set to `true`. If either is false, corresponding elements will not be
+  keyboard-focusable.
 </Callout>
+## ARIA Roles for Nodes and Edges
 
-### WAI-ARIA
+By default, React Flow uses semantic ARIA roles for interactive elements. You can override a node’s role using the `ariaRole` prop (and similarly use `ariaRoleDescription` for a human-readable label). For example:
 
-- Edges: Default `aria-label` - overwritable with new `Edge` option `ariaLabel`
-- Nodes: `ariaLabel` option (no default here, because we assume that there might be text inside the node)
-- Minimap component: `aria-describedby` + title
-- Attribution component: `aria-label`
-- Controls component: `aria-label` for controls container and buttons
+```js
+const nodes = [
+  {
+    id: '1',
+    data: { label: 'Hello' },
+    ariaRole: 'button',
+    ariaRoleDescription: 'Collapsible Node',
+  },
+];
+<ReactFlow nodes={nodes} edges={[]} />;
+```
 
-## Better accessible node-based UIs
+In this example, the node will have `role="button"` and an ARIA role description of “Collapsible Node”. By, default, if you don’t set a role, `role="group"` is applied. Customizing `ariaRole` lets you match any relevant ARIA role (e.g. `"listitem"`, `"region"`, etc.), improving semantic information for assistive technology.
 
-- When your nodes don't have textual content, you should provide an aria-label via the node options.
-- You can improve the default `aria-label` ('from source.id to target.id') of an edge, when your nodes have names that you could use by passing specific aria-labels to the edges.
-- follow best [practice WAI-ARIA guides](https://w3c.github.io/aria-practices/) in your application
+**Note:** The `ariaRole` is applied to the node wrapper. If a custom node includes interactive elements, avoid setting `ariaRole: 'button'` on the node itself. Instead, apply the appropriate ARIA role directly to the interactive element.
+
+## Localizing Accessibility Messages
+
+React Flow’s built-in accessibility text (such as keyboard instructions and live updates) can be customized or localized via the `ariaLabelConfig` prop on `<ReactFlow>`. This prop takes an object mapping message keys to strings or functions. Keys include:
+
+| Key                                     | Default Value                                                                                                                                   |
+| --------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| `node.a11yDescription.default`          | Press enter or space to select a node. Press delete to remove it and escape to cancel.                                                          |
+| `node.a11yDescription.keyboardDisabled` | Press enter or space to select a node. You can then use the arrow keys to move the node around. Press delete to remove it and escape to cancel. |
+| `node.a11yDescription.ariaLiveMessage`  | `Moved selected node {direction}. New position, x: {x}, y: {y}`                                                                                 |
+| `edge.a11yDescription.default`          | Press enter or space to select an edge. You can then press delete to remove it or escape to cancel.                                             |
+| `controls.ariaLabel`                    | Control Panel                                                                                                                                   |
+| `controls.zoomIn.ariaLabel`             | Zoom In                                                                                                                                         |
+| `controls.zoomOut.ariaLabel`            | Zoom Out                                                                                                                                        |
+| `controls.fitView.ariaLabel`            | Fit View                                                                                                                                        |
+| `controls.interactive.ariaLabel`        | Toggle Interactivity                                                                                                                            |
+| `minimap.ariaLabel`                     | Mini Map                                                                                                                                        |
+| `handle.ariaLabel`                      | Handle                                                                                                                                          |
+
+For example, to provide custom (localized) text:
+
+```js
+const ariaLabels = {
+  'node.a11yDescription.default': 'Press [Enter] to select this node',
+  'node.a11yDescription.keyboardDisabled': 'Keyboard navigation is disabled',
+};
+<ReactFlow nodes={nodes} edges={edges} ariaLabelConfig={ariaLabels}>
+  <MiniMap />
+  <Controls />
+</ReactFlow>;
+```
+
+This tells React Flow to use your text instead of the defaults. By supplying localized strings via `ariaLabelConfig`, you ensure screen readers announce messages in the user’s language.
+
+## WAI-ARIA Overview
+
+React Flow provides semantic ARIA attributes across components:
+
+- **Edges:** Include a default `aria-label` (can be customized via the `ariaLabel` prop).
+- **Nodes:** No default label, but an `ariaLabel` prop is available to add one.
+- **MiniMap:** Includes `aria-describedby` and `title`.
+- **Controls:** Each control (e.g., zoom, fit view) uses `aria-label`.
+- **Attribution:** Labeled with `aria-label`.
+
+Make sure to follow best-practice WAI-ARIA guidance when building custom nodes or controls. If your nodes or edges lack textual content, be sure to supply a meaningful `aria-label`. For edges, consider describing the connection using node names or purposes (e.g., `"Connects Database to API"`), instead of relying on default IDs.
+
+This guide is helpful for learning about [ARIA best practices](https://www.w3.org/WAI/ARIA/apg/practices/read-me-first/).
+
+## WCAG 2.1 AA Compliance
+
+React Flow’s accessibility features map to key WCAG 2.1 AA criteria:
+
+- **Keyboard (2.1.1):** All UI actions are operable via keyboard alone. Nodes and edges are focusable with `Tab` and interactive via `Enter`/`Space`. Moveable nodes with arrow keys and focus outlines enable full keyboard navigation.
+- **Screen Reader (1.3.1, 4.1.2):** Semantic ARIA roles and labels are used (e.g. `role="button"`, `aria-label`, and `aria-roledescription`), so that graphical nodes/edges are announced meaningfully. For instance, edge components provide a default `aria-label` and nodes can include `aria-label` text.
+- **ARIA Live Regions (4.1.3):** React Flow announces dynamic updates (like node moves) via an `aria-live` region. The `A11yDescriptions` component includes an element with `aria-live="assertive"` that notifies users whenever a selected node moves. This keeps users informed of canvas changes.
+- **Instructions and Focus Management (3.3.2):** Clear instructions are provided for using the graph. As shown in the built-in description, nodes include text like “Press enter or space to select a node…”. This satisfies the guideline for contextual help. Additionally, focusing a node scrolls it into view, ensuring focus is not lost.
