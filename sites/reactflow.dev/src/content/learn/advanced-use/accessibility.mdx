@@ -78,6 +78,20 @@ To pass custom ARIA attributes or other DOM-level attributes (e.g., `aria-rolede
 
 This gives you full control over accessibility-related attributes while maintaining React Flow’s built-in roles and behaviors.
 
+### Semantic ARIA Attributes
+
+React Flow provides semantic ARIA attributes across components:
+
+- **Edges:** Include a default `aria-label` (can be customized via the `ariaLabel` prop).
+- **Nodes:** No default label, but an `ariaLabel` prop is available to add one.
+- **MiniMap:** Includes `aria-describedby` and `title`.
+- **Controls:** Each control (e.g., zoom, fit view) uses `aria-label`.
+- **Attribution:** Labeled with `aria-label`.
+
+Make sure to follow best-practice WAI-ARIA guidance when building custom nodes or controls. If your nodes or edges lack textual content, be sure to supply a meaningful `aria-label`. For edges, consider describing the connection using node names or purposes (e.g., `"Connects Database to API"`), instead of relying on default IDs.
+
+This guide is helpful for learning about [ARIA best practices](https://www.w3.org/WAI/ARIA/apg/practices/read-me-first/).
+
 ## Localizing Accessibility Messages
 
 React Flow’s built-in accessibility text (such as keyboard instructions and live updates) can be customized or localized via the `ariaLabelConfig` prop on `<ReactFlow>`. This prop takes an object mapping message keys to strings or functions. Keys include:
@@ -110,20 +124,6 @@ const ariaLabels = {
 ```
 
 This tells React Flow to use your text instead of the defaults. By supplying localized strings via `ariaLabelConfig`, you ensure screen readers announce messages in the user’s language.
-
-## WAI-ARIA Overview
-
-React Flow provides semantic ARIA attributes across components:
-
-- **Edges:** Include a default `aria-label` (can be customized via the `ariaLabel` prop).
-- **Nodes:** No default label, but an `ariaLabel` prop is available to add one.
-- **MiniMap:** Includes `aria-describedby` and `title`.
-- **Controls:** Each control (e.g., zoom, fit view) uses `aria-label`.
-- **Attribution:** Labeled with `aria-label`.
-
-Make sure to follow best-practice WAI-ARIA guidance when building custom nodes or controls. If your nodes or edges lack textual content, be sure to supply a meaningful `aria-label`. For edges, consider describing the connection using node names or purposes (e.g., `"Connects Database to API"`), instead of relying on default IDs.
-
-This guide is helpful for learning about [ARIA best practices](https://www.w3.org/WAI/ARIA/apg/practices/read-me-first/).
 
 ## WCAG 2.1 AA
 
