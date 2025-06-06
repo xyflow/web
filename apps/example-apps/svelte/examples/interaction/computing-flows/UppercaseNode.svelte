@@ -19,7 +19,9 @@
 
   const { updateNodeData } = useSvelteFlow();
 
-  const connections = useNodeConnections();
+  const connections = useNodeConnections({
+    handleType: 'target',
+  });
 
   let nodeData = useNodesData(connections.current[0]?.source);
   let textNodeData = $derived(

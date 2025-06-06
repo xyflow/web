@@ -12,10 +12,7 @@
     type Node,
   } from '@xyflow/svelte';
 
-  let { id }: NodeProps<ResultNodeType> = $props();
-
   const connections = useNodeConnections({
-    id,
     handleType: 'target',
   });
 
