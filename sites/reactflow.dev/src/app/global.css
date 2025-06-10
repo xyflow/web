@@ -6,12 +6,12 @@
  *
  * Originally done in https://github.com/the-guild-org/docs/blob/bdfe4f564ee68f8b670828f425e32a3add973883/packages/components/style.css
 **/
+@import '@xyflow/react/dist/style.css';
 @import 'tailwindcss/base' layer(l-base);
 @import 'nextra-theme-docs/dist/style-prefixed.css' layer(l-nextra);
 @import 'tailwindcss/utilities';
 @import 'tailwindcss/components';
-@import '@xyflow/react/dist/style.css';
-@import 'xy-shared/styles/globals-nextra-4.css';
+@import 'xy-shared/styles/globals.css';
 
 @layer l-base {
   :root {

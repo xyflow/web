@@ -12,14 +12,14 @@ import {
   GettingStarted,
   AboutSection,
   ProjectCards,
+  FlowA,
+  FlowB,
+  FlowC,
 } from 'xy-shared';
 import { getLastChangelog } from 'xy-shared/server';
 import { fetchGitHubNpmStats, InternalRoute } from '@/utils';
 import ClientLogos from '@/components/client-logos';
 import WhatsNewPreview from '@/components/whats-new-preview';
-import { FlowA } from '@/components/flows/flow-a';
-import { FlowB } from '@/components/flows/flow-b';
-import { FlowC } from '@/components/flows/flow-c';
 
 export const revalidate = 3600; // 60 * 60
 

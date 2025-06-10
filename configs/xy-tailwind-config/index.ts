@@ -17,32 +17,9 @@ export default {
         '2xl': '1400px',
       },
     },
-    safelist: [
-      'bg-react',
-      'bg-svelte',
-      'bg-xyflow',
-      'bg-gradient',
-      'text-react',
-      'text-svelte',
-      'text-xyflow',
-      'border-react',
-      'border-svelte',
-      'border-xyflow',
-    ],
+    safelist: ['bg-gradient'],
     extend: {
       colors: {
-        xyflow: {
-          DEFAULT: 'hsl(var(--color-xyflow))',
-          foreground: 'hsl(var(--primary-foreground))',
-        },
-        react: {
-          DEFAULT: 'hsl(var(--color-react))',
-          foreground: 'hsl(var(--primary-foreground))',
-        },
-        svelte: {
-          DEFAULT: 'hsl(var(--color-svelte))',
-          foreground: 'hsl(var(--primary-foreground))',
-        },
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',

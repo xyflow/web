@@ -11,11 +11,10 @@ import {
   Features,
   GettingStarted,
   ProjectCards,
+  FlowA,
+  FlowB,
+  FlowC,
 } from 'xy-shared';
-
-import FlowA from '@/components/flows/flow-a';
-import FlowB from '@/components/flows/flow-b';
-import FlowC from '@/components/flows/flow-c';
 
 import type { InternalRoute } from '@/utils';
 import getStaticPropsStats from '@/utils/github-npm-stats';

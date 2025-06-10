@@ -1,0 +1,269 @@
+/* 1. Base Styles */
+:root {
+  --docsearch-primary-color: hsl(var(--primary));
+}
+
+@layer base {
+  :root {
+    --primary: 333 100% 50%;
+    --primary-foreground: 210 40% 98%;
+
+    --background: 0 0% 100%;
+    --foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 47.4% 11.2%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+
+    --secondary: 0 100% 100%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 215 20.2% 65.1%;
+
+    --radius: 0.5rem;
+
+    --light: 0 0% 46%;
+  }
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings:
+      'rlig' 1,
+      'calt' 1;
+  }
+  html {
+    /* this is a nextra default we need to overwrite */
+    font-feature-settings: normal !important;
+    -webkit-font-smoothing: initial !important;
+    overflow-x: hidden;
+  }
+}
+
+/* We have this weird bug where the mobile top navbar can be scrolled out of view
+even though the body is supposed to have overflow:hidden set. The following two
+rules make it work almost correctly, but they don't feel great. */
+
+html:has(body.x\:overflow-hidden) {
+  overflow-y: hidden;
+}
+
+html:has(body.x\:overflow-hidden) nav {
+  position: fixed;
+  width: 100%;
+}
+
+/* 2. Typography */
+
+.xy-link-gray {
+  @apply x:transition x:text-gray-600 x:dark:text-gray-400 x:hover:text-gray-800 x:dark:hover:text-gray-200 x:contrast-more:text-gray-700 x:contrast-more:dark:text-gray-100;
+}
+
+/* 3. Navigation */
+.nextra-menu-desktop li.active > a {
+  @apply bg-transparent text-primary;
+}
+
+nav a:has(svg.nav-github-logo) {
+  @apply max-sm:hidden;
+}
+
+nav.x\:bg-transparent {
+  background-color: white;
+}
+
+.light .nextra-content {
+  color: #222;
+}
+
+div.nextra-nav-container-blur {
+  backdrop-filter: none;
+  background: white;
+}
+
+main .x\:text-primary-600,
+nav .x\:text-primary-600 {
+  @apply text-primary;
+}
+
+main .x\:border-primary-500 {
+  @apply border-primary;
+}
+
+/* 4. Sidebar */
+
+/* adds labels to the sidebar items */
+.sidebar-title.pro:after {
+  content: 'Pro';
+  @apply bg-primary border border-primary text-white text-xs ml-1.5 px-1.5 font-bold rounded-full;
+}
+
+.sidebar-title.pro.free:after {
+  content: 'Pro Trial';
+}
+
+li.active > .sidebar-title.pro:after {
+  display: inline-block;
+  @apply bg-primary border-primary text-white;
+}
+
+.sidebar-title.new:after {
+  position: absolute;
+  width: 36px;
+  font-size: 12px;
+  line-height: 14px;
+  transform: translate(-35%, -35%);
+  content: 'new';
+  font-weight: 500;
+  @apply text-primary ml-1.5 px-1.5;
+}
+
+/* 5. Buttons */
+.pro-button {
+  transition: all 0.3s ease;
+}
+
+@property --gradientAngle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 258deg;
+}
+
+.pro-button {
+  --gradientAngle: 258deg;
+}
+
+.pro-button:before {
+  transition: --gradientAngle 0.3s ease;
+  background:
+    linear-gradient(
+      var(--gradientAngle),
+      hsl(var(--primary)) 36.34%,
+      hsl(var(--secondary)) 50.92%,
+      rgba(240, 240, 240, 1) 63.72%
+    ),
+    linear-gradient(
+      var(--gradientAngle),
+      hsl(var(--primary)) 2.22%,
+      hsl(var(--secondary)) 18.5%,
+      rgba(240, 240, 240, 1) 32.77%
+    );
+}
+
+.pro-button:hover:before {
+  --gradientAngle: 45deg;
+}
+
+/* nextra blog overwrites */
+article.nextra-content ol li,
+article.nextra-content ol li p {
+  font-size: 1.125rem;
+  line-height: 2;
+}
+
+/* Docsearch overwrite */
+.nextra-navbar {
+  --docsearch-searchbox-background: #eee;
+  --docsearch-searchbox-focus-background: #eee;
+}
+
+/* 7. DocSearch */
+.DocSearch-Button {
+  @apply bg-gray-100;
+}
+
+.DocSearch-Button .DocSearch-Search-Icon {
+  width: 16px;
+  height: 16px;
+}
+
+.DocSearch-Button .DocSearch-Button-Keys {
+  font-size: 14px;
+  min-width: 0;
+  margin-left: 10px;
+  margin-right: 5px;
+}
+
+.DocSearch-Button .DocSearch-Button-Key {
+  background: transparent;
+  box-shadow: none;
+  top: 0;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  margin-left: 4px;
+}
+
+.DocSearch-Button .DocSearch-Button-Placeholder {
+  font-size: 14px;
+}
+
+/* 8. Code Blocks */
+.nextra-code > div:first-child {
+  @apply bg-primary/10;
+  border: none;
+}
+
+.nextra-code pre {
+  @apply bg-primary/5;
+  box-shadow: none;
+}
+
+/* 9. Miscellaneous */
+
+/* stack example code and preview vertically */
+.sandpack-wrapper.vertical > .sp-wrapper > .sp-layout {
+  flex-direction: column-reverse;
+}
+
+.sandpack-wrapper.vertical .sp-stack {
+  flex: none;
+}
+
+/* this override adds some space for the api docs */
+.learn article main.x\:md\:px-12,
+.api-reference article main.x\:md\:px-12,
+.examples article main.x\:md\:px-12 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+/* this unifies the /examples content width with /api-reference and /learn */
+.examples main.x\:max-w-6xl {
+  max-width: none;
+}
+
+@media screen and (min-width: 2000px) {
+  .x\:max-w-\(--nextra-content-width\) {
+    max-width: 90rem;
+  }
+}
+
+@media (max-width: 950px) {
+  .DocSearch-Button-Keys {
+    display: none;
+  }
+
+  .DocSearch-Button-Placeholder {
+    display: none;
+  }
+}
