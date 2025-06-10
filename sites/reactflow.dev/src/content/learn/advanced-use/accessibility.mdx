@@ -14,7 +14,7 @@ If you have suggestions for how we can improve the accessibility of React Flow, 
 
 React Flow provides keyboard and screen-reader support to help meet accessibility standards. By default, all nodes and edges are keyboard-focusable and operable. You can enable or disable these features with props including: [nodesFocusable](/api-reference/react-flow#nodesfocusable), [edgesFocusable](/api-reference/react-flow#edgesfocusable), and [disableKeyboardA11y](/api-reference/react-flow#disablekeyboarda11y) which are passed through `<ReactFlow />` like this:
 
-```
+```js
 <ReactFlow
   nodesFocusable={true}
   edgesFocusable={true}
@@ -28,11 +28,11 @@ React Flow provides keyboard and screen-reader support to help meet accessibilit
 
 ## Built-in Features
 
-- **Tab navigation:** Pressing `Tab` moves focus through all focusable nodes and edges. These elements receive `tabIndex={0}` and, by default, `role="button"` to ensure they are keyboard-focusable.
+- **Tab navigation:** Pressing `Tab` moves focus through all focusable nodes and edges. These elements receive `tabIndex={0}` and, by default, `role="group"` to ensure they are keyboard-focusable.
 - **Select/Deselect:** Press `Enter` or `Space` to select the focused node/edge, and `Escape` to clear the selection
 - **Move nodes with arrow keys:** If `nodesDraggable` and `nodesFocusable` are both true (default), you can move the selected node with the arrow keys. You can hold `Shift` to increase movement speed. If you set `disableKeyboardA11y={true}`, arrow-key movement is disabled (but tab-focus and selection still work).
-- **Automatic panning:** When a node receives focus, React Flow automatically pans/zooms the canvas to bring that node into view. This ensures focused nodes are visible to the user. (This behavior can be controlled via the new `enablePanOnFocus` prop if needed.)
-- **ARIA descriptions:** React Flow automatically adds hidden descriptions for keyboard guidance. For example, a focused node has an `aria-describedby` link to a message like: “Press enter or space to select a node… arrow keys to move… delete to remove… escape to cancel”. These live instructions help meet WCAG requirements for user guidance (3.3.2).
+- **Automatic panning:** When a node receives focus, React Flow automatically pans the canvas to bring that node into view. This ensures focused nodes are visible to the user. (This behavior can be controlled via the new `autoPanOnNodeFocus` prop if needed.)
+- **ARIA descriptions:** React Flow automatically adds hidden descriptions for keyboard guidance. For example, a focused node has an `aria-describedby` link to a message like: “Press enter or space to select a node… arrow keys to move… delete to remove… escape to cancel”. These can be configured by using `ariaLabelConfig`.
 
 <Callout type="info">
   To enable full keyboard accessibility, ensure both `nodesFocusable` and `edgesFocusable`
@@ -54,7 +54,7 @@ const nodes = [
 <ReactFlow nodes={nodes} edges={[]} />;
 ```
 
-In this example, the node will have `role="button"` and an ARIA role description of “Collapsible Node”. By, default, if you don’t set a role, `role="group"` is applied. Customizing `ariaRole` lets you match any relevant ARIA role (e.g. `"listitem"`, `"region"`, etc.), improving semantic information for assistive technology.
+In this example, the node will have `role="group"` and an ARIA role description of “Collapsible Node”. By, default, if you don’t set a role, `role="group"` is applied. Customizing `ariaRole` lets you match any relevant ARIA role (e.g. `"listitem"`, `"region"`, etc.), improving semantic information for assistive technology.
 
 **Note:** The `ariaRole` is applied to the node wrapper. If a custom node includes interactive elements, avoid setting `ariaRole: 'button'` on the node itself. Instead, apply the appropriate ARIA role directly to the interactive element.
 
@@ -130,6 +130,6 @@ This tells React Flow to use your text instead of the defaults. By supplying loc
 React Flow provides features that can help you meet key WCAG 2.1 AA criteria when properly implemented:
 
 - **Keyboard:** React Flow supports keyboard operability with `Tab` navigation to nodes and edges, interaction via `Enter`/`Space`, and arrow key movement for nodes. These features help satisfy requirements for keyboard accessibility.
-- **Screen Reader:** With semantic ARIA roles and labels (e.g. `role="button"`, `aria-label`, and `aria-roledescription`), React Flow enables you to create meaningfully announced graphical nodes/edges. Edge components include a customizable `aria-label` and nodes can be given appropriate `aria-label` text.
+- **Screen Reader:** With semantic ARIA roles and labels (e.g. `role="group"`, `aria-label`, and `aria-roledescription`), React Flow enables you to create meaningfully announced graphical nodes/edges. Edge components include a customizable `aria-label` and nodes can be given appropriate `aria-label` text.
 - **ARIA Live Regions:** Dynamic updates are announced through an `aria-live` region. The `A11yDescriptions` component includes an element with `aria-live="assertive"` that notifies users of node movements, helping you meet requirements for status messages.
 - **Instructions and Focus Management:** React Flow provides contextual help with clear instructions like "Press enter or space to select a node…". The automatic focus management ensures nodes scroll into view when focused, helping satisfy requirements for input assistance.
