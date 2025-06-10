@@ -28,11 +28,11 @@ React Flow provides keyboard and screen-reader support to help meet accessibilit
 
 ## Built-in Features
 
-- **Tab navigation:** Pressing `Tab` moves focus through all focusable nodes and edges. These elements receive `tabIndex={0}` and, by default, `role="group"` to ensure they are keyboard-focusable.
-- **Select/Deselect:** Press `Enter` or `Space` to select the focused node/edge, and `Escape` to clear the selection
+- **Tab navigation:** Pressing `Tab` moves focus through all focusable nodes and edges. These elements receive `tabIndex={0}` and, by default, `role="group"` to handle interactivity.
+- **Select/Deselect:** Press `Enter` or `Space` to select the focused node/edge, and `Escape` to clear the selection.
 - **Move nodes with arrow keys:** If `nodesDraggable` and `nodesFocusable` are both true (default), you can move the selected node with the arrow keys. You can hold `Shift` to increase movement speed. If you set `disableKeyboardA11y={true}`, arrow-key movement is disabled (but tab-focus and selection still work).
-- **Automatic panning:** When a node receives focus, React Flow automatically pans the canvas to bring that node into view. This ensures focused nodes are visible to the user. (This behavior can be controlled via the new `autoPanOnNodeFocus` prop if needed.)
-- **ARIA descriptions:** React Flow automatically adds hidden descriptions for keyboard guidance. For example, a focused node has an `aria-describedby` link to a message like: “Press enter or space to select a node… arrow keys to move… delete to remove… escape to cancel”. These can be configured by using `ariaLabelConfig`.
+- **Automatic panning:** When a node receives focus, React Flow automatically pans the canvas to bring that node into view. This ensures focused nodes are visible to the user. This behavior can be toggled via the `autoPanOnNodeFocus` prop.
+- **ARIA descriptions:** React Flow automatically adds ARIA descriptions for keyboard guidance. These can be configured by using `ariaLabelConfig`.
 
 <Callout type="info">
   To enable full keyboard accessibility, ensure both `nodesFocusable` and `edgesFocusable`
@@ -54,7 +54,7 @@ const nodes = [
 <ReactFlow nodes={nodes} edges={[]} />;
 ```
 
-In this example, the node will have `role="group"` and an ARIA role description of “Collapsible Node”. By, default, if you don’t set a role, `role="group"` is applied. Customizing `ariaRole` lets you match any relevant ARIA role (e.g. `"listitem"`, `"region"`, etc.), improving semantic information for assistive technology.
+By, default, if you don’t set a role, `role="group"` is applied. Customizing `ariaRole` lets you match any relevant ARIA role (e.g. `"listitem"`, `"region"`, etc.), improving semantic information for assistive technology.
 
 **Note:** The `ariaRole` is applied to the node wrapper. If a custom node includes interactive elements, avoid setting `ariaRole: 'button'` on the node itself. Instead, apply the appropriate ARIA role directly to the interactive element.
 
@@ -78,20 +78,6 @@ To pass custom ARIA attributes or other DOM-level attributes (e.g., `aria-rolede
 
 This gives you full control over accessibility-related attributes while maintaining React Flow’s built-in roles and behaviors.
 
-### Semantic ARIA Attributes
-
-React Flow provides semantic ARIA attributes across components:
-
-- **Edges:** Include a default `aria-label` (can be customized via the `ariaLabel` prop).
-- **Nodes:** No default label, but an `ariaLabel` prop is available to add one.
-- **MiniMap:** Includes `aria-describedby` and `title`.
-- **Controls:** Each control (e.g., zoom, fit view) uses `aria-label`.
-- **Attribution:** Labeled with `aria-label`.
-
-Make sure to follow best-practice WAI-ARIA guidance when building custom nodes or controls. If your nodes or edges lack textual content, be sure to supply a meaningful `aria-label`. For edges, consider describing the connection using node names or purposes (e.g., `"Connects Database to API"`), instead of relying on default IDs.
-
-This guide is helpful for learning about [ARIA best practices](https://www.w3.org/WAI/ARIA/apg/practices/read-me-first/).
-
 ## Localizing Accessibility Messages
 
 React Flow’s built-in accessibility text (such as keyboard instructions and live updates) can be customized or localized via the `ariaLabelConfig` prop on `<ReactFlow>`. This prop takes an object mapping message keys to strings or functions. Keys include:
@@ -110,7 +96,7 @@ React Flow’s built-in accessibility text (such as keyboard instructions and li
 | `minimap.ariaLabel`                     | Mini Map                                                                                                                                        |
 | `handle.ariaLabel`                      | Handle                                                                                                                                          |
 
-For example, to provide custom (localized) text:
+For example, to provide custom or localized text:
 
 ```js
 const ariaLabels = {
@@ -133,3 +119,5 @@ React Flow provides features that can help you meet key WCAG 2.1 AA criteria whe
 - **Screen Reader:** With semantic ARIA roles and labels (e.g. `role="group"`, `aria-label`, and `aria-roledescription`), React Flow enables you to create meaningfully announced graphical nodes/edges. Edge components include a customizable `aria-label` and nodes can be given appropriate `aria-label` text.
 - **ARIA Live Regions:** Dynamic updates are announced through an `aria-live` region. The `A11yDescriptions` component includes an element with `aria-live="assertive"` that notifies users of node movements, helping you meet requirements for status messages.
 - **Instructions and Focus Management:** React Flow provides contextual help with clear instructions like "Press enter or space to select a node…". The automatic focus management ensures nodes scroll into view when focused, helping satisfy requirements for input assistance.
+
+This guide is helpful for learning about [ARIA best practices](https://www.w3.org/WAI/ARIA/apg/practices/read-me-first/).
