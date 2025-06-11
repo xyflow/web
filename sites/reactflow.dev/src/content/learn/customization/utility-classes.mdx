@@ -32,8 +32,8 @@ If an element in the canvas does not stop mouse events from propagating, clickin
 ```tsx
 export default function CustomNode(props: NodeProps) {
   return (
-    <div className="nopan" style={{ overflow: 'auto' }}>
-      <p>Scrollable content...</p>
+    <div className="nopan">
+      <p>fixed content...</p>
     </div>
   );
 }
