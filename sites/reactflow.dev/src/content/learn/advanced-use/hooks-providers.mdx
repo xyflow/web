@@ -1,0 +1,28 @@
+---
+description: Overview of Hooks and Providers in React Flow.
+---
+
+import { RemoteCodeViewer } from 'xy-shared/server';
+
+# Hooks and Providers
+
+## ReactFlowProvider
+
+The ReactFlowProvider is a context provider that allows you to access the internal state of the flow, such as nodes, edges, and viewport, from anywhere in your component tree even outside the `ReactFlow` component. It is typically used at the top level of your application.
+
+There are several cases where you might need to use the [`ReactFlowProvider`](/api-reference/react-flow-provider) component:
+
+- Many of the [hooks](/api-reference/hooks) we provide rely on this component to work.
+- You want to access the internal state of the flow outside of the `ReactFlow` component.
+- You are working with multiple flows on a page.
+- You are using a client-side router.
+
+<RemoteCodeViewer route="examples/misc/provider" framework="react" />
+
+## useReactFlow
+
+The [`useReactFlow` hook](/api-reference/hooks/use-react-flow) provides access to the [`ReactFlowInstance`](/api-reference/types/react-flow-instance) and its methods. It allows you to manipulate nodes, edges, and the viewport programmatically.
+
+This example illustrates how to use the `useReactFlow` hook.
+
+<RemoteCodeViewer route="examples/misc/use-react-flow-hook" framework="react" />
