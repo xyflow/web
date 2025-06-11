@@ -1,5 +1,5 @@
 const removeThanks =
-  /Thanks \[@(?:moklick|peterkogo|hayleigh-dot-dev|chrtze|bcakmakoglu)\]\(.*\)! \- */g;
+  /Thanks \[@(?:moklick|peterkogo|printerscanner|chrtze|bcakmakoglu)\]\(.*\)! \- */g;
 const removeCommits = /(\[.*\]\(.*\)) (\[.*\]\(.*\)) /g;
 const removeDeps = /- *Updated dependencies.*/gs;
 const removeNewlines = /[\r\n]+/g;
