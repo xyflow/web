@@ -98,7 +98,7 @@ const metaRecord = {
       'getting-started': { items: gettingStarted },
       customization: {
         items: customization,
-        title: 'Customizing Components',
+        title: 'Customization',
       },
       layouting: '',
       'advanced-use': { items: advanced },
