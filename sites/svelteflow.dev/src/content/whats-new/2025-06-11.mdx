@@ -1,0 +1,24 @@
+---
+title: "Svelte Flow 1.1.0"
+description: "Changelog for Svelte Flow version 1.1.0"
+authors: [xyflow]
+date: '2025-06-11'
+---
+### Minor Changes
+-   [#5299](https://github.com/xyflow/xyflow/pull/5299) Thanks [@printerscanner](https://github.com/printerscanner)! - Add `ariaRole` prop to nodes and edges
+-   [#5280](https://github.com/xyflow/xyflow/pull/5280) Improve typing for Nodes
+-   [#5276](https://github.com/xyflow/xyflow/pull/5276) Add an `ease` and `interpolate` option to all function that alter the viewport
+-   [#5277](https://github.com/xyflow/xyflow/pull/5277) Thanks [@printerscanner](https://github.com/printerscanner)! - Add `ariaLabelConfig` prop for customizing UI text like aria labels and descriptions.
+-   [#5317](https://github.com/xyflow/xyflow/pull/5317) Add `domAttributes` option for nodes and edges
+-   [#5326](https://github.com/xyflow/xyflow/pull/5326) Prevent NodeResizer controls to become too small when zooming out
+-   [#5308](https://github.com/xyflow/xyflow/pull/5308) Thanks [@printerscanner](https://github.com/printerscanner)! - Focus nodes on tab if not within the viewport and add a new prop `autoPanOnNodeFocus`
+### Patch Changes
+-   [#5327](https://github.com/xyflow/xyflow/pull/5327) Prevent selecting of edges when spacebar is pressed
+-   [#5294](https://github.com/xyflow/xyflow/pull/5294) Fix data in `EdgeProps` that was not typed correctly
+-   [#5327](https://github.com/xyflow/xyflow/pull/5327) Fix initial fitView for SSR
+-   [#5275](https://github.com/xyflow/xyflow/pull/5275) Fix setting nodesInitialized multiple times
+-   [#5271](https://github.com/xyflow/xyflow/pull/5271) Thanks [@leejuyuu](https://github.com/leejuyuu)! - Change a11y description inline styles to classes
+-   [#5327](https://github.com/xyflow/xyflow/pull/5327) Fix `ViewportPortal` not working when used outside of `SvelteFlow` component
+-   [#5295](https://github.com/xyflow/xyflow/pull/5295) Export missing callback types
+-   [#5327](https://github.com/xyflow/xyflow/pull/5327) Display nodes correctly in SSR output
+
