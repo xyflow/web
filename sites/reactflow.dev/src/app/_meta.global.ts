@@ -14,9 +14,9 @@ const customization = {
   'custom-edges': '',
   'edge-labels': '',
   'utility-classes': '',
+  theming: '',
 };
 const advanced = {
-  theming: '',
   accessibility: '',
   testing: '',
   typescript: '',
