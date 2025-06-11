@@ -90,10 +90,6 @@ nav.x\:bg-transparent {
   background-color: white;
 }
 
-.light .nextra-content {
-  color: #222;
-}
-
 div.nextra-nav-container-blur {
   backdrop-filter: none;
   background: white;
@@ -177,6 +173,10 @@ article.nextra-content ol li,
 article.nextra-content ol li p {
   font-size: 1.125rem;
   line-height: 2;
+}
+
+.light .nextra-content {
+  color: #222;
 }
 
 /* Docsearch overwrite */
