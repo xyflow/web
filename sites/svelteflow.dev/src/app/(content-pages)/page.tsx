@@ -95,7 +95,7 @@ const features = [
     title: 'All the right plugins',
     text: 'Make more advanced apps with the Background, Minimap, Controls, and Panel components.',
     route: '/learn' satisfies InternalRoute,
-    flowComponent: <FlowC />,
+    flowComponent: <FlowC framework="svelte" />,
   },
 ];
 

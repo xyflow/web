@@ -54,7 +54,7 @@ const features = [
     title: 'All the right plugins',
     text: 'Make more advanced apps with the Background, Minimap, Controls, Panel, NodeToolbar, and NodeResizer components.',
     route: '/learn/concepts/built-in-components' satisfies InternalRoute,
-    flowComponent: <FlowC />,
+    flowComponent: <FlowC framework="react" />,
   },
 ];
 

@@ -16,92 +16,113 @@ const defaultNodeOptions = {
   sourcePosition: Position.Right,
 };
 
-const nodes: Node[] = [
-  {
-    id: 'a',
-    type: 'input',
-    data: { label: 'A' },
-    position: { x: 0, y: 0 },
-    style: {
-      width: 50,
-      backgroundColor: '#0050ff',
-      borderColor: 'white',
-      color: 'white',
-      fontWeight: 'bold',
-      textTransform: 'uppercase',
-    },
-    ...defaultNodeOptions,
-  },
-  {
-    id: 'b',
-    data: { label: 'B' },
-    position: { x: 150, y: -50 },
-    style: {
-      width: 50,
-      backgroundColor: '#a845d0',
-      borderColor: 'white',
-      color: 'white',
-      fontWeight: 'bold',
-      textTransform: 'uppercase',
-    },
-    ...defaultNodeOptions,
-  },
-  {
-    id: 'c',
-    data: { label: 'C' },
-    position: { x: 150, y: 50 },
-    style: {
-      width: 50,
-      backgroundColor: '#a845d0',
-      borderColor: 'white',
-      color: 'white',
-      fontWeight: 'bold',
-      textTransform: 'uppercase',
-    },
-    ...defaultNodeOptions,
-  },
-  {
-    id: 'd',
-    data: { label: 'D' },
-    position: { x: 300, y: 0 },
-    style: {
-      width: 50,
-      backgroundColor: '#ff2e8b',
-      borderColor: 'white',
-      color: 'white',
-      fontWeight: 'bold',
-      textTransform: 'uppercase',
-    },
-    ...defaultNodeOptions,
-  },
-];
+interface FlowCProps {
+  framework: 'react' | 'svelte';
+}
 
-const edges = [
-  {
-    id: 'a-b',
-    source: 'a',
-    target: 'b',
-    type: 'smoothstep',
-  },
-  {
-    id: 'a-c',
-    source: 'a',
-    target: 'c',
-    type: 'smoothstep',
-  },
-  {
-    id: 'b-d',
-    source: 'b',
-    target: 'd',
-    type: 'smoothstep',
-  },
-];
+export const FlowC: FC<FlowCProps> = ({ framework }) => {
+  const reactColors = {
+    a: '#0050ff',
+    b: '#a845d0',
+    c: '#a845d0',
+    d: '#ff2e8b',
+  };
 
-const proOptions = { hideAttribution: true };
-const fitViewOptions = { padding: 0.2 };
-const nodeColor = (node) => node.style.backgroundColor || '#eee';
+  const svelteColors = {
+    a: '#FC4545',
+    b: '#fb6432',
+    c: '#fb6432',
+    d: '#FFBA42',
+  };
 
-export const FlowC: FC = () => {
+  // Choose the color set based on the framework
+  const colors = framework === 'svelte' ? svelteColors : reactColors;
+
+  const nodes: Node[] = [
+    {
+      id: 'a',
+      type: 'input',
+      data: { label: 'A' },
+      position: { x: 0, y: 0 },
+      style: {
+        width: 50,
+        backgroundColor: colors.a,
+        borderColor: 'white',
+        color: 'white',
+        fontWeight: 'bold',
+        textTransform: 'uppercase',
+      },
+      ...defaultNodeOptions,
+    },
+    {
+      id: 'b',
+      data: { label: 'B' },
+      position: { x: 150, y: -50 },
+      style: {
+        width: 50,
+        backgroundColor: colors.b,
+        borderColor: 'white',
+        color: 'white',
+        fontWeight: 'bold',
+        textTransform: 'uppercase',
+      },
+      ...defaultNodeOptions,
+    },
+    {
+      id: 'c',
+      data: { label: 'C' },
+      position: { x: 150, y: 50 },
+      style: {
+        width: 50,
+        backgroundColor: colors.c,
+        borderColor: 'white',
+        color: 'white',
+        fontWeight: 'bold',
+        textTransform: 'uppercase',
+      },
+      ...defaultNodeOptions,
+    },
+    {
+      id: 'd',
+      data: { label: 'D' },
+      position: { x: 300, y: 0 },
+      style: {
+        width: 50,
+        backgroundColor: colors.d,
+        borderColor: 'white',
+        color: 'white',
+        fontWeight: 'bold',
+        textTransform: 'uppercase',
+      },
+      ...defaultNodeOptions,
+    },
+  ];
+
+  const edges = [
+    {
+      id: 'a-b',
+      source: 'a',
+      target: 'b',
+      type: 'smoothstep',
+    },
+    {
+      id: 'a-c',
+      source: 'a',
+      target: 'c',
+      type: 'smoothstep',
+    },
+    {
+      id: 'b-d',
+      source: 'b',
+      target: 'd',
+      type: 'smoothstep',
+    },
+  ];
+
+  const proOptions = { hideAttribution: true };
+  const fitViewOptions = { padding: 0.2 };
+  const nodeColor = (node) => node.style.backgroundColor || '#eee';
+
   return (
     <ReactFlow
       id="c"
