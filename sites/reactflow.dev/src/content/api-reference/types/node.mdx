@@ -13,48 +13,9 @@ The `Node` type represents everything React Flow needs to know about a given nod
 Many of these properties can be manipulated both by React Flow or by you, but
 some such as `width` and `height` should be considered read-only.
 
-```ts
-export type Node<
-  NodeData extends Record<string, unknown> = Record<string, unknown>,
-  NodeType extends string = string,
-> = {
-  id: string;
-  position: XYPosition;
-  data: NodeData;
-  type?: NodeType;
-  sourcePosition?: Position;
-  targetPosition?: Position;
-  hidden?: boolean;
-  selected?: boolean;
-  dragging?: boolean;
-  draggable?: boolean;
-  selectable?: boolean;
-  connectable?: boolean;
-  resizing?: boolean;
-  deletable?: boolean;
-  dragHandle?: string;
-  width?: number | null;
-  height?: number | null;
-  parentId?: string;
-  zIndex?: number;
-  extent?: 'parent' | CoordinateExtent;
-  expandParent?: boolean;
-  ariaLabel?: string;
-  focusable?: boolean;
-  style?: React.CSSProperties;
-  className?: string;
-  origin?: NodeOrigin;
-  handles?: NodeHandle[];
-  measured?: {
-    width?: number;
-    height?: number;
-  };
-};
-```
-
 ## Fields
 
-<APIDocs typeName="NodeBase" packageName="system" />
+<APIDocs typeName="Node" packageName="react" />
 
 ## Default node types
 
