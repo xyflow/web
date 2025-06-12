@@ -12,24 +12,14 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: 'bg-primary text-primary-foreground hover:bg-primary/80',
-        destructive:
-          'bg-destructive text-destructive-foreground hover:bg-destructive/90',
-        outline:
-          'border border-input hover:bg-accent hover:text-accent-foreground',
+        destructive: 'bg-destructive text-destructive-foreground hover:bg-destructive/90',
+        outline: 'border border-input hover:bg-accent hover:text-accent-foreground',
         secondary:
           'bg-secondary text-secondary-foreground hover:bg-gray-50 border border-solid border-gray-100',
         ghost: 'hover:bg-accent hover:text-accent-foreground shadow-none',
         link: 'underline-offset-4 hover:underline text-primary shadow-none font-normal !px-0',
         pro: 'relative text-primary before:absolute before:rounded-full before:top-0 before:right-0 before:bottom-0 before:left-0 before:-z-[2] after:rounded-full after:top-[1px] after:right-[1px] after:bottom-[1px] after:left-[1px] after:bg-white after:absolute after:-z-[1] pro-button',
         black: 'bg-black text-white hover:bg-black/90',
-        react: 'bg-react text-react-foreground hover:bg-react/90',
-        svelte: 'bg-svelte text-svelte-foreground hover:bg-svelte/90',
-        xyflow: 'bg-xyflow text-xyflow-foreground hover:bg-xyflow/90',
-        'svelte-pro':
-          'relative text-svelte before:absolute before:rounded-full before:top-0 before:right-0 before:bottom-0 before:left-0 before:-z-[2] after:rounded-full after:top-[1px] after:right-[1px] after:bottom-[1px] after:left-[1px] after:bg-white after:absolute after:-z-[1] svelte-pro',
-        'react-pro':
-          'relative text-react before:absolute before:rounded-full before:top-0 before:right-0 before:bottom-0 before:left-0 before:-z-[2] after:rounded-full after:top-[1px] after:right-[1px] after:bottom-[1px] after:left-[1px] after:bg-white after:absolute after:-z-[1] react-pro',
-        'xyflow-pro': '',
       },
       size: {
         default: 'py-2 h-9 px-6',
@@ -53,15 +43,7 @@ export interface ButtonProps
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
-    {
-      className,
-      variant,
-      size,
-      asChild = false,
-      loading = false,
-      children,
-      ...props
-    },
+    { className, variant, size, asChild = false, loading = false, children, ...props },
     ref,
   ) => {
     const Comp = asChild ? Slot : 'button';
