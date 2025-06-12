@@ -5,4 +5,12 @@ description: Export your flow as an image
 
 This example demonstrates how to export your Svelte Flow diagram as an image. Learn how to capture the current view of your flow and save it as a PNG or other image format, which is useful for sharing, documentation, or printing your diagrams.
 
+<Callout type="info">
+  The `version` of the [html-to-image](https://www.npmjs.com/package/html-to-image)
+  package used in this example, has been locked to `1.11.11`, which is the latest working
+  `version` for the package. The recent versions, after `1.11.11`, are not exporting
+  images properly and there is open
+  [issue](https://github.com/bubkoo/html-to-image/issues/516) for this on Github.
+</Callout>
+
 <RemoteCodeViewer route="examples/misc/download-image" framework="svelte" />
