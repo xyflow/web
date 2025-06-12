@@ -16,7 +16,7 @@ edge path, edge labels can be any React component!
 
 To render a custom edge label we must wrap it in the
 [`<EdgeLabelRenderer />`](/api-reference/components/edge-label-renderer) component.
-This is necessary for performance reasons: the edge label renderer is a portal
+This allows us to use React Components instead of SVGs: the edge label renderer is a portal
 to a single container that _all_ edge labels are rendered into.
 
 Let's add a button to our custom edge that can be used to delete the edge it's
@@ -31,7 +31,7 @@ import {
 } from '@xyflow/react';
 
 export default function CustomEdge({ id, sourceX, sourceY, targetX, targetY }) {
-  const { setEdges } = useReactFlow();
+  const { deleteElements } = useReactFlow();
   const [edgePath] = getStraightPath({
     sourceX,
     sourceY,
@@ -43,11 +43,7 @@ export default function CustomEdge({ id, sourceX, sourceY, targetX, targetY }) {
     <>
       <BaseEdge id={id} path={edgePath} />
       <EdgeLabelRenderer>
-        <button
-          onClick={() => setEdges((edges) => edges.filter((e) => e.id !== id))}
-        >
-          delete
-        </button>
+        <button onClick={() => deleteElements({ edges: [{ id }] })}>delete</button>
       </EdgeLabelRenderer>
     </>
   );
@@ -71,7 +67,7 @@ edge label's into the right position!
 
 ```jsx
 export default function CustomEdge({ id, sourceX, sourceY, targetX, targetY }) {
-  const { setEdges } = useReactFlow();
+  const { deleteElements } = useReactFlow();
   const [edgePath, labelX, labelY] = getStraightPath({ ... });
 
   return (
@@ -84,7 +80,7 @@ export default function CustomEdge({ id, sourceX, sourceY, targetX, targetY }) {
           }}
           className="nodrag nopan"
           onClick={() => {
-            setEdges((es) => es.filter((e) => e.id !== id));
+            onClick={() => deleteElements({ edges: [{ id }] })}
           }}
         >
     ...
