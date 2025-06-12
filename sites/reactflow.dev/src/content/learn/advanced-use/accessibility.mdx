@@ -31,8 +31,8 @@ React Flow provides keyboard and screen-reader support to help meet accessibilit
 - **Tab navigation:** Pressing `Tab` moves focus through all focusable nodes and edges. These elements receive `tabIndex={0}` and, by default, `role="group"` to handle interactivity.
 - **Select/Deselect:** Press `Enter` or `Space` to select the focused node/edge, and `Escape` to clear the selection.
 - **Move nodes with arrow keys:** If `nodesDraggable` and `nodesFocusable` are both true (default), you can move the selected node with the arrow keys. You can hold `Shift` to increase movement speed. If you set `disableKeyboardA11y={true}`, arrow-key movement is disabled (but tab-focus and selection still work).
-- **Automatic panning:** When a node receives focus, React Flow automatically pans the canvas to bring that node into view. This ensures focused nodes are visible to the user. This behavior can be toggled via the `autoPanOnNodeFocus` prop.
-- **ARIA descriptions:** React Flow automatically adds ARIA descriptions for keyboard guidance. These can be configured by using `ariaLabelConfig`.
+- **Automatic panning:** When a node receives focus, React Flow automatically pans the canvas to bring that node into view. This ensures focused nodes are visible to the user. This behavior can be toggled via the [autoPanOnNodeFocus](/api-reference/react-flow#autopanonnodefocus) prop.
+- **ARIA descriptions:** React Flow automatically adds ARIA descriptions for keyboard guidance. These can be configured by using [ariaLabelConfig](/api-reference/react-flow#arialabelconfig).
 
 <Callout type="info">
   To enable full keyboard accessibility, ensure both `nodesFocusable` and `edgesFocusable`
@@ -60,7 +60,7 @@ By, default, if you don’t set a role, `role="group"` is applied. Customizing `
 
 ### DOM Attributes
 
-To pass custom ARIA attributes or other DOM-level attributes (e.g., `aria-roledescription`, `data-\*`,`tabIndex`, etc.), you can use the `domAttributes prop`. This is available for both nodes and edges:
+To pass custom ARIA attributes or other DOM-level attributes (e.g., `aria-roledescription`, `data-\*`,`tabIndex`, etc.), you can use the `domAttributes` prop. This is available for both nodes and edges:
 
 ```
 // Example for a node
@@ -80,7 +80,7 @@ This gives you full control over accessibility-related attributes while maintain
 
 ## Localizing Accessibility Messages
 
-React Flow’s built-in accessibility text (such as keyboard instructions and live updates) can be customized or localized via the `ariaLabelConfig` prop on `<ReactFlow>`. This prop takes an object mapping message keys to strings or functions. Keys include:
+React Flow’s built-in accessibility text (such as keyboard instructions and live updates) can be customized or localized via the [ariaLabelConfig](/api-reference/react-flow#arialabelconfig) prop on`<ReactFlow>`. This prop takes an object mapping message keys to strings or functions. Keys include:
 
 | Key                                     | Default Value                                                                                                                                   |
 | --------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -109,7 +109,7 @@ const ariaLabels = {
 </ReactFlow>;
 ```
 
-This tells React Flow to use your text instead of the defaults. By supplying localized strings via `ariaLabelConfig`, you ensure screen readers announce messages in the user’s language.
+This tells React Flow to use your text instead of the defaults. By supplying localized strings via [ariaLabelConfig](/api-reference/react-flow#arialabelconfig), you ensure screen readers announce messages in the user’s language.
 
 ## WCAG 2.1 AA
 
