@@ -16,8 +16,8 @@ edge path, edge labels can be any React component!
 
 To render a custom edge label we must wrap it in the
 [`<EdgeLabelRenderer />`](/api-reference/components/edge-label-renderer) component.
-This allows us to use React Components instead of SVGs: the edge label renderer is a portal
-to a single container that _all_ edge labels are rendered into.
+This allows us to render the labels outside of the SVG world where the edges life.
+The edge label renderer is a portal to a single container that _all_ edge labels are rendered into.
 
 Let's add a button to our custom edge that can be used to delete the edge it's
 attached to:
