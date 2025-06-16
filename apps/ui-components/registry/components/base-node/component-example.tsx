@@ -1,6 +1,14 @@
-import { memo } from "react";
+import { memo, useCallback } from "react";
 
-import { Handle, NodeProps, Position } from "@xyflow/react";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import {
   BaseNode,
   BaseNodeContent,
@@ -8,8 +16,8 @@ import {
   BaseNodeHeader,
   BaseNodeHeaderTitle,
 } from "@/registry/components/base-node";
-import { Rocket } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { NodeProps, useNodeId, useReactFlow } from "@xyflow/react";
+import { EllipsisVertical, Rocket, Trash } from "lucide-react";
 
 export const BaseNodeSimpleDemo = memo(({ selected }: NodeProps) => {
   return (
@@ -20,24 +28,63 @@ export const BaseNodeSimpleDemo = memo(({ selected }: NodeProps) => {
 });
 
 export const BaseNodeFullDemo = memo(({ selected }: NodeProps) => {
+  const id = useNodeId();
+  const { setNodes } = useReactFlow();
+
+  const handleClick = useCallback(() => {
+    setNodes((prevNodes) => prevNodes.filter((node) => node.id !== id));
+  }, [id, setNodes]);
+
   return (
     <BaseNode selected={selected} className="w-96">
       <BaseNodeHeader className="border-b">
         <Rocket className="size-4" />
         <BaseNodeHeaderTitle>Base Node With Header</BaseNodeHeaderTitle>
+
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button
+              variant="ghost"
+              className="nodrag p-1"
+              aria-label="Node Actions"
+              title="Node Actions"
+            >
+              <EllipsisVertical className="size-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <DropdownMenuLabel>Node Actions</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>Action 1</DropdownMenuItem>
+            <DropdownMenuItem>Action 2</DropdownMenuItem>
+            <DropdownMenuItem>Action 3</DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+
+        <Button
+          variant="ghost"
+          className="nodrag p-1"
+          onClick={handleClick}
+          aria-label="Delete Node"
+          title="Delete Node"
+        >
+          <Trash className="size-4" />
+        </Button>
       </BaseNodeHeader>
       <BaseNodeContent>
         {/* TODO  HANDLES SHOULD GO IN THE CONTENT AREA, OR IN A BaseNodeHandles  COMPONENT ?
         <Handle type={"source"} position={Position.Left} /> */}
-        <h2 className="text-xl font-bold">Base Node Content</h2>
+        <h3 className="text-lg font-bold">Base Node Content</h3>
         <p className="text-xs">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce enim
-          lacus, dapibus eget tellus semper, interdum vehicula odio. Curabitur
-          in elementum nibh. In accumsan ullamcorper orci et rhoncus.
+          You would typically put your node's content here, such as
+          configuration options, input and output handles.
         </p>
       </BaseNodeContent>
       <BaseNodeFooter>
-        <h3 className="self-start text-lg font-bold">Base Node Footer</h3>
+        <h4 className="text-md self-start font-bold">Base Node Footer</h4>
+        <p className="text-xs">
+          You may want to add some actions or information in the footer.
+        </p>
         <Button variant="outline" className="w-full">
           Action 1
         </Button>
