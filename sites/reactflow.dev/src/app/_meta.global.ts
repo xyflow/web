@@ -13,6 +13,7 @@ const customization = {
   'custom-edges': '',
 };
 const advanced = {
+  "hooks-providers": '',
   accessibility: '',
   testing: '',
   typescript: '',
