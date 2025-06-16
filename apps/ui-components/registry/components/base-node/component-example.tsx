@@ -72,8 +72,6 @@ export const BaseNodeFullDemo = memo(({ selected }: NodeProps) => {
         </Button>
       </BaseNodeHeader>
       <BaseNodeContent>
-        {/* TODO  HANDLES SHOULD GO IN THE CONTENT AREA, OR IN A BaseNodeHandles  COMPONENT ?
-        <Handle type={"source"} position={Position.Left} /> */}
         <h3 className="text-lg font-bold">Base Node Content</h3>
         <p className="text-xs">
           You would typically put your node's content here, such as
