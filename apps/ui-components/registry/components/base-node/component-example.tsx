@@ -83,7 +83,7 @@ export const BaseNodeFullDemo = memo(({ selected }: NodeProps) => {
         <p className="text-xs">
           You may want to add some actions or information in the footer.
         </p>
-        <Button variant="outline" className="w-full">
+        <Button variant="outline" className="nodrag w-full">
           Action 1
         </Button>
       </BaseNodeFooter>

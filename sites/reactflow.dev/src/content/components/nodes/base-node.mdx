@@ -7,5 +7,16 @@ import UiComponentViewer from '@/components/ui-component-viewer.mdx';
 # Base Node
 
 A node wrapper with some basic styling used for creating a shared design among all nodes in your application.
+Similarly to [shadcn ui's card](https://ui.shadcn.com/docs/components/card) the components file exports:
+
+- The `BaseNode` main container,
+- The `BaseNodeHeader` container where you would usually add actions and a `BaseNodeHeaderTitle`
+- The `BaseNodeContent` container where you would add the main contents of the node.
+- The `BaseNodeFooter` container where you may want to add extra information, or visible actions.
+
+You should use the `nodrag` [Tailwind CSS](https://tailwindcss.com/) utility
+class on buttons and interactive components of your node, to disable dragging
+the node inside the flow, for example when clicking on buttons or sliders that you may
+want to add in the your custom node.
 
 <UiComponentViewer id="base-node" />
