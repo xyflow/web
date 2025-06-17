@@ -2,8 +2,6 @@ import * as Fs from 'node:fs/promises';
 import * as Path from 'node:path';
 import * as Process from 'node:process';
 
-import { appJs, deps, ext, indexCss, indexHtml, indexJs } from './utils.js';
-
 const [framework, route] = Process.argv.slice(2);
 
 if (!framework || !route) {
@@ -47,23 +45,35 @@ ARGUMENTS:
 // MAIN ------------------------------------------------------------------------
 
 async function main() {
-  const dir = Path.join(Process.cwd(), framework, route);
+  const targetDir = Path.join(Process.cwd(), framework, route);
+  const templateDir = Path.join(Process.cwd(), framework, 'template');
 
-  console.log(`🚧 Scaffolding a new example at ${dir}`);
+  console.log(`🚧 Scaffolding a new example at ${targetDir}`);
+  console.log(`📋 Using template from ${templateDir}`);
 
-  await Fs.mkdir(dir, { recursive: true });
-  await Fs.writeFile(Path.join(dir, 'index.html'), indexHtml());
-  await Fs.writeFile(
-    Path.join(dir, framework === 'react' ? 'index.css' : 'styles.css'),
-    indexCss(),
-  );
-  await Fs.writeFile(
-    Path.join(dir, `index.${ext({ framework })}`),
-    indexJs(framework),
-  );
-  await Fs.writeFile(
-    Path.join(dir, `App.${ext({ kind: 'app', framework })}`),
-    appJs(framework),
-  );
-  await Fs.writeFile(Path.join(dir, 'dependencies.json'), deps({ framework }));
+  await Fs.mkdir(targetDir, { recursive: true });
+  await copyTemplate(templateDir, targetDir, route);
+
+  console.log(`✅ Example scaffolded successfully!`);
+}
+
+async function copyTemplate(sourceDir, targetDir, route) {
+  const entries = await Fs.readdir(sourceDir, { withFileTypes: true });
+
+  for (const entry of entries) {
+    const sourcePath = Path.join(sourceDir, entry.name);
+    const targetPath = Path.join(targetDir, entry.name);
+
+    if (entry.isDirectory()) {
+      await Fs.mkdir(targetPath, { recursive: true });
+      await copyTemplate(sourcePath, targetPath, route);
+    } else {
+      let content = await Fs.readFile(sourcePath, 'utf8');
+
+      // Replace $PATH placeholder with the actual route
+      content = content.replace(/\$PATH/g, route);
+
+      await Fs.writeFile(targetPath, content);
+    }
+  }
 }
