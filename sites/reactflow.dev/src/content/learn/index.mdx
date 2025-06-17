@@ -1,237 +1,36 @@
 ---
-description: React Flow quickstart that shows how to install the package, use it and where to find example apps
-pagination_next: null
+description: React Flow is a library for building node-based applications from static diagrams to complex editors. It comes with built-in plugins like a mini map and graph controls, and nodes and edges are highly customizable.
 ---
 
-import { Cards } from 'nextra/components';
 import { Emoji } from '@xyflow/xy-ui';
 
-import { LiteYouTubeEmbed } from 'xy-shared';
-import { RemoteCodeViewer } from 'xy-shared/server';
+# Overview
 
-# Quickstart
+React Flow is a library for building node-based applications. Whether you're creating simple static diagrams, immersive data visualizations, or complex visual editors, React Flow offers extensive customizability for your nodes and edges, and it comes with handly built-in components to get you quickly up and running.
 
-If you want to get up-and-running as soon as possible you're in the right place!
-This page will take you from zero to a working React Flow app in a few minutes.
-From there, you can take a deeper look at what React Flow is all about, check out
-the examples, or dive into the API docs.
+## Key Features
 
-## React Flow in 60 seconds
+**<Emoji content="👌" /> Easy to use**: React Flow comes with many of the features you want out of the box. Dragging
+nodes around, zooming and panning, selecting multiple nodes and edges, and
+adding/removing edges are all built-in.
 
-<div style={{ position: 'relative', paddingTop: '56.25%' }}>
-  <LiteYouTubeEmbed
-    id="aUBWE41a900"
-    title="React Flow in 60 seconds"
-    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
-    poster="maxresdefault"
-  />
-</div>
+**<Emoji content="🎨" /> Customizable**: React Flow supports custom node types and edge types. Because custom nodes are just
+React components, you can implement anything you need: you're not locked into
+the built-in node types. Custom edges let you add labels, controls, and bespoke
+logic to node edges.
 
-## Play online
+**<Emoji content="⚡️" /> Fast rendering**: React Flow only renders nodes that have changed, and makes sure only those that
+are in the viewport are displayed at all.
 
-You can try React Flow without setting anything up locally by checking out the
-starter projects we have on [CodeSandbox](https://codesandbox.io/):
+**<Emoji content="🧩" /> Built-in plugins**: We ship React Flow with a few plugins out of the box:
 
-<Cards num={2}>
-  <Cards.Card
-    title="new.reactflow.dev/js"
-    href="https://new.reactflow.dev/js"
-    icon={
-      <div className="rounded-full w-10 h-10 bg-yellow-200 text-gray-700 font-black flex items-center justify-center">
-        JS
-      </div>
-    }
-  />
-  <Cards.Card
-    title="new.reactflow.dev/ts"
-    href="https://new.reactflow.dev/ts"
-    icon={
-      <div className="rounded-full w-10 h-10 bg-blue-500 text-white font-black flex items-center justify-center">
-        TS
-      </div>
-    }
-  />
-</Cards>
+- The [`<Background />`](/api-reference/components/background) plugin implements some basic customizable background patterns.
+- The [`<MiniMap />`](/api-reference/components/minimap) plugin displays a small version of the graph in the corner of the screen.
+- The [`<Controls />`](/api-reference/components/controls) plugin adds controls to zoom, center, and lock the viewport.
+- The [`<Panel />`](/api-reference/components/panel) plugin makes it easy to position content on top of the viewport.
+- The [`<NodeToolbar />`](/api-reference/components/node-toolbar) plugin lets you render a toolbar attached to a node.
+- The [`<NodeResizer />`](/api-reference/components/node-resizer) plugin makes it easy to add resize functionality to your nodes.
 
-## Vite template
-
-If you want to get started right away, you can use our [vite template](https://github.com/xyflow/vite-react-flow-template):
-
-```bash copy npm2yarn
-npx degit xyflow/vite-react-flow-template app-name
-```
-
-## Installation
-
-To get started locally, you should have a few things:
-
-- [Node.js](https://nodejs.org/en/) installed.
-- Either npm or another package manager like [yarn](https://yarnpkg.com/) or
-  [pnpm](https://pnpm.io/).
-- A working knowledge of [React](https://reactjs.org/). You don't need to be an
-  expert, but you should be comfortable with the basics.
-
-First, spin up a new [React](https://reactjs.org/) project however you like; we
-recommend using [Vite](https://vitejs.dev/) but the choice is yours.
-
-```bash copy npm2yarn
-npm init vite my-react-flow-app -- --template react
-```
-
-React Flow is published on npm as [`@xyflow/react`](https://npmjs.com/package/@xyflow/react), so go ahead and add it next.
-
-```bash copy npm2yarn
-npm install @xyflow/react
-```
-
-Lastly, spin up the dev server and we're good to go!
-
-## Creating your first flow
-
-The `@xyflow/react` package exports the `<ReactFlow />` component as the default export.
-That and a handful of nodes and edges are all we need to get something going! Get
-rid of everything inside `App.jsx` and add the following:
-
-```jsx
-import React from 'react';
-import { ReactFlow } from '@xyflow/react';
-
-import '@xyflow/react/dist/style.css';
-
-const initialNodes = [
-  { id: '1', position: { x: 0, y: 0 }, data: { label: '1' } },
-  { id: '2', position: { x: 0, y: 100 }, data: { label: '2' } },
-];
-const initialEdges = [{ id: 'e1-2', source: '1', target: '2' }];
-
-export default function App() {
-  return (
-    <div style={{ width: '100vw', height: '100vh' }}>
-      <ReactFlow nodes={initialNodes} edges={initialEdges} />
-    </div>
-  );
-}
-```
-
-There are a few things to pay attention to here:
-
-- <Emoji content="🎨" /> You must import the React Flow stylesheet.
-- <Emoji content="📐" /> The `<ReactFlow />` component must be wrapped in an element with
-  a width and height.
-
-## Adding interactivity
-
-Graphs created with React Flow are fully interactive. We can move nodes around, connect, delete, and more. To get the basic functionality, we need to add three things:
-
-- A callback for what to do when [nodes change](/api-reference/react-flow#on-nodes-change).
-- A callback for what to do when [edges change](/api-reference/react-flow#on-edges-change).
-- A callback for what to do when nodes are [connected](/api-reference/react-flow#on-connect).
-
-Fortunately for you, we provide some hooks to make this easy!
-
-```jsx
-import React, { useCallback } from 'react';
-import { ReactFlow, useNodesState, useEdgesState, addEdge } from '@xyflow/react';
-
-import '@xyflow/react/dist/style.css';
-
-const initialNodes = [
-  { id: '1', position: { x: 0, y: 0 }, data: { label: '1' } },
-  { id: '2', position: { x: 0, y: 100 }, data: { label: '2' } },
-];
-const initialEdges = [{ id: 'e1-2', source: '1', target: '2' }];
-
-export default function App() {
-  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
-  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
-
-  const onConnect = useCallback(
-    (params) => setEdges((eds) => addEdge(params, eds)),
-    [setEdges],
-  );
-
-  return (
-    <div style={{ width: '100vw', height: '100vh' }}>
-      <ReactFlow
-        nodes={nodes}
-        edges={edges}
-        onNodesChange={onNodesChange}
-        onEdgesChange={onEdgesChange}
-        onConnect={onConnect}
-      />
-    </div>
-  );
-}
-```
-
-## Some extra goodies
-
-Finally, React Flow ships with some components out of the box for things like a
-[`<Minimap />`](/api-reference/components/minimap) or viewport
-[`<Controls />`](/api-reference/components/controls).
-
-```jsx
-import React, { useCallback } from 'react';
-import {
-  ReactFlow,
-  MiniMap,
-  Controls,
-  Background,
-  useNodesState,
-  useEdgesState,
-  addEdge,
-} from '@xyflow/react';
-
-import '@xyflow/react/dist/style.css';
-
-const initialNodes = [
-  { id: '1', position: { x: 0, y: 0 }, data: { label: '1' } },
-  { id: '2', position: { x: 0, y: 100 }, data: { label: '2' } },
-];
-const initialEdges = [{ id: 'e1-2', source: '1', target: '2' }];
-
-export default function App() {
-  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
-  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
-
-  const onConnect = useCallback(
-    (params) => setEdges((eds) => addEdge(params, eds)),
-    [setEdges],
-  );
-
-  return (
-    <div style={{ width: '100vw', height: '100vh' }}>
-      <ReactFlow
-        nodes={nodes}
-        edges={edges}
-        onNodesChange={onNodesChange}
-        onEdgesChange={onEdgesChange}
-        onConnect={onConnect}
-      >
-        <Controls />
-        <MiniMap />
-        <Background variant="dots" gap={12} size={1} />
-      </ReactFlow>
-    </div>
-  );
-}
-```
-
-<RemoteCodeViewer route="learn/quickstart" framework="react" showEditor={false} />
-
-<Emoji content="🎉" /> Et voila. You've already created your first interactive flow! Check
-out the links below on where to head next.
-
-## Next Steps
-
-<Cards>
-  <Cards.Card title="Concepts" href="/learn/concepts/introduction" />
-  <Cards.Card title="Customization" href="/learn/customization/custom-nodes" />
-  <Cards.Card title="Examples" href="/examples" />
-  <Cards.Card title="API Reference" href="/api-reference" />
-  <Cards.Card title="Discord" href="https://discord.gg/RVmnytFmGW" />
-  <Cards.Card
-    title="Template Projects"
-    href="https://github.com/xyflow/react-flow-example-apps"
-  />
-</Cards>
+**<Emoji content="💪" /> Reliable:** React Flow is entirely written in TypeScript to catch bugs early and make fixes
+easy. For everything else, we have a robust cypress test suite so you can depend
+on React Flow with confidence.

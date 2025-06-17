@@ -16,30 +16,34 @@ const Layout: FC<{ children: ReactNode }> = async ({ children }) => {
   const apiReference = pageMap.find(
     (item): item is Folder => 'children' in item && item.name === 'api-reference',
   );
-  const examplesIndex = pageMap.findIndex(
-    (item): item is Folder => 'name' in item && item.name === 'examples',
+  const learn = pageMap.find(
+    (item): item is Folder => 'children' in item && item.name === 'learn',
+  )?.children;
+  const components = learn?.find(
+    (item): item is Folder => 'children' in item && item.name === 'components',
   );
-  const [examplesMeta, ...examples] = (pageMap[examplesIndex] as Folder).children;
+  const examplesIndex = learn?.findIndex(
+    (item): item is Folder => 'name' in item && item.name === 'examples',
+  ) as number;
+  const [examplesMeta, ...examples] = (learn?.[examplesIndex] as Folder)?.children ?? [];
   const [catchAllExamplesMeta, ...catchAllExamples] = (await getExamplesPageMap())
     .children;
   // Merge on disk examples with examples from catch-all [...slug] route
-  pageMap[examplesIndex] = {
-    ...pageMap[examplesIndex],
+  learn![examplesIndex] = {
+    ...learn![examplesIndex],
     children: [
       {
         // Merge meta records
         data: {
-          ...(examplesMeta as MetaJsonFile).data,
-          ...(catchAllExamplesMeta as MetaJsonFile).data,
+          ...((examplesMeta as MetaJsonFile)?.data || {}),
+          ...((catchAllExamplesMeta as MetaJsonFile)?.data || {}),
         },
       },
       ...examples,
       ...catchAllExamples,
     ],
   };
-  const components = pageMap.find(
-    (item): item is Folder => 'children' in item && item.name === 'components',
-  );
+
   const folders = [
     ...apiReference!.children,
     ...components!.children,

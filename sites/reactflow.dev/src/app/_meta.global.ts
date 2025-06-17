@@ -1,5 +1,4 @@
 const concepts = {
-  introduction: '',
   'terms-and-definitions': '',
   'core-concepts': '',
   'the-viewport': '',
@@ -10,7 +9,7 @@ const gettingStarted = {
 };
 const customization = {
   'custom-nodes': '',
-  'handles': '',
+  handles: '',
   'custom-edges': '',
   'edge-labels': '',
   'utility-classes': '',
@@ -93,23 +92,54 @@ const metaRecord = {
   // 1. Default Routes
   learn: {
     items: {
-      index: '',
-      concepts: { items: concepts },
-      'getting-started': { items: gettingStarted },
-      customization: {
-        items: customization,
-        title: 'Customization',
+      learn: {
+        theme: {
+          collapsed: false,
+        },
+        items: {
+          'getting-started': {
+            items: gettingStarted,
+            theme: {
+              collapsed: false,
+            },
+          },
+          concepts: {
+            items: concepts,
+            theme: {
+              collapsed: false,
+            },
+          },
+          customization: {
+            items: customization,
+            title: 'Customization',
+          },
+          layouting: '',
+          'advanced-use': { items: advanced },
+        },
       },
-      layouting: '',
-      'advanced-use': { items: advanced },
       tutorials: {
         items: tutorials,
         theme: {
           toc: false,
         },
       },
+      examples: {
+        theme: {
+          toc: false,
+          layout: 'full',
+        },
+        items: {
+          // index: {
+          //   theme: {
+          //     breadcrumb: false,
+          //   },
+          // },
+          // overview: '',
+          // Rest of examples are added in `(content-pages)/layout.tsx` file
+        },
+      },
+      components: { items: components },
       troubleshooting: { items: troubleshooting },
-      'api-reference': { href: '/api-reference' },
     },
   },
   'api-reference': {
@@ -120,32 +150,17 @@ const metaRecord = {
       'react-flow-provider': '',
     },
   },
-  examples: {
-    theme: {
-      toc: false,
-      layout: 'full',
-    },
-    items: {
-      index: {
-        theme: {
-          breadcrumb: false,
-        },
-      },
-      overview: '',
-      // Rest of examples are added in `(content-pages)/layout.tsx` file
-    },
-  },
-  components: { items: components },
   showcase: '',
-  more: {
-    type: 'menu',
-    items: {
-      changelog: { href: '/whats-new' },
-      blog: { href: 'https://xyflow.com/blog' },
-      'contact-us': { href: 'https://xyflow.com/contact' },
-      playground: { href: 'https://play.reactflow.dev' },
-    },
-  },
+  playground: { href: 'https://play.reactflow.dev' },
+  examples: { display: 'hidden', href: '/examples' },
+  // more: {
+  //   type: 'menu',
+  //   items: {
+  //     changelog: { href: '/whats-new' },
+  //     blog: { href: 'https://xyflow.com/blog' },
+  //     'contact-us': { href: 'https://xyflow.com/contact' },
+  //   },
+  // },
 
   // 2. Pro Routes
   pro: {
