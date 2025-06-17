@@ -20,3 +20,33 @@ the node inside the flow, for example when clicking on buttons or sliders that y
 want to add in the your custom node.
 
 <UiComponentViewer id="base-node" />
+
+## Theming
+
+To customize the visual appearance of your custom nodes, you can simply use
+[Tailwind CSS](https://tailwindcss.com/) classes. All of the React Flow
+components are based on [shadcn UI](https://ui.shadcn.com/), and you should follow
+the [shadcn UI theming guide](https://ui.shadcn.com/docs/theming) to customize aspects like typography and colors
+in your application.
+
+In most occasions though, when developing custom nodes, you may simply need to
+add custom Tailwind CSS classes. All of the `BaseNode` components are just light wrappers around `<div>`.
+
+For example, to change the border color of a node, based on an hypothetical execution status,
+you can pass extra `className`s:
+
+```tsx
+// Assuming your component is receiving a `data` prop
+export const BaseNodeSimpleDemo = memo(({ data }: NodeProps) => {
+  return (
+    <BaseNode
+      className={cn('w-[350px] p-0 hover:ring-orange-500', {
+        'border-orange-500': data.status === 'loading',
+        'border-red-500': data.status === 'error',
+      })}
+    >
+      {/* Your custom node definiton goes here */}
+    </BaseNode>
+  );
+});
+```

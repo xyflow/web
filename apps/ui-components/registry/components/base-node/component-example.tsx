@@ -18,16 +18,17 @@ import {
 } from "@/registry/components/base-node";
 import { NodeProps, useNodeId, useReactFlow } from "@xyflow/react";
 import { EllipsisVertical, Rocket, Trash } from "lucide-react";
+import { cn } from "@/lib/utils";
 
-export const BaseNodeSimpleDemo = memo(({ selected }: NodeProps) => {
+export const BaseNodeSimpleDemo = memo(() => {
   return (
-    <BaseNode selected={selected}>
+    <BaseNode>
       <BaseNodeContent>Base Node</BaseNodeContent>
     </BaseNode>
   );
 });
 
-export const BaseNodeFullDemo = memo(({ selected }: NodeProps) => {
+export const BaseNodeFullDemo = memo(() => {
   const id = useNodeId();
   const { setNodes } = useReactFlow();
 
@@ -36,7 +37,7 @@ export const BaseNodeFullDemo = memo(({ selected }: NodeProps) => {
   }, [id, setNodes]);
 
   return (
-    <BaseNode selected={selected} className="w-96">
+    <BaseNode className="w-96">
       <BaseNodeHeader className="border-b">
         <Rocket className="size-4" />
         <BaseNodeHeaderTitle>Base Node With Header</BaseNodeHeaderTitle>
