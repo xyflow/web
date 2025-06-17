@@ -1,8 +1,9 @@
-<script>
+<script lang="ts">
   import { SvelteFlow, Background, Controls, MiniMap, Panel } from '@xyflow/svelte';
   import Lasso from './Lasso.svelte';
 
   import '@xyflow/svelte/dist/style.css';
+  import type { Edge } from '@xyflow/svelte';
 
   const initialNodes = [
     {
@@ -17,7 +18,7 @@
     },
   ];
 
-  const initialEdges = [];
+  const initialEdges: Edge[] = [];
 
   let nodes = $state.raw(initialNodes);
   let edges = $state.raw(initialEdges);

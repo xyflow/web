@@ -1,22 +1,9 @@
 <script lang="ts">
   import getStroke from 'perfect-freehand';
   import { onMount } from 'svelte';
-  import {
-    useSvelteFlow,
-    useNodes,
-    useEdges,
-    useViewport,
-    ViewportPortal,
-    type SvelteFlowStore,
-    useStore,
-  } from '@xyflow/svelte';
+  import { useSvelteFlow, useNodes, useEdges, useStore } from '@xyflow/svelte';
 
   import { polylineIntersectsRectangle, pathsIntersect } from './utils';
-  import type { ErasableNodeType } from './ErasableNode.svelte';
-  import type { ErasableEdgeType } from './ErasableEdge.svelte';
-
-  // Type definitions for path coordinates
-  type PathPoints = ([number, number] | [number, number, number])[];
 
   // Data structure for storing intersection detection information
   type IntersectionData = {
@@ -57,7 +44,6 @@
   const { screenToFlowPosition, deleteElements, getInternalNode } = useSvelteFlow();
   const nodes = useNodes();
   const edges = useEdges();
-  const viewport = useViewport();
   const store = useStore();
 
   // Canvas and rendering context references
@@ -295,15 +281,23 @@
   }
 </script>
 
-<ViewportPortal target="front">
-  <canvas
-    bind:this={canvas}
-    width={store.width}
-    height={store.height}
-    class="nopan nodrag"
-    style={`position: absolute; top: 0; left: 0; touch-action: none; pointer-events: auto; z-index: 1000;transform: scale(${1 / viewport.current.zoom}) translate(${-viewport.current.x - store.width / 2}px, ${-viewport.current.y - store.height / 2}px)`}
-    onpointerdown={handlePointerDown}
-    onpointermove={handlePointerMove}
-    onpointerup={handlePointerUp}
-  ></canvas>
-</ViewportPortal>
+<canvas
+  bind:this={canvas}
+  width={store.width}
+  height={store.height}
+  class="nopan nodrag eraser"
+  onpointerdown={handlePointerDown}
+  onpointermove={handlePointerMove}
+  onpointerup={handlePointerUp}
+></canvas>
+
+<style>
+  .eraser {
+    position: absolute;
+    top: 0;
+    left: 0;
+    touch-action: none;
+    pointer-events: auto;
+    z-index: 1000;
+  }
+</style>
