@@ -1,0 +1,52 @@
+---
+description: React Flow is a library for building node-based applications from static diagrams to complex editors. It comes with built-in plugins like a mini map and graph controls, and nodes and edges are highly customizable.
+sidebarTitle: Getting Started
+asIndexPage: true
+---
+
+import { Emoji } from '@xyflow/xy-ui';
+
+# Overview
+
+React Flow is a library for building node-based applications. Whether you're creating simple static diagrams, immersive data visualizations, or complex visual editors, React Flow offers extensive customizability for your nodes and edges, and it comes with handy built-in components to get you quickly up and running. 
+
+## Choose Your Path
+
+<div
+className='py-8 grid grid-cols-2 gap-8'
+
+> {[
+
+    {
+      title: '🚀 Quick Start',
+      description:
+        'Hit the Ground running setting up and building your own react flow App.',
+    },
+    {
+      title: '💡 Tutorial (Beginners)',
+      description:
+        'Follow a step-by-step guide to create your first fully fledged React Flow application. No prerequisite knowledge required.',
+    },
+    {
+      title: '🎓 Deep Dive',
+      description:
+        'Explore React Flows inner workings and learn how to customize it exactly to your needs.',
+    },
+    {
+      title: '🏀 Playground',
+      description:
+        'For the curious at heart. Check out this no-code interactive explorer of React Flows features and capabilities',
+    },
+
+].map((path) => (
+
+<div
+  key={path.title}
+  className="flex flex-col border border-gray-200 rounded p-4 hover:shadow-md transition-all cursor-pointer"
+>
+  <h2 className="text-large font-semibold pb-2">{path.title}</h2>
+  <p style={{ margin: 0, color: '#555' }}>{path.description}</p>
+</div>
+))}
+
+</div>
