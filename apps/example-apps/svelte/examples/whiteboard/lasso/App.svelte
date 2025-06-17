@@ -15,21 +15,9 @@
       position: { x: 300, y: 0 },
       data: { label: 'World' },
     },
-    {
-      id: '3',
-      position: { x: 150, y: 150 },
-      data: { label: 'Lasso Selection' },
-    },
   ];
 
-  const initialEdges = [
-    {
-      id: '1->2',
-      source: '1',
-      target: '2',
-      type: 'smoothstep',
-    },
-  ];
+  const initialEdges = [];
 
   let nodes = $state.raw(initialNodes);
   let edges = $state.raw(initialEdges);
