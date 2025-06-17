@@ -1,4 +1,1 @@
-[
-  "@xyflow/svelte",
-  "svelte"
-]
+["@xyflow/svelte", "svelte", "perfect-freehand"]
