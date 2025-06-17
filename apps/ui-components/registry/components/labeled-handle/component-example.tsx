@@ -6,7 +6,7 @@ import { BaseNode } from "@/registry/components/base-node";
 
 const LabeledHandleDemo = memo(({ selected }: NodeProps) => {
   return (
-    <BaseNode className="flex px-0 py-5" selected={selected}>
+    <BaseNode className="flex px-0 py-5">
       <LabeledHandle
         id="target-1"
         title="Some Input"

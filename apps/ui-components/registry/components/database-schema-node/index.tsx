@@ -92,9 +92,5 @@ export const DatabaseSchemaNode = ({
   selected,
   children,
 }: DatabaseSchemaNodeProps) => {
-  return (
-    <BaseNode className={className} selected={selected}>
-      {children}
-    </BaseNode>
-  );
+  return <BaseNode className={className}>{children}</BaseNode>;
 };

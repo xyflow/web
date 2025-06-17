@@ -20,7 +20,7 @@ import { Rocket } from "lucide-react";
 
 const NodeHeaderDemo = memo(({ selected }: NodeProps) => {
   return (
-    <BaseNode selected={selected} className="px-3 py-2">
+    <BaseNode className="px-3 py-2">
       <NodeHeader className="-mx-3 -mt-2 border-b">
         <NodeHeaderIcon>
           <Rocket />
