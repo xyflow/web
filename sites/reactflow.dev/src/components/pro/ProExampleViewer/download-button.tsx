@@ -5,7 +5,7 @@ import { ArrowDownTrayIcon } from '@heroicons/react/24/outline';
 import JSZip from 'jszip';
 import { saveAs } from 'file-saver';
 import { SandpackFiles } from '@codesandbox/sandpack-react';
-import useDownloadExample from '@/hooks/useDownloadExample';
+import { downloadExample } from '@/server-actions';
 import { Framework } from './types';
 
 const ignoreFiles = ['/config.json'];
@@ -21,12 +21,10 @@ export default function DownloadButton({
   exampleId: string;
   frameworkId: Framework;
 }) {
-  const [isDownloading, setIsDownloading] = useState<boolean>(false);
-  const downloadExample = useDownloadExample({ exampleId, framework: frameworkId });
-
+  const [isDownloading, setIsDownloading] = useState(false);
   const downloadZip = async () => {
     setIsDownloading(true);
-    const downloadFiles = files || (await downloadExample());
+    const downloadFiles = files || (await downloadExample({ exampleId, framework: frameworkId }));
     const zip = new JSZip();
 
     Object.entries(downloadFiles).map(([fileName, fileContent]) => {

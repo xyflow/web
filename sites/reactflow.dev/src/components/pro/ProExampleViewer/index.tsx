@@ -4,8 +4,8 @@ import { useState, useEffect } from 'react';
 import { type SandpackFiles } from '@codesandbox/sandpack-react';
 
 import { Framework, ProExampleConfig } from './types';
-import DashboardHeader from '@/components/DashboardHeader';
-import useDownloadExample from '@/hooks/useDownloadExample';
+import DashboardHeader from '../DashboardHeader';
+import { downloadExample } from '@/server-actions';
 import useSubscription from '@/hooks/useSubscription';
 
 import DownloadButton from './download-button';
@@ -22,21 +22,16 @@ function ProExampleViewer({
   frameworkId: Framework;
   config: ProExampleConfig;
 }) {
-  const [files, setFiles] = useState<SandpackFiles>(null);
-  const downloadExample = useDownloadExample({ exampleId, framework: frameworkId });
+  const [files, setFiles] = useState<SandpackFiles | null>(null);
   const { isSubscribed } = useSubscription();
-  const isUnlocked = isSubscribed || config.free;
+  const isUnlocked = (isSubscribed || config.free) ?? false;
   const isTemplate = config.type === 'template';
 
   useEffect(() => {
-    const loadFiles = async () => {
-      const sandpackFiles = await downloadExample();
-      setFiles(sandpackFiles);
-    };
-
-    loadFiles();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    downloadExample({ exampleId, framework: frameworkId })
+      .then(setFiles)
+      .catch(console.error);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div>
@@ -69,8 +64,6 @@ function ProExampleViewer({
         isUnlocked={isUnlocked}
         files={files}
         exampleId={exampleId}
-        frameworkId={frameworkId}
-        isTemplate={isTemplate}
         previewUrl={config.previewUrl}
       />
     </div>

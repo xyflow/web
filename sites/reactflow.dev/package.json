@@ -30,6 +30,13 @@
     "react-dom": "^18.3.1",
     "@nhost/nhost-js": "^3.2.5",
     "@apollo/client": "3.7.15",
+    "@codesandbox/sandpack-react": "^2.6.7",
+    "@codesandbox/sandpack-themes": "^2.0.21",
+    "remark-gfm": "^4.0.0",
+    "react-syntax-highlighter": "^15.5.0",
+    "react-markdown": "^9.0.0",
+    "file-saver": "^2.0.5",
+    "jszip": "^3.10.1",
     "xy-shared": "workspace:*"
   },
   "devDependencies": {

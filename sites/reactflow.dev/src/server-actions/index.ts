@@ -1,5 +1,6 @@
 export { callNhostFunction } from './call-nhost-function'
 export { changePassword } from './change-password'
+export { downloadExample } from './download-example'
 export { getSubscription } from './get-subscription'
 export { getTeamMembers } from './get-team-members'
 export { changeEmail } from './change-email'

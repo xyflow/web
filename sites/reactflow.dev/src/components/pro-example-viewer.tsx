@@ -2,8 +2,10 @@
 
 import { FC } from 'react';
 import Link from 'next/link';
-import { Container, ContainerProps, Text, Button, cn } from '@xyflow/xy-ui';
+import { Button, cn, Container, ContainerProps, Text } from '@xyflow/xy-ui';
 import useSubscription from '@/hooks/useSubscription';
+import ProPlatformExampleViewer from './pro/ProExampleViewer';
+import { Framework } from './pro/ProExampleViewer/types';
 
 const ProExampleViewer: FC<{
   slug: string;
@@ -12,6 +14,17 @@ const ProExampleViewer: FC<{
 }> = ({ slug, variant = 'default', type = 'example' }) => {
   const isLightMode = variant === 'default';
   const { isSubscribed } = useSubscription();
+
+  if (isSubscribed) {
+    return (
+      <ProPlatformExampleViewer
+        frameworkId={Framework.REACT}
+        exampleId={slug}
+        config={{ type: 'example' }}
+      />
+    );
+  }
+
   return (
     <Container className="mt-7" variant={variant}>
       {!isSubscribed && (
