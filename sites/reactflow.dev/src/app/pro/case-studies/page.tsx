@@ -43,7 +43,7 @@ const Page: FC = async () => {
           })}
       </ContentGrid>
       <SubscribeSection
-        btnLink={`${process.env.NEXT_PUBLIC_PRO_PLATFORM_URL}/signup`}
+        btnLink="/pro/sign-up"
         btnLabel="Sign Up Now"
       />
     </BaseLayout>

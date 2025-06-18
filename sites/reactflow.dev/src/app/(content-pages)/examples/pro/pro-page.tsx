@@ -12,6 +12,7 @@ import {
   Container,
   Section,
   ListWrapper,
+  cn,
 } from '@xyflow/xy-ui';
 import { BaseLayout, Hero, ProjectPreview, LayoutBreakout, fetchJSON } from 'xy-shared';
 import {
@@ -22,17 +23,9 @@ import {
   StarIcon,
 } from '@heroicons/react/24/outline';
 import { MdxFile } from 'nextra';
-import { Metadata } from 'next';
 
-import starSvg from '../../../../public/img/pro/star.svg';
-import { getPageMap as getExamplesPageMap } from '../../(content-pages)/examples/[...slug]/utils';
-
-export const revalidate = 86400; // 60 * 60 * 24;
-export const metadata: Metadata = {
-  title: 'React Flow Pro Examples',
-  description:
-    'Advanced React Flow code examples to use in your node-based UIs, crafted by the React Flow core team.',
-};
+import starSvg from '../../../../../public/img/pro/star.svg';
+import { getPageMap as getExamplesPageMap } from '../[...slug]/utils';
 
 const ProExamples: FC = async () => {
   const remoteProExamples = await fetchJSON(
@@ -111,7 +104,7 @@ const ProExamples: FC = async () => {
           <GridItem
             title="By the creators of React Flow"
             text="Feature-complete and crafted by the core team"
-            // @ts-ignore
+            // @ts-expect-error -- fixme
             icon={() => <Logo className="h-8 w-8 text-black" />}
           />
           <GridItem
@@ -205,9 +198,7 @@ const ProExamples: FC = async () => {
                   variant="secondary"
                   className="text-black hover:bg-gray-100 w-full md:w-auto"
                 >
-                  <Link href={`${process.env.NEXT_PUBLIC_PRO_PLATFORM_URL}/signup`}>
-                    Try it out
-                  </Link>
+                  <Link href="/pro/sign-up">Try it out</Link>
                 </Button>
                 <Button
                   asChild
@@ -215,7 +206,7 @@ const ProExamples: FC = async () => {
                   variant="black"
                   className="bg-white/10 hover:bg-white/20 w-full md:w-auto"
                 >
-                  <Link href="/pro/pricing">See subscription plans</Link>
+                  <Link href="/pro/subscribe">See subscription plans</Link>
                 </Button>
               </div>
             </div>
@@ -335,17 +326,19 @@ function StarText() {
   );
 }
 
-function SignUpButton({
+export function SignUpButton({
   showIcon = false,
   description = 'to get a free pro example',
+  className,
 }: {
   showIcon?: boolean;
   description?: string;
+  className?: string;
 }) {
   return (
-    <div className="flex gap-2 items-center flex-wrap w-full md:w-auto">
+    <div className={cn('flex gap-2 items-center flex-wrap w-full md:w-auto', className)}>
       <Button asChild size="lg" variant="pro" className="w-full md:w-auto">
-        <Link href={`${process.env.NEXT_PUBLIC_PRO_PLATFORM_URL}/signup`}>
+        <Link href="/pro/sign-up">
           {showIcon && <SparklesIcon className="w-5 h-5 mr-2" />}Sign Up
         </Link>
       </Button>
