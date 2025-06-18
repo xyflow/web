@@ -91,6 +91,7 @@ export const meta: DynamicMeta = {
     items: {
       eraser: '',
       lasso: '',
+      'draw-nodes': '',
     },
   },
   misc: {
