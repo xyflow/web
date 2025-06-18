@@ -87,6 +87,12 @@ export const meta: DynamicMeta = {
       'turbo-flow': '',
     },
   },
+  whiteboard: {
+    items: {
+      eraser: '',
+      lasso: '',
+    },
+  },
   misc: {
     items: {
       'download-image': '',
