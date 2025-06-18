@@ -1078,5 +1078,10 @@
     "source": "/learn/tutorials",
     "destination": "/learn/tutorials/mind-map-app-with-react-flow",
     "permanent": true
+  },
+  {
+    "source": "/learn",
+    "destination": "/learn/getting-started",
+    "permanent": true
   }
 ]

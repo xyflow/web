@@ -37,9 +37,9 @@ export const RemoteCodeViewer: FC<RemoteCodeViewerProps> = async ({
   showOpenInCodeSandbox = framework === 'react',
   showOpenInStackblitz = true,
   sandpackOptions = {},
-  editorHeight = '60vh',
+  editorHeight = '40vh',
   activeFile,
-  orientation,
+  orientation = 'vertical',
 }) => {
   const _framework: Framework =
     framework ?? (process.env.NEXT_PUBLIC_Framework as Framework) ?? 'react';
@@ -83,7 +83,7 @@ export const RemoteCodeViewer: FC<RemoteCodeViewerProps> = async ({
   return (
     <div
       className={cn(
-        'remote-code-viewer mt-5 rounded-lg flex',
+        'border border-gray-200 remote-code-viewer mt-5 rounded-xl flex',
         isHorizontal ? 'flex-row' : 'flex-col',
       )}
     >
