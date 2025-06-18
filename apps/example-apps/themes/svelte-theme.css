@@ -149,6 +149,18 @@
   box-shadow: var(--xy-node-boxshadow-default);
 }
 
+.xy-theme__button.active {
+  background-color: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+}
+
+.xy-theme__button.active:hover,
+.xy-theme__button.active:active {
+  background-color: var(--color-primary);
+  opacity: 0.9;
+}
+
 .xy-theme__button:hover {
   background-color: var(--xy-controls-button-background-color-hover-default);
 }

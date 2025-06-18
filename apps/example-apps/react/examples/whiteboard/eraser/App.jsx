@@ -75,7 +75,7 @@ export default function EraserFlow() {
 
       {isEraserActive && <Eraser />}
 
-      <Panel position="left-top">
+      <Panel position="top-left">
         <button
           className={`xy-theme__button ${isEraserActive ? 'active' : ''}`}
           onClick={() => setIsEraserActive((enabled) => !enabled)}

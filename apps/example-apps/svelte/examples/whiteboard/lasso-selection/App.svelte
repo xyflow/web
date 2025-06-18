@@ -23,17 +23,35 @@
 
   let nodes = $state.raw(initialNodes);
   let edges = $state.raw(initialEdges);
+
+  let isLassoActive = $state(true);
   let partial = $state(false);
 </script>
 
-<SvelteFlow bind:nodes bind:edges minZoom={0} fitView>
+<SvelteFlow bind:nodes bind:edges fitView>
   <Background />
   <MiniMap />
   <Controls />
-  <Lasso {partial} />
-  <Panel position="top-right">
-    <button onclick={() => (partial = !partial)}>
-      Use {partial ? 'Full' : 'Partial'} Selection
+
+  {#if isLassoActive}
+    <Lasso {partial} />
+  {/if}
+
+  <Panel position="top-left">
+    <button
+      class={['xy-theme__button', isLassoActive && 'active']}
+      onclick={() => (isLassoActive = !isLassoActive)}
+    >
+      Lasso {isLassoActive ? 'Active' : 'Inactive'}
     </button>
+    <label>
+      <input
+        type="checkbox"
+        checked={partial}
+        onchange={() => (partial = !partial)}
+        class="xy-theme__checkbox"
+      />
+      Partial selection
+    </label>
   </Panel>
 </SvelteFlow>

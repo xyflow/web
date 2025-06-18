@@ -42,7 +42,7 @@ export default function RectangleFlow() {
 
       {isRectangleActive && <RectangleTool />}
 
-      <Panel position="left-top">
+      <Panel position="top-left">
         <button
           className={`xy-theme__button ${isRectangleActive ? 'active' : ''}`}
           onClick={() => setIsRectangleActive((active) => !active)}

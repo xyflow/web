@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { SvelteFlow, Background, Controls } from '@xyflow/svelte';
+  import { SvelteFlow, Background, Controls, Panel } from '@xyflow/svelte';
 
   import ErasableNode, { type ErasableNodeType } from './ErasableNode.svelte';
   import ErasableEdge, { type ErasableEdgeType } from './ErasableEdge.svelte';
@@ -42,6 +42,8 @@
 
   let nodes = $state.raw(initialNodes);
   let edges = $state.raw(initialEdges);
+
+  let isEraserActive = $state(true);
 </script>
 
 <SvelteFlow
@@ -54,5 +56,23 @@
 >
   <Controls />
   <Background />
-  <Eraser />
+
+  {#if isEraserActive}
+    <Eraser />
+  {/if}
+
+  <Panel position="top-left" class="controls">
+    <button
+      class={['xy-theme__button', isEraserActive && 'active']}
+      onclick={() => (isEraserActive = !isEraserActive)}
+    >
+      Eraser {isEraserActive ? 'Active' : 'Inactive'}
+    </button>
+  </Panel>
 </SvelteFlow>
+
+<style>
+  :global .controls {
+    z-index: 1001;
+  }
+</style>

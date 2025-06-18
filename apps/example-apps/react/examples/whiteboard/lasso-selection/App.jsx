@@ -48,7 +48,7 @@ export default function LassoSelectionFlow() {
       <Background />
       {isLassoActive && <Lasso partial={partial} />}
 
-      <Panel position="left-top" className="lasso-controls">
+      <Panel position="top-left" className="lasso-controls">
         <button
           className={`xy-theme__button ${isLassoActive ? 'active' : ''}`}
           onClick={() => setIsLassoActive((enabled) => !enabled)}

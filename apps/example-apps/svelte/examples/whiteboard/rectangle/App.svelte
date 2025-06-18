@@ -22,47 +22,26 @@
 
   let nodes = $state.raw(initialNodes);
   let edges = $state.raw(initialEdges);
-  let isDrawing = $state(false);
+  let isRectangleActive = $state(true);
 
   function onConnect(params: Connection) {
     edges = addEdge(params, edges);
   }
-
-  function toggleDrawing() {
-    isDrawing = !isDrawing;
-  }
 </script>
 
-<SvelteFlow bind:nodes bind:edges {nodeTypes} {onConnect} minZoom={0} fitView>
+<SvelteFlow bind:nodes bind:edges {nodeTypes} {onConnect}>
   <Controls />
   <Background />
+
   <Panel position="top-left">
-    <button onclick={toggleDrawing} class="draw-button" class:drawing={isDrawing}>
-      {isDrawing ? 'Stop Drawing' : 'Start Drawing'}
+    <button
+      class={['xy-theme__button', isRectangleActive && 'active']}
+      onclick={() => (isRectangleActive = !isRectangleActive)}
+    >
+      Rectangle {isRectangleActive ? 'Active' : 'Inactive'}
     </button>
   </Panel>
-  {#if isDrawing}
+  {#if isRectangleActive}
     <RectangleTool />
   {/if}
 </SvelteFlow>
-
-<style>
-  .draw-button {
-    padding: 8px 16px;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-    background-color: #4dabf7;
-    transition: background-color 0.2s ease;
-  }
-
-  .draw-button.drawing {
-    background-color: #ff6b6b;
-  }
-
-  .draw-button:hover {
-    opacity: 0.9;
-  }
-</style>
