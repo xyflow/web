@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import {
   ReactFlow,
   useNodesState,
@@ -6,6 +6,7 @@ import {
   addEdge,
   Controls,
   Background,
+  Panel,
 } from '@xyflow/react';
 
 import { ErasableNode } from './ErasableNode';
@@ -46,10 +47,16 @@ const edgeTypes = {
   'erasable-edge': ErasableEdge,
 };
 
-const StressFlow = () => {
+const defaultEdgeOptions = {
+  type: 'erasable-edge',
+};
+
+export default function EraserFlow() {
   const [nodes, _, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   const onConnect = useCallback((params) => setEdges((els) => addEdge(params, els)), []);
+
+  const [isEraserActive, setIsEraserActive] = useState(true);
 
   return (
     <ReactFlow
@@ -61,14 +68,21 @@ const StressFlow = () => {
       onEdgesChange={onEdgesChange}
       onConnect={onConnect}
       fitView
-      minZoom={0}
-      defaultEdgeOptions={{ type: 'erasable-edge' }}
+      defaultEdgeOptions={defaultEdgeOptions}
     >
       <Controls />
       <Background />
-      <Eraser />
+
+      {isEraserActive && <Eraser />}
+
+      <Panel position="left-top">
+        <button
+          className={`xy-theme__button ${isEraserActive ? 'active' : ''}`}
+          onClick={() => setIsEraserActive((enabled) => !enabled)}
+        >
+          Eraser {isEraserActive ? 'Active' : 'Inactive'}
+        </button>
+      </Panel>
     </ReactFlow>
   );
-};
-
-export default StressFlow;
+}

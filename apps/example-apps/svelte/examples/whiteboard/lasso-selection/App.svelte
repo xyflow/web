@@ -1,9 +1,10 @@
 <script lang="ts">
   import { SvelteFlow, Background, Controls, MiniMap, Panel } from '@xyflow/svelte';
+  import type { Edge } from '@xyflow/svelte';
+
   import Lasso from './Lasso.svelte';
 
   import '@xyflow/svelte/dist/style.css';
-  import type { Edge } from '@xyflow/svelte';
 
   const initialNodes = [
     {

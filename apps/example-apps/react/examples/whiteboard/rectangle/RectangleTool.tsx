@@ -1,5 +1,5 @@
-import { useReactFlow, type XYPosition } from '@xyflow/react';
 import { useState, type PointerEvent } from 'react';
+import { useReactFlow, type XYPosition } from '@xyflow/react';
 
 function getPosition(start: XYPosition, end: XYPosition) {
   return {
@@ -30,29 +30,11 @@ function getRandomColor(): string {
   return colors[Math.floor(Math.random() * colors.length)];
 }
 
-const drawBoxStyles = {
-  pointerEvents: 'auto',
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  zIndex: 4,
-  height: '100%',
-  width: '100%',
-  transformOrigin: 'top left',
-  cursor: 'copy',
-  touchAction: 'none',
-} as const;
-
-const previewBoxStyles = {
-  position: 'absolute',
-  zIndex: 10,
-} as const;
-
-export function DrawNodes() {
-  const { screenToFlowPosition, getViewport, setNodes } = useReactFlow();
-
+export function RectangleTool() {
   const [start, setStart] = useState<XYPosition | null>(null);
   const [end, setEnd] = useState<XYPosition | null>(null);
+
+  const { screenToFlowPosition, getViewport, setNodes } = useReactFlow();
 
   function handlePointerDown(e: PointerEvent) {
     (e.target as HTMLCanvasElement).setPointerCapture(e.pointerId);
@@ -96,16 +78,15 @@ export function DrawNodes() {
 
   return (
     <div
-      className="nopan nodrag"
-      style={drawBoxStyles}
+      className="nopan nodrag tool-overlay"
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}
     >
       {rect && (
         <div
+          className="rectangle-preview"
           style={{
-            ...previewBoxStyles,
             ...rect.dimension,
             transform: `translate(${rect.position.x}px, ${rect.position.y}px)`,
             border: '2px dashed rgba(0, 89, 220, 0.8)',

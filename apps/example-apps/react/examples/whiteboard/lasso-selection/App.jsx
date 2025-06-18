@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 import {
   ReactFlow,
   useNodesState,
@@ -27,12 +27,13 @@ const initialNodes = [
 
 const initialEdges = [];
 
-const StressFlow = () => {
+export default function LassoSelectionFlow() {
   const [nodes, _, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   const onConnect = useCallback((params) => setEdges((els) => addEdge(params, els)), []);
 
   const [partial, setPartial] = useState(false);
+  const [isLassoActive, setIsLassoActive] = useState(true);
 
   return (
     <ReactFlow
@@ -42,18 +43,28 @@ const StressFlow = () => {
       onEdgesChange={onEdgesChange}
       onConnect={onConnect}
       fitView
-      minZoom={0}
     >
       <Controls />
       <Background />
-      <Lasso partial={partial} />
-      <Panel position="top-right">
-        <button onClick={() => setPartial(!partial)}>
-          Use {partial ? 'Full' : 'Partial'} Selection
+      {isLassoActive && <Lasso partial={partial} />}
+
+      <Panel position="left-top" className="lasso-controls">
+        <button
+          className={`xy-theme__button ${isLassoActive ? 'active' : ''}`}
+          onClick={() => setIsLassoActive((enabled) => !enabled)}
+        >
+          Lasso {isLassoActive ? 'Active' : 'Inactive'}
         </button>
+        <label>
+          <input
+            type="checkbox"
+            checked={partial}
+            onChange={() => setPartial((p) => !p)}
+            className="xy-theme__checkbox"
+          />
+          Partial selection
+        </label>
       </Panel>
     </ReactFlow>
   );
-};
-
-export default StressFlow;
+}

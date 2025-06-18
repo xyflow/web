@@ -57,7 +57,7 @@
       ...nodes,
       {
         id: crypto.randomUUID(),
-        type: 'box',
+        type: 'rectangle',
         position,
         ...dimension,
         data: {
@@ -81,7 +81,7 @@
 </script>
 
 <div
-  class="draw-box nopan nodrag"
+  class="tool-overlay nopan nodrag"
   role="button"
   tabindex="0"
   onpointerdown={handlePointerDown}
@@ -90,7 +90,7 @@
 >
   {#if rect}
     <div
-      class="preview-box"
+      class="rectangle-preview"
       style="
         width: {rect.dimension.width}px;
         height: {rect.dimension.height}px;
@@ -101,7 +101,7 @@
 </div>
 
 <style>
-  .draw-box {
+  .tool-overlay {
     pointer-events: auto;
     position: absolute;
     top: 0;
@@ -114,7 +114,7 @@
     touch-action: none;
   }
 
-  .preview-box {
+  .rectangle-preview {
     position: absolute;
     z-index: 10;
     border: 2px dashed rgba(0, 89, 220, 0.8);

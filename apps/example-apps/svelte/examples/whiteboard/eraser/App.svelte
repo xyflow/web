@@ -1,13 +1,5 @@
 <script lang="ts">
-  import {
-    SvelteFlow,
-    Background,
-    Controls,
-    addEdge,
-    type Node,
-    type Edge,
-    type Connection,
-  } from '@xyflow/svelte';
+  import { SvelteFlow, Background, Controls } from '@xyflow/svelte';
 
   import ErasableNode, { type ErasableNodeType } from './ErasableNode.svelte';
   import ErasableEdge, { type ErasableEdgeType } from './ErasableEdge.svelte';
@@ -58,7 +50,6 @@
   {nodeTypes}
   {edgeTypes}
   fitView
-  minZoom={0}
   defaultEdgeOptions={{ type: 'erasable-edge' }}
 >
   <Controls />

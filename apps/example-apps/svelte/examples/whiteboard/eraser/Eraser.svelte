@@ -1,7 +1,7 @@
 <script lang="ts">
-  import getStroke from 'perfect-freehand';
   import { onMount } from 'svelte';
   import { useSvelteFlow, useNodes, useEdges, useStore } from '@xyflow/svelte';
+  import getStroke from 'perfect-freehand';
 
   import { polylineIntersectsRectangle, pathsIntersect } from './utils';
 
@@ -285,14 +285,14 @@
   bind:this={canvas}
   width={store.width}
   height={store.height}
-  class="nopan nodrag eraser"
+  class="nopan nodrag tool-overlay"
   onpointerdown={handlePointerDown}
   onpointermove={handlePointerMove}
   onpointerup={handlePointerUp}
 ></canvas>
 
 <style>
-  .eraser {
+  .tool-overlay {
     position: absolute;
     top: 0;
     left: 0;

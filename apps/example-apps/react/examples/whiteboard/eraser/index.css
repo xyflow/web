@@ -11,3 +11,16 @@ body {
   width: 100vw;
   height: 100vh;
 }
+
+.tool-overlay {
+  pointer-events: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  height: 100%;
+  width: 100%;
+  transform-origin: top left;
+  cursor: crosshair;
+  touch-action: none;
+}

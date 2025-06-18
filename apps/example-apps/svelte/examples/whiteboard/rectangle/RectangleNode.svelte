@@ -1,7 +1,7 @@
 <script module>
   import type { Node } from '@xyflow/svelte';
 
-  export type BoxNodeType = Node<{ color: string }, 'box'>;
+  export type RectangleNodeType = Node<{ color: string }, 'rectangle'>;
 </script>
 
 <script lang="ts">
@@ -13,7 +13,7 @@
     useOnSelectionChange,
   } from '@xyflow/svelte';
 
-  let { id, selected, dragging, data }: NodeProps<BoxNodeType> = $props();
+  let { id, selected, dragging, data }: NodeProps<RectangleNodeType> = $props();
 
   const { updateNodeData } = useSvelteFlow();
 

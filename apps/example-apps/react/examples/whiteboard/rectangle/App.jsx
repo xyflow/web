@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 import {
   ReactFlow,
   useNodesState,
@@ -10,7 +10,7 @@ import {
 } from '@xyflow/react';
 
 import { BoxNode } from './BoxNode';
-import { DrawNodes } from './DrawNodes';
+import { RectangleTool } from './RectangleTool';
 
 import '@xyflow/react/dist/style.css';
 
@@ -21,15 +21,12 @@ const nodeTypes = {
   box: BoxNode,
 };
 
-const StressFlow = () => {
+export default function RectangleFlow() {
   const [nodes, _, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
-  const [isDrawing, setIsDrawing] = useState(false);
   const onConnect = useCallback((params) => setEdges((els) => addEdge(params, els)), []);
 
-  const toggleDrawing = () => {
-    setIsDrawing(!isDrawing);
-  };
+  const [isRectangleActive, setIsRectangleActive] = useState(true);
 
   return (
     <ReactFlow
@@ -39,29 +36,20 @@ const StressFlow = () => {
       onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
       onConnect={onConnect}
-      minZoom={0}
     >
       <Controls />
       <Background />
-      <Panel position="top-left">
+
+      {isRectangleActive && <RectangleTool />}
+
+      <Panel position="left-top">
         <button
-          onClick={toggleDrawing}
-          style={{
-            padding: '8px 16px',
-            backgroundColor: isDrawing ? '#ff6b6b' : '#4dabf7',
-            color: 'white',
-            border: 'none',
-            borderRadius: '4px',
-            cursor: 'pointer',
-            fontWeight: 'bold',
-          }}
+          className={`xy-theme__button ${isRectangleActive ? 'active' : ''}`}
+          onClick={() => setIsRectangleActive((active) => !active)}
         >
-          {isDrawing ? 'Stop Drawing' : 'Start Drawing'}
+          Rectangle {isRectangleActive ? 'Active' : 'Inactive'}
         </button>
       </Panel>
-      {isDrawing && <DrawNodes />}
     </ReactFlow>
   );
-};
-
-export default StressFlow;
+}

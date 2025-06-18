@@ -8,16 +8,16 @@
     type Connection,
   } from '@xyflow/svelte';
 
-  import BoxNode, { type BoxNodeType } from './BoxNode.svelte';
-  import DrawNodes from './DrawNodes.svelte';
+  import RectangleNode, { type RectangleNodeType } from './RectangleNode.svelte';
+  import RectangleTool from './RectangleTool.svelte';
 
   import '@xyflow/svelte/dist/style.css';
 
-  const initialNodes: BoxNodeType[] = [];
+  const initialNodes: RectangleNodeType[] = [];
   const initialEdges: any[] = [];
 
   const nodeTypes = {
-    box: BoxNode,
+    rectangle: RectangleNode,
   };
 
   let nodes = $state.raw(initialNodes);
@@ -42,7 +42,7 @@
     </button>
   </Panel>
   {#if isDrawing}
-    <DrawNodes />
+    <RectangleTool />
   {/if}
 </SvelteFlow>
 

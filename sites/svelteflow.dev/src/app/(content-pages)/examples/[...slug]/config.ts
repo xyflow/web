@@ -60,8 +60,8 @@ export const meta: DynamicMeta = {
   whiteboard: {
     items: {
       eraser: '',
-      lasso: '',
-      'draw-nodes': '',
+      'lasso-selection': '',
+      rectangle: '',
     },
   },
   misc: {

@@ -1,17 +1,10 @@
 import { useRef, type PointerEvent } from 'react';
 import { useReactFlow, useStore } from '@xyflow/react';
+
 import { getSvgPathFromStroke } from './utils';
 
 type NodePoints = ([number, number] | [number, number, number])[];
 type NodePointObject = Record<string, NodePoints>;
-
-const canvasStyles = {
-  position: 'absolute',
-  zIndex: 5,
-  height: '100%',
-  width: '100%',
-  touchAction: 'none',
-} as const;
 
 export function Lasso({ partial }: { partial: boolean }) {
   const { flowToScreenPosition, setNodes } = useReactFlow();
@@ -115,10 +108,10 @@ export function Lasso({ partial }: { partial: boolean }) {
       ref={canvas}
       width={width}
       height={height}
-      style={canvasStyles}
+      className="tool-overlay"
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}
-    ></canvas>
+    />
   );
 }

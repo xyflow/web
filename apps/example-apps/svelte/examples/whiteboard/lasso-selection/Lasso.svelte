@@ -113,14 +113,14 @@
   bind:this={canvas}
   width={store.width}
   height={store.height}
-  class="lasso"
+  class="tool-overlay"
   onpointerdown={handlePointerDown}
   onpointermove={handlePointerMove}
   onpointerup={handlePointerUp}
 ></canvas>
 
 <style>
-  .lasso {
+  .tool-overlay {
     position: absolute;
     z-index: 5;
     height: 100%;

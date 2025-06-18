@@ -1,4 +1,3 @@
-import getStroke from 'perfect-freehand';
 import { useRef, useEffect, type PointerEvent } from 'react';
 import {
   useEdges,
@@ -7,6 +6,7 @@ import {
   useStore,
   type ReactFlowState,
 } from '@xyflow/react';
+import getStroke from 'perfect-freehand';
 
 import { polylineIntersectsRectangle, pathsIntersect } from './utils';
 import { ErasableNodeType } from './ErasableNode';
@@ -53,19 +53,6 @@ const storeSelector = (state: ReactFlowState) => ({
   width: state.width,
   height: state.height,
 });
-
-const canvasStyle = {
-  pointerEvents: 'auto' as const,
-  position: 'absolute' as const,
-  top: 0,
-  left: 0,
-  zIndex: 4,
-  height: '100%',
-  width: '100%',
-  transformOrigin: 'top left' as const,
-  cursor: 'crosshair' as const,
-  touchAction: 'none' as const,
-};
 
 /**
  * Eraser component that provides an overlay canvas for erasing nodes and edges.
@@ -312,8 +299,7 @@ export function Eraser() {
       ref={canvas}
       width={width}
       height={height}
-      className="nopan nodrag"
-      style={canvasStyle}
+      className="nopan nodrag tool-overlay"
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}
