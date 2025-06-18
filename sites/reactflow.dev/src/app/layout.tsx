@@ -84,8 +84,9 @@ const RootLayout: FC<{ children: ReactNode }> = async ({ children }) => {
           ...(catchAllExamplesMeta as MetaJsonFile).data,
         },
       },
-      ...examples,
+      ...examples.slice(0, -1), // Exclude /examples/pro page
       ...catchAllExamples,
+      examples.at(-1)!, // Move /examples/pro to the end of sidebar
     ],
   };
   const components = pageMap.find(

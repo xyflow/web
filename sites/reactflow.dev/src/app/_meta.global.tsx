@@ -148,13 +148,13 @@ const metaRecord = {
           breadcrumb: false,
         },
       },
+      overview: '',
       pro: {
         theme: {
           breadcrumb: false,
         },
       },
-      overview: '',
-      // Rest of examples are added in `(content-pages)/layout.tsx` file
+      // Rest of examples are added in `app/layout.tsx` file
     },
   },
   components: { items: components },
@@ -188,6 +188,9 @@ const metaRecord = {
         theme: {
           collapsed: true,
         },
+        items: {
+          'non-commercial-edu-oss': { display: 'hidden' },
+        },
       },
       // No-Auth
       'sign-in': {
@@ -205,7 +208,9 @@ const metaRecord = {
         display: 'hidden',
       },
       // Both
-      'quote-request': '',
+      'quote-request': {
+        display: 'hidden',
+      },
       'case-studies': {
         display: 'hidden',
         theme: {
