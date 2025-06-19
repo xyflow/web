@@ -14,6 +14,7 @@ const customization = {
   theming: '',
 };
 const advanced = {
+  "hooks-providers": '',
   accessibility: '',
   testing: '',
   typescript: '',
