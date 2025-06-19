@@ -1,8 +1,9 @@
 const gettingStarted = {
-  features: '',
   quickstart: '',
+  tutorial: '',
 };
 const concepts = {
+  concepts: '',
   'building-a-flow': '',
   'adding-interactivity': '',
   'the-viewport': '',

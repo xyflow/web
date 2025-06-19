@@ -11,6 +11,12 @@ A powerful feature of React Flow is the ability to create custom nodes. This giv
 
 In this section, we'll walk through creating a custom node featuring an input field that updates text elsewhere in your application. For further examples, we recommend checking out our [Custom Node Example](/examples/nodes/custom-node).
 
+<Callout type="info">
+  To get the best performance in your React Flow application, check out the [common
+  pitfalls](/learn/customization/common-pitfalls) page to avoid common mistakes and
+  performance issues.
+</Callout>
+
 ## Implementing a Custom Node
 
 To create a custom node, all you need to do is create a React component. React Flow will automatically wrap it in an interactive container that injects essential props like the node's id, position, and data, and provides functionality for selection, dragging, and connecting handles. For a full reference on all available custom node props, see the [Custom Node Props](/api-reference/types/node-props).
