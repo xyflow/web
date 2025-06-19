@@ -1,7 +1,3 @@
-const gettingStarted = {
-  quickstart: '',
-  tutorial: '',
-};
 const concepts = {
   concepts: '',
   'building-a-flow': '',
@@ -94,10 +90,8 @@ const metaRecord = {
   // 1. Default Routes
   learn: {
     items: {
-      'getting-started': {
-        items: gettingStarted,
-        theme: { collapsed: false },
-      },
+      index: '',
+      introduction: { display: 'hidden' },
       concepts: {
         title: 'Core Concepts',
         items: concepts,
