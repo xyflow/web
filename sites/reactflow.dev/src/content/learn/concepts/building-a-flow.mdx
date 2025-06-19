@@ -7,15 +7,20 @@ import { Callout, Steps } from 'nextra/components';
 
 # Building a Flow
 
-In the following pages we will introduce you to the core concepts of React Flow and explain how to create a basic flow. A flow consists of nodes and edges. A [node](/api-reference/types/node) needs a position and a label and an [edge](/api-reference/types/edge) needs a source (node id) and a target (node id).
+In the following pages we will introduce you to the core concepts of React Flow 
+and explain how to create a basic interactive flow. A flow consists of nodes and edges. 
+A [node](/api-reference/types/node) needs an id, a position and a label 
+and an [edge](/api-reference/types/edge) needs an id, a source (node id) and a target (node id).
 
 ## Creating the Flow
 
-Let's start by creating an empty flow with a controls panel and a background.
+Let's start by creating an empty flow with viewport [`<Controls />`](/api-reference/components/controls)
+and a dotted [`<Background />`](/api-reference/components/background).
 
 <Steps>
 ### Add imports
-First, we need to import some basic components from the `@xyflow/react` and the **css stylesheet**, which is **required** for React Flow to work:
+First, we need to import some basic components from the `@xyflow/react` package 
+and most importantly the **css stylesheet**, which is **required** for React Flow to work:
 
 ```jsx
 import { ReactFlow, Background, Controls } from '@xyflow/react';
@@ -24,10 +29,11 @@ import '@xyflow/react/dist/style.css'; //required
 
 ### Render ReactFlow
 
-then we create a React component, that renders our flow. The **width and height** on the parent container are **required** because React Flow uses these dimensions.
+Now we create a React component, that renders our flow. The **width and height** on the 
+parent container are **required** because React Flow uses these dimensions.
 
 ```jsx
-function Flow() {
+export default function App() {
   return (
     <div style={{ height: '100%', width: '100%' }}>
       <ReactFlow>
@@ -41,6 +47,8 @@ function Flow() {
 
 ### Empty Flow
 
+That's it! You have created your first empty flow 🎉
+
 <RemoteCodeViewer
   editorHeight="20vh"
   showEditor={false}
@@ -52,15 +60,17 @@ function Flow() {
 
 ## Adding Nodes
 
-Now that the flow is set up, it's time to add nodes — each node represents an element in your diagram with a specific position and content.
+Now that the flow is set up, it's time to add nodes — each node represents an element in your diagram 
+with a specific position and content.
 
 <Steps> 
 ### Create node objects
 
-Outside of your React component, create an array of [node objects](/api-reference/types/node). Each node object needs an id and a position. Let's also add a label to them:
+Outside of your React component, create an array of [node objects](/api-reference/types/node). 
+Each node object needs a unique id and a position. Let's also add a label to them:
 
 ```jsx
-const nodes = [
+const initialNodes = [
   {
     id: 'n1',
     position: { x: 0, y: 0 },
@@ -75,20 +85,22 @@ const nodes = [
 ];
 ```
 
-The node with `type: 'input'` only has one input handle and is typically used as a flows starting point.
+The node with `type: 'input'` only has one input handle and is typically used as the flows starting point.
 
 ### Add the nodes to the flow
 
-Now we can add our nodes into the flow:
+Now we can pass our `initialNodes` array to the `<ReactFlow />` component using the `nodes` prop:
 
 ```jsx
-<ReactFlow nodes={nodes}>
+<ReactFlow nodes={initialNodes}>
   <Background />
   <Controls />
 </ReactFlow>
 ```
 
 ### Flow with two nodes
+
+This gives us a flow with two labeled nodes 🎉
 
 <RemoteCodeViewer
   editorHeight="20vh"
@@ -98,7 +110,8 @@ Now we can add our nodes into the flow:
 />
 </Steps>
 
-We have several built-in nodes that you can explore in the [node](/api-reference/types/node) documentation. However, once you start building your own application, you will want to use [custom nodes](learn/customization/custom-nodes).
+We have several built-in nodes that you can explore in the [node](/api-reference/types/node) reference. 
+However, once you start building your own application, you will want to use [custom nodes](/learn/customization/custom-nodes).
 
 ## Adding Edges
 
@@ -107,7 +120,9 @@ Now that we have two nodes, let's connect them with an edge.
 <Steps>
 ### Creating an edge
 
-To create an edge, we define a unique edge id and specify two attributes: the source (where the edge begins) and the target (where it ends). In this example, we use the `id` values of the two nodes we created so far—"1" and "2"—to define the edge:
+To create an edge, we define an array of [edge objects](/api-reference/types/edge). 
+Each edge object needs to have an `id`, a `source` (where the edge begins), and a `target` (where it ends).
+In this example, we use the `id` values of the two nodes we created so far (`n1` and `n2`) to define the edge:
 
 ```js
 const edges = [
@@ -119,7 +134,7 @@ const edges = [
 ];
 ```
 
-This edge connects the node with `id` "n1" (the source) to the node with `id` "n2" (the target).
+This edge connects the node with `id: 'n1'` (the source) to the node with `id: 'n2'` (the target).
 
 <RemoteCodeViewer
   showEditor={false}

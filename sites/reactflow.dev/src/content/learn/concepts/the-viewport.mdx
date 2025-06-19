@@ -7,7 +7,10 @@ import { RemoteCodeViewer } from 'xy-shared/server';
 
 # Panning and Zooming
 
-The default pan and zoom behavior of React Flow is inspired by [slippy maps](https://wiki.openstreetmap.org/wiki/Slippy_map). You pan by dragging and zoom by scrolling. You can customize this behavior easily with the [interaction props](/api-reference/react-flow#interaction-props) on the `<ReactFlow />` component.
+The default pan and zoom behavior of React Flow is inspired by [slippy maps](https://wiki.openstreetmap.org/wiki/Slippy_map). 
+You pan by dragging your pointer and zoom by scrolling. 
+You can customize this behavior easily with the [interaction props](/api-reference/react-flow#interaction-props) 
+on the `<ReactFlow />` component.
 
 ## Viewport Configurations
 
@@ -18,18 +21,18 @@ Here we will list and explain some configurations that other tools use.
 As mentioned above, the ReactFlow default controls are as follows:
 
 - `pan:` pointer drag
-- `zoom`: pinch or scroll
-- `select`: Shift + pointer drag
+- `zoom:` pinch or scroll
+- `select:` shift + pointer drag
 
 <RemoteCodeViewer showEditor={false} route="learn/zoom-pan" framework="react" />
 
 ### Figma-like Viewport Controls
 
-If you prefer figma/sketch/design tool controls you can set [`panOnScroll`](/api-reference/react-flow#panonscroll) and [`selectionOnDrag`](http://localhost:3002/api-reference/react-flow#selectionondrag) to `true`:
+If you prefer figma/sketch/design tool controls you can set [`panOnScroll`](/api-reference/react-flow#panonscroll) and [`selectionOnDrag`](/api-reference/react-flow#selectionondrag) to `true`:
 
-- `pan`: scroll, middle / right mouse drag, Space + pointer drag
-- `zoom`: pinch or cmd + scroll
-- `select`: pointer drag
+- `pan:` scroll, middle / right mouse drag, space + pointer drag
+- `zoom:` pinch or cmd + scroll
+- `select:` pointer drag
 
 <RemoteCodeViewer showEditor={false} route="learn/zoom-pan-2" framework="react" />
 

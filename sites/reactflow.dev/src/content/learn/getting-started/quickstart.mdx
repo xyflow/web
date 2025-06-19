@@ -16,7 +16,8 @@ This page will take you from zero to a working React Flow app in a few minutes.
 <Callout type="info">
   React Flow is a [React](https://react.dev/) library. If you’ve never used React before,
   we recommend first starting with a React
-  [tutorial](https://reactjs.org/tutorial/tutorial.html).
+  [tutorial](https://reactjs.org/tutorial/tutorial.html) or taking our step-by-step
+  [tutorial](/learn/getting-started/tutorial).
 </Callout>
 
 ## Online Codesandbox
@@ -46,12 +47,12 @@ You can try React Flow without any setup with our [CodeSandbox](https://codesand
 
 ## Local Installation
 
-To get started locally, you need to have [Node.js](https://nodejs.org/en/) installed and a package manager of your choice: [npm](https://www.npmjs.com/), [yarn](https://yarnpkg.com/),
-[pnpm](https://pnpm.io/), [bun](https://bun.sh/)
+You need to have [Node.js](https://nodejs.org/en/) installed and a package manager of your choice:
+[npm](https://www.npmjs.com/), [pnpm](https://pnpm.io/), [yarn](https://yarnpkg.com/), [bun](https://bun.sh/)
 
 ### Vite template
 
-If you want to get started right away, you can use our [vite template](https://github.com/xyflow/vite-react-flow-template):
+If you want a preconfigured codebase, you can use our [Vite template](https://github.com/xyflow/vite-react-flow-template):
 
 ```bash copy npm2yarn
 npx degit xyflow/vite-react-flow-template app-name
@@ -80,15 +81,14 @@ First we import the [`<ReactFlow />`](/api-reference/react-flow#reactflow) compo
 That and a handful of node and edge objects are all we need to get something going! Get rid of everything inside `App.jsx` and add the following:
 
 ```jsx
-import React from 'react';
 import { ReactFlow } from '@xyflow/react';
 import '@xyflow/react/dist/style.css'; // required
 
 const initialNodes = [
-  { id: 'one', position: { x: 0, y: 0 }, data: { label: 'One' } },
-  { id: 'two', position: { x: 0, y: 100 }, data: { label: 'Two' } },
+  { id: 'n1', position: { x: 0, y: 0 }, data: { label: 'Node 1' } },
+  { id: 'n2', position: { x: 0, y: 100 }, data: { label: 'Node 2' } },
 ];
-const initialEdges = [{ id: 'one-two', source: 'one', target: 'two' }];
+const initialEdges = [{ id: 'n1-n2', source: 'n1', target: 'n2' }];
 
 export default function App() {
   return (
@@ -101,17 +101,17 @@ export default function App() {
 
 There are a few things to pay attention to here:
 
-- <Emoji content="🎨" /> You must import the React Flow stylesheet.
-- <Emoji content="📐" /> The `<ReactFlow />` component must be wrapped in an element with
-  a width and height.
+- <Emoji content="🎨" /> You must import the React Flow css stylesheet.
+- <Emoji content="📐" /> The `<ReactFlow />` component must have a parent element with a
+  width and height.
 
 ## Adding interactivity
 
-Graphs created with React Flow are fully interactive. We can move nodes around, connect, delete, and more. To get the basic functionality, we need to add three things:
+Diagrams created with React Flow are fully interactive. We can move nodes around, connect, delete, and more. To get this basic functionality, we need to add three things:
 
-- A callback for what to do when [nodes change](/api-reference/react-flow#onnodeschange).
-- A callback for what to do when [edges change](/api-reference/react-flow#onedgeschange).
-- A callback for what to do when nodes are [connected](/api-reference/react-flow#onconnect).
+- A callback for when [nodes change](/api-reference/react-flow#onnodeschange).
+- A callback for when [edges change](/api-reference/react-flow#onedgeschange).
+- A callback for when nodes are [connected](/api-reference/react-flow#onconnect).
 
 ```jsx
 import { useState, useCallback } from 'react';
@@ -119,8 +119,8 @@ import { ReactFlow, applyNodeChanges, applyEdgeChanges, addEdge } from '@xyflow/
 import '@xyflow/react/dist/style.css'; // required
 
 const initialNodes = [
-  { id: 'n1', position: { x: 0, y: 0 }, data: { label: 'n1' } },
-  { id: 'n2', position: { x: 0, y: 100 }, data: { label: 'n2' } },
+  { id: 'n1', position: { x: 0, y: 0 }, data: { label: 'Node 1' } },
+  { id: 'n2', position: { x: 0, y: 100 }, data: { label: 'Node 2' } },
 ];
 const initialEdges = [{ id: 'n1-n2', source: 'n1', target: 'n2' }];
 
@@ -155,8 +155,9 @@ export default function App() {
 ## Some extra goodies
 
 Finally, React Flow ships with some plugins out of the box for things like a
-[`<Minimap />`](/api-reference/components/minimap) or viewport
-[`<Controls />`](/api-reference/components/controls).
+[`<Minimap />`](/api-reference/components/minimap) and viewport
+[`<Controls />`](/api-reference/components/controls). 
+Let's pass them as children to our `<ReactFlow />` component:
 
 ```jsx
 import React, { useCallback } from 'react';
@@ -211,7 +212,8 @@ export default function App() {
 
 <RemoteCodeViewer route="learn/quickstart" framework="react" showEditor={false} />
 
-<Emoji content="🎉" /> Et voila. You've already created your first interactive flow! Check out the links below on where to head next.
+<Emoji content="🎉" /> Et voila. You've already created your first interactive flow! Check
+out the links below on where to head next.
 
 ## Next Steps
 

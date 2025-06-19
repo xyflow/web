@@ -7,16 +7,21 @@ import { RemoteCodeViewer } from 'xy-shared/server';
 
 # Adding Interactivity
 
-Now that we've built our [first flow](learn/concepts/building-a-flow), let's add interactivity so you can select, drag, and remove nodes and edges.
+Now that we've built our [first flow](learn/concepts/building-a-flow),
+let's add interactivity so you can select, drag, and remove nodes and edges.
 
 ## Handling Change Events
 
-By default React Flow doesn't manage any internal state updates besides handling the viewport. As with an `<input />` element you need to pass event handlers to React Flow in order to apply triggered changes to your nodes and edges. To **select**, **drag** and **remove** nodes and edges you need to implement [event handlers](/api-reference/react-flow#event-handlers):
+By default React Flow doesn't manage any internal state updates besides handling the viewport.
+As you would with an HTML `<input />` element you need to pass [event handlers](/api-reference/react-flow#event-handlers)
+to React Flow in order to apply triggered changes to your nodes and edges.
 
  <Steps>
  ### Add imports
 
-To manage changes, we'll be using `useState` with two helper functions from React Flow: [`applyNodeChanges`](http://localhost:3002/api-reference/utils/apply-node-changes) and [`applyEdgeChanges`](http://localhost:3002/api-reference/utils/apply-edge-changes).
+To manage changes, we'll be using `useState` with two helper functions from React Flow:
+[`applyNodeChanges`](/api-reference/utils/apply-node-changes) and [`applyEdgeChanges`](/api-reference/utils/apply-edge-changes).
+So let's import these functions:
 
 ```jsx
 import { useState, useCallback } from 'react';
@@ -25,7 +30,7 @@ import { ReactFlow, applyEdgeChanges, applyNodeChanges } from '@xyflow/react';
 
 ### Define nodes and edges
 
-We need to define initial nodes and edges. These will be the starting point for our flow. (If you followed the instructions on the last page, you can just rename them)
+We need to define initial nodes and edges. These will be the starting point for our flow.
 
 ```jsx
 const initialNodes = [
@@ -55,22 +60,35 @@ const initialEdges = [
 
 In our component, we'll call the `useState` hook to manage the state of our nodes and edges:
 
-```js
-const [nodes, setNodes] = useState(initialNodes);
-const [edges, setEdges] = useState(initialEdges);
+```jsx
+export default function App() {
+  const [nodes, setNodes] = useState(initialNodes);
+  const [edges, setEdges] = useState(initialEdges);
+
+  return (
+    <div style={{ height: '100%', width: '100%' }}>
+      <ReactFlow>
+        <Background />
+        <Controls />
+      </ReactFlow>
+    </div>
+  );
+}
 ```
 
 ### Add event handlers
 
-We need to create two event handlers: [`onNodesChange`](http://localhost:3002/api-reference/react-flow#onnodeschange) and [`onEdgesChange`](http://localhost:3002/api-reference/react-flow#onedgeschange). They will be used to update the state of our nodes and edges when changes occur, such as dragging or deleting an element.
+We need to create two event handlers: [`onNodesChange`](/api-reference/react-flow#onnodeschange)
+and [`onEdgesChange`](/api-reference/react-flow#onedgeschange).
+They will be used to update the state of our nodes and edges when changes occur, such as dragging or deleting an element.
 
 ```jsx
 const onNodesChange = useCallback(
-  (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
+  (changes) => setNodes((nodesSnapshot) => applyNodeChanges(changes, nodesSnapshot)),
   [],
 );
 const onEdgesChange = useCallback(
-  (changes) => setEdges((eds) => applyEdgeChanges(changes, eds)),
+  (changes) => setEdges((edgesSnapshot) => applyEdgeChanges(changes, edgesSnapshot)),
   [],
 );
 ```
@@ -81,8 +99,8 @@ Now we can pass our nodes, edges, and event handlers to the `<ReactFlow />` comp
 
 ```jsx
 <ReactFlow
-  nodes={nodes}
-  edges={edges}
+  nodes={initialNodes}
+  edges={initialEdges}
   onNodesChange={onNodesChange}
   onEdgesChange={onEdgesChange}
   fitView
@@ -96,7 +114,9 @@ Now we can pass our nodes, edges, and event handlers to the `<ReactFlow />` comp
 
 And that's it! You now have a basic interactive flow 🎉
 
-When you drag or select a node, the `onNodesChange` handler is triggered. The `applyNodeChanges` function then uses these change events to update the current state of your nodes. Here's how it all comes together. Try clicking and dragging a node to move it around and watch the UI update in real time.
+When you drag or select a node, the `onNodesChange` handler is triggered.
+The `applyNodeChanges` function then uses these change events to update the current state of your nodes.
+Here's how it all comes together. Try clicking and dragging a node to move it around and watch the UI update in real time.
 
 <RemoteCodeViewer
   showEditor={false}
@@ -108,15 +128,20 @@ When you drag or select a node, the `onNodesChange` handler is triggered. The `a
 
 ## Handle Connections
 
-One last piece is missing: connecting nodes interactively. For this, we need to implement an [`onConnect`](http://localhost:3002/api-reference/react-flow#onconnect) handler.
+One last piece is missing: connecting nodes interactively.
+For this, we need to implement an [`onConnect`](/api-reference/react-flow#onconnect) handler.
 
 <Steps>
 ### Create `onConnect` handler
 
-The `onConnect` handler is called whenever a new connection is made between two nodes. We can use the `addEdge` utility function to create a new edge and update the edge Array.
+The `onConnect` handler is called whenever a new connection is made between two nodes.
+We can use the `addEdge` utility function to create a new edge and update the edge Array.
 
 ```jsx
-const onConnect = useCallback((params) => setEdges((eds) => addEdge(params, eds)), []);
+const onConnect = useCallback(
+  (params) => setEdges((edgesSnapshot) => addEdge(params, edgesSnapshot)),
+  [],
+);
 ```
 
 ### Pass it to ReactFlow
@@ -155,15 +180,18 @@ Try to connect the two nodes by dragging from on handle to another one. The `onC
   framework="react"
 />
 
-What is happening here? Whenever React Flow triggers a change (node init, node drag, edge select, etc.), the `onNodesChange` handler gets called. We export an `applyNodeChanges` handler so that you don't need to handle the changes by yourself. The `applyNodeChanges` handler returns an updated array of nodes that is your new nodes array. You now have an interactive flow with the following interactions:
+What is happening here? Whenever React Flow triggers a change (node init, node drag, edge select, etc.), 
+the `onNodesChange` handler gets called. 
+We export an `applyNodeChanges` handler so that you don't need to handle the changes by yourself. 
+The `applyNodeChanges` handler returns an updated array of nodes that is your new nodes array. 
+You now have an interactive flow with the following capabilities:
 
 - selectable nodes and edges
 - draggable nodes
-- removable nodes and edges - (press Backspace to remove a selected node or edge, can be adjusted with the `deleteKeyCode` prop)
 - connectable nodes by dragging from one node handle to another
-- multi-selection area by pressing Shift (that's the default `selectionKeyCode`)
-- multi-selection by pressing command (that's the default `multiSelectionKeyCode`)
+- multi-selection area by pressing `shift` ([`selectionKeyCode`](/api-reference/react-flow#selectionkeycode))
+- multi-selection by pressing `cmd` ([`multiSelectionKeyCode`](/api-reference/react-flow#multiselectionkeycode))
+- removing selected elements by pressing `backspace` ([`deleteKeyCode`](/api-reference/react-flow#deletekeycode))
 
-If you want to jump straight into creating your own application, we recommend to checking out the [Customization](/learn/customization) section.
-
-Otherwise keep continue reading to learn more about React Flows capabilities.
+If you want to jump straight into creating your own application, we recommend checking out the [Customization](/learn/customization) section.
+Otherwise keep reading to learn more about React Flows capabilities.
