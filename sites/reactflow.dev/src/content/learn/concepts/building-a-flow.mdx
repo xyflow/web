@@ -27,11 +27,11 @@ and a dotted [`<Background />`](/api-reference/components/background).
 <Steps>
 ### Add imports
 First, we need to import some basic components from the `@xyflow/react` package 
-and most importantly the **css stylesheet**, which is **required** for React Flow to work:
+and the **css stylesheet**, which is **required** for React Flow to work:
 
-```jsx
+```jsx "import '@xyflow/react/dist/style.css';"
 import { ReactFlow, Background, Controls } from '@xyflow/react';
-import '@xyflow/react/dist/style.css'; //required
+import '@xyflow/react/dist/style.css';
 ```
 
 ### Render ReactFlow
@@ -39,7 +39,7 @@ import '@xyflow/react/dist/style.css'; //required
 Now we create a React component, that renders our flow. The **width and height** on the
 parent container are **required** because React Flow uses these dimensions.
 
-```jsx
+```jsx "height: '100%', width: '100%'"
 export default function App() {
   return (
     <div style={{ height: '100%', width: '100%' }}>
@@ -98,7 +98,7 @@ The node with `type: 'input'` only has one input handle and is typically used as
 
 Now we can pass our `initialNodes` array to the `<ReactFlow />` component using the `nodes` prop:
 
-```jsx
+```jsx "nodes={initialNodes}"
 <ReactFlow nodes={initialNodes}>
   <Background />
   <Controls />
@@ -154,14 +154,14 @@ This edge connects the node with `id: 'n1'` (the source) to the node with `id: '
 
 Let's give this edge two properties that are built into React Flow, a `label` and a `type: "step"`.
 
-```jsx
+```jsx {6-7}
 const edges = [
   {
     id: 'n1-n2',
     source: 'n1',
     target: 'n2',
-    label: 'to the',
     type: 'step',
+    label: 'to the',
   },
 ];
 ```

@@ -10,7 +10,7 @@ import { RemoteCodeViewer } from 'xy-shared/server';
 Now that we've built our [first flow](learn/concepts/building-a-flow),
 let's add interactivity so you can select, drag, and remove nodes and edges.
 
-## Handling Change Events
+## Handle Change Events
 
 By default React Flow doesn't manage any internal state updates besides handling the viewport.
 As you would with an HTML `<input />` element you need to pass [event handlers](/api-reference/react-flow#event-handlers)
@@ -60,7 +60,7 @@ const initialEdges = [
 
 In our component, we'll call the `useState` hook to manage the state of our nodes and edges:
 
-```jsx
+```jsx {2-3}
 export default function App() {
   const [nodes, setNodes] = useState(initialNodes);
   const [edges, setEdges] = useState(initialEdges);

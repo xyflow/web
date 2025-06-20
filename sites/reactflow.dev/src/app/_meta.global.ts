@@ -14,7 +14,7 @@ const customization = {
   theming: '',
 };
 const advanced = {
-  "hooks-providers": '',
+  'hooks-providers': '',
   accessibility: '',
   testing: '',
   typescript: '',
@@ -91,8 +91,8 @@ const metaRecord = {
   // 1. Default Routes
   learn: {
     items: {
+      introduction: '',
       index: '',
-      introduction: { display: 'hidden' },
       concepts: {
         title: 'Core Concepts',
         items: concepts,

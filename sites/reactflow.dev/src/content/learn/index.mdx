@@ -15,7 +15,7 @@ This page will take you from zero to a working React Flow app in a few minutes.
 If you just want to have a look around, we also offer a [CodeSandbox](https://new.reactflow.dev/js) a
 [Vite template](https://github.com/xyflow/vite-react-flow-template) and a no-code [Playground](https://play.reactflow.dev/).
 
-<Callout type="info">
+<Callout type="warning">
   React Flow is a [React](https://react.dev/) library. If you’ve never used React before,
   we recommend first starting with a React
   [tutorial](https://reactjs.org/tutorial/tutorial.html) or taking our step-by-step
@@ -27,7 +27,7 @@ If you just want to have a look around, we also offer a [CodeSandbox](https://ne
 You will need [Node.js](https://nodejs.org/en/) and a package manager of your choice:
 [npm](https://www.npmjs.com/), [pnpm](https://pnpm.io/), [yarn](https://yarnpkg.com/), [bun](https://bun.sh/)
 
-First, spin up a new [React](https://reactjs.org/) project however you like; we
+First, spin up a new [React](https://reactjs.org/) project however you like -- we
 recommend using [Vite](https://vitejs.dev/)
 
 ```bash copy npm2yarn
@@ -46,13 +46,14 @@ Lastly, spin up the dev server and you're good to go!
 ## Creating a flow
 
 We will render the [`<ReactFlow />`](/api-reference/react-flow#reactflow) component from the `@xyflow/react` package.
-That and a handful of [node](/api-reference/types/node) and [edge](/api-reference/types/edge) definitions, and [event handlers](/api-reference/react-flow#event-handlers) are all we need to get something going! 
+That and defining a handful of [node](/api-reference/types/node) objects and [edge](/api-reference/types/edge) objects,
+and [event handlers](/api-reference/react-flow#event-handlers) are all we need to get something going!
 Get rid of everything inside `App.jsx` and add the following:
 
-```jsx
+```jsx "import '@xyflow/react/dist/style.css';" "width: '100vw', height: '100vh'"
 import { useState, useCallback } from 'react';
 import { ReactFlow, applyNodeChanges, applyEdgeChanges, addEdge } from '@xyflow/react';
-import '@xyflow/react/dist/style.css'; // required
+import '@xyflow/react/dist/style.css';
 
 const initialNodes = [
   { id: 'n1', position: { x: 0, y: 0 }, data: { label: 'Node 1' } },
@@ -90,15 +91,20 @@ export default function App() {
 }
 ```
 
-There are a few things to pay attention to here:
+There are a two things to pay attention to here:
 
-- <Emoji content="🎨" /> You must import the React Flow css stylesheet.
+- <Emoji content="🎨" /> You must import the css stylesheet for React Flow to work.
 - <Emoji content="📐" /> The `<ReactFlow />` component must have a parent element with a
   width and height.
 
 ## Result
 
-<RemoteCodeViewer editorHeight="40vh" route="learn/quickstart" framework="react" showEditor={false} />
+<RemoteCodeViewer
+  editorHeight="40vh"
+  route="learn/quickstart"
+  framework="react"
+  showEditor={false}
+/>
 
 Et voila. You've already created your first interactive flow! <Emoji content="🎉" />
 

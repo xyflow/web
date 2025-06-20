@@ -18,7 +18,7 @@ In this section, we'll walk through creating a custom node featuring an input fi
 that updates text elsewhere in your application.
 For further examples, we recommend checking out our [Custom Node Example](/examples/nodes/custom-node).
 
-<Callout type="info">
+<Callout type="warning">
   To get the best performance in your React Flow application, check out the [common
   pitfalls](/learn/customization/common-pitfalls) page to avoid common mistakes and
   performance issues.
@@ -39,7 +39,7 @@ Let's dive into an example by creating a custom node called `TextUpdaterNode`.
 For this, we've added a simple input field with a change handler.
 
 ```jsx
-function TextUpdaterNode(props) {
+export function TextUpdaterNode(props) {
   const onChange = useCallback((evt) => {
     console.log(evt.target.value);
   }, []);
@@ -68,11 +68,11 @@ const nodeTypes = {
 
 ### Pass nodeTypes to React Flow
 
-```jsx
+```jsx {4}
 <ReactFlow
-  nodeTypes={nodeTypes}
   nodes={nodes}
   edges={edges}
+  nodeTypes={nodeTypes}
   onNodesChange={onNodesChange}
   onEdgesChange={onEdgesChange}
   fitView
@@ -83,7 +83,7 @@ const nodeTypes = {
 
 After defining your new node type, you can use it by specifying the `type` property on your node definition:
 
-```jsx
+```jsx {4}
 const nodes = [
   {
     id: 'node-1',

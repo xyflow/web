@@ -7,11 +7,15 @@ import { Callout } from 'nextra/components';
 
 # Handles
 
-Handles are the connection points on [nodes](/learn/concepts/terms-and-definitions#nodes) in React Flow. Our built-in nodes include one source and one target handle, but you can customize your nodes with as many different handles as you need.
+Handles are the connection points on [nodes](/learn/concepts/terms-and-definitions#nodes) in React Flow. 
+Our built-in nodes include one source and one target handle, but you can customize your nodes with as many different handles as you need.
 
-## Creating a Node with Handles
+## Creating a node with handles
 
-To create a [custom node](/learn/customization/custom-nodes) with handles, you can use the [`<Handle />` component](/api-reference/components/handle) provided by React Flow. This component allows you to define source and target handles for your custom nodes. Here's an example of how to implement a custom node with two handles:
+To create a [custom node](/learn/customization/custom-nodes) with handles, 
+you can use the [`<Handle />` component](/api-reference/components/handle) provided by React Flow. 
+This component allows you to define source and target handles for your custom nodes. 
+Here's an example of how to implement a custom node with two handles:
 
 ```jsx
 import { Handle } from '@xyflow/react';
@@ -27,26 +31,33 @@ export function CustomNode() {
 }
 ```
 
-## Using Multiple Handles
+## Using multiple handles
 
-If you want to use multiple source or target handles in your custom node, you need to specify each handle with a unique `id`. This allows React Flow to differentiate between the handles when connecting edges.
+If you want to use multiple source or target handles in your custom node, 
+you need to specify each handle with a unique `id`. 
+This allows React Flow to differentiate between the handles when connecting edges.
 
-```jsx
+```jsx /id="a"/ /id="b"/
   <Handle type="target" position="top" />
   <Handle type="source" position="right" id="a" />
   <Handle type="source" position="bottom" id="b" />
 ```
 
-To connect an edge to a specific handle of a node, use the properties `sourceHandle` (for the edge's starting point) and `targetHandle` (for the edge's ending point). By defining `sourceHandle` or `targetHandle` with the appropriate handle `id`, you instruct React Flow to attach the edge to that specific handle, ensuring that connections are made where you intend.
+To connect an edge to a specific handle of a node, use the properties 
+`sourceHandle` (for the edge's starting point) and `targetHandle` (for the edge's ending point). 
+By defining `sourceHandle` or `targetHandle` with the appropriate handle `id`, 
+you instruct React Flow to attach the edge to that specific handle, 
+ensuring that connections are made where you intend.
 
-```js
+```js "sourceHandle: 'a'" "sourceHandle: 'b'"
 const initialEdges = [
-  { id: 'edge-1', source: 'node-1', sourceHandle: 'a', target: 'node-2' },
-  { id: 'edge-2', source: 'node-1', sourceHandle: 'b', target: 'node-3' },
+  { id: 'n1-n2', source: 'n1', sourceHandle: 'a', target: 'n2' },
+  { id: 'n1-n3', source: 'n1', sourceHandle: 'b', target: 'n3' },
 ];
 ```
 
-In this case, the source node is `node-1` for both handles but the handle `id`s are different. One comes from handle id `a` and the other one from `b`. Both edges also have different target nodes:
+In this case, the source node is `n1` for both handles but the handle `id`s are different.
+One comes from handle id `a` and the other one from `b`. Both edges also have different target nodes:
 
 <RemoteCodeViewer route="learn/custom-node-2" framework="react" />
 
@@ -57,33 +68,38 @@ to properly notify React Flow of changes.
 
 ## Custom handles
 
-You can create your own custom handles by wrapping the `<Handle />` component.
+You can create your own custom handles by wrapping the 
+[`<Handle />`](/api-reference/components/handle) component.
 This example shows a custom handle that only allows connections when the
 connection source matches a given id.
 
 ```jsx
 import { Handle, Position } from '@xyflow/react';
 
-export const TargetHandleWithValidation = ({ position, source }) => (
-  <Handle
-    type="target"
-    position={position}
-    isValidConnection={(connection) => connection.source === source}
-    onConnect={(params) => console.log('handle onConnect', params)}
-    style={{ background: '#fff' }}
-  />
-);
+export function TargetHandleWithValidation({ position, source }) {
+  return (
+    <Handle
+      type="target"
+      position={position}
+      isValidConnection={(connection) => connection.source === source}
+      onConnect={(params) => console.log("handle onConnect", params)}
+      style={{ background: "#fff" }}
+    />
+  );
+}
 ```
+
+## Typeless handles
+
+If you want to create a handle that does not have a specific type (source or target),
+you can set [connectionMode](/api-reference/react-flow#connectionmode) to `Loose` in the `<ReactFlow />` component.
+This allows the handle to be used for both incoming and outgoing connections.
 
 ## Dynamic handles
 
 If you are programmatically changing the position or number of handles in your
 custom node, you need to update the node internals with the
 [`useUpdateNodeInternals`](/api-reference/hooks/use-update-node-internals) hook.
-
-You can find an example of how to implement a custom node with multiple handles
-in the [custom node guide](/learn/customization/custom-nodes) or in the
-[custom node example](/examples/nodes/custom-node).
 
 ## Custom handle styles
 
@@ -98,10 +114,9 @@ The handle receives the additional class names `connecting` when the connection
 line is above the handle and `valid` if the connection is valid. You can find an
 example which uses these classes [here](/examples/interaction/validation).
 
-### Hiding Handles
+### Hiding handles
 
 - If you need to hide a handle for some reason, you must use `visibility: hidden`
   or `opacity: 0` instead of `display: none`. This is important because React
   Flow needs to calculate the dimensions of the handle to work properly and using
   `display: none` will report a width and height of `0`!
-
