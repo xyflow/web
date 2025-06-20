@@ -4,16 +4,17 @@ description:
   This guide shows you how to implement a custom edge with some additional controls.
 ---
 
-import { Callout } from 'nextra/components';
+import { Callout, Steps } from 'nextra/components';
 import { Image } from 'xy-shared';
 import { RemoteCodeViewer } from 'xy-shared/server';
 
 # Edges
 
 Like [custom nodes](/learn/customization/custom-nodes), parts of a custom edge in
-React Flow are just React components: that means you can render anything you want
+React Flow are just React components. That means you can render anything you want
 along an edge! This guide shows you how to implement a custom edge with some
-additional controls. For a comprehensive reference of props available for custom edges, see the [Custom Edge Props](/api-reference/types/edge-props) documentation.
+additional controls. For a comprehensive reference of props available for custom edges,
+see the [Edge](/api-reference/types/edge-props) reference.
 
 ## A basic custom edge
 
@@ -27,13 +28,22 @@ the actual SVG path to render, React Flow comes with some handy utility function
 - [`getSmoothStepPath`](/api-reference/utils/get-smooth-step-path)
 - [`getStraightPath`](/api-reference/utils/get-straight-path)
 
-To kick start our custom edge, we'll just render a straight path between the
+To kickstart our custom edge, we'll just render a straight path between the
 source and target.
+
+<Steps>
+
+### Create the component
+
+We start by creating a new React component called `CustomEdge`.
+Then we render the [`<BaseEdge />`](/api-reference/components/base-edge) component with the calculated path.
+This gives us a straight edge that behaves the same as the built-in default 
+[edge version](/api-reference/types/edge#default-edge-types) `"straight"`.
 
 ```jsx
 import { BaseEdge, getStraightPath } from '@xyflow/react';
 
-export default function CustomEdge({ id, sourceX, sourceY, targetX, targetY }) {
+export function CustomEdge({ id, sourceX, sourceY, targetX, targetY }) {
   const [edgePath] = getStraightPath({
     sourceX,
     sourceY,
@@ -49,38 +59,51 @@ export default function CustomEdge({ id, sourceX, sourceY, targetX, targetY }) {
 }
 ```
 
-<Callout type="info">
-  All the props passed to your custom edge component can be found in the API
-  reference under the [`EdgeProps`](/api-reference/types/edge-props) type.
-</Callout>
 
-This gives us a straight edge that behaves the same as the default `"straight"`
-[edge type](/api-reference/types/edge#default-edge-types). To use it, we also
-need to update the [`edgeTypes`](/api-reference/react-flow#edge-types) prop on
-the `<ReactFlow />` component.
 
-It's important to define the `edgeTypes` object _outside of the component_ or to
-use React's `useMemo` hook to prevent unnecessary re-renders. React Flow will
-show a warning in the console if you forget to do this.
+### Create `edgeTypes`
+
+Outside of our component, we define an `edgeTypes` object.
+We name our new edge type `"custom-edge"` and assign the `CustomEdge` component we just created to it.
 
 ```jsx
-import ReactFlow from '@xyflow/react'
-import CustomEdge from './CustomEdge'
-
-
 const edgeTypes = {
-  'custom-edge': CustomEdge
-}
+  'custom-edge': CustomEdge,
+};
+```
 
+### Pass the `edgeTypes` prop
+
+To use it, we also need to update the [`edgeTypes`](/api-reference/react-flow#edge-types) prop on
+the `<ReactFlow />` component.
+
+```jsx "edgeTypes={edgeTypes}"
 export function Flow() {
-  return <ReactFlow edgeTypes={edgeTypes} ... />
+  return <ReactFlow edgeTypes={edgeTypes} />;
 }
 ```
+
+### Use the new edge type
 
 After defining the `edgeTypes` object, we can use our new custom edge by setting
 the `type` field of an edge to `"custom-edge"`.
 
-<RemoteCodeViewer route="learn/custom-edge" framework="react" />
+```jsx {6}
+const initialEdges = [
+  {
+    id: 'e1',
+    source: 'n1',
+    target: 'n2',
+    type: 'custom-edge',
+  },
+];
+```
+
+### Flow with a custom edge
+
+<RemoteCodeViewer showEditor={false} route="learn/custom-edge" framework="react" />
+
+</Steps>
 
 ## Making Custom SVG Edge Paths
 

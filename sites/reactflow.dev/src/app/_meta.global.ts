@@ -1,22 +1,20 @@
 const concepts = {
-  introduction: '',
-  'terms-and-definitions': '',
-  'core-concepts': '',
-  'the-viewport': '',
-};
-const gettingStarted = {
-  'installation-and-requirements': '',
+  concepts: '',
   'building-a-flow': '',
+  'adding-interactivity': '',
+  'the-viewport': '',
+  'built-in-components': '',
 };
 const customization = {
   'custom-nodes': '',
-  'handles': '',
+  handles: '',
   'custom-edges': '',
   'edge-labels': '',
   'utility-classes': '',
   theming: '',
 };
 const advanced = {
+  'hooks-providers': '',
   accessibility: '',
   testing: '',
   typescript: '',
@@ -28,7 +26,6 @@ const advanced = {
 const tutorials = {
   'slide-shows-with-react-flow': '',
   'react-flow-and-the-web-audio-api': '',
-  'mind-map-app-with-react-flow': '',
 };
 const troubleshooting = {
   index: '',
@@ -85,6 +82,7 @@ const components = {
     href: 'https://github.com/xyflow/web/discussions/new?category=ui-component-requests',
   },
 };
+
 const metaRecord = {
   '*': {
     type: 'page',
@@ -93,12 +91,17 @@ const metaRecord = {
   // 1. Default Routes
   learn: {
     items: {
+      introduction: '',
       index: '',
-      concepts: { items: concepts },
-      'getting-started': { items: gettingStarted },
+      concepts: {
+        title: 'Core Concepts',
+        items: concepts,
+        theme: { collapsed: false },
+      },
       customization: {
-        items: customization,
         title: 'Customization',
+        items: customization,
+        theme: { collapsed: false },
       },
       layouting: '',
       'advanced-use': { items: advanced },

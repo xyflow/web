@@ -17,21 +17,11 @@ export const NextraLayout: FC<{
       docsRepositoryBase="https://github.com/xyflow/web/tree/main/sites/reactflow.dev"
       editLink="Edit this page on GitHub"
       feedback={{ content: null }}
-      footer={
-        <XYFooter
-          baseUrl="https://reactflow.dev"
-          categories={footerCategories}
-        />
-      }
+      footer={<XYFooter baseUrl="https://reactflow.dev" categories={footerCategories} />}
       navbar={
         <Navbar
           align="left"
-          logo={
-            <LogoLabel
-              label="React Flow"
-              labelClassName="mr-5 md:max-lg:hidden"
-            />
-          }
+          logo={<LogoLabel label="React Flow" labelClassName="mr-5 md:max-lg:hidden" />}
           logoLink={false}
         >
           {navbar}
