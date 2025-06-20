@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import {
   ReactFlow,
   useNodesState,
@@ -33,7 +33,7 @@ const initialEdges = [
   },
 ];
 
-const StressFlow = () => {
+function ExampleFlow() {
   const [nodes, _, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   const onConnect = useCallback((params) => setEdges((els) => addEdge(params, els)), []);
@@ -46,13 +46,12 @@ const StressFlow = () => {
       onEdgesChange={onEdgesChange}
       onConnect={onConnect}
       fitView
-      minZoom={0}
     >
       <MiniMap />
       <Controls />
       <Background />
     </ReactFlow>
   );
-};
+}
 
-export default StressFlow;
+export default ExampleFlow;

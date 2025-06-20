@@ -1,0 +1,18 @@
+---
+title: Eraser Tool
+description: A tool that let's you delete nodes and edges by wiping
+created_at: 2025-06-19
+---
+
+This example shows how to create an eraser tool that allows you to delete nodes and edges by wiping them out.
+It's made up of two parts:
+
+1. The `Eraser` component that handles the erasing logic and rendering of the eraser trail.
+2. The custom `ErasableNode` and `ErasableEdge` that reacts to the `toBeDeleted` flag.
+
+Determining if the trail intersects with a node is fairly straight forward - however detecting intersections between the trail and an edge is a bit more complex:
+We sample points along the edge through the [`getPointAtLength`](https://developer.mozilla.org/en-US/docs/Web/API/SVGGeometryElement/getPointAtLength) method of the SVG path element,
+construct a polyline that we can then use to detect intersections with the eraser trail.
+This is a trade-off between performance and accuracy - you can play around with the `sampleDistance` variable to see the effect it has on the eraser trail.
+
+<RemoteCodeViewer route="examples/whiteboard/eraser" framework="react" />
