@@ -17,7 +17,7 @@
   "dependencies": {
     "@heroicons/react": "^2.2.0",
     "@sindresorhus/slugify": "^2.2.1",
-    "@xyflow/react": "12.6.4",
+    "@xyflow/react": "12.7.1",
     "@xyflow/xy-ui": "workspace:*",
     "fast-xml-parser": "^5.2.1",
     "next": "^15.3.1",
