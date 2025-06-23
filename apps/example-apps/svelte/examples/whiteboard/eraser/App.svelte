@@ -62,12 +62,20 @@
   {/if}
 
   <Panel position="top-left" class="controls">
-    <button
-      class={['xy-theme__button', isEraserActive && 'active']}
-      onclick={() => (isEraserActive = !isEraserActive)}
-    >
-      Eraser {isEraserActive ? 'Active' : 'Inactive'}
-    </button>
+    <div class="xy-theme__button-group">
+      <button
+        class={['xy-theme__button', isEraserActive && 'active']}
+        onclick={() => () => (isEraserActive = true)}
+      >
+        Eraser Mode
+      </button>
+      <button
+        class={['xy-theme__button', !isEraserActive && 'active']}
+        onclick={() => () => (isEraserActive = false)}
+      >
+        Selection Mode
+      </button>
+    </div>
   </Panel>
 </SvelteFlow>
 

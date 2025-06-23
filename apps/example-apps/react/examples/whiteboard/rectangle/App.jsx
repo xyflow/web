@@ -43,12 +43,20 @@ export default function RectangleFlow() {
       {isRectangleActive && <RectangleTool />}
 
       <Panel position="top-left">
-        <button
-          className={`xy-theme__button ${isRectangleActive ? 'active' : ''}`}
-          onClick={() => setIsRectangleActive((active) => !active)}
-        >
-          Rectangle {isRectangleActive ? 'Active' : 'Inactive'}
-        </button>
+        <div className="xy-theme__button-group">
+          <button
+            className={`xy-theme__button ${isRectangleActive ? 'active' : ''}`}
+            onClick={() => setIsRectangleActive(true)}
+          >
+            Rectangle Mode
+          </button>
+          <button
+            className={`xy-theme__button ${!isRectangleActive ? 'active' : ''}`}
+            onClick={() => setIsRectangleActive(false)}
+          >
+            Selection Mode
+          </button>
+        </div>
       </Panel>
     </ReactFlow>
   );

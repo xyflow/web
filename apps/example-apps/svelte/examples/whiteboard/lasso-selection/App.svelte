@@ -38,12 +38,20 @@
   {/if}
 
   <Panel position="top-left">
-    <button
-      class={['xy-theme__button', isLassoActive && 'active']}
-      onclick={() => (isLassoActive = !isLassoActive)}
-    >
-      Lasso {isLassoActive ? 'Active' : 'Inactive'}
-    </button>
+    <div class="xy-theme__button-group">
+      <button
+        class={['xy-theme__button', isLassoActive && 'active']}
+        onclick={() => () => (isLassoActive = true)}
+      >
+        Lasso Mode
+      </button>
+      <button
+        class={['xy-theme__button', !isLassoActive && 'active']}
+        onclick={() => () => (isLassoActive = false)}
+      >
+        Selection Mode
+      </button>
+    </div>
     <label>
       <input
         type="checkbox"

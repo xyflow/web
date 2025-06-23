@@ -76,12 +76,20 @@ export default function EraserFlow() {
       {isEraserActive && <Eraser />}
 
       <Panel position="top-left">
-        <button
-          className={`xy-theme__button ${isEraserActive ? 'active' : ''}`}
-          onClick={() => setIsEraserActive((enabled) => !enabled)}
-        >
-          Eraser {isEraserActive ? 'Active' : 'Inactive'}
-        </button>
+        <div className="xy-theme__button-group">
+          <button
+            className={`xy-theme__button ${isEraserActive ? 'active' : ''}`}
+            onClick={() => setIsEraserActive(true)}
+          >
+            Eraser Mode
+          </button>
+          <button
+            className={`xy-theme__button ${!isEraserActive ? 'active' : ''}`}
+            onClick={() => setIsEraserActive(false)}
+          >
+            Selection Mode
+          </button>
+        </div>
       </Panel>
     </ReactFlow>
   );

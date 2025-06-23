@@ -34,12 +34,20 @@
   <Background />
 
   <Panel position="top-left">
-    <button
-      class={['xy-theme__button', isRectangleActive && 'active']}
-      onclick={() => (isRectangleActive = !isRectangleActive)}
-    >
-      Rectangle {isRectangleActive ? 'Active' : 'Inactive'}
-    </button>
+    <div class="xy-theme__button-group">
+      <button
+        class={['xy-theme__button', isRectangleActive && 'active']}
+        onclick={() => () => (isRectangleActive = true)}
+      >
+        Rectangle Mode
+      </button>
+      <button
+        class={['xy-theme__button', !isRectangleActive && 'active']}
+        onclick={() => () => (isRectangleActive = false)}
+      >
+        Selection Mode
+      </button>
+    </div>
   </Panel>
   {#if isRectangleActive}
     <RectangleTool />

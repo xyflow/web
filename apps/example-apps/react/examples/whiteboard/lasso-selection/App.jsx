@@ -49,12 +49,21 @@ export default function LassoSelectionFlow() {
       {isLassoActive && <Lasso partial={partial} />}
 
       <Panel position="top-left" className="lasso-controls">
-        <button
-          className={`xy-theme__button ${isLassoActive ? 'active' : ''}`}
-          onClick={() => setIsLassoActive((enabled) => !enabled)}
-        >
-          Lasso {isLassoActive ? 'Active' : 'Inactive'}
-        </button>
+        <div className="xy-theme__button-group">
+          <button
+            className={`xy-theme__button ${isLassoActive ? 'active' : ''}`}
+            onClick={() => setIsLassoActive(true)}
+          >
+            Lasso Mode
+          </button>
+          <button
+            className={`xy-theme__button ${!isLassoActive ? 'active' : ''}`}
+            onClick={() => setIsLassoActive(false)}
+          >
+            Selection Mode
+          </button>
+        </div>
+
         <label>
           <input
             type="checkbox"

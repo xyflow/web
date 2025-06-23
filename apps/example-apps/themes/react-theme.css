@@ -126,6 +126,20 @@
   --color-disabled: #76797e;
 }
 
+.xy-theme__button-group {
+  display: flex;
+  align-items: center;
+
+  .xy-theme__button:first-child {
+    border-radius: 100px 0 0 100px;
+  }
+
+  .xy-theme__button:last-child {
+    border-radius: 0 100px 100px 0;
+    margin: 0;
+  }
+}
+
 /* Custom Button Styling */
 .xy-theme__button {
   display: inline-flex;
