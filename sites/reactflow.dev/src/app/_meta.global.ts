@@ -90,9 +90,9 @@ const metaRecord = {
 
   // 1. Default Routes
   learn: {
+    href: '/quickstart',
     items: {
-      introduction: '',
-      index: '',
+      quickstart: "",
       concepts: {
         title: 'Core Concepts',
         items: concepts,

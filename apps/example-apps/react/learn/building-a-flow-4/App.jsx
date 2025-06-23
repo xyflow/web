@@ -1,28 +1,27 @@
 import { ReactFlow, Controls, Background } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 
-const edges = [
-  { id: '1-2', source: '1', target: '2', label: 'to the', type: 'step' },
-];
-
-const nodes = [
+const initialNodes = [
   {
-    id: '1',
-    data: { label: 'Hello' },
+    id: 'n1',
+    data: { label: 'Node 1' },
     position: { x: 0, y: 0 },
     type: 'input',
   },
   {
-    id: '2',
-    data: { label: 'World' },
+    id: 'n2',
+    data: { label: 'Node 2' },
     position: { x: 100, y: 100 },
   },
+];
+const initialEdges = [
+  { id: 'n1-n2', source: 'n1', target: 'n2', label: 'connects with', type: 'step' },
 ];
 
 function Flow() {
   return (
     <div style={{ height: '100%' }}>
-      <ReactFlow nodes={nodes} edges={edges}>
+      <ReactFlow nodes={initialNodes} edges={initialEdges} fitView>
         <Background />
         <Controls />
       </ReactFlow>

@@ -117,13 +117,11 @@ function ViewportWithAnnotation() {
 
   return (
     <>
-      <NodeWrapper bottom={0} left={100} width={420}>
+      <NodeWrapper bottom={0} left={90} width={420}>
         <AnnotationNode
           data={{
             label:
               'The viewport is defined by x, y and zoom, which is the transform & scale applied to the flow.',
-            arrowStyle:
-              'left: 0; top: 0; transform: translate(-25px, -15px) rotate(20deg) scale(1, 1);',
           }}
         />
       </NodeWrapper>

@@ -10,7 +10,7 @@ import { RemoteCodeViewer } from 'xy-shared/server';
 Now that we've built our [first flow](learn/concepts/building-a-flow),
 let's add interactivity so you can select, drag, and remove nodes and edges.
 
-## Handle Change Events
+## Handling Change Events
 
 By default React Flow doesn't manage any internal state updates besides handling the viewport.
 As you would with an HTML `<input />` element you need to pass [event handlers](/api-reference/react-flow#event-handlers)
@@ -37,13 +37,13 @@ const initialNodes = [
   {
     id: 'n1',
     position: { x: 0, y: 0 },
-    data: { label: 'Hello' },
+    data: { label: 'Node 1' },
     type: 'input',
   },
   {
     id: 'n2',
     position: { x: 100, y: 100 },
-    data: { label: 'World' },
+    data: { label: 'Node 2' },
   },
 ];
 
@@ -93,11 +93,11 @@ const onEdgesChange = useCallback(
 );
 ```
 
-### Pass everything to ReactFlow
+### Pass them to ReactFlow
 
 Now we can pass our nodes, edges, and event handlers to the `<ReactFlow />` component:
 
-```jsx
+```jsx {4-5}
 <ReactFlow
   nodes={initialNodes}
   edges={initialEdges}
@@ -126,7 +126,7 @@ Here's how it all comes together. Try clicking and dragging a node to move it ar
 />
  </Steps>
 
-## Handle Connections
+## Handling Connections
 
 One last piece is missing: connecting nodes interactively.
 For this, we need to implement an [`onConnect`](/api-reference/react-flow#onconnect) handler.
@@ -135,7 +135,7 @@ For this, we need to implement an [`onConnect`](/api-reference/react-flow#onconn
 ### Create `onConnect` handler
 
 The `onConnect` handler is called whenever a new connection is made between two nodes.
-We can use the `addEdge` utility function to create a new edge and update the edge Array.
+We can use the [`addEdge`](/api-reference/utils/add-edge) utility function to create a new edge and update the edge Array.
 
 ```jsx
 const onConnect = useCallback(
@@ -148,9 +148,12 @@ const onConnect = useCallback(
 
 Now we can pass the `onConnect` handler to the `<ReactFlow />` component:
 
-```jsx
+```jsx {6}
 <ReactFlow
-  ...
+  nodes={initialNodes}
+  edges={initialEdges}
+  onNodesChange={onNodesChange}
+  onEdgesChange={onEdgesChange}
   onConnect={onConnect}
   fitView
 >
@@ -180,18 +183,18 @@ Try to connect the two nodes by dragging from on handle to another one. The `onC
   framework="react"
 />
 
-What is happening here? Whenever React Flow triggers a change (node init, node drag, edge select, etc.), 
-the `onNodesChange` handler gets called. 
-We export an `applyNodeChanges` handler so that you don't need to handle the changes by yourself. 
-The `applyNodeChanges` handler returns an updated array of nodes that is your new nodes array. 
+What is happening here? Whenever React Flow triggers a change (node init, node drag, edge select, etc.),
+the `onNodesChange` handler gets called.
+We export an `applyNodeChanges` handler so that you don't need to handle the changes by yourself.
+The `applyNodeChanges` handler returns an updated array of nodes that is your new nodes array.
 You now have an interactive flow with the following capabilities:
 
 - selectable nodes and edges
 - draggable nodes
 - connectable nodes by dragging from one node handle to another
-- multi-selection area by pressing `shift` ([`selectionKeyCode`](/api-reference/react-flow#selectionkeycode))
-- multi-selection by pressing `cmd` ([`multiSelectionKeyCode`](/api-reference/react-flow#multiselectionkeycode))
-- removing selected elements by pressing `backspace` ([`deleteKeyCode`](/api-reference/react-flow#deletekeycode))
+- multi-selection area by pressing `shift` -- the default [`selectionKeyCode`](/api-reference/react-flow#selectionkeycode)
+- multi-selection by pressing `cmd` -- the default [`multiSelectionKeyCode`](/api-reference/react-flow#multiselectionkeycode)
+- removing selected elements by pressing `backspace` -- the default [`deleteKeyCode`](/api-reference/react-flow#deletekeycode)
 
 If you want to jump straight into creating your own application, we recommend checking out the [Customization](/learn/customization) section.
 Otherwise keep reading to learn more about React Flows capabilities.
