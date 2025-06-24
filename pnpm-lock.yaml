@@ -93,6 +93,9 @@ importers:
       nanoid:
         specifier: ^5.1.5
         version: 5.1.5
+      perfect-freehand:
+        specifier: ^1.2.2
+        version: 1.2.2
       puppeteer:
         specifier: ^24.7.2
         version: 24.10.2(typescript@5.8.3)
@@ -5788,6 +5791,9 @@ packages:
 
   pend@1.2.0:
     resolution: {integrity: sha512-F3asv42UuXchdzt+xXqfW1OGlVBe+mxa2mqI0pg5yAHZPvFmY3Y6drSf/GQ1A86WgWEN9Kzh/WrgKa6iGcHXLg==}
+
+  perfect-freehand@1.2.2:
+    resolution: {integrity: sha512-eh31l019WICQ03pkF3FSzHxB8n07ItqIQ++G5UV8JX0zVOXzgTGCqnRR0jJ2h9U8/2uW4W4mtGJELt9kEV0CFQ==}
 
   picocolors@1.0.1:
     resolution: {integrity: sha512-anP1Z8qwhkbmu7MFP5iTt+wQKXgwzf7zTyGlcdzabySa9vd0Xt392U0rVmz9poOaBj0uHJKyyo9/upk0HrEQew==}
@@ -13444,6 +13450,8 @@ snapshots:
   pathe@1.1.2: {}
 
   pend@1.2.0: {}
+
+  perfect-freehand@1.2.2: {}
 
   picocolors@1.0.1: {}
 
