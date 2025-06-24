@@ -6,31 +6,31 @@ import { RemoteCodeViewer } from 'xy-shared/server';
 
 # Built-In Plugins
 
-React Flow comes with several additional components. In this guide we show you how to use them. We are using our [previous example code](/learn/concepts/core-concepts) here.
+React Flow comes with several built-in plugins that can be passed as children to the [`<ReactFlow />`](/api-reference/react-flow) component.
 
 ## MiniMap
 
-If your flow gets bigger, you might want to get an overview quickly. For this we have built the [`MiniMap` component](/api-reference/components/minimap). You can easily add it to your flow by adding it as a children:
+If your flow gets bigger, you might want to get an overview quickly. For this we have built the [`MiniMap`](/api-reference/components/minimap) component:
 
-<RemoteCodeViewer route="learn/mini-map" framework="react" />
+<RemoteCodeViewer showEditor={false} route="learn/mini-map" framework="react" />
 
 ## Controls
 
-React Flow comes with a customizable controls bar, that you can use by importing the [`Controls` component](/api-reference/components/controls)
+React Flow comes with a customizable controls bar, that you can use by importing the [`Controls`](/api-reference/components/controls) component.
 
-<RemoteCodeViewer route="learn/controls" framework="react" />
+<RemoteCodeViewer showEditor={false} route="learn/controls" framework="react" />
 
 ## Background
 
-If you want to display the pattern background, you can use the [`Background` component](/api-reference/components/background)
+The [`Background`](/api-reference/components/background) component lets you add common background styles to the React Flow viewport. You can choose between grid, lines, or dots, and customize the color, size and thickness.
 
-<RemoteCodeViewer route="learn/background" framework="react" />
+<RemoteCodeViewer showEditor={false} route="learn/background" framework="react" />
 
 ## Panel
 
-A helper component to display content on top of the React Flow viewport. [`Panel` component](/api-reference/components/panel)
+The [`Panel`](/api-reference/components/panel) component is a helper component to display content on top of the React Flow viewport. 
 
-<RemoteCodeViewer route="learn/panel" framework="react" />
+<RemoteCodeViewer showEditor={false} route="learn/panel" framework="react" />
 
 ## Node Toolbar and Resizer
 

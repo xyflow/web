@@ -7,17 +7,17 @@ import { Callout } from 'nextra/components';
 
 # Handles
 
-Handles are the connection points on [nodes](/learn/concepts/terms-and-definitions#nodes) in React Flow. 
+Handles are the connection points on [nodes](/learn/concepts/terms-and-definitions#nodes) in React Flow.
 Our built-in nodes include one source and one target handle, but you can customize your nodes with as many different handles as you need.
 
 ## Creating a node with handles
 
-To create a [custom node](/learn/customization/custom-nodes) with handles, 
-you can use the [`<Handle />` component](/api-reference/components/handle) provided by React Flow. 
-This component allows you to define source and target handles for your custom nodes. 
+To create a [custom node](/learn/customization/custom-nodes) with handles,
+you can use the [`<Handle />`](/api-reference/components/handle) component provided by React Flow.
+This component allows you to define source and target handles for your custom nodes.
 Here's an example of how to implement a custom node with two handles:
 
-```jsx
+```jsx {7-8}
 import { Handle } from '@xyflow/react';
 
 export function CustomNode() {
@@ -33,8 +33,8 @@ export function CustomNode() {
 
 ## Using multiple handles
 
-If you want to use multiple source or target handles in your custom node, 
-you need to specify each handle with a unique `id`. 
+If you want to use multiple source or target handles in your custom node,
+you need to specify each handle with a unique `id`.
 This allows React Flow to differentiate between the handles when connecting edges.
 
 ```jsx /id="a"/ /id="b"/
@@ -43,10 +43,10 @@ This allows React Flow to differentiate between the handles when connecting edge
   <Handle type="source" position="bottom" id="b" />
 ```
 
-To connect an edge to a specific handle of a node, use the properties 
-`sourceHandle` (for the edge's starting point) and `targetHandle` (for the edge's ending point). 
-By defining `sourceHandle` or `targetHandle` with the appropriate handle `id`, 
-you instruct React Flow to attach the edge to that specific handle, 
+To connect an edge to a specific handle of a node, use the properties
+`sourceHandle` (for the edge's starting point) and `targetHandle` (for the edge's ending point).
+By defining `sourceHandle` or `targetHandle` with the appropriate handle `id`,
+you instruct React Flow to attach the edge to that specific handle,
 ensuring that connections are made where you intend.
 
 ```js "sourceHandle: 'a'" "sourceHandle: 'b'"
@@ -68,7 +68,7 @@ to properly notify React Flow of changes.
 
 ## Custom handles
 
-You can create your own custom handles by wrapping the 
+You can create your own custom handles by wrapping the
 [`<Handle />`](/api-reference/components/handle) component.
 This example shows a custom handle that only allows connections when the
 connection source matches a given id.
@@ -82,8 +82,8 @@ export function TargetHandleWithValidation({ position, source }) {
       type="target"
       position={position}
       isValidConnection={(connection) => connection.source === source}
-      onConnect={(params) => console.log("handle onConnect", params)}
-      style={{ background: "#fff" }}
+      onConnect={(params) => console.log('handle onConnect', params)}
+      style={{ background: '#fff' }}
     />
   );
 }
@@ -116,7 +116,7 @@ example which uses these classes [here](/examples/interaction/validation).
 
 ### Hiding handles
 
-- If you need to hide a handle for some reason, you must use `visibility: hidden`
-  or `opacity: 0` instead of `display: none`. This is important because React
-  Flow needs to calculate the dimensions of the handle to work properly and using
-  `display: none` will report a width and height of `0`!
+If you need to hide a handle for some reason, you must use `visibility: hidden`
+or `opacity: 0` instead of `display: none`. This is important because React
+Flow needs to calculate the dimensions of the handle to work properly and using
+`display: none` will report a width and height of `0`!
