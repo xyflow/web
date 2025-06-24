@@ -90,7 +90,7 @@ export const ExamplesOverview: FC = async () => {
                               ? `https://pro-examples.reactflow.dev/${example.name}/thumbnail.jpg`
                               : example.frontMatter!.preview_path
                                 ? `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/${example.frontMatter!.preview_path}`
-                                : `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react${example.route}/preview.jpg?t=1`
+                                : `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react${example.route}/preview.jpg?t=2`
                           }
                           title={
                             <div className="flex items-center">

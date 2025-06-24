@@ -55,7 +55,7 @@ export function RectangleTool() {
       ...nodes,
       {
         id: crypto.randomUUID(),
-        type: 'box',
+        type: 'rectangle',
         position,
         ...dimension,
         data: {

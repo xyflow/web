@@ -17,7 +17,7 @@ import '@xyflow/react/dist/style.css';
 const initialNodes = [
   {
     id: '1',
-    type: 'box',
+    type: 'rectangle',
     position: { x: 250, y: 5 },
     data: { color: '#ff7000' },
     width: 150,
