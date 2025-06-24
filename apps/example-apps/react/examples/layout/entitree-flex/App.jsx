@@ -60,7 +60,6 @@ const LayoutFlow = () => {
       connectionLineType={ConnectionLineType.SmoothStep}
       fitView
       nodeTypes={nodeTypes}
-      style={{ backgroundColor: '#F7F9FB' }}
     >
       <Panel position="top-right">
         <button className="xy-theme__button" onClick={() => onLayout('TB')}>

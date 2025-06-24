@@ -1,6 +1,7 @@
 /* xyflow theme files. Delete these to start from our base */
 
 .react-flow {
+  --xy-background-color: #f7f9fb;
   /* Custom Variables */
   --xy-theme-selected: #f57dbd;
   --xy-theme-hover: #c5c5c5;
