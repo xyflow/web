@@ -1,5 +1,5 @@
 const concepts = {
-  concepts: '',
+  terminology: '',
   'building-a-flow': '',
   'adding-interactivity': '',
   'the-viewport': '',
