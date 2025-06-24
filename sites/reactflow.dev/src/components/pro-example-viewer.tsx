@@ -6,7 +6,15 @@ const ProExampleViewer: FC<{
   slug: string;
   variant?: ContainerProps['variant'];
   type?: 'example' | 'template';
-}> = async ({ slug, variant = 'default', type = 'example' }) => {
+  className?: string;
+  innerClassName?: string;
+}> = async ({
+  slug,
+  variant = 'default',
+  type = 'example',
+  className,
+  innerClassName,
+}) => {
   const isLightMode = variant === 'default';
 
   const teaserClasses = cn(
@@ -35,7 +43,11 @@ const ProExampleViewer: FC<{
       : `https://pro.reactflow.dev/examples/react/${slug}`;
 
   return (
-    <Container className="mt-7" variant={variant}>
+    <Container
+      className={cn(['mt-7', className])}
+      variant={variant}
+      innerClassName={innerClassName}
+    >
       <div className={teaserClasses}>
         <Text className="flex-1 basis-full max-w-xl">
           <strong>This is a Pro {type}.</strong> Get{' '}
@@ -55,9 +67,7 @@ const ProExampleViewer: FC<{
         </div>
       </div>
 
-      <div>
-        <iframe src={iframeSrc} className="block h-[645px] w-full bg-white" />
-      </div>
+      <iframe src={iframeSrc} className="block h-[645px] w-full bg-white" />
     </Container>
   );
 };
