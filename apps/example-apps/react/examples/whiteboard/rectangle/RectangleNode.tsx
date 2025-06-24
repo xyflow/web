@@ -8,7 +8,7 @@ import {
 } from '@xyflow/react';
 import { useCallback, useState } from 'react';
 
-export type BoxNodeType = Node<{ color: string }, 'box'>;
+export type RectangleNodeType = Node<{ color: string }, 'rectangle'>;
 
 const colorOptions = [
   '#f5efe9', // very light warm grey
@@ -68,12 +68,12 @@ const styles = {
   },
 } as const;
 
-export function BoxNode({
+export function RectangleNode({
   id,
   selected,
   dragging,
   data: { color },
-}: NodeProps<BoxNodeType>) {
+}: NodeProps<RectangleNodeType>) {
   const { updateNodeData } = useReactFlow();
 
   const [multipleNodesSelected, setMultipleNodesSelected] = useState(false);

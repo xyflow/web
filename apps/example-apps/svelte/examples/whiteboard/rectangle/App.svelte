@@ -13,7 +13,16 @@
 
   import '@xyflow/svelte/dist/style.css';
 
-  const initialNodes: RectangleNodeType[] = [];
+  const initialNodes: RectangleNodeType[] = [
+    {
+      id: '1',
+      type: 'rectangle',
+      position: { x: 250, y: 5 },
+      data: { color: '#ff7000' },
+      width: 150,
+      height: 100,
+    },
+  ];
   const initialEdges: any[] = [];
 
   const nodeTypes = {

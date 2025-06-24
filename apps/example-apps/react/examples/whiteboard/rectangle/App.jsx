@@ -9,16 +9,25 @@ import {
   Panel,
 } from '@xyflow/react';
 
-import { BoxNode } from './BoxNode';
+import { RectangleNode } from './RectangleNode';
 import { RectangleTool } from './RectangleTool';
 
 import '@xyflow/react/dist/style.css';
 
-const initialNodes = [];
+const initialNodes = [
+  {
+    id: '1',
+    type: 'box',
+    position: { x: 250, y: 5 },
+    data: { color: '#ff7000' },
+    width: 150,
+    height: 100,
+  },
+];
 const initialEdges = [];
 
 const nodeTypes = {
-  box: BoxNode,
+  rectangle: RectangleNode,
 };
 
 export default function RectangleFlow() {
@@ -36,6 +45,7 @@ export default function RectangleFlow() {
       onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
       onConnect={onConnect}
+      fitView
     >
       <Controls />
       <Background />
