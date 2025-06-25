@@ -98,10 +98,10 @@ const onEdgesChange = useCallback(
 
 Now we can pass our nodes, edges, and event handlers to the `<ReactFlow />` component:
 
-```jsx {4-5}
+```jsx {2-5}
 <ReactFlow
-  nodes={initialNodes}
-  edges={initialEdges}
+  nodes={nodes}
+  edges={edges}
   onNodesChange={onNodesChange}
   onEdgesChange={onEdgesChange}
   fitView
@@ -151,8 +151,8 @@ Now we can pass the `onConnect` handler to the `<ReactFlow />` component:
 
 ```jsx {6}
 <ReactFlow
-  nodes={initialNodes}
-  edges={initialEdges}
+  nodes={nodes}
+  edges={edges}
   onNodesChange={onNodesChange}
   onEdgesChange={onEdgesChange}
   onConnect={onConnect}
@@ -165,7 +165,9 @@ Now we can pass the `onConnect` handler to the `<ReactFlow />` component:
 
 ### Connectable flow
 
-Try to connect the two nodes by dragging from on handle to another one. The `onConnect` handler will be triggered, and the new edge will be added to the flow. 🥳
+Try to connect the two nodes by dragging from on handle to another one. The 
+`onConnect` handler will be triggered, and the new edge will be added to the 
+flow. 🥳
 
 <RemoteCodeViewer
   showEditor={false}

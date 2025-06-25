@@ -129,7 +129,7 @@ Each edge object needs to have an `id`, a `source` (where the edge begins), and 
 In this example, we use the `id` values of the two nodes we created so far (`n1` and `n2`) to define the edge:
 
 ```js
-const edges = [
+const initialEdges = [
   {
     id: 'n1-n2',
     source: 'n1',
@@ -152,13 +152,13 @@ This edge connects the node with `id: 'n1'` (the source) to the node with `id: '
 Let's give this edge two properties that are built into React Flow, a `label` and a `type: "step"`.
 
 ```jsx {6-7}
-const edges = [
+const initialEdges = [
   {
     id: 'n1-n2',
     source: 'n1',
     target: 'n2',
     type: 'step',
-    label: 'to the',
+    label: 'connects with',
   },
 ];
 ```
