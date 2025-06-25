@@ -1,9 +1,5 @@
 import React, { createContext, useContext, useState, useCallback } from 'react';
-import {
-  type NodeProps,
-  type NodeToolbarProps,
-  NodeToolbar,
-} from '@xyflow/react';
+import { type NodeProps, type NodeToolbarProps, NodeToolbar } from '@xyflow/react';
 import { BaseNode } from './base-node';
 
 /* TOOLTIP CONTEXT ---------------------------------------------------------- */
@@ -20,7 +16,7 @@ export interface TooltipNodeProps extends Partial<NodeProps> {
  * A component that wraps a node and provides tooltip visibility context.
  */
 export const TooltipNode = React.forwardRef<HTMLDivElement, TooltipNodeProps>(
-  ({ selected, children }, ref) => {
+  ({ children }, ref) => {
     const [isTooltipVisible, setTooltipVisible] = useState(false);
 
     const showTooltip = useCallback(() => setTooltipVisible(true), []);
@@ -52,45 +48,42 @@ export interface TooltipContentProps extends NodeToolbarProps {}
 /**
  * A component that displays the tooltip content based on visibility context.
  */
-export const TooltipContent = React.forwardRef<
-  HTMLDivElement,
-  TooltipContentProps
->(({ position, children }, ref) => {
-  const isTooltipVisible = useContext(TooltipContext);
+export const TooltipContent = React.forwardRef<HTMLDivElement, TooltipContentProps>(
+  ({ position, children }, ref) => {
+    const isTooltipVisible = useContext(TooltipContext);
 
-  return (
-    <div ref={ref}>
-      <NodeToolbar
-        isVisible={isTooltipVisible}
-        className="rounded-sm bg-primary p-2 text-primary-foreground"
-        tabIndex={1}
-        position={position}
-      >
-        {children}
-      </NodeToolbar>
-    </div>
-  );
-});
+    return (
+      <div ref={ref}>
+        <NodeToolbar
+          isVisible={isTooltipVisible}
+          className="rounded-sm bg-primary p-2 text-primary-foreground"
+          tabIndex={1}
+          position={position}
+        >
+          {children}
+        </NodeToolbar>
+      </div>
+    );
+  },
+);
 
 TooltipContent.displayName = 'TooltipContent';
 
 /* TOOLTIP TRIGGER ---------------------------------------------------------- */
 
-export interface TooltipTriggerProps
-  extends React.HTMLAttributes<HTMLParagraphElement> {}
+export interface TooltipTriggerProps extends React.HTMLAttributes<HTMLParagraphElement> {}
 
 /**
  * A component that triggers the tooltip visibility.
  */
-export const TooltipTrigger = React.forwardRef<
-  HTMLParagraphElement,
-  TooltipTriggerProps
->(({ children, ...props }, ref) => {
-  return (
-    <div ref={ref} {...props}>
-      {children}
-    </div>
-  );
-});
+export const TooltipTrigger = React.forwardRef<HTMLParagraphElement, TooltipTriggerProps>(
+  ({ children, ...props }, ref) => {
+    return (
+      <div ref={ref} {...props}>
+        {children}
+      </div>
+    );
+  },
+);
 
 TooltipTrigger.displayName = 'TooltipTrigger';
