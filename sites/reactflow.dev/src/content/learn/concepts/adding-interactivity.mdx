@@ -10,7 +10,7 @@ import { RemoteCodeViewer } from 'xy-shared/server';
 Now that we've built our [first flow](learn/concepts/building-a-flow),
 let's add interactivity so you can select, drag, and remove nodes and edges.
 
-## Handling Change Events
+## Handling change events
 
 By default React Flow doesn't manage any internal state updates besides handling the viewport.
 As you would with an HTML `<input />` element you need to pass [event handlers](/api-reference/react-flow#event-handlers)
@@ -111,7 +111,7 @@ Now we can pass our nodes, edges, and event handlers to the `<ReactFlow />` comp
 </ReactFlow>
 ```
 
-### Interactive Flow
+### Interactive flow
 
 And that's it! You now have a basic interactive flow 🎉
 
@@ -127,7 +127,7 @@ Here's how it all comes together. Try clicking and dragging a node to move it ar
 />
  </Steps>
 
-## Handling Connections
+## Handling connections
 
 One last piece is missing: connecting nodes interactively.
 For this, we need to implement an [`onConnect`](/api-reference/react-flow#onconnect) handler.
@@ -163,7 +163,7 @@ Now we can pass the `onConnect` handler to the `<ReactFlow />` component:
 </ReactFlow>
 ```
 
-### Connectable Flow
+### Connectable flow
 
 Try to connect the two nodes by dragging from on handle to another one. The `onConnect` handler will be triggered, and the new edge will be added to the flow. 🥳
 
@@ -176,7 +176,7 @@ Try to connect the two nodes by dragging from on handle to another one. The `onC
 
 </Steps>
 
-## Full Code Example 🏁
+## Full code example 🏁
 
 <RemoteCodeViewer
   orientation="horizontal"

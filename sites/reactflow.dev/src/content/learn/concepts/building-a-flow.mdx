@@ -17,7 +17,7 @@ To follow along with this guide you will need to have a React project set up and
 npm install @xyflow/react
 ```
 
-## Creating the Flow
+## Creating the flow
 
 Let's start by creating an empty flow with viewport [`<Controls />`](/api-reference/components/controls)
 and a dotted [`<Background />`](/api-reference/components/background).
@@ -50,7 +50,7 @@ export default function App() {
 }
 ```
 
-### Empty Flow
+### Empty flow
 
 That's it! You have created your first empty flow 🎉
 
@@ -63,7 +63,7 @@ That's it! You have created your first empty flow 🎉
 
 </Steps>
 
-## Adding Nodes
+## Adding nodes
 
 Now that the flow is set up, it's time to add nodes — each node represents an element in your diagram
 with a specific position and content.
@@ -79,13 +79,13 @@ const initialNodes = [
   {
     id: 'n1',
     position: { x: 0, y: 0 },
-    data: { label: 'Hello' },
+    data: { label: 'Node 1' },
     type: 'input',
   },
   {
     id: 'n2',
     position: { x: 100, y: 100 },
-    data: { label: 'World' },
+    data: { label: 'Node 2' },
   },
 ];
 ```
@@ -117,7 +117,7 @@ This gives us a flow with two labeled nodes 🎉
 We have several built-in nodes that you can explore in the [node](/api-reference/types/node) reference.
 However, once you start building your own application, you will want to use [custom nodes](/learn/customization/custom-nodes).
 
-## Adding Edges
+## Adding edges
 
 Now that we have two nodes, let's connect them with an edge.
 
@@ -176,7 +176,7 @@ Now we have completed a basic flow with nodes and edges! 🎉
 
 </Steps>
 
-## Full Code Example 🏁
+## Full code example 🏁
 
 <RemoteCodeViewer
   orientation="horizontal"

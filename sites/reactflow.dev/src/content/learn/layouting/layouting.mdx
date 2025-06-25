@@ -1,36 +1,39 @@
 ---
-sidebarTitle: Layouting Libraries
 description: React Flow doesn't include any layouting algorithms out of the box. This guide surveys some of the options out there and shows you how to use them with React Flow.
 ---
 
 import { Callout } from 'nextra/components';
 import { RemoteCodeViewer } from 'xy-shared/server';
 
-# Layouting
+# Overview
 
-We regularly get asked how to handle layouting in React Flow. While we could build
-some basic layouting into React Flow, we believe that **you know your app's
-requirements best** and with so many options out there we think it's better you
-choose the right tool for the job (not to mention it'd be a whole bunch of
-work for us).
+We regularly get asked how to handle layouting in React Flow. While we could 
+build some basic layouting into React Flow, we believe that **you know your 
+app's requirements best** and with so many options out there we think it's 
+better you choose the right tool for the job (not to mention it'd be a whole 
+bunch of work for us).
 
 That doesn't help very much if you don't know what the options _are_, so this
 guide is here to help! We'll split things up into resources for layouting nodes
 and resources for routing edges.
+
+You can test out some of the layouting options in our 
+[playground](/playground/layouting) or have a look at the
+[examples](/examples#layout) we've put together.
 
 To start let's put together a simple example flow that we can use as a base for
 testing out the different layouting options.
 
 <RemoteCodeViewer route="learn/layouting-flow-1-empty" framework="react" />
 
-Each of the examples that follow will be built on this empty flow. Where possible
-we've tried to keep the examples confined to just one `index.js` file so it's easy
-for you to compare how they're set up.
+Each of the examples that follow will be built on this empty flow. Where 
+possible we've tried to keep the examples confined to just one `index.js` file 
+so it's easy for you to compare how they're set up.
 
-## Layouting Nodes
+## Layouting nodes
 
-For layouting nodes, there are a few third-party libraries that we think are worth
-checking out:
+For layouting nodes, there are a few third-party libraries that we think are 
+worth checking out:
 
 | Library                                            | Dynamic node sizes | Sub-flow layouting | Edge routing | Bundle size                                                                                                                                   |
 | -------------------------------------------------- | ------------------ | ------------------ | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------- |
