@@ -1,5 +1,8 @@
 import { cn } from "@/lib/utils";
 
+// TODO: use again forwardRef because it works on React 18 and
+// ComponentProps works only on React 19 (to pass ref).
+
 export function BaseNode({ className, ...props }: React.ComponentProps<"div">) {
   console.log(className);
   return (
@@ -7,7 +10,14 @@ export function BaseNode({ className, ...props }: React.ComponentProps<"div">) {
       className={cn(
         "relative rounded-md border bg-card text-card-foreground",
         className,
-        "hover:ring-1 [.react-flow\\_\\_node.selected_&]:shadow-lg  [.react-flow\\_\\_node.selected_&]:bg-muted-foreground",
+        "hover:ring-1",
+        // React Flow displays node elements inside of a `NodeWrapper` component,
+        // which compiles down to a div with a the class `react-flow__node`.
+        // When a node is selected, the class `selected` is added to the
+        // `react-flow__node` element. This allows us to style the node when it
+        // is selected, using Tailwind's `&` selector.
+        "[.react-flow\\_\\_node.selected_&]:border-muted-foreground",
+        "[.react-flow\\_\\_node.selected_&]:shadow-lg",
       )}
       tabIndex={0}
       {...props}
