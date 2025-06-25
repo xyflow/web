@@ -7,7 +7,7 @@ export function BaseNode({ className, ...props }: React.ComponentProps<"div">) {
       className={cn(
         "relative rounded-md border bg-card text-card-foreground",
         className,
-        "hover:ring-1 group-[.selected]/react-flow__node:border-muted-foreground group-[.selected]/react-flow__node:shadow-lg",
+        "hover:ring-1 [.react-flow\_\_node.selected_&]:shadow-lg  [.react-flow\_\_node.selected_&]:bg-red-500",
       )}
       tabIndex={0}
       {...props}
