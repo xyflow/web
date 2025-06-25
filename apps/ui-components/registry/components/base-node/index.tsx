@@ -1,9 +1,6 @@
 import { cn } from "@/lib/utils";
 import { forwardRef, HTMLAttributes } from "react";
 
-// TODO: use again forwardRef because it works on React 18 and
-// ComponentProps works only on React 19 (to pass ref).
-
 export const BaseNode = forwardRef<
   HTMLDivElement,
   HTMLAttributes<HTMLDivElement>
