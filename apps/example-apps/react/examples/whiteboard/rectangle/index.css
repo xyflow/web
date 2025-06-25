@@ -1,0 +1,36 @@
+@import url('./xy-theme.css');
+
+html,
+body {
+  margin: 0;
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+
+#app {
+  width: 100vw;
+  height: 100vh;
+}
+
+.react-flow__node {
+  padding: 0;
+  border: none;
+}
+
+.tool-overlay {
+  pointer-events: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  height: 100%;
+  width: 100%;
+  transform-origin: top left;
+  cursor: copy;
+  touch-action: none;
+}
+
+.rectangle-preview {
+  position: absolute;
+  z-index: 10;
+}

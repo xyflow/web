@@ -46,7 +46,7 @@
     "fast-glob": "^3.3.3",
     "fathom-client": "^3.7.2",
     "next": "^14.2.15",
-    "nextra": "4.3.0-alpha.22",
+    "nextra": "4.3.0-alpha.28",
     "react-lite-youtube-embed": "^2.5.1",
     "tailwindcss": "^3.4.14",
     "tailwindcss-animate": "^1.0.7",

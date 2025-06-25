@@ -93,7 +93,6 @@ const InteractionFlow = () => {
       onPaneContextMenu={captureZoomClick ? onPaneContextMenu : undefined}
       fitView
       attributionPosition="top-right"
-      style={{ backgroundColor: '#F7F9FB' }}
     >
       <MiniMap />
       <Controls />
