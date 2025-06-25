@@ -7,9 +7,9 @@ import {
   TooltipTrigger,
 } from "@/registry/components/tooltip-node";
 
-const TooltipNodeDemo = memo(({ selected }: NodeProps) => {
+const TooltipNodeDemo = memo(() => {
   return (
-    <TooltipNode selected={selected}>
+    <TooltipNode>
       <TooltipContent position={Position.Top}>Hidden Content</TooltipContent>
       <TooltipTrigger>Hover</TooltipTrigger>
     </TooltipNode>

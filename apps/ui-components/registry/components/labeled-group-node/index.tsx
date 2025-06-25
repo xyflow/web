@@ -34,7 +34,7 @@ export type GroupNodeProps = Partial<NodeProps> & {
 /* GROUP NODE -------------------------------------------------------------- */
 
 export const GroupNode = forwardRef<HTMLDivElement, GroupNodeProps>(
-  ({ selected, label, position, ...props }, ref) => {
+  ({ label, position, ...props }, ref) => {
     const getLabelClassName = (position?: PanelPosition) => {
       switch (position) {
         case "top-left":

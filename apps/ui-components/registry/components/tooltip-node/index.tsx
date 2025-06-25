@@ -24,7 +24,7 @@ export type TooltipNodeProps = Partial<NodeProps> & {
  * A component that wraps a node and provides tooltip visibility context.
  */
 export const TooltipNode = forwardRef<HTMLDivElement, TooltipNodeProps>(
-  ({ selected, children }, ref) => {
+  ({ children }, ref) => {
     const [isTooltipVisible, setTooltipVisible] = useState(false);
 
     const showTooltip = useCallback(() => setTooltipVisible(true), []);

@@ -83,13 +83,11 @@ export const DatabaseSchemaTableCell = ({
  */
 export type DatabaseSchemaNodeProps = {
   className?: string;
-  selected?: boolean;
   children?: ReactNode;
 };
 
 export const DatabaseSchemaNode = ({
   className,
-  selected,
   children,
 }: DatabaseSchemaNodeProps) => {
   return <BaseNode className={className}>{children}</BaseNode>;
