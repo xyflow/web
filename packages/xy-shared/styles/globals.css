@@ -28,9 +28,6 @@ li.active > .sidebar-title.pro:after {
   @apply text-primary ml-1.5 px-1.5;
 }
 
-.nextra-menu-desktop li > a {
-}
-
 .nextra-menu-desktop li.active > a {
   @apply bg-transparent text-primary;
 }
@@ -77,7 +74,8 @@ main .x\:border-primary-500 {
 
 .pro-button:before {
   transition: --gradientAngle 0.3s ease;
-  background: linear-gradient(
+  background:
+    linear-gradient(
       var(--gradientAngle),
       hsl(var(--primary)) 36.34%,
       hsl(var(--secondary)) 50.92%,
@@ -273,6 +271,8 @@ article.nextra-content ol li p {
   .x\:max-w-\(--nextra-content-width\) {
     max-width: 90rem;
   }
+}
+
 /* 1. Base Styles */
 :root {
   --docsearch-primary-color: hsl(var(--primary));
