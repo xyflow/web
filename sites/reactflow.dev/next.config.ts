@@ -77,6 +77,7 @@ const nextConfig: NextConfig = {
 };
 
 const withNextra = nextra({
+  defaultShowCopyCode: true,
   search: false,
 });
 

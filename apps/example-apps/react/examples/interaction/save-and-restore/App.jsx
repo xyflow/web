@@ -77,7 +77,6 @@ const SaveRestore = () => {
       onInit={setRfInstance}
       fitView
       fitViewOptions={{ padding: 2 }}
-      style={{ backgroundColor: '#F7F9FB' }}
     >
       <Background />
       <Panel position="top-right">

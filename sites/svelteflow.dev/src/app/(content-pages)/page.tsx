@@ -11,11 +11,10 @@ import {
   Features,
   GettingStarted,
   ProjectCards,
+  FlowA,
+  FlowB,
+  FlowC,
 } from 'xy-shared';
-
-import FlowA from '@/components/flows/flow-a';
-import FlowB from '@/components/flows/flow-b';
-import FlowC from '@/components/flows/flow-c';
 
 import type { InternalRoute } from '@/utils';
 import getStaticPropsStats from '@/utils/github-npm-stats';
@@ -96,7 +95,7 @@ const features = [
     title: 'All the right plugins',
     text: 'Make more advanced apps with the Background, Minimap, Controls, and Panel components.',
     route: '/learn' satisfies InternalRoute,
-    flowComponent: <FlowC />,
+    flowComponent: <FlowC framework="svelte" />,
   },
 ];
 

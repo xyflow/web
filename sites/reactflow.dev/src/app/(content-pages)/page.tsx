@@ -12,14 +12,14 @@ import {
   GettingStarted,
   AboutSection,
   ProjectCards,
+  FlowA,
+  FlowB,
+  FlowC,
 } from 'xy-shared';
 import { getLastChangelog } from 'xy-shared/server';
 import { fetchGitHubNpmStats, InternalRoute } from '@/utils';
 import ClientLogos from '@/components/client-logos';
 import WhatsNewPreview from '@/components/whats-new-preview';
-import { FlowA } from '@/components/flows/flow-a';
-import { FlowB } from '@/components/flows/flow-b';
-import { FlowC } from '@/components/flows/flow-c';
 
 export const revalidate = 3600; // 60 * 60
 
@@ -54,7 +54,7 @@ const features = [
     title: 'All the right plugins',
     text: 'Make more advanced apps with the Background, Minimap, Controls, Panel, NodeToolbar, and NodeResizer components.',
     route: '/learn/concepts/built-in-components' satisfies InternalRoute,
-    flowComponent: <FlowC />,
+    flowComponent: <FlowC framework="react" />,
   },
 ];
 

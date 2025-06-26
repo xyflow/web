@@ -1,0 +1,18 @@
+---
+description: Callback function triggered when dragging a selection of nodes in SvelteFlow.
+---
+
+# OnSelectionDrag
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/types/events.ts#L74)
+
+The `OnSelectionDrag` type is a callback function that is called when dragging a selection of nodes. It receives the mouse event and an array of the nodes being dragged.
+
+```ts
+type OnSelectionDrag<NodeType extends Node = Node> = (
+  event: MouseEvent,
+  nodes: NodeType[],
+) => void;
+```
+
+<APIDocs typeName="OnSelectionDrag" packageName="svelte" />

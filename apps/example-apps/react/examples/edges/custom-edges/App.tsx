@@ -123,7 +123,6 @@ const EdgesFlow = () => {
       fitView
       attributionPosition="top-right"
       connectionMode={ConnectionMode.Loose}
-      style={{ backgroundColor: '#F7F9FB' }}
     >
       <Controls />
       <Background />

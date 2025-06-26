@@ -6,49 +6,49 @@
  *
  * Originally done in https://github.com/the-guild-org/docs/blob/bdfe4f564ee68f8b670828f425e32a3add973883/packages/components/style.css
 **/
+@import '@xyflow/react/dist/style.css';
 @import 'tailwindcss/base' layer(l-base);
 @import 'nextra-theme-docs/dist/style-prefixed.css' layer(l-nextra);
 @import 'tailwindcss/utilities';
 @import 'tailwindcss/components';
-@import '@xyflow/react/dist/style.css';
-@import 'xy-shared/styles/globals-nextra-4.css';
+@import 'xy-shared/styles/globals.css';
 
 @layer l-base {
   :root {
     --accent: 333 100% 50%;
     --shiki-color-background: red;
-    
+
     --primary: 333 100% 50%;
     --primary-foreground: 210 40% 98%;
     --secondary: 0 100% 100%;
     --secondary-foreground: 333 100% 50%;
-    
+
     --color-xyflow: 248 1% 85%;
     --color-react: 333 100% 50%;
     --color-svelte: 15 100% 50%;
-    
+
     --background: 0 0% 100%;
     --foreground: 222.2 47.4% 11.2%;
-    
+
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
-    
+
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 47.4% 11.2%;
-    
+
     --card: 0 0% 100%;
     --card-foreground: 222.2 47.4% 11.2%;
-    
+
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    
+
     --destructive: 0 100% 50%;
     --destructive-foreground: 210 40% 98%;
-    
+
     --ring: 215 20.2% 65.1%;
-    
+
     --radius: 0.5rem;
-    
+
     --light: 215.4 16.3% 46.9%;
   }
 }
@@ -83,6 +83,6 @@ html body[data-scroll-locked] {
 }
 
 /* Hide `Pro` link from the desktop navbar */
-.nextra-navbar > nav > div > a[href="/pro"] {
+.nextra-navbar > nav > div > a[href='/pro'] {
   display: none;
 }

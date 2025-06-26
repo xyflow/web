@@ -1,13 +1,13 @@
 ---
-description: Custom nodes in React Flow are just React components. This guide shows you how to implement your own nodes complete with target/source handles.
+description: Custom nodes in React Flow are just React components. This guide shows you how to implement your own nodes.
 ---
 
 import { RemoteCodeViewer } from 'xy-shared/server';
 import { Callout } from 'nextra/components';
 
-# Custom Nodes
+# Nodes
 
-A powerful feature of React Flow is the ability to create custom nodes. This gives you the flexibility to render anything you want within your nodes. We generally recommend creating your own custom nodes rather than relying on built-in ones. With custom nodes, you can add as many source and target handles as you like—or even embed form inputs, charts, and other interactive elements.
+A powerful feature of React Flow is the ability to create custom nodes. This gives you the flexibility to render anything you want within your nodes. We generally recommend creating your own custom nodes rather than relying on built-in ones. With custom nodes, you can add as many source and target [handles](/learn/customization/handles) as you like—or even embed form inputs, charts, and other interactive elements.
 
 In this section, we'll walk through creating a custom node featuring an input field that updates text elsewhere in your application. For further examples, we recommend checking out our [Custom Node Example](/examples/nodes/custom-node).
 
@@ -18,26 +18,18 @@ To create a custom node, all you need to do is create a React component. React F
 Let's dive into an example by creating a custom node called `TextUpdaterNode`. For this, we've added a simple input field with a change handler. React Flow has a few handy [pre-built components](/api-reference/components) to simplify the process of creating custom nodes. We will use the [`Handle` component](/api-reference/components/handle) to allow our custom node to connect with other nodes.
 
 ```jsx
-import { useCallback } from 'react';
-import { Handle, Position } from '@xyflow/react';
-
-const handleStyle = { left: 10 };
-
-function TextUpdaterNode({ data }) {
+function TextUpdaterNode(props) {
   const onChange = useCallback((evt) => {
     console.log(evt.target.value);
   }, []);
 
   return (
-    <>
-      <Handle type="target" position={Position.Top} />
+    <div className="text-updater-node">
       <div>
         <label htmlFor="text">Text:</label>
         <input id="text" name="text" onChange={onChange} className="nodrag" />
       </div>
-      <Handle type="source" position={Position.Bottom} id="a" />
-      <Handle type="source" position={Position.Bottom} id="b" style={handleStyle} />
-    </>
+    </div>
   );
 }
 ```
@@ -57,12 +49,8 @@ function Flow() {
     <ReactFlow
       nodes={nodes}
       edges={edges}
-      onNodesChange={onNodesChange}
-      onEdgesChange={onEdgesChange}
-      onConnect={onConnect}
       nodeTypes={nodeTypes}
-      fitView
-      style={rfStyle}
+      ...
     />
   );
 }
@@ -76,7 +64,7 @@ const nodeTypes = useMemo(() => ({ textUpdater: TextUpdaterNode }), []);
 return <ReactFlow nodeTypes={nodeTypes} />;
 ```
 
-After defining your new node type, you can use it by using the `type` node option:
+After defining your new node type, you can use it by specifying the `type` property on your node definition:
 
 ```js
 const nodes = [
@@ -93,68 +81,4 @@ After putting all together and adding some basic styles we get a custom node tha
 
 <RemoteCodeViewer route="learn/custom-node" framework="react" />
 
-## Utility Classes
-
-React Flow provides several built-in utility CSS classes to help you fine-tune how interactions work within your custom nodes.
-
-### `nodrag`
-
-In the example above, we added the class `nodrag` to the input. This ensures that interacting with the input field doesn't trigger a drag, allowing you to select the text within the field.
-
-Nodes have a `drag` class name in place by default. However, this class name can affect the behaviour of the event listeners inside your custom nodes. To prevent unexpected behaviours, add a `nodrag` class name to elements with an event listener. This prevents the default drag behavior as well as the default node selection behavior when elements with this class are clicked.
-
-```tsx
-export default function CustomNode(props: NodeProps) {
-  return (
-    <div>
-      <input className="nodrag" type="range" min={0} max={100} />
-    </div>
-  );
-}
-```
-
-### `nowheel`
-
-If your custom node contains scrollable content, you can apply the `nowheel` class. This disables the canvas' default pan behavior when you scroll inside your custom node, ensuring that only the content scrolls instead of moving the entire canvas.
-
-```tsx
-export default function CustomNode(props: NodeProps) {
-  return (
-    <div className="nowheel" style={{ overflow: 'auto' }}>
-      <p>Scrollable content...</p>
-    </div>
-  );
-}
-```
-
-Applying these utility classes helps you control interaction on a granular level. You can customize these class names inside React Flow's [style props](/api-reference/react-flow/#style-props).
-
-<Callout type="info">
-  When creating your own custom nodes, you will also need to remember to style them!
-  Unlike the built-in nodes, custom nodes have no default styles, so feel free to use any
-  styling method you prefer, such as [styled
-  components](/examples/styling/styled-components) or [Tailwind
-  CSS](/examples/styling/tailwind).
-</Callout>
-
-## Using Multiple Handles
-
-When defining edge connections to other nodes using these handles, simply using the node `id` isn't enough. You will also need to specify a handle `id`. In this case, we assign an id `a` to one source handle and an id `b` to the other source handle.
-
-In React Flow, edges can be connected to specific handles within a node using the properties `sourceHandle` (for the edge's starting point) and `targetHandle` (for the edge's ending point). When you have multiple handles on a node—for example, two source handles labeled "`a`" and "`b`", simply specifying the node's `id` isn't enough for React Flow to know which connection point to use. By defining `sourceHandle` or `targetHandle` with the appropriate handle `id`, you instruct React Flow to attach the edge to that specific handle, ensuring that connections are made where you intend.
-
-```js
-const initialEdges = [
-  { id: 'edge-1', source: 'node-1', sourceHandle: 'a', target: 'node-2' },
-  { id: 'edge-2', source: 'node-1', sourceHandle: 'b', target: 'node-3' },
-];
-```
-
-In this case, the source node is `node-1` for both handles but the handle `id`s are different. One comes from handle id `"a"` and the other one from `"b"`. Both edges also have different target nodes:
-
-<RemoteCodeViewer route="learn/custom-node-2" framework="react" />
-
-If you are programmatically changing the position or number of handles
-in your custom node, you will need to use the
-[`useUpdateNodeInternals`](/api-reference/hooks/use-update-node-internals) hook
-to properly notify React Flow of changes.
+To enable your custom node to connect with other nodes, check out the [Handles](/learn/customization/handles) page to learn how to add source and target handles.

@@ -1,0 +1,15 @@
+---
+description: Callback function triggered when an error occurs in SvelteFlow.
+---
+
+# OnError
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/types/general.ts#L88)
+
+The `OnError` type is a callback function that is called when an error occurs in SvelteFlow. It receives the error ID and a message describing the error.
+
+```ts
+type OnError = (id: string, message: string) => void;
+```
+
+<APIDocs typeName="OnError" packageName="system" />

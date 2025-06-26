@@ -88,6 +88,13 @@ export const meta: DynamicMeta = {
       'turbo-flow': '',
     },
   },
+  whiteboard: {
+    items: {
+      eraser: '',
+      'lasso-selection': '',
+      rectangle: '',
+    },
+  },
   misc: {
     items: {
       'download-image': '',
