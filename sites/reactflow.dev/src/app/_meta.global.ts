@@ -10,7 +10,7 @@ const gettingStarted = {
 };
 const customization = {
   'custom-nodes': '',
-  'handles': '',
+  handles: '',
   'custom-edges': '',
   'edge-labels': '',
   'utility-classes': '',
@@ -31,7 +31,7 @@ const tutorials = {
   'mind-map-app-with-react-flow': '',
 };
 const troubleshooting = {
-  index: '',
+  'common-errors': '',
   'remove-attribution': '',
   'migrate-to-v12': '',
   'migrate-to-v11': '',
