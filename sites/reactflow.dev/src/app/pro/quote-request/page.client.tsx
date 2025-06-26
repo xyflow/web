@@ -63,7 +63,7 @@ export const Form: FC = () => {
         if (response.ok) {
           return setFormState({ error: false, loading: false, success: true });
         }
-      } catch (err) {
+      } catch {
         return setFormState({ error: true, loading: false, success: false });
       }
 
@@ -240,7 +240,7 @@ export default function QuoteRequestPage() {
         </Accordion>
       </Card>
       <SubscribeSection
-        btnLink={`${process.env.NEXT_PUBLIC_PRO_PLATFORM_URL}/signup`}
+        btnLink="/pro/sign-up"
         btnLabel="Sign Up Now"
       />
     </BaseLayout>

@@ -1,6 +1,5 @@
 import Image from 'next/image';
-import Link from 'next/link';
-import { Button, PricingTable, Section, FAQ, reactFlowProFaqItems } from '@xyflow/xy-ui';
+import { PricingTable, Section, FAQ, reactFlowProFaqItems } from '@xyflow/xy-ui';
 import {
   BaseLayout,
   Hero,
@@ -11,9 +10,11 @@ import {
 import { SparklesIcon } from '@heroicons/react/24/outline';
 
 import ClientLogos from '@/components/client-logos';
-import { Metadata } from 'next';
+import { NextraMetadata } from 'nextra';
+import { SignUpButton } from '@/app/(content-pages)/examples/pro/pro-page';
 
-export const metadata: Metadata = {
+export const metadata: NextraMetadata = {
+  asIndexPage: true,
   title: 'React Flow Pro',
   description:
     'Subscribe to React Flow Pro to get access to exclusive features of React Flow, a highly customizable library for building node-based editors, interactive graphs and flow charts',
@@ -71,13 +72,7 @@ export default function ReactFlowPro() {
         subtitle="Get advanced code examples, technical support, and help funding our development — while keeping the library open source and under the MIT license."
         kicker="React Flow Pro"
         kickerIcon={<SparklesIcon />}
-        action={
-          <Button asChild size="lg" variant="pro">
-            <Link href={process.env.NEXT_PUBLIC_PRO_PLATFORM_URL!}>
-              <SparklesIcon className="w-5 h-5 mr-2" /> Get Started
-            </Link>
-          </Button>
-        }
+        action={<SignUpButton className="inline-flex" showIcon />}
         backgroundVariant="image"
       >
         <p className="mt-4 mb-2">
@@ -119,10 +114,7 @@ export default function ReactFlowPro() {
           poster="sddefault"
         />
       </FAQ>
-      <SubscribeSection
-        btnLink={`${process.env.NEXT_PUBLIC_PRO_PLATFORM_URL}/signup`}
-        btnLabel="Sign Up Now"
-      />
+      <SubscribeSection btnLink="/pro/sign-up" btnLabel="Sign Up Now" />
     </BaseLayout>
   );
 }
