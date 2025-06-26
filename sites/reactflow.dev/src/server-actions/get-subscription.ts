@@ -21,6 +21,8 @@ export async function getSubscription(): Promise<{
 }> {
   const nhost = await getNhost();
   const userId = nhost.auth.getUser()?.id;
+  console.log(userId);
+
   if (!userId) {
     return {
       plan: SubscriptionPlan.FREE,
@@ -31,7 +33,7 @@ export async function getSubscription(): Promise<{
   const { data, error } = await nhost.graphql.request(GET_SUBSCRIPTION, { userId });
 
   if (error) {
-    throw new Error(prettifyError(error));
+    console.log(error);
   }
 
   const plan =
