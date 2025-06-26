@@ -147,7 +147,6 @@ main .x\:border-primary-500 {
   @apply text-white;
   @apply py-2;
   @apply px-4;
-  @apply bg-react;
 }
 
 .darkflow .node-wrapper label {

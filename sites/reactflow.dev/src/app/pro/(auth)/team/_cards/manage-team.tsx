@@ -161,7 +161,6 @@ const ManageTeamCard: FC<{ user: User; teamSubscriptions: TeamMember[] }> = ({
                   Cancel
                 </AlertDialogCancel>
                 <AlertDialogAction
-                  variant="react"
                   disabled={isLoading}
                   onClick={() => addMember({ paymentConfirmed: true })}
                 >
@@ -186,7 +185,6 @@ const ManageTeamCard: FC<{ user: User; teamSubscriptions: TeamMember[] }> = ({
                   Cancel
                 </AlertDialogCancel>
                 <AlertDialogAction
-                  variant="react"
                   disabled={isDeleteLoading}
                   onClick={() => removeMember(confirmDeleteMember)}
                 >
@@ -242,12 +240,7 @@ const ManageTeamCard: FC<{ user: User; teamSubscriptions: TeamMember[] }> = ({
               <InputLabel className="text-red-600 mt-1">{errorMessage}</InputLabel>
             )}
           </div>
-          <Button
-            disabled={isLoading}
-            className="shrink-0 ml-auto mt-auto"
-            variant="react"
-            type="submit"
-          >
+          <Button disabled={isLoading} className="shrink-0 ml-auto mt-auto" type="submit">
             {isLoading ? 'Please wait...' : 'Add Team Member'}
           </Button>
         </form>

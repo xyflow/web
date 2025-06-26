@@ -49,7 +49,6 @@ const SignInMagicLink: FC = () => {
           size="lg"
           className="w-full shrink-0"
           type="submit"
-          variant="react"
         >
           Send secure link
         </Button>

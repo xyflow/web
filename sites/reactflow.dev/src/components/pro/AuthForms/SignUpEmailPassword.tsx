@@ -16,7 +16,7 @@ const Signup: FC = () => {
     event.preventDefault();
     startTransition(async () => {
       const formData = new FormData(event.currentTarget);
-      const error = await signUp(formData)
+      const error = await signUp(formData);
       setError(error);
     });
   }
@@ -77,7 +77,6 @@ const Signup: FC = () => {
         disabled={isLoading}
         loading={isLoading}
         type="submit"
-        variant="react"
       >
         Sign Up
       </Button>

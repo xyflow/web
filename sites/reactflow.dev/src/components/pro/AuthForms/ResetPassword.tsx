@@ -50,7 +50,6 @@ function ResetPassword() {
         size="lg"
         className="w-full"
         type="submit"
-        variant="react"
       >
         Send Reset Link
       </Button>

@@ -50,7 +50,6 @@ function ResendVerificationLink() {
         size="lg"
         className="w-full"
         type="submit"
-        variant="react"
       >
         Send Verification Link
       </Button>

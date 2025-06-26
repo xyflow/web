@@ -58,12 +58,7 @@ function ChangePasswordCard() {
               placeholder="Enter password..."
             />
           </div>
-          <Button
-            disabled={isLoading}
-            className="shrink-0 ml-auto mt-auto"
-            variant="react"
-            type="submit"
-          >
+          <Button disabled={isLoading} className="shrink-0 ml-auto mt-auto" type="submit">
             {isLoading ? 'Please wait...' : 'Change Password'}
           </Button>
         </form>

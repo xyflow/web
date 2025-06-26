@@ -1,3 +1,5 @@
+'use client';
+
 import { FC } from 'react';
 import Link from 'next/link';
 import { Button, cn, Container, ContainerProps, Text } from '@xyflow/xy-ui';
@@ -11,7 +13,7 @@ const ProExampleViewer: FC<{
   type?: 'example' | 'template';
   className?: string;
   innerClassName?: string;
-}> = async ({ slug, variant = 'default', type = 'example' }) => {
+}> = ({ slug, variant = 'default', type = 'example' }) => {
   const isLightMode = variant === 'default';
   const { isSubscribed } = useSubscription();
 
@@ -20,7 +22,7 @@ const ProExampleViewer: FC<{
       <ProPlatformExampleViewer
         frameworkId={Framework.REACT}
         exampleId={slug}
-        config={{ type: 'example' }}
+        config={{ type: 'example', id: slug, framework: Framework.REACT }}
       />
     );
   }

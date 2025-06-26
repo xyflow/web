@@ -65,7 +65,6 @@ const ChangeEmailCard: FC<{ userEmail: string }> = ({ userEmail }) => {
           <Button
             disabled={isLoading || needsEmailVerification}
             className="shrink-0 ml-auto mt-auto"
-            variant="react"
             type="submit"
           >
             Update Email

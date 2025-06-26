@@ -95,7 +95,7 @@ export default function ProExampleViewerTabs({
 
         {isUnlocked && (
           <TabContent value="editor" loading={!files}>
-            <EditorTab files={files} />
+            {files && <EditorTab files={files} />}
           </TabContent>
         )}
 

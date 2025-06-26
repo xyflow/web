@@ -28,7 +28,7 @@ export default function Notification({
       </div>
       {button && (
         <a href={button.href}>
-          <Button variant="react">{button.label}</Button>
+          <Button>{button.label}</Button>
         </a>
       )}
     </div>

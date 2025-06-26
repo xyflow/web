@@ -74,7 +74,6 @@ const SignInEmailPassword: FC = () => {
           size="lg"
           className="w-full mt-2"
           type="submit"
-          variant="react"
         >
           Sign in
         </Button>

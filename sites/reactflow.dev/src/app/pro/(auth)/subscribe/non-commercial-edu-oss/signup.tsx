@@ -56,9 +56,7 @@ function Signup() {
         <Heading size="sm" className="mb-4">
           You are signed up.
         </Heading>
-        <Button onClick={() => (window.location.href = '/')}>
-          Go to Dashboard
-        </Button>
+        <Button onClick={() => (window.location.href = '/')}>Go to Dashboard</Button>
       </div>
     );
   }
@@ -100,14 +98,10 @@ function Signup() {
                 name="student"
                 value="student"
                 checked={projectType === 'student'}
-                onChange={(evt) =>
-                  changeProjectType(evt.target.value as 'student')
-                }
+                onChange={(evt) => changeProjectType(evt.target.value as 'student')}
                 className="w-4 h-4"
               />
-              <label htmlFor="student">
-                Educational project (university, students)
-              </label>
+              <label htmlFor="student">Educational project (university, students)</label>
             </div>
           </div>
           {projectType === 'student' && (
@@ -149,10 +143,7 @@ function Signup() {
                 checked={confirmed}
                 onChange={(evt) => setConfirmed(evt.target.checked)}
               />
-              <label
-                className="text-muted-foreground text-sm"
-                htmlFor="confirm"
-              >
+              <label className="text-muted-foreground text-sm" htmlFor="confirm">
                 {projectType === 'student'
                   ? 'I confirm that I am using React Flow Pro only for educational purposes.'
                   : 'I confirm that I am using React Flow Pro only for non-commercial purposes in my open source project.'}
@@ -165,7 +156,6 @@ function Signup() {
             className="w-full"
             type="submit"
             disabled={isDisabled}
-            variant="react"
           >
             Sign Up
           </Button>

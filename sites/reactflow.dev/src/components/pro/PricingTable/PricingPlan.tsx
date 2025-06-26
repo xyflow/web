@@ -1,13 +1,7 @@
 'use client';
 
 import { useTransition } from 'react';
-import {
-  Button,
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from '@xyflow/xy-ui';
+import { Button, Card, CardContent, CardHeader, CardTitle } from '@xyflow/xy-ui';
 import { callNhostFunction } from '@/server-actions';
 import { redirect } from 'next/navigation';
 
@@ -35,9 +29,9 @@ export default function PricingPlan({
       });
 
       if (response.url) {
-        redirect(response.res.data.url)
+        redirect(response.res.data.url);
       }
-    })
+    });
   };
 
   return (
@@ -58,12 +52,7 @@ export default function PricingPlan({
         </div>
       </CardContent>
       <CardContent>
-        <Button
-          loading={isLoading}
-          className="w-full"
-          variant="react"
-          onClick={subscribe}
-        >
+        <Button loading={isLoading} className="w-full" onClick={subscribe}>
           Subscribe
         </Button>
       </CardContent>

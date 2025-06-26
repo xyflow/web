@@ -76,11 +76,7 @@ const DeleteAccountCard: FC<{ userEmail: string }> = ({ userEmail }) => {
             </AlertDialogHeader>
             <AlertDialogFooter>
               <AlertDialogCancel>Cancel</AlertDialogCancel>
-              <AlertDialogAction
-                variant="react"
-                disabled={!isDeleteConfirmed}
-                onClick={deleteAccount}
-              >
+              <AlertDialogAction disabled={!isDeleteConfirmed} onClick={deleteAccount}>
                 {isDeleteLoading ? 'Please wait...' : 'Confirm Deletion'}
               </AlertDialogAction>
             </AlertDialogFooter>
