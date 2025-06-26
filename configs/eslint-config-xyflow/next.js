@@ -11,7 +11,7 @@ import { config as baseConfig } from "./base.js";
  * A custom ESLint configuration for libraries that use Next.js.
  *
  * @type {import("eslint").Linter.Config[]}
- * */
+ */
 export const nextJsConfig = [
   ...baseConfig,
   js.configs.recommended,
@@ -42,8 +42,9 @@ export const nextJsConfig = [
     settings: { react: { version: "detect" } },
     rules: {
       ...pluginReactHooks.configs.recommended.rules,
-      // React scope no longer necessary with new JSX transform.
+      // React scope no longer necessary with the new JSX transform.
       "react/react-in-jsx-scope": "off",
+      "react/prop-types": "off"
     },
   },
 ];

@@ -1,3 +1,24 @@
+import { FC, ReactNode, SVGProps } from 'react';
+import {
+  Squares2X2Icon,
+  UsersIcon,
+  ChatBubbleLeftRightIcon,
+  Cog8ToothIcon,
+  SparklesIcon,
+} from '@heroicons/react/24/outline';
+
+const WithIcon: FC<{ children: ReactNode; icon: FC<SVGProps<SVGElement>> }> = ({
+  children,
+  icon: Icon,
+}) => {
+  return (
+    <span className="flex items-center gap-1.5">
+      <Icon height="1.2em" />
+      {children}
+    </span>
+  );
+};
+
 const concepts = {
   introduction: '',
   'terms-and-definitions': '',
@@ -132,7 +153,12 @@ const metaRecord = {
         },
       },
       overview: '',
-      // Rest of examples are added in `(content-pages)/layout.tsx` file
+      pro: {
+        theme: {
+          breadcrumb: false,
+        },
+      },
+      // Rest of examples are added in `app/layout.tsx` file
     },
   },
   components: { items: components },
@@ -146,13 +172,51 @@ const metaRecord = {
       playground: { href: 'https://play.reactflow.dev' },
     },
   },
-
   // 2. Pro Routes
   pro: {
-    display: 'hidden',
-    title: 'Pricing',
     items: {
+      '*': {
+        theme: {
+          layout: 'full',
+          toc: false,
+          pagination: false,
+        },
+      },
+      // Auth
+      dashboard: <WithIcon icon={Squares2X2Icon}>Dashboard</WithIcon>,
+      support: <WithIcon icon={ChatBubbleLeftRightIcon}>Support</WithIcon>,
+      team: <WithIcon icon={UsersIcon}>Team</WithIcon>,
+      account: <WithIcon icon={Cog8ToothIcon}>Account</WithIcon>,
+      subscribe: {
+        title: <WithIcon icon={SparklesIcon}>Subscribe</WithIcon>,
+        theme: {
+          collapsed: true,
+        },
+        items: {
+          'non-commercial-edu-oss': { display: 'hidden' },
+        },
+      },
+      // No-Auth
+      'sign-in': {
+        items: {
+          'magic-link': {
+            display: 'hidden',
+          },
+        },
+      },
+      'sign-up': '',
+      'reset-password': {
+        display: 'hidden',
+      },
+      'email-verification': {
+        display: 'hidden',
+      },
+      // Both
+      'quote-request': {
+        display: 'hidden',
+      },
       'case-studies': {
+        display: 'hidden',
         theme: {
           layout: 'full',
           toc: false,
@@ -162,10 +226,6 @@ const metaRecord = {
       },
     },
   },
-  'pro-examples': { display: 'hidden', href: '/pro/examples' },
-  'case-studies': { display: 'hidden', href: '/pro/case-studies' },
-  'contact-us': { display: 'hidden', href: 'https://xyflow.com/contact' },
-
   // 3. Hidden Routes from Navigation
   index: { display: 'hidden' },
   'developer-survey-2023': {
