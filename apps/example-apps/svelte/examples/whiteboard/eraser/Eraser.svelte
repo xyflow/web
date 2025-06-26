@@ -44,7 +44,7 @@
   const { screenToFlowPosition, deleteElements, getInternalNode } = useSvelteFlow();
   const nodes = useNodes();
   const edges = useEdges();
-  const store = useStore();
+  const store = $derived(useStore());
 
   // Canvas and rendering context references
   let canvas: HTMLCanvasElement | null = null;
@@ -70,6 +70,8 @@
   function handlePointerDown(e: PointerEvent) {
     const target = e.target as HTMLCanvasElement;
     target.setPointerCapture(e.pointerId);
+
+    console.log('he');
 
     isDrawing = true;
     trailPoints = [
