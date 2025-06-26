@@ -16,9 +16,8 @@ import {
   BaseNodeHeader,
   BaseNodeHeaderTitle,
 } from "@/registry/components/base-node";
-import { NodeProps, useNodeId, useReactFlow } from "@xyflow/react";
+import { useNodeId, useReactFlow } from "@xyflow/react";
 import { EllipsisVertical, Rocket, Trash } from "lucide-react";
-import { cn } from "@/lib/utils";
 
 export const BaseNodeSimpleDemo = memo(() => {
   return (
