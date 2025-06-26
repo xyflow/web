@@ -45,7 +45,7 @@ export function NumNode({ id, data }: NodeProps<NumNode>) {
 
   return (
     <BaseNode>
-      <BaseNodeHeader>
+      <BaseNodeHeader className="border-b">
         <BaseNodeHeaderTitle>Num</BaseNodeHeaderTitle>
 
         <DropdownMenu>
@@ -68,14 +68,14 @@ export function NumNode({ id, data }: NodeProps<NumNode>) {
       </BaseNodeHeader>
 
       <BaseNodeContent>
-        <div className="flex gap-2 items-center mb-10">
+        <div className="flex gap-2 items-center">
           <Button onClick={handleDecr}>-</Button>
           <pre>{String(data.value).padStart(3, ' ')}</pre>
           <Button onClick={handleIncr}>+</Button>
         </div>
       </BaseNodeContent>
 
-      <BaseNodeFooter className="bg-gray-100 ">
+      <BaseNodeFooter className="bg-gray-100 items-end px-0 py-1 w-full">
         <LabeledHandle title="out" type="source" position={Position.Right} />
       </BaseNodeFooter>
     </BaseNode>

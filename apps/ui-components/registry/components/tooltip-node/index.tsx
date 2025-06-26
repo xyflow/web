@@ -1,14 +1,13 @@
+import { BaseNode } from "@/registry/components/base-node";
+import { NodeProps, NodeToolbar, NodeToolbarProps } from "@xyflow/react";
 import React, {
   createContext,
+  forwardRef,
+  ReactNode,
+  useCallback,
   useContext,
   useState,
-  useCallback,
-  ReactNode,
-  forwardRef,
-  HTMLAttributes,
 } from "react";
-import { NodeToolbar, NodeProps, NodeToolbarProps } from "@xyflow/react";
-import { BaseNode } from "@/registry/components/base-node";
 
 /* TOOLTIP CONTEXT ---------------------------------------------------------- */
 

@@ -1,6 +1,13 @@
-import React, { createContext, useContext, useState, useCallback } from 'react';
-import { type NodeProps, type NodeToolbarProps, NodeToolbar } from '@xyflow/react';
 import { BaseNode } from './base-node';
+import { NodeProps, NodeToolbar, NodeToolbarProps } from '@xyflow/react';
+import React, {
+  createContext,
+  forwardRef,
+  ReactNode,
+  useCallback,
+  useContext,
+  useState,
+} from 'react';
 
 /* TOOLTIP CONTEXT ---------------------------------------------------------- */
 
@@ -8,14 +15,14 @@ const TooltipContext = createContext(false);
 
 /* TOOLTIP NODE ------------------------------------------------------------- */
 
-export interface TooltipNodeProps extends Partial<NodeProps> {
-  children?: React.ReactNode;
-}
+export type TooltipNodeProps = Partial<NodeProps> & {
+  children?: ReactNode;
+};
 
 /**
  * A component that wraps a node and provides tooltip visibility context.
  */
-export const TooltipNode = React.forwardRef<HTMLDivElement, TooltipNodeProps>(
+export const TooltipNode = forwardRef<HTMLDivElement, TooltipNodeProps>(
   ({ children }, ref) => {
     const [isTooltipVisible, setTooltipVisible] = useState(false);
 
@@ -43,12 +50,12 @@ TooltipNode.displayName = 'TooltipNode';
 
 /* TOOLTIP CONTENT ---------------------------------------------------------- */
 
-export interface TooltipContentProps extends NodeToolbarProps {}
+export type TooltipContentProps = NodeToolbarProps;
 
 /**
  * A component that displays the tooltip content based on visibility context.
  */
-export const TooltipContent = React.forwardRef<HTMLDivElement, TooltipContentProps>(
+export const TooltipContent = forwardRef<HTMLDivElement, TooltipContentProps>(
   ({ position, children }, ref) => {
     const isTooltipVisible = useContext(TooltipContext);
 
@@ -74,7 +81,7 @@ TooltipContent.displayName = 'TooltipContent';
 /**
  * A component that triggers the tooltip visibility.
  */
-export const TooltipTrigger = React.forwardRef<
+export const TooltipTrigger = forwardRef<
   HTMLParagraphElement,
   React.HTMLAttributes<HTMLParagraphElement>
 >(({ children, ...props }, ref) => {

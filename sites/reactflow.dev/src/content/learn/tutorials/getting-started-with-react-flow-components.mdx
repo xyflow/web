@@ -226,8 +226,6 @@ export default App;
 
 Ok, not super exciting...
 
-{/* TODO Update screenshot */}
-
 <Image
   src="/img/tutorials/components/base-node.png"
   alt="A screenshot of a simple React application. It renders one element, a
@@ -279,18 +277,24 @@ basic setup as most of our examples so we won't break down the individual pieces
 here. If you're still new to React Flow and want to learn a bit more about how to
 set up a basic flow from scratch, check out our [quickstart guide](/learn).
 
-```tsx filename="src/App.tsx" {14,16-18,20-33,}
+{/* TODO this could be linked to example app with RemoteCodeViewer editor */}
+
+```tsx filename="src/App.tsx"
+import React from 'react';
+import { ReactFlow, type Node, Position, useNodesState } from '@xyflow/react';
+
 import '@xyflow/react/dist/style.css';
 
-import { ReactFlow, Position, useNodesState, Node } from '@xyflow/react';
-
-import { TooltipNode, TooltipContent, TooltipTrigger } from '@/components/tooltip-node';
+import { TooltipNode, TooltipContent, TooltipTrigger } from './components/tooltip-node';
+import { BaseNodeContent } from './components/base-node';
 
 function Tooltip() {
   return (
     <TooltipNode>
       <TooltipContent position={Position.Top}>Hidden Content</TooltipContent>
-      <TooltipTrigger>Hover</TooltipTrigger>
+      <BaseNodeContent>
+        <TooltipTrigger>Hover</TooltipTrigger>
+      </BaseNodeContent>
     </TooltipNode>
   );
 }
@@ -308,22 +312,23 @@ const initialNodes: Node[] = [
   },
 ];
 
-function App() {
+function Flow() {
   const [nodes, , onNodesChange] = useNodesState(initialNodes);
 
   return (
-    <div className="h-screen w-screen p-8">
+    <div className="h-screen w-screen p-8 bg-gray-50 rounded-xl">
       <ReactFlow
         nodes={nodes}
-        onNodesChange={onNodesChange}
         nodeTypes={nodeTypes}
+        onNodesChange={onNodesChange}
         fitView
       />
     </div>
   );
 }
-
-export default App;
+export function App() {
+  return <Flow />;
+}
 ```
 
 And would you look at that, the tooltip node we added automatically uses the
@@ -344,20 +349,11 @@ flow.
 
 First let's remove the `<TooltipNode />` and undo our changes to `<BaseNode />`.
 In addition to pre-made nodes, React Flow Components also contains building blocks
-for creating your own custom nodes. To see them, we'll add the `node-header` and
-`labeled-handle` components:
+for creating your own custom nodes. To see them, we'll add the `labeled-handle` component:
 
 ```bash copy npm2yarn
-npx shadcn@latest add \
-  https://ui.reactflow.dev/node-header \
-  https://ui.reactflow.dev/labeled-handle
+npx shadcn@latest add https://ui.reactflow.dev/labeled-handle
 ```
-
-<Callout type="info">
-  Notice how adding the `node-header` component also brought with it some standard
-  shadcn/ui components! This lets us at React Flow build richer components for you to use
-  without re-inventing the wheel for things like dropdowns and popovers.
-</Callout>
 
 The first node we'll create is a simple number node with some buttons to increment
 and decrement the value and a handle to connect it to other nodes. Create a folder
@@ -366,14 +362,27 @@ and decrement the value and a handle to connect it to other nodes. Create a fold
 Paste the following into the new file:
 
 ```tsx filename="src/components/nodes/num-node.tsx"
-import React, { useCallback } from 'react';
 import { type Node, type NodeProps, Position, useReactFlow } from '@xyflow/react';
+import { useCallback } from 'react';
 
-import { BaseNode, BaseNodeHeader, BaseNodeHeaderTitle } from '@/components/base-node';
+import {
+  BaseNode,
+  BaseNodeContent,
+  BaseNodeFooter,
+  BaseNodeHeader,
+  BaseNodeHeaderTitle,
+} from '@/components/base-node';
 import { LabeledHandle } from '@/components/labeled-handle';
 
+import { EllipsisVertical } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { DropdownMenuItem } from '@/components/ui/dropdown-menu';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 
 export type NumNode = Node<{
   value: number;
@@ -400,9 +409,9 @@ export function NumNode({ id, data }: NodeProps<NumNode>) {
 
   return (
     <BaseNode>
-      <BaseNodeHeader>
+      <BaseNodeHeader className="border-b">
         <BaseNodeHeaderTitle>Num</BaseNodeHeaderTitle>
-        
+
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button
@@ -420,17 +429,19 @@ export function NumNode({ id, data }: NodeProps<NumNode>) {
             <DropdownMenuItem onSelect={handleDelete}>Delete</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
-     </BaseNodeHeader>
+      </BaseNodeHeader>
 
-      <div className="flex gap-2 items-center mb-10">
-        <Button onClick={handleDecr}>-</Button>
-        <pre>{String(data.value).padStart(3, ' ')}</pre>
-        <Button onClick={handleIncr}>+</Button>
-      </div>
+      <BaseNodeContent>
+        <div className="flex gap-2 items-center">
+          <Button onClick={handleDecr}>-</Button>
+          <pre>{String(data.value).padStart(3, ' ')}</pre>
+          <Button onClick={handleIncr}>+</Button>
+        </div>
+      </BaseNodeContent>
 
-      <footer className="bg-gray-100 -m-5">
+      <BaseNodeFooter className="bg-gray-100 items-end px-0 py-1 w-full">
         <LabeledHandle title="out" type="source" position={Position.Right} />
-      </footer>
+      </BaseNodeFooter>
     </BaseNode>
   );
 }
@@ -464,7 +475,6 @@ We don't need to add any additional components for this node, so go ahead and
 create a new file `src/components/nodes/sum-node.tsx` and paste in the following:
 
 ```tsx filename="src/components/nodes/sum-node.tsx"
-import React, { useEffect } from 'react';
 import {
   type Node,
   type NodeProps,
@@ -472,8 +482,9 @@ import {
   useReactFlow,
   useStore,
 } from '@xyflow/react';
+import { useEffect } from 'react';
 
-import { BaseNode, BaseNodeHeader, BaseNodeHeaderTitle, BaseNodeContent } from '../base-node';
+import { BaseNode, BaseNodeHeader, BaseNodeHeaderTitle } from '../base-node';
 import { LabeledHandle } from '../labeled-handle';
 
 export type SumNode = Node<{
@@ -503,11 +514,11 @@ export function SumNode({ id }: NodeProps<SumNode>) {
         <BaseNodeHeaderTitle>Sum</BaseNodeHeaderTitle>
       </BaseNodeHeader>
 
-      <BaseNodeFooter className="bg-gray-100 -m-5">
+      <footer className="bg-gray-100">
         <LabeledHandle title="x" id="x" type="target" position={Position.Left} />
         <LabeledHandle title="y" id="y" type="target" position={Position.Left} />
         <LabeledHandle title="out" type="source" position={Position.Right} />
-      </BaseNodeFooter>
+      </footer>
     </BaseNode>
   );
 }
@@ -543,7 +554,7 @@ in a `"value"` property so we'll update our `edgeType` object to include the new
 `data-edge` and we'll update the `onConnect` handler to create a new edge of this
 type, making sure to set the edge's `data` object correctly:
 
-```tsx
+```tsx filename="src/App.tsx"
 import '@xyflow/react/dist/style.css';
 
 import {
@@ -668,7 +679,7 @@ We've learned:
 - How editing the [`<BaseNode />`](/components/nodes/base-node) component will
   affect other nodes pulled from the React Flow Components registry.
 
-- How to use building blocks like the [`<NodeHeader />`](/components/node-blocks/node-header)
+- How to use building blocks like the [`<BaseNodeHeader />`](/components/node-blocks/base-node)
   and [`<LabeledHandle />`](components/handles/labeled-handle) components to build
   our own custom nodes without starting from scratch.
 
