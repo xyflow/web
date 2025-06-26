@@ -1,8 +1,6 @@
-import React, { memo } from 'react';
 import { Handle, Position } from '@xyflow/react';
+import { memo } from 'react';
 import styled from 'styled-components';
-
-// TODO: update selected using tailwind selectors
 
 const Node = styled.div`
   padding: 10px 20px;
