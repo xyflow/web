@@ -415,11 +415,57 @@ In the snippet above we've highlighted the imports and components that come from
 shadcn/ui and React Flow Components. In just a few lines of code we already have
 quite a capable node:
 
+---
+
+# TODO: Just showing various RemoteCodeViewer examples here in this tutorial 
+
+## Full RemoteCodeViewer
+
+<RemoteCodeViewer
+  route="tutorials/components/num-node"
+  framework="react"
+  showEditor={true}
+/>
+
+## RemoteCodeViewer with showPreview=false (Editor Only)
+
+<RemoteCodeViewer
+  route="tutorials/components/num-node"
+  framework="react"
+  showEditor={true}
+  showPreview={false}
+/>
+
+## RemoteCodeViewer with showPreview=true (Preview Only)
+
 <RemoteCodeViewer
   route="tutorials/components/num-node"
   framework="react"
   showEditor={false}
 />
+
+## Full RemoteCodeViewer with orientation='vertical'
+
+<RemoteCodeViewer
+  route="tutorials/components/num-node"
+  framework="react"
+  showEditor={true}
+  showPreview={true}
+  orientation='vertical'
+/>
+
+## RemoteCodeViewer with showFiletab=false (No File Tabs) and no preview, just behaving as code snippet viewer.
+
+<RemoteCodeViewer
+  route="tutorials/components/num-node"
+  framework="react"
+  showEditor={true}
+  showPreview={false}
+  showFiletab={false}
+  activeFile='components/nodes/num-node.tsx'
+/>
+
+---
 
 Our `<NumNode />` component...
 
