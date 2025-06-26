@@ -71,19 +71,18 @@ TooltipContent.displayName = 'TooltipContent';
 
 /* TOOLTIP TRIGGER ---------------------------------------------------------- */
 
-export interface TooltipTriggerProps extends React.HTMLAttributes<HTMLParagraphElement> {}
-
 /**
  * A component that triggers the tooltip visibility.
  */
-export const TooltipTrigger = React.forwardRef<HTMLParagraphElement, TooltipTriggerProps>(
-  ({ children, ...props }, ref) => {
-    return (
-      <div ref={ref} {...props}>
-        {children}
-      </div>
-    );
-  },
-);
+export const TooltipTrigger = React.forwardRef<
+  HTMLParagraphElement,
+  React.HTMLAttributes<HTMLParagraphElement>
+>(({ children, ...props }, ref) => {
+  return (
+    <div ref={ref} {...props}>
+      {children}
+    </div>
+  );
+});
 
 TooltipTrigger.displayName = 'TooltipTrigger';
