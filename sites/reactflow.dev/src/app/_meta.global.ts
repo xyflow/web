@@ -10,7 +10,7 @@ const gettingStarted = {
 };
 const customization = {
   'custom-nodes': '',
-  'handles': '',
+  handles: '',
   'custom-edges': '',
   'edge-labels': '',
   'utility-classes': '',
@@ -56,7 +56,6 @@ const components = {
       'tooltip-node': '',
       'placeholder-node': '',
       'database-schema-node': '',
-      'annotation-node': '',
       'labeled-group-node': '',
       'node-header': '',
     },

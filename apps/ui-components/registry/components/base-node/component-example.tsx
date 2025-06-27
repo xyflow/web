@@ -17,7 +17,7 @@ import {
   BaseNodeHeaderTitle,
 } from "@/registry/components/base-node";
 import { useNodeId, useReactFlow } from "@xyflow/react";
-import { EllipsisVertical, Rocket, Trash } from "lucide-react";
+import { ArrowDownRight, EllipsisVertical, Rocket, Trash } from "lucide-react";
 
 export const BaseNodeSimpleDemo = memo(() => {
   return (
@@ -86,6 +86,21 @@ export const BaseNodeFullDemo = memo(() => {
         <Button variant="outline" className="nodrag w-full">
           Action 1
         </Button>
+      </BaseNodeFooter>
+    </BaseNode>
+  );
+});
+
+export const AnnotationBaseNodeDemo = memo(() => {
+  return (
+    <BaseNode className="border-none bg-transparent text-sm text-secondary-foreground">
+      {/* Annotation Node Number */}
+      <div className="absolute -left-1 top-2 text-xs leading-snug">1.</div>
+      <BaseNodeContent className="pb-0 leading-snug">
+        Annotate your flows any way you'd like.
+      </BaseNodeContent>
+      <BaseNodeFooter className="items-end border-none p-0">
+        <ArrowDownRight />
       </BaseNodeFooter>
     </BaseNode>
   );
