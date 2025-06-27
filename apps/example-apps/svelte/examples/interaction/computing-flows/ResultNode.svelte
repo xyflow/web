@@ -12,12 +12,12 @@
     type Node,
   } from '@xyflow/svelte';
 
-  const connections = useNodeConnections({
+  let connections = useNodeConnections({
     handleType: 'target',
   });
 
-  const nodesData = useNodesData(
-    connections.current.map((connection) => connection.source),
+  const nodesData = $derived(
+    useNodesData(connections.current.map((connection) => connection.source)),
   );
 </script>
 
