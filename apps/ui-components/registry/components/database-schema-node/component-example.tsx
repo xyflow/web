@@ -20,7 +20,7 @@ export type DatabaseSchemaNodeData = {
 const DatabaseSchemaDemo = memo(
   ({ data, selected }: DatabaseSchemaNodeData) => {
     return (
-      <DatabaseSchemaNode className="p-0" selected={selected}>
+      <DatabaseSchemaNode className="p-0">
         <DatabaseSchemaNodeHeader>{data.label}</DatabaseSchemaNodeHeader>
         <DatabaseSchemaNodeBody>
           {data.schema.map((entry) => (

@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import {
   type Node,
   type NodeProps,
@@ -6,10 +5,10 @@ import {
   useReactFlow,
   useStore,
 } from '@xyflow/react';
+import { useEffect } from 'react';
 
-import { BaseNode } from '../base-node';
+import { BaseNode, BaseNodeHeader, BaseNodeHeaderTitle } from '../base-node';
 import { LabeledHandle } from '../labeled-handle';
-import { NodeHeader, NodeHeaderTitle } from '../node-header';
 
 export type SumNode = Node<{
   value: number;
@@ -34,23 +33,13 @@ export function SumNode({ id }: NodeProps<SumNode>) {
 
   return (
     <BaseNode className="w-32">
-      <NodeHeader>
-        <NodeHeaderTitle>Sum</NodeHeaderTitle>
-      </NodeHeader>
+      <BaseNodeHeader>
+        <BaseNodeHeaderTitle>Sum</BaseNodeHeaderTitle>
+      </BaseNodeHeader>
 
-      <footer className="bg-gray-100 -m-5">
-        <LabeledHandle
-          title="x"
-          id="x"
-          type="target"
-          position={Position.Left}
-        />
-        <LabeledHandle
-          title="y"
-          id="y"
-          type="target"
-          position={Position.Left}
-        />
+      <footer className="bg-gray-100">
+        <LabeledHandle title="x" id="x" type="target" position={Position.Left} />
+        <LabeledHandle title="y" id="y" type="target" position={Position.Left} />
         <LabeledHandle title="out" type="source" position={Position.Right} />
       </footer>
     </BaseNode>

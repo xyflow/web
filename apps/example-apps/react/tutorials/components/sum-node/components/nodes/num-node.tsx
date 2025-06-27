@@ -1,21 +1,24 @@
-import React, { useCallback } from 'react';
-import {
-  type Node,
-  type NodeProps,
-  Position,
-  useReactFlow,
-} from '@xyflow/react';
+import { type Node, type NodeProps, Position, useReactFlow } from '@xyflow/react';
+import { useCallback } from 'react';
 
-import { BaseNode } from '../base-node';
-import { LabeledHandle } from '../labeled-handle';
 import {
-  NodeHeader,
-  NodeHeaderTitle,
-  NodeHeaderActions,
-  NodeHeaderMenuAction,
-} from '../node-header';
+  BaseNode,
+  BaseNodeContent,
+  BaseNodeFooter,
+  BaseNodeHeader,
+  BaseNodeHeaderTitle,
+} from '../base-node';
+import { LabeledHandle } from '../labeled-handle';
+
+import { EllipsisVertical } from 'lucide-react';
 import { Button } from '../ui/button';
-import { DropdownMenuItem } from '../ui/dropdown-menu';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuTrigger,
+} from '../ui/dropdown-menu';
 
 export type NumNode = Node<{
   value: number;
@@ -42,25 +45,39 @@ export function NumNode({ id, data }: NodeProps<NumNode>) {
 
   return (
     <BaseNode>
-      <NodeHeader>
-        <NodeHeaderTitle>Num</NodeHeaderTitle>
-        <NodeHeaderActions>
-          <NodeHeaderMenuAction label="Expand account options">
+      <BaseNodeHeader className="border-b">
+        <BaseNodeHeaderTitle>Num</BaseNodeHeaderTitle>
+
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button
+              variant="ghost"
+              className="nodrag p-1"
+              aria-label="Node Actions"
+              title="Node Actions"
+            >
+              <EllipsisVertical className="size-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <DropdownMenuLabel>Node Actions</DropdownMenuLabel>
             <DropdownMenuItem onSelect={handleReset}>Reset</DropdownMenuItem>
             <DropdownMenuItem onSelect={handleDelete}>Delete</DropdownMenuItem>
-          </NodeHeaderMenuAction>
-        </NodeHeaderActions>
-      </NodeHeader>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </BaseNodeHeader>
 
-      <div className="flex gap-2 items-center mb-10">
-        <Button onClick={handleDecr}>-</Button>
-        <pre>{String(data.value).padStart(3, ' ')}</pre>
-        <Button onClick={handleIncr}>+</Button>
-      </div>
+      <BaseNodeContent>
+        <div className="flex gap-2 items-center">
+          <Button onClick={handleDecr}>-</Button>
+          <pre>{String(data.value).padStart(3, ' ')}</pre>
+          <Button onClick={handleIncr}>+</Button>
+        </div>
+      </BaseNodeContent>
 
-      <footer className="bg-gray-100 -m-5">
+      <BaseNodeFooter className="bg-gray-100 items-end px-0 py-1 w-full">
         <LabeledHandle title="out" type="source" position={Position.Right} />
-      </footer>
+      </BaseNodeFooter>
     </BaseNode>
   );
 }

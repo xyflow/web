@@ -3,17 +3,16 @@ import { ReactFlow, type Node, Position, useNodesState } from '@xyflow/react';
 
 import '@xyflow/react/dist/style.css';
 
-import {
-  TooltipNode,
-  TooltipContent,
-  TooltipTrigger,
-} from './components/tooltip-node';
+import { TooltipNode, TooltipContent, TooltipTrigger } from './components/tooltip-node';
+import { BaseNodeContent } from './components/base-node';
 
 function Tooltip() {
   return (
     <TooltipNode>
       <TooltipContent position={Position.Top}>Hidden Content</TooltipContent>
-      <TooltipTrigger>Hover</TooltipTrigger>
+      <BaseNodeContent>
+        <TooltipTrigger>Hover</TooltipTrigger>
+      </BaseNodeContent>
     </TooltipNode>
   );
 }
