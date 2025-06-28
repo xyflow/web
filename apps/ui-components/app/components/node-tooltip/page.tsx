@@ -1,6 +1,6 @@
 "use client";
 
-import TooltipNodeApp from "@/registry/components/tooltip-node/app-example";
+import TooltipNodeApp from "@/registry/components/node-tooltip/app-example";
 
 import DemoWrapper from "@/components/demo-wrapper";
 
