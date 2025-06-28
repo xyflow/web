@@ -106,7 +106,7 @@ export type InternalRoute =
   | '/components/labeled-handle'
   | '/components/motivation'
   | '/components/placeholder-node'
-  | '/components/tooltip-node'
+  | '/components/node-tooltip'
   | '/components/zoom-slider'
   | '/developer-survey-2023'
   | '/examples'
