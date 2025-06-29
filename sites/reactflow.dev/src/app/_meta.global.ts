@@ -1,22 +1,20 @@
 const concepts = {
-  introduction: '',
   'terms-and-definitions': '',
-  'core-concepts': '',
-  'the-viewport': '',
-};
-const gettingStarted = {
-  'installation-and-requirements': '',
   'building-a-flow': '',
+  'adding-interactivity': '',
+  'the-viewport': '',
+  'built-in-components': '',
 };
 const customization = {
   'custom-nodes': '',
-  'handles': '',
+  handles: '',
   'custom-edges': '',
   'edge-labels': '',
   'utility-classes': '',
   theming: '',
 };
 const advanced = {
+  'hooks-providers': '',
   accessibility: '',
   testing: '',
   typescript: '',
@@ -31,7 +29,7 @@ const tutorials = {
   'mind-map-app-with-react-flow': '',
 };
 const troubleshooting = {
-  index: '',
+  'common-errors': '',
   'remove-attribution': '',
   'migrate-to-v12': '',
   'migrate-to-v11': '',
@@ -93,9 +91,10 @@ const metaRecord = {
   // 1. Default Routes
   learn: {
     items: {
-      index: '',
-      concepts: { items: concepts },
-      'getting-started': { items: gettingStarted },
+      concepts: {
+        title: 'Core Concepts',
+        items: concepts,
+      },
       customization: {
         items: customization,
         title: 'Customization',

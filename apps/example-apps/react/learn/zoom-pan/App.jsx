@@ -1,5 +1,6 @@
 import { useCallback } from 'react';
 import {
+  Background,
   ReactFlow,
   addEdge,
   useEdgesState,
@@ -26,7 +27,10 @@ function Flow() {
       onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
       onConnect={onConnect}
-    />
+      fitView
+    >
+      <Background/>
+    </ReactFlow>
   );
 }
 

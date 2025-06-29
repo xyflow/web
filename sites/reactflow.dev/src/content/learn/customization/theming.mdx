@@ -213,33 +213,6 @@ import '@xyflow/react/dist/base.css';
   framework="react"
 />
 
-### Styled Components
-
-Many of the components you render directly, such as the
-[`<MiniMap />`](/api-reference/components/minimap), accept both `className` and
-`style` props. This means you can use any styling solution you like, such as
-[Styled Components](https://styled-components.com/):
-
-```jsx
-import { MiniMap } from '@xyflow/react';
-
-const StyledMiniMap = styled(MiniMap)`
-  background-color: ${(props) => props.theme.bg};
-
-  .react-flow__minimap-mask {
-    fill: ${(props) => props.theme.minimapMaskBg};
-  }
-
-  .react-flow__minimap-node {
-    fill: ${(props) => props.theme.nodeBg};
-    stroke: none;
-  }
-`;
-```
-
-For a complete example of using Styled Components with React Flow, check out
-[the example](/examples/styling/styled-components)!
-
 ### TailwindCSS
 
 Custom nodes and edges are just React components, and you can use any styling

@@ -26,7 +26,7 @@ React Flow provides keyboard and screen-reader support to help meet accessibilit
 </ReactFlow>
 ```
 
-## Built-in Features
+## Built-in features
 
 - **Tab navigation:** Pressing `Tab` moves focus through all focusable nodes and edges. These elements receive `tabIndex={0}` and, by default, `role="group"` to handle interactivity.
 - **Select/Deselect:** Press `Enter` or `Space` to select the focused node/edge, and `Escape` to clear the selection.
@@ -39,7 +39,7 @@ React Flow provides keyboard and screen-reader support to help meet accessibilit
   are set to `true`. If either is false, corresponding elements will not be
   keyboard-focusable.
 </Callout>
-## ARIA Roles for Nodes and Edges
+## ARIA roles for nodes and edges
 
 By default, React Flow uses semantic ARIA roles for interactive elements. You can override a node’s role using the `ariaRole` prop. For example:
 
@@ -58,7 +58,7 @@ By, default, if you don’t set a role, `role="group"` is applied. Customizing `
 
 **Note:** The `ariaRole` is applied to the node wrapper. If a custom node includes interactive elements, avoid setting `ariaRole: 'button'` on the node itself. Instead, apply the appropriate ARIA role directly to the interactive element.
 
-### DOM Attributes
+### DOM attributes
 
 To pass custom ARIA attributes or other DOM-level attributes (e.g., `aria-roledescription`, `data-\*`,`tabIndex`, etc.), you can use the `domAttributes` prop. This is available for both nodes and edges:
 
@@ -78,7 +78,7 @@ To pass custom ARIA attributes or other DOM-level attributes (e.g., `aria-rolede
 
 This gives you full control over accessibility-related attributes while maintaining React Flow’s built-in roles and behaviors.
 
-## Localizing Accessibility Messages
+## Localizing accessibility messages
 
 React Flow’s built-in accessibility text (such as keyboard instructions and live updates) can be customized or localized via the [ariaLabelConfig](/api-reference/react-flow#arialabelconfig) prop on`<ReactFlow>`. This prop takes an object mapping message keys to strings or functions. Keys include:
 
