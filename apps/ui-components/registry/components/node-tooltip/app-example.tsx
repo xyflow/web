@@ -2,7 +2,7 @@ import { Background, ReactFlow } from "@xyflow/react";
 import NodeTooltipDemo from "./component-example";
 
 const nodeTypes = {
-  tooltipNode: NodeTooltipDemo,
+  nodeTooltip: NodeTooltipDemo,
 };
 
 const defaultNodes = [
@@ -10,7 +10,7 @@ const defaultNodes = [
     id: "1",
     position: { x: 200, y: 200 },
     data: {},
-    type: "tooltipNode",
+    type: "nodeTooltip",
   },
 ];
 
