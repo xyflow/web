@@ -14,10 +14,13 @@ Similarly to [shadcn ui's card](https://ui.shadcn.com/docs/components/card) the 
 - The `BaseNodeContent` container where you would add the main contents of the node.
 - The `BaseNodeFooter` container where you may want to add extra information, or visible actions.
 
-You should use the `nodrag` [Tailwind CSS](https://tailwindcss.com/) utility
-class on buttons and interactive components of your node, to disable dragging
-the node inside the flow, for example when clicking on buttons or sliders that you may
-want to add in the your custom node.
+In case you need to fine-tune how interactions like dragging and scrolling work with your custom components, 
+React Flow provides [several CSS utility classes](/learn/customization/utility-classes)
+
+You should use the `nodrag` [React Flow utility class](/learn/customization/utility-classes)
+interactive components of your node such as buttons, to disable dragging
+the node inside the flow when the user is interactive with buttons or sliders that you may
+want to add in your custom node.
 
 Here below, you can find a simple example of three custom nodes, using the `BaseNode` components.
 
