@@ -1,14 +1,13 @@
-import React from 'react';
-import { ReactFlow, type Node, Position, useNodesState } from '@xyflow/react';
+import { Position, ReactFlow, useNodesState, type Node } from '@xyflow/react';
 
 import '@xyflow/react/dist/style.css';
 
+import { BaseNode, BaseNodeContent } from './components/base-node';
 import {
   NodeTooltip,
   NodeTooltipContent,
   NodeTooltipTrigger,
 } from './components/node-tooltip';
-import { BaseNode, BaseNodeContent } from './components/base-node';
 
 function Tooltip() {
   return (
