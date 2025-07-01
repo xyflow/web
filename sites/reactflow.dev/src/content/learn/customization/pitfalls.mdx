@@ -1,0 +1,49 @@
+---
+description:
+---
+
+import { RemoteCodeViewer } from 'xy-shared/server';
+import { Callout } from 'nextra/components';
+
+# Common Pitfalls
+
+When you start customizing React Flow, there are a few common pitfalls to be 
+aware of.
+
+## Creating objects on every render
+
+When creating objects for nodes, nodeTypes et cetera, avoid creating new 
+instances on every render. This can lead to performance issues and unnecessary 
+re-renders. Instead, define them outside of your React component or call 
+`useMemo`.
+
+```jsx "const initialNodes" "const initialEdges"
+import { useState, useCallback } from 'react';
+import { ReactFlow, applyNodeChanges, applyEdgeChanges, addEdge } from '@xyflow/react';
+import '@xyflow/react/dist/style.css';
+
+const initialNodes = [
+  { id: 'n1', position: { x: 0, y: 0 }, data: { label: 'Node 1' } },
+  { id: 'n2', position: { x: 0, y: 100 }, data: { label: 'Node 2' } },
+  { id: 'n3', position: { x: 100, y: 100 }, data: { label: 'Node 3' } },
+];
+const initialEdges = [
+  { id: 'n1-n2', source: 'n1', target: 'n2' },
+  { id: 'n1-n3', source: 'n1', target: 'n3' },
+];
+
+export default function App() {
+  return (
+    <div style={{ width: '100vw', height: '100vh' }}>
+      <ReactFlow nodes={initialNodes} edges={initialEdges} />
+    </div>
+  );
+}
+```
+
+## Mutating nodes and edges
+
+Nodes and edges are kept in state, and React Flow relies on immutability to
+properly update the flow. If you want to update nodes or edges, use onChange
+handlers like `onNodesChange` and `onEdgesChange` in combination with Reacts
+useState hook.
