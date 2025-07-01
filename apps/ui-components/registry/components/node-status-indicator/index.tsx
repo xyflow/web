@@ -1,12 +1,48 @@
-import React, { ReactNode } from "react";
 import clsx from "clsx";
+import { LoaderCircle } from "lucide-react";
+import { ReactNode } from "react";
+
+// *------------------- NodeStatusIndicator -------------------* //
+
+export type NodeStatus = "loading" | "success" | "error" | "initial";
+
+export type NodeStatusLoadingVariant = "overlay" | "border";
 
 export type NodeStatusIndicatorProps = {
-  status?: "loading" | "success" | "error" | "initial";
+  status?: NodeStatus;
+  loadingVariant?: NodeStatusLoadingVariant;
   children: ReactNode;
 };
 
-export const LoadingIndicator = ({ children }: { children: ReactNode }) => {
+export const SpinnerLoadingIndicator = ({
+  children,
+}: {
+  children: ReactNode;
+}) => {
+  return (
+    <div className="relative">
+      {/* Your content */}
+      <StatusBorder className="border-blue-700">{children}</StatusBorder>
+
+      <>
+        <div className="absolute inset-0 z-50 rounded-[7px] bg-background/50 backdrop-blur-sm" />
+        {/* flex flex-col items-center justify-center */}
+        <div className="absolute inset-0 z-50">
+          {/* <Spinner size="small" /> */}
+          <span className="absolute left-[calc(50%-1.25rem)] top-[calc(50%-1.25rem)] inline-block h-10 w-10 animate-ping rounded-full bg-blue-700/20" />
+
+          <LoaderCircle className="absolute left-[calc(50%)] top-[calc(50%)] size-6 animate-spin text-blue-700" />
+        </div>
+      </>
+    </div>
+  );
+};
+
+export const BorderLoadingIndicator = ({
+  children,
+}: {
+  children: ReactNode;
+}) => {
   return (
     <>
       <div className="absolute -left-[1px] -top-[1px] h-[calc(100%+2px)] w-[calc(100%+2px)]">
@@ -58,11 +94,16 @@ const StatusBorder = ({
 
 export const NodeStatusIndicator = ({
   status,
+  loadingVariant = "border",
   children,
 }: NodeStatusIndicatorProps) => {
   switch (status) {
     case "loading":
-      return <LoadingIndicator>{children}</LoadingIndicator>;
+      return loadingVariant === "border" ? (
+        <BorderLoadingIndicator>{children}</BorderLoadingIndicator>
+      ) : (
+        <SpinnerLoadingIndicator>{children}</SpinnerLoadingIndicator>
+      );
     case "success":
       return (
         <StatusBorder className="border-emerald-600">{children}</StatusBorder>
