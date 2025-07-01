@@ -1,11 +1,6 @@
-import { NodeToolbar, Position } from "@xyflow/react";
-import {
-  createContext,
-  forwardRef,
-  HTMLAttributes,
-  useContext,
-  useState,
-} from "react";
+import { cn } from "@/lib/utils";
+import { Position } from "@xyflow/react";
+import { createContext, forwardRef, HTMLAttributes, useContext } from "react";
 
 interface NodeBadgeProps extends HTMLAttributes<HTMLDivElement> {
   visible?: boolean;
@@ -29,6 +24,8 @@ export interface NodeBadgeContentProps extends HTMLAttributes<HTMLDivElement> {
   position?: Position;
 }
 
+// TODO: Maybe add variants for nice pre-defined styling?
+
 export const NodeBadgeContent = forwardRef<
   HTMLDivElement,
   NodeBadgeContentProps
@@ -38,13 +35,18 @@ export const NodeBadgeContent = forwardRef<
     throw new Error("NodeBadgeContent must be used within NodeBadge");
   }
 
-  return isVisible ? (
+  // Always render a div, but visually hide it when not visible
+  return (
     <div
       ref={ref}
-      className="node-badge-content relative flex flex-col items-end py-1"
+      className={cn(
+        "node-badge-content relative flex flex-col items-end py-1",
+        !isVisible && "invisible",
+      )}
+      aria-hidden={!isVisible}
       {...props}
     >
       {children}
     </div>
-  ) : null;
+  );
 });
