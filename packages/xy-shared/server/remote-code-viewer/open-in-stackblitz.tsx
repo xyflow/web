@@ -27,7 +27,7 @@ export function OpenInStackblitz({ framework, route }: OpenInStackblitzProps) {
     } catch (e) {}
   }, [framework, route]);
 
-  return <button onClick={openInStackblitz}>Stackblitz</button>;
+  return <button onClick={openInStackblitz}>Open in StackBlitz</button>;
 }
 
 function prepare(

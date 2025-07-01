@@ -8,18 +8,16 @@ export function ActionBar({ children, editor }) {
   return (
     <>
       <div
-        className={`flex px-2 py-1 gap-2 text-sm justify-end border-t ${isOpen ? 'border-b' : ''} 
-      border-gray-200 [&>button]:px-2 [&>button]:py-1 [&>button]:rounded [&>button:hover]:bg-gray-100`}
+        className={`flex px-2 py-2 gap-2 text-sm justify-end border-t ${isOpen ? 'border-b' : ''} 
+      border-gray-200 [&>button]:px-2 [&>button]:border-gray-200 [&>button]:border [&>button]:py-1 [&>button]:rounded-lg [&>button:hover]:bg-gray-100`}
       >
-        <button className="   " onClick={() => setIsOpen((isOpen) => !isOpen)}>
-          {isOpen ? 'Hide Editor' : 'Show Editor'}
-        </button>
         {children}
-        <button className="   " onClick={() => setIsOpen((isOpen) => !isOpen)}>
-          Copy
-        </button>
-        <button className="   " onClick={() => setIsOpen((isOpen) => !isOpen)}>
-          Reset
+        {/* <span className="border-l border-gray-200"></span> */}
+        <button
+          className={isOpen ? '' : 'text-[#ff0073]'}
+          onClick={() => setIsOpen((isOpen) => !isOpen)}
+        >
+          {isOpen ? 'Hide Editor' : 'Show Editor'}
         </button>
       </div>
       {isOpen && editor}

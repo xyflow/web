@@ -69,7 +69,7 @@ export function OpenInCodesandbox({
       <button
         onClick={openInCodesandbox}
       >
-        Codesandbox
+        Open in CodeSandbox
       </button>
     </>
   );
