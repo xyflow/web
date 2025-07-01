@@ -1,5 +1,6 @@
 {
   "private": true,
+  "name": "docs",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "build": "turbo run build",
@@ -13,6 +14,9 @@
     "format": "prettier --ignore-path .gitignore --write \"**/*.{ts,tsx,md}\"",
     "clean": "pnpm -r --parallel exec rimraf dist .turbo node_modules"
   },
+  "dependencies": {
+    "dotenv-cli": "^8.0.0"
+  },
   "devDependencies": {
     "@turbo/gen": "^2.5.0",
     "eslint": "^9.25.1",
@@ -23,8 +27,14 @@
     "typescript": "^5.8.3"
   },
   "packageManager": "pnpm@10.9.0",
-  "name": "docs",
-  "dependencies": {
-    "dotenv-cli": "^8.0.0"
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": ">=22.0.0"
+    },
+    "packageManager": {
+      "name": "pnpm",
+      "version": ">=10.0.0"
+    }
   }
 }
