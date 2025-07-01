@@ -2,8 +2,6 @@ import clsx from "clsx";
 import { LoaderCircle } from "lucide-react";
 import { ReactNode } from "react";
 
-// *------------------- NodeStatusIndicator -------------------* //
-
 export type NodeStatus = "loading" | "success" | "error" | "initial";
 
 export type NodeStatusLoadingVariant = "overlay" | "border";
@@ -26,7 +24,6 @@ export const SpinnerLoadingIndicator = ({
 
       <>
         <div className="absolute inset-0 z-50 rounded-[7px] bg-background/50 backdrop-blur-sm" />
-        {/* flex flex-col items-center justify-center */}
         <div className="absolute inset-0 z-50">
           {/* <Spinner size="small" /> */}
           <span className="absolute left-[calc(50%-1.25rem)] top-[calc(50%-1.25rem)] inline-block h-10 w-10 animate-ping rounded-full bg-blue-700/20" />

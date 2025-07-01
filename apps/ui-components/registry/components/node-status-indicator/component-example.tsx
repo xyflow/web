@@ -1,9 +1,5 @@
-import {
-  NodeStatusIndicator,
-  NodeStatusLoadingVariant,
-} from "@/registry/components/node-status-indicator";
 import { BaseNode, BaseNodeContent } from "@/registry/components/base-node";
-import { NodeProps, type Node } from "@xyflow/react";
+import { NodeStatusIndicator } from "@/registry/components/node-status-indicator";
 
 export const LoadingNode = () => {
   return (
