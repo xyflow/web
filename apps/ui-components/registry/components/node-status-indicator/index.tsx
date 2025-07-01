@@ -19,18 +19,14 @@ export const SpinnerLoadingIndicator = ({
 }) => {
   return (
     <div className="relative">
-      {/* Your content */}
-      <StatusBorder className="border-blue-700">{children}</StatusBorder>
+      <StatusBorder className="border-blue-700/40">{children}</StatusBorder>
 
-      <>
-        <div className="absolute inset-0 z-50 rounded-[7px] bg-background/50 backdrop-blur-sm" />
-        <div className="absolute inset-0 z-50">
-          {/* <Spinner size="small" /> */}
-          <span className="absolute left-[calc(50%-1.25rem)] top-[calc(50%-1.25rem)] inline-block h-10 w-10 animate-ping rounded-full bg-blue-700/20" />
+      <div className="absolute inset-0 z-50 rounded-[7px] bg-background/50 backdrop-blur-sm" />
+      <div className="absolute inset-0 z-50">
+        <span className="absolute left-[calc(50%-1.25rem)] top-[calc(50%-1.25rem)] inline-block h-10 w-10 animate-ping rounded-full bg-blue-700/20" />
 
-          <LoaderCircle className="absolute left-[calc(50%)] top-[calc(50%)] size-6 animate-spin text-blue-700" />
-        </div>
-      </>
+        <LoaderCircle className="absolute left-[calc(50%)] top-[calc(50%)] size-6 animate-spin text-blue-700" />
+      </div>
     </div>
   );
 };
