@@ -1,14 +1,13 @@
+import { BaseNode } from "@/registry/components/base-node";
+import { NodeProps, NodeToolbar, NodeToolbarProps } from "@xyflow/react";
 import React, {
   createContext,
+  forwardRef,
+  ReactNode,
+  useCallback,
   useContext,
   useState,
-  useCallback,
-  ReactNode,
-  forwardRef,
-  HTMLAttributes,
 } from "react";
-import { NodeToolbar, NodeProps, NodeToolbarProps } from "@xyflow/react";
-import { BaseNode } from "@/registry/components/base-node";
 
 /* TOOLTIP CONTEXT ---------------------------------------------------------- */
 
@@ -24,7 +23,7 @@ export type TooltipNodeProps = Partial<NodeProps> & {
  * A component that wraps a node and provides tooltip visibility context.
  */
 export const TooltipNode = forwardRef<HTMLDivElement, TooltipNodeProps>(
-  ({ selected, children }, ref) => {
+  ({ children }, ref) => {
     const [isTooltipVisible, setTooltipVisible] = useState(false);
 
     const showTooltip = useCallback(() => setTooltipVisible(true), []);
@@ -39,7 +38,6 @@ export const TooltipNode = forwardRef<HTMLDivElement, TooltipNodeProps>(
           onFocus={showTooltip}
           onBlur={hideTooltip}
           tabIndex={0}
-          selected={selected}
         >
           {children}
         </BaseNode>
@@ -80,14 +78,12 @@ TooltipContent.displayName = "TooltipContent";
 
 /* TOOLTIP TRIGGER ---------------------------------------------------------- */
 
-export type TooltipTriggerProps = HTMLAttributes<HTMLParagraphElement>;
-
 /**
  * A component that triggers the tooltip visibility.
  */
 export const TooltipTrigger = forwardRef<
   HTMLParagraphElement,
-  TooltipTriggerProps
+  React.HTMLAttributes<HTMLParagraphElement>
 >(({ children, ...props }, ref) => {
   return (
     <div ref={ref} {...props}>
