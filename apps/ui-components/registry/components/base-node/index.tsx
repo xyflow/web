@@ -12,7 +12,7 @@ export const BaseNode = forwardRef<
       className,
       "hover:ring-1",
       // React Flow displays node elements inside of a `NodeWrapper` component,
-      // which compiles down to a div with a the class `react-flow__node`.
+      // which compiles down to a div with the class `react-flow__node`.
       // When a node is selected, the class `selected` is added to the
       // `react-flow__node` element. This allows us to style the node when it
       // is selected, using Tailwind's `&` selector.
