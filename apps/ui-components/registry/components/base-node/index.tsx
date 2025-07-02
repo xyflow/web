@@ -23,6 +23,7 @@ export const BaseNode = forwardRef<
     {...props}
   />
 ));
+BaseNode.displayName = "BaseNode";
 
 /**
  * A container for a consistent header layout intended to be used inside the
@@ -43,6 +44,7 @@ export const BaseNodeHeader = forwardRef<
     )}
   />
 ));
+BaseNodeHeader.displayName = "BaseNodeHeader";
 
 /**
  * The title text for the node. To maintain a native application feel, the title
@@ -59,6 +61,7 @@ export const BaseNodeHeaderTitle = forwardRef<
     {...props}
   />
 ));
+BaseNodeHeaderTitle.displayName = "BaseNodeHeaderTitle";
 
 export const BaseNodeContent = forwardRef<
   HTMLDivElement,
@@ -71,6 +74,7 @@ export const BaseNodeContent = forwardRef<
     {...props}
   />
 ));
+BaseNodeContent.displayName = "BaseNodeContent";
 
 export const BaseNodeFooter = forwardRef<
   HTMLDivElement,
@@ -86,3 +90,4 @@ export const BaseNodeFooter = forwardRef<
     {...props}
   />
 ));
+BaseNodeFooter.displayName = "BaseNodeFooter";
