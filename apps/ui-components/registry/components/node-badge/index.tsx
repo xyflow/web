@@ -1,5 +1,4 @@
 import { cn } from "@/lib/utils";
-import { Position } from "@xyflow/react";
 import { createContext, forwardRef, HTMLAttributes, useContext } from "react";
 
 interface NodeBadgeProps extends HTMLAttributes<HTMLDivElement> {
@@ -20,16 +19,10 @@ export const NodeBadge = forwardRef<HTMLDivElement, NodeBadgeProps>(
   },
 );
 
-export interface NodeBadgeContentProps extends HTMLAttributes<HTMLDivElement> {
-  position?: Position;
-}
-
-// TODO: Maybe add variants for nice pre-defined styling?
-
 export const NodeBadgeContent = forwardRef<
   HTMLDivElement,
-  NodeBadgeContentProps
->(({ children, className, position = Position.Top, ...props }, ref) => {
+  HTMLAttributes<HTMLDivElement>
+>(({ children, className, ...props }, ref) => {
   const isVisible = useContext(BadgeContext);
   if (isVisible === undefined) {
     throw new Error("NodeBadgeContent must be used within NodeBadge");
