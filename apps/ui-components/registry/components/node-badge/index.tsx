@@ -6,7 +6,7 @@ interface NodeBadgeProps extends HTMLAttributes<HTMLDivElement> {
   visible?: boolean;
 }
 
-const BadgeContext = createContext<boolean | undefined>(true);
+const BadgeContext = createContext<boolean | undefined>(undefined);
 
 export const NodeBadge = forwardRef<HTMLDivElement, NodeBadgeProps>(
   ({ children, visible }, ref) => {
@@ -29,7 +29,7 @@ export interface NodeBadgeContentProps extends HTMLAttributes<HTMLDivElement> {
 export const NodeBadgeContent = forwardRef<
   HTMLDivElement,
   NodeBadgeContentProps
->(({ children, position = Position.Top, ...props }, ref) => {
+>(({ children, className, position = Position.Top, ...props }, ref) => {
   const isVisible = useContext(BadgeContext);
   if (isVisible === undefined) {
     throw new Error("NodeBadgeContent must be used within NodeBadge");
@@ -37,16 +37,18 @@ export const NodeBadgeContent = forwardRef<
 
   // Always render a div, but visually hide it when not visible
   return (
-    <div
-      ref={ref}
-      className={cn(
-        "node-badge-content relative flex flex-col items-end py-1",
-        !isVisible && "invisible",
-      )}
-      aria-hidden={!isVisible}
-      {...props}
-    >
-      {children}
-    </div>
+    isVisible && (
+      <div
+        ref={ref}
+        className={cn(
+          "node-badge-content absolute flex -translate-y-[100%] flex-col items-end py-1",
+          className,
+        )}
+        aria-hidden={!isVisible}
+        {...props}
+      >
+        {children}
+      </div>
+    )
   );
 });

@@ -7,22 +7,27 @@ import {
 } from "../base-node";
 import { Toggle } from "@/components/ui/toggle";
 import { useState } from "react";
+import { Badge } from "@/components/ui/badge";
+import { BadgeCheckIcon } from "lucide-react";
 
 const NodeBadgeDemo = () => {
   const [visible, setVisible] = useState(true);
   return (
     <NodeBadge visible={visible}>
-      <NodeBadgeContent>
-        <div className="rounded-md border border-green-200 bg-green-100 p-1 text-xs text-green-900">
-          {visible ? "Visible" : "Hidden"}
-        </div>
+      <NodeBadgeContent className="right-0">
+        <Badge
+          className="gap-1 border-green-400 p-1 text-xs text-green-500"
+          variant="outline"
+        >
+          <BadgeCheckIcon className="size-4" />
+          I'm a node badge!
+        </Badge>
       </NodeBadgeContent>
       <BaseNode>
         <BaseNodeHeader>
-          <BaseNodeHeaderTitle>Node with a Badge</BaseNodeHeaderTitle>
+          <BaseNodeHeaderTitle>Your node contents go here</BaseNodeHeaderTitle>
         </BaseNodeHeader>
         <BaseNodeContent>
-          {/* Check item */}
           <Toggle
             aria-label="Show badge"
             pressed={visible}
