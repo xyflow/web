@@ -1,5 +1,5 @@
 {
-  "name": "tooltip-node",
+  "name": "node-tooltip",
   "type": "registry:component",
   "dependencies": ["@xyflow/react"],
   "devDependencies": [],
@@ -7,7 +7,7 @@
   "files": [
     {
       "type": "registry:component",
-      "path": "tooltip-node.tsx"
+      "path": "node-tooltip.tsx"
     }
   ],
   "tailwind": {},

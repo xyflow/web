@@ -333,7 +333,7 @@ Now we'll add an actual node from the React Flow Components registry and see wha
 happens:
 
 ```bash copy npm2yarn
-npx shadcn@latest add https://ui.reactflow.dev/tooltip-node
+npx shadcn@latest add https://ui.reactflow.dev/node-tooltip
 ```
 
 And we'll update our `App.tsx` file to render a proper flow. We'll use the same
@@ -349,17 +349,19 @@ import { ReactFlow, type Node, Position, useNodesState } from '@xyflow/react';
 
 import '@xyflow/react/dist/style.css';
 
-import { TooltipNode, TooltipContent, TooltipTrigger } from './components/tooltip-node';
+import { NodeTooltip, NodeTooltipContent, NodeTooltipTrigger } from './components/node-tooltip';
 import { BaseNodeContent } from './components/base-node';
 
 function Tooltip() {
   return (
-    <TooltipNode>
-      <TooltipContent position={Position.Top}>Hidden Content</TooltipContent>
-      <BaseNodeContent>
-        <TooltipTrigger>Hover</TooltipTrigger>
-      </BaseNodeContent>
-    </TooltipNode>
+    <NodeTooltip>
+      <NodeTooltipContent position={Position.Top}>Hidden Content</NodeTooltipContent>
+      <BaseNode>
+        <BaseNodeContent>
+          <NodeTooltipTrigger>Hover</NodeTooltipTrigger>
+        </BaseNodeContent>
+      </BaseNode>
+    </NodeTooltip>
   );
 }
 
@@ -411,7 +413,7 @@ begin to see how easy it is to add new components and build out a flow. To see
 everything React Flow Components has to offer let's build out a simple calculator
 flow.
 
-First let's remove the `<TooltipNode />` and undo our changes to `<BaseNode />`.
+First let's remove the `<NodeTooltip />` and undo our changes to `<BaseNode />`.
 In addition to pre-made nodes, React Flow Components also contains building blocks
 for creating your own custom nodes. To see them, we'll add the `labeled-handle` component:
 
