@@ -1,5 +1,7 @@
 ---
-description: Custom nodes in React Flow are just React components. This guide shows you how to implement your own nodes.
+description:
+  Custom nodes in React Flow are just React components. This guide shows you how to
+  implement your own nodes.
 sidebarTitle: Nodes
 ---
 
@@ -8,37 +10,29 @@ import { Callout, Steps } from 'nextra/components';
 
 # Custom Nodes
 
-A powerful feature of React Flow is the ability to create custom nodes. This
-gives you the flexibility to render anything you want within your nodes. We
-generally recommend creating your own custom nodes rather than relying on
-built-in ones. With custom nodes, you can add as many source and target
-[handles](/learn/customization/handles)
-as you like—or even embed form inputs, charts, and other interactive elements.
+A powerful feature of React Flow is the ability to create custom nodes. This gives you the
+flexibility to render anything you want within your nodes. We generally recommend creating
+your own custom nodes rather than relying on built-in ones. With custom nodes, you can add
+as many source and target [handles](/learn/customization/handles) as you like—or even
+embed form inputs, charts, and other interactive elements.
 
-In this section, we'll walk through creating a custom node featuring an input
-field that updates text elsewhere in your application. For further examples,
-we recommend checking out our [Custom Node Example](/examples/nodes/custom-node).
-
-<Callout type="warning">
-  To get the best performance in your React Flow application, check out the [common
-  pitfalls](/learn/customization/common-pitfalls) page to avoid common mistakes and
-  performance issues.
-</Callout>
+In this section, we'll walk through creating a custom node featuring an input field that
+updates text elsewhere in your application. For further examples, we recommend checking
+out our [Custom Node Example](/examples/nodes/custom-node).
 
 ## Implementing a custom node
 
-To create a custom node, all you need to do is create a React component. React
-Flow will automatically wrap it in an interactive container that injects
-essential props like the node's id, position, and data, and provides
-functionality for selection, dragging, and connecting handles. For a full
-overview on all available node props, see the
+To create a custom node, all you need to do is create a React component. React Flow will
+automatically wrap it in an interactive container that injects essential props like the
+node's id, position, and data, and provides functionality for selection, dragging, and
+connecting handles. For a full overview on all available node props, see the
 [Node](/api-reference/types/node-props) reference.
 
 <Steps>
 ### Create the component
 
-Let's dive into an example by creating a custom node called `TextUpdaterNode`.
-For this, we've added a simple input field with a change handler.
+Let's dive into an example by creating a custom node called `TextUpdaterNode`. For this,
+we've added a simple input field with a change handler.
 
 ```jsx
 export function TextUpdaterNode(props) {
@@ -59,9 +53,8 @@ export function TextUpdaterNode(props) {
 
 ### Initialize nodeTypes
 
-You can add a new node type to React Flow by adding it to the `nodeTypes` prop
-like below. We define the `nodeTypes` outside of the component to prevent
-re-renderings.
+You can add a new node type to React Flow by adding it to the `nodeTypes` prop like below.
+We define the `nodeTypes` outside of the component to prevent re-renderings.
 
 ```jsx
 const nodeTypes = {
@@ -84,8 +77,8 @@ const nodeTypes = {
 
 ### Update node definitions
 
-After defining your new node type, you can use it by specifying the `type`
-property on your node definition:
+After defining your new node type, you can use it by specifying the `type` property on
+your node definition:
 
 ```jsx {4}
 const nodes = [
@@ -100,8 +93,8 @@ const nodes = [
 
 ### Flow with custom node
 
-After putting all together and adding some basic styles we get a custom node
-that prints text to the console:
+After putting all together and adding some basic styles we get a custom node that prints
+text to the console:
 
 <RemoteCodeViewer
   editorHeight="20vh"
@@ -114,8 +107,13 @@ that prints text to the console:
 
 ## Full code example 🏁
 
-<RemoteCodeViewer orientation="horizontal" route="learn/custom-node" framework="react" />
+<RemoteCodeViewer
+  editorHeight="40vh"
+  orientation="vertical"
+  route="learn/custom-node"
+  framework="react"
+/>
 
 To enable your custom node to connect with other nodes, check out the
-[Handles](/learn/customization/handles) page to learn how to add source and
-target handles.
+[Handles](/learn/customization/handles) page to learn how to add source and target
+handles.
