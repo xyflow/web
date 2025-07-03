@@ -8,6 +8,7 @@ import { ExampleCode } from '../../types';
 import { compileCodeSnippet } from '../compile-code-snippet';
 import { loadJSONFile } from '../utils';
 import './style.css';
+import { ActionBar } from './ActionBar';
 
 const defaultOptions = {
   editorHeight: '60vh',
@@ -37,7 +38,7 @@ export const RemoteCodeViewer: FC<RemoteCodeViewerProps> = async ({
   showOpenInCodeSandbox = framework === 'react',
   showOpenInStackblitz = true,
   sandpackOptions = {},
-  editorHeight = '60vh',
+  editorHeight = '40vh',
   activeFile,
   orientation,
 }) => {
@@ -56,12 +57,7 @@ export const RemoteCodeViewer: FC<RemoteCodeViewerProps> = async ({
   // 3. If the route includes 'examples/', the layout is vertical (isHorizontal = false).
   // 4. Default fallback: the layout is horizontal (isHorizontal = true).
   const isExample = route.includes('examples/');
-  const isHorizontal =
-    showEditor === false
-      ? false
-      : orientation
-        ? orientation === 'horizontal'
-        : !isExample;
+  const isHorizontal = false;
   const snippets: Record<string, string> = {};
   for (const [filename, file] of Object.entries(json.files)) {
     const filetype = filename.split('.').pop();
@@ -69,11 +65,7 @@ export const RemoteCodeViewer: FC<RemoteCodeViewerProps> = async ({
     snippets[filename] = compiledSnippet;
   }
 
-  if (isExample) {
-    delete snippets['index.html'];
-    delete snippets['index.jsx'];
-    delete snippets['index.ts'];
-    delete snippets['README.mdx'];
+  if (true) {
   }
 
   const _initialActiveFile =
@@ -83,7 +75,7 @@ export const RemoteCodeViewer: FC<RemoteCodeViewerProps> = async ({
   return (
     <div
       className={cn(
-        'remote-code-viewer mt-5 rounded-lg flex',
+        'transition-all remote-code-viewer mt-5 rounded-xl flex overflow-hidden border border-gray-200',
         isHorizontal ? 'flex-row' : 'flex-col',
       )}
     >
@@ -98,53 +90,60 @@ export const RemoteCodeViewer: FC<RemoteCodeViewerProps> = async ({
           height="100%"
           className="example"
         />
-        <div className="absolute bottom-5 right-5 flex">
-          {showOpenInStackblitz && (
-            <OpenInStackblitz framework={_framework} route={route} />
-          )}
-          {showOpenInCodeSandbox && (
-            <OpenInCodesandbox
-              framework={_framework}
-              route={route}
-              sandpackOptions={sandpackOptions}
-            />
-          )}
-        </div>
       </div>
-      {showEditor && (
-        <div
-          className={cn(
-            'rounded-xl overflow-hidden',
-            isHorizontal ? 'w-1/2 rounded-l-none' : 'rounded-t-none',
-          )}
-        >
-          {snippets && (
-            <Tabs defaultValue={_initialActiveFile}>
-              <TabsList className="tablist border-none mb-0 overflow-x-auto overflow-y-hidden text-nowrap bg-primary/5">
-                {Object.keys(snippets).map((filename) => (
-                  <TabsTrigger
-                    key={filename}
-                    className="font-light text-sm data-[state=active]:bg-primary/5 pt-3"
-                    value={filename}
-                  >
-                    {filename}
-                  </TabsTrigger>
-                ))}
-              </TabsList>
-              <div
-                style={{ height: editorHeight }}
-                className="tabcontent overflow-y-scroll bg-primary/5"
-              >
-                {Object.entries(snippets).map(([filename, compiledSource]) => (
-                  <TabsContent key={filename} className="min-h-[500px]" value={filename}>
-                    <MDXRemote compiledSource={compiledSource} />
-                  </TabsContent>
-                ))}
-              </div>
-            </Tabs>
-          )}
-        </div>
-      )}
+      <div
+        className={cn(
+          'rounded-xl overflow-hidden',
+          isHorizontal ? 'w-1/2 rounded-l-none' : 'rounded-t-none',
+        )}
+      >
+        {snippets && (
+          <Tabs defaultValue={_initialActiveFile}>
+            <ActionBar
+              tabslist={
+                <TabsList className="tablist border-none w-min mb-0 overflow-x-auto overflow-y-hidden text-nowrap">
+                  {Object.keys(snippets).map((filename) => (
+                    <TabsTrigger
+                      key={filename}
+                      className="font-light text-sm data-[state=active]:bg-primary/5"
+                      value={filename}
+                    >
+                      {filename}
+                    </TabsTrigger>
+                  ))}
+                </TabsList>
+              }
+              editor={
+                <div
+                  style={{ height: editorHeight }}
+                  className="tabcontent overflow-y-scroll bg-primary/5"
+                >
+                  {Object.entries(snippets).map(([filename, compiledSource]) => (
+                    <TabsContent
+                      key={filename}
+                      className="min-h-[500px]"
+                      value={filename}
+                    >
+                      <MDXRemote compiledSource={compiledSource} />
+                    </TabsContent>
+                  ))}
+                </div>
+              }
+            >
+              {showOpenInStackblitz && (
+                <OpenInStackblitz framework={_framework} route={route} />
+              )}
+              {showOpenInCodeSandbox && (
+                <OpenInCodesandbox
+                  framework={_framework}
+                  route={route}
+                  sandpackOptions={sandpackOptions}
+                />
+              )}
+            </ActionBar>
+          </Tabs>
+        )}
+      </div>
     </div>
   );
 };

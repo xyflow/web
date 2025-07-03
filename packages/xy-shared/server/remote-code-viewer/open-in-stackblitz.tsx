@@ -28,13 +28,16 @@ export function OpenInStackblitz({ framework, route }: OpenInStackblitzProps) {
   }, [framework, route]);
 
   return (
-    <Button
-      onClick={openInStackblitz}
-      size="sm"
-      className="font-medium text-[10px] h-6 bg-gray-100 hover:bg-gray-200 text-gray-700"
-    >
-      Open in Stackblitz
-    </Button>
+    <button onClick={openInStackblitz}>
+      <svg
+        className="h-full px-0.5 py-2 MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-iguwhy"
+        focusable="false"
+        aria-hidden="true"
+        viewBox="0 0 19 28"
+      >
+        <path d="M8.13378 16.1087H0L14.8696 0L10.8662 11.1522L19 11.1522L4.13043 27.2609L8.13378 16.1087Z"></path>
+      </svg>
+    </button>
   );
 }
 
