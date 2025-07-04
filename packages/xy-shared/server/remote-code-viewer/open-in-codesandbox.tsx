@@ -60,7 +60,7 @@ export function OpenInCodesandbox({
           <VirtualCodeSandboxButton />
         </SandpackProvider>
       )}
-      <button onClick={openInCodesandbox}>
+      <button title='Open in CodeSandbox'  onClick={openInCodesandbox}>
         <svg
           className="h-full px-0.5 py-2 MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-iguwhy"
           focusable="false"

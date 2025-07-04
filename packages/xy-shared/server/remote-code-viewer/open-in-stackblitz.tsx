@@ -28,7 +28,7 @@ export function OpenInStackblitz({ framework, route }: OpenInStackblitzProps) {
   }, [framework, route]);
 
   return (
-    <button onClick={openInStackblitz}>
+    <button title='Open in Stackblitz' onClick={openInStackblitz}>
       <svg
         className="h-full px-0.5 py-2 MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-iguwhy"
         focusable="false"

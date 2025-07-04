@@ -84,6 +84,7 @@ export const RemoteCodeViewer: FC<RemoteCodeViewerProps> = async ({
         className={cn('relative', isHorizontal && 'w-1/2')}
       >
         <iframe
+          id={route}
           src={preview}
           loading="lazy"
           width="100%"
@@ -101,11 +102,11 @@ export const RemoteCodeViewer: FC<RemoteCodeViewerProps> = async ({
           <Tabs defaultValue={_initialActiveFile}>
             <ActionBar
               tabslist={
-                <TabsList className="tablist border-none w-min mb-0 overflow-x-auto overflow-y-hidden text-nowrap">
+                <TabsList className="tablist h-full border-none w-min mb-0 overflow-x-auto overflow-y-hidden text-nowrap">
                   {Object.keys(snippets).map((filename) => (
                     <TabsTrigger
                       key={filename}
-                      className="font-light text-sm data-[state=active]:bg-primary/5"
+                      className="text-sm text-gray-500"
                       value={filename}
                     >
                       {filename}
@@ -115,7 +116,7 @@ export const RemoteCodeViewer: FC<RemoteCodeViewerProps> = async ({
               }
               editor={
                 <div
-                  style={{ height: editorHeight }}
+                  style={{ height: '40vh' }}
                   className="tabcontent overflow-y-scroll bg-primary/5"
                 >
                   {Object.entries(snippets).map(([filename, compiledSource]) => (
