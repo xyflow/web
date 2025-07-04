@@ -5,6 +5,7 @@ import {
   SelectionMode,
   useEdgesState,
   useNodesState,
+  Background,
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 
@@ -33,7 +34,10 @@ function Flow() {
       selectionOnDrag
       panOnDrag={panOnDrag}
       selectionMode={SelectionMode.Partial}
-    />
+      fitView
+    >
+      <Background />
+    </ReactFlow>
   );
 }
 
