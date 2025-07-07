@@ -35,7 +35,7 @@ export function CodePreview({
   preview: string;
 }) {
   const [isOpen, setIsOpen] = useState(showEditor);
-  const iframeRef = useRef(null);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
   if (!mdxSnippets) return;
   return (
     <>
@@ -85,11 +85,12 @@ export function CodePreview({
                 </SimpleTooltip>
                 <SimpleTooltip label="Reset preview">
                   <button
+                    title="Reset preview"
                     onClick={() =>
                       iframeRef.current?.src &&
+                      // refreshes the iframe without CORS problems
                       (iframeRef.current.src = iframeRef.current.src)
                     }
-                    title="Reset preview"
                   >
                     <ArrowPathIcon className="size-5 stroke-2" />
                   </button>
