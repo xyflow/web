@@ -66,7 +66,7 @@ In this example, every update to the `nodes` array causes the `SelectedNodeId
 
 ### Optimized Solution
 
-To avoid unnecessary re-renders, store the selected nodes in a separate field in the state. This ensures that the component only re-renders when the selection changes.
+To avoid unnecessary re-renders, store the selected nodes in a separate field in your state (using Zustand, Redux, or any other state management solution). This ensures that the component only re-renders when the selection changes.
 
 ```tsx
 const SelectedNodeIds = () => {
@@ -83,34 +83,6 @@ const SelectedNodeIds = () => {
 ```
 
 By decoupling the selected nodes from the `nodes` array, you prevent unnecessary updates and improve performance.
-
-### Alternative Approach with Zustand
-
-If you need to extract primitive values (like IDs) from the `nodes` array, you can use Zustand's shallow comparison to memoize the result. This ensures that the selector only updates when the values actually change.
-
-```tsx
-import { createWithEqualityFn } from 'zustand/traditional';
-
-const useStore = createWithEqualityFn(
-  (set) => ({
-    nodes: [],
-    selectedNodeIds: [],
-  }),
-  shallow,
-);
-
-const SelectedNodeIds = () => {
-  const selectedNodeIds = useStore((state) => state.selectedNodeIds);
-
-  return (
-    <div>
-      {selectedNodeIds.map((id) => (
-        <div key={id}>{id}</div>
-      ))}
-    </div>
-  );
-};
-```
 
 ## Collapse Large Node Trees
 
@@ -138,7 +110,7 @@ If you've optimized performance in every other way, and you are still finding pe
 
 ## Additional Resources
 
-Here are a few helpful resources on performance in React Flow that you can check out :
+Here are a few helpful resources on performance in React Flow that you can check out:
 
 - [Guide to Optimize React Flow Project Performance](https://www.synergycodes.com/blog/guide-to-optimize-react-flow-project-performance)
 - [Tuning Edge Animations ReactFlow Optimal Performance](https://liambx.com/blog/tuning-edge-animations-reactflow-optimal-performance)
