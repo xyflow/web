@@ -25,7 +25,7 @@ export const NodeAppendixContent = forwardRef<
 >(({ children, className, ...props }, ref) => {
   const isVisible = useContext(BadgeContext);
   if (isVisible === undefined) {
-    throw new Error("NodeBadgeContent must be used within NodeBadge");
+    throw new Error("NodeAppendixContent must be used within NodeAppendix");
   }
 
   // Always render a div, but visually hide it when not visible
