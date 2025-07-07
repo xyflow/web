@@ -52,7 +52,6 @@ const ZoomTransition = () => {
       onEdgesChange={onEdgesChange}
       onConnect={onConnect}
       fitView
-      style={{ backgroundColor: '#F7F9FB' }}
     >
       <Panel position="top-right">
         <button className="xy-theme__button" onClick={() => zoomIn({ duration: 800 })}>

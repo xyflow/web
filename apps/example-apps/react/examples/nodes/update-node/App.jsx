@@ -102,7 +102,6 @@ const UpdateNode = () => {
       onEdgesChange={onEdgesChange}
       defaultViewport={defaultViewport}
       minZoom={0.2}
-      style={{ background: '#F7F9FB' }}
       maxZoom={4}
       attributionPosition="bottom-left"
       fitView

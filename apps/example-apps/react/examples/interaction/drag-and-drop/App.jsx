@@ -88,7 +88,6 @@ const DnDFlow = () => {
           onDragStart={onDragStart}
           onDragOver={onDragOver}
           fitView
-          style={{ backgroundColor: '#F7F9FB' }}
         >
           <Controls />
           <Background />

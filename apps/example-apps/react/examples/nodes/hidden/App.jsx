@@ -57,7 +57,6 @@ const HiddenFlow = () => {
       onEdgesChange={onEdgesChange}
       onConnect={onConnect}
       fitView
-      style={{ backgroundColor: '#F7F9FB' }}
     >
       <MiniMap />
       <Controls />
