@@ -1,20 +1,20 @@
 import { cn } from "@/lib/utils";
 import { createContext, forwardRef, HTMLAttributes, useContext } from "react";
 
-interface NodeBadgeProps extends HTMLAttributes<HTMLDivElement> {
+interface NodeAppendixProps extends HTMLAttributes<HTMLDivElement> {
   visible?: boolean;
 }
 
-const BadgeContext = createContext<boolean | undefined>(undefined);
+const AppendixContext = createContext<boolean | undefined>(undefined);
 
-export const NodeAppendix = forwardRef<HTMLDivElement, NodeBadgeProps>(
+export const NodeAppendix = forwardRef<HTMLDivElement, NodeAppendixProps>(
   ({ children, visible }, ref) => {
     return (
-      <BadgeContext.Provider value={visible}>
-        <div ref={ref} className="node-badge relative">
+      <AppendixContext.Provider value={visible}>
+        <div ref={ref} className="node-appendix relative">
           {children}
         </div>
-      </BadgeContext.Provider>
+      </AppendixContext.Provider>
     );
   },
 );
@@ -23,7 +23,7 @@ export const NodeAppendixContent = forwardRef<
   HTMLDivElement,
   HTMLAttributes<HTMLDivElement>
 >(({ children, className, ...props }, ref) => {
-  const isVisible = useContext(BadgeContext);
+  const isVisible = useContext(AppendixContext);
   if (isVisible === undefined) {
     throw new Error("NodeAppendixContent must be used within NodeAppendix");
   }
@@ -34,7 +34,7 @@ export const NodeAppendixContent = forwardRef<
       <div
         ref={ref}
         className={cn(
-          "node-badge-content absolute top-[100%] my-1 flex w-full flex-col items-center rounded-md border bg-card p-1 text-card-foreground",
+          "node-appendix-content absolute top-[100%] my-1 flex w-full flex-col items-center rounded-md border bg-card p-1 text-card-foreground",
           className,
         )}
         aria-hidden={!isVisible}
