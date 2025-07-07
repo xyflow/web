@@ -27,6 +27,7 @@ export * from './components/ui/stats';
 export * from './components/ui/tabs';
 export * from './components/ui/text';
 export * from './components/ui/tooltip';
+export * from './components/ui/tooltipSimple';
 
 export * from './lib/utils';
 
