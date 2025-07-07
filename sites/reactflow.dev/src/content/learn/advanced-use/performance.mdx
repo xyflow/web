@@ -8,33 +8,19 @@ When dealing with a large number of nodes or complex components, managing perfor
 
 ## Use Memoization
 
-One of the main reasons for performance issues in React Flow is unnecessary re-renders. Since node movements trigger frequent state updates, this can lead to performance bottlenecks, especially in larger diagrams. To mitigate this, it’s crucial to properly memoize objects and functions passed as props to the `<ReactFlow>` component.
+One of the main reasons for performance issues in React Flow is unnecessary re-renders. Since node movements trigger frequent state updates, this can lead to performance bottlenecks, especially in larger diagrams.
 
-### Memoizing Objects
+### Memoize Components
 
-Objects provided as props to the `<ReactFlow>` component should either be memoized using `useMemo` or declared outside the component. This ensures that React does not create a new reference for the object on every render, which would otherwise trigger unnecessary re-renders.
+Components provided as props to the `<ReactFlow>` component should either be memoized using `React.memo` or declared outside the parent component. This ensures that React does not create a new reference for the component on every render, which would otherwise trigger unnecessary re-renders.
 
 ```tsx
-import React, { useMemo } from 'react';
-
-const MyDiagram = () => {
-  const nodes = useMemo(
-    () => [
-      { id: '1', data: { label: 'Node 1' }, position: { x: 0, y: 0 } },
-      { id: '2', data: { label: 'Node 2' }, position: { x: 100, y: 100 } },
-    ],
-    [],
-  );
-
-  return <ReactFlow nodes={nodes} />;
-};
-
-export default MyDiagram;
+const NodeComponent = memo(() => {
+  return <div>{data.label}</div>;
+});
 ```
 
-In this example, the `nodes` array is memoized using `useMemo`, ensuring that its reference remains stable unless its dependencies change.
-
-### Memoizing Functions
+### Memoize Functions
 
 Similarly, functions passed as props to `<ReactFlow>` should be memoized using `useCallback`. This prevents React from creating a new function reference on every render, which could also trigger unnecessary re-renders.
 
@@ -52,51 +38,9 @@ const MyDiagram = () => {
 export default MyDiagram;
 ```
 
-Here, the `onNodeClick` function is wrapped in `useCallback`, ensuring that its reference remains stable across renders.
+## Avoid Accessing Nodes in Components
 
-## Render Only Visible Nodes
-
-Rendering a large number of nodes in React Flow can lead to severe performance degradation. By default, React Flow renders all nodes, even if they are offscreen. You can use the `onlyRenderVisibleElements` prop to to allow only visible elements to be rendered.
-
-```tsx
-<ReactFlow onlyRenderVisibleElements={true} />
-```
-
-This ensures that only the nodes in the viewport are rendered, dramatically improving performance when working with large node graphs.
-
-## Enable Snap To Grid
-
-By default, moving a node triggers a high number of state updates, leading to sluggish interactions. React Flow offers two props `snapToGrid`and `snapGrid`. By enabling snapping, we ensure that state updates occur only when a node moves by a fixed number of pixels.
-
-```tsx
-<ReactFlow snapToGrid={true} snapGrid={[50, 50]} />
-```
-
-This limits state updates, making interactions smoother, especially with large graphs.
-
-## Collapse Large Node Trees
-
-If your node tree is deeply nested, rendering all nodes at once can be inefficient. Instead, show only a limited number of nodes and allow users to expand them as needed. You can do this by modifying the node’s `hidden` property dynamically to toggle visibility.
-
-```tsx
-const handleNodeClick = (targetNode) => {
-  if (targetNode.data.children) {
-    setNodes((prevNodes) =>
-      prevNodes.map((node) =>
-        targetNode.data.children.includes(node.id)
-          ? { ...node, hidden: !node.hidden }
-          : node,
-      ),
-    );
-  }
-};
-```
-
-By hiding nodes initially and rendering them only when expanded, we optimize performance while maintaining usability.
-
-## Reducing Uncontrolled Dependencies
-
-One of the most common performance pitfalls in React Flow applications is uncontrolled dependencies on the `nodes` and `edges` arrays. These arrays are frequently updated during operations like dragging, which can cause unnecessary re-renders of components that depend on them.
+One of the most common performance pitfalls in React Flow is directly accessing the `nodes` or `edges` in the components or the viewport. These objects change frequently during operations like dragging, panning, or zooming, which can cause unnecessary re-renders of components that depend on them.
 
 For example, if you fetch the entire `nodes` array from the store and filter it to display selected node IDs, this approach can lead to performance degradation. Every update to the `nodes` array triggers a re-render of all dependent components, even if the change is unrelated to the selected nodes.
 
@@ -167,3 +111,36 @@ const SelectedNodeIds = () => {
   );
 };
 ```
+
+## Collapse Large Node Trees
+
+If your node tree is deeply nested, rendering all nodes at once can be inefficient. Instead, show only a limited number of nodes and allow users to expand them as needed. You can do this by modifying the node’s `hidden` property dynamically to toggle visibility.
+
+```tsx
+const handleNodeClick = (targetNode) => {
+  if (targetNode.data.children) {
+    setNodes((prevNodes) =>
+      prevNodes.map((node) =>
+        targetNode.data.children.includes(node.id)
+          ? { ...node, hidden: !node.hidden }
+          : node,
+      ),
+    );
+  }
+};
+```
+
+By hiding nodes initially and rendering them only when expanded, we optimize performance while maintaining usability.
+
+## Simplify Node and Edge Styles
+
+If you've optimized performance in every other way, and you are still finding performance issues with large numbers of nodes, complex CSS styles, particularly those involving animations, shadows, or gradients, can significantly impact performance. Consider reducing complexity on your node styles in these cases.
+
+## Additional Resources
+
+Here are a few helpful resources on performance in React Flow that you can check out :
+
+- [Guide to Optimize React Flow Project Performance](https://www.synergycodes.com/blog/guide-to-optimize-react-flow-project-performance)
+- [Tuning Edge Animations ReactFlow Optimal Performance](https://liambx.com/blog/tuning-edge-animations-reactflow-optimal-performance)
+
+* [5 Ways to Optimize React Flow in 10 minutes](https://www.youtube.com/watch?v=8M2qZ69iM20)
