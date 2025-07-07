@@ -12,6 +12,13 @@ import {
 } from "../base-node";
 import { Badge } from "@/components/ui/badge";
 import { BadgeCheckIcon } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export const NodeAppendixDemo = () => {
   const [visible, setVisible] = useState(false);
@@ -58,19 +65,22 @@ export const NodeAppendixDemo = () => {
             {visible ? "Hide" : "Show"} results
           </Button>
           {/* Appendix Position Select */}
-          <select
+          <Select
             value={appendixPosition}
-            onChange={(e) =>
-              setAppendixPosition(
-                e.target.value as "top" | "bottom" | "left" | "right",
-              )
+            onValueChange={(v) =>
+              setAppendixPosition(v as "top" | "bottom" | "left" | "right")
             }
           >
-            <option value="top">Top</option>
-            <option value="bottom">Bottom</option>
-            <option value="left">Left</option>
-            <option value="right">Right</option>
-          </select>
+            <SelectTrigger>
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="top">Top</SelectItem>
+              <SelectItem value="bottom">Bottom</SelectItem>
+              <SelectItem value="left">Left</SelectItem>
+              <SelectItem value="right">Right</SelectItem>
+            </SelectContent>
+          </Select>
         </BaseNodeContent>
       </BaseNode>
     </NodeAppendix>
@@ -93,11 +103,9 @@ export const NodeBadgeDemo = () => {
         </Badge>
       </NodeAppendixContent>
       <BaseNode>
-        <BaseNodeHeader>
-          <BaseNodeHeaderTitle>Add two numbers</BaseNodeHeaderTitle>
-        </BaseNodeHeader>
         <BaseNodeContent>
-          NodeAppendix can be used to display a badge
+          NodeAppendix can be <br />
+          used to display a badge
         </BaseNodeContent>
       </BaseNode>
     </NodeAppendix>

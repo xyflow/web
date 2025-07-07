@@ -16,7 +16,7 @@ const defaultNodes = [
   },
   {
     id: "2",
-    position: { x: 400, y: 200 },
+    position: { x: 185, y: 480 },
     data: {},
     type: "badgeNode",
   },
