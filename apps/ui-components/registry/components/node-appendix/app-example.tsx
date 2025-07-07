@@ -1,9 +1,10 @@
 import { Background, ReactFlow } from "@xyflow/react";
 
-import NodeAppendix from "./component-example";
+import { NodeAppendixDemo, NodeBadgeDemo } from "./component-example";
 
 const nodeTypes = {
-  customNode: NodeAppendix,
+  appendixNode: NodeAppendixDemo,
+  badgeNode: NodeBadgeDemo,
 };
 
 const defaultNodes = [
@@ -11,7 +12,13 @@ const defaultNodes = [
     id: "1",
     position: { x: 200, y: 200 },
     data: {},
-    type: "customNode",
+    type: "appendixNode",
+  },
+  {
+    id: "2",
+    position: { x: 400, y: 200 },
+    data: {},
+    type: "badgeNode",
   },
 ];
 

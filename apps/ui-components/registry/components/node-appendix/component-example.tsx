@@ -10,8 +10,10 @@ import {
   BaseNodeHeader,
   BaseNodeHeaderTitle,
 } from "../base-node";
+import { Badge } from "@/components/ui/badge";
+import { BadgeCheckIcon } from "lucide-react";
 
-const NodeAppendixDemo = () => {
+export const NodeAppendixDemo = () => {
   const [visible, setVisible] = useState(false);
 
   const [numberA, setNumberA] = useState(2);
@@ -75,4 +77,29 @@ const NodeAppendixDemo = () => {
   );
 };
 
-export default NodeAppendixDemo;
+export const NodeBadgeDemo = () => {
+  return (
+    <NodeAppendix visible={true}>
+      <NodeAppendixContent
+        position="top"
+        className="border-none bg-transparent"
+      >
+        <Badge
+          className="gap-1 self-end border-green-400 bg-background p-1 text-xs text-green-500"
+          variant="outline"
+        >
+          <BadgeCheckIcon className="size-4" />
+          I'm a node badge!
+        </Badge>
+      </NodeAppendixContent>
+      <BaseNode>
+        <BaseNodeHeader>
+          <BaseNodeHeaderTitle>Add two numbers</BaseNodeHeaderTitle>
+        </BaseNodeHeader>
+        <BaseNodeContent>
+          NodeAppendix can be used to display a badge
+        </BaseNodeContent>
+      </BaseNode>
+    </NodeAppendix>
+  );
+};
