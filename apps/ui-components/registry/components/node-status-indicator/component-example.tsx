@@ -4,7 +4,7 @@ import { NodeStatusIndicator } from "@/registry/components/node-status-indicator
 export const LoadingNode = () => {
   return (
     <>
-      <NodeStatusIndicator status="loading" loadingVariant="border">
+      <NodeStatusIndicator status="loading" variant="border">
         <BaseNode>
           <BaseNodeContent>This node is loading</BaseNodeContent>
         </BaseNode>
@@ -15,7 +15,7 @@ export const LoadingNode = () => {
 
 export const LoadingNodeOverlay = () => {
   return (
-    <NodeStatusIndicator status="loading" loadingVariant="overlay">
+    <NodeStatusIndicator status="loading" variant="overlay">
       <BaseNode>
         <BaseNodeContent>Node Loading...</BaseNodeContent>
       </BaseNode>

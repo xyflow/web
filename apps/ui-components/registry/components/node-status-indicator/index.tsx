@@ -4,11 +4,11 @@ import { ReactNode } from "react";
 
 export type NodeStatus = "loading" | "success" | "error" | "initial";
 
-export type NodeStatusLoadingVariant = "overlay" | "border";
+export type NodeStatusVariant = "overlay" | "border";
 
 export type NodeStatusIndicatorProps = {
   status?: NodeStatus;
-  loadingVariant?: NodeStatusLoadingVariant;
+  variant?: NodeStatusVariant;
   children: ReactNode;
 };
 
@@ -87,16 +87,17 @@ const StatusBorder = ({
 
 export const NodeStatusIndicator = ({
   status,
-  loadingVariant = "border",
+  variant = "border",
   children,
 }: NodeStatusIndicatorProps) => {
   switch (status) {
     case "loading":
-      return loadingVariant === "border" ? (
-        <BorderLoadingIndicator>{children}</BorderLoadingIndicator>
-      ) : (
-        <SpinnerLoadingIndicator>{children}</SpinnerLoadingIndicator>
-      );
+      switch (variant) {
+        case "overlay":
+          return <SpinnerLoadingIndicator>{children}</SpinnerLoadingIndicator>;
+        case "border":
+          return <BorderLoadingIndicator>{children}</BorderLoadingIndicator>;
+      }
     case "success":
       return (
         <StatusBorder className="border-emerald-600">{children}</StatusBorder>
