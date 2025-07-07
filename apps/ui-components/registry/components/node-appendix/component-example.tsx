@@ -19,9 +19,15 @@ const NodeAppendixDemo = () => {
 
   const sum = numberA + numberB;
 
+  const [appendixPosition, setAppendixPosition] = useState<
+    "top" | "bottom" | "left" | "right"
+  >("bottom");
+
   return (
     <NodeAppendix visible={visible}>
-      <NodeAppendixContent>Result is {sum}</NodeAppendixContent>
+      <NodeAppendixContent position={appendixPosition}>
+        Result is {sum}
+      </NodeAppendixContent>
       <BaseNode>
         <BaseNodeHeader>
           <BaseNodeHeaderTitle>Add two numbers</BaseNodeHeaderTitle>
@@ -49,6 +55,20 @@ const NodeAppendixDemo = () => {
           >
             {visible ? "Hide" : "Show"} results
           </Button>
+          {/* Appendix Position Select */}
+          <select
+            value={appendixPosition}
+            onChange={(e) =>
+              setAppendixPosition(
+                e.target.value as "top" | "bottom" | "left" | "right",
+              )
+            }
+          >
+            <option value="top">Top</option>
+            <option value="bottom">Bottom</option>
+            <option value="left">Left</option>
+            <option value="right">Right</option>
+          </select>
         </BaseNodeContent>
       </BaseNode>
     </NodeAppendix>
