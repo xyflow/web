@@ -1,12 +1,11 @@
-import path from 'path';
-import { FC } from 'react';
+import { Framework } from '@xyflow/xy-ui';
 import { MDXRemote } from 'nextra/mdx-remote';
-import { OpenInCodesandbox } from './open-in-codesandbox';
-import { OpenInStackblitz } from './open-in-stackblitz';
-import { cn, Framework, Tabs, TabsContent, TabsList, TabsTrigger } from '@xyflow/xy-ui';
+import path from 'path';
+import { FC, ReactNode } from 'react';
 import { ExampleCode } from '../../types';
 import { compileCodeSnippet } from '../compile-code-snippet';
 import { loadJSONFile } from '../utils';
+import { CodePreview } from './CodePreview';
 import './style.css';
 
 const defaultOptions = {
@@ -27,7 +26,6 @@ export type RemoteCodeViewerProps = {
   showOpenInStackblitz?: boolean;
   editorHeight?: string | number;
   orientation?: 'horizontal' | 'vertical';
-  sandpackOptions?: Record<string, any>;
 };
 
 export const RemoteCodeViewer: FC<RemoteCodeViewerProps> = async ({
@@ -36,10 +34,9 @@ export const RemoteCodeViewer: FC<RemoteCodeViewerProps> = async ({
   showEditor = true,
   showOpenInCodeSandbox = framework === 'react',
   showOpenInStackblitz = true,
-  sandpackOptions = {},
-  editorHeight = '60vh',
+  editorHeight = '40vh',
   activeFile,
-  orientation,
+  orientation = 'vertical',
 }) => {
   const _framework: Framework =
     framework ?? (process.env.NEXT_PUBLIC_Framework as Framework) ?? 'react';
@@ -51,24 +48,14 @@ export const RemoteCodeViewer: FC<RemoteCodeViewerProps> = async ({
   if (!isOk) {
     throw new Error('Example code not found!');
   }
-  // 1. If showEditor is false, the layout is vertical (isHorizontal = false).
-  // 2. If orientation is provided, it is horizontal only if orientation === 'horizontal'.
-  // 3. If the route includes 'examples/', the layout is vertical (isHorizontal = false).
-  // 4. Default fallback: the layout is horizontal (isHorizontal = true).
-  const isExample = route.includes('examples/');
-  const isHorizontal =
-    showEditor === false
-      ? false
-      : orientation
-        ? orientation === 'horizontal'
-        : !isExample;
   const snippets: Record<string, string> = {};
   for (const [filename, file] of Object.entries(json.files)) {
     const filetype = filename.split('.').pop();
     const compiledSnippet = await compileCodeSnippet(file, { filetype });
     snippets[filename] = compiledSnippet;
   }
-
+  
+  const isExample = route.includes('examples/');
   if (isExample) {
     delete snippets['index.html'];
     delete snippets['index.jsx'];
@@ -76,75 +63,30 @@ export const RemoteCodeViewer: FC<RemoteCodeViewerProps> = async ({
     delete snippets['README.mdx'];
   }
 
-  const _initialActiveFile =
+  const initialActiveFile =
     activeFile ??
     (Object.keys(snippets).includes('App.jsx') ? 'App.jsx' : Object.keys(snippets)[0]);
 
+  const mdxSnippets: [string, ReactNode][] = Object.entries(snippets).map(
+    ([filename, compiledSource]) => [
+      filename,
+      <MDXRemote key={filename} compiledSource={compiledSource} />,
+    ],
+  );
+
   return (
-    <div
-      className={cn(
-        'remote-code-viewer mt-5 rounded-lg flex',
-        isHorizontal ? 'flex-row' : 'flex-col',
-      )}
-    >
-      <div
-        style={isHorizontal ? {} : { height: editorHeight }}
-        className={cn('relative', isHorizontal && 'w-1/2')}
-      >
-        <iframe
-          src={preview}
-          loading="lazy"
-          width="100%"
-          height="100%"
-          className="example"
-        />
-        <div className="absolute bottom-5 right-5 flex">
-          {showOpenInStackblitz && (
-            <OpenInStackblitz framework={_framework} route={route} />
-          )}
-          {showOpenInCodeSandbox && (
-            <OpenInCodesandbox
-              framework={_framework}
-              route={route}
-              sandpackOptions={sandpackOptions}
-            />
-          )}
-        </div>
-      </div>
-      {showEditor && (
-        <div
-          className={cn(
-            'rounded-xl overflow-hidden',
-            isHorizontal ? 'w-1/2 rounded-l-none' : 'rounded-t-none',
-          )}
-        >
-          {snippets && (
-            <Tabs defaultValue={_initialActiveFile}>
-              <TabsList className="tablist border-none mb-0 overflow-x-auto overflow-y-hidden text-nowrap bg-primary/5">
-                {Object.keys(snippets).map((filename) => (
-                  <TabsTrigger
-                    key={filename}
-                    className="font-light text-sm data-[state=active]:bg-primary/5 pt-3"
-                    value={filename}
-                  >
-                    {filename}
-                  </TabsTrigger>
-                ))}
-              </TabsList>
-              <div
-                style={{ height: editorHeight }}
-                className="tabcontent overflow-y-scroll bg-primary/5"
-              >
-                {Object.entries(snippets).map(([filename, compiledSource]) => (
-                  <TabsContent key={filename} className="min-h-[500px]" value={filename}>
-                    <MDXRemote compiledSource={compiledSource} />
-                  </TabsContent>
-                ))}
-              </div>
-            </Tabs>
-          )}
-        </div>
-      )}
+    <div className="remote-code-viewer mt-5 rounded-xl flex overflow-hidden border border-border flex-col">
+      <CodePreview
+        route={route}
+        mdxSnippets={mdxSnippets}
+        initialActiveFile={initialActiveFile}
+        framework={_framework}
+        showOpenInStackblitz={showOpenInStackblitz}
+        showOpenInCodeSandbox={showOpenInCodeSandbox}
+        showEditor={showEditor}
+        editorHeight={editorHeight}
+        preview={preview}
+      />
     </div>
   );
 };
