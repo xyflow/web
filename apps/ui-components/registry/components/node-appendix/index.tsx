@@ -28,19 +28,17 @@ export const NodeAppendixContent = forwardRef<
     throw new Error("NodeAppendixContent must be used within NodeAppendix");
   }
 
-  return (
-    isVisible && (
-      <div
-        ref={ref}
-        className={cn(
-          "node-appendix-content absolute top-[100%] my-1 flex w-full flex-col items-center rounded-md border bg-card p-1 text-card-foreground",
-          className,
-        )}
-        aria-hidden={!isVisible}
-        {...props}
-      >
-        {children}
-      </div>
-    )
-  );
+  return isVisible ? (
+    <div
+      ref={ref}
+      className={cn(
+        "node-appendix-content absolute top-[100%] my-1 flex w-full flex-col items-center rounded-md border bg-card p-1 text-card-foreground",
+        className,
+      )}
+      aria-hidden={!isVisible}
+      {...props}
+    >
+      {children}
+    </div>
+  ) : null;
 });
