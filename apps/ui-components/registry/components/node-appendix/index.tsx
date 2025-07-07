@@ -28,7 +28,6 @@ export const NodeAppendixContent = forwardRef<
     throw new Error("NodeAppendixContent must be used within NodeAppendix");
   }
 
-  // Always render a div, but visually hide it when not visible
   return (
     isVisible && (
       <div
