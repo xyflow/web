@@ -20,6 +20,8 @@ export const NodeAppendix = forwardRef<HTMLDivElement, NodeAppendixProps>(
   },
 );
 
+NodeAppendix.displayName = "NodeAppendix";
+
 const appendixVariants = cva(
   "node-appendix-content absolute flex w-full flex-col items-center rounded-md border bg-card p-1 text-card-foreground",
   {
@@ -64,3 +66,5 @@ export const NodeAppendixContent = forwardRef<
     </div>
   ) : null;
 });
+
+NodeAppendixContent.displayName = "NodeAppendixContent";
