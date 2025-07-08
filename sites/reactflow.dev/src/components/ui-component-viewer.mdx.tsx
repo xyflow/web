@@ -164,7 +164,7 @@ const UiComponentViewer: FC<{ id: string }> = async ({ id }) => {
               <Tabs defaultValue="preview" className="mt-5">
                 <TabsList>
                   <TabsTrigger value="preview">Preview</TabsTrigger>
-                  <TabsTrigger value="code">Manual</TabsTrigger>
+                  <TabsTrigger value="code">Code</TabsTrigger>
                 </TabsList>
                 <TabsContent value="preview">
                   <iframe
