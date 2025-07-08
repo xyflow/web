@@ -155,10 +155,10 @@ const UiComponentViewer: FC<{ id: string }> = async ({ id }) => {
       </Heading>
       <MDXRemote compiledSource={data.pageMDX} />
 
-      {data.demoExamples ? (
+      {data.examples && (
         <>
           <H2>Examples</H2>
-          {Object.entries(data.demoExamples).map(([example, codeMDX]) => (
+          {Object.entries(data.examples).map(([example, codeMDX]) => (
             <div key={example} className="mt-4">
               <H3>{kebabCaseToTitleCase(example)}</H3>
               <Tabs defaultValue="preview" className="mt-5">
@@ -180,7 +180,7 @@ const UiComponentViewer: FC<{ id: string }> = async ({ id }) => {
             </div>
           ))}
         </>
-      ) : null}
+      )}
     </div>
   );
 };

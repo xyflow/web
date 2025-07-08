@@ -40,11 +40,12 @@ export async function fetchShadcnComponent(id: string) {
     });
   }
 
-  let demoExamples: Record<string, string> | undefined = undefined;
+  let examples: Record<string, string> | undefined;
+
   if (demo.examples && Object.keys(demo.examples).length > 0) {
-    demoExamples = {};
+    examples = {};
     for (const [exampleName, code] of Object.entries(demo.examples)) {
-      demoExamples[exampleName] = await compileCodeSnippet(code, {
+      examples[exampleName] = await compileCodeSnippet(code, {
         filetype: 'tsx',
         showCopy: true,
         filename: `${componentName}-${exampleName}.tsx`,
@@ -92,6 +93,6 @@ export async function fetchShadcnComponent(id: string) {
     installMDX,
     npmMDX,
     pageMDX,
-    demoExamples,
+    examples,
   };
 }
