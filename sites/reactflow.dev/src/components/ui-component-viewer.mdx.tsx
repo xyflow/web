@@ -155,33 +155,32 @@ const UiComponentViewer: FC<{ id: string }> = async ({ id }) => {
       </Heading>
       <MDXRemote compiledSource={data.pageMDX} />
 
-      <H2>Examples</H2>
+      {data.demoExamples ? (
+        <>
+          <H2>Examples</H2>
+          {Object.entries(data.demoExamples).map(([example, codeMDX]) => (
+            <div key={example} className="mt-4">
+              <H3>{kebabCaseToTitleCase(example)}</H3>
+              <Tabs defaultValue="preview" className="mt-5">
+                <TabsList>
+                  <TabsTrigger value="preview">Preview</TabsTrigger>
+                  <TabsTrigger value="code">Manual</TabsTrigger>
+                </TabsList>
+                <TabsContent value="preview">
+                  <iframe
+                    className="w-full h-[500px] rounded-md border mt-4 border-gray-200 "
+                    src={`${process.env.NEXT_PUBLIC_UI_COMPONENTS_URL}/components/${data.name}/examples/${example}`}
+                  />
+                </TabsContent>
 
-      {data.demoExamples && Object.keys(data.demoExamples).length > 0 ? (
-        Object.entries(data.demoExamples).map(([example, { title, codeMDX }]) => (
-          <>
-            <H3>{title}</H3>
-            <Tabs defaultValue="preview" className="mt-5">
-              <TabsList>
-                <TabsTrigger value="preview">Preview</TabsTrigger>
-                <TabsTrigger value="code">Manual</TabsTrigger>
-              </TabsList>
-              <TabsContent value="preview">
-                <iframe
-                  className="w-full h-[500px] rounded-md border mt-4 border-gray-200 "
-                  src={`${process.env.NEXT_PUBLIC_UI_COMPONENTS_URL}/components/${data.name}/examples/${example}`}
-                />
-              </TabsContent>
-
-              <TabsContent value="code">
-                <MDXRemote compiledSource={codeMDX} />
-              </TabsContent>
-            </Tabs>
-          </>
-        ))
-      ) : (
-        <></>
-      )}
+                <TabsContent value="code">
+                  <MDXRemote compiledSource={codeMDX} />
+                </TabsContent>
+              </Tabs>
+            </div>
+          ))}
+        </>
+      ) : null}
     </div>
   );
 };

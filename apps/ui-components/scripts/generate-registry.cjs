@@ -101,24 +101,8 @@ const demoOutputPath = path.join(__dirname, "../public/demo");
 
         for (const dir of examplesDir) {
           if (dir.isDirectory()) {
-            const exampleJsonPath = path.join(
-              dir.parentPath,
-              dir.name,
-              "example.json",
-            );
-
-            if (!fs.existsSync(exampleJsonPath)) {
-              throw new Error(
-                `Component example JSON file not found: ${exampleJsonPath}`,
-              );
-            }
-
-            const exampleJson = JSON.parse(
-              fs.readFileSync(exampleJsonPath, "utf8"),
-            );
-
             const componentExamplePath = path.join(
-              dir.parentPath,
+              additionalExamplesPath,
               dir.name,
               "component-example.tsx",
             );
@@ -132,8 +116,8 @@ const demoOutputPath = path.join(__dirname, "../public/demo");
             const componentExampleContent =
               fs.readFileSync(componentExamplePath);
 
-            exampleJson.code = componentExampleContent.toString();
-            examples[dir.name] = exampleJson;
+            additionalExampleFiles[dir.name] =
+              componentExampleContent.toString();
           }
         }
       }
