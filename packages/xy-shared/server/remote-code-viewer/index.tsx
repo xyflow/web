@@ -27,7 +27,7 @@ export type RemoteCodeViewerProps = {
   editorHeight?: string | number;
 };
 
-export const RemoteCodeViewer: FC<RemoteCodeViewerProps> = async ({
+export async function RemoteCodeViewer({
   route,
   framework,
   showEditor = true,
@@ -35,7 +35,7 @@ export const RemoteCodeViewer: FC<RemoteCodeViewerProps> = async ({
   showOpenInStackblitz = true,
   editorHeight = '50vh',
   activeFile,
-}) => {
+}: RemoteCodeViewerProps) {
   const _framework: Framework =
     framework ?? (process.env.NEXT_PUBLIC_Framework as Framework) ?? 'react';
   const preview = `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/${_framework}/${route}/index.html`;
@@ -52,7 +52,7 @@ export const RemoteCodeViewer: FC<RemoteCodeViewerProps> = async ({
     const compiledSnippet = await compileCodeSnippet(file, { filetype });
     snippets[filename] = compiledSnippet;
   }
-  
+
   const isExample = route.includes('examples/');
   if (isExample) {
     delete snippets['index.html'];
@@ -65,24 +65,25 @@ export const RemoteCodeViewer: FC<RemoteCodeViewerProps> = async ({
     activeFile ??
     (Object.keys(snippets).includes('App.jsx') ? 'App.jsx' : Object.keys(snippets)[0]);
 
-  const mdxSnippets: [string, ReactNode][] = Object.entries(snippets).map(
+  const mdxSnippets: [string, ReactNode, string][] = Object.entries(snippets).map(
     ([filename, compiledSource]) => [
       filename,
       <MDXRemote key={filename} compiledSource={compiledSource} />,
+      json.files[filename],
     ],
   );
 
   return (
-      <CodePreview
-        route={route}
-        mdxSnippets={mdxSnippets}
-        initialActiveFile={initialActiveFile}
-        framework={_framework}
-        showOpenInStackblitz={showOpenInStackblitz}
-        showOpenInCodeSandbox={showOpenInCodeSandbox}
-        showEditor={showEditor}
-        editorHeight={editorHeight}
-        preview={preview}
-      />
+    <CodePreview
+      route={route}
+      mdxSnippets={mdxSnippets}
+      initialActiveFile={initialActiveFile}
+      framework={_framework}
+      showOpenInStackblitz={showOpenInStackblitz}
+      showOpenInCodeSandbox={showOpenInCodeSandbox}
+      showEditor={showEditor}
+      editorHeight={editorHeight}
+      preview={preview}
+    />
   );
-};
+}
