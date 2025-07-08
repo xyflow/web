@@ -12,7 +12,7 @@ One of the main reasons for performance issues in React Flow is unnecessary re-r
 
 ### Memoize Components
 
-Components provided as props to the `<ReactFlow>` component should either be memoized using `React.memo` or declared outside the parent component. This ensures that React does not create a new reference for the component on every render, which would otherwise trigger unnecessary re-renders.
+Components provided as props to the `<ReactFlow>` component, including custom node and edge components, should either be memoized using `React.memo` or declared outside the parent component. This ensures that React does not create a new reference for the component on every render, which would otherwise trigger unnecessary re-renders.
 
 ```tsx
 const NodeComponent = memo(() => {
@@ -22,7 +22,7 @@ const NodeComponent = memo(() => {
 
 ### Memoize Functions
 
-Similarly, functions passed as props to `<ReactFlow>` should be memoized using `useCallback`. This prevents React from creating a new function reference on every render, which could also trigger unnecessary re-renders.
+Similarly, functions passed as props to `<ReactFlow>` should be memoized using `useCallback`. This prevents React from creating a new function reference on every render, which could also trigger unnecessary re-renders. Additionally, arrays and objects like `defaultEdgeOptions` or `snapGrid` should be memoized using `useMemo` to prevent unnecessary re-renders.
 
 ```tsx
 import React, { useCallback } from 'react';
@@ -48,6 +48,8 @@ For example, if you fetch the entire `nodes` array from the store and filter i
 
 ```tsx
 const SelectedNodeIds = () => {
+  // ❌ This will cause unnecessary re-renders!
+
   const nodes = useStore((state) => state.nodes);
 
   const selectedNodeIds = nodes.filter((node) => node.selected).map((node) => node.id);
