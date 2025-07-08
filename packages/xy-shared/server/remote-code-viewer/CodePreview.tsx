@@ -36,9 +36,10 @@ export function CodePreview({
 }) {
   const [isOpen, setIsOpen] = useState(showEditor);
   const iframeRef = useRef<HTMLIFrameElement>(null);
+
   if (!mdxSnippets) return;
   return (
-    <>
+    <div className="remote-code-viewer mt-5 rounded-xl flex overflow-hidden border border-border flex-col">
       <div style={{ height: editorHeight }}>
         <iframe
           ref={iframeRef}
@@ -54,10 +55,10 @@ export function CodePreview({
         <Tabs defaultValue={initialActiveFile}>
           <>
             <div
-              className={`grid grid-flow-col grid-cols-2 border-t ${isOpen ? 'border-b' : ''} border-gray-200`}
+              className={`grid gap-2 grid-flow-col grid-cols-[1fr_min-content] border-t ${isOpen ? 'border-b' : ''} border-gray-200`}
             >
               {isOpen && (
-                <TabsList className="tablist h-full border-none w-min mb-0 overflow-x-auto overflow-y-hidden text-nowrap">
+                <TabsList className="tablist h-full border-none overflow-x-auto overflow-y-hidden text-nowrap">
                   {mdxSnippets.map(([filename]) => (
                     <TabsTrigger
                       key={filename}
@@ -70,7 +71,7 @@ export function CodePreview({
                 </TabsList>
               )}
               <div
-                className={`h-10 ${isOpen ? 'col-span-1' : 'col-span-2'} flex p-1 gap-1 text-sm justify-end  
+                className={`h-10 ${isOpen ? 'col-span-1' : 'col-span-2'} self-center flex p-1 gap-1 text-sm justify-end  
                             [&>button]:p-1 [&>button]:size-8 [&>button]:grid [&>button]:place-items-center 
                             [&>button]:rounded-lg [&>button:hover]:bg-gray-100`}
               >
@@ -115,6 +116,6 @@ export function CodePreview({
           </>
         </Tabs>
       </div>
-    </>
+    </div>
   );
 }

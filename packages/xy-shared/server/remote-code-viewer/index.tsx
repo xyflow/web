@@ -73,7 +73,6 @@ export const RemoteCodeViewer: FC<RemoteCodeViewerProps> = async ({
   );
 
   return (
-    <div className="remote-code-viewer mt-5 rounded-xl flex overflow-hidden border border-border flex-col">
       <CodePreview
         route={route}
         mdxSnippets={mdxSnippets}
@@ -85,6 +84,5 @@ export const RemoteCodeViewer: FC<RemoteCodeViewerProps> = async ({
         editorHeight={editorHeight}
         preview={preview}
       />
-    </div>
   );
 };
