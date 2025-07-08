@@ -41,11 +41,13 @@ const demoOutputPath = path.join(__dirname, "../public/demo");
       all.components.push(folder.name);
 
       // Gather relevant file paths
+      const demoFileName = "component-example.tsx";
       const componentPath = path.join(componentsPath, folder.name);
       const appExamplePath = path.join(componentPath, "app-example.tsx");
       const indexPath = path.join(componentPath, "index.tsx");
       const registryPath = path.join(componentPath, "registry.json");
-      const demoPath = path.join(componentPath, "component-example.tsx");
+      const demoPath = path.join(componentPath, demoFileName);
+      const additionalExamplesPath = path.join(componentPath, "examples");
 
       // Read registry file and convert it to an object
       const registryRaw = fs.readFileSync(registryPath, "utf8");
@@ -85,6 +87,41 @@ const demoOutputPath = path.join(__dirname, "../public/demo");
         console.log(`No demo file found for ${folder.name}`);
       }
 
+      // If there are additional examples in the additional examples directory, read them and add to the demo content
+      // Each example should be stored in a subdirectory with an index.tsx file containing the app example,
+      // and a component-example.tsx file containing the actual component example demo content.
+      const additionalExampleFiles = {};
+
+      if (fs.existsSync(additionalExamplesPath)) {
+        const additionalExampleDirs = fs.readdirSync(additionalExamplesPath, {
+          withFileTypes: true,
+        });
+
+        for (const dir of additionalExampleDirs) {
+          console.log(dir);
+          if (dir.isDirectory()) {
+            const componentExamplePath = path.join(
+              dir.path,
+              dir.name,
+              demoFileName,
+            );
+
+            if (!fs.existsSync(componentExamplePath)) {
+              throw new Error(
+                `Component example file not found: ${componentExamplePath}`,
+              );
+            }
+
+            const componentExampleContent =
+              fs.readFileSync(componentExamplePath);
+            additionalExampleFiles[dir.name] =
+              componentExampleContent.toString();
+          }
+        }
+      }
+
+      console.log(additionalExampleFiles);
+
       const demoFile = {
         files: [
           {
@@ -92,6 +129,7 @@ const demoOutputPath = path.join(__dirname, "../public/demo");
             page: page,
           },
         ],
+        examples: additionalExampleFiles,
       };
 
       // Write the demo file
