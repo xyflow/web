@@ -9,7 +9,7 @@ import {
 } from '@radix-ui/react-tooltip';
 import { ReactNode } from 'react';
 
-export function SimpleTooltip({
+export function TooltipSimple({
   children,
   label,
   rootProps,

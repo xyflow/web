@@ -3,11 +3,11 @@
 import { ArrowPathIcon, CodeBracketIcon } from '@heroicons/react/24/outline';
 import {
   Framework,
-  SimpleTooltip,
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
+  TooltipSimple,
 } from '@xyflow/xy-ui';
 import { ReactNode, useRef, useState } from 'react';
 import { OpenInCodesandbox } from './open-in-codesandbox';
@@ -74,7 +74,7 @@ export function CodePreview({
                             [&>button]:p-1 [&>button]:size-8 [&>button]:grid [&>button]:place-items-center 
                             [&>button]:rounded-lg [&>button:hover]:bg-gray-100`}
               >
-                <SimpleTooltip label="Toggle code">
+                <TooltipSimple label="Toggle code">
                   <button
                     className={`${isOpen ? 'bg-gray-100' : 'text-[#ff0073]'}`}
                     onClick={() => setIsOpen((isOpen) => !isOpen)}
@@ -82,8 +82,8 @@ export function CodePreview({
                   >
                     <CodeBracketIcon className="size-6" />
                   </button>
-                </SimpleTooltip>
-                <SimpleTooltip label="Reset preview">
+                </TooltipSimple>
+                <TooltipSimple label="Reset preview">
                   <button
                     title="Reset preview"
                     onClick={() =>
@@ -94,7 +94,7 @@ export function CodePreview({
                   >
                     <ArrowPathIcon className="size-5 stroke-2" />
                   </button>
-                </SimpleTooltip>
+                </TooltipSimple>
                 {showOpenInStackblitz && (
                   <OpenInStackblitz framework={framework} route={route} />
                 )}
