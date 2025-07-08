@@ -33,7 +33,7 @@ export const RemoteCodeViewer: FC<RemoteCodeViewerProps> = async ({
   showEditor = true,
   showOpenInCodeSandbox = framework === 'react',
   showOpenInStackblitz = true,
-  editorHeight = '40vh',
+  editorHeight = '50vh',
   activeFile,
 }) => {
   const _framework: Framework =

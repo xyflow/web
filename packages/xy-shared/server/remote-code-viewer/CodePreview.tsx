@@ -104,10 +104,7 @@ export function CodePreview({
               </div>
             </div>
             {isOpen && (
-              <div
-                style={{ height: '40vh' }}
-                className="tabcontent overflow-y-scroll bg-primary/5"
-              >
+              <div className="h-[50vh] tabcontent overflow-y-scroll bg-primary/5">
                 {mdxSnippets.map(([filename, snippet]) => (
                   <TabsContent key={filename} className="min-h-[500px]" value={filename}>
                     {snippet}
