@@ -46,7 +46,7 @@ const demoOutputPath = path.join(__dirname, "../public/demo");
       const indexPath = path.join(componentPath, "index.tsx");
       const registryPath = path.join(componentPath, "registry.json");
       const demoPath = path.join(componentPath, "component-example.tsx");
-      const additionalExamplesPath = path.join(componentPath, "examples");
+      const examplesPath = path.join(componentPath, "examples");
 
       // Read registry file and convert it to an object
       const registryRaw = fs.readFileSync(registryPath, "utf8");
@@ -86,22 +86,23 @@ const demoOutputPath = path.join(__dirname, "../public/demo");
         console.log(`No demo file found for ${folder.name}`);
       }
 
-      // If there are additional examples in the additional examples directory, read them and add to the demo content
+      // If a component has examples, read them and add to the demo content.
       // Each example should be stored in a subdirectory with:
       // - example.json file containing the example metadata (right now only title is used),
       // - index.tsx file containing the app example,
       // - component-example.tsx file containing the actual component example demo content.
-      const additionalExampleFiles = {};
+      const hasExamples = fs.existsSync(examplesPath);
+      const examples = hasExamples ? {} : undefined;
 
-      if (fs.existsSync(additionalExamplesPath)) {
-        const additionalExampleDirs = fs.readdirSync(additionalExamplesPath, {
+      if (hasExamples) {
+        const examplesDir = fs.readdirSync(examplesPath, {
           withFileTypes: true,
         });
 
-        for (const dir of additionalExampleDirs) {
+        for (const dir of examplesDir) {
           if (dir.isDirectory()) {
             const exampleJsonPath = path.join(
-              dir.path,
+              dir.parentPath,
               dir.name,
               "example.json",
             );
@@ -112,11 +113,12 @@ const demoOutputPath = path.join(__dirname, "../public/demo");
               );
             }
 
-            exampleJsonContent = fs.readFileSync(exampleJsonPath, "utf8");
-            const exampleJson = JSON.parse(exampleJsonContent);
+            const exampleJson = JSON.parse(
+              fs.readFileSync(exampleJsonPath, "utf8"),
+            );
 
             const componentExamplePath = path.join(
-              dir.path,
+              dir.parentPath,
               dir.name,
               "component-example.tsx",
             );
@@ -131,7 +133,7 @@ const demoOutputPath = path.join(__dirname, "../public/demo");
               fs.readFileSync(componentExamplePath);
 
             exampleJson.code = componentExampleContent.toString();
-            additionalExampleFiles[dir.name] = exampleJson;
+            examples[dir.name] = exampleJson;
           }
         }
       }
@@ -143,7 +145,7 @@ const demoOutputPath = path.join(__dirname, "../public/demo");
             page: page,
           },
         ],
-        examples: additionalExampleFiles,
+        examples,
       };
 
       // Write the demo file
