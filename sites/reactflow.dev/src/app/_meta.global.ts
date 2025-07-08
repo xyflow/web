@@ -19,6 +19,7 @@ const advanced = {
   testing: '',
   typescript: '',
   'uncontrolled-flow': '',
+  performance: '',
   'state-management': '',
   'computing-flows': '',
   'ssr-ssg-configuration': '',
