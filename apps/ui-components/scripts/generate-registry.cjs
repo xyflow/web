@@ -102,7 +102,7 @@ const demoOutputPath = path.join(__dirname, "../public/demo");
         for (const dir of examplesDir) {
           if (dir.isDirectory()) {
             const componentExamplePath = path.join(
-              additionalExamplesPath,
+              examplesPath,
               dir.name,
               "component-example.tsx",
             );
@@ -116,8 +116,7 @@ const demoOutputPath = path.join(__dirname, "../public/demo");
             const componentExampleContent =
               fs.readFileSync(componentExamplePath);
 
-            additionalExampleFiles[dir.name] =
-              componentExampleContent.toString();
+            examples[dir.name] = componentExampleContent.toString();
           }
         }
       }
