@@ -38,28 +38,30 @@
   {/if}
 
   <Panel position="top-left">
-    <div class="xy-theme__button-group">
-      <button
-        class={['xy-theme__button', isLassoActive && 'active']}
-        onclick={() => () => (isLassoActive = true)}
-      >
-        Lasso Mode
-      </button>
-      <button
-        class={['xy-theme__button', !isLassoActive && 'active']}
-        onclick={() => () => (isLassoActive = false)}
-      >
-        Selection Mode
-      </button>
+    <div style="display: flex; align-items: center; gap: 1em;">
+      <div class="xy-theme__button-group">
+        <button
+          class={['xy-theme__button', isLassoActive && 'active']}
+          onclick={() => () => (isLassoActive = true)}
+        >
+          Lasso Mode
+        </button>
+        <button
+          class={['xy-theme__button', !isLassoActive && 'active']}
+          onclick={() => () => (isLassoActive = false)}
+        >
+          Selection Mode
+        </button>
+      </div>
+      <label>
+        <input
+          type="checkbox"
+          checked={partial}
+          onchange={() => (partial = !partial)}
+          class="xy-theme__checkbox"
+        />
+        Partial selection
+      </label>
     </div>
-    <label>
-      <input
-        type="checkbox"
-        checked={partial}
-        onchange={() => (partial = !partial)}
-        class="xy-theme__checkbox"
-      />
-      Partial selection
-    </label>
   </Panel>
 </SvelteFlow>

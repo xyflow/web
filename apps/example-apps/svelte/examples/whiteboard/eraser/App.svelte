@@ -65,13 +65,17 @@
     <div class="xy-theme__button-group">
       <button
         class={['xy-theme__button', isEraserActive && 'active']}
-        onclick={() => () => (isEraserActive = true)}
+        onclick={() => {
+          isEraserActive = true;
+        }}
       >
         Eraser Mode
       </button>
       <button
         class={['xy-theme__button', !isEraserActive && 'active']}
-        onclick={() => () => (isEraserActive = false)}
+        onclick={() => {
+          isEraserActive = false;
+        }}
       >
         Selection Mode
       </button>
