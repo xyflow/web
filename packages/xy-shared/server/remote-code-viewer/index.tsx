@@ -25,7 +25,6 @@ export type RemoteCodeViewerProps = {
   showOpenInCodeSandbox?: boolean;
   showOpenInStackblitz?: boolean;
   editorHeight?: string | number;
-  orientation?: 'horizontal' | 'vertical';
 };
 
 export const RemoteCodeViewer: FC<RemoteCodeViewerProps> = async ({
@@ -36,7 +35,6 @@ export const RemoteCodeViewer: FC<RemoteCodeViewerProps> = async ({
   showOpenInStackblitz = true,
   editorHeight = '40vh',
   activeFile,
-  orientation = 'vertical',
 }) => {
   const _framework: Framework =
     framework ?? (process.env.NEXT_PUBLIC_Framework as Framework) ?? 'react';
