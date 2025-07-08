@@ -3,7 +3,7 @@ import { compileCodeSnippet } from 'xy-shared/server';
 
 type Demo = {
   files: [{ content: string; page: string }];
-  examples?: Record<string, string>;
+  examples?: Record<string, { title: string; code: string }>;
 };
 
 type RegistryComponent = {
@@ -40,14 +40,17 @@ export async function fetchShadcnComponent(id: string) {
     });
   }
 
-  const demoExamples = {};
+  const demoExamples: Record<string, { title: string; codeMDX: string }> = {};
   if (demo.examples) {
-    for (const [exampleName, exampleString] of Object.entries(demo.examples)) {
-      demoExamples[exampleName] = await compileCodeSnippet(exampleString, {
-        filetype: 'tsx',
-        showCopy: true,
-        highlight: componentName,
-      });
+    for (const [exampleName, { title, code }] of Object.entries(demo.examples)) {
+      demoExamples[exampleName] = {
+        title,
+        codeMDX: await compileCodeSnippet(code, {
+          filetype: 'tsx',
+          showCopy: true,
+          filename: `${componentName}-${exampleName}.tsx`,
+        }),
+      };
     }
   }
   const pageString = demo.files[0].page;

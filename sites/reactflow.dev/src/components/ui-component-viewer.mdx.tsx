@@ -20,7 +20,7 @@ function kebabCaseToTitleCase(str: string) {
   return newString.charAt(0).toUpperCase() + newString.slice(1);
 }
 
-const { h2: H2 } = getMDXComponents();
+const { h2: H2, h3: H3 } = getMDXComponents();
 
 const UiComponentViewer: FC<{ id: string }> = async ({ id }) => {
   const data = await fetchShadcnComponent(id);
@@ -154,6 +154,34 @@ const UiComponentViewer: FC<{ id: string }> = async ({ id }) => {
           : '1. Connect the component with your React Flow application.'}
       </Heading>
       <MDXRemote compiledSource={data.pageMDX} />
+
+      <H2>Examples</H2>
+
+      {data.demoExamples && Object.keys(data.demoExamples).length > 0 ? (
+        Object.entries(data.demoExamples).map(([example, { title, codeMDX }]) => (
+          <>
+            <H3>{title}</H3>
+            <Tabs defaultValue="preview" className="mt-5">
+              <TabsList>
+                <TabsTrigger value="preview">Preview</TabsTrigger>
+                <TabsTrigger value="code">Manual</TabsTrigger>
+              </TabsList>
+              <TabsContent value="preview">
+                <iframe
+                  className="w-full h-[500px] rounded-md border mt-4 border-gray-200 "
+                  src={`${process.env.NEXT_PUBLIC_UI_COMPONENTS_URL}/components/${data.name}/examples/${example}`}
+                />
+              </TabsContent>
+
+              <TabsContent value="code">
+                <MDXRemote compiledSource={codeMDX} />
+              </TabsContent>
+            </Tabs>
+          </>
+        ))
+      ) : (
+        <></>
+      )}
     </div>
   );
 };
@@ -165,6 +193,8 @@ const UiComponentViewer: FC<{ id: string }> = async ({ id }) => {
 export const toc = [
   { depth: 2, value: 'Installation', id: 'installation' },
   { depth: 2, value: 'Usage', id: 'usage' },
+  // TODO: Figure out how to add examples dynamically to the toc
+  // { depth: 2, value: 'Examples', id: 'examples' },
 ];
 
 export default UiComponentViewer;
