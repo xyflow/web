@@ -2,25 +2,25 @@
 
 import {
   ArrowPathIcon,
-  ClipboardDocumentCheckIcon,
-  ClipboardDocumentIcon,
+  CheckIcon,
+  ClipboardIcon,
   CodeBracketIcon,
 } from '@heroicons/react/24/outline';
 import {
   Framework,
+  IconButton,
   Tabs,
   TabsContent,
   TabsList,
-  TabsTrigger,
-  TooltipSimple,
+  TabsTrigger
 } from '@xyflow/xy-ui';
 import { ReactNode, useRef, useState } from 'react';
 import { OpenInCodesandbox } from './open-in-codesandbox';
 import { OpenInStackblitz } from './open-in-stackblitz';
 
 const clipBoardIcons = [
-  <ClipboardDocumentIcon key={0} className="size-5 stroke-2" />,
-  <ClipboardDocumentCheckIcon key={1} className="size-5 stroke-2" />,
+  <ClipboardIcon key={0} className="size-5 stroke-2" />,
+  <CheckIcon key={1} className="size-5 stroke-2" />,
 ];
 
 export function CodePreview({
@@ -87,49 +87,37 @@ export function CodePreview({
               </TabsList>
             )}
             <div
-              className={`h-10 ${isOpen ? 'col-span-1' : 'col-span-2'} self-center flex p-1 gap-1 text-sm justify-end  
-                          [&>button]:p-1 [&>button]:size-8 [&>button]:grid [&>button]:place-items-center 
-                          [&>button]:rounded-lg [&>button:hover]:bg-gray-100`}
+              className={`${isOpen ? 'col-span-1' : 'col-span-2'} h-10 self-center flex p-1 gap-1 text-sm justify-end`}
             >
               {isOpen && (
-                <TooltipSimple label="Copy Snippet">
-                  <button
-                    title="Copy Snippet"
-                    onClick={() => {
-                      const snippetContent = mdxSnippets.find(
-                        ([fileName]) => fileName == tabsValue,
-                      )?.[2];
-                      navigator.clipboard.writeText(snippetContent ?? '');
-                      setCopyIcon(clipBoardIcons[1]);
-                      setTimeout(() => setCopyIcon(clipBoardIcons[0]), 3000);
-                    }}
-                  >
-                    {copyIcon}
-                  </button>
-                </TooltipSimple>
+                <IconButton
+                  icon={copyIcon}
+                  title="Copy Snippet"
+                  onClick={() => {
+                    const snippetContent = mdxSnippets.find(
+                      ([fileName]) => fileName == tabsValue,
+                    )?.[2];
+                    navigator.clipboard.writeText(snippetContent ?? '');
+                    setCopyIcon(clipBoardIcons[1]);
+                    setTimeout(() => setCopyIcon(clipBoardIcons[0]), 1000);
+                  }}
+                />
               )}
-              <TooltipSimple label="Toggle code">
-                <button
-                  className={`${isOpen ? 'bg-gray-100' : 'text-[#ff0073]'}`}
-                  onClick={() => setIsOpen((isOpen) => !isOpen)}
-                  title="Toggle code"
-                >
-                  <CodeBracketIcon className="size-6" />
-                </button>
-              </TooltipSimple>
-
-              <TooltipSimple label="Reset preview">
-                <button
-                  title="Reset preview"
-                  onClick={() =>
-                    iframeRef.current?.src &&
-                    // refreshes the iframe without CORS problems
-                    (iframeRef.current.src = iframeRef.current.src)
-                  }
-                >
-                  <ArrowPathIcon className="size-5 stroke-2" />
-                </button>
-              </TooltipSimple>
+              <IconButton
+                icon={<CodeBracketIcon className="size-6" />}
+                title="Toggle code"
+                className={`${isOpen ? 'bg-gray-100' : 'text-[#ff0073]'}`}
+                onClick={() => setIsOpen((isOpen) => !isOpen)}
+              />
+              <IconButton
+                icon={<ArrowPathIcon className="size-5 stroke-2" />}
+                title="Reset preview"
+                onClick={() =>
+                  iframeRef.current?.src &&
+                  // refreshes the iframe without CORS problems
+                  (iframeRef.current.src = iframeRef.current.src)
+                }
+              />
 
               {showOpenInStackblitz && (
                 <OpenInStackblitz framework={framework} route={route} />
