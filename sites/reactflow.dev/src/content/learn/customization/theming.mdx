@@ -1,5 +1,5 @@
 ---
-description: React Flow comes with a minimal default theme. It's common to overwrite the default styles with your own CSS or use third-party libraries like TailwindCSS or Styled Components.
+description: React Flow comes with a minimal default theme. It's common to overwrite the default styles with your own CSS or use third-party libraries like TailwindCSS.
 ---
 
 import { Callout } from 'nextra/components';
@@ -19,7 +19,6 @@ provide some sensible defaults for styles like padding, border radius, and anima
 edges. You can see what they look like below:
 
 <RemoteCodeViewer
-  showEditor={false}
   route="examples/styling/default-style"
   framework="react"
 />
@@ -208,37 +207,9 @@ import '@xyflow/react/dist/base.css';
 </Callout>
 
 <RemoteCodeViewer
-  showEditor={false}
   route="examples/styling/base-style"
   framework="react"
 />
-
-### Styled Components
-
-Many of the components you render directly, such as the
-[`<MiniMap />`](/api-reference/components/minimap), accept both `className` and
-`style` props. This means you can use any styling solution you like, such as
-[Styled Components](https://styled-components.com/):
-
-```jsx
-import { MiniMap } from '@xyflow/react';
-
-const StyledMiniMap = styled(MiniMap)`
-  background-color: ${(props) => props.theme.bg};
-
-  .react-flow__minimap-mask {
-    fill: ${(props) => props.theme.minimapMaskBg};
-  }
-
-  .react-flow__minimap-node {
-    fill: ${(props) => props.theme.nodeBg};
-    stroke: none;
-  }
-`;
-```
-
-For a complete example of using Styled Components with React Flow, check out
-[the example](/examples/styling/styled-components)!
 
 ### TailwindCSS
 

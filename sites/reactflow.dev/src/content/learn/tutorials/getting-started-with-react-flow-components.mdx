@@ -8,9 +8,9 @@ tags: ['react-flow', 'components', 'shadcn', 'computational']
 image: ''
 ---
 
+import { Emoji } from '@xyflow/xy-ui';
 import { Callout } from 'nextra/components';
 import { Image } from 'xy-shared';
-import { Emoji } from '@xyflow/xy-ui';
 import { RemoteCodeViewer } from 'xy-shared/server';
 
 Recently, we launched an exciting new addition to our open-source roster: React
@@ -178,7 +178,7 @@ default options for now:
 ## Adding your first components
 
 To demonstrate how powerful shadcn can be, let's dive right into making a new
-**React Flow** app! Now everything is set up, we can add the [`<BaseNode />`](https://reactflow.dev/components/nodes/base-node)
+**React Flow** app! Now everything is set up, we can add the [`<BaseNode />`](/components/nodes/base-node)
 component with a single command:
 
 ```bash copy npm2yarn
@@ -403,7 +403,7 @@ And would you look at that, the tooltip node we added automatically uses the
 <RemoteCodeViewer
   route="tutorials/components/tooltip"
   framework="react"
-  showEditor={false}
+  
 />
 
 ## Moving fast and making things
@@ -527,7 +527,6 @@ quite a capable node:
 <RemoteCodeViewer
   route="tutorials/components/num-node"
   framework="react"
-  showEditor={true}
 />
 
 Our `<NumNode />` component...
@@ -728,7 +727,7 @@ Putting everything together we end up with quite a capable little calculator!
 <RemoteCodeViewer
   route="tutorials/components/complete"
   framework="react"
-  showEditor={false}
+  
 />
 
 You could continue to improve this flow by adding nodes to perform other operations

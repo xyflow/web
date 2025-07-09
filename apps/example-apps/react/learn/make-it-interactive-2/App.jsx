@@ -11,14 +11,14 @@ import '@xyflow/react/dist/style.css';
 
 const initialNodes = [
   {
-    id: '1',
-    data: { label: 'Hello' },
+    id: 'n1',
+    data: { label: 'Node 1' },
     position: { x: 0, y: 0 },
     type: 'input',
   },
   {
-    id: '2',
-    data: { label: 'World' },
+    id: 'n2',
+    data: { label: 'Node 2' },
     position: { x: 100, y: 100 },
   },
 ];
@@ -37,7 +37,6 @@ function Flow() {
     (changes) => setEdges((eds) => applyEdgeChanges(changes, eds)),
     [],
   );
-
   const onConnect = useCallback(
     (params) => setEdges((eds) => addEdge(params, eds)),
     [],
@@ -47,8 +46,8 @@ function Flow() {
     <div style={{ height: '100%' }}>
       <ReactFlow
         nodes={nodes}
-        onNodesChange={onNodesChange}
         edges={edges}
+        onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
         fitView
