@@ -56,7 +56,6 @@ const components = {
       'tooltip-node': '',
       'placeholder-node': '',
       'database-schema-node': '',
-      'annotation-node': '',
       'labeled-group-node': '',
     },
   },
