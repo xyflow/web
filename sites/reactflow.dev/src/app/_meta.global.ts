@@ -58,7 +58,6 @@ const components = {
       'database-schema-node': '',
       'annotation-node': '',
       'labeled-group-node': '',
-      'node-header': '',
     },
   },
   edges: {

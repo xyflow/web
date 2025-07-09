@@ -7,7 +7,6 @@ export const BaseNode = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement
       ref={ref}
       className={cn(
         'relative rounded-md border bg-card text-card-foreground',
-        className,
         'hover:ring-1',
         // React Flow displays node elements inside of a `NodeWrapper` component,
         // which compiles down to a div with a the class `react-flow__node`.
@@ -16,6 +15,7 @@ export const BaseNode = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement
         // is selected, using Tailwind's `&` selector.
         '[.react-flow\\_\\_node.selected_&]:border-muted-foreground',
         '[.react-flow\\_\\_node.selected_&]:shadow-lg',
+        className,
       )}
       tabIndex={0}
       {...props}
