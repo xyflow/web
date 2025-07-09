@@ -1,7 +1,7 @@
 import { Framework } from '@xyflow/xy-ui';
 import { MDXRemote } from 'nextra/mdx-remote';
 import path from 'path';
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { ExampleCode } from '../../types';
 import { compileCodeSnippet } from '../compile-code-snippet';
 import { loadJSONFile } from '../utils';
@@ -9,7 +9,6 @@ import { CodePreview } from './CodePreview';
 import './style.css';
 
 const defaultOptions = {
-  editorHeight: '60vh',
   editorWidthPercentage: 45,
   wrapContent: true,
   readOnly: false,
@@ -24,16 +23,16 @@ export type RemoteCodeViewerProps = {
   showPreview?: boolean;
   showOpenInCodeSandbox?: boolean;
   showOpenInStackblitz?: boolean;
-  editorHeight?: string | number;
+  aspectRatio?: '4' | '3' | '2' | '1' | '16/9';
 };
 
 export async function RemoteCodeViewer({
   route,
   framework,
-  showEditor = true,
+  showEditor,
   showOpenInCodeSandbox = framework === 'react',
   showOpenInStackblitz = true,
-  editorHeight = '50vh',
+  aspectRatio = '16/9',
   activeFile,
 }: RemoteCodeViewerProps) {
   const _framework: Framework =
@@ -81,8 +80,8 @@ export async function RemoteCodeViewer({
       framework={_framework}
       showOpenInStackblitz={showOpenInStackblitz}
       showOpenInCodeSandbox={showOpenInCodeSandbox}
-      showEditor={showEditor}
-      editorHeight={editorHeight}
+      showEditor={showEditor ?? isExample}
+      aspectRatio={aspectRatio}
       preview={preview}
     />
   );

@@ -2,8 +2,8 @@
 description: Learn how to build your first static flow with React Flow.
 ---
 
-import { RemoteCodeViewer } from 'xy-shared/server';
 import { Callout, Steps } from 'nextra/components';
+import { RemoteCodeViewer } from 'xy-shared/server';
 
 # Building a Flow
 
@@ -56,12 +56,7 @@ export default function App() {
 
 That's it! You have created your first empty flow 🎉
 
-<RemoteCodeViewer
-  editorHeight="20vh"
-  showEditor={false}
-  route="learn/building-a-flow-1"
-  framework="react"
-/>
+<RemoteCodeViewer aspectRatio="4" route="learn/building-a-flow-1" framework="react" />
 
 </Steps>
 
@@ -109,12 +104,7 @@ Now we can pass our `initialNodes` array to the `<ReactFlow />` component using 
 
 This gives us a flow with two labeled nodes 🎉
 
-<RemoteCodeViewer
-  editorHeight="20vh"
-  showEditor={false}
-  route="learn/building-a-flow-2"
-  framework="react"
-/>
+<RemoteCodeViewer aspectRatio="4" route="learn/building-a-flow-2" framework="react" />
 
 </Steps>
 
@@ -147,12 +137,7 @@ const initialEdges = [
 This edge connects the node with `id: 'n1'` (the source) to the node with `id: 'n2'` (the
 target).
 
-<RemoteCodeViewer
-  showEditor={false}
-  editorHeight="20vh"
-  route="learn/building-a-flow-3"
-  framework="react"
-/>
+<RemoteCodeViewer aspectRatio="4" route="learn/building-a-flow-3" framework="react" />
 
 ### Label the edge
 
@@ -175,12 +160,7 @@ const initialEdges = [
 
 Now we have completed a basic flow with nodes and edges! 🎉
 
-<RemoteCodeViewer
-  showEditor={false}
-  editorHeight="20vh"
-  route="learn/building-a-flow-4"
-  framework="react"
-/>
+<RemoteCodeViewer aspectRatio="4" route="learn/building-a-flow-4" framework="react" />
 
 </Steps>
 

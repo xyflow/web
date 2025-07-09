@@ -8,9 +8,9 @@ tags: ['react-flow', 'web-audio-api', 'how-to']
 image: /img/tutorials/webaudio/web-audio-blog-thumb.png
 ---
 
+import { Emoji } from '@xyflow/xy-ui';
 import { Callout, Tabs } from 'nextra/components';
 import { Embed, Image } from 'xy-shared';
-import { Emoji } from '@xyflow/xy-ui';
 import { RemoteCodeViewer } from 'xy-shared/server';
 
 Today we'll be looking at how to create an interactive audio playground using React
@@ -191,7 +191,7 @@ Here's what we put together, in case you weren't following along at home:
 <RemoteCodeViewer
   route="tutorials/webaudio/mouse-theremin"
   framework="react"
-  showEditor={false}
+  
 />
 Now let's put this knowledge to one side and take a look at how to build a React Flow
 project from scratch.
@@ -630,7 +630,7 @@ const useStore = createWithEqualityFn((set, get) => ({
   <RemoteCodeViewer
     route="tutorials/webaudio/custom-node"
     framework="react"
-    showEditor={false}
+    
   />
 <Callout type="info">
 Stuck on styling?
@@ -710,7 +710,7 @@ Things are starting to shape up quite nicely!
 <RemoteCodeViewer
   route="tutorials/webaudio/custom-nodes"
   framework="react"
-  showEditor={false}
+  
 />
 The next step, then, is to…
 
@@ -973,7 +973,7 @@ Let's see what we have in action.
 <RemoteCodeViewer
   route="tutorials/webaudio/hardcoded-audio"
   framework="react"
-  showEditor={false}
+  
 />
 ### 4. Creating new nodes
 

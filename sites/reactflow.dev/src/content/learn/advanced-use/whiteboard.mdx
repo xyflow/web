@@ -4,9 +4,9 @@ description:
   freehand drawing, rectangle shapes, lasso selection, and erasing.
 ---
 
+import ProExampleViewer from '@/components/pro-example-viewer';
 import { Callout } from 'nextra/components';
 import { RemoteCodeViewer } from 'xy-shared/server';
-import ProExampleViewer from '@/components/pro-example-viewer';
 
 # Whiteboard Features
 
@@ -55,7 +55,6 @@ partially selected elements.
 <RemoteCodeViewer
   route="examples/whiteboard/lasso-selection"
   framework="react"
-  showEditor={false}
 />
 
 ### 🧹 Eraser
@@ -74,7 +73,6 @@ Remove items by "erasing" over them. Uses collision detection to determine what 
 <RemoteCodeViewer
   route="examples/whiteboard/eraser"
   framework="react"
-  showEditor={false}
 />
 
 ### 📐 Rectangle draw
@@ -96,7 +94,6 @@ creating backgrounds for node groups.
 <RemoteCodeViewer
   route="examples/whiteboard/rectangle"
   framework="react"
-  showEditor={false}
 />
 
 ## Whiteboard libraries

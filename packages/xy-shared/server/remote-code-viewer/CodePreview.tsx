@@ -12,7 +12,7 @@ import {
   Tabs,
   TabsContent,
   TabsList,
-  TabsTrigger
+  TabsTrigger,
 } from '@xyflow/xy-ui';
 import { ReactNode, useRef, useState } from 'react';
 import { OpenInCodesandbox } from './open-in-codesandbox';
@@ -31,7 +31,7 @@ export function CodePreview({
   showOpenInCodeSandbox,
   mdxSnippets,
   showEditor,
-  editorHeight,
+  aspectRatio,
   preview,
 }: {
   initialActiveFile: string;
@@ -40,8 +40,8 @@ export function CodePreview({
   route: string;
   showOpenInCodeSandbox: boolean;
   mdxSnippets: [string, ReactNode, string][];
-  showEditor: boolean;
-  editorHeight: string | number;
+  showEditor?: boolean;
+  aspectRatio?: '4' | '3' | '2' | '1' | '16/9';
   preview: string;
 }) {
   const [isOpen, setIsOpen] = useState(showEditor);
@@ -52,7 +52,7 @@ export function CodePreview({
   if (!mdxSnippets) return;
   return (
     <div className="remote-code-viewer mt-5 rounded-xl flex overflow-hidden border border-border flex-col">
-      <div style={{ height: editorHeight }}>
+      <div style={{ aspectRatio }}>
         <iframe
           ref={iframeRef}
           id={route}

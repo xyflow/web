@@ -5,8 +5,8 @@ description:
 sidebarTitle: Nodes
 ---
 
-import { RemoteCodeViewer } from 'xy-shared/server';
 import { Callout, Steps } from 'nextra/components';
+import { RemoteCodeViewer } from 'xy-shared/server';
 
 # Custom Nodes
 
@@ -96,19 +96,13 @@ const nodes = [
 After putting all together and adding some basic styles we get a custom node that prints
 text to the console:
 
-<RemoteCodeViewer
-  editorHeight="20vh"
-  showEditor={false}
-  route="learn/custom-node"
-  framework="react"
-/>
+<RemoteCodeViewer aspectRatio="4" route="learn/custom-node" framework="react" />
 
 </Steps>
 
 ## Full code example 🏁
 
-After putting all together and adding some basic styles we get a custom node that prints
-text to the console:
+<RemoteCodeViewer route="learn/custom-node" framework="react" />
 
 To enable your custom node to connect with other nodes, check out the
 [Handles](/learn/customization/handles) page to learn how to add source and target
