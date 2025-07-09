@@ -19,14 +19,6 @@ import {
 import { useNodeId, useReactFlow } from "@xyflow/react";
 import { EllipsisVertical, Rocket, Trash } from "lucide-react";
 
-export const BaseNodeSimpleDemo = memo(() => {
-  return (
-    <BaseNode>
-      <BaseNodeContent>Base Node</BaseNodeContent>
-    </BaseNode>
-  );
-});
-
 export const BaseNodeFullDemo = memo(() => {
   const id = useNodeId();
   const { setNodes } = useReactFlow();
