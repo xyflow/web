@@ -57,7 +57,6 @@ const components = {
       'placeholder-node': '',
       'database-schema-node': '',
       'labeled-group-node': '',
-      'node-header': '',
     },
   },
   edges: {
