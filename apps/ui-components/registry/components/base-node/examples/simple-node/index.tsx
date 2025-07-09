@@ -10,7 +10,7 @@ const defaultNodes = [
   {
     id: "1",
     position: { x: -100, y: 150 },
-    data: { label: "Simple Base Node" },
+    data: {},
     type: "simpleNode",
   },
 ];

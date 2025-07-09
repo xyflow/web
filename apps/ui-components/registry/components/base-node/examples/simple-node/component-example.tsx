@@ -1,12 +1,11 @@
 import { memo } from "react";
-import { NodeProps } from "@xyflow/react";
 
 import { BaseNode, BaseNodeContent } from "@/registry/components/base-node";
 
-export const SimpleBaseNode = memo(({ data }: NodeProps) => {
+export const SimpleBaseNode = memo(() => {
   return (
     <BaseNode>
-      <BaseNodeContent className="bg-red-100">{data.label}</BaseNodeContent>
+      <BaseNodeContent className="bg-red-100">simple node</BaseNodeContent>
     </BaseNode>
   );
 });
