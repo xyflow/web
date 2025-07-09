@@ -52,10 +52,13 @@ const components = {
   },
   nodes: {
     items: {
-      'node-tooltip': '',
-      'placeholder-node': '',
+      'base-node': '',
+      'node-status-indicator': 'Status Indicator',
+      'node-appendix': 'Appendix',
+      'node-tooltip': 'Tooltip',
       'database-schema-node': '',
-      'labeled-group-node': '',
+      'placeholder-node': '',
+      'labeled-group-node': 'Labeled Group',
     },
   },
   edges: {

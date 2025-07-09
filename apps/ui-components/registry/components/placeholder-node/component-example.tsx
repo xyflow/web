@@ -1,5 +1,4 @@
 import { memo } from "react";
-import { NodeProps } from "@xyflow/react";
 import { PlaceholderNode } from "@/registry/components/placeholder-node";
 
 const PlaceholderNodeDemo = memo(() => {

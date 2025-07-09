@@ -15,7 +15,7 @@ export const BaseNodeFullDemo = memo(() => {
     <BaseNode className="w-96">
       <BaseNodeHeader className="border-b">
         <Rocket className="size-4" />
-        <BaseNodeHeaderTitle>Base Node With Header</BaseNodeHeaderTitle>
+        <BaseNodeHeaderTitle>Header</BaseNodeHeaderTitle>
       </BaseNodeHeader>
       <BaseNodeContent>
         <h3 className="text-lg font-bold">Content</h3>
