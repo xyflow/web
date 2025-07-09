@@ -1,4 +1,6 @@
 import { memo, useCallback } from "react";
+import { useNodeId, useReactFlow } from "@xyflow/react";
+import { EllipsisVertical, Rocket, Trash } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -16,14 +18,12 @@ import {
   BaseNodeHeader,
   BaseNodeHeaderTitle,
 } from "@/registry/components/base-node";
-import { useNodeId, useReactFlow } from "@xyflow/react";
-import { ArrowDownRight, EllipsisVertical, Rocket, Trash } from "lucide-react";
 
 export const BaseNodeFullDemo = memo(() => {
   const id = useNodeId();
   const { setNodes } = useReactFlow();
 
-  const handleClick = useCallback(() => {
+  const onDeleteClick = useCallback(() => {
     setNodes((prevNodes) => prevNodes.filter((node) => node.id !== id));
   }, [id, setNodes]);
 
@@ -31,7 +31,7 @@ export const BaseNodeFullDemo = memo(() => {
     <BaseNode className="w-96">
       <BaseNodeHeader className="border-b">
         <Rocket className="size-4" />
-        <BaseNodeHeaderTitle>Base Node With Header</BaseNodeHeaderTitle>
+        <BaseNodeHeaderTitle>Header</BaseNodeHeaderTitle>
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -56,7 +56,7 @@ export const BaseNodeFullDemo = memo(() => {
         <Button
           variant="ghost"
           className="nodrag p-1"
-          onClick={handleClick}
+          onClick={onDeleteClick}
           aria-label="Delete Node"
           title="Delete Node"
         >
@@ -64,17 +64,15 @@ export const BaseNodeFullDemo = memo(() => {
         </Button>
       </BaseNodeHeader>
       <BaseNodeContent>
-        <h3 className="text-lg font-bold">Base Node Content</h3>
+        <h3 className="text-lg font-bold">Content</h3>
         <p className="text-xs">
-          You would typically put your node's content here, such as
-          configuration options, input and output handles.
+          This is a full-featured node with a header, content, and footer. You
+          can customize it as needed.
         </p>
       </BaseNodeContent>
       <BaseNodeFooter>
-        <h4 className="text-md self-start font-bold">Base Node Footer</h4>
-        <p className="text-xs">
-          You may want to add some actions or information in the footer.
-        </p>
+        <h4 className="text-md self-start font-bold">Footer</h4>
+
         <Button variant="outline" className="nodrag w-full">
           Action 1
         </Button>
@@ -82,3 +80,5 @@ export const BaseNodeFullDemo = memo(() => {
     </BaseNode>
   );
 });
+
+BaseNodeFullDemo.displayName = "BaseNodeFullDemo";

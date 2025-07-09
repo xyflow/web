@@ -1,17 +1,17 @@
 import { Background, ReactFlow } from "@xyflow/react";
 
-import { AnnotationBaseNodeDemo } from "./component-example";
+import { SimpleBaseNode } from "./component-example";
 
 const nodeTypes = {
-  annotationNode: AnnotationBaseNodeDemo,
+  simpleNode: SimpleBaseNode,
 };
 
 const defaultNodes = [
   {
     id: "1",
     position: { x: -100, y: 150 },
-    data: { label: "Annotation 1" },
-    type: "annotationNode",
+    data: { label: "Simple Base Node" },
+    type: "simpleNode",
   },
 ];
 
