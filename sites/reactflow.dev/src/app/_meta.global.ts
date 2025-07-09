@@ -53,7 +53,7 @@ const components = {
   },
   nodes: {
     items: {
-      'tooltip-node': '',
+      'node-tooltip': '',
       'placeholder-node': '',
       'database-schema-node': '',
       'labeled-group-node': '',
