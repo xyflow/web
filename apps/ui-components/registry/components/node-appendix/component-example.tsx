@@ -57,7 +57,6 @@ export const NodeAppendixDemo = () => {
           <Button
             aria-label="Show appendix"
             onClick={() => setVisible((prev) => !prev)}
-            className=""
             variant="outline"
           >
             {visible ? "Hide" : "Show"} results
