@@ -179,7 +179,6 @@ export type InternalRoute =
   | '/examples/styling/_meta.tsx'
   | '/examples/styling/base-style'
   | '/examples/styling/dark-mode'
-  | '/examples/styling/styled-components'
   | '/examples/styling/tailwind'
   | '/examples/styling/turbo-flow'
   | '/learn'
