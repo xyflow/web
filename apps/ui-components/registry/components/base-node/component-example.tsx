@@ -1,16 +1,6 @@
-import { memo, useCallback } from "react";
-import { useNodeId, useReactFlow } from "@xyflow/react";
-import { EllipsisVertical, Rocket, Trash } from "lucide-react";
+import { memo } from "react";
 
 import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import {
   BaseNode,
   BaseNodeContent,
@@ -18,50 +8,14 @@ import {
   BaseNodeHeader,
   BaseNodeHeaderTitle,
 } from "@/registry/components/base-node";
+import { Rocket } from "lucide-react";
 
 export const BaseNodeFullDemo = memo(() => {
-  const id = useNodeId();
-  const { setNodes } = useReactFlow();
-
-  const onDeleteClick = useCallback(() => {
-    setNodes((prevNodes) => prevNodes.filter((node) => node.id !== id));
-  }, [id, setNodes]);
-
   return (
     <BaseNode className="w-96">
       <BaseNodeHeader className="border-b">
         <Rocket className="size-4" />
-        <BaseNodeHeaderTitle>Header</BaseNodeHeaderTitle>
-
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button
-              variant="ghost"
-              className="nodrag p-1"
-              aria-label="Node Actions"
-              title="Node Actions"
-            >
-              <EllipsisVertical className="size-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent>
-            <DropdownMenuLabel>Node Actions</DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>Action 1</DropdownMenuItem>
-            <DropdownMenuItem>Action 2</DropdownMenuItem>
-            <DropdownMenuItem>Action 3</DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-
-        <Button
-          variant="ghost"
-          className="nodrag p-1"
-          onClick={onDeleteClick}
-          aria-label="Delete Node"
-          title="Delete Node"
-        >
-          <Trash className="size-4" />
-        </Button>
+        <BaseNodeHeaderTitle>Base Node With Header</BaseNodeHeaderTitle>
       </BaseNodeHeader>
       <BaseNodeContent>
         <h3 className="text-lg font-bold">Content</h3>
