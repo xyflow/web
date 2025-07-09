@@ -5,7 +5,7 @@ import { LoadingNode } from "./component-example";
 const defaultNodes = [
   {
     id: "1",
-    position: { x: 120, y: 160 },
+    position: { x: 0, y: 0 },
     type: "loadingNode",
     data: {},
   },

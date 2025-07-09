@@ -1,18 +1,18 @@
 import { Background, ReactFlow } from "@xyflow/react";
 
-import { LoadingNode } from "./component-example";
+import { ErrorNode } from "./component-example";
 
 const defaultNodes = [
   {
     id: "1",
-    position: { x: 120, y: 160 },
-    type: "loadingNode",
+    position: { x: 60, y: 80 },
+    type: "errorNode",
     data: {},
   },
 ];
 
 const nodeTypes = {
-  loadingNode: LoadingNode,
+  errorNode: ErrorNode,
 };
 
 export default function App() {
