@@ -615,11 +615,6 @@
     "permanent": true
   },
   {
-    "source": "/docs/examples/styling/styled-components",
-    "destination": "/examples/styling/styled-components",
-    "permanent": true
-  },
-  {
     "source": "/docs/examples/styling/tailwind",
     "destination": "/examples/styling/tailwind",
     "permanent": true
