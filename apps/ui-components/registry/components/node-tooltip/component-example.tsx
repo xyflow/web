@@ -22,7 +22,7 @@ const NodeTooltipDemo = memo(() => {
             Hover me! ⭐️
           </NodeTooltipTrigger>
           <span>
-            You can add more content, that does not trigger the tooltip.
+            You can add more content that does not trigger the tooltip.
           </span>
         </BaseNodeContent>
       </BaseNode>
