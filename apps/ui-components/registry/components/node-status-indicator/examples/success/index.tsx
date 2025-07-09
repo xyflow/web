@@ -1,18 +1,18 @@
 import { Background, ReactFlow } from "@xyflow/react";
 
-import { LoadingNode } from "./component-example";
+import { SuccessNode } from "./component-example";
 
 const defaultNodes = [
   {
     id: "1",
-    position: { x: 120, y: 160 },
-    type: "loadingNode",
+    position: { x: 200, y: 0 },
+    type: "successNode",
     data: {},
   },
 ];
 
 const nodeTypes = {
-  loadingNode: LoadingNode,
+  successNode: SuccessNode,
 };
 
 export default function App() {
