@@ -79,7 +79,8 @@ Define distinct custom `Node` type for each node variant and use them as a gener
 ```svelte
 <!-- NumberNode.svelte -->
 <script module>
-  export type NumberNodeType = Node<{ number: number }, 'number'>;
+  export type NumberNodeData = { number: number };
+  export type NumberNodeType = Node<NumberNodeData, 'number'>;
 </script>
 
 <script lang="ts">
