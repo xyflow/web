@@ -97,6 +97,8 @@ export const NodeStatusIndicator = ({
           return <SpinnerLoadingIndicator>{children}</SpinnerLoadingIndicator>;
         case "border":
           return <BorderLoadingIndicator>{children}</BorderLoadingIndicator>;
+        default:
+          return <>{children}</>;
       }
     case "success":
       return (
