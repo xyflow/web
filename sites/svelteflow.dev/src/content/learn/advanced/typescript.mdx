@@ -71,11 +71,13 @@ Let's start with the essential types needed for a basic implementation. While Ty
 
 ### Custom Nodes
 
-When working with [custom nodes](/learn/customization/custom-nodes), you can extend the base `Node` type to include your custom data. There are two main approaches:
+When working with [custom nodes](/learn/customization/custom-nodes), you can extend the base `Node` type to include custom data. There are two main approaches to define custom nodes:
 
-1. For **multiple custom nodes**, specify a custom `Node` type as a generic to `NodeProps`:
+#### 1. Separate Node Types (One Component per Node Type)
+Define distinct custom `Node` type for each node variant and use them as a generic in `NodeProps`. For example:
 
 ```svelte
+<!-- NumberNode.svelte -->
 <script module>
   export type NumberNodeType = Node<{ number: number }, 'number'>;
 </script>
@@ -92,16 +94,16 @@ When working with [custom nodes](/learn/customization/custom-nodes), you can ext
 </div>
 ```
 
-⚠️ When defining node data separately, you must use `type` (interfaces won't work):
+<Callout type="warning">
+  **Note:** When defining node data, use `type`, not `interface`.
+</Callout>
 
-```ts
-type NumberNodeData = { number: number };
-type NumberNodeType = Node<NumberNodeData, 'number'>;
-```
+#### 2. Unified Node Type (One Component for Multiple Node Types)
 
-2. For **a single custom node** that renders different content based on the node type, use a union type:
+Instead of creating separate components for each node type, you can define a `union` of custom node types and use a single component to render different content based on the node’s type.
 
 ```svelte
+<!-- NumberOrTextNode.svelte -->
 <script module>
   export type NumberNodeType = Node<{ number: number }, 'number'>;
   export type TextNodeType = Node<{ text: string }, 'text'>;
