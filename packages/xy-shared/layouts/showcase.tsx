@@ -43,10 +43,6 @@ export type ShowcaseItem = {
   tags: { id: string; name: string }[];
 };
 
-function isCaseStudy(item: CaseStudy | ShowcaseItem): item is CaseStudy {
-  return item.hasOwnProperty('frontMatter');
-}
-
 export function ShowcaseLayout({
   title,
   subtitle,
@@ -55,28 +51,6 @@ export function ShowcaseLayout({
   children,
 }: ShowcaseLayoutProps) {
   const { all, selected, toggle } = useTags(showcases);
-
-  const visibleItems = useMemo(() => {
-    const visibleShowcases = showcases.filter(
-      ({ tags }) =>
-        selected.size === 0 ||
-        Array.from(selected).every((tag) => tags.some(({ name }) => name === tag)),
-    );
-
-    let currentCaseStudy = caseStudies[0];
-
-    return visibleShowcases.reduce(
-      (list, showcase, i) => {
-        list.push(showcase);
-        if (currentCaseStudy && (i + 1) % 6 === 0) {
-          list.push(currentCaseStudy);
-          currentCaseStudy = caseStudies[(i + 1) / 6];
-        }
-        return list;
-      },
-      [] as (ShowcaseItem | CaseStudy)[],
-    );
-  }, [selected, showcases, caseStudies]);
 
   return (
     <BaseLayout>
@@ -96,51 +70,43 @@ export function ShowcaseLayout({
       </div>
 
       <ContentGrid className="mt-8 md:grid-cols-2 lg:grid-cols-3 border-none gap-4 lg:gap-8">
-        {visibleItems.map((item) =>
-          isCaseStudy(item) ? (
-            <CaseStudyPreview
-              key={item.name}
-              data={item.frontMatter as CaseStudyFrontmatter}
-              route={item.route}
+        {showcases.map((item) => (
+          <ContentGridItem
+            key={item.title}
+            className="border-none py-6 lg:py-8 lg:px-0 hover:bg-transparent relative"
+          >
+            <ProjectPreview
+              image={item.image}
+              title={item.title}
+              className="relative h-full flex-col flex"
+              imageWrapperClassName="w-full"
+              subtitle={
+                <>
+                  <span className="flex gap-2">
+                    {item.tags.map((tag) => (
+                      <Tag
+                        key={tag.id}
+                        name={tag.name}
+                        selected={selected.has(tag.name)}
+                        onClick={toggle}
+                      />
+                    ))}
+                  </span>
+                </>
+              }
+              description={item.description}
+              route={item.url}
+              altRoute={
+                item.demoUrl
+                  ? { href: item.demoUrl, label: 'Demo' }
+                  : item.repoUrl
+                    ? { href: item.repoUrl, label: 'Repo' }
+                    : undefined
+              }
+              linkLabel="Website"
             />
-          ) : (
-            <ContentGridItem
-              key={item.id}
-              className="border-none py-6 lg:py-8 lg:px-0 hover:bg-transparent relative"
-            >
-              <ProjectPreview
-                image={item.image}
-                title={item.title}
-                className="relative h-full flex-col flex"
-                imageWrapperClassName="w-full"
-                subtitle={
-                  <>
-                    <span className="flex gap-2">
-                      {item.tags.map((tag) => (
-                        <Tag
-                          key={tag.id}
-                          name={tag.name}
-                          selected={selected.has(tag.name)}
-                          onClick={toggle}
-                        />
-                      ))}
-                    </span>
-                  </>
-                }
-                description={item.description}
-                route={item.url}
-                altRoute={
-                  item.demoUrl
-                    ? { href: item.demoUrl, label: 'Demo' }
-                    : item.repoUrl
-                      ? { href: item.repoUrl, label: 'Repo' }
-                      : undefined
-                }
-                linkLabel="Website"
-              />
-            </ContentGridItem>
-          ),
-        )}
+          </ContentGridItem>
+        ))}
 
         <ContentGridItem route="/showcase/submit">
           <ProjectPreview
@@ -231,7 +197,12 @@ function CaseStudyPreview({
             <Link href={route}>Read Case Study</Link>
           </Button>
           <Button asChild variant="link" className="text-md font-bold">
-            <a href={data.project_url} target="_blank" className="flex items-center" rel="noreferrer">
+            <a
+              href={data.project_url}
+              target="_blank"
+              className="flex items-center"
+              rel="noreferrer"
+            >
               Project Website <ArrowRightCircleIcon className="ml-1 w-4 h-4" />
             </a>
           </Button>

@@ -2,8 +2,7 @@
 import { put } from '@vercel/blob';
 import { ChangeEvent, useState } from 'react';
 
-export function ImageUpload() {
-  const [imageUrl, setImageUrl] = useState('');
+export function ImageUpload({ url, set_url }) {
   const [uploading, setUploading] = useState(false);
 
   async function handleFileChange(e: ChangeEvent<HTMLInputElement>) {
@@ -13,9 +12,10 @@ export function ImageUpload() {
 
     const blob = await put(`showcase-submit/${file.name}`, file, {
       access: 'public',
+      token: process.env.NEXT_PUBLIC_BLOB_READ_WRITE_TOKEN,
     });
 
-    setImageUrl(blob.url);
+    set_url(blob.url);
     console.log(blob.url);
     setUploading(false);
   }
@@ -24,9 +24,9 @@ export function ImageUpload() {
     <div className="flex flex-col gap-2">
       <input type="file" accept="image/*" onChange={handleFileChange} />
       {uploading && <span>Uploading...</span>}
-      {imageUrl && (
+      {url && (
         <a
-          href={imageUrl}
+          href={url}
           target="_blank"
           rel="noopener noreferrer"
           className="text-blue-600 underline"

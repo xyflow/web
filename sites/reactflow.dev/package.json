@@ -17,6 +17,8 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
+    "@octokit/auth-app": "^8.0.1",
+    "@octokit/rest": "^22.0.0",
     "@typeform/embed-react": "^4.4.0",
     "@xyflow/react": "^12.8.1",
     "@xyflow/system": "^0.0.63",
