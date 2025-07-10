@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { BaseNode } from "@/registry/components/base-node";
+import { BaseNode, BaseNodeHeader } from "@/registry/components/base-node";
 import { TableBody, TableRow, TableCell } from "@/components/ui/table";
 
 /* DATABASE SCHEMA NODE HEADER ------------------------------------------------ */
@@ -14,9 +14,9 @@ export const DatabaseSchemaNodeHeader = ({
   children,
 }: DatabaseSchemaNodeHeaderProps) => {
   return (
-    <h2 className="rounded-tl-md rounded-tr-md bg-secondary p-2 text-center text-sm text-muted-foreground">
-      {children}
-    </h2>
+    <BaseNodeHeader className="rounded-tl-md rounded-tr-md bg-secondary p-2 text-center text-sm text-muted-foreground">
+      <h2>{children}</h2>
+    </BaseNodeHeader>
   );
 };
 

@@ -15,8 +15,13 @@ import { fetchShadcnComponent } from '@/utils';
 import { FC } from 'react';
 import { useMDXComponents as getMDXComponents } from '@/mdx-components';
 
-function kebabCaseToTitleCase(str: string) {
+function kebabCaseToPascalCase(str: string) {
   const newString = str.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
+  return newString.charAt(0).toUpperCase() + newString.slice(1);
+}
+
+function kebabCaseToTitleCase(str: string) {
+  const newString = str.replace(/-([a-z])/g, (g) => ' ' + g[1].toUpperCase());
   return newString.charAt(0).toUpperCase() + newString.slice(1);
 }
 
@@ -50,7 +55,7 @@ const UiComponentViewer: FC<{ id: string }> = async ({ id }) => {
     if (dep.startsWith('https://')) {
       // handle internal dependencies from React Flow components
       const depName = dep.split('/').pop()!.split('.').shift()!;
-      const label = kebabCaseToTitleCase(depName);
+      const label = kebabCaseToPascalCase(depName);
 
       const url = componentPages.get(depName);
 
