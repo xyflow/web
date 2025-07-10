@@ -50,38 +50,55 @@ const ui = {
       layout: 'full',
     },
   },
-  'custom-nodes': {
+  components: {
     items: {
+      '#': {
+        type: 'separator',
+        title: 'Node Utilities', // Title is optional
+      },
       'base-node': '',
-      'database-schema-node': '',
-      'placeholder-node': '',
-    },
-  },
-  'node-components': {
-    items: {
       'node-status-indicator': 'Status Indicator',
       'node-appendix': 'Appendix',
       'node-tooltip': 'Tooltip',
+      '##': {
+        type: 'separator',
+        title: 'Custom Nodes', // Title is optional
+      },
+      'database-schema-node': 'Database Schema',
+      'placeholder-node': 'Placeholder',
       'labeled-group-node': 'Labeled Group',
-    },
-  },
-  edges: {
-    items: {
+
+      '###': {
+        type: 'separator',
+        title: 'Handles', // Title is optional
+      },
+
+      'base-handle': '',
+      'labeled-handle': '',
+      'button-handle': '',
+
+      '####': {
+        type: 'separator',
+        title: 'Custom Edges', // Title is optional
+      },
+
       'button-edge': '',
       'data-edge': '',
-    },
-  },
-  controls: {
-    items: {
+      'animated-svg-edge': '',
+
+      '#####': {
+        type: 'separator',
+        title: 'Controls', // Title is optional
+      },
+
       'zoom-slider': '',
+      'zoom-select': '',
+
+      misc: {
+        display: 'hidden',
+      },
     },
   },
-  handles: {
-    items: {
-      'labeled-handle': '',
-    },
-  },
-  misc: '',
   _: {
     type: 'separator',
   },
