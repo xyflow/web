@@ -1110,6 +1110,26 @@
     "permanent": true
   },
   {
+    "source": "/components/nodes/base-node",
+    "destination": "/ui/custom-nodes/base-node",
+    "permanent": true
+  },
+  {
+    "source": "/components/nodes/database-schema-node",
+    "destination": "/ui/custom-nodes/database-schema-node",
+    "permanent": true
+  },
+  {
+    "source": "/components/nodes/placeholder-node",
+    "destination": "/ui/custom-nodes/placeholder-node",
+    "permanent": true
+  },
+  {
+    "source": "/components/nodes/:path*",
+    "destination": "/ui/node-components/:path*",
+    "permanent": true
+  },
+  {
     "source": "/components/:path*",
     "destination": "/ui/:path*",
     "permanent": true

@@ -54,6 +54,7 @@ const ui = {
     items: {
       'base-node': '',
       'database-schema-node': '',
+      'placeholder-node': '',
     },
   },
   'node-components': {
@@ -61,7 +62,6 @@ const ui = {
       'node-status-indicator': 'Status Indicator',
       'node-appendix': 'Appendix',
       'node-tooltip': 'Tooltip',
-      'placeholder-node': '',
       'labeled-group-node': 'Labeled Group',
     },
   },
