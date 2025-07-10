@@ -38,7 +38,7 @@ const Layout: FC<{ children: ReactNode }> = async ({ children }) => {
     ],
   };
   const components = pageMap.find(
-    (item): item is Folder => 'children' in item && item.name === 'components',
+    (item): item is Folder => 'children' in item && item.name === 'ui',
   );
   const folders = [
     ...apiReference!.children,

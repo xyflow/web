@@ -39,7 +39,7 @@ const UiComponentViewer: FC<{ id: string }> = async ({ id }) => {
     url: `https://www.npmjs.com/package/${dep}`,
   }));
 
-  const componentPages = (await getPageMap('/components')).reduce((acc, pageMapItem) => {
+  const componentPages = (await getPageMap('/ui')).reduce((acc, pageMapItem) => {
     if ('children' in pageMapItem) {
       for (const page of pageMapItem.children) {
         if ('name' in page && 'route' in page) {

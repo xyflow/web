@@ -1099,7 +1099,7 @@
     "destination": "/learn/troubleshooting/common-errors",
     "permanent": true
   },
-    {
+  {
     "source": "/learn/concepts/introduction",
     "destination": "/learn/concepts/terms-and-definitions",
     "permanent": true
@@ -1107,6 +1107,11 @@
   {
     "source": "/learn/concepts/core-concepts",
     "destination": "/learn/concepts/terms-and-definitions",
+    "permanent": true
+  },
+  {
+    "source": "/components",
+    "destination": "/ui",
     "permanent": true
   }
 ]

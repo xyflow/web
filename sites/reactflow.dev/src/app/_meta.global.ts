@@ -36,7 +36,7 @@ const troubleshooting = {
   'migrate-to-v11': '',
   'migrate-to-v10': '',
 };
-const components = {
+const ui = {
   index: {
     title: 'Introduction',
     theme: {
@@ -50,13 +50,17 @@ const components = {
       layout: 'full',
     },
   },
-  nodes: {
+  'custom-nodes': {
     items: {
       'base-node': '',
+      'database-schema-node': '',
+    },
+  },
+  'node-components': {
+    items: {
       'node-status-indicator': 'Status Indicator',
       'node-appendix': 'Appendix',
       'node-tooltip': 'Tooltip',
-      'database-schema-node': '',
       'placeholder-node': '',
       'labeled-group-node': 'Labeled Group',
     },
@@ -136,7 +140,7 @@ const metaRecord = {
       // Rest of examples are added in `(content-pages)/layout.tsx` file
     },
   },
-  components: { items: components },
+  ui: { items: ui },
   showcase: '',
   more: {
     type: 'menu',
