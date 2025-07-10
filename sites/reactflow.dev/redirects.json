@@ -1110,8 +1110,8 @@
     "permanent": true
   },
   {
-    "source": "/components",
-    "destination": "/ui",
+    "source": "/components/:path*",
+    "destination": "/ui/:path*",
     "permanent": true
   }
 ]
