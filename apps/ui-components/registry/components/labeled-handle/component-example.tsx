@@ -4,7 +4,7 @@ import { NodeProps, Position } from "@xyflow/react";
 import { LabeledHandle } from "@/registry/components/labeled-handle";
 import { BaseNode } from "@/registry/components/base-node";
 
-const LabeledHandleDemo = memo(({ selected }: NodeProps) => {
+const LabeledHandleDemo = memo(() => {
   return (
     <BaseNode className="flex px-0 py-5">
       <LabeledHandle
