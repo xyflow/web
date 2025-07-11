@@ -1,34 +1,17 @@
 ---
 title: NodeProps
-description: 'When you implement a custom node it is wrapped in a component that enables
-  basic functionality like selection and dragging. Your custom node receives the
-  following props:'
+description:
+  'When you implement a custom node it is wrapped in a component that enables basic
+  functionality like selection and dragging. Your custom node receives the following
+  props:'
 ---
 
 # NodeProps\<T>
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/types/nodes.ts/#L89)
 
-When you implement a [custom node](/learn/customization/custom-nodes) it is
-wrapped in a component that enables basic functionality like selection and
-dragging. Your custom node receives the following props:
-
-```ts
-export type NodeProps<NodeType extends Node = Node> = {
-  id: string;
-  data: Node['data'];
-  dragHandle?: boolean;
-  type?: string;
-  selected?: boolean;
-  isConnectable?: boolean;
-  zIndex?: number;
-  positionAbsoluteX: number;
-  positionAbsoluteY: number;
-  dragging: boolean;
-  targetPosition?: Position;
-  sourcePosition?: Position;
-};
-```
+When you implement a [custom node](/learn/customization/custom-nodes) it is wrapped in a
+component that enables basic functionality like selection and dragging.
 
 ## Usage
 
@@ -58,8 +41,7 @@ export default function CounterNode(props: NodeProps<CounterNode>) {
 ```
 
 Remember to register your custom node by adding it to the
-[`nodeTypes`](/api-reference/react-flow#nodetypes) prop of your
-`<ReactFlow />` component.
+[`nodeTypes`](/api-reference/react-flow#nodetypes) prop of your `<ReactFlow />` component.
 
 ```tsx
 import { ReactFlow } from '@xyflow/react';
@@ -77,5 +59,7 @@ export default function App() {
 You can read more in our [custom node guide](/learn/customization/custom-nodes).
 
 ## Fields
+
+Your custom node receives the following props:
 
 <APIDocs typeName="NodeProps" />
