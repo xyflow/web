@@ -55,8 +55,8 @@ importers:
         specifier: ^12.8.1
         version: 12.8.1(@types/react@18.3.23)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@xyflow/svelte':
-        specifier: 1.2.1
-        version: 1.2.1(svelte@5.35.6)
+        specifier: 1.2.2
+        version: 1.2.2(svelte@5.35.6)
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -626,8 +626,8 @@ importers:
         specifier: 12.8.1
         version: 12.8.1(@types/react@18.3.23)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@xyflow/svelte':
-        specifier: 1.2.1
-        version: 1.2.1(svelte@5.35.6)
+        specifier: 1.2.2
+        version: 1.2.2(svelte@5.35.6)
       '@xyflow/system':
         specifier: ^0.0.63
         version: 0.0.63
@@ -2974,8 +2974,8 @@ packages:
       react: '>=17'
       react-dom: '>=17'
 
-  '@xyflow/svelte@1.2.1':
-    resolution: {integrity: sha512-RXE8Su8VNTvo+cUeSNuOd+fqs3X9ewofPndq4p4NrFADvfsrcFnHG6oWQ/945bcVKlvA9EkdDcT+jup8BhPr/w==}
+  '@xyflow/svelte@1.2.2':
+    resolution: {integrity: sha512-BBz+NGwN/95CQWMRhi45PLkFFZvd10Y1Y7wZM6Fk1CzyUpcNVM7hM02iVQf/7NlyRfbGNLvVEfXrWiGziLc85w==}
     peerDependencies:
       svelte: ^5.25.0
 
@@ -2984,6 +2984,9 @@ packages:
 
   '@xyflow/system@0.0.65':
     resolution: {integrity: sha512-AliQPQeurQMoNlOdySnRoDQl9yDSA/1Lqi47Eo0m98lHcfrTdD9jK75H0tiGj+0qRC10SKNUXyMkT0KL0opg4g==}
+
+  '@xyflow/system@0.0.66':
+    resolution: {integrity: sha512-TTxESDwPsATnuDMUeYYtKe4wt9v8bRO29dgYBhR8HyhSCzipnAdIL/1CDfFd+WqS1srVreo24u6zZeVIDk4r3Q==}
 
   '@zod/core@0.9.0':
     resolution: {integrity: sha512-bVfPiV2kDUkAJ4ArvV4MHcPZA8y3xOX6/SjzSy2kX2ACopbaaAP4wk6hd/byRmfi9MLNai+4SFJMmcATdOyclg==}
@@ -9543,10 +9546,10 @@ snapshots:
       - '@types/react'
       - immer
 
-  '@xyflow/svelte@1.2.1(svelte@5.35.6)':
+  '@xyflow/svelte@1.2.2(svelte@5.35.6)':
     dependencies:
       '@svelte-put/shortcut': 4.1.0(svelte@5.35.6)
-      '@xyflow/system': 0.0.65
+      '@xyflow/system': 0.0.66
       svelte: 5.35.6
 
   '@xyflow/system@0.0.63':
@@ -9562,6 +9565,18 @@ snapshots:
       d3-zoom: 3.0.0
 
   '@xyflow/system@0.0.65':
+    dependencies:
+      '@types/d3-drag': 3.0.7
+      '@types/d3-interpolate': 3.0.4
+      '@types/d3-selection': 3.0.11
+      '@types/d3-transition': 3.0.9
+      '@types/d3-zoom': 3.0.8
+      d3-drag: 3.0.0
+      d3-interpolate: 3.0.1
+      d3-selection: 3.0.0
+      d3-zoom: 3.0.0
+
+  '@xyflow/system@0.0.66':
     dependencies:
       '@types/d3-drag': 3.0.7
       '@types/d3-interpolate': 3.0.4
