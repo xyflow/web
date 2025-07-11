@@ -1,14 +1,38 @@
 import { memo } from "react";
 
-import { NodeProps } from "@xyflow/react";
-import { BaseNode } from "@/registry/components/base-node";
+import { Button } from "@/components/ui/button";
+import {
+  BaseNode,
+  BaseNodeContent,
+  BaseNodeFooter,
+  BaseNodeHeader,
+  BaseNodeHeaderTitle,
+} from "@/registry/components/base-node";
+import { Rocket } from "lucide-react";
 
-const BaseNodeDemo = memo(({ selected }: NodeProps) => {
+export const BaseNodeFullDemo = memo(() => {
   return (
-    <BaseNode selected={selected}>
-      <div>Base Node</div>
+    <BaseNode className="w-96">
+      <BaseNodeHeader className="border-b">
+        <Rocket className="size-4" />
+        <BaseNodeHeaderTitle>Header</BaseNodeHeaderTitle>
+      </BaseNodeHeader>
+      <BaseNodeContent>
+        <h3 className="text-lg font-bold">Content</h3>
+        <p className="text-xs">
+          This is a full-featured node with a header, content, and footer. You
+          can customize it as needed.
+        </p>
+      </BaseNodeContent>
+      <BaseNodeFooter>
+        <h4 className="text-md self-start font-bold">Footer</h4>
+
+        <Button variant="outline" className="nodrag w-full">
+          Action 1
+        </Button>
+      </BaseNodeFooter>
     </BaseNode>
   );
 });
 
-export default BaseNodeDemo;
+BaseNodeFullDemo.displayName = "BaseNodeFullDemo";

@@ -1,10 +1,9 @@
 import { memo } from "react";
-import { NodeProps } from "@xyflow/react";
 import { PlaceholderNode } from "@/registry/components/placeholder-node";
 
-const PlaceholderNodeDemo = memo(({ selected }: NodeProps) => {
+const PlaceholderNodeDemo = memo(() => {
   return (
-    <PlaceholderNode selected={selected}>
+    <PlaceholderNode>
       <div>+</div>
     </PlaceholderNode>
   );

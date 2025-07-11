@@ -88,7 +88,6 @@ const demoOutputPath = path.join(__dirname, "../public/demo");
 
       // If a component has examples, read them and add to the demo content.
       // Each example should be stored in a subdirectory with:
-      // - example.json file containing the example metadata (right now only title is used),
       // - index.tsx file containing the app example,
       // - component-example.tsx file containing the actual component example demo content.
       const hasExamples = fs.existsSync(examplesPath);

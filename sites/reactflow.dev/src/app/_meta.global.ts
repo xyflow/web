@@ -36,7 +36,7 @@ const troubleshooting = {
   'migrate-to-v11': '',
   'migrate-to-v10': '',
 };
-const components = {
+const ui = {
   index: {
     title: 'Introduction',
     theme: {
@@ -50,33 +50,55 @@ const components = {
       layout: 'full',
     },
   },
-  nodes: {
+  components: {
     items: {
-      'tooltip-node': '',
-      'placeholder-node': '',
-      'database-schema-node': '',
-      'annotation-node': '',
-      'labeled-group-node': '',
-      'node-header': '',
-    },
-  },
-  edges: {
-    items: {
+      '#': {
+        type: 'separator',
+        title: 'Node Utilities', // Title is optional
+      },
+      'base-node': '',
+      'node-status-indicator': 'Status Indicator',
+      'node-appendix': 'Appendix',
+      'node-tooltip': 'Tooltip',
+      '##': {
+        type: 'separator',
+        title: 'Custom Nodes', // Title is optional
+      },
+      'database-schema-node': 'Database Schema',
+      'placeholder-node': 'Placeholder',
+      'labeled-group-node': 'Labeled Group',
+
+      '###': {
+        type: 'separator',
+        title: 'Handles', // Title is optional
+      },
+
+      'base-handle': '',
+      'labeled-handle': '',
+      'button-handle': '',
+
+      '####': {
+        type: 'separator',
+        title: 'Custom Edges', // Title is optional
+      },
+
       'button-edge': '',
       'data-edge': '',
-    },
-  },
-  controls: {
-    items: {
+      'animated-svg-edge': '',
+
+      '#####': {
+        type: 'separator',
+        title: 'Controls', // Title is optional
+      },
+
       'zoom-slider': '',
+      'zoom-select': '',
+
+      misc: {
+        display: 'hidden',
+      },
     },
   },
-  handles: {
-    items: {
-      'labeled-handle': '',
-    },
-  },
-  misc: '',
   _: {
     type: 'separator',
   },
@@ -135,7 +157,7 @@ const metaRecord = {
       // Rest of examples are added in `(content-pages)/layout.tsx` file
     },
   },
-  components: { items: components },
+  ui: { items: ui },
   showcase: '',
   more: {
     type: 'menu',
