@@ -33,14 +33,19 @@ export type ShowcaseLayoutProps = {
 
 export type ShowcaseItem = {
   id: string;
+  email: string;
+  library: string;
   title: string;
   description: string;
   image: string;
   url: string;
+  tags: { id: string; name: string }[];
+  status?: string;
   demoUrl?: string;
   repoUrl?: string;
   openSource?: boolean;
-  tags: { id: string; name: string }[];
+  priority?: number;
+  createdAt?: string;
 };
 
 export function ShowcaseLayout({

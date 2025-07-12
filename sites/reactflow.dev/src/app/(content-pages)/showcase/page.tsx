@@ -1,8 +1,8 @@
+import { showcaseItems } from '@/app/(content-pages)/showcase/showcases';
 import { Metadata } from 'next';
 import { getPageMap } from 'nextra/page-map';
 import { FC } from 'react';
 import { CaseStudy, ShowcaseLayout, SubscribeSection } from 'xy-shared';
-import { externalShowcases } from './showcases';
 
 export const metadata: Metadata = {
   title: 'Showcase',
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 const Showcase: FC = async () => {
-  const showcases = externalShowcases
+  const showcases = showcaseItems;
   const caseStudies = (await getPageMap('/pro/case-studies')).filter(
     (page) => 'name' in page && page.name !== 'index',
   );
