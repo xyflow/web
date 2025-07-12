@@ -1,22 +1,27 @@
-import { Octokit } from '@octokit/rest';
-import { ShowcaseItem } from 'xy-shared';
+import { Octokit } from "@octokit/rest";
+import { ShowcaseItem } from "xy-shared";
 
 export async function createShowcasePR(formData: ShowcaseItem, token: string) {
   const owner = process.env.NEXT_PUBLIC_GITHUB_USERNAME!;
   const repo = process.env.NEXT_PUBLIC_GITHUB_REPO!;
   const base = process.env.NEXT_PUBLIC_GITHUB_BRANCH!;
   const branch = `form-data-${Date.now()}`;
-  const filePath = 'sites/reactflow.dev/src/app/(content-pages)/showcase/showcases.ts';
+  const filePath =
+    "sites/reactflow.dev/src/app/(content-pages)/showcase/showcases.ts";
 
   const octokit = new Octokit({ auth: token });
 
   // Get latest commit SHA
-  const { data: latest } = await octokit.repos.getBranch({ owner, repo, branch: base });
+  const { data: latest } = await octokit.repos.getBranch({
+    owner,
+    repo,
+    branch: base,
+  });
   const baseSha = latest.commit.sha;
   const treeSha = latest.commit.commit.tree.sha;
 
   // Get existing file content (if any)
-  let existingContent = '';
+  let existingContent = "";
   try {
     const { data: file } = await octokit.repos.getContent({
       owner,
@@ -24,16 +29,14 @@ export async function createShowcasePR(formData: ShowcaseItem, token: string) {
       path: filePath,
       ref: base,
     });
-    const buff = Buffer.from(file.content, 'base64');
-    existingContent = buff.toString('utf8');
+    const buff = Buffer.from(file.content, "base64");
+    existingContent = buff.toString("utf8");
   } catch (_) {
-    console.error('could not read file from github');
+    console.error("could not read file from github");
   }
-  const showcases: ShowcaseItem[] = JSON.parse(
-    existingContent.split('export const showcaseItems: ShowcaseItem[] = ')[1],
-  );
+  const showcases: ShowcaseItem[] = JSON.parse(existingContent);
   const updatedShowcases = [...showcases, formData];
-  const newContent = existingContent + JSON.stringify(updatedShowcases, undefined, 2);
+  const newContent = JSON.stringify(updatedShowcases, undefined, 2);
 
   // Create new branch
   await octokit.git.createRef({
@@ -48,7 +51,7 @@ export async function createShowcasePR(formData: ShowcaseItem, token: string) {
     owner,
     repo,
     content: newContent,
-    encoding: 'utf-8',
+    encoding: "utf-8",
   });
 
   // Create new tree
@@ -59,8 +62,8 @@ export async function createShowcasePR(formData: ShowcaseItem, token: string) {
     tree: [
       {
         path: filePath,
-        mode: '100644',
-        type: 'blob',
+        mode: "100644",
+        type: "blob",
         sha: blob.sha,
       },
     ],
@@ -70,7 +73,7 @@ export async function createShowcasePR(formData: ShowcaseItem, token: string) {
   const { data: newCommit } = await octokit.git.createCommit({
     owner,
     repo,
-    message: 'Add form data',
+    message: "Add form data",
     tree: newTree.sha,
     parents: [baseSha],
   });
@@ -87,10 +90,10 @@ export async function createShowcasePR(formData: ShowcaseItem, token: string) {
   const { data: pr } = await octokit.pulls.create({
     owner,
     repo,
-    title: 'Form Data Submission',
+    title: "Form Data Submission",
     head: branch,
     base,
-    body: 'Automated PR from form submission',
+    body: "Automated PR from form submission",
   });
 
   return { success: true, prUrl: pr.html_url };

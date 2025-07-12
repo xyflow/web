@@ -1,8 +1,8 @@
-import { showcaseItems } from '@/app/(content-pages)/showcase/showcases';
 import { Metadata } from 'next';
 import { getPageMap } from 'nextra/page-map';
 import { FC } from 'react';
 import { CaseStudy, ShowcaseLayout, SubscribeSection } from 'xy-shared';
+import showcaseItems from './showcases.json';
 
 export const metadata: Metadata = {
   title: 'Showcase',
