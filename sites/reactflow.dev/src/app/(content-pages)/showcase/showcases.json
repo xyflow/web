@@ -9,7 +9,12 @@
     "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/showcases/217f4645-2242-8150-bf63-fb926c18c3de.png",
     "status": "published",
     "openSource": false,
-    "tags": [{ "id": "0", "name": "Workflow Automation" }],
+    "tags": [
+      {
+        "id": "0",
+        "name": "Workflow Automation"
+      }
+    ],
     "priority": 5,
     "createdAt": "January 14, 2025 8:49 PM"
   },
@@ -25,8 +30,27 @@
     "repoUrl": "https://github.com/chartdb/chartdb",
     "status": "published",
     "openSource": true,
-    "tags": [{ "id": "1", "name": "AI" }],
+    "tags": [
+      {
+        "id": "1",
+        "name": "AI"
+      }
+    ],
     "priority": 3,
     "createdAt": "January 14, 2025 8:49 PM"
+  },
+  {
+    "title": "showcase json append test",
+    "description": "testing appending to json file",
+    "url": "",
+    "library": "",
+    "image": "",
+    "email": "test@email.com",
+    "tags": {},
+    "repoUrl": "",
+    "demoUrl": "",
+    "projectType": "",
+    "comment": "",
+    "createdAt": "1,752,299,914,082"
   }
 ]
