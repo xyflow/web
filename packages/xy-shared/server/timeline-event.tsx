@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Text } from '@xyflow/xy-ui';
+import { Heading, Text } from '@xyflow/xy-ui';
 import { Author, AuthorList } from '../widgets/authors-list';
 import { TimeAgo } from '../components/time-ago';
 import { importPage } from 'nextra/pages';
@@ -15,10 +15,7 @@ export type TimelineEventProps = {
   route: string;
 };
 
-export async function TimelineEvent({
-  frontmatter,
-  route,
-}: TimelineEventProps) {
+export async function TimelineEvent({ frontmatter, route }: TimelineEventProps) {
   const pathSegments = route.split('/').slice(1);
   const { default: MDXContent } = await importPage(pathSegments);
   return (
@@ -34,6 +31,9 @@ export async function TimelineEvent({
         </div>
       </div>
       <div className="pl-2">
+        <Heading as="h3" size="md">
+          {frontmatter.title}
+        </Heading>
         <MDXContent />
         <Text size="sm" variant="primary" className="text-right mt-4">
           <Link href={route}>Permalink</Link>
