@@ -2,7 +2,7 @@ import { Plus } from "lucide-react";
 import { ConnectionState, Position, useConnection } from "@xyflow/react";
 
 import { ButtonHandle } from "@/registry/components/button-handle";
-import { BaseNode } from "@/registry/components/base-node";
+import { BaseNode, BaseNodeContent } from "@/registry/components/base-node";
 
 import { Button } from "@/components/ui/button";
 
@@ -19,21 +19,23 @@ const ButtonHandleDemo = () => {
 
   return (
     <BaseNode>
-      Node with a handle button
-      <ButtonHandle
-        type="target"
-        position={Position.Bottom}
-        showButton={!connectionInProgress}
-      >
-        <Button
-          onClick={onClick}
-          size="sm"
-          variant="secondary"
-          className="rounded-full"
+      <BaseNodeContent>
+        Node with a handle button
+        <ButtonHandle
+          type="target"
+          position={Position.Bottom}
+          showButton={!connectionInProgress}
         >
-          <Plus size={10} />
-        </Button>
-      </ButtonHandle>
+          <Button
+            onClick={onClick}
+            size="sm"
+            variant="secondary"
+            className="rounded-full"
+          >
+            <Plus size={10} />
+          </Button>
+        </ButtonHandle>
+      </BaseNodeContent>
     </BaseNode>
   );
 };
