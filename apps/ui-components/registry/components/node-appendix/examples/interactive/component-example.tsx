@@ -12,10 +12,7 @@ import {
   BaseNodeHeader,
   BaseNodeHeaderTitle,
 } from "@/registry/components/base-node";
-import {
-  NodeAppendix,
-  NodeAppendixContent,
-} from "@/registry/components/node-appendix";
+import { NodeAppendix } from "@/registry/components/node-appendix";
 import { useState } from "react";
 
 export const InteractiveAppendixDemo = () => {
@@ -31,55 +28,53 @@ export const InteractiveAppendixDemo = () => {
   >("bottom");
 
   return (
-    <NodeAppendix visible={visible}>
-      <NodeAppendixContent position={appendixPosition}>
-        Result is {sum}
-      </NodeAppendixContent>
-      <BaseNode>
-        <BaseNodeHeader>
-          <BaseNodeHeaderTitle>Add two numbers</BaseNodeHeaderTitle>
-        </BaseNodeHeader>
-        <BaseNodeContent>
-          <div className="flex items-center gap-2">
-            <input
-              type="number"
-              value={numberA}
-              onChange={(e) => setNumberA(Number(e.target.value))}
-              className="w-16 rounded border p-1"
-            />
-            <input
-              type="number"
-              value={numberB}
-              onChange={(e) => setNumberB(Number(e.target.value))}
-              className="w-16 rounded border p-1"
-            />
-          </div>
-          <Button
-            aria-label="Show appendix"
-            onClick={() => setVisible((prev) => !prev)}
-            variant="outline"
-          >
-            {visible ? "Hide" : "Show"} results
-          </Button>
-          {/* Appendix Position Select */}
-          <Select
-            value={appendixPosition}
-            onValueChange={(v) =>
-              setAppendixPosition(v as "top" | "bottom" | "left" | "right")
-            }
-          >
-            <SelectTrigger>
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="top">Top</SelectItem>
-              <SelectItem value="bottom">Bottom</SelectItem>
-              <SelectItem value="left">Left</SelectItem>
-              <SelectItem value="right">Right</SelectItem>
-            </SelectContent>
-          </Select>
-        </BaseNodeContent>
-      </BaseNode>
-    </NodeAppendix>
+    <BaseNode>
+      {visible && (
+        <NodeAppendix position={appendixPosition}>Result is {sum}</NodeAppendix>
+      )}
+      <BaseNodeHeader>
+        <BaseNodeHeaderTitle>Add two numbers</BaseNodeHeaderTitle>
+      </BaseNodeHeader>
+      <BaseNodeContent>
+        <div className="flex items-center gap-2">
+          <input
+            type="number"
+            value={numberA}
+            onChange={(e) => setNumberA(Number(e.target.value))}
+            className="w-16 rounded border p-1"
+          />
+          <input
+            type="number"
+            value={numberB}
+            onChange={(e) => setNumberB(Number(e.target.value))}
+            className="w-16 rounded border p-1"
+          />
+        </div>
+        <Button
+          aria-label="Show appendix"
+          onClick={() => setVisible((prev) => !prev)}
+          variant="outline"
+        >
+          {visible ? "Hide" : "Show"} results
+        </Button>
+        {/* Appendix Position Select */}
+        <Select
+          value={appendixPosition}
+          onValueChange={(v) =>
+            setAppendixPosition(v as "top" | "bottom" | "left" | "right")
+          }
+        >
+          <SelectTrigger>
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="top">Top</SelectItem>
+            <SelectItem value="bottom">Bottom</SelectItem>
+            <SelectItem value="left">Left</SelectItem>
+            <SelectItem value="right">Right</SelectItem>
+          </SelectContent>
+        </Select>
+      </BaseNodeContent>
+    </BaseNode>
   );
 };
