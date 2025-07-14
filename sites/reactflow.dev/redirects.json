@@ -1099,7 +1099,7 @@
     "destination": "/learn/troubleshooting/common-errors",
     "permanent": true
   },
-    {
+  {
     "source": "/learn/concepts/introduction",
     "destination": "/learn/concepts/terms-and-definitions",
     "permanent": true
@@ -1107,6 +1107,51 @@
   {
     "source": "/learn/concepts/core-concepts",
     "destination": "/learn/concepts/terms-and-definitions",
+    "permanent": true
+  },
+  {
+    "source": "/components/nodes/annotation-node",
+    "destination": "/ui/components/base-node#example-annotation-node",
+    "permanent": true
+  },
+  {
+    "source": "/components/nodes/node-header",
+    "destination": "/ui/components/base-node",
+    "permanent": true
+  },
+  {
+    "source": "/components/nodes/tooltip-node",
+    "destination": "/ui/components/node-tooltip",
+    "permanent": true
+  },
+  {
+    "source": "/components/nodes/:path*",
+    "destination": "/ui/components/:path*",
+    "permanent": true
+  },
+  {
+    "source": "/components/edges/:path*",
+    "destination": "/ui/components/:path*",
+    "permanent": true
+  },
+  {
+    "source": "/components/handles/:path*",
+    "destination": "/ui/components/:path*",
+    "permanent": true
+  },
+  {
+    "source": "/components/controls/:path*",
+    "destination": "/ui/components/:path*",
+    "permanent": true
+  },
+  {
+    "source": "/components/misc/:path*",
+    "destination": "/ui/components/:path*",
+    "permanent": true
+  },
+  {
+    "source": "/components/:path*",
+    "destination": "/ui/:path*",
     "permanent": true
   }
 ]

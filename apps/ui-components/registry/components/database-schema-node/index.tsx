@@ -1,5 +1,9 @@
 import React, { ReactNode } from "react";
-import { BaseNode } from "@/registry/components/base-node";
+import {
+  BaseNode,
+  BaseNodeContent,
+  BaseNodeHeader,
+} from "@/registry/components/base-node";
 import { TableBody, TableRow, TableCell } from "@/components/ui/table";
 
 /* DATABASE SCHEMA NODE HEADER ------------------------------------------------ */
@@ -14,9 +18,9 @@ export const DatabaseSchemaNodeHeader = ({
   children,
 }: DatabaseSchemaNodeHeaderProps) => {
   return (
-    <h2 className="rounded-tl-md rounded-tr-md bg-secondary p-2 text-center text-sm text-muted-foreground">
-      {children}
-    </h2>
+    <BaseNodeHeader className="rounded-tl-md rounded-tr-md bg-secondary p-2 text-center text-sm text-muted-foreground">
+      <h2>{children}</h2>
+    </BaseNodeHeader>
   );
 };
 
@@ -32,9 +36,11 @@ export const DatabaseSchemaNodeBody = ({
   children,
 }: DatabaseSchemaNodeBodyProps) => {
   return (
-    <table className="border-spacing-10 overflow-visible">
-      <TableBody>{children}</TableBody>
-    </table>
+    <BaseNodeContent className="p-0">
+      <table className="border-spacing-10 overflow-visible">
+        <TableBody>{children}</TableBody>
+      </table>
+    </BaseNodeContent>
   );
 };
 
@@ -83,18 +89,12 @@ export const DatabaseSchemaTableCell = ({
  */
 export type DatabaseSchemaNodeProps = {
   className?: string;
-  selected?: boolean;
   children?: ReactNode;
 };
 
 export const DatabaseSchemaNode = ({
   className,
-  selected,
   children,
 }: DatabaseSchemaNodeProps) => {
-  return (
-    <BaseNode className={className} selected={selected}>
-      {children}
-    </BaseNode>
-  );
+  return <BaseNode className={className}>{children}</BaseNode>;
 };

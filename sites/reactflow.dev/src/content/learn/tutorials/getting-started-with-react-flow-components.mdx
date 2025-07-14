@@ -189,10 +189,19 @@ This command will generate a new file `src/components/base-node.tsx` as well as
 update our dependencies to include `@xyflow/react`!
 
 That `<BaseNode />` component is not a React Flow node directly. Instead, as the
-name implies, it's a base that many of our other nodes build upon. You can use it to have a unified style for all of your nodes as well. Let's see what
+name implies, it's a base that many of our other nodes build upon.
+It also comes with additional components that you can use to provide a header
+and content for your nodes. These components are:
+
+- `<BaseNodeHeader />`
+- `<BaseNodeHeaderTitle />`
+- `<BaseNodeContent />`
+- `<BaseNodeFooter />`
+
+You can use it to have a unified style for all of your nodes as well. Let's see what
 it looks like by updating our `App.jsx` file:
 
-```jsx filename="src/App.jsx" {1,3,7-11}
+```jsx filename="src/App.jsx"
 import '@xyflow/react/dist/style.css';
 
 import { BaseNode } from '@/components/base-node';
@@ -200,7 +209,14 @@ import { BaseNode } from '@/components/base-node';
 function App() {
   return (
     <div className="w-screen h-screen p-8">
-      <BaseNode selected={false}>Hi! 👋</BaseNode>
+      <BaseNode>
+        <BaseNodeHeader>
+          <BaseNodeHeaderTitle>Base Node</BaseNodeHeaderTitle>
+        </BaseNodeHeader>
+        <BaseNodeContent>
+          This is a base node component that can be used to build other nodes.
+        </BaseNodeContent>
+      </BaseNode>
     </div>
   );
 }
@@ -221,32 +237,103 @@ components we add using the shadcn CLI, so what happens if we change it? Let's
 update the `<BaseNode />` component to render any text as bold monospace instead:
 
 ```jsx filename="src/components/base-node.tsx" {11}
-import React from "react";
 import { cn } from "@/lib/utils";
+import { forwardRef, HTMLAttributes } from "react";
 
-export const BaseNode = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement> & { selected?: boolean }
->(({ className, selected, ...props }, ref) => (
-  <div
+export const BaseNode = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
+  ({ className, ...props }, ref) => (
+    <div
+      ref={ref}
+      className={cn(
+        'relative rounded-md border bg-card text-card-foreground',
+        'hover:ring-1',
+        // React Flow displays node elements inside of a `NodeWrapper` component,
+        // which compiles down to a div with a the class `react-flow__node`.
+        // When a node is selected, the class `selected` is added to the
+        // `react-flow__node` element. This allows us to style the node when it
+        // is selected, using Tailwind's `&` selector.
+        '[.react-flow\\_\\_node.selected_&]:border-muted-foreground',
+        '[.react-flow\\_\\_node.selected_&]:shadow-lg',
+        className,
+      )}
+      tabIndex={0}
+      {...props}
+    />
+  ),
+);
+BaseNode.displayName = 'BaseNode';
+
+/**
+ * A container for a consistent header layout intended to be used inside the
+ * `<BaseNode />` component.
+ */
+export const BaseNodeHeader = forwardRef<HTMLElement, HTMLAttributes<HTMLElement>>(
+  ({ className, ...props }, ref) => (
+    <header
+      ref={ref}
+      {...props}
+      className={cn(
+        'mx-0 my-0 -mb-1 flex flex-row items-center justify-between gap-2 px-3 py-2',
+        // Remove or modify these classes if you modify the padding in the
+        // `<BaseNode />` component.
+        className,
+      )}
+    />
+  ),
+);
+BaseNodeHeader.displayName = 'BaseNodeHeader';
+
+/**
+ * The title text for the node. To maintain a native application feel, the title
+ * text is not selectable.
+ */
+export const BaseNodeHeaderTitle = forwardRef<
+  HTMLHeadingElement,
+  HTMLAttributes<HTMLHeadingElement>
+>(({ className, ...props }, ref) => (
+  <h3
     ref={ref}
-    className={cn(
-      "rounded-md border bg-card p-5 text-card-foreground font-mono font-bold",
-      className,
-      selected ? "border-muted-foreground shadow-lg" : "",
-      "hover:ring-1",
-    )}
+    data-slot="base-node-title"
+    className={cn('user-select-none flex-1 font-semibold', className)}
     {...props}
   />
 ));
-BaseNode.displayName = "BaseNode";
+BaseNodeHeaderTitle.displayName = 'BaseNodeHeaderTitle';
+
+export const BaseNodeContent = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
+  ({ className, ...props }, ref) => (
+    <div
+      ref={ref}
+      data-slot="base-node-content"
+      className={cn('flex flex-col gap-y-2 p-3', className)}
+      {...props}
+    />
+  ),
+);
+BaseNodeContent.displayName = 'BaseNodeContent';
+
+export const BaseNodeFooter = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
+  ({ className, ...props }, ref) => (
+    <div
+      ref={ref}
+      data-slot="base-node-footer"
+      className={cn(
+        'flex flex-col items-center gap-y-2 border-t px-3 pb-3 pt-2',
+        className,
+      )}
+      {...props}
+    />
+  ),
+);
+BaseNodeFooter.displayName = 'BaseNodeFooter';
+
 ```
 
 Now we'll add an actual node from the React Flow Components registry and see what
 happens:
 
 ```bash copy npm2yarn
-npx shadcn@latest add https://ui.reactflow.dev/tooltip-node
+npx shadcn@latest add https://ui.reactflow.dev/node-tooltip
 ```
 
 And we'll update our `App.tsx` file to render a proper flow. We'll use the same
@@ -254,19 +341,27 @@ basic setup as most of our examples so we won't break down the individual pieces
 here. If you're still new to React Flow and want to learn a bit more about how to
 set up a basic flow from scratch, check out our [quickstart guide](/learn).
 
-```tsx filename="src/App.tsx" {14,16-18,20-33,}
+{/* TODO this could be linked to example app with RemoteCodeViewer editor */}
+
+```tsx filename="src/App.tsx"
+import React from 'react';
+import { ReactFlow, type Node, Position, useNodesState } from '@xyflow/react';
+
 import '@xyflow/react/dist/style.css';
 
-import { ReactFlow, Position, useNodesState, Node } from '@xyflow/react';
-
-import { TooltipNode, TooltipContent, TooltipTrigger } from '@/components/tooltip-node';
+import { NodeTooltip, NodeTooltipContent, NodeTooltipTrigger } from './components/node-tooltip';
+import { BaseNodeContent } from './components/base-node';
 
 function Tooltip() {
   return (
-    <TooltipNode>
-      <TooltipContent position={Position.Top}>Hidden Content</TooltipContent>
-      <TooltipTrigger>Hover</TooltipTrigger>
-    </TooltipNode>
+    <NodeTooltip>
+      <NodeTooltipContent position={Position.Top}>Hidden Content</NodeTooltipContent>
+      <BaseNode>
+        <BaseNodeContent>
+          <NodeTooltipTrigger>Hover</NodeTooltipTrigger>
+        </BaseNodeContent>
+      </BaseNode>
+    </NodeTooltip>
   );
 }
 
@@ -283,22 +378,23 @@ const initialNodes: Node[] = [
   },
 ];
 
-function App() {
+function Flow() {
   const [nodes, , onNodesChange] = useNodesState(initialNodes);
 
   return (
-    <div className="h-screen w-screen p-8">
+    <div className="h-screen w-screen p-8 bg-gray-50 rounded-xl">
       <ReactFlow
         nodes={nodes}
-        onNodesChange={onNodesChange}
         nodeTypes={nodeTypes}
+        onNodesChange={onNodesChange}
         fitView
       />
     </div>
   );
 }
-
-export default App;
+export function App() {
+  return <Flow />;
+}
 ```
 
 And would you look at that, the tooltip node we added automatically uses the
@@ -317,22 +413,13 @@ begin to see how easy it is to add new components and build out a flow. To see
 everything React Flow Components has to offer let's build out a simple calculator
 flow.
 
-First let's remove the `<TooltipNode />` and undo our changes to `<BaseNode />`.
+First let's remove the `<NodeTooltip />` and undo our changes to `<BaseNode />`.
 In addition to pre-made nodes, React Flow Components also contains building blocks
-for creating your own custom nodes. To see them, we'll add the `node-header` and
-`labeled-handle` components:
+for creating your own custom nodes. To see them, we'll add the `labeled-handle` component:
 
 ```bash copy npm2yarn
-npx shadcn@latest add \
-  https://ui.reactflow.dev/node-header \
-  https://ui.reactflow.dev/labeled-handle
+npx shadcn@latest add https://ui.reactflow.dev/labeled-handle
 ```
-
-<Callout type="info">
-  Notice how adding the `node-header` component also brought with it some standard
-  shadcn/ui components! This lets us at React Flow build richer components for you to use
-  without re-inventing the wheel for things like dropdowns and popovers.
-</Callout>
 
 The first node we'll create is a simple number node with some buttons to increment
 and decrement the value and a handle to connect it to other nodes. Create a folder
@@ -340,20 +427,28 @@ and decrement the value and a handle to connect it to other nodes. Create a fold
 
 Paste the following into the new file:
 
-```tsx filename="src/components/nodes/num-node.tsx" {9-18,44-53,56,58,62,64}
-import React, { useCallback } from 'react';
+```tsx filename="src/components/nodes/num-node.tsx"
 import { type Node, type NodeProps, Position, useReactFlow } from '@xyflow/react';
+import { useCallback } from 'react';
 
-import { BaseNode } from '@/components/base-node';
-import { LabeledHandle } from '@/components/labeled-handle';
 import {
-  NodeHeader,
-  NodeHeaderTitle,
-  NodeHeaderActions,
-  NodeHeaderMenuAction,
-} from '@/components/node-header';
+  BaseNode,
+  BaseNodeContent,
+  BaseNodeFooter,
+  BaseNodeHeader,
+  BaseNodeHeaderTitle,
+} from '@/components/base-node';
+import { LabeledHandle } from '@/components/labeled-handle';
+
+import { EllipsisVertical } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { DropdownMenuItem } from '@/components/ui/dropdown-menu';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 
 export type NumNode = Node<{
   value: number;
@@ -380,25 +475,39 @@ export function NumNode({ id, data }: NodeProps<NumNode>) {
 
   return (
     <BaseNode>
-      <NodeHeader>
-        <NodeHeaderTitle>Num</NodeHeaderTitle>
-        <NodeHeaderActions>
-          <NodeHeaderMenuAction label="Open node menu">
+      <BaseNodeHeader className="border-b">
+        <BaseNodeHeaderTitle>Num</BaseNodeHeaderTitle>
+
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button
+              variant="ghost"
+              className="nodrag p-1"
+              aria-label="Node Actions"
+              title="Node Actions"
+            >
+              <EllipsisVertical className="size-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <DropdownMenuLabel>Node Actions</DropdownMenuLabel>
             <DropdownMenuItem onSelect={handleReset}>Reset</DropdownMenuItem>
             <DropdownMenuItem onSelect={handleDelete}>Delete</DropdownMenuItem>
-          </NodeHeaderMenuAction>
-        </NodeHeaderActions>
-      </NodeHeader>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </BaseNodeHeader>
 
-      <div className="flex gap-2 items-center mb-10">
-        <Button onClick={handleDecr}>-</Button>
-        <pre>{String(data.value).padStart(3, ' ')}</pre>
-        <Button onClick={handleIncr}>+</Button>
-      </div>
+      <BaseNodeContent>
+        <div className="flex gap-2 items-center">
+          <Button onClick={handleDecr}>-</Button>
+          <pre>{String(data.value).padStart(3, ' ')}</pre>
+          <Button onClick={handleIncr}>+</Button>
+        </div>
+      </BaseNodeContent>
 
-      <footer className="bg-gray-100 -m-5">
+      <BaseNodeFooter className="bg-gray-100 items-end px-0 py-1 w-full">
         <LabeledHandle title="out" type="source" position={Position.Right} />
-      </footer>
+      </BaseNodeFooter>
     </BaseNode>
   );
 }
@@ -418,7 +527,6 @@ quite a capable node:
 <RemoteCodeViewer
   route="tutorials/components/num-node"
   framework="react"
-  
 />
 
 Our `<NumNode />` component...
@@ -432,7 +540,6 @@ We don't need to add any additional components for this node, so go ahead and
 create a new file `src/components/nodes/sum-node.tsx` and paste in the following:
 
 ```tsx filename="src/components/nodes/sum-node.tsx"
-import React, { useEffect } from 'react';
 import {
   type Node,
   type NodeProps,
@@ -440,10 +547,10 @@ import {
   useReactFlow,
   useStore,
 } from '@xyflow/react';
+import { useEffect } from 'react';
 
-import { BaseNode } from '../base-node';
+import { BaseNode, BaseNodeHeader, BaseNodeHeaderTitle } from '../base-node';
 import { LabeledHandle } from '../labeled-handle';
-import { NodeHeader, NodeHeaderTitle } from '../node-header';
 
 export type SumNode = Node<{
   value: number;
@@ -468,11 +575,11 @@ export function SumNode({ id }: NodeProps<SumNode>) {
 
   return (
     <BaseNode className="w-32">
-      <NodeHeader>
-        <NodeHeaderTitle>Sum</NodeHeaderTitle>
-      </NodeHeader>
+      <BaseNodeHeader>
+        <BaseNodeHeaderTitle>Sum</BaseNodeHeaderTitle>
+      </BaseNodeHeader>
 
-      <footer className="bg-gray-100 -m-5">
+      <footer className="bg-gray-100">
         <LabeledHandle title="x" id="x" type="target" position={Position.Left} />
         <LabeledHandle title="y" id="y" type="target" position={Position.Left} />
         <LabeledHandle title="out" type="source" position={Position.Right} />
@@ -512,7 +619,7 @@ in a `"value"` property so we'll update our `edgeType` object to include the new
 `data-edge` and we'll update the `onConnect` handler to create a new edge of this
 type, making sure to set the edge's `data` object correctly:
 
-```tsx
+```tsx filename="src/App.tsx"
 import '@xyflow/react/dist/style.css';
 
 import {
@@ -637,7 +744,7 @@ We've learned:
 - How editing the [`<BaseNode />`](/components/nodes/base-node) component will
   affect other nodes pulled from the React Flow Components registry.
 
-- How to use building blocks like the [`<NodeHeader />`](/components/node-blocks/node-header)
+- How to use building blocks like the [`<BaseNodeHeader />`](/components/node-blocks/base-node)
   and [`<LabeledHandle />`](components/handles/labeled-handle) components to build
   our own custom nodes without starting from scratch.
 

@@ -15,8 +15,13 @@ import { fetchShadcnComponent } from '@/utils';
 import { FC } from 'react';
 import { useMDXComponents as getMDXComponents } from '@/mdx-components';
 
-function kebabCaseToTitleCase(str: string) {
+function kebabCaseToPascalCase(str: string) {
   const newString = str.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
+  return newString.charAt(0).toUpperCase() + newString.slice(1);
+}
+
+function kebabCaseToTitleCase(str: string) {
+  const newString = str.replace(/-([a-z])/g, (g) => ' ' + g[1].toUpperCase());
   return newString.charAt(0).toUpperCase() + newString.slice(1);
 }
 
@@ -34,7 +39,7 @@ const UiComponentViewer: FC<{ id: string }> = async ({ id }) => {
     url: `https://www.npmjs.com/package/${dep}`,
   }));
 
-  const componentPages = (await getPageMap('/components')).reduce((acc, pageMapItem) => {
+  const componentPages = (await getPageMap('/ui')).reduce((acc, pageMapItem) => {
     if ('children' in pageMapItem) {
       for (const page of pageMapItem.children) {
         if ('name' in page && 'route' in page) {
@@ -50,7 +55,7 @@ const UiComponentViewer: FC<{ id: string }> = async ({ id }) => {
     if (dep.startsWith('https://')) {
       // handle internal dependencies from React Flow components
       const depName = dep.split('/').pop()!.split('.').shift()!;
-      const label = kebabCaseToTitleCase(depName);
+      const label = kebabCaseToPascalCase(depName);
 
       const url = componentPages.get(depName);
 
@@ -157,10 +162,10 @@ const UiComponentViewer: FC<{ id: string }> = async ({ id }) => {
 
       {data.examples && (
         <>
-          <H2>Examples</H2>
+          <H2 id="examples">Examples</H2>
           {Object.entries(data.examples).map(([example, codeMDX]) => (
             <div key={example} className="mt-4">
-              <H3>{kebabCaseToTitleCase(example)}</H3>
+              <H3 id={`example-${example}`}>{kebabCaseToTitleCase(example)}</H3>
               <Tabs defaultValue="preview" className="mt-5">
                 <TabsList>
                   <TabsTrigger value="preview">Preview</TabsTrigger>

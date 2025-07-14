@@ -13,7 +13,7 @@ export type PlaceholderNodeProps = Partial<NodeProps> & {
 };
 
 export const PlaceholderNode = forwardRef<HTMLDivElement, PlaceholderNodeProps>(
-  ({ selected, children }, ref) => {
+  ({ children }, ref) => {
     const id = useNodeId();
     const { setNodes, setEdges } = useReactFlow();
 
@@ -46,7 +46,6 @@ export const PlaceholderNode = forwardRef<HTMLDivElement, PlaceholderNodeProps>(
     return (
       <BaseNode
         ref={ref}
-        selected={selected}
         className="w-[150px] border-dashed border-gray-400 bg-card p-2 text-center text-gray-400 shadow-none"
         onClick={handleClick}
       >
