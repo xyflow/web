@@ -1,94 +1,110 @@
 ---
-title: We've updated our React Flow UI components!
-description: We have improved the React Flow UI components, including BaseNode, to enhance their functionality and usability.
+title: Rebrush React Flow UI
+description:
+  We have improved React Flow UI components to enhance their functionality and usability.
 authors: [alessandro, moritz]
 date: '2025-07-14'
 ---
 
 import { Emoji } from '@xyflow/xy-ui';
 
-# We've updated our React Flow UI components!
+We have made some significant improvements to [React Flow UI](/ui) (formerly known as
+React Flow components). These changes enhance the functionality, visual look and usability
+of the components, to improive the general developer experience.
 
-We have made some significant improvements to [React Flow UI components](/components), 
-including the [`BaseNode`](/ui/components/base-node) component.
-These changes enhance the functionality, visual look and usability of the
-components, making them more versatile for developers.
+## Re-organize components
 
-## Re-organization of Components Library
+Some components have been moved to examples, while others have been consolidated in a new
+structure:
 
-Some components have been moved to examples, while others have been consolidated in a new structure:
-
-- **Nodes Utilities**: These components can be used as building blocks for creating custom nodes.
-- **Custom Nodes**: These are fully functional nodes that can be used directly in your applications.
+- **Nodes Utilities**: These components can be used as building blocks for creating custom
+  nodes.
+- **Custom Nodes**: These are fully functional nodes that can be used directly in your
+  application.
 - **Handles**: These components are used to create connection points inside nodes.
-- **Custom Edges**: Fully functional edges that can be used directly in your applications.
-- **Controls**: Used to create interactive controls for nodes and edges.
-- **Miscellaneous**: Various utility components that don't fit into the other categories, like [`DevTools`](/ui/components/devtools).
+- **Custom Edges**: Fully functional edges that can be used out of the box.
+- **Controls**: Collection of interactive controls.
+- **Miscellaneous**: Various utility components that don't fit into the other categories,
+  like [`DevTools`](/ui/components/devtools).
 
-Find all of them in the [React Flow UI components page](/ui).
+Find all of them in the [React Flow UI page](/ui).
 
-## BaseNode Enhancements
+## `BaseNode` enhancements
 
-Our BaseNode component has been fully revamped, to provide an experience more
-consistent with [shadcn UI](https://ui.shadcn.com/), and the rest of our [React
-Flow UI component library](/ui). 
+Our BaseNode component has been fully revamped, to provide a more consistent experience
+with [shadcn UI](https://ui.shadcn.com/), and the rest of our
+[React Flow UI component library](/ui).
 
-The new BaseNode component now includes improved styling and wrapper components, aligning to shadcn UI design principles.
+The new `BaseNode` component now includes improved styling and wrapper components,
+aligning to shadcn UI design principles.
 
-Just like a [shadcn UI Card component](https://ui.shadcn.com/docs/components/card), the [`BaseNode`](/ui/components/base-node) component now exports
+Just like a [shadcn UI Card component](https://ui.shadcn.com/docs/components/card), the
+[`BaseNode`](/ui/components/base-node) component now exports
+
 - `BaseNodeHeader` and `BaseNodeHeaderTitle` for the header section,
-- `BaseNodeContent` for the main content area
+- `BaseNodeContent` for the main content area and
 - `BaseNodeFooter` for the footer section.
 
-This structure allows for better organization of content within the node, making it easier to create complex node layouts.
+This structure allows for better organization of content within the node, making it easier
+to create complex node layouts.
 
-## Improved Examples and Nodes
+## Improved examples and nodes
 
-We have also added a few new components and improved existing ones.
-Our component pages now include more comprehensive examples that showcase the
-new features and capabilities of the components. For example:
+We have also added a few new components and improved existing ones. Our component pages
+now include more comprehensive examples that showcase the new features and capabilities of
+the components. For example:
 
-- New [`NodeAppendix`](/ui/components/node-appendix) component, which can be used to add additional information or controls to nodes, like a [`Node Badge`](/ui/components/node-appendix#example-badge)!
-- The `AnnotationNode` component has been moved to an [example usage of
-BaseNode](/ui/components/base-node#example-annotation-node),
-to demonstrate how to style the BaseNode component effectively.
-- The [`StatusIndicator`](/ui/components/status-indicator) now includes a variant with an overlaying spinner, and improved usage examples.
-- The `TooltipNode` component, has been improved and moved to [`NodeTooltip`](/ui/components/node-tooltip). It is no longer a custom node, but rather an utility component that you can use to wrap your custom nodes with a tooltip.
+- New [`NodeAppendix`](/ui/components/node-appendix) component, which can be used to add
+  additional information or controls to nodes, like a
+  [`Node Badge`](/ui/components/node-appendix#example-badge)!
+- The `AnnotationNode` component has been moved to an
+  [example usage of `BaseNode`](/ui/components/base-node#example-annotation-node), to
+  demonstrate how to style the `BaseNode`.
+- The [`StatusIndicator`](/ui/components/status-indicator) now includes a variant with an
+  overlaying spinner, and improved usage examples.
+- The `TooltipNode` component, has been improved and moved to
+  [`NodeTooltip`](/ui/components/node-tooltip). It is no longer a custom node, but rather
+  an utility component that you can use to wrap a custom node with a tooltip.
 
-## Removal of `selected` prop from `BaseNode` and related components. 
+## No more `selected` prop
 
-You do not now need to pass the `selected` prop to the BaseNode component or its related components anymore.
-Styling for selected nodes is now handled automatically by tailwind CSS selectors.
+You don't need to pass the `selected` prop to the `BaseNode` or its related components
+anymore. Styling the selected state is now handled automatically by tailwind CSS
+selectors.
 
-However, `selected` is still a valid prop for nodes in React Flow, and you can still use it to determine if a node is selected or not
-in your custom components.
-If you do not need the `selected` prop for custom logic, but you only use it for styling, you can safely remove it from your components,
-and you can follow how `BaseNode` is implemented to achieve custom styling for your custom selected nodes.
+However, `selected` is still a valid prop for nodes in React Flow, and you can still use
+it to determine if a node is selected or not in your custom components. If you do not need
+the `selected` prop for custom logic, but you only use it for styling, you can safely
+remove it from your components, and you can follow how `BaseNode` is implemented to
+achieve custom styling for your custom selected nodes.
 
 ```tsx
-export const BaseNode = forwardRef<
-  HTMLDivElement,
-  HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn(
-      "relative rounded-md border bg-card text-card-foreground",
-      "hover:ring-1",
-      // React Flow displays node elements inside of a `NodeWrapper` component,
-      // which compiles down to a div with the class `react-flow__node`.
-      // When a node is selected, the class `selected` is added to the
-      // `react-flow__node` element. This allows us to style the node when it
-      // is selected, using Tailwind's `&` selector.
-      "[.react-flow\\_\\_node.selected_&]:border-muted-foreground",
-      "[.react-flow\\_\\_node.selected_&]:shadow-lg",
-      className,
-    )}
-    tabIndex={0}
-    {...props}
-  />
-));
-BaseNode.displayName = "BaseNode";
+export const BaseNode = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
+  ({ className, ...props }, ref) => (
+    <div
+      ref={ref}
+      className={cn(
+        'relative rounded-md border bg-card text-card-foreground',
+        'hover:ring-1',
+        // React Flow displays node elements inside of a `NodeWrapper` component,
+        // which compiles down to a div with the class `react-flow__node`.
+        // When a node is selected, the class `selected` is added to the
+        // `react-flow__node` element. This allows us to style the node when it
+        // is selected, using Tailwind's `&` selector.
+        '[.react-flow\\_\\_node.selected_&]:border-muted-foreground',
+        '[.react-flow\\_\\_node.selected_&]:shadow-lg',
+        className,
+      )}
+      tabIndex={0}
+      {...props}
+    />
+  ),
+);
+BaseNode.displayName = 'BaseNode';
 ```
 
+## Feedback
 
+We hope these improvements make your experience with React Flow UI even better. If you
+have any feedback or suggestions, please let us know via [mail](mailto:info@xyflow.com) or
+[Discord](https://discord.com/invite/RVmnytFmGW)!
