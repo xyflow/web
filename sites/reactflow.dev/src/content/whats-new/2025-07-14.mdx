@@ -10,11 +10,11 @@ import { Emoji } from '@xyflow/xy-ui';
 # We've updated our React Flow UI components!
 
 We have made some significant improvements to [React Flow UI components](/components), 
-including the BaseNode component.
+including the [`BaseNode`](/ui/components/base-node) component.
 These changes enhance the functionality, visual look and usability of the
 components, making them more versatile for developers.
 
-### Re-organization of Components Library
+## Re-organization of Components Library
 
 Some components have been moved to examples, while others have been consolidated in a new structure:
 
@@ -25,7 +25,7 @@ Some components have been moved to examples, while others have been consolidated
 - **Controls**: Used to create interactive controls for nodes and edges.
 - **Miscellaneous**: Various utility components that don't fit into the other categories, like [`DevTools`](/ui/components/devtools).
 
-### BaseNode Enhancements
+## BaseNode Enhancements
 
 Our BaseNode component has been fully revamped, to provide an experience more
 consistent with [shadcn UI](https://ui.shadcn.com/), and the rest of our [React
@@ -40,7 +40,7 @@ Just like a [shadcn UI Card component](https://ui.shadcn.com/docs/components/car
 
 This structure allows for better organization of content within the node, making it easier to create complex node layouts.
 
-### Improved Examples and Nodes
+## Improved Examples and Nodes
 
 We have also added a few new components and improved existing ones.
 Our component pages now include more comprehensive examples that showcase the
@@ -53,7 +53,7 @@ to demonstrate how to style the BaseNode component effectively.
 - The [`StatusIndicator`](/ui/components/status-indicator) now includes a variant with an overlaying spinner, and improved usage examples.
 - The `TooltipNode` component, has been improved and moved to [`NodeTooltip`](/ui/components/node-tooltip). It is no longer a custom node, but rather an utility component that you can use to wrap your custom nodes with a tooltip.
 
-### Removal of `selected` prop from `BaseNode` and related components. 
+## Removal of `selected` prop from `BaseNode` and related components. 
 
 You do not now need to pass the `selected` prop to the BaseNode component or its related components anymore.
 Styling for selected nodes is now handled automatically by tailwind CSS selectors.
