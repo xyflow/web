@@ -67,7 +67,7 @@ export default {
   },
   alessandro: {
     name: 'Alessandro Cheli',
-    title: 'LISP machine',
+    title: 'Software Engineer',
     url: 'https://cheli.dev',
     image: 'https://cheli.dev/alessandro.jpg',
   },
