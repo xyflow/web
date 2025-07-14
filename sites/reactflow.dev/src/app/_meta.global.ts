@@ -94,9 +94,12 @@ const ui = {
       'zoom-slider': '',
       'zoom-select': '',
 
-      misc: {
-        display: 'hidden',
+      '######': {
+        type: 'separator',
+        title: 'Misc', // Title is optional
       },
+
+      devtools: '',
     },
   },
   _: {

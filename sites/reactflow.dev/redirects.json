@@ -1146,7 +1146,7 @@
   },
   {
     "source": "/components/misc/:path*",
-    "destination": "/ui/components/misc/:path*",
+    "destination": "/ui/components/:path*",
     "permanent": true
   },
   {
