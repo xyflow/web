@@ -3,7 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { forwardRef, HTMLAttributes } from "react";
 
 const appendixVariants = cva(
-  "node-appendix-content absolute flex w-full flex-col items-center rounded-md border bg-card p-1 text-card-foreground",
+  "node-appendix absolute flex w-full flex-col items-center rounded-md border bg-card p-1 text-card-foreground",
   {
     variants: {
       position: {
