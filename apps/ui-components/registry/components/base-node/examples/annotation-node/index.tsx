@@ -1,9 +1,11 @@
 import { Background, ReactFlow } from "@xyflow/react";
 
-import { AnnotationBaseNodeDemo } from "./component-example";
+import { AnnotationNodeDemo } from "./component-example";
+import { BaseNodeDemo } from "./component-example";
 
 const nodeTypes = {
-  annotationNode: AnnotationBaseNodeDemo,
+  annotationNode: AnnotationNodeDemo,
+  baseNode: BaseNodeDemo,
 };
 
 const defaultNodes = [
@@ -12,6 +14,12 @@ const defaultNodes = [
     position: { x: -100, y: 150 },
     data: { label: "Annotation 1" },
     type: "annotationNode",
+  },
+  {
+    id: "2",
+    position: { x: 0, y: 200 },
+    data: { label: "Node To Annotate" },
+    type: "baseNode",
   },
 ];
 

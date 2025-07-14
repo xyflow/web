@@ -1110,6 +1110,21 @@
     "permanent": true
   },
   {
+    "source": "/components/nodes/annotation-node",
+    "destination": "/ui/components/base-node#example-annotation-node",
+    "permanent": true
+  },
+  {
+    "source": "/components/nodes/node-header",
+    "destination": "/ui/components/base-node",
+    "permanent": true
+  },
+  {
+    "source": "/components/nodes/tooltip-node",
+    "destination": "/ui/components/node-tooltip",
+    "permanent": true
+  },
+  {
     "source": "/components/nodes/:path*",
     "destination": "/ui/components/:path*",
     "permanent": true

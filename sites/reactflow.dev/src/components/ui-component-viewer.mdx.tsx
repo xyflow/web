@@ -162,10 +162,10 @@ const UiComponentViewer: FC<{ id: string }> = async ({ id }) => {
 
       {data.examples && (
         <>
-          <H2>Examples</H2>
+          <H2 id="examples">Examples</H2>
           {Object.entries(data.examples).map(([example, codeMDX]) => (
             <div key={example} className="mt-4">
-              <H3>{kebabCaseToTitleCase(example)}</H3>
+              <H3 id={`example-${example}`}>{kebabCaseToTitleCase(example)}</H3>
               <Tabs defaultValue="preview" className="mt-5">
                 <TabsList>
                   <TabsTrigger value="preview">Preview</TabsTrigger>
