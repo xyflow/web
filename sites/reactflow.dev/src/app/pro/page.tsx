@@ -1,5 +1,3 @@
-'use client';
-
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button, PricingTable, Section, FAQ, reactFlowProFaqItems } from '@xyflow/xy-ui';

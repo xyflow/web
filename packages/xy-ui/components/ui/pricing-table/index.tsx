@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   cn,
   Button,
@@ -41,6 +41,10 @@ const PricingTable = ({
 
   const isMonthly = billingInterval === BillingInterval.MONTH;
 
+  useEffect(() => {
+    setCurrency(getDefaultCurrency());
+  }, []);
+
   return (
     <TooltipProvider delayDuration={0}>
       <div>
@@ -54,18 +58,14 @@ const PricingTable = ({
             <Button
               variant="secondary"
               onClick={() => setBillingInterval(BillingInterval.MONTH)}
-              className={
-                isMonthly ? '' : 'text-gray-400 bg-gray-100 shadow-none'
-              }
+              className={isMonthly ? '' : 'text-gray-400 bg-gray-100 shadow-none'}
             >
               Monthly
             </Button>
             <Button
               variant="secondary"
               onClick={() => setBillingInterval(BillingInterval.YEAR)}
-              className={
-                !isMonthly ? '' : 'text-gray-400 bg-gray-100 shadow-none'
-              }
+              className={!isMonthly ? '' : 'text-gray-400 bg-gray-100 shadow-none'}
             >
               Yearly
             </Button>
@@ -116,16 +116,12 @@ const currencyConfigs = [
   },
 ];
 
-const defaultCurrency = Currency.USD;
-
 function getDefaultCurrency(): Currency {
   let currency = Currency.USD;
 
   currencyConfigs.forEach((config) => {
     try {
-      const timezone = Intl.DateTimeFormat()
-        .resolvedOptions()
-        .timeZone.toLowerCase();
+      const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone.toLowerCase();
 
       config.search.forEach((search) => {
         if (timezone.includes(search)) {

@@ -1,5 +1,3 @@
-'use client';
-
 import { PricingTable } from '@xyflow/xy-ui';
 import { BaseLayout, Hero, SubscribeSection } from 'xy-shared';
 import { SparklesIcon } from '@heroicons/react/24/outline';
