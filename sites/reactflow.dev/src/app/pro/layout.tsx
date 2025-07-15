@@ -15,6 +15,7 @@ const Layout: FC<{ children: ReactNode }> = async ({ children }) => {
     components: { display: 'hidden' },
     showcase: { display: 'hidden' },
     more: { display: 'hidden' },
+    ui: { display: 'hidden' },
     pro: { display: 'normal' },
     'pro-examples': { display: 'normal' },
     'case-studies': { display: 'normal' },
