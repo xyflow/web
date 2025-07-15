@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   cn,
   Button,
@@ -37,9 +37,26 @@ const PricingTable = ({
   const [billingInterval, setBillingInterval] = useState<BillingInterval>(
     BillingInterval.MONTH,
   );
-  const [currency, setCurrency] = useState<Currency>(getDefaultCurrency());
+  const [currency, setCurrency] = useState<Currency | null>(null);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const isMonthly = billingInterval === BillingInterval.MONTH;
+
+  useEffect(() => {
+    const storedCurrency = localStorage.getItem('pricing-currency');
+    const currency = (storedCurrency && Object.values(Currency).includes(storedCurrency as Currency)) 
+      ? storedCurrency as Currency 
+      : getDefaultCurrency();
+    
+    setCurrency(currency);
+    localStorage.setItem('pricing-currency', currency);
+    setIsLoaded(true);
+  }, []);
+
+  // Don't render until currency is loaded to prevent flicker
+  if (!isLoaded || currency === null) {
+    return null;
+  }
 
   return (
     <TooltipProvider delayDuration={0}>
@@ -72,7 +89,10 @@ const PricingTable = ({
           </div>
           <Select
             value={currency}
-            onValueChange={(value) => setCurrency(value as Currency)}
+            onValueChange={(value) => {
+              setCurrency(value as Currency);
+              localStorage.setItem('pricing-currency', value);
+            }}
           >
             <SelectTrigger className="w-[100px] absolute right-0">
               <SelectValue />
@@ -115,8 +135,6 @@ const currencyConfigs = [
     search: ['kolkata', 'calcutta'],
   },
 ];
-
-const defaultCurrency = Currency.USD;
 
 function getDefaultCurrency(): Currency {
   let currency = Currency.USD;
