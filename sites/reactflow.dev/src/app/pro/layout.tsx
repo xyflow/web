@@ -12,7 +12,6 @@ const Layout: FC<{ children: ReactNode }> = async ({ children }) => {
     learn: { display: 'hidden' },
     'api-reference': { display: 'hidden' },
     examples: { display: 'hidden' },
-    components: { display: 'hidden' },
     showcase: { display: 'hidden' },
     more: { display: 'hidden' },
     ui: { display: 'hidden' },
