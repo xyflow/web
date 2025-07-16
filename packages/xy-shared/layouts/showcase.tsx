@@ -1,8 +1,7 @@
 'use client';
 
-import { useCallback, useMemo, useState, ReactNode } from 'react';
-import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 import { RocketLaunchIcon } from '@heroicons/react/24/outline';
+import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 import {
   Button,
   cn,
@@ -13,12 +12,13 @@ import {
   Link,
   Text,
 } from '@xyflow/xy-ui';
-import { type MdxFile } from 'nextra';
 import Image from 'next/image';
+import { type MdxFile } from 'nextra';
+import { ReactNode, useCallback, useMemo, useState } from 'react';
 
-import { BaseLayout } from './base';
-import { ProjectPreview } from '../widgets/project-preview';
 import { Hero } from '../widgets/hero';
+import { ProjectPreview } from '../widgets/project-preview';
+import { BaseLayout } from './base';
 import { type CaseStudyFrontmatter } from './case-study-wrapper';
 
 export type CaseStudy = MdxFile<CaseStudyFrontmatter>;
@@ -32,15 +32,27 @@ export type ShowcaseLayoutProps = {
 };
 
 export type ShowcaseItem = {
+  // required
   id: string;
   title: string;
   description: string;
-  image: string;
   url: string;
-  demoUrl?: string;
+  library: 'React Flow' | 'Svelte Flow' | 'Vue Flow';
+  image: string;
+  email: string;
+
+  // optional
   repoUrl?: string;
+  demoUrl?: string;
   openSource?: boolean;
+  comment?: string;
   tags: { id: string; name: string }[];
+
+  // internal
+  internalComment?: string;
+  createdAt?: string;
+  priority?: 1 | 2 | 3 | 4 | 5;
+  status: 'published' | 'hidden' | 'confirm' | 'none';
 };
 
 function isCaseStudy(item: CaseStudy | ShowcaseItem): item is CaseStudy {
@@ -142,7 +154,7 @@ export function ShowcaseLayout({
           ),
         )}
 
-        <ContentGridItem route="https://wbkd.notion.site/17bf4645224281e4bf61ce34fa671059">
+        <ContentGridItem route="/showcase/submit">
           <ProjectPreview
             title="Your project here?"
             description="Have you built something exciting you want to show off? We want to feature it here!"
@@ -231,7 +243,12 @@ function CaseStudyPreview({
             <Link href={route}>Read Case Study</Link>
           </Button>
           <Button asChild variant="link" className="text-md font-bold">
-            <a href={data.project_url} target="_blank" className="flex items-center">
+            <a
+              href={data.project_url}
+              target="_blank"
+              className="flex items-center"
+              rel="noreferrer"
+            >
               Project Website <ArrowRightCircleIcon className="ml-1 w-4 h-4" />
             </a>
           </Button>

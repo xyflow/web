@@ -1,7 +1,7 @@
 import { Client as NotionClient } from '@notionhq/client';
+import { put } from '@vercel/blob';
 import { readFileSync } from 'fs';
 import https from 'https';
-import { put } from '@vercel/blob';
 
 const notion = new NotionClient({ auth: process.env.NOTION_API_SECRET });
 
@@ -19,7 +19,7 @@ export function loadJSONFile<T>(url: string): T | undefined {
 export const downloadImage = async (source: string): Promise<Buffer> => {
   return new Promise((resolve) => {
     https.get(source, (res) => {
-      let chunks: Buffer[] = [];
+      const chunks: Buffer[] = [];
       res.on('data', (chunk) => chunks.push(chunk));
       res.on('end', () => resolve(Buffer.concat(chunks)));
     });
@@ -40,7 +40,7 @@ export const downloadImageToVercelBlob = async (
   return blob.url;
 };
 
-export const fakeShowcases = Array.from({ length: 10 }, (_, i) => ({
+export const fakeShowcases = Array.from({ length: 50 }, (_, i) => ({
   id: i,
   title: `Showcase ${i}`,
   url: 'https://example.com',

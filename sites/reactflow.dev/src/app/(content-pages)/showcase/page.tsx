@@ -1,9 +1,8 @@
-import { CaseStudy, ShowcaseLayout, SubscribeSection } from 'xy-shared';
-
-import { FC } from 'react';
-import { getPageMap } from 'nextra/page-map';
-import { fetchNotionShowcases } from 'xy-shared/server';
 import { Metadata } from 'next';
+import { getPageMap } from 'nextra/page-map';
+import { FC } from 'react';
+import { CaseStudy, ShowcaseLayout, SubscribeSection } from 'xy-shared';
+import showcaseItems from './showcases.json';
 
 export const metadata: Metadata = {
   title: 'Showcase',
@@ -11,7 +10,14 @@ export const metadata: Metadata = {
 };
 
 const Showcase: FC = async () => {
-  const showcases = await fetchNotionShowcases('React Flow');
+  const showcases = showcaseItems
+    .filter((i) => i.library == 'React Flow')
+    .map((showcase) => {
+      return {
+        ...showcase,
+        tags: showcase.tags?.map?.((tag, i) => ({ id: tag, name: tag })) ?? [],
+      };
+    });
   const caseStudies = (await getPageMap('/pro/case-studies')).filter(
     (page) => 'name' in page && page.name !== 'index',
   );
