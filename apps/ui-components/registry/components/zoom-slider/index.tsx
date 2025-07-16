@@ -16,17 +16,11 @@ import { cn } from "@/lib/utils";
 export const ZoomSlider = forwardRef<
   HTMLDivElement,
   Omit<PanelProps, "children">
->(({ className, ...props }) => {
+>(({ className, ...props }, ref) => {
   const { zoom } = useViewport();
   const { zoomTo, zoomIn, zoomOut, fitView } = useReactFlow();
-
-  const { minZoom, maxZoom } = useStore(
-    (state) => ({
-      minZoom: state.minZoom,
-      maxZoom: state.maxZoom,
-    }),
-    (a, b) => a.minZoom !== b.minZoom || a.maxZoom !== b.maxZoom,
-  );
+  const minZoom = useStore((state) => state.minZoom);
+  const maxZoom = useStore((state) => state.maxZoom);
 
   return (
     <Panel
@@ -34,6 +28,7 @@ export const ZoomSlider = forwardRef<
         "flex gap-1 rounded-md bg-primary-foreground p-1 text-foreground",
         className,
       )}
+      ref={ref}
       {...props}
     >
       <Button
