@@ -1,6 +1,7 @@
-import clsx from "clsx";
-import { LoaderCircle } from "lucide-react";
 import { ReactNode } from "react";
+import { LoaderCircle } from "lucide-react";
+
+import { cn } from "@/lib/utils";
 
 export type NodeStatus = "loading" | "success" | "error" | "initial";
 
@@ -75,7 +76,7 @@ const StatusBorder = ({
   return (
     <>
       <div
-        className={clsx(
+        className={cn(
           "absolute -left-[1px] -top-[1px] h-[calc(100%+2px)] w-[calc(100%+2px)] rounded-[7px] border-2",
           className,
         )}
