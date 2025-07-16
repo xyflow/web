@@ -8,7 +8,9 @@
     "repoUrl": "https://github.com/SikandarJODD/CodeFlow",
     "status": "published",
     "commercial": "No",
-    "tags": ["Developer Tool"],
+    "tags": [
+      "Developer Tool"
+    ],
     "createdAt": "January 14, 2025 8:49 PM",
     "openSource": "Yes",
     "priority": 1
@@ -23,7 +25,9 @@
     "demoUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2Fs4yoal95wc&display_name=Wistia%2C%2BInc.&url:=https%3A%2F%2Fcomgy-2.wistia.com%2Fmedias%2Fs4yoal95wc&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2F3692986d5eba985ccc109e7ff1dd20713143c28b.jpg%3Fimage_crop_resized%3D960x438&type=text%2Fhtml&schema=wistia&wvideo=s4yoal95wc",
     "status": "published",
     "commercial": "Yes",
-    "tags": ["Workflow Automation"],
+    "tags": [
+      "Workflow Automation"
+    ],
     "createdAt": "May 27, 2025 3:20 PM",
     "comment": "https://www.comgy.io/blog/energycentral",
     "openSource": "No"
@@ -38,7 +42,11 @@
     "demoUrl": "https://pixerate.com/",
     "status": "published",
     "commercial": "No",
-    "tags": ["AI", "Image Processing", "Workflow Automation"],
+    "tags": [
+      "AI",
+      "Image Processing",
+      "Workflow Automation"
+    ],
     "createdAt": "March 13, 2025 5:11 PM",
     "comment": "I started using svelteflow for this on a whim in November and the experience was so positive it led me to focus exclusively on the canvas aspect",
     "openSource": "No"
@@ -51,7 +59,9 @@
     "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/showcase-pyautomator_copy.png",
     "status": "published",
     "commercial": "No",
-    "tags": ["Developer Tool"],
+    "tags": [
+      "Developer Tool"
+    ],
     "createdAt": "January 14, 2025 8:49 PM",
     "openSource": "No",
     "priority": 1
@@ -65,7 +75,9 @@
     "repoUrl": "https://github.com/sparrowapp-dev/sparrow-app",
     "status": "published",
     "commercial": "No",
-    "tags": ["Workflow Automation"],
+    "tags": [
+      "Workflow Automation"
+    ],
     "createdAt": "January 28, 2025 4:00 PM",
     "openSource": "Yes",
     "priority": 3
@@ -78,9 +90,28 @@
     "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/338508782-180250db-2259-4985-8bf8-9cca3e130600.jpeg",
     "status": "published",
     "commercial": "No",
-    "tags": ["Workflow Automation"],
+    "tags": [
+      "Workflow Automation"
+    ],
     "createdAt": "January 14, 2025 8:49 PM",
     "openSource": "No",
     "priority": 1
+  },
+  {
+    "title": "svelte flow showcase",
+    "description": "asfadsg",
+    "url": "asdg",
+    "image": "",
+    "email": "sdfg",
+    "tags": [
+      "Developer Tool",
+      "Org Chart",
+      "3D"
+    ],
+    "repoUrl": "sdfg",
+    "status": "confirm",
+    "demoUrl": "sdfgdfg",
+    "openSource": true,
+    "createdAt": "Wed Jul 16 2025 11:50:31 GMT+0200 (Central European Summer Time)"
   }
 ]
