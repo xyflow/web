@@ -8,7 +8,10 @@
     "repoUrl": "https://github.com/dustland/agentok",
     "status": "published",
     "commercial": "No",
-    "tags": ["AI", "Workflow Automation"],
+    "tags": [
+      "AI",
+      "Workflow Automation"
+    ],
     "createdAt": "January 14, 2025 8:49 PM",
     "openSource": "Yes",
     "priority": 1
@@ -36,7 +39,9 @@
     "demoUrl": "https://app.appblocks.io/",
     "status": "published",
     "commercial": "No",
-    "tags": ["Workflow Automation"],
+    "tags": [
+      "Workflow Automation"
+    ],
     "createdAt": "January 14, 2025 8:49 PM",
     "openSource": "No",
     "priority": 2
@@ -50,7 +55,9 @@
     "repoUrl": "https://github.com/ArroyoSystems/arroyo",
     "status": "published",
     "commercial": "Yes",
-    "tags": ["Developer Tool"],
+    "tags": [
+      "Developer Tool"
+    ],
     "createdAt": "January 14, 2025 8:49 PM",
     "openSource": "Yes",
     "priority": 1
@@ -63,7 +70,9 @@
     "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/281424696-2c728195-64c8-426c-9b2d-f74aecef6494.png",
     "status": "published",
     "commercial": "Yes",
-    "tags": ["Workflow Automation"],
+    "tags": [
+      "Workflow Automation"
+    ],
     "createdAt": "January 14, 2025 8:49 PM",
     "openSource": "No",
     "priority": 5
@@ -77,7 +86,9 @@
     "status": "published",
     "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/Bit-Cloud.png",
     "commercial": "Yes",
-    "tags": ["Developer Tool"],
+    "tags": [
+      "Developer Tool"
+    ],
     "createdAt": "January 14, 2025 8:49 PM",
     "openSource": "No",
     "priority": 1
@@ -103,7 +114,9 @@
     "status": "published",
     "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/Chainner.png",
     "commercial": "No",
-    "tags": ["Image Processing"],
+    "tags": [
+      "Image Processing"
+    ],
     "createdAt": "January 14, 2025 8:49 PM",
     "openSource": "Yes",
     "priority": 3
@@ -118,7 +131,9 @@
     "repoUrl": "https://github.com/chartdb/chartdb",
     "status": "published",
     "commercial": "No",
-    "tags": ["AI"],
+    "tags": [
+      "AI"
+    ],
     "createdAt": "January 14, 2025 8:49 PM",
     "openSource": "Yes",
     "priority": 3
@@ -146,7 +161,9 @@
     "repoUrl": "https://github.com/SikandarJODD/CodeFlow",
     "status": "published",
     "commercial": "No",
-    "tags": ["Developer Tool"],
+    "tags": [
+      "Developer Tool"
+    ],
     "createdAt": "January 14, 2025 8:49 PM",
     "openSource": "Yes",
     "priority": 1
@@ -161,7 +178,9 @@
     "demoUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2Fs4yoal95wc&display_name=Wistia%2C%2BInc.&url:=https%3A%2F%2Fcomgy-2.wistia.com%2Fmedias%2Fs4yoal95wc&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2F3692986d5eba985ccc109e7ff1dd20713143c28b.jpg%3Fimage_crop_resized%3D960x438&type=text%2Fhtml&schema=wistia&wvideo=s4yoal95wc",
     "status": "published",
     "commercial": "Yes",
-    "tags": ["Workflow Automation"],
+    "tags": [
+      "Workflow Automation"
+    ],
     "createdAt": "May 27, 2025 3:20 PM",
     "comment": "https://www.comgy.io/blog/energycentral",
     "openSource": "No"
@@ -189,7 +208,9 @@
     "repoUrl": "https://github.com/mrudulkolambe/dbdraw",
     "status": "published",
     "commercial": "No",
-    "tags": ["Developer Tool"],
+    "tags": [
+      "Developer Tool"
+    ],
     "createdAt": "March 15, 2025 9:47 AM",
     "openSource": "Yes",
     "priority": 2
@@ -216,7 +237,10 @@
     "repoUrl": "https://github.com/langgenius/dify",
     "status": "published",
     "commercial": "No",
-    "tags": ["AI", "Workflow Automation"],
+    "tags": [
+      "AI",
+      "Workflow Automation"
+    ],
     "createdAt": "January 14, 2025 8:49 PM",
     "openSource": "No",
     "priority": 1
@@ -229,7 +253,9 @@
     "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/Screenshot_2024-06-10_at_12.35.04.png",
     "status": "published",
     "commercial": "Yes",
-    "tags": ["AI"],
+    "tags": [
+      "AI"
+    ],
     "createdAt": "January 14, 2025 8:49 PM",
     "internalComment": "Tone Row guy!",
     "openSource": "No",
@@ -244,7 +270,9 @@
     "repoUrl": "https://github.com/Tauffer-Consulting/domino",
     "status": "published",
     "commercial": "No",
-    "tags": ["Workflow Automation"],
+    "tags": [
+      "Workflow Automation"
+    ],
     "createdAt": "January 14, 2025 8:49 PM",
     "openSource": "Yes",
     "priority": 2
@@ -258,7 +286,9 @@
     "repoUrl": "https://github.com/flojoy-ai/",
     "status": "published",
     "commercial": "No",
-    "tags": ["Developer Tool"],
+    "tags": [
+      "Developer Tool"
+    ],
     "createdAt": "January 14, 2025 8:49 PM",
     "openSource": "Yes",
     "priority": 2
@@ -272,7 +302,9 @@
     "repoUrl": "https://github.com/FlowiseAI/Flowise",
     "status": "published",
     "commercial": "No",
-    "tags": ["AI"],
+    "tags": [
+      "AI"
+    ],
     "createdAt": "January 14, 2025 8:49 PM",
     "openSource": "Yes",
     "priority": 3
@@ -300,7 +332,9 @@
     "demoUrl": "https://www.geoplex.de/plexmap/switchboard/",
     "status": "published",
     "commercial": "Yes",
-    "tags": ["Workflow Automation"],
+    "tags": [
+      "Workflow Automation"
+    ],
     "createdAt": "January 14, 2025 8:49 PM",
     "openSource": "No",
     "priority": 3
@@ -314,7 +348,9 @@
     "demoUrl": "https://graphologue.app",
     "status": "published",
     "commercial": "No",
-    "tags": ["AI"],
+    "tags": [
+      "AI"
+    ],
     "createdAt": "January 14, 2025 8:49 PM",
     "openSource": "Yes",
     "priority": 1
@@ -328,7 +364,9 @@
     "demoUrl": "https://www.heuristi.ca/discover/48204e35-3a6e-4dcb-99ed-1fb91e45eb37",
     "status": "published",
     "commercial": "Yes",
-    "tags": ["AI"],
+    "tags": [
+      "AI"
+    ],
     "createdAt": "January 14, 2025 8:49 PM",
     "openSource": "No",
     "priority": 2
@@ -368,7 +406,10 @@
     "demoUrl": "https://github.com/logspace-ai/langflow",
     "status": "published",
     "commercial": "Yes",
-    "tags": ["AI", " Workflow Automation"],
+    "tags": [
+      "AI",
+      " Workflow Automation"
+    ],
     "createdAt": "January 14, 2025 8:49 PM",
     "openSource": "Yes",
     "priority": 4
@@ -384,7 +425,9 @@
     "repoUrl": "https://github.com/liam-hq/liam",
     "status": "published",
     "commercial": "No",
-    "tags": ["Developer Tool"],
+    "tags": [
+      "Developer Tool"
+    ],
     "createdAt": "January 29, 2025 10:07 AM",
     "openSource": "Yes",
     "priority": 1
@@ -411,7 +454,9 @@
     "status": "published",
     "commercial": "Yes",
     "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/OneSignal.png",
-    "tags": ["Workflow Automation"],
+    "tags": [
+      "Workflow Automation"
+    ],
     "createdAt": "January 14, 2025 8:49 PM",
     "openSource": "No",
     "priority": 5
@@ -425,7 +470,9 @@
     "status": "published",
     "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/Open-Metadata.jpg",
     "commercial": "No",
-    "tags": ["Developer Tool"],
+    "tags": [
+      "Developer Tool"
+    ],
     "createdAt": "January 14, 2025 8:49 PM",
     "openSource": "Yes",
     "priority": 3
@@ -440,7 +487,11 @@
     "demoUrl": "https://pixerate.com/",
     "status": "published",
     "commercial": "No",
-    "tags": ["AI", " Image Processing", " Workflow Automation"],
+    "tags": [
+      "AI",
+      " Image Processing",
+      " Workflow Automation"
+    ],
     "createdAt": "March 13, 2025 5:11 PM",
     "comment": "I started using svelteflow for this on a whim in November and the experience was so positive it led me to focus exclusively on the canvas aspect",
     "openSource": "No"
@@ -454,7 +505,9 @@
     "demoUrl": "https://primer.io/docs/automation",
     "status": "published",
     "commercial": "Yes",
-    "tags": ["Workflow Automation"],
+    "tags": [
+      "Workflow Automation"
+    ],
     "createdAt": "January 14, 2025 8:49 PM",
     "openSource": "No",
     "priority": 4
@@ -468,7 +521,9 @@
     "status": "published",
     "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/Prismaliser.png",
     "commercial": "No",
-    "tags": ["Developer Tool"],
+    "tags": [
+      "Developer Tool"
+    ],
     "createdAt": "January 14, 2025 8:49 PM",
     "openSource": "Yes",
     "priority": 1
@@ -481,7 +536,9 @@
     "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/showcase-pyautomator_copy.png",
     "status": "published",
     "commercial": "No",
-    "tags": ["Developer Tool"],
+    "tags": [
+      "Developer Tool"
+    ],
     "createdAt": "January 14, 2025 8:49 PM",
     "openSource": "No",
     "priority": 1
@@ -496,7 +553,9 @@
     "repoUrl": "https://github.com/mitate-gengaku/Repree",
     "status": "published",
     "commercial": "No",
-    "tags": ["Developer Tool"],
+    "tags": [
+      "Developer Tool"
+    ],
     "createdAt": "April 4, 2025 11:32 AM",
     "comment": "Compared to the products on display in the showcase, it may look inferior, but I would appreciate your reconsideration.",
     "openSource": "Yes",
@@ -510,7 +569,10 @@
     "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/retool-showcase_2.png",
     "status": "published",
     "commercial": "Yes",
-    "tags": ["Developer Tool", " Workflow Automation"],
+    "tags": [
+      "Developer Tool",
+      " Workflow Automation"
+    ],
     "createdAt": "January 14, 2025 8:49 PM",
     "openSource": "No",
     "priority": 3
@@ -525,7 +587,9 @@
     "repoUrl": "https://github.com/ShaderFrog",
     "status": "published",
     "commercial": "No",
-    "tags": ["Image Processing"],
+    "tags": [
+      "Image Processing"
+    ],
     "createdAt": "January 14, 2025 8:49 PM",
     "openSource": "Yes",
     "priority": 2
@@ -540,7 +604,11 @@
     "repoUrl": "https://github.com/simstudioai/sim",
     "status": "published",
     "commercial": "Yes",
-    "tags": ["AI", " Developer Tool", " Workflow Automation"],
+    "tags": [
+      "AI",
+      " Developer Tool",
+      " Workflow Automation"
+    ],
     "createdAt": "June 20, 2025 1:26 AM",
     "openSource": "Yes"
   },
@@ -553,7 +621,9 @@
     "repoUrl": "https://github.com/sparrowapp-dev/sparrow-app",
     "status": "published",
     "commercial": "No",
-    "tags": ["Workflow Automation"],
+    "tags": [
+      "Workflow Automation"
+    ],
     "createdAt": "January 28, 2025 4:00 PM",
     "openSource": "Yes",
     "priority": 3
@@ -566,7 +636,10 @@
     "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/347048931-0fa8c818-88c7-41f4-bc51-466778bd8430.jpg",
     "status": "published",
     "commercial": "Yes",
-    "tags": ["AI", " Workflow Automation"],
+    "tags": [
+      "AI",
+      " Workflow Automation"
+    ],
     "createdAt": "January 14, 2025 8:49 PM",
     "openSource": "No",
     "priority": 4
@@ -579,7 +652,9 @@
     "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/strelka-1.png",
     "status": "published",
     "commercial": "No",
-    "tags": ["Developer Tool"],
+    "tags": [
+      "Developer Tool"
+    ],
     "createdAt": "January 14, 2025 8:49 PM",
     "openSource": "No",
     "priority": 1
@@ -619,7 +694,9 @@
     "repoUrl": "https://github.com/3rd/tsdiagram",
     "status": "published",
     "commercial": "No",
-    "tags": ["Developer Tool"],
+    "tags": [
+      "Developer Tool"
+    ],
     "createdAt": "January 14, 2025 8:49 PM",
     "openSource": "Yes",
     "priority": 1
@@ -632,7 +709,9 @@
     "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/taktile.png",
     "status": "published",
     "commercial": "Yes",
-    "tags": ["Workflow Automation"],
+    "tags": [
+      "Workflow Automation"
+    ],
     "createdAt": "January 14, 2025 8:49 PM",
     "openSource": "No",
     "priority": 4
@@ -668,7 +747,9 @@
     "repoUrl": "https://github.com/ToolJet/ToolJet",
     "status": "published",
     "commercial": "Yes",
-    "tags": ["Workflow Automation"],
+    "tags": [
+      "Workflow Automation"
+    ],
     "createdAt": "January 27, 2025 1:33 PM",
     "openSource": "Yes",
     "priority": 1
@@ -695,7 +776,9 @@
     "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/Typeform.png",
     "status": "published",
     "commercial": "Yes",
-    "tags": ["Workflow Automation"],
+    "tags": [
+      "Workflow Automation"
+    ],
     "createdAt": "January 14, 2025 8:49 PM",
     "openSource": "No",
     "priority": 5
@@ -708,7 +791,9 @@
     "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/unify.png",
     "status": "published",
     "commercial": "Yes",
-    "tags": ["Workflow Automation"],
+    "tags": [
+      "Workflow Automation"
+    ],
     "createdAt": "January 14, 2025 8:49 PM",
     "openSource": "No",
     "priority": 4
@@ -722,7 +807,9 @@
     "repoUrl": "https://github.com/ascpixi/vestige",
     "status": "published",
     "commercial": "No",
-    "tags": ["Audio"],
+    "tags": [
+      "Audio"
+    ],
     "createdAt": "January 28, 2025 4:09 PM",
     "openSource": "Yes",
     "priority": 3
@@ -735,7 +822,9 @@
     "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/vislabsworkflow_1.png",
     "status": "published",
     "commercial": "Yes",
-    "tags": ["Workflow Automation"],
+    "tags": [
+      "Workflow Automation"
+    ],
     "createdAt": "January 14, 2025 8:49 PM",
     "openSource": "No",
     "priority": 1
@@ -750,7 +839,9 @@
     "repoUrl": "https://github.com/mitate-gengaku/VisualFlow",
     "status": "published",
     "commercial": "No",
-    "tags": ["Developer Tool"],
+    "tags": [
+      "Developer Tool"
+    ],
     "createdAt": "February 15, 2025 2:21 AM",
     "openSource": "Yes"
   },
@@ -778,7 +869,10 @@
     "repoUrl": "https://github.com/waldiez/waldiez",
     "status": "published",
     "commercial": "No",
-    "tags": ["AI", " Workflow Automation"],
+    "tags": [
+      "AI",
+      " Workflow Automation"
+    ],
     "createdAt": "April 2, 2025 6:38 PM",
     "comment": "the repo url ( https://github.com/waldiez/waldiez ) is for the whole project, the part (submodule) that uses React flow is on \"https://github.com/waldiez/react\"",
     "openSource": "Yes",
@@ -792,7 +886,9 @@
     "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/338508782-180250db-2259-4985-8bf8-9cca3e130600.jpeg",
     "status": "published",
     "commercial": "No",
-    "tags": ["Workflow Automation"],
+    "tags": [
+      "Workflow Automation"
+    ],
     "createdAt": "January 14, 2025 8:49 PM",
     "openSource": "No",
     "priority": 1
@@ -806,9 +902,29 @@
     "repoUrl": "https://github.com/Alwurts/simple-ai",
     "status": "published",
     "commercial": "No",
-    "tags": ["Developer Tool"],
+    "tags": [
+      "Developer Tool"
+    ],
     "createdAt": "February 3, 2025 11:57 AM",
     "openSource": "Yes",
     "priority": 4
+  },
+  {
+    "title": "Full form Showcase PR",
+    "description": "This is a description",
+    "url": "askfljdskf.xyz",
+    "library": "React Flow",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/showcase-submit/codesandbox-logo-5OTrDCOmv10XhkqG7Mo3cHoHxXXb74.jpeg",
+    "email": "aslfjksdf@sldfafds.so",
+    "tags": [
+      "Developer Tool",
+      "Audio",
+      "AI"
+    ],
+    "repoUrl": "askfljdskf.xyz",
+    "status": "confirm",
+    "demoUrl": "askfljdskf.xyz",
+    "openSource": true,
+    "createdAt": "Wed Jul 16 2025 10:55:43 GMT+0200 (Central European Summer Time)"
   }
 ]
