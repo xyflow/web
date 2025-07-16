@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { getPageMap } from 'nextra/page-map';
 import { FC } from 'react';
-import { CaseStudy, ShowcaseLayout, SubscribeSection } from 'xy-shared';
+import { CaseStudy, ShowcaseItem, ShowcaseLayout, SubscribeSection } from 'xy-shared';
 import showcaseItems from './showcases.json';
 
 export const metadata: Metadata = {
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 const Showcase: FC = async () => {
-  const showcases = showcaseItems;
+  const showcases = showcaseItems as unknown as ShowcaseItem[];
   const caseStudies = (await getPageMap('/pro/case-studies')).filter(
     (page) => 'name' in page && page.name !== 'index',
   );

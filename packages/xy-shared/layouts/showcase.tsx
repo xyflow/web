@@ -28,7 +28,6 @@ export type Library = 'React Flow' | 'Svelte Flow' | 'Vue Flow';
 export type ShowcaseLayoutProps = {
   title: string;
   subtitle: string;
-  library: Library;
   showcases?: ShowcaseItem[];
   caseStudies?: CaseStudy[];
   children?: ReactNode;

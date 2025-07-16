@@ -2,22 +2,22 @@ import { createAppAuth } from '@octokit/auth-app';
 import { Octokit } from '@octokit/rest';
 import { Library, ShowcaseItem } from '..';
 
-const octokit = new Octokit({
-  authStrategy: createAppAuth,
-  auth: {
-    appId: process.env.GH_APP_ID,
-    privateKey: process.env.GH_APP_PRIVATE_KEY,
-    clientId: process.env.GITHUB_APP_CLIENT_ID,
-    clientSecret: process.env.GITHUB_APP_CLIENT_SECRET,
-    installationId: process.env.GH_APP_INSTALL_ID
-  },
-});
-
 export async function createShowcasePR(
   formData: ShowcaseItem,
   library: Library,
   comment: string,
 ) {
+  const octokit = new Octokit({
+    authStrategy: createAppAuth,
+    auth: {
+      appId: process.env.GH_APP_ID,
+      privateKey: process.env.GH_APP_PRIVATE_KEY,
+      clientId: process.env.GITHUB_APP_CLIENT_ID,
+      clientSecret: process.env.GITHUB_APP_CLIENT_SECRET,
+      installationId: process.env.GH_APP_INSTALL_ID,
+    },
+  });
+
   const owner = 'xyflow';
   const repo = 'web';
   const base = 'showcase-form-poc';
@@ -47,7 +47,7 @@ export async function createShowcasePR(
       path: filePath,
       ref: base,
     });
-    const buff = Buffer.from(file.content, 'base64');
+    const buff = Buffer.from((file as any).content, 'base64');
     existingContent = buff.toString('utf8');
   } catch (_) {
     console.error('could not read file from github');

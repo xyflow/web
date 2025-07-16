@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { FC } from 'react';
-import { ShowcaseLayout } from 'xy-shared';
+import { ShowcaseItem, ShowcaseLayout } from 'xy-shared';
 import showcaseItems from './showcases.json';
 
 export const metadata: Metadata = {
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 };
 
 const Page: FC = async () => {
-  const showcases = showcaseItems;
+  const showcases = showcaseItems as unknown as ShowcaseItem[];
 
   return (
     <ShowcaseLayout
