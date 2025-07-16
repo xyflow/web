@@ -182,7 +182,7 @@ with some extensions to your theme. We can take all the default options for now:
 
 To demonstrate how powerful shadcn can be, let's dive right into making a new **React
 Flow** app! Now everything is set up, we can add the
-[`<BaseNode />`](/components/nodes/base-node) component with a single command:
+[`<BaseNode />`](/ui/components/base-node) component with a single command:
 
 ```bash copy npm2yarn
 npx shadcn@latest add https://ui.reactflow.dev/base-node
@@ -734,24 +734,23 @@ built using React Flow Components <Emoji content="👀" />.
 In just a short amount of time we've managed to build out a fairly complete flow using the
 components and building blocks provided by shadcn React Flow Components. We've learned:
 
-- How editing the [`<BaseNode />`](/components/nodes/base-node) component will affect
-  other nodes pulled from the React Flow Components registry.
+- How editing the [`<BaseNode />`](/ui/components/base-node) component will affect other
+  nodes pulled from the React Flow Components registry.
 
-- How to use building blocks like the
-  [`<BaseNodeHeader />`](/components/node-blocks/base-node) and
-  [`<LabeledHandle />`](components/handles/labeled-handle) components to build our own
-  custom nodes without starting from scratch.
+- How to use building blocks like the [`<BaseNodeHeader />`](/ui/components/base-node) and
+  [`<LabeledHandle />`](/ui/components/labeled-handle) components to build our own custom
+  nodes without starting from scratch.
 
 - That React Flow Components also provides custom edges like the
-  [`<DataEdge />`](/components/edges/data-edge) to drop into our applications.
+  [`<DataEdge />`](/ui/components/data-edge) to drop into our applications.
 
 And thanks to the power of Tailwind, tweaking the visual style of these components is as
 simple as editing `tailwind.config.js` and editing the variables in your CSS file.
 
 That's all for now! You can see all the components we currently have available over on the
-[components docs page](/components). The React Flow Components project is still in its
-infancy: if you have any suggestions or requests for new components we'd love to hear
-about them. Or perhaps you're already starting to build something with shadcn and React
-Flow Components. Either way make sure you let us know on our
+[UI docs page](/ui). The React Flow Components project is still in its infancy: if you
+have any suggestions or requests for new components we'd love to hear about them. Or
+perhaps you're already starting to build something with shadcn and React Flow Components.
+Either way make sure you let us know on our
 [Discord server](https://discord.com/invite/RVmnytFmGW) or on
 [Twitter](https://twitter.com/xyflowdev)!
