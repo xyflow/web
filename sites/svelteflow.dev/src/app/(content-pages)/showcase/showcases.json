@@ -1,0 +1,100 @@
+[
+  {
+    "title": "CodeFlow",
+    "description": "Roadmap for programmers to learn DSA and solve Topicwise Leetcode questions",
+    "url": "https://roadmap-flow.vercel.app",
+    "library": "Svelte Flow",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/codeflow_2.png",
+    "repoUrl": "https://github.com/SikandarJODD/CodeFlow",
+    "status": "published",
+    "commercial": "No",
+    "tags": [
+      "Developer Tool"
+    ],
+    "createdAt": "January 14, 2025 8:49 PM",
+    "openSource": "Yes",
+    "priority": 1
+  },
+  {
+    "title": "Comgy",
+    "description": "ComgyOS Energy Central uses Svelte Flow to model and visualize energy flows across real estates.",
+    "url": "https://www.comgy.io/",
+    "email": "juan.vidal@comgy.io",
+    "library": "Svelte Flow",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/Screenshot_2025-05-27_at_15.06.10.png",
+    "demoUrl": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Ffast.wistia.net%2Fembed%2Fiframe%2Fs4yoal95wc&display_name=Wistia%2C%2BInc.&url:=https%3A%2F%2Fcomgy-2.wistia.com%2Fmedias%2Fs4yoal95wc&image=https%3A%2F%2Fembed-ssl.wistia.com%2Fdeliveries%2F3692986d5eba985ccc109e7ff1dd20713143c28b.jpg%3Fimage_crop_resized%3D960x438&type=text%2Fhtml&schema=wistia&wvideo=s4yoal95wc",
+    "status": "published",
+    "commercial": "Yes",
+    "tags": [
+      "Workflow Automation"
+    ],
+    "createdAt": "May 27, 2025 3:20 PM",
+    "comment": "https://www.comgy.io/blog/energycentral",
+    "openSource": "No"
+  },
+  {
+    "title": "Pixerate",
+    "description": "Pixerat provides creative professionals with a canvas for experimentation and collaboration.",
+    "url": "https://pixerate.com/",
+    "email": "jack@surrealroad.com",
+    "library": "Svelte Flow",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/2025-03-13_16-08.png",
+    "demoUrl": "https://pixerate.com/",
+    "status": "published",
+    "commercial": "No",
+    "tags": [
+      "AI",
+      "Image Processing",
+      "Workflow Automation"
+    ],
+    "createdAt": "March 13, 2025 5:11 PM",
+    "comment": "I started using svelteflow for this on a whim in November and the experience was so positive it led me to focus exclusively on the canvas aspect",
+    "openSource": "No"
+  },
+  {
+    "title": "PyFlowAutomator",
+    "description": "Python visual scripting UI for enterprise deployment",
+    "url": "https://github.com/Kinthamen/PyFlowAutomator",
+    "library": "Svelte Flow",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/showcase-pyautomator_copy.png",
+    "status": "published",
+    "commercial": "No",
+    "tags": [
+      "Developer Tool"
+    ],
+    "createdAt": "January 14, 2025 8:49 PM",
+    "openSource": "No",
+    "priority": 1
+  },
+  {
+    "title": "Sparrow App",
+    "description": "An API testing tool leveraging Svelte Flow for seamless API Testing through Testflow.",
+    "url": "https://sparrowapp.dev",
+    "library": "Svelte Flow",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/403870028-d415f3f6-5146-41e0-abe1-755a6530c552.png",
+    "repoUrl": "https://github.com/sparrowapp-dev/sparrow-app",
+    "status": "published",
+    "commercial": "No",
+    "tags": [
+      "Workflow Automation"
+    ],
+    "createdAt": "January 28, 2025 4:00 PM",
+    "openSource": "Yes",
+    "priority": 3
+  },
+  {
+    "title": "Zen AI",
+    "description": "No code AI for workflow automation",
+    "url": "https://getzenai.com/",
+    "library": "Svelte Flow",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/338508782-180250db-2259-4985-8bf8-9cca3e130600.jpeg",
+    "status": "published",
+    "commercial": "No",
+    "tags": [
+      "Workflow Automation"
+    ],
+    "createdAt": "January 14, 2025 8:49 PM",
+    "openSource": "No",
+    "priority": 1
+  }
+]

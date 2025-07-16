@@ -26,6 +26,8 @@
     "@docsearch/react": "^3.9.0",
     "@heroicons/react": "^2.2.0",
     "@notionhq/client": "^2.3.0",
+    "@octokit/rest": "^22.0.0",
+    "@octokit/auth-app": "^8.0.1",
     "@radix-ui/react-accordion": "^1.2.7",
     "@radix-ui/react-alert-dialog": "^1.1.10",
     "@radix-ui/react-checkbox": "^1.2.2",
