@@ -426,7 +426,11 @@ The first node we'll create is a simple number node with some buttons to increme
 decrement the value and a handle to connect it to other nodes. Create a folder
 `src/components/nodes` and then add a new file `src/components/nodes/num-node.tsx`.
 
-Paste the following into the new file:
+Paste the following into the new file and install the following dependencies:
+
+```bash copy npm2yarn
+npx shadcn@latest add dropdown-menu button
+```
 
 ```tsx filename="src/components/nodes/num-node.tsx"
 import { type Node, type NodeProps, Position, useReactFlow } from '@xyflow/react';
