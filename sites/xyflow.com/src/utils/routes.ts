@@ -19,5 +19,6 @@ export type InternalRoute =
   | '/ethical-standards'
   | '/imprint'
   | '/open-source'
+  | '/labs'
   | '/privacy'
   | '/terms-of-use';
