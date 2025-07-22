@@ -1,7 +1,7 @@
 import { generateStaticParamsFor, importPage } from 'nextra/pages';
 import { normalizePages } from 'nextra/normalize-pages';
 import { CaseStudyLayoutWrapper } from 'xy-shared';
-import { getLabs } from '@/utils';
+import { getPageMap } from 'nextra/page-map';
 import { useMDXComponents as getMdxComponents } from '@/mdx-components';
 
 type PageProps = Readonly<{
@@ -18,7 +18,7 @@ export default async function Page(props: PageProps) {
   const { default: MDXContent, toc, metadata } = result;
   const mdx = <MDXContent {...props} params={params} />;
 
-  const pageMap = await getLabs();
+  const pageMap = await getPageMap('/labs');
   const route = ['/labs', ...params.mdxPath].join('/');
   const { activeIndex, flatDocsDirectories } = normalizePages({
     list: pageMap,
