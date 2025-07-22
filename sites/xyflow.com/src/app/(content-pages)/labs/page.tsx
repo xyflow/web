@@ -11,11 +11,12 @@ export const metadata: Metadata = {
   description:
     'Discover our experimental projects, prototypes, and playgrounds built with React Flow. Explore what we’re working on behind the scenes at xyflow.',
 };
+
 const Page: FC = async () => {
   return (
     <BaseLayout>
       <Hero
-        title="Xyflow Labs"
+        title="xyflow Labs"
         subtitle="At xyflow, we’re always experimenting with new ideas and building projects that explore the creative potential of node-based interfaces. Browse our latest playgrounds, prototypes, and behind-the-scenes experiments to see what we’ve been working on."
         kicker="Labs"
         kickerIcon={<SparklesIcon />}

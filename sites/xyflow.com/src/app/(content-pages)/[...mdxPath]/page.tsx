@@ -4,6 +4,7 @@ import { LabsLayoutWrapper, BaseBlogPostLayout } from 'xy-shared';
 import { getPageMap } from 'nextra/page-map';
 import { getBlogs } from '@/utils';
 import { useMDXComponents as getMdxComponents } from '@/mdx-components';
+import { MdxFile } from 'nextra';
 
 type PageProps = Readonly<{
   params: Promise<{
@@ -24,20 +25,20 @@ export default async function Page(props: PageProps) {
   const isBlogPage = params.mdxPath[0] === 'blog';
 
   let pageMap;
-  let route;
 
   if (isLabsPage) {
     pageMap = await getPageMap('/labs');
-    route = ['/labs', ...params.mdxPath].join('/');
+    pageMap = pageMap.filter(
+      (page) => 'name' in page && page.name !== 'index',
+    ) as MdxFile[];
   } else if (isBlogPage) {
     pageMap = await getBlogs();
-    route = ['/', ...params.mdxPath].join('');
   } else {
     // Fallback - you might want to handle other cases
     pageMap = [];
-    route = ['/', ...params.mdxPath].join('');
   }
 
+  const route = `/${[...params.mdxPath].join('/')}`;
   const { activeIndex, flatDocsDirectories } = normalizePages({
     list: pageMap,
     route,

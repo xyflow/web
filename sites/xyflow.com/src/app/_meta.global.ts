@@ -19,15 +19,7 @@ const metaRecord = {
       },
     },
   },
-  about: '',
   'open-source': '',
-  libraries: {
-    type: 'menu',
-    items: {
-      'react-flow': { href: 'https://reactflow.dev' },
-      'svelte-flow': { href: 'https://svelteflow.dev' },
-    },
-  },
   labs: {
     theme: {
       sidebar: false,
@@ -37,6 +29,15 @@ const metaRecord = {
       layout: 'full',
     },
   },
+  about: '',
+  libraries: {
+    type: 'menu',
+    items: {
+      'react-flow': { href: 'https://reactflow.dev' },
+      'svelte-flow': { href: 'https://svelteflow.dev' },
+    },
+  },
+
   // 2. Hidden Routes from Navigation
   index: { display: 'hidden' },
   careers: { display: 'hidden' },

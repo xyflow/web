@@ -18,10 +18,6 @@ export type LabsFrontmatter = {
   title: string;
   description: string;
   authors: Author[];
-  client: string;
-  clientLogo: string;
-  interviewee: string;
-  intervieweeImage: string;
   image: string;
   image_width: number;
   image_height: number;
@@ -42,7 +38,7 @@ export const LabsLayoutWrapper: FC<
             Labs
           </Link>
           <ChevronRightIcon className="h-5 w-5 mb-0.5 text-gray-500" />
-          <Text className="ml-1 text-md font-medium">{frontMatter.client}</Text>
+          <Text className="ml-1 text-md font-medium">{frontMatter.title}</Text>
         </div>
         <Heading size="lg" className="mt-8 !leading-tight text-gray-900 ">
           {frontMatter.title}
@@ -50,7 +46,7 @@ export const LabsLayoutWrapper: FC<
         <AuthorList authors={frontMatter.authors} className="mt-6" />
       </div>
 
-      <Container className="mx-auto mt-8 bg-gray-50 max-w-screen-xl">
+      <Container className="mx-auto mt-8 mb-8 bg-gray-50 max-w-screen-xl">
         <Image
           src={frontMatter.image}
           width={frontMatter.image_width}
@@ -61,7 +57,8 @@ export const LabsLayoutWrapper: FC<
 
       <div className="max-w-3xl mx-auto px-6">
         {children}
-        <Button asChild>
+
+        <Button asChild className="mt-6">
           <a href={frontMatter.project_url} target="_blank">
             Visit Project Website
           </a>
