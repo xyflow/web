@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { NodeProps, Position } from "@xyflow/react";
+import { Position } from "@xyflow/react";
 
 import {
   NodeTooltip,
