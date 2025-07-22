@@ -1,6 +1,6 @@
 import { generateStaticParamsFor, importPage } from 'nextra/pages';
 import { normalizePages } from 'nextra/normalize-pages';
-import { CaseStudyLayoutWrapper, BaseBlogPostLayout } from 'xy-shared';
+import { LabsLayoutWrapper, BaseBlogPostLayout } from 'xy-shared';
 import { getPageMap } from 'nextra/page-map';
 import { getBlogs } from '@/utils';
 import { useMDXComponents as getMdxComponents } from '@/mdx-components';
@@ -43,7 +43,7 @@ export default async function Page(props: PageProps) {
     route,
   });
 
-  const LayoutComponent = isLabsPage ? CaseStudyLayoutWrapper : BaseBlogPostLayout;
+  const LayoutComponent = isLabsPage ? LabsLayoutWrapper : BaseBlogPostLayout;
 
   return (
     <Wrapper toc={toc} metadata={metadata}>
