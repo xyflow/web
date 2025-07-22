@@ -24,7 +24,7 @@ const Page: FC = async () => {
       />
 
       <ContentGrid className="mt-20">
-        {/* {labs.map((page) => {
+        {labs.map((page) => {
           return (
             <ContentGridItem key={page.route} route={page.route}>
               <ProjectPreview
@@ -36,7 +36,7 @@ const Page: FC = async () => {
               />
             </ContentGridItem>
           );
-        })} */}
+        })}
       </ContentGrid>
       <SubscribeSection
         btnLink={`${process.env.NEXT_PUBLIC_PRO_PLATFORM_URL}/signup`}
