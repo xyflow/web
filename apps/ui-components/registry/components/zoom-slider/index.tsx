@@ -6,7 +6,7 @@ import {
   useViewport,
   useStore,
   useReactFlow,
-  PanelProps,
+  type PanelProps,
 } from "@xyflow/react";
 
 import { Slider } from "@/components/ui/slider";

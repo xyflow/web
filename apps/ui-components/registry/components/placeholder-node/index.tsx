@@ -1,11 +1,12 @@
-import React, { useCallback, ReactNode, forwardRef } from "react";
+import React, { useCallback, forwardRef, type ReactNode } from "react";
 import {
   useReactFlow,
   useNodeId,
-  NodeProps,
   Handle,
   Position,
+  type NodeProps,
 } from "@xyflow/react";
+
 import { BaseNode } from "@/registry/components/base-node";
 
 export type PlaceholderNodeProps = Partial<NodeProps> & {

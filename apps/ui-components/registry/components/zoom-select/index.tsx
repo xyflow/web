@@ -1,5 +1,5 @@
 import React, { forwardRef, useCallback } from "react";
-import { Panel, useReactFlow, PanelProps, useStore } from "@xyflow/react";
+import { Panel, useReactFlow, useStore, type PanelProps } from "@xyflow/react";
 
 import {
   Select,

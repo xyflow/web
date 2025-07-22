@@ -6,7 +6,7 @@ This application is used for developing and publishing new components that can b
 
 ```bash
 npx shadcn init # initialize shadcn
-npx shadcn add http://ui.reactflow.dev/<component-name>.json ## adding component
+npx shadcn add https://ui.reactflow.dev/<component-name>.json ## adding component
 ```
 
 ## Developing new components
