@@ -28,7 +28,20 @@ const metaRecord = {
       'svelte-flow': { href: 'https://svelteflow.dev' },
     },
   },
-  labs: { href: '/labs' },
+  labs: {
+    theme: {
+      sidebar: false,
+      toc: false,
+      breadcrumb: false,
+      pagination: false,
+    },
+    items: {
+      '*': {
+        // Hide from mobile nav
+        display: 'hidden',
+      },
+    },
+  },
   // 2. Hidden Routes from Navigation
   index: { display: 'hidden' },
   careers: { display: 'hidden' },
