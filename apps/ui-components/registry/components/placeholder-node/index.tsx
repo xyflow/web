@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useCallback, forwardRef, type ReactNode } from "react";
 import {
   useReactFlow,

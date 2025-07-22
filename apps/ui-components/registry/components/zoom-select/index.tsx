@@ -1,3 +1,5 @@
+"use client";
+
 import React, { forwardRef, useCallback } from "react";
 import { Panel, useReactFlow, useStore, type PanelProps } from "@xyflow/react";
 

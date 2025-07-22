@@ -1,3 +1,5 @@
+"use client";
+
 import { cn } from "@/lib/utils";
 import { NodeToolbar, type NodeToolbarProps } from "@xyflow/react";
 import React, {
