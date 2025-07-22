@@ -20,5 +20,9 @@ export type InternalRoute =
   | '/imprint'
   | '/open-source'
   | '/labs'
+  | '/labs/carto-case-study'
+  | '/labs/doubleloop-case-study'
+  | '/labs/hubql-case-study'
+  | '/labs/onesignal-case-study'
   | '/privacy'
   | '/terms-of-use';

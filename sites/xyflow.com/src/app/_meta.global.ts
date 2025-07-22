@@ -28,7 +28,7 @@ const metaRecord = {
       'svelte-flow': { href: 'https://svelteflow.dev' },
     },
   },
-
+  labs: { href: '/labs' },
   // 2. Hidden Routes from Navigation
   index: { display: 'hidden' },
   careers: { display: 'hidden' },
