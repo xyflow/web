@@ -34,12 +34,7 @@ const metaRecord = {
       toc: false,
       breadcrumb: false,
       pagination: false,
-    },
-    items: {
-      '*': {
-        // Hide from mobile nav
-        display: 'hidden',
-      },
+      layout: 'full',
     },
   },
   // 2. Hidden Routes from Navigation
