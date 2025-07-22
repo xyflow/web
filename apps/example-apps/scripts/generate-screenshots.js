@@ -12,10 +12,7 @@ const SVELTE_FLOW_EXAMPLES = Path.resolve(__dirname, '../svelte');
 // Launch the browser and open a new blank page
 const browser = await puppeteer.launch({
   headless: false,
-  args: [
-    '--disable-web-security',
-    '--disable-features=IsolateOrigins,site-per-process',
-  ],
+  args: ['--disable-web-security', '--disable-features=IsolateOrigins,site-per-process'],
 });
 const page = await browser.newPage();
 
@@ -32,10 +29,10 @@ async function makeScreenshots(dir, selector) {
 
   for (let c of content) {
     if (c.isDirectory()) {
-      await makeScreenshots(Path.resolve(c.path, c.name), selector);
+      await makeScreenshots(Path.resolve(c.parentPath, c.name), selector);
     } else if (c.name === 'index.html') {
-      const exampleFolder = c.path.split('index.html')[0];
-      const examplePath = c.path.split('example-apps')?.[1];
+      const exampleFolder = c.parentPath.split('index.html')[0];
+      const examplePath = c.parentPath.split('example-apps')?.[1];
       const exampleUrl = `http://localhost:5173${examplePath}/index.html`;
       const screenshotPath = Path.resolve(exampleFolder, 'preview.jpg');
 
@@ -47,7 +44,7 @@ async function makeScreenshots(dir, selector) {
       await page.evaluate(() => {
         const hideElement = (selector) => {
           const elements = document.querySelectorAll(selector);
-          elements.forEach(element => element.style.display = 'none');
+          elements.forEach((element) => (element.style.display = 'none'));
         };
         hideElement('.react-flow__attribution a');
         hideElement('.react-flow__panel');
