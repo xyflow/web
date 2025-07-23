@@ -20,11 +20,15 @@ export async function getNhost(
     start: false,
   });
 
+  console.log('nhost', nhost);
+
   const sessionCookieValue = cookieStore.get(NHOST_SESSION_KEY)?.value;
   const initialSession: NhostSession = sessionCookieValue
     ? JSON.parse(atob(sessionCookieValue))
     : // auth.initWithSession` must be called even with `null`, otherwise will get an error from @nhost/hasura-auth-js - Auth interpreter not set
       null;
+
+  console.log('try init session', initialSession);
 
   await nhost.auth.initWithSession({ session: initialSession });
   // const refreshTokenValue = cookieStore.get(NHOST_REFRESH_KEY)?.value;
@@ -38,8 +42,15 @@ export async function getNhost(
 }
 
 export async function manageAuthSession(request: NextRequest) {
+  console.log('start manageAuthSession');
+
   const nhost = await getNhost(request.cookies);
+
+  console.log('nhost initialized', nhost);
+
   const session = nhost.auth.getSession();
+
+  console.log('session retrieved', session);
 
   const url = new URL(request.url);
   const refreshToken = url.searchParams.get('refreshToken') ?? undefined;
