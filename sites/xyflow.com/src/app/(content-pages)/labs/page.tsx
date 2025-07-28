@@ -24,7 +24,7 @@ const Page: FC = async () => {
         backgroundVariant="image"
       />
 
-      <ContentGrid className="mt-20">
+      <ContentGrid className="mt-20 relative z-1">
         {(await getPageMap('/labs'))
           .filter((page): page is MdxFile => 'name' in page && page.name !== 'index')
           .map((page) => {
