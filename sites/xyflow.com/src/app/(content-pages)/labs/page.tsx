@@ -17,8 +17,8 @@ const Page: FC = async () => {
     <BaseLayout>
       <Hero
         title="xyflow Labs"
-        subtitle="At xyflow, we’re always experimenting with new ideas and building projects that explore the creative potential of node-based interfaces. Browse our latest playgrounds, prototypes, and behind-the-scenes experiments to see what we’ve been working on."
-        kicker="Labs"
+        subtitle="A collection of experiments and demos we've created with React Flow and Svelte Flow to explore the possibilities of our libraries."
+        kicker="Projects"
         kickerIcon={<SparklesIcon />}
         align="center"
         backgroundVariant="image"
