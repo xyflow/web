@@ -1,42 +1,19 @@
 diff --git a/dist/server/tsdoc/base.js b/dist/server/tsdoc/base.js
-index 5d9a6dc495a25aa634cd4c190979f76fe46e4ea0..e2daabe687f6c1867f088dba3a9b2fe752b871ab 100644
+index 5d9a6dc495a25aa634cd4c190979f76fe46e4ea0..956dc1a5e375455add37f69d5eb52e3a02468694 100644
 --- a/dist/server/tsdoc/base.js
 +++ b/dist/server/tsdoc/base.js
-@@ -3,23 +3,26 @@ import slash from "slash";
- import { Project, SyntaxKind, ts } from "ts-morph";
- import { CWD } from "../constants.js";
- import { logger } from "../utils.js";
--const project = new Project({
--  tsConfigFilePath: "./tsconfig.json",
--  skipAddingFilesFromTsConfig: true,
--  compilerOptions: {
--    // Do not show `undefined` value in type for optional value
--    exactOptionalPropertyTypes: true,
--    // Show `null` value in type if exist
--    strictNullChecks: true
--  }
--});
-+let project, compilerObject;
+@@ -14,12 +14,13 @@ const project = new Project({
+   }
+ });
  const DEFAULT_FILENAME = "$.ts";
 -const { compilerObject } = project.getTypeChecker();
++let compilerOptions;
  function generateDefinition({
    code,
    exportName = "default",
    flattened = false
  }) {
-+  if (!project) {
-+    project = new Project({
-+      tsConfigFilePath: "./tsconfig.json",
-+      skipAddingFilesFromTsConfig: true,
-+      compilerOptions: {
-+        // Do not show `undefined` value in type for optional value
-+        exactOptionalPropertyTypes: true,
-+        // Show `null` value in type if exist
-+        strictNullChecks: true
-+      }
-+    });
-+    compilerObject = project.getTypeChecker().compilerObject;
-+  }
++  compilerOptions ||= project.getTypeChecker().compilerObject;
    const sourceFile = project.createSourceFile(DEFAULT_FILENAME, code, {
      overwrite: true
    });
