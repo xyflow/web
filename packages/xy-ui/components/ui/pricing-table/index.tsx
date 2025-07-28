@@ -78,7 +78,7 @@ const PricingTable = ({
             </Button>
           </div>
           <Select
-            value={currency ? currency : undefined}
+            value={currency}
             onValueChange={(value) => {
               setCurrency(value as Currency);
               localStorage.setItem('pricing-currency', value);
