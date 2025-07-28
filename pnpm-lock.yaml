@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  nextra:
+    hash: 34aa8ee61c73d0fb16760f603d318c0a39b3ea6b100d7a92c5bb0d871d3d5642
+    path: patches/nextra.patch
+
 importers:
 
   .:
@@ -396,7 +401,7 @@ importers:
         version: 15.3.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       nextra:
         specifier: 4.3.0-alpha.31
-        version: 4.3.0-alpha.31(acorn@8.15.0)(next@15.3.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3)
+        version: 4.3.0-alpha.31(patch_hash=34aa8ee61c73d0fb16760f603d318c0a39b3ea6b100d7a92c5bb0d871d3d5642)(acorn@8.15.0)(next@15.3.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3)
       react-dom:
         specifier: ^18.2.0
         version: 18.3.1(react@18.3.1)
@@ -572,10 +577,10 @@ importers:
         version: 4.2.3(next@15.4.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
       nextra:
         specifier: ^4.3.0-alpha.31
-        version: 4.3.0-alpha.31(acorn@8.14.1)(next@15.4.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3)
+        version: 4.3.0-alpha.31(patch_hash=34aa8ee61c73d0fb16760f603d318c0a39b3ea6b100d7a92c5bb0d871d3d5642)(acorn@8.14.1)(next@15.4.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3)
       nextra-theme-docs:
         specifier: ^4.3.0-alpha.31
-        version: 4.3.0-alpha.31(@types/react@18.3.23)(next@15.4.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(nextra@4.3.0-alpha.31(acorn@8.14.1)(next@15.4.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(use-sync-external-store@1.5.0(react@18.3.1))
+        version: 4.3.0-alpha.31(@types/react@18.3.23)(next@15.4.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(nextra@4.3.0-alpha.31(patch_hash=34aa8ee61c73d0fb16760f603d318c0a39b3ea6b100d7a92c5bb0d871d3d5642)(acorn@8.14.1)(next@15.4.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(use-sync-external-store@1.5.0(react@18.3.1))
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -663,10 +668,10 @@ importers:
         version: 4.2.3(next@15.3.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
       nextra:
         specifier: ^4.3.0-alpha.31
-        version: 4.3.0-alpha.31(acorn@8.15.0)(next@15.3.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3)
+        version: 4.3.0-alpha.31(patch_hash=34aa8ee61c73d0fb16760f603d318c0a39b3ea6b100d7a92c5bb0d871d3d5642)(acorn@8.15.0)(next@15.3.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3)
       nextra-theme-docs:
         specifier: ^4.3.0-alpha.31
-        version: 4.3.0-alpha.31(@types/react@18.3.23)(next@15.3.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(nextra@4.3.0-alpha.31(acorn@8.15.0)(next@15.3.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(use-sync-external-store@1.5.0(react@18.3.1))
+        version: 4.3.0-alpha.31(@types/react@18.3.23)(next@15.3.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(nextra@4.3.0-alpha.31(patch_hash=34aa8ee61c73d0fb16760f603d318c0a39b3ea6b100d7a92c5bb0d871d3d5642)(acorn@8.15.0)(next@15.3.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(use-sync-external-store@1.5.0(react@18.3.1))
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -736,10 +741,10 @@ importers:
         version: 4.2.3(next@15.3.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
       nextra:
         specifier: ^4.3.0-alpha.31
-        version: 4.3.0-alpha.31(acorn@8.15.0)(next@15.3.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3)
+        version: 4.3.0-alpha.31(patch_hash=34aa8ee61c73d0fb16760f603d318c0a39b3ea6b100d7a92c5bb0d871d3d5642)(acorn@8.15.0)(next@15.3.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3)
       nextra-theme-docs:
         specifier: ^4.3.0-alpha.31
-        version: 4.3.0-alpha.31(@types/react@18.3.23)(next@15.3.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(nextra@4.3.0-alpha.31(acorn@8.15.0)(next@15.3.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(use-sync-external-store@1.5.0(react@18.3.1))
+        version: 4.3.0-alpha.31(@types/react@18.3.23)(next@15.3.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(nextra@4.3.0-alpha.31(patch_hash=34aa8ee61c73d0fb16760f603d318c0a39b3ea6b100d7a92c5bb0d871d3d5642)(acorn@8.15.0)(next@15.3.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(use-sync-external-store@1.5.0(react@18.3.1))
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -13747,13 +13752,13 @@ snapshots:
       - '@babel/core'
       - babel-plugin-macros
 
-  nextra-theme-docs@4.3.0-alpha.31(@types/react@18.3.23)(next@15.3.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(nextra@4.3.0-alpha.31(acorn@8.15.0)(next@15.3.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(use-sync-external-store@1.5.0(react@18.3.1)):
+  nextra-theme-docs@4.3.0-alpha.31(@types/react@18.3.23)(next@15.3.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(nextra@4.3.0-alpha.31(patch_hash=34aa8ee61c73d0fb16760f603d318c0a39b3ea6b100d7a92c5bb0d871d3d5642)(acorn@8.15.0)(next@15.3.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(use-sync-external-store@1.5.0(react@18.3.1)):
     dependencies:
       '@headlessui/react': 2.2.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       clsx: 2.1.1
       next: 15.3.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       next-themes: 0.4.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      nextra: 4.3.0-alpha.31(acorn@8.15.0)(next@15.3.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3)
+      nextra: 4.3.0-alpha.31(patch_hash=34aa8ee61c73d0fb16760f603d318c0a39b3ea6b100d7a92c5bb0d871d3d5642)(acorn@8.15.0)(next@15.3.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3)
       react: 18.3.1
       react-compiler-runtime: 19.1.0-rc.2(react@18.3.1)
       react-dom: 18.3.1(react@18.3.1)
@@ -13765,13 +13770,13 @@ snapshots:
       - immer
       - use-sync-external-store
 
-  nextra-theme-docs@4.3.0-alpha.31(@types/react@18.3.23)(next@15.4.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(nextra@4.3.0-alpha.31(acorn@8.14.1)(next@15.4.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(use-sync-external-store@1.5.0(react@18.3.1)):
+  nextra-theme-docs@4.3.0-alpha.31(@types/react@18.3.23)(next@15.4.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(nextra@4.3.0-alpha.31(patch_hash=34aa8ee61c73d0fb16760f603d318c0a39b3ea6b100d7a92c5bb0d871d3d5642)(acorn@8.14.1)(next@15.4.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(use-sync-external-store@1.5.0(react@18.3.1)):
     dependencies:
       '@headlessui/react': 2.2.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       clsx: 2.1.1
       next: 15.4.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       next-themes: 0.4.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      nextra: 4.3.0-alpha.31(acorn@8.14.1)(next@15.4.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3)
+      nextra: 4.3.0-alpha.31(patch_hash=34aa8ee61c73d0fb16760f603d318c0a39b3ea6b100d7a92c5bb0d871d3d5642)(acorn@8.14.1)(next@15.4.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3)
       react: 18.3.1
       react-compiler-runtime: 19.1.0-rc.2(react@18.3.1)
       react-dom: 18.3.1(react@18.3.1)
@@ -13783,7 +13788,7 @@ snapshots:
       - immer
       - use-sync-external-store
 
-  nextra@4.3.0-alpha.31(acorn@8.14.1)(next@15.4.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3):
+  nextra@4.3.0-alpha.31(patch_hash=34aa8ee61c73d0fb16760f603d318c0a39b3ea6b100d7a92c5bb0d871d3d5642)(acorn@8.14.1)(next@15.4.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3):
     dependencies:
       '@formatjs/intl-localematcher': 0.6.0
       '@headlessui/react': 2.2.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -13832,7 +13837,7 @@ snapshots:
       - supports-color
       - typescript
 
-  nextra@4.3.0-alpha.31(acorn@8.15.0)(next@15.3.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3):
+  nextra@4.3.0-alpha.31(patch_hash=34aa8ee61c73d0fb16760f603d318c0a39b3ea6b100d7a92c5bb0d871d3d5642)(acorn@8.15.0)(next@15.3.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3):
     dependencies:
       '@formatjs/intl-localematcher': 0.6.0
       '@headlessui/react': 2.2.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
