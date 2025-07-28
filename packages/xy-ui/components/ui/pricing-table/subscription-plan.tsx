@@ -1,9 +1,6 @@
 import Link from 'next/link';
 import cn from 'clsx';
-import {
-  CheckCircleIcon,
-  InformationCircleIcon,
-} from '@heroicons/react/24/outline';
+import { CheckCircleIcon, InformationCircleIcon } from '@heroicons/react/24/outline';
 
 import { Button, Tooltip, TooltipContent, TooltipTrigger } from '../../../';
 
@@ -14,20 +11,13 @@ import {
   FeatureConfig,
   PricingConfig,
   PlanId,
+  OnSelectCurrenty,
 } from './types';
 
 type PlanProps = SubscriptionPlan & {
-  currency: Currency;
+  currency?: Currency;
   billingInterval: BillingInterval;
-  onSelect?: ({
-    plan,
-    currency,
-    billingInterval,
-  }: {
-    plan: PlanId;
-    currency: Currency;
-    billingInterval: BillingInterval;
-  }) => void;
+  onSelect?: OnSelectCurrenty;
 };
 
 function Features({
@@ -71,12 +61,11 @@ function PricingDisplay({
   billingInterval,
 }: {
   pricing?: PricingConfig[];
-  currency: Currency;
+  currency?: Currency;
   billingInterval: BillingInterval;
 }) {
   const currentPrice = pricing?.find(
-    (price) =>
-      price.currency === currency && price.interval === billingInterval,
+    (price) => price.currency === currency && price.interval === billingInterval,
   );
 
   if (!currentPrice || !pricing) {
@@ -86,8 +75,7 @@ function PricingDisplay({
   const priceStrikeThrough =
     billingInterval === BillingInterval.YEAR
       ? pricing.find(
-          (price) =>
-            price.currency === currency && price.interval !== billingInterval,
+          (price) => price.currency === currency && price.interval !== billingInterval,
         )
       : undefined;
 
@@ -95,9 +83,7 @@ function PricingDisplay({
     <div className="ml-4 leading-tight">
       <div className="flex">
         {priceStrikeThrough && (
-          <div className="mr-2 text-light line-through">
-            {priceStrikeThrough.label}
-          </div>
+          <div className="mr-2 text-light line-through">{priceStrikeThrough.label}</div>
         )}
         <div suppressHydrationWarning className="font-bold">
           {currentPrice.label}
@@ -123,9 +109,7 @@ export default function Plan({
   onSelect,
 }: PlanProps) {
   const btnLink =
-    id === PlanId.ENTERPRISE
-      ? '/pro/enterprise'
-      : 'https://pro.reactflow.dev/signup';
+    id === PlanId.ENTERPRISE ? '/pro/enterprise' : 'https://pro.reactflow.dev/signup';
 
   return (
     <div
@@ -138,9 +122,7 @@ export default function Plan({
       <div className={cn('font-bold text-4xl', highlighted && 'text-primary')}>
         {label}
       </div>
-      <div className="text-lg leading-tight h-[120px] relative mt-6">
-        {description}
-      </div>
+      <div className="text-lg leading-tight h-[120px] relative mt-6">{description}</div>
 
       <div className="mb-8 lg:mb-20">
         <div className="flex">
@@ -152,11 +134,7 @@ export default function Plan({
             asChild
           >
             {onSelect ? (
-              <Button
-                onClick={() =>
-                  onSelect({ plan: id, currency, billingInterval })
-                }
-              >
+              <Button onClick={() => onSelect({ plan: id, currency, billingInterval })}>
                 {buttonLabel}
               </Button>
             ) : (

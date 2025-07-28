@@ -15,7 +15,13 @@ import {
 
 import Plan from './subscription-plan';
 import defaultConfig from './default-config';
-import { Currency, BillingInterval, SubscriptionPlan, PlanId } from './types';
+import {
+  Currency,
+  BillingInterval,
+  SubscriptionPlan,
+  PlanId,
+  OnSelectCurrenty,
+} from './types';
 
 const PricingTable = ({
   className,
@@ -24,21 +30,13 @@ const PricingTable = ({
 }: {
   className?: string;
   plans?: SubscriptionPlan[];
-  onSelect?: ({
-    plan,
-    currency,
-    billingInterval,
-  }: {
-    plan: PlanId;
-    currency: Currency;
-    billingInterval: BillingInterval;
-  }) => void;
+  onSelect?: OnSelectCurrenty;
 }) => {
   const [billingInterval, setBillingInterval] = useState<BillingInterval>(
     BillingInterval.MONTH,
   );
-  const [currency, setCurrency] = useState<Currency | null>(null);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [currency, setCurrency] = useState<Currency | undefined>(undefined);
+  const [, setIsLoaded] = useState(false);
 
   const isMonthly = billingInterval === BillingInterval.MONTH;
 
@@ -53,11 +51,6 @@ const PricingTable = ({
     localStorage.setItem('pricing-currency', currency);
     setIsLoaded(true);
   }, []);
-
-  // Don't render until currency is loaded to prevent flicker
-  if (!isLoaded || currency === null) {
-    return null;
-  }
 
   return (
     <TooltipProvider delayDuration={0}>
@@ -85,7 +78,7 @@ const PricingTable = ({
             </Button>
           </div>
           <Select
-            value={currency}
+            value={currency ? currency : undefined}
             onValueChange={(value) => {
               setCurrency(value as Currency);
               localStorage.setItem('pricing-currency', value);
