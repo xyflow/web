@@ -1,10 +1,10 @@
-import { ReactNode } from "react";
+import { type ReactNode } from "react";
 
 import {
   BaseEdge,
   EdgeLabelRenderer,
-  EdgeProps,
   getBezierPath,
+  type EdgeProps,
 } from "@xyflow/react";
 
 export const ButtonEdge = ({

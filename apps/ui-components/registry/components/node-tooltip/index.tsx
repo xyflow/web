@@ -1,12 +1,14 @@
+"use client";
+
 import { cn } from "@/lib/utils";
-import { NodeToolbar, NodeToolbarProps } from "@xyflow/react";
+import { NodeToolbar, type NodeToolbarProps } from "@xyflow/react";
 import React, {
   createContext,
   forwardRef,
-  HTMLAttributes,
   useCallback,
   useContext,
   useState,
+  type HTMLAttributes,
 } from "react";
 
 /* TOOLTIP CONTEXT ---------------------------------------------------------- */

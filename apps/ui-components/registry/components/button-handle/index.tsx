@@ -1,4 +1,4 @@
-import { HandleProps, Position } from "@xyflow/react";
+import { Position, type HandleProps } from "@xyflow/react";
 import { BaseHandle } from "@/registry/components/base-handle";
 
 const wrapperClassNames: Record<Position, string> = {

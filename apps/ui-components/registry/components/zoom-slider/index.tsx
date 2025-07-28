@@ -1,3 +1,5 @@
+"use client";
+
 import React, { forwardRef } from "react";
 import { Maximize, Minus, Plus } from "lucide-react";
 
@@ -6,7 +8,7 @@ import {
   useViewport,
   useStore,
   useReactFlow,
-  PanelProps,
+  type PanelProps,
 } from "@xyflow/react";
 
 import { Slider } from "@/components/ui/slider";

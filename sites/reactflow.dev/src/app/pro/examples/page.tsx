@@ -106,7 +106,7 @@ const ProExamples: FC = async () => {
           style={{ objectFit: 'contain' }}
         />
       </Hero>
-      <Section>
+      <Section className="z-1 relative">
         <ContentGrid className="lg:grid-cols-4 border-t-0 gap-12">
           <GridItem
             title="By the creators of React Flow"
