@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "next --turbopack --port 3002",
-    "build": "VERCEL_FORCE_NO_BUILD_CACHE=1 next build",
+    "build": "next build",
     "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "next lint",
