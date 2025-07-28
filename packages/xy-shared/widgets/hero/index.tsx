@@ -48,7 +48,7 @@ export function Hero({
 
       {backgroundVariant === 'image' && (
         <div className="relative">
-          <div className="absolute w-full h-[50vw] bg-gradient bg-no-repeat bg-contain lg:bg-[length:50%] bg-[90%_top] pointer-events-none -z-10" />
+          <div className="absolute w-full h-[50vw] bg-gradient bg-no-repeat bg-contain lg:bg-[length:50%] bg-[90%_top] pointer-events-none" />
         </div>
       )}
 
@@ -84,10 +84,7 @@ export function Hero({
           {subtitle && (
             <Text
               size="lg"
-              className={cn(
-                'leading-7 mb-4 lg:mb-6 max-w-3xl',
-                isCenter && 'mx-auto',
-              )}
+              className={cn('leading-7 mb-4 lg:mb-6 max-w-3xl', isCenter && 'mx-auto')}
             >
               {subtitle}
             </Text>

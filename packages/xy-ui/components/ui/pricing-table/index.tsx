@@ -44,10 +44,11 @@ const PricingTable = ({
 
   useEffect(() => {
     const storedCurrency = localStorage.getItem('pricing-currency');
-    const currency = (storedCurrency && Object.values(Currency).includes(storedCurrency as Currency)) 
-      ? storedCurrency as Currency 
-      : getDefaultCurrency();
-    
+    const currency =
+      storedCurrency && Object.values(Currency).includes(storedCurrency as Currency)
+        ? (storedCurrency as Currency)
+        : getDefaultCurrency();
+
     setCurrency(currency);
     localStorage.setItem('pricing-currency', currency);
     setIsLoaded(true);
@@ -71,18 +72,14 @@ const PricingTable = ({
             <Button
               variant="secondary"
               onClick={() => setBillingInterval(BillingInterval.MONTH)}
-              className={
-                isMonthly ? '' : 'text-gray-400 bg-gray-100 shadow-none'
-              }
+              className={isMonthly ? '' : 'text-gray-400 bg-gray-100 shadow-none'}
             >
               Monthly
             </Button>
             <Button
               variant="secondary"
               onClick={() => setBillingInterval(BillingInterval.YEAR)}
-              className={
-                !isMonthly ? '' : 'text-gray-400 bg-gray-100 shadow-none'
-              }
+              className={!isMonthly ? '' : 'text-gray-400 bg-gray-100 shadow-none'}
             >
               Yearly
             </Button>
@@ -107,7 +104,7 @@ const PricingTable = ({
           </Select>
         </div>
 
-        <Container>
+        <Container className="relative z-1">
           <div className={`grid grid-cols-1 lg:grid-cols-3 gap-0`}>
             {plans.map((plan) => (
               <Plan
@@ -141,9 +138,7 @@ function getDefaultCurrency(): Currency {
 
   currencyConfigs.forEach((config) => {
     try {
-      const timezone = Intl.DateTimeFormat()
-        .resolvedOptions()
-        .timeZone.toLowerCase();
+      const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone.toLowerCase();
 
       config.search.forEach((search) => {
         if (timezone.includes(search)) {
