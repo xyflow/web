@@ -1,6 +1,7 @@
 import { FC, ReactNode } from 'react';
 import { redirect } from 'next/navigation';
 import { getNhost } from '@/utils/nhost';
+// Should use `nextra-theme-docs` without `APIDocs` component import which use ts-morph
 import { useMDXComponents as getMdxComponents } from 'nextra-theme-docs';
 
 // Use Nextra theme docs layout with the sidebar
