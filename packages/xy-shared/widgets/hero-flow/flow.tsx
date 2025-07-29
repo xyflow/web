@@ -12,6 +12,7 @@ import {
   useStore,
   ReactFlowState,
   getNodesBounds,
+  useNodesInitialized,
 } from '@xyflow/react';
 
 import HeroNode from './hero-node';
@@ -149,26 +150,23 @@ function Flow({ className, initialColor }: FlowProps) {
     const viewportX = mobileView
       ? width / 2 - flowWidth / 2
       : width - flowWidth - (width - navWidth) / 2;
-    const viewportY = mobileView
-      ? height - flowHeight - 20
-      : height / 2 - flowHeight / 2;
+    const viewportY = mobileView ? height - flowHeight - 20 : height / 2 - flowHeight / 2;
 
     setViewport({ x: viewportX, y: viewportY, zoom });
   }, [setViewport, getNodes, store]);
 
   const onInit = useCallback(() => {
     adjustViewport();
-    setNodes((nds) =>
-      nds.map((n) => ({ ...n, style: { ...n.style, opacity: 1 } })),
-    );
-    setEdges((eds) =>
-      eds.map((e) => ({ ...e, style: { ...e.style, opacity: 1 } })),
-    );
+    setNodes((nds) => nds.map((n) => ({ ...n, style: { ...n.style, opacity: 1 } })));
+    setEdges((eds) => eds.map((e) => ({ ...e, style: { ...e.style, opacity: 1 } })));
   }, [setViewport, getNodes, store]);
 
+  // Retrigger viewport adjustment when nodes are initialized
+  // Fixes: https://github.com/xyflow/web/issues/844
+  const nodesInitialized = useNodesInitialized();
   useEffect(() => {
     adjustViewport();
-  }, [viewportWidth]);
+  }, [viewportWidth, nodesInitialized]);
 
   return (
     <div className="w-full h-full bg-gradient bg-no-repeat bg-[center_120px] lg:bg-[65%_center] lg:bg-[length:35%]">
