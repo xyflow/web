@@ -39,3 +39,12 @@ export type SubscriptionPlan = {
   buttonLabel?: string;
   isLoading?: boolean;
 };
+export type OnSelectCurrenty = ({
+  plan,
+  currency,
+  billingInterval,
+}: {
+  plan: PlanId;
+  currency?: Currency;
+  billingInterval: BillingInterval;
+}) => void;
