@@ -5,6 +5,13 @@ body {
   margin: 0;
   font-family: sans-serif;
   box-sizing: border-box;
+  /* Prevent text selection during drag on touch devices */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 #app {
@@ -40,6 +47,13 @@ body {
   justify-content: center;
   align-items: center;
   cursor: grab;
+  /* Improve touch experience */
+  touch-action: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.dndflow .dndnode:active {
+  cursor: grabbing;
 }
 
 .dndflow .dndnode.input {
