@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from 'react';
+import React, { useRef, useCallback, useState, useEffect } from 'react';
 import {
   ReactFlow,
   ReactFlowProvider,
@@ -32,8 +32,8 @@ const DnDFlow = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   const { screenToFlowPosition } = useReactFlow();
-  const [type] = useDnD();
-
+  const [type, setType, isDragging, setIsDragging, dragPosition, setDragPosition] = useDnD();
+  
   const onConnect = useCallback((params) => setEdges((eds) => addEdge(params, eds)), []);
 
   const onDragOver = useCallback((event) => {
@@ -65,15 +65,59 @@ const DnDFlow = () => {
       };
 
       setNodes((nds) => nds.concat(newNode));
+      console.log('type', type);
     },
     [screenToFlowPosition, type],
   );
 
-  const onDragStart = (event, nodeType) => {
-    setType(nodeType);
-    event.dataTransfer.setData('text/plain', nodeType);
-    event.dataTransfer.effectAllowed = 'move';
-  };
+
+  const onTouchMove = useCallback((event) => {
+    if (!isDragging) return;
+    event.preventDefault();
+    
+    const touch = event.touches[0];
+    setDragPosition({ x: touch.clientX, y: touch.clientY });
+  }, [isDragging]);
+
+  const onTouchEnd = useCallback((event) => {
+    if (!isDragging || !type) {
+      setIsDragging(false);
+      return;
+    }
+
+    event.preventDefault();
+    
+    const touch = event.changedTouches[0];
+    const position = screenToFlowPosition({
+      x: touch.clientX,
+      y: touch.clientY,
+    });
+    
+    const newNode = {
+      id: getId(),
+      type,
+      position,
+      data: { label: `${type} node` },
+    };
+
+    setNodes((nds) => nds.concat(newNode));
+    setIsDragging(false);
+    setType(null);
+  }, [isDragging, type, screenToFlowPosition, setNodes, setType]);
+
+  // Add global touch event listeners
+  // This is needed to keep track of the position of the touch event.
+  useEffect(() => {
+    if (isDragging) {
+      document.addEventListener('touchmove', onTouchMove, { passive: false });
+      document.addEventListener('touchend', onTouchEnd, { passive: false });
+      
+      return () => {
+        document.removeEventListener('touchmove', onTouchMove);
+        document.removeEventListener('touchend', onTouchEnd);
+      };
+    }
+  }, [isDragging, onTouchMove, onTouchEnd]);
 
   return (
     <div className="dndflow">
@@ -85,7 +129,6 @@ const DnDFlow = () => {
           onEdgesChange={onEdgesChange}
           onConnect={onConnect}
           onDrop={onDrop}
-          onDragStart={onDragStart}
           onDragOver={onDragOver}
           fitView
         >
@@ -94,6 +137,23 @@ const DnDFlow = () => {
         </ReactFlow>
       </div>
       <Sidebar />
+      
+      {/* Touch drag indicator */}
+      {isDragging  && (
+        <div
+          className={`dndnode ${type}`}
+          style={{
+            position: 'fixed',
+            left: dragPosition.x - 25,
+            top: dragPosition.y - 25,
+            pointerEvents: 'none',
+            zIndex: 1000,
+            fontSize: '12px',
+          }}
+        >
+          {`${type.charAt(0).toUpperCase() + type.slice(1)} Node`}
+        </div>
+      )}
     </div>
   );
 };
