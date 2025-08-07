@@ -1,0 +1,827 @@
+[
+  {
+    "title": "Ameliorate",
+    "tags": [],
+    "description": "A flowchart builder to solve problems efficiently.",
+    "url": "https://ameliorate.app/playground",
+    "email": "christopher@xyflow.com",
+    "library": "React Flow",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/Screenshot_2025-01-28_at_16.24.09.png",
+    "repoUrl": "https://github.com/amelioro/ameliorate",
+    "status": "published",
+    "commercial": "No",
+    "createdAt": "January 28, 2025 4:25 PM",
+    "openSource": "Yes",
+    "priority": 1
+  },
+  {
+    "title": "Agentok",
+    "description": "Visual tools for multi-agent development built on Microsoft’s AutoGen framework",
+    "url": "https://agentok.ai/",
+    "library": "React Flow",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/agentok_smaller_comp.png",
+    "repoUrl": "https://github.com/dustland/agentok",
+    "status": "published",
+    "commercial": "No",
+    "tags": [
+      "AI",
+      "Workflow Automation"
+    ],
+    "createdAt": "January 14, 2025 8:49 PM",
+    "openSource": "Yes",
+    "priority": 1
+  },
+  {
+    "title": "AppBlocks",
+    "description": "Drag and Drop Node Based Editor to Design Firmware for IoT Devices",
+    "url": "https://appblocks.io",
+    "library": "React Flow",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/appblocks1.png",
+    "demoUrl": "https://app.appblocks.io/",
+    "status": "published",
+    "commercial": "No",
+    "tags": [
+      "Workflow Automation"
+    ],
+    "createdAt": "January 14, 2025 8:49 PM",
+    "openSource": "No",
+    "priority": 2
+  },
+  {
+    "title": "Arroyo",
+    "description": "Distributed stream processing engine written in Rust",
+    "url": "https://arroyo.dev/",
+    "library": "React Flow",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/arroyo-showcase.png",
+    "repoUrl": "https://github.com/ArroyoSystems/arroyo",
+    "status": "published",
+    "commercial": "Yes",
+    "tags": [
+      "Developer Tool"
+    ],
+    "createdAt": "January 14, 2025 8:49 PM",
+    "openSource": "Yes",
+    "priority": 1
+  },
+  {
+    "title": "Attio",
+    "description": "Build out workflows to automate common actions across CRM processes",
+    "url": "https://attio.com/product/automations",
+    "library": "React Flow",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/281424696-2c728195-64c8-426c-9b2d-f74aecef6494.png",
+    "status": "published",
+    "commercial": "Yes",
+    "tags": [
+      "Workflow Automation"
+    ],
+    "createdAt": "January 14, 2025 8:49 PM",
+    "openSource": "No",
+    "priority": 5
+  },
+  {
+    "title": "Bit Cloud",
+    "description": "Visualizer for component dependencies and hierarchies",
+    "url": "https://bit.cloud/products/graph",
+    "library": "React Flow",
+    "demoUrl": "https://bit.cloud/bitdev/vue/~graph?depTypes=dev,runtime,peer",
+    "status": "published",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/Bit-Cloud.png",
+    "commercial": "Yes",
+    "tags": [
+      "Developer Tool"
+    ],
+    "createdAt": "January 14, 2025 8:49 PM",
+    "openSource": "No",
+    "priority": 1
+  },
+  {
+    "title": "Chainner",
+    "description": "Node-based UI for chaining image processing workflows powered by neural networks",
+    "url": "https://chainner.app/",
+    "library": "React Flow",
+    "repoUrl": "https://github.com/chaiNNer-org/chaiNNer",
+    "status": "published",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/Chainner.png",
+    "commercial": "No",
+    "tags": [
+      "Image Processing"
+    ],
+    "createdAt": "January 14, 2025 8:49 PM",
+    "openSource": "Yes",
+    "priority": 3
+  },
+  {
+    "title": "ChartDB",
+    "description": "Open-source database diagrams editor, visualize and design your DB with a single query.",
+    "url": "https://chartdb.io",
+    "library": "React Flow",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/361218065-97bce1a1-d212-4688-a97d-e4798b6cfd9b.jpg",
+    "demoUrl": "https://app.chartdb.io",
+    "repoUrl": "https://github.com/chartdb/chartdb",
+    "status": "published",
+    "commercial": "No",
+    "tags": [
+      "AI"
+    ],
+    "createdAt": "January 14, 2025 8:49 PM",
+    "openSource": "Yes",
+    "priority": 3
+  },
+  {
+    "title": "DBDraw",
+    "description": "A developer tool designed for backend developers to visualize database schemas and seamlessly export or sync them with their projects.",
+    "url": "https://dbdraw.vercel.app/",
+    "email": "mrudulkolambe02@gmail.com",
+    "library": "React Flow",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/Screenshot_2025-03-15_141343.png",
+    "demoUrl": "https://dbdraw.vercel.app/diagram/67cd79619257303d2b4022ab",
+    "repoUrl": "https://github.com/mrudulkolambe/dbdraw",
+    "status": "published",
+    "commercial": "No",
+    "tags": [
+      "Developer Tool"
+    ],
+    "createdAt": "March 15, 2025 9:47 AM",
+    "openSource": "Yes",
+    "priority": 2
+  },
+  {
+    "title": "Dify",
+    "description": "An open-source LLM app development platform",
+    "url": "https://dify.ai/",
+    "library": "React Flow",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/dify-1.png",
+    "repoUrl": "https://github.com/langgenius/dify",
+    "status": "published",
+    "commercial": "No",
+    "tags": [
+      "AI",
+      "Workflow Automation"
+    ],
+    "createdAt": "January 14, 2025 8:49 PM",
+    "openSource": "No",
+    "priority": 1
+  },
+  {
+    "title": "Docugram",
+    "description": "App that transforms documents into dynamic flow charts.",
+    "url": "https://docugram.app/",
+    "library": "React Flow",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/Screenshot_2024-06-10_at_12.35.04.png",
+    "status": "published",
+    "commercial": "Yes",
+    "tags": [
+      "AI"
+    ],
+    "createdAt": "January 14, 2025 8:49 PM",
+    "internalComment": "Tone Row guy!",
+    "openSource": "No",
+    "priority": 1
+  },
+  {
+    "title": "Domino",
+    "description": "Open source platform for creating and monitoring advanced workflows.",
+    "url": "https://domino-workflows.io/",
+    "library": "React Flow",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/domino_1.png",
+    "repoUrl": "https://github.com/Tauffer-Consulting/domino",
+    "status": "published",
+    "commercial": "No",
+    "tags": [
+      "Workflow Automation"
+    ],
+    "createdAt": "January 14, 2025 8:49 PM",
+    "openSource": "Yes",
+    "priority": 2
+  },
+  {
+    "title": "Flojoy",
+    "description": "No CodePython Programming for Test, Measurement, & Control",
+    "url": "https://www.flojoy.ai/",
+    "library": "React Flow",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/flojoy.jpeg",
+    "repoUrl": "https://github.com/flojoy-ai/",
+    "status": "published",
+    "commercial": "No",
+    "tags": [
+      "Developer Tool"
+    ],
+    "createdAt": "January 14, 2025 8:49 PM",
+    "openSource": "Yes",
+    "priority": 2
+  },
+  {
+    "title": "FlowiseAI",
+    "description": "Drag & drop UI to build customized LLM flows",
+    "url": "https://flowiseai.com/",
+    "library": "React Flow",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/Flowwiseai_2.png",
+    "repoUrl": "https://github.com/FlowiseAI/Flowise",
+    "status": "published",
+    "commercial": "No",
+    "tags": [
+      "AI"
+    ],
+    "createdAt": "January 14, 2025 8:49 PM",
+    "openSource": "Yes",
+    "priority": 3
+  },
+  {
+    "title": "Geoplex",
+    "description": "Tool for creating automated workflows for geo data processing tasks",
+    "url": "https://www.geoplex.de/",
+    "library": "React Flow",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/geoplex.jpg",
+    "demoUrl": "https://www.geoplex.de/plexmap/switchboard/",
+    "status": "published",
+    "commercial": "Yes",
+    "tags": [
+      "Workflow Automation"
+    ],
+    "createdAt": "January 14, 2025 8:49 PM",
+    "openSource": "No",
+    "priority": 3
+  },
+  {
+    "title": "Graphologue",
+    "description": "Convert text-based responses from LLMs into graphical diagrams in real time",
+    "url": "https://github.com/ucsd-creativitylab/graphologue",
+    "library": "React Flow",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/344435954-67dfb520-47e8-4a15-9dd8-6ff01a78eb9c_copy.png",
+    "demoUrl": "https://graphologue.app",
+    "status": "published",
+    "commercial": "No",
+    "tags": [
+      "AI"
+    ],
+    "createdAt": "January 14, 2025 8:49 PM",
+    "openSource": "Yes",
+    "priority": 1
+  },
+  {
+    "title": "Heuristica",
+    "description": "AI-powered mind maps and concept maps for visual learning, thinking and research.",
+    "url": "https://www.heuristi.ca/",
+    "library": "React Flow",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/348778857-265dfda4-8ea2-4e1e-9f53-102428d3ccd9.png",
+    "demoUrl": "https://www.heuristi.ca/discover/48204e35-3a6e-4dcb-99ed-1fb91e45eb37",
+    "status": "published",
+    "commercial": "Yes",
+    "tags": [
+      "AI"
+    ],
+    "createdAt": "January 14, 2025 8:49 PM",
+    "openSource": "No",
+    "priority": 2
+  },
+  {
+    "title": "LangFlow",
+    "description": "Build apps with a drag and drop user interface powered by LangChain",
+    "url": "https://www.langflow.org/",
+    "library": "React Flow",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/langflow-showcase.jpeg",
+    "demoUrl": "https://github.com/logspace-ai/langflow",
+    "status": "published",
+    "commercial": "Yes",
+    "tags": [
+      "AI",
+      "Workflow Automation"
+    ],
+    "createdAt": "January 14, 2025 8:49 PM",
+    "openSource": "Yes",
+    "priority": 4
+  },
+  {
+    "title": "Liam ERD",
+    "description": "App for generating ER diagrams from a database.",
+    "url": "https://liambx.com/",
+    "email": "support@liambx.com",
+    "library": "React Flow",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/Screenshot_2025-01-29_at_10.05.49.png",
+    "demoUrl": "https://liambx.com/erd/p/raw.githubusercontent.com/liam-hq/liam/b7b9228de8840eb4ac3ca8342ebbda6d611d7ae5/frontend/packages/db-structure/src/parser/schemarb/input/schema1.in.rb?showMode=ALL_FIELDS&active=users",
+    "repoUrl": "https://github.com/liam-hq/liam",
+    "status": "published",
+    "commercial": "No",
+    "tags": [
+      "Developer Tool"
+    ],
+    "createdAt": "January 29, 2025 10:07 AM",
+    "openSource": "Yes",
+    "priority": 1
+  },
+  {
+    "title": "OneSignal",
+    "description": "OneSignal Journeys is a visual no-code workflow builder to automate messaging",
+    "url": "https://onesignal.com/journeys",
+    "library": "React Flow",
+    "demoUrl": "https://youtu.be/Jswyz80p2WI?t=1342",
+    "status": "published",
+    "commercial": "Yes",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/OneSignal.png",
+    "tags": [
+      "Workflow Automation"
+    ],
+    "createdAt": "January 14, 2025 8:49 PM",
+    "openSource": "No",
+    "priority": 5
+  },
+  {
+    "title": "Open Metadata",
+    "description": "Platform for metadata ingestion, exploration, and collaboration",
+    "url": "https://open-metadata.org/",
+    "library": "React Flow",
+    "repoUrl": "https://github.com/open-metadata/OpenMetadata",
+    "status": "published",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/Open-Metadata.jpg",
+    "commercial": "No",
+    "tags": [
+      "Developer Tool"
+    ],
+    "createdAt": "January 14, 2025 8:49 PM",
+    "openSource": "Yes",
+    "priority": 3
+  },
+  {
+    "title": "Primer",
+    "description": "No-code workflow builder for payment and commerce automation",
+    "url": "https://primer.io",
+    "library": "React Flow",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/primer.png",
+    "demoUrl": "https://primer.io/docs/automation",
+    "status": "published",
+    "commercial": "Yes",
+    "tags": [
+      "Workflow Automation"
+    ],
+    "createdAt": "January 14, 2025 8:49 PM",
+    "openSource": "No",
+    "priority": 4
+  },
+  {
+    "title": "Prismaliser",
+    "description": "Database schema visualiser for Prisma",
+    "url": "https://prismaliser.app/",
+    "library": "React Flow",
+    "repoUrl": "https://github.com/Ovyerus/prismaliser",
+    "status": "published",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/Prismaliser.png",
+    "commercial": "No",
+    "tags": [
+      "Developer Tool"
+    ],
+    "createdAt": "January 14, 2025 8:49 PM",
+    "openSource": "Yes",
+    "priority": 1
+  },
+  {
+    "title": "Repree",
+    "description": "A React flow based tool that visualizes relationships between files in codebases.",
+    "url": "https://www.repree.net",
+    "email": "mitategengaku@gmail.com",
+    "library": "React Flow",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/c4553152f3546681ad364d8d2a52496f.png",
+    "repoUrl": "https://github.com/mitate-gengaku/Repree",
+    "status": "published",
+    "commercial": "No",
+    "tags": [
+      "Developer Tool"
+    ],
+    "createdAt": "April 4, 2025 11:32 AM",
+    "comment": "Compared to the products on display in the showcase, it may look inferior, but I would appreciate your reconsideration.",
+    "openSource": "Yes",
+    "priority": 1
+  },
+  {
+    "title": "Retool",
+    "description": "Interactive workflow builder to connect all your data from APIs, Services and Databases",
+    "url": "https://retool.com/products/workflows",
+    "library": "React Flow",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/retool-showcase_2.png",
+    "status": "published",
+    "commercial": "Yes",
+    "tags": [
+      "Developer Tool",
+      "Workflow Automation"
+    ],
+    "createdAt": "January 14, 2025 8:49 PM",
+    "openSource": "No",
+    "priority": 3
+  },
+  {
+    "title": "Shaderfrog",
+    "description": "An engine-agnostic no-code shader editor and composer",
+    "url": "https://shaderfrog.com/2",
+    "library": "React Flow",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/shaderfrog-20-3_copy.png",
+    "demoUrl": "https://shaderfrog.com/2/editor/create/three",
+    "repoUrl": "https://github.com/ShaderFrog",
+    "status": "published",
+    "commercial": "No",
+    "tags": [
+      "Image Processing"
+    ],
+    "createdAt": "January 14, 2025 8:49 PM",
+    "openSource": "Yes",
+    "priority": 2
+  },
+  {
+    "title": "Sim Studio",
+    "description": "An open source platform to build AI agents.",
+    "url": "www.simstudio.ai",
+    "email": "emir@simstudio.ai",
+    "library": "React Flow",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/Screenshot_2025-06-19_at_4.25.59_PM.png",
+    "repoUrl": "https://github.com/simstudioai/sim",
+    "status": "published",
+    "commercial": "Yes",
+    "tags": [
+      "AI",
+      "Developer Tool",
+      "Workflow Automation"
+    ],
+    "createdAt": "June 20, 2025 1:26 AM",
+    "openSource": "Yes"
+  },
+  {
+    "title": "Stack",
+    "description": "Tool for integrating AI with data sources and build AI based automations.",
+    "url": "https://stack.ai",
+    "library": "React Flow",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/347048931-0fa8c818-88c7-41f4-bc51-466778bd8430.jpg",
+    "status": "published",
+    "commercial": "Yes",
+    "tags": [
+      "AI",
+      "Workflow Automation"
+    ],
+    "createdAt": "January 14, 2025 8:49 PM",
+    "openSource": "No",
+    "priority": 4
+  },
+  {
+    "title": "Strelka UI",
+    "description": "File analysis interface for Strelka to upload and review file details, highlights, and metadata.",
+    "url": "https://github.com/target/strelka-ui",
+    "library": "React Flow",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/strelka-1.png",
+    "status": "published",
+    "commercial": "No",
+    "tags": [
+      "Developer Tool"
+    ],
+    "createdAt": "January 14, 2025 8:49 PM",
+    "openSource": "No",
+    "priority": 1
+  },
+  {
+    "title": "TSDiagram",
+    "description": "Create relational diagrams of Typescript objects",
+    "url": "http://tsdiagram.com",
+    "library": "React Flow",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/Screen_Shot_2023-12-18_at_11.57.41.png",
+    "repoUrl": "https://github.com/3rd/tsdiagram",
+    "status": "published",
+    "commercial": "No",
+    "tags": [
+      "Developer Tool"
+    ],
+    "createdAt": "January 14, 2025 8:49 PM",
+    "openSource": "Yes",
+    "priority": 1
+  },
+  {
+    "title": "Taktile",
+    "description": "Build, run, and evaluate automated decision flows and risk models",
+    "url": "https://www.taktile.com/",
+    "library": "React Flow",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/taktile.png",
+    "status": "published",
+    "commercial": "Yes",
+    "tags": [
+      "Workflow Automation"
+    ],
+    "createdAt": "January 14, 2025 8:49 PM",
+    "openSource": "No",
+    "priority": 4
+  },
+  {
+    "title": "Tersa",
+    "description": "Tersa is an open source canvas for building AI workflows powered by various industry-leading AI models.",
+    "url": "https://www.tersa.ai/",
+    "email": "hello@haydenbleasel.com",
+    "library": "React Flow",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/Frame_53.png",
+    "demoUrl": "https://www.tersa.ai/",
+    "repoUrl": "https://github.com/haydenbleasel/tersa",
+    "status": "published",
+    "commercial": "Yes",
+    "tags": [
+      "AI",
+      "Audio",
+      "Developer Tool",
+      "Image Processing",
+      "Workflow Automation"
+    ],
+    "createdAt": "May 16, 2025 6:20 PM",
+    "openSource": "Yes"
+  },
+  {
+    "title": "ToolJet",
+    "description": "Open source platform to create AI-powered business apps and automations",
+    "url": "ToolJet.com",
+    "email": "hiral@tooljet.com",
+    "library": "React Flow",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/event-notification-execution.png",
+    "repoUrl": "https://github.com/ToolJet/ToolJet",
+    "status": "published",
+    "commercial": "Yes",
+    "tags": [
+      "Workflow Automation"
+    ],
+    "createdAt": "January 27, 2025 1:33 PM",
+    "openSource": "Yes",
+    "priority": 1
+  },
+  {
+    "title": "Typeform",
+    "description": "Interactive tool to build and visualize complex survey logic",
+    "url": "https://www.typeform.com/",
+    "library": "React Flow",
+    "demoUrl": "https://www.typeform.com/help/a/use-the-logic-map-to-add-logic-to-your-typeforms-5514792640916/",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/Typeform.png",
+    "status": "published",
+    "commercial": "Yes",
+    "tags": [
+      "Workflow Automation"
+    ],
+    "createdAt": "January 14, 2025 8:49 PM",
+    "openSource": "No",
+    "priority": 5
+  },
+  {
+    "title": "Unify",
+    "description": "Tool for building workflows to power GTM outbound sales strategies.",
+    "url": "https://www.unifygtm.com/plays",
+    "library": "React Flow",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/unify.png",
+    "status": "published",
+    "commercial": "Yes",
+    "tags": [
+      "Workflow Automation"
+    ],
+    "createdAt": "January 14, 2025 8:49 PM",
+    "openSource": "No",
+    "priority": 4
+  },
+  {
+    "title": "Vestige",
+    "description": "A generative music synthesizer, inspired by analog modular synthesizers",
+    "url": "https://vestige.ascpixi.dev",
+    "library": "React Flow",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/397175430-34839968-35a1-4d83-bc7a-222b2daf5b7a.png",
+    "repoUrl": "https://github.com/ascpixi/vestige",
+    "status": "published",
+    "commercial": "No",
+    "tags": [
+      "Audio"
+    ],
+    "createdAt": "January 28, 2025 4:09 PM",
+    "openSource": "Yes",
+    "priority": 3
+  },
+  {
+    "title": "Vislabs Workflow",
+    "description": "White-label workflow builder template for custom development",
+    "url": "https://workflow.vislabs.ai/",
+    "library": "React Flow",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/vislabsworkflow_1.png",
+    "status": "published",
+    "commercial": "Yes",
+    "tags": [
+      "Workflow Automation"
+    ],
+    "createdAt": "January 14, 2025 8:49 PM",
+    "openSource": "No",
+    "priority": 1
+  },
+  {
+    "title": "VisualFlow",
+    "description": "A ReactFlow based application for visually designing and generating GitHub Actions workflows",
+    "url": "https://visualflow.net",
+    "email": "mitategengaku@gmail.com",
+    "library": "React Flow",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/preview.png",
+    "repoUrl": "https://github.com/mitate-gengaku/VisualFlow",
+    "status": "published",
+    "commercial": "No",
+    "tags": [
+      "Developer Tool"
+    ],
+    "createdAt": "February 15, 2025 2:21 AM",
+    "openSource": "Yes"
+  },
+  {
+    "title": "Waldiez",
+    "description": "Waldiez allows users to design, orchestrate, and execute complex workflows by integrating various AI models and tools.",
+    "url": "https://waldiez.io",
+    "email": "admin@waldiez.io",
+    "library": "React Flow",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/chrome_screenshot_waldiez.github.io.png",
+    "demoUrl": "https://waldiez.github.io",
+    "repoUrl": "https://github.com/waldiez/waldiez",
+    "status": "published",
+    "commercial": "No",
+    "tags": [
+      "AI",
+      "Workflow Automation"
+    ],
+    "createdAt": "April 2, 2025 6:38 PM",
+    "comment": "the repo url ( https://github.com/waldiez/waldiez ) is for the whole project, the part (submodule) that uses React flow is on \"https://github.com/waldiez/react\"",
+    "openSource": "Yes",
+    "priority": 1
+  },
+  {
+    "title": "simple-ai",
+    "description": "An open-source library of AI-focused UI components, app blocks, and React Flow workflows designed to accelerate development.",
+    "url": "https://www.simple-ai.dev/docs/react-flow/components/editable-handle",
+    "library": "React Flow",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/Screenshot_2025-02-03_at_11.59.51.png",
+    "repoUrl": "https://github.com/Alwurts/simple-ai",
+    "status": "published",
+    "commercial": "No",
+    "tags": [
+      "Developer Tool"
+    ],
+    "createdAt": "February 3, 2025 11:57 AM",
+    "openSource": "Yes",
+    "priority": 4
+  },
+  {
+    "title": "Cascade",
+    "tags": [],
+    "description": "No-code data transformation toolkit for translating data into tables, charts or interactive apps",
+    "url": "https://www.cascade.io/product",
+    "library": "React Flow",
+    "status": "published",
+    "commercial": "Yes",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/Cascade.jpeg",
+    "createdAt": "January 14, 2025 8:49 PM",
+    "openSource": "No",
+    "priority": 1
+  },
+  {
+    "title": "CircuLearn",
+    "tags": [],
+    "description": "An interactive simulator designed to teach and demonstrate fundamental concepts in logic circuits.",
+    "url": "https://circulearn.software/simulator",
+    "email": "christopher@xyflow.com",
+    "library": "React Flow",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/383262871-0b66c71c-a2ce-411d-8c6e-9d138caccdc5.png",
+    "repoUrl": "https://github.com/amin0075/CircuLearn",
+    "status": "published",
+    "commercial": "No",
+    "createdAt": "January 28, 2025 4:18 PM",
+    "openSource": "Yes",
+    "priority": 1
+  },
+  {
+    "title": "Controller Lab",
+    "tags": [],
+    "description": "Drag-and-drop tool for remapping input devices",
+    "url": "https://controllerlab.io/",
+    "library": "React Flow",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/showcase-controllerlab3.png",
+    "status": "published",
+    "commercial": "Yes",
+    "createdAt": "January 14, 2025 8:49 PM",
+    "openSource": "No",
+    "priority": 2
+  },
+  {
+    "title": "Datablocks",
+    "tags": [],
+    "description": "Editor for exploring, analyzing and transforming data. Built by the creators of React Flow.",
+    "url": "https://datablocks.pro",
+    "library": "React Flow",
+    "demoUrl": "https://editor.datablocks.pro/demo",
+    "status": "published",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/Datablocks.jpeg",
+    "commercial": "Yes",
+    "createdAt": "January 14, 2025 8:49 PM",
+    "openSource": "No",
+    "priority": 1
+  },
+  {
+    "title": "Flyff Skill Simulator",
+    "tags": [],
+    "description": "A simulator for planning, experimenting and visualizing skills built in the Flyff Universe server",
+    "url": "https://flyffskillsimulator.vercel.app",
+    "email": "guy.suvijak@hotmail.com",
+    "library": "React Flow",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/flyff-skill-simulator.png",
+    "repoUrl": "https://github.com/guysuvijak/flyff-skill-simulator",
+    "status": "published",
+    "commercial": "No",
+    "createdAt": "January 31, 2025 4:41 AM",
+    "comment": "Future Plans Add equipment simulator system, Multi-language support, Community features (build sharing and voting), Dark mode implementation, Build export to image feature",
+    "openSource": "Yes"
+  },
+  {
+    "title": "Ideation Studio",
+    "tags": [],
+    "description": "Inspiration board where users can add media and text to a canvas",
+    "url": "https://ideation-studio.dev/",
+    "library": "React Flow",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/studio_copy_3.jpg",
+    "repoUrl": "https://github.com/afyqzarof/studio-client",
+    "status": "published",
+    "commercial": "No",
+    "createdAt": "January 14, 2025 8:49 PM",
+    "openSource": "Yes",
+    "priority": 1
+  },
+  {
+    "title": "JSON Sea",
+    "tags": [],
+    "description": "Import JSON files to visualize their data structure in a React Flow graph",
+    "url": "https://www.jsonsea.com/",
+    "library": "React Flow",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/287880655-1f3bf71c-0872-4df4-b08e-6633ea7696a0.jpeg",
+    "repoUrl": "https://github.com/altenull/json-sea",
+    "status": "published",
+    "commercial": "No",
+    "createdAt": "January 14, 2025 8:49 PM",
+    "openSource": "Yes",
+    "priority": 3
+  },
+  {
+    "title": "OTelBin",
+    "tags": [],
+    "description": "Web-based tool to facilitate OpenTelemetry collector configuration editing and verification",
+    "url": "https://www.otelbin.io/",
+    "library": "React Flow",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/286946552-301884e2-b5c2-42d9-910d-9a831ef94ec0.jpeg",
+    "repoUrl": "https://github.com/dash0hq/otelbin",
+    "status": "published",
+    "commercial": "No",
+    "createdAt": "January 14, 2025 8:49 PM",
+    "openSource": "Yes",
+    "priority": 1
+  },
+  {
+    "title": "Stripe",
+    "tags": [],
+    "description": "Stripe uses React Flow to enhance their documentation with Flowcharts",
+    "url": "https://stripe.com/docs",
+    "library": "React Flow",
+    "demoUrl": "https://stripe.com/docs/payments/checkout/how-checkout-works#lifecycle",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/Stripe.png",
+    "status": "published",
+    "commercial": "Yes",
+    "createdAt": "January 14, 2025 8:49 PM",
+    "openSource": "No",
+    "priority": 5
+  },
+  {
+    "title": "Supabase",
+    "tags": [],
+    "description": "Visualizes PostgreSQL table relations",
+    "url": "https://supabase.com/blog/supabase-studio-3-0#schema-visualizer",
+    "library": "React Flow",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/schema-visualizer.jpeg",
+    "repoUrl": "https://github.com/supabase/supabase/blob/master/apps/studio/components/interfaces/ProjectCreation/SchemaFlow.tsx",
+    "status": "published",
+    "commercial": "No",
+    "createdAt": "January 14, 2025 8:49 PM",
+    "openSource": "Yes",
+    "priority": 3
+  },
+  {
+    "title": "Traverse",
+    "tags": [],
+    "description": "Learning tool with Mindmaps, note-taking, and spaced repetition flashcards",
+    "url": "https://traverse.link/",
+    "library": "React Flow",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/traverse-showcase.png",
+    "demoUrl": "https://traverse.link/MYBzOakQCKeJaU6WhUasvmHDyLy2/9mye5rswz6gpoe6kgyb2yffn/?showMap=1",
+    "status": "published",
+    "commercial": "Yes",
+    "createdAt": "January 14, 2025 8:49 PM",
+    "openSource": "No",
+    "priority": 1
+  },
+  {
+    "title": "VisualFlows",
+    "tags": [],
+    "description": "Interactive whiteboard and flowchart designer for sitemaps",
+    "url": "https://VisualFlows.io",
+    "library": "React Flow",
+    "image": "https://f20vdoobtdxrjemr.public.blob.vercel-storage.com/github-showcases/visualflowsio_copy.jpeg",
+    "demoUrl": "https://app.visualsitemaps.com/user_flows/share/4776e484-6077-4b63-af39-a1fa20d52f0e?s=eyJ6b29tIjowLjg0MTY3NzcxNDE1Njc3MDgsInBvc2l0aW9uIjpbMjgxLjQ4ODI3MzE4NTE3OTc2LDE5MS4zMDI4MjM0NTY0MDcwOF19",
+    "status": "published",
+    "commercial": "Yes",
+    "createdAt": "January 14, 2025 8:49 PM",
+    "openSource": "No",
+    "priority": 1
+  }
+]
