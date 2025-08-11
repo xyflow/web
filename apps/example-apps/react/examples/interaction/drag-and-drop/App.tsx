@@ -13,7 +13,7 @@ import { useCallback } from 'react';
 import '@xyflow/react/dist/style.css';
 
 import Sidebar from './Sidebar';
-import { DnDProvider, DragGhost, useDnD } from './useDnD';
+import { DnDProvider, DragGhost } from './useDnD';
 
 const initialNodes = [
   {

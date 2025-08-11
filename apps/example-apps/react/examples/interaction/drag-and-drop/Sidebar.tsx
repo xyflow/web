@@ -1,8 +1,7 @@
-import React from 'react';
 import { useDnD } from './useDnD';
 
 export default () => {
-  const { onPointerDown } = useDnD();
+  const { startDragging } = useDnD();
 
   return (
     <aside>
@@ -11,16 +10,16 @@ export default () => {
       </div>
       <div
         className="dndnode input"
-        onPointerDown={(event) => onPointerDown(event, 'input')}
+        onPointerDown={(event) => startDragging(event, 'input')}
       >
         Input Node
       </div>
-      <div className="dndnode" onPointerDown={(event) => onPointerDown(event, 'default')}>
+      <div className="dndnode" onPointerDown={(event) => startDragging(event, 'default')}>
         Default Node
       </div>
       <div
         className="dndnode output"
-        onPointerDown={(event) => onPointerDown(event, 'output')}
+        onPointerDown={(event) => startDragging(event, 'output')}
       >
         Output Node
       </div>

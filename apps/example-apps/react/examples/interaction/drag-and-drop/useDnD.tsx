@@ -2,32 +2,34 @@ import { useReactFlow } from '@xyflow/react';
 import { createContext, useContext, useState, useCallback, useEffect } from 'react';
 
 interface DnDContextType {
+  // The type of the node that is being dragged.
   type: string | null;
   setType: (type: string | null) => void;
-  isDragging: boolean;
-  setIsDragging: (isDragging: boolean) => void;
-  dragPosition: { x: number; y: number };
-  setDragPosition: (dragPosition: { x: number; y: number }) => void;
+  // The position of the dragged node.
+  dragPosition?: { x: number; y: number };
+  setDragPosition: (dragPosition?: { x: number; y: number }) => void;
 }
 
 const DnDContext = createContext<DnDContextType>({
   type: null,
   setType: () => {},
-  isDragging: false,
-  setIsDragging: () => {},
-  dragPosition: { x: 0, y: 0 },
+  dragPosition: undefined,
   setDragPosition: () => {},
 });
 
+// The DnDProvider is used to provide the context for the DnD functionality.
+// This allows you to wrap your `ReactFlow` component instance in the `DnDProvider`,
+// so you do not need to register any callback in `App.tsx`.
+// You can just use the `useDnD` hook in your components that need to start dragging a new node into the flow.
+// In our case, it will be the `Sidebar` component.
 export const DnDProvider = ({ children }: { children: React.ReactNode }) => {
   const [type, setType] = useState<string | null>(null);
-  const [isDragging, setIsDragging] = useState(false);
-  const [dragPosition, setDragPosition] = useState({ x: 0, y: 0 });
+  const [dragPosition, setDragPosition] = useState<{ x: number; y: number } | undefined>(
+    undefined,
+  );
 
   return (
-    <DnDContext.Provider
-      value={{ type, setType, isDragging, setIsDragging, dragPosition, setDragPosition }}
-    >
+    <DnDContext.Provider value={{ type, setType, dragPosition, setDragPosition }}>
       {children}
     </DnDContext.Provider>
   );
@@ -35,14 +37,15 @@ export const DnDProvider = ({ children }: { children: React.ReactNode }) => {
 
 export default DnDContext;
 
+// This is a simple ID generator for the nodes.
+// You can customize this to use your own ID generation logic.
 let id = 0;
 const getId = () => `dndnode_${id++}`;
 
 export const useDnD = () => {
   const { screenToFlowPosition, setNodes } = useReactFlow();
 
-  const { type, setType, isDragging, setIsDragging, dragPosition, setDragPosition } =
-    useContext(DnDContext);
+  const { type, setType, dragPosition, setDragPosition } = useContext(DnDContext);
 
   // This callback will be returned by the `useDnD` hook, and can be used in your UI,
   // when you want to start dragging a node into the flow.
@@ -52,25 +55,26 @@ export const useDnD = () => {
       event.preventDefault();
       (event.target as HTMLElement).setPointerCapture(event.pointerId);
       setType(nodeType);
-      setIsDragging(true);
       setDragPosition({ x: event.clientX, y: event.clientY });
     },
-    [setType, setIsDragging, setDragPosition],
+    [setType, setDragPosition],
   );
 
+  // By default, the pointer move event sets the position of the dragged element in the context.
+  // This will be used to display the `DragGhost` component.
   const onPointerMove = useCallback(
     (event: PointerEvent) => {
-      if (!isDragging) return;
+      if (!dragPosition) return;
       event.preventDefault();
       setDragPosition({ x: event.clientX, y: event.clientY });
     },
-    [isDragging, setDragPosition],
+    [dragPosition, setDragPosition],
   );
 
   const onPointerUp = useCallback(
     (event: PointerEvent) => {
-      if (!isDragging || !type) {
-        setIsDragging(false);
+      if (!dragPosition || !type) {
+        setDragPosition(undefined);
         return;
       }
 
@@ -86,6 +90,8 @@ export const useDnD = () => {
       if (isDroppingOnFlow) {
         const flowPosition = screenToFlowPosition({ x: event.clientX, y: event.clientY });
 
+        // Here, we create a new node and add it to the flow.
+        // You can customize the behavior here.
         const newNode = {
           id: getId(),
           type,
@@ -96,15 +102,15 @@ export const useDnD = () => {
         setNodes((nds) => nds.concat(newNode));
       }
 
-      setIsDragging(false);
+      setDragPosition(undefined);
       setType(null);
     },
-    [isDragging, type, setIsDragging, setType, screenToFlowPosition, setNodes],
+    [dragPosition, type, setDragPosition, setType, screenToFlowPosition, setNodes],
   );
 
   // Add global touch event listeners
   useEffect(() => {
-    if (isDragging) {
+    if (dragPosition) {
       document.addEventListener('pointermove', onPointerMove);
       document.addEventListener('pointerup', onPointerUp);
 
@@ -113,23 +119,25 @@ export const useDnD = () => {
         document.removeEventListener('pointerup', onPointerUp);
       };
     }
-  }, [isDragging, onPointerMove, onPointerUp]);
+  }, [dragPosition, onPointerMove, onPointerUp]);
 
   return {
-    // State
+    // State. You usually do not need to access these values directly.
+    // They are only used to display the `DragGhost` component.
+    // Instead, you can use the `startDragging` action to start dragging a node.
     type,
-    isDragging,
     dragPosition,
 
-    // Actions
-    onPointerDown,
+    // Actions. You can use this action to start dragging a node.
+    // For example, this is used in the `Sidebar` component.
+    startDragging: onPointerDown,
   };
 };
 
 // The DragGhost component is used to display a ghost node when dragging a node into the flow.
 export const DragGhost = () => {
-  const { type, isDragging, dragPosition } = useDnD();
-  if (!isDragging) return null;
+  const { type, dragPosition } = useDnD();
+  if (!dragPosition) return null;
   return (
     <div
       className={`dndnode ${type}`}
