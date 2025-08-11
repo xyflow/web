@@ -48,7 +48,7 @@ body {
   justify-content: center;
   align-items: center;
   cursor: grab;
-  /* Improve touch handling on mobile */
+  /* Prevent zoom or scroll when dragging nodes on mobile */
   touch-action: none;
 }
 
