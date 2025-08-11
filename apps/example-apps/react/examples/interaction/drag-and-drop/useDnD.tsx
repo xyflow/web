@@ -99,7 +99,7 @@ export const useDnD = () => {
       setIsDragging(false);
       setType(null);
     },
-    [isDragging, type, setIsDragging, setType],
+    [isDragging, type, setIsDragging, setType, screenToFlowPosition, setNodes],
   );
 
   // Add global touch event listeners
