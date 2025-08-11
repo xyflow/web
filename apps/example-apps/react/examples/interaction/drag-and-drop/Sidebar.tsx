@@ -1,18 +1,8 @@
 import React from 'react';
-import { useDnD } from './DnDContext';
+import { useDnD } from './useDnD';
 
 export default () => {
-  const { setType, setIsDragging, setDragPosition } = useDnD();
-
-  const onPointerDown = (event: React.PointerEvent<HTMLDivElement>, nodeType: string) => {
-    console.log('onPointerDown', event);
-    event.preventDefault();
-    (event.target as HTMLElement).setPointerCapture(event.pointerId);
-    setType(nodeType);
-    setIsDragging(true);
-
-    setDragPosition({ x: event.clientX, y: event.clientY });
-  };
+  const { onPointerDown } = useDnD();
 
   return (
     <aside>
