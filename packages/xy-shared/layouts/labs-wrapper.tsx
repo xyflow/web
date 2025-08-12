@@ -32,7 +32,7 @@ export const LabsLayoutWrapper: FC<
 > = ({ children, frontMatter, prev, next }) => {
   return (
     <>
-      <div className="max-w-3xl mx-auto px-6">
+      <div className="max-w-screen-xl mx-auto px-4">
         <div className="flex mt-16 items-end">
           <Link href="." className="mr-1 text-md text-gray-500 font-normal">
             Labs
@@ -40,19 +40,30 @@ export const LabsLayoutWrapper: FC<
           <ChevronRightIcon className="h-5 w-5 mb-0.5 text-gray-500" />
           <Text className="ml-1 text-md font-medium">{frontMatter.title}</Text>
         </div>
-        <Heading size="lg" className="mt-8 !leading-tight text-gray-900 ">
-          {frontMatter.title}
-        </Heading>
+        <div className="flex flex-row items-center w-full justify-between mt-8">
+          <a href={frontMatter.project_url} target="_blank">
+            <Heading size="lg" className="!leading-tight text-gray-900 ">
+              {frontMatter.title}
+            </Heading>
+          </a>
+          <Button asChild className="mt-6">
+            <a href={frontMatter.project_url} target="_blank" className="text-lg">
+              Visit Project Website
+            </a>
+          </Button>
+        </div>
         <AuthorList authors={frontMatter.authors} className="mt-6" />
       </div>
 
       <Container className="mx-auto mt-8 mb-8 bg-gray-50 max-w-screen-xl">
-        <Image
-          src={frontMatter.image}
-          width={frontMatter.image_width}
-          height={frontMatter.image_height}
-          alt={`${frontMatter.title} screenshot`}
-        />
+        <a href={frontMatter.project_url} target="_blank">
+          <Image
+            src={frontMatter.image}
+            width={frontMatter.image_width}
+            height={frontMatter.image_height}
+            alt={`${frontMatter.title} screenshot`}
+          />
+        </a>
       </Container>
 
       <div className="max-w-3xl mx-auto px-6">
