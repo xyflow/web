@@ -60,7 +60,7 @@ const nextConfig: NextConfig = {
   rewrites: async () => {
     return [
       {
-        source: '/strudel-flow/:path*',
+        source: '/labs/strudel-flow/:path*',
         destination: 'https://flow-machine-xyflow.vercel.app/:path*',
       },
     ];
