@@ -22,6 +22,7 @@ export type LabsFrontmatter = {
   image_width: number;
   image_height: number;
   project_url: string;
+  repo_url?: string;
 };
 
 export const LabsLayoutWrapper: FC<
@@ -69,11 +70,21 @@ export const LabsLayoutWrapper: FC<
       <div className="max-w-3xl mx-auto px-6">
         {children}
 
-        <Button asChild className="mt-6">
-          <a href={frontMatter.project_url} target="_blank">
-            Visit Project Website
-          </a>
-        </Button>
+        <div className="flex flex-row gap-4 w-full justify-end">
+          <Button asChild className="mt-6">
+            <a href={frontMatter.project_url} target="_blank">
+              Visit Project Website
+            </a>
+          </Button>
+
+          {frontMatter.repo_url && (
+            <Button asChild className="mt-6" variant="secondary">
+              <a href={frontMatter.repo_url} target="_blank">
+                View Source Code
+              </a>
+            </Button>
+          )}
+        </div>
       </div>
 
       <div className="mx-auto max-w-screen-xl">
