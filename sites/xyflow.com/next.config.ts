@@ -54,15 +54,22 @@ const nextConfig: NextConfig = {
     resolveAlias: {
       // Fix an error when `--turbopack` is enabled
       // Module not found: Can't resolve 'next-mdx-import-source-file'
-      'next-mdx-import-source-file': "./src/mdx-components.tsx",
-    }
-  }
+      'next-mdx-import-source-file': './src/mdx-components.tsx',
+    },
+  },
+  rewrites: async () => {
+    return [
+      {
+        source: '/strudel-flow/:path*',
+        destination: 'https://flow-machine-xyflow.vercel.app/:path*',
+      },
+    ];
+  },
 };
 
 const withNextra = nextra({
   defaultShowCopyCode: true,
   search: false,
-  contentDirBasePath: '/blog',
 });
 
 // Merge MDX config with Next.js config
