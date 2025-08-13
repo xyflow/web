@@ -42,11 +42,9 @@ export const LabsLayoutWrapper: FC<
           <Text className="ml-1 text-md font-medium">{frontMatter.title}</Text>
         </div>
         <div className="flex flex-row items-center w-full justify-between mt-8">
-          <a href={frontMatter.project_url} target="_blank">
-            <Heading size="lg" className="!leading-tight text-gray-900 ">
-              {frontMatter.title}
-            </Heading>
-          </a>
+          <Heading size="lg" className="!leading-tight text-gray-900 ">
+            {frontMatter.title}
+          </Heading>
           <Button asChild className="mt-6">
             <a href={frontMatter.project_url} target="_blank" className="text-lg">
               Visit Project Website
@@ -70,7 +68,7 @@ export const LabsLayoutWrapper: FC<
       <div className="max-w-3xl mx-auto px-6">
         {children}
 
-        <div className="flex flex-row gap-4 w-full justify-end">
+        <div className="flex flex-row gap-4 w-full justify-start">
           <Button asChild className="mt-6">
             <a href={frontMatter.project_url} target="_blank">
               Visit Project Website
