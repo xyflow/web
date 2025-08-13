@@ -9,7 +9,7 @@
 </script>
 
 <NodeWrapper label={data.label}>
-  <div class="w-full h-[200px] relative">
+  <div class="w-full h-[200px] relative p-3">
     <Canvas dpr={2}>
       <ThrelteScene />
     </Canvas>

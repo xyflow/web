@@ -49,20 +49,22 @@
 <T.AmbientLight intensity={0.5} />
 <T.DirectionalLight intensity={3} position={[0, 0, 100]} />
 
-{#each randomAssets as asset}
-  <T.Mesh
-    position={asset.position}
-    rotation={[
-      asset.rotation[0] + Math.cos((t * asset.random) / 1.5) / 2,
-      asset.rotation[1] + Math.sin(t * asset.random) / 2,
-      asset.rotation[2] + Math.cos((t * asset.random) / 1.5) / 2,
-    ]}
-  >
-    {#if flowState.shape === 'cube'}
-      <T.BoxGeometry args={[1, 1, 1]} />
-    {:else if flowState.shape === 'pyramid'}
+{#key flowState.shape}
+  {#each randomAssets as asset}
+    <T.Mesh
+      position={asset.position}
+      rotation={[
+        asset.rotation[0] + Math.cos((t * asset.random) / 1.5) / 2,
+        asset.rotation[1] + Math.sin(t * asset.random) / 2,
+        asset.rotation[2] + Math.cos((t * asset.random) / 1.5) / 2,
+      ]}
+    >
+      {#if flowState.shape === 'cube'}
+        <T.BoxGeometry args={[1, 1, 1]} />
+      {:else if flowState.shape === 'pyramid'}
       <T.TetrahedronGeometry args={[1, 0]} />
-    {/if}
-    <T.MeshLambertMaterial color={flowState.color} toneMapped={false} />
-  </T.Mesh>
-{/each}
+      {/if}
+      <T.MeshLambertMaterial color={flowState.color} toneMapped={false} />
+    </T.Mesh>
+  {/each}
+{/key}

@@ -7,7 +7,7 @@
 </script>
 
 <NodeWrapper label={data.label}>
-  <div class="flex items-center space-x-2">
+  <div class="flex items-center space-x-2 p-3">
     <input
       bind:value={flowState.color}
       class="nodrag border-md w-6 h-6"
