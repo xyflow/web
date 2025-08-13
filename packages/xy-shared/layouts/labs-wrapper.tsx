@@ -46,7 +46,12 @@ export const LabsLayoutWrapper: FC<
             {frontMatter.title}
           </Heading>
           <Button asChild className="mt-6">
-            <a href={frontMatter.project_url} target="_blank" className="text-lg">
+            <a
+              href={frontMatter.project_url}
+              rel="noopener noreferrer"
+              target="_blank"
+              className="text-lg"
+            >
               Visit Project Website
             </a>
           </Button>
@@ -55,7 +60,7 @@ export const LabsLayoutWrapper: FC<
       </div>
 
       <Container className="mx-auto mt-8 mb-8 bg-gray-50 max-w-screen-xl">
-        <a href={frontMatter.project_url} target="_blank">
+        <a href={frontMatter.project_url} target="_blank" rel="noopener noreferrer">
           <Image
             src={frontMatter.image}
             width={frontMatter.image_width}
@@ -70,14 +75,14 @@ export const LabsLayoutWrapper: FC<
 
         <div className="flex flex-row gap-4 w-full justify-start">
           <Button asChild className="mt-6">
-            <a href={frontMatter.project_url} target="_blank">
+            <a href={frontMatter.project_url} target="_blank" rel="noopener noreferrer">
               Visit Project Website
             </a>
           </Button>
 
           {frontMatter.repo_url && (
             <Button asChild className="mt-6" variant="secondary">
-              <a href={frontMatter.repo_url} target="_blank">
+              <a href={frontMatter.repo_url} target="_blank" rel="noopener noreferrer">
                 View Source Code
               </a>
             </Button>
