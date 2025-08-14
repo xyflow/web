@@ -15,7 +15,7 @@ export function Sidebar() {
   const { setNodes } = useReactFlow();
 
   const createAddNewNode = useCallback(
-    (nodeType: string) => {
+    (nodeType: string): OnDropAction => {
       return ({ position }: { position: XYPosition }) => {
         // Here, we create a new node and add it to the flow.
         // You can customize the behavior of what happens when a node is dropped on the flow here.
@@ -36,7 +36,7 @@ export function Sidebar() {
   return (
     <>
       {/* The ghost node will be rendered at pointer position when dragging. */}
-      <DragGhost type={type} isDragging={isDragging} />
+      {isDragging && <DragGhost type={type} />}
       <aside>
         <div className="description">
           You can drag these nodes to the pane to create new nodes.
@@ -75,34 +75,25 @@ export function Sidebar() {
 
 interface DragGhostProps {
   type: string | null;
-  isDragging: boolean;
 }
 
 // The DragGhost component is used to display a ghost node when dragging a node into the flow.
-export function DragGhost({ type, isDragging }: DragGhostProps) {
+export function DragGhost({ type }: DragGhostProps) {
   const [position, setPosition] = useState<XYPosition>({ x: 0, y: 0 });
 
   // By default, the pointer move event sets the position of the dragged element in the context.
   // This will be used to display the `DragGhost` component.
-  const onDrag = useCallback(
-    (event: PointerEvent) => {
-      event.preventDefault();
-      setPosition({ x: event.clientX, y: event.clientY });
-    },
-    [isDragging],
-  );
+  const onDrag = useCallback((event: PointerEvent) => {
+    event.preventDefault();
+    setPosition({ x: event.clientX, y: event.clientY });
+  }, []);
 
   useEffect(() => {
-    if (!isDragging) return;
-
     document.addEventListener('pointermove', onDrag);
     return () => {
-      setPosition({ x: 0, y: 0 });
       document.removeEventListener('pointermove', onDrag);
     };
-  }, [onDrag, isDragging]);
-
-  if (!isDragging || !type) return null;
+  }, [onDrag]);
 
   return (
     <div
