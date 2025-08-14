@@ -80,8 +80,8 @@ export const APIDocs: FC<{
   };
 
   if (props.code) {
-    // @tss-expect-error -- fixme
-    // const definition = await generateDefinition(props);
+    // @ts-expect-error -- fixme
+    const definition = await generateDefinition(props);
     return <TSDoc definition={definition} {...defaultTSDocProps} />;
   }
   if (functionName) {
