@@ -1,12 +1,11 @@
-import { FC, ReactNode } from 'react';
 import { getNhost } from '@/utils/nhost';
 import { redirect } from 'next/navigation';
 
-const Layout: FC<{ children: ReactNode }> = async ({ children }) => {
+export default async function Layout({ children }: LayoutProps<'/pro'>) {
   const nhost = await getNhost();
-  const session = nhost.auth.getSession()
+  const isAuthenticated = nhost.auth.isAuthenticated();
 
-  if (session) {
+  if (isAuthenticated) {
     redirect('/');
   }
 
@@ -22,6 +21,4 @@ const Layout: FC<{ children: ReactNode }> = async ({ children }) => {
       <div className="max-w-6xl mx-auto pt-10 mb-20">{children}</div>
     </div>
   );
-};
-
-export default Layout;
+}

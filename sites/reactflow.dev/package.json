@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "next --turbopack --port 3002",
-    "build": "VERCEL_FORCE_NO_BUILD_CACHE=1 next build",
+    "build": "next build",
     "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "next lint",
@@ -22,7 +22,7 @@
     "@xyflow/system": "^0.0.63",
     "@xyflow/xy-ui": "workspace:*",
     "d3": "^7.9.0",
-    "next": "^15.3.2",
+    "next": "15.5.2",
     "next-sitemap": "^4.2.3",
     "nextra": "^4.3.0",
     "nextra-theme-docs": "^4.3.0",

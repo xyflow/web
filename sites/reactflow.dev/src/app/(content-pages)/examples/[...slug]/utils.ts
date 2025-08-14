@@ -3,9 +3,15 @@ import { Folder } from 'nextra';
 
 import { meta } from './config';
 import { getExamplesPageMap } from 'xy-shared/server';
+import fs from 'fs/promises';
 
 export async function getPageMap(): Promise<Folder> {
   const examplesPath = path.resolve('../../apps/example-apps/react/examples');
+  console.log(
+    111,
+    'list',
+    await fs.readdir(path.resolve('../..'), { withFileTypes: true }),
+  );
   return getExamplesPageMap(examplesPath, meta, importMetadata);
 }
 

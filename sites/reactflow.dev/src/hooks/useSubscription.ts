@@ -2,7 +2,7 @@ import { useContext } from 'react';
 
 import { SubscriptionContext } from '@/components/pro/Providers';
 import { SubscriptionPlan } from '@/types';
-import { normalizeSubscription } from '@/utils/pro-utils';
+import { User } from '@nhost/nhost-js';
 
 export type SubscriptionStatus = {
   isSubscribed: boolean;
@@ -11,9 +11,16 @@ export type SubscriptionStatus = {
   plan: SubscriptionPlan;
   userPlan: SubscriptionPlan;
   teamPlan: SubscriptionPlan;
+
+  user?: User | null;
+  isLoading: boolean;
+  refetchUser: () => void;
 };
 
 export default function useSubscription(): SubscriptionStatus {
-  const subscription = useContext(SubscriptionContext);
-  return normalizeSubscription(subscription);
+  const context = useContext(SubscriptionContext);
+  if (!context) {
+    throw new Error('`useSubscription` must be used within a `SubscriptionProvider`');
+  }
+  return context;
 }

@@ -7,14 +7,11 @@ import { getTeamMembers } from '@/server-actions/get-team-members';
 
 export default async function TeamPage() {
   const nhost = await getNhost();
-  const [user, teamSubscriptions] = await Promise.all([
-    nhost.auth.getUser(),
-    getTeamMembers(),
-  ]);
+  const user = nhost.auth.getUser();
   if (!user) {
     throw new Error('User not found');
   }
-
+  const teamSubscriptions = await getTeamMembers();
   return (
     <div className="max-w-3xl">
       <DashboardHeader

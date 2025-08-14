@@ -12,7 +12,7 @@ export function loadJSONFile<T>(url: string): T | undefined {
     const file = readFileSync(url, 'utf-8');
     return JSON.parse(file) as T;
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 }
 
@@ -46,7 +46,7 @@ export const fakeShowcases = Array.from({ length: 10 }, (_, i) => ({
   url: 'https://example.com',
   demoUrl: 'https://example.com',
   description: 'This is a showcase',
-  image: '/img/showcase/placeholder.png',
+  image: '/img/showcase/placeholder.jpg',
   tags: [],
 }));
 

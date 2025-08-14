@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  nextra:
+    hash: 45ee55b8c4a06656a359bce5f56b428eb07ab73f8893d350e0080b58242f85f6
+    path: patches/nextra.patch
+
 importers:
 
   .:
@@ -384,7 +389,7 @@ importers:
         version: 15.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       nextra:
         specifier: ^4.3.0
-        version: 4.3.0(acorn@8.15.0)(next@15.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.9.2)
+        version: 4.3.0(patch_hash=45ee55b8c4a06656a359bce5f56b428eb07ab73f8893d350e0080b58242f85f6)(acorn@8.15.0)(next@15.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.9.2)
       react-dom:
         specifier: ^18.2.0
         version: 18.3.1(react@18.3.1)
@@ -556,17 +561,17 @@ importers:
         specifier: ^3.10.1
         version: 3.10.1
       next:
-        specifier: ^15.3.2
-        version: 15.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: 15.5.2
+        version: 15.5.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       next-sitemap:
         specifier: ^4.2.3
-        version: 4.2.3(next@15.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
+        version: 4.2.3(next@15.5.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
       nextra:
         specifier: ^4.3.0
-        version: 4.3.0(acorn@8.15.0)(next@15.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.9.2)
+        version: 4.3.0(patch_hash=45ee55b8c4a06656a359bce5f56b428eb07ab73f8893d350e0080b58242f85f6)(acorn@8.15.0)(next@15.5.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.9.2)
       nextra-theme-docs:
         specifier: ^4.3.0
-        version: 4.3.0(@types/react@18.3.23)(next@15.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(nextra@4.3.0(acorn@8.15.0)(next@15.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.9.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(use-sync-external-store@1.5.0(react@18.3.1))
+        version: 4.3.0(@types/react@18.3.23)(next@15.5.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(nextra@4.3.0(patch_hash=45ee55b8c4a06656a359bce5f56b428eb07ab73f8893d350e0080b58242f85f6)(acorn@8.15.0)(next@15.5.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.9.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(use-sync-external-store@1.5.0(react@18.3.1))
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -654,10 +659,10 @@ importers:
         version: 4.2.3(next@15.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
       nextra:
         specifier: ^4.3.0
-        version: 4.3.0(acorn@8.15.0)(next@15.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.9.2)
+        version: 4.3.0(patch_hash=45ee55b8c4a06656a359bce5f56b428eb07ab73f8893d350e0080b58242f85f6)(acorn@8.15.0)(next@15.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.9.2)
       nextra-theme-docs:
         specifier: ^4.3.0
-        version: 4.3.0(@types/react@18.3.23)(next@15.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(nextra@4.3.0(acorn@8.15.0)(next@15.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.9.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(use-sync-external-store@1.5.0(react@18.3.1))
+        version: 4.3.0(@types/react@18.3.23)(next@15.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(nextra@4.3.0(patch_hash=45ee55b8c4a06656a359bce5f56b428eb07ab73f8893d350e0080b58242f85f6)(acorn@8.15.0)(next@15.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.9.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(use-sync-external-store@1.5.0(react@18.3.1))
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -727,10 +732,10 @@ importers:
         version: 4.2.3(next@15.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
       nextra:
         specifier: ^4.3.0
-        version: 4.3.0(acorn@8.15.0)(next@15.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.9.2)
+        version: 4.3.0(patch_hash=45ee55b8c4a06656a359bce5f56b428eb07ab73f8893d350e0080b58242f85f6)(acorn@8.15.0)(next@15.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.9.2)
       nextra-theme-docs:
         specifier: ^4.3.0
-        version: 4.3.0(@types/react@18.3.23)(next@15.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(nextra@4.3.0(acorn@8.15.0)(next@15.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.9.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(use-sync-external-store@1.5.0(react@18.3.1))
+        version: 4.3.0(@types/react@18.3.23)(next@15.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(nextra@4.3.0(patch_hash=45ee55b8c4a06656a359bce5f56b428eb07ab73f8893d350e0080b58242f85f6)(acorn@8.15.0)(next@15.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.9.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(use-sync-external-store@1.5.0(react@18.3.1))
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -1656,6 +1661,9 @@ packages:
   '@next/env@15.4.6':
     resolution: {integrity: sha512-yHDKVTcHrZy/8TWhj0B23ylKv5ypocuCwey9ZqPyv4rPdUdRzpGCkSi03t04KBPyU96kxVtUqx6O3nE1kpxASQ==}
 
+  '@next/env@15.5.2':
+    resolution: {integrity: sha512-Qe06ew4zt12LeO6N7j8/nULSOe3fMXE4dM6xgpBQNvdzyK1sv5y4oAP3bq4LamrvGCZtmRYnW8URFCeX5nFgGg==}
+
   '@next/eslint-plugin-next@15.3.1':
     resolution: {integrity: sha512-oEs4dsfM6iyER3jTzMm4kDSbrQJq8wZw5fmT6fg2V3SMo+kgG+cShzLfEV20senZzv8VF+puNLheiGPlBGsv2A==}
 
@@ -1680,6 +1688,12 @@ packages:
     cpu: [arm64]
     os: [darwin]
 
+  '@next/swc-darwin-arm64@15.5.2':
+    resolution: {integrity: sha512-8bGt577BXGSd4iqFygmzIfTYizHb0LGWqH+qgIF/2EDxS5JsSdERJKA8WgwDyNBZgTIIA4D8qUtoQHmxIIquoQ==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [darwin]
+
   '@next/swc-darwin-x64@14.2.31':
     resolution: {integrity: sha512-iSavebQgeMukUAfjfW8Fi2Iz01t95yxRl2w2wCzjD91h5In9la99QIDKcKSYPfqLjCgwz3JpIWxLG6LM/sxL4g==}
     engines: {node: '>= 10'}
@@ -1694,6 +1708,12 @@ packages:
 
   '@next/swc-darwin-x64@15.4.6':
     resolution: {integrity: sha512-KMSFoistFkaiQYVQQnaU9MPWtp/3m0kn2Xed1Ces5ll+ag1+rlac20sxG+MqhH2qYWX1O2GFOATQXEyxKiIscg==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [darwin]
+
+  '@next/swc-darwin-x64@15.5.2':
+    resolution: {integrity: sha512-2DjnmR6JHK4X+dgTXt5/sOCu/7yPtqpYt8s8hLkHFK3MGkka2snTv3yRMdHvuRtJVkPwCGsvBSwmoQCHatauFQ==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [darwin]
@@ -1716,6 +1736,12 @@ packages:
     cpu: [arm64]
     os: [linux]
 
+  '@next/swc-linux-arm64-gnu@15.5.2':
+    resolution: {integrity: sha512-3j7SWDBS2Wov/L9q0mFJtEvQ5miIqfO4l7d2m9Mo06ddsgUK8gWfHGgbjdFlCp2Ek7MmMQZSxpGFqcC8zGh2AA==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [linux]
+
   '@next/swc-linux-arm64-musl@14.2.31':
     resolution: {integrity: sha512-IInDAcchNCu3BzocdqdCv1bKCmUVO/bKJHnBFTeq3svfaWpOPewaLJ2Lu3GL4yV76c/86ZvpBbG/JJ1lVIs5MA==}
     engines: {node: '>= 10'}
@@ -1730,6 +1756,12 @@ packages:
 
   '@next/swc-linux-arm64-musl@15.4.6':
     resolution: {integrity: sha512-XBbuQddtY1p5FGPc2naMO0kqs4YYtLYK/8aPausI5lyOjr4J77KTG9mtlU4P3NwkLI1+OjsPzKVvSJdMs3cFaw==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [linux]
+
+  '@next/swc-linux-arm64-musl@15.5.2':
+    resolution: {integrity: sha512-s6N8k8dF9YGc5T01UPQ08yxsK6fUow5gG1/axWc1HVVBYQBgOjca4oUZF7s4p+kwhkB1bDSGR8QznWrFZ/Rt5g==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
@@ -1752,6 +1784,12 @@ packages:
     cpu: [x64]
     os: [linux]
 
+  '@next/swc-linux-x64-gnu@15.5.2':
+    resolution: {integrity: sha512-o1RV/KOODQh6dM6ZRJGZbc+MOAHww33Vbs5JC9Mp1gDk8cpEO+cYC/l7rweiEalkSm5/1WGa4zY7xrNwObN4+Q==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [linux]
+
   '@next/swc-linux-x64-musl@14.2.31':
     resolution: {integrity: sha512-A0JmD1y4q/9ufOGEAhoa60Sof++X10PEoiWOH0gZ2isufWZeV03NnyRlRmJpRQWGIbRkJUmBo9I3Qz5C10vx4w==}
     engines: {node: '>= 10'}
@@ -1770,6 +1808,12 @@ packages:
     cpu: [x64]
     os: [linux]
 
+  '@next/swc-linux-x64-musl@15.5.2':
+    resolution: {integrity: sha512-/VUnh7w8RElYZ0IV83nUcP/J4KJ6LLYliiBIri3p3aW2giF+PAVgZb6mk8jbQSB3WlTai8gEmCAr7kptFa1H6g==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [linux]
+
   '@next/swc-win32-arm64-msvc@14.2.31':
     resolution: {integrity: sha512-nowJ5GbMeDOMzbTm29YqrdrD6lTM8qn2wnZfGpYMY7SZODYYpaJHH1FJXE1l1zWICHR+WfIMytlTDBHu10jb8A==}
     engines: {node: '>= 10'}
@@ -1784,6 +1828,12 @@ packages:
 
   '@next/swc-win32-arm64-msvc@15.4.6':
     resolution: {integrity: sha512-FxrsenhUz0LbgRkNWx6FRRJIPe/MI1JRA4W4EPd5leXO00AZ6YU8v5vfx4MDXTvN77lM/EqsE3+6d2CIeF5NYg==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [win32]
+
+  '@next/swc-win32-arm64-msvc@15.5.2':
+    resolution: {integrity: sha512-sMPyTvRcNKXseNQ/7qRfVRLa0VhR0esmQ29DD6pqvG71+JdVnESJaHPA8t7bc67KD5spP3+DOCNLhqlEI2ZgQg==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [win32]
@@ -1808,6 +1858,12 @@ packages:
 
   '@next/swc-win32-x64-msvc@15.4.6':
     resolution: {integrity: sha512-T4ufqnZ4u88ZheczkBTtOF+eKaM14V8kbjud/XrAakoM5DKQWjW09vD6B9fsdsWS2T7D5EY31hRHdta7QKWOng==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [win32]
+
+  '@next/swc-win32-x64-msvc@15.5.2':
+    resolution: {integrity: sha512-W5VvyZHnxG/2ukhZF/9Ikdra5fdNftxI6ybeVKYvBPDtyx7x4jPPSNduUkfH5fo3zG0JQ0bPxgy41af2JX5D4Q==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [win32]
@@ -5975,6 +6031,27 @@ packages:
       sass:
         optional: true
 
+  next@15.5.2:
+    resolution: {integrity: sha512-H8Otr7abj1glFhbGnvUt3gz++0AF1+QoCXEBmd/6aKbfdFwrn0LpA836Ed5+00va/7HQSDD+mOoVhn3tNy3e/Q==}
+    engines: {node: ^18.18.0 || ^19.8.0 || >= 20.0.0}
+    hasBin: true
+    peerDependencies:
+      '@opentelemetry/api': ^1.1.0
+      '@playwright/test': ^1.51.1
+      babel-plugin-react-compiler: '*'
+      react: ^18.2.0 || 19.0.0-rc-de68d2f4-20241204 || ^19.0.0
+      react-dom: ^18.2.0 || 19.0.0-rc-de68d2f4-20241204 || ^19.0.0
+      sass: ^1.3.0
+    peerDependenciesMeta:
+      '@opentelemetry/api':
+        optional: true
+      '@playwright/test':
+        optional: true
+      babel-plugin-react-compiler:
+        optional: true
+      sass:
+        optional: true
+
   nextra-theme-docs@4.3.0:
     resolution: {integrity: sha512-f8QDU2ZDp6um0yn9VyejcDRBAMWeeM1EYAknZjclkNArXQMc7n/Z+P60EEjUz79eZQKEo7Bk8kKa9X2fU8FsHQ==}
     peerDependencies:
@@ -8816,6 +8893,8 @@ snapshots:
 
   '@next/env@15.4.6': {}
 
+  '@next/env@15.5.2': {}
+
   '@next/eslint-plugin-next@15.3.1':
     dependencies:
       fast-glob: 3.3.1
@@ -8833,6 +8912,9 @@ snapshots:
   '@next/swc-darwin-arm64@15.4.6':
     optional: true
 
+  '@next/swc-darwin-arm64@15.5.2':
+    optional: true
+
   '@next/swc-darwin-x64@14.2.31':
     optional: true
 
@@ -8840,6 +8922,9 @@ snapshots:
     optional: true
 
   '@next/swc-darwin-x64@15.4.6':
+    optional: true
+
+  '@next/swc-darwin-x64@15.5.2':
     optional: true
 
   '@next/swc-linux-arm64-gnu@14.2.31':
@@ -8851,6 +8936,9 @@ snapshots:
   '@next/swc-linux-arm64-gnu@15.4.6':
     optional: true
 
+  '@next/swc-linux-arm64-gnu@15.5.2':
+    optional: true
+
   '@next/swc-linux-arm64-musl@14.2.31':
     optional: true
 
@@ -8858,6 +8946,9 @@ snapshots:
     optional: true
 
   '@next/swc-linux-arm64-musl@15.4.6':
+    optional: true
+
+  '@next/swc-linux-arm64-musl@15.5.2':
     optional: true
 
   '@next/swc-linux-x64-gnu@14.2.31':
@@ -8869,6 +8960,9 @@ snapshots:
   '@next/swc-linux-x64-gnu@15.4.6':
     optional: true
 
+  '@next/swc-linux-x64-gnu@15.5.2':
+    optional: true
+
   '@next/swc-linux-x64-musl@14.2.31':
     optional: true
 
@@ -8878,6 +8972,9 @@ snapshots:
   '@next/swc-linux-x64-musl@15.4.6':
     optional: true
 
+  '@next/swc-linux-x64-musl@15.5.2':
+    optional: true
+
   '@next/swc-win32-arm64-msvc@14.2.31':
     optional: true
 
@@ -8885,6 +8982,9 @@ snapshots:
     optional: true
 
   '@next/swc-win32-arm64-msvc@15.4.6':
+    optional: true
+
+  '@next/swc-win32-arm64-msvc@15.5.2':
     optional: true
 
   '@next/swc-win32-ia32-msvc@14.2.31':
@@ -8897,6 +8997,9 @@ snapshots:
     optional: true
 
   '@next/swc-win32-x64-msvc@15.4.6':
+    optional: true
+
+  '@next/swc-win32-x64-msvc@15.5.2':
     optional: true
 
   '@nhost/graphql-js@0.3.0(graphql@16.8.1)':
@@ -11859,8 +11962,8 @@ snapshots:
       '@typescript-eslint/parser': 8.36.0(eslint@9.33.0(jiti@1.21.7))(typescript@5.9.2)
       eslint: 9.33.0(jiti@1.21.7)
       eslint-import-resolver-node: 0.3.9
-      eslint-import-resolver-typescript: 3.10.1(eslint-plugin-import@2.32.0)(eslint@9.33.0(jiti@1.21.7))
-      eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.36.0(eslint@9.33.0(jiti@1.21.7))(typescript@5.9.2))(eslint-import-resolver-typescript@3.10.1)(eslint@9.33.0(jiti@1.21.7))
+      eslint-import-resolver-typescript: 3.10.1(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.36.0(eslint@9.33.0(jiti@1.21.7))(typescript@5.9.2))(eslint@9.33.0(jiti@1.21.7)))(eslint@9.33.0(jiti@1.21.7))
+      eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.36.0(eslint@9.33.0(jiti@1.21.7))(typescript@5.9.2))(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.36.0(eslint@9.33.0(jiti@1.21.7))(typescript@5.9.2))(eslint@9.33.0(jiti@1.21.7)))(eslint@9.33.0(jiti@1.21.7)))(eslint@9.33.0(jiti@1.21.7))
       eslint-plugin-jsx-a11y: 6.10.2(eslint@9.33.0(jiti@1.21.7))
       eslint-plugin-react: 7.37.5(eslint@9.33.0(jiti@1.21.7))
       eslint-plugin-react-hooks: 5.2.0(eslint@9.33.0(jiti@1.21.7))
@@ -11883,7 +11986,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0)(eslint@9.33.0(jiti@1.21.7)):
+  eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.36.0(eslint@9.33.0(jiti@1.21.7))(typescript@5.9.2))(eslint@9.33.0(jiti@1.21.7)))(eslint@9.33.0(jiti@1.21.7)):
     dependencies:
       '@nolyfill/is-core-module': 1.0.39
       debug: 4.4.1
@@ -11894,22 +11997,22 @@ snapshots:
       tinyglobby: 0.2.14
       unrs-resolver: 1.11.1
     optionalDependencies:
-      eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.36.0(eslint@9.33.0(jiti@1.21.7))(typescript@5.9.2))(eslint-import-resolver-typescript@3.10.1)(eslint@9.33.0(jiti@1.21.7))
+      eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.36.0(eslint@9.33.0(jiti@1.21.7))(typescript@5.9.2))(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.36.0(eslint@9.33.0(jiti@1.21.7))(typescript@5.9.2))(eslint@9.33.0(jiti@1.21.7)))(eslint@9.33.0(jiti@1.21.7)))(eslint@9.33.0(jiti@1.21.7))
     transitivePeerDependencies:
       - supports-color
 
-  eslint-module-utils@2.12.1(@typescript-eslint/parser@8.36.0(eslint@9.33.0(jiti@1.21.7))(typescript@5.9.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.10.1)(eslint@9.33.0(jiti@1.21.7)):
+  eslint-module-utils@2.12.1(@typescript-eslint/parser@8.36.0(eslint@9.33.0(jiti@1.21.7))(typescript@5.9.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.36.0(eslint@9.33.0(jiti@1.21.7))(typescript@5.9.2))(eslint@9.33.0(jiti@1.21.7)))(eslint@9.33.0(jiti@1.21.7)))(eslint@9.33.0(jiti@1.21.7)):
     dependencies:
       debug: 3.2.7
     optionalDependencies:
       '@typescript-eslint/parser': 8.36.0(eslint@9.33.0(jiti@1.21.7))(typescript@5.9.2)
       eslint: 9.33.0(jiti@1.21.7)
       eslint-import-resolver-node: 0.3.9
-      eslint-import-resolver-typescript: 3.10.1(eslint-plugin-import@2.32.0)(eslint@9.33.0(jiti@1.21.7))
+      eslint-import-resolver-typescript: 3.10.1(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.36.0(eslint@9.33.0(jiti@1.21.7))(typescript@5.9.2))(eslint@9.33.0(jiti@1.21.7)))(eslint@9.33.0(jiti@1.21.7))
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.36.0(eslint@9.33.0(jiti@1.21.7))(typescript@5.9.2))(eslint-import-resolver-typescript@3.10.1)(eslint@9.33.0(jiti@1.21.7)):
+  eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.36.0(eslint@9.33.0(jiti@1.21.7))(typescript@5.9.2))(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.36.0(eslint@9.33.0(jiti@1.21.7))(typescript@5.9.2))(eslint@9.33.0(jiti@1.21.7)))(eslint@9.33.0(jiti@1.21.7)))(eslint@9.33.0(jiti@1.21.7)):
     dependencies:
       '@rtsao/scc': 1.1.0
       array-includes: 3.1.9
@@ -11920,7 +12023,7 @@ snapshots:
       doctrine: 2.1.0
       eslint: 9.33.0(jiti@1.21.7)
       eslint-import-resolver-node: 0.3.9
-      eslint-module-utils: 2.12.1(@typescript-eslint/parser@8.36.0(eslint@9.33.0(jiti@1.21.7))(typescript@5.9.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.10.1)(eslint@9.33.0(jiti@1.21.7))
+      eslint-module-utils: 2.12.1(@typescript-eslint/parser@8.36.0(eslint@9.33.0(jiti@1.21.7))(typescript@5.9.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.36.0(eslint@9.33.0(jiti@1.21.7))(typescript@5.9.2))(eslint@9.33.0(jiti@1.21.7)))(eslint@9.33.0(jiti@1.21.7)))(eslint@9.33.0(jiti@1.21.7))
       hasown: 2.0.2
       is-core-module: 2.16.1
       is-glob: 4.0.3
@@ -13893,6 +13996,14 @@ snapshots:
       minimist: 1.2.8
       next: 15.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
 
+  next-sitemap@4.2.3(next@15.5.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)):
+    dependencies:
+      '@corex/deepmerge': 4.0.43
+      '@next/env': 13.5.11
+      fast-glob: 3.3.3
+      minimist: 1.2.8
+      next: 15.5.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+
   next-themes@0.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       react: 18.3.1
@@ -13973,13 +14084,36 @@ snapshots:
       - '@babel/core'
       - babel-plugin-macros
 
-  nextra-theme-docs@4.3.0(@types/react@18.3.23)(next@15.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(nextra@4.3.0(acorn@8.15.0)(next@15.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.9.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(use-sync-external-store@1.5.0(react@18.3.1)):
+  next@15.5.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+    dependencies:
+      '@next/env': 15.5.2
+      '@swc/helpers': 0.5.15
+      caniuse-lite: 1.0.30001727
+      postcss: 8.4.31
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+      styled-jsx: 5.1.6(react@18.3.1)
+    optionalDependencies:
+      '@next/swc-darwin-arm64': 15.5.2
+      '@next/swc-darwin-x64': 15.5.2
+      '@next/swc-linux-arm64-gnu': 15.5.2
+      '@next/swc-linux-arm64-musl': 15.5.2
+      '@next/swc-linux-x64-gnu': 15.5.2
+      '@next/swc-linux-x64-musl': 15.5.2
+      '@next/swc-win32-arm64-msvc': 15.5.2
+      '@next/swc-win32-x64-msvc': 15.5.2
+      sharp: 0.34.3
+    transitivePeerDependencies:
+      - '@babel/core'
+      - babel-plugin-macros
+
+  nextra-theme-docs@4.3.0(@types/react@18.3.23)(next@15.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(nextra@4.3.0(patch_hash=45ee55b8c4a06656a359bce5f56b428eb07ab73f8893d350e0080b58242f85f6)(acorn@8.15.0)(next@15.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.9.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(use-sync-external-store@1.5.0(react@18.3.1)):
     dependencies:
       '@headlessui/react': 2.2.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       clsx: 2.1.1
       next: 15.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       next-themes: 0.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      nextra: 4.3.0(acorn@8.15.0)(next@15.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.9.2)
+      nextra: 4.3.0(patch_hash=45ee55b8c4a06656a359bce5f56b428eb07ab73f8893d350e0080b58242f85f6)(acorn@8.15.0)(next@15.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.9.2)
       react: 18.3.1
       react-compiler-runtime: 19.1.0-rc.2(react@18.3.1)
       react-dom: 18.3.1(react@18.3.1)
@@ -13991,7 +14125,25 @@ snapshots:
       - immer
       - use-sync-external-store
 
-  nextra@4.3.0(acorn@8.15.0)(next@15.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.9.2):
+  nextra-theme-docs@4.3.0(@types/react@18.3.23)(next@15.5.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(nextra@4.3.0(patch_hash=45ee55b8c4a06656a359bce5f56b428eb07ab73f8893d350e0080b58242f85f6)(acorn@8.15.0)(next@15.5.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.9.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(use-sync-external-store@1.5.0(react@18.3.1)):
+    dependencies:
+      '@headlessui/react': 2.2.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      clsx: 2.1.1
+      next: 15.5.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      next-themes: 0.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      nextra: 4.3.0(patch_hash=45ee55b8c4a06656a359bce5f56b428eb07ab73f8893d350e0080b58242f85f6)(acorn@8.15.0)(next@15.5.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.9.2)
+      react: 18.3.1
+      react-compiler-runtime: 19.1.0-rc.2(react@18.3.1)
+      react-dom: 18.3.1(react@18.3.1)
+      scroll-into-view-if-needed: 3.1.0
+      zod: 4.0.0-beta.20250424T163858
+      zustand: 5.0.7(@types/react@18.3.23)(react@18.3.1)(use-sync-external-store@1.5.0(react@18.3.1))
+    transitivePeerDependencies:
+      - '@types/react'
+      - immer
+      - use-sync-external-store
+
+  nextra@4.3.0(patch_hash=45ee55b8c4a06656a359bce5f56b428eb07ab73f8893d350e0080b58242f85f6)(acorn@8.15.0)(next@15.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.9.2):
     dependencies:
       '@formatjs/intl-localematcher': 0.6.1
       '@headlessui/react': 2.2.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -14013,6 +14165,55 @@ snapshots:
       mdast-util-to-hast: 13.2.0
       negotiator: 1.0.0
       next: 15.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      react: 18.3.1
+      react-compiler-runtime: 19.1.0-rc.2(react@18.3.1)
+      react-dom: 18.3.1(react@18.3.1)
+      react-medium-image-zoom: 5.3.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      rehype-katex: 7.0.1
+      rehype-pretty-code: 0.14.1(shiki@3.9.2)
+      rehype-raw: 7.0.0
+      remark-frontmatter: 5.0.0
+      remark-gfm: 4.0.1
+      remark-math: 6.0.0
+      remark-reading-time: 2.0.2
+      remark-smartypants: 3.0.2
+      server-only: 0.0.1
+      shiki: 3.9.2
+      slash: 5.1.0
+      title: 4.0.1
+      ts-morph: 26.0.0
+      unist-util-remove: 4.0.0
+      unist-util-visit: 5.0.0
+      unist-util-visit-children: 3.0.0
+      yaml: 2.8.1
+      zod: 4.0.0-beta.20250424T163858
+    transitivePeerDependencies:
+      - acorn
+      - supports-color
+      - typescript
+
+  nextra@4.3.0(patch_hash=45ee55b8c4a06656a359bce5f56b428eb07ab73f8893d350e0080b58242f85f6)(acorn@8.15.0)(next@15.5.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.9.2):
+    dependencies:
+      '@formatjs/intl-localematcher': 0.6.1
+      '@headlessui/react': 2.2.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@mdx-js/mdx': 3.1.0(acorn@8.15.0)
+      '@napi-rs/simple-git': 0.1.21
+      '@shikijs/twoslash': 3.9.2(typescript@5.9.2)
+      '@theguild/remark-mermaid': 0.3.0(react@18.3.1)
+      '@theguild/remark-npm2yarn': 0.3.3
+      better-react-mathjax: 2.3.0(react@18.3.1)
+      clsx: 2.1.1
+      estree-util-to-js: 2.0.0
+      estree-util-value-to-estree: 3.4.0
+      fast-glob: 3.3.3
+      github-slugger: 2.0.0
+      hast-util-to-estree: 3.1.3
+      katex: 0.16.22
+      mdast-util-from-markdown: 2.0.2
+      mdast-util-gfm: 3.1.0
+      mdast-util-to-hast: 13.2.0
+      negotiator: 1.0.0
+      next: 15.5.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react: 18.3.1
       react-compiler-runtime: 19.1.0-rc.2(react@18.3.1)
       react-dom: 18.3.1(react@18.3.1)

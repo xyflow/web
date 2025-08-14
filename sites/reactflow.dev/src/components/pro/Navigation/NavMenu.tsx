@@ -1,12 +1,11 @@
+'use client';
+
 import { FC } from 'react';
 import Link from 'next/link';
-import type { User } from '@nhost/nhost-js';
-
 import { UserIcon } from '@heroicons/react/24/solid';
 import { PlanLabel, Subscribed } from '@/components/pro/SubscriptionStatus';
 import { openStripeCustomerPortal, signOut } from '@/server-actions';
 import { NavMenuNotLoggedIn } from './NavMenuNotLoggedIn';
-
 import {
   Menubar,
   MenubarContent,
@@ -15,8 +14,17 @@ import {
   MenubarSeparator,
   MenubarTrigger,
 } from 'xy-shared';
+import { Spinner } from '@xyflow/xy-ui';
+import { redirect } from 'next/navigation';
+import useSubscription from '@/hooks/useSubscription';
 
-const NavMenu: FC<{ user: User | null }> = ({ user }) => {
+const NavMenu: FC = () => {
+  const { isLoading, user, refetchUser } = useSubscription();
+
+  if (isLoading) {
+    return <Spinner className="text-primary" />;
+  }
+
   if (!user) {
     return <NavMenuNotLoggedIn />;
   }
@@ -37,7 +45,7 @@ const NavMenu: FC<{ user: User | null }> = ({ user }) => {
           </div>
 
           <Link href="/pro/dashboard">
-            <MenubarItem>Dashboard </MenubarItem>
+            <MenubarItem>Dashboard</MenubarItem>
           </Link>
 
           <Link href="/pro/account">
@@ -53,7 +61,15 @@ const NavMenu: FC<{ user: User | null }> = ({ user }) => {
             </MenubarItem>
           </Subscribed>
           <MenubarSeparator />
-          <MenubarItem onClick={signOut}>Logout</MenubarItem>
+          <MenubarItem
+            onClick={async () => {
+              await signOut();
+              refetchUser();
+              redirect('/');
+            }}
+          >
+            Logout
+          </MenubarItem>
         </MenubarContent>
       </MenubarMenu>
     </Menubar>

@@ -2,7 +2,12 @@
 
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
-import { getNhost, NHOST_SESSION_KEY, NHOST_REFRESH_KEY } from '@/utils/nhost';
+import { getNhost } from '@/utils/nhost';
+import {
+  NHOST_SESSION_KEY,
+  NHOST_REFRESH_KEY,
+  COOKIE_OPTIONS,
+} from '@/utils/nhost-utils';
 
 export async function signIn(formData: FormData, redirectTo = '/pro/dashboard') {
   const nhost = await getNhost();
@@ -20,15 +25,20 @@ export async function signIn(formData: FormData, redirectTo = '/pro/dashboard') 
   }
   if (session) {
     const cookieStore = await cookies();
-    cookieStore.set(NHOST_SESSION_KEY, btoa(JSON.stringify(session)), { path: '/' });
+    const exp = session?.accessTokenExpiresIn ?? 0;
+    const sessionValue = btoa(JSON.stringify(session));
+    cookieStore.set({
+      name: NHOST_SESSION_KEY,
+      value: sessionValue,
+      ...COOKIE_OPTIONS,
+      // maxAge: exp,
+    });
     if (session.refreshToken) {
-      cookieStore.set(NHOST_REFRESH_KEY, session.refreshToken, { path: '/' });
-      // Must set `nhostRefreshTokenExpiresAt`
-      // https://github.com/nhost/nhost/blob/c0635ae1c7d5fe3bd889d11291ebc6978e866647/packages/hasura-auth-js/src/machines/authentication/machine.ts#L647C15-L649C81
-      // const nextRefresh = new Date(Date.now() + session.accessTokenExpiresIn * 1_000)
-      // const value = nextRefresh.toISOString();
-      // console.log({value})
-      // cookieStore.set(NHOST_JWT_EXPIRES_AT_KEY, nextRefresh.getTime(), { path: '/' })
+      cookieStore.set({
+        name: NHOST_REFRESH_KEY,
+        value: session.refreshToken,
+        ...COOKIE_OPTIONS,
+      });
     }
     redirect(redirectTo);
   }
