@@ -1,5 +1,5 @@
 import { useReactFlow, XYPosition } from '@xyflow/react';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { OnDropAction, useDnD, useDnDPosition } from './useDnD';
 
 // This is a simple ID generator for the nodes.
