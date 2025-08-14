@@ -90,7 +90,7 @@ const RootLayout: FC<{ children: ReactNode }> = async ({ children }) => {
     ],
   };
   const components = pageMap.find(
-    (item): item is Folder => 'children' in item && item.name === 'components',
+    (item): item is Folder => 'children' in item && item.name === 'ui',
   );
   const folders = [
     ...apiReference!.children,
@@ -135,7 +135,7 @@ const RootLayout: FC<{ children: ReactNode }> = async ({ children }) => {
                     { title: 'Getting Started', route: '/learn' },
                     { title: 'API Reference', route: '/api-reference' },
                     { title: 'Examples', route: '/examples' },
-                    { title: 'Components', route: '/components' },
+                    { title: 'UI', route: '/ui' },
                     { title: 'Showcase', route: '/showcase' },
                     { title: 'Playground', route: 'https://play.reactflow.dev' },
                   ],
