@@ -113,13 +113,7 @@ export const useDnD = () => {
   }, [onDragEnd, isDragging, dropAction]);
 
   return {
-    // State. You usually do not need to access these values directly.
-    // They are only used to display the `DragGhost` component.
-    // Instead, you can use the `startDragging` action to start dragging a node.
     isDragging,
-
-    // Actions. You can use this action to start dragging a node.
-    // For example, this is used in the `Sidebar` component.
     onDragStart,
   };
 };
