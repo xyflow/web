@@ -328,6 +328,9 @@ importers:
       '@radix-ui/react-label':
         specifier: ^2.1.4
         version: 2.1.7(@types/react-dom@18.3.7(@types/react@18.3.23))(@types/react@18.3.23)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-menubar':
+        specifier: ^1.1.16
+        version: 1.1.16(@types/react-dom@18.3.7(@types/react@18.3.23))(@types/react@18.3.23)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-popover':
         specifier: ^1.1.10
         version: 1.1.15(@types/react-dom@18.3.7(@types/react@18.3.23))(@types/react@18.3.23)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -373,6 +376,9 @@ importers:
       fathom-client:
         specifier: ^3.7.2
         version: 3.7.2
+      lucide-react:
+        specifier: ^0.503.0
+        version: 0.503.0(react@18.3.1)
       next:
         specifier: ^15.3.2
         version: 15.4.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -385,6 +391,9 @@ importers:
       react-lite-youtube-embed:
         specifier: ^2.5.1
         version: 2.5.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      tailwind-merge:
+        specifier: ^3.3.1
+        version: 3.3.1
       tailwindcss:
         specifier: ^3.4.14
         version: 3.4.17(ts-node@10.9.2(@types/node@22.17.1)(typescript@5.9.2))
