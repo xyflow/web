@@ -1,4 +1,4 @@
-import { TSDoc, generateDefinition } from 'nextra/tsdoc';
+import { TSDoc } from 'nextra/tsdoc';
 import { getPageMap } from 'nextra/page-map';
 import type { MdxFile } from 'nextra';
 import { ComponentProps, FC } from 'react';
@@ -43,6 +43,7 @@ export const APIDocs: FC<{
   groupKeys,
   ...props
 }) => {
+  const { generateDefinition } = await import('nextra/tsdoc');
   console.log('stack trace', new Error().stack);
   const definition = {
     name: '',
