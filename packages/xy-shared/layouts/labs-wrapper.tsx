@@ -41,7 +41,7 @@ export const LabsLayoutWrapper: FC<
           <ChevronRightIcon className="h-5 w-5 mb-0.5 text-gray-500" />
           <Text className="ml-1 text-md font-medium">{frontMatter.title}</Text>
         </div>
-        <div className="flex flex-row items-center w-full justify-between mt-8">
+        <div className="flex flex-col md:flex-row items-start md:items-center w-full justify-start md:justify-between mt-8">
           <Heading size="lg" className="!leading-tight text-gray-900 ">
             {frontMatter.title}
           </Heading>
@@ -52,7 +52,7 @@ export const LabsLayoutWrapper: FC<
               target="_blank"
               className="text-lg"
             >
-              Visit Project Website
+              Open Project
             </a>
           </Button>
         </div>
@@ -76,7 +76,7 @@ export const LabsLayoutWrapper: FC<
         <div className="flex flex-row gap-4 w-full justify-start">
           <Button asChild className="mt-6">
             <a href={frontMatter.project_url} target="_blank" rel="noopener noreferrer">
-              Visit Project Website
+              Open Project
             </a>
           </Button>
 
