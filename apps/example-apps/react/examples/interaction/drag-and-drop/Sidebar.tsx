@@ -2,7 +2,7 @@ import { useDnD } from './useDnD';
 
 export default () => {
   const { onDragStart } = useDnD();
-  
+
   return (
     <aside>
       <div className="description">
