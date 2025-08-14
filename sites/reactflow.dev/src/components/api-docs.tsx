@@ -1,6 +1,6 @@
-import { TSDoc, generateDefinition } from 'nextra/tsdoc';
-import { getPageMap } from 'nextra/page-map';
-import type { MdxFile } from 'nextra';
+// import { TSDoc, generateDefinition } from 'nextra/tsdoc';
+// import { getPageMap } from 'nextra/page-map';
+// import type { MdxFile } from 'nextra';
 import { ComponentProps, FC } from 'react';
 
 const externalReactLinks = {
@@ -43,62 +43,64 @@ export const APIDocs: FC<{
   groupKeys,
   ...props
 }) => {
-  const pageMap = await getPageMap('/api-reference/types');
-  const reactFlowLinks = Object.fromEntries(
-    pageMap
-      .filter((item): item is MdxFile => 'frontMatter' in item)
-      .map((item) => [item.frontMatter!.title, `/api-reference/types/${item.name}`]),
-  );
-  const defaultTSDocProps: Pick<
-    ComponentProps<typeof TSDoc>,
-    'noParametersContent' | 'typeLinkMap'
-  > = {
-    noParametersContent: (
-      <p className="x:not-first:mt-[1.25em]">
-        This function does not accept any parameters.
-      </p>
-    ),
-    typeLinkMap: {
-      ...reactFlowLinks,
-      ...externalReactLinks,
-      ...externalLinks,
-      NodeType: '/api-reference/types/node',
-      EdgeMarkerType: '/api-reference/types/edge-marker',
-      EdgeType: '/api-reference/types/edge',
-    },
-  };
-
-  if (props.code) {
-    // @ts-expect-error -- fixme
-    const definition = await generateDefinition(props);
-    return <TSDoc definition={definition} {...defaultTSDocProps} />;
-  }
-  if (functionName) {
-    const definition = await generateDefinition({
-      code: `export type { ${functionName} as default } from '@xyflow/react'`,
-      flattened: true,
-      ...props,
-    });
-    return <TSDoc definition={definition} {...defaultTSDocProps} />;
-  }
-  let code: string;
-
-  if (componentName) {
-    code = `
-import type { ComponentProps, HTMLAttributes, SVGAttributes } from 'react'
-import type { ${componentName} } from '@xyflow/react'
-type MyProps = ComponentProps<typeof ${componentName}>`;
-
-    code += groupKeys
-      ? `
-type WithGroupedProps = Omit<MyProps, keyof ${groupKeys}> & {
-  '...props': ${groupKeys}
-}
-export default WithGroupedProps`
-      : 'export default MyProps';
-  } else {
-    code = `export type { ${typeName} as default } from '@xyflow/${packageName}'`;
-  }
-  const definition = await generateDefinition({ code, ...props });
-  return <TSDoc definition={definition} {...defaultTSDocProps} />;
+  console.log('stack trace', new Error().stack);
+  return null;
+//   const pageMap = await getPageMap('/api-reference/types');
+//   const reactFlowLinks = Object.fromEntries(
+//     pageMap
+//       .filter((item): item is MdxFile => 'frontMatter' in item)
+//       .map((item) => [item.frontMatter!.title, `/api-reference/types/${item.name}`]),
+//   );
+//   const defaultTSDocProps: Pick<
+//     ComponentProps<typeof TSDoc>,
+//     'noParametersContent' | 'typeLinkMap'
+//   > = {
+//     noParametersContent: (
+//       <p className="x:not-first:mt-[1.25em]">
+//         This function does not accept any parameters.
+//       </p>
+//     ),
+//     typeLinkMap: {
+//       ...reactFlowLinks,
+//       ...externalReactLinks,
+//       ...externalLinks,
+//       NodeType: '/api-reference/types/node',
+//       EdgeMarkerType: '/api-reference/types/edge-marker',
+//       EdgeType: '/api-reference/types/edge',
+//     },
+//   };
+//
+//   if (props.code) {
+//     // @ts-expect-error -- fixme
+//     const definition = await generateDefinition(props);
+//     return <TSDoc definition={definition} {...defaultTSDocProps} />;
+//   }
+//   if (functionName) {
+//     const definition = await generateDefinition({
+//       code: `export type { ${functionName} as default } from '@xyflow/react'`,
+//       flattened: true,
+//       ...props,
+//     });
+//     return <TSDoc definition={definition} {...defaultTSDocProps} />;
+//   }
+//   let code: string;
+//
+//   if (componentName) {
+//     code = `
+// import type { ComponentProps, HTMLAttributes, SVGAttributes } from 'react'
+// import type { ${componentName} } from '@xyflow/react'
+// type MyProps = ComponentProps<typeof ${componentName}>`;
+//
+//     code += groupKeys
+//       ? `
+// type WithGroupedProps = Omit<MyProps, keyof ${groupKeys}> & {
+//   '...props': ${groupKeys}
+// }
+// export default WithGroupedProps`
+//       : 'export default MyProps';
+//   } else {
+//     code = `export type { ${typeName} as default } from '@xyflow/${packageName}'`;
+//   }
+//   const definition = await generateDefinition({ code, ...props });
+//   return <TSDoc definition={definition} {...defaultTSDocProps} />;
 };
