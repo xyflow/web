@@ -1,28 +1,117 @@
-import { useDnD } from './useDnD';
+import { useReactFlow, XYPosition } from '@xyflow/react';
+import { useCallback, useEffect, useState } from 'react';
+import { OnDropAction, useDnD } from './useDnD';
 
-export default () => {
-  const { onDragStart } = useDnD();
+// This is a simple ID generator for the nodes.
+// You can customize this to use your own ID generation logic.
+let id = 0;
+const getId = () => `dndnode_${id++}`;
+
+export function Sidebar() {
+  const { onDragStart, isDragging } = useDnD();
+  // The type of the node that is being dragged.
+  const [type, setType] = useState<string | null>(null);
+
+  const { setNodes } = useReactFlow();
+
+  const createAddNewNode = useCallback(
+    (nodeType: string) => {
+      return ({ position }: { position: XYPosition }) => {
+        // Here, we create a new node and add it to the flow.
+        // You can customize the behavior of what happens when a node is dropped on the flow here.
+        const newNode = {
+          id: getId(),
+          type: nodeType,
+          position,
+          data: { label: `${nodeType} node` },
+        };
+
+        setNodes((nds) => nds.concat(newNode));
+        setType(null);
+      };
+    },
+    [setNodes, setType],
+  );
 
   return (
-    <aside>
-      <div className="description">
-        You can drag these nodes to the pane to create new nodes.
-      </div>
-      <div
-        className="dndnode input"
-        onPointerDown={(event) => onDragStart(event, 'input')}
-      >
-        Input Node
-      </div>
-      <div className="dndnode" onPointerDown={(event) => onDragStart(event, 'default')}>
-        Default Node
-      </div>
-      <div
-        className="dndnode output"
-        onPointerDown={(event) => onDragStart(event, 'output')}
-      >
-        Output Node
-      </div>
-    </aside>
+    <>
+      {/* The ghost node will be rendered at pointer position when dragging. */}
+      <DragGhost type={type} isDragging={isDragging} />
+      <aside>
+        <div className="description">
+          You can drag these nodes to the pane to create new nodes.
+        </div>
+        <div
+          className="dndnode input"
+          onPointerDown={(event) => {
+            setType('input');
+            onDragStart(event, createAddNewNode('input'));
+          }}
+        >
+          Input Node
+        </div>
+        <div
+          className="dndnode"
+          onPointerDown={(event) => {
+            setType('default');
+            onDragStart(event, createAddNewNode('default'));
+          }}
+        >
+          Default Node
+        </div>
+        <div
+          className="dndnode output"
+          onPointerDown={(event) => {
+            setType('output');
+            onDragStart(event, createAddNewNode('output'));
+          }}
+        >
+          Output Node
+        </div>
+      </aside>
+    </>
   );
-};
+}
+
+interface DragGhostProps {
+  type: string | null;
+  isDragging: boolean;
+}
+
+// The DragGhost component is used to display a ghost node when dragging a node into the flow.
+export function DragGhost({ type, isDragging }: DragGhostProps) {
+  const [position, setPosition] = useState<XYPosition>({ x: 0, y: 0 });
+
+  // By default, the pointer move event sets the position of the dragged element in the context.
+  // This will be used to display the `DragGhost` component.
+  const onDrag = useCallback(
+    (event: PointerEvent) => {
+      event.preventDefault();
+      setPosition({ x: event.clientX, y: event.clientY });
+    },
+    [isDragging],
+  );
+
+  useEffect(() => {
+    if (!isDragging) return;
+
+    document.addEventListener('pointermove', onDrag);
+    return () => {
+      setPosition({ x: 0, y: 0 });
+      document.removeEventListener('pointermove', onDrag);
+    };
+  }, [onDrag, isDragging]);
+
+  if (!isDragging || !type) return null;
+
+  return (
+    <div
+      className={`dndnode ghostnode ${type}`}
+      style={{
+        transform: `translate(${position.x}px, ${position.y}px) translate(-50%, -50%)`,
+      }}
+    >
+      {type && `${type.charAt(0).toUpperCase() + type.slice(1)} Node`}
+    </div>
+  );
+}
