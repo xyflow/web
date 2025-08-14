@@ -43,18 +43,8 @@ export const APIDocs: FC<{
   groupKeys,
   ...props
 }) => {
+  // Should be loaded dynamically to avoid Error: File not found: /var/task/sites/reactflow.dev/tsconfig.json on Vercel
   const { generateDefinition } = await import('nextra/tsdoc');
-  console.log('stack trace', new Error().stack);
-  const definition = {
-    name: '',
-    signatures: [
-      {
-        params: [],
-        returns: [],
-      },
-    ],
-  };
-
   const pageMap = await getPageMap('/api-reference/types');
   const reactFlowLinks = Object.fromEntries(
     pageMap
@@ -86,11 +76,11 @@ export const APIDocs: FC<{
     return <TSDoc definition={definition} {...defaultTSDocProps} />;
   }
   if (functionName) {
-    // const definition = await generateDefinition({
-    //   code: `export type { ${functionName} as default } from '@xyflow/react'`,
-    //   flattened: true,
-    //   ...props,
-    // });
+    const definition = await generateDefinition({
+      code: `export type { ${functionName} as default } from '@xyflow/react'`,
+      flattened: true,
+      ...props,
+    });
     return <TSDoc definition={definition} {...defaultTSDocProps} />;
   }
   let code: string;
@@ -111,6 +101,6 @@ export default WithGroupedProps`
   } else {
     code = `export type { ${typeName} as default } from '@xyflow/${packageName}'`;
   }
-  // const definition = await generateDefinition({ code, ...props });
+  const definition = await generateDefinition({ code, ...props });
   return <TSDoc definition={definition} {...defaultTSDocProps} />;
 };
