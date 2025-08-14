@@ -1,4 +1,4 @@
-import { useCallback, useContext, useEffect } from 'react';
+import { useCallback } from 'react';
 import {
   Background,
   Connection,
@@ -14,7 +14,7 @@ import {
 import '@xyflow/react/dist/style.css';
 
 import Sidebar from './Sidebar';
-import DnDContext, { DnDProvider, DragGhost, useDnD } from './useDnD';
+import { DnDProvider, DragGhost, useDnD } from './useDnD';
 
 const initialNodes = [
   {
@@ -39,25 +39,23 @@ function DnDFlow() {
     [],
   );
 
-  const { setDropAction } = useDnD();
+  const addNewNode = useCallback(
+    ({ position, type }: { position: XYPosition; type: string }) => {
+      // Here, we create a new node and add it to the flow.
+      // You can customize the behavior of what happens when a node is dropped on the flow here.
+      const newNode = {
+        id: getId(),
+        type,
+        position,
+        data: { label: `New Node` },
+      };
 
-  const addNewNode = useCallback((position: XYPosition) => {
-    // Here, we create a new node and add it to the flow.
-    // You can customize the behavior of what happens when a node is dropped on the flow here.
-    const newNode = {
-      id: getId(),
-      type: 'default',
-      position,
-      data: { label: `New Node` },
-    };
+      setNodes((nds) => nds.concat(newNode));
+    },
+    [],
+  );
 
-    setNodes((nds) => nds.concat(newNode));
-  }, []);
-
-  // When we initialize the app, we set the drop action to add a new node.
-  useEffect(() => {
-    setDropAction(addNewNode);
-  }, []);
+  useDnD({ onDrop: addNewNode });
 
   return (
     <div className="dndflow">

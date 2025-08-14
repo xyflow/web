@@ -1,16 +1,26 @@
 import { useReactFlow, XYPosition } from '@xyflow/react';
-import { createContext, useContext, useState, useCallback, useEffect } from 'react';
+import {
+  createContext,
+  useContext,
+  useState,
+  useCallback,
+  useEffect,
+  Dispatch,
+  SetStateAction,
+} from 'react';
+
+type OnDropAction = ({ position, type }: { position: XYPosition; type: string }) => void;
 
 interface DnDContextType {
   // The type of the node that is being dragged.
   type: string | null;
-  setType: (type: string | null) => void;
+  setType: Dispatch<SetStateAction<string | null>>;
   // If a node is being dragged.
   isDragging: boolean;
-  setIsDragging: (isDragging: boolean) => void;
+  setIsDragging: Dispatch<SetStateAction<boolean>>;
   // The action to be performed when a node is dropped.
-  dropAction: (position: XYPosition) => void;
-  setDropAction: (dropAction: (position: XYPosition) => void) => void;
+  dropAction: OnDropAction | null;
+  setDropAction: Dispatch<SetStateAction<OnDropAction | null>>;
 }
 
 const DnDContext = createContext<DnDContextType | null>(null);
@@ -23,7 +33,7 @@ const DnDContext = createContext<DnDContextType | null>(null);
 export const DnDProvider = ({ children }: { children: React.ReactNode }) => {
   const [type, setType] = useState<string | null>(null);
   const [isDragging, setIsDragging] = useState(false);
-  const [dropAction, setDropAction] = useState<(position: XYPosition) => void>(() => {});
+  const [dropAction, setDropAction] = useState<OnDropAction | null>(null);
 
   return (
     <DnDContext.Provider
@@ -44,15 +54,20 @@ export const DnDProvider = ({ children }: { children: React.ReactNode }) => {
 
 export default DnDContext;
 
-export const useDnD = () => {
+type UseDnDOptions = {
+  onDrop?: OnDropAction;
+};
+
+export const useDnD = ({ onDrop }: UseDnDOptions = {}) => {
   const { screenToFlowPosition } = useReactFlow();
 
   const context = useContext(DnDContext);
+
   if (!context) {
     throw new Error('useDnD must be used within a DnDProvider');
   }
 
-  const { type, setType, isDragging, setIsDragging, dropAction, setDropAction } = context;
+  const { type, setType, isDragging, setIsDragging, setDropAction, dropAction } = context;
 
   // This callback will be returned by the `useDnD` hook, and can be used in your UI,
   // when you want to start dragging a node into the flow.
@@ -79,19 +94,18 @@ export const useDnD = () => {
       // Use elementFromPoint to get the actual element under the pointer
       const elementUnderPointer = document.elementFromPoint(event.clientX, event.clientY);
       const isDroppingOnFlow = elementUnderPointer?.closest('.react-flow');
-
       event.preventDefault();
 
       // Only allow dropping on the flow area
       if (isDroppingOnFlow) {
         const flowPosition = screenToFlowPosition({ x: event.clientX, y: event.clientY });
-        dropAction(flowPosition);
+        dropAction?.({ position: flowPosition, type });
       }
 
       setType(null);
       setIsDragging(false);
     },
-    [type, setType, screenToFlowPosition, dropAction, setIsDragging],
+    [type, setType, screenToFlowPosition, setIsDragging],
   );
 
   // Add global touch event listeners
@@ -108,6 +122,12 @@ export const useDnD = () => {
       document.removeEventListener('pointerup', handlePointerUp);
     };
   }, [onDragEnd, isDragging]);
+
+  useEffect(() => {
+    if (onDrop) {
+      setDropAction(onDrop);
+    }
+  }, [onDrop]);
 
   return {
     // State. You usually do not need to access these values directly.
@@ -126,11 +146,7 @@ export const useDnD = () => {
 // The DragGhost component is used to display a ghost node when dragging a node into the flow.
 export const DragGhost = () => {
   const [position, setPosition] = useState<XYPosition>({ x: 0, y: 0 });
-  const context = useContext(DnDContext);
-  if (!context) {
-    throw new Error('DragGhost must be used within a DnDProvider');
-  }
-  const { type, isDragging } = context;
+  const { type, isDragging } = useDnD();
 
   // By default, the pointer move event sets the position of the dragged element in the context.
   // This will be used to display the `DragGhost` component.
@@ -144,13 +160,16 @@ export const DragGhost = () => {
 
   useEffect(() => {
     if (!isDragging) return;
+
     document.addEventListener('pointermove', onDrag);
     return () => {
+      setPosition({ x: 0, y: 0 });
       document.removeEventListener('pointermove', onDrag);
     };
   }, [onDrag, isDragging]);
 
   if (!isDragging || !type) return null;
+
   return (
     <div
       className={`dndnode ghostnode ${type}`}
