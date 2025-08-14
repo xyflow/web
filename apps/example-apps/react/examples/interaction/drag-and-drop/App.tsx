@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import {
   Background,
   Connection,
@@ -8,7 +9,6 @@ import {
   useEdgesState,
   useNodesState,
 } from '@xyflow/react';
-import { useCallback } from 'react';
 
 import '@xyflow/react/dist/style.css';
 
@@ -24,7 +24,7 @@ const initialNodes = [
   },
 ];
 
-const DnDFlow = () => {
+function DnDFlow() {
   const [nodes, _, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
 

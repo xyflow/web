@@ -8,10 +8,6 @@ body {
   /* Prevent zoom on mobile when tapping */
   touch-action: manipulation;
   -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 }
 
@@ -40,9 +36,9 @@ body {
 
 .dndflow .dndnode {
   height: 20px;
-  padding: 4px;
+  padding: 8px;
   border: 1px solid #1a192b;
-  border-radius: 2px;
+  border-radius: 6px;
   margin-bottom: 10px;
   display: flex;
   justify-content: center;
@@ -50,6 +46,15 @@ body {
   cursor: grab;
   /* Prevent zoom or scroll when dragging nodes on mobile */
   touch-action: none;
+  background: white;
+  font-size: 12px;
+  text-wrap: nowrap;
+}
+
+.dndflow .ghostnode {
+  position: fixed;
+  pointer-events: none;
+  width: 100px;
 }
 
 .dndflow .dndnode:active {
@@ -67,10 +72,6 @@ body {
 .dndflow .reactflow-wrapper {
   flex-grow: 1;
   height: 100%;
-}
-
-.dndflow .selectall {
-  margin-top: 10px;
 }
 
 @media screen and (min-width: 768px) {

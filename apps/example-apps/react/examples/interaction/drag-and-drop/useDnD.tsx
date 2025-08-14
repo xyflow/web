@@ -50,7 +50,7 @@ export const useDnD = () => {
   // This callback will be returned by the `useDnD` hook, and can be used in your UI,
   // when you want to start dragging a node into the flow.
   // For example, this is used in the `Sidebar` component.
-  const onPointerDown = useCallback(
+  const onDragStart = useCallback(
     (event: React.PointerEvent<HTMLDivElement>, nodeType: string) => {
       event.preventDefault();
       (event.target as HTMLElement).setPointerCapture(event.pointerId);
@@ -62,7 +62,7 @@ export const useDnD = () => {
 
   // By default, the pointer move event sets the position of the dragged element in the context.
   // This will be used to display the `DragGhost` component.
-  const onPointerMove = useCallback(
+  const onDrag = useCallback(
     (event: PointerEvent) => {
       if (!dragPosition) return;
       event.preventDefault();
@@ -71,7 +71,7 @@ export const useDnD = () => {
     [dragPosition, setDragPosition],
   );
 
-  const onPointerUp = useCallback(
+  const onDragEnd = useCallback(
     (event: PointerEvent) => {
       if (!dragPosition || !type) {
         setDragPosition(undefined);
@@ -111,15 +111,15 @@ export const useDnD = () => {
   // Add global touch event listeners
   useEffect(() => {
     if (dragPosition) {
-      document.addEventListener('pointermove', onPointerMove);
-      document.addEventListener('pointerup', onPointerUp);
+      document.addEventListener('pointermove', onDrag);
+      document.addEventListener('pointerup', onDragEnd);
 
       return () => {
-        document.removeEventListener('pointermove', onPointerMove);
-        document.removeEventListener('pointerup', onPointerUp);
+        document.removeEventListener('pointermove', onDrag);
+        document.removeEventListener('pointerup', onDragEnd);
       };
     }
-  }, [dragPosition, onPointerMove, onPointerUp]);
+  }, [dragPosition, onDrag, onDragEnd]);
 
   return {
     // State. You usually do not need to access these values directly.
@@ -130,24 +130,21 @@ export const useDnD = () => {
 
     // Actions. You can use this action to start dragging a node.
     // For example, this is used in the `Sidebar` component.
-    startDragging: onPointerDown,
+    onDragStart,
   };
 };
 
 // The DragGhost component is used to display a ghost node when dragging a node into the flow.
 export const DragGhost = () => {
   const { type, dragPosition } = useDnD();
+
   if (!dragPosition) return null;
+
   return (
     <div
-      className={`dndnode ${type}`}
+      className={`dndnode ghostnode ${type}`}
       style={{
-        position: 'fixed',
-        left: dragPosition.x - 25,
-        top: dragPosition.y - 25,
-        pointerEvents: 'none',
-        zIndex: 1000,
-        fontSize: '12px',
+        transform: `translate(${dragPosition.x}px, ${dragPosition.y}px) translate(-50%, -50%)`,
       }}
     >
       {type && `${type.charAt(0).toUpperCase() + type.slice(1)} Node`}
