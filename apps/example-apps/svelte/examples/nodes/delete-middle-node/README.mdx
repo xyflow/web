@@ -3,41 +3,45 @@ title: Delete Middle Node
 description: Remove a node without breaking the flow
 ---
 
-This example shows you how to recover deleted edges when you remove a node from the
-middle of a chain. In other words, if we have three nodes connected in sequence -
-`a->b->c` - and we deleted the middle node `b`, this example shows you how to end
-up with the graph `a->c`.
+This example shows you how to recover deleted edges when you remove a node from the middle
+of a chain. In other words, if we have three nodes connected in sequence - `a->b->c` - and
+we deleted the middle node `b`, this example shows you how to end up with the graph
+`a->c`.
 
 To achieve this, we need to make use of a few bits:
 
-- The [`onNodesDelete`](/api-reference/svelte-flow#event-onnodesdelete) callback lets
-  us know when a node is deleted.
-- [`getConnectedEdges`](/api-reference/utils/get-connected-edges) gives us
-  all the edges connected to a node, either as source or target.
+- The [`onbeforedelete`](/api-reference/svelte-flow#onbeforedelete) handler lets us
+  intercept and modify the deletion process before nodes are removed.
+- [`getConnectedEdges`](/api-reference/utils/get-connected-edges) gives us all the edges
+  connected to a node, either as source or target.
 - [`getIncomers`](/api-reference/utils/get-incomers) and
-  [`getOutgoers`](/api-reference/utils/get-outgoers) give us the nodes
-  connected to a node as source or target.
+  [`getOutgoers`](/api-reference/utils/get-outgoers) give us the nodes connected to a node
+  as source or target.
 
-All together, this allows us to take all the nodes connected to the deleted
-node, and reconnect them to any nodes the deleted node was connected to.
+All together, this allows us to take all the nodes connected to the deleted node, and
+reconnect them to any nodes the deleted node was connected to.
 
 <RemoteCodeViewer route="examples/nodes/delete-middle-node" framework="svelte" />
 
-Although this example is less than 20 lines of code there's quite a lot to digest.
-Let's break some of it down:
+Although this example is less than 20 lines of code there's quite a lot to digest. Let's
+break some of it down:
 
-- Our `onNodesDelete` callback is called with one argument - `deleted` - that is an
-  array of every node that was just deleted. If you select an individual node and
-  press the delete key, `deleted` will contain just that node, but if you make a
-  selection _all_ the nodes in that selection will be in `deleted`.
+- Our `onbeforedelete` handler is called with an object containing `nodes` and `edges`
+  arrays representing what will be deleted. The `nodes` array contains every node that
+  will be deleted. If you select an individual node and press the delete key, it will
+  contain just that node, but if you make a selection _all_ the nodes in that selection
+  will be included.
 
-- We create a new array of edges - `remainingEdges` - that contains all the edges
-  in the flow that have nothing to do with the node(s) we just deleted.
+- We create a new array of edges - `remainingEdges` - that contains all the edges in the
+  flow that have nothing to do with the node(s) we're about to delete.
 
-- We create another array of edges by _flatMapping_ over the array of `incomers`.
-  These are nodes that were connected to the deleted node as a source. For each
-  of these nodes, we create a new edge that connects to each node in the array of
-  `outgoers`. These are nodes that were connected to the deleted node as a target.
+- We create another array of edges by _flatMapping_ over the array of `incomers`. These
+  are nodes that were connected to the deleted node as a source. For each of these nodes,
+  we create a new edge that connects to each node in the array of `outgoers`. These are
+  nodes that were connected to the deleted node as a target.
+
+- Finally, we return `true` from the callback to allow the deletion to proceed with our
+  modified edge array.
 
 <Callout type="info">
 For brevity, we're using object destructuring while at the same time renaming
