@@ -10,6 +10,7 @@ const config: Config = {
       backgroundImage: {
         'reactflow-gradient': "url('/img/bg-reactflow.jpg')",
         'svelteflow-gradient': "url('/img/bg-svelteflow.jpg')",
+        gradient: "url('/img/bg-gradient.jpg')",
       },
     },
   },

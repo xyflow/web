@@ -38,7 +38,7 @@
   }
 </script>
 
-<SvelteFlow bind:nodes bind:edges {nodeTypes} {onConnect}>
+<SvelteFlow bind:nodes bind:edges {nodeTypes} {onConnect} fitView>
   <Controls />
   <Background />
 
@@ -46,13 +46,17 @@
     <div class="xy-theme__button-group">
       <button
         class={['xy-theme__button', isRectangleActive && 'active']}
-        onclick={() => () => (isRectangleActive = true)}
+        onclick={() => {
+          isRectangleActive = true;
+        }}
       >
         Rectangle Mode
       </button>
       <button
         class={['xy-theme__button', !isRectangleActive && 'active']}
-        onclick={() => () => (isRectangleActive = false)}
+        onclick={() => {
+          isRectangleActive = false;
+        }}
       >
         Selection Mode
       </button>

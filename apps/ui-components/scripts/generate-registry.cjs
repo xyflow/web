@@ -46,6 +46,7 @@ const demoOutputPath = path.join(__dirname, "../public/demo");
       const indexPath = path.join(componentPath, "index.tsx");
       const registryPath = path.join(componentPath, "registry.json");
       const demoPath = path.join(componentPath, "component-example.tsx");
+      const examplesPath = path.join(componentPath, "examples");
 
       // Read registry file and convert it to an object
       const registryRaw = fs.readFileSync(registryPath, "utf8");
@@ -85,6 +86,40 @@ const demoOutputPath = path.join(__dirname, "../public/demo");
         console.log(`No demo file found for ${folder.name}`);
       }
 
+      // If a component has examples, read them and add to the demo content.
+      // Each example should be stored in a subdirectory with:
+      // - index.tsx file containing the app example,
+      // - component-example.tsx file containing the actual component example demo content.
+      const hasExamples = fs.existsSync(examplesPath);
+      const examples = hasExamples ? {} : undefined;
+
+      if (hasExamples) {
+        const examplesDir = fs.readdirSync(examplesPath, {
+          withFileTypes: true,
+        });
+
+        for (const dir of examplesDir) {
+          if (dir.isDirectory()) {
+            const componentExamplePath = path.join(
+              examplesPath,
+              dir.name,
+              "component-example.tsx",
+            );
+
+            if (!fs.existsSync(componentExamplePath)) {
+              throw new Error(
+                `Component example file not found: ${componentExamplePath}`,
+              );
+            }
+
+            const componentExampleContent =
+              fs.readFileSync(componentExamplePath);
+
+            examples[dir.name] = componentExampleContent.toString();
+          }
+        }
+      }
+
       const demoFile = {
         files: [
           {
@@ -92,6 +127,7 @@ const demoOutputPath = path.join(__dirname, "../public/demo");
             page: page,
           },
         ],
+        examples,
       };
 
       // Write the demo file

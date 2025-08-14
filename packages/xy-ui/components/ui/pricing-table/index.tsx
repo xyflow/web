@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   cn,
   Button,
@@ -15,7 +15,13 @@ import {
 
 import Plan from './subscription-plan';
 import defaultConfig from './default-config';
-import { Currency, BillingInterval, SubscriptionPlan, PlanId } from './types';
+import {
+  Currency,
+  BillingInterval,
+  SubscriptionPlan,
+  PlanId,
+  OnSelectCurrenty,
+} from './types';
 
 const PricingTable = ({
   className,
@@ -24,22 +30,27 @@ const PricingTable = ({
 }: {
   className?: string;
   plans?: SubscriptionPlan[];
-  onSelect?: ({
-    plan,
-    currency,
-    billingInterval,
-  }: {
-    plan: PlanId;
-    currency: Currency;
-    billingInterval: BillingInterval;
-  }) => void;
+  onSelect?: OnSelectCurrenty;
 }) => {
   const [billingInterval, setBillingInterval] = useState<BillingInterval>(
     BillingInterval.MONTH,
   );
-  const [currency, setCurrency] = useState<Currency>(getDefaultCurrency());
+  const [currency, setCurrency] = useState<Currency | undefined>(undefined);
+  const [, setIsLoaded] = useState(false);
 
   const isMonthly = billingInterval === BillingInterval.MONTH;
+
+  useEffect(() => {
+    const storedCurrency = localStorage.getItem('pricing-currency');
+    const currency =
+      storedCurrency && Object.values(Currency).includes(storedCurrency as Currency)
+        ? (storedCurrency as Currency)
+        : getDefaultCurrency();
+
+    setCurrency(currency);
+    localStorage.setItem('pricing-currency', currency);
+    setIsLoaded(true);
+  }, []);
 
   return (
     <TooltipProvider delayDuration={0}>
@@ -54,25 +65,24 @@ const PricingTable = ({
             <Button
               variant="secondary"
               onClick={() => setBillingInterval(BillingInterval.MONTH)}
-              className={
-                isMonthly ? '' : 'text-gray-400 bg-gray-100 shadow-none'
-              }
+              className={isMonthly ? '' : 'text-gray-400 bg-gray-100 shadow-none'}
             >
               Monthly
             </Button>
             <Button
               variant="secondary"
               onClick={() => setBillingInterval(BillingInterval.YEAR)}
-              className={
-                !isMonthly ? '' : 'text-gray-400 bg-gray-100 shadow-none'
-              }
+              className={!isMonthly ? '' : 'text-gray-400 bg-gray-100 shadow-none'}
             >
               Yearly
             </Button>
           </div>
           <Select
             value={currency}
-            onValueChange={(value) => setCurrency(value as Currency)}
+            onValueChange={(value) => {
+              setCurrency(value as Currency);
+              localStorage.setItem('pricing-currency', value);
+            }}
           >
             <SelectTrigger className="w-[100px] absolute right-0">
               <SelectValue />
@@ -87,7 +97,7 @@ const PricingTable = ({
           </Select>
         </div>
 
-        <Container>
+        <Container className="relative z-1">
           <div className={`grid grid-cols-1 lg:grid-cols-3 gap-0`}>
             {plans.map((plan) => (
               <Plan
@@ -116,16 +126,12 @@ const currencyConfigs = [
   },
 ];
 
-const defaultCurrency = Currency.USD;
-
 function getDefaultCurrency(): Currency {
   let currency = Currency.USD;
 
   currencyConfigs.forEach((config) => {
     try {
-      const timezone = Intl.DateTimeFormat()
-        .resolvedOptions()
-        .timeZone.toLowerCase();
+      const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone.toLowerCase();
 
       config.search.forEach((search) => {
         if (timezone.includes(search)) {

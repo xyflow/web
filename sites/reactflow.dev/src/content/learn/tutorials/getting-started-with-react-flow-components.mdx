@@ -1,75 +1,79 @@
 ---
-sidebarTitle: React Flow Components
-title: Getting started with React Flow Components
+sidebarTitle: React Flow UI
+title: Getting started with React Flow UI
 intro: words
 date: 2024/01/20
 authors: ['hayleigh']
-tags: ['react-flow', 'components', 'shadcn', 'computational']
+tags: ['react-flow', 'ui', 'shadcn', 'computational']
 image: ''
 ---
 
+import { Emoji } from '@xyflow/xy-ui';
 import { Callout } from 'nextra/components';
 import { Image } from 'xy-shared';
-import { Emoji } from '@xyflow/xy-ui';
 import { RemoteCodeViewer } from 'xy-shared/server';
 
-Recently, we launched an exciting new addition to our open-source roster: React
-Flow Components. These are pre-built nodes, edges, and other ui elements that you
-can quickly add to your React Flow applications to get up and running. The catch
-is these components are built on top of [shadcn/ui](https://ui.shadcn.com) and
-the shadcn CLI.
+_**Update July 2025**: "React Flow UI" was formerly known as "React Flow Components". We
+renamed it because it now includes both components and templates. Additionally, since it's
+built on shadcn/ui, the "UI" naming makes it easier for developers to recognize the
+connection and understand what we offer._
 
-We've previously written about our experience and what led us to choosing shadcn
-over on the [xyflow blog](https://xyflow.com/blog/react-flow-components), but in
-this tutorial we're going to focus on how to get started from scratch with shadcn,
-Tailwind CSS, and React Flow Components.
+Recently, we launched an exciting new addition to our open-source roster: React Flow
+Components. These are pre-built nodes, edges, and other ui elements that you can quickly
+add to your React Flow applications to get up and running. The catch is these components
+are built on top of [shadcn/ui](https://ui.shadcn.com) and the shadcn CLI.
+
+We've previously written about our experience and what led us to choosing shadcn over on
+the [xyflow blog](https://xyflow.com/blog/react-flow-components), but in this tutorial
+we're going to focus on how to get started from scratch with shadcn, Tailwind CSS, and
+React Flow Components.
 
 <Callout>
 **Wait, what's shadcn?**
 
-No what, **who**! Shadcn is the author of a collection of pre-designed components
-known as `shadcn/ui`. Notice how we didn't say _library_ there? Shadcn takes a
-different approach where components are added to your project's source code and
-are "owned" by you: once you add a component you're free to modify it to suit your
-needs!
+No what, **who**! Shadcn is the author of a collection of pre-designed components known as
+`shadcn/ui`. Notice how we didn't say _library_ there? Shadcn takes a different approach
+where components are added to your project's source code and are "owned" by you: once you
+add a component you're free to modify it to suit your needs!
 
 </Callout>
 
 ## Getting started
 
-To begin with, we'll set up a new [`vite`](https://vitejs.dev) project along with
-all the dependencies and config we'll need. Start by running the following command:
+To begin with, we'll set up a new [`vite`](https://vitejs.dev) project along with all the
+dependencies and config we'll need. Start by running the following command:
 
 ```bash copy npm2yarn
 npx create-vite@latest
 ```
 
-Vite is able to scaffold projects for many popular frameworks, but we only care
-about React! Additionally, make sure to set up a **TypeScript** project. React
-Flow's documentation is a mix of JavaScript and TypeScript, but for shadcn components
-TypeScript is _required_!
+Vite is able to scaffold projects for many popular frameworks, but we only care about
+React! Additionally, make sure to set up a **TypeScript** project. React Flow's
+documentation is a mix of JavaScript and TypeScript, but for shadcn components TypeScript
+is _required_!
 
-All shadcn and React Flow components are styled with [Tailwind CSS](https://tailwindcss.com/docs/utility-first),
-so we'll need to install that and a few other dependencies next:
+All shadcn and React Flow components are styled with
+[Tailwind CSS](https://tailwindcss.com/docs/utility-first), so we'll need to install that
+and a few other dependencies next:
 
 ```bash copy npm2yarn
 npm install -D tailwindcss postcss autoprefixer
 ```
 
 Tailwind is a heavily customizable utility-first CSS framework and much of that
-customization is done in a `tailwind.config.js` file. Fortunately, the package
-can generate a default config for us:
+customization is done in a `tailwind.config.js` file. Fortunately, the package can
+generate a default config for us:
 
 ```bash copy npm2yarn
 npx tailwindcss init -p
 ```
 
 Tailwind works by scanning your project's source code and building a CSS file that
-contains only the utilities you're using. To make sure that happens we need to
-change two things:
+contains only the utilities you're using. To make sure that happens we need to change two
+things:
 
-1. Update the `content` field in `tailwind.config.js` to include any source files
-   that might contain Tailwind classes.
+1. Update the `content` field in `tailwind.config.js` to include any source files that
+   might contain Tailwind classes.
 
 ```js filename="tailwind.config.js" {3}
 /** @type {import('tailwindcss').Config} */
@@ -111,11 +115,11 @@ export default App;
 
 ### Setting up shadcn/ui
 
-Vite scaffolds some `tsconfig` files for us when generating a TypeScript project
-and we'll need to make some changes to these so the shadcn components can work
-correctly. The shadcn CLI is pretty clever (we'll get to that in a second) but
-it can't account for every project structure so instead shadcn components that
-depend on one another make use of TypeScript's import paths.
+Vite scaffolds some `tsconfig` files for us when generating a TypeScript project and we'll
+need to make some changes to these so the shadcn components can work correctly. The shadcn
+CLI is pretty clever (we'll get to that in a second) but it can't account for every
+project structure so instead shadcn components that depend on one another make use of
+TypeScript's import paths.
 
 In both `tsconfig.json` and `tsconfig.app.json` add the following to the `compilerOptions`
 object:
@@ -153,10 +157,10 @@ export default defineConfig({
 });
 ```
 
-At this point feel free to pat yourself on the back and take a tea break. There's
-a lot of up-front configuration to get through but once we have the shadcn CLI
-set up we'll be able to add new components to our project with a single command -
-even if they have dependencies or need to modify existing files!
+At this point feel free to pat yourself on the back and take a tea break. There's a lot of
+up-front configuration to get through but once we have the shadcn CLI set up we'll be able
+to add new components to our project with a single command - even if they have
+dependencies or need to modify existing files!
 
 We can now run the following command to set up shadcn/ui in our project:
 
@@ -164,10 +168,9 @@ We can now run the following command to set up shadcn/ui in our project:
 npx shadcn@latest init
 ```
 
-The CLI will ask you a few questions about your project and then it will generate
-a `components.json` file in the root of your project, and update your
-`tailwind.config.js` with some extensions to your theme. We can take all the
-default options for now:
+The CLI will ask you a few questions about your project and then it will generate a
+`components.json` file in the root of your project, and update your `tailwind.config.js`
+with some extensions to your theme. We can take all the default options for now:
 
 ```
 ✔ Which style would you like to use? › New York
@@ -177,22 +180,31 @@ default options for now:
 
 ## Adding your first components
 
-To demonstrate how powerful shadcn can be, let's dive right into making a new
-**React Flow** app! Now everything is set up, we can add the [`<BaseNode />`](https://reactflow.dev/components/nodes/base-node)
-component with a single command:
+To demonstrate how powerful shadcn can be, let's dive right into making a new **React
+Flow** app! Now everything is set up, we can add the
+[`<BaseNode />`](/ui/components/base-node) component with a single command:
 
 ```bash copy npm2yarn
 npx shadcn@latest add https://ui.reactflow.dev/base-node
 ```
 
-This command will generate a new file `src/components/base-node.tsx` as well as
-update our dependencies to include `@xyflow/react`!
+This command will generate a new file `src/components/base-node.tsx` as well as update our
+dependencies to include `@xyflow/react`!
 
-That `<BaseNode />` component is not a React Flow node directly. Instead, as the
-name implies, it's a base that many of our other nodes build upon. You can use it to have a unified style for all of your nodes as well. Let's see what
-it looks like by updating our `App.jsx` file:
+That `<BaseNode />` component is not a React Flow node directly. Instead, as the name
+implies, it's a base that many of our other nodes build upon. It also comes with
+additional components that you can use to provide a header and content for your nodes.
+These components are:
 
-```jsx filename="src/App.jsx" {1,3,7-11}
+- `<BaseNodeHeader />`
+- `<BaseNodeHeaderTitle />`
+- `<BaseNodeContent />`
+- `<BaseNodeFooter />`
+
+You can use it to have a unified style for all of your nodes as well. Let's see what it
+looks like by updating our `App.jsx` file:
+
+```jsx filename="src/App.jsx"
 import '@xyflow/react/dist/style.css';
 
 import { BaseNode } from '@/components/base-node';
@@ -200,7 +212,14 @@ import { BaseNode } from '@/components/base-node';
 function App() {
   return (
     <div className="w-screen h-screen p-8">
-      <BaseNode selected={false}>Hi! 👋</BaseNode>
+      <BaseNode>
+        <BaseNodeHeader>
+          <BaseNodeHeaderTitle>Base Node</BaseNodeHeaderTitle>
+        </BaseNodeHeader>
+        <BaseNodeContent>
+          This is a base node component that can be used to build other nodes.
+        </BaseNodeContent>
+      </BaseNode>
     </div>
   );
 }
@@ -216,57 +235,139 @@ Ok, not super exciting...
   rounded container with a blue border and the text 'Hi! 👋' inside."
 />
 
-Remember that the `<BaseNode />` component is used by any _other_ React Flow
-components we add using the shadcn CLI, so what happens if we change it? Let's
-update the `<BaseNode />` component to render any text as bold monospace instead:
+Remember that the `<BaseNode />` component is used by any _other_ React Flow components we
+add using the shadcn CLI, so what happens if we change it? Let's update the `<BaseNode />`
+component to render any text as bold monospace instead:
 
 ```jsx filename="src/components/base-node.tsx" {11}
-import React from "react";
 import { cn } from "@/lib/utils";
+import { forwardRef, HTMLAttributes } from "react";
 
-export const BaseNode = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement> & { selected?: boolean }
->(({ className, selected, ...props }, ref) => (
-  <div
+export const BaseNode = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
+  ({ className, ...props }, ref) => (
+    <div
+      ref={ref}
+      className={cn(
+        'relative rounded-md border bg-card text-card-foreground',
+        'hover:ring-1',
+        // React Flow displays node elements inside of a `NodeWrapper` component,
+        // which compiles down to a div with a the class `react-flow__node`.
+        // When a node is selected, the class `selected` is added to the
+        // `react-flow__node` element. This allows us to style the node when it
+        // is selected, using Tailwind's `&` selector.
+        '[.react-flow\\_\\_node.selected_&]:border-muted-foreground',
+        '[.react-flow\\_\\_node.selected_&]:shadow-lg',
+        className,
+      )}
+      tabIndex={0}
+      {...props}
+    />
+  ),
+);
+BaseNode.displayName = 'BaseNode';
+
+/**
+ * A container for a consistent header layout intended to be used inside the
+ * `<BaseNode />` component.
+ */
+export const BaseNodeHeader = forwardRef<HTMLElement, HTMLAttributes<HTMLElement>>(
+  ({ className, ...props }, ref) => (
+    <header
+      ref={ref}
+      {...props}
+      className={cn(
+        'mx-0 my-0 -mb-1 flex flex-row items-center justify-between gap-2 px-3 py-2',
+        // Remove or modify these classes if you modify the padding in the
+        // `<BaseNode />` component.
+        className,
+      )}
+    />
+  ),
+);
+BaseNodeHeader.displayName = 'BaseNodeHeader';
+
+/**
+ * The title text for the node. To maintain a native application feel, the title
+ * text is not selectable.
+ */
+export const BaseNodeHeaderTitle = forwardRef<
+  HTMLHeadingElement,
+  HTMLAttributes<HTMLHeadingElement>
+>(({ className, ...props }, ref) => (
+  <h3
     ref={ref}
-    className={cn(
-      "rounded-md border bg-card p-5 text-card-foreground font-mono font-bold",
-      className,
-      selected ? "border-muted-foreground shadow-lg" : "",
-      "hover:ring-1",
-    )}
+    data-slot="base-node-title"
+    className={cn('user-select-none flex-1 font-semibold', className)}
     {...props}
   />
 ));
-BaseNode.displayName = "BaseNode";
+BaseNodeHeaderTitle.displayName = 'BaseNodeHeaderTitle';
+
+export const BaseNodeContent = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
+  ({ className, ...props }, ref) => (
+    <div
+      ref={ref}
+      data-slot="base-node-content"
+      className={cn('flex flex-col gap-y-2 p-3', className)}
+      {...props}
+    />
+  ),
+);
+BaseNodeContent.displayName = 'BaseNodeContent';
+
+export const BaseNodeFooter = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
+  ({ className, ...props }, ref) => (
+    <div
+      ref={ref}
+      data-slot="base-node-footer"
+      className={cn(
+        'flex flex-col items-center gap-y-2 border-t px-3 pb-3 pt-2',
+        className,
+      )}
+      {...props}
+    />
+  ),
+);
+BaseNodeFooter.displayName = 'BaseNodeFooter';
+
 ```
 
-Now we'll add an actual node from the React Flow Components registry and see what
-happens:
+Now we'll add an actual node from the React Flow UI registry and see what happens:
 
 ```bash copy npm2yarn
-npx shadcn@latest add https://ui.reactflow.dev/tooltip-node
+npx shadcn@latest add https://ui.reactflow.dev/node-tooltip
 ```
 
-And we'll update our `App.tsx` file to render a proper flow. We'll use the same
-basic setup as most of our examples so we won't break down the individual pieces
-here. If you're still new to React Flow and want to learn a bit more about how to
-set up a basic flow from scratch, check out our [quickstart guide](/learn).
+And we'll update our `App.tsx` file to render a proper flow. We'll use the same basic
+setup as most of our examples so we won't break down the individual pieces here. If you're
+still new to React Flow and want to learn a bit more about how to set up a basic flow from
+scratch, check out our [quickstart guide](/learn).
 
-```tsx filename="src/App.tsx" {14,16-18,20-33,}
+{/* TODO this could be linked to example app with RemoteCodeViewer editor */}
+
+```tsx filename="src/App.tsx"
+import React from 'react';
+import { ReactFlow, type Node, Position, useNodesState } from '@xyflow/react';
+
 import '@xyflow/react/dist/style.css';
 
-import { ReactFlow, Position, useNodesState, Node } from '@xyflow/react';
-
-import { TooltipNode, TooltipContent, TooltipTrigger } from '@/components/tooltip-node';
+import {
+  NodeTooltip,
+  NodeTooltipContent,
+  NodeTooltipTrigger,
+} from './components/node-tooltip';
+import { BaseNodeContent } from './components/base-node';
 
 function Tooltip() {
   return (
-    <TooltipNode>
-      <TooltipContent position={Position.Top}>Hidden Content</TooltipContent>
-      <TooltipTrigger>Hover</TooltipTrigger>
-    </TooltipNode>
+    <NodeTooltip>
+      <NodeTooltipContent position={Position.Top}>Hidden Content</NodeTooltipContent>
+      <BaseNode>
+        <BaseNodeContent>
+          <NodeTooltipTrigger>Hover</NodeTooltipTrigger>
+        </BaseNodeContent>
+      </BaseNode>
+    </NodeTooltip>
   );
 }
 
@@ -283,77 +384,76 @@ const initialNodes: Node[] = [
   },
 ];
 
-function App() {
+function Flow() {
   const [nodes, , onNodesChange] = useNodesState(initialNodes);
 
   return (
-    <div className="h-screen w-screen p-8">
+    <div className="h-screen w-screen p-8 bg-gray-50 rounded-xl">
       <ReactFlow
         nodes={nodes}
-        onNodesChange={onNodesChange}
         nodeTypes={nodeTypes}
+        onNodesChange={onNodesChange}
         fitView
       />
     </div>
   );
 }
-
-export default App;
+export function App() {
+  return <Flow />;
+}
 ```
 
 And would you look at that, the tooltip node we added automatically uses the
 `<BaseNode />` component we customized!
 
-<RemoteCodeViewer
-  route="tutorials/components/tooltip"
-  framework="react"
-  showEditor={false}
-/>
+<RemoteCodeViewer route="tutorials/components/tooltip" framework="react" />
 
 ## Moving fast and making things
 
-Now we've got a basic understanding of how shadcn/ui and the CLI works, we can
-begin to see how easy it is to add new components and build out a flow. To see
-everything React Flow Components has to offer let's build out a simple calculator
-flow.
+Now we've got a basic understanding of how shadcn/ui and the CLI works, we can begin to
+see how easy it is to add new components and build out a flow. To see everything React
+Flow Components has to offer let's build out a simple calculator flow.
 
-First let's remove the `<TooltipNode />` and undo our changes to `<BaseNode />`.
-In addition to pre-made nodes, React Flow Components also contains building blocks
-for creating your own custom nodes. To see them, we'll add the `node-header` and
-`labeled-handle` components:
+First let's remove the `<NodeTooltip />` and undo our changes to `<BaseNode />`. In
+addition to pre-made nodes, React Flow UI also contains building blocks for creating your
+own custom nodes. To see them, we'll add the `labeled-handle` component:
 
 ```bash copy npm2yarn
-npx shadcn@latest add \
-  https://ui.reactflow.dev/node-header \
-  https://ui.reactflow.dev/labeled-handle
+npx shadcn@latest add https://ui.reactflow.dev/labeled-handle
 ```
 
-<Callout type="info">
-  Notice how adding the `node-header` component also brought with it some standard
-  shadcn/ui components! This lets us at React Flow build richer components for you to use
-  without re-inventing the wheel for things like dropdowns and popovers.
-</Callout>
-
-The first node we'll create is a simple number node with some buttons to increment
-and decrement the value and a handle to connect it to other nodes. Create a folder
+The first node we'll create is a simple number node with some buttons to increment and
+decrement the value and a handle to connect it to other nodes. Create a folder
 `src/components/nodes` and then add a new file `src/components/nodes/num-node.tsx`.
 
-Paste the following into the new file:
+Paste the following into the new file and install the following dependencies:
 
-```tsx filename="src/components/nodes/num-node.tsx" {9-18,44-53,56,58,62,64}
-import React, { useCallback } from 'react';
+```bash copy npm2yarn
+npx shadcn@latest add dropdown-menu button
+```
+
+```tsx filename="src/components/nodes/num-node.tsx"
 import { type Node, type NodeProps, Position, useReactFlow } from '@xyflow/react';
+import { useCallback } from 'react';
 
-import { BaseNode } from '@/components/base-node';
-import { LabeledHandle } from '@/components/labeled-handle';
 import {
-  NodeHeader,
-  NodeHeaderTitle,
-  NodeHeaderActions,
-  NodeHeaderMenuAction,
-} from '@/components/node-header';
+  BaseNode,
+  BaseNodeContent,
+  BaseNodeFooter,
+  BaseNodeHeader,
+  BaseNodeHeaderTitle,
+} from '@/components/base-node';
+import { LabeledHandle } from '@/components/labeled-handle';
+
+import { EllipsisVertical } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { DropdownMenuItem } from '@/components/ui/dropdown-menu';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 
 export type NumNode = Node<{
   value: number;
@@ -380,25 +480,39 @@ export function NumNode({ id, data }: NodeProps<NumNode>) {
 
   return (
     <BaseNode>
-      <NodeHeader>
-        <NodeHeaderTitle>Num</NodeHeaderTitle>
-        <NodeHeaderActions>
-          <NodeHeaderMenuAction label="Open node menu">
+      <BaseNodeHeader className="border-b">
+        <BaseNodeHeaderTitle>Num</BaseNodeHeaderTitle>
+
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button
+              variant="ghost"
+              className="nodrag p-1"
+              aria-label="Node Actions"
+              title="Node Actions"
+            >
+              <EllipsisVertical className="size-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <DropdownMenuLabel>Node Actions</DropdownMenuLabel>
             <DropdownMenuItem onSelect={handleReset}>Reset</DropdownMenuItem>
             <DropdownMenuItem onSelect={handleDelete}>Delete</DropdownMenuItem>
-          </NodeHeaderMenuAction>
-        </NodeHeaderActions>
-      </NodeHeader>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </BaseNodeHeader>
 
-      <div className="flex gap-2 items-center mb-10">
-        <Button onClick={handleDecr}>-</Button>
-        <pre>{String(data.value).padStart(3, ' ')}</pre>
-        <Button onClick={handleIncr}>+</Button>
-      </div>
+      <BaseNodeContent>
+        <div className="flex gap-2 items-center">
+          <Button onClick={handleDecr}>-</Button>
+          <pre>{String(data.value).padStart(3, ' ')}</pre>
+          <Button onClick={handleIncr}>+</Button>
+        </div>
+      </BaseNodeContent>
 
-      <footer className="bg-gray-100 -m-5">
+      <BaseNodeFooter className="bg-gray-100 items-end px-0 py-1 w-full">
         <LabeledHandle title="out" type="source" position={Position.Right} />
-      </footer>
+      </BaseNodeFooter>
     </BaseNode>
   );
 }
@@ -411,15 +525,11 @@ export function NumNode({ id, data }: NodeProps<NumNode>) {
   nodes](/learn/customization/custom-nodes).
 </Callout>
 
-In the snippet above we've highlighted the imports and components that come from
-shadcn/ui and React Flow Components. In just a few lines of code we already have
-quite a capable node:
+In the snippet above we've highlighted the imports and components that come from shadcn/ui
+and React Flow Components. In just a few lines of code we already have quite a capable
+node:
 
-<RemoteCodeViewer
-  route="tutorials/components/num-node"
-  framework="react"
-  showEditor={false}
-/>
+<RemoteCodeViewer route="tutorials/components/num-node" framework="react" />
 
 Our `<NumNode />` component...
 
@@ -427,12 +537,11 @@ Our `<NumNode />` component...
 - Contains some simple controls to increment and decrement a value.
 - Has a labelled handle to connect it to other nodes.
 
-Next we'll create a second node that will compute the sum of two input values.
-We don't need to add any additional components for this node, so go ahead and
-create a new file `src/components/nodes/sum-node.tsx` and paste in the following:
+Next we'll create a second node that will compute the sum of two input values. We don't
+need to add any additional components for this node, so go ahead and create a new file
+`src/components/nodes/sum-node.tsx` and paste in the following:
 
 ```tsx filename="src/components/nodes/sum-node.tsx"
-import React, { useEffect } from 'react';
 import {
   type Node,
   type NodeProps,
@@ -440,10 +549,10 @@ import {
   useReactFlow,
   useStore,
 } from '@xyflow/react';
+import { useEffect } from 'react';
 
-import { BaseNode } from '../base-node';
+import { BaseNode, BaseNodeHeader, BaseNodeHeaderTitle } from '../base-node';
 import { LabeledHandle } from '../labeled-handle';
-import { NodeHeader, NodeHeaderTitle } from '../node-header';
 
 export type SumNode = Node<{
   value: number;
@@ -468,11 +577,11 @@ export function SumNode({ id }: NodeProps<SumNode>) {
 
   return (
     <BaseNode className="w-32">
-      <NodeHeader>
-        <NodeHeaderTitle>Sum</NodeHeaderTitle>
-      </NodeHeader>
+      <BaseNodeHeader>
+        <BaseNodeHeaderTitle>Sum</BaseNodeHeaderTitle>
+      </BaseNodeHeader>
 
-      <footer className="bg-gray-100 -m-5">
+      <footer className="bg-gray-100">
         <LabeledHandle title="x" id="x" type="target" position={Position.Left} />
         <LabeledHandle title="y" id="y" type="target" position={Position.Left} />
         <LabeledHandle title="out" type="source" position={Position.Right} />
@@ -494,25 +603,24 @@ function getHandleValue(
 }
 ```
 
-React Flow Components doesn't just provide components for building nodes. We also
-provide pre-built edges and other UI elements you can drop into your flows for
-quick building.
+React Flow UI doesn't just provide components for building nodes. We also provide
+pre-built edges and other UI elements you can drop into your flows for quick building.
 
-To better visualize data in our calculator flow, let's pull in the `data-edge`
-component. This edge renders a field from the source node's data object as a label
-on the edge itself. Add the `data-edge` component to your project:
+To better visualize data in our calculator flow, let's pull in the `data-edge` component.
+This edge renders a field from the source node's data object as a label on the edge
+itself. Add the `data-edge` component to your project:
 
 ```bash copy npm2yarn
 npx shadcn@latest add https://ui.reactflow.dev/data-edge
 ```
 
-The `<DataEdge />` component works by looking up a field from its source node's
-`data` object. We've been storing the value of each node in our calculator field
-in a `"value"` property so we'll update our `edgeType` object to include the new
-`data-edge` and we'll update the `onConnect` handler to create a new edge of this
-type, making sure to set the edge's `data` object correctly:
+The `<DataEdge />` component works by looking up a field from its source node's `data`
+object. We've been storing the value of each node in our calculator field in a `"value"`
+property so we'll update our `edgeType` object to include the new `data-edge` and we'll
+update the `onConnect` handler to create a new edge of this type, making sure to set the
+edge's `data` object correctly:
 
-```tsx
+```tsx filename="src/App.tsx"
 import '@xyflow/react/dist/style.css';
 
 import {
@@ -617,40 +725,35 @@ export default App;
 
 Putting everything together we end up with quite a capable little calculator!
 
-<RemoteCodeViewer
-  route="tutorials/components/complete"
-  framework="react"
-  showEditor={false}
-/>
+<RemoteCodeViewer route="tutorials/components/complete" framework="react" />
 
-You could continue to improve this flow by adding nodes to perform other operations
-or to take user input using additional components from the [shadcn/ui registry](https://ui.shadcn.com/docs/components/slider).
-In fact, keep your eyes peeled soon for a follow-up to this guide where we'll show
-a complete application built using React Flow Components <Emoji content="👀" />.
+You could continue to improve this flow by adding nodes to perform other operations or to
+take user input using additional components from the
+[shadcn/ui registry](https://ui.shadcn.com/docs/components/slider). In fact, keep your
+eyes peeled soon for a follow-up to this guide where we'll show a complete application
+built using React Flow Components <Emoji content="👀" />.
 
 ## Wrapping up
 
-In just a short amount of time we've managed to build out a fairly complete flow
-using the components and building blocks provided by shadcn React Flow Components.
-We've learned:
+In just a short amount of time we've managed to build out a fairly complete flow using the
+components and building blocks provided by shadcn React Flow Components. We've learned:
 
-- How editing the [`<BaseNode />`](/components/nodes/base-node) component will
-  affect other nodes pulled from the React Flow Components registry.
+- How editing the [`<BaseNode />`](/ui/components/base-node) component will affect other
+  nodes pulled from the React Flow UI registry.
 
-- How to use building blocks like the [`<NodeHeader />`](/components/node-blocks/node-header)
-  and [`<LabeledHandle />`](components/handles/labeled-handle) components to build
-  our own custom nodes without starting from scratch.
+- How to use building blocks like the [`<BaseNodeHeader />`](/ui/components/base-node) and
+  [`<LabeledHandle />`](/ui/components/labeled-handle) components to build our own custom
+  nodes without starting from scratch.
 
-- That React Flow Components also provides custom edges like the [`<DataEdge />`](/components/edges/data-edge)
-  to drop into our applications.
+- That React Flow UI also provides custom edges like the
+  [`<DataEdge />`](/ui/components/data-edge) to drop into our applications.
 
-And thanks to the power of Tailwind, tweaking the visual style of these components
-is as simple as editing `tailwind.config.js` and editing the variables in your CSS
-file.
+And thanks to the power of Tailwind, tweaking the visual style of these components is as
+simple as editing `tailwind.config.js` and editing the variables in your CSS file.
 
-That's all for now! You can see all the components we currently have available over
-on the [components docs page](/components). The React Flow Components project is
-still in its infancy: if you have any suggestions or requests for new components
-we'd love to hear about them. Or perhaps you're already starting to build something
-with shadcn and React Flow Components. Either way make sure you let us know on our
-[Discord server](https://discord.com/invite/RVmnytFmGW) or on [Twitter](https://twitter.com/xyflowdev)!
+That's all for now! You can see all the components we currently have available over on the
+[UI docs page](/ui). The React Flow UI project is still in its infancy: if you have any
+suggestions or requests for new components we'd love to hear about them. Or perhaps you're
+already starting to build something with shadcn and React Flow UI. Either way make sure
+you let us know on our [Discord server](https://discord.com/invite/RVmnytFmGW) or on
+[Twitter](https://twitter.com/xyflowdev)!

@@ -46,21 +46,18 @@ export default function Flow() {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
-  const onConnect = useCallback(
-    (params) => setEdges(addEdge(params, edges)),
-    [edges],
-  );
+  const onConnect = useCallback((params) => setEdges(addEdge(params, edges)), [edges]);
+
   const onNodesDelete = useCallback(
     (deleted) => {
+      let remainingNodes = [...nodes];
       setEdges(
         deleted.reduce((acc, node) => {
-          const incomers = getIncomers(node, nodes, edges);
-          const outgoers = getOutgoers(node, nodes, edges);
-          const connectedEdges = getConnectedEdges([node], edges);
+          const incomers = getIncomers(node, remainingNodes, acc);
+          const outgoers = getOutgoers(node, remainingNodes, acc);
+          const connectedEdges = getConnectedEdges([node], acc);
 
-          const remainingEdges = acc.filter(
-            (edge) => !connectedEdges.includes(edge),
-          );
+          const remainingEdges = acc.filter((edge) => !connectedEdges.includes(edge));
 
           const createdEdges = incomers.flatMap(({ id: source }) =>
             outgoers.map(({ id: target }) => ({
@@ -69,6 +66,8 @@ export default function Flow() {
               target,
             })),
           );
+
+          remainingNodes = remainingNodes.filter((rn) => rn.id !== node.id);
 
           return [...remainingEdges, ...createdEdges];
         }, edges),

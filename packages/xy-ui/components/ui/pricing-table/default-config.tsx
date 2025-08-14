@@ -28,18 +28,15 @@ const features: Record<string, FeatureConfig> = {
   },
   teamMembers1: {
     label: 'Invite 1 team member',
-    description:
-      'You can purchase additional seats through the platform as-needed.',
+    description: 'You can purchase additional seats through the platform as-needed.',
   },
   teamMembers5: {
     label: 'Invite 5 team members',
-    description:
-      'You can purchase additional seats through the platform as-needed.',
+    description: 'You can purchase additional seats through the platform as-needed.',
   },
   teamMembers10: {
     label: 'Invite 10 team members',
-    description:
-      'You can purchase additional seats through the platform as-needed.',
+    description: 'You can purchase additional seats through the platform as-needed.',
   },
   prioritizedIssues: {
     label: 'Prioritized Github Issues',
@@ -58,32 +55,32 @@ export const StarterPlan: SubscriptionPlan = {
     {
       currency: Currency.EUR,
       interval: BillingInterval.MONTH,
-      label: '129€',
+      label: '149€',
     },
     {
       currency: Currency.EUR,
       interval: BillingInterval.YEAR,
-      label: '119€',
+      label: '129€',
     },
     {
       currency: Currency.USD,
       interval: BillingInterval.MONTH,
-      label: '$139',
+      label: '$169',
     },
     {
       currency: Currency.USD,
       interval: BillingInterval.YEAR,
-      label: '$129',
+      label: '$149',
     },
     {
       currency: Currency.INR,
       interval: BillingInterval.MONTH,
-      label: '₹2,700',
+      label: '₹7,500',
     },
     {
       currency: Currency.INR,
       interval: BillingInterval.YEAR,
-      label: '₹2,475',
+      label: '₹7,000',
     },
   ],
   features: [
@@ -97,38 +94,37 @@ export const StarterPlan: SubscriptionPlan = {
 export const ProPlan: SubscriptionPlan = {
   id: PlanId.PRO,
   label: 'Professional',
-  description:
-    'Best for companies that want a direct wire to the React Flow team.',
+  description: 'Best for companies that want a direct wire to the React Flow team.',
   pricing: [
     {
       currency: Currency.EUR,
       interval: BillingInterval.MONTH,
-      label: '249€',
+      label: '269€',
     },
     {
       currency: Currency.EUR,
       interval: BillingInterval.YEAR,
-      label: '229€',
+      label: '249€',
     },
     {
       currency: Currency.USD,
       interval: BillingInterval.MONTH,
+      label: '$289',
+    },
+    {
+      currency: Currency.USD,
+      interval: BillingInterval.YEAR,
       label: '$269',
     },
     {
-      currency: Currency.USD,
-      interval: BillingInterval.YEAR,
-      label: '$249',
-    },
-    {
       currency: Currency.INR,
       interval: BillingInterval.MONTH,
-      label: '₹22,300',
+      label: '₹24,000',
     },
     {
       currency: Currency.INR,
       interval: BillingInterval.YEAR,
-      label: '₹20,000',
+      label: '₹22,000',
     },
   ],
   features: [

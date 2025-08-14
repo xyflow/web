@@ -1,45 +1,22 @@
 ---
 description:
-  'When you implement a custom edge it is wrapped in a component that enables some
-  basic functionality. Your custom edge component receives the following props:'
+  'When you implement a custom edge it is wrapped in a component that enables some basic
+  functionality. Your custom edge component receives the following props:'
 ---
 
 # EdgeProps
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/types/edges.ts/#L100)
 
-When you implement a custom edge it is wrapped in a component that enables some
-basic functionality. Your custom edge component receives the following props:
+When you implement a custom edge it is wrapped in a component that enables some basic
+functionality. The `EdgeProps` type takes a generic parameter to specify the type of edges
+you use in your application:
 
 ```ts
-export type EdgeProps<EdgeType extends Edge = Edge> = {
-  id: string;
-  animated: boolean;
-  data: EdgeType['data'];
-  style: React.CSSProperties;
-  selected: boolean;
-  source: string;
-  target: string;
-  sourceHandleId?: string | null;
-  targetHandleId?: string | null;
-  interactionWidth: number;
-  sourceX: number;
-  sourceY: number;
-  targetX: number;
-  targetY: number;
-  sourcePosition: Position;
-  targetPosition: Position;
-  label?: string | React.ReactNode;
-  labelStyle?: React.CSSProperties;
-  labelShowBg?: boolean;
-  labelBgStyle?: CSSProperties;
-  labelBgPadding?: [number, number];
-  labelBgBorderRadius?: number;
-  markerStart?: string;
-  markerEnd?: string;
-  pathOptions?: any;
-};
+type AppEdgeProps = EdgeProps<MyEdgeType>;
 ```
+
+Your custom edge component receives the following props:
 
 ## Fields
 

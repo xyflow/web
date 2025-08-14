@@ -3,6 +3,7 @@ import { compileCodeSnippet } from 'xy-shared/server';
 
 type Demo = {
   files: [{ content: string; page: string }];
+  examples?: Record<string, string>; // Title and code for each example
 };
 
 type RegistryComponent = {
@@ -24,9 +25,7 @@ export async function fetchShadcnComponent(id: string) {
   const data = loadJSONFile<RegistryComponent>(
     `../../apps/ui-components/public/registry/${id}.json`,
   )!;
-  const demo = loadJSONFile<Demo>(
-    `../../apps/ui-components/public/demo/${id}.json`,
-  )!;
+  const demo = loadJSONFile<Demo>(`../../apps/ui-components/public/demo/${id}.json`)!;
 
   const componentName = kebabCaseToCamelCase(id);
 
@@ -39,6 +38,19 @@ export async function fetchShadcnComponent(id: string) {
       showCopy: true,
       highlight: componentName,
     });
+  }
+
+  let examples: Record<string, string> | undefined;
+
+  if (demo.examples && Object.keys(demo.examples).length > 0) {
+    examples = {};
+    for (const [exampleName, code] of Object.entries(demo.examples)) {
+      examples[exampleName] = await compileCodeSnippet(code, {
+        filetype: 'tsx',
+        showCopy: true,
+        filename: `${componentName}-${exampleName}.tsx`,
+      });
+    }
   }
 
   const pageString = demo.files[0].page;
@@ -56,22 +68,17 @@ export async function fetchShadcnComponent(id: string) {
   });
 
   const jsonUrl = `${process.env.NEXT_PUBLIC_UI_COMPONENTS_URL}/${data.name}`;
-  const installMDX = await compileCodeSnippet(
-    `npx shadcn@latest add ${jsonUrl}`,
-    {
-      filetype: 'bash',
-      showCopy: true,
-      npm2yarn: true,
-    },
-  );
+  const installMDX = await compileCodeSnippet(`npx shadcn@latest add ${jsonUrl}`, {
+    filetype: 'bash',
+    showCopy: true,
+    npm2yarn: true,
+  });
 
   const npmDependencies = (data.dependencies || []).map((dep) => ({
     label: dep,
     url: `https://www.npmjs.com/package/${dep}`,
   }));
-  const npmString = `npm install ${npmDependencies
-    .map((dep) => dep.label)
-    .join(' ')}`;
+  const npmString = `npm install ${npmDependencies.map((dep) => dep.label).join(' ')}`;
   const npmMDX = await compileCodeSnippet(npmString, {
     filetype: 'bash',
     showCopy: true,
@@ -86,5 +93,6 @@ export async function fetchShadcnComponent(id: string) {
     installMDX,
     npmMDX,
     pageMDX,
+    examples,
   };
 }

@@ -1,11 +1,14 @@
-import React, { useCallback, ReactNode, forwardRef } from "react";
+"use client";
+
+import React, { useCallback, forwardRef, type ReactNode } from "react";
 import {
   useReactFlow,
   useNodeId,
-  NodeProps,
   Handle,
   Position,
+  type NodeProps,
 } from "@xyflow/react";
+
 import { BaseNode } from "@/registry/components/base-node";
 
 export type PlaceholderNodeProps = Partial<NodeProps> & {
@@ -13,7 +16,7 @@ export type PlaceholderNodeProps = Partial<NodeProps> & {
 };
 
 export const PlaceholderNode = forwardRef<HTMLDivElement, PlaceholderNodeProps>(
-  ({ selected, children }, ref) => {
+  ({ children }, ref) => {
     const id = useNodeId();
     const { setNodes, setEdges } = useReactFlow();
 
@@ -46,7 +49,6 @@ export const PlaceholderNode = forwardRef<HTMLDivElement, PlaceholderNodeProps>(
     return (
       <BaseNode
         ref={ref}
-        selected={selected}
         className="w-[150px] border-dashed border-gray-400 bg-card p-2 text-center text-gray-400 shadow-none"
         onClick={handleClick}
       >

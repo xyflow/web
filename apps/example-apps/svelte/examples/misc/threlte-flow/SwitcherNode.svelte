@@ -10,7 +10,7 @@
 
 <NodeWrapper label={data.label}>
   <Handle type="source" position={Position.Right} />
-  <div class="flex flex-col nodrag">
+  <div class="flex flex-col nodrag p-3">
     {#each options as option}
       <label class="flex">
         <input

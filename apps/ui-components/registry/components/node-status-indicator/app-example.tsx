@@ -1,18 +1,18 @@
 import { Background, ReactFlow } from "@xyflow/react";
 
-import NodeStatusIndicatorDemo from "./component-example";
+import { LoadingNode } from "./component-example";
 
 const defaultNodes = [
   {
     id: "1",
-    position: { x: 200, y: 200 },
-    data: { label: "Node" },
-    type: "nodeStatusIndicatorDemo",
+    position: { x: 120, y: 160 },
+    type: "loadingNode",
+    data: {},
   },
 ];
 
 const nodeTypes = {
-  nodeStatusIndicatorDemo: NodeStatusIndicatorDemo,
+  loadingNode: LoadingNode,
 };
 
 export default function App() {

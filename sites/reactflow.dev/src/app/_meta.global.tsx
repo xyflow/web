@@ -20,28 +20,27 @@ const WithIcon: FC<{ children: ReactNode; icon: FC<SVGProps<SVGElement>> }> = ({
 };
 
 const concepts = {
-  introduction: '',
   'terms-and-definitions': '',
-  'core-concepts': '',
-  'the-viewport': '',
-};
-const gettingStarted = {
-  'installation-and-requirements': '',
   'building-a-flow': '',
+  'adding-interactivity': '',
+  'the-viewport': '',
+  'built-in-components': '',
 };
 const customization = {
   'custom-nodes': '',
-  'handles': '',
+  handles: '',
   'custom-edges': '',
   'edge-labels': '',
   'utility-classes': '',
   theming: '',
 };
 const advanced = {
+  'hooks-providers': '',
   accessibility: '',
   testing: '',
   typescript: '',
   'uncontrolled-flow': '',
+  performance: '',
   'state-management': '',
   'computing-flows': '',
   'ssr-ssg-configuration': '',
@@ -52,13 +51,13 @@ const tutorials = {
   'mind-map-app-with-react-flow': '',
 };
 const troubleshooting = {
-  index: '',
+  'common-errors': '',
   'remove-attribution': '',
   'migrate-to-v12': '',
   'migrate-to-v11': '',
   'migrate-to-v10': '',
 };
-const components = {
+const ui = {
   index: {
     title: 'Introduction',
     theme: {
@@ -72,33 +71,58 @@ const components = {
       layout: 'full',
     },
   },
-  nodes: {
+  components: {
     items: {
-      'tooltip-node': '',
-      'placeholder-node': '',
-      'database-schema-node': '',
-      'annotation-node': '',
-      'labeled-group-node': '',
-      'node-header': '',
-    },
-  },
-  edges: {
-    items: {
+      '#': {
+        type: 'separator',
+        title: 'Node Utilities', // Title is optional
+      },
+      'base-node': '',
+      'node-status-indicator': 'Status Indicator',
+      'node-appendix': 'Appendix',
+      'node-tooltip': 'Tooltip',
+      '##': {
+        type: 'separator',
+        title: 'Custom Nodes', // Title is optional
+      },
+      'database-schema-node': 'Database Schema',
+      'placeholder-node': 'Placeholder',
+      'labeled-group-node': 'Labeled Group',
+
+      '###': {
+        type: 'separator',
+        title: 'Handles', // Title is optional
+      },
+
+      'base-handle': '',
+      'labeled-handle': '',
+      'button-handle': '',
+
+      '####': {
+        type: 'separator',
+        title: 'Custom Edges', // Title is optional
+      },
+
       'button-edge': '',
       'data-edge': '',
-    },
-  },
-  controls: {
-    items: {
+      'animated-svg-edge': '',
+
+      '#####': {
+        type: 'separator',
+        title: 'Controls', // Title is optional
+      },
+
       'zoom-slider': '',
+      'zoom-select': '',
+
+      '######': {
+        type: 'separator',
+        title: 'Misc', // Title is optional
+      },
+
+      devtools: '',
     },
   },
-  handles: {
-    items: {
-      'labeled-handle': '',
-    },
-  },
-  misc: '',
   _: {
     type: 'separator',
   },
@@ -114,9 +138,10 @@ const metaRecord = {
   // 1. Default Routes
   learn: {
     items: {
-      index: '',
-      concepts: { items: concepts },
-      'getting-started': { items: gettingStarted },
+      concepts: {
+        title: 'Core Concepts',
+        items: concepts,
+      },
       customization: {
         items: customization,
         title: 'Customization',
@@ -161,7 +186,7 @@ const metaRecord = {
       // Rest of examples are added in `app/layout.tsx` file
     },
   },
-  components: { items: components },
+  ui: { items: ui },
   showcase: '',
   more: {
     type: 'menu',

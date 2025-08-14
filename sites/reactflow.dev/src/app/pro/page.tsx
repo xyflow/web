@@ -93,7 +93,7 @@ export default function ReactFlowPro() {
 
       <PricingTable className="mt-6 lg:mt-10" />
 
-      <Section>
+      <Section className="relative z-1">
         <ClientLogos title="React Flow Pro is used by" />
       </Section>
 
@@ -104,6 +104,7 @@ export default function ReactFlowPro() {
         buttonText="See all case studies"
         buttonLink="/pro/case-studies"
         items={sliderItems}
+        className="relative z-1"
       />
 
       <FAQ items={reactFlowProFaqItems} className="mt-32">

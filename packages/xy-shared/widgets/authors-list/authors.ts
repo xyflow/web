@@ -65,4 +65,10 @@ export default {
     url: '',
     image: '/img/case-studies/hubql-tobiasmeixner.jpg',
   },
+  alessandro: {
+    name: 'Alessandro Cheli',
+    title: 'Software Engineer',
+    url: 'https://cheli.dev',
+    image: 'https://cheli.dev/alessandro.jpg',
+  },
 };

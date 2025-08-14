@@ -15,12 +15,17 @@ import { fetchShadcnComponent } from '@/utils';
 import { FC } from 'react';
 import { useMDXComponents as getMDXComponents } from '@/mdx-components';
 
-function kebabCaseToTitleCase(str: string) {
+function kebabCaseToPascalCase(str: string) {
   const newString = str.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
   return newString.charAt(0).toUpperCase() + newString.slice(1);
 }
 
-const { h2: H2 } = getMDXComponents();
+function kebabCaseToTitleCase(str: string) {
+  const newString = str.replace(/-([a-z])/g, (g) => ' ' + g[1].toUpperCase());
+  return newString.charAt(0).toUpperCase() + newString.slice(1);
+}
+
+const { h2: H2, h3: H3 } = getMDXComponents();
 
 const UiComponentViewer: FC<{ id: string }> = async ({ id }) => {
   const data = await fetchShadcnComponent(id);
@@ -34,7 +39,7 @@ const UiComponentViewer: FC<{ id: string }> = async ({ id }) => {
     url: `https://www.npmjs.com/package/${dep}`,
   }));
 
-  const componentPages = (await getPageMap('/components')).reduce((acc, pageMapItem) => {
+  const componentPages = (await getPageMap('/ui')).reduce((acc, pageMapItem) => {
     if ('children' in pageMapItem) {
       for (const page of pageMapItem.children) {
         if ('name' in page && 'route' in page) {
@@ -50,7 +55,7 @@ const UiComponentViewer: FC<{ id: string }> = async ({ id }) => {
     if (dep.startsWith('https://')) {
       // handle internal dependencies from React Flow components
       const depName = dep.split('/').pop()!.split('.').shift()!;
-      const label = kebabCaseToTitleCase(depName);
+      const label = kebabCaseToPascalCase(depName);
 
       const url = componentPages.get(depName);
 
@@ -154,6 +159,33 @@ const UiComponentViewer: FC<{ id: string }> = async ({ id }) => {
           : '1. Connect the component with your React Flow application.'}
       </Heading>
       <MDXRemote compiledSource={data.pageMDX} />
+
+      {data.examples && (
+        <>
+          <H2 id="examples">Examples</H2>
+          {Object.entries(data.examples).map(([example, codeMDX]) => (
+            <div key={example} className="mt-4">
+              <H3 id={`example-${example}`}>{kebabCaseToTitleCase(example)}</H3>
+              <Tabs defaultValue="preview" className="mt-5">
+                <TabsList>
+                  <TabsTrigger value="preview">Preview</TabsTrigger>
+                  <TabsTrigger value="code">Code</TabsTrigger>
+                </TabsList>
+                <TabsContent value="preview">
+                  <iframe
+                    className="w-full h-[500px] rounded-md border mt-4 border-gray-200 "
+                    src={`${process.env.NEXT_PUBLIC_UI_COMPONENTS_URL}/components/${data.name}/examples/${example}`}
+                  />
+                </TabsContent>
+
+                <TabsContent value="code">
+                  <MDXRemote compiledSource={codeMDX} />
+                </TabsContent>
+              </Tabs>
+            </div>
+          ))}
+        </>
+      )}
     </div>
   );
 };
@@ -165,6 +197,8 @@ const UiComponentViewer: FC<{ id: string }> = async ({ id }) => {
 export const toc = [
   { depth: 2, value: 'Installation', id: 'installation' },
   { depth: 2, value: 'Usage', id: 'usage' },
+  // TODO: Figure out how to add examples dynamically to the toc
+  // { depth: 2, value: 'Examples', id: 'examples' },
 ];
 
 export default UiComponentViewer;

@@ -1,9 +1,11 @@
+"use client";
+
 import {
   useEffect,
   useState,
+  useCallback,
   type Dispatch,
   type SetStateAction,
-  useCallback,
 } from "react";
 
 import {
@@ -11,12 +13,12 @@ import {
   Panel,
   useStore,
   useStoreApi,
-  type OnNodesChange,
-  type NodeChange,
-  type XYPosition,
   ViewportPortal,
   useReactFlow,
   PanelPosition,
+  type OnNodesChange,
+  type NodeChange,
+  type XYPosition,
 } from "@xyflow/react";
 
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
