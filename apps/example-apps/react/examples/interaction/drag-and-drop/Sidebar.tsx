@@ -1,6 +1,6 @@
 import { useReactFlow, XYPosition } from '@xyflow/react';
 import { useCallback, useEffect, useState } from 'react';
-import { OnDropAction, useDnD } from './useDnD';
+import { OnDropAction, useDnD, useDnDPosition } from './useDnD';
 
 // This is a simple ID generator for the nodes.
 // You can customize this to use your own ID generation logic.
@@ -79,21 +79,7 @@ interface DragGhostProps {
 
 // The DragGhost component is used to display a ghost node when dragging a node into the flow.
 export function DragGhost({ type }: DragGhostProps) {
-  const [position, setPosition] = useState<XYPosition>({ x: 0, y: 0 });
-
-  // By default, the pointer move event sets the position of the dragged element in the context.
-  // This will be used to display the `DragGhost` component.
-  const onDrag = useCallback((event: PointerEvent) => {
-    event.preventDefault();
-    setPosition({ x: event.clientX, y: event.clientY });
-  }, []);
-
-  useEffect(() => {
-    document.addEventListener('pointermove', onDrag);
-    return () => {
-      document.removeEventListener('pointermove', onDrag);
-    };
-  }, [onDrag]);
+  const { position } = useDnDPosition();
 
   return (
     <div
