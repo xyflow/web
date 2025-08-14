@@ -1,0 +1,40 @@
+---
+title: 'React Flow 12.8.3'
+description: 'Changelog for React Flow version 12.8.3'
+authors: [xyflow]
+date: '2025-08-14'
+---
+
+import { RemoteCodeViewer } from 'xy-shared/server';
+
+A new version of React Flow is out. With 12.8.3 you get a lot of bug fixes and a great
+improvement for handles. It's now possible to position child content of a handle outside
+of the handle itself and still use it as a starting point for connections as you can see
+in this example:
+
+<RemoteCodeViewer
+  route="examples/nodes/detached-handle"
+  framework="react"
+  showEditor={false}
+/>
+
+### Patch Changes
+
+- [#5428](https://github.com/xyflow/xyflow/pull/5428) Be able to use detached handle
+  content as a starting point for a connection
+- [#5419](https://github.com/xyflow/xyflow/pull/5419) Make edge markers fallback to
+  `--xy-edge-stroke` CSS variable when marker color is null
+- [#5453](https://github.com/xyflow/xyflow/pull/5453) Snap selection instead of separate
+  nodes when snap grid is enabled
+- [#5444](https://github.com/xyflow/xyflow/pull/5444) Export `MiniMapNode` to use it for
+  custom mini map nodes
+- [#5415](https://github.com/xyflow/xyflow/pull/5415) Allow strings and enums for marker
+  types
+- [#5436](https://github.com/xyflow/xyflow/pull/5436) Prevent a 0 added to the markup for
+  edges when interactionWidth is 0
+- [#5443](https://github.com/xyflow/xyflow/pull/5443) Use 1 as the default for interactive
+  Minimap zoom step
+- [#5448](https://github.com/xyflow/xyflow/pull/5448) Use correct `HandleConnection` type
+  for Handle `onConnect`
+- [#5420](https://github.com/xyflow/xyflow/pull/5420) Omit `defaultValue` from `Node`'s
+  `domAttributes` to fix type incompatibility when using `WritableDraft`
