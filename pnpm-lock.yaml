@@ -611,8 +611,8 @@ importers:
         specifier: 12.8.3
         version: 12.8.3(@types/react@18.3.23)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@xyflow/svelte':
-        specifier: 1.2.2
-        version: 1.2.2(svelte@5.38.1)
+        specifier: 1.2.3
+        version: 1.2.3(svelte@5.38.1)
       '@xyflow/system':
         specifier: ^0.0.63
         version: 0.0.63
@@ -3464,11 +3464,6 @@ packages:
       react: '>=17'
       react-dom: '>=17'
 
-  '@xyflow/svelte@1.2.2':
-    resolution: {integrity: sha512-BBz+NGwN/95CQWMRhi45PLkFFZvd10Y1Y7wZM6Fk1CzyUpcNVM7hM02iVQf/7NlyRfbGNLvVEfXrWiGziLc85w==}
-    peerDependencies:
-      svelte: ^5.25.0
-
   '@xyflow/svelte@1.2.3':
     resolution: {integrity: sha512-Fglx+QQATKd/k55PBQMESNtokj7y+LXRFsukVr3DwlIsemJ4W7cF7gTKP2+TIfnviXIlBtzFPx6iJATV+dx0Iw==}
     peerDependencies:
@@ -3476,9 +3471,6 @@ packages:
 
   '@xyflow/system@0.0.63':
     resolution: {integrity: sha512-lCZRh5o7RCPE7iNe3yKzV8UuS4hijVIWJ9nbQh9eowsRJOwgy5KlUnZ3Q43SOlRsZnOht8px5phpsjBHPRn+oQ==}
-
-  '@xyflow/system@0.0.66':
-    resolution: {integrity: sha512-TTxESDwPsATnuDMUeYYtKe4wt9v8bRO29dgYBhR8HyhSCzipnAdIL/1CDfFd+WqS1srVreo24u6zZeVIDk4r3Q==}
 
   '@xyflow/system@0.0.67':
     resolution: {integrity: sha512-hYsmbj+8JDei0jmupBmxNLaeJEcf9kKmMl6IziGe02i0TOCsHwjIdP+qz+f4rI1/FR2CQiCZJrw4dkHOLC6tEQ==}
@@ -10672,12 +10664,6 @@ snapshots:
       - '@types/react'
       - immer
 
-  '@xyflow/svelte@1.2.2(svelte@5.38.1)':
-    dependencies:
-      '@svelte-put/shortcut': 4.1.0(svelte@5.38.1)
-      '@xyflow/system': 0.0.66
-      svelte: 5.38.1
-
   '@xyflow/svelte@1.2.3(svelte@5.38.1)':
     dependencies:
       '@svelte-put/shortcut': 4.1.0(svelte@5.38.1)
@@ -10685,18 +10671,6 @@ snapshots:
       svelte: 5.38.1
 
   '@xyflow/system@0.0.63':
-    dependencies:
-      '@types/d3-drag': 3.0.7
-      '@types/d3-interpolate': 3.0.4
-      '@types/d3-selection': 3.0.11
-      '@types/d3-transition': 3.0.9
-      '@types/d3-zoom': 3.0.8
-      d3-drag: 3.0.0
-      d3-interpolate: 3.0.1
-      d3-selection: 3.0.0
-      d3-zoom: 3.0.0
-
-  '@xyflow/system@0.0.66':
     dependencies:
       '@types/d3-drag': 3.0.7
       '@types/d3-interpolate': 3.0.4
