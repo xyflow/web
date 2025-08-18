@@ -1,6 +1,6 @@
 ---
-title: Drag and Drop
-description: Drag and drop outside of the React Flow pane with native pointer events.
+title: Drag and Drop Custom
+description: Drag and drop from outside of the React Flow pane with native pointer events.
 ---
 
 A drag and drop user interface is very common for node-based workflow editors.
@@ -11,4 +11,7 @@ The reason why we use pointer events instead of the HTML Drag and Drop API is th
 the HTML Drag and Drop API does not provide support for touch devices.
 By using pointer events we can support both touch devices and the mouse.
 
-<RemoteCodeViewer route="examples/interaction/drag-and-drop" framework="react" />
+In this example, we use a custom Sidebar component to create new nodes when
+dragging from the sidebar into the React Flow pane.
+
+<RemoteCodeViewer route="examples/interaction/drag-and-drop-custom" framework="react" />
