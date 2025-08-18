@@ -37,7 +37,7 @@ target.
 
   let { id, sourceX, sourceY, targetX, targetY }: EdgeProps = $props();
 
-  let [path] = $derived(
+  let [edgePath] = $derived(
     getStraightPath({
       sourceX,
       sourceY,
@@ -47,7 +47,7 @@ target.
   );
 </script>
 
-<BaseEdge {id} {path} />
+<BaseEdge {id} path={edgePath} />
 ```
 
 <Callout type="info">
