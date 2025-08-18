@@ -101,16 +101,12 @@ export const useDnD = () => {
   useEffect(() => {
     if (!isDragging) return;
 
-    const handlePointerUp = (event: PointerEvent) => {
-      onDragEnd(event);
-    };
-
-    document.addEventListener('pointerup', handlePointerUp);
+    document.addEventListener('pointerup', onDragEnd);
 
     return () => {
-      document.removeEventListener('pointerup', handlePointerUp);
+      document.removeEventListener('pointerup', onDragEnd);
     };
-  }, [onDragEnd, isDragging, dropAction]);
+  }, [onDragEnd, isDragging]);
 
   return {
     isDragging,
