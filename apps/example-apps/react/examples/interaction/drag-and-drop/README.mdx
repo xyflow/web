@@ -1,0 +1,42 @@
+---
+title: Drag and Drop
+description: Drag and drop outside of the React Flow pane with native HTML Drag and Drop API or react-draggable.
+---
+
+
+In these examples, we use a custom Sidebar component to create new nodes when
+dragging from the sidebar into the React Flow pane.
+
+A drag and drop user interface is very common for node-based workflow editors.
+The drag and drop behavior outside of the React Flow pane is not built in but
+can be implemented with the native [HTML Drag and Drop
+API](https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API), 
+[Pointer Events](https://developer.mozilla.org/en-US/docs/Web/API/Pointer_events),
+or a third party library like
+[react-draggable](https://github.com/react-grid-layout/react-draggable).
+
+## Drag and Drop with HTML Drag and Drop API
+
+The HTML Drag and Drop API is a native API that is supported by all major browsers.
+It is a simple API that allows you to drag and drop elements between different
+elements on the page.
+
+**Note:** HTML Drag and Drop API is not properly supported on touch devices. 
+See the example below for an alternative approach using pointer events.
+
+
+<RemoteCodeViewer route="examples/interaction/drag-and-drop" framework="react" />
+
+
+---
+
+## Drag and Drop with Pointer Events
+
+Another way to implement drag and drop is to use **pointer events**.
+
+The Pointer Events API is a modern API that is supported by all major browsers.
+It is slightly more complex to implement than the HTML Drag and Drop API, but by
+using pointer events we can make sure that the drag and drop behavior is consistent across all devices, both mouse and touch.
+
+
+<RemoteCodeViewer route="examples/interaction/drag-and-drop-custom" framework="react" />
