@@ -18,13 +18,13 @@
       id: '1',
       type: 'fadeInOut',
       position: { x: 0, y: 0 },
-      data: { label: 'Hello' },
+      data: { label: 'Delete me' },
     },
     {
       id: '2',
       type: 'fadeInOut',
       position: { x: 300, y: 0 },
-      data: { label: 'World' },
+      data: { label: 'Delete me' },
     },
   ];
 
