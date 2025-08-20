@@ -7,7 +7,8 @@
     "dev": "vite dev",
     "build": "vite build",
     "scaffold": "node scripts/scaffold/index.js",
-    "screenshots": "concurrently \"vite dev\" \"node scripts/generate-screenshots.js\""
+    "screenshots": "concurrently \"vite dev\" \"node scripts/generate-screenshots.js\"",
+    "screenshots:missing": "node scripts/generate-screenshots.js --only-missing"
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^5.0.3",

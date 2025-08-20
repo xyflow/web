@@ -66,6 +66,7 @@ export const meta: DynamicMeta = {
   },
   misc: {
     items: {
+      transitions: '',
       'download-image': '',
       'threlte-flow': '',
     },
