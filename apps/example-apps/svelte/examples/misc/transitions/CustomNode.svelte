@@ -6,7 +6,7 @@
 </script>
 
 <!-- Use "|global" because the component is unmounted higher up the tree -->
-<div transition:fade|global style:padding="0 40px">
+<div transition:fade|global>
   {data.label}
   <Handle type="target" position={Position.Top} />
   <Handle type="source" position={Position.Bottom} />

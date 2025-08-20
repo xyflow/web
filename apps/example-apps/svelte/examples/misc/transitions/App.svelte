@@ -1,5 +1,12 @@
 <script>
-  import { SvelteFlow, Background, Controls, MiniMap, Panel } from '@xyflow/svelte';
+  import {
+    SvelteFlow,
+    Background,
+    Controls,
+    MiniMap,
+    Panel,
+    ConnectionLineType,
+  } from '@xyflow/svelte';
 
   import '@xyflow/svelte/dist/style.css';
   import CustomNode from './CustomNode.svelte';
@@ -41,7 +48,17 @@
   let edges = $state.raw(initialEdges);
 </script>
 
-<SvelteFlow bind:nodes bind:edges {nodeTypes} {edgeTypes} minZoom={0} fitView>
+<SvelteFlow
+  bind:nodes
+  bind:edges
+  {nodeTypes}
+  {edgeTypes}
+  connectionLineType={ConnectionLineType.SmoothStep}
+  fitView
+  defaultEdgeOptions={{
+    type: 'fadeOut',
+  }}
+>
   <Background />
   <MiniMap />
   <Controls />

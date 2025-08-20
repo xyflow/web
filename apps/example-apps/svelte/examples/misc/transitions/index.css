@@ -11,3 +11,7 @@ body,
 #app {
   height: 100%;
 }
+
+.svelte-flow__node {
+  width: 150px;
+}
