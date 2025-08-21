@@ -16,8 +16,8 @@
   "dependencies": {
     "@heroicons/react": "^2.2.0",
     "@typeform/embed-react": "^4.4.0",
-    "@xyflow/react": "12.8.3",
-    "@xyflow/svelte": "1.2.3",
+    "@xyflow/react": "12.8.4",
+    "@xyflow/svelte": "1.2.4",
     "@xyflow/system": "^0.0.63",
     "@xyflow/xy-ui": "workspace:*",
     "fast-xml-parser": "^5.2.1",
