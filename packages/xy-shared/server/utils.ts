@@ -46,7 +46,7 @@ export const fakeShowcases = Array.from({ length: 10 }, (_, i) => ({
   url: 'https://example.com',
   demoUrl: 'https://example.com',
   description: 'This is a showcase',
-  image: '/img/showcase/placeholder.png',
+  image: '/img/showcase/placeholder.jpg',
   tags: [],
 }));
 
