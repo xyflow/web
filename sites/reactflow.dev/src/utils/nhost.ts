@@ -2,7 +2,7 @@ import { cookies } from 'next/headers';
 import { NhostClient, NhostSession } from '@nhost/nhost-js';
 import type { RequestCookies } from 'next/dist/compiled/@edge-runtime/cookies';
 import type { ReadonlyRequestCookies } from 'next/dist/server/web/spec-extension/adapters/request-cookies';
-
+import { connection } from 'next/server';
 // If manually saved, e.g., in server actions
 export const NHOST_SESSION_KEY = 'nhostSession';
 // Saved by sign-in
@@ -11,6 +11,7 @@ export const NHOST_REFRESH_KEY = 'nhostRefreshToken';
 export async function getNhost(
   cookieStore?: RequestCookies | ReadonlyRequestCookies,
 ): Promise<NhostClient> {
+  await connection()
   cookieStore ??= await cookies();
 
   const nhost = new NhostClient({

@@ -1,7 +1,7 @@
 'use server';
 
 import { gql } from '@apollo/client';
-import { getNhost, prettifyError } from '@/utils/nhost';
+import { getNhost } from '@/utils/nhost';
 import { SubscriptionPlan } from '@/types';
 
 const GET_SUBSCRIPTION = gql`
@@ -21,7 +21,6 @@ export async function getSubscription(): Promise<{
 }> {
   const nhost = await getNhost();
   const userId = nhost.auth.getUser()?.id;
-  console.log(userId);
 
   if (!userId) {
     return {

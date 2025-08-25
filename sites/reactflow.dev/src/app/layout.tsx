@@ -4,7 +4,6 @@ import { Search, SidebarTitle } from 'xy-shared';
 import { defaultFooterCategories, Footer as XYFooter, LogoLabel } from '@xyflow/xy-ui';
 import { getPageMap as getExamplesPageMap } from './(content-pages)/examples/[...slug]/utils';
 import type { FC, ReactNode } from 'react';
-import { connection } from 'next/server';
 import { Head } from 'nextra/components';
 import reactFlowPackageJson from '@xyflow/react/package.json';
 import { Html } from '@/components/html.client';
@@ -19,9 +18,9 @@ import { normalizeSubscription } from '@/utils/pro-utils';
 import './global.css';
 
 // mark the layouts that read cookies as dynamic so Next.js doesn't cache their HTML across users
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
-export const fetchCache = 'force-no-store';
+// export const dynamic = 'force-dynamic';
+// export const revalidate = 0;
+// export const fetchCache = 'force-no-store';
 
 export const metadata = generateRootMetadata('React Flow', {
   description:
@@ -40,7 +39,6 @@ const fathomOptions = {
 const hidden = { display: 'hidden' };
 
 const RootLayout: FC<{ children: ReactNode }> = async ({ children }) => {
-  await connection();
   const { Projects: _, ...remainingCategories } = defaultFooterCategories;
 
   const _pageMap = [...(await getPageMap())];

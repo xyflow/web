@@ -1,15 +1,13 @@
 import { FC, ReactNode } from 'react';
 import { getNhost } from '@/utils/nhost';
 import { redirect } from 'next/navigation';
-import { connection } from 'next/server';
 
 // mark the layouts that read cookies as dynamic so Next.js doesn't cache their HTML across users
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
-export const fetchCache = 'force-no-store';
+// export const dynamic = 'force-dynamic';
+// export const revalidate = 0;
+// export const fetchCache = 'force-no-store';
 
 const Layout: FC<{ children: ReactNode }> = async ({ children }) => {
-  await connection();
   const nhost = await getNhost();
   const isAuthenticated = nhost.auth.isAuthenticated();
   console.log('(no-auth)', isAuthenticated)
