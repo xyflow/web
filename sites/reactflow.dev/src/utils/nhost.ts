@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import { cookies } from 'next/headers';
 import { NhostClient, NhostSession } from '@nhost/nhost-js';
 import { type NextRequest, NextResponse } from 'next/server';
