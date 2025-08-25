@@ -7,6 +7,6 @@ import { revalidatePath } from 'next/cache';
  * It uses the Next.js `revalidatePath` function to trigger a revalidation for that path.
  * This is useful for updating the cache and ensuring that the latest data is served to users.
  */
-export const revalidatePathFromClient: typeof revalidatePath = async (...args) => {
+export const revalidatePathFromClient = async (...args: Parameters<typeof revalidatePath>) => {
   return revalidatePath(...args);
 };

@@ -41,5 +41,3 @@ const Page: FC = async () => {
 };
 
 export default Page;
-
-export const dynamic = 'force-static';
