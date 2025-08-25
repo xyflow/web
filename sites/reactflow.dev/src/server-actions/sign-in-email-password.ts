@@ -20,9 +20,25 @@ export async function signIn(formData: FormData, redirectTo = '/pro/dashboard') 
   }
   if (session) {
     const cookieStore = await cookies();
-    cookieStore.set(NHOST_SESSION_KEY, btoa(JSON.stringify(session)), { path: '/' });
+    const exp = session?.accessTokenExpiresIn ?? 0;
+    cookieStore.set({
+      name: NHOST_SESSION_KEY,
+      value: btoa(JSON.stringify(session)),
+      path: '/',
+      httpOnly: true,
+      secure: true,
+      sameSite: 'lax',
+      maxAge: exp,
+    });
     if (session.refreshToken) {
-      cookieStore.set(NHOST_REFRESH_KEY, session.refreshToken, { path: '/' });
+      cookieStore.set({
+        name: NHOST_REFRESH_KEY,
+        value: session.refreshToken,
+        path: '/',
+        httpOnly: true,
+        secure: true,
+        sameSite: 'lax',
+      });
       // Must set `nhostRefreshTokenExpiresAt`
       // https://github.com/nhost/nhost/blob/c0635ae1c7d5fe3bd889d11291ebc6978e866647/packages/hasura-auth-js/src/machines/authentication/machine.ts#L647C15-L649C81
       // const nextRefresh = new Date(Date.now() + session.accessTokenExpiresIn * 1_000)

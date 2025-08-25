@@ -69,11 +69,10 @@ export async function manageAuthSession(request: NextRequest) {
     url.searchParams.delete('refreshToken');
     url.pathname = '/pro/dashboard';
     const exp = newSession?.accessTokenExpiresIn ?? 0;
-    // overwrite the session cookie with the new session
     return NextResponse.redirect(url, {
       headers: {
         'Set-Cookie': [
-          `${NHOST_SESSION_KEY}=${btoa(JSON.stringify(newSession))}`,
+          `${NHOST_SESSION_KEY}=${btoa(JSON.stringify(newSession))}`, // Overwrite the session cookie with the new session
           'Path=/', // Explicitly makes the cookie available to all routes on your domain
           'HttpOnly', // JS can’t read cookies (prevents XSS stealing your tokens)
           'Secure', // Sent only over HTTPS

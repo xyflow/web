@@ -21,6 +21,15 @@ export async function signUp(formData: FormData) {
   }
 
   const cookieStore = await cookies();
-  cookieStore.set(NHOST_SESSION_KEY, btoa(JSON.stringify(session)), { path: '/' });
+  const exp = session?.accessTokenExpiresIn ?? 0;
+  cookieStore.set({
+    name: NHOST_SESSION_KEY,
+    value: btoa(JSON.stringify(session)),
+    path: '/',
+    httpOnly: true,
+    secure: true,
+    sameSite: 'lax',
+    maxAge: exp,
+  });
   redirect('/pro/dashboard');
 }
