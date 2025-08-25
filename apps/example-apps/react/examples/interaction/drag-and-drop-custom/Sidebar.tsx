@@ -81,6 +81,8 @@ interface DragGhostProps {
 export function DragGhost({ type }: DragGhostProps) {
   const { position } = useDnDPosition();
 
+  if (!position) return null;
+
   return (
     <div
       className={`dndnode ghostnode ${type}`}
