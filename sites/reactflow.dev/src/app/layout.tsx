@@ -47,7 +47,7 @@ const RootLayout: FC<{ children: ReactNode }> = async ({ children }) => {
 
   const nhost = await getNhost();
   const user = nhost.auth.getUser();
-
+  console.log('root layout', user)
   const subscriptionContext = await getSubscription();
   const subscription = normalizeSubscription(subscriptionContext);
 

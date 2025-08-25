@@ -16,7 +16,7 @@ const DashboardLayout: FC<{ children: ReactNode }> = async ({ children }) => {
   await connection();
   const nhost = await getNhost();
   const isAuthenticated = nhost.auth.isAuthenticated();
-
+  console.log('(auth)', isAuthenticated)
   if (!isAuthenticated) {
     redirect('/pro/sign-in');
   }

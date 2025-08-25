@@ -12,7 +12,7 @@ const Layout: FC<{ children: ReactNode }> = async ({ children }) => {
   await connection();
   const nhost = await getNhost();
   const isAuthenticated = nhost.auth.isAuthenticated();
-
+  console.log('(no-auth)', isAuthenticated)
   if (isAuthenticated) {
     redirect('/');
   }
