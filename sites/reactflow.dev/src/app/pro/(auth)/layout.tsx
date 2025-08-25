@@ -8,9 +8,9 @@ const { wrapper: Wrapper } = getMdxComponents();
 
 const DashboardLayout: FC<{ children: ReactNode }> = async ({ children }) => {
   const nhost = await getNhost();
-  const session = nhost.auth.getSession();
+  const isAuthenticated = nhost.auth.isAuthenticated();
 
-  if (!session) {
+  if (!isAuthenticated) {
     redirect('/pro/sign-in');
   }
   return (

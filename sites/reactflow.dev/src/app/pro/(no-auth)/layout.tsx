@@ -4,9 +4,9 @@ import { redirect } from 'next/navigation';
 
 const Layout: FC<{ children: ReactNode }> = async ({ children }) => {
   const nhost = await getNhost();
-  const session = nhost.auth.getSession()
+  const isAuthenticated = nhost.auth.isAuthenticated()
 
-  if (session) {
+  if (isAuthenticated) {
     redirect('/');
   }
 
