@@ -1,10 +1,6 @@
 import { PencilSquareIcon } from '@heroicons/react/24/outline';
 import { BaseLayout, Hero } from 'xy-shared';
-import {
-  TimelineEvent,
-  TimelineEventProps,
-  getLastChangelog,
-} from 'xy-shared/server';
+import { TimelineEvent, TimelineEventProps, getLastChangelog } from 'xy-shared/server';
 import { FC } from 'react';
 import { NextraMetadata } from 'nextra';
 
@@ -45,3 +41,5 @@ const Page: FC = async () => {
 };
 
 export default Page;
+
+export const dynamic = 'force-static';

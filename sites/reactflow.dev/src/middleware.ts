@@ -61,18 +61,4 @@ export async function middleware(request: NextRequest) {
     }
     return response;
   }
-
-  // For all /pro routes ensure responses are not cached and vary by cookies
-  if (request.nextUrl.pathname.startsWith('/pro')) {
-    const response = NextResponse.next({
-      headers: {
-        'x-middleware-cache': 'no-cache',
-        'cache-control': 'private, no-store, max-age=0',
-        'CDN-Cache-Control': 'no-store',
-        'Vercel-CDN-Cache-Control': 'no-store',
-        Vary: 'Cookie',
-      },
-    });
-    return response;
-  }
 }

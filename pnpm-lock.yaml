@@ -4,11 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-patchedDependencies:
-  '@nhost/nhost-js':
-    hash: 1b6680c582a122361c1d4d1647e7ecfa18c1b3611fb99b170b7f2cd17588d468
-    path: patches/@nhost__nhost-js.patch
-
 importers:
 
   .:
@@ -538,7 +533,7 @@ importers:
         version: 2.2.0(react@18.3.1)
       '@nhost/nhost-js':
         specifier: ^3.2.5
-        version: 3.3.0(patch_hash=1b6680c582a122361c1d4d1647e7ecfa18c1b3611fb99b170b7f2cd17588d468)(graphql@16.8.1)
+        version: 3.3.0(graphql@16.8.1)
       '@typeform/embed-react':
         specifier: ^4.4.0
         version: 4.6.0(react@18.3.1)
@@ -8933,7 +8928,7 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
-  '@nhost/nhost-js@3.3.0(patch_hash=1b6680c582a122361c1d4d1647e7ecfa18c1b3611fb99b170b7f2cd17588d468)(graphql@16.8.1)':
+  '@nhost/nhost-js@3.3.0(graphql@16.8.1)':
     dependencies:
       '@nhost/graphql-js': 0.3.0(graphql@16.8.1)
       '@nhost/hasura-auth-js': 2.12.0

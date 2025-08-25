@@ -20,7 +20,7 @@ import './global.css';
 // mark the layouts that read cookies as dynamic so Next.js doesn't cache their HTML across users
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
-// export const fetchCache = 'force-no-store';
+export const fetchCache = 'force-no-store';
 
 export const metadata = generateRootMetadata('React Flow', {
   description:
