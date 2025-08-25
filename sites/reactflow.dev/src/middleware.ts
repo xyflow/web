@@ -26,20 +26,23 @@ export async function middleware(request: NextRequest) {
     // remove the refreshToken from the url
     url.searchParams.delete('refreshToken');
     url.pathname = '/pro/dashboard';
-    const exp = newSession?.accessTokenExpiresIn ?? 0;
-    const response = NextResponse.redirect(url);
+    const response = NextResponse.redirect(url, {
+      headers: {
+        'x-middleware-cache': 'no-cache',
+        'cache-control': 'no-store',
+      },
+    });
     // Prevent caching of this redirect so Set-Cookie is never shared between users
-    response.headers.set('x-middleware-cache', 'no-cache');
-    response.headers.set('cache-control', 'no-store');
     // Set cookie via API to ensure proper serialization and merging
+    const exp = newSession?.accessTokenExpiresIn ?? 0;
     response.cookies.set({
       name: NHOST_SESSION_KEY,
       value: btoa(JSON.stringify(newSession)),
-      path: '/',
-      httpOnly: true,
-      secure: true,
-      sameSite: 'lax',
-      maxAge: exp,
+      path: '/', // Explicitly makes the cookie available to all routes on your domain
+      httpOnly: true, // JS can’t read cookies (prevents XSS stealing your tokens)
+      secure: true, // Sent only over HTTPS
+      sameSite: 'lax', // Prevents CSRF on cross-site POSTs, but still works for normal navigation
+      maxAge: exp, // Aligns cookies with Nhost’s own token lifetimes
     });
     return response;
   }
