@@ -27,17 +27,20 @@ export async function middleware(request: NextRequest) {
     url.searchParams.delete('refreshToken');
     url.pathname = '/pro/dashboard';
     const exp = newSession?.accessTokenExpiresIn ?? 0;
-    return NextResponse.redirect(url, {
-      headers: {
-        'Set-Cookie': [
-          `${NHOST_SESSION_KEY}=${btoa(JSON.stringify(newSession))}`, // Overwrite the session cookie with the new session
-          'Path=/', // Explicitly makes the cookie available to all routes on your domain
-          'HttpOnly', // JS can’t read cookies (prevents XSS stealing your tokens)
-          'Secure', // Sent only over HTTPS
-          'SameSite=Lax', // Prevents CSRF on cross-site POSTs, but still works for normal navigation
-          `Max-Age=${exp}`, // Aligns cookies with Nhost’s own token lifetimes
-        ].join('; '),
-      },
+    const response = NextResponse.redirect(url);
+    // Prevent caching of this redirect so Set-Cookie is never shared between users
+    response.headers.set('x-middleware-cache', 'no-cache');
+    response.headers.set('cache-control', 'no-store');
+    // Set cookie via API to ensure proper serialization and merging
+    response.cookies.set({
+      name: NHOST_SESSION_KEY,
+      value: btoa(JSON.stringify(newSession)),
+      path: '/',
+      httpOnly: true,
+      secure: true,
+      sameSite: 'lax',
+      maxAge: exp,
     });
+    return response;
   }
 }
