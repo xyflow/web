@@ -225,7 +225,7 @@ export type InternalRoute =
   | '/pro/case-studies/hubql-case-study'
   | '/pro/case-studies/onesignal-case-study'
   | '/pro/examples'
-  | '/pro/pricing'
+  | '/pro/subscribe'
   | '/pro/quote-request'
   | '/showcase'
   | '/whats-new'
