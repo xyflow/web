@@ -7,6 +7,14 @@ export const NHOST_SESSION_KEY = 'nhostSession';
 // Saved by sign-in
 export const NHOST_REFRESH_KEY = 'nhostRefreshToken';
 
+globalThis.fetch = (url, options) => {
+  console.log('url', url);
+  return fetch(url, {
+    ...options,
+    cache: 'no-store',
+  });
+};
+
 export async function getNhost(
   cookieStore?: RequestCookies | ReadonlyRequestCookies,
 ): Promise<NhostClient> {
