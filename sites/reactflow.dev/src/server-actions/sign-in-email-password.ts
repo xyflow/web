@@ -39,12 +39,6 @@ export async function signIn(formData: FormData, redirectTo = '/pro/dashboard') 
         secure: true,
         sameSite: 'lax',
       });
-      // Must set `nhostRefreshTokenExpiresAt`
-      // https://github.com/nhost/nhost/blob/c0635ae1c7d5fe3bd889d11291ebc6978e866647/packages/hasura-auth-js/src/machines/authentication/machine.ts#L647C15-L649C81
-      // const nextRefresh = new Date(Date.now() + session.accessTokenExpiresIn * 1_000)
-      // const value = nextRefresh.toISOString();
-      // console.log({value})
-      // cookieStore.set(NHOST_JWT_EXPIRES_AT_KEY, nextRefresh.getTime(), { path: '/' })
     }
     redirect(redirectTo);
   }

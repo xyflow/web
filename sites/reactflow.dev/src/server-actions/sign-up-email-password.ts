@@ -2,7 +2,7 @@
 
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
-import { getNhost, NHOST_SESSION_KEY } from '@/utils/nhost';
+import { getNhost, NHOST_REFRESH_KEY, NHOST_SESSION_KEY } from '@/utils/nhost';
 
 export async function signUp(formData: FormData) {
   const email = formData.get('email') as string;
@@ -31,5 +31,15 @@ export async function signUp(formData: FormData) {
     sameSite: 'lax',
     maxAge: exp,
   });
+  if (session.refreshToken) {
+    cookieStore.set({
+      name: NHOST_REFRESH_KEY,
+      value: session.refreshToken,
+      path: '/',
+      httpOnly: true,
+      secure: true,
+      sameSite: 'lax',
+    });
+  }
   redirect('/pro/dashboard');
 }

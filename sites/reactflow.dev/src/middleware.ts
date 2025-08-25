@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getNhost, NHOST_SESSION_KEY } from '@/utils/nhost';
+import { getNhost, NHOST_REFRESH_KEY, NHOST_SESSION_KEY } from '@/utils/nhost';
 
 export const config = {
   matcher: ['/auth-redirect'],
@@ -29,7 +29,10 @@ export async function middleware(request: NextRequest) {
     const response = NextResponse.redirect(url, {
       headers: {
         'x-middleware-cache': 'no-cache',
-        'cache-control': 'no-store',
+        'cache-control': 'no-store, no-cache, must-revalidate, max-age=0',
+        pragma: 'no-cache',
+        'CDN-Cache-Control': 'no-store',
+        'Vercel-CDN-Cache-Control': 'no-store',
       },
     });
     // Prevent caching of this redirect so Set-Cookie is never shared between users
@@ -43,6 +46,31 @@ export async function middleware(request: NextRequest) {
       secure: true, // Sent only over HTTPS
       sameSite: 'lax', // Prevents CSRF on cross-site POSTs, but still works for normal navigation
       maxAge: exp, // Aligns cookies with Nhost’s own token lifetimes
+    });
+    if (newSession?.refreshToken) {
+      response.cookies.set({
+        name: NHOST_REFRESH_KEY,
+        value: newSession.refreshToken,
+        path: '/',
+        httpOnly: true,
+        secure: true,
+        sameSite: 'lax',
+        // Nhost manages refresh token expiry server-side; do not set long maxAge unintentionally
+      });
+    }
+    return response;
+  }
+
+  // For all /pro routes ensure responses are not cached and vary by cookies
+  if (request.nextUrl.pathname.startsWith('/pro')) {
+    const response = NextResponse.next({
+      headers: {
+        'x-middleware-cache': 'no-cache',
+        'cache-control': 'private, no-store, max-age=0',
+        'CDN-Cache-Control': 'no-store',
+        'Vercel-CDN-Cache-Control': 'no-store',
+        Vary: 'Cookie',
+      },
     });
     return response;
   }
