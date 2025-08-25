@@ -5,7 +5,7 @@ import { useMDXComponents as getMdxComponents } from '@/mdx-components';
 
 // mark the layouts that read cookies as dynamic so Next.js doesn't cache their HTML across users
 export const dynamic = 'force-dynamic';
-// export const revalidate = 0;
+export const revalidate = 0;
 // export const fetchCache = 'force-no-store';
 
 // Use Nextra theme docs layout with the sidebar
