@@ -4,3 +4,6 @@ packages:
   - packages/*
   - scripts/*
   - configs/*
+
+patchedDependencies:
+  '@nhost/nhost-js': patches/@nhost__nhost-js.patch
