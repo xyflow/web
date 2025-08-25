@@ -68,11 +68,18 @@ export async function manageAuthSession(request: NextRequest) {
     // remove the refreshToken from the url
     url.searchParams.delete('refreshToken');
     url.pathname = '/pro/dashboard';
-
+    const exp = newSession?.accessTokenExpiresIn ?? 0;
     // overwrite the session cookie with the new session
     return NextResponse.redirect(url, {
       headers: {
-        'Set-Cookie': `${NHOST_SESSION_KEY}=${btoa(JSON.stringify(newSession))}; Path=/`,
+        'Set-Cookie': [
+          `${NHOST_SESSION_KEY}=${btoa(JSON.stringify(newSession))}`,
+          'Path=/', // Explicitly makes the cookie available to all routes on your domain
+          'HttpOnly', // JS can’t read cookies (prevents XSS stealing your tokens)
+          'Secure', // Sent only over HTTPS
+          'SameSite=Lax', // Prevents CSRF on cross-site POSTs, but still works for normal navigation
+          `Max-Age=${exp}`, // Aligns cookies with Nhost’s own token lifetimes
+        ].join('; '),
       },
     });
   }

@@ -1,7 +1,7 @@
 import { Folder, MdxFile, MetaJsonFile } from 'nextra';
 import { getPageMap, mergeMetaWithPageMap } from 'nextra/page-map';
 import { Search, SidebarTitle } from 'xy-shared';
-import { defaultFooterCategories, Footer as XYFooter, LogoLabel, Button } from '@xyflow/xy-ui';
+import { defaultFooterCategories, Footer as XYFooter, LogoLabel } from '@xyflow/xy-ui';
 import { getPageMap as getExamplesPageMap } from './(content-pages)/examples/[...slug]/utils';
 import type { FC, ReactNode } from 'react';
 import { Head } from 'nextra/components';
