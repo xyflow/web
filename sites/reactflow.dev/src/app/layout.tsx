@@ -4,7 +4,7 @@ import { Search, SidebarTitle } from 'xy-shared';
 import { defaultFooterCategories, Footer as XYFooter, LogoLabel } from '@xyflow/xy-ui';
 import { getPageMap as getExamplesPageMap } from './(content-pages)/examples/[...slug]/utils';
 import type { FC, ReactNode } from 'react';
-import { unstable_noStore as noStore } from 'next/cache';
+import { connection } from 'next/server';
 import { Head } from 'nextra/components';
 import reactFlowPackageJson from '@xyflow/react/package.json';
 import { Html } from '@/components/html.client';
@@ -40,7 +40,7 @@ const fathomOptions = {
 const hidden = { display: 'hidden' };
 
 const RootLayout: FC<{ children: ReactNode }> = async ({ children }) => {
-  noStore();
+  await connection();
   const { Projects: _, ...remainingCategories } = defaultFooterCategories;
 
   const _pageMap = [...(await getPageMap())];

@@ -33,7 +33,7 @@ export async function getSubscription(): Promise<{
   const { data, error } = await nhost.graphql.request(GET_SUBSCRIPTION, { userId });
 
   if (error) {
-    console.log(error);
+    console.error(error);
   }
 
   const plan =
