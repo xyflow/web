@@ -1,10 +1,9 @@
 import { FC, ReactNode } from 'react';
 
-export const dynamic = 'force-static';
+// TODO check if we can have static layout here
+export const dynamic = 'force-dynamic';
 export const dynamicParams = false;
 
-const StaticLayout: FC<{ children: ReactNode }> = ({ children }) => {
-  return children;
-};
+const Layout: FC<{ children: ReactNode }> = ({ children }) => children;
 
-export default StaticLayout;
+export default Layout;

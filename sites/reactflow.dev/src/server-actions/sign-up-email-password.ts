@@ -31,7 +31,7 @@ export async function signUp(formData: FormData) {
     name: NHOST_SESSION_KEY,
     value: btoa(JSON.stringify(session)),
     ...COOKIE_OPTIONS,
-    maxAge: exp,
+    // maxAge: exp,
   });
   if (session.refreshToken) {
     cookieStore.set({

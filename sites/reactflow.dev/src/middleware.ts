@@ -39,7 +39,7 @@ export async function middleware(request: NextRequest) {
     response.cookies.set({
       name: NHOST_SESSION_KEY,
       value: btoa(JSON.stringify(newSession)),
-      maxAge: exp, // Aligns cookies with Nhost’s own token lifetimes
+      // maxAge: exp, // Aligns cookies with Nhost’s own token lifetimes
       ...COOKIE_OPTIONS,
     });
     if (newSession?.refreshToken) {
