@@ -16,12 +16,7 @@ import { getNhost } from '@/utils/nhost';
 import { normalizeSubscription } from '@/utils/pro-utils';
 import './global.css';
 
-// Mark the layouts that read cookies as dynamic so Next.js doesn't cache their HTML across users
-// export const dynamic = 'force-dynamic';
-// export const revalidate = 0;
-// export const fetchCache = 'force-no-store';
 export const experimental_ppr = true;
-export const dynamicParams = false;
 
 export const metadata = generateRootMetadata('React Flow', {
   description:
