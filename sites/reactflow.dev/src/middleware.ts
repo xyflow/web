@@ -1,5 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getNhost, NHOST_REFRESH_KEY, NHOST_SESSION_KEY } from '@/utils/nhost';
+import { getNhost } from '@/utils/nhost';
+import {
+  COOKIE_OPTIONS,
+  NHOST_REFRESH_KEY,
+  NHOST_SESSION_KEY,
+} from '@/utils/nhost-utils';
 
 export const config = {
   matcher: ['/auth-redirect'],
@@ -10,7 +15,7 @@ export async function middleware(request: NextRequest) {
 
   const nhost = await getNhost(request.cookies);
   const session = nhost.auth.getSession();
-  console.log('middleware', session)
+  console.log('middleware', session);
   const url = new URL(request.url);
   const refreshToken = url.searchParams.get('refreshToken') ?? undefined;
 
@@ -27,35 +32,21 @@ export async function middleware(request: NextRequest) {
     // remove the refreshToken from the url
     url.searchParams.delete('refreshToken');
     url.pathname = '/pro/dashboard';
-    const response = NextResponse.redirect(url, {
-      headers: {
-        'x-middleware-cache': 'no-cache',
-        'cache-control': 'no-store, no-cache, must-revalidate, max-age=0',
-        pragma: 'no-cache',
-        'CDN-Cache-Control': 'no-store',
-        'Vercel-CDN-Cache-Control': 'no-store',
-      },
-    });
+    const response = NextResponse.redirect(url);
     // Prevent caching of this redirect so Set-Cookie is never shared between users
     // Set cookie via API to ensure proper serialization and merging
     const exp = newSession?.accessTokenExpiresIn ?? 0;
     response.cookies.set({
       name: NHOST_SESSION_KEY,
       value: btoa(JSON.stringify(newSession)),
-      path: '/', // Explicitly makes the cookie available to all routes on your domain
-      httpOnly: true, // JS can’t read cookies (prevents XSS stealing your tokens)
-      secure: true, // Sent only over HTTPS
-      sameSite: 'lax', // Prevents CSRF on cross-site POSTs, but still works for normal navigation
       maxAge: exp, // Aligns cookies with Nhost’s own token lifetimes
+      ...COOKIE_OPTIONS,
     });
     if (newSession?.refreshToken) {
       response.cookies.set({
         name: NHOST_REFRESH_KEY,
         value: newSession.refreshToken,
-        path: '/',
-        httpOnly: true,
-        secure: true,
-        sameSite: 'lax',
+        ...COOKIE_OPTIONS,
         // Nhost manages refresh token expiry server-side; do not set long maxAge unintentionally
       });
     }
