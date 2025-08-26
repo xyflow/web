@@ -21,6 +21,7 @@ import './global.css';
 // export const revalidate = 0;
 // export const fetchCache = 'force-no-store';
 export const experimental_ppr = true;
+export const dynamicParams = false;
 
 export const metadata = generateRootMetadata('React Flow', {
   description:
