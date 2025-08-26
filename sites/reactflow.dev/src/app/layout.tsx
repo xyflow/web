@@ -3,7 +3,6 @@ import { getPageMap, mergeMetaWithPageMap } from 'nextra/page-map';
 import { Search, SidebarTitle } from 'xy-shared';
 import { defaultFooterCategories, Footer as XYFooter, LogoLabel } from '@xyflow/xy-ui';
 import { getPageMap as getExamplesPageMap } from './(content-pages)/examples/[...slug]/utils';
-import type { FC, ReactNode } from 'react';
 import { Head } from 'nextra/components';
 import reactFlowPackageJson from '@xyflow/react/package.json';
 import { Html } from '@/components/html.client';
@@ -39,14 +38,14 @@ const fathomOptions = {
 };
 const hidden = { display: 'hidden' };
 
-const RootLayout: FC<{ children: ReactNode }> = async ({ children }) => {
+export default async function RootLayout({ children }: LayoutProps<'/'>) {
   const { Projects: _, ...remainingCategories } = defaultFooterCategories;
 
   const _pageMap = [...(await getPageMap())];
 
   const nhost = await getNhost();
   const user = nhost.auth.getUser();
-  console.log('root layout', user)
+  console.log('root layout', user);
   const subscriptionContext = await getSubscription();
   const subscription = normalizeSubscription(subscriptionContext);
 
@@ -228,6 +227,4 @@ const RootLayout: FC<{ children: ReactNode }> = async ({ children }) => {
       </body>
     </Html>
   );
-};
-
-export default RootLayout;
+}

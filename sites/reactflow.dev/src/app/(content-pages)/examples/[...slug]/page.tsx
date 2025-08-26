@@ -8,15 +8,11 @@ import { useMDXComponents as getMDXComponents } from '@/mdx-components';
 import ProExampleViewer from '@/components/pro-example-viewer';
 import { importMetadata } from './utils';
 
-type PageProps = Readonly<{
-  params: Promise<{
-    slug: string[];
-  }>;
-}>;
+type Props = PageProps<'/examples/[...slug]'>
 
 const { wrapper: Wrapper, h1: H1 } = getMDXComponents();
 
-export default async function Page(props: PageProps) {
+export default async function Page(props: Props) {
   const params = await props.params;
   const route = params.slug.join('/');
   // eslint-disable-next-line @typescript-eslint/no-require-imports -- `require` supports Fast Refresh
@@ -43,7 +39,7 @@ export default async function Page(props: PageProps) {
   );
 }
 
-export async function generateMetadata(props: PageProps) {
+export async function generateMetadata(props: Props) {
   const params = await props.params;
   const route = params.slug.join('/');
   return importMetadata(route);
