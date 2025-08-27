@@ -30,10 +30,11 @@ export async function getSubscription(): Promise<{
       user,
     };
   }
-
+  console.log('before nhost.graphql.request')
   const { data, error } = await nhost.graphql.request(GET_SUBSCRIPTION, {
     userId: user.id,
   });
+  console.log('after nhost.graphql.request')
 
   if (error) {
     console.error(error);
