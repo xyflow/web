@@ -39,8 +39,8 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
 
   const _pageMap = [...(await getPageMap())];
 
-  // const nhost = await getNhost();
-  const user = null; //nhost.auth.getUser();
+  const nhost = await getNhost();
+  const user = nhost.auth.getUser();
   console.log('root layout', user);
   const subscriptionContext = await getSubscription();
   const subscription = normalizeSubscription(subscriptionContext);

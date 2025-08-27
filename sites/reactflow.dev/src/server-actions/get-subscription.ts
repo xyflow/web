@@ -19,29 +19,29 @@ export async function getSubscription(): Promise<{
   plan: SubscriptionPlan;
   teamPlan: SubscriptionPlan;
 }> {
-  // const nhost = await getNhost();
-  const userId = null //nhost.auth.getUser()?.id;
+  const nhost = await getNhost();
+  const userId = nhost.auth.getUser()?.id;
 
-  // if (!userId) {
+  if (!userId) {
     return {
       plan: SubscriptionPlan.FREE,
       teamPlan: SubscriptionPlan.FREE,
     };
-  // }
+  }
 
-  // const { data, error } = await nhost.graphql.request(GET_SUBSCRIPTION, { userId });
-  //
-  // if (error) {
-  //   console.error(error);
-  // }
-  //
-  // const plan =
-  //   data?.user_subscriptions?.[0]?.subscription_plan_id ?? SubscriptionPlan.FREE;
-  // const teamPlan =
-  //   data?.team_subscriptions?.[0]?.subscription_plan_id ?? SubscriptionPlan.FREE;
-  //
-  // return {
-  //   plan,
-  //   teamPlan,
-  // };
+  const { data, error } = await nhost.graphql.request(GET_SUBSCRIPTION, { userId });
+
+  if (error) {
+    console.error(error);
+  }
+
+  const plan =
+    data?.user_subscriptions?.[0]?.subscription_plan_id ?? SubscriptionPlan.FREE;
+  const teamPlan =
+    data?.team_subscriptions?.[0]?.subscription_plan_id ?? SubscriptionPlan.FREE;
+
+  return {
+    plan,
+    teamPlan,
+  };
 }
