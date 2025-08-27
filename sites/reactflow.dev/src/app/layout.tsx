@@ -11,7 +11,7 @@ import NavMenu from '@/components/pro/Navigation/NavMenu';
 import { normalizePageMap } from '@/utils/page-map';
 import './global.css';
 
-export const experimental_ppr = true
+export const dynamic = 'force-dynamic';
 export const dynamicParams = false;
 
 export const metadata = generateRootMetadata('React Flow', {
