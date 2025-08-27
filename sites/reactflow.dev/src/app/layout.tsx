@@ -17,6 +17,7 @@ import { normalizeSubscription } from '@/utils/pro-utils';
 import './global.css';
 
 export const experimental_ppr = true;
+export const dynamicParams = false;
 
 export const metadata = generateRootMetadata('React Flow', {
   description:
@@ -37,12 +38,20 @@ const hidden = { display: 'hidden' };
 export default async function RootLayout({ children }: LayoutProps<'/'>) {
   const { Projects: _, ...remainingCategories } = defaultFooterCategories;
 
-  const _pageMap = [...(await getPageMap())];
-
-  const nhost = await getNhost();
+  const [
+    pageMap,
+    nhost,
+    subscriptionContext,
+    lastChangelog,
+  ] = await Promise.all([
+    getPageMap(),
+    getNhost(),
+    getSubscription(),
+    getLastChangelog()
+  ])
+  const _pageMap = pageMap.slice()
   const user = nhost.auth.getUser();
   console.log('root layout', user);
-  const subscriptionContext = await getSubscription();
   const subscription = normalizeSubscription(subscriptionContext);
 
   const pageMap = mergeMetaWithPageMap(_pageMap, {
@@ -214,7 +223,7 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
             sidebar={{ toggleButton: false }}
             toc={{
               backToTop: null,
-              extraContent: <TOC pageMap={await getLastChangelog()} />,
+              extraContent: <TOC pageMap={lastChangelog} />,
             }}
           >
             {children}
