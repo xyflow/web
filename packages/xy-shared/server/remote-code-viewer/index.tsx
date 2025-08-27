@@ -1,8 +1,10 @@
 import { Framework } from '@xyflow/xy-ui';
 import { MDXRemote } from 'nextra/mdx-remote';
+import path from 'path';
 import { ReactNode } from 'react';
 import { ExampleCode } from '../../types';
 import { compileCodeSnippet } from '../compile-code-snippet';
+import { loadJSONFile } from '../utils';
 import { CodePreview } from './CodePreview';
 import './style.css';
 
@@ -36,9 +38,9 @@ export async function RemoteCodeViewer({
   const _framework: Framework =
     framework ?? (process.env.NEXT_PUBLIC_Framework as Framework) ?? 'react';
   const preview = `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/${_framework}/${route}/index.html`;
-  const json: ExampleCode = await import(
-    `private-next-root-dir/../../apps/example-apps/public/${_framework}/${route}/source.json`
-  );
+  const p = path.join('../../apps/example-apps/public', _framework, route, 'source.json');
+
+  const json = loadJSONFile<ExampleCode>(p);
   const isOk = !!json && 'files' in json && 'dependencies' in json;
   if (!isOk) {
     throw new Error(`Example code for "${_framework}/${route}/source.json" not found!`);
