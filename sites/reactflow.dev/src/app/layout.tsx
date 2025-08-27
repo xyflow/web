@@ -39,14 +39,11 @@ const hidden = { display: 'hidden' };
 export default async function RootLayout({ children }: LayoutProps<'/'>) {
   const { Projects: _, ...remainingCategories } = defaultFooterCategories;
 
-  const [_pageMap, nhost, subscriptionContext, lastChangelog] = await Promise.all([
+  const [_pageMap, { user, ...subscriptionContext }, lastChangelog] = await Promise.all([
     getPageMap(),
-    getNhost(),
     getSubscription(),
     getLastChangelog(),
   ]);
-  const user = nhost.auth.getUser();
-  console.log('root layout', user);
   const subscription = normalizeSubscription(subscriptionContext);
 
   const pageMap = mergeMetaWithPageMap(_pageMap.slice(), {
