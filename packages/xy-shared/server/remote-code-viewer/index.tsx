@@ -38,12 +38,18 @@ export async function RemoteCodeViewer({
   const _framework: Framework =
     framework ?? (process.env.NEXT_PUBLIC_Framework as Framework) ?? 'react';
   const preview = `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/${_framework}/${route}/index.html`;
-  const p = path.join('../../apps/example-apps/public', _framework, route, 'source.json');
+  const p = path.join(
+    process.cwd(),
+    '../../apps/example-apps/public',
+    _framework,
+    route,
+    'source.json',
+  );
 
   const json = loadJSONFile<ExampleCode>(p);
   const isOk = !!json && 'files' in json && 'dependencies' in json;
   if (!isOk) {
-    throw new Error(`Example code for "${_framework}/${route}/source.json" not found!`);
+    throw new Error(`Example code for "${p}" not found! Preview: ${preview}`);
   }
   const snippets: Record<string, string> = {};
   for (const [filename, file] of Object.entries(json.files)) {
