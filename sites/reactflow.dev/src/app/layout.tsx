@@ -16,7 +16,8 @@ import { getNhost } from '@/utils/nhost';
 import { normalizeSubscription } from '@/utils/pro-utils';
 import './global.css';
 
-export const experimental_ppr = true;
+// export const experimental_ppr = true;
+export const dynamic = 'force-static';
 export const dynamicParams = false;
 
 export const metadata = generateRootMetadata('React Flow', {
