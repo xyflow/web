@@ -1,23 +1,16 @@
-import { Folder, MdxFile, MetaJsonFile } from 'nextra';
-import { getPageMap, mergeMetaWithPageMap } from 'nextra/page-map';
-import { Search, SidebarTitle } from 'xy-shared';
+import { Search } from 'xy-shared';
 import { defaultFooterCategories, Footer as XYFooter, LogoLabel } from '@xyflow/xy-ui';
-import { getPageMap as getExamplesPageMap } from './(content-pages)/examples/[...slug]/utils';
 import { Head } from 'nextra/components';
 import reactFlowPackageJson from '@xyflow/react/package.json';
 import { Html } from '@/components/html.client';
 import { generateRootMetadata, getLastChangelog, TOC } from 'xy-shared/server';
 import { Fathom } from 'xy-shared';
 import { SubscriptionProvider } from '@/components/pro/Providers';
-import { getSubscription } from '@/server-actions';
 import { Layout as NextraLayout, Navbar as NextraNavbar } from 'nextra-theme-docs';
 import NavMenu from '@/components/pro/Navigation/NavMenu';
-import { getNhost } from '@/utils/nhost';
-import { normalizeSubscription } from '@/utils/pro-utils';
+import { normalizePageMap } from '@/utils/page-map';
 import './global.css';
 
-// export const experimental_ppr = true;
-// export const dynamic = 'force-static';
 export const dynamicParams = false;
 
 export const metadata = generateRootMetadata('React Flow', {
@@ -34,89 +27,14 @@ const fathomOptions = {
   id: 'LXMRMWLB',
   domains: ['reactflow.dev'],
 };
-const hidden = { display: 'hidden' };
 
 export default async function RootLayout({ children }: LayoutProps<'/'>) {
   const { Projects: _, ...remainingCategories } = defaultFooterCategories;
 
-  const [_pageMap, { user, ...subscriptionContext }, lastChangelog] = await Promise.all([
-    getPageMap(),
-    getSubscription(),
+  const [{ pageMap, subscriptionContext, user }, lastChangelog] = await Promise.all([
+    normalizePageMap(),
     getLastChangelog(),
   ]);
-  const subscription = normalizeSubscription(subscriptionContext);
-
-  const pageMap = mergeMetaWithPageMap(_pageMap.slice(), {
-    pro: {
-      items: user
-        ? {
-            'sign-in': hidden,
-            'sign-up': hidden,
-            ...(subscription.isSubscribed && { subscribe: hidden }),
-            ...(!subscription.isAdmin && { team: hidden }),
-          }
-        : {
-            dashboard: hidden,
-            support: hidden,
-            team: hidden,
-            account: hidden,
-            subscribe: hidden,
-          },
-    },
-  });
-
-  // Add badges
-  const apiReference = pageMap.find(
-    (item): item is Folder => 'children' in item && item.name === 'api-reference',
-  );
-  const examplesIndex = pageMap.findIndex(
-    (item): item is Folder => 'name' in item && item.name === 'examples',
-  );
-  const [examplesMeta, ...examples] = (pageMap[examplesIndex] as Folder).children;
-  const [catchAllExamplesMeta, ...catchAllExamples] = (await getExamplesPageMap())
-    .children;
-  // Merge on disk examples with examples from catch-all [...slug] route
-  pageMap[examplesIndex] = {
-    ...pageMap[examplesIndex],
-    children: [
-      {
-        // Merge meta records
-        data: {
-          ...(examplesMeta as MetaJsonFile).data,
-          ...(catchAllExamplesMeta as MetaJsonFile).data,
-        },
-      },
-      ...examples.slice(0, -1), // Exclude /examples/pro page
-      ...catchAllExamples,
-      examples.at(-1)!, // Move /examples/pro to the end of sidebar
-    ],
-  };
-  const components = pageMap.find(
-    (item): item is Folder => 'children' in item && item.name === 'ui',
-  );
-  const folders = [
-    ...apiReference!.children,
-    ...components!.children,
-    ...catchAllExamples,
-  ].filter((item): item is Folder<MdxFile> => 'children' in item);
-
-  for (const folder of folders) {
-    // First filter out hidden items
-    folder.children = folder.children
-      .filter((item: MdxFile) => {
-        // Skip items where frontMatter.hidden is true
-        return !('frontMatter' in item && item.frontMatter?.hidden === true);
-      })
-      .map((item: MdxFile & { title: string }) => ({
-        ...item,
-        title:
-          typeof item.title === 'string' ? (
-            <SidebarTitle frontMatter={item.frontMatter!} title={item.title} />
-          ) : (
-            item.title
-          ),
-      }));
-  }
 
   return (
     <Html>
@@ -141,13 +59,6 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
                     { title: 'Showcase', route: '/showcase' },
                     { title: 'Playground', route: 'https://play.reactflow.dev' },
                   ],
-                  // 'React Flow Pro': [
-                  //   { title: 'Pricing', route: '/pro/subscribe' },
-                  //   { title: 'Case Studies', route: '/pro/case-studies' },
-                  //   { title: 'Request a Quote', route: '/pro/quote-request' },
-                  //   { title: 'Sign Up', route: '/pro/sign-up' },
-                  //   { title: 'Sign In', route: '/pro/sign-in' },
-                  // ],
                   ...remainingCategories,
                   Legal: [
                     {
