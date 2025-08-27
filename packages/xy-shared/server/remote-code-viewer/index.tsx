@@ -43,7 +43,7 @@ export async function RemoteCodeViewer({
   const json = loadJSONFile<ExampleCode>(p);
   const isOk = !!json && 'files' in json && 'dependencies' in json;
   if (!isOk) {
-    throw new Error(`Example code for "${_framework}/${route}/${source.json}" not found!`);
+    throw new Error(`Example code for "${_framework}/${route}/source.json" not found!`);
   }
   const snippets: Record<string, string> = {};
   for (const [filename, file] of Object.entries(json.files)) {
