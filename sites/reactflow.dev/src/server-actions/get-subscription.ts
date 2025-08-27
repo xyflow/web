@@ -19,8 +19,8 @@ export async function getSubscription(): Promise<{
   plan: SubscriptionPlan;
   teamPlan: SubscriptionPlan;
 }> {
-  const nhost = await getNhost();
-  const userId = nhost.auth.getUser()?.id;
+  // const nhost = await getNhost();
+  const userId = null //nhost.auth.getUser()?.id;
 
   if (!userId) {
     return {
