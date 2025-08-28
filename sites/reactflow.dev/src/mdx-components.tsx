@@ -5,7 +5,7 @@ import { Callout, Steps, Cards, Tabs } from 'nextra/components';
 
 const docsComponents = getDocsMDXComponents({
   APIDocs,
-  RemoteCodeViewer,
+  RemoteCodeViewer: () => null,
   Callout,
   Steps,
   Cards,
