@@ -1,11 +1,13 @@
-import type { FC, ReactNode } from 'react';
 import { Head } from 'nextra/components';
 import reactFlowPackageJson from '@xyflow/react/package.json';
 import { Html } from '@/components/html.client';
 import { generateRootMetadata } from 'xy-shared/server';
 import { Fathom } from 'xy-shared';
-
+import { LayoutDynamic } from './layout.dynamic';
 import './global.css';
+
+export const dynamicParams = false;
+export const revalidate = false;
 
 export const metadata = generateRootMetadata('React Flow', {
   description:
@@ -22,18 +24,14 @@ const fathomOptions = {
   domains: ['reactflow.dev'],
 };
 
-const RootLayout: FC<{
-  children: ReactNode;
-}> = async ({ children }) => {
+export default async function RootLayout({ children }: LayoutProps<'/'>) {
   return (
     <Html>
       <Head color={{ hue: 333, saturation: 80 }} />
       <body>
         <Fathom {...fathomOptions} />
-        {children}
+        <LayoutDynamic>{children}</LayoutDynamic>
       </body>
     </Html>
   );
-};
-
-export default RootLayout;
+}
