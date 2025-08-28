@@ -1,5 +1,4 @@
 import path from 'path';
-import { Callout, Cards } from 'nextra/components';
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
 import { Button } from '@xyflow/xy-ui';
 import { getAllExamples } from 'xy-shared/server';
@@ -27,8 +26,6 @@ export default async function Page(props: Props) {
       <H1>{metadata.title}</H1>
       <MDXContent
         components={{
-          Callout,
-          Cards,
           ArrowTopRightOnSquareIcon,
           ProExampleViewer,
           Button,
