@@ -31,7 +31,7 @@ export default async function Page(props: Props) {
           Cards,
           ArrowTopRightOnSquareIcon,
           RemoteCodeViewer,
-          ProExampleViewer,
+          ProExampleViewer: () => null,
           Button,
         }}
       />
