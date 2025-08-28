@@ -12,7 +12,7 @@ export function loadJSONFile<T>(url: string): T | undefined {
     const file = readFileSync(url, 'utf-8');
     return JSON.parse(file) as T;
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 }
 
