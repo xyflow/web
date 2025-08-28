@@ -2,7 +2,6 @@
 description: This guide shows you how to add handles to custom nodes in React Flow.
 ---
 
-import { RemoteCodeViewer } from 'xy-shared/server';
 import { Callout } from 'nextra/components';
 
 # Handles
@@ -36,8 +35,8 @@ export function CustomNode() {
 
 ## Using multiple handles
 
-If you want to use multiple source or target handles in your custom node, you 
-need to specify each handle with a unique `id`. This allows React Flow to 
+If you want to use multiple source or target handles in your custom node, you
+need to specify each handle with a unique `id`. This allows React Flow to
 differentiate between the handles when connecting edges.
 
 ```jsx /id="a"/ /id="b"/
@@ -47,9 +46,9 @@ differentiate between the handles when connecting edges.
 ```
 
 To connect an edge to a specific handle of a node, use the properties
-`sourceHandle` (for the edge's starting point) and `targetHandle` (for the 
-edge's ending point). By defining `sourceHandle` or `targetHandle` with the 
-appropriate handle `id`, you instruct React Flow to attach the edge to that 
+`sourceHandle` (for the edge's starting point) and `targetHandle` (for the
+edge's ending point). By defining `sourceHandle` or `targetHandle` with the
+appropriate handle `id`, you instruct React Flow to attach the edge to that
 specific handle, ensuring that connections are made where you intend.
 
 ```js "sourceHandle: 'a'" "sourceHandle: 'b'"
@@ -59,8 +58,8 @@ const initialEdges = [
 ];
 ```
 
-In this case, the source node is `n1` for both handles but the handle `id`s are 
-different. One comes from handle id `a` and the other one from `b`. Both edges 
+In this case, the source node is `n1` for both handles but the handle `id`s are
+different. One comes from handle id `a` and the other one from `b`. Both edges
 also have different target nodes:
 
 <RemoteCodeViewer route="learn/custom-node-2" framework="react" />
@@ -90,9 +89,9 @@ export function TargetHandleWithValidation({ position, source }) {
 
 ## Typeless handles
 
-If you want to create a handle that does not have a specific type (source or 
-target), you can set [connectionMode](/api-reference/react-flow#connectionmode) 
-to `Loose` in the `<ReactFlow />` component. This allows the handle to be used 
+If you want to create a handle that does not have a specific type (source or
+target), you can set [connectionMode](/api-reference/react-flow#connectionmode)
+to `Loose` in the `<ReactFlow />` component. This allows the handle to be used
 for both incoming and outgoing connections.
 
 ## Dynamic handles

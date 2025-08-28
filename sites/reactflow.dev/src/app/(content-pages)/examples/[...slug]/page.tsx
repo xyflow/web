@@ -2,7 +2,7 @@ import path from 'path';
 import { Callout, Cards } from 'nextra/components';
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
 import { Button } from '@xyflow/xy-ui';
-import { RemoteCodeViewer, getAllExamples } from 'xy-shared/server';
+import { getAllExamples } from 'xy-shared/server';
 
 import { useMDXComponents as getMDXComponents } from '@/mdx-components';
 import ProExampleViewer from '@/components/pro-example-viewer';
@@ -30,8 +30,7 @@ export default async function Page(props: Props) {
           Callout,
           Cards,
           ArrowTopRightOnSquareIcon,
-          RemoteCodeViewer,
-          ProExampleViewer: () => null,
+          ProExampleViewer,
           Button,
         }}
       />
