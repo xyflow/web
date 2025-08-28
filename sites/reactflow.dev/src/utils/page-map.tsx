@@ -8,9 +8,14 @@ import { getSubscription } from '@/server-actions';
 const hidden = { display: 'hidden' };
 
 export const normalizePageMap = async () => {
-  const [_pageMap, { user, ...subscriptionContext }] = await Promise.all([
+  const [
+    //
+    _pageMap,
+    { user, ...subscriptionContext },
+  ] = await Promise.all([
     getPageMap(),
-    getSubscription(),
+    Promise.resolve({ user: null } as any),
+    // getSubscription(),
   ]);
 
   const subscription = normalizeSubscription(subscriptionContext);
