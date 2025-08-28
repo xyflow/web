@@ -3,7 +3,7 @@ import { SidebarTitle } from 'xy-shared';
 import { normalizeSubscription } from '@/utils/pro-utils';
 import { Folder, MdxFile, MetaJsonFile } from 'nextra';
 import { getPageMap, mergeMetaWithPageMap } from 'nextra/page-map';
-import { getSubscription } from '@/server-actions';
+// import { getSubscription } from '@/server-actions';
 
 const hidden = { display: 'hidden' };
 
