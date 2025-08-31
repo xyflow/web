@@ -4,9 +4,8 @@ import { useMDXComponents as getMDXComponents } from '@/mdx-components';
 const INTERSECTION_FIELDS = ['getIntersectingNodes', 'isNodeIntersecting'];
 const VIEWPORT_FIELDS = ['viewportInitialized', 'fitView'];
 
-const { APIDocs } = getMDXComponents() as unknown as { APIDocs: FC<{ code?: string }> };
-
 export const NodesAndEdgesFields: FC = () => {
+  const { APIDocs } = getMDXComponents() as unknown as { APIDocs: FC<{ code?: string }> };
   return (
     <APIDocs
       code={`
@@ -25,6 +24,7 @@ export default $`}
 };
 
 export const IntersectionFields: FC = () => {
+  const { APIDocs } = getMDXComponents() as unknown as { APIDocs: FC<{ code?: string }> };
   return (
     <APIDocs
       code={`
@@ -41,6 +41,7 @@ export default $`}
 };
 
 export const ViewportFields: FC = () => {
+  const { APIDocs } = getMDXComponents() as unknown as { APIDocs: FC<{ code?: string }> };
   return (
     <APIDocs
       code={`
