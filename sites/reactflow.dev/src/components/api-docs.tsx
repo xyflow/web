@@ -43,6 +43,8 @@ export const APIDocs: FC<{
   groupKeys,
   ...props
 }) => {
+  'use cache'
+
   // Should be loaded dynamically to avoid Error: File not found: /var/task/sites/reactflow.dev/tsconfig.json on Vercel
   const { generateDefinition } = await import('nextra/tsdoc');
   const pageMap = await getPageMap('/api-reference/types');
