@@ -17,6 +17,8 @@ import { usePathname } from 'next/navigation';
 import { usePrevious } from '@/hooks/usePrevious';
 import { SubscriptionProvider } from '@/components/pro/Providers';
 import { Layout as NextraLayout } from 'nextra-theme-docs';
+import { mergeMetaWithPageMap } from 'nextra/page-map';
+import { normalizeSubscription } from '@/utils/pro-utils';
 
 interface AuthContextType {
   user?: User | null;
@@ -25,6 +27,8 @@ interface AuthContextType {
 }
 
 const AuthContext = createContext<AuthContextType>(null!);
+
+const hidden = { display: 'hidden' };
 
 export const Providers: FC<ComponentProps<typeof NextraLayout>> = ({
   children,
@@ -58,10 +62,34 @@ export const Providers: FC<ComponentProps<typeof NextraLayout>> = ({
     [user, refetchUser, isLoading],
   );
 
+  const pageMap = useMemo(() => {
+    const subscription = normalizeSubscription(subscriptionContext);
+    return mergeMetaWithPageMap(props.pageMap, {
+      pro: {
+        items: user
+          ? {
+            'sign-in': hidden,
+            'sign-up': hidden,
+            ...(subscription.isSubscribed && { subscribe: hidden }),
+            ...(!subscription.isAdmin && { team: hidden }),
+          }
+          : {
+            dashboard: hidden,
+            support: hidden,
+            team: hidden,
+            account: hidden,
+            subscribe: hidden,
+          },
+      },
+    })
+  }, [props.pageMap, user]);
+
   return (
     <AuthContext.Provider value={value}>
       <SubscriptionProvider>
-        <NextraLayout {...props}>{children}</NextraLayout>
+        <NextraLayout {...props} pageMap={pageMap}>
+          {children}
+        </NextraLayout>
       </SubscriptionProvider>
     </AuthContext.Provider>
   );

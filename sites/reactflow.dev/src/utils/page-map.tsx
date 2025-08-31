@@ -1,33 +1,10 @@
 import { getPageMap as getExamplesPageMap } from '@/app/(content-pages)/examples/[...slug]/utils';
 import { SidebarTitle } from 'xy-shared';
 import { Folder, MdxFile, MetaJsonFile } from 'nextra';
-import { getPageMap, mergeMetaWithPageMap } from 'nextra/page-map';
-
-const hidden = { display: 'hidden' };
+import { getPageMap } from 'nextra/page-map';
 
 export const normalizePageMap = async () => {
-  const _pageMap = await getPageMap();
-  // const subscription = normalizeSubscription(subscriptionContext);
-  const user = null; // todo
-
-  const pageMap = mergeMetaWithPageMap(_pageMap.slice(), {
-    pro: {
-      items: user
-        ? {
-            'sign-in': hidden,
-            'sign-up': hidden,
-            // ...(subscription.isSubscribed && { subscribe: hidden }),
-            // ...(!subscription.isAdmin && { team: hidden }),
-          }
-        : {
-            dashboard: hidden,
-            support: hidden,
-            team: hidden,
-            account: hidden,
-            subscribe: hidden,
-          },
-    },
-  });
+  const pageMap = (await getPageMap()).slice();
 
   // Add badges
   const apiReference = pageMap.find(
