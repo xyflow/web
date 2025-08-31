@@ -1,6 +1,8 @@
 import type { FC } from 'react';
 import { useMDXComponents as getMDXComponents } from '@/mdx-components';
 
+const { APIDocs } = getMDXComponents() as unknown as { APIDocs: FC<{ code?: string }> };
+
 const FIELDS = {
   viewport: [
     'defaultViewport',
@@ -124,7 +126,6 @@ const FIELDS = {
 export const ReactFlowAPIProps: FC<{ group: keyof typeof FIELDS | 'common' }> = ({
   group,
 }) => {
-  const { APIDocs } = getMDXComponents() as unknown as { APIDocs: FC<{ code?: string }> };
   let myType: string;
   if (group === 'common') {
     const omittedFields = Object.values(FIELDS)
