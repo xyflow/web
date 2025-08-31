@@ -38,7 +38,7 @@ const NavMenu: FC = async () => {
           </div>
 
           <Link href="/pro/dashboard">
-            <MenubarItem>Dashboard </MenubarItem>
+            <MenubarItem>Dashboard</MenubarItem>
           </Link>
 
           <Link href="/pro/account">
