@@ -19,7 +19,6 @@ const nextConfig: NextConfig = {
   transpilePackages: ['@xyflow/xy-ui', 'xy-shared'],
   experimental: {
     optimizePackageImports: ['@xyflow/xy-ui', 'xy-shared'],
-    ppr: 'incremental',
   },
   async redirects() {
     return redirects;
