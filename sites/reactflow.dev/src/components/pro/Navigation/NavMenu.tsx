@@ -1,10 +1,11 @@
+'use client';
+
 import { FC } from 'react';
 import Link from 'next/link';
 import { UserIcon } from '@heroicons/react/24/solid';
 import { PlanLabel, Subscribed } from '@/components/pro/SubscriptionStatus';
 import { openStripeCustomerPortal, signOut } from '@/server-actions';
 import { NavMenuNotLoggedIn } from './NavMenuNotLoggedIn';
-
 import {
   Menubar,
   MenubarContent,
@@ -13,11 +14,17 @@ import {
   MenubarSeparator,
   MenubarTrigger,
 } from 'xy-shared';
-import { getNhost } from '@/utils/nhost';
+import { useAuthContext } from '@/components/auth-context';
+import { Spinner } from '@xyflow/xy-ui';
+import { redirect } from 'next/navigation';
 
-const NavMenu: FC = async () => {
-  const nhost = await getNhost();
-  const user = nhost.auth.getUser();
+const NavMenu: FC = () => {
+  const { isLoading, user, refetchUser } = useAuthContext();
+
+  if (isLoading) {
+    return <Spinner className="text-primary" />;
+  }
+
   if (!user) {
     return <NavMenuNotLoggedIn />;
   }
@@ -54,7 +61,15 @@ const NavMenu: FC = async () => {
             </MenubarItem>
           </Subscribed>
           <MenubarSeparator />
-          <MenubarItem onClick={signOut}>Logout</MenubarItem>
+          <MenubarItem
+            onClick={async () => {
+              await signOut();
+              refetchUser();
+              redirect('/');
+            }}
+          >
+            Logout
+          </MenubarItem>
         </MenubarContent>
       </MenubarMenu>
     </Menubar>
