@@ -31,14 +31,15 @@ export async function getSubscription(): Promise<{
     };
   }
   console.log('before nhost.graphql.request')
-  const { data, error } = await nhost.graphql.request(GET_SUBSCRIPTION, {
-    userId: user.id,
-  });
-  console.log('after nhost.graphql.request')
-
-  if (error) {
-    console.error(error);
-  }
+  let data = null as any
+  // const { data, error } = await nhost.graphql.request(GET_SUBSCRIPTION, {
+  //   userId: user.id,
+  // });
+  // console.log('after nhost.graphql.request')
+  //
+  // if (error) {
+  //   console.error(error);
+  // }
 
   const plan =
     data?.user_subscriptions?.[0]?.subscription_plan_id ?? SubscriptionPlan.FREE;
