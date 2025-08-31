@@ -4,10 +4,9 @@ import { Button } from '@xyflow/xy-ui';
 import { getAllExamples } from 'xy-shared/server';
 
 import { useMDXComponents as getMDXComponents } from '@/mdx-components';
-import ProExampleViewer from '@/components/pro-example-viewer';
 import { importMetadata } from './utils';
 
-type Props = PageProps<'/examples/[...slug]'>
+type Props = PageProps<'/examples/[...slug]'>;
 
 const { wrapper: Wrapper, h1: H1 } = getMDXComponents();
 
@@ -24,13 +23,7 @@ export default async function Page(props: Props) {
   return (
     <Wrapper toc={toc} metadata={metadata}>
       <H1>{metadata.title}</H1>
-      <MDXContent
-        components={{
-          ArrowTopRightOnSquareIcon,
-          ProExampleViewer,
-          Button,
-        }}
-      />
+      <MDXContent components={{ ArrowTopRightOnSquareIcon, Button }} />
     </Wrapper>
   );
 }
