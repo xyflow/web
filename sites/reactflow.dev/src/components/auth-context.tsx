@@ -3,18 +3,20 @@
 import {
   createContext,
   useContext,
-  ReactNode,
   useState,
   useTransition,
   useEffect,
   useCallback,
   useMemo,
   FC,
+  ComponentProps,
 } from 'react';
 import { User } from '@nhost/nhost-js';
 import { getUser } from '@/server-actions';
 import { usePathname } from 'next/navigation';
 import { usePrevious } from '@/hooks/usePrevious';
+import { SubscriptionProvider } from '@/components/pro/Providers';
+import { Layout as NextraLayout } from 'nextra-theme-docs';
 
 interface AuthContextType {
   user?: User | null;
@@ -24,7 +26,10 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType>(null!);
 
-export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
+export const Providers: FC<ComponentProps<typeof NextraLayout>> = ({
+  children,
+  ...props
+}) => {
   const [user, setUser] = useState<User | null | undefined>(undefined);
   const [isLoading, startTransition] = useTransition();
 
@@ -53,13 +58,19 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
     [user, refetchUser, isLoading],
   );
 
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={value}>
+      <SubscriptionProvider>
+        <NextraLayout {...props}>{children}</NextraLayout>
+      </SubscriptionProvider>
+    </AuthContext.Provider>
+  );
 };
 
 export function useAuthContext() {
   const context = useContext(AuthContext);
-  if (context === undefined) {
-    throw new Error('useAuthContext must be used within an AuthProvider');
+  if (!context) {
+    throw new Error('useAuthContext must be used within a Providers');
   }
   return context;
 }
