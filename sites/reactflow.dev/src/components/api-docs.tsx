@@ -1,18 +1,7 @@
-import { TSDoc } from 'nextra/tsdoc';
+import { TSDoc, generateDefinition } from 'nextra/tsdoc';
 import { getPageMap } from 'nextra/page-map';
 import type { MdxFile } from 'nextra';
 import { ComponentProps, FC } from 'react';
-import { unstable_cache } from 'next/cache';
-
-const generateDefinition = unstable_cache(
-  async (opts) => {
-    const { generateDefinition: originalGenerateDefinition } = await import(
-      'nextra/tsdoc'
-    );
-    return originalGenerateDefinition(opts);
-  },
-  ['generateDefinition'],
-);
 
 const externalReactLinks = {
   ComponentType:
@@ -47,13 +36,13 @@ export const APIDocs: FC<{
   packageName?: string;
   groupKeys?: string;
 }> = async ({
-  componentName,
-  typeName,
-  functionName,
-  packageName = 'react',
-  groupKeys,
-  ...props
-}) => {
+              componentName,
+              typeName,
+              functionName,
+              packageName = 'react',
+              groupKeys,
+              ...props
+            }) => {
   const pageMap = await getPageMap('/api-reference/types');
   const reactFlowLinks = Object.fromEntries(
     pageMap
@@ -80,7 +69,7 @@ export const APIDocs: FC<{
   };
 
   if (props.code) {
-    // @tss-expect-error -- fixme
+    // @ts-expect-error -- fixme
     const definition = await generateDefinition(props);
     return <TSDoc definition={definition} {...defaultTSDocProps} />;
   }
