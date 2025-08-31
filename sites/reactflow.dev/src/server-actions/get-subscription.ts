@@ -3,7 +3,6 @@
 import { gql } from '@apollo/client';
 import { getNhost } from '@/utils/nhost';
 import { SubscriptionPlan } from '@/types';
-import { User } from '@nhost/nhost-js';
 
 const GET_SUBSCRIPTION = gql`
   query GetSubscription($userId: uuid) {
@@ -19,28 +18,24 @@ const GET_SUBSCRIPTION = gql`
 export async function getSubscription(): Promise<{
   plan: SubscriptionPlan;
   teamPlan: SubscriptionPlan;
-  user: User | null;
 }> {
-  const user = null as any
-  // const nhost = await getNhost();
-  // const user = nhost.auth.getUser();
-  // if (!user) {
-  //   return {
-  //     plan: SubscriptionPlan.FREE,
-  //     teamPlan: SubscriptionPlan.FREE,
-  //     user,
-  //   };
-  // }
+  const nhost = await getNhost();
+  const user = nhost.auth.getUser();
+  if (!user) {
+    return {
+      plan: SubscriptionPlan.FREE,
+      teamPlan: SubscriptionPlan.FREE,
+    };
+  }
   console.log('before nhost.graphql.request')
-  let data = null as any
-  // const { data, error } = await nhost.graphql.request(GET_SUBSCRIPTION, {
-  //   userId: user.id,
-  // });
-  // console.log('after nhost.graphql.request')
-  //
-  // if (error) {
-  //   console.error(error);
-  // }
+  const { data, error } = await nhost.graphql.request(GET_SUBSCRIPTION, {
+    userId: user.id,
+  });
+  console.log('after nhost.graphql.request')
+
+  if (error) {
+    console.error(error);
+  }
 
   const plan =
     data?.user_subscriptions?.[0]?.subscription_plan_id ?? SubscriptionPlan.FREE;
@@ -50,6 +45,5 @@ export async function getSubscription(): Promise<{
   return {
     plan,
     teamPlan,
-    user,
   };
 }

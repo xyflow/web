@@ -1,7 +1,5 @@
 import { FC } from 'react';
 import Link from 'next/link';
-import type { User } from '@nhost/nhost-js';
-
 import { UserIcon } from '@heroicons/react/24/solid';
 import { PlanLabel, Subscribed } from '@/components/pro/SubscriptionStatus';
 import { openStripeCustomerPortal, signOut } from '@/server-actions';
@@ -15,8 +13,11 @@ import {
   MenubarSeparator,
   MenubarTrigger,
 } from 'xy-shared';
+import { getNhost } from '@/utils/nhost';
 
-const NavMenu: FC<{ user: User | null }> = ({ user }) => {
+const NavMenu: FC = async () => {
+  const nhost = await getNhost();
+  const user = nhost.auth.getUser();
   if (!user) {
     return <NavMenuNotLoggedIn />;
   }

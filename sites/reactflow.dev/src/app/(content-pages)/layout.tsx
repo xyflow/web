@@ -1,7 +1,4 @@
-// export const dynamic = 'force-static';
-
-// export const revalidate = false;
-export const experimental_ppr = true
+export const dynamicParams = false;
 
 export default function Layout({ children }: LayoutProps<'/'>) {
   return children;

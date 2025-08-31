@@ -1,19 +1,14 @@
 import { getPageMap as getExamplesPageMap } from '@/app/(content-pages)/examples/[...slug]/utils';
 import { SidebarTitle } from 'xy-shared';
-import { normalizeSubscription } from '@/utils/pro-utils';
 import { Folder, MdxFile, MetaJsonFile } from 'nextra';
 import { getPageMap, mergeMetaWithPageMap } from 'nextra/page-map';
-import { getSubscription } from '@/server-actions';
 
 const hidden = { display: 'hidden' };
 
 export const normalizePageMap = async () => {
-  const [_pageMap, { user, ...subscriptionContext }] = await Promise.all([
-    getPageMap(),
-    getSubscription(),
-  ]);
-
-  const subscription = normalizeSubscription(subscriptionContext);
+  const _pageMap = await getPageMap();
+  // const subscription = normalizeSubscription(subscriptionContext);
+  const user = null; // todo
 
   const pageMap = mergeMetaWithPageMap(_pageMap.slice(), {
     pro: {
@@ -21,8 +16,8 @@ export const normalizePageMap = async () => {
         ? {
             'sign-in': hidden,
             'sign-up': hidden,
-            ...(subscription.isSubscribed && { subscribe: hidden }),
-            ...(!subscription.isAdmin && { team: hidden }),
+            // ...(subscription.isSubscribed && { subscribe: hidden }),
+            // ...(!subscription.isAdmin && { team: hidden }),
           }
         : {
             dashboard: hidden,
@@ -89,9 +84,5 @@ export const normalizePageMap = async () => {
       }));
   }
 
-  return {
-    pageMap,
-    subscriptionContext,
-    user,
-  };
+  return pageMap;
 };

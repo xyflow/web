@@ -6,9 +6,6 @@ import { Fathom } from 'xy-shared';
 import { LayoutDynamic } from './layout.dynamic';
 import './global.css';
 
-export const dynamicParams = false;
-// export const revalidate = false;
-
 export const metadata = generateRootMetadata('React Flow', {
   description:
     'Customizable library for rendering workflows, diagrams and node-based UIs.',
