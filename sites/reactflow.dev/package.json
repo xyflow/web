@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next --turbopack --port 3002",
     "build": "next build",
-    "postbuild": "cp tsconfig.json .next/server/tsconfig.json && cp tsconfig.json public/tsconfig.json && next-sitemap",
+    "postbuild": "cp tsconfig.json .next/server/tsconfig.json && cp tsconfig.json public/tsconfig.json && cp tsconfig.json .next/tsconfig.json && next-sitemap",
     "start": "next start",
     "lint": "next lint",
     "write-showcases": "rm -rf static/img/showcase && mkdir -p static/img/showcase && node scripts/get-showcases.js",
