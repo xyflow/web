@@ -16,7 +16,6 @@
     "types:check": "tsc --noEmit"
   },
   "dependencies": {
-    "server-only": "^0.0.1",
     "@heroicons/react": "^2.2.0",
     "@typeform/embed-react": "^4.4.0",
     "@xyflow/react": "^12.8.3",
