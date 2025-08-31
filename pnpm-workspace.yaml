@@ -4,6 +4,3 @@ packages:
   - packages/*
   - scripts/*
   - configs/*
-
-patchedDependencies:
-  nextra: patches/nextra.patch
