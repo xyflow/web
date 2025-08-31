@@ -12,13 +12,13 @@ import {
   ComponentProps,
 } from 'react';
 import { User } from '@nhost/nhost-js';
-import { getUser } from '@/server-actions';
+import { getSubscription } from '@/server-actions';
 import { usePathname } from 'next/navigation';
 import { usePrevious } from '@/hooks/usePrevious';
-import { SubscriptionProvider } from '@/components/pro/Providers';
 import { Layout as NextraLayout } from 'nextra-theme-docs';
 import { mergeMetaWithPageMap } from 'nextra/page-map';
 import { normalizeSubscription } from '@/utils/pro-utils';
+import { SubscriptionPlan } from '@/types';
 
 interface AuthContextType {
   user?: User | null;
@@ -34,11 +34,17 @@ export const Providers: FC<ComponentProps<typeof NextraLayout>> = ({
   children,
   ...props
 }) => {
-  const [user, setUser] = useState<User | null | undefined>(undefined);
   const [isLoading, startTransition] = useTransition();
+  const [{ user, plan, teamPlan }, setSubscription] = useState<
+    Awaited<ReturnType<typeof getSubscription>>
+  >({
+    user: undefined,
+    plan: SubscriptionPlan.FREE,
+    teamPlan: SubscriptionPlan.FREE,
+  });
 
   const refetchUser = useCallback(async () => {
-    setUser(await getUser());
+    setSubscription(await getSubscription());
   }, []);
 
   const pathname = usePathname();
@@ -63,34 +69,32 @@ export const Providers: FC<ComponentProps<typeof NextraLayout>> = ({
   );
 
   const pageMap = useMemo(() => {
-    const subscription = normalizeSubscription(subscriptionContext);
+    const subscription = normalizeSubscription({ plan, teamPlan });
     return mergeMetaWithPageMap(props.pageMap, {
       pro: {
         items: user
           ? {
-            'sign-in': hidden,
-            'sign-up': hidden,
-            ...(subscription.isSubscribed && { subscribe: hidden }),
-            ...(!subscription.isAdmin && { team: hidden }),
-          }
+              'sign-in': hidden,
+              'sign-up': hidden,
+              ...(subscription.isSubscribed && { subscribe: hidden }),
+              ...(!subscription.isAdmin && { team: hidden }),
+            }
           : {
-            dashboard: hidden,
-            support: hidden,
-            team: hidden,
-            account: hidden,
-            subscribe: hidden,
-          },
+              dashboard: hidden,
+              support: hidden,
+              team: hidden,
+              account: hidden,
+              subscribe: hidden,
+            },
       },
-    })
-  }, [props.pageMap, user]);
+    });
+  }, [props.pageMap, user, plan, teamPlan]);
 
   return (
     <AuthContext.Provider value={value}>
-      <SubscriptionProvider>
-        <NextraLayout {...props} pageMap={pageMap}>
-          {children}
-        </NextraLayout>
-      </SubscriptionProvider>
+      <NextraLayout {...props} pageMap={pageMap}>
+        {children}
+      </NextraLayout>
     </AuthContext.Provider>
   );
 };
@@ -98,7 +102,7 @@ export const Providers: FC<ComponentProps<typeof NextraLayout>> = ({
 export function useAuthContext() {
   const context = useContext(AuthContext);
   if (!context) {
-    throw new Error('useAuthContext must be used within a Providers');
+    throw new Error('`useAuthContext` must be used within a `Providers`');
   }
   return context;
 }

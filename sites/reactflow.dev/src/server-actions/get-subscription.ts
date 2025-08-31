@@ -3,6 +3,7 @@
 import { gql } from '@apollo/client';
 import { getNhost } from '@/utils/nhost';
 import { SubscriptionPlan } from '@/types';
+import { User } from '@nhost/nhost-js';
 
 const GET_SUBSCRIPTION = gql`
   query GetSubscription($userId: uuid) {
@@ -18,6 +19,7 @@ const GET_SUBSCRIPTION = gql`
 export async function getSubscription(): Promise<{
   plan: SubscriptionPlan;
   teamPlan: SubscriptionPlan;
+  user?: User | null
 }> {
   const nhost = await getNhost();
   const user = nhost.auth.getUser();
@@ -25,6 +27,7 @@ export async function getSubscription(): Promise<{
     return {
       plan: SubscriptionPlan.FREE,
       teamPlan: SubscriptionPlan.FREE,
+      user,
     };
   }
   console.log('before nhost.graphql.request')
@@ -45,5 +48,6 @@ export async function getSubscription(): Promise<{
   return {
     plan,
     teamPlan,
+    user
   };
 }

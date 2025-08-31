@@ -14,6 +14,9 @@ export type SubscriptionStatus = {
 };
 
 export default function useSubscription(): SubscriptionStatus {
-  const subscription = useContext(SubscriptionContext);
-  return normalizeSubscription(subscription);
+  const context = useContext(SubscriptionContext);
+  if (!context) {
+    throw new Error('`useSubscription` must be used within a `SubscriptionProvider`');
+  }
+  return normalizeSubscription(context);
 }
