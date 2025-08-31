@@ -1,3 +1,5 @@
+'use cache'
+
 import { TSDoc, generateDefinition } from 'nextra/tsdoc';
 import { getPageMap } from 'nextra/page-map';
 import type { MdxFile } from 'nextra';
@@ -36,13 +38,13 @@ export const APIDocs: FC<{
   packageName?: string;
   groupKeys?: string;
 }> = async ({
-              componentName,
-              typeName,
-              functionName,
-              packageName = 'react',
-              groupKeys,
-              ...props
-            }) => {
+  componentName,
+  typeName,
+  functionName,
+  packageName = 'react',
+  groupKeys,
+  ...props
+}) => {
   const pageMap = await getPageMap('/api-reference/types');
   const reactFlowLinks = Object.fromEntries(
     pageMap
