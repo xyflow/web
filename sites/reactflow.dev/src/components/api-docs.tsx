@@ -1,5 +1,3 @@
-'use cache'
-
 import { TSDoc, generateDefinition } from 'nextra/tsdoc';
 import { getPageMap } from 'nextra/page-map';
 import type { MdxFile } from 'nextra';
