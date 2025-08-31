@@ -4,7 +4,7 @@ import { Search } from 'xy-shared';
 import { getLastChangelog, TOC } from 'xy-shared/server';
 import { Layout as NextraLayout, Navbar as NextraNavbar } from 'nextra-theme-docs';
 import NavMenu from '@/components/pro/Navigation/NavMenu';
-// import { normalizePageMap } from '@/utils/page-map';
+import { normalizePageMap } from '@/utils/page-map';
 import { SubscriptionProvider } from '@/components/pro/Providers';
 
 /**
@@ -16,10 +16,8 @@ import { SubscriptionProvider } from '@/components/pro/Providers';
 export const LayoutDynamic: FC<{ children: ReactNode }> = async ({ children }) => {
   const { Projects: _, ...remainingCategories } = defaultFooterCategories;
 
-  const [
-    // pageMap,
-    lastChangelog] = await Promise.all([
-    // normalizePageMap(),
+  const [pageMap, lastChangelog] = await Promise.all([
+    normalizePageMap(),
     getLastChangelog(),
   ]);
   return (
@@ -101,7 +99,7 @@ export const LayoutDynamic: FC<{ children: ReactNode }> = async ({ children }) =
           </NextraNavbar>
         }
         nextThemes={{ forcedTheme: 'light', defaultTheme: 'light' }}
-        pageMap={[{ data: {} }]}
+        pageMap={pageMap}
         // Set to null to avoid rendering search in mobile nav, since we added search in navbar already
         search={null}
         sidebar={{ toggleButton: false }}
