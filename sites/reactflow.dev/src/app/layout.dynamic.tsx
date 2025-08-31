@@ -5,7 +5,7 @@ import { getLastChangelog, TOC } from 'xy-shared/server';
 import { Navbar as NextraNavbar } from 'nextra-theme-docs';
 import NavMenu from '@/components/pro/Navigation/NavMenu';
 import { normalizePageMap } from '@/utils/page-map';
-import { Providers } from '@/components/auth-context';
+import { SubscriptionProvider } from '@/components/pro/Providers';
 
 /**
  * ⚠️ Attention!
@@ -21,7 +21,7 @@ export const LayoutDynamic: FC<{ children: ReactNode }> = async ({ children }) =
     getLastChangelog(),
   ]);
   return (
-    <Providers
+    <SubscriptionProvider
       darkMode={false}
       docsRepositoryBase="https://github.com/xyflow/web/tree/main/sites/reactflow.dev"
       editLink="Edit this page on GitHub"
@@ -107,6 +107,6 @@ export const LayoutDynamic: FC<{ children: ReactNode }> = async ({ children }) =
       }}
     >
       {children}
-    </Providers>
+    </SubscriptionProvider>
   );
 };

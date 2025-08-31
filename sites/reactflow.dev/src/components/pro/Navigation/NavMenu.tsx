@@ -14,12 +14,12 @@ import {
   MenubarSeparator,
   MenubarTrigger,
 } from 'xy-shared';
-import { useAuthContext } from '@/components/auth-context';
 import { Spinner } from '@xyflow/xy-ui';
 import { redirect } from 'next/navigation';
+import useSubscription from '@/hooks/useSubscription';
 
 const NavMenu: FC = () => {
-  const { isLoading, user, refetchUser } = useAuthContext();
+  const { isLoading, user, refetchUser } = useSubscription();
 
   if (isLoading) {
     return <Spinner className="text-primary" />;

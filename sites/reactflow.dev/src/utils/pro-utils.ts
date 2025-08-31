@@ -1,5 +1,4 @@
 import { Currency, SubscriptionPlan } from '@/types';
-import { SubscriptionContextValue } from '@/components/pro/Providers';
 
 export function getCurrencySign(currency?: Currency) {
   switch (currency) {
@@ -12,7 +11,10 @@ export function getCurrencySign(currency?: Currency) {
   }
 }
 
-export function normalizeSubscription(subscription: SubscriptionContextValue) {
+export function normalizeSubscription(subscription: {
+  plan: SubscriptionPlan;
+  teamPlan: SubscriptionPlan;
+}) {
   return {
     isSubscribed:
       subscription.plan !== SubscriptionPlan.FREE ||
