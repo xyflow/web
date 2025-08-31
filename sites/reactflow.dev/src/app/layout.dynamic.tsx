@@ -3,7 +3,7 @@ import { defaultFooterCategories, Footer as XYFooter, LogoLabel } from '@xyflow/
 import { Search } from 'xy-shared';
 import { getLastChangelog, TOC } from 'xy-shared/server';
 import { Layout as NextraLayout, Navbar as NextraNavbar } from 'nextra-theme-docs';
-import NavMenu from '@/components/pro/Navigation/NavMenu';
+import NavMenuClient from '@/components/pro/Navigation/NavMenu.client';
 import { normalizePageMap } from '@/utils/page-map';
 import { SubscriptionProvider } from '@/components/pro/Providers';
 
@@ -94,7 +94,7 @@ export const LayoutDynamic: FC<{ children: ReactNode }> = async ({ children }) =
               </svg>
             </a>
             <Suspense fallback="Loading...">
-              <NavMenu />
+              <NavMenuClient />
             </Suspense>
           </NextraNavbar>
         }
