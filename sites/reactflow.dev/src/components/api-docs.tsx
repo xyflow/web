@@ -1,4 +1,6 @@
-import { TSDoc, generateDefinition } from 'nextra/tsdoc';
+import 'server-only'
+
+import { TSDoc } from 'nextra/tsdoc';
 import { getPageMap } from 'nextra/page-map';
 import type { MdxFile } from 'nextra';
 import { ComponentProps, FC } from 'react';
@@ -43,10 +45,8 @@ export const APIDocs: FC<{
   groupKeys,
   ...props
 }) => {
-  'use cache'
-
   // Should be loaded dynamically to avoid Error: File not found: /var/task/sites/reactflow.dev/tsconfig.json on Vercel
-  // const { generateDefinition } = await import('nextra/tsdoc');
+  const { generateDefinition } = await import('nextra/tsdoc');
   const pageMap = await getPageMap('/api-reference/types');
   const reactFlowLinks = Object.fromEntries(
     pageMap
