@@ -21,15 +21,16 @@ export async function getSubscription(): Promise<{
   teamPlan: SubscriptionPlan;
   user: User | null;
 }> {
-  const nhost = await getNhost();
-  const user = nhost.auth.getUser();
-  if (!user) {
-    return {
-      plan: SubscriptionPlan.FREE,
-      teamPlan: SubscriptionPlan.FREE,
-      user,
-    };
-  }
+  const user = null as any
+  // const nhost = await getNhost();
+  // const user = nhost.auth.getUser();
+  // if (!user) {
+  //   return {
+  //     plan: SubscriptionPlan.FREE,
+  //     teamPlan: SubscriptionPlan.FREE,
+  //     user,
+  //   };
+  // }
   console.log('before nhost.graphql.request')
   let data = null as any
   // const { data, error } = await nhost.graphql.request(GET_SUBSCRIPTION, {
