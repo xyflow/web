@@ -1,6 +1,6 @@
 import { useReactFlow, XYPosition } from '@xyflow/react';
 import { useCallback, useRef, useState } from 'react';
-import { useDraggable } from '@neodrag/react';
+import { DragEventData, useDraggable } from '@neodrag/react';
 import { cn } from '../../../tutorials/components/tooltip/lib/utils';
 
 // This is a simple ID generator for the nodes.
@@ -49,18 +49,30 @@ export function Sidebar() {
 
   const handleNodeDrop = useCallback(
     (nodeType: string, screenPosition: XYPosition) => {
-      // Create a new node and add it to the flow
-      const position = screenToFlowPosition(screenPosition);
-      const newNode = {
-        id: getId(),
-        type: nodeType,
-        position,
-        data: { label: `${nodeType} node` },
-      };
+      const flow = document.querySelector('.react-flow');
+      const flowRect = flow?.getBoundingClientRect();
+      const isInFlow =
+        flowRect &&
+        screenPosition.x >= flowRect.left &&
+        screenPosition.x <= flowRect.right &&
+        screenPosition.y >= flowRect.top &&
+        screenPosition.y <= flowRect.bottom;
 
-      setNodes((nds) => nds.concat(newNode));
+      // Create a new node and add it to the flow
+      if (isInFlow) {
+        const position = screenToFlowPosition(screenPosition);
+
+        const newNode = {
+          id: getId(),
+          type: nodeType,
+          position,
+          data: { label: `${nodeType} node` },
+        };
+
+        setNodes((nds) => nds.concat(newNode));
+      }
     },
-    [setNodes],
+    [setNodes, screenToFlowPosition],
   );
 
   return (

@@ -13,7 +13,6 @@ import {
 import '@xyflow/react/dist/style.css';
 
 import { Sidebar } from './Sidebar';
-import { DnDProvider } from './useDnD';
 
 const initialNodes = [
   {
@@ -55,8 +54,6 @@ function DnDFlow() {
 
 export default () => (
   <ReactFlowProvider>
-    <DnDProvider>
-      <DnDFlow />
-    </DnDProvider>
+    <DnDFlow />
   </ReactFlowProvider>
 );
