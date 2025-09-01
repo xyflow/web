@@ -1,6 +1,6 @@
+import { useDraggable } from '@neodrag/react';
 import { useReactFlow, XYPosition } from '@xyflow/react';
 import { useCallback, useRef, useState } from 'react';
-import { DragEventData, useDraggable } from '@neodrag/react';
 import { cn } from '../../../tutorials/components/tooltip/lib/utils';
 
 // This is a simple ID generator for the nodes.
