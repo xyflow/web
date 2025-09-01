@@ -41,10 +41,7 @@ const Page: FC = async () => {
             );
           })}
       </ContentGrid>
-      <SubscribeSection
-        btnLink={`${process.env.NEXT_PUBLIC_PRO_PLATFORM_URL}/signup`}
-        btnLabel="Sign Up Now"
-      />
+      <SubscribeSection btnLink="https://reactflow.dev/pro" btnLabel="Sign Up Now" />
     </BaseLayout>
   );
 };
