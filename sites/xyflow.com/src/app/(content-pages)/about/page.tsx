@@ -20,7 +20,6 @@ import peter from '../../../../public/img/peter.jpg';
 import burak from '../../../../public/img/burak.jpg';
 import abbey from '../../../../public/img/abbey.jpg';
 import alessandro from '../../../../public/img/alessandro.jpg';
-import omes from '../../../../public/img/omes.jpg';
 import dima from '../../../../public/img/dima.jpg';
 import usman from '../../../../public/img/usman.jpg';
 import facu from '../../../../public/img/facu.jpg';
@@ -118,14 +117,10 @@ const Page: FC = () => {
           role="Software Engineer"
           teamPic={alessandro}
           description="Alessandro likes to hack programming languages, compilers, synthesizers, sound systems and more."
-          links={[{ linkName: 'Website', route: 'https://cheli.dev' }, { linkName: 'GitHub', route: 'https://github.com/0x0f0f0f' }]}
-        />
-        <TeamCard
-          name="Omes"
-          role="Software Engineer"
-          teamPic={omes}
-          description="Omes grew up with 5 siblings in a wonderful 16 year long team-building experience. Now, after inevitable exponential family growth, he is looking for a side hustle to his prolific babysitting career. He likes to daydream about graph structures, online dignity and mango sticky rice."
-          links={[{ linkName: 'GitHub', route: 'https://github.com/omesome' }]}
+          links={[
+            { linkName: 'Website', route: 'https://cheli.dev' },
+            { linkName: 'GitHub', route: 'https://github.com/0x0f0f0f' },
+          ]}
         />
       </ContentGrid>
 
