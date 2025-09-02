@@ -1,0 +1,12 @@
+// Getting error on Vercel
+// reactflow-website:build: Error occurred prerendering page "/_not-found". Read more: https://nextjs.org/docs/messages/prerender-error
+// reactflow-website:build: Error: Missing ConfigContext.Provider
+// TODO: figure out
+
+import { Metadata } from 'next';
+
+export { NotFoundLayout as default } from 'xy-shared';
+
+export const metadata: Metadata = {
+  title: '404',
+};
