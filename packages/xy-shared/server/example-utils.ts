@@ -28,7 +28,7 @@ export async function getExamplesPageMap(
 ): Promise<Folder> {
   const filePaths = await getAllExamples(examplesPath);
   // If is run during runtime in a pro-platform, files from `app/examples` are not available
-  if (!filePaths) {
+  if (!filePaths.length) {
     return {
       name: 'examples',
       route: '/examples',
