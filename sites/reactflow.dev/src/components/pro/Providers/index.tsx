@@ -23,10 +23,9 @@ const hidden = { display: 'hidden' };
 
 export const SubscriptionContext = createContext<SubscriptionStatus>(null!);
 
-export const SubscriptionProvider: FC<ComponentProps<typeof NextraLayout>> = ({
-  children,
-  ...props
-}) => {
+export const SubscriptionProvider: FC<
+  Pick<ComponentProps<typeof NextraLayout>, 'children'>
+> = ({ children, ...props }) => {
   const [isLoading, startTransition] = useTransition();
   const [{ user, plan, teamPlan }, setSubscription] = useState<
     Awaited<ReturnType<typeof getSubscription>>
@@ -64,34 +63,30 @@ export const SubscriptionProvider: FC<ComponentProps<typeof NextraLayout>> = ({
     [user, isLoading, refetchUser, ctx],
   );
 
-  const enhancedPageMap = useMemo(() => {
-    return props.pageMap;
-    // return mergeMetaWithPageMap(props.pageMap, {
-    //   pro: {
-    //     items:
-    //       user || user === undefined
-    //         ? {
-    //             'sign-in': hidden,
-    //             'sign-up': hidden,
-    //             ...(ctx.isSubscribed && { subscribe: hidden }),
-    //             ...(!ctx.isAdmin && { team: hidden }),
-    //           }
-    //         : {
-    //             dashboard: hidden,
-    //             support: hidden,
-    //             team: hidden,
-    //             account: hidden,
-    //             subscribe: hidden,
-    //           },
-    //   },
-    // });
-  }, [props.pageMap, user, ctx]);
+  // const enhancedPageMap = useMemo(() => {
+  //   return props.pageMap;
+  // return mergeMetaWithPageMap(props.pageMap, {
+  //   pro: {
+  //     items:
+  //       user || user === undefined
+  //         ? {
+  //             'sign-in': hidden,
+  //             'sign-up': hidden,
+  //             ...(ctx.isSubscribed && { subscribe: hidden }),
+  //             ...(!ctx.isAdmin && { team: hidden }),
+  //           }
+  //         : {
+  //             dashboard: hidden,
+  //             support: hidden,
+  //             team: hidden,
+  //             account: hidden,
+  //             subscribe: hidden,
+  //           },
+  //   },
+  // });
+  // }, [props.pageMap, user, ctx]);
 
   return (
-    <SubscriptionContext.Provider value={value}>
-      <NextraLayout {...props} pageMap={enhancedPageMap}>
-        {children}
-      </NextraLayout>
-    </SubscriptionContext.Provider>
+    <SubscriptionContext.Provider value={value}>{children}</SubscriptionContext.Provider>
   );
 };
