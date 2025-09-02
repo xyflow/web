@@ -5,18 +5,18 @@ import { getPageMap } from 'nextra/page-map';
 
 export const normalizePageMap = async () => {
   const pageMap = (await getPageMap()).slice();
-  console.log({ pageMap });
   // Add badges
   const apiReference = pageMap.find(
     (item): item is Folder => 'children' in item && item.name === 'api-reference',
   );
-  console.log(1, apiReference);
   const examplesIndex = pageMap.findIndex(
     (item): item is Folder => 'name' in item && item.name === 'examples',
   );
+  console.log({ examplesIndex });
   const [examplesMeta, ...examples] = (pageMap[examplesIndex] as Folder).children;
   const [catchAllExamplesMeta, ...catchAllExamples] = (await getExamplesPageMap())
     .children;
+  console.log({ catchAllExamplesMeta, catchAllExamples });
   // Merge on disk examples with examples from catch-all [...slug] route
   pageMap[examplesIndex] = {
     ...pageMap[examplesIndex],
