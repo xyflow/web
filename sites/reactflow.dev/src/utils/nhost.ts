@@ -14,6 +14,13 @@ export async function getNhost(
     region: process.env.NEXT_PUBLIC_NHOST_REGION!,
     start: false,
     autoRefreshToken: false,
+    // Workaround to make the `NhostClient` instance always unique
+    clientStorageType: 'custom',
+    clientStorage: {
+      getItem() {},
+      setItem() {},
+      removeItem() {},
+    },
   });
 
   const sessionCookieValue = cookieStore.get(NHOST_SESSION_KEY)?.value;
