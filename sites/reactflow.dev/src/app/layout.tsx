@@ -29,7 +29,10 @@ const fathomOptions = {
 export default async function RootLayout({ children }: LayoutProps<'/'>) {
   const { Projects: _, ...remainingCategories } = defaultFooterCategories;
   const [pageMap, lastChangelog] = await Promise.all([
-    normalizePageMap(),
+    normalizePageMap().catch((e) => {
+      console.error('error in normalizePageMap', e);
+      return [{ data: {} }];
+    }),
     getLastChangelog(),
   ]);
 
