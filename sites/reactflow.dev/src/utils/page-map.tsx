@@ -13,7 +13,7 @@ export const $normalizePageMap = async () => {
   const examplesIndex = pageMap.findIndex(
     (item): item is Folder => 'name' in item && item.name === 'examples',
   );
-  console.log({ examplesIndex });
+
   const [examplesMeta, ...examples] = (pageMap[examplesIndex] as Folder).children;
   const [catchAllExamplesMeta, ...catchAllExamples] = (await getExamplesPageMap())
     .children;
