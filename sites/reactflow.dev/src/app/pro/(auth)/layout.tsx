@@ -1,7 +1,6 @@
 import { redirect } from 'next/navigation';
 import { getNhost } from '@/utils/nhost';
-// don't use a local useMDXComponents file, throws on Vercel Error: File not found: /var/task/sites/reactflow.dev/tsconfig.json
-import { useMDXComponents as getMdxComponents } from 'nextra-theme-docs';
+import { useMDXComponents as getMdxComponents } from '@/mdx-components';
 
 // Use Nextra theme docs layout with the sidebar
 const { wrapper: Wrapper } = getMdxComponents();
