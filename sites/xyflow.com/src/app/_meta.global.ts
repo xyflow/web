@@ -19,8 +19,17 @@ const metaRecord = {
       },
     },
   },
-  about: '',
   'open-source': '',
+  labs: {
+    theme: {
+      sidebar: false,
+      toc: false,
+      breadcrumb: false,
+      pagination: false,
+      layout: 'full',
+    },
+  },
+  about: '',
   libraries: {
     type: 'menu',
     items: {

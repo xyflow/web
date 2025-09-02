@@ -1,0 +1,17 @@
+@import url('./xy-theme.css');
+
+html,
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+}
+
+.svelte-flow__node {
+  width: 150px;
+}

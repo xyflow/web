@@ -19,5 +19,9 @@ export type InternalRoute =
   | '/ethical-standards'
   | '/imprint'
   | '/open-source'
+  | '/labs'
+  | '/labs/playground'
+  | '/labs/collaboration-playground'
+  | '/labs/flow-machine'
   | '/privacy'
   | '/terms-of-use';

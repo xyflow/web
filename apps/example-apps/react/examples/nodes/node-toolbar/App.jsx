@@ -31,9 +31,9 @@ function NodeWithToolbar({ data }) {
         isVisible={data.forceToolbarVisible || undefined}
         position={data.toolbarPosition}
       >
-        <button>cut</button>
-        <button>copy</button>
-        <button>paste</button>
+        <button className="xy-theme__button">cut</button>
+        <button className="xy-theme__button">copy</button>
+        <button className="xy-theme__button">paste</button>
       </NodeToolbar>
       <div>{data?.label}</div>
     </>

@@ -12,7 +12,7 @@
 <NodeWrapper label={data.label}>
   <Handle type="source" position={Position.Right} />
   <input
-    class="nodrag accent-[#ff4000]"
+    class="nodrag accent-[#ff4000] m-3 w-full"
     style="direction: rtl;"
     type="range"
     {min}

@@ -11,7 +11,7 @@
     {label}
   </div>
   <div
-    class="relative bg-white p-3 flex rounded-b-2xl family-sans font-light text-xs text-[#757575]"
+    class="relative bg-white flex rounded-b-2xl family-sans font-light text-xs text-[#757575]"
   >
     <slot />
   </div>
