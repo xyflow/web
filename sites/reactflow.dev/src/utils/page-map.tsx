@@ -1,9 +1,10 @@
+import { cache } from 'react';
 import { getPageMap as getExamplesPageMap } from '@/app/(content-pages)/examples/[...slug]/utils';
 import { SidebarTitle } from 'xy-shared';
 import { Folder, MdxFile, MetaJsonFile } from 'nextra';
 import { getPageMap } from 'nextra/page-map';
 
-export const normalizePageMap = async () => {
+export const $normalizePageMap = async () => {
   const pageMap = (await getPageMap()).slice();
   // Add badges
   const apiReference = pageMap.find(
@@ -65,3 +66,6 @@ export const normalizePageMap = async () => {
 
   return pageMap;
 };
+
+// Cache result of a page map on dynamic routes e.g. `/pro/dashboard`
+export const normalizePageMap = cache($normalizePageMap);
