@@ -94,7 +94,7 @@ const ProExamples: FC = async () => {
             <SignUpButton showIcon />
           </div>
         }
-        backgroundVariant="image"
+        backgroundVariant="gradient"
       >
         <Image
           src="/img/pro/pro-examples.png"

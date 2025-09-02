@@ -21,7 +21,7 @@ const Page: FC = async () => {
         kicker="Projects"
         kickerIcon={<SparklesIcon />}
         align="center"
-        backgroundVariant="image"
+        backgroundVariant="gradient"
       />
 
       <ContentGrid className="mt-20 relative z-1">

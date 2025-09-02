@@ -21,13 +21,11 @@ const Page: FC = async () => {
         kicker="Case Studies"
         kickerIcon={<SparklesIcon />}
         align="center"
-        backgroundVariant="image"
+        backgroundVariant="gradient"
       />
       <ContentGrid className="mt-20">
         {(await getPageMap('/pro/case-studies'))
-          .filter(
-            (page): page is MdxFile => 'name' in page && page.name !== 'index',
-          )
+          .filter((page): page is MdxFile => 'name' in page && page.name !== 'index')
           .map((page) => {
             return (
               <ContentGridItem key={page.route} route={page.route}>

@@ -17,7 +17,7 @@ export default function ReactFlowProPricing() {
         kicker="React Flow Pro"
         kickerIcon={<SparklesIcon />}
         align="center"
-        backgroundVariant="image"
+        backgroundVariant="gradient"
       />
       <PricingTable />
       <SubscribeSection
