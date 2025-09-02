@@ -14,24 +14,6 @@ export async function getNhost(
     region: process.env.NEXT_PUBLIC_NHOST_REGION!,
     start: false,
     autoRefreshToken: false,
-    // autoSignIn: true,
-    // autoLogin: true,
-    // clientStorageType: 'custom',
-    // clientStorage: {
-    //   async getItem(key) {
-    //     const token = cookieStore.get(key)?.value;
-    //     console.log('getItem', key, token);
-    //     return token;
-    //   },
-    //   async setItem(key, value) {
-    //     console.log('setItem', key, value);
-    //     // return cookieStore.set(key, value);
-    //   },
-    //   async removeItem(key) {
-    //     console.log('setItem', key);
-    //     // return cookieStore.delete(key);
-    //   },
-    // },
   });
 
   const sessionCookieValue = cookieStore.get(NHOST_SESSION_KEY)?.value;
@@ -40,11 +22,6 @@ export async function getNhost(
     : // auth.initWithSession` must be called even with `null`, otherwise will get an error from @nhost/hasura-auth-js - Auth interpreter not set
       null;
   await nhost.auth.initWithSession({ session: initialSession });
-  console.log({
-    sessionCookieValue: sessionCookieValue?.slice(0, 10),
-    isAuth: nhost.auth.isAuthenticated(),
-    user: nhost.auth.getUser()?.email,
-  });
 
   return nhost;
 }

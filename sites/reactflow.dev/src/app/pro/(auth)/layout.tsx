@@ -8,7 +8,7 @@ const { wrapper: Wrapper } = getMdxComponents();
 export default async function Layout({ children }: LayoutProps<'/pro'>) {
   const nhost = await getNhost();
   const isAuthenticated = nhost.auth.isAuthenticated();
-  console.log('(auth)', { isAuthenticated });
+
   if (!isAuthenticated) {
     redirect('/pro/sign-in');
   }

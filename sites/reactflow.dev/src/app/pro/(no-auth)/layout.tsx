@@ -4,7 +4,7 @@ import { redirect } from 'next/navigation';
 export default async function Layout({ children }: LayoutProps<'/pro'>) {
   const nhost = await getNhost();
   const isAuthenticated = nhost.auth.isAuthenticated();
-  console.log('(no-auth)', { isAuthenticated });
+
   if (isAuthenticated) {
     redirect('/');
   }

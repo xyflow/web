@@ -11,11 +11,8 @@ export const config = {
 };
 
 export async function middleware(request: NextRequest) {
-  console.log('start middleware');
-
   const nhost = await getNhost(request.cookies);
   const session = nhost.auth.getSession();
-  console.log('middleware', session);
   const url = new URL(request.url);
   const refreshToken = url.searchParams.get('refreshToken') ?? undefined;
 
