@@ -5,7 +5,10 @@ import { meta } from './config';
 import { getExamplesPageMap } from 'xy-shared/server';
 
 export async function getPageMap(): Promise<Folder> {
-  const examplesPath = path.resolve('../../apps/example-apps/react/examples');
+  const examplesPath = path.resolve(
+    process.cwd(),
+    '../../apps/example-apps/react/examples',
+  );
   return getExamplesPageMap(examplesPath, meta, importMetadata);
 }
 
