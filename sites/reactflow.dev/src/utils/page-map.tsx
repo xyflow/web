@@ -5,11 +5,12 @@ import { getPageMap } from 'nextra/page-map';
 
 export const normalizePageMap = async () => {
   const pageMap = (await getPageMap()).slice();
-
+  console.log({ pageMap });
   // Add badges
   const apiReference = pageMap.find(
     (item): item is Folder => 'children' in item && item.name === 'api-reference',
   );
+  console.log(1, apiReference);
   const examplesIndex = pageMap.findIndex(
     (item): item is Folder => 'name' in item && item.name === 'examples',
   );
@@ -36,7 +37,8 @@ export const normalizePageMap = async () => {
   const components = pageMap.find(
     (item): item is Folder => 'children' in item && item.name === 'ui',
   );
-
+  console.log(2, components);
+  console.log(3, catchAllExamples);
   const folders = [
     ...apiReference!.children,
     ...components!.children,
