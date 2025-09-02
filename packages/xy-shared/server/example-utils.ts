@@ -5,55 +5,20 @@ import {
   mergeMetaWithPageMap,
   normalizePageMap,
 } from 'nextra/page-map';
-import path from 'path';
 
 export async function getAllExamples(examplesPath: string): Promise<string[]> {
-  try {
-    // Ensure the path is absolute and resolve any relative path issues
-    const absolutePath = path.isAbsolute(examplesPath) 
-      ? examplesPath 
-      : path.resolve(examplesPath);
-    
-    console.log('getAllExamples - examplesPath:', examplesPath);
-    console.log('getAllExamples - absolutePath:', absolutePath);
-    console.log('getAllExamples - process.cwd():', process.cwd());
-    
-    // Check if the directory exists
-    const fs = await import('fs/promises');
-    try {
-      const stats = await fs.stat(absolutePath);
-      if (!stats.isDirectory()) {
-        console.error('getAllExamples - Path is not a directory:', absolutePath);
-        return [];
-      }
-    } catch (error) {
-      console.error('getAllExamples - Directory does not exist:', absolutePath, error);
-      return [];
-    }
+  const result = await fg(
+    [
+      '**/README.mdx',
+      '!**/misc/overview/README.mdx',
+      '!**/misc/feature-overview/README.mdx', // ignore because we need to put it in `examples/overview`
+    ],
+    {
+      cwd: examplesPath,
+    },
+  );
 
-    const result = await fg(
-      [
-        '**/README.mdx',
-        '!**/misc/overview/README.mdx',
-        '!**/misc/feature-overview/README.mdx', // ignore because we need to put it in `examples/overview`
-      ],
-      {
-        cwd: absolutePath,
-        absolute: false, // Return relative paths
-        ignore: ['node_modules/**', '.git/**'], // Ignore common directories
-      },
-    );
-
-    console.log('getAllExamples - Found files:', result);
-    
-    const processedPaths = result.map((filePath) => filePath.replace('/README.mdx', ''));
-    console.log('getAllExamples - Processed paths:', processedPaths);
-    
-    return processedPaths;
-  } catch (error) {
-    console.error('getAllExamples - Error:', error);
-    return [];
-  }
+  return result.map((filePath) => filePath.replace('/README.mdx', ''));
 }
 
 export async function getExamplesPageMap(
