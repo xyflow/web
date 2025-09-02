@@ -17,7 +17,7 @@ export const $normalizePageMap = async () => {
   const [examplesMeta, ...examples] = (pageMap[examplesIndex] as Folder).children;
   const [catchAllExamplesMeta, ...catchAllExamples] = (await getExamplesPageMap())
     .children;
-  console.log({ catchAllExamplesMeta, catchAllExamples });
+
   // Merge on disk examples with examples from catch-all [...slug] route
   pageMap[examplesIndex] = {
     ...pageMap[examplesIndex],
@@ -38,8 +38,7 @@ export const $normalizePageMap = async () => {
   const components = pageMap.find(
     (item): item is Folder => 'children' in item && item.name === 'ui',
   );
-  console.log(2, components);
-  console.log(3, catchAllExamples);
+
   const folders = [
     ...apiReference!.children,
     ...components!.children,

@@ -27,13 +27,14 @@ export async function getExamplesPageMap(
   importMetadata: (route: string) => DynamicMeta,
 ): Promise<Folder> {
   const filePaths = await getAllExamples(examplesPath);
+  console.log({ filePaths });
   const { pageMap: _pageMap } = convertToPageMap({
     filePaths,
     basePath: 'examples',
   });
   const examplesPageMap = mergeMetaWithPageMap(_pageMap[0], meta);
   const pageMap = normalizePageMap(examplesPageMap);
-
+  console.log({ pageMap });
   return addFrontMatter(pageMap, importMetadata);
 }
 
