@@ -102,8 +102,7 @@ export const LayoutDynamic: FC<{ children: ReactNode }> = async ({ children }) =
       sidebar={{ toggleButton: false }}
       toc={{
         backToTop: null,
-        // TODO
-        // extraContent: <TOC pageMap={lastChangelog} />,
+        extraContent: <TOC pageMap={lastChangelog} />,
       }}
     >
       {children}

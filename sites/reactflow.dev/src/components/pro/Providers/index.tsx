@@ -15,7 +15,7 @@ import { getSubscription } from '@/server-actions';
 import { usePathname } from 'next/navigation';
 import { usePrevious } from '@/hooks/usePrevious';
 import { normalizeSubscription } from '@/utils/pro-utils';
-import { mergeMetaWithPageMap } from 'nextra/page-map';
+import { mergeMetaWithPageMap } from 'nextra/merge-meta-with-page-map';
 import { Layout as NextraLayout } from 'nextra-theme-docs';
 import type { SubscriptionStatus } from '@/hooks/useSubscription';
 
@@ -52,41 +52,43 @@ export const SubscriptionProvider: FC<ComponentProps<typeof NextraLayout>> = ({
     startTransition(refetchUser);
   }, [refetchUser, shouldRefetch]);
 
+  const ctx = useMemo(() => normalizeSubscription({ plan, teamPlan }), [plan, teamPlan]);
+
   const value = useMemo(
     () => ({
       user,
       isLoading: isLoading || user === undefined,
       refetchUser,
-      ...normalizeSubscription({ plan, teamPlan }),
+      ...ctx,
     }),
-    [user, refetchUser, isLoading, plan, teamPlan],
+    [user, isLoading, refetchUser, ctx],
   );
 
-  const pageMap = useMemo(() => {
-    const subscription = normalizeSubscription({ plan, teamPlan });
+  const enhancedPageMap = useMemo(() => {
     return mergeMetaWithPageMap(props.pageMap, {
       pro: {
-        items: user || user === undefined
-          ? {
-              'sign-in': hidden,
-              'sign-up': hidden,
-              ...(subscription.isSubscribed && { subscribe: hidden }),
-              ...(!subscription.isAdmin && { team: hidden }),
-            }
-          : {
-              dashboard: hidden,
-              support: hidden,
-              team: hidden,
-              account: hidden,
-              subscribe: hidden,
-            },
+        items:
+          user || user === undefined
+            ? {
+                'sign-in': hidden,
+                'sign-up': hidden,
+                ...(ctx.isSubscribed && { subscribe: hidden }),
+                ...(!ctx.isAdmin && { team: hidden }),
+              }
+            : {
+                dashboard: hidden,
+                support: hidden,
+                team: hidden,
+                account: hidden,
+                subscribe: hidden,
+              },
       },
     });
-  }, [props.pageMap, user, plan, teamPlan]);
+  }, [props.pageMap, user, ctx]);
 
   return (
     <SubscriptionContext.Provider value={value}>
-      <NextraLayout {...props} pageMap={pageMap}>
+      <NextraLayout {...props} pageMap={enhancedPageMap}>
         {children}
       </NextraLayout>
     </SubscriptionContext.Provider>
