@@ -10,6 +10,9 @@
     "screenshots": "concurrently \"vite dev\" \"node scripts/generate-screenshots.js\"",
     "screenshots:missing": "node scripts/generate-screenshots.js --only-missing"
   },
+  "exports": {
+    "./package.json": "./package.json"
+  },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^5.0.3",
     "@tsconfig/svelte": "^5.0.4",
