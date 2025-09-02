@@ -34,7 +34,7 @@ const ProExamples: FC = async () => {
   const pageMap = await getExamplesPageMap();
   const proExamples = pageMap.children
     .flatMap((item) =>
-      item && 'children' in item
+      'children' in item
         ? item.children.filter((child): child is MdxFile => 'frontMatter' in child)
         : [],
     )

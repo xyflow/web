@@ -65,25 +65,26 @@ export const SubscriptionProvider: FC<ComponentProps<typeof NextraLayout>> = ({
   );
 
   const enhancedPageMap = useMemo(() => {
-    return mergeMetaWithPageMap(props.pageMap, {
-      pro: {
-        items:
-          user || user === undefined
-            ? {
-                'sign-in': hidden,
-                'sign-up': hidden,
-                ...(ctx.isSubscribed && { subscribe: hidden }),
-                ...(!ctx.isAdmin && { team: hidden }),
-              }
-            : {
-                dashboard: hidden,
-                support: hidden,
-                team: hidden,
-                account: hidden,
-                subscribe: hidden,
-              },
-      },
-    });
+    return props.pageMap;
+    // return mergeMetaWithPageMap(props.pageMap, {
+    //   pro: {
+    //     items:
+    //       user || user === undefined
+    //         ? {
+    //             'sign-in': hidden,
+    //             'sign-up': hidden,
+    //             ...(ctx.isSubscribed && { subscribe: hidden }),
+    //             ...(!ctx.isAdmin && { team: hidden }),
+    //           }
+    //         : {
+    //             dashboard: hidden,
+    //             support: hidden,
+    //             team: hidden,
+    //             account: hidden,
+    //             subscribe: hidden,
+    //           },
+    //   },
+    // });
   }, [props.pageMap, user, ctx]);
 
   return (
