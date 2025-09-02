@@ -1,7 +1,0 @@
-# Don't ignore the apps directory - we need it for examples
-!apps/
-!apps/example-apps/
-!apps/example-apps/react/
-!apps/example-apps/react/examples/
-!apps/example-apps/svelte/
-!apps/example-apps/svelte/examples/
