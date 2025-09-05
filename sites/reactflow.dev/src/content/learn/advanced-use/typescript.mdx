@@ -216,9 +216,7 @@ export default function FlowComponent() {
   const { getNodes, getEdges } = useReactFlow<CustomNodeType, CustomEdgeType>();
 
   // You can type useStore by typing the selector function
-  const nodes = useStore((s: ReactFlowState<CustomNodeType>) => ({
-    nodes: s.nodes,
-  }));
+  const nodes = useStore((s: ReactFlowState<CustomNodeType>) => s.nodes);
 
   const connections = useNodeConnections({
     handleType: 'target',
