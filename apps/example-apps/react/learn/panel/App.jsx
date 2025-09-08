@@ -18,6 +18,8 @@ function Flow() {
       <Panel position="bottom-left">bottom-left</Panel>
       <Panel position="bottom-center">bottom-center</Panel>
       <Panel position="bottom-right">bottom-right</Panel>
+      <Panel position="center-left">center-left</Panel>
+      <Panel position="center-right">center-right</Panel>
       <Background variant="cross" />
     </ReactFlow>
   );
