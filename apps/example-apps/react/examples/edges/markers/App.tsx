@@ -1,7 +1,12 @@
-import React from 'react';
-import { ReactFlow, Background, MarkerType } from '@xyflow/react';
+import { ReactFlow, Background, MarkerType, BezierEdge } from '@xyflow/react';
 
 import '@xyflow/react/dist/style.css';
+import CustomEdge from './CustomEdge';
+
+const edgeTypes = {
+  default: BezierEdge,
+  custom: CustomEdge,
+};
 
 const defaultNodes = [
   {
@@ -38,6 +43,11 @@ const defaultNodes = [
     id: 'G',
     position: { x: 20, y: 450 },
     data: { label: 'G' },
+  },
+  {
+    id: 'H',
+    position: { x: 500, y: 450 },
+    data: { label: 'H' },
   },
 ];
 
@@ -81,6 +91,18 @@ const defaultEdges = [
     label: 'custom marker',
   },
   {
+    id: 'E->H',
+    source: 'E',
+    target: 'H',
+    type: 'custom',
+    markerEnd: {
+      type: MarkerType.ArrowClosed,
+      width: 20,
+      height: 20,
+    },
+    label: 'change color on selection',
+  },
+  {
     id: 'B->G',
     source: 'B',
     target: 'G',
@@ -103,6 +125,29 @@ export default function MarkersExample() {
     <>
       <svg style={{ position: 'absolute', top: 0, left: 0 }}>
         <defs>
+          <marker
+            className="react-flow__arrowhead"
+            id="selected-marker"
+            markerWidth="20"
+            markerHeight="20"
+            viewBox="-10 -10 20 20"
+            markerUnits="userSpaceOnUse"
+            orient="auto-start-reverse"
+            refX="0"
+            refY="0"
+          >
+            <polyline
+              className="arrowclosed"
+              style={{
+                strokeWidth: 1,
+                stroke: '#FFCC00',
+                fill: '#FFCC00',
+              }}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              points="-5,-4 0,0 -5,4 -5,-4"
+            />
+          </marker>
           <marker
             id="logo"
             viewBox="0 0 40 40"
@@ -172,11 +217,7 @@ export default function MarkersExample() {
               fill="#1A192B"
             />
             <path opacity="0.35" d="M22 9.5H18V10.5H22V9.5Z" fill="#1A192B" />
-            <path
-              opacity="0.35"
-              d="M29.5 17.5V21.5H30.5V17.5H29.5Z"
-              fill="#1A192B"
-            />
+            <path opacity="0.35" d="M29.5 17.5V21.5H30.5V17.5H29.5Z" fill="#1A192B" />
             <path opacity="0.35" d="M22 29.5H18V30.5H22V29.5Z" fill="#1A192B" />
             <path
               d="M17 12C18.1046 12 19 11.1046 19 10C19 8.89543 18.1046 8 17 8C15.8954 8 15 8.89543 15 10C15 11.1046 15.8954 12 17 12Z"
@@ -197,6 +238,7 @@ export default function MarkersExample() {
         defaultNodes={defaultNodes}
         defaultEdges={defaultEdges}
         fitView
+        edgeTypes={edgeTypes}
       >
         <Background />
       </ReactFlow>
