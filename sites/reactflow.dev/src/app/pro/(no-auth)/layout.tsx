@@ -10,7 +10,7 @@ export default async function Layout({ children }: LayoutProps<'/pro'>) {
   }
 
   return (
-    <div className="relative h-full">
+    <div className="relative h-full min-h-[70vh]">
       <div
         className="absolute opacity-10 w-full h-[70vh] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-10"
         style={{
