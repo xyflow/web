@@ -10,18 +10,30 @@ const graphSize = 20;
 
 const initNodes: Node<NodeData>[] = Array.from(
   { length: graphSize },
-  (_, index) => ({
-    id: `node-${index}`,
-    data: { label: `Node ${index}` },
-    position: { x: Math.random() * 1000, y: Math.random() * 1000 },
-  }),
-);
+  (_, index) => {
+    // Calculate grid dimensions (aim for roughly square grid)
+    const cols = Math.ceil(Math.sqrt(graphSize));
+    const rows = Math.ceil(graphSize / cols);
 
-const initEdges: Edge[] = Array.from({ length: graphSize }, (_, index) => ({
-  id: `edge-${index}`,
-  source: `node-${Math.floor(Math.random() * graphSize)}`,
-  target: `node-${Math.floor(Math.random() * graphSize)}`,
-}));
+    // Calculate position in grid
+    const col = index % cols;
+    const row = Math.floor(index / cols);
+
+    // Grid spacing
+    const spacing = 200;
+    const startX = 100;
+    const startY = 100;
+
+    return {
+      id: `node-${index}`,
+      data: { label: `Node ${index}` },
+      position: {
+        x: startX + col * spacing,
+        y: startY + row * spacing,
+      },
+    };
+  },
+);
 
 export default function App() {
   const onSearch = useCallback(
@@ -46,7 +58,7 @@ export default function App() {
 
   return (
     <div className="h-full w-full">
-      <ReactFlow defaultNodes={initNodes} defaultEdges={initEdges} fitView>
+      <ReactFlow defaultNodes={initNodes} defaultEdges={[]} fitView>
         <Background />
         <SearchBar
           position="top-left"

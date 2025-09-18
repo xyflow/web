@@ -39,19 +39,33 @@ export const SearchBar = forwardRef(function SearchBar<T extends Node>(
   { className, onSearch, onSelectNode, ...props }: SearchBarProps<T>,
   ref: React.Ref<HTMLDivElement>,
 ) {
-  // TODO: Find a way to get the node type
+  const [isOpen, setIsOpen] = useState(false);
   const [searchResults, setSearchResults] = useState<T[]>([]);
   const [searchString, setSearchString] = useState<string>("");
   const { getNodes } = useReactFlow<T, BuiltInEdge>();
-  const currentNodes = getNodes();
 
   const onChange = useCallback(
     (searchString: string) => {
+      console.log("onChange", searchString);
+
+      setIsOpen(true);
       setSearchString(searchString);
+      const currentNodes = getNodes();
+      console.log("currentNodes", currentNodes);
       const results = onSearch(currentNodes, searchString);
+      console.log("results", results);
       setSearchResults(results);
     },
-    [currentNodes, onSearch],
+    [getNodes, onSearch, setSearchResults],
+  );
+
+  const onSelect = useCallback(
+    (node: T) => {
+      onSelectNode(node);
+      setSearchString("");
+      setIsOpen(false);
+    },
+    [onSelectNode],
   );
 
   return (
@@ -68,22 +82,25 @@ export const SearchBar = forwardRef(function SearchBar<T extends Node>(
           placeholder="Search nodes..."
           onValueChange={onChange}
           value={searchString}
+          onFocus={() => setIsOpen(true)}
         />
 
-        <CommandList>
-          {searchString.length > 0 && (
-            <CommandEmpty>No results found.</CommandEmpty>
-          )}
-          {searchResults.length > 0 && searchString.length > 0 && (
-            <CommandGroup heading="Nodes">
-              {searchResults.map((node) => (
-                <CommandItem key={node.id} onSelect={() => onSelectNode(node)}>
-                  <span>{node.data.label as string}</span>
-                </CommandItem>
-              ))}
-            </CommandGroup>
-          )}
-        </CommandList>
+        {isOpen && (
+          <CommandList>
+            {searchString.length > 0 && searchResults.length === 0 && (
+              <CommandEmpty>No results found. {searchString}</CommandEmpty>
+            )}
+            {searchResults.length > 0 && searchString.length > 0 && (
+              <CommandGroup heading="Nodes">
+                {searchResults.map((node) => (
+                  <CommandItem key={node.id} onSelect={() => onSelect(node)}>
+                    <span>{node.data.label as string}</span>
+                  </CommandItem>
+                ))}
+              </CommandGroup>
+            )}
+          </CommandList>
+        )}
       </Command>
     </Panel>
   );
