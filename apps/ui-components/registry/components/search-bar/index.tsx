@@ -1,11 +1,11 @@
-import { forwardRef, useCallback, useState, useEffect } from "react";
+import { forwardRef, useCallback, useState } from "react";
 
 import {
+  BuiltInEdge,
   Panel,
   useReactFlow,
-  type PanelProps,
   type Node,
-  BuiltInEdge,
+  type PanelProps,
 } from "@xyflow/react";
 
 import { cn } from "@/lib/utils";
@@ -17,17 +17,7 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-  CommandSeparator,
-  CommandShortcut,
 } from "@/components/ui/command";
-import {
-  Calculator,
-  Calendar,
-  CreditCard,
-  Settings,
-  Smile,
-  User,
-} from "lucide-react";
 
 export interface SearchBarProps<T extends Node>
   extends Omit<PanelProps, "children"> {
