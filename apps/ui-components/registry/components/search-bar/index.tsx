@@ -1,4 +1,4 @@
-import { forwardRef, useCallback, useState } from "react";
+import { forwardRef, useCallback, useState, useEffect } from "react";
 
 import {
   Panel,
@@ -46,17 +46,13 @@ export const SearchBar = forwardRef(function SearchBar<T extends Node>(
 
   const onChange = useCallback(
     (searchString: string) => {
-      console.log("onChange", searchString);
-
       setIsOpen(true);
       setSearchString(searchString);
       const currentNodes = getNodes();
-      console.log("currentNodes", currentNodes);
       const results = onSearch(currentNodes, searchString);
-      console.log("results", results);
       setSearchResults(results);
     },
-    [getNodes, onSearch, setSearchResults],
+    [getNodes, onSearch],
   );
 
   const onSelect = useCallback(
@@ -92,11 +88,13 @@ export const SearchBar = forwardRef(function SearchBar<T extends Node>(
             )}
             {searchResults.length > 0 && searchString.length > 0 && (
               <CommandGroup heading="Nodes">
-                {searchResults.map((node) => (
-                  <CommandItem key={node.id} onSelect={() => onSelect(node)}>
-                    <span>{node.data.label as string}</span>
-                  </CommandItem>
-                ))}
+                {searchResults.map((node) => {
+                  return (
+                    <CommandItem key={node.id} onSelect={() => onSelect(node)}>
+                      <span>{node.data.label as string}</span>
+                    </CommandItem>
+                  );
+                })}
               </CommandGroup>
             )}
           </CommandList>
