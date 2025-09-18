@@ -23,7 +23,7 @@ export interface SearchBarProps<T extends Node>
   extends Omit<PanelProps, "children"> {
   // The function to search for nodes, should return an array of nodes that match the search string
   // By default, it will check for lowercase string inclusion.
-  onSearch?: (nodes: T[], searchString: string) => T[];
+  onSearch?: (searchString: string) => T[];
   // The function to select a node, should set the node as selected and fit the view to the node
   // By default, it will set the node as selected and fit the view to the node.
   onSelectNode?: (node: T) => void;
@@ -38,13 +38,17 @@ export const SearchBar = forwardRef(function SearchBar<T extends Node>(
   const [searchString, setSearchString] = useState<string>("");
   const { getNodes } = useReactFlow<T, BuiltInEdge>();
 
-  const defaultOnSearch = useCallback((nodes: T[], searchString: string) => {
-    return nodes.filter((node) =>
-      (node.data.label as string)
-        .toLowerCase()
-        .includes(searchString.toLowerCase()),
-    );
-  }, []);
+  const defaultOnSearch = useCallback(
+    (searchString: string) => {
+      const nodes = getNodes();
+      return nodes.filter((node) =>
+        (node.data.label as string)
+          .toLowerCase()
+          .includes(searchString.toLowerCase()),
+      );
+    },
+    [getNodes],
+  );
 
   onSearch = onSearch || defaultOnSearch;
 
@@ -52,8 +56,7 @@ export const SearchBar = forwardRef(function SearchBar<T extends Node>(
     (searchString: string) => {
       setIsOpen(true);
       setSearchString(searchString);
-      const currentNodes = getNodes();
-      const results = onSearch(currentNodes, searchString);
+      const results = onSearch(searchString);
       setSearchResults(results);
     },
     [getNodes, onSearch],
