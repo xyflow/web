@@ -73,7 +73,10 @@ export const SearchBar = forwardRef(function SearchBar<T extends Node>(
       ref={ref}
       {...props}
     >
-      <Command className="rounded-lg border shadow-md md:min-w-[450px]">
+      <Command
+        shouldFilter={false}
+        className="rounded-lg border shadow-md md:min-w-[450px]"
+      >
         <CommandInput
           placeholder="Search nodes..."
           onValueChange={onChange}
