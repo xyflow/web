@@ -8,5 +8,28 @@ import UiComponentViewer from '@/components/ui-component-viewer.mdx';
 
 A search bar component that can be used to search for nodes in the flow.
 
+It uses the [Command](https://ui.shadcn.com/docs/components/command) component from [shadcn ui](https://ui.shadcn.com).
+
+By default, it will check for lowercase string inclusion in the node's label, and 
+select the node and fit the view to the node when it is selected.
+You can override this behavior by passing a custom `onSearch` function: 
+
+The default is:
+```ts 
+const onSearch = (nodes: NodeType[], searchString: string) => nodes.filter((node) =>
+    node.data.label.toLowerCase().includes(searchString.toLowerCase()),
+);
+
+```
+
+You can also override the default `onSelectNode` function to customize the behavior when a node is selected.
+
+The default is:
+```ts
+const onSelectNode = (node: T) => {
+    setNodes((nodes) => nodes.map((n) => (n.id === node.id ? { ...n, selected: true } : n)));
+    fitView({ nodes: [node], duration: 500 });
+}
+```
 
 <UiComponentViewer id="search-bar" />

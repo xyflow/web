@@ -21,8 +21,12 @@ import {
 
 export interface SearchBarProps<T extends Node>
   extends Omit<PanelProps, "children"> {
-  onSearch: (nodes: T[], searchString: string) => T[];
-  onSelectNode: (node: T) => void;
+  // The function to search for nodes, should return an array of nodes that match the search string
+  // By default, it will check for lowercase string inclusion.
+  onSearch?: (nodes: T[], searchString: string) => T[];
+  // The function to select a node, should set the node as selected and fit the view to the node
+  // By default, it will set the node as selected and fit the view to the node.
+  onSelectNode?: (node: T) => void;
 }
 
 export const SearchBar = forwardRef(function SearchBar<T extends Node>(
@@ -34,6 +38,16 @@ export const SearchBar = forwardRef(function SearchBar<T extends Node>(
   const [searchString, setSearchString] = useState<string>("");
   const { getNodes } = useReactFlow<T, BuiltInEdge>();
 
+  const defaultOnSearch = useCallback((nodes: T[], searchString: string) => {
+    return nodes.filter((node) =>
+      (node.data.label as string)
+        .toLowerCase()
+        .includes(searchString.toLowerCase()),
+    );
+  }, []);
+
+  onSearch = onSearch || defaultOnSearch;
+
   const onChange = useCallback(
     (searchString: string) => {
       setIsOpen(true);
@@ -44,6 +58,19 @@ export const SearchBar = forwardRef(function SearchBar<T extends Node>(
     },
     [getNodes, onSearch],
   );
+
+  const { fitView, setNodes } = useReactFlow<T, BuiltInEdge>();
+  const defaultOnSelectNode = useCallback(
+    (node: T) => {
+      setNodes((nodes) =>
+        nodes.map((n) => (n.id === node.id ? { ...n, selected: true } : n)),
+      );
+      fitView({ nodes: [node], duration: 500 });
+    },
+    [fitView, setNodes],
+  );
+
+  onSelectNode = onSelectNode || defaultOnSelectNode;
 
   const onSelect = useCallback(
     (node: T) => {
