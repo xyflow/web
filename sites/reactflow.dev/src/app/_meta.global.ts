@@ -91,6 +91,7 @@ const ui = {
         title: 'Controls', // Title is optional
       },
 
+      'search-bar': '',
       'zoom-slider': '',
       'zoom-select': '',
 
