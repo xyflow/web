@@ -1,6 +1,5 @@
-import { Background, Node, Edge, ReactFlow, useReactFlow } from "@xyflow/react";
-import { SearchBar } from "@/registry/components/search-bar/";
-import { useCallback } from "react";
+import { NodeSearch } from "@/registry/components/node-search/";
+import { Background, Node, ReactFlow } from "@xyflow/react";
 
 type NodeData = {
   label: string;
@@ -36,13 +35,11 @@ const initNodes: Node<NodeData>[] = Array.from(
 );
 
 export default function App() {
-  const { fitView, setNodes } = useReactFlow();
-
   return (
     <div className="h-full w-full">
       <ReactFlow defaultNodes={initNodes} defaultEdges={[]} fitView>
         <Background />
-        <SearchBar position="top-left" />
+        <NodeSearch position="top-left" />
       </ReactFlow>
     </div>
   );

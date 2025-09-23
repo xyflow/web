@@ -1,5 +1,5 @@
 {
-  "name": "search-bar",
+  "name": "node-search",
   "type": "registry:component",
   "dependencies": [
     "@xyflow/react",
@@ -12,7 +12,7 @@
   "files": [
     {
       "type": "registry:component",
-      "path": "search-bar.tsx"
+      "path": "node-search.tsx"
     }
   ],
   "tailwind": {},

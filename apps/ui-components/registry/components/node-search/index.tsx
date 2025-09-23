@@ -19,7 +19,7 @@ import {
   CommandList,
 } from "@/components/ui/command";
 
-export interface SearchBarProps<T extends Node>
+export interface NodeSearchProps<T extends Node>
   extends Omit<PanelProps, "children"> {
   // The function to search for nodes, should return an array of nodes that match the search string
   // By default, it will check for lowercase string inclusion.
@@ -29,8 +29,8 @@ export interface SearchBarProps<T extends Node>
   onSelectNode?: (node: T) => void;
 }
 
-export const SearchBar = forwardRef(function SearchBar<T extends Node>(
-  { className, onSearch, onSelectNode, ...props }: SearchBarProps<T>,
+export const NodeSearch = forwardRef(function NodeSearch<T extends Node>(
+  { className, onSearch, onSelectNode, ...props }: NodeSearchProps<T>,
   ref: React.Ref<HTMLDivElement>,
 ) {
   const [isOpen, setIsOpen] = useState(false);
@@ -127,4 +127,4 @@ export const SearchBar = forwardRef(function SearchBar<T extends Node>(
   );
 });
 
-SearchBar.displayName = "SearchBar";
+NodeSearch.displayName = "NodeSearch";
