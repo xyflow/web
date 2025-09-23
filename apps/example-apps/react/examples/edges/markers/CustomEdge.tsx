@@ -34,7 +34,11 @@ export default function CustomEdge({
 
   return (
     <>
-      {/* You can also define a custom marker in your own Custom Edge component. */}
+      {/* You can also define a custom marker in your own Custom Edge component. 
+      This might be useful if you want to have a different marker, depending on the state of the edge.
+      Ideally, you would store the marker definition in a separate component, so you can reuse it in multiple edges.
+      If you defined it here, in your custom edge component, it will be re-rendered for every edge instance.
+      */}
       <svg style={{ position: 'absolute', top: 0, left: 0 }}>
         <defs>
           <marker
