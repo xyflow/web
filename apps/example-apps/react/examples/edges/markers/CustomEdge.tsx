@@ -28,7 +28,7 @@ export default function CustomEdge({
     targetPosition,
   });
 
-  markerEnd = selected ? 'url(#selected-marker)' : markerEnd;
+  const activeMarkerEnd = selected ? 'url(#selected-marker)' : markerEnd;
 
   const color = selected ? '#FFCC00' : style.stroke;
 
@@ -65,7 +65,7 @@ export default function CustomEdge({
       <BaseEdge
         id={id}
         path={edgePath}
-        markerEnd={markerEnd}
+        markerEnd={activeMarkerEnd}
         style={{ stroke: color, ...style }}
         label={label}
       />
