@@ -41,11 +41,11 @@ const AuthFormWrapper = ({
           <div className="hidden lg:block flex-1 max-w-xl mt-6 relative p-4">
             <Heading className="mb-4 font-black">
               Build Better Node-Based UIs with{' '}
-              <span className="text-react">React Flow</span>
+              <span className="text-primary">React Flow</span>
             </Heading>
             <Text size="lg">
-              By subscribing to React Flow Pro you are securing the maintenance
-              and development of our open source libraries.
+              By subscribing to React Flow Pro you are securing the maintenance and
+              development of our open source libraries.
             </Text>
           </div>
         )}
@@ -64,9 +64,7 @@ const AuthFormWrapper = ({
                 <>
                   <div className="relative flex py-3 items-center">
                     <div className="flex-grow border-t border-slate-200"></div>
-                    <span className="flex-shrink mx-4 text-muted-foreground">
-                      or
-                    </span>
+                    <span className="flex-shrink mx-4 text-muted-foreground">or</span>
                     <div className="flex-grow border-t border-slate-200"></div>
                   </div>
                   <SignInOAuth />

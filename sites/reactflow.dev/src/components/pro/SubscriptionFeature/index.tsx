@@ -70,7 +70,7 @@ function SubscriptionFeature({
             {isAdmin ? (
               <div className="ml-auto">
                 <CustomerPortalButton
-                  className="text-react font-bold text-sm"
+                  className="text-primary font-bold text-sm"
                   variant="link"
                 >
                   Upgrade
@@ -78,7 +78,7 @@ function SubscriptionFeature({
               </div>
             ) : (
               <div className="ml-auto">
-                <Button asChild className="text-react font-bold text-sm" variant="link">
+                <Button asChild className="text-primary font-bold text-sm" variant="link">
                   <Link href="/pro/subscribe">Subscribe</Link>
                 </Button>
               </div>

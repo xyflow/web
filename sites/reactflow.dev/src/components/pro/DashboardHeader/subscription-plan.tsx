@@ -11,7 +11,7 @@ export default function SubscriptionPlan() {
     <>
       <Subscribed>
         <span>
-          <Pill className="inline text-react bg-pink-50 border-react">
+          <Pill className="inline text-primary bg-pink-50 border-primary">
             <PlanLabel /> plan
           </Pill>
         </span>

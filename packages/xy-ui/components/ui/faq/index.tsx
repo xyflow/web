@@ -24,21 +24,15 @@ export function FAQ({
       id="FAQ"
       title="Frequently Asked Questions"
       icon={InformationCircleIcon}
-      iconClassName="text-react"
+      iconClassName="text-primary"
       className={className}
     >
       <>{children}</>
       <Accordion type="multiple">
         {items.map((item, index) => (
-          <AccordionItem
-            id={item.id}
-            value={`item-${index}`}
-            key={`item-${index}`}
-          >
+          <AccordionItem id={item.id} value={`item-${index}`} key={`item-${index}`}>
             <AccordionTrigger>{item.question}</AccordionTrigger>
-            <AccordionContent className="leading-normal">
-              {item.answer}
-            </AccordionContent>
+            <AccordionContent className="leading-normal">{item.answer}</AccordionContent>
           </AccordionItem>
         ))}
       </Accordion>

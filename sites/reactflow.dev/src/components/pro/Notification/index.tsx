@@ -17,7 +17,7 @@ export default function Notification({
   return (
     <div
       className={cn(
-        'bg-pink-50 text-react p-5 rounded-3xl flex justify-between items-center',
+        'bg-pink-50 text-primary p-5 rounded-3xl flex justify-between items-center',
         className,
       )}
       {...rest}
