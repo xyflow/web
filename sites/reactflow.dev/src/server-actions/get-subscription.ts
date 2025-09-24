@@ -19,7 +19,7 @@ const GET_SUBSCRIPTION = gql`
 export async function getSubscription(): Promise<{
   plan: SubscriptionPlan;
   teamPlan: SubscriptionPlan;
-  user?: User | null
+  user?: User | null;
 }> {
   const nhost = await getNhost();
   const user = nhost.auth.getUser();
@@ -30,14 +30,14 @@ export async function getSubscription(): Promise<{
       user,
     };
   }
-  console.log('before nhost.graphql.request')
+  console.log('before nhost.graphql.request');
   const { data, error } = await nhost.graphql.request(GET_SUBSCRIPTION, {
     userId: user.id,
   });
-  console.log('after nhost.graphql.request')
+  console.log('after nhost.graphql.request');
 
   if (error) {
-    console.error(error);
+    console.error('GraphQL Error:', error);
   }
 
   const plan =
@@ -48,6 +48,6 @@ export async function getSubscription(): Promise<{
   return {
     plan,
     teamPlan,
-    user
+    user,
   };
 }
