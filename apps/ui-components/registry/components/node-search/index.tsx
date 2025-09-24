@@ -41,7 +41,7 @@ export const NodeSearchInternal = forwardRef(function NodeSearch(
 ) {
   const [searchResults, setSearchResults] = useState<Node[]>([]);
   const [searchString, setSearchString] = useState<string>("");
-  const { getNodes } = useReactFlow<Node, BuiltInEdge>();
+  const { getNodes, fitView, setNodes } = useReactFlow<Node, BuiltInEdge>();
 
   const defaultOnSearch = useCallback(
     (searchString: string) => {
@@ -55,21 +55,18 @@ export const NodeSearchInternal = forwardRef(function NodeSearch(
     [getNodes],
   );
 
-  onSearch = onSearch || defaultOnSearch;
-
   const onChange = useCallback(
     (searchString: string) => {
       setSearchString(searchString);
       if (searchString.length > 0) {
         onOpenChange?.(true);
-        const results = onSearch(searchString);
+        const results = (onSearch || defaultOnSearch)(searchString);
         setSearchResults(results);
       }
     },
     [onSearch, onOpenChange],
   );
 
-  const { fitView, setNodes } = useReactFlow<Node, BuiltInEdge>();
   const defaultOnSelectNode = useCallback(
     (node: Node) => {
       setNodes((nodes) =>
