@@ -9,7 +9,18 @@ import remarkFrontmatter from 'remark-frontmatter';
 import remarkStringify from 'remark-stringify';
 // import strip from 'strip-markdown';
 
-const API_REFERENCE_PATH = path.join(process.cwd(), 'src/content/api-reference');
+// Configuration of the sections to include in the LLM txt file
+const SECTIONS = {
+  'api-reference': {
+    name: 'API Reference',
+    path: path.join(process.cwd(), 'src/content/api-reference'),
+  },
+  learn: { name: 'Learn', path: path.join(process.cwd(), 'src/content/learn') },
+  ui: { name: 'UI', path: path.join(process.cwd(), 'src/content/ui') },
+};
+
+// Path of the LLM txt file
+const OUTPUT_FILE = path.join(process.cwd(), 'public/llms.txt');
 
 function getAllMdxFiles(dir, basePath = '') {
   const files = [];
@@ -35,9 +46,40 @@ function getAllMdxFiles(dir, basePath = '') {
   return files;
 }
 
-const apiReference = getAllMdxFiles(API_REFERENCE_PATH);
+// Custom plugin to extract frontmatter and create headers
+function extractFrontmatterAndCreateHeader() {
+  return (tree) => {
+    let title = '';
 
-console.log(apiReference);
+    // Find and extract frontmatter
+    const frontmatterIndex = tree.children.findIndex((node) => node.type === 'yaml');
+    if (frontmatterIndex !== -1) {
+      const frontmatter = tree.children[frontmatterIndex];
+      const yamlContent = frontmatter.value;
+
+      // Extract title from YAML
+      const titleMatch = yamlContent.match(/^title:\s*(.+)$/m);
+      if (titleMatch) {
+        title = titleMatch[1].trim();
+        // Remove quotes if present
+        title = title.replace(/^["']|["']$/g, '');
+      }
+
+      // Remove the frontmatter node
+      tree.children.splice(frontmatterIndex, 1);
+    }
+
+    // If we found a title, create a header at the beginning
+    if (title) {
+      const headerNode = {
+        type: 'heading',
+        depth: 1,
+        children: [{ type: 'text', value: `======= ${title} =======` }],
+      };
+      tree.children.unshift(headerNode);
+    }
+  };
+}
 
 async function mdxToPlainText(source) {
   const file = await unified()
@@ -45,32 +87,42 @@ async function mdxToPlainText(source) {
     .use(remarkMdx)
     .use(remarkGfm)
     .use(remarkFrontmatter, ['yaml', 'toml'])
-    // .use(removeEsModules)
-    // .use(removeMdxJsx)
-    // .use(strip) // strip markdown formatting
-    // .use(remarkRehype)
-    // .use(rehypeStringify)
+    .use(extractFrontmatterAndCreateHeader)
     .use(remarkStringify)
     .process(source);
 
   return String(file);
 }
 
-const OUTPUT_FILE = path.join(process.cwd(), 'llms.txt');
-async function buildLLMSTxt() {
-  const mdxFiles = getAllMdxFiles(API_REFERENCE_PATH);
+async function buildLLMSTxtSection(path) {
+  const mdxFiles = getAllMdxFiles(path);
+
   let output = '';
 
   for (const file of mdxFiles) {
     const raw = fs.readFileSync(file, 'utf8');
     const plain = await mdxToPlainText(raw);
 
-    output += `\n\n===== ${path.relative(API_REFERENCE_PATH, file)} =====\n\n`;
-    output += plain.trim() + '\n';
+    output += plain.trim() + '\n\n';
   }
 
-  fs.writeFileSync(OUTPUT_FILE, output, 'utf8');
-  console.log(`✅ Wrote ${OUTPUT_FILE} with ${mdxFiles.length} files`);
+  return output;
 }
 
-buildLLMSTxt();
+async function buildLLMSTxt(outputFile) {
+  let output = '';
+
+  for (const section of Object.values(SECTIONS)) {
+    let sectionOutput = '# ==================================\n';
+    sectionOutput += `# ${section.name}\n`;
+    sectionOutput += '# ==================================';
+    sectionOutput += '\n\n';
+    sectionOutput += await buildLLMSTxtSection(section.path);
+    output += sectionOutput;
+  }
+
+  fs.writeFileSync(outputFile, output, 'utf8');
+  console.log(`✅ Wrote ${outputFile}`);
+}
+
+buildLLMSTxt(OUTPUT_FILE);
