@@ -77,15 +77,13 @@ export const NodeSearchInternal = forwardRef(function NodeSearch(
     [fitView, setNodes],
   );
 
-  onSelectNode = onSelectNode || defaultOnSelectNode;
-
   const onSelect = useCallback(
     (node: Node) => {
-      onSelectNode?.(node);
+      (onSelectNode || defaultOnSelectNode)?.(node);
       setSearchString("");
       onOpenChange?.(false);
     },
-    [onSelectNode, onOpenChange],
+    [onSelectNode, defaultOnSelectNode, onOpenChange],
   );
 
   return (
