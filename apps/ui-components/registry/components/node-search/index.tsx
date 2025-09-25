@@ -2,16 +2,14 @@ import { forwardRef, useCallback, useState } from "react";
 
 import {
   BuiltInEdge,
-  Panel,
   useReactFlow,
   type Node,
   type PanelProps,
 } from "@xyflow/react";
 
-import { cn } from "@/lib/utils";
-
 import {
   Command,
+  CommandDialog,
   CommandEmpty,
   CommandGroup,
   CommandInput,
@@ -19,24 +17,31 @@ import {
   CommandList,
 } from "@/components/ui/command";
 
-export interface NodeSearchProps<T extends Node>
-  extends Omit<PanelProps, "children"> {
+export interface NodeSearchProps extends Omit<PanelProps, "children"> {
   // The function to search for nodes, should return an array of nodes that match the search string
   // By default, it will check for lowercase string inclusion.
-  onSearch?: (searchString: string) => T[];
+  onSearch?: (searchString: string) => Node[];
   // The function to select a node, should set the node as selected and fit the view to the node
   // By default, it will set the node as selected and fit the view to the node.
-  onSelectNode?: (node: T) => void;
+  onSelectNode?: (node: Node) => void;
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
 }
 
-export const NodeSearch = forwardRef(function NodeSearch<T extends Node>(
-  { className, onSearch, onSelectNode, ...props }: NodeSearchProps<T>,
+export const NodeSearchInternal = forwardRef(function NodeSearch(
+  {
+    className,
+    onSearch,
+    onSelectNode,
+    open,
+    onOpenChange,
+    ...props
+  }: NodeSearchProps,
   ref: React.Ref<HTMLDivElement>,
 ) {
-  const [isOpen, setIsOpen] = useState(false);
-  const [searchResults, setSearchResults] = useState<T[]>([]);
+  const [searchResults, setSearchResults] = useState<Node[]>([]);
   const [searchString, setSearchString] = useState<string>("");
-  const { getNodes } = useReactFlow<T, BuiltInEdge>();
+  const { getNodes, fitView, setNodes } = useReactFlow<Node, BuiltInEdge>();
 
   const defaultOnSearch = useCallback(
     (searchString: string) => {
@@ -50,21 +55,20 @@ export const NodeSearch = forwardRef(function NodeSearch<T extends Node>(
     [getNodes],
   );
 
-  onSearch = onSearch || defaultOnSearch;
-
   const onChange = useCallback(
     (searchString: string) => {
-      setIsOpen(true);
       setSearchString(searchString);
-      const results = onSearch(searchString);
-      setSearchResults(results);
+      if (searchString.length > 0) {
+        onOpenChange?.(true);
+        const results = (onSearch || defaultOnSearch)(searchString);
+        setSearchResults(results);
+      }
     },
-    [getNodes, onSearch],
+    [onSearch, onOpenChange],
   );
 
-  const { fitView, setNodes } = useReactFlow<T, BuiltInEdge>();
   const defaultOnSelectNode = useCallback(
-    (node: T) => {
+    (node: Node) => {
       setNodes((nodes) =>
         nodes.map((n) => (n.id === node.id ? { ...n, selected: true } : n)),
       );
@@ -76,55 +80,98 @@ export const NodeSearch = forwardRef(function NodeSearch<T extends Node>(
   onSelectNode = onSelectNode || defaultOnSelectNode;
 
   const onSelect = useCallback(
-    (node: T) => {
-      onSelectNode(node);
+    (node: Node) => {
+      onSelectNode?.(node);
       setSearchString("");
-      setIsOpen(false);
+      onOpenChange?.(false);
     },
-    [onSelectNode],
+    [onSelectNode, onOpenChange],
   );
 
   return (
-    <Panel
-      className={cn(
-        "flex gap-1 rounded-md bg-primary-foreground p-1 text-foreground",
-        className,
-      )}
-      ref={ref}
-      {...props}
-    >
-      <Command
-        shouldFilter={false}
-        className="rounded-lg border shadow-md md:min-w-[450px]"
-      >
-        <CommandInput
-          placeholder="Search nodes..."
-          onValueChange={onChange}
-          value={searchString}
-          onFocus={() => setIsOpen(true)}
-        />
+    <>
+      <CommandInput
+        placeholder="Search nodes..."
+        onValueChange={onChange}
+        value={searchString}
+        onFocus={() => onOpenChange?.(true)}
+      />
 
-        {isOpen && (
-          <CommandList>
-            {searchString.length > 0 && searchResults.length === 0 && (
-              <CommandEmpty>No results found. {searchString}</CommandEmpty>
-            )}
-            {searchResults.length > 0 && searchString.length > 0 && (
-              <CommandGroup heading="Nodes">
-                {searchResults.map((node) => {
-                  return (
-                    <CommandItem key={node.id} onSelect={() => onSelect(node)}>
-                      <span>{node.data.label as string}</span>
-                    </CommandItem>
-                  );
-                })}
-              </CommandGroup>
-            )}
-          </CommandList>
-        )}
-      </Command>
-    </Panel>
+      {open && (
+        <CommandList>
+          {searchResults.length === 0 ? (
+            <CommandEmpty>No results found. {searchString}</CommandEmpty>
+          ) : (
+            <CommandGroup heading="Nodes">
+              {searchResults.map((node) => {
+                return (
+                  <CommandItem key={node.id} onSelect={() => onSelect(node)}>
+                    <span>{node.data.label as string}</span>
+                  </CommandItem>
+                );
+              })}
+            </CommandGroup>
+          )}
+        </CommandList>
+      )}
+    </>
+  );
+});
+
+export const NodeSearch = forwardRef(function NodeSearch(
+  { className, onSearch, onSelectNode, ...props }: NodeSearchProps,
+  ref: React.Ref<HTMLDivElement>,
+) {
+  const [open, setOpen] = useState(false);
+  return (
+    <Command
+      shouldFilter={false}
+      className="rounded-lg border shadow-md md:min-w-[450px]"
+    >
+      <NodeSearchInternal
+        ref={ref}
+        className={className}
+        onSearch={onSearch}
+        onSelectNode={onSelectNode}
+        open={open}
+        onOpenChange={setOpen}
+        {...props}
+      />
+    </Command>
   );
 });
 
 NodeSearch.displayName = "NodeSearch";
+
+export interface NodeSearchDialogProps extends NodeSearchProps {
+  title?: string;
+}
+
+export const NodeSearchDialog = forwardRef(function NodeSearchDialog(
+  {
+    className,
+    onSearch,
+    onSelectNode,
+    open,
+    onOpenChange,
+    title = "Node Search",
+    ...props
+  }: NodeSearchDialogProps,
+  ref: React.Ref<HTMLDivElement>,
+) {
+  return (
+    <CommandDialog open={open} onOpenChange={onOpenChange}>
+      <NodeSearchInternal
+        ref={ref}
+        className={className}
+        onSearch={onSearch}
+        onSelectNode={onSelectNode}
+        open={open}
+        onOpenChange={onOpenChange}
+        {...props}
+      />
+    </CommandDialog>
+  );
+});
+
+NodeSearchDialog.displayName = "NodeSearchDialog";

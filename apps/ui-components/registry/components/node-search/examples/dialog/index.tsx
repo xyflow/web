@@ -1,5 +1,5 @@
-import { NodeSearch } from "@/registry/components/node-search/";
-import { Background, Node, Panel, ReactFlow } from "@xyflow/react";
+import { Background, Node, ReactFlow } from "@xyflow/react";
+import { NodeSearchDialogExample } from "./component-example";
 
 type NodeData = {
   label: string;
@@ -39,12 +39,7 @@ export default function App() {
     <div className="h-full w-full">
       <ReactFlow defaultNodes={initNodes} defaultEdges={[]} fitView>
         <Background />
-        <Panel
-          className="flex gap-1 rounded-md bg-primary-foreground p-1 text-foreground"
-          position="top-left"
-        >
-          <NodeSearch />
-        </Panel>
+        <NodeSearchDialogExample />
       </ReactFlow>
     </div>
   );
