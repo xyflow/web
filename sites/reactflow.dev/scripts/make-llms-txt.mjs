@@ -28,22 +28,63 @@ function getAllMdxFiles(dir, basePath = '') {
   try {
     const items = fs.readdirSync(dir, { withFileTypes: true });
 
+    // Separate directories, index.mdx files, and other .mdx files
+    const directories = [];
+    const mdxFiles = [];
+
     for (const item of items) {
       const fullPath = path.join(dir, item.name);
       const relativePath = path.join(basePath, item.name);
 
       if (item.isDirectory()) {
-        // Recursively search subdirectories
-        files.push(...getAllMdxFiles(fullPath, relativePath));
+        directories.push({ fullPath, relativePath });
       } else if (item.isFile() && item.name.endsWith('.mdx')) {
-        files.push(fullPath);
+        mdxFiles.push({ fullPath, relativePath, name: item.name });
       }
+    }
+
+    directories.sort((a, b) => a.relativePath.localeCompare(b.relativePath));
+
+    // Prioritize index.mdx files, add them first.
+    for (const file of mdxFiles) {
+      if (file.name === 'index.mdx') {
+        files.push(file.fullPath);
+      }
+    }
+
+    for (const file of mdxFiles) {
+      if (file.name !== 'index.mdx') {
+        files.push(file.fullPath);
+      }
+    }
+
+    for (const dirItem of directories) {
+      const subFiles = getAllMdxFiles(dirItem.fullPath, dirItem.relativePath);
+      files.push(...subFiles);
     }
   } catch (error) {
     console.warn(`Warning: Could not read directory ${dir}:`, error.message);
   }
 
   return files;
+}
+
+// Custom plugin to increase heading levels by a given amount
+function increaseHeadingLevels(amount) {
+  return () => (tree) => {
+    function visit(node) {
+      if (node.type === 'heading') {
+        // Increase depth by 1, but cap at 6 (max heading level)
+        node.depth = Math.min(node.depth + amount, 6);
+      }
+
+      if (node.children) {
+        node.children.forEach(visit);
+      }
+    }
+
+    visit(tree);
+  };
 }
 
 // Custom plugin to extract frontmatter and create headers
@@ -74,7 +115,7 @@ function extractFrontmatterAndCreateHeader() {
       const headerNode = {
         type: 'heading',
         depth: 1,
-        children: [{ type: 'text', value: `======= ${title} =======` }],
+        children: [{ type: 'text', value: title }],
       };
       tree.children.unshift(headerNode);
     }
@@ -88,6 +129,10 @@ async function mdxToPlainText(source) {
     .use(remarkGfm)
     .use(remarkFrontmatter, ['yaml', 'toml'])
     .use(extractFrontmatterAndCreateHeader)
+    // We increase the heading levels by 2 when generating the LLM txt file.
+    // To provide a correctly formatted Markdown file.
+    .use(increaseHeadingLevels(2))
+
     .use(remarkStringify)
     .process(source);
 
@@ -110,13 +155,17 @@ async function buildLLMSTxtSection(path) {
 }
 
 async function buildLLMSTxt(outputFile) {
-  let output = '';
+  let output = '# React Flow Documentation\n\n';
+  output += `## What is React Flow?\n\n React Flow is a library that allows you to create interactive, node-based user interfaces: 
+    flowcharts, diagrams, visual programming tools, and workflows inside your React applications. It supports theming, 
+    custom nodes and edges, a library of shadcn UI components, and offers a large collection 
+    of examples for rapid  development. Developers can leverage the React Flow Pro platform 
+    for advanced features like real-time collaboration, complex layouts, 
+    and enhanced performance, making it suitable for both simple and large-scale, 
+    production-ready visual applications.`;
 
   for (const section of Object.values(SECTIONS)) {
-    let sectionOutput = '# ==================================\n';
-    sectionOutput += `# ${section.name}\n`;
-    sectionOutput += '# ==================================';
-    sectionOutput += '\n\n';
+    let sectionOutput = `## ${section.name}\n\n`;
     sectionOutput += await buildLLMSTxtSection(section.path);
     output += sectionOutput;
   }
