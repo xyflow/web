@@ -1,19 +1,18 @@
 {
-  "name": "zoom-slider",
+  "name": "node-search",
   "type": "registry:component",
   "dependencies": [
     "@xyflow/react",
-    "lucide-react"
+    "cmdk"
   ],
   "devDependencies": [],
   "registryDependencies": [
-    "button",
-    "slider"
+    "command"
   ],
   "files": [
     {
       "type": "registry:component",
-      "path": "zoom-slider.tsx"
+      "path": "node-search.tsx"
     }
   ],
   "tailwind": {},

@@ -100,6 +100,10 @@ const demoOutputPath = path.join(__dirname, "../public/demo");
 
         for (const dir of examplesDir) {
           if (dir.isDirectory()) {
+            if (fs.existsSync(path.join(examplesPath, dir.name, ".disabled"))) {
+              continue;
+            }
+
             const componentExamplePath = path.join(
               examplesPath,
               dir.name,
