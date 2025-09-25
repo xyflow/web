@@ -158,7 +158,7 @@ export const NodeSearchDialog = forwardRef(function NodeSearchDialog(
   ref: React.Ref<HTMLDivElement>,
 ) {
   return (
-    <CommandDialog open={open} onOpenChange={onOpenChange} shouldFilter={false}>
+    <CommandDialog open={open} onOpenChange={onOpenChange}>
       <NodeSearchInternal
         ref={ref}
         className={className}
