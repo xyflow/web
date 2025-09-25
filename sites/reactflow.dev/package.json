@@ -13,6 +13,7 @@
     "check-sitemap": "node scripts/check-sitemap.mjs",
     "generate-routes-type": "node scripts/generate-routes-type.mjs",
     "check-links": "node scripts/check-mdx-links.mjs",
+    "make-llms-txt": "node scripts/make-llms-txt.mjs",
     "types:check": "tsc --noEmit"
   },
   "dependencies": {
@@ -42,9 +43,17 @@
     "eslint-config-xyflow": "workspace:*",
     "postcss-import": "^16.1.0",
     "postcss-lightningcss": "^1.0.1",
+    "rehype-stringify": "^10.0.1",
+    "remark-frontmatter": "^5.0.0",
+    "remark-gfm": "^4.0.1",
+    "remark-mdx": "^3.1.1",
+    "remark-parse": "^11.0.0",
+    "remark-rehype": "^11.1.2",
+    "remark-stringify": "^11.0.0",
     "source-map-support": "0.5.21",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.7.3",
+    "unified": "^11.0.5",
     "xy-tailwind-config": "workspace:*",
     "xy-tsconfig": "workspace:*"
   }

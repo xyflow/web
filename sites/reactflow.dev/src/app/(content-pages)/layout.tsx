@@ -74,6 +74,7 @@ const Layout: FC<{ children: ReactNode }> = async ({ children }) => {
           { title: 'Components', route: '/components' },
           { title: 'Showcase', route: '/showcase' },
           { title: 'Playground', route: 'https://play.reactflow.dev' },
+          { title: 'llms.txt', route: 'https://reactflow.dev/llms.txt' },
         ],
         ...remainingCategories,
         Legal: [
