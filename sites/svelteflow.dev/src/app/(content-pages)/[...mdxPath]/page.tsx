@@ -15,11 +15,11 @@ const { wrapper: Wrapper, h1: H1 } = getMdxComponents();
 export default async function Page(props: PageProps) {
   const params = await props.params;
   const result = await importPage(params.mdxPath);
-  const { default: MDXContent, toc, metadata } = result;
+  const { default: MDXContent, toc, metadata, sourceCode } = result;
   const mdx = <MDXContent {...props} params={params} />;
 
   return (
-    <Wrapper toc={toc} metadata={metadata}>
+    <Wrapper toc={toc} metadata={metadata} sourceCode={sourceCode}>
       {(async function (slug: string[]) {
         const isExamples = slug[0] === 'examples';
         if (isExamples) {
