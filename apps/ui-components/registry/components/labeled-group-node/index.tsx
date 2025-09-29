@@ -14,7 +14,7 @@ export const GroupNodeLabel = forwardRef<HTMLDivElement, GroupNodeLabelProps>(
       <div ref={ref} className="h-full w-full" {...props}>
         <div
           className={cn(
-            "w-fit bg-gray-200 bg-secondary p-2 text-xs text-card-foreground",
+            "text-card-foreground w-fit bg-gray-200 p-2 text-xs",
             className,
           )}
         >
@@ -58,10 +58,10 @@ export const GroupNode = forwardRef<HTMLDivElement, GroupNodeProps>(
     return (
       <BaseNode
         ref={ref}
-        className="h-full overflow-hidden rounded-sm bg-white bg-opacity-50 p-0"
+        className="bg-opacity-50 h-full overflow-hidden rounded-sm bg-white"
         {...props}
       >
-        <Panel className={cn("m-0 p-0")} position={position}>
+        <Panel className="m-0 p-0" position={position}>
           {label && (
             <GroupNodeLabel className={getLabelClassName(position)}>
               {label}
