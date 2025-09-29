@@ -14,24 +14,6 @@ By default, it will check for lowercase string inclusion in the node's label, an
 select the node and fit the view to the node when it is selected.
 You can override this behavior by passing a custom `onSearch` function: 
 
-The default is roughly equivalent to:
-```ts 
-const { getNodes } = useReactFlow();
-
-const onSearch = useCallback((searchString: string) =>  {
-    const nodes = getNodes(); 
-    return nodes.filter((node) => node.data.label.toLowerCase().includes(searchString.toLowerCase()),
-), [getNodes]);
-```
-
 You can also override the default `onSelectNode` function to customize the behavior when a node is selected.
-
-The default is:
-```ts
-const onSelectNode = (node: T) => {
-    setNodes((nodes) => nodes.map((n) => (n.id === node.id ? { ...n, selected: true } : n)));
-    fitView({ nodes: [node], duration: 500 });
-}
-```
 
 <UiComponentViewer id="node-search" />
