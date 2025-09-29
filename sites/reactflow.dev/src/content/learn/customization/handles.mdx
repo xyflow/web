@@ -21,14 +21,14 @@ your custom nodes. Here's an example of how to implement a custom node with two
 handles:
 
 ```jsx {7-8}
-import { Handle } from '@xyflow/react';
+import { Position, Handle } from '@xyflow/react';
 
 export function CustomNode() {
   return (
     <div className="custom-node">
       <div>Custom Node Content</div>
-      <Handle type="source" position="top" />
-      <Handle type="target" position="bottom" />
+      <Handle type="source" position={Position.Top} />
+      <Handle type="target" position={Position.Bottom} />
     </div>
   );
 }
@@ -41,9 +41,9 @@ need to specify each handle with a unique `id`. This allows React Flow to
 differentiate between the handles when connecting edges.
 
 ```jsx /id="a"/ /id="b"/
-  <Handle type="target" position="top" />
-  <Handle type="source" position="right" id="a" />
-  <Handle type="source" position="bottom" id="b" />
+  <Handle type="target" position={Position.Top} />
+  <Handle type="source" position={Position.Right} id="a" />
+  <Handle type="source" position={Position.Bottom} id="b" />
 ```
 
 To connect an edge to a specific handle of a node, use the properties
