@@ -30,7 +30,7 @@ export async function RemoteCodeViewer({
   route,
   framework,
   showEditor,
-  showOpenInCodeSandbox = framework === 'react',
+  showOpenInCodeSandbox = false, //framework === 'react',
   showOpenInStackblitz = true,
   aspectRatio = '16/9',
   activeFile,
