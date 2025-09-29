@@ -30,6 +30,8 @@ export async function RemoteCodeViewer({
   route,
   framework,
   showEditor,
+  // TODO: Re-enable open in codesandbox when we have static sandboxes that
+  // are created via Codesandbox SDK at build time, and not every time via the API.
   showOpenInCodeSandbox = false, //framework === 'react',
   showOpenInStackblitz = true,
   aspectRatio = '16/9',
