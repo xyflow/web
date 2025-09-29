@@ -1,4 +1,4 @@
-import { forwardRef, type HTMLAttributes } from "react";
+import type { ComponentProps } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
@@ -21,24 +21,21 @@ const appendixVariants = cva(
 );
 
 export interface NodeAppendixProps
-  extends HTMLAttributes<HTMLDivElement>,
+  extends ComponentProps<"div">,
     VariantProps<typeof appendixVariants> {
   className?: string;
   position?: "top" | "bottom" | "left" | "right";
 }
 
-export const NodeAppendix = forwardRef<HTMLDivElement, NodeAppendixProps>(
-  ({ children, className, position, ...props }, ref) => {
-    return (
-      <div
-        ref={ref}
-        className={cn(appendixVariants({ position }), className)}
-        {...props}
-      >
-        {children}
-      </div>
-    );
-  },
-);
-
-NodeAppendix.displayName = "NodeAppendix";
+export function NodeAppendix({
+  children,
+  className,
+  position,
+  ...props
+}: NodeAppendixProps) {
+  return (
+    <div className={cn(appendixVariants({ position }), className)} {...props}>
+      {children}
+    </div>
+  );
+}

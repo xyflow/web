@@ -10,12 +10,12 @@ const wrapperClassNames: Record<Position, string> = {
   [Position.Right]: "top-1/2 -translate-y-1/2 translate-x-[10px]",
 };
 
-export const ButtonHandle = ({
+export function ButtonHandle({
   showButton = true,
   position = Position.Bottom,
   children,
   ...props
-}: HandleProps & { showButton?: boolean }) => {
+}: HandleProps & { showButton?: boolean }) {
   const wrapperClassName = wrapperClassNames[position || Position.Bottom];
   const vertical = position === Position.Top || position === Position.Bottom;
 
@@ -33,4 +33,4 @@ export const ButtonHandle = ({
       )}
     </BaseHandle>
   );
-};
+}
