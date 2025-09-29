@@ -193,7 +193,7 @@ type DevToolsToggleProps = {
 
 const DevToolsToggle = ({ tools, position }: DevToolsToggleProps) => {
   return (
-    <Panel position={position} className="rounded border bg-card p-1 shadow-sm">
+    <Panel position={position} className="rounded border bg-card p-1 shadow-xs">
       <ToggleGroup type="multiple">
         {tools.map(({ active, setActive, label, value }) => (
           <ToggleGroupItem
