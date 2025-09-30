@@ -18,7 +18,7 @@ export function GroupNodeLabel({
     <div className="h-full w-full" {...props}>
       <div
         className={cn(
-          "text-card-foreground w-fit bg-gray-200 p-2 text-xs",
+          "text-card-foreground bg-secondary w-fit p-2 text-xs",
           className,
         )}
       >
