@@ -3,6 +3,20 @@ title: Edge Markers
 description: Make your edges into arrows, add custom icons, or SVGs
 ---
 
-React Flow has built-in support for different marker types for your edges. It's possible to add your own [SVG markers](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/marker), too.
+React Flow has built-in support for different marker types for your edges. It's
+possible to add your own [SVG
+markers](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/marker), too.
+
+The markers are defined as SVG elements, so you can use any SVG you want.
+The React Flow edge renderer will expect the marker definition to be in a `<defs>` element. 
+
+If, for example, your custom edge is wrapping a built-in `<BaseEdge/>` component, 
+you can pass the `markerStart` and `markerEnd` props to the `<BaseEdge/>` component.
+The built-in React Flow edge components
+will expect the `markerStart` and `markerEnd` props to be in the format
+`"url(#markerId)"`, where `markerId` is the ID of your marker definition.
+
+This allows you to customize the marker for a specific edge, depending on the state of the edge.
+
 
 <RemoteCodeViewer route="examples/edges/markers" framework="react" />
