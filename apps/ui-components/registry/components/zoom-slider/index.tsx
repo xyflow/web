@@ -1,6 +1,6 @@
 "use client";
 
-import React, { forwardRef } from "react";
+import React from "react";
 import { Maximize, Minus, Plus } from "lucide-react";
 
 import {
@@ -15,12 +15,13 @@ import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-export const ZoomSlider = forwardRef<
-  HTMLDivElement,
-  Omit<PanelProps, "children"> & {
-    orientation?: React.AriaAttributes["aria-orientation"];
-  }
->(({ className, orientation = "vertical", ...props }, ref) => {
+export function ZoomSlider({
+  className,
+  orientation = "vertical",
+  ...props
+}: Omit<PanelProps, "children"> & {
+  orientation?: "horizontal" | "vertical";
+}) {
   const { zoom } = useViewport();
   const { zoomTo, zoomIn, zoomOut, fitView } = useReactFlow();
   const minZoom = useStore((state) => state.minZoom);
@@ -29,11 +30,10 @@ export const ZoomSlider = forwardRef<
   return (
     <Panel
       className={cn(
-        "flex gap-1 rounded-md bg-primary-foreground p-1 text-foreground",
+        "bg-primary-foreground text-foreground flex gap-1 rounded-md p-1",
         orientation === "horizontal" ? "flex-row" : "flex-col",
         className,
       )}
-      ref={ref}
       {...props}
     >
       <div
@@ -89,6 +89,4 @@ export const ZoomSlider = forwardRef<
       </Button>
     </Panel>
   );
-});
-
-ZoomSlider.displayName = "ZoomSlider";
+}

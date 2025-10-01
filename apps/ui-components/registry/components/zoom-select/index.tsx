@@ -1,7 +1,8 @@
 "use client";
 
-import React, { forwardRef, useCallback } from "react";
+import React, { useCallback } from "react";
 import { Panel, useReactFlow, useStore, type PanelProps } from "@xyflow/react";
+import type { ComponentProps } from "react";
 
 import {
   Select,
@@ -12,10 +13,10 @@ import {
 } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
 
-export const ZoomSelect = forwardRef<
-  HTMLDivElement,
-  Omit<PanelProps, "children">
->(({ className, ...props }, ref) => {
+export function ZoomSelect({
+  className,
+  ...props
+}: Omit<PanelProps, "children">) {
   const { zoomTo, fitView } = useReactFlow();
 
   const handleZoomChange = useCallback(
@@ -50,12 +51,11 @@ export const ZoomSelect = forwardRef<
 
   return (
     <Panel
-      ref={ref}
-      className={cn("flex bg-primary-foreground text-foreground", className)}
+      className={cn("bg-primary-foreground text-foreground flex", className)}
       {...props}
     >
       <Select onValueChange={handleZoomChange}>
-        <SelectTrigger className="w-[140px] bg-primary-foreground">
+        <SelectTrigger className="bg-primary-foreground w-[140px]">
           <SelectValue placeholder="Zoom" />
         </SelectTrigger>
         <SelectContent>
@@ -70,6 +70,4 @@ export const ZoomSelect = forwardRef<
       </Select>
     </Panel>
   );
-});
-
-ZoomSelect.displayName = "ZoomSelect";
+}
