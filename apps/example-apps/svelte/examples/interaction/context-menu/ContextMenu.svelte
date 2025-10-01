@@ -48,6 +48,7 @@
   style="top: {top}px; left: {left}px; right: {right}px; bottom: {bottom}px;"
   class="context-menu"
   {onclick}
+  onpointerdown={(e) => e.stopPropagation()}
 >
   <p style="margin: 0.5em;">
     <small>node: {id}</small>
