@@ -23,10 +23,10 @@
     right?: number;
     bottom?: number;
   } | null = $state(null);
-  let clientWidth: number = $state();
-  let clientHeight: number = $state();
+  let clientWidth: number = $state(0);
+  let clientHeight: number = $state(0);
 
-  const handleContextMenu: NodeEventWithPointer = ({ event, node }) => {
+  const handleContextMenu: NodeEventWithPointer<MouseEvent> = ({ event, node }) => {
     // Prevent native context menu from showing
     event.preventDefault();
 
@@ -36,14 +36,9 @@
       id: node.id,
       top: event.clientY < clientHeight - 200 ? event.clientY : undefined,
       left: event.clientX < clientWidth - 200 ? event.clientX : undefined,
-      right:
-        event.clientX >= clientWidth - 200
-          ? clientWidth - event.clientX
-          : undefined,
+      right: event.clientX >= clientWidth - 200 ? clientWidth - event.clientX : undefined,
       bottom:
-        event.clientY >= clientHeight - 200
-          ? clientHeight - event.clientY
-          : undefined,
+        event.clientY >= clientHeight - 200 ? clientHeight - event.clientY : undefined,
     };
   };
 
@@ -59,6 +54,7 @@
     bind:edges
     onnodecontextmenu={handleContextMenu}
     onpaneclick={handlePaneClick}
+    onpointerdown={handlePaneClick}
     fitView
   >
     <Background />
