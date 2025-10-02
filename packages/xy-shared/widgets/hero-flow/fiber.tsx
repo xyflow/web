@@ -18,10 +18,20 @@ const canvasResize = { scroll: false };
 
 function WebGLFallback() {
   return (
-    <div className="text-light text-sm">
-      Your browser doesn&apos;t support WebGL 😢
-    </div>
+    <div className="text-light text-sm">Your browser doesn&apos;t support WebGL 😢</div>
   );
+}
+
+function isWebGLAvailable(): boolean {
+  try {
+    const canvas = document.createElement('canvas');
+    return !!(
+      window.WebGLRenderingContext &&
+      (canvas.getContext('webgl') || canvas.getContext('experimental-webgl'))
+    );
+  } catch {
+    return false;
+  }
 }
 
 function Shape({ type, random, color, ...props }: any) {
@@ -73,7 +83,10 @@ export default function App({ color, zoom, shape, count = 150 }: any) {
     [count],
   );
 
-  if (didCatch) {
+  // Memoize the availability of WebGL
+  const availableWebGL = useMemo(() => isWebGLAvailable(), []);
+
+  if (didCatch || !availableWebGL) {
     return <WebGLFallback />;
   }
 
