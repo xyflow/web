@@ -8,6 +8,8 @@
 # testing
 /coverage
 
+public/_pagefind/
+
 # next.js
 /.next/
 /out/

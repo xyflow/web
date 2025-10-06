@@ -17,7 +17,6 @@ export * from './widgets/hero-flow';
 export * from './widgets/image-slider';
 export * from './widgets/project-cards';
 export * from './widgets/project-preview';
-export * from './widgets/search';
 export * from './widgets/subscribe-section';
 export * from './widgets/liteyoutube-embed';
 
