@@ -14,7 +14,7 @@ out/
 build
 sitemap.xml
 
-public 
+public/_pagefind/
 
 # misc
 .DS_Store

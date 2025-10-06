@@ -3,7 +3,7 @@ import NextLink from 'next/link';
 import { Folder, MdxFile, MetaJsonFile } from 'nextra';
 import { getPageMap } from 'nextra/page-map';
 import { SparklesIcon } from '@heroicons/react/24/outline';
-import { Search, SidebarTitle } from 'xy-shared';
+import { SidebarTitle } from 'xy-shared';
 import { Button, defaultFooterCategories } from '@xyflow/xy-ui';
 import { NextraLayout } from '@/components/nextra-layout';
 import { getPageMap as getExamplesPageMap } from './examples/[...slug]/utils';
@@ -90,7 +90,6 @@ const Layout: FC<{ children: ReactNode }> = async ({ children }) => {
       }}
       navbar={
         <>
-          <Search />
           <a
             className="xy-link-gray x:focus-visible:nextra-focus"
             href="https://github.com/xyflow/xyflow"
