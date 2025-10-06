@@ -1,4 +1,5 @@
 import type { FC, ReactNode } from 'react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Head } from 'nextra/components';
 import reactFlowPackageJson from '@xyflow/react/package.json';
 import { Html } from '@/components/html.client';
@@ -31,6 +32,7 @@ const RootLayout: FC<{
       <body>
         <Fathom {...fathomOptions} />
         {children}
+        <SpeedInsights />
       </body>
     </Html>
   );

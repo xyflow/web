@@ -18,6 +18,7 @@
   "dependencies": {
     "@heroicons/react": "^2.2.0",
     "@typeform/embed-react": "^4.4.0",
+    "@vercel/speed-insights": "^1.2.0",
     "@xyflow/react": "^12.8.5",
     "@xyflow/system": "^0.0.69",
     "@xyflow/xy-ui": "workspace:*",
