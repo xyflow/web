@@ -17,7 +17,7 @@ import { cn } from "@/lib/utils";
 
 export function ZoomSlider({
   className,
-  orientation = "vertical",
+  orientation = "horizontal",
   ...props
 }: Omit<PanelProps, "children"> & {
   orientation?: "horizontal" | "vertical";
