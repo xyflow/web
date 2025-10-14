@@ -1,6 +1,6 @@
 "use client";
 
-import React, { forwardRef } from "react";
+import React from "react";
 import { Maximize, Minus, Plus } from "lucide-react";
 
 import {
@@ -15,10 +15,13 @@ import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-export const ZoomSlider = forwardRef<
-  HTMLDivElement,
-  Omit<PanelProps, "children">
->(({ className, ...props }, ref) => {
+export function ZoomSlider({
+  className,
+  orientation = "horizontal",
+  ...props
+}: Omit<PanelProps, "children"> & {
+  orientation?: "horizontal" | "vertical";
+}) {
   const { zoom } = useViewport();
   const { zoomTo, zoomIn, zoomOut, fitView } = useReactFlow();
   const minZoom = useStore((state) => state.minZoom);
@@ -27,36 +30,51 @@ export const ZoomSlider = forwardRef<
   return (
     <Panel
       className={cn(
-        "flex gap-1 rounded-md bg-primary-foreground p-1 text-foreground",
+        "bg-primary-foreground text-foreground flex gap-1 rounded-md p-1",
+        orientation === "horizontal" ? "flex-row" : "flex-col",
         className,
       )}
-      ref={ref}
       {...props}
     >
-      <Button
-        variant="ghost"
-        size="icon"
-        onClick={() => zoomOut({ duration: 300 })}
+      <div
+        className={cn(
+          "flex gap-1",
+          orientation === "horizontal" ? "flex-row" : "flex-col-reverse",
+        )}
       >
-        <Minus className="h-4 w-4" />
-      </Button>
-      <Slider
-        className="w-[140px]"
-        value={[zoom]}
-        min={minZoom}
-        max={maxZoom}
-        step={0.01}
-        onValueChange={(values) => zoomTo(values[0])}
-      />
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={() => zoomOut({ duration: 300 })}
+        >
+          <Minus className="h-4 w-4" />
+        </Button>
+        <Slider
+          className={cn(
+            orientation === "horizontal" ? "w-[140px]" : "h-[140px]",
+          )}
+          orientation={orientation}
+          value={[zoom]}
+          min={minZoom}
+          max={maxZoom}
+          step={0.01}
+          onValueChange={(values) => zoomTo(values[0])}
+        />
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={() => zoomIn({ duration: 300 })}
+        >
+          <Plus className="h-4 w-4" />
+        </Button>
+      </div>
       <Button
-        variant="ghost"
-        size="icon"
-        onClick={() => zoomIn({ duration: 300 })}
-      >
-        <Plus className="h-4 w-4" />
-      </Button>
-      <Button
-        className="min-w-20 tabular-nums"
+        className={cn(
+          "tabular-nums",
+          orientation === "horizontal"
+            ? "w-[140px] min-w-10"
+            : "h-[40px] w-[40px]",
+        )}
         variant="ghost"
         onClick={() => zoomTo(1, { duration: 300 })}
       >
@@ -71,6 +89,4 @@ export const ZoomSlider = forwardRef<
       </Button>
     </Panel>
   );
-});
-
-ZoomSlider.displayName = "ZoomSlider";
+}

@@ -10,12 +10,12 @@ const wrapperClassNames: Record<Position, string> = {
   [Position.Right]: "top-1/2 -translate-y-1/2 translate-x-[10px]",
 };
 
-export const ButtonHandle = ({
+export function ButtonHandle({
   showButton = true,
   position = Position.Bottom,
   children,
   ...props
-}: HandleProps & { showButton?: boolean }) => {
+}: HandleProps & { showButton?: boolean }) {
   const wrapperClassName = wrapperClassNames[position || Position.Bottom];
   const vertical = position === Position.Top || position === Position.Bottom;
 
@@ -26,11 +26,11 @@ export const ButtonHandle = ({
           className={`absolute flex items-center ${wrapperClassName} pointer-events-none`}
         >
           <div
-            className={`bg-gray-300 ${vertical ? "h-10 w-[1px]" : "h-[1px] w-10"}`}
+            className={`bg-gray-300 ${vertical ? "h-10 w-px" : "h-px w-10"}`}
           />
           <div className="nodrag nopan pointer-events-auto">{children}</div>
         </div>
       )}
     </BaseHandle>
   );
-};
+}
