@@ -1,0 +1,44 @@
+---
+title: The EdgeToolbar component
+sidebarTitle: '<EdgeToolbar />'
+description:
+  'The EdgeToolbar component can be used to display a toolbar on a side of an edge.'
+---
+
+# \<EdgeToolbar />
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/plugins/EdgeToolbar/EdgeToolbar.svelte)
+
+The EdgeToolbar component can be used to display a toolbar on a side of the passed x and y
+coordinates.
+
+```svelte filename="CustomEdge.svelte"
+<script lang="ts">
+	import { EdgeToolbar, getBezierPath, BaseEdge, type EdgeProps } from '@xyflow/svelte';
+
+	let { id, sourceX, sourceY, targetX, targetY }: EdgeProps = $props();
+
+	let [edgePath, centerX, centerY] = $derived(
+		getBezierPath({
+			sourceX,
+			sourceY,
+			targetX,
+			targetY
+		})
+	);
+</script>
+
+<BaseEdge {id} path={edgePath} />
+<EdgeToolbar edgeId={id} x={centerX} y={centerY} isVisible>
+	<button>some button</button>
+</EdgeToolbar>
+```
+
+## Props
+
+<APIDocs componentName="EdgeToolbar" groupKeys="HTMLAttributes<HTMLDivElement>" />
+
+## Notes
+
+- By default, the toolbar is only visible when an edge is selected. You can override this
+  behavior by setting the `isVisible` prop to `true`.
