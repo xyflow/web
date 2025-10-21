@@ -3,7 +3,7 @@
     getBezierPath,
     BaseEdge,
     type EdgeProps,
-    useEdges,
+    useSvelteFlow,
     EdgeLabel,
   } from '@xyflow/svelte';
 
@@ -30,10 +30,11 @@
     }),
   );
 
-  const edges = useEdges();
+  const { deleteElements } = useSvelteFlow();
 
-  const onEdgeClick = () =>
-    edges.update((eds) => eds.filter((edge) => edge.id !== id));
+  const onEdgeClick = () => {
+    deleteElements({ edges: [{ id }] });
+  }
 </script>
 
 <BaseEdge path={edgePath} {markerEnd} {style} />
