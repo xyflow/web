@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { SvelteFlow, Background, type Edge, type Node } from '@xyflow/svelte';
+  import { SvelteFlow, Background, type Edge, type Node, Panel } from '@xyflow/svelte';
 
   import '@xyflow/svelte/dist/style.css';
 
@@ -62,41 +62,17 @@
 </script>
 
 <SvelteFlow bind:nodes bind:edges fitView maxZoom={2}>
-  <div class="updatenode__controls">
-    <label>label:</label>
+  <Panel position="top-left">
+    <span>label:</span>
     <input value={nodeName} oninput={updateNodeName} />
 
-    <label class="updatenode__bglabel">background:</label>
+    <span>background:</span>
     <input value={nodeBg} oninput={updateNodeBg} />
 
-    <div class="updatenode__checkboxwrapper">
-      <label>hidden:</label>
-      <input type="checkbox" oninput={updateNodeHidden} />
-    </div>
-  </div>
+    <br />
+
+    <span>hidden:</span>
+    <input type="checkbox" oninput={updateNodeHidden} />
+  </Panel>
   <Background />
 </SvelteFlow>
-
-<style>
-  :global(.update-node__controls) {
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    z-index: 4;
-    font-size: 12px;
-  }
-
-  :global(.update-node__controls label) {
-    display: block;
-  }
-
-  :global(.update-node__bg-label) {
-    margin-top: 10px;
-  }
-
-  :global(.update-node__checkbox-wrapper) {
-    margin-top: 10px;
-    display: flex;
-    align-items: center;
-  }
-</style>
