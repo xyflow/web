@@ -62,17 +62,15 @@
 </script>
 
 <SvelteFlow bind:nodes bind:edges fitView maxZoom={2}>
-  <Panel position="top-left">
-    <span>label:</span>
-    <input value={nodeName} oninput={updateNodeName} />
+  <Panel position="top-left" style="width: 200px;">
+    <span class="xy-theme__label">label:</span>
+    <input value={nodeName} oninput={updateNodeName} class="xy-theme__input" />
 
-    <span>background:</span>
-    <input value={nodeBg} oninput={updateNodeBg} />
+    <span class="xy-theme__label">background:</span>
+    <input value={nodeBg} oninput={updateNodeBg} class="xy-theme__input" />
 
-    <br />
-
-    <span>hidden:</span>
-    <input type="checkbox" oninput={updateNodeHidden} />
+    <span class="xy-theme__label">hidden:</span>
+    <input type="checkbox" oninput={updateNodeHidden} class="xy-theme__checkbox" />
   </Panel>
   <Background />
 </SvelteFlow>
