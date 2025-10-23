@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { SvelteFlow, Background, type Edge, type Node } from '@xyflow/svelte';
+  import { SvelteFlow, Background, type Edge, type Node, Panel } from '@xyflow/svelte';
 
   import '@xyflow/svelte/dist/style.css';
 
@@ -62,41 +62,15 @@
 </script>
 
 <SvelteFlow bind:nodes bind:edges fitView maxZoom={2}>
-  <div class="updatenode__controls">
-    <label>label:</label>
-    <input value={nodeName} oninput={updateNodeName} />
+  <Panel position="top-left" style="width: 200px;">
+    <span class="xy-theme__label">label:</span>
+    <input value={nodeName} oninput={updateNodeName} class="xy-theme__input" />
 
-    <label class="updatenode__bglabel">background:</label>
-    <input value={nodeBg} oninput={updateNodeBg} />
+    <span class="xy-theme__label">background:</span>
+    <input value={nodeBg} oninput={updateNodeBg} class="xy-theme__input" />
 
-    <div class="updatenode__checkboxwrapper">
-      <label>hidden:</label>
-      <input type="checkbox" oninput={updateNodeHidden} />
-    </div>
-  </div>
+    <span class="xy-theme__label">hidden:</span>
+    <input type="checkbox" oninput={updateNodeHidden} class="xy-theme__checkbox" />
+  </Panel>
   <Background />
 </SvelteFlow>
-
-<style>
-  :global(.update-node__controls) {
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    z-index: 4;
-    font-size: 12px;
-  }
-
-  :global(.update-node__controls label) {
-    display: block;
-  }
-
-  :global(.update-node__bg-label) {
-    margin-top: 10px;
-  }
-
-  :global(.update-node__checkbox-wrapper) {
-    margin-top: 10px;
-    display: flex;
-    align-items: center;
-  }
-</style>
