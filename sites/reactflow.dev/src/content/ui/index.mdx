@@ -4,11 +4,11 @@ Ready-to-use React Flow components built with [shadcn/ui](https://ui.shadcn.com/
 components and [Tailwind CSS](https://tailwindcss.com/). Useful for new projects, MVPs, or
 when you need to get up and running quickly.
 
-## Update to React 19 and Tailwind CSS 4
-
-Our React Flow components have been updated to support the latest version of [shadcn/ui](https://ui.shadcn.com/), on [React 19](https://react.dev/) and [Tailwind CSS 4](https://tailwindcss.com)!
-Read more about the changes and how to upgrade [here](/whats-new/2025-09-30).
-
+> [!NOTE]
+>
+> React Flow UI has been updated to support the latest version of shadcn/ui, on **React 19
+> and Tailwind 4**! Read more about the changes and how to upgrade
+> [here](/whats-new/2025-10-28).
 
 ## Prerequisites
 
@@ -26,14 +26,15 @@ detailed blog post [here](https://xyflow.com/blog/react-flow-components). For a 
 in-depth tutorial, we also recently published a new guide on
 [getting started with React Flow UI](/learn/tutorials/getting-started-with-react-flow-components).
 
-
 > [!IMPORTANT]
 >
-> Using React Flow UI components **requires importing the main React Flow CSS stylesheet** before you import the **shadcn UI stylesheet**.
-> You usually do so in the Typescript or Javascript file where you use the main [`<ReactFlow>`](/api-reference/react-flow) component.
+> Using React Flow UI components **requires importing the main React Flow CSS stylesheet**
+> before you import the **shadcn UI stylesheet**. You usually do so in the Typescript or
+> Javascript file where you use the main [`<ReactFlow>`](/api-reference/react-flow)
+> component.
 
 ```tsx filename="App.tsx"
-import "@xyflow/react/dist/style.css";
+import '@xyflow/react/dist/style.css';
 ```
 
 ## Usage
