@@ -26,6 +26,16 @@ detailed blog post [here](https://xyflow.com/blog/react-flow-components). For a 
 in-depth tutorial, we also recently published a new guide on
 [getting started with React Flow UI](/learn/tutorials/getting-started-with-react-flow-components).
 
+
+> [!IMPORTANT]
+>
+> Using React Flow UI components **requires importing the main React Flow CSS stylesheet** before you import the **shadcn UI stylesheet**.
+> You usually do so in the Typescript or Javascript file where you use the main [`<ReactFlow>`](/api-reference/react-flow) component.
+
+```tsx filename="App.tsx"
+import "@xyflow/react/dist/style.css";
+```
+
 ## Usage
 
 Find a component you like and run the command to add it to your project.
