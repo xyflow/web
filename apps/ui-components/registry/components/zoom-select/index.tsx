@@ -2,7 +2,6 @@
 
 import React, { useCallback } from "react";
 import { Panel, useReactFlow, useStore, type PanelProps } from "@xyflow/react";
-import type { ComponentProps } from "react";
 
 import {
   Select,

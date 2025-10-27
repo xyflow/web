@@ -1,9 +1,15 @@
 "use client";
 
-import { cn } from "@/lib/utils";
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useState,
+  type ComponentProps,
+} from "react";
 import { NodeToolbar, type NodeToolbarProps } from "@xyflow/react";
-import React, { createContext, useCallback, useContext, useState } from "react";
-import type { ComponentProps } from "react";
+
+import { cn } from "@/lib/utils";
 
 /* TOOLTIP CONTEXT ---------------------------------------------------------- */
 

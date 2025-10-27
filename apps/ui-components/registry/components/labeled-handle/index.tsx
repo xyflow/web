@@ -1,6 +1,5 @@
-import React from "react";
+import React, { type ComponentProps } from "react";
 import { type HandleProps } from "@xyflow/react";
-import type { ComponentProps } from "react";
 
 import { cn } from "@/lib/utils";
 import { BaseHandle } from "@/registry/components/base-handle";
@@ -35,6 +34,7 @@ export function LabeledHandle({
         flexDirections[position],
         className,
       )}
+      ref={ref}
     >
       <BaseHandle
         position={position}

@@ -1,6 +1,5 @@
-import React, { type ReactNode } from "react";
+import React, { type ReactNode, type ComponentProps } from "react";
 import { Panel, type NodeProps, type PanelPosition } from "@xyflow/react";
-import type { ComponentProps } from "react";
 
 import { BaseNode } from "@/registry/components/base-node";
 import { cn } from "@/lib/utils";
