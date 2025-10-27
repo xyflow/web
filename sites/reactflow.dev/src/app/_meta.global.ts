@@ -23,6 +23,9 @@ const advanced = {
   'state-management': '',
   'computing-flows': '',
   'ssr-ssg-configuration': '',
+  // theme: {
+  //   copyPage: false,
+  // },
 };
 const tutorials = {
   'slide-shows-with-react-flow': '',
@@ -113,6 +116,9 @@ const ui = {
 const metaRecord = {
   '*': {
     type: 'page',
+    theme: {
+      // copyPage: false,
+    },
   },
 
   // 1. Default Routes
@@ -132,11 +138,15 @@ const metaRecord = {
         items: tutorials,
         theme: {
           toc: false,
+          copyPage: false,
         },
       },
       troubleshooting: { items: troubleshooting },
       'api-reference': { href: '/api-reference' },
     },
+    // theme: {
+    //   copyPage: true,
+    // },
   },
   'api-reference': {
     title: 'Reference',
@@ -145,6 +155,9 @@ const metaRecord = {
       'react-flow': '',
       'react-flow-provider': '',
     },
+    // theme: {
+    //   copyPage: true,
+    // },
   },
   examples: {
     theme: {
