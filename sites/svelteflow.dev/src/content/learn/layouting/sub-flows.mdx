@@ -1,5 +1,8 @@
 ---
-description: Learn how to implement and manage sub-flows in Svelte Flow. This guide covers parent-child node relationships, node positioning, movement constraints, and creating nested flow diagrams with custom parent nodes.
+description:
+  Learn how to implement and manage sub-flows in Svelte Flow. This guide covers
+  parent-child node relationships, node positioning, movement constraints, and creating
+  nested flow diagrams with custom parent nodes.
 ---
 
 import { Callout } from 'nextra/components';
@@ -7,11 +10,16 @@ import { RemoteCodeViewer } from 'xy-shared/server';
 
 # Sub Flows
 
-A sub flow is a flowgraph contained within a node. These nested flows can operate independently or connect with nodes outside their parent node, making them perfect for organizing and grouping related nodes. This guide will show you how to implement sub flows and explain the available options for child nodes.
+A sub flow is a flowgraph contained within a node. These nested flows can operate
+independently or connect with nodes outside their parent node, making them perfect for
+organizing and grouping related nodes. This guide will show you how to implement sub flows
+and explain the available options for child nodes.
 
 ### Defining Child Nodes
 
-To define a child node, use the `parentId` option (see all available options in the [node options section](/api-reference/types/node)). Child nodes are positioned relative to their parent, with `{ x: 0, y: 0 }` representing the top-left corner of the parent node.
+To define a child node, use the `parentId` option (see all available options in the
+[node options section](/api-reference/types/node)). Child nodes are positioned relative to
+their parent, with `{ x: 0, y: 0 }` representing the top-left corner of the parent node.
 
 ```js highlight="parentId: 'A'"
 let nodes = $state.raw([
@@ -31,27 +39,38 @@ let nodes = $state.raw([
 
 <Callout type="info">
   <strong>Order of Nodes:</strong>
-  Children have to appear before their parent nodes in the `nodes` array!
+  Parents have to appear before their child nodes in the `nodes` array!
 </Callout>
 
 #### `extent: 'parent'`
 
-When a parent node has defined dimensions, you can restrict child node movement to stay within the parent's boundaries by setting `extent: 'parent'`. This prevents child nodes from being dragged outside their parent's area.
+When a parent node has defined dimensions, you can restrict child node movement to stay
+within the parent's boundaries by setting `extent: 'parent'`. This prevents child nodes
+from being dragged outside their parent's area.
 
 <RemoteCodeViewer route="guides/subflows/a" framework="svelte" editorHeight={500} />
 
 ### Child Node Behavior
 
-Child nodes maintain their relative position when the parent node is moved. While the `parentId` option establishes the parent-child relationship, child nodes can still be positioned outside their parent (unless `extent: 'parent'` is set). However, they will always move with their parent when it's dragged.
+Child nodes maintain their relative position when the parent node is moved. While the
+`parentId` option establishes the parent-child relationship, child nodes can still be
+positioned outside their parent (unless `extent: 'parent'` is set). However, they will
+always move with their parent when it's dragged.
 
-In our examples, we use the built-in `group` node type for parent nodes, which provides a transparent background with a border. You can also use [any custom node type](/learn/layouting/sub-flows#any-node-can-be-a-parent-node) as a parent.
+In our examples, we use the built-in `group` node type for parent nodes, which provides a
+transparent background with a border. You can also use
+[any custom node type](/learn/layouting/sub-flows#any-node-can-be-a-parent-node) as a
+parent.
 
-Let's explore more complex scenarios by adding additional nodes and edges. You can create connections both within a group and between sub flows and outer nodes:
+Let's explore more complex scenarios by adding additional nodes and edges. You can create
+connections both within a group and between sub flows and outer nodes:
 
 <RemoteCodeViewer route="guides/subflows/b" framework="svelte" editorHeight={500} />
 
 ### Using a Custom Parent Node
 
-To demonstrate the flexibility of parent nodes, let's modify our example by removing the label from node B and adding child nodes. This example shows how you can use any node type as a parent. We'll also set `draggable: false` on the child nodes to make them static.
+To demonstrate the flexibility of parent nodes, let's modify our example by removing the
+label from node B and adding child nodes. This example shows how you can use any node type
+as a parent. We'll also set `draggable: false` on the child nodes to make them static.
 
 <RemoteCodeViewer route="guides/subflows/c" framework="svelte" editorHeight={500} />
