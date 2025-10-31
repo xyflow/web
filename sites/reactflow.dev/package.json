@@ -19,7 +19,7 @@
     "@heroicons/react": "^2.2.0",
     "@typeform/embed-react": "^4.4.0",
     "@vercel/speed-insights": "^1.2.0",
-    "@xyflow/react": "^12.9.1",
+    "@xyflow/react": "^12.9.2",
     "@xyflow/system": "^0.0.72",
     "@xyflow/xy-ui": "workspace:*",
     "d3": "^7.9.0",
