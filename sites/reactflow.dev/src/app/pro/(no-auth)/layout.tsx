@@ -3,7 +3,7 @@ import { redirect } from 'next/navigation';
 
 export default async function Layout({ children }: LayoutProps<'/pro'>) {
   const nhost = await getNhost();
-  const isAuthenticated = nhost.auth.isAuthenticated();
+  const isAuthenticated = !!nhost.getUserSession();
 
   if (isAuthenticated) {
     redirect('/');

@@ -7,11 +7,12 @@ const { wrapper: Wrapper } = getMdxComponents();
 
 export default async function Layout({ children }: LayoutProps<'/pro'>) {
   const nhost = await getNhost();
-  const isAuthenticated = nhost.auth.isAuthenticated();
+  const isAuthenticated = !!nhost.getUserSession();
 
   if (!isAuthenticated) {
     redirect('/pro/sign-in');
   }
+
   return (
     <Wrapper
       toc={[]}

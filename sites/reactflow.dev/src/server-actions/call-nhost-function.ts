@@ -7,8 +7,8 @@ export async function callNhostFunction(
   body: Record<string, unknown>,
 ) {
   const nhost = await getNhost();
-  const accessToken = nhost.auth.getAccessToken();
-  const fullUrl = `${nhost.functions.url}${url}`;
+  const accessToken = nhost.getUserSession()?.accessToken;
+  const fullUrl = `${nhost.functions.baseURL}${url}`;
 
   const response = await fetch(fullUrl, {
     method: 'POST',

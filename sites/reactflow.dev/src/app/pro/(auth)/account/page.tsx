@@ -8,7 +8,8 @@ import { getNhost } from '@/utils/nhost';
 
 async function AccountPage() {
   const nhost = await getNhost();
-  const user = nhost.auth.getUser();
+  const user = await nhost.getUserSession()?.user;
+
   if (!user?.email) {
     throw new Error('User email must exist');
   }

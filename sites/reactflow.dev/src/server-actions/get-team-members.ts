@@ -17,12 +17,12 @@ const GET_TEAM_MEMBERS = gql`
 
 export async function getTeamMembers() {
   const nhost = await getNhost();
-  const userId = nhost.auth.getUser()!.id!;
+  const userId = nhost.getUserSession()?.user?.id;
 
-  const { data, error } = await nhost.graphql.request(GET_TEAM_MEMBERS, { userId });
-
-  if (error) {
+  try {
+    const response = await nhost.graphql.request(GET_TEAM_MEMBERS, { userId });
+    return response.body?.data?.team_subscriptions;
+  } catch (error) {
     throw new Error(prettifyError(error));
   }
-  return data.team_subscriptions;
 }

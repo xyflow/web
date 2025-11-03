@@ -6,9 +6,7 @@ import { Button } from '@xyflow/xy-ui';
 const SignInOAuth = async () => {
   const nhost = await getNhost();
 
-  const { providerUrl } = await nhost.auth.signIn({
-    provider: 'github',
-  });
+  const providerUrl = await nhost.auth.signInProviderURL('github');
 
   if (!providerUrl) {
     return null;

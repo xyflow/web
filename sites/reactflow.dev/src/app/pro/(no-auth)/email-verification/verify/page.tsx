@@ -14,7 +14,7 @@ const VerifyEmailPage: FC<PageProps> = async (props) => {
 
   if (ticket && redirectTo && type) {
     redirect(
-      `${nhost.auth.url}/verify?ticket=${ticket}&type=${type}&redirectTo=${redirectTo}`,
+      `${nhost.auth.baseURL}/verify?ticket=${ticket}&type=${type}&redirectTo=${redirectTo}`,
     );
   }
 

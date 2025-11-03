@@ -14,31 +14,33 @@ export async function signUp(formData: FormData) {
   const password = formData.get('password') as string;
 
   const nhost = await getNhost();
-  const { session, error } = await nhost.auth.signUp({ email, password });
 
-  if (error) {
+  try {
+    const response = await nhost.auth.signUpEmailPassword({ email, password });
+    const session = response.body?.session;
+
+    if (!session) {
+      // use encodeURIComponent because email can contain special characters such as +
+      redirect(`/pro/email-verification?email=${encodeURIComponent(email)}`);
+    }
+
+    const cookieStore = await cookies();
+    const exp = session?.accessTokenExpiresIn ?? 0;
+    cookieStore.set({
+      name: NHOST_SESSION_KEY,
+      value: btoa(JSON.stringify(session)),
+      ...COOKIE_OPTIONS,
+      // maxAge: exp,
+    });
+    if (session.refreshToken) {
+      cookieStore.set({
+        name: NHOST_REFRESH_KEY,
+        value: session.refreshToken,
+        ...COOKIE_OPTIONS,
+      });
+    }
+    redirect('/pro/dashboard');
+  } catch (error) {
     return error;
   }
-
-  if (!session) {
-    // use encodeURIComponent because email can contain special characters such as +
-    redirect(`/pro/email-verification?email=${encodeURIComponent(email)}`);
-  }
-
-  const cookieStore = await cookies();
-  const exp = session?.accessTokenExpiresIn ?? 0;
-  cookieStore.set({
-    name: NHOST_SESSION_KEY,
-    value: btoa(JSON.stringify(session)),
-    ...COOKIE_OPTIONS,
-    // maxAge: exp,
-  });
-  if (session.refreshToken) {
-    cookieStore.set({
-      name: NHOST_REFRESH_KEY,
-      value: session.refreshToken,
-      ...COOKIE_OPTIONS,
-    });
-  }
-  redirect('/pro/dashboard');
 }
