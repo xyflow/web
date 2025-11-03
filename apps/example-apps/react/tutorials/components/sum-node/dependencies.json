@@ -1,5 +1,5 @@
 [
-  "radix-ui",
+  "@radix-ui/react-slot",
   "@xyflow/react",
   "class-variance-authority",
   "clsx",
