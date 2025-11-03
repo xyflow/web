@@ -17,7 +17,7 @@ const { wrapper: Wrapper } = getMdxComponents();
 export default async function Page(props: PageProps) {
   const params = await props.params;
   const result = await importPage(params.mdxPath);
-  const { default: MDXContent, toc, metadata } = result;
+  const { default: MDXContent, toc, metadata, sourceCode } = result;
   const mdx = <MDXContent {...props} params={params} />;
 
   // Determine if this is a blog or labs page based on the first path segment
@@ -47,7 +47,7 @@ export default async function Page(props: PageProps) {
   const LayoutComponent = isLabsPage ? LabsLayoutWrapper : BaseBlogPostLayout;
 
   return (
-    <Wrapper toc={toc} metadata={metadata}>
+    <Wrapper toc={toc} metadata={metadata} sourceCode={sourceCode}>
       <LayoutComponent
         // @ts-expect-error -- fixme
         frontMatter={metadata}

@@ -14,14 +14,14 @@ export default async function Page(props: Props) {
   const params = await props.params;
   const route = params.slug.join('/');
   // eslint-disable-next-line @typescript-eslint/no-require-imports -- `require` supports Fast Refresh
-  const { default: MDXContent, toc, metadata } = require(
+  const { default: MDXContent, toc, metadata, sourceCode } = require(
     // The static analyzer needs to know the import path as precisely as possible.
     // To achieve this, we keep `examples/` in the import path.
     `private-next-root-dir/../../apps/example-apps/react/examples/${route.replace('/examples/', '')}/README.mdx`,
   );
 
   return (
-    <Wrapper toc={toc} metadata={metadata}>
+    <Wrapper toc={toc} metadata={metadata} sourceCode={sourceCode}>
       <H1>{metadata.title}</H1>
       <MDXContent components={{ ArrowTopRightOnSquareIcon, Button }} />
     </Wrapper>
