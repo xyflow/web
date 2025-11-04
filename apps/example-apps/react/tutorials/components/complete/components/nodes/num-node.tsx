@@ -75,7 +75,7 @@ export function NumNode({ id, data }: NodeProps<NumNode>) {
         </div>
       </BaseNodeContent>
 
-      <BaseNodeFooter className="bg-gray-100 items-end px-0 py-1 w-full  rounded-b-md">
+      <BaseNodeFooter className="bg-gray-100 items-end px-0 py-1 w-full rounded-b-md">
         <LabeledHandle title="out" type="source" position={Position.Right} />
       </BaseNodeFooter>
     </BaseNode>

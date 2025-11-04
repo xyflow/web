@@ -42,9 +42,9 @@ export function SumNode({ id }: NodeProps<SumNode>) {
         <BaseNodeHeaderTitle>Sum</BaseNodeHeaderTitle>
       </BaseNodeHeader>
 
+      <LabeledHandle title="x" id="x" type="target" position={Position.Left} />
+      <LabeledHandle title="y" id="y" type="target" position={Position.Left} />
       <BaseNodeFooter className="bg-gray-100 items-end px-0 py-1 w-full rounded-b-md">
-        <LabeledHandle title="x" id="x" type="target" position={Position.Left} />
-        <LabeledHandle title="y" id="y" type="target" position={Position.Left} />
         <LabeledHandle title="out" type="source" position={Position.Right} />
       </BaseNodeFooter>
     </BaseNode>
