@@ -8,13 +8,14 @@ import { defineConfig, Plugin } from 'vite';
 import { globSync } from 'glob';
 import { resolve } from 'node:path';
 import { svelte } from '@sveltejs/vite-plugin-svelte';
+import tailwindcss from '@tailwindcss/vite';
 
 // make index.css entrypoints, too to fix css import odering issues
 const examplesGlob = './{react,svelte}/**/{index.html,index.css}';
 const examples = globSync(examplesGlob);
 
 export default defineConfig({
-  plugins: [injectXYTheme(), generatePublicAssets(), svelte(), react()],
+  plugins: [injectXYTheme(), generatePublicAssets(), svelte(), react(), tailwindcss()],
   server: {
     host: '0.0.0.0',
     cors: true,

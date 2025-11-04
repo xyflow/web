@@ -455,18 +455,18 @@ import {
   BaseNodeFooter,
   BaseNodeHeader,
   BaseNodeHeaderTitle,
-} from '@/components/base-node';
-import { LabeledHandle } from '@/components/labeled-handle';
+} from '../base-node';
+import { LabeledHandle } from '../labeled-handle';
 
 import { EllipsisVertical } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Button } from '../ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
+} from '../ui/dropdown-menu';
 
 export type NumNode = Node<{
   value: number;
@@ -508,7 +508,7 @@ export function NumNode({ id, data }: NodeProps<NumNode>) {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent>
-            <DropdownMenuLabel>Node Actions</DropdownMenuLabel>
+            <DropdownMenuLabel className="font-bold">Node Actions</DropdownMenuLabel>
             <DropdownMenuItem onSelect={handleReset}>Reset</DropdownMenuItem>
             <DropdownMenuItem onSelect={handleDelete}>Delete</DropdownMenuItem>
           </DropdownMenuContent>
@@ -523,36 +523,12 @@ export function NumNode({ id, data }: NodeProps<NumNode>) {
         </div>
       </BaseNodeContent>
 
-      <BaseNodeFooter className="bg-gray-100 items-end px-0 py-1 w-full">
+      <BaseNodeFooter className="bg-gray-100 items-end px-0 py-1 w-full  rounded-b-md">
         <LabeledHandle title="out" type="source" position={Position.Right} />
       </BaseNodeFooter>
     </BaseNode>
   );
 }
-```
-
-<Callout>
-  This isn't a tutorial for basic React Flow concepts like flows and custom nodes so we're
-  **skipping over some of the basics**. If you're new to React Flow and want to learn how
-  to add custom nodes and edges to a flow, check out the [guide on custom
-  nodes](/learn/customization/custom-nodes).
-</Callout>
-
-In the snippet above we've highlighted the imports and components that come from shadcn/ui
-and React Flow Components. In just a few lines of code we already have quite a capable
-node:
-
-<RemoteCodeViewer route="tutorials/components/num-node" framework="react" />
-
-Our `<NumNode />` component...
-
-- Has a header with a title and functional dropdown menu.
-- Contains some simple controls to increment and decrement a value.
-- Has a labelled handle to connect it to other nodes.
-
-Next we'll create a second node that will compute the sum of two input values. We don't
-need to add any additional components for this node, so go ahead and create a new file
-`src/components/nodes/sum-node.tsx` and paste in the following:
 
 ```tsx filename="src/components/nodes/sum-node.tsx"
 import {
@@ -564,7 +540,12 @@ import {
 } from '@xyflow/react';
 import { useEffect } from 'react';
 
-import { BaseNode, BaseNodeHeader, BaseNodeHeaderTitle } from '../base-node';
+import {
+  BaseNode,
+  BaseNodeFooter,
+  BaseNodeHeader,
+  BaseNodeHeaderTitle,
+} from '../base-node';
 import { LabeledHandle } from '../labeled-handle';
 
 export type SumNode = Node<{
@@ -594,11 +575,11 @@ export function SumNode({ id }: NodeProps<SumNode>) {
         <BaseNodeHeaderTitle>Sum</BaseNodeHeaderTitle>
       </BaseNodeHeader>
 
-      <footer className="bg-gray-100">
+      <BaseNodeFooter className="bg-gray-100 items-end px-0 py-1 w-full rounded-b-md">
         <LabeledHandle title="x" id="x" type="target" position={Position.Left} />
         <LabeledHandle title="y" id="y" type="target" position={Position.Left} />
         <LabeledHandle title="out" type="source" position={Position.Right} />
-      </footer>
+      </BaseNodeFooter>
     </BaseNode>
   );
 }
@@ -634,23 +615,23 @@ update the `onConnect` handler to create a new edge of this type, making sure to
 edge's `data` object correctly:
 
 ```tsx filename="src/App.tsx"
-import '@xyflow/react/dist/style.css';
-
+import React, { useCallback } from 'react';
 import {
   ReactFlow,
-  OnConnect,
-  Position,
+  type Node,
+  type Edge,
+  type OnConnect,
+  addEdge,
   useNodesState,
   useEdgesState,
-  addEdge,
-  Edge,
-  Node,
 } from '@xyflow/react';
 
-import { NumNode } from '@/components/nodes/num-node';
-import { SumNode } from '@/components/nodes/sum-node';
+import { NumNode } from './components/nodes/num-node';
+import { SumNode } from './components/nodes/sum-node';
 
-import { DataEdge } from '@/components/data-edge';
+import { DataEdge } from './components/data-edge';
+
+import '@xyflow/react/dist/style.css';
 
 const nodeTypes = {
   num: NumNode,
@@ -704,7 +685,7 @@ const initialEdges: Edge[] = [
   },
 ];
 
-function App() {
+function Flow() {
   const [nodes, , onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
@@ -718,7 +699,7 @@ function App() {
   );
 
   return (
-    <div className="h-screen w-screen p-8">
+    <div className="h-screen w-screen p-8 bg-gray-50 rounded-xl">
       <ReactFlow
         nodes={nodes}
         edges={edges}
@@ -733,7 +714,9 @@ function App() {
   );
 }
 
-export default App;
+export function App() {
+  return <Flow />;
+}
 ```
 
 Putting everything together we end up with quite a capable little calculator!
@@ -751,9 +734,6 @@ built using React Flow Components <Emoji content="👀" />.
 In just a short amount of time we've managed to build out a fairly complete flow using the
 components and building blocks provided by shadcn React Flow Components. We've learned:
 
-- How editing the [`<BaseNode />`](/ui/components/base-node) component will affect other
-  nodes pulled from the React Flow UI registry.
-
 - How to use building blocks like the [`<BaseNodeHeader />`](/ui/components/base-node) and
   [`<LabeledHandle />`](/ui/components/labeled-handle) components to build our own custom
   nodes without starting from scratch.
@@ -762,11 +742,11 @@ components and building blocks provided by shadcn React Flow Components. We've l
   [`<DataEdge />`](/ui/components/data-edge) to drop into our applications.
 
 And thanks to the power of Tailwind, tweaking the visual style of these components is as
-simple as editing `tailwind.config.js` and editing the variables in your CSS file.
+simple as editing the variables in your CSS file.
 
-That's all for now! You can see all the components we currently have available over on the
-[UI docs page](/ui). The React Flow UI project is still in its infancy: if you have any
-suggestions or requests for new components we'd love to hear about them. Or perhaps you're
-already starting to build something with shadcn and React Flow UI. Either way make sure
-you let us know on our [Discord server](https://discord.com/invite/RVmnytFmGW) or on
+That's all for now! You can see all the components we currently have available
+over on the [UI docs page](/ui). If you have any suggestions or requests for new
+components we'd love to hear about them. Or perhaps you're already starting to
+build something with shadcn and React Flow UI. Either way make sure you let us
+know on our [Discord server](https://discord.com/invite/RVmnytFmGW) or on
 [Twitter](https://twitter.com/xyflowdev)!

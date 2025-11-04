@@ -1,45 +1,39 @@
-'use client';
-import React from 'react';
-import { cn } from '../lib/utils';
-import type { HandleProps } from '@xyflow/react';
+import React, { type ComponentProps } from 'react';
+import { type HandleProps } from '@xyflow/react';
 
+import { cn } from '../lib/utils';
 import { BaseHandle } from './base-handle';
 
-function getFlexDirection(position: string) {
-  const flexDirection =
-    position === 'top' || position === 'bottom' ? 'flex-col' : 'flex-row';
-  switch (position) {
-    case 'bottom':
-    case 'right':
-      return flexDirection + '-reverse justify-end';
-    default:
-      return flexDirection;
-  }
+const flexDirections = {
+  top: 'flex-col',
+  right: 'flex-row-reverse justify-end',
+  bottom: 'flex-col-reverse justify-end',
+  left: 'flex-row',
+};
+
+export function LabeledHandle({
+  className,
+  labelClassName,
+  handleClassName,
+  title,
+  position,
+  ...props
+}: HandleProps &
+  ComponentProps<'div'> & {
+    title: string;
+    handleClassName?: string;
+    labelClassName?: string;
+  }) {
+  const { ref, ...handleProps } = props;
+
+  return (
+    <div
+      title={title}
+      className={cn('relative flex items-center', flexDirections[position], className)}
+      ref={ref}
+    >
+      <BaseHandle position={position} className={handleClassName} {...handleProps} />
+      <label className={cn('text-foreground px-3', labelClassName)}>{title}</label>
+    </div>
+  );
 }
-
-const LabeledHandle = React.forwardRef<
-  HTMLDivElement,
-  HandleProps &
-    React.HTMLAttributes<HTMLDivElement> & {
-      title: string;
-      handleClassName?: string;
-      labelClassName?: string;
-    }
->(({ className, labelClassName, title, position, ...props }, ref) => (
-  <div
-    ref={ref}
-    title={title}
-    className={cn(
-      'relative flex items-center',
-      getFlexDirection(position),
-      className,
-    )}
-  >
-    <BaseHandle position={position} {...props} />
-    <label className={`px-3 text-foreground ${labelClassName}`}>{title}</label>
-  </div>
-));
-
-LabeledHandle.displayName = 'LabeledHandle';
-
-export { LabeledHandle };

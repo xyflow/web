@@ -7,7 +7,12 @@ import {
 } from '@xyflow/react';
 import { useEffect } from 'react';
 
-import { BaseNode, BaseNodeHeader, BaseNodeHeaderTitle } from '../base-node';
+import {
+  BaseNode,
+  BaseNodeFooter,
+  BaseNodeHeader,
+  BaseNodeHeaderTitle,
+} from '../base-node';
 import { LabeledHandle } from '../labeled-handle';
 
 export type SumNode = Node<{
@@ -37,11 +42,11 @@ export function SumNode({ id }: NodeProps<SumNode>) {
         <BaseNodeHeaderTitle>Sum</BaseNodeHeaderTitle>
       </BaseNodeHeader>
 
-      <footer className="bg-gray-100">
+      <BaseNodeFooter className="bg-gray-100 items-end px-0 py-1 w-full rounded-b-md">
         <LabeledHandle title="x" id="x" type="target" position={Position.Left} />
         <LabeledHandle title="y" id="y" type="target" position={Position.Left} />
         <LabeledHandle title="out" type="source" position={Position.Right} />
-      </footer>
+      </BaseNodeFooter>
     </BaseNode>
   );
 }
