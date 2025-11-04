@@ -25,7 +25,7 @@ export type NumNode = Node<{
 }>;
 
 export function NumNode({ id, data }: NodeProps<NumNode>) {
-  const { updateNodeData, setNodes } = useReactFlow();
+  const { updateNodeData, setNodes, setEdges } = useReactFlow();
 
   const handleReset = useCallback(() => {
     updateNodeData(id, { value: 0 });
@@ -33,6 +33,7 @@ export function NumNode({ id, data }: NodeProps<NumNode>) {
 
   const handleDelete = useCallback(() => {
     setNodes((nodes) => nodes.filter((node) => node.id !== id));
+    setEdges((edges) => edges.filter((edge) => edge.source !== id));
   }, [id, setNodes]);
 
   const handleIncr = useCallback(() => {
@@ -60,7 +61,7 @@ export function NumNode({ id, data }: NodeProps<NumNode>) {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent>
-            <DropdownMenuLabel>Node Actions</DropdownMenuLabel>
+            <DropdownMenuLabel className="font-bold">Node Actions</DropdownMenuLabel>
             <DropdownMenuItem onSelect={handleReset}>Reset</DropdownMenuItem>
             <DropdownMenuItem onSelect={handleDelete}>Delete</DropdownMenuItem>
           </DropdownMenuContent>
