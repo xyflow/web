@@ -8,8 +8,12 @@ import {
   NHOST_REFRESH_KEY,
   COOKIE_OPTIONS,
 } from '@/utils/nhost-utils';
+import { FetchError } from '@nhost/nhost-js/fetch';
 
-export async function signIn(formData: FormData, redirectTo = '/pro/dashboard') {
+export async function signIn(
+  formData: FormData,
+  redirectTo = '/pro/dashboard',
+): Promise<FetchError | null> {
   const nhost = await getNhost();
   const email = formData.get('email') as string;
   const password = formData.get('password') as string;
@@ -37,6 +41,8 @@ export async function signIn(formData: FormData, redirectTo = '/pro/dashboard') 
       }
       redirect(redirectTo);
     }
+
+    return null;
   } catch (error) {
     if (error.error === 'unverified-user') {
       // use encodeURIComponent because email can contain special characters such as +

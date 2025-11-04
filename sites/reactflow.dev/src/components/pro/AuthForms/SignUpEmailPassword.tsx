@@ -3,12 +3,13 @@
 import { FC, FormEvent, useState, useTransition } from 'react';
 import Link from 'next/link';
 import { Button, Input, InputLabel } from '@xyflow/xy-ui';
-import type { AuthErrorPayload } from '@nhost/nhost-js';
+import { FetchError } from '@nhost/nhost-js/fetch';
+
 import { AuthErrorNotification } from './AuthNotification';
 import { signUp } from '@/server-actions';
 
 const Signup: FC = () => {
-  const [error, setError] = useState<AuthErrorPayload>();
+  const [error, setError] = useState<FetchError | null>();
   const [isLoading, startTransition] = useTransition();
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {

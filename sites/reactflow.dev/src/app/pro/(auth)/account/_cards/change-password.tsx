@@ -12,11 +12,11 @@ import {
   InputLabel,
 } from '@xyflow/xy-ui';
 import { changePassword } from '@/server-actions';
-import type { AuthErrorPayload } from '@nhost/nhost-js';
+import { FetchError } from '@nhost/nhost-js/fetch';
 
 function ChangePasswordCard() {
   const [isLoading, startTransition] = useTransition();
-  const [error, setError] = useState<AuthErrorPayload | null>(null);
+  const [error, setError] = useState<FetchError | null>(null);
   const [isSuccess, setIsSuccess] = useState(false);
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {

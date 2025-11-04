@@ -11,12 +11,12 @@ import {
   Input,
   InputLabel,
 } from '@xyflow/xy-ui';
-import type { AuthErrorPayload } from '@nhost/nhost-js';
 import { changeEmail } from '@/server-actions';
+import { FetchError } from '@nhost/nhost-js/fetch';
 
 const ChangeEmailCard: FC<{ userEmail: string }> = ({ userEmail }) => {
   const [isLoading, startTransition] = useTransition();
-  const [error, setError] = useState<AuthErrorPayload | null>(null);
+  const [error, setError] = useState<FetchError | null>(null);
   const [needsEmailVerification, setNeedsEmailVerification] = useState(false);
   const [newEmail, setNewEmail] = useState(userEmail);
 
@@ -27,6 +27,7 @@ const ChangeEmailCard: FC<{ userEmail: string }> = ({ userEmail }) => {
       const formData = new FormData(event.currentTarget);
       const newEmail = formData.get('email') as string;
       const { error } = await changeEmail(newEmail);
+
       setError(error);
       setNeedsEmailVerification(!error);
       setNewEmail(newEmail);
