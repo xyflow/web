@@ -3,7 +3,6 @@
 import { FC, FormEvent, useState, useTransition } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
-import { FetchError } from '@nhost/nhost-js/fetch';
 import { Button, Input, InputLabel } from '@xyflow/xy-ui';
 
 import { AuthErrorNotification } from './AuthNotification';
@@ -11,7 +10,7 @@ import { signIn } from '@/server-actions';
 
 const SignInEmailPassword: FC = () => {
   const searchParams = useSearchParams();
-  const [error, setError] = useState<FetchError | null>();
+  const [error, setError] = useState<Awaited<ReturnType<typeof signIn>>>();
   const [isLoading, startTransition] = useTransition();
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {

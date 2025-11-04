@@ -2,13 +2,14 @@
 
 import { FC, FormEvent, useState, useTransition } from 'react';
 import { Button, Input, InputLabel } from '@xyflow/xy-ui';
-import type { AuthErrorPayload } from '@nhost/nhost-js';
+
 import { signInEmailPasswordless } from '@/server-actions';
 import { AuthErrorNotification, MagicLinkSuccessNotification } from './AuthNotification';
 
 const SignInMagicLink: FC = () => {
   const [isLoading, startTransition] = useTransition();
-  const [error, setError] = useState<AuthErrorPayload | null>(null);
+  const [error, setError] =
+    useState<Awaited<ReturnType<typeof signInEmailPasswordless>>>(null);
   const [isSuccess, setIsSuccess] = useState(false);
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -17,7 +18,7 @@ const SignInMagicLink: FC = () => {
     startTransition(async () => {
       const formData = new FormData(event.currentTarget);
       const email = formData.get('email') as string;
-      const { error } = await signInEmailPasswordless(email);
+      const error = await signInEmailPasswordless(email);
       setError(error);
       setIsSuccess(!error);
     });

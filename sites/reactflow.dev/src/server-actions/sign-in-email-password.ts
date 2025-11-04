@@ -2,18 +2,20 @@
 
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
+import { FetchError } from '@nhost/nhost-js/fetch';
+import { ErrorResponse } from '@nhost/nhost-js/auth';
+
 import { getNhost } from '@/utils/nhost';
 import {
   NHOST_SESSION_KEY,
   NHOST_REFRESH_KEY,
   COOKIE_OPTIONS,
 } from '@/utils/nhost-utils';
-import { FetchError } from '@nhost/nhost-js/fetch';
 
 export async function signIn(
   formData: FormData,
   redirectTo = '/pro/dashboard',
-): Promise<FetchError | null> {
+): Promise<FetchError<ErrorResponse> | null> {
   const nhost = await getNhost();
   const email = formData.get('email') as string;
   const password = formData.get('password') as string;

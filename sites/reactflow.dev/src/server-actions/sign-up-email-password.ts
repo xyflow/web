@@ -3,6 +3,7 @@
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { FetchError } from '@nhost/nhost-js/fetch';
+import { ErrorResponse } from '@nhost/nhost-js/auth';
 
 import { getNhost } from '@/utils/nhost';
 import {
@@ -11,7 +12,9 @@ import {
   NHOST_SESSION_KEY,
 } from '@/utils/nhost-utils';
 
-export async function signUp(formData: FormData): Promise<FetchError | null> {
+export async function signUp(
+  formData: FormData,
+): Promise<FetchError<ErrorResponse> | null> {
   const email = formData.get('email') as string;
   const password = formData.get('password') as string;
 

@@ -1,9 +1,11 @@
 'use server';
 
 import { gql } from '@apollo/client';
-import { User } from '@nhost/nhost-js/auth';
+import { ErrorResponse, User } from '@nhost/nhost-js/auth';
+
 import { getNhost } from '@/utils/nhost';
 import { SubscriptionPlan } from '@/types';
+import { FetchError } from '@nhost/nhost-js/fetch';
 
 const GET_SUBSCRIPTION = gql`
   query GetSubscription($userId: uuid) {
@@ -20,7 +22,7 @@ export async function getSubscription(): Promise<{
   plan: SubscriptionPlan;
   teamPlan: SubscriptionPlan;
   user?: User | null;
-} | null> {
+}> {
   const nhost = await getNhost();
   const user = nhost.getUserSession()?.user;
 
@@ -28,14 +30,17 @@ export async function getSubscription(): Promise<{
     return {
       plan: SubscriptionPlan.FREE,
       teamPlan: SubscriptionPlan.FREE,
-      user,
+      user: null,
     };
   }
 
   console.log('before nhost.graphql.request');
 
   try {
-    const response = await nhost.graphql.request(GET_SUBSCRIPTION, {
+    const response = await nhost.graphql.request<{
+      user_subscriptions: { subscription_plan_id: SubscriptionPlan }[];
+      team_subscriptions: { subscription_plan_id: SubscriptionPlan }[];
+    }>(GET_SUBSCRIPTION, {
       userId: user.id,
     });
     const { data } = response.body;
@@ -53,6 +58,10 @@ export async function getSubscription(): Promise<{
     };
   } catch (error) {
     console.error('Request Error:', error);
-    return null;
+    return {
+      plan: SubscriptionPlan.FREE,
+      teamPlan: SubscriptionPlan.FREE,
+      user: null,
+    };
   }
 }

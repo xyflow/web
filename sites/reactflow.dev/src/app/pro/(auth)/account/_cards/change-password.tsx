@@ -12,11 +12,10 @@ import {
   InputLabel,
 } from '@xyflow/xy-ui';
 import { changePassword } from '@/server-actions';
-import { FetchError } from '@nhost/nhost-js/fetch';
 
 function ChangePasswordCard() {
   const [isLoading, startTransition] = useTransition();
-  const [error, setError] = useState<FetchError | null>(null);
+  const [error, setError] = useState<Awaited<ReturnType<typeof changePassword>>>(null);
   const [isSuccess, setIsSuccess] = useState(false);
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -25,7 +24,7 @@ function ChangePasswordCard() {
     startTransition(async () => {
       const formData = new FormData(event.currentTarget);
       const newPassword = formData.get('password') as string;
-      const { error } = await changePassword(newPassword);
+      const error = await changePassword(newPassword);
       setError(error);
       setIsSuccess(!error);
     });

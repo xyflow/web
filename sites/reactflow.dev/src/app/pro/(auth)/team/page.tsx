@@ -14,6 +14,7 @@ export default async function TeamPage() {
   }
 
   const teamSubscriptions = await getTeamMembers();
+
   return (
     <div className="max-w-3xl">
       <DashboardHeader
@@ -23,7 +24,7 @@ export default async function TeamPage() {
       <div className="flex-1 space-y-4">
         <NotSubscribedNotification />
         <Subscribed requireAdminSubscription>
-          <ManageTeamCard user={user} teamSubscriptions={teamSubscriptions} />
+          <ManageTeamCard user={user} teamSubscriptions={teamSubscriptions ?? []} />
         </Subscribed>
       </div>
     </div>

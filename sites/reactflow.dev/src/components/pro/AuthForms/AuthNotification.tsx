@@ -4,10 +4,11 @@ import * as React from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { Alert, AlertTitle, AlertDescription, Button, cn } from '@xyflow/xy-ui';
-import { ErrorPayload } from '@nhost/nhost-js';
+import { FetchError } from '@nhost/nhost-js/fetch';
+import { ErrorResponse } from '@nhost/nhost-js/auth';
 
 type AuthErrorProps = {
-  error: ErrorPayload<string> | null;
+  error: FetchError<ErrorResponse> | null;
 };
 
 type AuthNotificationProps = {
@@ -71,7 +72,7 @@ export function MagicLinkSuccessNotification() {
 }
 
 export function AuthErrorNotification({ error }: AuthErrorProps) {
-  const errorId = error?.error;
+  const errorId = error?.body?.error;
 
   if (errorId === 'invalid-email-password') {
     return (
