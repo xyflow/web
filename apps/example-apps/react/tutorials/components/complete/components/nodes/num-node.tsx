@@ -34,7 +34,7 @@ export function NumNode({ id, data }: NodeProps<NumNode>) {
   const handleDelete = useCallback(() => {
     setNodes((nodes) => nodes.filter((node) => node.id !== id));
     setEdges((edges) => edges.filter((edge) => edge.source !== id));
-  }, [id, setNodes]);
+  }, [id, setNodes, setEdges]);
 
   const handleIncr = useCallback(() => {
     updateNodeData(id, { value: data.value + 1 });
