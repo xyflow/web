@@ -42,13 +42,13 @@
       <div class="xy-theme__button-group">
         <button
           class={['xy-theme__button', isLassoActive && 'active']}
-          onclick={() => () => (isLassoActive = true)}
+          onclick={() => (isLassoActive = true)}
         >
           Lasso Mode
         </button>
         <button
           class={['xy-theme__button', !isLassoActive && 'active']}
-          onclick={() => () => (isLassoActive = false)}
+          onclick={() => (isLassoActive = false)}
         >
           Selection Mode
         </button>

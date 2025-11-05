@@ -300,6 +300,6 @@
     left: 0;
     touch-action: none;
     pointer-events: auto;
-    z-index: 1000;
+    z-index: 4;
   }
 </style>
