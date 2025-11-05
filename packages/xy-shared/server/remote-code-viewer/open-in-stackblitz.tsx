@@ -1,7 +1,7 @@
 'use client';
 
 import sdk, { OpenOptions, Project, ProjectTemplate } from '@stackblitz/sdk';
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 
 import { Framework, IconButton } from '@xyflow/xy-ui';
 import { fetchFiles } from './fetchFiles';
@@ -80,6 +80,11 @@ function prepare(
 }
 
 function prepareReactProject(files: Files, dependencies: Record<string, string>) {
+  const hasTailwind4 = Object.entries(dependencies).some(
+    ([dependency, version]) =>
+      dependency.includes('tailwindcss') && version.startsWith('^4.'),
+  );
+
   return {
     ...Object.entries(files).reduce((acc, [key, value]) => {
       if (typeof value === 'string') {
@@ -106,7 +111,7 @@ function prepareReactProject(files: Files, dependencies: Record<string, string>)
         typescript: '^4.9.0',
       },
     }),
-    'vite.config.js': `import { defineConfig } from 'vite'\nimport react from '@vitejs/plugin-react'\n\n// https://vitejs.dev/config/\nexport default defineConfig({\n  plugins: [react()],\n})`,
+    'vite.config.js': `import { defineConfig } from 'vite'\nimport react from '@vitejs/plugin-react'\n\n// https://vitejs.dev/config/\nexport default defineConfig({\n  plugins: [react(), ${hasTailwind4 ? 'tailwindcss()' : ''}],\n})`,
     'vite-env.d.ts': `/// <reference types="vite/client" />\n`,
     'tsconfig.json': `{
   "compilerOptions": {
