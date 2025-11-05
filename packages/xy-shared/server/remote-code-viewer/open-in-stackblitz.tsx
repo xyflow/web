@@ -1,7 +1,7 @@
 'use client';
 
 import sdk, { OpenOptions, Project, ProjectTemplate } from '@stackblitz/sdk';
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
 
 import { Framework, IconButton } from '@xyflow/xy-ui';
 import { fetchFiles } from './fetchFiles';
