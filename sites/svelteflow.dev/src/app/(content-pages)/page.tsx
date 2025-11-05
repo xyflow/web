@@ -134,7 +134,7 @@ const Page: FC = async () => {
             },
             {
               label: 'Weekly Installs',
-              value: downloads >= 1000 ? `${(downloads / 1000).toFixed(0)}k` : downloads,
+              value: downloads >= 1000 ? `${(downloads / 1000).toFixed(0)}K` : downloads,
             },
             { label: 'License', value: 'MIT' },
           ]}
