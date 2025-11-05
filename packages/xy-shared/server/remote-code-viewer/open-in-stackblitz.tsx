@@ -111,7 +111,7 @@ function prepareReactProject(files: Files, dependencies: Record<string, string>)
         typescript: '^4.9.0',
       },
     }),
-    'vite.config.js': `import { defineConfig } from 'vite'\nimport react from '@vitejs/plugin-react'\n\n// https://vitejs.dev/config/\nexport default defineConfig({\n  plugins: [react(), ${hasTailwind4 ? 'tailwindcss()' : ''}],\n})`,
+    'vite.config.js': `import { defineConfig } from 'vite'\nimport react from '@vitejs/plugin-react'\n${hasTailwind4 ? 'import tailwindcss from "@tailwindcss/vite"' : ''}\n// https://vitejs.dev/config/\nexport default defineConfig({\n  plugins: [react(), ${hasTailwind4 ? 'tailwindcss()' : ''}],\n})`,
     'vite-env.d.ts': `/// <reference types="vite/client" />\n`,
     'tsconfig.json': `{
   "compilerOptions": {
