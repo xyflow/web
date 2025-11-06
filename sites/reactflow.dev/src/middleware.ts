@@ -1,50 +1,51 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getNhost } from '@/utils/nhost';
-import {
-  COOKIE_OPTIONS,
-  NHOST_REFRESH_KEY,
-  NHOST_SESSION_KEY,
-} from '@/utils/nhost-utils';
+import { handleNhostMiddleware } from '@/utils/nhost';
 
-export const config = {
-  matcher: ['/auth-redirect'],
-};
+// Define public routes that don't require authentication
+const privateRoute = ['/pro/dashboard'];
 
 export async function middleware(request: NextRequest) {
-  // const nhost = await getNhost(request.cookies);
-  // const session = nhost.auth.getSession();
-  // const url = new URL(request.url);
-  // const refreshToken = url.searchParams.get('refreshToken') ?? undefined;
-  // const currentTime = Math.floor(Date.now() / 1000);
-  // const tokenExpirationTime = nhost.auth.getDecodedAccessToken()?.exp;
-  // const accessTokenExpired =
-  //   session && tokenExpirationTime && currentTime > tokenExpirationTime;
-  // if (accessTokenExpired || refreshToken) {
-  //   const { session: newSession, error } = await nhost.auth.refreshSession(refreshToken);
-  //   if (error) {
-  //     return NextResponse.redirect(new URL('/pro/sign-in', request.url));
-  //   }
-  //   // remove the refreshToken from the url
-  //   url.searchParams.delete('refreshToken');
-  //   url.pathname = '/pro/dashboard';
-  //   const response = NextResponse.redirect(url);
-  //   // Prevent caching of this redirect so Set-Cookie is never shared between users
-  //   // Set cookie via API to ensure proper serialization and merging
-  //   const exp = newSession?.accessTokenExpiresIn ?? 0;
-  //   response.cookies.set({
-  //     name: NHOST_SESSION_KEY,
-  //     value: btoa(JSON.stringify(newSession)),
-  //     // maxAge: exp, // Aligns cookies with Nhost’s own token lifetimes
-  //     ...COOKIE_OPTIONS,
-  //   });
-  //   if (newSession?.refreshToken) {
-  //     response.cookies.set({
-  //       name: NHOST_REFRESH_KEY,
-  //       value: newSession.refreshToken,
-  //       ...COOKIE_OPTIONS,
-  //       // Nhost manages refresh token expiry server-side; do not set long maxAge unintentionally
-  //     });
-  //   }
-  //   return response;
-  // }
+  // Create a response that we'll modify as needed
+  const response = NextResponse.next();
+
+  // Get the current path
+  const path = request.nextUrl.pathname;
+
+  // Check if this is a public route or a public asset
+  const isPrivateRoute = privateRoute.some(
+    (route) => path === route || path.startsWith(`${route}/`),
+  );
+
+  // Handle Nhost authentication and token refresh
+  // Always call this to ensure session is up-to-date
+  // even for public routes, so that session changes are detected
+  const session = await handleNhostMiddleware(request, response);
+
+  // If it's a public route, allow access without checking auth
+  if (!isPrivateRoute) {
+    return response;
+  }
+
+  // If no session and not a public route, redirect to signin
+  if (!session) {
+    const homeUrl = new URL('/', request.url);
+    return NextResponse.redirect(homeUrl);
+  }
+
+  // Session exists, allow access to protected route
+  return response;
 }
+
+// Define which routes this middleware should run on
+export const config = {
+  matcher: [
+    /*
+     * Match all request paths except:
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     * - public files (public directory)
+     */
+    '/((?!_next/static|_next/image|favicon.ico|public).*)',
+  ],
+};

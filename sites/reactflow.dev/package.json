@@ -20,7 +20,7 @@
     "@codesandbox/sandpack-react": "^2.6.7",
     "@codesandbox/sandpack-themes": "^2.0.21",
     "@heroicons/react": "^2.2.0",
-    "@nhost/nhost-js": "^4.0.1",
+    "@nhost/nhost-js": "^4.1.0",
     "@typeform/embed-react": "^4.4.0",
     "@xyflow/react": "^12.8.3",
     "@xyflow/system": "^0.0.63",

@@ -8,25 +8,12 @@ import {
   NHOST_SESSION_KEY,
 } from '@/utils/nhost-utils';
 import { Session } from '@nhost/nhost-js/session';
+import { NextRequest, NextResponse } from 'next/server';
 
 export async function getNhost(
   $cookieStore?: RequestCookies | ReadonlyRequestCookies,
 ): Promise<NhostClient> {
   const cookieStore = $cookieStore ?? (await cookies());
-
-  // const nhost = new NhostClient({
-  //   subdomain: process.env.NEXT_PUBLIC_NHOST_SUBDOMAIN!,
-  //   region: process.env.NEXT_PUBLIC_NHOST_REGION!,
-  //   start: false,
-  //   autoRefreshToken: false,
-  //   // Workaround to make the `NhostClient` instance always unique
-  //   clientStorageType: 'custom',
-  //   clientStorage: {
-  //     getItem() {},
-  //     setItem() {},
-  //     removeItem() {},
-  //   },
-  // });
 
   const nhost = createServerClient({
     subdomain: process.env.NEXT_PUBLIC_NHOST_SUBDOMAIN!,
@@ -41,11 +28,7 @@ export async function getNhost(
         return session;
       },
       set: (value: Session) => {
-        cookieStore.set({
-          name: NHOST_SESSION_KEY,
-          value: JSON.stringify(value),
-          ...COOKIE_OPTIONS,
-        });
+        cookieStore.set(NHOST_SESSION_KEY, JSON.stringify(value));
       },
       remove: () => {
         cookieStore.delete(NHOST_REFRESH_KEY);
@@ -53,44 +36,51 @@ export async function getNhost(
     },
   });
 
-  // const sessionCookieValue = cookieStore.get(NHOST_SESSION_KEY)?.value;
-  // // @ts-expect-error -- `auth.initWithSession` must be called even with `null`, otherwise will get an error from @nhost/hasura-auth-js - Auth interpreter not set
-  // await nhost.auth.initWithSession({ session: parseSession(sessionCookieValue) });
-
-  // const currentTime = Math.floor(Date.now() / 1000);
-  // const tokenExpirationTime = nhost.auth.getDecodedAccessToken()?.exp;
-  // const accessTokenExpired =
-  //   sessionCookieValue && tokenExpirationTime && currentTime > tokenExpirationTime;
-  // if (
-  //   // no session cookie
-  //   accessTokenExpired === undefined ||
-  //   // have session cookie, but an access token expired
-  //   accessTokenExpired === true
-  // ) {
-  //   const refreshToken = cookieStore.get(NHOST_REFRESH_KEY)?.value;
-  //   if (refreshToken) {
-  //     const { session: newSession, error } =
-  //       await nhost.auth.refreshSession(refreshToken);
-  //     if (error) {
-  //       console.error(error);
-  //     }
-  //     if (newSession) {
-  //       cookieStore.set({
-  //         name: NHOST_SESSION_KEY,
-  //         value: btoa(JSON.stringify(newSession)),
-  //         ...COOKIE_OPTIONS,
-  //       });
-  //     }
-  //   }
-  // }
-
   return nhost;
 }
 
-// function parseSession(session?: string): NhostSession | null {
-//   try {
-//     return session ? JSON.parse(atob(session)) : null;
-//   } catch {
-//     return null;
-//   }
-// }
+/**
+ * Middleware function to handle Nhost authentication and session management.
+ *
+ * This function is designed to be used in Next.js middleware to manage user sessions
+ * and refresh tokens. Refreshing the session needs to be done in the middleware
+ * to ensure that the session is always up-to-date an accessible by both server and client components.
+ *
+ * @param {NextRequest} request - The incoming Next.js request object
+ * @param {NextResponse} response - The outgoing Next.js response object
+ */
+export async function handleNhostMiddleware(
+  request: NextRequest,
+  response: NextResponse<unknown>,
+): Promise<Session | null> {
+  const nhost = createServerClient({
+    region: process.env.NEXT_PUBLIC_NHOST_SUBDOMAIN || 'local',
+    subdomain: process.env.NEXT_PUBLIC_NHOST_REGION || 'local',
+    storage: {
+      // storage compatible with Next.js middleware
+      get: (): Session | null => {
+        const raw = request.cookies.get(NHOST_SESSION_KEY)?.value || null;
+        if (!raw) {
+          return null;
+        }
+        const session = JSON.parse(raw) as Session;
+        return session;
+      },
+      set: (value: Session) => {
+        response.cookies.set({
+          name: NHOST_SESSION_KEY,
+          value: JSON.stringify(value),
+          maxAge: 60 * 60 * 24 * 30, // 30 days in seconds
+          ...COOKIE_OPTIONS,
+        });
+      },
+      remove: () => {
+        response.cookies.delete(NHOST_SESSION_KEY);
+      },
+    },
+  });
+
+  // we only want to refresh the session if  the token will
+  // expire in the next 60 seconds
+  return await nhost.refreshSession(60);
+}

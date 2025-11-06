@@ -72,7 +72,7 @@ export function MagicLinkSuccessNotification() {
 }
 
 export function AuthErrorNotification({ error }: AuthErrorProps) {
-  const errorId = error?.body?.error;
+  const errorId = error?.body?.error || error?.message;
 
   if (errorId === 'invalid-email-password') {
     return (
