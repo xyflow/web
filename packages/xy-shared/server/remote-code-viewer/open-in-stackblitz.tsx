@@ -102,7 +102,11 @@ function prepareReactProject(files: Files, dependencies: Record<string, string>)
         build: 'vite build',
         preview: 'vite preview',
       },
-      dependencies,
+      dependencies: {
+        ...dependencies,
+        // If tailwindcss is present and is version 4, add @tailwindcss/vite
+        ...(hasTailwind4 ? { '@tailwindcss/vite': dependencies['tailwindcss'] } : {}),
+      },
       devDependencies: {
         '@vitejs/plugin-react': '^3.1.0',
         vite: '4.1.4',
