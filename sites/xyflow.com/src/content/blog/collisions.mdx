@@ -1,23 +1,12 @@
----
-title: ''
-htmlTitle: ''
-description: ''
-intro: ''
-date: 7 November 2025
-authors: ['peter']
-tags: []
-image: ''
----
-
 It’s been a thrilling month for node-based UI enjoyers.
 
 Let’s do a quick highlight reel:
 
-- [**Fuser**](https://fuser.studio/) officially launched (🎉), and I _highly_ recommend
+- [**Fuser**](https://fuser.studio/) officially launched 🎉, and I _highly_ recommend
   their essay:
   [Why Every Creative Tool Is Becoming a Node Canvas](https://fuser.studio/blog/the-graph-will-set-you-free-why-every).
-- [**Weavy**](https://www.weavy.ai/) got **acquired by Figma** — a bold bet on flow-based
-  UIs to integrate generative AI right into the design toolchain.
+- [**Weavy**](https://www.weavy.ai/) got acquired by **Figma** in a bet on flow-based UIs
+  to integrate generative AI into the design toolchain.
 - **Vercel** rolled out an [AI SDK](https://ai-sdk.dev/) complete with shiny new
   [Workflow UI Elements](https://ai-sdk.dev/elements/examples/workflow).
 - And just to keep everyone on their toes, **OpenAI** dropped a node-based
@@ -27,15 +16,23 @@ The best part? Every single one of these is built with **React Flow**!
 
 ### U can't touch this
 
-Like proud parents checking in on their kid’s science fair project, we went to see what
-our baby was up to. While exploring OpenAI’s Agent Builder, we got _nerd-sniped_ almost
-instantly...
+While exploring OpenAI’s Agent Builder and discovering they are preventing node overlaps,
+obviously we got _nerd-sniped_ immediately.
 
 [video]
 
-You see, we’ve been keeping a long-running mental backlog of ideas — and seeing one of
-them out in the wild like that finally pushed us to tackle **how we can prevent
-overlapping nodes**.
+You see, we’ve been keeping a long-running mental backlog of ideas and seeing one of them
+out in the wild like that finally pushed us to tackle this one.
+
+#### TLDR;
+
+- We created a [showcase](https://node-collision-algorithms.vercel.app/) and
+  [benchmark](https://github.com/xyflow/node-collision-algorithms) to compare different
+  node overlap resolution algorithms
+- The naive solution is very hard to beat
+- Vitest Bench and tinybench are pretty neat
+- The WASM toolchain has become very sleek
+- flatbush is an impressive feat
 
 As with pretty much anything you try to build these days, you can expect someone,
 somewhere, has already done it. So down the rabbit hole we went. From 2D physics engines
@@ -46,118 +43,192 @@ But, as savvy programmers, we know of the ancient wisdom passed down by our ance
 
 1. Premature optimization is the root of all evil.
 2. You can’t optimize what you don’t measure.
-3. Computers iterate over arrays _frickin’ dang fast._
+3. Computers iterate over arrays _pretty dang fast._
 
-So, we knew exactly what to do: build a benchmark to compare any algorithms, and — most
-importantly — **start with embracing your inner child** by writing the most naïve solution
-with arrays.
+So, we knew exactly what to do: create some data, build a benchmark and, most importantly,
+**embrace your inner child** and start by writing the most naive solution you can come up
+with. Oh and of course, just use arrays.
 
 ### The algorithm they are telling you not to worry about
 
-Let’s break down what we’re actually trying to do here:
+Close your eyes; breathe in; let the pent-up peer pressure from your professors,
+colleagues and some random dude on the internet leave your body; breathe out. What do you
+see?
 
-1. Check if two nodes are overlapping (plus a margin).
-2. Figure out which dimension has the smallest overlap.
+1. Check if two nodes are overlapping (add a small margin).
+2. Figure out which dimension (x or y) has the smallest overlap.
 3. Move both nodes in opposite directions along that dimension.
-4. Repeat, because we might have introduced new overlaps.
-5. Stop once there are no overlaps left.
+4. We might have introduced new overlaps, so repeat.
+5. Stop once there are no more overlapping nodes.
 
-First, we derive some boxes from our nodes and add a bit of margin:
+Or if you prefer pseudo code:
 
 ```ts
-const boxes = new Array(nodes.length);
+function resolveOverlaps(nodes, margin):
 
-for (let i = 0; i < nodes.length; i++) {
-	const node = nodes[i];
-	boxes[i] = {
-		x: node.position.x - margin,
-		y: node.position.y - margin,
-		width: (node.width ?? node.measured.width) + margin * 2,
-		height: (node.height ?? node.measured.width) + margin * 2,
-		moved: false
-		node,
-	}
-}
+    overlapFound = true
+
+    while overlapFound:
+        overlapFound = false
+
+        for each pair of nodes (A, B):
+            if A and B overlap (considering margin):
+                overlapFound = true
+
+                overlapX = amount of overlap along x-axis
+                overlapY = amount of overlap along y-axis
+
+                if overlapX < overlapY:
+                    # Move along x-axis
+                    move A left by overlapX / 2
+                    move B right by overlapX / 2
+                else:
+                    # Move along y-axis
+                    move A up by overlapY / 2
+                    move B down by overlapY / 2
+
+    return nodes
 ```
 
-Next, we create a juicy O(n^2) algorithm by checking every node against every other one.
-It might seem a little unintuitive at first to detect overlaps using center points, but
-the resulting values tell us _how much_ they’re overlapping, which will come in handy
-later.
+_If you are interested in a complete technical rundown and actual implementation, head
+over to the [repository](https://github.com/xyflow/node-collision-algorithms)._
 
-```ts
-let moved = true;
-// Re-check until none of them are moving anymore
-while (moved) {
-  moved = false;
-  for (let i = 0; i < boxes.length; i++) {
-    for (let j = i + 1; j < boxes.length; j++) {
-      const A = boxes[i];
-      const B = boxes[j];
+### Choosing the right datasets
 
-      // Calculate center positions
-      const centerAX = A.x + A.width * 0.5;
-      const centerAY = A.y + A.height * 0.5;
-      const centerBX = B.x + B.width * 0.5;
-      const centerBY = B.y + B.height * 0.5;
+Much like my ambitious plan to run a Kubernetes cluster for a website with ten monthly
+visitors (one of them being my mum), benchmarking a dataset made up of an absurd number of
+elements is a fool’s errand in the real world. If you know, for example, that 95% of your
+flows contain fewer than 25 nodes, your benchmark should reflect that reality.
 
-      // Calculate distance between centers
-      const dx = centerAX - centerBX;
-      const dy = centerAY - centerBY;
+The same goes for overlap density. In most cases, flows aren’t so tightly packed that
+resolving a single overlap causes a full-on cascade of nodes moving around. So it makes
+sense to include a dataset where nodes are more reasonably spaced apart.
 
-      // Calculate overlap along each axis
-      const px = (A.width + B.width) * 0.5 - Math.abs(dx);
-      const py = (A.height + B.height) * 0.5 - Math.abs(dy);
+Lastly, testing on a dataset with _no_ overlaps at all is a good way to measure the
+baseline cost — the performance you’d expect when there are no overlaps to resolve.
 
-      // Check if there's overlap
-      if (px > 0 && py > 0) {
-        // TODO: move the nodes
-      }
-    }
-  }
-}
+Here’s an overview of what our synthetic data looks like:
+
+```text
++----------------+----------------+----------------+----------------+
+|                | Separated      | Clustered      | Packed         |
++----------------+----------------+----------------+----------------+
+| 15 Nodes       |  •          •  |  ••            |        ••      |
+|                |                |           ••   |       •••      |
+|                |         •      |      ••        |       ••       |
++----------------+----------------+----------------+----------------+
+| 100 Nodes      | •  •   •   •   |  ••         •• |     •••••••    |
+|                |   •     •   •  |    ••   ••     |     ••••••     |
+|                | •   •   •   •  |  ••         •• |      ••••••    |
++----------------+----------------+----------------+----------------+
+| 500 Nodes      | • • • • • • •  | ••  ••  ••  •• | •••••••••••••  |
+|                |  • • • • • •   |   ••  ••  ••   | •••••••••••••  |
+|                | • • • • • • •  | ••  ••  ••  •• | •••••••••••••  |
++----------------+----------------+----------------+----------------+
 ```
 
-Then we calculate how far to move each node and mark which ones were changed to avoid
-unnecessary updates later.
+See how I just dropped the word _synthetic_ in there to sound smarter? One goal you should
+always keep in mind is to use **real-world data** in your benchmarks whenever possible.
+Unfortunately, we are just humble library authors with no access to production data… but
+_maybe you_ can help us out?
+
+If you’d like to see your real-world data included in our benchmarks, feel free to open a
+pull request! It’s super easy, just add another array of trimmed down nodes
+`{ position: { x: number, y: number }, width: number, height: number }[]` and give it a
+name!
+
+### Benchmark
+
+Thankfully, [Vitest](https://vitest.dev/) got our back with their
+[`bench`](https://vitest.dev/api/#bench) command based on
+[tinybench](https://github.com/tinylibs/tinybench). We simply create a new test file that
+ends with "bench.ts" and we are ready to go!
 
 ```ts
-// [...]
-// Check if there's overlap
-if (px > 0 && py > 0) {
-  // mark moved nodes to prevent unnecessary updates
-  moved = A.moved = B.moved = true;
-  // Resolve along the smallest overlap axis
-  if (px < py) {
-    // Move along x-axis
-    const sx = dx > 0 ? 1 : -1;
-    const moveAmount = (px / 2) * sx;
-    A.x += moveAmount;
-    B.x -= moveAmount;
-  } else {
-    // Move along y-axis
-    const sy = dy > 0 ? 1 : -1;
-    const moveAmount = (py / 2) * sy;
-    A.y += moveAmount;
-    B.y -= moveAmount;
-  }
-}
-```
-
-Finally, we create a new array of nodes and remove the margin again to restore the correct
-positions.
-
-```ts
-const newNodes = boxes.map((box) => {
-  if (box.moved) {
-    return {
-      ...box.node,
-      position: {
-        x: box.x + margin,
-        y: box.y + margin,
+datasets.forEach((dataset) => {
+  describe.concurrent(dataset, () => {
+    bench(
+      'naive',
+      () => {
+        naive(nodes, options);
       },
-    };
-  }
-  return box.node;
+      benchOptions,
+    );
+  });
 });
 ```
+
+Running `vitest bench` gives us the following mean results on a 14-Core M4 Pro for
+resolving collision on different datasets.
+
+Seperated (single iteration, no overlaps)
+
+- 15 nodes: **~0.3µs**
+- 100 nodes: **~8µs**
+- 500 nodes: **~0.2ms**
+
+Clustered (separated clusters, few overlaps)
+
+- 15 nodes: 5 iterations **~0.7µs**
+- 100 nodes: 9 iterations **~0.5ms**
+- 500 nodes: 9 iterations **~1.1ms**
+
+Packed (many overlaps, tightly packed)
+
+- 15 nodes: 12 iterations **~2µs**
+- 100 nodes: 80 iterations **~0.5ms**
+- 500 nodes: 618 iterations **~150ms**
+
+**Spoiler Alert:** It seem like we just created a (blazingly) fast algorithm that's going
+to be fairly hard to beat.
+
+### Putting results into perspective
+
+To understand what these results actually mean and how well the algorithm performs, we
+need to consider when it would realistically run and whether any delay would even be
+noticeable. We wouldn’t run this on every frame while dragging a node (which, on modern
+high-refresh displays, can mean 120 times a second with \<8.3ms of frame budget). Instead,
+it would only trigger when a node is dropped or when changes to nodes are submitted.
+
+Looking at the data, we can see:
+
+- working with fewer than 500 nodes should never cause any issues
+- in a more realistic scenario of 500 clustered nodes, 1.1 ms seems perfectly acceptable
+- resolving 500 tightly packed nodes is definitely noticeable but this happening out in
+  the wild will arguably very rare (only when pasting high number of nodes into tightly
+  packed flow)
+
+As a side note, this is pretty remarkable showcase of Apple Silicon’s single-core
+performance. We should definitely run the same test on more representative machines in the
+future to get a broader comparison.
+
+### Optimize
+
+If a single iteration (in our case, calculating the overlap) doesn’t seem very complex,
+then the easiest way to optimize any \(O(n^2)\) algorithm is to bring that \(n\) down —
+ideally to \(n \log n\), or, if we’re lucky, even \(\log n\).
+
+Right now, our \(n\) comes from us comparing every single node with every other node like
+the hairless ape we are. This, however, is a perfect use case for a
+
+✨**Spatial Acceleration Structure**✨
+
+While it might sound like technobabble straight out of _Mission: Impossible_, it’s really
+just a clever data structure that lets us make cheap spatial queries such as: “Which nodes
+lie within node X?”, which let's us get rid of those nested for-loops.
+
+### quadtree-ts, rbush and flatbush enter the ring
+
+Like the name implies, [quadtree-ts](https://github.com/timohausmann/quadtree-ts) is a
+library utilizing quadtrees, which works by subdividing the space recursively and storing
+only a limited number of nodes every leaf before further subdividing it.
+
+Both [rbush](https://github.com/mourner/rbush) and
+[flatbush](https://github.com/mourner/flatbush) are implementations of
+[packed Hilbert-R-trees](https://en.wikipedia.org/wiki/Hilbert_R-tree#Packed_Hilbert_R-trees),
+however flatbush is entirely static (updating a single node means fully rebuilding tree)
+and stores a its index in a single array buffer, which allows for passing around between
+threads.
+
+There is much to be studied with these libraries but let's keep it brief for this blog
+post.
