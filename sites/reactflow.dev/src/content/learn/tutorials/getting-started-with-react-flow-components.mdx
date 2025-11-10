@@ -435,15 +435,31 @@ own custom nodes. To see them, we'll add the `labeled-handle` component:
 npx shadcn@latest add https://ui.reactflow.dev/labeled-handle
 ```
 
+### The Number Node
+
 The first node we'll create is a simple number node with some buttons to increment and
 decrement the value and a handle to connect it to other nodes. Create a folder
 `src/components/nodes` and then add a new file `src/components/nodes/num-node.tsx`.
 
-Paste the following into the new file and install the following dependencies:
+We need to install the following `shadcn/ui` components:
 
 ```bash copy npm2yarn
 npx shadcn@latest add dropdown-menu button
 ```
+
+Now we can start building the node. We will need to access the `updateNodeData`
+function to update the node's data and the `setNodes` function to delete the
+node, from the `useReactFlow` hook. The hook helps us make self-contained
+components that can be used in other parts of our application, while still
+giving us quick access to React Flow's state and functions.
+
+We will need to make four callbacks, to handle the different actions that can be performed on the node.
+- Reset the node's value to 0
+- Delete the node
+- Increment the node's value by 1
+- Decrement the node's value by 1
+
+We will also need to access the node's data to get the current value and update it.
 
 ```tsx filename="src/components/nodes/num-node.tsx"
 import { type Node, type NodeProps, Position, useReactFlow } from '@xyflow/react';
@@ -531,6 +547,16 @@ export function NumNode({ id, data }: NodeProps<NumNode>) {
 }
 ```
 
+### The Sum Node
+
+The second node we can create is a simple sum node that adds the values of the two input nodes.
+Create a new file `src/components/nodes/sum-node.tsx` and paste the following into it:
+
+Particularly, we will need to access the `getNodeConnections` function to get
+the values of the two connected input nodes and the `updateNodeData` function to
+update the node's data with the sum of the two input nodes inside of a
+`useEffect` hook, whenever one of the values of the input nodes changes.
+
 ```tsx filename="src/components/nodes/sum-node.tsx"
 import {
   type Node,
@@ -539,32 +565,47 @@ import {
   useReactFlow,
   useStore,
 } from '@xyflow/react';
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 
 import {
   BaseNode,
+  BaseNodeContent,
   BaseNodeFooter,
   BaseNodeHeader,
   BaseNodeHeaderTitle,
 } from '../base-node';
 import { LabeledHandle } from '../labeled-handle';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuTrigger,
+} from '../ui/dropdown-menu';
+import { EllipsisVertical } from 'lucide-react';
+import { Button } from '../ui/button';
 
 export type SumNode = Node<{
   value: number;
 }>;
 
 export function SumNode({ id }: NodeProps<SumNode>) {
-  const { updateNodeData, getHandleConnections } = useReactFlow();
+  const { updateNodeData, getNodeConnections, setNodes, setEdges } = useReactFlow();
   const { x, y } = useStore((state) => ({
     x: getHandleValue(
-      getHandleConnections({ nodeId: id, id: 'x', type: 'target' }),
+      getNodeConnections({ nodeId: id, handleId: 'x', type: 'target' }),
       state.nodeLookup,
     ),
     y: getHandleValue(
-      getHandleConnections({ nodeId: id, id: 'y', type: 'target' }),
+      getNodeConnections({ nodeId: id, handleId: 'y', type: 'target' }),
       state.nodeLookup,
     ),
   }));
+
+  const handleDelete = useCallback(() => {
+    setNodes((nodes) => nodes.filter((node) => node.id !== id));
+    setEdges((edges) => edges.filter((edge) => edge.source !== id));
+  }, [id, setNodes, setEdges]);
 
   useEffect(() => {
     updateNodeData(id, { value: x + y });
@@ -572,13 +613,32 @@ export function SumNode({ id }: NodeProps<SumNode>) {
 
   return (
     <BaseNode className="w-32">
-      <BaseNodeHeader>
+      <BaseNodeHeader className="border-b">
         <BaseNodeHeaderTitle>Sum</BaseNodeHeaderTitle>
+
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button
+              variant="ghost"
+              className="nodrag p-1"
+              aria-label="Node Actions"
+              title="Node Actions"
+            >
+              <EllipsisVertical className="size-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <DropdownMenuLabel className="font-bold">Node Actions</DropdownMenuLabel>
+            <DropdownMenuItem onSelect={handleDelete}>Delete</DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </BaseNodeHeader>
 
-      <BaseNodeFooter className="bg-gray-100 items-end px-0 py-1 w-full rounded-b-md">
+      <BaseNodeContent className="px-0">
         <LabeledHandle title="x" id="x" type="target" position={Position.Left} />
         <LabeledHandle title="y" id="y" type="target" position={Position.Left} />
+      </BaseNodeContent>
+      <BaseNodeFooter className="bg-gray-100 items-end px-0 py-1 w-full rounded-b-md">
         <LabeledHandle title="out" type="source" position={Position.Right} />
       </BaseNodeFooter>
     </BaseNode>
@@ -598,6 +658,8 @@ function getHandleValue(
 }
 ```
 
+### The Data Edge
+
 React Flow UI doesn't just provide components for building nodes. We also provide
 pre-built edges and other UI elements you can drop into your flows for quick building.
 
@@ -614,6 +676,14 @@ object. We've been storing the value of each node in our calculator field in a `
 property so we'll update our `edgeType` object to include the new `data-edge` and we'll
 update the `onConnect` handler to create a new edge of this type, making sure to set the
 edge's `data` object correctly:
+
+
+### The Flow
+
+Now we can put everything together and create our flow. 
+
+We will start by defining the custom node and edge types, and the initial nodes and edges that will be 
+displayed in our app.
 
 ```tsx filename="src/App.tsx"
 import React, { useCallback } from 'react';
