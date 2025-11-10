@@ -92,6 +92,51 @@ export function TargetHandleWithValidation({ position, source }) {
 }
 ```
 
+## Custom Handle component
+
+You can use any custom component as a **Handle** by doing the following:
+1. wrapping that component with the
+[`<Handle />`](/api-reference/components/handle) component.
+2. hiding the [`<Handle />`](/api-reference/components/handle) component itself, by giving it a `border` and `background` of `none`.
+3. setting the `width/height` of the [`<Handle />`](/api-reference/components/handle) component to that of the custom child component.
+4. giving that child component a style of `pointer-events: none`.
+5. repositioning the child custom component using CSS position properties like `top,
+left` if necessary to position it perfectly inside the [`<Handle />`](/api-reference/components/handle) component. 
+
+This example shows a Material UI icon `ArrowCircleRightIcon` being used as a Handle.
+
+```jsx
+import { Handle, Position } from "@xyflow/react";
+import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
+
+export function CustomNode() {
+  return (
+    <div className="react-flow__node-default">
+      <Handle
+        position={Position.Right}
+        type="source"
+        style={{
+          background: "none",
+          border: "none",
+          width: "1em",
+          height: "1em",
+        }}
+      >
+        <ArrowCircleRightIcon
+          style={{
+            pointerEvents: "none",
+            fontSize: "1em",
+            left: 0,
+            position: "absolute",
+          }}
+        />
+      </Handle>
+      Custom Node
+    </div>
+  );
+}
+```
+
 ## Typeless handles
 
 If you want to create a handle that does not have a specific type (source or 
