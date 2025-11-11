@@ -9,8 +9,11 @@ import {
 // Example of a custom edge with a centered button in the toolbar component
 export function EdgeWithButton(props: EdgeProps) {
   const [edgePath, centerX, centerY] = getBezierPath(props);
-  const { deleteElements } = useReactFlow();
-  const deleteEdge = () => deleteElements({ edges: [props.id] });
+  const { deleteElements, getEdges } = useReactFlow();
+  const deleteEdge = () => {
+    const edge = getEdges().find((e) => e.id === props.id);
+    if (edge) deleteElements({ edges: [edge] });
+  };
 
   return (
     <>

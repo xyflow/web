@@ -1,6 +1,5 @@
 import {
   Background,
-  BackgroundVariant,
   Controls,
   Edge,
   EdgeTypes,
