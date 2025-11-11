@@ -80,6 +80,11 @@ function prepare(
 }
 
 function prepareReactProject(files: Files, dependencies: Record<string, string>) {
+  const hasTailwind4 = Object.entries(dependencies).some(
+    ([dependency, version]) =>
+      dependency.includes('tailwindcss') && version.startsWith('^4.'),
+  );
+
   return {
     ...Object.entries(files).reduce((acc, [key, value]) => {
       if (typeof value === 'string') {
@@ -97,16 +102,20 @@ function prepareReactProject(files: Files, dependencies: Record<string, string>)
         build: 'vite build',
         preview: 'vite preview',
       },
-      dependencies,
+      dependencies: {
+        ...dependencies,
+        // If tailwindcss is present and is version 4, add @tailwindcss/vite
+        ...(hasTailwind4 ? { '@tailwindcss/vite': dependencies['tailwindcss'] } : {}),
+      },
       devDependencies: {
-        '@vitejs/plugin-react': '^3.1.0',
-        vite: '4.1.4',
+        '@vitejs/plugin-react': '^4.4.1',
+        vite: '^6.3.3',
         '@types/react': dependencies.react ?? '^18.0.0',
         '@types/react-dom': dependencies['react-dom'] ?? '^18.0.0',
-        typescript: '^4.9.0',
+        typescript: '^5.8.3',
       },
     }),
-    'vite.config.js': `import { defineConfig } from 'vite'\nimport react from '@vitejs/plugin-react'\n\n// https://vitejs.dev/config/\nexport default defineConfig({\n  plugins: [react()],\n})`,
+    'vite.config.js': `import { defineConfig } from 'vite'\nimport react from '@vitejs/plugin-react'\n${hasTailwind4 ? 'import tailwindcss from "@tailwindcss/vite"' : ''}\n// https://vitejs.dev/config/\nexport default defineConfig({\n  plugins: [react(), ${hasTailwind4 ? 'tailwindcss()' : ''}],\n})`,
     'vite-env.d.ts': `/// <reference types="vite/client" />\n`,
     'tsconfig.json': `{
   "compilerOptions": {
