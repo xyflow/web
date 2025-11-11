@@ -193,42 +193,52 @@ it would only trigger when a node is dropped or when changes to nodes are submit
 Looking at the data, we can see:
 
 - working with fewer than 500 nodes should never cause any issues
-- in a more realistic scenario of 500 clustered nodes, 1.1 ms seems perfectly acceptable
+- in a more realistic scenario of 500 clustered nodes, 1.1 ms seems acceptable
 - resolving 500 tightly packed nodes is definitely noticeable but this happening out in
   the wild will arguably very rare (only when pasting high number of nodes into tightly
   packed flow)
 
-As a side note, this is pretty remarkable showcase of Apple Silicon’s single-core
-performance. We should definitely run the same test on more representative machines in the
-future to get a broader comparison.
+Note: This benchmark was run on a processor with a very high single-core performance and
+we should test on more representative machines in the future.
 
 ### Optimize
 
 If a single iteration (in our case, calculating the overlap) doesn’t seem very complex,
-then the easiest way to optimize any \(O(n^2)\) algorithm is to bring that \(n\) down —
-ideally to \(n \log n\), or, if we’re lucky, even \(\log n\).
+the easiest way to optimize any \(O(n^2)\) algorithm is to bring that \(n\) down — ideally
+to \(n \log n\), or, if we’re lucky, even \(\log n\).
 
-Right now, our \(n\) comes from us comparing every single node with every other node like
-the hairless ape we are. This, however, is a perfect use case for a
+Right now, our \(n\) is defined by us comparing every single node with every other node
+like the hairless ape we are. This, however, is a perfect use case for a
 
-✨**Spatial Acceleration Structure**✨
+✨**Spatial Acceleration Structures**✨
 
 While it might sound like technobabble straight out of _Mission: Impossible_, it’s really
-just a clever data structure that lets us make cheap spatial queries such as: “Which nodes
-lie within node X?”, which let's us get rid of those nested for-loops.
+just a group of clever data structures. They let us exchange some linear cost up front for
+the ability to make cheap spatial queries later. Those queries can range from "What are
+the 10 closest neighbours of node X?" to "What nodes lie in region X".
 
-### quadtree-ts, rbush and flatbush enter the ring
+### quadtree-ts, rbush and flatbush
 
-Like the name implies, [quadtree-ts](https://github.com/timohausmann/quadtree-ts) is a
-library utilizing quadtrees, which works by subdividing the space recursively and storing
-only a limited number of nodes every leaf before further subdividing it.
+Our first contender is [quadtree-ts](https://github.com/timohausmann/quadtree-ts). Like
+the name implies, it's a library utilizing quadtrees, which work by subdividing the space
+recursively and storing only a limited number of nodes in every leaf.
 
 Both [rbush](https://github.com/mourner/rbush) and
 [flatbush](https://github.com/mourner/flatbush) are implementations of
 [packed Hilbert-R-trees](https://en.wikipedia.org/wiki/Hilbert_R-tree#Packed_Hilbert_R-trees),
-however flatbush is entirely static (updating a single node means fully rebuilding tree)
-and stores a its index in a single array buffer, which allows for passing around between
+however flatbush is entirely static (updating a single node is not possible) and it stores
+its data structure in a single array buffer, enabling efficient data transfer between
 threads.
 
-There is much to be studied with these libraries but let's keep it brief for this blog
-post.
+In short we can replace our main n-squared loop with a simple iterator over the nodes and
+a spatial query.
+
+```diff
+- for each pair of nodes (A, B):
+-    if A and B overlap (considering margin):
++ for each node (A):
++    for every overlapping node (B):
+```
+
+**For a more detailed rundown of the algorithms head over to the
+[repository](https://github.com/xyflow/node-collision-algorithms).**
