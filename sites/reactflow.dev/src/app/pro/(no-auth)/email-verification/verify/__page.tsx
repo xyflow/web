@@ -19,8 +19,6 @@ const VerifyEmailPage: FC<PageProps> = async (props) => {
   }
 
   redirect('/?error=invalid-ticket');
-
-  return null;
 };
 
 export default VerifyEmailPage;
