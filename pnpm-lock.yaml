@@ -58,11 +58,11 @@ importers:
         specifier: ^8.0.2
         version: 8.0.5(svelte@5.39.6)(three@0.171.0)
       '@xyflow/react':
-        specifier: ^12.9.0
-        version: 12.9.0(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        specifier: ^12.9.1
+        version: 12.9.1(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@xyflow/svelte':
-        specifier: 1.4.0
-        version: 1.4.0(svelte@5.39.6)
+        specifier: 1.4.1
+        version: 1.4.1(svelte@5.39.6)
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -215,8 +215,8 @@ importers:
         specifier: ^1.5.0
         version: 1.5.0(next@15.3.1(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)(svelte@5.39.6)
       '@xyflow/react':
-        specifier: ^12.9.0
-        version: 12.9.0(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        specifier: ^12.9.1
+        version: 12.9.1(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -392,8 +392,8 @@ importers:
         specifier: ^0.27.1
         version: 0.27.3
       '@xyflow/react':
-        specifier: ^12.9.0
-        version: 12.9.0(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        specifier: ^12.9.1
+        version: 12.9.1(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@xyflow/xy-ui':
         specifier: workspace:*
         version: link:../xy-ui
@@ -553,11 +553,11 @@ importers:
         specifier: ^1.2.0
         version: 1.2.0(next@15.3.1(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)(svelte@5.39.6)
       '@xyflow/react':
-        specifier: ^12.9.0
-        version: 12.9.0(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        specifier: ^12.9.1
+        version: 12.9.1(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@xyflow/system':
-        specifier: ^0.0.71
-        version: 0.0.71
+        specifier: ^0.0.72
+        version: 0.0.72
       '@xyflow/xy-ui':
         specifier: workspace:*
         version: link:../../packages/xy-ui
@@ -644,14 +644,14 @@ importers:
         specifier: ^4.4.0
         version: 4.6.0(react@19.2.0)
       '@xyflow/react':
-        specifier: 12.9.0
-        version: 12.9.0(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        specifier: 12.9.1
+        version: 12.9.1(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@xyflow/svelte':
-        specifier: 1.4.0
-        version: 1.4.0(svelte@5.39.6)
+        specifier: 1.4.1
+        version: 1.4.1(svelte@5.39.6)
       '@xyflow/system':
-        specifier: ^0.0.71
-        version: 0.0.71
+        specifier: ^0.0.72
+        version: 0.0.72
       '@xyflow/xy-ui':
         specifier: workspace:*
         version: link:../../packages/xy-ui
@@ -723,8 +723,8 @@ importers:
         specifier: ^2.2.1
         version: 2.2.1
       '@xyflow/react':
-        specifier: 12.9.0
-        version: 12.9.0(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        specifier: 12.9.1
+        version: 12.9.1(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@xyflow/xy-ui':
         specifier: workspace:*
         version: link:../../packages/xy-ui
@@ -3125,19 +3125,19 @@ packages:
     peerDependencies:
       vite: ^4.2.0 || ^5.0.0 || ^6.0.0 || ^7.0.0-beta.0
 
-  '@xyflow/react@12.9.0':
-    resolution: {integrity: sha512-bt37E8Wf2HQ7hHQaMSnOw4UEWQqWlNwzfgF9tjix5Fu9Pn/ph3wbexSS/wbWnTkv0vhgMVyphQLfFWIuCe59hQ==}
+  '@xyflow/react@12.9.1':
+    resolution: {integrity: sha512-JRPCT5p7NnPdVSIh15AFvUSSm+8GUyz2I6iuBEC1LG2lKgig/L48AM/ImMHCc3ZUCg+AgTOJDaX2fcRyPA9BTA==}
     peerDependencies:
       react: '>=17'
       react-dom: '>=17'
 
-  '@xyflow/svelte@1.4.0':
-    resolution: {integrity: sha512-LXokbj1nEP8FROE/y9/xU11G4dM2+mGBiMmPU714Mmk+bGnyot+nZmyR8Y7OFBUahY1mnMNfeclLPJKGy3r7tA==}
+  '@xyflow/svelte@1.4.1':
+    resolution: {integrity: sha512-CAegVmLMpX64G6JnhiU7ezoIOY7aX88cf1fSOV8FutKdZNMxcJBykhvaXunOBf7jjDs9X887RH8Jgdl1rMwXww==}
     peerDependencies:
       svelte: ^5.25.0
 
-  '@xyflow/system@0.0.71':
-    resolution: {integrity: sha512-O2xIK84Uv1hH8qzeY94SKsj0R1n2jXHLsX6RZnM4x1Uc4oWiVbXDFucnkbFwhnQm3IIdAxkbgd2rEDp5oTRhhQ==}
+  '@xyflow/system@0.0.72':
+    resolution: {integrity: sha512-WBI5Aau0fXTXwxHPzceLNS6QdXggSWnGjDtj/gG669crApN8+SCmEtkBth1m7r6pStNo/5fI9McEi7Dk0ymCLA==}
 
   '@zod/core@0.9.0':
     resolution: {integrity: sha512-bVfPiV2kDUkAJ4ArvV4MHcPZA8y3xOX6/SjzSy2kX2ACopbaaAP4wk6hd/byRmfi9MLNai+4SFJMmcATdOyclg==}
@@ -10073,9 +10073,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@xyflow/react@12.9.0(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+  '@xyflow/react@12.9.1(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
-      '@xyflow/system': 0.0.71
+      '@xyflow/system': 0.0.72
       classcat: 5.0.5
       react: 19.2.0
       react-dom: 19.2.0(react@19.2.0)
@@ -10084,13 +10084,13 @@ snapshots:
       - '@types/react'
       - immer
 
-  '@xyflow/svelte@1.4.0(svelte@5.39.6)':
+  '@xyflow/svelte@1.4.1(svelte@5.39.6)':
     dependencies:
       '@svelte-put/shortcut': 4.1.0(svelte@5.39.6)
-      '@xyflow/system': 0.0.71
+      '@xyflow/system': 0.0.72
       svelte: 5.39.6
 
-  '@xyflow/system@0.0.71':
+  '@xyflow/system@0.0.72':
     dependencies:
       '@types/d3-drag': 3.0.7
       '@types/d3-interpolate': 3.0.4

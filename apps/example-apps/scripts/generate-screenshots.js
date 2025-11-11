@@ -87,7 +87,18 @@ async function makeScreenshots(dir, selector) {
         }
       }
 
-      await page.goto(exampleUrl);
+      // Retry if Hot Module Reload causes navigation to abort
+      try {
+        await page.goto(exampleUrl, { waitUntil: 'domcontentloaded', timeout: 15000 });
+      } catch (err) {
+        if (String(err).includes('ERR_ABORTED')) {
+          await page.waitForTimeout(500);
+          await page.goto(exampleUrl, { waitUntil: 'domcontentloaded', timeout: 15000 });
+        } else {
+          console.log('navigate error:', exampleUrl, err);
+          continue;
+        }
+      }
 
       if (!onlyMissing) {
         console.log('screenshot:', exampleUrl);
@@ -104,7 +115,7 @@ async function makeScreenshots(dir, selector) {
       });
 
       try {
-        await page.waitForSelector(selector, { timeout: 1000 });
+        await page.waitForSelector(selector, { timeout: 5000 });
         await page.screenshot({
           path: screenshotPath,
         });

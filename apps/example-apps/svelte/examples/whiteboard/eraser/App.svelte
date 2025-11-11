@@ -82,9 +82,3 @@
     </div>
   </Panel>
 </SvelteFlow>
-
-<style>
-  :global .controls {
-    z-index: 1001;
-  }
-</style>
