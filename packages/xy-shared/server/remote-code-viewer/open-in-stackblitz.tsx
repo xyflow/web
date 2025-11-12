@@ -184,7 +184,8 @@ export default {
     "resolveJsonModule": true,
     "allowJs": true,
     "checkJs": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "moduleResolution": "nodenext"
   },
   "include": ["./**/*.d.ts", "src/**/*.{js,ts,svelte}"],
   "references": [{ "path": "./tsconfig.node.json" }]
