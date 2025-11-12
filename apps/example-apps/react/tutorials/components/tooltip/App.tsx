@@ -49,6 +49,7 @@ function Flow() {
     </div>
   );
 }
-export function App() {
+
+export default function App() {
   return <Flow />;
 }

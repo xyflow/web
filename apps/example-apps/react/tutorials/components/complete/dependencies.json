@@ -1,5 +1,6 @@
 [
   "@radix-ui/react-slot",
+  "@radix-ui/react-dropdown-menu",
   "@xyflow/react",
   "class-variance-authority",
   "clsx",
