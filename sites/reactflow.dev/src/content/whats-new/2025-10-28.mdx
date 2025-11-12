@@ -1,12 +1,16 @@
 ---
 title: 'React Flow UI Components updated to React 19 and Tailwind CSS 4'
-description: 'How to upgrade your project'
-authors: [xyflow]
-date: '2025-10-28'
+description: 'A fresh look for our UI components and how to upgrade your project'
+authors: [alessandro]
+date: '2025-11-12'
 ---
 
 Our [React Flow UI](/ui) components have been updated to support the latest version of
 shadcn/ui, on React 19 and Tailwind 4!
+
+This update includes a fresh look from the latest version of [shadcn/ui](https://ui.shadcn.com), and a new [UI Components tutorial](/learn/tutorials/getting-started-with-react-flow-components) to get you started.
+
+### How to upgrade your project
 
 To upgrade your project, follow the steps below.
 
@@ -50,6 +54,9 @@ your `@xyflow/react/dist/style.css` file in your `App.tsx`, you will need to it 
 +  @import "@xyflow/react/dist/style.css";
 +}
 ```
+
+We recommend removing the old `js`/`ts` tailwind configuration from your project, and migrating to the new CSS-variable-only configuration.
+This can make things a lot simpler: you can configure everything related to your application's design system and look in a single CSS file.
 
 ```diff filename="App.tsx"
 -import '@xyflow/react/dist/style.css';
