@@ -1,3 +1,14 @@
+---
+title: 'When Nodes Collide: Collision Algorithms and the Latest Node UI Buzz'
+htmlTitle: ''
+description: ''
+intro: ''
+date: 13 November 2025
+authors: ['peter', 'abbey']
+tags: []
+image: ''
+---
+
 It’s been a thrilling month for node-based UI enjoyers.
 
 Let’s do a quick highlight reel:
@@ -5,8 +16,8 @@ Let’s do a quick highlight reel:
 - [**Fuser**](https://fuser.studio/) officially launched 🎉, and I _highly_ recommend
   their essay:
   [Why Every Creative Tool Is Becoming a Node Canvas](https://fuser.studio/blog/the-graph-will-set-you-free-why-every).
-- [**Weavy**](https://www.weavy.ai/) got acquired by **Figma** in a bet on flow-based UIs
-  to integrate generative AI into the design toolchain.
+- [**Weavy**](https://www.weavy.ai/) as part of their push into flow-based UIs, with the
+  goal of integrating generative AI directly into the design toolchain.
 - **Vercel** rolled out an [AI SDK](https://ai-sdk.dev/) complete with shiny new
   [Workflow UI Elements](https://ai-sdk.dev/elements/examples/workflow).
 - And just to keep everyone on their toes, **OpenAI** dropped a node-based
@@ -16,52 +27,61 @@ The best part? Every single one of these is built with **React Flow**!
 
 ### U can't touch this
 
-While exploring OpenAI’s Agent Builder and discovering they are preventing node overlaps,
-obviously we got _nerd-sniped_ immediately.
+While exploring OpenAI’s new Agent Builder, we noticed they’d solved a surprisingly tricky
+problem, preventing node overlaps. It’s something that had been on our backlog for a
+while, and as soon as we saw it, we knew we had to recreate it ourselves.
 
 [video]
 
-You see, we’ve been keeping a long-running mental backlog of ideas and seeing one of them
-out in the wild like that finally pushed us to tackle this one.
+There are a few different ways to approach node overlap resolution, and we wanted to
+compare them side by side, so we put together a small
+[showcase](https://node-collision-algorithms.vercel.app/) to see how different algorithms
+stack up.
 
-#### TLDR;
+<div style={{ margin: '2rem 0' }}>
+  <iframe
+    src="https://node-collision-algorithms.vercel.app/"
+    title="Node Collision Algorithms Demo"
+    loading="lazy"
+    allowFullScreen
+    style={{ width: '100%', height: '80vh', border: 0, borderRadius: '12px' }}
+  />
+</div>
 
-- We created a [showcase](https://node-collision-algorithms.vercel.app/) and
-  [benchmark](https://github.com/xyflow/node-collision-algorithms) to compare different
-  node overlap resolution algorithms
-- The naive solution is very hard to beat
-- Vitest Bench and tinybench are pretty neat
-- The WASM toolchain has become very sleek
-- flatbush is an impressive feat
+TL;DR — We learned that while the naive solution is hard to beat, the WASM toolchain and
+flatbush are potent tools, and Vitest Bench with tinybench provides excellent performance
+insights.
 
-As with pretty much anything you try to build these days, you can expect someone,
-somewhere, has already done it. So down the rabbit hole we went. From 2D physics engines
-to force-directed graphs, there are many different applications and solutions for keeping
-things from awkwardly overlapping.
+## Implementing our Naive Solution
 
-But, as savvy programmers, we know of the ancient wisdom passed down by our ancestors:
+As seasoned programmers, we like to follow a few timeless truths passed down through the
+ages:
 
 1. Premature optimization is the root of all evil.
 2. You can’t optimize what you don’t measure.
 3. Computers iterate over arrays _pretty dang fast._
 
-So, we knew exactly what to do: create some data, build a benchmark and, most importantly,
-**embrace your inner child** and start by writing the most naive solution you can come up
-with. Oh and of course, just use arrays.
+So we knew exactly what to do: generate some data, build a benchmark, and most
+importantly, embrace our inner child by starting with the most naive solution we could
+imagine.
 
-### The algorithm they are telling you not to worry about
+For our naive algorithm, we first define bounding boxes for each node, adding a small
+buffer to account for visual spacing.
 
-Close your eyes; breathe in; let the pent-up peer pressure from your professors,
-colleagues and some random dude on the internet leave your body; breathe out. What do you
-see?
+Next, it traverses each node in **O(n²)**, checking for collisions with other nodes. We
+measure collisions from the nodes’ center points, which yields a precise measure of how
+much each pair overlaps, which helps guide the next step.
 
-1. Check if two nodes are overlapping (add a small margin).
-2. Figure out which dimension (x or y) has the smallest overlap.
-3. Move both nodes in opposite directions along that dimension.
-4. We might have introduced new overlaps, so repeat.
-5. Stop once there are no more overlapping nodes.
+Then, we calculate how far each overlapping node needs to move and track which nodes have
+changed to avoid unnecessary updates. For each overlapping pair, we determine the axis (x
+or y) with the smallest overlap and move the nodes in opposite directions along that axis.
+We repeat this process as needed, since resolving one overlap can sometimes create
+another.
 
-Or if you prefer pseudo code:
+Finally, we generate a new array of nodes with their corrected positions, ensuring all
+nodes are neatly spaced without introducing unnecessary movement.
+
+Here's the breakdown in pseudo code:
 
 ```ts
 function resolveOverlaps(nodes, margin):
@@ -93,19 +113,81 @@ function resolveOverlaps(nodes, margin):
 _If you are interested in a complete technical rundown and actual implementation, head
 over to the [repository](https://github.com/xyflow/node-collision-algorithms)._
 
+### Benchmarking
+
+With the algorithm in place, the next step was to see how it actually performs. To do
+that, we turned to [Vitest](https://vitest.dev/), which makes benchmarking surprisingly
+straightforward with its [`bench`](https://vitest.dev/api/#bench) command based on
+[tinybench](https://github.com/tinylibs/tinybench). All we had to do was create a new test
+file ending in `bench.ts`, and we were good to go.
+
+```ts
+datasets.forEach((dataset) => {
+  describe.concurrent(dataset, () => {
+    bench(
+      'naive',
+      () => {
+        naive(nodes, options);
+      },
+      benchOptions,
+    );
+  });
+});
+```
+
+Running `vitest bench` for our naive algorithm gave us the following mean results on a
+14-Core M4 Pro for resolving collisions on different datasets.
+
+Separated (single iteration, no overlaps)
+
+- 15 nodes: **~0.3µs**
+- 100 nodes: **~8µs**
+- 500 nodes: **~0.2ms**
+
+Clustered (separated clusters, few overlaps)
+
+- 15 nodes: 5 iterations **~0.7µs**
+- 100 nodes: 9 iterations **~0.5ms**
+- 500 nodes: 9 iterations **~1.1ms**
+
+Packed (many overlaps, tightly packed)
+
+- 15 nodes: 12 iterations **~2µs**
+- 100 nodes: 80 iterations **~0.5ms**
+- 500 nodes: 618 iterations **~150ms**
+
+**Spoiler Alert:** It turns out we may have just created a blazingly fast algorithm — one
+that’s going to be pretty hard to beat.
+
+### Putting results into perspective
+
+To understand these results, it helps to consider when the algorithm actually runs. This
+function isn’t running continuously or on every frame; it only executes when a node is
+dropped or when changes are submitted. That means runtimes in the millisecond range are
+acceptable. Looking at the data, we can see:
+
+- There should never be any issues if you're working with fewer than 500 nodes.
+- At around 500 clustered nodes, the algorithm resolves in ~1.1 ms. This is acceptable for
+  most use cases.
+- Resolving more than 500 nodes simultaneously can lead to noticeable performance issues,
+  but this is mostly limited to edge cases, like pasting a large number of nodes into an
+  already tightly packed flow.
+
+**Note:** This benchmark was run on a processor with a very high single-core performance
+and we will test on more representative machines in the future.
+
 ### Choosing the right datasets
 
-Much like my ambitious plan to run a Kubernetes cluster for a website with ten monthly
-visitors (one of them being my mum), benchmarking a dataset made up of an absurd number of
-elements is a fool’s errand in the real world. If you know, for example, that 95% of your
-flows contain fewer than 25 nodes, your benchmark should reflect that reality.
+Of course, raw numbers only tell part of the story. To get meaningful insights, your
+benchmark datasets need to reflect realistic scenarios. Testing on an absurdly large
+number of nodes — kind of like running a Kubernetes cluster for a website with ten monthly
+visitors (one of them being my mum) — doesn’t tell you much about everyday performance.
 
-The same goes for overlap density. In most cases, flows aren’t so tightly packed that
-resolving a single overlap causes a full-on cascade of nodes moving around. So it makes
-sense to include a dataset where nodes are more reasonably spaced apart.
-
-Lastly, testing on a dataset with _no_ overlaps at all is a good way to measure the
-baseline cost — the performance you’d expect when there are no overlaps to resolve.
+If, for instance, 95% of your flows contain fewer than 25 nodes, your benchmarks should
+focus on that reality. The same logic applies to overlap density: in most cases, nodes
+aren’t so tightly packed that resolving one overlap will trigger a cascade of movements.
+Including datasets with reasonable spacing, as well as a dataset with no overlaps, gives
+you both a baseline and a realistic range of performance.
 
 Here’s an overview of what our synthetic data looks like:
 
@@ -127,111 +209,53 @@ Here’s an overview of what our synthetic data looks like:
 +----------------+----------------+----------------+----------------+
 ```
 
-See how I just dropped the word _synthetic_ in there to sound smarter? One goal you should
-always keep in mind is to use **real-world data** in your benchmarks whenever possible.
-Unfortunately, we are just humble library authors with no access to production data… but
-_maybe you_ can help us out?
+We like to use real-world data to benchmark whenever possible. As humble library authors,
+we don’t have access to production datasets… but _maybe you_ can help us out!
 
-If you’d like to see your real-world data included in our benchmarks, feel free to open a
-pull request! It’s super easy, just add another array of trimmed down nodes
-`{ position: { x: number, y: number }, width: number, height: number }[]` and give it a
-name!
-
-### Benchmark
-
-Thankfully, [Vitest](https://vitest.dev/) got our back with their
-[`bench`](https://vitest.dev/api/#bench) command based on
-[tinybench](https://github.com/tinylibs/tinybench). We simply create a new test file that
-ends with "bench.ts" and we are ready to go!
+If you’d like to see your own data included, it’s super easy: just open a pull request and
+add an array of trimmed-down nodes like this:
 
 ```ts
-datasets.forEach((dataset) => {
-  describe.concurrent(dataset, () => {
-    bench(
-      'naive',
-      () => {
-        naive(nodes, options);
-      },
-      benchOptions,
-    );
-  });
-});
+{ position: { x: number, y: number }, width: number, height: number }[]
 ```
 
-Running `vitest bench` gives us the following mean results on a 14-Core M4 Pro for
-resolving collision on different datasets.
+### Optimizing with quadtree-ts, rbush and flatbush
 
-Seperated (single iteration, no overlaps)
+The easiest way to optimize **O(n²)** algorithms is to reduce the effective **n**.
+Ideally, we’d get it down to **O(n log n)**, or, if we’re lucky, even **O(log n)**.
 
-- 15 nodes: **~0.3µs**
-- 100 nodes: **~8µs**
-- 500 nodes: **~0.2ms**
+Right now, our solution compares every node with every other node — not exactly a
+performance dream. Luckily, this scenario is a perfect fit for ✨ Spatial Acceleration
+Structures ✨.
 
-Clustered (separated clusters, few overlaps)
+These clever data structures trade some upfront computation for the ability to make very
+fast spatial queries later. Examples of such queries include:
 
-- 15 nodes: 5 iterations **~0.7µs**
-- 100 nodes: 9 iterations **~0.5ms**
-- 500 nodes: 9 iterations **~1.1ms**
+“Which are the 10 closest neighbors of node X?”
 
-Packed (many overlaps, tightly packed)
+“Which nodes lie within region X?”
 
-- 15 nodes: 12 iterations **~2µs**
-- 100 nodes: 80 iterations **~0.5ms**
-- 500 nodes: 618 iterations **~150ms**
+By limiting the number of comparisons we make at each step, these structures can
+drastically reduce the number of overlap checks required, making large flows much more
+manageable.
 
-**Spoiler Alert:** It seem like we just created a (blazingly) fast algorithm that's going
-to be fairly hard to beat.
+In our [showcase](https://node-collision-algorithms.vercel.app/), you can choose from
+several other algorithms to compare performance and see how different approaches behave.
+Here are a few we included and the benefits each brings:
 
-### Putting results into perspective
+[**quadtree-ts**](https://github.com/timohausmann/quadtree-ts) uses **quadtrees**, which
+recursively subdivides space and stores only a limited number of nodes in each leaf,
+allowing for fast queries of nearby nodes.
 
-To understand what these results actually mean and how well the algorithm performs, we
-need to consider when it would realistically run and whether any delay would even be
-noticeable. We wouldn’t run this on every frame while dragging a node (which, on modern
-high-refresh displays, can mean 120 times a second with \<8.3ms of frame budget). Instead,
-it would only trigger when a node is dropped or when changes to nodes are submitted.
+Both [**RBush**](https://github.com/mourner/rbush) and
+[**Flatbush**](https://github.com/mourner/flatbush) are implementations of
+[**packed Hilbert R-trees**](https://en.wikipedia.org/wiki/Hilbert_R-tree#Packed_Hilbert_R-trees).
+The difference is that **Flatbush** is entirely static — individual nodes cannot be
+updated — but it stores its data in a single array buffer, making it extremely efficient
+for memory usage and data transfer between threads.
 
-Looking at the data, we can see:
-
-- working with fewer than 500 nodes should never cause any issues
-- in a more realistic scenario of 500 clustered nodes, 1.1 ms seems acceptable
-- resolving 500 tightly packed nodes is definitely noticeable but this happening out in
-  the wild will arguably very rare (only when pasting high number of nodes into tightly
-  packed flow)
-
-Note: This benchmark was run on a processor with a very high single-core performance and
-we should test on more representative machines in the future.
-
-### Optimize
-
-If a single iteration (in our case, calculating the overlap) doesn’t seem very complex,
-the easiest way to optimize any \(O(n^2)\) algorithm is to bring that \(n\) down — ideally
-to \(n \log n\), or, if we’re lucky, even \(\log n\).
-
-Right now, our \(n\) is defined by us comparing every single node with every other node
-like the hairless ape we are. This, however, is a perfect use case for a
-
-✨**Spatial Acceleration Structures**✨
-
-While it might sound like technobabble straight out of _Mission: Impossible_, it’s really
-just a group of clever data structures. They let us exchange some linear cost up front for
-the ability to make cheap spatial queries later. Those queries can range from "What are
-the 10 closest neighbours of node X?" to "What nodes lie in region X".
-
-### quadtree-ts, rbush and flatbush
-
-Our first contender is [quadtree-ts](https://github.com/timohausmann/quadtree-ts). Like
-the name implies, it's a library utilizing quadtrees, which work by subdividing the space
-recursively and storing only a limited number of nodes in every leaf.
-
-Both [rbush](https://github.com/mourner/rbush) and
-[flatbush](https://github.com/mourner/flatbush) are implementations of
-[packed Hilbert-R-trees](https://en.wikipedia.org/wiki/Hilbert_R-tree#Packed_Hilbert_R-trees),
-however flatbush is entirely static (updating a single node is not possible) and it stores
-its data structure in a single array buffer, enabling efficient data transfer between
-threads.
-
-In short we can replace our main n-squared loop with a simple iterator over the nodes and
-a spatial query.
+In short, instead of checking every pair of nodes in an **O(n²)** loop, we can leverage a
+spatial acceleration structure to iterate only over relevant overlaps like this:
 
 ```diff
 - for each pair of nodes (A, B):
@@ -240,5 +264,15 @@ a spatial query.
 +    for every overlapping node (B):
 ```
 
-**For a more detailed rundown of the algorithms head over to the
-[repository](https://github.com/xyflow/node-collision-algorithms).**
+### Wrapping Up
+
+We’re so grateful to the community and thrilled by all the buzz around node-based UIs
+right now. This work is our passion, and it’s amazing to see what everyone is building
+with these tools.
+
+Our naive solution works surprisingly well, but we know it can be improved. If anyone
+wants to take a crack at making it faster or smarter, we’d love to see it!
+
+If you’d like a more technical rundown of our implementation, feel free to check out the
+[GitHub repository](https://github.com/xyflow/node-collision-algorithms) — we’d love your
+feedback and contributions!
