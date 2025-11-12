@@ -9,7 +9,9 @@ tags: []
 image: ''
 ---
 
-It’s been a thrilling month for node-based UI enjoyers.
+import { Image } from 'xy-shared';
+
+It's been a thrilling month for node-based UI enjoyers.
 
 Let’s do a quick highlight reel:
 
@@ -27,11 +29,17 @@ The best part? Every single one of these is built with **React Flow**!
 
 ### U can't touch this
 
-While exploring OpenAI’s new Agent Builder, we noticed they’d solved a surprisingly tricky
-problem, preventing node overlaps. It’s something that had been on our backlog for a
+While exploring OpenAI's new Agent Builder, we noticed they'd solved a surprisingly tricky
+problem, preventing node overlaps. It's something that had been on our backlog for a
 while, and as soon as we saw it, we knew we had to recreate it ourselves.
 
-[video]
+<Image
+  src="/img/blog/2025-node-collision/openai-node-collision.gif"
+  alt="A demonstration of OpenAI's Agent Builder showing nodes automatically separating when they overlap"
+  width={1200}
+  height={800}
+  wide
+/>
 
 There are a few different ways to approach node overlap resolution, and we wanted to
 compare them side by side, so we put together a small
@@ -40,11 +48,11 @@ stack up.
 
 <div style={{ margin: '2rem 0' }}>
   <iframe
-    src="https://node-collision-algorithms.vercel.app/"
+    src="https://node-collision-algorithms.vercel.app/?hide-ui=true"
     title="Node Collision Algorithms Demo"
     loading="lazy"
     allowFullScreen
-    style={{ width: '100%', height: '80vh', border: 0, borderRadius: '12px' }}
+    style={{ width: '100%', height: '600px', border: 0, borderRadius: '12px' }}
   />
 </div>
 
@@ -52,7 +60,7 @@ TL;DR — We learned that while the naive solution is hard to beat, the WASM too
 flatbush are potent tools, and Vitest Bench with tinybench provides excellent performance
 insights.
 
-### Implementing our naive solution
+### The algorithm they told you not to worry about
 
 As seasoned programmers, we like to follow a few timeless truths passed down through the
 ages:
@@ -113,13 +121,54 @@ function resolveOverlaps(nodes, margin):
 _If you are interested in a complete technical rundown and actual implementation, head
 over to the [repository](https://github.com/xyflow/node-collision-algorithms)._
 
+### Choosing the right datasets
+
+To achieve meaningful insights with a benchmark, you should always try to choose datasets
+that reflect reality. Think of it like this: hosting the globally distributed Kubernetes
+cluster that serves my website with ten monthly visitors (one of them is my mum, she's
+very proud of me) makes about as much sense as optimizing an algorithm for a situation
+that’ll likely never happen.
+
+If, for instance, 95% of your flows contain fewer than 25 nodes, your benchmarks should
+focus on that reality. The same logic applies to overlap density: in most cases, nodes
+aren’t so tightly packed that resolving one overlap will trigger a cascade of movements.
+Including datasets with reasonable spacing, as well as a dataset with no overlaps, gives
+you both a baseline and a realistic range of performance.
+
+Here’s an overview of what our synthetic data looks like:
+
+```text
++----------------+----------------+----------------+----------------+
+|                | Separated      | Clustered      | Packed         |
++----------------+----------------+----------------+----------------+
+| 15 Nodes       |  •          •  |  ••            |        ••      |
+|                |                |           ••   |       •••      |
+|                |         •      |      ••        |       ••       |
++----------------+----------------+----------------+----------------+
+| 100 Nodes      | •  •   •   •   |  ••         •• |     •••••••    |
+|                |   •     •   •  |    ••   ••     |     ••••••     |
+|                | •   •   •   •  |  ••         •• |      ••••••    |
++----------------+----------------+----------------+----------------+
+| 500 Nodes      | • • • • • • •  | ••  ••  ••  •• | •••••••••••••  |
+|                |  • • • • • •   |   ••  ••  ••   | •••••••••••••  |
+|                | • • • • • • •  | ••  ••  ••  •• | •••••••••••••  |
++----------------+----------------+----------------+----------------+
+```
+
+We like to use real-world data to benchmark whenever possible. As humble library authors,
+we don’t have access to production datasets… but _maybe you_ can help us out!
+
+If you’d like to see your own data included, it’s super easy: just open a pull request and
+add an array of trimmed-down nodes to our
+[datasets](https://github.com/xyflow/node-collision-algorithms/blob/main/src/lib/datasets.ts)!
+
 ### Benchmarking
 
-With the algorithm in place, the next step was to see how it actually performs. To do
-that, we turned to [Vitest](https://vitest.dev/), which makes benchmarking surprisingly
-straightforward with its [`bench`](https://vitest.dev/api/#bench) command based on
-[tinybench](https://github.com/tinylibs/tinybench). All we had to do was create a new test
-file ending in `bench.ts`, and we were good to go.
+With the algorithm and data in place, the next step was to see how it actually performs.
+To do that, we turned to [Vitest](https://vitest.dev/), which makes benchmarking
+surprisingly straightforward with its [`bench`](https://vitest.dev/api/#bench) command
+based on [tinybench](https://github.com/tinylibs/tinybench). All we had to do was create a
+new test file ending in `bench.ts`, and we were good to go.
 
 ```ts
 datasets.forEach((dataset) => {
@@ -156,8 +205,8 @@ Packed (many overlaps, tightly packed)
 - 100 nodes: 80 iterations **~0.5ms**
 - 500 nodes: 618 iterations **~150ms**
 
-**Spoiler Alert:** It turns out we may have just created a blazingly fast algorithm — one
-that’s going to be pretty hard to beat.
+**Spoiler Alert:** It turns out we may have just created a (blazingly?) fast algorithm —
+one that’s going to be pretty hard to beat.
 
 ### Putting results into perspective
 
@@ -169,55 +218,12 @@ acceptable. Looking at the data, we can see:
 - There should never be any issues if you're working with fewer than 500 nodes.
 - At around 500 clustered nodes, the algorithm resolves in ~1.1 ms. This is acceptable for
   most use cases.
-- Resolving more than 500 nodes simultaneously can lead to noticeable performance issues,
+- Resolving more than 500 tightly packed nodes can lead to noticeable performance issues,
   but this is mostly limited to edge cases, like pasting a large number of nodes into an
   already tightly packed flow.
 
 **Note:** This benchmark was run on a processor with a very high single-core performance
 and we will test on more representative machines in the future.
-
-### Choosing the right datasets
-
-Of course, raw numbers only tell part of the story. To get meaningful insights, your
-benchmark datasets need to reflect realistic scenarios. Testing on an absurdly large
-number of nodes — kind of like running a Kubernetes cluster for a website with ten monthly
-visitors (one of them being my mum) — doesn’t tell you much about everyday performance.
-
-If, for instance, 95% of your flows contain fewer than 25 nodes, your benchmarks should
-focus on that reality. The same logic applies to overlap density: in most cases, nodes
-aren’t so tightly packed that resolving one overlap will trigger a cascade of movements.
-Including datasets with reasonable spacing, as well as a dataset with no overlaps, gives
-you both a baseline and a realistic range of performance.
-
-Here’s an overview of what our synthetic data looks like:
-
-```text
-+----------------+----------------+----------------+----------------+
-|                | Separated      | Clustered      | Packed         |
-+----------------+----------------+----------------+----------------+
-| 15 Nodes       |  •          •  |  ••            |        ••      |
-|                |                |           ••   |       •••      |
-|                |         •      |      ••        |       ••       |
-+----------------+----------------+----------------+----------------+
-| 100 Nodes      | •  •   •   •   |  ••         •• |     •••••••    |
-|                |   •     •   •  |    ••   ••     |     ••••••     |
-|                | •   •   •   •  |  ••         •• |      ••••••    |
-+----------------+----------------+----------------+----------------+
-| 500 Nodes      | • • • • • • •  | ••  ••  ••  •• | •••••••••••••  |
-|                |  • • • • • •   |   ••  ••  ••   | •••••••••••••  |
-|                | • • • • • • •  | ••  ••  ••  •• | •••••••••••••  |
-+----------------+----------------+----------------+----------------+
-```
-
-We like to use real-world data to benchmark whenever possible. As humble library authors,
-we don’t have access to production datasets… but _maybe you_ can help us out!
-
-If you’d like to see your own data included, it’s super easy: just open a pull request and
-add an array of trimmed-down nodes like this:
-
-```ts
-{ position: { x: number, y: number }, width: number, height: number }[]
-```
 
 ### Optimizing with quadtree-ts, rbush and flatbush
 
