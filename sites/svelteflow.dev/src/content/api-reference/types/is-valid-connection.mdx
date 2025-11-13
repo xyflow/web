@@ -1,12 +1,15 @@
 ---
-description: Function type that determines whether a connection between nodes is valid in SvelteFlow.
+description:
+  Function type that determines whether a connection between nodes is valid in SvelteFlow.
 ---
 
 # IsValidConnection
 
-[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/lib/types/general.ts#L43)
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/types/general.ts#L43)
 
-The `IsValidConnection` type is a function that determines whether a connection between nodes is valid. It receives an edge or connection object and returns a boolean indicating whether the connection is valid.
+The `IsValidConnection` type is a function that determines whether a connection between
+nodes is valid. It receives an edge or connection object and returns a boolean indicating
+whether the connection is valid.
 
 ```ts
 type IsValidConnection = (edge: Edge | Connection) => boolean;

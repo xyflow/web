@@ -1,5 +1,8 @@
 ---
-description: A step-by-step guide to creating your first flow diagram with Svelte Flow. Learn how to set up the canvas, add nodes and edges, and enhance your flow with built-in features like viewport fitting and custom node types.
+description:
+  A step-by-step guide to creating your first flow diagram with Svelte Flow. Learn how to
+  set up the canvas, add nodes and edges, and enhance your flow with built-in features
+  like viewport fitting and custom node types.
 ---
 
 import { RemoteCodeViewer } from 'xy-shared/server';
@@ -8,11 +11,14 @@ import { Callout } from 'nextra/components';
 
 # Building a Flow
 
-Ready to create your first flow? This guide will walk you through the process step by step. If you haven't reviewed our [Key Concepts](/learn/getting-started/key-concepts) yet, we recommend doing that first.
+Ready to create your first flow? This guide will walk you through the process step by
+step. If you haven't reviewed our [Key Concepts](/learn/getting-started/key-concepts) yet,
+we recommend doing that first.
 
 ## Getting Started
 
-First, import the Svelte Flow Component and its required styles into your project. We'll also import the `Background` component for visual enhancement.
+First, import the Svelte Flow Component and its required styles into your project. We'll
+also import the `Background` component for visual enhancement.
 
 ```svelte
 <script>
@@ -21,7 +27,8 @@ import '@xyflow/svelte/dist/style.css';
 </script>
 ```
 
-Next, render the main component inside an element with defined dimensions and place the `Background` component inside `SvelteFlow`.
+Next, render the main component inside an element with defined dimensions and place the
+`Background` component inside `SvelteFlow`.
 
 <Callout type="info">
   Content inside `SvelteFlow` stays fixed on top of the viewport. The `Background`
@@ -48,13 +55,15 @@ If everything is set up correctly, you should see a blank canvas like this:
 
 ## Adding nodes
 
-Now that the flow is set up, let's add some nodes. Create an array of [node objects](/api-reference/types/node) with these **required** properties:
+Now that the flow is set up, let's add some nodes. Create an array of
+[node objects](/api-reference/types/node) with these **required** properties:
 
 - `id`: A unique identifier for each node
 - `position`: The x and y coordinates
 - `data`: An object for storing custom data
 
-We'll use the [`$state.raw`](https://svelte.dev/docs/svelte/$state) rune to make the array reactive.
+We'll use the [`$state.raw`](https://svelte.dev/docs/svelte/$state) rune to make the array
+reactive.
 
 <Callout color="yellow">
   Simply using `$state` would **not only** make the array reactive, but **every property
@@ -78,7 +87,9 @@ let nodes = $state.raw([
 ]);
 ```
 
-Next, we [bind](https://svelte.dev/docs/svelte/$bindable) the nodes to the `SvelteFlow` component. This two-way binding allows both the component and your code to modify the nodes.
+Next, we [bind](https://svelte.dev/docs/svelte/$bindable) the nodes to the `SvelteFlow`
+component. This two-way binding allows both the component and your code to modify the
+nodes.
 
 ```svelte
 <SvelteFlow bind:nodes>
@@ -96,7 +107,9 @@ If you've followed these steps, you should see a flow that looks like this:
 
 ## Adding edges
 
-Let's connect the nodes with an edge. Initialize a [`$state.raw`](https://svelte.dev/docs/svelte/$state#$state.raw) with an array of [edge objects](/api-reference/types/edge) that have these **required** properties:
+Let's connect the nodes with an edge. Initialize a
+[`$state.raw`](https://svelte.dev/docs/svelte/$state#$state.raw) with an array of
+[edge objects](/api-reference/types/edge) that have these **required** properties:
 
 - `id`: A unique identifier for the edge
 - `source`: The ID of the source node
@@ -106,7 +119,8 @@ Let's connect the nodes with an edge. Initialize a [`$state.raw`](https://svelte
 let edges = $state.raw([{ id: 'e1-2', source: '1', target: '2' }]);
 ```
 
-As with nodes, we [bind](https://svelte.dev/docs/svelte/$bindable) the edges to the `SvelteFlow` component.
+As with nodes, we [bind](https://svelte.dev/docs/svelte/$bindable) the edges to the
+`SvelteFlow` component.
 
 ```svelte
 <SvelteFlow bind:nodes bind:edges>
@@ -124,11 +138,13 @@ Your flow should now look like this:
 
 ## Polishing the flow
 
-This all might already go into the right drection but it still looks a little bland and lopsided, doesn't it?
+This all might already go into the right drection but it still looks a little bland and
+lopsided, doesn't it?
 
 #### `fitView`
 
-Add the [`fitView`](/api-reference/components/svelte-flow#fitview) prop to automatically fit the initial viewport to the visible nodes.
+Add the [`fitView`](/api-reference/svelte-flow#fitview) prop to automatically fit the
+initial viewport to the visible nodes.
 
 ```svelte
 <SvelteFlow bind:nodes bind:edges fitView>
@@ -136,7 +152,8 @@ Add the [`fitView`](/api-reference/components/svelte-flow#fitview) prop to autom
 
 #### Built-in node types
 
-Let's change the `type` of the first node to `input` and the second node to `output`. These are built-in node types, that come with a different set of handles.
+Let's change the `type` of the first node to `input` and the second node to `output`.
+These are built-in node types, that come with a different set of handles.
 
 ```js
 let nodes = $state.raw([
