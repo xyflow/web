@@ -9,6 +9,7 @@ function VerifyEmailPage() {
   const defaultEmail = useSearchParams().get('email');
   const linkQueryParams = defaultEmail ? `?email=${defaultEmail}` : '';
 
+  console.log('yo');
   return (
     <div className="mx-auto mt-16 mb-8 max-w-2xl text-center">
       <h3 className="text-sm font-bold mb-6 flex items-center uppercase tracking-wider text-primary justify-center">

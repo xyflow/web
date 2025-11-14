@@ -1,0 +1,7 @@
+[
+  {
+    "op": "replace",
+    "path": "/auth/redirections/clientUrl",
+    "value": "https://xyflow-platform-staging.vercel.app"
+  }
+]

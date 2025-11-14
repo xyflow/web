@@ -21,9 +21,9 @@ export async function signUp(
     if (!session) {
       // use encodeURIComponent because email can contain special characters such as +
       redirectPath = `/pro/email-verification?email=${encodeURIComponent(email)}`;
+    } else {
+      redirectPath = '/pro/dashboard';
     }
-
-    redirectPath = '/pro/dashboard';
   } catch (error) {
     return error;
   } finally {

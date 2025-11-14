@@ -2,6 +2,7 @@
 
 import { FormEvent, useState, useTransition } from 'react';
 import { Button, Input, InputLabel } from '@xyflow/xy-ui';
+import { useSearchParams } from 'next/navigation';
 
 import { AuthErrorNotification, AuthNotification } from './AuthNotification';
 import { signInEmailPasswordless } from '@/server-actions';
@@ -11,6 +12,7 @@ function ResendVerificationLink() {
   const [error, setError] =
     useState<Awaited<ReturnType<typeof signInEmailPasswordless>>>(null);
   const [isSuccess, setIsSuccess] = useState(false);
+  const searchParams = useSearchParams();
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     // Prevent resubmitting the form when an error is set
@@ -43,6 +45,7 @@ function ResendVerificationLink() {
           type="email"
           name="email"
           disabled={isSuccess}
+          defaultValue={(searchParams.get('email') as string | null) || ''}
         />
       </div>
       <Button
