@@ -1,14 +1,13 @@
 import { cookies } from 'next/headers';
 import { createServerClient, NhostClient } from '@nhost/nhost-js';
-import type { RequestCookies } from 'next/dist/compiled/@edge-runtime/cookies';
-import type { ReadonlyRequestCookies } from 'next/dist/server/web/spec-extension/adapters/request-cookies';
-import {
-  COOKIE_OPTIONS,
-  NHOST_REFRESH_KEY,
-  NHOST_SESSION_KEY,
-} from '@/utils/nhost-utils';
-import { Session } from '@nhost/nhost-js/session';
+import { DEFAULT_SESSION_KEY, type Session } from '@nhost/nhost-js/session';
+import { RequestCookies } from 'next/dist/compiled/@edge-runtime/cookies';
+import { ReadonlyRequestCookies } from 'next/dist/server/web/spec-extension/adapters/request-cookies';
+
+import { COOKIE_OPTIONS } from '@/utils/nhost-utils';
 import { NextRequest, NextResponse } from 'next/server';
+
+const key = DEFAULT_SESSION_KEY;
 
 export async function getNhost(
   $cookieStore?: RequestCookies | ReadonlyRequestCookies,
@@ -20,7 +19,7 @@ export async function getNhost(
     region: process.env.NEXT_PUBLIC_NHOST_REGION!,
     storage: {
       get: (): Session | null => {
-        const raw = cookieStore.get(NHOST_SESSION_KEY)?.value || null;
+        const raw = cookieStore.get(key)?.value || null;
         if (!raw) {
           return null;
         }
@@ -28,10 +27,10 @@ export async function getNhost(
         return session;
       },
       set: (value: Session) => {
-        cookieStore.set(NHOST_SESSION_KEY, JSON.stringify(value));
+        cookieStore.set(key, JSON.stringify(value));
       },
       remove: () => {
-        cookieStore.delete(NHOST_REFRESH_KEY);
+        cookieStore.delete(key);
       },
     },
   });
@@ -59,7 +58,7 @@ export async function handleNhostMiddleware(
     storage: {
       // storage compatible with Next.js middleware
       get: (): Session | null => {
-        const raw = request.cookies.get(NHOST_SESSION_KEY)?.value || null;
+        const raw = request.cookies.get(key)?.value || null;
         if (!raw) {
           return null;
         }
@@ -68,14 +67,14 @@ export async function handleNhostMiddleware(
       },
       set: (value: Session) => {
         response.cookies.set({
-          name: NHOST_SESSION_KEY,
+          name: key,
           value: JSON.stringify(value),
           maxAge: 60 * 60 * 24 * 30, // 30 days in seconds
           ...COOKIE_OPTIONS,
         });
       },
       remove: () => {
-        response.cookies.delete(NHOST_SESSION_KEY);
+        response.cookies.delete(key);
       },
     },
   });
