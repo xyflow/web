@@ -25,6 +25,7 @@ export async function signUp(
       redirectPath = '/pro/dashboard';
     }
   } catch (error) {
+    console.log(error);
     return error;
   } finally {
     if (redirectPath) redirect(redirectPath);

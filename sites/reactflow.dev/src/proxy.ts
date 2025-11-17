@@ -4,7 +4,7 @@ import { handleNhostMiddleware } from '@/utils/nhost';
 // Define public routes that don't require authentication
 const privateRoute = ['/pro/dashboard'];
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   // Create a response that we'll modify as needed
   const response = NextResponse.next();
 
