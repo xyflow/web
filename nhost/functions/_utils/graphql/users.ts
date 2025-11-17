@@ -1,9 +1,9 @@
-import { NhostClient } from '@nhost/nhost-js';
+import { createClient } from '@nhost/nhost-js';
 import { gql } from 'graphql-request';
 
 import GraphQLClient from './client';
 
-export const nhost = new NhostClient({
+export const nhost = createClient({
   subdomain: process.env.NHOST_SUBDOMAIN,
   region: process.env.NHOST_REGION,
 });
@@ -14,7 +14,7 @@ export async function createUser({ email }: { email: string }) {
   }
 
   // use signIn instead of signUp because we don't want to set a password (we use magic link)
-  return await nhost.auth.signIn({ email });
+  return await nhost.auth.signInPasswordlessEmail({ email });
 }
 
 type User = {
@@ -36,7 +36,9 @@ const GET_USER_BY_MAIL = gql`
 `;
 
 export async function getUserIdByEmail(email: string): Promise<string> {
-  const response = await GraphQLClient.request<GetUserByMailResponse>(GET_USER_BY_MAIL, { email });
+  const response = await GraphQLClient.request<GetUserByMailResponse>(GET_USER_BY_MAIL, {
+    email,
+  });
   return response.users?.[0]?.id;
 }
 
