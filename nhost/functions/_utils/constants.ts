@@ -11,4 +11,4 @@ export const MAILJET_WELCOME_MAIL_TEMPLATE_IDS = {
 
 export const IS_DEVELOPMENT = process.env.NHOST_SUBDOMAIN === 'local';
 export const IS_PRODUCTION = process.env.NHOST_SUBDOMAIN !== 'local';
-export const IS_STAGING = process.env.NHOST_SUBDOMAIN === 'qatudfhrsubqcehhdsgx';
+export const IS_STAGING = process.env.NHOST_SUBDOMAIN === 'yyjucnywolixyempramc';
