@@ -97,6 +97,4 @@ const externalLinks = [
   { name: 'Twitter', href: 'https://twitter.com/xyflowdev' },
 ];
 
-const toFormName = (name: string) => name.toLowerCase().replace(' ', '-');
-
 export default Page;

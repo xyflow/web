@@ -32,9 +32,10 @@ function ContactForm({ children, action }: ContactFormProps) {
             setIsError(true);
           }
         } else {
-          // Fallback to direct fetch (legacy behavior)
-          // @ts-expect-error - FormData entries() type compatibility
-          const data = Object.fromEntries(formData.entries());
+          const data: Record<string, string> = {};
+          formData.forEach((value, key) => {
+            data[key] = value.toString();
+          });
 
           const response = await fetch(
             process.env.NEXT_PUBLIC_CONTACT_FORM_URL as string,
