@@ -19,7 +19,7 @@ export default async function Page(props: PageProps) {
   const mdx = <MDXContent {...props} params={params} />;
 
   return (
-    <Wrapper toc={toc} metadata={metadata}>
+    <Wrapper toc={toc} metadata={metadata} sourceCode="">
       {(async function (slug: string[]) {
         const isExamples = slug[0] === 'examples';
         if (isExamples) {

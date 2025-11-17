@@ -47,7 +47,7 @@ export default async function Page(props: PageProps) {
   const LayoutComponent = isLabsPage ? LabsLayoutWrapper : BaseBlogPostLayout;
 
   return (
-    <Wrapper toc={toc} metadata={metadata}>
+    <Wrapper toc={toc} metadata={metadata} sourceCode="">
       <LayoutComponent
         // @ts-expect-error -- fixme
         frontMatter={metadata}

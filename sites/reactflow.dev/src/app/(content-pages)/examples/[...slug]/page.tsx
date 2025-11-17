@@ -21,7 +21,7 @@ export default async function Page(props: Props) {
   );
 
   return (
-    <Wrapper toc={toc} metadata={metadata}>
+    <Wrapper toc={toc} metadata={metadata} sourceCode="">
       <H1>{metadata.title}</H1>
       <MDXContent components={{ ArrowTopRightOnSquareIcon, Button }} />
     </Wrapper>
