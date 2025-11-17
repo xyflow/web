@@ -5,6 +5,7 @@ import { Card, Input, InputLabel, Text } from '@xyflow/xy-ui';
 import { BaseLayout, ContactForm, Hero } from 'xy-shared';
 import { FC } from 'react';
 import { Metadata } from 'next';
+import { submitContact } from '@/actions/contact';
 
 export const metadata: Metadata = {
   title: 'Contact Us',
@@ -31,7 +32,7 @@ const Page: FC = () => {
           }}
         />
         <Card className="p-8 bg-white relative">
-          <ContactForm>
+          <ContactForm action={submitContact}>
             <InputLabel>
               <span>Your Email</span>
               <Input name="email" type="email" required variant="square" />
@@ -68,11 +69,7 @@ const Page: FC = () => {
 
           <div className="divide-y divide-gray-200">
             {externalLinks.map(({ name, href }) => (
-              <Link
-                key={name}
-                className="group flex justify-between py-4"
-                href={href}
-              >
+              <Link key={name} className="group flex justify-between py-4" href={href}>
                 <Text size="sm" className="group-hover:underline">
                   {name}
                 </Text>

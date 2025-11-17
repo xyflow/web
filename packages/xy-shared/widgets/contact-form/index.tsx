@@ -5,47 +5,63 @@ import { Button, Alert, AlertTitle, AlertDescription } from '@xyflow/xy-ui';
 
 type ContactFormProps = {
   children?: React.ReactNode;
+  action?: (formData: FormData) => Promise<{ success: boolean }>;
 };
 
-function ContactForm({ children }: ContactFormProps) {
+function ContactForm({ children, action }: ContactFormProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState(false);
 
-  const onSubmit = useCallback(async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsLoading(true);
-    setIsSuccess(false);
-    setIsError(false);
+  const onSubmit = useCallback(
+    async (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      setIsLoading(true);
+      setIsSuccess(false);
+      setIsError(false);
 
-    const formData = new FormData(e.currentTarget);
-    // @ts-ignore
-    const data = Object.fromEntries(formData.entries());
+      const formData = new FormData(e.currentTarget);
 
-    try {
-      const response = await fetch(
-        process.env.NEXT_PUBLIC_CONTACT_FORM_URL as string,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
-          },
-          body: JSON.stringify(data),
-        },
-      );
+      try {
+        if (action) {
+          // Use server action if provided
+          const result = await action(formData);
+          if (result.success) {
+            setIsSuccess(true);
+          } else {
+            setIsError(true);
+          }
+        } else {
+          // Fallback to direct fetch (legacy behavior)
+          // @ts-expect-error - FormData entries() type compatibility
+          const data = Object.fromEntries(formData.entries());
 
-      if (response.ok) {
-        setIsSuccess(true);
-      } else {
+          const response = await fetch(
+            process.env.NEXT_PUBLIC_CONTACT_FORM_URL as string,
+            {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                Accept: 'application/json',
+              },
+              body: JSON.stringify(data),
+            },
+          );
+
+          if (response.ok) {
+            setIsSuccess(true);
+          } else {
+            setIsError(true);
+          }
+        }
+      } catch {
         setIsError(true);
       }
-    } catch (err) {
-      setIsError(true);
-    }
 
-    setIsLoading(false);
-  }, []);
+      setIsLoading(false);
+    },
+    [action],
+  );
 
   return (
     <div className="flex flex-col gap-4">
