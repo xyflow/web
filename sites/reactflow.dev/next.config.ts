@@ -7,8 +7,8 @@ import reactFlowPackageJson from '@xyflow/react/package.json' with { type: 'json
 // afaik this is the only way because Vercel doesn't expose this information
 const slugRegex = /-git-(.*?)\.vercel\.app/;
 
-export function parsePreviewDeploySlug(branchUrl: string) {
-  return branchUrl.match(slugRegex)?.[1];
+export function parsePreviewDeploySlug(branchUrl?: string) {
+  return branchUrl?.match(slugRegex)?.[1] ?? 'staging';
 }
 
 const nextConfig: NextConfig = {
