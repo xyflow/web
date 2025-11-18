@@ -156,9 +156,21 @@ const initialEdges = [
 ];
 ```
 
+### Add edges to the flow
+
+Now we can pass our `initialEdges` array to the `<ReactFlow />` component using the
+`edges` prop:
+
+```jsx "edges={initialEdges}"
+<ReactFlow nodes={initialNodes} edges={initialEdges}>
+  <Background />
+  <Controls />
+</ReactFlow>
+```
+
 ### Basic flow
 
-Now we have completed a basic flow with nodes and edges! 🎉
+Congratulations! You have completed a basic flow with nodes and edges! 🎉
 
 <RemoteCodeViewer aspectRatio="4" route="learn/building-a-flow-4" framework="react" />
 

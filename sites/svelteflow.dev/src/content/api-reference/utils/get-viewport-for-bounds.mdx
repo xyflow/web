@@ -1,18 +1,17 @@
 ---
-description: 'This util returns the viewport for the given bounds.
-  You might use this to pre-calculate the viewport for a given set of nodes on the
-  server or calculate the viewport for the given bounds _without_ changing the
-  viewport directly.'
+description:
+  'This util returns the viewport for the given bounds. You might use this to
+  pre-calculate the viewport for a given set of nodes on the server or calculate the
+  viewport for the given bounds _without_ changing the viewport directly.'
 ---
 
 # getViewportForBounds()
 
 [Source on Github](https://github.com/xyflow/xyflow/blob/main/packages/system/src/utils/general.ts/#L293-L294)
 
-This util returns the viewport for the given bounds.
-You might use this to pre-calculate the viewport for a given set of nodes on the
-server or calculate the viewport for the given bounds _without_ changing the
-viewport directly.
+This util returns the viewport for the given bounds. You might use this to pre-calculate
+the viewport for a given set of nodes on the server or calculate the viewport for the
+given bounds _without_ changing the viewport directly.
 
 ```js
 import { getViewportForBounds } from '@xyflow/svelte';
@@ -38,6 +37,6 @@ const { x, y, zoom } = getViewportForBounds(
 ## Notes
 
 - This is quite a low-level utility. You might want to look at the
-  [`fitView`](/api-reference/types/svelte-flow-instance#fitview) or
-  [`fitBounds`](/api-reference/types/svelte-flow-instance#fitbounds) methods for a more practical
-  api.
+  [`fitView`](/api-reference/hooks/use-svelte-flow#fitview) or
+  [`fitBounds`](/api-reference/hooks/use-svelte-flow#fitbounds) methods for a more
+  practical api.

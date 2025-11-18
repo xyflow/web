@@ -35,7 +35,7 @@ function isWebGLAvailable(): boolean {
 }
 
 function Shape({ type, random, color, ...props }: any) {
-  const ref = useRef<any>();
+  const ref = useRef<any>(null);
   useFrame((state) => {
     const t = state.clock.getElapsedTime() + random * 10000;
     if (ref.current) {
