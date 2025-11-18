@@ -15,7 +15,13 @@ export async function signUp(
 
   try {
     const nhost = await getNhost();
-    const response = await nhost.auth.signUpEmailPassword({ email, password });
+    const response = await nhost.auth.signUpEmailPassword({
+      email,
+      password,
+      options: {
+        redirectTo: `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3002'}/pro/email-verification/verify`,
+      },
+    });
     const session = response.body?.session;
 
     if (!session) {

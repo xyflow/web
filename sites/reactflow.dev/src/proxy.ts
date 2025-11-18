@@ -2,7 +2,13 @@ import { NextRequest, NextResponse } from 'next/server';
 import { handleNhostMiddleware } from '@/utils/nhost';
 
 // Define public routes that don't require authentication
-const privateRoute = ['/pro/dashboard'];
+const privateRoutes = [
+  '/pro/dashboard',
+  '/pro/team',
+  '/pro/account',
+  '/pro/support',
+  '/pro/subscribe',
+];
 
 export async function proxy(request: NextRequest) {
   // Create a response that we'll modify as needed
@@ -12,7 +18,7 @@ export async function proxy(request: NextRequest) {
   const path = request.nextUrl.pathname;
 
   // Check if this is a public route or a public asset
-  const isPrivateRoute = privateRoute.some(
+  const isPrivateRoute = privateRoutes.some(
     (route) => path === route || path.startsWith(`${route}/`),
   );
 

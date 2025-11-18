@@ -6,7 +6,7 @@ export default async function Layout({ children }: LayoutProps<'/pro'>) {
   const isAuthenticated = !!nhost.getUserSession();
 
   if (isAuthenticated) {
-    redirect('/');
+    redirect('/pro/dashboard');
   }
 
   return (
