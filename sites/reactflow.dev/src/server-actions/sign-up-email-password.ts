@@ -1,17 +1,10 @@
 'use server';
 
-import { redirect } from 'next/navigation';
-import { FetchError } from '@nhost/nhost-js/fetch';
-import { ErrorResponse } from '@nhost/nhost-js/auth';
-
 import { getNhost } from '@/utils/nhost';
 
-export async function signUp(
-  formData: FormData,
-): Promise<FetchError<ErrorResponse> | null> {
+export async function signUp(formData: FormData) {
   const email = formData.get('email') as string;
   const password = formData.get('password') as string;
-  let redirectPath: string | null = null;
 
   try {
     const nhost = await getNhost();
@@ -24,18 +17,14 @@ export async function signUp(
     });
     const session = response.body?.session;
 
-    if (!session) {
-      // use encodeURIComponent because email can contain special characters such as +
-      redirectPath = `/pro/email-verification?email=${encodeURIComponent(email)}`;
-    } else {
-      redirectPath = '/pro/dashboard';
-    }
+    // use encodeURIComponent because email can contain special characters such as +
+    return {
+      redirect: session
+        ? '/pro/dashboard'
+        : `/pro/email-verification?email=${encodeURIComponent(email)}`,
+    };
   } catch (error) {
     console.error(error);
-    return error;
-  } finally {
-    if (redirectPath) redirect(redirectPath);
+    return { error: `An error occurred during sign up: ${error.message}` };
   }
-
-  return null;
 }

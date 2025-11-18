@@ -2,28 +2,43 @@
 
 import { FC, FormEvent, useState, useTransition } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { Button, Input, InputLabel } from '@xyflow/xy-ui';
 
-import { AuthErrorNotification } from './AuthNotification';
+import { AuthNotification } from './AuthNotification';
 import { signUp } from '@/server-actions';
 
 const Signup: FC = () => {
-  const [error, setError] = useState<Awaited<ReturnType<typeof signUp>>>(null);
+  const [error, setError] = useState<string | null>(null);
   const [isLoading, startTransition] = useTransition();
+  const router = useRouter();
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     // Prevent resubmitting the form when an error is set
     event.preventDefault();
     startTransition(async () => {
       const formData = new FormData(event.currentTarget);
-      const error = await signUp(formData);
-      setError(error);
+      const result = await signUp(formData);
+
+      if (result.redirect) {
+        router.push(result.redirect);
+      } else if (result.error) {
+        setError(result.error);
+      }
     });
   }
 
   return (
     <form onSubmit={handleSubmit}>
-      {error && <AuthErrorNotification error={error} />}
+      {/*error && <AuthErrorNotification error={error} />*/}
+      {error && (
+        <AuthNotification
+          title="Something went wrong"
+          description={error}
+          variant="error"
+        />
+      )}
+
       <div className="mb-2">
         <InputLabel className="text-gray-800" htmlFor="email">
           Email
