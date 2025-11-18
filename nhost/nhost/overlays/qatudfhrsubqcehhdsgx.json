@@ -2,6 +2,6 @@
   {
     "op": "replace",
     "path": "/auth/redirections/clientUrl",
-    "value": "https://xyflow-platform-staging.vercel.app"
+    "value": "https://reactflow-website-env-staging-xyflow.vercel.app"
   }
 ]
