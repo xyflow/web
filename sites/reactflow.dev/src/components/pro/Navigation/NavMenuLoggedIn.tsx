@@ -13,11 +13,17 @@ import {
   MenubarTrigger,
 } from 'xy-shared';
 import { redirect } from 'next/navigation';
-import useSubscription from '@/hooks/useSubscription';
+import { User } from '@nhost/nhost-js/auth';
 
-export function NavMenuLoggedIn() {
-  const { isLoading, user, refetchUser } = useSubscription();
-
+export function NavMenuLoggedIn({
+  isLoading,
+  user,
+  refetchUser,
+}: {
+  isLoading: boolean;
+  user?: User | null;
+  refetchUser: () => void;
+}) {
   return (
     <Menubar className="bg-primary text-white rounded-full w-9 h-9 p-0">
       <MenubarMenu>

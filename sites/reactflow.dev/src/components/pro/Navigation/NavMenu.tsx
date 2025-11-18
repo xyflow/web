@@ -1,13 +1,18 @@
+'use client';
+
 import { NavMenuNotLoggedIn } from './NavMenuNotLoggedIn';
 
 import { NavMenuLoggedIn } from './NavMenuLoggedIn';
-import { getNhost } from '@/utils/nhost';
+import useSubscription from '@/hooks/useSubscription';
 
-async function NavMenu() {
-  const nhost = await getNhost();
-  const isAuthenticated = !!nhost.getUserSession();
+function NavMenu() {
+  const { isLoading, user, refetchUser } = useSubscription();
 
-  return isAuthenticated ? <NavMenuLoggedIn /> : <NavMenuNotLoggedIn />;
+  return user && !isLoading ? (
+    <NavMenuLoggedIn isLoading={isLoading} user={user} refetchUser={refetchUser} />
+  ) : (
+    <NavMenuNotLoggedIn />
+  );
 }
 
 export default NavMenu;
