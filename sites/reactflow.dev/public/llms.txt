@@ -1,0 +1,3194 @@
+# React Flow API Reference
+
+> A comprehensive reference for building node-based editors and interactive diagrams with React Flow
+
+## Overview
+
+React Flow (@xyflow/react) is a library for building node-based editors, workflow builders, and interactive diagrams.
+
+- Website: https://reactflow.dev
+- GitHub: https://github.com/xyflow/xyflow
+- npm: https://www.npmjs.com/package/@xyflow/react
+
+---
+
+## Main Components
+
+# \[API Definition]
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/components/ReactFlowProvider/index.tsx/#L9)
+
+The `[API Definition]` component is a
+[context provider](https://react.dev/learn/passing-data-deeply-with-context#) that
+makes it possible to access a flow's internal state outside of the
+[`[API Definition]`](/api-reference/react-flow) component. Many of the hooks we
+provide rely on this component to work.
+
+```tsx
+
+export default function Flow() {
+  return (
+    [Component Content]
+  )
+}
+
+function Sidebar() {
+  // This hook will only work if the component it's used in is a child of a
+  // [API Definition].
+  const nodes = useNodes()
+
+  return (
+    <aside>
+      {nodes.map((node) => (
+        <div key={node.id}>
+          Node {node.id} -
+            x: {node.position.x.toFixed(2)},
+            y: {node.position.y.toFixed(2)}
+        </div>
+      ))}
+    </aside>
+  )
+}
+```
+
+## Props
+
+[API Definition]
+
+## Notes
+
+- If you're using a router and want your flow's state to persist across routes,
+  it's vital that you place the `[API Definition]` component _outside_ of
+  your router.
+- If you have multiple flows on the same page you will need to use a separate
+  `[API Definition]` for each flow.
+
+---
+
+# \[API Definition]
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/container/ReactFlow/index.tsx/#L47)
+
+The `[API Definition]` component is the heart of your React Flow application. It
+renders your nodes and edges, handles user interaction, and can manage its own
+state if used as an [uncontrolled flow](/learn/advanced-use/uncontrolled-flow).
+
+```tsx
+
+export default function Flow() {
+  return [API Definition]
+}
+```
+
+This component takes a lot of different props, most of which are optional. We've
+tried to document them in groups that make sense to help you find your way.
+
+## Common props
+
+These are the props you will most commonly use when working with React Flow. If
+you are working with a controlled flow with custom nodes, you will likely use
+almost all of these!
+
+[API Definition]
+
+## Viewport props
+
+[API Definition]
+
+## Edge props
+
+[API Definition]
+
+## Event handlers
+
+> [!WARNING]
+>
+> It's important to remember to define any event handlers outside of your
+> component or using React's `useCallback` hook. If you don't, this can cause
+> React Flow to enter an infinite re-render loop!
+
+### General Events
+
+[API Definition]
+
+### Node Events
+
+[API Definition]
+
+### Edge Events
+
+[API Definition]
+
+### Connection Events
+
+[API Definition]
+
+### Pane Events
+
+[API Definition]
+
+### Selection Events
+
+[API Definition]
+
+## Interaction props
+
+[API Definition]
+
+## Connection line props
+
+[API Definition]
+
+## Keyboard props
+
+React Flow let's you pass in a few different keyboard shortcuts as another way
+to interact with your flow. We've tried to set up sensible defaults like using
+backspace to delete any selected nodes or edges, but you can use these props to
+set your own.
+
+To disable any of these shortcuts, pass in `null` to the prop you want to
+disable.
+
+[API Definition]
+
+## Style props
+
+Applying certain classes to elements rendered inside the canvas will change how
+interactions are handled. These props let you configure those class names if you
+need to.
+
+[API Definition]
+
+## Notes
+
+- The props of this component get exported as `ReactFlowProps`
+
+---
+
+## Components
+
+# \[API Definition]
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/additional-components/Background/Background.tsx)
+
+The `[API Definition]` component makes it convenient to render different types of
+backgrounds common in node-based UIs. It comes with three variants: `lines`,
+`dots` and `cross`.
+
+```jsx
+
+export default function Flow() {
+  return (
+    [Component Content]
+  );
+}
+```
+
+## Props
+
+[API Definition]
+
+## Examples
+
+### Combining multiple backgrounds
+
+It is possible to layer multiple `[API Definition]` components on top of one another
+to create something more interesting. The following example shows how to render a
+square grid accented every 10th line.
+
+```tsx
+
+export default function Flow() {
+  return (
+    [Component Content]
+  );
+}
+```
+
+## Notes
+
+- When combining multiple `[API Definition]` components it's important to give each
+  of them a unique `id` prop!
+
+---
+
+# \[API Definition]
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/components/Edges/BaseEdge.tsx)
+
+The `[API Definition]` component gets used internally for all the edges. It can be
+used inside a custom edge and handles the invisible helper edge and the edge label
+for you.
+
+```jsx
+
+export function CustomEdge({ sourceX, sourceY, targetX, targetY, ...props }) {
+  const [edgePath] = getStraightPath({
+    sourceX,
+    sourceY,
+    targetX,
+    targetY,
+  });
+
+  const { label, labelStyle, markerStart, markerEnd, interactionWidth } = props;
+
+  return (
+    [API Definition]
+  );
+}
+```
+
+## Props
+
+<APIDocs
+  componentName="BaseEdge"
+  groupKeys="Omit<SVGAttributes<SVGPathElement>, 'd' | 'path' | 'markerStart' | 'markerEnd'>"
+/>
+
+## Notes
+
+- If you want to use an edge marker with the [`[API Definition]`](/api-reference/components/base-edge) component,
+  you can pass the `markerStart` or `markerEnd` props passed to your custom edge
+  through to the [`[API Definition]`](/api-reference/components/base-edge) component. You can see all the props
+  passed to a custom edge by looking at the [`EdgeProps`](/api-reference/types/edge-props) type.
+
+---
+
+# \[API Definition]
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/additional-components/Controls/ControlButton.tsx)
+
+You can add buttons to the control panel by using the `[API Definition]` component
+and pass it as a child to the [`[API Definition]`](/api-reference/components/controls) component.
+
+```jsx
+
+export default function Flow() {
+  return (
+    [Component Content]
+      </Controls>
+    </ReactFlow>
+  )
+}
+```
+
+## Props
+
+The `[API Definition]` component accepts any prop valid on a HTML `<button />`
+element.
+
+<APIDocs componentName="ControlButton" groupKeys="ButtonHTMLAttributes<HTMLButtonElement>" />
+
+---
+
+# \[API Definition]
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/additional-components/Controls/Controls.tsx)
+
+The `[API Definition]` component renders a small panel that contains convenient
+buttons to zoom in, zoom out, fit the view, and lock the viewport.
+
+```tsx
+
+export default function Flow() {
+  return (
+    [Component Content]
+  )
+}
+```
+
+## Props
+
+For TypeScript users, the props type for the `[API Definition]` component is exported
+as `ControlProps`.
+
+[API Definition]
+
+## Notes
+
+- To extend or customize the controls, you can use the [`[API Definition]`](/api-reference/components/control-button)
+  component
+
+---
+
+# \[API Definition]
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/components/EdgeLabelRenderer/index.tsx)
+
+Edges are SVG-based. If you want to render more complex labels you can use the
+`[API Definition]` component to access a div based renderer. This component
+is a portal that renders the label in a `<div />` that is positioned on top of
+the edges. You can see an example usage of the component in the [edge label renderer](/examples/edges/edge-label-renderer)
+example.
+
+```jsx
+
+const CustomEdge = ({ id, data, ...props }) => {
+  const [edgePath, labelX, labelY] = getBezierPath(props);
+
+  return (
+    <>
+      [API Definition]
+      [Component Content]
+    </>
+  );
+};
+
+export default CustomEdge;
+```
+
+## Props
+
+[API Definition]
+
+## Notes
+
+- The `[API Definition]` has no pointer events by default. If you want to
+  add mouse interactions you need to set the style `pointerEvents: 'all'` and add
+  the `nopan` class on the label or the element you want to interact with.
+
+---
+
+# \[API Definition]
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/components/Edges/EdgeText.tsx)
+
+You can use the `[API Definition]` component as a helper component to display text
+within your custom edges.
+
+```jsx
+
+export function CustomEdgeLabel({ label }) {
+  return (
+    [API Definition]
+  );
+}
+```
+
+## Props
+
+For TypeScript users, the props type for the `[API Definition]` component is exported
+as `EdgeTextProps`.
+
+<APIDocs componentName="EdgeText" groupKeys="Omit<SVGAttributes<SVGElement>, 'x' | 'y'>" />
+
+Additionally, you may also pass any standard React HTML attributes such as `onClick`,
+`className` and so on.
+
+---
+
+# \[API Definition]
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/additional-components/EdgeToolbar/EdgeToolbar.tsx)
+
+This component can render a toolbar to one side of a custom edge. This toolbar doesn't
+scale with the viewport so that the content doesn't get too small when zooming out.
+
+```jsx
+
+function CustomEdge(props: EdgeProps) {
+  const [edgePath, centerX, centerY] = getBezierPath(props);
+
+  return (
+    <>
+      [API Definition]
+      [Component Content]
+    </>
+  );
+}
+
+export default memo(CustomEdge);
+```
+
+## Props
+
+<APIDocs componentName="EdgeToolbar" groupKeys="HTMLAttributes<HTMLDivElement>" />
+
+## Notes
+
+- By default, the toolbar is only visible when the edge is selected. You can override this
+  behavior by setting the `isVisible` prop to `true`.
+
+---
+
+# \[API Definition]
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/components/Handle/index.tsx)
+
+The `[API Definition]` component is used in your [custom nodes](/learn/customization/custom-nodes)
+to define connection points.
+
+```jsx
+
+export const CustomNode = ({ data }) => {
+  return (
+    <>
+      <div style={{ padding: '10px 20px' }}>
+        {data.label}
+      </div>
+
+      [API Definition]
+      [API Definition]
+    </>
+  );
+};
+```
+
+## Props
+
+For TypeScript users, the props type for the `[API Definition]` component is exported
+as `HandleProps`.
+
+<APIDocs componentName="Handle" groupKeys="Omit<ComponentProps<'div'>, 'id'>" />
+
+---
+
+# \[API Definition]
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/additional-components/MiniMap/MiniMap.tsx)
+
+The `[API Definition]` component can be used to render an overview of your flow. It
+renders each node as an SVG element and visualizes where the current viewport is
+in relation to the rest of the flow.
+
+```jsx
+
+export default function Flow() {
+  return (
+    [Component Content]
+  );
+}
+```
+
+## Props
+
+For TypeScript users, the props type for the `[API Definition]` component is exported
+as `MiniMapProps`.
+
+[Component Content]
+  );
+}
+```
+
+### Implement a custom mini map node
+
+It is possible to pass a custom component to the `nodeComponent` prop to change
+how nodes are rendered in the mini map. If you do this you **must** use only
+SVG elements in your component if you want it to work correctly.
+
+```jsx
+
+export default function Flow() {
+  return (
+    [Component Content]
+  );
+}
+
+function MiniMapNode({ x, y }) {
+  return <circle cx={x} cy={y} r="50" />;
+}
+```
+
+Check out the documentation for [`MiniMapNodeProps`](/api-reference/types/mini-map-node-props)
+to see what props are passed to your custom component.
+
+### Customising mini map node color
+
+The `nodeColor`, `nodeStrokeColor`, and `nodeClassName` props can be a function
+that takes a [`Node`](/api-reference/types/node) and computes a value for the prop. This can
+be used to customize the appearance of each mini map node.
+
+This example shows how to color each mini map node based on the node's type:
+
+```jsx
+
+export default function Flow() {
+  return (
+    [Component Content]
+  );
+}
+
+function nodeColor(node) {
+  switch (node.type) {
+    case 'input':
+      return '#6ede87';
+    case 'output':
+      return '#6865A5';
+    default:
+      return '#ff0072';
+  }
+}
+```
+
+## TypeScript
+
+This component accepts a generic type argument of custom node types. See this
+[section in our Typescript guide](/learn/advanced-use/typescript#nodetype-edgetype-unions) for more information.
+
+```tsx
+<MiniMap<CustomNodeType> nodeColor={nodeColor} />
+```
+
+---
+
+# \[API Definition]
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/additional-components/NodeResizer/NodeResizeControl.tsx)
+
+To create your own resizing UI, you can use the `NodeResizeControl` component where you can pass children (such as icons).
+
+## Props
+
+For TypeScript users, the props type for the `[API Definition]` component is exported
+as `ResizeControlProps`.
+
+[API Definition]
+
+---
+
+# \[API Definition]
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/additional-components/NodeResizer/NodeResizer.tsx)
+
+The `[API Definition]` component can be used to add a resize functionality to your
+nodes. It renders draggable controls around the node to resize in all directions.
+
+```jsx
+
+const ResizableNode = ({ data }) => {
+  return (
+    <>
+      [API Definition]
+      [API Definition]
+      <div style={{ padding: 10 }}>{data.label}</div>
+      [API Definition]
+    </>
+  );
+};
+
+export default memo(ResizableNode);
+```
+
+## Props
+
+For TypeScript users, the props type for the `[API Definition]` component is exported
+as `NodeResizerProps`.
+
+[API Definition]
+
+## Examples
+
+Head over to the [example page](/examples/nodes/node-resizer) to see how this is done.
+
+[API Definition]
+
+### Custom Resize Controls
+
+To build custom resize controls, you can use the [NodeResizeControl](/api-reference/components/node-resize-control) component and customize it.
+
+## Notes
+
+- Take a look at the docs for the [`NodeProps`](/api-reference/types/node-props) type or the
+  guide on [custom nodes](/learn/customization/custom-nodes) to see how to
+  implement your own nodes.
+
+---
+
+# \[API Definition]
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/additional-components/NodeToolbar/NodeToolbar.tsx)
+
+This component can render a toolbar or tooltip to one side of a custom node. This
+toolbar doesn't scale with the viewport so that the content is always visible.
+
+```jsx
+
+const CustomNode = ({ data }) => {
+  return (
+    <>
+      [Component Content]
+
+      <div style={{ padding: '10px 20px' }}>
+        {data.label}
+      </div>
+
+      [API Definition]
+      [API Definition]
+    </>
+  );
+};
+
+export default memo(CustomNode);
+```
+
+## Props
+
+For TypeScript users, the props type for the `[API Definition]` component is exported
+as `NodeToolbarProps`. Additionally, the `[API Definition]` component accepts all props of the HTML `<div />`
+element.
+
+<APIDocs componentName="NodeToolbar" groupKeys="HTMLAttributes<HTMLDivElement>" />
+
+## Notes
+
+- By default, the toolbar is only visible when a node is selected. If multiple
+  nodes are selected it will not be visible to prevent overlapping toolbars or
+  clutter. You can override this behavior by setting the `isVisible` prop to
+  `true`.
+
+---
+
+# \[API Definition]
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/components/Panel/index.tsx)
+
+The `[API Definition]` component helps you position content above the viewport. It is
+used internally by the [`[API Definition]`](/api-reference/components/minimap) and [`[API Definition]`](/api-reference/components/controls)
+components.
+
+```jsx
+
+export default function Flow() {
+  return (
+    [Component Content]
+      [Component Content]
+      [Component Content]
+      [Component Content]
+      [Component Content]
+      [Component Content]
+      [Component Content]
+      [Component Content]
+    </ReactFlow>
+  );
+}
+```
+
+## Props
+
+For TypeScript users, the props type for the `[API Definition]` component is exported
+as `PanelProps`. Additionally, the `[API Definition]` component accepts all props of the HTML `<div />`
+element.
+
+<APIDocs componentName="Panel" groupKeys="ComponentProps<'div'>" />
+
+---
+
+# &lt;ViewportPortal />
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/components/ViewportPortal/index.tsx)
+
+`[API Definition]` component can be used to add components to the same viewport of the flow where nodes and edges are rendered.
+This is useful when you want to render your own components that adhere to the same coordinate system as the nodes & edges and are also
+affected by zooming and panning
+
+```jsx
+
+export default function () {
+  return (
+    [Component Content]
+  );
+}
+```
+
+## Props
+
+[API Definition]
+
+---
+
+## Hooks
+
+# useConnection()
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/hooks/useConnection.ts)
+
+The `useConnection` hook returns the current connection state when there is an active connection interaction. If no connection interaction is active, it returns `null` for every property. A typical use case for this hook is to colorize handles based on a certain condition (e.g. if the connection is valid or not).
+
+```tsx
+
+export default function App() {
+  const connection = useConnection();
+
+  return (
+    <div>
+      {connection ? `Someone is trying to make a connection from ${connection.fromNode} to this one.` : 'There are currently no incoming connections!'}
+    </div>
+  );
+}
+```
+
+## Signature
+
+[API Definition]
+
+---
+
+# useEdgesState()
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/hooks/useNodesEdgesState.ts)
+
+This hook makes it easy to prototype a controlled flow where you manage the
+state of nodes and edges outside the `ReactFlowInstance`. You can think of it
+like React's `useState` hook with an additional helper callback.
+
+```jsx
+
+const initialNodes = [];
+const initialEdges = [];
+
+export default function () {
+  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
+  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+
+  return (
+    [API Definition]
+  );
+}
+```
+
+## Signature
+
+[API Definition]
+
+## TypeScript
+
+This hook accepts a generic type argument of custom edge types. See this
+[section in our TypeScript guide](/learn/advanced-use/typescript#nodetype-edgetype-unions) for more information.
+
+```tsx
+const nodes = useEdgesState<CustomEdgeType>();
+```
+
+## Notes
+
+- This hook was created to make prototyping easier and our documentation
+  examples clearer. Although it is OK to use this hook in production, in
+  practice you may want to use a more sophisticated state management solution
+  like [Zustand](/docs/guides/state-management/) instead.
+
+---
+
+# useEdges()
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/hooks/useEdges.ts)
+
+This hook returns an array of the current edges. Components that use this hook
+will re-render **whenever any edge changes**.
+
+```jsx
+
+export default function () {
+  const edges = useEdges();
+
+  return <div>There are currently {edges.length} edges!</div>;
+}
+```
+
+## Signature
+
+[API Definition]
+
+## TypeScript
+
+This hook accepts a generic type argument of custom edge types. See this
+[section in our TypeScript guide](/learn/advanced-use/typescript#nodetype-edgetype-unions) for more information.
+
+```tsx
+const nodes = useEdges<CustomEdgeType>();
+```
+
+## Notes
+
+- Relying on `useEdges` unnecessarily can be a common cause of performance
+  issues. Whenever any edge changes, this hook will cause the component to
+  re-render. Often we actually care about something more specific, like when
+  the _number_ of edges changes: where possible try to use
+  [`useStore`](/api-reference/hooks/use-store) instead.
+
+---
+
+# useHandleConnections()
+
+> [!WARNING]
+>
+>  `useHandleConnections` is deprecated in favor of the more capable
+>  [useNodeConnections](/api-reference/hooks/use-node-connections).
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/hooks/useHandleConnections.ts)
+
+This hook returns an array connections on a specific handle or handle type.
+
+```jsx
+
+export default function () {
+  const connections = useHandleConnections({ type: 'target', id: 'my-handle' });
+
+  return (
+    <div>There are currently {connections.length} incoming connections!</div>
+  );
+}
+```
+
+## Signature
+
+[API Definition]
+
+---
+
+# useInternalNode()
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/hooks/useInternalNode.ts)
+
+This hook returns the internal representation of a specific node. Components that use this hook
+will re-render **whenever any node changes**, including when a node is selected
+or moved.
+
+```jsx
+
+export default function () {
+  const internalNode = useInternalNode('node-1');
+  const absolutePosition = internalNode.internals.positionAbsolute;
+
+  return (
+    <div>
+      The absolute position of the node is at:
+      <p>x: {absolutePosition.x}</p>
+      <p>y: {absolutePosition.y}</p>
+    </div>
+  );
+}
+```
+
+## Signature
+
+[API Definition]
+
+## TypeScript
+
+This hook accepts a generic type argument of custom node types. See this
+[section in our TypeScript guide](/learn/advanced-use/typescript#nodetype-edgetype-unions) for more information.
+
+```tsx
+const internalNode = useInternalNode<CustomNodeType>();
+```
+
+---
+
+# useKeyPress()
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/hooks/useKeyPress.ts)
+
+This hook lets you listen for specific key codes and tells you whether they are
+currently pressed or not.
+
+```jsx
+
+export default function () {
+  const spacePressed = useKeyPress('Space');
+  const cmdAndSPressed = useKeyPress(['Meta+s', 'Strg+s']);
+
+  return (
+    <div>
+      {spacePressed && <p>Space pressed!</p>}
+      {cmdAndSPressed && <p>Cmd + S pressed!</p>}
+    </div>
+  );
+}
+```
+
+## Signature
+
+[API Definition]
+
+## Notes
+
+- This hook does not rely on a `ReactFlowInstance` so you are free to use it
+  anywhere in your app!
+
+---
+
+# useNodeConnections()
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/hooks/useNodeConnections.ts)
+
+This hook returns an array of connections on a specific node, handle type ('source', 'target') or handle ID.
+
+```jsx
+
+export default function () {
+  const connections = useNodeConnections({
+    handleType: 'target',
+    handleId: 'my-handle',
+  });
+
+  return (
+    <div>There are currently {connections.length} incoming connections!</div>
+  );
+}
+```
+
+## Signature
+
+[API Definition]
+
+---
+
+# useNodeId()
+
+[Source on Github](https://github.com/xyflow/xyflow/blob/v11/packages/core/src/contexts/NodeIdContext.ts/#L7)
+
+You can use this hook to get the id of the node it is used inside. It is useful
+if you need the node's id deeper in the render tree but don't want to manually
+drill down the id as a prop.
+
+```js
+
+export default function CustomNode() {
+  return (
+    <div>
+      <span>This node has an id of </span>
+      [API Definition]
+    </div>
+  );
+}
+
+function NodeIdDisplay() {
+  const nodeId = useNodeId();
+
+  return <span>{nodeId}</span>;
+}
+```
+
+## Signature
+
+[API Definition]
+
+## Notes
+
+- This hook should only be used within a custom node or its children.
+
+---
+
+# useNodesData()
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/hooks/useNodesData.ts)
+
+This hook lets you subscribe to changes of a specific nodes `data` object.
+
+```jsx
+
+export default function () {
+  const nodeData = useNodesData('nodeId-1');
+
+  const nodesData = useNodesData(['nodeId-1', 'nodeId-2']);
+}
+```
+
+## Signature
+
+[API Definition]
+
+## TypeScript
+
+This hook accepts a generic type argument of custom node types. See this
+[section in our TypeScript guide](/learn/advanced-use/typescript#nodetype-edgetype-unions) for more information.
+
+```tsx
+const nodesData = useNodesData<NodesType>(['nodeId-1', 'nodeId-2']);
+```
+
+---
+
+# useNodesInitialized()
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/hooks/useNodesInitialized.ts)
+
+This hook tells you whether all the nodes in a flow have been measured and given
+a width and height. When you add a node to the flow, this hook will return
+`false` and then `true` again once the node has been measured.
+
+```jsx
+
+const options = {
+  includeHiddenNodes: false,
+};
+
+export default function useLayout() {
+  const { getNodes } = useReactFlow();
+  const nodesInitialized = useNodesInitialized(options);
+  const [layoutedNodes, setLayoutedNodes] = useState(getNodes());
+
+  useEffect(() => {
+    if (nodesInitialized) {
+      setLayoutedNodes(yourLayoutingFunction(getNodes()));
+    }
+  }, [nodesInitialized]);
+
+  return layoutedNodes;
+}
+```
+
+## Signature
+
+[API Definition]
+
+## Notes
+
+- This hook always returns `false` if the internal nodes array is empty.
+
+---
+
+# useNodesState()
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/hooks/useNodesEdgesState.ts)
+
+This hook makes it easy to prototype a controlled flow where you manage the
+state of nodes and edges outside the `ReactFlowInstance`. You can think of it
+like React's `useState` hook with an additional helper callback.
+
+```jsx
+
+const initialNodes = [];
+const initialEdges = [];
+
+export default function () {
+  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
+  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+
+  return (
+    [API Definition]
+  );
+}
+```
+
+## Signature
+
+[API Definition]
+
+## TypeScript
+
+This hook accepts a generic type argument of custom node types. See this
+[section in our TypeScript guide](/learn/advanced-use/typescript#nodetype-edgetype-unions) for more information.
+
+```tsx
+const nodes = useNodesState<CustomNodeType>();
+```
+
+## Notes
+
+- This hook was created to make prototyping easier and our documentation
+  examples clearer. Although it is OK to use this hook in production, in
+  practice you may want to use a more sophisticated state management solution
+  like [Zustand](/docs/guides/state-management/) instead.
+
+---
+
+# useNodes()
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/hooks/useNodes.ts)
+
+This hook returns an array of the current nodes. Components that use this hook
+will re-render **whenever any node changes**, including when a node is selected
+or moved.
+
+```jsx
+
+export default function () {
+  const nodes = useNodes();
+
+  return <div>There are currently {nodes.length} nodes!</div>;
+}
+```
+
+## Signature
+
+[API Definition]
+
+## TypeScript
+
+This hook accepts a generic type argument of custom node types. See this
+[section in our TypeScript guide](/learn/advanced-use/typescript#nodetype-edgetype-unions) for more information.
+
+```tsx
+const nodes = useNodes<CustomNodeType>();
+```
+
+## Notes
+
+- Relying on `useNodes` unnecessarily can be a common cause of performance
+  issues. Whenever any node changes, this hook will cause the component to
+  re-render. Often we actually care about something more specific, like when
+  the _number_ of nodes changes: where possible try to use
+  [`useStore`](/api-reference/hooks/use-store) instead.
+
+---
+
+# useOnSelectionChange()
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/hooks/useOnSelectionChange.ts)
+
+This hook lets you listen for changes to both node and edge selection. As the
+name implies, the callback you provide will be called whenever the selection of
+_either_ nodes or edges changes.
+
+> [!WARNING]
+>
+> You need to memoize the passed `onChange` handler, otherwise the hook will not
+> work correctly.
+
+```jsx
+
+function SelectionDisplay() {
+  const [selectedNodes, setSelectedNodes] = useState([]);
+  const [selectedEdges, setSelectedEdges] = useState([]);
+
+  // the passed handler has to be memoized, otherwise the hook will not work correctly
+  const onChange = useCallback(({ nodes, edges }) => {
+    setSelectedNodes(nodes.map((node) => node.id));
+    setSelectedEdges(edges.map((edge) => edge.id));
+  }, []);
+
+  useOnSelectionChange({
+    onChange,
+  });
+
+  return (
+    <div>
+      <p>Selected nodes: {selectedNodes.join(', ')}</p>
+      <p>Selected edges: {selectedEdges.join(', ')}</p>
+    </div>
+  );
+}
+```
+
+## Signature
+
+[API Definition]
+
+## Notes
+
+- This hook can only be used in a component that is a child of a
+  [`[API Definition]`](/api-reference/react-flow-provider) or a
+  [`[API Definition]`](/api-reference/react-flow) component.
+
+---
+
+# useOnViewportChange()
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/hooks/useOnViewportChange.ts)
+
+The `useOnViewportChange` hook lets you listen for changes to the viewport such
+as panning and zooming. You can provide a callback for each phase of a viewport
+change: `onStart`, `onChange`, and `onEnd`.
+
+```tsx
+
+function ViewportChangeLogger() {
+  useOnViewportChange({
+    onStart: (viewport: Viewport) => console.log('start', viewport),
+    onChange: (viewport: Viewport) => console.log('change', viewport),
+    onEnd: (viewport: Viewport) => console.log('end', viewport),
+  });
+
+  return null;
+}
+```
+
+## Signature
+
+[API Definition]
+
+## Notes
+
+- This hook can only be used in a component that is a child of a
+  [`[API Definition]`](/api-reference/react-flow-provider) or a
+  [`[API Definition]`](/api-reference/react-flow) component.
+
+---
+
+# useReactFlow()
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/hooks/useReactFlow.ts)
+
+This hook returns a [`ReactFlowInstance`](/api-reference/types/react-flow-instance) that can
+be used to update nodes and edges, manipulate the viewport, or query the current
+state of the flow.
+
+```jsx
+
+export function NodeCounter() {
+  const reactFlow = useReactFlow();
+  const [count, setCount] = useState(0);
+  const countNodes = useCallback(() => {
+    setCount(reactFlow.getNodes().length);
+    // you need to pass it as a dependency if you are using it with useEffect or useCallback
+    // because at the first render, it's not initialized yet and some functions might not work.
+  }, [reactFlow]);
+
+  return (
+    <div>
+      <button onClick={countNodes}>Update count</button>
+      <p>There are {count} nodes in the flow.</p>
+    </div>
+  );
+}
+```
+
+## Signature
+
+[API Definition]
+
+## TypeScript
+
+This hook accepts a generic type argument of custom node & edge types. See this
+[section in our TypeScript guide](/learn/advanced-use/typescript#nodetype-edgetype-unions) for more information.
+
+```tsx
+const reactFlow = useReactFlow<CustomNodeType, CustomEdgeType>();
+```
+
+## Notes
+
+- This hook can only be used in a component that is a child of a
+  [`[API Definition]`](/api-reference/react-flow-provider) or a
+  [`[API Definition]`](/api-reference/react-flow) component.
+- Unlike [`useNodes`](/api-reference/hooks/use-nodes) or [`useEdges`](/api-reference/hooks/use-edges), this hook won't
+  cause your component to re-render when state changes. Instead, you can query
+  the state when you need it by using methods on the [`ReactFlowInstance`](/api-reference/types/react-flow-instance)
+  this hook returns.
+
+---
+
+# useStoreApi()
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/hooks/useStore.ts)
+
+In some cases, you might need to access the store directly. This hook returns the store object which can be used on demand to access the state or dispatch actions.
+
+> [!NOTE]
+>
+> This hook should only be used if there is no other way to access the internal
+> state. For many of the common use cases, there are dedicated hooks available
+> such as [`useReactFlow`](/api-reference/hooks/use-react-flow),
+> [`useViewport`](/api-reference/hooks/use-viewport), etc.
+
+```tsx
+
+const NodesLengthDisplay = () => {
+  const [nodesLength, setNodesLength] = useState(0);
+  const store = useStoreApi();
+
+  const onClick = useCallback(() => {
+    const { nodes } = store.getState();
+    const length = nodes.length || 0;
+
+    setNodesLength(length);
+  }, [store]);
+
+  return (
+    <div>
+      <p>The current number of nodes is: {nodesLength}</p>
+      <button onClick={onClick}>Update node length.</button>
+    </div>
+  );
+};
+
+function Flow() {
+  return (
+    [Component Content]
+  );
+}
+```
+
+This example computes the number of nodes in the flow _on-demand_. This is in
+contrast to the example in the [`useStore`](/api-reference/hooks/use-store) hook that re-renders
+the component whenever the number of nodes changes.
+
+Choosing whether to calculate values on-demand or to subscribe to changes as they
+happen is a bit of a balancing act. On the one hand, putting too many heavy
+calculations in an event handler can make your app feel sluggish or unresponsive.
+On the other hand, computing values eagerly can lead to slow or unnecessary
+re-renders.
+
+We make both this hook and [`useStore`](/api-reference/hooks/use-store) available so that you can
+choose the approach that works best for your use-case.
+
+## Signature
+
+[API Definition]
+
+## TypeScript
+
+This hook accepts a generic type argument of custom node & edge types. See this
+[section in our TypeScript guide](/learn/advanced-use/typescript#nodetype-edgetype-unions) for more information.
+
+```tsx
+const store = useStoreApi<CustomNodeType, CustomEdgeType>();
+```
+
+---
+
+# useStore()
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/hooks/useStore.ts)
+
+This hook can be used to subscribe to internal state changes of the React Flow
+component. The `useStore` hook is re-exported from the [Zustand](https://github.com/pmndrs/zustand)
+state management library, so you should check out their docs for more details.
+
+[Component Content]
+
+```jsx
+
+const nodesLengthSelector = (state) =>
+  state.nodes.length || 0;
+
+const NodesLengthDisplay = () => {
+  const nodesLength = useStore(nodesLengthSelector);
+
+  return <div>The current number of nodes is: {nodesLength}</div>;
+};
+
+function Flow() {
+  return (
+    [Component Content]
+  );
+}
+```
+
+This example computes the number of nodes eagerly. Whenever the number of nodes
+in the flow changes, the `[API Definition]` component will re-render. This
+is in contrast to the example in the [`useStoreApi`](/api-reference/hooks/use-store-api) hook that only
+computes the number of nodes when a button is clicked.
+
+Choosing whether to calculate values on-demand or to subscribe to changes as they
+happen is a bit of a balancing act. On the one hand, putting too many heavy
+calculations in an event handler can make your app feel sluggish or unresponsive.
+On the other hand, computing values eagerly can lead to slow or unnecessary
+re-renders.
+
+We make both this hook and [`useStoreApi`](/api-reference/hooks/use-store-api) available so that you
+can choose the approach that works best for your use-case.
+
+## Signature
+
+[API Definition]
+
+## Examples
+
+### Triggering store actions
+
+You can manipulate the internal React Flow state by triggering internal actions
+through the `useStore` hook. These actions are already used internally throughout
+the library, but you can also use them to implement custom functionality.
+
+```jsx
+
+const setMinZoomSelector = (state) => state.setMinZoom;
+
+function MinZoomSetter() {
+  const setMinZoom = useStore(setMinZoomSelector);
+
+  return <button onClick={() => setMinZoom(6)}>set min zoom</button>;
+}
+```
+
+## TypeScript
+
+This hook can be typed by typing the selector function. See this
+[section in our TypeScript guide](/learn/advanced-use/typescript#nodetype-edgetype-unions) for more information.
+
+```tsx
+const nodes = useStore((s: ReactFlowState<CustomNodeType>) => s.nodes);
+```
+
+---
+
+# useUpdateNodeInternals()
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/hooks/useUpdateNodeInternals.ts)
+
+When you programmatically add or remove handles to a node or update a node's
+handle position, you need to let React Flow know about it using this hook. This
+will update the internal dimensions of the node and properly reposition handles
+on the canvas if necessary.
+
+```jsx
+
+export default function RandomHandleNode({ id }) {
+  const updateNodeInternals = useUpdateNodeInternals();
+  const [handleCount, setHandleCount] = useState(0);
+  const randomizeHandleCount = useCallback(() => {
+    setHandleCount(Math.floor(Math.random() * 10));
+    updateNodeInternals(id);
+  }, [id, updateNodeInternals]);
+
+  return (
+    <>
+      {Array.from({ length: handleCount }).map((_, index) => (
+        [API Definition]
+      ))}
+
+      <div>
+        <button onClick={randomizeHandleCount}>Randomize handle count</button>
+        <p>There are {handleCount} handles on this node.</p>
+      </div>
+    </>
+  );
+}
+```
+
+## Signature
+
+[API Definition]
+
+## Notes
+
+- This hook can only be used in a component that is a child of a
+  [`[API Definition]`](/api-reference/react-flow-provider) or a
+  [`[API Definition]`](/api-reference/react-flow) component.
+
+---
+
+# useViewport()
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/hooks/useViewport.ts)
+
+The `useViewport` hook is a convenient way to read the current state of the
+[`Viewport`](/api-reference/types/viewport) in a component. Components that use this hook
+will re-render **whenever the viewport changes**.
+
+```jsx
+
+export default function ViewportDisplay() {
+  const { x, y, zoom } = useViewport();
+
+  return (
+    <div>
+      <p>
+        The viewport is currently at ({x}, {y}) and zoomed to {zoom}.
+      </p>
+    </div>
+  );
+}
+```
+
+## Signature
+
+[API Definition]
+
+## Notes
+
+- This hook can only be used in a component that is a child of a
+  [`[API Definition]`](/api-reference/react-flow-provider) or a
+  [`[API Definition]`](/api-reference/react-flow) component.
+
+---
+
+## Utility Functions
+
+# addEdge()
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/utils/edges/general.ts/#L100)
+
+This util is a convenience function to add a new [`Edge`](/api-reference/types/edge) to an
+array of edges. It also performs some validation to make sure you don't add an
+invalid edge or duplicate an existing one.
+
+```js
+
+  ReactFlow,
+  addEdge,
+  useNodesState,
+  useEdgesState,
+} from '@xyflow/react';
+
+export default function Flow() {
+  const [nodes, setNodes, onNodesChange] = useNodesState([]);
+  const [edges, setEdges, onEdgesChange] = useEdgesState([]);
+  const onConnect = useCallback(
+    (connection) => {
+      setEdges((oldEdges) => addEdge(connection, oldEdges));
+    },
+    [setEdges],
+  );
+
+  return [API Definition];
+}
+```
+
+## Signature
+
+[API Definition]
+
+## Notes
+
+- If an edge with the same `target` and `source` already exists (and the same
+  `targetHandle` and `sourceHandle` if those are set), then this util won't add
+  a new edge even if the `id` property is different.
+
+---
+
+# applyEdgeChanges()
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/utils/changes.ts/#L167)
+
+Various events on the [`[API Definition]`](/api-reference/react-flow) component can produce an
+[`EdgeChange`](/api-reference/types/edge-change) that describes how to update the edges of your
+flow in some way. If you don't need any custom behavior, this util can be used to
+take an array of these changes and apply them to your edges.
+
+```js
+
+export default function Flow() {
+  const [nodes, setNodes] = useState([]);
+  const [edges, setEdges] = useState([]);
+  const onEdgesChange = useCallback(
+    (changes) => {
+      setEdges((oldEdges) => applyEdgeChanges(changes, oldEdges));
+    },
+    [setEdges],
+  );
+
+  return (
+    [API Definition]
+  );
+}
+```
+
+## Signature
+
+[API Definition]
+
+## Notes
+
+- If you don't need any custom behavior, the [`useEdgesState`](/api-reference/hooks/use-edges-state)
+  hook conveniently wraps this util and React's `useState` hook for you and might
+  be simpler to use.
+
+---
+
+# applyNodeChanges()
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/utils/changes.ts/#L140)
+
+Various events on the [`[API Definition]`](/api-reference/react-flow) component can produce a
+[`NodeChange`](/api-reference/types/node-change) that describes how to update the nodes of your
+flow in some way. If you don't need any custom behavior, this util can be used to
+take an array of these changes and apply them to your nodes.
+
+```js
+
+export default function Flow() {
+  const [nodes, setNodes] = useState([]);
+  const [edges, setEdges] = useState([]);
+  const onNodesChange = useCallback(
+    (changes) => {
+      setNodes((oldNodes) => applyNodeChanges(changes, oldNodes));
+    },
+    [setNodes],
+  );
+
+  return (
+    [API Definition]
+  );
+}
+```
+
+## Signature
+
+[API Definition]
+
+## Notes
+
+- If you don't need any custom behavior, the [`useNodesState`](/api-reference/hooks/use-nodes-state)
+  hook conveniently wraps this util and React's `useState` hook for you and might
+  be simpler to use.
+
+---
+
+# getBezierPath()
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/utils/edges/bezier-edge.ts/#L95)
+
+The `getBezierPath` util returns everything you need to render a bezier edge
+between two nodes.
+
+```js
+
+const source = { x: 0, y: 20 };
+const target = { x: 150, y: 100 };
+
+const [path, labelX, labelY, offsetX, offsetY] = getBezierPath({
+  sourceX: source.x,
+  sourceY: source.y,
+  sourcePosition: Position.Right,
+  targetX: target.x,
+  targetY: target.y,
+  targetPosition: Position.Left,
+});
+
+console.log(path); //=> "M0,20 C75,20 75,100 150,100"
+console.log(labelX, labelY); //=> 75, 60
+console.log(offsetX, offsetY); //=> 75, 40
+```
+
+## Signature
+
+[API Definition]
+
+## Notes
+
+- This function returns a tuple (aka a fixed-size array) to make it easier to
+  work with multiple edge paths at once.
+
+---
+
+# getConnectedEdges()
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/utils/graph.ts/#L224)
+
+This utility filters an array of edges, keeping only those where either the source or target node is present in the given array of nodes.
+
+```js
+
+const nodes = [
+  { id: 'a', position: { x: 0, y: 0 } },
+  { id: 'b', position: { x: 100, y: 0 } },
+];
+const edges = [
+  { id: 'a->c', source: 'a', target: 'c' },
+  { id: 'c->d', source: 'c', target: 'd' },
+];
+
+const connectedEdges = getConnectedEdges(nodes, edges);
+// => [{ id: 'a->c', source: 'a', target: 'c' }]
+```
+
+## Signature
+
+[API Definition]
+
+---
+
+# getIncomers()
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/utils/graph.ts/#L91)
+
+This util is used to tell you what nodes, if any, are connected to the given node
+as the _source_ of an edge.
+
+```ts
+
+const nodes = [];
+const edges = [];
+
+const incomers = getIncomers(
+  { id: '1', position: { x: 0, y: 0 }, data: { label: 'node' } },
+  nodes,
+  edges,
+);
+```
+
+## Signature
+
+[API Definition]
+
+---
+
+# getNodesBounds()
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/utils/graph.ts/#L133)
+
+Returns the bounding box that contains all the given nodes in an array. This can
+be useful when combined with [`getViewportForBounds`](/api-reference/utils/get-viewport-for-bounds)
+to calculate the correct transform to fit the given nodes in a viewport.
+
+> [!NOTE]
+>
+> This function was previously called `getRectOfNodes`
+
+```js
+
+const nodes = [
+  {
+    id: 'a',
+    position: { x: 0, y: 0 },
+    data: { label: 'a' },
+    width: 50,
+    height: 25,
+  },
+  {
+    id: 'b',
+    position: { x: 100, y: 100 },
+    data: { label: 'b' },
+    width: 50,
+    height: 25,
+  },
+];
+
+const bounds = getNodesBounds(nodes);
+```
+
+## Signature
+
+[API Definition]
+
+---
+
+# getOutgoers()
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/utils/graph.ts/#L64)
+
+This util is used to tell you what nodes, if any, are connected to the given node
+as the _target_ of an edge.
+
+```ts
+
+const nodes = [];
+const edges = [];
+
+const outgoers = getOutgoers(
+  { id: '1', position: { x: 0, y: 0 }, data: { label: 'node' } },
+  nodes,
+  edges,
+);
+```
+
+## Signature
+
+[API Definition]
+
+---
+
+# getSimpleBezierPath()
+
+[Source on Github](https://github.com/xyflow/xyflow/blob/main/packages/react/src/components/Edges/SimpleBezierEdge.tsx/#L32)
+
+The `getSimpleBezierPath` util returns everything you need to render a simple
+bezier edge between two nodes.
+
+```js
+
+const source = { x: 0, y: 20 };
+const target = { x: 150, y: 100 };
+
+const [path, labelX, labelY, offsetX, offsetY] = getSimpleBezierPath({
+  sourceX: source.x,
+  sourceY: source.y,
+  sourcePosition: Position.Right,
+  targetX: target.x,
+  targetY: target.y,
+  targetPosition: Position.Left,
+});
+
+console.log(path); //=> "M0,20 C75,20 75,100 150,100"
+console.log(labelX, labelY); //=> 75, 60
+console.log(offsetX, offsetY); //=> 75, 40
+```
+
+## Signature
+
+[API Definition]
+
+## Notes
+
+- This function returns a tuple (aka a fixed-size array) to make it easier to
+  work with multiple edge paths at once.
+
+---
+
+# getSmoothStepPath()
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/utils/edges/smoothstep-edge.ts/#L215)
+
+The `getSmoothStepPath` util returns everything you need to render a stepped path
+between two nodes. The `borderRadius` property can be used to choose how rounded
+the corners of those steps are.
+
+```js
+
+const source = { x: 0, y: 20 };
+const target = { x: 150, y: 100 };
+
+const [path, labelX, labelY, offsetX, offsetY] = getSmoothStepPath({
+  sourceX: source.x,
+  sourceY: source.y,
+  sourcePosition: Position.Right,
+  targetX: target.x,
+  targetY: target.y,
+  targetPosition: Position.Left,
+});
+
+console.log(path); //=> "M0 20L20 20L 70,20Q 75,20 75,25L 75,95Q ..."
+console.log(labelX, labelY); //=> 75, 60
+console.log(offsetX, offsetY); //=> 75, 40
+```
+
+## Signature
+
+[API Definition]
+
+## Notes
+
+- This function returns a tuple (aka a fixed-size array) to make it easier to
+  work with multiple edge paths at once.
+- You can set the `borderRadius` property to `0` to get a step edge path.
+
+---
+
+# getStraightPath()
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/utils/edges/straight-edge.ts/#L30)
+
+Calculates the straight line path between two points.
+
+```js
+
+const source = { x: 0, y: 20 };
+const target = { x: 150, y: 100 };
+
+const [path, labelX, labelY, offsetX, offsetY] = getStraightPath({
+  sourceX: source.x,
+  sourceY: source.y,
+  targetX: target.x,
+  targetY: target.y,
+});
+
+console.log(path); //=> "M 0,20L 150,100"
+console.log(labelX, labelY); //=> 75, 60
+console.log(offsetX, offsetY); //=> 75, 40
+```
+
+## Signature
+
+[API Definition]
+
+## Notes
+
+- This function returns a tuple (aka a fixed-size array) to make it easier to work with multiple edge paths at once.
+
+---
+
+# getViewportForBounds()
+
+[Source on Github](https://github.com/xyflow/xyflow/blob/main/packages/system/src/utils/general.ts/#L170)
+
+This util returns the viewport for the given bounds.
+You might use this to pre-calculate the viewport for a given set of nodes on the
+server or calculate the viewport for the given bounds _without_ changing the
+viewport directly.
+
+> [!NOTE]
+>
+> This function was previously called `getTransformForBounds`
+
+```js
+
+const { x, y, zoom } = getViewportForBounds(
+  {
+    x: 0,
+    y: 0,
+    width: 100,
+    height: 100,
+  },
+  1200,
+  800,
+  0.5,
+  2,
+);
+```
+
+## Signature
+
+[API Definition]
+
+## Notes
+
+- This is quite a low-level utility. You might want to look at the
+  [`fitView`](/api-reference/types/react-flow-instance#fitview) or
+  [`fitBounds`](/api-reference/types/react-flow-instance#fitbounds) methods for a more practical
+  api.
+
+---
+
+# isEdge()
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/utils/graph.ts/#L39-L40)
+
+Test whether an object is usable as an [`Edge`](/api-reference/types/edge). In TypeScript
+this is a type guard that will narrow the type of whatever you pass in to
+[`Edge`](/api-reference/types/edge) if it returns `true`.
+
+```js
+
+const edge = {
+  id: 'edge-a',
+  source: 'a',
+  target: 'b',
+};
+
+if (isEdge(edge)) {
+  // ...
+}
+```
+
+## Signature
+
+[API Definition]
+
+---
+
+# isNode()
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/utils/graph.ts/#L49)
+
+Test whether an object is usable as a [`Node`](/api-reference/types/node). In TypeScript
+this is a type guard that will narrow the type of whatever you pass in to
+[`Node`](/api-reference/types/node) if it returns `true`.
+
+```js
+
+const node = {
+  id: 'node-a',
+  data: {
+    label: 'node',
+  },
+  position: {
+    x: 0,
+    y: 0,
+  },
+};
+
+if (isNode(node)) {
+  // ..
+}
+```
+
+## Signature
+
+[API Definition]
+
+---
+
+# reconnectEdge()
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/utils/edges/general.ts)
+
+A handy utility to update an existing [`Edge`](/api-reference/types/edge) with new
+properties. This searches your edge array for an edge with a matching `id` and updates its
+properties with the connection you provide.
+
+```js
+const onReconnect = useCallback(
+  (oldEdge: Edge, newConnection: Connection) => setEdges((els) => reconnectEdge(oldEdge, newConnection, els)),
+  []
+);
+```
+
+## Signature
+
+[API Definition]
+
+---
+
+## Types
+
+# Align
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/types/nodes.ts#L174)
+
+The `Align` type contains the values expected by the `align` prop of the [NodeToolbar](/api-reference/components/node-toolbar) component 
+
+```ts
+export type Align = 'center' | 'start' | 'end';
+```
+
+---
+
+# AriaLabelConfig
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/constants.ts/)
+
+With the `AriaLabelConfig` you can customize the aria labels used by React Flow. This is useful if you want to translate the labels or if you want to change them to better suit your application.
+
+## Fields
+
+[API Definition]
+
+## Default config
+
+```js
+const defaultAriaLabelConfig = {
+  'node.a11yDescription.default':
+    'Press enter or space to select a node. Press delete to remove it and escape to cancel.',
+  'node.a11yDescription.keyboardDisabled':
+    'Press enter or space to select a node. You can then use the arrow keys to move the node around. Press delete to remove it and escape to cancel.',
+  'node.a11yDescription.ariaLiveMessage': ({ direction, x, y }: { direction: string; x: number; y: number }) =>
+    `Moved selected node ${direction}. New position, x: ${x}, y: ${y}`,
+  'edge.a11yDescription.default':
+    'Press enter or space to select an edge. You can then press delete to remove it or escape to cancel.',
+
+  // Control elements
+  'controls.ariaLabel': 'Control Panel',
+  'controls.zoomIn.ariaLabel': 'Zoom In',
+  'controls.zoomOut.ariaLabel': 'Zoom Out',
+  'controls.fitView.ariaLabel': 'Fit View',
+  'controls.interactive.ariaLabel': 'Toggle Interactivity',
+
+  // Mini map
+  'minimap.ariaLabel': 'Mini Map',
+
+  // Handle
+  'handle.ariaLabel': 'Handle',
+};
+```
+
+---
+
+# BackgroundVariant
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/additional-components/Background/types.ts)
+
+The three variants are exported as an enum for convenience. You can either import
+the enum and use it like `BackgroundVariant.Lines` or you can use the raw string
+value directly.
+
+```ts
+export enum BackgroundVariant {
+  Lines = 'lines',
+  Dots = 'dots',
+  Cross = 'cross',
+}
+```
+
+---
+
+# ColorMode
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/types/general.ts)
+
+The `ColorMode` type defines the available color modes for the ReactFlow component. This can be used to control the theme of the flow diagram.
+
+```ts
+export type ColorMode = 'light' | 'dark' | 'system';
+```
+
+---
+
+# ConnectionLineComponentProps
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/types/edges.ts/#L193)
+
+If you want to render a custom component for connection lines, you can set the
+`connectionLineComponent` prop on the
+[`[API Definition]`](/api-reference/react-flow#connection-connectionLineComponent) component.
+The `ConnectionLineComponentProps` are passed to your custom component.
+
+## Props
+
+[API Definition]
+
+---
+
+# ConnectionLineComponent
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/types/edges.ts#L265)
+
+The `ConnectionLineComponent` type allows you to provide a custom React component to render the connection line when users create new edges. The component receives `ConnectionLineComponentProps` as its props.
+
+```ts
+type ConnectionLineComponent = React.ComponentType<ConnectionLineComponentProps>;
+```
+
+---
+
+# ConnectionLineType
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/types/edges.ts/#L62)
+
+If you set the `connectionLineType` prop on your [`[API Definition]`](/api-reference/react-flow#connection-connectionLineType)
+component, it will dictate the style of connection line rendered when creating
+new edges.
+
+```ts
+export enum ConnectionLineType {
+  Bezier = 'default',
+  Straight = 'straight',
+  Step = 'step',
+  SmoothStep = 'smoothstep',
+  SimpleBezier = 'simplebezier',
+}
+```
+
+## Notes
+
+- If you choose to render a custom connection line component, this value will be
+  passed to your component as part of its [`ConnectionLineComponentProps`](/api-reference/types/connection-line-component-props).
+
+---
+
+# ConnectionMode
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/types/general.ts#L68)
+
+The `ConnectionMode` enum provides two options for connection behavior in React Flow:
+
+- `Strict`: Connections can only be made starting from a source handle and ending on a target handle
+- `Loose`: Connections can be made between any handles, regardless of type
+
+```ts
+enum ConnectionMode {
+  Strict = 'strict',
+  Loose = 'loose',
+}
+```
+
+---
+
+# ConnectionState
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/types/general.ts/#L148-L174)
+
+The `ConnectionState` type bundles all information about an ongoing connection. It is returned by the [`useConnection`](/api-reference/hooks/use-connection) hook.
+
+```ts
+type NoConnection = {
+  inProgress: false;
+  isValid: null;
+  from: null;
+  fromHandle: null;
+  fromPosition: null;
+  fromNode: null;
+  to: null;
+  toHandle: null;
+  toPosition: null;
+  toNode: null;
+};
+type ConnectionInProgress = {
+  inProgress: true;
+  isValid: boolean | null;
+  from: XYPosition;
+  fromHandle: Handle;
+  fromPosition: Position;
+  fromNode: NodeBase;
+  to: XYPosition;
+  toHandle: Handle | null;
+  toPosition: Position;
+  toNode: NodeBase | null;
+};
+
+type ConnectionState = ConnectionInProgress | NoConnection;
+```
+
+## Fields
+
+[API Definition]
+
+---
+
+# Connection
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/types/general.ts/#L29-L34)
+
+The `Connection` type is the basic minimal description of an
+[`Edge`](/api-reference/types/edge) between two nodes. The
+[`addEdge`](/api-reference/utils/add-edge) util can be used to upgrade a `Connection` to
+an [`Edge`](/api-reference/types/edge).
+
+## Fields
+
+[API Definition]
+
+---
+
+# CoordinateExtent
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/types/utils.ts/#L36-L37)
+
+A coordinate extent represents two points in a coordinate system: one in the top
+left corner and one in the bottom right corner. It is used to represent the
+bounds of nodes in the flow or the bounds of the viewport.
+
+```ts
+export type CoordinateExtent = [[number, number], [number, number]];
+```
+
+## Notes
+
+- Props that expect a `CoordinateExtent` usually default to `[[-∞, -∞], [+∞, +∞]]`
+  to represent an unbounded extent.
+
+---
+
+# DefaultEdgeOptions
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/types/edges.ts/#L88-L89)
+
+Many properties on an [`Edge`](/api-reference/types/edge) are optional. When a new edge is
+created, the properties that are not provided will be filled in with the default values
+passed to the `defaultEdgeOptions` prop of the
+[`[API Definition]`](/api-reference/react-flow#defaultedgeoptions) component.
+
+## Fields
+
+[API Definition]
+
+---
+
+# DeleteElements
+
+DeleteElements deletes provided nodes and edges and handles deleting any connected edges as well as child nodes. Returns successfully deleted edges and nodes asynchronously.
+
+```ts
+export type DeleteElements = (payload: {
+  nodes?: (Partial<Node> & { id: Node['id'] })[];
+  edges?: (Partial<Edge> & { id: Edge['id'] })[];
+}) => Promise<{
+  deletedNodes: Node[];
+  deletedEdges: Edge[];
+}>;
+```
+
+---
+
+# EdgeChange
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/types/changes.ts/#L68-L72)
+
+The [`onEdgesChange`](/api-reference/react-flow#on-edges-change) callback takes
+an array of `EdgeChange` objects that you should use to update your flow's state.
+The `EdgeChange` type is a union of four different object types that represent that
+various ways an edge can change in a flow.
+
+```ts
+export type EdgeChange =
+  | EdgeAddChange
+  | EdgeRemoveChange
+  | EdgeReplaceChange
+  | EdgeSelectionChange;
+```
+
+## Variants
+
+### EdgeAddChange
+
+[API Definition]
+
+### EdgeRemoveChange
+
+[API Definition]
+
+### EdgeReplaceChange
+
+[API Definition]
+
+### EdgeSelectionChange
+
+[API Definition]
+
+---
+
+# EdgeMarker
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/types/edges.ts/#L70-L78)
+
+Edges can optionally have markers at the start and end of an edge. The `EdgeMarker` type
+is used to configure those markers! Check the docs for
+[`MarkerType`](/api-reference/types/marker-type) for details on what types of edge marker
+are available.
+
+## Fields
+
+[API Definition]
+
+---
+
+# EdgeMouseHandler
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/types/edges.ts#L81)
+
+The `EdgeMouseHandler` type defines the callback function that is called when mouse events occur on an edge. This callback receives the event and the edge that triggered it.
+
+```ts
+type EdgeMouseHandler = (event: React.MouseEvent, edge: Edge) => void;
+```
+
+[API Definition]
+
+---
+
+# EdgeProps
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/types/edges.ts/#L100)
+
+When you implement a custom edge it is wrapped in a component that enables some basic
+functionality. The `EdgeProps` type takes a generic parameter to specify the type of edges
+you use in your application:
+
+```ts
+type AppEdgeProps = EdgeProps<MyEdgeType>;
+```
+
+Your custom edge component receives the following props:
+
+## Fields
+
+[API Definition]
+
+---
+
+# EdgeTypes
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/types/general.ts#L76)
+
+The `EdgeTypes` type is used to define custom edge types. Each key in the object represents an edge type, and the value is the component that should be rendered for that type.
+
+```ts
+export type EdgeTypes = {
+  [key: string]: React.ComponentType<EdgeProps>;
+};
+```
+
+---
+
+# Edge
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/types/edges.ts/#L34-L353)
+
+Where a [`Connection`](/api-reference/types/connection) is the minimal description of an edge between
+two nodes, an `Edge` is the complete description with everything React Flow needs
+to know in order to render it.
+
+```ts
+export type Edge<T> = DefaultEdge<T> | SmoothStepEdge<T> | BezierEdge<T>;
+```
+
+## Variants
+
+### Edge
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/types/edges.ts/#L34-L353)
+
+[API Definition]
+
+### SmoothStepEdge
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/types/edges.ts/#L45-L46)
+
+The `SmoothStepEdge` variant has all the same fields as an `Edge`, but it also has the following additional fields:
+
+{/* type SmoothStepEdge isn't exported, and conflicts with SmoothStepEdge component name */}
+[API Definition]
+
+### BezierEdge
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/types/edges.ts/#L52-L53)
+
+The `BezierEdge` variant has all the same fields as an `Edge`, but it also has the following additional fields:
+
+{/* type BezierEdge isn't exported, and conflicts with BezierEdge component name */}
+[API Definition]
+
+## Default edge types
+
+You can create any of React Flow's default edges by setting the `type` property
+to one of the following values:
+
+- `"default"`
+- `"straight"`
+- `"step"`
+- `"smoothstep"`
+- `"simplebezier"`
+
+If you don't set the `type` property at all, React Flow will fallback to the
+`"default"` bezier curve edge type.
+
+These default edges are available even if you set the [`edgeTypes`](/api-reference/react-flow#edge-types)
+prop to something else, unless you override any of these keys directly.
+
+---
+
+# FitViewOptions
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/types/general.ts/#L67-L68)
+
+When calling [`fitView`](/api-reference/types/react-flow-instance#fitview) these options
+can be used to customize the behavior. For example, the `duration` option can be used to
+transform the viewport smoothly over a given amount of time.
+
+## Fields
+
+[API Definition]
+
+---
+
+# HandleConnection
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/types/general.ts/#L36-L37)
+
+The `HandleConnection` type is an extension of a basic
+[Connection](/api-reference/types/connection) that includes the `edgeId`.
+
+## Fields
+
+[API Definition]
+
+---
+
+# Handle
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/types/handles.ts/#L5)
+
+The `Handle` type represents the attributes of a handle.
+
+## Fields
+
+[API Definition]
+
+---
+
+# InternalNode
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/99985b52026cf4ac65a1033178cf8c2bea4e14fa/packages/system/src/types/nodes.ts#L68)
+
+The `InternalNode` type is identical to the base [`Node`](/api-reference/types/node) type
+but is extended with some additional properties used internally by React Flow. Some
+functions and callbacks that return nodes may return an `InternalNode`.
+
+## Fields
+
+[API Definition]
+
+---
+
+# IsValidConnection
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/types/general.ts#L212)
+
+The `IsValidConnection` type represents a function that validates whether a connection between nodes is allowed. It receives a [`Connection`](/api-reference/types/connection) and returns a boolean indicating whether the connection is valid and therefore should be created.
+
+```ts
+type IsValidConnection = (edge: Edge | Connection) => boolean;
+```
+
+[API Definition]
+
+---
+
+# KeyCode
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/types/general.ts#L155)
+
+The `KeyCode` type is used to specify keyboard key codes or combinations, such as deleting nodes or enabling multi-selection. It can be a single string or an array of strings representing key codes.
+
+```ts
+type KeyCode = string | Array<string>;
+```
+
+---
+
+# MarkerType
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/types/edges.ts/#L82-L83)
+
+Edges may optionally have a marker on either end. The MarkerType type enumerates
+the options available to you when configuring a given marker.
+
+```ts
+export enum MarkerType {
+  Arrow = 'arrow',
+  ArrowClosed = 'arrowclosed',
+}
+```
+
+---
+
+# MiniMapNodeProps
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/487b13c9ad8903789f56c6fcfd8222f9cb74b812/packages/react/src/additional-components/MiniMap/types.ts/#L60)
+
+The MiniMapNodeProps type defines the props for nodes in the MiniMap component. This is
+only relevant if you pass a custom node type to the MiniMap.
+
+## Fields
+
+[API Definition]
+```
+
+---
+
+# NodeChange
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/487b13c9ad8903789f56c6fcfd8222f9cb74b812/packages/system/src/types/changes.ts/#L47)
+
+The [`onNodesChange`](/api-reference/react-flow#on-nodes-change) callback takes
+an array of `NodeChange` objects that you should use to update your flow's state.
+The `NodeChange` type is a union of six different object types that represent that
+various ways an node can change in a flow.
+
+```ts
+export type NodeChange =
+  | NodeDimensionChange
+  | NodePositionChange
+  | NodeSelectionChange
+  | NodeRemoveChange
+  | NodeAddChange
+  | NodeReplaceChange;
+```
+
+## Variant types
+
+### NodeDimensionChange
+
+[API Definition]
+
+### NodePositionChange
+
+[API Definition]
+
+### NodeSelectionChange
+
+[API Definition]
+
+### NodeRemoveChange
+
+[API Definition]
+
+### NodeAddChange
+
+[API Definition]
+
+### NodeReplaceChange
+
+[API Definition]
+
+---
+
+# NodeConnection
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/types/general.ts/#L36-L37)
+
+The `NodeConnection` type is an extension of a basic
+[Connection](/api-reference/types/connection) that includes the `edgeId`.
+
+## Fields
+
+[API Definition]
+
+---
+
+# NodeHandle
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/13897512d3c57e72c2e27b14ffa129412289d948/packages/system/src/types/nodes.ts#L139)
+
+The `NodeHandle` type is used to define a handle for a node if server-side rendering is used. On the server, React Flow can't measure DOM nodes, so it's necessary to define the handle position dimensions.
+
+[API Definition]
+
+---
+
+# NodeMouseHandler
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/types/nodes.ts)
+
+The `NodeMouseHandler` type defines the callback function that is called when mouse events
+occur on a node. This callback receives the event and the node that triggered it.
+
+```ts
+export type NodeMouseHandler = (event: React.MouseEvent, node: Node) => void;
+```
+
+[API Definition]
+
+---
+
+# NodeOrigin
+
+The origin of a Node determines how it is placed relative to its own coordinates.
+`[0, 0]` places it at the top left corner, `[0.5, 0.5]` right in the center and `[1, 1]` at the bottom right of its position.
+
+```ts
+export type NodeOrigin = [number, number];
+```
+
+---
+
+# NodeProps\<T>
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/types/nodes.ts/#L89)
+
+When you implement a [custom node](/learn/customization/custom-nodes) it is wrapped in a
+component that enables basic functionality like selection and dragging.
+
+## Usage
+
+```tsx
+
+export type CounterNode = Node<
+  {
+    initialCount?: number;
+  },
+  'counter'
+>;
+
+export default function CounterNode(props: NodeProps<CounterNode>) {
+  const [count, setCount] = useState(props.data?.initialCount ?? 0);
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button className="nodrag" onClick={() => setCount(count + 1)}>
+        Increment
+      </button>
+    </div>
+  );
+}
+```
+
+Remember to register your custom node by adding it to the
+[`nodeTypes`](/api-reference/react-flow#nodetypes) prop of your `[API Definition]` component.
+
+```tsx
+
+const nodeTypes = {
+  counterNode: CounterNode,
+};
+
+export default function App() {
+  return [API Definition]
+}
+```
+
+You can read more in our [custom node guide](/learn/customization/custom-nodes).
+
+## Fields
+
+Your custom node receives the following props:
+
+[API Definition]
+
+---
+
+# NodeTypes
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/types/nodes.ts)
+
+The `NodeTypes` type is used to define custom node types. Each key in the object represents a node type, and the value is the component that should be rendered for that type.
+
+```ts
+type NodeTypes = {
+  [key: string]: React.ComponentType<NodeProps>;
+};
+```
+
+---
+
+# Node
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/types/nodes.ts/#L10)
+
+The `Node` type represents everything React Flow needs to know about a given node.
+Many of these properties can be manipulated both by React Flow or by you, but
+some such as `width` and `height` should be considered read-only.
+
+## Fields
+
+[API Definition]
+
+## Default node types
+
+You can create any of React Flow's default nodes by setting the `type` property
+to one of the following values:
+
+- `"default"`
+- `"input"`
+- `"output"`
+- `"group"`
+
+If you don't set the `type` property at all, React Flow will fallback to the
+`"default"` node with both an input and output port.
+
+These default nodes are available even if you set the [`nodeTypes`](/api-reference/react-flow#node-types)
+prop to something else, unless you override any of these keys directly.
+
+## Notes
+
+- You shouldn't try to set the `width` or `height` of a node directly. It is
+  calculated internally by React Flow and used when rendering the node in the
+  viewport. To control a node's size you should use the `style` or `className`
+  props to apply CSS styles instead.
+
+---
+
+# OnBeforeDelete
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/types/general.ts#L207)
+
+The `OnBeforeDelete` type defines the callback function that is called before nodes or edges are deleted. This callback receives an object containing the nodes and edges that are about to be deleted.
+
+```ts
+type OnBeforeDelete = (params: {
+  nodes: Node[];
+  edges: Edge[];
+}) => Promise<boolean | {
+  nodes: Node[];
+  edges: Edge[];
+})>;
+```
+
+[API Definition]
+
+---
+
+# OnConnectEnd
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/types/general.ts#L89)
+
+The `OnConnectEnd` type represents a callback function that is called when finishing or canceling a connection attempt. It receives the mouse or touch event and the final state of the connection attempt.
+
+```ts
+type OnConnectEnd = (
+  event: MouseEvent | TouchEvent,
+  connectionState: FinalConnectionState,
+) => void;
+```
+
+[API Definition]
+
+---
+
+# OnConnectStart
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/types/general.ts#L79)
+
+The `OnConnectStart` type represents a callback function that is called when starting to create a connection between nodes. It receives the mouse or touch event and information about the source node and handle.
+
+```ts
+type OnConnectStart = (
+  event: MouseEvent | TouchEvent,
+  params: OnConnectStartParams,
+) => void;
+```
+
+[API Definition]
+
+---
+
+# OnConnect
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/types/general.ts#L80)
+
+The `OnConnect` type represents a callback function that is called when a new connection is created between nodes. It receives a [`Connection`](/api-reference/types/connection) containing the source and target node IDs and their respective handle IDs.
+
+```ts
+type OnConnect = (connection: Connection) => void;
+```
+
+[API Definition]
+
+---
+
+# OnDelete
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/types/general.ts#L59)
+
+The `OnDelete` type defines the callback function that is called when nodes or edges are deleted. This callback receives an object containing the deleted nodes and edges.
+
+```ts
+type OnDelete = (params: { nodes: Node[]; edges: Edge[] }) => void;
+```
+
+[API Definition]
+
+---
+
+# OnEdgesChange
+
+This type is used for typing the [`onEdgesChange`](/api-reference/react-flow#on-edges-change) function.
+
+```tsx
+export type OnEdgesChange<EdgeType extends Edge = Edge> = (
+  changes: EdgeChange<EdgeType>[],
+) => void;
+```
+
+## Fields
+
+[API Definition]
+
+## Usage
+
+This type accepts a generic type argument of custom edge types. See this
+[section in our Typescript guide](/learn/advanced-use/typescript#nodetype-edgetype-unions) for more information.
+
+```tsx
+const onEdgesChange: OnEdgesChange = useCallback(
+  (changes) => setEdges((eds) => applyEdgeChanges(changes, eds)),
+  [setEdges],
+);
+```
+
+---
+
+# OnEdgesDelete
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/types/general.ts#L52)
+
+The `OnEdgesDelete` type defines the callback function that is called when edges are deleted. This callback receives an array of the deleted edges.
+
+```ts
+type OnEdgesDelete = (edges: Edge[]) => void;
+```
+
+[API Definition]
+
+---
+
+# OnError
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/types/general.ts#L233)
+
+The `OnError` type defines the callback function that is called when an error occurs. This callback receives an error id and the error message as its argument.
+
+```ts
+type OnError = (id: string, error: string) => void;
+```
+
+[API Definition]
+
+---
+
+# OnInit
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/types/general.ts#L113)
+
+The `OnInit` type defines the callback function that is called when the ReactFlow instance is initialized. This callback receives the ReactFlow instance as its argument.
+
+```ts
+type OnInit = (reactFlowInstance: ReactFlowInstance) => void;
+```
+
+[API Definition]
+
+---
+
+# OnMove
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/types/general.ts#L16)
+
+The `OnMove` type is a callback that fires whenever the viewport is moved, either by user interaction or programmatically. It receives the triggering event and the new viewport state.
+
+```ts
+type OnMove = (event: MouseEvent | TouchEvent | null, viewport: Viewport) => void;
+```
+
+[API Definition]
+
+---
+
+# OnNodeDrag
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/types/nodes.ts#L34)
+
+The `OnNodeDrag` type defines the callback function that is called when a node is being dragged. This callback receives the event and the node that is being dragged.
+
+```ts
+type OnNodeDrag = (event: React.MouseEvent, node: Node) => void;
+```
+
+[API Definition]
+
+---
+
+# OnNodesChange
+
+This type is used for typing the [`onNodesChange`](/api-reference/react-flow#on-nodes-change) function.
+
+```tsx
+export type OnNodesChange<NodeType extends Node = Node> = (
+  changes: NodeChange<NodeType>[],
+) => void;
+```
+
+## Fields
+
+[API Definition]
+
+## Usage
+
+This type accepts a generic type argument of custom nodes types. See this
+[section in our TypeScript guide](/learn/advanced-use/typescript#nodetype-edgetype-unions) for more information.
+
+```tsx
+const onNodesChange: OnNodesChange = useCallback(
+  (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
+  [setNodes],
+);
+```
+
+---
+
+# OnNodesDelete
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/types/general.ts#L51)
+
+The `OnNodesDelete` type defines the callback function that is called when nodes are deleted. This callback receives an array of the deleted nodes.
+
+```ts
+type OnNodesDelete = (nodes: Node[]) => void;
+```
+
+[API Definition]
+
+---
+
+# OnReconnect
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/types/general.ts#L83)
+
+The `OnReconnect` type represents a callback function that is called when an existing edge is reconnected to a different node or handle. It receives the old edge and the new connection details.
+
+```ts
+type OnReconnect<EdgeType extends EdgeBase = EdgeBase> = (
+  oldEdge: EdgeType,
+  newConnection: Connection,
+) => void;
+```
+
+[API Definition]
+
+---
+
+# OnSelectionChangeFunc
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/types/general.ts#98)
+
+The `OnSelectionChangeFunc` type is a callback that is triggered when the selection of nodes or edges changes. It receives an object containing the currently selected nodes and edges.
+
+```ts
+type OnSelectionChangeFunc = (params: { nodes: Node[]; edges: Edge[] }) => void;
+```
+
+[API Definition]
+
+---
+
+# PanOnScrollMode
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/types/general.ts#L166)
+
+The `PanOnScrollMode` enum controls the panning behavior of the viewport when the user
+scrolls. Choose `Free` for unrestricted panning, `Vertical` for up-and-down only, or
+`Horizontal` for left-and-right only.
+
+```ts
+enum PanOnScrollMode {
+  Free = 'free',
+  Vertical = 'vertical',
+  Horizontal = 'horizontal',
+}
+```
+
+---
+
+# PanelPosition
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/types/general.ts/#L111-L112)
+
+This type is mostly used to help position things on top of the flow viewport. For
+example both the [`[API Definition]`](/api-reference/components/minimap) and
+[`[API Definition]`](/api-reference/components/controls) components take a `position`
+prop of this type.
+
+```ts
+export type PanelPosition =
+  | 'top-left'
+  | 'top-center'
+  | 'top-right'
+  | 'bottom-left'
+  | 'bottom-center'
+  | 'bottom-right'
+  | 'center-left'
+  | 'center-right';
+```
+
+---
+
+# Position
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/types/utils.ts/#L1)
+
+While [`PanelPosition`](/api-reference/types/panel-position) can be used to place a component in the
+corners of a container, the `Position` enum is less precise and used primarily
+in relation to edges and handles.
+
+```ts
+export enum Position {
+  Left = 'left',
+  Top = 'top',
+  Right = 'right',
+  Bottom = 'bottom',
+}
+```
+
+---
+
+# ProOptions
+
+By default, we render a small attribution in the corner of your flows that links back to
+the project. Anyone is free to remove this attribution whether they're a Pro subscriber or
+not but we ask that you take a quick look at our
+[removing attribution](/learn/troubleshooting/remove-attribution) guide before doing so.
+
+[API Definition]
+
+---
+
+NodesAndEdgesFields,
+  IntersectionFields,
+  ViewportFields,
+} from '@/references/react-flow-instance';
+
+# ReactFlowInstance
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/types/instance.ts/#L178-L179)
+
+The `ReactFlowInstance` provides a collection of methods to query and manipulate the
+internal state of your flow. You can get an instance by using the
+[`useReactFlow`](/api-reference/hooks/use-react-flow) hook or attaching a listener to the
+[`onInit`](/api-reference/react-flow#event-oninit) event.
+
+## Fields
+
+### Nodes and edges
+
+[API Definition]
+
+### Intersections
+
+[API Definition]
+
+### Viewport
+
+[API Definition]
+
+---
+
+# ReactFlowJsonObject
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/types/instance.ts/#L5)
+
+A JSON-compatible representation of your flow. You can use this to save the flow to a
+database for example and load it back in later.
+
+## Fields
+
+[API Definition]
+
+---
+
+# Rect
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/f0ce2c876d8688e13632bc86286cf857f86dead6/packages/system/src/types/utils.ts/#L39-L40)
+
+The `Rect` type defines a rectangle in a two-dimensional space with dimensions and a
+position.
+
+[API Definition]
+
+---
+
+# ResizeParams
+
+[Source on Github](https://github.com/xyflow/xyflow/blob/v11/packages/node-resizer/src/types.ts/#L4)
+
+The `ResizeParams` type is used to type the various events that are emitted by the
+`[API Definition]` component. You'll sometimes see this type extended with an additional
+direction field too.
+
+## Fields
+
+[API Definition]
+
+---
+
+# SelectionDragHandler
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/types/nodes.ts#L33)
+
+The `SelectionDragHandler` type is a callback for handling drag events involving selected nodes. It receives the triggering mouse or touch event and an array of the affected nodes.
+
+```ts
+type SelectionDragHandler<NodeType extends Node = Node> = (
+  event: ReactMouseEvent,
+  nodes: NodeType[],
+) => void;
+```
+
+[API Definition]
+
+---
+
+# SelectionMode
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/types/general.ts#L223)
+
+The `SelectionMode` enum provides two options for node selection behavior:
+
+- `Full`: A node is only selected when the selection rectangle fully contains it
+- `Partial`: A node is selected when the selection rectangle partially overlaps with it
+
+```ts
+enum SelectionMode {
+  Partial = 'partial',
+  Full = 'full',
+}
+```
+
+---
+
+# SnapGrid
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/types/general.ts#L157)
+
+The `SnapGrid` type defines the grid size for snapping nodes on the pane. It is used in conjunction with the `snapToGrid` prop to enable grid snapping functionality.
+
+```ts
+type SnapGrid = [number, number];
+```
+
+---
+
+# Viewport
+
+[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/types/general.ts/#L149-L153)
+
+Internally, React Flow maintains a coordinate system that is independent of the rest of
+the page. The `Viewport` type tells you where in that system your flow is currently being
+display at and how zoomed in or out it is.
+
+## Fields
+
+[API Definition]
+
+## Notes
+
+- A `Transform` has the same properties as the viewport, but they represent different
+  things. Make sure you don't get them muddled up or things will start to look weird!
+
+---
+
+# XYPosition
+
+All positions are stored in an object with x and y coordinates.
+
+```ts
+export type XYPosition = {
+  x: number;
+  y: number;
+};
+```
+
+---
+

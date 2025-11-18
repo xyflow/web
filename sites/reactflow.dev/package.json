@@ -6,12 +6,13 @@
   "scripts": {
     "dev": "next --turbopack --port 3002",
     "build": "next build",
-    "postbuild": "next-sitemap",
+    "postbuild": "next-sitemap && node scripts/generate-llms-txt.mjs",
     "start": "next start",
     "lint": "next lint",
     "write-showcases": "rm -rf static/img/showcase && mkdir -p static/img/showcase && node scripts/get-showcases.js",
     "check-sitemap": "node scripts/check-sitemap.mjs",
     "generate-routes-type": "node scripts/generate-routes-type.mjs",
+    "generate-llms-txt": "node scripts/generate-llms-txt.mjs",
     "check-links": "node scripts/check-mdx-links.mjs",
     "types:check": "tsc --noEmit"
   },
