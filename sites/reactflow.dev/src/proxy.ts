@@ -28,8 +28,8 @@ export async function proxy(request: NextRequest) {
 
   // If no session and not a public route, redirect to signin
   if (!session) {
-    const homeUrl = new URL('/', request.url);
-    return NextResponse.redirect(homeUrl);
+    const signInUrl = new URL('/pro/sign-in', request.url);
+    return NextResponse.redirect(signInUrl);
   }
 
   // Session exists, allow access to protected route
