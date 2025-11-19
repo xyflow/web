@@ -16,7 +16,7 @@ import { changeEmail } from '@/server-actions';
 
 const ChangeEmailCard: FC<{ userEmail: string }> = ({ userEmail }) => {
   const [isLoading, startTransition] = useTransition();
-  const [error, setError] = useState<Awaited<ReturnType<typeof changeEmail>>>(null);
+  const [error, setError] = useState<string | null>(null);
   const [needsEmailVerification, setNeedsEmailVerification] = useState(false);
   const [newEmail, setNewEmail] = useState(userEmail);
 
@@ -26,10 +26,10 @@ const ChangeEmailCard: FC<{ userEmail: string }> = ({ userEmail }) => {
     startTransition(async () => {
       const formData = new FormData(event.currentTarget);
       const newEmail = formData.get('email') as string;
-      const error = await changeEmail(newEmail);
+      const response = await changeEmail(newEmail);
 
-      setError(error);
-      setNeedsEmailVerification(!error);
+      setError(response?.error);
+      setNeedsEmailVerification(!response?.error);
       setNewEmail(newEmail);
     });
   }
@@ -44,9 +44,7 @@ const ChangeEmailCard: FC<{ userEmail: string }> = ({ userEmail }) => {
             <span className="font-bold">{newEmail}</span>.
           </CardDescription>
         )}
-        {error && (
-          <CardDescription className="text-red-500">{error.message}</CardDescription>
-        )}
+        {error && <CardDescription className="text-red-500">{error}</CardDescription>}
       </CardHeader>
       <CardFooter className="bg-muted space-x-10">
         <form onSubmit={handleSubmit} className="flex justify-between w-full">

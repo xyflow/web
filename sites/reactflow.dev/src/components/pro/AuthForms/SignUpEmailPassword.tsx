@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Button, Input, InputLabel } from '@xyflow/xy-ui';
 
-import { AuthNotification } from './AuthNotification';
+import { AuthErrorNotification } from './AuthNotification';
 import { signUp } from '@/server-actions';
 
 const Signup: FC = () => {
@@ -30,14 +30,7 @@ const Signup: FC = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      {/*error && <AuthErrorNotification error={error} />*/}
-      {error && (
-        <AuthNotification
-          title="Something went wrong"
-          description={error}
-          variant="error"
-        />
-      )}
+      {error && <AuthErrorNotification error={error} />}
 
       <div className="mb-2">
         <InputLabel className="text-gray-800" htmlFor="email">

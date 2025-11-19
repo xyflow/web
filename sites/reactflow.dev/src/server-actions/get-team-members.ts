@@ -2,7 +2,7 @@
 
 import { gql } from '@apollo/client';
 
-import { getNhost } from '@/utils/nhost';
+import { createNhostClient } from '@/utils/nhost';
 import { prettifyError } from '@/utils/nhost-utils';
 
 const GET_TEAM_MEMBERS = gql`
@@ -17,7 +17,7 @@ const GET_TEAM_MEMBERS = gql`
 `;
 
 export async function getTeamMembers() {
-  const nhost = await getNhost();
+  const nhost = await createNhostClient();
   const userId = nhost.getUserSession()?.user?.id;
 
   try {

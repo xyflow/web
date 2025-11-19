@@ -1,8 +1,8 @@
 'use server';
 
-import { getNhost } from '@/utils/nhost';
+import { createNhostClient } from '@/utils/nhost';
 
 export async function getUser() {
-  const nhost = await getNhost();
+  const nhost = await createNhostClient();
   return nhost.getUserSession()?.user;
 }

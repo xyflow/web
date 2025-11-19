@@ -8,7 +8,7 @@ import { FetchError } from '@nhost/nhost-js/fetch';
 import { ErrorResponse } from '@nhost/nhost-js/auth';
 
 type AuthErrorProps = {
-  error: FetchError<ErrorResponse> | null;
+  error: FetchError<ErrorResponse> | string | null;
 };
 
 type AuthNotificationProps = {
@@ -72,6 +72,16 @@ export function MagicLinkSuccessNotification() {
 }
 
 export function AuthErrorNotification({ error }: AuthErrorProps) {
+  if (typeof error === 'string') {
+    return (
+      <AuthNotification
+        title="Something went wrong"
+        description={error}
+        variant="error"
+      />
+    );
+  }
+
   const errorId = error?.body?.error || error?.message;
 
   if (errorId === 'invalid-email-password') {

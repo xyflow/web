@@ -1,7 +1,7 @@
 'use client';
 
 import { FC, FormEvent, useState, useTransition } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { Button, Input, InputLabel } from '@xyflow/xy-ui';
 
@@ -10,8 +10,10 @@ import { signIn } from '@/server-actions';
 
 const SignInEmailPassword: FC = () => {
   const searchParams = useSearchParams();
-  const [error, setError] = useState<Awaited<ReturnType<typeof signIn>>>();
+  const [error, setError] = useState<string | null>();
   const [isLoading, startTransition] = useTransition();
+
+  const router = useRouter();
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     // Prevent resubmitting the form when an error is set
@@ -19,8 +21,13 @@ const SignInEmailPassword: FC = () => {
     startTransition(async () => {
       const formData = new FormData(event.currentTarget);
       const redirectTo = searchParams.get('redirectTo') ?? undefined;
-      const error = await signIn(formData, redirectTo);
-      setError(error);
+      const result = await signIn(formData, redirectTo);
+
+      if (result.redirect) {
+        router.push(result.redirect);
+      } else if (result.error) {
+        setError(result.error);
+      }
     });
   }
 

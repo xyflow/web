@@ -1,13 +1,13 @@
 'use server';
 
-import { getNhost } from '@/utils/nhost';
+import { createNhostClient } from '@/utils/nhost';
 
 export async function signUp(formData: FormData) {
   const email = formData.get('email') as string;
   const password = formData.get('password') as string;
 
   try {
-    const nhost = await getNhost();
+    const nhost = await createNhostClient();
     const response = await nhost.auth.signUpEmailPassword({
       email,
       password,

@@ -1,19 +1,13 @@
 'use server';
 
-import { FetchError } from '@nhost/nhost-js/fetch';
+import { createNhostClient } from '@/utils/nhost';
 
-import { getNhost } from '@/utils/nhost';
-import { ErrorResponse } from '@nhost/nhost-js/auth';
-
-export async function changeEmail(
-  newEmail: string,
-): Promise<FetchError<ErrorResponse> | null> {
-  const nhost = await getNhost();
-
+export async function changeEmail(newEmail: string) {
   try {
+    const nhost = await createNhostClient();
     await nhost.auth.changeUserEmail({ newEmail });
   } catch (error) {
-    return error;
+    return { error: error.message };
   }
 
   return null;

@@ -9,7 +9,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 const key = DEFAULT_SESSION_KEY;
 
-export async function getNhost(
+export async function createNhostClient(
   $cookieStore?: RequestCookies | ReadonlyRequestCookies,
 ): Promise<NhostClient> {
   const cookieStore = $cookieStore ?? (await cookies());

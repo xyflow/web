@@ -9,8 +9,7 @@ import { signInEmailPasswordless } from '@/server-actions';
 
 function ResendVerificationLink() {
   const [isLoading, startTransition] = useTransition();
-  const [error, setError] =
-    useState<Awaited<ReturnType<typeof signInEmailPasswordless>>>(null);
+  const [error, setError] = useState<string | null>(null);
   const [isSuccess, setIsSuccess] = useState(false);
   const searchParams = useSearchParams();
 
@@ -20,9 +19,10 @@ function ResendVerificationLink() {
     startTransition(async () => {
       const formData = new FormData(event.currentTarget);
       const email = formData.get('email') as string;
-      const error = await signInEmailPasswordless(email);
-      setError(error);
-      setIsSuccess(!error);
+      const result = await signInEmailPasswordless(email);
+
+      setError(result?.error);
+      setIsSuccess(!result?.error);
     });
   }
 

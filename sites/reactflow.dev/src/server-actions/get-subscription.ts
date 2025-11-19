@@ -1,11 +1,10 @@
 'use server';
 
 import { gql } from '@apollo/client';
-import { ErrorResponse, User } from '@nhost/nhost-js/auth';
+import { User } from '@nhost/nhost-js/auth';
 
-import { getNhost } from '@/utils/nhost';
+import { createNhostClient } from '@/utils/nhost';
 import { SubscriptionPlan } from '@/types';
-import { FetchError } from '@nhost/nhost-js/fetch';
 
 const GET_SUBSCRIPTION = gql`
   query GetSubscription($userId: uuid) {
@@ -23,7 +22,7 @@ export async function getSubscription(): Promise<{
   teamPlan: SubscriptionPlan;
   user?: User | null;
 }> {
-  const nhost = await getNhost();
+  const nhost = await createNhostClient();
   const user = nhost.getUserSession()?.user;
 
   if (!user) {

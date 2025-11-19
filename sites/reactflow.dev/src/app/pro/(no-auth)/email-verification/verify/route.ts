@@ -2,7 +2,7 @@ import { NextResponse, type NextRequest } from 'next/server';
 import type { ErrorResponse } from '@nhost/nhost-js/auth';
 import type { FetchError } from '@nhost/nhost-js/fetch';
 
-import { getNhost } from '@/utils/nhost';
+import { createNhostClient } from '@/utils/nhost';
 
 const VERIFICATION_ERROR_PAGE = '/pro/email-verification/error';
 
@@ -20,7 +20,7 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    const nhost = await getNhost();
+    const nhost = await createNhostClient();
 
     if (nhost.getUserSession()) {
       const params = new URLSearchParams(request.nextUrl.searchParams);

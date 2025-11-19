@@ -1,39 +1,40 @@
 'use server';
 
-import { redirect } from 'next/navigation';
+import { createNhostClient } from '@/utils/nhost';
 import { FetchError } from '@nhost/nhost-js/fetch';
 import { ErrorResponse } from '@nhost/nhost-js/auth';
 
-import { getNhost } from '@/utils/nhost';
-
-export async function signIn(
-  formData: FormData,
-  redirectTo = '/pro/dashboard',
-): Promise<FetchError<ErrorResponse> | null> {
-  const nhost = await getNhost();
+export async function signIn(formData: FormData, redirectTo = '/pro/dashboard') {
   const email = formData.get('email') as string;
   const password = formData.get('password') as string;
 
-  let redirectPath: string | null = null;
+  if (!email || !password) {
+    return {
+      error: 'Email and password are required',
+    };
+  }
 
   try {
+    const nhost = await createNhostClient();
     const response = await nhost.auth.signInEmailPassword({ email, password });
 
     if (response.body?.session) {
-      redirectPath = redirectTo;
+      return { redirect: redirectTo };
     } else {
-      return null;
+      return {
+        error: 'Failed to sign in. Please check your credentials.',
+      };
     }
   } catch (error) {
     if (error.error === 'unverified-user') {
       // use encodeURIComponent because email can contain special characters such as +
-      redirectPath = `/pro/email-verification?email=${encodeURIComponent(email)}`;
+      return { redirect: `/pro/email-verification?email=${encodeURIComponent(email)}` };
     } else {
-      return error;
-    }
-  } finally {
-    if (redirectPath) redirect(redirectPath);
-  }
+      const _error = error as FetchError<ErrorResponse>;
 
-  return null;
+      return {
+        error: `An error occurred during sign in: ${_error.message}`,
+      };
+    }
+  }
 }

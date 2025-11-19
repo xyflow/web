@@ -1,19 +1,13 @@
 'use server';
 
-import { ErrorResponse } from '@nhost/nhost-js/auth';
-import { FetchError } from '@nhost/nhost-js/fetch';
+import { createNhostClient } from '@/utils/nhost';
 
-import { getNhost } from '@/utils/nhost';
-
-export async function changePassword(
-  newPassword: string,
-): Promise<FetchError<ErrorResponse> | null> {
-  const nhost = await getNhost();
-
+export async function changePassword(newPassword: string) {
   try {
+    const nhost = await createNhostClient();
     await nhost.auth.changeUserPassword({ newPassword });
   } catch (error) {
-    return error;
+    return { error: error.message };
   }
 
   return null;

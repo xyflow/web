@@ -4,12 +4,15 @@ import { FC, FormEvent, useState, useTransition } from 'react';
 import { Button, Input, InputLabel } from '@xyflow/xy-ui';
 
 import { signInEmailPasswordless } from '@/server-actions';
-import { AuthErrorNotification, MagicLinkSuccessNotification } from './AuthNotification';
+import {
+  AuthErrorNotification,
+  AuthNotification,
+  MagicLinkSuccessNotification,
+} from './AuthNotification';
 
 const SignInMagicLink: FC = () => {
   const [isLoading, startTransition] = useTransition();
-  const [error, setError] =
-    useState<Awaited<ReturnType<typeof signInEmailPasswordless>>>(null);
+  const [error, setError] = useState<string | null>(null);
   const [isSuccess, setIsSuccess] = useState(false);
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -18,9 +21,9 @@ const SignInMagicLink: FC = () => {
     startTransition(async () => {
       const formData = new FormData(event.currentTarget);
       const email = formData.get('email') as string;
-      const error = await signInEmailPasswordless(email);
-      setError(error);
-      setIsSuccess(!error);
+      const result = await signInEmailPasswordless(email);
+      setError(result?.error);
+      setIsSuccess(!result?.error);
     });
   }
 
@@ -28,6 +31,13 @@ const SignInMagicLink: FC = () => {
     <form onSubmit={handleSubmit}>
       <div className="flex flex-col space-y-4 mb-2">
         {error && <AuthErrorNotification error={error} />}
+        {error && (
+          <AuthNotification
+            title="Something went wrong"
+            description={error}
+            variant="error"
+          />
+        )}
         {isSuccess && <MagicLinkSuccessNotification />}
         <div>
           <InputLabel className="text-gray-800" htmlFor="email">

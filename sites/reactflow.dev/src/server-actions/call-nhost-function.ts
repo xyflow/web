@@ -1,12 +1,12 @@
 'use server';
 
-import { getNhost } from '@/utils/nhost';
+import { createNhostClient } from '@/utils/nhost';
 
 export async function callNhostFunction(
   url: `/${string}`,
   body: Record<string, unknown>,
 ) {
-  const nhost = await getNhost();
+  const nhost = await createNhostClient();
   const accessToken = nhost.getUserSession()?.accessToken;
   const fullUrl = `${nhost.functions.baseURL}${url}`;
 

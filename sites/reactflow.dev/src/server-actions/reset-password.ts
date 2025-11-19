@@ -1,19 +1,13 @@
 'use server';
 
-import { ErrorResponse } from '@nhost/nhost-js/auth';
-import { FetchError } from '@nhost/nhost-js/fetch';
+import { createNhostClient } from '@/utils/nhost';
 
-import { getNhost } from '@/utils/nhost';
-
-export async function resetPassword(
-  email: string,
-): Promise<FetchError<ErrorResponse> | null> {
-  const nhost = await getNhost();
-
+export async function resetPassword(email: string) {
   try {
+    const nhost = await createNhostClient();
     await nhost.auth.sendPasswordResetEmail({ email });
   } catch (error) {
-    return error;
+    return { error: error.message };
   }
 
   return null;

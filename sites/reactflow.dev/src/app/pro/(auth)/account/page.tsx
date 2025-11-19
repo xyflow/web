@@ -4,10 +4,10 @@ import ChangeEmailCard from './_cards/change-email';
 import ChangePasswordCard from './_cards/change-password';
 import DeleteAccountCard from './_cards/delete-account';
 import BillingCard from './_cards/billing';
-import { getNhost } from '@/utils/nhost';
+import { createNhostClient } from '@/utils/nhost';
 
 async function AccountPage() {
-  const nhost = await getNhost();
+  const nhost = await createNhostClient();
   const user = await nhost.getUserSession()?.user;
 
   if (!user?.email) {
