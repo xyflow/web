@@ -12,6 +12,14 @@ export async function signUp(formData: FormData) {
   const email = formData.get('email') as string;
   const password = formData.get('password') as string;
 
+  if (!email || !password) {
+    return {
+      error: 'Email and password fields are required',
+    };
+  }
+
+  console.log('signup', redirectTo);
+
   try {
     const nhost = await createNhostClient();
     const response = await nhost.auth.signUpEmailPassword({
@@ -30,7 +38,7 @@ export async function signUp(formData: FormData) {
         : `/pro/email-verification?email=${encodeURIComponent(email)}`,
     };
   } catch (error) {
-    console.error(error);
+    console.error(error.body);
     return { error: `An error occurred during sign up: ${error.message}` };
   }
 }
