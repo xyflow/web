@@ -8,65 +8,57 @@ type ContactFormProps = {
   action?: (formData: FormData) => Promise<{ success: boolean }>;
 };
 
-function ContactForm({ children, action }: ContactFormProps) {
-  const [isLoading, setIsLoading] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [isError, setIsError] = useState(false);
+async function defaultAction(formData: FormData) {
+  const data: Record<string, string> = {};
+  formData.forEach((value, key) => {
+    data[key] = value.toString();
+  });
+
+  const response = await fetch(process.env.NEXT_PUBLIC_CONTACT_FORM_URL as string, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+    body: JSON.stringify(data),
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to submit form');
+  }
+
+  return { success: true };
+}
+
+function ContactForm({ children, action = defaultAction }: ContactFormProps) {
+  const [formState, setFormState] = useState<null | 'error' | 'success' | 'loading'>(
+    null,
+  );
 
   const onSubmit = useCallback(
     async (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-      setIsLoading(true);
-      setIsSuccess(false);
-      setIsError(false);
+      setFormState('loading');
 
       const formData = new FormData(e.currentTarget);
 
       try {
-        if (action) {
-          // Use server action if provided
-          const result = await action(formData);
-          if (result.success) {
-            setIsSuccess(true);
-          } else {
-            setIsError(true);
-          }
+        const result = await action(formData);
+        if (result.success) {
+          setFormState('success');
         } else {
-          const data: Record<string, string> = {};
-          formData.forEach((value, key) => {
-            data[key] = value.toString();
-          });
-
-          const response = await fetch(
-            process.env.NEXT_PUBLIC_CONTACT_FORM_URL as string,
-            {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-                Accept: 'application/json',
-              },
-              body: JSON.stringify(data),
-            },
-          );
-
-          if (response.ok) {
-            setIsSuccess(true);
-          } else {
-            setIsError(true);
-          }
+          setFormState('error');
         }
       } catch {
-        setIsError(true);
+        setFormState('error');
       }
-
-      setIsLoading(false);
     },
     [action],
   );
 
   return (
     <div className="flex flex-col gap-4">
-      {isError && (
+      {formState === 'error' && (
         <Alert variant="error">
           <AlertTitle>Something went wrong</AlertTitle>
           <AlertDescription>
@@ -75,7 +67,7 @@ function ContactForm({ children, action }: ContactFormProps) {
           </AlertDescription>
         </Alert>
       )}
-      {isSuccess && (
+      {formState === 'success' && (
         <Alert variant="success">
           <AlertTitle>Thanks for reaching out!</AlertTitle>
           <AlertDescription>
@@ -86,8 +78,8 @@ function ContactForm({ children, action }: ContactFormProps) {
       <form className="flex flex-col gap-4" onSubmit={onSubmit}>
         {children}
         <Button
-          loading={isLoading}
-          disabled={isLoading || isSuccess}
+          loading={formState === 'loading'}
+          disabled={formState === 'loading' || formState === 'success'}
           // we need to overwrite the default added [type=submit] { background-color: transparent; } rule from tailwind
           className="!bg-primary hover:!bg-primary/90"
           type="submit"
