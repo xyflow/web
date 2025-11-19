@@ -9,13 +9,17 @@ import {
 // Simple example of an edge with a floating toolbar based on the connected nodes' positions
 export function EdgeWithToolbar(props: EdgeProps) {
   const [edgePath, centerX] = getBezierPath(props);
-  const { deleteElements } = useReactFlow();
+  const { deleteElements, getEdges } = useReactFlow();
+  const deleteEdge = () => {
+    const edge = getEdges().find((e) => e.id === props.id);
+    if (edge) deleteElements({ edges: [edge] });
+  };
   const y = Math.min(props.sourceY, props.targetY);
 
   return (
     <>
       <BaseEdge id={props.id} path={edgePath} />
-      <EdgeToolbar edgeId={props.id} x={centerX} y={y} isVisible>
+      <EdgeToolbar edgeId={props.id} x={centerX} y={y} onClick={deleteEdge} isVisible>
         <div
           style={{
             background: 'white',
