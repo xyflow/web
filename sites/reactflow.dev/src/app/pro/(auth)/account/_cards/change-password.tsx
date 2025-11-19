@@ -11,12 +11,12 @@ import {
   Input,
   InputLabel,
 } from '@xyflow/xy-ui';
+
 import { changePassword } from '@/server-actions';
-import type { AuthErrorPayload } from '@nhost/nhost-js';
 
 function ChangePasswordCard() {
   const [isLoading, startTransition] = useTransition();
-  const [error, setError] = useState<AuthErrorPayload | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [isSuccess, setIsSuccess] = useState(false);
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -25,9 +25,9 @@ function ChangePasswordCard() {
     startTransition(async () => {
       const formData = new FormData(event.currentTarget);
       const newPassword = formData.get('password') as string;
-      const { error } = await changePassword(newPassword);
-      setError(error);
-      setIsSuccess(!error);
+      const response = await changePassword(newPassword);
+      setError(response?.error);
+      setIsSuccess(!response?.error);
     });
   }
 
@@ -40,9 +40,7 @@ function ChangePasswordCard() {
             Your password has been updated.
           </CardDescription>
         )}
-        {error && (
-          <CardDescription className="text-red-500">{error.message}</CardDescription>
-        )}
+        {error && <CardDescription className="text-red-500">{error}</CardDescription>}
       </CardHeader>
       <CardFooter className="bg-muted">
         <form onSubmit={handleSubmit} className="flex space-x-2 justify-between w-full">

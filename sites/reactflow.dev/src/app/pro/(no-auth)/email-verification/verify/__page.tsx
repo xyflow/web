@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation';
-import { getNhost } from '@/utils/nhost';
+import { createNhostClient } from '@/utils/nhost';
 import { FC } from 'react';
 import { SearchParams } from '@/types';
 
@@ -9,12 +9,12 @@ type PageProps = {
 
 const VerifyEmailPage: FC<PageProps> = async (props) => {
   const searchParams = await props.searchParams;
-  const nhost = await getNhost();
+  const nhost = await createNhostClient();
   const { ticket, redirectTo, type } = searchParams;
 
   if (ticket && redirectTo && type) {
     redirect(
-      `${nhost.auth.url}/verify?ticket=${ticket}&type=${type}&redirectTo=${redirectTo}`,
+      `${nhost.auth.baseURL}/verify?ticket=${ticket}&type=${type}&redirectTo=${redirectTo}`,
     );
   }
 

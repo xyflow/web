@@ -6,18 +6,18 @@ import { BaseBlogPostLayout, CaseStudyLayoutWrapper } from 'xy-shared';
 import { useMDXComponents as getMdxComponents } from '@/mdx-components';
 import { getWhatsNew } from '@/utils';
 
-type Props = PageProps<'/[...mdxPath]'>
+type Props = PageProps<'/[...mdxPath]'>;
 
 const { wrapper: Wrapper } = getMdxComponents();
 
 export default async function Page(props: Props) {
   const params = await props.params;
   const result = await importPage(params.mdxPath);
-  const { default: MDXContent, toc, metadata } = result;
+  const { default: MDXContent, toc, metadata, sourceCode } = result;
   const mdx = <MDXContent {...props} params={params} />;
 
   return (
-    <Wrapper toc={toc} metadata={metadata}>
+    <Wrapper toc={toc} metadata={metadata} sourceCode={sourceCode}>
       {(async function (slug: string[]) {
         const isTutorials = slug[0] === 'learn' && slug[1] === 'tutorials';
         if (isTutorials) {

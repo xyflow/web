@@ -1,8 +1,14 @@
 'use server';
 
-import { getNhost } from '@/utils/nhost';
+import { createNhostClient } from '@/utils/nhost';
 
 export async function changePassword(newPassword: string) {
-  const nhost = await getNhost();
-  return nhost.auth.changePassword({ newPassword });
+  try {
+    const nhost = await createNhostClient();
+    await nhost.auth.changeUserPassword({ newPassword });
+  } catch (error) {
+    return { error: error.message };
+  }
+
+  return null;
 }

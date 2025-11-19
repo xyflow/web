@@ -1,7 +1,4 @@
-import {
-  ResendVerificationLink,
-  AuthFormWrapper,
-} from '@/components/pro/AuthForms';
+import { ResendVerificationLink, AuthFormWrapper } from '@/components/pro/AuthForms';
 
 const ResendVerificationLinkPage = () => {
   return (

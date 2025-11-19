@@ -1,14 +1,12 @@
-import { getNhost } from '@/utils/nhost';
+import { createNhostClient } from '@/utils/nhost';
 import Link from 'next/link';
 
 import { Button } from '@xyflow/xy-ui';
 
 const SignInOAuth = async () => {
-  const nhost = await getNhost();
+  const nhost = await createNhostClient();
 
-  const { providerUrl } = await nhost.auth.signIn({
-    provider: 'github',
-  });
+  const providerUrl = await nhost.auth.signInProviderURL('github');
 
   if (!providerUrl) {
     return null;

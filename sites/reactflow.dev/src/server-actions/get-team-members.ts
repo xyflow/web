@@ -1,7 +1,8 @@
 'use server';
 
 import { gql } from '@apollo/client';
-import { getNhost } from '@/utils/nhost';
+
+import { createNhostClient } from '@/utils/nhost';
 import { prettifyError } from '@/utils/nhost-utils';
 
 const GET_TEAM_MEMBERS = gql`
@@ -16,13 +17,15 @@ const GET_TEAM_MEMBERS = gql`
 `;
 
 export async function getTeamMembers() {
-  const nhost = await getNhost();
-  const userId = nhost.auth.getUser()!.id!;
+  const nhost = await createNhostClient();
+  const userId = nhost.getUserSession()?.user?.id;
 
-  const { data, error } = await nhost.graphql.request(GET_TEAM_MEMBERS, { userId });
-
-  if (error) {
+  try {
+    const response = await nhost.graphql.request<{
+      team_subscriptions;
+    }>(GET_TEAM_MEMBERS, { userId });
+    return response.body?.data?.team_subscriptions;
+  } catch (error) {
     throw new Error(prettifyError(error));
   }
-  return data.team_subscriptions;
 }

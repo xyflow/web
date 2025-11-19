@@ -1,17 +1,18 @@
-import { redirect } from 'next/navigation';
-import { getNhost } from '@/utils/nhost';
+// import { redirect } from 'next/navigation';
+// import { createNhostClient } from '@/utils/nhost';
 import { useMDXComponents as getMdxComponents } from '@/mdx-components';
 
 // Use Nextra theme docs layout with the sidebar
 const { wrapper: Wrapper } = getMdxComponents();
 
 export default async function Layout({ children }: LayoutProps<'/pro'>) {
-  const nhost = await getNhost();
-  const isAuthenticated = nhost.auth.isAuthenticated();
+  // const nhost = await createNhostClient();
+  // const isAuthenticated = !!nhost.getUserSession();
 
-  if (!isAuthenticated) {
-    redirect('/pro/sign-in');
-  }
+  // if (!isAuthenticated) {
+  //   redirect('/pro/sign-in');
+  // }
+
   return (
     <Wrapper
       toc={[]}

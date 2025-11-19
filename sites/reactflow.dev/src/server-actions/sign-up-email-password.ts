@@ -1,44 +1,42 @@
 'use server';
 
-import { cookies } from 'next/headers';
-import { redirect } from 'next/navigation';
-import { getNhost } from '@/utils/nhost';
-import {
-  COOKIE_OPTIONS,
-  NHOST_REFRESH_KEY,
-  NHOST_SESSION_KEY,
-} from '@/utils/nhost-utils';
+import { createNhostClient } from '@/utils/nhost';
+
+const appUrl = process.env.APP_URL ? process.env.APP_URL : 'http://localhost:3002';
+
+const redirectTo = `${appUrl}/pro/email-verification/verify`;
 
 export async function signUp(formData: FormData) {
   const email = formData.get('email') as string;
   const password = formData.get('password') as string;
 
-  const nhost = await getNhost();
-  const { session, error } = await nhost.auth.signUp({ email, password });
-
-  if (error) {
-    return error;
+  if (!email || !password) {
+    return {
+      error: 'Email and password fields are required',
+    };
   }
 
-  if (!session) {
-    // use encodeURIComponent because email can contain special characters such as +
-    redirect(`/pro/email-verification?email=${encodeURIComponent(email)}`);
-  }
+  console.log('signup', redirectTo);
 
-  const cookieStore = await cookies();
-  const exp = session?.accessTokenExpiresIn ?? 0;
-  cookieStore.set({
-    name: NHOST_SESSION_KEY,
-    value: btoa(JSON.stringify(session)),
-    ...COOKIE_OPTIONS,
-    // maxAge: exp,
-  });
-  if (session.refreshToken) {
-    cookieStore.set({
-      name: NHOST_REFRESH_KEY,
-      value: session.refreshToken,
-      ...COOKIE_OPTIONS,
+  try {
+    const nhost = await createNhostClient();
+    const response = await nhost.auth.signUpEmailPassword({
+      email,
+      password,
+      options: {
+        redirectTo,
+      },
     });
+    const session = response.body?.session;
+
+    // use encodeURIComponent because email can contain special characters such as +
+    return {
+      redirect: session
+        ? '/pro/dashboard'
+        : `/pro/email-verification?email=${encodeURIComponent(email)}`,
+    };
+  } catch (error) {
+    console.error(error.body);
+    return { error: `An error occurred during sign up: ${error.message}` };
   }
-  redirect('/pro/dashboard');
 }

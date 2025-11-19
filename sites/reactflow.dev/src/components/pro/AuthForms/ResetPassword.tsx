@@ -2,13 +2,13 @@
 
 import { FormEvent, useState, useTransition } from 'react';
 import { Button, Input, InputLabel } from '@xyflow/xy-ui';
+
 import { AuthErrorNotification, AuthNotification } from './AuthNotification';
-import type { AuthErrorPayload } from '@nhost/nhost-js';
 import { resetPassword } from '@/server-actions';
 
 function ResetPassword() {
   const [isLoading, startTransition] = useTransition();
-  const [error, setError] = useState<AuthErrorPayload | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [isSent, setIsSent] = useState(false);
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -17,9 +17,9 @@ function ResetPassword() {
     startTransition(async () => {
       const formData = new FormData(event.currentTarget);
       const email = formData.get('email') as string;
-      const { error } = await resetPassword(email);
-      setError(error);
-      setIsSent(!error);
+      const response = await resetPassword(email);
+      setError(response?.error);
+      setIsSent(!response?.error);
     });
   }
 

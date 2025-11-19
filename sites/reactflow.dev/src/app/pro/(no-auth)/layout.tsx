@@ -1,12 +1,12 @@
-import { getNhost } from '@/utils/nhost';
+import { createNhostClient } from '@/utils/nhost';
 import { redirect } from 'next/navigation';
 
 export default async function Layout({ children }: LayoutProps<'/pro'>) {
-  const nhost = await getNhost();
-  const isAuthenticated = nhost.auth.isAuthenticated();
+  const nhost = await createNhostClient();
+  const isAuthenticated = !!nhost.getUserSession();
 
   if (isAuthenticated) {
-    redirect('/');
+    redirect('/pro/dashboard');
   }
 
   return (
