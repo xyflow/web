@@ -21,7 +21,7 @@
     "GITHUB_APP_CLIENT_SECRET",
     "GH_APP_PRIVATE_KEY",
     "ENABLE_EXPERIMENTAL_COREPACK",
-    "VERCEL_URL"
+    "APP_URL"
   ],
   "globalDependencies": [".env"],
   "tasks": {
