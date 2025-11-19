@@ -20,7 +20,8 @@
     "GITHUB_APP_CLIENT_ID",
     "GITHUB_APP_CLIENT_SECRET",
     "GH_APP_PRIVATE_KEY",
-    "ENABLE_EXPERIMENTAL_COREPACK"
+    "ENABLE_EXPERIMENTAL_COREPACK",
+    "VERCEL_URL"
   ],
   "globalDependencies": [".env"],
   "tasks": {
