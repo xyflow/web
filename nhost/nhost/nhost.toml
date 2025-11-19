@@ -58,7 +58,7 @@ version = 20
 version = '0.43.0'
 
 [auth.redirections]
-clientUrl = 'http://localhost:3002'
+clientUrl = 'https://reactflow-website-env-staging-xyflow.vercel.app'
 allowedUrls = ['http://localhost:3002', 'https://*.vercel.app', 'https://reactflow.dev/pro']
 
 [auth.signUp]
@@ -175,9 +175,9 @@ capacity = 10
 
 [provider]
 [provider.smtp]
-user = 'noreply@reactflow.dev'
+user = 'noreply@xyflow.com'
 password = '{{ secrets.SMTP_PASSWORD }}'
-sender = 'noreply@reactflow.dev'
+sender = 'noreply@xyflow.com'
 host = 'smtp-moklick.alwaysdata.net'
 port = 465
 secure = true
