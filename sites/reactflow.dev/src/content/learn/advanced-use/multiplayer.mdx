@@ -1,0 +1,21 @@
+---
+description: Learn how to use React Flow with realtime multiplayer collaboration features.
+---
+
+# Realtime Multiplayer Collaboration Best Practices
+
+In our [Collaborative Flow Pro Example](/examples/interaction/collaborative), we
+show a realtime multiplayer collaboration flow using [React Flow](/) and
+[Yjs](https://github.com/yjs/yjs). While this is a great example, you may be
+wondering how to implement realtime multiplayer collaboration with React Flow and other libraries and backends.
+
+In this guide, we will explore some best practices for integrating multiplayer
+collaboration in your React Flow application, focusing mainly on **the
+high-level application logic** you need to implement.
+
+We will answer the following questions:
+- What React Flow state should I sync with the backend?
+- What parts of state can be safely persisted, and what parts should be simply broadcasted to other clients?
+- How to handle conflicts when multiple clients try to update the same state?
+- How to display the collaboration state to the users?
+
