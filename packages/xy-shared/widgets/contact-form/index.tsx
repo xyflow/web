@@ -5,51 +5,60 @@ import { Button, Alert, AlertTitle, AlertDescription } from '@xyflow/xy-ui';
 
 type ContactFormProps = {
   children?: React.ReactNode;
+  action?: (formData: FormData) => Promise<{ success: boolean }>;
 };
 
-function ContactForm({ children }: ContactFormProps) {
-  const [isLoading, setIsLoading] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [isError, setIsError] = useState(false);
+async function defaultAction(formData: FormData) {
+  const data: Record<string, string> = {};
+  formData.forEach((value, key) => {
+    data[key] = value.toString();
+  });
 
-  const onSubmit = useCallback(async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsLoading(true);
-    setIsSuccess(false);
-    setIsError(false);
+  const response = await fetch(process.env.NEXT_PUBLIC_CONTACT_FORM_URL as string, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+    body: JSON.stringify(data),
+  });
 
-    const formData = new FormData(e.currentTarget);
-    // @ts-ignore
-    const data = Object.fromEntries(formData.entries());
+  if (!response.ok) {
+    throw new Error('Failed to submit form');
+  }
 
-    try {
-      const response = await fetch(
-        process.env.NEXT_PUBLIC_CONTACT_FORM_URL as string,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
-          },
-          body: JSON.stringify(data),
-        },
-      );
+  return { success: true };
+}
 
-      if (response.ok) {
-        setIsSuccess(true);
-      } else {
-        setIsError(true);
+function ContactForm({ children, action = defaultAction }: ContactFormProps) {
+  const [formState, setFormState] = useState<null | 'error' | 'success' | 'loading'>(
+    null,
+  );
+
+  const onSubmit = useCallback(
+    async (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      setFormState('loading');
+
+      const formData = new FormData(e.currentTarget);
+
+      try {
+        const result = await action(formData);
+        if (result.success) {
+          setFormState('success');
+        } else {
+          setFormState('error');
+        }
+      } catch {
+        setFormState('error');
       }
-    } catch (err) {
-      setIsError(true);
-    }
-
-    setIsLoading(false);
-  }, []);
+    },
+    [action],
+  );
 
   return (
     <div className="flex flex-col gap-4">
-      {isError && (
+      {formState === 'error' && (
         <Alert variant="error">
           <AlertTitle>Something went wrong</AlertTitle>
           <AlertDescription>
@@ -58,7 +67,7 @@ function ContactForm({ children }: ContactFormProps) {
           </AlertDescription>
         </Alert>
       )}
-      {isSuccess && (
+      {formState === 'success' && (
         <Alert variant="success">
           <AlertTitle>Thanks for reaching out!</AlertTitle>
           <AlertDescription>
@@ -69,8 +78,8 @@ function ContactForm({ children }: ContactFormProps) {
       <form className="flex flex-col gap-4" onSubmit={onSubmit}>
         {children}
         <Button
-          loading={isLoading}
-          disabled={isLoading || isSuccess}
+          loading={formState === 'loading'}
+          disabled={formState === 'loading' || formState === 'success'}
           // we need to overwrite the default added [type=submit] { background-color: transparent; } rule from tailwind
           className="!bg-primary hover:!bg-primary/90"
           type="submit"
