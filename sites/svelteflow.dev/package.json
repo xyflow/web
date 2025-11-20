@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next --turbopack --port 3003",
     "build": "next build",
-    "postbuild": "next-sitemap",
+    "postbuild": "next-sitemap && pagefind --site .next/server/app --output-path public/_pagefind",
     "start": "next start",
     "lint": "next lint",
     "check-sitemap": "node scripts/check-sitemap.mjs",
