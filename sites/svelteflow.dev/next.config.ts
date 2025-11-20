@@ -62,14 +62,14 @@ const nextConfig: NextConfig = {
     resolveAlias: {
       // Fix an error when `--turbopack` is enabled
       // Module not found: Can't resolve 'next-mdx-import-source-file'
-      'next-mdx-import-source-file': "./src/mdx-components.tsx",
-    }
-  }
+      'next-mdx-import-source-file': './src/mdx-components.tsx',
+    },
+  },
 };
 
 const withNextra = nextra({
   defaultShowCopyCode: true,
-  search: false,
+  search: true,
 });
 
 // Merge MDX config with Next.js config

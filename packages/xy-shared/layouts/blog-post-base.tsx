@@ -26,7 +26,7 @@ export function BaseBlogPostLayout({
   children,
 }: BlogPostLayoutProps) {
   return (
-    <div className="max-w-screen-md mx-auto">
+    <div className="max-w-screen-md mx-auto" data-pagefind-ignore>
       <Text variant="light" className="mt-10">
         {frontMatter.date}
       </Text>

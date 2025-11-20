@@ -5,7 +5,6 @@ import { Layout, Navbar } from 'nextra-theme-docs';
 import { Banner } from 'nextra/components';
 import { Footer as XYFooter, LogoLabel, Button, Link } from '@xyflow/xy-ui';
 import { TOC, getLastChangelog } from 'xy-shared/server';
-import { Search } from 'xy-shared';
 
 export const NextraLayout: FC<{
   children: ReactNode;
@@ -34,7 +33,6 @@ export const NextraLayout: FC<{
       footer={<XYFooter baseUrl="https://svelteflow.dev" categories={footerCategories} />}
       navbar={
         <Navbar align="left" logo={<LogoLabel label="Svelte Flow" />} logoLink={false}>
-          <Search />
           <a
             className="xy-link-gray x:focus-visible:nextra-focus"
             href="https://github.com/xyflow/xyflow"
@@ -75,7 +73,6 @@ export const NextraLayout: FC<{
       nextThemes={{ forcedTheme: 'light', defaultTheme: 'light' }}
       pageMap={pageMap}
       // Set to null to avoid rendering search in mobile nav, since we added search in navbar already
-      search={null}
       sidebar={{ toggleButton: false }}
       toc={{
         backToTop: null,

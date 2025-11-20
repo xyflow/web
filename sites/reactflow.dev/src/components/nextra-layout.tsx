@@ -30,7 +30,7 @@ export const NextraLayout: FC<{
       nextThemes={{ forcedTheme: 'light', defaultTheme: 'light' }}
       pageMap={pageMap}
       // Set to null to avoid rendering search in mobile nav, since we added search in navbar already
-      search={null}
+      // search={null}
       sidebar={{ toggleButton: false, defaultMenuCollapseLevel: 4 }}
       toc={{
         backToTop: null,
