@@ -7,15 +7,152 @@ description: Learn how to use React Flow with realtime multiplayer collaboration
 In our [Collaborative Flow Pro Example](/examples/interaction/collaborative), we
 show a realtime multiplayer collaboration flow using [React Flow](/) and
 [Yjs](https://github.com/yjs/yjs). While this is a great example, you may be
-wondering how to implement realtime multiplayer collaboration with React Flow and other libraries and backends.
+wondering how to implement realtime multiplayer collaboration with React Flow
+and other libraries and backends.
+
+{/* TODO? Multiplayer done right is hard. Whenever you want to achieve persistence and
+realtime collaboration, you will need to handle conflicts when multiple clients
+try to update the same state, and the case where a client is offline and needs
+to catch up with the latest state when it comes back online. */}
 
 In this guide, we will explore some best practices for integrating multiplayer
 collaboration in your React Flow application, focusing mainly on **the
 high-level application logic** you need to implement.
 
 We will answer the following questions:
-- What React Flow state should I sync with the backend?
-- What parts of state can be safely persisted, and what parts should be simply broadcasted to other clients?
+- What React Flow state should I sync with the backend? State management best practices for multiplayer collaboration.
+- What parts of state can be safely persisted in a database, and what parts
+  should be ephemerally broadcasted to other clients?
 - How to handle conflicts when multiple clients try to update the same state?
 - How to display the collaboration state to the users?
 
+## High Level Architecture 
+
+As seen in our [State Management](/learn/advanced-use/state-management) guide,
+React Flow uses a [Zustand store](https://github.com/pmndrs/zustand) internally
+to manage the state of flows.
+
+To implement multiplayer collaboration, we recommend using a Zustand store to
+manage the nodes and edges in the flow, and passing them to the React Flow
+component, as well as storing additional state that you want to sync between
+clients connected to the same multiplayer flow.
+
+To achieve modularity, Zustand allows you to split the application store into
+smaller chunks, each responsible for a specific part of the application state.
+You can read more about slices in the [Zustand
+documentation](https://zustand.docs.pmnd.rs/guides/slices-pattern).
+
+We recommend using the following slices for multiplayer:
+- `flow` slice responsible for the nodes and edges in the flow.
+- `cursor` slice responsible for syncing the users' cursor positions.
+- `connection` slice responsible to draw the incomplete connections between
+  nodes.
+
+## State Management - The Flow Slice 
+
+React flow expects to receive two vectors, `nodes` and `edges`, and provides
+various callbacks to let you intercept and add custom functionality when users
+interact with the flow. 
+
+When you use custom callbacks such as `onNodesChange`, `onEdgesChange`, or
+`onConnect`, React Flow expects you to **apply the changes** to the store after
+you have added your custom logic.
+
+It is thus a good pattern to store the nodes and edges in the `flow` slice,
+together with the callbacks definitions, so that they can access the `set` and
+`get` functions that Zustand provides when creating a store or slice.
+
+Here is an example of the `flow` slice. This is where you will want to add your multiplayer logic.
+We will see how to add multiplayer logic to this slice in the next sections.
+```tsx
+import type { StateCreator } from "zustand";
+import {
+  applyNodeChanges,
+  applyEdgeChanges,
+  addEdge,
+  type Edge,
+  type OnConnect,
+  type OnEdgesChange,
+  type OnNodesChange,
+} from "@xyflow/react";
+
+// You should define the store type combining all different slices of your app
+// import type { Store } from "./";
+export interface FlowSlice {
+  nodes: Node[];
+  edges: Edge[];
+  onNodesChange: OnNodesChange;
+  onEdgesChange: OnEdgesChange;
+  onConnect: OnConnect;
+  addNode: (node: Omit<Node, "id">) => void;
+  addEdge: (edge: Omit<Edge, "id">) => void;
+  updateNodeData: (nodeId: string, newData: Node["data"]) => void;
+}
+export const createFlowSlice: StateCreator<Store, [], [], FlowSlice> = (
+  set,
+  get
+) => {
+  return {
+    nodes: [],
+    edges: [],
+    onNodesChange: (changes) => {
+      set({
+        nodes: applyNodeChanges(changes, get().nodes),
+      });
+    },
+    onEdgesChange: (changes) => {
+      set({
+        edges: applyEdgeChanges(changes, get().edges),
+      });
+    },
+    onConnect: (connection) => {
+      set({
+        edges: addEdge(connection, get().edges),
+      });
+    },
+    addNode: (node) => {
+      set({
+        nodes: [...get().nodes, { ...node, id: crypto.randomUUID() }],
+      });
+    },
+    addEdge: (edge) => {
+      set({
+        edges: [...get().edges, { ...edge, id: crypto.randomUUID() }],
+      });
+    },
+    updateNodeData: (nodeId, newData) => {
+      set({
+        nodes: get().nodes.map((node) =>
+          node.id === nodeId
+            ? { ...node, data: { ...node.data, ...newData } }
+            : node
+        ),
+      });
+    },
+  };
+};
+```
+
+
+## What solution to use for realtime collaboration?
+
+TODO: write about CRDT solutions (yjs, jazz)
+
+TODO: write about non-CRDT solutions (supabase, partykit) 
+
+
+## Sending realtime updates to the backend 
+
+
+`onNodesChange`: 
+- You can send `"position"`, `"dimensions"`
+- Dont send `"select"` 
+
+State to not sync and keep client side: 
+- `"select"` 
+
+
+## A note on persistence. 
+
+TODO: write about debouncing updates to the database and broadcasting updates to
+other clients more often.
