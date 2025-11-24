@@ -11,8 +11,8 @@ edges state accordingly.
 
 <RemoteCodeViewer route="examples/edges/reconnect-edge" framework="react" />
 
-A couple of properties interact with one another to determine whether an edge is updatable
-or not:
+A couple of properties interact with one another to determine whether an edge is
+reconnectable or not:
 
 - By default the [`edgesReconnectable`](/api-reference/react-flow#edgesreconnectable) is
   set to `true`.
@@ -22,13 +22,13 @@ or not:
 
 - Individual edges can refine or override the
   [`edgesReconnectable`](/api-reference/react-flow#edgesreconnectable) prop by setting
-  their [`updatable`](/api-reference/types/edge#updatable) property.
-  - `true` means the edge is updatable even if
+  their [`reconnectable`](/api-reference/types/edge#reconnectable) property.
+  - `true` means the edge is reconnectable even if
     [`edgesReconnectable`](/api-reference/react-flow#edgesreconnectable)
 
-  - `"source"` or `"target"` means the edge is updatable only from the source or target
-    handle regardless of the
+  - `"source"` or `"target"` means the edge is reconnectable only from the source or
+    target handle regardless of the
     [`edgesReconnectable`](/api-reference/react-flow#edgesreconnectable) prop.
 
-  - `false` means the edge is not updatable even if
+  - `false` means the edge is not reconnectable even if
     [`edgesReconnectable`](/api-reference/react-flow#edgesreconnectable) is set to `true`.
