@@ -62,7 +62,10 @@ It is thus a good pattern to store the nodes and edges in the `flow` slice,
 together with the callbacks definitions, so that they can access the `set` and
 `get` functions that Zustand provides when creating a store or slice.
 
-Here is an example of the `flow` slice. This is where you will want to add your multiplayer logic.
+This way you will be able to define your logic in a way that is decoupled from  
+rendering logic.
+
+Here is an example of the `flow` slice. This is where you will want to add your multiplayer-related code.
 We will see how to add multiplayer logic to this slice in the next sections.
 ```tsx
 import type { StateCreator } from "zustand";
@@ -78,6 +81,8 @@ import {
 
 // You should define the store type combining all different slices of your app
 // import type { Store } from "./";
+
+
 export interface FlowSlice {
   nodes: Node[];
   edges: Edge[];
@@ -133,6 +138,7 @@ export const createFlowSlice: StateCreator<Store, [], [], FlowSlice> = (
 };
 ```
 
+## To sync or not to sync? 
 
 ## What solution to use for realtime collaboration?
 
