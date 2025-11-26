@@ -9,6 +9,7 @@ tags: []
 image: ''
 ---
 
+import { Callout } from 'nextra/components';
 import { Image } from 'xy-shared';
 
 It's been a thrilling month for node-based UI enjoyers.
@@ -39,6 +40,7 @@ while, and as soon as we saw it, we knew we had to recreate it ourselves.
   width={1200}
   height={800}
   wide
+  caption="OpenAI's Agent Builder automatically separates overlapping nodes"
 />
 
 There are a few different ways to approach node overlap resolution, and we wanted to
@@ -46,7 +48,9 @@ compare them side by side, so we put together a small
 [showcase](https://node-collision-algorithms.vercel.app/) to see how different algorithms
 stack up.
 
-<div style={{ margin: '2rem 0' }}>
+Try it out yourself, try to catch the sheep with the dog.
+
+<figure className="my-8 mx-0">
   <iframe
     src="https://node-collision-algorithms.vercel.app/?hide-ui=true"
     title="Node Collision Algorithms Demo"
@@ -54,13 +58,12 @@ stack up.
     allowFullScreen
     style={{ width: '100%', height: '600px', border: 0, borderRadius: '12px' }}
   />
-</div>
+  <figcaption className="mx-12 mt-2 font-semibold text-gray-400 text-center sm:mx-auto sm:w-3/4 lg:w-1/2">
+    Interactive showcase comparing collision detection algorithms
+  </figcaption>
+</figure>
 
-TL;DR — We learned that while the naive solution is hard to beat, the WASM toolchain and
-flatbush are potent tools, and Vitest Bench with tinybench provides excellent performance
-insights.
-
-### The algorithm they told you not to worry about
+# Finding the solution
 
 As seasoned programmers, we like to follow a few timeless truths passed down through the
 ages:
@@ -72,6 +75,16 @@ ages:
 So we knew exactly what to do: generate some data, build a benchmark, and most
 importantly, embrace our inner child by starting with the most naive solution we could
 imagine.
+
+### **TL;DR**
+
+- The naive solution is hard to beat
+- [**Flatbush**](https://github.com/mourner/flatbush) is really fast for more than 500
+  nodes
+- The WASM toolchain has become surprisingly nice to use
+- Vitest Bench with tinybench provides excellent performance insights
+
+## The algorithm they told you not to worry about
 
 For our naive algorithm, we first define bounding boxes for each node, adding a small
 buffer to account for visual spacing.
@@ -225,7 +238,7 @@ acceptable. Looking at the data, we can see:
 **Note:** This benchmark was run on a processor with a very high single-core performance
 and we will test on more representative machines in the future.
 
-### Optimizing with quadtree-ts, rbush and flatbush
+## Optimizing with quadtree-ts, rbush and flatbush
 
 The easiest way to optimize **O(n²)** algorithms is to reduce the effective **n**.
 Ideally, we’d get it down to **O(n log n)**, or, if we’re lucky, even **O(log n)**.
@@ -269,6 +282,56 @@ spatial acceleration structure to iterate only over relevant overlaps like this:
 + for each node (A):
 +    for every overlapping node (B):
 ```
+
+## Benchmark results and key findings
+
+<Image
+  src="/img/blog/2025-node-collision/separated.png"
+  alt="Benchmark results for separated datasets showing algorithm performance across different node counts"
+  width={1200}
+  height={800}
+  wide
+  caption="Benchmark results for separated datasets (no overlaps)"
+/>
+
+<Image
+  src="/img/blog/2025-node-collision/clustered.png"
+  alt="Benchmark results for clustered datasets showing algorithm performance across different node counts"
+  width={1200}
+  height={800}
+  wide
+  caption="Benchmark results for clustered datasets (few overlaps)"
+/>
+
+<Image
+  src="/img/blog/2025-node-collision/packed.png"
+  alt="Benchmark results for packed datasets showing algorithm performance across different node counts"
+  width={1200}
+  height={800}
+  wide
+  caption="Benchmark results for packed datasets (many overlaps)"
+/>
+
+**For typical use cases (\<100 nodes), the choice doesn't really matter:** Looking at the
+results for 100-node datasets, the naive solution actually beats all the rest. Kudos to
+the algorithm they told you not to worry about! In practice, though, the performance
+difference is negligible — all algorithms perform in the sub-millisecond range. Even in
+the absolute worst case (the packed scenario, which should almost never happen), the naive
+solution completes within a single frame.
+
+**For anything above 500 nodes, Flatbush's advantages become clear.** It outperforms even
+its WASM counterpart, geo-index! With only 2.4 kB gzipped bundle size, it's a very light
+dependency. Most other solutions perform well in this category, except for quadtree-ts,
+which doesn't improve over the naive solution as much as the others. That said, we didn't
+tune the quadtree's parameters, which could be a great opportunity for future
+optimizations.
+
+Rebuilding indexes too frequently also hurts performance, as shown by the poor results
+when using rbush's replace function instead of batch rebuilding the tree on every
+iteration.
+
+One surprising result is how well the naive WASM algorithm performs! Once it overcomes the
+initial WASM overhead, it holds up remarkably well for a brute force approach.
 
 ### Wrapping up
 
