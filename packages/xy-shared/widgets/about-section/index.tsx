@@ -13,11 +13,11 @@ function AboutSection({ imageSrc, colorizeImage = true }: AboutSectionProps) {
   return (
     <Section>
       <Heading size="sm" className="text-center mb-2">
-        A project by the xyflow team
+        A project by xyflow
       </Heading>
       <Text className="text-center max-w-xl mx-auto mb-6" variant="light">
-        We are Christopher, Peter, Abbey and Moritz. We are the maintainers of
-        React Flow, Svelte Flow, and the communities around them
+        We are xyflow, a small team of passionate developers based in Berlin. We are the
+        maintainers of React Flow, Svelte Flow, and the communities around them.
       </Text>
 
       <div className="flex flex-wrap justify-center space-x-8 mb-16">
@@ -32,10 +32,7 @@ function AboutSection({ imageSrc, colorizeImage = true }: AboutSectionProps) {
           </Link>
         </Button>
         <Button asChild variant="link">
-          <Link
-            href="https://xyflow.com/open-source"
-            className="flex items-center"
-          >
+          <Link href="https://xyflow.com/open-source" className="flex items-center">
             Open Source <ArrowRightCircleIcon className="w-4 h-4 ml-1" />
           </Link>
         </Button>

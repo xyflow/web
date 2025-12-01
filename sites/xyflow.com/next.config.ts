@@ -1,6 +1,7 @@
 import { NextConfig } from 'next';
 import nextra from 'nextra';
 import reactFlowPackageJson from '@xyflow/react/package.json' with { type: 'json' };
+import { withBotId } from 'botid/next/config';
 
 const nextConfig: NextConfig = {
   // Configure pageExtensions to include md and mdx
@@ -72,5 +73,5 @@ const withNextra = nextra({
   search: false,
 });
 
-// Merge MDX config with Next.js config
-export default withNextra(nextConfig);
+// Merge MDX config with Next.js config and wrap with BotID
+export default withBotId(withNextra(nextConfig));

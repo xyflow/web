@@ -72,7 +72,7 @@ export function Hero({
               {kickerIcon &&
                 cloneElement(kickerIcon, {
                   className: 'inline-block w-6 h-6 mr-1',
-                })}
+                } as React.HTMLAttributes<HTMLElement>)}
               {kicker}
             </h3>
           )}

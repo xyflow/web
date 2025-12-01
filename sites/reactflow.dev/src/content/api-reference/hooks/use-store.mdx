@@ -85,13 +85,5 @@ This hook can be typed by typing the selector function. See this
 [section in our TypeScript guide](/learn/advanced-use/typescript#nodetype-edgetype-unions) for more information.
 
 ```tsx
-const nodes = useStore((s: ReactFlowState<CustomNodeType>) => ({
-  nodes: s.nodes,
-}));
+const nodes = useStore((s: ReactFlowState<CustomNodeType>) => s.nodes);
 ```
-
-## Notes
-
-- You should define your store selector function _outside_ of the component that
-  uses it, or use React's `useCallback` hook to memoize the function. Not doing
-  this can incur a slight performance penalty.

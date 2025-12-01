@@ -4,8 +4,8 @@ description: This guide will show you how to add basic interactivity to your flo
 
 # Adding Interactivity
 
-Now that we've built our [first flow](learn/concepts/building-a-flow), let's add
-interactivity so you can select, drag, and remove nodes and edges.
+Now that we've built our [first flow](/learn/concepts/building-a-flow), let's add
+\*interactivity so you can select, drag, and remove nodes and edges.
 
 ## Handling change events
 
@@ -121,11 +121,7 @@ When you drag or select a node, the `onNodesChange` handler is triggered. The
 your nodes. Here's how it all comes together. Try clicking and dragging a node to move it
 around and watch the UI update in real time.
 
-<RemoteCodeViewer
-  route="learn/make-it-interactive-1"
-  framework="react"
-  aspectRatio="4"
-/>
+<RemoteCodeViewer route="learn/make-it-interactive-1" framework="react" aspectRatio="4" />
 
 </Steps>
 
@@ -171,11 +167,7 @@ Now we can pass the `onConnect` handler to the `<ReactFlow />` component:
 Try to connect the two nodes by dragging from on handle to another one. The `onConnect`
 handler will be triggered, and the new edge will be added to the flow. 🥳
 
-<RemoteCodeViewer
-  aspectRatio="4"
-  route="learn/make-it-interactive-2"
-  framework="react"
-/>
+<RemoteCodeViewer aspectRatio="4" route="learn/make-it-interactive-2" framework="react" />
 
 </Steps>
 
@@ -200,5 +192,5 @@ interactive flow with the following capabilities:
   [`deleteKeyCode`](/api-reference/react-flow#deletekeycode)
 
 If you want to jump straight into creating your own application, we recommend checking out
-the [Customization](/learn/customization) section. Otherwise keep reading to learn more
-about React Flows capabilities.
+the Customization section. Otherwise keep reading to learn more about React Flows
+capabilities.

@@ -1,0 +1,21 @@
+{
+  "name": "node-search",
+  "type": "registry:component",
+  "dependencies": [
+    "@xyflow/react",
+    "cmdk"
+  ],
+  "devDependencies": [],
+  "registryDependencies": [
+    "command"
+  ],
+  "files": [
+    {
+      "type": "registry:component",
+      "path": "node-search.tsx"
+    }
+  ],
+  "tailwind": {},
+  "cssVars": {},
+  "meta": {}
+}

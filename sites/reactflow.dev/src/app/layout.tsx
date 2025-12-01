@@ -1,3 +1,4 @@
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Head } from 'nextra/components';
 import { Navbar as NextraNavbar } from 'nextra-theme-docs';
 import reactFlowPackageJson from '@xyflow/react/package.json';
@@ -128,6 +129,7 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
           }}
         >
           {children}
+          <SpeedInsights />
         </SubscriptionProvider>
       </body>
     </Html>

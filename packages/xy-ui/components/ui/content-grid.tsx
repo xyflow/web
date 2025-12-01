@@ -36,11 +36,7 @@ export type ContentGridItemProps = {
  * a link: useful for blog post previews, for example.
  *
  */
-export function ContentGridItem({
-  className,
-  route,
-  children,
-}: ContentGridItemProps) {
+export function ContentGridItem({ className, route, children }: ContentGridItemProps) {
   const isExternal = route?.includes('https://');
   const linkProps = isExternal
     ? {
@@ -61,7 +57,7 @@ export function ContentGridItem({
   return (
     <LinkOrDiv
       className={cn(
-        'lg:odd:border-r border-b border-gray-100 hover:bg-gray-100/50 border-solid px-8 py-10 lg:py-16',
+        'lg:odd:border-r border-b border-gray-100 hover:bg-gray-100/50 border-solid px-8 py-10 lg:py-16 z-10',
         route && 'cursor-pointer',
         className,
       )}

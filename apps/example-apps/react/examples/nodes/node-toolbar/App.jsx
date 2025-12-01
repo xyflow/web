@@ -30,10 +30,11 @@ function NodeWithToolbar({ data }) {
       <NodeToolbar
         isVisible={data.forceToolbarVisible || undefined}
         position={data.toolbarPosition}
+        align={data.align}
       >
-        <button>cut</button>
-        <button>copy</button>
-        <button>paste</button>
+        <button className="xy-theme__button">cut</button>
+        <button className="xy-theme__button">copy</button>
+        <button className="xy-theme__button">paste</button>
       </NodeToolbar>
       <div>{data?.label}</div>
     </>
@@ -48,6 +49,16 @@ function Flow() {
         nodes.map((node) => ({
           ...node,
           data: { ...node.data, toolbarPosition: pos },
+        })),
+      ),
+    [setNodes],
+  );
+  const setAlignment = useCallback(
+    (align) =>
+      setNodes((nodes) =>
+        nodes.map((node) => ({
+          ...node,
+          data: { ...node.data, align },
         })),
       ),
     [setNodes],
@@ -89,6 +100,16 @@ function Flow() {
           </button>
           <button className="xy-theme__button" onClick={() => setPosition(Position.Left)}>
             left
+          </button>
+          <h3>Node Toolbar Alignment:</h3>
+          <button className="xy-theme__button" onClick={() => setAlignment('start')}>
+            start
+          </button>
+          <button className="xy-theme__button" onClick={() => setAlignment('center')}>
+            center
+          </button>
+          <button className="xy-theme__button" onClick={() => setAlignment('end')}>
+            end
           </button>
           <h3>Override Node Toolbar visibility</h3>
           <label>

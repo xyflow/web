@@ -33,6 +33,7 @@ export const meta: DynamicMeta = {
       'delete-edge-on-drop': '',
       'edge-label-renderer': '',
       'edge-intersection': '',
+      'edge-toolbar': '',
       'edge-types': '',
       'floating-edges': '',
       markers: '',
