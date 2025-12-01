@@ -13,8 +13,7 @@
     "useDefineForClassFields": true,
     "verbatimModuleSyntax": true,
     "isolatedModules": true,
-    "composite": true,
-    "jsx": "react-jsx"
+    "composite": true
   },
   "exclude": [
     "react",
