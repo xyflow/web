@@ -12,7 +12,7 @@ image: ''
 import { Callout } from 'nextra/components';
 import { Image } from 'xy-shared';
 
-It's been a thrilling month for node-based UI enjoyers.
+It's been a thrilling time for node-based UI enjoyers.
 
 Let’s do a quick highlight reel:
 
@@ -48,7 +48,7 @@ compare them side by side, so we put together a small
 [showcase](https://node-collision-algorithms.vercel.app/) to see how different algorithms
 stack up.
 
-Try it out yourself, try to catch the sheep with the dog.
+## **Interactive Demo** 👇
 
 <figure className="my-8 mx-0">
   <iframe
@@ -56,9 +56,21 @@ Try it out yourself, try to catch the sheep with the dog.
     title="Node Collision Algorithms Demo"
     loading="lazy"
     allowFullScreen
-    style={{ width: '100%', height: '600px', border: 0, borderRadius: '12px' }}
-  />
-  <figcaption className="mx-12 mt-2 font-semibold text-gray-400 text-center sm:mx-auto sm:w-3/4 lg:w-1/2">
+    style={{
+      width: '100%',
+      height: '600px',
+      //border: '1px solid #e0e0e0',
+      borderRadius: '4px',
+        boxShadow: `
+        0 0 0 1px rgba(0, 0, 0, 0.05),
+        0 10px 20px rgba(0, 0, 0, 0.06)
+      `,
+      //overflow: 'hidden',
+    }}
+
+/>
+
+  <figcaption className="mx-6 mt-2 text-gray-400 text-center sm:mx-auto w-3/4">
     Interactive showcase comparing collision detection algorithms
   </figcaption>
 </figure>
