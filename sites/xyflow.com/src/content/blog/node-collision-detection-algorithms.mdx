@@ -49,15 +49,14 @@ backlog for a while, and as soon as we saw it, we knew we had to recreate it our
 />
 
 There are a few different ways to approach node overlap resolution, and we wanted to
-compare them side by side, so we put together a small
-[showcase](https://node-collision-algorithms.vercel.app/) to see how different algorithms
-stack up.
+compare them side by side, so we put together a small [showcase](/node-collisions) to see
+how different algorithms stack up.
 
 ## **Interactive Demo** 👇
 
 <figure className="my-8 mx-0">
   <iframe
-    src="https://node-collision-algorithms.vercel.app/?hide-ui=true"
+    src="https://xyflow.com/node-collisions?hide-ui=true"
     title="Node Collision Algorithms Demo"
     loading="lazy"
     allowFullScreen
@@ -275,9 +274,9 @@ By limiting the number of comparisons we make at each step, these structures can
 drastically reduce the number of overlap checks required, making large flows much more
 manageable.
 
-In our [showcase](https://node-collision-algorithms.vercel.app/), you can choose from
-several other algorithms to compare performance and see how different approaches behave.
-Here are a few we included and the benefits each brings:
+In our [showcase](/node-collisions), you can choose from several other algorithms to
+compare performance and see how different approaches behave. Here are a few we included
+and the benefits each brings:
 
 [**quadtree-ts**](https://github.com/timohausmann/quadtree-ts) uses **quadtrees**, which
 recursively subdivides space and stores only a limited number of nodes in each leaf,
