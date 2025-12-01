@@ -20,7 +20,7 @@ const Page: FC = () => {
         align="center"
         kicker="Contact Us"
         kickerIcon={<EnvelopeIcon />}
-        title="We're happy to answer any questions you have"
+        title="We’re happy to answer any questions you have."
         subtitle="Messages go to our email inbox and we aim to respond within a couple of days."
       />
       <Card className="relative mt-16 md:mt-32 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 p-2 md:p-4">
