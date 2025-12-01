@@ -46,7 +46,7 @@ export const meta: DynamicMeta = {
       dagre: '',
       elkjs: '',
       'horizontal-flow': '',
-      'node-collision': '',
+      'node-collisions': '',
       subflows: '',
     },
   },

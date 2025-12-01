@@ -78,7 +78,7 @@ export const meta: DynamicMeta = {
       'auto-layout': '',
       'force-layout': '',
       'dynamic-layouting': '',
-      'node-collision': '',
+      'node-collisions': '',
     },
   },
   styling: {
