@@ -32,6 +32,7 @@ export * from './components/fathom';
 export * from './components/flows/flow-a';
 export * from './components/flows/flow-b';
 export * from './components/flows/flow-c';
+export * from './components/menubar';
 
 export * from './types';
 

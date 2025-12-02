@@ -26,11 +26,13 @@ import {
 const PricingTable = ({
   className,
   plans = defaultConfig,
+  isSignedIn = false,
   onSelect,
 }: {
   className?: string;
   plans?: SubscriptionPlan[];
   onSelect?: OnSelectCurrenty;
+  isSignedIn?: boolean;
 }) => {
   const [billingInterval, setBillingInterval] = useState<BillingInterval>(
     BillingInterval.MONTH,
@@ -102,6 +104,7 @@ const PricingTable = ({
             {plans.map((plan) => (
               <Plan
                 {...plan}
+                buttonLabel={isSignedIn ? plan.buttonLabelSignedId : plan.buttonLabel}
                 currency={currency}
                 billingInterval={billingInterval}
                 onSelect={onSelect}

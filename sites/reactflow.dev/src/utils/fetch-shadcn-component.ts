@@ -1,5 +1,6 @@
 import { loadJSONFile } from 'xy-shared/server';
 import { compileCodeSnippet } from 'xy-shared/server';
+import path from 'path';
 
 type Demo = {
   files: [{ content: string; page: string }];
@@ -22,10 +23,13 @@ function kebabCaseToCamelCase(str: string) {
 }
 
 export async function fetchShadcnComponent(id: string) {
+  const cwd = process.cwd();
   const data = loadJSONFile<RegistryComponent>(
-    `../../apps/ui-components/public/registry/${id}.json`,
+    path.join(cwd, `../../apps/ui-components/public/registry/${id}.json`),
   )!;
-  const demo = loadJSONFile<Demo>(`../../apps/ui-components/public/demo/${id}.json`)!;
+  const demo = loadJSONFile<Demo>(
+    path.join(cwd, `../../apps/ui-components/public/demo/${id}.json`),
+  )!;
 
   const componentName = kebabCaseToCamelCase(id);
 
