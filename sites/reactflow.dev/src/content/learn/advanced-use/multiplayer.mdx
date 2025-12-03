@@ -20,24 +20,22 @@ collaboration in your React Flow application, focusing mainly on **the
 high-level application logic** you need to implement.
 
 We will answer the following questions:
-- What React Flow state should I sync with the backend? State management best practices for multiplayer collaboration.
-- What parts of state can be safely persisted in a database, and what parts
-  should be ephemerally broadcasted to other clients?
+- What React Flow state should I sync with the backend?
+- What can be safely persisted in a database, and what should be broadcasted to other clients?
 - How to handle conflicts when multiple clients try to update the same state?
 - How to display the collaboration state to the users?
+- What libraries or data structures to use for realtime collaboration?
 
 ## High Level Architecture 
 
 As seen in our [State Management](/learn/advanced-use/state-management) guide,
 React Flow uses a [Zustand store](https://github.com/pmndrs/zustand) internally
 to manage the state of flows.
-
 To implement multiplayer collaboration, we recommend using a Zustand store to
 manage the nodes and edges in the flow, and passing them to the React Flow
 component, as well as storing additional state that you want to sync between
 clients connected to the same multiplayer flow.
-
-To achieve modularity, Zustand allows you to split the application store into
+To achieve modularity Zustand allows you to split the application store into
 smaller chunks, each responsible for a specific part of the application state.
 You can read more about slices in the [Zustand
 documentation](https://zustand.docs.pmnd.rs/guides/slices-pattern).
@@ -50,20 +48,18 @@ We recommend using the following slices for multiplayer:
 
 ## State Management - The Flow Slice 
 
-React flow expects to receive two vectors, `nodes` and `edges`, and provides
-various callbacks to let you intercept and add custom functionality when users
-interact with the flow. 
+Instances of the React Flow component, expect to receive two array props:
+`nodes` and `edges`, and various callback props to let you intercept and add custom
+functionality when users interact with the flow. 
 
 When you use custom callbacks such as `onNodesChange`, `onEdgesChange`, or
 `onConnect`, React Flow expects you to **apply the changes** to the store after
 you have added your custom logic.
-
 It is thus a good pattern to store the nodes and edges in the `flow` slice,
 together with the callbacks definitions, so that they can access the `set` and
 `get` functions that Zustand provides when creating a store or slice.
 
-This way you will be able to define your logic in a way that is decoupled from  
-rendering logic.
+The goal is to be able to define your store logic in a way that is decoupled from rendering logic.
 
 Here is an example of the `flow` slice. This is where you will want to add your multiplayer-related code.
 We will see how to add multiplayer logic to this slice in the next sections.
@@ -93,6 +89,7 @@ export interface FlowSlice {
   addEdge: (edge: Omit<Edge, "id">) => void;
   updateNodeData: (nodeId: string, newData: Node["data"]) => void;
 }
+
 export const createFlowSlice: StateCreator<Store, [], [], FlowSlice> = (
   set,
   get
@@ -138,7 +135,89 @@ export const createFlowSlice: StateCreator<Store, [], [], FlowSlice> = (
 };
 ```
 
-## To sync or not to sync? 
+## What to sync or not to sync? 
+
+You can confidently sync whenever an user adds a node or an edge, inside of
+`addNode` or `addEdge`, `onConnect`. 
+
+### Syncing nodes
+
+When you are syncing nodes, we recommend to sync at least the node's `id`,
+`position`, size (`width` and `height`), `data` and `dragging`. You can
+additionally sync properties of a node like `selectable`, `disabled`, `dragging`
+and others, **but we recommend to not sync the `selected` property**: If Bob and
+Alice are connected to the same flow on two different devices, Bob selects a
+node, and Alice selects another node, Bob will see Alice's node selected, and
+Alice will see Bob's node selected, as if they both selected both nodes on their
+devices, which was clearly not the case.
+
+If you want to display what other users connected to the same flow are doing,
+such as mouse cursors, selection states or new incompleted edges, we recommend
+**creating a custom Zustand slice** for each feature, for example:
+
+- A slice storing and syncing a list of `(x,y)` positions for each connected
+user to display their mouse cursor
+- Another slice storing a list of which nodes each user has selected, without
+  syncing the main nodes `selected` property.
+
+In the end, you should be able to create custom components such as [custom
+nodes](/learn/customization/custom-nodes) that *consume your Zustand store* and
+render a different UI for synced state.
+
+For example, for displaying if another user has selected one or more nodes,
+instead of syncing the `selected` prop (for the reasons discussed above), you
+may want to implement a component wrapping node components and displaying an
+outer glow with the color assigned to the different user.
+
+### Syncing edges
+
+You can safely sync edges by syncing their `id`, `source`, `target`,
+`sourceHandle`, `targetHandle`, `type`, and so on, and as with nodes, we
+**recommend to not sync the `selected` prop**.
+
+Additionally, if you want to display the incomplete connections between nodes,
+in other workds new edges being created, connected to a single handle and
+"dangling" from an user's mouse cursor, you should store the incomplete
+connections in a separate slice, and sync them to other clients via ephemeral broadcasting, 
+and not persist them in the database.
+
+### Syncing cursors
+
+To sync mouse cursors, we recommend using a custom Zustand slice that stores an array of 
+cursor objects, each containing the user's id, position, dragging state, and color.
+When an user connects to a flow, you should add their cursor to the array, and
+when an user leaves the flow, you should remove their cursor from the array.
+
+When an user moves their own mouse cursor, you should update the cursor position
+and broadcast the update to other clients, so they can display the cursor in
+their UI. To avoid sending too many updates to the backend, you should throttle
+the cursor updates (we had success with 64ms) , and you can use a library like
+[perfect-cursors](https://github.com/steveruizok/perfect-cursors) to smooth the
+cursor movements. 
+
+---
+
+
+Some solutions,
+like [Yjs](https://github.com/yjs/yjs), and [Jazz](https://jazz.tools), use a
+CRDT (Conflict-Free Replicated Data Type) to achieve realtime collaboration. You
+can treat CRDT-backed structures as having an intrinsic notion of mutation: each
+update you perform on the CRDT is already a well-defined, conflict-free
+operation. This means that you can broadcast the updates to other clients as soon
+as you perform the operation, and the other clients will be able to apply the
+update to their local state, resolving conflicts automatically.
+
+On the other hand, other solutions involving relational or object databases,
+like [Supabase](https://supabase.com), may not offer a CRDT-like functionality,
+and automatic conflict resolution. In this case, you will need to decide when to
+broadcast changes via realtime, a less expensive, ephemeral and faster
+operation, and when to commit them to the database, a more expensive, persistent
+and slower operation. This causes issues when you want to display the
+collaboration state to the users,
+
+
+TODO: write limitations of supabase
+
 
 ## What solution to use for realtime collaboration?
 
@@ -147,18 +226,9 @@ TODO: write about CRDT solutions (yjs, jazz)
 TODO: write about non-CRDT solutions (supabase, partykit) 
 
 
-## Sending realtime updates to the backend 
-
-
-`onNodesChange`: 
-- You can send `"position"`, `"dimensions"`
-- Dont send `"select"` 
-
-State to not sync and keep client side: 
-- `"select"` 
-
-
 ## A note on persistence. 
 
 TODO: write about debouncing updates to the database and broadcasting updates to
 other clients more often.
+
+## What libraries or data structures to use for realtime collaboration?
