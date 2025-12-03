@@ -2,8 +2,9 @@
 import { ComponentProps, FC, ReactNode } from 'react';
 import { PageMapItem } from 'nextra';
 import { Layout, Navbar } from 'nextra-theme-docs';
-import { Footer as XYFooter, LogoLabel } from '@xyflow/xy-ui';
+import { Footer as XYFooter, LogoLabel, Link } from '@xyflow/xy-ui';
 import { TOC, getLastChangelog } from 'xy-shared/server';
+import { Banner } from 'nextra/components';
 
 export const NextraLayout: FC<{
   children: ReactNode;
@@ -13,6 +14,16 @@ export const NextraLayout: FC<{
 }> = async ({ children, pageMap, footerCategories, navbar }) => {
   return (
     <Layout
+      banner={
+        <Banner storageKey="node-collisions">
+          <Link
+            className="hover:underline x:focus-visible:nextra-focus text-sm"
+            href="/examples/layout/node-collisions"
+          >
+            🚨 New Example: Handling Node Collisions!
+          </Link>
+        </Banner>
+      }
       darkMode={false}
       docsRepositoryBase="https://github.com/xyflow/web/tree/main/sites/reactflow.dev"
       editLink="Edit this page on GitHub"

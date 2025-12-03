@@ -15,16 +15,13 @@ export const NextraLayout: FC<{
   return (
     <Layout
       banner={
-        <Banner storageKey="svelte-flow-stable">
-          <a
-            className="hover:underline x:focus-visible:nextra-focus"
-            href="https://xyflow.com/blog/svelte-flow-release"
-            rel="noreferrer"
-            target="_blank"
+        <Banner storageKey="node-collisions">
+          <Link
+            className="hover:underline x:focus-visible:nextra-focus text-sm"
+            href="/examples/layout/node-collisions"
           >
-            ✨ Svelte Flow 1.0 is here! Rewritten for Svelte 5 with many new features and
-            improvements.
-          </a>
+            🚨 New Example: Handling Node Collisions!
+          </Link>
         </Banner>
       }
       darkMode={false}
