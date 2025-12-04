@@ -223,12 +223,60 @@ TODO: write limitations of supabase
 
 TODO: write about CRDT solutions (yjs, jazz)
 
-TODO: write about non-CRDT solutions (supabase, partykit) 
+TODO: write about non-CRDT solutions (partykit) 
+
+### Supabase and direct SQL database pros and cons 
+
+Supabase Realtime is a great solution for some realtime collaboration tasks, but
+it has some limitations. We have implemented a solution that uses Supabase
+Realtime with React Flow and Zustand, and we have encountered various problems
+that need to be addressed individually by the application, while some other 
+multiplayer solutions like Yjs and Jazz solve those hard synchronization issues 
+automatically by design.
+
+#### Supabase Pros 
+
+**Persistence.** Supabase is a great solution for persistence, as data is
+automatically persisted to [Postgres](https://www.postgresql.org/), a mature and
+battle-tested relational database.
+
+**SQL querying.** If you are familiar with relational databases, you can use the
+full power of SQL to query the data. Complex views and queries are possible, and
+easy to implement, but usually, for flow based applications, you will not need
+to use the full power of SQL.
+
+In contrast, CRDT libraries often require you to implement your own persistence
+and querying logic, which can be a more complex task.
+
+#### Supabase Cons 
+
+**Manual conflict resolution required.** When multiple users edit the same node
+simultaneously, you must implement some form of conflict resolution manually. In
+contrast, CRDT libraries provide built-in conflict resolution logic.
+
+**Database operations are expensive. Broadcasting is cheaper.** This means that
+you will need to decide when to broadcast changes via realtime, and when to
+commit them to the database. If your application requires to sync high-frequency
+updates, such as text fields, you now have to decide when you want to broadcast
+the changes to other clients, and when you want to commit them to the database.
+CRDT libraries often provide multiplayer data structures that are optimized for
+such kind of high-frequency updates.
+
+**Offline edits are not supported.** Supabase does not support offline edits,
+and you need to detect when you lose connection to the server and implement a
+full state sync manually when you reconnect. 
+This is a tedious task, and users, while they are editing the flow offline, 
+want their changes to be uploaded to the server as soon as they regain connection, 
+while receiving the changes from other users that were made while they were offline.
+Supabase broadcast messages are not ordered, and might be enqueued, while 
+supabase postgres transactions are one-shot operations which might fail without 
+a rollback mechanism or a message queuing system.
+This means that you will need to implement a custom transaction logic to ensure that
+the changes are applied in the correct order, and that the changes are not lost
+if the transactions fails.
+
+**Debugging difficulty.** When state gets out of sync, the above points make it
+harder to debug the synchronization logic, compared to CRDTs' built-in deterministic
+merge behavior.
 
 
-## A note on persistence. 
-
-TODO: write about debouncing updates to the database and broadcasting updates to
-other clients more often.
-
-## What libraries or data structures to use for realtime collaboration?
