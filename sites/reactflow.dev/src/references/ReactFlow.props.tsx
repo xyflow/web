@@ -105,6 +105,7 @@ const FIELDS = {
     'elevateNodesOnSelect',
     'connectOnClick',
     'connectionMode',
+    'zIndexMode',
   ],
   connectionLine: [
     'connectionRadius',
@@ -132,7 +133,7 @@ export const ReactFlowAPIProps: FC<{ group: keyof typeof FIELDS | 'common' }> = 
       .flat()
       .map((v) => `"${v}"`)
       .join('|');
-    const groupedProps = "Omit<React.ComponentProps<'div'>, 'onError'>"
+    const groupedProps = "Omit<React.ComponentProps<'div'>, 'onError'>";
 
     myType = `
 Omit<
