@@ -14,7 +14,7 @@ importers:
     devDependencies:
       '@turbo/gen':
         specifier: ^2.5.0
-        version: 2.6.2(@types/node@24.10.1)(typescript@5.9.3)
+        version: 2.6.3(@types/node@24.10.1)(typescript@5.9.3)
       eslint:
         specifier: ^9.25.1
         version: 9.39.1(jiti@2.6.1)
@@ -29,7 +29,7 @@ importers:
         version: 6.1.2
       turbo:
         specifier: ^2.5.0
-        version: 2.6.2
+        version: 2.6.3
       typescript:
         specifier: ^5.8.3
         version: 5.9.3
@@ -61,8 +61,8 @@ importers:
         specifier: ^12.10.0
         version: 12.10.0(@types/react@19.2.7)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       '@xyflow/svelte':
-        specifier: 1.4.1
-        version: 1.4.1(svelte@5.45.5)
+        specifier: 1.5.0
+        version: 1.5.0(svelte@5.45.5)
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -313,7 +313,7 @@ importers:
         version: 5.2.0(eslint@9.39.1(jiti@2.6.1))
       eslint-plugin-turbo:
         specifier: ^2.5.0
-        version: 2.6.2(eslint@9.39.1(jiti@2.6.1))(turbo@2.6.2)
+        version: 2.6.3(eslint@9.39.1(jiti@2.6.1))(turbo@2.6.3)
       globals:
         specifier: ^16.0.0
         version: 16.5.0
@@ -336,13 +336,13 @@ importers:
     dependencies:
       '@codesandbox/sandpack-react':
         specifier: ^2.20.0
-        version: 2.20.0(react@19.2.1)
+        version: 2.20.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       '@docsearch/css':
         specifier: ^3.9.0
         version: 3.9.0
       '@docsearch/react':
         specifier: ^3.9.0
-        version: 3.9.0(@algolia/client-search@5.17.1)(@types/react@19.2.7)(react@19.2.1)(search-insights@2.17.3)
+        version: 3.9.0(@algolia/client-search@5.17.1)(@types/react@19.2.7)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(search-insights@2.17.3)
       '@heroicons/react':
         specifier: ^2.2.0
         version: 2.2.0(react@19.2.1)
@@ -381,7 +381,7 @@ importers:
         version: 1.1.13(@types/react-dom@19.2.3(@types/react@19.2.7))(@types/react@19.2.7)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       '@react-three/fiber':
         specifier: 9.1.2
-        version: 9.1.2(@types/react@19.2.7)(react@19.2.1)(three@0.171.0)
+        version: 9.1.2(@types/react@19.2.7)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(three@0.171.0)
       '@sindresorhus/slugify':
         specifier: ^2.2.1
         version: 2.2.1
@@ -408,16 +408,16 @@ importers:
         version: 3.7.2
       next:
         specifier: ^14.2.15
-        version: 14.2.33(@opentelemetry/api@1.9.0)(react@19.2.1)
+        version: 14.2.33(@opentelemetry/api@1.9.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       nextra:
         specifier: 4.3.0-alpha.29
-        version: 4.3.0-alpha.29(acorn@8.15.0)(next@14.2.33(@opentelemetry/api@1.9.0)(react@19.2.1))(react@19.2.1)(typescript@5.9.3)
+        version: 4.3.0-alpha.29(acorn@8.15.0)(next@14.2.33(@opentelemetry/api@1.9.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(typescript@5.9.3)
       react-dom:
         specifier: ^19.2.0
         version: 19.2.1(react@19.2.1)
       react-lite-youtube-embed:
         specifier: ^2.5.1
-        version: 2.6.0(react@19.2.1)
+        version: 2.6.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       tailwindcss:
         specifier: ^3.4.14
         version: 3.4.18(ts-node@10.9.2(@types/node@22.19.1)(typescript@5.9.3))
@@ -429,7 +429,7 @@ importers:
         version: 3.0.7(react@19.2.1)
       use-error-boundary:
         specifier: ^2.0.6
-        version: 2.0.6(react@19.2.1)
+        version: 2.0.6(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
     devDependencies:
       '@types/node':
         specifier: ^22.14.1
@@ -647,8 +647,8 @@ importers:
         specifier: 12.10.0
         version: 12.10.0(@types/react@19.2.7)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       '@xyflow/svelte':
-        specifier: 1.4.1
-        version: 1.4.1(svelte@5.45.5)
+        specifier: 1.5.0
+        version: 1.5.0(svelte@5.45.5)
       '@xyflow/system':
         specifier: ^0.0.72
         version: 0.0.72
@@ -2843,12 +2843,12 @@ packages:
   '@tsconfig/svelte@5.0.6':
     resolution: {integrity: sha512-yGxYL0I9eETH1/DR9qVJey4DAsCdeau4a9wYPKuXfEhm8lFO8wg+LLYJjIpAm6Fw7HSlhepPhYPDop75485yWQ==}
 
-  '@turbo/gen@2.6.2':
-    resolution: {integrity: sha512-B3iJNuUa7OHHdquuyOYFRjHf7Zw3+VPYEv3K4bTx7VIyMvOFxa3i6N2UuViFxk3t3nQE17fJAbE/q9pi3BoxTA==}
+  '@turbo/gen@2.6.3':
+    resolution: {integrity: sha512-q1QrS6ukleoCoNV0eTflMeDxJSdDJkQt0idfN/8TrMqrcOl1oRI3iYpizZR0paiPWe7lTpRr6fG7pGSKGZ+15A==}
     hasBin: true
 
-  '@turbo/workspaces@2.6.2':
-    resolution: {integrity: sha512-9aiMWXgGk9h30OD6DA3KyzWM7nNS8GncIjKihueHrV8q1BZqFjO+eOvaZGCpvNXUuJPwdKUWIa5mw+n1lY7QNw==}
+  '@turbo/workspaces@2.6.3':
+    resolution: {integrity: sha512-RLOjHQIZeCGwVBCRr8pfyshUJn2wx8s5n1H0O9fhpsL6qaWKi9gKoUJMr8BMVJApJGrspJ/QkQzsL8gLicpZbQ==}
     hasBin: true
 
   '@typeform/embed-react@4.7.0':
@@ -3272,8 +3272,8 @@ packages:
       react: '>=17'
       react-dom: '>=17'
 
-  '@xyflow/svelte@1.4.1':
-    resolution: {integrity: sha512-CAegVmLMpX64G6JnhiU7ezoIOY7aX88cf1fSOV8FutKdZNMxcJBykhvaXunOBf7jjDs9X887RH8Jgdl1rMwXww==}
+  '@xyflow/svelte@1.5.0':
+    resolution: {integrity: sha512-kHJVwMtabN7xthDJqLvx5wGT5qjOAVV90J9a26geDS51lrGsGb7CCxNRiZCMuVDlRkczGVIy9dkqdph6FL4slQ==}
     peerDependencies:
       svelte: ^5.25.0
 
@@ -4448,8 +4448,8 @@ packages:
     peerDependencies:
       eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9.7
 
-  eslint-plugin-turbo@2.6.2:
-    resolution: {integrity: sha512-FTJOLo8SXLbGgEyFCu0CzrVzEObH2GGJt+cLT6R3oXLK8Bv1i0wOuHYecXjA0RVxZ3t1YUP/9tQNQ3LhTYRd5A==}
+  eslint-plugin-turbo@2.6.3:
+    resolution: {integrity: sha512-91WZ+suhT/pk+qNS0/rqT43xLUlUblsa3a8jKmAStGhkJCmR2uX0oWo/e0Edb+It8MdnteXuYpCkvsK4Vw8FtA==}
     peerDependencies:
       eslint: '>6.6.0'
       turbo: '>2.0.0'
@@ -7280,38 +7280,38 @@ packages:
   tslib@2.8.1:
     resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
 
-  turbo-darwin-64@2.6.2:
-    resolution: {integrity: sha512-nF9d/YAyrNkyXn9lp3ZtgXPb7fZsik3cUNe/sBvUO0G5YezUS/kDYYw77IdjizDzairz8pL2ITCTUreG2d5iZQ==}
+  turbo-darwin-64@2.6.3:
+    resolution: {integrity: sha512-BlJJDc1CQ7SK5Y5qnl7AzpkvKSnpkfPmnA+HeU/sgny3oHZckPV2776ebO2M33CYDSor7+8HQwaodY++IINhYg==}
     cpu: [x64]
     os: [darwin]
 
-  turbo-darwin-arm64@2.6.2:
-    resolution: {integrity: sha512-mmm0jFaVramST26XE1Lk2qjkjvLJHOe9f3TFjqY+aByjMK/ZmKE5WFPuCWo4L3xhwx+16T37rdPP//76loB3oA==}
+  turbo-darwin-arm64@2.6.3:
+    resolution: {integrity: sha512-MwVt7rBKiOK7zdYerenfCRTypefw4kZCue35IJga9CH1+S50+KTiCkT6LBqo0hHeoH2iKuI0ldTF2a0aB72z3w==}
     cpu: [arm64]
     os: [darwin]
 
-  turbo-linux-64@2.6.2:
-    resolution: {integrity: sha512-IUMHjkVRJDUABGpi+iS1Le59aOl5DX88U5UT/mKaE7nNEjG465+a8UtYno56cZnLP+C6BkX4I93LFgYf9syjGQ==}
+  turbo-linux-64@2.6.3:
+    resolution: {integrity: sha512-cqpcw+dXxbnPtNnzeeSyWprjmuFVpHJqKcs7Jym5oXlu/ZcovEASUIUZVN3OGEM6Y/OTyyw0z09tOHNt5yBAVg==}
     cpu: [x64]
     os: [linux]
 
-  turbo-linux-arm64@2.6.2:
-    resolution: {integrity: sha512-0qQdZiimMUZj2Gfq87thYu0E02NaNcsB3lcEK/TD70Zzi7AxQoxye664Gis0Uao2j2L9/+05wC2btZ7SoFX3Gw==}
+  turbo-linux-arm64@2.6.3:
+    resolution: {integrity: sha512-MterpZQmjXyr4uM7zOgFSFL3oRdNKeflY7nsjxJb2TklsYqiu3Z9pQ4zRVFFH8n0mLGna7MbQMZuKoWqqHb45w==}
     cpu: [arm64]
     os: [linux]
 
-  turbo-windows-64@2.6.2:
-    resolution: {integrity: sha512-BmMfFmt0VaoZL4NbtDq/dzGfjHsPoGU2+vFiZtkiYsttHY3fd/Dmgnu9PuRyJN1pv2M22q88rXO+dqYRHztLMw==}
+  turbo-windows-64@2.6.3:
+    resolution: {integrity: sha512-biDU70v9dLwnBdLf+daoDlNJVvqOOP8YEjqNipBHzgclbQlXbsi6Gqqelp5er81Qo3BiRgmTNx79oaZQTPb07Q==}
     cpu: [x64]
     os: [win32]
 
-  turbo-windows-arm64@2.6.2:
-    resolution: {integrity: sha512-0r4s4M/FgLxfjrdLPdqQUur8vZAtaWEi4jhkQ6wCIN2xzA9aee9IKwM53w7CQcjaLvWhT0AU7LTQHjFaHwxiKw==}
+  turbo-windows-arm64@2.6.3:
+    resolution: {integrity: sha512-dDHVKpSeukah3VsI/xMEKeTnV9V9cjlpFSUs4bmsUiLu3Yv2ENlgVEZv65wxbeE0bh0jjpmElDT+P1KaCxArQQ==}
     cpu: [arm64]
     os: [win32]
 
-  turbo@2.6.2:
-    resolution: {integrity: sha512-LiQAFS6iWvnY8ViGtoPgduWBeuGH9B32XR4p8H8jxU5PudwyHiiyf1jQW0fCC8gCCTz9itkIbqZLIyUu5AG33w==}
+  turbo@2.6.3:
+    resolution: {integrity: sha512-bf6YKUv11l5Xfcmg76PyWoy/e2vbkkxFNBGJSnfdSXQC33ZiUfutYh6IXidc5MhsnrFkWfdNNLyaRk+kHMLlwA==}
     hasBin: true
 
   tw-animate-css@1.4.0:
@@ -8172,7 +8172,7 @@ snapshots:
       outvariant: 1.4.0
       static-browser-server: 1.0.3
 
-  '@codesandbox/sandpack-react@2.20.0(react@19.2.1)':
+  '@codesandbox/sandpack-react@2.20.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1)':
     dependencies:
       '@codemirror/autocomplete': 6.18.4
       '@codemirror/commands': 6.7.1
@@ -8193,6 +8193,7 @@ snapshots:
       lz-string: 1.5.0
       react: 19.2.1
       react-devtools-inline: 4.4.0
+      react-dom: 19.2.1(react@19.2.1)
       react-is: 17.0.2
 
   '@corex/deepmerge@4.0.43': {}
@@ -8211,7 +8212,7 @@ snapshots:
 
   '@docsearch/css@3.9.0': {}
 
-  '@docsearch/react@3.9.0(@algolia/client-search@5.17.1)(@types/react@19.2.7)(react@19.2.1)(search-insights@2.17.3)':
+  '@docsearch/react@3.9.0(@algolia/client-search@5.17.1)(@types/react@19.2.7)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(search-insights@2.17.3)':
     dependencies:
       '@algolia/autocomplete-core': 1.17.9(@algolia/client-search@5.17.1)(algoliasearch@5.17.1)(search-insights@2.17.3)
       '@algolia/autocomplete-preset-algolia': 1.17.9(@algolia/client-search@5.17.1)(algoliasearch@5.17.1)
@@ -8220,6 +8221,7 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.2.7
       react: 19.2.1
+      react-dom: 19.2.1(react@19.2.1)
       search-insights: 2.17.3
     transitivePeerDependencies:
       - '@algolia/client-search'
@@ -9520,7 +9522,7 @@ snapshots:
       '@swc/helpers': 0.5.17
       react: 19.2.1
 
-  '@react-three/fiber@9.1.2(@types/react@19.2.7)(react@19.2.1)(three@0.171.0)':
+  '@react-three/fiber@9.1.2(@types/react@19.2.7)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(three@0.171.0)':
     dependencies:
       '@babel/runtime': 7.26.0
       '@types/react-reconciler': 0.28.9(@types/react@19.2.7)
@@ -9530,12 +9532,14 @@ snapshots:
       its-fine: 2.0.0(@types/react@19.2.7)(react@19.2.1)
       react: 19.2.1
       react-reconciler: 0.31.0(react@19.2.1)
-      react-use-measure: 2.1.7(react@19.2.1)
+      react-use-measure: 2.1.7(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       scheduler: 0.25.0
       suspend-react: 0.1.3(react@19.2.1)
       three: 0.171.0
       use-sync-external-store: 1.5.0(react@19.2.1)
       zustand: 5.0.3(@types/react@19.2.7)(react@19.2.1)(use-sync-external-store@1.5.0(react@19.2.1))
+    optionalDependencies:
+      react-dom: 19.2.1(react@19.2.1)
     transitivePeerDependencies:
       - '@types/react'
       - immer
@@ -9837,9 +9841,9 @@ snapshots:
 
   '@tsconfig/svelte@5.0.6': {}
 
-  '@turbo/gen@2.6.2(@types/node@24.10.1)(typescript@5.9.3)':
+  '@turbo/gen@2.6.3(@types/node@24.10.1)(typescript@5.9.3)':
     dependencies:
-      '@turbo/workspaces': 2.6.2
+      '@turbo/workspaces': 2.6.3
       commander: 10.0.1
       fs-extra: 10.1.0
       inquirer: 8.2.6
@@ -9857,7 +9861,7 @@ snapshots:
       - supports-color
       - typescript
 
-  '@turbo/workspaces@2.6.2':
+  '@turbo/workspaces@2.6.3':
     dependencies:
       commander: 10.0.1
       execa: 5.1.1
@@ -10381,10 +10385,10 @@ snapshots:
       - '@types/react'
       - immer
 
-  '@xyflow/svelte@1.4.1(svelte@5.45.5)':
+  '@xyflow/svelte@1.5.0(svelte@5.45.5)':
     dependencies:
       '@svelte-put/shortcut': 4.1.0(svelte@5.45.5)
-      '@xyflow/system': 0.0.72
+      '@xyflow/system': 0.0.74
       svelte: 5.45.5
 
   '@xyflow/system@0.0.72':
@@ -11745,11 +11749,11 @@ snapshots:
       string.prototype.matchall: 4.0.12
       string.prototype.repeat: 1.0.0
 
-  eslint-plugin-turbo@2.6.2(eslint@9.39.1(jiti@2.6.1))(turbo@2.6.2):
+  eslint-plugin-turbo@2.6.3(eslint@9.39.1(jiti@2.6.1))(turbo@2.6.3):
     dependencies:
       dotenv: 16.0.3
       eslint: 9.39.1(jiti@2.6.1)
-      turbo: 2.6.2
+      turbo: 2.6.3
 
   eslint-scope@8.4.0:
     dependencies:
@@ -13702,31 +13706,6 @@ snapshots:
       - '@babel/core'
       - babel-plugin-macros
 
-  next@14.2.33(@opentelemetry/api@1.9.0)(react@19.2.1):
-    dependencies:
-      '@next/env': 14.2.33
-      '@swc/helpers': 0.5.5
-      busboy: 1.6.0
-      caniuse-lite: 1.0.30001722
-      graceful-fs: 4.2.11
-      postcss: 8.4.31
-      react: 19.2.1
-      styled-jsx: 5.1.1(react@19.2.1)
-    optionalDependencies:
-      '@next/swc-darwin-arm64': 14.2.33
-      '@next/swc-darwin-x64': 14.2.33
-      '@next/swc-linux-arm64-gnu': 14.2.33
-      '@next/swc-linux-arm64-musl': 14.2.33
-      '@next/swc-linux-x64-gnu': 14.2.33
-      '@next/swc-linux-x64-musl': 14.2.33
-      '@next/swc-win32-arm64-msvc': 14.2.33
-      '@next/swc-win32-ia32-msvc': 14.2.33
-      '@next/swc-win32-x64-msvc': 14.2.33
-      '@opentelemetry/api': 1.9.0
-    transitivePeerDependencies:
-      - '@babel/core'
-      - babel-plugin-macros
-
   next@15.3.1(@opentelemetry/api@1.9.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1):
     dependencies:
       '@next/env': 15.3.1
@@ -13813,7 +13792,7 @@ snapshots:
       - immer
       - use-sync-external-store
 
-  nextra@4.3.0-alpha.29(acorn@8.15.0)(next@14.2.33(@opentelemetry/api@1.9.0)(react@19.2.1))(react@19.2.1)(typescript@5.9.3):
+  nextra@4.3.0-alpha.29(acorn@8.15.0)(next@14.2.33(@opentelemetry/api@1.9.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(typescript@5.9.3):
     dependencies:
       '@formatjs/intl-localematcher': 0.6.0
       '@headlessui/react': 2.2.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
@@ -13834,9 +13813,10 @@ snapshots:
       mdast-util-gfm: 3.0.0
       mdast-util-to-hast: 13.2.0
       negotiator: 1.0.0
-      next: 14.2.33(@opentelemetry/api@1.9.0)(react@19.2.1)
+      next: 14.2.33(@opentelemetry/api@1.9.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       react: 19.2.1
       react-compiler-runtime: 19.1.0-rc.2(react@19.2.1)
+      react-dom: 19.2.1(react@19.2.1)
       react-medium-image-zoom: 5.2.13(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       rehype-katex: 7.0.1
       rehype-pretty-code: 0.14.1(shiki@3.2.2)
@@ -14475,9 +14455,10 @@ snapshots:
 
   react-is@17.0.2: {}
 
-  react-lite-youtube-embed@2.6.0(react@19.2.1):
+  react-lite-youtube-embed@2.6.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1):
     dependencies:
       react: 19.2.1
+      react-dom: 19.2.1(react@19.2.1)
 
   react-medium-image-zoom@5.2.13(react-dom@19.2.1(react@19.2.1))(react@19.2.1):
     dependencies:
@@ -14528,9 +14509,11 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.2.7
 
-  react-use-measure@2.1.7(react@19.2.1):
+  react-use-measure@2.1.7(react-dom@19.2.1(react@19.2.1))(react@19.2.1):
     dependencies:
       react: 19.2.1
+    optionalDependencies:
+      react-dom: 19.2.1(react@19.2.1)
 
   react@19.2.1: {}
 
@@ -15590,32 +15573,32 @@ snapshots:
 
   tslib@2.8.1: {}
 
-  turbo-darwin-64@2.6.2:
+  turbo-darwin-64@2.6.3:
     optional: true
 
-  turbo-darwin-arm64@2.6.2:
+  turbo-darwin-arm64@2.6.3:
     optional: true
 
-  turbo-linux-64@2.6.2:
+  turbo-linux-64@2.6.3:
     optional: true
 
-  turbo-linux-arm64@2.6.2:
+  turbo-linux-arm64@2.6.3:
     optional: true
 
-  turbo-windows-64@2.6.2:
+  turbo-windows-64@2.6.3:
     optional: true
 
-  turbo-windows-arm64@2.6.2:
+  turbo-windows-arm64@2.6.3:
     optional: true
 
-  turbo@2.6.2:
+  turbo@2.6.3:
     optionalDependencies:
-      turbo-darwin-64: 2.6.2
-      turbo-darwin-arm64: 2.6.2
-      turbo-linux-64: 2.6.2
-      turbo-linux-arm64: 2.6.2
-      turbo-windows-64: 2.6.2
-      turbo-windows-arm64: 2.6.2
+      turbo-darwin-64: 2.6.3
+      turbo-darwin-arm64: 2.6.3
+      turbo-linux-64: 2.6.3
+      turbo-linux-arm64: 2.6.3
+      turbo-windows-64: 2.6.3
+      turbo-windows-arm64: 2.6.3
 
   tw-animate-css@1.4.0: {}
 
@@ -15877,9 +15860,11 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.2.7
 
-  use-error-boundary@2.0.6(react@19.2.1):
+  use-error-boundary@2.0.6(react-dom@19.2.1(react@19.2.1))(react@19.2.1):
     dependencies:
       react: 19.2.1
+    optionalDependencies:
+      react-dom: 19.2.1(react@19.2.1)
 
   use-sidecar@1.1.3(@types/react@19.2.7)(react@19.2.1):
     dependencies:
