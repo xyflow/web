@@ -2,7 +2,7 @@
 import { FC, ReactNode } from 'react';
 import { getPageMap } from 'nextra/page-map';
 import { Folder, MdxFile, MetaJsonFile } from 'nextra';
-import { defaultFooterCategories } from '@xyflow/xy-ui';
+import { defaultFooterCategories } from 'xy-shared';
 
 import { NextraLayout } from '@/components/nextra-layout';
 import { getPageMap as getExamplesPageMap } from '../../app/(content-pages)/examples/[...slug]/utils';

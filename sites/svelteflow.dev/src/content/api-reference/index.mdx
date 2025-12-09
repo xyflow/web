@@ -1,20 +1,21 @@
 import { Callout } from 'nextra/components';
-import { ContentGrid, ContentGridItem } from '@xyflow/xy-ui';
+import { ContentGrid, ContentGridItem } from 'xy-shared';
 import { BlogPostPreview } from 'xy-shared';
 
 # API Reference
 
-This reference attempts to document every function, hook, component, and type
-exported by Svelte Flow. If you are looking for guides, please refer to our [learn section](/learn).
+This reference attempts to document every function, hook, component, and type exported by
+Svelte Flow. If you are looking for guides, please refer to our [learn section](/learn).
 
 ## How to use this reference
 
-We think that documentation should answer two broad
-questions: "what is this thing?" and "how do I use it?"
+We think that documentation should answer two broad questions: "what is this thing?" and
+"how do I use it?"
 
-To that end, our API reference aims to **concisely** answer that first question, while guides go into more detail on the second. If you find yourself clicking
-around the reference wondering what the heck any of this means, maybe we have a
-guide that can help you out!
+To that end, our API reference aims to **concisely** answer that first question, while
+guides go into more detail on the second. If you find yourself clicking around the
+reference wondering what the heck any of this means, maybe we have a guide that can help
+you out!
 
 <ContentGrid className="mt-8">
   <ContentGridItem route="/learn/customization/custom-nodes">
@@ -34,32 +35,28 @@ guide that can help you out!
 
 ## A note for JavaScript users
 
-Svelte Flow is written in TypeScript, but we know that not everyone uses it. We
-encourage developers to use the technology that works best for them, and
-throughout our documentation there is a blend of TypeScript and JavaScript
-examples.
+Svelte Flow is written in TypeScript, but we know that not everyone uses it. We encourage
+developers to use the technology that works best for them, and throughout our
+documentation there is a blend of TypeScript and JavaScript examples.
 
-For our API reference, however, we use TypeScript's syntax to document the types
-of props and functions. Here's a quick crash course on how to read it:
+For our API reference, however, we use TypeScript's syntax to document the types of props
+and functions. Here's a quick crash course on how to read it:
 
 • `?` means that the field or argument is optional.
 
-• `<T>` in a type definition represents a generic type parameter. Like a function
-argument but for types! The definition `type Array<T> = ...` means a type called
-`Array` that takes a generic type parameter `T`.
+• `<T>` in a type definition represents a generic type parameter. Like a function argument
+but for types! The definition `type Array<T> = ...` means a type called `Array` that takes
+a generic type parameter `T`.
 
-• `<T>` when referring to a type is like "filling in" a generic type parameter.
-It's like calling a function but for types! The type `Array<number>` is the
-type `Array` with the generic type parameter `T` filled in with the type
-`number`.
+• `<T>` when referring to a type is like "filling in" a generic type parameter. It's like
+calling a function but for types! The type `Array<number>` is the type `Array` with the
+generic type parameter `T` filled in with the type `number`.
 
-• `T | U` means that the type is either `T` or `U`: this is often called a
-_union_.
+• `T | U` means that the type is either `T` or `U`: this is often called a _union_.
 
-• `T & U` means that the type is both `T` and `U`: this is often called an
-_intersection_.
+• `T & U` means that the type is both `T` and `U`: this is often called an _intersection_.
 
 The TypeScript folks have their own
 [handy guide for reading types](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html)
-that you might find useful. If you're still stuck on something, feel free to
-drop by our [Discord](https://discord.com/invite/RVmnytFmGW) and ask for help!
+that you might find useful. If you're still stuck on something, feel free to drop by our
+[Discord](https://discord.com/invite/RVmnytFmGW) and ask for help!

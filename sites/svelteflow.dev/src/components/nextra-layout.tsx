@@ -3,7 +3,7 @@ import { ComponentProps, FC, ReactNode } from 'react';
 import { PageMapItem } from 'nextra';
 import { Layout, Navbar } from 'nextra-theme-docs';
 import { Banner } from 'nextra/components';
-import { Footer as XYFooter, LogoLabel, Button, Link } from '@xyflow/xy-ui';
+import { Footer as XYFooter, LogoLabel, Button, Link } from 'xy-shared';
 import { TOC, getLastChangelog } from 'xy-shared/server';
 import { Search } from 'xy-shared';
 

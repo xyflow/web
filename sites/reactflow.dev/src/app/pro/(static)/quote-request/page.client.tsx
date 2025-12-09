@@ -1,15 +1,7 @@
 'use client';
 
 import { useCallback, useState, useEffect, FC, Suspense } from 'react';
-import {
-  Card,
-  InputLabel,
-  Input,
-  Button,
-  Checkbox,
-  Accordion,
-  Link,
-} from '@xyflow/xy-ui';
+import { Card, InputLabel, Input, Button, Checkbox, Accordion, Link } from 'xy-shared';
 import { BaseLayout, Hero, SubscribeSection } from 'xy-shared';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 import { useSearchParams } from 'next/navigation';
@@ -120,9 +112,7 @@ export const Form: FC = () => {
         required
         placeholder="info@xyflow.com"
         value={formData.email}
-        onChange={(evt) =>
-          setFormData((fd) => ({ ...fd, email: evt.target.value }))
-        }
+        onChange={(evt) => setFormData((fd) => ({ ...fd, email: evt.target.value }))}
       />
       <InputLabel>Company Name</InputLabel>
       <Input
@@ -131,9 +121,7 @@ export const Form: FC = () => {
         required
         placeholder="ACME Inc."
         value={formData.name}
-        onChange={(evt) =>
-          setFormData((fd) => ({ ...fd, name: evt.target.value }))
-        }
+        onChange={(evt) => setFormData((fd) => ({ ...fd, name: evt.target.value }))}
       />
       <InputLabel className="flex gap-2 items-center font-normal">
         <Checkbox
@@ -165,19 +153,14 @@ export const Form: FC = () => {
         className="px-4 py-2 border border-gray-300 rounded-lg w-full resize-none"
         rows={5}
         value={formData.message}
-        onChange={(evt) =>
-          setFormData((fd) => ({ ...fd, message: evt.target.value }))
-        }
+        onChange={(evt) => setFormData((fd) => ({ ...fd, message: evt.target.value }))}
       />
       <InputLabel className="flex gap-2 items-center font-normal my-6">
         <Checkbox required />
         <div>
           <div>
             I have read and agree to the{' '}
-            <Link
-              className="text-sm text-primary"
-              href="https://xyflow.com/terms-of-use"
-            >
+            <Link className="text-sm text-primary" href="https://xyflow.com/terms-of-use">
               Terms and Conditions
             </Link>
           </div>
@@ -194,8 +177,7 @@ export const Form: FC = () => {
       )}
       {formState.success && (
         <InputLabel className="text-green-700">
-          Thanks for your request! We will reach out to you shortly with your
-          quote.
+          Thanks for your request! We will reach out to you shortly with your quote.
         </InputLabel>
       )}
       {!formState.error && !formState.success && (
@@ -226,11 +208,7 @@ export default function QuoteRequestPage() {
       />
       <Card className="p-8 bg-white relative max-w-xl mx-auto mt-16">
         <Accordion
-          defaultValue={[
-            'subscription-plan',
-            'contact-details',
-            'end-user-details',
-          ]}
+          defaultValue={['subscription-plan', 'contact-details', 'end-user-details']}
           type="multiple"
         >
           {/* Fixes useSearchParams() should be wrapped in a suspense boundary at page "/pro/quote-request" */}
@@ -239,10 +217,7 @@ export default function QuoteRequestPage() {
           </Suspense>
         </Accordion>
       </Card>
-      <SubscribeSection
-        btnLink="/pro/sign-up"
-        btnLabel="Sign Up Now"
-      />
+      <SubscribeSection btnLink="/pro/sign-up" btnLabel="Sign Up Now" />
     </BaseLayout>
   );
 }

@@ -1,4 +1,4 @@
-import { cn } from '@xyflow/xy-ui';
+import { cn } from 'xy-shared';
 import SubscriptionPlan from './subscription-plan';
 
 export type DashboardHeaderProps = {
@@ -32,10 +32,7 @@ export default function DashboardHeader({
       )}
       {description && (
         <p
-          className={cn(
-            'text-lg text-muted-foreground max-w-2xl',
-            descriptionClassName,
-          )}
+          className={cn('text-lg text-muted-foreground max-w-2xl', descriptionClassName)}
         >
           {description}
         </p>

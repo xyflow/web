@@ -1,4 +1,4 @@
-import { cn } from '@xyflow/xy-ui';
+import { cn } from 'xy-shared';
 import styles from './loader.module.css';
 
 export default function Loader() {

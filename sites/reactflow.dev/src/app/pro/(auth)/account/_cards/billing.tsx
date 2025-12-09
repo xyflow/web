@@ -1,4 +1,4 @@
-import { Card, CardHeader, CardDescription, CardTitle, CardFooter } from '@xyflow/xy-ui';
+import { Card, CardHeader, CardDescription, CardTitle, CardFooter } from 'xy-shared';
 import CustomerPortalButton from '@/components/pro/CustomerPortalButton';
 
 function BillingCard() {

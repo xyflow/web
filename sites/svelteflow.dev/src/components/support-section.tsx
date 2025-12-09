@@ -1,16 +1,13 @@
 import Link from 'next/link';
-import { Heading, Button, Section } from '@xyflow/xy-ui';
-import {
-  BookOpenIcon,
-  ChatBubbleLeftRightIcon,
-} from '@heroicons/react/24/outline';
+import { Heading, Button, Section } from 'xy-shared';
+import { BookOpenIcon, ChatBubbleLeftRightIcon } from '@heroicons/react/24/outline';
 
 export default function SubscribeSection() {
   return (
     <Section className="mx-auto lg:max-w-[800px]">
       <Heading size="sm" as="h3" className="text-center mb-12 mt-32">
-        Get started with Svelte Flow and join the community of people building
-        node-based UIs
+        Get started with Svelte Flow and join the community of people building node-based
+        UIs
       </Heading>
 
       <div className="flex justify-center space-x-2 lg:space-x-8">

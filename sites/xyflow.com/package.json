@@ -18,7 +18,7 @@
     "@heroicons/react": "^2.2.0",
     "@sindresorhus/slugify": "^2.2.1",
     "@xyflow/react": "12.9.1",
-    "@xyflow/xy-ui": "workspace:*",
+    "xy-shared": "workspace:*",
     "botid": "^1.5.10",
     "fast-xml-parser": "^5.2.1",
     "next": "^15.3.1",

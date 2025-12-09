@@ -3,7 +3,7 @@
 import { FC, FormEvent, useState, useTransition } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
-import { Button, Input, InputLabel } from '@xyflow/xy-ui';
+import { Button, Input, InputLabel } from 'xy-shared';
 
 import { AuthErrorNotification } from './AuthNotification';
 import { signIn } from '@/server-actions';

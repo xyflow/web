@@ -4,14 +4,7 @@ import { UserGroupIcon, GlobeEuropeAfricaIcon } from '@heroicons/react/24/outlin
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
-import {
-  ContentGrid,
-  ContentGridItem,
-  Heading,
-  Text,
-  Button,
-  Section,
-} from '@xyflow/xy-ui';
+import { ContentGrid, ContentGridItem, Heading, Text, Button, Section } from 'xy-shared';
 import { BaseLayout, Hero } from 'xy-shared';
 
 import christopher from '../../../../public/img/christopher.jpg';

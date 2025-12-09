@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Spinner } from '@xyflow/xy-ui';
+import { Spinner } from 'xy-shared';
 
 import useSubscription from '@/hooks/useSubscription';
 import { PlanLabel } from '@/components/pro/SubscriptionStatus';

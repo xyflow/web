@@ -10,7 +10,7 @@ import {
   CardFooter,
   Button,
   cn,
-} from '@xyflow/xy-ui';
+} from 'xy-shared';
 import { SubscriptionPlan } from '@/types';
 import Link from 'next/link';
 import { ArrowLongRightIcon } from '@heroicons/react/20/solid';

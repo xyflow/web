@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, Tabs, TabsContent, TabsList, TabsTrigger, cn } from '@xyflow/xy-ui';
+import { Button, Tabs, TabsContent, TabsList, TabsTrigger, cn } from 'xy-shared';
 import PreviewTab from './preview';
 import EditorTab from './editor';
 import MarkdownTab from './markdown';

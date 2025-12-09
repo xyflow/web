@@ -1,7 +1,7 @@
 'use client';
 
 import { useTransition } from 'react';
-import { Button, Card, CardContent, CardHeader, CardTitle } from '@xyflow/xy-ui';
+import { Button, Card, CardContent, CardHeader, CardTitle } from 'xy-shared';
 import { callNhostFunction } from '@/server-actions';
 import { redirect } from 'next/navigation';
 

@@ -1,7 +1,7 @@
 import DashboardHeader from '@/components/pro/DashboardHeader';
 import SubscriptionFeature from '@/components/pro/SubscriptionFeature';
 import { SubscriptionPlan } from '@/types';
-import { Link } from '@xyflow/xy-ui';
+import { Link } from 'xy-shared';
 
 const SupportPage = () => {
   return (
@@ -17,12 +17,11 @@ const SupportPage = () => {
         <ul className="list-disc text-light mb-8 leading-7 pl-4">
           <li>
             The best way to contact us is via email. If you’re a Professional or
-            Enterprise subscriber, click the link below to use that email
-            address.
+            Enterprise subscriber, click the link below to use that email address.
           </li>
           <li>
-            Include a codesandbox that we can access which reproduces your
-            issue. You can use our codesandbox starters:{' '}
+            Include a codesandbox that we can access which reproduces your issue. You can
+            use our codesandbox starters:{' '}
             <Link className="text-primary" href="https://new.reactflow.dev/js">
               Javascript
             </Link>
@@ -39,15 +38,14 @@ const SupportPage = () => {
             >
               open an issue on github
             </Link>
-            . Subscribers can prioritize issues by sending us an mail with the
-            link to{' '}
+            . Subscribers can prioritize issues by sending us an mail with the link to{' '}
             <Link className="text-primary" href="mailto:info@xyflow.com">
               info@xyflow.com
             </Link>
           </li>
           <li>
-            Email us using the account you’re currently logged into, or
-            reference it so we can check your subscription status
+            Email us using the account you’re currently logged into, or reference it so we
+            can check your subscription status
           </li>
         </ul>
       </div>

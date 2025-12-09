@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { HeartIcon, BoltIcon } from '@heroicons/react/24/outline';
-import { Button, Section, Stats } from '@xyflow/xy-ui';
+import { Button, Section, Stats } from 'xy-shared';
 import {
   BaseLayout,
   AboutSection,

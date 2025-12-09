@@ -1,6 +1,6 @@
 import { ArrowLeftIcon } from '@heroicons/react/20/solid';
 import { ArrowRightIcon } from '@heroicons/react/24/solid';
-import { Button } from '@xyflow/xy-ui';
+import { Button } from 'xy-shared';
 import { useCallback, useMemo } from 'react';
 import {
   BaseEdge,
@@ -81,22 +81,14 @@ export function FocusEdge({
           }}
         >
           {data.actions === 'next' || data.actions === 'both' ? (
-            <Button
-              onClick={() => focus(target)}
-              className="group"
-              variant="secondary"
-            >
+            <Button onClick={() => focus(target)} className="group" variant="secondary">
               <ArrowRightIcon className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </Button>
           ) : (
             <div />
           )}
           {data.actions === 'prev' || data.actions === 'both' ? (
-            <Button
-              onClick={() => focus(source)}
-              className="group"
-              variant="secondary"
-            >
+            <Button onClick={() => focus(source)} className="group" variant="secondary">
               <ArrowLeftIcon className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
             </Button>
           ) : (

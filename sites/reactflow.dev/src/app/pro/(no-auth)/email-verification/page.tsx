@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Heading, Text } from '@xyflow/xy-ui';
+import { Heading, Text } from 'xy-shared';
 import { useSearchParams } from 'next/navigation';
 import { EnvelopeIcon } from '@heroicons/react/24/outline';
 

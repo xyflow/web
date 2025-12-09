@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button } from '@xyflow/xy-ui';
+import { Button } from 'xy-shared';
 import { ArrowDownTrayIcon } from '@heroicons/react/24/outline';
 
 import JSZip from 'jszip';
@@ -24,7 +24,8 @@ export default function DownloadButton({
   const [isDownloading, setIsDownloading] = useState(false);
   const downloadZip = async () => {
     setIsDownloading(true);
-    const downloadFiles = files || (await downloadExample({ exampleId, framework: frameworkId }));
+    const downloadFiles =
+      files || (await downloadExample({ exampleId, framework: frameworkId }));
     const zip = new JSZip();
 
     Object.entries(downloadFiles).map(([fileName, fileContent]) => {

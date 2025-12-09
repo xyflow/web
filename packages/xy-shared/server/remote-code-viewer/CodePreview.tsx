@@ -6,14 +6,9 @@ import {
   ClipboardIcon,
   CodeBracketIcon,
 } from '@heroicons/react/24/outline';
-import {
-  Framework,
-  IconButton,
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from '@xyflow/xy-ui';
+import { Framework } from '../../types';
+import { IconButton } from '../../components/ui/icon-button';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '../../components/ui/tabs';
 import { ReactNode, useRef, useState } from 'react';
 import { OpenInCodesandbox } from './open-in-codesandbox';
 import { OpenInStackblitz } from './open-in-stackblitz';

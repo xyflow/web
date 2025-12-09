@@ -9,7 +9,7 @@ import {
   Section,
   Button,
   Link,
-} from '@xyflow/xy-ui';
+} from 'xy-shared';
 import { ProjectPreview } from 'xy-shared';
 
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';

@@ -7,7 +7,7 @@ import {
   TabsTrigger,
   Link,
   cn,
-} from '@xyflow/xy-ui';
+} from 'xy-shared';
 import { getPageMap } from 'nextra/page-map';
 import { Tabs as NextraTabs } from 'nextra/components';
 import { MDXRemote } from 'nextra/mdx-remote';

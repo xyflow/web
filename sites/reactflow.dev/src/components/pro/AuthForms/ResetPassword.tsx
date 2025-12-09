@@ -1,7 +1,7 @@
 'use client';
 
 import { FormEvent, useState, useTransition } from 'react';
-import { Button, Input, InputLabel } from '@xyflow/xy-ui';
+import { Button, Input, InputLabel } from 'xy-shared';
 
 import { AuthErrorNotification, AuthNotification } from './AuthNotification';
 import { resetPassword } from '@/server-actions';

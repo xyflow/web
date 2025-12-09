@@ -1,6 +1,6 @@
 import path from 'path';
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
-import { Button } from '@xyflow/xy-ui';
+import { Button } from 'xy-shared';
 import { getAllExamples } from 'xy-shared/server';
 
 import { useMDXComponents as getMDXComponents } from '@/mdx-components';

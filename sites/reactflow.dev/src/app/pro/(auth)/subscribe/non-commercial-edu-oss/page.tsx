@@ -1,5 +1,5 @@
 import DashboardHeader from '@/components/pro/DashboardHeader';
-import { Card, CardHeader } from '@xyflow/xy-ui';
+import { Card, CardHeader } from 'xy-shared';
 
 import SignUp from './signup';
 

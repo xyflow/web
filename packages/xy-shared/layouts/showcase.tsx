@@ -3,22 +3,19 @@
 import { useCallback, useMemo, useState, ReactNode } from 'react';
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 import { RocketLaunchIcon } from '@heroicons/react/24/outline';
-import {
-  Button,
-  cn,
-  Container,
-  ContentGrid,
-  ContentGridItem,
-  Heading,
-  Link,
-  Text,
-} from '@xyflow/xy-ui';
+import { Button } from '../components/ui/button';
+import { cn } from '../lib/utils';
+import { Container } from '../components/ui/container';
+import { ContentGrid, ContentGridItem } from '../components/ui/content-grid';
+import { Heading } from '../components/ui/heading';
+import { Link } from '../components/ui/link';
+import { Text } from '../components/ui/text';
 import { type MdxFile } from 'nextra';
 import Image from 'next/image';
 
 import { BaseLayout } from './base';
-import { ProjectPreview } from '../widgets/project-preview';
-import { Hero } from '../widgets/hero';
+import { ProjectPreview } from '../components/project-preview';
+import { Hero } from '../components/hero';
 import { type CaseStudyFrontmatter } from './case-study-wrapper';
 
 export type CaseStudy = MdxFile<CaseStudyFrontmatter>;

@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { PricingTable, Section, FAQ, reactFlowProFaqItems } from '@xyflow/xy-ui';
+import { PricingTable, Section, FAQ, reactFlowProFaqItems } from 'xy-shared';
 import {
   BaseLayout,
   Hero,

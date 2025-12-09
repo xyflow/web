@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { SparklesIcon } from '@heroicons/react/24/outline';
-import { ContentGrid, ContentGridItem } from '@xyflow/xy-ui';
+import { ContentGrid, ContentGridItem } from 'xy-shared';
 import { BaseLayout, Hero, ProjectPreview, SubscribeSection } from 'xy-shared';
 import { Metadata } from 'next';
 import { getPageMap } from 'nextra/page-map';
@@ -25,9 +25,7 @@ const Page: FC = async () => {
       />
       <ContentGrid className="mt-20">
         {(await getPageMap('/pro/case-studies'))
-          .filter(
-            (page): page is MdxFile => 'name' in page && page.name !== 'index',
-          )
+          .filter((page): page is MdxFile => 'name' in page && page.name !== 'index')
           .map((page) => {
             return (
               <ContentGridItem key={page.route} route={page.route}>
@@ -42,10 +40,7 @@ const Page: FC = async () => {
             );
           })}
       </ContentGrid>
-      <SubscribeSection
-        btnLink="/pro/sign-up"
-        btnLabel="Sign Up Now"
-      />
+      <SubscribeSection btnLink="/pro/sign-up" btnLabel="Sign Up Now" />
     </BaseLayout>
   );
 };

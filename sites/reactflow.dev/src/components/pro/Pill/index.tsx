@@ -1,4 +1,4 @@
-import { cn } from '@xyflow/xy-ui';
+import { cn } from 'xy-shared';
 
 export type PillProps = {
   children: React.ReactNode;

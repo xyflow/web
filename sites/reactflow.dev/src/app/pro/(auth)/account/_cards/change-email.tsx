@@ -10,7 +10,7 @@ import {
   Button,
   Input,
   InputLabel,
-} from '@xyflow/xy-ui';
+} from 'xy-shared';
 
 import { changeEmail } from '@/server-actions';
 
