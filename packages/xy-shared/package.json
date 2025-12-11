@@ -47,7 +47,7 @@
     "fast-glob": "^3.3.3",
     "fathom-client": "^3.7.2",
     "lucide-react": "^0.503.0",
-    "next": "^15.3.2",
+    "next": "^15.5.7",
     "nextra": "^4.6.0",
     "react-lite-youtube-embed": "^2.5.1",
     "tailwind-merge": "^3.3.1",
