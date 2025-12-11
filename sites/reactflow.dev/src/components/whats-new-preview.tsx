@@ -1,4 +1,4 @@
-import { Text, cn } from '@xyflow/xy-ui';
+import { Text, cn } from 'xy-shared';
 import { AuthorList, TimeAgo } from 'xy-shared';
 import Link from 'next/link';
 import { ArrowRightCircleIcon } from '@heroicons/react/20/solid';

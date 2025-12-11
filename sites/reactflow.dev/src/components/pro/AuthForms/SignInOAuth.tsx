@@ -1,7 +1,7 @@
 import { createNhostClient } from '@/utils/nhost';
 import Link from 'next/link';
 
-import { Button } from '@xyflow/xy-ui';
+import { Button } from 'xy-shared';
 
 const SignInOAuth = async () => {
   const nhost = await createNhostClient();

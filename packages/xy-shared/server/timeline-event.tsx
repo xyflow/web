@@ -1,6 +1,7 @@
 import Link from 'next/link';
-import { Heading, Text } from '@xyflow/xy-ui';
-import { Author, AuthorList } from '../widgets/authors-list';
+import { Heading } from '../components/ui/heading';
+import { Text } from '../components/ui/text';
+import { Author, AuthorList } from '../components/authors-list';
 import { TimeAgo } from '../components/time-ago';
 import { importPage } from 'nextra/pages';
 

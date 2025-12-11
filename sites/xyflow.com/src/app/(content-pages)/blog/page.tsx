@@ -1,4 +1,4 @@
-import { ContentGrid, ContentGridItem } from '@xyflow/xy-ui';
+import { ContentGrid, ContentGridItem } from 'xy-shared';
 import { BaseLayout, BlogPostPreview, Hero } from 'xy-shared';
 
 import { FC } from 'react';
@@ -8,8 +8,7 @@ import { getBlogs } from '@/utils';
 export const metadata: NextraMetadata = {
   asIndexPage: true,
   title: 'Blog',
-  description:
-    'All the latest news and updates from React Flow and Svelte Flow',
+  description: 'All the latest news and updates from React Flow and Svelte Flow',
 };
 
 const Page: FC = async () => {

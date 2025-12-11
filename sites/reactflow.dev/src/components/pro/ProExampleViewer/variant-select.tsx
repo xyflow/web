@@ -1,8 +1,20 @@
 import Link from 'next/link';
-import { Select, SelectTrigger, SelectContent, SelectGroup, SelectLabel } from '@xyflow/xy-ui';
+import {
+  Select,
+  SelectTrigger,
+  SelectContent,
+  SelectGroup,
+  SelectLabel,
+} from 'xy-shared';
 import { ProExampleVariant } from './types';
 
-function VariantSelect({ variants, exampleId }: { exampleId: string; variants?: ProExampleVariant[] }) {
+function VariantSelect({
+  variants,
+  exampleId,
+}: {
+  exampleId: string;
+  variants?: ProExampleVariant[];
+}) {
   if (!variants?.length) {
     return null;
   }
@@ -21,7 +33,9 @@ function VariantSelect({ variants, exampleId }: { exampleId: string; variants?: 
         <SelectGroup>
           {variants.map((variant) => (
             <Link href={`/examples/react/${variant.id}`} key={variant.id}>
-              <SelectLabel className="hover:bg-slate-100 px-2 py-1">{variant.label}</SelectLabel>
+              <SelectLabel className="hover:bg-slate-100 px-2 py-1">
+                {variant.label}
+              </SelectLabel>
             </Link>
           ))}
         </SelectGroup>

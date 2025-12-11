@@ -6,7 +6,8 @@ import {
 } from '@codesandbox/sandpack-react';
 import { type MutableRefObject, useCallback, useEffect, useRef, useState } from 'react';
 
-import { Framework, IconButton } from '@xyflow/xy-ui';
+import { Framework } from '../../types';
+import { IconButton } from '../../components/ui/icon-button';
 
 import { fetchFiles } from './fetchFiles';
 

@@ -2,7 +2,7 @@
 
 import { FC } from 'react';
 import Link from 'next/link';
-import { Button, cn, Container, ContainerProps, Text } from '@xyflow/xy-ui';
+import { Button, cn, Container, ContainerProps, Text } from 'xy-shared';
 import useSubscription from '@/hooks/useSubscription';
 import ProPlatformExampleViewer from './pro/ProExampleViewer';
 import { Framework } from './pro/ProExampleViewer/types';

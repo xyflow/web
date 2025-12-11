@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { SparklesIcon } from '@heroicons/react/24/outline';
-import { ContentGrid, ContentGridItem } from '@xyflow/xy-ui';
+import { ContentGrid, ContentGridItem } from 'xy-shared';
 import { BaseLayout, Hero, ProjectPreview, SubscribeSection } from 'xy-shared';
 import { Metadata } from 'next';
 import { getPageMap } from 'nextra/page-map';

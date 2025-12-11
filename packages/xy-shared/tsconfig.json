@@ -4,7 +4,9 @@
     "baseUrl": ".",
     "moduleResolution": "bundler",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "xy-shared": ["./index.tsx"],
+      "xy-shared/*": ["./*"]
     }
   },
   "resolveJsonModule": true,

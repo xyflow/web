@@ -19,7 +19,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   CardTitle,
-} from '@xyflow/xy-ui';
+} from 'xy-shared';
 import { User } from '@nhost/nhost-js/auth';
 
 import { callNhostFunction, revalidatePathFromClient } from '@/server-actions';

@@ -1,6 +1,8 @@
 ---
 title: 'What’s new at React Flow - Fall 2022 🍂'
-intro: 'A dispatch straight from our desks about what’s happened in the last couple of months at React Flow: updates, news, and a peek behind-the-scenes.'
+intro:
+  'A dispatch straight from our desks about what’s happened in the last couple of months
+  at React Flow: updates, news, and a peek behind-the-scenes.'
 date: 1 November 2022
 authors: ['john']
 tags: ['react-flow', 'update']
@@ -8,18 +10,28 @@ image: /img/blog/v10-header.png
 ---
 
 import { Bleed } from 'nextra/components';
-import { Emoji } from '@xyflow/xy-ui';
+import { Emoji } from 'xy-shared';
 import { Image } from 'xy-shared';
 
-Howdy! Here’s a dispatch straight from our desks about what’s happened in the last couple of months at React Flow: updates, news, and a peek behind-the-scenes. Here we go.
+Howdy! Here’s a dispatch straight from our desks about what’s happened in the last couple
+of months at React Flow: updates, news, and a peek behind-the-scenes. Here we go.
 
 ## Launching v11 and post-release housekeeping
 
-React Flow v11 went live in early October (wahoo! <Emoji content="🎉" />), and Moritz wrote a [whole blog post](https://reactflow.dev/blog/react-flow-v11/) all about it if you haven't seen yet.
+React Flow v11 went live in early October (wahoo! <Emoji content="🎉" />), and Moritz
+wrote a [whole blog post](https://reactflow.dev/blog/react-flow-v11/) all about it if you
+haven't seen yet.
 
-Post-launch, we took a few weeks to tend to our current structures. We made some fixes to accessibility updates from v11 (thanks to some wonderful user feedback <Emoji content="💕" />), added the new props `nodesFocusable` and `edgesFocusable` to make the keyboard handling better configurable , and took some time to refocus ourselves for the end of the year. (Shout-out to Supabase for the inspiration on [post-release weeks](https://github.com/supabase/supabase/releases/tag/0.22.09).)
+Post-launch, we took a few weeks to tend to our current structures. We made some fixes to
+accessibility updates from v11 (thanks to some wonderful user feedback
+<Emoji content="💕" />), added the new props `nodesFocusable` and `edgesFocusable` to make
+the keyboard handling better configurable , and took some time to refocus ourselves for
+the end of the year. (Shout-out to Supabase for the inspiration on
+[post-release weeks](https://github.com/supabase/supabase/releases/tag/0.22.09).)
 
-Slowly but surely, folks are starting to use our new package name. `react-flow-renderer` is dead, long live `reactflow`! (data from [npm trends](https://npmtrends.com/react-flow-renderer-vs-reactflow))
+Slowly but surely, folks are starting to use our new package name. `react-flow-renderer`
+is dead, long live `reactflow`! (data from
+[npm trends](https://npmtrends.com/react-flow-renderer-vs-reactflow))
 
 <Bleed>
   <Image
@@ -28,9 +40,7 @@ Slowly but surely, folks are starting to use our new package name. `react-flow-r
     width={1492}
     height={1076}
     caption={
-      <a href="https://npmtrends.com/react-flow-renderer-vs-reactflow">
-        npmtrends.com
-      </a>
+      <a href="https://npmtrends.com/react-flow-renderer-vs-reactflow">npmtrends.com</a>
     }
   />
 </Bleed>
@@ -45,7 +55,8 @@ We’ve added a bunch of new examples to the docs including:
 - [Tailwind Implementation](https://reactflow.dev/examples/styling/tailwind/)
 - [Turborepo style](https://reactflow.dev/examples/styling/turbo-flow/)
 - [Light / Dark Mode](https://reactflow.dev/examples/styling/styled-components/)
-- [Workflow Builder](https://reactflow.dev/examples/layout/workflow-builder) (aka the “taco flow” for Pro subscribers)
+- [Workflow Builder](https://reactflow.dev/examples/layout/workflow-builder) (aka the
+  “taco flow” for Pro subscribers)
 
 <Bleed>
   <Image
@@ -59,9 +70,16 @@ We’ve added a bunch of new examples to the docs including:
 
 ## Our first round of user research
 
-With the indispensable help of [Eileen](https://bumble.blue/), we talked to some [React Flow Pro](https://pro.reactflow.dev/) subscribers and asked them about what they expect and need from us. It was great to talk to people using React Flow on a daily basis in ways we didn’t imagine before. We’ll be doing ongoing user research with people like yourself! If you’re up for helping us with that, keep your eyes on our [Discord](https://discord.gg/RVmnytFmGW), [Twitter](https://twitter.com/xyflowdev), or sign up for our Newsletter:
+With the indispensable help of [Eileen](https://bumble.blue/), we talked to some
+[React Flow Pro](https://pro.reactflow.dev/) subscribers and asked them about what they
+expect and need from us. It was great to talk to people using React Flow on a daily basis
+in ways we didn’t imagine before. We’ll be doing ongoing user research with people like
+yourself! If you’re up for helping us with that, keep your eyes on our
+[Discord](https://discord.gg/RVmnytFmGW), [Twitter](https://twitter.com/xyflowdev), or
+sign up for our Newsletter:
 
-We’ll be sharing out some of those findings from our research at our lightning talk at React Day Berlin in December - if you’re coming, let us know so we can say hi 👋🏻
+We’ll be sharing out some of those findings from our research at our lightning talk at
+React Day Berlin in December - if you’re coming, let us know so we can say hi 👋🏻
 
 ## Explaining ourselves better
 
@@ -75,9 +93,14 @@ We’ll be sharing out some of those findings from our research at our lightning
   />
 </Bleed>
 
-We also **added some basic explainers to the docs** (answering questions like [“what is a handle?”](https://reactflow.dev/learn/concepts/terms-and-definitions/#handles)) to encourage easier onboarding for folks who are new to React Flow.
+We also **added some basic explainers to the docs** (answering questions like
+[“what is a handle?”](https://reactflow.dev/learn/concepts/terms-and-definitions/#handles))
+to encourage easier onboarding for folks who are new to React Flow.
 
-We also changed our docs to make it clear that **anyone is allowed to remove the attribution** (even without a subscription). React Flow is under an [MIT License](https://github.com/xyflow/xyflow/blob/main/LICENSE), so you can do anything you want with the code.
+We also changed our docs to make it clear that **anyone is allowed to remove the
+attribution** (even without a subscription). React Flow is under an
+[MIT License](https://github.com/xyflow/xyflow/blob/main/LICENSE), so you can do anything
+you want with the code.
 
 ## In the office
 
@@ -91,13 +114,17 @@ We also changed our docs to make it clear that **anyone is allowed to remove the
   />
 </Bleed>
 
-Over at our office in Kreuzberg, Berlin, we put up a whiteboard, ordered some embroidered hats, had a 4-legged visitor, and continue to be entertained by the ongoing construction site across the street.
+Over at our office in Kreuzberg, Berlin, we put up a whiteboard, ordered some embroidered
+hats, had a 4-legged visitor, and continue to be entertained by the ongoing construction
+site across the street.
 
 ## What's next?
 
-As we move into the winter, we’re thinking about how we want to wrap up this year, and what 2023 will bring. Some of the big questions we’re asking ourselves these days are:
+As we move into the winter, we’re thinking about how we want to wrap up this year, and
+what 2023 will bring. Some of the big questions we’re asking ourselves these days are:
 
-- How might we help devs to improve the UX of their flows? (maybe themes, guides about styling, or sharing more custom styles?)
+- How might we help devs to improve the UX of their flows? (maybe themes, guides about
+  styling, or sharing more custom styles?)
 - Giving more opportunity for feedback and discussion with the React Flow community
 - Show and tell more openly about what we do and how we do it at React Flow
 

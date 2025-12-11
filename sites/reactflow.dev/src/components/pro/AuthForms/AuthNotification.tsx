@@ -3,7 +3,7 @@
 import * as React from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
-import { Alert, AlertTitle, AlertDescription, Button, cn } from '@xyflow/xy-ui';
+import { Alert, AlertTitle, AlertDescription, Button, cn } from 'xy-shared';
 import { FetchError } from '@nhost/nhost-js/fetch';
 import { ErrorResponse } from '@nhost/nhost-js/auth';
 

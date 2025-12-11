@@ -25,7 +25,7 @@
     "@vercel/speed-insights": "^1.2.0",
     "@xyflow/react": "^12.10.0",
     "@xyflow/system": "^0.0.72",
-    "@xyflow/xy-ui": "workspace:*",
+    "xy-shared": "workspace:*",
     "d3": "^7.9.0",
     "file-saver": "^2.0.5",
     "jszip": "^3.10.1",

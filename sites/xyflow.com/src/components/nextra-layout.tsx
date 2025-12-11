@@ -4,8 +4,8 @@ import Link from 'next/link';
 import { getPageMap } from 'nextra/page-map';
 import { Layout, Navbar } from 'nextra-theme-docs';
 import { Anchor } from 'nextra/components';
-import { Button, Footer, Logo, Text } from '@xyflow/xy-ui';
-import { defaultCategories } from '@xyflow/xy-ui/components/ui/footer/default-categories';
+import { Button, Footer, Logo, Text } from 'xy-shared';
+import { defaultCategories } from 'xy-shared/components/footer/default-categories';
 
 const footerCategories = {
   ...defaultCategories,

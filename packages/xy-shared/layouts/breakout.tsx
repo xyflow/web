@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
-import { cn } from '@xyflow/xy-ui';
-
+import { cn } from '../lib/utils';
 type LayoutBreakoutProps = {
   children: ReactNode;
   className?: string;

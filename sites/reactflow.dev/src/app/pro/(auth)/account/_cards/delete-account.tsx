@@ -18,7 +18,7 @@ import {
   CardFooter,
   Button,
   Input,
-} from '@xyflow/xy-ui';
+} from 'xy-shared';
 import { callNhostFunction } from '@/server-actions';
 import { signOut } from '@/server-actions';
 

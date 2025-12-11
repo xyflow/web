@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { Text, cn } from '@xyflow/xy-ui';
+import { Text, cn } from 'xy-shared';
 
 import zapier from '../../public/img/clients/zapier.svg';
 import stripe from '../../public/img/clients/stripe.svg';
@@ -25,11 +25,7 @@ export default function ClientLogos({
       <div className="grid md:grid-cols-4 grid-cols-2 md:gap-12 gap-8 place-items-center">
         <Image src={zapier} alt="zapier" className="h-7 w-auto" />
         <Image src={stripe} alt="stripe" className="h-7 w-auto" />
-        <Image
-          src={cartoWorkflows}
-          alt="carto workflows"
-          className="h-9 w-auto"
-        />
+        <Image src={cartoWorkflows} alt="carto workflows" className="h-9 w-auto" />
         <Image src={close} alt="close" className="h-7 w-auto" />
         <Image src={railway} alt="railway" className="h-9 w-auto" />
         <Image src={retool} alt="retool" className="h-6 w-auto" />

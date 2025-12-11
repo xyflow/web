@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Heading, Text, Section } from '@xyflow/xy-ui';
+import { Heading, Text, Section } from 'xy-shared';
 import { BaseLayout, Hero } from 'xy-shared';
 import { UserGroupIcon } from '@heroicons/react/24/outline';
 

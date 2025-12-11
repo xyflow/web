@@ -13,7 +13,7 @@ import {
   Section,
   ListWrapper,
   cn,
-} from '@xyflow/xy-ui';
+} from 'xy-shared';
 import { BaseLayout, Hero, ProjectPreview, LayoutBreakout, fetchJSON } from 'xy-shared';
 import {
   ArrowDownCircleIcon,

@@ -11,7 +11,7 @@ import {
   CardDescription,
   Heading,
   Text,
-} from '@xyflow/xy-ui';
+} from 'xy-shared';
 import { ExpiredTokenNotification } from './AuthNotification';
 
 type AuthFormWrapperProps = {

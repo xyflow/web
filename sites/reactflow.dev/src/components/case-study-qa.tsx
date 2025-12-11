@@ -1,4 +1,4 @@
-import { Text, cn } from '@xyflow/xy-ui';
+import { Text, cn } from 'xy-shared';
 
 type CaseStudyQAProps = {
   question: string;
@@ -6,17 +6,10 @@ type CaseStudyQAProps = {
   className?: string;
 };
 
-export default function CaseStudyQA({
-  question,
-  answer,
-  className,
-}: CaseStudyQAProps) {
+export default function CaseStudyQA({ question, answer, className }: CaseStudyQAProps) {
   return (
     <>
-      <Text
-        size="lg"
-        className={cn(['font-semibold leading-relaxed', className])}
-      >
+      <Text size="lg" className={cn(['font-semibold leading-relaxed', className])}>
         {question}
       </Text>
 

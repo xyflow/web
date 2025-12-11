@@ -6,7 +6,7 @@ import {
   defaultSubscriptionPlans,
   BillingInterval,
   SubscriptionPlanId,
-} from '@xyflow/xy-ui';
+} from 'xy-shared';
 import { callNhostFunction } from '@/server-actions';
 
 export default function PricingTableComponent() {

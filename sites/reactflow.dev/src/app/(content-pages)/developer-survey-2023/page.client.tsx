@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { ReactFlow, Background, Node, ReactFlowProvider } from '@xyflow/react';
 import { ArrowDownIcon, ArrowRightIcon } from '@heroicons/react/20/solid';
-import { Button, Emoji, Link, Text } from '@xyflow/xy-ui';
+import { Button, Emoji, Link, Text } from 'xy-shared';
 
 import { BarChart } from '@/components/bar-chart';
 import { FocusParams, useFocus } from './flow/hooks';
@@ -69,9 +69,7 @@ const initialNodes = ({
 }) => {
   const reveal = (id: string) => {
     update((nodes) =>
-      nodes.map((node) =>
-        node.id.startsWith(id) ? { ...node, hidden: false } : node,
-      ),
+      nodes.map((node) => (node.id.startsWith(id) ? { ...node, hidden: false } : node)),
     );
   };
 
@@ -87,13 +85,9 @@ const initialNodes = ({
         label: name,
         position: {
           x:
-            position.x +
-            offsetX +
-            radius * Math.cos((i / projects.length) * Math.PI * 2),
+            position.x + offsetX + radius * Math.cos((i / projects.length) * Math.PI * 2),
           y:
-            position.y +
-            offsetY +
-            radius * Math.sin((i / projects.length) * Math.PI * 2),
+            position.y + offsetY + radius * Math.sin((i / projects.length) * Math.PI * 2),
         },
       });
     });
@@ -111,10 +105,9 @@ const initialNodes = ({
       content: (
         <>
           <Text size="sm">
-            We asked React Flow users about the library and the ecosystem of
-            docs, support, and subscriptions around it to better understand our
-            users&apos; needs, and help guide the core team as we continue
-            improving the library.
+            We asked React Flow users about the library and the ecosystem of docs,
+            support, and subscriptions around it to better understand our users&apos;
+            needs, and help guide the core team as we continue improving the library.
           </Text>
           <Text size="sm">Here&apos;s what we found ✌️</Text>
         </>
@@ -133,22 +126,20 @@ const initialNodes = ({
       title: 'The survey',
       content: (
         <>
-          <Text size="sm">
-            The survey was focused on five important questions:
-          </Text>
+          <Text size="sm">The survey was focused on five important questions:</Text>
           <ol className="list-decimal space-y-2 ml-8">
             <li>Who are our users and what is their expertise?</li>
             <li>What are they building with React Flow?</li>
             <li>Where do our users go for help?</li>
             <li>
-              What features do they find most difficult to use and what do they
-              want to see added?
+              What features do they find most difficult to use and what do they want to
+              see added?
             </li>
             <li>What do our users think about React Flow Pro?</li>
           </ol>
           <Text size="sm">
-            The survey was at most 19 questions long, took an average of 8:44
-            minutes, and had an 42.2% completion rate.
+            The survey was at most 19 questions long, took an average of 8:44 minutes, and
+            had an 42.2% completion rate.
           </Text>
         </>
       ),
@@ -168,10 +159,9 @@ const initialNodes = ({
             We had <span className="font-bold">83 complete responses</span>.
           </Text>
           <Text size="sm">
-            Respondents were using React Flow in companies big and small, and
-            from an even spread of how long they&apos;ve been using React Flow.
-            21% of respondents have at some point been subscribed to React Flow
-            Pro.
+            Respondents were using React Flow in companies big and small, and from an even
+            spread of how long they&apos;ve been using React Flow. 21% of respondents have
+            at some point been subscribed to React Flow Pro.
           </Text>
         </>
       ),
@@ -215,8 +205,7 @@ const initialNodes = ({
       content: (
         <>
           <Text size="lg">
-            What is your role or{' '}
-            <span className="font-bold">area of expertise</span>?
+            What is your role or <span className="font-bold">area of expertise</span>?
           </Text>
           <BarChart
             data={[
@@ -230,17 +219,15 @@ const initialNodes = ({
             ]}
           />
           <Text>
-            We let folks select multiple options for this one, but we might have
-            fumbled a bit by including a &quot;full-stack&quot; option when
-            selecting both &quot;frontend&quot; and &quot;backend&quot; would
-            have been made more sense.
+            We let folks select multiple options for this one, but we might have fumbled a
+            bit by including a &quot;full-stack&quot; option when selecting both
+            &quot;frontend&quot; and &quot;backend&quot; would have been made more sense.
           </Text>
           <Text>
-            A total of eight respondents{' '}
-            <span className="italic">didn&apos;t</span> choose one of
-            &quot;full-stack&quot; or &quot;frontend&quot;. it&apos;s hard to
-            imagine someone unfamiliar with frontend getting stuck into a
-            library like React Flow, talk about jumping in at the deep end!
+            A total of eight respondents <span className="italic">didn&apos;t</span>{' '}
+            choose one of &quot;full-stack&quot; or &quot;frontend&quot;. it&apos;s hard
+            to imagine someone unfamiliar with frontend getting stuck into a library like
+            React Flow, talk about jumping in at the deep end!
           </Text>
         </>
       ),
@@ -262,15 +249,15 @@ const initialNodes = ({
             ]}
           />
           <Text>
-            As before, folks could choose multiple options if they were using
-            React Flow in different contexts.
+            As before, folks could choose multiple options if they were using React Flow
+            in different contexts.
           </Text>
           <Text>
-            The vast majority of respondents are using React Flow at work, but
-            we were surprised to see how many people were using React Flow at
-            work <span className="italic">and</span> on personal projects. A{' '}
-            <span className="font-bold">quarter of respondents</span> using
-            React Flow on personal projects were also using it at work!
+            The vast majority of respondents are using React Flow at work, but we were
+            surprised to see how many people were using React Flow at work{' '}
+            <span className="italic">and</span> on personal projects. A{' '}
+            <span className="font-bold">quarter of respondents</span> using React Flow on
+            personal projects were also using it at work!
           </Text>
         </>
       ),
@@ -281,8 +268,7 @@ const initialNodes = ({
       content: (
         <>
           <Text size="lg">
-            <span className="font-bold">How long</span> have you been using
-            React Flow?
+            <span className="font-bold">How long</span> have you been using React Flow?
           </Text>
           <BarChart
             sorted={false}
@@ -295,20 +281,19 @@ const initialNodes = ({
           />
           <Text>So many newcomers, welcome to React Flow!</Text>
           <Text>
-            We&apos;ve been developing the library and also engaging with the
-            community for so long now that it&apos;s easy to lose sight of what
-            the experience is like for someone who&apos;s just getting started.
+            We&apos;ve been developing the library and also engaging with the community
+            for so long now that it&apos;s easy to lose sight of what the experience is
+            like for someone who&apos;s just getting started.
           </Text>
           <Text>
-            We made moves last year to improve the onboarding experience for new
-            folks, including revamping our quickstart guide, expanding our API
-            reference, and providing{' '}
+            We made moves last year to improve the onboarding experience for new folks,
+            including revamping our quickstart guide, expanding our API reference, and
+            providing{' '}
             <Link href="new.reactflow.dev" className="text-primary">
               new.reactflow.dev
             </Link>{' '}
-            so folks can get started without having to install anything.
-            We&apos;ll be looking for ways to improve this experience even more
-            in 2024.
+            so folks can get started without having to install anything. We&apos;ll be
+            looking for ways to improve this experience even more in 2024.
           </Text>
         </>
       ),
@@ -407,12 +392,12 @@ const initialNodes = ({
           </Text>
           <Text size="lg">More curiously though:</Text>
           <Text size="sm" className="p-2 border-black border-2 rounded">
-            26% of people said they go to ChatGPT but only 6% would ask a friend
-            or coworker.
+            26% of people said they go to ChatGPT but only 6% would ask a friend or
+            coworker.
           </Text>
           <Text size="lg">
-            The <span className="font-bold">API reference</span> is the
-            most-used section of our docs.
+            The <span className="font-bold">API reference</span> is the most-used section
+            of our docs.
           </Text>
         </>
       ),
@@ -461,27 +446,25 @@ const initialNodes = ({
           </Text>
           <Text>
             We think most of the survey&apos;s respondents came from our Discord
-            community, and that might have skewed the number of folks mentioning
-            Discord.
+            community, and that might have skewed the number of folks mentioning Discord.
           </Text>
           <Text>
-            On the other hand, we found it difficult to surface the survey to
-            our users that primarily interact with us through GitHub issues.{' '}
+            On the other hand, we found it difficult to surface the survey to our users
+            that primarily interact with us through GitHub issues.{' '}
             <span className="font-bold">
               All six of the &quot;Other&quot; responses mentioned GitHub
             </span>
-            , and we suspect that number would be higher if we had more
-            participants <span className="italic">coming</span> from GitHub.
+            , and we suspect that number would be higher if we had more participants{' '}
+            <span className="italic">coming</span> from GitHub.
           </Text>
           <hr className="mx-12 border" />
           <Text>
-            We were really surprised, a little disheartened, and slightly
-            concerned that ChatGPT was so popular. We&apos;re proud of the
-            breadth and depth of our documentation that we provide for free, and
-            think it&apos;s one of the main things that sets us apart from
-            similar libraries. We don&apos;t have any official integrations with
-            any LLMs so it&apos;s a bit of a bummer to know folks are turning to
-            them instead of our docs for help.
+            We were really surprised, a little disheartened, and slightly concerned that
+            ChatGPT was so popular. We&apos;re proud of the breadth and depth of our
+            documentation that we provide for free, and think it&apos;s one of the main
+            things that sets us apart from similar libraries. We don&apos;t have any
+            official integrations with any LLMs so it&apos;s a bit of a bummer to know
+            folks are turning to them instead of our docs for help.
           </Text>
         </>
       ),
@@ -493,8 +476,8 @@ const initialNodes = ({
       content: (
         <>
           <Text>
-            Which <span className="font-bold">section of the docs</span> do you
-            use most often?
+            Which <span className="font-bold">section of the docs</span> do you use most
+            often?
           </Text>
           <BarChart
             data={[
@@ -505,17 +488,15 @@ const initialNodes = ({
             ]}
           />
           <Text>
-            When looking at the data for this question, we considered how much
-            experience someone had with the library. We found that folks newer
-            to React Flow spend most of their time in the{' '}
-            <span className="italic">learn</span>
-            section of our docs: these are long-form guides. On the other hand,
-            our most experienced users spent most of their time in the API
-            reference.
+            When looking at the data for this question, we considered how much experience
+            someone had with the library. We found that folks newer to React Flow spend
+            most of their time in the <span className="italic">learn</span>
+            section of our docs: these are long-form guides. On the other hand, our most
+            experienced users spent most of their time in the API reference.
           </Text>
           <Text>
-            This insight might be useful to other open source maintainers who
-            want to know where to focus their documentation efforts.
+            This insight might be useful to other open source maintainers who want to know
+            where to focus their documentation efforts.
           </Text>
         </>
       ),
@@ -529,24 +510,21 @@ const initialNodes = ({
       content: (
         <>
           <Text>
-            So we have an idea of where folks are going to get help, but what
-            exactly are they looking to get help{' '}
-            <span className="italic">with</span>?
+            So we have an idea of where folks are going to get help, but what exactly are
+            they looking to get help <span className="italic">with</span>?
           </Text>
           <Text>
-            We asked some open-ended questions about what things our users found
-            most difficult about using React Flow or what features and
-            functionality they felt was missing from the library. Then, we went
-            through the responses and grouped them into categories or themes.
+            We asked some open-ended questions about what things our users found most
+            difficult about using React Flow or what features and functionality they felt
+            was missing from the library. Then, we went through the responses and grouped
+            them into categories or themes.
           </Text>
           <Text>Here are the most common categories:</Text>
           <div className="flex flex-wrap gap-2 my-8">
             <Button onClick={() => focus({ id: 'stuck-main-performance' })}>
               Performance
             </Button>
-            <Button
-              onClick={() => focus({ id: 'stuck-main-state-management' })}
-            >
+            <Button onClick={() => focus({ id: 'stuck-main-state-management' })}>
               State management
             </Button>
             <Button onClick={() => focus({ id: 'stuck-main-smart-edges' })}>
@@ -566,10 +544,9 @@ const initialNodes = ({
       content: (
         <>
           <Text>
-            Getting performance right in a big React app is a hard problem, and
-            many of our users have definitely felt that pain. We noticed
-            recurring pain points around state management: particularly related
-            to custom nodes and node data.
+            Getting performance right in a big React app is a hard problem, and many of
+            our users have definitely felt that pain. We noticed recurring pain points
+            around state management: particularly related to custom nodes and node data.
           </Text>
           <MessageCloud
             messages={[
@@ -580,23 +557,19 @@ const initialNodes = ({
           <Text>Here&apos;s what we&apos;re planning to do about it:</Text>
           <ul className="list-disc list-inside [&>*]:ml-4">
             <li>
-              Put Performance FAQ in Docs (including what&apos;s not
-              possible/good to make with React Flow)
+              Put Performance FAQ in Docs (including what&apos;s not possible/good to make
+              with React Flow)
             </li>
             <li>
-              Create hooks for connecting node&apos;s info to a large graph
-              without slowing down the app
+              Create hooks for connecting node&apos;s info to a large graph without
+              slowing down the app
             </li>
-            <li>
-              Surface more information about React Flow&apos;s internal state
-            </li>
+            <li>Surface more information about React Flow&apos;s internal state</li>
           </ul>
           <hr />
           <Text>Jump to another category:</Text>
           <div className="flex flex-wrap gap-2">
-            <Button
-              onClick={() => focus({ id: 'stuck-main-state-management' })}
-            >
+            <Button onClick={() => focus({ id: 'stuck-main-state-management' })}>
               State management
             </Button>
             <Button onClick={() => focus({ id: 'stuck-main-smart-edges' })}>
@@ -616,11 +589,10 @@ const initialNodes = ({
       content: (
         <>
           <Text>
-            Our users felt state management was difficult to get right in React
-            Flow. There&apos;s a lot of confusion around what state is managed
-            by React Flow versus what state should be managed by the user, and
-            then there are questions about what library or approach to use for
-            state management!
+            Our users felt state management was difficult to get right in React Flow.
+            There&apos;s a lot of confusion around what state is managed by React Flow
+            versus what state should be managed by the user, and then there are questions
+            about what library or approach to use for state management!
           </Text>
           <MessageCloud
             messages={[
@@ -633,13 +605,13 @@ const initialNodes = ({
           <Text>Here&apos;s what we&apos;re planning to do about it:</Text>
           <ul className="list-disc list-inside [&>*]:ml-4">
             <li>
-              Make computed flows possible, which covers many simple cases
-              without having to use a third-party library.
+              Make computed flows possible, which covers many simple cases without having
+              to use a third-party library.
             </li>
             <li>Create an example where we load data from a database</li>
             <li>
-              Teach some common state management tips in our React Flow
-              documentation for folks who are new to React
+              Teach some common state management tips in our React Flow documentation for
+              folks who are new to React
             </li>
           </ul>
           <hr />
@@ -665,11 +637,10 @@ const initialNodes = ({
       content: (
         <>
           <Text>
-            Smarter and more powerful edges has been a recurring request from
-            our users for literally years! There&apos;s scope for the library to
-            improve but we&apos;re also weary about making the library harder to
-            maintain: some of the features folks want end up being quite
-            complex!
+            Smarter and more powerful edges has been a recurring request from our users
+            for literally years! There&apos;s scope for the library to improve but
+            we&apos;re also weary about making the library harder to maintain: some of the
+            features folks want end up being quite complex!
           </Text>
           <MessageCloud
             messages={[
@@ -680,13 +651,8 @@ const initialNodes = ({
           />
           <Text>Here&apos;s what we&apos;re planning to do about it:</Text>
           <ul className="list-disc list-inside [&>*]:ml-4">
-            <li>
-              Create a Pro Example showing off editable edges and edge routing.
-            </li>
-            <li>
-              Create a new example demonstrating how to do custom edge
-              animations.
-            </li>
+            <li>Create a Pro Example showing off editable edges and edge routing.</li>
+            <li>Create a new example demonstrating how to do custom edge animations.</li>
           </ul>
           <hr />
           <Text>Jump to another category:</Text>
@@ -694,9 +660,7 @@ const initialNodes = ({
             <Button onClick={() => focus({ id: 'stuck-main-performance' })}>
               Performance
             </Button>
-            <Button
-              onClick={() => focus({ id: 'stuck-main-state-management' })}
-            >
+            <Button onClick={() => focus({ id: 'stuck-main-state-management' })}>
               State management
             </Button>
             <Button onClick={() => focus({ id: 'stuck-main-layouting' })}>
@@ -713,15 +677,14 @@ const initialNodes = ({
       content: (
         <>
           <Text>
-            Around 50% of respondents mentioned they had implemented some sort
-            of node layouting in their flows.
+            Around 50% of respondents mentioned they had implemented some sort of node
+            layouting in their flows.
           </Text>
           <Text>
-            We have no plans on adding layouting directly to the library – there
-            are other packages out there that solve that problem much better
-            than we could – but it is clear that this is something many of our
-            users need and perhaps we could do a better job at pointing folks in
-            the right direction.
+            We have no plans on adding layouting directly to the library – there are other
+            packages out there that solve that problem much better than we could – but it
+            is clear that this is something many of our users need and perhaps we could do
+            a better job at pointing folks in the right direction.
           </Text>
           <MessageCloud
             messages={[
@@ -733,13 +696,13 @@ const initialNodes = ({
           <Text>Here&apos;s what we&apos;re planning to do about it:</Text>
           <ul className="list-disc list-inside [&>*]:ml-4">
             <li>
-              Build more complex layouting examples, e.g. changing a layout
-              after getting node updates from a database
+              Build more complex layouting examples, e.g. changing a layout after getting
+              node updates from a database
             </li>
             <li>
-              Create more step-by-step tutorials on how to use 3rd party
-              tutorials with React Flow (like Elk, Dagre, etc.), instead of just
-              the examples we already provide
+              Create more step-by-step tutorials on how to use 3rd party tutorials with
+              React Flow (like Elk, Dagre, etc.), instead of just the examples we already
+              provide
             </li>
           </ul>
           <hr />
@@ -748,9 +711,7 @@ const initialNodes = ({
             <Button onClick={() => focus({ id: 'stuck-main-performance' })}>
               Performance
             </Button>
-            <Button
-              onClick={() => focus({ id: 'stuck-main-state-management' })}
-            >
+            <Button onClick={() => focus({ id: 'stuck-main-state-management' })}>
               State management
             </Button>
             <Button onClick={() => focus({ id: 'stuck-main-smart-edges' })}>
@@ -842,10 +803,7 @@ const initialNodes = ({
               'Built in UX / comprehensive examples for "making a node editor" would be great.',
             ]}
           />
-          <button
-            className="group self-end mt-2"
-            onClick={() => focus({ id: 'pro' })}
-          >
+          <button className="group self-end mt-2" onClick={() => focus({ id: 'pro' })}>
             <ArrowDownIcon className="w-4 h-4 transition-transform group-hover:translate-y-1 translate-y-0" />
           </button>
         </>
@@ -864,11 +822,10 @@ const initialNodes = ({
             <Emoji content="💸" />
           </div>
           <Text>
-            React Flow Pro is how we sustain ourselves as a business and can
-            afford to work on React Flow while keeping it open source. It&apos;s
-            important to us - and maybe other open source maintainers too - to
-            understand why people are (or aren&apos;t) willing to pay for our
-            Pro subscription.
+            React Flow Pro is how we sustain ourselves as a business and can afford to
+            work on React Flow while keeping it open source. It&apos;s important to us -
+            and maybe other open source maintainers too - to understand why people are (or
+            aren&apos;t) willing to pay for our Pro subscription.
           </Text>
           <Text>
             We asked about it, and got responses from{' '}
@@ -889,9 +846,9 @@ const initialNodes = ({
       content: (
         <>
           <Text>
-            Everyone who responded to the survey knew what React Flow Pro was!
-            We&apos;ve never put money into advertising or promotion, and now we
-            know we don&apos;t need to start now! <Emoji content="💅🏻" />
+            Everyone who responded to the survey knew what React Flow Pro was! We&apos;ve
+            never put money into advertising or promotion, and now we know we don&apos;t
+            need to start now! <Emoji content="💅🏻" />
           </Text>
           <button
             className="group self-end mt-2"
@@ -909,24 +866,21 @@ const initialNodes = ({
         <>
           <Text>
             Main reason that someone subscribed to React Flow Pro was to{' '}
-            <span className="font-bold">access to Pro Examples</span>. This is
-            consistent with a previous survey we did, and it&apos;s good to
-            hear: we put a lot of effort into making those examples valuable!
+            <span className="font-bold">access to Pro Examples</span>. This is consistent
+            with a previous survey we did, and it&apos;s good to hear: we put a lot of
+            effort into making those examples valuable!
           </Text>
           <Text>
-            Most of those who subscribed said that they found the pricing fair.
-            Some found it expensive, some didn&apos;t know how much their
-            organization was paying. None found the price to be too low.{' '}
-            <Emoji content="👁️" />
+            Most of those who subscribed said that they found the pricing fair. Some found
+            it expensive, some didn&apos;t know how much their organization was paying.
+            None found the price to be too low. <Emoji content="👁️" />
             <Emoji content="👁️" />
           </Text>
           <Text>
-            One reason why folks might think the pricing is too high is that we
-            currently don&apos;t offer{' '}
-            <span className="italic">region-based pricing</span>. Our
+            One reason why folks might think the pricing is too high is that we currently
+            don&apos;t offer <span className="italic">region-based pricing</span>. Our
             subscription is affordable to businesses in Europe or the US, but if
-            you&apos;re in India or Brazil, it&apos;s significantly more
-            expensive.
+            you&apos;re in India or Brazil, it&apos;s significantly more expensive.
           </Text>
           <button
             className="group self-end mt-2"
@@ -943,25 +897,23 @@ const initialNodes = ({
       content: (
         <>
           <Text>
-            For the folks that <span className="font-bold">didn&apos;t</span>{' '}
-            subscribe to React Flow Pro, the most common reason was its price.
-            We cater our Pro subscription around businesses because those are
-            the folks with the money available to keep React Flow sustainable,
-            but that can mean our pricing feels unfair to individuals or small
-            teams.
+            For the folks that <span className="font-bold">didn&apos;t</span> subscribe to
+            React Flow Pro, the most common reason was its price. We cater our Pro
+            subscription around businesses because those are the folks with the money
+            available to keep React Flow sustainable, but that can mean our pricing feels
+            unfair to individuals or small teams.
           </Text>
           <Text>
             We offer discounts for early stage startups, and{' '}
-            <span className="font-bold">students and open source projects</span>{' '}
-            can access Pro Examples on request.
+            <span className="font-bold">students and open source projects</span> can
+            access Pro Examples on request.
           </Text>
           <Text>
-            Some people were unhappy about the subscription model and would
-            prefer a one-time payment. Our Pro platform is constantly improving
-            and we are regularly adding new examples! The Pro subscription is
-            what allows us to keep working on React Flow as a job and keep the
-            library MIT licensed: having that recurring revenue makes all that
-            possible.
+            Some people were unhappy about the subscription model and would prefer a
+            one-time payment. Our Pro platform is constantly improving and we are
+            regularly adding new examples! The Pro subscription is what allows us to keep
+            working on React Flow as a job and keep the library MIT licensed: having that
+            recurring revenue makes all that possible.
           </Text>
           <button
             className="group self-end mt-2"
@@ -987,13 +939,13 @@ const initialNodes = ({
       content: (
         <>
           <Text>
-            Thank you to everyone who took the time to fill out our survey! We
-            really appreciate your feedback and we&apos;re excited to use it to
-            make React Flow even better.
+            Thank you to everyone who took the time to fill out our survey! We really
+            appreciate your feedback and we&apos;re excited to use it to make React Flow
+            even better.
           </Text>
           <Text>
-            If you&apos;d like to read things in more detail, you can check out
-            the full survey over on{' '}
+            If you&apos;d like to read things in more detail, you can check out the full
+            survey over on{' '}
             <Link
               href="https://xyflow.com/blog/react-flow-developer-survey-2023"
               className="hover:underline text-primary"
@@ -1022,8 +974,7 @@ const initialNodes = ({
     }),
     chatBubble({
       position: { x: 4100, y: 8850 },
-      message:
-        'Great project! Very grateful it exists! Thank you for your work.',
+      message: 'Great project! Very grateful it exists! Thank you for your work.',
     }),
     chatBubble({
       position: { x: 4400, y: 8800 },

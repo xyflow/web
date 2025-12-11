@@ -1,4 +1,4 @@
-import { Button, Heading, Link, Text, cn } from '@xyflow/xy-ui';
+import { Button, Heading, Link, Text, cn } from 'xy-shared';
 import { Handle, Node, Position } from '@xyflow/react';
 
 export const nodeTypes = {
@@ -74,11 +74,7 @@ export const section = ({
         {title && (
           <Heading
             size={isHero ? 'lg' : 'md'}
-            className={cn(
-              'relative',
-              isHero && 'text-center',
-              content && 'mb-6',
-            )}
+            className={cn('relative', isHero && 'text-center', content && 'mb-6')}
           >
             {isHero && (
               <div
@@ -98,12 +94,7 @@ export const section = ({
     links: links && (
       <div className="flex gap-4">
         {links.map(({ text, href }, i) => (
-          <Link
-            className="nodrag nopan"
-            key={`${href}-${i}`}
-            href={href}
-            size="xs"
-          >
+          <Link className="nodrag nopan" key={`${href}-${i}`} href={href} size="xs">
             {text}
           </Link>
         ))}

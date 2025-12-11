@@ -1,4 +1,4 @@
-import { Framework } from '@xyflow/xy-ui';
+import { Framework } from '../../types';
 import { MDXRemote } from 'nextra/mdx-remote';
 import path from 'path';
 import { ReactNode } from 'react';

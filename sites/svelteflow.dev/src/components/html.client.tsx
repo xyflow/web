@@ -3,7 +3,7 @@
 import { FC, ReactNode } from 'react';
 import { usePathname } from 'next/navigation';
 import { ntDapperFont } from 'xy-shared/fonts';
-import { cn } from '@xyflow/xy-ui';
+import { cn } from 'xy-shared';
 
 export const Html: FC<{ children: ReactNode }> = ({ children }) => {
   const pathname = usePathname();

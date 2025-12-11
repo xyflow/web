@@ -8,7 +8,7 @@ import {
   Text,
   Button,
   type HeroIcon,
-} from '@xyflow/xy-ui';
+} from 'xy-shared';
 import { BaseLayout, Hero } from 'xy-shared';
 import {
   HeartIcon,
@@ -61,8 +61,8 @@ export default function CaseStudies() {
           ]}
           text={
             <>
-              We love to see works in progress and screenshots. Drop it in into
-              our Discord Server, tweet at us, or drop us an email
+              We love to see works in progress and screenshots. Drop it in into our
+              Discord Server, tweet at us, or drop us an email
             </>
           }
         />
@@ -78,8 +78,8 @@ export default function CaseStudies() {
           ]}
           text={
             <>
-              Ask and answer questions in our Discord Server or jump in on
-              Github discussions.
+              Ask and answer questions in our Discord Server or jump in on Github
+              discussions.
             </>
           }
         />
@@ -94,8 +94,8 @@ export default function CaseStudies() {
           ]}
           text={
             <>
-              We can’t catch them all. Check existing issues and discussions
-              first, then create a new issue to tell us what’s up.
+              We can’t catch them all. Check existing issues and discussions first, then
+              create a new issue to tell us what’s up.
             </>
           }
         />
@@ -114,9 +114,9 @@ export default function CaseStudies() {
           ]}
           text={
             <>
-              If you are an organization who wants to make sure Svelte Flow
-              continues to be maintained, you can sponsor us on Github or
-              OpenCollective, or reach out to us at info@xyflow.com
+              If you are an organization who wants to make sure Svelte Flow continues to
+              be maintained, you can sponsor us on Github or OpenCollective, or reach out
+              to us at info@xyflow.com
             </>
           }
         />
@@ -181,8 +181,7 @@ function GridItem({
                 className="text-primary text-md"
               >
                 <Link href={link.route} target={link.target}>
-                  {link.linkName}{' '}
-                  <ArrowRightCircleIcon className="ml-1 w-4 h-4" />
+                  {link.linkName} <ArrowRightCircleIcon className="ml-1 w-4 h-4" />
                 </Link>
               </Button>
             );
@@ -210,9 +209,7 @@ function ListItem({
     >
       <Icon className="w-6 h-6 mr-2" />
       <Text className="font-bold">{label}</Text>
-      {link && (
-        <ArrowRightCircleIcon className="text-primary w-6 h-6 ml-auto" />
-      )}
+      {link && <ArrowRightCircleIcon className="text-primary w-6 h-6 ml-auto" />}
     </WrapperComponent>
   );
 }

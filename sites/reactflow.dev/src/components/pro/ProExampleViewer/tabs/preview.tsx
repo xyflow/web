@@ -1,4 +1,4 @@
-import { Button } from '@xyflow/xy-ui';
+import { Button } from 'xy-shared';
 
 function ProExamplePreview({ iframePreviewUrl }: { iframePreviewUrl: string }) {
   return (
