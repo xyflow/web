@@ -64,6 +64,10 @@ const nextConfig: NextConfig = {
         source: '/strudel-flow/:path*',
         destination: 'https://flow-machine-xyflow.vercel.app/:path*',
       },
+      {
+        source: '/node-collisions/:path*',
+        destination: 'https://node-collision-algorithms.vercel.app/:path*',
+      },
     ];
   },
 };

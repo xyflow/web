@@ -91,6 +91,7 @@ const FIELDS = {
     'zoomOnDoubleClick',
     'connectionMode',
     'paneClickDistance',
+    'zIndexMode',
   ],
   connectionLine: [
     'connectionRadius',
