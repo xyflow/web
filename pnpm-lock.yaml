@@ -4,6 +4,51 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+catalogs:
+  default:
+    '@types/node':
+      specifier: ^22.14.1
+      version: 22.19.0
+    '@types/react':
+      specifier: ^19.2.0
+      version: 19.2.7
+    '@types/react-dom':
+      specifier: ^19.2.0
+      version: 19.2.3
+    '@xyflow/react':
+      specifier: ^12.10.0
+      version: 12.10.0
+    '@xyflow/svelte':
+      specifier: ^1.5.0
+      version: 1.5.0
+    '@xyflow/system':
+      specifier: ^0.0.72
+      version: 0.0.72
+    eslint:
+      specifier: ^9.25.1
+      version: 9.39.1
+    next:
+      specifier: ^15.5.7
+      version: 15.5.7
+    next-sitemap:
+      specifier: ^4.2.3
+      version: 4.2.3
+    nextra:
+      specifier: ^4.6.0
+      version: 4.6.0
+    nextra-theme-docs:
+      specifier: ^4.6.0
+      version: 4.6.0
+    react:
+      specifier: ^19.2.0
+      version: 19.2.0
+    react-dom:
+      specifier: ^19.2.0
+      version: 19.2.0
+    typescript:
+      specifier: ^5.8.3
+      version: 5.9.3
+
 patchedDependencies:
   nextra:
     hash: 45ee55b8c4a06656a359bce5f56b428eb07ab73f8893d350e0080b58242f85f6
@@ -403,7 +448,7 @@ importers:
         specifier: ^0.27.1
         version: 0.27.3
       '@xyflow/react':
-        specifier: ^12.10.0
+        specifier: 'catalog:'
         version: 12.10.0(@types/react@19.2.7)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       class-variance-authority:
         specifier: ^0.7.1
@@ -421,13 +466,16 @@ importers:
         specifier: ^0.503.0
         version: 0.503.0(react@19.2.0)
       next:
-        specifier: ^15.5.7
+        specifier: 'catalog:'
         version: 15.5.7(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       nextra:
-        specifier: ^4.6.0
+        specifier: 'catalog:'
         version: 4.6.0(patch_hash=45ee55b8c4a06656a359bce5f56b428eb07ab73f8893d350e0080b58242f85f6)(next@15.5.7(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.3)
+      react:
+        specifier: 'catalog:'
+        version: 19.2.0
       react-dom:
-        specifier: ^19.2.0
+        specifier: 'catalog:'
         version: 19.2.0(react@19.2.0)
       react-lite-youtube-embed:
         specifier: ^2.5.1
@@ -449,28 +497,22 @@ importers:
         version: 2.0.6(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
     devDependencies:
       '@types/node':
-        specifier: ^22.14.1
+        specifier: 'catalog:'
         version: 22.19.0
       '@types/react':
-        specifier: ^19.2.0
+        specifier: 'catalog:'
         version: 19.2.7
       '@types/react-dom':
-        specifier: ^19.2.0
+        specifier: 'catalog:'
         version: 19.2.3(@types/react@19.2.7)
-      dotenv:
-        specifier: ^16.5.0
-        version: 16.6.1
       eslint:
-        specifier: ^9.25.1
+        specifier: 'catalog:'
         version: 9.39.1(jiti@2.6.1)
       eslint-config-xyflow:
         specifier: workspace:*
         version: link:../../configs/eslint-config-xyflow
-      react:
-        specifier: ^19.2.0
-        version: 19.2.0
       typescript:
-        specifier: ^5.8.3
+        specifier: 'catalog:'
         version: 5.9.3
       xy-tsconfig:
         specifier: workspace:*
@@ -500,10 +542,10 @@ importers:
         specifier: ^1.2.0
         version: 1.2.0(next@15.5.7(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)(svelte@5.43.3)
       '@xyflow/react':
-        specifier: ^12.10.0
+        specifier: 'catalog:'
         version: 12.10.0(@types/react@19.2.7)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@xyflow/system':
-        specifier: ^0.0.72
+        specifier: 'catalog:'
         version: 0.0.72
       d3:
         specifier: ^7.9.0
@@ -515,22 +557,22 @@ importers:
         specifier: ^3.10.1
         version: 3.10.1
       next:
-        specifier: 15.5.7
+        specifier: 'catalog:'
         version: 15.5.7(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       next-sitemap:
-        specifier: ^4.2.3
+        specifier: 'catalog:'
         version: 4.2.3(next@15.5.7(react-dom@19.2.0(react@19.2.0))(react@19.2.0))
       nextra:
-        specifier: ^4.6.0
+        specifier: 'catalog:'
         version: 4.6.0(patch_hash=45ee55b8c4a06656a359bce5f56b428eb07ab73f8893d350e0080b58242f85f6)(next@15.5.7(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.3)
       nextra-theme-docs:
-        specifier: ^4.6.0
+        specifier: 'catalog:'
         version: 4.6.0(@types/react@19.2.7)(next@15.5.7(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(nextra@4.6.0(patch_hash=45ee55b8c4a06656a359bce5f56b428eb07ab73f8893d350e0080b58242f85f6)(next@15.5.7(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.3))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(use-sync-external-store@1.6.0(react@19.2.0))
       react:
-        specifier: ^19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-dom:
-        specifier: ^19.2.0
+        specifier: 'catalog:'
         version: 19.2.0(react@19.2.0)
       react-icons:
         specifier: ^5.5.0
@@ -564,10 +606,10 @@ importers:
         specifier: ^7.4.3
         version: 7.4.3
       '@types/node':
-        specifier: ^22.14.1
+        specifier: 'catalog:'
         version: 22.19.0
       '@types/react':
-        specifier: ^19.2.0
+        specifier: 'catalog:'
         version: 19.2.7
       eslint-config-xyflow:
         specifier: workspace:*
@@ -585,7 +627,7 @@ importers:
         specifier: ^3.4.17
         version: 3.4.18(tsx@4.19.2)(yaml@2.8.1)
       typescript:
-        specifier: ^5.7.3
+        specifier: 'catalog:'
         version: 5.9.3
       xy-tailwind-config:
         specifier: workspace:*
@@ -603,34 +645,34 @@ importers:
         specifier: ^4.4.0
         version: 4.6.0(react@19.2.0)
       '@xyflow/react':
-        specifier: 12.10.0
+        specifier: 'catalog:'
         version: 12.10.0(@types/react@19.2.7)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@xyflow/svelte':
-        specifier: 1.4.1
-        version: 1.4.1(svelte@5.43.3)
+        specifier: 'catalog:'
+        version: 1.5.0(svelte@5.43.3)
       '@xyflow/system':
-        specifier: ^0.0.72
+        specifier: 'catalog:'
         version: 0.0.72
       fast-xml-parser:
         specifier: ^5.2.1
         version: 5.3.1
       next:
-        specifier: ^15.5.7
+        specifier: 'catalog:'
         version: 15.5.7(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       next-sitemap:
-        specifier: ^4.2.3
+        specifier: 'catalog:'
         version: 4.2.3(next@15.5.7(react-dom@19.2.0(react@19.2.0))(react@19.2.0))
       nextra:
-        specifier: ^4.6.0
+        specifier: 'catalog:'
         version: 4.6.0(patch_hash=45ee55b8c4a06656a359bce5f56b428eb07ab73f8893d350e0080b58242f85f6)(next@15.5.7(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.3)
       nextra-theme-docs:
-        specifier: ^4.6.0
+        specifier: 'catalog:'
         version: 4.6.0(@types/react@19.2.7)(next@15.5.7(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(nextra@4.6.0(patch_hash=45ee55b8c4a06656a359bce5f56b428eb07ab73f8893d350e0080b58242f85f6)(next@15.5.7(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.3))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(use-sync-external-store@1.6.0(react@19.2.0))
       react:
-        specifier: ^19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-dom:
-        specifier: ^19.2.0
+        specifier: 'catalog:'
         version: 19.2.0(react@19.2.0)
       svelte:
         specifier: ^5.33.19
@@ -643,10 +685,10 @@ importers:
         specifier: ^2.3.0
         version: 2.3.0
       '@types/node':
-        specifier: ^22.14.1
+        specifier: 'catalog:'
         version: 22.19.0
       '@types/react':
-        specifier: ^19.2.0
+        specifier: 'catalog:'
         version: 19.2.7
       eslint-config-xyflow:
         specifier: workspace:*
@@ -661,7 +703,7 @@ importers:
         specifier: ^3.4.14
         version: 3.4.18(tsx@4.19.2)(yaml@2.8.1)
       typescript:
-        specifier: ^5.8.3
+        specifier: 'catalog:'
         version: 5.9.3
       xy-tailwind-config:
         specifier: workspace:*
@@ -679,7 +721,7 @@ importers:
         specifier: ^2.2.1
         version: 2.2.1
       '@xyflow/react':
-        specifier: 12.10.0
+        specifier: 'catalog:'
         version: 12.10.0(@types/react@19.2.7)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       botid:
         specifier: ^1.5.10
@@ -688,22 +730,22 @@ importers:
         specifier: ^5.2.1
         version: 5.3.1
       next:
-        specifier: ^15.5.7
+        specifier: 'catalog:'
         version: 15.5.7(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       next-sitemap:
-        specifier: ^4.2.3
+        specifier: 'catalog:'
         version: 4.2.3(next@15.5.7(react-dom@19.2.0(react@19.2.0))(react@19.2.0))
       nextra:
-        specifier: ^4.6.0
+        specifier: 'catalog:'
         version: 4.6.0(patch_hash=45ee55b8c4a06656a359bce5f56b428eb07ab73f8893d350e0080b58242f85f6)(next@15.5.7(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.3)
       nextra-theme-docs:
-        specifier: ^4.6.0
+        specifier: 'catalog:'
         version: 4.6.0(@types/react@19.2.7)(next@15.5.7(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(nextra@4.6.0(patch_hash=45ee55b8c4a06656a359bce5f56b428eb07ab73f8893d350e0080b58242f85f6)(next@15.5.7(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.3))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(use-sync-external-store@1.6.0(react@19.2.0))
       react:
-        specifier: ^19.2.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-dom:
-        specifier: ^19.2.0
+        specifier: 'catalog:'
         version: 19.2.0(react@19.2.0)
       xy-shared:
         specifier: workspace:*
@@ -713,10 +755,10 @@ importers:
         specifier: ^2.3.0
         version: 2.3.0
       '@types/node':
-        specifier: ^22.14.1
+        specifier: 'catalog:'
         version: 22.19.0
       '@types/react':
-        specifier: ^19.2.0
+        specifier: 'catalog:'
         version: 19.2.7
       eslint-config-xyflow:
         specifier: workspace:*
@@ -731,7 +773,7 @@ importers:
         specifier: ^3.4.14
         version: 3.4.18(tsx@4.19.2)(yaml@2.8.1)
       typescript:
-        specifier: ^5.8.3
+        specifier: 'catalog:'
         version: 5.9.3
       xy-tailwind-config:
         specifier: workspace:*
@@ -3544,6 +3586,11 @@ packages:
 
   '@xyflow/svelte@1.4.1':
     resolution: {integrity: sha512-CAegVmLMpX64G6JnhiU7ezoIOY7aX88cf1fSOV8FutKdZNMxcJBykhvaXunOBf7jjDs9X887RH8Jgdl1rMwXww==}
+    peerDependencies:
+      svelte: ^5.25.0
+
+  '@xyflow/svelte@1.5.0':
+    resolution: {integrity: sha512-kHJVwMtabN7xthDJqLvx5wGT5qjOAVV90J9a26geDS51lrGsGb7CCxNRiZCMuVDlRkczGVIy9dkqdph6FL4slQ==}
     peerDependencies:
       svelte: ^5.25.0
 
@@ -8459,24 +8506,6 @@ packages:
       use-sync-external-store:
         optional: true
 
-  zustand@5.0.8:
-    resolution: {integrity: sha512-gyPKpIaxY9XcO2vSMrLbiER7QMAMGOQZVRdJ6Zi782jkbzZygq5GI9nG8g+sMgitRtndwaBSl7uiqC49o1SSiw==}
-    engines: {node: '>=12.20.0'}
-    peerDependencies:
-      '@types/react': '>=18.0.0'
-      immer: '>=9.0.6'
-      react: '>=18.0.0'
-      use-sync-external-store: '>=1.2.0'
-    peerDependenciesMeta:
-      '@types/react':
-        optional: true
-      immer:
-        optional: true
-      react:
-        optional: true
-      use-sync-external-store:
-        optional: true
-
   zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
 
@@ -10818,7 +10847,7 @@ snapshots:
 
   '@types/minimatch@6.0.0':
     dependencies:
-      minimatch: 9.0.5
+      minimatch: 10.1.1
 
   '@types/ms@2.1.0': {}
 
@@ -11478,6 +11507,12 @@ snapshots:
     dependencies:
       '@svelte-put/shortcut': 4.1.0(svelte@5.43.3)
       '@xyflow/system': 0.0.72
+      svelte: 5.43.3
+
+  '@xyflow/svelte@1.5.0(svelte@5.43.3)':
+    dependencies:
+      '@svelte-put/shortcut': 4.1.0(svelte@5.43.3)
+      '@xyflow/system': 0.0.74
       svelte: 5.43.3
 
   '@xyflow/system@0.0.72':
@@ -15012,7 +15047,7 @@ snapshots:
       react-dom: 19.2.0(react@19.2.0)
       scroll-into-view-if-needed: 3.1.0
       zod: 4.0.0-beta.20250424T163858
-      zustand: 5.0.8(@types/react@19.2.7)(react@19.2.0)(use-sync-external-store@1.6.0(react@19.2.0))
+      zustand: 5.0.3(@types/react@19.2.7)(react@19.2.0)(use-sync-external-store@1.6.0(react@19.2.0))
     transitivePeerDependencies:
       - '@types/react'
       - immer
@@ -17432,12 +17467,6 @@ snapshots:
       react: 19.2.0
 
   zustand@5.0.3(@types/react@19.2.7)(react@19.2.0)(use-sync-external-store@1.6.0(react@19.2.0)):
-    optionalDependencies:
-      '@types/react': 19.2.7
-      react: 19.2.0
-      use-sync-external-store: 1.6.0(react@19.2.0)
-
-  zustand@5.0.8(@types/react@19.2.7)(react@19.2.0)(use-sync-external-store@1.6.0(react@19.2.0)):
     optionalDependencies:
       '@types/react': 19.2.7
       react: 19.2.0

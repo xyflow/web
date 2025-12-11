@@ -7,3 +7,19 @@ packages:
 
 patchedDependencies:
   nextra: patches/nextra.patch
+
+catalog:
+  next: '^15.5.7'
+  next-sitemap: '^4.2.3'
+  nextra: '^4.6.0'
+  nextra-theme-docs: '^4.6.0'
+  react: '^19.2.0'
+  react-dom: '^19.2.0'
+  '@types/react': '^19.2.0'
+  '@types/react-dom': '^19.2.0'
+  '@types/node': '^22.14.1'
+  eslint: '^9.25.1'
+  typescript: '^5.8.3'
+  '@xyflow/react': '^12.10.0'
+  '@xyflow/svelte': '^1.5.0'
+  '@xyflow/system': '^0.0.72'

@@ -10,14 +10,12 @@
     "generate:component": "turbo gen react-component"
   },
   "devDependencies": {
-    "@types/node": "^22.14.1",
-    "@types/react": "^19.2.0",
-    "@types/react-dom": "^19.2.0",
-    "dotenv": "^16.5.0",
-    "eslint": "^9.25.1",
+    "@types/node": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "eslint": "catalog:",
+    "typescript": "catalog:",
     "eslint-config-xyflow": "workspace:*",
-    "react": "^19.2.0",
-    "typescript": "^5.8.3",
     "xy-tsconfig": "workspace:*"
   },
   "dependencies": {
@@ -43,13 +41,11 @@
     "@stackblitz/sdk": "^1.11.0",
     "@vercel/blob": "^0.27.1",
     "class-variance-authority": "^0.7.1",
-    "@xyflow/react": "^12.10.0",
+    "@xyflow/react": "catalog:",
     "clsx": "^2.1.1",
     "fast-glob": "^3.3.3",
     "fathom-client": "^3.7.2",
     "lucide-react": "^0.503.0",
-    "next": "^15.5.7",
-    "nextra": "^4.6.0",
     "react-lite-youtube-embed": "^2.5.1",
     "tailwind-merge": "^3.3.1",
     "tailwindcss": "^3.4.14",
@@ -58,7 +54,9 @@
     "use-error-boundary": "^2.0.6"
   },
   "peerDependencies": {
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "next": "catalog:",
+    "nextra": "catalog:"
   }
 }
