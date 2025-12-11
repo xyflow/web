@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { User } from '@nhost/nhost-js/auth';
 
 import { SubscriptionContext } from '@/components/pro/Providers';
-import { SubscriptionPlan } from '@/types';
+import { SubscriptionPlan } from 'xy-shared';
 
 export type SubscriptionStatus = {
   isSubscribed: boolean;

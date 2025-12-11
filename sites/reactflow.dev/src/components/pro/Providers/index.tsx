@@ -10,7 +10,7 @@ import {
   useState,
   useTransition,
 } from 'react';
-import { SubscriptionPlan } from '@/types';
+import { SubscriptionPlan } from 'xy-shared';
 import { getSubscription } from '@/server-actions';
 import { usePathname } from 'next/navigation';
 import { usePrevious } from '@/hooks/usePrevious';

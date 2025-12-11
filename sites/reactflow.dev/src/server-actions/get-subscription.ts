@@ -4,7 +4,7 @@ import { gql } from '@apollo/client';
 import { User } from '@nhost/nhost-js/auth';
 
 import { createNhostClient } from '@/utils/nhost';
-import { SubscriptionPlan } from '@/types';
+import { SubscriptionPlan } from 'xy-shared';
 
 const GET_SUBSCRIPTION = gql`
   query GetSubscription($userId: uuid) {

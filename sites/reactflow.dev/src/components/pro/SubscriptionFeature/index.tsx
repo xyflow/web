@@ -11,7 +11,7 @@ import {
   Button,
   cn,
 } from 'xy-shared';
-import { SubscriptionPlan } from '@/types';
+import { SubscriptionPlan } from 'xy-shared';
 import Link from 'next/link';
 import { ArrowLongRightIcon } from '@heroicons/react/20/solid';
 

@@ -1,4 +1,4 @@
-import { Currency, SubscriptionPlan } from '@/types';
+import { Currency, SubscriptionPlan } from 'xy-shared';
 
 export function getCurrencySign(currency?: Currency) {
   switch (currency) {

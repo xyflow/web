@@ -1,6 +1,6 @@
 import DashboardHeader from '@/components/pro/DashboardHeader';
 import SubscriptionFeature from '@/components/pro/SubscriptionFeature';
-import { SubscriptionPlan } from '@/types';
+import { SubscriptionPlan } from 'xy-shared';
 import { Link } from 'xy-shared';
 
 const SupportPage = () => {

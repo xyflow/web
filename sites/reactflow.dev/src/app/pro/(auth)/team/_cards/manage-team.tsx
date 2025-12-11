@@ -25,7 +25,7 @@ import { User } from '@nhost/nhost-js/auth';
 import { callNhostFunction, revalidatePathFromClient } from '@/server-actions';
 import { PlanLabel } from '@/components/pro/SubscriptionStatus';
 import Loader from '@/components/pro/Loader';
-import { Currency } from '@/types';
+import { Currency } from 'xy-shared';
 import { getCurrencySign } from '@/utils/pro-utils';
 
 type TeamMember = {
