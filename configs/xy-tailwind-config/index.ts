@@ -3,7 +3,6 @@ import { Config } from 'tailwindcss';
 export default {
   content: [
     './src/**/*.{js,ts,jsx,tsx,mdx}',
-    '../../packages/xy-ui/components/**/*.{js,ts,jsx,tsx}',
     '../../packages/xy-shared/components/**/*.{js,ts,jsx,tsx}',
     '../../packages/xy-shared/layouts/**/*.{js,ts,jsx,tsx}',
     '../../packages/xy-shared/server/**/*.{js,ts,jsx,tsx}',

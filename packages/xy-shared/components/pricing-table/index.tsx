@@ -1,11 +1,17 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { cn } from '../../../lib/utils';
-import { Button } from '../button';
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '../select';
-import { Container } from '../container';
-import { TooltipProvider } from '../tooltip';
+import { cn } from '../../lib/utils';
+import { Button } from '../ui/button';
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from '../ui/select';
+import { Container } from '../ui/container';
+import { TooltipProvider } from '../ui/tooltip';
 
 import Plan from './subscription-plan';
 import defaultConfig from './default-config';

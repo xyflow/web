@@ -5,8 +5,8 @@ import {
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
-} from '../accordion';
-import { ListWrapper } from '../list-wrapper';
+} from '../ui/accordion';
+import { ListWrapper } from '../ui/list-wrapper';
 
 export type FAQItem = {
   question: React.ReactNode;

@@ -1,4 +1,4 @@
-import { ButtonProps } from '../button';
+import { ButtonProps } from '../ui/button';
 
 export enum PlanId {
   STARTER = 'starter',

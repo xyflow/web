@@ -4,8 +4,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { cva, type VariantProps } from 'class-variance-authority';
 
-import { cn } from '../../../lib/utils';
-import { Text } from '../text';
+import { cn } from '../../lib/utils';
+import { Text } from '../ui/text';
 import { defaultCategories, type FooterCategoryConfig } from './default-categories';
 
 const footerVariants = cva('bg-black print:bg-transparent py-12 lg:py-18', {

@@ -2,8 +2,8 @@ import Link from 'next/link';
 import cn from 'clsx';
 import { CheckCircleIcon, InformationCircleIcon } from '@heroicons/react/24/outline';
 
-import { Button } from '../button';
-import { Tooltip, TooltipContent, TooltipTrigger } from '../tooltip';
+import { Button } from '../ui/button';
+import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip';
 
 import {
   BillingInterval,

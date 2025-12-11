@@ -1,4 +1,4 @@
-import { Link } from '../link';
+import { Link } from '../ui/link';
 
 import {
   BillingInterval,
