@@ -5,7 +5,7 @@ import { getPageMap } from 'nextra/page-map';
 import { Layout, Navbar } from 'nextra-theme-docs';
 import { Anchor } from 'nextra/components';
 import { Button, Footer, Logo, Text } from 'xy-shared';
-import { defaultCategories } from 'xy-shared/components/ui/footer/default-categories';
+import { defaultCategories } from 'xy-shared/components/footer/default-categories';
 
 const footerCategories = {
   ...defaultCategories,
