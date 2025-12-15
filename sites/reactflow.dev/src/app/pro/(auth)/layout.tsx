@@ -1,6 +1,6 @@
 // import { redirect } from 'next/navigation';
 // import { createNhostClient } from '@/utils/nhost';
-import { useMDXComponents as getMdxComponents } from '@/mdx-components';
+import { useMDXComponents as getMdxComponents } from 'xy-shared/components/mdx-components';
 
 // Use Nextra theme docs layout with the sidebar
 const { wrapper: Wrapper } = getMdxComponents();

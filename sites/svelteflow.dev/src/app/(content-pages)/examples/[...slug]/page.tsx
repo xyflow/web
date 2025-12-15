@@ -4,7 +4,7 @@ import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
 import { Button } from 'xy-shared';
 import { RemoteCodeViewer, getAllExamples } from 'xy-shared/server';
 
-import { useMDXComponents as getMDXComponents } from '@/mdx-components';
+import { useMDXComponents as getMDXComponents } from 'xy-shared/components/mdx-components';
 import { importMetadata } from './utils';
 
 type PageProps = Readonly<{

@@ -6,7 +6,7 @@ import { generateRootMetadata, getLastChangelog, TOC } from 'xy-shared/server';
 import { Fathom, Search } from 'xy-shared';
 import { defaultFooterCategories, Footer as XYFooter, LogoLabel } from 'xy-shared';
 import NavMenu from 'xy-shared/components/pro/Navigation/NavMenu';
-import { Html } from '@/components/html.client';
+import { Html } from 'xy-shared/components/html';
 import { normalizePageMap } from '@/utils/page-map';
 import { SubscriptionProvider } from 'xy-shared/components/pro/Providers';
 import './global.css';

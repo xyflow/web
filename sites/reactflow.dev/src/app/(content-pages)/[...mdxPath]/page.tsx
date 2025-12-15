@@ -3,7 +3,7 @@ import { normalizePages } from 'nextra/normalize-pages';
 import { getPageMap } from 'nextra/page-map';
 import { BaseBlogPostLayout, CaseStudyLayoutWrapper } from 'xy-shared';
 
-import { useMDXComponents as getMdxComponents } from '@/mdx-components';
+import { useMDXComponents as getMdxComponents } from 'xy-shared/components/mdx-components';
 import { getWhatsNew } from '@/utils';
 
 type Props = PageProps<'/[...mdxPath]'>;

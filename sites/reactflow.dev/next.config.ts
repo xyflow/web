@@ -71,7 +71,8 @@ const nextConfig: NextConfig = {
     resolveAlias: {
       // Fix an error when `--turbopack` is enabled
       // Module not found: Can't resolve 'next-mdx-import-source-file'
-      'next-mdx-import-source-file': './src/mdx-components.tsx',
+      'next-mdx-import-source-file':
+        '../../packages/xy-shared/components/mdx-components/index.tsx',
     },
   },
 };
