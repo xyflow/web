@@ -1,7 +1,7 @@
 import type { FC, ReactNode } from 'react';
 import { Head } from 'nextra/components';
 import svelteFlowPackageJson from '@xyflow/svelte/package.json';
-import { Html } from 'xy-shared/components/html';
+import { Html } from '@/components/html.client';
 import { generateRootMetadata } from 'xy-shared/server';
 import { Fathom } from 'xy-shared';
 

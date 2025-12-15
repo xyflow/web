@@ -3,7 +3,7 @@ import { normalizePages } from 'nextra/normalize-pages';
 import { LabsLayoutWrapper, BaseBlogPostLayout } from 'xy-shared';
 import { getPageMap } from 'nextra/page-map';
 import { getBlogs } from '@/utils';
-import { useMDXComponents as getMdxComponents } from 'xy-shared/components/mdx-components';
+import { useMDXComponents as getMdxComponents } from '@/mdx-components';
 import { MdxFile } from 'nextra';
 
 type PageProps = Readonly<{

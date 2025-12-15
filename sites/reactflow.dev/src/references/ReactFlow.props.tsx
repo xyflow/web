@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { useMDXComponents as getMDXComponents } from 'xy-shared/components/mdx-components';
+import { useMDXComponents as getMDXComponents } from '@/mdx-components';
 
 const { APIDocs } = getMDXComponents() as unknown as { APIDocs: FC<{ code?: string }> };
 

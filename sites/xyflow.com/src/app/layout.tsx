@@ -1,6 +1,6 @@
 import type { FC, ReactNode } from 'react';
 import { Head } from 'nextra/components';
-import { Html } from 'xy-shared/components/html';
+import { Html } from '@/components/html.client';
 import { NextraLayout } from '@/components/nextra-layout';
 import { generateRootMetadata } from 'xy-shared/server';
 import { Fathom } from 'xy-shared';

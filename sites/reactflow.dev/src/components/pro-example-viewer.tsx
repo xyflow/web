@@ -2,10 +2,10 @@
 
 import { FC } from 'react';
 import Link from 'next/link';
-import { Button, cn, Container, ContainerProps, Text } from '../../';
-import { useSubscription } from '../../hooks';
-import ProPlatformExampleViewer from '../../components/pro/ProExampleViewer';
-import { Framework } from '../../components/pro/ProExampleViewer/types';
+import { Button, cn, Container, ContainerProps, Text } from 'xy-shared';
+import { useSubscription } from 'xy-shared/hooks';
+import ProPlatformExampleViewer from 'xy-shared/components/pro/ProExampleViewer';
+import { Framework } from 'xy-shared/components/pro/ProExampleViewer/types';
 
 const ProExampleViewer: FC<{
   slug: string;
@@ -42,7 +42,7 @@ const ProExampleViewer: FC<{
               all pro examples
             </Link>
             , templates, 1:1 support from the xyflow team and prioritized GitHub issues
-            with a Pro subscription.
+            with a React Flow Pro subscription.
           </Text>
           <Button asChild>
             <Link href="/pro/subscribe">Subscribe</Link>

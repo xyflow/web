@@ -7,13 +7,13 @@ import {
   TabsTrigger,
   Link,
   cn,
-} from '../../';
+} from 'xy-shared';
 import { getPageMap } from 'nextra/page-map';
 import { Tabs as NextraTabs } from 'nextra/components';
 import { MDXRemote } from 'nextra/mdx-remote';
-import { fetchShadcnComponent } from '../../utils/fetch-shadcn-component';
+import { fetchShadcnComponent } from '@/utils';
 import { FC } from 'react';
-import { useMDXComponents as getMDXComponents } from '../mdx-components';
+import { useMDXComponents as getMDXComponents } from '@/mdx-components';
 
 function kebabCaseToPascalCase(str: string) {
   const newString = str.replace(/-([a-z])/g, (g) => g[1].toUpperCase());

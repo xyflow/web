@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { useMDXComponents as getMDXComponents } from 'xy-shared/components/mdx-components';
+import { useMDXComponents as getMDXComponents } from '@/mdx-components';
 
 const INTERSECTION_FIELDS = ['getIntersectingNodes', 'isNodeIntersecting'];
 const VIEWPORT_FIELDS = ['viewportInitialized', 'fitView'];

@@ -22,23 +22,9 @@ const externalReactLinks = {
     'https://github.com/pmndrs/zustand/blob/0426978490e8b14f40443bcbb2332e103076510b/src/vanilla.ts#L8',
 };
 
-const externalReactCommonLinks = {
+const externalLinks = {
   Partial: 'https://typescriptlang.org/docs/handbook/utility-types.html#partialtype',
   Record: 'https://typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type',
-};
-
-const externalSvelteLinks = {
-  Snippet: 'https://svelte.dev/docs/svelte/snippet#Typing-snippets',
-  ClassValue: 'https://svelte.dev/docs/svelte/class',
-};
-
-const externalSvelteCommonLinks = {
-  Partial: 'https://typescriptlang.org/docs/handbook/utility-types.html#partialtype',
-  Record: 'https://typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type',
-  MouseEvent: 'https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent',
-  TouchEvent: 'https://developer.mozilla.org/en-US/docs/Web/API/TouchEvent',
-  KeyboardEvent: 'https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent',
-  PointerEvent: 'https://developer.mozilla.org/en-US/docs/Web/API/PointerEvent',
 };
 
 export const APIDocs: FC<{
@@ -57,9 +43,8 @@ export const APIDocs: FC<{
   groupKeys,
   ...props
 }) => {
-  const isSvelte = packageName === 'svelte';
   const pageMap = await getPageMap('/api-reference/types');
-  const frameworkLinks = Object.fromEntries(
+  const reactFlowLinks = Object.fromEntries(
     pageMap
       .filter((item): item is MdxFile => 'frontMatter' in item)
       .map((item) => [item.frontMatter!.title, `/api-reference/types/${item.name}`]),
@@ -74,9 +59,9 @@ export const APIDocs: FC<{
       </p>
     ),
     typeLinkMap: {
-      ...frameworkLinks,
-      ...(isSvelte ? externalSvelteLinks : externalReactLinks),
-      ...(isSvelte ? externalSvelteCommonLinks : externalReactCommonLinks),
+      ...reactFlowLinks,
+      ...externalReactLinks,
+      ...externalLinks,
       NodeType: '/api-reference/types/node',
       EdgeMarkerType: '/api-reference/types/edge-marker',
       EdgeType: '/api-reference/types/edge',
@@ -90,7 +75,7 @@ export const APIDocs: FC<{
   }
   if (functionName) {
     const definition = await generateDefinition({
-      code: `export type { ${functionName} as default } from '@xyflow/${isSvelte ? 'svelte' : 'react'}'`,
+      code: `export type { ${functionName} as default } from '@xyflow/react'`,
       flattened: true,
       ...props,
     });
@@ -99,13 +84,7 @@ export const APIDocs: FC<{
   let code: string;
 
   if (componentName) {
-    code = isSvelte
-      ? `
-import type { ComponentProps } from 'svelte'
-import type { HTMLAttributes, SVGAttributes, SVGPathElement, HTMLButtonAttributes } from 'svelte/elements'
-import type { ${componentName} } from '@xyflow/svelte'
-type MyProps = ComponentProps<typeof ${componentName}>`
-      : `
+    code = `
 import type { ComponentProps, HTMLAttributes, SVGAttributes } from 'react'
 import type { ${componentName} } from '@xyflow/react'
 type MyProps = ComponentProps<typeof ${componentName}>`;
