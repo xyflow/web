@@ -16,9 +16,9 @@ const nextConfig: NextConfig = {
   pageExtensions: ['ts', 'tsx', 'js', 'jsx'],
   // Optionally, add any other Next.js config below
   reactStrictMode: true,
-  transpilePackages: ['xy-shared', 'xy-shared'],
+  transpilePackages: ['xy-shared'],
   experimental: {
-    optimizePackageImports: ['xy-shared', 'xy-shared'],
+    optimizePackageImports: ['xy-shared'],
   },
   async redirects() {
     return redirects;

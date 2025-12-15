@@ -14,12 +14,14 @@
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
     "eslint": "catalog:",
-    "typescript": "catalog:",
     "eslint-config-xyflow": "workspace:*",
+    "typescript": "catalog:",
     "xy-tsconfig": "workspace:*"
   },
   "dependencies": {
+    "@apollo/client": "3.7.15",
     "@codesandbox/sandpack-react": "^2.20.0",
+    "@codesandbox/sandpack-themes": "^2.0.21",
     "@docsearch/css": "^3.9.0",
     "@docsearch/react": "^3.9.0",
     "@heroicons/react": "^2.2.0",
@@ -39,14 +41,21 @@
     "@react-three/fiber": "9.1.2",
     "@sindresorhus/slugify": "^2.2.1",
     "@stackblitz/sdk": "^1.11.0",
+    "@types/file-saver": "^2.0.7",
+    "@types/react-syntax-highlighter": "^15.5.13",
     "@vercel/blob": "^0.27.1",
-    "class-variance-authority": "^0.7.1",
     "@xyflow/react": "catalog:",
+    "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "fast-glob": "^3.3.3",
     "fathom-client": "^3.7.2",
+    "file-saver": "^2.0.5",
+    "jszip": "^3.10.1",
     "lucide-react": "^0.503.0",
     "react-lite-youtube-embed": "^2.5.1",
+    "react-markdown": "^10.1.0",
+    "react-syntax-highlighter": "^16.1.0",
+    "remark-gfm": "^4.0.1",
     "tailwind-merge": "^3.3.1",
     "tailwindcss": "^3.4.14",
     "tailwindcss-animate": "^1.0.7",
@@ -54,9 +63,11 @@
     "use-error-boundary": "^2.0.6"
   },
   "peerDependencies": {
-    "react": "catalog:",
-    "react-dom": "catalog:",
+    "@nhost/nhost-js": "catalog:",
     "next": "catalog:",
-    "nextra": "catalog:"
+    "nextra": "catalog:",
+    "nextra-theme-docs": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:"
   }
 }

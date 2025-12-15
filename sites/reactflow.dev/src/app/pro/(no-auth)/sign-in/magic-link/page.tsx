@@ -1,4 +1,4 @@
-import { SignInMagicLink, AuthFormWrapper } from '@/components/pro/AuthForms';
+import { SignInMagicLink, AuthFormWrapper } from 'xy-shared/components/pro/AuthForms';
 
 const authFormLinks = [
   { href: '/pro/sign-in', label: 'Sign in using Email and Password' },

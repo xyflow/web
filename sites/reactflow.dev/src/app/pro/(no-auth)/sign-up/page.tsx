@@ -1,7 +1,4 @@
-import {
-  SignUpEmailPassword,
-  AuthFormWrapper,
-} from '@/components/pro/AuthForms';
+import { SignUpEmailPassword, AuthFormWrapper } from 'xy-shared/components/pro/AuthForms';
 
 const authFormLinks = [
   { href: '/pro/sign-in', label: 'Already have an account? Sign In' },

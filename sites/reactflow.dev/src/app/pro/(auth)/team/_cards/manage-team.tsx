@@ -22,11 +22,11 @@ import {
 } from 'xy-shared';
 import { User } from '@nhost/nhost-js/auth';
 
-import { callNhostFunction, revalidatePathFromClient } from '@/server-actions';
-import { PlanLabel } from '@/components/pro/SubscriptionStatus';
-import Loader from '@/components/pro/Loader';
+import { callNhostFunction, revalidatePathFromClient } from 'xy-shared/server-actions';
+import { PlanLabel } from 'xy-shared/components/pro/SubscriptionStatus';
+import Loader from 'xy-shared/components/pro/Loader';
 import { Currency } from 'xy-shared';
-import { getCurrencySign } from '@/utils/pro-utils';
+import { getCurrencySign } from 'xy-shared/utils/pro-utils';
 
 type TeamMember = {
   email: string;

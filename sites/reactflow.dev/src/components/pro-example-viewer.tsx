@@ -3,9 +3,9 @@
 import { FC } from 'react';
 import Link from 'next/link';
 import { Button, cn, Container, ContainerProps, Text } from 'xy-shared';
-import useSubscription from '@/hooks/useSubscription';
-import ProPlatformExampleViewer from './pro/ProExampleViewer';
-import { Framework } from './pro/ProExampleViewer/types';
+import { useSubscription } from 'xy-shared/hooks';
+import ProPlatformExampleViewer from 'xy-shared/components/pro/ProExampleViewer';
+import { Framework } from 'xy-shared/components/pro/ProExampleViewer/types';
 
 const ProExampleViewer: FC<{
   slug: string;

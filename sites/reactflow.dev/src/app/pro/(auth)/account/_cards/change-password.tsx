@@ -12,7 +12,7 @@ import {
   InputLabel,
 } from 'xy-shared';
 
-import { changePassword } from '@/server-actions';
+import { changePassword } from 'xy-shared/server-actions';
 
 function ChangePasswordCard() {
   const [isLoading, startTransition] = useTransition();

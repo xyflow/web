@@ -12,7 +12,7 @@ import {
   InputLabel,
 } from 'xy-shared';
 
-import { changeEmail } from '@/server-actions';
+import { changeEmail } from 'xy-shared/server-actions';
 
 const ChangeEmailCard: FC<{ userEmail: string }> = ({ userEmail }) => {
   const [isLoading, startTransition] = useTransition();

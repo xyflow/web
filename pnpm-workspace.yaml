@@ -13,6 +13,7 @@ catalog:
   next-sitemap: '^4.2.3'
   nextra: '^4.6.0'
   nextra-theme-docs: '^4.6.0'
+  '@nhost/nhost-js': '^4.1.0'
   react: '^19.2.0'
   react-dom: '^19.2.0'
   '@types/react': '^19.2.0'

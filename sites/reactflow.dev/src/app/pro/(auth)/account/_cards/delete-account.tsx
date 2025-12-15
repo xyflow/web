@@ -19,8 +19,8 @@ import {
   Button,
   Input,
 } from 'xy-shared';
-import { callNhostFunction } from '@/server-actions';
-import { signOut } from '@/server-actions';
+import { callNhostFunction } from 'xy-shared/server-actions';
+import { signOut } from 'xy-shared/server-actions';
 
 const DeleteAccountCard: FC<{ userEmail: string }> = ({ userEmail }) => {
   const [confirmUserEmail, setConfirmUserEmail] = useState('');

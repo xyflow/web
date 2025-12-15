@@ -1,4 +1,4 @@
-import DashboardHeader from '@/components/pro/DashboardHeader';
+import DashboardHeader from 'xy-shared/components/pro/DashboardHeader';
 import { Card, CardHeader } from 'xy-shared';
 
 import SignUp from './signup';

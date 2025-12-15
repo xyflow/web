@@ -5,8 +5,8 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
 import { Button, Heading, Input, InputLabel } from 'xy-shared';
-import { callNhostFunction } from '@/server-actions';
-import useSubscription from '@/hooks/useSubscription';
+import { callNhostFunction } from 'xy-shared/server-actions';
+import { useSubscription } from 'xy-shared/hooks';
 
 function Signup() {
   const [isLoading, setLoading] = useState(false);

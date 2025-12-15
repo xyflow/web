@@ -1,9 +1,9 @@
-import DashboardHeader from '@/components/pro/DashboardHeader';
+import DashboardHeader from 'xy-shared/components/pro/DashboardHeader';
 import ManageTeamCard from './_cards/manage-team';
-import NotSubscribedNotification from '@/components/pro/Notification/not-subscribed';
-import { Subscribed } from '@/components/pro/SubscriptionStatus';
-import { createNhostClient } from '@/utils/nhost';
-import { getTeamMembers } from '@/server-actions/get-team-members';
+import NotSubscribedNotification from 'xy-shared/components/pro/Notification/not-subscribed';
+import { Subscribed } from 'xy-shared/components/pro/SubscriptionStatus';
+import { createNhostClient } from 'xy-shared/utils/nhost';
+import { getTeamMembers } from 'xy-shared/server-actions/get-team-members';
 
 export default async function TeamPage() {
   const nhost = await createNhostClient();

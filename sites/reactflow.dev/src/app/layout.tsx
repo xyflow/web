@@ -5,10 +5,10 @@ import reactFlowPackageJson from '@xyflow/react/package.json';
 import { generateRootMetadata, getLastChangelog, TOC } from 'xy-shared/server';
 import { Fathom, Search } from 'xy-shared';
 import { defaultFooterCategories, Footer as XYFooter, LogoLabel } from 'xy-shared';
-import NavMenu from '@/components/pro/Navigation/NavMenu';
+import NavMenu from 'xy-shared/components/pro/Navigation/NavMenu';
 import { Html } from '@/components/html.client';
 import { normalizePageMap } from '@/utils/page-map';
-import { SubscriptionProvider } from '@/components/pro/Providers';
+import { SubscriptionProvider } from 'xy-shared/components/pro/Providers';
 import './global.css';
 
 export const metadata = generateRootMetadata('React Flow', {

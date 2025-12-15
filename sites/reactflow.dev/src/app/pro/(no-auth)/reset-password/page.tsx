@@ -1,4 +1,4 @@
-import { ResetPassword, AuthFormWrapper } from '@/components/pro/AuthForms';
+import { ResetPassword, AuthFormWrapper } from 'xy-shared/components/pro/AuthForms';
 
 const authFormLinks = [{ href: '/pro/sign-in', label: 'Back to login' }];
 

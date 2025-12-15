@@ -1,6 +1,6 @@
 import { FAQ, reactFlowProFaqItems } from 'xy-shared';
-import DashboardHeader from '@/components/pro/DashboardHeader';
-import PricingTable from '@/components/pro/PricingTable';
+import DashboardHeader from 'xy-shared/components/pro/DashboardHeader';
+import PricingTable from 'xy-shared/components/pro/PricingTable';
 import { NextraMetadata } from 'nextra';
 
 export const metadata: NextraMetadata = {

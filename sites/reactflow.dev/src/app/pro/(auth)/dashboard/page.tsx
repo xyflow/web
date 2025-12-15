@@ -1,6 +1,6 @@
-import SubscriptionFeature from '@/components/pro/SubscriptionFeature';
+import SubscriptionFeature from 'xy-shared/components/pro/SubscriptionFeature';
 import { SubscriptionPlan } from 'xy-shared';
-import DashboardHeader from '@/components/pro/DashboardHeader';
+import DashboardHeader from 'xy-shared/components/pro/DashboardHeader';
 import { FC } from 'react';
 
 const OverviewPage: FC = () => {
