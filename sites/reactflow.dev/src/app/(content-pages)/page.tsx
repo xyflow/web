@@ -19,7 +19,7 @@ import {
 import { getLastChangelog } from 'xy-shared/server';
 import { fetchGitHubNpmStats, InternalRoute } from '@/utils';
 import ClientLogos from '@/components/client-logos';
-import WhatsNewPreview from '@/components/whats-new-preview';
+import WhatsNewPreview from 'xy-shared/components/whats-new-preview';
 
 export const revalidate = 3600; // 60 * 60
 

@@ -31,11 +31,7 @@ export const BarChart = ({
     (d) => d.name,
   );
   const yScale = useMemo(() => {
-    return d3
-      .scaleBand()
-      .domain(groups)
-      .range([0, boundsHeight])
-      .padding(BAR_PADDING);
+    return d3.scaleBand().domain(groups).range([0, boundsHeight]).padding(BAR_PADDING);
   }, [data, height]);
 
   // X axis

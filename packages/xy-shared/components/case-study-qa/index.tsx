@@ -1,4 +1,4 @@
-import { Text, cn } from 'xy-shared';
+import { Text, cn } from '../../';
 
 type CaseStudyQAProps = {
   question: string;

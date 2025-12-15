@@ -5,7 +5,7 @@ import { ReactFlow, Background, Node, ReactFlowProvider } from '@xyflow/react';
 import { ArrowDownIcon, ArrowRightIcon } from '@heroicons/react/20/solid';
 import { Button, Emoji, Link, Text } from 'xy-shared';
 
-import { BarChart } from '@/components/bar-chart';
+import { BarChart } from './bar-chart';
 import { FocusParams, useFocus } from './flow/hooks';
 import { nodeTypes, section, project, action, chatBubble } from './flow/nodes';
 import { edgeTypes, focusEdge } from './flow/edges';

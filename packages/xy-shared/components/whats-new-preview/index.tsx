@@ -1,9 +1,9 @@
-import { Text, cn } from 'xy-shared';
-import { AuthorList, TimeAgo } from 'xy-shared';
+import { Text, cn } from '../../';
+import { AuthorList, TimeAgo } from '../../';
 import Link from 'next/link';
 import { ArrowRightCircleIcon } from '@heroicons/react/20/solid';
 import { MdxFile } from 'nextra';
-import { WhatsNewItemFrontMatter } from 'xy-shared/server';
+import { WhatsNewItemFrontMatter } from '../../server';
 
 export type WhatsNewPreviewProps = {
   items: MdxFile<WhatsNewItemFrontMatter>[];
