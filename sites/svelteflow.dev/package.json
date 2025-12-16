@@ -20,6 +20,7 @@
     "@xyflow/system": "catalog:",
     "@xyflow/svelte": "catalog:",
     "xy-shared": "workspace:*",
+    "@nhost/nhost-js": "^4.1.0",
     "fast-xml-parser": "^5.2.1",
     "next": "catalog:",
     "next-sitemap": "catalog:",

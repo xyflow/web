@@ -137,15 +137,6 @@ const metaRecord = {
       'quote-request': {
         display: 'hidden',
       },
-      'case-studies': {
-        display: 'hidden',
-        theme: {
-          layout: 'full',
-          toc: false,
-          sidebar: false,
-          breadcrumb: false,
-        },
-      },
     },
   },
   // 3. Hidden Routes from Navigation
