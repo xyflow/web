@@ -78,7 +78,6 @@ React Flow uses a [Zustand store](https://github.com/pmndrs/zustand) internally
 to manage the state of flows. Ideally, you would want to define your store logic
 in a way that is decoupled from rendering logic.
 
-
 To implement multiplayer collaboration, we recommend using a Zustand store to
 manage the nodes and edges in the flow, and passing them to the React Flow
 component, as well as storing additional state that you want to sync between
@@ -91,14 +90,9 @@ the [Zustand documentation](https://zustand.docs.pmnd.rs/guides/slices-pattern).
 
 Instances of the React Flow component, expect to receive two array props:
 `nodes` and `edges`, and various callback props to let you intercept and add
-custom functionality when users interact with the flow. 
-
-When you use custom callbacks such as `onNodesChange`, `onEdgesChange`, or
-`onConnect`, React Flow expects you to **apply the changes** to the store after
-you have added your custom logic.  (TODO: some solutions might not require to
-directly apply the changes to the store, but to apply mutations to the shared
-data structures, and then expect the solutions to be directly derived from a
-reactive query.)
+custom functionality when users interact with the flow. An important remark is
+that **React Flow** maintains and accesses **fields in node and edges state that
+you do not want to sync between clients.** These fields are client-only specific.
 
 When you are **syncing nodes**, we recommend to sync at least the node's `id`,
 `position`, size (`width` and `height`), `data` and `dragging`. You can
@@ -111,6 +105,29 @@ selected both nodes on their devices, which was clearly not the case. You can
 safely **sync edges** by syncing their `id`, `source`, `target`, `sourceHandle`,
 `targetHandle`, `type`, and so on, and as with nodes, we **recommend to not sync
 the `selected` prop**.
+
+Here is a table summarizing the fields that you should not sync between clients:
+
+| Field | Node | Edge | Sync? | Reason |
+|-------|------|------|-------|--------|
+| `selected` | ✅ | ✅ | ❌ | Per-user UI state |
+| `measured` | ✅ | ❌ | ❌ | Computed from DOM |
+| `dragging` | ✅ | ❌ | ❌ | Transient interaction state |
+| `resizing` | ✅ | ❌ | ❌ | Transient interaction state |
+| `id` | ✅ | ✅ | ✅ | Core data that should be shared |
+| `data` | ✅ | ✅ | ✅ | Core data that should be shared |
+| `position` | ✅ | ✅ | ✅ | Core data that should be shared |
+| `selectable` | ✅ | ✅ | ✅ | Core data that should be shared |
+| `width`, `height` | ✅ | ✅ | ✅ | Core data that should be shared |
+
+When you use custom callbacks such as `onNodesChange`, `onEdgesChange`, or
+`onConnect`, React Flow expects you to **apply the changes** to the store after
+you have added your custom logic.  (TODO: some solutions might not require to
+directly apply the changes to the store, but to apply mutations to the shared
+data structures, and then expect the solutions to be directly derived from a
+reactive query.)
+
+
 
 TODO: you must implement these functions in your store logic:
 - onNodesChange
