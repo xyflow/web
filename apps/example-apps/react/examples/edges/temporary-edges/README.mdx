@@ -25,10 +25,10 @@ We've defined a `useIncompleteEdge` hook that encapsulates the logic for creatin
 and managing a "ghost node". It returns a number of event handlers intended to be
 passed to the `<ReactFlow />` component.
 
-- [`onConnect`](/api-reference/react-flow#on-connect) is called when a complete
+- [`onConnect`](/api-reference/react-flow#onconnect) is called when a complete
   connection is made.
 
-- [`onConnectEnd`](/api-reference/react-flow#on-connect-end) is called when the
+- [`onConnectEnd`](/api-reference/react-flow#onconnectend) is called when the
   user releases a connection line. The second `connectionState` param can be used
   to determine if the connection was successful or not and where it started
   (and ended if the connection is valid). This callback creates a ghost node and a
@@ -36,10 +36,10 @@ passed to the `<ReactFlow />` component.
   edge is marked as `reconnectable` so that the user can pick it back up and
   complete the connection.
 
-- [`onReconnect`](/api-reference/react-flow#on-reconnect) is called when a complete
+- [`onReconnect`](/api-reference/react-flow#onreconnect) is called when a complete
   reconnection is made.
 
-- [`onReconnectEnd`](/api-reference/react-flow#on-reconnect-start) is called when
+- [`onReconnectEnd`](/api-reference/react-flow#onreconnectstart) is called when
   the user releases a reconnection line. This callback removes the ghost node and
   temporary edge. A new one may be added back when `onConnectEnd` is called.
 

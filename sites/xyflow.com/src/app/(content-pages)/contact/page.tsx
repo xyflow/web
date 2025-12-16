@@ -5,6 +5,7 @@ import { Card, Input, InputLabel, Text } from '@xyflow/xy-ui';
 import { BaseLayout, ContactForm, Hero } from 'xy-shared';
 import { FC } from 'react';
 import { Metadata } from 'next';
+import { submitContact } from '@/actions/contact';
 
 export const metadata: Metadata = {
   title: 'Contact Us',
@@ -19,7 +20,7 @@ const Page: FC = () => {
         align="center"
         kicker="Contact Us"
         kickerIcon={<EnvelopeIcon />}
-        title="We're happy to answer any questions you have"
+        title="We’re happy to answer any questions you have."
         subtitle="Messages go to our email inbox and we aim to respond within a couple of days."
       />
       <Card className="relative mt-16 md:mt-32 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 p-2 md:p-4">
@@ -31,7 +32,7 @@ const Page: FC = () => {
           }}
         />
         <Card className="p-8 bg-white relative">
-          <ContactForm>
+          <ContactForm action={submitContact}>
             <InputLabel>
               <span>Your Email</span>
               <Input name="email" type="email" required variant="square" />
@@ -68,11 +69,7 @@ const Page: FC = () => {
 
           <div className="divide-y divide-gray-200">
             {externalLinks.map(({ name, href }) => (
-              <Link
-                key={name}
-                className="group flex justify-between py-4"
-                href={href}
-              >
+              <Link key={name} className="group flex justify-between py-4" href={href}>
                 <Text size="sm" className="group-hover:underline">
                   {name}
                 </Text>
@@ -99,7 +96,5 @@ const externalLinks = [
   { name: 'Discord', href: 'https://discord.com/invite/RVmnytFmGW' },
   { name: 'Twitter', href: 'https://twitter.com/xyflowdev' },
 ];
-
-const toFormName = (name: string) => name.toLowerCase().replace(' ', '-');
 
 export default Page;
