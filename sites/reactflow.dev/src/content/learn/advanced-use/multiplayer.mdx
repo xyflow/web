@@ -21,33 +21,74 @@ collaboration in your React Flow application, focusing mainly on **the
 high-level application logic** you need to implement.
 
 We will answer the following questions:
+- What is multiplayer? A few words about live updates, local first, and CRDTs?
 - What React Flow state should I sync with the backend?
-- What can be safely persisted in a database, and what should be broadcasted to
-  other clients?
+- Consolidating shared and local state.
 - How to handle conflicts when multiple clients try to update the same state?
 - How to display the collaboration state to the users?
 - What libraries or data structures to use for realtime collaboration?
 
-## High Level Architecture 
+## What is multiplayer?
+
+A **multiplayer application** is an application that allows multiple users to
+interact with the same data. In a multiplayer application, the data is most
+commonly stored on a server and share between all users. In most multiplayer
+applications, the data is updated in realtime. **Live updates** are a concept
+orthogonal to multiplayer, and can be implemented with or without multiplayer.
+Live updates are the process of updating the data on the client in realtime, and
+is usually achieved with a [websocket
+connection](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket) to the
+server. Modern multiplayer applications combine both live updates and
+multiplayer interaction. *You want multiple users interacting with the same data
+in realtime, and seeing each other's changes.*
+
+Lately, there has been a trend on building multiplayer application with a
+**Local First** approach, meaning that the *client is Send and receive messages
+to connected clients.the source of truth for the data*, and the server can only
+used to sync the data between clients. In a multiplayer or P2P application
+context, the data is thus replicated between all clients. The pro, is that an
+user can work offline, and when their client reconnects, the data is synced with
+the server and other users. This introduces a challenge: *how to handle
+conflicts when multiple clients try to update the same state?*. The conflict
+resolution logic for a multiplayer, realtime, local first application is
+absolutely **a non-trivial task**.
+
+This is where **Conflict Free Replicated Data Types** (CRDTs) come to the
+rescue! CRDTs are a popular data structure for local first applications, and can
+help you achieve realtime collaboration without having to implement conflict
+resolution logic manually.
+
+CRDTs trade some complexity for availability: they simplify conflict resolution
+and offline collaboration, but require careful design to ensure that merge
+functions and operations preserve the necessary properties.
+
+Some modern multiplayer solutions, like [Yjs](https://github.com/yjs/yjs), and
+[Jazz](https://jazz.tools), use a CRDT to achieve realtime collaboration. You
+can treat CRDT-backed structures as having an intrinsic notion of mutation: each
+update you perform on the CRDT is already a well-defined, conflict-free
+operation.
+
+
+## Multiplayer React Flow: High level architecture 
+
+Let's briefly discuss what you need to implement for adding multiplayer
+collaboration to your React Flow application:
 
 As seen in our [State Management](/learn/advanced-use/state-management) guide,
 React Flow uses a [Zustand store](https://github.com/pmndrs/zustand) internally
-to manage the state of flows. To implement multiplayer collaboration, we
-recommend using a Zustand store to manage the nodes and edges in the flow, and
-passing them to the React Flow component, as well as storing additional state
-that you want to sync between clients connected to the same multiplayer flow. To
-achieve modularity Zustand allows you to split the application store into
-smaller chunks, each responsible for a specific part of the application state.
-You can read more about slices in the [Zustand
-documentation](https://zustand.docs.pmnd.rs/guides/slices-pattern).
+to manage the state of flows. Ideally, you would want to define your store logic
+in a way that is decoupled from rendering logic.
 
-We recommend using the following slices for multiplayer:
-- `flow` slice responsible for the nodes and edges in the flow.
-- `cursor` slice responsible for syncing the users' cursor positions.
-- `connection` slice responsible to draw the incomplete connections between
-  nodes.
 
-## State Management - The Flow Slice 
+To implement multiplayer collaboration, we recommend using a Zustand store to
+manage the nodes and edges in the flow, and passing them to the React Flow
+component, as well as storing additional state that you want to sync between
+clients connected to the same multiplayer flow. To achieve modularity Zustand
+allows you to split the application store into smaller chunks, each responsible
+for a specific part of the application state. You can read more about slices in
+the [Zustand documentation](https://zustand.docs.pmnd.rs/guides/slices-pattern).
+
+### The MultiplayerFlow State: Syncing nodes and edges
 
 Instances of the React Flow component, expect to receive two array props:
 `nodes` and `edges`, and various callback props to let you intercept and add
@@ -55,149 +96,60 @@ custom functionality when users interact with the flow.
 
 When you use custom callbacks such as `onNodesChange`, `onEdgesChange`, or
 `onConnect`, React Flow expects you to **apply the changes** to the store after
-you have added your custom logic. It is thus a good pattern to store the nodes
-and edges in the `flow` slice, together with the callbacks definitions, so that
-they can access the `set` and `get` functions that Zustand provides when
-creating a store or slice.
+you have added your custom logic.  (TODO: some solutions might not require to
+directly apply the changes to the store, but to apply mutations to the shared
+data structures, and then expect the solutions to be directly derived from a
+reactive query.)
 
-The goal is to be able to define your store logic in a way that is decoupled
-from rendering logic.
-
-Here is an example of the `flow` slice. This is where you will want to add your
-multiplayer-related code. We will see how to add multiplayer logic to this slice
-in the next sections.
-```tsx
-import type { StateCreator } from "zustand";
-import {
-  applyNodeChanges,
-  applyEdgeChanges,
-  addEdge,
-  type Edge,
-  type OnConnect,
-  type OnEdgesChange,
-  type OnNodesChange,
-} from "@xyflow/react";
-
-// You should define the store type combining all different slices of your app
-// import type { Store } from "./";
-
-
-export interface FlowSlice {
-  nodes: Node[];
-  edges: Edge[];
-  onNodesChange: OnNodesChange;
-  onEdgesChange: OnEdgesChange;
-  onConnect: OnConnect;
-  addNode: (node: Omit<Node, "id">) => void;
-  addEdge: (edge: Omit<Edge, "id">) => void;
-  updateNodeData: (nodeId: string, newData: Node["data"]) => void;
-}
-
-export const createFlowSlice: StateCreator<Store, [], [], FlowSlice> = (
-  set,
-  get
-) => {
-  return {
-    nodes: [],
-    edges: [],
-    onNodesChange: (changes) => {
-      set({
-        nodes: applyNodeChanges(changes, get().nodes),
-      });
-    },
-    onEdgesChange: (changes) => {
-      set({
-        edges: applyEdgeChanges(changes, get().edges),
-      });
-    },
-    onConnect: (connection) => {
-      set({
-        edges: addEdge(connection, get().edges),
-      });
-    },
-    addNode: (node) => {
-      set({
-        nodes: [...get().nodes, { ...node, id: crypto.randomUUID() }],
-      });
-    },
-    addEdge: (edge) => {
-      set({
-        edges: [...get().edges, { ...edge, id: crypto.randomUUID() }],
-      });
-    },
-    updateNodeData: (nodeId, newData) => {
-      set({
-        nodes: get().nodes.map((node) =>
-          node.id === nodeId
-            ? { ...node, data: { ...node.data, ...newData } }
-            : node
-        ),
-      });
-    },
-  };
-};
-```
-
-## What to sync or not to sync? 
-
-You can confidently sync whenever an user adds a node or an edge, inside of
-`addNode` or `addEdge`, `onConnect`. 
-
-### Syncing nodes
-
-When you are syncing nodes, we recommend to sync at least the node's `id`,
+When you are **syncing nodes**, we recommend to sync at least the node's `id`,
 `position`, size (`width` and `height`), `data` and `dragging`. You can
 additionally sync properties of a node like `selectable`, `disabled`, `dragging`
-and others, **but we recommend to not sync the `selected` property**: If Bob and
-Alice are connected to the same flow on two different devices, Bob selects a
-node, and Alice selects another node, Bob will see Alice's node selected, and
-Alice will see Bob's node selected, as if they both selected both nodes on their
-devices, which was clearly not the case.
+and others, **but we recommend to not sync the `selected` and `measured`
+property**: If Bob and Alice are connected to the same flow on two different
+devices, Bob selects a node, and Alice selects another node, Bob will see
+Alice's node selected, and Alice will see Bob's node selected, as if they both
+selected both nodes on their devices, which was clearly not the case. You can
+safely **sync edges** by syncing their `id`, `source`, `target`, `sourceHandle`,
+`targetHandle`, `type`, and so on, and as with nodes, we **recommend to not sync
+the `selected` prop**.
 
-If you want to display what other users connected to the same flow are doing,
-such as mouse cursors, selection states or new incompleted edges, we recommend
-**creating a custom Zustand slice** for each feature, for example:
 
-- A slice storing and syncing a list of `(x,y)` positions for each connected
-user to display their mouse cursor
-- Another slice storing a list of which nodes each user has selected, without
-  syncing the main nodes `selected` property.
 
-In the end, you should be able to create custom components such as [custom
-nodes](/learn/customization/custom-nodes) that *consume your Zustand store* and
-render a different UI for synced state.
+TODO: you must implement these functions in your store logic:
+- onNodesChange
+- onEdgesChange
+- onConnect
+- addNode
+- addEdge
+- updateNodeData
 
-For example, for displaying if another user has selected one or more nodes,
-instead of syncing the `selected` prop (for the reasons discussed above), you
-may want to implement a component wrapping node components and displaying an
-outer glow with the color assigned to the different user.
+you must then provide react flow with nodes and edges array
 
-### Syncing edges
 
-You can safely sync edges by syncing their `id`, `source`, `target`,
-`sourceHandle`, `targetHandle`, `type`, and so on, and as with nodes, we
-**recommend to not sync the `selected` prop**.
+### Cursors, presence and incomplete connections
 
-Additionally, if you want to display the incomplete connections between nodes,
-in other workds new edges being created, connected to a single handle and
-"dangling" from an user's mouse cursor, you should store the incomplete
-connections in a separate slice, and sync them to other clients via ephemeral
-broadcasting, and not persist them in the database.
+To improve the UX of your multiplayer application, you may want to store and
+sync an additional list of users connected to the flow, their mouse cursor
+positions, and the incomplete connections (edges) that they are dragging between
+nodes. Many existing solutions provide presence features for rooms, which you
+can use to retrieve the list of users connected to the flow. 
 
-### Syncing cursors
-
-To sync mouse cursors, we recommend using a custom Zustand slice that stores an
-array of cursor objects, each containing the user's id, position, dragging
-state, and color. When an user connects to a flow, you should add their cursor
-to the array, and when an user leaves the flow, you should remove their cursor
-from the array.
-
-When an user moves their own mouse cursor, you should update the cursor position
-and broadcast the update to other clients, so they can display the cursor in
-their UI. To avoid sending too many updates to the backend, you should throttle
-the cursor updates (we had success with 64ms) , and you can use a library like
+Syncing the cursor position between clients is simple, but you should avoid
+storing it permanently, and to  avoid sending too many updates to the backend,
+and to save bandwidth and processing power you should throttle the cursor
+updates (we had success with 64ms). You can use a library like
 [perfect-cursors](https://github.com/steveruizok/perfect-cursors) to smooth the
-cursor movements. 
+movements of other users' cursors when their position updates are received at a
+low frequency. A similar approach can be used for syncing the incomplete
+connections between nodes, or whiteboarding features.
+
+We recommend using a separate Zustand slice that stores an array of cursor
+objects, each containing the user's ID, position, dragging state, and color.
+When an user connects to a flow, you should add their cursor to the array, and
+when an user leaves the flow, you should remove their cursor from the array.
+
+
+
 
 ---
 
