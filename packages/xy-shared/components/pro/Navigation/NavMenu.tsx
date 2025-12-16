@@ -5,13 +5,17 @@ import { NavMenuNotLoggedIn } from './NavMenuNotLoggedIn';
 import { NavMenuLoggedIn } from './NavMenuLoggedIn';
 import { useSubscription } from '../../../hooks';
 
-function NavMenu() {
+type NavMenuProps = {
+  siteName?: 'React Flow' | 'Svelte Flow';
+};
+
+function NavMenu({ siteName = 'React Flow' }: NavMenuProps) {
   const { isLoading, user, refetchUser } = useSubscription();
 
   return user && !isLoading ? (
     <NavMenuLoggedIn isLoading={isLoading} user={user} refetchUser={refetchUser} />
   ) : (
-    <NavMenuNotLoggedIn />
+    <NavMenuNotLoggedIn siteName={siteName} />
   );
 }
 

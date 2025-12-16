@@ -13,7 +13,11 @@ const buttonProps: ComponentProps<typeof Button> = {
   className: 'w-[80px] text-nowrap',
 };
 
-export function NavMenuNotLoggedIn() {
+type NavMenuNotLoggedInProps = {
+  siteName?: 'React Flow' | 'Svelte Flow';
+};
+
+export function NavMenuNotLoggedIn({ siteName = 'React Flow' }: NavMenuNotLoggedInProps) {
   const pathname = usePathname();
 
   return (
@@ -40,7 +44,7 @@ export function NavMenuNotLoggedIn() {
               <Button asChild className="px-4 flex gap-1">
                 <Link href="/pro">
                   <SparklesIcon height="16" />
-                  <span className="max-[1100px]:hidden">React Flow</span>
+                  <span className="max-[1100px]:hidden">{siteName}</span>
                   Pro
                 </Link>
               </Button>
