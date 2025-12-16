@@ -56,11 +56,10 @@ absolutely **a non-trivial task**.
 This is where **Conflict Free Replicated Data Types** (CRDTs) come to the
 rescue! CRDTs are a popular data structure for local first applications, and can
 help you achieve realtime collaboration without having to implement conflict
-resolution logic manually.
-
-CRDTs trade some complexity for availability: they simplify conflict resolution
-and offline collaboration, but require careful design to ensure that merge
-functions and operations preserve the necessary properties.
+resolution logic manually. CRDTs trade some complexity for availability: they
+simplify conflict resolution and offline collaboration, but require careful
+design to ensure that merge functions and operations preserve the necessary
+properties.
 
 Some modern multiplayer solutions, like [Yjs](https://github.com/yjs/yjs), and
 [Jazz](https://jazz.tools), use a CRDT to achieve realtime collaboration. You
@@ -88,7 +87,7 @@ allows you to split the application store into smaller chunks, each responsible
 for a specific part of the application state. You can read more about slices in
 the [Zustand documentation](https://zustand.docs.pmnd.rs/guides/slices-pattern).
 
-### The MultiplayerFlow State: Syncing nodes and edges
+###  Syncing nodes and edges
 
 Instances of the React Flow component, expect to receive two array props:
 `nodes` and `edges`, and various callback props to let you intercept and add
@@ -113,8 +112,6 @@ safely **sync edges** by syncing their `id`, `source`, `target`, `sourceHandle`,
 `targetHandle`, `type`, and so on, and as with nodes, we **recommend to not sync
 the `selected` prop**.
 
-
-
 TODO: you must implement these functions in your store logic:
 - onNodesChange
 - onEdgesChange
@@ -122,9 +119,6 @@ TODO: you must implement these functions in your store logic:
 - addNode
 - addEdge
 - updateNodeData
-
-you must then provide react flow with nodes and edges array
-
 
 ### Cursors, presence and incomplete connections
 
