@@ -2,12 +2,13 @@ import { Head } from 'nextra/components';
 import { Navbar as NextraNavbar } from 'nextra-theme-docs';
 import svelteFlowPackageJson from '@xyflow/svelte/package.json';
 import { generateRootMetadata, getLastChangelog, TOC } from 'xy-shared/server';
-import { Fathom, Search } from 'xy-shared';
+import { Fathom, Search, Link } from 'xy-shared';
 import { defaultFooterCategories, Footer as XYFooter, LogoLabel } from 'xy-shared';
 import NavMenu from 'xy-shared/components/pro/Navigation/NavMenu';
 import { Html } from 'xy-shared/components/html';
 import { SubscriptionProvider } from 'xy-shared/components/pro/Providers';
 import { getPageMap } from 'nextra/page-map';
+import { Banner } from 'nextra/components';
 
 import './global.css';
 
@@ -42,6 +43,16 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
       <body>
         <Fathom {...fathomOptions} />
         <SubscriptionProvider
+          banner={
+            <Banner storageKey="node-collisions">
+              <Link
+                className="hover:underline x:focus-visible:nextra-focus text-sm"
+                href="/examples/layout/node-collisions"
+              >
+                🚨 New Example: Handling Node Collisions!
+              </Link>
+            </Banner>
+          }
           darkMode={false}
           docsRepositoryBase="https://github.com/xyflow/web/tree/main/sites/svelteflow.dev"
           editLink="Edit this page on GitHub"
