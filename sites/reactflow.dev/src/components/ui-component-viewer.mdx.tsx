@@ -11,7 +11,7 @@ import {
 import { getPageMap } from 'nextra/page-map';
 import { Tabs as NextraTabs } from 'nextra/components';
 import { MDXRemote } from 'nextra/mdx-remote';
-import { fetchShadcnComponent } from '@/utils';
+import { fetchShadcnComponent } from 'xy-shared/utils/fetch-shadcn-component';
 import { FC } from 'react';
 import { useMDXComponents as getMDXComponents } from '@/mdx-components';
 
