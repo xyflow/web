@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Button, cn, Container, ContainerProps, Text } from '../../';
 import { useSubscription } from '../../hooks';
 import ProPlatformExampleViewer from '../../components/pro/ProExampleViewer';
-import { Framework } from '../../components/pro/ProExampleViewer/types';
+import { Framework } from '../../types';
 
 const ProExampleViewer: FC<{
   slug: string;
@@ -13,16 +13,17 @@ const ProExampleViewer: FC<{
   type?: 'example' | 'template';
   className?: string;
   innerClassName?: string;
-}> = ({ slug, variant = 'default', type = 'example' }) => {
+  framework: Framework;
+}> = ({ slug, variant = 'default', type = 'example', framework = 'react' }) => {
   const isLightMode = variant === 'default';
   const { isSubscribed } = useSubscription();
 
   if (isSubscribed) {
     return (
       <ProPlatformExampleViewer
-        frameworkId={Framework.REACT}
+        framework={framework}
         exampleId={slug}
-        config={{ type: 'example', id: slug, framework: Framework.REACT }}
+        config={{ type: 'example', id: slug, framework }}
       />
     );
   }
@@ -52,7 +53,7 @@ const ProExampleViewer: FC<{
 
       <div>
         <iframe
-          src={`${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${slug}`}
+          src={`${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${framework}/${slug}`}
           className="block h-[645px] w-full bg-white"
         />
       </div>

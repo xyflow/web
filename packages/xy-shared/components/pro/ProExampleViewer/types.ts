@@ -1,7 +1,3 @@
-export enum Framework {
-  REACT = 'react',
-}
-
 export type ProExampleVariant = {
   id: string;
   label: string;

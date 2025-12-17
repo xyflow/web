@@ -11,7 +11,8 @@ async function downloadProExample(req: Request, res: Response) {
     return res.status(500).send({ message: 'Bad request.' });
   }
 
-  const data = await redis.json.get(id, '$');
+  const redisKey = `@${framework}flow-pro/${id}`;
+  const data = await redis.json.get(redisKey, '$');
 
   if (!data || !data[0]) {
     return res.status(500).send({ message: 'Example does not exist.' });
@@ -23,7 +24,9 @@ async function downloadProExample(req: Request, res: Response) {
   const hasAccess = config.free || (await isSubscribed(userId));
 
   if (!hasAccess) {
-    return res.status(403).send({ message: 'You must be subscribed to access this example.' });
+    return res
+      .status(403)
+      .send({ message: 'You must be subscribed to access this example.' });
   }
 
   return res.status(200).json({ timestamp: Date.now(), files });

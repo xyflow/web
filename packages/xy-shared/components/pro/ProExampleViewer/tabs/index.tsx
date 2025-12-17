@@ -15,6 +15,7 @@ import {
   LockClosedIcon,
 } from '@heroicons/react/24/outline';
 import Loader from '../../Loader';
+import { Framework } from '../../../../types';
 
 const TabButton = (props) => {
   const isActive = props['data-state'] === 'active';
@@ -55,16 +56,18 @@ export default function ProExampleViewerTabs({
   files,
   isUnlocked,
   previewUrl,
+  framework = 'react',
 }: {
   exampleId: string;
   files: null | SandpackFiles;
   isUnlocked: boolean;
   previewUrl?: string;
+  framework?: Framework;
 }) {
   // @ts-expect-error
   const readme = files?.['/README.mdx']?.code || files?.['/README.md']?.code;
   const iframePreviewUrl =
-    previewUrl ?? `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${exampleId}`;
+    previewUrl ?? `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${framework}/${exampleId}`;
 
   return (
     <>
