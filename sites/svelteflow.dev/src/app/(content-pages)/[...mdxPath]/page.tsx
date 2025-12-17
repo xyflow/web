@@ -1,6 +1,6 @@
 import { generateStaticParamsFor, importPage } from 'nextra/pages';
 import { useMDXComponents as getMdxComponents } from '@/mdx-components';
-import { getWhatsNew } from '@/utils';
+import { getWhatsNew } from 'xy-shared/utils';
 import { normalizePages } from 'nextra/normalize-pages';
 import { BaseBlogPostLayout } from 'xy-shared';
 

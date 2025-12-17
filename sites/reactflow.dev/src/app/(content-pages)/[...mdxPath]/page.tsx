@@ -4,7 +4,7 @@ import { getPageMap } from 'nextra/page-map';
 import { BaseBlogPostLayout, CaseStudyLayoutWrapper } from 'xy-shared';
 
 import { useMDXComponents as getMdxComponents } from '@/mdx-components';
-import { getWhatsNew } from '@/utils';
+import { getWhatsNew } from 'xy-shared/utils';
 
 type Props = PageProps<'/[...mdxPath]'>;
 
