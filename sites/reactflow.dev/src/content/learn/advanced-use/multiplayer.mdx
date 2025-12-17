@@ -2,256 +2,120 @@
 description: Learn how to use React Flow with realtime multiplayer collaboration features.
 ---
 
-# Realtime Multiplayer Collaboration Best Practices
+# Multiplayer
 
-In our [Collaborative Flow Pro Example](/examples/interaction/collaborative), we
-show a realtime multiplayer collaboration flow using [React Flow](/) and
-[Yjs](https://github.com/yjs/yjs). While this is a great example, you may be
-wondering how to implement realtime multiplayer collaboration with React Flow
-and other libraries and backends.
+Node-based UIs are often used to create applications that are visual and explorative in
+their nature. For collaborative features, this usually means that there is no satisfying
+“middle-ground” solution like sparsely synchronising the state between users, because it
+would break visual consistency or make collaborative exploration more complicated. Often,
+a full live multiplayer system needs to be put in place.
 
-{/* TODO? Multiplayer done right is hard. Whenever you want to achieve
-persistence and realtime collaboration, you will need to handle conflicts when
-multiple clients try to update the same state, and the case where a client is
-offline and needs to catch up with the latest state when it comes back online.
-*/}
+## What are multiplayer applications?
 
-In this guide, we will explore some best practices for integrating multiplayer
-collaboration in your React Flow application, focusing mainly on **the
-high-level application logic** you need to implement.
+Although **realtime collaboration** would be the correct term here, we refer to it as
+**multiplayer**, which was most likely popularized by Figma. Besides being more intuitive
+for marketing purposes, it also does a better job of communicating the commitment to
+creating something truly realtime by putting it in the same category as competitive video
+games. So to figure out what degree of collaboration your application supports, you just
+need to look at how closely it resembles a multiplayer game. These features likely
+include:
 
-We will answer the following questions:
-- What is multiplayer? A few words about live updates, local first, and CRDTs?
-- What React Flow state should I sync with the backend?
-- Consolidating shared and local state.
-- How to handle conflicts when multiple clients try to update the same state?
-- How to display the collaboration state to the users?
-- What libraries or data structures to use for realtime collaboration?
+- No saving is required; all users share a persistent world
+- Any changes made by other users are immediately visible to you
+- Not only completed actions, but transitive states are synced too (e.g. dragging a node,
+  not only when the node is dropped)
+- You can see other users (e.g. their cursors or viewport positions)
 
-## What is multiplayer?
+## A word of caution
 
-A **multiplayer application** is an application that allows multiple users to
-interact with the same data. In a multiplayer application, the data is most
-commonly stored on a server and share between all users. In most multiplayer
-applications, the data is updated in realtime. **Live updates** are a concept
-orthogonal to multiplayer, and can be implemented with or without multiplayer.
-Live updates are the process of updating the data on the client in realtime, and
-is usually achieved with a [websocket
-connection](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket) to the
-server. Modern multiplayer applications combine both live updates and
-multiplayer interaction. *You want multiple users interacting with the same data
-in realtime, and seeing each other's changes.*
+Making multiplayer applications is hard! You always need some kind of sync engine that is
+able to merge any changes coming from the server (or other clients) into the (often
+optimistic) client state. You need to gracefully handle conflicts and disconnects. You
+need to build a reliable network layer.
 
-Lately, there has been a trend on building multiplayer application with a
-**Local First** approach, meaning that the *client is Send and receive messages
-to connected clients.the source of truth for the data*, and the server can only
-used to sync the data between clients. In a multiplayer or P2P application
-context, the data is thus replicated between all clients. The pro, is that an
-user can work offline, and when their client reconnects, the data is synced with
-the server and other users. This introduces a challenge: *how to handle
-conflicts when multiple clients try to update the same state?*. The conflict
-resolution logic for a multiplayer, realtime, local first application is
-absolutely **a non-trivial task**.
+Depending on how far you want to take handling conflicts and disconnects, you very quickly
+land in local-first (in other words:masochistic) territory. If you would like a good
+primer on this topic I recommend
+[Ink & Switchs' essay](https://www.inkandswitch.com/essay/local-first/) that coined the
+term.
 
-This is where **Conflict Free Replicated Data Types** (CRDTs) come to the
-rescue! CRDTs are a popular data structure for local first applications, and can
-help you achieve realtime collaboration without having to implement conflict
-resolution logic manually. CRDTs trade some complexity for availability: they
-simplify conflict resolution and offline collaboration, but require careful
-design to ensure that merge functions and operations preserve the necessary
-properties.
+## Sync or not to sync
 
-Some modern multiplayer solutions, like [Yjs](https://github.com/yjs/yjs), and
-[Jazz](https://jazz.tools), use a CRDT to achieve realtime collaboration. You
-can treat CRDT-backed structures as having an intrinsic notion of mutation: each
-update you perform on the CRDT is already a well-defined, conflict-free
-operation.
+Among your first considerations should be **how** you want to sync **what** parts of the
+local state.
 
+### Ephemral vs Durable
 
-## Multiplayer React Flow: High level architecture 
+While there are many ways to sync state between clients, we can categorize them into two
+groups: ephemral and atomic changes. Ephemral changes are not persisted and neither its
+consistency nor its correctness is very important for the functionality of the
+application. These are things like cursor or viewport positions or any transient
+interaction state. Missing some of these updates will not break anything and in case of a
+connection loss, a client can just listen for the newest changes and restore any lost
+functionality.
 
-Let's briefly discuss what you need to implement for adding multiplayer
-collaboration to your React Flow application:
+On the other hand, updates to the nodes & edges should be persistent and consistent!
+Imagine Client A deletes a node and Client B misses this update. Now if Client B would
+subsequently move the node, we'd have a big problem! For this kind of data we have to use
+a solution that handles disconnects more agressively and is able to discard impossible
+actions like moving a deleted node.
 
-As seen in our [State Management](/learn/advanced-use/state-management) guide,
-React Flow uses a [Zustand store](https://github.com/pmndrs/zustand) internally
-to manage the state of flows. Ideally, you would want to define your store logic
-in a way that is decoupled from rendering logic.
+### Local vs Synced
 
-To implement multiplayer collaboration, we recommend using a Zustand store to
-manage the nodes and edges in the flow, and passing them to the React Flow
-component, as well as storing additional state that you want to sync between
-clients connected to the same multiplayer flow. To achieve modularity Zustand
-allows you to split the application store into smaller chunks, each responsible
-for a specific part of the application state. You can read more about slices in
-the [Zustand documentation](https://zustand.docs.pmnd.rs/guides/slices-pattern).
+At the core of a multiplayer React Flow application is syncing the nodes & edges. However
+not all parts of the state should be synced. For instance, what nodes & edges are selected
+should be different for each client. Also there are some fields that are relevant for the
+certain library functions like `dragging`, `resizing` or `measured`.
 
-###  Syncing nodes and edges
+This is an overview of what part is recommended to sync and what not.
 
-Instances of the React Flow component, expect to receive two array props:
-`nodes` and `edges`, and various callback props to let you intercept and add
-custom functionality when users interact with the flow. An important remark is
-that **React Flow** maintains and accesses **fields in node and edges state that
-you do not want to sync between clients.** These fields are client-only specific.
+### Nodes
 
-When you are **syncing nodes**, we recommend to sync at least the node's `id`,
-`position`, size (`width` and `height`), `data` and `dragging`. You can
-additionally sync properties of a node like `selectable`, `disabled`, `dragging`
-and others, **but we recommend to not sync the `selected` and `measured`
-property**: If Bob and Alice are connected to the same flow on two different
-devices, Bob selects a node, and Alice selects another node, Bob will see
-Alice's node selected, and Alice will see Bob's node selected, as if they both
-selected both nodes on their devices, which was clearly not the case. You can
-safely **sync edges** by syncing their `id`, `source`, `target`, `sourceHandle`,
-`targetHandle`, `type`, and so on, and as with nodes, we **recommend to not sync
-the `selected` prop**.
+| Field             | Node | Edge | Durable | Ephemeral | Explanation                           |
+| ----------------- | ---- | ---- | ------- | --------- | ------------------------------------- |
+| `id`              | ✅   | ✅   | ✅      | ❌        | Important, always needs to be in-sync |
+| `type`            | ✅   | ✅   | ✅      | ❌        | Important, always needs to be in-sync |
+| `data`            | ✅   | ✅   | ✅      | ❌        | Important, always needs to be in-sync |
+| `position`        | ✅   | ✅   | ✅      | ✳️        | Important, includes transient state   |
+| `width`, `height` | ✅   | ✅   | ✅      | ✳️        | Important, includes transient state   |
+| `dragging`        | ✅   | ❌   | ❌      | ✅        | Transient interaction state           |
+| `resizing`        | ✅   | ❌   | ❌      | ✅        | Transient interaction state           |
+| `selected`        | ✅   | ✅   | ❌      | ❌        | Per-user UI state                     |
+| `measured`        | ✅   | ❌   | ❌      | ❌        | Computed from DOM                     |
 
-Here is a table summarizing the fields that you should not sync between clients:
+### Edges
 
-| Field | Node | Edge | Sync? | Reason |
-|-------|------|------|-------|--------|
-| `selected` | ✅ | ✅ | ❌ | Per-user UI state |
-| `measured` | ✅ | ❌ | ❌ | Computed from DOM |
-| `dragging` | ✅ | ❌ | ❌ | Transient interaction state |
-| `resizing` | ✅ | ❌ | ❌ | Transient interaction state |
-| `id` | ✅ | ✅ | ✅ | Core data that should be shared |
-| `data` | ✅ | ✅ | ✅ | Core data that should be shared |
-| `position` | ✅ | ✅ | ✅ | Core data that should be shared |
-| `selectable` | ✅ | ✅ | ✅ | Core data that should be shared |
-| `width`, `height` | ✅ | ✅ | ✅ | Core data that should be shared |
+| Field          | Node | Edge | Durable | Ephemeral | Explanation                           |
+| -------------- | ---- | ---- | ------- | --------- | ------------------------------------- |
+| `id`           | ✅   | ✅   | ✅      | ❌        | Important, always needs to be in-sync |
+| `type`         | ✅   | ✅   | ✅      | ❌        | Important, always needs to be in-sync |
+| `data`         | ✅   | ✅   | ✅      | ❌        | Important, always needs to be in-sync |
+| `source`       | ✅   | ✅   | ✅      | ❌        | Important, always needs to be in-sync |
+| `target`       | ✅   | ✅   | ✅      | ❌        | Important, always needs to be in-sync |
+| `sourceHandle` | ✅   | ✅   | ✅      | ❌        | Important, always needs to be in-sync |
+| `targetHandle` | ✅   | ✅   | ✅      | ❌        | Important, always needs to be in-sync |
+| `selected`     | ✅   | ✅   | ❌      | ❌        | Per-user UI state                     |
 
-When you use custom callbacks such as `onNodesChange`, `onEdgesChange`, or
-`onConnect`, React Flow expects you to **apply the changes** to the store after
-you have added your custom logic.  (TODO: some solutions might not require to
-directly apply the changes to the store, but to apply mutations to the shared
-data structures, and then expect the solutions to be directly derived from a
-reactive query.)
+### Connections
 
+Sharing the transient part of creating edges is possible by sharing each users
+[`connection`](https://reactflow.dev/api-reference/hooks/use-connection) a an ephemeral
+way.
 
+### Cursors
 
-TODO: you must implement these functions in your store logic:
-- onNodesChange
-- onEdgesChange
-- onConnect
-- addNode
-- addEdge
-- updateNodeData
+The cursors of each user can also be shared as ephemeral state. Just make sure you share
+the actual flow coordinates for mouse positions via `screenToFlowPosition`. You can use a
+library like [perfect-cursors](https://github.com/steveruizok/perfect-cursors) to smooth
+the movements of other users' cursors.
 
-### Cursors, presence and incomplete connections
+## Merge synced & unsynced state
 
-To improve the UX of your multiplayer application, you may want to store and
-sync an additional list of users connected to the flow, their mouse cursor
-positions, and the incomplete connections (edges) that they are dragging between
-nodes. Many existing solutions provide presence features for rooms, which you
-can use to retrieve the list of users connected to the flow. 
+One of the challenges you will most likely face is how to consolidate (in other words:
+merge) the synced and unsynced state. You want to have a set of nodes that are passed to
+React Flow where `measured` and `selected` can be present. At the same time you also want
+to merge in any changes that come from the server. As most solution don't provide any way
+to subscribe to patches only you are left with 2 sets of nodes & edges: one for the local
+state and one that comes from the server.
 
-Syncing the cursor position between clients is simple, but you should avoid
-storing it permanently, and to  avoid sending too many updates to the backend,
-and to save bandwidth and processing power you should throttle the cursor
-updates (we had success with 64ms). You can use a library like
-[perfect-cursors](https://github.com/steveruizok/perfect-cursors) to smooth the
-movements of other users' cursors when their position updates are received at a
-low frequency. A similar approach can be used for syncing the incomplete
-connections between nodes, or whiteboarding features.
-
-We recommend using a separate Zustand slice that stores an array of cursor
-objects, each containing the user's ID, position, dragging state, and color.
-When an user connects to a flow, you should add their cursor to the array, and
-when an user leaves the flow, you should remove their cursor from the array.
-
-
-
-
----
-
-
-Some solutions, like [Yjs](https://github.com/yjs/yjs), and
-[Jazz](https://jazz.tools), use a CRDT (Conflict-Free Replicated Data Type) to
-achieve realtime collaboration. You can treat CRDT-backed structures as having
-an intrinsic notion of mutation: each update you perform on the CRDT is already
-a well-defined, conflict-free operation. This means that you can broadcast the
-updates to other clients as soon as you perform the operation, and the other
-clients will be able to apply the update to their local state, resolving
-conflicts automatically.
-
-On the other hand, other solutions involving relational or object databases,
-like [Supabase](https://supabase.com), may not offer a CRDT-like functionality,
-and automatic conflict resolution. In this case, you will need to decide when to
-broadcast changes via realtime, a less expensive, ephemeral and faster
-operation, and when to commit them to the database, a more expensive, persistent
-and slower operation. This causes issues when you want to display the
-collaboration state to the users,
-
-
-TODO: write limitations of supabase
-
-
-## What solution to use for realtime collaboration?
-
-TODO: write about CRDT solutions (yjs, jazz)
-
-### Yjs
-
-
-
-### Jazz
-
-TODO: write about non-CRDT solutions (partykit) 
-
-### Supabase and direct SQL database pros and cons 
-
-Supabase Realtime is a great solution for some realtime collaboration tasks, but
-it has some limitations. We have implemented a solution that uses Supabase
-Realtime with React Flow and Zustand, and we have encountered various problems
-that need to be addressed individually by the application, while some other
-multiplayer solutions like Yjs and Jazz solve those hard synchronization issues
-automatically by design.
-
-#### Supabase Pros 
-
-**Persistence.** Supabase is a great solution for persistence, as data is
-automatically persisted to [Postgres](https://www.postgresql.org/), a mature and
-battle-tested relational database.
-
-**SQL querying.** If you are familiar with relational databases, you can use the
-full power of SQL to query the data. Complex views and queries are possible, and
-easy to implement, but usually, for flow based applications, you will not need
-to use the full power of SQL.
-
-In contrast, CRDT libraries often require you to implement your own persistence
-and querying logic, which can be a more complex task.
-
-#### Supabase Cons 
-
-**Manual conflict resolution required.** When multiple users edit the same node
-simultaneously, you must implement some form of conflict resolution manually. In
-contrast, CRDT libraries provide built-in conflict resolution logic.
-
-**Database operations are expensive. Broadcasting is cheaper.** This means that
-you will need to decide when to broadcast changes via realtime, and when to
-commit them to the database. If your application requires to sync high-frequency
-updates, such as text fields, you now have to decide when you want to broadcast
-the changes to other clients, and when you want to commit them to the database.
-CRDT libraries often provide multiplayer data structures that are optimized for
-such kind of high-frequency updates.
-
-**Offline edits are not supported.** Supabase does not support offline edits,
-and you need to detect when you lose connection to the server and implement a
-full state sync manually when you reconnect. This is a tedious task, and users,
-while they are editing the flow offline, want their changes to be uploaded to
-the server as soon as they regain connection, while receiving the changes from
-other users that were made while they were offline. Supabase broadcast messages
-are not ordered, and might be enqueued, while supabase postgres transactions are
-one-shot operations which might fail without a rollback mechanism or a message
-queuing system. This means that you will need to implement a custom transaction
-logic to ensure that the changes are applied in the correct order, and that the
-changes are not lost if the transactions fails.
-
-**Debugging difficulty.** When state gets out of sync, the above points make it
-harder to debug the synchronization logic, compared to CRDTs' built-in
-deterministic merge behavior.
-
-
-
-
-
+// TODO
