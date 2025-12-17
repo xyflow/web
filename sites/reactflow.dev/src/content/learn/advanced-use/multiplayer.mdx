@@ -88,7 +88,7 @@ the [Zustand documentation](https://zustand.docs.pmnd.rs/guides/slices-pattern).
 and are part of the client-only specific state.
 
 When you are **syncing nodes**, we recommend to sync at least the node's `id`,
-`position`, size (`width` and `height`), `data` and `dragging`. You can
+`position`, size (`width` and `height`), `data`. You can
 additionally sync properties of a node like `selectable`, `disabled`,
 and others, **but we recommend to not sync the `selected` and `measured`
 properties**: If Bob and Alice are connected to the same flow on two different
@@ -155,7 +155,4 @@ We recommend using a separate Zustand slice that stores an array of cursor
 objects, each containing the user's ID, position, dragging state, and color.
 When an user connects to a flow, you should add their cursor to the array, and
 when an user leaves the flow, you should remove their cursor from the array.
-
-
-
 
