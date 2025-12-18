@@ -11,7 +11,7 @@ const OverviewPage: FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-5 lg:gap-6">
           <SubscriptionFeature
             title="Pro Examples"
-            description="A continuously growing collection of advanced React Flow examples. During your subscription you can access the source code of all Pro examples."
+            description="A continuously growing collection of advanced Svelte Flow examples. During your subscription you can access the source code of all Pro examples."
             plans={[
               SubscriptionPlan.FREE,
               SubscriptionPlan.STARTER,
@@ -51,7 +51,7 @@ const OverviewPage: FC = () => {
 
           <SubscriptionFeature
             title="Onboarding Call"
-            description="Schedule a call with us to share what you're building with React Flow and how we can make the library even better."
+            description="Schedule a call with us to share what you're building with Svelte Flow and how we can make the library even better."
             plans={[
               SubscriptionPlan.STARTER,
               SubscriptionPlan.PRO,
@@ -66,7 +66,7 @@ const OverviewPage: FC = () => {
 
           <SubscriptionFeature
             title="Individual Support"
-            description="Your direct wire to the React Flow team. We will point you in the right direction if you encounter problems using React Flow."
+            description="Your direct wire to the xyflow team. We will point you in the right direction if you encounter problems using Svelte Flow."
             plans={[SubscriptionPlan.PRO, SubscriptionPlan.ENTERPRISE]}
             button={{ label: 'Get Support', href: '/pro/support' }}
           />

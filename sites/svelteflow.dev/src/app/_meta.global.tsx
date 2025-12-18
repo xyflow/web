@@ -106,7 +106,7 @@ const metaRecord = {
       },
       // Auth
       dashboard: <WithIcon icon={Squares2X2Icon}>Dashboard</WithIcon>,
-      support: <WithIcon icon={ChatBubbleLeftRightIcon}>Support</WithIcon>,
+
       team: <WithIcon icon={UsersIcon}>Team</WithIcon>,
       account: <WithIcon icon={Cog8ToothIcon}>Account</WithIcon>,
       subscribe: {
@@ -141,7 +141,6 @@ const metaRecord = {
   },
   // 3. Hidden Routes from Navigation
   index: { display: 'hidden' },
-  'support-us': { display: 'hidden' },
   'whats-new': { display: 'hidden' },
   'developer-survey-2024': {
     display: 'hidden',

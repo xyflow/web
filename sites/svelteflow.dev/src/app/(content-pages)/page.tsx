@@ -138,11 +138,11 @@ const Page: FC = async () => {
             },
             { label: 'License', value: 'MIT' },
           ]}
-          description="Svelte Flow is a MIT-licensed open source library. You can help us to ensure the further development and maintenance by supporting us."
-          link="/support-us"
+          description="Svelte Flow is a MIT-licensed open source library. You can help us to ensure the further development and maintenance by subscribing to React Flow Pro."
+          link="/pro"
           linkLabel={
             <>
-              <HeartIcon className="w-5 h-5 mr-1" /> Support Us
+              <SparklesIcon className="w-5 h-5 mr-1" /> Svelte Flow Pro
             </>
           }
         />
