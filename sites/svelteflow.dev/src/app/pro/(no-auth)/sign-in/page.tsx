@@ -9,7 +9,7 @@ const authFormLinks = [{ href: '/pro/sign-up', label: "Don't have an account? Si
 
 const SignInEmailPasswordPage = () => {
   return (
-    <AuthFormWrapper links={authFormLinks} title="Sign In">
+    <AuthFormWrapper library="svelte" links={authFormLinks} title="Sign In">
       <SignInEmailPassword />
     </AuthFormWrapper>
   );

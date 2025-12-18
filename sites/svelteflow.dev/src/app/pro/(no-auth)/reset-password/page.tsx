@@ -7,6 +7,7 @@ const ResetPasswordPage = () => {
     <AuthFormWrapper
       title="Reset Password"
       description="Enter your email to reset your password."
+      library="svelte"
       links={authFormLinks}
       showOAuth={false}
       showHero={false}

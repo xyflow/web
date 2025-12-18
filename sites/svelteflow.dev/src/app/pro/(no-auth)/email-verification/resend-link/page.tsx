@@ -6,6 +6,7 @@ import {
 const ResendVerificationLinkPage = () => {
   return (
     <AuthFormWrapper
+      library="svelte"
       title="Resend Verification Link"
       description="Enter your email to send a new verification link."
       showOAuth={false}

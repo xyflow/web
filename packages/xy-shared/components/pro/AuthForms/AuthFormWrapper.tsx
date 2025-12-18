@@ -21,6 +21,7 @@ type AuthFormWrapperProps = {
   showHero?: boolean;
   title?: ReactNode;
   description?: ReactNode;
+  library?: 'react' | 'svelte';
 };
 
 const AuthFormWrapper = ({
@@ -30,7 +31,9 @@ const AuthFormWrapper = ({
   showHero = true,
   title = null,
   description = null,
+  library = 'react',
 }: AuthFormWrapperProps) => {
+  const libraryName = library === 'react' ? 'React Flow' : 'Svelte Flow';
   return (
     <>
       <Suspense fallback={null}>
@@ -41,10 +44,10 @@ const AuthFormWrapper = ({
           <div className="hidden lg:block flex-1 max-w-xl mt-6 relative p-4">
             <Heading className="mb-4 font-black">
               Build Better Node-Based UIs with{' '}
-              <span className="text-primary">React Flow</span>
+              <span className="text-primary">{libraryName}</span>
             </Heading>
             <Text size="lg">
-              By subscribing to React Flow Pro you are securing the maintenance and
+              By subscribing to {libraryName} Pro you are securing the maintenance and
               development of our open source libraries.
             </Text>
           </div>

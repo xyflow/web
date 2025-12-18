@@ -7,6 +7,7 @@ const authFormLinks = [
 const SignUpPage = () => {
   return (
     <AuthFormWrapper
+      library="svelte"
       links={authFormLinks}
       title="Sign Up"
       description="Enter your email and password to create an account."
