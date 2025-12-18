@@ -48,7 +48,7 @@ export default function SvelteFlowPro() {
       <PricingTable library="svelte" className="mt-6 lg:mt-10" />
 
       <FAQ items={svelteFlowProFaqItems} className="mt-32"></FAQ>
-      <SubscribeSection btnLink="/pro/sign-up" btnLabel="Sign Up Now" />
+      <SubscribeSection btnLink="/pro/sign-up" btnLabel="Sign Up Now" library="svelte" />
     </BaseLayout>
   );
 }
