@@ -15,6 +15,7 @@ import { TooltipProvider } from '../ui/tooltip';
 
 import Plan from './subscription-plan';
 import defaultConfig from './default-config';
+import svelteConfig from './svelte-config';
 import {
   Currency,
   BillingInterval,
@@ -25,15 +26,19 @@ import {
 
 const PricingTable = ({
   className,
-  plans = defaultConfig,
+  library = 'react',
+  plans,
   isSignedIn = false,
   onSelect,
 }: {
   className?: string;
+  library?: 'react' | 'svelte';
   plans?: SubscriptionPlan[];
   onSelect?: OnSelectCurrenty;
   isSignedIn?: boolean;
 }) => {
+  // Use library-specific config if plans not provided
+  const selectedPlans = plans ?? (library === 'svelte' ? svelteConfig : defaultConfig);
   const [billingInterval, setBillingInterval] = useState<BillingInterval>(
     BillingInterval.MONTH,
   );
@@ -101,7 +106,7 @@ const PricingTable = ({
 
         <Container className="relative z-1">
           <div className={`grid grid-cols-1 lg:grid-cols-3 gap-0`}>
-            {plans.map((plan) => (
+            {selectedPlans.map((plan) => (
               <Plan
                 {...plan}
                 buttonLabel={isSignedIn ? plan.buttonLabelSignedId : plan.buttonLabel}
