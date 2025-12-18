@@ -3,13 +3,13 @@ import { type FAQItem } from '..';
 
 const items: FAQItem[] = [
   {
-    question: <>Is Svelte Pro Pro a different library than Svelte Pro?</>,
+    question: <>Is Svelte Flow Pro a different library than Svelte Flow?</>,
     answer: (
       <>
-        &quot;Svelte Pro Pro&quot; is not an additional library, but instead a paid
+        &quot;Svelte Flow Pro&quot; is not an additional library, but instead a paid
         service built around the open-source{' '}
         <Link variant="primary" href="https://github.com/xyflow/xyflow">
-          Svelte Pro library
+          Svelte Flow library
         </Link>
         . When subscribed, you get access to Pro Content like advanced examples and
         templates which are built on top of the open-source library.
@@ -32,12 +32,12 @@ const items: FAQItem[] = [
     ),
   },
   {
-    question: <>Can I get a free trial of Svelte Pro Pro?</>,
+    question: <>Can I get a free trial of Svelte Pro?</>,
     answer: (
       <>
         When you{' '}
         <Link variant="primary" href="https://pro.reactflow.dev/signup">
-          create a Svelte Pro Pro account
+          create a Svelte Pro account
         </Link>
         , you can log in to the pro platform and access the Helper Lines pro example for
         free. If you subscribe, you can access all of the pro examples.
@@ -111,10 +111,10 @@ const items: FAQItem[] = [
     ),
   },
   {
-    question: <>Can your team build a custom Svelte Pro app for us?</>,
+    question: <>Can your team build a custom Svelte Flow app for us?</>,
     answer: (
       <>
-        We have project partners who would be happy to help build your custom Svelte Pro
+        We have project partners who would be happy to help build your custom Svelte Flow
         app.{' '}
         <Link variant="primary" href="https://xyflow.com/contact" target="_blank">
           Contact us
@@ -142,23 +142,25 @@ const items: FAQItem[] = [
     answer: (
       <>
         After unsubscribing, you will no longer be able to access the Pro Example code
-        through our website. You will still be able to use Svelte Pro as usual and
+        through our website. You will still be able to use Svelte Flow as usual and
         continue receiving updates to the library. You can continue using the Pro Example
         code in your projects, even if you&apos;re no longer a subscriber.
       </>
     ),
   },
   {
-    question: <>Can I use Svelte Pro for my commercial project without a subscription?</>,
+    question: (
+      <>Can I use Svelte Flow for my commercial project without a subscription?</>
+    ),
     answer: (
       <>
-        Yes. The Svelte Pro library is under an{' '}
+        Yes. The Svelte Flow library is under an{' '}
         <Link variant="primary" href="https://github.com/xyflow/xyflow/blob/main/LICENSE">
           MIT License
         </Link>
-        . We rely on the support of commercial organizations and projects to keep React
+        . We rely on the support of commercial organizations and projects to keep Svelte
         Flow maintained and consistently updated. If your organization is able to afford a
-        subscription, we would recommend it in order to make sure Svelte Pro and its
+        subscription, we would recommend it in order to make sure Svelte Flow and its
         ecosystem continue to be a reliable resource.
       </>
     ),
