@@ -43,6 +43,7 @@ export * from './components/ui/content-grid';
 export * from './components/ui/emoji';
 export * from './components/faq';
 export { default as reactFlowProFaqItems } from './components/faq/items/react-flow-pro';
+export { default as svelteFlowProFaqItems } from './components/faq/items/svelte-flow-pro';
 export * from './components/footer';
 export * from './components/ui/heading';
 export * from './components/ui/input';

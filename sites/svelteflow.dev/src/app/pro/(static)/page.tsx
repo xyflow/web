@@ -1,4 +1,4 @@
-import { PricingTable, Section, FAQ, reactFlowProFaqItems } from 'xy-shared';
+import { PricingTable, Section, FAQ, svelteFlowProFaqItems } from 'xy-shared';
 import { BaseLayout, Hero, SubscribeSection, LiteYouTubeEmbed } from 'xy-shared';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 
@@ -47,18 +47,7 @@ export default function SvelteFlowPro() {
 
       <PricingTable className="mt-6 lg:mt-10" />
 
-      <Section className="relative z-1">
-        {/* <ClientLogos title="Svelte Flow Pro is used by" /> */}
-      </Section>
-
-      <FAQ items={reactFlowProFaqItems} className="mt-32">
-        <LiteYouTubeEmbed
-          id="jm_UoZXEEnU"
-          title="Svelte Flow Pro plans"
-          style={{ aspectRatio: '16 / 9', width: '100%' }}
-          poster="sddefault"
-        />
-      </FAQ>
+      <FAQ items={svelteFlowProFaqItems} className="mt-32"></FAQ>
       <SubscribeSection btnLink="/pro/sign-up" btnLabel="Sign Up Now" />
     </BaseLayout>
   );
