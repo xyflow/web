@@ -1,0 +1,105 @@
+---
+description: Learn how to use React Flow with realtime multiplayer collaboration features.
+---
+
+# Multiplayer
+
+Node-based UIs are often used to create applications that are visual and explorative in
+their nature. For collaborative features, this usually means that there is no satisfying
+“middle-ground” solution like sparsely synchronising the state between users, because it
+would break visual consistency or make collaborative exploration more complicated. Often,
+a full live multiplayer system needs to be put in place.
+
+In our [Collaborative Flow Pro Example](/examples/interaction/collaborative), we
+show a realtime multiplayer collaboration flow using [React Flow](/) and
+[Yjs](https://github.com/yjs/yjs).
+In this guide, we will explore some best practices for integrating multiplayer
+collaboration in your React Flow application, focusing mainly on **the
+high-level application logic** you need to implement.
+
+{/* TODO: Link to section */}
+
+We will answer the following questions:
+- What are multiplayer applications? A few words about live updates, local first, and CRDTs
+- To sync or not to sync? What React Flow state should I sync with the backend?
+- Consolidating shared and local state.
+- How to handle conflicts when multiple clients try to update the same state?
+- How to display the collaboration state to the users?
+- What libraries or data structures to use for realtime collaboration?
+
+
+## What are multiplayer applications?
+
+Although **realtime collaboration** would be the correct term here, we refer to it as
+**multiplayer**, which was most likely popularized by Figma. Besides being more intuitive
+for marketing purposes, it also does a better job of communicating the commitment to
+creating something truly realtime by putting it in the same category as competitive video
+games. So to figure out what degree of collaboration your application supports, you just
+need to look at how closely it resembles a multiplayer game. These features likely
+include:
+
+- No manual saving is required; all users share a world where actions are persisted.
+- Any changes made by other users are immediately visible to you.
+- Not only completed actions, but transitive states are synced too (e.g. dragging a node,
+  not only when the node is dropped).
+- You can see other users (e.g. their cursors or viewport positions)
+
+### A word of caution
+
+Making multiplayer applications is hard! When users are collaboratively editing
+shared objects, conflicts, delays, connection drops and concurrent operations
+are expected. The hardest challenge in multiplayer apps is
+**conflict-resolution**: you always need some kind of sync engine that is able
+to merge any changes coming from the server (or other clients) into the (often
+optimistic) client state. You need to gracefully handle conflicts and
+disconnects. You need to build a reliable network layer.
+
+The simplest sync engine for multiplayer would be a "first-come-first-served"
+approach, and failed requests and messages sent being ignored. If you
+try to manually handle this, you will see a quite vast variety of edge
+cases emerge. Networks are slow, clients disconnect, and the order of actions
+matters.
+
+### Local-first and CRDTs
+
+Depending on how far you want to take handling conflicts and disconnects, you
+very quickly land in **local-first** territory: multi-replica synced data
+structures that can work completely offline, and automatically upload, fetch,
+and reconcile their state on reconnection.
+
+If you would like a good primer on this topic we recommend [Ink & Switchs'
+essay](https://www.inkandswitch.com/essay/local-first/) that coined the term.
+
+**Local-first**  multiplayer applications have been trendy lately: many
+famous multiplayer solutions, like [Yjs](https://github.com/yjs/yjs), and
+[Jazz](https://jazz.tools), use **Conflict Free Replicated Data Types** (CRDTs)
+to achieve realtime collaboration.
+
+CRDT-backed structures solve the conflict and disconnects by having an intrinsic
+notion of mutation and conflict resolution: each update you perform on the CRDT
+is an algebraically well-defined, conflict-free operation that can be combined with the
+others independently of when it was applied. With this approach, the *client is
+the source of truth for the data*, which is *replicated* across all the different
+machines, along with a history of the operations.
+
+
+##  What React Flow state should I sync?
+
+Among your first considerations should be **how** you want to sync **what** parts of the
+local state of your app.
+
+### Ephemeral vs Durable
+
+While there are many ways to sync state between clients, we can categorize them into two
+groups: ephemeral and atomic changes. Ephemeral changes are not persisted and neither its
+consistency nor its correctness is very important for the functionality of the
+application. These are things like cursor or viewport positions or any transient
+interaction state. Missing some of these updates will not break anything and in case of a
+connection loss, a client can just listen for the newest changes and restore any lost
+functionality.
+
+On the other hand, updates to the nodes & edges should be persistent and consistent!
+Imagine Client A deletes a node and Client B misses this update. Now if Client B would
+subsequently move the node, we'd have a big problem! For this kind of data we have to use
+a solution that handles disconnects more agressively and is able to discard impossible
+actions like moving a deleted node.

@@ -1,0 +1,121 @@
+---
+description: Learn how to use React Flow with realtime multiplayer collaboration features.
+---
+
+# Multiplayer
+
+Node-based UIs are often used to create applications that are visual and explorative in
+their nature. For collaborative features, this usually means that there is no satisfying
+“middle-ground” solution like sparsely synchronising the state between users, because it
+would break visual consistency or make collaborative exploration more complicated. Often,
+a full live multiplayer system needs to be put in place.
+
+## What are multiplayer applications?
+
+Although **realtime collaboration** would be the correct term here, we refer to it as
+**multiplayer**, which was most likely popularized by Figma. Besides being more intuitive
+for marketing purposes, it also does a better job of communicating the commitment to
+creating something truly realtime by putting it in the same category as competitive video
+games. So to figure out what degree of collaboration your application supports, you just
+need to look at how closely it resembles a multiplayer game. These features likely
+include:
+
+- No saving is required; all users share a persistent world
+- Any changes made by other users are immediately visible to you
+- Not only completed actions, but transitive states are synced too (e.g. dragging a node,
+  not only when the node is dropped)
+- You can see other users (e.g. their cursors or viewport positions)
+
+## A word of caution
+
+Making multiplayer applications is hard! You always need some kind of sync engine that is
+able to merge any changes coming from the server (or other clients) into the (often
+optimistic) client state. You need to gracefully handle conflicts and disconnects. You
+need to build a reliable network layer.
+
+Depending on how far you want to take handling conflicts and disconnects, you very quickly
+land in local-first (in other words:masochistic) territory. If you would like a good
+primer on this topic I recommend
+[Ink & Switchs' essay](https://www.inkandswitch.com/essay/local-first/) that coined the
+term.
+
+## Sync or not to sync
+
+Among your first considerations should be **how** you want to sync **what** parts of the
+local state.
+
+### Ephemral vs Durable
+
+While there are many ways to sync state between clients, we can categorize them into two
+groups: ephemral and atomic changes. Ephemral changes are not persisted and neither its
+consistency nor its correctness is very important for the functionality of the
+application. These are things like cursor or viewport positions or any transient
+interaction state. Missing some of these updates will not break anything and in case of a
+connection loss, a client can just listen for the newest changes and restore any lost
+functionality.
+
+On the other hand, updates to the nodes & edges should be persistent and consistent!
+Imagine Client A deletes a node and Client B misses this update. Now if Client B would
+subsequently move the node, we'd have a big problem! For this kind of data we have to use
+a solution that handles disconnects more agressively and is able to discard impossible
+actions like moving a deleted node.
+
+### Local vs Synced
+
+At the core of a multiplayer React Flow application is syncing the nodes & edges. However
+not all parts of the state should be synced. For instance, what nodes & edges are selected
+should be different for each client. Also there are some fields that are relevant for the
+certain library functions like `dragging`, `resizing` or `measured`.
+
+This is an overview of what part is recommended to sync and what not.
+
+### Nodes
+
+| Field             | Node | Edge | Durable | Ephemeral | Explanation                           |
+| ----------------- | ---- | ---- | ------- | --------- | ------------------------------------- |
+| `id`              | ✅   | ✅   | ✅      | ❌        | Important, always needs to be in-sync |
+| `type`            | ✅   | ✅   | ✅      | ❌        | Important, always needs to be in-sync |
+| `data`            | ✅   | ✅   | ✅      | ❌        | Important, always needs to be in-sync |
+| `position`        | ✅   | ✅   | ✅      | ✳️        | Important, includes transient state   |
+| `width`, `height` | ✅   | ✅   | ✅      | ✳️        | Important, includes transient state   |
+| `dragging`        | ✅   | ❌   | ❌      | ✅        | Transient interaction state           |
+| `resizing`        | ✅   | ❌   | ❌      | ✅        | Transient interaction state           |
+| `selected`        | ✅   | ✅   | ❌      | ❌        | Per-user UI state                     |
+| `measured`        | ✅   | ❌   | ❌      | ❌        | Computed from DOM                     |
+
+### Edges
+
+| Field          | Node | Edge | Durable | Ephemeral | Explanation                           |
+| -------------- | ---- | ---- | ------- | --------- | ------------------------------------- |
+| `id`           | ✅   | ✅   | ✅      | ❌        | Important, always needs to be in-sync |
+| `type`         | ✅   | ✅   | ✅      | ❌        | Important, always needs to be in-sync |
+| `data`         | ✅   | ✅   | ✅      | ❌        | Important, always needs to be in-sync |
+| `source`       | ✅   | ✅   | ✅      | ❌        | Important, always needs to be in-sync |
+| `target`       | ✅   | ✅   | ✅      | ❌        | Important, always needs to be in-sync |
+| `sourceHandle` | ✅   | ✅   | ✅      | ❌        | Important, always needs to be in-sync |
+| `targetHandle` | ✅   | ✅   | ✅      | ❌        | Important, always needs to be in-sync |
+| `selected`     | ✅   | ✅   | ❌      | ❌        | Per-user UI state                     |
+
+### Connections
+
+Sharing the transient part of creating edges is possible by sharing each users
+[`connection`](https://reactflow.dev/api-reference/hooks/use-connection) a an ephemeral
+way.
+
+### Cursors
+
+The cursors of each user can also be shared as ephemeral state. Just make sure you share
+the actual flow coordinates for mouse positions via `screenToFlowPosition`. You can use a
+library like [perfect-cursors](https://github.com/steveruizok/perfect-cursors) to smooth
+the movements of other users' cursors.
+
+## Merge synced & unsynced state
+
+One of the challenges you will most likely face is how to consolidate (in other words:
+merge) the synced and unsynced state. You want to have a set of nodes that are passed to
+React Flow where `measured` and `selected` can be present. At the same time you also want
+to merge in any changes that come from the server. As most solution don't provide any way
+to subscribe to patches only you are left with 2 sets of nodes & edges: one for the local
+state and one that comes from the server.
+
+// TODO

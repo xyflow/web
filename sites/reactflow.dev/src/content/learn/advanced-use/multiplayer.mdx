@@ -43,15 +43,14 @@ multiplayer interaction. *You want multiple users interacting with the same data
 in realtime, and seeing each other's changes.*
 
 Lately, there has been a trend on building multiplayer application with a
-**Local First** approach, meaning that the *client is Send and receive messages
-to connected clients.the source of truth for the data*, and the server can only
-used to sync the data between clients. In a multiplayer or P2P application
-context, the data is thus replicated between all clients. The pro, is that an
-user can work offline, and when their client reconnects, the data is synced with
-the server and other users. This introduces a challenge: *how to handle
-conflicts when multiple clients try to update the same state?*. The conflict
-resolution logic for a multiplayer, realtime, local first application is
-absolutely **a non-trivial task**.
+**Local First** approach, meaning that the *client is the source of truth for
+the data*, and the server can only used to sync the data between clients. In a
+multiplayer or P2P application context, the data is thus replicated between all
+clients. The pro, is that an user can work offline, and when their client
+reconnects, the data is synced with the server and other users. This introduces
+a challenge: *how to handle conflicts when multiple clients try to update the
+same state?*. The conflict resolution logic for a multiplayer, realtime, local
+first application is absolutely **a non-trivial task**.
 
 This is where **Conflict Free Replicated Data Types** (CRDTs) come to the
 rescue! CRDTs are a popular data structure for local first applications, and can
