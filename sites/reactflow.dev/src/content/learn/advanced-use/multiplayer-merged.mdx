@@ -90,16 +90,74 @@ local state of your app.
 
 ### Ephemeral vs Durable
 
-While there are many ways to sync state between clients, we can categorize them into two
-groups: ephemeral and atomic changes. Ephemeral changes are not persisted and neither its
-consistency nor its correctness is very important for the functionality of the
-application. These are things like cursor or viewport positions or any transient
-interaction state. Missing some of these updates will not break anything and in case of a
-connection loss, a client can just listen for the newest changes and restore any lost
-functionality.
+While there are many ways to sync state between clients, we can categorize them
+into two groups: ephemeral and atomic changes. **Ephemeral changes are not
+persisted** and neither its consistency nor its correctness is very important
+for the functionality of the application. These are things like cursor or
+viewport positions or any transient interaction state. Missing some of these
+updates will not break anything and in case of a connection loss, a client can
+just listen for the newest changes and restore any lost functionality.
 
-On the other hand, updates to the nodes & edges should be persistent and consistent!
-Imagine Client A deletes a node and Client B misses this update. Now if Client B would
-subsequently move the node, we'd have a big problem! For this kind of data we have to use
-a solution that handles disconnects more agressively and is able to discard impossible
-actions like moving a deleted node.
+On the other hand, **updates to the nodes & edges should be persistent and
+consistent!** Imagine if Alice deletes a node and Bob misses this update. Now if
+Bob subsequently moves the node, we would have an inconsistent application
+state. For this kind of data we have to use a solution that handles disconnects
+more agressively and is able to discard impossible actions like moving a deleted
+node.
+
+
+At the core of a multiplayer React Flow application is syncing the nodes & edges. However
+not all parts of the state should be synced. For instance, what nodes & edges are selected
+should be different for each client. Also there are some fields that are relevant for the
+certain library functions like `dragging`, `resizing` or `measured`.
+
+This is an overview of what parts are recommended to sync and what not.
+
+### Nodes
+
+| Field             | Durable | Ephemeral | Explanation                           |
+| ----------------- | ------- | --------- | ------------------------------------- |
+| `id`              | ✅      | ❌        | Important, always needs to be in-sync |
+| `type`            | ✅      | ❌        | Important, always needs to be in-sync |
+| `data`            | ✅      | ❌        | Important, always needs to be in-sync |
+| `position`        | ✅      | ✳️        | Important, includes transient state   |
+| `width`, `height` | ✅      | ✳️        | Important, includes transient state   |
+| `dragging`        | ❌      | ✅        | Transient interaction state           |
+| `resizing`        | ❌      | ✅        | Transient interaction state           |
+| `selected`        | ❌      | ❌        | Per-user UI state                     |
+| `measured`        | ❌      | ❌        | Computed from DOM                     |
+
+### Edges
+
+| Field          | Durable | Ephemeral | Explanation                           |
+| -------------- | ------- | --------- | ------------------------------------- |
+| `id`           | ✅      | ❌        | Important, always needs to be in-sync |
+| `type`         | ✅      | ❌        | Important, always needs to be in-sync |
+| `data`         | ✅      | ❌        | Important, always needs to be in-sync |
+| `source`       | ✅      | ❌        | Important, always needs to be in-sync |
+| `target`       | ✅      | ❌        | Important, always needs to be in-sync |
+| `sourceHandle` | ✅      | ❌        | Important, always needs to be in-sync |
+| `targetHandle` | ✅      | ❌        | Important, always needs to be in-sync |
+| `selected`     | ❌      | ❌        | Per-user UI state                     |
+
+### Unfinished Connections
+
+Sharing the transient part of creating edges is possible by sharing each users
+[`connection`](https://reactflow.dev/api-reference/hooks/use-connection) a an ephemeral
+way.
+
+### Cursors
+
+The cursors of each user can also be shared as ephemeral state. Just make sure you share
+the actual flow coordinates for mouse positions via `screenToFlowPosition`. You can use a
+library like [perfect-cursors](https://github.com/steveruizok/perfect-cursors) to smooth
+the movements of other users' cursors.
+
+## Merge synced & unsynced state
+
+One of the challenges you will most likely face is how to consolidate (in other words:
+merge) the synced and unsynced state. You want to have a set of nodes that are passed to
+React Flow where `measured` and `selected` can be present. At the same time you also want
+to merge in any changes that come from the server. As most solution don't provide any way
+to subscribe to patches only you are left with 2 sets of nodes & edges: one for the local
+state and one that comes from the server.
