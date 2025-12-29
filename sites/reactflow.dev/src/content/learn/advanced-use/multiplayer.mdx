@@ -2,156 +2,343 @@
 description: Learn how to use React Flow with realtime multiplayer collaboration features.
 ---
 
-# Realtime Multiplayer Collaboration Best Practices
+import { Callout } from 'nextra/components';
+
+# Multiplayer
+
+Node-based UIs are often used to create applications that are visual and explorative in
+their nature. For collaborative features, this usually means that there is no satisfying
+“middle-ground” solution like sparsely synchronising the state between users, because it
+would break visual consistency or make collaborative exploration more complicated. Often,
+a full live multiplayer system needs to be put in place.
 
 In our [Collaborative Flow Pro Example](/examples/interaction/collaborative), we
 show a realtime multiplayer collaboration flow using [React Flow](/) and
-[Yjs](https://github.com/yjs/yjs). While this is a great example, you may be
-wondering how to implement realtime multiplayer collaboration with React Flow
-and other libraries and backends.
-
-{/* TODO? Multiplayer done right is hard. Whenever you want to achieve
-persistence and realtime collaboration, you will need to handle conflicts when
-multiple clients try to update the same state, and the case where a client is
-offline and needs to catch up with the latest state when it comes back online.
-*/}
-
+[Yjs](https://github.com/yjs/yjs).
 In this guide, we will explore some best practices for integrating multiplayer
 collaboration in your React Flow application, focusing mainly on **the
 high-level application logic** you need to implement.
 
+{/* TODO: Link to section */}
+
 We will answer the following questions:
-- What is multiplayer? A few words about live updates, local first, and CRDTs?
-- What React Flow state should I sync with the backend?
+- What are multiplayer applications? A few words about live updates, local first, and CRDTs
+- To sync or not to sync? What React Flow state should I sync with the backend?
 - Consolidating shared and local state.
 - How to handle conflicts when multiple clients try to update the same state?
 - How to display the collaboration state to the users?
 - What libraries or data structures to use for realtime collaboration?
 
-## What is multiplayer?
 
-A **multiplayer application** is an application that allows multiple users to
-interact with the same data. In a multiplayer application, the data is most
-commonly stored on a server and share between all users. In most multiplayer
-applications, the data is updated in realtime. **Live updates** are a concept
-orthogonal to multiplayer, and can be implemented with or without multiplayer.
-Live updates are the process of updating the data on the client in realtime, and
-is usually achieved with a [websocket
-connection](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket) to the
-server. Modern multiplayer applications combine both live updates and
-multiplayer interaction. *You want multiple users interacting with the same data
-in realtime, and seeing each other's changes.*
+## What are multiplayer applications?
 
-Lately, there has been a trend on building multiplayer application with a
-**Local First** approach, meaning that the *client is the source of truth for
-the data*, and the server can only used to sync the data between clients. In a
-multiplayer or P2P application context, the data is thus replicated between all
-clients. The pro, is that an user can work offline, and when their client
-reconnects, the data is synced with the server and other users. This introduces
-a challenge: *how to handle conflicts when multiple clients try to update the
-same state?*. The conflict resolution logic for a multiplayer, realtime, local
-first application is absolutely **a non-trivial task**.
+Although **realtime collaboration** would be the correct term here, we refer to it as
+**multiplayer**, which was most likely popularized by Figma. Besides being more intuitive
+for marketing purposes, it also does a better job of communicating the commitment to
+creating something truly realtime by putting it in the same category as competitive video
+games. So to figure out what degree of collaboration your application supports, you just
+need to look at how closely it resembles a multiplayer game. These features likely
+include:
 
-This is where **Conflict Free Replicated Data Types** (CRDTs) come to the
-rescue! CRDTs are a popular data structure for local first applications, and can
-help you achieve realtime collaboration without having to implement conflict
-resolution logic manually. CRDTs trade some complexity for availability: they
-simplify conflict resolution and offline collaboration, but require careful
-design to ensure that merge functions and operations preserve the necessary
-properties.
+- No manual saving is required; all users share a world where actions are persisted.
+- Any changes made by other users are immediately visible to you.
+- Not only completed actions, but transitive states are synced too (e.g. dragging a node,
+  not only when the node is dropped).
+- You can see other users (e.g. their cursors or viewport positions)
 
-Some modern multiplayer solutions, like [Yjs](https://github.com/yjs/yjs), and
-[Jazz](https://jazz.tools), use a CRDT to achieve realtime collaboration. You
-can treat CRDT-backed structures as having an intrinsic notion of mutation: each
-update you perform on the CRDT is already a well-defined, conflict-free
-operation.
+### A word of caution
 
+Making multiplayer applications is hard! When users are collaboratively editing
+shared objects, conflicts, delays, connection drops and concurrent operations
+are expected. The hardest challenge in multiplayer apps is
+**conflict-resolution**: you always need some kind of sync engine that is able
+to merge any changes coming from the server (or other clients) into the (often
+optimistic) client state. You need to gracefully handle conflicts and
+disconnects. You need to build a reliable network layer.
 
-## Multiplayer React Flow: High level architecture 
+The simplest sync engine for multiplayer would be a "first-come-first-served"
+approach, and failed requests and messages sent being ignored. If you
+try to manually handle this, you will see a quite vast variety of edge
+cases emerge. Networks are slow, clients disconnect, and the order of actions
+matters.
 
-Let's briefly discuss what you need to implement for adding multiplayer
-collaboration to your React Flow application:
+### Local-first and CRDTs
 
-As seen in our [State Management](/learn/advanced-use/state-management) guide,
-React Flow uses a [Zustand store](https://github.com/pmndrs/zustand) internally
-to manage the state of flows. Ideally, you would want to define your store logic
-in a way that is decoupled from rendering logic. To achieve modularity Zustand
-allows you to split the application store into smaller chunks, each responsible
-for a specific part of the application state. You can read more about slices in
-the [Zustand documentation](https://zustand.docs.pmnd.rs/guides/slices-pattern).
+Depending on how far you want to take handling conflicts and disconnects, you
+very quickly land in **local-first** territory: multi-replica synced data
+structures that can work completely offline, and automatically upload, fetch,
+and reconcile their state on reconnection.
 
-###  Syncing nodes and edges
+If you would like a good primer on this topic we recommend [Ink & Switchs'
+essay](https://www.inkandswitch.com/essay/local-first/) that coined the term.
 
+**Local-first**  multiplayer applications have been trendy lately: many
+famous multiplayer solutions, like [Yjs](https://github.com/yjs/yjs), and
+[Jazz](https://jazz.tools), use **Conflict Free Replicated Data Types** (CRDTs)
+to achieve realtime collaboration.
 
-**React Flow nodes and edges have properties that you do not want to sync between multiplayer clients,** 
-and are part of the client-only specific state.
-
-When you are **syncing nodes**, we recommend to sync at least the node's `id`,
-`position`, size (`width` and `height`), `data`. You can
-additionally sync properties of a node like `selectable`, `disabled`,
-and others, **but we recommend to not sync the `selected` and `measured`
-properties**: If Bob and Alice are connected to the same flow on two different
-devices, Bob selects a node, and Alice selects another node, Bob will see
-Alice's node selected, and Alice will see Bob's node as selected, as if both of them
-did select both nodes on their devices, which was clearly not the case. 
-
-Analogously you can safely **sync edges** by syncing their `id`, `source`,
-`target`, `sourceHandle`, `targetHandle`, `type`, and so on, and as with nodes,
-we **recommend to not sync the `selected` prop**.
-
-Here is a table summarizing which fields are **safe to sync** vs. **keep client-side**:
-
-| Field | Sync Node | Sync Edge | Reason |
-|-------|-----------|-----------|--------|
-| `selected` | ❌ | ❌ | Per-user UI state |
-| `measured` | ❌ | N/A | Computed from DOM |
-| `dragging` | ❌ | N/A | Transient interaction state |
-| `resizing` | ❌ | N/A | Transient interaction state |
-| `id` | ✅ | ✅ | Core identifier to share |
-| `type` | ✅| ✅ | Node and edge type |
-| `data` | ✅ | ✅ | Core shared data |
-| `selectable` | ✅ | ✅ | Shared interaction capability |
-| `position` | ✅ | N/A | Node layout position |
-| `width`, `height` | ✅ | N/A | Node size |
-| `source`, `target` | N/A| ✅ | Core edge node identifiers |
-| `sourceHandle`, `targetHandle` | N/A| ✅ | Edge handle identifiers |
-
-When you use custom callbacks such as `onNodesChange`, `onEdgesChange`, or
-`onConnect`, React Flow expects you to **apply the changes** to the store after
-you have added your custom logic.  (TODO: some solutions might not require to
-directly apply the changes to the store, but to apply mutations to the shared
-data structures, and then expect the solutions to be directly derived from a
-reactive query.)
+CRDT-backed structures solve the conflict and disconnects by having an intrinsic
+notion of mutation and conflict resolution: each update you perform on the CRDT
+is an algebraically well-defined, conflict-free operation that can be combined with the
+others independently of when it was applied. With this approach, the *client is
+the source of truth for the data*, which is *replicated* across all the different
+machines, along with a history of the operations.
 
 
+##  What React Flow state should I sync?
 
-TODO: you must implement these functions in your store logic:
-- onNodesChange
-- onEdgesChange
-- onConnect
-- addNode
-- addEdge
-- updateNodeData
+Among your first considerations should be **how** you want to sync **what** parts of the
+local state of your app.
 
-### Cursors, presence and incomplete connections
+### Ephemeral vs Durable
 
-To improve the UX of your multiplayer application, you may want to store and
-sync an additional list of users connected to the flow, their mouse cursor
-positions, and the incomplete connections (edges) that they are dragging between
-nodes. Many existing solutions provide presence features for rooms, which you
-can use to retrieve the list of users connected to the flow. 
+While there are many ways to sync state between clients, we can categorize them
+into two groups: ephemeral and atomic changes. **Ephemeral changes are not
+persisted** and neither its consistency nor its correctness is very important
+for the functionality of the application. These are things like cursor or
+viewport positions or any transient interaction state. Missing some of these
+updates will not break anything and in case of a connection loss, a client can
+just listen for the newest changes and restore any lost functionality.
 
-Syncing the cursor position between clients is simple, but you should avoid
-storing it permanently, and to  avoid sending too many updates to the backend,
-and to save bandwidth and processing power you should throttle the cursor
-updates (we had success with 64ms). You can use a library like
-[perfect-cursors](https://github.com/steveruizok/perfect-cursors) to smooth the
-movements of other users' cursors when their position updates are received at a
-low frequency. A similar approach can be used for syncing the incomplete
-connections between nodes, or whiteboarding features.
+On the other hand, **updates to the nodes & edges should be persistent and
+consistent!** Imagine if Alice deletes a node and Bob misses this update. Now if
+Bob subsequently moves the node, we would have an inconsistent application
+state. For this kind of data we have to use a solution that handles disconnects
+more agressively and is able to discard impossible actions like moving a deleted
+node.
 
-We recommend using a separate Zustand slice that stores an array of cursor
-objects, each containing the user's ID, position, dragging state, and color.
-When an user connects to a flow, you should add their cursor to the array, and
-when an user leaves the flow, you should remove their cursor from the array.
+At the core of a multiplayer React Flow application is syncing the nodes & edges. However
+not all parts of the state should be synced. For instance, what nodes & edges are selected
+should be different for each client. Also there are some fields that are relevant for the
+certain library functions like `dragging`, `resizing` or `measured`.
+
+This is an overview of what parts are recommended to sync and what not.
+
+### Nodes
+
+| Field             | Durable | Ephemeral | Explanation                           |
+| ----------------- | ------- | --------- | ------------------------------------- |
+| `id`              | ✅      | ❌        | Important, always needs to be in-sync |
+| `type`            | ✅      | ❌        | Important, always needs to be in-sync |
+| `data`            | ✅      | ❌        | Important, always needs to be in-sync |
+| `position`        | ✅      | ✳️        | Important, includes transient state   |
+| `width`, `height` | ✅      | ✳️        | Important, includes transient state   |
+| `dragging`        | ❌      | ✅        | Transient interaction state           |
+| `resizing`        | ❌      | ✅        | Transient interaction state           |
+| `selected`        | ❌      | ❌        | Per-user UI state                     |
+| `measured`        | ❌      | ❌        | Computed from DOM                     |
+
+### Edges
+
+| Field          | Durable | Ephemeral | Explanation                           |
+| -------------- | ------- | --------- | ------------------------------------- |
+| `id`           | ✅      | ❌        | Important, always needs to be in-sync |
+| `type`         | ✅      | ❌        | Important, always needs to be in-sync |
+| `data`         | ✅      | ❌        | Important, always needs to be in-sync |
+| `source`       | ✅      | ❌        | Important, always needs to be in-sync |
+| `target`       | ✅      | ❌        | Important, always needs to be in-sync |
+| `sourceHandle` | ✅      | ❌        | Important, always needs to be in-sync |
+| `targetHandle` | ✅      | ❌        | Important, always needs to be in-sync |
+| `selected`     | ❌      | ❌        | Per-user UI state                     |
+
+### Unfinished Connections and Cursors
+
+Sharing the transient part of creating edges is possible by sharing each users
+[`connection`](https://reactflow.dev/api-reference/hooks/use-connection) a an ephemeral
+way. The cursors of each user can also be shared as ephemeral state. Just make sure you share
+the actual flow coordinates for mouse positions via `screenToFlowPosition`. You can use a
+library like [perfect-cursors](https://github.com/steveruizok/perfect-cursors) to smooth
+the movements of other users' cursors. Both can be shared as ephemeral state.
+
+## Merge synced & unsynced state
+
+One of the challenges you will most likely face is how to consolidate (in other
+words: merge) the synced and unsynced (local) state. You want to have a local
+set of nodes that are passed to React Flow where `measured` and `selected` can
+be present, and `selected` can be different for nodes in each client. At the
+same time you also want to merge in any changes that come from the server. As
+most solution don't provide any way to subscribe to patches only you are left
+with 2 sets of nodes & edges: one for the local state and one that comes from
+the server.
+
+In your application store, we will thus need to keep track of: 
+
+- The **local** set of nodes & edges, which will be passed directly to React
+  Flow to render. These are regular objects, and are not synced to the backend. We hold
+  all state here, including **ephemeral** state for properties like `dragging`,
+  `resizing`, `selected`, etc.
+- The **synced** set of nodes & edges. This is usually provided by the
+  multiplayer solution you are using, and thus often uses a different data
+  structure, with a different API. Most importantly, we should only keep track of
+  the **durable** state here, and not the ephemeral state like `dragging`,
+  `resizing`, `selected`, etc.
+
+
+### From Local to Synced: Broadcasting changes
+
+Whenever an user interacts with the flow, we need to update the *local* state.
+If the changes are *durable*, we will need to update the *synced* state. For a
+complete solution, you will need to implement the `onNodesChange`,
+`onEdgesChange`, `onConnect`, `addNode`, `addEdge` and `updateNodeData`
+callbacks.
+
+To recap, the pattern we recommend is:
+- User updates durable state: *Write update to backend*. Synced state should be
+  updated reactively and automatically. You can avoid updating the local state, as 
+  we will see below how to implement the correct solution.
+- User updates ephemeral state: *Send a "soft" broadcast update to other
+  clients*. Local state can be updated.
+- User updates local-only state: *Update local state* as you would do in a single-player application.
+
+<Callout type="info">
+  We do not need to update the local state (`localNodes`, `localEdges`) when durable state is updated! 
+  We will see below how to implement a solution where updates to the remote state will reactively trigger a merge and update of the local state.
+</Callout>
+
+
+### From Synced to Local: The need of a Merge Map
+
+We now have `remoteNodes`, `remoteEdges` and `localNodes`, `localEdges` in our
+store. How do we listen to changes in the remote multiplayer world, and communicate
+them to the local state? Any good multiplayer solution will provide a way to
+**reactively subscribe** to changes to the synced state. You can wrap your
+`<ReactFlow />` component in a small wrapper component that will subscribe to
+the changes and update the `remoteNodes`, `remoteEdges` state accordingly.
+
+We ran some experiments and came up with a simple, generic utility class
+that will help us merge the local and remote state of the flow. We called this
+class `MergeMap`. This data structure is generic, and will help you 
+only update object references when necessary, and not re-render excessively.
+
+Let's define some useful types before we get started.
+```ts 
+type MergeEntry<Remote, Local> = {
+  remote: Remote;
+  local: Local;
+};
+
+type GetId<Remote> = (item: Remote) => string;
+type DeriveLocal<Remote, Local> = (item: Remote) => Partial<Local>;
+type IsRemoteEqual<Remote> = (a: Remote, b: Remote) => boolean;
+```
+
+The merge map will be a wrapper around a `Map` holding item IDs as keys, and a
+pair of items `{remote: Remote, local: Local}`  as
+values. Our nodes and edges are always uniquely identified by their `id` field,
+but where this id ends up in the remote data structure is different for each
+solution, so we need a `GetId<Remote>` function to retrieve it. 
+
+We are caching both the remote (synced) and local items in the map, and we will
+only update the local item if the remote item is different from the cached one.
+We need a way to derive the local item from the remote item
+(`DeriveLocal<Remote, Local>`), and a way to check if two remote items are equal
+(`IsRemoteEqual<Remote>`). Most of the times, a simple object reference equality
+(shallow comparison) check is enough (`a === b`). 
+
+<Callout type="info">
+We do not recommend using deep equality checks like `JSON.stringify(a) ===
+JSON.stringify(b)` for this purpose, as React primarily uses shallow reference
+equality to decide if a component needs to re-render. 
+</Callout>
+The `get`, `set` and `delete` methods are straightforward wrappers around the
+`Map` methods, and we will not go into detail here.
+
+```ts 
+export class MergeMap<Remote, Local> {
+  private readonly entriesById: Map<string, MergeEntry<Remote, Local>>;
+  private readonly getId: GetId<Remote>;
+  private readonly deriveLocal: DeriveLocal<Remote, Local>;
+  private readonly isRemoteEqual: IsRemoteEqual<Remote>;
+
+  constructor(options: {
+    getId: GetId<Remote>;
+    deriveLocal: DeriveLocal<Remote, Local>;
+    isRemoteEqual?: IsRemoteEqual<Remote>;
+  }) {
+    this.getId = options.getId;
+    this.deriveLocal = options.deriveLocal;
+    this.isRemoteEqual = options.isRemoteEqual ?? ((a, b) => a === b);
+    this.entriesById = new Map<string, MergeEntry<Remote, Local>>();
+  }
+
+  get(id: string) {
+    return this.entriesById.get(id);
+  }
+
+  delete(id: string) {
+    return this.entriesById.delete(id);
+  }
+
+  set(id: string, remote: Remote, local: Local) {
+    const entry = { remote, local };
+    this.entriesById.set(id, entry);
+    return entry;
+  }
+}
+```
+
+### The `merge` method
+
+The `merge` method is the core of the `MergeMap` class. It is used to merge the
+local and remote state of the flow. **You need to call it when updates from the remote
+state are received.** It takes the list of the new remote items as input, and mutably modifies the map
+to produce an up-to-date list of remote-local item pairs as output.
+For each remote item, `merge` will:
+
+1. Get the ID of the remote item via the `getId` function.
+2. If the item is already cached in the map and is equal (as per `isRemoteEqual`)
+   to the newly received remote item, the local item is returned (cache hit).
+3. If the item is already cached in the map and is **not** equal to the newly received
+   remote item, the updated local item is derived from the new remote item via the
+   `deriveLocal` function, and then merged to the existing local item.
+4. If the item is not in the map (cache miss), it will derive the local item from the
+   remote item via the `deriveLocal` function and add both as a pair in the map.
+5. The map is pruned by removing items that are no longer present in the
+   remote items.
+
+Below is a simple implementation of the `merge` method
+
+```ts
+  merge(remoteItems: readonly Remote[]) {
+    // Track items we no longer see to prune them after processing.
+    const unseenEntries = new Map(this.entriesById);
+
+    const locals: Local[] = remoteItems.map((remote) => {
+      const id = this.getId(remote);
+      unseenEntries.delete(id);
+
+      const cached = this.entriesById.get(id);
+      if (cached && this.isRemoteEqual(cached.remote, remote)) {
+        return cached.local;
+      }
+
+      const updatedLocal: Local = {
+        ...cached?.local,
+        ...this.deriveLocal(remote),
+      } as Local;
+
+      this.entriesById.set(id, { remote, local: updatedLocal });
+      return updatedLocal;
+    });
+
+    // Remove entries that no longer exist remotely.
+    unseenEntries.forEach((_, id) => {
+      this.entriesById.delete(id);
+    });
+
+    return locals;
+  }
+```
+
+`MergeMap` makes it easy to *preserve local-only fields while syncing with new
+remote data*. If we instead decided to derive the local array of nodes and edges
+directly from remote nodes and edges, we would lose local-only properties like
+`dragging`, `resizing` and `selected` discussed in the previous section. If we
+instead iterated over the local arrays and merged the remote items on top of the
+local state, we would end up in a costly and error-prone operation: we can not
+detect easily if a node was deleted by remote, and we would have to iterate over
+the entire local and remote arrays to find out received updates. A naive
+`{...local, ...remote}` merge *would generate a new object reference for each
+node and edge*, which would cause a re-render of the entire flow. *This would be
+very inefficient!*.
 
