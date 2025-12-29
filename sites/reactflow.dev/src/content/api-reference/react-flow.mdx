@@ -3,15 +3,15 @@ title: The ReactFlow component
 sidebarTitle: <ReactFlow />
 ---
 
-import { ReactFlowAPIProps } from '@/references/ReactFlow.props';
+import { ReactFlowAPIProps } from 'xy-shared/references/ReactFlow.props';
 
 # \<ReactFlow />
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/container/ReactFlow/index.tsx/#L47)
 
-The `<ReactFlow />` component is the heart of your React Flow application. It
-renders your nodes and edges, handles user interaction, and can manage its own
-state if used as an [uncontrolled flow](/learn/advanced-use/uncontrolled-flow).
+The `<ReactFlow />` component is the heart of your React Flow application. It renders your
+nodes and edges, handles user interaction, and can manage its own state if used as an
+[uncontrolled flow](/learn/advanced-use/uncontrolled-flow).
 
 ```tsx
 import { ReactFlow } from '@xyflow/react'
@@ -26,14 +26,13 @@ export default function Flow() {
 }
 ```
 
-This component takes a lot of different props, most of which are optional. We've
-tried to document them in groups that make sense to help you find your way.
+This component takes a lot of different props, most of which are optional. We've tried to
+document them in groups that make sense to help you find your way.
 
 ## Common props
 
-These are the props you will most commonly use when working with React Flow. If
-you are working with a controlled flow with custom nodes, you will likely use
-almost all of these!
+These are the props you will most commonly use when working with React Flow. If you are
+working with a controlled flow with custom nodes, you will likely use almost all of these!
 
 <ReactFlowAPIProps group="common" />
 
@@ -49,9 +48,9 @@ almost all of these!
 
 > [!WARNING]
 >
-> It's important to remember to define any event handlers outside of your
-> component or using React's `useCallback` hook. If you don't, this can cause
-> React Flow to enter an infinite re-render loop!
+> It's important to remember to define any event handlers outside of your component or
+> using React's `useCallback` hook. If you don't, this can cause React Flow to enter an
+> infinite re-render loop!
 
 ### General Events
 
@@ -87,21 +86,18 @@ almost all of these!
 
 ## Keyboard props
 
-React Flow let's you pass in a few different keyboard shortcuts as another way
-to interact with your flow. We've tried to set up sensible defaults like using
-backspace to delete any selected nodes or edges, but you can use these props to
-set your own.
+React Flow let's you pass in a few different keyboard shortcuts as another way to interact
+with your flow. We've tried to set up sensible defaults like using backspace to delete any
+selected nodes or edges, but you can use these props to set your own.
 
-To disable any of these shortcuts, pass in `null` to the prop you want to
-disable.
+To disable any of these shortcuts, pass in `null` to the prop you want to disable.
 
 <ReactFlowAPIProps group="keyboard" />
 
 ## Style props
 
 Applying certain classes to elements rendered inside the canvas will change how
-interactions are handled. These props let you configure those class names if you
-need to.
+interactions are handled. These props let you configure those class names if you need to.
 
 <ReactFlowAPIProps group="style" />
 
