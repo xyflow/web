@@ -17,7 +17,8 @@ import {
   FlowC,
 } from 'xy-shared';
 import { getLastChangelog } from 'xy-shared/server';
-import { fetchGitHubNpmStats, InternalRoute } from '@/utils';
+import { fetchGitHubNpmStats } from 'xy-shared';
+import { InternalRoute } from '@/utils';
 import ClientLogos from '@/components/client-logos';
 import WhatsNewPreview from 'xy-shared/components/whats-new-preview';
 
@@ -98,7 +99,7 @@ const sliderItems = [
 ];
 
 const Page: FC = async () => {
-  const { stars = 23000, downloads = 4000 } = await fetchGitHubNpmStats();
+  const { stars = 23000, downloads = 4000 } = await fetchGitHubNpmStats('react');
   const pageMap = await getLastChangelog();
   const whatsNew = pageMap.slice(0, 3);
 

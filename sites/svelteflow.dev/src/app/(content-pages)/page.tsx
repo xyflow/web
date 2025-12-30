@@ -17,7 +17,7 @@ import {
 } from 'xy-shared';
 
 import type { InternalRoute } from '@/utils';
-import getStaticPropsStats from '@/utils/github-npm-stats';
+import { fetchGitHubNpmStats } from 'xy-shared';
 import { version } from '@xyflow/svelte/package.json';
 
 export const revalidate = 3600; // 60 * 60
@@ -100,7 +100,7 @@ const features = [
 ];
 
 const Page: FC = async () => {
-  const { downloads = 450 } = await getStaticPropsStats();
+  const { downloads = 450 } = await fetchGitHubNpmStats('svelte');
 
   return (
     <BaseLayout>

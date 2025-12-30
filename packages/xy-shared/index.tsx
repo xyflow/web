@@ -73,3 +73,4 @@ export * from './types';
 // Utils
 export * from './lib';
 export * from './lib/utils';
+export * from './utils';

@@ -4,10 +4,6 @@
   "globalEnv": [
     "NODE_ENV",
     "NEXT_PUBLIC_\\*",
-    "GITHUB_API_URL",
-    "NPM_SVELTE_FLOW",
-    "NPM_REACT_FLOW",
-    "NPM_REACT_FLOW_LEGACY",
     "NPM_XYFLOW_REACT",
     "SVELTE_FLOW_VERSION",
     "REACT_FLOW_VERSION",
