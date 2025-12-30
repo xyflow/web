@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { HeartIcon, BoltIcon, SparklesIcon } from '@heroicons/react/24/outline';
+import { BoltIcon, SparklesIcon } from '@heroicons/react/24/outline';
 import { Button, Section, Stats } from 'xy-shared';
 import {
   BaseLayout,
@@ -17,7 +17,7 @@ import {
 } from 'xy-shared';
 
 import type { InternalRoute } from '@/utils';
-import { fetchGitHubNpmStats } from 'xy-shared';
+import { fetchGitHubNpmStats } from 'xy-shared/utils';
 import { version } from '@xyflow/svelte/package.json';
 
 export const revalidate = 3600; // 60 * 60

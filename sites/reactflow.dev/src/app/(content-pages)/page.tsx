@@ -17,7 +17,7 @@ import {
   FlowC,
 } from 'xy-shared';
 import { getLastChangelog } from 'xy-shared/server';
-import { fetchGitHubNpmStats } from 'xy-shared';
+import { fetchGitHubNpmStats } from 'xy-shared/utils';
 import { InternalRoute } from '@/utils';
 import ClientLogos from '@/components/client-logos';
 import WhatsNewPreview from 'xy-shared/components/whats-new-preview';

@@ -28,9 +28,12 @@ import starSvg from '../../../../../public/img/pro/star.svg';
 import { getPageMap as getExamplesPageMap } from '../[...slug]/utils';
 
 const ProExamples: FC = async () => {
-  const remoteProExamples = await fetchJSON(
+  const remoteProExamplesResponse = await fetchJSON(
     `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/svelte/apps.json?t=1`,
   );
+  const remoteProExamples = Array.isArray(remoteProExamplesResponse)
+    ? remoteProExamplesResponse
+    : [];
   const pageMap = await getExamplesPageMap();
   const proExamples = pageMap.children
     .flatMap((item) =>
