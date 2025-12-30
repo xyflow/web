@@ -7,7 +7,8 @@ import { defaultFooterCategories, Footer as XYFooter, LogoLabel } from 'xy-share
 import NavMenu from 'xy-shared/components/pro/Navigation/NavMenu';
 import { Html } from 'xy-shared/components/html';
 import { SubscriptionProvider } from 'xy-shared/components/pro/Providers';
-import { getPageMap } from 'nextra/page-map';
+import { createNormalizePageMap } from 'xy-shared/server';
+import { getPageMap as getExamplesPageMap } from '@/app/(content-pages)/examples/[...slug]/utils';
 import { Banner } from 'nextra/components';
 
 import './global.css';
@@ -29,9 +30,10 @@ const fathomOptions = {
 export default async function RootLayout({ children }: LayoutProps<'/'>) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { Projects: _, ...remainingCategories } = defaultFooterCategories;
+  const normalizePageMap = createNormalizePageMap(getExamplesPageMap);
   const [pageMap, lastChangelog] = await Promise.all([
-    getPageMap().catch((e) => {
-      console.error('error in getPageMap', e);
+    normalizePageMap().catch((e) => {
+      console.error('error in normalizePageMap', e);
       return [{ data: {} }];
     }),
     getLastChangelog(),

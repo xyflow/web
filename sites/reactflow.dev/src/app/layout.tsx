@@ -7,7 +7,8 @@ import { Fathom, Search } from 'xy-shared';
 import { defaultFooterCategories, Footer as XYFooter, LogoLabel } from 'xy-shared';
 import NavMenu from 'xy-shared/components/pro/Navigation/NavMenu';
 import { Html } from 'xy-shared/components/html';
-import { normalizePageMap } from '@/utils/page-map';
+import { createNormalizePageMap } from 'xy-shared/server';
+import { getPageMap as getExamplesPageMap } from '@/app/(content-pages)/examples/[...slug]/utils';
 import { SubscriptionProvider } from 'xy-shared/components/pro/Providers';
 import './global.css';
 
@@ -28,6 +29,7 @@ const fathomOptions = {
 
 export default async function RootLayout({ children }: LayoutProps<'/'>) {
   const { Projects: _, ...remainingCategories } = defaultFooterCategories;
+  const normalizePageMap = createNormalizePageMap(getExamplesPageMap);
   const [pageMap, lastChangelog] = await Promise.all([
     normalizePageMap().catch((e) => {
       console.error('error in normalizePageMap', e);
