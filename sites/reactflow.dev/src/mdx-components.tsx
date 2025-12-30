@@ -8,7 +8,7 @@ const docsComponents = getDocsMDXComponents({
     // Dynamically import APIDocs since it depends on ts-morph (requires TypeScript).
     // On Vercel (Pro platform), static import causes a runtime error:
     // "File not found: /var/task/sites/reactflow.dev/tsconfig.json"
-    const { APIDocs } = await import('@/components/api-docs');
+    const { APIDocs } = await import('xy-shared/components/api-docs/react');
     return <APIDocs {...props} />;
   },
   RemoteCodeViewer,
