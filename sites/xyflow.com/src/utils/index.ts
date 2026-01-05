@@ -1,2 +1,2 @@
-export * from './get-blogs';
+export * from 'xy-shared/utils/get-blogs';
 export * from './routes';
