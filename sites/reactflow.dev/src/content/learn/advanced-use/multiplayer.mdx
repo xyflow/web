@@ -60,6 +60,10 @@ try to manually handle this, you will see a quite vast variety of edge
 cases emerge. Networks are slow, clients disconnect, and the order of actions
 matters.
 
+A real sync engine must, capture operations with causal metadata (why the
+operation was performed), ensure commutativity and idempotence, and reconcile
+conflicting operations deterministically.
+
 ### Local-first and CRDTs
 
 Depending on how far you want to take handling conflicts and disconnects, you
@@ -91,7 +95,7 @@ local state of your app.
 ### Ephemeral vs Durable
 
 While there are many ways to sync state between clients, we can categorize them
-into two groups: ephemeral and atomic changes. **Ephemeral changes are not
+into two groups: ephemeral and durable (aka atomic) changes. **Ephemeral changes are not
 persisted** and neither its consistency nor its correctness is very important
 for the functionality of the application. These are things like cursor or
 viewport positions or any transient interaction state. Missing some of these
@@ -192,6 +196,17 @@ To recap, the pattern we recommend is:
   We do not need to update the local state (`localNodes`, `localEdges`) when durable state is updated! 
   We will see below how to implement a solution where updates to the remote state will reactively trigger a merge and update of the local state.
 </Callout>
+
+{/* ISSUE:
+
+This is only true if mergeMap merge operation is synchronous and react render timing doesn't 
+come in between (interleaved) user input and remote subscription never lags behind local optimistic updates.
+This depends on the solution used.
+In real React the user drags, local state mutates, remote echo comes back out-of-order
+and  mergeMap overwrites with derived state.
+
+We are assuming perfect causality here.
+*/}
 
 
 ### From Synced to Local: The need of a Merge Map
