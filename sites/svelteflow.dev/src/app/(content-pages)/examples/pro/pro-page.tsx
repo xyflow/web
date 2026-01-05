@@ -345,7 +345,7 @@ export function SignUpButton({
           {showIcon && <SparklesIcon className="w-5 h-5 mr-2" />}Sign Up
         </Link>
       </Button>
-      <span className="text-sm mx-auto text-transparent bg-clip-text bg-gradient-to-r from-[#FA3C92] to-[#969696]">
+      <span className="text-sm mx-auto text-transparent bg-clip-text bg-gradient-to-r from-primary to-[#FF99C7]">
         {description}
       </span>
     </div>
