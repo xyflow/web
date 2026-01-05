@@ -16,7 +16,7 @@ import {
   FlowC,
 } from 'xy-shared';
 
-import type { InternalRoute } from '@/utils';
+import type { InternalRoute } from '../../routes';
 import { fetchGitHubNpmStats } from 'xy-shared/utils';
 import { version } from '@xyflow/svelte/package.json';
 

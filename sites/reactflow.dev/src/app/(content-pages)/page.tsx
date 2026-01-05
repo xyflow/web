@@ -18,7 +18,7 @@ import {
 } from 'xy-shared';
 import { getLastChangelog } from 'xy-shared/server';
 import { fetchGitHubNpmStats } from 'xy-shared/utils';
-import { InternalRoute } from '@/utils';
+import { InternalRoute } from '../../routes';
 import ClientLogos from 'xy-shared/components/client-logos';
 import WhatsNewPreview from 'xy-shared/components/whats-new-preview';
 
