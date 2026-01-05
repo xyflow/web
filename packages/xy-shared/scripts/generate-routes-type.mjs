@@ -5,7 +5,7 @@ import * as Path from 'node:path';
 // eslint-disable-next-line no-undef
 const cwd = process.cwd();
 
-const OUTPUT_PATH = Path.resolve(cwd, 'src/utils/routes.ts');
+const OUTPUT_PATH = Path.resolve(cwd, 'src/routes.ts');
 const ROUTES_PATH = Path.resolve(cwd, 'src/content');
 
 export async function extractRoutes(path = '/', set = new Set()) {

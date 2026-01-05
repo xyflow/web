@@ -18,6 +18,7 @@
     "@heroicons/react": "^2.2.0",
     "@sindresorhus/slugify": "^2.2.1",
     "@xyflow/react": "catalog:",
+    "botid": "^1.5.10",
     "next": "catalog:",
     "next-sitemap": "catalog:",
     "nextra": "catalog:",
