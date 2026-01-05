@@ -19,8 +19,6 @@ In this guide, we will explore some best practices for integrating multiplayer
 collaboration in your React Flow application, focusing mainly on **the
 high-level application logic** you need to implement.
 
-{/* TODO: Link to section */}
-
 We will answer the following questions:
 - What are multiplayer applications? A few words about live updates, local first, and CRDTs
 - To sync or not to sync? What React Flow state should I sync with the backend?
@@ -144,7 +142,7 @@ This is an overview of what parts are recommended to sync and what not.
 ### Unfinished Connections and Cursors
 
 Sharing the transient part of creating edges is possible by sharing each users
-[`connection`](https://reactflow.dev/api-reference/hooks/use-connection) a an ephemeral
+[`connection`](https://reactflow.dev/api-reference/hooks/use-connection) as an ephemeral
 way. The cursors of each user can also be shared as ephemeral state. Just make sure you share
 the actual flow coordinates for mouse positions via `screenToFlowPosition`. You can use a
 library like [perfect-cursors](https://github.com/steveruizok/perfect-cursors) to smooth
@@ -294,9 +292,9 @@ For each remote item, `merge` will:
 4. If the item is not in the map (cache miss), it will derive the local item from the
    remote item via the `deriveLocal` function and add both as a pair in the map.
 5. The map is pruned by removing items that are no longer present in the
-   remote items.
+   newly received remote items.
 
-Below is a simple implementation of the `merge` method
+Below is a simple implementation of the `merge` method:
 
 ```ts
   merge(remoteItems: readonly Remote[]) {
