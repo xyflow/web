@@ -11,6 +11,7 @@ export * from './layouts/showcase';
 export * from './components/about-section';
 export * from './components/authors-list';
 export * from './components/blog-post';
+export * from './components/client-logos';
 export * from './components/contact-form';
 export * from './components/fathom';
 export * from './components/features';

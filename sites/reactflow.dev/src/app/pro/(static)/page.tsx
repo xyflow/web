@@ -9,9 +9,18 @@ import {
 } from 'xy-shared';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 
-import ClientLogos from '@/components/client-logos';
+import ClientLogos from 'xy-shared/components/client-logos';
 import { NextraMetadata } from 'nextra';
 import { SignUpButton } from '@/app/(content-pages)/examples/pro/pro-page';
+
+import zapier from '../../../../public/img/clients/zapier.svg';
+import stripe from '../../../../public/img/clients/stripe.svg';
+import carto from '../../../../public/img/clients/carto.svg';
+import railway from '../../../../public/img/clients/railway.svg';
+import retool from '../../../../public/img/clients/retool.svg';
+import doubleloop from '../../../../public/img/clients/doubleloop.svg';
+import onesignal from '../../../../public/img/clients/onesignal.svg';
+import close from '../../../../public/img/clients/close.svg';
 
 export const metadata: NextraMetadata = {
   asIndexPage: true,
@@ -94,7 +103,19 @@ export default function ReactFlowPro() {
       <PricingTable className="mt-6 lg:mt-10" />
 
       <Section className="relative z-1">
-        <ClientLogos title="React Flow Pro is used by" />
+        <ClientLogos
+          title="React Flow Pro is used by"
+          logos={[
+            { src: zapier, alt: 'zapier', className: 'h-7' },
+            { src: stripe, alt: 'stripe', className: 'h-7' },
+            { src: carto, alt: 'carto workflows', className: 'h-9' },
+            { src: close, alt: 'close', className: 'h-7' },
+            { src: railway, alt: 'railway', className: 'h-9' },
+            { src: retool, alt: 'retool', className: 'h-6' },
+            { src: doubleloop, alt: 'doubleloop', className: 'h-7' },
+            { src: onesignal, alt: 'onesignal', className: 'h-7' },
+          ]}
+        />
       </Section>
 
       <ImageSlider
