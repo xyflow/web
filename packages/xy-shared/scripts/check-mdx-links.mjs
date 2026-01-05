@@ -1,15 +1,12 @@
 import * as Fs from 'node:fs/promises';
 import * as Path from 'node:path';
-import * as Url from 'node:url';
 
 import { extractRoutes } from './generate-routes-type.mjs';
 
-// ES modules in node don't support the `__dirname` global, but we can recover it
-// with some help from the `Url` module.
-//
-// see: https://blog.logrocket.com/alternatives-dirname-node-js-es-modules/
-const __dirname = Url.fileURLToPath(new URL('.', import.meta.url));
-const PAGES_PATH = Path.resolve(__dirname, '../src/pages');
+// Get the current working directory (where the script is called from, not where it lives)
+// eslint-disable-next-line no-undef
+const cwd = process.cwd();
+const PAGES_PATH = Path.resolve(cwd, 'src/content');
 
 const routes = await extractRoutes();
 
@@ -53,3 +50,5 @@ async function verifyPage(path) {
 }
 
 await verifyPage('');
+
+console.log('✅ MDX link check complete');

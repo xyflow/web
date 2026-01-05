@@ -49,6 +49,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "fast-glob": "^3.3.3",
+    "fast-xml-parser": "^5.2.1",
     "fathom-client": "^3.7.2",
     "file-saver": "^2.0.5",
     "jszip": "^3.10.1",

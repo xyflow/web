@@ -9,9 +9,9 @@
     "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "next lint",
-    "check-sitemap": "node scripts/check-sitemap.mjs",
-    "generate-routes-type": "node scripts/generate-routes-type.mjs",
-    "check-links": "node scripts/check-mdx-links.mjs"
+    "check-sitemap": "node ../../packages/xy-shared/scripts/check-sitemap.mjs",
+    "generate-routes-type": "node ../../packages/xy-shared/scripts/generate-routes-type.mjs",
+    "check-links": "node ../../packages/xy-shared/scripts/check-mdx-links.mjs"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
@@ -21,7 +21,6 @@
     "@xyflow/svelte": "catalog:",
     "xy-shared": "workspace:*",
     "@nhost/nhost-js": "^4.1.0",
-    "fast-xml-parser": "^5.2.1",
     "next": "catalog:",
     "next-sitemap": "catalog:",
     "nextra": "catalog:",

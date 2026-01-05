@@ -10,16 +10,14 @@
     "start": "next start",
     "lint": "next lint",
     "write-showcases": "rm -rf static/img/showcase && mkdir -p static/img/showcase && node scripts/get-showcases.js",
-    "check-sitemap": "node scripts/check-sitemap.mjs",
-    "generate-routes-type": "node scripts/generate-routes-type.mjs",
-    "check-links": "node scripts/check-mdx-links.mjs"
+    "check-sitemap": "node ../../packages/xy-shared/scripts/check-sitemap.mjs",
+    "generate-routes-type": "node ../../packages/xy-shared/scripts/generate-routes-type.mjs",
+    "check-links": "node ../../packages/xy-shared/scripts/check-mdx-links.mjs"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
     "@sindresorhus/slugify": "^2.2.1",
     "@xyflow/react": "catalog:",
-    "botid": "^1.5.10",
-    "fast-xml-parser": "^5.2.1",
     "next": "catalog:",
     "next-sitemap": "catalog:",
     "nextra": "catalog:",

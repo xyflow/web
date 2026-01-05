@@ -480,6 +480,9 @@ importers:
       fast-glob:
         specifier: ^3.3.3
         version: 3.3.3
+      fast-xml-parser:
+        specifier: ^5.2.1
+        version: 5.3.1
       fathom-client:
         specifier: ^3.7.2
         version: 3.7.2
@@ -695,9 +698,6 @@ importers:
       '@xyflow/system':
         specifier: 'catalog:'
         version: 0.0.72
-      fast-xml-parser:
-        specifier: ^5.2.1
-        version: 5.3.1
       next:
         specifier: 'catalog:'
         version: 15.5.7(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
@@ -765,12 +765,6 @@ importers:
       '@xyflow/react':
         specifier: 'catalog:'
         version: 12.10.0(@types/react@19.2.7)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
-      botid:
-        specifier: ^1.5.10
-        version: 1.5.10(next@15.5.7(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)
-      fast-xml-parser:
-        specifier: ^5.2.1
-        version: 5.3.1
       next:
         specifier: 'catalog:'
         version: 15.5.7(react-dom@19.2.0(react@19.2.0))(react@19.2.0)

@@ -1,15 +1,12 @@
 import * as Fs from 'node:fs/promises';
 import * as Path from 'node:path';
-import * as Url from 'node:url';
 
-// ES modules in node don't support the `__dirname` global, but we can recover it
-// with some help from the `Url` module.
-//
-// see: https://blog.logrocket.com/alternatives-dirname-node-js-es-modules/
-const __dirname = Url.fileURLToPath(new URL('.', import.meta.url));
+// Get the current working directory (where the script is called from, not where it lives)
+// eslint-disable-next-line no-undef
+const cwd = process.cwd();
 
-const OUTPUT_PATH = Path.resolve(__dirname, '../src/utils/routes.ts');
-const ROUTES_PATH = Path.resolve(__dirname, '../src/pages');
+const OUTPUT_PATH = Path.resolve(cwd, 'src/utils/routes.ts');
+const ROUTES_PATH = Path.resolve(cwd, 'src/content');
 
 export async function extractRoutes(path = '/', set = new Set()) {
   const dir = `${ROUTES_PATH}/${path}`;
@@ -45,3 +42,5 @@ export type InternalRoute =
   `;
 
 await Fs.writeFile(OUTPUT_PATH, type.trim());
+
+console.log(`✅ Generated ${routes.size} routes in ${OUTPUT_PATH}`);
