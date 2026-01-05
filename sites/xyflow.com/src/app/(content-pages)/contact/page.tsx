@@ -5,7 +5,7 @@ import { Card, Input, InputLabel, Text } from 'xy-shared';
 import { BaseLayout, ContactForm, Hero } from 'xy-shared';
 import { FC } from 'react';
 import { Metadata } from 'next';
-import { submitContact } from '@/actions/contact';
+import { submitContact } from 'xy-shared/actions/contact';
 
 export const metadata: Metadata = {
   title: 'Contact Us',

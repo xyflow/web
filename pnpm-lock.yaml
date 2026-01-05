@@ -468,6 +468,9 @@ importers:
       '@xyflow/react':
         specifier: 'catalog:'
         version: 12.10.0(@types/react@19.2.7)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      botid:
+        specifier: ^1.5.10
+        version: 1.5.10(next@15.5.7(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
