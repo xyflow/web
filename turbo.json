@@ -4,17 +4,20 @@
   "globalEnv": [
     "NODE_ENV",
     "NEXT_PUBLIC_\\*",
-    "GITHUB_API_URL",
-    "NPM_SVELTE_FLOW",
-    "NPM_REACT_FLOW",
-    "NPM_REACT_FLOW_LEGACY",
     "NPM_XYFLOW_REACT",
     "SVELTE_FLOW_VERSION",
     "REACT_FLOW_VERSION",
     "VERCEL_ENV",
     "VERCEL_GIT_COMMIT_REF",
     "NOTION_API_SECRET",
-    "BLOB_READ_WRITE_TOKEN"
+    "BLOB_READ_WRITE_TOKEN",
+    "GH_APP_ID",
+    "GH_APP_INSTALL_ID",
+    "GITHUB_APP_CLIENT_ID",
+    "GITHUB_APP_CLIENT_SECRET",
+    "GH_APP_PRIVATE_KEY",
+    "ENABLE_EXPERIMENTAL_COREPACK",
+    "APP_URL"
   ],
   "globalDependencies": [".env"],
   "tasks": {

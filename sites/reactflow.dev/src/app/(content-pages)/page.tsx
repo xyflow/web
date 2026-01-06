@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { SparklesIcon, BoltIcon } from '@heroicons/react/24/outline';
-import { Button, Section, Stats } from '@xyflow/xy-ui';
+import { Button, Section, Stats } from 'xy-shared';
 import {
   BaseLayout,
   HeroFlow,
@@ -17,9 +17,19 @@ import {
   FlowC,
 } from 'xy-shared';
 import { getLastChangelog } from 'xy-shared/server';
-import { fetchGitHubNpmStats, InternalRoute } from '@/utils';
-import ClientLogos from '@/components/client-logos';
-import WhatsNewPreview from '@/components/whats-new-preview';
+import { fetchGitHubNpmStats } from 'xy-shared/utils';
+import { InternalRoute } from '../../routes';
+import ClientLogos from 'xy-shared/components/client-logos';
+import WhatsNewPreview from 'xy-shared/components/whats-new-preview';
+
+import zapier from '../../../public/img/clients/zapier.svg';
+import stripe from '../../../public/img/clients/stripe.svg';
+import cartoWorkflows from '../../../public/img/clients/carto.svg';
+import railway from '../../../public/img/clients/railway.svg';
+import retool from '../../../public/img/clients/retool.svg';
+import doubleloop from '../../../public/img/clients/doubleloop.svg';
+import onesignal from '../../../public/img/clients/onesignal.svg';
+import close from '../../../public/img/clients/close.svg';
 
 export const revalidate = 3600; // 60 * 60
 
@@ -98,7 +108,7 @@ const sliderItems = [
 ];
 
 const Page: FC = async () => {
-  const { stars = 23000, downloads = 4000 } = await fetchGitHubNpmStats();
+  const { stars = 23000, downloads = 4000 } = await fetchGitHubNpmStats('react');
   const pageMap = await getLastChangelog();
   const whatsNew = pageMap.slice(0, 3);
 
@@ -152,7 +162,18 @@ const Page: FC = async () => {
       </Section>
 
       <Section>
-        <ClientLogos />
+        <ClientLogos
+          logos={[
+            { src: zapier, alt: 'zapier', className: 'h-7' },
+            { src: stripe, alt: 'stripe', className: 'h-7' },
+            { src: cartoWorkflows, alt: 'carto workflows', className: 'h-9' },
+            { src: close, alt: 'close', className: 'h-7' },
+            { src: railway, alt: 'railway', className: 'h-9' },
+            { src: retool, alt: 'retool', className: 'h-6' },
+            { src: doubleloop, alt: 'doubleloop', className: 'h-7' },
+            { src: onesignal, alt: 'onesignal', className: 'h-7' },
+          ]}
+        />
       </Section>
 
       <ImageSlider items={sliderItems} />

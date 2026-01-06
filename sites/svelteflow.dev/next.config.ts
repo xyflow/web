@@ -1,5 +1,6 @@
 import { NextConfig } from 'next';
 import nextra from 'nextra';
+import redirects from './redirects.json' with { type: 'json' };
 import svelteFlowPackageJson from '@xyflow/svelte/package.json';
 
 // This is used for finding out the real deploy slug for a preview deployment
@@ -14,9 +15,12 @@ const nextConfig: NextConfig = {
   pageExtensions: ['ts', 'tsx', 'js', 'jsx'],
   // Optionally, add any other Next.js config below
   reactStrictMode: true,
-  transpilePackages: ['@xyflow/xy-ui', 'xy-shared'],
+  transpilePackages: ['xy-shared', 'xy-shared'],
   experimental: {
-    optimizePackageImports: ['@xyflow/xy-ui', 'xy-shared'],
+    optimizePackageImports: ['xy-shared', 'xy-shared'],
+  },
+  async redirects() {
+    return redirects;
   },
   env: {
     SVELTE_FLOW_VERSION: svelteFlowPackageJson.version,
@@ -62,9 +66,9 @@ const nextConfig: NextConfig = {
     resolveAlias: {
       // Fix an error when `--turbopack` is enabled
       // Module not found: Can't resolve 'next-mdx-import-source-file'
-      'next-mdx-import-source-file': "./src/mdx-components.tsx",
-    }
-  }
+      'next-mdx-import-source-file': './src/mdx-components.tsx',
+    },
+  },
 };
 
 const withNextra = nextra({

@@ -1,4 +1,4 @@
-import { Framework } from '@xyflow/xy-ui';
+import { Framework } from '../../types';
 
 export async function fetchFiles(route: string, framework: Framework) {
   const url = `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/${framework}/${route}/source.json`;

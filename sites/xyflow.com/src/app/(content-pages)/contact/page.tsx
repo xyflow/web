@@ -1,11 +1,11 @@
 import Link from 'next/link';
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 import { EnvelopeIcon } from '@heroicons/react/24/outline';
-import { Card, Input, InputLabel, Text } from '@xyflow/xy-ui';
+import { Card, Input, InputLabel, Text } from 'xy-shared';
 import { BaseLayout, ContactForm, Hero } from 'xy-shared';
 import { FC } from 'react';
 import { Metadata } from 'next';
-import { submitContact } from '@/actions/contact';
+import { submitContact } from 'xy-shared/actions/contact';
 
 export const metadata: Metadata = {
   title: 'Contact Us',

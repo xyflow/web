@@ -3,7 +3,8 @@
 import sdk, { OpenOptions, Project, ProjectTemplate } from '@stackblitz/sdk';
 import { useCallback } from 'react';
 
-import { Framework, IconButton } from '@xyflow/xy-ui';
+import { Framework } from '../../types';
+import { IconButton } from '../../components/ui/icon-button';
 import { fetchFiles } from './fetchFiles';
 
 type OpenInStackblitzProps = {

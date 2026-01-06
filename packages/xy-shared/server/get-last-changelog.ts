@@ -1,6 +1,6 @@
 import { getPageMap } from 'nextra/page-map';
 import { MdxFile } from 'nextra';
-import { Author } from '../widgets/authors-list';
+import { Author } from '../components/authors-list';
 
 type MdxItem = MdxFile<WhatsNewItemFrontMatter> & { title: string };
 
@@ -9,8 +9,7 @@ export async function getLastChangelog() {
     .filter((item): item is MdxItem => 'frontMatter' in item)
     .sort(
       (a, b) =>
-        new Date(b.frontMatter!.date).getTime() -
-        new Date(a.frontMatter!.date).getTime(),
+        new Date(b.frontMatter!.date).getTime() - new Date(a.frontMatter!.date).getTime(),
     );
 }
 

@@ -2,7 +2,8 @@ import { FC } from 'react';
 import { MdxFile } from 'nextra';
 import NextLink from 'next/link';
 import { Anchor } from 'nextra/components';
-import { Button, Card, CardContent, CardHeader, CardTitle } from '@xyflow/xy-ui';
+import { Button } from '../components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { PlayCircleIcon } from '@heroicons/react/24/outline';
 
 export const TOC: FC<{ pageMap: (MdxFile & { title: string })[] }> = async ({

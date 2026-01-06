@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { HeartIcon, BoltIcon } from '@heroicons/react/24/outline';
-import { Button, Section, Stats } from '@xyflow/xy-ui';
+import { BoltIcon, SparklesIcon } from '@heroicons/react/24/outline';
+import { Button, Section, Stats } from 'xy-shared';
 import {
   BaseLayout,
   AboutSection,
@@ -16,8 +16,8 @@ import {
   FlowC,
 } from 'xy-shared';
 
-import type { InternalRoute } from '@/utils';
-import getStaticPropsStats from '@/utils/github-npm-stats';
+import type { InternalRoute } from '../../routes';
+import { fetchGitHubNpmStats } from 'xy-shared/utils';
 import { version } from '@xyflow/svelte/package.json';
 
 export const revalidate = 3600; // 60 * 60
@@ -100,7 +100,7 @@ const features = [
 ];
 
 const Page: FC = async () => {
-  const { downloads = 450 } = await getStaticPropsStats();
+  const { downloads = 450 } = await fetchGitHubNpmStats('svelte');
 
   return (
     <BaseLayout>
@@ -116,9 +116,9 @@ const Page: FC = async () => {
                 Quickstart
               </Link>
             </Button>
-            <Button variant="pro" asChild size="lg">
-              <Link href="/support-us">
-                <HeartIcon className="w-5 h-5 mr-1" /> Support Us
+            <Button size="lg" variant="pro" asChild>
+              <Link href="/pro">
+                <SparklesIcon className="w-5 h-5 mr-1" /> Svelte Flow Pro
               </Link>
             </Button>
           </div>
@@ -138,11 +138,11 @@ const Page: FC = async () => {
             },
             { label: 'License', value: 'MIT' },
           ]}
-          description="Svelte Flow is a MIT-licensed open source library. You can help us to ensure the further development and maintenance by supporting us."
-          link="/support-us"
+          description="Svelte Flow is a MIT-licensed open source library. You can help us to ensure the further development and maintenance by subscribing to React Flow Pro."
+          link="/pro"
           linkLabel={
             <>
-              <HeartIcon className="w-5 h-5 mr-1" /> Support Us
+              <SparklesIcon className="w-5 h-5 mr-1" /> Svelte Flow Pro
             </>
           }
         />
