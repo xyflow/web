@@ -152,206 +152,31 @@ the actual flow coordinates for mouse positions via `screenToFlowPosition`. You 
 library like [perfect-cursors](https://github.com/steveruizok/perfect-cursors) to smooth
 the movements of other users' cursors. Both can be shared as ephemeral state.
 
-## Merge synced & unsynced state
+## Recommended multiplayer solutions
 
-One of the challenges you will most likely face is how to consolidate (in other
-words: merge) the synced and unsynced (local) state. You want to have a local
-set of nodes that are passed to React Flow where `measured` and `selected` can
-be present, and `selected` can be different for nodes in each client. At the
-same time you also want to merge in any changes that come from the server. As
-most solution don't provide any way to subscribe to patches only you are left
-with 2 sets of nodes & edges: one for the local state and one that comes from
-the server.
+We experimented with four different multiplayer backend solutions to understand
+their best use cases for React Flow apps.
+What we found out, is that there's no one-size-fits-all solution!:
+the choice between CRDT-based
+local-first libraries (like [Yjs](https://yjs.dev/) and
+[Jazz](https://jazz.tools)) and server-authoritative approaches (like [Supabase](https://supabase.com/) and [Convex](https://convex.dev/))
+will change the way you approach building multiplayer React Flow applications: 
 
-In your application store, we will thus need to keep track of: 
+- **CRDT libraries**, on the other hand, will make your life easier around offline-first multiplayer support, 
+giving you for-free automatic conflict resolution, but in the case where your application is also structured 
+around a database, you will need to implement your own adapters between the CRDT library and the database.
+- **Server-authoritative solutions** will make your life easier around a database and 
+classical application logic, but will complicate your life around offline-first multiplayer support, 
+conflict resolution, and development complexity.
 
-- The **local** set of nodes & edges, which will be passed directly to React
-  Flow to render. These are regular objects, and are not synced to the backend. We hold
-  all state here, including **ephemeral** state for properties like `dragging`,
-  `resizing`, `selected`, etc.
-- The **synced** set of nodes & edges. This is usually provided by the
-  multiplayer solution you are using, and thus often uses a different data
-  structure, with a different API. Most importantly, we should only keep track of
-  the **durable** state here, and not the ephemeral state like `dragging`,
-  `resizing`, `selected`, etc.
+In the table below, you can see them compared:  
 
 
-### From Local to Synced: Broadcasting changes
+| Solution     | Architecture             | Offline Support         | Conflict Resolution | Setup Complexity | Best For                                  |  React Flow Pro Examples   |
+| ------------ | ------------------------ | ----------------------- | ------------------- | ---------------- | ----------------------------------------- | ------------ | 
+| [**Yjs**](https://yjs.dev/)      | CRDT (Local-first)       | ✅ Full offline support | Automatic (CRDT)    | Medium           | Collaborative editing, offline-first apps | [Collaborative Pro Example](/examples/interaction/collaborative) |
+| [**Jazz**](https://jazz.tools/)     | CRDT (Local-first)       | ✅ Full offline support | Automatic (CRDT)    | Medium           | Collaborative editing, offline-first apps | Coming soon... | 
+| [**Supabase**](https://supabase.com/) | Server-authoritative     | ❌ Requires connection  | Manual/RLS policies | Medium-High      | SQL-based apps, existing Supabase users   | Coming soon... | 
+| [**Convex**](https://convex.dev/)   | Server-authoritative     | ❌ Requires connection  | Reactive queries    | Low-Medium       | TypeScript-first, real-time queries       | Coming soon... | 
 
-Whenever an user interacts with the flow, we need to update the *local* state.
-If the changes are *durable*, we will need to update the *synced* state. For a
-complete solution, you will need to implement the `onNodesChange`,
-`onEdgesChange`, `onConnect`, `addNode`, `addEdge` and `updateNodeData`
-callbacks.
-
-To recap, the pattern we recommend is:
-- User updates durable state: *Write update to backend*. Synced state should be
-  updated reactively and automatically. You can avoid updating the local state, as 
-  we will see below how to implement the correct solution.
-- User updates ephemeral state: *Send a "soft" broadcast update to other
-  clients*. Local state can be updated.
-- User updates local-only state: *Update local state* as you would do in a single-player application.
-
-<Callout type="info">
-  We do not need to update the local state (`localNodes`, `localEdges`) when durable state is updated! 
-  We will see below how to implement a solution where updates to the remote state will reactively trigger a merge and update of the local state.
-</Callout>
-
-{/* ISSUE:
-
-This is only true if mergeMap merge operation is synchronous and react render timing doesn't 
-come in between (interleaved) user input and remote subscription never lags behind local optimistic updates.
-This depends on the solution used.
-In real React the user drags, local state mutates, remote echo comes back out-of-order
-and  mergeMap overwrites with derived state.
-
-We are assuming perfect causality here.
-*/}
-
-
-### From Synced to Local: The need of a Merge Map
-
-We now have `remoteNodes`, `remoteEdges` and `localNodes`, `localEdges` in our
-store. How do we listen to changes in the remote multiplayer world, and communicate
-them to the local state? Any good multiplayer solution will provide a way to
-**reactively subscribe** to changes to the synced state. You can wrap your
-`<ReactFlow />` component in a small wrapper component that will subscribe to
-the changes and update the `remoteNodes`, `remoteEdges` state accordingly.
-
-We ran some experiments and came up with a simple, generic utility class
-that will help us merge the local and remote state of the flow. We called this
-class `MergeMap`. This data structure is generic, and will help you 
-only update object references when necessary, and not re-render excessively.
-
-Let's define some useful types before we get started.
-```ts 
-type MergeEntry<Remote, Local> = {
-  remote: Remote;
-  local: Local;
-};
-
-type GetId<Remote> = (item: Remote) => string;
-type DeriveLocal<Remote, Local> = (item: Remote) => Partial<Local>;
-type IsRemoteEqual<Remote> = (a: Remote, b: Remote) => boolean;
-```
-
-The merge map will be a wrapper around a `Map` holding item IDs as keys, and a
-pair of items `{remote: Remote, local: Local}`  as
-values. Our nodes and edges are always uniquely identified by their `id` field,
-but where this id ends up in the remote data structure is different for each
-solution, so we need a `GetId<Remote>` function to retrieve it. 
-
-We are caching both the remote (synced) and local items in the map, and we will
-only update the local item if the remote item is different from the cached one.
-We need a way to derive the local item from the remote item
-(`DeriveLocal<Remote, Local>`), and a way to check if two remote items are equal
-(`IsRemoteEqual<Remote>`). Most of the times, a simple object reference equality
-(shallow comparison) check is enough (`a === b`). 
-
-<Callout type="info">
-We do not recommend using deep equality checks like `JSON.stringify(a) ===
-JSON.stringify(b)` for this purpose, as React primarily uses shallow reference
-equality to decide if a component needs to re-render. 
-</Callout>
-The `get`, `set` and `delete` methods are straightforward wrappers around the
-`Map` methods, and we will not go into detail here.
-
-```ts 
-export class MergeMap<Remote, Local> {
-  private readonly entriesById: Map<string, MergeEntry<Remote, Local>>;
-  private readonly getId: GetId<Remote>;
-  private readonly deriveLocal: DeriveLocal<Remote, Local>;
-  private readonly isRemoteEqual: IsRemoteEqual<Remote>;
-
-  constructor(options: {
-    getId: GetId<Remote>;
-    deriveLocal: DeriveLocal<Remote, Local>;
-    isRemoteEqual?: IsRemoteEqual<Remote>;
-  }) {
-    this.getId = options.getId;
-    this.deriveLocal = options.deriveLocal;
-    this.isRemoteEqual = options.isRemoteEqual ?? ((a, b) => a === b);
-    this.entriesById = new Map<string, MergeEntry<Remote, Local>>();
-  }
-
-  get(id: string) {
-    return this.entriesById.get(id);
-  }
-
-  delete(id: string) {
-    return this.entriesById.delete(id);
-  }
-
-  set(id: string, remote: Remote, local: Local) {
-    const entry = { remote, local };
-    this.entriesById.set(id, entry);
-    return entry;
-  }
-}
-```
-
-### The `merge` method
-
-The `merge` method is the core of the `MergeMap` class. It is used to merge the
-local and remote state of the flow. **You need to call it when updates from the remote
-state are received.** It takes the list of the new remote items as input, and mutably modifies the map
-to produce an up-to-date list of remote-local item pairs as output.
-For each remote item, `merge` will:
-
-1. Get the ID of the remote item via the `getId` function.
-2. If the item is already cached in the map and is equal (as per `isRemoteEqual`)
-   to the newly received remote item, the local item is returned (cache hit).
-3. If the item is already cached in the map and is **not** equal to the newly received
-   remote item, the updated local item is derived from the new remote item via the
-   `deriveLocal` function, and then merged to the existing local item.
-4. If the item is not in the map (cache miss), it will derive the local item from the
-   remote item via the `deriveLocal` function and add both as a pair in the map.
-5. The map is pruned by removing items that are no longer present in the
-   newly received remote items.
-
-Below is a simple implementation of the `merge` method:
-
-```ts
-  merge(remoteItems: readonly Remote[]) {
-    // Track items we no longer see to prune them after processing.
-    const unseenEntries = new Map(this.entriesById);
-
-    const locals: Local[] = remoteItems.map((remote) => {
-      const id = this.getId(remote);
-      unseenEntries.delete(id);
-
-      const cached = this.entriesById.get(id);
-      if (cached && this.isRemoteEqual(cached.remote, remote)) {
-        return cached.local;
-      }
-
-      const updatedLocal: Local = {
-        ...cached?.local,
-        ...this.deriveLocal(remote),
-      } as Local;
-
-      this.entriesById.set(id, { remote, local: updatedLocal });
-      return updatedLocal;
-    });
-
-    // Remove entries that no longer exist remotely.
-    unseenEntries.forEach((_, id) => {
-      this.entriesById.delete(id);
-    });
-
-    return locals;
-  }
-```
-
-`MergeMap` makes it easy to *preserve local-only fields while syncing with new
-remote data*. If we instead decided to derive the local array of nodes and edges
-directly from remote nodes and edges, we would lose local-only properties like
-`dragging`, `resizing` and `selected` discussed in the previous section. If we
-instead iterated over the local arrays and merged the remote items on top of the
-local state, we would end up in a costly and error-prone operation: we can not
-detect easily if a node was deleted by remote, and we would have to iterate over
-the entire local and remote arrays to find out received updates. A naive
-`{...local, ...remote}` merge *would generate a new object reference for each
-node and edge*, which would cause a re-render of the entire flow. *This would be
-very inefficient!*.
 
