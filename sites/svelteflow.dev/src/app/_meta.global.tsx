@@ -2,7 +2,6 @@ import { FC, ReactNode, SVGProps } from 'react';
 import {
   Squares2X2Icon,
   UsersIcon,
-  ChatBubbleLeftRightIcon,
   Cog8ToothIcon,
   SparklesIcon,
 } from '@heroicons/react/24/outline';

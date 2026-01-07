@@ -32,16 +32,16 @@ export const BarChart = ({
   );
   const yScale = useMemo(() => {
     return d3.scaleBand().domain(groups).range([0, boundsHeight]).padding(BAR_PADDING);
-  }, [data, height]);
+  }, [groups, boundsHeight]);
 
   // X axis
   const xScale = useMemo(() => {
-    const [min, max] = d3.extent(data.map((d) => d.value));
+    const [max] = d3.extent(data.map((d) => d.value));
     return d3
       .scaleLinear()
       .domain([0, max || 10])
       .range([0, boundsWidth]);
-  }, [data, width]);
+  }, [data, boundsWidth]);
 
   // Build the shapes
   const allShapes = data.map((d, i) => {

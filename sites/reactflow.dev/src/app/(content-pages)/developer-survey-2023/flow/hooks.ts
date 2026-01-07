@@ -10,17 +10,12 @@ export type FocusParams = {
   then?: [number, () => void][];
 };
 
-export const useFocus = ({
-  id,
-  includeChildren,
-  duration = 500,
-  then,
-}: FocusParams) => {
+export const useFocus = ({ id, includeChildren, duration = 500, then }: FocusParams) => {
   const { getNodes, fitView } = useReactFlow();
   const preDelay = 50;
 
   useEffect(() => {
-    let actions = then ? [...then] : [];
+    const actions = then ? [...then] : [];
     let timer = window.setTimeout(() => {
       fitView({
         padding: 0.5,
@@ -45,5 +40,5 @@ export const useFocus = ({
     }, preDelay);
 
     return () => window.clearTimeout(timer);
-  }, [id, fitView, includeChildren, duration, then]);
+  }, [id, fitView, includeChildren, duration, then, getNodes]);
 };
