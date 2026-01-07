@@ -7,7 +7,7 @@ import Wrapper from './node-wrapper';
 
 export type ColorPickerNode = Node<{ label: string; value: number }>;
 
-export default memo(({ data, id }: NodeProps<ColorPickerNode>) => {
+const ColorPickerNodeComponent = ({ data, id }: NodeProps<ColorPickerNode>) => {
   const { updateNodeData } = useReactFlow();
 
   return (
@@ -26,4 +26,8 @@ export default memo(({ data, id }: NodeProps<ColorPickerNode>) => {
       <Handle type="source" position={Position.Right} />
     </Wrapper>
   );
-});
+};
+
+ColorPickerNodeComponent.displayName = 'ColorPickerNode';
+
+export default memo(ColorPickerNodeComponent);

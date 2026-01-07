@@ -25,7 +25,7 @@ function GettingStarted({ libraryName, packageName }: GettingStartedProps) {
             Getting Started with {libraryName}
           </Text>
           <Text className="text-center max-w-lg mx-auto mb-6 lg:mb-8">
-            Make sure you've installed npm, pnpm or yarn. Then you can install{' '}
+            Make sure you’ve installed npm, pnpm or yarn. Then you can install{' '}
             {libraryName} via:
           </Text>
 
