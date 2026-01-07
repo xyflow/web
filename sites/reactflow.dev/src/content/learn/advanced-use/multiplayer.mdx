@@ -30,11 +30,13 @@ We will answer the following questions:
 
 ## What are multiplayer applications?
 
-Although **realtime collaboration** would be the correct term here, we refer to it as
-**multiplayer**, which was most likely popularized by Figma. Besides being more intuitive
-for marketing purposes, it also does a better job of communicating the commitment to
-creating something truly realtime by putting it in the same category as competitive video
-games. So to figure out what degree of collaboration your application supports, you just
+Although **realtime collaboration** would be the correct term here, we refer to
+it as **multiplayer**, which was most likely popularized in this context by
+Figma. Besides being more intuitive for marketing purposes, it also does a
+better job of communicating the commitment to creating something truly realtime
+by putting it in the same category as competitive video games. 
+
+To figure out what degree of collaboration your application supports, you just
 need to look at how closely it resembles a multiplayer game. These features likely
 include:
 
@@ -145,12 +147,23 @@ This is an overview of what parts are recommended to sync and what not.
 
 ### Unfinished Connections and Cursors
 
-Sharing the transient part of creating edges is possible by sharing each users
-[`connection`](https://reactflow.dev/api-reference/hooks/use-connection) as an ephemeral
-way. The cursors of each user can also be shared as ephemeral state. Just make sure you share
-the actual flow coordinates for mouse positions via `screenToFlowPosition`. You can use a
-library like [perfect-cursors](https://github.com/steveruizok/perfect-cursors) to smooth
-the movements of other users' cursors. Both can be shared as ephemeral state.
+Good examples of ephemeral data are
+[`connections`](https://reactflow.dev/api-reference/hooks/use-connection) (the
+transient part of edges being created) and cursors.
+
+Sharing each user's connections status improves visual consistency across
+clients, but losing this state on disconnect doesn't affect the correctness of
+the shared data: it's purely presentational.
+
+The same applies to cursors. They help create the immersion of a shared
+workspace, but they're not essential to the application's integrity. As long as
+the nodes and edges remain in sync, cursor state can be safely discarded.
+
+Both can be shared as purely ephemeral state. If you want to reduce the
+frequency of live updates, you can debounce the updates and smooth the movements
+of other users' cursors. You can use a library like
+[perfect-cursors](https://github.com/steveruizok/perfect-cursors) to smooth the
+movements of other users' cursors.
 
 ## Recommended Multiplayer Solutions
 
