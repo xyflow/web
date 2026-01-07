@@ -167,7 +167,7 @@ enabled = false
 issuer = 'nhost'
 
 [postgres]
-version = '14.18-20250728-1'
+version = '14.20-20251217-1'
 
 [postgres.resources]
 [postgres.resources.storage]
