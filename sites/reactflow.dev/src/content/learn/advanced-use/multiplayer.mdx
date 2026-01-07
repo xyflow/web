@@ -16,16 +16,7 @@ In our [Collaborative Flow Pro Example](/examples/interaction/collaborative), we
 show a realtime multiplayer collaboration flow using [React Flow](/) and
 [Yjs](https://github.com/yjs/yjs).
 In this guide, we will explore some best practices for integrating multiplayer
-collaboration in your React Flow application, focusing mainly on **the
-high-level application logic** you need to implement.
-
-We will answer the following questions:
-- What are multiplayer applications? A few words about live updates, local first, and CRDTs
-- To sync or not to sync? What React Flow state should I sync with the backend?
-- Consolidating shared and local state.
-- How to handle conflicts when multiple clients try to update the same state?
-- How to display the collaboration state to the users?
-- What libraries or data structures to use for realtime collaboration?
+collaboration in your React Flow application.
 
 
 ## What are multiplayer applications?
@@ -62,32 +53,28 @@ try to manually handle this, you will see a quite vast variety of edge
 cases emerge. Networks are slow, clients disconnect, and the order of actions
 matters.
 
-A real sync engine must, capture operations with causal metadata (why the
-operation was performed), ensure commutativity and idempotence, and reconcile
-conflicting operations deterministically.
-
 ### Local-first and CRDTs
 
 Depending on how far you want to take handling conflicts and disconnects, you
-very quickly land in **local-first** territory: multi-replica synced data
-structures that can work completely offline, and automatically upload, fetch,
-and reconcile their state on reconnection.
-
-If you would like a good primer on this topic we recommend [Ink & Switchs'
+very quickly land in **local-first** territory. When your sync engine 
+allows a user to be disconnected for an indefinite amount of time, you have 
+a **local-first** application.
+If you would like a good primer
+on this topic we recommend [Ink & Switchs'
 essay](https://www.inkandswitch.com/essay/local-first/) that coined the term.
 
-**Local-first**  multiplayer applications have been trendy lately: many
-famous multiplayer solutions, like [Yjs](https://github.com/yjs/yjs), and
-[Jazz](https://jazz.tools), use **Conflict Free Replicated Data Types** (CRDTs)
-to achieve realtime collaboration.
+A **CRDT** (*Conflict-free Replicated Data Type*) is a data structure that lets
+multiple users edit the same data simultaneously on different devices, then
+automatically merges all changes without conflicts—no central server needed.
+Instead of just storing the current value of the data, CRDTs keep operation
+history on every connected client, so any replica can merge changes into the
+same final state, regardless of the order updates arrive. They are thus solving
+the conflicts and disconnects by being multi-replica synced data structures that
+can work completely offline, and automatically upload, fetch, and reconcile
+their state on reconnection.
 
-CRDT-backed structures solve the conflict and disconnects by having an intrinsic
-notion of mutation and conflict resolution: each update you perform on the CRDT
-is an algebraically well-defined, conflict-free operation that can be combined with the
-others independently of when it was applied. With this approach, the *client is
-the source of truth for the data*, which is *replicated* across all the different
-machines, along with a history of the operations.
-
+A couple of popular solutions are [Yjs](https://github.com/yjs/yjs),
+[Automerge](https://automerge.org/) and [Loro](https://loro.dev).
 
 ##  What React Flow state should I sync?
 
