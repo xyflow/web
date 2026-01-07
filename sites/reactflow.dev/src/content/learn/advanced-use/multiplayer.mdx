@@ -12,24 +12,21 @@ their nature. For collaborative features, this usually means that there is no sa
 would break visual consistency or make collaborative exploration more complicated. Often,
 a full live multiplayer system needs to be put in place.
 
-In our [Collaborative Flow Pro Example](/examples/interaction/collaborative), we
-show a realtime multiplayer collaboration flow using [React Flow](/) and
-[Yjs](https://github.com/yjs/yjs).
-In this guide, we will explore some best practices for integrating multiplayer
-collaboration in your React Flow application.
-
+In our [Collaborative Flow Pro Example](/examples/interaction/collaborative), we show a
+realtime multiplayer collaboration flow using [React Flow](/) and
+[Yjs](https://github.com/yjs/yjs). In this guide, we will explore some best practices for
+integrating multiplayer collaboration in your React Flow application.
 
 ## What are multiplayer applications?
 
-Although **realtime collaboration** would be the correct term here, we refer to
-it as **multiplayer**, which was most likely popularized in this context by
-Figma. Besides being more intuitive for marketing purposes, it also does a
-better job of communicating the commitment to creating something truly realtime
-by putting it in the same category as competitive video games. 
+Although **realtime collaboration** would be the correct term here, we refer to it as
+**multiplayer**, which was most likely popularized in this context by Figma. Besides being
+more intuitive for marketing purposes, it also does a better job of communicating the
+commitment to creating something truly realtime by putting it in the same category as
+competitive video games.
 
-To figure out what degree of collaboration your application supports, you just
-need to look at how closely it resembles a multiplayer game. These features likely
-include:
+To figure out what degree of collaboration your application supports, you just need to
+look at how closely it resembles a multiplayer game. These features likely include:
 
 - No manual saving is required; all users share a world where actions are persisted.
 - Any changes made by other users are immediately visible to you.
@@ -39,64 +36,59 @@ include:
 
 ### A word of caution
 
-Making multiplayer applications is hard! When users are collaboratively editing
-shared objects, conflicts, delays, connection drops and concurrent operations
-are expected. The hardest challenge in multiplayer apps is
-**conflict-resolution**: you always need some kind of sync engine that is able
-to merge any changes coming from the server (or other clients) into the (often
-optimistic) client state. You need to gracefully handle conflicts and
-disconnects. You need to build a reliable network layer.
+Making multiplayer applications is hard! When users are collaboratively editing shared
+objects, conflicts, delays, connection drops and concurrent operations are expected. The
+hardest challenge in multiplayer apps is **conflict-resolution**: you always need some
+kind of sync engine that is able to merge any changes coming from the server (or other
+clients) into the (often optimistic) client state. You need to gracefully handle conflicts
+and disconnects. You need to build a reliable network layer.
 
-The simplest sync engine for multiplayer would be a "first-come-first-served"
-approach, and failed requests and messages sent being ignored. If you
-try to manually handle this, you will see a quite vast variety of edge
-cases emerge. Networks are slow, clients disconnect, and the order of actions
-matters.
+The simplest sync engine for multiplayer would be a "first-come-first-served" approach,
+and failed requests and messages sent being ignored. If you try to manually handle this,
+you will see a quite vast variety of edge cases emerge. Networks are slow, clients
+disconnect, and the order of actions matters.
 
 ### Local-first and CRDTs
 
-Depending on how far you want to take handling conflicts and disconnects, you
-very quickly land in **local-first** territory. When your sync engine 
-allows a user to be disconnected for an indefinite amount of time, you have 
-a **local-first** application.
-If you would like a good primer
-on this topic we recommend [Ink & Switchs'
-essay](https://www.inkandswitch.com/essay/local-first/) that coined the term.
+Depending on how far you want to take handling conflicts and disconnects, you very quickly
+land in **local-first** territory. When your sync engine allows a user to be disconnected
+for an indefinite amount of time, you have a **local-first** application. If you would
+like a good primer on this topic we recommend
+[Ink & Switchs' essay](https://www.inkandswitch.com/essay/local-first/) that coined the
+term.
 
-A **CRDT** (*Conflict-free Replicated Data Type*) is a data structure that lets
-multiple users edit the same data simultaneously on different devices, then
-automatically merges all changes without conflicts—no central server needed.
-Instead of just storing the current value of the data, CRDTs keep operation
-history on every connected client, so any replica can merge changes into the
-same final state, regardless of the order updates arrive. They are thus solving
-the conflicts and disconnects by being multi-replica synced data structures that
-can work completely offline, and automatically upload, fetch, and reconcile
-their state on reconnection.
+A **CRDT** (_Conflict-free Replicated Data Type_) is a data structure that lets multiple
+users edit the same data simultaneously on different devices, then automatically merges
+all changes without conflicts—no central server needed. Instead of just storing the
+current value of the data, CRDTs keep operation history on every connected client, so any
+replica can merge changes into the same final state, regardless of the order updates
+arrive. They are thus solving the conflicts and disconnects by being multi-replica synced
+data structures that can work completely offline, and automatically upload, fetch, and
+reconcile their state on reconnection.
 
 A couple of popular solutions are [Yjs](https://github.com/yjs/yjs),
 [Automerge](https://automerge.org/) and [Loro](https://loro.dev).
 
-##  What React Flow state should I sync?
+## What React Flow state should I sync?
 
 Among your first considerations should be **how** you want to sync **what** parts of the
 local state of your app.
 
 ### Ephemeral vs Durable
 
-While there are many ways to sync state between clients, we can categorize them
-into two groups: ephemeral and durable (aka atomic) changes. **Ephemeral changes are not
-persisted** and neither its consistency nor its correctness is very important
-for the functionality of the application. These are things like cursor or
-viewport positions or any transient interaction state. Missing some of these
-updates will not break anything and in case of a connection loss, a client can
-just listen for the newest changes and restore any lost functionality.
+While there are many ways to sync state between clients, we can categorize them into two
+groups: ephemeral and durable (aka atomic) changes. **Ephemeral changes are not
+persisted** and neither its consistency nor its correctness is very important for the
+functionality of the application. These are things like cursor or viewport positions or
+any transient interaction state. Missing some of these updates will not break anything and
+in case of a connection loss, a client can just listen for the newest changes and restore
+any lost functionality.
 
-On the other hand, **updates to the nodes & edges should be persistent and
-consistent!** Imagine if Alice deletes a node and Bob misses this update. Now if
-Bob subsequently moves the node, we would have an inconsistent application
-state. For this kind of data we have to use a solution that handles disconnects
-more agressively and is able to discard impossible actions like moving a deleted
-node.
+On the other hand, **updates to the nodes & edges should be persistent and consistent!**
+Imagine if Alice deletes a node and Bob misses this update. Now if Bob subsequently moves
+the node, we would have an inconsistent application state. For this kind of data we have
+to use a solution that handles disconnects more agressively and is able to discard
+impossible actions like moving a deleted node.
 
 At the core of a multiplayer React Flow application is syncing the nodes & edges. However
 not all parts of the state should be synced. For instance, what nodes & edges are selected
@@ -132,49 +124,46 @@ This is an overview of what parts are recommended to sync and what not.
 | `targetHandle` | ✅      | ❌        | Important, always needs to be in-sync |
 | `selected`     | ❌      | ❌        | Per-user UI state                     |
 
-### Unfinished Connections and Cursors
+### Connections and Cursors
 
 Good examples of ephemeral data are
-[`connections`](https://reactflow.dev/api-reference/hooks/use-connection) (the
-transient part of edges being created) and cursors.
+[`connections`](https://reactflow.dev/api-reference/hooks/use-connection) (the transient
+part of edges being created) and cursors.
 
-Sharing each user's connections status improves visual consistency across
-clients, but losing this state on disconnect doesn't affect the correctness of
-the shared data: it's purely presentational.
+Sharing each user's connections status improves visual consistency across clients, but
+losing this state on disconnect doesn't affect the correctness of the shared data: it's
+purely presentational.
 
-The same applies to cursors. They help create the immersion of a shared
-workspace, but they're not essential to the application's integrity. As long as
-the nodes and edges remain in sync, cursor state can be safely discarded.
+The same applies to cursors. They help create the immersion of a shared workspace, but
+they're not essential to the application's integrity. As long as the nodes and edges
+remain in sync, cursor state can be safely discarded.
 
-Both can be shared as purely ephemeral state. If you want to reduce the
-frequency of live updates, you can debounce the updates and smooth the movements
-of other users' cursors. You can use a library like
-[perfect-cursors](https://github.com/steveruizok/perfect-cursors) to smooth the
-movements of other users' cursors.
+Both can be shared as purely ephemeral state. If you want to reduce the frequency of live
+updates, you can debounce the updates and smooth the movements of other users' cursors.
+You can use a library like
+[perfect-cursors](https://github.com/steveruizok/perfect-cursors) to smooth the movements
+of other users' cursors.
 
 ## Recommended Multiplayer Solutions
 
-We experimented with four different multiplayer backend solutions to understand
-their best use cases for React Flow apps.
-What we found out, is that there's no one-size-fits-all solution!:
-the choice between CRDT-based
-local-first libraries (like [Yjs](https://yjs.dev/) and
-[Jazz](https://jazz.tools)) and server-authoritative approaches (like [Supabase](https://supabase.com/) and [Convex](https://convex.dev/))
-will change the way you approach building multiplayer React Flow applications: 
+We experimented with four different multiplayer backend solutions to understand their best
+use cases for React Flow apps. What we found out, is that there's no one-size-fits-all
+solution!: the choice between CRDT-based local-first libraries (like
+[Yjs](https://yjs.dev/) and [Jazz](https://jazz.tools)) and server-authoritative
+approaches (like [Supabase](https://supabase.com/) and [Convex](https://convex.dev/)) will
+change the way you approach building multiplayer React Flow applications:
 
-- **CRDT libraries**, on the other hand, will make your life easier around offline-first multiplayer support, 
-giving you for-free automatic conflict resolution, but in the case where your application is also structured 
-around a database, you will need to implement your own adapters between the CRDT library and the database.
-- **Server-authoritative solutions** will make your life easier around a database and 
-classical application logic, but will complicate your life around offline-first multiplayer support, 
-conflict resolution, and development complexity.
+- **CRDT libraries**, on the other hand, will make your life easier around offline-first
+  multiplayer support, giving you for-free automatic conflict resolution, but in the case
+  where your application is also structured around a database, you will need to implement
+  your own adapters between the CRDT library and the database.
+- **Server-authoritative solutions** will make your life easier around a database and
+  classical application logic, but will complicate your life around offline-first
+  multiplayer support, conflict resolution, and development complexity.
 
-
-| Solution     | Architecture             | Offline Support         | Conflict Resolution | Setup Complexity | Best For                                  |  React Flow Pro Examples   |
-| ------------ | ------------------------ | ----------------------- | ------------------- | ---------------- | ----------------------------------------- | ------------ | 
-| [**Yjs**](https://yjs.dev/)      | CRDT (Local-first)       | ✅ Full offline support | Automatic (CRDT)    | Medium           | Collaborative editing, offline-first apps | [Collaborative Pro Example](/examples/interaction/collaborative) |
-| [**Jazz**](https://jazz.tools/)     | CRDT (Local-first)       | ✅ Full offline support | Automatic (CRDT)    | Medium           | Collaborative editing, offline-first apps | Coming soon... | 
-| [**Supabase**](https://supabase.com/) | Server-authoritative     | ❌ Requires connection  | Manual/RLS policies | Medium-High      | SQL-based apps, existing Supabase users   | Coming soon... | 
-| [**Convex**](https://convex.dev/)   | Server-authoritative     | ❌ Requires connection  | Reactive queries    | Low-Medium       | TypeScript-first, real-time queries       | Coming soon... | 
-
-
+| Solution                              | Architecture         | Offline Support         | Conflict Resolution                                         | Notes                                                                                                                                                                                                  |
+| ------------------------------------- | -------------------- | ----------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [**Yjs**](https://yjs.dev/)           | CRDT (Local-first)   | ✅ Full offline support | Automatic (CRDT)                                            | Collaborative editing, offline-first CRDT for local-first apps, with a [React Flow Pro Example](/examples/interaction/collaborative)                                                                   |
+| [**Jazz**](https://jazz.tools/)       | CRDT (Local-first)   | ✅ Full offline support | Automatic (CRDT)                                            | A full, offline-first database solution that handles multiplayer natively.                                                                                                                             |
+| [**Supabase**](https://supabase.com/) | Server-authoritative | ❌ Requires connection  | Manual/RLS policies                                         | Classic SQL-based database solution, with realtime support, but no CRDT (conflict resolution must be implemented manually).                                                                            |
+| [**Convex**](https://convex.dev/)     | Server-authoritative | ❌ Requires connection  | [Optimistic](https://docs.convex.dev/database/advanced/occ) | TypeScript-first, database solution with real-time queries and a sync-engine with some conflict resolution capabilities. [Can be paired with Automerge](https://stack.convex.dev/automerge-and-convex) |
