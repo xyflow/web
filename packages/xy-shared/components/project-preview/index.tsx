@@ -114,7 +114,12 @@ export function ProjectPreview({
         </Button>
         {altRoute && (
           <Button asChild variant="link" className="text-md">
-            <a href={altRoute.href} target="_blank" className="flex items-center">
+            <a
+              href={altRoute.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center"
+            >
               {altRoute.label} <ArrowRightCircleIcon className="ml-1 w-4 h-4" />
             </a>
           </Button>

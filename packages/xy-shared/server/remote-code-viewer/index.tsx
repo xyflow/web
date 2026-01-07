@@ -8,16 +8,16 @@ import { loadJSONFile } from '../utils';
 import { CodePreview } from './CodePreview';
 import './style.css';
 
-const defaultOptions = {
-  editorWidthPercentage: 45,
-  wrapContent: true,
-  readOnly: false,
+type DefaultOptions = {
+  editorWidthPercentage: 45;
+  wrapContent: true;
+  readOnly: false;
 };
 
 export type RemoteCodeViewerProps = {
   route: string;
   framework?: Framework;
-  options?: typeof defaultOptions;
+  options?: DefaultOptions;
   activeFile?: string;
   showEditor?: boolean;
   showPreview?: boolean;

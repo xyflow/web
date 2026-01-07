@@ -60,7 +60,7 @@ export const CaseStudyLayoutWrapper: FC<
       <div className="max-w-3xl mx-auto px-6">
         {children}
         <Button asChild>
-          <a href={frontMatter.project_url} target="_blank">
+          <a href={frontMatter.project_url} target="_blank" rel="noopener noreferrer">
             Visit Project Website
           </a>
         </Button>
