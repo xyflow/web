@@ -54,8 +54,7 @@ function Shape({ type, random, color, ...props }: any) {
       ) : (
         <tetrahedronGeometry args={[1, 0]} />
       )}
-      {/** @ts-ignore */}
-      <meshLambertMaterial color={color as Color} />
+      <meshLambertMaterial color={color as string} />
     </mesh>
   );
 }
@@ -65,13 +64,13 @@ function Cam({ zoom }: { zoom: number }) {
 
   useEffect(() => {
     camera.position.set(0, 0, +zoom);
-  }, [zoom]);
+  }, [zoom, camera]);
 
   return null;
 }
 
 export default function App({ color, zoom, shape, count = 150 }: any) {
-  const { ErrorBoundary, didCatch, error } = useErrorBoundary();
+  const { ErrorBoundary, didCatch } = useErrorBoundary();
 
   const randomData = useMemo(
     () =>
@@ -106,4 +105,3 @@ export default function App({ color, zoom, shape, count = 150 }: any) {
     </ErrorBoundary>
   );
 }
-

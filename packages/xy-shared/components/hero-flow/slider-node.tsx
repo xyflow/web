@@ -14,7 +14,7 @@ export default function SliderNode({ data, id }: NodeProps<SliderNode>) {
   const { updateNodeData } = useReactFlow();
   const onValueChange = useCallback(
     (values: number[]) => updateNodeData(id, { value: values[0] }),
-    [],
+    [id, updateNodeData],
   );
 
   return (

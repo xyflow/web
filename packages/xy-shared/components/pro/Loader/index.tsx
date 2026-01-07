@@ -25,7 +25,13 @@ export default function Loader() {
   );
 }
 
-export function LogoLoader({ width = 100, height = 100 }) {
+export function LogoLoader({
+  width = 100,
+  height = 100,
+}: {
+  width?: number;
+  height?: number;
+}) {
   return (
     <div style={{ width, height }} className={styles.wrapper}>
       <div className={cn(styles.node, styles.topLeft)} />

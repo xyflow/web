@@ -1,6 +1,10 @@
 import { cn } from '../../lib/utils';
 
-export default function SwoopyNode({ data }: { data: any }) {
+export default function SwoopyNode({
+  data,
+}: {
+  data: { label: string; swoopyDir: 'top' | 'bottom' };
+}) {
   return (
     <div className="text-light flex relative">
       <div

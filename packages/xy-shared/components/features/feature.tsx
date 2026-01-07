@@ -49,7 +49,7 @@ function Feature({
     <div
       className={cn(
         'relative md:grid md:grid-cols-2 md:gap-8 ',
-        // @ts-expect-error - zIndexClasses is a string index signature
+        // @ts-ignore
         zIndexClasses[featureCount - index],
         index < featureCount - 1 ? 'mb-16 md:mb-24' : '',
       )}

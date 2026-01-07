@@ -159,14 +159,14 @@ function Flow({ className, initialColor }: FlowProps) {
     adjustViewport();
     setNodes((nds) => nds.map((n) => ({ ...n, style: { ...n.style, opacity: 1 } })));
     setEdges((eds) => eds.map((e) => ({ ...e, style: { ...e.style, opacity: 1 } })));
-  }, [setViewport, getNodes, store]);
+  }, [setNodes, setEdges, adjustViewport]);
 
   // Retrigger viewport adjustment when nodes are initialized
   // Fixes: https://github.com/xyflow/web/issues/844
   const nodesInitialized = useNodesInitialized();
   useEffect(() => {
     adjustViewport();
-  }, [viewportWidth, nodesInitialized]);
+  }, [viewportWidth, nodesInitialized, adjustViewport]);
 
   return (
     <div className="w-full h-full bg-gradient bg-no-repeat bg-[center_120px] lg:bg-[65%_center] lg:bg-[length:35%]">
@@ -197,4 +197,3 @@ export default function Wrapper(props: FlowProps) {
     </ReactFlowProvider>
   );
 }
-

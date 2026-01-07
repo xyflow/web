@@ -4,14 +4,12 @@ import { Handle, HandleType, Position } from '@xyflow/react';
 type HandleComponentProps = {
   id?: string;
   style?: CSSProperties;
-  label?: string;
   type: HandleType;
   position: Position;
 };
 
 export default function HandleComponent({
   style,
-  label,
   position,
   ...props
 }: HandleComponentProps) {
@@ -24,4 +22,3 @@ export default function HandleComponent({
     />
   );
 }
-
