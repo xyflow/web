@@ -3,7 +3,7 @@ import { readFileSync } from 'fs';
 import https from 'https';
 import { put } from '@vercel/blob';
 import { z } from 'zod';
-import { ShowcaseItem } from 'layouts/showcase';
+import { ShowcaseItem } from '../layouts/showcase';
 
 const notion = new NotionClient({ auth: process.env.NOTION_API_SECRET });
 

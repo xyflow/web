@@ -12,16 +12,6 @@ import { Handle } from '../handle';
 const order1Class = 'order-1';
 const order2Class = 'order-2';
 
-const zIndexClasses = {
-  0: 'z-[0]',
-  1: 'z-[1]',
-  2: 'z-[2]',
-  3: 'z-[3]',
-  4: 'z-[4]',
-  5: 'z-[5]',
-  6: 'z-[6]',
-};
-
 type FeatureProps = {
   title: ReactNode;
   text: string;
@@ -49,8 +39,7 @@ function Feature({
     <div
       className={cn(
         'relative md:grid md:grid-cols-2 md:gap-8 ',
-        // @ts-ignore
-        zIndexClasses[featureCount - index],
+        `z-${featureCount - index}`,
         index < featureCount - 1 ? 'mb-16 md:mb-24' : '',
       )}
     >

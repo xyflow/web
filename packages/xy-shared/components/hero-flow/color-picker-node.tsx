@@ -5,7 +5,7 @@ import { Text } from '../ui/text';
 import Handle from './handle';
 import Wrapper from './node-wrapper';
 
-export type ColorPickerNode = Node<{ label: string; value: number }>;
+export type ColorPickerNode = Node<{ label: string; value: string }>;
 
 const ColorPickerNodeComponent = ({ data, id }: NodeProps<ColorPickerNode>) => {
   const { updateNodeData } = useReactFlow();
