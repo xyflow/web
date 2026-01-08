@@ -33,7 +33,7 @@ export type ShowcaseItem = {
   title: string;
   description: string;
   image: string;
-  url: string;
+  url?: string;
   demoUrl?: string;
   repoUrl?: string;
   openSource?: boolean;
@@ -41,7 +41,7 @@ export type ShowcaseItem = {
 };
 
 function isCaseStudy(item: CaseStudy | ShowcaseItem): item is CaseStudy {
-  return item.hasOwnProperty('frontMatter');
+  return 'frontMatter' in item;
 }
 
 export function ShowcaseLayout({

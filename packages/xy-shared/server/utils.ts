@@ -1,11 +1,51 @@
-import { Client as NotionClient } from '@notionhq/client';
+import { isFullPage, Client as NotionClient } from '@notionhq/client';
 import { readFileSync } from 'fs';
 import https from 'https';
 import { put } from '@vercel/blob';
+import { z } from 'zod';
+import { ShowcaseItem } from 'layouts/showcase';
 
 const notion = new NotionClient({ auth: process.env.NOTION_API_SECRET });
 
 const SHOWCASES_DATABASE_ID = '17bf4645224280ff9710d495e21ed13d';
+
+// Zod schema for Notion page properties
+const ShowcaseSchema = z.object({
+  Name: z.object({
+    title: z.array(z.object({ plain_text: z.string() })).min(1),
+  }),
+  'Project Website': z.object({
+    url: z.string(),
+  }),
+  'Demo URL': z.object({
+    url: z.string().optional(),
+  }),
+  'Repository URL': z.object({
+    url: z.string().optional(),
+  }),
+  'Open Source': z.object({
+    checkbox: z.boolean(),
+  }),
+  Tags: z.object({
+    multi_select: z.array(z.object({ id: z.string(), name: z.string() })),
+  }),
+  Description: z.object({
+    rich_text: z.array(z.object({ plain_text: z.string() })).min(1),
+  }),
+  Image: z.object({
+    files: z
+      .array(
+        z.object({
+          file: z.object({
+            url: z.string(),
+          }),
+        }),
+      )
+      .min(1),
+  }),
+});
+
+type Showcase = z.infer<typeof ShowcaseSchema>;
 
 export function loadJSONFile<T>(url: string): T | undefined {
   try {
@@ -19,7 +59,7 @@ export function loadJSONFile<T>(url: string): T | undefined {
 export const downloadImage = async (source: string): Promise<Buffer> => {
   return new Promise((resolve) => {
     https.get(source, (res) => {
-      let chunks: Buffer[] = [];
+      const chunks: Buffer[] = [];
       res.on('data', (chunk) => chunks.push(chunk));
       res.on('end', () => resolve(Buffer.concat(chunks)));
     });
@@ -40,24 +80,28 @@ export const downloadImageToVercelBlob = async (
   return blob.url;
 };
 
-export const fakeShowcases = Array.from({ length: 10 }, (_, i) => ({
-  id: i,
-  title: `Showcase ${i}`,
-  url: 'https://example.com',
-  demoUrl: 'https://example.com',
-  description: 'This is a showcase',
-  image: '/img/showcase/placeholder.jpg',
-  tags: [],
-}));
+export const fakeShowcases: ShowcaseItem[] = Array.from(
+  { length: 10 },
+  (_, i) =>
+    ({
+      id: i.toString(),
+      title: `Showcase ${i}`,
+      url: 'https://example.com',
+      demoUrl: 'https://example.com',
+      description: 'This is a showcase',
+      image: '/img/showcase/placeholder.jpg',
+      tags: [],
+    }) satisfies ShowcaseItem,
+);
 
 export async function fetchNotionShowcases(
   framework: 'React Flow' | 'Svelte Flow' = 'React Flow',
-) {
+): Promise<ShowcaseItem[]> {
   if (!process.env.NOTION_API_SECRET) {
     return fakeShowcases;
   }
 
-  const { results } = (await notion.databases.query({
+  const { results } = await notion.databases.query({
     database_id: SHOWCASES_DATABASE_ID,
     filter: {
       and: [
@@ -85,42 +129,54 @@ export async function fetchNotionShowcases(
         direction: 'ascending',
       },
     ],
-  })) as any;
+  });
 
-  const showcases = await Promise.all(
-    results.map(async (result: any) => {
-      const id = result.id;
-      const title = result.properties.Name.title[0].plain_text;
-      const projectUrl = result.properties['Project Website'].url;
-      const demoUrl = result.properties['Demo URL'].url;
-      const repoUrl = result.properties['Repository URL'].url;
-      const openSource = result.properties['Open Source'].checkbox;
-      const tags = result.properties.Tags.multi_select;
-      const description = result.properties.Description.rich_text[0].plain_text;
-      const imageSrc = result.properties.Image.files[0].file.url;
+  const showcases: ShowcaseItem[] = [];
 
-      if (openSource) {
-        tags.push({ id: 'open-source', name: 'Open Source' });
-      }
+  for (const result of results) {
+    if (!result || !isFullPage(result)) {
+      continue;
+    }
 
-      const image =
-        process.env.BLOB_READ_WRITE_TOKEN && process.env.NODE_ENV === 'production'
-          ? await downloadImageToVercelBlob(imageSrc, id)
-          : imageSrc;
+    // Parse and validate properties with Zod
+    const parsed = ShowcaseSchema.safeParse(result.properties);
+    if (!parsed.success) {
+      console.error('Invalid Notion page properties:', parsed.error);
+      continue;
+    }
 
-      return {
-        id,
-        title,
-        url: projectUrl,
-        demoUrl,
-        repoUrl,
-        openSource,
-        description,
-        image,
-        tags,
-      };
-    }),
-  );
+    const props = parsed.data;
+    const id = result.id;
+    const title = props.Name.title[0].plain_text;
+    const projectUrl = props['Project Website'].url;
+    const demoUrl = props['Demo URL'].url;
+    const repoUrl = props['Repository URL'].url;
+    const openSource = props['Open Source'].checkbox;
+    const tags = [...props.Tags.multi_select];
+    const description = props.Description.rich_text[0].plain_text;
+    const imageSrc = props.Image.files[0].file.url;
 
-  return showcases;
+    if (openSource) {
+      tags.push({ id: 'open-source', name: 'Open Source' });
+    }
+
+    const image =
+      process.env.BLOB_READ_WRITE_TOKEN && process.env.NODE_ENV === 'production'
+        ? await downloadImageToVercelBlob(imageSrc, id)
+        : imageSrc;
+
+    showcases.push({
+      id,
+      title,
+      url: projectUrl,
+      demoUrl,
+      repoUrl,
+      openSource,
+      description,
+      image,
+      tags,
+    });
+  }
+
+  return Promise.all(showcases);
 }
