@@ -3,6 +3,7 @@ import {
   Squares2X2Icon,
   UsersIcon,
   Cog8ToothIcon,
+  ChatBubbleLeftRightIcon,
   SparklesIcon,
 } from '@heroicons/react/24/outline';
 
@@ -108,6 +109,7 @@ const metaRecord = {
 
       team: <WithIcon icon={UsersIcon}>Team</WithIcon>,
       account: <WithIcon icon={Cog8ToothIcon}>Account</WithIcon>,
+      support: <WithIcon icon={ChatBubbleLeftRightIcon}>Support</WithIcon>,
       subscribe: {
         title: <WithIcon icon={SparklesIcon}>Subscribe</WithIcon>,
         theme: {
