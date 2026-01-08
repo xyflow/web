@@ -42,6 +42,15 @@ objects, [edge](/api-reference/types/edge) objects and
 [event handlers](/api-reference/react-flow#event-handlers) are all we need to get
 something going! Get rid of everything inside `App.jsx` and add the following:
 
+> [!IMPORTANT]
+>
+> If you are using Tailwind CSS 4, you need to import the main React Flow CSS
+> stylesheet before you import the `tailwindcss` stylesheet. To ensure the
+> styles are loaded in the correct order, you should always import the styles in
+> your `global.css` file (or `index.css` file), after you import `tailwindcss`.
+> **Avoid importing the styles in your `App.tsx` file or any other file that is
+> imported by your `App.tsx` file.** [Read more](/ui).
+
 ```jsx "import '@xyflow/react/dist/style.css';" "width: '100vw', height: '100vh'"
 import { useState, useCallback } from 'react';
 import { ReactFlow, applyNodeChanges, applyEdgeChanges, addEdge } from '@xyflow/react';
