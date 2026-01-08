@@ -86,10 +86,10 @@ export default function ReactFlowPro() {
       >
         <p className="mt-4 mb-2">
           <strong>React Flow is open-source MIT-licensed software</strong>, and it will be
-          forever. Our library enables thousands of solo developers and organizations like
-          Stripe and Linkedin to build their node-based apps. With so many active users,
-          it takes time and effort to maintain the library, docs, and community. We can’t
-          do that without your support.
+          forever. Our libraries enable thousands of solo developers and organizations
+          like Stripe and Linkedin to build their node-based apps. With so many active
+          users, it takes time and effort to maintain the library, docs, and community. We
+          can’t do that without your support.
         </p>
         <p>
           <strong>Why Subscribe?</strong> With your subscription, you are ensuring the
