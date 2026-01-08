@@ -18,10 +18,10 @@ const ShowcaseSchema = z.object({
     url: z.string(),
   }),
   'Demo URL': z.object({
-    url: z.string().optional(),
+    url: z.string().nullable(),
   }),
   'Repository URL': z.object({
-    url: z.string().optional(),
+    url: z.string().nullable(),
   }),
   'Open Source': z.object({
     checkbox: z.boolean(),
@@ -88,6 +88,7 @@ export const fakeShowcases: ShowcaseItem[] = Array.from(
       title: `Showcase ${i}`,
       url: 'https://example.com',
       demoUrl: 'https://example.com',
+      repoUrl: null,
       description: 'This is a showcase',
       image: '/img/showcase/placeholder.jpg',
       tags: [],

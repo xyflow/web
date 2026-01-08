@@ -33,9 +33,9 @@ export type ShowcaseItem = {
   title: string;
   description: string;
   image: string;
-  url?: string;
-  demoUrl?: string;
-  repoUrl?: string;
+  url: string;
+  demoUrl: string | null;
+  repoUrl: string | null;
   openSource?: boolean;
   tags: { id: string; name: string }[];
 };
