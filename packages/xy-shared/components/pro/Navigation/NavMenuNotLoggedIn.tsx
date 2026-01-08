@@ -24,15 +24,15 @@ export function NavMenuNotLoggedIn({ siteName = 'React Flow' }: NavMenuNotLogged
     <>
       {(() => {
         switch (pathname) {
-          case '/pro':
           case '/pro/sign-in':
+          case '/pro/sign-in/magic-link':
             return (
               <Button {...buttonProps}>
                 <Link href="/pro/sign-up">Sign Up</Link>
               </Button>
             );
+          case '/pro':
           case '/pro/sign-up':
-          case '/pro/sign-in/magic-link':
           case '/pro/reset-password':
             return (
               <Button {...buttonProps}>
