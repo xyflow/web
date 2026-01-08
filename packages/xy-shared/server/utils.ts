@@ -177,5 +177,7 @@ export async function fetchNotionShowcases(
     });
   }
 
-  return Promise.all(showcases);
+  await Promise.all(showcases);
+
+  return showcases;
 }
