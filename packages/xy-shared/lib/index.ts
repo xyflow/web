@@ -23,8 +23,8 @@
 //
 export const wideNegativeMargin = 'sm:-mx-[min(calc((100vw-768px)/2),12rem)]';
 
-export async function fetchJSON<T>(url: string): Promise<Record<string, T>> {
-  let json = {};
+export async function fetchJSON<T>(url: string): Promise<T> {
+  let json = {} as T;
 
   try {
     const response = await fetch(url, { headers: { 'User-Agent': 'webkid' } });

@@ -151,7 +151,9 @@ export async function fetchNotionShowcases(
     const demoUrl = props['Demo URL'].url;
     const repoUrl = props['Repository URL'].url;
     const openSource = props['Open Source'].checkbox;
-    const tags = [...props.Tags.multi_select];
+    const tags: { id: string; name: string }[] = props.Tags.multi_select.map(
+      (tag) => ({ id: tag.id, name: tag.name }),
+    );
     const description = props.Description.rich_text[0].plain_text;
     const imageSrc = props.Image.files[0].file.url;
 

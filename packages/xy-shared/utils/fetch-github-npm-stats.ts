@@ -20,15 +20,19 @@ export type Library = keyof typeof LIBRARY_CONFIG;
 export async function fetchGitHubNpmStats(library: Library) {
   const config = LIBRARY_CONFIG[library];
 
-  const { stargazers_count: stars = 0 } = await fetchJSON(config.githubUrl);
+  const { stargazers_count: stars = 0 } = await fetchJSON<{ stargazers_count?: number }>(
+    config.githubUrl,
+  );
 
-  const downloadPromises = config.npmUrls.map((url) => fetchJSON(url));
+  const downloadPromises = config.npmUrls.map((url) =>
+    fetchJSON<{ downloads: number }>(url),
+  );
   const downloadResults = await Promise.all(downloadPromises);
 
-  const downloads = downloadResults.reduce(
-    (total, result) => total + (result.downloads || 0),
-    0,
-  );
+  let downloads = 0;
+  for (const result of downloadResults) {
+    downloads += result?.downloads || 0;
+  }
 
   if (!downloads || !stars) {
     console.warn('could not fetch downloads and stars. please try again.');
@@ -36,4 +40,3 @@ export async function fetchGitHubNpmStats(library: Library) {
 
   return { stars, downloads };
 }
-
