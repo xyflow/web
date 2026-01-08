@@ -45,8 +45,6 @@ const ShowcaseSchema = z.object({
   }),
 });
 
-type Showcase = z.infer<typeof ShowcaseSchema>;
-
 export function loadJSONFile<T>(url: string): T | undefined {
   try {
     const file = readFileSync(url, 'utf-8');

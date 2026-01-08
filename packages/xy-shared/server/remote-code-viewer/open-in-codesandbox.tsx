@@ -35,7 +35,9 @@ export function OpenInCodesandbox({ framework, route }: OpenInCodesandboxProps) 
       const { files, dependencies } = await fetchFiles(route, framework);
 
       setMountReroute({ files, dependencies });
-    } catch (e) {}
+    } catch (e) {
+      console.error(e);
+    }
   }, [framework, route]);
 
   return (

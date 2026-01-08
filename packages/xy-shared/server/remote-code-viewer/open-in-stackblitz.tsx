@@ -25,7 +25,9 @@ export function OpenInStackblitz({ framework, route }: OpenInStackblitzProps) {
       const { project, options } = prepare(framework, files, dependencies);
 
       sdk.openProject(project, options);
-    } catch (e) {}
+    } catch (e) {
+      console.error(e);
+    }
   }, [framework, route]);
 
   return (

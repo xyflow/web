@@ -110,6 +110,7 @@ export function CodePreview({
                 onClick={() =>
                   iframeRef.current?.src &&
                   // refreshes the iframe without CORS problems
+                  // eslint-disable-next-line no-self-assign
                   (iframeRef.current.src = iframeRef.current.src)
                 }
               />

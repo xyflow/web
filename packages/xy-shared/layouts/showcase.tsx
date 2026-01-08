@@ -228,7 +228,7 @@ function CaseStudyPreview({
             <Link href={route}>Read Case Study</Link>
           </Button>
           <Button asChild variant="link" className="text-md font-bold">
-            <a href={data.project_url} target="_blank" className="flex items-center">
+            <a href={data.project_url} target="_blank" className="flex items-center" rel="noreferrer">
               Project Website <ArrowRightCircleIcon className="ml-1 w-4 h-4" />
             </a>
           </Button>
