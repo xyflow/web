@@ -16,8 +16,14 @@ import {
 } from '@heroicons/react/24/outline';
 import Loader from '../../Loader';
 import { Framework } from '../../../../types';
+import { ButtonProps } from '../../../ui/button';
 
-const TabButton = (props) => {
+interface TabButtonProps extends ButtonProps {
+  icon?: React.ReactNode;
+  'data-state'?: 'active' | 'inactive';
+}
+
+const TabButton = (props: TabButtonProps) => {
   const isActive = props['data-state'] === 'active';
   const className = cn(
     'border-b-2 border-transparent rounded-none -mb-px hover:bg-transparent',
@@ -64,8 +70,12 @@ export default function ProExampleViewerTabs({
   previewUrl?: string;
   framework?: Framework;
 }) {
-  // @ts-expect-error
-  const readme = files?.['/README.mdx']?.code || files?.['/README.md']?.code;
+  const readmeMdx = files?.['/README.mdx'];
+  const readmeMd = files?.['/README.md'];
+  const readme =
+    (typeof readmeMdx === 'string' ? readmeMdx : readmeMdx?.code) ||
+    (typeof readmeMd === 'string' ? readmeMd : readmeMd?.code) ||
+    '';
   const iframePreviewUrl =
     previewUrl ?? `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${framework}/${exampleId}`;
 

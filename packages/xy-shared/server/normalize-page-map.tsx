@@ -1,4 +1,4 @@
-import { cache } from 'react';
+import { cache, type ReactElement } from 'react';
 import { SidebarTitle } from '../components/sidebar-title';
 import { Folder, MdxFile, MetaJsonFile } from 'nextra';
 import { getPageMap } from 'nextra/page-map';
@@ -52,17 +52,23 @@ export function createNormalizePageMap(getExamplesPageMap: () => Promise<Folder>
       folder.children = folder.children
         .filter((item: MdxFile) => {
           // Skip items where frontMatter.hidden is true
-          return !('frontMatter' in item && item.frontMatter?.hidden === true);
+          return 'frontMatter' in item && item.frontMatter?.hidden !== true;
         })
-        .map((item: MdxFile & { title: string }) => ({
-          ...item,
-          title:
-            typeof item.title === 'string' ? (
-              <SidebarTitle frontMatter={item.frontMatter!} title={item.title} />
-            ) : (
-              item.title
-            ),
-        }));
+        .map((item: MdxFile) => {
+          const itemWithTitle = item as MdxFile & { title?: string | ReactElement };
+          return {
+            ...item,
+            title:
+              typeof itemWithTitle.title === 'string' ? (
+                <SidebarTitle
+                  frontMatter={item.frontMatter!}
+                  title={itemWithTitle.title}
+                />
+              ) : (
+                itemWithTitle.title
+              ),
+          };
+        });
     }
 
     return pageMap;
@@ -71,4 +77,3 @@ export function createNormalizePageMap(getExamplesPageMap: () => Promise<Folder>
   // Cache result of a page map on dynamic routes e.g. `/pro/dashboard`
   return cache($normalizePageMap);
 }
-

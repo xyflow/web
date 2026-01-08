@@ -8,9 +8,16 @@ function daysFromNow(dateString: string) {
   return Math.ceil((new Date().getTime() - Date.parse(dateString)) / DAYS_IN_MS);
 }
 
+type SidebarTitleFrontMatter = {
+  is_pro_example?: boolean;
+  is_free?: boolean;
+  created_at?: string;
+  hidden?: boolean;
+};
+
 export const SidebarTitle: FC<{
   title: string;
-  frontMatter: Record<string, any>;
+  frontMatter: SidebarTitleFrontMatter;
 }> = ({ title, frontMatter }) => {
   const isProExample = frontMatter?.is_pro_example;
   const isFree = frontMatter?.is_free;
