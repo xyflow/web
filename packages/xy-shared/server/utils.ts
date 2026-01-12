@@ -97,7 +97,10 @@ export async function fetchNotionShowcases(
   framework: 'React Flow' | 'Svelte Flow' = 'React Flow',
 ): Promise<ShowcaseItem[]> {
   if (!process.env.NOTION_API_SECRET) {
-    return fakeShowcases;
+    if (process.env.NODE_ENV === 'development') {
+      return fakeShowcases;
+    }
+    throw new Error('NOTION_API_SECRET is not set');
   }
 
   const { results } = await notion.databases.query({
@@ -151,9 +154,10 @@ export async function fetchNotionShowcases(
     const demoUrl = props['Demo URL'].url;
     const repoUrl = props['Repository URL'].url;
     const openSource = props['Open Source'].checkbox;
-    const tags: { id: string; name: string }[] = props.Tags.multi_select.map(
-      (tag) => ({ id: tag.id, name: tag.name }),
-    );
+    const tags: { id: string; name: string }[] = props.Tags.multi_select.map((tag) => ({
+      id: tag.id,
+      name: tag.name,
+    }));
     const description = props.Description.rich_text[0].plain_text;
     const imageSrc = props.Image.files[0].file.url;
 
