@@ -7,7 +7,7 @@ import { ShowcaseItem } from '../layouts/showcase';
 
 const notion = new NotionClient({ auth: process.env.NOTION_API_SECRET });
 
-const SHOWCASES_DATABASE_ID = '17bf4645224280ff9710d495e21ed13d';
+const SHOWCASES_DATABASE_ID = '17bf4645-2242-81fe-a089-000bf447a578';
 
 // Zod schema for Notion page properties
 const ShowcaseSchema = z.object({
@@ -103,8 +103,8 @@ export async function fetchNotionShowcases(
     throw new Error('NOTION_API_SECRET is not set');
   }
 
-  const { results } = await notion.databases.query({
-    database_id: SHOWCASES_DATABASE_ID,
+  const { results } = await notion.dataSources.query({
+    data_source_id: SHOWCASES_DATABASE_ID,
     filter: {
       and: [
         {
