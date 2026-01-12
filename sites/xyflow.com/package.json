@@ -8,7 +8,8 @@
     "build": "next build",
     "postbuild": "next-sitemap",
     "start": "next start",
-    "lint": "eslint .",
+    "lint": "eslint . --max-warnings 50",
+    "check-types": "next typegen && tsc --noEmit",
     "write-showcases": "rm -rf static/img/showcase && mkdir -p static/img/showcase && node scripts/get-showcases.js",
     "check-sitemap": "node ../../packages/xy-shared/scripts/check-sitemap.mjs",
     "generate-routes-type": "node ../../packages/xy-shared/scripts/generate-routes-type.mjs",
@@ -38,7 +39,6 @@
     "typescript": "catalog:",
     "xy-tailwind-config": "workspace:*",
     "xy-tsconfig": "workspace:*",
-    "eslint": "^9",
-    "eslint-config-next": "catalog:"
+    "eslint": "catalog:"
   }
 }

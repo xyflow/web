@@ -14,13 +14,13 @@
     "clean": "pnpm -r --parallel exec rimraf dist .turbo node_modules"
   },
   "devDependencies": {
-    "@turbo/gen": "^2.5.0",
-    "eslint": "^9.25.1",
-    "eslint-config-xyflow": "workspace:*",
-    "prettier": "^3.5.3",
-    "rimraf": "^6.0.1",
     "turbo": "^2.5.0",
-    "typescript": "^5.8.3"
+    "@turbo/gen": "^2.5.0",
+    "rimraf": "^6.0.1",
+    "eslint": "catalog:",
+    "prettier": "catalog:",
+    "typescript": "catalog:",
+    "eslint-config-xyflow": "workspace:*"
   },
   "packageManager": "pnpm@10.9.0",
   "name": "docs",

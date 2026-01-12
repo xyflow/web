@@ -4,16 +4,16 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "start": "next start",
     "dev": "next --turbopack --port 3002",
     "build": "next build",
     "postbuild": "next-sitemap",
-    "start": "next start",
-    "lint": "eslint .",
+    "lint": "eslint --max-warnings 50",
+    "check-types": "next typegen && tsc --noEmit",
     "write-showcases": "rm -rf static/img/showcase && mkdir -p static/img/showcase && node scripts/get-showcases.js",
     "check-sitemap": "node ../../packages/xy-shared/scripts/check-sitemap.mjs",
     "generate-routes-type": "node ../../packages/xy-shared/scripts/generate-routes-type.mjs",
-    "check-links": "node ../../packages/xy-shared/scripts/check-mdx-links.mjs",
-    "types:check": "tsc --noEmit"
+    "check-links": "node ../../packages/xy-shared/scripts/check-mdx-links.mjs"
   },
   "dependencies": {
     "@apollo/client": "3.7.15",
@@ -55,7 +55,6 @@
     "typescript": "catalog:",
     "xy-tailwind-config": "workspace:*",
     "xy-tsconfig": "workspace:*",
-    "eslint": "^9",
-    "eslint-config-next": "catalog:"
+    "eslint": "catalog:"
   }
 }

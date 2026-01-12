@@ -9,7 +9,7 @@ patchedDependencies:
   nextra: patches/nextra.patch
 
 catalog:
-  next: '^15.5.7'
+  next: '^15.5.9'
   next-sitemap: '^4.2.3'
   nextra: '^4.6.0'
   nextra-theme-docs: '^4.6.0'
@@ -20,7 +20,7 @@ catalog:
   '@types/react-dom': '^19.2.0'
   '@types/node': '^22.14.1'
   eslint: '^9.25.1'
-  eslint-config-next: '^16.1.1'
+  prettier: '^3.7.4'
   typescript: '^5.8.3'
   '@xyflow/react': '^12.10.0'
   '@xyflow/svelte': '^1.5.0'

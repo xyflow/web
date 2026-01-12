@@ -6,7 +6,8 @@
   "types": "./index.tsx",
   "license": "MIT",
   "scripts": {
-    "lint": "eslint \"**/*.ts*\"",
+    "lint": "eslint . --max-warnings 50",
+    "check-types": "tsc --noEmit",
     "generate:component": "turbo gen react-component"
   },
   "devDependencies": {
