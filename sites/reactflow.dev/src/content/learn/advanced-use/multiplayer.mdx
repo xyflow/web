@@ -54,7 +54,7 @@ Depending on how far you want to take handling conflicts and disconnects, you ve
 land in **local-first** territory. When your sync engine allows a user to be disconnected
 for an indefinite amount of time, you have a **local-first** application. If you would
 like a good primer on this topic we recommend
-[Ink & Switchs' essay](https://www.inkandswitch.com/essay/local-first/) that coined the
+[Ink & Switch's essay](https://www.inkandswitch.com/essay/local-first/) that coined the
 term.
 
 A **CRDT** (_Conflict-free Replicated Data Type_) is a data structure that lets multiple
@@ -87,7 +87,7 @@ any lost functionality.
 On the other hand, **updates to the nodes & edges should be persistent and consistent!**
 Imagine if Alice deletes a node and Bob misses this update. Now if Bob subsequently moves
 the node, we would have an inconsistent application state. For this kind of data we have
-to use a solution that handles disconnects more agressively and is able to discard
+to use a solution that handles disconnects more aggressively and is able to discard
 impossible actions like moving a deleted node.
 
 At the core of a multiplayer React Flow application is syncing the nodes & edges. However
