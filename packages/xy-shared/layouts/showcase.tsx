@@ -44,6 +44,32 @@ function isCaseStudy(item: CaseStudy | ShowcaseItem): item is CaseStudy {
   return 'frontMatter' in item;
 }
 
+function getVisibleItems(
+  showcases: ShowcaseItem[],
+  caseStudies: CaseStudy[],
+  selected: Set<string>,
+) {
+  const visibleShowcases = showcases.filter(
+    ({ tags }) =>
+      selected.size === 0 ||
+      Array.from(selected).every((tag) => tags.some(({ name }) => name === tag)),
+  );
+
+  let currentCaseStudy = caseStudies[0];
+
+  return visibleShowcases.reduce(
+    (list, showcase, i) => {
+      list.push(showcase);
+      if (currentCaseStudy && (i + 1) % 6 === 0) {
+        list.push(currentCaseStudy);
+        currentCaseStudy = caseStudies[(i + 1) / 6];
+      }
+      return list;
+    },
+    [] as (ShowcaseItem | CaseStudy)[],
+  );
+}
+
 export function ShowcaseLayout({
   title,
   subtitle,
@@ -53,27 +79,10 @@ export function ShowcaseLayout({
 }: ShowcaseLayoutProps) {
   const { all, selected, toggle } = useTags(showcases);
 
-  const visibleItems = useMemo(() => {
-    const visibleShowcases = showcases.filter(
-      ({ tags }) =>
-        selected.size === 0 ||
-        Array.from(selected).every((tag) => tags.some(({ name }) => name === tag)),
-    );
-
-    let currentCaseStudy = caseStudies[0];
-
-    return visibleShowcases.reduce(
-      (list, showcase, i) => {
-        list.push(showcase);
-        if (currentCaseStudy && (i + 1) % 6 === 0) {
-          list.push(currentCaseStudy);
-          currentCaseStudy = caseStudies[(i + 1) / 6];
-        }
-        return list;
-      },
-      [] as (ShowcaseItem | CaseStudy)[],
-    );
-  }, [selected, showcases, caseStudies]);
+  const visibleItems = useMemo(
+    () => getVisibleItems(showcases, caseStudies, selected),
+    [selected, showcases, caseStudies],
+  );
 
   return (
     <BaseLayout>
@@ -228,7 +237,12 @@ function CaseStudyPreview({
             <Link href={route}>Read Case Study</Link>
           </Button>
           <Button asChild variant="link" className="text-md font-bold">
-            <a href={data.project_url} target="_blank" className="flex items-center" rel="noreferrer">
+            <a
+              href={data.project_url}
+              target="_blank"
+              className="flex items-center"
+              rel="noreferrer"
+            >
               Project Website <ArrowRightCircleIcon className="ml-1 w-4 h-4" />
             </a>
           </Button>

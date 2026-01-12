@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useRef } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 import {
   ReactFlow,
   Background,
@@ -33,46 +33,47 @@ const proOptions = {
   hideAttribution: true,
 };
 
-const defaultNodes: Node[] = [
-  {
-    id: 'hero',
-    type: 'hero',
-    position: { x: 390, y: 50 },
-    data: { label: 'output' },
-    className: 'w-[200px] lg:w-[300px]',
-    style: { opacity: 0 },
-  },
-  {
-    id: 'color',
-    type: 'colorpicker',
-    position: { x: 50, y: 0 },
-    data: { value: '#ff0071', label: 'shape color' },
-    className: 'w-[150px]',
-    style: { opacity: 0 },
-  },
-  {
-    id: 'shape',
-    type: 'switcher',
-    position: { x: 0, y: 125 },
-    data: {
-      value: 'cube',
-      label: 'shape type',
+const getInitialNodes = (initialColor: string = '#ff0071') =>
+  [
+    {
+      id: 'hero',
+      type: 'hero',
+      position: { x: 390, y: 50 },
+      data: { label: 'output' },
+      className: 'w-[200px] lg:w-[300px]',
+      style: { opacity: 0 },
     },
-    className: 'w-[150px]',
-    style: { opacity: 0 },
-  },
-  {
-    id: 'zoom',
-    type: 'slider',
-    position: { x: 40, y: 280 },
-    data: {
-      value: 12,
-      label: 'zoom level',
+    {
+      id: 'color',
+      type: 'colorpicker',
+      position: { x: 50, y: 0 },
+      data: { value: initialColor, label: 'shape color' },
+      className: 'w-[150px]',
+      style: { opacity: 0 },
     },
-    className: 'w-[150px]',
-    style: { opacity: 0 },
-  },
-];
+    {
+      id: 'shape',
+      type: 'switcher',
+      position: { x: 0, y: 125 },
+      data: {
+        value: 'cube',
+        label: 'shape type',
+      },
+      className: 'w-[150px]',
+      style: { opacity: 0 },
+    },
+    {
+      id: 'zoom',
+      type: 'slider',
+      position: { x: 40, y: 280 },
+      data: {
+        value: 12,
+        label: 'zoom level',
+      },
+      className: 'w-[150px]',
+      style: { opacity: 0 },
+    },
+  ] satisfies Node[];
 
 const defaultEdges: Edge[] = [
   {
@@ -125,12 +126,7 @@ function Flow({ className, initialColor }: FlowProps) {
   const viewportWidth = useStore(viewportWidthSelector);
   const store = useStoreApi();
 
-  // fix for wrong color on svelte site
-  const initial = useRef(true);
-  if (initial.current) {
-    defaultNodes[1].data.value = initialColor;
-    initial.current = false;
-  }
+  const defaultNodes = useMemo(() => getInitialNodes(initialColor), [initialColor]);
 
   const adjustViewport = useCallback(() => {
     const nodes = getNodes();
