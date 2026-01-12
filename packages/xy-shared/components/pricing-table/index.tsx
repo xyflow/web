@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useMemo } from 'react';
 import { cn } from '../../lib/utils';
 import { Button } from '../ui/button';
 import {
@@ -42,23 +42,19 @@ const PricingTable = ({
   const [billingInterval, setBillingInterval] = useState<BillingInterval>(
     BillingInterval.MONTH,
   );
-  const [currency, setCurrency] = useState<Currency | undefined>(undefined);
-  const [, setIsLoaded] = useState(false);
 
-  const isMonthly = billingInterval === BillingInterval.MONTH;
-
-  useEffect(() => {
+  const initialCurrency = useMemo(() => {
     const storedCurrency = localStorage.getItem('pricing-currency');
     const currency =
       storedCurrency && Object.values(Currency).includes(storedCurrency as Currency)
         ? (storedCurrency as Currency)
         : getDefaultCurrency();
-
-    setCurrency(currency);
     localStorage.setItem('pricing-currency', currency);
-    setIsLoaded(true);
+    return currency;
   }, []);
+  const [currency, setCurrency] = useState<Currency>(initialCurrency);
 
+  const isMonthly = billingInterval === BillingInterval.MONTH;
   return (
     <TooltipProvider delayDuration={0}>
       <div>
