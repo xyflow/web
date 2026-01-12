@@ -30,13 +30,7 @@ export type ContentGridItemProps = {
   children: React.ReactNode;
 };
 
-/**
- * A content grid item adds some consistent styling for elements in a content
- * grid. It optionally receives a `route` prop that turns the container into
- * a link: useful for blog post previews, for example.
- *
- */
-export function ContentGridItem({ className, route, children }: ContentGridItemProps) {
+const LinkOrDiv = ({ route, ...props }: ContentGridItemProps) => {
   const isExternal = route?.includes('https://');
   const linkProps = isExternal
     ? {
@@ -45,15 +39,22 @@ export function ContentGridItem({ className, route, children }: ContentGridItemP
       }
     : {};
 
-  const LinkOrDiv = (props: React.HTMLAttributes<Element>) =>
-    route && isExternal ? (
-      <a href={route} {...props} {...linkProps} />
-    ) : route ? (
-      <Link href={route} {...props} />
-    ) : (
-      <div {...props} />
-    );
+  if (route && isExternal) {
+    return <a href={route} {...props} {...linkProps} />;
+  }
+  if (route) {
+    return <Link href={route} {...props} />;
+  }
+  return <div {...props} />;
+};
 
+/**
+ * A content grid item adds some consistent styling for elements in a content
+ * grid. It optionally receives a `route` prop that turns the container into
+ * a link: useful for blog post previews, for example.
+ *
+ */
+export function ContentGridItem({ className, route, children }: ContentGridItemProps) {
   return (
     <LinkOrDiv
       className={cn(

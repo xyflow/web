@@ -1,12 +1,12 @@
 import { type ReactNode } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 import { Heading } from '../ui/heading';
 import { Text, TextProps } from '../ui/text';
 import { Button } from '../ui/button';
 import { Container } from '../ui/container';
+import { LinkOrSpan } from '../link-or-span';
 import { cn } from '../../lib/utils';
 
 import { type Author, AuthorList } from '../authors-list';
@@ -49,23 +49,6 @@ export function ProjectPreview({
   className,
   imageWrapperClassName,
 }: ProjectPreviewProps) {
-  const isExternal = route?.includes('https://');
-  const linkProps = isExternal
-    ? {
-        target: '_blank',
-        rel: 'noopener noreferrer',
-      }
-    : {};
-
-  const LinkOrSpan = (props: React.HTMLAttributes<Element>) =>
-    isExternal ? (
-      <a href={route} {...props} {...linkProps} />
-    ) : route ? (
-      <Link href={route} {...props} />
-    ) : (
-      <span {...props} />
-    );
-
   return (
     <div className={className}>
       {image && (
@@ -108,7 +91,7 @@ export function ProjectPreview({
       </Text>
       <div className="flex gap-4 mt-auto">
         <Button asChild variant="link" className={cn('text-md', linkClassName)}>
-          <LinkOrSpan className="flex items-center">
+          <LinkOrSpan route={route} className="flex items-center">
             {linkLabel} <ArrowRightCircleIcon className="ml-1 w-4 h-4" />
           </LinkOrSpan>
         </Button>

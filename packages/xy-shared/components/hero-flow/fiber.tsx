@@ -87,18 +87,18 @@ interface AppProps {
   count?: number;
 }
 
+function generateRandomData(count: number) {
+  return Array.from({ length: count }, (r: number = 10) => ({
+    random: Math.random(),
+    position: randomVector(r),
+    rotation: randomEuler(),
+  }));
+}
+
 export default function App({ color, zoom, shape, count = 150 }: AppProps) {
   const { ErrorBoundary, didCatch } = useErrorBoundary();
 
-  const randomData = useMemo(
-    () =>
-      Array.from({ length: count }, (r: number = 10) => ({
-        random: Math.random(),
-        position: randomVector(r),
-        rotation: randomEuler(),
-      })),
-    [count],
-  );
+  const randomData = useMemo(() => generateRandomData(count), [count]);
 
   // Memoize the availability of WebGL
   const availableWebGL = useMemo(() => isWebGLAvailable(), []);

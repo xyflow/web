@@ -1,8 +1,8 @@
 import { type ReactNode } from 'react';
-import Link from 'next/link';
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 import { Heading, HeadingProps } from '../ui/heading';
 import { Text } from '../ui/text';
+import { LinkOrSpan } from '../link-or-span';
 
 import { type Author, AuthorList } from '../authors-list';
 
@@ -25,9 +25,6 @@ export function BlogPostPreview({
   route,
   className,
 }: BlogPostPreviewProps) {
-  const LinkOrSpan = (props: React.HTMLAttributes<Element>) =>
-    route ? <Link href={route} {...props} /> : <span {...props} />;
-
   return (
     <div className={className}>
       <Text size="sm" variant="light">
@@ -46,7 +43,7 @@ export function BlogPostPreview({
         {intro}
       </Text>
 
-      <LinkOrSpan>
+      <LinkOrSpan route={route}>
         Read more <ArrowRightCircleIcon className="inline w-4 h-4" />
       </LinkOrSpan>
     </div>
