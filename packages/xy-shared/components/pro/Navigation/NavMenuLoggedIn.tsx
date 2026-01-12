@@ -12,6 +12,8 @@ import {
   MenubarSeparator,
   MenubarTrigger,
 } from '../../menubar';
+import { buttonVariants } from '../../ui/button';
+import { cn } from '../../../lib/utils';
 import { redirect } from 'next/navigation';
 import { User } from '@nhost/nhost-js/auth';
 
@@ -25,9 +27,15 @@ export function NavMenuLoggedIn({
   refetchUser: () => void;
 }) {
   return (
-    <Menubar className="bg-primary text-white rounded-full w-9 h-9 p-0">
+    <Menubar className="border-0 bg-transparent p-0 shadow-none">
       <MenubarMenu>
-        <MenubarTrigger>
+        <MenubarTrigger
+          className={cn(
+            buttonVariants({ variant: 'pro', size: 'lg' }),
+            // Ensure the gradient ring pseudo-elements render correctly in the menubar context.
+            'px-1 w-10 isolate',
+          )}
+        >
           <UserIcon height="18" />
         </MenubarTrigger>
         <MenubarContent align="end" className="border-gray-200">
