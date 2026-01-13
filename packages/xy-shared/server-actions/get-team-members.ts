@@ -22,10 +22,12 @@ export async function getTeamMembers() {
 
   try {
     const response = await nhost.graphql.request<{
-      team_subscriptions;
+      // why is this not inferred from the query?
+      team_subscriptions: { email: string }[];
     }>(GET_TEAM_MEMBERS, { userId });
     return response.body?.data?.team_subscriptions;
-  } catch (error) {
-    throw new Error(prettifyError(error));
+  } catch (error: unknown) {
+    // TODO: handle errors uniformly throughout the codebase
+    throw new Error(prettifyError(error as { message: string } | { message: string }[]));
   }
 }
