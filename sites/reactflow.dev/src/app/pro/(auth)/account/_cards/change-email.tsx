@@ -16,7 +16,7 @@ import { changeEmail } from 'xy-shared/server-actions';
 
 const ChangeEmailCard: FC<{ userEmail: string }> = ({ userEmail }) => {
   const [isLoading, startTransition] = useTransition();
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | undefined>();
   const [needsEmailVerification, setNeedsEmailVerification] = useState(false);
   const [newEmail, setNewEmail] = useState(userEmail);
 
@@ -29,7 +29,7 @@ const ChangeEmailCard: FC<{ userEmail: string }> = ({ userEmail }) => {
       const response = await changeEmail(newEmail);
 
       setError(response?.error);
-      setNeedsEmailVerification(!response?.error);
+      setNeedsEmailVerification(response?.error ? false : true);
       setNewEmail(newEmail);
     });
   }

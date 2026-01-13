@@ -28,7 +28,8 @@ const fathomOptions = {
 };
 
 export default async function RootLayout({ children }: LayoutProps<'/'>) {
-  const { Projects: _, ...remainingCategories } = defaultFooterCategories;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { Projects, ...remainingCategories } = defaultFooterCategories;
   const normalizePageMap = createNormalizePageMap(getExamplesPageMap);
   const [pageMap, lastChangelog] = await Promise.all([
     normalizePageMap().catch((e) => {

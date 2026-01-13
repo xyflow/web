@@ -20,7 +20,7 @@ function ResetPassword() {
       const email = formData.get('email') as string;
       const response = await resetPassword(email);
       setError(response?.error);
-      setIsSent(response?.error ? false : true);
+      setIsSent(!response?.error);
     });
   }
 

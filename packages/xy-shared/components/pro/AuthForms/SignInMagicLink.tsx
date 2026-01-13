@@ -24,7 +24,7 @@ const SignInMagicLink: FC = () => {
       const email = formData.get('email') as string;
       const result = await signInEmailPasswordless(email);
       setError(result?.error);
-      setIsSuccess(result?.error ? false : true);
+      setIsSuccess(!result?.error);
     });
   }
 
