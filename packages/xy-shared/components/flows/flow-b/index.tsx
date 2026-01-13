@@ -11,11 +11,19 @@ import {
   ReactFlowProvider,
   useNodesInitialized,
   useReactFlow,
+  Node,
+  Edge,
 } from '@xyflow/react';
 import { Input } from '../../ui/input';
-import { Select, SelectItem, SelectTrigger, SelectContent, SelectValue } from '../../ui/select';
+import {
+  Select,
+  SelectItem,
+  SelectTrigger,
+  SelectContent,
+  SelectValue,
+} from '../../ui/select';
 
-const nodes = [
+const nodes: Node[] = [
   {
     id: '1',
     type: 'creator',
@@ -24,7 +32,7 @@ const nodes = [
   },
 ];
 
-const edges = [];
+const edges: Edge[] = [];
 
 function CreatorNode() {
   const { setNodes, setEdges } = useReactFlow();
