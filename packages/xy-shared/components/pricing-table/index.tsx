@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { cn } from '../../lib/utils';
 import { Button } from '../ui/button';
 import {
@@ -44,15 +44,22 @@ const PricingTable = ({
   );
 
   const initialCurrency = useMemo(() => {
-    const storedCurrency = localStorage.getItem('pricing-currency');
-    const currency =
-      storedCurrency && Object.values(Currency).includes(storedCurrency as Currency)
-        ? (storedCurrency as Currency)
-        : getDefaultCurrency();
-    localStorage.setItem('pricing-currency', currency);
-    return currency;
+    if (typeof window !== 'undefined') {
+      const storedCurrency = localStorage.getItem('pricing-currency');
+      if (
+        storedCurrency &&
+        Object.values(Currency).includes(storedCurrency as Currency)
+      ) {
+        return storedCurrency as Currency;
+      }
+    }
+    return getDefaultCurrency();
   }, []);
   const [currency, setCurrency] = useState<Currency>(initialCurrency);
+
+  useEffect(() => {
+    localStorage.setItem('pricing-currency', currency);
+  }, [currency]);
 
   const isMonthly = billingInterval === BillingInterval.MONTH;
   return (
