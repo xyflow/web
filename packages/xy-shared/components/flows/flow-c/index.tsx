@@ -121,7 +121,7 @@ export const FlowC: FC<FlowCProps> = ({ framework }) => {
 
   const proOptions = { hideAttribution: true };
   const fitViewOptions = { padding: 0.2 };
-  const nodeColor = (node) => node.style.backgroundColor || '#eee';
+  const nodeColor = (node: Node) => node.style?.backgroundColor || '#eee';
 
   return (
     <ReactFlow

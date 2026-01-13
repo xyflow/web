@@ -38,9 +38,11 @@ function CreatorNode() {
   const { setNodes, setEdges } = useReactFlow();
   const [shapeValue, setShapeValue] = useState('rectangle');
 
-  const onSubmit = (evt) => {
+  const onSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
-    const { name, shape } = evt.target;
+    const form = evt.currentTarget;
+    const name = form.elements.namedItem('name') as HTMLInputElement;
+    const shape = form.elements.namedItem('shape') as HTMLSelectElement;
 
     setNodes((nds) => [
       ...nds,
