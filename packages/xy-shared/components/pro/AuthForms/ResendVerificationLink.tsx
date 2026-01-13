@@ -10,7 +10,7 @@ import { Button } from '../../ui/button';
 
 function ResendVerificationLink() {
   const [isLoading, startTransition] = useTransition();
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | undefined>();
   const [isSuccess, setIsSuccess] = useState(false);
   const searchParams = useSearchParams();
 
@@ -23,7 +23,7 @@ function ResendVerificationLink() {
       const result = await signInEmailPasswordless(email);
 
       setError(result?.error);
-      setIsSuccess(!result?.error);
+      setIsSuccess(result?.error ? false : true);
     });
   }
 

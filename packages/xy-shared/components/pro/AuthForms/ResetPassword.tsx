@@ -9,7 +9,7 @@ import { InputLabel, Input } from '../../ui/input';
 
 function ResetPassword() {
   const [isLoading, startTransition] = useTransition();
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | undefined>();
   const [isSent, setIsSent] = useState(false);
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -20,7 +20,7 @@ function ResetPassword() {
       const email = formData.get('email') as string;
       const response = await resetPassword(email);
       setError(response?.error);
-      setIsSent(!response?.error);
+      setIsSent(response?.error ? false : true);
     });
   }
 

@@ -13,7 +13,7 @@ import {
 
 const SignInMagicLink: FC = () => {
   const [isLoading, startTransition] = useTransition();
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | undefined>();
   const [isSuccess, setIsSuccess] = useState(false);
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -24,7 +24,7 @@ const SignInMagicLink: FC = () => {
       const email = formData.get('email') as string;
       const result = await signInEmailPasswordless(email);
       setError(result?.error);
-      setIsSuccess(!result?.error);
+      setIsSuccess(result?.error ? false : true);
     });
   }
 
