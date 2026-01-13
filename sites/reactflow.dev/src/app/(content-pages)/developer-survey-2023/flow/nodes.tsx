@@ -1,5 +1,5 @@
 import { Button, Heading, Link, Text, cn } from 'xy-shared';
-import { Handle, Node, Position } from '@xyflow/react';
+import { Handle, Node, NodeProps, Position } from '@xyflow/react';
 
 export const nodeTypes = {
   action: ActionNode,
@@ -22,7 +22,9 @@ export const action = ({ id, position, action, content }: ActionParams) => ({
   data: { content, action },
 });
 
-export function ActionNode({ data }) {
+export function ActionNode({
+  data,
+}: NodeProps<Node<{ action: () => void; content?: React.ReactNode }>>) {
   return (
     <Button
       className="nopan nodrag relative bg-primary text-white flex items-center justify-center rounded-full shadow-md"
@@ -38,7 +40,7 @@ export function ActionNode({ data }) {
         position={Position.Bottom}
         className="invisible absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
       />
-      {data?.content}
+      {data.content}
     </Button>
   );
 }
@@ -55,6 +57,12 @@ export type SectionParams = {
     | { content: React.ReactNode; onClick: () => void }[];
   position: { x: number; y: number };
 } & Omit<Node, 'id' | 'type' | 'data' | 'position'>;
+
+type SectionNodeData = {
+  content: React.ReactNode;
+  links: React.ReactElement | false | undefined;
+  action: React.ReactElement | null;
+};
 
 export const section = ({
   id,
@@ -130,7 +138,7 @@ export const section = ({
   ...delegated,
 });
 
-function SectionNode({ data }) {
+function SectionNode({ data }: NodeProps<Node<SectionNodeData>>) {
   return (
     <div className="relative bg-white p-8 rounded-lg shadow-md max-w-lg flex flex-col gap-4">
       <Handle
@@ -143,11 +151,11 @@ function SectionNode({ data }) {
         position={Position.Bottom}
         className="invisible absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
       />
-      {data?.content}
-      {(data?.links || data?.action) && (
+      {data.content}
+      {(data.links || data.action) && (
         <div className="flex gap-4 justify-between items-center justify-items-end">
-          {data?.links ?? <div />}
-          {data?.action}
+          {data.links ?? <div />}
+          {data.action}
         </div>
       )}
     </div>
@@ -176,7 +184,7 @@ export const project = ({
   ...delegated,
 });
 
-function ProjectNode({ data }) {
+function ProjectNode({ data }: NodeProps<Node<ProjectParams>>) {
   return (
     <div
       className={cn(
@@ -194,7 +202,7 @@ function ProjectNode({ data }) {
         position={Position.Bottom}
         className="invisible absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
       />
-      <Text size={data?.isCategory ? 'sm' : 'xs'}>{data?.label}</Text>
+      <Text size={data.isCategory ? 'sm' : 'xs'}>{data.label}</Text>
     </div>
   );
 }
@@ -212,7 +220,7 @@ export const chatBubble = ({ id, message, position }: ChatBubbleParams) => ({
   position,
 });
 
-function ChatBubble({ data }) {
+function ChatBubble({ data }: NodeProps<Node<ChatBubbleParams>>) {
   return (
     <div className="max-w-48 p-2 bg-blue-500 text-white rounded-tr-lg rounded-b-lg shadow-md">
       <Handle

@@ -4,7 +4,9 @@ import { Button } from 'xy-shared';
 import { useCallback, useMemo } from 'react';
 import {
   BaseEdge,
+  Edge,
   EdgeLabelRenderer,
+  EdgeProps,
   getStraightPath,
   useReactFlow,
 } from '@xyflow/react';
@@ -34,7 +36,7 @@ export function FocusEdge({
   targetX,
   targetY,
   data = { actions: 'both' },
-}) {
+}: EdgeProps<Edge<{ actions: 'prev' | 'next' | 'both' }>>) {
   const { fitView } = useReactFlow();
   const [edgePath, labelX, labelY] = getStraightPath({
     sourceX,

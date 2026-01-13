@@ -257,7 +257,7 @@ const ProExamples: FC = async () => {
   );
 };
 
-function ListItem({ title, text }) {
+function ListItem({ title, text }: { title: ReactNode; text: ReactNode }) {
   return (
     <div className="mb-4">
       <Text className="font-bold mt-2">{title}</Text>

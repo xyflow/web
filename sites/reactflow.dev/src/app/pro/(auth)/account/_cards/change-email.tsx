@@ -29,7 +29,7 @@ const ChangeEmailCard: FC<{ userEmail: string }> = ({ userEmail }) => {
       const response = await changeEmail(newEmail);
 
       setError(response?.error);
-      setNeedsEmailVerification(response?.error ? false : true);
+      setNeedsEmailVerification(!response?.error);
       setNewEmail(newEmail);
     });
   }

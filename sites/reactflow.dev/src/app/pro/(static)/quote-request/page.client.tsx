@@ -29,6 +29,7 @@ export const Form: FC = () => {
     const plan = searchParams.get('plan');
 
     if (plan && ['starter', 'pro', 'enterprise'].includes(plan)) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setFormData((fd) => ({ ...fd, plan }));
     }
   }, [searchParams]);

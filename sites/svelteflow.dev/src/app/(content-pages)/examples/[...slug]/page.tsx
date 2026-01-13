@@ -18,6 +18,7 @@ const { wrapper: Wrapper, h1: H1 } = getMDXComponents();
 export default async function Page(props: PageProps) {
   const params = await props.params;
   const route = params.slug.join('/');
+  // eslint-disable-next-line @typescript-eslint/no-require-imports -- `require` supports Fast Refresh
   const { default: MDXContent, toc, metadata, sourceCode } = require(
     // The static analyzer needs to know the import path as precisely as possible.
     // To achieve this, we keep `examples/` in the import path.
