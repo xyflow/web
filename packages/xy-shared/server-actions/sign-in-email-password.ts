@@ -25,8 +25,13 @@ export async function signIn(formData: FormData, redirectTo = '/pro/dashboard') 
         error: 'Failed to sign in. Please check your credentials.',
       };
     }
-  } catch (error) {
-    if (error.error === 'unverified-user') {
+  } catch (error: unknown) {
+    if (
+      error &&
+      typeof error === 'object' &&
+      'error' in error &&
+      error.error === 'unverified-user'
+    ) {
       // use encodeURIComponent because email can contain special characters such as +
       return { redirect: `/pro/email-verification?email=${encodeURIComponent(email)}` };
     } else {

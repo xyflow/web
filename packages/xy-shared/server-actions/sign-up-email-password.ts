@@ -35,8 +35,12 @@ export async function signUp(formData: FormData) {
         ? '/pro/dashboard'
         : `/pro/email-verification?email=${encodeURIComponent(email)}`,
     };
-  } catch (error) {
-    console.error(error.body);
-    return { error: `An error occurred during sign up: ${error.message}` };
+  } catch (error: unknown) {
+    if (error && typeof error === 'object' && 'body' in error) {
+      console.error((error as { body: unknown }).body);
+    }
+    return {
+      error: `An error occurred during sign up: ${error instanceof Error ? error.message : 'An error occurred'}`,
+    };
   }
 }
