@@ -43,13 +43,13 @@ export async function getExamplesPageMap(
   });
   const examplesPageMap = mergeMetaWithPageMap(_pageMap[0], meta);
   const pageMap = normalizePageMap(examplesPageMap);
-  return addFrontMatter(pageMap, importMetadata);
+  return addFrontMatter(pageMap, importMetadata) as Folder;
 }
 
 function addFrontMatter(
   item: PageMapItem,
   importMetadata: (route: string) => DynamicMeta,
-) {
+): PageMapItem {
   if ('children' in item) {
     return {
       ...item,
