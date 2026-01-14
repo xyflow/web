@@ -8,7 +8,7 @@
     "dev": "pnpm run generate-registry && next dev --port 3004",
     "build": "pnpm run generate-registry && next build",
     "start": "next start",
-    "lint": "eslint .",
+    "lint": "eslint . --max-warnings 0",
     "check-types": "tsc --noEmit",
     "add-component": "node ./scripts/init-new-component.cjs",
     "generate-registry": "node ./scripts/generate-registry.cjs"

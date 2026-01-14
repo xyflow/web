@@ -63,6 +63,10 @@ const ChangeInfo = ({ change }: ChangeInfoProps) => {
   );
 };
 
+function NoChanges() {
+  return <div>No Changes Triggered</div>;
+}
+
 export const ChangeLogger = ({ limit = 20 }: ChangeLoggerProps) => {
   const [changes, setChanges] = useState<NodeChange[]>([]);
   const store = useStoreApi();
@@ -82,8 +86,6 @@ export const ChangeLogger = ({ limit = 20 }: ChangeLoggerProps) => {
 
     return () => store.setState({ onNodesChange: undefined });
   }, [handleNodeChanges, store]);
-
-  const NoChanges = () => <div>No Changes Triggered</div>;
 
   return (
     <>
@@ -140,7 +142,7 @@ type NodeInfoProps = {
   absPosition: XYPosition;
   width?: number;
   height?: number;
-  data: any;
+  data: object;
 };
 
 const NodeInfo = ({

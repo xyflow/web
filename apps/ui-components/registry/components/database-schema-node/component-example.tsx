@@ -23,7 +23,7 @@ const DatabaseSchemaDemo = memo(({ data }: DatabaseSchemaNodeData) => {
       <DatabaseSchemaNodeBody>
         {data.schema.map((entry) => (
           <DatabaseSchemaTableRow key={entry.title}>
-            <DatabaseSchemaTableCell className="pl-0 pr-6 font-light">
+            <DatabaseSchemaTableCell className="pr-6 pl-0 font-light">
               <LabeledHandle
                 id={entry.title}
                 title={entry.title}
@@ -48,5 +48,7 @@ const DatabaseSchemaDemo = memo(({ data }: DatabaseSchemaNodeData) => {
     </DatabaseSchemaNode>
   );
 });
+
+DatabaseSchemaDemo.displayName = "DatabaseSchemaDemo";
 
 export default DatabaseSchemaDemo;
