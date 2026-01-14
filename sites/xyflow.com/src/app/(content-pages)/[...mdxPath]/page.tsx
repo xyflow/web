@@ -4,7 +4,7 @@ import { LabsLayoutWrapper, BaseBlogPostLayout } from 'xy-shared';
 import { getPageMap } from 'nextra/page-map';
 import { getBlogs } from 'xy-shared/utils/get-blogs';
 import { useMDXComponents as getMdxComponents } from '@/mdx-components';
-import { MdxFile } from 'nextra';
+import { MdxFile, PageMapItem } from 'nextra';
 
 type PageProps = Readonly<{
   params: Promise<{
@@ -24,7 +24,7 @@ export default async function Page(props: PageProps) {
   const isLabsPage = params.mdxPath[0] === 'labs';
   const isBlogPage = params.mdxPath[0] === 'blog';
 
-  let pageMap;
+  let pageMap: PageMapItem[];
 
   if (isLabsPage) {
     pageMap = await getPageMap('/labs');
