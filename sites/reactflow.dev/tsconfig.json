@@ -6,13 +6,10 @@
         "name": "next"
       }
     ],
-    "target": "ES6",
     "baseUrl": "src/",
     "paths": {
       "@/*": ["./*"]
-    },
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true
+    }
   },
   "include": ["**/*.ts", "**/*.tsx", "next-env.d.ts", ".next/types/**/*.ts"],
   "exclude": ["node_modules", "src/app/_meta.global.tsx"]

@@ -6,13 +6,10 @@
         "name": "next"
       }
     ],
-    "target": "ES6",
     "baseUrl": "src/",
     "paths": {
       "@/*": ["./*"]
-    },
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "resolveJsonModule": true
+    }
   },
   "include": [
     "**/*.ts",

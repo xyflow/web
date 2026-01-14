@@ -8,11 +8,10 @@
     "allowJs": true,
     "jsx": "preserve",
     "noEmit": true,
+
     "declaration": false,
     "declarationMap": false,
     "incremental": true,
-    "resolveJsonModule": true,
-    "strict": true,
     "strictNullChecks": true
   }
 }
