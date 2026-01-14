@@ -1,11 +1,11 @@
 import Markdown from 'react-markdown';
-import PrismLight from 'react-syntax-highlighter/dist/cjs/prism-light';
-import { oneLight as prismTheme } from 'react-syntax-highlighter/dist/cjs/styles/prism';
-import ts from 'react-syntax-highlighter/dist/cjs/languages/prism/typescript';
-import tsx from 'react-syntax-highlighter/dist/cjs/languages/prism/tsx';
-import jsx from 'react-syntax-highlighter/dist/cjs/languages/prism/jsx';
-import js from 'react-syntax-highlighter/dist/cjs/languages/prism/javascript';
-import bash from 'react-syntax-highlighter/dist/cjs/languages/prism/bash';
+import PrismLight from 'react-syntax-highlighter/dist/esm/prism-light';
+import { oneLight as prismTheme } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import ts from 'react-syntax-highlighter/dist/esm/languages/prism/typescript';
+import tsx from 'react-syntax-highlighter/dist/esm/languages/prism/tsx';
+import jsx from 'react-syntax-highlighter/dist/esm/languages/prism/jsx';
+import js from 'react-syntax-highlighter/dist/esm/languages/prism/javascript';
+import bash from 'react-syntax-highlighter/dist/esm/languages/prism/bash';
 import { Text } from '../../../ui/text';
 import remarkGfm from 'remark-gfm';
 

@@ -26,7 +26,7 @@ const nextConfig: NextConfig = {
     SVELTE_FLOW_VERSION: svelteFlowPackageJson.version,
     NEXT_PUBLIC_EXAMPLES_URL:
       process.env.VERCEL_ENV === 'preview'
-        ? `https://example-apps-git-${parsePreviewDeploySlug(process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL)}.vercel.app`
+        ? `https://example-apps-git-${parsePreviewDeploySlug(process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL ?? '')}.vercel.app`
         : process.env.NEXT_PUBLIC_EXAMPLES_URL,
   },
   images: {

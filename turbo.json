@@ -101,6 +101,9 @@
     },
     "test": {
       "inputs": ["$TURBO_DEFAULT$", ".env.test.local", ".env.test", ".env"]
+    },
+    "check-types": {
+      "inputs": ["$TURBO_DEFAULT$"]
     }
   }
 }

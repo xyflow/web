@@ -65,7 +65,7 @@ export const ExamplesOverview: FC = async () => {
       {pageMap.map((_category) => {
         const hasChildren = 'children' in _category;
         if (!hasChildren) return;
-        const category = _category as Folder & { title };
+        const category = _category as Folder & { title: string };
         return (
           <Fragment key={category.title}>
             <Heading className="mt-20" size="sm" id={category.name}>

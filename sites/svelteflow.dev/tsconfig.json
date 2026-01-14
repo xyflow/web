@@ -1,21 +1,25 @@
 {
   "extends": "xy-tsconfig/nextjs.json",
   "compilerOptions": {
-    "plugins": [{ "name": "next" }],
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
     "target": "ES6",
     "baseUrl": "src/",
-    "moduleResolution": "bundler",
     "paths": {
       "@/*": ["./*"]
-    }
+    },
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "resolveJsonModule": true
   },
   "include": [
-    "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts",
-    "theme.config.tsx",
-    "tailwind.config.ts"
+    "next-env.d.ts",
+    "next.config.js",
+    ".next/types/**/*.ts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "src/app/_meta.global.tsx"]
 }

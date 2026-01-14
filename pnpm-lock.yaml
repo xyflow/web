@@ -656,6 +656,9 @@ importers:
       '@types/react':
         specifier: 'catalog:'
         version: 19.2.7
+      '@types/react-syntax-highlighter':
+        specifier: ^15.5.13
+        version: 15.5.13
       eslint:
         specifier: 'catalog:'
         version: 9.39.1(jiti@2.6.1)
@@ -738,6 +741,9 @@ importers:
       '@types/react':
         specifier: 'catalog:'
         version: 19.2.7
+      '@types/react-syntax-highlighter':
+        specifier: ^15.5.13
+        version: 15.5.13
       eslint-config-xyflow:
         specifier: workspace:*
         version: link:../../configs/eslint-config-xyflow
