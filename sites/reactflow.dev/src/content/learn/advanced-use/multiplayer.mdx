@@ -13,7 +13,7 @@ would break visual consistency or make collaborative exploration more complicate
 a full live multiplayer system needs to be put in place.
 
 In our [Collaborative Flow Pro Example](/examples/interaction/collaborative), we show a
-realtime multiplayer collaboration flow using [React Flow](/) and
+realtime multiplayer collaboration flow using React Flow and
 [Yjs](https://github.com/yjs/yjs). In this guide, we will explore some best practices for
 integrating multiplayer collaboration in your React Flow application.
 
@@ -90,8 +90,8 @@ the node, we would have an inconsistent application state. For this kind of data
 to use a solution that handles disconnects more aggressively and is able to discard
 impossible actions like moving a deleted node.
 
-At the core of a multiplayer React Flow application is syncing the nodes & edges. However
-not all parts of the state should be synced. For instance, what nodes & edges are selected
+At the core of a multiplayer React Flow application is syncing the nodes and edges. However
+not all parts of the state should be synced. For instance, what nodes and edges are selected
 should be different for each client. Also there are some fields that are relevant for the
 certain library functions like `dragging`, `resizing` or `measured`.
 
@@ -148,16 +148,16 @@ of other users' cursors.
 
 We experimented with different multiplayer backend solutions to understand their best use
 cases for React Flow apps. What we found out, is that there's no one-size-fits-all
-solution!: the choice between CRDT-based local-first libraries (like
+solution. The choice between CRDT-based local-first libraries (like
 [Yjs](https://yjs.dev/) and [Jazz](https://jazz.tools)) and server-authoritative
 approaches (like [Supabase](https://supabase.com/) and [Convex](https://convex.dev/)) will
 change the way you approach building multiplayer React Flow applications:
 
-- **CRDT libraries**, on the other hand, will make your life easier around offline-first
+- **CRDT libraries** will make your life easier around offline-first
   multiplayer support, giving you for-free automatic conflict resolution, but in the case
   where your application is also structured around a database, you will need to implement
   your own adapters between the CRDT library and the database.
-- **Server-authoritative solutions** will make your life easier around a database and
+- **Server-authoritative solutions** are easier to use with a database and
   classical application logic, but will complicate your life around offline-first
   multiplayer support, conflict resolution, and development complexity.
 
@@ -167,5 +167,5 @@ change the way you approach building multiplayer React Flow applications:
 | [**Jazz**](https://jazz.tools/)                                  | CRDT (Local-first)              | ✅ Full offline support    | Automatic (CRDT)                                            | A full, offline-first database solution that handles multiplayer natively.                                                                                                                             |
 | [**Supabase**](https://supabase.com/)                            | Server-authoritative            | ❌ Requires connection     | Manual/RLS policies                                         | Classic SQL-based database solution, with realtime support, but no CRDT (conflict resolution must be implemented manually).                                                                            |
 | [**Convex**](https://convex.dev/)                                | Server-authoritative            | ❌ Requires connection     | [Optimistic](https://docs.convex.dev/database/advanced/occ) | TypeScript-first, database solution with real-time queries and a sync-engine with some conflict resolution capabilities. [Can be paired with Automerge](https://stack.convex.dev/automerge-and-convex) |
-| [**LiveBlocks**](https://liveblocks.io/)                         | Server-authoritative, CRDT-like | 🟡 Partial offline support | Uses CRDTs under the hood                                   | Real-time collaboration platform with hosted proprietary backend. [React Flow Example](https://liveblocks.io/examples/collaborative-flowchart/zustand-flowchart).                                      |
-| [**Velt** for React Flow](https://velt.dev/libraries/react-flow) | CRDT with managed backend       | ✅ Full offline support    | Uses CRDTs under the hood                                   | Collaborative editing platform with managed backend, with a dedicated [React Flow Library](https://docs.velt.dev/realtime-collaboration/crdt/setup/reactflow)                                          |
+| [**Liveblocks**](https://liveblocks.io/)                         | Server-authoritative, CRDT-like | 🟡 Partial offline support | Uses CRDTs under the hood                                   | Real-time collaboration platform with hosted proprietary backend. [React Flow Example](https://liveblocks.io/examples/collaborative-flowchart/zustand-flowchart).                                      |
+| [**Velt**](https://velt.dev/libraries/react-flow) | CRDT with managed backend       | ✅ Full offline support    | Uses CRDTs under the hood                                   | Collaborative editing platform with managed backend, with a dedicated [React Flow Library](https://docs.velt.dev/realtime-collaboration/crdt/setup/reactflow)                                          |
