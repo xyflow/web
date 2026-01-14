@@ -22,7 +22,7 @@
   "globalDependencies": [".env"],
   "tasks": {
     "build": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["^build", "lint"],
       "outputs": [
         ".next/**",
         "!.next/cache/**",
@@ -39,7 +39,7 @@
       ]
     },
     "reactflow-website#build": {
-      "dependsOn": ["^build", "^ui-components#generate-registry", "^example-apps#build"],
+      "dependsOn": ["^build", "^ui-components#generate-registry", "^example-apps#build", "lint"],
       "outputs": [".next/**", "!.next/cache/**"],
       "inputs": [
         "$TURBO_DEFAULT$",
@@ -52,7 +52,7 @@
       ]
     },
     "svelteflow-website#build": {
-      "dependsOn": ["^build", "^example-apps#build"],
+      "dependsOn": ["^build", "^example-apps#build", "lint"],
       "outputs": [".next/**", "!.next/cache/**"],
       "inputs": [
         "$TURBO_DEFAULT$",
@@ -63,7 +63,7 @@
       ]
     },
     "xyflow-website#build": {
-      "dependsOn": ["^build", "^example-apps#build"],
+      "dependsOn": ["^build", "^example-apps#build", "lint"],
       "outputs": [".next/**", "!.next/cache/**"],
       "inputs": [
         "$TURBO_DEFAULT$",
