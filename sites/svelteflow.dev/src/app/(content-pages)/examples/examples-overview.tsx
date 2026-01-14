@@ -64,7 +64,7 @@ export const ExamplesOverview: FC = async () => {
       {pageMap.map((_category) => {
         const hasChildren = 'children' in _category;
         if (!hasChildren) return;
-        const category = _category as Folder & { title };
+        const category = _category as Folder & { title: string };
         return (
           <Fragment key={category.title}>
             <Heading className="mt-20" size="sm">
@@ -83,8 +83,8 @@ export const ExamplesOverview: FC = async () => {
                         image={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte${example.route}/preview.jpg?v=1`}
                         title={
                           <div className="flex items-center">
-                            {example.frontMatter.title}
-                            {example.frontMatter.is_pro_example ? (
+                            {example.frontMatter?.title}
+                            {example.frontMatter?.is_pro_example ? (
                               <span className="bg-primary text-white ml-2 px-2 text-sm rounded-lg">
                                 Pro
                               </span>
@@ -92,7 +92,7 @@ export const ExamplesOverview: FC = async () => {
                           </div>
                         }
                         titleSize="xs"
-                        description={example.frontMatter.description}
+                        description={example.frontMatter?.description}
                         descriptionVariant="light"
                         linkLabel="See example"
                         linkClassName="text-gray-900 font-medium text-sm group-hover:text-primary"
