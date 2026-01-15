@@ -3,7 +3,6 @@
 
 @import 'xy-shared/styles/globals.css';
 @import 'nextra-theme-docs/style.css';
-@import 'xy-tailwind-config/theme.css';
 
 /* TODO: this does not seem to make a difference */
 @source '../../../../packages/xy-shared/';
@@ -14,12 +13,12 @@
   --background-image-gradient: url('/img/bg-gradient.jpg');
 }
 
+/* Svelte Flow uses the Svelte brand color (orange) */
 @layer base {
   :root {
-    --primary: 15 100% 50%;
-    --primary-foreground: 210 40% 98%;
-    --secondary-foreground: 15 100% 50%;
-    --accent: 15 100% 50%;
+    --primary: var(--color-svelte);
+    --accent: var(--color-svelte);
+    --secondary-foreground: var(--color-svelte);
   }
 }
 

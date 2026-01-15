@@ -1,6 +1,84 @@
-/* 1. Base Styles */
+@theme {
+  /* Container */
+  --container-2xl: 1400px;
+
+  /* Colors */
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-light: hsl(var(--light));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  /* Border Radius */
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  /* Font Families */
+  --font-sans: var(--font-ntdapper);
+  --font-mono: var(--font-firamono);
+
+  /* Animations */
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+}
+
+/* Keyframes */
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+/* Container utility customization */
+@utility container {
+  margin-inline: auto;
+  padding-inline: 2rem;
+  max-width: theme(--container-2xl);
+}
+
+/* 2. Base Styles */
 :root {
   --docsearch-primary-color: hsl(var(--primary));
+
+  /* Brand Colors - use these in site-specific CSS to set --primary */
+  --color-xyflow: 248 1% 85%;
+  --color-react: 333 100% 50%;
+  --color-svelte: 15 100% 50%;
 }
 
 @layer base {
@@ -71,14 +149,13 @@ html:has(body.x\:overflow-hidden) nav {
   width: 100%;
 }
 
-/* 2. Typography */
+/* 3. Typography */
 
 .xy-link-gray {
   @apply transition text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 contrast-more:text-gray-700 contrast-more:dark:text-gray-100;
-  /* @apply x:transition x:text-gray-600 x:dark:text-gray-400 x:hover:text-gray-800 x:dark:hover:text-gray-200 x:contrast-more:text-gray-700 x:contrast-more:dark:text-gray-100; */
 }
 
-/* 3. Navigation */
+/* 4. Navigation */
 .nextra-menu-desktop li.active > a {
   @apply bg-transparent text-primary;
 }
@@ -105,7 +182,7 @@ main .x\:border-primary-500 {
   @apply border-primary;
 }
 
-/* 4. Sidebar */
+/* 5. Sidebar */
 
 /* adds labels to the sidebar items */
 .sidebar-title.pro:after {
@@ -133,7 +210,7 @@ li.active > .sidebar-title.pro:after {
   @apply text-primary ml-1.5 px-1.5;
 }
 
-/* 5. Buttons */
+/* 6. Buttons */
 .pro-button {
   transition: all 0.3s ease;
 }

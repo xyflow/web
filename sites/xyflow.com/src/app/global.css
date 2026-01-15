@@ -3,7 +3,6 @@
 
 @import 'xy-shared/styles/globals.css';
 @import 'nextra-theme-docs/style.css';
-@import 'xy-tailwind-config/theme.css';
 
 /* TODO: this does not seem to make a difference */
 @source '../../../../packages/xy-shared/';
@@ -14,10 +13,10 @@
   --background-image-gradient: url('/img/bg-gradient.jpg');
 }
 
+/* xyflow.com uses black as primary */
 @layer base {
   :root {
     --primary: 0 0% 0%;
-    --primary-foreground: 210 40% 98%;
     --secondary-foreground: 0 0% 0%;
   }
 }

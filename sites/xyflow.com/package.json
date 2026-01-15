@@ -39,7 +39,6 @@
     "tailwindcss": "catalog:",
     "@tailwindcss/postcss": "catalog:",
     "typescript": "catalog:",
-    "xy-tailwind-config": "workspace:*",
     "xy-tsconfig": "workspace:*"
   }
 }
