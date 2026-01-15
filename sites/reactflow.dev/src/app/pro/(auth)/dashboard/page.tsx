@@ -20,7 +20,7 @@ const OverviewPage: FC = () => {
               SubscriptionPlan.STUDENT,
               SubscriptionPlan.OSS,
             ]}
-            button={{ label: 'Browse Examples', href: '/examples/pro' }}
+            button={{ label: 'Browse Examples', href: '/pro' }}
           />
 
           <SubscriptionFeature

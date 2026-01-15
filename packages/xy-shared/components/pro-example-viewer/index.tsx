@@ -39,7 +39,7 @@ const ProExampleViewer: FC<{
         >
           <Text className="flex-1 basis-full max-w-xl">
             <strong>This is a Pro {type}.</strong> Get{' '}
-            <Link className="underline" href="/examples/pro">
+            <Link className="underline" href="/pro">
               all pro examples
             </Link>
             , templates, 1:1 support from the xyflow team and prioritized GitHub issues

@@ -3,7 +3,7 @@ import { BaseLayout, Hero, SubscribeSection } from 'xy-shared';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 
 import { NextraMetadata } from 'nextra';
-import { SignUpButton } from '@/app/(content-pages)/examples/pro/pro-page';
+import { SignUpButton } from 'xy-shared/components/pro/SignUpButton';
 
 export const metadata: NextraMetadata = {
   asIndexPage: true,

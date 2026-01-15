@@ -29,9 +29,8 @@ export function createNormalizePageMap(getExamplesPageMap: () => Promise<Folder>
             ...(catchAllExamplesMeta as MetaJsonFile).data,
           },
         },
-        ...examples.slice(0, -1), // Exclude /examples/pro page
+        ...examples,
         ...catchAllExamples,
-        examples.at(-1)!, // Move /examples/pro to the end of sidebar
       ],
     };
 

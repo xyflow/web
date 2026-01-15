@@ -11,7 +11,7 @@ import { SparklesIcon } from '@heroicons/react/24/outline';
 
 import ClientLogos from 'xy-shared/components/client-logos';
 import { NextraMetadata } from 'nextra';
-import { SignUpButton } from '@/app/(content-pages)/examples/pro/pro-page';
+import { SignUpButton } from 'xy-shared/components/pro/SignUpButton';
 
 import zapier from '../../../../public/img/clients/zapier.svg';
 import stripe from '../../../../public/img/clients/stripe.svg';
