@@ -383,12 +383,6 @@ importers:
         specifier: ^8.52.0
         version: 8.52.0(eslint@9.39.1(jiti@2.6.1))(typescript@5.9.3)
 
-  configs/xy-tailwind-config:
-    devDependencies:
-      tailwindcss:
-        specifier: ^4.1.18
-        version: 4.1.18
-
   configs/xy-tsconfig: {}
 
   packages/xy-shared:
@@ -689,9 +683,6 @@ importers:
       typescript:
         specifier: 'catalog:'
         version: 5.9.3
-      xy-tailwind-config:
-        specifier: workspace:*
-        version: link:../../configs/xy-tailwind-config
       xy-tsconfig:
         specifier: workspace:*
         version: link:../../configs/xy-tsconfig
@@ -771,9 +762,6 @@ importers:
       typescript:
         specifier: 'catalog:'
         version: 5.9.3
-      xy-tailwind-config:
-        specifier: workspace:*
-        version: link:../../configs/xy-tailwind-config
       xy-tsconfig:
         specifier: workspace:*
         version: link:../../configs/xy-tsconfig
@@ -844,9 +832,6 @@ importers:
       typescript:
         specifier: 'catalog:'
         version: 5.9.3
-      xy-tailwind-config:
-        specifier: workspace:*
-        version: link:../../configs/xy-tailwind-config
       xy-tsconfig:
         specifier: workspace:*
         version: link:../../configs/xy-tsconfig
