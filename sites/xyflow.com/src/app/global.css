@@ -1,17 +1,18 @@
-@layer l-base, l-nextra;
-
-/*
- * We specify layers because it's a working way to make works
- * Tailwind CSS 4 in Nextra 4 with Tailwind CSS 3 in this app
- *
- * Originally done in https://github.com/the-guild-org/docs/blob/bdfe4f564ee68f8b670828f425e32a3add973883/packages/components/style.css
-**/
+@import 'tailwindcss';
 @import '@xyflow/react/dist/style.css';
-@import 'tailwindcss/base' layer(l-base);
-@import 'nextra-theme-docs/dist/style-prefixed.css' layer(l-nextra);
-@import 'tailwindcss/utilities';
-@import 'tailwindcss/components';
+
 @import 'xy-shared/styles/globals.css';
+@import 'nextra-theme-docs/style.css';
+@import 'xy-tailwind-config/theme.css';
+
+/* TODO: this does not seem to make a difference */
+@source '../../../../packages/xy-shared/';
+
+/* Site-specific theme extensions */
+/* TODO: what is this */
+@theme {
+  --background-image-gradient: url('/img/bg-gradient.jpg');
+}
 
 @layer base {
   :root {

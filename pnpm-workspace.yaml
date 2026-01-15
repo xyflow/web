@@ -25,3 +25,5 @@ catalog:
   '@xyflow/react': '^12.10.0'
   '@xyflow/svelte': '^1.5.0'
   '@xyflow/system': '^0.0.72'
+  'tailwindcss': '^4.1.18'
+  '@tailwindcss/postcss': '^4.1.18'
