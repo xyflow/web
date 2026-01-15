@@ -5,6 +5,6 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
-    "tailwindcss": "^3.4.14"
+    "tailwindcss": "^4.1.18"
   }
 }
