@@ -87,7 +87,7 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
             >
               <Search />
               <a
-                className="xy-link-gray x:focus-visible:nextra-focus"
+                className="xy-link-gray focus-visible:nextra-focus"
                 href="https://github.com/xyflow/xyflow"
                 target="_blank"
                 rel="noreferrer"
@@ -103,7 +103,7 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
                 </svg>
               </a>
               <a
-                className="xy-link-gray x:focus-visible:nextra-focus"
+                className="xy-link-gray focus-visible:nextra-focus"
                 href="https://discord.gg/RVmnytFmGW"
                 target="_blank"
                 rel="noreferrer"
