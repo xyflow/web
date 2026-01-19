@@ -1,7 +1,6 @@
 export default {
   plugins: {
-    'postcss-import': {},
-    tailwindcss: {},
+    '@tailwindcss/postcss': {},
     'postcss-lightningcss': { browsers: '>= .25% and not dead' },
   },
 };

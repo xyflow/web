@@ -38,9 +38,9 @@
     "eslint-config-xyflow": "workspace:*",
     "postcss-import": "^16.1.0",
     "postcss-lightningcss": "^1.0.1",
-    "tailwindcss": "^3.4.14",
+    "tailwindcss": "catalog:",
+    "@tailwindcss/postcss": "catalog:",
     "typescript": "catalog:",
-    "xy-tailwind-config": "workspace:*",
     "xy-tsconfig": "workspace:*"
   }
 }

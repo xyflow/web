@@ -48,7 +48,7 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
           banner={
             <Banner storageKey="node-collisions">
               <Link
-                className="hover:underline x:focus-visible:nextra-focus text-sm"
+                className="hover:underline focus-visible:nextra-focus text-sm"
                 href="/examples/layout/node-collisions"
               >
                 🚨 New Example: Handling Node Collisions!
@@ -92,7 +92,7 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
             >
               <Search />
               <a
-                className="xy-link-gray x:focus-visible:nextra-focus"
+                className="xy-link-gray focus-visible:nextra-focus"
                 href="https://github.com/xyflow/xyflow"
                 target="_blank"
                 rel="noreferrer"
@@ -108,7 +108,7 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
                 </svg>
               </a>
               <a
-                className="xy-link-gray x:focus-visible:nextra-focus"
+                className="xy-link-gray focus-visible:nextra-focus"
                 href="https://discord.gg/RVmnytFmGW"
                 target="_blank"
                 rel="noreferrer"

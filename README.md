@@ -31,7 +31,6 @@ The packages in this monorepo are reusable self-contained bits that we want to s
 across our apps and websites. Much of it is configuration for the different tools we use:
 
 - `packages/eslint-config-xyflow`
-- `packages/xy-tailwind-config`
 - `packages/xy-tsconfig`
 
 ### sites/

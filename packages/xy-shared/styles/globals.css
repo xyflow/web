@@ -1,280 +1,84 @@
-.xy-link-gray {
-  @apply x:transition x:text-gray-600 x:dark:text-gray-400 x:hover:text-gray-800 x:dark:hover:text-gray-200 x:contrast-more:text-gray-700 x:contrast-more:dark:text-gray-100;
+@theme {
+  /* Container */
+  --container-2xl: 1400px;
+
+  /* Colors */
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-light: hsl(var(--light));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  /* Border Radius */
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  /* Font Families */
+  --font-sans: var(--font-ntdapper);
+  --font-mono: var(--font-firamono);
+
+  /* Animations */
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
 }
 
-/* adds labels to the sidebar items */
-.sidebar-title.pro:after {
-  content: 'Pro';
-  @apply bg-primary border border-primary text-white text-xs ml-1.5 px-1.5 font-bold rounded-full;
-}
-
-.sidebar-title.pro.free:after {
-  content: 'Pro Trial';
-}
-
-li.active > .sidebar-title.pro:after {
-  display: inline-block;
-  @apply bg-primary border-primary text-white;
-}
-
-.sidebar-title.new:after {
-  position: absolute;
-  width: 36px;
-  font-size: 12px;
-  line-height: 14px;
-  transform: translate(-35%, -35%);
-  content: 'new';
-  font-weight: 500;
-  @apply text-primary ml-1.5 px-1.5;
-}
-
-.nextra-menu-desktop li.active > a {
-  @apply bg-transparent text-primary;
-}
-
-nav a:has(svg.nav-github-logo) {
-  @apply max-sm:hidden;
-}
-
-nav.x\:bg-transparent {
-  background-color: white;
-}
-
-.light .nextra-content {
-  color: #222;
-}
-
-div.nextra-nav-container-blur {
-  backdrop-filter: none;
-  background: white;
-}
-
-.pro-button {
-  transition: all 0.3s ease;
-}
-
-@property --gradientAngle {
-  syntax: '<angle>';
-  inherits: false;
-  initial-value: 258deg;
-}
-
-.pro-button {
-  --gradientAngle: 258deg;
-}
-
-main .x\:text-primary-600,
-nav .x\:text-primary-600 {
-  @apply text-primary;
-}
-
-main .x\:border-primary-500 {
-  @apply border-primary;
-}
-
-.pro-button:before {
-  transition: --gradientAngle 0.3s ease;
-  background:
-    linear-gradient(
-      var(--gradientAngle),
-      hsl(var(--primary)) 36.34%,
-      hsl(var(--secondary)) 50.92%,
-      rgba(240, 240, 240, 1) 63.72%
-    ),
-    linear-gradient(
-      var(--gradientAngle),
-      hsl(var(--primary)) 2.22%,
-      hsl(var(--secondary)) 18.5%,
-      rgba(240, 240, 240, 1) 32.77%
-    );
-}
-
-.pro-button:hover:before {
-  --gradientAngle: 45deg;
-}
-
-.react-flow__controls button {
-  background: white;
-}
-
-.darkflow.react-flow {
-  background-color: #141414;
-}
-
-.lightflow .node-wrapper__title,
-.darkflow .node-wrapper__title {
-  @apply font-mono;
-  @apply text-xs;
-  @apply px-4;
-  @apply py-2;
-  @apply border-b;
-  @apply border-[#ededed];
-}
-
-.lightflow .node-wrapper label,
-.darkflow .node-wrapper label {
-  @apply text-xs;
-  @apply block;
-  @apply font-mono;
-  @apply text-[#555];
-  @apply mb-1;
-}
-
-.lightflow .node-wrapper input,
-.darkflow .node-wrapper input {
-  @apply rounded-sm;
-  @apply text-xs;
-  @apply font-mono;
-  @apply border-[#EDEDED];
-  @apply text-[#111];
-  @apply bg-[#ffffff];
-}
-
-.darkflow .node-wrapper input {
-  @apply border-[#3C3C3C];
-  @apply text-[#AFAFAF];
-  @apply bg-[#323232];
-}
-
-/* we don't want to style the radix select component */
-.lightflow .node-wrapper button:not([role='combobox']),
-.darkflow .node-wrapper button:not([role='combobox']) {
-  @apply block;
-  @apply font-mono;
-  @apply w-full;
-  @apply text-xs;
-  @apply rounded-md;
-  @apply text-white;
-  @apply py-2;
-  @apply px-4;
-}
-
-.darkflow .node-wrapper label {
-  @apply text-[#AFAFAF];
-}
-
-.darkflow .node-wrapper__title {
-  @apply border-[#3C3C3C];
-}
-
-.darkflow .react-flow__node {
-  background-color: #1e1e1e;
-  color: white;
-  border: 1px solid #3c3c3c;
-  border-radius: 8px;
-}
-
-.lightflow .react-flow__node {
-  background-color: #fff;
-  color: #111;
-  border: 1px solid #ededed;
-}
-
-.lightflow .react-flow__handle,
-.darkflow .react-flow__handle {
-  width: 20px;
-  height: 10px;
-  border-radius: 5px;
-  background-color: #6e6e6e;
-  border: none;
-}
-
-.darkflow .react-flow__handle {
-  background-color: #bebebe;
-}
-
-.home-flow-b .react-flow__node {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.home-flow-b .react-flow__controls {
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.home-flow-b .react-flow__controls-button {
-  border-bottom: 1px solid #555;
-  background: #323232;
-}
-
-.home-flow-b .react-flow__controls-button:hover {
-  background: #525252;
-}
-
-.home-flow-b .react-flow__controls-button:last-child {
-  border-bottom: none;
-}
-
-.home-flow-b .react-flow__controls svg {
-  fill: #afafaf;
-}
-
-.home-flow-c .react-flow__handle {
-  width: 7px;
-  height: 12px;
-  border-radius: 5px;
-  background-color: #ddd;
-}
-
-/* nextra blog overwrites */
-
-article.nextra-content ol li,
-article.nextra-content ol li p {
-  font-size: 1.125rem;
-  line-height: 2;
-}
-
-/* Docsearch overwrite */
-.nextra-navbar {
-  --docsearch-searchbox-background: #eee;
-  --docsearch-searchbox-focus-background: #eee;
-}
-:root {
-  --docsearch-primary-color: hsl(var(--primary));
-}
-
-.DocSearch-Button {
-  @apply bg-gray-100;
-}
-
-.DocSearch-Button .DocSearch-Search-Icon {
-  width: 16px;
-  height: 16px;
-}
-
-.DocSearch-Button .DocSearch-Button-Keys {
-  font-size: 14px;
-  min-width: 0;
-  margin-left: 10px;
-  margin-right: 5px;
-}
-
-.DocSearch-Button .DocSearch-Button-Key {
-  background: transparent;
-  box-shadow: none;
-  top: 0;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  margin-left: 4px;
-}
-
-.DocSearch-Button .DocSearch-Button-Placeholder {
-  font-size: 14px;
-}
-
-@media screen and (min-width: 2000px) {
-  .x\:max-w-\(--nextra-content-width\) {
-    max-width: 90rem;
+/* Keyframes */
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
   }
 }
 
-/* 1. Base Styles */
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+/* Container utility customization */
+@utility container {
+  margin-inline: auto;
+  padding-inline: 2rem;
+  max-width: theme(--container-2xl);
+}
+
+/* 2. Base Styles */
 :root {
   --docsearch-primary-color: hsl(var(--primary));
+
+  /* Brand Colors - use these in site-specific CSS to set --primary */
+  --color-xyflow: 248 1% 85%;
+  --color-react: 333 100% 50%;
+  --color-svelte: 15 100% 50%;
 }
 
 @layer base {
@@ -345,13 +149,13 @@ html:has(body.x\:overflow-hidden) nav {
   width: 100%;
 }
 
-/* 2. Typography */
+/* 3. Typography */
 
 .xy-link-gray {
-  @apply x:transition x:text-gray-600 x:dark:text-gray-400 x:hover:text-gray-800 x:dark:hover:text-gray-200 x:contrast-more:text-gray-700 x:contrast-more:dark:text-gray-100;
+  @apply transition text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 contrast-more:text-gray-700 contrast-more:dark:text-gray-100;
 }
 
-/* 3. Navigation */
+/* 4. Navigation */
 .nextra-menu-desktop li.active > a {
   @apply bg-transparent text-primary;
 }
@@ -378,7 +182,7 @@ main .x\:border-primary-500 {
   @apply border-primary;
 }
 
-/* 4. Sidebar */
+/* 5. Sidebar */
 
 /* adds labels to the sidebar items */
 .sidebar-title.pro:after {
@@ -406,7 +210,7 @@ li.active > .sidebar-title.pro:after {
   @apply text-primary ml-1.5 px-1.5;
 }
 
-/* 5. Buttons */
+/* 6. Buttons */
 .pro-button {
   transition: all 0.3s ease;
 }

@@ -1,54 +1,24 @@
-@layer l-base, l-nextra;
-
-/*
- * We specify layers because it's a working way to make works
- * Tailwind CSS 4 in Nextra 4 with Tailwind CSS 3 in this app
- *
- * Originally done in https://github.com/the-guild-org/docs/blob/bdfe4f564ee68f8b670828f425e32a3add973883/packages/components/style.css
-**/
+@import 'tailwindcss';
 @import '@xyflow/react/dist/style.css';
-@import 'tailwindcss/base' layer(l-base);
-@import 'nextra-theme-docs/dist/style-prefixed.css' layer(l-nextra);
-@import 'tailwindcss/utilities';
-@import 'tailwindcss/components';
+
 @import 'xy-shared/styles/globals.css';
+@import 'nextra-theme-docs/style.css';
 
-@layer l-base {
+/* TODO: this does not seem to make a difference */
+@source '../../../../packages/xy-shared/';
+
+/* Site-specific theme extensions */
+/* TODO: what is this */
+@theme {
+  --background-image-gradient: url('/img/bg-gradient.jpg');
+}
+
+/* React Flow uses the React brand color (pink) */
+@layer base {
   :root {
-    --accent: 333 100% 50%;
-    --shiki-color-background: red;
-
-    --primary: 333 100% 50%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 0 100% 100%;
-    --secondary-foreground: 333 100% 50%;
-
-    --color-xyflow: 248 1% 85%;
-    --color-react: 333 100% 50%;
-    --color-svelte: 15 100% 50%;
-
-    --background: 0 0% 100%;
-    --foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 47.4% 11.2%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 47.4% 11.2%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-
-    --destructive: 0 100% 50%;
-    --destructive-foreground: 210 40% 98%;
-
-    --ring: 215 20.2% 65.1%;
-
-    --radius: 0.5rem;
-
+    --primary: var(--color-react);
+    --accent: var(--color-react);
+    --secondary-foreground: var(--color-react);
     --light: 215.4 16.3% 46.9%;
   }
 }
@@ -57,15 +27,6 @@ html body[data-scroll-locked] {
   overflow: visible !important;
   margin-right: 0 !important;
 }
-
-/* .nextra-nav-container nav .nextra-scrollbar > a[href='/components']:after {
-  content: 'beta';
-  position: absolute;
-  top: 17px;
-  font-weight: 700;
-  font-size: 0.6rem;
-  color: hsl(var(--primary));
-} */
 
 .nextra-banner-container {
   @apply bg-[linear-gradient(1deg,#383838,#212121)];

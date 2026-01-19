@@ -96,7 +96,7 @@ const RootLayout: FC<{
             backToTop: null,
             extraContent: (
               <Anchor
-                className="xy-link-gray x:text-xs x:font-medium"
+                className="xy-link-gray text-xs font-medium"
                 href="https://xyflow.com/contact"
               >
                 Question? Give us feedback
