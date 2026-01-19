@@ -27,6 +27,6 @@ export const config = [
     },
   },
   {
-    ignores: ['dist/**', 'node_modules/**', 'tailwind.config.js'],
+    ignores: ['dist/**', 'node_modules/**'],
   },
 ];

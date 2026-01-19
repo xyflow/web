@@ -29,7 +29,6 @@
     "vite-env.d.ts",
     "svelte-config.js",
     "scripts",
-    "svelte.config.js",
-    "**/tailwind.config.js"
+    "svelte.config.js"
   ]
 }
