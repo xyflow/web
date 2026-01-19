@@ -1,8 +1,11 @@
 @import 'tailwindcss';
-@import '@xyflow/react/dist/style.css';
+@layer base;
+
+@import '@xyflow/react/dist/style.css' layer(base);
 
 @import 'xy-shared/styles/globals.css';
 @import 'nextra-theme-docs/style.css';
+
 
 /* TODO: this does not seem to make a difference */
 @source '../../../../packages/xy-shared/';
