@@ -1,7 +1,24 @@
-import { Suspense, useEffect, useRef, useMemo } from 'react';
+import { Component, Suspense, useEffect, useRef, useMemo, type ReactNode } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { useErrorBoundary } from 'use-error-boundary';
 import type { Mesh } from 'three';
+
+class ErrorBoundary extends Component<
+  { children: ReactNode; fallback: ReactNode; renderFallback?: boolean },
+  { hasError: boolean }
+> {
+  state = { hasError: false };
+
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+
+  render() {
+    if (this.state.hasError || this.props.renderFallback) {
+      return this.props.fallback;
+    }
+    return this.props.children;
+  }
+}
 
 const randomVector = (r: number): [number, number, number] => [
   r / 2 - Math.random() * r,
@@ -96,19 +113,11 @@ function generateRandomData(count: number) {
 }
 
 export default function App({ color, zoom, shape, count = 150 }: AppProps) {
-  const { ErrorBoundary, didCatch } = useErrorBoundary();
-
   const randomData = useMemo(() => generateRandomData(count), [count]);
-
-  // Memoize the availability of WebGL
   const availableWebGL = useMemo(() => isWebGLAvailable(), []);
 
-  if (didCatch || !availableWebGL) {
-    return <WebGLFallback />;
-  }
-
   return (
-    <ErrorBoundary>
+    <ErrorBoundary fallback={<WebGLFallback />} renderFallback={!availableWebGL}>
       <Canvas resize={canvasResize} dpr={2} fallback={<WebGLFallback />}>
         <Cam zoom={zoom} />
         {/* eslint-disable-next-line react/no-unknown-property */}

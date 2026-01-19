@@ -61,9 +61,7 @@
     "remark-gfm": "^4.0.1",
     "tailwind-merge": "^3.3.1",
     "tailwindcss": "catalog:",
-    "tailwindcss-animate": "^1.0.7",
     "timeago-react": "^3.0.7",
-    "use-error-boundary": "^2.0.6",
     "zod": "^3.22.4"
   },
   "peerDependencies": {
