@@ -3,7 +3,7 @@
 import { FormEvent, useState, useTransition } from 'react';
 
 import { AuthErrorNotification, AuthNotification } from './AuthNotification';
-import { resetPassword } from '../../../server-actions';
+import { resetPassword } from '../../../server-actions/reset-password';
 import { Button } from '../../ui/button';
 import { InputLabel, Input } from '../../ui/input';
 

@@ -1,8 +1,9 @@
 import path from 'path';
 import { Callout, Cards } from 'nextra/components';
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
-import { Button } from 'xy-shared';
-import { RemoteCodeViewer, getAllExamples } from 'xy-shared/server';
+import { Button } from 'xy-shared/components/ui/button';
+import { RemoteCodeViewer } from 'xy-shared/server/remote-code-viewer';
+import { getAllExamples } from 'xy-shared/server/example-utils';
 
 import { useMDXComponents as getMDXComponents } from '@/mdx-components';
 import { importMetadata } from './utils';

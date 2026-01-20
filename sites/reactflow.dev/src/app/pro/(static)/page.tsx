@@ -1,12 +1,13 @@
 import Image from 'next/image';
-import { PricingTable, Section, FAQ, reactFlowProFaqItems } from 'xy-shared';
-import {
-  BaseLayout,
-  Hero,
-  ImageSlider,
-  SubscribeSection,
-  LiteYouTubeEmbed,
-} from 'xy-shared';
+import { PricingTable } from 'xy-shared/components/pricing-table';
+import { Section } from 'xy-shared/components/ui/section';
+import { FAQ } from 'xy-shared/components/faq';
+import { default as reactFlowProFaqItems } from 'xy-shared/components/faq/items/react-flow-pro';
+import { BaseLayout } from 'xy-shared/layouts/base';
+import { Hero } from 'xy-shared/components/hero';
+import { ImageSlider } from 'xy-shared/components/image-slider';
+import { SubscribeSection } from 'xy-shared/components/subscribe-section';
+import { LiteYouTubeEmbed } from 'xy-shared/components/liteyoutube-embed';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 
 import ClientLogos from 'xy-shared/components/client-logos';

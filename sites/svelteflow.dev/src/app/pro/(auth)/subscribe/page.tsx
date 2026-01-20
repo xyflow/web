@@ -1,4 +1,5 @@
-import { FAQ, reactFlowProFaqItems } from 'xy-shared';
+import { FAQ } from 'xy-shared/components/faq';
+import { default as reactFlowProFaqItems } from 'xy-shared/components/faq/items/react-flow-pro';
 import DashboardHeader from 'xy-shared/components/pro/DashboardHeader';
 import PricingTable from 'xy-shared/components/pro/PricingTable';
 import { NextraMetadata } from 'nextra';

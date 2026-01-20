@@ -1,7 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { Heading, Text } from 'xy-shared';
+import { Heading } from 'xy-shared/components/ui/heading';
+import { Text } from 'xy-shared/components/ui/text';
 import { useSearchParams } from 'next/navigation';
 import { EnvelopeIcon } from '@heroicons/react/24/outline';
 

@@ -1,15 +1,11 @@
 'use client';
 
 import { useState, useEffect, FC, useTransition, useRef } from 'react';
+import { Button } from 'xy-shared/components/ui/button';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from 'xy-shared/components/ui/card';
+import { Input } from 'xy-shared/components/ui/input';
+import { InputLabel } from 'xy-shared/components/ui/input';
 import {
-  Button,
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  Input,
-  InputLabel,
   AlertDialog,
   AlertDialogAction,
   AlertDialogCancel,
@@ -17,15 +13,15 @@ import {
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
-  AlertDialogTitle,
-  CardTitle,
-} from 'xy-shared';
+  AlertDialogTitle
+} from 'xy-shared/components/ui/alert-dialog';
 import { User } from '@nhost/nhost-js/auth';
 
-import { callNhostFunction, revalidatePathFromClient } from 'xy-shared/server-actions';
+import { callNhostFunction } from 'xy-shared/server-actions/call-nhost-function';
+import { revalidatePathFromClient } from 'xy-shared/server-actions/revalidate-path-from-client';
 import { PlanLabel } from 'xy-shared/components/pro/SubscriptionStatus';
 import Loader from 'xy-shared/components/pro/Loader';
-import { Currency } from 'xy-shared';
+import { Currency } from 'xy-shared/types';
 import { getCurrencySign } from 'xy-shared/utils/pro-utils';
 
 type TeamMember = {

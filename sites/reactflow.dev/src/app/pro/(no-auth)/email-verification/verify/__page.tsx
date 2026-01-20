@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation';
 import { createNhostClient } from 'xy-shared/utils/nhost';
 import { FC } from 'react';
-import { SearchParams } from 'xy-shared';
+import { SearchParams } from 'xy-shared/types';
 
 type PageProps = {
   searchParams: Promise<SearchParams>;

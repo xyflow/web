@@ -3,21 +3,21 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { SparklesIcon, BoltIcon } from '@heroicons/react/24/outline';
-import { Button, Section, Stats } from 'xy-shared';
-import {
-  BaseLayout,
-  HeroFlow,
-  ImageSlider,
-  Features,
-  GettingStarted,
-  AboutSection,
-  ProjectCards,
-  FlowA,
-  FlowB,
-  FlowC,
-} from 'xy-shared';
-import { getLastChangelog } from 'xy-shared/server';
-import { fetchGitHubNpmStats } from 'xy-shared/utils';
+import { Button } from 'xy-shared/components/ui/button';
+import { Section } from 'xy-shared/components/ui/section';
+import { Stats } from 'xy-shared/components/ui/stats';
+import { BaseLayout } from 'xy-shared/layouts/base';
+import { HeroFlow } from 'xy-shared/layouts/hero-flow';
+import { ImageSlider } from 'xy-shared/components/image-slider';
+import { Features } from 'xy-shared/components/features';
+import { GettingStarted } from 'xy-shared/layouts/getting-started';
+import { AboutSection } from 'xy-shared/layouts/about-section';
+import { ProjectCards } from 'xy-shared/layouts/project-cards';
+import { FlowA } from 'xy-shared/components/flows/flow-a';
+import { FlowB } from 'xy-shared/components/flows/flow-b';
+import { FlowC } from 'xy-shared/components/flows/flow-c';
+import { getLastChangelog } from 'xy-shared/server/get-last-changelog';
+import { fetchGitHubNpmStats } from 'xy-shared/utils/fetch-github-npm-stats';
 import { InternalRoute } from '../../routes';
 import ClientLogos from 'xy-shared/components/client-logos';
 import WhatsNewPreview from 'xy-shared/components/whats-new-preview';

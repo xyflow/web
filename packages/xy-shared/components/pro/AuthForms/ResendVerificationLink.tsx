@@ -4,7 +4,7 @@ import { FormEvent, useState, useTransition } from 'react';
 import { useSearchParams } from 'next/navigation';
 
 import { AuthErrorNotification, AuthNotification } from './AuthNotification';
-import { signInEmailPasswordless } from '../../../server-actions';
+import { signInEmailPasswordless } from '../../../server-actions/sign-in-email-passwordless';
 import { Input, InputLabel } from '../../ui/input';
 import { Button } from '../../ui/button';
 

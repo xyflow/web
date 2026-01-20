@@ -1,13 +1,13 @@
+import { Heading } from 'xy-shared/components/ui/heading';
+import { Text } from 'xy-shared/components/ui/text';
 import {
-  Heading,
-  Text,
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-  Link,
-  cn,
-} from 'xy-shared';
+} from 'xy-shared/components/ui/tabs';
+import { Link } from 'xy-shared/components/ui/link';
+import { cn } from 'xy-shared/lib/utils';
 import { getPageMap } from 'nextra/page-map';
 import { Tabs as NextraTabs } from 'nextra/components';
 import { MDXRemote } from 'nextra/mdx-remote';

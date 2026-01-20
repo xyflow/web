@@ -2,15 +2,13 @@ import { FC } from 'react';
 import { Metadata } from 'next';
 import Image from 'next/image';
 import { Position } from '@xyflow/react';
-import {
-  Handle,
-  HeadlineNode,
-  BaseLayout,
-  Hero,
-  ImageSlider,
-  ProjectCards,
-  AboutSection,
-} from 'xy-shared';
+import { Handle } from 'xy-shared/components/handle';
+import { HeadlineNode } from 'xy-shared/components/headline-node';
+import { BaseLayout } from 'xy-shared/layouts/base';
+import { Hero } from 'xy-shared/components/hero';
+import { ImageSlider } from 'xy-shared/components/image-slider';
+import { ProjectCards } from 'xy-shared/layouts/project-cards';
+import { AboutSection } from 'xy-shared/layouts/about-section';
 
 export const metadata: Metadata = {
   title: 'Node-Based UIs for React and Svelte',

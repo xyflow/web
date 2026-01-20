@@ -1,8 +1,11 @@
 import { FC } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Heading, Text, Section } from 'xy-shared';
-import { BaseLayout, Hero } from 'xy-shared';
+import { Heading } from 'xy-shared/components/ui/heading';
+import { Text } from 'xy-shared/components/ui/text';
+import { Section } from 'xy-shared/components/ui/section';
+import { BaseLayout } from 'xy-shared/layouts/base';
+import { Hero } from 'xy-shared/components/hero';
 import { UserGroupIcon } from '@heroicons/react/24/outline';
 
 import ossImage from '../../../../public/img/open-source/thincrustopencore.png';

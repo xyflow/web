@@ -1,9 +1,11 @@
-import { Text, cn } from '../../';
-import { AuthorList, TimeAgo } from '../../';
+import { cn } from '../../lib/utils';
+import { Text } from '../ui/text';
+import { AuthorList } from '../../components/authors-list';
+import { TimeAgo } from '../../components/time-ago';
 import Link from 'next/link';
 import { ArrowRightCircleIcon } from '@heroicons/react/20/solid';
 import { MdxFile } from 'nextra';
-import { WhatsNewItemFrontMatter } from '../../server';
+import { WhatsNewItemFrontMatter } from '../../server/get-last-changelog';
 
 export type WhatsNewPreviewProps = {
   items: MdxFile<WhatsNewItemFrontMatter>[];

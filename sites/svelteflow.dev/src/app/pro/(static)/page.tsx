@@ -1,5 +1,9 @@
-import { PricingTable, FAQ, svelteFlowProFaqItems } from 'xy-shared';
-import { BaseLayout, Hero, SubscribeSection } from 'xy-shared';
+import { PricingTable } from 'xy-shared/components/pricing-table';
+import { FAQ } from 'xy-shared/components/faq';
+import { default as svelteFlowProFaqItems } from 'xy-shared/components/faq/items/svelte-flow-pro';
+import { BaseLayout } from 'xy-shared/layouts/base';
+import { Hero } from 'xy-shared/components/hero';
+import { SubscribeSection } from 'xy-shared/components/subscribe-section';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 
 import { NextraMetadata } from 'nextra';

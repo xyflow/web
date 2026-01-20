@@ -1,8 +1,11 @@
 /* eslint react/no-unescaped-entities: 0 */
 import Link from 'next/link';
 import slugify from '@sindresorhus/slugify';
-import { Heading, Text, Section } from 'xy-shared';
-import { BaseLayout, Hero } from 'xy-shared';
+import { Heading } from 'xy-shared/components/ui/heading';
+import { Text } from 'xy-shared/components/ui/text';
+import { Section } from 'xy-shared/components/ui/section';
+import { BaseLayout } from 'xy-shared/layouts/base';
+import { Hero } from 'xy-shared/components/hero';
 import { MapPinIcon } from '@heroicons/react/24/solid';
 import { Metadata } from 'next';
 import { FC } from 'react';

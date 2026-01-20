@@ -1,8 +1,9 @@
-import { CaseStudy, ShowcaseLayout, SubscribeSection } from 'xy-shared';
+import { CaseStudy, ShowcaseLayout } from 'xy-shared/layouts/showcase';
+import { SubscribeSection } from 'xy-shared/components/subscribe-section';
 
 import { FC } from 'react';
 import { getPageMap } from 'nextra/page-map';
-import { fetchNotionShowcases } from 'xy-shared/server';
+import { fetchNotionShowcases } from 'xy-shared/server/utils';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {

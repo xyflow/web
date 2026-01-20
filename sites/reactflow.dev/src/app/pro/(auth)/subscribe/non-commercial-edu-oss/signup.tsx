@@ -4,9 +4,12 @@ import { useState } from 'react';
 
 import Link from 'next/link';
 import Head from 'next/head';
-import { Button, Heading, Input, InputLabel } from 'xy-shared';
-import { callNhostFunction } from 'xy-shared/server-actions';
-import { useSubscription } from 'xy-shared/hooks';
+import { Button } from 'xy-shared/components/ui/button';
+import { Heading } from 'xy-shared/components/ui/heading';
+import { Input } from 'xy-shared/components/ui/input';
+import { InputLabel } from 'xy-shared/components/ui/input';
+import { callNhostFunction } from 'xy-shared/server-actions/call-nhost-function';
+import { useSubscription } from 'xy-shared/hooks/use-subscription';
 
 function Signup() {
   const [isLoading, setLoading] = useState(false);

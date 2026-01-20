@@ -11,7 +11,7 @@ import NxImage from 'next/image';
 import { cn } from '../../lib/utils';
 
 import { LiteYouTubeEmbed } from '../liteyoutube-embed';
-import { wideNegativeMargin } from '../../lib';
+import { wideNegativeMargin } from '../../lib/wide-negative-margin';
 
 // IMAGES ----------------------------------------------------------------------
 

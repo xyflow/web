@@ -1,12 +1,10 @@
 import { FC } from 'react';
 import { NextraMetadata } from 'nextra';
 import { PencilSquareIcon } from '@heroicons/react/24/outline';
-import { BaseLayout, Hero } from 'xy-shared';
-import {
-  TimelineEvent,
-  TimelineEventProps,
-  getLastChangelog,
-} from 'xy-shared/server';
+import { BaseLayout } from 'xy-shared/layouts/base';
+import { Hero } from 'xy-shared/components/hero';
+import { TimelineEvent, TimelineEventProps } from 'xy-shared/server/timeline-event';
+import { getLastChangelog } from 'xy-shared/server/get-last-changelog';
 
 export const metadata: NextraMetadata = {
   asIndexPage: true,

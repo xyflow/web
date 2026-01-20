@@ -1,16 +1,13 @@
 import { FC, Fragment } from 'react';
 import Image from 'next/image';
-import {
-  Text,
-  Container,
-  ContentGrid,
-  ContentGridItem,
-  Heading,
-  Section,
-  Button,
-  Link,
-} from 'xy-shared';
-import { ProjectPreview } from 'xy-shared';
+import { Text } from 'xy-shared/components/ui/text';
+import { Container } from 'xy-shared/components/ui/container';
+import { ContentGrid, ContentGridItem } from 'xy-shared/components/ui/content-grid';
+import { Heading } from 'xy-shared/components/ui/heading';
+import { Section } from 'xy-shared/components/ui/section';
+import { Button } from 'xy-shared/components/ui/button';
+import { Link } from 'xy-shared/components/ui/link';
+import { ProjectPreview } from 'xy-shared/components/project-preview';
 
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 import { Folder } from 'nextra';

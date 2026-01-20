@@ -1,7 +1,7 @@
 import path from 'path';
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
-import { Button } from 'xy-shared';
-import { getAllExamples } from 'xy-shared/server';
+import { Button } from 'xy-shared/components/ui/button';
+import { getAllExamples } from 'xy-shared/server/example-utils';
 
 import { useMDXComponents as getMDXComponents } from '@/mdx-components';
 import { importMetadata } from './utils';

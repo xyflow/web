@@ -1,4 +1,8 @@
-import { Button, Heading, Link, Text, cn } from 'xy-shared';
+import { Button } from 'xy-shared/components/ui/button';
+import { Heading } from 'xy-shared/components/ui/heading';
+import { Link } from 'xy-shared/components/ui/link';
+import { Text } from 'xy-shared/components/ui/text';
+import { cn } from 'xy-shared/lib/utils';
 import { Handle, Node, NodeProps, Position } from '@xyflow/react';
 
 export const nodeTypes = {

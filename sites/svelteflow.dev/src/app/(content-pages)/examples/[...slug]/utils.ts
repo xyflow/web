@@ -1,7 +1,7 @@
 import path from 'path';
 import { Folder } from 'nextra';
 
-import { getExamplesPageMap } from 'xy-shared/server';
+import { getExamplesPageMap } from 'xy-shared/server/example-utils';
 import { meta } from './config';
 
 export async function getPageMap(): Promise<Folder> {

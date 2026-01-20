@@ -7,8 +7,8 @@ import { Button } from '../../ui/button';
 import { Input, InputLabel } from '../../ui/input';
 
 import { AuthErrorNotification } from './AuthNotification';
-import { signUp } from '../../../server-actions';
-
+import { signUp } from '../../../server-actions/sign-up-email-password';
+  
 const Signup: FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [isLoading, startTransition] = useTransition();

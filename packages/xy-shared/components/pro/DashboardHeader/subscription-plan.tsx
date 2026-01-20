@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { Spinner } from '../../ui/spinner';
 
-import { useSubscription } from '../../../hooks';
+import { useSubscription } from '../../../hooks/use-subscription';
 import { PlanLabel } from '../SubscriptionStatus';
 import Pill from '../Pill';
 

@@ -1,7 +1,10 @@
 import { FC } from 'react';
 import { SparklesIcon } from '@heroicons/react/24/outline';
-import { ContentGrid, ContentGridItem } from 'xy-shared';
-import { BaseLayout, Hero, ProjectPreview, SubscribeSection } from 'xy-shared';
+import { ContentGrid, ContentGridItem } from 'xy-shared/components/ui/content-grid';
+import { BaseLayout } from 'xy-shared/layouts/base';
+import { Hero } from 'xy-shared/components/hero';
+import { ProjectPreview } from 'xy-shared/components/project-preview';
+import { SubscribeSection } from 'xy-shared/components/subscribe-section';
 import { Metadata } from 'next';
 import { getPageMap } from 'nextra/page-map';
 import { MdxFile } from 'nextra';

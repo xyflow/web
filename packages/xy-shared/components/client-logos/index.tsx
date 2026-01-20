@@ -1,5 +1,6 @@
 import Image, { StaticImageData } from 'next/image';
-import { Text, cn } from '../../';
+import { cn } from '../../lib/utils';
+import { Text } from '../ui/text';
 
 type ClientLogo = {
   src: StaticImageData;

@@ -7,7 +7,7 @@ import { Button } from '../../ui/button';
 import { Input, InputLabel } from '../../ui/input';
 
 import { AuthErrorNotification } from './AuthNotification';
-import { signIn } from '../../../server-actions';
+import { signIn } from '../../../server-actions/sign-in-email-password';
 
 const SignInEmailPassword: FC = () => {
   const searchParams = useSearchParams();

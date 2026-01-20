@@ -4,8 +4,13 @@ import { UserGroupIcon, GlobeEuropeAfricaIcon } from '@heroicons/react/24/outlin
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
-import { ContentGrid, ContentGridItem, Heading, Text, Button, Section } from 'xy-shared';
-import { BaseLayout, Hero } from 'xy-shared';
+import { ContentGrid, ContentGridItem } from 'xy-shared/components/ui/content-grid';
+import { Heading } from 'xy-shared/components/ui/heading';
+import { Text } from 'xy-shared/components/ui/text';
+import { Button } from 'xy-shared/components/ui/button';
+import { Section } from 'xy-shared/components/ui/section';
+import { BaseLayout } from 'xy-shared/layouts/base';
+import { Hero } from 'xy-shared/components/hero';
 
 import christopher from '../../../../public/img/christopher.jpg';
 import moritz from '../../../../public/img/moritz.jpg';

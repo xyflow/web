@@ -1,8 +1,13 @@
 import Link from 'next/link';
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 import { EnvelopeIcon } from '@heroicons/react/24/outline';
-import { Card, Input, InputLabel, Text } from 'xy-shared';
-import { BaseLayout, ContactForm, Hero } from 'xy-shared';
+import { Card } from 'xy-shared/components/ui/card';
+import { Input } from 'xy-shared/components/ui/input';
+import { InputLabel } from 'xy-shared/components/ui/input';
+import { Text } from 'xy-shared/components/ui/text';
+import { BaseLayout } from 'xy-shared/layouts/base';
+import { ContactForm } from 'xy-shared/components/contact-form';
+import { Hero } from 'xy-shared/components/hero';
 import { FC } from 'react';
 import { Metadata } from 'next';
 import { submitContact } from 'xy-shared/server-actions/contact';

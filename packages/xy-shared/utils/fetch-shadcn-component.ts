@@ -1,5 +1,6 @@
-import { loadJSONFile } from '../server';
-import { compileCodeSnippet } from '../server';
+
+import { loadJSONFile } from '../server/utils';
+import { compileCodeSnippet } from '../server/compile-code-snippet';
 import path from 'path';
 
 type Demo = {

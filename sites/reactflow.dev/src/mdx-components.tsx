@@ -1,6 +1,6 @@
 import { useMDXComponents as getDocsMDXComponents } from 'nextra-theme-docs';
 import { Callout, Steps, Cards, Tabs } from 'nextra/components';
-import { RemoteCodeViewer } from 'xy-shared/server';
+import { RemoteCodeViewer } from 'xy-shared/server/remote-code-viewer';
 import ProExampleViewer from 'xy-shared/components/pro-example-viewer';
 
 const docsComponents = getDocsMDXComponents({

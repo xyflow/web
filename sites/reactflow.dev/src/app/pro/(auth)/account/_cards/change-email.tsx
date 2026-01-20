@@ -7,12 +7,12 @@ import {
   CardTitle,
   CardDescription,
   CardFooter,
-  Button,
-  Input,
-  InputLabel,
-} from 'xy-shared';
+} from 'xy-shared/components/ui/card';
+import { Button } from 'xy-shared/components/ui/button';
+import { Input } from 'xy-shared/components/ui/input';
+import { InputLabel } from 'xy-shared/components/ui/input';
 
-import { changeEmail } from 'xy-shared/server-actions';
+import { changeEmail } from 'xy-shared/server-actions/change-email';
 
 const ChangeEmailCard: FC<{ userEmail: string }> = ({ userEmail }) => {
   const [isLoading, startTransition] = useTransition();

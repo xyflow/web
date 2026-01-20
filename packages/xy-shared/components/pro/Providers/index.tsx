@@ -11,9 +11,9 @@ import {
   useTransition,
 } from 'react';
 import { SubscriptionPlan } from '../../../types';
-import { getSubscription } from '../../../server-actions';
+import { getSubscription } from '../../../server-actions/get-subscription';
 import { usePathname } from 'next/navigation';
-import { usePrevious } from '../../../hooks';
+import { usePrevious } from '../../../hooks/use-previous';
 import { normalizeSubscription } from '../../../utils/pro-utils';
 import { mergeMetaWithPageMap } from 'nextra/merge-meta-with-page-map';
 import { Layout as NextraLayout } from 'nextra-theme-docs';

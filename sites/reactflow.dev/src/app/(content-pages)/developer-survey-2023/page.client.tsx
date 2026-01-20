@@ -5,7 +5,10 @@
 import { useEffect, useState } from 'react';
 import { ReactFlow, Background, Node, ReactFlowProvider } from '@xyflow/react';
 import { ArrowDownIcon, ArrowRightIcon } from '@heroicons/react/20/solid';
-import { Button, Emoji, Link, Text } from 'xy-shared';
+import { Button } from 'xy-shared/components/ui/button';
+import { Emoji } from 'xy-shared/components/ui/emoji';
+import { Link } from 'xy-shared/components/ui/link';
+import { Text } from 'xy-shared/components/ui/text';
 
 import { BarChart } from './bar-chart';
 import { FocusParams, useFocus } from './flow/hooks';

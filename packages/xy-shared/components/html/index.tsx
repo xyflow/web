@@ -2,8 +2,8 @@
 
 import { FC, ReactNode } from 'react';
 import { usePathname } from 'next/navigation';
-import { ntDapperFont } from '../../fonts';
-import { cn } from '../../';
+import { ntDapperFont } from '../../fonts/index';
+import { cn } from '../../lib/utils';
 
 export const Html: FC<{ children: ReactNode }> = ({ children }) => {
   const pathname = usePathname();

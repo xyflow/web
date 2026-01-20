@@ -5,8 +5,8 @@ import { type SandpackFiles } from '@codesandbox/sandpack-react';
 
 import { ProExampleConfig } from './types';
 import DashboardHeader from '../DashboardHeader';
-import { downloadExample } from '../../../server-actions';
-import { useSubscription } from '../../../hooks';
+import { downloadExample } from '../../../server-actions/download-example';
+import { useSubscription } from '../../../hooks/use-subscription';
 import { type Framework } from '../../../types';
 
 import DownloadButton from './download-button';

@@ -5,7 +5,7 @@ import JSZip from 'jszip';
 import { saveAs } from 'file-saver';
 import { SandpackFiles } from '@codesandbox/sandpack-react';
 
-import { downloadExample } from '../../../server-actions';
+import { downloadExample } from '../../../server-actions/download-example';
 import { Framework } from '../../../types';
 
 const ignoreFiles = ['/config.json'];

@@ -2,15 +2,19 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Head } from 'nextra/components';
 import { Navbar as NextraNavbar } from 'nextra-theme-docs';
 import reactFlowPackageJson from '@xyflow/react/package.json';
-import { generateRootMetadata, getLastChangelog, TOC } from 'xy-shared/server';
-import { Fathom, Search } from 'xy-shared';
-import { defaultFooterCategories, Footer as XYFooter, LogoLabel } from 'xy-shared';
+import { generateRootMetadata } from 'xy-shared/server/generate-root-metadata';
+import { getLastChangelog } from 'xy-shared/server/get-last-changelog';
+import { TOC } from 'xy-shared/server/toc';
+import { Fathom } from 'xy-shared/components/fathom';
+import { Search } from 'xy-shared/components/search';
+import { defaultFooterCategories, Footer as XYFooter } from 'xy-shared/components/footer';
+import { LogoLabel } from 'xy-shared/components/ui/logo';
 import NavMenu from 'xy-shared/components/pro/Navigation/NavMenu';
 import { Html } from 'xy-shared/components/html';
-import { createNormalizePageMap } from 'xy-shared/server';
+import { createNormalizePageMap } from 'xy-shared/server/normalize-page-map';
 import { getPageMap as getExamplesPageMap } from '@/app/(content-pages)/examples/[...slug]/utils';
 import { SubscriptionProvider } from 'xy-shared/components/pro/Providers';
-import { FrameworkProvider } from 'xy-shared';
+import { FrameworkProvider } from 'xy-shared/hooks/use-framework';
 import './global.css';
 
 export const metadata = generateRootMetadata('React Flow', {

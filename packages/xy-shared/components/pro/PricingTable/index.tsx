@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { callNhostFunction } from '../../../server-actions';
+import { callNhostFunction } from '../../../server-actions/call-nhost-function';
 import {
   BillingInterval,
   defaultSubscriptionPlans,

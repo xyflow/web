@@ -2,22 +2,22 @@ import { FC } from 'react';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { BoltIcon, SparklesIcon } from '@heroicons/react/24/outline';
-import { Button, Section, Stats } from 'xy-shared';
-import {
-  BaseLayout,
-  AboutSection,
-  ImageSlider,
-  HeroFlow,
-  Features,
-  GettingStarted,
-  ProjectCards,
-  FlowA,
-  FlowB,
-  FlowC,
-} from 'xy-shared';
+import { Button } from 'xy-shared/components/ui/button';
+import { Section } from 'xy-shared/components/ui/section';
+import { Stats } from 'xy-shared/components/ui/stats';
+import { BaseLayout } from 'xy-shared/layouts/base';
+import { AboutSection } from 'xy-shared/layouts/about-section';
+import { ImageSlider } from 'xy-shared/components/image-slider';
+import { HeroFlow } from 'xy-shared/layouts/hero-flow';
+import { Features } from 'xy-shared/components/features';
+import { GettingStarted } from 'xy-shared/layouts/getting-started';
+import { ProjectCards } from 'xy-shared/layouts/project-cards';
+import { FlowA } from 'xy-shared/components/flows/flow-a';
+import { FlowB } from 'xy-shared/components/flows/flow-b';
+import { FlowC } from 'xy-shared/components/flows/flow-c';
 
 import type { InternalRoute } from '../../routes';
-import { fetchGitHubNpmStats } from 'xy-shared/utils';
+import { fetchGitHubNpmStats } from 'xy-shared/utils/fetch-github-npm-stats';
 import { version } from '@xyflow/svelte/package.json';
 
 export const revalidate = 3600; // 60 * 60

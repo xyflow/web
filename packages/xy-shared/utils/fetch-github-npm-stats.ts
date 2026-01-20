@@ -1,4 +1,4 @@
-import { fetchJSON } from '../lib';
+import { fetchJSON } from '../lib/fetch-json';
 
 const LIBRARY_CONFIG = {
   react: {

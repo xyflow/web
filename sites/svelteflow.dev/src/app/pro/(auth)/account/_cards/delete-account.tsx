@@ -11,16 +11,18 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
+} from 'xy-shared/components/ui/alert-dialog';
+import {
   Card,
   CardHeader,
   CardTitle,
   CardDescription,
   CardFooter,
-  Button,
-  Input,
-} from 'xy-shared';
-import { callNhostFunction } from 'xy-shared/server-actions';
-import { signOut } from 'xy-shared/server-actions';
+} from 'xy-shared/components/ui/card';
+import { Button } from 'xy-shared/components/ui/button';
+import { Input } from 'xy-shared/components/ui/input';
+import { callNhostFunction } from 'xy-shared/server-actions/call-nhost-function';
+import { signOut } from 'xy-shared/server-actions/sign-out';
 
 const DeleteAccountCard: FC<{ userEmail: string }> = ({ userEmail }) => {
   const [confirmUserEmail, setConfirmUserEmail] = useState('');

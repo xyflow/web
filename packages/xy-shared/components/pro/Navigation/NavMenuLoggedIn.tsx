@@ -3,7 +3,8 @@
 import Link from 'next/link';
 import { UserIcon } from '@heroicons/react/24/solid';
 import { PlanLabel, Subscribed } from '../SubscriptionStatus';
-import { openStripeCustomerPortal, signOut } from '../../../server-actions';
+import { openStripeCustomerPortal } from '../../../server-actions/open-stripe-customer-portal';
+import { signOut } from '../../../server-actions/sign-out';
 import {
   Menubar,
   MenubarContent,

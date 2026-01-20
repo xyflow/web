@@ -15,7 +15,7 @@ import { SubscriptionPlan } from '../../../types';
 import Link from 'next/link';
 import { ArrowLongRightIcon } from '@heroicons/react/20/solid';
 
-import { useSubscription } from '../../../hooks';
+import { useSubscription } from '../../../hooks/use-subscription';
 import CustomerPortalButton from '../CustomerPortalButton';
 
 type SubscriptionFeatureProps = {

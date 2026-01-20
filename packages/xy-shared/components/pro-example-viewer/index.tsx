@@ -2,8 +2,11 @@
 
 import { FC } from 'react';
 import Link from 'next/link';
-import { Button, cn, Container, ContainerProps, Text } from '../../';
-import { useSubscription } from '../../hooks';
+import { cn } from '../../lib/utils';
+import { Button } from '../ui/button';
+import { Container, ContainerProps } from '../ui/container';
+import { Text } from '../ui/text';
+import { useSubscription } from '../../hooks/use-subscription';
 import ProPlatformExampleViewer from '../../components/pro/ProExampleViewer';
 import { Framework } from '../../types';
 

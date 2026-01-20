@@ -4,7 +4,7 @@ import { FC, FormEvent, useState, useTransition } from 'react';
 import { Button } from '../../ui/button';
 import { Input, InputLabel } from '../../ui/input';
 
-import { signInEmailPasswordless } from '../../../server-actions';
+import { signInEmailPasswordless } from '../../../server-actions/sign-in-email-passwordless';
 import {
   AuthErrorNotification,
   AuthNotification,

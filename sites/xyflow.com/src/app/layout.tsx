@@ -4,11 +4,14 @@ import { Head } from 'nextra/components';
 import { getPageMap } from 'nextra/page-map';
 import { Layout, Navbar } from 'nextra-theme-docs';
 import { Anchor } from 'nextra/components';
-import { Button, Footer, Logo, Text } from 'xy-shared';
+import { Button } from 'xy-shared/components/ui/button';
+import { Footer } from 'xy-shared/components/footer';
+import { Logo } from 'xy-shared/components/ui/logo';
+import { Text } from 'xy-shared/components/ui/text';
 import { defaultCategories } from 'xy-shared/components/footer/default-categories';
 import { Html } from 'xy-shared/components/html';
-import { generateRootMetadata } from 'xy-shared/server';
-import { Fathom } from 'xy-shared';
+import { generateRootMetadata } from 'xy-shared/server/generate-root-metadata';
+import { Fathom } from 'xy-shared/components/fathom';
 
 import './global.css';
 

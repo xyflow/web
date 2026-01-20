@@ -3,7 +3,7 @@
 import { NavMenuNotLoggedIn } from './NavMenuNotLoggedIn';
 
 import { NavMenuLoggedIn } from './NavMenuLoggedIn';
-import { useSubscription } from '../../../hooks';
+import { useSubscription } from '../../../hooks/use-subscription';
 
 type NavMenuProps = {
   siteName?: 'React Flow' | 'Svelte Flow';

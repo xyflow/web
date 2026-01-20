@@ -1,6 +1,6 @@
 'use client';
 
-import { useSubscription } from '../../../hooks';
+import { useSubscription } from '../../../hooks/use-subscription';
 
 export function Subscribed({
   requireAdminSubscription = false,

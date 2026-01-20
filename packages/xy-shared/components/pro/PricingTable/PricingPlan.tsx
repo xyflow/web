@@ -3,7 +3,7 @@
 import { useTransition } from 'react';
 import { Button } from '../../ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '../../ui/card';
-import { callNhostFunction } from '../../../server-actions';
+import { callNhostFunction } from '../../../server-actions/call-nhost-function';
 import { redirect } from 'next/navigation';
 
 type PricingPlanProps = {

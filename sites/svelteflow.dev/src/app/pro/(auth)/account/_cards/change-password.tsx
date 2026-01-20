@@ -7,12 +7,12 @@ import {
   CardDescription,
   CardTitle,
   CardFooter,
-  Button,
-  Input,
-  InputLabel,
-} from 'xy-shared';
+} from 'xy-shared/components/ui/card';
+import { Button } from 'xy-shared/components/ui/button';
+import { Input } from 'xy-shared/components/ui/input';
+import { InputLabel } from 'xy-shared/components/ui/input';
 
-import { changePassword } from 'xy-shared/server-actions';
+import { changePassword } from 'xy-shared/server-actions/change-password';
 
 function ChangePasswordCard() {
   const [isLoading, startTransition] = useTransition();
