@@ -52,8 +52,8 @@ function CreatorNode() {
         position: { x: 0, y: 250 },
         className:
           shape.value === 'circle'
-            ? 'font-mono rounded-full h-[100px] w-[100px]'
-            : 'font-mono',
+            ? 'font-mono h-[110px] w-[110px] rounded-full flex items-center justify-center text-center px-3 text-xs leading-snug break-words select-none text-gray-100 bg-gradient-to-b from-[#3a3a3a] to-[#1f1f1f] border border-gray-600 shadow-[0_8px_24px_rgba(0,0,0,0.35)] '
+            : 'rounded font-mono text-gray-100 bg-gradient-to-b from-[#3a3a3a] to-[#1f1f1f] border border-gray-600 shadow-[0_8px_24px_rgba(0,0,0,0.35)]',
       },
     ]);
 
