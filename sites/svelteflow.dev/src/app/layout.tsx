@@ -7,6 +7,7 @@ import { defaultFooterCategories, Footer as XYFooter, LogoLabel } from 'xy-share
 import NavMenu from 'xy-shared/components/pro/Navigation/NavMenu';
 import { Html } from 'xy-shared/components/html';
 import { SubscriptionProvider } from 'xy-shared/components/pro/Providers';
+import { FrameworkProvider } from 'xy-shared';
 import { createNormalizePageMap } from 'xy-shared/server';
 import { getPageMap as getExamplesPageMap } from '@/app/(content-pages)/examples/[...slug]/utils';
 import { Banner } from 'nextra/components';
@@ -44,7 +45,8 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
       <Head color={{ hue: 15, saturation: 90 }} />
       <body>
         <Fathom {...fathomOptions} />
-        <SubscriptionProvider
+        <FrameworkProvider framework="svelte">
+          <SubscriptionProvider
           banner={
             <Banner storageKey="node-collisions">
               <Link
@@ -138,6 +140,7 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
         >
           {children}
         </SubscriptionProvider>
+        </FrameworkProvider>
       </body>
     </Html>
   );

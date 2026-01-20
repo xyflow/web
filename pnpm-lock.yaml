@@ -6,9 +6,6 @@ settings:
 
 catalogs:
   default:
-    '@nhost/nhost-js':
-      specifier: ^4.2.2
-      version: 4.2.2
     '@tailwindcss/postcss':
       specifier: ^4.1.18
       version: 4.1.18
@@ -18,9 +15,6 @@ catalogs:
     '@types/react':
       specifier: ^19.2.8
       version: 19.2.8
-    '@types/react-dom':
-      specifier: ^19.2.3
-      version: 19.2.3
     '@xyflow/react':
       specifier: ^12.10.0
       version: 12.10.0
@@ -30,9 +24,6 @@ catalogs:
     '@xyflow/system':
       specifier: ^0.0.74
       version: 0.0.74
-    eslint:
-      specifier: ^9.39.2
-      version: 9.39.2
     next:
       specifier: ^16.1.4
       version: 16.1.4
@@ -45,9 +36,6 @@ catalogs:
     nextra-theme-docs:
       specifier: ^4.6.1
       version: 4.6.1
-    prettier:
-      specifier: ^3.8.0
-      version: 3.8.0
     react:
       specifier: ^19.2.3
       version: 19.2.3
@@ -712,9 +700,6 @@ importers:
       react-dom:
         specifier: 'catalog:'
         version: 19.2.3(react@19.2.3)
-      svelte:
-        specifier: ^5.33.19
-        version: 5.43.3
       xy-shared:
         specifier: workspace:*
         version: link:../../packages/xy-shared
