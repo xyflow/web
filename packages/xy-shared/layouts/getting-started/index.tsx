@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import { ArrowLongRightIcon } from '@heroicons/react/24/outline';
-import { Button } from '../ui/button';
-import { Text } from '../ui/text';
-import { Container } from '../ui/container';
+import { Button } from '../../components/ui/button';
+import { Text } from '../../components/ui/text';
+import { Container } from '../../components/ui/container';
 
-import { LayoutBreakout } from '../../layouts/breakout';
+import { LayoutBreakout } from '../breakout';
 import { AppWindow } from './app-window';
 
 type GettingStartedProps = {
@@ -25,7 +25,7 @@ function GettingStarted({ libraryName, packageName }: GettingStartedProps) {
             Getting Started with {libraryName}
           </Text>
           <Text className="text-center max-w-lg mx-auto mb-6 lg:mb-8">
-            Make sure you’ve installed npm, pnpm or yarn. Then you can install{' '}
+            Make sure you&apos;ve installed npm, pnpm or yarn. Then you can install{' '}
             {libraryName} via:
           </Text>
 

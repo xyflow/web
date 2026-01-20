@@ -2,11 +2,11 @@ import Link from 'next/link';
 import Image, { type StaticImageData } from 'next/image';
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 
-import { Section } from '../ui/section';
-import { Heading } from '../ui/heading';
-import { Text } from '../ui/text';
-import { Button } from '../ui/button';
-import { cn } from '../../lib/utils';
+import { Section } from '../components/ui/section';
+import { Heading } from '../components/ui/heading';
+import { Text } from '../components/ui/text';
+import { Button } from '../components/ui/button';
+import { cn } from '../lib/utils';
 
 type AboutSectionProps = {
   imageSrc?: string | StaticImageData;

@@ -1,14 +1,17 @@
 // Layouts
 export * from './layouts/404';
+export * from './layouts/about-section';
 export * from './layouts/base';
 export * from './layouts/blog-post-base';
 export * from './layouts/breakout';
 export * from './layouts/case-study-wrapper';
+export * from './layouts/getting-started';
+export * from './layouts/hero-flow';
 export * from './layouts/labs-wrapper';
+export * from './layouts/project-cards';
 export * from './layouts/showcase';
 
 // Components
-export * from './components/about-section';
 export * from './components/authors-list';
 export * from './components/blog-post';
 export * from './components/client-logos';
@@ -16,16 +19,13 @@ export * from './components/contact-form';
 export * from './components/fathom';
 export * from './components/features';
 export * from './components/flows';
-export * from './components/getting-started';
 export * from './components/handle';
 export * from './components/headline-node';
 export * from './components/hero';
-export * from './components/hero-flow';
 export * from './components/image-slider';
 export * from './components/liteyoutube-embed';
 export * from './components/menubar';
 export * from './components/node-wrapper';
-export * from './components/project-cards';
 export * from './components/project-preview';
 export * from './components/search';
 export * from './components/sidebar-title';

@@ -1,8 +1,8 @@
 import type { CSSProperties, ReactNode } from 'react';
-import { Heading } from '../ui/heading';
-import { Text } from '../ui/text';
+import { Heading } from '../../components/ui/heading';
+import { Text } from '../../components/ui/text';
 
-import { LayoutBreakout } from '../../layouts/breakout';
+import { LayoutBreakout } from '../breakout';
 
 import Flow from './flow';
 

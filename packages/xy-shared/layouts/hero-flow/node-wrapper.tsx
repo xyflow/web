@@ -15,4 +15,3 @@ export default function NodeWrapper({ label, children }: NodeWrapperProps) {
     </div>
   );
 }
-

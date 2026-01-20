@@ -18,4 +18,3 @@ function AppWindow({ children }: AppWindowProps) {
 }
 
 export { AppWindow, type AppWindowProps };
-

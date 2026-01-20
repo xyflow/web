@@ -1,9 +1,9 @@
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
-import { ContentGrid, ContentGridItem } from '../ui/content-grid';
-import { Text } from '../ui/text';
-import { Heading } from '../ui/heading';
-import { Logo } from '../ui/logo';
-import { cn } from '../../lib/utils';
+import { ContentGrid, ContentGridItem } from '../components/ui/content-grid';
+import { Text } from '../components/ui/text';
+import { Heading } from '../components/ui/heading';
+import { Logo } from '../components/ui/logo';
+import { cn } from '../lib/utils';
 
 const projectsData = {
   reactflow: {
