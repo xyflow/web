@@ -187,6 +187,7 @@ const metaRecord = {
     type: 'menu',
     items: {
       changelog: { href: '/whats-new' },
+      'case-studies': { href: '/pro/case-studies' },
       blog: { href: 'https://xyflow.com/blog' },
       'contact-us': { href: 'https://xyflow.com/contact' },
       playground: { href: 'https://play.reactflow.dev' },
