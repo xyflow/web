@@ -6,57 +6,12 @@ settings:
 
 catalogs:
   default:
-    '@nhost/nhost-js':
-      specifier: ^4.1.0
-      version: 4.1.0
-    '@tailwindcss/postcss':
-      specifier: ^4.1.18
-      version: 4.1.18
-    '@types/node':
-      specifier: ^22.14.1
-      version: 22.19.0
-    '@types/react':
-      specifier: ^19.2.0
-      version: 19.2.7
-    '@types/react-dom':
-      specifier: ^19.2.0
-      version: 19.2.3
-    '@xyflow/react':
-      specifier: ^12.10.0
-      version: 12.10.0
-    '@xyflow/svelte':
-      specifier: ^1.5.0
-      version: 1.5.0
-    '@xyflow/system':
-      specifier: ^0.0.72
-      version: 0.0.72
     eslint:
       specifier: ^9.25.1
       version: 9.39.1
-    next:
-      specifier: ^15.5.9
-      version: 15.5.9
-    next-sitemap:
-      specifier: ^4.2.3
-      version: 4.2.3
-    nextra:
-      specifier: ^4.6.0
-      version: 4.6.0
-    nextra-theme-docs:
-      specifier: ^4.6.0
-      version: 4.6.0
     prettier:
       specifier: ^3.7.4
       version: 3.7.4
-    react:
-      specifier: ^19.2.0
-      version: 19.2.0
-    react-dom:
-      specifier: ^19.2.0
-      version: 19.2.0
-    tailwindcss:
-      specifier: ^4.1.18
-      version: 4.1.18
     typescript:
       specifier: ^5.8.3
       version: 5.9.3
@@ -69,10 +24,6 @@ patchedDependencies:
 importers:
 
   .:
-    dependencies:
-      dotenv-cli:
-        specifier: ^8.0.0
-        version: 8.0.0
     devDependencies:
       eslint:
         specifier: 'catalog:'
@@ -4359,14 +4310,6 @@ packages:
 
   domutils@2.8.0:
     resolution: {integrity: sha512-w96Cjofp72M5IIhpjgobBimYEfoPjx1Vx0BSX9P30WBdZW2WIKU0T1Bd0kz2eNZ9ikjKgHbEyKx8BB6H1L3h3A==}
-
-  dotenv-cli@8.0.0:
-    resolution: {integrity: sha512-aLqYbK7xKOiTMIRf1lDPbI+Y+Ip/wo5k3eyp6ePysVaSqbyxjyK3dK35BTxG+rmd7djf5q2UPs4noPNH+cj0Qw==}
-    hasBin: true
-
-  dotenv-expand@10.0.0:
-    resolution: {integrity: sha512-GopVGCpVS1UKH75VKHGuQFqS1Gusej0z4FyQkPdwjil2gNIv+LNsqBlboOzpJFZKVT95GkCyWJbBSdFEFUWI2A==}
-    engines: {node: '>=12'}
 
   dotenv@16.0.3:
     resolution: {integrity: sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ==}
@@ -11505,15 +11448,6 @@ snapshots:
       dom-serializer: 1.4.1
       domelementtype: 2.3.0
       domhandler: 4.3.1
-
-  dotenv-cli@8.0.0:
-    dependencies:
-      cross-spawn: 7.0.6
-      dotenv: 16.6.1
-      dotenv-expand: 10.0.0
-      minimist: 1.2.8
-
-  dotenv-expand@10.0.0: {}
 
   dotenv@16.0.3: {}
 
