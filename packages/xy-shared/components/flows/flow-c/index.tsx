@@ -1,6 +1,5 @@
 'use client';
 
-import { FC } from 'react';
 import {
   ReactFlow,
   Background,
