@@ -4,6 +4,7 @@ import https from 'https';
 import { put } from '@vercel/blob';
 import { z } from 'zod';
 import { ShowcaseItem } from '../layouts/showcase';
+import { getFramework } from '../hooks/use-framework';
 
 const notion = new NotionClient({ auth: process.env.NOTION_API_SECRET });
 
@@ -93,15 +94,15 @@ export const fakeShowcases: ShowcaseItem[] = Array.from(
     }) satisfies ShowcaseItem,
 );
 
-export async function fetchNotionShowcases(
-  framework: 'React Flow' | 'Svelte Flow' = 'React Flow',
-): Promise<ShowcaseItem[]> {
+export async function fetchNotionShowcases(): Promise<ShowcaseItem[]> {
   if (!process.env.NOTION_API_SECRET) {
     if (process.env.NODE_ENV === 'development') {
       return fakeShowcases;
     }
     throw new Error('NOTION_API_SECRET is not set');
   }
+
+  const { library } = getFramework();
 
   const { results } = await notion.dataSources.query({
     data_source_id: SHOWCASES_DATABASE_ID,
@@ -116,7 +117,7 @@ export async function fetchNotionShowcases(
         {
           property: 'Library',
           select: {
-            equals: framework,
+            equals: library,
           },
         },
       ],

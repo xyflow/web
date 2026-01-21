@@ -10,31 +10,29 @@ import {
   Node,
   Position,
 } from '@xyflow/react';
+import { useFramework } from '../../../hooks/use-framework';
 
 const defaultNodeOptions = {
   targetPosition: Position.Left,
   sourcePosition: Position.Right,
 };
 
-interface FlowCProps {
-  framework: 'react' | 'svelte';
-}
+const reactColors = {
+  a: '#0050ff',
+  b: '#a845d0',
+  c: '#a845d0',
+  d: '#ff2e8b',
+};
 
-export const FlowC: FC<FlowCProps> = ({ framework }) => {
-  const reactColors = {
-    a: '#0050ff',
-    b: '#a845d0',
-    c: '#a845d0',
-    d: '#ff2e8b',
-  };
+const svelteColors = {
+  a: '#FC4545',
+  b: '#fb6432',
+  c: '#fb6432',
+  d: '#FFBA42',
+};
 
-  const svelteColors = {
-    a: '#FC4545',
-    b: '#fb6432',
-    c: '#fb6432',
-    d: '#FFBA42',
-  };
-
+export const FlowC = () => {
+  const { framework } = useFramework();
   // Choose the color set based on the framework
   const colors = framework === 'svelte' ? svelteColors : reactColors;
 

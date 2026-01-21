@@ -1,33 +1,23 @@
-'use client';
+import { type Framework, type Library } from '../types';
 
-import { createContext, useContext, type ReactNode } from 'react';
-import { type Framework } from '../types';
+export function getFramework(override?: Framework): { framework: Framework; library: Library } {
+  const env = process.env.NEXT_PUBLIC_FRAMEWORK as Framework;
+  
+  const framework = override || env || 'react';
 
-const FrameworkContext = createContext<Framework | null>(null);
+  let library: Library = 'React Flow';
+  switch (framework) {
+    case 'react':
+      library = 'React Flow';
+      break;
+    case 'svelte':
+      library = 'Svelte Flow';
+      break;
+  }
 
-export function FrameworkProvider({
-  framework,
-  children,
-}: {
-  framework: Framework;
-  children: ReactNode;
-}) {
-  return (
-    <FrameworkContext.Provider value={framework}>
-      {children}
-    </FrameworkContext.Provider>
-  );
+  return { framework, library };
 }
 
-export function useFramework(): Framework {
-  const framework = useContext(FrameworkContext);
-  
-  if (framework === null) {
-    throw new Error(
-      'useFramework must be used within a FrameworkProvider. ' +
-      'Make sure to wrap your app with <FrameworkProvider framework="react" /> or <FrameworkProvider framework="svelte" />'
-    );
-  }
-  
-  return framework;
+export function useFramework(override?: Framework): { framework: Framework; library: Library } {
+  return getFramework(override);
 }

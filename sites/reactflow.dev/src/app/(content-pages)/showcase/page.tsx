@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 const Showcase: FC = async () => {
-  const showcases = await fetchNotionShowcases('React Flow');
+  const showcases = await fetchNotionShowcases();
   const caseStudies = (await getPageMap('/pro/case-studies')).filter(
     (page) => 'name' in page && page.name !== 'index',
   );
