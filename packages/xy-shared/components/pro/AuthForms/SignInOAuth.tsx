@@ -1,4 +1,4 @@
-import { createNhostClient } from '../../../utils/nhost';
+import { createNhostClient } from '../../../lib/nhost';
 import Link from 'next/link';
 
 import { Button } from '../../ui/button';

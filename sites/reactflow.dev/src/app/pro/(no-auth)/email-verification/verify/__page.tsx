@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation';
-import { createNhostClient } from 'xy-shared/utils/nhost';
+import { createNhostClient } from 'xy-shared/lib/nhost';
 import { FC } from 'react';
 import { SearchParams } from 'xy-shared/types';
 

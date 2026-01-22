@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { handleNhostMiddleware } from 'xy-shared/utils/nhost';
+import { handleNhostMiddleware } from 'xy-shared/lib/nhost';
 
 export async function middleware(request: NextRequest) {
   // Create a response that we'll modify as needed

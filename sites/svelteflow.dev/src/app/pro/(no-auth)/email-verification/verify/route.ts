@@ -2,7 +2,7 @@ import { NextResponse, type NextRequest } from 'next/server';
 import type { ErrorResponse } from '@nhost/nhost-js/auth';
 import type { FetchError } from '@nhost/nhost-js/fetch';
 
-import { createNhostClient } from 'xy-shared/utils/nhost';
+import { createNhostClient } from 'xy-shared/lib/nhost';
 
 const VERIFICATION_ERROR_PAGE = '/pro/email-verification/error';
 

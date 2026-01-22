@@ -1,6 +1,6 @@
 'use server';
 
-import { createNhostClient } from '../utils/nhost';
+import { createNhostClient } from '../lib/nhost';
 
 const appUrl = process.env.APP_URL ? process.env.APP_URL : 'http://localhost:3002';
 

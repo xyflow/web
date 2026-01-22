@@ -4,7 +4,7 @@ import ChangeEmailCard from './_cards/change-email';
 import ChangePasswordCard from './_cards/change-password';
 import DeleteAccountCard from './_cards/delete-account';
 import BillingCard from './_cards/billing';
-import { createNhostClient } from 'xy-shared/utils/nhost';
+import { createNhostClient } from 'xy-shared/lib/nhost';
 
 async function AccountPage() {
   const nhost = await createNhostClient();

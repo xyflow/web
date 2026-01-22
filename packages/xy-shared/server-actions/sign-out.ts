@@ -1,8 +1,8 @@
 'use server';
 
 import { cookies } from 'next/headers';
-import { createNhostClient } from '../utils/nhost';
-import { NHOST_REFRESH_KEY, NHOST_SESSION_KEY } from '../utils/nhost-utils';
+import { createNhostClient } from '../lib/nhost';
+import { NHOST_REFRESH_KEY, NHOST_SESSION_KEY } from '../lib/nhost-utils';
 
 export async function signOut() {
   const nhost = await createNhostClient();

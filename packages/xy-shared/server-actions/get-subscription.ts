@@ -3,7 +3,7 @@
 import { gql } from '@apollo/client';
 import { User } from '@nhost/nhost-js/auth';
 
-import { createNhostClient } from '../utils/nhost';
+import { createNhostClient } from '../lib/nhost';
 import { SubscriptionPlan } from '../types';
 
 const GET_SUBSCRIPTION = gql`

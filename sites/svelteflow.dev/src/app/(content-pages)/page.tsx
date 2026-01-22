@@ -17,7 +17,7 @@ import { FlowB } from 'xy-shared/components/flows/flow-b';
 import { FlowC } from 'xy-shared/components/flows/flow-c';
 
 import type { InternalRoute } from '../../routes';
-import { fetchGitHubNpmStats } from 'xy-shared/utils/fetch-github-npm-stats';
+import { fetchGitHubNpmStats } from 'xy-shared/lib/fetch-github-npm-stats';
 import { version } from '@xyflow/svelte/package.json';
 
 export const revalidate = 3600; // 60 * 60

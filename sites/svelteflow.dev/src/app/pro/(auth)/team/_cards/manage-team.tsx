@@ -22,7 +22,7 @@ import { revalidatePathFromClient } from 'xy-shared/server-actions/revalidate-pa
 import { PlanLabel } from 'xy-shared/components/pro/SubscriptionStatus';
 import Loader from 'xy-shared/components/pro/Loader';
 import { Currency } from 'xy-shared/types';
-import { getCurrencySign } from 'xy-shared/utils/pro-utils';
+import { getCurrencySign } from 'xy-shared/lib/pro-utils';
 
 type TeamMember = {
   email: string;

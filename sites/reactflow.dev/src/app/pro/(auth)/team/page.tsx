@@ -2,7 +2,7 @@ import DashboardHeader from 'xy-shared/components/pro/DashboardHeader';
 import ManageTeamCard from './_cards/manage-team';
 import NotSubscribedNotification from 'xy-shared/components/pro/Notification/not-subscribed';
 import { Subscribed } from 'xy-shared/components/pro/SubscriptionStatus';
-import { createNhostClient } from 'xy-shared/utils/nhost';
+import { createNhostClient } from 'xy-shared/lib/nhost';
 import { getTeamMembers } from 'xy-shared/server-actions/get-team-members';
 
 export default async function TeamPage() {

@@ -4,7 +4,7 @@ import path from 'path';
 import { ReactNode } from 'react';
 import { ExampleCode } from '../../types';
 import { compileCodeSnippet } from '../compile-code-snippet';
-import { loadJSONFile } from '../utils';
+import { loadJSONFile } from '../utils'; 
 import { CodePreview } from './CodePreview';
 import './style.css';
 
