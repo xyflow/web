@@ -1,18 +1,19 @@
 'use client';
 
 import { useCallback, useState, useEffect, FC, Suspense } from 'react';
-import { Card } from 'xy-shared/components/ui/card';
-import { InputLabel } from 'xy-shared/components/ui/input';
-import { Input } from 'xy-shared/components/ui/input';
-import { Button } from 'xy-shared/components/ui/button';
-import { Checkbox } from 'xy-shared/components/ui/checkbox';
-import { Accordion } from 'xy-shared/components/ui/accordion';
-import { Link } from 'xy-shared/components/ui/link';
-import { BaseLayout } from 'xy-shared/layouts/base';
-import { Hero } from 'xy-shared/components/hero';
-import { SubscribeSection } from 'xy-shared/components/subscribe-section';
-import { SparklesIcon } from '@heroicons/react/24/outline';
 import { useSearchParams } from 'next/navigation';
+import { SparklesIcon } from '@heroicons/react/24/outline';
+
+import { Card } from '../../../../components/ui/card';
+import { InputLabel } from '../../../../components/ui/input';
+import { Input } from '../../../../components/ui/input';
+import { Button } from '../../../../components/ui/button';
+import { Checkbox } from '../../../../components/ui/checkbox';
+import { Accordion } from '../../../../components/ui/accordion';
+import { Link } from '../../../../components/ui/link';
+import { BaseLayout } from '../../../../layouts/base';
+import { SubscribeSection } from '../../../../components/subscribe-section';
+import { Hero } from '../../../../components/hero';
 
 export const Form: FC = () => {
   const searchParams = useSearchParams();
