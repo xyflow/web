@@ -10,6 +10,9 @@ import { Input } from '../../../../../components/ui/input';
 import { InputLabel } from '../../../../../components/ui/input';
 import { callNhostFunction } from '../../../../../server-actions/call-nhost-function';
 import { useSubscription } from '../../../../../hooks/use-subscription';
+import { getFramework } from '../../../../../lib/get-framework';
+
+const { library } = getFramework();
 
 export default function Signup() {
   const [isLoading, setLoading] = useState(false);
@@ -148,8 +151,8 @@ export default function Signup() {
               />
               <label className="text-muted-foreground text-sm" htmlFor="confirm">
                 {projectType === 'student'
-                  ? 'I confirm that I am using React Flow Pro only for educational purposes.'
-                  : 'I confirm that I am using React Flow Pro only for non-commercial purposes in my open source project.'}
+                  ? `I confirm that I am using ${library} Pro only for educational purposes.`
+                  : `I confirm that I am using ${library} Pro only for non-commercial purposes in my open source project.`}
               </label>
             </div>
           )}

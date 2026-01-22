@@ -1,8 +1,10 @@
 import SubscriptionFeature from '../../../../components/pro/SubscriptionFeature';
 import { SubscriptionPlan } from '../../../../types';
 import DashboardHeader from '../../../../components/pro/DashboardHeader';
+import { getFramework } from '../../../../lib/get-framework';
 
 export default async function DashboardPage() {
+  const { library } = getFramework();
   return (
     <>
       <DashboardHeader title="Dashboard" showSubscriptionPlan />
@@ -10,7 +12,7 @@ export default async function DashboardPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-5 lg:gap-6">
           <SubscriptionFeature
             title="Pro Examples"
-            description="A continuously growing collection of advanced React Flow examples. During your subscription you can access the source code of all Pro examples."
+            description={`A continuously growing collection of advanced ${library} examples. During your subscription you can access the source code of all Pro examples.`}
             plans={[
               SubscriptionPlan.FREE,
               SubscriptionPlan.STARTER,
@@ -50,7 +52,7 @@ export default async function DashboardPage() {
 
           <SubscriptionFeature
             title="Onboarding Call"
-            description="Schedule a call with us to share what you're building with React Flow and how we can make the library even better."
+            description={`Schedule a call with us to share what you're building with ${library} and how we can make the library even better.`}
             plans={[
               SubscriptionPlan.STARTER,
               SubscriptionPlan.PRO,
@@ -65,7 +67,7 @@ export default async function DashboardPage() {
 
           <SubscriptionFeature
             title="Individual Support"
-            description="Your direct wire to the React Flow team. We will point you in the right direction if you encounter problems using React Flow."
+            description={`Your direct wire to the ${library} team. We will point you in the right direction if you encounter problems using ${library}.`}
             plans={[SubscriptionPlan.PRO, SubscriptionPlan.ENTERPRISE]}
             button={{ label: 'Get Support', href: '/pro/support' }}
           />

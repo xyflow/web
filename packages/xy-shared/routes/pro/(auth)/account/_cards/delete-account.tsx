@@ -23,11 +23,15 @@ import { Button } from '../../../../../components/ui/button';
 import { Input } from '../../../../../components/ui/input';
 import { callNhostFunction } from '../../../../../server-actions/call-nhost-function';
 import { signOut } from '../../../../../server-actions/sign-out';
+import { getFramework } from '../../../../../lib/get-framework';
+
+const { library } = getFramework();
 
 const DeleteAccountCard: FC<{ userEmail: string }> = ({ userEmail }) => {
   const [confirmUserEmail, setConfirmUserEmail] = useState('');
   const [isDeleteLoading, startTransition] = useTransition();
   const isDeleteConfirmed = userEmail === confirmUserEmail;
+
 
   function deleteAccount() {
     startTransition(async () => {
@@ -50,12 +54,12 @@ const DeleteAccountCard: FC<{ userEmail: string }> = ({ userEmail }) => {
               <AlertDialogDescription asChild>
                 <div className="flex flex-col gap-y-3">
                   <p>
-                    By clicking the button below, you will delete your React Flow Pro
+                    By clicking the button below, you will delete your {library} Pro
                     account. This action is irreversible. Please confirm that you want to:
                   </p>
                   <ul className="list-disc font-bold">
                     <li>
-                      Delete your React Flow Pro account and all the data associated with
+                      Delete your {library} Pro account and all the data associated with
                       it
                     </li>
                     <li>

@@ -14,6 +14,9 @@ import { Link } from '../../../../components/ui/link';
 import { BaseLayout } from '../../../../layouts/base';
 import { SubscribeSection } from '../../../../components/subscribe-section';
 import { Hero } from '../../../../components/hero';
+import { getFramework } from '../../../../lib/get-framework';
+
+const { library } = getFramework();
 
 export const Form: FC = () => {
   const searchParams = useSearchParams();
@@ -209,7 +212,7 @@ export default function QuoteRequestPage() {
   return (
     <BaseLayout>
       <Hero
-        kicker="React Flow Pro"
+        kicker={`${library} Pro`}
         title="Request a Quote"
         subtitle="Use the form below to get an official quote for one of our annual subscription plans."
         kickerIcon={<SparklesIcon />}

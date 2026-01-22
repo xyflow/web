@@ -2,8 +2,10 @@ import DashboardHeader from '../../../../components/pro/DashboardHeader';
 import SubscriptionFeature from '../../../../components/pro/SubscriptionFeature';
 import { SubscriptionPlan } from '../../../../types';
 import { Link } from '../../../../components/ui/link';
+import { getFramework } from '../../../../lib/get-framework';
 
 export default function SupportPage () {
+  const { library } = getFramework();
   return (
     <div>
       <DashboardHeader
@@ -71,7 +73,7 @@ export default function SupportPage () {
           />
           <SubscriptionFeature
             title="Discord Community"
-            description="Ask and answer questions in our active community of React Flow developers"
+            description={`Ask and answer questions in our active community of ${library} developers`}
             plans={[
               SubscriptionPlan.FREE,
               SubscriptionPlan.STARTER,

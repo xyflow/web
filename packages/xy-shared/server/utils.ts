@@ -4,7 +4,7 @@ import https from 'https';
 import { put } from '@vercel/blob';
 import { z } from 'zod';
 import { ShowcaseItem } from '../layouts/showcase';
-import { getFramework } from '../hooks/use-framework';
+import { getFramework } from '../lib/get-framework';
 
 const notion = new NotionClient({ auth: process.env.NOTION_API_SECRET });
 
