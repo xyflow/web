@@ -36,7 +36,7 @@ export const metadata: Metadata = {
 
 const ProExamples: FC = async () => {
   const remoteProExamples = await fetchJSON(
-    `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/examples.json?t=1`,
+    `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/react/apps.json?t=1`,
   );
   const pageMap = await getExamplesPageMap();
   const proExamples = pageMap.children
