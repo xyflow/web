@@ -3,17 +3,12 @@ import { ReactNode, Suspense } from 'react';
 import Link from 'next/link';
 import { ArrowLongRightIcon } from '@heroicons/react/20/solid';
 import SignInOAuth from './SignInOAuth';
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-} from '../../ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../../ui/card';
 import { Heading } from '../../ui/heading';
 import { Text } from '../../ui/text';
 
 import { ExpiredTokenNotification } from './AuthNotification';
+import { getFramework } from '../../../lib/get-framework';
 
 type AuthFormWrapperProps = {
   children?: ReactNode;
@@ -22,8 +17,9 @@ type AuthFormWrapperProps = {
   showHero?: boolean;
   title?: ReactNode;
   description?: ReactNode;
-  library?: 'react' | 'svelte';
 };
+
+const { library } = getFramework();
 
 const AuthFormWrapper = ({
   children,
@@ -32,9 +28,7 @@ const AuthFormWrapper = ({
   showHero = true,
   title = null,
   description = null,
-  library = 'react',
 }: AuthFormWrapperProps) => {
-  const libraryName = library === 'react' ? 'React Flow' : 'Svelte Flow';
   return (
     <>
       <Suspense fallback={null}>
@@ -45,10 +39,10 @@ const AuthFormWrapper = ({
           <div className="hidden lg:block flex-1 max-w-xl mt-6 relative p-4">
             <Heading className="mb-4 font-black">
               Build Better Node-Based UIs with{' '}
-              <span className="text-primary">{libraryName}</span>
+              <span className="text-primary">{library}</span>
             </Heading>
             <Text size="lg">
-              By subscribing to {libraryName} Pro you are securing the maintenance and
+              By subscribing to {library} Pro you are securing the maintenance and
               development of our open source libraries.
             </Text>
           </div>
