@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 };
 
 const Page: FC = async () => {
-  const showcases = await fetchNotionShowcases('Svelte Flow');
+  const showcases = await fetchNotionShowcases();
 
   return (
     <ShowcaseLayout

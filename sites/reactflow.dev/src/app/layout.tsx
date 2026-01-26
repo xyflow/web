@@ -14,7 +14,6 @@ import { Html } from 'xy-shared/components/html';
 import { createNormalizePageMap } from 'xy-shared/server/normalize-page-map';
 import { getPageMap as getExamplesPageMap } from '@/app/(content-pages)/examples/[...slug]/utils';
 import { SubscriptionProvider } from 'xy-shared/components/pro/Providers';
-import { FrameworkProvider } from 'xy-shared/hooks/use-framework';
 import './global.css';
 
 export const metadata = generateRootMetadata('React Flow', {
@@ -49,47 +48,53 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
       <Head color={{ hue: 333, saturation: 80 }} />
       <body>
         <Fathom {...fathomOptions} />
-        <FrameworkProvider framework="react">
-          <SubscriptionProvider
-            darkMode={true}
-            docsRepositoryBase="https://github.com/xyflow/web/tree/main/sites/reactflow.dev"
-            editLink="Edit this page on GitHub"
-            feedback={{ content: null }}
-            footer={
-              <XYFooter
-                baseUrl="https://reactflow.dev"
-                categories={{
-                  Docs: [
-                    { title: 'Getting Started', route: '/learn' },
-                    { title: 'API Reference', route: '/api-reference' },
-                    { title: 'Examples', route: '/examples' },
-                    { title: 'UI', route: '/ui' },
-                    { title: 'Showcase', route: '/showcase' },
-                    { title: 'Playground', route: 'https://play.reactflow.dev' },
-                  ],
-                  ...remainingCategories,
-                  Legal: [
-                    {
-                      title: 'MIT License',
-                      route: 'https://github.com/xyflow/xyflow/blob/main/LICENSE',
-                    },
-                    {
-                      title: 'Code of Conduct',
-                      route:
-                        'https://github.com/xyflow/xyflow/blob/main/CODE_OF_CONDUCT.md',
-                    },
-                    { title: 'Imprint', route: 'https://xyflow.com/imprint' },
-                  ],
-                }}
-              />
-            }
-            navbar={
-              <NextraNavbar
-                align="left"
-                logo={
-                  <LogoLabel label="React Flow" labelClassName="mr-5 md:max-lg:hidden" />
-                }
-                logoLink={false}
+        <SubscriptionProvider
+          darkMode={true}
+          docsRepositoryBase="https://github.com/xyflow/web/tree/main/sites/reactflow.dev"
+          editLink="Edit this page on GitHub"
+          feedback={{ content: null }}
+          footer={
+            <XYFooter
+              baseUrl="https://reactflow.dev"
+              categories={{
+                Docs: [
+                  { title: 'Getting Started', route: '/learn' },
+                  { title: 'API Reference', route: '/api-reference' },
+                  { title: 'Examples', route: '/examples' },
+                  { title: 'UI', route: '/ui' },
+                  { title: 'Showcase', route: '/showcase' },
+                  { title: 'Playground', route: 'https://play.reactflow.dev' },
+                ],
+                ...remainingCategories,
+                Legal: [
+                  {
+                    title: 'MIT License',
+                    route: 'https://github.com/xyflow/xyflow/blob/main/LICENSE',
+                  },
+                  {
+                    title: 'Code of Conduct',
+                    route:
+                      'https://github.com/xyflow/xyflow/blob/main/CODE_OF_CONDUCT.md',
+                  },
+                  { title: 'Imprint', route: 'https://xyflow.com/imprint' },
+                ],
+              }}
+            />
+          }
+          navbar={
+            <NextraNavbar
+              align="left"
+              logo={
+                <LogoLabel label="React Flow" labelClassName="mr-5 md:max-lg:hidden" />
+              }
+              logoLink={false}
+            >
+              <Search />
+              <a
+                className="xy-link-gray focus-visible:nextra-focus"
+                href="https://github.com/xyflow/xyflow"
+                target="_blank"
+                rel="noreferrer"
               >
                 <Search />
                 <a
@@ -114,33 +119,26 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <svg
-                    className="nav-github-logo"
-                    fill="currentColor"
-                    viewBox="0 0 130 90"
-                    width="23"
-                  >
-                    <title>Discord</title>
-                    <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z" />
-                  </svg>
-                </a>
-                <NavMenu siteName="React Flow" />
-              </NextraNavbar>
-            }
-            nextThemes={{ defaultTheme: 'light' }}
-            pageMap={pageMap}
-            // Set to null to avoid rendering search in mobile nav, since we added search in navbar already
-            search={null}
-            sidebar={{ toggleButton: false }}
-            toc={{
-              backToTop: null,
-              extraContent: <TOC pageMap={lastChangelog} />,
-            }}
-          >
-            {children}
-            <SpeedInsights />
-          </SubscriptionProvider>
-        </FrameworkProvider>
+                  <title>Discord</title>
+                  <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z" />
+                </svg>
+              </a>
+              <NavMenu siteName="React Flow" />
+            </NextraNavbar>
+          }
+          nextThemes={{ defaultTheme: 'light' }}
+          pageMap={pageMap}
+          // Set to null to avoid rendering search in mobile nav, since we added search in navbar already
+          search={null}
+          sidebar={{ toggleButton: false }}
+          toc={{
+            backToTop: null,
+            extraContent: <TOC pageMap={lastChangelog} />,
+          }}
+        >
+          {children}
+          <SpeedInsights />
+        </SubscriptionProvider>
       </body>
     </Html>
   );

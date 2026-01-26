@@ -1,5 +1,5 @@
-import { Card, CardHeader, CardDescription, CardTitle, CardFooter } from 'xy-shared/components/ui/card';
-import CustomerPortalButton from 'xy-shared/components/pro/CustomerPortalButton';
+import { Card, CardHeader, CardDescription, CardTitle, CardFooter } from '../../../../../components/ui/card';
+import CustomerPortalButton from '../../../../../components/pro/CustomerPortalButton';
 
 function BillingCard() {
   return (

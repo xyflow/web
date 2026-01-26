@@ -7,6 +7,7 @@ export type ExampleCode = {
 
 export type HeroIcon = typeof HeartIcon;
 export type Framework = 'react' | 'svelte';
+export type Library = 'React Flow' | 'Svelte Flow';
 
 export type SearchParams = Promise<{
   [key: string]: string | string[] | undefined;

@@ -1,6 +1,6 @@
 'use server';
 
-import { createNhostClient } from '../utils/nhost';
+import { createNhostClient } from '../lib/nhost';
 import { FetchError } from '@nhost/nhost-js/fetch';
 import { ErrorResponse } from '@nhost/nhost-js/auth';
 

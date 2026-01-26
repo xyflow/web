@@ -17,7 +17,7 @@ import { FlowA } from 'xy-shared/components/flows/flow-a';
 import { FlowB } from 'xy-shared/components/flows/flow-b';
 import { FlowC } from 'xy-shared/components/flows/flow-c';
 import { getLastChangelog } from 'xy-shared/server/get-last-changelog';
-import { fetchGitHubNpmStats } from 'xy-shared/utils/fetch-github-npm-stats';
+import { fetchGitHubNpmStats } from 'xy-shared/lib/fetch-github-npm-stats';
 import { InternalRoute } from '../../routes';
 import ClientLogos from 'xy-shared/components/client-logos';
 import WhatsNewPreview from 'xy-shared/components/whats-new-preview';
@@ -64,7 +64,7 @@ const features = [
     title: 'All the right components',
     text: 'Make more advanced apps with the Background, Minimap, Controls, Panel, NodeToolbar, and NodeResizer components.',
     route: '/learn/concepts/built-in-components' satisfies InternalRoute,
-    flowComponent: <FlowC framework="react" />,
+    flowComponent: <FlowC />,
   },
 ];
 

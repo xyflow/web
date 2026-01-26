@@ -1,18 +1,1 @@
-import { NextraMetadata } from 'nextra';
-import { SignInEmailPassword, AuthFormWrapper } from 'xy-shared/components/pro/AuthForms';
-
-export const metadata: NextraMetadata = {
-  asIndexPage: true,
-};
-
-const authFormLinks = [{ href: '/pro/sign-up', label: "Don't have an account? Sign Up" }];
-
-const SignInEmailPasswordPage = () => {
-  return (
-    <AuthFormWrapper links={authFormLinks} title="Sign In">
-      <SignInEmailPassword />
-    </AuthFormWrapper>
-  );
-};
-
-export default SignInEmailPasswordPage;
+export { metadata, default } from 'xy-shared/routes/pro/(no-auth)/sign-in/page';

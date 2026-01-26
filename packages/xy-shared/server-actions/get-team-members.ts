@@ -2,8 +2,8 @@
 
 import { gql } from '@apollo/client';
 
-import { createNhostClient } from '../utils/nhost';
-import { prettifyError } from '../utils/nhost-utils';
+import { createNhostClient } from '../lib/nhost';
+import { prettifyError } from '../lib/nhost-utils';
 
 const GET_TEAM_MEMBERS = gql`
   query GetTeamMembers($userId: uuid) {

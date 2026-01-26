@@ -5,7 +5,7 @@ import { Hero } from 'xy-shared/components/hero';
 
 import { FC } from 'react';
 import { NextraMetadata } from 'nextra';
-import { getBlogs } from 'xy-shared/utils/get-blogs';
+import { getBlogs } from 'xy-shared/lib/get-blogs';
 
 export const metadata: NextraMetadata = {
   asIndexPage: true,

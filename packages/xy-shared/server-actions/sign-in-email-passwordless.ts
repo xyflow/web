@@ -1,6 +1,6 @@
 'use server';
 
-import { createNhostClient } from '../utils/nhost';
+import { createNhostClient } from '../lib/nhost';
 
 export async function signInEmailPasswordless(email: string) {
   const nhost = await createNhostClient();

@@ -1,4 +1,4 @@
-import { createNhostClient } from 'xy-shared/utils/nhost';
+import { createNhostClient } from 'xy-shared/lib/nhost';
 import { redirect } from 'next/navigation';
 
 export default async function Layout({ children }: LayoutProps<'/pro'>) {
