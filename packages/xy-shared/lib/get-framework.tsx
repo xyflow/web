@@ -17,7 +17,3 @@ export function getFramework(override?: Framework): { framework: Framework; libr
 
   return { framework, library };
 }
-
-export function useFramework(override?: Framework): { framework: Framework; library: Library } {
-  return getFramework(override);
-}
