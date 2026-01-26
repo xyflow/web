@@ -55,7 +55,7 @@ httpPoolSize = 100
 version = 20
 
 [auth]
-version = '0.43.2'
+version = '0.45.0'
 
 [auth.redirections]
 clientUrl = 'https://reactflow-website-env-staging-xyflow.vercel.app'
