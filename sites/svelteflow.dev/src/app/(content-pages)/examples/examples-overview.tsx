@@ -74,7 +74,7 @@ export const ExamplesOverview: FC = async () => {
                     <ContentGridItem
                       key={example.route}
                       route={example.route}
-                      className="border-none py-6 lg:py-8 lg:px-0 hover:bg-white group"
+                      className="border-none py-6 lg:py-8 lg:px-0 group"
                     >
                       <ProjectPreview
                         image={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte${example.route}/preview.jpg?v=1`}

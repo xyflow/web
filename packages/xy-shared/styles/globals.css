@@ -154,6 +154,10 @@ html:has(body.x\:overflow-hidden) nav {
   @apply transition text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 contrast-more:text-gray-700 contrast-more:dark:text-gray-100;
 }
 
+.dark .xy-link-gray {
+  @apply text-gray-300 hover:text-gray-200 contrast-more:text-gray-100;
+}
+
 /* 4. Navigation */
 .nextra-menu-desktop li.active > a {
   @apply bg-transparent text-primary;

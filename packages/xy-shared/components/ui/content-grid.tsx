@@ -58,7 +58,7 @@ export function ContentGridItem({ className, route, children }: ContentGridItemP
   return (
     <LinkOrDiv
       className={cn(
-        'lg:odd:border-r border-b border-gray-100 hover:bg-gray-100/50 border-solid px-8 py-10 lg:py-16 z-10',
+        'lg:odd:border-r border-b border-gray-100 hover:bg-muted px-8 py-10 lg:py-16 z-10',
         route && 'cursor-pointer',
         className,
       )}

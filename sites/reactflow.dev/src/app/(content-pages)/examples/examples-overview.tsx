@@ -65,7 +65,7 @@ export const ExamplesOverview: FC = async () => {
         const category = _category as Folder & { title: string };
         return (
           <Fragment key={category.title}>
-            <Heading className="mt-20" size="sm" id={category.name}>
+            <Heading className="mt-20 no-underline" size="sm" id={category.name}>
               {category.title}
             </Heading>
             <ContentGrid className="lg:grid-cols-3 border-none gap-4 lg:gap-8">
@@ -79,7 +79,7 @@ export const ExamplesOverview: FC = async () => {
                       <ContentGridItem
                         key={example.route}
                         route={example.route}
-                        className="border-none py-6 lg:py-8 lg:px-0 hover:bg-white group"
+                        className="border-none hover:bg-transparent border-none py-6 lg:py-8 lg:px-0 group"
                       >
                         <ProjectPreview
                           image={
