@@ -24,7 +24,7 @@ function HeroFlow({
   action,
 }: HeroFlowProps) {
   return (
-    <LayoutBreakout className="h-[600px] lg:h-[550px] xl:h-[600px] -mt-10 lg:-mt-14 2xl:-mt-18">
+    <LayoutBreakout className="h-[600px] lg:h-[550px] xl:h-[600px] -mt-10 lg:-mt-14 2xl:-mt-18 bg-secondary">
       <div className="pointer-events-none x:max-w-(--nextra-content-width) w-full absolute left-1/2 top-8 lg:top-[130px] -translate-x-1/2 z-10">
         <div
           style={headlineStyle}
