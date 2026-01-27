@@ -1,23 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { handleNhostMiddleware } from 'xy-shared/lib/nhost';
+import { createNhostClient } from 'xy-shared/lib/nhost';
 
 export async function middleware(request: NextRequest) {
-  // Create a response that we'll modify as needed
-  const response = NextResponse.next();
-
   // Handle Nhost authentication and token refresh
   // Always call this to ensure session is up-to-date
   // even for public routes, so that session changes are detected
-  const session = await handleNhostMiddleware(request, response);
-
+  const nhost = await createNhostClient();
   // If no session and not a public route, redirect to signin
-  if (!session) {
+  if (!nhost.getUserSession()) {
     const signInUrl = new URL('/pro/sign-in', request.url);
     return NextResponse.redirect(signInUrl);
   }
 
   // Session exists, allow access to protected route
-  return response;
+  return NextResponse.next();
 }
 
 // Define which routes this middleware should run on
