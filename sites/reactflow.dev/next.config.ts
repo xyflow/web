@@ -8,7 +8,7 @@ import reactFlowPackageJson from '@xyflow/react/package.json' with { type: 'json
 const slugRegex = /-git-(.*?)\.vercel\.app/;
 
 export function parsePreviewDeploySlug(branchUrl?: string) {
-  return branchUrl?.match(slugRegex)?.[1] ?? 'staging';
+  return branchUrl?.match(slugRegex)?.[1] ?? 'staging-next-xyflow';
 }
 
 const nextConfig: NextConfig = {
