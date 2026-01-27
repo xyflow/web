@@ -127,6 +127,9 @@
       'rlig' 1,
       'calt' 1;
   }
+  .light body {
+    background-color: hsl(var(--background));
+  }
   html {
     /* this is a nextra default we need to overwrite */
     font-feature-settings: normal !important;
