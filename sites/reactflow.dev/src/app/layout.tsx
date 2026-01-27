@@ -49,6 +49,7 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
       <body>
         <Fathom {...fathomOptions} />
         <SubscriptionProvider
+          darkMode={true}
           docsRepositoryBase="https://github.com/xyflow/web/tree/main/sites/reactflow.dev"
           editLink="Edit this page on GitHub"
           feedback={{ content: null }}
@@ -125,7 +126,6 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
             </NextraNavbar>
           }
           pageMap={pageMap}
-          nextThemes={{ defaultTheme: 'system' }}
           // Set to null to avoid rendering search in mobile nav, since we added search in navbar already
           search={null}
           sidebar={{ toggleButton: false }}
