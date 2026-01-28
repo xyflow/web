@@ -116,6 +116,10 @@
 
     --light: 0 0% 46%;
   }
+  .dark {
+    --background: 0 0% 6.7%;
+    --foreground: 0 0% 100%;
+  }
 }
 
 @layer base {
@@ -123,12 +127,10 @@
     box-sizing: border-box;
   }
   body {
+    background-color: hsl(var(--background));
     font-feature-settings:
       'rlig' 1,
       'calt' 1;
-  }
-  .light body {
-    background-color: hsl(var(--background));
   }
   html {
     /* this is a nextra default we need to overwrite */
@@ -350,4 +352,16 @@ article.nextra-content ol li p {
   .DocSearch-Button-Placeholder {
     display: none;
   }
+}
+
+.logo-bg-color {
+  fill: hsl(var(--background));
+}
+
+.logo-outline {
+  stroke: hsl(var(--foreground));
+}
+
+.logo-fg-color {
+  fill: hsl(var(--foreground));
 }
