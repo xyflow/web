@@ -1,10 +1,8 @@
 import { cookies } from 'next/headers';
 import { createServerClient, NhostClient } from '@nhost/nhost-js';
-import { DEFAULT_SESSION_KEY, type Session } from '@nhost/nhost-js/session';
+import { DEFAULT_SESSION_KEY as key, type Session } from '@nhost/nhost-js/session';
 
 import { COOKIE_OPTIONS } from './nhost-utils';
-
-const key = DEFAULT_SESSION_KEY;
 
 export async function createNhostClient(): Promise<NhostClient> {
   const cookieStore = await cookies();
