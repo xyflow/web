@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createNhostClient } from 'xy-shared/lib/nhost';
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   // Handle Nhost authentication and token refresh
   // Always call this to ensure session is up-to-date
   // even for public routes, so that session changes are detected
