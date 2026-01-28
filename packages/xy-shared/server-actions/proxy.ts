@@ -26,8 +26,3 @@ export async function proxy(request: NextRequest) {
     ? NextResponse.redirect(new URL('/pro/dashboard', request.url))
     : NextResponse.next();
 }
-
-// Every pro route except case-studies and quote-request
-export const config = {
-  matcher: ['/pro/:rest((?!case-studies(?:/|$))(?!quote-request(?:/|$)).*)'],
-};
