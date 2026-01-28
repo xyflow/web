@@ -65,7 +65,7 @@ export const ExamplesOverview: FC = async () => {
         const category = _category as Folder & { title: string };
         return (
           <Fragment key={category.title}>
-            <Heading className="mt-20 no-underline" size="sm" id={category.name}>
+            <Heading className="mt-20" size="sm" id={category.name}>
               {category.title}
             </Heading>
             <ContentGrid className="lg:grid-cols-3 border-none gap-4 lg:gap-8">
