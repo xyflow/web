@@ -7,14 +7,11 @@ import { cn } from '../../lib/utils';
 import { Text } from './text';
 
 type LogoProps = {
-  inverted?: boolean;
   className?: string;
 };
 
-function Logo({ inverted = false, className }: LogoProps) {
+function Logo({ className }: LogoProps) {
   const ref = useRef<SVGSVGElement>(null);
-
-  const bgColor = inverted ? '#fff' : '#1A192B';
 
   return (
     <div className={cn('w-8 h-8 text-primary', className)}>
