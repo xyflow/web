@@ -50,6 +50,7 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
         <Fathom {...fathomOptions} />
         <SubscriptionProvider
           darkMode={false}
+          copyPageButton={false}
           docsRepositoryBase="https://github.com/xyflow/web/tree/main/sites/reactflow.dev"
           editLink="Edit this page on GitHub"
           feedback={{ content: null }}
