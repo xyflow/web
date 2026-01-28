@@ -62,6 +62,7 @@ export function ContentGridItem({ className, route, children }: ContentGridItemP
         route && 'cursor-pointer',
         className,
       )}
+      route={route}
     >
       {children}
     </LinkOrDiv>

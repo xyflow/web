@@ -16,4 +16,5 @@ export const COOKIE_OPTIONS = {
   httpOnly: false, // JS can’t read cookies (prevents XSS stealing your tokens)
   secure: process.env.NODE_ENV === 'production', // Sent only over HTTPS
   sameSite: 'lax', // Prevents CSRF on cross-site POSTs, but still works for normal navigation
+  maxAge: 60 * 60 * 24 * 30, // 30 days in seconds
 } satisfies Partial<ResponseCookie>;

@@ -61,6 +61,7 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
             </Banner>
           }
           darkMode={false}
+          copyPageButton={false}
           docsRepositoryBase="https://github.com/xyflow/web/tree/main/sites/svelteflow.dev"
           editLink="Edit this page on GitHub"
           feedback={{ content: null }}

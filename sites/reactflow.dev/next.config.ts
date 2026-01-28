@@ -8,7 +8,7 @@ import reactFlowPackageJson from '@xyflow/react/package.json' with { type: 'json
 const slugRegex = /-git-(.*?)\.vercel\.app/;
 
 export function parsePreviewDeploySlug(branchUrl?: string) {
-  return branchUrl?.match(slugRegex)?.[1] ?? 'staging';
+  return branchUrl?.match(slugRegex)?.[1] ?? 'staging-next-xyflow';
 }
 
 const nextConfig: NextConfig = {
@@ -24,6 +24,9 @@ const nextConfig: NextConfig = {
     return redirects;
   },
   images: {
+    // We need this to allow images to be displayed from localhost
+    // https://github.com/vercel/next.js/discussions/86147
+    dangerouslyAllowLocalIP: process.env.NODE_ENV === 'development',
     minimumCacheTTL: 2678400, // 31 days
     remotePatterns: [
       {
@@ -31,7 +34,6 @@ const nextConfig: NextConfig = {
         hostname: '**.reactflow.dev',
       },
       {
-        protocol: 'http',
         hostname: 'localhost',
         port: '5173',
         pathname: '/react/**',

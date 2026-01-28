@@ -33,8 +33,6 @@ export async function getSubscription(): Promise<{
     };
   }
 
-  console.log('before nhost.graphql.request');
-
   try {
     const response = await nhost.graphql.request<{
       user_subscriptions: { subscription_plan_id: SubscriptionPlan }[];
@@ -43,7 +41,6 @@ export async function getSubscription(): Promise<{
       userId: user.id,
     });
     const { data } = response.body;
-    console.log('after nhost.graphql.request');
 
     const plan =
       data?.user_subscriptions?.[0]?.subscription_plan_id ?? SubscriptionPlan.FREE;
