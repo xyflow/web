@@ -30,6 +30,8 @@ export async function createNhostClient(): Promise<NhostClient> {
     },
   });
 
+  // this should only happen in non-RSC context
+  // RSC cannot update auth cookies on the client
   await nhost.refreshSession(60);
 
   return nhost;
