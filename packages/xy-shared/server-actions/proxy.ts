@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createNhostClient } from '../lib/nhost';
 
-const protectedRoutes = ['dashboard', 'team', 'account', 'support', 'subscribe'];
+// These are routes that are public but should be redirected to dashboard if user is logged in
+const publicRoutes = ['sign-in', 'sign-up', 'reset-password', 'email-verification'];
 
 export async function proxy(request: NextRequest) {
   // Handle Nhost authentication and token refresh
@@ -10,27 +11,20 @@ export async function proxy(request: NextRequest) {
   const nhost = await createNhostClient();
   // If no session and not a public route, redirect to signin
   const path = request.nextUrl.pathname;
-  const isProtectedRoute = protectedRoutes.some(
+  const isPublicRoute = publicRoutes.some(
     (route) => path === route || path.startsWith(`/pro/${route}`),
   );
+  const hasUserSession = nhost.getUserSession();
 
-  if (isProtectedRoute) {
-    // user not logged in and trying to access a protected route
-    if (!nhost.getUserSession()) {
-      const signInUrl = new URL('/pro/sign-in', request.url);
-      return NextResponse.redirect(signInUrl);
-    }
-    // user logged in and accessing a protected route
-    return NextResponse.next();
+  if (!isPublicRoute) {
+    return hasUserSession
+      ? NextResponse.next()
+      : NextResponse.redirect(new URL('/pro/sign-in', request.url));
   }
 
-  if (nhost.getUserSession()) {
-    // user logged in and accessing a public route, redirect to dashboard
-    const dashboardUrl = new URL('/pro/dashboard', request.url);
-    return NextResponse.redirect(dashboardUrl);
-  }
-
-  return NextResponse.next();
+  return hasUserSession
+    ? NextResponse.redirect(new URL('/pro/dashboard', request.url))
+    : NextResponse.next();
 }
 
 // Every pro route except case-studies and quote-request
