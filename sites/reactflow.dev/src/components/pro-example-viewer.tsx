@@ -26,11 +26,11 @@ const ProExampleViewer: FC<{
     },
   );
 
-  let iframeSrc = `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${slug}`;
+  let iframeSrc = `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/react/${slug}`;
 
   if (type === 'template') {
     const config = await fetch(
-      `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${slug}/config.json`,
+      `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/react/${slug}/config.json`,
     );
 
     const { previewUrl } = await config.json();
