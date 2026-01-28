@@ -32,6 +32,7 @@ export async function createNhostClient(): Promise<NhostClient> {
 
   // this should only happen in non-RSC context
   // RSC cannot update auth cookies on the client
+  // https://discord.com/channels/552499021260914688/1465638356833665159
   await nhost.refreshSession(60);
 
   return nhost;
