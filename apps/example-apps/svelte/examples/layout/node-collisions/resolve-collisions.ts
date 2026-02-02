@@ -89,7 +89,10 @@ export const resolveCollisions: CollisionAlgorithm = (
       }
     }
     numIterations++;
-
+    // Early exit if we've reached the iteration limit
+    if (numIterations >= maxIterations) {
+      break;
+    }
     // Early exit if no overlaps were found
     if (!moved) {
       break;
