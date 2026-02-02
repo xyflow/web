@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { Node, NodeProps, Position, useReactFlow } from '@xyflow/react';
-import { RadioGroup, RadioGroupItem } from '../../components/ui/radio-group';
-import { Label } from '../../components/ui/label';
+import { RadioGroup, RadioGroupItem } from '../../../components/ui/radio-group';
+import { Label } from '../../../components/ui/label';
 
 import Handle from './handle';
 import Wrapper from './node-wrapper';

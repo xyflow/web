@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import { Node, NodeProps, Position, useReactFlow } from '@xyflow/react';
-import { Slider } from '../../components/ui/slider';
+import { Slider } from '../../../components/ui/slider';
 
 import Handle from './handle';
 import Wrapper from './node-wrapper';

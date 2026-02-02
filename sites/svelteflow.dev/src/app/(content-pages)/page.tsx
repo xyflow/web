@@ -8,7 +8,7 @@ import { Stats } from 'xy-shared/components/ui/stats';
 import { BaseLayout } from 'xy-shared/layouts/base';
 import { AboutSection } from 'xy-shared/layouts/about-section';
 import { ImageSlider } from 'xy-shared/components/image-slider';
-import { HeroFlow } from 'xy-shared/layouts/hero-flow';
+import { HeroFlow } from 'xy-shared/components/flows/hero-flow';
 import { Features } from 'xy-shared/components/features';
 import { GettingStarted } from 'xy-shared/layouts/getting-started';
 import { ProjectCards } from 'xy-shared/layouts/project-cards';

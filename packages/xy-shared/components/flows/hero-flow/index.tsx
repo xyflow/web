@@ -1,8 +1,8 @@
 import type { CSSProperties, ReactNode } from 'react';
-import { Heading } from '../../components/ui/heading';
-import { Text } from '../../components/ui/text';
+import { Heading } from '../../../components/ui/heading';
+import { Text } from '../../../components/ui/text';
 
-import { LayoutBreakout } from '../breakout';
+import { LayoutBreakout } from '../../../layouts/breakout';
 
 import Flow from './flow';
 
@@ -28,7 +28,7 @@ function HeroFlow({
       <div className="pointer-events-none x:max-w-(--nextra-content-width) w-full absolute left-1/2 top-8 lg:top-[130px] -translate-x-1/2 z-10">
         <div
           style={headlineStyle}
-          className="text-center mx-auto lg:mx-0 lg:text-left max-w-lg relative bg-white/10 backdrop-blur-[2px] px-3 lg:px-[35px]"
+          className="text-center mx-auto lg:mx-0 lg:text-left max-w-lg relative backdrop-blur-[2px] px-3 lg:px-[35px]"
         >
           <Heading size="lg" as="h1" className="mb-4 font-black">
             Wire your ideas with <span className="text-primary">{title}</span>
