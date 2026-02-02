@@ -50,8 +50,13 @@ const ProExampleViewer: FC<{
         ? `https://pro.reactflow.dev/templates/${slug}`
         : `https://pro.reactflow.dev/examples/react/${slug}`;
 
-    const iframe = (index: number) => <iframe key={index} src={`${iframeSrc}`} className={cn("block h-[645px] bg-white", sideBySide ? "w-1/2" : "w-full")} />
-
+    const iframe = (index: number) => (
+      <iframe
+        key={index}
+        src={`${iframeSrc}`}
+        className={cn('block h-[645px] bg-white w-full')}
+      />
+    );
 
     return (
       <Container
@@ -78,10 +83,14 @@ const ProExampleViewer: FC<{
           </div>
         </div>
 
-        <div className="flex">
-          {iframe(0)}
-          {sideBySide && iframe(1)}
-        </div>
+        {sideBySide ? (
+          <div className="flex gap-2">
+            <div className="w-1/2">{iframe(0)}</div>
+            <div className=" border-l-gray-200 border-l-2 w-1/2">{iframe(1)}</div>{' '}
+          </div>
+        ) : (
+          iframe(0)
+        )}
       </Container>
     );
   };
