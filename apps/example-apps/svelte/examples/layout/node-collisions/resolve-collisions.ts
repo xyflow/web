@@ -44,8 +44,6 @@ export const resolveCollisions: CollisionAlgorithm = (
 ) => {
   const boxes = getBoxesFromNodes(nodes, margin);
 
-  let numIterations = 0;
-
   for (let iter = 0; iter <= maxIterations; iter++) {
     let moved = false;
 
@@ -87,11 +85,6 @@ export const resolveCollisions: CollisionAlgorithm = (
           }
         }
       }
-    }
-    numIterations++;
-    // Early exit if we've reached the iteration limit
-    if (numIterations >= maxIterations) {
-      break;
     }
     // Early exit if no overlaps were found
     if (!moved) {
