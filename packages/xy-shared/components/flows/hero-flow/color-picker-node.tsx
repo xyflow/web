@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { Node, NodeProps, Position, useReactFlow } from '@xyflow/react';
-import { Text } from '../../components/ui/text';
+import { Text } from '../../../components/ui/text';
 
 import Handle from './handle';
 import Wrapper from './node-wrapper';
