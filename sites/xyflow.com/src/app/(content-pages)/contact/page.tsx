@@ -36,7 +36,7 @@ const Page: FC = () => {
               'radial-gradient(rgba(68,91,222,1) 0%, rgba(215,78,243,1) 25%, rgba(255,255,255,1) 50%)',
           }}
         />
-        <Card className="p-8 bg-white relative">
+        <Card className="p-8 bg-background relative">
           <ContactForm action={submitContact}>
             <InputLabel>
               <span>Your Email</span>

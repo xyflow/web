@@ -57,7 +57,7 @@ const ProExampleViewer: FC<{
       <div>
         <iframe
           src={`${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${framework}/${slug}`}
-          className="block h-[645px] w-full bg-white"
+          className="block h-[645px] w-full bg-background"
         />
       </div>
     </Container>

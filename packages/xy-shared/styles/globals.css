@@ -116,6 +116,11 @@
 
     --light: 0 0% 46%;
   }
+  .dark {
+    --background: 0 0% 6.7%;
+    --foreground: 0 0% 100%;
+    --muted: 210 40% 12.9%;
+  }
 }
 
 @layer base {
@@ -123,7 +128,7 @@
     box-sizing: border-box;
   }
   body {
-    @apply bg-background text-foreground;
+    background-color: hsl(var(--background));
     font-feature-settings:
       'rlig' 1,
       'calt' 1;
@@ -153,6 +158,10 @@ html:has(body.x\:overflow-hidden) nav {
 
 .xy-link-gray {
   @apply transition text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 contrast-more:text-gray-700 contrast-more:dark:text-gray-100;
+}
+
+.dark .xy-link-gray {
+  @apply text-gray-300 hover:text-gray-200 contrast-more:text-gray-100;
 }
 
 /* 4. Navigation */
@@ -344,4 +353,16 @@ article.nextra-content ol li p {
   .DocSearch-Button-Placeholder {
     display: none;
   }
+}
+
+.logo-bg-color {
+  fill: hsl(var(--background));
+}
+
+.logo-outline {
+  stroke: hsl(var(--foreground));
+}
+
+.logo-fg-color {
+  fill: hsl(var(--foreground));
 }
