@@ -53,7 +53,7 @@ function SubscriptionFeature({
           </CardDescription>
         )}
       </CardHeader>
-      <CardFooter className={cn('mt-auto bg-white')}>
+      <CardFooter className={cn('mt-auto bg-background')}>
         {isActive ? (
           <>{button && <ActionButton {...button} />}</>
         ) : isTeamSubscribed ? (

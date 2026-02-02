@@ -144,7 +144,7 @@ export const section = ({
 
 function SectionNode({ data }: NodeProps<Node<SectionNodeData>>) {
   return (
-    <div className="relative bg-white p-8 rounded-lg shadow-md max-w-lg flex flex-col gap-4">
+    <div className="relative bg-background p-8 rounded-lg shadow-md max-w-lg flex flex-col gap-4">
       <Handle
         type="target"
         position={Position.Top}
@@ -192,7 +192,7 @@ function ProjectNode({ data }: NodeProps<Node<ProjectParams>>) {
   return (
     <div
       className={cn(
-        'relative bg-white p-4 rounded-lg shadow-md max-w-md',
+        'relative bg-background p-4 rounded-lg shadow-md max-w-md',
         data?.isCategory && 'bg-primary text-white',
       )}
     >

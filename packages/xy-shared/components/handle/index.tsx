@@ -48,7 +48,7 @@ function Handle({
         data-position={position}
         data-to={to}
         className={cn(
-          'absolute rounded-full border-2 border-solid bg-white z-20 border-primary',
+          'absolute rounded-full border-2 border-solid bg-background z-20 border-primary',
           handleWidthClass,
           handleHeightClass,
           handleClassName,
