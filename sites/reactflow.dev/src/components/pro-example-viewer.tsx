@@ -52,6 +52,9 @@ const ProExampleViewer: FC<{
         ? `https://pro.reactflow.dev/templates/${slug}`
         : `https://pro.reactflow.dev/examples/react/${slug}`;
 
+    const iframe = (index: number) => <iframe key={index} src={`${iframeSrc}&flow=${index}`} className={cn("block h-[645px] bg-white", sideBySide ? "w-1/2" : "w-full")} />
+
+
     return (
       <Container
         className={cn(['mt-7', className])}
@@ -78,9 +81,8 @@ const ProExampleViewer: FC<{
         </div>
 
         <div className="flex">
-          {Array.from({ length: (sideBySide ? 2 : 1) }, (_,idx) => idx+1).map((index) => (
-            <iframe key={index} src={`${iframeSrc}&flow=${index}`} className={cn("block h-[645px] bg-white", sideBySide ? "w-1/2" : "w-full")} />
-          ))}
+          {iframe(0)}
+          {sideBySide && iframe(1)}
         </div>
       </Container>
     );
