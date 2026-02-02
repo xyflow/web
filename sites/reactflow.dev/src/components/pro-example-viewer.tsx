@@ -31,10 +31,15 @@ const ProExampleViewer: FC<{
       },
     );
 
-    // Make a query params string from the queryParams object
-    const queryParamsString = new URLSearchParams(queryParams).toString();
 
-    let iframeSrc = `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/react/${slug}?${queryParamsString}`;
+    const iframeSrcUrl = new URL(`${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/react/${slug}`);
+    if (Object.keys(queryParams).length > 0) {
+      Object.entries(queryParams).forEach(([key, value]) => {
+        iframeSrcUrl.searchParams.set(key, value);
+      });
+    }
+
+    let iframeSrc = iframeSrcUrl.toString();
 
     if (type === 'template') {
       const config = await fetch(

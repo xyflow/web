@@ -1,17 +1,13 @@
-// import { useState } from 'react';
+'use server';
 import ProExampleViewer from './pro-example-viewer';
 import { Button, Link } from '@xyflow/xy-ui';
 import { randomUUID } from 'crypto';
 
 /**
  * This component is used to wrap the pro example viewer to display a
- * side-by-side viewer for the collaborative example. We wrap the component in a
- * client component to be able to inject the query parameter `flow` into the
- * iframe src URL.
+ * side-by-side viewer for the collaborative example with a random flow id (generated on the server).
 */
-export default function CollaborativeFlowViewer() {
-    // const [flowId] = useState(() => crypto.randomUUID().toString());
-
+export default async function CollaborativeFlowViewer() {
     const flowId = randomUUID();
 
     return <div className="flex flex-col gap-4 pt-4">
