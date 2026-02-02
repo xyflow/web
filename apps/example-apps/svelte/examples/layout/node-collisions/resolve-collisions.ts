@@ -21,19 +21,21 @@ type Box = {
 };
 
 function getBoxesFromNodes(nodes: Node[], margin = 0): Box[] {
-  return nodes.map((node) => {
-    const width = node.width ?? node.measured?.width ?? 0;
-    const height = node.height ?? node.measured?.height ?? 0;
+  const boxes: Box[] = new Array(nodes.length);
 
-    return {
+  for (let i = 0; i < nodes.length; i++) {
+    const node = nodes[i];
+    boxes[i] = {
       x: node.position.x - margin,
       y: node.position.y - margin,
-      width: width + margin * 2,
-      height: height + margin * 2,
+      width: (node.width ?? node.measured?.width ?? 0) + margin * 2,
+      height: (node.height ?? node.measured?.height ?? 0) + margin * 2,
       node,
       moved: false,
     };
-  });
+  }
+
+  return boxes;
 }
 
 export const resolveCollisions: CollisionAlgorithm = (
