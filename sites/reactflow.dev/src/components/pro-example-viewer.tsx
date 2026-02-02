@@ -34,11 +34,11 @@ const ProExampleViewer: FC<{
     // Make a query params string from the queryParams object
     const queryParamsString = new URLSearchParams(queryParams).toString();
 
-    let iframeSrc = `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${slug}?${queryParamsString}`;
+    let iframeSrc = `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/react/${slug}?${queryParamsString}`;
 
     if (type === 'template') {
       const config = await fetch(
-        `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${slug}/config.json`,
+        `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/react/${slug}/config.json`,
       );
 
       const { previewUrl } = await config.json();
