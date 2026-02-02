@@ -45,8 +45,6 @@ const ProExampleViewer: FC<{
       iframeSrc = previewUrl;
     }
 
-    console.log('iframeSrc', iframeSrc);
-
     const signInLink =
       type === 'template'
         ? `https://pro.reactflow.dev/templates/${slug}`

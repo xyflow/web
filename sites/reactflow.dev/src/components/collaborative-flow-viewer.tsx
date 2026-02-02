@@ -1,7 +1,7 @@
-'use client';
-import { useState } from 'react';
+// import { useState } from 'react';
 import ProExampleViewer from './pro-example-viewer';
 import { Button, Link } from '@xyflow/xy-ui';
+import { randomUUID } from 'crypto';
 
 /**
  * This component is used to wrap the pro example viewer to display a
@@ -10,14 +10,16 @@ import { Button, Link } from '@xyflow/xy-ui';
  * iframe src URL.
 */
 export default function CollaborativeFlowViewer() {
-    const [flowId] = useState(() => crypto.randomUUID());
+    // const [flowId] = useState(() => crypto.randomUUID().toString());
+
+    const flowId = randomUUID();
 
     return <div className="flex flex-col gap-4 pt-4">
         <Button asChild className="shrink-0 max-w-64">
-            <Link href={`${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/collaborative?flow=${flowId.toString()}`} target="_blank" >
+            <Link href={`${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/collaborative?flow=${flowId}`} target="_blank" >
                 Open the flow in a new tab!
             </Link>
         </Button>
-        <ProExampleViewer slug="collaborative" sideBySide={true} queryParams={{ flow: flowId.toString() }} />
+        <ProExampleViewer slug="collaborative" sideBySide queryParams={{ flow: flowId }} />
     </div>
 }
