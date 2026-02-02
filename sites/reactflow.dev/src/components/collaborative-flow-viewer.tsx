@@ -1,32 +1,23 @@
 'use client';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useState } from 'react';
 import ProExampleViewer from './pro-example-viewer';
-import { randomUUID } from 'crypto';
-
-
-
-export const makeParams = () => {
-    const router = useRouter();
-    const searchParams = useSearchParams();
-    const flowId = searchParams.get('flow');
-    if (flowId) {
-        return flowId;
-    }
-    const newFlowId = randomUUID();
-    router.push(`?flow=${newFlowId}`);
-    return newFlowId;
-};
-
+import { Button, Link } from '@xyflow/xy-ui';
 
 /**
  * This component is used to wrap the pro example viewer to display a
  * side-by-side viewer for the collaborative example. We wrap the component in a
  * client component to be able to inject the query parameter `flow` into the
- * URL, so we can tell users to copy-paste the URL to another tab to see the
- * changes. 
+ * iframe src URL.
 */
 export default function CollaborativeFlowViewer() {
-    const flowId = makeParams();
-    console.log(flowId);
-    return <ProExampleViewer slug="collaborative" sideBySide={true} queryParams={{ flow: flowId }} />
+    const [flowId] = useState(() => crypto.randomUUID());
+
+    return <div className="flex flex-col gap-4 pt-4">
+        <Button asChild className="shrink-0 max-w-64">
+            <Link href={`${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/collaborative?flow=${flowId.toString()}`} target="_blank" >
+                Open the flow in a new tab!
+            </Link>
+        </Button>
+        <ProExampleViewer slug="collaborative" sideBySide={true} queryParams={{ flow: flowId.toString() }} />
+    </div>
 }

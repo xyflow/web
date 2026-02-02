@@ -52,7 +52,7 @@ const ProExampleViewer: FC<{
         ? `https://pro.reactflow.dev/templates/${slug}`
         : `https://pro.reactflow.dev/examples/react/${slug}`;
 
-    const iframe = (index: number) => <iframe key={index} src={`${iframeSrc}&flow=${index}`} className={cn("block h-[645px] bg-white", sideBySide ? "w-1/2" : "w-full")} />
+    const iframe = (index: number) => <iframe key={index} src={`${iframeSrc}`} className={cn("block h-[645px] bg-white", sideBySide ? "w-1/2" : "w-full")} />
 
 
     return (
