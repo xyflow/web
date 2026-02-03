@@ -1,18 +1,22 @@
 ---
-description: Callback function triggered before reconnecting an edge in SvelteFlow, allowing for reconnection prevention or modification.
+description:
+  Callback function triggered before reconnecting an edge in SvelteFlow, allowing for
+  reconnection prevention or modification.
 ---
 
 # OnBeforeReconnect
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/types/general.ts#L34)
 
-The `OnBeforeReconnect` type is a callback function that is called before an edge is reconnected. It can prevent reconnection or modify the connection by returning `false` or a modified connection.
+The `OnBeforeReconnect` type is a callback function that is called before an edge is
+reconnected. It can prevent reconnection or modify the connection by returning `false` or
+a modified connection.
 
 ```ts
-type OnBeforeReconnect<EdgeType extends EdgeBase = EdgeBase> = (
+type OnBeforeReconnect<EdgeType extends Edge = Edge> = (
+  newEdge: EdgeType,
   oldEdge: EdgeType,
-  newConnection: Connection,
-) => Promise<boolean | Connection>;
+) => EdgeType | void | false | null;
 ```
 
 <APIDocs typeName="OnBeforeReconnect" packageName="svelte" />
