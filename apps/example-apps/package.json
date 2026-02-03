@@ -16,18 +16,12 @@
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^5.0.3",
     "@tsconfig/svelte": "^5.0.4",
-    "@types/cors": "^2.8.17",
-    "@types/express": "^5.0.1",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
     "@vitejs/plugin-react": "^4.4.1",
     "concurrently": "^9.1.2",
-    "cors": "^2.8.5",
-    "express": "^5.1.0",
     "glob": "^11.0.2",
-    "picocolors": "^1.1.1",
     "svelte-check": "^4.1.6",
-    "tslib": "^2.8.1",
     "typescript": "catalog:",
     "vite": "^6.3.3"
   },
