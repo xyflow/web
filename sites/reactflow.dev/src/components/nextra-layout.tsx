@@ -15,12 +15,12 @@ export const NextraLayout: FC<{
   return (
     <Layout
       banner={
-        <Banner storageKey="node-collisions">
+        <Banner storageKey="collaborative">
           <Link
             className="hover:underline x:focus-visible:nextra-focus text-sm"
-            href="/examples/layout/node-collisions"
+            href="/examples/interaction/collaborative"
           >
-            🚨 New Example: Handling Node Collisions!
+            🎮 Updated Pro Example! Collaborative Flow Editor! 🌎
           </Link>
         </Banner>
       }
