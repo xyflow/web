@@ -2,21 +2,27 @@ import { FC } from 'react';
 import Link from 'next/link';
 import { Container, ContainerProps, Text, Button, cn } from '@xyflow/xy-ui';
 
+const iframeClassName = cn('block h-[645px] bg-white w-full');
+
 const ProExampleViewer: FC<{
   slug: string;
   variant?: ContainerProps['variant'];
   type?: 'example' | 'template';
   className?: string;
   innerClassName?: string;
+  // If true, display two columns with two previews side by side
+  sideBySide?: boolean;
+  queryParams?: Record<string, string>;
 }> = async ({
   slug,
   variant = 'default',
   type = 'example',
   className,
   innerClassName,
+  sideBySide = false,
+  queryParams,
 }) => {
   const isLightMode = variant === 'default';
-
   const teaserClasses = cn(
     'px-6 py-8 flex flex-wrap items-center justify-between gap-x-4 gap-y-2',
     {
@@ -26,21 +32,25 @@ const ProExampleViewer: FC<{
     },
   );
 
-  let iframeSrc = `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/react/${slug}`;
+  const iframeBasePath = `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/react/${slug}`;
+  const iframeSrcUrl = new URL(iframeBasePath);
 
-  if (type === 'template') {
-    const config = await fetch(
-      `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/react/${slug}/config.json`,
-    );
-
-    const { previewUrl } = await config.json();
-    iframeSrc = previewUrl;
+  if (queryParams) {
+    Object.entries(queryParams).forEach(([key, value]) => {
+      iframeSrcUrl.searchParams.set(key, value);
+    });
   }
 
-  const signInLink =
-    type === 'template'
-      ? `https://pro.reactflow.dev/templates/${slug}`
-      : `https://pro.reactflow.dev/examples/react/${slug}`;
+  let iframeSrc = iframeSrcUrl.toString();
+  let signInLink = `https://pro.reactflow.dev/examples/react/${slug}`;
+
+  if (type === 'template') {
+    const config = await fetch(`${iframeBasePath}/config.json`);
+    const { previewUrl } = await config.json();
+
+    iframeSrc = previewUrl;
+    signInLink = `https://pro.reactflow.dev/templates/${slug}`;
+  }
 
   return (
     <Container
@@ -67,7 +77,18 @@ const ProExampleViewer: FC<{
         </div>
       </div>
 
-      <iframe src={iframeSrc} className="block h-[645px] w-full bg-white" />
+      {sideBySide ? (
+        <div className="flex gap-2">
+          <div className="w-1/2">
+            <iframe src={iframeSrc} className={iframeClassName} />
+          </div>
+          <div className="border-l-gray-200 border-l-2 w-1/2">
+            <iframe src={iframeSrc} className={iframeClassName} />
+          </div>
+        </div>
+      ) : (
+        <iframe src={iframeSrc} className={iframeClassName} />
+      )}
     </Container>
   );
 };

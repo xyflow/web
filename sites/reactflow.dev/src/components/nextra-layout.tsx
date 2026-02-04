@@ -14,16 +14,6 @@ export const NextraLayout: FC<{
 }> = async ({ children, pageMap, footerCategories, navbar }) => {
   return (
     <Layout
-      banner={
-        <Banner storageKey="node-collisions">
-          <Link
-            className="hover:underline x:focus-visible:nextra-focus text-sm"
-            href="/examples/layout/node-collisions"
-          >
-            🚨 New Example: Handling Node Collisions!
-          </Link>
-        </Banner>
-      }
       darkMode={false}
       docsRepositoryBase="https://github.com/xyflow/web/tree/main/sites/reactflow.dev"
       editLink="Edit this page on GitHub"

@@ -6,6 +6,8 @@ import { RemoteCodeViewer, getAllExamples } from 'xy-shared/server';
 
 import { useMDXComponents as getMDXComponents } from '@/mdx-components';
 import ProExampleViewer from '@/components/pro-example-viewer';
+import CollaborativeFlowViewer from '@/components/collaborative-flow-viewer';
+
 import { importMetadata } from './utils';
 
 type PageProps = Readonly<{
@@ -36,6 +38,7 @@ export default async function Page(props: PageProps) {
           RemoteCodeViewer,
           ProExampleViewer,
           Button,
+          CollaborativeFlowViewer,
         }}
       />
     </Wrapper>
