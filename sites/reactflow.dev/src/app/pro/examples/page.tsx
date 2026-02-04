@@ -36,7 +36,7 @@ export const metadata: Metadata = {
 
 const ProExamples: FC = async () => {
   const remoteProExamples = await fetchJSON(
-    `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/react/apps.json?t=1`,
+    `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/apps.json?t=1`,
   );
   const pageMap = await getExamplesPageMap();
   const proExamples = pageMap.children
@@ -64,7 +64,7 @@ const ProExamples: FC = async () => {
       result.push({
         ...remote,
         route: curr.route,
-        image: `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/react/${remote.id}/thumbnail.jpg`,
+        image: `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${remote.id}/thumbnail.jpg`,
       });
     }
 

@@ -32,7 +32,7 @@ const ProExampleViewer: FC<{
     },
   );
 
-  const iframeBasePath = `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/react/${slug}`;
+  const iframeBasePath = `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${slug}`;
   const iframeSrcUrl = new URL(iframeBasePath);
 
   if (queryParams) {
