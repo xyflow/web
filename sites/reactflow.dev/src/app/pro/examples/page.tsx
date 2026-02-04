@@ -64,7 +64,7 @@ const ProExamples: FC = async () => {
       result.push({
         ...remote,
         route: curr.route,
-        image: `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${remote.id}/thumbnail.jpg`,
+        image: `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/react/${remote.id}/thumbnail.jpg`,
       });
     }
 
