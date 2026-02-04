@@ -9,8 +9,18 @@ description:
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/types/general.ts#L34)
 
 The `OnBeforeReconnect` type is a callback function that is called before an edge is
-reconnected. It can prevent reconnection or modify the connection by returning `false` or
-a modified connection.
+reconnected.
+
+The callback receives the new edge (with the updated connection) and the original edge
+being reconnected. You can return the new edge or a modified version of it. Returning
+`false`, `null`, or `undefined` aborts the reconnection.
+
+Aborting the reconnection restores the edge to its original state. To delete the edge
+instead, call [deleteElements](/api-reference/hooks/use-svelte-flow#deleteelements) to
+remove it, then return `null`.
+
+See the [Reconnect Edge](/examples/edges/reconnect-edge) example for more information on
+how to implement edge reconnection.
 
 ```ts
 type OnBeforeReconnect<EdgeType extends Edge = Edge> = (
