@@ -9,6 +9,7 @@ import { type Author, AuthorList } from '../../';
 
 export type ProjectPreviewProps = {
   image?: string | StaticImport;
+  imageAlt?: string;
   kicker?: ReactNode;
   kickerSize?: TextProps['size'];
   title: ReactNode;
@@ -33,6 +34,7 @@ export function ProjectPreview({
   kicker,
   kickerSize = 'sm',
   title,
+  imageAlt,
   titleSize = 'sm',
   subtitle,
   description,
@@ -62,6 +64,12 @@ export function ProjectPreview({
       <span {...props} />
     );
 
+  // If an explicit alt text for the image is not provided, we'll try and recover
+  // one from the project title. Beacuse this could be any ReactNode that's not
+  // always possible; in those cases we'll go with an empty alt text to hide this
+  // image from screen readers.
+  const alt = imageAlt ?? (typeof title === 'string' ? title + ' screenshot' : '');
+
   return (
     <div className={className}>
       {image && (
@@ -78,7 +86,7 @@ export function ProjectPreview({
         >
           <Image
             src={image}
-            alt={`${title} screenshot`}
+            alt={alt}
             className="object-cover group-hover:scale-105 transition-transform"
             fill
             sizes="(max-width: 768px) 100vw, 500px"
@@ -110,11 +118,7 @@ export function ProjectPreview({
         </Button>
         {altRoute && (
           <Button asChild variant="link" className="text-md">
-            <a
-              href={altRoute.href}
-              target="_blank"
-              className="flex items-center"
-            >
+            <a href={altRoute.href} target="_blank" className="flex items-center">
               {altRoute.label} <ArrowRightCircleIcon className="ml-1 w-4 h-4" />
             </a>
           </Button>
