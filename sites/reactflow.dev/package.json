@@ -13,6 +13,7 @@
     "check-sitemap": "node scripts/check-sitemap.mjs",
     "generate-routes-type": "node scripts/generate-routes-type.mjs",
     "check-links": "node scripts/check-mdx-links.mjs",
+    "make-llms-txt": "tsx scripts/make-llms-txt.ts",
     "types:check": "tsc --noEmit"
   },
   "dependencies": {
@@ -37,6 +38,13 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
     "@notionhq/client": "^2.3.0",
+    "remark-frontmatter": "^5.0.0",
+    "remark-gfm": "^4.0.0",
+    "remark-mdx": "^3.1.0",
+    "remark-parse": "^11.0.0",
+    "remark-stringify": "^11.0.0",
+    "tsx": "^4.19.2",
+    "unified": "^11.0.5",
     "@types/d3": "^7.4.3",
     "@types/node": "^22.14.1",
     "@types/react": "^19.2.0",
