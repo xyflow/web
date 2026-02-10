@@ -7,11 +7,7 @@ import remarkMdx from 'remark-mdx';
 import remarkGfm from 'remark-gfm';
 import remarkFrontmatter from 'remark-frontmatter';
 import remarkStringify from 'remark-stringify';
-
-/** Root node shape used by remark (mdast). */
-interface MdastRoot {
-  children: Array<{ type: string; value?: string; depth?: number; children?: unknown[] }>;
-}
+import type { Root, Node, Parent, Heading } from 'mdast';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const SITE_ROOT = path.resolve(__dirname, '..');
@@ -182,28 +178,26 @@ function stripProExampleViewerImports(text: string): string {
 }
 
 function increaseHeadingLevels(amount: number) {
-  return () => (tree: unknown) => {
-    const root = tree as MdastRoot;
-    function visit(node: { type: string; depth?: number; children?: unknown[] }) {
-      if (node.type === 'heading' && typeof node.depth === 'number') {
-        node.depth = Math.min(node.depth + amount, 6);
+  return () => (tree: Root) => {
+    function visit(node: Parent | Heading) {
+      if (node.type === 'heading' && 'depth' in node && typeof node.depth === 'number') {
+        node.depth = Math.min(node.depth + amount, 6) as 1 | 2 | 3 | 4 | 5 | 6;
       }
       if (node.children) {
         node.children.forEach((child) => visit(child as typeof node));
       }
     }
-    visit(root as unknown as { type: string; depth?: number; children?: unknown[] });
+    visit(tree);
   };
 }
 
 function extractFrontmatterAndCreateHeader() {
-  return (tree: unknown) => {
-    const root = tree as MdastRoot;
+  return (tree: Root) => {
     let title = '';
 
-    const frontmatterIndex = root.children.findIndex((node) => node.type === 'yaml');
+    const frontmatterIndex = tree.children.findIndex((node) => node.type === 'yaml');
     if (frontmatterIndex !== -1) {
-      const frontmatter = root.children[frontmatterIndex];
+      const frontmatter = tree.children[frontmatterIndex];
       const yamlContent = 'value' in frontmatter ? String(frontmatter.value) : '';
 
       const titleMatch = yamlContent.match(/^title:\s*(.+)$/m);
@@ -211,15 +205,15 @@ function extractFrontmatterAndCreateHeader() {
         title = titleMatch[1].trim().replace(/^["']|["']$/g, '');
       }
 
-      root.children.splice(frontmatterIndex, 1);
+      tree.children.splice(frontmatterIndex, 1);
     }
 
     if (title) {
-      root.children.unshift({
+      tree.children.unshift({
         type: 'heading',
         depth: 1,
         children: [{ type: 'text', value: title }],
-      } as never);
+      });
     }
   };
 }
