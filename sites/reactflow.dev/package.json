@@ -13,7 +13,8 @@
     "check-sitemap": "node scripts/check-sitemap.mjs",
     "generate-routes-type": "node scripts/generate-routes-type.mjs",
     "check-links": "node scripts/check-mdx-links.mjs",
-    "make-llms-txt": "tsx scripts/make-llms-txt.ts",
+    "make-llms-txt-full": "tsx scripts/make-llms-txt-full.ts",
+    "make-llms-txt-lite": "tsx scripts/make-llms-txt.ts",
     "types:check": "tsc --noEmit"
   },
   "dependencies": {
