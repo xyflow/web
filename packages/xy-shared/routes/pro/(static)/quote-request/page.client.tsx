@@ -85,7 +85,7 @@ export const Form: FC = () => {
           type="button"
           className={
             formData.plan === 'starter'
-              ? 'hover:bg-white cursor-default !bg-white !text-primary'
+              ? 'hover:bg-background cursor-default !bg-background !text-primary'
               : 'hover:bg-gray-100'
           }
           variant={formData.plan === 'starter' ? 'outline' : 'ghost'}
@@ -97,7 +97,7 @@ export const Form: FC = () => {
           type="button"
           className={
             formData.plan === 'pro'
-              ? 'hover:bg-white cursor-default !bg-white !text-primary'
+              ? 'hover:bg-background cursor-default !bg-background !text-primary'
               : 'hover:bg-gray-100'
           }
           variant={formData.plan === 'pro' ? 'outline' : 'ghost'}
@@ -109,7 +109,7 @@ export const Form: FC = () => {
           type="button"
           className={
             formData.plan === 'enterprise'
-              ? 'hover:bg-white cursor-default !bg-white !text-primary'
+              ? 'hover:bg-background cursor-default !bg-background !text-primary'
               : 'hover:bg-gray-100'
           }
           variant={formData.plan === 'enterprise' ? 'outline' : 'ghost'}
@@ -219,7 +219,7 @@ export default function QuoteRequestPage() {
         align="center"
         backgroundVariant="image"
       />
-      <Card className="p-8 bg-white relative max-w-xl mx-auto mt-16">
+      <Card className="p-8 bg-background relative max-w-xl mx-auto mt-16">
         <Accordion
           defaultValue={['subscription-plan', 'contact-details', 'end-user-details']}
           type="multiple"

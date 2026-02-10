@@ -11,9 +11,8 @@
 @source '../../../../packages/xy-shared/';
 
 /* Site-specific theme extensions */
-/* TODO: what is this */
-@theme {
-  --background-image-gradient: url('/img/bg-gradient.jpg');
+@utility bg-gradient {
+  background-image: url('/img/bg-gradient.jpg');
 }
 
 /* React Flow uses the React brand color (pink) */

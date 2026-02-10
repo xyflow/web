@@ -8,7 +8,7 @@ const breakoutClassName =
 const containerVariants = cva('border border-solid', {
   variants: {
     variant: {
-      default: 'border-gray-100 bg-white',
+      default: 'border-gray-100 bg-background',
       dark: 'border-gray-700 text-white bg-black',
     },
     size: {
@@ -25,7 +25,7 @@ const containerVariants = cva('border border-solid', {
 const innerContainerVariants = cva('border border-solid', {
   variants: {
     variant: {
-      default: 'border-gray-100 bg-white',
+      default: 'border-gray-100 bg-background',
       dark: 'border-gray-700 text-white bg-gradient-to-br from-black from-15% via-[#311c33] via-65% to-[#1c1826]',
     },
     size: {
@@ -36,7 +36,8 @@ const innerContainerVariants = cva('border border-solid', {
 });
 
 export interface ContainerProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+  extends
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof containerVariants> {
   innerClassName?: string;
 }

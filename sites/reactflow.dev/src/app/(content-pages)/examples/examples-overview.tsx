@@ -79,7 +79,7 @@ export const ExamplesOverview: FC = async () => {
                       <ContentGridItem
                         key={example.route}
                         route={example.route}
-                        className="border-none py-6 lg:py-8 lg:px-0 hover:bg-white group"
+                        className="border-none hover:bg-transparent border-none py-6 lg:py-8 lg:px-0 group"
                       >
                         <ProjectPreview
                           image={

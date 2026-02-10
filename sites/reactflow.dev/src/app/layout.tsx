@@ -49,7 +49,7 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
       <body>
         <Fathom {...fathomOptions} />
         <SubscriptionProvider
-          darkMode={false}
+          darkMode={true}
           copyPageButton={false}
           docsRepositoryBase="https://github.com/xyflow/web/tree/main/sites/reactflow.dev"
           editLink="Edit this page on GitHub"
@@ -126,7 +126,6 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
               <NavMenu siteName="React Flow" />
             </NextraNavbar>
           }
-          nextThemes={{ forcedTheme: 'light', defaultTheme: 'light' }}
           pageMap={pageMap}
           // Set to null to avoid rendering search in mobile nav, since we added search in navbar already
           search={null}

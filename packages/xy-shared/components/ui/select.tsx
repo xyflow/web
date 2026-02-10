@@ -17,7 +17,7 @@ const triggerVariants = cva(
   {
     variants: {
       variant: {
-        default: 'bg-transparent',
+        default: 'bg-background',
         primary: 'bg-primary text-white',
       },
     },
