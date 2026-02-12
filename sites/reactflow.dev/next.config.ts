@@ -48,6 +48,13 @@ const nextConfig: NextConfig = {
         hostname: '*.vercel.app',
         pathname: '/react/**',
       },
+      // Pro example thumbnails on preview deployments can live at
+      // `https://<something>.vercel.app/<example-id>/thumbnail.jpg` (not under `/react/**`).
+      {
+        protocol: 'https',
+        hostname: '*.vercel.app',
+        pathname: '/**',
+      },
       {
         protocol: 'https',
         hostname: '*.public.blob.vercel-storage.com',

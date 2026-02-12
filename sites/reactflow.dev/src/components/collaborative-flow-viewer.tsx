@@ -1,6 +1,7 @@
 'use client';
-import ProExampleViewer from './pro-example-viewer';
-import { Button, Link } from '@xyflow/xy-ui';
+import ProExampleViewer from 'xy-shared/components/pro-example-viewer';
+import { Button } from 'xy-shared/components/ui/button';
+import { Link } from 'xy-shared/components/ui/link';
 import { useState } from 'react';
 
 /**
