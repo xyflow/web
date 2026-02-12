@@ -135,7 +135,7 @@ const ProExampleViewer: FC<{
         </Text>
         <div className="flex space-x-4">
           <Button asChild className="shrink-0">
-            <Link href="/pro">See Pricing Plans</Link>
+            <Link href="/examples/pro">See Pricing Plans</Link>
           </Button>
           <Button asChild variant="secondary" className="text-primary shrink-0">
             <a href={signInLink}>Sign In</a>
@@ -159,10 +159,7 @@ const ProExampleViewer: FC<{
               key={index}
               src={src}
               title={`${slug} preview ${index}`}
-              className={cn(
-                'block h-[645px] bg-white',
-                sideBySide ? 'w-1/2' : 'w-full',
-              )}
+              className={cn('block h-[645px] bg-white', sideBySide ? 'w-1/2' : 'w-full')}
             />
           );
         })}

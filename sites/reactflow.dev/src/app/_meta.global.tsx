@@ -179,6 +179,12 @@ const metaRecord = {
         },
       },
       overview: '',
+      pro: {
+        theme: {
+          breadcrumb: false,
+        },
+      },
+      // Rest of examples are added in `app/layout.tsx` file
     },
   },
   ui: { items: ui },
