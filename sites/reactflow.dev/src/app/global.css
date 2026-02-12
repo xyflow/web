@@ -6,13 +6,12 @@
 @import 'xy-shared/styles/globals.css';
 @import 'nextra-theme-docs/style.css';
 
-
 /* TODO: this does not seem to make a difference */
 @source '../../../../packages/xy-shared/';
 
 /* Site-specific theme extensions */
 @utility bg-gradient {
-  background-image: url('/img/bg-gradient.jpg');
+  background-image: url('/img/bg-gradient.png');
 }
 
 /* React Flow uses the React brand color (pink) */
