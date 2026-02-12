@@ -1,5 +1,6 @@
 import { NextConfig } from 'next';
 import nextra from 'nextra';
+import redirects from './redirects.json' with { type: 'json' };
 import svelteFlowPackageJson from '@xyflow/svelte/package.json';
 
 // This is used for finding out the real deploy slug for a preview deployment
@@ -14,18 +15,25 @@ const nextConfig: NextConfig = {
   pageExtensions: ['ts', 'tsx', 'js', 'jsx'],
   // Optionally, add any other Next.js config below
   reactStrictMode: true,
-  transpilePackages: ['@xyflow/xy-ui', 'xy-shared'],
+  transpilePackages: ['xy-shared', 'xy-shared'],
   experimental: {
-    optimizePackageImports: ['@xyflow/xy-ui', 'xy-shared'],
+    optimizePackageImports: ['xy-shared', 'xy-shared'],
+  },
+  async redirects() {
+    return redirects;
   },
   env: {
     SVELTE_FLOW_VERSION: svelteFlowPackageJson.version,
+    NEXT_PUBLIC_FRAMEWORK: 'svelte',
     NEXT_PUBLIC_EXAMPLES_URL:
       process.env.VERCEL_ENV === 'preview'
-        ? `https://example-apps-git-${parsePreviewDeploySlug(process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL)}.vercel.app`
+        ? `https://example-apps-git-${parsePreviewDeploySlug(process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL ?? '')}.vercel.app`
         : process.env.NEXT_PUBLIC_EXAMPLES_URL,
   },
   images: {
+    // We need this to allow images to be displayed from localhost
+    // https://github.com/vercel/next.js/discussions/86147
+    dangerouslyAllowLocalIP: process.env.NODE_ENV === 'development',
     minimumCacheTTL: 2678400, // 31 days
     remotePatterns: [
       {
@@ -62,9 +70,9 @@ const nextConfig: NextConfig = {
     resolveAlias: {
       // Fix an error when `--turbopack` is enabled
       // Module not found: Can't resolve 'next-mdx-import-source-file'
-      'next-mdx-import-source-file': "./src/mdx-components.tsx",
-    }
-  }
+      'next-mdx-import-source-file': './src/mdx-components.tsx',
+    },
+  },
 };
 
 const withNextra = nextra({

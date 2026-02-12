@@ -1,20 +1,17 @@
 import { generateStaticParamsFor, importPage } from 'nextra/pages';
 import { normalizePages } from 'nextra/normalize-pages';
 import { getPageMap } from 'nextra/page-map';
-import { BaseBlogPostLayout, CaseStudyLayoutWrapper } from 'xy-shared';
+import { BaseBlogPostLayout } from 'xy-shared/layouts/blog-post-base';
+import { CaseStudyLayoutWrapper } from 'xy-shared/layouts/case-study-wrapper';
 
 import { useMDXComponents as getMdxComponents } from '@/mdx-components';
-import { getWhatsNew } from '@/utils';
+import { getWhatsNew } from 'xy-shared/lib/get-whats-new';
 
-type PageProps = Readonly<{
-  params: Promise<{
-    mdxPath: string[];
-  }>;
-}>;
+type Props = PageProps<'/[...mdxPath]'>;
 
 const { wrapper: Wrapper } = getMdxComponents();
 
-export default async function Page(props: PageProps) {
+export default async function Page(props: Props) {
   const params = await props.params;
   const result = await importPage(params.mdxPath);
   const { default: MDXContent, toc, metadata, sourceCode } = result;
@@ -80,7 +77,7 @@ export default async function Page(props: PageProps) {
   );
 }
 
-export async function generateMetadata(props: PageProps) {
+export async function generateMetadata(props: Props) {
   const params = await props.params;
   const { metadata } = await importPage(params.mdxPath);
   return metadata;
@@ -88,6 +85,6 @@ export async function generateMetadata(props: PageProps) {
 
 export const generateStaticParams = generateStaticParamsFor('mdxPath');
 
-export const dynamic = 'force-static';
-
-export const dynamicParams = false;
+// export const dynamic = 'force-static';
+//
+// export const dynamicParams = false;

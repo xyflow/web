@@ -1,26 +1,22 @@
 import path from 'path';
-import { Callout, Cards } from 'nextra/components';
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
-import { Button } from '@xyflow/xy-ui';
-import { RemoteCodeViewer, getAllExamples } from 'xy-shared/server';
+import { Button } from 'xy-shared/components/ui/button';
+import { getAllExamples } from 'xy-shared/server/example-utils';
 
 import { useMDXComponents as getMDXComponents } from '@/mdx-components';
-import ProExampleViewer from '@/components/pro-example-viewer';
+
 import CollaborativeFlowViewer from '@/components/collaborative-flow-viewer';
 
 import { importMetadata } from './utils';
 
-type PageProps = Readonly<{
-  params: Promise<{
-    slug: string[];
-  }>;
-}>;
+type Props = PageProps<'/examples/[...slug]'>;
 
 const { wrapper: Wrapper, h1: H1 } = getMDXComponents();
 
-export default async function Page(props: PageProps) {
+export default async function Page(props: Props) {
   const params = await props.params;
   const route = params.slug.join('/');
+  // eslint-disable-next-line @typescript-eslint/no-require-imports -- `require` supports Fast Refresh
   const { default: MDXContent, toc, metadata, sourceCode } = require(
     // The static analyzer needs to know the import path as precisely as possible.
     // To achieve this, we keep `examples/` in the import path.
@@ -31,21 +27,13 @@ export default async function Page(props: PageProps) {
     <Wrapper toc={toc} metadata={metadata} sourceCode={sourceCode}>
       <H1>{metadata.title}</H1>
       <MDXContent
-        components={{
-          Callout,
-          Cards,
-          ArrowTopRightOnSquareIcon,
-          RemoteCodeViewer,
-          ProExampleViewer,
-          Button,
-          CollaborativeFlowViewer,
-        }}
+        components={{ ArrowTopRightOnSquareIcon, CollaborativeFlowViewer, Button }}
       />
     </Wrapper>
   );
 }
 
-export async function generateMetadata(props: PageProps) {
+export async function generateMetadata(props: Props) {
   const params = await props.params;
   const route = params.slug.join('/');
   return importMetadata(route);
@@ -57,7 +45,3 @@ export async function generateStaticParams() {
   const params = filePaths.map((route) => ({ slug: route.split('/') }));
   return params;
 }
-
-export const dynamic = 'force-static';
-
-export const dynamicParams = false;

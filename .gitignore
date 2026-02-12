@@ -13,6 +13,7 @@ coverage
 out/
 build
 sitemap.xml
+next-env.d.ts
 
 # misc
 .DS_Store

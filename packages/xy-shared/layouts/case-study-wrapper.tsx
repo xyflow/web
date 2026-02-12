@@ -3,16 +3,14 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { type MdxFile } from 'nextra';
 import { ChevronRightIcon } from '@heroicons/react/20/solid';
-import {
-  Heading,
-  Text,
-  Container,
-  ContentGrid,
-  ContentGridItem,
-  Button,
-} from '@xyflow/xy-ui';
-
-import { AuthorList, Author, ProjectPreview, SubscribeSection } from '../';
+import { Heading } from '../components/ui/heading';
+import { Text } from '../components/ui/text';
+import { Container } from '../components/ui/container';
+import { ContentGrid, ContentGridItem } from '../components/ui/content-grid';
+import { Button } from '../components/ui/button';
+import { AuthorList, Author } from '../components/authors-list';
+import { ProjectPreview } from '../components/project-preview';
+import { SubscribeSection } from '../components/subscribe-section';
 
 export type CaseStudyFrontmatter = {
   title: string;
@@ -62,7 +60,7 @@ export const CaseStudyLayoutWrapper: FC<
       <div className="max-w-3xl mx-auto px-6">
         {children}
         <Button asChild>
-          <a href={frontMatter.project_url} target="_blank">
+          <a href={frontMatter.project_url} target="_blank" rel="noopener noreferrer">
             Visit Project Website
           </a>
         </Button>

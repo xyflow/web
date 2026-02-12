@@ -1,0 +1,1 @@
+export { default } from 'xy-shared/routes/pro/(no-auth)/sign-up/page';

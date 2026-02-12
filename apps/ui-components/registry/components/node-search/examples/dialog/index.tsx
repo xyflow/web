@@ -12,7 +12,7 @@ const initNodes: Node<NodeData>[] = Array.from(
   (_, index) => {
     // Calculate grid dimensions (aim for roughly square grid)
     const cols = Math.ceil(Math.sqrt(graphSize));
-    const rows = Math.ceil(graphSize / cols);
+    // const rows = Math.ceil(graphSize / cols);
 
     // Calculate position in grid
     const col = index % cols;

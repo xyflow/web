@@ -1,23 +1,23 @@
 import { FC } from 'react';
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { HeartIcon, BoltIcon } from '@heroicons/react/24/outline';
-import { Button, Section, Stats } from '@xyflow/xy-ui';
-import {
-  BaseLayout,
-  AboutSection,
-  ImageSlider,
-  HeroFlow,
-  Features,
-  GettingStarted,
-  ProjectCards,
-  FlowA,
-  FlowB,
-  FlowC,
-} from 'xy-shared';
+import { BoltIcon, SparklesIcon } from '@heroicons/react/24/outline';
+import { Button } from 'xy-shared/components/ui/button';
+import { Section } from 'xy-shared/components/ui/section';
+import { Stats } from 'xy-shared/components/ui/stats';
+import { BaseLayout } from 'xy-shared/layouts/base';
+import { AboutSection } from 'xy-shared/layouts/about-section';
+import { ImageSlider } from 'xy-shared/components/image-slider';
+import { HeroFlow } from 'xy-shared/components/flows/hero-flow';
+import { Features } from 'xy-shared/components/features';
+import { GettingStarted } from 'xy-shared/layouts/getting-started';
+import { ProjectCards } from 'xy-shared/layouts/project-cards';
+import { FlowA } from 'xy-shared/components/flows/flow-a';
+import { FlowB } from 'xy-shared/components/flows/flow-b';
+import { FlowC } from 'xy-shared/components/flows/flow-c';
 
-import type { InternalRoute } from '@/utils';
-import getStaticPropsStats from '@/utils/github-npm-stats';
+import type { InternalRoute } from '../../routes';
+import { fetchGitHubNpmStats } from 'xy-shared/lib/fetch-github-npm-stats';
 import { version } from '@xyflow/svelte/package.json';
 
 export const revalidate = 3600; // 60 * 60
@@ -92,15 +92,15 @@ const features = [
     flowComponent: <FlowB />,
   },
   {
-    title: 'All the right plugins',
+    title: 'All the right components',
     text: 'Make more advanced apps with the Background, Minimap, Controls, and Panel components.',
     route: '/learn' satisfies InternalRoute,
-    flowComponent: <FlowC framework="svelte" />,
+    flowComponent: <FlowC />,
   },
 ];
 
 const Page: FC = async () => {
-  const { downloads = 450 } = await getStaticPropsStats();
+  const { downloads = 450 } = await fetchGitHubNpmStats('svelte');
 
   return (
     <BaseLayout>
@@ -116,9 +116,9 @@ const Page: FC = async () => {
                 Quickstart
               </Link>
             </Button>
-            <Button variant="pro" asChild size="lg">
-              <Link href="/support-us">
-                <HeartIcon className="w-5 h-5 mr-1" /> Support Us
+            <Button size="lg" variant="pro" asChild>
+              <Link href="/pro">
+                <SparklesIcon className="w-5 h-5 mr-1" /> Svelte Flow Pro
               </Link>
             </Button>
           </div>
@@ -138,11 +138,11 @@ const Page: FC = async () => {
             },
             { label: 'License', value: 'MIT' },
           ]}
-          description="Svelte Flow is a MIT-licensed open source library. You can help us to ensure the further development and maintenance by supporting us."
-          link="/support-us"
+          description="Svelte Flow is a MIT-licensed open source library. You can help us to ensure the further development and maintenance by subscribing to React Flow Pro."
+          link="/pro"
           linkLabel={
             <>
-              <HeartIcon className="w-5 h-5 mr-1" /> Support Us
+              <SparklesIcon className="w-5 h-5 mr-1" /> Svelte Flow Pro
             </>
           }
         />

@@ -2,14 +2,15 @@ import { FC } from 'react';
 import { MdxFile } from 'nextra';
 import NextLink from 'next/link';
 import { Anchor } from 'nextra/components';
-import { Button, Card, CardContent, CardHeader, CardTitle } from '@xyflow/xy-ui';
+import { Button } from '../components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { PlayCircleIcon } from '@heroicons/react/24/outline';
 
 export const TOC: FC<{ pageMap: (MdxFile & { title: string })[] }> = async ({
   pageMap,
 }) => {
   return (
-    <div className="grid gap-2 x:text-xs x:font-medium">
+    <div className="grid gap-2 text-xs font-medium">
       <Anchor className="xy-link-gray" href="https://xyflow.com/contact">
         Questions? Contact Us
       </Anchor>
@@ -18,7 +19,7 @@ export const TOC: FC<{ pageMap: (MdxFile & { title: string })[] }> = async ({
       {[...pageMap.slice(0, 3), { route: '/whats-new', title: '...and more!' }].map(
         ({ route, title }) => (
           <NextLink
-            className="xy-link-gray x:focus-visible:nextra-focus"
+            className="xy-link-gray focus-visible:nextra-focus"
             href={route}
             key={route}
           >
