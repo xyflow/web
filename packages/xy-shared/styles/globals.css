@@ -120,6 +120,7 @@
     --background: 0 0% 6.7%;
     --foreground: 0 0% 100%;
     --muted: 210 40% 12.9%;
+    --border: 214.3 31.8% 20%;
   }
 }
 
@@ -266,20 +267,20 @@ article.nextra-content ol li p {
   color: #222;
 }
 
-/* Docsearch overwrite */
-.nextra-navbar {
-  --docsearch-searchbox-background: #eee;
-  --docsearch-searchbox-focus-background: #eee;
-}
-
 /* 7. DocSearch */
 .DocSearch-Button {
-  @apply bg-gray-100;
+  background-color: hsl(var(--muted));
+}
+
+.DocSearch-Button:hover {
+  background-color: hsl(var(--muted));
+  color: hsl(var(--foreground));
 }
 
 .DocSearch-Button .DocSearch-Search-Icon {
   width: 16px;
   height: 16px;
+  color: hsl(var(--foreground));
 }
 
 .DocSearch-Button .DocSearch-Button-Keys {
