@@ -20,7 +20,7 @@ type Box = {
   node: Node;
 };
 
-function getBoxesFromNodes(nodes: Node[], margin: number = 0): Box[] {
+function getBoxesFromNodes(nodes: Node[], margin = 0): Box[] {
   const boxes: Box[] = new Array(nodes.length);
 
   for (let i = 0; i < nodes.length; i++) {
@@ -43,8 +43,6 @@ export const resolveCollisions: CollisionAlgorithm = (
   { maxIterations = 50, overlapThreshold = 0.5, margin = 0 },
 ) => {
   const boxes = getBoxesFromNodes(nodes, margin);
-
-  let numIterations = 0;
 
   for (let iter = 0; iter <= maxIterations; iter++) {
     let moved = false;
@@ -88,8 +86,6 @@ export const resolveCollisions: CollisionAlgorithm = (
         }
       }
     }
-    numIterations++;
-
     // Early exit if no overlaps were found
     if (!moved) {
       break;

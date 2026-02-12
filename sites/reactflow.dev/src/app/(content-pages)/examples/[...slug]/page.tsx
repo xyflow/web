@@ -4,6 +4,9 @@ import { Button } from 'xy-shared/components/ui/button';
 import { getAllExamples } from 'xy-shared/server/example-utils';
 
 import { useMDXComponents as getMDXComponents } from '@/mdx-components';
+
+import CollaborativeFlowViewer from '@/components/collaborative-flow-viewer';
+
 import { importMetadata } from './utils';
 
 type Props = PageProps<'/examples/[...slug]'>;
@@ -23,7 +26,9 @@ export default async function Page(props: Props) {
   return (
     <Wrapper toc={toc} metadata={metadata} sourceCode={sourceCode}>
       <H1>{metadata.title}</H1>
-      <MDXContent components={{ ArrowTopRightOnSquareIcon, Button }} />
+      <MDXContent
+        components={{ ArrowTopRightOnSquareIcon, CollaborativeFlowViewer, Button }}
+      />
     </Wrapper>
   );
 }
