@@ -28,7 +28,10 @@ export default function ClientLogos({
             key={logo.alt}
             src={logo.src}
             alt={logo.alt}
-            className={cn('w-auto', logo.className)}
+            className={cn(
+              'w-auto transition-[filter] dark:invert dark:brightness-0 dark:contrast-200',
+              logo.className,
+            )}
           />
         ))}
       </div>
