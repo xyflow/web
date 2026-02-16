@@ -82,11 +82,7 @@ const UiComponentViewer: FC<{ id: string }> = async ({ id }) => {
       <div className="flex gap-2 items-center my-5">
         <div>Dependencies:</div>
         {npmDependencies.map((dep) => (
-          <a
-            className="bg-gray-100 rounded-md px-1 py-0.5"
-            key={dep.label}
-            href={dep.url}
-          >
+          <a className="bg-card rounded-md px-1 py-0.5" key={dep.label} href={dep.url}>
             {dep.label}
           </a>
         ))}
@@ -94,7 +90,7 @@ const UiComponentViewer: FC<{ id: string }> = async ({ id }) => {
           <a
             className={cn(
               'rounded-md px-1 py-0.5',
-              dep.highlight ? 'text-primary bg-primary/5' : 'bg-gray-100',
+              dep.highlight ? 'text-primary bg-primary/5' : 'bg-card',
             )}
             key={dep.label}
             href={dep.url}

@@ -101,7 +101,7 @@ export function CodePreview({
               <IconButton
                 icon={<CodeBracketIcon className="size-6" />}
                 title="Toggle code"
-                className={`${isOpen ? 'bg-gray-100' : 'text-[#ff0073]'}`}
+                className={`${isOpen ? 'bg-card' : 'text-[#ff0073]'}`}
                 onClick={() => setIsOpen((isOpen) => !isOpen)}
               />
               <IconButton

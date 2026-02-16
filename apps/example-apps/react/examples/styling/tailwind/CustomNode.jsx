@@ -5,7 +5,7 @@ function CustomNode({ data }) {
   return (
     <div className="px-4 py-2 shadow-md rounded-md bg-white border-2 border-stone-400">
       <div className="flex">
-        <div className="rounded-full w-12 h-12 flex justify-center items-center bg-gray-100">
+        <div className="rounded-full w-12 h-12 flex justify-center items-center bg-card">
           {data.emoji}
         </div>
         <div className="ml-2">
@@ -14,16 +14,8 @@ function CustomNode({ data }) {
         </div>
       </div>
 
-      <Handle
-        type="target"
-        position={Position.Top}
-        className="w-16 !bg-teal-500"
-      />
-      <Handle
-        type="source"
-        position={Position.Bottom}
-        className="w-16 !bg-teal-500"
-      />
+      <Handle type="target" position={Position.Top} className="w-16 !bg-teal-500" />
+      <Handle type="source" position={Position.Bottom} className="w-16 !bg-teal-500" />
     </div>
   );
 }

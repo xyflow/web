@@ -219,7 +219,7 @@ function CaseStudyPreview({
     <Container
       variant="dark"
       className="col-span-full"
-      innerClassName="px-4 py-8 flex flex-wrap gap-12 relative w-full items-center shadow-none bg-none bg-gray-100/10 lg:px-12 lg:py-12"
+      innerClassName="px-4 py-8 flex flex-wrap gap-12 relative w-full items-center shadow-none bg-none bg-card/10 lg:px-12 lg:py-12"
     >
       <div className="max-md:w-full max-md:order-2 md:w-1/2">
         <Text className="text-primary mb-4">{data.client}</Text>
@@ -232,7 +232,7 @@ function CaseStudyPreview({
             asChild
             size="lg"
             variant="secondary"
-            className="text-black hover:bg-gray-100 w-full md:w-auto"
+            className="text-black hover:bg-card w-full md:w-auto"
           >
             <Link href={route}>Read Case Study</Link>
           </Button>
