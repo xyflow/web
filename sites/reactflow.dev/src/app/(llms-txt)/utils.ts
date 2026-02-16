@@ -1,4 +1,13 @@
 import { Folder, MdxFile, MetaJsonFile } from 'nextra';
+import fs from 'node:fs';
+import path from 'node:path';
+import { unified } from 'unified';
+import remarkParse from 'remark-parse';
+import remarkMdx from 'remark-mdx';
+import remarkGfm from 'remark-gfm';
+import remarkFrontmatter from 'remark-frontmatter';
+import remarkStringify from 'remark-stringify';
+import type { Root, Parent, Heading } from 'mdast';
 
 // TYPES -----------------------------------------------------------------------
 
@@ -21,16 +30,6 @@ export const isMdxFile = (item: TitledPageMapItem): item is TitledMdxFile =>
   'frontMatter' in item;
 
 // LLM TXT UTILS ----------------------------------------------------------------
-
-import fs from 'node:fs';
-import path from 'node:path';
-import { unified } from 'unified';
-import remarkParse from 'remark-parse';
-import remarkMdx from 'remark-mdx';
-import remarkGfm from 'remark-gfm';
-import remarkFrontmatter from 'remark-frontmatter';
-import remarkStringify from 'remark-stringify';
-import type { Root, Parent, Heading } from 'mdast';
 
 // CONFIG (relative to site root = process.cwd() when running Next from reactflow.dev)
 const SITE_ROOT = process.cwd();
@@ -70,7 +69,7 @@ export interface Section {
   path: string;
 }
 
-interface MdxFile {
+interface CollectedMdxFile {
   fullPath: string;
   relativePath: string;
   name: string;
@@ -83,7 +82,7 @@ function getAllMdxFiles(dir: string, basePath = ''): string[] {
     const items = fs.readdirSync(dir, { withFileTypes: true });
 
     const directories: { fullPath: string; relativePath: string }[] = [];
-    const mdxFiles: MdxFile[] = [];
+    const mdxFiles: CollectedMdxFile[] = [];
 
     for (const item of items) {
       const fullPath = path.join(dir, item.name);
