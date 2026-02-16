@@ -572,10 +572,10 @@ importers:
         version: 4.2.3(next@15.5.7(@opentelemetry/api@1.9.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))
       nextra:
         specifier: 4.5.1
-        version: 4.5.1(acorn@8.14.1)(next@15.5.7(@opentelemetry/api@1.9.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(typescript@5.9.3)
+        version: 4.5.1(acorn@8.15.0)(next@15.5.7(@opentelemetry/api@1.9.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(typescript@5.9.3)
       nextra-theme-docs:
         specifier: 4.5.1
-        version: 4.5.1(@types/react@19.2.7)(next@15.5.7(@opentelemetry/api@1.9.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(nextra@4.5.1(acorn@8.14.1)(next@15.5.7(@opentelemetry/api@1.9.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(typescript@5.9.3))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(use-sync-external-store@1.6.0(react@19.2.1))
+        version: 4.5.1(@types/react@19.2.7)(next@15.5.7(@opentelemetry/api@1.9.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(nextra@4.5.1(acorn@8.15.0)(next@15.5.7(@opentelemetry/api@1.9.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(typescript@5.9.3))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(use-sync-external-store@1.6.0(react@19.2.1))
       react:
         specifier: ^19.2.0
         version: 19.2.1
@@ -585,12 +585,30 @@ importers:
       react-icons:
         specifier: ^5.5.0
         version: 5.5.0(react@19.2.1)
+      remark-frontmatter:
+        specifier: ^5.0.0
+        version: 5.0.0
+      remark-gfm:
+        specifier: ^4.0.0
+        version: 4.0.1
+      remark-mdx:
+        specifier: ^3.1.0
+        version: 3.1.1
+      remark-parse:
+        specifier: ^11.0.0
+        version: 11.0.0
+      remark-stringify:
+        specifier: ^11.0.0
+        version: 11.0.0
       timeago-react:
         specifier: ^3.0.7
         version: 3.0.7(react@19.2.1)
       ui-components:
         specifier: workspace:*
         version: link:../../apps/ui-components
+      unified:
+        specifier: ^11.0.5
+        version: 11.0.5
       xy-shared:
         specifier: workspace:*
         version: link:../../packages/xy-shared
@@ -618,40 +636,19 @@ importers:
         version: link:../../configs/eslint-config-xyflow
       postcss-import:
         specifier: ^16.1.0
-        version: 16.1.1(postcss@8.5.3)
+        version: 16.1.1(postcss@8.5.6)
       postcss-lightningcss:
         specifier: ^1.0.1
-        version: 1.0.2(postcss@8.5.3)
-      remark-frontmatter:
-        specifier: ^5.0.0
-        version: 5.0.0
-      remark-gfm:
-        specifier: ^4.0.0
-        version: 4.0.1
-      remark-mdx:
-        specifier: ^3.1.0
-        version: 3.1.1
-      remark-parse:
-        specifier: ^11.0.0
-        version: 11.0.0
-      remark-stringify:
-        specifier: ^11.0.0
-        version: 11.0.0
+        version: 1.0.2(postcss@8.5.6)
       source-map-support:
         specifier: 0.5.21
         version: 0.5.21
       tailwindcss:
         specifier: ^3.4.17
         version: 3.4.18(ts-node@10.9.2(@types/node@22.19.1)(typescript@5.9.3))
-      tsx:
-        specifier: ^4.19.2
-        version: 4.21.0
       typescript:
         specifier: ^5.7.3
         version: 5.9.3
-      unified:
-        specifier: ^11.0.5
-        version: 11.0.5
       xy-tailwind-config:
         specifier: workspace:*
         version: link:../../configs/xy-tailwind-config
@@ -8681,36 +8678,6 @@ snapshots:
 
   '@marijn/find-cluster-break@1.0.2': {}
 
-  '@mdx-js/mdx@3.1.0(acorn@8.14.1)':
-    dependencies:
-      '@types/estree': 1.0.7
-      '@types/estree-jsx': 1.0.5
-      '@types/hast': 3.0.4
-      '@types/mdx': 2.0.13
-      collapse-white-space: 2.1.0
-      devlop: 1.1.0
-      estree-util-is-identifier-name: 3.0.0
-      estree-util-scope: 1.0.0
-      estree-walker: 3.0.3
-      hast-util-to-jsx-runtime: 2.3.2
-      markdown-extensions: 2.0.0
-      recma-build-jsx: 1.0.0
-      recma-jsx: 1.0.0(acorn@8.14.1)
-      recma-stringify: 1.0.0
-      rehype-recma: 1.0.0
-      remark-mdx: 3.1.1
-      remark-parse: 11.0.0
-      remark-rehype: 11.1.2
-      source-map: 0.7.4
-      unified: 11.0.5
-      unist-util-position-from-estree: 2.0.0
-      unist-util-stringify-position: 4.0.0
-      unist-util-visit: 5.0.0
-      vfile: 6.0.3
-    transitivePeerDependencies:
-      - acorn
-      - supports-color
-
   '@mdx-js/mdx@3.1.0(acorn@8.15.0)':
     dependencies:
       '@types/estree': 1.0.7
@@ -11571,6 +11538,7 @@ snapshots:
       '@esbuild/win32-arm64': 0.27.3
       '@esbuild/win32-ia32': 0.27.3
       '@esbuild/win32-x64': 0.27.3
+    optional: true
 
   escalade@3.2.0: {}
 
@@ -13705,24 +13673,6 @@ snapshots:
       - '@babel/core'
       - babel-plugin-macros
 
-  nextra-theme-docs@4.5.1(@types/react@19.2.7)(next@15.5.7(@opentelemetry/api@1.9.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(nextra@4.5.1(acorn@8.14.1)(next@15.5.7(@opentelemetry/api@1.9.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(typescript@5.9.3))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(use-sync-external-store@1.6.0(react@19.2.1)):
-    dependencies:
-      '@headlessui/react': 2.2.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
-      clsx: 2.1.1
-      next: 15.5.7(@opentelemetry/api@1.9.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
-      next-themes: 0.4.4(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
-      nextra: 4.5.1(acorn@8.14.1)(next@15.5.7(@opentelemetry/api@1.9.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(typescript@5.9.3)
-      react: 19.2.1
-      react-compiler-runtime: 19.1.0-rc.2(react@19.2.1)
-      react-dom: 19.2.1(react@19.2.1)
-      scroll-into-view-if-needed: 3.1.0
-      zod: 4.0.0-beta.20250424T163858
-      zustand: 5.0.3(@types/react@19.2.7)(react@19.2.1)(use-sync-external-store@1.6.0(react@19.2.1))
-    transitivePeerDependencies:
-      - '@types/react'
-      - immer
-      - use-sync-external-store
-
   nextra-theme-docs@4.5.1(@types/react@19.2.7)(next@15.5.7(@opentelemetry/api@1.9.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(nextra@4.5.1(acorn@8.15.0)(next@15.5.7(@opentelemetry/api@1.9.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(typescript@5.9.3))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(use-sync-external-store@1.6.0(react@19.2.1)):
     dependencies:
       '@headlessui/react': 2.2.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
@@ -13780,55 +13730,6 @@ snapshots:
       slash: 5.1.0
       title: 4.0.1
       ts-morph: 26.0.0
-      unist-util-remove: 4.0.0
-      unist-util-visit: 5.0.0
-      unist-util-visit-children: 3.0.0
-      yaml: 2.6.1
-      zod: 4.0.0-beta.20250424T163858
-    transitivePeerDependencies:
-      - acorn
-      - supports-color
-      - typescript
-
-  nextra@4.5.1(acorn@8.14.1)(next@15.5.7(@opentelemetry/api@1.9.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(typescript@5.9.3):
-    dependencies:
-      '@formatjs/intl-localematcher': 0.6.0
-      '@headlessui/react': 2.2.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
-      '@mdx-js/mdx': 3.1.0(acorn@8.14.1)
-      '@napi-rs/simple-git': 0.1.19
-      '@shikijs/twoslash': 3.2.2(typescript@5.9.3)
-      '@theguild/remark-mermaid': 0.3.0(react@19.2.1)
-      '@theguild/remark-npm2yarn': 0.3.3
-      better-react-mathjax: 2.3.0(react@19.2.1)
-      clsx: 2.1.1
-      estree-util-to-js: 2.0.0
-      estree-util-value-to-estree: 3.3.3
-      fast-glob: 3.3.3
-      github-slugger: 2.0.0
-      hast-util-to-estree: 3.1.0
-      katex: 0.16.21
-      mdast-util-from-markdown: 2.0.2
-      mdast-util-gfm: 3.0.0
-      mdast-util-to-hast: 13.2.0
-      negotiator: 1.0.0
-      next: 15.5.7(@opentelemetry/api@1.9.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
-      react: 19.2.1
-      react-compiler-runtime: 19.1.0-rc.2(react@19.2.1)
-      react-dom: 19.2.1(react@19.2.1)
-      react-medium-image-zoom: 5.2.13(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
-      rehype-katex: 7.0.1
-      rehype-pretty-code: 0.14.1(shiki@3.2.2)
-      rehype-raw: 7.0.0
-      remark-frontmatter: 5.0.0
-      remark-gfm: 4.0.1
-      remark-math: 6.0.0
-      remark-reading-time: 2.0.2
-      remark-smartypants: 3.0.2
-      server-only: 0.0.1
-      shiki: 3.2.2
-      slash: 5.1.0
-      title: 4.0.1
-      ts-morph: 27.0.0
       unist-util-remove: 4.0.0
       unist-util-visit: 5.0.0
       unist-util-visit-children: 3.0.0
@@ -14205,13 +14106,6 @@ snapshots:
       read-cache: 1.0.0
       resolve: 1.22.9
 
-  postcss-import@16.1.1(postcss@8.5.3):
-    dependencies:
-      postcss: 8.5.3
-      postcss-value-parser: 4.2.0
-      read-cache: 1.0.0
-      resolve: 1.22.9
-
   postcss-import@16.1.1(postcss@8.5.6):
     dependencies:
       postcss: 8.5.6
@@ -14222,12 +14116,6 @@ snapshots:
   postcss-js@4.0.1(postcss@8.5.3):
     dependencies:
       camelcase-css: 2.0.1
-      postcss: 8.5.3
-
-  postcss-lightningcss@1.0.2(postcss@8.5.3):
-    dependencies:
-      browserslist: 4.25.0
-      lightningcss: 1.30.1
       postcss: 8.5.3
 
   postcss-lightningcss@1.0.2(postcss@8.5.6):
@@ -14502,16 +14390,6 @@ snapshots:
       '@types/estree': 1.0.7
       estree-util-build-jsx: 3.0.1
       vfile: 6.0.3
-
-  recma-jsx@1.0.0(acorn@8.14.1):
-    dependencies:
-      acorn-jsx: 5.3.2(acorn@8.14.1)
-      estree-util-to-js: 2.0.0
-      recma-parse: 1.0.0
-      recma-stringify: 1.0.0
-      unified: 11.0.5
-    transitivePeerDependencies:
-      - acorn
 
   recma-jsx@1.0.0(acorn@8.15.0):
     dependencies:
@@ -15505,6 +15383,7 @@ snapshots:
       get-tsconfig: 4.8.1
     optionalDependencies:
       fsevents: 2.3.3
+    optional: true
 
   turbo-darwin-64@2.6.2:
     optional: true

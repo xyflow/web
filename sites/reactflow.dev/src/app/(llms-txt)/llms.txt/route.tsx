@@ -7,7 +7,7 @@ import { isFolder, isMdxFile, TitledPageMapItem } from '../utils';
 export const dynamic = 'force-static';
 
 /** The `/llms.txt` file is a proposed standard to help LLMs navigate sites and
- * find content at inference time. You can think of it like a sitemap for but
+ * find content at inference time. You can think of it like a sitemap, but for
  * AI instead of people.
  *
  * Next doesn't have any built-in mechanism for generating these like it does for

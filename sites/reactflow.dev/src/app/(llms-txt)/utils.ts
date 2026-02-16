@@ -96,6 +96,7 @@ function getAllMdxFiles(dir: string, basePath = ''): string[] {
     }
 
     directories.sort((a, b) => a.relativePath.localeCompare(b.relativePath));
+    mdxFiles.sort((a, b) => a.relativePath.localeCompare(b.relativePath));
 
     for (const file of mdxFiles) {
       if (file.name === 'index.mdx') {
@@ -131,11 +132,25 @@ function getExampleSourcePath(route: string, framework: string): string {
   return path.join(EXAMPLES_PUBLIC, framework, route, 'source.json');
 }
 
+/** Returns true if candidatePath is under baseDir (or equal). */
+function isPathUnderBase(candidatePath: string, baseDir: string): boolean {
+  const base = path.resolve(baseDir);
+  const resolved = path.resolve(candidatePath);
+  return resolved === base || resolved.startsWith(base + path.sep);
+}
+
 function loadExampleFiles(
   route: string,
   framework: string,
 ): { files: Record<string, string> } | null {
+  // Protect against directory traversal and absolute paths.
+  if (route.includes('..') || path.isAbsolute(route)) {
+    return null;
+  }
   const sourcePath = getExampleSourcePath(route, framework);
+  if (!isPathUnderBase(sourcePath, EXAMPLES_PUBLIC)) {
+    return null;
+  }
   try {
     if (!fs.existsSync(sourcePath)) return null;
     const json = JSON.parse(fs.readFileSync(sourcePath, 'utf8')) as {
@@ -190,6 +205,10 @@ const UI_COMPONENT_FILES = ['index.tsx', 'component-example.tsx'] as const;
 
 function loadUiComponentFiles(id: string): { files: Record<string, string> } | null {
   const componentDir = path.join(UI_COMPONENTS_REGISTRY, id);
+
+  if (!isPathUnderBase(componentDir, UI_COMPONENTS_REGISTRY)) {
+    return null;
+  }
   try {
     if (!fs.existsSync(componentDir) || !fs.statSync(componentDir).isDirectory()) {
       return null;
