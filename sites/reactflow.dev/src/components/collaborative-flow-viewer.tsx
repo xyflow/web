@@ -34,7 +34,6 @@ export default function CollaborativeFlowViewer({
 
   let iframeSrc = `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/collaborative?flow=${flowId}`;
 
-  console.log('flowId', flowId);
   return (
     <div className="flex flex-col gap-4 pt-4">
       <Button asChild className="shrink-0 max-w-64">
