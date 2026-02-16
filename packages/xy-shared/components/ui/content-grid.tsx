@@ -13,14 +13,7 @@ export type ContentGridProps = {
  */
 export function ContentGrid({ className, children }: ContentGridProps) {
   return (
-    <div
-      className={cn(
-        'grid border-t border-solid border-border grid-cols-1 lg:grid-cols-2',
-        className,
-      )}
-    >
-      {children}
-    </div>
+    <div className={cn('grid  grid-cols-1 lg:grid-cols-2', className)}>{children}</div>
   );
 }
 
