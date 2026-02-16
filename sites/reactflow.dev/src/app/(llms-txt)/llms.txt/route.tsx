@@ -84,3 +84,5 @@ const collectLinks = (items: TitledPageMapItem[], indent = 0): string => {
 
   return output;
 };
+
+Atlas2018;

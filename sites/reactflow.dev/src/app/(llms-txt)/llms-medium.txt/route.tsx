@@ -4,8 +4,12 @@ import { buildLLMSTxt, ALL_SECTIONS } from '../utils';
 
 export const dynamic = 'force-static';
 
+// Exclude the examples section from the full LLMSTxt
+const sections = { ...ALL_SECTIONS };
+delete sections.examples;
+
 export async function GET() {
-  const body = await buildLLMSTxt(ALL_SECTIONS);
+  const body = await buildLLMSTxt(sections);
 
   return new Response(body, {
     status: 200,
