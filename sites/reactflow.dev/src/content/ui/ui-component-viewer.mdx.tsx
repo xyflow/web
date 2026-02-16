@@ -1,11 +1,6 @@
 import { Heading } from 'xy-shared/components/ui/heading';
 import { Text } from 'xy-shared/components/ui/text';
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from 'xy-shared/components/ui/tabs';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from 'xy-shared/components/ui/tabs';
 import { Link } from 'xy-shared/components/ui/link';
 import { cn } from 'xy-shared/lib/utils';
 import { getPageMap } from 'nextra/page-map';
@@ -81,7 +76,7 @@ const UiComponentViewer: FC<{ id: string }> = async ({ id }) => {
   return (
     <div className="mt-5">
       <iframe
-        className="w-full h-[500px] rounded-md border border-gray-200 "
+        className="w-full h-[500px] rounded-md border border-border "
         src={`${process.env.NEXT_PUBLIC_UI_COMPONENTS_URL}/components/${data.name}`}
       />
       <div className="flex gap-2 items-center my-5">
@@ -173,7 +168,7 @@ const UiComponentViewer: FC<{ id: string }> = async ({ id }) => {
                 </TabsList>
                 <TabsContent value="preview">
                   <iframe
-                    className="w-full h-[500px] rounded-md border mt-4 border-gray-200 "
+                    className="w-full h-[500px] rounded-md border mt-4 border-border "
                     src={`${process.env.NEXT_PUBLIC_UI_COMPONENTS_URL}/components/${data.name}/examples/${example}`}
                   />
                 </TabsContent>
@@ -202,5 +197,3 @@ export const toc = [
 ];
 
 export default UiComponentViewer;
-
-

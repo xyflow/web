@@ -39,7 +39,7 @@ export function NavMenuLoggedIn({
         >
           <UserIcon height="18" />
         </MenubarTrigger>
-        <MenubarContent align="end" className="border-gray-200">
+        <MenubarContent align="end" className="border-border">
           {!isLoading && (
             <div className="p-2 w-[200px] text-sm">
               You are signed in as <strong>{user?.email}</strong> and subscribed to the{' '}

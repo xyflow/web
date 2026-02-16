@@ -82,7 +82,7 @@ export default function ProExampleViewerTabs({
   return (
     <>
       <Tabs defaultValue="preview">
-        <TabsList className="flex gap-x-0 mb-4 border-b border-gray-200">
+        <TabsList className="flex gap-x-0 mb-4 border-b border-border">
           <TabsTrigger asChild value="preview">
             <TabButton icon={<ComputerDesktopIcon className="w-4 h-4 stroke-2" />}>
               Preview

@@ -66,7 +66,7 @@ export function CodePreview({
         >
           <div
             className={`grid gap-2 grid-flow-col grid-cols-[1fr_min-content] 
-                        border-t ${isOpen ? 'border-b' : ''} border-gray-200`}
+                        border-t ${isOpen ? 'border-b' : ''} border-border`}
           >
             {isOpen && (
               <TabsList className="tablist h-full border-none overflow-x-auto overflow-y-hidden text-nowrap">
