@@ -117,7 +117,7 @@ export default function Plan({
       className={cn(
         'p-8 md:p-12 lg:p-14',
         highlighted &&
-          'border-x border-solid border-gray-100 bg-gradient-to-b from-primary/5',
+          'border-x border-solid border-border bg-gradient-to-b from-primary/5',
       )}
     >
       <div className={cn('font-bold text-4xl', highlighted && 'text-primary')}>

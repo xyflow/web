@@ -57,7 +57,7 @@ function Author({ name, title, image, url, className, noLink, slim }: AuthorProp
         <LinkOrSpan noLink={noLink} url={url} className="!w-10 !h-10 mr-2">
           <img
             src={image}
-            className="inline w-10 h-10 border border-gray-100 border-solid rounded-full"
+            className="inline w-10 h-10 border border-border border-solid rounded-full"
           />
         </LinkOrSpan>
       )}

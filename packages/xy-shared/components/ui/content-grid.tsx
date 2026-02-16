@@ -15,7 +15,7 @@ export function ContentGrid({ className, children }: ContentGridProps) {
   return (
     <div
       className={cn(
-        'grid border-t border-solid border-gray-100 grid-cols-1 lg:grid-cols-2',
+        'grid border-t border-solid border-border grid-cols-1 lg:grid-cols-2',
         className,
       )}
     >
@@ -58,7 +58,7 @@ export function ContentGridItem({ className, route, children }: ContentGridItemP
   return (
     <LinkOrDiv
       className={cn(
-        'lg:odd:border-r border-b border-gray-100 hover:bg-muted px-8 py-10 lg:py-16 z-10',
+        'lg:odd:border-r border-b border-border hover:bg-muted px-8 py-10 lg:py-16 z-10',
         route && 'cursor-pointer',
         className,
       )}

@@ -17,14 +17,14 @@ export default function WhatsNewPreview({
   variant = 'compact',
 }: WhatsNewPreviewProps) {
   return (
-    <ol className="grid grid-cols-1 lg:grid-cols-2 rounded-3xl border border-gray-100 gap-x-8 p-8 w-full">
+    <ol className="grid grid-cols-1 lg:grid-cols-2 rounded-3xl border border-border gap-x-8 p-8 w-full">
       {items.slice(0, 3).map((item, i) => (
         <li
           key={item.route}
           role="article"
           className={cn(
             i === 0 && 'row-span-2 h-full flex items-center',
-            i === 1 && 'border-b border-gray-100',
+            i === 1 && 'border-b border-border',
             'p-4 py-8',
           )}
         >
