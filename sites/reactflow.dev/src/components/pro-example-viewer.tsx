@@ -10,8 +10,6 @@ const ProExampleViewer: FC<{
   type?: 'example' | 'template';
   className?: string;
   innerClassName?: string;
-  // If true, display two columns with two previews side by side
-  sideBySide?: boolean;
   queryParams?: Record<string, string>;
 }> = async ({
   slug,
@@ -19,7 +17,6 @@ const ProExampleViewer: FC<{
   type = 'example',
   className,
   innerClassName,
-  sideBySide = false,
   queryParams,
 }) => {
   const isLightMode = variant === 'default';
@@ -77,18 +74,7 @@ const ProExampleViewer: FC<{
         </div>
       </div>
 
-      {sideBySide ? (
-        <div className="flex gap-2">
-          <div className="w-1/2">
-            <iframe src={iframeSrc} className={iframeClassName} />
-          </div>
-          <div className="border-l-gray-200 border-l-2 w-1/2">
-            <iframe src={iframeSrc} className={iframeClassName} />
-          </div>
-        </div>
-      ) : (
-        <iframe src={iframeSrc} className={iframeClassName} />
-      )}
+      <iframe src={iframeSrc} className={iframeClassName} />
     </Container>
   );
 };
