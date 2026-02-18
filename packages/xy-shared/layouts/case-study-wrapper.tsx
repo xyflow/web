@@ -42,7 +42,7 @@ export const CaseStudyLayoutWrapper: FC<
           <ChevronRightIcon className="h-5 w-5 mb-0.5 text-gray-500" />
           <Text className="ml-1 text-md font-medium">{frontMatter.client}</Text>
         </div>
-        <Heading size="lg" className="mt-8 !leading-tight text-base ">
+        <Heading size="lg" className="mt-8 !leading-tight text-muted-foreground ">
           {frontMatter.title}
         </Heading>
         <AuthorList authors={frontMatter.authors} className="mt-6" />

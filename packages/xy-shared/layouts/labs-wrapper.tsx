@@ -40,7 +40,7 @@ export const LabsLayoutWrapper: FC<
           <Text className="ml-1 text-md font-medium">{frontMatter.title}</Text>
         </div>
         <div className="flex flex-col md:flex-row items-start md:items-center w-full justify-start md:justify-between mt-8">
-          <Heading size="lg" className="!leading-tight text-base ">
+          <Heading size="lg" className="!leading-tight text-muted-foreground ">
             {frontMatter.title}
           </Heading>
           <Button asChild className="mt-6">

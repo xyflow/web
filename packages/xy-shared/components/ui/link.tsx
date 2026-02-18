@@ -12,7 +12,7 @@ const linkVariants = cva('', {
       primary: 'text-primary hover:underline',
     },
     size: {
-      default: 'text-base leading-relaxed',
+      default: 'text-muted-foreground leading-relaxed',
       xs: 'text-xs',
       sm: 'text-sm',
       md: 'text-md',
@@ -26,8 +26,7 @@ const linkVariants = cva('', {
 });
 
 export interface LinkProps
-  extends React.ComponentProps<typeof NextLink>,
-    VariantProps<typeof linkVariants> {
+  extends React.ComponentProps<typeof NextLink>, VariantProps<typeof linkVariants> {
   href: string;
 }
 

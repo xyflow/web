@@ -92,7 +92,7 @@ export const ExamplesOverview: FC = async () => {
                         description={example.frontMatter?.description}
                         descriptionVariant="light"
                         linkLabel="See example"
-                        linkClassName="text-base font-medium text-sm group-hover:text-primary"
+                        linkClassName="text-muted-foreground font-medium text-sm group-hover:text-primary"
                         kicker={category.title.toUpperCase()}
                         kickerSize="xs"
                         imageWrapperClassName="p-0 shadow-md border-none"

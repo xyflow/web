@@ -11,7 +11,7 @@ const textVariants = cva('', {
       primary: 'text-primary',
     },
     size: {
-      default: 'text-base leading-relaxed',
+      default: 'text-muted-foreground leading-relaxed',
       xs: 'text-xs',
       sm: 'text-sm',
       md: 'text-md',
@@ -25,8 +25,7 @@ const textVariants = cva('', {
 });
 
 export interface TextProps
-  extends React.HTMLAttributes<HTMLParagraphElement>,
-    VariantProps<typeof textVariants> {
+  extends React.HTMLAttributes<HTMLParagraphElement>, VariantProps<typeof textVariants> {
   as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span' | 'div';
 }
 
