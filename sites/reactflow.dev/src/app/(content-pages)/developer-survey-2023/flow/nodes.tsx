@@ -90,10 +90,10 @@ export const section = ({
           >
             {isHero && (
               <div
-                className="absolute opacity-10 w-[150%] h-[150%] -left-1/3 -top-1/3 pointer-events-none"
+                className="absolute opacity-10 dark:opacity-[0.05] w-[150%] h-[150%] -left-1/3 -top-1/3 pointer-events-none"
                 style={{
                   background:
-                    'radial-gradient(rgba(68,91,222,1) 0%, rgba(215,78,243,1) 25%, rgba(255,255,255,1) 50%)',
+                    'radial-gradient(rgba(68,91,222,1) 0%, rgba(215,78,243,1) 25%, hsl(var(--background)) 60%)',
                 }}
               />
             )}

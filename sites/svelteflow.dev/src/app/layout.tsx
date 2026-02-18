@@ -49,7 +49,9 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
       <Head color={{ hue: 15, saturation: 90 }} />
       <body>
         <Fathom {...fathomOptions} />
+
         <SubscriptionProvider
+          darkMode={true}
           banner={
             <Banner storageKey="node-collisions">
               <Link
@@ -60,7 +62,6 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
               </Link>
             </Banner>
           }
-          darkMode={false}
           copyPageButton={false}
           docsRepositoryBase="https://github.com/xyflow/web/tree/main/sites/svelteflow.dev"
           editLink="Edit this page on GitHub"
