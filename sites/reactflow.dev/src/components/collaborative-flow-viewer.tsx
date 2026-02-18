@@ -66,10 +66,10 @@ export default function CollaborativeFlowViewer({
 
         <div className="flex gap-2">
           <div className="w-1/2">
-            <iframe src={iframeSrc} className={iframeClassName} />
+            <iframe src={iframeSrc} className={iframeClassName} allow="clipboard-write" />
           </div>
           <div className="border-l-gray-200 border-l-2 w-1/2">
-            <iframe src={iframeSrc} className={iframeClassName} />
+            <iframe src={iframeSrc} className={iframeClassName} allow="clipboard-write" />
           </div>
         </div>
       </Container>
