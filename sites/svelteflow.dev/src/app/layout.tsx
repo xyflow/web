@@ -133,7 +133,6 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
               <NavMenu siteName="Svelte Flow" />
             </NextraNavbar>
           }
-          nextThemes={{ forcedTheme: 'light', defaultTheme: 'light' }}
           pageMap={pageMap}
           // Set to null to avoid rendering search in mobile nav, since we added search in navbar already
           search={null}

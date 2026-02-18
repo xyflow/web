@@ -92,7 +92,6 @@ const RootLayout: FC<{
               </Button>
             </Navbar>
           }
-          nextThemes={{ forcedTheme: 'light', defaultTheme: 'light' }}
           pageMap={pageMap}
           search={null}
           sidebar={{ toggleButton: false }}
