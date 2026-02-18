@@ -11,7 +11,33 @@ import NxImage from 'next/image';
 import { cn } from '../../lib/utils';
 
 import { LiteYouTubeEmbed } from '../liteyoutube-embed';
-import { wideNegativeMargin } from '../../lib/wide-negative-margin';
+
+// Well this is a pretty funky class, huh. I'm gonna try and break it down a bit
+// so we can understand what's going on here:
+//
+// sm:
+//  This is a tailwind breakpoint. It means the class will only apply on screens
+//  that are at least 640px wide.
+//
+// -mx
+//  This utility sets a *negative* margin, and its ultimately how we get our
+//  content to be wider than its container.
+//
+// calc((100vw-768px)/2)
+//  768px is the max width of our content container. 100vh is the full width of
+//  the viewport. So this expression calculates how much space is left on the
+//  screen for us to fill. We divide it by two because we're applying this margin
+//  equally on both sides of the embed.
+//
+// min(...,12rem)
+//  As the display gets wider, we want to limit the width of our embeds to do
+//  something sensible so they don't end up spanning the entire width of someone's
+//  ultra-wide monitor. 12rem was chosen as an arbitrary sensible limit, it corresponds
+//  to tailwind's `mx-44` utility.
+//
+// Use the actual content width token if available, fall back to 768px.
+const wideNegativeMargin =
+  'sm:-mx-[min(calc((100vw-var(--nextra-content-width,768px))/2),12rem)]';
 
 // IMAGES ----------------------------------------------------------------------
 
@@ -69,6 +95,7 @@ export function Image({
 export type EmbedProps = {
   src: string;
   lazy?: boolean;
+  wide?: boolean;
   className?: string;
 };
 
@@ -76,7 +103,7 @@ type IFrameProps = {
   loading?: 'lazy' | 'eager';
 };
 
-export function Embed({ src, lazy, className }: EmbedProps) {
+export function Embed({ src, lazy, wide = true, className }: EmbedProps) {
   const iFrameProps: IFrameProps = {};
 
   if (lazy) {
@@ -87,7 +114,7 @@ export function Embed({ src, lazy, className }: EmbedProps) {
     <div
       className={cn(
         'relative aspect-video my-8 mx-0 rounded-xl bg-gray-50',
-        wideNegativeMargin,
+        wide && wideNegativeMargin,
         className,
       )}
     >
