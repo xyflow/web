@@ -5,7 +5,7 @@ import { getAllExamples } from 'xy-shared/server/example-utils';
 
 import { useMDXComponents as getMDXComponents } from '@/mdx-components';
 
-import CollaborativeFlowViewer from '@/components/collaborative-flow-viewer';
+import CollaborativeFlowViewer from 'xy-shared/components/collaborative-flow-viewer';
 
 import { importMetadata } from './utils';
 
