@@ -70,7 +70,7 @@ export const ExamplesOverview: FC = async () => {
             <ContentGrid className="lg:grid-cols-3 border-none gap-4 lg:gap-8">
               {category.children.map(
                 (example) =>
-                  'frontMatter' in example && (
+                  'frontMatter' in example && example.frontMatter && (
                     <ContentGridItem
                       key={example.route}
                       route={example.route}
@@ -78,6 +78,7 @@ export const ExamplesOverview: FC = async () => {
                     >
                       <ProjectPreview
                         image={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte${example.route}/preview.jpg?v=1`}
+                        imageAlt={example.frontMatter.title + ' screenshot'}
                         title={
                           <div className="flex items-center">
                             {example.frontMatter?.title}

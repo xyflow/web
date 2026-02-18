@@ -29,12 +29,10 @@
     "xy-shared": "workspace:*"
   },
   "devDependencies": {
-    "@notionhq/client": "^2.3.0",
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "eslint": "catalog:",
     "eslint-config-xyflow": "workspace:*",
-    "postcss-import": "^16.1.0",
     "postcss-lightningcss": "^1.0.1",
     "tailwindcss": "catalog:",
     "@tailwindcss/postcss": "catalog:",
