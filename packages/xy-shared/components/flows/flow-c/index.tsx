@@ -124,7 +124,7 @@ export const FlowC = () => {
   return (
     <ReactFlow
       id="c"
-      className="home-flow-c"
+      className="home-flow-c text-black"
       defaultNodes={nodes}
       defaultEdges={edges}
       fitView
@@ -151,4 +151,3 @@ export const FlowC = () => {
     </ReactFlow>
   );
 };
-
