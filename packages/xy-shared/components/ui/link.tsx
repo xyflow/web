@@ -12,7 +12,7 @@ const linkVariants = cva('', {
       primary: 'text-primary hover:underline',
     },
     size: {
-      default: 'text-muted-foreground leading-relaxed',
+      default: 'text-base leading-relaxed',
       xs: 'text-xs',
       sm: 'text-sm',
       md: 'text-md',
