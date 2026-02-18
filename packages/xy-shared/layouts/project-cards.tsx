@@ -25,7 +25,7 @@ const projectsData = {
     description:
       'The team behind React Flow and Svelte Flow. Read updates and blog posts from us and about how we approach open source development.',
     route: 'https://xyflow.com',
-    className: 'text-[#000]',
+    className: 'text-[#000] dark:text-[#D0D0D0]',
   },
 };
 
