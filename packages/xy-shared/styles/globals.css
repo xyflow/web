@@ -66,6 +66,13 @@
   }
 }
 
+/* Allow smooth interpolation of the Pro button gradient angle */
+@property --gradientAngle {
+  syntax: '<angle>';
+  inherits: true;
+  initial-value: 258deg;
+}
+
 /* Container utility customization */
 @utility container {
   margin-inline: auto;
@@ -249,40 +256,6 @@ li.active > .sidebar-title.pro:after {
 }
 
 /* 6. Buttons */
-.pro-button {
-  transition: all 0.3s ease;
-}
-
-@property --gradientAngle {
-  syntax: '<angle>';
-  inherits: false;
-  initial-value: 258deg;
-}
-
-.pro-button {
-  --gradientAngle: 258deg;
-}
-
-.pro-button:before {
-  transition: --gradientAngle 0.3s ease;
-  background:
-    linear-gradient(
-      var(--gradientAngle),
-      hsl(var(--primary)) 36.34%,
-      hsl(var(--secondary)) 50.92%,
-      rgba(240, 240, 240, 1) 63.72%
-    ),
-    linear-gradient(
-      var(--gradientAngle),
-      hsl(var(--primary)) 2.22%,
-      hsl(var(--secondary)) 18.5%,
-      rgba(240, 240, 240, 1) 32.77%
-    );
-}
-
-.pro-button:hover:before {
-  --gradientAngle: 45deg;
-}
 
 /* nextra blog overwrites */
 article.nextra-content ol li,
