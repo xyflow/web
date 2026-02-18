@@ -40,10 +40,10 @@ export function Hero({
     <div ref={ref}>
       {backgroundVariant === 'gradient' && (
         <div
-          className="absolute -mt-16 opacity-10 w-[100vw] h-[70vw] left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+          className="absolute -mt-16 opacity-10 dark:opacity-20 w-[100vw] h-[70vw] left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
           style={{
             background:
-              'radial-gradient(rgba(68,91,222,1) 0%, rgba(215,78,243,1) 25%, rgba(255,255,255,1) 50%)',
+              'radial-gradient(rgba(68,91,222,1) 0%, rgba(215,78,243,1) 25%, hsl(var(--background)) 60%)',
           }}
         />
       )}
