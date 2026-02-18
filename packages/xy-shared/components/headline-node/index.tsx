@@ -10,7 +10,7 @@ type HeadlineNodeProps = {
 function HeadlineNode({ children, className, style }: HeadlineNodeProps) {
   return (
     <span
-      className={cn(['relative shadow-lg py-2 rounded-xl bg-white', className])}
+      className={cn(['relative shadow-lg py-2 rounded-xl bg-background', className])}
       style={style}
     >
       <span

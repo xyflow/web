@@ -29,7 +29,7 @@ export function TooltipSimple({
           {children}
         </TooltipTrigger>
         <TooltipContent
-          className="mb-2 px-2 py-1.5 overflow-hidden border border-gray-200 shadow-md rounded-md bg-popover text-popover-foreground"
+          className="mb-2 px-2 py-1.5 overflow-hidden border border-border shadow-md rounded-md bg-popover text-popover-foreground"
           {...contentProps}
         >
           {label}

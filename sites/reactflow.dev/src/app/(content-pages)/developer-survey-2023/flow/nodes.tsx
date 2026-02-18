@@ -90,10 +90,10 @@ export const section = ({
           >
             {isHero && (
               <div
-                className="absolute opacity-10 w-[150%] h-[150%] -left-1/3 -top-1/3 pointer-events-none"
+                className="absolute opacity-10 dark:opacity-[0.05] w-[150%] h-[150%] -left-1/3 -top-1/3 pointer-events-none"
                 style={{
                   background:
-                    'radial-gradient(rgba(68,91,222,1) 0%, rgba(215,78,243,1) 25%, rgba(255,255,255,1) 50%)',
+                    'radial-gradient(rgba(68,91,222,1) 0%, rgba(215,78,243,1) 25%, hsl(var(--background)) 60%)',
                 }}
               />
             )}
@@ -144,7 +144,7 @@ export const section = ({
 
 function SectionNode({ data }: NodeProps<Node<SectionNodeData>>) {
   return (
-    <div className="relative bg-white p-8 rounded-lg shadow-md max-w-lg flex flex-col gap-4">
+    <div className="relative bg-background p-8 rounded-lg shadow-md max-w-lg flex flex-col gap-4">
       <Handle
         type="target"
         position={Position.Top}
@@ -192,7 +192,7 @@ function ProjectNode({ data }: NodeProps<Node<ProjectParams>>) {
   return (
     <div
       className={cn(
-        'relative bg-white p-4 rounded-lg shadow-md max-w-md',
+        'relative bg-background p-4 rounded-lg shadow-md max-w-md',
         data?.isCategory && 'bg-primary text-white',
       )}
     >

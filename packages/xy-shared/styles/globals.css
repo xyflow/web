@@ -1,3 +1,5 @@
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   /* Container */
   --container-2xl: 1400px;
@@ -64,6 +66,13 @@
   }
 }
 
+/* Allow smooth interpolation of the Pro button gradient angle */
+@property --gradientAngle {
+  syntax: '<angle>';
+  inherits: true;
+  initial-value: 258deg;
+}
+
 /* Container utility customization */
 @utility container {
   margin-inline: auto;
@@ -116,6 +125,38 @@
 
     --light: 0 0% 46%;
   }
+  .dark {
+    --primary: 333 100% 50%;
+    --primary-foreground: 210 40% 98%;
+
+    --background: 0 0% 6.7%;
+    --foreground: 0 0% 100%;
+
+    --muted: 210 40% 12.9%;
+    --muted-foreground: 215.4 16.3% 65%;
+
+    --popover: 0 0% 6.7%;
+    --popover-foreground: 0 0% 100%;
+
+    --card: 0 0% 9%;
+    --card-foreground: 0 0% 100%;
+
+    --border: 214.3 31.8% 22%;
+    --input: 214.3 31.8% 22%;
+
+    --secondary: 217.2 32.6% 60%;
+    --secondary-foreground: 210 40% 11.2%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 215 20.2% 65.1%;
+
+    --light: 0 0% 65%;
+  }
 }
 
 @layer base {
@@ -123,7 +164,7 @@
     box-sizing: border-box;
   }
   body {
-    @apply bg-background text-foreground;
+    background-color: hsl(var(--background));
     font-feature-settings:
       'rlig' 1,
       'calt' 1;
@@ -153,6 +194,10 @@ html:has(body.x\:overflow-hidden) nav {
 
 .xy-link-gray {
   @apply transition text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 contrast-more:text-gray-700 contrast-more:dark:text-gray-100;
+}
+
+.dark .xy-link-gray {
+  @apply text-gray-300 hover:text-gray-200 contrast-more:text-gray-100;
 }
 
 /* 4. Navigation */
@@ -211,40 +256,6 @@ li.active > .sidebar-title.pro:after {
 }
 
 /* 6. Buttons */
-.pro-button {
-  transition: all 0.3s ease;
-}
-
-@property --gradientAngle {
-  syntax: '<angle>';
-  inherits: false;
-  initial-value: 258deg;
-}
-
-.pro-button {
-  --gradientAngle: 258deg;
-}
-
-.pro-button:before {
-  transition: --gradientAngle 0.3s ease;
-  background:
-    linear-gradient(
-      var(--gradientAngle),
-      hsl(var(--primary)) 36.34%,
-      hsl(var(--secondary)) 50.92%,
-      rgba(240, 240, 240, 1) 63.72%
-    ),
-    linear-gradient(
-      var(--gradientAngle),
-      hsl(var(--primary)) 2.22%,
-      hsl(var(--secondary)) 18.5%,
-      rgba(240, 240, 240, 1) 32.77%
-    );
-}
-
-.pro-button:hover:before {
-  --gradientAngle: 45deg;
-}
 
 /* nextra blog overwrites */
 article.nextra-content ol li,
@@ -257,20 +268,20 @@ article.nextra-content ol li p {
   color: #222;
 }
 
-/* Docsearch overwrite */
-.nextra-navbar {
-  --docsearch-searchbox-background: #eee;
-  --docsearch-searchbox-focus-background: #eee;
-}
-
 /* 7. DocSearch */
 .DocSearch-Button {
-  @apply bg-gray-100;
+  background-color: hsl(var(--muted));
+}
+
+.DocSearch-Button:hover {
+  background-color: hsl(var(--muted));
+  color: hsl(var(--foreground));
 }
 
 .DocSearch-Button .DocSearch-Search-Icon {
   width: 16px;
   height: 16px;
+  color: hsl(var(--foreground));
 }
 
 .DocSearch-Button .DocSearch-Button-Keys {
@@ -344,4 +355,16 @@ article.nextra-content ol li p {
   .DocSearch-Button-Placeholder {
     display: none;
   }
+}
+
+.logo-bg-color {
+  fill: hsl(var(--background));
+}
+
+.logo-outline {
+  stroke: hsl(var(--foreground));
+}
+
+.logo-fg-color {
+  fill: hsl(var(--foreground));
 }

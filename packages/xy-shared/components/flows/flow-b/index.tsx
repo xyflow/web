@@ -120,7 +120,7 @@ function Flow() {
   return (
     <ReactFlow
       id="b"
-      className="bg-[#141414]"
+      className="bg-[#141414] text-black"
       defaultNodes={nodes}
       defaultEdges={edges}
       nodeTypes={nodeTypes}

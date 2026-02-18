@@ -57,7 +57,7 @@ const RootLayout: FC<{
       <body>
         <Fathom id="JQTCQNLV" />
         <Layout
-          darkMode={false}
+          darkMode={true}
           copyPageButton={false}
           docsRepositoryBase="https://github.com/xyflow/web/tree/main/sites/xyflow.com"
           editLink="Edit this page on GitHub"
@@ -92,7 +92,6 @@ const RootLayout: FC<{
               </Button>
             </Navbar>
           }
-          nextThemes={{ forcedTheme: 'light', defaultTheme: 'light' }}
           pageMap={pageMap}
           search={null}
           sidebar={{ toggleButton: false }}

@@ -31,6 +31,7 @@ export const FlowA: FC = () => {
   return (
     <ReactFlow
       id="a"
+      className="text-black"
       defaultNodes={nodes}
       defaultEdges={edges}
       fitView
@@ -43,4 +44,3 @@ export const FlowA: FC = () => {
     </ReactFlow>
   );
 };
-

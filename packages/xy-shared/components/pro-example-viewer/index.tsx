@@ -153,13 +153,12 @@ const ProExampleViewer: FC<{
               : queryParams;
 
           const src = appendSearchParams(iframeBaseSrc, toSearchParams(perIframeParams));
-
           return (
             <iframe
               key={index}
               src={src}
               title={`${slug} preview ${index}`}
-              className={cn('block h-[645px] bg-white', sideBySide ? 'w-1/2' : 'w-full')}
+              className={cn('block h-[645px] bg-background', sideBySide ? 'w-1/2' : 'w-full')}
             />
           );
         })}

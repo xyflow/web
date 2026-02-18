@@ -21,7 +21,7 @@ export async function TimelineEvent({ frontmatter, route }: TimelineEventProps) 
   const { default: MDXContent } = await importPage(pathSegments);
   return (
     <div className="flex-col lg:flex-row flex gap-4">
-      <div className="space-y-2 lg:border-r border-gray-200 mt-4">
+      <div className="space-y-2 lg:border-r border-border mt-4">
         <AuthorList
           authors={frontmatter.authors}
           className="w-52 flex-shrink-0 self-start"

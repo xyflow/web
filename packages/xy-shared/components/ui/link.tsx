@@ -26,8 +26,7 @@ const linkVariants = cva('', {
 });
 
 export interface LinkProps
-  extends React.ComponentProps<typeof NextLink>,
-    VariantProps<typeof linkVariants> {
+  extends React.ComponentProps<typeof NextLink>, VariantProps<typeof linkVariants> {
   href: string;
 }
 

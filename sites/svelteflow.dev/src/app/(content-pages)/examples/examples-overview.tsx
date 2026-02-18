@@ -74,7 +74,7 @@ export const ExamplesOverview: FC = async () => {
                     <ContentGridItem
                       key={example.route}
                       route={example.route}
-                      className="border-none py-6 lg:py-8 lg:px-0 hover:bg-white group"
+                      className="border-none hover:bg-transparent py-6 lg:py-8 lg:px-0 group"
                     >
                       <ProjectPreview
                         image={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte${example.route}/preview.jpg?v=1`}
@@ -93,7 +93,7 @@ export const ExamplesOverview: FC = async () => {
                         description={example.frontMatter?.description}
                         descriptionVariant="light"
                         linkLabel="See example"
-                        linkClassName="text-gray-900 font-medium text-sm group-hover:text-primary"
+                        linkClassName="text-muted-foreground font-medium text-sm group-hover:text-primary"
                         kicker={category.title.toUpperCase()}
                         kickerSize="xs"
                         imageWrapperClassName="p-0 shadow-md border-none"

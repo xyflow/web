@@ -16,7 +16,7 @@ export function IconButton({
     <TooltipSimple label={title}>
       <button
         className={
-          'p-1 size-8 grid place-items-center rounded-lg hover:bg-gray-100 ' + className
+          'p-1 size-8 grid place-items-center rounded-lg hover:bg-card ' + className
         }
         onClick={onClick}
         title={title}

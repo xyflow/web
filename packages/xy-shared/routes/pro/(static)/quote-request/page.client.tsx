@@ -80,13 +80,13 @@ export const Form: FC = () => {
   return (
     <form className="flex flex-col gap-y-2" onSubmit={onSubmit}>
       <InputLabel>Subscription Plan</InputLabel>
-      <div className="grid grid-cols-3 gap-x-3 px-3 py-2 bg-gray-100 rounded-full">
+      <div className="grid grid-cols-3 gap-x-3 px-3 py-2 bg-card rounded-full">
         <Button
           type="button"
           className={
             formData.plan === 'starter'
-              ? 'hover:bg-white cursor-default !bg-white !text-primary'
-              : 'hover:bg-gray-100'
+              ? 'hover:bg-background cursor-default !bg-background !text-primary'
+              : 'hover:bg-card'
           }
           variant={formData.plan === 'starter' ? 'outline' : 'ghost'}
           onClick={() => setFormData((fd) => ({ ...fd, plan: 'starter' }))}
@@ -97,8 +97,8 @@ export const Form: FC = () => {
           type="button"
           className={
             formData.plan === 'pro'
-              ? 'hover:bg-white cursor-default !bg-white !text-primary'
-              : 'hover:bg-gray-100'
+              ? 'hover:bg-background cursor-default !bg-background !text-primary'
+              : 'hover:bg-card'
           }
           variant={formData.plan === 'pro' ? 'outline' : 'ghost'}
           onClick={() => setFormData((fd) => ({ ...fd, plan: 'pro' }))}
@@ -109,8 +109,8 @@ export const Form: FC = () => {
           type="button"
           className={
             formData.plan === 'enterprise'
-              ? 'hover:bg-white cursor-default !bg-white !text-primary'
-              : 'hover:bg-gray-100'
+              ? 'hover:bg-background cursor-default !bg-background !text-primary'
+              : 'hover:bg-card'
           }
           variant={formData.plan === 'enterprise' ? 'outline' : 'ghost'}
           onClick={() => setFormData((fd) => ({ ...fd, plan: 'enterprise' }))}
@@ -219,7 +219,7 @@ export default function QuoteRequestPage() {
         align="center"
         backgroundVariant="image"
       />
-      <Card className="p-8 bg-white relative max-w-xl mx-auto mt-16">
+      <Card className="p-8 bg-background relative max-w-xl mx-auto mt-16">
         <Accordion
           defaultValue={['subscription-plan', 'contact-details', 'end-user-details']}
           type="multiple"

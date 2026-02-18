@@ -1,11 +1,6 @@
 import { Heading } from 'xy-shared/components/ui/heading';
 import { Text } from 'xy-shared/components/ui/text';
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from 'xy-shared/components/ui/tabs';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from 'xy-shared/components/ui/tabs';
 import { Link } from 'xy-shared/components/ui/link';
 import { cn } from 'xy-shared/lib/utils';
 import { getPageMap } from 'nextra/page-map';
@@ -81,17 +76,13 @@ const UiComponentViewer: FC<{ id: string }> = async ({ id }) => {
   return (
     <div className="mt-5">
       <iframe
-        className="w-full h-[500px] rounded-md border border-gray-200 "
+        className="w-full h-[500px] rounded-md border border-border "
         src={`${process.env.NEXT_PUBLIC_UI_COMPONENTS_URL}/components/${data.name}`}
       />
       <div className="flex gap-2 items-center my-5">
         <div>Dependencies:</div>
         {npmDependencies.map((dep) => (
-          <a
-            className="bg-gray-100 rounded-md px-1 py-0.5"
-            key={dep.label}
-            href={dep.url}
-          >
+          <a className="bg-card rounded-md px-1 py-0.5" key={dep.label} href={dep.url}>
             {dep.label}
           </a>
         ))}
@@ -99,7 +90,7 @@ const UiComponentViewer: FC<{ id: string }> = async ({ id }) => {
           <a
             className={cn(
               'rounded-md px-1 py-0.5',
-              dep.highlight ? 'text-primary bg-primary/5' : 'bg-gray-100',
+              dep.highlight ? 'text-primary bg-primary/5' : 'bg-card',
             )}
             key={dep.label}
             href={dep.url}
@@ -173,7 +164,7 @@ const UiComponentViewer: FC<{ id: string }> = async ({ id }) => {
                 </TabsList>
                 <TabsContent value="preview">
                   <iframe
-                    className="w-full h-[500px] rounded-md border mt-4 border-gray-200 "
+                    className="w-full h-[500px] rounded-md border mt-4 border-border "
                     src={`${process.env.NEXT_PUBLIC_UI_COMPONENTS_URL}/components/${data.name}/examples/${example}`}
                   />
                 </TabsContent>
@@ -202,5 +193,3 @@ export const toc = [
 ];
 
 export default UiComponentViewer;
-
-

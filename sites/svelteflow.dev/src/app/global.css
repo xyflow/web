@@ -11,7 +11,7 @@
 /* Site-specific theme extensions */
 /* TODO: what is this */
 @theme {
-  --background-image-gradient: url('/img/bg-gradient.jpg');
+  --background-image-gradient: url('/img/bg-gradient.png');
 }
 
 /* Svelte Flow uses the Svelte brand color (orange) */

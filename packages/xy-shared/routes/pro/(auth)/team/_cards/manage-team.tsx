@@ -200,8 +200,8 @@ const ManageTeamCard: FC<{ user: User; teamSubscriptions: TeamMember[] }> = ({
         )}
       </CardHeader>
 
-      <div className="border-t border-gray-200">
-        <CardContent className="py-4 flex items-center justify-between border-b border-gray-200">
+      <div className="border-t border-border">
+        <CardContent className="py-4 flex items-center justify-between border-b border-border">
           <div className="font-semibold">{user.email}</div>
         </CardContent>
         {teamSubscriptions.map((member, i) => (

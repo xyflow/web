@@ -66,7 +66,7 @@ export function CodePreview({
         >
           <div
             className={`grid gap-2 grid-flow-col grid-cols-[1fr_min-content] 
-                        border-t ${isOpen ? 'border-b' : ''} border-gray-200`}
+                        border-t ${isOpen ? 'border-b' : ''} border-border`}
           >
             {isOpen && (
               <TabsList className="tablist h-full border-none overflow-x-auto overflow-y-hidden text-nowrap">
@@ -101,7 +101,7 @@ export function CodePreview({
               <IconButton
                 icon={<CodeBracketIcon className="size-6" />}
                 title="Toggle code"
-                className={`${isOpen ? 'bg-gray-100' : 'text-[#ff0073]'}`}
+                className={`${isOpen ? 'bg-card' : 'text-[#ff0073]'}`}
                 onClick={() => setIsOpen((isOpen) => !isOpen)}
               />
               <IconButton
