@@ -5,20 +5,9 @@ import { Container, ContainerProps } from '../ui/container';
 import { Link } from '../ui/link';
 import { Text } from '../ui/text';
 import { useState } from 'react';
+import { useEffect } from 'react';
 
 const iframeClassName = 'block h-[645px] bg-background w-full';
-
-function getTabSessionId(): string {
-  const key = 'tabSessionId';
-
-  let id = sessionStorage.getItem(key);
-  if (!id) {
-    id = crypto.randomUUID();
-    sessionStorage.setItem(key, id);
-  }
-
-  return id;
-}
 
 /**
  * This component is used to wrap the pro example viewer to display a
@@ -29,7 +18,7 @@ export default function CollaborativeFlowViewer({
 }: {
   variant?: ContainerProps['variant'];
 }) {
-  const [flowId] = useState(() => getTabSessionId());
+  const [flowId, setFlowId] = useState<string | undefined>();
 
   const isLightMode = variant === 'default';
   const teaserClasses = cn(
@@ -42,13 +31,17 @@ export default function CollaborativeFlowViewer({
   );
   // Regenerate flowId when the page is restored from bfcache (e.g. after refresh or back navigation),
   // so we always get a fresh ID per "real" page load. We only set state in the pageshow handler, not in the effect.
-  // useEffect(() => {
-  //   const h = (e: PageTransitionEvent) => {
-  //     if (e.persisted) setFlowId(crypto.randomUUID());
-  //   };
-  //   window.addEventListener('pageshow', h);
-  //   return () => window.removeEventListener('pageshow', h);
-  // }, []);
+  useEffect(() => {
+    const key = 'collab-flow-tab-session-id';
+    let existing = sessionStorage.getItem(key);
+
+    if (!existing) {
+      existing = crypto.randomUUID();
+      sessionStorage.setItem(key, existing);
+    }
+
+    setFlowId(existing);
+  }, []);
 
   const signInLink = `https://pro.reactflow.dev/examples/react/collaborative?flow=${flowId}`;
 
@@ -84,14 +77,24 @@ export default function CollaborativeFlowViewer({
           </div>
         </div>
 
-        <div className="flex gap-2">
-          <div className="w-1/2">
-            <iframe src={iframeSrc} className={iframeClassName} allow="clipboard-write" />
+        {flowId && (
+          <div className="flex gap-2">
+            <div className="w-1/2">
+              <iframe
+                src={iframeSrc}
+                className={iframeClassName}
+                allow="clipboard-write"
+              />
+            </div>
+            <div className="border-l-gray-200 border-l-2 w-1/2">
+              <iframe
+                src={iframeSrc}
+                className={iframeClassName}
+                allow="clipboard-write"
+              />
+            </div>
           </div>
-          <div className="border-l-gray-200 border-l-2 w-1/2">
-            <iframe src={iframeSrc} className={iframeClassName} allow="clipboard-write" />
-          </div>
-        </div>
+        )}
       </Container>
     </div>
   );
