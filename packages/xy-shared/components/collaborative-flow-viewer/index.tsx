@@ -5,7 +5,6 @@ import { Container, ContainerProps } from '../ui/container';
 import { Link } from '../ui/link';
 import { Text } from '../ui/text';
 import { useState } from 'react';
-import { useEffect } from 'react';
 
 const iframeClassName = 'block h-[645px] bg-background w-full';
 
