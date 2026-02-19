@@ -18,7 +18,18 @@ export default function CollaborativeFlowViewer({
 }: {
   variant?: ContainerProps['variant'];
 }) {
-  const [flowId, setFlowId] = useState<string | undefined>();
+  const [flowId] = useState<string | undefined>(() => {
+    if (typeof window === 'undefined') return undefined;
+    const key = 'collab-flow-tab-session-id';
+    let existing = sessionStorage.getItem(key);
+
+    if (!existing) {
+      existing = crypto.randomUUID();
+      sessionStorage.setItem(key, existing);
+    }
+
+    return existing;
+  });
 
   const isLightMode = variant === 'default';
   const teaserClasses = cn(
@@ -29,19 +40,6 @@ export default function CollaborativeFlowViewer({
       'bg-center': isLightMode,
     },
   );
-  // Regenerate flowId when the page is restored from bfcache (e.g. after refresh or back navigation),
-  // so we always get a fresh ID per "real" page load. We only set state in the pageshow handler, not in the effect.
-  useEffect(() => {
-    const key = 'collab-flow-tab-session-id';
-    let existing = sessionStorage.getItem(key);
-
-    if (!existing) {
-      existing = crypto.randomUUID();
-      sessionStorage.setItem(key, existing);
-    }
-
-    setFlowId(existing);
-  }, []);
 
   const signInLink = `https://pro.reactflow.dev/examples/react/collaborative?flow=${flowId}`;
 
