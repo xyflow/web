@@ -4,9 +4,21 @@ import { cn } from '../../lib/utils';
 import { Container, ContainerProps } from '../ui/container';
 import { Link } from '../ui/link';
 import { Text } from '../ui/text';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const iframeClassName = 'block h-[645px] bg-background w-full';
+
+function getTabSessionId(): string {
+  const key = 'tabSessionId';
+
+  let id = sessionStorage.getItem(key);
+  if (!id) {
+    id = crypto.randomUUID();
+    sessionStorage.setItem(key, id);
+  }
+
+  return id;
+}
 
 /**
  * This component is used to wrap the pro example viewer to display a
@@ -17,7 +29,7 @@ export default function CollaborativeFlowViewer({
 }: {
   variant?: ContainerProps['variant'];
 }) {
-  const [flowId, setFlowId] = useState(() => crypto.randomUUID());
+  const [flowId] = useState(() => getTabSessionId());
 
   const isLightMode = variant === 'default';
   const teaserClasses = cn(
@@ -30,13 +42,13 @@ export default function CollaborativeFlowViewer({
   );
   // Regenerate flowId when the page is restored from bfcache (e.g. after refresh or back navigation),
   // so we always get a fresh ID per "real" page load. We only set state in the pageshow handler, not in the effect.
-  useEffect(() => {
-    const h = (e: PageTransitionEvent) => {
-      if (e.persisted) setFlowId(crypto.randomUUID());
-    };
-    window.addEventListener('pageshow', h);
-    return () => window.removeEventListener('pageshow', h);
-  }, []);
+  // useEffect(() => {
+  //   const h = (e: PageTransitionEvent) => {
+  //     if (e.persisted) setFlowId(crypto.randomUUID());
+  //   };
+  //   window.addEventListener('pageshow', h);
+  //   return () => window.removeEventListener('pageshow', h);
+  // }, []);
 
   const signInLink = `https://pro.reactflow.dev/examples/react/collaborative?flow=${flowId}`;
 
