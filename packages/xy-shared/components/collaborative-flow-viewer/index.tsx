@@ -21,11 +21,11 @@ export default function CollaborativeFlowViewer({
   const [flowId] = useState<string | undefined>(() => {
     if (typeof window === 'undefined') return undefined;
     const key = 'collab-flow-tab-session-id';
-    let existing = sessionStorage.getItem(key);
+    let existing = window.sessionStorage.getItem(key);
 
     if (!existing) {
       existing = crypto.randomUUID();
-      sessionStorage.setItem(key, existing);
+      window.sessionStorage.setItem(key, existing);
     }
 
     return existing;
