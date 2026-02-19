@@ -29,9 +29,13 @@ export default function CollaborativeFlowViewer({
     },
   );
   // Regenerate flowId when the page is restored from bfcache (e.g. after refresh or back navigation),
-  // so we always get a fresh ID per "real" page load.
+  // so we always get a fresh ID per "real" page load. We only set state in the pageshow handler, not in the effect.
   useEffect(() => {
-    setFlowId(crypto.randomUUID());
+    const h = (e: PageTransitionEvent) => {
+      if (e.persisted) setFlowId(crypto.randomUUID());
+    };
+    window.addEventListener('pageshow', h);
+    return () => window.removeEventListener('pageshow', h);
   }, []);
 
   const signInLink = `https://pro.reactflow.dev/examples/react/collaborative?flow=${flowId}`;
