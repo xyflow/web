@@ -8,7 +8,7 @@ import { Input, InputLabel } from '../../ui/input';
 
 import { AuthErrorNotification } from './AuthNotification';
 import { signUp } from '../../../server-actions/sign-up-email-password';
-  
+
 const Signup: FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [isLoading, startTransition] = useTransition();
@@ -34,7 +34,7 @@ const Signup: FC = () => {
       {error && <AuthErrorNotification error={error} />}
 
       <div className="mb-2">
-        <InputLabel className="text-gray-800" htmlFor="email">
+        <InputLabel className="text-muted-foreground" htmlFor="email">
           Email
         </InputLabel>
         <Input
@@ -49,7 +49,7 @@ const Signup: FC = () => {
         />
       </div>
       <div className="mb-4">
-        <InputLabel className="text-gray-800" htmlFor="password">
+        <InputLabel className="text-muted-foreground" htmlFor="password">
           Password
         </InputLabel>
         <Input

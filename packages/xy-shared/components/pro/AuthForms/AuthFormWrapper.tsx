@@ -73,7 +73,7 @@ const AuthFormWrapper = ({
           <div className="flex flex-col space-y-2 mt-5">
             {links.map((link) => (
               <div
-                className="flex items-center space-x-1 hover:text-slate-800 text-muted-foreground text-sm font-bold cursor-pointer"
+                className="flex items-center space-x-1 hover:text-primary text-muted-foreground text-sm font-bold cursor-pointer"
                 key={link.href}
               >
                 <ArrowLongRightIcon className="h-4 w-4" />

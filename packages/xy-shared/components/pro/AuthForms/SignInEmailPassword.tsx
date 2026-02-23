@@ -37,7 +37,7 @@ const SignInEmailPassword: FC = () => {
       {error && <AuthErrorNotification error={error} />}
       <div className="flex flex-col">
         <div className="mb-2">
-          <InputLabel className="text-gray-800" htmlFor="email">
+          <InputLabel className="text-muted-foreground" htmlFor="email">
             Email
           </InputLabel>
           <Input
@@ -52,7 +52,7 @@ const SignInEmailPassword: FC = () => {
           />
         </div>
         <div className="mb-4">
-          <InputLabel className="text-gray-800" htmlFor="password">
+          <InputLabel className="text-muted-foreground" htmlFor="password">
             Password
           </InputLabel>
           <Input

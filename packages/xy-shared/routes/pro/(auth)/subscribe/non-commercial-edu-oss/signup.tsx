@@ -85,7 +85,7 @@ export default function Signup() {
           )}
           <div>
             <div className="font-bold text-lg mb-2">Project Type</div>
-            <div className="flex items-center gap-x-2 text-md mb-2 text-gray-800">
+            <div className="flex items-center gap-x-2 text-md mb-2 text-muted-foreground">
               <input
                 type="radio"
                 id="oss"
