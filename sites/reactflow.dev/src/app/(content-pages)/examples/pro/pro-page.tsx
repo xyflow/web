@@ -85,7 +85,7 @@ const ProExamples: FC = async () => {
           <div className="flex flex-wrap gap-2 items-center">
             <Button
               variant="secondary"
-              className="text-black w-full md:w-auto"
+              className="text-foreground w-full md:w-auto"
               asChild
               size="lg"
             >
@@ -203,7 +203,7 @@ const ProExamples: FC = async () => {
                   asChild
                   size="lg"
                   variant="secondary"
-                  className="text-black hover:bg-gray-100 w-full md:w-auto"
+                  className="text-foreground hover:bg-gray-100 w-full md:w-auto"
                 >
                   <Link href="/pro/sign-up">Try it out</Link>
                 </Button>
@@ -283,7 +283,7 @@ function GridItem({
 }) {
   return (
     <div>
-      <Icon className="text-black w-8 h-8" />
+      <Icon className="text-foreground w-8 h-8" />
       <div className="text-3xl font-bold mt-2 mb-4">{title}</div>
       <Text variant="light" className="text-md">
         {text}
