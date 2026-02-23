@@ -29,7 +29,7 @@ import { MdxFile } from 'nextra';
 import starSvg from '../../../../../public/img/pro/star.svg';
 import { getPageMap as getExamplesPageMap } from '../[...slug]/utils';
 
-const PRO_EXAMPLES_FRAMEWORK = 'svelte';
+const PRO_EXAMPLES_FRAMEWORK = 'react';
 
 const ProExamples: FC = async () => {
   const remoteProExamplesResponse = await fetchJSON(

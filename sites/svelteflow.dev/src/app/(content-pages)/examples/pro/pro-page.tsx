@@ -216,7 +216,7 @@ const ProExamples: FC = async () => {
                 >
                   Contact us
                 </Link>{' '}
-                with the link to the github or gitlab repository
+                with the link to the GitHub or GitLab repository
               </>
             }
           />

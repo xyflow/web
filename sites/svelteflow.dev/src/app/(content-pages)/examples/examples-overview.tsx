@@ -81,7 +81,7 @@ export const ExamplesOverview: FC = async () => {
                         image={
                           example.frontMatter?.is_pro_example
                             ? `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/svelte/${example.name}/thumbnail.jpg`
-                            : `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte${example.route}/preview.jpg?v=1`
+                            : `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/${example.route}/preview.jpg?v=1`
                         }
                         imageAlt={example.frontMatter.title + ' screenshot'}
                         title={
