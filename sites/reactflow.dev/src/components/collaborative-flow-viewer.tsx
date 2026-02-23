@@ -1,8 +1,8 @@
 'use client';
 import { Button, cn, Container, ContainerProps, Link, Text } from '@xyflow/xy-ui';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
-const iframeClassName = 'block h-[645px] bg-white w-full';
+const iframeClassName = 'block h-full  bg-white w-full';
 
 /**
  * This component is used to wrap the pro example viewer to display a
@@ -36,9 +36,9 @@ export default function CollaborativeFlowViewer({
     },
   );
 
-  let signInLink = `https://pro.reactflow.dev/examples/react/collaborative?flow=${flowId}`;
+  const signInLink = `https://pro.reactflow.dev/examples/react/collaborative?flow=${flowId}`;
 
-  let iframeSrc = `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/collaborative?flow=${flowId}`;
+  const iframeSrc = `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/collaborative?flow=${flowId}`;
 
   return (
     <div className="flex flex-col gap-4 pt-4">
@@ -71,11 +71,23 @@ export default function CollaborativeFlowViewer({
         </div>
 
         <div className="flex gap-2">
-          <div className="w-1/2">
-            <iframe src={iframeSrc} className={iframeClassName} allow="clipboard-write" />
+          <div className="w-1/2 h-[645px]">
+            {flowId && (
+              <iframe
+                src={iframeSrc}
+                className={iframeClassName}
+                allow="clipboard-write"
+              />
+            )}
           </div>
-          <div className="border-l-gray-200 border-l-2 w-1/2">
-            <iframe src={iframeSrc} className={iframeClassName} allow="clipboard-write" />
+          <div className="border-l-gray-200 border-l-2 w-1/2 h-[645px]">
+            {flowId && (
+              <iframe
+                src={iframeSrc}
+                className={iframeClassName}
+                allow="clipboard-write"
+              />
+            )}
           </div>
         </div>
       </Container>
