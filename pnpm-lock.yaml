@@ -658,6 +658,9 @@ importers:
       react-dom:
         specifier: 'catalog:'
         version: 19.2.3(react@19.2.3)
+      react-syntax-highlighter:
+        specifier: ^16.1.0
+        version: 16.1.0(react@19.2.3)
       xy-shared:
         specifier: workspace:*
         version: link:../../packages/xy-shared
@@ -671,6 +674,9 @@ importers:
       '@types/react':
         specifier: 'catalog:'
         version: 19.2.8
+      '@types/react-syntax-highlighter':
+        specifier: ^15.5.13
+        version: 15.5.13
       eslint-config-xyflow:
         specifier: workspace:*
         version: link:../../configs/eslint-config-xyflow
