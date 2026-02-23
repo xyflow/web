@@ -193,7 +193,7 @@ html:has(body.x\:overflow-hidden) nav {
 /* 3. Typography */
 
 .xy-link-gray {
-  @apply transition text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 contrast-more:text-gray-700 contrast-more:dark:text-gray-100;
+  @apply transition text-gray-600 dark:text-gray-400 hover:text-muted-foreground dark:hover:text-gray-200 contrast-more:text-gray-700 contrast-more:dark:text-gray-100;
 }
 
 .dark .xy-link-gray {

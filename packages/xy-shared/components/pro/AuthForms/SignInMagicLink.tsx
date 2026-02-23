@@ -41,7 +41,7 @@ const SignInMagicLink: FC = () => {
         )}
         {isSuccess && <MagicLinkSuccessNotification />}
         <div>
-          <InputLabel className="text-gray-800" htmlFor="email">
+          <InputLabel className="text-muted-foreground" htmlFor="email">
             Email
           </InputLabel>
           <Input
