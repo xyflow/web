@@ -77,10 +77,10 @@ const ProExamples: FC = async () => {
         className="lg:gap-20"
         title={
           <div className="mt-6">
-            Upgrade your apps with React Flow <StarText /> Examples
+            Upgrade your apps with Svelte Flow <StarText /> Examples
           </div>
         }
-        subtitle="Get advanced React Flow code examples to use in your node-based UIs, crafted by the React Flow core team."
+        subtitle="Get advanced Svelte Flow code examples to use in your node-based UIs, crafted by the Svelte Flow core team."
         action={
           <div className="flex flex-wrap gap-2 items-center">
             <Button
@@ -96,20 +96,22 @@ const ProExamples: FC = async () => {
         }
         backgroundVariant="image"
       >
-        <Image
-          src="/img/pro/pro-examples.png"
-          alt="Overview of the pro example apps"
-          width={640}
-          height={460}
-          className="hidden lg:block"
-          priority
-          style={{ objectFit: 'contain' }}
-        />
+        {/* {baseUrl ? (
+          <Image
+            src={`${baseUrl}/${PRO_EXAMPLES_FRAMEWORK}/shapes/thumbnail.jpg`}
+            alt="Overview of the pro example apps"
+            width={640}
+            height={460}
+            className="hidden lg:block"
+            priority
+            style={{ objectFit: 'contain' }}
+          />
+        ) : null} */}
       </Hero>
       <Section className="z-1 relative">
         <ContentGrid className="lg:grid-cols-4 border-t-0 gap-12">
           <GridItem
-            title="By the creators of React Flow"
+            title="By the creators of Svelte Flow"
             text="Feature-complete and crafted by the core team"
             // @ts-expect-error -- fixme
             icon={() => <Logo className="h-8 w-8 text-black" />}
@@ -130,43 +132,6 @@ const ProExamples: FC = async () => {
             icon={StarIcon}
           />
         </ContentGrid>
-      </Section>
-
-      <hr className="border-gray-100" />
-
-      <Section>
-        <Container>
-          <Image
-            src="/img/pro/helper-lines-pro-example.jpg"
-            width={1168}
-            height={474}
-            alt="Shapes Example Preview"
-            priority
-            style={{ objectFit: 'contain', display: 'block', width: '100%' }}
-          />
-        </Container>
-        <div className="flex flex-wrap mt-10 gap-2">
-          <Heading className="w-full md:w-auto mb-auto flex gap-3 items-center" size="md">
-            Helper Lines{' '}
-            <span className="text-sm text-primary bg-gray-100 px-3 py-1 rounded-full">
-              Free Trial
-            </span>
-          </Heading>
-          <div className="md:max-w-lg ml-auto">
-            <Text>
-              Have guiding lines appear when the sides of your nodes are nearly lined up
-              to assist users in aligning and positioning nodes in a diagram. Great for
-              precise layouting and visual consistency like in design tools such as Figma
-              and Miro.
-            </Text>
-            <div className="mt-6 flex flex-wrap gap-2 items-center">
-              <Button asChild size="lg" variant="black" className="w-full md:w-auto">
-                <Link href="/examples/interaction/helper-lines">Demo</Link>
-              </Button>
-              <SignUpButton description="to get this example for free" />
-            </div>
-          </div>
-        </div>
       </Section>
 
       <ContentGrid className="mt-20">
@@ -191,7 +156,7 @@ const ProExamples: FC = async () => {
           >
             <div className="max-md:w-full md:flex-1">
               <Text className="text-gray-400 mb-4">Get Started</Text>
-              <Heading size="md">Boost your apps with React Flow Pro</Heading>
+              <Heading size="md">Boost your apps with Svelte Flow Pro</Heading>
             </div>
             <div className="max-md:w-full md:flex-1">
               <Text className="mb-8 text-gray-300">

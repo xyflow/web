@@ -84,10 +84,10 @@ export const ExamplesOverview: FC = async () => {
                         <ProjectPreview
                           image={
                             example.frontMatter!.is_pro_example
-                              ? `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${example.name}/thumbnail.jpg`
+                              ? `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/react/${example.name}/thumbnail.jpg`
                               : example.frontMatter!.preview_path
                                 ? `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/${example.frontMatter!.preview_path}`
-                                : `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react${example.route}/preview.jpg?t=2`
+                                : `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/${example.route}/preview.jpg?t=2`
                           }
                           imageAlt={example.frontMatter!.title + ' screenshot'}
                           title={
