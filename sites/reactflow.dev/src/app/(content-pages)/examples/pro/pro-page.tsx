@@ -112,7 +112,7 @@ const ProExamples: FC = async () => {
             title="By the creators of React Flow"
             text="Feature-complete and crafted by the core team"
             // @ts-expect-error -- fixme
-            icon={() => <Logo className="h-8 w-8 text-black" />}
+            icon={() => <Logo className="h-8 w-8 text-[#D0D0D0]" />}
           />
           <GridItem
             title="Downloadable Vite apps and guides"
