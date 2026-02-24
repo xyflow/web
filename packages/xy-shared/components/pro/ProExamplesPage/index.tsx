@@ -85,7 +85,9 @@ const ProExamplesPage: FC<ProExamplesPageProps> = async ({
       detailedDescription: string;
     }[]
   >((result, curr) => {
-    const remote = remoteProExamples.find((remote: { id: string }) => remote.id === curr.name);
+    const remote = remoteProExamples.find(
+      (remote: { id: string }) => remote.id === curr.name,
+    );
 
     if (remote) {
       result.push({
@@ -174,7 +176,10 @@ const ProExamplesPage: FC<ProExamplesPageProps> = async ({
               />
             </Container>
             <div className="flex flex-wrap mt-10 gap-2">
-              <Heading className="w-full md:w-auto mb-auto flex gap-3 items-center" size="md">
+              <Heading
+                className="w-full md:w-auto mb-auto flex gap-3 items-center"
+                size="md"
+              >
                 {freeTrialSection.title}{' '}
                 <span className="text-sm text-primary bg-gray-100 px-3 py-1 rounded-full">
                   Free Trial
@@ -184,7 +189,9 @@ const ProExamplesPage: FC<ProExamplesPageProps> = async ({
                 <Text>{freeTrialSection.description}</Text>
                 <div className="mt-6 flex flex-wrap gap-2 items-center">
                   <Button asChild size="lg" variant="black" className="w-full md:w-auto">
-                    <Link href={freeTrialSection.route}>{freeTrialSection.demoLabel}</Link>
+                    <Link href={freeTrialSection.route}>
+                      {freeTrialSection.demoLabel}
+                    </Link>
                   </Button>
                   <SignUpButton description={freeTrialSection.signUpDescription} />
                 </div>
