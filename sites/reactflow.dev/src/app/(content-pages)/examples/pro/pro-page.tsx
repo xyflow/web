@@ -281,7 +281,7 @@ function GridItem({
 }) {
   return (
     <div>
-      <Icon className="text-black w-8 h-8" />
+      <Icon className="text-foreground w-8 h-8" />
       <div className="text-3xl font-bold mt-2 mb-4">{title}</div>
       <Text variant="light" className="text-md">
         {text}
