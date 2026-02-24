@@ -201,7 +201,7 @@ const ProExamples: FC = async () => {
                   asChild
                   size="lg"
                   variant="secondary"
-                  className="text-black hover:bg-gray-100 w-full md:w-auto"
+                  className="text-foreground hover:bg-gray-100 w-full md:w-auto"
                 >
                   <Link href="/pro/sign-up">Try it out</Link>
                 </Button>
