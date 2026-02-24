@@ -83,7 +83,7 @@ const ProExamples: FC = async () => {
           <div className="flex flex-wrap gap-2 items-center">
             <Button
               variant="secondary"
-              className="text-black w-full md:w-auto"
+              className="text-foreground w-full md:w-auto"
               asChild
               size="lg"
             >
@@ -110,7 +110,7 @@ const ProExamples: FC = async () => {
             title="By the creators of React Flow"
             text="Feature-complete and crafted by the core team"
             // @ts-expect-error -- fixme
-            icon={() => <Logo className="h-8 w-8 text-black" />}
+            icon={() => <Logo className="h-8 w-8 text-[#D0D0D0]" />}
           />
           <GridItem
             title="Downloadable Vite apps and guides"
