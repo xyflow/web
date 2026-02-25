@@ -2,7 +2,12 @@
 
 import { createNhostClient } from '../lib/nhost';
 
-const appUrl = process.env.APP_URL ? process.env.APP_URL : 'http://localhost:3002';
+const deploymentUrl =
+  process.env.VERCEL_ENV === 'production'
+    ? process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL
+    : process.env.NEXT_PUBLIC_VERCEL_URL;
+
+const appUrl = deploymentUrl ? `https://${deploymentUrl}` : 'http://localhost:3002';
 
 const redirectTo = `${appUrl}/pro/email-verification/verify`;
 
