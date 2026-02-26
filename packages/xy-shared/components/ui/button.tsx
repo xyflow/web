@@ -15,7 +15,7 @@ const buttonVariants = cva(
         destructive: 'bg-destructive text-destructive-foreground hover:bg-destructive/90',
         outline: 'border border-input hover:bg-accent hover:text-accent-foreground',
         secondary:
-          'bg-secondary text-secondary-foreground hover:bg-gray-50 border border-solid border-border',
+          'bg-secondary text-secondary-foreground hover:bg-muted border border-solid border-border',
         ghost: 'hover:bg-accent hover:text-accent-foreground shadow-none',
         link: 'underline-offset-4 hover:underline text-primary shadow-none font-normal !px-0',
         pro: "relative isolate text-primary before:content-[''] before:absolute before:inset-0 before:rounded-full before:-z-[2] after:content-[''] after:absolute after:top-[1px] after:right-[1px] after:bottom-[1px] after:left-[1px] after:rounded-full after:-z-[1] after:bg-background dark:after:bg-white [--gradientAngle:258deg] hover:[--gradientAngle:45deg] transition-[--gradientAngle] duration-300 ease before:[background:linear-gradient(var(--gradientAngle),hsl(var(--primary))_36.34%,hsl(var(--secondary))_50.92%,rgba(240,240,240,1)_63.72%),linear-gradient(var(--gradientAngle),hsl(var(--primary))_2.22%,hsl(var(--secondary))_18.5%,rgba(240,240,240,1)_32.77%)] dark:before:[background:linear-gradient(var(--gradientAngle),hsl(var(--primary))_36.34%,hsl(0_0%_100%_/_0.95)_50.92%,hsl(0_0%_100%_/_0.25)_63.72%),linear-gradient(var(--gradientAngle),hsl(var(--primary))_2.22%,hsl(0_0%_100%_/_0.8)_18.5%,hsl(0_0%_100%_/_0.2)_32.77%)]",
