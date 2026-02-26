@@ -61,6 +61,11 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'pro-example-apps.xyflow.com',
+        pathname: '/react/**',
+      },
+      {
+        protocol: 'https',
         hostname: '*.amazonaws.com',
       },
     ],

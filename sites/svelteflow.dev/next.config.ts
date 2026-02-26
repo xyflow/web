@@ -60,7 +60,7 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'pro-examples.reactflow.dev',
+        hostname: 'pro-example-apps.xyflow.com',
         pathname: '/svelte/**',
       },
       {

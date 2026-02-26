@@ -5,8 +5,11 @@ import { cn } from '../../lib/utils';
 import { Container, ContainerProps } from '../ui/container';
 import { Link } from '../ui/link';
 import { Text } from '../ui/text';
+import { getFramework } from '../../lib/get-framework';
 
 const iframeClassName = 'block h-full  bg-white w-full';
+
+const { framework } = getFramework();
 
 /**
  * This component is used to wrap the pro example viewer to display a
@@ -40,9 +43,10 @@ export default function CollaborativeFlowViewer({
     },
   );
 
+  // TODO: replace for svelteflow
   const signInLink = `https://pro.reactflow.dev/examples/react/collaborative?flow=${flowId}`;
 
-  const iframeSrc = `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/collaborative?flow=${flowId}`;
+  const iframeSrc = `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${framework}/collaborative?flow=${flowId}`;
 
   return (
     <div className="flex flex-col gap-4 pt-4">
