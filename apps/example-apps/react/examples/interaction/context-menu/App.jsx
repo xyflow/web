@@ -48,6 +48,7 @@ const Flow = () => {
 
   return (
     <ReactFlow
+      colorMode="system"
       ref={ref}
       nodes={nodes}
       edges={edges}

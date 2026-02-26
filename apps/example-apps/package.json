@@ -8,7 +8,7 @@
     "build": "vite build",
     "scaffold": "node scripts/scaffold/index.js",
     "screenshots": "concurrently \"vite dev\" \"node scripts/generate-screenshots.js\"",
-    "screenshots:missing": "node scripts/generate-screenshots.js --only-missing"
+    "screenshots:missing": "concurrently \"vite dev\" \"node scripts/generate-screenshots.js --only-missing\""
   },
   "exports": {
     "./package.json": "./package.json"

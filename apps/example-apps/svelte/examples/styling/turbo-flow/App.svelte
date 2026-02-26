@@ -24,7 +24,7 @@
   };
 </script>
 
-<SvelteFlow bind:nodes {nodeTypes} bind:edges {edgeTypes} {defaultEdgeOptions} fitView>
+<SvelteFlow bind:nodes {nodeTypes} bind:edges {edgeTypes} {defaultEdgeOptions} fitView colorMode="system">
   <Controls showLock={false} />
   <svg>
     <defs>

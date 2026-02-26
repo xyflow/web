@@ -79,6 +79,7 @@ const ProExamplesPage: FC<ProExamplesPageProps> = async ({
     {
       route: string;
       image: string;
+      imageDark: string;
       id: string;
       name: string;
       description: string;
@@ -94,6 +95,7 @@ const ProExamplesPage: FC<ProExamplesPageProps> = async ({
         ...remote,
         route: curr.route,
         image: `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${framework}/${remote.id}/thumbnail.jpg`,
+        imageDark: `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${framework}/${remote.id}/thumbnail-dark.jpg`,
       });
     }
 
@@ -206,6 +208,7 @@ const ProExamplesPage: FC<ProExamplesPageProps> = async ({
           <ContentGridItem key={example.id} route={example.route}>
             <ProjectPreview
               image={example.image}
+              imageDark={example.imageDark}
               title={example.name}
               description={example.detailedDescription}
               linkLabel="Demo"

@@ -70,6 +70,7 @@ const initialEdges: Edge[] = [
 export default function EdgeToolbarExample() {
   return (
     <ReactFlow
+      colorMode="system"
       defaultNodes={initialNodes}
       defaultEdges={initialEdges}
       fitView

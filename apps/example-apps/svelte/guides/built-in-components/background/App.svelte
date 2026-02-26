@@ -30,7 +30,7 @@
   let variant: BackgroundVariant = $state(BackgroundVariant.Lines);
 </script>
 
-<SvelteFlow bind:nodes bind:edges fitView>
+<SvelteFlow bind:nodes bind:edges fitView colorMode="system">
   <Background {variant} />
   <Panel position="top-left">
     <div>variant:</div>

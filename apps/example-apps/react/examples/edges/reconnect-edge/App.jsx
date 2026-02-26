@@ -46,8 +46,6 @@ const initialNodes = [
     },
     position: { x: 400, y: 100 },
     style: {
-      background: '#D6D5E6',
-      color: '#333',
       width: 180,
     },
   },
@@ -125,6 +123,7 @@ const EdgeReconnect = () => {
 
   return (
     <ReactFlow
+      colorMode="system"
       nodes={nodes}
       edges={edges}
       onNodesChange={onNodesChange}

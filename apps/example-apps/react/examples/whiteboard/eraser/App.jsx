@@ -60,6 +60,7 @@ export default function EraserFlow() {
 
   return (
     <ReactFlow
+      colorMode="system"
       nodes={nodes}
       nodeTypes={nodeTypes}
       edges={edges}

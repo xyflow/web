@@ -61,7 +61,7 @@
   }
 </script>
 
-<SvelteFlow bind:nodes bind:edges fitView maxZoom={2}>
+<SvelteFlow bind:nodes bind:edges fitView maxZoom={2} colorMode="system">
   <Panel position="top-left" style="width: 200px;">
     <span class="xy-theme__label">label:</span>
     <input value={nodeName} oninput={updateNodeName} class="xy-theme__input" />

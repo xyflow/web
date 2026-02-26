@@ -28,6 +28,6 @@
   ]);
 </script>
 
-<SvelteFlow bind:nodes bind:edges {edgeTypes} fitView>
+<SvelteFlow bind:nodes bind:edges {edgeTypes} fitView colorMode="system">
   <Background />
 </SvelteFlow>

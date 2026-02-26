@@ -20,6 +20,7 @@
   <div class="label">text</div>
   <div>
     <input
+      class="xy-theme__input"
       value={data.text}
       oninput={(evt) => updateNodeData(id, { text: evt.currentTarget.value })}
     />

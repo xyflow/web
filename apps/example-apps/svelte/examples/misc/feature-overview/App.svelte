@@ -38,6 +38,7 @@
 </script>
 
 <SvelteFlow
+  colorMode="system"
   class="overview"
   bind:nodes
   bind:edges

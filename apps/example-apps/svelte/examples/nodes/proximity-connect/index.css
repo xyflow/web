@@ -18,7 +18,8 @@ body {
 
 .svelte-flow .svelte-flow__node {
   border-radius: 100%;
-  background-color: #fff;
+  background-color: var(--xy-node-background-color-default);
+  border: var(--xy-node-border-default);
   width: 50px;
   height: 50px;
   display: flex;

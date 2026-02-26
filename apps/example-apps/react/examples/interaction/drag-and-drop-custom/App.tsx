@@ -37,6 +37,7 @@ function DnDFlow() {
     <div className="dndflow">
       <div className="reactflow-wrapper">
         <ReactFlow
+          colorMode="system"
           nodes={nodes}
           edges={edges}
           onNodesChange={onNodesChange}

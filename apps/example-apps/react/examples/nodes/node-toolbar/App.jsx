@@ -75,6 +75,7 @@ function Flow() {
   return (
     <ReactFlowProvider>
       <ReactFlow
+        colorMode="system"
         nodes={nodes}
         onNodesChange={onNodesChange}
         nodeTypes={nodeTypes}

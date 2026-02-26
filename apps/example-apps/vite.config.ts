@@ -112,8 +112,8 @@ function generateAssetsForExample(dir: string) {
 
         source.dependencies[pkg] = dependencies[pkg];
       }
-    } else if (file === 'preview.jpg') {
-      Fs.cpSync(filePath, Path.join(out, relative, 'preview.jpg'));
+    } else if (file === 'preview.jpg' || file === 'preview-dark.jpg') {
+      Fs.cpSync(filePath, Path.join(out, relative, file));
     } else if (
       file === 'index.css' &&
       content.startsWith("@import url('./xy-theme.css')")
