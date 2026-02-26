@@ -17,6 +17,8 @@ export const meta: DynamicMeta = {
       intersections: '',
       'node-resizer': '',
       'proximity-connect': '',
+      'node-position-animation': '',
+      shapes: '',
       stress: '',
       'update-node': '',
     },
@@ -39,6 +41,15 @@ export const meta: DynamicMeta = {
       'contextual-zoom': '',
       'drag-and-drop': '',
       validation: '',
+      'copy-paste': '',
+      'undo-redo': '',
+    },
+  },
+  grouping: {
+    title: 'Subflows & Grouping',
+    items: {
+      'selection-grouping': '',
+      'parent-child-relation': '',
     },
   },
   layout: {
@@ -46,6 +57,9 @@ export const meta: DynamicMeta = {
       dagre: '',
       elkjs: '',
       'horizontal-flow': '',
+      'expand-collapse': '',
+      'auto-layout': '',
+      'force-layout': '',
       'node-collisions': '',
       subflows: '',
     },
@@ -63,6 +77,7 @@ export const meta: DynamicMeta = {
       eraser: '',
       'lasso-selection': '',
       rectangle: '',
+      'freehand-draw': '',
     },
   },
   misc: {
@@ -70,6 +85,8 @@ export const meta: DynamicMeta = {
       transitions: '',
       'download-image': '',
       'threlte-flow': '',
+      'remove-attribution': '',
+      'server-side-image-creation': '',
     },
   },
 };

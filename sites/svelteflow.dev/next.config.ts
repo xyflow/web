@@ -30,6 +30,7 @@ const nextConfig: NextConfig = {
       process.env.VERCEL_ENV === 'preview'
         ? `https://example-apps-git-${parsePreviewDeploySlug(process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL ?? '')}.vercel.app`
         : process.env.NEXT_PUBLIC_EXAMPLES_URL,
+    NEXT_PUBLIC_PRO_EXAMPLES_URL: process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL,
   },
   images: {
     // We need this to allow images to be displayed from localhost
@@ -55,6 +56,11 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: '*.vercel.app',
+        pathname: '/svelte/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'pro-example-apps.xyflow.com',
         pathname: '/svelte/**',
       },
       {

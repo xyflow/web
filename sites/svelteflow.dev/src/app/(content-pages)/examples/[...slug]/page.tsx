@@ -2,6 +2,7 @@ import path from 'path';
 import { Callout, Cards } from 'nextra/components';
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
 import { Button } from 'xy-shared/components/ui/button';
+import ProExampleViewer from 'xy-shared/components/pro-example-viewer';
 import { RemoteCodeViewer } from 'xy-shared/server/remote-code-viewer';
 import { getAllExamples } from 'xy-shared/server/example-utils';
 
@@ -36,6 +37,7 @@ export default async function Page(props: PageProps) {
           ArrowTopRightOnSquareIcon,
           RemoteCodeViewer,
           Button,
+          ProExampleViewer,
         }}
       />
     </Wrapper>

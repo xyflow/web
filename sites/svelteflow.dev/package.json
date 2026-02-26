@@ -27,12 +27,14 @@
     "nextra-theme-docs": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",
+    "react-syntax-highlighter": "^16.1.0",
     "xy-shared": "workspace:*"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "catalog:",
     "@types/node": "catalog:",
     "@types/react": "catalog:",
+    "@types/react-syntax-highlighter": "^15.5.13",
     "eslint-config-xyflow": "workspace:*",
     "postcss-lightningcss": "^1.0.1",
     "tailwindcss": "catalog:",
