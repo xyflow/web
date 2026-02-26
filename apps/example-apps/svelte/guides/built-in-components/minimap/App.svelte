@@ -31,7 +31,7 @@
   ]);
 </script>
 
-<SvelteFlow bind:nodes bind:edges fitView>
+<SvelteFlow bind:nodes bind:edges fitView colorMode="system">
   <MiniMap
     nodeColor={(node) => {
       switch (node.type) {

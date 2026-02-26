@@ -47,6 +47,7 @@ const ProviderFlow = () => {
       <ReactFlowProvider>
         <div className="reactflow-wrapper">
           <ReactFlow
+            colorMode="system"
             nodes={nodes}
             edges={edges}
             onNodesChange={onNodesChange}

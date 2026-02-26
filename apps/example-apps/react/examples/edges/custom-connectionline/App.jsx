@@ -35,6 +35,7 @@ const ConnectionLineFlow = () => {
 
   return (
     <ReactFlow
+      colorMode="system"
       nodes={nodes}
       edges={edges}
       nodeTypes={nodeTypes}

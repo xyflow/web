@@ -4,7 +4,6 @@
     Controls,
     Background,
     BackgroundVariant,
-    MiniMap,
     useSvelteFlow,
     type Node,
   } from '@xyflow/svelte';
@@ -86,19 +85,19 @@
   };
 </script>
 
-<main>
-  <SvelteFlow bind:nodes bind:edges fitView ondragover={onDragOver} ondrop={onDrop}>
+<main class="dndflow">
+  <div class="reactflow-wrapper">
+    <SvelteFlow bind:nodes bind:edges fitView colorMode="system" ondragover={onDragOver} ondrop={onDrop}>
     <Controls />
     <Background variant={BackgroundVariant.Dots} />
-    <MiniMap />
   </SvelteFlow>
+  </div>
   <Sidebar />
 </main>
 
 <style>
-  main {
+  main.dndflow {
     height: 100vh;
     display: flex;
-    flex-direction: column-reverse;
   }
 </style>

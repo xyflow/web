@@ -65,6 +65,7 @@ const AddNodeOnEdgeDrop = () => {
   return (
     <div className="wrapper" ref={reactFlowWrapper}>
       <ReactFlow
+        colorMode="system"
         nodes={nodes}
         edges={edges}
         onNodesChange={onNodesChange}

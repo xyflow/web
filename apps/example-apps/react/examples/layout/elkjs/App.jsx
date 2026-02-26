@@ -91,6 +91,7 @@ function LayoutFlow() {
 
   return (
     <ReactFlow
+      colorMode="system"
       nodes={nodes}
       edges={edges}
       onConnect={onConnect}

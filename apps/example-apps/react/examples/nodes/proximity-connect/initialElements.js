@@ -5,7 +5,7 @@ const nodeDefaults = {
   targetPosition: Position.Left,
   style: {
     borderRadius: '100%',
-    backgroundColor: '#fff',
+    backgroundColor: 'var(--xy-node-background-color-default)',
     width: 50,
     height: 50,
     display: 'flex',

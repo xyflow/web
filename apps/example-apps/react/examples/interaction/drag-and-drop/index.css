@@ -20,10 +20,26 @@ body {
 }
 
 .dndflow aside {
-  border-right: 1px solid #eee;
+  border-right: 1px solid var(--xy-theme-subtle-border);
   padding: 15px 10px;
   font-size: 12px;
-  background: #fcfcfc;
+  background: var(--xy-theme-panel-bg);
+  color: var(--xy-theme-panel-text);
+}
+
+/* Sidebar is outside .react-flow so it doesn't get theme variables in dark mode. */
+@media (prefers-color-scheme: dark) {
+  .dndflow aside {
+    background: #141519;
+    color: #f3f4f6;
+    border-right-color: #3f434c;
+  }
+
+  .dndflow .dndnode {
+    border-color: #3f434c;
+    background: #1a1b1e;
+    color: #f3f4f6;
+  }
 }
 
 .dndflow aside .description {
@@ -33,21 +49,13 @@ body {
 .dndflow .dndnode {
   height: 20px;
   padding: 4px;
-  border: 1px solid #1a192b;
+  border: 1px solid;
   border-radius: 2px;
   margin-bottom: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: grab;
-}
-
-.dndflow .dndnode.input {
-  border-color: #0041d0;
-}
-
-.dndflow .dndnode.output {
-  border-color: #ff0072;
 }
 
 .dndflow .reactflow-wrapper {

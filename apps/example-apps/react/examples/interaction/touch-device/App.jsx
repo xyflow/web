@@ -39,6 +39,7 @@ const TouchDeviceFlow = () => {
 
   return (
     <ReactFlow
+      colorMode="system"
       nodes={nodes}
       edges={edges}
       onConnect={onConnect}

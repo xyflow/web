@@ -63,6 +63,7 @@ const Flow = () => {
 
   return (
     <ReactFlow
+      colorMode="system"
       nodes={nodes}
       edges={edges}
       onNodesChange={onNodesChange}
@@ -70,7 +71,7 @@ const Flow = () => {
       onConnect={onConnect}
       nodeTypes={nodeTypes}
       fitView
-      className="bg-teal-50"
+      className="bg-teal-50 dark:bg-gray-900"
     >
       <MiniMap />
       <Controls />

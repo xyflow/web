@@ -4,7 +4,7 @@
 </script>
 
 <div style:width="100vw" style:height="100vh">
-  <SvelteFlow>
+  <SvelteFlow colorMode="system">
     <Background />
   </SvelteFlow>
 </div>

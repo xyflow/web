@@ -12,6 +12,7 @@ const nodeTypes = {
 function Flow() {
   return (
     <ReactFlow
+      colorMode="system"
       nodeTypes={nodeTypes}
       defaultNodes={nodes}
       defaultEdges={edges}

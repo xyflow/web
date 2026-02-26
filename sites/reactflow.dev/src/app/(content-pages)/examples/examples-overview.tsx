@@ -1,5 +1,4 @@
 import { FC, Fragment } from 'react';
-import Image from 'next/image';
 import { Text } from 'xy-shared/components/ui/text';
 import { Container } from 'xy-shared/components/ui/container';
 import { ContentGrid, ContentGridItem } from 'xy-shared/components/ui/content-grid';
@@ -8,6 +7,7 @@ import { Section } from 'xy-shared/components/ui/section';
 import { Button } from 'xy-shared/components/ui/button';
 import { Link } from 'xy-shared/components/ui/link';
 import { ProjectPreview } from 'xy-shared/components/project-preview';
+import { ThemeAwareImage } from 'xy-shared/components/theme-aware-image';
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 import { Folder } from 'nextra';
 import { getPageMap as getExamplesPageMap } from '@/app/(content-pages)/examples/[...slug]/utils';
@@ -24,8 +24,9 @@ export const ExamplesOverview: FC = async () => {
         >
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
             <Container className="col-span-2 aspect-video">
-              <Image
-                src={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/misc/overview/preview.jpg`}
+              <ThemeAwareImage
+                lightSrc={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/misc/overview/preview.jpg`}
+                darkSrc={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/examples/misc/overview/preview-dark.jpg?v=8`}
                 width={1024}
                 height={768}
                 alt="Feature Overview Example Preview"
@@ -88,6 +89,13 @@ export const ExamplesOverview: FC = async () => {
                               : example.frontMatter!.preview_path
                                 ? `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/${example.frontMatter!.preview_path}`
                                 : `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/${example.route}/preview.jpg?t=2`
+                          }
+                          imageDark={
+                            example.frontMatter!.is_pro_example
+                              ? `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/react/${example.name}/thumbnail-dark.jpg`
+                              : example.frontMatter!.preview_path
+                                ? `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/${example.frontMatter!.preview_path.replace('.jpg', '-dark.jpg')}`
+                                : `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/react/${example.route}/preview-dark.jpg?v=8`
                           }
                           imageAlt={example.frontMatter!.title + ' screenshot'}
                           title={

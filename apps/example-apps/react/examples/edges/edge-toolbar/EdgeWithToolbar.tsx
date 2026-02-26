@@ -22,7 +22,9 @@ export function EdgeWithToolbar(props: EdgeProps) {
       <EdgeToolbar edgeId={props.id} x={centerX} y={y} onClick={deleteEdge} isVisible>
         <div
           style={{
-            background: 'white',
+            background: 'var(--xy-theme-panel-bg)',
+            color: 'var(--xy-theme-panel-text)',
+            border: '1px solid var(--xy-theme-subtle-border)',
             padding: '5px 10px',
             borderRadius: 5,
             boxShadow: '0 1px 4px rgba(0,0,0,0.2)',

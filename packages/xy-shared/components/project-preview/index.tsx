@@ -1,5 +1,4 @@
 import { type ReactNode } from 'react';
-import Image from 'next/image';
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 import { Heading } from '../ui/heading';
@@ -8,11 +7,13 @@ import { Button } from '../ui/button';
 import { Container } from '../ui/container';
 import { LinkOrSpan } from '../link-or-span';
 import { cn } from '../../lib/utils';
+import { ThemeAwareImage } from '../theme-aware-image';
 
 import { type Author, AuthorList } from '../authors-list';
 
 export type ProjectPreviewProps = {
   image?: string | StaticImport;
+  imageDark?: string | StaticImport;
   imageAlt?: string;
   kicker?: ReactNode;
   kickerSize?: TextProps['size'];
@@ -35,6 +36,7 @@ export type ProjectPreviewProps = {
 
 export function ProjectPreview({
   image,
+  imageDark,
   kicker,
   kickerSize = 'sm',
   title,
@@ -71,8 +73,9 @@ export function ProjectPreview({
           )}
           size="sm"
         >
-          <Image
-            src={image}
+          <ThemeAwareImage
+            lightSrc={image}
+            darkSrc={imageDark}
             alt={alt}
             className="object-cover group-hover:scale-105 transition-transform"
             fill

@@ -46,6 +46,6 @@
   };
 </script>
 
-<SvelteFlow bind:nodes bind:edges {onbeforedelete} fitView>
+<SvelteFlow bind:nodes bind:edges {onbeforedelete} fitView colorMode="system">
   <Background />
 </SvelteFlow>

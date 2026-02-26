@@ -22,7 +22,7 @@ const UpdateNode = () => {
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
   const [nodeName, setNodeName] = useState('Node 1');
-  const [nodeBg, setNodeBg] = useState('#dbdbdb');
+  const [nodeBg, setNodeBg] = useState('var(--xy-node-background-color-default)');
   const [nodeHidden, setNodeHidden] = useState(false);
 
   useEffect(() => {
@@ -96,6 +96,7 @@ const UpdateNode = () => {
 
   return (
     <ReactFlow
+      colorMode="system"
       nodes={nodes}
       edges={edges}
       onNodesChange={onNodesChange}

@@ -38,7 +38,7 @@
   }
 </script>
 
-<SvelteFlow bind:nodes bind:edges {nodeTypes} {onConnect} fitView>
+<SvelteFlow bind:nodes bind:edges {nodeTypes} {onConnect} fitView colorMode="system">
   <Controls />
   <Background />
 
