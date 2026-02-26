@@ -1,12 +1,12 @@
 'use client';
+import { useState } from 'react';
 import { Button } from '../ui/button';
 import { cn } from '../../lib/utils';
 import { Container, ContainerProps } from '../ui/container';
 import { Link } from '../ui/link';
 import { Text } from '../ui/text';
-import { useState } from 'react';
 
-const iframeClassName = 'block h-[645px] bg-background w-full';
+const iframeClassName = 'block h-full  bg-white w-full';
 
 /**
  * This component is used to wrap the pro example viewer to display a
@@ -74,24 +74,26 @@ export default function CollaborativeFlowViewer({
           </div>
         </div>
 
-        {flowId && (
-          <div className="flex gap-2">
-            <div className="w-1/2">
+        <div className="flex gap-2">
+          <div className="w-1/2 h-[645px]">
+            {flowId && (
               <iframe
                 src={iframeSrc}
                 className={iframeClassName}
                 allow="clipboard-write"
               />
-            </div>
-            <div className="border-l-gray-200 border-l-2 w-1/2">
-              <iframe
-                src={iframeSrc}
-                className={iframeClassName}
-                allow="clipboard-write"
-              />
-            </div>
+            )}
           </div>
-        )}
+          <div className="border-l-gray-200 border-l-2 w-1/2 h-[645px]">
+            {flowId && (
+              <iframe
+                src={iframeSrc}
+                className={iframeClassName}
+                allow="clipboard-write"
+              />
+            )}
+          </div>
+        </div>
       </Container>
     </div>
   );

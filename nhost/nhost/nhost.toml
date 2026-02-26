@@ -186,6 +186,7 @@ method = 'LOGIN'
 [storage]
 version = '0.9.1'
 
+
 [observability]
 [observability.grafana]
 adminPassword = '{{ secrets.GRAFANA_ADMIN_PASSWORD }}'
