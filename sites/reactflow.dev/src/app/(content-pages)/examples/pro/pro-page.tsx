@@ -8,7 +8,7 @@ export default async function ProPage() {
     <ProExamplesPage
       framework="react"
       getExamplesPageMap={getExamplesPageMap}
-      logoIconClassName="text-[#D0D0D0]"
+      logoIconClassName=""
       freeTrialSection={{
         title: 'Helper Lines',
         description:

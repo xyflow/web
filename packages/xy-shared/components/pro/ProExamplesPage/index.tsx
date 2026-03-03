@@ -56,7 +56,7 @@ const ProExamplesPage: FC<ProExamplesPageProps> = async ({
   framework,
   getExamplesPageMap,
   freeTrialSection,
-  logoIconClassName = 'text-foreground',
+  logoIconClassName = '',
 }) => {
   const productName = PRODUCT_NAMES[framework];
   const remoteProExamplesResponse = await fetchJSON(
