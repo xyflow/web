@@ -1,3 +1,5 @@
+import NextLink from 'next/link';
+import type { ReactNode } from 'react';
 import { Head } from 'nextra/components';
 import { Navbar as NextraNavbar } from 'nextra-theme-docs';
 import svelteFlowPackageJson from '@xyflow/svelte/package.json';
@@ -16,6 +18,10 @@ import { createNormalizePageMap } from 'xy-shared/server/normalize-page-map';
 import { getPageMap as getExamplesPageMap } from '@/app/(content-pages)/examples/[...slug]/utils';
 import { getPageMap as getProExamplesPageMap } from '@/app/pro/(auth)/examples/utils';
 import { meta as proExamplesMeta } from '@/app/pro/(auth)/examples/config';
+import {
+  NavDropdown,
+  type NavDropdownItem,
+} from 'xy-shared/components/pro/Navigation/NavDropdown';
 import type { Folder } from 'nextra';
 import { Banner } from 'nextra/components';
 
@@ -34,6 +40,59 @@ export const metadata = generateRootMetadata('Svelte Flow', {
 const fathomOptions = {
   id: 'PFWQXXRR',
 };
+
+const EXAMPLES_ITEMS: NavDropdownItem[] = [
+  {
+    icon: 'squares-2x2',
+    title: 'All Examples',
+    description: 'Browse all example apps.',
+    href: '/examples',
+  },
+  {
+    icon: 'sparkles',
+    title: 'Pro Examples',
+    description: 'Advanced example apps to power production-grade UIs.',
+    href: '/pro/examples',
+  },
+];
+
+const PRO_ITEMS: NavDropdownItem[] = [
+  {
+    icon: 'sparkles',
+    title: 'Pro Examples',
+    description: 'Advanced example apps to power production-grade UIs.',
+    href: '/pro/examples',
+  },
+  {
+    icon: 'credit-card',
+    title: 'Pricing',
+    description: 'Subscribe to unlock Pro Examples and support our team.',
+    href: '/pro',
+  },
+];
+
+const MORE_ITEMS: NavDropdownItem[] = [
+  {
+    icon: 'megaphone',
+    title: 'Changelog',
+    description: "What's new in the latest releases.",
+    href: '/whats-new',
+  },
+  {
+    icon: 'chat',
+    title: 'Contact Us',
+    description: 'Get in touch with the team.',
+    href: 'https://xyflow.com/contact',
+    external: true,
+  },
+  {
+    icon: 'newspaper',
+    title: 'Blog',
+    description: 'Articles, announcements and community stories.',
+    href: 'https://xyflow.com/blog',
+    external: true,
+  },
+];
 
 export default async function RootLayout({ children }: LayoutProps<'/'>) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -138,9 +197,18 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
           navbar={
             <NextraNavbar
               align="left"
+              className="site-native-navbar justify-between"
               logo={<LogoLabel label="Svelte Flow" />}
               logoLink={false}
             >
+              <div className="ml-2 mr-auto hidden items-center gap-0.5 md:flex">
+                <DesktopNavLink href="/learn">Learn</DesktopNavLink>
+                <DesktopNavLink href="/api-reference">Reference</DesktopNavLink>
+                <NavDropdown label="Examples" items={EXAMPLES_ITEMS} />
+                <NavDropdown label="Pro" items={PRO_ITEMS} />
+                <DesktopNavLink href="/showcase">Showcase</DesktopNavLink>
+                <NavDropdown label="More" items={MORE_ITEMS} />
+              </div>
               <Search />
               <a
                 className="xy-link-gray focus-visible:nextra-focus"
@@ -190,5 +258,22 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
         </SubscriptionProvider>
       </body>
     </Html>
+  );
+}
+
+function DesktopNavLink({
+  href,
+  children,
+}: {
+  href: string;
+  children: ReactNode;
+}) {
+  return (
+    <NextLink
+      href={href}
+      className="flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium text-foreground/80 transition-colors hover:bg-muted hover:text-foreground"
+    >
+      {children}
+    </NextLink>
   );
 }

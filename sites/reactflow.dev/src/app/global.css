@@ -43,7 +43,11 @@ html body[data-scroll-locked] {
   width: 100%;
 }
 
-/* Hide `Pro` link from the desktop navbar */
-.nextra-navbar > nav > div > a[href='/pro'] {
+/* Hide Nextra's generated desktop nav row; custom links are injected separately */
+.site-native-navbar {
+  justify-content: flex-start;
+}
+
+.site-native-navbar > div:nth-of-type(2) {
   display: none;
 }
