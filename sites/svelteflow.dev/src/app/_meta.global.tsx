@@ -104,6 +104,13 @@ const metaRecord = {
           pagination: false,
         },
       },
+      examples: {
+        theme: {
+          layout: 'default',
+          toc: false,
+          pagination: false,
+        },
+      },
       // Auth
       dashboard: <WithIcon icon={Squares2X2Icon}>Dashboard</WithIcon>,
 

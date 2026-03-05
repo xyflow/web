@@ -1,14 +1,14 @@
 import ProExamplesPage from 'xy-shared/components/pro/ProExamplesPage';
-import { getPageMap as getExamplesPageMap } from '../[...slug]/utils';
+import { getPageMap as getExamplesPageMap } from '@/app/(content-pages)/examples/[...slug]/utils';
 
 export { SignUpButton } from 'xy-shared/components/pro/SignUpButton';
 
-export default async function ProPage() {
+export default async function ProExamplesUpsell() {
   return (
     <ProExamplesPage
-      framework="react"
+      framework="svelte"
       getExamplesPageMap={getExamplesPageMap}
-      logoIconClassName=""
+      logoIconClassName="text-[#FF3E00]"
       freeTrialSection={{
         title: 'Helper Lines',
         description:
