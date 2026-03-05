@@ -21,7 +21,7 @@ export default async function DashboardPage() {
               SubscriptionPlan.STUDENT,
               SubscriptionPlan.OSS,
             ]}
-            button={{ label: 'Browse Examples', href: '/examples/pro' }}
+            button={{ label: 'Browse Examples', href: '/pro/examples' }}
           />
 
           <SubscriptionFeature
