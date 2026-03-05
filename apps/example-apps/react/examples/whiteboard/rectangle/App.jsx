@@ -39,6 +39,7 @@ export default function RectangleFlow() {
 
   return (
     <ReactFlow
+      colorMode="system"
       nodes={nodes}
       nodeTypes={nodeTypes}
       edges={edges}

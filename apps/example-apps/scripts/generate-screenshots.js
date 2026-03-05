@@ -19,7 +19,7 @@ Usage:
   node generate-screenshots.js [options]
 
 Options:
-  --only-missing, -m    Only generate screenshots for examples missing preview.jpg
+  --only-missing, -m    Only generate screenshots for examples missing previews
   --help, -h           Show this help message
 
 Examples:
@@ -72,19 +72,32 @@ async function makeScreenshots(dir, selector) {
       const exampleFolder = c.parentPath.split('index.html')[0];
       const examplePath = c.parentPath.split('example-apps')?.[1];
       const exampleUrl = `http://localhost:5173${examplePath}/index.html`;
-      const screenshotPath = Path.resolve(exampleFolder, 'preview.jpg');
+      const lightScreenshotPath = Path.resolve(exampleFolder, 'preview.jpg');
+      const darkScreenshotPath = Path.resolve(exampleFolder, 'preview-dark.jpg');
+      const shouldCapture = { light: true, dark: true };
 
-      // Check if preview.jpg already exists when --only-missing flag is used
+      // Check which screenshots are missing when --only-missing flag is used.
       if (onlyMissing) {
-        try {
-          await Fs.access(screenshotPath);
+        const hasLightPreview = await fileExists(lightScreenshotPath);
+        const hasDarkPreview = await fileExists(darkScreenshotPath);
+
+        shouldCapture.light = !hasLightPreview;
+        shouldCapture.dark = !hasDarkPreview;
+
+        if (!shouldCapture.light && !shouldCapture.dark) {
           console.log('⏭️  Skipping (already exists):', examplePath);
           skippedCount++;
           continue;
-        } catch {
-          // File doesn't exist, continue with screenshot generation
-          console.log('📸 Generating missing preview:', examplePath);
         }
+
+        const missingVariants = [
+          shouldCapture.light ? 'light' : null,
+          shouldCapture.dark ? 'dark' : null,
+        ]
+          .filter(Boolean)
+          .join(', ');
+
+        console.log(`📸 Generating missing ${missingVariants} preview(s):`, examplePath);
       }
 
       // Retry if Hot Module Reload causes navigation to abort
@@ -92,7 +105,7 @@ async function makeScreenshots(dir, selector) {
         await page.goto(exampleUrl, { waitUntil: 'domcontentloaded', timeout: 15000 });
       } catch (err) {
         if (String(err).includes('ERR_ABORTED')) {
-          await page.waitForTimeout(500);
+          await sleep(500);
           await page.goto(exampleUrl, { waitUntil: 'domcontentloaded', timeout: 15000 });
         } else {
           console.log('navigate error:', exampleUrl, err);
@@ -116,13 +129,42 @@ async function makeScreenshots(dir, selector) {
 
       try {
         await page.waitForSelector(selector, { timeout: 5000 });
-        await page.screenshot({
-          path: screenshotPath,
-        });
-        screenshotCount++;
+
+        if (shouldCapture.light) {
+          await page.evaluate(() => {
+            const wrappers = document.querySelectorAll('.react-flow, .svelte-flow');
+            wrappers.forEach((wrapper) => wrapper.classList.remove('dark'));
+          });
+          await sleep(100);
+          await page.screenshot({ path: lightScreenshotPath });
+          screenshotCount++;
+        }
+
+        if (shouldCapture.dark) {
+          await page.evaluate(() => {
+            const wrappers = document.querySelectorAll('.react-flow, .svelte-flow');
+            wrappers.forEach((wrapper) => wrapper.classList.add('dark'));
+          });
+          await sleep(100);
+          await page.screenshot({ path: darkScreenshotPath });
+          screenshotCount++;
+        }
       } catch (err) {
         console.log('error:', exampleUrl, err);
       }
     }
   }
+}
+
+async function fileExists(path) {
+  try {
+    await Fs.access(path);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }

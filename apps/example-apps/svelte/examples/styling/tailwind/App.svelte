@@ -13,7 +13,16 @@
   };
 </script>
 
-<SvelteFlow bind:nodes {nodeTypes} bind:edges fitView class="bg-[#f7f9fB]">
-  <MiniMap />
-  <Controls />
-</SvelteFlow>
+<div class="w-full h-full bg-gray-900">
+  <SvelteFlow
+    class="bg-transparent!"
+    bind:nodes
+    {nodeTypes}
+    bind:edges
+    fitView
+    colorMode="system"
+  >
+    <MiniMap />
+    <Controls />
+  </SvelteFlow>
+</div>

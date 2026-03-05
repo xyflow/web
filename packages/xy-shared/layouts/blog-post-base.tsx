@@ -1,8 +1,11 @@
 import { type ReactNode } from 'react';
 import { type MdxFile } from 'nextra';
-import { Text, Heading, ContentGrid, ContentGridItem } from '@xyflow/xy-ui';
-
-import { type Author, SubscribeSection, AuthorList, BlogPostPreview } from '..';
+import { Text } from '../components/ui/text';
+import { Heading } from '../components/ui/heading';
+import { ContentGrid, ContentGridItem } from '../components/ui/content-grid';
+import { type Author, AuthorList } from '../components/authors-list';
+import { SubscribeSection } from '../components/subscribe-section';
+import { BlogPostPreview } from '../components/blog-post/preview';
 
 export type BlogPostFrontmatter = {
   title: string;

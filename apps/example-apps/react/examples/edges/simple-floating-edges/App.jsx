@@ -77,6 +77,7 @@ const NodeAsHandleFlow = () => {
   return (
     <div className="simple-floatingedges">
       <ReactFlow
+        colorMode="system"
         nodes={nodes}
         edges={edges}
         onNodesChange={onNodesChange}

@@ -19,7 +19,9 @@ body {
   pointer-events: none;
   font-family: monospace;
   padding: 0.5rem;
-  background-color: ghostwhite;
+  background-color: var(--xy-theme-panel-bg);
+  color: var(--xy-theme-panel-text);
+  border: 1px solid var(--xy-theme-subtle-border);
   border-radius: 4px;
 
   & > p {

@@ -9,11 +9,11 @@ import { ArrowDownRight } from "lucide-react";
 
 export const AnnotationNodeDemo = memo(() => {
   return (
-    <BaseNode className="border-none bg-transparent text-sm text-secondary-foreground hover:ring-0">
+    <BaseNode className="text-secondary-foreground border-none bg-transparent text-sm hover:ring-0">
       {/* Annotation Node Number */}
-      <div className="absolute -left-1 top-3 text-xs leading-snug">1.</div>
+      <div className="absolute top-3 -left-1 text-xs leading-snug">1.</div>
       <BaseNodeContent className="pb-0 leading-snug">
-        Annotate your flows any way you'd like.
+        Annotate your flows any way you&apos;d like.
       </BaseNodeContent>
       <BaseNodeFooter className="items-end border-none p-0">
         <ArrowDownRight size="12" />
@@ -21,6 +21,8 @@ export const AnnotationNodeDemo = memo(() => {
     </BaseNode>
   );
 });
+
+AnnotationNodeDemo.displayName = "AnnotationNodeDemo";
 
 export const BaseNodeDemo = memo(() => {
   return (
@@ -31,3 +33,5 @@ export const BaseNodeDemo = memo(() => {
     </BaseNode>
   );
 });
+
+BaseNodeDemo.displayName = "BaseNodeDemo";

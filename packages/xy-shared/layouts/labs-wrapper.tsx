@@ -3,16 +3,14 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { type MdxFile } from 'nextra';
 import { ChevronRightIcon } from '@heroicons/react/20/solid';
-import {
-  Heading,
-  Text,
-  Container,
-  ContentGrid,
-  ContentGridItem,
-  Button,
-} from '@xyflow/xy-ui';
-
-import { AuthorList, Author, ProjectPreview, SubscribeSection } from '..';
+import { Heading } from '../components/ui/heading';
+import { Text } from '../components/ui/text';
+import { Container } from '../components/ui/container';
+import { ContentGrid, ContentGridItem } from '../components/ui/content-grid';
+import { Button } from '../components/ui/button';
+import { AuthorList, Author } from '../components/authors-list';
+import { ProjectPreview } from '../components/project-preview';
+import { SubscribeSection } from '../components/subscribe-section';
 
 export type LabsFrontmatter = {
   title: string;
@@ -42,7 +40,7 @@ export const LabsLayoutWrapper: FC<
           <Text className="ml-1 text-md font-medium">{frontMatter.title}</Text>
         </div>
         <div className="flex flex-col md:flex-row items-start md:items-center w-full justify-start md:justify-between mt-8">
-          <Heading size="lg" className="!leading-tight text-gray-900 ">
+          <Heading size="lg" className="!leading-tight text-muted-foreground ">
             {frontMatter.title}
           </Heading>
           <Button asChild className="mt-6">

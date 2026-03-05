@@ -1,0 +1,1 @@
+export { metadata, default } from 'xy-shared/routes/pro/(no-auth)/sign-in/page';

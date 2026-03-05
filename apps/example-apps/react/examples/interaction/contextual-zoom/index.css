@@ -14,8 +14,8 @@ body {
 
 .react-flow__node-zoom {
   font-size: 12px;
-  background: #fff;
-  border: 1px solid inherit;
+  background: var(--xy-node-background-color-default);
+  border: var(--xy-node-border-default);
   border-radius: 5px;
   text-align: center;
   width: 150px;
@@ -32,7 +32,7 @@ body {
 }
 
 .placeholder div {
-  background: #eee;
+  background: var(--xy-theme-muted-bg);
   width: 100%;
   height: 10px;
   margin-bottom: 4px;

@@ -19,7 +19,7 @@
 </script>
 
 <div style:width="100vw" style:height="100vh">
-  <SvelteFlow bind:nodes bind:edges>
+  <SvelteFlow bind:nodes bind:edges colorMode="system">
     <Background />
   </SvelteFlow>
 </div>

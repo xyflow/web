@@ -111,6 +111,7 @@ const Flow = () => {
   return (
     <>
       <ReactFlow
+        colorMode="system"
         nodes={initialNodes}
         edges={initialEdges}
         edgesReconnectable={true}

@@ -1,3 +1,5 @@
+@import url('./xy-theme.css');
+
 html,
 body {
   margin: 0;
@@ -12,3 +14,19 @@ body {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Threlte node wrapper uses theme variables so nodes respect dark mode */
+.theme-node {
+  border-color: var(--xy-theme-subtle-border);
+  background-color: var(--xy-node-background-color-default);
+}
+
+.theme-node-header {
+  border-color: var(--xy-theme-subtle-border);
+  color: var(--xy-theme-panel-text);
+}
+
+.theme-node-content {
+  background-color: var(--xy-node-background-color-default);
+  color: var(--xy-theme-panel-text);
+}

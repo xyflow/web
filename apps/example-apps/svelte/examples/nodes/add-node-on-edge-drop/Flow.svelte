@@ -58,6 +58,6 @@
   };
 </script>
 
-<SvelteFlow bind:nodes bind:edges fitView onconnectend={handleConnectEnd}>
+<SvelteFlow bind:nodes bind:edges fitView colorMode="system" onconnectend={handleConnectEnd}>
   <Background />
 </SvelteFlow>

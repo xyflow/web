@@ -98,7 +98,7 @@
   }
 </script>
 
-<SvelteFlow bind:nodes bind:edges fitView minZoom={0.01}>
+<SvelteFlow bind:nodes bind:edges fitView minZoom={0.01} colorMode="system">
   <Panel position="top-right">
     <div style="display: flex; gap: 5px;">
       <button disabled={layouting} onclick={() => onLayout('layered')}>

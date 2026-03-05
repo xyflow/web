@@ -18,6 +18,6 @@
   ]);
 </script>
 
-<SvelteFlow bind:nodes {nodeTypes} fitView>
+<SvelteFlow bind:nodes {nodeTypes} fitView colorMode="system">
   <Background />
 </SvelteFlow>

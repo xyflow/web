@@ -3,23 +3,33 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { SparklesIcon, BoltIcon } from '@heroicons/react/24/outline';
-import { Button, Section, Stats } from '@xyflow/xy-ui';
-import {
-  BaseLayout,
-  HeroFlow,
-  ImageSlider,
-  Features,
-  GettingStarted,
-  AboutSection,
-  ProjectCards,
-  FlowA,
-  FlowB,
-  FlowC,
-} from 'xy-shared';
-import { getLastChangelog } from 'xy-shared/server';
-import { fetchGitHubNpmStats, InternalRoute } from '@/utils';
-import ClientLogos from '@/components/client-logos';
-import WhatsNewPreview from '@/components/whats-new-preview';
+import { Button } from 'xy-shared/components/ui/button';
+import { Section } from 'xy-shared/components/ui/section';
+import { Stats } from 'xy-shared/components/ui/stats';
+import { BaseLayout } from 'xy-shared/layouts/base';
+import { HeroFlow } from 'xy-shared/components/flows/hero-flow';
+import { ImageSlider } from 'xy-shared/components/image-slider';
+import { Features } from 'xy-shared/components/features';
+import { GettingStarted } from 'xy-shared/layouts/getting-started';
+import { AboutSection } from 'xy-shared/layouts/about-section';
+import { ProjectCards } from 'xy-shared/layouts/project-cards';
+import { FlowA } from 'xy-shared/components/flows/flow-a';
+import { FlowB } from 'xy-shared/components/flows/flow-b';
+import { FlowC } from 'xy-shared/components/flows/flow-c';
+import { getLastChangelog } from 'xy-shared/server/get-last-changelog';
+import { fetchGitHubNpmStats } from 'xy-shared/lib/fetch-github-npm-stats';
+import { InternalRoute } from '../../routes';
+import ClientLogos from 'xy-shared/components/client-logos';
+import WhatsNewPreview from 'xy-shared/components/whats-new-preview';
+
+import zapier from '../../../public/img/clients/zapier.svg';
+import stripe from '../../../public/img/clients/stripe.svg';
+import cartoWorkflows from '../../../public/img/clients/carto.svg';
+import railway from '../../../public/img/clients/railway.svg';
+import retool from '../../../public/img/clients/retool.svg';
+import doubleloop from '../../../public/img/clients/doubleloop.svg';
+import onesignal from '../../../public/img/clients/onesignal.svg';
+import close from '../../../public/img/clients/close.svg';
 
 export const revalidate = 3600; // 60 * 60
 
@@ -51,10 +61,10 @@ const features = [
     flowComponent: <FlowB />,
   },
   {
-    title: 'All the right plugins',
+    title: 'All the right components',
     text: 'Make more advanced apps with the Background, Minimap, Controls, Panel, NodeToolbar, and NodeResizer components.',
     route: '/learn/concepts/built-in-components' satisfies InternalRoute,
-    flowComponent: <FlowC framework="react" />,
+    flowComponent: <FlowC />,
   },
 ];
 
@@ -98,7 +108,7 @@ const sliderItems = [
 ];
 
 const Page: FC = async () => {
-  const { stars = 23000, downloads = 4000 } = await fetchGitHubNpmStats();
+  const { stars = 23000, downloads = 4000 } = await fetchGitHubNpmStats('react');
   const pageMap = await getLastChangelog();
   const whatsNew = pageMap.slice(0, 3);
 
@@ -152,7 +162,18 @@ const Page: FC = async () => {
       </Section>
 
       <Section>
-        <ClientLogos />
+        <ClientLogos
+          logos={[
+            { src: zapier, alt: 'zapier', className: 'h-7' },
+            { src: stripe, alt: 'stripe', className: 'h-7' },
+            { src: cartoWorkflows, alt: 'carto workflows', className: 'h-9' },
+            { src: close, alt: 'close', className: 'h-7' },
+            { src: railway, alt: 'railway', className: 'h-9' },
+            { src: retool, alt: 'retool', className: 'h-6' },
+            { src: doubleloop, alt: 'doubleloop', className: 'h-7' },
+            { src: onesignal, alt: 'onesignal', className: 'h-7' },
+          ]}
+        />
       </Section>
 
       <ImageSlider items={sliderItems} />

@@ -62,6 +62,7 @@ const BasicFlow = () => {
 
   return (
     <ReactFlow
+      colorMode="system"
       nodes={nodes}
       edges={initialEdges}
       onNodesChange={onNodesChange}

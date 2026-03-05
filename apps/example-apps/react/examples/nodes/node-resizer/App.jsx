@@ -46,6 +46,7 @@ const initialEdges = [];
 export default function NodeToolbarExample() {
   return (
     <ReactFlow
+      colorMode="system"
       defaultNodes={initialNodes}
       defaultEdges={initialEdges}
       minZoom={0.2}

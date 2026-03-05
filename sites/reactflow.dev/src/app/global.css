@@ -1,25 +1,25 @@
-@layer l-base, l-nextra;
+@import 'tailwindcss';
+@layer base;
 
-/*
- * We specify layers because it's a working way to make works
- * Tailwind CSS 4 in Nextra 4 with Tailwind CSS 3 in this app
- *
- * Originally done in https://github.com/the-guild-org/docs/blob/bdfe4f564ee68f8b670828f425e32a3add973883/packages/components/style.css
-**/
-@import '@xyflow/react/dist/style.css';
-@import 'tailwindcss/base' layer(l-base);
-@import 'nextra-theme-docs/dist/style-prefixed.css' layer(l-nextra);
-@import 'tailwindcss/utilities';
-@import 'tailwindcss/components';
+@import '@xyflow/react/dist/style.css' layer(base);
+
 @import 'xy-shared/styles/globals.css';
+@import 'nextra-theme-docs/style.css';
 
-@layer l-base {
+/* TODO: this does not seem to make a difference */
+@source '../../../../packages/xy-shared/';
+
+/* Site-specific theme extensions */
+@utility bg-gradient {
+  background-image: url('/img/bg-gradient.png');
+}
+
+/* React Flow uses the React brand color (pink) */
+@layer base {
   :root {
-    --primary: 333 100% 50%;
-    --primary-foreground: 210 40% 98%;
-    --secondary-foreground: 333 100% 50%;
-    --accent: 333 100% 50%;
-    --shiki-color-background: red;
+    --primary: var(--color-react);
+    --accent: var(--color-react);
+    --secondary-foreground: var(--color-react);
   }
 }
 
@@ -27,15 +27,6 @@ html body[data-scroll-locked] {
   overflow: visible !important;
   margin-right: 0 !important;
 }
-
-/* .nextra-nav-container nav .nextra-scrollbar > a[href='/components']:after {
-  content: 'beta';
-  position: absolute;
-  top: 17px;
-  font-weight: 700;
-  font-size: 0.6rem;
-  color: hsl(var(--primary));
-} */
 
 .nextra-banner-container {
   @apply bg-[linear-gradient(1deg,#383838,#212121)];
@@ -50,4 +41,9 @@ html body[data-scroll-locked] {
 .developer-survey-2023 .x\:mx-auto {
   flex-grow: 1;
   width: 100%;
+}
+
+/* Hide `Pro` link from the desktop navbar */
+.nextra-navbar > nav > div > a[href='/pro'] {
+  display: none;
 }

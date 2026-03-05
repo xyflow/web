@@ -1,10 +1,11 @@
 import { generateStaticParamsFor, importPage } from 'nextra/pages';
 import { normalizePages } from 'nextra/normalize-pages';
-import { LabsLayoutWrapper, BaseBlogPostLayout } from 'xy-shared';
+import { LabsLayoutWrapper } from 'xy-shared/layouts/labs-wrapper';
+import { BaseBlogPostLayout } from 'xy-shared/layouts/blog-post-base';
 import { getPageMap } from 'nextra/page-map';
-import { getBlogs } from '@/utils';
+import { getBlogs } from 'xy-shared/lib/get-blogs';
 import { useMDXComponents as getMdxComponents } from '@/mdx-components';
-import { MdxFile } from 'nextra';
+import { MdxFile, PageMapItem } from 'nextra';
 
 type PageProps = Readonly<{
   params: Promise<{
@@ -24,7 +25,7 @@ export default async function Page(props: PageProps) {
   const isLabsPage = params.mdxPath[0] === 'labs';
   const isBlogPage = params.mdxPath[0] === 'blog';
 
-  let pageMap;
+  let pageMap: PageMapItem[];
 
   if (isLabsPage) {
     pageMap = await getPageMap('/labs');

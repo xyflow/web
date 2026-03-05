@@ -1,6 +1,6 @@
-import { ShowcaseLayout } from 'xy-shared';
+import { ShowcaseLayout } from 'xy-shared/layouts/showcase';
 import { Metadata } from 'next';
-import { fetchNotionShowcases } from 'xy-shared/server';
+import { fetchNotionShowcases } from 'xy-shared/server/utils';
 import { FC } from 'react';
 
 export const metadata: Metadata = {
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 };
 
 const Page: FC = async () => {
-  const showcases = await fetchNotionShowcases('Svelte Flow');
+  const showcases = await fetchNotionShowcases();
 
   return (
     <ShowcaseLayout

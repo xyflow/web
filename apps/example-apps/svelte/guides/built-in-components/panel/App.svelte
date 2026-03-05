@@ -3,7 +3,7 @@
   import '@xyflow/svelte/dist/style.css';
 </script>
 
-<SvelteFlow>
+<SvelteFlow colorMode="system">
   <Panel position="top-left">top-left</Panel>
   <Panel position="top-center">top-center</Panel>
   <Panel position="top-right">top-right</Panel>

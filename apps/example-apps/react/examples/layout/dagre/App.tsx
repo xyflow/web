@@ -85,6 +85,7 @@ const Flow = () => {
 
   return (
     <ReactFlow
+      colorMode="system"
       nodes={nodes}
       edges={edges}
       onNodesChange={onNodesChange}

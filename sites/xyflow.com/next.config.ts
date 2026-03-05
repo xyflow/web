@@ -8,11 +8,14 @@ const nextConfig: NextConfig = {
   pageExtensions: ['ts', 'tsx', 'js', 'jsx'],
   // Optionally, add any other Next.js config below
   reactStrictMode: true,
-  transpilePackages: ['@xyflow/xy-ui', 'xy-shared'],
+  transpilePackages: ['xy-shared', 'xy-shared'],
   experimental: {
-    optimizePackageImports: ['@xyflow/xy-ui', 'xy-shared'],
+    optimizePackageImports: ['xy-shared', 'xy-shared'],
   },
   images: {
+    // We need this to allow images to be displayed from localhost
+    // https://github.com/vercel/next.js/discussions/86147
+    dangerouslyAllowLocalIP: process.env.NODE_ENV === 'development',
     minimumCacheTTL: 2678400, // 31 days
     dangerouslyAllowSVG: true,
     remotePatterns: [

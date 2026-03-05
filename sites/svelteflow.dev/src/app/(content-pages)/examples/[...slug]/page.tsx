@@ -1,8 +1,10 @@
 import path from 'path';
 import { Callout, Cards } from 'nextra/components';
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
-import { Button } from '@xyflow/xy-ui';
-import { RemoteCodeViewer, getAllExamples } from 'xy-shared/server';
+import { Button } from 'xy-shared/components/ui/button';
+import ProExampleViewer from 'xy-shared/components/pro-example-viewer';
+import { RemoteCodeViewer } from 'xy-shared/server/remote-code-viewer';
+import { getAllExamples } from 'xy-shared/server/example-utils';
 
 import { useMDXComponents as getMDXComponents } from '@/mdx-components';
 import { importMetadata } from './utils';
@@ -18,6 +20,7 @@ const { wrapper: Wrapper, h1: H1 } = getMDXComponents();
 export default async function Page(props: PageProps) {
   const params = await props.params;
   const route = params.slug.join('/');
+  // eslint-disable-next-line @typescript-eslint/no-require-imports -- `require` supports Fast Refresh
   const { default: MDXContent, toc, metadata, sourceCode } = require(
     // The static analyzer needs to know the import path as precisely as possible.
     // To achieve this, we keep `examples/` in the import path.
@@ -34,6 +37,7 @@ export default async function Page(props: PageProps) {
           ArrowTopRightOnSquareIcon,
           RemoteCodeViewer,
           Button,
+          ProExampleViewer,
         }}
       />
     </Wrapper>

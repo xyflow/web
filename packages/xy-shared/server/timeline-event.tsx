@@ -1,6 +1,7 @@
 import Link from 'next/link';
-import { Heading, Text } from '@xyflow/xy-ui';
-import { Author, AuthorList } from '../widgets/authors-list';
+import { Heading } from '../components/ui/heading';
+import { Text } from '../components/ui/text';
+import { Author, AuthorList } from '../components/authors-list';
 import { TimeAgo } from '../components/time-ago';
 import { importPage } from 'nextra/pages';
 
@@ -20,7 +21,7 @@ export async function TimelineEvent({ frontmatter, route }: TimelineEventProps) 
   const { default: MDXContent } = await importPage(pathSegments);
   return (
     <div className="flex-col lg:flex-row flex gap-4">
-      <div className="space-y-2 lg:border-r border-gray-200 mt-4">
+      <div className="space-y-2 lg:border-r border-border mt-4">
         <AuthorList
           authors={frontmatter.authors}
           className="w-52 flex-shrink-0 self-start"

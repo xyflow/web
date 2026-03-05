@@ -50,6 +50,7 @@
 
 <div style="height:100vh;" bind:clientWidth bind:clientHeight>
   <SvelteFlow
+    colorMode="system"
     bind:nodes
     bind:edges
     onnodecontextmenu={handleContextMenu}

@@ -49,6 +49,7 @@
 </script>
 
 <SvelteFlow
+  colorMode="system"
   bind:nodes
   bind:edges
   {nodeTypes}

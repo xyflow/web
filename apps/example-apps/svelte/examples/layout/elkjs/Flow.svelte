@@ -89,6 +89,7 @@
 
 <div style="height:100vh;">
   <SvelteFlow
+    colorMode="system"
     bind:nodes
     bind:edges
     fitView
@@ -96,8 +97,8 @@
     defaultEdgeOptions={{ type: 'smoothstep', animated: true }}
   >
     <Panel position="top-right">
-      <button onclick={() => onLayout('DOWN')}>vertical layout</button>
-      <button onclick={() => onLayout('RIGHT')}>horizontal layout</button>
+      <button class="xy-theme__button" onclick={() => onLayout('DOWN')}>vertical layout</button>
+      <button class="xy-theme__button" onclick={() => onLayout('RIGHT')}>horizontal layout</button>
     </Panel>
     <Background />
   </SvelteFlow>

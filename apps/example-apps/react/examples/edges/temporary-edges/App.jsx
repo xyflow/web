@@ -27,6 +27,7 @@ const IncompleteEdge = () => {
 
   return (
     <ReactFlow
+      colorMode="system"
       nodes={nodes}
       nodeTypes={nodeTypes}
       edges={edges}

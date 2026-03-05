@@ -87,6 +87,7 @@ const DnDFlow = () => {
           onDrop={onDrop}
           onDragStart={onDragStart}
           onDragOver={onDragOver}
+          colorMode='system'
           fitView
         >
           <Controls />

@@ -99,6 +99,7 @@ export default function App() {
 
   return (
     <ReactFlow
+      colorMode="system"
       nodes={nodes}
       onNodesChange={onNodesChange}
       edges={edges}

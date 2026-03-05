@@ -1,0 +1,51 @@
+'use server';
+
+import { createNhostClient } from '../lib/nhost';
+
+const deploymentUrl =
+  process.env.VERCEL_ENV === 'production'
+    ? process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL
+    : process.env.NEXT_PUBLIC_VERCEL_URL;
+
+const appUrl = deploymentUrl ? `https://${deploymentUrl}` : 'http://localhost:3002';
+
+const redirectTo = `${appUrl}/pro/email-verification/verify`;
+
+export async function signUp(formData: FormData) {
+  const email = formData.get('email') as string;
+  const password = formData.get('password') as string;
+
+  if (!email || !password) {
+    return {
+      error: 'Email and password fields are required',
+    };
+  }
+
+  console.log('signup', redirectTo);
+
+  try {
+    const nhost = await createNhostClient();
+    const response = await nhost.auth.signUpEmailPassword({
+      email,
+      password,
+      options: {
+        redirectTo,
+      },
+    });
+    const session = response.body?.session;
+
+    // use encodeURIComponent because email can contain special characters such as +
+    return {
+      redirect: session
+        ? '/pro/dashboard'
+        : `/pro/email-verification?email=${encodeURIComponent(email)}`,
+    };
+  } catch (error: unknown) {
+    if (error && typeof error === 'object' && 'body' in error) {
+      console.error((error as { body: unknown }).body);
+    }
+    return {
+      error: `An error occurred during sign up: ${error instanceof Error ? error.message : 'An error occurred'}`,
+    };
+  }
+}

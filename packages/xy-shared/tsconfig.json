@@ -1,11 +1,7 @@
 {
   "extends": "xy-tsconfig/react-library.json",
   "compilerOptions": {
-    "baseUrl": ".",
-    "moduleResolution": "bundler",
-    "paths": {
-      "@/*": ["./*"]
-    }
+    "moduleResolution": "bundler"
   },
   "resolveJsonModule": true,
   "include": ["."],

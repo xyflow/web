@@ -42,7 +42,7 @@
   }
 </script>
 
-<SvelteFlow bind:nodes bind:edges fitView>
+<SvelteFlow bind:nodes bind:edges fitView colorMode="system">
   <Panel position="top-right">
     <button onclick={onLayout}>tree layout</button>
   </Panel>

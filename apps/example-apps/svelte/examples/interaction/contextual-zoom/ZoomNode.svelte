@@ -39,7 +39,7 @@
   }
 
   .placeholder div {
-    background: #eee;
+    background: var(--xy-theme-muted-bg);
     width: 100%;
     height: 10px;
     margin-bottom: 4px;

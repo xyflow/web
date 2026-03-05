@@ -3,22 +3,19 @@
 import { useCallback, useMemo, useState, ReactNode } from 'react';
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 import { RocketLaunchIcon } from '@heroicons/react/24/outline';
-import {
-  Button,
-  cn,
-  Container,
-  ContentGrid,
-  ContentGridItem,
-  Heading,
-  Link,
-  Text,
-} from '@xyflow/xy-ui';
+import { Button } from '../components/ui/button';
+import { cn } from '../lib/utils';
+import { Container } from '../components/ui/container';
+import { ContentGrid, ContentGridItem } from '../components/ui/content-grid';
+import { Heading } from '../components/ui/heading';
+import { Link } from '../components/ui/link';
+import { Text } from '../components/ui/text';
 import { type MdxFile } from 'nextra';
 import Image from 'next/image';
 
 import { BaseLayout } from './base';
-import { ProjectPreview } from '../widgets/project-preview';
-import { Hero } from '../widgets/hero';
+import { ProjectPreview } from '../components/project-preview';
+import { Hero } from '../components/hero';
 import { type CaseStudyFrontmatter } from './case-study-wrapper';
 
 export type CaseStudy = MdxFile<CaseStudyFrontmatter>;
@@ -37,14 +34,40 @@ export type ShowcaseItem = {
   description: string;
   image: string;
   url: string;
-  demoUrl?: string;
-  repoUrl?: string;
+  demoUrl: string | null;
+  repoUrl: string | null;
   openSource?: boolean;
   tags: { id: string; name: string }[];
 };
 
 function isCaseStudy(item: CaseStudy | ShowcaseItem): item is CaseStudy {
-  return item.hasOwnProperty('frontMatter');
+  return 'frontMatter' in item;
+}
+
+function getVisibleItems(
+  showcases: ShowcaseItem[],
+  caseStudies: CaseStudy[],
+  selected: Set<string>,
+) {
+  const visibleShowcases = showcases.filter(
+    ({ tags }) =>
+      selected.size === 0 ||
+      Array.from(selected).every((tag) => tags.some(({ name }) => name === tag)),
+  );
+
+  let currentCaseStudy = caseStudies[0];
+
+  return visibleShowcases.reduce(
+    (list, showcase, i) => {
+      list.push(showcase);
+      if (currentCaseStudy && (i + 1) % 6 === 0) {
+        list.push(currentCaseStudy);
+        currentCaseStudy = caseStudies[(i + 1) / 6];
+      }
+      return list;
+    },
+    [] as (ShowcaseItem | CaseStudy)[],
+  );
 }
 
 export function ShowcaseLayout({
@@ -56,27 +79,10 @@ export function ShowcaseLayout({
 }: ShowcaseLayoutProps) {
   const { all, selected, toggle } = useTags(showcases);
 
-  const visibleItems = useMemo(() => {
-    const visibleShowcases = showcases.filter(
-      ({ tags }) =>
-        selected.size === 0 ||
-        Array.from(selected).every((tag) => tags.some(({ name }) => name === tag)),
-    );
-
-    let currentCaseStudy = caseStudies[0];
-
-    return visibleShowcases.reduce(
-      (list, showcase, i) => {
-        list.push(showcase);
-        if (currentCaseStudy && (i + 1) % 6 === 0) {
-          list.push(currentCaseStudy);
-          currentCaseStudy = caseStudies[(i + 1) / 6];
-        }
-        return list;
-      },
-      [] as (ShowcaseItem | CaseStudy)[],
-    );
-  }, [selected, showcases, caseStudies]);
+  const visibleItems = useMemo(
+    () => getVisibleItems(showcases, caseStudies, selected),
+    [selected, showcases, caseStudies],
+  );
 
   return (
     <BaseLayout>
@@ -213,7 +219,7 @@ function CaseStudyPreview({
     <Container
       variant="dark"
       className="col-span-full"
-      innerClassName="px-4 py-8 flex flex-wrap gap-12 relative w-full items-center shadow-none bg-none bg-gray-100/10 lg:px-12 lg:py-12"
+      innerClassName="px-4 py-8 flex flex-wrap gap-12 relative w-full items-center shadow-none bg-none bg-card/10 lg:px-12 lg:py-12"
     >
       <div className="max-md:w-full max-md:order-2 md:w-1/2">
         <Text className="text-primary mb-4">{data.client}</Text>
@@ -226,12 +232,17 @@ function CaseStudyPreview({
             asChild
             size="lg"
             variant="secondary"
-            className="text-black hover:bg-gray-100 w-full md:w-auto"
+            className="text-black hover:bg-card w-full md:w-auto"
           >
             <Link href={route}>Read Case Study</Link>
           </Button>
           <Button asChild variant="link" className="text-md font-bold">
-            <a href={data.project_url} target="_blank" className="flex items-center">
+            <a
+              href={data.project_url}
+              target="_blank"
+              className="flex items-center"
+              rel="noreferrer"
+            >
               Project Website <ArrowRightCircleIcon className="ml-1 w-4 h-4" />
             </a>
           </Button>

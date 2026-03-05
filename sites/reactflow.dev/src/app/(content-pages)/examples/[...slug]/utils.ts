@@ -2,7 +2,7 @@ import path from 'path';
 import { Folder } from 'nextra';
 
 import { meta } from './config';
-import { getExamplesPageMap } from 'xy-shared/server';
+import { getExamplesPageMap } from 'xy-shared/server/example-utils';
 
 export async function getPageMap(): Promise<Folder> {
   const examplesPath = path.resolve('../../apps/example-apps/react/examples');
@@ -10,6 +10,7 @@ export async function getPageMap(): Promise<Folder> {
 }
 
 export function importMetadata(route: string) {
+  // eslint-disable-next-line @typescript-eslint/no-require-imports -- `require` supports Fast Refresh
   const result = require(
     // The static analyzer needs to know the import path as precisely as possible.
     // To achieve this, we keep `examples/` in the import path.

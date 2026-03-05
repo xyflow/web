@@ -1,11 +1,16 @@
 import Link from 'next/link';
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 import { EnvelopeIcon } from '@heroicons/react/24/outline';
-import { Card, Input, InputLabel, Text } from '@xyflow/xy-ui';
-import { BaseLayout, ContactForm, Hero } from 'xy-shared';
+import { Card } from 'xy-shared/components/ui/card';
+import { Input } from 'xy-shared/components/ui/input';
+import { InputLabel } from 'xy-shared/components/ui/input';
+import { Text } from 'xy-shared/components/ui/text';
+import { BaseLayout } from 'xy-shared/layouts/base';
+import { ContactForm } from 'xy-shared/components/contact-form';
+import { Hero } from 'xy-shared/components/hero';
 import { FC } from 'react';
 import { Metadata } from 'next';
-import { submitContact } from '@/actions/contact';
+import { submitContact } from 'xy-shared/server-actions/contact';
 
 export const metadata: Metadata = {
   title: 'Contact Us',
@@ -31,7 +36,7 @@ const Page: FC = () => {
               'radial-gradient(rgba(68,91,222,1) 0%, rgba(215,78,243,1) 25%, rgba(255,255,255,1) 50%)',
           }}
         />
-        <Card className="p-8 bg-white relative">
+        <Card className="p-8 bg-background relative">
           <ContactForm action={submitContact}>
             <InputLabel>
               <span>Your Email</span>
