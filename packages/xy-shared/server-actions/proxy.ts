@@ -1,7 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createNhostClient } from '../lib/nhost';
 
-// These are routes that are public but should be redirected to dashboard if user is logged in
+// Routes accessible to anyone — not redirected regardless of auth state
+const universalRoutes = ['examples'];
+
+// Routes that are public but redirect logged-in users to dashboard
 const publicRoutes = ['sign-in', 'sign-up', 'reset-password', 'email-verification'];
 
 export async function proxy(request: NextRequest) {
@@ -9,8 +12,16 @@ export async function proxy(request: NextRequest) {
   // Always call this to ensure session is up-to-date
   // even for public routes, so that session changes are detected
   const nhost = await createNhostClient();
-  // If no session and not a public route, redirect to signin
   const path = request.nextUrl.pathname;
+
+  const isUniversalRoute = universalRoutes.some(
+    (route) => path === `/pro/${route}` || path.startsWith(`/pro/${route}/`),
+  );
+  if (isUniversalRoute) {
+    return NextResponse.next();
+  }
+
+  // If no session and not a public route, redirect to signin
   const isPublicRoute = publicRoutes.some(
     (route) => path === route || path.startsWith(`/pro/${route}`),
   );
