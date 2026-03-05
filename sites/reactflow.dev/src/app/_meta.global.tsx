@@ -179,11 +179,6 @@ const metaRecord = {
         },
       },
       overview: '',
-      pro: {
-        theme: {
-          breadcrumb: false,
-        },
-      },
       // Rest of examples are added in `app/layout.tsx` file
     },
   },
@@ -205,6 +200,13 @@ const metaRecord = {
       '*': {
         theme: {
           layout: 'full',
+          toc: false,
+          pagination: false,
+        },
+      },
+      examples: {
+        theme: {
+          layout: 'default',
           toc: false,
           pagination: false,
         },
