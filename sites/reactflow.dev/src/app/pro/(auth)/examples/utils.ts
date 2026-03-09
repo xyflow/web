@@ -1,12 +1,9 @@
-import path from 'path';
 import { Folder } from 'nextra';
 
-import { meta } from './config';
 import { getExamplesPageMap } from 'xy-shared/server/example-utils';
 
 export async function getPageMap(): Promise<Folder> {
-  const examplesPath = path.resolve('../../apps/example-apps/react/examples');
-  return getExamplesPageMap(examplesPath, meta, importMetadata);
+  return getExamplesPageMap();
 }
 
 export function importMetadata(route: string) {

@@ -1,38 +1,18 @@
 import { cache, type ReactElement } from 'react';
 import { SidebarTitle } from '../components/sidebar-title';
-import { Folder, MdxFile, MetaJsonFile } from 'nextra';
+import { Folder, MdxFile } from 'nextra';
 import { getPageMap } from 'nextra/page-map';
 
-export function createNormalizePageMap(getExamplesPageMap: () => Promise<Folder>) {
+export function createNormalizePageMap() {
   const $normalizePageMap = async () => {
     const pageMap = (await getPageMap()).slice();
     // Add badges
     const apiReference = pageMap.find(
       (item): item is Folder => 'children' in item && item.name === 'api-reference',
     );
-    const examplesIndex = pageMap.findIndex(
-      (item): item is Folder => 'name' in item && item.name === 'examples',
+    const examples = pageMap.find(
+      (item): item is Folder => 'children' in item && item.name === 'examples',
     );
-
-    const [examplesMeta, ...examples] = (pageMap[examplesIndex] as Folder).children;
-    const [catchAllExamplesMeta, ...catchAllExamples] = (await getExamplesPageMap())
-      .children;
-
-    // Merge on disk examples with examples from catch-all [...slug] route
-    pageMap[examplesIndex] = {
-      ...pageMap[examplesIndex],
-      children: [
-        {
-          // Merge meta records
-          data: {
-            ...(examplesMeta as MetaJsonFile).data,
-            ...(catchAllExamplesMeta as MetaJsonFile).data,
-          },
-        },
-        ...examples,
-        ...catchAllExamples,
-      ],
-    };
 
     // Check for both 'ui' (React Flow) and 'components' (Svelte Flow) folders
     const components = pageMap.find(
@@ -42,8 +22,8 @@ export function createNormalizePageMap(getExamplesPageMap: () => Promise<Folder>
 
     const folders = [
       ...apiReference!.children,
+      ...examples!.children,
       ...(components?.children || []),
-      ...catchAllExamples,
     ].filter((item): item is Folder<MdxFile> => 'children' in item);
 
     for (const folder of folders) {

@@ -1,5 +1,5 @@
 import ProExamplesPage from 'xy-shared/components/pro/ProExamplesPage';
-import { getPageMap as getExamplesPageMap } from '@/app/(content-pages)/examples/[...slug]/utils';
+import { getExamplesPageMap } from 'xy-shared/server/example-utils';
 
 export { SignUpButton } from 'xy-shared/components/pro/SignUpButton';
 
