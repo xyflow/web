@@ -7,7 +7,6 @@ import { NavDropdown, type NavDropdownItem } from '../pro/Navigation/NavDropdown
 import NavMenu from '../pro/Navigation/NavMenu';
 import { Search } from '../search';
 import { LogoLabel } from '../ui/logo';
-import type { ReactNode } from 'react';
 
 // ─── Dropdown item definitions ───────────────────────────────────────────────
 
@@ -140,7 +139,10 @@ export function SiteNavbar({
     <header className="nextra-nav-container sticky top-0 z-[200] w-full bg-transparent print:hidden">
       <div className="nextra-nav-container-blur pointer-events-none absolute inset-0 z-[-1] select-none bg-background shadow-[0_2px_4px_rgba(0,0,0,.02),0_1px_0_rgba(0,0,0,.06)] dark:shadow-[0_-1px_0_rgba(255,255,255,.1)_inset,0_2px_4px_rgba(0,0,0,.2)]" />
       <nav className="mx-auto flex h-[var(--nextra-navbar-height,4rem)] max-w-[90rem] items-center gap-2 pl-[max(env(safe-area-inset-left),1.5rem)] pr-[max(env(safe-area-inset-right),1.5rem)]">
-        <Link href="/" className="flex shrink-0 items-center hover:opacity-90 transition-opacity">
+        <Link
+          href="/"
+          className="flex shrink-0 items-center hover:opacity-90 transition-opacity"
+        >
           <LogoLabel label={logoLabel ?? siteName} labelClassName={logoLabelClassName} />
         </Link>
         <SiteNavLinks siteName={siteName} />
