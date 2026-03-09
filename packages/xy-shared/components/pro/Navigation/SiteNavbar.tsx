@@ -68,7 +68,11 @@ export function NavDropdown({ label, items, active }: NavDropdownProps) {
   };
 
   return (
-    <div className="relative" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+    <div
+      className="relative"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <button
         className={cn(
           'flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium transition-colors',
@@ -210,7 +214,7 @@ export function SiteNavLinks({ siteName = 'React Flow' }: SiteNavLinksProps) {
   const isActive = (prefix: string) => pathname.startsWith(prefix);
 
   return (
-    <div className="hidden md:flex items-center gap-0.5 mr-auto ml-2">
+    <div className="hidden md:flex items-center gap-0.5 mr-auto">
       <NavLink href="/learn" active={isActive('/learn')}>
         Learn
       </NavLink>
@@ -280,7 +284,7 @@ function NavLink({
     <Link
       href={href}
       className={cn(
-        'flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium transition-colors',
+        'flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium transition-colors',
         active
           ? 'text-foreground bg-muted'
           : 'text-foreground/80 hover:text-foreground hover:bg-muted',
