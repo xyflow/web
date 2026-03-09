@@ -38,13 +38,13 @@ export default function CollaborativeFlowViewer({
 
   const signInLink = `https://pro.reactflow.dev/examples/react/collaborative?flow=${flowId}`;
 
-  const iframeSrc = `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/collaborative?flow=${flowId}`;
+  const iframeSrc = `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/react/collaborative?flow=${flowId}`;
 
   return (
     <div className="flex flex-col gap-4 pt-4">
       <Button asChild className="shrink-0 max-w-64">
         <Link
-          href={`${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/collaborative?flow=${flowId}`}
+          href={`${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/react/collaborative?flow=${flowId}`}
           target="_blank"
         >
           Open the flow in a new tab!
