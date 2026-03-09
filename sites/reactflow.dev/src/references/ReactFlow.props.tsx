@@ -3,7 +3,7 @@ import { useMDXComponents as getMDXComponents } from '@/mdx-components';
 
 const { APIDocs } = getMDXComponents() as unknown as { APIDocs: FC<{ code?: string }> };
 
-const FIELDS = {
+export const FIELDS = {
   viewport: [
     'defaultViewport',
     'viewport',
@@ -124,9 +124,9 @@ const FIELDS = {
   ],
 };
 
-export const ReactFlowAPIProps: FC<{ group: keyof typeof FIELDS | 'common' }> = ({
-  group,
-}) => {
+export type ReactFlowAPIPropsGroup = keyof typeof FIELDS | 'common';
+
+export function getReactFlowAPIPropsType(group: keyof typeof FIELDS | 'common'): string {
   let myType: string;
   if (group === 'common') {
     const omittedFields = Object.values(FIELDS)
@@ -146,16 +146,23 @@ Omit<
     myType = `Pick<ReactFlowProps, ${pickedFields}>`;
   }
 
-  return (
-    <APIDocs
-      code={`
+  return myType;
+}
+
+export function getReactFlowAPIPropsCode(group: keyof typeof FIELDS | 'common'): string {
+  const myType = getReactFlowAPIPropsType(group);
+  return `
 import type { ReactFlow } from '@xyflow/react'
 
 type ReactFlowProps = React.ComponentProps<typeof ReactFlow>
 
 type $ = ${myType}
 
-export default $`}
-    />
-  );
+export default $`;
+}
+
+export const ReactFlowAPIProps: FC<{ group: keyof typeof FIELDS | 'common' }> = ({
+  group,
+}) => {
+  return <APIDocs code={getReactFlowAPIPropsCode(group)} />;
 };

@@ -1,9 +1,13 @@
+import {
+  FIELDS,
+  getReactFlowAPIPropsCode,
+  ReactFlowAPIPropsGroup,
+} from '@/references/ReactFlow.props';
 import { Folder, MdxFile, MetaJsonFile } from 'nextra';
 import fs from 'node:fs';
 import path from 'node:path';
 import { unified } from 'unified';
 import remarkParse from 'remark-parse';
-import remarkMdx from 'remark-mdx';
 import remarkGfm from 'remark-gfm';
 import remarkFrontmatter from 'remark-frontmatter';
 import remarkStringify from 'remark-stringify';
@@ -198,6 +202,245 @@ function expandRemoteCodeViewers(source: string): string {
 }
 
 // ============================================================================
+// <ReactFlowAPIProps> and <APIDocs> — shared markdown helpers
+// ============================================================================
+
+function wrapInBackticks(s: string): string {
+  return '`' + String(s).trim() + '`';
+}
+
+function escapeTableCell(s: string): string {
+  return s.trim();
+}
+
+interface TypeFieldLike {
+  name: string;
+  type: string;
+  description?: string;
+  optional?: boolean;
+}
+
+function tableFromFields(
+  fields: TypeFieldLike[],
+  headers: [string, string, string],
+  optionalSuffix = false,
+): string {
+  if (fields.length === 0) return '';
+  const [h1, h2, h3] = headers;
+  const rows = [
+    `| ${h1} | ${h2} | ${h3} |`,
+    '|---|---|---|',
+    ...fields.map((f) => {
+      const name = optionalSuffix && f.optional ? `${f.name}?` : f.name;
+      const desc = escapeTableCell(f.description ?? '');
+      return `| ${wrapInBackticks(name)} | ${wrapInBackticks(f.type ?? '')} | ${desc} |`;
+    }),
+  ];
+  return rows.join('\n');
+}
+
+function definitionToMarkdownTable(definition: { entries?: TypeFieldLike[] }): string {
+  const entries = definition?.entries;
+  if (!Array.isArray(entries) || entries.length === 0) return '';
+  return tableFromFields(entries, ['Prop', 'Type', 'Description'], true);
+}
+
+function fallbackPropsTable(propNames: string[], groupLabel: string): string {
+  const rows = [
+    `#### ${groupLabel}\n`,
+    '| Prop |',
+    '|---|',
+    ...propNames.map((n) => `| ${wrapInBackticks(n)} |`),
+  ];
+  return rows.join('\n');
+}
+
+const REACT_FLOW_API_PROPS_TAG_RE = /<ReactFlowAPIProps\s+group=["']([^"']+)["']\s*\/>/g;
+const GROUP_LABELS: Record<string, string> = {
+  common: 'Common props',
+  viewport: 'Viewport props',
+  edge: 'Edge props',
+  nodeEvents: 'Node events',
+  selectionEvents: 'Selection events',
+  paneEvents: 'Pane events',
+  style: 'Style props',
+  generalEvents: 'General events',
+  edgeEvents: 'Edge events',
+  connectionEvents: 'Connection events',
+  interaction: 'Interaction props',
+  connectionLine: 'Connection line props',
+  keyboard: 'Keyboard props',
+};
+
+async function getReactFlowAPIPropsMarkdown(group: string): Promise<string> {
+  const normalizedGroup = group.trim() as ReactFlowAPIPropsGroup;
+  const validGroups: ReactFlowAPIPropsGroup[] = [
+    'common',
+    ...(Object.keys(FIELDS) as ReactFlowAPIPropsGroup[]),
+  ];
+  if (!validGroups.includes(normalizedGroup)) {
+    return `[ReactFlowAPIProps: unknown group "${group}"]`;
+  }
+
+  try {
+    const { generateDefinition } = await import('nextra/tsdoc');
+    const code = getReactFlowAPIPropsCode(normalizedGroup);
+    const definition = generateDefinition({ code });
+    const table = definitionToMarkdownTable(definition as { entries?: TypeFieldLike[] });
+    if (table) {
+      const label = GROUP_LABELS[normalizedGroup] ?? normalizedGroup;
+      return `#### ${label}\n\n${table}`;
+    }
+  } catch {
+    // fallback: table of prop names only
+  }
+
+  if (normalizedGroup === 'common') {
+    const allNames = Object.values(FIELDS).flat();
+    return fallbackPropsTable(
+      allNames,
+      'Common props (React Flow also accepts standard div props)',
+    );
+  }
+  const propNames = FIELDS[normalizedGroup] ?? [];
+  return fallbackPropsTable(propNames, GROUP_LABELS[normalizedGroup] ?? normalizedGroup);
+}
+
+async function expandReactFlowAPIProps(source: string): Promise<string> {
+  const matches = [...source.matchAll(REACT_FLOW_API_PROPS_TAG_RE)];
+  if (!matches.length) return source;
+  let result = source;
+  for (const [tag, group] of matches) {
+    result = result.replace(tag, await getReactFlowAPIPropsMarkdown(group));
+  }
+  return result;
+}
+
+// ============================================================================
+// <APIDocs> tag replacement
+// ============================================================================
+
+const APIDOCS_TAG_RE = /<APIDocs\s+[\s\S]*?\/>/g;
+const APIDOCS_ATTR_RE = /(\w+)=["']([^"']*)["']/g;
+
+function parseAPIDocsAttrs(tag: string): Record<string, string> {
+  const attrs: Record<string, string> = {};
+  for (const m of tag.matchAll(APIDOCS_ATTR_RE)) attrs[m[1]] = m[2];
+  return attrs;
+}
+
+function getAPIDocsCode(
+  attrs: Record<string, string>,
+): { code: string; flattened?: boolean } | null {
+  if (attrs.functionName) {
+    return {
+      code: `export type { ${attrs.functionName} as default } from '@xyflow/react'`,
+      flattened: true,
+    };
+  }
+  if (attrs.componentName) {
+    const { componentName, groupKeys } = attrs;
+    let code = `
+import type { ComponentProps, HTMLAttributes, SVGAttributes } from 'react'
+import type { ${componentName} } from '@xyflow/react'
+type MyProps = ComponentProps<typeof ${componentName}>`;
+    code += groupKeys
+      ? `
+type WithGroupedProps = Omit<MyProps, keyof ${groupKeys}> & { '...props': ${groupKeys} }
+export default WithGroupedProps`
+      : '\nexport default MyProps';
+    return { code };
+  }
+  if (attrs.typeName) {
+    const pkg = attrs.packageName ?? 'react';
+    return { code: `export type { ${attrs.typeName} as default } from '@xyflow/${pkg}'` };
+  }
+  return null;
+}
+
+interface ReturnFieldLike {
+  type: string;
+}
+
+function definitionToMarkdown(definition: {
+  entries?: TypeFieldLike[];
+  signatures?: {
+    params: TypeFieldLike[];
+    returns: TypeFieldLike[] | ReturnFieldLike;
+  }[];
+  name?: string;
+  description?: string;
+}): string {
+  const parts: string[] = [];
+
+  if (definition.description) parts.push(definition.description.trim(), '');
+
+  if (definition.entries?.length) {
+    const table = definitionToMarkdownTable(definition);
+    if (table) parts.push('#### Props', '', table, '');
+  }
+
+  if (definition.signatures?.length) {
+    const sig = definition.signatures[0];
+    const paramsTable = tableFromFields(
+      sig.params ?? [],
+      ['Param', 'Type', 'Description'],
+      true,
+    );
+    parts.push(
+      '#### Parameters',
+      '',
+      paramsTable || 'This function does not accept any parameters.',
+      '',
+    );
+    const ret = sig.returns;
+    if (Array.isArray(ret) && ret.length > 0) {
+      parts.push(
+        '#### Returns',
+        '',
+        tableFromFields(ret, ['Name', 'Type', 'Description']),
+        '',
+      );
+    } else if (ret && typeof ret === 'object' && 'type' in ret) {
+      parts.push('#### Returns', '', wrapInBackticks((ret as ReturnFieldLike).type), '');
+    }
+  }
+
+  return parts.join('\n');
+}
+
+async function getAPIDocsMarkdown(tag: string): Promise<string> {
+  const attrs = parseAPIDocsAttrs(tag);
+  const codeOpt = getAPIDocsCode(attrs);
+  if (!codeOpt) return '[APIDocs: missing componentName, functionName, or typeName]';
+  try {
+    const { generateDefinition } = await import('nextra/tsdoc');
+    const definition = generateDefinition(codeOpt) as Parameters<
+      typeof definitionToMarkdown
+    >[0];
+    const markdown = definitionToMarkdown(definition);
+    if (markdown) {
+      const title = attrs.componentName ?? attrs.functionName ?? attrs.typeName ?? 'API';
+      return `#### ${title}\n\n${markdown}`;
+    }
+  } catch {
+    /* fallback to placeholder */
+  }
+  const name = attrs.componentName ?? attrs.functionName ?? attrs.typeName ?? 'unknown';
+  return `[APIDocs: ${name}]`;
+}
+
+async function expandAPIDocs(source: string): Promise<string> {
+  const matches = [...source.matchAll(APIDOCS_TAG_RE)];
+  if (!matches.length) return source;
+  let result = source;
+  for (const [tag] of matches) {
+    result = result.replace(tag, await getAPIDocsMarkdown(tag));
+  }
+  return result;
+}
+
+// ============================================================================
 // <UiComponentViewer> tag replacement
 // ============================================================================
 
@@ -284,6 +527,13 @@ function stripUiComponentViewerImports(text: string): string {
   );
 }
 
+function stripReactFlowAPIPropsImports(text: string): string {
+  return text.replace(
+    /^import\s+\{\s*ReactFlowAPIProps\s*\}\s+from\s+['"]@\/references\/ReactFlow\.props['"];\s*$/gm,
+    '',
+  );
+}
+
 function increaseHeadingLevels(amount: number) {
   return () => (tree: Root) => {
     function visit(node: Parent | Heading) {
@@ -326,9 +576,9 @@ function extractFrontmatterAndCreateHeader() {
 }
 
 async function mdxToPlainText(source: string): Promise<string> {
+  // Markdown-only (no remark-mdx) so type strings like Record<string, Node> stay literal.
   const file = await unified()
     .use(remarkParse)
-    .use(remarkMdx)
     .use(remarkGfm)
     .use(remarkFrontmatter, ['yaml', 'toml'])
     .use(extractFrontmatterAndCreateHeader)
@@ -336,7 +586,10 @@ async function mdxToPlainText(source: string): Promise<string> {
     .use(remarkStringify)
     .process(source);
 
-  return String(file);
+  let out = String(file);
+  // remark-stringify can escape the leading | on table rows; undo so tables render normally
+  out = out.replace(/^\\\|/gm, '|');
+  return out;
 }
 
 async function buildLLMSTxtSection(sectionPath: string): Promise<string> {
@@ -348,10 +601,13 @@ async function buildLLMSTxtSection(sectionPath: string): Promise<string> {
     raw = expandRemoteCodeViewers(raw);
     raw = replaceProExampleViewers(raw);
     raw = expandUiComponentViewers(raw);
+    raw = await expandReactFlowAPIProps(raw);
+    raw = await expandAPIDocs(raw);
     let plain = await mdxToPlainText(raw);
     plain = stripRemoteCodeViewerImports(plain);
     plain = stripProExampleViewerImports(plain);
     plain = stripUiComponentViewerImports(plain);
+    plain = stripReactFlowAPIPropsImports(plain);
     output += plain.trim() + '\n\n';
   }
 
