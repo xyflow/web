@@ -21,7 +21,7 @@ import { SubscriptionProvider } from 'xy-shared/components/pro/Providers';
 import {
   NavDropdown,
   type NavDropdownItem,
-} from 'xy-shared/components/pro/Navigation/NavDropdown';
+} from 'xy-shared/components/pro/Navigation/SiteNavbar';
 import type { Folder } from 'nextra';
 import './global.css';
 

@@ -21,7 +21,7 @@ import { meta as proExamplesMeta } from '@/app/pro/(auth)/examples/config';
 import {
   NavDropdown,
   type NavDropdownItem,
-} from 'xy-shared/components/pro/Navigation/NavDropdown';
+} from 'xy-shared/components/pro/Navigation/SiteNavbar';
 import type { Folder } from 'nextra';
 import { Banner } from 'nextra/components';
 
