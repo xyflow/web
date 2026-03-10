@@ -42,12 +42,3 @@ html body[data-scroll-locked] {
   flex-grow: 1;
   width: 100%;
 }
-
-/* Hide Nextra's generated desktop nav row; custom links are injected separately */
-.site-native-navbar {
-  justify-content: flex-start;
-}
-
-.site-native-navbar > div:nth-of-type(2) {
-  display: none;
-}
