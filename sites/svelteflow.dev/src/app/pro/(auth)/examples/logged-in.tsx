@@ -1,18 +1,18 @@
 import { Fragment } from 'react';
+import { Folder } from 'nextra';
+
 import { ContentGrid, ContentGridItem } from 'xy-shared/components/ui/content-grid';
 import { Heading } from 'xy-shared/components/ui/heading';
-import { Folder } from 'nextra';
 import { ProjectPreview } from 'xy-shared/components/project-preview';
-
-import { getPageMap } from './utils';
+import { getExamplesPageMap } from 'xy-shared/server/example-utils';
 import { meta } from './config';
 
 export default async function ProExamples() {
-  const { children: pageMap } = await getPageMap();
+  const pageMap = await getExamplesPageMap();
 
   return (
     <>
-      {pageMap.map((_category) => {
+      {pageMap.children.map((_category) => {
         const hasChildren = 'children' in _category;
         if (!hasChildren) return;
         const category = _category as Folder & { title: string };

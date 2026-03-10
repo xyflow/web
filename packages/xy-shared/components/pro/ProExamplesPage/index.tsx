@@ -9,7 +9,7 @@ import { Container } from '../../ui/container';
 import { Section } from '../../ui/section';
 import { ListWrapper } from '../../ui/list-wrapper';
 import { Link } from '../../ui/link';
-import type { HeroIcon, Framework } from '../../../types';
+import type { HeroIcon } from '../../../types';
 
 import { BaseLayout } from '../../../layouts/base';
 import { Hero } from '../../hero';
@@ -23,12 +23,9 @@ import {
   PlusCircleIcon,
   StarIcon,
 } from '@heroicons/react/24/outline';
-import type { Folder, MdxFile } from 'nextra';
-
-const PRODUCT_NAMES: Record<Framework, string> = {
-  react: 'React Flow',
-  svelte: 'Svelte Flow',
-};
+import type { MdxFile } from 'nextra';
+import { getExamplesPageMap } from '../../../server/example-utils';
+import { getFramework } from '../../../lib/get-framework';
 
 /** Served from each site's public folder at /img/pro/... */
 const IMG = {
@@ -45,20 +42,17 @@ export type FreeTrialSection = {
   signUpDescription: string;
 };
 
+const { framework, library } = getFramework();
+
 export type ProExamplesPageProps = {
-  framework: Framework;
-  getExamplesPageMap: () => Promise<Folder>;
   freeTrialSection?: FreeTrialSection;
   logoIconClassName?: string;
 };
 
 const ProExamplesPage: FC<ProExamplesPageProps> = async ({
-  framework,
-  getExamplesPageMap,
   freeTrialSection,
   logoIconClassName = '',
 }) => {
-  const productName = PRODUCT_NAMES[framework];
   const remoteProExamplesResponse = await fetchJSON(
     `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${framework}/apps.json?t=1`,
   );
@@ -108,10 +102,10 @@ const ProExamplesPage: FC<ProExamplesPageProps> = async ({
         className="lg:gap-20"
         title={
           <div className="mt-6">
-            Upgrade your apps with {productName} <StarText /> Examples
+            Upgrade your apps with {library} <StarText /> Examples
           </div>
         }
-        subtitle={`Get advanced ${productName} code examples to use in your node-based UIs, crafted by the ${productName} core team.`}
+        subtitle={`Get advanced ${library} code examples to use in your node-based UIs, crafted by the ${library} core team.`}
         action={
           <div className="flex flex-wrap gap-2 items-center">
             <Button
@@ -140,7 +134,7 @@ const ProExamplesPage: FC<ProExamplesPageProps> = async ({
       <Section className="z-1 relative">
         <ContentGrid className="lg:grid-cols-4 border-t-0 gap-12">
           <GridItem
-            title={`By the creators of ${productName}`}
+            title={`By the creators of ${library}`}
             text="Feature-complete and crafted by the core team"
             // @ts-expect-error Logo component matches usage
             icon={() => <Logo className={`h-8 w-8 ${logoIconClassName}`} />}
@@ -226,7 +220,7 @@ const ProExamplesPage: FC<ProExamplesPageProps> = async ({
           >
             <div className="max-md:w-full md:flex-1">
               <Text className="text-gray-400 mb-4">Get Started</Text>
-              <Heading size="md">Boost your apps with {productName} Pro</Heading>
+              <Heading size="md">Boost your apps with {library} Pro</Heading>
             </div>
             <div className="max-md:w-full md:flex-1">
               <Text className="mb-8 text-gray-300">
