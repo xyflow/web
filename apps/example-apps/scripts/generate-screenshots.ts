@@ -1,8 +1,8 @@
 import * as Fs from 'node:fs/promises';
 import * as Path from 'node:path';
 import * as Url from 'node:url';
+import { createHash } from 'node:crypto';
 
-import { diff as blazediff } from '@blazediff/core';
 import puppeteer, { type Browser, type Page } from 'puppeteer';
 import sharp from 'sharp';
 
@@ -11,6 +11,7 @@ const __dirname = Url.fileURLToPath(new URL('.', import.meta.url));
 // Parse command line arguments
 const args = process.argv.slice(2);
 const onlyMissing = args.includes('--only-missing') || args.includes('-m');
+const animatedOnly = args.includes('--animated-only') || args.includes('-a');
 const showHelp = args.includes('--help') || args.includes('-h');
 const freezeAfterMs = getNumericArg('--freeze-after-ms', 200);
 const baseUrl = normalizeBaseUrl(
@@ -26,15 +27,17 @@ Usage:
 
 Options:
   --only-missing, -m    Only generate screenshots for examples missing previews
+  --animated-only, -a   Generate screenshots only for animated examples
   --base-url            Base URL used for screenshots (default: http://127.0.0.1:4173)
   --freeze-after-ms     Wait N ms after load, then freeze animations/timers (default: 150)
   --help, -h           Show this help message
 
 Examples:
-  pnpm exec tsx scripts/generate-screenshots.ts              # Generate all screenshots
+  pnpm exec tsx scripts/generate-screenshots.ts              # Generate non-animated screenshots
   pnpm exec tsx scripts/generate-screenshots.ts --base-url http://127.0.0.1:5173
   pnpm exec tsx scripts/generate-screenshots.ts --freeze-after-ms 3000
   pnpm exec tsx scripts/generate-screenshots.ts --only-missing # Generate only missing screenshots
+  pnpm exec tsx scripts/generate-screenshots.ts --animated-only # Generate only animated examples
 `);
   process.exit(0);
 }
@@ -45,10 +48,33 @@ const EXAMPLE_APPS_ROOT = Path.resolve(__dirname, '..');
 const EXCLUDED_EXAMPLE_PATHS = new Set<string>([
   'react/tutorials/webaudio/mouse-theremin',
 ]);
+const ANIMATED_EXAMPLE_PATHS = new Set<string>([
+  'react/examples/edges/animating-edges',
+  'react/examples/edges/animating-edges-svg',
+  'react/examples/styling/turbo-flow',
+  'react/tutorials/mindmap/app',
+  'react/tutorials/mindmap/node-as-handle-4',
+  'svelte/examples/edges/edge-markers',
+  'svelte/examples/misc/threlte-flow',
+  'svelte/examples/misc/transitions',
+]);
 
 let screenshotCount = 0;
 let skippedCount = 0;
 let unchangedCount = 0;
+
+function getExampleSkipReason(normalizedRelativePath: string): string | null {
+  if (EXCLUDED_EXAMPLE_PATHS.has(normalizedRelativePath)) {
+    return 'excluded from screenshots';
+  }
+
+  const isAnimatedExample = ANIMATED_EXAMPLE_PATHS.has(normalizedRelativePath);
+  if (animatedOnly) {
+    return isAnimatedExample ? null : 'non-animated example';
+  }
+
+  return isAnimatedExample ? 'animated example (use --animated-only)' : null;
+}
 
 async function makeScreenshots(dir: string, selector: string, page: Page): Promise<void> {
   const currentRelativePath = toPosixPath(Path.relative(EXAMPLE_APPS_ROOT, dir));
@@ -68,8 +94,9 @@ async function makeScreenshots(dir: string, selector: string, page: Page): Promi
       const exampleFolder = dir;
       const relativePath = Path.relative(EXAMPLE_APPS_ROOT, dir);
       const normalizedRelativePath = toPosixPath(relativePath);
-      if (EXCLUDED_EXAMPLE_PATHS.has(normalizedRelativePath)) {
-        console.log('⏭️  Excluded from screenshots:', `/${normalizedRelativePath}`);
+      const skipReason = getExampleSkipReason(normalizedRelativePath);
+      if (skipReason) {
+        console.log(`⏭️  Skipping (${skipReason}):`, `/${normalizedRelativePath}`);
         skippedCount++;
         continue;
       }
@@ -142,7 +169,8 @@ async function makeScreenshots(dir: string, selector: string, page: Page): Promi
 
       try {
         await page.waitForSelector(selector, { timeout: 5000 });
-        await settleAndFreezePage(page, freezeAfterMs);
+        const freezeDelay = ANIMATED_EXAMPLE_PATHS.has(normalizedRelativePath) ? freezeAfterMs : 0;
+        await settleAndFreezePage(page, freezeDelay);
 
         if (shouldCapture.light) {
           await page.evaluate(`
@@ -153,7 +181,7 @@ async function makeScreenshots(dir: string, selector: string, page: Page): Promi
           `);
           await sleep(100);
           const lightImage = (await page.screenshot({
-            type: 'jpeg',
+            type: 'png',
           })) as Uint8Array;
           const didUpdate = await writeScreenshotIfChanged(
             lightScreenshotPath,
@@ -176,7 +204,7 @@ async function makeScreenshots(dir: string, selector: string, page: Page): Promi
           `);
           await sleep(100);
           const darkImage = (await page.screenshot({
-            type: 'jpeg',
+            type: 'png',
           })) as Uint8Array;
           const didUpdate = await writeScreenshotIfChanged(
             darkScreenshotPath,
@@ -370,56 +398,67 @@ async function decodeImageToRawRgba(image: string | Uint8Array): Promise<{
   };
 }
 
+function getScreenshotHashPath(outputPath: string): string {
+  return `${outputPath}.md5`;
+}
+
+function createImageHash(image: { data: Uint8Array; width: number; height: number }): string {
+  const hasher = createHash('md5');
+  hasher.update(`${image.width}x${image.height}:`);
+  hasher.update(image.data);
+  return hasher.digest('hex');
+}
+
+async function readStoredHash(hashPath: string): Promise<string | null> {
+  try {
+    const content = await Fs.readFile(hashPath, 'utf8');
+    const hash = content.trim();
+    if (!hash) {
+      return null;
+    }
+    return hash;
+  } catch {
+    return null;
+  }
+}
+
 async function writeScreenshotIfChanged(
   outputPath: string,
-  nextImageBuffer: Uint8Array,
+  nextPngImageBuffer: Uint8Array,
   screenshotLabel: string,
 ): Promise<boolean> {
+  const hashPath = getScreenshotHashPath(outputPath);
+  const nextImage = await decodeImageToRawRgba(nextPngImageBuffer);
+  const nextHash = createImageHash(nextImage);
+  const storedHash = await readStoredHash(hashPath);
+
+  if (storedHash === nextHash) {
+    return false;
+  }
+
   const hasExistingFile = await fileExists(outputPath);
-  if (!hasExistingFile) {
-    await Fs.writeFile(outputPath, nextImageBuffer);
-    return true;
+
+  // Backfill hash sidecars for existing previews without rewriting image files.
+  if (!storedHash && hasExistingFile) {
+    try {
+      const existingImage = await decodeImageToRawRgba(outputPath);
+      const existingHash = createImageHash(existingImage);
+      if (existingHash === nextHash) {
+        await Fs.writeFile(hashPath, `${nextHash}\n`);
+        return false;
+      }
+    } catch (error) {
+      console.log(`⚠️ Could not compute existing hash for "${outputPath}".`, error);
+    }
   }
 
-  try {
-    const [existingImage, nextImage] = await Promise.all([
-      decodeImageToRawRgba(outputPath),
-      decodeImageToRawRgba(nextImageBuffer),
-    ]);
-
-    const sameSize =
-      existingImage.width === nextImage.width &&
-      existingImage.height === nextImage.height;
-
-    if (!sameSize) {
-      await Fs.writeFile(outputPath, nextImageBuffer);
-      return true;
-    }
-
-    const changedPixels = blazediff(
-      existingImage.data,
-      nextImage.data,
-      undefined,
-      existingImage.width,
-      existingImage.height,
-      {
-        threshold: 0,
-        includeAA: true,
-      },
-    );
-
-    if (changedPixels === 0) {
-      return false;
-    }
-
-    console.log(`📸 Updated (diff ${changedPixels}px): ${screenshotLabel}`);
-    await Fs.writeFile(outputPath, nextImageBuffer);
-    return true;
-  } catch (error) {
-    console.log(`⚠️ Could not diff "${outputPath}", overwriting file instead.`, error);
-    await Fs.writeFile(outputPath, nextImageBuffer);
-    return true;
-  }
+  const nextJpegBuffer = await sharp(nextPngImageBuffer).jpeg().toBuffer();
+  console.log(`📸 Updated (hash changed): ${screenshotLabel}`);
+  await Promise.all([
+    Fs.writeFile(outputPath, nextJpegBuffer),
+    Fs.writeFile(hashPath, `${nextHash}\n`),
+  ]);
+  return true;
 }
 
 function sleep(ms: number): Promise<void> {
@@ -434,7 +473,7 @@ async function main(): Promise<void> {
   await waitForServerReady(baseUrl);
 
   const browser: Browser = await puppeteer.launch({
-    headless: false,
+    headless: true,
     args: [
       '--disable-web-security',
       '--disable-features=IsolateOrigins,site-per-process',
