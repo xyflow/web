@@ -12,6 +12,14 @@ import remarkGfm from 'remark-gfm';
 import remarkFrontmatter from 'remark-frontmatter';
 import remarkStringify from 'remark-stringify';
 import type { Root, Parent, Heading } from 'mdast';
+import {
+  generateDefinition,
+  GeneratedDefinition,
+  GeneratedFunction,
+  GeneratedType,
+  TypeField,
+  ReturnField,
+} from 'nextra/tsdoc';
 
 // TYPES -----------------------------------------------------------------------
 
@@ -201,78 +209,51 @@ function expandRemoteCodeViewers(source: string): string {
   });
 }
 
+// ================ ============================================================
+// <ReactFlowAPIProps> and <APIDocs> — tsdoc to markdown (shared)
 // ============================================================================
-// <ReactFlowAPIProps> and <APIDocs> — shared markdown helpers
-// ============================================================================
 
-function wrapInBackticks(s: string): string {
-  return '`' + String(s).trim() + '`';
-}
+const qu = (s: string) => '`' + String(s).trim() + '`';
 
-function escapeTableCell(s: string): string {
-  return s.trim();
-}
+const fieldList = (ret: TypeField[] | ReturnField, optionalSuffix = false) =>
+  Array.isArray(ret)
+    ? ret
+        .map((f) => {
+          const name = optionalSuffix && f.optional ? `${f.name}?` : f.name;
+          const type = f.type ? ': ' + f.type : '';
+          return '- ' + qu(name + type) + ' ' + (f.description ?? '').trim();
+        })
+        .join('\n')
+    : qu(ret.type ?? '');
 
-interface TypeFieldLike {
-  name: string;
-  type: string;
-  description?: string;
-  optional?: boolean;
-}
-
-function tableFromFields(
-  fields: TypeFieldLike[],
-  headers: [string, string, string],
-  optionalSuffix = false,
+function definitionToFullMarkdown(
+  definition: GeneratedDefinition & (GeneratedType | GeneratedFunction),
 ): string {
-  if (fields.length === 0) return '';
-  const [h1, h2, h3] = headers;
-  const rows = [
-    `| ${h1} | ${h2} | ${h3} |`,
-    '|---|---|---|',
-    ...fields.map((f) => {
-      const name = optionalSuffix && f.optional ? `${f.name}?` : f.name;
-      const desc = escapeTableCell(f.description ?? '');
-      return `| ${wrapInBackticks(name)} | ${wrapInBackticks(f.type ?? '')} | ${desc} |`;
-    }),
-  ];
-  return rows.join('\n');
+  const parts: string[] = [];
+  if (definition.description) parts.push(definition.description.trim(), '');
+  if ('entries' in definition && definition.entries?.length) {
+    // The definition is a type, so it has entries.
+    parts.push(fieldList(definition.entries, true));
+  }
+  if ('signatures' in definition && definition.signatures?.length) {
+    // The definition is a function, so it has signatures.
+    const sig = definition.signatures[0];
+    const paramsTable = fieldList(sig.params ?? [], true);
+
+    if (paramsTable) parts.push('#### Parameters', '', paramsTable, '');
+    else parts.push('This function does not accept any parameters.');
+    const ret = sig.returns;
+    if (ret) parts.push('#### Returns', '', fieldList(ret), '');
+    else parts.push('This function does not return anything.');
+  }
+  return parts.join('\n');
 }
 
-function definitionToMarkdownTable(definition: { entries?: TypeFieldLike[] }): string {
-  const entries = definition?.entries;
-  if (!Array.isArray(entries) || entries.length === 0) return '';
-  return tableFromFields(entries, ['Prop', 'Type', 'Description'], true);
-}
-
-function fallbackPropsTable(propNames: string[], groupLabel: string): string {
-  const rows = [
-    `#### ${groupLabel}\n`,
-    '| Prop |',
-    '|---|',
-    ...propNames.map((n) => `| ${wrapInBackticks(n)} |`),
-  ];
-  return rows.join('\n');
-}
+// --- ReactFlowAPIProps ---
 
 const REACT_FLOW_API_PROPS_TAG_RE = /<ReactFlowAPIProps\s+group=["']([^"']+)["']\s*\/>/g;
-const GROUP_LABELS: Record<string, string> = {
-  common: 'Common props',
-  viewport: 'Viewport props',
-  edge: 'Edge props',
-  nodeEvents: 'Node events',
-  selectionEvents: 'Selection events',
-  paneEvents: 'Pane events',
-  style: 'Style props',
-  generalEvents: 'General events',
-  edgeEvents: 'Edge events',
-  connectionEvents: 'Connection events',
-  interaction: 'Interaction props',
-  connectionLine: 'Connection line props',
-  keyboard: 'Keyboard props',
-};
 
-async function getReactFlowAPIPropsMarkdown(group: string): Promise<string> {
+async function getReactFlowAPIPropsReplacement(group: string): Promise<string> {
   const normalizedGroup = group.trim() as ReactFlowAPIPropsGroup;
   const validGroups: ReactFlowAPIPropsGroup[] = [
     'common',
@@ -281,44 +262,19 @@ async function getReactFlowAPIPropsMarkdown(group: string): Promise<string> {
   if (!validGroups.includes(normalizedGroup)) {
     return `[ReactFlowAPIProps: unknown group "${group}"]`;
   }
-
   try {
-    const { generateDefinition } = await import('nextra/tsdoc');
-    const code = getReactFlowAPIPropsCode(normalizedGroup);
-    const definition = generateDefinition({ code });
-    const table = definitionToMarkdownTable(definition as { entries?: TypeFieldLike[] });
-    if (table) {
-      const label = GROUP_LABELS[normalizedGroup] ?? normalizedGroup;
-      return `#### ${label}\n\n${table}`;
-    }
-  } catch {
-    // fallback: table of prop names only
-  }
+    const definition = generateDefinition({
+      code: getReactFlowAPIPropsCode(normalizedGroup),
+    });
 
-  if (normalizedGroup === 'common') {
-    const allNames = Object.values(FIELDS).flat();
-    return fallbackPropsTable(
-      allNames,
-      'Common props (React Flow also accepts standard div props)',
-    );
+    return definitionToFullMarkdown(definition);
+  } catch (error) {
+    /* fallback below */
+    return `[ReactFlowAPIProps: error generating definition: ${error instanceof Error ? error.message : String(error)}]`;
   }
-  const propNames = FIELDS[normalizedGroup] ?? [];
-  return fallbackPropsTable(propNames, GROUP_LABELS[normalizedGroup] ?? normalizedGroup);
 }
 
-async function expandReactFlowAPIProps(source: string): Promise<string> {
-  const matches = [...source.matchAll(REACT_FLOW_API_PROPS_TAG_RE)];
-  if (!matches.length) return source;
-  let result = source;
-  for (const [tag, group] of matches) {
-    result = result.replace(tag, await getReactFlowAPIPropsMarkdown(group));
-  }
-  return result;
-}
-
-// ============================================================================
-// <APIDocs> tag replacement
-// ============================================================================
+// --- APIDocs ---
 
 const APIDOCS_TAG_RE = /<APIDocs\s+[\s\S]*?\/>/g;
 const APIDOCS_ATTR_RE = /(\w+)=["']([^"']*)["']/g;
@@ -329,6 +285,11 @@ function parseAPIDocsAttrs(tag: string): Record<string, string> {
   return attrs;
 }
 
+/**
+ * @param attrs - The attributes of the <APIDocs> tag.
+ * @returns The code for the APIDocs tag that `nextra/tsdoc` can use to generate the definition
+ * via `generateDefinition`.
+ */
 function getAPIDocsCode(
   attrs: Record<string, string>,
 ): { code: string; flattened?: boolean } | null {
@@ -345,9 +306,7 @@ import type { ComponentProps, HTMLAttributes, SVGAttributes } from 'react'
 import type { ${componentName} } from '@xyflow/react'
 type MyProps = ComponentProps<typeof ${componentName}>`;
     code += groupKeys
-      ? `
-type WithGroupedProps = Omit<MyProps, keyof ${groupKeys}> & { '...props': ${groupKeys} }
-export default WithGroupedProps`
+      ? `\ntype WithGroupedProps = Omit<MyProps, keyof ${groupKeys}> & { '...props': ${groupKeys} }\nexport default WithGroupedProps`
       : '\nexport default MyProps';
     return { code };
   }
@@ -358,84 +317,29 @@ export default WithGroupedProps`
   return null;
 }
 
-interface ReturnFieldLike {
-  type: string;
-}
-
-function definitionToMarkdown(definition: {
-  entries?: TypeFieldLike[];
-  signatures?: {
-    params: TypeFieldLike[];
-    returns: TypeFieldLike[] | ReturnFieldLike;
-  }[];
-  name?: string;
-  description?: string;
-}): string {
-  const parts: string[] = [];
-
-  if (definition.description) parts.push(definition.description.trim(), '');
-
-  if (definition.entries?.length) {
-    const table = definitionToMarkdownTable(definition);
-    if (table) parts.push('#### Props', '', table, '');
-  }
-
-  if (definition.signatures?.length) {
-    const sig = definition.signatures[0];
-    const paramsTable = tableFromFields(
-      sig.params ?? [],
-      ['Param', 'Type', 'Description'],
-      true,
-    );
-    parts.push(
-      '#### Parameters',
-      '',
-      paramsTable || 'This function does not accept any parameters.',
-      '',
-    );
-    const ret = sig.returns;
-    if (Array.isArray(ret) && ret.length > 0) {
-      parts.push(
-        '#### Returns',
-        '',
-        tableFromFields(ret, ['Name', 'Type', 'Description']),
-        '',
-      );
-    } else if (ret && typeof ret === 'object' && 'type' in ret) {
-      parts.push('#### Returns', '', wrapInBackticks((ret as ReturnFieldLike).type), '');
-    }
-  }
-
-  return parts.join('\n');
-}
-
-async function getAPIDocsMarkdown(tag: string): Promise<string> {
+async function getAPIDocsReplacement(tag: string): Promise<string> {
   const attrs = parseAPIDocsAttrs(tag);
   const codeOpt = getAPIDocsCode(attrs);
   if (!codeOpt) return '[APIDocs: missing componentName, functionName, or typeName]';
+  const title = attrs.componentName ?? attrs.functionName ?? attrs.typeName ?? 'API';
   try {
-    const { generateDefinition } = await import('nextra/tsdoc');
-    const definition = generateDefinition(codeOpt) as Parameters<
-      typeof definitionToMarkdown
-    >[0];
-    const markdown = definitionToMarkdown(definition);
-    if (markdown) {
-      const title = attrs.componentName ?? attrs.functionName ?? attrs.typeName ?? 'API';
-      return `#### ${title}\n\n${markdown}`;
-    }
-  } catch {
-    /* fallback to placeholder */
+    const definition = generateDefinition(codeOpt);
+    return definitionToFullMarkdown(definition);
+  } catch (error) {
+    /* fallback */
+    console.error('Error generating APIDocs definition:', error);
+    return `[APIDocs: error generating definition: ${error instanceof Error ? error.message : String(error)}]`;
   }
-  const name = attrs.componentName ?? attrs.functionName ?? attrs.typeName ?? 'unknown';
-  return `[APIDocs: ${name}]`;
 }
 
-async function expandAPIDocs(source: string): Promise<string> {
-  const matches = [...source.matchAll(APIDOCS_TAG_RE)];
-  if (!matches.length) return source;
+/** Expands <ReactFlowAPIProps> and <APIDocs> tags to markdown (tsdoc pipeline). */
+async function expandTsDocTags(source: string): Promise<string> {
   let result = source;
-  for (const [tag] of matches) {
-    result = result.replace(tag, await getAPIDocsMarkdown(tag));
+  for (const [tag, group] of source.matchAll(REACT_FLOW_API_PROPS_TAG_RE)) {
+    result = result.replace(tag, await getReactFlowAPIPropsReplacement(group));
+  }
+  for (const [tag] of source.matchAll(APIDOCS_TAG_RE)) {
+    result = result.replace(tag, await getAPIDocsReplacement(tag));
   }
   return result;
 }
@@ -601,8 +505,7 @@ async function buildLLMSTxtSection(sectionPath: string): Promise<string> {
     raw = expandRemoteCodeViewers(raw);
     raw = replaceProExampleViewers(raw);
     raw = expandUiComponentViewers(raw);
-    raw = await expandReactFlowAPIProps(raw);
-    raw = await expandAPIDocs(raw);
+    raw = await expandTsDocTags(raw);
     let plain = await mdxToPlainText(raw);
     plain = stripRemoteCodeViewerImports(plain);
     plain = stripProExampleViewerImports(plain);
