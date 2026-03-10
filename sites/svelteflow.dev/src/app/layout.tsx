@@ -14,7 +14,7 @@ import { createNormalizePageMap } from 'xy-shared/server/normalize-page-map';
 import { getPageMap as getExamplesPageMap } from '@/app/(content-pages)/examples/[...slug]/utils';
 import { getPageMap as getProExamplesPageMap } from '@/app/pro/(auth)/examples/utils';
 import { meta as proExamplesMeta } from '@/app/pro/(auth)/examples/config';
-import { SiteNavbarContent } from 'xy-shared/components/pro/Navigation/SiteNavbar';
+import { SiteNavbarContent } from 'xy-shared/components/navigation/SiteNavbar';
 import type { Folder } from 'nextra';
 import { Banner } from 'nextra/components';
 
