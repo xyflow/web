@@ -4,11 +4,11 @@ import { Heading } from 'xy-shared/components/ui/heading';
 import { Folder } from 'nextra';
 import { ProjectPreview } from 'xy-shared/components/project-preview';
 
-import { getPageMap } from './utils';
 import { meta } from './config';
+import { getExamplesPageMap } from 'xy-shared/server/example-utils';
 
 export default async function ProExamples() {
-  const { children: pageMap } = await getPageMap();
+  const { children: pageMap } = await getExamplesPageMap();
 
   return (
     <>

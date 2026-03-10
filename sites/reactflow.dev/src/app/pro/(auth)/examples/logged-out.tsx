@@ -1,13 +1,10 @@
 import ProExamplesPage from 'xy-shared/components/pro/ProExamplesPage';
-import { getExamplesPageMap } from 'xy-shared/server/example-utils';
 
 export { SignUpButton } from 'xy-shared/components/pro/SignUpButton';
 
 export default async function ProExamplesUpsell() {
   return (
     <ProExamplesPage
-      framework="react"
-      getExamplesPageMap={getExamplesPageMap}
       logoIconClassName=""
       freeTrialSection={{
         title: 'Helper Lines',
