@@ -1,9 +1,9 @@
 import { generateStaticParamsFor, importPage } from 'nextra/pages';
 import { normalizePages } from 'nextra/normalize-pages';
 import { getPageMap } from 'nextra/page-map';
+
 import { BaseBlogPostLayout } from 'xy-shared/layouts/blog-post-base';
 import { CaseStudyLayoutWrapper } from 'xy-shared/layouts/case-study-wrapper';
-
 import { useMDXComponents as getMdxComponents } from '@/mdx-components';
 import { getWhatsNew } from 'xy-shared/lib/get-whats-new';
 

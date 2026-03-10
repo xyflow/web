@@ -1,4 +1,6 @@
-import { FC, Fragment } from 'react';
+import { Fragment } from 'react';
+import { Folder } from 'nextra';
+
 import { Text } from 'xy-shared/components/ui/text';
 import { Container } from 'xy-shared/components/ui/container';
 import { ContentGrid, ContentGridItem } from 'xy-shared/components/ui/content-grid';
@@ -9,17 +11,14 @@ import { Link } from 'xy-shared/components/ui/link';
 import { ProjectPreview } from 'xy-shared/components/project-preview';
 import { ThemeAwareImage } from 'xy-shared/components/theme-aware-image';
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
-import { Folder } from 'nextra';
 import { getExamplesPageMap } from 'xy-shared/server/example-utils';
 
-export const ExamplesOverview: FC = async () => {
-  const { children: pageMap } = await getExamplesPageMap();
-
-  console.log(pageMap);
+export async function ExamplesOverview() {
+  const pageMap = await getExamplesPageMap();
 
   return (
     <>
-      <Section className="!px-0">
+      <Section className="px-0!">
         <Link
           href="/examples/overview"
           className="hover:no-underline group"
@@ -63,7 +62,7 @@ export const ExamplesOverview: FC = async () => {
           </div>
         </Link>
       </Section>
-      {pageMap.map((_category) => {
+      {pageMap.children.map((_category) => {
         const hasChildren = 'children' in _category;
         if (!hasChildren) return;
         const category = _category as Folder & { title: string };
@@ -83,7 +82,7 @@ export const ExamplesOverview: FC = async () => {
                       <ContentGridItem
                         key={example.route}
                         route={example.route}
-                        className="border-none hover:bg-transparent border-none py-6 lg:py-8 lg:px-0 group"
+                        className="border-none hover:bg-transparent py-6 lg:py-8 lg:px-0 group"
                       >
                         <ProjectPreview
                           image={
@@ -129,4 +128,4 @@ export const ExamplesOverview: FC = async () => {
       })}
     </>
   );
-};
+}

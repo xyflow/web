@@ -8,11 +8,11 @@ import { meta } from './config';
 import { getExamplesPageMap } from 'xy-shared/server/example-utils';
 
 export default async function ProExamples() {
-  const { children: pageMap } = await getExamplesPageMap();
+  const pageMap = await getExamplesPageMap();
 
   return (
     <>
-      {pageMap.map((_category) => {
+      {pageMap.children.map((_category) => {
         const hasChildren = 'children' in _category;
         if (!hasChildren) return;
         const category = _category as Folder & { title: string };

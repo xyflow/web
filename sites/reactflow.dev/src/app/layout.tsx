@@ -43,46 +43,6 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
     getLastChangelog(),
   ]);
 
-  // // Inject pro examples as children of the pro.examples sidebar entry
-  // const finalPageMap = [...pageMap];
-  // const proFolderIndex = finalPageMap.findIndex(
-  //   (item): item is Folder => 'children' in item && (item as Folder).name === 'pro',
-  // );
-  // if (proFolderIndex !== -1 && proExamplesFolder) {
-  //   const proFolder = finalPageMap[proFolderIndex] as Folder;
-  //   const [proMeta, ...rawProCategories] = proExamplesFolder.children;
-
-  //   // Filter each category's children to only the items listed in config.ts
-  //   const proCategories = rawProCategories
-  //     .filter((cat): cat is Folder => 'children' in cat && cat.name in proExamplesMeta)
-  //     .map((cat) => {
-  //       const catMeta = proExamplesMeta[cat.name];
-  //       const allowedItems =
-  //         catMeta && typeof catMeta === 'object' && 'items' in catMeta && catMeta.items
-  //           ? (catMeta.items as Record<string, unknown>)
-  //           : null;
-  //       if (!allowedItems) return cat;
-  //       return {
-  //         ...cat,
-  //         children: cat.children.filter(
-  //           (child) => !('name' in child) || child.name in allowedItems,
-  //         ),
-  //       } as Folder;
-  //     });
-
-  //   const updatedChildren = [...proFolder.children];
-  //   const examplesIdx = updatedChildren.findIndex(
-  //     (item) => 'route' in item && item.route === '/pro/examples',
-  //   );
-  //   if (examplesIdx !== -1) {
-  //     updatedChildren[examplesIdx] = {
-  //       ...updatedChildren[examplesIdx],
-  //       children: [proMeta, ...proCategories],
-  //     } as Folder;
-  //     finalPageMap[proFolderIndex] = { ...proFolder, children: updatedChildren };
-  //   }
-  // }
-
   return (
     <Html>
       <Head color={{ hue: 333, saturation: 80 }} />

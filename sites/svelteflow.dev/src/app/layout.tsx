@@ -1,6 +1,8 @@
 import { Head } from 'nextra/components';
 import { Navbar as NextraNavbar } from 'nextra-theme-docs';
+import { Banner } from 'nextra/components';
 import svelteFlowPackageJson from '@xyflow/svelte/package.json';
+
 import { generateRootMetadata } from 'xy-shared/server/generate-root-metadata';
 import { getLastChangelog } from 'xy-shared/server/get-last-changelog';
 import { TOC } from 'xy-shared/server/toc';
@@ -13,7 +15,6 @@ import NavMenu from 'xy-shared/components/pro/Navigation/NavMenu';
 import { Html } from 'xy-shared/components/html';
 import { SubscriptionProvider } from 'xy-shared/components/pro/Providers';
 import { createNormalizePageMap } from 'xy-shared/server/normalize-page-map';
-import { Banner } from 'nextra/components';
 
 import './global.css';
 
