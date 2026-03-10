@@ -12,6 +12,8 @@
     "lint": "turbo run lint",
     "check-types": "turbo run check-types",
     "check": "turbo run lint && turbo run check-types",
+    "screenshots": "pnpm --filter example-apps screenshots",
+    "screenshots:missing": "pnpm --filter example-apps screenshots:missing",
     "format": "prettier --ignore-path .gitignore --write \"**/*.{ts,tsx,md}\"",
     "clean": "pnpm -r --parallel exec rimraf dist .turbo node_modules"
   },
