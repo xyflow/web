@@ -210,7 +210,7 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
               <div className="ml-2 mr-auto hidden items-center gap-0.5 md:flex">
                 <DesktopNavLink href="/learn">Learn</DesktopNavLink>
                 <DesktopNavLink href="/api-reference">Reference</DesktopNavLink>
-                <NavDropdown label="Examples" items={EXAMPLES_ITEMS} />
+                <NavDropdown label="Examples" items={EXAMPLES_ITEMS} href="/examples" />
                 <DesktopNavLink href="/ui">UI</DesktopNavLink>
                 <NavDropdown label="Pro" items={PRO_ITEMS} />
                 <DesktopNavLink href="/showcase">Showcase</DesktopNavLink>

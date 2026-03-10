@@ -60,13 +60,15 @@ type NavDropdownProps = {
   label: ReactNode;
   items: NavDropdownItem[];
   active?: boolean;
+  href?: string;
 };
 
-export function NavDropdown({ label, items, active }: NavDropdownProps) {
+export function NavDropdown({ label, items, active, href }: NavDropdownProps) {
   const [open, setOpen] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const triggerRef = useRef<HTMLButtonElement>(null);
+  const triggerButtonRef = useRef<HTMLButtonElement>(null);
+  const triggerLinkRef = useRef<HTMLAnchorElement>(null);
   const menuId = useId();
 
   const handleMouseEnter = () => {
@@ -94,12 +96,15 @@ export function NavDropdown({ label, items, active }: NavDropdownProps) {
   };
 
   const focusFirstItem = () => {
-    const firstItem = containerRef.current?.querySelector<HTMLAnchorElement>('a[role="menuitem"]');
+    const firstItem =
+      containerRef.current?.querySelector<HTMLAnchorElement>('a[role="menuitem"]');
     firstItem?.focus();
   };
 
-  const handleTriggerKeyDown = (event: KeyboardEvent<HTMLButtonElement>) => {
-    if (event.key === 'ArrowDown' || event.key === 'Enter' || event.key === ' ') {
+  const handleTriggerKeyDown = (
+    event: KeyboardEvent<HTMLButtonElement | HTMLAnchorElement>,
+  ) => {
+    if (event.key === 'ArrowDown' || event.key === ' ') {
       event.preventDefault();
       setOpen(true);
       requestAnimationFrame(focusFirstItem);
@@ -108,7 +113,8 @@ export function NavDropdown({ label, items, active }: NavDropdownProps) {
     if (event.key === 'Escape') {
       event.preventDefault();
       setOpen(false);
-      triggerRef.current?.focus();
+      triggerButtonRef.current?.focus();
+      triggerLinkRef.current?.focus();
     }
   };
 
@@ -116,32 +122,58 @@ export function NavDropdown({ label, items, active }: NavDropdownProps) {
     <div
       ref={containerRef}
       className="relative"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
       onFocus={handleFocus}
       onBlur={handleBlur}
     >
-      <button
-        ref={triggerRef}
-        type="button"
-        className={cn(
-          'flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium transition-colors',
-          'text-foreground/80 hover:text-foreground hover:bg-muted',
-          (open || active) && 'bg-muted text-foreground',
-        )}
-        aria-expanded={open}
-        aria-haspopup="menu"
-        aria-controls={menuId}
-        onKeyDown={handleTriggerKeyDown}
-      >
-        {label}
-        <ChevronDownIcon
+      {href ? (
+        <Link
+          ref={triggerLinkRef}
+          href={href}
           className={cn(
-            'h-3 w-3 text-muted-foreground transition-transform duration-200',
-            open && 'rotate-180',
+            'flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium transition-colors',
+            'text-foreground/80 hover:text-foreground hover:bg-muted',
+            (open || active) && 'bg-muted text-foreground',
           )}
-        />
-      </button>
+          aria-expanded={open}
+          aria-haspopup="menu"
+          aria-controls={menuId}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          onKeyDown={handleTriggerKeyDown}
+        >
+          {label}
+          <ChevronDownIcon
+            className={cn(
+              'h-3 w-3 text-muted-foreground transition-transform duration-200',
+              open && 'rotate-180',
+            )}
+          />
+        </Link>
+      ) : (
+        <button
+          ref={triggerButtonRef}
+          type="button"
+          className={cn(
+            'flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium transition-colors',
+            'text-foreground/80 hover:text-foreground hover:bg-muted',
+            (open || active) && 'bg-muted text-foreground',
+          )}
+          aria-expanded={open}
+          aria-haspopup="menu"
+          aria-controls={menuId}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          onKeyDown={handleTriggerKeyDown}
+        >
+          {label}
+          <ChevronDownIcon
+            className={cn(
+              'h-3 w-3 text-muted-foreground transition-transform duration-200',
+              open && 'rotate-180',
+            )}
+          />
+        </button>
+      )}
 
       <div
         id={menuId}
@@ -153,6 +185,8 @@ export function NavDropdown({ label, items, active }: NavDropdownProps) {
         )}
         role="menu"
         aria-hidden={!open}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
       >
         <div className="bg-background border border-border rounded-xl shadow-2xl p-2 w-[340px]">
           {items.map((item) => {
@@ -171,7 +205,8 @@ export function NavDropdown({ label, items, active }: NavDropdownProps) {
                   if (event.key === 'Escape') {
                     event.preventDefault();
                     setOpen(false);
-                    triggerRef.current?.focus();
+                    triggerButtonRef.current?.focus();
+                    triggerLinkRef.current?.focus();
                   }
                 }}
               >
@@ -282,11 +317,7 @@ export function SiteNavLinks({ siteName = 'React Flow' }: SiteNavLinksProps) {
       <NavLink href="/api-reference" active={isActive('/api-reference')}>
         Reference
       </NavLink>
-      <NavDropdown
-        label="Examples"
-        items={EXAMPLES_ITEMS}
-        active={isActive('/examples')}
-      />
+      <NavDropdown label="Examples" items={EXAMPLES_ITEMS} />
       {isReact && (
         <NavLink href="/ui" active={isActive('/ui')}>
           UI
