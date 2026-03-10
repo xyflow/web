@@ -1,6 +1,14 @@
 'use client';
 
-import { useState, useRef, type ComponentType, type ReactNode } from 'react';
+import {
+  useId,
+  useRef,
+  useState,
+  type ComponentType,
+  type FocusEvent,
+  type KeyboardEvent,
+  type ReactNode,
+} from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import {
@@ -57,6 +65,9 @@ type NavDropdownProps = {
 export function NavDropdown({ label, items, active }: NavDropdownProps) {
   const [open, setOpen] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const menuId = useId();
 
   const handleMouseEnter = () => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
@@ -67,20 +78,61 @@ export function NavDropdown({ label, items, active }: NavDropdownProps) {
     closeTimer.current = setTimeout(() => setOpen(false), 120);
   };
 
+  const handleFocus = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setOpen(true);
+  };
+
+  const handleBlur = (event: FocusEvent<HTMLDivElement>) => {
+    const nextFocused = event.relatedTarget;
+
+    if (nextFocused instanceof Node && containerRef.current?.contains(nextFocused)) {
+      return;
+    }
+
+    setOpen(false);
+  };
+
+  const focusFirstItem = () => {
+    const firstItem = containerRef.current?.querySelector<HTMLAnchorElement>('a[role="menuitem"]');
+    firstItem?.focus();
+  };
+
+  const handleTriggerKeyDown = (event: KeyboardEvent<HTMLButtonElement>) => {
+    if (event.key === 'ArrowDown' || event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      setOpen(true);
+      requestAnimationFrame(focusFirstItem);
+    }
+
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      setOpen(false);
+      triggerRef.current?.focus();
+    }
+  };
+
   return (
     <div
+      ref={containerRef}
       className="relative"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onFocus={handleFocus}
+      onBlur={handleBlur}
     >
       <button
+        ref={triggerRef}
+        type="button"
         className={cn(
           'flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium transition-colors',
           'text-foreground/80 hover:text-foreground hover:bg-muted',
           (open || active) && 'bg-muted text-foreground',
         )}
         aria-expanded={open}
-        aria-haspopup="true"
+        aria-haspopup="menu"
+        aria-controls={menuId}
+        onKeyDown={handleTriggerKeyDown}
       >
         {label}
         <ChevronDownIcon
@@ -92,6 +144,7 @@ export function NavDropdown({ label, items, active }: NavDropdownProps) {
       </button>
 
       <div
+        id={menuId}
         className={cn(
           'absolute left-0 top-full pt-2 z-[201] transition-all duration-150',
           open
@@ -112,7 +165,15 @@ export function NavDropdown({ label, items, active }: NavDropdownProps) {
                 rel={item.external ? 'noreferrer' : undefined}
                 className="flex items-start gap-3 p-3 rounded-lg hover:bg-muted transition-colors group"
                 role="menuitem"
+                tabIndex={open ? 0 : -1}
                 onClick={() => setOpen(false)}
+                onKeyDown={(event) => {
+                  if (event.key === 'Escape') {
+                    event.preventDefault();
+                    setOpen(false);
+                    triggerRef.current?.focus();
+                  }
+                }}
               >
                 <Icon className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors mt-0.5 shrink-0" />
                 <div>
