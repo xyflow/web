@@ -1,11 +1,11 @@
 // ROUTE -----------------------------------------------------------------------
 
-import { buildLLMSTxt, ALL_SECTIONS } from '../utils';
+import { buildLLMSTxt } from '../utils';
 
 export const dynamic = 'force-static';
 
 export async function GET() {
-  const body = await buildLLMSTxt(ALL_SECTIONS);
+  const body = await buildLLMSTxt(['learn', 'examples' /* 'reference' */]);
 
   return new Response(body, {
     status: 200,

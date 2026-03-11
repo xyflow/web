@@ -1,6 +1,6 @@
 import { getPageMap } from 'nextra/page-map';
 import { getPageMap as getExamplesPageMap } from '../../(content-pages)/examples/[...slug]/utils';
-import { isFolder, isMdxFile, TitledPageMapItem } from '../utils';
+import { collectMarkdownLinks } from 'xy-shared/server';
 
 // HANDLERS --------------------------------------------------------------------
 
@@ -28,15 +28,15 @@ export async function GET() {
 
 ## Guides
 
-${collectLinks(learn).trim()}
+${collectMarkdownLinks('svelte', learn).trim()}
 
 ## Examples
 
-${collectLinks(examples).trim()}
+${collectMarkdownLinks('svelte', examples).trim()}
 
 ## API reference
 
-${collectLinks(reference).trim()}
+${collectMarkdownLinks('svelte', reference).trim()}
 `;
 
   return new Response(body, {
@@ -47,40 +47,3 @@ ${collectLinks(reference).trim()}
     },
   });
 }
-
-// UTILS -----------------------------------------------------------------------
-
-/** Builds a tree of markdown links from the page map nextra gives us */
-const collectLinks = (items: TitledPageMapItem[], indent = 0): string => {
-  // The page map will contain separate file and folder entries in cases where
-  // a route is both an actual page and a parent to other pages. To avoid duplicating
-  // entries we keep track of the routes we've already seen at this level. It
-  // *seems* deterministic that the mdx file appears in the list before the folder,
-  // but it remains to be seen if we can rely on that... probably fine! 😇
-  const seen = new Set();
-
-  let output = '';
-
-  for (const item of items) {
-    if (isMdxFile(item) && !seen.has(item.route)) {
-      const { name, route, title, frontMatter = {} } = item;
-      const { description } = frontMatter;
-
-      seen.add(route);
-      output += `${' '.repeat(indent)}- [${title ?? name}](https://svelteflow.dev${route})${description ? `: ${description}` : ''}\n`;
-    }
-
-    if (isFolder(item)) {
-      const { title, route, children } = item;
-
-      if (title && !seen.has(route)) {
-        output += `${' '.repeat(indent)}- ${title}\n`;
-      }
-
-      seen.add(route);
-      output += collectLinks(children, indent + 2);
-    }
-  }
-
-  return output;
-};
