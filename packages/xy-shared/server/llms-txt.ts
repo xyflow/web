@@ -1,12 +1,20 @@
+import type { Heading, Parent, Root } from 'mdast';
 import { Folder, MdxFile, MetaJsonFile } from 'nextra';
+import {
+  GeneratedDefinition,
+  generateDefinition,
+  GeneratedFunction,
+  GeneratedType,
+  ReturnField,
+  TypeField,
+} from 'nextra/tsdoc';
 import fs from 'node:fs';
 import path from 'node:path';
-import { unified } from 'unified';
-import remarkParse from 'remark-parse';
-import remarkGfm from 'remark-gfm';
 import remarkFrontmatter from 'remark-frontmatter';
+import remarkGfm from 'remark-gfm';
+import remarkParse from 'remark-parse';
 import remarkStringify from 'remark-stringify';
-import type { Root, Parent, Heading } from 'mdast';
+import { unified } from 'unified';
 
 // TYPES -----------------------------------------------------------------------
 
@@ -449,3 +457,76 @@ export const isFolder = (item: TitledPageMapItem): item is TitledFolder =>
 
 export const isMdxFile = (item: TitledPageMapItem): item is TitledMdxFile =>
   'frontMatter' in item;
+
+// API DOCS UTILS --------------------------------------------------------------
+
+// ================ ============================================================
+// <ReactFlowAPIProps> and <APIDocs> — tsdoc to markdown (shared)
+// ============================================================================
+
+const qu = (s: string) => '`' + String(s).trim() + '`';
+
+const fieldList = (ret: TypeField[] | ReturnField, optionalSuffix = false) =>
+  Array.isArray(ret)
+    ? ret
+        .map((f) => {
+          const name = optionalSuffix && f.optional ? `${f.name}?` : f.name;
+          const type = f.type ? ': ' + f.type : '';
+          return '- ' + qu(name + type) + ' ' + (f.description ?? '').trim();
+        })
+        .join('\n')
+    : qu(ret.type ?? '');
+
+export function definitionToFullMarkdown(
+  definition: GeneratedDefinition & (GeneratedType | GeneratedFunction),
+): string {
+  const parts: string[] = [];
+  if (definition.description) parts.push(definition.description.trim(), '');
+  if ('entries' in definition && definition.entries?.length) {
+    // The definition is a type, so it has entries.
+    parts.push(fieldList(definition.entries, true));
+  }
+  if ('signatures' in definition && definition.signatures?.length) {
+    // The definition is a function, so it has signatures.
+    const sig = definition.signatures[0];
+    const paramsTable = fieldList(sig.params ?? [], true);
+
+    if (paramsTable) parts.push('#### Parameters', '', paramsTable, '');
+    else parts.push('This function does not accept any parameters.');
+    const ret = sig.returns;
+    if (ret) parts.push('#### Returns', '', fieldList(ret), '');
+    else parts.push('This function does not return anything.');
+  }
+  return parts.join('\n');
+}
+
+// --- APIDocs ---
+
+export const APIDOCS_TAG_RE = /<APIDocs\s+[\s\S]*?\/>/g;
+const APIDOCS_ATTR_RE = /(\w+)="([^"]*)"/g;
+
+function parseAPIDocsAttrs(tag: string): Record<string, string> {
+  const attrs: Record<string, string> = {};
+  for (const m of tag.matchAll(APIDOCS_ATTR_RE)) attrs[m[1]] = m[2];
+  return attrs;
+}
+
+export function getAPIDocsReplacement(
+  getCode: (
+    attrs: Record<string, string>,
+  ) => { code: string; flattened?: boolean } | null,
+  tag: string,
+): string {
+  const attrs = parseAPIDocsAttrs(tag);
+  const codeOpt = getCode(attrs);
+  if (!codeOpt) return '[APIDocs: missing componentName, functionName, or typeName]';
+
+  try {
+    const definition = generateDefinition(codeOpt);
+    return definitionToFullMarkdown(definition);
+  } catch (error) {
+    /* fallback */
+    console.error('Error generating APIDocs definition:', error);
+    return `[APIDocs: error generating definition: ${error instanceof Error ? error.message : String(error)}]`;
+  }
+}

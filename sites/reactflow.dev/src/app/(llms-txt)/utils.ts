@@ -3,61 +3,20 @@ import {
   getReactFlowAPIPropsCode,
   ReactFlowAPIPropsGroup,
 } from '@/references/ReactFlow.props';
+import { generateDefinition } from 'nextra/tsdoc';
 import {
-  generateDefinition,
-  GeneratedDefinition,
-  GeneratedFunction,
-  GeneratedType,
-  TypeField,
-  ReturnField,
-} from 'nextra/tsdoc';
-import { compileMdxSections, SectionKey } from 'xy-shared/server';
+  APIDOCS_TAG_RE,
+  compileMdxSections,
+  definitionToFullMarkdown,
+  getAPIDocsReplacement,
+  SectionKey,
+} from 'xy-shared/server';
 
-// ================ ============================================================
-// <ReactFlowAPIProps> and <APIDocs> — tsdoc to markdown (shared)
-// ============================================================================
-
-const qu = (s: string) => '`' + String(s).trim() + '`';
-
-const fieldList = (ret: TypeField[] | ReturnField, optionalSuffix = false) =>
-  Array.isArray(ret)
-    ? ret
-        .map((f) => {
-          const name = optionalSuffix && f.optional ? `${f.name}?` : f.name;
-          const type = f.type ? ': ' + f.type : '';
-          return '- ' + qu(name + type) + ' ' + (f.description ?? '').trim();
-        })
-        .join('\n')
-    : qu(ret.type ?? '');
-
-function definitionToFullMarkdown(
-  definition: GeneratedDefinition & (GeneratedType | GeneratedFunction),
-): string {
-  const parts: string[] = [];
-  if (definition.description) parts.push(definition.description.trim(), '');
-  if ('entries' in definition && definition.entries?.length) {
-    // The definition is a type, so it has entries.
-    parts.push(fieldList(definition.entries, true));
-  }
-  if ('signatures' in definition && definition.signatures?.length) {
-    // The definition is a function, so it has signatures.
-    const sig = definition.signatures[0];
-    const paramsTable = fieldList(sig.params ?? [], true);
-
-    if (paramsTable) parts.push('#### Parameters', '', paramsTable, '');
-    else parts.push('This function does not accept any parameters.');
-    const ret = sig.returns;
-    if (ret) parts.push('#### Returns', '', fieldList(ret), '');
-    else parts.push('This function does not return anything.');
-  }
-  return parts.join('\n');
-}
-
-// --- ReactFlowAPIProps ---
+// --- ReactFlowAPIProps tag replacement ---
 
 const REACT_FLOW_API_PROPS_TAG_RE = /<ReactFlowAPIProps\s+group=["']([^"']+)["']\s*\/>/g;
 
-async function getReactFlowAPIPropsReplacement(group: string): Promise<string> {
+function getReactFlowAPIPropsReplacement(group: string): string {
   const normalizedGroup = group.trim() as ReactFlowAPIPropsGroup;
   const validGroups: ReactFlowAPIPropsGroup[] = [
     'common',
@@ -78,15 +37,11 @@ async function getReactFlowAPIPropsReplacement(group: string): Promise<string> {
   }
 }
 
-// --- APIDocs ---
-
-const APIDOCS_TAG_RE = /<APIDocs\s+[\s\S]*?\/>/g;
-const APIDOCS_ATTR_RE = /(\w+)="([^"]*)"/g;
-
-function parseAPIDocsAttrs(tag: string): Record<string, string> {
-  const attrs: Record<string, string> = {};
-  for (const m of tag.matchAll(APIDOCS_ATTR_RE)) attrs[m[1]] = m[2];
-  return attrs;
+function stripReactFlowAPIPropsImports(text: string): string {
+  return text.replace(
+    /^import\s+\{\s*ReactFlowAPIProps\s*\}\s+from\s+['"]@\/references\/ReactFlow\.props['"];\s*$/gm,
+    '',
+  );
 }
 
 /**
@@ -94,7 +49,7 @@ function parseAPIDocsAttrs(tag: string): Record<string, string> {
  * @returns The code for the APIDocs tag that `nextra/tsdoc` can use to generate the definition
  * via `generateDefinition`.
  */
-function getAPIDocsCode(
+function getReactAPIDocsCode(
   attrs: Record<string, string>,
 ): { code: string; flattened?: boolean } | null {
   if (attrs.functionName) {
@@ -106,9 +61,9 @@ function getAPIDocsCode(
   if (attrs.componentName) {
     const { componentName, groupKeys } = attrs;
     let code = `
-import type { ComponentProps, HTMLAttributes, SVGAttributes } from 'react'
-import type { ${componentName} } from '@xyflow/react'
-type MyProps = ComponentProps<typeof ${componentName}>`;
+  import type { ComponentProps, HTMLAttributes, SVGAttributes } from 'react'
+  import type { ${componentName} } from '@xyflow/react'
+  type MyProps = ComponentProps<typeof ${componentName}>`;
     code += groupKeys
       ? `\ntype WithGroupedProps = Omit<MyProps, keyof ${groupKeys}> & { '...props': ${groupKeys} }\nexport default WithGroupedProps`
       : '\nexport default MyProps';
@@ -121,43 +76,22 @@ type MyProps = ComponentProps<typeof ${componentName}>`;
   return null;
 }
 
-async function getAPIDocsReplacement(tag: string): Promise<string> {
-  const attrs = parseAPIDocsAttrs(tag);
-  const codeOpt = getAPIDocsCode(attrs);
-  if (!codeOpt) return '[APIDocs: missing componentName, functionName, or typeName]';
-
-  try {
-    const definition = generateDefinition(codeOpt);
-    return definitionToFullMarkdown(definition);
-  } catch (error) {
-    /* fallback */
-    console.error('Error generating APIDocs definition:', error);
-    return `[APIDocs: error generating definition: ${error instanceof Error ? error.message : String(error)}]`;
-  }
-}
-
-/** Expands <ReactFlowAPIProps> and <APIDocs> tags to markdown (tsdoc pipeline). */
-async function expandTsDocTags(source: string): Promise<string> {
+/** Expands <ReactFlowAPIProps>, <SvelteFlowAPIProps>, and <APIDocs> tags to markdown (tsdoc pipeline). */
+function expandTsDocTags(source: string): string {
   let result = source;
   for (const [tag, group] of source.matchAll(REACT_FLOW_API_PROPS_TAG_RE)) {
-    result = result.replace(tag, await getReactFlowAPIPropsReplacement(group));
+    result = result.replace(tag, getReactFlowAPIPropsReplacement(group));
   }
+
   for (const [tag] of source.matchAll(APIDOCS_TAG_RE)) {
-    result = result.replace(tag, await getAPIDocsReplacement(tag));
+    result = result.replace(tag, getAPIDocsReplacement(getReactAPIDocsCode, tag));
   }
   return result;
 }
 
-function stripReactFlowAPIPropsImports(text: string): string {
-  return text.replace(
-    /^import\s+\{\s*ReactFlowAPIProps\s*\}\s+from\s+['"]@\/references\/ReactFlow\.props['"];\s*$/gm,
-    '',
-  );
-}
-
 export async function buildLLMSTxt(sections: SectionKey[]): Promise<string> {
   return compileMdxSections('react', sections, {
-    expand: expandTsDocTags,
+    expand: (source) => expandTsDocTags(source),
     strip: stripReactFlowAPIPropsImports,
   });
 }
