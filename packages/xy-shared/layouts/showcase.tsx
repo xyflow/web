@@ -121,16 +121,15 @@ export function ShowcaseLayout({
                 imageWrapperClassName="w-full"
                 subtitle={
                   <>
-                    <span className="flex gap-2">
-                      {item.tags.map((tag) => (
-                        <Tag
-                          key={tag.id}
-                          name={tag.name}
-                          selected={selected.has(tag.name)}
-                          onClick={toggle}
-                        />
-                      ))}
-                    </span>
+                    {item.tags.map((tag) => (
+                      <Tag
+                        key={tag.id}
+                        name={tag.name}
+                        selected={selected.has(tag.name)}
+                        onClick={toggle}
+                        className="mr-2 mb-2"
+                      />
+                    ))}
                   </>
                 }
                 description={item.description}
@@ -172,8 +171,8 @@ function Tag({ name, selected = false, onClick, className }: TagProps) {
   return (
     <button
       className={cn(
-        'rounded-xl text-xs px-2 py-1',
-        selected ? 'bg-primary text-white' : 'bg-gray-200',
+        'rounded-xl text-xs px-2 py-1 cursor-pointer bg-muted hover:bg-primary hover:text-white',
+        { 'bg-primary text-white': selected },
         className,
       )}
       onClick={() => onClick(name)}
@@ -219,7 +218,7 @@ function CaseStudyPreview({
     <Container
       variant="dark"
       className="col-span-full"
-      innerClassName="px-4 py-8 flex flex-wrap gap-12 relative w-full items-center shadow-none bg-none bg-card/10 lg:px-12 lg:py-12"
+      innerClassName="px-4 py-8 flex flex-wrap gap-12 relative w-full items-center shadow-none bg-card/10 lg:px-12 lg:py-12"
     >
       <div className="max-md:w-full max-md:order-2 md:w-1/2">
         <Text className="text-primary mb-4">{data.client}</Text>
@@ -232,7 +231,7 @@ function CaseStudyPreview({
             asChild
             size="lg"
             variant="secondary"
-            className="text-black hover:bg-card w-full md:w-auto"
+            className="text-foreground/80 hover:bg-secondary/60 w-full md:w-auto"
           >
             <Link href={route}>Read Case Study</Link>
           </Button>

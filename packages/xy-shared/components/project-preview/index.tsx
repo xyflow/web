@@ -68,7 +68,6 @@ export function ProjectPreview({
             'aspect-video',
             'relative',
             'overflow-hidden',
-            'bg-gray-50',
             imageWrapperClassName,
           )}
           size="sm"
