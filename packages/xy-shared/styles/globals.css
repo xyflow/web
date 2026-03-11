@@ -132,7 +132,7 @@
     --background: 0 0% 6.7%;
     --foreground: 0 0% 100%;
 
-    --muted: 210 40% 12.9%;
+    --muted: 210 0% 12.9%;
     --muted-foreground: 215.4 16.3% 65%;
 
     --popover: 0 0% 6.7%;
@@ -268,14 +268,22 @@ article.nextra-content ol li p {
   color: #222;
 }
 
+.body .DocSearch--active {
+  margin-inline-end: 0;
+}
+
 /* 7. DocSearch */
 .DocSearch-Button {
   background-color: hsl(var(--muted));
+  border-radius: 100px;
+  border-color: transparent;
+  color: hsl(var(--muted-foreground));
 }
 
 .DocSearch-Button:hover {
   background-color: hsl(var(--muted));
   color: hsl(var(--foreground));
+  border-color: hsl(var(--primary));
 }
 
 .DocSearch-Button .DocSearch-Search-Icon {
@@ -297,9 +305,8 @@ article.nextra-content ol li p {
   top: 0;
   width: auto;
   height: auto;
-  padding: 0;
-  margin: 0;
-  margin-left: 4px;
+  border: none;
+  color: hsl(var(--muted-foreground));
 }
 
 .DocSearch-Button .DocSearch-Button-Placeholder {
