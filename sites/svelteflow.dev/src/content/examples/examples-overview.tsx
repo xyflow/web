@@ -25,14 +25,14 @@ export async function ExamplesOverview() {
           prefetch={false}
         >
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-            <Container className="col-span-2 aspect-video">
+            <Container className="col-span-2 aspect-video border-none">
               <ThemeAwareImage
                 lightSrc={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/examples/misc/feature-overview/preview.jpg?v=4`}
                 darkSrc={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/examples/misc/feature-overview/preview-dark.jpg?v=9`}
                 width={1024}
                 height={768}
                 alt="Feature Overview Example Preview"
-                priority
+                preload
                 style={{ objectFit: 'contain' }}
                 className="group-hover:scale-[1.05] transition-transform"
               />
@@ -119,7 +119,7 @@ export async function ExamplesOverview() {
                           linkClassName="text-muted-foreground font-medium text-sm group-hover:text-primary"
                           kicker={category.title.toUpperCase()}
                           kickerSize="xs"
-                          imageWrapperClassName="p-0 shadow-md border-none"
+                          imageWrapperClassName="p-0 shadow-md border-none bg-trasparent rounded-none"
                         />
                       </ContentGridItem>
                     ),
