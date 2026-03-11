@@ -27,13 +27,13 @@ export async function ExamplesOverview() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
             <Container className="col-span-2 aspect-video">
               <ThemeAwareImage
-                lightSrc={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/examples/misc/feature-overview/preview.jpg?v=3`}
-                darkSrc={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/examples/misc/feature-overview/preview-dark.jpg?v=8`}
+                lightSrc={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/examples/misc/feature-overview/preview.jpg?v=4`}
+                darkSrc={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/svelte/examples/misc/feature-overview/preview-dark.jpg?v=9`}
                 width={1024}
                 height={768}
                 alt="Feature Overview Example Preview"
                 priority
-                style={{ objectFit: 'contain', display: 'block' }}
+                style={{ objectFit: 'contain' }}
                 className="group-hover:scale-[1.05] transition-transform"
               />
             </Container>

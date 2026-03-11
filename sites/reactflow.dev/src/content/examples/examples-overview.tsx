@@ -33,7 +33,7 @@ export async function ExamplesOverview() {
                 height={768}
                 alt="Feature Overview Example Preview"
                 priority
-                style={{ objectFit: 'contain', display: 'block' }}
+                style={{ objectFit: 'contain' }}
                 className="group-hover:scale-[1.05] transition-transform"
               />
             </Container>
