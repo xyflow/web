@@ -22,8 +22,3 @@
     --secondary-foreground: var(--color-svelte);
   }
 }
-
-/* Hide `Pro` link from the desktop navbar */
-.nextra-navbar > nav > div > a[href='/pro'] {
-  display: none;
-}

@@ -4,7 +4,7 @@ import { type ComponentProps } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { SparklesIcon } from '@heroicons/react/24/solid';
-import { Button } from '../../ui/button';
+import { Button } from '../ui/button';
 
 const buttonProps: ComponentProps<typeof Button> = {
   asChild: true,

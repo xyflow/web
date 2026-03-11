@@ -368,3 +368,7 @@ article.nextra-content ol li p {
 .logo-fg-color {
   fill: hsl(var(--foreground));
 }
+
+.site-native-navbar > div:nth-of-type(2) {
+  display: none;
+}
