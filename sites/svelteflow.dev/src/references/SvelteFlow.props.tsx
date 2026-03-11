@@ -3,7 +3,7 @@ import { useMDXComponents as getMDXComponents } from '@/mdx-components';
 
 const { APIDocs } = getMDXComponents() as unknown as { APIDocs: FC<{ code?: string }> };
 
-const FIELDS = {
+export const FIELDS = {
   viewport: [
     'viewport',
     'initialViewport',
@@ -110,9 +110,9 @@ const FIELDS = {
   ],
 };
 
-export const SvelteFlowAPIProps: FC<{ group: keyof typeof FIELDS | 'common' }> = ({
-  group,
-}) => {
+export type SvelteFlowAPIPropsGroup = keyof typeof FIELDS | 'common';
+
+export function getSvelteFlowAPIPropsType(group: SvelteFlowAPIPropsGroup): string {
   let myType: string;
   if (group === 'common') {
     const omittedFields = Object.values(FIELDS)
@@ -132,15 +132,20 @@ Omit<
     myType = `Pick<SvelteFlowProps, ${pickedFields}>`;
   }
 
-  return (
-    <APIDocs
-      code={`
+  return myType;
+}
+
+export function getSvelteFlowAPIPropsCode(group: SvelteFlowAPIPropsGroup): string {
+  const myType = getSvelteFlowAPIPropsType(group);
+  return `
 import type { SvelteFlowProps } from '@xyflow/svelte'
 import type { HTMLAttributes } from 'svelte/elements'
 
 type $ = ${myType}
 
-export default $`}
-    />
-  );
+export default $`;
+}
+
+export const SvelteFlowAPIProps: FC<{ group: SvelteFlowAPIPropsGroup }> = ({ group }) => {
+  return <APIDocs code={getSvelteFlowAPIPropsCode(group)} />;
 };
