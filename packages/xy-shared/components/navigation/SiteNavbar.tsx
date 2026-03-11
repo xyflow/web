@@ -318,13 +318,13 @@ function SiteNavLinks({ siteName = 'React Flow' }: SiteNavLinksProps) {
       <NavLink href="/api-reference" active={isActive('/api-reference')}>
         Reference
       </NavLink>
-      <NavDropdown label="Examples" items={EXAMPLES_ITEMS} />
+      <NavDropdown label="Examples" items={EXAMPLES_ITEMS} href="/examples" />
       {isReact && (
         <NavLink href="/ui" active={isActive('/ui')}>
           UI
         </NavLink>
       )}
-      <NavDropdown label="Pro" items={proItems} active={isActive('/pro')} />
+      <NavDropdown label="Pro" href="/pro" items={proItems} active={isActive('/pro')} />
       <NavLink href="/showcase" active={isActive('/showcase')}>
         Showcase
       </NavLink>
