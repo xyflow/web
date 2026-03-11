@@ -67,14 +67,10 @@
       "outputs": ["dist/**"],
       "inputs": [
         "$TURBO_DEFAULT$",
-        "!react/**/preview.jpg",
-        "!react/**/preview-dark.jpg",
-        "!react/**/preview.jpg.md5",
-        "!react/**/preview-dark.jpg.md5",
-        "!svelte/**/preview.jpg",
-        "!svelte/**/preview-dark.jpg",
-        "!svelte/**/preview.jpg.md5",
-        "!svelte/**/preview-dark.jpg.md5"
+        "!**/preview*.jpg",
+        "!**/preview*.png",
+        "!**/preview*.jpg.md5",
+        "!**/preview*.png.md5"
       ]
     },
     "ui-components#generate-registry": {

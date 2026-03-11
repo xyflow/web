@@ -8,6 +8,10 @@ import sharp from 'sharp';
 
 const __dirname = Url.fileURLToPath(new URL('.', import.meta.url));
 
+const screenshotOptions = {
+  type: 'png',
+} as const;
+
 // Parse command line arguments
 const args = process.argv.slice(2);
 const onlyMissing = args.includes('--only-missing') || args.includes('-m');
@@ -169,7 +173,9 @@ async function makeScreenshots(dir: string, selector: string, page: Page): Promi
 
       try {
         await page.waitForSelector(selector, { timeout: 5000 });
-        const freezeDelay = ANIMATED_EXAMPLE_PATHS.has(normalizedRelativePath) ? freezeAfterMs : 0;
+        const freezeDelay = ANIMATED_EXAMPLE_PATHS.has(normalizedRelativePath)
+          ? freezeAfterMs
+          : 0;
         await settleAndFreezePage(page, freezeDelay);
 
         if (shouldCapture.light) {
@@ -180,9 +186,7 @@ async function makeScreenshots(dir: string, selector: string, page: Page): Promi
             })();
           `);
           await sleep(100);
-          const lightImage = (await page.screenshot({
-            type: 'png',
-          })) as Uint8Array;
+          const lightImage = (await page.screenshot(screenshotOptions)) as Uint8Array;
           const didUpdate = await writeScreenshotIfChanged(
             lightScreenshotPath,
             lightImage,
@@ -203,9 +207,7 @@ async function makeScreenshots(dir: string, selector: string, page: Page): Promi
             })();
           `);
           await sleep(100);
-          const darkImage = (await page.screenshot({
-            type: 'png',
-          })) as Uint8Array;
+          const darkImage = (await page.screenshot(screenshotOptions)) as Uint8Array;
           const didUpdate = await writeScreenshotIfChanged(
             darkScreenshotPath,
             darkImage,
@@ -402,7 +404,11 @@ function getScreenshotHashPath(outputPath: string): string {
   return `${outputPath}.md5`;
 }
 
-function createImageHash(image: { data: Uint8Array; width: number; height: number }): string {
+function createImageHash(image: {
+  data: Uint8Array;
+  width: number;
+  height: number;
+}): string {
   const hasher = createHash('md5');
   hasher.update(`${image.width}x${image.height}:`);
   hasher.update(image.data);

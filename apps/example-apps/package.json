@@ -7,8 +7,8 @@
     "dev": "vite dev",
     "build": "vite build",
     "scaffold": "node scripts/scaffold/index.js",
-    "screenshots": "pnpm --workspace-root turbo run build --filter=example-apps && concurrently --kill-others --success first \"vite preview --host 127.0.0.1 --strictPort --port 4173\" \"pnpm exec tsx scripts/generate-screenshots.ts --base-url http://127.0.0.1:4173\"",
-    "screenshots:missing": "pnpm --workspace-root turbo run build --filter=example-apps && concurrently --kill-others --success first \"vite preview --host 127.0.0.1 --strictPort --port 4173\" \"pnpm exec tsx scripts/generate-screenshots.ts --only-missing --base-url http://127.0.0.1:4173\""
+    "screenshots": "pnpm --workspace-root turbo run build --filter=example-apps --output-logs=new-only && concurrently --kill-others --success first \"vite preview --host 127.0.0.1 --strictPort --port 4173\" \"pnpm exec tsx scripts/generate-screenshots.ts --base-url http://127.0.0.1:4173\"",
+    "screenshots:missing": "pnpm --workspace-root turbo run build --filter=example-apps --output-logs=new-only && concurrently --kill-others --success first \"vite preview --host 127.0.0.1 --strictPort --port 4173\" \"pnpm exec tsx scripts/generate-screenshots.ts --only-missing --base-url http://127.0.0.1:4173\""
   },
   "exports": {
     "./package.json": "./package.json"
