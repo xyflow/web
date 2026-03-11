@@ -77,12 +77,95 @@ const metaRecord = {
     },
     items: {
       index: {
+        title: 'Overview',
         theme: {
           breadcrumb: false,
         },
       },
       overview: '',
-      // Rest of examples are added in `(content-pages)/layout.tsx` file
+      nodes: {
+        items: {
+          'add-node-on-edge-drop': '',
+          'connection-limit': '',
+          'custom-node': '',
+          'delete-middle-node': '',
+          'drag-handle': '',
+          'easy-connect': '',
+          intersections: '',
+          'node-resizer': '',
+          'proximity-connect': '',
+          'node-position-animation': '',
+          shapes: '',
+          stress: '',
+          'update-node': '',
+        },
+      },
+      edges: {
+        items: {
+          'custom-connectionline': 'Custom Connection Line',
+          'custom-edges': '',
+          'edge-labels': '',
+          'edge-markers': '',
+          'edge-types': '',
+          'floating-edges': '',
+          'reconnect-edge': '',
+        },
+      },
+      interaction: {
+        items: {
+          'computing-flows': '',
+          'context-menu': '',
+          'contextual-zoom': '',
+          'drag-and-drop': '',
+          validation: '',
+          'copy-paste': '',
+          'undo-redo': '',
+        },
+      },
+      grouping: {
+        title: 'Subflows & Grouping',
+        items: {
+          'selection-grouping': '',
+          'parent-child-relation': '',
+        },
+      },
+      layout: {
+        items: {
+          dagre: '',
+          elkjs: '',
+          'horizontal-flow': '',
+          'expand-collapse': '',
+          'auto-layout': '',
+          'force-layout': '',
+          'node-collisions': '',
+          subflows: '',
+        },
+      },
+      styling: {
+        items: {
+          'base-style': '',
+          'dark-mode': '',
+          tailwind: '',
+          'turbo-flow': '',
+        },
+      },
+      whiteboard: {
+        items: {
+          eraser: '',
+          'lasso-selection': '',
+          rectangle: '',
+          'freehand-draw': '',
+        },
+      },
+      misc: {
+        items: {
+          transitions: '',
+          'download-image': '',
+          'threlte-flow': '',
+          'remove-attribution': '',
+          'server-side-image-creation': '',
+        },
+      },
     },
   },
   showcase: '',

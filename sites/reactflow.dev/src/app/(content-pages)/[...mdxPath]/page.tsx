@@ -1,15 +1,15 @@
 import { generateStaticParamsFor, importPage } from 'nextra/pages';
 import { normalizePages } from 'nextra/normalize-pages';
 import { getPageMap } from 'nextra/page-map';
+
 import { BaseBlogPostLayout } from 'xy-shared/layouts/blog-post-base';
 import { CaseStudyLayoutWrapper } from 'xy-shared/layouts/case-study-wrapper';
-
 import { useMDXComponents as getMdxComponents } from '@/mdx-components';
 import { getWhatsNew } from 'xy-shared/lib/get-whats-new';
 
 type Props = PageProps<'/[...mdxPath]'>;
 
-const { wrapper: Wrapper } = getMdxComponents();
+const { wrapper: Wrapper, h1: H1 } = getMdxComponents();
 
 export default async function Page(props: Props) {
   const params = await props.params;
@@ -20,6 +20,15 @@ export default async function Page(props: Props) {
   return (
     <Wrapper toc={toc} metadata={metadata} sourceCode={sourceCode}>
       {(async function (slug: string[]) {
+        const isExamples = slug[0] === 'examples';
+        if (isExamples) {
+          return (
+            <>
+              <H1>{metadata.title}</H1>
+              {mdx}
+            </>
+          );
+        }
         const isTutorials = slug[0] === 'learn' && slug[1] === 'tutorials';
         if (isTutorials) {
           return (
