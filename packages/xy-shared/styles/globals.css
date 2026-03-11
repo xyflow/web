@@ -268,11 +268,12 @@ article.nextra-content ol li p {
   color: #222;
 }
 
-.body .DocSearch--active {
+/* 7. DocSearch */
+.DocSearch--active {
+  /* Prevents jumping of site when search opens */
   margin-inline-end: 0 !important;
 }
 
-/* 7. DocSearch */
 .DocSearch-Button {
   background-color: hsl(var(--muted));
   border-radius: 100px;
