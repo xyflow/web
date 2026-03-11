@@ -269,7 +269,7 @@ article.nextra-content ol li p {
 }
 
 .body .DocSearch--active {
-  margin-inline-end: 0;
+  margin-inline-end: 0 !important;
 }
 
 /* 7. DocSearch */
