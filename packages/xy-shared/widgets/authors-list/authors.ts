@@ -69,6 +69,6 @@ export default {
     name: 'Alessandro Cheli',
     title: 'Software Engineer',
     url: 'https://cheli.dev',
-    image: 'https://cheli.dev/alessandro.jpg',
+    image: '/img/alessandro.jpg',
   },
 };
