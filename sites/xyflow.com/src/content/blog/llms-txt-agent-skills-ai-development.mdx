@@ -7,7 +7,7 @@ description:
 intro:
   'We’ve been thinking about how we can support AI development even when our users aren’t
   looking at our docs.'
-date: 16 March 2026
+date: 17 March 2026
 authors: ['hayleigh', 'alessandro']
 tags: ['react-flow', 'ai', 'docs']
 image: '...'
@@ -147,12 +147,23 @@ them as reference material an agent could choose to load if it wanted. Then, we 
 simple test harness to help us evaluate whether the skill was successful or not. The
 harness worked like this:
 
-1. First, we created an empty React Flow application to act as the basic foundation.
-2. Next, the harness copied the template app twice: once to act as the baseline, and a
-   second time with access to the skill(s) we wanted to evaluate.
-3. Then we ran the same prompt in both projects, making sure to use the same agent (Zed's
-   agent) and model (Claude Sonnet 4.6).
-4. Once both agents were finished, we took some notes comparing the output of each run.
+<ol className="text-lg mt-4 pl-4 leading-8">
+  <li>
+    1. First, we created an empty React Flow application to act as the basic foundation.
+  </li>
+  <li>
+    2. Next, the harness copied the template app twice: once to act as the baseline, and a
+    second time with access to the skill(s) we wanted to evaluate.
+  </li>
+  <li>
+    3. Then we ran the same prompt in both projects, making sure to use the same agent
+    (Zed's agent) and model (Claude Sonnet 4.6).
+  </li>
+  <li>
+    4. Once both agents were finished, we took some notes comparing the output of each
+    run.
+  </li>
+</ol>
 
 So how did this turn out? Let's take a look. Below is one of the prompts we tried and a
 side-by-side of the outputs produced. The prompt was left intentionally simple to give the
