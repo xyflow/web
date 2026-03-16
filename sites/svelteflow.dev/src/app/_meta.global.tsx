@@ -27,10 +27,10 @@ const metaRecord = {
   learn: {
     items: {
       index: '',
-      'getting-started': {
+      concepts: {
+        title: 'Core Concepts',
         items: {
-          'key-concepts': '',
-          installation: '',
+          overview: '',
           'building-a-flow': '',
           'built-in-components': 'Built-in Components',
         },

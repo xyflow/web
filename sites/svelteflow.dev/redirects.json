@@ -3,6 +3,25 @@
     "source": "/support-us",
     "destination": "/pro",
     "permanent": true
+  },
+  {
+    "source": "/learn/getting-started",
+    "destination": "/learn",
+    "permanent": true
+  },
+  {
+    "source": "/learn/getting-started/installation",
+    "destination": "/learn",
+    "permanent": true
+  },
+  {
+    "source": "/learn/getting-started/key-concepts",
+    "destination": "/learn/concepts/overview",
+    "permanent": true
+  },
+  {
+    "source": "/learn/getting-started/:path*",
+    "destination": "/learn/concepts/:path*",
+    "permanent": true
   }
 ]
-

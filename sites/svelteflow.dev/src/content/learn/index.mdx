@@ -8,21 +8,46 @@ description:
 import { Callout, Cards } from 'nextra/components';
 import { Emoji } from 'xy-shared/components/ui/emoji';
 
-# Quickstart
+# Quick Start
 
-If you want to get up and running as soon as possible, you're in the right place! This
-page will take you from zero to a working Svelte Flow app in a few minutes. From there,
-you can take a deeper look at what Svelte Flow is all about, check out the examples, or
-dive into the API docs.
+This page will take you from zero to a working Svelte Flow app in a few minutes.
+From there, you can take a deeper look at what Svelte Flow is all about, check
+out the examples, or dive into the API docs.
+If you want to get up and running as soon as possible, you're in the right place! 
 
-## Dependency
+## Installation 
 
-Svelte Flow is published on npm as
-[`@xyflow/svelte`](https://npmjs.com/package/@xyflow/svelte).
+First, spin up a new [Svelte](https://svelte.dev/) project however you like; we recommend
+using [Vite](https://vitejs.dev/) and
+[SvelteKit](https://svelte.dev/docs/kit/introduction) but the choice is yours.
+
+```bash copy npm2yarn
+npx sv create my-svelte-flow-app
+```
+
+Then, navigate to your project directory and install the Svelte Flow package:
 
 ```bash copy npm2yarn
 npm install @xyflow/svelte
 ```
+
+Now you can import the Svelte Flow component and the styles in your application:
+
+```js
+import { SvelteFlow } from '@xyflow/svelte';
+import '@xyflow/svelte/dist/style.css';
+```
+
+
+{/* I Would not recommend using degit */}
+{/* ## Hit the ground running
+
+To get folks building quickly, we have a template repository on GitHub that uses Vite and
+Svelte. You can find the template
+[here](https://github.com/xyflow/vite-svelte-flow-template). */}
+
+{/* 
+TODO KEEP? Add to React Flow too?
 
 ## Play online
 
@@ -48,7 +73,10 @@ projects we have on [Stackblitz](https://stackblitz.com):
       </div>
     }
   />
-</Cards>
+</Cards> */}
+
+{/* 
+TODO KEEP?
 
 ## Vite template
 
@@ -57,33 +85,10 @@ If you want to get started right away, you can use our
 
 ```bash copy npm2yarn
 npx degit xyflow/vite-svelte-flow-template app-name
-```
+``` */}
 
-## Project Setup
 
-To get started locally, you should have a few things:
-
-- [Node.js](https://nodejs.org/en/) installed.
-- Either npm or another package manager like [yarn](https://yarnpkg.com/) or
-  [pnpm](https://pnpm.io/).
-- Some knowledge of [Svelte](https://svelte.dev/). You don't need to be an expert, but you
-  should be comfortable with the basics.
-
-First, spin up a new [Svelte](https://svelte.dev/) project however you like; we recommend
-using [Vite](https://vitejs.dev/) and
-[SvelteKit](https://svelte.dev/docs/kit/introduction) but the choice is yours.
-
-```bash copy npm2yarn
-npx sv create my-svelte-flow-app
-```
-
-Then, navigate to your project directory and install the Svelte Flow package:
-
-```bash copy npm2yarn
-npm install @xyflow/svelte
-```
-
-## Creating your first flow
+## Usage
 
 The `@xyflow/svelte` package exports the `<SvelteFlow />` component, which is the
 entrypoint for you flow. Importing the default styles and defining a handful of nodes and
@@ -119,3 +124,38 @@ There are a few things to pay attention to here:
   <SvelteFlow bind:nodes bind:edges />
 </div>
 ```
+
+
+## Result
+
+Et voila. You've already created your first interactive flow! <Emoji content="🎉" />
+
+<RemoteCodeViewer route="learn/quickstart" framework="svelte" />
+
+{/* 
+Keep? Add to React Flow too?
+
+
+## Prior Experience Needed
+
+Svelte Flow is a Svelte library. That means Svelte developers will feel comfortable using
+it. If basic Svelte terms and concepts like reactive state, props, components, and
+lifecycle methods are unfamiliar to you, you might need to learn more about Svelte before
+being able to use Svelte Flow fully. If you've never used Svelte before, we recommend
+first getting started on Svelte through the
+[official tutorial](https://svelte.dev/tutorial/svelte/welcome-to-svelte). */}
+
+
+## Next steps
+
+<Cards>
+  <Cards.Card title="Core Concepts" href="/learn/concepts/overview" />
+  <Cards.Card title="Customization" href="/learn/customization/custom-nodes" />
+  <Cards.Card title="Examples" href="/examples" />
+  <Cards.Card title="API Reference" href="/api-reference" />
+  <Cards.Card title="Discord" href="https://discord.gg/RVmnytFmGW" />
+  <Cards.Card
+    title="Template Projects"
+    href="https://github.com/xyflow/react-flow-example-apps"
+  />
+</Cards>
