@@ -1,7 +1,5 @@
 import { Cards } from 'nextra/components';
-import { Link } from '../ui/link';
 import { useMDXComponents } from 'nextra-theme-docs';
-import { ExternalLinkIcon } from 'lucide-react';
 
 type PlayOnlineProps = {
   frameworkName: string;
