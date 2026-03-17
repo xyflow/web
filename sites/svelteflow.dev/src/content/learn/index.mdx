@@ -7,6 +7,7 @@ description:
 
 import { Callout, Cards } from 'nextra/components';
 import { Emoji } from 'xy-shared/components/ui/emoji';
+import PlayOnline from 'xy-shared/components/learn/play-online';
 
 # Quick Start
 
@@ -14,6 +15,8 @@ This page will take you from zero to a working Svelte Flow app in a few minutes.
 From there, you can take a deeper look at what Svelte Flow is all about, check
 out the examples, or dive into the API docs.
 If you want to get up and running as soon as possible, you're in the right place! 
+
+<PlayOnline frameworkName="Svelte Flow" jsHref="https://new.svelteflow.dev/js" tsHref="https://new.svelteflow.dev/ts" />
 
 ## Installation 
 
@@ -31,13 +34,6 @@ Then, navigate to your project directory and install the Svelte Flow package:
 npm install @xyflow/svelte
 ```
 
-Now you can import the Svelte Flow component and the styles in your application:
-
-```js
-import { SvelteFlow } from '@xyflow/svelte';
-import '@xyflow/svelte/dist/style.css';
-```
-
 
 {/* I Would not recommend using degit */}
 {/* ## Hit the ground running
@@ -46,34 +42,8 @@ To get folks building quickly, we have a template repository on GitHub that uses
 Svelte. You can find the template
 [here](https://github.com/xyflow/vite-svelte-flow-template). */}
 
-{/* 
-TODO KEEP? Add to React Flow too?
 
-## Play online
 
-You can try Svelte Flow without setting anything up locally by checking out the starter
-projects we have on [Stackblitz](https://stackblitz.com):
-
-<Cards num={2}>
-  <Cards.Card
-    title="new.svelteflow.dev/js"
-    href="https://new.svelteflow.dev/js"
-    icon={
-      <div className="rounded-full w-10 h-10 bg-yellow-200 text-gray-700 font-black flex items-center justify-center">
-        JS
-      </div>
-    }
-  />
-  <Cards.Card
-    title="new.svelteflow.dev/ts"
-    href="https://new.svelteflow.dev/ts"
-    icon={
-      <div className="rounded-full w-10 h-10 bg-blue-500 text-white font-black flex items-center justify-center">
-        TS
-      </div>
-    }
-  />
-</Cards> */}
 
 {/* 
 TODO KEEP?
@@ -107,7 +77,6 @@ There are a few things to pay attention to here:
 ```svelte
 <script>
   import { SvelteFlow } from '@xyflow/svelte';
-
   import '@xyflow/svelte/dist/style.css';
 
   let nodes = $state.raw([

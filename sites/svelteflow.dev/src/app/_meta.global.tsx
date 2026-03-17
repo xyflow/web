@@ -36,10 +36,12 @@ const metaRecord = {
         },
       },
       customization: {
-        title: 'Customizing Svelte Flow',
+        title: 'Customization',
         items: {
-          'custom-nodes': '',
-          'custom-edges': '',
+          'custom-nodes': 'Nodes',
+          handles: '',
+          'custom-edges': 'Edges',
+          'edge-labels': 'Edge Labels',
           theming: '',
         },
       },
