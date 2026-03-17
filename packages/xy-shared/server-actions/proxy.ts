@@ -13,6 +13,7 @@ export async function proxy(request: NextRequest) {
   const session = await handleNhostMiddleware(request, response);
 
   const path = request.nextUrl.pathname;
+  console.log('proxy for', path);
 
   const hasUserSession = session !== null;
 

@@ -6,9 +6,6 @@ settings:
 
 catalogs:
   default:
-    '@nhost/nhost-js':
-      specifier: ^4.2.2
-      version: 4.2.2
     '@tailwindcss/postcss':
       specifier: ^4.1.18
       version: 4.1.18
@@ -18,9 +15,6 @@ catalogs:
     '@types/react':
       specifier: ^19.2.8
       version: 19.2.8
-    '@types/react-dom':
-      specifier: ^19.2.3
-      version: 19.2.3
     '@xyflow/react':
       specifier: ^12.10.0
       version: 12.10.0
@@ -30,9 +24,6 @@ catalogs:
     '@xyflow/system':
       specifier: ^0.0.74
       version: 0.0.74
-    eslint:
-      specifier: ^9.39.2
-      version: 9.39.2
     next:
       specifier: ^16.1.4
       version: 16.1.4
@@ -45,9 +36,6 @@ catalogs:
     nextra-theme-docs:
       specifier: ^4.6.1
       version: 4.6.1
-    prettier:
-      specifier: ^3.8.0
-      version: 3.8.0
     react:
       specifier: ^19.2.3
       version: 19.2.3
@@ -549,9 +537,6 @@ importers:
       '@heroicons/react':
         specifier: ^2.2.0
         version: 2.2.0(react@19.2.3)
-      '@nhost/nhost-js':
-        specifier: ^4.1.0
-        version: 4.1.0
       '@typeform/embed-react':
         specifier: ^4.4.0
         version: 4.6.0(react@19.2.3)
@@ -637,9 +622,6 @@ importers:
       '@heroicons/react':
         specifier: ^2.2.0
         version: 2.2.0(react@19.2.3)
-      '@nhost/nhost-js':
-        specifier: ^4.1.0
-        version: 4.1.0
       '@typeform/embed-react':
         specifier: ^4.4.0
         version: 4.6.0(react@19.2.3)
@@ -1868,10 +1850,6 @@ packages:
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [win32]
-
-  '@nhost/nhost-js@4.1.0':
-    resolution: {integrity: sha512-tG5YETZDMcR/AIxM9IpTn5e+YgJKArpYA8iTwLMiILX20g309S5WRxju+93vDLw+nI0dqR8u/inKyNC6Ji/TDQ==}
-    engines: {node: '>=20'}
 
   '@nhost/nhost-js@4.2.2':
     resolution: {integrity: sha512-4ZCccQAI1o+2a7wb3yPMyQc8J1KNFRyOQoYsePFnW8K2GnlW4oYfJ5TS7eYVO960mbdi+BsALKgeoOETlhHQ3g==}
@@ -8557,10 +8535,6 @@ snapshots:
 
   '@next/swc-win32-x64-msvc@16.1.4':
     optional: true
-
-  '@nhost/nhost-js@4.1.0':
-    dependencies:
-      tslib: 2.8.1
 
   '@nhost/nhost-js@4.2.2':
     dependencies:

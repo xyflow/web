@@ -6,7 +6,7 @@ packages:
   - configs/*
 
 catalog:
-  '@nhost/nhost-js': ^4.2.2
+  '@nhost/nhost-js': ^4.5.0
   '@tailwindcss/postcss': ^4.1.18
   '@types/node': ^22.19.7
   '@types/react': ^19.2.8
