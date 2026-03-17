@@ -1,39 +1,36 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createNhostClient } from '../lib/nhost';
+import { handleNhostMiddleware } from '../lib/nhost';
 
-// Routes accessible to anyone — not redirected regardless of auth state
-const universalRoutes = ['examples'];
+const protectedRoutes = ['pro/dashboard', 'pro/team', 'pro/account', 'pro/support'];
 
-// Routes that are public but redirect logged-in users to dashboard
-const publicRoutes = ['sign-in', 'sign-up', 'reset-password', 'email-verification'];
+const redirectToDashboard = ['pro/sign-in', 'pro/sign-up', 'pro/'];
 
 export async function proxy(request: NextRequest) {
   // Handle Nhost authentication and token refresh
   // Always call this to ensure session is up-to-date
   // even for public routes, so that session changes are detected
-  const nhost = await createNhostClient();
+  const response = NextResponse.next();
+  const session = await handleNhostMiddleware(request, response);
+
   const path = request.nextUrl.pathname;
 
-  const isUniversalRoute = universalRoutes.some(
-    (route) => path === `/pro/${route}` || path.startsWith(`/pro/${route}/`),
-  );
-  if (isUniversalRoute) {
-    return NextResponse.next();
-  }
+  const hasUserSession = session !== null;
 
-  // If no session and not a public route, redirect to signin
-  const isPublicRoute = publicRoutes.some(
-    (route) => path === route || path.startsWith(`/pro/${route}`),
-  );
-  const hasUserSession = nhost.getUserSession();
+  const isProtectedRoute = protectedRoutes.includes(path);
 
-  if (!isPublicRoute) {
+  if (isProtectedRoute) {
     return hasUserSession
-      ? NextResponse.next()
+      ? response
       : NextResponse.redirect(new URL('/pro/sign-in', request.url));
   }
 
-  return hasUserSession
-    ? NextResponse.redirect(new URL('/pro/dashboard', request.url))
-    : NextResponse.next();
+  const isRedirectToDashboard = redirectToDashboard.includes(path);
+
+  if (isRedirectToDashboard) {
+    return hasUserSession
+      ? NextResponse.redirect(new URL('/pro/dashboard', request.url))
+      : response;
+  }
+
+  return response;
 }
