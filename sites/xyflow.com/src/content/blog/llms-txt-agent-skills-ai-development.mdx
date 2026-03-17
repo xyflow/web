@@ -1,38 +1,49 @@
 ---
-title: 'llms.txt for React Flow docs'
+title: 'Supporting AI development with React Flow and Svelte Flow'
 description:
-  'As more and more of our users are leaning on AI to help them develop React Flow apps,
-  we’ve been thinking about how we can support AI development even when our users aren’t
-  looking at our docs.'
+  'As more and more of our users are leaning on AI to help them develop React Flow
+  apps, we’ve been thinking about how we can support AI development even when our
+  users aren’t looking at our docs.'
 intro:
-  'We’ve been thinking about how we can support AI development even when our users aren’t
-  looking at our docs.'
+  'We’ve been thinking about how we can support AI development even when our users
+  aren’t looking at our docs.'
 date: 17 March 2026
 authors: ['hayleigh', 'alessandro']
-tags: ['react-flow', 'ai', 'docs']
+tags: ['react-flow', 'svelte-flow', 'ai', 'docs']
 image: '...'
 ---
 
-import { Bleed } from 'nextra/components';
+import { Bleed, Callout } from 'nextra/components';
 import { Image } from 'xy-shared';
 
-Hey, have you heard about this "AI" thing? It's kind of a big deal these days, or at least
-it is if our users are anything to go by. Take a peek at the
-[showcase](https://reactflow.dev/showcase) and you'll see that folks are building AI apps
-with React Flow in a big way, and they're not just building for AI, they're building
-_with_ AI too!
+Hey, have you heard about this "AI" thing? It's kind of a big deal these days, or
+at least it is if our users are anything to go by. Take a peek at the
+[showcase](https://reactflow.dev/showcase) and you'll see that folks are building
+AI apps with React Flow in a big way, and they're not just building for AI; they're
+building _with_ AI too!
 
-That got us thinking about how we might be able to meet where they are. If they're leaning
-on AI in their development workflows, they're less likely to be heading to our docs so how
-can we make sure they're having a good time?
+That got us thinking about how we might be able to meet where they are. If they're
+leaning on AI in their development workflows, they're more likely to ask questions
+or triage issues by engaging directly with an LLM. How can we make sure our docs
+are serving those users (and their agents) as well as the ones that come to us
+directly?
 
-We're a small team with limited resources, so we settled on exploring two different
-approaches:
+There are plenty of ways to teach LLMs how to do new things or give them access
+to specific data. We don't have the bandwidth to explore all of them, so we settled
+on exploring two different approaches:
 
-<ol className="text-lg mt-4 pl-4 leading-8">
-  <li>1. Generating an `/llms.txt` file from our existing documentation.</li>
-  <li>2. Turning our Pro Examples into reusable agent skills.</li>
+<ol className="text-lg mt-4 ml-4 pl-4 leading-8 list-decimal">
+  <li>Generating an `/llms.txt` file from our existing documentation.</li>
+  <li>Turning our Pro Examples into reusable agent skills.</li>
 </ol>
+
+<Callout type="info">
+  <strong>What about MCP?</strong> In the past some of our users have asked if
+  we had any plans on creating an MCP server for React Flow or Svelte Flow. A
+  Model Context Protocol (MCP) server can connect external agents to data sources,
+  tools, or workflows. We're just focusing on documentation and decided an MCP
+  server wouldn't be the right fit for now.
+</Callout>
 
 ## llms.txt is here!
 
@@ -46,6 +57,7 @@ The format for an `/llms.txt` is a simple markdown document made up of headings 
 and not much else. Here's a quick excerpt of React Flow's new
 [`/llms.txt`](https://reactflow.dev/llms.txt):
 
+<Bleed>
 ```md
 # React Flow documentation
 
@@ -61,6 +73,7 @@ and not much else. Here's a quick excerpt of React Flow's new
   - [The Viewport](https://reactflow.dev/learn/concepts/the-viewport): ...
   - [Built-In Components](https://reactflow.dev/learn/concepts/built-in-components): ...
 ```
+</Bleed>
 
 We first took a stab at this back in September 2025, but ultimately decided to hold off
 releasing anything. It turns out we were doing a few things wrong back then:
@@ -87,6 +100,7 @@ generate the response object _once_ at build-time which is fantastic!
 Here's an abridged version of our `/llms.txt` route in case you want to steal it for your
 own sites.
 
+<Bleed>
 ```ts
 import { getPageMap } from 'nextra/page-map';
 import { collectMarkdownLinks } from 'xy-shared/server';
@@ -114,6 +128,7 @@ ${collectMarkdownLinks('react', learn).trim()}
   });
 }
 ```
+</Bleed>
 
 We also went a bit further and adopted a variation of the standard by producing
 [`/llms-full.txt`](https://reactflow.dev/llms-full.txt) and
@@ -147,30 +162,33 @@ them as reference material an agent could choose to load if it wanted. Then, we 
 simple test harness to help us evaluate whether the skill was successful or not. The
 harness worked like this:
 
-<ol className="text-lg mt-4 pl-4 leading-8">
+<ol className="text-lg mt-4 ml-4 pl-4 leading-8 list-decimal">
   <li>
-    1. First, we created an empty React Flow application to act as the basic foundation.
+    First, we created an empty React Flow application to act as the basic
+    foundation.
   </li>
   <li>
-    2. Next, the harness copied the template app twice: once to act as the baseline, and a
-    second time with access to the skill(s) we wanted to evaluate.
+    Next, the harness copied the template app twice: once to act as the baseline,
+    and a second time with access to the skill(s) we wanted to evaluate.
   </li>
   <li>
-    3. Then we ran the same prompt in both projects, making sure to use the same agent
-    (Zed's agent) and model (Claude Sonnet 4.6).
+    Then we ran the same prompt in both projects, making sure to use the same
+    agent (Zed's agent) and model (Claude Sonnet 4.6).
   </li>
   <li>
-    4. Once both agents were finished, we took some notes comparing the output of each
-    run.
+    Once both agents were finished, we took some notes comparing the output of
+    each run.
   </li>
 </ol>
 
-So how did this turn out? Let's take a look. Below is one of the prompts we tried and a
-side-by-side of the outputs produced. The prompt was left intentionally simple to give the
-agent some room to improvise:
+So how did this turn out? This is one of the prompts we tried. The prompt was left
+intentionally simple to give the agent some room to improvise
 
-> Add some custom nodes so my users can create flow charts. Implement common flow chart
-> shapes like ovals, diamonds, etc.
+> Add some custom nodes so my users can create flow charts. Implement common flow
+> chart shapes like ovals, diamonds, etc.
+
+And here is a side-by-side comparison of both apps produced. Can you tell which
+is which?
 
 <Bleed>
   <div className="grid grid-cols-2 gap-4">
@@ -179,10 +197,9 @@ agent some room to improvise:
   </div>
 </Bleed>
 
-Can you tell which is which? If you guessed the image on the left was produced by the
-agent using the skill you'd be... **wrong**! Wait, what?! Upon first glance this might
-seem like a bit of a disaster, but if we dig in a little bit more the story is a bit
-different.
+If you guessed the image on the left was produced by the agent using the skill
+you'd be... **wrong**! Wait, what?! Upon first glance this might seem like a bit
+of a disaster, but if we dig in a little bit more the story is a bit different.
 
 On the one hand, the agent without the skill produced a much more impressive output than
 the one with access to the skill: the app is well-styled and has a sidebar with
@@ -195,9 +212,9 @@ current LLMs already appear to have a great handle of React Flow already.
 
 ## Looking forward
 
-We'll be deploying the `/llms.txt` work this week, for both React Flow and Svelte Flow. We
-think this might be even more useful for Svelte users, where there's less Svelte Flow code
-in the wild for the LLMs to have seen during training.
+The new `/llms.txt` work is already delpoyed for both React Flow and Svelte Flow.
+We think this might be even more useful for Svelte users, where there's less Svelte
+Flow code in the wild for the LLMs to have seen during training.
 
 As for agents, we're pausing our investigations into AI for now to focus on other things.
 But that doesn't mean we're done forever! If you're an avid user of LLMs or agentic
