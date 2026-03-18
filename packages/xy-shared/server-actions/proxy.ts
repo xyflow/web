@@ -10,7 +10,14 @@ export async function proxy(request: NextRequest) {
   // Always call this to ensure session is up-to-date
   // even for public routes, so that session changes are detected
   const response = NextResponse.next();
-  const session = await handleNhostMiddleware(request, response);
+  let session = null;
+
+  try {
+    session = await handleNhostMiddleware(request, response);
+  } catch (error) {
+    console.error('Error handling Nhost middleware:', error);
+    session = null;
+  }
 
   const path = request.nextUrl.pathname;
 
