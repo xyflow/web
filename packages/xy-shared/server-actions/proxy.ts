@@ -6,6 +6,14 @@ const protectedRoutes = ['/pro/dashboard', '/pro/team', '/pro/account', '/pro/su
 const redirectToDashboard = ['/pro/sign-in', '/pro/sign-up', '/pro/'];
 
 export async function proxy(request: NextRequest) {
+  const isPrefetch =
+    request.headers.has('next-router-prefetch') ||
+    request.headers.get('purpose') === 'prefetch';
+
+  if (isPrefetch) {
+    return NextResponse.next();
+  }
+
   // Handle Nhost authentication and token refresh
   // Always call this to ensure session is up-to-date
   // even for public routes, so that session changes are detected
