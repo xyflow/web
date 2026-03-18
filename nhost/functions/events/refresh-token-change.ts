@@ -31,10 +31,11 @@ export default async function refreshTokenChangeHandler(req: Request, res: Respo
   }
 
   const operation = req.body.event?.op;
-  const tokenId = currentRow?.id ?? previousRow?.id;
+  const newTokenId = currentRow?.id || 'undefined';
+  const oldTokenId = previousRow?.id || 'undefined';
 
   await sendDiscordNotification(
-    `refresh token ${operation} for ${username}${tokenId ? ` (token: ${tokenId})` : ''}`
+    `refresh token ${operation} for ${username} | new: ${newTokenId} | old: ${oldTokenId}`,
   );
 
   return res.status(200).json({
