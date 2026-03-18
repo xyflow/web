@@ -142,6 +142,34 @@ longer-form guides and tutorials – as well as the documentation for our
 by also including the full source of each of our examples as well as the entire API
 reference.
 
+## llms.txt improves AI coding tools results
+
+We were curious to see how our `/llms.txt` file would perform in a real-world
+scenario, so we asked Cursor to make a Svelte Flow app that would allow users to
+create simple flow charts. There is not much training data for Svelte Flow
+documentation in the wild, so we wanted to see if the LLM could use our
+`/llms.txt` file to navigate our docs and create a better app than it might have
+done otherwise without any additional context.
+
+Here's the prompt we used:
+
+> Create a simple svelte flow flowchart application.  Add some custom nodes so
+> my users can create flow charts. Implement common flow chart shapes like
+> ovals, diamonds, etc.
+
+<Image src="/img/blog/ai-experiments/baseline-svelte.png" alt="A screenshot of a
+basic Svelte Flow app made without any help from the llms.txt file." />
+
+Then, we asked cursor to make another app from scratch, but this time using our `/llms-full.txt` file to help it navigate the docs.
+
+> ...
+> Read the Svelte Flow documentation from `https://svelteflow.dev/llms-full.txt`
+
+<Image src="/img/blog/ai-experiments/with-llms-txt-svelte.png" alt="A screenshot
+of a Svelte Flow app made with the help of the llms.txt file. Looking much more
+polished and complete than the baseline app." />
+
+
 ## Agent skills won't help much... for now
 
 We also wanted to explore if there was anything we could offer to our
