@@ -31,8 +31,8 @@ export default async function refreshTokenChangeHandler(req: Request, res: Respo
   }
 
   const operation = req.body.event?.op;
-  const newTokenId = currentRow?.id || 'undefined';
-  const oldTokenId = previousRow?.id || 'undefined';
+  const newTokenId = currentRow?.refresh_token_hash || 'undefined';
+  const oldTokenId = previousRow?.refresh_token_hash || 'undefined';
 
   await sendDiscordNotification(
     `refresh token ${operation} for ${username} | new: ${newTokenId} | old: ${oldTokenId}`,
