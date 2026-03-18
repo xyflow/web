@@ -113,5 +113,5 @@ export async function handleNhostMiddleware(
 
   // we only want to refresh the session if  the token will
   // expire in the next 60 seconds
-  return await nhost.refreshSession(60);
+  return await nhost.refreshSession(0);
 }
