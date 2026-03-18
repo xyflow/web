@@ -31,14 +31,14 @@ export default async function refreshTokenChangeHandler(req: Request, res: Respo
   }
 
   const operation = req.body.event?.op;
-  const expiresAt = currentRow?.expires_at ?? previousRow?.expires_at;
+  const tokenId = currentRow?.id ?? previousRow?.id;
 
   await sendDiscordNotification(
-    `refresh token ${operation} for ${username} (${userId})${expiresAt ? ` (expires: ${expiresAt})` : ''}`
+    `refresh token ${operation} for ${username}${tokenId ? ` (token: ${tokenId})` : ''}`
   );
 
   return res.status(200).json({
     success: true,
-    message: `sent refresh token ${operation} notification for ${username} (${userId}).`,
+    message: `sent refresh token ${operation} notification for ${username}.`,
   });
 }
