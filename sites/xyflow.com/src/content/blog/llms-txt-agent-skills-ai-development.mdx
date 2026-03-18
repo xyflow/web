@@ -19,7 +19,7 @@ import { Image } from 'xy-shared';
 Hey, have you heard about this "AI" thing? It's kind of a big deal these days, or
 at least it is if our users are anything to go by. Take a peek at the
 [showcase](https://reactflow.dev/showcase) and you'll see that folks are building
-AI apps with React Flow in a big way, and they're not just building for AI; they're
+AI apps with [React Flow](https://reactflow.dev) in a big way, and they're not just building for AI; they're
 building _with_ AI too!
 
 That got us thinking about how we might be able to meet where they are. If they're
@@ -39,7 +39,7 @@ on exploring two different approaches:
 
 <Callout type="info">
   <strong>What about MCP?</strong> In the past some of our users have asked if
-  we had any plans on creating an MCP server for React Flow or Svelte Flow. A
+  we had any plans on creating an MCP server for [React Flow](https://reactflow.dev) or [Svelte Flow](https://svelteflow.dev). A
   Model Context Protocol (MCP) server can connect external agents to data sources,
   tools, or workflows. We're just focusing on documentation and decided an MCP
   server wouldn't be the right fit for now.
@@ -54,7 +54,7 @@ needs. This works well because the context doesn't get filled with wasted HTML w
 LLM navigates around the site.
 
 The format for an `/llms.txt` is a simple markdown document made up of headings and links
-and not much else. Here's a quick excerpt of React Flow's new
+and not much else. Here's a quick excerpt of [React Flow](https://reactflow.dev)'s new
 [`/llms.txt`](https://reactflow.dev/llms.txt):
 
 <Bleed>
@@ -145,8 +145,8 @@ reference.
 ## llms.txt improves AI coding tools results
 
 We were curious to see how our `/llms.txt` file would perform in a real-world
-scenario, so we asked Cursor to make a Svelte Flow app that would allow users to
-create simple flow charts. There is not much training data for Svelte Flow
+scenario, so we asked Cursor to make a [Svelte Flow](https://svelteflow.dev) app that would allow users to
+create simple flow charts. There is not much training data for [Svelte Flow](https://svelteflow.dev)
 documentation in the wild, so we wanted to see if the LLM could use our
 `/llms.txt` file to navigate our docs and create a better app than it might have
 done otherwise without any additional context.
@@ -192,7 +192,7 @@ harness worked like this:
 
 <ol className="text-lg mt-4 ml-4 pl-4 leading-8 list-decimal">
   <li>
-    First, we created an empty React Flow application to act as the basic
+    First, we created an empty [React Flow](https://reactflow.dev) application to act as the basic
     foundation.
   </li>
   <li>
@@ -236,11 +236,11 @@ functioning drag-and-drop. On the other, _we never asked for those things_.
 It seems like when the skill is available, its primary utility – at least in a task like
 this – is to keep the agent focused on the task. We might continue to tinker with this
 idea over time, but for now it seems like writing these skills takes too much effort and
-current LLMs already appear to have a great handle of React Flow already.
+current LLMs already appear to have a great handle of [React Flow](https://reactflow.dev) already.
 
 ## Looking forward
 
-The new `/llms.txt` work is already delpoyed for both React Flow and Svelte Flow.
+The new `/llms.txt` work is already delpoyed for both [React Flow](https://reactflow.dev) and Svelte Flow.
 We think this might be even more useful for Svelte users, where there's less Svelte
 Flow code in the wild for the LLMs to have seen during training.
 
