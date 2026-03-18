@@ -6,11 +6,13 @@ const protectedRoutes = ['/pro/dashboard', '/pro/team', '/pro/account', '/pro/su
 const redirectToDashboard = ['/pro/sign-in', '/pro/sign-up', '/pro/'];
 
 export async function proxy(request: NextRequest) {
-  const isPrefetch =
+  const isSubrequest =
+    request.headers.has('rsc') ||
+    request.nextUrl.searchParams.has('_rsc') ||
     request.headers.has('next-router-prefetch') ||
     request.headers.get('purpose') === 'prefetch';
 
-  if (isPrefetch) {
+  if (isSubrequest) {
     return NextResponse.next();
   }
 
