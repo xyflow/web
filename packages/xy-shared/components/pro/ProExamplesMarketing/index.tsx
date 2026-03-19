@@ -204,6 +204,7 @@ export const ProExamplesMarketing: FC<ProExamplesMarketingProps> = async ({
               title={example.name}
               description={example.detailedDescription}
               linkLabel="Demo"
+              imageWrapperClassName="shadow-md bg-transparent border-none p-px rounded-xl pro-example-preview-thumb"
             />
           </ContentGridItem>
         ))}

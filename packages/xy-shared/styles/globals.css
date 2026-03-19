@@ -80,6 +80,44 @@
   max-width: theme(--container-2xl);
 }
 
+/*
+ * Pro example preview thumbnails (examples overview, pro examples overview, ProExamplesMarketing).
+ * Inner `Container` shell is reset via `.pro-example-preview-thumb > div` below.
+ */
+@utility pro-example-preview-thumb {
+  padding: 1px;
+  border-style: none !important;
+  background-color: transparent;
+  background-origin: border-box;
+  background-image: conic-gradient(
+    from 135deg at 78% 88%,
+    hsl(var(--primary)) 0deg,
+    #f2f2f2 100deg,
+    #ffffff 150deg,
+    #f2f2f2 240deg,
+    hsl(var(--primary)) 280deg
+  );
+
+  @variant dark {
+    background-image: conic-gradient(
+      from 135deg at 78% 88%,
+      hsl(var(--primary) / 0.7) 0deg,
+      #4d4d4d 100deg,
+      #1e1e1e 150deg,
+      #4d4d4d 240deg,
+      hsl(var(--primary) / 0.7) 280deg
+    );
+  }
+}
+
+/* Strip default inner Container chrome when outer uses pro-example-preview-thumb */
+.pro-example-preview-thumb > div {
+  border-style: none !important;
+  box-shadow: none !important;
+  background-color: transparent !important;
+  border-radius: calc(0.75rem - 1px);
+}
+
 /* 2. Base Styles */
 :root {
   --docsearch-primary-color: hsl(var(--primary));

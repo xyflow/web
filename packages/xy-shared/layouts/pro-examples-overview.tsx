@@ -79,7 +79,7 @@ export async function ProExamplesOverview({ meta }: ProExamplesProps) {
                           linkClassName="text-muted-foreground font-medium text-sm group-hover:text-primary"
                           kicker={category.title.toUpperCase()}
                           kickerSize="xs"
-                          imageWrapperClassName="p-0 shadow-md border-none"
+                          imageWrapperClassName="shadow-md bg-transparent border-none p-px rounded-xl pro-example-preview-thumb"
                         />
                       </ContentGridItem>
                     ),

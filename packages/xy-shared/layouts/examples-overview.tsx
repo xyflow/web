@@ -13,6 +13,7 @@ import { Section } from '../components/ui/section';
 import { Text } from '../components/ui/text';
 import { getFramework } from '../lib/get-framework';
 import { getExamplesPageMap } from '../server/example-utils';
+import clsx from 'clsx';
 
 function getFeatureOverviewPreviewRoute(framework: 'react' | 'svelte') {
   if (framework === 'svelte') {
@@ -169,7 +170,12 @@ async function ExamplesOverviewLayout() {
                           linkClassName="text-muted-foreground font-medium text-sm group-hover:text-primary"
                           kicker={category.title.toUpperCase()}
                           kickerSize="xs"
-                          imageWrapperClassName="p-0 shadow-md border-none bg-trasparent rounded-none"
+                          imageWrapperClassName={clsx(
+                            'shadow-md bg-transparent',
+                            example.frontMatter.is_pro_example
+                              ? 'border-none bg-transparent p-px rounded-xl pro-example-preview-thumb'
+                              : 'p-0',
+                          )}
                         />
                       </ContentGridItem>
                     ),
