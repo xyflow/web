@@ -179,12 +179,14 @@ async function compileMdxSection(
     mdx = expandRemoteCodeViewers(mdx);
     mdx = expandUiComponentViewers(mdx);
     mdx = expandProExampleViewers(mdx);
+    mdx = stripApiReferenceSummaryTags(mdx);
     mdx = (await options.expand?.(mdx)) ?? mdx;
 
     let txt = await mdxToPlainText(mdx);
     txt = stripRemoteCodeViewerImports(txt);
     txt = stripProExampleViewerImports(txt);
     txt = stripUiComponentViewerImports(txt);
+    txt = stripApiReferenceSummaryImports(txt);
     txt = stripTopLevelEsmLines(txt);
     txt = (await options.strip?.(txt)) ?? txt;
 
@@ -391,6 +393,14 @@ function expandProExampleViewers(source: string): string {
   return source.replace(PRO_EXAMPLE_VIEWER_TAG_RE, PRO_EXAMPLE_PLACEHOLDER);
 }
 
+// MDX TRANSFORMATIONS: STRIP API REFERENCE SUMMARY ---------------------------
+
+const API_REFERENCE_SUMMARY_TAG_RE = /<ApiReferenceSummary(?:\s[\s\S]*?)?\/>/g;
+
+function stripApiReferenceSummaryTags(source: string): string {
+  return source.replace(API_REFERENCE_SUMMARY_TAG_RE, '');
+}
+
 // TXT TRANSFORMATIONS ---------------------------------------------------------
 
 function stripRemoteCodeViewerImports(text: string): string {
@@ -410,6 +420,13 @@ function stripProExampleViewerImports(text: string): string {
 function stripUiComponentViewerImports(text: string): string {
   return text.replace(
     /^import\s+UiComponentViewer\s+from\s+['"]@\/components\/ui-component-viewer\.mdx['"];\s*$/gm,
+    '',
+  );
+}
+
+function stripApiReferenceSummaryImports(text: string): string {
+  return text.replace(
+    /^import\s+\{\s*ApiReferenceSummary\s*\}\s+from\s+['"]xy-shared\/server['"];\s*$/gm,
     '',
   );
 }
