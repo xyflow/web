@@ -16,7 +16,7 @@ type ProExamplesProps = {
 function getThumbnailSrc(exampleName: string, variant: 'light' | 'dark') {
   const darkSuffix = variant === 'dark' ? '-dark' : '';
 
-  return `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${framework}/${exampleName}/thumbnail${darkSuffix}.jpg?v=13`;
+  return `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${framework}/${exampleName}/thumbnail${darkSuffix}.jpg?v=14`;
 }
 
 export async function ProExamplesOverview({ meta }: ProExamplesProps) {

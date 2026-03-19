@@ -35,14 +35,14 @@ function getExampleImage(
   exampleName: string,
 ) {
   if (isProExample) {
-    return `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${framework}/${exampleName}/thumbnail.jpg?v=13`;
+    return `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${framework}/${exampleName}/thumbnail.jpg?v=14`;
   }
 
   if (previewPath) {
     return `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/${previewPath}`;
   }
 
-  return `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/${framework}/${route}/preview.jpg?v=13`;
+  return `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/${framework}/${route}/preview.jpg?v=14`;
 }
 
 function getExampleImageDark(
@@ -53,14 +53,14 @@ function getExampleImageDark(
   exampleName: string,
 ) {
   if (isProExample) {
-    return `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${framework}/${exampleName}/thumbnail-dark.jpg?v=13`;
+    return `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${framework}/${exampleName}/thumbnail-dark.jpg?v=14`;
   }
 
   if (previewPath) {
     return `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/${previewPath.replace('.jpg', '-dark.jpg')}`;
   }
 
-  return `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/${framework}/${route}/preview-dark.jpg?v=13`;
+  return `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/${framework}/${route}/preview-dark.jpg?v=14`;
 }
 
 const { framework, library } = getFramework();
@@ -80,8 +80,8 @@ async function ExamplesOverviewLayout() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
             <Container className="col-span-2 aspect-video border-none">
               <ThemeAwareImage
-                lightSrc={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/${featureOverviewPreviewRoute}/preview.jpg?v=13`}
-                darkSrc={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/${featureOverviewPreviewRoute}/preview-dark.jpg?v=13`}
+                lightSrc={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/${featureOverviewPreviewRoute}/preview.jpg?v=14`}
+                darkSrc={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/${featureOverviewPreviewRoute}/preview-dark.jpg?v=14`}
                 width={1024}
                 height={768}
                 alt="Feature Overview Example Preview"
