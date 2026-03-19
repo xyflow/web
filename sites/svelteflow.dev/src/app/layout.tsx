@@ -3,6 +3,7 @@ import { Navbar as NextraNavbar } from 'nextra-theme-docs';
 import { Banner } from 'nextra/components';
 import svelteFlowPackageJson from '@xyflow/svelte/package.json';
 
+import { SessionRefresher } from 'xy-shared/components/session-refresher';
 import { generateRootMetadata } from 'xy-shared/server/generate-root-metadata';
 import { getLastChangelog } from 'xy-shared/server/get-last-changelog';
 import { TOC } from 'xy-shared/server/toc';
@@ -110,6 +111,7 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
         >
           {children}
         </SubscriptionProvider>
+        <SessionRefresher />
       </body>
     </Html>
   );

@@ -14,6 +14,7 @@ import { createNormalizePageMap } from 'xy-shared/server/normalize-page-map';
 import { SubscriptionProvider } from 'xy-shared/components/pro/Providers';
 import { SiteNavbarContent } from 'xy-shared/components/navigation/SiteNavbar';
 import './global.css';
+import { SessionRefresher } from 'xy-shared/components/session-refresher';
 
 export const metadata = generateRootMetadata('React Flow', {
   description:
@@ -105,6 +106,7 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
           {children}
           <SpeedInsights />
         </SubscriptionProvider>
+        <SessionRefresher />
       </body>
     </Html>
   );
