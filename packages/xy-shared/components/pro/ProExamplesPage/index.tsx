@@ -88,8 +88,8 @@ const ProExamplesPage: FC<ProExamplesPageProps> = async ({
       result.push({
         ...remote,
         route: curr.route,
-        image: `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${framework}/${remote.id}/thumbnail.jpg`,
-        imageDark: `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${framework}/${remote.id}/thumbnail-dark.jpg`,
+        image: `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${framework}/${remote.id}/thumbnail.jpg?v=13`,
+        imageDark: `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${framework}/${remote.id}/thumbnail-dark.jpg?v=13`,
       });
     }
 

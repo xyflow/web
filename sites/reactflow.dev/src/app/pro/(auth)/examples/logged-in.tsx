@@ -48,8 +48,8 @@ export default async function ProExamples() {
                         className="border-none hover:bg-transparent py-6 lg:py-8 lg:px-0 group"
                       >
                         <ProjectPreview
-                          image={`${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/react/${example.name}/thumbnail.jpg`}
-                          imageDark={`${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/react/${example.name}/thumbnail-dark.jpg`}
+                          image={`${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/react/${example.name}/thumbnail.jpg?v=13`}
+                          imageDark={`${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/react/${example.name}/thumbnail-dark.jpg?v=13`}
                           imageAlt={example.frontMatter!.title + ' screenshot'}
                           title={example.frontMatter!.title}
                           titleSize="xs"
