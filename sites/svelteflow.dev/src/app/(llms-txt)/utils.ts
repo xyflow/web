@@ -25,7 +25,7 @@ function getSvelteFlowAPIPropsReplacement(group: string): string {
     ...(Object.keys(FIELDS) as SvelteFlowAPIPropsGroup[]),
   ];
   if (!validGroups.includes(normalizedGroup)) {
-    return `[ReactFlowAPIProps: unknown group "${group}"]`;
+    return `[SvelteFlowAPIProps: unknown group "${group}"]`;
   }
   try {
     const definition = generateDefinition({
@@ -35,7 +35,7 @@ function getSvelteFlowAPIPropsReplacement(group: string): string {
     return definitionToFullMarkdown(definition);
   } catch (error) {
     /* fallback below */
-    return `[ReactFlowAPIProps: error generating definition: ${error instanceof Error ? error.message : String(error)}]`;
+    return `[SvelteFlowAPIProps: error generating definition: ${error instanceof Error ? error.message : String(error)}]`;
   }
 }
 
@@ -47,7 +47,7 @@ function stripSvelteFlowAPIPropsImports(text: string): string {
 }
 
 /**
- * Same as getReactAPIDocsCode but for Svelte: uses @xyflow/svelte, Svelte
+ * Same as getSvelteAPIDocsCode but for Svelte: uses @xyflow/svelte, Svelte
  * component props types (ComponentNameProps), and svelte/elements for
  * HTMLAttributes when groupKeys is used.
  */

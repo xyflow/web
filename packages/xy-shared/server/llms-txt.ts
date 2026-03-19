@@ -157,7 +157,7 @@ suitable for both simple and large-scale, production-ready visual applications.
   return output;
 }
 
-/** Buid a single section of flattened markdown. This loads all the files under
+/** Build a single section of flattened markdown. This loads all the files under
  * a particular path like `src/content/learn` and passes each MDX file through a
  * processing pipeline so we can hopefully spit something useful out.
  *
@@ -185,12 +185,37 @@ async function compileMdxSection(
     txt = stripRemoteCodeViewerImports(txt);
     txt = stripProExampleViewerImports(txt);
     txt = stripUiComponentViewerImports(txt);
+    txt = stripTopLevelEsmLines(txt);
     txt = (await options.strip?.(txt)) ?? txt;
 
     output += txt.trim() + '\n\n';
   }
 
   return output;
+}
+
+/** Drop leftover MDX `import` / `export` lines in prose, but keep them inside
+ * fenced code blocks (``` / ~~~) so examples and snippets stay intact. */
+function stripTopLevelEsmLines(txt: string): string {
+  const lines = txt.split('\n');
+  let inFence = false;
+  const esmLine = /^\s*(import|export)\s/;
+  // Opening/closing fence: ```, ```tsx, ~~~js, etc.
+  const fenceDelimiter = /^\s*(```|~~~)/;
+
+  const out: string[] = [];
+  for (const line of lines) {
+    if (fenceDelimiter.test(line)) {
+      inFence = !inFence;
+      out.push(line);
+      continue;
+    }
+    if (!inFence && esmLine.test(line)) {
+      continue;
+    }
+    out.push(line);
+  }
+  return out.join('\n');
 }
 
 interface CollectedMdxFile {
