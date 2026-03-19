@@ -1,20 +1,36 @@
 import { Fragment } from 'react';
-import { Folder } from 'nextra';
+import { DynamicMeta, Folder } from 'nextra';
 
-import { ContentGrid, ContentGridItem } from 'xy-shared/components/ui/content-grid';
-import { Heading } from 'xy-shared/components/ui/heading';
-import { ProjectPreview } from 'xy-shared/components/project-preview';
-import { getExamplesPageMap } from 'xy-shared/server/example-utils';
-import { meta } from './config';
+import { ProjectPreview } from '../components/project-preview';
+import { ContentGrid, ContentGridItem } from '../components/ui/content-grid';
+import { Heading } from '../components/ui/heading';
+import { getExamplesPageMap } from '../server/example-utils';
+import { getFramework } from '../lib/get-framework';
 
-export default async function ProExamples() {
+const { framework } = getFramework();
+
+type ProExamplesProps = {
+  meta: DynamicMeta;
+};
+
+function getThumbnailSrc(exampleName: string, variant: 'light' | 'dark') {
+  const darkSuffix = variant === 'dark' ? '-dark' : '';
+
+  return `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${framework}/${exampleName}/thumbnail${darkSuffix}.jpg?v=13`;
+}
+
+export async function ProExamplesOverview({ meta }: ProExamplesProps) {
   const pageMap = await getExamplesPageMap();
 
   return (
     <>
       {pageMap.children.map((_category) => {
         const hasChildren = 'children' in _category;
-        if (!hasChildren) return;
+
+        if (!hasChildren) {
+          return null;
+        }
+
         const category = _category as Folder & { title: string };
         const categoryMeta = meta[category.name];
         const allowedItems =
@@ -24,7 +40,11 @@ export default async function ProExamples() {
           categoryMeta.items
             ? (categoryMeta.items as Record<string, unknown>)
             : null;
-        if (!allowedItems) return;
+
+        if (!allowedItems) {
+          return null;
+        }
+
         return (
           <Fragment key={category.title}>
             <Heading className="mt-20" size="sm" id={category.name}>
@@ -48,8 +68,8 @@ export default async function ProExamples() {
                         className="border-none hover:bg-transparent py-6 lg:py-8 lg:px-0 group"
                       >
                         <ProjectPreview
-                          image={`${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/svelte/${example.name}/thumbnail.jpg`}
-                          imageDark={`${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/svelte/${example.name}/thumbnail-dark.jpg`}
+                          image={getThumbnailSrc(example.name, 'light')}
+                          imageDark={getThumbnailSrc(example.name, 'dark')}
                           imageAlt={example.frontMatter!.title + ' screenshot'}
                           title={example.frontMatter!.title}
                           titleSize="xs"

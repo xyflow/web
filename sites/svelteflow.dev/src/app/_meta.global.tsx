@@ -189,7 +189,7 @@ const metaRecord = {
       },
       examples: {
         theme: {
-          layout: 'default',
+          layout: 'full',
           toc: false,
           pagination: false,
         },

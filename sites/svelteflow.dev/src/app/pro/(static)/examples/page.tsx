@@ -1,9 +1,10 @@
 import type { NextraMetadata } from 'nextra';
 import { getSubscription } from 'xy-shared/server-actions/get-subscription';
+import { ProExamplesOverview } from 'xy-shared/layouts/pro-examples-overview';
+import { ProExamplesMarketing } from 'xy-shared/components/pro/ProExamplesMarketing';
 import { useMDXComponents as getMdxComponents } from '@/mdx-components';
 
-import ProExamples from '../../(auth)/examples/logged-in';
-import ProExamplesMarketing from '../../(auth)/examples/logged-out';
+import { meta } from '../../(auth)/examples/config';
 
 export const revalidate = 0;
 
@@ -22,7 +23,7 @@ export default async function ProExamplesPage() {
     return (
       // @ts-expect-error -- we explicitly provide metadata as empty object
       <Wrapper toc={[]} metadata={{}}>
-        <ProExamples />
+        <ProExamplesOverview meta={meta} />
       </Wrapper>
     );
   }

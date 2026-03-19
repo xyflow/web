@@ -44,14 +44,12 @@ export type FreeTrialSection = {
 
 const { framework, library } = getFramework();
 
-export type ProExamplesPageProps = {
+export type ProExamplesMarketingProps = {
   freeTrialSection?: FreeTrialSection;
-  logoIconClassName?: string;
 };
 
-const ProExamplesPage: FC<ProExamplesPageProps> = async ({
+export const ProExamplesMarketing: FC<ProExamplesMarketingProps> = async ({
   freeTrialSection,
-  logoIconClassName = '',
 }) => {
   const remoteProExamplesResponse = await fetchJSON(
     `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${framework}/apps.json?t=1`,
@@ -137,7 +135,7 @@ const ProExamplesPage: FC<ProExamplesPageProps> = async ({
             title={`By the creators of ${library}`}
             text="Feature-complete and crafted by the core team"
             // @ts-expect-error Logo component matches usage
-            icon={() => <Logo className={`h-8 w-8 ${logoIconClassName}`} />}
+            icon={() => <Logo className={'h-8 w-8'} />}
           />
           <GridItem
             title="Downloadable Vite apps and guides"
@@ -365,5 +363,3 @@ function StarText() {
     </span>
   );
 }
-
-export default ProExamplesPage;
