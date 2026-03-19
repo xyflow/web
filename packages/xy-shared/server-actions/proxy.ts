@@ -23,8 +23,19 @@ export async function proxy(request: NextRequest) {
   const _rsc = request.headers.get('_rsc');
   const nextJsData = request.headers.get('x-nextjs-data');
 
-  console.log(isDocumentNavigation(request));
-  console.log({ nextRouterPrefetch, purpose, rsc, _rsc, nextJsData });
+  const navigation = isDocumentNavigation(request);
+
+  const url = request.nextUrl.toString();
+
+  console.log({
+    navigation,
+    url,
+    nextRouterPrefetch,
+    purpose,
+    rsc,
+    _rsc,
+    nextJsData,
+  });
 
   const response = NextResponse.next();
   let session = null;
