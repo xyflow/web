@@ -16,11 +16,12 @@ image: '...'
 import { Bleed, Callout } from 'nextra/components';
 import { Image } from 'xy-shared';
 
-Hey, have you heard about this "AI" thing? It's kind of a big deal these days, or
-at least it is if our users are anything to go by. Take a peek at the
-[showcase](https://reactflow.dev/showcase) and you'll see that folks are building
-AI apps with [React Flow](https://reactflow.dev) in a big way, and they're not just building for AI; they're
-building _with_ AI too!
+Hey, have you heard about this "AI" thing? It's kind of a big deal these days,
+or at least it is if our users are anything to go by. Take a peek at the
+[showcase](https://reactflow.dev/showcase) and you'll see that folks are
+building AI apps with [React Flow](https://reactflow.dev) and [Svelte
+Flow](https://svelteflow.dev) in a big way, and they're not just building for
+AI; they're building _with_ AI too!
 
 That got us thinking about how we might be able to meet where they are. If they're
 leaning on AI in their development workflows, they're more likely to ask questions
@@ -39,8 +40,9 @@ on exploring two different approaches:
 
 <Callout type="info">
   <strong>What about MCP?</strong> In the past some of our users have asked if
-  we had any plans on creating an MCP server for [React Flow](https://reactflow.dev) or [Svelte Flow](https://svelteflow.dev). A
-  Model Context Protocol (MCP) server can connect external agents to data sources,
+  we had any plans on creating an MCP server for [React Flow](https://reactflow.dev)
+  or [Svelte Flow](https://svelteflow.dev). A Model
+  Context Protocol (MCP) server can connect external agents to data sources,
   tools, or workflows. We're just focusing on documentation and decided an MCP
   server wouldn't be the right fit for now.
 </Callout>
@@ -127,10 +129,12 @@ ${collectMarkdownLinks('react', learn).trim()}
 </Bleed>
 
 We also went a bit further and adopted a variation of the standard by producing
-[`/llms-full.txt`](https://reactflow.dev/llms-full.txt) and
-[`/llms-medium.txt`](https://reactflow.dev/llms-medium.txt) files too. Like our original
-attempt, these files compile all our markdown content into a single document that you can
-load into your LLM's context.
+
+- [`/llms-full.txt`](https://reactflow.dev/llms-full.txt)
+- [`/llms-medium.txt`](https://reactflow.dev/llms-medium.txt)
+
+Like our original attempt, these files compile all our markdown content into a
+single document that you can load into your LLM's context.
 
 The `/llms-medium.txt` contains the content from our "Learn" section – those are all our
 longer-form guides and tutorials – as well as the documentation for our
@@ -138,14 +142,26 @@ longer-form guides and tutorials – as well as the documentation for our
 by also including the full source of each of our examples as well as the entire API
 reference.
 
+Those files are also available for [Svelte Flow](https://svelteflow.dev) as well: 
+- [`/llms.txt`](https://svelteflow.dev/llms.txt)
+- [`/llms-full.txt`](https://svelteflow.dev/llms-full.txt)
+- [`/llms-medium.txt`](https://svelteflow.dev/llms-medium.txt)
+
+As React is used more widely than Svelte in the wild, LLMs haven't had much
+training data on Svelte Flow, so using our `/llms.txt` file can greatly improve
+the results of AI coding tools like Cursor when generating code for Svelte Flow
+apps. Below, we show an example of a Svelte Flow app generated with and without
+our `/llms.txt` file.
+
 ## llms.txt improves AI coding tools results
 
 We were curious to see how our `/llms.txt` file would perform in a real-world
-scenario, so we asked Cursor to make a [Svelte Flow](https://svelteflow.dev) app that would allow users to
-create simple flow charts. There is not much training data for [Svelte Flow](https://svelteflow.dev)
-documentation in the wild, so we wanted to see if the LLM could use our
-`/llms.txt` file to navigate our docs and create a better app than it might have
-done otherwise without any additional context.
+scenario, so we asked Cursor to make a [Svelte Flow](https://svelteflow.dev) app
+that would allow users to create simple flow charts. There is not much training
+data for [Svelte Flow](https://svelteflow.dev) documentation in the wild, so we
+wanted to see if the LLM could use our `/llms.txt` file to navigate our docs and
+create a better app than it might have done otherwise without any additional
+context.
 
 Here's the prompt we used:
 
