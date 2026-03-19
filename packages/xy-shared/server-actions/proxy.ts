@@ -17,25 +17,15 @@ export async function proxy(request: NextRequest) {
   // Always call this to ensure session is up-to-date
   // even for public routes, so that session changes are detected
 
-  const nextRouterPrefetch = request.headers.get('next-router-prefetch');
-  const purpose = request.headers.get('purpose');
-  const rsc = request.headers.get('rsc');
-  const _rsc = request.headers.get('_rsc');
-  const nextJsData = request.headers.get('x-nextjs-data');
-
   const navigation = isDocumentNavigation(request);
 
-  const url = request.nextUrl.toString();
-
-  console.log({
-    navigation,
-    url,
-    nextRouterPrefetch,
-    purpose,
-    rsc,
-    _rsc,
-    nextJsData,
-  });
+  if (navigation) {
+    const url = request.nextUrl.searchParams.toString();
+    console.log({
+      navigation,
+      url,
+    });
+  }
 
   const response = NextResponse.next();
   let session = null;
