@@ -84,6 +84,7 @@ export async function createNhostClient(): Promise<NhostClient> {
 export async function handleNhostMiddleware(
   request: NextRequest,
   response: NextResponse<unknown>,
+  refreshSession: boolean,
 ): Promise<Session | null> {
   const nhost = createServerClient({
     subdomain: process.env.NEXT_PUBLIC_NHOST_SUBDOMAIN!,
@@ -111,7 +112,5 @@ export async function handleNhostMiddleware(
     },
   });
 
-  // we only want to refresh the session if  the token will
-  // expire in the next 60 seconds
-  return await nhost.refreshSession(0);
+  return refreshSession ? await nhost.refreshSession(30) : nhost.getUserSession();
 }

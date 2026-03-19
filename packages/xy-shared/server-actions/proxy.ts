@@ -13,25 +13,13 @@ function isDocumentNavigation(req: NextRequest): boolean {
 }
 
 export async function proxy(request: NextRequest) {
-  // Handle Nhost authentication and token refresh
-  // Always call this to ensure session is up-to-date
-  // even for public routes, so that session changes are detected
-
-  const navigation = isDocumentNavigation(request);
-
-  if (navigation) {
-    const url = request.nextUrl.searchParams.toString();
-    console.log({
-      navigation,
-      url,
-    });
-  }
+  const refreshSession = isDocumentNavigation(request);
 
   const response = NextResponse.next();
-  let session = null;
 
+  let session = null;
   try {
-    session = await handleNhostMiddleware(request, response);
+    session = await handleNhostMiddleware(request, response, refreshSession);
   } catch (error) {
     console.error('Error handling Nhost middleware:', error);
     session = null;
