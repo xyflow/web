@@ -18,7 +18,6 @@ const SVELTE_FLOW_API_PROPS_TAG_RE =
   /<SvelteFlowAPIProps\s+group=["']([^"']+)["']\s*\/>/g;
 
 function getSvelteFlowAPIPropsReplacement(group: string): string {
-  // TODO: implement via getSvelteFlowAPIPropsCode when SvelteFlowAPIProps is used in expandTsDocTags
   const normalizedGroup = group.trim() as SvelteFlowAPIPropsGroup;
   const validGroups: SvelteFlowAPIPropsGroup[] = [
     'common',
