@@ -2,7 +2,7 @@
 title: 'Supporting AI development with React Flow and Svelte Flow'
 description:
   'As more and more of our users are leaning on AI to help them develop React Flow
-  apps, we’ve been thinking about how we can support AI development even when our
+  and Svelte Flow apps, we’ve been thinking about how we can support AI development even when our
   users aren’t looking at our docs.'
 intro:
   'We’ve been thinking about how we can support AI development even when our users
@@ -75,18 +75,14 @@ and not much else. Here's a quick excerpt of [React Flow](https://reactflow.dev)
 ```
 </Bleed>
 
-We first took a stab at this back in September 2025, but ultimately decided to hold off
-releasing anything. It turns out we were doing a few things wrong back then:
-
-- We already had a couple of scripts lying around to generate some static files for the
-  site, so it was easy to reach for this solution again. These kinds of scripts can work
-  great for one-off or slow-moving files, but something like an `/llms.txt` needs to
-  always be in sync with our docs content and a script was going to add more operational
-  overhead than we liked.
-
-- The content of the `/llms.txt` file was actually a markdown dump of all of our
-  documentation. We weren't initially aware of llmstxt.org and the push for a standard
-  format, and it seems like there's some mixed practices across the industry here.
+We first took a stab at this back in September 2025, but ultimately decided to
+hold off releasing anything. We already had a couple of scripts lying around to
+generate some static files for the site, so it was easy to reach for this
+solution again. These kinds of scripts can work great for one-off or slow-moving
+files, but something like an `/llms.txt` needs to always be in sync with our
+docs content and a script was going to add more operational overhead than we
+liked. We weren't initially aware of llmstxt.org and the push for a standard
+format, and it seems like there's some mixed practices across the industry here.
 
 Fast forward to 2026 and we've taken another stab using Next.js's API routes and things
 are working much better. We use [Nextra](https://nextra.site) to build our sites and
