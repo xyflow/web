@@ -3,6 +3,10 @@
     "source": "/support-us",
     "destination": "/pro",
     "permanent": true
+  },
+  {
+    "source": "/pro/examples",
+    "destination": "/pro/content",
+    "permanent": true
   }
 ]
-

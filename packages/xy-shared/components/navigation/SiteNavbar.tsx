@@ -228,27 +228,12 @@ export function NavDropdown({ label, items, active, href }: NavDropdownProps) {
   );
 }
 
-const EXAMPLES_ITEMS: NavDropdownItem[] = [
-  {
-    icon: 'squares-2x2',
-    title: 'All Examples',
-    description: 'Browse all example apps.',
-    href: '/examples',
-  },
-  {
-    icon: 'sparkles',
-    title: 'Pro Examples',
-    description: 'Advanced example apps to power production-grade UIs.',
-    href: '/pro/examples',
-  },
-];
-
 const PRO_ITEMS_BASE: NavDropdownItem[] = [
   {
     icon: 'sparkles',
     title: 'Pro Content',
     description: 'Advanced example apps and templates to power production-grade UIs.',
-    href: '/pro/examples',
+    href: '/pro/content',
   },
   {
     icon: 'credit-card',

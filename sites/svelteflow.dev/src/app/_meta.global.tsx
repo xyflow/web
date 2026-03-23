@@ -188,7 +188,7 @@ const metaRecord = {
           pagination: false,
         },
       },
-      examples: {
+      content: {
         display: 'hidden',
       },
       // Auth

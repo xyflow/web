@@ -1153,5 +1153,10 @@
     "source": "/components/:path*",
     "destination": "/ui/:path*",
     "permanent": true
+  },
+  {
+    "source": "/pro/examples",
+    "destination": "/pro/content",
+    "permanent": true
   }
 ]
