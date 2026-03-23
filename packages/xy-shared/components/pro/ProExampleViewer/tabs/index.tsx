@@ -75,8 +75,6 @@ export default function ProExampleViewerTabs({
   const iframePreviewUrl =
     previewUrl ?? `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${framework}/${exampleId}`;
 
-  console.log(1, files?.['/README.mdx']);
-
   return (
     <>
       <Tabs defaultValue="preview">
