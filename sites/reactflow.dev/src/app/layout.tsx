@@ -91,7 +91,7 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
               }
               logoLink={false}
             >
-              <SiteNavbarContent siteName="React Flow" />
+              <SiteNavbarContent />
             </NextraNavbar>
           }
           pageMap={pageMap}

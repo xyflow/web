@@ -97,7 +97,7 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
               logo={<LogoLabel label="Svelte Flow" />}
               logoLink={false}
             >
-              <SiteNavbarContent siteName="Svelte Flow" />
+              <SiteNavbarContent />
             </NextraNavbar>
           }
           pageMap={pageMap}

@@ -82,6 +82,7 @@ const metaRecord = {
           breadcrumb: false,
         },
       },
+      'pro-examples': '',
       overview: '',
       nodes: {
         items: {
@@ -188,11 +189,7 @@ const metaRecord = {
         },
       },
       examples: {
-        theme: {
-          layout: 'full',
-          toc: false,
-          pagination: false,
-        },
+        display: 'hidden',
       },
       // Auth
       dashboard: <WithIcon icon={Squares2X2Icon}>Dashboard</WithIcon>,

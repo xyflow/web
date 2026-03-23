@@ -4,6 +4,7 @@ import { type ComponentProps } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { SparklesIcon } from '@heroicons/react/24/solid';
+import { getFramework } from '../../lib/get-framework';
 import { Button } from '../ui/button';
 
 const buttonProps: ComponentProps<typeof Button> = {
@@ -13,12 +14,9 @@ const buttonProps: ComponentProps<typeof Button> = {
   className: 'w-[80px] text-nowrap',
 };
 
-type NavMenuNotLoggedInProps = {
-  siteName?: 'React Flow' | 'Svelte Flow';
-};
-
-export function NavMenuNotLoggedIn({ siteName = 'React Flow' }: NavMenuNotLoggedInProps) {
+export function NavMenuNotLoggedIn() {
   const pathname = usePathname();
+  const { library } = getFramework();
 
   return (
     <>
@@ -44,7 +42,7 @@ export function NavMenuNotLoggedIn({ siteName = 'React Flow' }: NavMenuNotLogged
               <Button asChild className="px-4 flex gap-1">
                 <Link href="/pro">
                   <SparklesIcon height="16" />
-                  <span className="max-[1100px]:hidden">{siteName}</span>
+                  <span className="max-[1100px]:hidden">{library}</span>
                   Pro
                 </Link>
               </Button>
