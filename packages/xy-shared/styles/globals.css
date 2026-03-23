@@ -336,6 +336,7 @@ article.nextra-content ol li p {
   min-width: 0;
   margin-left: 10px;
   margin-right: 5px;
+  width: 25px;
 }
 
 .DocSearch-Button .DocSearch-Button-Key {
