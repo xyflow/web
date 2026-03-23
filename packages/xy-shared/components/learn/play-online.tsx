@@ -7,9 +7,9 @@ type PlayOnlineProps = {
   tsHref: string;
 };
 
-const { h2: H2, p: P, a: A } = useMDXComponents();
-
 export default function PlayOnline({ frameworkName, jsHref, tsHref }: PlayOnlineProps) {
+  const { h2: H2, p: P, a: A } = useMDXComponents();
+
   return (
     <div>
       <H2>Play online</H2>
