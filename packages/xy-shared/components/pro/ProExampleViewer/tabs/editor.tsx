@@ -1,4 +1,6 @@
-import { aquaBlue } from '@codesandbox/sandpack-themes';
+import { useMemo } from 'react';
+import { useTheme } from 'nextra-theme-docs';
+import { aquaBlue, nightOwl } from '@codesandbox/sandpack-themes';
 import {
   SandpackProvider,
   SandpackCodeEditor,
@@ -20,19 +22,34 @@ const ignoreFiles = [
   '/tsconfig.node.json',
 ];
 
-const theme = {
-  ...aquaBlue,
-  colors: { ...aquaBlue.colors, accent: 'hsl(var(--primary))' },
-};
-
 function ProExampleCodeEditor({ files }: { files: SandpackFiles }) {
-  const visibleFiles = files ? Object.keys(files).filter((file) => !ignoreFiles.includes(file)) : [];
+  const visibleFiles = files
+    ? Object.keys(files).filter((file) => !ignoreFiles.includes(file))
+    : [];
+  const nextraTheme = useTheme();
+  const theme = useMemo(() => {
+    const activeTheme = nextraTheme?.theme === 'dark' ? nightOwl : aquaBlue;
+
+    return {
+      ...activeTheme,
+      colors: { ...activeTheme.colors, accent: 'hsl(var(--primary))' },
+    };
+  }, [nextraTheme]);
 
   return (
-    <SandpackProvider options={{ visibleFiles, activeFile: 'src/App.tsx' }} files={files} theme={theme}>
+    <SandpackProvider
+      options={{ visibleFiles, activeFile: 'src/App.tsx' }}
+      files={files}
+      theme={theme}
+    >
       <SandpackLayout>
         <SandpackFileExplorer style={{ height: editorHeight }} autoHiddenFiles />
-        <SandpackCodeEditor wrapContent style={{ height: editorHeight }} showLineNumbers showTabs={false} />
+        <SandpackCodeEditor
+          wrapContent
+          style={{ height: editorHeight }}
+          showLineNumbers
+          showTabs={false}
+        />
       </SandpackLayout>
     </SandpackProvider>
   );

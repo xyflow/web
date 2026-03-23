@@ -24,9 +24,6 @@ catalogs:
     '@xyflow/react':
       specifier: ^12.10.0
       version: 12.10.0
-    '@xyflow/svelte':
-      specifier: ^1.5.0
-      version: 1.5.0
     '@xyflow/system':
       specifier: ^0.0.74
       version: 0.0.74
