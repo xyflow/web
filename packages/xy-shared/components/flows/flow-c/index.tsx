@@ -37,7 +37,6 @@ const { framework } = getFramework();
 export const FlowC = () => {
   const { theme } = useTheme();
 
-  console.log(theme);
   // Choose the color set based on the framework
   const colors = framework === 'svelte' ? svelteColors : reactColors;
 
