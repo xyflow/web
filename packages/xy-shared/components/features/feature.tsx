@@ -87,7 +87,7 @@ function Feature({
               type="source"
               to={nextTargetHandleId}
             >
-              <div className="bg-gray-50 rounded-b-full shadow-md absolute w-10 h-7 left-1/2 -translate-x-1/2 top-0" />
+              <div className="bg-gray-50 dark:bg-muted rounded-b-full shadow-md absolute w-10 h-7 left-1/2 -translate-x-1/2 top-0" />
             </Handle>
           )}
         </Container>

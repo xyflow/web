@@ -13,9 +13,6 @@ import { Features } from 'xy-shared/components/features';
 import { GettingStarted } from 'xy-shared/layouts/getting-started';
 import { AboutSection } from 'xy-shared/layouts/about-section';
 import { ProjectCards } from 'xy-shared/layouts/project-cards';
-import { FlowA } from 'xy-shared/components/flows/flow-a';
-import { FlowB } from 'xy-shared/components/flows/flow-b';
-import { FlowC } from 'xy-shared/components/flows/flow-c';
 import { getLastChangelog } from 'xy-shared/server/get-last-changelog';
 import { fetchGitHubNpmStats } from 'xy-shared/lib/fetch-github-npm-stats';
 import { InternalRoute } from '../../routes';
@@ -30,6 +27,8 @@ import retool from '../../../public/img/clients/retool.svg';
 import doubleloop from '../../../public/img/clients/doubleloop.svg';
 import onesignal from '../../../public/img/clients/onesignal.svg';
 import close from '../../../public/img/clients/close.svg';
+
+import { FlowA, FlowB, FlowC } from 'xy-shared/components/flows';
 
 export const revalidate = 3600; // 60 * 60
 

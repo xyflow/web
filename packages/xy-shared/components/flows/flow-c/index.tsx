@@ -8,8 +8,10 @@ import {
   MiniMap,
   Node,
   Position,
+  ColorMode,
 } from '@xyflow/react';
 import { getFramework } from '../../../lib/get-framework';
+import { useTheme } from 'nextra-theme-docs';
 
 const defaultNodeOptions = {
   targetPosition: Position.Left,
@@ -33,6 +35,9 @@ const svelteColors = {
 const { framework } = getFramework();
 
 export const FlowC = () => {
+  const { theme } = useTheme();
+
+  console.log(theme);
   // Choose the color set based on the framework
   const colors = framework === 'svelte' ? svelteColors : reactColors;
 
@@ -131,20 +136,21 @@ export const FlowC = () => {
       fitViewOptions={fitViewOptions}
       proOptions={proOptions}
       preventScrolling={false}
+      colorMode={theme as ColorMode}
     >
       <Background
         id="b-1"
         variant={BackgroundVariant.Lines}
         gap={10}
         lineWidth={1}
-        color="#f2f2f2"
+        color={theme === 'dark' ? '#222' : '#f2f2f2'}
       />
       <Background
         id="b-2"
         variant={BackgroundVariant.Lines}
         gap={100}
         lineWidth={2}
-        color="#eee"
+        color={theme === 'dark' ? '#222' : '#eee'}
       />
       <Controls showInteractive={false} />
       <MiniMap style={{ height: 100 }} nodeColor={nodeColor} />
