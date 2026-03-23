@@ -18,23 +18,26 @@ PrismLight.registerLanguage('bash', bash);
 
 const markdownComponents = {
   h1: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h1 className="mt-2 text-3xl font-black tracking-tight text-slate-900" {...props} />
+    <h1
+      className="mt-2 text-3xl tracking-tight text-slate-900 dark:text-slate-100 font-bold"
+      {...props}
+    />
   ),
   h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h2
-      className="font-black tracking-tight text-slate-900 mt-10 pb-1 text-3xl"
+      className="tracking-tight text-slate-900 dark:text-slate-100 font-bold mt-10 pb-1 text-3xl"
       {...props}
     />
   ),
   h3: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h3
-      className="font-black tracking-tight text-slate-900 mt-10 pb-1 text-2xl"
+      className="tracking-tight text-slate-900 dark:text-slate-100 font-bold mt-10 pb-1 text-2xl"
       {...props}
     />
   ),
   h4: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h4
-      className="font-black tracking-tight text-slate-900 mt-10 pb-1 text-xl"
+      className="tracking-tight text-slate-900 dark:text-slate-100 font-bold mt-10 pb-1 text-xl"
       {...props}
     />
   ),
@@ -47,7 +50,7 @@ const markdownComponents = {
   pre: (props: React.HTMLAttributes<HTMLPreElement>) => (
     <PrismLight
       style={prismTheme}
-      className="!text-sm !bg-slate-100 !rounded-md !border !border-slate-200 [&>code]:!bg-transparent !mt-4 !mb-2"
+      className="!text-sm !bg-slate-100 !dark:bg-slate-800 !rounded-md [&>code]:!bg-transparent !mt-4 !mb-2"
       language="ts"
     >
       {/* @ts-expect-error - not sure how to type this */}
@@ -55,10 +58,7 @@ const markdownComponents = {
     </PrismLight>
   ),
   code: (props: React.HTMLAttributes<HTMLElement>) => (
-    <code
-      className="bg-slate-100 px-1 py-0.5 border border-slate-200 rounded-md"
-      {...props}
-    />
+    <code className="bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded-md" {...props} />
   ),
   ul: (props: React.HTMLAttributes<HTMLUListElement>) => (
     <ul className="list-disc list-inside [&_ul]:ml-4 [&_ol]:ml-4" {...props} />
