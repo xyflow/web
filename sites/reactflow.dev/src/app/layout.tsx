@@ -13,6 +13,7 @@ import { createNormalizePageMap } from 'xy-shared/server/normalize-page-map';
 
 import { SubscriptionProvider } from 'xy-shared/components/pro/Providers';
 import { SiteNavbarContent } from 'xy-shared/components/navigation/SiteNavbar';
+import { getHasNhostSession } from 'xy-shared/lib/nhost';
 import './global.css';
 import { SessionRefresher } from 'xy-shared/components/session-refresher';
 
@@ -35,12 +36,13 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { Projects, ...remainingCategories } = defaultFooterCategories;
   const normalizePageMap = createNormalizePageMap();
-  const [pageMap, lastChangelog] = await Promise.all([
+  const [pageMap, lastChangelog, initialHasSession] = await Promise.all([
     normalizePageMap().catch((e) => {
       console.error('error in normalizePageMap', e);
       return [{ data: {} }];
     }),
     getLastChangelog(),
+    getHasNhostSession(),
   ]);
 
   return (
@@ -91,7 +93,7 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
               }
               logoLink={false}
             >
-              <SiteNavbarContent />
+              <SiteNavbarContent initialHasSession={initialHasSession} />
             </NextraNavbar>
           }
           pageMap={pageMap}

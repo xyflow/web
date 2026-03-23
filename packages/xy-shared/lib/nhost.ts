@@ -71,6 +71,12 @@ export async function createNhostClient(): Promise<NhostClient> {
   return nhost;
 }
 
+/** For RSC / layouts: same session the middleware keeps in cookies, without `document`. */
+export async function getHasNhostSession(): Promise<boolean> {
+  const nhost = await createNhostClient();
+  return !!nhost.getUserSession();
+}
+
 /**
  * Middleware function to handle Nhost authentication and session management.
  *

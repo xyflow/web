@@ -15,6 +15,7 @@ import { Html } from 'xy-shared/components/html';
 import { SubscriptionProvider } from 'xy-shared/components/pro/Providers';
 import { createNormalizePageMap } from 'xy-shared/server/normalize-page-map';
 import { SiteNavbarContent } from 'xy-shared/components/navigation/SiteNavbar';
+import { getHasNhostSession } from 'xy-shared/lib/nhost';
 import './global.css';
 
 export const metadata = generateRootMetadata('Svelte Flow', {
@@ -35,12 +36,13 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { Projects: _, ...remainingCategories } = defaultFooterCategories;
   const normalizePageMap = createNormalizePageMap();
-  const [pageMap, lastChangelog] = await Promise.all([
+  const [pageMap, lastChangelog, initialHasSession] = await Promise.all([
     normalizePageMap().catch((e) => {
       console.error('error in normalizePageMap', e);
       return [{ data: {} }];
     }),
     getLastChangelog(),
+    getHasNhostSession(),
   ]);
 
   return (
@@ -97,7 +99,7 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
               logo={<LogoLabel label="Svelte Flow" />}
               logoLink={false}
             >
-              <SiteNavbarContent />
+              <SiteNavbarContent initialHasSession={initialHasSession} />
             </NextraNavbar>
           }
           pageMap={pageMap}
