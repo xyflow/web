@@ -8,7 +8,7 @@ const breakoutClassName =
 const containerVariants = cva('border border-solid', {
   variants: {
     variant: {
-      default: 'border-border bg-background',
+      default: 'border-border bg-background dark:bg-white/[.35]',
       dark: 'border-gray-700 text-white bg-black',
     },
     size: {
@@ -26,7 +26,7 @@ const innerContainerVariants = cva('border border-solid', {
   variants: {
     variant: {
       default: 'border-border bg-background',
-      dark: 'border-gray-700 text-white bg-gradient-to-br from-black from-15% via-[#311c33] via-65% to-[#1c1826]',
+      dark: 'border-gray-700 text-white dark:border-white-900 bg-gradient-to-br from-black from-15% via-[#311c33] via-65% to-[#1c1826]',
     },
     size: {
       default: 'rounded-[22px]',

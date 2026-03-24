@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { cn } from '../../lib/utils';
 import { Button } from '../ui/button';
-import { Container, ContainerProps } from '../ui/container';
+import { Container } from '../ui/container';
 import { Text } from '../ui/text';
 import { useSubscription } from '../../hooks/use-subscription';
 import ProPlatformExampleViewer from '../../components/pro/ProExampleViewer';
@@ -29,7 +29,6 @@ function appendSearchParams(url: string, sp: URLSearchParams) {
 
 const ProExampleViewer: FC<{
   slug: string;
-  variant?: ContainerProps['variant'];
   type?: 'example' | 'template';
   className?: string;
   innerClassName?: string;
@@ -39,7 +38,6 @@ const ProExampleViewer: FC<{
   queryParams?: QueryParams;
 }> = ({
   slug,
-  variant = 'default',
   type = 'example',
   className,
   innerClassName,
@@ -48,7 +46,6 @@ const ProExampleViewer: FC<{
   queryParams = {},
 }) => {
   const pathname = usePathname();
-  const isLightMode = variant === 'default';
   const { isSubscribed } = useSubscription();
   const isTemplate = type === 'template';
 
@@ -88,13 +85,6 @@ const ProExampleViewer: FC<{
     };
   }, [baseUrl, type]);
 
-  const teaserClasses = useMemo(
-    () =>
-      cn('px-6 py-8 flex flex-wrap items-center justify-between gap-x-4 gap-y-2', {
-        'bg-gradient bg-[length:200%] bg-center': isLightMode,
-      }),
-    [isLightMode],
-  );
   const signInLink = `/pro/sign-in?redirectTo=${pathname}`;
   const iframeBaseSrc = templatePreviewUrl ?? baseUrl;
   const iframeSearchParams = useMemo(() => toSearchParams(queryParams), [queryParams]);
@@ -117,12 +107,12 @@ const ProExampleViewer: FC<{
   const iframeCount = sideBySide ? 2 : 1;
 
   return (
-    <Container
-      className={cn(['mt-7', className])}
-      variant={variant}
-      innerClassName={innerClassName}
-    >
-      <div className={teaserClasses}>
+    <Container className={cn(['mt-7', className])} innerClassName={innerClassName}>
+      <div
+        className={cn(
+          'px-6 py-8 flex flex-wrap items-center justify-between gap-x-4 gap-y-2 bg-gradient bg-[length:200%] bg-center',
+        )}
+      >
         <Text className="flex-1 basis-full max-w-xl">
           <strong>This is a Pro {type}.</strong> Get{' '}
           <Link className="underline" href="/pro/examples">
@@ -133,9 +123,13 @@ const ProExampleViewer: FC<{
         </Text>
         <div className="flex space-x-4">
           <Button asChild className="shrink-0">
-            <Link href="/pro/examples">See Pricing Plans</Link>
+            <Link href="/pro">See Pricing Plans</Link>
           </Button>
-          <Button asChild variant="secondary" className="text-primary shrink-0">
+          <Button
+            asChild
+            variant="secondary"
+            className="text-primary dark:text-white shrink-0"
+          >
             <a href={signInLink}>Sign In</a>
           </Button>
         </div>
