@@ -24,6 +24,7 @@
     "@docsearch/css": "^4.6.0",
     "@docsearch/react": "^4.6.0",
     "@heroicons/react": "^2.2.0",
+    "@nhost/nhost-js": "catalog:",
     "@notionhq/client": "^5.6.0",
     "@radix-ui/react-accordion": "^1.2.7",
     "@radix-ui/react-alert-dialog": "^1.1.10",
@@ -60,8 +61,7 @@
     "tailwind-merge": "^3.3.1",
     "tailwindcss": "catalog:",
     "timeago-react": "^3.0.7",
-    "zod": "^3.22.4",
-    "@nhost/nhost-js": "catalog:"
+    "zod": "^3.22.4"
   },
   "peerDependencies": {
     "next": "catalog:",
