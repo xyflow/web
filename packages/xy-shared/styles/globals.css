@@ -45,6 +45,29 @@
   /* Animations */
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  --animate-fade-in: fade-in 0.5s ease-in-out;
+  --animate-reveal-rtl: reveal-rtl 0.5s 0.1s ease-in-out forwards;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes reveal-rtl {
+    from {
+      opacity: 0;
+      clip-path: inset(0 0 0 100%);
+    }
+    to {
+      opacity: 1;
+      clip-path: inset(0 0 0 0);
+    }
+  }
 }
 
 /* Keyframes */
@@ -66,11 +89,63 @@
   }
 }
 
-/* Allow smooth interpolation of the Pro button gradient angle */
-@property --gradientAngle {
+@property --xy-gradient-angle {
   syntax: '<angle>';
-  inherits: true;
-  initial-value: 258deg;
+  inherits: false;
+  initial-value: 200deg;
+}
+
+/* Used for the Account, Pro, SignUp/SignIn buttons */
+.xy-gradient-pill {
+  position: relative;
+  isolation: isolate;
+  color: hsl(var(--primary));
+  transition: color 0.5s ease-in-out;
+}
+
+.xy-gradient-pill::before {
+  content: '';
+  position: absolute;
+  z-index: -2;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  opacity: 0;
+  background: linear-gradient(
+    var(--xy-gradient-angle),
+    hsl(var(--secondary)) 0%,
+    hsl(var(--secondary)) 45%,
+    hsl(var(--primary)) 60%,
+    hsl(var(--primary)) 100%
+  );
+  translate: -50% -50%;
+  transition:
+    --xy-gradient-angle 0.5s ease-in-out,
+    opacity 0.5s ease-in-out;
+}
+
+.xy-gradient-pill::after {
+  content: '';
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  bottom: 1px;
+  left: 1px;
+  z-index: -1;
+  border-radius: inherit;
+  background-color: hsl(var(--muted));
+}
+
+.xy-gradient-pill--loaded::before {
+  --xy-gradient-angle: 465deg;
+  opacity: 1;
+}
+
+.xy-gradient-pill:hover::before {
+  transition: --xy-gradient-angle 0.25s ease-out;
+  --xy-gradient-angle: 315deg;
 }
 
 /* Container utility customization */
