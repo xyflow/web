@@ -110,8 +110,8 @@ const Page: FC = () => {
         }
         subtitle={
           <>
-            Powerful open source libraries for building node-based UIs with
-            React or Svelte.
+            Powerful open source libraries for building node-based UIs with React or
+            Svelte.
             <br />
             Ready out-of-the-box and infinitely customizable
           </>
