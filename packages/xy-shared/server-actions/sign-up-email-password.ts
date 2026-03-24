@@ -9,6 +9,7 @@ const deploymentUrl =
 
 const appUrl = deploymentUrl ? `https://${deploymentUrl}` : 'http://localhost:3002';
 
+// we need the redirect to distinguish between the different framework websites
 const redirectTo = `${appUrl}/pro/email-verification/verify`;
 
 export async function signUp(formData: FormData) {
@@ -20,8 +21,6 @@ export async function signUp(formData: FormData) {
       error: 'Email and password fields are required',
     };
   }
-
-  console.log('signup', redirectTo);
 
   try {
     const nhost = await createNhostClient();
