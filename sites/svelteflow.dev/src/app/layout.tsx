@@ -14,7 +14,6 @@ import { LogoLabel } from 'xy-shared/components/ui/logo';
 import { Html } from 'xy-shared/components/html';
 import { SubscriptionProvider } from 'xy-shared/components/pro/Providers';
 import { createNormalizePageMap } from 'xy-shared/server/normalize-page-map';
-import { NavMenu } from 'xy-shared/components/navigation/NavMenu';
 import { SiteNavbarContent } from 'xy-shared/components/navigation/SiteNavbar';
 import './global.css';
 
@@ -100,7 +99,7 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
               logo={<LogoLabel label="Svelte Flow" />}
               logoLink={false}
             >
-              <SiteNavbarContent initialNavMenu={<NavMenu />} />
+              <SiteNavbarContent />
             </NextraNavbar>
           }
           pageMap={pageMap}
