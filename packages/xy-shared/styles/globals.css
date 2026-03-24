@@ -90,20 +90,20 @@
   background-color: transparent;
   background-origin: border-box;
   background-image: conic-gradient(
-    from 135deg at 78% 88%,
+    from 135deg at 10% 90%,
     hsl(var(--primary)) 0deg,
-    #f2f2f2 100deg,
-    #ffffff 150deg,
-    #f2f2f2 240deg,
+    #e2e2e2 100deg,
+    #f4f4f4 150deg,
+    #e2e2e2 240deg,
     hsl(var(--primary)) 280deg
   );
 
   @variant dark {
     background-image: conic-gradient(
-      from 135deg at 78% 88%,
+      from 135deg at 10% 90%,
       hsl(var(--primary) / 0.7) 0deg,
       #4d4d4d 100deg,
-      #1e1e1e 150deg,
+      #2e2e2e 150deg,
       #4d4d4d 240deg,
       hsl(var(--primary) / 0.7) 280deg
     );
