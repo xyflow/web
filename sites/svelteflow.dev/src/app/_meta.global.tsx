@@ -30,7 +30,7 @@ const metaRecord = {
       concepts: {
         title: 'Core Concepts',
         items: {
-          overview: '',
+          'terms-and-definitions': 'Overview',
           'building-a-flow': '',
           'built-in-components': 'Built-in Components',
         },
