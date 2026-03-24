@@ -8,7 +8,11 @@ type PlayOnlineProps = {
 };
 
 export default function PlayOnline({ frameworkName, jsHref, tsHref }: PlayOnlineProps) {
-  const { h2: H2, p: P, a: A } = useMDXComponents();
+  const mdxComponents = useMDXComponents();
+
+  const H2 = mdxComponents.h2 ?? 'h2';
+  const P = mdxComponents.p ?? 'p';
+  const A = mdxComponents.a ?? 'a';
 
   return (
     <div>
@@ -16,7 +20,7 @@ export default function PlayOnline({ frameworkName, jsHref, tsHref }: PlayOnline
       <P>
         You can try {frameworkName} without setting anything up locally by checking out
         the starter projects we have on{' '}
-        <A href="https://codesandbox.io" target="_blank">
+        <A href="https://codesandbox.io" target="_blank" rel="noopener noreferrer">
           CodeSandbox
         </A>
         :

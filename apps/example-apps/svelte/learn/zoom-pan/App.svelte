@@ -3,7 +3,7 @@
 
   import '@xyflow/svelte/dist/style.css';
 
-  export const initialNodes = [
+   const initialNodes = [
   {
     id: '1',
     data: { label: 'Node 1' },
@@ -21,7 +21,7 @@
   },
 ];
 
-export const initialEdges = [
+ const initialEdges = [
   { id: 'e1-2', source: '1', target: '2' },
   { id: 'e1-3', source: '1', target: '3' },
 ];
