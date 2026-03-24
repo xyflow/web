@@ -23,7 +23,7 @@ export default function DashboardHeader({
       {title && (
         <div
           className={cn(
-            'flex gap-2 items-center text-3xl font-black mb-2',
+            'flex gap-2 items-center align-center text-3xl font-black mb-2',
             titleClassName,
           )}
         >

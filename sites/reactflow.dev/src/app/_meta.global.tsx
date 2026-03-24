@@ -311,7 +311,11 @@ const metaRecord = {
       team: <WithIcon icon={UsersIcon}>Team</WithIcon>,
       account: <WithIcon icon={Cog8ToothIcon}>Account</WithIcon>,
       subscribe: {
-        title: <WithIcon icon={SparklesIcon}>Subscribe</WithIcon>,
+        title: (
+          <span className="text-primary">
+            <WithIcon icon={SparklesIcon}>Subscribe</WithIcon>
+          </span>
+        ),
         theme: {
           collapsed: true,
         },

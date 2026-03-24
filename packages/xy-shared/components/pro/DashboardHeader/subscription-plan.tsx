@@ -1,8 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { Spinner } from '../../ui/spinner';
 
+import { Spinner } from '../../ui/spinner';
 import { useSubscription } from '../../../hooks/use-subscription';
 import { PlanLabel } from '../SubscriptionStatus';
 import Pill from '../Pill';
@@ -18,15 +18,19 @@ export default function SubscriptionPlan() {
     );
   }
 
-  return isSubscribed ? (
-    <span>
-      <Pill className="inline text-primary bg-pink-50 border-primary">
-        <PlanLabel /> plan
-      </Pill>
-    </span>
-  ) : (
+  if (isSubscribed) {
+    return (
+      <span>
+        <Pill className="text-primary bg-pink-50 border-primary">
+          <PlanLabel /> plan
+        </Pill>
+      </span>
+    );
+  }
+
+  return (
     <Link href="/pro/subscribe">
-      <Pill className="inline">free plan</Pill>
+      <Pill>free plan</Pill>
     </Link>
   );
 }

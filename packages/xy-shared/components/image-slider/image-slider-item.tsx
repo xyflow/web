@@ -38,7 +38,7 @@ export default function ImageSliderItem({
 
       <div
         className={cn(
-          'text-muted-foreground transition duration-300 motion-reduce:transition-none',
+          'text-slate-100 transition duration-300 motion-reduce:transition-none',
           'group-hover:opacity-100 px-2 md:px-4',
           isActive ? ' opacity-100' : ' opacity-40',
         )}

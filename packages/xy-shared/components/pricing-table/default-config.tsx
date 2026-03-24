@@ -13,14 +13,11 @@ const features: Record<string, FeatureConfig> = {
     label: (
       <span>
         Access to{' '}
-        <Link variant="primary" href="https://reactflow.dev/pro/examples">
+        <Link variant="primary" href="https://reactflow.dev/examples/pro">
           Pro Examples
         </Link>{' '}
         and{' '}
-        <Link
-          variant="primary"
-          href="https://reactflow.dev/components/templates/workflow-editor"
-        >
+        <Link variant="primary" href="https://reactflow.dev/ui/templates/workflow-editor">
           Templates
         </Link>
       </span>
@@ -157,13 +154,13 @@ export const EnterprisePlan: SubscriptionPlan = {
       label: (
         <span>
           Perpetual access to{' '}
-          <Link variant="primary" href="https://reactflow.dev/pro/examples">
+          <Link variant="primary" href="https://reactflow.dev/examples/pro">
             Pro Examples
           </Link>{' '}
           and{' '}
           <Link
             variant="primary"
-            href="https://reactflow.dev/components/templates/workflow-editor"
+            href="https://reactflow.dev/ui/templates/workflow-editor"
           >
             Templates
           </Link>
