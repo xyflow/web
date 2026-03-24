@@ -44,7 +44,7 @@ const ProExampleViewer: FC<{
   queryParams = {},
 }) => {
   const pathname = usePathname();
-  const { isSubscribed } = useSubscription();
+  const { isSubscribed, user } = useSubscription();
   const baseUrl = `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${framework}/${slug}`;
 
   // For templates we try to load `previewUrl` from `config.json`.
@@ -78,8 +78,10 @@ const ProExampleViewer: FC<{
     };
   }, [baseUrl, type]);
 
+  const hasUser = !!user;
   const isLoading = type === 'template' && !templatePreviewUrl;
   const signInLink = `/pro/sign-in?redirectTo=${pathname}`;
+  const subscribeLink = `/pro/subscribe?redirectTo=${pathname}`;
   const iframeBaseSrc = type === 'template' ? (templatePreviewUrl ?? '') : baseUrl;
   const iframeSearchParams = useMemo(() => toSearchParams(queryParams), [queryParams]);
 
@@ -115,15 +117,21 @@ const ProExampleViewer: FC<{
         </Text>
         <div className="flex space-x-4">
           <Button asChild className="shrink-0">
-            <Link href="/pro">See Pricing Plans</Link>
+            {hasUser ? (
+              <Link href={subscribeLink}>Subscribe</Link>
+            ) : (
+              <Link href="/pro">See Pricing Plans</Link>
+            )}
           </Button>
-          <Button
-            asChild
-            variant="secondary"
-            className="text-primary dark:text-white shrink-0"
-          >
-            <a href={signInLink}>Sign In</a>
-          </Button>
+          {hasUser ? null : (
+            <Button
+              asChild
+              variant="secondary"
+              className="text-primary dark:text-white shrink-0"
+            >
+              <a href={signInLink}>Sign In</a>
+            </Button>
+          )}
         </div>
       </div>
 
