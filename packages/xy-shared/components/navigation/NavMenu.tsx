@@ -1,14 +1,36 @@
 'use client';
 
-import { ReactNode, startTransition, useEffect, useState } from 'react';
-import { createNhostClient } from '@nhost/nhost-js';
-import { CookieStorage, Session } from '@nhost/nhost-js/session';
+import {
+  ReactNode,
+  startTransition,
+  useEffect,
+  useState,
+  type ComponentProps,
+} from 'react';
+import { usePathname, redirect } from 'next/navigation';
+import Link from 'next/link';
+import { Session } from '@nhost/nhost-js/session';
 
-import { type ComponentProps } from 'react';
-import { usePathname } from 'next/navigation';
+import { UserIcon } from '@heroicons/react/24/solid';
 import { SparklesIcon } from '@heroicons/react/24/solid';
+
+import { Subscribed } from '../pro/SubscriptionStatus';
 import { getFramework } from '../../lib/get-framework';
+import { nhostOnClient } from '../../lib/nhost-on-client';
+import { openStripeCustomerPortal } from '../../server-actions/open-stripe-customer-portal';
+
+import {
+  Menubar,
+  MenubarContent,
+  MenubarItem,
+  MenubarMenu,
+  MenubarSeparator,
+  MenubarTrigger,
+} from '../ui/menubar';
 import { Button } from '../ui/button';
+import { cn } from '../../lib/utils';
+
+const { library } = getFramework();
 
 const buttonProps: ComponentProps<typeof Button> = {
   asChild: true,
@@ -18,37 +40,10 @@ const buttonProps: ComponentProps<typeof Button> = {
     'opacity-0 w-[calc(100%-2px)] h-[calc(100%-2px)] text-nowrap animate-reveal-rtl shadow-none',
 };
 
-const nhost = createNhostClient({
-  subdomain: process.env.NEXT_PUBLIC_NHOST_SUBDOMAIN!,
-  region: process.env.NEXT_PUBLIC_NHOST_REGION!,
-  storage: new CookieStorage({
-    secure: process.env.NODE_ENV === 'production',
-  }),
-});
-
-import Link from 'next/link';
-import { UserIcon } from '@heroicons/react/24/solid';
-import { Subscribed } from '../pro/SubscriptionStatus';
-import { openStripeCustomerPortal } from '../../server-actions/open-stripe-customer-portal';
-import { signOut } from '../../server-actions/sign-out';
-import {
-  Menubar,
-  MenubarContent,
-  MenubarItem,
-  MenubarMenu,
-  MenubarSeparator,
-  MenubarTrigger,
-} from '../ui/menubar';
-import { cn } from '../../lib/utils';
-import { redirect } from 'next/navigation';
-import clsx from 'clsx';
-
-const { library } = getFramework();
-
 function getButtonContent(
   session: Session | undefined | null,
   pathname: string,
-): { component: ReactNode; width: number } {
+): { component: ReactNode; width: number; disableOutline?: boolean } {
   if (session === undefined) {
     return {
       component: <></>,
@@ -88,7 +83,7 @@ function getButtonContent(
     default:
       return {
         component: (
-          <Button asChild className={clsx('pl-3 pr-4 flex gap-1', buttonProps.className)}>
+          <Button asChild className={cn('flex gap-1 pl-3 pr-4', buttonProps.className)}>
             <Link href="/pro">
               <SparklesIcon height="16" />
               <span className="max-[1100px]:hidden">{library}</span>
@@ -97,6 +92,7 @@ function getButtonContent(
           </Button>
         ),
         width: 145,
+        disableOutline: true,
       };
   }
 }
@@ -107,11 +103,19 @@ export function NavMenu() {
 
   useEffect(() => {
     startTransition(() => {
-      setSession(nhost.getUserSession());
+      setSession(nhostOnClient.getUserSession());
     });
+
+    const unsubscribe = nhostOnClient.sessionStorage.onChange((session) => {
+      setSession(session);
+    });
+
+    return () => {
+      unsubscribe();
+    };
   }, []);
 
-  const { component, width } = getButtonContent(session, pathname);
+  const { component, width, disableOutline } = getButtonContent(session, pathname);
 
   return (
     <Menubar
@@ -121,8 +125,11 @@ export function NavMenu() {
       <MenubarMenu>
         <MenubarTrigger
           className={cn(
-            'animate-pulse xy-gradient-pill rounded-full p-0 w-full h-10 text-md cursor-pointer flex items-center justify-center shadow-none',
-            { 'xy-gradient-pill--loaded animate-none': session !== undefined }, // loading state
+            'xy-animated-outline text-md flex h-10 w-full animate-pulse cursor-pointer items-center justify-center rounded-full p-0 shadow-none',
+            {
+              'xy-animated-outline--loaded animate-none': session !== undefined,
+              'xy-animated-outline--disabled': disableOutline,
+            }, // loading state
           )}
         >
           {component}
@@ -143,7 +150,10 @@ export function NavMenu() {
             <MenubarSeparator />
             <MenubarItem
               onClick={async () => {
-                await signOut();
+                await nhostOnClient.auth.signOut({
+                  refreshToken: session?.refreshToken,
+                });
+                nhostOnClient.clearSession();
                 redirect('/');
               }}
             >

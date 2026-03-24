@@ -1,23 +1,14 @@
 'use client';
 
 import { useEffect } from 'react';
-import { createClient } from '@nhost/nhost-js';
-import { CookieStorage } from '@nhost/nhost-js/session';
-
-const nhost = createClient({
-  subdomain: process.env.NEXT_PUBLIC_NHOST_SUBDOMAIN!,
-  region: process.env.NEXT_PUBLIC_NHOST_REGION!,
-  storage: new CookieStorage({
-    secure: process.env.NODE_ENV === 'production',
-  }),
-});
+import { nhostOnClient } from '../../lib/nhost-on-client';
 
 const remainingLifetime = 30;
 // * 1000 to convert to milliseconds and /2 to check more often than the refresh interval
 const checkInterval = remainingLifetime * 500;
 
 function refreshSession() {
-  void nhost.refreshSession(remainingLifetime);
+  void nhostOnClient.refreshSession(remainingLifetime);
 }
 
 export function SessionRefresher() {

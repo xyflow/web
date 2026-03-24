@@ -90,21 +90,24 @@
 }
 
 @property --xy-gradient-angle {
-  syntax: '<angle>';
+  syntax: "<angle>";
   inherits: false;
   initial-value: 200deg;
 }
 
-/* Used for the Account, Pro, SignUp/SignIn buttons */
-.xy-gradient-pill {
+/**
+* Used for the Account, Pro, SignUp/SignIn buttons 
+* Animated outline effect
+**/
+.xy-animated-outline {
   position: relative;
   isolation: isolate;
   color: hsl(var(--primary));
   transition: color 0.5s ease-in-out;
 }
 
-.xy-gradient-pill::before {
-  content: '';
+.xy-animated-outline::before {
+  content: "";
   position: absolute;
   z-index: -2;
   left: 50%;
@@ -126,8 +129,8 @@
     opacity 0.5s ease-in-out;
 }
 
-.xy-gradient-pill::after {
-  content: '';
+.xy-animated-outline::after {
+  content: "";
   position: absolute;
   top: 1px;
   right: 1px;
@@ -138,14 +141,18 @@
   background-color: hsl(var(--muted));
 }
 
-.xy-gradient-pill--loaded::before {
-  --xy-gradient-angle: 465deg;
+.xy-animated-outline--loaded::before {
+  --xy-gradient-angle: 480deg;
   opacity: 1;
 }
 
-.xy-gradient-pill:hover::before {
+.xy-animated-outline--disabled::before {
+  opacity: 0;
+}
+
+.xy-animated-outline:hover::before {
   transition: --xy-gradient-angle 0.25s ease-out;
-  --xy-gradient-angle: 315deg;
+  --xy-gradient-angle: 290deg;
 }
 
 /* Container utility customization */
@@ -279,8 +286,8 @@
   body {
     background-color: hsl(var(--background));
     font-feature-settings:
-      'rlig' 1,
-      'calt' 1;
+      "rlig" 1,
+      "calt" 1;
   }
   html {
     /* this is a nextra default we need to overwrite */
@@ -306,7 +313,7 @@ html:has(body.x\:overflow-hidden) nav {
 /* 3. Typography */
 
 .xy-link-gray {
-  @apply transition text-gray-600 dark:text-gray-400 hover:text-muted-foreground dark:hover:text-gray-200 contrast-more:text-gray-700 contrast-more:dark:text-gray-100;
+  @apply hover:text-muted-foreground text-gray-600 transition contrast-more:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 contrast-more:dark:text-gray-100;
 }
 
 .dark .xy-link-gray {
@@ -315,7 +322,7 @@ html:has(body.x\:overflow-hidden) nav {
 
 /* 4. Navigation */
 .nextra-menu-desktop li.active > a {
-  @apply bg-transparent text-primary;
+  @apply text-primary bg-transparent;
 }
 
 nav a:has(svg.nav-github-logo) {
@@ -344,12 +351,12 @@ main .x\:border-primary-500 {
 
 /* adds labels to the sidebar items */
 .sidebar-title.pro:after {
-  content: 'Pro';
-  @apply bg-primary border border-primary text-white text-xs ml-1.5 px-1.5 font-bold rounded-full;
+  content: "Pro";
+  @apply bg-primary border-primary ml-1.5 rounded-full border px-1.5 text-xs font-bold text-white;
 }
 
 .sidebar-title.pro.free:after {
-  content: 'Pro Trial';
+  content: "Pro Trial";
 }
 
 li.active > .sidebar-title.pro:after {
@@ -363,7 +370,7 @@ li.active > .sidebar-title.pro:after {
   font-size: 12px;
   line-height: 14px;
   transform: translate(-35%, -35%);
-  content: 'new';
+  content: "new";
   font-weight: 500;
   @apply text-primary ml-1.5 px-1.5;
 }
