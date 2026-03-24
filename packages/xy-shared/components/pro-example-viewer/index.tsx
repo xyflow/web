@@ -1,6 +1,7 @@
 'use client';
 
 import { FC, useEffect, useMemo, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { cn } from '../../lib/utils';
 import { Button } from '../ui/button';
@@ -46,14 +47,16 @@ const ProExampleViewer: FC<{
   sideBySide = false,
   queryParams = {},
 }) => {
+  const pathname = usePathname();
   const isLightMode = variant === 'default';
   const { isSubscribed } = useSubscription();
+  const isTemplate = type === 'template';
 
   // Examples live under `/<framework>/<slug>`, templates under `/<slug>`.
   const baseUrl = useMemo(() => {
     const root = process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL;
-    return type === 'template' ? `${root}/${slug}` : `${root}/${framework}/${slug}`;
-  }, [framework, slug, type]);
+    return isTemplate ? `${root}/${slug}` : `${root}/${framework}/${slug}`;
+  }, [framework, slug, isTemplate]);
 
   // For templates we try to load `previewUrl` from `config.json`.
   const [templatePreviewUrl, setTemplatePreviewUrl] = useState<string | null>(null);
@@ -92,12 +95,7 @@ const ProExampleViewer: FC<{
       }),
     [isLightMode],
   );
-
-  const signInLink =
-    type === 'template'
-      ? `https://pro.reactflow.dev/templates/${slug}`
-      : `https://pro.reactflow.dev/examples/react/${slug}`;
-
+  const signInLink = `/pro/sign-in?redirectTo=${pathname}`;
   const iframeBaseSrc = templatePreviewUrl ?? baseUrl;
   const iframeSearchParams = useMemo(() => toSearchParams(queryParams), [queryParams]);
 

@@ -1,4 +1,5 @@
 'use client';
+
 import { useState } from 'react';
 import { Button } from '../ui/button';
 import { cn } from '../../lib/utils';
@@ -6,8 +7,9 @@ import { Container, ContainerProps } from '../ui/container';
 import { Link } from '../ui/link';
 import { Text } from '../ui/text';
 import { getFramework } from '../../lib/get-framework';
+import { usePathname } from 'next/navigation';
 
-const iframeClassName = 'block h-full  bg-white w-full';
+const iframeClassName = 'block h-full bg-white w-full';
 
 const { framework } = getFramework();
 
@@ -20,6 +22,7 @@ export default function CollaborativeFlowViewer({
 }: {
   variant?: ContainerProps['variant'];
 }) {
+  const pathname = usePathname();
   const [flowId] = useState<string | undefined>(() => {
     if (typeof window === 'undefined') return undefined;
     const key = 'collab-flow-tab-session-id';
@@ -43,9 +46,7 @@ export default function CollaborativeFlowViewer({
     },
   );
 
-  // TODO: replace for svelteflow
-  const signInLink = `https://pro.reactflow.dev/examples/react/collaborative?flow=${flowId}`;
-
+  const signInLink = `/pro/sign-in?redirectTo=${pathname}`;
   const iframeSrc = `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${framework}/collaborative?flow=${flowId}`;
 
   return (
