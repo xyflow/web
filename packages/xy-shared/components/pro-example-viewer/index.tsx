@@ -10,6 +10,7 @@ import { Text } from '../ui/text';
 import { useSubscription } from '../../hooks/use-subscription';
 import ProPlatformExampleViewer from '../../components/pro/ProExampleViewer';
 import { Framework } from '../../types';
+import { Spinner } from '../ui/spinner';
 
 type QueryParams = Record<string, string | number | boolean | null | undefined>;
 
@@ -33,8 +34,6 @@ const ProExampleViewer: FC<{
   className?: string;
   innerClassName?: string;
   framework?: Framework;
-  // If true, display two columns with two previews side by side
-  sideBySide?: boolean;
   queryParams?: QueryParams;
 }> = ({
   slug,
@@ -42,21 +41,15 @@ const ProExampleViewer: FC<{
   className,
   innerClassName,
   framework = 'react',
-  sideBySide = false,
   queryParams = {},
 }) => {
   const pathname = usePathname();
   const { isSubscribed } = useSubscription();
-  const isTemplate = type === 'template';
-
-  // Examples live under `/<framework>/<slug>`, templates under `/<slug>`.
-  const baseUrl = useMemo(() => {
-    const root = process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL;
-    return isTemplate ? `${root}/${slug}` : `${root}/${framework}/${slug}`;
-  }, [framework, slug, isTemplate]);
+  const baseUrl = `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${framework}/${slug}`;
 
   // For templates we try to load `previewUrl` from `config.json`.
   const [templatePreviewUrl, setTemplatePreviewUrl] = useState<string | null>(null);
+
   useEffect(() => {
     let cancelled = false;
 
@@ -85,8 +78,9 @@ const ProExampleViewer: FC<{
     };
   }, [baseUrl, type]);
 
+  const isLoading = type === 'template' && !templatePreviewUrl;
   const signInLink = `/pro/sign-in?redirectTo=${pathname}`;
-  const iframeBaseSrc = templatePreviewUrl ?? baseUrl;
+  const iframeBaseSrc = type === 'template' ? (templatePreviewUrl ?? '') : baseUrl;
   const iframeSearchParams = useMemo(() => toSearchParams(queryParams), [queryParams]);
 
   if (isSubscribed) {
@@ -103,8 +97,6 @@ const ProExampleViewer: FC<{
       />
     );
   }
-
-  const iframeCount = sideBySide ? 2 : 1;
 
   return (
     <Container className={cn(['mt-7', className])} innerClassName={innerClassName}>
@@ -136,27 +128,17 @@ const ProExampleViewer: FC<{
       </div>
 
       <div className="flex">
-        {Array.from({ length: iframeCount }, (_, idx) => idx + 1).map((index) => {
-          // Only append `flow` if the caller didn't already provide one
-          // (e.g. `CollaborativeFlowViewer` passes `flow=<uuid>`).
-          const perIframeParams =
-            queryParams.flow === undefined
-              ? { ...queryParams, flow: index }
-              : queryParams;
-
-          const src = appendSearchParams(iframeBaseSrc, toSearchParams(perIframeParams));
-          return (
-            <iframe
-              key={index}
-              src={src}
-              title={`${slug} preview ${index}`}
-              className={cn(
-                'block h-[645px] bg-background',
-                sideBySide ? 'w-1/2' : 'w-full',
-              )}
-            />
-          );
-        })}
+        {isLoading ? (
+          <div className="flex items-center justify-center block h-[645px] w-full">
+            <Spinner />
+          </div>
+        ) : (
+          <iframe
+            src={appendSearchParams(iframeBaseSrc, iframeSearchParams)}
+            title={`${slug} preview`}
+            className={cn('block h-[645px] bg-background w-full')}
+          />
+        )}
       </div>
     </Container>
   );
