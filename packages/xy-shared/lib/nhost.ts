@@ -5,38 +5,6 @@ import { DEFAULT_SESSION_KEY as key, type Session } from '@nhost/nhost-js/sessio
 import { COOKIE_OPTIONS } from './nhost-utils';
 import { NextRequest, NextResponse } from 'next/server';
 
-// export async function createNhostClient(): Promise<NhostClient> {
-//   const cookieStore = await cookies();
-
-//   const nhost = createServerClient({
-//     subdomain: process.env.NEXT_PUBLIC_NHOST_SUBDOMAIN!,
-//     region: process.env.NEXT_PUBLIC_NHOST_REGION!,
-//     storage: {
-//       get: (): Session | null => {
-//         const raw = cookieStore.get(key)?.value || null;
-//         if (!raw) {
-//           return null;
-//         }
-//         const session = JSON.parse(raw) as Session;
-//         return session;
-//       },
-//       set: (value: Session) => {
-//         cookieStore.set(key, JSON.stringify(value), { ...COOKIE_OPTIONS });
-//       },
-//       remove: () => {
-//         cookieStore.delete(key);
-//       },
-//     },
-//   });
-
-//   // this should only happen in non-RSC context
-//   // RSC cannot update auth cookies on the client
-//   // https://discord.com/channels/552499021260914688/1465638356833665159
-//   await nhost.refreshSession(60);
-
-//   return nhost;
-// }
-
 /**
  * Creates an Nhost client for use in server components.
  *
