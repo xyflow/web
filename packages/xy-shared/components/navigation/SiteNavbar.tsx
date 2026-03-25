@@ -24,7 +24,7 @@ import {
 } from '@heroicons/react/24/outline';
 import { getFramework } from '../../lib/get-framework';
 import { cn } from '../../lib/utils';
-import { NavMenu } from './NavMenu';
+import { DynamicCTAAcountMenu } from './dynamic-cta-account-menu';
 import { Search } from '../search';
 
 export type NavDropdownIcon =
@@ -144,7 +144,7 @@ export function NavDropdown({ label, items, active, href }: NavDropdownProps) {
           {label}
           <ChevronDownIcon
             className={cn(
-              'h-3 w-3 text-muted-foreground transition-transform duration-200',
+              'text-muted-foreground h-3 w-3 transition-transform duration-200',
               open && 'rotate-180',
             )}
           />
@@ -168,7 +168,7 @@ export function NavDropdown({ label, items, active, href }: NavDropdownProps) {
           {label}
           <ChevronDownIcon
             className={cn(
-              'h-3 w-3 text-muted-foreground transition-transform duration-200',
+              'text-muted-foreground h-3 w-3 transition-transform duration-200',
               open && 'rotate-180',
             )}
           />
@@ -178,17 +178,17 @@ export function NavDropdown({ label, items, active, href }: NavDropdownProps) {
       <div
         id={menuId}
         className={cn(
-          'absolute left-0 top-full pt-2 z-[201] transition-all duration-150',
+          'absolute left-0 top-full z-[201] pt-2 transition-all duration-150',
           open
-            ? 'opacity-100 translate-y-0 pointer-events-auto'
-            : 'opacity-0 -translate-y-1 pointer-events-none',
+            ? 'pointer-events-auto translate-y-0 opacity-100'
+            : 'pointer-events-none -translate-y-1 opacity-0',
         )}
         role="menu"
         aria-hidden={!open}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <div className="bg-background border border-border rounded-xl shadow-2xl p-2 w-[340px]">
+        <div className="bg-background border-border w-[340px] rounded-xl border p-2 shadow-2xl">
           {items.map((item) => {
             const Icon = iconMap[item.icon];
             return (
@@ -197,7 +197,7 @@ export function NavDropdown({ label, items, active, href }: NavDropdownProps) {
                 href={item.href}
                 target={item.external ? '_blank' : undefined}
                 rel={item.external ? 'noreferrer' : undefined}
-                className="flex items-start gap-3 p-3 rounded-lg hover:bg-muted transition-colors group"
+                className="hover:bg-muted group flex items-start gap-3 rounded-lg p-3 transition-colors"
                 role="menuitem"
                 tabIndex={open ? 0 : -1}
                 onClick={() => setOpen(false)}
@@ -210,12 +210,12 @@ export function NavDropdown({ label, items, active, href }: NavDropdownProps) {
                   }
                 }}
               >
-                <Icon className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors mt-0.5 shrink-0" />
+                <Icon className="text-muted-foreground group-hover:text-primary mt-0.5 h-5 w-5 shrink-0 transition-colors" />
                 <div>
-                  <div className="font-semibold text-sm text-foreground group-hover:text-primary transition-colors">
+                  <div className="text-foreground group-hover:text-primary text-sm font-semibold transition-colors">
                     {item.title}
                   </div>
-                  <div className="text-xs text-muted-foreground mt-1 leading-relaxed">
+                  <div className="text-muted-foreground mt-1 text-xs leading-relaxed">
                     {item.description}
                   </div>
                 </div>
@@ -292,7 +292,7 @@ function SiteNavLinks() {
   const isActive = (prefix: string) => pathname.startsWith(prefix);
 
   return (
-    <div className="hidden md:flex items-center gap-0.5 mr-auto">
+    <div className="mr-auto hidden items-center gap-0.5 md:flex">
       <NavLink href="/learn" active={isActive('/learn')}>
         Learn
       </NavLink>
@@ -354,7 +354,7 @@ export function SiteNavbarContent() {
           <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z" />
         </svg>
       </a>
-      <NavMenu />
+      <DynamicCTAAcountMenu />
     </>
   );
 }

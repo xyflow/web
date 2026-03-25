@@ -53,7 +53,7 @@ function getButtonContent(
 
   if (session) {
     return {
-      component: <AccountMenu />,
+      component: <AccountNavMenu />,
       width: 40,
     };
   }
@@ -97,7 +97,7 @@ function getButtonContent(
   }
 }
 
-function AccountMenu() {
+function AccountNavMenu() {
   return (
     <Menubar className="border-0 bg-transparent p-0 shadow-none">
       <MenubarMenu>
@@ -134,7 +134,7 @@ function AccountMenu() {
   );
 }
 
-export function NavMenu() {
+export function DynamicCTAAcountMenu() {
   const [session, setSession] = useState<Session | undefined | null>(undefined);
   const pathname = usePathname();
 
