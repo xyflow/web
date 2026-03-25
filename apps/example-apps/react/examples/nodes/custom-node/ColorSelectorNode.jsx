@@ -10,14 +10,13 @@ export default memo(({ data, isConnectable }) => {
         onConnect={(params) => console.log('handle onConnect', params)}
         isConnectable={isConnectable}
       />
-      <div>
-        Custom Color Picker Node: <strong>{data.color}</strong>
-      </div>
+      <div>Custom Color Picker Node</div>
       <input
-        className="nodrag"
+        className="nodrag color-input"
         type="color"
+        value={data.color}
         onChange={data.onChange}
-        defaultValue={data.color}
+        aria-label="Select node color"
       />
       <Handle
         type="source"

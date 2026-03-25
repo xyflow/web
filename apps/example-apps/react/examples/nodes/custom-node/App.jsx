@@ -4,15 +4,17 @@ import {
   useNodesState,
   useEdgesState,
   addEdge,
+  Background,
   MiniMap,
   Controls,
+  Panel,
 } from '@xyflow/react';
 
 import '@xyflow/react/dist/style.css';
 
 import ColorSelectorNode from './ColorSelectorNode';
 
-const initBgColor = '#c9f1dd';
+const initColor = '#ff0071';
 
 const snapGrid = [20, 20];
 const nodeTypes = {
@@ -24,7 +26,7 @@ const defaultViewport = { x: 0, y: 0, zoom: 1.5 };
 const CustomNodeFlow = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
-  const [bgColor, setBgColor] = useState(initBgColor);
+  const [selectedColor, setSelectedColor] = useState(initColor);
 
   useEffect(() => {
     const onChange = (event) => {
@@ -36,7 +38,7 @@ const CustomNodeFlow = () => {
 
           const color = event.target.value;
 
-          setBgColor(color);
+          setSelectedColor(color);
 
           return {
             ...node,
@@ -60,7 +62,7 @@ const CustomNodeFlow = () => {
       {
         id: '2',
         type: 'selectorNode',
-        data: { onChange: onChange, color: initBgColor },
+        data: { onChange: onChange, color: initColor },
         position: { x: 300, y: 50 },
       },
       {
@@ -113,7 +115,6 @@ const CustomNodeFlow = () => {
       onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
       onConnect={onConnect}
-      style={{ background: bgColor }}
       nodeTypes={nodeTypes}
       snapToGrid={true}
       snapGrid={snapGrid}
@@ -121,18 +122,39 @@ const CustomNodeFlow = () => {
       fitView
       attributionPosition="bottom-left"
     >
-      <MiniMap
-        nodeStrokeColor={(n) => {
-          if (n.type === 'input') return '#0041d0';
-          if (n.type === 'selectorNode') return bgColor;
-          if (n.type === 'output') return '#ff0072';
-        }}
-        nodeColor={(n) => {
-          if (n.type === 'selectorNode') return bgColor;
-          return '#fff';
-        }}
-      />
+      <Background />
+      <MiniMap />
       <Controls />
+      <Panel position="top-right">
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 8,
+            padding: '8px 12px',
+            borderRadius: 8,
+            background: 'var(--xy-controls-button-background-color, #fff)',
+            border: '1px solid var(--xy-controls-button-border-color, #ddd)',
+          }}
+        >
+          <div
+            aria-hidden="true"
+            style={{
+              width: 16,
+              height: 16,
+              borderRadius: '999px',
+              background: selectedColor,
+              border: '1px solid rgba(0, 0, 0, 0.2)',
+            }}
+          />
+          <span>
+            Selected color:{' '}
+            <code style={{ fontFamily: 'monospace', fontVariantNumeric: 'tabular-nums' }}>
+              {selectedColor}
+            </code>
+          </span>
+        </div>
+      </Panel>
     </ReactFlow>
   );
 };
