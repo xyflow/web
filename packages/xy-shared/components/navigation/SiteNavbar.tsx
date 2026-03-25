@@ -145,7 +145,12 @@ function SiteNavLinks() {
         <SiteNavLink href="/showcase" active={isActive('/showcase')}>
           Showcase
         </SiteNavLink>
-        <SiteNavDropdown label="Pro" href="/pro" items={proItems} active={isActive('/pro')} />
+        <SiteNavDropdown
+          label="Pro"
+          href="/pro"
+          items={proItems}
+          active={isActive('/pro')}
+        />
         <SiteNavDropdown label="More" items={moreItems} />
       </NavigationMenuList>
     </NavigationMenu>
