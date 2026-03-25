@@ -7,28 +7,18 @@ import {
   useState,
   type ComponentProps,
 } from 'react';
-import { usePathname, redirect } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { Session } from '@nhost/nhost-js/session';
 
-import { UserIcon } from '@heroicons/react/24/solid';
 import { SparklesIcon } from '@heroicons/react/24/solid';
 
-import { Subscribed } from '../pro/SubscriptionStatus';
 import { getFramework } from '../../lib/get-framework';
 import { nhostOnClient } from '../../lib/nhost-on-client';
-import { openStripeCustomerPortal } from '../../server-actions/open-stripe-customer-portal';
 
-import {
-  Menubar,
-  MenubarContent,
-  MenubarItem,
-  MenubarMenu,
-  MenubarSeparator,
-  MenubarTrigger,
-} from '../ui/menubar';
 import { Button } from '../ui/button';
 import { cn } from '../../lib/utils';
+import { AccountNavMenu } from './account-nav-menu';
 
 const { library } = getFramework();
 
@@ -95,43 +85,6 @@ function getButtonContent(
         disableOutline: true,
       };
   }
-}
-
-function AccountNavMenu() {
-  return (
-    <Menubar className="border-0 bg-transparent p-0 shadow-none">
-      <MenubarMenu>
-        <MenubarTrigger className="cursor-pointer">
-          <UserIcon className="animate-fade-in" height="18" />
-        </MenubarTrigger>
-        <MenubarContent align="end" className="border-border">
-          <Link href="/pro/dashboard">
-            <MenubarItem>Dashboard</MenubarItem>
-          </Link>
-
-          <Link href="/pro/account">
-            <MenubarItem>Account</MenubarItem>
-          </Link>
-
-          <Subscribed requireAdminSubscription>
-            <MenubarItem onClick={openStripeCustomerPortal}>Billing</MenubarItem>
-          </Subscribed>
-          <MenubarSeparator />
-          <MenubarItem
-            onClick={async () => {
-              await nhostOnClient.auth.signOut({
-                refreshToken: nhostOnClient.getUserSession()?.refreshToken,
-              });
-              nhostOnClient.clearSession();
-              redirect('/');
-            }}
-          >
-            Logout
-          </MenubarItem>
-        </MenubarContent>
-      </MenubarMenu>
-    </Menubar>
-  );
 }
 
 export function DynamicCTAAcountMenu() {
