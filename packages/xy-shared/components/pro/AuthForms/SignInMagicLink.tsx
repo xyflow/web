@@ -4,12 +4,14 @@ import { FC, FormEvent, useState, useTransition } from 'react';
 import { Button } from '../../ui/button';
 import { Input, InputLabel } from '../../ui/input';
 
-import { signInEmailPasswordless } from '../../../server-actions/sign-in-email-passwordless';
 import {
   AuthErrorNotification,
   AuthNotification,
   MagicLinkSuccessNotification,
 } from './AuthNotification';
+import { nhostOnClient } from '../../../lib/nhost-on-client';
+import { FetchError } from '@nhost/nhost-js/fetch';
+import { ErrorResponse } from '@nhost/nhost-js/auth';
 
 const SignInMagicLink: FC = () => {
   const [isLoading, startTransition] = useTransition();
@@ -22,15 +24,20 @@ const SignInMagicLink: FC = () => {
     startTransition(async () => {
       const formData = new FormData(event.currentTarget);
       const email = formData.get('email') as string;
-      const result = await signInEmailPasswordless(email);
-      setError(result?.error);
-      setIsSuccess(!result?.error);
+
+      try {
+        await nhostOnClient.auth.signInPasswordlessEmail({ email });
+        setIsSuccess(true);
+      } catch (err: unknown) {
+        const error = err as FetchError<ErrorResponse>;
+        setError(error instanceof Error ? error.message : 'An unknown error occurred');
+      }
     });
   }
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="flex flex-col space-y-4 mb-2">
+      <div className="mb-2 flex flex-col space-y-4">
         {error && <AuthErrorNotification error={error} />}
         {error && (
           <AuthNotification

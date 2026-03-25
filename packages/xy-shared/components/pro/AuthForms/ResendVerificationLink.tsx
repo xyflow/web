@@ -4,9 +4,11 @@ import { FormEvent, useState, useTransition } from 'react';
 import { useSearchParams } from 'next/navigation';
 
 import { AuthErrorNotification, AuthNotification } from './AuthNotification';
-import { signInEmailPasswordless } from '../../../server-actions/sign-in-email-passwordless';
 import { Input, InputLabel } from '../../ui/input';
 import { Button } from '../../ui/button';
+import { nhostOnClient } from '../../../lib/nhost-on-client';
+import { FetchError } from '@nhost/nhost-js/fetch';
+import { ErrorResponse } from '@nhost/nhost-js/auth';
 
 function ResendVerificationLink() {
   const [isLoading, startTransition] = useTransition();
@@ -20,10 +22,13 @@ function ResendVerificationLink() {
     startTransition(async () => {
       const formData = new FormData(event.currentTarget);
       const email = formData.get('email') as string;
-      const result = await signInEmailPasswordless(email);
-
-      setError(result?.error);
-      setIsSuccess(!result?.error);
+      try {
+        await nhostOnClient.auth.signInPasswordlessEmail({ email });
+        setIsSuccess(true);
+      } catch (err: unknown) {
+        const error = err as FetchError<ErrorResponse>;
+        setError(error instanceof Error ? error.message : 'An unknown error occurred');
+      }
     });
   }
 
