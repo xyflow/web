@@ -43,6 +43,7 @@ const metaRecord = {
           handles: '',
           'custom-edges': 'Edges',
           'edge-labels': 'Edge Labels',
+          'utility-classes': '',
           theming: '',
         },
       },
