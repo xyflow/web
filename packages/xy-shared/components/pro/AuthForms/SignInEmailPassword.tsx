@@ -1,33 +1,47 @@
 'use client';
 
 import { FC, FormEvent, useState, useTransition } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { redirect, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { Button } from '../../ui/button';
 import { Input, InputLabel } from '../../ui/input';
 
 import { AuthErrorNotification } from './AuthNotification';
-import { signIn } from '../../../server-actions/sign-in-email-password';
+import { nhostOnClient } from '../../../lib/nhost-on-client';
+import { FetchError } from '@nhost/nhost-js/fetch';
+import { ErrorResponse } from '@nhost/nhost-js/auth';
 
 const SignInEmailPassword: FC = () => {
   const searchParams = useSearchParams();
   const [error, setError] = useState<string | null>();
   const [isLoading, startTransition] = useTransition();
 
-  const router = useRouter();
-
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     // Prevent resubmitting the form when an error is set
     event.preventDefault();
     startTransition(async () => {
       const formData = new FormData(event.currentTarget);
-      const redirectTo = searchParams.get('redirectTo') ?? undefined;
-      const result = await signIn(formData, redirectTo);
+      let redirectTo: string | undefined =
+        searchParams.get('redirectTo') ?? '/pro/dashboard';
 
-      if (result.redirect) {
-        router.push(result.redirect);
-      } else if (result.error) {
-        setError(result.error);
+      const email = formData.get('email') as string;
+      const password = formData.get('password') as string;
+      try {
+        await nhostOnClient.auth.signInEmailPassword({
+          email,
+          password,
+        });
+      } catch (err: unknown) {
+        const error = err as FetchError<ErrorResponse>;
+        if (error instanceof FetchError && error.body.error === 'unverified-user') {
+          redirectTo = `/pro/email-verification?email=${encodeURIComponent(email)}`;
+        } else {
+          setError(error instanceof Error ? error.message : 'An unknown error occurred');
+          redirectTo = undefined;
+        }
+      } finally {
+        // we have to call redirect here otherwise next throws an error
+        if (redirectTo) redirect(redirectTo);
       }
     });
   }
@@ -64,7 +78,7 @@ const SignInEmailPassword: FC = () => {
             required
             variant="square"
           />
-          <div className="text-light text-sm mt-2">
+          <div className="text-light mt-2 text-sm">
             Having trouble signing in?{' '}
             <Link href="/pro/reset-password" className="text-primary hover:underline">
               Reset your password
@@ -80,7 +94,7 @@ const SignInEmailPassword: FC = () => {
           loading={isLoading}
           disabled={isLoading}
           size="lg"
-          className="w-full mt-2"
+          className="mt-2 w-full"
           type="submit"
         >
           Sign in
