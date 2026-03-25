@@ -22,8 +22,8 @@ import {
 import { Button } from '../../../../../components/ui/button';
 import { Input } from '../../../../../components/ui/input';
 import { callNhostFunction } from '../../../../../server-actions/call-nhost-function';
-import { signOut } from '../../../../../server-actions/sign-out';
 import { getFramework } from '../../../../../lib/get-framework';
+import { nhostOnClient } from '../../../../../lib/nhost-on-client';
 
 const { library } = getFramework();
 
@@ -32,12 +32,13 @@ const DeleteAccountCard: FC<{ userEmail: string }> = ({ userEmail }) => {
   const [isDeleteLoading, startTransition] = useTransition();
   const isDeleteConfirmed = userEmail === confirmUserEmail;
 
-
   function deleteAccount() {
     startTransition(async () => {
       const { success } = await callNhostFunction('/users/delete', {});
       if (success) {
-        await signOut();
+        await nhostOnClient.auth.signOut({
+          refreshToken: nhostOnClient.getUserSession()?.refreshToken,
+        });
       }
     });
   }
@@ -99,7 +100,7 @@ const DeleteAccountCard: FC<{ userEmail: string }> = ({ userEmail }) => {
           >
             <Button
               onClick={() => setConfirmUserEmail('')}
-              className="bg-red-500 hover:bg-red-400 -mt-4 mb-2"
+              className="-mt-4 mb-2 bg-red-500 hover:bg-red-400"
             >
               Delete Account
             </Button>
