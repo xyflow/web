@@ -1,20 +1,11 @@
 'use client';
 
-import {
-  useId,
-  useRef,
-  useState,
-  type ComponentType,
-  type FocusEvent,
-  type KeyboardEvent,
-  type ReactNode,
-} from 'react';
-import { usePathname } from 'next/navigation';
+import { type ComponentType, type ReactNode } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import {
   BeakerIcon,
   ChatBubbleLeftRightIcon,
-  ChevronDownIcon,
   CreditCardIcon,
   DocumentTextIcon,
   MegaphoneIcon,
@@ -22,6 +13,15 @@ import {
   SparklesIcon,
   Squares2X2Icon,
 } from '@heroicons/react/24/outline';
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from '../ui/navigation-menu';
 import { getFramework } from '../../lib/get-framework';
 import { cn } from '../../lib/utils';
 import { DynamicCTAAcountMenu } from './dynamic-cta-account-menu';
@@ -55,178 +55,6 @@ export type NavDropdownItem = {
   href: string;
   external?: boolean;
 };
-
-type NavDropdownProps = {
-  label: ReactNode;
-  items: NavDropdownItem[];
-  active?: boolean;
-  href?: string;
-};
-
-export function NavDropdown({ label, items, active, href }: NavDropdownProps) {
-  const [open, setOpen] = useState(false);
-  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const triggerButtonRef = useRef<HTMLButtonElement>(null);
-  const triggerLinkRef = useRef<HTMLAnchorElement>(null);
-  const menuId = useId();
-
-  const handleMouseEnter = () => {
-    if (closeTimer.current) clearTimeout(closeTimer.current);
-    setOpen(true);
-  };
-
-  const handleMouseLeave = () => {
-    closeTimer.current = setTimeout(() => setOpen(false), 120);
-  };
-
-  const handleFocus = () => {
-    if (closeTimer.current) clearTimeout(closeTimer.current);
-    setOpen(true);
-  };
-
-  const handleBlur = (event: FocusEvent<HTMLDivElement>) => {
-    const nextFocused = event.relatedTarget;
-
-    if (nextFocused instanceof Node && containerRef.current?.contains(nextFocused)) {
-      return;
-    }
-
-    setOpen(false);
-  };
-
-  const focusFirstItem = () => {
-    const firstItem =
-      containerRef.current?.querySelector<HTMLAnchorElement>('a[role="menuitem"]');
-    firstItem?.focus();
-  };
-
-  const handleTriggerKeyDown = (
-    event: KeyboardEvent<HTMLButtonElement | HTMLAnchorElement>,
-  ) => {
-    if (event.key === 'ArrowDown' || event.key === ' ') {
-      event.preventDefault();
-      setOpen(true);
-      requestAnimationFrame(focusFirstItem);
-    }
-
-    if (event.key === 'Escape') {
-      event.preventDefault();
-      setOpen(false);
-      triggerButtonRef.current?.focus();
-      triggerLinkRef.current?.focus();
-    }
-  };
-
-  return (
-    <div
-      ref={containerRef}
-      className="relative"
-      onFocus={handleFocus}
-      onBlur={handleBlur}
-    >
-      {href ? (
-        <Link
-          ref={triggerLinkRef}
-          href={href}
-          className={cn(
-            'flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium transition-colors',
-            'text-foreground/80 hover:text-foreground hover:bg-muted',
-            (open || active) && 'bg-muted text-foreground',
-          )}
-          aria-expanded={open}
-          aria-haspopup="menu"
-          aria-controls={menuId}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-          onKeyDown={handleTriggerKeyDown}
-        >
-          {label}
-          <ChevronDownIcon
-            className={cn(
-              'text-muted-foreground h-3 w-3 transition-transform duration-200',
-              open && 'rotate-180',
-            )}
-          />
-        </Link>
-      ) : (
-        <button
-          ref={triggerButtonRef}
-          type="button"
-          className={cn(
-            'flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium transition-colors',
-            'text-foreground/80 hover:text-foreground hover:bg-muted',
-            (open || active) && 'bg-muted text-foreground',
-          )}
-          aria-expanded={open}
-          aria-haspopup="menu"
-          aria-controls={menuId}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-          onKeyDown={handleTriggerKeyDown}
-        >
-          {label}
-          <ChevronDownIcon
-            className={cn(
-              'text-muted-foreground h-3 w-3 transition-transform duration-200',
-              open && 'rotate-180',
-            )}
-          />
-        </button>
-      )}
-
-      <div
-        id={menuId}
-        className={cn(
-          'absolute left-0 top-full z-[201] pt-2 transition-all duration-150',
-          open
-            ? 'pointer-events-auto translate-y-0 opacity-100'
-            : 'pointer-events-none -translate-y-1 opacity-0',
-        )}
-        role="menu"
-        aria-hidden={!open}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
-        <div className="bg-background border-border w-[340px] rounded-xl border p-2 shadow-2xl">
-          {items.map((item) => {
-            const Icon = iconMap[item.icon];
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                target={item.external ? '_blank' : undefined}
-                rel={item.external ? 'noreferrer' : undefined}
-                className="hover:bg-muted group flex items-start gap-3 rounded-lg p-3 transition-colors"
-                role="menuitem"
-                tabIndex={open ? 0 : -1}
-                onClick={() => setOpen(false)}
-                onKeyDown={(event) => {
-                  if (event.key === 'Escape') {
-                    event.preventDefault();
-                    setOpen(false);
-                    triggerButtonRef.current?.focus();
-                    triggerLinkRef.current?.focus();
-                  }
-                }}
-              >
-                <Icon className="text-muted-foreground group-hover:text-primary mt-0.5 h-5 w-5 shrink-0 transition-colors" />
-                <div>
-                  <div className="text-foreground group-hover:text-primary text-sm font-semibold transition-colors">
-                    {item.title}
-                  </div>
-                  <div className="text-muted-foreground mt-1 text-xs leading-relaxed">
-                    {item.description}
-                  </div>
-                </div>
-              </Link>
-            );
-          })}
-        </div>
-      </div>
-    </div>
-  );
-}
 
 const PRO_ITEMS_BASE: NavDropdownItem[] = [
   {
@@ -281,6 +109,12 @@ const PLAYGROUND_ITEM: NavDropdownItem = {
   external: true,
 };
 
+const navDropdownItemClass =
+  'group/nav-item flex items-start gap-3 rounded-lg p-3 text-foreground transition-colors hover:bg-muted focus:bg-muted focus:outline-none';
+
+const navDropdownAccentClass =
+  'transition-colors group-hover/nav-item:text-primary group-focus/nav-item:text-primary';
+
 function SiteNavLinks() {
   const pathname = usePathname();
   const { framework } = getFramework();
@@ -292,28 +126,29 @@ function SiteNavLinks() {
   const isActive = (prefix: string) => pathname.startsWith(prefix);
 
   return (
-    <div className="mr-auto hidden items-center gap-0.5 md:flex">
-      <NavLink href="/learn" active={isActive('/learn')}>
-        Learn
-      </NavLink>
-      <NavLink href="/api-reference" active={isActive('/api-reference')}>
-        Reference
-      </NavLink>
-      <NavLink href="/examples" active={isActive('/examples')}>
-        Examples
-      </NavLink>
-      {/* <NavDropdown label="Examples" items={EXAMPLES_ITEMS} href="/examples" /> */}
-      {isReact && (
-        <NavLink href="/ui" active={isActive('/ui')}>
-          UI
-        </NavLink>
-      )}
-      <NavLink href="/showcase" active={isActive('/showcase')}>
-        Showcase
-      </NavLink>
-      <NavDropdown label="Pro" href="/pro" items={proItems} active={isActive('/pro')} />
-      <NavDropdown label="More" items={moreItems} />
-    </div>
+    <NavigationMenu className="mr-auto hidden max-w-none flex-none md:flex">
+      <NavigationMenuList className="gap-0.5 space-x-0">
+        <SiteNavLink href="/learn" active={isActive('/learn')}>
+          Learn
+        </SiteNavLink>
+        <SiteNavLink href="/api-reference" active={isActive('/api-reference')}>
+          Reference
+        </SiteNavLink>
+        <SiteNavLink href="/examples" active={isActive('/examples')}>
+          Examples
+        </SiteNavLink>
+        {isReact && (
+          <SiteNavLink href="/ui" active={isActive('/ui')}>
+            UI
+          </SiteNavLink>
+        )}
+        <SiteNavLink href="/showcase" active={isActive('/showcase')}>
+          Showcase
+        </SiteNavLink>
+        <SiteNavDropdown label="Pro" href="/pro" items={proItems} active={isActive('/pro')} />
+        <SiteNavDropdown label="More" items={moreItems} />
+      </NavigationMenuList>
+    </NavigationMenu>
   );
 }
 
@@ -359,7 +194,7 @@ export function SiteNavbarContent() {
   );
 }
 
-function NavLink({
+function SiteNavLink({
   href,
   children,
   active,
@@ -369,16 +204,83 @@ function NavLink({
   active: boolean;
 }) {
   return (
-    <Link
-      href={href}
-      className={cn(
-        'flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium transition-colors',
-        active
-          ? 'text-foreground bg-muted'
-          : 'text-foreground/80 hover:text-foreground hover:bg-muted',
-      )}
-    >
-      {children}
-    </Link>
+    <NavigationMenuItem>
+      <NavigationMenuLink
+        asChild
+        className={cn(
+          navigationMenuTriggerStyle(),
+          'focus:bg-muted focus:text-foreground h-auto bg-transparent px-2 py-1.5',
+          active
+            ? 'bg-muted text-foreground hover:bg-muted'
+            : 'text-foreground/80 hover:bg-muted hover:text-foreground',
+        )}
+      >
+        <Link href={href}>{children}</Link>
+      </NavigationMenuLink>
+    </NavigationMenuItem>
+  );
+}
+
+function SiteNavDropdown({
+  label,
+  href,
+  items,
+  active,
+}: {
+  label: ReactNode;
+  href?: string;
+  items: NavDropdownItem[];
+  active?: boolean;
+}) {
+  const router = useRouter();
+
+  return (
+    <NavigationMenuItem>
+      <NavigationMenuTrigger
+        className={cn(
+          'focus:bg-muted focus:text-foreground data-[state=open]:bg-muted data-[state=open]:text-foreground data-[state=open]:hover:bg-muted data-[state=open]:focus:bg-muted h-auto bg-transparent px-3 py-1.5',
+          href && 'cursor-pointer',
+          active
+            ? 'bg-muted text-foreground hover:bg-muted'
+            : 'text-foreground/80 hover:bg-muted hover:text-foreground',
+        )}
+        onClick={href ? () => router.push(href) : undefined}
+      >
+        {label}
+      </NavigationMenuTrigger>
+      <NavigationMenuContent className="bg-background text-foreground rounded-xl p-2 shadow-2xl md:w-[340px]">
+        <div className="grid gap-1">
+          {items.map((item) => {
+            const Icon = iconMap[item.icon];
+
+            return (
+              <NavigationMenuLink asChild key={item.href}>
+                <Link
+                  href={item.href}
+                  target={item.external ? '_blank' : undefined}
+                  rel={item.external ? 'noreferrer' : undefined}
+                  className={navDropdownItemClass}
+                >
+                  <Icon
+                    className={cn(
+                      'text-muted-foreground mt-0.5 h-5 w-5 shrink-0',
+                      navDropdownAccentClass,
+                    )}
+                  />
+                  <div>
+                    <div className={cn('text-sm font-semibold', navDropdownAccentClass)}>
+                      {item.title}
+                    </div>
+                    <div className="text-muted-foreground mt-1 text-xs leading-relaxed">
+                      {item.description}
+                    </div>
+                  </div>
+                </Link>
+              </NavigationMenuLink>
+            );
+          })}
+        </div>
+      </NavigationMenuContent>
+    </NavigationMenuItem>
   );
 }

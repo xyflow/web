@@ -13,11 +13,11 @@ import { Session } from '@nhost/nhost-js/session';
 
 import { SparklesIcon } from '@heroicons/react/24/solid';
 
+import { cn } from '../../lib/utils';
 import { getFramework } from '../../lib/get-framework';
 import { nhostOnClient } from '../../lib/nhost-on-client';
 
 import { Button } from '../ui/button';
-import { cn } from '../../lib/utils';
 import { AccountNavMenu } from './account-nav-menu';
 
 const { library } = getFramework();
@@ -111,7 +111,7 @@ export function DynamicCTAAcountMenu() {
     <div
       style={{ width: `${width}px` }}
       className={cn(
-        'xy-animated-outline flex h-10 animate-pulse cursor-pointer items-center justify-center rounded-full p-0 transition-all duration-500',
+        'xy-animated-outline flex h-10 animate-pulse items-center justify-center rounded-full p-0 transition-all duration-500',
         {
           'xy-animated-outline--loaded animate-none': session !== undefined,
           'xy-animated-outline--disabled': disableOutline,
