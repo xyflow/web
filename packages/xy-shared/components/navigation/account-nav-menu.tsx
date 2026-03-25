@@ -23,7 +23,7 @@ const accountMenuItemClass =
   'group/account-item flex w-full items-center rounded-lg px-3 py-2 text-left text-sm text-foreground transition-colors hover:bg-muted focus:bg-muted focus:outline-none';
 
 const accountMenuDestructiveItemClass =
-  'text-destructive hover:bg-destructive/10 focus:bg-destructive/10 focus:text-destructive';
+  'text-destructive hover:bg-destructive/30 focus:bg-destructive/30 focus:text-destructive dark:text-red-400 dark:hover:text-red-400 dark:focus:text-red-300';
 
 export function AccountNavMenu() {
   return (
