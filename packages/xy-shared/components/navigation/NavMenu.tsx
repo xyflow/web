@@ -53,7 +53,7 @@ function getButtonContent(
 
   if (session) {
     return {
-      component: <UserIcon className="animate-fade-in" height="18" />,
+      component: <AccountMenu />,
       width: 40,
     };
   }
@@ -97,6 +97,43 @@ function getButtonContent(
   }
 }
 
+function AccountMenu() {
+  return (
+    <Menubar className="border-0 bg-transparent p-0 shadow-none">
+      <MenubarMenu>
+        <MenubarTrigger className="cursor-pointer">
+          <UserIcon className="animate-fade-in" height="18" />
+        </MenubarTrigger>
+        <MenubarContent align="end" className="border-border">
+          <Link href="/pro/dashboard">
+            <MenubarItem>Dashboard</MenubarItem>
+          </Link>
+
+          <Link href="/pro/account">
+            <MenubarItem>Account</MenubarItem>
+          </Link>
+
+          <Subscribed requireAdminSubscription>
+            <MenubarItem onClick={openStripeCustomerPortal}>Billing</MenubarItem>
+          </Subscribed>
+          <MenubarSeparator />
+          <MenubarItem
+            onClick={async () => {
+              await nhostOnClient.auth.signOut({
+                refreshToken: nhostOnClient.getUserSession()?.refreshToken,
+              });
+              nhostOnClient.clearSession();
+              redirect('/');
+            }}
+          >
+            Logout
+          </MenubarItem>
+        </MenubarContent>
+      </MenubarMenu>
+    </Menubar>
+  );
+}
+
 export function NavMenu() {
   const [session, setSession] = useState<Session | undefined | null>(undefined);
   const pathname = usePathname();
@@ -118,50 +155,17 @@ export function NavMenu() {
   const { component, width, disableOutline } = getButtonContent(session, pathname);
 
   return (
-    <Menubar
-      className="border-0 bg-transparent p-0 shadow-none transition-all duration-500"
+    <div
       style={{ width: `${width}px` }}
+      className={cn(
+        'xy-animated-outline flex h-10 animate-pulse cursor-pointer items-center justify-center rounded-full p-0 transition-all duration-500',
+        {
+          'xy-animated-outline--loaded animate-none': session !== undefined,
+          'xy-animated-outline--disabled': disableOutline,
+        },
+      )}
     >
-      <MenubarMenu>
-        <MenubarTrigger
-          className={cn(
-            'xy-animated-outline text-md flex h-10 w-full animate-pulse cursor-pointer items-center justify-center rounded-full p-0 shadow-none',
-            {
-              'xy-animated-outline--loaded animate-none': session !== undefined,
-              'xy-animated-outline--disabled': disableOutline,
-            }, // loading state
-          )}
-        >
-          {component}
-        </MenubarTrigger>
-        {session && (
-          <MenubarContent align="end" className="border-border">
-            <Link href="/pro/dashboard">
-              <MenubarItem>Dashboard</MenubarItem>
-            </Link>
-
-            <Link href="/pro/account">
-              <MenubarItem>Account</MenubarItem>
-            </Link>
-
-            <Subscribed requireAdminSubscription>
-              <MenubarItem onClick={openStripeCustomerPortal}>Billing</MenubarItem>
-            </Subscribed>
-            <MenubarSeparator />
-            <MenubarItem
-              onClick={async () => {
-                await nhostOnClient.auth.signOut({
-                  refreshToken: session?.refreshToken,
-                });
-                nhostOnClient.clearSession();
-                redirect('/');
-              }}
-            >
-              Logout
-            </MenubarItem>
-          </MenubarContent>
-        )}
-      </MenubarMenu>
-    </Menubar>
+      {component}
+    </div>
   );
 }
