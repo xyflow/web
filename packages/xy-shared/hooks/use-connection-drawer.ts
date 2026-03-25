@@ -98,7 +98,7 @@ function createMatchedPairs(
   for (const sourceHandle of sourceHandles) {
     const targetHandleId = sourceHandle.getAttribute('data-to')!;
     const targetHandle = container.querySelector<HTMLElement>(
-      `[data-portid="${targetHandleId}"`,
+      `[data-portid="${targetHandleId}"]`,
     );
 
     if (sourceHandle && targetHandle) {
