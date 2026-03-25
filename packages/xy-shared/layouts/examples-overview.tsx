@@ -11,6 +11,7 @@ import { Heading } from '../components/ui/heading';
 import { Link } from '../components/ui/link';
 import { Section } from '../components/ui/section';
 import { Text } from '../components/ui/text';
+import { withExamplesImageVersion, withProExamplesImageVersion } from '../lib/cached-image-version';
 import { getFramework } from '../lib/get-framework';
 import { getExamplesPageMap } from '../server/example-utils';
 import clsx from 'clsx';
@@ -35,14 +36,18 @@ function getExampleImage(
   exampleName: string,
 ) {
   if (isProExample) {
-    return `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${framework}/${exampleName}/thumbnail.jpg?v=14`;
+    return withProExamplesImageVersion(
+      `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${framework}/${exampleName}/thumbnail.jpg`,
+    );
   }
 
   if (previewPath) {
     return `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/${previewPath}`;
   }
 
-  return `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/${framework}/${route}/preview.jpg?v=14`;
+  return withExamplesImageVersion(
+    `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/${framework}/${route}/preview.jpg`,
+  );
 }
 
 function getExampleImageDark(
@@ -53,14 +58,18 @@ function getExampleImageDark(
   exampleName: string,
 ) {
   if (isProExample) {
-    return `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${framework}/${exampleName}/thumbnail-dark.jpg?v=14`;
+    return withProExamplesImageVersion(
+      `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${framework}/${exampleName}/thumbnail-dark.jpg`,
+    );
   }
 
   if (previewPath) {
     return `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/${previewPath.replace('.jpg', '-dark.jpg')}`;
   }
 
-  return `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/${framework}/${route}/preview-dark.jpg?v=14`;
+  return withExamplesImageVersion(
+    `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/${framework}/${route}/preview-dark.jpg`,
+  );
 }
 
 const { framework, library } = getFramework();
@@ -80,8 +89,12 @@ async function ExamplesOverviewLayout() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
             <Container className="col-span-2 aspect-video border-none">
               <ThemeAwareImage
-                lightSrc={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/${featureOverviewPreviewRoute}/preview.jpg?v=14`}
-                darkSrc={`${process.env.NEXT_PUBLIC_EXAMPLES_URL}/${featureOverviewPreviewRoute}/preview-dark.jpg?v=14`}
+                lightSrc={withExamplesImageVersion(
+                  `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/${featureOverviewPreviewRoute}/preview.jpg`,
+                )}
+                darkSrc={withExamplesImageVersion(
+                  `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/${featureOverviewPreviewRoute}/preview-dark.jpg`,
+                )}
                 width={1024}
                 height={768}
                 alt="Feature Overview Example Preview"

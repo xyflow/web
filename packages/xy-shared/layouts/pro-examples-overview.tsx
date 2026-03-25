@@ -4,6 +4,7 @@ import { DynamicMeta, Folder } from 'nextra';
 import { ProjectPreview } from '../components/project-preview';
 import { ContentGrid, ContentGridItem } from '../components/ui/content-grid';
 import { Heading } from '../components/ui/heading';
+import { withProExamplesImageVersion } from '../lib/cached-image-version';
 import { getExamplesPageMap } from '../server/example-utils';
 import { getFramework } from '../lib/get-framework';
 
@@ -16,7 +17,9 @@ type ProExamplesProps = {
 function getThumbnailSrc(exampleName: string, variant: 'light' | 'dark') {
   const darkSuffix = variant === 'dark' ? '-dark' : '';
 
-  return `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${framework}/${exampleName}/thumbnail${darkSuffix}.jpg?v=14`;
+  return withProExamplesImageVersion(
+    `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${framework}/${exampleName}/thumbnail${darkSuffix}.jpg`,
+  );
 }
 
 export async function ProExamplesOverview({ meta }: ProExamplesProps) {

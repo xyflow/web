@@ -16,6 +16,7 @@ import { Hero } from '../../hero';
 import { ProjectPreview } from '../../project-preview';
 import { LayoutBreakout } from '../../../layouts/breakout';
 import { fetchJSON } from '../../../lib/fetch-json';
+import { withProExamplesImageVersion } from '../../../lib/cached-image-version';
 import { SignUpButton } from '../SignUpButton';
 import {
   ArrowDownCircleIcon,
@@ -86,8 +87,12 @@ export const ProExamplesMarketing: FC<ProExamplesMarketingProps> = async ({
       result.push({
         ...remote,
         route: curr.route,
-        image: `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${framework}/${remote.id}/thumbnail.jpg?v=14`,
-        imageDark: `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${framework}/${remote.id}/thumbnail-dark.jpg?v=14`,
+        image: withProExamplesImageVersion(
+          `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${framework}/${remote.id}/thumbnail.jpg`,
+        ),
+        imageDark: withProExamplesImageVersion(
+          `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${framework}/${remote.id}/thumbnail-dark.jpg`,
+        ),
       });
     }
 
