@@ -22,3 +22,7 @@
     --secondary-foreground: var(--color-svelte);
   }
 }
+
+.nextra-sidebar .nextra-sidebar-footer {
+  background-color: var(--color-background);
+}

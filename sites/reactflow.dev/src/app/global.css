@@ -42,3 +42,7 @@ html body[data-scroll-locked] {
   flex-grow: 1;
   width: 100%;
 }
+
+.nextra-sidebar .nextra-sidebar-footer {
+  background-color: var(--color-background);
+}
