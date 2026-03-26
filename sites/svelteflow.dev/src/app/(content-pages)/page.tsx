@@ -12,9 +12,7 @@ import { HeroFlow } from 'xy-shared/components/flows/hero-flow';
 import { Features } from 'xy-shared/components/features';
 import { GettingStarted } from 'xy-shared/layouts/getting-started';
 import { ProjectCards } from 'xy-shared/layouts/project-cards';
-import { FlowA } from 'xy-shared/components/flows/flow-a';
-import { FlowB } from 'xy-shared/components/flows/flow-b';
-import { FlowC } from 'xy-shared/components/flows/flow-c';
+import { FlowA, FlowB, FlowC } from 'xy-shared/components/flows';
 
 import type { InternalRoute } from '../../routes';
 import { fetchGitHubNpmStats } from 'xy-shared/lib/fetch-github-npm-stats';

@@ -1,6 +1,5 @@
 export { proxy } from 'xy-shared/server-actions/proxy';
 
-// Every pro route except quote-request
 export const config = {
-  matcher: ['/pro/:rest((?!quote-request(?:/|$)).*)'],
+  matcher: ['/((?!_next/static|_next/image|favicon.ico|public|icon).*)'],
 };

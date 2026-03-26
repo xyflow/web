@@ -22,6 +22,7 @@ export default defineConfig({
   },
   build: {
     rollupOptions: {
+      external: ['webcola'],
       // Rollup expects input to be an object, but vite discards the keys and
       // uses its own system internally. Because of that we just use the index
       // of any given input as the "key".

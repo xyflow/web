@@ -16,6 +16,7 @@ import { Hero } from '../../hero';
 import { ProjectPreview } from '../../project-preview';
 import { LayoutBreakout } from '../../../layouts/breakout';
 import { fetchJSON } from '../../../lib/fetch-json';
+import { withProExamplesImageVersion } from '../../../lib/cached-image-version';
 import { SignUpButton } from '../SignUpButton';
 import {
   ArrowDownCircleIcon,
@@ -44,14 +45,12 @@ export type FreeTrialSection = {
 
 const { framework, library } = getFramework();
 
-export type ProExamplesPageProps = {
+export type ProExamplesMarketingProps = {
   freeTrialSection?: FreeTrialSection;
-  logoIconClassName?: string;
 };
 
-const ProExamplesPage: FC<ProExamplesPageProps> = async ({
+export const ProExamplesMarketing: FC<ProExamplesMarketingProps> = async ({
   freeTrialSection,
-  logoIconClassName = '',
 }) => {
   const remoteProExamplesResponse = await fetchJSON(
     `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${framework}/apps.json?t=1`,
@@ -88,8 +87,12 @@ const ProExamplesPage: FC<ProExamplesPageProps> = async ({
       result.push({
         ...remote,
         route: curr.route,
-        image: `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${framework}/${remote.id}/thumbnail.jpg`,
-        imageDark: `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${framework}/${remote.id}/thumbnail-dark.jpg`,
+        image: withProExamplesImageVersion(
+          `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${framework}/${remote.id}/thumbnail.jpg`,
+        ),
+        imageDark: withProExamplesImageVersion(
+          `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${framework}/${remote.id}/thumbnail-dark.jpg`,
+        ),
       });
     }
 
@@ -137,7 +140,7 @@ const ProExamplesPage: FC<ProExamplesPageProps> = async ({
             title={`By the creators of ${library}`}
             text="Feature-complete and crafted by the core team"
             // @ts-expect-error Logo component matches usage
-            icon={() => <Logo className={`h-8 w-8 ${logoIconClassName}`} />}
+            icon={() => <Logo className={'h-8 w-8'} />}
           />
           <GridItem
             title="Downloadable Vite apps and guides"
@@ -206,6 +209,7 @@ const ProExamplesPage: FC<ProExamplesPageProps> = async ({
               title={example.name}
               description={example.detailedDescription}
               linkLabel="Demo"
+              imageWrapperClassName="shadow-md bg-transparent border-none p-px rounded-xl pro-example-preview-thumb"
             />
           </ContentGridItem>
         ))}
@@ -365,5 +369,3 @@ function StarText() {
     </span>
   );
 }
-
-export default ProExamplesPage;

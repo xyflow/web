@@ -1,5 +1,8 @@
+'use client';
+
 import { FC } from 'react';
-import { ReactFlow, Background, Controls } from '@xyflow/react';
+import { ReactFlow, Background, Controls, ColorMode } from '@xyflow/react';
+import { useTheme } from 'nextra-theme-docs';
 
 const nodes = [
   {
@@ -28,6 +31,8 @@ const proOptions = { hideAttribution: true };
 const fitViewOptions = { padding: 0.4 };
 
 export const FlowA: FC = () => {
+  const { theme } = useTheme();
+
   return (
     <ReactFlow
       id="a"
@@ -38,6 +43,7 @@ export const FlowA: FC = () => {
       fitViewOptions={fitViewOptions}
       proOptions={proOptions}
       preventScrolling={false}
+      colorMode={theme as ColorMode}
     >
       <Background />
       <Controls showInteractive={false} />

@@ -11,3 +11,28 @@ body {
   width: 100vw;
   height: 100vh;
 }
+
+.color-input {
+  width: 40px;
+  height: 24px;
+  margin-top: 6px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  appearance: none;
+  cursor: pointer;
+}
+
+.color-input::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.color-input::-webkit-color-swatch {
+  border: 0;
+  border-radius: 999px;
+}
+
+.color-input::-moz-color-swatch {
+  border: 0;
+  border-radius: 999px;
+}

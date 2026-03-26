@@ -45,6 +45,29 @@
   /* Animations */
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  --animate-fade-in: fade-in 0.5s ease-in-out;
+  --animate-reveal-rtl: reveal-rtl 0.5s 0.1s ease-in-out forwards;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes reveal-rtl {
+    from {
+      opacity: 0;
+      clip-path: inset(0 0 0 100%);
+    }
+    to {
+      opacity: 1;
+      clip-path: inset(0 0 0 0);
+    }
+  }
 }
 
 /* Keyframes */
@@ -66,11 +89,69 @@
   }
 }
 
-/* Allow smooth interpolation of the Pro button gradient angle */
-@property --gradientAngle {
+@property --xy-gradient-angle {
   syntax: '<angle>';
-  inherits: true;
-  initial-value: 258deg;
+  inherits: false;
+  initial-value: 200deg;
+}
+
+/**
+* Used for the Account, Pro, SignUp/SignIn buttons 
+* Animated outline effect
+**/
+.xy-animated-outline {
+  position: relative;
+  isolation: isolate;
+  color: hsl(var(--primary));
+}
+
+.xy-animated-outline::before {
+  content: '';
+  position: absolute;
+  z-index: -2;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  opacity: 0;
+  background: linear-gradient(
+    var(--xy-gradient-angle),
+    hsl(var(--secondary)) 0%,
+    hsl(var(--secondary)) 45%,
+    hsl(var(--primary)) 60%,
+    hsl(var(--primary)) 100%
+  );
+  translate: -50% -50%;
+  transition:
+    --xy-gradient-angle 0.5s ease-in-out,
+    opacity 0.5s ease-in-out;
+}
+
+.xy-animated-outline::after {
+  content: '';
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  bottom: 1px;
+  left: 1px;
+  z-index: -1;
+  border-radius: inherit;
+  background-color: hsl(var(--muted));
+}
+
+.xy-animated-outline--loaded::before {
+  --xy-gradient-angle: 480deg;
+  opacity: 1;
+}
+
+.xy-animated-outline--disabled::before {
+  opacity: 0;
+}
+
+.xy-animated-outline:hover::before {
+  transition: --xy-gradient-angle 0.25s ease-out;
+  --xy-gradient-angle: 290deg;
 }
 
 /* Container utility customization */
@@ -78,6 +159,44 @@
   margin-inline: auto;
   padding-inline: 2rem;
   max-width: theme(--container-2xl);
+}
+
+/*
+ * Pro example preview thumbnails (examples overview, pro examples overview, ProExamplesMarketing).
+ * Inner `Container` shell is reset via `.pro-example-preview-thumb > div` below.
+ */
+@utility pro-example-preview-thumb {
+  padding: 1px;
+  border-style: none !important;
+  background-color: transparent;
+  background-origin: border-box;
+  background-image: conic-gradient(
+    from 135deg at 10% 90%,
+    hsl(var(--primary)) 0deg,
+    #e2e2e2 100deg,
+    #f4f4f4 150deg,
+    #e2e2e2 240deg,
+    hsl(var(--primary)) 280deg
+  );
+
+  @variant dark {
+    background-image: conic-gradient(
+      from 135deg at 10% 90%,
+      hsl(var(--primary) / 0.7) 0deg,
+      #4d4d4d 100deg,
+      #2e2e2e 150deg,
+      #4d4d4d 240deg,
+      hsl(var(--primary) / 0.7) 280deg
+    );
+  }
+}
+
+/* Strip default inner Container chrome when outer uses pro-example-preview-thumb */
+.pro-example-preview-thumb > div {
+  border-style: none !important;
+  box-shadow: none !important;
+  background-color: transparent !important;
+  border-radius: calc(0.75rem - 1px);
 }
 
 /* 2. Base Styles */
@@ -141,7 +260,7 @@
     --card: 0 0% 9%;
     --card-foreground: 0 0% 100%;
 
-    --border: 214.3 0% 10%;
+    --border: 0 0% 20%;
     --input: 214.3 31.8% 22%;
 
     --secondary: 217.2 32.6% 17.5%;
@@ -193,7 +312,7 @@ html:has(body.x\:overflow-hidden) nav {
 /* 3. Typography */
 
 .xy-link-gray {
-  @apply transition text-gray-600 dark:text-gray-400 hover:text-muted-foreground dark:hover:text-gray-200 contrast-more:text-gray-700 contrast-more:dark:text-gray-100;
+  @apply hover:text-muted-foreground text-gray-600 transition contrast-more:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 contrast-more:dark:text-gray-100;
 }
 
 .dark .xy-link-gray {
@@ -202,7 +321,7 @@ html:has(body.x\:overflow-hidden) nav {
 
 /* 4. Navigation */
 .nextra-menu-desktop li.active > a {
-  @apply bg-transparent text-primary;
+  @apply text-primary bg-transparent;
 }
 
 nav a:has(svg.nav-github-logo) {
@@ -232,7 +351,7 @@ main .x\:border-primary-500 {
 /* adds labels to the sidebar items */
 .sidebar-title.pro:after {
   content: 'Pro';
-  @apply bg-primary border border-primary text-white text-xs ml-1.5 px-1.5 font-bold rounded-full;
+  @apply bg-primary border-primary ml-1.5 rounded-full border px-1.5 text-xs font-bold text-white;
 }
 
 .sidebar-title.pro.free:after {
@@ -298,6 +417,7 @@ article.nextra-content ol li p {
   min-width: 0;
   margin-left: 10px;
   margin-right: 5px;
+  width: 25px;
 }
 
 .DocSearch-Button .DocSearch-Button-Key {

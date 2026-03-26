@@ -29,7 +29,7 @@ export function NotFoundLayout({ children }: NotFoundLayoutProps) {
                 className="top-1/2 -right-[8px]"
                 handleWidthClass="w-4"
                 handleHeightClass="h-8"
-                handleClassName="border-none bg-purple-600"
+                handleClassName="border-none bg-primary"
                 dashed={false}
               />
             </HeadlineNode>
@@ -39,24 +39,24 @@ export function NotFoundLayout({ children }: NotFoundLayoutProps) {
                 type="source"
                 position={Position.Left}
                 className="top-1/2 -left-[8px]"
-                handleClassName="border-none bg-purple-600"
+                handleClassName="border-none bg-primary"
                 handleWidthClass="w-4"
                 handleHeightClass="h-8"
                 id="0-source"
                 to="4-target"
-                svgClassName="stroke-purple-600"
+                svgClassName="stroke-primary"
                 dashed={false}
               />
               <Handle
                 type="source"
                 position={Position.Right}
                 className="top-1/2 -right-[8px]"
-                handleClassName="border-none bg-purple-500"
+                handleClassName="border-none bg-primary"
                 handleWidthClass="w-4"
                 handleHeightClass="h-8"
                 id="0.1-source"
                 to="4.1-target"
-                svgClassName="stroke-purple-500"
+                svgClassName="stroke-primary"
                 dashed={false}
               />
             </HeadlineNode>
@@ -67,7 +67,7 @@ export function NotFoundLayout({ children }: NotFoundLayoutProps) {
                 position={Position.Left}
                 id="4.1-target"
                 className="top-1/2 -left-[8px]"
-                handleClassName="border-none bg-purple-500"
+                handleClassName="border-none bg-primary"
                 handleWidthClass="w-4"
                 handleHeightClass="h-8"
                 dashed={false}

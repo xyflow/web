@@ -44,12 +44,22 @@ export default async function Page(props: Props) {
             list: pageMap.filter((item) => 'name' in item && item.name !== 'index'),
             route: ['', ...slug].join('/'),
           });
+
+          const prev =
+            activeIndex === 0
+              ? flatDocsDirectories[flatDocsDirectories.length - 1]
+              : flatDocsDirectories[activeIndex - 1];
+          const next =
+            activeIndex === flatDocsDirectories.length - 1
+              ? flatDocsDirectories[0]
+              : flatDocsDirectories[activeIndex + 1];
+
           return (
             <CaseStudyLayoutWrapper
               // @ts-expect-error -- fixme
               frontMatter={metadata}
-              prev={flatDocsDirectories[activeIndex - 1]}
-              next={flatDocsDirectories[activeIndex + 1]}
+              prev={prev}
+              next={next}
             >
               {mdx}
             </CaseStudyLayoutWrapper>

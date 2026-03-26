@@ -5,6 +5,11 @@
     "permanent": true
   },
   {
+    "source": "/pro/examples",
+    "destination": "/pro/content",
+    "permanent": true
+  },
+  {
     "source": "/learn/getting-started",
     "destination": "/learn",
     "permanent": true
@@ -25,3 +30,4 @@
     "permanent": true
   }
 ]
+

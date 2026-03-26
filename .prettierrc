@@ -3,5 +3,6 @@
   "useTabs": false,
   "singleQuote": true,
   "printWidth": 90,
-  "proseWrap": "always"
+  "proseWrap": "always",
+  "plugins": ["prettier-plugin-tailwindcss"]
 }

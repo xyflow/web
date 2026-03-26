@@ -18,6 +18,7 @@
 @layer base {
   :root {
     --primary: 0 0% 0%;
+    --accent: var(--color-react);
     --secondary-foreground: 0 0% 0%;
   }
 }

@@ -42,8 +42,7 @@ export function Hero({
         <div
           className="absolute -mt-16 opacity-10 dark:opacity-20 w-[100vw] h-[70vw] left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
           style={{
-            background:
-              'radial-gradient(rgba(68,91,222,1) 0%, rgba(215,78,243,1) 25%, hsl(var(--background)) 60%)',
+            background: `radial-gradient(hsl(var(--accent) / 1) 0%, hsl(var(--accent) / 0.5) 25%, hsl(var(--background)) 60%)`,
           }}
         />
       )}

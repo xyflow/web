@@ -3,6 +3,7 @@ import { Navbar as NextraNavbar } from 'nextra-theme-docs';
 import { Banner } from 'nextra/components';
 import svelteFlowPackageJson from '@xyflow/svelte/package.json';
 
+import { SessionRefresher } from 'xy-shared/components/session-refresher';
 import { generateRootMetadata } from 'xy-shared/server/generate-root-metadata';
 import { getLastChangelog } from 'xy-shared/server/get-last-changelog';
 import { TOC } from 'xy-shared/server/toc';
@@ -15,6 +16,8 @@ import { SubscriptionProvider } from 'xy-shared/components/pro/Providers';
 import { createNormalizePageMap } from 'xy-shared/server/normalize-page-map';
 import { SiteNavbarContent } from 'xy-shared/components/navigation/SiteNavbar';
 import './global.css';
+
+export const revalidate = false;
 
 export const metadata = generateRootMetadata('Svelte Flow', {
   description:
@@ -96,7 +99,7 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
               logo={<LogoLabel label="Svelte Flow" />}
               logoLink={false}
             >
-              <SiteNavbarContent siteName="Svelte Flow" />
+              <SiteNavbarContent />
             </NextraNavbar>
           }
           pageMap={pageMap}
@@ -110,6 +113,7 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
         >
           {children}
         </SubscriptionProvider>
+        <SessionRefresher />
       </body>
     </Html>
   );

@@ -70,12 +70,8 @@ export default function ProExampleViewerTabs({
   previewUrl?: string;
   framework?: Framework;
 }) {
-  const readmeMdx = files?.['/README.mdx'];
-  const readmeMd = files?.['/README.md'];
-  const readme =
-    (typeof readmeMdx === 'string' ? readmeMdx : readmeMdx?.code) ||
-    (typeof readmeMd === 'string' ? readmeMd : readmeMd?.code) ||
-    '';
+  const readmeFile = files?.['/README.mdx'] ?? files?.['/README.md'];
+  const readme = (typeof readmeFile === 'string' ? readmeFile : readmeFile?.code) || '';
   const iframePreviewUrl =
     previewUrl ?? `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${framework}/${exampleId}`;
 

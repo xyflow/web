@@ -1,39 +1,43 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createNhostClient } from '../lib/nhost';
+import { handleNhostMiddleware } from '../lib/nhost';
 
-// Routes accessible to anyone — not redirected regardless of auth state
-const universalRoutes = ['examples'];
+const protectedRoutes = ['/pro/dashboard', '/pro/team', '/pro/account', '/pro/support'];
 
-// Routes that are public but redirect logged-in users to dashboard
-const publicRoutes = ['sign-in', 'sign-up', 'reset-password', 'email-verification'];
+const redirectToDashboard = ['/pro/sign-in', '/pro/sign-up', '/pro/'];
+
+function isDocumentNavigation(req: NextRequest): boolean {
+  const mode = req.headers.get('sec-fetch-mode');
+  const dest = req.headers.get('sec-fetch-dest');
+
+  return mode === 'navigate' && dest === 'document';
+}
 
 export async function proxy(request: NextRequest) {
-  // Handle Nhost authentication and token refresh
-  // Always call this to ensure session is up-to-date
-  // even for public routes, so that session changes are detected
-  const nhost = await createNhostClient();
+  const refreshSession = isDocumentNavigation(request);
+
+  const response = NextResponse.next();
+
+  let session = null;
+  try {
+    session = await handleNhostMiddleware(request, response, refreshSession);
+  } catch (error) {
+    console.error('Error handling Nhost middleware:', error);
+    session = null;
+  }
+
   const path = request.nextUrl.pathname;
 
-  const isUniversalRoute = universalRoutes.some(
-    (route) => path === `/pro/${route}` || path.startsWith(`/pro/${route}/`),
-  );
-  if (isUniversalRoute) {
-    return NextResponse.next();
+  if (protectedRoutes.includes(path)) {
+    return !session
+      ? NextResponse.redirect(new URL('/pro/sign-in', request.url))
+      : response;
   }
 
-  // If no session and not a public route, redirect to signin
-  const isPublicRoute = publicRoutes.some(
-    (route) => path === route || path.startsWith(`/pro/${route}`),
-  );
-  const hasUserSession = nhost.getUserSession();
-
-  if (!isPublicRoute) {
-    return hasUserSession
-      ? NextResponse.next()
-      : NextResponse.redirect(new URL('/pro/sign-in', request.url));
+  if (redirectToDashboard.includes(path)) {
+    return session
+      ? NextResponse.redirect(new URL('/pro/dashboard', request.url))
+      : response;
   }
 
-  return hasUserSession
-    ? NextResponse.redirect(new URL('/pro/dashboard', request.url))
-    : NextResponse.next();
+  return response;
 }

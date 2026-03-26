@@ -4,7 +4,7 @@ import DashboardHeader from '../../../../components/pro/DashboardHeader';
 import { getFramework } from '../../../../lib/get-framework';
 
 export default async function DashboardPage() {
-  const { library } = getFramework();
+  const { library, framework } = getFramework();
   return (
     <>
       <DashboardHeader title="Dashboard" showSubscriptionPlan />
@@ -21,9 +21,23 @@ export default async function DashboardPage() {
               SubscriptionPlan.STUDENT,
               SubscriptionPlan.OSS,
             ]}
-            button={{ label: 'Browse Examples', href: '/pro/examples' }}
+            button={{ label: 'Browse Examples', href: '/examples/pro-examples' }}
           />
-
+          {framework === 'react' && (
+            <SubscriptionFeature
+              title="Pro Templates"
+              description={`Kickstart your project with a shadcn-style components and access ready-to-use templates with your ${library} Pro subscription.`}
+              plans={[
+                SubscriptionPlan.FREE,
+                SubscriptionPlan.STARTER,
+                SubscriptionPlan.PRO,
+                SubscriptionPlan.ENTERPRISE,
+                SubscriptionPlan.STUDENT,
+                SubscriptionPlan.OSS,
+              ]}
+              button={{ label: 'Browse Templates', href: '/ui' }}
+            />
+          )}
           <SubscriptionFeature
             title="Prioritized Github Issues"
             description="Your Github issues will be looked at first by our team. Drop us a message at info@xyflow.com with a link to your issue after creating it."

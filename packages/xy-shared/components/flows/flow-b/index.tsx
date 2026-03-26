@@ -13,6 +13,7 @@ import {
   useReactFlow,
   Node,
   Edge,
+  ColorMode,
 } from '@xyflow/react';
 import { Input } from '../../ui/input';
 import {
@@ -22,6 +23,7 @@ import {
   SelectContent,
   SelectValue,
 } from '../../ui/select';
+import { useTheme } from 'nextra-theme-docs';
 
 const nodes: Node[] = [
   {
@@ -108,6 +110,7 @@ const nodeOrigin: NodeOrigin = [0.5, 0.5];
 const fitViewOptions = { padding: 0.5 };
 
 function Flow() {
+  const { theme } = useTheme();
   const nodesInitialized = useNodesInitialized();
   const { fitView } = useReactFlow();
 
@@ -129,6 +132,7 @@ function Flow() {
       proOptions={proOptions}
       nodeOrigin={nodeOrigin}
       preventScrolling={false}
+      colorMode={theme as ColorMode}
     >
       <Controls
         position="top-right"

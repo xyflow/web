@@ -13,7 +13,11 @@ import { createNormalizePageMap } from 'xy-shared/server/normalize-page-map';
 
 import { SubscriptionProvider } from 'xy-shared/components/pro/Providers';
 import { SiteNavbarContent } from 'xy-shared/components/navigation/SiteNavbar';
+
 import './global.css';
+import { SessionRefresher } from 'xy-shared/components/session-refresher';
+
+export const revalidate = false;
 
 export const metadata = generateRootMetadata('React Flow', {
   description:
@@ -48,7 +52,6 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
       <body>
         <Fathom {...fathomOptions} />
         <SubscriptionProvider
-          darkMode={true}
           copyPageButton={false}
           docsRepositoryBase="https://github.com/xyflow/web/tree/main/sites/reactflow.dev"
           editLink="Edit this page on GitHub"
@@ -90,7 +93,7 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
               }
               logoLink={false}
             >
-              <SiteNavbarContent siteName="React Flow" />
+              <SiteNavbarContent />
             </NextraNavbar>
           }
           pageMap={pageMap}
@@ -105,6 +108,7 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
           {children}
           <SpeedInsights />
         </SubscriptionProvider>
+        <SessionRefresher />
       </body>
     </Html>
   );

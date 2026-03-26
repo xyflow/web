@@ -179,6 +179,7 @@ const metaRecord = {
           breadcrumb: false,
         },
       },
+      'pro-examples': '',
       overview: '',
       nodes: {
         items: {
@@ -301,12 +302,8 @@ const metaRecord = {
           pagination: false,
         },
       },
-      examples: {
-        theme: {
-          layout: 'full',
-          toc: false,
-          pagination: false,
-        },
+      content: {
+        display: 'hidden',
       },
       // Auth
       dashboard: <WithIcon icon={Squares2X2Icon}>Dashboard</WithIcon>,
@@ -314,7 +311,11 @@ const metaRecord = {
       team: <WithIcon icon={UsersIcon}>Team</WithIcon>,
       account: <WithIcon icon={Cog8ToothIcon}>Account</WithIcon>,
       subscribe: {
-        title: <WithIcon icon={SparklesIcon}>Subscribe</WithIcon>,
+        title: (
+          <span className="text-primary">
+            <WithIcon icon={SparklesIcon}>Subscribe</WithIcon>
+          </span>
+        ),
         theme: {
           collapsed: true,
         },

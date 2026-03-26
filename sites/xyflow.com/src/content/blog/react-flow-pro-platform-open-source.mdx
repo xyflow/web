@@ -1,6 +1,9 @@
 ---
 title: 'React Flow Pro Platform goes open source'
-intro: 'We rebuilt the Pro Platform from the ground up and it is now open source. We hope some folks can take inspiration for their own OSS projects, and the pro subscribers enjoy the new look and features.'
+intro:
+  'We rebuilt the Pro Platform from the ground up and it is now open source. We hope some
+  folks can take inspiration for their own OSS projects, and the pro subscribers enjoy the
+  new look and features.'
 date: 6 December 2023
 authors: ['christopher', 'john']
 tags: ['react-flow', 'open-source']
@@ -13,9 +16,14 @@ import { Text } from 'xy-shared/components/ui/text';
 
 import Image from 'next/image';
 
-We’re excited to announce that we just open sourced our Pro Platform! 🚀 The Pro Platform is where React Flow Pro subscribers can access and view “[Pro Examples](https://reactflow.dev/pro/examples),” manage their subscription, and give team members access to the platform. We hope that some folks take a look, get inspired for their own projects, and that our Pro Subscribers like the new features we've built 💫
+We’re excited to announce that we just open sourced our Pro Platform! 🚀 The Pro Platform
+is where React Flow Pro subscribers can access and view
+“[Pro Examples](https://reactflow.dev/examples/pro),” manage their subscription, and give
+team members access to the platform. We hope that some folks take a look, get inspired for
+their own projects, and that our Pro Subscribers like the new features we've built 💫
 
-Check out the [Github repo](https://github.com/xyflow/pro-platform) or try it out live by [signing up on the Pro Platform](https://pro.reactflow.dev).
+Check out the [Github repo](https://github.com/xyflow/pro-platform) or try it out live by
+[signing up on the Pro Platform](https://pro.reactflow.dev).
 
 <Image
   alt="The dashboard of React Flow Pro, which shows options to view Pro Examples, open a prioritized github issue, invite your team, schedule an onboarding call, or contact support via email."
@@ -28,13 +36,21 @@ Check out the [Github repo](https://github.com/xyflow/pro-platform) or try it ou
 
 ### Why open source it?
 
-We believe open source is the better way to make things - freedom of information, accountability, an easy way to collect contributions and bug reports from users, allowing someone else to do it better, etc. We also love it when [OSS maintainers are paid for their work](https://www.xyflow.com/blog/asking-for-money-for-open-source), and we could imagine other folks using our Pro Platform around their own open source projects (as a code-oriented alternative to something like [Ghost](https://ghost.org/) or [Patreon](https://www.patreon.com/)). Of course we’re far away from that, but open sourcing it and letting folks peek under the hood is a way to start.
+We believe open source is the better way to make things - freedom of information,
+accountability, an easy way to collect contributions and bug reports from users, allowing
+someone else to do it better, etc. We also love it when
+[OSS maintainers are paid for their work](https://www.xyflow.com/blog/asking-for-money-for-open-source),
+and we could imagine other folks using our Pro Platform around their own open source
+projects (as a code-oriented alternative to something like [Ghost](https://ghost.org/) or
+[Patreon](https://www.patreon.com/)). Of course we’re far away from that, but open
+sourcing it and letting folks peek under the hood is a way to start.
 
 # New Features
 
 ### Fresh look, new example viewer, better usability 🪩
 
-It looks ✨better✨ and it’s easier to get around. There’s a new example viewer which is faster because we don’t build the whole example on the client anymore.
+It looks ✨better✨ and it’s easier to get around. There’s a new example viewer which is
+faster because we don’t build the whole example on the client anymore.
 
 <Image
   alt="The example viewer, where a user cycles between tabs of previewing the example, looking at the code, and reading the guide."
@@ -47,7 +63,10 @@ It looks ✨better✨ and it’s easier to get around. There’s a new example 
 
 ### Add and manage team members ⚽️
 
-In order to add new team members, you used to have to email us (ugh) and we’d manually add your new team members to the database (ugh). Now you can automatically add and delete team members, or add additional emails to your subscription plan. You can find more about inviting team members in our [Pro FAQs](https://reactflow.dev/pro).
+In order to add new team members, you used to have to email us (ugh) and we’d manually add
+your new team members to the database (ugh). Now you can automatically add and delete team
+members, or add additional emails to your subscription plan. You can find more about
+inviting team members in our [Pro FAQs](https://reactflow.dev/pro).
 
 <Image
   alt="a screenshot of a list of team members, where someone can add and delete team members from gaining access to the Pro Platform"
@@ -59,35 +78,47 @@ In order to add new team members, you used to have to email us (ugh) and we’d 
 
 ### Refreshed Pro Examples 💫
 
-All of our Pro Examples are now standalone Vite apps. This makes them easier to run and also easier for us to develop.
+All of our Pro Examples are now standalone Vite apps. This makes them easier to run and
+also easier for us to develop.
 
-We noticed that [Dagre](https://github.com/dagrejs/dagre) no longer has the “deprecated” tag! Our [Workflow Builder](https://reactflow.dev/examples/layout/workflow-builder-starter) and [Expand / Collapse](https://reactflow.dev/examples/layout/expand-collapse) Pro Examples have been rebuilt with dagre, so that you can switch between the d3 and dagre versions.
+We noticed that [Dagre](https://github.com/dagrejs/dagre) no longer has the “deprecated”
+tag! Our
+[Workflow Builder](https://reactflow.dev/examples/layout/workflow-builder-starter) and
+[Expand / Collapse](https://reactflow.dev/examples/layout/expand-collapse) Pro Examples
+have been rebuilt with dagre, so that you can switch between the d3 and dagre versions.
 
-The Shapes Pro Example has been refactored, and now includes features to drag-and-drop shape nodes, resize, a color picker, dark mode, and an updated minimap. in the next months we plan to refactor some others as well, so keep your eyes out for those updates.
+The Shapes Pro Example has been refactored, and now includes features to drag-and-drop
+shape nodes, resize, a color picker, dark mode, and an updated minimap. in the next months
+we plan to refactor some others as well, so keep your eyes out for those updates.
 
 <Bleed>
-  <Embed
-    lazy
-    src="https://pro-examples.reactflow.dev/shapes"
-    className="shadow-xs"
-  />
+  <Embed lazy src="https://pro-examples.reactflow.dev/shapes" className="shadow-xs" />
   <div className="text-center text-gray-500 -mt-6">
-    Refreshed Shapes Pro Example with minimap, dark mode toggle, and resizable
-    draggable shapes
+    Refreshed Shapes Pro Example with minimap, dark mode toggle, and resizable draggable
+    shapes
   </div>
 </Bleed>
 
 ### Under the hood improvements 🏎
 
-In the new platform, we have migrated to the latest Nextjs version (using app router), replaced ChakraUI with TailwindCSS and our own UI package, and converted everything from JS to TypeScript.
+In the new platform, we have migrated to the latest Nextjs version (using app router),
+replaced ChakraUI with TailwindCSS and our own UI package, and converted everything from
+JS to TypeScript.
 
-When we created the Pro Platform last year, it was developed in a way that made the Pro Examples (which are not open source) inseparable from the platform that was hosting them. The Pro Example code now sits in a private repository, separate from the platform's repository.
+When we created the Pro Platform last year, it was developed in a way that made the Pro
+Examples (which are not open source) inseparable from the platform that was hosting them.
+The Pro Example code now sits in a private repository, separate from the platform's
+repository.
 
 # Let us know what you think 💭
 
-If you want to try using the platform for your own project, we’d love to hear from you! We’re still working on the documentation on how to easily set this up and get it integrated with Nhost, Mailjet, and Stripe, and would appreciate any feedback on how this could be helpful for you.
+If you want to try using the platform for your own project, we’d love to hear from you!
+We’re still working on the documentation on how to easily set this up and get it
+integrated with Nhost, Mailjet, and Stripe, and would appreciate any feedback on how this
+could be helpful for you.
 
-You can learn more about our React Flow Pro subscriptions [here](https://pro.reactflow.dev/).
+You can learn more about our React Flow Pro subscriptions
+[here](https://pro.reactflow.dev/).
 
 Cheers!
 
