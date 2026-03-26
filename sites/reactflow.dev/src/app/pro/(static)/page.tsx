@@ -1,4 +1,7 @@
 import Image from 'next/image';
+import { NextraMetadata } from 'nextra';
+import { SparklesIcon } from '@heroicons/react/24/outline';
+
 import { PricingTable } from 'xy-shared/components/pricing-table';
 import { Section } from 'xy-shared/components/ui/section';
 import { FAQ } from 'xy-shared/components/faq';
@@ -8,10 +11,7 @@ import { Hero } from 'xy-shared/components/hero';
 import { ImageSlider } from 'xy-shared/components/image-slider';
 import { SubscribeSection } from 'xy-shared/components/subscribe-section';
 import { LiteYouTubeEmbed } from 'xy-shared/components/liteyoutube-embed';
-import { SparklesIcon } from '@heroicons/react/24/outline';
-
 import ClientLogos from 'xy-shared/components/client-logos';
-import { NextraMetadata } from 'nextra';
 import { SignUpButton } from 'xy-shared/components/pro/SignUpButton';
 
 import zapier from '../../../../public/img/clients/zapier.svg';
@@ -85,7 +85,7 @@ export default function ReactFlowPro() {
         action={<SignUpButton className="inline-flex" showIcon />}
         backgroundVariant="image"
       >
-        <p className="mt-4 mb-2">
+        <p className="mb-2 mt-4">
           <strong>React Flow is open-source MIT-licensed software</strong>, and it will be
           forever. Our libraries enable thousands of solo developers and organizations
           like Stripe and Linkedin to build their node-based apps. With so many active
@@ -103,7 +103,7 @@ export default function ReactFlowPro() {
 
       <PricingTable className="mt-6 lg:mt-10" />
 
-      <Section className="relative z-1">
+      <Section className="z-1 relative">
         <ClientLogos
           title="React Flow Pro is used by"
           logos={[
@@ -126,7 +126,7 @@ export default function ReactFlowPro() {
         buttonText="See all case studies"
         buttonLink="/pro/case-studies"
         items={sliderItems}
-        className="relative z-1"
+        className="z-1 relative"
       />
 
       <FAQ items={reactFlowProFaqItems} className="mt-32">
