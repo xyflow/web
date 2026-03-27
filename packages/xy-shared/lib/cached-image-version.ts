@@ -2,7 +2,7 @@ const EXAMPLES_IMAGE_CACHE_VERSION = 15;
 const PRO_EXAMPLES_IMAGE_CACHE_VERSION = 14;
 
 function withImageCacheVersion(url: string, version: number) {
-  const separator = url.includes('?') ? '&' : '?';
+  const separator = url.indexOf('?') !== -1 ? '&' : '?';
 
   return `${url}${separator}v=${version}`;
 }
