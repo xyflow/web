@@ -62,7 +62,6 @@ const DeleteEdgeDrop = () => {
 
   return (
     <ReactFlow
-      colorMode="system"
       nodes={nodes}
       edges={edges}
       onNodesChange={onNodesChange}
@@ -74,6 +73,7 @@ const DeleteEdgeDrop = () => {
       onConnect={onConnect}
       fitView
       attributionPosition="top-right"
+      colorMode="system"
     >
       <Controls />
       <Background />

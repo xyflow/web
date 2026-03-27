@@ -68,7 +68,6 @@ const ContextualZoomFlow = () => {
 
   return (
     <ReactFlow
-      colorMode="system"
       nodes={nodes}
       edges={edges}
       onNodesChange={onNodesChange}
@@ -80,6 +79,7 @@ const ContextualZoomFlow = () => {
       defaultViewport={defaultViewport}
       attributionPosition="top-right"
       fitView
+      colorMode="system"
     >
       <Background />
       <MiniMap />

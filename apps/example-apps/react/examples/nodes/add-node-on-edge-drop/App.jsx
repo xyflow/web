@@ -65,7 +65,6 @@ const AddNodeOnEdgeDrop = () => {
   return (
     <div className="wrapper" ref={reactFlowWrapper}>
       <ReactFlow
-        colorMode="system"
         nodes={nodes}
         edges={edges}
         onNodesChange={onNodesChange}
@@ -75,6 +74,7 @@ const AddNodeOnEdgeDrop = () => {
         fitView
         fitViewOptions={{ padding: 2 }}
         nodeOrigin={nodeOrigin}
+        colorMode="system"
       >
         <Background />
       </ReactFlow>

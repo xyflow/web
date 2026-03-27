@@ -47,13 +47,13 @@
 </script>
 
 <SvelteFlow
-  colorMode="system"
   bind:nodes
   bind:edges
   {nodeTypes}
   {edgeTypes}
   fitView
   defaultEdgeOptions={{ type: 'erasable-edge' }}
+  colorMode="system"
 >
   <Controls />
   <Background />

@@ -47,7 +47,6 @@ const OverviewFlow = () => {
 
   return (
     <ReactFlow
-      colorMode="system"
       nodes={nodes}
       edges={edges}
       onNodesChange={onNodesChange}
@@ -57,6 +56,7 @@ const OverviewFlow = () => {
       attributionPosition="top-right"
       nodeTypes={nodeTypes}
       edgeTypes={edgeTypes}
+      colorMode="system"
     >
       <MiniMap zoomable pannable nodeClassName={nodeClassName} />
       <Controls />

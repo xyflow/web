@@ -43,13 +43,13 @@ const ProviderFlow = () => {
   return (
     <ReactFlowProvider>
       <ReactFlow
-        colorMode="system"
         nodes={nodes}
         edges={edges}
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
         fitView
+        colorMode="system"
       >
         <Buttons />
         <Background />

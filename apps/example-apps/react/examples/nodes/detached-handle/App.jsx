@@ -40,7 +40,6 @@ function DetachedHandleFlow() {
 
   return (
     <ReactFlow
-      colorMode="system"
       nodes={nodes}
       edges={edges}
       onNodesChange={onNodesChange}
@@ -48,6 +47,7 @@ function DetachedHandleFlow() {
       onConnect={onConnect}
       nodeTypes={nodeTypes}
       fitView
+      colorMode="system"
     >
       <MiniMap />
       <Controls />

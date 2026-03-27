@@ -60,7 +60,6 @@ export default function EraserFlow() {
 
   return (
     <ReactFlow
-      colorMode="system"
       nodes={nodes}
       nodeTypes={nodeTypes}
       edges={edges}
@@ -70,6 +69,7 @@ export default function EraserFlow() {
       onConnect={onConnect}
       fitView
       defaultEdgeOptions={defaultEdgeOptions}
+      colorMode="system"
     >
       <Controls />
       <Background />

@@ -101,12 +101,12 @@
 </script>
 
 <SvelteFlow
-  colorMode="system"
   bind:nodes
   bind:edges
   fitView
   onnodedrag={onNodeDrag}
   onnodedragstop={onNodeDragStop}
+  colorMode="system"
 >
   <Background />
 </SvelteFlow>

@@ -94,7 +94,6 @@ const NestedFlow = () => {
 
   return (
     <ReactFlow
-      colorMode="system"
       nodes={nodes}
       edges={edges}
       onNodesChange={onNodesChange}
@@ -102,6 +101,7 @@ const NestedFlow = () => {
       onConnect={onConnect}
       className="react-flow-subflows-example"
       fitView
+      colorMode="system"
     >
       <MiniMap />
       <Controls />

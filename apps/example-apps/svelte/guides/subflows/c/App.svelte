@@ -74,6 +74,6 @@
   ]);
 </script>
 
-<SvelteFlow bind:nodes bind:edges fitView colorMode="system" autoPanOnNodeDrag={false}>
+<SvelteFlow bind:nodes bind:edges fitView autoPanOnNodeDrag={false} colorMode="system">
   <Background />
 </SvelteFlow>

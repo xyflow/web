@@ -96,7 +96,6 @@ const UpdateNode = () => {
 
   return (
     <ReactFlow
-      colorMode="system"
       nodes={nodes}
       edges={edges}
       onNodesChange={onNodesChange}
@@ -107,6 +106,7 @@ const UpdateNode = () => {
       attributionPosition="bottom-left"
       fitView
       fitViewOptions={{ padding: 0.5 }}
+      colorMode="system"
     >
       <Panel position="top-left" style={{ width: 200 }}>
         <label className="xy-theme__label">Label: </label>

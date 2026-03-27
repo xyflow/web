@@ -72,7 +72,6 @@ const InteractionFlow = () => {
 
   return (
     <ReactFlow
-      colorMode="system"
       nodes={nodes}
       edges={edges}
       onNodesChange={onNodesChange}
@@ -94,6 +93,7 @@ const InteractionFlow = () => {
       onPaneContextMenu={captureZoomClick ? onPaneContextMenu : undefined}
       fitView
       attributionPosition="top-right"
+      colorMode="system"
     >
       <MiniMap />
       <Controls />

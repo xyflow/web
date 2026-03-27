@@ -48,7 +48,6 @@ const Flow = () => {
 
   return (
     <ReactFlow
-      colorMode="system"
       ref={ref}
       nodes={nodes}
       edges={edges}
@@ -58,6 +57,7 @@ const Flow = () => {
       onPaneClick={onPaneClick}
       onNodeContextMenu={onNodeContextMenu}
       fitView
+      colorMode="system"
     >
       <Background />
       {menu && <ContextMenu onClick={onPaneClick} {...menu} />}

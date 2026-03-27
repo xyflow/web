@@ -35,7 +35,6 @@ const ConnectionLineFlow = () => {
 
   return (
     <ReactFlow
-      colorMode="system"
       nodes={nodes}
       edges={edges}
       nodeTypes={nodeTypes}
@@ -47,6 +46,7 @@ const ConnectionLineFlow = () => {
       fitViewOptions={{
         padding: 0.2,
       }}
+      colorMode="system"
     >
       <Background />
     </ReactFlow>

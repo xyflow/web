@@ -71,7 +71,6 @@ const EasyConnectExample = () => {
 
   return (
     <ReactFlow
-      colorMode="system"
       nodes={nodes}
       edges={edges}
       onNodesChange={onNodesChange}
@@ -83,6 +82,7 @@ const EasyConnectExample = () => {
       defaultEdgeOptions={defaultEdgeOptions}
       connectionLineComponent={CustomConnectionLine}
       connectionLineStyle={connectionLineStyle}
+      colorMode="system"
     >
       <Background />
     </ReactFlow>

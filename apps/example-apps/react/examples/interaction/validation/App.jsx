@@ -54,7 +54,6 @@ const ValidationFlow = () => {
 
   return (
     <ReactFlow
-      colorMode="system"
       nodes={nodes}
       edges={edges}
       onNodesChange={onNodesChange}
@@ -68,6 +67,7 @@ const ValidationFlow = () => {
       onConnectEnd={onConnectEnd}
       fitView
       attributionPosition="bottom-left"
+      colorMode="system"
     >
       <Background />
     </ReactFlow>

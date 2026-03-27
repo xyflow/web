@@ -69,7 +69,6 @@ const SaveRestore = () => {
 
   return (
     <ReactFlow
-      colorMode="system"
       nodes={nodes}
       edges={edges}
       onNodesChange={onNodesChange}
@@ -78,6 +77,7 @@ const SaveRestore = () => {
       onInit={setRfInstance}
       fitView
       fitViewOptions={{ padding: 2 }}
+      colorMode="system"
     >
       <Background />
       <Panel position="top-right">

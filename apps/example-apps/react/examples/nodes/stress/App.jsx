@@ -37,7 +37,6 @@ const StressFlow = () => {
 
   return (
     <ReactFlow
-      colorMode="system"
       nodes={nodes}
       edges={edges}
       onNodesChange={onNodesChange}
@@ -45,6 +44,7 @@ const StressFlow = () => {
       onConnect={onConnect}
       fitView
       minZoom={0}
+      colorMode="system"
     >
       <MiniMap />
       <Controls />

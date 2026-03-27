@@ -11,9 +11,11 @@
   let edges = $state.raw<Edge[]>(initialEdges);
 </script>
 
-<SvelteFlow bind:nodes bind:edges minZoom={0} fitView colorMode="system" onnodedragstop={() => {
+<SvelteFlow bind:nodes bind:edges minZoom={0} fitView onnodedragstop={() => {
   nodes = resolveCollisions(nodes, { maxIterations: Infinity, overlapThreshold: 0.5, margin: 15 });
-}}>
+}}
+  colorMode="system"
+>
   <Background />
   <MiniMap />
   <Controls />

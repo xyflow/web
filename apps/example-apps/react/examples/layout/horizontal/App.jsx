@@ -129,7 +129,6 @@ const HorizontalFlow = () => {
 
   return (
     <ReactFlow
-      colorMode="system"
       nodes={nodes}
       edges={edges}
       onNodesChange={onNodesChange}
@@ -137,6 +136,7 @@ const HorizontalFlow = () => {
       onConnect={onConnect}
       fitView
       attributionPosition="bottom-left"
+      colorMode="system"
     >
       <Background />
     </ReactFlow>

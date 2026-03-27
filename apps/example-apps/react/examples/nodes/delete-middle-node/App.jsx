@@ -78,7 +78,6 @@ export default function Flow() {
 
   return (
     <ReactFlow
-      colorMode="system"
       nodes={nodes}
       edges={edges}
       onNodesChange={onNodesChange}
@@ -87,6 +86,7 @@ export default function Flow() {
       onConnect={onConnect}
       fitView
       attributionPosition="top-right"
+      colorMode="system"
     >
       <Background />
     </ReactFlow>

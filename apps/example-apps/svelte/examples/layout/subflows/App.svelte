@@ -19,13 +19,13 @@
 
 <main>
   <SvelteFlow
-    colorMode="system"
     bind:nodes
     bind:edges
     fitView
     minZoom={0.1}
     maxZoom={2.5}
     defaultEdgeOptions={{ zIndex: 1 }}
+    colorMode="system"
   >
     <Controls />
     <Background variant={BackgroundVariant.Dots} />

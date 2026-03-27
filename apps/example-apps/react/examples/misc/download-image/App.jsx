@@ -38,7 +38,6 @@ const DownloadImageFlow = () => {
 
   return (
     <ReactFlow
-      colorMode="system"
       nodes={nodes}
       edges={edges}
       onNodesChange={onNodesChange}
@@ -54,6 +53,7 @@ const DownloadImageFlow = () => {
       attributionPosition="bottom-left"
       defaultEdgeOptions={defaultEdgeOptions}
       className="download-image"
+      colorMode="system"
     >
       <Controls />
       <Background />

@@ -75,12 +75,12 @@ function Flow() {
   return (
     <ReactFlowProvider>
       <ReactFlow
-        colorMode="system"
         nodes={nodes}
         onNodesChange={onNodesChange}
         nodeTypes={nodeTypes}
         fitView
         preventScrolling={false}
+        colorMode="system"
       >
         <Panel>
           <h3>Node Toolbar position:</h3>

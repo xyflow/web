@@ -89,8 +89,8 @@ const ColorModeFlow = () => {
       onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
       onConnect={onConnect}
-      colorMode="system"
       fitView
+      colorMode="system"
     >
       <MiniMap />
       <Background />

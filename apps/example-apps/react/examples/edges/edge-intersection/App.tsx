@@ -99,7 +99,6 @@ export default function App() {
 
   return (
     <ReactFlow
-      colorMode="system"
       nodes={nodes}
       onNodesChange={onNodesChange}
       edges={edges}
@@ -109,6 +108,7 @@ export default function App() {
       onNodeDrag={onNodeDrag}
       defaultEdgeOptions={defaultEdgeOptions}
       fitView
+      colorMode="system"
     >
       <Background />
       <Controls />
