@@ -107,6 +107,7 @@ const LayoutFlow = () => {
       edges={edges}
       onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
+      colorMode="system"
     >
       <Panel>
         {initialized && (

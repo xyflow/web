@@ -42,6 +42,7 @@ export default function App() {
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
         fitView
+        colorMode="system"
       >
         <Controls />
         <MiniMap />

@@ -42,6 +42,7 @@ function Flow() {
       fitView
       style={rfStyle}
       attributionPosition="top-right"
+      colorMode="system"
     >
       <Background />
     </ReactFlow>

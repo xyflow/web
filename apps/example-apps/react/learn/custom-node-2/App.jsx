@@ -56,6 +56,7 @@ function Flow() {
       nodeTypes={nodeTypes}
       fitView
       style={rfStyle}
+      colorMode="system"
     />
   );
 }

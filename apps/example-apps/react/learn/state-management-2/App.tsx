@@ -31,6 +31,7 @@ function Flow() {
       onConnect={onConnect}
       nodeTypes={nodeTypes}
       fitView
+      colorMode="system"
     />
   );
 }

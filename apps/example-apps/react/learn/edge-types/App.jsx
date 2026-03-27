@@ -28,6 +28,7 @@ const EdgesFlow = () => {
       snapToGrid={true}
       fitView
       attributionPosition="top-right"
+      colorMode="system"
     />
   );
 };

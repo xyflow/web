@@ -56,6 +56,7 @@ function Flow() {
       onConnect={onConnect}
       fitView
       fitViewOptions={fitViewOptions}
+      colorMode="system"
     >
       <DevTools />
     </ReactFlow>
