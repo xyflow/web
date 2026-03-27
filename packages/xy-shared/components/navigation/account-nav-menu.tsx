@@ -1,6 +1,5 @@
 'use client';
 
-import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu';
 
@@ -100,7 +99,7 @@ export function AccountNavMenu() {
                       refreshToken: nhostOnClient.getUserSession()?.refreshToken,
                     });
                     nhostOnClient.clearSession();
-                    redirect('/');
+                    window.location.reload();
                   }}
                 >
                   <ArrowRightStartOnRectangleIcon
