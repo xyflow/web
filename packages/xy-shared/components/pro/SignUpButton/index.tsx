@@ -36,7 +36,7 @@ export function SignUpButton({
         </Link>
       </Button>
       {showDescription && (
-        <span className="mx-auto bg-gradient-to-r from-[#FA3C92] to-[#969696] bg-clip-text text-sm text-transparent">
+        <span className="mx-auto bg-gradient-to-r from-primary to-muted-foreground bg-clip-text text-sm text-transparent">
           {description}
         </span>
       )}
