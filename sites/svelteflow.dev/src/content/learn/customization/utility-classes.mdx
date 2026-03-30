@@ -24,12 +24,6 @@ the default drag behavior as well as the default node selection behavior when el
 with this class are clicked.
 
 ```svelte
-<script lang="ts">
-  import type { NodeProps } from '@xyflow/svelte';
-
-  let _props: NodeProps = $props();
-</script>
-
 <div>
   <input class="nodrag" type="range" min={0} max={100} />
 </div>
@@ -43,12 +37,6 @@ behavior. You can change the class name with the
 [`noPanClass`](/api-reference/svelte-flow#style-props) prop on `<SvelteFlow />`.
 
 ```svelte
-<script lang="ts">
-  import type { NodeProps } from '@xyflow/svelte';
-
-  let _props: NodeProps = $props();
-</script>
-
 <div class="nopan">
   <p>fixed content...</p>
 </div>
@@ -63,12 +51,6 @@ change the class name with the [`noWheelClass`](/api-reference/svelte-flow#style
 prop on `<SvelteFlow />`.
 
 ```svelte
-<script lang="ts">
-  import type { NodeProps } from '@xyflow/svelte';
-
-  let _props: NodeProps = $props();
-</script>
-
 <div class="nowheel" style:overflow="auto">
   <p>Scrollable content...</p>
 </div>
