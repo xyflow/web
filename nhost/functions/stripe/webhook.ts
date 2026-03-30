@@ -1,7 +1,8 @@
 import { Request, Response } from 'express';
+import type Stripe from 'stripe';
+
 import { handleSubscriptionChange } from '../_utils/graphql/subscriptions';
 import { stripe, handlePricingChange } from '../_utils/stripe';
-import type Stripe from 'stripe';
 
 type NhostRequest = Request & {
   rawBody: string;
