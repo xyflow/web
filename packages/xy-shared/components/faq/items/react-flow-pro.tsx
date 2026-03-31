@@ -36,7 +36,7 @@ const items: FAQItem[] = [
     answer: (
       <>
         When you{' '}
-        <Link variant="primary" href="https://pro.reactflow.dev/signup">
+        <Link variant="primary" href="https://reactflow.dev/pro/sign-up">
           create a React Flow Pro account
         </Link>
         , you can log in to the pro platform and access the Helper Lines pro example for
@@ -49,7 +49,7 @@ const items: FAQItem[] = [
     answer: (
       <>
         If you need access to the Pro Example code for a non-commercial project:
-        <ul className="list-disc pl-8 mb-4">
+        <ul className="mb-4 list-disc pl-8">
           <li>
             For <strong>educational purposes</strong>, email us at info@xyflow.com using
             your university email address with a link to the example you&apos;re looking

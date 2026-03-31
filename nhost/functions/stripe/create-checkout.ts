@@ -1,7 +1,11 @@
 import { Request, Response } from 'express';
+
 import stripe, { getLineItem } from '../_utils/stripe';
 import { authPost } from '../_utils/middleware';
 import { getOrCreateCustomer } from '../_utils/graphql/subscriptions';
+
+// @TODO: this needs to work for svelte flow too
+const websiteURL = process.env.WEBSITE_URL ?? 'https://reactflow.dev';
 
 const createStripeCheckoutSession = async (req: Request, res: Response) => {
   const userId = res.locals.userId;
@@ -26,7 +30,7 @@ const createStripeCheckoutSession = async (req: Request, res: Response) => {
     return res.status(405).send({ message: 'Stripe customer id not found.' });
   }
 
-  const origin = req.headers.origin || 'https://pro.reactflow.dev';
+  const origin = req.headers.origin ?? `${websiteURL}/pro/dashboard`;
 
   const session = await stripe.checkout.sessions.create({
     customer: stripeCustomerId,

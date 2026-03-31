@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+
 import { sendMail } from '../_utils/mailjet';
 import { getLineItem, stripe } from '../_utils/stripe';
 import { cors, post } from '../_utils/middleware';
@@ -38,7 +39,10 @@ const createQuote = async (req: Request, res: Response) => {
     return res.status(405).send({ message: 'Bad Request.' });
   }
 
-  const quote = await stripe.quotes.create({ customer: customer.id, line_items: [lineItem] });
+  const quote = await stripe.quotes.create({
+    customer: customer.id,
+    line_items: [lineItem],
+  });
   const finalizedQuote = await stripe.quotes.finalizeQuote(quote.id);
 
   if (!quote || !finalizedQuote) {
@@ -54,7 +58,11 @@ const createQuote = async (req: Request, res: Response) => {
     content,
     replyTo: email,
     attachments: [
-      { ContentType: 'application/pdf', Filename: `${finalizedQuote.number}.pdf`, Base64Content: quoteBase64 },
+      {
+        ContentType: 'application/pdf',
+        Filename: `${finalizedQuote.number}.pdf`,
+        Base64Content: quoteBase64,
+      },
     ],
   });
 

@@ -27,6 +27,10 @@ value = '{{ secrets.UPSTASH_REDIS_URL }}'
 name = 'UPSTASH_REDIS_TOKEN'
 value = '{{ secrets.UPSTASH_REDIS_TOKEN }}'
 
+[[global.environment]]
+name = 'WEBSITE_URL'
+value = 'https://reactflow-website-env-staging-xyflow.vercel.app'
+
 [hasura]
 version = 'v2.36.9-ce'
 adminSecret = '{{ secrets.HASURA_GRAPHQL_ADMIN_SECRET }}'
