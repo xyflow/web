@@ -12,6 +12,7 @@ const initialNodes = [
     id: 'n2',
     data: { label: 'Node 2' },
     position: { x: 100, y: 100 },
+    type: 'output',
   },
 ];
 

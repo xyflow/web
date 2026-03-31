@@ -2,8 +2,6 @@
 description: Understand the fundamental concepts of Svelte Flow - from the interactive canvas and node-edge system to viewport management and built-in components. Essential reading for developers starting with Svelte Flow.
 ---
 
-import { RemoteCodeViewer } from 'xy-shared/server/remote-code-viewer';
-
 # Overview
 
 At its core, Svelte Flow is about creating interactive flowgraphs - a collection of nodes connected by edges. While this might sound simple in theory, Svelte Flow provides the foundation for building complex interactive diagrams:
@@ -16,25 +14,11 @@ To help you understand the terminology we use throughout the documentation, take
 
 <RemoteCodeViewer
   framework="svelte"
-  route="/guides/concepts/"
+  route="guides/concepts"
   showEditor={false}
   showOpenInCodeSandbox={false}
   showOpenInStackblitz={false}
 />
-
-{/* 
-
-TODO remove?
-Here are the key terms you'll encounter when working with Svelte Flow:
-
-- **Svelte Flow Component**: The main component that renders your flowgraph
-  - [**Svelte Flow Props**](/api-reference/svelte-flow): All configuration and data is passed through props
-- **Viewport**: The visible area of your flowgraph that can be panned and zoomed
-  - When we say something is "in the viewport," it means it moves with the viewport's transformation
-- [**Base Styles**](/learn/customization/theming): The essential CSS required for Svelte Flow to function properly
-- [**Built-In Components**](/learn/concepts/built-in-components): Ready-to-use components like Controls and MiniMap that enhance your flowgraph
-
-With these concepts in mind, you're ready to [install Svelte Flow](/learn/) and start [building your first flow](/learn/concepts/building-a-flow)! */}
 
 ### Nodes
 
