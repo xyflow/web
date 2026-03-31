@@ -10,7 +10,7 @@
       type: 'input',
     },
     {
-      id: '2',
+      id: 'n2',
       position: { x: 100, y: 100 },
       data: { label: 'Node 2' },
       type: 'output',
