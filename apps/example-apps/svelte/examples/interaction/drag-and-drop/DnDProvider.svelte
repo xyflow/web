@@ -23,7 +23,7 @@
   });
 
   onDestroy(() => {
-    dndType.set(null);
+    dndType = null;
   });
 </script>
 
