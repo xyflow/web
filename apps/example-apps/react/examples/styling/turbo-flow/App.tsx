@@ -108,7 +108,6 @@ const Flow = () => {
 
   return (
     <ReactFlow
-      colorMode="system"
       nodes={nodes}
       edges={edges}
       onNodesChange={onNodesChange}
@@ -118,6 +117,7 @@ const Flow = () => {
       nodeTypes={nodeTypes}
       edgeTypes={edgeTypes}
       defaultEdgeOptions={defaultEdgeOptions}
+      colorMode="system"
     >
       <Controls showInteractive={false} />
       <svg>

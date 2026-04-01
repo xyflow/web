@@ -52,7 +52,6 @@ export default function PricingTableComponent() {
   return (
     <PricingTable
       plans={plans}
-      isSignedIn
       onSelect={(subscribeConfig) =>
         subscribe({
           plan: subscribeConfig.plan,

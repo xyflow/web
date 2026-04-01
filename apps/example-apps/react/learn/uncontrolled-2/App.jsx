@@ -44,6 +44,7 @@ function Flow() {
           backgroundColor: '#D3D2E5',
         }}
         connectionLineStyle={connectionLineStyle}
+        colorMode="system"
       />
       <button onClick={onClick} className="btn-add">
         add node

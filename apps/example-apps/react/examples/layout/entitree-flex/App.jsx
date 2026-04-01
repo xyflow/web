@@ -52,7 +52,6 @@ const LayoutFlow = () => {
 
   return (
     <ReactFlow
-      colorMode="system"
       nodes={nodes}
       edges={edges}
       onNodesChange={onNodesChange}
@@ -61,6 +60,7 @@ const LayoutFlow = () => {
       connectionLineType={ConnectionLineType.SmoothStep}
       fitView
       nodeTypes={nodeTypes}
+      colorMode="system"
     >
       <Panel position="top-right">
         <button className="xy-theme__button" onClick={() => onLayout('TB')}>

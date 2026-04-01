@@ -27,7 +27,6 @@ const IncompleteEdge = () => {
 
   return (
     <ReactFlow
-      colorMode="system"
       nodes={nodes}
       nodeTypes={nodeTypes}
       edges={edges}
@@ -35,6 +34,7 @@ const IncompleteEdge = () => {
       onEdgesChange={onEdgesChange}
       fitView
       {...handlers}
+      colorMode="system"
     >
       <Background />
     </ReactFlow>

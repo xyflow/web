@@ -24,6 +24,7 @@ export default function Flow() {
         backgroundColor: '#D3D2E5',
       }}
       connectionLineStyle={connectionLineStyle}
+      colorMode="system"
     />
   );
 }

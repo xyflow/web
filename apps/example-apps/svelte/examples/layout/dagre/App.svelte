@@ -70,12 +70,12 @@
 </script>
 
 <SvelteFlow
-  colorMode="system"
   bind:nodes
   bind:edges
   fitView
   connectionLineType={ConnectionLineType.SmoothStep}
   defaultEdgeOptions={{ type: 'smoothstep', animated: true }}
+  colorMode="system"
 >
   <Panel position="top-right">
     <button class="xy-theme__button" onclick={() => onLayout('TB')}>vertical layout</button>

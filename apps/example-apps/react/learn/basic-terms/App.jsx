@@ -198,6 +198,7 @@ function Flow() {
         onConnectEnd={onConnectEnd}
         fitView
         preventScrolling={false}
+        colorMode="system"
       >
         <Background />
         <Panel position="bottom-left">

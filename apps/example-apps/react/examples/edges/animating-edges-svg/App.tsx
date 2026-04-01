@@ -29,13 +29,13 @@ const EdgesFlow = () => {
 
   return (
     <ReactFlow
-      colorMode="system"
       nodes={nodes}
       edges={edges}
       edgeTypes={edgeTypes}
       onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
       fitView
+      colorMode="system"
     >
       <Background />
     </ReactFlow>

@@ -94,7 +94,6 @@
 </script>
 
 <SvelteFlow
-  colorMode="system"
   class="overview"
   bind:nodes
   bind:edges
@@ -102,6 +101,7 @@
   {edgeTypes}
   fitView
   fitViewOptions={{ padding: { x: '30px', y: '30px', bottom: '35%' } }}
+  colorMode="system"
 >
   <Background patternColor="#aaa" gap={16} />
   <Panel position="bottom-left">

@@ -1,7 +1,11 @@
+'use client';
+
+import { SparklesIcon } from '@heroicons/react/24/outline';
+
+import { useSubscription } from '../../../hooks/use-subscription';
 import { cn } from '../../../lib/utils';
 import { Button } from '../../ui/button';
 import { Link } from '../../ui/link';
-import { SparklesIcon } from '@heroicons/react/24/outline';
 
 export function SignUpButton({
   showIcon = false,
@@ -12,16 +16,30 @@ export function SignUpButton({
   description?: string;
   className?: string;
 }) {
+  const { user, isSubscribed } = useSubscription();
+  const hasUser = !!user;
+  const showDescription = !hasUser || (hasUser && !isSubscribed);
+  const buttonLink = hasUser
+    ? isSubscribed
+      ? '/pro/dashboard'
+      : '/pro/subscribe'
+    : '/pro/sign-up';
+
+  const buttonLabel = hasUser ? (isSubscribed ? 'Dashboard' : 'Subscribe') : 'Sign Up';
+
   return (
-    <div className={cn('flex gap-2 items-center flex-wrap w-full md:w-auto', className)}>
+    <div className={cn('flex w-full flex-wrap items-center gap-2 md:w-auto', className)}>
       <Button asChild size="lg" variant="pro" className="w-full md:w-auto">
-        <Link href="/pro/sign-up">
-          {showIcon && <SparklesIcon className="w-5 h-5 mr-2" />}Sign Up
+        <Link href={buttonLink} className="hover:no-underline">
+          {showIcon && <SparklesIcon className="mr-2 h-5 w-5" />}
+          {buttonLabel}
         </Link>
       </Button>
-      <span className="text-sm mx-auto text-transparent bg-clip-text bg-gradient-to-r from-[#FA3C92] to-[#969696]">
-        {description}
-      </span>
+      {showDescription && (
+        <span className="mx-auto bg-gradient-to-r from-primary to-muted-foreground bg-clip-text text-sm text-transparent">
+          {description}
+        </span>
+      )}
     </div>
   );
 }

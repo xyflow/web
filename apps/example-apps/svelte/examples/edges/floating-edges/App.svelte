@@ -26,13 +26,13 @@
 </script>
 
 <SvelteFlow
-  colorMode="system"
   bind:nodes
   {nodeTypes}
   bind:edges
   {edgeTypes}
   fitView
   connectionMode={ConnectionMode.Loose}
+  colorMode="system"
 >
   <Background />
 </SvelteFlow>

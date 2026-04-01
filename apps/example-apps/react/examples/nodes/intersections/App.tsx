@@ -62,7 +62,6 @@ const BasicFlow = () => {
 
   return (
     <ReactFlow
-      colorMode="system"
       nodes={nodes}
       edges={initialEdges}
       onNodesChange={onNodesChange}
@@ -72,6 +71,7 @@ const BasicFlow = () => {
       maxZoom={4}
       fitView
       selectNodesOnDrag={false}
+      colorMode="system"
     >
       <Background />
       <Controls />

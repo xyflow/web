@@ -35,6 +35,7 @@ const LayoutFlow = () => {
       onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
       fitView
+      colorMode="system"
     />
   );
 };

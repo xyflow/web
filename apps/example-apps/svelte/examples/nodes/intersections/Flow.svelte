@@ -31,12 +31,12 @@
 </script>
 
 <SvelteFlow
-  colorMode="system"
   bind:nodes
   bind:edges
   fitView
   class="intersection-flow"
   onnodedrag={onNodeDrag}
+  colorMode="system"
 >
   <Background />
   <Controls />

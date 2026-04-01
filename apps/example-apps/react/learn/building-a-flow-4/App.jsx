@@ -22,7 +22,7 @@ const initialEdges = [
 function Flow() {
   return (
     <div style={{ height: '100%' }}>
-      <ReactFlow nodes={initialNodes} edges={initialEdges} fitView>
+      <ReactFlow nodes={initialNodes} edges={initialEdges} fitView colorMode="system">
         <Background />
         <Controls />
       </ReactFlow>

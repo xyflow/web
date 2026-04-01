@@ -35,6 +35,7 @@ function Flow() {
       panOnDrag={panOnDrag}
       selectionMode={SelectionMode.Partial}
       fitView
+      colorMode="system"
     >
       <Background />
     </ReactFlow>

@@ -39,7 +39,6 @@ export default function RectangleFlow() {
 
   return (
     <ReactFlow
-      colorMode="system"
       nodes={nodes}
       nodeTypes={nodeTypes}
       edges={edges}
@@ -47,6 +46,7 @@ export default function RectangleFlow() {
       onEdgesChange={onEdgesChange}
       onConnect={onConnect}
       fitView
+      colorMode="system"
     >
       <Controls />
       <Background />

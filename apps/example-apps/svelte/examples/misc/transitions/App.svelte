@@ -49,7 +49,6 @@
 </script>
 
 <SvelteFlow
-  colorMode="system"
   bind:nodes
   bind:edges
   {nodeTypes}
@@ -59,6 +58,7 @@
   defaultEdgeOptions={{
     type: 'fadeOut',
   }}
+  colorMode="system"
 >
   <Background />
   <MiniMap />

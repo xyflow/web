@@ -66,7 +66,6 @@ const EdgesFlow = () => {
 
   return (
     <ReactFlow
-      colorMode="system"
       nodes={nodes}
       edges={edges}
       onNodesChange={onNodesChange}
@@ -74,6 +73,7 @@ const EdgesFlow = () => {
       onConnect={onConnect}
       edgeTypes={edgeTypes}
       fitView
+      colorMode="system"
     >
       <Controls />
       <Background />

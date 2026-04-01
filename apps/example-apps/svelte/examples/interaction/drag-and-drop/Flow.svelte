@@ -87,7 +87,7 @@
 
 <main class="dndflow">
   <div class="reactflow-wrapper">
-    <SvelteFlow bind:nodes bind:edges fitView colorMode="system" ondragover={onDragOver} ondrop={onDrop}>
+    <SvelteFlow bind:nodes bind:edges fitView ondragover={onDragOver} ondrop={onDrop} colorMode="system">
     <Controls />
     <Background variant={BackgroundVariant.Dots} />
   </SvelteFlow>

@@ -29,7 +29,6 @@ function ExampleFlow() {
 
   return (
     <ReactFlow
-      colorMode="system"
       nodes={nodes}
       edges={edges}
       onNodesChange={onNodesChange}
@@ -37,6 +36,7 @@ function ExampleFlow() {
       onNodeDragStop={onNodeDragStop}
       minZoom={0}
       fitView
+      colorMode="system"
     >
       <Background />
       <MiniMap />

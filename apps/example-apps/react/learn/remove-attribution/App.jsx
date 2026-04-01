@@ -18,6 +18,7 @@ function RemoveAttributionExample() {
       fitView
       proOptions={proOptions}
       nodesDraggable
+      colorMode="system"
     >
       <Background />
     </ReactFlow>

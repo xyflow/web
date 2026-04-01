@@ -38,13 +38,13 @@
 </script>
 
 <SvelteFlow
-  colorMode="system"
   class="overview"
   bind:nodes
   bind:edges
   {nodeTypes}
   {edgeTypes}
   fitView
+  colorMode="system"
 >
   <Background patternColor="#aaa" gap={16} />
   <Controls />

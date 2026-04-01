@@ -138,6 +138,7 @@ const LayoutFlow = () => {
       onNodeDragStop={dragEvents.stop}
       onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
+      colorMode="system"
     >
       <Panel>
         {initialized && (

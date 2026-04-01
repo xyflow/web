@@ -29,12 +29,12 @@
 </script>
 
 <SvelteFlow
-  colorMode="system"
   bind:nodes
   bind:edges
   {nodeTypes}
   fitView
   connectionLineComponent={ConnectionLine}
+  colorMode="system"
 >
   <Background />
   <MiniMap />

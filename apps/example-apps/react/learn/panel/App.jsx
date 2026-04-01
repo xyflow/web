@@ -11,7 +11,7 @@ const nodes = [
 
 function Flow() {
   return (
-    <ReactFlow nodes={nodes} fitView>
+    <ReactFlow nodes={nodes} fitView colorMode="system">
       <Panel position="top-left">top-left</Panel>
       <Panel position="top-center">top-center</Panel>
       <Panel position="top-right">top-right</Panel>

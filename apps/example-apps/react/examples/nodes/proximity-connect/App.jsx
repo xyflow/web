@@ -122,7 +122,6 @@ const Flow = () => {
 
   return (
     <ReactFlow
-      colorMode="system"
       nodes={nodes}
       edges={edges}
       onNodesChange={onNodesChange}
@@ -131,6 +130,7 @@ const Flow = () => {
       onNodeDragStop={onNodeDragStop}
       onConnect={onConnect}
       fitView
+      colorMode="system"
     >
       <Background />
     </ReactFlow>

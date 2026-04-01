@@ -212,11 +212,11 @@ export default function MarkersExample() {
         </defs>
       </svg>
       <ReactFlow
-        colorMode="system"
         defaultNodes={defaultNodes}
         defaultEdges={defaultEdges}
         fitView
         edgeTypes={edgeTypes}
+        colorMode="system"
       >
         <Background />
       </ReactFlow>

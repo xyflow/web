@@ -23,20 +23,21 @@ import {
   PlanId,
   OnSelectCurrenty,
 } from './types';
+import { useSubscription } from '../../hooks/use-subscription';
 
 const PricingTable = ({
   className,
   library = 'react',
   plans,
-  isSignedIn = false,
   onSelect,
 }: {
   className?: string;
   library?: 'react' | 'svelte';
   plans?: SubscriptionPlan[];
   onSelect?: OnSelectCurrenty;
-  isSignedIn?: boolean;
 }) => {
+  const { user } = useSubscription();
+  const isSignedIn = !!user;
   // Use library-specific config if plans not provided
   const selectedPlans = plans ?? (library === 'svelte' ? svelteConfig : defaultConfig);
   const [billingInterval, setBillingInterval] = useState<BillingInterval>(
@@ -67,22 +68,22 @@ const PricingTable = ({
       <div>
         <div
           className={cn(
-            'flex flex-wrap justify-between lg:justify-center relative mb-8',
+            'relative mb-8 flex flex-wrap justify-between lg:justify-center',
             className,
           )}
         >
-          <div className="rounded-full flex gap-1 bg-card p-2 ">
+          <div className="bg-card flex gap-1 rounded-full p-2">
             <Button
               variant="secondary"
               onClick={() => setBillingInterval(BillingInterval.MONTH)}
-              className={isMonthly ? '' : 'text-gray-400 bg-card shadow-none'}
+              className={isMonthly ? '' : 'bg-card text-gray-400 shadow-none'}
             >
               Monthly
             </Button>
             <Button
               variant="secondary"
               onClick={() => setBillingInterval(BillingInterval.YEAR)}
-              className={!isMonthly ? '' : 'text-gray-400 bg-card shadow-none'}
+              className={!isMonthly ? '' : 'bg-card text-gray-400 shadow-none'}
             >
               Yearly
             </Button>
@@ -94,7 +95,7 @@ const PricingTable = ({
               localStorage.setItem('pricing-currency', value);
             }}
           >
-            <SelectTrigger className="w-[100px] absolute right-0">
+            <SelectTrigger className="absolute right-0 w-[100px]">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -107,8 +108,8 @@ const PricingTable = ({
           </Select>
         </div>
 
-        <Container className="relative z-1">
-          <div className={`grid grid-cols-1 lg:grid-cols-3 gap-0`}>
+        <Container className="z-1 relative">
+          <div className={`grid grid-cols-1 gap-0 lg:grid-cols-3`}>
             {selectedPlans.map((plan) => (
               <Plan
                 {...plan}

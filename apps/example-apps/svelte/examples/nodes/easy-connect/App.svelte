@@ -35,7 +35,6 @@
 </script>
 
 <SvelteFlow
-  colorMode="system"
   bind:nodes
   {nodeTypes}
   bind:edges
@@ -43,6 +42,7 @@
   {defaultEdgeOptions}
   connectionLineType={ConnectionLineType.Straight}
   fitView
+  colorMode="system"
 >
   <Background />
 </SvelteFlow>

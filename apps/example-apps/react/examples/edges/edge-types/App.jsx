@@ -94,7 +94,6 @@ const EdgeTypesFlow = () => {
 
   return (
     <ReactFlow
-      colorMode="system"
       nodes={nodes}
       edges={edges}
       onNodesChange={onNodesChange}
@@ -102,6 +101,7 @@ const EdgeTypesFlow = () => {
       onConnect={onConnect}
       fitView
       minZoom={0.2}
+      colorMode="system"
     >
       <Controls />
       <Background />

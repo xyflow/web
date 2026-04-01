@@ -66,6 +66,7 @@ const LayoutFlow = () => {
       onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
       fitView
+      colorMode="system"
     >
       <Panel position="top-right">
         <button onClick={() => onLayout('TB')}>vertical layout</button>

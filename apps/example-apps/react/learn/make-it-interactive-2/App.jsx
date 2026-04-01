@@ -51,6 +51,7 @@ function Flow() {
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
         fitView
+        colorMode="system"
       >
         <Background />
         <Controls />

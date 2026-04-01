@@ -46,13 +46,13 @@ const ZoomTransition = () => {
 
   return (
     <ReactFlow
-      colorMode="system"
       nodes={nodes}
       edges={edges}
       onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
       onConnect={onConnect}
       fitView
+      colorMode="system"
     >
       <Panel position="top-right">
         <button className="xy-theme__button" onClick={() => zoomIn({ duration: 800 })}>

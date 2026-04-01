@@ -109,7 +109,6 @@ const CustomNodeFlow = () => {
   );
   return (
     <ReactFlow
-      colorMode="system"
       nodes={nodes}
       edges={edges}
       onNodesChange={onNodesChange}
@@ -121,6 +120,7 @@ const CustomNodeFlow = () => {
       defaultViewport={defaultViewport}
       fitView
       attributionPosition="bottom-left"
+      colorMode="system"
     >
       <Background />
       <MiniMap />

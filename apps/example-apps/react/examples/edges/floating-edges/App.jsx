@@ -41,7 +41,6 @@ const NodeAsHandleFlow = () => {
   return (
     <div className="floating-edges">
       <ReactFlow
-        colorMode="system"
         nodes={nodes}
         edges={edges}
         onNodesChange={onNodesChange}
@@ -50,6 +49,7 @@ const NodeAsHandleFlow = () => {
         fitView
         edgeTypes={edgeTypes}
         connectionLineComponent={FloatingConnectionLine}
+        colorMode="system"
       >
         <Background />
       </ReactFlow>

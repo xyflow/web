@@ -27,13 +27,13 @@ function App() {
 
   return (
     <ReactFlow
-      colorMode="system"
       nodes={nodes}
       onNodesChange={onNodesChange}
       edges={edges}
       onEdgesChange={onEdgesChange}
       fitView
       nodeTypes={nodeTypes}
+      colorMode="system"
     >
       <Background />
       <Controls />

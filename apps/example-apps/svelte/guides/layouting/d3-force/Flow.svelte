@@ -152,13 +152,13 @@
 </script>
 
 <SvelteFlow
-  colorMode="system"
   bind:nodes
   bind:edges
   fitView
   onnodedragstart={handleNodeDragStart}
   onnodedrag={handleNodeDrag}
   onnodedragstop={handleNodeDragStop}
+  colorMode="system"
 >
   <Panel position="top-right">
     <button onclick={toggleLayout}>

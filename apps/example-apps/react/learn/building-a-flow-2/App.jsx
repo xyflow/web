@@ -19,7 +19,7 @@ const initialNodes = [
 function Flow() {
   return (
     <div style={{ height: '100%' }}>
-      <ReactFlow nodes={initialNodes} fitView>
+      <ReactFlow nodes={initialNodes} fitView colorMode="system">
         <Background />
         <Controls />
       </ReactFlow>
