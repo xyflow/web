@@ -1,9 +1,17 @@
 <script>
   import { SvelteFlow, Panel, Background } from '@xyflow/svelte';
   import '@xyflow/svelte/dist/style.css';
+
+  let nodes = $state.raw([
+    {
+      id: '1',
+      data: { label: 'this is an example flow for the <Panel /> component' },
+      position: { x: 0, y: 0 },
+    },
+  ]);
 </script>
 
-<SvelteFlow colorMode="system">
+<SvelteFlow bind:nodes colorMode="system" fitView>
   <Panel position="top-left">top-left</Panel>
   <Panel position="top-center">top-center</Panel>
   <Panel position="top-right">top-right</Panel>

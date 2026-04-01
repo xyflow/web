@@ -121,15 +121,6 @@ const initialNodes = [
 Now we can pass our `initialNodes` array to the `<ReactFlow />` component using the
 `nodes` prop:
 
-<Callout color="yellow">
-  When making interactive flows, React Flow needs to know how 
-  the state of the nodes and edges is managed. You can read more 
-  about this in the [State Management](/learn/advanced-use/state-management) guide.
-  By simply passing the `initialNodes` array to the `nodes` prop, React Flow will
-  render a flow that is not interactive by default.
-  The [Svelte version of this tutorial](/learn/concepts/building-a-flow) is different. 
-</Callout>
-
 ```jsx "nodes={initialNodes}"
 <ReactFlow nodes={initialNodes}>
   <Background />

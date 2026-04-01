@@ -7,6 +7,15 @@ description: This guide will show you how to add basic interactivity to your flo
 Now that we've built our [first flow](/learn/concepts/building-a-flow), let's add
 \*interactivity so you can select, drag, and remove nodes and edges.
 
+In the [previous guide](/learn/concepts/building-a-flow) we created a flow with
+two nodes. Those nodes were passed as a static array to the `nodes` prop, and
+thus the flow was not interactive by default. Passing `nodes` and `edges` to the
+`ReactFlow` component is called **controlled flow**. This means that you are in
+control of the state of the nodes and edges, and thus you need to pass event
+handlers to the `ReactFlow` component, and make the nodes and edges arrays
+reactive to handle changes to the nodes and edges. You can read more 
+about this in the [State Management](/learn/advanced-use/state-management) guide.
+
 ## Handling change events
 
 By default React Flow doesn't manage any internal state updates besides handling the

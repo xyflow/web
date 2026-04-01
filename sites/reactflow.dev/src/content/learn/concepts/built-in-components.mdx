@@ -6,6 +6,19 @@ description: React Flow comes with several built-in components. Here's an overvi
 
 React Flow comes with several built-in components that can be passed as children to the [`<ReactFlow />`](/api-reference/react-flow) component.
 
+```tsx filename="BuiltInComponents.tsx"
+import { ReactFlow, MiniMap, Controls, Background, Panel } from '@xyflow/react';
+
+<ReactFlow>
+  <MiniMap />
+  <Controls />
+  <Background />
+  <Panel position="top-left">
+    <h1>My Flow</h1>
+  </Panel>
+</ReactFlow>
+```
+
 ## MiniMap
 
 The [`MiniMap`](/api-reference/components/minimap) provides a bird’s-eye view of your flowgraph, making navigation easier, especially for larger flows. You can customize the appearance of nodes in the minimap by providing a nodeColor function.

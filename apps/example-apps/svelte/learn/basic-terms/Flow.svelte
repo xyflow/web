@@ -105,7 +105,7 @@
 >
   <Background patternColor="#aaa" gap={16} />
   <Panel position="bottom-left">
-    <div style:font-family="monospace">
+    <div class="viewport-logger">
       <div>x: {viewport.current.x.toFixed(2)}</div>
       <div>y: {viewport.current.y.toFixed(2)}</div>
       <div>zoom: {viewport.current.zoom.toFixed(2)}</div>

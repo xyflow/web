@@ -20,7 +20,7 @@
 </script>
 
 <div style="width: 100vw; height: 100vh">
-  <SvelteFlow bind:nodes bind:edges fitView>
+  <SvelteFlow bind:nodes bind:edges fitView colorMode="system">
     <Controls />
     <MiniMap />
     <Background variant={BackgroundVariant.Dots} gap={12} size={1} />

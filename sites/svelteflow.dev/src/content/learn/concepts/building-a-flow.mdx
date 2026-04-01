@@ -124,15 +124,6 @@ Next, we [bind](https://svelte.dev/docs/svelte/$bindable) the nodes to the
 code to modify the nodes. 
 
 
-<Callout color="yellow">
-`bind` is a very convenient feature of Svelte. In [React
-Flow](https://reactflow.dev/learn/concepts/building-a-flow) you would have to 
-explicitly update the nodes in the state, and [the React version of this tutorial](https://reactflow.dev/learn/concepts/building-a-flow) 
-only shows you how to provide a static array of nodes that is not interactive.
-Here, instead, by using `bind:nodes` the flow is interactive by default!
-</Callout>
-
-
 ```svelte "bind:nodes"
 <SvelteFlow bind:nodes>
 ```

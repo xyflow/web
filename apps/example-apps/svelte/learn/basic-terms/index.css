@@ -198,3 +198,10 @@ input[type='number']::-webkit-inner-spin-button {
 .svelte-flow__minimap .annotation {
   display: none;
 }
+
+.viewport-logger {
+  font-family: monospace;
+  color: var(--xy-node-color-default);
+  padding: 5px;
+  border-radius: 3px;
+}
