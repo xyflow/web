@@ -41,6 +41,7 @@
   panOnDrag={panOnDrag}
   selectionMode={SelectionMode.Partial}
   fitView
+  colorMode="system"
 >
   <Background />
 </SvelteFlow>

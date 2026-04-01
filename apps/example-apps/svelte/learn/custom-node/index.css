@@ -1,0 +1,37 @@
+@import './xy-theme.css';
+
+html,
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+#app {
+  width: 100vw;
+  height: 100vh;
+}
+
+.svelte-flow {
+  --xy-background-color: #f7f9fb;
+}
+
+.text-updater-node {
+  height: 50px;
+  padding: 5px;
+  background: var(--xy-node-background-color-default);
+}
+
+.text-updater-node label {
+  display: block;
+  color: var(--xy-node-color-default);
+  font-size: 12px;
+}
+
+.text-updater-node input {
+  color: var(--xy-node-color-default);
+  background: var(--xy-node-background-color-default);
+  /* border: 1px solid var(--xy-node-border-color-default); */
+  border-radius: 3px;
+  padding: 5px;
+  font-size: 12px;
+}

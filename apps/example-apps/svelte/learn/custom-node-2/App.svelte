@@ -1,5 +1,5 @@
 <script>
-  import { SvelteFlow } from '@xyflow/svelte';
+  import { Background, SvelteFlow } from '@xyflow/svelte';
   import '@xyflow/svelte/dist/style.css';
 
   import TextUpdaterNode from './TextUpdaterNode.svelte';
@@ -41,4 +41,6 @@
   ]);
 </script>
 
-<SvelteFlow bind:nodes bind:edges {nodeTypes} fitView style={rfStyle} colorMode="system" />
+<SvelteFlow bind:nodes bind:edges {nodeTypes} fitView style={rfStyle} colorMode="system" >
+  <Background />
+</SvelteFlow>

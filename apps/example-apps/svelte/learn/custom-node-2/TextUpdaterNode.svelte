@@ -17,12 +17,12 @@
     border: 1px solid #eee;
     padding: 5px;
     border-radius: 5px;
-    background: white;
+    background: var(--xy-node-background-color-default);
   }
 
   .text-updater-node label {
     display: block;
-    color: #777;
+    color: var(--xy-node-color-default);
     font-size: 12px;
   }
 </style>
