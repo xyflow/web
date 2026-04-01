@@ -7,13 +7,13 @@ description:
 
 # Building a Flow
 
-In the following pages we will introduce you to the core concepts of React Flow and
+In the following pages we will introduce you to the core concepts of Svelte Flow and
 explain how to create a basic interactive flow. A flow consists of
 [nodes](/api-reference/types/node), [edges](/api-reference/types/edge) and the viewport.
 If you haven't reviewed our [Key Concepts](/learn/getting-started/terms-and-definitions) yet,
 we recommend doing that first.
 
-To follow along with this guide you will need to have a React project set up and install
+To follow along with this guide you will need to have a Svelte project set up and install
 the `@xyflow/svelte` package:
 
 ```bash copy npm2yarn
@@ -54,6 +54,7 @@ Next, render the main component inside an element with defined dimensions and pl
 <div style:width="100vw" style:height="100vh">
     <SvelteFlow>
         <Background />
+        <Controls />
     </SvelteFlow>
 </div>
 ```

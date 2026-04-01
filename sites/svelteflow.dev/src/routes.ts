@@ -4,7 +4,6 @@ export type ExternalRoute = `https://${string}`;
 
 export type InternalRoute =
   | '/api-reference'
-  | '/api-reference/SvelteFlow.props.tsx'
   | '/api-reference/components'
   | '/api-reference/components/background'
   | '/api-reference/components/base-edge'
@@ -103,7 +102,6 @@ export type InternalRoute =
   | '/examples/edges/edge-types'
   | '/examples/edges/floating-edges'
   | '/examples/edges/reconnect-edge'
-  | '/examples/examples-overview.tsx'
   | '/examples/grouping/parent-child-relation'
   | '/examples/grouping/selection-grouping'
   | '/examples/interaction/computing-flows'
