@@ -105,12 +105,12 @@ export const ProExamplesMarketing: FC<ProExamplesMarketingProps> = async ({
         className="lg:gap-20"
         title={
           <div className="mt-6">
-            Upgrade your apps with {library} <StarText /> Examples
+            Upgrade your apps with {library} <StarText /> Content
           </div>
         }
-        subtitle={`Get advanced ${library} code examples to use in your node-based UIs, crafted by the ${library} core team.`}
+        subtitle={`Get advanced ${library} examples and templates to use in your node-based UIs, crafted by the ${library} core team.`}
         action={
-          <div className="flex flex-wrap gap-2 items-center">
+          <div className="flex flex-wrap items-center gap-2">
             <Button
               variant="secondary"
               className="text-foreground w-full md:w-auto"
@@ -135,7 +135,7 @@ export const ProExamplesMarketing: FC<ProExamplesMarketingProps> = async ({
         />
       </Hero>
       <Section className="z-1 relative">
-        <ContentGrid className="lg:grid-cols-4 border-t-0 gap-12">
+        <ContentGrid className="gap-12 border-t-0 lg:grid-cols-4">
           <GridItem
             title={`By the creators of ${library}`}
             text="Feature-complete and crafted by the core team"
@@ -149,16 +149,23 @@ export const ProExamplesMarketing: FC<ProExamplesMarketingProps> = async ({
           />
           <GridItem
             title="Regularly Added and Updated"
-            text="Subscribers are the first to get new pro examples and refactors"
+            text="Subscribers are the first to get new pro content and refactors"
             icon={PlusCircleIcon}
           />
           <GridItem
             title="Subscribe for one, use them forever"
-            text="Download the pro examples and use them anywhere, anytime"
+            text="Download the pro examples and templates and use them anywhere"
             icon={StarIcon}
           />
         </ContentGrid>
       </Section>
+
+      <Heading size="lg" className="text-center">
+        {library} <StarText /> Examples
+      </Heading>
+      <Text size="lg" className="mx-auto mt-4 max-w-2xl text-center">
+        These are our pro examples that you can use in your projects.
+      </Text>
 
       {freeTrialSection ? (
         <>
@@ -174,19 +181,19 @@ export const ProExamplesMarketing: FC<ProExamplesMarketingProps> = async ({
                 style={{ objectFit: 'contain', display: 'block', width: '100%' }}
               />
             </Container>
-            <div className="flex flex-wrap mt-10 gap-2">
+            <div className="mt-10 flex flex-wrap gap-2">
               <Heading
-                className="w-full md:w-auto mb-auto flex gap-3 items-center"
+                className="mb-auto flex w-full items-center gap-3 md:w-auto"
                 size="md"
               >
                 {freeTrialSection.title}{' '}
-                <span className="text-sm text-primary bg-gray-100 px-3 py-1 rounded-full">
+                <span className="text-primary rounded-full bg-gray-100 px-3 py-1 text-sm">
                   Free Trial
                 </span>
               </Heading>
-              <div className="md:max-w-lg ml-auto">
+              <div className="ml-auto md:max-w-lg">
                 <Text>{freeTrialSection.description}</Text>
-                <div className="mt-6 flex flex-wrap gap-2 items-center">
+                <div className="mt-6 flex flex-wrap items-center gap-2">
                   <Button asChild size="lg" variant="black" className="w-full md:w-auto">
                     <Link href={freeTrialSection.route}>
                       {freeTrialSection.demoLabel}
@@ -200,7 +207,7 @@ export const ProExamplesMarketing: FC<ProExamplesMarketingProps> = async ({
         </>
       ) : null}
 
-      <ContentGrid className="mt-20">
+      <ContentGrid className="mt-10 grid-cols-1 lg:grid-cols-3">
         {examples.map((example) => (
           <ContentGridItem key={example.id} route={example.route}>
             <ProjectPreview
@@ -215,15 +222,22 @@ export const ProExamplesMarketing: FC<ProExamplesMarketingProps> = async ({
         ))}
       </ContentGrid>
 
+      <Heading size="lg" className="text-center">
+        {library} <StarText /> Templates
+      </Heading>
+      <Text size="lg" className="mx-auto mt-4 max-w-2xl text-center">
+        Pro templates that you can use in your projects.
+      </Text>
+
       <Section className="lg:px-0">
-        <LayoutBreakout className="x:max-w-(--nextra-content-width) lg:ml-0 lg:mr-0 lg:right-0 lg:left-0 lg:w-full lg:px-0 !mt-0">
+        <LayoutBreakout className="x:max-w-(--nextra-content-width) !mt-0 lg:left-0 lg:right-0 lg:ml-0 lg:mr-0 lg:w-full lg:px-0">
           <Container
             variant="dark"
             className="max-lg:rounded-none"
             innerClassName="px-4 py-8 flex flex-wrap gap-4 relative w-full items-center shadow-none bg-none bg-gray-100/10 lg:px-20 lg:py-20"
           >
             <div className="max-md:w-full md:flex-1">
-              <Text className="text-gray-400 mb-4">Get Started</Text>
+              <Text className="mb-4 text-gray-400">Get Started</Text>
               <Heading size="md">Boost your apps with {library} Pro</Heading>
             </div>
             <div className="max-md:w-full md:flex-1">
@@ -231,12 +245,12 @@ export const ProExamplesMarketing: FC<ProExamplesMarketingProps> = async ({
                 Get full access to all pro examples with just one month with a Pro
                 subscription — from €129.
               </Text>
-              <div className="flex flex-wrap gap-2 mt-4">
+              <div className="mt-4 flex flex-wrap gap-2">
                 <Button
                   asChild
                   size="lg"
                   variant="secondary"
-                  className="text-foreground hover:bg-gray-100 w-full md:w-auto"
+                  className="text-foreground w-full hover:bg-gray-100 md:w-auto"
                 >
                   <Link href="/pro/sign-up">Try it out</Link>
                 </Button>
@@ -244,7 +258,7 @@ export const ProExamplesMarketing: FC<ProExamplesMarketingProps> = async ({
                   asChild
                   size="lg"
                   variant="black"
-                  className="bg-white/10 hover:bg-white/20 w-full md:w-auto"
+                  className="w-full bg-white/10 hover:bg-white/20 md:w-auto"
                 >
                   <Link href="/pro/subscribe">See subscription plans</Link>
                 </Button>
@@ -256,7 +270,7 @@ export const ProExamplesMarketing: FC<ProExamplesMarketingProps> = async ({
 
       <Section>
         <ListWrapper
-          className="max-w-lg mx-auto"
+          className="mx-auto max-w-lg"
           title="Are you a student, educator, or open source developer?"
           subtitle="Get all of these Pro examples for free"
         >
@@ -298,7 +312,7 @@ export const ProExamplesMarketing: FC<ProExamplesMarketingProps> = async ({
 function ListItem({ title, text }: { title: ReactNode; text: ReactNode }) {
   return (
     <div className="mb-4">
-      <Text className="font-bold mt-2">{title}</Text>
+      <Text className="mt-2 font-bold">{title}</Text>
       <Text variant="light">{text}</Text>
     </div>
   );
@@ -317,13 +331,13 @@ function GridItem({
 }) {
   return (
     <div>
-      <Icon className="text-foreground w-8 h-8" />
-      <div className="text-3xl font-bold mt-2 mb-4">{title}</div>
+      <Icon className="text-foreground h-8 w-8" />
+      <div className="mb-4 mt-2 text-3xl font-bold">{title}</div>
       <Text variant="light" className="text-md">
         {text}
       </Text>
 
-      <div className="flex items-center space-x-4 mt-8">
+      <div className="mt-8 flex items-center space-x-4">
         {links?.map((link) => (
           <Button
             key={link.route}
@@ -332,7 +346,7 @@ function GridItem({
             className="text-primary text-md"
           >
             <Link href={link.route} target={link.target}>
-              {link.linkName} <ArrowRightCircleIcon className="ml-1 w-4 h-4" />
+              {link.linkName} <ArrowRightCircleIcon className="ml-1 h-4 w-4" />
             </Link>
           </Button>
         ))}
@@ -343,28 +357,28 @@ function GridItem({
 
 function StarText() {
   return (
-    <span className="inline-flex relative text-transparent bg-clip-text bg-gradient-to-r from-primary to-[#FF99C7]">
+    <span className="from-primary relative inline-flex bg-gradient-to-r to-[#FF99C7] bg-clip-text text-transparent">
       <span>Pro</span>
       <Image
         src={IMG.star}
         alt="star"
         width={20}
         height={20}
-        className="absolute h-5 w-5 left-[40%] opacity-50"
+        className="absolute left-[40%] h-5 w-5 opacity-50"
       />
       <Image
         src={IMG.star}
         alt="star"
         width={16}
         height={16}
-        className="absolute h-4 w-4 -right-[10px] top-1/2 opacity-20"
+        className="absolute -right-[10px] top-1/2 h-4 w-4 opacity-20"
       />
       <Image
         src={IMG.star}
         alt="star"
         width={12}
         height={12}
-        className="absolute h-3 w-3 left-[16px] bottom-[6px] opacity-70"
+        className="absolute bottom-[6px] left-[16px] h-3 w-3 opacity-70"
       />
     </span>
   );
