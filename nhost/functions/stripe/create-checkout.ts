@@ -9,7 +9,7 @@ const websiteURL = process.env.WEBSITE_URL ?? 'https://reactflow.dev';
 
 const createStripeCheckoutSession = async (req: Request, res: Response) => {
   const userId = res.locals.userId;
-  const { plan, interval = 'month' } = req.body;
+  const { plan, interval = 'month', framework = 'react' } = req.body;
 
   if (!plan || !userId) {
     return res.status(405).send({ message: 'Bad request.' });
@@ -18,6 +18,7 @@ const createStripeCheckoutSession = async (req: Request, res: Response) => {
   const lineItem = await getLineItem({
     plan,
     interval,
+    framework,
   });
 
   if (!lineItem) {
