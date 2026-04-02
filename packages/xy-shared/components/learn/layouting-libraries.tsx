@@ -46,19 +46,14 @@ export function LayoutingLibrariesTable() {
   const mdxComponents = useMDXComponents();
 
   const Table = mdxComponents.table ?? 'table';
-  const Thead = mdxComponents.thead ?? 'thead';
-  const Tbody = mdxComponents.tbody ?? 'tbody';
   const Tr = mdxComponents.tr ?? 'tr';
   const Th = mdxComponents.th ?? 'th';
   const Td = mdxComponents.td ?? 'td';
   const A = mdxComponents.a ?? 'a';
-  const Img = mdxComponents.img ?? 'img';
-  const Anchor = mdxComponents.anchor ?? 'anchor';
-  const Link = mdxComponents.Link ?? 'a';
 
   return (
     <Table>
-      <Thead>
+      <thead>
         <Tr>
           <Th>Library</Th>
           <Th>Dynamic node sizes</Th>
@@ -66,8 +61,8 @@ export function LayoutingLibrariesTable() {
           <Th>Edge routing</Th>
           <Th>Bundle size</Th>
         </Tr>
-      </Thead>
-      <Tbody>
+      </thead>
+      <tbody>
         {LAYOUTING_LIBRARIES.map((library) => (
           <Tr key={library.name}>
             <Td>
@@ -86,7 +81,7 @@ export function LayoutingLibrariesTable() {
             </Td>
           </Tr>
         ))}
-      </Tbody>
+      </tbody>
     </Table>
   );
 }
