@@ -33,5 +33,10 @@
     "source": "/learn/layouting/layouting-libraries",
     "destination": "/learn/layouting/layouting",
     "permanent": true
+  },
+  {
+    "source": "/api-reference/components/mini-map",
+    "destination": "/api-reference/components/minimap",
+    "permanent": true
   }
 ]
