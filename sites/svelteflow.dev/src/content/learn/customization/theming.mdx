@@ -28,6 +28,7 @@ import '@xyflow/svelte/dist/style.css';
 ```
 
 <RemoteCodeViewer route="learn/theming-default" framework="svelte" editorHeight={500} />
+
 ## Base styles
 
 If you just want to load the very basic styles that are necessary for Svelte Flow to work,
@@ -44,6 +45,33 @@ import '@xyflow/svelte/dist/base.css';
 </Callout>
 
 <RemoteCodeViewer route="learn/theming-base" framework="svelte" editorHeight={500} />
+
+### Built in dark and light mode
+
+You can choose one of the built-in color modes by using the `colorMode` prop ('dark',
+'light' or 'system') as seen in the [dark mode example](/examples/styling/dark-mode).
+
+```svelte 
+import { SvelteFlow } from '@xyflow/svelte';
+
+<SvelteFlow colorMode="dark" nodes={[...]} edges={[...]} />
+```
+
+When you use the `colorMode` prop, Svelte Flow adds a class to the root element
+(`.svelte-flow`) that you can use to style your flow based on the color mode:
+
+```css
+.dark .svelte-flow__node {
+  background: #777;
+  color: white;
+}
+
+.light .svelte-flow__node {
+  background: white;
+  color: #111;
+}
+```
+
 ## Customization
 
 There are different ways how you can customize the appearance of Svelte Flow:
