@@ -49,7 +49,7 @@ const metaRecord = {
       },
       layouting: {
         items: {
-          'layouting-libraries': '',
+          layouting: 'Overview',
           'sub-flows': '',
         },
       },

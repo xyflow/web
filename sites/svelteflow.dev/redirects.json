@@ -28,5 +28,10 @@
     "source": "/learn/getting-started/:path*",
     "destination": "/learn/concepts/:path*",
     "permanent": true
+  },
+  {
+    "source": "/learn/layouting/layouting-libraries",
+    "destination": "/learn/layouting/layouting",
+    "permanent": true
   }
 ]
