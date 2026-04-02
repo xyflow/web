@@ -49,6 +49,8 @@ export type ProExamplesMarketingProps = {
   freeTrialSection?: FreeTrialSection;
 };
 
+const hasTemplates = framework === 'react';
+
 export const ProExamplesMarketing: FC<ProExamplesMarketingProps> = async ({
   freeTrialSection,
 }) => {
@@ -222,12 +224,39 @@ export const ProExamplesMarketing: FC<ProExamplesMarketingProps> = async ({
         ))}
       </ContentGrid>
 
-      <Heading size="lg" className="text-center">
-        {library} <StarText /> Templates
-      </Heading>
-      <Text size="lg" className="mx-auto mt-4 max-w-2xl text-center">
-        Pro templates that you can use in your projects.
-      </Text>
+      {hasTemplates && (
+        <>
+          <Heading size="lg" className="text-center">
+            {library} <StarText /> Templates
+          </Heading>
+          <Text size="lg" className="mx-auto mt-4 max-w-2xl text-center">
+            Pro templates that you can use in your projects.
+          </Text>
+
+          <ContentGrid className="mt-10 grid-cols-1 lg:grid-cols-3">
+            <ContentGridItem route="/ui/templates/workflow-editor">
+              <ProjectPreview
+                image="/img/pro/workflow-template.jpg"
+                imageDark="/img/pro/workflow-template-dark.jpg"
+                title="Workflow Editor Template"
+                description="A Next.js-based application designed to help you quickly create, manage, and visualize workflows."
+                linkLabel="Demo"
+                imageWrapperClassName="shadow-md bg-transparent border-none p-px rounded-xl pro-example-preview-thumb"
+              />
+            </ContentGridItem>
+            <ContentGridItem route="/ui/templates/ai-workflow-editor">
+              <ProjectPreview
+                image="/img/pro/ai-workflow-template.jpg"
+                imageDark="/img/pro/ai-workflow-template-dark.jpg"
+                title="AI Workflow Template"
+                description="The AI Workflow Editor template is a Next.js app for getting started quickly with an AI workflow app."
+                linkLabel="Demo"
+                imageWrapperClassName="shadow-md bg-transparent border-none p-px rounded-xl pro-example-preview-thumb"
+              />
+            </ContentGridItem>
+          </ContentGrid>
+        </>
+      )}
 
       <Section className="lg:px-0">
         <LayoutBreakout className="x:max-w-(--nextra-content-width) !mt-0 lg:left-0 lg:right-0 lg:ml-0 lg:mr-0 lg:w-full lg:px-0">
