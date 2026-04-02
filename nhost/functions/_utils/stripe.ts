@@ -3,7 +3,10 @@ import { getOrCreateCustomer } from './graphql/subscriptions';
 import { getIncludedSeats, getTeamMembers } from './graphql/team-subscriptions';
 import { redis } from './redis';
 
-type Prices = Record<string, Record<string, { id: string; pricing: Record<string, number> }>>;
+type Prices = Record<
+  string,
+  Record<string, { id: string; pricing: Record<string, number> }>
+>;
 
 export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY ?? '', {
   apiVersion: '2022-11-15',
@@ -18,17 +21,24 @@ export const getPricesFromStripeApi = async () => {
 
   const prices = data.reduce((res, curr) => {
     if (typeof curr.lookup_key === 'string' && curr.currency_options) {
-      const productId = curr.lookup_key.split('_')[0];
-      const intervalId = curr.lookup_key.split('_')[1];
+      const keySplit = curr.lookup_key.split('_');
+      const productId = keySplit[0];
+      const intervalId = keySplit[1];
+      const framework = keySplit[2] ?? 'react';
+
       const currencies = Object.keys(curr.currency_options) ?? [];
 
       res[productId] = res[productId] ?? {};
-      res[productId][intervalId] = res[productId][intervalId] ?? { id: curr.id, pricing: {} };
+      res[productId][intervalId] = res[productId][intervalId] ?? {};
+      res[productId][intervalId][framework] = res[productId][intervalId][framework] ?? {
+        id: curr.id,
+        pricing: {},
+      };
 
       currencies.forEach((currency) => {
         const currencyOptions = curr.currency_options?.[currency];
         // @ts-expect-error
-        res[productId][intervalId].pricing[currency] =
+        res[productId][intervalId][framework].pricing[currency] =
           currencyOptions?.unit_amount ?? currencyOptions?.unit_amount_decimal ?? 0;
       });
     }
@@ -52,11 +62,17 @@ type GetLineItemParams = {
   plan: string;
   quantity?: number;
   interval?: 'month' | 'year';
+  framework?: 'react' | 'svelte' | 'vue';
 };
 
-export const getLineItem = async ({ plan, quantity = 1, interval = 'month' }: GetLineItemParams) => {
+export const getLineItem = async ({
+  plan,
+  quantity = 1,
+  interval = 'month',
+  framework = 'react',
+}: GetLineItemParams) => {
   const prices = await getPrices();
-  const priceId = prices[plan]?.[`${interval}ly`].id;
+  const priceId = prices[plan]?.[`${interval}ly`]?.[framework]?.id;
 
   if (!priceId) {
     return null;
@@ -68,7 +84,13 @@ export const getLineItem = async ({ plan, quantity = 1, interval = 'month' }: Ge
   };
 };
 
-export async function createStripeCustomer({ email, userId }: { email?: string; userId: string }) {
+export async function createStripeCustomer({
+  email,
+  userId,
+}: {
+  email?: string;
+  userId: string;
+}) {
   const customer = await stripe.customers.create({
     email,
     metadata: {
@@ -104,14 +126,14 @@ export async function updateSeatQuantity(userId: string): Promise<boolean> {
     const products = await Promise.all(
       subscription.items?.data?.map(async (item: Stripe.SubscriptionItem) => {
         return await stripe.products.retrieve(item.price.product as string);
-      })
+      }),
     );
 
     const seatProduct = products?.find((product) => product.metadata.seats);
 
     if (seatProduct) {
       const seatSubscriptionItem = subscription.items?.data?.find(
-        (item: Stripe.SubscriptionItem) => item.price.product === seatProduct.id
+        (item: Stripe.SubscriptionItem) => item.price.product === seatProduct.id,
       );
 
       if (!seatSubscriptionItem) {
