@@ -19,9 +19,10 @@ type Row = {
 
 const rows: Row[] = [
   { suffix: '', description: 'The outermost container' },
-  { suffix: '__renderer', description: 'The inner container' },
-  { suffix: '__zoompane', description: 'Zoom & pan pane' },
-  { suffix: '__selectionpane', description: 'Selection pane' },
+  {
+    suffix: '__renderer',
+    description: 'The inner container for zooming and panning (renderer pane)',
+  },
   { suffix: '__selection', description: 'User selection' },
   { suffix: '__edges', description: 'The element containing all edges in the flow' },
   {
@@ -95,7 +96,6 @@ const rows: Row[] = [
   {
     suffix: '__node-group',
     description: `Added when [Node](/api-reference/types/node) type is \`"group"\``,
-    onlyIn: 'svelte',
   },
   {
     suffix: '__nodesselection',
@@ -126,23 +126,22 @@ const rows: Row[] = [
     description: `Applied when a handle's [Position](/api-reference/types/position) is set to \`"left"\``,
   },
   {
-    suffix: 'connectingfrom',
+    suffix: '__handle.connectingfrom',
     description: 'Added to a Handle when a connection is being drawn from this handle.',
   },
   {
-    suffix: 'connectingto',
+    suffix: '__handle.connectingto',
     description: 'Added to a Handle when a connection line is above this handle.',
   },
   {
-    suffix: 'valid',
+    suffix: '__handle.valid',
     description:
       'Added to a Handle when a connection line is above a handle **and** the connection is valid.',
   },
   {
-    suffix: 'connectionindicator',
+    suffix: '__handle.connectionindicator',
     description:
       'Applied when the handle can start or end a connection (connectable state).',
-    onlyIn: 'svelte',
   },
   {
     suffix: '__background',

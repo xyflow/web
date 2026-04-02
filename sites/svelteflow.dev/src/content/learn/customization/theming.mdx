@@ -29,6 +29,18 @@ import '@xyflow/svelte/dist/style.css';
 
 <RemoteCodeViewer route="learn/theming-default" framework="svelte" editorHeight={500} />
 
+You'll typically load these default styles by importing them in your `+layout.svelte`,
+`App.svelte`, or another entry point.
+
+Without dipping into [custom nodes](/learn/customization/custom-nodes) and
+[edges](/learn/customization/custom-edges), there are several ways you can style Svelte
+Flow's basic look:
+
+- Passing inline styles through `style` props
+- Overriding the built-in classes with custom CSS
+- Overriding the CSS variables Svelte Flow uses
+- Using scoped styles in your Svelte components for custom nodes and edges
+
 ## Base styles
 
 If you just want to load the very basic styles that are necessary for Svelte Flow to work,
@@ -46,26 +58,20 @@ import '@xyflow/svelte/dist/base.css';
 
 <RemoteCodeViewer route="learn/theming-base" framework="svelte" editorHeight={500} />
 
-
 ## Customization
-
-There are different ways how you can customize the appearance of Svelte Flow:
-
-- Use the built-in dark and light mode
-- Work with scoped CSS within your custom nodes and edges
-- Override the built-in classes with custom CSS
-- Override the CSS variables Svelte Flow uses
-- Pass inline styles through `style` props
 
 ### Built in dark and light mode
 
-You can choose one of the built-in color modes by using the `colorMode` prop ('dark',
-'light' or 'system') as seen in the [dark mode example](/examples/styling/dark-mode).
+You can choose one of the built-in color modes by using the `colorMode` prop (`'dark'`,
+`'light'`, or `'system'`) as seen in the [dark mode example](/examples/styling/dark-mode).
 
-```svelte 
-import { SvelteFlow } from '@xyflow/svelte';
+```svelte
+<script>
+  import { SvelteFlow } from '@xyflow/svelte';
+  import '@xyflow/svelte/dist/style.css';
+</script>
 
-<SvelteFlow colorMode="dark" nodes={[...]} edges={[...]} />
+<SvelteFlow colorMode="dark" nodes={[]} edges={[]} />
 ```
 
 When you use the `colorMode` prop, Svelte Flow adds a class to the root element
@@ -83,25 +89,32 @@ When you use the `colorMode` prop, Svelte Flow adds a class to the root element
 }
 ```
 
-### Working with built-in classes
+### Customizing with `style` props
 
-If you want to override the default styles, you can do so by overriding the built-in CSS
-classes. You can find a list of all the classes used by Svelte Flow below:
+The easiest way to start customizing the look and feel of your flows is to use the `style`
+prop on `SvelteFlow` and other components to inline your own CSS.
 
-<ThemingClassNames variant="svelte" />
+```svelte
+<script>
+  import { SvelteFlow } from '@xyflow/svelte';
+  import '@xyflow/svelte/dist/style.css';
 
-<Callout type="warning">
-  Be careful if you go poking around the source code looking for other classes to
-  override. Some classes are used internally and are required in order for the library to
-  be functional. If you replace them you may end up with unexpected bugs or errors!
-</Callout>
+  const styles = {
+    background: 'red',
+    width: '100%',
+    height: 300,
+  };
+</script>
 
+<SvelteFlow style={styles} nodes={[]} edges={[]} />
+```
 
 ### CSS variables
 
 If you don't want to replace the default styles entirely but just want to tweak the
 overall look and feel, you can override some of the CSS variables we use throughout the
-library.
+library. For an example of how to use these CSS variables, check out our
+[Feature Overview](/examples/overview) example.
 
 These variables are mostly self-explanatory. Below is a table of all the variables you
 might want to tweak and their default values for reference:
@@ -117,6 +130,37 @@ per-element basis. If you want to override a variable, you can do so by adding:
   --xy-node-background-color-default: #ff5050;
 }
 ```
+
+<Callout type="warning">
+  Be aware that these variables are defined under `.svelte-flow` and under `:root`.
+</Callout>
+
+### Overriding built-in classes
+
+Some consider heavy use of inline styles to be an anti-pattern. In that case, you can
+override the built-in classes that Svelte Flow uses with your own CSS. There are many
+classes attached to all sorts of elements in Svelte Flow, but the ones you'll likely want
+to override are listed below:
+
+<ThemingClassNames />
+
+<Callout type="warning">
+  Be careful if you go poking around the source code looking for other classes to
+  override. Some classes are used internally and are required in order for the library to
+  be functional. If you replace them you may end up with unexpected bugs or errors!
+</Callout>
+
+### Scoped styles for custom nodes and edges
+
+Custom nodes and edges are Svelte components. You can use
+[`scoped` styles](https://svelte.dev/docs/svelte/scoped-styles) (or global CSS with
+`@apply`) in those components to keep styling isolated from the rest of your app.
+
+## Third-party solutions
+
+You can choose to opt out of Svelte Flow's default styling altogether and use a
+third-party styling solution instead. If you want to do this, you must make sure you still
+import the base styles (`@xyflow/svelte/dist/base.css`).
 
 ### TailwindCSS
 
@@ -154,8 +198,9 @@ you'd like to style them. For example, you might want to use
 </div>
 ```
 
-<Callout type="info">
-  If you want to overwrite default styles, make sure to import Tailwinds entry last!
+<Callout type="warning">
+  If you want to overwrite default styles, make sure to import Tailwind's entry point after
+  Svelte Flow's base styles.
 </Callout>
 
 ```js
