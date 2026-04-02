@@ -38,6 +38,7 @@ export default function PricingTableComponent() {
     const response = await callNhostFunction('/stripe/create-checkout', {
       plan,
       interval,
+      framework: process.env.NEXT_PUBLIC_FRAMEWORK ?? 'react',
     });
 
     if (!response.error && response.url) {

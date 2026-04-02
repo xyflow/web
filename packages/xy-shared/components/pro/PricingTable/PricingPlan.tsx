@@ -27,6 +27,7 @@ export default function PricingPlan({
         plan,
         interval,
         currency,
+        framework: process.env.NEXT_PUBLIC_FRAMEWORK ?? 'react',
       });
 
       if (response.url) {
