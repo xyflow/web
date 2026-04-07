@@ -157,6 +157,20 @@ const rows: Row[] = [
   },
 ];
 
+const reactRows = rows
+  .filter((row) => row.onlyIn === undefined || row.onlyIn === 'react')
+  .map((row) => ({
+    ...row,
+    className: `.react-flow${row.suffix}`,
+  }));
+
+const svelteRows = rows
+  .filter((row) => row.onlyIn === undefined || row.onlyIn === 'svelte')
+  .map((row) => ({
+    ...row,
+    className: `.svelte-flow${row.suffix}`,
+  }));
+
 export function ThemingClassNames() {
   const { framework } = getFramework();
   const mdxComponents = useMDXComponents() as unknown as Record<
@@ -179,9 +193,7 @@ export function ThemingClassNames() {
     p: mdxComponents.p ?? 'p',
   } as React.ComponentProps<typeof Markdown>['components'];
 
-  const filtered = rows.filter(
-    (row) => row.onlyIn === undefined || row.onlyIn === framework,
-  );
+  const filtered = framework === 'react' ? reactRows : svelteRows;
 
   return (
     <Div className="nextra-scrollbar overflow-x-auto">
@@ -194,11 +206,10 @@ export function ThemingClassNames() {
         </Thead>
         <Tbody>
           {filtered.map((row) => {
-            const className = `.${framework}-flow${row.suffix}`;
             return (
-              <Tr key={className}>
+              <Tr key={row.className}>
                 <Td>
-                  <Code>{className}</Code>
+                  <Code>{row.className}</Code>
                 </Td>
                 <Td>
                   <Markdown remarkPlugins={[remarkGfm]} components={markdownComponents}>
