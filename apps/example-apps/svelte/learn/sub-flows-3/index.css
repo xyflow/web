@@ -1,5 +1,3 @@
-@import './xy-theme.css';
-
 html,
 body {
   margin: 0;
@@ -11,8 +9,4 @@ body,
 #app {
   width: 100%;
   height: 100%;
-}
-
-.svelte-flow {
-  --xy-background-color: #f7f9fb;
 }

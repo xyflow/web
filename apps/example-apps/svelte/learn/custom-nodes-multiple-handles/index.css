@@ -9,10 +9,6 @@ body {
   height: 100vh;
 }
 
-.svelte-flow {
-  --xy-background-color: #f7f9fb;
-}
-
 .text-updater-node {
   height: 40px;
   border: 1px solid #eee;

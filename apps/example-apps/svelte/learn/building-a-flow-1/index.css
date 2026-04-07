@@ -1,11 +1,5 @@
-@import './xy-theme.css';
-
 html,
 body {
   margin: 0;
   font-family: sans-serif;
-}
-
-.svelte-flow {
-  --xy-background-color: #f7f9fb;
 }
