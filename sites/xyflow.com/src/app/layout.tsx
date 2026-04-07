@@ -85,7 +85,7 @@ const RootLayout: FC<{
               }
               logoLink={false}
             >
-              <Button asChild>
+              <Button asChild className="text-background">
                 <Link className="shrink-0" href="/contact">
                   Contact Us
                 </Link>

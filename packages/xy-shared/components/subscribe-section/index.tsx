@@ -22,10 +22,10 @@ function SubscribeSection({
         Get Pro examples, prioritized bug reports, 1:1 support from the maintainers, and
         more with {library} Pro
       </Heading>
-
-      <div className="flex justify-center space-x-8">
+      {/* using fallback + text-[hsl(var(--primary))]! allows us to fix issues with xyflow.dev by simply adding fallback as a class to the parent element*/}
+      <div className="flex justify-center space-x-8 fallback">
         <Button size="lg" asChild variant="pro">
-          <Link href={btnLink} className="flex items-center">
+          <Link href={btnLink} className="flex items-center text-[hsl(var(--primary))]!">
             <SparklesIcon className="w-5 h-5 mr-1" />
             {btnLabel || `${library} Pro`}
           </Link>

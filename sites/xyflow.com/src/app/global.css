@@ -21,4 +21,12 @@
     --accent: var(--color-react);
     --secondary-foreground: 0 0% 0%;
   }
+
+  .dark {
+    --primary: 0 0% 100%;
+  }
+
+  .fallback {
+    --primary: var(--color-react);
+  }
 }
