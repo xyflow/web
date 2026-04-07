@@ -27,11 +27,11 @@ import {
 import type { MdxFile } from 'nextra';
 import { getExamplesPageMap } from '../../../server/example-utils';
 import { getFramework } from '../../../lib/get-framework';
+import { ThemeAwareImage } from '../../theme-aware-image';
 
 /** Served from each site's public folder at /img/pro/... */
 const IMG = {
   star: '/img/pro/star.svg',
-  hero: '/img/pro/pro-examples.png',
   helperLines: '/img/pro/helper-lines-pro-example.jpg',
 } as const;
 
@@ -126,13 +126,14 @@ export const ProExamplesMarketing: FC<ProExamplesMarketingProps> = async ({
         }
         backgroundVariant="image"
       >
-        <Image
-          src={IMG.hero}
+        <ThemeAwareImage
+          lightSrc={'/img/pro/pro-examples.png'}
+          darkSrc={'/img/pro/pro-examples-dark.png'}
           alt="Overview of the pro example apps"
           width={640}
           height={460}
-          className="hidden lg:block"
-          priority
+          preload
+          className="max-lg:hidden"
           style={{ objectFit: 'contain' }}
         />
       </Hero>
