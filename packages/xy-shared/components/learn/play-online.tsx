@@ -1,13 +1,12 @@
 import { Cards } from 'nextra/components';
 import { useMDXComponents } from 'nextra-theme-docs';
+import { getFramework } from '../../lib/get-framework';
 
-type PlayOnlineProps = {
-  frameworkName: string;
-  jsHref: string;
-  tsHref: string;
-};
+export default function PlayOnline() {
+  const { framework, library } = getFramework();
+  const jsHref = `https://new.${framework}flow.dev/js`;
+  const tsHref = `https://new.${framework}flow.dev/ts`;
 
-export default function PlayOnline({ frameworkName, jsHref, tsHref }: PlayOnlineProps) {
   const mdxComponents = useMDXComponents();
 
   const H2 = mdxComponents.h2 ?? 'h2';
@@ -18,8 +17,8 @@ export default function PlayOnline({ frameworkName, jsHref, tsHref }: PlayOnline
     <div>
       <H2>Play online</H2>
       <P>
-        You can try {frameworkName} without setting anything up locally by checking out
-        the starter projects we have on{' '}
+        You can try {library} without setting anything up locally by checking out the
+        starter projects we have on{' '}
         <A href="https://codesandbox.io" target="_blank" rel="noopener noreferrer">
           CodeSandbox
         </A>
@@ -30,7 +29,7 @@ export default function PlayOnline({ frameworkName, jsHref, tsHref }: PlayOnline
           title={`${jsHref.replace('https://', '')}`}
           href={jsHref}
           icon={
-            <div className="rounded-full w-10 h-10 bg-yellow-200 text-gray-700 font-black flex items-center justify-center">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-yellow-200 font-black text-gray-700">
               JS
             </div>
           }
@@ -39,7 +38,7 @@ export default function PlayOnline({ frameworkName, jsHref, tsHref }: PlayOnline
           title={`${tsHref.replace('https://', '')}`}
           href={tsHref}
           icon={
-            <div className="rounded-full w-10 h-10 bg-blue-500 text-white font-black flex items-center justify-center">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-500 font-black text-white">
               TS
             </div>
           }
