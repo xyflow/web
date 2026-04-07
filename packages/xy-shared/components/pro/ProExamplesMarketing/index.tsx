@@ -127,8 +127,8 @@ export const ProExamplesMarketing: FC<ProExamplesMarketingProps> = async ({
         backgroundVariant="image"
       >
         <ThemeAwareImage
-          lightSrc={'/img/pro/pro-examples.png'}
-          darkSrc={'/img/pro/pro-examples-dark.png'}
+          lightSrc={'/img/pro/pro-examples-light-new.png'}
+          darkSrc={'/img/pro/pro-examples-dark-new.png'}
           alt="Overview of the pro example apps"
           width={640}
           height={460}
