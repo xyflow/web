@@ -33,7 +33,7 @@
 <SvelteFlow bind:nodes bind:edges fitView colorMode="system">
   <Background {variant} />
   <Panel position="top-left">
-    <div>variant:</div>
+    <div style:color="var(--xy-node-color-default)">variant:</div>
     <button
       onclick={() => {
         variant = BackgroundVariant.Dots;
