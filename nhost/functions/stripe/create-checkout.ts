@@ -47,7 +47,7 @@ const createStripeCheckoutSession = async (req: Request, res: Response) => {
     },
     allow_promotion_codes: true,
     billing_address_collection: 'required',
-    success_url: `${origin}?payment_success=true&session_id={CHECKOUT_SESSION_ID}`,
+    success_url: `${origin}?payment_success=true`,
     cancel_url: `${origin}/subscribe?payment_cancelled=true`,
   });
 

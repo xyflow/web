@@ -12,8 +12,7 @@ import {
 } from 'react';
 import { SubscriptionPlan } from '../../../types';
 import { getSubscription } from '../../../server-actions/get-subscription';
-import { usePathname } from 'next/navigation';
-import { usePrevious } from '../../../hooks/use-previous';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { normalizeSubscription } from '../../../lib/pro-utils';
 import { mergeMetaWithPageMap } from 'nextra/merge-meta-with-page-map';
 import { Layout as NextraLayout } from 'nextra-theme-docs';
@@ -36,21 +35,56 @@ export const SubscriptionProvider: FC<ComponentProps<typeof NextraLayout>> = ({
     teamPlan: SubscriptionPlan.FREE,
   });
 
-  const refetchUser = useCallback(async () => {
-    setSubscription(await getSubscription());
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
+  const refetchUser = useCallback(() => {
+    startTransition(async () => {
+      const subscription = await getSubscription();
+      setSubscription(subscription);
+    });
   }, []);
 
-  const pathname = usePathname();
-  const prevPathname = usePrevious(pathname);
-
-  // Workaround to refetch a user after calling Next.js redirect
-  const shouldRefetch =
-    pathname === '/pro/dashboard' &&
-    (prevPathname === '/pro/sign-in' || prevPathname === '/pro/sign-up');
-
   useEffect(() => {
-    startTransition(refetchUser);
-  }, [refetchUser, shouldRefetch]);
+    let cancelled = false;
+
+    const fetchSubscription = async () => {
+      try {
+        let subscription = await getSubscription();
+
+        // When the user is redirected back from Stripe, the payment_success parameter is set.
+        // We need to poll the subscription until it's not free anymore.
+        if (searchParams.get('payment_success') === 'true') {
+          for (
+            let i = 0;
+            i < 120 && !cancelled && subscription.plan === SubscriptionPlan.FREE;
+            i++
+          ) {
+            await new Promise((r) => setTimeout(r, 1000));
+            subscription = await getSubscription();
+          }
+
+          if (cancelled) return;
+
+          const params = new URLSearchParams(searchParams.toString());
+          params.delete('payment_success');
+          const qs = params.toString();
+          router.replace(qs ? `${pathname}?${qs}` : pathname);
+        }
+
+        if (!cancelled) setSubscription(subscription);
+      } catch (error) {
+        if (!cancelled) console.error('Failed to fetch subscription:', error);
+      }
+    };
+
+    startTransition(fetchSubscription);
+
+    return () => {
+      cancelled = true;
+    };
+  }, [searchParams, pathname, router]);
 
   const ctx = useMemo(() => normalizeSubscription({ plan, teamPlan }), [plan, teamPlan]);
 
