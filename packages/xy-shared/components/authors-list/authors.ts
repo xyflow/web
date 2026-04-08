@@ -72,4 +72,3 @@ export default {
     image: '/img/alessandro.jpg',
   },
 };
-

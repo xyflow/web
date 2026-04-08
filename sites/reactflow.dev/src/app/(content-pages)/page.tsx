@@ -119,15 +119,15 @@ const Page: FC = async () => {
         subtitle="A customizable React component for building node-based editors and interactive diagrams"
         action={
           <div className="flex">
-            <Button size="lg" asChild className="mr-3 ">
+            <Button size="lg" asChild className="mr-3">
               <Link href="/learn">
-                <BoltIcon className="w-5 h-5 mr-1" />
+                <BoltIcon className="mr-1 h-5 w-5" />
                 Quickstart
               </Link>
             </Button>
             <Button size="lg" variant="pro" asChild>
               <Link href="/pro">
-                <SparklesIcon className="w-5 h-5 mr-1" /> React Flow Pro
+                <SparklesIcon className="mr-1 h-5 w-5" /> React Flow Pro
               </Link>
             </Button>
           </div>
@@ -148,7 +148,7 @@ const Page: FC = async () => {
           link="/pro"
           linkLabel={
             <>
-              <SparklesIcon className="w-5 h-5 mr-1" /> React Flow Pro
+              <SparklesIcon className="mr-1 h-5 w-5" /> React Flow Pro
             </>
           }
         />
@@ -180,7 +180,7 @@ const Page: FC = async () => {
       <Section className="relative">
         <WhatsNewPreview items={whatsNew} variant="compact" />
 
-        <div className="lg:hidden h-[50%] w-full bg-gradient-to-b from-transparent via-white/70 to-white absolute bottom-0 pointer-events-none" />
+        <div className="pointer-events-none absolute bottom-0 h-[50%] w-full bg-gradient-to-b from-transparent via-white/70 to-white lg:hidden" />
       </Section>
 
       <AboutSection />

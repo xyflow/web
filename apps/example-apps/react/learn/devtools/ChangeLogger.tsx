@@ -28,9 +28,7 @@ function ChangeInfo({ change }: ChangeInfoProps) {
           ? `dimensions: ${change.dimensions?.width} × ${change.dimensions?.height}`
           : null}
         {type === 'position'
-          ? `position: ${change.position?.x.toFixed(
-              1,
-            )}, ${change.position?.y.toFixed(1)}`
+          ? `position: ${change.position?.x.toFixed(1)}, ${change.position?.y.toFixed(1)}`
           : null}
         {type === 'remove' ? 'remove' : null}
         {type === 'select' ? (change.selected ? 'select' : 'unselect') : null}
@@ -68,9 +66,7 @@ export default function ChangeLogger({ limit = 20 }: ChangeLoggerProps) {
       {changes.length === 0 ? (
         <>no changes triggered</>
       ) : (
-        changes.map((change, index) => (
-          <ChangeInfo key={index} change={change} />
-        ))
+        changes.map((change, index) => <ChangeInfo key={index} change={change} />)
       )}
     </div>
   );

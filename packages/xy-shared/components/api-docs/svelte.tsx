@@ -94,4 +94,3 @@ export default WithGroupedProps`
   const definition = await generateDefinition({ code, ...props });
   return <TSDoc definition={definition} {...defaultTSDocProps} />;
 };
-

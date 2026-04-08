@@ -34,7 +34,7 @@ const TabButton = (props: TabButtonProps) => {
   return (
     <Button variant="ghost" {...props} className={className}>
       <div className="mr-2">
-        {props.disabled ? <LockClosedIcon className="w-4 h-4 stroke-2" /> : props.icon}
+        {props.disabled ? <LockClosedIcon className="h-4 w-4 stroke-2" /> : props.icon}
       </div>
       {props.children}
     </Button>
@@ -47,7 +47,7 @@ const TabContent = (props: {
   children: React.ReactNode;
 }) => {
   const children = props.loading ? (
-    <div className="flex items-center justify-center h-[300px]">
+    <div className="flex h-[300px] items-center justify-center">
       <Loader />
     </div>
   ) : (
@@ -78,19 +78,19 @@ export default function ProExampleViewerTabs({
   return (
     <>
       <Tabs defaultValue="preview">
-        <TabsList className="flex gap-x-0 mb-4 border-b border-border">
+        <TabsList className="border-border mb-4 flex gap-x-0 border-b">
           <TabsTrigger asChild value="preview">
-            <TabButton icon={<ComputerDesktopIcon className="w-4 h-4 stroke-2" />}>
+            <TabButton icon={<ComputerDesktopIcon className="h-4 w-4 stroke-2" />}>
               Preview
             </TabButton>
           </TabsTrigger>
           <TabsTrigger asChild value="editor" disabled={!isUnlocked}>
-            <TabButton icon={<CodeBracketIcon className="w-4 h-4 stroke-2" />}>
+            <TabButton icon={<CodeBracketIcon className="h-4 w-4 stroke-2" />}>
               Code
             </TabButton>
           </TabsTrigger>
           <TabsTrigger asChild value="readme" disabled={!isUnlocked}>
-            <TabButton icon={<BookOpenIcon className="w-4 h-4 stroke-2" />}>
+            <TabButton icon={<BookOpenIcon className="h-4 w-4 stroke-2" />}>
               Readme
             </TabButton>
           </TabsTrigger>

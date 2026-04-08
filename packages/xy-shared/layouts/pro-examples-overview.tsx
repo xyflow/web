@@ -53,7 +53,7 @@ export async function ProExamplesOverview({ meta }: ProExamplesProps) {
             <Heading className="mt-20" size="sm" id={category.name}>
               {category.title}
             </Heading>
-            <ContentGrid className="lg:grid-cols-2 border-none gap-4 lg:gap-8">
+            <ContentGrid className="gap-4 border-none lg:grid-cols-2 lg:gap-8">
               {category.children
                 .filter(
                   (example) =>
@@ -68,7 +68,7 @@ export async function ProExamplesOverview({ meta }: ProExamplesProps) {
                       <ContentGridItem
                         key={example.route}
                         route={example.route}
-                        className="border-none hover:bg-transparent py-6 lg:py-8 lg:px-0 group"
+                        className="group border-none py-6 hover:bg-transparent lg:px-0 lg:py-8"
                       >
                         <ProjectPreview
                           image={getThumbnailSrc(example.name, 'light')}

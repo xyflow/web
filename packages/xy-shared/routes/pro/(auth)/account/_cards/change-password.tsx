@@ -43,7 +43,7 @@ function ChangePasswordCard() {
         {error && <CardDescription className="text-red-500">{error}</CardDescription>}
       </CardHeader>
       <CardFooter className="bg-muted">
-        <form onSubmit={handleSubmit} className="flex space-x-2 justify-between w-full">
+        <form onSubmit={handleSubmit} className="flex w-full justify-between space-x-2">
           <div className="flex-1">
             <InputLabel htmlFor="password">New Password</InputLabel>
             <Input
@@ -56,7 +56,7 @@ function ChangePasswordCard() {
               placeholder="Enter password..."
             />
           </div>
-          <Button disabled={isLoading} className="shrink-0 ml-auto mt-auto" type="submit">
+          <Button disabled={isLoading} className="ml-auto mt-auto shrink-0" type="submit">
             {isLoading ? 'Please wait...' : 'Change Password'}
           </Button>
         </form>

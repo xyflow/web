@@ -11,7 +11,7 @@ export const AnnotationNodeDemo = memo(() => {
   return (
     <BaseNode className="text-secondary-foreground border-none bg-transparent text-sm hover:ring-0">
       {/* Annotation Node Number */}
-      <div className="absolute top-3 -left-1 text-xs leading-snug">1.</div>
+      <div className="absolute -left-1 top-3 text-xs leading-snug">1.</div>
       <BaseNodeContent className="pb-0 leading-snug">
         Annotate your flows any way you&apos;d like.
       </BaseNodeContent>

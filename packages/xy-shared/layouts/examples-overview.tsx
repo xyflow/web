@@ -11,7 +11,10 @@ import { Heading } from '../components/ui/heading';
 import { Link } from '../components/ui/link';
 import { Section } from '../components/ui/section';
 import { Text } from '../components/ui/text';
-import { withExamplesImageVersion, withProExamplesImageVersion } from '../lib/cached-image-version';
+import {
+  withExamplesImageVersion,
+  withProExamplesImageVersion,
+} from '../lib/cached-image-version';
 import { getFramework } from '../lib/get-framework';
 import { getExamplesPageMap } from '../server/example-utils';
 import clsx from 'clsx';
@@ -83,10 +86,10 @@ async function ExamplesOverviewLayout() {
       <Section className="px-0!">
         <Link
           href="/examples/overview"
-          className="hover:no-underline group"
+          className="group hover:no-underline"
           prefetch={false}
         >
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
             <Container className="col-span-2 aspect-video border-none">
               <ThemeAwareImage
                 lightSrc={withExamplesImageVersion(
@@ -100,23 +103,23 @@ async function ExamplesOverviewLayout() {
                 alt="Feature Overview Example Preview"
                 preload
                 style={{ objectFit: 'contain' }}
-                className="group-hover:scale-[1.05] transition-transform"
+                className="transition-transform group-hover:scale-[1.05]"
               />
             </Container>
-            <div className="mt-auto mb-auto">
-              <Heading className="mt-2 mb-4" size="sm">
+            <div className="mb-auto mt-auto">
+              <Heading className="mb-4 mt-2" size="sm">
                 Feature Overview
               </Heading>
               <Text variant="light">{getFeatureOverviewDescription(library)}</Text>
-              <div className="mt-6 flex flex-wrap gap-2 items-center group-hover:text-primary">
+              <div className="group-hover:text-primary mt-6 flex flex-wrap items-center gap-2">
                 <Button
                   asChild
                   size="lg"
                   variant="link"
-                  className="w-full md:w-auto text-black font-medium "
+                  className="w-full font-medium text-black md:w-auto"
                 >
                   <>
-                    See example <ArrowRightCircleIcon className="w-4 h-4" />
+                    See example <ArrowRightCircleIcon className="h-4 w-4" />
                   </>
                 </Button>
               </div>
@@ -136,7 +139,7 @@ async function ExamplesOverviewLayout() {
             <Heading className="mt-20" size="sm" id={category.name}>
               {category.title}
             </Heading>
-            <ContentGrid className="lg:grid-cols-3 border-none gap-4 lg:gap-8">
+            <ContentGrid className="gap-4 border-none lg:grid-cols-3 lg:gap-8">
               {category.children
                 .filter(
                   (example) => !('frontMatter' in example && example.frontMatter?.hidden),
@@ -148,7 +151,7 @@ async function ExamplesOverviewLayout() {
                       <ContentGridItem
                         key={example.route}
                         route={example.route}
-                        className="border-none hover:bg-transparent py-6 lg:py-8 lg:px-0 group"
+                        className="group border-none py-6 hover:bg-transparent lg:px-0 lg:py-8"
                       >
                         <ProjectPreview
                           image={getExampleImage(
@@ -170,7 +173,7 @@ async function ExamplesOverviewLayout() {
                             <div className="flex items-center">
                               {example.frontMatter.title}
                               {example.frontMatter.is_pro_example ? (
-                                <span className="bg-primary text-white ml-2 px-2 text-sm rounded-lg">
+                                <span className="bg-primary ml-2 rounded-lg px-2 text-sm text-white">
                                   Pro
                                 </span>
                               ) : null}

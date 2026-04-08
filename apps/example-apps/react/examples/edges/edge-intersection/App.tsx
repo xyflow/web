@@ -70,9 +70,7 @@ export default function App() {
 
   const onNodeDrag: OnNodeDrag = useCallback(
     (e, node) => {
-      const nodeDiv = document.querySelector(
-        `.react-flow__node[data-id=${node.id}]`,
-      );
+      const nodeDiv = document.querySelector(`.react-flow__node[data-id=${node.id}]`);
 
       if (!nodeDiv) return;
 

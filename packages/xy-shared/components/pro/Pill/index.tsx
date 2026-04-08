@@ -9,7 +9,7 @@ export default function Pill({ children, className }: PillProps) {
   return (
     <div
       className={cn(
-        'bg-blue-50 text-blue-700 border-blue-500 border text-[15px] tracking-normal rounded-full px-1.5 py-0.5',
+        'rounded-full border border-blue-500 bg-blue-50 px-1.5 py-0.5 text-[15px] tracking-normal text-blue-700',
         className,
       )}
     >

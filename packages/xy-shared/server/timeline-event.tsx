@@ -20,14 +20,14 @@ export async function TimelineEvent({ frontmatter, route }: TimelineEventProps) 
   const pathSegments = route.split('/').slice(1);
   const { default: MDXContent } = await importPage(pathSegments);
   return (
-    <div className="flex-col lg:flex-row flex gap-4">
-      <div className="space-y-2 lg:border-r border-border mt-4">
+    <div className="flex flex-col gap-4 lg:flex-row">
+      <div className="border-border mt-4 space-y-2 lg:border-r">
         <AuthorList
           authors={frontmatter.authors}
           className="w-52 flex-shrink-0 self-start"
           noLink
         />
-        <div className="ml-12 text-sm text-light" title={frontmatter.date}>
+        <div className="text-light ml-12 text-sm" title={frontmatter.date}>
           <TimeAgo datetime={frontmatter.date} />
         </div>
       </div>
@@ -36,7 +36,7 @@ export async function TimelineEvent({ frontmatter, route }: TimelineEventProps) 
           {frontmatter.title}
         </Heading>
         <MDXContent />
-        <Text size="sm" variant="primary" className="text-right mt-4">
+        <Text size="sm" variant="primary" className="mt-4 text-right">
           <Link href={route}>Permalink</Link>
         </Text>
       </div>

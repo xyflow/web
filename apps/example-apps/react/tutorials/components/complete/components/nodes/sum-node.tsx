@@ -78,7 +78,7 @@ export function SumNode({ id }: NodeProps<SumNode>) {
         <LabeledHandle title="x" id="x" type="target" position={Position.Left} />
         <LabeledHandle title="y" id="y" type="target" position={Position.Left} />
       </BaseNodeContent>
-      <BaseNodeFooter className="bg-card items-end px-0 py-1 w-full rounded-b-md">
+      <BaseNodeFooter className="bg-card w-full items-end rounded-b-md px-0 py-1">
         <LabeledHandle title="out" type="source" position={Position.Right} />
       </BaseNodeFooter>
     </BaseNode>

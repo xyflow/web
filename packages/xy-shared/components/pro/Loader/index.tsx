@@ -6,7 +6,7 @@ export default function Loader() {
     <div role="status">
       <svg
         aria-hidden="true"
-        className="w-8 h-8 mr-2 text-gray-200 animate-spin fill-react"
+        className="fill-react mr-2 h-8 w-8 animate-spin text-gray-200"
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -44,7 +44,7 @@ export function LogoLoader({
 
 export function PageLoader() {
   return (
-    <div className="h-[400px] flex items-center justify-center">
+    <div className="flex h-[400px] items-center justify-center">
       <Loader />
     </div>
   );

@@ -7,11 +7,11 @@ type NodeWrapperProps = {
 
 export default function NodeWrapper({ label, children }: NodeWrapperProps) {
   return (
-    <div className="flex flex-col border border-solid border-border h-full rounded-2xl bg-background/70 shadow-[0_7px_9px_0_rgba(0,0,0,0.02)]">
-      <div className="text-xs px-3 py-2 border-b border-solid border-border font-mono font-semibold rounded-t-2xl">
+    <div className="border-border bg-background/70 flex h-full flex-col rounded-2xl border border-solid shadow-[0_7px_9px_0_rgba(0,0,0,0.02)]">
+      <div className="border-border rounded-t-2xl border-b border-solid px-3 py-2 font-mono text-xs font-semibold">
         {label}
       </div>
-      <div className="relative bg-background p-3 flex rounded-b-2xl">{children}</div>
+      <div className="bg-background relative flex rounded-b-2xl p-3">{children}</div>
     </div>
   );
 }

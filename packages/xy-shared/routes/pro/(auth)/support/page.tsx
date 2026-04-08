@@ -4,7 +4,7 @@ import { SubscriptionPlan } from '../../../../types';
 import { Link } from '../../../../components/ui/link';
 import { getFramework } from '../../../../lib/get-framework';
 
-export default function SupportPage () {
+export default function SupportPage() {
   const { library } = getFramework();
   return (
     <div>
@@ -13,10 +13,10 @@ export default function SupportPage () {
         description="The xyflow team is based in Europe and offers individual support for subscribers to the Professional and Enterprise plans. You can expect a response from us within 48 hours during working days."
       />
       <div className="max-w-2xl">
-        <div className="text-xl font-black mb-2">
+        <div className="mb-2 text-xl font-black">
           How to quickly get support for your problem
         </div>
-        <ul className="list-disc text-light mb-8 leading-7 pl-4">
+        <ul className="text-light mb-8 list-disc pl-4 leading-7">
           <li>
             The best way to contact us is via email. If you’re a Professional or
             Enterprise subscriber, click the link below to use that email address.
@@ -51,8 +51,8 @@ export default function SupportPage () {
           </li>
         </ul>
       </div>
-      <div className="flex-1 space-y-7 mt-6">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-5 lg:gap-6">
+      <div className="mt-6 flex-1 space-y-7">
+        <div className="grid grid-cols-1 gap-4 md:gap-5 lg:grid-cols-3 lg:gap-6">
           <SubscriptionFeature
             title="Support Email"
             description="The Professional and Enterprise plans include one hour of 1:1 support per month"
@@ -91,4 +91,4 @@ export default function SupportPage () {
       </div>
     </div>
   );
-};
+}

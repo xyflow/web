@@ -14,7 +14,7 @@ function Logo({ className }: LogoProps) {
   const ref = useRef<SVGSVGElement>(null);
 
   return (
-    <div className={cn('w-8 h-8 text-primary', className)}>
+    <div className={cn('text-primary h-8 w-8', className)}>
       <svg
         width="100%"
         height="100%"
@@ -113,11 +113,11 @@ type LogoLabelProps = {
 
 function LogoLabel({ labelClassName, logoClassName, label = null }: LogoLabelProps) {
   return (
-    <Link href="/" className="flex space-x-2 items-center x:focus-visible:nextra-focus">
-      <Logo className={cn('h-7 w-7 md:h-8 md:w-8 shrink-0', logoClassName)} />
+    <Link href="/" className="x:focus-visible:nextra-focus flex items-center space-x-2">
+      <Logo className={cn('h-7 w-7 shrink-0 md:h-8 md:w-8', logoClassName)} />
       <Text
         className={cn(
-          'font-black max-md:text-lg text-xl leading-none shrink-0',
+          'shrink-0 text-xl font-black leading-none max-md:text-lg',
           labelClassName,
         )}
       >

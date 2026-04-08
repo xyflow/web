@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  ReactFlow,
-  useNodesState,
-  useEdgesState,
-  Background,
-} from '@xyflow/react';
+import { ReactFlow, useNodesState, useEdgesState, Background } from '@xyflow/react';
 
 import '@xyflow/react/dist/style.css';
 

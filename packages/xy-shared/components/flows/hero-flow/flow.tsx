@@ -165,7 +165,7 @@ function Flow({ className, initialColor }: FlowProps) {
   }, [viewportWidth, nodesInitialized, adjustViewport]);
 
   return (
-    <div className="w-full h-full bg-gradient bg-no-repeat bg-[center_120px] lg:bg-[65%_center] lg:bg-[length:35%]">
+    <div className="bg-gradient h-full w-full bg-[center_120px] bg-no-repeat lg:bg-[length:35%] lg:bg-[65%_center]">
       <ReactFlow
         preventScrolling={false}
         zoomOnScroll={false}

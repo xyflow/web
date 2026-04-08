@@ -1,11 +1,6 @@
 import { type Edge, type Node } from '@xyflow/react';
 
-import {
-  SLIDE_WIDTH,
-  SLIDE_HEIGHT,
-  SLIDE_PADDING,
-  type SlideData,
-} from './Slide';
+import { SLIDE_WIDTH, SLIDE_HEIGHT, SLIDE_PADDING, type SlideData } from './Slide';
 
 const slide01 = {
   id: '01',
@@ -67,10 +62,7 @@ export const slides = Object.fromEntries(
   [slide01, slide02, slide03, slide04].map(({ id, data }) => [id, data]),
 ) as Record<string, SlideData>;
 
-export const slidesToElements = (
-  initial: string,
-  slides: Record<string, SlideData>,
-) => {
+export const slidesToElements = (initial: string, slides: Record<string, SlideData>) => {
   const stack = [{ id: initial, position: { x: 0, y: 0 } }];
   const visited = new Set();
   const nodes: Node<SlideData>[] = [];

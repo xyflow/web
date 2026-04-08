@@ -40,7 +40,7 @@ export function Hero({
     <div ref={ref}>
       {backgroundVariant === 'gradient' && (
         <div
-          className="absolute -mt-16 opacity-10 dark:opacity-20 w-[100vw] h-[70vw] left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+          className="pointer-events-none absolute left-1/2 -mt-16 h-[70vw] w-[100vw] -translate-x-1/2 -translate-y-1/2 opacity-10 dark:opacity-20"
           style={{
             background: `radial-gradient(hsl(var(--accent) / 1) 0%, hsl(var(--accent) / 0.5) 25%, hsl(var(--background)) 60%)`,
           }}
@@ -49,7 +49,7 @@ export function Hero({
 
       {backgroundVariant === 'image' && (
         <div className="relative">
-          <div className="absolute w-full h-[50vw] bg-gradient bg-no-repeat bg-contain lg:bg-[length:50%] bg-[90%_top] pointer-events-none" />
+          <div className="bg-gradient pointer-events-none absolute h-[50vw] w-full bg-contain bg-[90%_top] bg-no-repeat lg:bg-[length:50%]" />
         </div>
       )}
 
@@ -57,7 +57,7 @@ export function Hero({
         className={cn(
           'relative z-10',
           !isCenter && 'grid lg:grid-cols-2 lg:gap-40',
-          isCenter && 'max-w-3xl mx-auto',
+          isCenter && 'mx-auto max-w-3xl',
           isXL && 'max-w-6xl',
           className,
         )}
@@ -66,7 +66,7 @@ export function Hero({
           {kicker && (
             <h3
               className={cn(
-                'text-sm font-bold mb-6 flex items-center uppercase tracking-wider text-primary',
+                'text-primary mb-6 flex items-center text-sm font-bold uppercase tracking-wider',
                 isCenter && 'justify-center',
               )}
             >
@@ -85,7 +85,7 @@ export function Hero({
           {subtitle && (
             <Text
               size="lg"
-              className={cn('leading-7 mb-4 lg:mb-6 max-w-3xl', isCenter && 'mx-auto')}
+              className={cn('mb-4 max-w-3xl leading-7 lg:mb-6', isCenter && 'mx-auto')}
             >
               {subtitle}
             </Text>

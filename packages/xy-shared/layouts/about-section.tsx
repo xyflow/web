@@ -16,45 +16,45 @@ type AboutSectionProps = {
 function AboutSection({ imageSrc, colorizeImage = true }: AboutSectionProps) {
   return (
     <Section>
-      <Heading size="sm" className="text-center mb-2">
+      <Heading size="sm" className="mb-2 text-center">
         A project by xyflow
       </Heading>
-      <Text className="text-center max-w-xl mx-auto mb-6" variant="light">
+      <Text className="mx-auto mb-6 max-w-xl text-center" variant="light">
         We are xyflow, a small team of passionate developers based in Berlin. We are the
         maintainers of React Flow, Svelte Flow, and the communities around them.
       </Text>
 
-      <div className="flex flex-wrap justify-center space-x-8 mb-16">
+      <div className="mb-16 flex flex-wrap justify-center space-x-8">
         <Button asChild variant="link">
           <Link href="https://xyflow.com/blog" className="flex items-center">
-            Blog <ArrowRightCircleIcon className="w-4 h-4 ml-1" />
+            Blog <ArrowRightCircleIcon className="ml-1 h-4 w-4" />
           </Link>
         </Button>
         <Button asChild variant="link">
           <Link href="https://xyflow.com/about" className="flex items-center">
-            About us <ArrowRightCircleIcon className="w-4 h-4 ml-1" />
+            About us <ArrowRightCircleIcon className="ml-1 h-4 w-4" />
           </Link>
         </Button>
         <Button asChild variant="link">
           <Link href="https://xyflow.com/open-source" className="flex items-center">
-            Open Source <ArrowRightCircleIcon className="w-4 h-4 ml-1" />
+            Open Source <ArrowRightCircleIcon className="ml-1 h-4 w-4" />
           </Link>
         </Button>
         <Button asChild variant="link">
           <Link href="https://xyflow.com/contact" className="flex items-center">
-            Contact Us <ArrowRightCircleIcon className="w-4 h-4 ml-1" />
+            Contact Us <ArrowRightCircleIcon className="ml-1 h-4 w-4" />
           </Link>
         </Button>
       </div>
 
       {imageSrc && (
         <div
-          className={cn('rounded-3xl overflow-hidden', {
+          className={cn('overflow-hidden rounded-3xl', {
             'bg-primary/40': colorizeImage,
           })}
         >
           <Image
-            className="grayscale mix-blend-multiply"
+            className="mix-blend-multiply grayscale"
             src={imageSrc}
             alt="photo of the xyflow team"
           />

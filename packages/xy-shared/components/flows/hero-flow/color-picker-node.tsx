@@ -14,7 +14,7 @@ const ColorPickerNodeComponent = ({ data, id }: NodeProps<ColorPickerNode>) => {
     <Wrapper label={data.label}>
       <div className="flex items-center space-x-2">
         <input
-          className="nodrag border-md w-6 h-6"
+          className="nodrag border-md h-6 w-6"
           type="color"
           onChange={(evt) => updateNodeData(id, { value: evt.target.value })}
           defaultValue={data.value}

@@ -132,7 +132,7 @@ const initialNodes = ({
       content: (
         <>
           <Text size="sm">The survey was focused on five important questions:</Text>
-          <ol className="list-decimal space-y-2 ml-8">
+          <ol className="ml-8 list-decimal space-y-2">
             <li>Who are our users and what is their expertise?</li>
             <li>What are they building with React Flow?</li>
             <li>Where do our users go for help?</li>
@@ -175,7 +175,7 @@ const initialNodes = ({
           content: (
             <>
               <Text>Next</Text>
-              <ArrowDownIcon className="w-4 h-4 transition-transform group-hover:translate-y-1" />
+              <ArrowDownIcon className="h-4 w-4 transition-transform group-hover:translate-y-1" />
             </>
           ),
           onClick: () =>
@@ -197,7 +197,7 @@ const initialNodes = ({
           content: (
             <>
               <Text>More details</Text>
-              <ArrowRightIcon className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </>
           ),
           onClick: () => focus({ id: 'respondents-expertise' }),
@@ -396,7 +396,7 @@ const initialNodes = ({
             <sup className="mx-1 italic">thank goodness</sup>
           </Text>
           <Text size="lg">More curiously though:</Text>
-          <Text size="sm" className="p-2 border-black border-2 rounded">
+          <Text size="sm" className="rounded border-2 border-black p-2">
             26% of people said they go to ChatGPT but only 6% would ask a friend or
             coworker.
           </Text>
@@ -411,7 +411,7 @@ const initialNodes = ({
           content: (
             <>
               <Text>Next</Text>
-              <ArrowDownIcon className="w-4 h-4 transition-transform group-hover:translate-y-1" />
+              <ArrowDownIcon className="h-4 w-4 transition-transform group-hover:translate-y-1" />
             </>
           ),
           onClick: () => focus({ id: 'stuck' }),
@@ -420,7 +420,7 @@ const initialNodes = ({
           content: (
             <>
               <Text>More details</Text>
-              <ArrowRightIcon className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </>
           ),
           onClick: () => focus({ id: 'help-sources' }),
@@ -525,7 +525,7 @@ const initialNodes = ({
             them into categories or themes.
           </Text>
           <Text>Here are the most common categories:</Text>
-          <div className="flex flex-wrap gap-2 my-8">
+          <div className="my-8 flex flex-wrap gap-2">
             <Button onClick={() => focus({ id: 'stuck-main-performance' })}>
               Performance
             </Button>
@@ -560,7 +560,7 @@ const initialNodes = ({
             ]}
           />
           <Text>Here&apos;s what we&apos;re planning to do about it:</Text>
-          <ul className="list-disc list-inside [&>*]:ml-4">
+          <ul className="list-inside list-disc [&>*]:ml-4">
             <li>
               Put Performance FAQ in Docs (including what&apos;s not possible/good to make
               with React Flow)
@@ -608,7 +608,7 @@ const initialNodes = ({
             ]}
           />
           <Text>Here&apos;s what we&apos;re planning to do about it:</Text>
-          <ul className="list-disc list-inside [&>*]:ml-4">
+          <ul className="list-inside list-disc [&>*]:ml-4">
             <li>
               Make computed flows possible, which covers many simple cases without having
               to use a third-party library.
@@ -655,7 +655,7 @@ const initialNodes = ({
             ]}
           />
           <Text>Here&apos;s what we&apos;re planning to do about it:</Text>
-          <ul className="list-disc list-inside [&>*]:ml-4">
+          <ul className="list-inside list-disc [&>*]:ml-4">
             <li>Create a Pro Example showing off editable edges and edge routing.</li>
             <li>Create a new example demonstrating how to do custom edge animations.</li>
           </ul>
@@ -699,7 +699,7 @@ const initialNodes = ({
             ]}
           />
           <Text>Here&apos;s what we&apos;re planning to do about it:</Text>
-          <ul className="list-disc list-inside [&>*]:ml-4">
+          <ul className="list-inside list-disc [&>*]:ml-4">
             <li>
               Build more complex layouting examples, e.g. changing a layout after getting
               node updates from a database
@@ -736,10 +736,10 @@ const initialNodes = ({
             categories...
           </Text>
           <button
-            className="group self-end mt-2"
+            className="group mt-2 self-end"
             onClick={() => focus({ id: 'stuck-extra-internals' })}
           >
-            <ArrowDownIcon className="w-4 h-4 transition-transform group-hover:translate-y-1 translate-y-0" />
+            <ArrowDownIcon className="h-4 w-4 translate-y-0 transition-transform group-hover:translate-y-1" />
           </button>
         </>
       ),
@@ -761,10 +761,10 @@ const initialNodes = ({
             ]}
           />
           <button
-            className="group self-end mt-2"
+            className="group mt-2 self-end"
             onClick={() => focus({ id: 'stuck-extra-custom-nodes' })}
           >
-            <ArrowDownIcon className="w-4 h-4 transition-transform group-hover:translate-y-1 translate-y-0" />
+            <ArrowDownIcon className="h-4 w-4 translate-y-0 transition-transform group-hover:translate-y-1" />
           </button>
         </>
       ),
@@ -784,10 +784,10 @@ const initialNodes = ({
             ]}
           />
           <button
-            className="group self-end mt-2"
+            className="group mt-2 self-end"
             onClick={() => focus({ id: 'stuck-extra-interaction' })}
           >
-            <ArrowDownIcon className="w-4 h-4 transition-transform group-hover:translate-y-1 translate-y-0" />
+            <ArrowDownIcon className="h-4 w-4 translate-y-0 transition-transform group-hover:translate-y-1" />
           </button>
         </>
       ),
@@ -808,8 +808,8 @@ const initialNodes = ({
               'Built in UX / comprehensive examples for "making a node editor" would be great.',
             ]}
           />
-          <button className="group self-end mt-2" onClick={() => focus({ id: 'pro' })}>
-            <ArrowDownIcon className="w-4 h-4 transition-transform group-hover:translate-y-1 translate-y-0" />
+          <button className="group mt-2 self-end" onClick={() => focus({ id: 'pro' })}>
+            <ArrowDownIcon className="h-4 w-4 translate-y-0 transition-transform group-hover:translate-y-1" />
           </button>
         </>
       ),
@@ -837,10 +837,10 @@ const initialNodes = ({
             <span className="font-bold">19</span> Pro subscribers.
           </Text>
           <button
-            className="group self-end mt-2"
+            className="group mt-2 self-end"
             onClick={() => focus({ id: 'pro-who-knew' })}
           >
-            <ArrowDownIcon className="w-4 h-4 transition-transform group-hover:translate-y-1 translate-y-0" />
+            <ArrowDownIcon className="h-4 w-4 translate-y-0 transition-transform group-hover:translate-y-1" />
           </button>
         </>
       ),
@@ -856,10 +856,10 @@ const initialNodes = ({
             need to start now! <Emoji content="💅🏻" />
           </Text>
           <button
-            className="group self-end mt-2"
+            className="group mt-2 self-end"
             onClick={() => focus({ id: 'pro-why-tho' })}
           >
-            <ArrowDownIcon className="w-4 h-4 transition-transform group-hover:translate-y-1 translate-y-0" />
+            <ArrowDownIcon className="h-4 w-4 translate-y-0 transition-transform group-hover:translate-y-1" />
           </button>
         </>
       ),
@@ -888,10 +888,10 @@ const initialNodes = ({
             you&apos;re in India or Brazil, it&apos;s significantly more expensive.
           </Text>
           <button
-            className="group self-end mt-2"
+            className="group mt-2 self-end"
             onClick={() => focus({ id: 'pro-why-not-tho' })}
           >
-            <ArrowDownIcon className="w-4 h-4 transition-transform group-hover:translate-y-1 translate-y-0" />
+            <ArrowDownIcon className="h-4 w-4 translate-y-0 transition-transform group-hover:translate-y-1" />
           </button>
         </>
       ),
@@ -921,10 +921,10 @@ const initialNodes = ({
             recurring revenue makes all that possible.
           </Text>
           <button
-            className="group self-end mt-2"
+            className="group mt-2 self-end"
             onClick={() => focus({ id: 'to-thank-you' })}
           >
-            <ArrowDownIcon className="w-4 h-4 transition-transform group-hover:translate-y-1 translate-y-0" />
+            <ArrowDownIcon className="h-4 w-4 translate-y-0 transition-transform group-hover:translate-y-1" />
           </button>
         </>
       ),
@@ -953,7 +953,7 @@ const initialNodes = ({
             survey over on{' '}
             <Link
               href="https://xyflow.com/blog/react-flow-developer-survey-2023"
-              className="hover:underline text-primary"
+              className="text-primary hover:underline"
             >
               our blog
             </Link>
@@ -1036,11 +1036,11 @@ const initialNodes = ({
 
 function MessageCloud({ messages }: { messages: string[] }) {
   return (
-    <div className="flex flex-wrap justify-around items-start gap-x-4 gap-y-2">
+    <div className="flex flex-wrap items-start justify-around gap-x-4 gap-y-2">
       {messages.map((message) => (
         <div
           key={message}
-          className="odd:mt-6 w-48 p-2 bg-blue-500 text-white rounded-tr-lg rounded-b-lg shadow-md"
+          className="w-48 rounded-b-lg rounded-tr-lg bg-blue-500 p-2 text-white shadow-md odd:mt-6"
         >
           <Text size="xs">&ldquo;{message}&ldquo;</Text>
         </div>

@@ -10,7 +10,7 @@ export default function OverviewButton({
 }) {
   return (
     <Link href={link}>
-      <div className="flex items-center space-x-1 hover:text-slate-800 text-muted-foreground text-sm font-bold cursor-pointer">
+      <div className="text-muted-foreground flex cursor-pointer items-center space-x-1 text-sm font-bold hover:text-slate-800">
         <ArrowLongLeftIcon className="h-4 w-4" />
         <div>{label}</div>
       </div>

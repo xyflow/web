@@ -32,8 +32,8 @@ const Page: FC = () => {
     <BaseLayout>
       <Hero kicker="About Us" title="The story of xyflow" align="center" />
 
-      <Section className="max-w-screen-md mx-auto mt-12 lg:my-12">
-        <Text size="lg" className="leading-8 mb-8">
+      <Section className="mx-auto mt-12 max-w-screen-md lg:my-12">
+        <Text size="lg" className="mb-8 leading-8">
           Since 2014, Moritz and Christopher have been creating infographics, tools, and
           interactive projects through their agency,{' '}
           <Link href="https://webkid.io/" className="text-pink-500">
@@ -47,14 +47,14 @@ const Page: FC = () => {
           grew, they began working on it full-time in 2021 to develop it into a
           sustainable open-source project, just like the ones they loved using.
         </Text>
-        <Text size="lg" className="leading-8 mb-8">
+        <Text size="lg" className="mb-8 leading-8">
           Today, we&apos;ve expanded the team and generalized the core of React Flow to
           support frameworks beyond React. To keep everything organized, we launched
           xyflow—a home for all our projects. Now, here we are–happy maintainers of a
           couple of libraries we&apos;re proud of with wonderful communities behind them
           :)
         </Text>
-        <Text size="lg" className="leading-8 mb-8">
+        <Text size="lg" className="mb-8 leading-8">
           If you need anything, have an idea, or just want to say hi, we&apos;re an email
           away at info@xyflow.com.
         </Text>
@@ -63,19 +63,19 @@ const Page: FC = () => {
         </Text>
       </Section>
 
-      <div className="flex justify-center mt-16 lg:mt-32">
-        <div className="max-w-3xl w-full">
-          <div className="flex justify-center items-center mb-2">
-            <UserGroupIcon className="w-8 h-8" />
+      <div className="mt-16 flex justify-center lg:mt-32">
+        <div className="w-full max-w-3xl">
+          <div className="mb-2 flex items-center justify-center">
+            <UserGroupIcon className="h-8 w-8" />
           </div>
           <Heading className="text-center">Core Team</Heading>
-          <Text size="lg" className="text-center text-light  mt-2">
+          <Text size="lg" className="text-light mt-2 text-center">
             Our product development team is based in Berlin and works full-time on xyflow
           </Text>
         </div>
       </div>
 
-      <ContentGrid className="mt-16 lg:mt-20 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
+      <ContentGrid className="mt-16 sm:grid-cols-2 md:grid-cols-2 lg:mt-20 lg:grid-cols-4">
         <TeamCard
           name="Christopher"
           teamPic={christopher}
@@ -122,19 +122,19 @@ const Page: FC = () => {
         />
       </ContentGrid>
 
-      <div className="flex justify-center mt-16 lg:mt-32">
-        <div className="max-w-3xl w-full">
-          <div className="flex justify-center items-center mb-2">
-            <GlobeEuropeAfricaIcon className="w-8 h-8" />
+      <div className="mt-16 flex justify-center lg:mt-32">
+        <div className="w-full max-w-3xl">
+          <div className="mb-2 flex items-center justify-center">
+            <GlobeEuropeAfricaIcon className="h-8 w-8" />
           </div>
           <Heading className="text-center">Collaborators</Heading>
-          <Text size="lg" className="text-center text-light  mt-2">
+          <Text size="lg" className="text-light mt-2 text-center">
             Besides our core team, we are working with these external contributors
           </Text>
         </div>
       </div>
 
-      <ContentGrid className="mt-16 lg:mt-20 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
+      <ContentGrid className="mt-16 sm:grid-cols-2 md:grid-cols-2 lg:mt-20 lg:grid-cols-4">
         <TeamCard
           name="Burak"
           role="Maintainer of Vue Flow"
@@ -182,13 +182,13 @@ const Page: FC = () => {
         />
       </ContentGrid>
 
-      <div className="flex justify-center mt-16 lg:mt-32">
-        <div className="max-w-3xl w-full">
-          <div className="flex justify-center items-center mb-2">
-            <UserGroupIcon className="w-8 h-8" />
+      <div className="mt-16 flex justify-center lg:mt-32">
+        <div className="w-full max-w-3xl">
+          <div className="mb-2 flex items-center justify-center">
+            <UserGroupIcon className="h-8 w-8" />
           </div>
           <Heading className="text-center">Join our team</Heading>
-          <Text size="lg" className="text-center text-light  mt-2">
+          <Text size="lg" className="text-light mt-2 text-center">
             We are expanding our Berlin-based product development team and are looking for
             talented web developers to join us. To see our open positions, check out our{' '}
             <Link className="text-pink-500" href="/careers">
@@ -218,7 +218,7 @@ function TeamCard({
   return (
     <ContentGridItem className="flex flex-col px-8 py-10 lg:py-16">
       {teamPic && (
-        <div className="mb-8 lg:-mt-8 w-full aspect-[3.5/4] max-w-[320px] relative">
+        <div className="relative mb-8 aspect-[3.5/4] w-full max-w-[320px] lg:-mt-8">
           <Image
             objectFit="cover"
             src={teamPic}
@@ -234,13 +234,13 @@ function TeamCard({
       <Text className="mb-4">{role}</Text>
       <Text className="mb-8">{description}</Text>
 
-      <div className="flex items-center space-x-4 mt-auto">
+      <div className="mt-auto flex items-center space-x-4">
         {links &&
           links.map((link) => {
             return (
-              <Button key={link.route} asChild variant="link" className=" text-md">
+              <Button key={link.route} asChild variant="link" className="text-md">
                 <Link href={link.route}>
-                  {link.linkName} <ArrowRightCircleIcon className="ml-1 w-4 h-4" />
+                  {link.linkName} <ArrowRightCircleIcon className="ml-1 h-4 w-4" />
                 </Link>
               </Button>
             );

@@ -5,14 +5,14 @@ export const initialNodes: Node[] = [
     id: '1',
     position: { x: 0, y: 0 },
     data: { label: '🌞' },
-    type: 'custom'
+    type: 'custom',
   },
   {
     id: '2',
     position: { x: 0, y: 150 },
     data: { label: '🌎' },
-    type: 'custom'
-  }
+    type: 'custom',
+  },
 ];
 
 export const initialEdges: Edge[] = [
@@ -23,6 +23,6 @@ export const initialEdges: Edge[] = [
     sourceHandle: 'c',
     targetHandle: 'a',
     type: 'floating',
-    markerEnd: { type: MarkerType.ArrowClosed }
-  }
+    markerEnd: { type: MarkerType.ArrowClosed },
+  },
 ];

@@ -33,18 +33,18 @@ export function BlogPostPreview({
       <Heading
         as="p"
         size={headingSize}
-        className="!text-left mb-6 mt-1 underline-offset-3 underline"
+        className="underline-offset-3 mb-6 mt-1 !text-left underline"
       >
         {title}
       </Heading>
-      <AuthorList authors={authors} className="md:mb-4 mb-4" noLink={!route} />
+      <AuthorList authors={authors} className="mb-4 md:mb-4" noLink={!route} />
 
       <Text variant="light" className="mb-4">
         {intro}
       </Text>
 
       <LinkOrSpan route={route}>
-        Read more <ArrowRightCircleIcon className="inline w-4 h-4" />
+        Read more <ArrowRightCircleIcon className="inline h-4 w-4" />
       </LinkOrSpan>
     </div>
   );

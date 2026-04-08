@@ -52,12 +52,12 @@ type AuthorProps = {
 
 function Author({ name, title, image, url, className, noLink, slim }: AuthorProps) {
   return (
-    <div className={cn('flex items-center mr-4 mb-4', className)}>
+    <div className={cn('mb-4 mr-4 flex items-center', className)}>
       {!slim && (
-        <LinkOrSpan noLink={noLink} url={url} className="!w-10 !h-10 mr-2">
+        <LinkOrSpan noLink={noLink} url={url} className="mr-2 !h-10 !w-10">
           <img
             src={image}
-            className="inline w-10 h-10 border border-border border-solid rounded-full"
+            className="border-border inline h-10 w-10 rounded-full border border-solid"
           />
         </LinkOrSpan>
       )}

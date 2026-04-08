@@ -1,10 +1,5 @@
 import React, { memo } from 'react';
-import {
-  type BuiltInNode,
-  type NodeProps,
-  Handle,
-  Position,
-} from '@xyflow/react';
+import { type BuiltInNode, type NodeProps, Handle, Position } from '@xyflow/react';
 
 const BiDirectionalNode = ({ data }: NodeProps<BuiltInNode>) => {
   return (

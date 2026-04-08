@@ -13,7 +13,8 @@ const inputVariants = cva('border border-solid rounded-3xl', {
 });
 
 export interface InputProps
-  extends React.InputHTMLAttributes<HTMLInputElement>,
+  extends
+    React.InputHTMLAttributes<HTMLInputElement>,
     VariantProps<typeof inputVariants> {}
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
@@ -37,7 +38,7 @@ export type InputLabelProps = React.LabelHTMLAttributes<HTMLLabelElement>;
 function InputLabel({ className, ...rest }: InputLabelProps) {
   return (
     <label
-      className={cn('mb-1 block text-sm font-bold text-muted-foreground', className)}
+      className={cn('text-muted-foreground mb-1 block text-sm font-bold', className)}
       {...rest}
     />
   );

@@ -23,9 +23,9 @@ function VariantSelect({
 
   return (
     <Select value={currentVariant.id}>
-      <SelectTrigger className="w-[80px] h-[36px] sm:w-auto">
-        <div className="font-bold overflow-hidden text-left text-ellipsis">
-          <div className="font-normal text-xs text-gray-700">Variant:</div>
+      <SelectTrigger className="h-[36px] w-[80px] sm:w-auto">
+        <div className="overflow-hidden text-ellipsis text-left font-bold">
+          <div className="text-xs font-normal text-gray-700">Variant:</div>
           <div className="text-xs">{currentVariant.label}</div>
         </div>
       </SelectTrigger>
@@ -33,7 +33,7 @@ function VariantSelect({
         <SelectGroup>
           {variants.map((variant) => (
             <Link href={`/examples/react/${variant.id}`} key={variant.id}>
-              <SelectLabel className="hover:bg-slate-100 px-2 py-1">
+              <SelectLabel className="px-2 py-1 hover:bg-slate-100">
                 {variant.label}
               </SelectLabel>
             </Link>

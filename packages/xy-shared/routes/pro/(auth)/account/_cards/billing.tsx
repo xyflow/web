@@ -1,4 +1,10 @@
-import { Card, CardHeader, CardDescription, CardTitle, CardFooter } from '../../../../../components/ui/card';
+import {
+  Card,
+  CardHeader,
+  CardDescription,
+  CardTitle,
+  CardFooter,
+} from '../../../../../components/ui/card';
 import CustomerPortalButton from '../../../../../components/pro/CustomerPortalButton';
 
 function BillingCard() {

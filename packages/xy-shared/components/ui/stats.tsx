@@ -23,10 +23,10 @@ type StatsProps = {
 function StatsDisplay({ value, label, className }: StatsDisplayProps) {
   return (
     <div className={cn('text-center', className)}>
-      <Heading className="font-bold tabular-nums whitespace-nowrap text-primary text-4xl md:text-5xl lg:text-5xl">
+      <Heading className="text-primary whitespace-nowrap text-4xl font-bold tabular-nums md:text-5xl lg:text-5xl">
         {value}
       </Heading>
-      <Text className="whitespace-nowrap mt-2 text-md md:text-lg lg:text-lg">
+      <Text className="text-md mt-2 whitespace-nowrap md:text-lg lg:text-lg">
         {label}
       </Text>
     </div>
@@ -36,17 +36,17 @@ function StatsDisplay({ value, label, className }: StatsDisplayProps) {
 function Stats({ stats, description, link, linkLabel, className }: StatsProps) {
   return (
     <div className={cn('lg:grid lg:grid-cols-7 lg:gap-20', className)}>
-      <div className="lg:col-span-4 flex place-content-between lg:space-x-24 grow">
+      <div className="flex grow place-content-between lg:col-span-4 lg:space-x-24">
         {stats.map((s) => (
           <StatsDisplay key={`${s.label}-${s.value}`} {...s} />
         ))}
       </div>
-      <div className="lg:col-span-3 mt-8 lg:mt-0">
+      <div className="mt-8 lg:col-span-3 lg:mt-0">
         <Text size="lg" variant="light">
           {description}
         </Text>
         {link && (
-          <Button asChild variant="pro" className="max-md:w-full mt-5" size="lg">
+          <Button asChild variant="pro" className="mt-5 max-md:w-full" size="lg">
             <Link href={link}>{linkLabel}</Link>
           </Button>
         )}

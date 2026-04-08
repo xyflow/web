@@ -14,33 +14,33 @@ type GettingStartedProps = {
 
 function GettingStarted({ libraryName, packageName }: GettingStartedProps) {
   return (
-    <LayoutBreakout className="x:max-w-(--nextra-content-width) lg:ml-0 lg:mr-0 lg:right-0 lg:left-0 lg:w-full !mt-0">
+    <LayoutBreakout className="x:max-w-(--nextra-content-width) !mt-0 lg:left-0 lg:right-0 lg:ml-0 lg:mr-0 lg:w-full">
       <Container
         variant="dark"
-        className="rounded-none border-none p-0 mt-16 lg:mt-24 lg:p-1.5 lg:rounded-3xl"
+        className="mt-16 rounded-none border-none p-0 lg:mt-24 lg:rounded-3xl lg:p-1.5"
         innerClassName="rounded-none border-none lg:rounded-[18px] lg:border-solid lg:border-gray-700"
       >
-        <div className="px-4 pt-12 pb-4">
-          <Text size="lg" className="font-bold mb-2 text-center text-primary">
+        <div className="px-4 pb-4 pt-12">
+          <Text size="lg" className="text-primary mb-2 text-center font-bold">
             Getting Started with {libraryName}
           </Text>
-          <Text className="text-center max-w-lg mx-auto mb-6 lg:mb-8">
+          <Text className="mx-auto mb-6 max-w-lg text-center lg:mb-8">
             Make sure you&apos;ve installed npm, pnpm or yarn. Then you can install{' '}
             {libraryName} via:
           </Text>
 
           <AppWindow>
-            <div className="!pl-0 inline text-md font-mono">
+            <div className="text-md inline !pl-0 font-mono">
               npm install <span className="text-primary">{packageName}</span>
             </div>
           </AppWindow>
         </div>
 
-        <div className="flex justify-center mt-5 py-3 bg-black/90 border-t border-gray-700">
-          <Button variant="link" className="text-white font-bold" asChild>
+        <div className="mt-5 flex justify-center border-t border-gray-700 bg-black/90 py-3">
+          <Button variant="link" className="font-bold text-white" asChild>
             <Link href={`/learn`}>
               See full Quickstart guide{' '}
-              <ArrowLongRightIcon className="ml-2 w-4 h-4 stroke-2" />
+              <ArrowLongRightIcon className="ml-2 h-4 w-4 stroke-2" />
             </Link>
           </Button>
         </div>

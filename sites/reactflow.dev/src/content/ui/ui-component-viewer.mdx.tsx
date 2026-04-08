@@ -76,10 +76,10 @@ const UiComponentViewer: FC<{ id: string }> = async ({ id }) => {
   return (
     <div className="mt-5">
       <iframe
-        className="w-full h-[500px] rounded-md border border-border "
+        className="border-border h-[500px] w-full rounded-md border"
         src={`${process.env.NEXT_PUBLIC_UI_COMPONENTS_URL}/components/${data.name}`}
       />
-      <div className="flex gap-2 items-center my-5">
+      <div className="my-5 flex items-center gap-2">
         <div>Dependencies:</div>
         {npmDependencies.map((dep) => (
           <a className="bg-card rounded-md px-1 py-0.5" key={dep.label} href={dep.url}>
@@ -164,7 +164,7 @@ const UiComponentViewer: FC<{ id: string }> = async ({ id }) => {
                 </TabsList>
                 <TabsContent value="preview">
                   <iframe
-                    className="w-full h-[500px] rounded-md border mt-4 border-border "
+                    className="border-border mt-4 h-[500px] w-full rounded-md border"
                     src={`${process.env.NEXT_PUBLIC_UI_COMPONENTS_URL}/components/${data.name}/examples/${example}`}
                   />
                 </TabsContent>

@@ -104,10 +104,10 @@ const ProExampleViewer: FC<{
     <Container className={cn(['mt-7', className])} innerClassName={innerClassName}>
       <div
         className={cn(
-          'px-6 py-8 flex flex-wrap items-center justify-between gap-x-4 gap-y-2 bg-gradient bg-[length:200%] bg-center',
+          'bg-gradient flex flex-wrap items-center justify-between gap-x-4 gap-y-2 bg-[length:200%] bg-center px-6 py-8',
         )}
       >
-        <Text className="flex-1 basis-full max-w-xl">
+        <Text className="max-w-xl flex-1 basis-full">
           <strong>This is a Pro {type}.</strong> Get{' '}
           <Link className="underline" href="/examples/pro">
             all pro examples
@@ -127,7 +127,7 @@ const ProExampleViewer: FC<{
             <Button
               asChild
               variant="secondary"
-              className="text-primary dark:text-white shrink-0"
+              className="text-primary shrink-0 dark:text-white"
             >
               <a href={signInLink}>Sign In</a>
             </Button>
@@ -137,14 +137,14 @@ const ProExampleViewer: FC<{
 
       <div className="flex">
         {isLoading ? (
-          <div className="flex items-center justify-center block h-[645px] w-full">
+          <div className="block flex h-[645px] w-full items-center justify-center">
             <Spinner />
           </div>
         ) : (
           <iframe
             src={appendSearchParams(iframeBaseSrc, iframeSearchParams)}
             title={`${slug} preview`}
-            className={cn('block h-[645px] bg-background w-full')}
+            className={cn('bg-background block h-[645px] w-full')}
           />
         )}
       </div>

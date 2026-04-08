@@ -12,7 +12,7 @@ export default function SubscriptionPlan() {
 
   if (isLoading) {
     return (
-      <span className="text-sm flex font-normal text-primary">
+      <span className="text-primary flex text-sm font-normal">
         <Spinner className="mr-2" /> loading user data...
       </span>
     );
@@ -21,7 +21,7 @@ export default function SubscriptionPlan() {
   if (isSubscribed) {
     return (
       <span>
-        <Pill className="text-primary bg-pink-50 border-primary">
+        <Pill className="text-primary border-primary bg-pink-50">
           <PlanLabel /> plan
         </Pill>
       </span>

@@ -29,12 +29,12 @@ export function BaseBlogPostLayout({
   children,
 }: BlogPostLayoutProps) {
   return (
-    <div className="max-w-screen-md mx-auto">
+    <div className="mx-auto max-w-screen-md">
       <Text variant="light" className="mt-10">
         {frontMatter.date}
       </Text>
       {/* we have to use important (!) here to overwrite the nextra article default styles */}
-      <Heading className="!font-black !text-6xl !text-left !mt-2 !mb-8">
+      <Heading className="!mb-8 !mt-2 !text-left !text-6xl !font-black">
         {frontMatter.htmlTitle ? (
           <span dangerouslySetInnerHTML={{ __html: frontMatter.htmlTitle }} />
         ) : (
@@ -43,7 +43,7 @@ export function BaseBlogPostLayout({
       </Heading>
       <AuthorList authors={frontMatter.authors} className="mb-6" />
 
-      <div className="max-w-3xl mx-auto [&>p]:text-lg [&>p]:leading-loose [&>h1]:mt-16 [&>h2]:border-none [&>h2]:mt-16 [&>ul]:text-lg ">
+      <div className="mx-auto max-w-3xl [&>h1]:mt-16 [&>h2]:mt-16 [&>h2]:border-none [&>p]:text-lg [&>p]:leading-loose [&>ul]:text-lg">
         {children}
       </div>
 
@@ -63,7 +63,7 @@ type BlogPostPreviewsProps = {
 
 function BlogPostPreviews({ prev, next }: BlogPostPreviewsProps) {
   return (
-    <div className="mt-20 relative right-1/2 left-1/2 ml-[-50vw] mr-[-50vw] w-[100vw]">
+    <div className="relative left-1/2 right-1/2 ml-[-50vw] mr-[-50vw] mt-20 w-[100vw]">
       <ContentGrid className="x:max-w-(--nextra-content-width) mx-auto">
         {prev && (
           <ContentGridItem route={prev?.route}>

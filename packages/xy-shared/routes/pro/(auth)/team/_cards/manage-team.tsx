@@ -124,7 +124,7 @@ const ManageTeamCard: FC<{ user: User; teamSubscriptions: TeamMember[] }> = ({
 
   if (!status) {
     return (
-      <div className="min-h-[300px] flex items-center justify-center">
+      <div className="flex min-h-[300px] items-center justify-center">
         <Loader />
       </div>
     );
@@ -200,19 +200,19 @@ const ManageTeamCard: FC<{ user: User; teamSubscriptions: TeamMember[] }> = ({
         )}
       </CardHeader>
 
-      <div className="border-t border-border">
-        <CardContent className="py-4 flex items-center justify-between border-b border-border">
+      <div className="border-border border-t">
+        <CardContent className="border-border flex items-center justify-between border-b py-4">
           <div className="font-semibold">{user.email}</div>
         </CardContent>
         {teamSubscriptions.map((member, i) => (
           <CardContent
-            className="py-4 flex items-center justify-between border-b"
+            className="flex items-center justify-between border-b py-4"
             key={member.email}
           >
             <div className="font-semibold">
               {member.email}{' '}
               {status && i >= includedSeats && (
-                <span className="text-xs text-muted-foreground ml-2 bg-muted px-2 py-0.5 border border-gray-300 rounded-md">
+                <span className="text-muted-foreground bg-muted ml-2 rounded-md border border-gray-300 px-2 py-0.5 text-xs">
                   extra seat
                 </span>
               )}
@@ -227,7 +227,7 @@ const ManageTeamCard: FC<{ user: User; teamSubscriptions: TeamMember[] }> = ({
         ))}
       </div>
       <CardFooter className="bg-muted space-x-10">
-        <form onSubmit={onAdd} className="flex justify-between w-full">
+        <form onSubmit={onAdd} className="flex w-full justify-between">
           <div className="flex-1">
             <InputLabel htmlFor="email">Add Team Member</InputLabel>
             <Input
@@ -241,10 +241,10 @@ const ManageTeamCard: FC<{ user: User; teamSubscriptions: TeamMember[] }> = ({
               disabled={isLoading}
             />
             {errorMessage && (
-              <InputLabel className="text-red-600 mt-1">{errorMessage}</InputLabel>
+              <InputLabel className="mt-1 text-red-600">{errorMessage}</InputLabel>
             )}
           </div>
-          <Button disabled={isLoading} className="shrink-0 ml-auto mt-auto" type="submit">
+          <Button disabled={isLoading} className="ml-auto mt-auto shrink-0" type="submit">
             {isLoading ? 'Please wait...' : 'Add Team Member'}
           </Button>
         </form>

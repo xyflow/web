@@ -15,7 +15,7 @@ export default function CaseStudyQA({ question, answer, className }: CaseStudyQA
       </Text>
 
       <blockquote>
-        <Text size="lg" className="mt-2 mb-12 leading-relaxed">
+        <Text size="lg" className="mb-12 mt-2 leading-relaxed">
           {answer}
         </Text>
       </blockquote>

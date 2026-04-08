@@ -28,7 +28,7 @@ const Page: FC = () => {
         align="center"
       />
 
-      <Section className="max-w-screen-md mx-auto mt-12 lg:my-12">
+      <Section className="mx-auto mt-12 max-w-screen-md lg:my-12">
         <Image
           src="https://api.star-history.com/svg?repos=xyflow/xyflow&type=Date"
           alt="xyflow GitHub Star History. The red line keeps going up and to the right, from 2021 until now."
@@ -41,7 +41,7 @@ const Page: FC = () => {
         </Heading>
         <Text className="text-lg leading-8">
           We gave the{' '}
-          <Link href="https://reactflow.dev" className="text-pink-500 text-lg">
+          <Link href="https://reactflow.dev" className="text-lg text-pink-500">
             React Flow
           </Link>{' '}
           library an MIT license as soon as we built it in 2019. We were lucky to see it
@@ -52,15 +52,15 @@ const Page: FC = () => {
           we&apos;ve been happy maintainers of one of the most popular node-based UI
           libraries.
         </Text>
-        <Text className="text-lg leading-8 mt-8">
+        <Text className="mt-8 text-lg leading-8">
           We&apos;ve also released{' '}
-          <Link href="https://svelteflow.dev" className="text-pink-500 text-lg">
+          <Link href="https://svelteflow.dev" className="text-lg text-pink-500">
             Svelte Flow
           </Link>{' '}
           and our{' '}
           <Link
             href="https://github.com/xyflow/pro-platform/"
-            className="text-pink-500 text-lg"
+            className="text-lg text-pink-500"
           >
             Pro Platform
           </Link>{' '}
@@ -71,11 +71,11 @@ const Page: FC = () => {
         <Heading as="h2" size="sm" className="mb-4 mt-14">
           We&apos;ll keep our software MIT Licensed forever
         </Heading>
-        <Text className="text-lg leading-8 mb-4">
+        <Text className="mb-4 text-lg leading-8">
           We chose the{' '}
           <Link
             href="https://github.com/xyflow/xyflow/blob/main/LICENSE"
-            className="text-pink-500 text-lg "
+            className="text-lg text-pink-500"
           >
             MIT License
           </Link>{' '}
@@ -99,10 +99,10 @@ const Page: FC = () => {
           src={ossImage}
           alt="A diagram showing a circle with an outline. Inside the circle is the Free, Open Core, which contains Libraries, docs, examples, and discord. The thick outline of the circle is the Paid Crust, containing Pro examples, prioritized bug fixes, and email support."
           placeholder="blur"
-          className="my-10 mx-auto lg:max-w-[544px] "
+          className="mx-auto my-10 lg:max-w-[544px]"
         />
 
-        <Text className="text-lg leading-8 mb-4">
+        <Text className="mb-4 text-lg leading-8">
           We spend most of our time on the “core,” which is MIT Licensed (library, docs,
           github discussions, discord). We spend less time on the “crust,” which is the
           paid content and services (subscriber support, pro examples)– these are handled
@@ -114,14 +114,14 @@ const Page: FC = () => {
         </Text>
         <Link
           href="/blog/asking-for-money-for-open-source"
-          className="text-pink-500 underline text-lg"
+          className="text-lg text-pink-500 underline"
         >
           More about how xyflow is funded
         </Link>
         <Heading as="h2" size="sm" className="mb-4 mt-14">
           Supporting the open source ecosystem
         </Heading>
-        <Text className="text-lg leading-8 mb-4">
+        <Text className="mb-4 text-lg leading-8">
           We give back to the Open Source projects that we use ourselves on{' '}
           <Link href="https://opencollective.com/xyflow-org" className="text-pink-500">
             Open Collective
@@ -132,25 +132,25 @@ const Page: FC = () => {
           </Link>
           .
         </Text>
-        <Text className="text-lg leading-8 mb-4">
+        <Text className="mb-4 text-lg leading-8">
           We offer free access to our Pro examples to non-commercial open source projects
           and students who use xyflow. If this is you, send us an email to info@xyflow.com
           from your student email, or send us a link to your open source project
           repository.
         </Text>
-        <Text className="text-lg leading-8 mb-4">
+        <Text className="mb-4 text-lg leading-8">
           We want to share our learnings whenever we can. We conducted a survey with React
           Flow developers in 2023, and we shared the results publicly in an{' '}
           <Link
             href="https://reactflow.dev/developer-survey-2023"
-            className="text-pink-500 text-lg "
+            className="text-lg text-pink-500"
           >
             interactive React Flow app
           </Link>{' '}
           and in a{' '}
           <Link
             href="/blog/react-flow-developer-survey-2023"
-            className="text-pink-500 text-lg "
+            className="text-lg text-pink-500"
           >
             full-length blog post
           </Link>

@@ -4,8 +4,15 @@ import { getUser } from '../_utils/graphql/users';
 import { updateWelcomeMailStatus } from '../_utils/graphql/subscriptions';
 import { updateTeamSubscriptionPlan } from '../_utils/graphql/team-subscriptions';
 import { sendDiscordNotification } from '../_utils/discord';
-import { sendMailTemplate, subscribeMailingList, unsubscribeMailingList } from '../_utils/mailjet';
-import { MAILJET_PRO_MAILING_LIST_ID, MAILJET_WELCOME_MAIL_TEMPLATE_IDS } from '../_utils/constants';
+import {
+  sendMailTemplate,
+  subscribeMailingList,
+  unsubscribeMailingList,
+} from '../_utils/mailjet';
+import {
+  MAILJET_PRO_MAILING_LIST_ID,
+  MAILJET_WELCOME_MAIL_TEMPLATE_IDS,
+} from '../_utils/constants';
 
 enum PaidSubscriptionPlan {
   Starter = 'starter',
@@ -20,7 +27,8 @@ enum FreeSubscriptionPlan {
 }
 
 async function sendWelcomeMail(email: string, plan: PaidSubscriptionPlan) {
-  const template = MAILJET_WELCOME_MAIL_TEMPLATE_IDS[plan] || MAILJET_WELCOME_MAIL_TEMPLATE_IDS.default;
+  const template =
+    MAILJET_WELCOME_MAIL_TEMPLATE_IDS[plan] || MAILJET_WELCOME_MAIL_TEMPLATE_IDS.default;
 
   if (email) {
     return await sendMailTemplate(email, 'Welcome to React Flow Pro!', template);

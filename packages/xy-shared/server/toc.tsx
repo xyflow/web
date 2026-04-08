@@ -15,7 +15,7 @@ export const TOC: FC<{ pageMap: (MdxFile & { title: string })[] }> = async ({
         Questions? Contact Us
       </Anchor>
 
-      <p className="font-bold mt-4">What&apos;s new?</p>
+      <p className="mt-4 font-bold">What&apos;s new?</p>
       {[...pageMap.slice(0, 3), { route: '/whats-new', title: '...and more!' }].map(
         ({ route, title }) => (
           <NextLink
@@ -31,14 +31,14 @@ export const TOC: FC<{ pageMap: (MdxFile & { title: string })[] }> = async ({
         <CardHeader className="px-3 py-3">
           <CardTitle className="text-lg leading-normal">React Flow Playground</CardTitle>
         </CardHeader>
-        <CardContent className="px-3 pt-0 pb-3">
-          <p className="text-sm text-muted-foreground">
+        <CardContent className="px-3 pb-3 pt-0">
+          <p className="text-muted-foreground text-sm">
             Explore different props, options and layout algorithms in our interactive
             playground
           </p>
           <NextLink href="https://play.reactflow.dev" target="_blank">
-            <Button size="sm" variant="secondary" className="mt-3 w-full flex gap-x-1">
-              <PlayCircleIcon className="w-5 h-5" />
+            <Button size="sm" variant="secondary" className="mt-3 flex w-full gap-x-1">
+              <PlayCircleIcon className="h-5 w-5" />
               Launch
             </Button>
           </NextLink>

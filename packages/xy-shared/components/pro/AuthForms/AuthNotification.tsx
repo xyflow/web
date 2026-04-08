@@ -53,7 +53,7 @@ export function ExpiredTokenNotification() {
         title="Your verification link has expired."
         description="Please request a new verification link to confirm your email and sign in."
         variant="error"
-        className="flex justify-between items-center"
+        className="flex items-center justify-between"
       >
         <Link className="shrink-0" href="/pro/email-verification/resend-link">
           <Button variant="destructive">Request a new link</Button>
@@ -115,7 +115,7 @@ export function AuthErrorNotification({ error }: AuthErrorProps) {
         description={
           <>
             Please use a different email or{' '}
-            <Button className="text-current font-bold !m-0 !p-0 h-auto" variant="link">
+            <Button className="!m-0 h-auto !p-0 font-bold text-current" variant="link">
               <Link href="/pro/sign-in">sign in</Link>
             </Button>
             .

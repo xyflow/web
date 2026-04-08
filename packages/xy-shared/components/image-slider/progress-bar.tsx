@@ -49,9 +49,8 @@ export default function ProgressBar({
   return (
     <div
       ref={progressBarRef}
-      className="h-full rounded bg-gradient-to-r from-accent/40 to-accent/70 transition-all duration-200 ease-linear"
+      className="from-accent/40 to-accent/70 h-full rounded bg-gradient-to-r transition-all duration-200 ease-linear"
       style={{ width: '0%' }}
     />
   );
 }
-

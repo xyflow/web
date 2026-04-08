@@ -8,9 +8,17 @@ import { getTeamSubscription } from './team-subscriptions';
 
 // @todo is this on_conflict rule correct?
 const UPSERT_SUBSCRIPTION = gql`
-  mutation UpsertSubscription($userId: uuid!, $planId: String, $stripeCustomerId: String) {
+  mutation UpsertSubscription(
+    $userId: uuid!
+    $planId: String
+    $stripeCustomerId: String
+  ) {
     insert_user_subscriptions_one(
-      object: { user_id: $userId, subscription_plan_id: $planId, stripe_customer_id: $stripeCustomerId }
+      object: {
+        user_id: $userId
+        subscription_plan_id: $planId
+        stripe_customer_id: $stripeCustomerId
+      }
       on_conflict: {
         constraint: customers_user_id_key
         update_columns: [user_id, stripe_customer_id, subscription_plan_id]
@@ -115,7 +123,10 @@ const UPDATE_WELCOME_MAIL_STATUS = `
   }
 `;
 
-export async function updateWelcomeMailStatus(subscriptionId: string, welcomeMailStatus: boolean) {
+export async function updateWelcomeMailStatus(
+  subscriptionId: string,
+  welcomeMailStatus: boolean,
+) {
   const response = await GraphQLClient.request<{
     affected_rows: number;
   }>(UPDATE_WELCOME_MAIL_STATUS, {
@@ -127,18 +138,22 @@ export async function updateWelcomeMailStatus(subscriptionId: string, welcomeMai
 }
 
 export async function handleSubscriptionChange(stripeEvent: Stripe.Subscription) {
-  const customerId = typeof stripeEvent.customer === 'string' ? stripeEvent.customer : stripeEvent.customer.id;
+  const customerId =
+    typeof stripeEvent.customer === 'string'
+      ? stripeEvent.customer
+      : stripeEvent.customer.id;
 
   const customer = (await stripe.customers.retrieve(customerId)) as Stripe.Customer;
 
   if (customer) {
-    const userId = customer.metadata.userId ?? (await getUserIdByEmail(customer.email || ''));
+    const userId =
+      customer.metadata.userId ?? (await getUserIdByEmail(customer.email || ''));
     const status = stripeEvent.status;
 
     const subscriptionProducts = await Promise.all(
       stripeEvent.items.data.map(async (item: Stripe.SubscriptionItem) => {
         return await stripe.products.retrieve(item.plan.product as string);
-      })
+      }),
     );
 
     const product = subscriptionProducts.find((prod) => prod.metadata.plan);

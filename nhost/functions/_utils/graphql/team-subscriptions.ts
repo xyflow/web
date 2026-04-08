@@ -5,9 +5,19 @@ import { getStripeSubscription } from '../stripe';
 import GraphQLClient from './client';
 
 const UPSERT_TEAM_SUBSCRIPTION = gql`
-  mutation UpsertTeamSubscription($createdById: uuid!, $email: citext!, $userId: uuid, $planId: String) {
+  mutation UpsertTeamSubscription(
+    $createdById: uuid!
+    $email: citext!
+    $userId: uuid
+    $planId: String
+  ) {
     insert_team_subscriptions_one(
-      object: { created_by: $createdById, subscription_plan_id: $planId, user_id: $userId, email: $email }
+      object: {
+        created_by: $createdById
+        subscription_plan_id: $planId
+        user_id: $userId
+        email: $email
+      }
       on_conflict: {
         constraint: team_subscriptions_email_key
         update_columns: [user_id, email, subscription_plan_id, created_by]
@@ -121,7 +131,10 @@ export async function getIncludedSeats(userId: string) {
 
 const UPDATE_TEAM_SUBSCRIPTION_PLAN = gql`
   mutation UpdateTeamSubscriptionPlan($createdById: uuid!, $planId: String!) {
-    update_team_subscriptions(where: { created_by: { _eq: $createdById } }, _set: { subscription_plan_id: $planId }) {
+    update_team_subscriptions(
+      where: { created_by: { _eq: $createdById } }
+      _set: { subscription_plan_id: $planId }
+    ) {
       affected_rows
     }
   }
@@ -150,7 +163,9 @@ export async function updateTeamSubscriptionPlan({
 
 const REMOVE_TEAM_MEMBER = gql`
   mutation RemoveTeamMember($createdById: uuid!, $email: citext!) {
-    delete_team_subscriptions(where: { _and: [{ email: { _eq: $email } }, { created_by: { _eq: $createdById } }] }) {
+    delete_team_subscriptions(
+      where: { _and: [{ email: { _eq: $email } }, { created_by: { _eq: $createdById } }] }
+    ) {
       affected_rows
     }
   }

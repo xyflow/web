@@ -84,8 +84,8 @@ export default function Signup() {
             </div>
           )}
           <div>
-            <div className="font-bold text-lg mb-2">Project Type</div>
-            <div className="flex items-center gap-x-2 text-md mb-2 text-muted-foreground">
+            <div className="mb-2 text-lg font-bold">Project Type</div>
+            <div className="text-md text-muted-foreground mb-2 flex items-center gap-x-2">
               <input
                 type="radio"
                 id="oss"
@@ -93,7 +93,7 @@ export default function Signup() {
                 value="oss"
                 checked={projectType === 'oss'}
                 onChange={(evt) => changeProjectType(evt.target.value as 'oss')}
-                className="w-4 h-4"
+                className="h-4 w-4"
               />
               <label htmlFor="oss">Non-commercial open source project</label>
             </div>
@@ -105,7 +105,7 @@ export default function Signup() {
                 value="student"
                 checked={projectType === 'student'}
                 onChange={(evt) => changeProjectType(evt.target.value as 'student')}
-                className="w-4 h-4"
+                className="h-4 w-4"
               />
               <label htmlFor="student">Educational project (university, students)</label>
             </div>
@@ -140,9 +140,9 @@ export default function Signup() {
             </div>
           )}
           {projectType && (
-            <div className="flex mb-4">
+            <div className="mb-4 flex">
               <input
-                className="shrink-0 w-4 h-4 mr-1 mb-auto mt-1"
+                className="mb-auto mr-1 mt-1 h-4 w-4 shrink-0"
                 id="confirm"
                 type="checkbox"
                 required

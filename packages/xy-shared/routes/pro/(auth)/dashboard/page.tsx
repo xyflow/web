@@ -9,7 +9,7 @@ export default async function DashboardPage() {
     <>
       <DashboardHeader title="Dashboard" showSubscriptionPlan />
       <div className="flex-1 space-y-7">
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-5 lg:gap-6">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5 lg:gap-6 xl:grid-cols-3">
           <SubscriptionFeature
             title="Pro Examples"
             description={`A continuously growing collection of advanced ${library} examples. During your subscription you can access the source code of all Pro examples.`}

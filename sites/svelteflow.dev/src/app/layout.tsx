@@ -56,7 +56,7 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
           banner={
             <Banner storageKey="node-collisions">
               <Link
-                className="hover:underline focus-visible:nextra-focus text-sm"
+                className="focus-visible:nextra-focus text-sm hover:underline"
                 href="/examples/layout/node-collisions"
               >
                 🚨 New Example: Handling Node Collisions!

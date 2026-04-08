@@ -31,8 +31,7 @@ function App() {
       type: 'slide',
       position: { x: SLIDE_WIDTH * 2, y: 0 },
       data: {
-        source:
-          "It's markdown so we can write **bold text** or `code snippets` too!",
+        source: "It's markdown so we can write **bold text** or `code snippets` too!",
       },
     },
   ];

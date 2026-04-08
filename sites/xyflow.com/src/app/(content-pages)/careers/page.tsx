@@ -28,7 +28,7 @@ const Page: FC = () => {
         align="center"
       />
 
-      <Section className="max-w-screen-md mx-auto lg:my-12 space-y-8">
+      <Section className="mx-auto max-w-screen-md space-y-8 lg:my-12">
         <Text size="lg" className="leading-8">
           Hi! We're xyflow and we build open source node-based UI libraries like{' '}
           <Link href="https://reactflow.dev" className="text-pink-500">
@@ -58,7 +58,7 @@ const Page: FC = () => {
         <JobOpening key={opening.title} {...opening} />
       ))}
 
-      <Section className="max-w-screen-md mx-auto lg:my-12 space-y-6">
+      <Section className="mx-auto max-w-screen-md space-y-6 lg:my-12">
         <Heading size="md" className="mb-12">
           How we hire
         </Heading>
@@ -68,7 +68,7 @@ const Page: FC = () => {
           openings as the team grows. Here's how our hiring process works:
         </Text>
 
-        <ol className="list-decimal ml-8 space-y-2">
+        <ol className="ml-8 list-decimal space-y-2">
           <li>
             <Text className="leading-8" size="lg">
               Our team goes through your application.
@@ -99,7 +99,7 @@ const Page: FC = () => {
         </ol>
       </Section>
 
-      <Section className="max-w-screen-md mx-auto lg:my-12 space-y-6">
+      <Section className="mx-auto max-w-screen-md space-y-6 lg:my-12">
         <Heading size="md" className="mb-12">
           How we work
         </Heading>
@@ -158,10 +158,10 @@ function JobOpening({
   return (
     <Section
       id={slugify(title)}
-      className="max-w-screen-lg bg-slate-50 rounded-xl p-4 md:p-8 lg:p-12 mx-auto space-y-6"
+      className="mx-auto max-w-screen-lg space-y-6 rounded-xl bg-slate-50 p-4 md:p-8 lg:p-12"
     >
-      <div className="flex gap-2 items-center text-md">
-        <MapPinIcon className="w-5 h-5" /> {location}
+      <div className="text-md flex items-center gap-2">
+        <MapPinIcon className="h-5 w-5" /> {location}
       </div>
       <Heading size="md" className="mb-12">
         {title}
@@ -175,7 +175,7 @@ function JobOpening({
 
       <Heading size="sm">You are:</Heading>
 
-      <ul className="list-disc ml-8 space-y-2">
+      <ul className="ml-8 list-disc space-y-2">
         {candidate.map((text, i) => (
           <li key={i}>
             <Text className="leading-8" size="lg">
@@ -187,7 +187,7 @@ function JobOpening({
 
       <Heading size="sm">Things you might do:</Heading>
 
-      <ul className="list-disc ml-8 space-y-2">
+      <ul className="ml-8 list-disc space-y-2">
         {tasks.map((text, i) => (
           <li key={i}>
             <Text className="leading-8" size="lg">
@@ -199,7 +199,7 @@ function JobOpening({
 
       <Heading size="sm">What we can offer:</Heading>
 
-      <ul className="list-disc ml-8 space-y-2">
+      <ul className="ml-8 list-disc space-y-2">
         {benefits.map((text, i) => (
           <li key={i}>
             <Text className="leading-8" size="lg">
@@ -218,7 +218,7 @@ function JobOpening({
         more than 300 words) or a video / loom / audio clip (no more than 2 minutes):
       </Text>
 
-      <ol className="list-decimal ml-8 space-y-2">
+      <ol className="ml-8 list-decimal space-y-2">
         <li>
           <Text className="leading-8" size="lg">
             What is most interesting to you about this job posting?

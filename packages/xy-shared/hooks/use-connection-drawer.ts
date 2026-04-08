@@ -40,17 +40,11 @@ export function useConnectionDrawer() {
 
           svg.setAttribute('width', `${Math.max(2, width)}`);
           svg.setAttribute('height', `${Math.max(2, height)}`);
-          svg.style.right =
-            isRTL || isSmallScreen ? `${handleWidth / 2 - 1}px` : 'auto';
-          svg.style.left =
-            isRTL || isSmallScreen ? 'auto' : `${handleWidth / 2 - 1}px`;
+          svg.style.right = isRTL || isSmallScreen ? `${handleWidth / 2 - 1}px` : 'auto';
+          svg.style.left = isRTL || isSmallScreen ? 'auto' : `${handleWidth / 2 - 1}px`;
           svg.style.top = `${handleHeight / 2 - 1}px`;
-          const sourcePosition = sourceHandle.getAttribute(
-            'data-position',
-          ) as Position;
-          const targetPosition = targetHandle.getAttribute(
-            'data-position',
-          ) as Position;
+          const sourcePosition = sourceHandle.getAttribute('data-position') as Position;
+          const targetPosition = targetHandle.getAttribute('data-position') as Position;
 
           const [edgePath] = getSmoothStepPath({
             sourceX: isRTL || isSmallScreen ? width : 0,

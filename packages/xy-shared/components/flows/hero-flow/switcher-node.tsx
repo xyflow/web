@@ -28,13 +28,13 @@ export default function SwitcherNode({ id, data }: NodeProps<SwitcherNode>) {
       <Handle type="source" position={Position.Right} />
       <RadioGroup value={data.value} onValueChange={onValueChange}>
         {options.map((option) => (
-          <div className="flex items-center space-x-2 nodrag" key={option.value}>
+          <div className="nodrag flex items-center space-x-2" key={option.value}>
             <RadioGroupItem
               value={option.value}
               id={option.value}
               className="text-primary border-primary"
             />
-            <Label htmlFor={option.value} className="cursor-pointer text-light text-xs">
+            <Label htmlFor={option.value} className="text-light cursor-pointer text-xs">
               {option.label}
             </Label>
           </div>

@@ -69,14 +69,14 @@ export function NumNode({ id, data }: NodeProps<NumNode>) {
       </BaseNodeHeader>
 
       <BaseNodeContent>
-        <div className="flex gap-2 items-center">
+        <div className="flex items-center gap-2">
           <Button onClick={handleDecr}>-</Button>
           <pre>{String(data.value).padStart(3, ' ')}</pre>
           <Button onClick={handleIncr}>+</Button>
         </div>
       </BaseNodeContent>
 
-      <BaseNodeFooter className="bg-card items-end px-0 py-1 w-full rounded-b-md">
+      <BaseNodeFooter className="bg-card w-full items-end rounded-b-md px-0 py-1">
         <LabeledHandle title="out" type="source" position={Position.Right} />
       </BaseNodeFooter>
     </BaseNode>

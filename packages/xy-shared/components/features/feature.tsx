@@ -38,19 +38,19 @@ function Feature({
   return (
     <div
       className={cn(
-        'relative md:grid md:grid-cols-2 md:gap-8 ',
+        'relative md:grid md:grid-cols-2 md:gap-8',
         `z-${featureCount - index}`,
         index < featureCount - 1 ? 'mb-16 md:mb-24' : '',
       )}
     >
       <div
         className={cn(
-          'flex flex-col justify-center mb-4',
+          'mb-4 flex flex-col justify-center',
           index % 2 === 0 ? order1Class : order2Class,
         )}
       >
         <div>
-          <Heading size="md" className="font-bold mb-4">
+          <Heading size="md" className="mb-4 font-bold">
             {title}
           </Heading>
           <Text className="mb-8 mt-2 max-w-md" variant="light">
@@ -65,7 +65,7 @@ function Feature({
       </div>
       <div className={index % 2 === 0 ? order2Class : order1Class}>
         <Container className="relative" innerClassName="overflow-visible rounded-[18px]">
-          <div className="h-[300px] md:h-[400px] rounded-[18px] overflow-hidden from-white to-gray-50">
+          <div className="h-[300px] overflow-hidden rounded-[18px] from-white to-gray-50 md:h-[400px]">
             {flowComponent}
           </div>
 
@@ -87,7 +87,7 @@ function Feature({
               type="source"
               to={nextTargetHandleId}
             >
-              <div className="bg-gray-50 dark:bg-muted rounded-b-full shadow-md absolute w-10 h-7 left-1/2 -translate-x-1/2 top-0" />
+              <div className="dark:bg-muted absolute left-1/2 top-0 h-7 w-10 -translate-x-1/2 rounded-b-full bg-gray-50 shadow-md" />
             </Handle>
           )}
         </Container>

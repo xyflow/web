@@ -48,11 +48,11 @@ function ProjectCards({ projects }: ProjectCardsProps) {
             <Heading size="sm" className="flex items-center">
               <Logo className={cn('mr-2', project.className)} /> {project.title}
             </Heading>
-            <Text className="mt-2 mb-4" variant="light">
+            <Text className="mb-4 mt-2" variant="light">
               {project.description}
             </Text>
             <span className={cn('flex items-center', project.className)}>
-              Visit Website <ArrowRightCircleIcon className="ml-1 w-4 h-4" />
+              Visit Website <ArrowRightCircleIcon className="ml-1 h-4 w-4" />
             </span>
           </ContentGridItem>
         );

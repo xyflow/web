@@ -16,7 +16,7 @@ export const metadata: NextraMetadata = {
 const Page: FC = async () => {
   const pageMap = await getLastChangelog();
   return (
-    <BaseLayout className="space-y-32 max-w-screen-lg mx-auto">
+    <BaseLayout className="mx-auto max-w-screen-lg space-y-32">
       <Hero
         title="What's new?"
         align="center"

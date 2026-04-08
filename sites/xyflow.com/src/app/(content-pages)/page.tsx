@@ -60,7 +60,7 @@ const Page: FC = () => {
     <BaseLayout>
       <Hero
         title={
-          <div className="max-sm:text-[42px] max-md:leading-[1.8]">
+          <div className="max-md:leading-[1.8] max-sm:text-[42px]">
             <HeadlineNode>
               Wire
               <Handle
@@ -76,7 +76,7 @@ const Page: FC = () => {
                 type="target"
                 position={'left' as Position}
                 id="xy-wire-target"
-                className="top-1/2 -left-[9px]"
+                className="-left-[9px] top-1/2"
                 svgClassName="stroke-purple-600"
                 handleClassName="border-purple-600"
               />
@@ -100,7 +100,7 @@ const Page: FC = () => {
                 type="target"
                 id="xy-xyflow"
                 position={'right' as Position}
-                className="top-1/2 -translate-y-1/2 -right-[9px]"
+                className="-right-[9px] top-1/2 -translate-y-1/2"
                 svgClassName="stroke-purple-600"
                 handleClassName="border-purple-600"
               />

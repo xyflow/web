@@ -76,10 +76,10 @@ const RootLayout: FC<{
             <Navbar
               align="left"
               logo={
-                <div className="flex space-x-2 items-center">
-                  <Link className="flex space-x-2 items-center" href="/">
+                <div className="flex items-center space-x-2">
+                  <Link className="flex items-center space-x-2" href="/">
                     <Logo className="h-9 w-9" />
-                    <Text className="font-black text-xl leading-none">xyflow</Text>
+                    <Text className="text-xl font-black leading-none">xyflow</Text>
                   </Link>
                 </div>
               }

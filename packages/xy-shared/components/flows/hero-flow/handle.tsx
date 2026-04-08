@@ -15,7 +15,7 @@ export default function HandleComponent({
 }: HandleComponentProps) {
   return (
     <Handle
-      className="w-[10px] h-[10px] bg-gray-400 border-none"
+      className="h-[10px] w-[10px] border-none bg-gray-400"
       position={position}
       style={style}
       {...props}

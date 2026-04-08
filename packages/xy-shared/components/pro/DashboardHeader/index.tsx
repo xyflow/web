@@ -23,7 +23,7 @@ export default function DashboardHeader({
       {title && (
         <div
           className={cn(
-            'flex gap-2 items-center align-center text-3xl font-black mb-2',
+            'align-center mb-2 flex items-center gap-2 text-3xl font-black',
             titleClassName,
           )}
         >
@@ -32,7 +32,7 @@ export default function DashboardHeader({
       )}
       {description && (
         <p
-          className={cn('text-lg text-muted-foreground max-w-2xl', descriptionClassName)}
+          className={cn('text-muted-foreground max-w-2xl text-lg', descriptionClassName)}
         >
           {description}
         </p>

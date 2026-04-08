@@ -61,7 +61,7 @@ const Signup: FC = () => {
           placeholder="Password"
           required
         />
-        <div className="text-light text-sm mt-2">
+        <div className="text-light mt-2 text-sm">
           By signing up, you agree to our{' '}
           <Link
             href="https://xyflow.com/terms-of-use"
@@ -82,7 +82,7 @@ const Signup: FC = () => {
 
       <Button
         size="lg"
-        className="w-full mt-2"
+        className="mt-2 w-full"
         disabled={isLoading}
         loading={isLoading}
         type="submit"

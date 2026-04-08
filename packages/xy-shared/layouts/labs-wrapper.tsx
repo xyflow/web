@@ -31,16 +31,16 @@ export const LabsLayoutWrapper: FC<
 > = ({ children, frontMatter, prev, next }) => {
   return (
     <>
-      <div className="max-w-screen-xl mx-auto px-4">
-        <div className="flex mt-16 items-end">
-          <Link href="." className="mr-1 text-md text-gray-500 font-normal">
+      <div className="mx-auto max-w-screen-xl px-4">
+        <div className="mt-16 flex items-end">
+          <Link href="." className="text-md mr-1 font-normal text-gray-500">
             Labs
           </Link>
-          <ChevronRightIcon className="h-5 w-5 mb-0.5 text-gray-500" />
-          <Text className="ml-1 text-md font-medium">{frontMatter.title}</Text>
+          <ChevronRightIcon className="mb-0.5 h-5 w-5 text-gray-500" />
+          <Text className="text-md ml-1 font-medium">{frontMatter.title}</Text>
         </div>
-        <div className="flex flex-col md:flex-row items-start md:items-center w-full justify-start md:justify-between mt-8">
-          <Heading size="lg" className="!leading-tight text-muted-foreground ">
+        <div className="mt-8 flex w-full flex-col items-start justify-start md:flex-row md:items-center md:justify-between">
+          <Heading size="lg" className="text-muted-foreground !leading-tight">
             {frontMatter.title}
           </Heading>
           <Button asChild className="mt-6">
@@ -57,7 +57,7 @@ export const LabsLayoutWrapper: FC<
         <AuthorList authors={frontMatter.authors} className="mt-6" />
       </div>
 
-      <Container className="mx-auto mt-8 mb-8 bg-gray-50 max-w-screen-xl">
+      <Container className="mx-auto mb-8 mt-8 max-w-screen-xl bg-gray-50">
         <a href={frontMatter.project_url} target="_blank" rel="noopener noreferrer">
           <Image
             src={frontMatter.image}
@@ -68,10 +68,10 @@ export const LabsLayoutWrapper: FC<
         </a>
       </Container>
 
-      <div className="max-w-3xl mx-auto px-6">
+      <div className="mx-auto max-w-3xl px-6">
         {children}
 
-        <div className="flex flex-row gap-4 w-full justify-start">
+        <div className="flex w-full flex-row justify-start gap-4">
           <Button asChild className="mt-6">
             <a href={frontMatter.project_url} target="_blank" rel="noopener noreferrer">
               Open Project

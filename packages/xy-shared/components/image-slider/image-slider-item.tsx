@@ -25,12 +25,12 @@ export default function ImageSliderItem({
     <TabsTrigger
       value={item.name}
       className={cn(
-        'w-full sm:flex flex-col group border-none',
+        'group w-full flex-col border-none sm:flex',
         isActive ? 'flex' : 'hidden',
       )}
       onClick={() => onClick(item.name)}
     >
-      <div className="h-1.5 rounded bg-black/20 w-full">
+      <div className="h-1.5 w-full rounded bg-black/20">
         {isActive && (
           <ProgressBar duration={duration} isActive={isActive} onComplete={onComplete} />
         )}
@@ -39,8 +39,8 @@ export default function ImageSliderItem({
       <div
         className={cn(
           'text-slate-100 transition duration-300 motion-reduce:transition-none',
-          'group-hover:opacity-100 px-2 md:px-4',
-          isActive ? ' opacity-100' : ' opacity-40',
+          'px-2 group-hover:opacity-100 md:px-4',
+          isActive ? 'opacity-100' : 'opacity-40',
         )}
       >
         <Text className="my-2 font-mono">{item.name}</Text>

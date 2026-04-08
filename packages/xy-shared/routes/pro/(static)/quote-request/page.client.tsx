@@ -80,12 +80,12 @@ export const Form: FC = () => {
   return (
     <form className="flex flex-col gap-y-2" onSubmit={onSubmit}>
       <InputLabel>Subscription Plan</InputLabel>
-      <div className="grid grid-cols-3 gap-x-3 px-3 py-2 bg-card rounded-full">
+      <div className="bg-card grid grid-cols-3 gap-x-3 rounded-full px-3 py-2">
         <Button
           type="button"
           className={
             formData.plan === 'starter'
-              ? 'hover:bg-background cursor-default !bg-background !text-primary'
+              ? 'hover:bg-background !bg-background !text-primary cursor-default'
               : 'hover:bg-card'
           }
           variant={formData.plan === 'starter' ? 'outline' : 'ghost'}
@@ -97,7 +97,7 @@ export const Form: FC = () => {
           type="button"
           className={
             formData.plan === 'pro'
-              ? 'hover:bg-background cursor-default !bg-background !text-primary'
+              ? 'hover:bg-background !bg-background !text-primary cursor-default'
               : 'hover:bg-card'
           }
           variant={formData.plan === 'pro' ? 'outline' : 'ghost'}
@@ -109,7 +109,7 @@ export const Form: FC = () => {
           type="button"
           className={
             formData.plan === 'enterprise'
-              ? 'hover:bg-background cursor-default !bg-background !text-primary'
+              ? 'hover:bg-background !bg-background !text-primary cursor-default'
               : 'hover:bg-card'
           }
           variant={formData.plan === 'enterprise' ? 'outline' : 'ghost'}
@@ -136,7 +136,7 @@ export const Form: FC = () => {
         value={formData.name}
         onChange={(evt) => setFormData((fd) => ({ ...fd, name: evt.target.value }))}
       />
-      <InputLabel className="flex gap-2 items-center font-normal">
+      <InputLabel className="flex items-center gap-2 font-normal">
         <Checkbox
           checked={isDifferentEndUser}
           onCheckedChange={(checked) => setIsDifferentEndUser(!!checked)}
@@ -163,17 +163,17 @@ export const Form: FC = () => {
         name="message"
         placeholder="Your message..."
         // These classes are copied from the `<Input />` component.
-        className="px-4 py-2 border border-gray-300 rounded-lg w-full resize-none"
+        className="w-full resize-none rounded-lg border border-gray-300 px-4 py-2"
         rows={5}
         value={formData.message}
         onChange={(evt) => setFormData((fd) => ({ ...fd, message: evt.target.value }))}
       />
-      <InputLabel className="flex gap-2 items-center font-normal my-6">
+      <InputLabel className="my-6 flex items-center gap-2 font-normal">
         <Checkbox required />
         <div>
           <div>
             I have read and agree to the{' '}
-            <Link className="text-sm text-primary" href="https://xyflow.com/terms-of-use">
+            <Link className="text-primary text-sm" href="https://xyflow.com/terms-of-use">
               Terms and Conditions
             </Link>
           </div>
@@ -219,7 +219,7 @@ export default function QuoteRequestPage() {
         align="center"
         backgroundVariant="image"
       />
-      <Card className="p-8 bg-background relative max-w-xl mx-auto mt-16">
+      <Card className="bg-background relative mx-auto mt-16 max-w-xl p-8">
         <Accordion
           defaultValue={['subscription-plan', 'contact-details', 'end-user-details']}
           type="multiple"

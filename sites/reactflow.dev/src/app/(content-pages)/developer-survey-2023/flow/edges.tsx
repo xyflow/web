@@ -74,7 +74,7 @@ export function FocusEdge({
       <BaseEdge id={id} path={edgePath} />
       <EdgeLabelRenderer>
         <div
-          className="flex justify-between nopan"
+          className="nopan flex justify-between"
           style={{
             width: `${length - 512 - 100}px`,
             position: 'absolute',
@@ -84,14 +84,14 @@ export function FocusEdge({
         >
           {data.actions === 'next' || data.actions === 'both' ? (
             <Button onClick={() => focus(target)} className="group" variant="secondary">
-              <ArrowRightIcon className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Button>
           ) : (
             <div />
           )}
           {data.actions === 'prev' || data.actions === 'both' ? (
             <Button onClick={() => focus(source)} className="group" variant="secondary">
-              <ArrowLeftIcon className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+              <ArrowLeftIcon className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
             </Button>
           ) : (
             <div />

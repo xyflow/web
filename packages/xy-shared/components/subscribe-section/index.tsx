@@ -12,21 +12,18 @@ type SubscribeSectionProps = {
   btnLabel?: React.ReactNode;
 };
 
-function SubscribeSection({
-  btnLink = '/pro',
-  btnLabel,
-}: SubscribeSectionProps) {
+function SubscribeSection({ btnLink = '/pro', btnLabel }: SubscribeSectionProps) {
   return (
     <Section className="mx-auto lg:max-w-[800px]">
-      <Heading size="sm" as="h3" className="text-center mb-12 mt-32">
+      <Heading size="sm" as="h3" className="mb-12 mt-32 text-center">
         Get Pro examples, prioritized bug reports, 1:1 support from the maintainers, and
         more with {library} Pro
       </Heading>
       {/* using fallback + text-[hsl(var(--primary))]! allows us to fix issues with xyflow.dev by simply adding fallback as a class to the parent element*/}
-      <div className="flex justify-center space-x-8 fallback">
+      <div className="fallback flex justify-center space-x-8">
         <Button size="lg" asChild variant="pro">
-          <Link href={btnLink} className="flex items-center text-[hsl(var(--primary))]!">
-            <SparklesIcon className="w-5 h-5 mr-1" />
+          <Link href={btnLink} className="text-[hsl(var(--primary))]! flex items-center">
+            <SparklesIcon className="mr-1 h-5 w-5" />
             {btnLabel || `${library} Pro`}
           </Link>
         </Button>

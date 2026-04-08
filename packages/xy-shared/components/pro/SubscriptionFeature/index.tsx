@@ -38,7 +38,7 @@ function SubscriptionFeature({
 
   return (
     <Card
-      className={cn('flex flex-col order-2 pt-2', {
+      className={cn('order-2 flex flex-col pt-2', {
         'bg-muted': !isActive,
         'order-1': isActive,
       })}
@@ -48,12 +48,12 @@ function SubscriptionFeature({
           {title}
         </CardTitle>
         {description && (
-          <CardDescription className="text-md pt-2 text-muted-foreground">
+          <CardDescription className="text-md text-muted-foreground pt-2">
             {description}
           </CardDescription>
         )}
       </CardHeader>
-      <CardFooter className={cn('mt-auto bg-background')}>
+      <CardFooter className={cn('bg-background mt-auto')}>
         {isActive ? (
           <>{button && <ActionButton {...button} />}</>
         ) : isTeamSubscribed ? (
@@ -70,7 +70,7 @@ function SubscriptionFeature({
             {isAdmin ? (
               <div className="ml-auto">
                 <CustomerPortalButton
-                  className="text-primary font-bold text-sm"
+                  className="text-primary text-sm font-bold"
                   variant="link"
                 >
                   Upgrade
@@ -78,7 +78,7 @@ function SubscriptionFeature({
               </div>
             ) : (
               <div className="ml-auto">
-                <Button asChild className="text-primary font-bold text-sm" variant="link">
+                <Button asChild className="text-primary text-sm font-bold" variant="link">
                   <Link href="/pro/subscribe">Subscribe</Link>
                 </Button>
               </div>

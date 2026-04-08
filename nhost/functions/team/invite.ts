@@ -1,7 +1,11 @@
 import { Request, Response } from 'express';
 import { authPost } from '../_utils/middleware';
 import { getSubscription } from '../_utils/graphql/subscriptions';
-import { getIncludedSeats, upsertTeamSubscription, getTeamMembers } from '../_utils/graphql/team-subscriptions';
+import {
+  getIncludedSeats,
+  upsertTeamSubscription,
+  getTeamMembers,
+} from '../_utils/graphql/team-subscriptions';
 import { createUser, getUserIdByEmail } from '../_utils/graphql/users';
 import { getStripeSubscription, updateSeatQuantity } from '../_utils/stripe';
 import { sendMailTemplate } from '../_utils/mailjet';
@@ -9,7 +13,11 @@ import { MAILJET_TEAM_INVITE_TEMPLATE_ID } from '../_utils/constants';
 
 async function sendTeamMemberInviteMail(email: string) {
   if (email) {
-    return await sendMailTemplate(email, 'You have been invited to React Flow Pro!', MAILJET_TEAM_INVITE_TEMPLATE_ID);
+    return await sendMailTemplate(
+      email,
+      'You have been invited to React Flow Pro!',
+      MAILJET_TEAM_INVITE_TEMPLATE_ID,
+    );
   }
   return true;
 }
@@ -35,7 +43,10 @@ async function inviteTeamMember(req: Request, res: Response) {
   ) {
     return res
       .status(400)
-      .send({ message: 'You are not subscribed. To add team members, you need to create a subscription first.' });
+      .send({
+        message:
+          'You are not subscribed. To add team members, you need to create a subscription first.',
+      });
   }
 
   const teamMembers = await getTeamMembers(createdById);
@@ -60,7 +71,9 @@ async function inviteTeamMember(req: Request, res: Response) {
   }
 
   if (paymentConfirmed) {
-    const stripeSubscription = await getStripeSubscription(subscription.stripe_customer_id);
+    const stripeSubscription = await getStripeSubscription(
+      subscription.stripe_customer_id,
+    );
 
     if (!stripeSubscription) {
       return res.status(400).send({ message: 'Something went wrong.' });

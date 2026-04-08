@@ -56,7 +56,7 @@ export function GroupNode({ label, position, ...props }: GroupNodeProps) {
 
   return (
     <BaseNode
-      className="bg-opacity-50 h-full overflow-hidden rounded-sm bg-white"
+      className="h-full overflow-hidden rounded-sm bg-white bg-opacity-50"
       {...props}
     >
       <Panel className="m-0 p-0" position={position}>

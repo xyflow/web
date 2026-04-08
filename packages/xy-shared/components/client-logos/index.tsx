@@ -18,18 +18,18 @@ export default function ClientLogos({
   className?: string;
 }) {
   return (
-    <div className={cn('flex flex-col items-center w-full', className)}>
+    <div className={cn('flex w-full flex-col items-center', className)}>
       <Text variant="light" className="mb-8">
         {title}
       </Text>
-      <div className="grid md:grid-cols-4 grid-cols-2 md:gap-12 gap-8 place-items-center">
+      <div className="grid grid-cols-2 place-items-center gap-8 md:grid-cols-4 md:gap-12">
         {logos.map((logo) => (
           <Image
             key={logo.alt}
             src={logo.src}
             alt={logo.alt}
             className={cn(
-              'w-auto transition-[filter] dark:invert dark:brightness-0 dark:contrast-200',
+              'w-auto transition-[filter] dark:brightness-0 dark:contrast-200 dark:invert',
               logo.className,
             )}
           />

@@ -65,7 +65,7 @@ export function Image({
   imageClassName,
 }: ImageProps) {
   return (
-    <figure className={cn('my-8 mx-0', wide && wideNegativeMargin, className)}>
+    <figure className={cn('mx-0 my-8', wide && wideNegativeMargin, className)}>
       <NxImage
         src={src}
         alt={alt}
@@ -74,15 +74,15 @@ export function Image({
         width={width}
         height={height}
         sizes="100vw"
-        className={cn('w-full h-auto rounded-xl', imageClassName)}
+        className={cn('h-auto w-full rounded-xl', imageClassName)}
       />
       {attribution && (
-        <a href={attribution} className="block mt-2 text-xs text-right text-gray-400">
+        <a href={attribution} className="mt-2 block text-right text-xs text-gray-400">
           source: {attribution}
         </a>
       )}
       {caption && (
-        <figcaption className="mx-6 mt-2 text-gray-400 text-center sm:mx-auto w-3/4">
+        <figcaption className="mx-6 mt-2 w-3/4 text-center text-gray-400 sm:mx-auto">
           {caption}
         </figcaption>
       )}
@@ -113,12 +113,12 @@ export function Embed({ src, lazy, wide = true, className }: EmbedProps) {
   return (
     <div
       className={cn(
-        'relative aspect-video my-8 mx-0 rounded-xl bg-gray-50',
+        'relative mx-0 my-8 aspect-video rounded-xl bg-gray-50',
         wide && wideNegativeMargin,
         className,
       )}
     >
-      <iframe src={src} {...iFrameProps} className="w-full h-full" />
+      <iframe src={src} {...iFrameProps} className="h-full w-full" />
     </div>
   );
 }
@@ -134,7 +134,7 @@ export function YoutubeEmbed({ id, title = 'youtube embed' }: YoutubeEmbedProps)
   return (
     <div
       className={cn(
-        'relative aspect-video my-8 mx-0 rounded-xl bg-gray-50',
+        'relative mx-0 my-8 aspect-video rounded-xl bg-gray-50',
         wideNegativeMargin,
       )}
     >

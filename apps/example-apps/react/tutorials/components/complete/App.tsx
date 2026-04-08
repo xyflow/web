@@ -82,7 +82,7 @@ function Flow() {
   );
 
   return (
-    <div className="h-screen w-screen p-8 bg-gray-50 rounded-xl">
+    <div className="h-screen w-screen rounded-xl bg-gray-50 p-8">
       <ReactFlow
         nodes={nodes}
         edges={edges}

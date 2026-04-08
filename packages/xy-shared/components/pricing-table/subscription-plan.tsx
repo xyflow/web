@@ -33,7 +33,7 @@ function Features({
       {items.map((item, i) => (
         <li key={`feat-${i}`} className="mb-2 flex gap-1">
           <CheckCircleIcon
-            className={cn('w-[21px] h-[21px] shrink-0 mt-0.5', {
+            className={cn('mt-0.5 h-[21px] w-[21px] shrink-0', {
               'text-primary': highlighted,
             })}
           />
@@ -41,8 +41,8 @@ function Features({
             {item.label}
             {item.description && (
               <Tooltip>
-                <TooltipTrigger className="inline ml-0.5">
-                  <InformationCircleIcon className="w-[18px] h-[18px] shrink-0 text-gray-600" />
+                <TooltipTrigger className="ml-0.5 inline">
+                  <InformationCircleIcon className="h-[18px] w-[18px] shrink-0 text-gray-600" />
                 </TooltipTrigger>
                 <TooltipContent className="max-w-[200px]">
                   {item.description}
@@ -84,7 +84,7 @@ function PricingDisplay({
     <div className="ml-4 leading-tight">
       <div className="flex">
         {priceStrikeThrough && (
-          <div className="mr-2 text-light line-through">{priceStrikeThrough.label}</div>
+          <div className="text-light mr-2 line-through">{priceStrikeThrough.label}</div>
         )}
         <div suppressHydrationWarning className="font-bold">
           {currentPrice.label}
@@ -117,13 +117,13 @@ export default function Plan({
       className={cn(
         'p-8 md:p-12 lg:p-14',
         highlighted &&
-          'border-x border-solid border-border bg-gradient-to-b from-primary/5',
+          'border-border from-primary/5 border-x border-solid bg-gradient-to-b',
       )}
     >
-      <div className={cn('font-bold text-4xl', highlighted && 'text-primary')}>
+      <div className={cn('text-4xl font-bold', highlighted && 'text-primary')}>
         {label}
       </div>
-      <div className="text-lg leading-tight h-[120px] relative mt-6">{description}</div>
+      <div className="relative mt-6 h-[120px] text-lg leading-tight">{description}</div>
 
       <div className="mb-8 lg:mb-20">
         <div className="flex">

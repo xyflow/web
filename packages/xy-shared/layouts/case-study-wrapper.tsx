@@ -34,13 +34,13 @@ export const CaseStudyLayoutWrapper: FC<
 > = ({ children, frontMatter, prev, next }) => {
   return (
     <>
-      <div className="max-w-3xl mx-auto px-6">
-        <div className="flex mt-16 items-end">
-          <Link href="." className="mr-1 text-md text-gray-500 font-normal">
+      <div className="mx-auto max-w-3xl px-6">
+        <div className="mt-16 flex items-end">
+          <Link href="." className="text-md mr-1 font-normal text-gray-500">
             Case Studies
           </Link>
-          <ChevronRightIcon className="h-5 w-5 mb-0.5 text-gray-500" />
-          <Text className="ml-1 text-md font-medium">{frontMatter.client}</Text>
+          <ChevronRightIcon className="mb-0.5 h-5 w-5 text-gray-500" />
+          <Text className="text-md ml-1 font-medium">{frontMatter.client}</Text>
         </div>
         <Heading size="lg" className="mt-8 !leading-tight">
           {frontMatter.title}
@@ -48,7 +48,7 @@ export const CaseStudyLayoutWrapper: FC<
         <AuthorList authors={frontMatter.authors} className="mt-6" />
       </div>
 
-      <Container className="mx-auto mt-8 bg-gray-50 max-w-screen-xl">
+      <Container className="mx-auto mt-8 max-w-screen-xl bg-gray-50">
         <Image
           src={frontMatter.image}
           width={frontMatter.image_width}
@@ -57,7 +57,7 @@ export const CaseStudyLayoutWrapper: FC<
         />
       </Container>
 
-      <div className="max-w-3xl mx-auto px-6">
+      <div className="mx-auto max-w-3xl px-6">
         {children}
         <Button asChild>
           <a href={frontMatter.project_url} target="_blank" rel="noopener noreferrer">

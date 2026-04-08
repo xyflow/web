@@ -6,7 +6,7 @@ export default function SwoopyNode({
   data: { label: string; swoopyDir: 'top' | 'bottom' };
 }) {
   return (
-    <div className="text-light flex relative">
+    <div className="text-light relative flex">
       <div
         className={cn(
           'text-2xl',
@@ -17,7 +17,7 @@ export default function SwoopyNode({
       </div>
       <div
         className={cn(
-          'ml-6 text-sm absolute leading-none w-[100px]',
+          'absolute ml-6 w-[100px] text-sm leading-none',
           data.swoopyDir === 'top' ? 'bottom-0 -translate-y-[1px]' : '-translate-y-[2px]',
         )}
       >

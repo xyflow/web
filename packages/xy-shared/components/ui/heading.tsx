@@ -20,8 +20,7 @@ const headingSizes = cva('font-bold leading-snug tracking-[-0.02rem]', {
 });
 
 export interface HeadingProps
-  extends React.HTMLAttributes<HTMLHeadingElement>,
-    VariantProps<typeof headingSizes> {
+  extends React.HTMLAttributes<HTMLHeadingElement>, VariantProps<typeof headingSizes> {
   as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span' | 'div';
 }
 

@@ -48,16 +48,16 @@ function Handle({
         data-position={position}
         data-to={to}
         className={cn(
-          'absolute rounded-full border-2 border-solid bg-background z-20 border-primary',
+          'bg-background border-primary absolute z-20 rounded-full border-2 border-solid',
           handleWidthClass,
           handleHeightClass,
           handleClassName,
         )}
       />
       {type === 'source' && (
-        <svg className="absolute pointer-events-none overflow-visible">
+        <svg className="pointer-events-none absolute overflow-visible">
           <path
-            className={cn('fill-none stroke-2 stroke-primary', svgClassName)}
+            className={cn('stroke-primary fill-none stroke-2', svgClassName)}
             style={{ strokeDasharray: dashed ? '4 2' : 'none' }}
           />
         </svg>

@@ -53,7 +53,7 @@ function Container({
     <div className={cn('p-2', 'flex', containerVariants({ variant, size, className }))}>
       <div
         className={cn(
-          'shadow-md relative overflow-hidden flex-grow',
+          'relative flex-grow overflow-hidden shadow-md',
           innerContainerVariants({ variant, size, className: innerClassName }),
         )}
       >

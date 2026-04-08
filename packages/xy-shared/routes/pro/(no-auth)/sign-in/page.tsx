@@ -1,5 +1,8 @@
 import { NextraMetadata } from 'nextra';
-import { SignInEmailPassword, AuthFormWrapper } from '../../../../components/pro/AuthForms';
+import {
+  SignInEmailPassword,
+  AuthFormWrapper,
+} from '../../../../components/pro/AuthForms';
 
 export const metadata: NextraMetadata = {
   asIndexPage: true,
@@ -13,4 +16,4 @@ export default function SignInEmailPasswordPage() {
       <SignInEmailPassword />
     </AuthFormWrapper>
   );
-};
+}

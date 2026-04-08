@@ -4,10 +4,7 @@ import { jwtSecretKey } from '../_utils/jwt';
 import { sendMailTemplate } from '../_utils/mailjet';
 import { MAILJET_PUBLIC_NEWSLETTER_CONFIRM_TEMPLATE_ID } from '../_utils/constants';
 
-export default async function publicNewsletterSignup(
-  req: Request,
-  res: Response
-) {
+export default async function publicNewsletterSignup(req: Request, res: Response) {
   if (req.method === 'POST') {
     try {
       const email = req.body.email;
@@ -21,7 +18,7 @@ export default async function publicNewsletterSignup(
         email,
         'React Flow Newsletter: Please confirm your subscription',
         MAILJET_PUBLIC_NEWSLETTER_CONFIRM_TEMPLATE_ID,
-        { JWT_TOKEN: token }
+        { JWT_TOKEN: token },
       );
 
       return res.status(200).send({ success });

@@ -51,7 +51,7 @@ export default function DownloadButton({
       loading={isDownloading}
       variant="default"
     >
-      <ArrowDownTrayIcon className="h-4 w-4 mr-1" />
+      <ArrowDownTrayIcon className="mr-1 h-4 w-4" />
       Download ZIP
     </Button>
   );

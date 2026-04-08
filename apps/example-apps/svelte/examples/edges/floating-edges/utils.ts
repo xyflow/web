@@ -22,9 +22,14 @@ function getParams(nodeA: InternalNode, nodeB: InternalNode): [number, number, P
   return [x, y, position];
 }
 
-function getHandleCoordsByPosition(node: InternalNode, handlePosition: Position): [number, number] {
+function getHandleCoordsByPosition(
+  node: InternalNode,
+  handlePosition: Position,
+): [number, number] {
   // all handles are from type source, that's why we use handleBounds.source here
-  const handle = node.internals.handleBounds?.source?.find((h) => h.position === handlePosition);
+  const handle = node.internals.handleBounds?.source?.find(
+    (h) => h.position === handlePosition,
+  );
 
   if (!handle?.width || !handle?.height) {
     return [0, 0];
@@ -60,7 +65,7 @@ function getHandleCoordsByPosition(node: InternalNode, handlePosition: Position)
 function getNodeCenter(node: InternalNode) {
   return {
     x: node.internals.positionAbsolute.x + (node.measured.width ?? 0) / 2,
-    y: node.internals.positionAbsolute.y + (node.measured.height ?? 0) / 2
+    y: node.internals.positionAbsolute.y + (node.measured.height ?? 0) / 2,
   };
 }
 
@@ -75,6 +80,6 @@ export function getEdgeParams(source: InternalNode, target: InternalNode) {
     tx,
     ty,
     sourcePos,
-    targetPos
+    targetPos,
   };
 }

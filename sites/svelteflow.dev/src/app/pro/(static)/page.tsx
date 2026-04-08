@@ -32,7 +32,7 @@ export default function SvelteFlowPro() {
         action={<SignUpButton className="inline-flex" showIcon />}
         backgroundVariant="image"
       >
-        <p className="mt-4 mb-2">
+        <p className="mb-2 mt-4">
           <strong>Svelte Flow is open-source MIT-licensed software</strong>, and it will
           be forever. Our libraries enable thousands of solo developers and organizations
           like Stripe and Linkedin to build their node-based apps. With so many active

@@ -11,14 +11,14 @@ export default function EmailVerificationPage() {
   const linkQueryParams = defaultEmail ? `?email=${defaultEmail}` : '';
 
   return (
-    <div className="mx-auto mt-16 mb-8 max-w-2xl text-center">
-      <h3 className="text-sm font-bold mb-6 flex items-center uppercase tracking-wider text-primary justify-center">
-        <EnvelopeIcon className="inline-block w-6 h-6 mr-1" />
+    <div className="mx-auto mb-8 mt-16 max-w-2xl text-center">
+      <h3 className="text-primary mb-6 flex items-center justify-center text-sm font-bold uppercase tracking-wider">
+        <EnvelopeIcon className="mr-1 inline-block h-6 w-6" />
         Verification
       </h3>
       <Heading className="mb-4 font-black">We just sent you an email</Heading>
 
-      <Text className="text-xl mt-6">
+      <Text className="mt-6 text-xl">
         If you didn{"'"}t receive an email, you can request a new one{' '}
         <Link
           className="text-primary hover:underline"

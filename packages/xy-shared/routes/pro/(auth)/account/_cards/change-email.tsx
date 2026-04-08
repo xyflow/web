@@ -47,7 +47,7 @@ const ChangeEmailCard: FC<{ userEmail: string }> = ({ userEmail }) => {
         {error && <CardDescription className="text-red-500">{error}</CardDescription>}
       </CardHeader>
       <CardFooter className="bg-muted space-x-10">
-        <form onSubmit={handleSubmit} className="flex justify-between w-full">
+        <form onSubmit={handleSubmit} className="flex w-full justify-between">
           <div className="flex-1">
             <InputLabel htmlFor="email">New Email</InputLabel>
             <Input
@@ -63,7 +63,7 @@ const ChangeEmailCard: FC<{ userEmail: string }> = ({ userEmail }) => {
           </div>
           <Button
             disabled={isLoading || needsEmailVerification}
-            className="shrink-0 ml-auto mt-auto"
+            className="ml-auto mt-auto shrink-0"
             type="submit"
           >
             Update Email

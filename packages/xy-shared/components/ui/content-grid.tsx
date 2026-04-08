@@ -13,7 +13,7 @@ export type ContentGridProps = {
  */
 export function ContentGrid({ className, children }: ContentGridProps) {
   return (
-    <div className={cn('grid  grid-cols-1 lg:grid-cols-2', className)}>{children}</div>
+    <div className={cn('grid grid-cols-1 lg:grid-cols-2', className)}>{children}</div>
   );
 }
 
@@ -51,7 +51,7 @@ export function ContentGridItem({ className, route, children }: ContentGridItemP
   return (
     <LinkOrDiv
       className={cn(
-        'hover:bg-muted px-8 py-10 lg:py-16 z-10',
+        'hover:bg-muted z-10 px-8 py-10 lg:py-16',
         route && 'cursor-pointer',
         className,
       )}

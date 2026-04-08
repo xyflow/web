@@ -20,8 +20,7 @@ const footerVariants = cva('bg-black print:bg-transparent py-12 lg:py-18', {
   },
 });
 export interface FooterProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof footerVariants> {
+  extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof footerVariants> {
   message?: {
     title: string;
     text: string;
@@ -51,14 +50,14 @@ const Footer = forwardRef<HTMLDivElement, FooterProps>(
   ) => {
     return (
       <footer className={cn(footerVariants({ variant, className }))} ref={ref}>
-        <div className="mx-auto lg:flex x:max-w-(--nextra-content-width) pl-[max(env(safe-area-inset-left),1.5rem)] pr-[max(env(safe-area-inset-right),1.5rem)]">
-          <div className="lg:max-w-[300px] md:max-w-[600px] lg:mr-24 shrink-0">
+        <div className="x:max-w-(--nextra-content-width) mx-auto pl-[max(env(safe-area-inset-left),1.5rem)] pr-[max(env(safe-area-inset-right),1.5rem)] lg:flex">
+          <div className="shrink-0 md:max-w-[600px] lg:mr-24 lg:max-w-[300px]">
             {message && (
               <>
                 <Text variant="light" className="mb-2">
                   {message.title}
                 </Text>
-                <div className="font-black text-3xl tracking-tight leading-none mb-6 lg:mb-10">
+                <div className="mb-6 text-3xl font-black leading-none tracking-tight lg:mb-10">
                   {message.text}
                 </div>
               </>
@@ -73,8 +72,8 @@ const Footer = forwardRef<HTMLDivElement, FooterProps>(
             )}
           </div>
           <div className="grow">
-            <div className="flex flex-col grow h-[100%]">
-              <div className="grid grid-cols-2 lg:grid-cols-4 grid-gap-4">
+            <div className="flex h-[100%] grow flex-col">
+              <div className="grid-gap-4 grid grid-cols-2 lg:grid-cols-4">
                 {Object.entries(categories).map(([title, items]) => (
                   <div key={title} className="mt-4 lg:mt-0">
                     <Text variant="light" className="text-light mb-2">
@@ -93,7 +92,7 @@ const Footer = forwardRef<HTMLDivElement, FooterProps>(
                 ))}
               </div>
 
-              <Text variant="light" className="pt-6 text-sm mt-auto">
+              <Text variant="light" className="mt-auto pt-6 text-sm">
                 <a href="mailto:info@xyflow.com">info@xyflow.com</a> — Copyright ©{' '}
                 {new Date().getFullYear()}{' '}
                 <a href="https://webkid.io" target="_blank" rel="noopener noreferrer">

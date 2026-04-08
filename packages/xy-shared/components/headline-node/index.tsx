@@ -21,14 +21,14 @@ const linearGradient =
 function HeadlineNode({ children, className, style }: HeadlineNodeProps) {
   return (
     <span
-      className={cn(['relative shadow-lg py-2 rounded-xl bg-background', className])}
+      className={cn(['bg-background relative rounded-xl py-2 shadow-lg', className])}
       style={style}
     >
       <span
         style={{
           backgroundImage: linearGradient,
         }}
-        className="px-2 md:px-4 lg:px-7 text-transparent bg-clip-text"
+        className="bg-clip-text px-2 text-transparent md:px-4 lg:px-7"
       >
         {children}
       </span>

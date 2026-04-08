@@ -24,15 +24,15 @@ function ListWrapper({
 }: ListWrapperProps) {
   return (
     <div className={cn('flex justify-center', className)} id={id}>
-      <div className="max-w-3xl w-full">
+      <div className="w-full max-w-3xl">
         {Icon && (
-          <div className="flex justify-center items-center mb-4">
-            <Icon className={cn('w-8 h-8', iconClassName)} />
+          <div className="mb-4 flex items-center justify-center">
+            <Icon className={cn('h-8 w-8', iconClassName)} />
           </div>
         )}
         <div className="text-center text-4xl font-bold">{title}</div>
         {subtitle && (
-          <div className="text-center text-light text-lg mt-2">{subtitle}</div>
+          <div className="text-light mt-2 text-center text-lg">{subtitle}</div>
         )}
 
         <div className="mt-12">{children}</div>

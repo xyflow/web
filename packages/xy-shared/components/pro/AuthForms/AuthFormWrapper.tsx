@@ -34,9 +34,9 @@ const AuthFormWrapper = ({
       <Suspense fallback={null}>
         <ExpiredTokenNotification />
       </Suspense>
-      <div className="flex mt-10">
+      <div className="mt-10 flex">
         {showHero && (
-          <div className="hidden lg:block flex-1 max-w-xl mt-6 relative p-4">
+          <div className="relative mt-6 hidden max-w-xl flex-1 p-4 lg:block">
             <Heading className="mb-4 font-black">
               Build Better Node-Based UIs with{' '}
               <span className="text-primary">{library}</span>
@@ -47,11 +47,11 @@ const AuthFormWrapper = ({
             </Text>
           </div>
         )}
-        <div className="flex flex-1 flex-col items-center z-20">
+        <div className="z-20 flex flex-1 flex-col items-center">
           {/* <div className="mb-5 flex flex-col items-center">
           <Logo />
         </div> */}
-          <Card className="max-w-sm w-full">
+          <Card className="w-full max-w-sm">
             <CardHeader>
               {title && <CardTitle>{title}</CardTitle>}
               {description && <CardDescription>{description}</CardDescription>}
@@ -60,9 +60,9 @@ const AuthFormWrapper = ({
               {children}
               {showOAuth && (
                 <>
-                  <div className="relative flex py-3 items-center">
+                  <div className="relative flex items-center py-3">
                     <div className="flex-grow border-t border-slate-200"></div>
-                    <span className="flex-shrink mx-4 text-muted-foreground">or</span>
+                    <span className="text-muted-foreground mx-4 flex-shrink">or</span>
                     <div className="flex-grow border-t border-slate-200"></div>
                   </div>
                   <SignInOAuth />
@@ -70,10 +70,10 @@ const AuthFormWrapper = ({
               )}
             </CardContent>
           </Card>
-          <div className="flex flex-col space-y-2 mt-5">
+          <div className="mt-5 flex flex-col space-y-2">
             {links.map((link) => (
               <div
-                className="flex items-center space-x-1 hover:text-primary text-muted-foreground text-sm font-bold cursor-pointer"
+                className="hover:text-primary text-muted-foreground flex cursor-pointer items-center space-x-1 text-sm font-bold"
                 key={link.href}
               >
                 <ArrowLongRightIcon className="h-4 w-4" />

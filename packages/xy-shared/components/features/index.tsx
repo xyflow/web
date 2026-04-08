@@ -34,4 +34,3 @@ function Features({ features, className }: FeaturesProps) {
 }
 
 export { Features, Feature, type FeatureProps, type FeaturesProps };
-

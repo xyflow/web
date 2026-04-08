@@ -13,7 +13,7 @@ const TabsList = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <TabsPrimitive.List
     ref={ref}
-    className={cn('flex gap-x-0 mb-4 border-b border-border', className)}
+    className={cn('border-border mb-4 flex gap-x-0 border-b', className)}
     {...props}
   />
 ));
@@ -27,9 +27,7 @@ const TabsTrigger = React.forwardRef<
   <TabsPrimitive.Trigger
     ref={ref}
     className={cn(
-      `px-2 mr-2 border-b-2 border-transparent rounded-none -mb-px 
-      hover:text-inherit hover:border-border
-      data-[state=active]:border-primary data-[state=active]:text-primary `,
+      `hover:border-border data-[state=active]:border-primary data-[state=active]:text-primary -mb-px mr-2 rounded-none border-b-2 border-transparent px-2 hover:text-inherit`,
       className,
     )}
     {...props}

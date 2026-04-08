@@ -19,14 +19,14 @@ export function NotFoundLayout({ children }: NotFoundLayoutProps) {
     <BaseLayout>
       <Hero
         title={
-          <div className="flex justify-center gap-12 lg:gap-24 lg:text-[5ch] mt-12 lg:mt-32 pb-24">
+          <div className="mt-12 flex justify-center gap-12 pb-24 lg:mt-32 lg:gap-24 lg:text-[5ch]">
             <HeadlineNode>
               4
               <Handle
                 type="target"
                 position={Position.Right}
                 id="4-target"
-                className="top-1/2 -right-[8px]"
+                className="-right-[8px] top-1/2"
                 handleWidthClass="w-4"
                 handleHeightClass="h-8"
                 handleClassName="border-none bg-primary"
@@ -38,7 +38,7 @@ export function NotFoundLayout({ children }: NotFoundLayoutProps) {
               <Handle
                 type="source"
                 position={Position.Left}
-                className="top-1/2 -left-[8px]"
+                className="-left-[8px] top-1/2"
                 handleClassName="border-none bg-primary"
                 handleWidthClass="w-4"
                 handleHeightClass="h-8"
@@ -50,7 +50,7 @@ export function NotFoundLayout({ children }: NotFoundLayoutProps) {
               <Handle
                 type="source"
                 position={Position.Right}
-                className="top-1/2 -right-[8px]"
+                className="-right-[8px] top-1/2"
                 handleClassName="border-none bg-primary"
                 handleWidthClass="w-4"
                 handleHeightClass="h-8"
@@ -66,7 +66,7 @@ export function NotFoundLayout({ children }: NotFoundLayoutProps) {
                 type="target"
                 position={Position.Left}
                 id="4.1-target"
-                className="top-1/2 -left-[8px]"
+                className="-left-[8px] top-1/2"
                 handleClassName="border-none bg-primary"
                 handleWidthClass="w-4"
                 handleHeightClass="h-8"
@@ -79,13 +79,13 @@ export function NotFoundLayout({ children }: NotFoundLayoutProps) {
         size="xl"
         backgroundVariant="gradient"
       >
-        <div className="flex flex-col items-center -mt-[40px]">
+        <div className="-mt-[40px] flex flex-col items-center">
           <Text size="lg" className="block">
             We couldn&apos;t find that page.
           </Text>
           <Link href="/">
             <Text>
-              Go Home <ArrowRightCircleIcon className="inline w-6 h-6 ml-1" />
+              Go Home <ArrowRightCircleIcon className="ml-1 inline h-6 w-6" />
             </Text>
           </Link>
         </div>

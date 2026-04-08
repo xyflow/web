@@ -7,7 +7,7 @@ export const metadata = {
   robots: 'noindex, nofollow',
 };
 
-export default function SignUpEduPage () {
+export default function SignUpEduPage() {
   return (
     <div className="max-w-2xl">
       <DashboardHeader
@@ -21,4 +21,4 @@ export default function SignUpEduPage () {
       </Card>
     </div>
   );
-};
+}

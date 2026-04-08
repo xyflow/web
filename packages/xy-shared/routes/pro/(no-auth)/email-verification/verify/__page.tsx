@@ -18,4 +18,4 @@ export default async function EmailVerificationVerifyPage(props: PageProps) {
   }
 
   redirect('/?error=invalid-ticket');
-};
+}

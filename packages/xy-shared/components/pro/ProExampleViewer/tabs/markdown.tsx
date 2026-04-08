@@ -19,25 +19,25 @@ PrismLight.registerLanguage('bash', bash);
 const markdownComponents = {
   h1: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1
-      className="mt-2 text-3xl tracking-tight text-slate-900 dark:text-slate-100 font-bold"
+      className="mt-2 text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-100"
       {...props}
     />
   ),
   h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h2
-      className="tracking-tight text-slate-900 dark:text-slate-100 font-bold mt-10 pb-1 text-3xl"
+      className="mt-10 pb-1 text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-100"
       {...props}
     />
   ),
   h3: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h3
-      className="tracking-tight text-slate-900 dark:text-slate-100 font-bold mt-10 pb-1 text-2xl"
+      className="mt-10 pb-1 text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100"
       {...props}
     />
   ),
   h4: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h4
-      className="tracking-tight text-slate-900 dark:text-slate-100 font-bold mt-10 pb-1 text-xl"
+      className="mt-10 pb-1 text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100"
       {...props}
     />
   ),
@@ -50,7 +50,7 @@ const markdownComponents = {
   pre: (props: React.HTMLAttributes<HTMLPreElement>) => (
     <PrismLight
       style={prismTheme}
-      className="!text-sm !bg-slate-100 !dark:bg-slate-800 !rounded-md [&>code]:!bg-transparent !mt-4 !mb-2"
+      className="!dark:bg-slate-800 !mb-2 !mt-4 !rounded-md !bg-slate-100 !text-sm [&>code]:!bg-transparent"
       language="ts"
     >
       {/* @ts-expect-error - not sure how to type this */}
@@ -58,13 +58,13 @@ const markdownComponents = {
     </PrismLight>
   ),
   code: (props: React.HTMLAttributes<HTMLElement>) => (
-    <code className="bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded-md" {...props} />
+    <code className="rounded-md bg-slate-100 px-1 py-0.5 dark:bg-slate-800" {...props} />
   ),
   ul: (props: React.HTMLAttributes<HTMLUListElement>) => (
-    <ul className="list-disc list-inside [&_ul]:ml-4 [&_ol]:ml-4" {...props} />
+    <ul className="list-inside list-disc [&_ol]:ml-4 [&_ul]:ml-4" {...props} />
   ),
   ol: (props: React.HTMLAttributes<HTMLOListElement>) => (
-    <ol className="list-decimal list-inside [&_ul]:ml-4 [&_ol]:ml-4" {...props} />
+    <ol className="list-inside list-decimal [&_ol]:ml-4 [&_ul]:ml-4" {...props} />
   ),
   // There's some gnarly destructuring here but we need to pull things out so we
   // can style the table with tailwind properly...
@@ -87,7 +87,7 @@ const markdownComponents = {
 
     return (
       <table className="mt-4" {...props}>
-        <thead className="text-left border-b border-slate-100" {...thead}>
+        <thead className="border-b border-slate-100 text-left" {...thead}>
           <tr>
             {/* @ts-expect-error - complex table structure */}
             {theadChildren?.props.children.map((th, index) => {

@@ -3,9 +3,7 @@ import { verify } from 'jsonwebtoken';
 export const jwtSecretKey = JSON.parse(process.env.NHOST_JWT_SECRET!).key;
 
 // retrieve the user id from the access token
-export function getUserIdFromAuthToken(
-  authToken: string | undefined
-): string | null {
+export function getUserIdFromAuthToken(authToken: string | undefined): string | null {
   if (!authToken) {
     return null;
   }

@@ -50,12 +50,12 @@ export default function ImageSliderItems({
             key={index}
             forceMount
             value={item.name}
-            className="h-full w-full absolute"
+            className="absolute h-full w-full"
           >
             <div
               className={cn(
-                'transition duration-300 motion-reduce:transition-none h-full relative',
-                active === item.name ? 'ease-out opacity-100' : 'ease-in opacity-0',
+                'relative h-full transition duration-300 motion-reduce:transition-none',
+                active === item.name ? 'opacity-100 ease-out' : 'opacity-0 ease-in',
               )}
             >
               {item.content}
@@ -64,7 +64,7 @@ export default function ImageSliderItems({
         ))}
       </div>
 
-      <TabsList className="flex justify-around gap-8 mt-8 bg-transparent border-none">
+      <TabsList className="mt-8 flex justify-around gap-8 border-none bg-transparent">
         {items.map((item, index) => (
           <ImageSliderItem
             key={index}

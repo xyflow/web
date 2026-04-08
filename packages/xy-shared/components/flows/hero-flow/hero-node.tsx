@@ -17,7 +17,7 @@ export default function HeroNode({ data }: NodeProps<HeroNode>) {
 
   return (
     <Wrapper label={label}>
-      <div className="w-full h-[200px]">
+      <div className="h-[200px] w-full">
         <Fiber
           color={color?.data.value}
           shape={shape?.data.value}

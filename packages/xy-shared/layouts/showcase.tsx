@@ -95,13 +95,13 @@ export function ShowcaseLayout({
         backgroundVariant="gradient"
       />
 
-      <div className="flex justify-center items-center flex-wrap gap-x-2 gap-y-4 max-w-4xl mx-auto">
+      <div className="mx-auto flex max-w-4xl flex-wrap items-center justify-center gap-x-2 gap-y-4">
         {Array.from(all).map((tag, i) => (
           <Tag key={i} name={tag} selected={selected.has(tag)} onClick={toggle} />
         ))}
       </div>
 
-      <ContentGrid className="mt-8 md:grid-cols-2 lg:grid-cols-3 border-none gap-4 lg:gap-8">
+      <ContentGrid className="mt-8 gap-4 border-none md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
         {visibleItems.map((item) =>
           isCaseStudy(item) ? (
             <CaseStudyPreview
@@ -112,12 +112,12 @@ export function ShowcaseLayout({
           ) : (
             <ContentGridItem
               key={item.id}
-              className="border-none py-6 lg:py-8 lg:px-0 hover:bg-transparent relative"
+              className="relative border-none py-6 hover:bg-transparent lg:px-0 lg:py-8"
             >
               <ProjectPreview
                 image={item.image}
                 title={item.title}
-                className="relative h-full flex-col flex"
+                className="relative flex h-full flex-col"
                 imageWrapperClassName="w-full"
                 subtitle={
                   <>
@@ -127,7 +127,7 @@ export function ShowcaseLayout({
                         name={tag.name}
                         selected={selected.has(tag.name)}
                         onClick={toggle}
-                        className="mr-2 mb-2"
+                        className="mb-2 mr-2"
                       />
                     ))}
                   </>
@@ -171,7 +171,7 @@ function Tag({ name, selected = false, onClick, className }: TagProps) {
   return (
     <button
       className={cn(
-        'rounded-xl text-xs px-2 py-1 cursor-pointer bg-muted hover:bg-primary hover:text-white',
+        'bg-muted hover:bg-primary cursor-pointer rounded-xl px-2 py-1 text-xs hover:text-white',
         { 'bg-primary text-white': selected },
         className,
       )}
@@ -220,13 +220,13 @@ function CaseStudyPreview({
       className="col-span-full"
       innerClassName="px-4 py-8 flex flex-wrap gap-12 relative w-full items-center shadow-none bg-card/10 lg:px-12 lg:py-12"
     >
-      <div className="max-md:w-full max-md:order-2 md:w-1/2">
+      <div className="max-md:order-2 max-md:w-full md:w-1/2">
         <Text className="text-primary mb-4">{data.client}</Text>
         <Heading size="sm" className="mb-4">
           {data.title}
         </Heading>
         <Text className="mb-6">{data.description}</Text>
-        <div className="grid md:flex gap-4">
+        <div className="grid gap-4 md:flex">
           <Button
             asChild
             size="lg"
@@ -242,17 +242,17 @@ function CaseStudyPreview({
               className="flex items-center"
               rel="noreferrer"
             >
-              Project Website <ArrowRightCircleIcon className="ml-1 w-4 h-4" />
+              Project Website <ArrowRightCircleIcon className="ml-1 h-4 w-4" />
             </a>
           </Button>
         </div>
       </div>
-      <div className="max-md:w-full max-md:order-1 aspect-video md:w-1/2 relative flex-1 rounded-md overflow-hidden">
+      <div className="relative aspect-video flex-1 overflow-hidden rounded-md max-md:order-1 max-md:w-full md:w-1/2">
         <Image
           src={data.image}
           alt={data.title}
           fill
-          className="object-cover w-full h-full"
+          className="h-full w-full object-cover"
           sizes="(max-width: 768px) 100vw, 500px"
         />
       </div>

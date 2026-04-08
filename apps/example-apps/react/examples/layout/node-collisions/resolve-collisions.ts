@@ -107,4 +107,3 @@ export const resolveCollisions: CollisionAlgorithm = (
 
   return newNodes;
 };
-

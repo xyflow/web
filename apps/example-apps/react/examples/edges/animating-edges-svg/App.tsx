@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  ReactFlow,
-  useNodesState,
-  useEdgesState,
-  Background,
-} from '@xyflow/react';
+import { ReactFlow, useNodesState, useEdgesState, Background } from '@xyflow/react';
 
 import '@xyflow/react/dist/style.css';
 
@@ -19,9 +14,7 @@ const edgeTypes = {
   animatedSvg: AnimatedSVGEdge,
 };
 
-const initialEdges = [
-  { id: '1->2', type: 'animatedSvg', source: '1', target: '2' },
-];
+const initialEdges = [{ id: '1->2', type: 'animatedSvg', source: '1', target: '2' }];
 
 const EdgesFlow = () => {
   const [nodes, , onNodesChange] = useNodesState(initialNodes);

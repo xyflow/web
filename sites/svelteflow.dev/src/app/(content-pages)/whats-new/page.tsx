@@ -16,14 +16,13 @@ export const metadata: NextraMetadata = {
 const Page: FC = async () => {
   const pageMap = await getLastChangelog();
   return (
-    <BaseLayout className="space-y-32 max-w-screen-lg mx-auto">
+    <BaseLayout className="mx-auto max-w-screen-lg space-y-32">
       <Hero
         title="What's new?"
         align="center"
         subtitle={
           <>
-            Here you can find the latest news about the Svelte Flow library and
-            the docs.
+            Here you can find the latest news about the Svelte Flow library and the docs.
           </>
         }
         kicker="Timeline"

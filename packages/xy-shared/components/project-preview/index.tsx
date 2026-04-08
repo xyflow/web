@@ -76,7 +76,7 @@ export function ProjectPreview({
             lightSrc={image}
             darkSrc={imageDark}
             alt={alt}
-            className="object-cover group-hover:scale-105 transition-transform"
+            className="object-cover transition-transform group-hover:scale-105"
             fill
             sizes="(max-width: 768px) 100vw, 500px"
           />
@@ -96,13 +96,13 @@ export function ProjectPreview({
         </Text>
       )}
       <AuthorList noLink={!route} authors={authors} className="mt-6" />
-      <Text className="leading-snug my-4" variant={descriptionVariant}>
+      <Text className="my-4 leading-snug" variant={descriptionVariant}>
         {description}
       </Text>
-      <div className="flex gap-4 mt-auto">
+      <div className="mt-auto flex gap-4">
         <Button asChild variant="link" className={cn('text-md', linkClassName)}>
           <LinkOrSpan route={route} className="flex items-center">
-            {linkLabel} <ArrowRightCircleIcon className="ml-1 w-4 h-4" />
+            {linkLabel} <ArrowRightCircleIcon className="ml-1 h-4 w-4" />
           </LinkOrSpan>
         </Button>
         {altRoute && (
@@ -113,7 +113,7 @@ export function ProjectPreview({
               rel="noopener noreferrer"
               className="flex items-center"
             >
-              {altRoute.label} <ArrowRightCircleIcon className="ml-1 w-4 h-4" />
+              {altRoute.label} <ArrowRightCircleIcon className="ml-1 h-4 w-4" />
             </a>
           </Button>
         )}

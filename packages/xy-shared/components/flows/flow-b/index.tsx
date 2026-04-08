@@ -64,20 +64,20 @@ function CreatorNode() {
 
   return (
     <NodeWrapper
-      className="border border-gray-600 rounded-lg bg-[#1e1e1e] shadow-md"
+      className="rounded-lg border border-gray-600 bg-[#1e1e1e] shadow-md"
       title="Node Creator"
     >
       <form onSubmit={onSubmit}>
-        <label className="block text-xs font-mono text-gray-400 mb-1">Name</label>
+        <label className="mb-1 block font-mono text-xs text-gray-400">Name</label>
         <Input
           name="name"
           type="text"
           required
-          className="rounded-sm text-xs font-mono border-gray-700 text-gray-400 bg-[#323232] w-full"
+          className="w-full rounded-sm border-gray-700 bg-[#323232] font-mono text-xs text-gray-400"
         />
-        <label className="block text-xs font-mono text-gray-400 mb-1 mt-2">Shape</label>
+        <label className="mb-1 mt-2 block font-mono text-xs text-gray-400">Shape</label>
         <Select name="shape" value={shapeValue} onValueChange={setShapeValue}>
-          <SelectTrigger className="rounded-sm text-xs font-mono border border-gray-700 bg-gray-800 bg-[#323232] text-gray-400 w-full">
+          <SelectTrigger className="w-full rounded-sm border border-gray-700 bg-[#323232] bg-gray-800 font-mono text-xs text-gray-400">
             <SelectValue placeholder="Rectangle" />
           </SelectTrigger>
           <SelectContent>
@@ -87,7 +87,7 @@ function CreatorNode() {
         </Select>
         <button
           type="submit"
-          className="mt-4 bg-gray-700 text-white text-xs font-mono py-2 px-4 rounded-md bg-primary hover:bg-gray-600 w-full"
+          className="bg-primary mt-4 w-full rounded-md bg-gray-700 px-4 py-2 font-mono text-xs text-white hover:bg-gray-600"
         >
           Add
         </button>
@@ -95,7 +95,7 @@ function CreatorNode() {
       <Handle
         type="source"
         position={Position.Bottom}
-        className="w-5 h-2.5 rounded bg-gray-500 border-none"
+        className="h-2.5 w-5 rounded border-none bg-gray-500"
       />
     </NodeWrapper>
   );
@@ -138,7 +138,7 @@ function Flow() {
         position="top-right"
         showInteractive={false}
         showFitView={false}
-        className="rounded-lg overflow-hidden"
+        className="overflow-hidden rounded-lg"
       ></Controls>
     </ReactFlow>
   );

@@ -5,4 +5,3 @@ export type SliderItem = {
   text: string;
   content: ReactNode;
 };
-

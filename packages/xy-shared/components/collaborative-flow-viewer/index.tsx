@@ -72,7 +72,7 @@ export default function CollaborativeFlowViewer({
 
   return (
     <div className="flex flex-col gap-4 pt-4">
-      <Button asChild className="shrink-0 max-w-64">
+      <Button asChild className="max-w-64 shrink-0">
         <Link
           href={`${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/react/collaborative?flow=${flowId}`}
           target="_blank"
@@ -82,7 +82,7 @@ export default function CollaborativeFlowViewer({
       </Button>
       <Container className={'mt-7'} variant="default">
         <div className={teaserClasses}>
-          <Text className="flex-1 basis-full max-w-xl">
+          <Text className="max-w-xl flex-1 basis-full">
             <strong>This is a Pro Example.</strong> Get{' '}
             <Link className="underline" href="/examples/pro">
               all pro examples
@@ -102,7 +102,7 @@ export default function CollaborativeFlowViewer({
               <Button
                 asChild
                 variant="secondary"
-                className="text-primary dark:text-white shrink-0"
+                className="text-primary shrink-0 dark:text-white"
               >
                 <a href={signInLink}>Sign In</a>
               </Button>
@@ -111,7 +111,7 @@ export default function CollaborativeFlowViewer({
         </div>
 
         <div className="flex gap-2">
-          <div className="w-1/2 h-[645px]">
+          <div className="h-[645px] w-1/2">
             {flowId && (
               <iframe
                 src={iframeSrc}
@@ -120,7 +120,7 @@ export default function CollaborativeFlowViewer({
               />
             )}
           </div>
-          <div className="border-l-gray-200 border-l-2 w-1/2 h-[645px]">
+          <div className="h-[645px] w-1/2 border-l-2 border-l-gray-200">
             {flowId && (
               <iframe
                 src={iframeSrc}

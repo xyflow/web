@@ -16,10 +16,14 @@ async function deleteUserHandler(req: Request, res: Response) {
     const subscription = await getSubscription(userId);
 
     if (subscription && subscription.stripe_customer_id) {
-      const stripeSubscription = await getStripeSubscription(subscription.stripe_customer_id);
+      const stripeSubscription = await getStripeSubscription(
+        subscription.stripe_customer_id,
+      );
 
       if (stripeSubscription) {
-        await stripe.subscriptions.update(stripeSubscription.id, { cancel_at_period_end: true });
+        await stripe.subscriptions.update(stripeSubscription.id, {
+          cancel_at_period_end: true,
+        });
       }
     }
   } catch (err) {

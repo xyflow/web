@@ -28,15 +28,15 @@ const Page: FC = () => {
         title="We’re happy to answer any questions you have."
         subtitle="Messages go to our email inbox and we aim to respond within a couple of days."
       />
-      <Card className="relative mt-16 md:mt-32 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 p-2 md:p-4">
+      <Card className="relative mt-16 grid grid-cols-1 gap-4 p-2 md:mt-32 md:grid-cols-2 md:gap-8 md:p-4">
         <div
-          className="absolute opacity-5 w-full h-[200%] left-1/2 -translate-x-1/2 -translate-y-1/4 pointer-events-none"
+          className="pointer-events-none absolute left-1/2 h-[200%] w-full -translate-x-1/2 -translate-y-1/4 opacity-5"
           style={{
             background:
               'radial-gradient(rgba(68,91,222,1) 0%, rgba(215,78,243,1) 25%, rgba(255,255,255,1) 50%)',
           }}
         />
-        <Card className="p-8 bg-background relative">
+        <Card className="bg-background relative p-8">
           <ContactForm action={submitContact}>
             <InputLabel>
               <span>Your Email</span>
@@ -63,13 +63,13 @@ const Page: FC = () => {
                 name="message"
                 required
                 // These classes are copied from the `<Input />` component.
-                className="px-4 py-2 border border-gray-300 rounded-lg w-full h-32 md:h-64"
+                className="h-32 w-full rounded-lg border border-gray-300 px-4 py-2 md:h-64"
               />
             </InputLabel>
           </ContactForm>
         </Card>
 
-        <div className="py-8 px-24 space-y-8">
+        <div className="space-y-8 px-24 py-8">
           <Text size="lg">You can also find us on...</Text>
 
           <div className="divide-y divide-gray-200">
@@ -78,7 +78,7 @@ const Page: FC = () => {
                 <Text size="sm" className="group-hover:underline">
                   {name}
                 </Text>
-                <ArrowRightCircleIcon className="w-5 h-5" />
+                <ArrowRightCircleIcon className="h-5 w-5" />
               </Link>
             ))}
           </div>

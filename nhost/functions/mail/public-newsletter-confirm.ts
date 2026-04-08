@@ -4,10 +4,7 @@ import { jwtSecretKey } from '../_utils/jwt';
 import { subscribeMailingList } from '../_utils/mailjet';
 import { MAILJET_PUBLIC_MAILING_LIST_ID } from '../_utils/constants';
 
-export default async function publicNewsletterConfirm(
-  req: Request,
-  res: Response
-) {
+export default async function publicNewsletterConfirm(req: Request, res: Response) {
   const token = req.query.token?.toString() || '';
 
   try {
@@ -15,10 +12,7 @@ export default async function publicNewsletterConfirm(
 
     if (tokenDecoded.email) {
       // subscribe to public mailing list
-      await subscribeMailingList(
-        tokenDecoded.email,
-        MAILJET_PUBLIC_MAILING_LIST_ID
-      );
+      await subscribeMailingList(tokenDecoded.email, MAILJET_PUBLIC_MAILING_LIST_ID);
     }
 
     return res.redirect('https://reactflow.dev/newsletter-thank-you');

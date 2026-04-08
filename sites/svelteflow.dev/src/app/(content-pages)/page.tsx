@@ -36,7 +36,7 @@ const sliderItems = [
         loading="lazy"
         width="100%"
         height="100%"
-        className="rounded-xl overflow-hidden pointer-events-none"
+        className="pointer-events-none overflow-hidden rounded-xl"
       />
     ),
   },
@@ -49,7 +49,7 @@ const sliderItems = [
         loading="lazy"
         width="100%"
         height="100%"
-        className="rounded-xl overflow-hidden pointer-events-none"
+        className="pointer-events-none overflow-hidden rounded-xl"
       />
     ),
   },
@@ -62,7 +62,7 @@ const sliderItems = [
         loading="lazy"
         width="100%"
         height="100%"
-        className="rounded-xl overflow-hidden pointer-events-none"
+        className="pointer-events-none overflow-hidden rounded-xl"
       />
     ),
   },
@@ -110,13 +110,13 @@ const Page: FC = async () => {
           <div className="flex">
             <Button asChild className="mr-3" size="lg">
               <Link href="/learn">
-                <BoltIcon className="w-5 h-5 mr-1" />
+                <BoltIcon className="mr-1 h-5 w-5" />
                 Quickstart
               </Link>
             </Button>
             <Button size="lg" variant="pro" asChild>
               <Link href="/pro">
-                <SparklesIcon className="w-5 h-5 mr-1" /> Svelte Flow Pro
+                <SparklesIcon className="mr-1 h-5 w-5" /> Svelte Flow Pro
               </Link>
             </Button>
           </div>
@@ -140,7 +140,7 @@ const Page: FC = async () => {
           link="/pro"
           linkLabel={
             <>
-              <SparklesIcon className="w-5 h-5 mr-1" /> Svelte Flow Pro
+              <SparklesIcon className="mr-1 h-5 w-5" /> Svelte Flow Pro
             </>
           }
         />

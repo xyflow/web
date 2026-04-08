@@ -3,8 +3,8 @@ import { Button } from '../../../ui/button';
 function ProExamplePreview({ iframePreviewUrl }: { iframePreviewUrl: string }) {
   return (
     <>
-      <div className="mt-4 mb-2relative min-h-[400px] h-[75vh] max-h-[650px] rounded-sm overflow-hidden border border-border">
-        <iframe className="w-full h-full" src={iframePreviewUrl} />
+      <div className="mb-2relative border-border mt-4 h-[75vh] max-h-[650px] min-h-[400px] overflow-hidden rounded-sm border">
+        <iframe className="h-full w-full" src={iframePreviewUrl} />
       </div>
       <a target="_blank" rel="noreferrer" href={iframePreviewUrl}>
         <Button variant="link">Open preview in a new tab</Button>

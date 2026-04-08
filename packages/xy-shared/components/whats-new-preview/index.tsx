@@ -17,14 +17,14 @@ export default function WhatsNewPreview({
   variant = 'compact',
 }: WhatsNewPreviewProps) {
   return (
-    <ol className="grid grid-cols-1 lg:grid-cols-2 rounded-3xl border border-border gap-x-8 p-8 w-full">
+    <ol className="border-border grid w-full grid-cols-1 gap-x-8 rounded-3xl border p-8 lg:grid-cols-2">
       {items.slice(0, 3).map((item, i) => (
         <li
           key={item.route}
           role="article"
           className={cn(
-            i === 0 && 'row-span-2 h-full flex items-center',
-            i === 1 && 'border-b border-border',
+            i === 0 && 'row-span-2 flex h-full items-center',
+            i === 1 && 'border-border border-b',
             'p-4 py-8',
           )}
         >
@@ -70,7 +70,7 @@ function WhatsNewItemPreview({
             <Link className="hover:underline" href={route}>
               Check it out here
             </Link>
-            <ArrowRightCircleIcon className="w-4 h-4 ml-1" />
+            <ArrowRightCircleIcon className="ml-1 h-4 w-4" />
           </Text>
         </footer>
       )}
