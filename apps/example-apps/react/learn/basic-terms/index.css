@@ -73,7 +73,3 @@ body {
   transform: translate(-15px, -25px) rotate(160deg) scale(-1, 1);
   position: absolute;
 }
-
-.react-flow__edge-textbg {
-  fill: #f7f9fb;
-}
