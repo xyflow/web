@@ -30,7 +30,7 @@ export default function PricingTableComponent() {
     interval: BillingInterval;
   }) => {
     if (plan === SubscriptionPlanId.ENTERPRISE) {
-      return window.open('https://reactflow.dev/pro/enterprise', '_blank');
+      return window.open('/pro/quote-request?plan=enterprise', '_blank');
     }
 
     setLoading(plan, true);
