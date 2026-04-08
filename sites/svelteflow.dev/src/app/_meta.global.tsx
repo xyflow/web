@@ -27,25 +27,29 @@ const metaRecord = {
   learn: {
     items: {
       index: '',
-      'getting-started': {
+      concepts: {
+        title: 'Core Concepts',
         items: {
-          'key-concepts': '',
-          installation: '',
+          'terms-and-definitions': 'Overview',
           'building-a-flow': '',
+          'the-viewport': 'The Viewport',
           'built-in-components': 'Built-in Components',
         },
       },
       customization: {
-        title: 'Customizing Svelte Flow',
+        title: 'Customization',
         items: {
-          'custom-nodes': '',
-          'custom-edges': '',
+          'custom-nodes': 'Nodes',
+          handles: '',
+          'custom-edges': 'Edges',
+          'edge-labels': 'Edge Labels',
+          'utility-classes': '',
           theming: '',
         },
       },
       layouting: {
         items: {
-          'layouting-libraries': '',
+          layouting: 'Overview',
           'sub-flows': '',
         },
       },

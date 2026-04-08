@@ -6,7 +6,7 @@ pagination_next: null
 ---
 
 import { Emoji } from 'xy-shared/components/ui/emoji';
-import { LiteYouTubeEmbed } from 'xy-shared/components/liteyoutube-embed';
+import PlayOnline from 'xy-shared/components/learn/play-online';
 
 # Quick Start
 
@@ -16,8 +16,31 @@ interactive no-code [Playground](https://play.reactflow.dev/).
 
 ## Installation
 
-First, spin up a new React project however you like -- we recommend using
-[Vite](https://vitejs.dev/)
+To install React Flow in your existing React project, run the following command:
+
+```bash copy npm2yarn
+npm install @xyflow/react
+```
+
+<PlayOnline />
+
+## Templates
+
+If you want to get started right away, you can use a template.
+
+### React Flow Vite template
+
+We have a ready-to-use [Vite template](https://github.com/xyflow/vite-react-flow-template)
+that you can use to get up and running in no time.
+
+```bash copy npm2yarn
+npx degit xyflow/vite-react-flow-template app-name
+```
+
+### Vite template with React
+
+To create a new React Flow project from scratch, first, spin up a new React project
+however you like -- we recommend using [Vite](https://vitejs.dev/)
 
 ```bash copy npm2yarn
 npm init vite my-react-flow-app -- --template react

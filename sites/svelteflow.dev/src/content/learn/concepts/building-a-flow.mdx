@@ -1,0 +1,236 @@
+---
+description:
+  A step-by-step guide to creating your first flow diagram with Svelte Flow. Learn how to
+  set up the canvas, add nodes and edges, and enhance your flow with built-in features
+  like viewport fitting and custom node types.
+---
+
+# Building a Flow
+
+In the following pages we will introduce you to the core concepts of Svelte Flow and
+explain how to create a basic interactive flow. A flow consists of
+[nodes](/api-reference/types/node), [edges](/api-reference/types/edge) and the viewport.
+If you haven't reviewed our [Key Concepts](/learn/concepts/terms-and-definitions) yet,
+we recommend doing that first.
+
+To follow along with this guide you will need to have a Svelte project set up and install
+the `@xyflow/svelte` package:
+
+```bash copy npm2yarn
+npm install @xyflow/svelte
+```
+
+## Creating the flow
+
+Let's start by creating an empty flow with viewport
+[`<Controls />`](/api-reference/components/controls) and a dotted
+[`<Background />`](/api-reference/components/background).
+
+<Steps>
+### Add imports 
+
+First, import the Svelte Flow Component and its required styles into your
+project. We'll also import the `Background` component for visual enhancement,
+and the `Controls` component for the viewport controls.
+
+```svelte
+<script>
+import { SvelteFlow, Background, Controls } from '@xyflow/svelte';
+import '@xyflow/svelte/dist/style.css';
+</script>
+```
+
+### Render SvelteFlow
+
+Next, render the main component inside an element with defined dimensions and place the
+[`<Background />`](/api-reference/components/background) and [`<Controls />`](/api-reference/components/controls) components inside `SvelteFlow`.
+
+<Callout type="info">
+  Content inside `SvelteFlow` stays fixed on top of the viewport. The `Background`
+  component transforms its pattern to match viewport movement.
+</Callout>
+
+```svelte
+<div style:width="100vw" style:height="100vh">
+    <SvelteFlow>
+        <Background />
+        <Controls />
+    </SvelteFlow>
+</div>
+```
+
+### Empty flow
+
+That's it! You have created your first empty flow 🎉
+
+If everything is set up correctly, you should see a blank canvas like this:
+
+<RemoteCodeViewer
+  aspectRatio="4" 
+  showEditor={false}
+  route="learn/building-a-flow-1"
+  framework="svelte"
+  showOpenInStackblitz={false}
+/>
+
+</Steps>
+
+## Adding nodes
+
+Now that the flow is set up, let's add some nodes - each node represents an element in
+your diagram with a specific position and content.
+
+<Steps>
+### Create node objects 
+
+Outside of your Svelte component, in the `<script>` tag, create an array of
+[node objects](/api-reference/types/node) with these **required** properties:
+
+- `id`: A unique identifier for each node
+- `position`: The x and y coordinates
+- `data`: An object for storing custom data
+
+We'll use the [`$state.raw`](https://svelte.dev/docs/svelte/$state) rune to make the array
+reactive.
+
+<Callout color="yellow">
+  Simply using `$state` would **not only** make the array reactive, but **every property
+  of each node**, too. This could lead to [performance
+  issues](https://github.com/sveltejs/svelte/issues/11851), so we use
+  [`$state.raw`](https://svelte.dev/docs/svelte/$state#$state.raw) instead.
+</Callout>
+
+```js
+let nodes = $state.raw([
+  {
+    id: 'n1',
+    position: { x: 0, y: 0 },
+    data: { label: 'Node 1' },
+    type: 'input',
+  },
+  {
+    id: 'n2',
+    position: { x: 100, y: 100 },
+    data: { label: 'Node 2' },
+    type: 'output',
+  },
+]);
+```
+
+### Add nodes to the flow
+
+Next, we [bind](https://svelte.dev/docs/svelte/$bindable) the nodes to the
+`SvelteFlow` component. This two-way binding allows both the component and your
+code to modify the nodes. 
+
+
+```svelte "bind:nodes"
+<SvelteFlow bind:nodes>
+```
+
+### `fitView`
+
+We can use the [`fitView`](/api-reference/svelte-flow#fitview) prop to automatically fit the
+initial viewport to the visible nodes.
+
+```svelte "fitView"
+<SvelteFlow bind:nodes fitView>
+```
+
+### Flow with nodes
+
+This gives us a flow with two labeled nodes 🎉
+
+<RemoteCodeViewer
+  route="learn/building-a-flow-2"
+  framework="svelte"
+  editorHeight={400}
+  showOpenInStackblitz={false}
+  showEditor={false}
+/>
+
+</Steps>
+
+
+We have several built-in nodes that you can explore in the
+[node](/api-reference/types/node) reference. However, once you start building your own
+application, you will want to use [custom nodes](/learn/customization/custom-nodes).
+
+
+## Adding edges
+
+Now that we have two nodes, let’s connect them with an edge.
+
+<Steps>
+### Create edge objects
+
+To create an edge, we define an array of [edge](/api-reference/types/edge) objects. 
+
+Each edge object needs to have an `id`, a `source` (where the edge begins), and a `target`
+(where it ends). In this example, we use the `id` values of the two nodes we created so
+far (`n1` and `n2`) to define the edge:
+
+We use the [`$state.raw`](https://svelte.dev/docs/svelte/$state#$state.raw) rune to make the array reactive.
+
+```js
+let edges = $state.raw([
+  { id: 'n1-n2', source: 'n1', target: 'n2' },
+]);
+```
+
+### Add edges to the flow
+
+As with nodes, we [bind](https://svelte.dev/docs/svelte/$bindable) the edges to the
+`SvelteFlow` component.
+
+```svelte "bind:edges"
+<SvelteFlow bind:nodes bind:edges fitView>
+```
+
+Your flow should now look like this:
+
+<RemoteCodeViewer
+  aspectRatio="4"
+  route="learn/building-a-flow-3"
+  framework="svelte"
+  showOpenInStackblitz={false}
+  showEditor={false}
+/>
+
+### Edge label and type
+
+By default, Svelte Flow allows you to add text labels to edges that will 
+float in the middle of the edge via the `label` property. 
+Also, many types of edges are built in, such as `smoothstep` and `step`.
+We can change the type of the edge by setting the `type` property.
+
+```js {6-7}
+let edges = $state.raw([
+  { 
+    id: 'n1-n2',
+    source: 'n1',
+    target: 'n2',
+    type: 'smoothstep',
+    label: 'connects with',
+  },
+]);
+```
+
+### Done! 🎉
+
+Congratulations! You have completed a basic flow with nodes and edges! 🎉
+
+</Steps>
+
+
+
+## Full code example 🏁
+
+You took your first steps in Svelte Flow! The completed flow will look like this:
+
+<RemoteCodeViewer
+  route="learn/building-a-flow-4"
+  framework="svelte"
+  showEditor={false}
+/>
+

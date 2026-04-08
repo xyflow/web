@@ -1,0 +1,68 @@
+---
+description: This guide shows you how to render custom edge labels onto custom edges in Svelte Flow.
+---
+
+# Edge Labels
+
+One of the more common uses for custom edges is rendering some controls or info along an
+edge's path. In Svelte Flow we call that an _edge label_ and unlike the edge path, edge
+labels can be any Svelte component!
+
+## Adding an edge label
+
+Because Svelte Flow's edges are mounted inside an SVG component, we need to escape its
+context to render a custom edge label. For this, we have a handy
+[`<EdgeLabel />`](/api-reference/components/edge-label) component. Aside from a couple of
+extras, like inheriting the edges z-index, it functions as a portal that mounts the child
+components in the viewport div.
+
+Let's add a button to our custom edge that can be used to delete the edge it's attached
+to:
+
+```svelte filename="CustomEdge.svelte"
+<script lang="ts">
+  import {
+    BaseEdge,
+    EdgeLabel,
+    getStraightPath,
+    useEdges,
+    type EdgeProps,
+  } from '@xyflow/svelte';
+
+  let { id, sourceX, sourceY, targetX, targetY }: EdgeProps = $props();
+
+  let [edgePath, labelX, labelY] = $derived(
+    getStraightPath({
+      sourceX,
+      sourceY,
+      targetX,
+      targetY,
+    })
+  );
+
+  const edges = useEdges();
+</script>
+
+<BaseEdge {id} path={edgePath} />
+<EdgeLabel x={labelX} y={labelY}>
+  <button
+    class="nodrag nopan"
+    onclick={() => {
+      edges.update((eds) => eds.filter((edge) => edge.id !== id));
+    }}
+  >
+    delete
+  </button>
+</EdgeLabel>
+```
+
+<Callout type="info">
+  To make sure our edge labels are interactive and not just for presentation, it is
+  important to add the `nodrag` and `nopan` classes to the label to stop mouse events from
+  controlling the canvas.
+</Callout>
+
+Here's an interactive example with our updated custom edge. Clicking the delete button
+will remove that edge from the flow. Creating a new edge will use the custom node.
+
+<RemoteCodeViewer route="learn/custom-edge-2" framework="svelte" />

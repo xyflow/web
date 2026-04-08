@@ -7,6 +7,8 @@ description:
 
 import { Callout } from 'nextra/components';
 import { RemoteCodeViewer } from 'xy-shared/server/remote-code-viewer';
+import { ThemingClassNames } from 'xy-shared/components/learn/theming-class-names';
+import { ThemingCssVariables } from 'xy-shared/components/learn/theming-css-variables';
 
 # Theming
 
@@ -25,7 +27,20 @@ see what they look like below:
 import '@xyflow/svelte/dist/style.css';
 ```
 
-<RemoteCodeViewer route="guides/theming/a" framework="svelte" editorHeight={500} />
+<RemoteCodeViewer route="learn/theming-default" framework="svelte" editorHeight={500} />
+
+You'll typically load these default styles by importing them in your `+layout.svelte`,
+`App.svelte`, or another entry point.
+
+Without dipping into [custom nodes](/learn/customization/custom-nodes) and
+[edges](/learn/customization/custom-edges), there are several ways you can style Svelte
+Flow's basic look:
+
+- Passing inline styles through `style` props
+- Overriding the built-in classes with custom CSS
+- Overriding the CSS variables Svelte Flow uses
+- Using scoped styles in your Svelte components for custom nodes and edges
+
 ## Base styles
 
 If you just want to load the very basic styles that are necessary for Svelte Flow to work,
@@ -41,99 +56,70 @@ import '@xyflow/svelte/dist/base.css';
   expected!
 </Callout>
 
-<RemoteCodeViewer route="guides/theming/b" framework="svelte" editorHeight={500} />
+<RemoteCodeViewer route="learn/theming-base" framework="svelte" editorHeight={500} />
+
 ## Customization
 
-There are different ways how you can customize the appearance of Svelte Flow:
+### Built in dark and light mode
 
-- Work with scoped CSS within your custom nodes and edges
-- Override the built-in classes with custom CSS
-- Override the CSS variables Svelte Flow uses
-- Pass inline styles through `style` props
+You can choose one of the built-in color modes by using the `colorMode` prop (`'dark'`,
+`'light'`, or `'system'`) as seen in the [dark mode example](/examples/styling/dark-mode).
 
-### Working with built-in classes
+```svelte
+<script>
+  import { SvelteFlow } from '@xyflow/svelte';
+  import '@xyflow/svelte/dist/style.css';
+</script>
 
-If you want to override the default styles, you can do so by overriding the built-in CSS
-classes. You can find a list of all the classes used by Svelte Flow below:
+<SvelteFlow colorMode="dark" nodes={[]} edges={[]} />
+```
 
-| Class name                          | Description                                                                              |
-| :---------------------------------- | :--------------------------------------------------------------------------------------- |
-| `.svelte-flow`                      | The outermost container                                                                  |
-| `.svelte-flow__renderer`            | The inner container                                                                      |
-| `.svelte-flow__zoompane`            | Zoom & pan pane                                                                          |
-| `.svelte-flow__selectionpane`       | Selection pane                                                                           |
-| `.svelte-flow__selection`           | User selection                                                                           |
-| `.svelte-flow__edges`               | The element containing all edges in the flow                                             |
-| `.svelte-flow__edge`                | Applied to each [`Edge`](/api-reference/types/edge) in the flow                          |
-| `.svelte-flow__edge.selected`       | Added to an [`Edge`](/api-reference/types/edge) when selected                            |
-| `.svelte-flow__edge.animated`       | Added to an [`Edge`](/api-reference/types/edge) when its `animated` prop is `true`       |
-| `.svelte-flow__edge-path`           | The SVG `<path />` element of an [`Edge`](/api-reference/types/edge)                     |
-| `.svelte-flow__edge-label`          | The edge label                                                                           |
-| `.svelte-flow__connection`          | Applied to the current connection line                                                   |
-| `.svelte-flow__connection-path`     | The SVG `<path />` of a connection line                                                  |
-| `.svelte-flow__nodes`               | The element containing all nodes in the flow                                             |
-| `.svelte-flow__node`                | Applied to each [`Node`](/api-reference/types/node) in the flow                          |
-| `.svelte-flow__node.selected`       | Added to a [`Node`](/api-reference/types/node) when selected.                            |
-| `.svelte-flow__node-default`        | Added when [`Node`](/api-reference/types/node) type is `"default"`                       |
-| `.svelte-flow__node-input`          | Added when [`Node`](/api-reference/types/node) type is `"input"`                         |
-| `.svelte-flow__node-output`         | Added when [`Node`](/api-reference/types/node) type is `"output"`                        |
-| `.svelte-flow__node-group`          | Added when [`Node`](/api-reference/types/node) type is `"group"`                         |
-| `.svelte-flow__nodesselection`      | Nodes selection                                                                          |
-| `.svelte-flow__nodesselection-rect` | Nodes selection rect                                                                     |
-| `.svelte-flow__handle`              | Applied to each [`<Handle />`](/api-reference/components/handle) component               |
-| `.svelte-flow__handle-top`          | Applied when a handle's [`Position`](/api-reference/types/position) is set to `"top"`    |
-| `.svelte-flow__handle-right`        | Applied when a handle's [`Position`](/api-reference/types/position) is set to `"right"`  |
-| `.svelte-flow__handle-bottom`       | Applied when a handle's [`Position`](/api-reference/types/position) is set to `"bottom"` |
-| `.svelte-flow__handle-left`         | Applied when a handle's [`Position`](/api-reference/types/position) is set to `"left"`   |
-| `.svelte-flow__handle.connecting`   | Applied when a connection line is above a handle.                                        |
-| `.svelte-flow__handle.valid`        | Applied when a connection line is above a handle **and** the connection is valid         |
-| `.svelte-flow__background`          | Applied to the [`<Background />`](/api-reference/components/background) component        |
-| `.svelte-flow__minimap`             | Applied to the [`<MiniMap />`](/api-reference/components/mini-map) component             |
-| `.svelte-flow__controls`            | Applied to the [`<Controls />`](/api-reference/components/controls) component            |
+When you use the `colorMode` prop, Svelte Flow adds a class to the root element
+(`.svelte-flow`) that you can use to style your flow based on the color mode:
 
-<Callout type="warning">
-  Be careful if you go poking around the source code looking for other classes to
-  override. Some classes are used internally and are required in order for the library to
-  be functional. If you replace them you may end up with unexpected bugs or errors!
-</Callout>
+```css
+.dark .svelte-flow__node {
+  background: #777;
+  color: white;
+}
+
+.light .svelte-flow__node {
+  background: white;
+  color: #111;
+}
+```
+
+### Customizing with `style` props
+
+The easiest way to start customizing the look and feel of your flows is to use the `style`
+prop on `SvelteFlow` and other components to inline your own CSS.
+
+```svelte
+<script>
+  import { SvelteFlow } from '@xyflow/svelte';
+  import '@xyflow/svelte/dist/style.css';
+
+  const styles = {
+    background: 'red',
+    width: '100%',
+    height: 300,
+  };
+</script>
+
+<SvelteFlow style={styles} nodes={[]} edges={[]} />
+```
 
 ### CSS variables
 
 If you don't want to replace the default styles entirely but just want to tweak the
 overall look and feel, you can override some of the CSS variables we use throughout the
-library.
+library. For an example of how to use these CSS variables, check out our
+[Feature Overview](/examples/overview) example.
 
 These variables are mostly self-explanatory. Below is a table of all the variables you
 might want to tweak and their default values for reference:
 
-| Variable name                                         | Default                             |
-| :---------------------------------------------------- | :---------------------------------- |
-| `--xy-edge-stroke-default`                            | `#b1b1b7`                           |
-| `--xy-edge-stroke-width-default`                      | `1`                                 |
-| `--xy-edge-stroke-selected-default`                   | `#555`                              |
-| `--xy-connectionline-stroke-default`                  | `#b1b1b7`                           |
-| `--xy-connectionline-stroke-width-default`            | `1`                                 |
-| `--xy-attribution-background-color-default`           | `rgba(255, 255, 255, 0.5)`          |
-| `--xy-minimap-background-color-default`               | `#fff`                              |
-| `--xy-background-pattern-dot-color-default`           | `#91919a`                           |
-| `--xy-background-pattern-line-color-default`          | `#eee`                              |
-| `--xy-background-pattern-cross-color-default`         | `#e2e2e2`                           |
-| `--xy-node-color-default`                             | `inherit`                           |
-| `--xy-node-border-default`                            | `1px solid #1a192b`                 |
-| `--xy-node-background-color-default`                  | `#fff`                              |
-| `--xy-node-group-background-color-default`            | `rgba(240, 240, 240, 0.25)`         |
-| `--xy-node-boxshadow-hover-default`                   | `0 1px 4px 1px rgba(0, 0, 0, 0.08)` |
-| `--xy-node-boxshadow-selected-default`                | `0 0 0 0.5px #1a192b`               |
-| `--xy-handle-background-color-default`                | `#1a192b`                           |
-| `--xy-handle-border-color-default`                    | `#fff`                              |
-| `--xy-selection-background-color-default`             | `rgba(0, 89, 220, 0.08)`            |
-| `--xy-selection-border-default`                       | `1px dotted rgba(0, 89, 220, 0.8)`  |
-| `--xy-controls-button-background-color-default`       | `#fefefe`                           |
-| `--xy-controls-button-background-color-hover-default` | `#f4f4f4`                           |
-| `--xy-controls-button-color-default`                  | `inherit`                           |
-| `--xy-controls-button-color-hover-default`            | `inherit`                           |
-| `--xy-controls-button-border-color-default`           | `#eee`                              |
-| `--xy-controls-box-shadow-default`                    | `0 0 2px 1px rgba(0, 0, 0, 0.08)`   |
+<ThemingCssVariables />
 
 These variables are used to define the _defaults_ for the various elements of Svelte Flow.
 This means they can still be overridden by inline styles or custom classes on a
@@ -145,7 +131,38 @@ per-element basis. If you want to override a variable, you can do so by adding:
 }
 ```
 
-### Tailwind
+<Callout type="warning">
+  Be aware that these variables are defined under `.svelte-flow` and under `:root`.
+</Callout>
+
+### Overriding built-in classes
+
+Some consider heavy use of inline styles to be an anti-pattern. In that case, you can
+override the built-in classes that Svelte Flow uses with your own CSS. There are many
+classes attached to all sorts of elements in Svelte Flow, but the ones you'll likely want
+to override are listed below:
+
+<ThemingClassNames />
+
+<Callout type="warning">
+  Be careful if you go poking around the source code looking for other classes to
+  override. Some classes are used internally and are required in order for the library to
+  be functional. If you replace them you may end up with unexpected bugs or errors!
+</Callout>
+
+### Scoped styles for custom nodes and edges
+
+Custom nodes and edges are Svelte components. You can use
+[`scoped` styles](https://svelte.dev/docs/svelte/scoped-styles) (or global CSS with
+`@apply`) in those components to keep styling isolated from the rest of your app.
+
+## Third-party solutions
+
+You can choose to opt out of Svelte Flow's default styling altogether and use a
+third-party styling solution instead. If you want to do this, you must make sure you still
+import the base styles (`@xyflow/svelte/dist/base.css`).
+
+### TailwindCSS
 
 Custom nodes and edges are just Svelte components, and you can use any styling solution
 you'd like to style them. For example, you might want to use
@@ -181,8 +198,9 @@ you'd like to style them. For example, you might want to use
 </div>
 ```
 
-<Callout type="info">
-  If you want to overwrite default styles, make sure to import Tailwinds entry last!
+<Callout type="warning">
+  If you want to overwrite default styles, make sure to import Tailwind's entry point after
+  Svelte Flow's base styles.
 </Callout>
 
 ```js

@@ -48,7 +48,7 @@ When a parent node has defined dimensions, you can restrict child node movement 
 within the parent's boundaries by setting `extent: 'parent'`. This prevents child nodes
 from being dragged outside their parent's area.
 
-<RemoteCodeViewer route="guides/subflows/a" framework="svelte" editorHeight={500} />
+<RemoteCodeViewer route="learn/sub-flows" framework="svelte" editorHeight={500} />
 
 ### Child Node Behavior
 
@@ -59,13 +59,13 @@ always move with their parent when it's dragged.
 
 In our examples, we use the built-in `group` node type for parent nodes, which provides a
 transparent background with a border. You can also use
-[any custom node type](/learn/layouting/sub-flows#any-node-can-be-a-parent-node) as a
+[any custom node type](/learn/layouting/sub-flows#using-a-custom-parent-node) as a
 parent.
 
 Let's explore more complex scenarios by adding additional nodes and edges. You can create
 connections both within a group and between sub flows and outer nodes:
 
-<RemoteCodeViewer route="guides/subflows/b" framework="svelte" editorHeight={500} />
+<RemoteCodeViewer route="learn/sub-flows-2" framework="svelte" editorHeight={500} />
 
 ### Using a Custom Parent Node
 
@@ -73,4 +73,4 @@ To demonstrate the flexibility of parent nodes, let's modify our example by remo
 label from node B and adding child nodes. This example shows how you can use any node type
 as a parent. We'll also set `draggable: false` on the child nodes to make them static.
 
-<RemoteCodeViewer route="guides/subflows/c" framework="svelte" editorHeight={500} />
+<RemoteCodeViewer route="learn/sub-flows-3" framework="svelte" editorHeight={500} />

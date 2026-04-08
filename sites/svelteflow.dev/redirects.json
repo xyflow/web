@@ -8,5 +8,35 @@
     "source": "/pro/examples",
     "destination": "/pro/content",
     "permanent": true
+  },
+  {
+    "source": "/learn/getting-started",
+    "destination": "/learn",
+    "permanent": true
+  },
+  {
+    "source": "/learn/getting-started/installation",
+    "destination": "/learn",
+    "permanent": true
+  },
+  {
+    "source": "/learn/getting-started/key-concepts",
+    "destination": "/learn/concepts/terms-and-definitions",
+    "permanent": true
+  },
+  {
+    "source": "/learn/getting-started/:path*",
+    "destination": "/learn/concepts/:path*",
+    "permanent": true
+  },
+  {
+    "source": "/learn/layouting/layouting-libraries",
+    "destination": "/learn/layouting/layouting",
+    "permanent": true
+  },
+  {
+    "source": "/api-reference/components/mini-map",
+    "destination": "/api-reference/components/minimap",
+    "permanent": true
   }
 ]

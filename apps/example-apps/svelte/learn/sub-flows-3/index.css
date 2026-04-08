@@ -1,0 +1,12 @@
+html,
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+html,
+body,
+#app {
+  width: 100%;
+  height: 100%;
+}

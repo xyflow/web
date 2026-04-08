@@ -1,0 +1,10 @@
+html,
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+/* This is just here to better match the design of svelteflow.dev */
+.svelte-flow {
+  --xy-edge-label-background-color-default: #f7f9fb;
+}

@@ -12,10 +12,11 @@ const initialNodes = [
     id: 'n2',
     data: { label: 'Node 2' },
     position: { x: 100, y: 100 },
+    type: 'output',
   },
 ];
 const initialEdges = [
-  { id: 'n1-n2', source: 'n1', target: 'n2', label: 'connects with', type: 'step' },
+  { id: 'n1-n2', source: 'n1', target: 'n2', label: 'connects with', type: 'smoothstep' },
 ];
 
 function Flow() {
