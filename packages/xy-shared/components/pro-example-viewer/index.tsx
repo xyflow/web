@@ -7,7 +7,15 @@ import { Text } from '../ui/text';
 import { Framework, SubscriptionPlan } from '../../types';
 import { getSubscription } from '../../server-actions/get-subscription';
 
-import ProPlatformExampleViewer from '../pro/ProExampleViewer';
+// import ProPlatformExampleViewer from '../pro/ProExampleViewer';
+import { downloadExample } from '../../server-actions/download-example';
+import { SandpackFiles } from '@codesandbox/sandpack-react';
+import { compileMdx } from 'nextra/compile';
+import { MDXRemote } from 'nextra/mdx-remote';
+import { Tabs } from 'nextra/components';
+
+import PreviewTab from '../pro/ProExampleViewer/tabs/preview';
+import EditorTab from '../pro/ProExampleViewer/tabs/editor';
 
 type QueryParams = Record<string, string | number | boolean | null | undefined>;
 
@@ -42,6 +50,15 @@ async function fetchTemplatePreviewUrl(baseUrl: string): Promise<string | null> 
   return null;
 }
 
+type ProExampleViewerProps = {
+  slug: string;
+  type?: 'example' | 'template';
+  className?: string;
+  innerClassName?: string;
+  framework?: Framework;
+  queryParams?: QueryParams;
+};
+
 export default async function ProExampleViewer({
   slug,
   type = 'example',
@@ -49,20 +66,13 @@ export default async function ProExampleViewer({
   innerClassName,
   framework = 'react',
   queryParams = {},
-}: {
-  slug: string;
-  type?: 'example' | 'template';
-  className?: string;
-  innerClassName?: string;
-  framework?: Framework;
-  queryParams?: QueryParams;
-}) {
+}: ProExampleViewerProps) {
+  await connection();
   const baseUrl = `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${framework}/${slug}`;
 
   const templatePreviewUrl =
     type === 'template' ? await fetchTemplatePreviewUrl(baseUrl) : null;
 
-  await connection();
   const { plan, teamPlan } = await getSubscription();
   const isProPlan = plan !== SubscriptionPlan.FREE || teamPlan !== SubscriptionPlan.FREE;
 
@@ -70,17 +80,39 @@ export default async function ProExampleViewer({
   const iframeSearchParams = toSearchParams(queryParams);
 
   if (isProPlan) {
+    const proExampleFiles = await downloadExample({ exampleId: slug, framework });
+
+    const readmeFile =
+      proExampleFiles?.['/README.mdx'] ?? proExampleFiles?.['/README.md'];
+    const readme = (typeof readmeFile === 'string' ? readmeFile : readmeFile?.code) || '';
+
+    const markdown = await compileMdx(readme);
     return (
-      <ProPlatformExampleViewer
-        framework={framework}
-        exampleId={slug}
-        config={{
-          type,
-          id: slug,
-          framework,
-          previewUrl: appendSearchParams(iframeBaseSrc, iframeSearchParams),
-        }}
-      />
+      // <ProPlatformExampleViewer
+      //   files={proExampleFiles}
+      //   markdown={markdown}
+      //   framework={framework}
+      //   exampleId={slug}
+      //   config={{
+      //     type,
+      //     id: slug,
+      //     framework,
+      //     previewUrl: appendSearchParams(iframeBaseSrc, iframeSearchParams),
+      //   }}
+      // />
+      <Tabs items={['Preview', 'Code', 'Readme']} defaultIndex={0}>
+        <Tabs.Tab>
+          <PreviewTab
+            iframePreviewUrl={appendSearchParams(iframeBaseSrc, iframeSearchParams)}
+          />
+        </Tabs.Tab>
+        <Tabs.Tab>
+          <EditorTab files={proExampleFiles} />
+        </Tabs.Tab>
+        <Tabs.Tab>
+          <MDXRemote compiledSource={markdown} />
+        </Tabs.Tab>
+      </Tabs>
     );
   }
 
@@ -123,3 +155,38 @@ export default async function ProExampleViewer({
     </Container>
   );
 }
+
+// export default async function ProExampleViewer({
+//   slug,
+//   type = 'example',
+//   className,
+//   innerClassName,
+//   framework = 'react',
+//   queryParams = {},
+// }: ProExampleViewerProps) {
+//   const baseUrl = `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${framework}/${slug}`;
+
+//   const templatePreviewUrl =
+//     type === 'template' ? await fetchTemplatePreviewUrl(baseUrl) : null;
+
+//   const proExampleFiles = await downloadExample({ exampleId: slug, framework });
+
+//   const readmeFile = proExampleFiles?.['/README.mdx'] ?? proExampleFiles?.['/README.md'];
+//   const readme = (typeof readmeFile === 'string' ? readmeFile : readmeFile?.code) || '';
+
+//   const markdown = await compileMdx(readme);
+
+//   return (
+//     <DynamicViewer
+//       slug={slug}
+//       type={type}
+//       className={className}
+//       innerClassName={innerClassName}
+//       framework={framework}
+//       queryParams={queryParams}
+//       templatePreviewUrl={templatePreviewUrl}
+//       proExampleFiles={proExampleFiles}
+//       baseUrl={baseUrl}
+//     />
+//   );
+// }

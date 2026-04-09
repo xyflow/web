@@ -4,7 +4,6 @@ import {
   ComponentProps,
   createContext,
   FC,
-  useCallback,
   useEffect,
   useMemo,
   useState,
@@ -37,13 +36,6 @@ export const SubscriptionProvider: FC<ComponentProps<typeof NextraLayout>> = ({
 
   const pathname = usePathname();
   const router = useRouter();
-
-  const refetchUser = useCallback(() => {
-    startTransition(async () => {
-      const subscription = await getSubscription();
-      setSubscription(subscription);
-    });
-  }, []);
 
   useEffect(() => {
     let cancelled = false;
@@ -84,7 +76,7 @@ export const SubscriptionProvider: FC<ComponentProps<typeof NextraLayout>> = ({
     return () => {
       cancelled = true;
     };
-  }, [pathname, router]);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const ctx = useMemo(() => normalizeSubscription({ plan, teamPlan }), [plan, teamPlan]);
 
@@ -92,10 +84,9 @@ export const SubscriptionProvider: FC<ComponentProps<typeof NextraLayout>> = ({
     () => ({
       user,
       isLoading: isLoading || user === undefined,
-      refetchUser,
       ...ctx,
     }),
-    [user, isLoading, refetchUser, ctx],
+    [user, isLoading, ctx],
   );
 
   const enhancedPageMap = useMemo(() => {

@@ -1,5 +1,3 @@
-'use client';
-
 import { Button } from '../../../ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../../../ui/tabs';
 import { cn } from '../../../../lib/utils';
@@ -7,7 +5,7 @@ import PreviewTab from './preview';
 import EditorTab from './editor';
 import MarkdownTab from './markdown';
 import { SandpackFiles } from '@codesandbox/sandpack-react';
-import NotSubscribedNotification from '../../Notification/not-subscribed';
+
 import {
   BookOpenIcon,
   CodeBracketIcon,
@@ -15,7 +13,7 @@ import {
   LockClosedIcon,
 } from '@heroicons/react/24/outline';
 import Loader from '../../Loader';
-import { Framework } from '../../../../types';
+
 import { ButtonProps } from '../../../ui/button';
 
 interface TabButtonProps extends ButtonProps {
@@ -58,22 +56,16 @@ const TabContent = (props: {
 };
 
 export default function ProExampleViewerTabs({
-  exampleId,
   files,
-  isUnlocked,
   previewUrl,
-  framework = 'react',
+  markdown,
 }: {
-  exampleId: string;
   files: null | SandpackFiles;
-  isUnlocked: boolean;
-  previewUrl?: string;
-  framework?: Framework;
+  previewUrl: string;
+  markdown: string;
 }) {
-  const readmeFile = files?.['/README.mdx'] ?? files?.['/README.md'];
-  const readme = (typeof readmeFile === 'string' ? readmeFile : readmeFile?.code) || '';
-  const iframePreviewUrl =
-    previewUrl ?? `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${framework}/${exampleId}`;
+  // const readmeFile = files?.['/README.mdx'] ?? files?.['/README.md'];
+  // const readme = (typeof readmeFile === 'string' ? readmeFile : readmeFile?.code) || '';
 
   return (
     <>
@@ -84,37 +76,29 @@ export default function ProExampleViewerTabs({
               Preview
             </TabButton>
           </TabsTrigger>
-          <TabsTrigger asChild value="editor" disabled={!isUnlocked}>
+          <TabsTrigger asChild value="editor">
             <TabButton icon={<CodeBracketIcon className="h-4 w-4 stroke-2" />}>
               Code
             </TabButton>
           </TabsTrigger>
-          <TabsTrigger asChild value="readme" disabled={!isUnlocked}>
+          <TabsTrigger asChild value="readme">
             <TabButton icon={<BookOpenIcon className="h-4 w-4 stroke-2" />}>
               Readme
             </TabButton>
           </TabsTrigger>
         </TabsList>
 
-        {!isUnlocked && (
-          <NotSubscribedNotification description="Please subscribe to unlock all pro examples and templates." />
-        )}
-
         <TabContent value="preview">
-          <PreviewTab iframePreviewUrl={iframePreviewUrl} />
+          <PreviewTab iframePreviewUrl={previewUrl} />
         </TabContent>
 
-        {isUnlocked && (
-          <TabContent value="editor" loading={!files}>
-            {files && <EditorTab files={files} />}
-          </TabContent>
-        )}
+        <TabContent value="editor" loading={!files}>
+          {files && <EditorTab files={files} />}
+        </TabContent>
 
-        {isUnlocked && (
-          <TabContent value="readme" loading={!files}>
-            <MarkdownTab markdown={readme} />
-          </TabContent>
-        )}
+        <TabContent value="readme" loading={!files}>
+          <MarkdownTab markdown={markdown} />
+        </TabContent>
       </Tabs>
     </>
   );

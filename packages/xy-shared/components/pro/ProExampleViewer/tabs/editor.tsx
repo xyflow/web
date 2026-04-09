@@ -1,3 +1,5 @@
+'use client';
+
 import { useMemo } from 'react';
 import { useTheme } from 'nextra-theme-docs';
 import { aquaBlue, nightOwl } from '@codesandbox/sandpack-themes';

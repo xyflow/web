@@ -12,5 +12,5 @@ export type ProExampleConfig = {
   variants?: ProExampleVariant[];
   free?: boolean;
   type?: 'template' | 'example';
-  previewUrl?: string;
+  previewUrl: string;
 };

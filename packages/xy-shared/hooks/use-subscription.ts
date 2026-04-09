@@ -14,7 +14,6 @@ export type SubscriptionStatus = {
 
   user?: User | null;
   isLoading: boolean;
-  refetchUser: () => void;
 };
 
 export function useSubscription(): SubscriptionStatus {
