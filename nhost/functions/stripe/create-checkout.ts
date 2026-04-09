@@ -47,6 +47,8 @@ const createStripeCheckoutSession = async (req: Request, res: Response) => {
     },
     allow_promotion_codes: true,
     billing_address_collection: 'required',
+    // we pass the payment_success=true to wait in the subscripton provider
+    // until the subscription is not "free" anymore
     success_url: `${origin}?payment_success=true`,
     cancel_url: `${origin}/subscribe?payment_cancelled=true`,
   });
