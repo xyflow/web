@@ -12,7 +12,7 @@ import {
 } from 'react';
 import { SubscriptionPlan } from '../../../types';
 import { getSubscription } from '../../../server-actions/get-subscription';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { normalizeSubscription } from '../../../lib/pro-utils';
 import { mergeMetaWithPageMap } from 'nextra/merge-meta-with-page-map';
 import { Layout as NextraLayout } from 'nextra-theme-docs';
@@ -36,7 +36,6 @@ export const SubscriptionProvider: FC<ComponentProps<typeof NextraLayout>> = ({
   });
 
   const pathname = usePathname();
-  const searchParams = useSearchParams();
   const router = useRouter();
 
   const refetchUser = useCallback(() => {
@@ -53,6 +52,8 @@ export const SubscriptionProvider: FC<ComponentProps<typeof NextraLayout>> = ({
       try {
         let subscription = await getSubscription();
 
+        const searchParams = new URLSearchParams(window.location.search);
+
         // When the user is redirected back from Stripe, the payment_success parameter is set.
         // We need to poll the subscription until it's not free anymore.
         if (searchParams.get('payment_success') === 'true') {
@@ -67,9 +68,8 @@ export const SubscriptionProvider: FC<ComponentProps<typeof NextraLayout>> = ({
 
           if (cancelled) return;
 
-          const params = new URLSearchParams(searchParams.toString());
-          params.delete('payment_success');
-          const qs = params.toString();
+          searchParams.delete('payment_success');
+          const qs = searchParams.toString();
           router.replace(qs ? `${pathname}?${qs}` : pathname);
         }
 
@@ -84,7 +84,7 @@ export const SubscriptionProvider: FC<ComponentProps<typeof NextraLayout>> = ({
     return () => {
       cancelled = true;
     };
-  }, [searchParams, pathname, router]);
+  }, [pathname, router]);
 
   const ctx = useMemo(() => normalizeSubscription({ plan, teamPlan }), [plan, teamPlan]);
 
