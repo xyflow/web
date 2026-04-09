@@ -1,16 +1,13 @@
-'use client';
-
-import { FC, useEffect, useMemo, useState } from 'react';
-import { usePathname } from 'next/navigation';
 import Link from 'next/link';
+import { connection } from 'next/server';
 import { cn } from '../../lib/utils';
 import { Button } from '../ui/button';
 import { Container } from '../ui/container';
 import { Text } from '../ui/text';
-import { useSubscription } from '../../hooks/use-subscription';
-import ProPlatformExampleViewer from '../../components/pro/ProExampleViewer';
-import { Framework } from '../../types';
-import { Spinner } from '../ui/spinner';
+import { Framework, SubscriptionPlan } from '../../types';
+import { getSubscription } from '../../server-actions/get-subscription';
+
+import ProPlatformExampleViewer from '../pro/ProExampleViewer';
 
 type QueryParams = Record<string, string | number | boolean | null | undefined>;
 
@@ -28,64 +25,51 @@ function appendSearchParams(url: string, sp: URLSearchParams) {
   return url.includes('?') ? `${url}&${sp.toString()}` : `${url}?${sp.toString()}`;
 }
 
-const ProExampleViewer: FC<{
-  slug: string;
-  type?: 'example' | 'template';
-  className?: string;
-  innerClassName?: string;
-  framework?: Framework;
-  queryParams?: QueryParams;
-}> = ({
+async function fetchTemplatePreviewUrl(baseUrl: string): Promise<string | null> {
+  try {
+    const res = await fetch(`${baseUrl}/config.json`, {
+      cache: 'force-cache',
+      next: { revalidate: false },
+    });
+    if (!res.ok) return null;
+    const json = (await res.json()) as { previewUrl?: unknown };
+    if (typeof json.previewUrl === 'string' && json.previewUrl.length > 0) {
+      return json.previewUrl;
+    }
+  } catch {
+    // fall back to baseUrl
+  }
+  return null;
+}
+
+export default async function ProExampleViewer({
   slug,
   type = 'example',
   className,
   innerClassName,
   framework = 'react',
   queryParams = {},
-}) => {
-  const pathname = usePathname();
-  const { isSubscribed, user } = useSubscription();
+}: {
+  slug: string;
+  type?: 'example' | 'template';
+  className?: string;
+  innerClassName?: string;
+  framework?: Framework;
+  queryParams?: QueryParams;
+}) {
   const baseUrl = `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${framework}/${slug}`;
 
-  // For templates we try to load `previewUrl` from `config.json`.
-  const [templatePreviewUrl, setTemplatePreviewUrl] = useState<string | null>(null);
+  const templatePreviewUrl =
+    type === 'template' ? await fetchTemplatePreviewUrl(baseUrl) : null;
 
-  useEffect(() => {
-    let cancelled = false;
+  await connection();
+  const { plan, teamPlan } = await getSubscription();
+  const isProPlan = plan !== SubscriptionPlan.FREE || teamPlan !== SubscriptionPlan.FREE;
 
-    async function load() {
-      if (type !== 'template') {
-        setTemplatePreviewUrl(null);
-        return;
-      }
+  const iframeBaseSrc = type === 'template' ? (templatePreviewUrl ?? baseUrl) : baseUrl;
+  const iframeSearchParams = toSearchParams(queryParams);
 
-      try {
-        const res = await fetch(`${baseUrl}/config.json`);
-        if (!res.ok) return;
-        const json = (await res.json()) as { previewUrl?: unknown };
-        if (cancelled) return;
-        if (typeof json.previewUrl === 'string' && json.previewUrl.length > 0) {
-          setTemplatePreviewUrl(json.previewUrl);
-        }
-      } catch {
-        // ignore: fall back to baseUrl
-      }
-    }
-
-    load();
-    return () => {
-      cancelled = true;
-    };
-  }, [baseUrl, type]);
-
-  const hasUser = !!user;
-  const isLoading = type === 'template' && !templatePreviewUrl;
-  const signInLink = `/pro/sign-in?redirectTo=${pathname}`;
-  const subscribeLink = `/pro/subscribe?redirectTo=${pathname}`;
-  const iframeBaseSrc = type === 'template' ? (templatePreviewUrl ?? '') : baseUrl;
-  const iframeSearchParams = useMemo(() => toSearchParams(queryParams), [queryParams]);
-
-  if (isSubscribed) {
+  if (isProPlan) {
     return (
       <ProPlatformExampleViewer
         framework={framework}
@@ -117,39 +101,25 @@ const ProExampleViewer: FC<{
         </Text>
         <div className="flex space-x-4">
           <Button asChild className="shrink-0">
-            {hasUser ? (
-              <Link href={subscribeLink}>Subscribe</Link>
-            ) : (
-              <Link href="/pro">See Pricing Plans</Link>
-            )}
+            <Link href="/pro">See Pricing Plans</Link>
           </Button>
-          {hasUser ? null : (
-            <Button
-              asChild
-              variant="secondary"
-              className="text-primary shrink-0 dark:text-white"
-            >
-              <a href={signInLink}>Sign In</a>
-            </Button>
-          )}
+          <Button
+            asChild
+            variant="secondary"
+            className="text-primary shrink-0 dark:text-white"
+          >
+            <a href="/pro/sign-in">Sign In</a>
+          </Button>
         </div>
       </div>
 
       <div className="flex">
-        {isLoading ? (
-          <div className="block flex h-[645px] w-full items-center justify-center">
-            <Spinner />
-          </div>
-        ) : (
-          <iframe
-            src={appendSearchParams(iframeBaseSrc, iframeSearchParams)}
-            title={`${slug} preview`}
-            className={cn('bg-background block h-[645px] w-full')}
-          />
-        )}
+        <iframe
+          src={appendSearchParams(iframeBaseSrc, iframeSearchParams)}
+          title={`${slug} preview`}
+          className={cn('bg-background block h-[645px] w-full')}
+        />
       </div>
     </Container>
   );
-};
-
-export default ProExampleViewer;
+}
