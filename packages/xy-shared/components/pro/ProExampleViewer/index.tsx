@@ -21,7 +21,7 @@ function ProExampleViewer({
   framework,
   config,
   files,
-  markdown,
+  // markdown,
 }: {
   exampleId: string;
   framework: Framework;

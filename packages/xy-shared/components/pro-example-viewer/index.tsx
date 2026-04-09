@@ -9,7 +9,7 @@ import { getSubscription } from '../../server-actions/get-subscription';
 
 // import ProPlatformExampleViewer from '../pro/ProExampleViewer';
 import { downloadExample } from '../../server-actions/download-example';
-import { SandpackFiles } from '@codesandbox/sandpack-react';
+// import { SandpackFiles } from '@codesandbox/sandpack-react';
 import { compileMdx } from 'nextra/compile';
 import { MDXRemote } from 'nextra/mdx-remote';
 import { Tabs } from 'nextra/components';
