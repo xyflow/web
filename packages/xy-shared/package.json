@@ -46,7 +46,7 @@
     "clsx": "^2.1.1",
     "fast-glob": "^3.3.3",
     "fathom-client": "^3.7.2",
-    "next": "^14.2.15",
+    "next": "14.2.35",
     "nextra": "4.3.0-alpha.29",
     "react-lite-youtube-embed": "^2.5.1",
     "remark-frontmatter": "^5.0.0",
