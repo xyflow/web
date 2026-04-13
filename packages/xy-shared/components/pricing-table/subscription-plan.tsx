@@ -109,8 +109,7 @@ export default function Plan({
   isLoading = false,
   onSelect,
 }: PlanProps) {
-  const btnLink =
-    id === PlanId.ENTERPRISE ? '/pro/enterprise' : 'https://pro.reactflow.dev/signup';
+  const btnLink = id === PlanId.ENTERPRISE ? '/pro/enterprise' : 'pro/sign-up';
 
   return (
     <div
