@@ -22,7 +22,7 @@ const UpdateNode = () => {
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
   const [nodeName, setNodeName] = useState('Node 1');
-  const [nodeBg, setNodeBg] = useState('var(--xy-node-background-color-default)');
+  const [nodeBg, setNodeBg] = useState('#ff0071');
   const [nodeHidden, setNodeHidden] = useState(false);
 
   useEffect(() => {

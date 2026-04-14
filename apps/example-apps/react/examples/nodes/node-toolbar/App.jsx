@@ -82,7 +82,11 @@ function Flow() {
         preventScrolling={false}
         colorMode="system"
       >
-        <Panel>
+        <Panel
+          style={{
+            color: 'var(--xy-node-color, var(--xy-node-color-default))',
+          }}
+        >
           <h3>Node Toolbar position:</h3>
           <button className="xy-theme__button" onClick={() => setPosition(Position.Top)}>
             top
