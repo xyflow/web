@@ -18,8 +18,6 @@ import type { InternalRoute } from '../../routes';
 import { fetchGitHubNpmStats } from 'xy-shared/lib/fetch-github-npm-stats';
 import { version } from '@xyflow/svelte/package.json';
 
-export const revalidate = 3600; // 60 * 60
-
 export const metadata: Metadata = {
   title: 'The Node-Based UI for Svelte',
   description:
@@ -98,6 +96,7 @@ const features = [
 ];
 
 const Page: FC = async () => {
+  'use cache';
   const { downloads = 450 } = await fetchGitHubNpmStats('svelte');
 
   return (

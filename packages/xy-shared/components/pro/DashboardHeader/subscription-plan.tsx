@@ -1,22 +1,11 @@
-'use client';
-
 import Link from 'next/link';
 
-import { Spinner } from '../../ui/spinner';
-import { useSubscription } from '../../../hooks/use-subscription';
 import { PlanLabel } from '../SubscriptionStatus';
 import Pill from '../Pill';
+import { getSubscriptionStatus } from '../../../server-actions/get-subscription';
 
-export default function SubscriptionPlan() {
-  const { isSubscribed, isLoading } = useSubscription();
-
-  if (isLoading) {
-    return (
-      <span className="text-primary flex text-sm font-normal">
-        <Spinner className="mr-2" /> loading user data...
-      </span>
-    );
-  }
+export default async function SubscriptionPlan() {
+  const { isSubscribed } = await getSubscriptionStatus();
 
   if (isSubscribed) {
     return (

@@ -23,6 +23,7 @@ function kebabCaseToTitleCase(str: string) {
 const { h2: H2, h3: H3 } = getMDXComponents();
 
 const UiComponentViewer: FC<{ id: string }> = async ({ id }) => {
+  'use cache';
   const data = await fetchShadcnComponent(id);
 
   if (!data) {

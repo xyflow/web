@@ -1,3 +1,4 @@
+import { now } from '../../lib/now';
 import { cn } from '../../lib/utils';
 import { FC } from 'react';
 
@@ -5,7 +6,7 @@ const NUM_DAYS_NEW = 30;
 const DAYS_IN_MS = 1000 * 3600 * 24;
 
 function daysFromNow(dateString: string) {
-  return Math.ceil((new Date().getTime() - Date.parse(dateString)) / DAYS_IN_MS);
+  return Math.ceil((now() - Date.parse(dateString)) / DAYS_IN_MS);
 }
 
 type SidebarTitleFrontMatter = {

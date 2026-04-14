@@ -20,12 +20,14 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ['xy-shared', 'xy-shared'],
   },
+  cacheComponents: true,
   async redirects() {
     return redirects;
   },
   env: {
     SVELTE_FLOW_VERSION: svelteFlowPackageJson.version,
     NEXT_PUBLIC_FRAMEWORK: 'svelte',
+    NEXT_PUBLIC_CURRENT_TIME: new Date().getTime().toString(),
     NEXT_PUBLIC_EXAMPLES_URL:
       process.env.VERCEL_ENV === 'preview'
         ? `https://example-apps-git-${parsePreviewDeploySlug(process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL ?? '')}.vercel.app`

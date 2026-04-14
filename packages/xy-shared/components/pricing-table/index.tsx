@@ -23,7 +23,7 @@ import {
   PlanId,
   OnSelectCurrenty,
 } from './types';
-import { useSubscription } from '../../hooks/use-subscription';
+// import { useSubscription } from '../../hooks/use-subscription';
 
 const PricingTable = ({
   className,
@@ -36,7 +36,9 @@ const PricingTable = ({
   plans?: SubscriptionPlan[];
   onSelect?: OnSelectCurrenty;
 }) => {
-  const { user } = useSubscription();
+  // TODO: !!!!
+  // const { user } = useSubscription();
+  const user = null;
   const isSignedIn = !!user;
   // Use library-specific config if plans not provided
   const selectedPlans = plans ?? (library === 'svelte' ? svelteConfig : defaultConfig);

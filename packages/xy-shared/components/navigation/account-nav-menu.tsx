@@ -1,5 +1,3 @@
-'use client';
-
 import Link from 'next/link';
 import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu';
 

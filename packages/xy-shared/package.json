@@ -8,12 +8,12 @@
     "check-types": "tsc --noEmit"
   },
   "devDependencies": {
+    "@types/mdast": "^4.0.4",
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
     "@types/three": "^0.182.0",
     "eslint": "catalog:",
-    "@types/mdast": "^4.0.4",
     "eslint-config-xyflow": "workspace:*",
     "typescript": "catalog:",
     "xy-tsconfig": "workspace:*"
@@ -44,6 +44,7 @@
     "@stackblitz/sdk": "^1.11.0",
     "@types/file-saver": "^2.0.7",
     "@types/react-syntax-highlighter": "^15.5.13",
+    "@upstash/redis": "^1.37.0",
     "@vercel/blob": "^0.27.1",
     "@xyflow/react": "catalog:",
     "botid": "^1.5.10",
@@ -58,14 +59,13 @@
     "react-lite-youtube-embed": "^2.5.1",
     "react-markdown": "^10.1.0",
     "react-syntax-highlighter": "^16.1.0",
-    "tailwind-merge": "^3.3.1",
-    "tailwindcss": "catalog:",
-    "timeago-react": "^3.0.7",
     "remark-frontmatter": "^5.0.0",
     "remark-gfm": "^4.0.1",
     "remark-mdx": "^3.1.1",
     "remark-parse": "^11.0.0",
     "remark-stringify": "^11.0.0",
+    "tailwind-merge": "^3.3.1",
+    "tailwindcss": "catalog:",
     "tailwindcss-animate": "^1.0.7",
     "unified": "^11.0.5",
     "zod": "^3.22.4"

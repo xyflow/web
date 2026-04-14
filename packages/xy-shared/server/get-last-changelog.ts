@@ -5,12 +5,10 @@ import { Author } from '../components/authors-list';
 type MdxItem = MdxFile<WhatsNewItemFrontMatter> & { title: string };
 
 export async function getLastChangelog() {
+  'use cache';
   return (await getPageMap('/whats-new'))
     .filter((item): item is MdxItem => 'frontMatter' in item)
-    .sort(
-      (a, b) =>
-        new Date(b.frontMatter!.date).getTime() - new Date(a.frontMatter!.date).getTime(),
-    );
+    .sort((a, b) => Date.parse(b.frontMatter!.date) - Date.parse(a.frontMatter!.date));
 }
 
 export type WhatsNewItemFrontMatter = {

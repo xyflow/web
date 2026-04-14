@@ -1,13 +1,11 @@
-'use client';
-
 import { SparklesIcon } from '@heroicons/react/24/outline';
 
-import { useSubscription } from '../../../hooks/use-subscription';
 import { cn } from '../../../lib/utils';
 import { Button } from '../../ui/button';
 import { Link } from '../../ui/link';
+import { getSubscriptionStatus } from '../../../server-actions/get-subscription';
 
-export function SignUpButton({
+export async function SignUpButton({
   showIcon = false,
   description = 'to get a free pro example',
   className,
@@ -16,7 +14,7 @@ export function SignUpButton({
   description?: string;
   className?: string;
 }) {
-  const { user, isSubscribed } = useSubscription();
+  const { user, isSubscribed } = await getSubscriptionStatus();
   const hasUser = !!user;
   const showDescription = !hasUser || (hasUser && !isSubscribed);
   const buttonLink = hasUser

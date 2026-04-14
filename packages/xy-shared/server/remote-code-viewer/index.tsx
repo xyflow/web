@@ -37,6 +37,7 @@ export async function RemoteCodeViewer({
   aspectRatio = '16/9',
   activeFile,
 }: RemoteCodeViewerProps) {
+  'use cache';
   const _framework: Framework =
     framework ?? (process.env.NEXT_PUBLIC_Framework as Framework) ?? 'react';
   const preview = `${process.env.NEXT_PUBLIC_EXAMPLES_URL}/${_framework}/${route}/index.html`;

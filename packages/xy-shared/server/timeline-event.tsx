@@ -28,7 +28,7 @@ export async function TimelineEvent({ frontmatter, route }: TimelineEventProps) 
           noLink
         />
         <div className="text-light ml-12 text-sm" title={frontmatter.date}>
-          <TimeAgo datetime={frontmatter.date} />
+          <TimeAgo date={frontmatter.date} />
         </div>
       </div>
       <div className="pl-2">

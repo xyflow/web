@@ -24,7 +24,7 @@ function createMDXString(snippet: string, options: CompileCodeSnippetOptions = {
 ${snippet}`;
 }
 
-export function compileCodeSnippet(
+export async function compileCodeSnippet(
   snippet: string,
   options?: CompileCodeSnippetOptions,
 ): Promise<string> {

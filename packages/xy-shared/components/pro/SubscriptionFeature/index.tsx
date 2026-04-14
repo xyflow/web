@@ -1,7 +1,3 @@
-'use client';
-
-import * as React from 'react';
-
 import {
   Card,
   CardHeader,
@@ -15,8 +11,8 @@ import { SubscriptionPlan } from '../../../types';
 import Link from 'next/link';
 import { ArrowLongRightIcon } from '@heroicons/react/20/solid';
 
-import { useSubscription } from '../../../hooks/use-subscription';
 import CustomerPortalButton from '../CustomerPortalButton';
+import { getSubscriptionStatus } from '../../../server-actions/get-subscription';
 
 type SubscriptionFeatureProps = {
   title: React.ReactNode;
@@ -26,14 +22,14 @@ type SubscriptionFeatureProps = {
   requireAdminSubscription?: boolean;
 };
 
-function SubscriptionFeature({
+async function SubscriptionFeature({
   title,
   description,
   plans = [],
   button,
   requireAdminSubscription = false,
 }: SubscriptionFeatureProps) {
-  const { plan, isAdmin, isTeamSubscribed } = useSubscription();
+  const { plan, isAdmin, isTeamSubscribed } = await getSubscriptionStatus();
   const isActive = plans.includes(plan) && (requireAdminSubscription ? isAdmin : true);
 
   return (
