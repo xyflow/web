@@ -39,7 +39,6 @@ export async function fetchProExample({
   framework,
   ignoreFiles = [],
 }: UseDownloadProExampleOptions = {}): Promise<SandpackFiles> {
-  'use cache';
   const redisKey = `@${framework}flow-pro/${exampleId}`;
   const data = await redis.json.get(redisKey, '$');
 

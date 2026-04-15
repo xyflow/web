@@ -14,8 +14,8 @@ import EditorTab from '../pro/ProExampleViewer/tabs/editor';
 import { fetchProExample } from './fetch-pro-example';
 import { getFramework } from '../../lib/get-framework';
 import { CollaborativePreview } from './collaborative-preview-dynamic';
-import { Suspense } from 'react';
-import { cacheLife } from 'next/cache';
+import { ReactNode, Suspense } from 'react';
+import { SandpackFiles } from '@codesandbox/sandpack-react';
 
 async function fetchTemplatePreviewUrl(baseUrl: string): Promise<string | null> {
   'use cache';
@@ -63,6 +63,17 @@ export default async function ProExampleViewer(props: ProExampleViewerProps) {
   );
 }
 
+async function getProExample(slug: string, framework: Framework) {
+  const proExampleFiles = await fetchProExample({ exampleId: slug, framework });
+
+  const readmeFile = proExampleFiles?.['/README.mdx'] ?? proExampleFiles?.['/README.md'];
+  const readme = (typeof readmeFile === 'string' ? readmeFile : readmeFile?.code) || '';
+
+  const markdown = await compileMdx(readme);
+
+  return { proExampleFiles, markdown };
+}
+
 export async function ProExample({
   slug,
   type = 'example',
@@ -76,21 +87,69 @@ export async function ProExample({
 
   const templatePreviewUrl =
     type === 'template' ? await fetchTemplatePreviewUrl(baseUrl) : null;
+  const iframeBaseSrc = type === 'template' ? (templatePreviewUrl ?? baseUrl) : baseUrl;
 
+  const { proExampleFiles, markdown } = await getProExample(slug, framework);
+
+  return (
+    <ProExampleInner
+      slug={slug}
+      type={type}
+      className={className}
+      innerClassName={innerClassName}
+      framework={framework}
+      collaborative={collaborative}
+      iframeBaseSrc={iframeBaseSrc}
+    >
+      <LoggedIn
+        markdown={markdown}
+        proExampleFiles={proExampleFiles}
+        iframeBaseSrc={iframeBaseSrc}
+        collaborative={collaborative}
+      ></LoggedIn>
+    </ProExampleInner>
+  );
+
+  // const { plan, teamPlan } = await getSubscription();
+  // const isProPlan = plan !== SubscriptionPlan.FREE || teamPlan !== SubscriptionPlan.FREE;
+
+  // if (isProPlan) {
+  //   return (
+  //     <LoggedIn
+  //       slug={slug}
+  //       framework={framework}
+  //       iframeBaseSrc={iframeBaseSrc}
+  //       collaborative={collaborative}
+  //     />
+  //   );
+  // }
+
+  // return (
+  //   <LoggedOut
+  //     className={className}
+  //     innerClassName={innerClassName}
+  //     type={type}
+  //     iframeBaseSrc={iframeBaseSrc}
+  //     slug={slug}
+  //     collaborative={collaborative}
+  //   />
+  // );
+}
+
+async function ProExampleInner({
+  slug,
+  type = 'example',
+  className,
+  innerClassName,
+  iframeBaseSrc,
+  collaborative,
+  children,
+}: ProExampleViewerProps & { iframeBaseSrc: string; children: ReactNode }) {
   const { plan, teamPlan } = await getSubscription();
   const isProPlan = plan !== SubscriptionPlan.FREE || teamPlan !== SubscriptionPlan.FREE;
 
-  const iframeBaseSrc = type === 'template' ? (templatePreviewUrl ?? baseUrl) : baseUrl;
-
   if (isProPlan) {
-    return (
-      <LoggedIn
-        slug={slug}
-        framework={framework}
-        iframeBaseSrc={iframeBaseSrc}
-        collaborative={collaborative}
-      />
-    );
+    return children;
   }
 
   return (
@@ -164,25 +223,17 @@ function LoggedOut({
   );
 }
 
-async function LoggedIn({
-  slug,
-  framework,
+function LoggedIn({
   iframeBaseSrc,
   collaborative,
+  markdown,
+  proExampleFiles,
 }: {
-  slug: string;
-  framework: Framework;
   iframeBaseSrc: string;
   collaborative?: boolean;
+  markdown: string;
+  proExampleFiles: SandpackFiles;
 }) {
-  'use cache';
-  cacheLife('max');
-  const proExampleFiles = await fetchProExample({ exampleId: slug, framework });
-
-  const readmeFile = proExampleFiles?.['/README.mdx'] ?? proExampleFiles?.['/README.md'];
-  const readme = (typeof readmeFile === 'string' ? readmeFile : readmeFile?.code) || '';
-
-  const markdown = await compileMdx(readme);
   return (
     <Tabs items={['Preview', 'Code', 'Readme']} defaultIndex={0}>
       <Tabs.Tab>
