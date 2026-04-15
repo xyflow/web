@@ -64,6 +64,7 @@ export default async function ProExampleViewer(props: ProExampleViewerProps) {
 }
 
 async function getProExample(slug: string, framework: Framework) {
+  'use cache';
   const proExampleFiles = await fetchProExample({ exampleId: slug, framework });
 
   const readmeFile = proExampleFiles?.['/README.mdx'] ?? proExampleFiles?.['/README.md'];
