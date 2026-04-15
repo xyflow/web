@@ -15,6 +15,7 @@ import { fetchProExample } from './fetch-pro-example';
 import { getFramework } from '../../lib/get-framework';
 import { CollaborativePreview } from './collaborative-preview-dynamic';
 import { Suspense } from 'react';
+import { cacheLife } from 'next/cache';
 
 async function fetchTemplatePreviewUrl(baseUrl: string): Promise<string | null> {
   'use cache';
@@ -175,6 +176,7 @@ async function LoggedIn({
   collaborative?: boolean;
 }) {
   'use cache';
+  cacheLife('max');
   const proExampleFiles = await fetchProExample({ exampleId: slug, framework });
 
   const readmeFile = proExampleFiles?.['/README.mdx'] ?? proExampleFiles?.['/README.md'];
