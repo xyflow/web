@@ -1,32 +1,32 @@
 'use client';
 
 import { useState } from 'react';
-import { Button } from '../../ui/button';
-import { ArrowDownTrayIcon } from '@heroicons/react/24/outline';
 import JSZip from 'jszip';
 import { saveAs } from 'file-saver';
-import { SandpackFiles } from '@codesandbox/sandpack-react';
 
-import { downloadExample } from '../../../server-actions/download-example';
-import { Framework } from '../../../types';
+import { downloadExample } from '../../server-actions/download-example';
+
+import { ArrowDownTrayIcon } from '@heroicons/react/24/outline';
+import { Button } from '../ui/button';
+
+import { Framework } from '../../types';
+import { cn } from '../../lib/utils';
 
 const ignoreFiles = ['/config.json'];
 
-export default function DownloadButton({
-  fileName,
-  files,
-  exampleId,
+export function DownloadButton({
+  slug,
   framework,
+  className,
 }: {
-  fileName: string;
-  files: null | SandpackFiles;
-  exampleId: string;
+  slug: string;
   framework: Framework;
+  className?: string;
 }) {
   const [isDownloading, setIsDownloading] = useState(false);
   const downloadZip = async () => {
     setIsDownloading(true);
-    const downloadFiles = files || (await downloadExample({ exampleId, framework }));
+    const downloadFiles = await downloadExample({ exampleId: slug, framework });
     const zip = new JSZip();
 
     Object.entries(downloadFiles).map(([fileName, fileContent]) => {
@@ -41,13 +41,13 @@ export default function DownloadButton({
 
     const content = await zip.generateAsync({ type: 'blob' });
 
-    saveAs(content, `${fileName}.zip`);
+    saveAs(content, `${slug}-pro-example.zip`);
     setIsDownloading(false);
   };
 
   return (
     <Button
-      className="w-[160px]"
+      className={cn('w-[160px]', className)}
       disabled={isDownloading}
       onClick={downloadZip}
       loading={isDownloading}

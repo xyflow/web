@@ -1,39 +1,26 @@
+import { Suspense } from 'react';
 import Link from 'next/link';
+import { MDXRemote } from 'nextra/mdx-remote';
+import { Tabs } from 'nextra/components';
+import { SandpackFiles } from '@codesandbox/sandpack-react';
+
+import { Framework } from '../../types';
+import { getFramework } from '../../lib/get-framework';
 import { cn } from '../../lib/utils';
+
+import { compileMdx } from 'nextra/compile';
+
+import { fetchProExample } from './fetch-pro-example';
+import { fetchTemplatePreviewUrl } from './fetch-template-preview-url';
+
+import { DownloadButton } from './download-button';
+import { CollaborativePreview } from './collaborative-preview-dynamic';
+import { Subscribed } from '../pro/SubscriptionStatus';
+
 import { Button } from '../ui/button';
 import { Container } from '../ui/container';
 import { Text } from '../ui/text';
-import { Framework, SubscriptionPlan } from '../../types';
-import { getSubscription } from '../../server-actions/get-subscription';
-
-import { compileMdx } from 'nextra/compile';
-import { MDXRemote } from 'nextra/mdx-remote';
-import { Tabs } from 'nextra/components';
-
-import EditorTab from '../pro/ProExampleViewer/tabs/editor';
-import { fetchProExample } from './fetch-pro-example';
-import { getFramework } from '../../lib/get-framework';
-import { CollaborativePreview } from './collaborative-preview-dynamic';
-import { ReactNode, Suspense } from 'react';
-import { SandpackFiles } from '@codesandbox/sandpack-react';
-
-async function fetchTemplatePreviewUrl(baseUrl: string): Promise<string | null> {
-  'use cache';
-  try {
-    const res = await fetch(`${baseUrl}/config.json`, {
-      cache: 'force-cache',
-      next: { revalidate: false },
-    });
-    if (!res.ok) return null;
-    const json = (await res.json()) as { previewUrl?: unknown };
-    if (typeof json.previewUrl === 'string' && json.previewUrl.length > 0) {
-      return json.previewUrl;
-    }
-  } catch {
-    // fall back to baseUrl
-  }
-  return null;
-}
+import { ProExampleCodeEditor } from './editor';
 
 type ProExampleViewerProps = {
   slug: string;
@@ -93,75 +80,29 @@ export async function ProExample({
   const { proExampleFiles, markdown } = await getProExample(slug, framework);
 
   return (
-    <ProExampleInner
-      slug={slug}
-      type={type}
-      className={className}
-      innerClassName={innerClassName}
-      framework={framework}
-      collaborative={collaborative}
-      iframeBaseSrc={iframeBaseSrc}
-    >
-      <LoggedIn
-        markdown={markdown}
-        proExampleFiles={proExampleFiles}
-        iframeBaseSrc={iframeBaseSrc}
-        collaborative={collaborative}
-      ></LoggedIn>
-    </ProExampleInner>
-  );
-
-  // const { plan, teamPlan } = await getSubscription();
-  // const isProPlan = plan !== SubscriptionPlan.FREE || teamPlan !== SubscriptionPlan.FREE;
-
-  // if (isProPlan) {
-  //   return (
-  //     <LoggedIn
-  //       slug={slug}
-  //       framework={framework}
-  //       iframeBaseSrc={iframeBaseSrc}
-  //       collaborative={collaborative}
-  //     />
-  //   );
-  // }
-
-  // return (
-  //   <LoggedOut
-  //     className={className}
-  //     innerClassName={innerClassName}
-  //     type={type}
-  //     iframeBaseSrc={iframeBaseSrc}
-  //     slug={slug}
-  //     collaborative={collaborative}
-  //   />
-  // );
-}
-
-async function ProExampleInner({
-  slug,
-  type = 'example',
-  className,
-  innerClassName,
-  iframeBaseSrc,
-  collaborative,
-  children,
-}: ProExampleViewerProps & { iframeBaseSrc: string; children: ReactNode }) {
-  const { plan, teamPlan } = await getSubscription();
-  const isProPlan = plan !== SubscriptionPlan.FREE || teamPlan !== SubscriptionPlan.FREE;
-
-  if (isProPlan) {
-    return children;
-  }
-
-  return (
-    <LoggedOut
-      className={className}
-      innerClassName={innerClassName}
-      type={type}
-      iframeBaseSrc={iframeBaseSrc}
-      slug={slug}
-      collaborative={collaborative}
-    />
+    <>
+      <Subscribed
+        fallback={
+          <LoggedOut
+            className={className}
+            innerClassName={innerClassName}
+            type={type}
+            iframeBaseSrc={iframeBaseSrc}
+            slug={slug}
+            collaborative={collaborative}
+          />
+        }
+      >
+        <LoggedIn
+          markdown={markdown}
+          proExampleFiles={proExampleFiles}
+          iframeBaseSrc={iframeBaseSrc}
+          collaborative={collaborative}
+          slug={slug}
+          framework={framework}
+        />
+      </Subscribed>
+    </>
   );
 }
 
@@ -229,34 +170,45 @@ function LoggedIn({
   collaborative,
   markdown,
   proExampleFiles,
+  slug,
+  framework,
 }: {
   iframeBaseSrc: string;
   collaborative?: boolean;
   markdown: string;
   proExampleFiles: SandpackFiles;
+  slug: string;
+  framework: Framework;
 }) {
   return (
-    <Tabs items={['Preview', 'Code', 'Readme']} defaultIndex={0}>
-      <Tabs.Tab>
-        {collaborative ? (
-          <CollaborativePreview iframeSrc={iframeBaseSrc} />
-        ) : (
-          <>
-            <div className="mb-2relative border-border mt-4 h-[75vh] max-h-[650px] min-h-[400px] overflow-hidden rounded-sm border">
-              <iframe className="h-full w-full" src={iframeBaseSrc} />
-            </div>
-            <a target="_blank" rel="noreferrer" href={iframeBaseSrc}>
-              <Button variant="link">Open preview in a new tab</Button>
-            </a>
-          </>
-        )}
-      </Tabs.Tab>
-      <Tabs.Tab>
-        <EditorTab files={proExampleFiles} />
-      </Tabs.Tab>
-      <Tabs.Tab>
-        <MDXRemote compiledSource={markdown} />
-      </Tabs.Tab>
-    </Tabs>
+    <>
+      <DownloadButton
+        slug={slug}
+        framework={framework}
+        className="float-right mb-[-2em] mt-6"
+      />
+      <Tabs items={['Preview', 'Code', 'Readme']} defaultIndex={0}>
+        <Tabs.Tab>
+          {collaborative ? (
+            <CollaborativePreview iframeSrc={iframeBaseSrc} />
+          ) : (
+            <>
+              <div className="border-border relative mb-2 mt-4 h-[75vh] max-h-[650px] min-h-[400px] overflow-hidden rounded-sm border">
+                <iframe className="h-full w-full" src={iframeBaseSrc} />
+              </div>
+              <a target="_blank" rel="noreferrer" href={iframeBaseSrc}>
+                <Button variant="link">Open preview in a new tab</Button>
+              </a>
+            </>
+          )}
+        </Tabs.Tab>
+        <Tabs.Tab>
+          <ProExampleCodeEditor files={proExampleFiles} />
+        </Tabs.Tab>
+        <Tabs.Tab>
+          <MDXRemote compiledSource={markdown} />
+        </Tabs.Tab>
+      </Tabs>
+    </>
   );
 }

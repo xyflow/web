@@ -2,16 +2,18 @@ import { getSubscriptionStatus } from '../../../server-actions/get-subscription'
 
 export async function Subscribed({
   requireAdminSubscription = false,
+  fallback = null,
   children,
 }: {
   children: React.ReactNode;
   requireAdminSubscription?: boolean;
+  fallback?: React.ReactNode;
 }) {
   const { isSubscribed, isAdmin } = await getSubscriptionStatus();
   const subscribed = requireAdminSubscription ? isAdmin : isSubscribed;
 
   if (!subscribed) {
-    return null;
+    return fallback;
   }
 
   return children;

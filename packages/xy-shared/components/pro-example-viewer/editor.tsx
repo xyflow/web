@@ -24,7 +24,7 @@ const ignoreFiles = [
   '/tsconfig.node.json',
 ];
 
-function ProExampleCodeEditor({ files }: { files: SandpackFiles }) {
+export function ProExampleCodeEditor({ files }: { files: SandpackFiles }) {
   const visibleFiles = files
     ? Object.keys(files).filter((file) => !ignoreFiles.includes(file))
     : [];
@@ -56,5 +56,3 @@ function ProExampleCodeEditor({ files }: { files: SandpackFiles }) {
     </SandpackProvider>
   );
 }
-
-export default ProExampleCodeEditor;
