@@ -18,6 +18,7 @@ const LIBRARY_CONFIG = {
 export type Library = keyof typeof LIBRARY_CONFIG;
 
 export async function fetchGitHubNpmStats(library: Library) {
+  'use cache';
   const config = LIBRARY_CONFIG[library];
 
   const { stargazers_count: stars = 0 } = await fetchJSON<{ stargazers_count?: number }>(

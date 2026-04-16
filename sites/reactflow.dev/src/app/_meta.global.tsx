@@ -325,13 +325,14 @@ const metaRecord = {
       },
       // No-Auth
       'sign-in': {
+        display: 'hidden',
         items: {
           'magic-link': {
             display: 'hidden',
           },
         },
       },
-      'sign-up': '',
+      'sign-up': { display: 'hidden' },
       'reset-password': {
         display: 'hidden',
       },

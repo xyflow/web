@@ -1,12 +1,6 @@
 'use client';
 
-import {
-  ReactNode,
-  startTransition,
-  useEffect,
-  useState,
-  type ComponentProps,
-} from 'react';
+import { ReactNode, type ComponentProps } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { Session } from '@nhost/nhost-js/session';
@@ -15,10 +9,10 @@ import { SparklesIcon } from '@heroicons/react/24/solid';
 
 import { cn } from '../../lib/utils';
 import { getFramework } from '../../lib/get-framework';
-import { nhostOnClient } from '../../lib/nhost-on-client';
 
 import { Button } from '../ui/button';
 import { AccountNavMenu } from './account-nav-menu';
+import { useSession } from '../../lib/use-session';
 
 const { library } = getFramework();
 
@@ -88,22 +82,8 @@ function getButtonContent(
 }
 
 export function DynamicCTAAcountMenu() {
-  const [session, setSession] = useState<Session | undefined | null>(undefined);
+  const session = useSession();
   const pathname = usePathname();
-
-  useEffect(() => {
-    startTransition(() => {
-      setSession(nhostOnClient.getUserSession());
-    });
-
-    const unsubscribe = nhostOnClient.sessionStorage.onChange((session) => {
-      setSession(session);
-    });
-
-    return () => {
-      unsubscribe();
-    };
-  }, []);
 
   const { component, width, disableOutline } = getButtonContent(session, pathname);
   return (
