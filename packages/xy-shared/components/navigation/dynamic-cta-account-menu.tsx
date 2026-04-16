@@ -106,7 +106,6 @@ export function DynamicCTAAcountMenu() {
   }, []);
 
   const { component, width, disableOutline } = getButtonContent(session, pathname);
-
   return (
     <div
       style={{ width: `${width}px` }}
