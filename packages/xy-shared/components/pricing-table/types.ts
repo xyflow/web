@@ -37,7 +37,7 @@ export type SubscriptionPlan = {
   highlighted?: boolean;
   buttonVariant?: ButtonProps['variant'];
   buttonLabel?: string;
-  buttonLabelSignedId?: string;
+  buttonLabelSignedIn?: string;
   isLoading?: boolean;
 };
 export type OnSelectCurrenty = ({

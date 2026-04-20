@@ -3,7 +3,7 @@ import { handleNhostMiddleware } from '../lib/nhost';
 
 const protectedRoutes = ['/pro/dashboard', '/pro/team', '/pro/account', '/pro/support'];
 
-const redirectToDashboard = ['/pro/sign-in', '/pro/sign-up', '/pro/'];
+const redirectToDashboard = ['/pro/sign-in', '/pro/sign-up', '/pro'];
 
 function isDocumentNavigation(req: NextRequest): boolean {
   const mode = req.headers.get('sec-fetch-mode');
