@@ -83,7 +83,7 @@ const UiComponentViewer: FC<{ id: string }> = async ({ id }) => {
       <div className="my-5 flex items-center gap-2">
         <div>Dependencies:</div>
         {npmDependencies.map((dep) => (
-          <a className="bg-card rounded-md px-1 py-0.5" key={dep.label} href={dep.url}>
+          <a className="bg-muted rounded-md px-1 py-0.5" key={dep.label} href={dep.url}>
             {dep.label}
           </a>
         ))}

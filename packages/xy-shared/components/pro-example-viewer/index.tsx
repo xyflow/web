@@ -130,7 +130,7 @@ function LoggedOut({
       >
         <Text className="max-w-xl flex-1 basis-full">
           <strong>This is a Pro {type}.</strong> Get{' '}
-          <Link className="underline" href="/examples/pro">
+          <Link className="underline" href="/pro/content">
             all pro examples
           </Link>
           , templates, 1:1 support from the xyflow team and prioritized Github issues with

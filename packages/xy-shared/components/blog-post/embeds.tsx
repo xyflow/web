@@ -103,7 +103,7 @@ type IFrameProps = {
   loading?: 'lazy' | 'eager';
 };
 
-export function Embed({ src, lazy, wide = true, className }: EmbedProps) {
+export function Embed({ src, lazy, wide = false, className }: EmbedProps) {
   const iFrameProps: IFrameProps = {};
 
   if (lazy) {
