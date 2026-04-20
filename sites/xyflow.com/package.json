@@ -19,7 +19,7 @@
     "@heroicons/react": "^2.2.0",
     "@sindresorhus/slugify": "^2.2.1",
     "@xyflow/react": "catalog:",
-    "botid": "^1.5.10",
+    "botid": "^1.5.11",
     "next": "catalog:",
     "next-sitemap": "catalog:",
     "nextra": "catalog:",
@@ -29,13 +29,13 @@
     "xy-shared": "workspace:*"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "catalog:",
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "eslint": "catalog:",
     "eslint-config-xyflow": "workspace:*",
-    "postcss-lightningcss": "^1.0.1",
+    "postcss-lightningcss": "^1.1.0",
     "tailwindcss": "catalog:",
-    "@tailwindcss/postcss": "catalog:",
     "typescript": "catalog:",
     "xy-tsconfig": "workspace:*"
   }

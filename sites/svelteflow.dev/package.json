@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
-    "@typeform/embed-react": "^4.4.0",
+    "@typeform/embed-react": "^4.11.0",
     "@xyflow/react": "catalog:",
     "@xyflow/svelte": "catalog:",
     "@xyflow/system": "catalog:",
@@ -26,7 +26,7 @@
     "nextra-theme-docs": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",
-    "react-syntax-highlighter": "^16.1.0",
+    "react-syntax-highlighter": "^16.1.1",
     "xy-shared": "workspace:*"
   },
   "devDependencies": {
@@ -35,7 +35,7 @@
     "@types/react": "catalog:",
     "@types/react-syntax-highlighter": "^15.5.13",
     "eslint-config-xyflow": "workspace:*",
-    "postcss-lightningcss": "^1.0.1",
+    "postcss-lightningcss": "^1.1.0",
     "tailwindcss": "catalog:",
     "typescript": "catalog:",
     "xy-tsconfig": "workspace:*"
