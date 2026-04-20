@@ -1,11 +1,5 @@
 import { MarkerType, type Node, type Edge } from '@xyflow/svelte';
 
-import { type BuiltInNode } from '@xyflow/svelte';
-import { type AnnotationNode } from './AnnotationNode.svelte';
-import { type CircleNode } from './CircleNode.svelte';
-
-export type AppNode = BuiltInNode | AnnotationNode | CircleNode;
-
 export const initialNodes: Node[] = [
   {
     id: 'annotation-1',
@@ -13,14 +7,14 @@ export const initialNodes: Node[] = [
     draggable: false,
     selectable: false,
     data: {
-      label: 'this is a "node"',
-      arrowStyle: 'right: 0; bottom: 0; transform: translate(-30px,10px) rotate(-70deg);',
+      label: 'This is a "node"',
+      arrowStyle: 'arrow-bottom-right',
     },
-    position: { x: -80, y: -50 },
+    position: { x: -65, y: -50 },
   },
   {
     id: '1-1',
-    type: 'input',
+    type: 'default',
     data: {
       label: 'node label',
     },
@@ -32,11 +26,10 @@ export const initialNodes: Node[] = [
     draggable: false,
     selectable: false,
     data: {
-      label: 'this is a "handle"',
-      arrowStyle:
-        'left: 0; bottom: 0; transform: translate(0px, -25px) rotate(140deg) scale(-1, 1);',
+      label: 'This is a "handle"',
+      arrowStyle: 'arrow-top-left',
     },
-    position: { x: 230, y: 30 },
+    position: { x: 235, y: 35 },
   },
   {
     id: 'annotation-3',
@@ -45,9 +38,8 @@ export const initialNodes: Node[] = [
     selectable: false,
     data: {
       level: 2,
-      label: 'this is an "edge"',
-      arrowStyle:
-        'right: 0; bottom: 0; transform: translate(-10px, -25px) rotate(190deg);',
+      label: 'This is an "edge"',
+      arrowStyle: 'arrow-top-right',
     },
     position: { x: 20, y: 120 },
   },
@@ -65,11 +57,10 @@ export const initialNodes: Node[] = [
     draggable: false,
     selectable: false,
     data: {
-      label: 'try dragging the handle',
-      arrowStyle:
-        'left: 0; bottom: 0; transform: translate(-15px, -25px) rotate(140deg) scale(-1, 1);',
+      label: 'Try dragging the handle',
+      arrowStyle: 'arrow-top-left',
     },
-    position: { x: 450, y: 220 },
+    position: { x: 430, y: 240 },
   },
 ];
 
