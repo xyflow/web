@@ -17,7 +17,7 @@ export default function CollaborativePreview({ iframeSrc }: { iframeSrc: string 
   });
 
   return (
-    <div className="flex gap-2">
+    <div className="flex w-full gap-2">
       <div className="h-[645px] w-1/2">
         {flowId && (
           <iframe

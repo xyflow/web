@@ -150,7 +150,7 @@ function LoggedOut({
         </div>
       </div>
 
-      <div className="flex">
+      <div className="flex w-full">
         {collaborative ? (
           <CollaborativePreview iframeSrc={iframeBaseSrc} />
         ) : (
