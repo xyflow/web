@@ -20,6 +20,7 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ['xy-shared'],
   },
+  cacheComponents: true,
   async redirects() {
     return redirects;
   },
@@ -78,6 +79,7 @@ const nextConfig: NextConfig = {
   env: {
     REACT_FLOW_VERSION: reactFlowPackageJson.version,
     NEXT_PUBLIC_FRAMEWORK: 'react',
+    NEXT_PUBLIC_CURRENT_TIME: new Date().getTime().toString(),
     NEXT_PUBLIC_EXAMPLES_URL:
       process.env.VERCEL_ENV === 'preview'
         ? `https://example-apps-git-${parsePreviewDeploySlug(process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL!)}.vercel.app`

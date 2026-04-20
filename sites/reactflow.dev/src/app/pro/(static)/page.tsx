@@ -22,6 +22,8 @@ import retool from '../../../../public/img/clients/retool.svg';
 import doubleloop from '../../../../public/img/clients/doubleloop.svg';
 import onesignal from '../../../../public/img/clients/onesignal.svg';
 import close from '../../../../public/img/clients/close.svg';
+import { Suspense } from 'react';
+import { Spinner } from 'xy-shared/components/ui/spinner';
 
 export const metadata: NextraMetadata = {
   asIndexPage: true,
@@ -82,7 +84,11 @@ export default function ReactFlowPro() {
         subtitle="Get advanced code examples, technical support, and help funding our development — while keeping the library open source and under the MIT license."
         kicker="React Flow Pro"
         kickerIcon={<SparklesIcon />}
-        action={<SignUpButton className="inline-flex" showIcon />}
+        action={
+          <Suspense fallback={<Spinner />}>
+            <SignUpButton className="inline-flex" showIcon />
+          </Suspense>
+        }
         backgroundVariant="image"
       >
         <p className="mb-2 mt-4">

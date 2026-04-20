@@ -1,19 +1,14 @@
-'use client';
-
 import Link from 'next/link';
 import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu';
 
 import {
   ArrowRightStartOnRectangleIcon,
-  CreditCardIcon,
   Squares2X2Icon,
   UserCircleIcon,
 } from '@heroicons/react/24/outline';
 import { UserIcon } from '@heroicons/react/24/solid';
 
 import { nhostOnClient } from '../../lib/nhost-on-client';
-import { Subscribed } from '../pro/SubscriptionStatus';
-import { openStripeCustomerPortal } from '../../server-actions/open-stripe-customer-portal';
 import { cn } from '../../lib/utils';
 
 import {
@@ -23,6 +18,7 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
 } from '../ui/navigation-menu';
+// import { Session } from '@nhost/nhost-js/session';
 
 const accountMenuItemClass =
   'group/account-item flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left text-foreground transition-colors hover:bg-muted focus:bg-muted focus:outline-none';
@@ -30,7 +26,9 @@ const accountMenuItemClass =
 const accountMenuAccentClass =
   'transition-colors group-hover/account-item:text-primary group-focus/account-item:text-primary';
 
-export function AccountNavMenu() {
+export function AccountNavMenu(/*{ session }: { session: Session }*/) {
+  // const email = session.user?.email;
+
   return (
     <NavigationMenu className="h-full w-full flex-none">
       <NavigationMenuList>
@@ -40,6 +38,16 @@ export function AccountNavMenu() {
           </NavigationMenuPrimitive.Trigger>
           <NavigationMenuContent className="bg-background left-auto right-0 rounded-xl p-2 shadow-2xl md:w-48">
             <div className="grid gap-1">
+              {/* TODO: Add email to account menu? */}
+              {/* {email ? (
+                <p
+                  className="text-muted-foreground px-3 pb-2 pt-1 text-xs leading-snug"
+                  title={email}
+                >
+                  You are signed in as
+                  <p className="text-foreground font-medium">{email}</p>
+                </p>
+              ) : null} */}
               <NavigationMenuLink asChild>
                 <Link href="/pro/dashboard" className={accountMenuItemClass}>
                   <Squares2X2Icon
@@ -67,27 +75,6 @@ export function AccountNavMenu() {
                   </span>
                 </Link>
               </NavigationMenuLink>
-
-              <Subscribed requireAdminSubscription>
-                <NavigationMenuLink asChild className="cursor-pointer">
-                  <button
-                    type="button"
-                    className={accountMenuItemClass}
-                    onClick={openStripeCustomerPortal}
-                  >
-                    <CreditCardIcon
-                      className={cn(
-                        'text-muted-foreground h-5 w-5 shrink-0',
-                        accountMenuAccentClass,
-                      )}
-                    />
-                    <span className={cn('text-sm font-semibold', accountMenuAccentClass)}>
-                      Billing
-                    </span>
-                  </button>
-                </NavigationMenuLink>
-              </Subscribed>
-
               <div className="bg-border my-1 h-px" />
 
               <NavigationMenuLink asChild>

@@ -180,7 +180,7 @@ export type InternalRoute =
   | '/ui/components/zoom-slider'
   | '/ui/templates/ai-workflow-editor'
   | '/ui/templates/workflow-editor'
-  | '/ui/ui-component-viewer.mdx.tsx'
+  | '/ui/ui-component-viewer.tsx'
   | '/whats-new/2023-11-01'
   | '/whats-new/2023-11-02'
   | '/whats-new/2023-11-10'

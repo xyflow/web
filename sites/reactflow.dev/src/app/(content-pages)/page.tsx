@@ -30,8 +30,6 @@ import close from '../../../public/img/clients/close.svg';
 
 import { FlowA, FlowB, FlowC } from 'xy-shared/components/flows';
 
-export const revalidate = 3600; // 60 * 60
-
 export const metadata: Metadata = {
   title: 'Node-Based UIs in React',
   description:
@@ -107,6 +105,7 @@ const sliderItems = [
 ];
 
 const Page: FC = async () => {
+  'use cache';
   const { stars = 23000, downloads = 4000 } = await fetchGitHubNpmStats('react');
   const pageMap = await getLastChangelog();
   const whatsNew = pageMap.slice(0, 3);

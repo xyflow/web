@@ -3,12 +3,14 @@ import { FAQ } from '../../../../components/faq';
 import { default as reactFlowProFaqItems } from '../../../../components/faq/items/react-flow-pro';
 import DashboardHeader from '../../../../components/pro/DashboardHeader';
 import PricingTable from '../../../../components/pro/PricingTable';
+import { requireSession } from '../../../../lib/nhost';
 
 export const metadata: NextraMetadata = {
   asIndexPage: true,
 };
 
-export default function SubscribePage() {
+export default async function SubscribePage() {
+  await requireSession();
   return (
     <>
       <DashboardHeader

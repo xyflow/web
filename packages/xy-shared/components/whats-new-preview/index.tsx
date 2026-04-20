@@ -54,7 +54,7 @@ function WhatsNewItemPreview({
     <div className="space-y-4">
       <header className="space-y-2">
         <Text size="sm" className="text-light">
-          <TimeAgo datetime={date} />
+          <TimeAgo date={date} />
         </Text>
         <h1 className={cn(featured ? 'text-2xl' : 'text-lg', 'font-semibold')}>
           <Link href={route} prefetch={false}>

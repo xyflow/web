@@ -12,6 +12,7 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ['xy-shared', 'xy-shared'],
   },
+  cacheComponents: true,
   images: {
     // We need this to allow images to be displayed from localhost
     // https://github.com/vercel/next.js/discussions/86147
@@ -49,6 +50,7 @@ const nextConfig: NextConfig = {
   },
   env: {
     REACT_FLOW_VERSION: reactFlowPackageJson.version,
+    NEXT_PUBLIC_CURRENT_TIME: new Date().getTime().toString(),
     NEXT_PUBLIC_EXAMPLES_URL:
       process.env.VERCEL_ENV === 'preview'
         ? `https://example-apps-git-${process.env.VERCEL_GIT_COMMIT_REF}-xyflow.vercel.app`

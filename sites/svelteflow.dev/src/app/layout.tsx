@@ -17,8 +17,6 @@ import { createNormalizePageMap } from 'xy-shared/server/normalize-page-map';
 import { SiteNavbarContent } from 'xy-shared/components/navigation/SiteNavbar';
 import './global.css';
 
-export const revalidate = false;
-
 export const metadata = generateRootMetadata('Svelte Flow', {
   description:
     'Customizable library for rendering workflows, diagrams and node-based UIs.',

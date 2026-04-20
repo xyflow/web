@@ -1,3 +1,5 @@
+'use client';
+
 import { useMemo } from 'react';
 import { useTheme } from 'nextra-theme-docs';
 import { aquaBlue, nightOwl } from '@codesandbox/sandpack-themes';
@@ -22,7 +24,7 @@ const ignoreFiles = [
   '/tsconfig.node.json',
 ];
 
-function ProExampleCodeEditor({ files }: { files: SandpackFiles }) {
+export function ProExampleCodeEditor({ files }: { files: SandpackFiles }) {
   const visibleFiles = files
     ? Object.keys(files).filter((file) => !ignoreFiles.includes(file))
     : [];
@@ -54,5 +56,3 @@ function ProExampleCodeEditor({ files }: { files: SandpackFiles }) {
     </SandpackProvider>
   );
 }
-
-export default ProExampleCodeEditor;

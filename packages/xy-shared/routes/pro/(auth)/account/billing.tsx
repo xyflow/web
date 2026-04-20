@@ -4,8 +4,8 @@ import {
   CardDescription,
   CardTitle,
   CardFooter,
-} from '../../../../../components/ui/card';
-import CustomerPortalButton from '../../../../../components/pro/CustomerPortalButton';
+} from '../../../../components/ui/card';
+import CustomerPortalButton from '../../../../components/pro/CustomerPortalButton';
 
 function BillingCard() {
   return (

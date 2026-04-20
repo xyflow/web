@@ -1,56 +1,34 @@
 'use client';
 
-import {
-  ComponentProps,
-  createContext,
-  FC,
-  useCallback,
-  useEffect,
-  useMemo,
-  useState,
-  useTransition,
-} from 'react';
-import { SubscriptionPlan } from '../../../types';
-import { getSubscription } from '../../../server-actions/get-subscription';
-import { usePathname, useRouter } from 'next/navigation';
-import { normalizeSubscription } from '../../../lib/pro-utils';
-import { mergeMetaWithPageMap } from 'nextra/merge-meta-with-page-map';
 import { Layout as NextraLayout } from 'nextra-theme-docs';
-import type { SubscriptionStatus } from '../../../hooks/use-subscription';
+import { ComponentProps, startTransition, useEffect, useMemo, useState } from 'react';
+import { SubscriptionPlan } from '../../../types';
+
+import { usePathname, useRouter } from 'next/navigation';
+
+import { mergeMetaWithPageMap } from 'nextra/merge-meta-with-page-map';
+import { getSubscriptionStatus } from '../../../server-actions/get-subscription';
+import { useSession } from '../../../lib/use-session';
 
 const hidden = { display: 'hidden' };
 
-export const SubscriptionContext = createContext<SubscriptionStatus>(null!);
-
-export const SubscriptionProvider: FC<ComponentProps<typeof NextraLayout>> = ({
+export function SubscriptionProvider({
   children,
   ...props
-}) => {
-  const [isLoading, startTransition] = useTransition();
-  const [{ user, plan, teamPlan }, setSubscription] = useState<
-    Awaited<ReturnType<typeof getSubscription>>
-  >({
-    user: undefined,
-    plan: SubscriptionPlan.FREE,
-    teamPlan: SubscriptionPlan.FREE,
-  });
+}: ComponentProps<typeof NextraLayout>) {
+  const [status, setStatus] =
+    useState<Awaited<ReturnType<typeof getSubscriptionStatus>>>();
 
   const pathname = usePathname();
   const router = useRouter();
-
-  const refetchUser = useCallback(() => {
-    startTransition(async () => {
-      const subscription = await getSubscription();
-      setSubscription(subscription);
-    });
-  }, []);
+  const session = useSession();
 
   useEffect(() => {
     let cancelled = false;
 
     const fetchSubscription = async () => {
       try {
-        let subscription = await getSubscription();
+        let subscription = await getSubscriptionStatus();
 
         const searchParams = new URLSearchParams(window.location.search);
 
@@ -63,7 +41,7 @@ export const SubscriptionProvider: FC<ComponentProps<typeof NextraLayout>> = ({
             i++
           ) {
             await new Promise((r) => setTimeout(r, 1000));
-            subscription = await getSubscription();
+            subscription = await getSubscriptionStatus();
           }
 
           if (cancelled) return;
@@ -73,7 +51,7 @@ export const SubscriptionProvider: FC<ComponentProps<typeof NextraLayout>> = ({
           router.replace(qs ? `${pathname}?${qs}` : pathname);
         }
 
-        if (!cancelled) setSubscription(subscription);
+        if (!cancelled) setStatus(subscription);
       } catch (error) {
         if (!cancelled) console.error('Failed to fetch subscription:', error);
       }
@@ -84,30 +62,16 @@ export const SubscriptionProvider: FC<ComponentProps<typeof NextraLayout>> = ({
     return () => {
       cancelled = true;
     };
-  }, [pathname, router]);
-
-  const ctx = useMemo(() => normalizeSubscription({ plan, teamPlan }), [plan, teamPlan]);
-
-  const value = useMemo(
-    () => ({
-      user,
-      isLoading: isLoading || user === undefined,
-      refetchUser,
-      ...ctx,
-    }),
-    [user, isLoading, refetchUser, ctx],
-  );
+  }, [session]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const enhancedPageMap = useMemo(() => {
     return mergeMetaWithPageMap(props.pageMap, {
       pro: {
         items:
-          user || user === undefined
+          status && status?.user !== null // user is logged in
             ? {
-                'sign-in': hidden,
-                'sign-up': hidden,
-                ...(ctx.isSubscribed && { subscribe: hidden }),
-                ...(!ctx.isAdmin && { team: hidden }),
+                ...(status?.isSubscribed && { subscribe: hidden }),
+                ...(!status?.isAdmin && { team: hidden }),
               }
             : {
                 dashboard: hidden,
@@ -118,13 +82,11 @@ export const SubscriptionProvider: FC<ComponentProps<typeof NextraLayout>> = ({
               },
       },
     });
-  }, [props.pageMap, user, ctx]);
+  }, [props.pageMap, status]);
 
   return (
-    <SubscriptionContext.Provider value={value}>
-      <NextraLayout {...props} pageMap={enhancedPageMap}>
-        {children}
-      </NextraLayout>
-    </SubscriptionContext.Provider>
+    <NextraLayout {...props} pageMap={enhancedPageMap}>
+      {children}
+    </NextraLayout>
   );
-};
+}

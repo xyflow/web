@@ -11,19 +11,19 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from '../../../../../components/ui/alert-dialog';
+} from '../../../../components/ui/alert-dialog';
 import {
   Card,
   CardHeader,
   CardTitle,
   CardDescription,
   CardFooter,
-} from '../../../../../components/ui/card';
-import { Button } from '../../../../../components/ui/button';
-import { Input } from '../../../../../components/ui/input';
-import { callNhostFunction } from '../../../../../server-actions/call-nhost-function';
-import { getFramework } from '../../../../../lib/get-framework';
-import { nhostOnClient } from '../../../../../lib/nhost-on-client';
+} from '../../../../components/ui/card';
+import { Button } from '../../../../components/ui/button';
+import { Input } from '../../../../components/ui/input';
+import { callNhostFunction } from '../../../../server-actions/call-nhost-function';
+import { getFramework } from '../../../../lib/get-framework';
+import { nhostOnClient } from '../../../../lib/nhost-on-client';
 
 const { library } = getFramework();
 

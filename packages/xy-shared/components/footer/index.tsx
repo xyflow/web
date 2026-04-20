@@ -93,8 +93,8 @@ const Footer = forwardRef<HTMLDivElement, FooterProps>(
               </div>
 
               <Text variant="light" className="mt-auto pt-6 text-sm">
-                <a href="mailto:info@xyflow.com">info@xyflow.com</a> — Copyright ©{' '}
-                {new Date().getFullYear()}{' '}
+                {/* We cannot use new Date here because NextJs will complain */}
+                <a href="mailto:info@xyflow.com">info@xyflow.com</a> — Copyright © {2026}{' '}
                 <a href="https://webkid.io" target="_blank" rel="noopener noreferrer">
                   webkid GmbH
                 </a>

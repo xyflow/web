@@ -23,21 +23,21 @@ import {
   PlanId,
   OnSelectCurrenty,
 } from './types';
-import { useSubscription } from '../../hooks/use-subscription';
+import { User } from '@nhost/nhost-js/auth';
 
 const PricingTable = ({
   className,
   library = 'react',
   plans,
   onSelect,
+  user,
 }: {
   className?: string;
   library?: 'react' | 'svelte';
   plans?: SubscriptionPlan[];
   onSelect?: OnSelectCurrenty;
+  user?: User;
 }) => {
-  const { user } = useSubscription();
-  const isSignedIn = !!user;
   // Use library-specific config if plans not provided
   const selectedPlans = plans ?? (library === 'svelte' ? svelteConfig : defaultConfig);
   const [billingInterval, setBillingInterval] = useState<BillingInterval>(
@@ -113,7 +113,7 @@ const PricingTable = ({
             {selectedPlans.map((plan) => (
               <Plan
                 {...plan}
-                buttonLabel={isSignedIn ? plan.buttonLabelSignedId : plan.buttonLabel}
+                buttonLabel={user ? plan.buttonLabelSignedIn : plan.buttonLabel}
                 currency={currency}
                 billingInterval={billingInterval}
                 onSelect={onSelect}

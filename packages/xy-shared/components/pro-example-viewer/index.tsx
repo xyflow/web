@@ -1,105 +1,126 @@
-'use client';
-
-import { FC, useEffect, useMemo, useState } from 'react';
-import { usePathname } from 'next/navigation';
+import { Suspense } from 'react';
 import Link from 'next/link';
+import { MDXRemote } from 'nextra/mdx-remote';
+import { Tabs } from 'nextra/components';
+import { SandpackFiles } from '@codesandbox/sandpack-react';
+
+import { Framework } from '../../types';
+import { getFramework } from '../../lib/get-framework';
 import { cn } from '../../lib/utils';
+
+import { compileMdx } from 'nextra/compile';
+
+import { fetchProExample } from './fetch-pro-example';
+import { fetchTemplatePreviewUrl } from './fetch-template-preview-url';
+
+import { DownloadButton } from './download-button';
+import { CollaborativePreview } from './collaborative-preview-dynamic';
+import { Subscribed } from '../pro/SubscriptionStatus';
+
 import { Button } from '../ui/button';
 import { Container } from '../ui/container';
 import { Text } from '../ui/text';
-import { useSubscription } from '../../hooks/use-subscription';
-import ProPlatformExampleViewer from '../../components/pro/ProExampleViewer';
-import { Framework } from '../../types';
-import { Spinner } from '../ui/spinner';
+import { ProExampleCodeEditor } from './editor';
 
-type QueryParams = Record<string, string | number | boolean | null | undefined>;
-
-function toSearchParams(queryParams: QueryParams) {
-  const sp = new URLSearchParams();
-  for (const [key, value] of Object.entries(queryParams)) {
-    if (value === null || value === undefined) continue;
-    sp.set(key, String(value));
-  }
-  return sp;
-}
-
-function appendSearchParams(url: string, sp: URLSearchParams) {
-  if (sp.size === 0) return url;
-  return url.includes('?') ? `${url}&${sp.toString()}` : `${url}?${sp.toString()}`;
-}
-
-const ProExampleViewer: FC<{
+type ProExampleViewerProps = {
   slug: string;
   type?: 'example' | 'template';
   className?: string;
   innerClassName?: string;
   framework?: Framework;
-  queryParams?: QueryParams;
-}> = ({
+  collaborative?: boolean;
+};
+
+export default async function ProExampleViewer(props: ProExampleViewerProps) {
+  return (
+    <Suspense
+      fallback={
+        <div
+          role="status"
+          aria-label="Loading example preview"
+          className={cn(
+            'border-border mt-4 h-[75vh] max-h-[650px] min-h-[400px] overflow-hidden rounded-sm border',
+            'bg-muted animate-pulse',
+          )}
+        />
+      }
+    >
+      <ProExample {...props} />
+    </Suspense>
+  );
+}
+
+async function getProExample(slug: string, framework: Framework) {
+  'use cache';
+  const proExampleFiles = await fetchProExample({ exampleId: slug, framework });
+
+  const readmeFile = proExampleFiles?.['/README.mdx'] ?? proExampleFiles?.['/README.md'];
+  const readme = (typeof readmeFile === 'string' ? readmeFile : readmeFile?.code) || '';
+
+  const markdown = await compileMdx(readme);
+
+  return { proExampleFiles, markdown };
+}
+
+export async function ProExample({
   slug,
   type = 'example',
   className,
   innerClassName,
-  framework = 'react',
-  queryParams = {},
-}) => {
-  const pathname = usePathname();
-  const { isSubscribed, user } = useSubscription();
+  framework: frameworkOverride,
+  collaborative,
+}: ProExampleViewerProps) {
+  const { framework } = getFramework(frameworkOverride);
   const baseUrl = `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${framework}/${slug}`;
 
-  // For templates we try to load `previewUrl` from `config.json`.
-  const [templatePreviewUrl, setTemplatePreviewUrl] = useState<string | null>(null);
+  const templatePreviewUrl =
+    type === 'template' ? await fetchTemplatePreviewUrl(baseUrl) : null;
+  const iframeBaseSrc = type === 'template' ? (templatePreviewUrl ?? baseUrl) : baseUrl;
 
-  useEffect(() => {
-    let cancelled = false;
+  const { proExampleFiles, markdown } = await getProExample(slug, framework);
 
-    async function load() {
-      if (type !== 'template') {
-        setTemplatePreviewUrl(null);
-        return;
-      }
-
-      try {
-        const res = await fetch(`${baseUrl}/config.json`);
-        if (!res.ok) return;
-        const json = (await res.json()) as { previewUrl?: unknown };
-        if (cancelled) return;
-        if (typeof json.previewUrl === 'string' && json.previewUrl.length > 0) {
-          setTemplatePreviewUrl(json.previewUrl);
+  return (
+    <>
+      <Subscribed
+        fallback={
+          <LoggedOut
+            className={className}
+            innerClassName={innerClassName}
+            type={type}
+            iframeBaseSrc={iframeBaseSrc}
+            slug={slug}
+            collaborative={collaborative}
+          />
         }
-      } catch {
-        // ignore: fall back to baseUrl
-      }
-    }
+      >
+        <LoggedIn
+          markdown={markdown}
+          proExampleFiles={proExampleFiles}
+          iframeBaseSrc={iframeBaseSrc}
+          collaborative={collaborative}
+          slug={slug}
+          framework={framework}
+        />
+      </Subscribed>
+    </>
+  );
+}
 
-    load();
-    return () => {
-      cancelled = true;
-    };
-  }, [baseUrl, type]);
-
-  const hasUser = !!user;
-  const isLoading = type === 'template' && !templatePreviewUrl;
-  const signInLink = `/pro/sign-in?redirectTo=${pathname}`;
-  const subscribeLink = `/pro/subscribe?redirectTo=${pathname}`;
-  const iframeBaseSrc = type === 'template' ? (templatePreviewUrl ?? '') : baseUrl;
-  const iframeSearchParams = useMemo(() => toSearchParams(queryParams), [queryParams]);
-
-  if (isSubscribed) {
-    return (
-      <ProPlatformExampleViewer
-        framework={framework}
-        exampleId={slug}
-        config={{
-          type,
-          id: slug,
-          framework,
-          previewUrl: appendSearchParams(iframeBaseSrc, iframeSearchParams),
-        }}
-      />
-    );
-  }
-
+function LoggedOut({
+  className,
+  innerClassName,
+  type,
+  iframeBaseSrc,
+  slug,
+  collaborative,
+}: {
+  className?: string;
+  innerClassName?: string;
+  type: string;
+  iframeBaseSrc: string;
+  slug: string;
+  collaborative?: boolean;
+}) {
   return (
     <Container className={cn(['mt-7', className])} innerClassName={innerClassName}>
       <div
@@ -117,32 +138,24 @@ const ProExampleViewer: FC<{
         </Text>
         <div className="flex space-x-4">
           <Button asChild className="shrink-0">
-            {hasUser ? (
-              <Link href={subscribeLink}>Subscribe</Link>
-            ) : (
-              <Link href="/pro">See Pricing Plans</Link>
-            )}
+            <Link href="/pro">See Pricing Plans</Link>
           </Button>
-          {hasUser ? null : (
-            <Button
-              asChild
-              variant="secondary"
-              className="text-primary shrink-0 dark:text-white"
-            >
-              <a href={signInLink}>Sign In</a>
-            </Button>
-          )}
+          <Button
+            asChild
+            variant="secondary"
+            className="text-primary shrink-0 dark:text-white"
+          >
+            <a href="/pro/sign-in">Sign In</a>
+          </Button>
         </div>
       </div>
 
-      <div className="flex">
-        {isLoading ? (
-          <div className="block flex h-[645px] w-full items-center justify-center">
-            <Spinner />
-          </div>
+      <div className="flex w-full">
+        {collaborative ? (
+          <CollaborativePreview iframeSrc={iframeBaseSrc} />
         ) : (
           <iframe
-            src={appendSearchParams(iframeBaseSrc, iframeSearchParams)}
+            src={iframeBaseSrc}
             title={`${slug} preview`}
             className={cn('bg-background block h-[645px] w-full')}
           />
@@ -150,6 +163,52 @@ const ProExampleViewer: FC<{
       </div>
     </Container>
   );
-};
+}
 
-export default ProExampleViewer;
+function LoggedIn({
+  iframeBaseSrc,
+  collaborative,
+  markdown,
+  proExampleFiles,
+  slug,
+  framework,
+}: {
+  iframeBaseSrc: string;
+  collaborative?: boolean;
+  markdown: string;
+  proExampleFiles: SandpackFiles;
+  slug: string;
+  framework: Framework;
+}) {
+  return (
+    <>
+      <DownloadButton
+        slug={slug}
+        framework={framework}
+        className="float-right mb-[-2em] mt-6"
+      />
+      <Tabs items={['Preview', 'Code', 'Readme']} defaultIndex={0}>
+        <Tabs.Tab>
+          {collaborative ? (
+            <CollaborativePreview iframeSrc={iframeBaseSrc} />
+          ) : (
+            <>
+              <div className="border-border relative mb-2 mt-4 h-[75vh] max-h-[650px] min-h-[400px] overflow-hidden rounded-sm border">
+                <iframe className="h-full w-full" src={iframeBaseSrc} />
+              </div>
+              <a target="_blank" rel="noreferrer" href={iframeBaseSrc}>
+                <Button variant="link">Open preview in a new tab</Button>
+              </a>
+            </>
+          )}
+        </Tabs.Tab>
+        <Tabs.Tab>
+          <ProExampleCodeEditor files={proExampleFiles} />
+        </Tabs.Tab>
+        <Tabs.Tab>
+          <MDXRemote compiledSource={markdown} />
+        </Tabs.Tab>
+      </Tabs>
+    </>
+  );
+}

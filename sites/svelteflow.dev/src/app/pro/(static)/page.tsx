@@ -8,6 +8,8 @@ import { SparklesIcon } from '@heroicons/react/24/outline';
 
 import { NextraMetadata } from 'nextra';
 import { SignUpButton } from 'xy-shared/components/pro/SignUpButton';
+import { Suspense } from 'react';
+import { Spinner } from 'xy-shared/components/ui/spinner';
 
 export const metadata: NextraMetadata = {
   asIndexPage: true,
@@ -29,7 +31,11 @@ export default function SvelteFlowPro() {
         subtitle="Get advanced code examples, technical support, and help funding our development — while keeping the library open source and under the MIT license."
         kicker="Svelte Flow Pro"
         kickerIcon={<SparklesIcon />}
-        action={<SignUpButton className="inline-flex" showIcon />}
+        action={
+          <Suspense fallback={<Spinner />}>
+            <SignUpButton className="inline-flex" showIcon />
+          </Suspense>
+        }
         backgroundVariant="image"
       >
         <p className="mb-2 mt-4">

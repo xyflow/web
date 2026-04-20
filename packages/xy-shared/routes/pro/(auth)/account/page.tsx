@@ -1,17 +1,16 @@
 import DashboardHeader from '../../../../components/pro/DashboardHeader';
 
-import ChangeEmailCard from './_cards/change-email';
-import ChangePasswordCard from './_cards/change-password';
-import DeleteAccountCard from './_cards/delete-account';
-import BillingCard from './_cards/billing';
-import { createNhostClient } from '../../../../lib/nhost';
+import ChangeEmailCard from './change-email';
+import ChangePasswordCard from './change-password';
+import DeleteAccountCard from './delete-account';
+import BillingCard from './billing';
+import { requireSession } from '../../../../lib/nhost';
 
 export default async function AccountPage() {
-  const nhost = await createNhostClient();
-  const user = nhost.getUserSession()?.user;
+  const { user } = await requireSession();
 
-  if (!user?.email) {
-    throw new Error('User email must exist');
+  if (!user.email) {
+    throw new Error('no email found');
   }
 
   return (

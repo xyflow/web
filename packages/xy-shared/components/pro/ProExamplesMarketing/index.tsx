@@ -1,4 +1,4 @@
-import { FC, type ReactNode } from 'react';
+import { FC, Suspense, type ReactNode } from 'react';
 import Image from 'next/image';
 import { ContentGrid, ContentGridItem } from '../../ui/content-grid';
 import { Button } from '../../ui/button';
@@ -28,6 +28,7 @@ import type { MdxFile } from 'nextra';
 import { getExamplesPageMap } from '../../../server/example-utils';
 import { getFramework } from '../../../lib/get-framework';
 import { ThemeAwareImage } from '../../theme-aware-image';
+import { Spinner } from '../../ui/spinner';
 
 /** Served from each site's public folder at /img/pro/... */
 const IMG = {
@@ -51,9 +52,8 @@ export type ProExamplesMarketingProps = {
 
 const hasTemplates = framework === 'react';
 
-export const ProExamplesMarketing: FC<ProExamplesMarketingProps> = async ({
-  freeTrialSection,
-}) => {
+async function getProExamples() {
+  'use cache';
   const remoteProExamplesResponse = await fetchJSON(
     `${process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL}/${framework}/apps.json?t=1`,
   );
@@ -101,6 +101,14 @@ export const ProExamplesMarketing: FC<ProExamplesMarketingProps> = async ({
     return result;
   }, []);
 
+  return examples;
+}
+
+export const ProExamplesMarketing: FC<ProExamplesMarketingProps> = async ({
+  freeTrialSection,
+}) => {
+  const examples = await getProExamples();
+
   return (
     <BaseLayout>
       <Hero
@@ -121,7 +129,9 @@ export const ProExamplesMarketing: FC<ProExamplesMarketingProps> = async ({
             >
               <Link href="/pro">See Plans</Link>
             </Button>
-            <SignUpButton showIcon />
+            <Suspense fallback={<Spinner />}>
+              <SignUpButton showIcon />
+            </Suspense>
           </div>
         }
         backgroundVariant="image"
@@ -202,7 +212,9 @@ export const ProExamplesMarketing: FC<ProExamplesMarketingProps> = async ({
                       {freeTrialSection.demoLabel}
                     </Link>
                   </Button>
-                  <SignUpButton description={freeTrialSection.signUpDescription} />
+                  <Suspense fallback={<Spinner />}>
+                    <SignUpButton description={freeTrialSection.signUpDescription} />
+                  </Suspense>
                 </div>
               </div>
             </div>

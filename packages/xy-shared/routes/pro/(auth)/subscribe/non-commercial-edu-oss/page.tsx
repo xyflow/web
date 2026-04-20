@@ -1,5 +1,6 @@
 import DashboardHeader from '../../../../../components/pro/DashboardHeader';
 import { Card, CardHeader } from '../../../../../components/ui/card';
+import { requireSession } from '../../../../../lib/nhost';
 
 import SignUp from './signup';
 
@@ -7,7 +8,8 @@ export const metadata = {
   robots: 'noindex, nofollow',
 };
 
-export default function SignUpEduPage() {
+export default async function SignUpEduPage() {
+  await requireSession();
   return (
     <div className="max-w-2xl">
       <DashboardHeader

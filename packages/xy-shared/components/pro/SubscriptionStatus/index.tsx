@@ -1,26 +1,26 @@
-'use client';
+import { getSubscriptionStatus } from '../../../server-actions/get-subscription';
 
-import { useSubscription } from '../../../hooks/use-subscription';
-
-export function Subscribed({
+export async function Subscribed({
   requireAdminSubscription = false,
+  fallback = null,
   children,
 }: {
   children: React.ReactNode;
   requireAdminSubscription?: boolean;
+  fallback?: React.ReactNode;
 }) {
-  const { isSubscribed, isAdmin } = useSubscription();
+  const { isSubscribed, isAdmin } = await getSubscriptionStatus();
   const subscribed = requireAdminSubscription ? isAdmin : isSubscribed;
 
   if (!subscribed) {
-    return null;
+    return fallback;
   }
 
   return children;
 }
 
-export function NotSubscribed({ children }: { children: React.ReactNode }) {
-  const { isSubscribed } = useSubscription();
+export async function NotSubscribed({ children }: { children: React.ReactNode }) {
+  const { isSubscribed } = await getSubscriptionStatus();
 
   if (isSubscribed) {
     return null;
@@ -29,8 +29,8 @@ export function NotSubscribed({ children }: { children: React.ReactNode }) {
   return children;
 }
 
-export function PlanLabel() {
-  const { plan, isTeamSubscribed, isAdmin } = useSubscription();
+export async function PlanLabel() {
+  const { plan, isTeamSubscribed, isAdmin } = await getSubscriptionStatus();
 
   if (isAdmin) {
     return plan;

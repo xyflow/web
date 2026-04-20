@@ -1,5 +1,7 @@
+import { Suspense } from 'react';
 import { cn } from '../../../lib/utils';
 import SubscriptionPlan from './subscription-plan';
+import { Spinner } from '../../ui/spinner';
 
 export type DashboardHeaderProps = {
   title?: React.ReactNode;
@@ -27,7 +29,12 @@ export default function DashboardHeader({
             titleClassName,
           )}
         >
-          {title} {showSubscriptionPlan ? <SubscriptionPlan /> : null}
+          {title}{' '}
+          {showSubscriptionPlan ? (
+            <Suspense fallback={<Spinner />}>
+              <SubscriptionPlan />
+            </Suspense>
+          ) : null}
         </div>
       )}
       {description && (

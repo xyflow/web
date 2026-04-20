@@ -35,6 +35,7 @@ function Flow() {
   const [nodes, setNodes] = useState([]);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setNodes(
       // @ts-expect-error -- I think has an issue, he contains comma expression
       initialNodes({

@@ -1,42 +1,42 @@
-'use client';
-
-import { FC, ReactNode, useEffect, useRef, useState } from 'react';
+import { FC, ReactNode } from 'react';
 import { ntDapperFont } from '../../fonts/index';
 import { cn } from '../../lib/utils';
 
 export const Html: FC<{ children: ReactNode }> = ({ children }) => {
   // TODO: remove this workaround once this is fixed: https://github.com/shuding/nextra/pull/4891
-  const htmlRef = useRef<HTMLHtmlElement>(null);
-  const [theme, setTheme] = useState<string | undefined>(undefined);
+  // const htmlRef = useRef<HTMLHtmlElement>(null);
 
-  useEffect(() => {
-    const html = htmlRef.current;
-    if (!html) return;
+  // TODO!
+  // const [theme, setTheme] = useState<string | undefined>(undefined);
 
-    const syncTheme = () => {
-      const colorScheme = html.style.colorScheme;
-      setTheme(colorScheme);
-    };
+  // useEffect(() => {
+  //   const html = htmlRef.current;
+  //   if (!html) return;
 
-    syncTheme();
+  //   const syncTheme = () => {
+  //     const colorScheme = html.style.colorScheme;
+  //     setTheme(colorScheme);
+  //   };
 
-    const observer = new MutationObserver(syncTheme);
-    observer.observe(html, {
-      attributes: true,
-      attributeFilter: ['style'],
-    });
+  //   syncTheme();
 
-    return () => observer.disconnect();
-  }, []);
+  //   const observer = new MutationObserver(syncTheme);
+  //   observer.observe(html, {
+  //     attributes: true,
+  //     attributeFilter: ['style'],
+  //   });
+
+  //   return () => observer.disconnect();
+  // }, []);
 
   return (
     <html
-      ref={htmlRef}
+      // ref={htmlRef}
       className={cn(ntDapperFont.className)}
       dir="ltr"
       lang="en"
       suppressHydrationWarning
-      data-theme={theme}
+      // data-theme={theme}
     >
       {children}
     </html>

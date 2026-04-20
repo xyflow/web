@@ -95,6 +95,7 @@ export const fakeShowcases: ShowcaseItem[] = Array.from(
 );
 
 export async function fetchNotionShowcases(): Promise<ShowcaseItem[]> {
+  'use cache';
   if (!process.env.NOTION_API_SECRET) {
     if (process.env.NODE_ENV === 'development') {
       return fakeShowcases;

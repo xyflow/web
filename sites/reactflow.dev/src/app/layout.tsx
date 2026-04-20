@@ -17,8 +17,6 @@ import { SiteNavbarContent } from 'xy-shared/components/navigation/SiteNavbar';
 import './global.css';
 import { SessionRefresher } from 'xy-shared/components/session-refresher';
 
-export const revalidate = false;
-
 export const metadata = generateRootMetadata('React Flow', {
   description:
     'Customizable library for rendering workflows, diagrams and node-based UIs.',

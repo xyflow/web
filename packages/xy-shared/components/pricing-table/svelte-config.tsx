@@ -84,7 +84,7 @@ export const StarterPlan: SubscriptionPlan = {
     features.mitLicense,
   ],
   buttonLabel: 'Sign up',
-  buttonLabelSignedId: 'Subscribe',
+  buttonLabelSignedIn: 'Subscribe',
 };
 
 export const ProPlan: SubscriptionPlan = {
@@ -137,7 +137,7 @@ export const ProPlan: SubscriptionPlan = {
   ],
   highlighted: true,
   buttonLabel: 'Sign up',
-  buttonLabelSignedId: 'Subscribe',
+  buttonLabelSignedIn: 'Subscribe',
 };
 
 export const EnterprisePlan: SubscriptionPlan = {
@@ -172,7 +172,7 @@ export const EnterprisePlan: SubscriptionPlan = {
   ],
   buttonVariant: 'secondary',
   buttonLabel: 'Request a Quote',
-  buttonLabelSignedId: 'Request a Quote',
+  buttonLabelSignedIn: 'Request a Quote',
 };
 
 export const SubscriptionPlans: SubscriptionPlan[] = [
