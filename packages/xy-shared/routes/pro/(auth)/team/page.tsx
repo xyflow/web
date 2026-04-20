@@ -1,19 +1,11 @@
 import DashboardHeader from '../../../../components/pro/DashboardHeader';
 import NotSubscribedNotification from '../../../../components/pro/Notification/not-subscribed';
 import { Subscribed } from '../../../../components/pro/SubscriptionStatus';
-import { createNhostClient } from '../../../../lib/nhost';
-import { getTeamMembers } from '../../../../server-actions/get-team-members';
-import ManageTeamCard from './_cards/manage-team';
+import { requireSession } from '../../../../lib/nhost';
+import ManageTeamCard from './manage-team';
 
 export default async function TeamPage() {
-  const nhost = await createNhostClient();
-  const user = nhost.getUserSession()?.user;
-
-  if (!user) {
-    throw new Error('User not found');
-  }
-
-  const teamSubscriptions = await getTeamMembers();
+  const { user } = await requireSession();
 
   return (
     <div className="max-w-3xl">
@@ -24,7 +16,7 @@ export default async function TeamPage() {
       <div className="flex-1 space-y-4">
         <NotSubscribedNotification />
         <Subscribed requireAdminSubscription>
-          <ManageTeamCard user={user} teamSubscriptions={teamSubscriptions ?? []} />
+          <ManageTeamCard user={user} />
         </Subscribed>
       </div>
     </div>

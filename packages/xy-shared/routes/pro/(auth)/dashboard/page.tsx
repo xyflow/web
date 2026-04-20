@@ -4,9 +4,13 @@ import DashboardHeader from '../../../../components/pro/DashboardHeader';
 import { getFramework } from '../../../../lib/get-framework';
 import { Spinner } from '../../../../components/ui/spinner';
 import { Suspense } from 'react';
+import { requireSession } from '../../../../lib/nhost';
+
+const { library, framework } = getFramework();
 
 export default async function DashboardPage() {
-  const { library, framework } = getFramework();
+  await requireSession();
+
   return (
     <>
       <DashboardHeader title="Dashboard" showSubscriptionPlan />

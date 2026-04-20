@@ -5,10 +5,13 @@ import { Link } from '../../../../components/ui/link';
 import { getFramework } from '../../../../lib/get-framework';
 import { Suspense } from 'react';
 import { Spinner } from '../../../../components/ui/spinner';
+import { requireSession } from '../../../../lib/nhost';
 
 const { library } = getFramework();
 
 export default async function SupportPage() {
+  await requireSession();
+
   return (
     <div>
       <DashboardHeader

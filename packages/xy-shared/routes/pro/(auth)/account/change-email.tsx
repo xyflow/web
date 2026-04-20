@@ -7,12 +7,12 @@ import {
   CardTitle,
   CardDescription,
   CardFooter,
-} from '../../../../../components/ui/card';
-import { Button } from '../../../../../components/ui/button';
-import { Input } from '../../../../../components/ui/input';
-import { InputLabel } from '../../../../../components/ui/input';
+} from '../../../../components/ui/card';
+import { Button } from '../../../../components/ui/button';
+import { Input } from '../../../../components/ui/input';
+import { InputLabel } from '../../../../components/ui/input';
 
-import { changeEmail } from '../../../../../server-actions/change-email';
+import { changeEmail } from '../../../../server-actions/change-email';
 
 const ChangeEmailCard: FC<{ userEmail: string }> = ({ userEmail }) => {
   const [isLoading, startTransition] = useTransition();

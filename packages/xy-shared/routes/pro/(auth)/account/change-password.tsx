@@ -7,12 +7,12 @@ import {
   CardDescription,
   CardTitle,
   CardFooter,
-} from '../../../../../components/ui/card';
-import { Button } from '../../../../../components/ui/button';
-import { Input } from '../../../../../components/ui/input';
-import { InputLabel } from '../../../../../components/ui/input';
+} from '../../../../components/ui/card';
+import { Button } from '../../../../components/ui/button';
+import { Input } from '../../../../components/ui/input';
+import { InputLabel } from '../../../../components/ui/input';
 
-import { changePassword } from '../../../../../server-actions/change-password';
+import { changePassword } from '../../../../server-actions/change-password';
 
 function ChangePasswordCard() {
   const [isLoading, startTransition] = useTransition();

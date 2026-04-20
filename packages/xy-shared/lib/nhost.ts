@@ -4,6 +4,8 @@ import { DEFAULT_SESSION_KEY as key, type Session } from '@nhost/nhost-js/sessio
 
 import { COOKIE_OPTIONS } from './nhost-utils';
 import { NextRequest, NextResponse } from 'next/server';
+import { redirect } from 'next/navigation';
+import { User } from '@nhost/nhost-js/auth';
 
 /**
  * Creates an Nhost client for use in server components.
@@ -87,4 +89,15 @@ export async function handleNhostMiddleware(
   });
 
   return refreshSession ? await nhost.refreshSession(30) : nhost.getUserSession();
+}
+
+export async function requireSession(): Promise<{ session: Session; user: User }> {
+  const client = await createNhostClient();
+  const session = client.getUserSession();
+
+  if (!session || !session.user) {
+    redirect('/pro/sign-in');
+  }
+
+  return { session, user: session.user };
 }
