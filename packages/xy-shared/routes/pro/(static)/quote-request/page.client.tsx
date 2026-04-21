@@ -80,7 +80,7 @@ export const Form: FC = () => {
   return (
     <form className="flex flex-col gap-y-2" onSubmit={onSubmit}>
       <InputLabel>Subscription Plan</InputLabel>
-      <div className="bg-card grid grid-cols-3 gap-x-3 rounded-full px-3 py-2">
+      <div className="bg-card bg-muted grid grid-cols-3 gap-x-3 rounded-full px-3 py-2">
         <Button
           type="button"
           className={
