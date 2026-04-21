@@ -41,7 +41,7 @@ async function ManageTeamCard({ user }: { user: User }) {
     <Card>
       <CardHeader>
         <CardTitle>Team Members</CardTitle>
-        <CardDescription className="text-black">
+        <CardDescription>
           You have {remainingSeats} remaining {remainingSeats === 1 ? 'seat' : 'seats'}{' '}
           included in your <PlanLabel /> plan.
           {remainingSeats === 0 && (
