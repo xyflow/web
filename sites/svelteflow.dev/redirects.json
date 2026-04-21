@@ -10,6 +10,11 @@
     "permanent": true
   },
   {
+    "source": "/pro/enterprise",
+    "destination": "/pro/quote-request?plan=enterprise",
+    "permanent": true
+  },
+  {
     "source": "/learn/getting-started",
     "destination": "/learn",
     "permanent": true
