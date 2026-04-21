@@ -36,7 +36,7 @@ export function AccountNavMenu(/*{ session }: { session: Session }*/) {
           <NavigationMenuPrimitive.Trigger className="flex h-full select-none items-center rounded-sm px-2 py-1 text-sm font-medium">
             <UserIcon className="animate-fade-in m-2" height="18" />
           </NavigationMenuPrimitive.Trigger>
-          <NavigationMenuContent className="bg-background left-auto right-0 rounded-xl p-2 shadow-2xl md:w-48">
+          <NavigationMenuContent className="bg-background border-border left-auto right-0 rounded-xl border p-2 shadow-2xl md:w-48">
             <div className="grid gap-1">
               {/* TODO: Add email to account menu? */}
               {/* {email ? (
