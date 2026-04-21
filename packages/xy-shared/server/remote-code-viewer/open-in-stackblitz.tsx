@@ -36,7 +36,7 @@ export function OpenInStackblitz({ framework, route }: OpenInStackblitzProps) {
       onClick={openInStackblitz}
       icon={
         <svg
-          className="size-4 fill-slate-700 stroke-slate-700"
+          className="fill-card-foreground stroke-card-foreground size-4"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 56 78"
         >
