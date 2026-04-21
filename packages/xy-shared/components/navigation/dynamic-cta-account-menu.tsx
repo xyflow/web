@@ -18,7 +18,7 @@ const { library } = getFramework();
 
 const buttonProps: ComponentProps<typeof Button> = {
   asChild: true,
-  variant: 'secondary',
+  variant: 'pro',
   // Set fixed width to avoid navbar shifts on Sign In / Sign Out button click
   className:
     'opacity-0 w-[calc(100%-2px)] h-[calc(100%-2px)] text-nowrap animate-reveal-rtl shadow-none',
