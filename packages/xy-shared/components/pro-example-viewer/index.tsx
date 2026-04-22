@@ -194,7 +194,7 @@ function LoggedIn({
           ) : (
             <>
               <div className="border-border relative mb-2 mt-4 h-[75vh] max-h-[650px] min-h-[400px] overflow-hidden rounded-sm border">
-                <iframe className="h-full w-full" src={iframeBaseSrc} />
+                <iframe className="h-full w-full dark:bg-background" src={iframeBaseSrc} />
               </div>
               <a target="_blank" rel="noreferrer" href={iframeBaseSrc}>
                 <Button variant="link">Open preview in a new tab</Button>
