@@ -10,6 +10,7 @@ export async function fetchFiles(route: string, framework: Framework) {
     throw new Error('Invalid source.json format');
   }
   const files = json.files;
+  const devDependencies: Record<string, string> = json.devDependencies ?? {};
 
   // this is a workaround for the examples that are using jsx
   // if we don't do this, Sandpack will generate a default App.tsx file
@@ -33,5 +34,5 @@ export async function fetchFiles(route: string, framework: Framework) {
     }
   }
 
-  return { files, dependencies: json.dependencies };
+  return { files, dependencies: json.dependencies, devDependencies };
 }

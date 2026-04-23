@@ -21,8 +21,8 @@ type Files = {
 export function OpenInStackblitz({ framework, route }: OpenInStackblitzProps) {
   const openInStackblitz = useCallback(async () => {
     try {
-      const { files, dependencies } = await fetchFiles(route, framework);
-      const { project, options } = prepare(framework, files, dependencies);
+      const { files, dependencies, devDependencies } = await fetchFiles(route, framework);
+      const { project, options } = prepare(framework, files, dependencies, devDependencies);
 
       sdk.openProject(project, options);
     } catch (e) {
@@ -51,10 +51,11 @@ function prepare(
   framework: Framework,
   files: Files,
   dependencies: Record<string, string>,
+  devDependencies: Record<string, string> = {},
 ): { project: Project; options: OpenOptions } {
   switch (framework) {
     case 'react': {
-      const projectFiles = prepareReactProject(files, dependencies);
+      const projectFiles = prepareReactProject(files, dependencies, devDependencies);
       const project = {
         title: 'ReactFlow example',
         template: 'node' as ProjectTemplate,
@@ -82,7 +83,11 @@ function prepare(
   }
 }
 
-function prepareReactProject(files: Files, dependencies: Record<string, string>) {
+function prepareReactProject(
+  files: Files,
+  dependencies: Record<string, string>,
+  devDependencies: Record<string, string> = {},
+) {
   const hasTailwind4 = Object.entries(dependencies).some(
     ([dependency, version]) =>
       dependency.includes('tailwindcss') && version.startsWith('^4.'),
@@ -113,9 +118,9 @@ function prepareReactProject(files: Files, dependencies: Record<string, string>)
       devDependencies: {
         '@vitejs/plugin-react': '^4.4.1',
         vite: '^6.3.3',
-        '@types/react': dependencies.react ?? '^18.0.0',
-        '@types/react-dom': dependencies['react-dom'] ?? '^18.0.0',
-        typescript: '^5.8.3',
+        '@types/react': devDependencies['@types/react'] ?? '^19.0.0',
+        '@types/react-dom': devDependencies['@types/react-dom'] ?? '^19.0.0',
+        typescript: devDependencies['typescript'] ?? '^5.8.3',
       },
     }),
     'vite.config.js': `import { defineConfig } from 'vite'\nimport react from '@vitejs/plugin-react'\n${hasTailwind4 ? 'import tailwindcss from "@tailwindcss/vite"' : ''}\n// https://vitejs.dev/config/\nexport default defineConfig({\n  plugins: [react(), ${hasTailwind4 ? 'tailwindcss()' : ''}],\n})`,

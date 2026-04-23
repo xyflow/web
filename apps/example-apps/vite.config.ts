@@ -71,9 +71,51 @@ function generatePublicAssets(): Plugin {
 }
 
 const out = Path.join(Process.cwd(), 'public');
-const { dependencies } = JSON.parse(
+
+function parseCatalog(workspaceYamlPath: string): Record<string, string> {
+  const content = Fs.readFileSync(workspaceYamlPath, 'utf-8');
+  const catalog: Record<string, string> = {};
+  let inCatalog = false;
+
+  for (const line of content.split('\n')) {
+    if (line.startsWith('catalog:')) {
+      inCatalog = true;
+      continue;
+    }
+    if (inCatalog) {
+      if (line.length > 0 && !/^\s/.test(line)) {
+        inCatalog = false;
+        continue;
+      }
+      // entries look like:  'react': ^19.2.5  or  react: ^19.2.5
+      const match = line.match(/^\s+['"]?([^'":\s]+(?:\/[^'":\s]+)?)['"]?:\s+(.+)$/);
+      if (match) {
+        catalog[match[1]] = match[2].trim();
+      }
+    }
+  }
+
+  return catalog;
+}
+
+const catalog = parseCatalog(Path.join(Process.cwd(), '../../pnpm-workspace.yaml'));
+
+function resolveCatalog(raw: Record<string, string>): Record<string, string> {
+  return Object.fromEntries(
+    Object.entries(raw).map(([pkg, version]) => [
+      pkg,
+      version === 'catalog:' ? (catalog[pkg] ?? version) : version,
+    ]),
+  );
+}
+
+const { dependencies: rawDependencies, devDependencies: rawDevDependencies } = JSON.parse(
   Fs.readFileSync(Path.join(Process.cwd(), 'package.json'), 'utf-8'),
 );
+const dependencies = resolveCatalog(rawDependencies);
+const devDependencies = resolveCatalog(rawDevDependencies);
+
+const STACKBLITZ_DEV_DEPS = ['@types/react', '@types/react-dom', 'typescript'] as const;
 
 function walkExamples(dir: string, cb: (dir: string) => void = generateAssetsForExample) {
   // If the directory contains a `dependencies.json` file, we know it's an example.
@@ -96,7 +138,13 @@ function walkExamples(dir: string, cb: (dir: string) => void = generateAssetsFor
 
 function generateAssetsForExample(dir: string) {
   const relative = Path.relative(Process.cwd(), dir);
-  const source = { files: {}, dependencies: {} };
+  const stackblitzDevDependencies = Object.fromEntries(
+    STACKBLITZ_DEV_DEPS.filter((pkg) => devDependencies[pkg]).map((pkg) => [
+      pkg,
+      devDependencies[pkg],
+    ]),
+  );
+  const source = { files: {}, dependencies: {}, devDependencies: stackblitzDevDependencies };
 
   for (const file of Fs.readdirSync(dir, {
     recursive: true,
