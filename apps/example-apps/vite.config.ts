@@ -72,6 +72,13 @@ function generatePublicAssets(): Plugin {
 
 const out = Path.join(Process.cwd(), 'public');
 
+// pnpm workspace catalog syntax (e.g. "react": "catalog:") is not understood by
+// npm or standalone pnpm projects. When Vite builds source.json for each example,
+// it reads dependency versions directly from package.json — so any "catalog:" string
+// would be written verbatim into source.json and passed to StackBlitz, causing an
+// "Unsupported URL Type" install error. This function resolves the catalog entries
+// from the root pnpm-workspace.yaml so that source.json always contains real semver
+// strings (e.g. "^19.2.5") regardless of how package.json is written.
 function parseCatalog(workspaceYamlPath: string): Record<string, string> {
   const content = Fs.readFileSync(workspaceYamlPath, 'utf-8');
   const catalog: Record<string, string> = {};
@@ -144,7 +151,11 @@ function generateAssetsForExample(dir: string) {
       devDependencies[pkg],
     ]),
   );
-  const source = { files: {}, dependencies: {}, devDependencies: stackblitzDevDependencies };
+  const source = {
+    files: {},
+    dependencies: {},
+    devDependencies: stackblitzDevDependencies,
+  };
 
   for (const file of Fs.readdirSync(dir, {
     recursive: true,
