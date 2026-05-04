@@ -142,7 +142,7 @@ export function ShowcaseLayout({
           ),
         )}
 
-        <ContentGridItem route="https://wbkd.notion.site/17bf4645224281e4bf61ce34fa671059">
+        <ContentGridItem route="https://xyflow.com/contact">
           <ProjectPreview
             title="Your project here?"
             description="Have you built something exciting you want to show off? We want to feature it here!"
