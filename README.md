@@ -73,13 +73,6 @@ For everything else, there is an individual script to run each app independently
 - `pnpm run dev:xyflow.com`
 - `pnpm run dev:style`
 
-### Displaying Showcase Projects
-
-We have a database of projects that use our libraries stored in notion. Both the React
-Flow and Svelte Flow sites are fetching this data at build time using `getStaticProps`.
-You need to have a `.env.local` file with a `NOTION_API_SECRET` to make this work locally.
-Otherwise, placeholder showcases are shown.
-
 ### Update React Flow and Svelte Flow dependencies
 
 There is a Github action that checks the latest React Flow and Svelte Flow versions daily

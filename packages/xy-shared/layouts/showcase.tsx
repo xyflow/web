@@ -44,6 +44,13 @@ function isCaseStudy(item: CaseStudy | ShowcaseItem): item is CaseStudy {
   return 'frontMatter' in item;
 }
 
+function resolveShowcaseImage(image: string): string {
+  if (image.startsWith('/') || image.startsWith('http')) {
+    return image;
+  }
+  return `/img/showcase/${image}`;
+}
+
 function getVisibleItems(
   showcases: ShowcaseItem[],
   caseStudies: CaseStudy[],
@@ -115,7 +122,7 @@ export function ShowcaseLayout({
               className="relative border-none py-6 hover:bg-transparent lg:px-0 lg:py-8"
             >
               <ProjectPreview
-                image={item.image}
+                image={resolveShowcaseImage(item.image)}
                 title={item.title}
                 className="relative flex h-full flex-col"
                 imageWrapperClassName="w-full"

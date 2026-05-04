@@ -1,10 +1,9 @@
 import { CaseStudy, ShowcaseLayout } from 'xy-shared/layouts/showcase';
 import { SubscribeSection } from 'xy-shared/components/subscribe-section';
-
 import { getPageMap } from 'nextra/page-map';
-import { fetchNotionShowcases } from 'xy-shared/server/utils';
 import { Metadata } from 'next';
 import { getFramework } from 'xy-shared/lib/get-framework';
+import showcases from '@/content/showcases/index.json';
 
 const { library } = getFramework();
 
@@ -14,7 +13,6 @@ export const metadata: Metadata = {
 };
 
 export default async function Showcase() {
-  const showcases = await fetchNotionShowcases();
   const caseStudies = (await getPageMap('/pro/case-studies')).filter(
     (page) => 'name' in page && page.name !== 'index',
   );
