@@ -4,9 +4,13 @@ intro:
   'We’ve been working hard this spring, and today we’re introducing Svelte Pro, alongside
   a wave of major updates across the platform.'
 date: 08 June 2026
-authors: ['abbey']
-tags: ['svelte-flow']
+authors: ['abbey', 'hayleigh']
+tags: ['svelte-flow', 'pro platform']
 ---
+
+import { Bleed } from 'nextra/components';
+import { Image } from 'xy-shared/components/blog-post/embeds';
+import { Emoji } from 'xy-shared/components/ui/emoji';
 
 We’ve been working hard this spring, and today we’re introducing Svelte Pro, alongside a
 wave of major updates across the platform, including a new, fully integrated Pro
@@ -15,49 +19,75 @@ cohesive, and smoother to use.
 
 ### Introducing Svelte Flow Pro
 
-We’ve expanded our Pro offering to the Svelte ecosystem, with a brand new set of Pro
-examples, plus beefed up guides and documentation.
+[React Flow Pro](https://reactflow.dev/pro) has been our paid offering for a few
+years now, providing access to advanced examples while supporting the ongoing
+development of our libraries. We’re excited to now expand that offering to our
+Svelte Flow users with the launch of [Svelte Flow Pro](https://svelteflow.dev/pro).
 
-The Svelte community continues to impress us, and we’re excited to support it with more
-in-depth, production-ready examples to help you build bigger and more complex apps.
+We’ve been continually impressed by what our Svelte Flow users have been building,
+and we’re looking forward to see folks take their apps to the next level with
+in-depth, production-ready examples.
 
-We love seeing what you make with Svelte Pro. If you've built something you are proud of,
-feel free to submit your project to our showcase: https://svelteflow.dev/showcase
+<Bleed>
+  <Image
+    src="/img/blog/svelte-pro-and-more/pro-examples.png"
+    alt="A screenshot of all 12 Svelte Flow Pro examples, including auto layouting, freehand drawing, and undo/redo."
+    width={1673}
+    height={1341}
+  />
+</Bleed>
 
-### The New Pro Platform
+Each Pro Example is an independent Vite project showing off advanced techniques
+or tricky features, with production-ready well-documented code you can integrate 
+directly into your own projects. We always love seeing people are making with our
+libraries, so if you’ve built something you are a proud of please submit your
+project to our [showcase](https://svelteflow.dev/showcase).
 
-We’ve integrated the Pro Platform directly into the site, making it easier than ever to
-explore and use Pro content.
+You can get access to a free Pro Example just by [signing up](https://svelteflow.dev/pro/sign-up).
+And if you’re already a React Flow Pro subscriber? Great news! **One subscription**
+grants you access to the Pro content for _all_ of our libraries. 
 
-Instead of feeling like a separate experience, Pro is now woven into the the site. You can
-access Pro examples, guides, and resources across both React Flow and Svelte Flow without
-friction.
+### The new Pro Platform
 
-### Dark Mode (Finally)
+With the addition of Svelte Flow Pro, we’ve also taken the opportunity to overhaul
+the Pro Platform itself. Back in 2023 we [open sourced the Pro Platform](/blog/react-flow-pro-platform-open-source)
+so folks could adapt it for their own open source projects.
 
-A long awaited sight for sore eyes: Dark Mode now available across the site and examples.
+Isolating the Pro Platform this way made it easy to share, but more-difficult to
+integrate into our main content sites: navigating to the Pro Platform would mean
+leaving `reactflow.dev` and signing in to `pro.reactflow.dev`. Going forward we
+want to provide a more seamless experience for accessing Pro content, meaning Pro
+content for both React Flow and Svelte Flow will be accessible directly from the
+main documentation sites.
 
-We’ve implemented full Dark Mode support across the entire site and all examples. Along
-the way, we've given the site a face lift, improving color consistency, refining
-gradients, and making accessibility upgrades to ensure everything looks and feels right in
-both themes.
+For now that means the [Pro Platform repo](https://github.com/xyflow/pro-platform)
+will be archived and no longer maintained. The repo will remain publicly available
+for folks to fork or continue to learn from, but don’t expect any updates or support 
+for it going forward.
 
-If you’ve been waiting for a more comfortable viewing experience, especially during
-late-night sessions, this one’s for you.
+### Dark mode (finally)
+
+A long awaited sight for sore eyes: dark mode now available across all our sites
+and examples. Along the way we’ve given everything a face lift, improved color
+consistency, and made accessibility improvements to ensure everything looks and
+feels great in both modes.
+
+If you have a penchant for caffeine-fueled late-night coding sessions, this one’s
+for you. <Emoji content="🫡" />
 
 ### And more
 
-Alongside the big updates, we’ve made a wide range of improvements across the platform:
+Alongside the big updates, we’ve also picked up our dirty laundry, swept the floors,
+and made a wide range of improvements across the platform:
 
-**UI & Navigation**
-
-- Cleaner navigation with improved menus
-- Better account handling
-- Smoother buttons, animations, and transitions
-- and a lot more behind the scenes, with major improvements to the codebase that make the
-  site easier to navigate and explore.
+- cleaner navigation with improved menus
+- better account handling
+- smoother buttons, animations, and transitions
+- major improvements to the codebase that make the site easier to navigate and explore.
 
 These updates are all about making the platform more unified, more polished, and more
-enjoyable to use.
+enjoyable to use. If you spot something we missed, or have suggestions on how to
+make the docs experience even better please let us know by [opening an issue](https://github.com/xyflow/web/issues)
+on GitHub or reaching out on our [Discord server](https://discord.com/invite/RVmnytFmGW).
 
 As always, there’s more to come.
