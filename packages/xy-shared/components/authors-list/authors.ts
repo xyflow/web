@@ -69,6 +69,6 @@ export default {
     name: 'Alessandro Cheli',
     title: 'Software Engineer',
     url: 'https://cheli.dev',
-    image: '/img/alessandro.jpg',
+    image: 'https://xyflow.com/img/alessandro.jpg',
   },
 };
