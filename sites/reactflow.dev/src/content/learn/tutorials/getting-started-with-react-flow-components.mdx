@@ -148,14 +148,13 @@ Tailwind classes.
 The updated `App.tsx` file should look like this:
 
 ```tsx filename="src/App.tsx"
-export function App() {
+export default function App() {
   return (
     <div className="w-screen h-screen p-8">
       <h1 className="text-2xl font-bold">Hello World</h1>
     </div>
   );
 }
-export default App;
 ```
 
 And, the `main.tsx` file should look like this:
@@ -270,14 +269,13 @@ And then import its CSS in our `App.tsx` file:
 ```tsx filename="src/App.tsx"
 import '@xyflow/react/dist/style.css';
 
-export function App() {
+export default function App() {
   return (
     <div className="w-screen h-screen p-8">
       <h1 className="text-2xl font-bold">Hello World</h1>
     </div>
   );
 }
-export default App;
 ```
 
 ## Adding your first components
@@ -316,7 +314,7 @@ import {
   BaseNodeHeaderTitle,
 } from '@/components/base-node';
 
-function App() {
+export default function App() {
   return (
     <div className="w-screen h-screen p-8">
       <BaseNode>
@@ -331,7 +329,6 @@ function App() {
   );
 }
 
-export default App;
 ```
 
 Ok, not super exciting...
@@ -691,7 +688,7 @@ We will start by defining the custom node and edge types, and the initial nodes 
 that will be displayed in our app.
 
 ```tsx filename="src/App.tsx"
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import {
   ReactFlow,
   type Node,
@@ -790,7 +787,7 @@ function Flow() {
   );
 }
 
-export function App() {
+export default function App() {
   return <Flow />;
 }
 ```
