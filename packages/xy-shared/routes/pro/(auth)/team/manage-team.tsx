@@ -71,7 +71,7 @@ async function ManageTeamCard({ user }: { user: User }) {
           </CardContent>
         ))}
       </div>
-      <CardFooter className="bg-muted space-x-10">
+      <CardFooter className="bg-muted block space-x-10">
         <AddTeamMember currencySign={currencySign} monthlySeatPrice={monthlySeatPrice} />
       </CardFooter>
     </Card>

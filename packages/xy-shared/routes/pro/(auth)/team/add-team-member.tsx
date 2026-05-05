@@ -16,6 +16,11 @@ import {
 } from '../../../../components/ui/alert-dialog';
 import { callNhostFunction } from '../../../../server-actions/call-nhost-function';
 import { revalidatePathFromClient } from '../../../../server-actions/revalidate-path-from-client';
+import {
+  Turnstile,
+  turnstileError,
+  TurnstileRef,
+} from '../../../../components/turnstile';
 
 const AddTeamMember: FC<{
   currencySign: string;
@@ -25,14 +30,21 @@ const AddTeamMember: FC<{
   const [isLoading, startTransition] = useTransition();
   const [errorMessage, setErrorMessage] = useState<null | string>(null);
   const inputRef = useRef<HTMLInputElement>(null!);
+  const turnstileRef = useRef<TurnstileRef>(null);
 
   const addMember = ({ paymentConfirmed }: { paymentConfirmed: boolean }) => {
     startTransition(async () => {
       const memberEmail = inputRef.current.value;
       setErrorMessage(null);
+      const turnstileToken = turnstileRef.current?.getResponse();
+      if (!turnstileToken) {
+        setErrorMessage(turnstileError);
+        return;
+      }
       const response = await callNhostFunction('/team/invite', {
         email: memberEmail,
         paymentConfirmed,
+        turnstileToken,
       });
 
       if (!response || response.error) {
@@ -112,6 +124,7 @@ const AddTeamMember: FC<{
           {isLoading ? 'Please wait...' : 'Add Team Member'}
         </Button>
       </form>
+      <Turnstile ref={turnstileRef} />
     </>
   );
 };

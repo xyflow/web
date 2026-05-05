@@ -8,13 +8,26 @@ export const nhost = createClient({
   region: process.env.NHOST_REGION,
 });
 
-export async function createUser({ email }: { email: string }) {
+export async function createUser({
+  email,
+  turnstileToken,
+}: {
+  email: string;
+  turnstileToken: string;
+}) {
   if (!email) {
     return false;
   }
 
   // use signIn instead of signUp because we don't want to set a password (we use magic link)
-  return await nhost.auth.signInPasswordlessEmail({ email });
+  return await nhost.auth.signInPasswordlessEmail(
+    { email },
+    {
+      headers: {
+        'x-cf-turnstile-response': turnstileToken,
+      },
+    },
+  );
 }
 
 type User = {

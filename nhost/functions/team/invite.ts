@@ -24,7 +24,7 @@ async function sendTeamMemberInviteMail(email: string) {
 
 async function inviteTeamMember(req: Request, res: Response) {
   const createdById = res.locals.userId;
-  const { email, paymentConfirmed } = req.body;
+  const { email, paymentConfirmed, turnstileToken } = req.body;
 
   if (!email || !createdById) {
     return res.status(400).send({ message: 'Please provide a valid email address.' });
@@ -41,12 +41,10 @@ async function inviteTeamMember(req: Request, res: Response) {
     subscription.subscription_plan_id === 'oss' ||
     subscription.subscription_plan_id === 'student'
   ) {
-    return res
-      .status(400)
-      .send({
-        message:
-          'You are not subscribed. To add team members, you need to create a subscription first.',
-      });
+    return res.status(400).send({
+      message:
+        'You are not subscribed. To add team members, you need to create a subscription first.',
+    });
   }
 
   const teamMembers = await getTeamMembers(createdById);
@@ -82,7 +80,7 @@ async function inviteTeamMember(req: Request, res: Response) {
 
   // create a user if the user doesn't exist yet
   if (!userId) {
-    const cu = await createUser({ email });
+    const cu = await createUser({ email, turnstileToken });
     console.log(cu);
 
     userId = await getUserIdByEmail(email);
