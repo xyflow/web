@@ -1,6 +1,6 @@
 'use client';
 
-import { FormEvent, useState, useTransition } from 'react';
+import { FormEvent, useRef, useState, useTransition } from 'react';
 import { useSearchParams } from 'next/navigation';
 
 import { AuthErrorNotification, AuthNotification } from './AuthNotification';
@@ -9,6 +9,7 @@ import { Button } from '../../ui/button';
 import { nhostOnClient } from '../../../lib/nhost-on-client';
 import { FetchError } from '@nhost/nhost-js/fetch';
 import { ErrorResponse } from '@nhost/nhost-js/auth';
+import { Turnstile, turnstileError, TurnstileRef } from '../../turnstile';
 
 function ResendVerificationLink() {
   const [isLoading, startTransition] = useTransition();
@@ -16,14 +17,29 @@ function ResendVerificationLink() {
   const [isSuccess, setIsSuccess] = useState(false);
   const searchParams = useSearchParams();
 
+  const turnstileRef = useRef<TurnstileRef>(null);
+
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     // Prevent resubmitting the form when an error is set
     event.preventDefault();
     startTransition(async () => {
       const formData = new FormData(event.currentTarget);
       const email = formData.get('email') as string;
+      const turnstileToken = turnstileRef.current?.getResponse();
+      if (!turnstileToken) {
+        setError(turnstileError);
+        return;
+      }
+
       try {
-        await nhostOnClient.auth.signInPasswordlessEmail({ email });
+        await nhostOnClient.auth.signInPasswordlessEmail(
+          { email },
+          {
+            headers: {
+              'x-cf-turnstile-response': turnstileToken,
+            },
+          },
+        );
         setIsSuccess(true);
       } catch (err: unknown) {
         const error = err as FetchError<ErrorResponse>;
@@ -54,6 +70,7 @@ function ResendVerificationLink() {
           defaultValue={(searchParams.get('email') as string | null) || ''}
         />
       </div>
+      <Turnstile ref={turnstileRef} />
       <Button
         disabled={isLoading || isSuccess}
         loading={isLoading}

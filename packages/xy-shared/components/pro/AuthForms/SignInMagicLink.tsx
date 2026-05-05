@@ -1,22 +1,21 @@
 'use client';
 
-import { FC, FormEvent, useState, useTransition } from 'react';
+import { FC, FormEvent, useRef, useState, useTransition } from 'react';
 import { Button } from '../../ui/button';
 import { Input, InputLabel } from '../../ui/input';
 
-import {
-  AuthErrorNotification,
-  AuthNotification,
-  MagicLinkSuccessNotification,
-} from './AuthNotification';
+import { AuthErrorNotification, MagicLinkSuccessNotification } from './AuthNotification';
 import { nhostOnClient } from '../../../lib/nhost-on-client';
 import { FetchError } from '@nhost/nhost-js/fetch';
 import { ErrorResponse } from '@nhost/nhost-js/auth';
+import { Turnstile, turnstileError, TurnstileRef } from '../../turnstile';
 
 const SignInMagicLink: FC = () => {
   const [isLoading, startTransition] = useTransition();
   const [error, setError] = useState<string | undefined>();
   const [isSuccess, setIsSuccess] = useState(false);
+
+  const turnstileRef = useRef<TurnstileRef>(null);
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     // Prevent resubmitting the form when an error is set
@@ -25,8 +24,21 @@ const SignInMagicLink: FC = () => {
       const formData = new FormData(event.currentTarget);
       const email = formData.get('email') as string;
 
+      const turnstileToken = turnstileRef.current?.getResponse();
+      if (!turnstileToken) {
+        setError(turnstileError);
+        return;
+      }
+
       try {
-        await nhostOnClient.auth.signInPasswordlessEmail({ email });
+        await nhostOnClient.auth.signInPasswordlessEmail(
+          { email },
+          {
+            headers: {
+              'x-cf-turnstile-response': turnstileToken,
+            },
+          },
+        );
         setIsSuccess(true);
       } catch (err: unknown) {
         const error = err as FetchError<ErrorResponse>;
@@ -39,13 +51,6 @@ const SignInMagicLink: FC = () => {
     <form onSubmit={handleSubmit}>
       <div className="mb-2 flex flex-col space-y-4">
         {error && <AuthErrorNotification error={error} />}
-        {error && (
-          <AuthNotification
-            title="Something went wrong"
-            description={error}
-            variant="error"
-          />
-        )}
         {isSuccess && <MagicLinkSuccessNotification />}
         <div>
           <InputLabel className="text-muted-foreground" htmlFor="email">
@@ -61,7 +66,7 @@ const SignInMagicLink: FC = () => {
             type="email"
           />
         </div>
-
+        <Turnstile ref={turnstileRef} />
         <Button
           disabled={isLoading || isSuccess}
           loading={isLoading}

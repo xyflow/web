@@ -32,7 +32,7 @@ name = 'WEBSITE_URL'
 value = 'https://reactflow-website-env-staging-xyflow.vercel.app'
 
 [hasura]
-version = 'v2.36.9-ce'
+version = 'v2.48.10-ce'
 adminSecret = '{{ secrets.HASURA_GRAPHQL_ADMIN_SECRET }}'
 webhookSecret = '{{ secrets.NHOST_WEBHOOK_SECRET }}'
 
@@ -169,6 +169,9 @@ timeout = 0
 [auth.totp]
 enabled = false
 issuer = 'nhost'
+
+[auth.signUp.turnstile]
+secretKey = '{{ secrets.CLOUDFLARE_TURNSTILE_SECRET_KEY }}'
 
 [postgres]
 version = '14.20-20251217-1'

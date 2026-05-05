@@ -12,7 +12,7 @@ const appUrl = deploymentUrl ? `https://${deploymentUrl}` : 'http://localhost:30
 // we need the redirect to distinguish between the different framework websites
 const redirectTo = `${appUrl}/pro/email-verification/verify`;
 
-export async function signUp(formData: FormData) {
+export async function signUp(formData: FormData, turnstileToken: string) {
   const email = formData.get('email') as string;
   const password = formData.get('password') as string;
 
@@ -24,13 +24,20 @@ export async function signUp(formData: FormData) {
 
   try {
     const nhost = await createNhostClient();
-    const response = await nhost.auth.signUpEmailPassword({
-      email,
-      password,
-      options: {
-        redirectTo,
+    const response = await nhost.auth.signUpEmailPassword(
+      {
+        email,
+        password,
+        options: {
+          redirectTo,
+        },
       },
-    });
+      {
+        headers: {
+          'x-cf-turnstile-response': turnstileToken,
+        },
+      },
+    );
     const session = response.body?.session;
 
     // use encodeURIComponent because email can contain special characters such as +
