@@ -25,6 +25,7 @@
     "@docsearch/css": "^4.6.2",
     "@docsearch/react": "^4.6.2",
     "@heroicons/react": "^2.2.0",
+    "@marsidev/react-turnstile": "^1.5.1",
     "@nhost/nhost-js": "catalog:",
     "@notionhq/client": "^5.19.0",
     "@radix-ui/react-accordion": "^1.2.12",

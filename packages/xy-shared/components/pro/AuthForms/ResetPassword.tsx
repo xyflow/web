@@ -1,16 +1,19 @@
 'use client';
 
-import { FormEvent, useState, useTransition } from 'react';
+import { FormEvent, useRef, useState, useTransition } from 'react';
 
 import { AuthErrorNotification, AuthNotification } from './AuthNotification';
 import { resetPassword } from '../../../server-actions/reset-password';
 import { Button } from '../../ui/button';
 import { InputLabel, Input } from '../../ui/input';
+import { Turnstile, turnstileError, TurnstileRef } from '../../turnstile';
 
 function ResetPassword() {
   const [isLoading, startTransition] = useTransition();
   const [error, setError] = useState<string | undefined>();
   const [isSent, setIsSent] = useState(false);
+
+  const turnstileRef = useRef<TurnstileRef>(null);
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     // Prevent resubmitting the form when an error is set
@@ -18,7 +21,12 @@ function ResetPassword() {
     startTransition(async () => {
       const formData = new FormData(event.currentTarget);
       const email = formData.get('email') as string;
-      const response = await resetPassword(email);
+      const turnstileToken = turnstileRef.current?.getResponse();
+      if (!turnstileToken) {
+        setError(turnstileError);
+        return;
+      }
+      const response = await resetPassword(email, turnstileToken);
       setError(response?.error);
       setIsSent(!response?.error);
     });
@@ -45,6 +53,7 @@ function ResetPassword() {
           type="email"
         />
       </div>
+      <Turnstile ref={turnstileRef} />
       <Button
         disabled={isLoading || isSent}
         loading={isLoading}

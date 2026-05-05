@@ -1,8 +1,10 @@
 'use client';
 
-import { FC, FormEvent, useState, useTransition } from 'react';
+import { FC, FormEvent, useRef, useState, useTransition } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { Turnstile, turnstileError, TurnstileRef } from '../../turnstile';
+
 import { Button } from '../../ui/button';
 import { Input, InputLabel } from '../../ui/input';
 
@@ -14,12 +16,21 @@ const Signup: FC = () => {
   const [isLoading, startTransition] = useTransition();
   const router = useRouter();
 
+  const turnstileRef = useRef<TurnstileRef>(null);
+
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     // Prevent resubmitting the form when an error is set
     event.preventDefault();
     startTransition(async () => {
       const formData = new FormData(event.currentTarget);
-      const result = await signUp(formData);
+      const turnstileToken = turnstileRef.current?.getResponse();
+
+      if (!turnstileToken) {
+        setError(turnstileError);
+        return;
+      }
+
+      const result = await signUp(formData, turnstileToken);
 
       if (result.redirect) {
         router.push(result.redirect);
@@ -79,7 +90,7 @@ const Signup: FC = () => {
           .
         </div>
       </div>
-
+      <Turnstile ref={turnstileRef} />
       <Button
         size="lg"
         className="mt-2 w-full"
