@@ -17,7 +17,7 @@ export function Turnstile({ ref }: { ref: React.RefObject<TurnstileInstance | nu
     <TurnstileComponent
       ref={ref}
       siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
-      className="mt-4"
+      className="my-4"
       options={{
         theme:
           colorMode.theme === 'system' || !colorMode.theme

@@ -59,7 +59,7 @@ const Signup: FC = () => {
           required
         />
       </div>
-      <div className="mb-4">
+      <div className="">
         <InputLabel className="text-muted-foreground" htmlFor="password">
           Password
         </InputLabel>
