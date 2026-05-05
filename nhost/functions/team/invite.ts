@@ -24,7 +24,7 @@ async function sendTeamMemberInviteMail(email: string) {
 
 async function inviteTeamMember(req: Request, res: Response) {
   const createdById = res.locals.userId;
-  const { email, paymentConfirmed, turnstileToken } = req.body;
+  const { email, paymentConfirmed } = req.body;
 
   if (!email || !createdById) {
     return res.status(400).send({ message: 'Please provide a valid email address.' });
@@ -80,7 +80,7 @@ async function inviteTeamMember(req: Request, res: Response) {
 
   // create a user if the user doesn't exist yet
   if (!userId) {
-    const cu = await createUser({ email, turnstileToken });
+    const cu = await createUser({ email });
     console.log(cu);
 
     userId = await getUserIdByEmail(email);

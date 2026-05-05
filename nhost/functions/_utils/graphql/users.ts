@@ -8,26 +8,21 @@ export const nhost = createClient({
   region: process.env.NHOST_REGION,
 });
 
-export async function createUser({
-  email,
-  turnstileToken,
-}: {
-  email: string;
-  turnstileToken: string;
-}) {
+const CREATE_USER = gql`
+  mutation InsertUser($email: citext!) {
+    insertUser(object: { email: $email, locale: "en" }) {
+      id
+      email
+    }
+  }
+`;
+
+export async function createUser({ email }: { email: string }) {
   if (!email) {
     return false;
   }
 
-  // use signIn instead of signUp because we don't want to set a password (we use magic link)
-  return await nhost.auth.signInPasswordlessEmail(
-    { email },
-    {
-      headers: {
-        'x-cf-turnstile-response': turnstileToken,
-      },
-    },
-  );
+  return await GraphQLClient.request<GetUserByMailResponse>(CREATE_USER, { email });
 }
 
 type User = {
