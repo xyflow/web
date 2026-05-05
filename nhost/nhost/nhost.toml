@@ -167,8 +167,8 @@ name = 'reactflow'
 timeout = 0
 
 [auth.totp]
-enabled = false
 issuer = 'nhost'
+enabled = false
 
 [auth.signUp.turnstile]
 secretKey = '{{ secrets.CLOUDFLARE_TURNSTILE_SECRET_KEY }}'
