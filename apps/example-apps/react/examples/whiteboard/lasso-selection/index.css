@@ -39,4 +39,9 @@ body {
   align-items: center;
   justify-content: center;
   line-height: 1;
+  color: #111827;
+}
+
+.dark .lasso-controls label {
+  color: #f3f4f6;
 }
