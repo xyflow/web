@@ -41,6 +41,23 @@ export function createNormalizePageMap() {
       });
     }
 
+    // Also wrap direct MdxFile children of examples (e.g. pro-examples)
+    if (examples) {
+      examples.children = examples.children.map((item) => {
+        if ('children' in item) return item;
+        const mdxItem = item as MdxFile & { title?: string | ReactElement };
+        return {
+          ...mdxItem,
+          title:
+            typeof mdxItem.title === 'string' ? (
+              <SidebarTitle frontMatter={mdxItem.frontMatter!} title={mdxItem.title} />
+            ) : (
+              mdxItem.title
+            ),
+        };
+      });
+    }
+
     return pageMap;
   };
 

@@ -81,7 +81,7 @@ const metaRecord = {
     },
     items: {
       index: {
-        title: 'Overview',
+        title: 'All Examples',
         theme: {
           breadcrumb: false,
         },
