@@ -16,6 +16,7 @@ export async function proxy(request: NextRequest) {
   const refreshSession = isDocumentNavigation(request);
 
   const response = NextResponse.next();
+  response.headers.set('x-pathname', request.nextUrl.pathname);
 
   let session = null;
   try {

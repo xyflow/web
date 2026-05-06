@@ -1,5 +1,6 @@
 import { Suspense } from 'react';
 import Link from 'next/link';
+import { headers } from 'next/headers';
 import { MDXRemote } from 'nextra/mdx-remote';
 import { Tabs } from 'nextra/components';
 import { SandpackFiles } from '@codesandbox/sandpack-react';
@@ -16,6 +17,7 @@ import { fetchTemplatePreviewUrl } from './fetch-template-preview-url';
 import { DownloadButton } from './download-button';
 import { CollaborativePreview } from './collaborative-preview-dynamic';
 import { Subscribed } from '../pro/SubscriptionStatus';
+import { getSubscriptionStatus } from '../../server-actions/get-subscription';
 
 import { Button } from '../ui/button';
 import { Container } from '../ui/container';
@@ -78,6 +80,7 @@ export async function ProExample({
   const iframeBaseSrc = type === 'template' ? (templatePreviewUrl ?? baseUrl) : baseUrl;
 
   const { proExampleFiles, markdown } = await getProExample(slug, framework);
+  const pathname = (await headers()).get('x-pathname') ?? '/pro/dashboard';
 
   return (
     <>
@@ -90,6 +93,7 @@ export async function ProExample({
             iframeBaseSrc={iframeBaseSrc}
             slug={slug}
             collaborative={collaborative}
+            redirectTo={pathname}
           />
         }
       >
@@ -106,13 +110,14 @@ export async function ProExample({
   );
 }
 
-function LoggedOut({
+async function LoggedOut({
   className,
   innerClassName,
   type,
   iframeBaseSrc,
   slug,
   collaborative,
+  redirectTo,
 }: {
   className?: string;
   innerClassName?: string;
@@ -120,7 +125,12 @@ function LoggedOut({
   iframeBaseSrc: string;
   slug: string;
   collaborative?: boolean;
+  redirectTo: string;
 }) {
+  const { user, isSubscribed } = await getSubscriptionStatus();
+
+  const signInHref = `/pro/sign-in?redirectTo=${encodeURIComponent(redirectTo)}`;
+
   return (
     <Container className={cn(['mt-7', className])} innerClassName={innerClassName}>
       <div
@@ -138,15 +148,17 @@ function LoggedOut({
         </Text>
         <div className="flex space-x-4">
           <Button asChild className="shrink-0">
-            <Link href="/pro">See Pricing Plans</Link>
+            <Link href="/pro/subscribe">Subscribe</Link>
           </Button>
-          <Button
-            asChild
-            variant="secondary"
-            className="text-primary shrink-0 dark:text-white"
-          >
-            <a href="/pro/sign-in">Sign In</a>
-          </Button>
+          {!user && (
+            <Button
+              asChild
+              variant="secondary"
+              className="text-primary shrink-0 dark:text-white"
+            >
+              <a href={signInHref}>Sign In</a>
+            </Button>
+          )}
         </div>
       </div>
 
