@@ -51,16 +51,16 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
 
         <SubscriptionProvider
           darkMode={true}
-          banner={
-            <Banner storageKey="node-collisions">
-              <Link
-                className="focus-visible:nextra-focus text-sm hover:underline"
-                href="/examples/layout/node-collisions"
-              >
-                🚨 New Example: Handling Node Collisions!
-              </Link>
-            </Banner>
-          }
+          // banner={
+          //   <Banner storageKey="node-collisions">
+          //     <Link
+          //       className="focus-visible:nextra-focus text-sm hover:underline"
+          //       href="/examples/layout/node-collisions"
+          //     >
+          //       🚨 New Example: Handling Node Collisions!
+          //     </Link>
+          //   </Banner>
+          // }
           copyPageButton={false}
           docsRepositoryBase="https://github.com/xyflow/web/tree/main/sites/svelteflow.dev"
           editLink="Edit this page on GitHub"
