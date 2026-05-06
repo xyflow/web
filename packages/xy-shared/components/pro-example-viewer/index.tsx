@@ -127,7 +127,7 @@ async function LoggedOut({
   collaborative?: boolean;
   redirectTo: string;
 }) {
-  const { user, isSubscribed } = await getSubscriptionStatus();
+  const { user } = await getSubscriptionStatus();
 
   const signInHref = `/pro/sign-in?redirectTo=${encodeURIComponent(redirectTo)}`;
 
