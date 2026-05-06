@@ -1,7 +1,5 @@
 <script lang="ts">
-  import { Handle, Position, type NodeProps } from '@xyflow/svelte';
-
-  let { data }: NodeProps = $props();
+  import { Handle, Position } from '@xyflow/svelte';
 </script>
 
 <div class="text-updater-node">
@@ -14,15 +12,15 @@
 <style>
   .text-updater-node {
     height: 50px;
-    border: 1px solid #eee;
+    border: var(--xy-node-border-default);
     padding: 5px;
     border-radius: 5px;
     background: var(--xy-node-background-color-default);
+    color: var(--xy-node-color-default);
   }
 
   .text-updater-node label {
     display: block;
-    color: var(--xy-node-color-default);
     font-size: 12px;
   }
 </style>
