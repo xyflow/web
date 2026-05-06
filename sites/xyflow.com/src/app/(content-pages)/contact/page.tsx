@@ -33,7 +33,7 @@ const Page: FC = () => {
           className="pointer-events-none absolute left-1/2 h-[200%] w-full -translate-x-1/2 -translate-y-1/4 opacity-5"
           style={{
             background:
-              'radial-gradient(rgba(68,91,222,1) 0%, rgba(215,78,243,1) 25%, rgba(255,255,255,1) 50%)',
+              'radial-gradient(rgba(68,91,222,1) 0%, rgba(215,78,243,1) 25%, hsl(var(--card)) 50%)',
           }}
         />
         <Card className="bg-background relative p-8">
@@ -43,22 +43,8 @@ const Page: FC = () => {
               <Input name="email" type="email" required variant="square" />
             </InputLabel>
 
-            {/* <div className="col-span-4 flex flex-col space-y-2">
-              <p className="mb-1 block text-sm font-bold text-muted-foreground">
-                What are you reaching out about?
-              </p>
-              {contactReasons.map(({ name, value }) => (
-                <InputLabel key={name} className="ml-4 flex items-center gap-2">
-                  <Checkbox name="contact-reason" value={value} />
-                  <span>{name}</span>
-                </InputLabel>
-              ))}
-            </div> */}
-
             <InputLabel className="col-span-4">
               <span>Your message</span>
-              {/* Maybe we should wrap this in a component and drop it into xy-ui/TextArea
-                  or something similar. */}
               <textarea
                 name="message"
                 required

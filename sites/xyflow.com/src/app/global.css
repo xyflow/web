@@ -25,6 +25,7 @@
 
   .dark {
     --primary: 0 0% 100%;
+    --primary-foreground: 0 0% 0%;
   }
 
   .fallback {
