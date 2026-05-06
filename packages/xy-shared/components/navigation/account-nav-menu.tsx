@@ -33,8 +33,13 @@ export function AccountNavMenu(/*{ session }: { session: Session }*/) {
     <NavigationMenu className="h-full w-full flex-none">
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuPrimitive.Trigger className="flex h-full select-none items-center rounded-sm px-2 py-1 text-sm font-medium">
-            <UserIcon className="animate-fade-in m-2" height="18" />
+          <NavigationMenuPrimitive.Trigger asChild>
+            <Link
+              href="/pro/dashboard"
+              className="flex h-full select-none items-center rounded-sm px-2 py-1 text-sm font-medium"
+            >
+              <UserIcon className="animate-fade-in m-2" height="18" />
+            </Link>
           </NavigationMenuPrimitive.Trigger>
           <NavigationMenuContent className="bg-background border-border left-auto right-0 rounded-xl border p-2 shadow-2xl md:w-48">
             <div className="grid gap-1">
