@@ -32,6 +32,12 @@ body {
   border-right: 1px solid #ddd;
 }
 
+.dark .react-flow__devtools button {
+  background-color: #1a1a1a;
+  color: #eee;
+  border-right-color: #333;
+}
+
 .react-flow__devtools button:hover {
   background: var(--highlight-color);
   opacity: 0.8;
@@ -73,4 +79,20 @@ body {
 
 .react-flow__devtools-nodeinfo {
   top: 5px;
+}
+
+.dark .react-flow__devtools button:hover {
+  opacity: 1;
+}
+
+.dark .react-flow__devtools-changelogger {
+  color: #ccc;
+}
+
+.dark .react-flow__devtools-nodeinspector {
+  color: #ccc;
+}
+
+.dark .react-flow__panel {
+  color: #ccc;
 }
