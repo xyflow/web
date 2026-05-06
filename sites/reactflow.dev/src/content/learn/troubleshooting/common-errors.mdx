@@ -412,6 +412,41 @@ React Flow. The existing marker types are documented
 This warning occurs when you try to use a `<Handle />` component outside of a custom node
 component.
 
+<div id="011" />
+### Edge type yourEdgeType not found. Using fallback type "default".
+
+This warning occurs when you specify a custom edge type for one of your edges but do not
+pass the correct `edgeTypes` property to React Flow. You can learn more about custom edges
+in the [custom edge guide](/learn/customization/custom-edges)
+
+<div id="012" />
+### Node with id yourId does not exist, it may have been removed. This can happen when a node is deleted before the "onNodeClick" handler is called.
+
+As the warning says, this can happen when you are trying to access a node that has already
+been removed from the state.
+
+<div id="013" />
+### It seems that you haven't loaded the styles. Please import '@xyflow/react/dist/style.css' or base.css to make sure everything is working properly.
+
+This warning appears when you haven't imported the React Flow stylesheet. The styles are
+necessary for the flow to be displayed properly.
+
+<div id="014" />
+### useNodeConnections: No node ID found. Call useNodeConnections inside a custom node or provide a node ID.
+
+`useNodeConnections` is a hook that allows you to get the connections of a node. This
+warning appears when you are trying to use the `useNodeConnections` hook outside of a
+custom node component.
+
+<div id="015" />
+### It seems that you are trying to drag a node that is not initialized. Please use `onNodesChange` as explained in the docs.
+
+This warning appears when you are trying to drag a node that is not initialized. This can
+happen when you are trying to drag a node that has not been initialized with the
+`onNodesChange` handler. Please make sure to use the `onNodesChange` handler to initialize
+your nodes properly. You can learn more about this in the
+["Adding Interactivity" guide](/learn/concepts/adding-interactivity)
+
 ### I get an error when building my app with webpack 4.
 
 If you're using webpack 4, you'll likely run into an error like this:
