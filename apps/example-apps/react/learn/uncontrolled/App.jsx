@@ -20,9 +20,6 @@ export default function Flow() {
       defaultEdges={defaultEdges}
       defaultEdgeOptions={edgeOptions}
       fitView
-      style={{
-        backgroundColor: '#D3D2E5',
-      }}
       connectionLineStyle={connectionLineStyle}
       colorMode="system"
     />
