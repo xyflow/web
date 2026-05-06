@@ -19,7 +19,8 @@
   :root {
     --primary: 0 0% 0%;
     --accent: var(--color-react);
-    --secondary-foreground: 0 0% 0%;
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 100%;
   }
 
   .dark {
