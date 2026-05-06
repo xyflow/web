@@ -12,7 +12,7 @@ import {
   Position,
   useStore,
 } from '@xyflow/react';
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 
 export type DataEdge<T extends Node = Node> = Edge<{
   /**

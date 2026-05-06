@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import { useStore } from '@xyflow/react';
 
 const transformSelector = (state) => state.transform;

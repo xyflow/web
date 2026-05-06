@@ -1,14 +1,7 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import { useReactFlow } from '@xyflow/react';
 
-export default function ContextMenu({
-  id,
-  top,
-  left,
-  right,
-  bottom,
-  ...props
-}) {
+export default function ContextMenu({ id, top, left, right, bottom, ...props }) {
   const { getNode, setNodes, addNodes, setEdges } = useReactFlow();
   const duplicateNode = useCallback(() => {
     const node = getNode(id);
@@ -32,11 +25,7 @@ export default function ContextMenu({
   }, [id, setNodes, setEdges]);
 
   return (
-    <div
-      style={{ top, left, right, bottom }}
-      className="context-menu"
-      {...props}
-    >
+    <div style={{ top, left, right, bottom }} className="context-menu" {...props}>
       <p style={{ margin: '0.5em' }}>
         <small>node: {id}</small>
       </p>

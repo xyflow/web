@@ -1,4 +1,3 @@
-import React from 'react';
 import { BaseEdge, BezierEdge, type EdgeProps } from '@xyflow/react';
 
 export default function SelfConnecting(props: EdgeProps) {

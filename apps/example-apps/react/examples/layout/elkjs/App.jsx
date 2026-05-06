@@ -1,6 +1,6 @@
 import { initialNodes, initialEdges } from './initialElements.js';
 import ELK from 'elkjs/lib/elk.bundled.js';
-import React, { useCallback, useLayoutEffect } from 'react';
+import { useCallback, useLayoutEffect } from 'react';
 import {
   Background,
   ReactFlow,

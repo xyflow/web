@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import { Handle, Position } from '@xyflow/react';
 
 export default memo(({ data, isConnectable }) => {
@@ -18,11 +18,7 @@ export default memo(({ data, isConnectable }) => {
         onChange={data.onChange}
         aria-label="Select node color"
       />
-      <Handle
-        type="source"
-        position={Position.Right}
-        isConnectable={isConnectable}
-      />
+      <Handle type="source" position={Position.Right} isConnectable={isConnectable} />
     </>
   );
 });

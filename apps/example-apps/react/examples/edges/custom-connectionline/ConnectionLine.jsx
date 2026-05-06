@@ -1,4 +1,3 @@
-import React from 'react';
 import { useConnection } from '@xyflow/react';
 
 export default ({ fromX, fromY, toX, toY }) => {

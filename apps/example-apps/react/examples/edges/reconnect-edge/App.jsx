@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import {
   ReactFlow,
   Background,
@@ -116,10 +116,7 @@ const EdgeReconnect = () => {
       setEdges((els) => reconnectEdge(oldEdge, newConnection, els)),
     [],
   );
-  const onConnect = useCallback(
-    (params) => setEdges((els) => addEdge(params, els)),
-    [],
-  );
+  const onConnect = useCallback((params) => setEdges((els) => addEdge(params, els)), []);
 
   return (
     <ReactFlow

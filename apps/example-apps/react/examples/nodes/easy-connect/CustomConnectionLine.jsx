@@ -1,4 +1,3 @@
-import React from 'react';
 import { getStraightPath } from '@xyflow/react';
 
 function CustomConnectionLine({ fromX, fromY, toX, toY, connectionLineStyle }) {

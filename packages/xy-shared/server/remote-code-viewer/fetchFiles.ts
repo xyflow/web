@@ -17,6 +17,33 @@ export async function fetchFiles(route: string, framework: Framework) {
   if (framework === 'react' && files['App.jsx']) {
     files['App.tsx'] = files['App.jsx'];
     delete files['App.jsx'];
+  }
+
+  if (framework === 'react') {
+    for (const file of Object.keys(files)) {
+      if (file === 'index.html') {
+        files[file] = files[file]
+          ?.replace('./index.tsx', './src/main.tsx')
+          .replace('./index.jsx', './src/main.jsx')
+          .replace('./index.ts', './src/main.ts')
+          .replace('./index.js', './src/main.js');
+        continue;
+      }
+
+      if (
+        file === 'index.tsx' ||
+        file === 'index.jsx' ||
+        file === 'index.ts' ||
+        file === 'index.js'
+      ) {
+        const extension = file.split('.').pop();
+        files[`src/main.${extension}`] = files[file];
+      } else {
+        files[`src/${file}`] = files[file];
+      }
+
+      delete files[file];
+    }
   } else if (framework === 'svelte') {
     for (const file of Object.keys(files)) {
       if (file === 'index.html') {

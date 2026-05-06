@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import {
   ReactFlow,
   addEdge,
@@ -11,10 +11,7 @@ import {
 
 import '@xyflow/react/dist/style.css';
 
-import {
-  nodes as initialNodes,
-  edges as initialEdges,
-} from './initial-elements';
+import { nodes as initialNodes, edges as initialEdges } from './initial-elements';
 
 import AnnotationNode from './AnnotationNode';
 import ToolbarNode from './ToolbarNode';
@@ -40,10 +37,7 @@ const nodeClassName = (node) => node.type;
 const OverviewFlow = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
-  const onConnect = useCallback(
-    (params) => setEdges((eds) => addEdge(params, eds)),
-    [],
-  );
+  const onConnect = useCallback((params) => setEdges((eds) => addEdge(params, eds)), []);
 
   return (
     <ReactFlow

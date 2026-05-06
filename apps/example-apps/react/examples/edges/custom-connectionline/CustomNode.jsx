@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import { Handle, Position } from '@xyflow/react';
 
 const DEFAULT_HANDLE_STYLE = {
@@ -10,7 +10,7 @@ const DEFAULT_HANDLE_STYLE = {
 export default memo(({ data, isConnectable }) => {
   return (
     <>
-      <div style={{ padding: 25}} >
+      <div style={{ padding: 25 }}>
         <div>Node</div>
         <Handle
           type="source"

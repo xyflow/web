@@ -1,5 +1,5 @@
 import Dagre from '@dagrejs/dagre';
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import {
   ReactFlow,
   ReactFlowProvider,

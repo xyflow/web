@@ -1,8 +1,7 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import { Handle, Position } from '@xyflow/react';
 
 const { Top, Bottom, Left, Right } = Position;
-
 
 export default memo(({ data }) => {
   const { isSpouse, isSibling, label, direction } = data;
@@ -54,11 +53,7 @@ export default memo(({ data }) => {
 
       {/* Target Handle */}
       {!isRootNode && (
-        <Handle
-          type={'target'}
-          position={getTargetPosition()}
-          id={getTargetPosition()}
-        />
+        <Handle type={'target'} position={getTargetPosition()} id={getTargetPosition()} />
       )}
       <div>{label}</div>
     </div>

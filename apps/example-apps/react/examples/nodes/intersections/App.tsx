@@ -1,4 +1,4 @@
-import React, { useCallback, type MouseEvent } from 'react';
+import { useCallback, type MouseEvent } from 'react';
 import {
   ReactFlow,
   Background,
