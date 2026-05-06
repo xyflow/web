@@ -1,6 +1,5 @@
 import { Head } from 'nextra/components';
 import { Navbar as NextraNavbar } from 'nextra-theme-docs';
-import { Banner } from 'nextra/components';
 import svelteFlowPackageJson from '@xyflow/svelte/package.json';
 
 import { SessionRefresher } from 'xy-shared/components/session-refresher';
@@ -8,7 +7,6 @@ import { generateRootMetadata } from 'xy-shared/server/generate-root-metadata';
 import { getLastChangelog } from 'xy-shared/server/get-last-changelog';
 import { TOC } from 'xy-shared/server/toc';
 import { Fathom } from 'xy-shared/components/fathom';
-import { Link } from 'xy-shared/components/ui/link';
 import { defaultFooterCategories, Footer as XYFooter } from 'xy-shared/components/footer';
 import { LogoLabel } from 'xy-shared/components/ui/logo';
 import { Html } from 'xy-shared/components/html';
