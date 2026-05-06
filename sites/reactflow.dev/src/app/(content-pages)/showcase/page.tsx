@@ -3,7 +3,7 @@ import { SubscribeSection } from 'xy-shared/components/subscribe-section';
 import { getPageMap } from 'nextra/page-map';
 import { Metadata } from 'next';
 import { getFramework } from 'xy-shared/lib/get-framework';
-import showcases from '@/content/showcases/index.json';
+import showcases from '@/content/showcase/index.json';
 
 const { library } = getFramework();
 

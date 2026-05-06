@@ -1,7 +1,7 @@
 import { ShowcaseLayout } from 'xy-shared/layouts/showcase';
 import { Metadata } from 'next';
 import { FC } from 'react';
-import showcases from '@/content/showcases/index.json';
+import showcases from '@/content/showcase/index.json';
 
 export const metadata: Metadata = {
   title: 'Showcase',

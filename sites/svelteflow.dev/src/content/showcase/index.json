@@ -236,5 +236,22 @@
       }
     ],
     "published": true
+  },
+  {
+    "id": "dbos-argus",
+    "title": "Argus",
+    "url": "https://pypi.org/project/dbos-argus/",
+    "demoUrl": null,
+    "repoUrl": "https://github.com/tmarkovski/dbos-argus",
+    "openSource": true,
+    "description": "A self-hosted, open-source, read-only workflow viewer for DBOS Transact applications.",
+    "image": "argus-workflow-detail.png",
+    "tags": [
+      {
+        "id": "open-source",
+        "name": "Open Source"
+      }
+    ],
+    "published": true
   }
 ]
