@@ -1,3 +1,7 @@
+@import '@xyflow/react/dist/style.css' layer(base);
+
+@tailwind utilities;
+
 html,
 body {
   margin: 0;
@@ -9,9 +13,3 @@ body {
   width: 100vw;
   height: 100vh;
 }
-
-@layer base {
-  @import '@xyflow/react/dist/style.css';
-}
-
-@tailwind utilities;

@@ -1,6 +1,4 @@
-@layer base {
-  @import '@xyflow/svelte/dist/style.css';
-}
+@import '@xyflow/svelte/dist/style.css' layer(base);
 
 @tailwind utilities;
 
