@@ -1,3 +1,9 @@
+@layer base {
+  @import '@xyflow/svelte/dist/style.css';
+}
+
+@tailwind utilities;
+
 html,
 body {
   margin: 0;
@@ -8,7 +14,3 @@ body {
   width: 100vw;
   height: 100vh;
 }
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;

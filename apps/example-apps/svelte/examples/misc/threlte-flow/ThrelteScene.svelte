@@ -2,11 +2,9 @@
   import { T, useThrelte, useTask } from '@threlte/core';
   import { flowState } from './nodes-and-edges.svelte';
 
-  const { camera } = useThrelte();
+  const { camera, size } = useThrelte();
 
-  const randomVector: (r: number) => [x: number, y: number, z: number] = (
-    r: number,
-  ) => [
+  const randomVector: (r: number) => [x: number, y: number, z: number] = (r: number) => [
     r / 2 - Math.random() * r,
     r / 2 - Math.random() * r,
     r / 2 - Math.random() * r,
@@ -20,14 +18,11 @@
 
   const NUMBER_OF_OBJECTS = 150;
 
-  const randomAssets = Array.from(
-    { length: NUMBER_OF_OBJECTS },
-    (r: number = 10) => ({
-      random: Math.random(),
-      position: randomVector(r),
-      rotation: randomEuler(),
-    }),
-  );
+  const randomAssets = Array.from({ length: NUMBER_OF_OBJECTS }, (r: number = 10) => ({
+    random: Math.random(),
+    position: randomVector(r),
+    rotation: randomEuler(),
+  }));
 
   $effect(() => {
     $camera.position.set(0, 0, +flowState.zoom);
@@ -62,7 +57,7 @@
       {#if flowState.shape === 'cube'}
         <T.BoxGeometry args={[1, 1, 1]} />
       {:else if flowState.shape === 'pyramid'}
-      <T.TetrahedronGeometry args={[1, 0]} />
+        <T.TetrahedronGeometry args={[1, 0]} />
       {/if}
       <T.MeshLambertMaterial color={flowState.color} toneMapped={false} />
     </T.Mesh>

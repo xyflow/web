@@ -9,10 +9,14 @@
 </script>
 
 <NodeWrapper label={data.label}>
-  <Handle type="source" position={Position.Right} />
-  <div class="flex flex-col nodrag p-3">
+  <Handle
+    type="source"
+    position={Position.Right}
+    class="w-[10px] h-[10px] border-none bg-gray-400"
+  />
+  <div class="flex flex-col nodrag p-3 gap-1.5">
     {#each options as option}
-      <label class="flex">
+      <label class="flex items-center gap-2 cursor-pointer">
         <input
           bind:group={flowState.shape}
           class="accent-[#ff4000]"
@@ -20,7 +24,7 @@
           value={option}
           checked={flowState.shape === option}
         />
-        <span class="ml-2">{option}</span>
+        <span class="text-xs text-gray-700 dark:text-gray-300">{option}</span>
       </label>
     {/each}
   </div>
