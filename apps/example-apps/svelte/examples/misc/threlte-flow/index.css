@@ -1,6 +1,6 @@
 @import '@xyflow/svelte/dist/style.css' layer(base);
 
-@tailwind utilities;
+@import 'tailwindcss';
 
 html,
 body {

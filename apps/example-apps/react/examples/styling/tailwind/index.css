@@ -1,6 +1,5 @@
 @import '@xyflow/react/dist/style.css' layer(base);
-
-@tailwind utilities;
+@import 'tailwindcss';
 
 html,
 body {

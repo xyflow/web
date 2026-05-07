@@ -188,24 +188,24 @@ you'd like to style them. For example, you might want to use
   <Handle
     type="target"
     position={Position.Top}
-    class="w-16 !bg-teal-500 rounded-none border-none"
+    class="w-16 bg-teal-500 rounded-none border-none"
   />
   <Handle
     type="source"
     position={Position.Bottom}
-    class="w-16 !bg-teal-500 rounded-none border-none"
+    class="w-16 bg-teal-500 rounded-none border-none"
   />
 </div>
 ```
 
 <Callout type="warning">
-  If you want to overwrite default styles, make sure to import Tailwind's entry point after
-  Svelte Flow's base styles.
+  Import the Svelte Flow stylesheet into the base layer so that Tailwind can override the
+  default styles.
 </Callout>
 
-```js
-import '@xyflow/svelte/dist/style.css';
-import 'tailwind.css';
+```css filename="index.css"
+@import '@xyflow/svelte/dist/style.css' layer(base);
+@import 'tailwindcss';
 ```
 
 For a complete example of using Tailwind with Svelte Flow, check out the
