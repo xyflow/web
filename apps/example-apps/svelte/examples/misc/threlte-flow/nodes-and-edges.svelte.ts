@@ -26,7 +26,6 @@ export const initialNodes: Node[] = [
     data: {
       label: 'output',
     },
-    class: 'w-[200px] lg:w-[300px]',
   },
   {
     id: 'color',
@@ -35,7 +34,6 @@ export const initialNodes: Node[] = [
     data: {
       label: 'shape color',
     },
-    class: 'w-[150px]',
   },
   {
     id: 'shape',
@@ -44,7 +42,6 @@ export const initialNodes: Node[] = [
     data: {
       label: 'shape type',
     },
-    class: 'w-[150px]',
   },
   {
     id: 'zoom',
@@ -53,7 +50,6 @@ export const initialNodes: Node[] = [
     data: {
       label: 'zoom level',
     },
-    class: 'w-[150px]',
   },
 ];
 

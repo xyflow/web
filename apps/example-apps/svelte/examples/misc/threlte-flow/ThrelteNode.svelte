@@ -9,7 +9,7 @@
 </script>
 
 <NodeWrapper label={data.label}>
-  <div class="w-full h-[200px] relative p-2">
+  <div class="w-[200px] h-[200px] relative p-2">
     <div class="threlte-canvas-container w-full h-full rounded-xl overflow-hidden">
       <Canvas dpr={2}>
         <ThrelteScene />
