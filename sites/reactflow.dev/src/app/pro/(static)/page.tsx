@@ -42,6 +42,7 @@ const sliderItems = [
         src="/img/case-studies/doubleloop-screenshot.png"
         alt="DoubleLoop"
         fill
+        sizes="(max-width: 1260px) 100vw, 1260px"
       />
     ),
   },
@@ -54,6 +55,7 @@ const sliderItems = [
         src="/img/case-studies/onesignal-screenshot.png"
         alt="TypeForm"
         fill
+        sizes="(max-width: 1260px) 100vw, 1260px"
       />
     ),
   },
@@ -66,6 +68,7 @@ const sliderItems = [
         src="/img/case-studies/carto-screenshot.png"
         alt="TypeForm"
         fill
+        sizes="(max-width: 1260px) 100vw, 1260px"
       />
     ),
   },
