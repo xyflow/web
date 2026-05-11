@@ -61,4 +61,10 @@ export const features: Record<string, FeatureConfig> = {
   customPayment: {
     label: 'Custom procurement and payment process',
   },
+  reactFlowIntro: {
+    label: 'Introduction call with one of the creators of React Flow',
+  },
+  svelteFlowIntro: {
+    label: 'Introduction call with one of the creators of Svelte Flow',
+  },
 };
