@@ -1,44 +1,7 @@
 import { Link } from '../ui/link';
+import { features } from './features';
 
-import {
-  BillingInterval,
-  Currency,
-  FeatureConfig,
-  PlanId,
-  SubscriptionPlan,
-} from './types';
-
-const features: Record<string, FeatureConfig> = {
-  proExamples: {
-    label: (
-      <span>
-        Access to{' '}
-        <Link variant="primary" href="https://svelteflow.dev/pro/content">
-          Pro Examples
-        </Link>
-        .
-      </span>
-    ),
-  },
-  teamMembers1: {
-    label: 'Invite 1 team member',
-    description: 'You can purchase additional seats through the platform as-needed.',
-  },
-  teamMembers5: {
-    label: 'Invite 5 team members',
-    description: 'You can purchase additional seats through the platform as-needed.',
-  },
-  teamMembers10: {
-    label: 'Invite 10 team members',
-    description: 'You can purchase additional seats through the platform as-needed.',
-  },
-  prioritizedIssues: {
-    label: 'Prioritized Github Issues',
-  },
-  mitLicense: {
-    label: 'Keep the library running and maintained under an MIT License',
-  },
-};
+import { BillingInterval, Currency, PlanId, SubscriptionPlan } from './types';
 
 export const StarterPlan: SubscriptionPlan = {
   id: PlanId.STARTER,
@@ -78,7 +41,7 @@ export const StarterPlan: SubscriptionPlan = {
     },
   ],
   features: [
-    features.proExamples,
+    features.svelteFlowProExamples,
     features.prioritizedIssues,
     features.teamMembers1,
     features.mitLicense,
@@ -124,13 +87,11 @@ export const ProPlan: SubscriptionPlan = {
     },
   ],
   features: [
-    features.proExamples,
+    features.svelteFlowProExamples,
     features.prioritizedIssues,
     features.teamMembers5,
     features.mitLicense,
-    {
-      label: 'Up to 1 hour of individual support via email per month',
-    },
+    features.proSupport,
     {
       label: 'Introduction call with one of the creators of Svelte Flow',
     },
@@ -160,15 +121,11 @@ export const EnterprisePlan: SubscriptionPlan = {
     features.prioritizedIssues,
     features.teamMembers10,
     features.mitLicense,
-    {
-      label: '1 hour of individual support via voice, video or email per month',
-    },
+    features.enterpriseSupport,
     {
       label: 'Introduction call with one of the creators of Svelte Flow',
     },
-    {
-      label: 'Custom procurement and payment process',
-    },
+    features.customPayment,
   ],
   buttonVariant: 'secondary',
   buttonLabel: 'Request a Quote',

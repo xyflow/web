@@ -74,6 +74,16 @@ const items: FAQItem[] = [
     ),
   },
   {
+    id: 'xyflow-pro',
+    question: <>Can I access React Flow Pro with my Svelte Flow Pro account?</>,
+    answer: (
+      <>
+        Yes. You can access both React Flow Pro and Svelte Flow Pro with the same
+        credentials.
+      </>
+    ),
+  },
+  {
     id: 'team-members',
     question: <>Can my team members access the pro examples?</>,
     answer: (
