@@ -26,6 +26,7 @@ const sliderItems = [
         src="/img/featured/stripe.png"
         alt="Stripe Docs"
         fill
+        sizes="(max-width: 1260px) 100vw, 1260px"
       />
     ),
   },
@@ -38,6 +39,7 @@ const sliderItems = [
         src="/img/featured/doubleloop.png"
         alt="DoubleLoop"
         fill
+        sizes="(max-width: 1260px) 100vw, 1260px"
       />
     ),
   },
@@ -50,6 +52,7 @@ const sliderItems = [
         src="/img/featured/typeform.png"
         alt="TypeForm"
         fill
+        sizes="(max-width: 1260px) 100vw, 1260px"
       />
     ),
   },
