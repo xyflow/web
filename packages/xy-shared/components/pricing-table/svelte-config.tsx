@@ -1,87 +1,21 @@
 import { Link } from '../ui/link';
+import { features } from './features';
+import { prices } from './prices';
 
-import {
-  BillingInterval,
-  Currency,
-  FeatureConfig,
-  PlanId,
-  SubscriptionPlan,
-} from './types';
-
-const features: Record<string, FeatureConfig> = {
-  proExamples: {
-    label: (
-      <span>
-        Access to{' '}
-        <Link variant="primary" href="https://svelteflow.dev/pro/content">
-          Pro Examples
-        </Link>
-        .
-      </span>
-    ),
-  },
-  teamMembers1: {
-    label: 'Invite 1 team member',
-    description: 'You can purchase additional seats through the platform as-needed.',
-  },
-  teamMembers5: {
-    label: 'Invite 5 team members',
-    description: 'You can purchase additional seats through the platform as-needed.',
-  },
-  teamMembers10: {
-    label: 'Invite 10 team members',
-    description: 'You can purchase additional seats through the platform as-needed.',
-  },
-  prioritizedIssues: {
-    label: 'Prioritized Github Issues',
-  },
-  mitLicense: {
-    label: 'Keep the library running and maintained under an MIT License',
-  },
-};
+import { PlanId, SubscriptionPlan } from './types';
 
 export const StarterPlan: SubscriptionPlan = {
   id: PlanId.STARTER,
   label: 'Starter',
   description:
     'Best for start-ups and businesses who build commercial products with Svelte Flow.',
-  pricing: [
-    {
-      currency: Currency.EUR,
-      interval: BillingInterval.MONTH,
-      label: '149€',
-    },
-    {
-      currency: Currency.EUR,
-      interval: BillingInterval.YEAR,
-      label: '129€',
-    },
-    {
-      currency: Currency.USD,
-      interval: BillingInterval.MONTH,
-      label: '$169',
-    },
-    {
-      currency: Currency.USD,
-      interval: BillingInterval.YEAR,
-      label: '$149',
-    },
-    {
-      currency: Currency.INR,
-      interval: BillingInterval.MONTH,
-      label: '₹7,500',
-    },
-    {
-      currency: Currency.INR,
-      interval: BillingInterval.YEAR,
-      label: '₹7,000',
-    },
-  ],
+  pricing: prices.starter,
   features: [
-    features.proExamples,
+    features.svelteFlowProExamples,
     features.prioritizedIssues,
     features.teamMembers1,
     features.mitLicense,
+    features.svelteFlowIntro,
   ],
   buttonLabel: 'Sign up',
   buttonLabelSignedIn: 'Subscribe',
@@ -91,49 +25,14 @@ export const ProPlan: SubscriptionPlan = {
   id: PlanId.PRO,
   label: 'Professional',
   description: 'Best for companies that want a direct wire to the Svelte Flow team.',
-  pricing: [
-    {
-      currency: Currency.EUR,
-      interval: BillingInterval.MONTH,
-      label: '269€',
-    },
-    {
-      currency: Currency.EUR,
-      interval: BillingInterval.YEAR,
-      label: '249€',
-    },
-    {
-      currency: Currency.USD,
-      interval: BillingInterval.MONTH,
-      label: '$289',
-    },
-    {
-      currency: Currency.USD,
-      interval: BillingInterval.YEAR,
-      label: '$269',
-    },
-    {
-      currency: Currency.INR,
-      interval: BillingInterval.MONTH,
-      label: '₹24,000',
-    },
-    {
-      currency: Currency.INR,
-      interval: BillingInterval.YEAR,
-      label: '₹22,000',
-    },
-  ],
+  pricing: prices.pro,
   features: [
-    features.proExamples,
+    features.svelteFlowProExamples,
     features.prioritizedIssues,
     features.teamMembers5,
     features.mitLicense,
-    {
-      label: 'Up to 1 hour of individual support via email per month',
-    },
-    {
-      label: 'Introduction call with one of the creators of Svelte Flow',
-    },
+    features.proSupport,
+    features.svelteFlowIntro,
   ],
   highlighted: true,
   buttonLabel: 'Sign up',
@@ -160,15 +59,9 @@ export const EnterprisePlan: SubscriptionPlan = {
     features.prioritizedIssues,
     features.teamMembers10,
     features.mitLicense,
-    {
-      label: '1 hour of individual support via voice, video or email per month',
-    },
-    {
-      label: 'Introduction call with one of the creators of Svelte Flow',
-    },
-    {
-      label: 'Custom procurement and payment process',
-    },
+    features.enterpriseSupport,
+    features.svelteFlowIntro,
+    features.customPayment,
   ],
   buttonVariant: 'secondary',
   buttonLabel: 'Request a Quote',
