@@ -2,7 +2,7 @@ import { Link } from '../ui/link';
 import { features } from './features';
 import { prices } from './prices';
 
-import { BillingInterval, Currency, PlanId, SubscriptionPlan } from './types';
+import { PlanId, SubscriptionPlan } from './types';
 
 export const StarterPlan: SubscriptionPlan = {
   id: PlanId.STARTER,
