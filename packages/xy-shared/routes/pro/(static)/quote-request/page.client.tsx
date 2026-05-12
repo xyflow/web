@@ -15,6 +15,7 @@ import { BaseLayout } from '../../../../layouts/base';
 import { SubscribeSection } from '../../../../components/subscribe-section';
 import { Hero } from '../../../../components/hero';
 import { getFramework } from '../../../../lib/get-framework';
+import { nhostOnClient } from '../../../../lib/nhost-on-client';
 
 const { library } = getFramework();
 
@@ -54,7 +55,7 @@ export const Form: FC = () => {
 
       try {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_NHOST_API_URL}/stripe/create-quote`,
+          `${nhostOnClient.functions.baseURL}/stripe/create-quote`,
           {
             method: 'POST',
             headers: {
