@@ -10,8 +10,16 @@ With the defaults in `.env`, you are able to run the website locally. If you wan
 the pro examples, you need to make a copy of `.env.local.example` to `.env.local` and fill
 in the values.
 
-All environment variables in `.env` and `.env.local` are set on vercel for preview and
-production.
+Additionally, we set these env variables on vercel for preview and production:
+
+```
+NEXT_PUBLIC_NHOST_SUBDOMAIN
+NEXT_PUBLIC_NHOST_REGION
+NEXT_PUBLIC_PRO_EXAMPLES_URL
+UPSTASH_REDIS_REST_URL
+UPSTASH_REDIS_REST_TOKEN
+NEXT_PUBLIC_TURNSTILE_SITE_KEY
+```
 
 ### Installation
 
