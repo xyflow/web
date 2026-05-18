@@ -14,6 +14,7 @@ import {
   getNodesBounds,
   useNodesInitialized,
 } from '@xyflow/react';
+import { usePathname } from 'next/navigation';
 
 import HeroNode from './hero-node';
 import ColorPickerNode from './color-picker-node';
@@ -187,8 +188,10 @@ function Flow({ className, initialColor }: FlowProps) {
 }
 
 export default function Wrapper(props: FlowProps) {
+  const pathName = usePathname();
+
   return (
-    <ReactFlowProvider>
+    <ReactFlowProvider key={pathName}>
       <Flow {...props} />
     </ReactFlowProvider>
   );
