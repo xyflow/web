@@ -17,13 +17,13 @@ adding common questions and pitfalls that we collect from our
 
 This usually happens when:
 
-**A:** You have two different versions of @reactflow/core installed.<br /> **B:** You are
+**A:** You have two different versions of `@xyflow/react` installed.<br /> **B:** You are
 trying to access the internal React Flow state outside of the React Flow context.
 
 #### Solution for A
 
-Update reactflow and @reactflow/node-resizer (in case you are using it), remove
-node_modules and package-lock.json and reinstall the dependencies.
+Update `@xyflow/react`, remove `node_modules` and your `package-lock.json` and reinstall
+the dependencies.
 
 #### Solution for B
 
@@ -422,26 +422,30 @@ pass the correct `edgeTypes` property to React Flow. You can learn more about cu
 in the [custom edge guide](/learn/customization/custom-edges)
 
 <div id="012" />
-### Node with id yourId does not exist, it may have been removed. This can happen when a node is deleted before the "onNodeClick" handler is called.
+### Node with id yourId does not exist, it may have been removed. This can happen when a
+node is deleted before the "onNodeClick" handler is called.
 
 As the warning says, this can happen when you are trying to access a node that has already
 been removed from the state.
 
 <div id="013" />
-### It seems that you haven't loaded the styles. Please import '@xyflow/react/dist/style.css' or base.css to make sure everything is working properly.
+### It seems that you haven't loaded the styles. Please import
+'@xyflow/react/dist/style.css' or base.css to make sure everything is working properly.
 
 This warning appears when you haven't imported the React Flow stylesheet. The styles are
 necessary for the flow to be displayed properly.
 
 <div id="014" />
-### useNodeConnections: No node ID found. Call useNodeConnections inside a custom node or provide a node ID.
+### useNodeConnections: No node ID found. Call useNodeConnections inside a custom node or
+provide a node ID.
 
 `useNodeConnections` is a hook that allows you to get the connections of a node. This
 warning appears when you are trying to use the `useNodeConnections` hook outside of a
 custom node component.
 
 <div id="015" />
-### It seems that you are trying to drag a node that is not initialized. Please use `onNodesChange` as explained in the docs.
+### It seems that you are trying to drag a node that is not initialized. Please use
+`onNodesChange` as explained in the docs.
 
 This warning appears when you are trying to drag a node that is not initialized. This can
 happen when you are trying to drag a node that has not been initialized with the
