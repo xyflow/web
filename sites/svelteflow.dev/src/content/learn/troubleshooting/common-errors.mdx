@@ -15,21 +15,14 @@ adding common questions and pitfalls that we collect from our
 <div id="001" />
 ### Warning: Could not find a Svelte Flow context.
 
-This usually happens when:
+This usually happens when: you are trying to access the internal Svelte Flow state outside
+of the Svelte Flow context.
 
-**A:** You have two different versions of `@xyflow/svelte` installed.<br /> **B:** You are
-trying to access the internal Svelte Flow state outside of the Svelte Flow context.
+#### Solution
 
-#### Solution for A
-
-Update `@xyflow/svelte`, remove `node_modules` and your `package-lock.json` and reinstall
-the dependencies.
-
-#### Solution for B
-
-A possible solution is to wrap your component with a
-[`<SvelteFlowProvider />`](/api-reference/svelte-flow-provider) or move the code that is
-accessing the state inside a child component rendered inside your Svelte Flow instance.
+Wrap your component with a [`<SvelteFlowProvider />`](/api-reference/svelte-flow-provider)
+or move the code that is accessing the state inside a child component rendered inside your
+Svelte Flow instance.
 
 <Callout type="error">This will cause an error:</Callout>
 
@@ -53,8 +46,7 @@ accessing the state inside a child component rendered inside your Svelte Flow in
 Move any `useSvelteFlow` calls into a child component that is rendered inside
 `<SvelteFlow>` or `<SvelteFlowProvider>`:
 
-```svelte
-<!-- App.svelte -->
+```svelte filename="App.svelte"
 <script>
   import { SvelteFlow } from '@xyflow/svelte';
   import '@xyflow/svelte/dist/style.css';
@@ -69,8 +61,7 @@ Move any `useSvelteFlow` calls into a child component that is rendered inside
 </SvelteFlow>
 ```
 
-```svelte
-<!-- FlowControls.svelte — rendered inside <SvelteFlow> -->
+```svelte filename="FlowControls.svelte"
 <script>
   import { useSvelteFlow } from '@xyflow/svelte';
 
@@ -79,20 +70,39 @@ Move any `useSvelteFlow` calls into a child component that is rendered inside
 </script>
 ```
 
+<Callout type="info">This works:</Callout>
+
+```svelte filename="App.svelte"
+<script>
+  import { SvelteFlow, useSvelteFlow } from '@xyflow/svelte';
+  import '@xyflow/svelte/dist/style.css';
+
+  // cannot access the state here — no SvelteFlow context exists yet
+  const { getZoom } = useSvelteFlow();
+
+  let nodes = $state([]);
+  let edges = $state([]);
+</script>
+
+<SvelteFlow {nodes} {edges} />
+```
+
+```svelte filename="Wrapper.svelte"
+<script>
+  import { SvelteFlowProvider } from '@xyflow/svelte';
+  import App from './App.svelte';
+</script>
+
+<SvelteFlowProvider>
+  <App />
+</SvelteFlowProvider>
+```
+
 <div id="002" />
 ### It looks like you have created a new nodeTypes or edgeTypes object.
 
-If this wasn't on purpose please define the nodeTypes/edgeTypes outside of the component
-or at module level to keep them stable.
-
-This warning appears when the `nodeTypes` or `edgeTypes` properties change after the
-initial render. The `nodeTypes` or `edgeTypes` should only be changed dynamically in very
-rare cases. Usually, they are defined once, along with all the types you use in your
-application. It can happen easily that you are defining the nodeTypes or edgeTypes object
-using `$state` or inline in the template, which will cause Svelte Flow to re-render every
-time your component updates.
-
-<Callout type="error">Causes a warning:</Callout>
+You don't have to dynamically update `nodeTypes` and `edgeTypes` and you can simply create
+the object once initially.
 
 ```svelte
 <script>
@@ -100,29 +110,8 @@ time your component updates.
   import '@xyflow/svelte/dist/style.css';
   import MyCustomNode from './MyCustomNode.svelte';
 
-  // new object being created on every render
-  // causing unnecessary re-renders
-  let nodeTypes = $state({ myCustomNode: MyCustomNode });
-</script>
-
-<SvelteFlow {nodeTypes} />
-```
-
-<Callout type="info">Recommended implementation:</Callout>
-
-Define nodeTypes at module level so the reference stays stable:
-
-```svelte
-<script module>
-  import MyCustomNode from './MyCustomNode.svelte';
-
-  // defined at module level — stable across renders
+  // Just create the object once
   const nodeTypes = { myCustomNode: MyCustomNode };
-</script>
-
-<script>
-  import { SvelteFlow } from '@xyflow/svelte';
-  import '@xyflow/svelte/dist/style.css';
 </script>
 
 <SvelteFlow {nodeTypes} />
@@ -159,7 +148,10 @@ your node needs to be exactly the same as the key in the `nodeTypes` object.
 <Callout type="error">Doesn't work either:</Callout>
 
 ```svelte
-<script module>
+<script>
+  import { SvelteFlow } from '@xyflow/svelte';
+  import '@xyflow/svelte/dist/style.css';
+
   import MyCustomNode from './MyCustomNode.svelte';
 
   const nodes = [
@@ -173,11 +165,7 @@ your node needs to be exactly the same as the key in the `nodeTypes` object.
   const nodeTypes = {
     Custom: MyCustomNode,
   };
-</script>
 
-<script>
-  import { SvelteFlow } from '@xyflow/svelte';
-  import '@xyflow/svelte/dist/style.css';
 </script>
 
 <!-- node.type and key in nodeTypes object are not exactly the same (capitalized) -->
@@ -187,7 +175,10 @@ your node needs to be exactly the same as the key in the `nodeTypes` object.
 <Callout type="info">This does work:</Callout>
 
 ```svelte
-<script module>
+<script>
+  import { SvelteFlow } from '@xyflow/svelte';
+  import '@xyflow/svelte/dist/style.css';\
+
   import MyCustomNode from './MyCustomNode.svelte';
 
   const nodes = [
@@ -201,11 +192,6 @@ your node needs to be exactly the same as the key in the `nodeTypes` object.
   const nodeTypes = {
     custom: MyCustomNode,
   };
-</script>
-
-<script>
-  import { SvelteFlow } from '@xyflow/svelte';
-  import '@xyflow/svelte/dist/style.css';
 </script>
 
 <SvelteFlow {nodes} {nodeTypes} />
@@ -240,7 +226,7 @@ CSS attached to it so that it gets a fixed height or inherits the height of its 
   import '@xyflow/svelte/dist/style.css';
 </script>
 
-<div style="height: 800px;">
+<div style:height="100vh" style:width="100vw">
   <SvelteFlow />
 </div>
 ```
@@ -250,7 +236,7 @@ CSS attached to it so that it gets a fixed height or inherits the height of its 
 
 This warning appears when you are trying to add the `extent` option to a node that does
 not have a parent node. Depending on what you are trying to do, you can remove the
-`extent` option or specify a `parentNode`.
+`extent` option or specify a `parentId`.
 
 <Callout type="error">Does show a warning:</Callout>
 
@@ -281,7 +267,7 @@ not have a parent node. Depending on what you are trying to do, you can remove t
   const nodes = [
     {
       id: 'mycustomnode',
-      parentNode: 'someothernode',
+      parentId: 'someothernode',
       extent: 'parent',
       // ...
     },
@@ -310,8 +296,7 @@ Without the source and target, the edge cannot be rendered.
 
   const edges = [
     {
-      nosource: '1',
-      notarget: '2',
+      id: 'some-id',
     },
   ];
 </script>
@@ -332,6 +317,7 @@ Without the source and target, the edge cannot be rendered.
 
   const edges = [
     {
+      id: 'some-id',
       source: '1',
       target: '2',
     },
@@ -354,16 +340,17 @@ implementation details.
 
 This can happen if you are working with multiple handles and a handle is not found by its
 `id` property or if you haven't
-[updated the node internals after adding or removing handles](/api-reference/hooks/use-svelte-flow#updatenodeinternals)
-programmatically. Please see the [Custom Node Example](/examples/nodes/custom-node) for an
-example of working with multiple handles.
+[updated the node internals](/api-reference/hooks/use-update-node-internals) after adding
+or removing handles programmatically. Please take a look at the
+[documentation](/learn/customization/handles#using-multiple-handles) for an example on how
+to use multiple handles.
 
 <div id="009" />
 ### Marker type doesn't exist.
 
 This warning occurs when you are trying to specify a marker type that is not built into
 Svelte Flow. The existing marker types are documented
-[here](/api-reference/types/edge#edgemarker).
+[here](/api-reference/types/edge-marker).
 
 <div id="010" />
 ### Handle: No node id found.
@@ -372,43 +359,35 @@ This warning occurs when you try to use a `<Handle />` component outside of a cu
 component.
 
 <div id="011" />
-### Edge type yourEdgeType not found. Using fallback type "default".
+### Edge type `...` not found. Using fallback type "default".
 
 This warning occurs when you specify a custom edge type for one of your edges but do not
 pass the correct `edgeTypes` prop to `<SvelteFlow>`. You can learn more about custom edges
 in the [custom edge guide](/learn/customization/custom-edges).
 
 <div id="012" />
-### Node with id yourId does not exist, it may have been removed. This can happen when a
-node is deleted before the "onNodeClick" handler is called.
+### Node with id `...` does not exist, it may have been removed.
+
+This can happen when a node is deleted before the "onNodeClick" handler is called.
 
 As the warning says, this can happen when you are trying to access a node that has already
 been removed from the state.
 
 <div id="013" />
-### It seems that you haven't loaded the styles. Please import
-'@xyflow/svelte/dist/style.css' or base.css to make sure everything is working properly.
+### It seems that you haven't loaded the styles.
+
+Please import `@xyflow/svelte/dist/style.css` or `base.css` to make sure everything is
+working properly.
 
 This warning appears when you haven't imported the Svelte Flow stylesheet. The styles are
 necessary for the flow to be displayed properly.
 
 <div id="014" />
-### useNodeConnections: No node ID found. Call useNodeConnections inside a custom node or
-provide a node ID.
+### useNodeConnections: No node ID found. Call useNodeConnections inside a custom node or provide a node ID.
 
 `useNodeConnections` is a hook that allows you to get the connections of a node. This
 warning appears when you are trying to use the `useNodeConnections` hook outside of a
 custom node component.
-
-<div id="015" />
-### It seems that you are trying to drag a node that is not initialized. Please use
-`onnodeschange` as explained in the docs.
-
-This warning appears when you are trying to drag a node that is not initialized. This can
-happen when you are not handling node state changes with the `onnodeschange` handler or
-`bind:nodes`. Please make sure to use either `bind:nodes` (for managed state) or the
-`onnodeschange` handler to keep your nodes in sync. You can learn more about this in the
-["Building a Flow" guide](/learn/getting-started/building-a-flow).
 
 ### Mouse events aren't working consistently when my nodes contain a `<canvas />` element.
 
@@ -439,7 +418,7 @@ reasons:
   SVG selector with `overflow: hidden`, which hides the edges.
 - If you are using an async operation like a request to the backend, make sure to call the
   `updateNodeInternals` function from the
-  [`useSvelteFlow`](/api-reference/hooks/use-svelte-flow) hook after the async operation
+  [`useUpdateNodeInternals`](/api-reference/hooks/use-update-node-internals) hook after the async operation
   so Svelte Flow updates the handle position internally.
 
 ### Edges are not displaying correctly.
