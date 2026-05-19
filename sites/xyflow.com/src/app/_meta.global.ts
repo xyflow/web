@@ -39,6 +39,7 @@ const metaRecord = {
   },
 
   // 2. Hidden Routes from Navigation
+  'common-errors': { display: 'hidden' },
   index: { display: 'hidden' },
   careers: { display: 'hidden' },
   contact: { display: 'hidden' },

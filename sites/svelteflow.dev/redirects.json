@@ -1,12 +1,17 @@
 [
   {
     "source": "/error",
-    "destination": "/learn/troubleshooting",
+    "destination": "https://xyflow.com/common-errors?tab=svelte",
     "permanent": true
   },
   {
     "source": "/learn/troubleshooting",
-    "destination": "/learn/troubleshooting/common-errors",
+    "destination": "https://xyflow.com/common-errors?tab=svelte",
+    "permanent": true
+  },
+  {
+    "source": "/learn/troubleshooting/common-errors",
+    "destination": "https://xyflow.com/common-errors?tab=svelte",
     "permanent": true
   }
 ]
