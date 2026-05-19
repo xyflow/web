@@ -8,6 +8,7 @@ import {
   PricingTable,
   SubscriptionPlanId,
 } from '../../pricing-table';
+import { getHostName } from '../../../lib/get-host-name';
 import { User } from '@nhost/nhost-js/auth';
 
 export default function PricingTableComponent({ user }: { user: User }) {
@@ -39,10 +40,16 @@ export default function PricingTableComponent({ user }: { user: User }) {
 
     await Promise.resolve();
 
+    const hostName = getHostName();
+    const successUrl = `${hostName}/pro/dashboard`;
+    const cancelUrl = `${hostName}/pro/subscribe`;
+
     const response = await callNhostFunction('/stripe/create-checkout', {
       plan,
       interval,
       framework: process.env.NEXT_PUBLIC_FRAMEWORK ?? 'react',
+      successUrl,
+      cancelUrl,
     });
 
     if (!response.error && response.url) {

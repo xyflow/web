@@ -5,6 +5,7 @@ import { Button } from '../../ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '../../ui/card';
 import { callNhostFunction } from '../../../server-actions/call-nhost-function';
 import { redirect } from 'next/navigation';
+import { getHostName } from '../../../lib/get-host-name';
 
 type PricingPlanProps = {
   plan: 'starter' | 'pro' | 'enterprise';
@@ -23,11 +24,17 @@ export default function PricingPlan({
 
   const subscribe = () => {
     startTransition(async () => {
+      const hostName = getHostName();
+      const successUrl = `${hostName}/pro/dashboard`;
+      const cancelUrl = `${hostName}/pro/subscribe`;
+
       const response = await callNhostFunction('/stripe/create-checkout', {
         plan,
         interval,
         currency,
         framework: process.env.NEXT_PUBLIC_FRAMEWORK ?? 'react',
+        successUrl,
+        cancelUrl,
       });
 
       if (response.url) {

@@ -15,8 +15,6 @@ export async function callNhostFunction(
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${accessToken}`,
-      // TODO check if we still need it
-      ...(process.env.NODE_ENV !== 'production' && { Origin: 'http://localhost:3002' }),
     },
     body: JSON.stringify(body),
     next: {
