@@ -1,6 +1,5 @@
 {
-  "$schema": "https://turbo.build/schema.json",
-  "globalDotEnv": [".env"],
+  "$schema": "https://v2-9-14.turborepo.dev/schema.json",
   "globalEnv": [
     "NODE_ENV",
     "NEXT_PUBLIC_*",
@@ -9,7 +8,7 @@
     "NPM_REACT_FLOW",
     "NPM_REACT_FLOW_LEGACY"
   ],
-  "pipeline": {
+  "tasks": {
     "build": {
       "dependsOn": ["^build"],
       "outputs": [
@@ -17,34 +16,15 @@
         "!.next/cache/**",
         ".svelte-kit/**",
         ".vercel/**"
-      ],
-      "dotEnv": [
-        ".env.production.local",
-        ".env.local",
-        ".env.production",
-        ".env"
       ]
     },
     "lint": {
-      "dotEnv": [
-        ".env.development.local",
-        ".env.local",
-        ".env.development",
-        ".env"
-      ]
     },
     "dev": {
       "cache": false,
-      "persistent": true,
-      "dotEnv": [
-        ".env.development.local",
-        ".env.local",
-        ".env.development",
-        ".env"
-      ]
+      "persistent": true
     },
     "test": {
-      "dotEnv": [".env.test.local", ".env.test", ".env"]
     }
   }
 }
