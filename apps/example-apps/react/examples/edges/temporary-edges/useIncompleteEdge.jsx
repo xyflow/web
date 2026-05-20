@@ -1,11 +1,5 @@
-import React, { useCallback } from 'react';
-import {
-  addEdge,
-  useReactFlow,
-  Handle,
-  Position,
-  reconnectEdge,
-} from '@xyflow/react';
+import { useCallback } from 'react';
+import { addEdge, useReactFlow, Handle, Position, reconnectEdge } from '@xyflow/react';
 
 export const GhostNode = () => (
   <div style={{ width: 5, height: 5 }}>
@@ -28,10 +22,7 @@ export function useIncompleteEdge() {
 
   const onConnectEnd = useCallback(
     (event, connectionState) => {
-      if (
-        connectionState.isValid ||
-        connectionState.fromHandle.type === 'target'
-      ) {
+      if (connectionState.isValid || connectionState.fromHandle.type === 'target') {
         return;
       }
 
@@ -93,8 +84,7 @@ export function useIncompleteEdge() {
           (acc, edge) =>
             acc.filter((n) => {
               const isGhost = n.type === 'ghost';
-              const isSourceOrTarget =
-                n.id === edge.source || n.id === edge.target;
+              const isSourceOrTarget = n.id === edge.source || n.id === edge.target;
 
               return !(isGhost && isSourceOrTarget);
             }),

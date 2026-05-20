@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import {
   ReactFlow,
   Background,
@@ -11,7 +11,6 @@ import {
 } from '@xyflow/react';
 
 import '@xyflow/react/dist/style.css';
-
 
 const nodeDefaults = {
   sourcePosition: Position.Right,
@@ -68,10 +67,7 @@ const Flow = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
-  const onConnect = useCallback(
-    (params) => setEdges((els) => addEdge(params, els)),
-    [],
-  );
+  const onConnect = useCallback((params) => setEdges((els) => addEdge(params, els)), []);
 
   return (
     <ReactFlow
@@ -81,6 +77,7 @@ const Flow = () => {
       onEdgesChange={onEdgesChange}
       onConnect={onConnect}
       fitView
+      colorMode="system"
     >
       <Background />
       <Controls />

@@ -6,14 +6,9 @@ import {
   ClipboardIcon,
   CodeBracketIcon,
 } from '@heroicons/react/24/outline';
-import {
-  Framework,
-  IconButton,
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from '@xyflow/xy-ui';
+import { Framework } from '../../types';
+import { IconButton } from '../../components/ui/icon-button';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '../../components/ui/tabs';
 import { ReactNode, useRef, useState } from 'react';
 import { OpenInCodesandbox } from './open-in-codesandbox';
 import { OpenInStackblitz } from './open-in-stackblitz';
@@ -51,7 +46,7 @@ export function CodePreview({
 
   if (!mdxSnippets) return;
   return (
-    <div className="remote-code-viewer mt-5 rounded-xl flex overflow-hidden border border-border flex-col">
+    <div className="remote-code-viewer border-border mt-5 flex flex-col overflow-hidden rounded-xl border dark:border-gray-700">
       <div style={{ aspectRatio }}>
         <iframe
           ref={iframeRef}
@@ -63,18 +58,17 @@ export function CodePreview({
           className="example"
         />
       </div>
-      <div className={'rounded-xl overflow-hidden rounded-t-none'}>
+      <div className={'overflow-hidden rounded-xl rounded-t-none'}>
         <Tabs
           defaultValue={initialActiveFile}
           value={tabsValue}
           onValueChange={(value) => setTabsValue(value)}
         >
           <div
-            className={`grid gap-2 grid-flow-col grid-cols-[1fr_min-content] 
-                        border-t ${isOpen ? 'border-b' : ''} border-gray-200`}
+            className={`grid grid-flow-col grid-cols-[1fr_min-content] gap-2 border-t ${isOpen ? 'border-b' : ''} border-border dark:border-gray-700`}
           >
             {isOpen && (
-              <TabsList className="tablist h-full border-none overflow-x-auto overflow-y-hidden text-nowrap">
+              <TabsList className="tablist h-full overflow-x-auto overflow-y-hidden text-nowrap border-none">
                 {mdxSnippets.map(([filename]) => (
                   <TabsTrigger
                     key={filename}
@@ -87,7 +81,7 @@ export function CodePreview({
               </TabsList>
             )}
             <div
-              className={`${isOpen ? 'col-span-1' : 'col-span-2'} h-10 self-center flex p-1 gap-1 text-sm justify-end`}
+              className={`${isOpen ? 'col-span-1' : 'col-span-2'} flex h-10 justify-end gap-1 self-center p-1 text-sm`}
             >
               {isOpen && (
                 <IconButton
@@ -106,7 +100,7 @@ export function CodePreview({
               <IconButton
                 icon={<CodeBracketIcon className="size-6" />}
                 title="Toggle code"
-                className={`${isOpen ? 'bg-gray-100' : 'text-[#ff0073]'}`}
+                className={`${isOpen ? 'bg-card' : 'text-[#ff0073]'}`}
                 onClick={() => setIsOpen((isOpen) => !isOpen)}
               />
               <IconButton
@@ -115,6 +109,7 @@ export function CodePreview({
                 onClick={() =>
                   iframeRef.current?.src &&
                   // refreshes the iframe without CORS problems
+                  // eslint-disable-next-line no-self-assign
                   (iframeRef.current.src = iframeRef.current.src)
                 }
               />
@@ -128,7 +123,7 @@ export function CodePreview({
             </div>
           </div>
           {isOpen && (
-            <div className="h-[50vh] overflow-y-scroll bg-primary/5">
+            <div className="bg-primary/5 h-[50vh] overflow-y-scroll">
               {mdxSnippets.map(([filename, snippet]) => (
                 <TabsContent key={filename} className="min-h-[500px]" value={filename}>
                   {snippet}

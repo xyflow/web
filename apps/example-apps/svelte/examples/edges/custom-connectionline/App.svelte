@@ -34,6 +34,7 @@
   {nodeTypes}
   fitView
   connectionLineComponent={ConnectionLine}
+  colorMode="system"
 >
   <Background />
   <MiniMap />

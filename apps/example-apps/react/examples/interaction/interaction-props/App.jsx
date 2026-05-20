@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import {
   Background,
   ReactFlow,
@@ -93,6 +93,7 @@ const InteractionFlow = () => {
       onPaneContextMenu={captureZoomClick ? onPaneContextMenu : undefined}
       fitView
       attributionPosition="top-right"
+      colorMode="system"
     >
       <MiniMap />
       <Controls />

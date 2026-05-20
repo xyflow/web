@@ -53,6 +53,7 @@
   {edgeTypes}
   fitView
   defaultEdgeOptions={{ type: 'erasable-edge' }}
+  colorMode="system"
 >
   <Controls />
   <Background />

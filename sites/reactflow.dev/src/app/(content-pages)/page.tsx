@@ -3,25 +3,32 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { SparklesIcon, BoltIcon } from '@heroicons/react/24/outline';
-import { Button, Section, Stats } from '@xyflow/xy-ui';
-import {
-  BaseLayout,
-  HeroFlow,
-  ImageSlider,
-  Features,
-  GettingStarted,
-  AboutSection,
-  ProjectCards,
-  FlowA,
-  FlowB,
-  FlowC,
-} from 'xy-shared';
-import { getLastChangelog } from 'xy-shared/server';
-import { fetchGitHubNpmStats, InternalRoute } from '@/utils';
-import ClientLogos from '@/components/client-logos';
-import WhatsNewPreview from '@/components/whats-new-preview';
+import { Button } from 'xy-shared/components/ui/button';
+import { Section } from 'xy-shared/components/ui/section';
+import { Stats } from 'xy-shared/components/ui/stats';
+import { BaseLayout } from 'xy-shared/layouts/base';
+import { HeroFlow } from 'xy-shared/components/flows/hero-flow';
+import { ImageSlider } from 'xy-shared/components/image-slider';
+import { Features } from 'xy-shared/components/features';
+import { GettingStarted } from 'xy-shared/layouts/getting-started';
+import { AboutSection } from 'xy-shared/layouts/about-section';
+import { ProjectCards } from 'xy-shared/layouts/project-cards';
+import { getLastChangelog } from 'xy-shared/server/get-last-changelog';
+import { fetchGitHubNpmStats } from 'xy-shared/lib/fetch-github-npm-stats';
+import { InternalRoute } from '../../routes';
+import ClientLogos from 'xy-shared/components/client-logos';
+import WhatsNewPreview from 'xy-shared/components/whats-new-preview';
 
-export const revalidate = 3600; // 60 * 60
+import zapier from '../../../public/img/clients/zapier.svg';
+import stripe from '../../../public/img/clients/stripe.svg';
+import cartoWorkflows from '../../../public/img/clients/carto.svg';
+import railway from '../../../public/img/clients/railway.svg';
+import retool from '../../../public/img/clients/retool.svg';
+import doubleloop from '../../../public/img/clients/doubleloop.svg';
+import onesignal from '../../../public/img/clients/onesignal.svg';
+import close from '../../../public/img/clients/close.svg';
+
+import { FlowA, FlowB, FlowC } from 'xy-shared/components/flows';
 
 export const metadata: Metadata = {
   title: 'Node-Based UIs in React',
@@ -51,10 +58,10 @@ const features = [
     flowComponent: <FlowB />,
   },
   {
-    title: 'All the right plugins',
+    title: 'All the right components',
     text: 'Make more advanced apps with the Background, Minimap, Controls, Panel, NodeToolbar, and NodeResizer components.',
     route: '/learn/concepts/built-in-components' satisfies InternalRoute,
-    flowComponent: <FlowC framework="react" />,
+    flowComponent: <FlowC />,
   },
 ];
 
@@ -68,6 +75,7 @@ const sliderItems = [
         src="/img/featured/stripe.png"
         alt="Stripe Docs"
         fill
+        sizes="(max-width: 1260px) 100vw, 1260px"
       />
     ),
   },
@@ -80,6 +88,7 @@ const sliderItems = [
         src="/img/featured/doubleloop.png"
         alt="DoubleLoop"
         fill
+        sizes="(max-width: 1260px) 100vw, 1260px"
       />
     ),
   },
@@ -92,13 +101,15 @@ const sliderItems = [
         src="/img/featured/typeform.png"
         alt="TypeForm"
         fill
+        sizes="(max-width: 1260px) 100vw, 1260px"
       />
     ),
   },
 ];
 
 const Page: FC = async () => {
-  const { stars = 23000, downloads = 4000 } = await fetchGitHubNpmStats();
+  'use cache';
+  const { stars = 23000, downloads = 4000 } = await fetchGitHubNpmStats('react');
   const pageMap = await getLastChangelog();
   const whatsNew = pageMap.slice(0, 3);
 
@@ -110,15 +121,15 @@ const Page: FC = async () => {
         subtitle="A customizable React component for building node-based editors and interactive diagrams"
         action={
           <div className="flex">
-            <Button size="lg" asChild className="mr-3 ">
+            <Button size="lg" asChild className="mr-3">
               <Link href="/learn">
-                <BoltIcon className="w-5 h-5 mr-1" />
+                <BoltIcon className="mr-1 h-5 w-5" />
                 Quickstart
               </Link>
             </Button>
             <Button size="lg" variant="pro" asChild>
               <Link href="/pro">
-                <SparklesIcon className="w-5 h-5 mr-1" /> React Flow Pro
+                <SparklesIcon className="mr-1 h-5 w-5" /> React Flow Pro
               </Link>
             </Button>
           </div>
@@ -139,7 +150,7 @@ const Page: FC = async () => {
           link="/pro"
           linkLabel={
             <>
-              <SparklesIcon className="w-5 h-5 mr-1" /> React Flow Pro
+              <SparklesIcon className="mr-1 h-5 w-5" /> React Flow Pro
             </>
           }
         />
@@ -152,7 +163,18 @@ const Page: FC = async () => {
       </Section>
 
       <Section>
-        <ClientLogos />
+        <ClientLogos
+          logos={[
+            { src: zapier, alt: 'zapier', className: 'h-7' },
+            { src: stripe, alt: 'stripe', className: 'h-7' },
+            { src: cartoWorkflows, alt: 'carto workflows', className: 'h-9' },
+            { src: close, alt: 'close', className: 'h-7' },
+            { src: railway, alt: 'railway', className: 'h-9' },
+            { src: retool, alt: 'retool', className: 'h-6' },
+            { src: doubleloop, alt: 'doubleloop', className: 'h-7' },
+            { src: onesignal, alt: 'onesignal', className: 'h-7' },
+          ]}
+        />
       </Section>
 
       <ImageSlider items={sliderItems} />
@@ -160,7 +182,7 @@ const Page: FC = async () => {
       <Section className="relative">
         <WhatsNewPreview items={whatsNew} variant="compact" />
 
-        <div className="lg:hidden h-[50%] w-full bg-gradient-to-b from-transparent via-white/70 to-white absolute bottom-0 pointer-events-none" />
+        <div className="pointer-events-none absolute bottom-0 h-[50%] w-full bg-gradient-to-b from-transparent via-white/70 to-white lg:hidden" />
       </Section>
 
       <AboutSection />

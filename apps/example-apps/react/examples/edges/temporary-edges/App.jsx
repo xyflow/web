@@ -34,6 +34,7 @@ const IncompleteEdge = () => {
       onEdgesChange={onEdgesChange}
       fitView
       {...handlers}
+      colorMode="system"
     >
       <Background />
     </ReactFlow>

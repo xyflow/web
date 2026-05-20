@@ -216,6 +216,7 @@ export default function MarkersExample() {
         defaultEdges={defaultEdges}
         fitView
         edgeTypes={edgeTypes}
+        colorMode="system"
       >
         <Background />
       </ReactFlow>

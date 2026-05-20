@@ -42,6 +42,7 @@ function DnDFlow() {
           onEdgesChange={onEdgesChange}
           onConnect={onConnect}
           fitView
+          colorMode="system"
         >
           <Controls />
           <Background />

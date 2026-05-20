@@ -10,7 +10,7 @@ function Flow() {
   const [variant, setVariant] = useState('cross');
 
   return (
-    <ReactFlow defaultNodes={defaultNodes} defaultEdges={defaultEdges} fitView>
+    <ReactFlow defaultNodes={defaultNodes} defaultEdges={defaultEdges} fitView colorMode="system">
       <Background color="skyblue" variant={variant} />
       <Panel>
         <div>variant:</div>

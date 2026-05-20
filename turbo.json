@@ -4,22 +4,20 @@
   "globalEnv": [
     "NODE_ENV",
     "NEXT_PUBLIC_\\*",
-    "GITHUB_API_URL",
-    "NPM_SVELTE_FLOW",
-    "NPM_REACT_FLOW",
-    "NPM_REACT_FLOW_LEGACY",
     "NPM_XYFLOW_REACT",
     "SVELTE_FLOW_VERSION",
     "REACT_FLOW_VERSION",
     "VERCEL_ENV",
+    "VERCEL_URL",
     "VERCEL_GIT_COMMIT_REF",
-    "NOTION_API_SECRET",
-    "BLOB_READ_WRITE_TOKEN"
+    "ENABLE_EXPERIMENTAL_COREPACK",
+    "UPSTASH_REDIS_REST_URL",
+    "UPSTASH_REDIS_REST_TOKEN"
   ],
   "globalDependencies": [".env"],
   "tasks": {
     "build": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["^build", "lint"],
       "outputs": [
         ".next/**",
         "!.next/cache/**",
@@ -27,70 +25,58 @@
         ".vercel/**",
         "public/**"
       ],
-      "inputs": [
-        "$TURBO_DEFAULT$",
-        ".env.production.local",
-        ".env.local",
-        ".env.production",
-        ".env"
-      ]
+      "inputs": ["$TURBO_DEFAULT$", ".env.local", ".env"]
     },
     "reactflow-website#build": {
-      "dependsOn": ["^build", "^ui-components#generate-registry", "^example-apps#build"],
+      "dependsOn": [
+        "^build",
+        "^ui-components#generate-registry",
+        "^example-apps#build",
+        "lint"
+      ],
       "outputs": [".next/**", "!.next/cache/**"],
       "inputs": [
         "$TURBO_DEFAULT$",
-        ".env.production.local",
         ".env.local",
-        ".env.production",
         ".env",
         "VERCEL_ENV",
         "VERCEL_GIT_COMMIT_REF"
       ]
     },
     "svelteflow-website#build": {
-      "dependsOn": ["^build", "^example-apps#build"],
+      "dependsOn": ["^build", "^example-apps#build", "lint"],
       "outputs": [".next/**", "!.next/cache/**"],
       "inputs": [
         "$TURBO_DEFAULT$",
-        ".env.production.local",
         ".env.local",
-        ".env.production",
-        ".env"
+        ".env",
+        "VERCEL_ENV",
+        "VERCEL_GIT_COMMIT_REF"
       ]
     },
     "xyflow-website#build": {
-      "dependsOn": ["^build", "^example-apps#build"],
+      "dependsOn": ["^build", "^example-apps#build", "lint"],
       "outputs": [".next/**", "!.next/cache/**"],
-      "inputs": [
-        "$TURBO_DEFAULT$",
-        ".env.production.local",
-        ".env.local",
-        ".env.production",
-        ".env"
-      ]
+      "inputs": ["$TURBO_DEFAULT$", ".env.local", ".env"]
     },
     "ui-components#generate-registry": {
       "outputs": ["public/**"],
       "inputs": ["$TURBO_DEFAULT$"]
     },
+    "build:debug": {
+      "dependsOn": ["^build"],
+      "outputs": [".next/**", "!.next/cache/**"],
+      "inputs": ["$TURBO_DEFAULT$", ".env.local", ".env"]
+    },
     "lint": {
-      "inputs": [
-        "$TURBO_DEFAULT$",
-        ".env.development.local",
-        ".env.local",
-        ".env.development",
-        ".env"
-      ]
+      "inputs": ["$TURBO_DEFAULT$", ".env.local", ".env"]
     },
     "dev": {
       "cache": false,
       "persistent": true,
       "inputs": [
         "$TURBO_DEFAULT$",
-        ".env.development.local",
         ".env.local",
-        ".env.development",
         ".env",
         "VERCEL_ENV",
         "VERCEL_GIT_COMMIT_REF"
@@ -98,6 +84,9 @@
     },
     "test": {
       "inputs": ["$TURBO_DEFAULT$", ".env.test.local", ".env.test", ".env"]
+    },
+    "check-types": {
+      "inputs": ["$TURBO_DEFAULT$"]
     }
   }
 }

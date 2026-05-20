@@ -74,6 +74,7 @@ export default function EdgeToolbarExample() {
       defaultEdges={initialEdges}
       fitView
       edgeTypes={edgeTypes}
+      colorMode="system"
     >
       <Background />
       <MiniMap />

@@ -42,6 +42,7 @@
   {defaultEdgeOptions}
   connectionLineType={ConnectionLineType.Straight}
   fitView
+  colorMode="system"
 >
   <Background />
 </SvelteFlow>

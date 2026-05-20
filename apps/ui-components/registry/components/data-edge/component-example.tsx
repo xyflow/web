@@ -30,3 +30,5 @@ export const CounterNode = memo(({ id, data }: NodeProps<CounterNodeType>) => {
     </BaseNode>
   );
 });
+
+CounterNode.displayName = "CounterNode";

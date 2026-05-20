@@ -46,6 +46,7 @@ const TouchDeviceFlow = () => {
       onEdgesChange={onEdgesChange}
       className="touch-flow"
       fitView
+      colorMode="system"
     >
       <Background />
     </ReactFlow>

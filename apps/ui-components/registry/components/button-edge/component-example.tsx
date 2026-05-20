@@ -19,4 +19,6 @@ const ButtonEdgeDemo = memo((props: EdgeProps) => {
   );
 });
 
+ButtonEdgeDemo.displayName = "ButtonEdgeDemo";
+
 export default ButtonEdgeDemo;

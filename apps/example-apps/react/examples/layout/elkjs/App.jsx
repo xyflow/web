@@ -1,6 +1,6 @@
 import { initialNodes, initialEdges } from './initialElements.js';
 import ELK from 'elkjs/lib/elk.bundled.js';
-import React, { useCallback, useLayoutEffect } from 'react';
+import { useCallback, useLayoutEffect } from 'react';
 import {
   Background,
   ReactFlow,
@@ -97,6 +97,7 @@ function LayoutFlow() {
       onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
       fitView
+      colorMode="system"
     >
       <Panel position="top-right">
         <button

@@ -1,5 +1,9 @@
-import { Button, Heading, Link, Text, cn } from '@xyflow/xy-ui';
-import { Handle, Node, Position } from '@xyflow/react';
+import { Button } from 'xy-shared/components/ui/button';
+import { Heading } from 'xy-shared/components/ui/heading';
+import { Link } from 'xy-shared/components/ui/link';
+import { Text } from 'xy-shared/components/ui/text';
+import { cn } from 'xy-shared/lib/utils';
+import { Handle, Node, NodeProps, Position } from '@xyflow/react';
 
 export const nodeTypes = {
   action: ActionNode,
@@ -22,23 +26,25 @@ export const action = ({ id, position, action, content }: ActionParams) => ({
   data: { content, action },
 });
 
-export function ActionNode({ data }) {
+export function ActionNode({
+  data,
+}: NodeProps<Node<{ action: () => void; content?: React.ReactNode }>>) {
   return (
     <Button
-      className="nopan nodrag relative bg-primary text-white flex items-center justify-center rounded-full shadow-md"
+      className="nopan nodrag bg-primary relative flex items-center justify-center rounded-full text-white shadow-md"
       onClick={data.action}
     >
       <Handle
         type="target"
         position={Position.Top}
-        className="invisible absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        className="invisible absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
       />
       <Handle
         type="source"
         position={Position.Bottom}
-        className="invisible absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        className="invisible absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
       />
-      {data?.content}
+      {data.content}
     </Button>
   );
 }
@@ -55,6 +61,12 @@ export type SectionParams = {
     | { content: React.ReactNode; onClick: () => void }[];
   position: { x: number; y: number };
 } & Omit<Node, 'id' | 'type' | 'data' | 'position'>;
+
+type SectionNodeData = {
+  content: React.ReactNode;
+  links: React.ReactElement | false | undefined;
+  action: React.ReactElement | null;
+};
 
 export const section = ({
   id,
@@ -74,18 +86,14 @@ export const section = ({
         {title && (
           <Heading
             size={isHero ? 'lg' : 'md'}
-            className={cn(
-              'relative',
-              isHero && 'text-center',
-              content && 'mb-6',
-            )}
+            className={cn('relative', isHero && 'text-center', content && 'mb-6')}
           >
             {isHero && (
               <div
-                className="absolute opacity-10 w-[150%] h-[150%] -left-1/3 -top-1/3 pointer-events-none"
+                className="pointer-events-none absolute -left-1/3 -top-1/3 h-[150%] w-[150%] opacity-10 dark:opacity-[0.05]"
                 style={{
                   background:
-                    'radial-gradient(rgba(68,91,222,1) 0%, rgba(215,78,243,1) 25%, rgba(255,255,255,1) 50%)',
+                    'radial-gradient(rgba(68,91,222,1) 0%, rgba(215,78,243,1) 25%, hsl(var(--background)) 60%)',
                 }}
               />
             )}
@@ -98,12 +106,7 @@ export const section = ({
     links: links && (
       <div className="flex gap-4">
         {links.map(({ text, href }, i) => (
-          <Link
-            className="nodrag nopan"
-            key={`${href}-${i}`}
-            href={href}
-            size="xs"
-          >
+          <Link className="nodrag nopan" key={`${href}-${i}`} href={href} size="xs">
             {text}
           </Link>
         ))}
@@ -118,7 +121,7 @@ export const section = ({
         <div className="flex gap-2">
           {action.map(({ content, onClick }, i) => (
             <Button
-              className="nodrag nopan inline-flex items-center gap-1 group"
+              className="nodrag nopan group inline-flex items-center gap-1"
               key={i}
               onClick={onClick}
             >
@@ -128,7 +131,7 @@ export const section = ({
         </div>
       ) : typeof action === 'object' ? (
         <Button
-          className="nodrag nopan inline-flex items-center gap-1 group"
+          className="nodrag nopan group inline-flex items-center gap-1"
           onClick={action.onClick}
         >
           <>{action.content}</>
@@ -139,24 +142,24 @@ export const section = ({
   ...delegated,
 });
 
-function SectionNode({ data }) {
+function SectionNode({ data }: NodeProps<Node<SectionNodeData>>) {
   return (
-    <div className="relative bg-white p-8 rounded-lg shadow-md max-w-lg flex flex-col gap-4">
+    <div className="bg-background relative flex max-w-lg flex-col gap-4 rounded-lg p-8 shadow-md">
       <Handle
         type="target"
         position={Position.Top}
-        className="invisible absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        className="invisible absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
       />
       <Handle
         type="source"
         position={Position.Bottom}
-        className="invisible absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        className="invisible absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
       />
-      {data?.content}
-      {(data?.links || data?.action) && (
-        <div className="flex gap-4 justify-between items-center justify-items-end">
-          {data?.links ?? <div />}
-          {data?.action}
+      {data.content}
+      {(data.links || data.action) && (
+        <div className="flex items-center justify-between justify-items-end gap-4">
+          {data.links ?? <div />}
+          {data.action}
         </div>
       )}
     </div>
@@ -185,25 +188,25 @@ export const project = ({
   ...delegated,
 });
 
-function ProjectNode({ data }) {
+function ProjectNode({ data }: NodeProps<Node<ProjectParams>>) {
   return (
     <div
       className={cn(
-        'relative bg-white p-4 rounded-lg shadow-md max-w-md',
+        'bg-background relative max-w-md rounded-lg p-4 shadow-md',
         data?.isCategory && 'bg-primary text-white',
       )}
     >
       <Handle
         type="target"
         position={Position.Top}
-        className="invisible absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        className="invisible absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
       />
       <Handle
         type="source"
         position={Position.Bottom}
-        className="invisible absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        className="invisible absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
       />
-      <Text size={data?.isCategory ? 'sm' : 'xs'}>{data?.label}</Text>
+      <Text size={data.isCategory ? 'sm' : 'xs'}>{data.label}</Text>
     </div>
   );
 }
@@ -221,18 +224,18 @@ export const chatBubble = ({ id, message, position }: ChatBubbleParams) => ({
   position,
 });
 
-function ChatBubble({ data }) {
+function ChatBubble({ data }: NodeProps<Node<ChatBubbleParams>>) {
   return (
-    <div className="max-w-48 p-2 bg-blue-500 text-white rounded-tr-lg rounded-b-lg shadow-md">
+    <div className="max-w-48 rounded-b-lg rounded-tr-lg bg-blue-500 p-2 text-white shadow-md">
       <Handle
         type="target"
         position={Position.Top}
-        className="invisible absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        className="invisible absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
       />
       <Handle
         type="source"
         position={Position.Bottom}
-        className="invisible absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        className="invisible absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
       />
       <Text size="xs">{data.message}</Text>
     </div>

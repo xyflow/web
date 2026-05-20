@@ -86,6 +86,7 @@ export default function NodeToolbarExample() {
       fitView
       fitViewOptions={{ padding: 0.5 }}
       nodeTypes={nodeTypes}
+      colorMode="system"
     >
       <Background variant={BackgroundVariant.Dots} />
       <MiniMap />

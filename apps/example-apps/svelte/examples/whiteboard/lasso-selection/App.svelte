@@ -28,7 +28,7 @@
   let partial = $state(false);
 </script>
 
-<SvelteFlow bind:nodes bind:edges fitView>
+<SvelteFlow bind:nodes bind:edges fitView colorMode="system">
   <Background />
   <MiniMap />
   <Controls />

@@ -8,11 +8,11 @@ export const NodeBadgeDemo = () => {
     <BaseNode>
       <NodeAppendix position="top" className="border-none bg-transparent p-0">
         <Badge
-          className="gap-1 self-end border-green-400 bg-background p-1 text-xs text-green-500"
+          className="bg-background gap-1 self-end border-green-400 p-1 text-xs text-green-500"
           variant="outline"
         >
           <BadgeCheckIcon className="size-4" />
-          I'm a node badge!
+          I&apos;m a node badge!
         </Badge>
       </NodeAppendix>
       <BaseNodeContent>
@@ -22,3 +22,5 @@ export const NodeBadgeDemo = () => {
     </BaseNode>
   );
 };
+
+NodeBadgeDemo.displayName = "NodeBadgeDemo";

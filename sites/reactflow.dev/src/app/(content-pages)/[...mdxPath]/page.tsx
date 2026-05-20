@@ -1,20 +1,17 @@
 import { generateStaticParamsFor, importPage } from 'nextra/pages';
 import { normalizePages } from 'nextra/normalize-pages';
 import { getPageMap } from 'nextra/page-map';
-import { BaseBlogPostLayout, CaseStudyLayoutWrapper } from 'xy-shared';
 
+import { BaseBlogPostLayout } from 'xy-shared/layouts/blog-post-base';
+import { CaseStudyLayoutWrapper } from 'xy-shared/layouts/case-study-wrapper';
 import { useMDXComponents as getMdxComponents } from '@/mdx-components';
-import { getWhatsNew } from '@/utils';
+import { getWhatsNew } from 'xy-shared/lib/get-whats-new';
 
-type PageProps = Readonly<{
-  params: Promise<{
-    mdxPath: string[];
-  }>;
-}>;
+type Props = PageProps<'/[...mdxPath]'>;
 
-const { wrapper: Wrapper } = getMdxComponents();
+const { wrapper: Wrapper, h1: H1 } = getMdxComponents();
 
-export default async function Page(props: PageProps) {
+export default async function Page(props: Props) {
   const params = await props.params;
   const result = await importPage(params.mdxPath);
   const { default: MDXContent, toc, metadata, sourceCode } = result;
@@ -23,6 +20,15 @@ export default async function Page(props: PageProps) {
   return (
     <Wrapper toc={toc} metadata={metadata} sourceCode={sourceCode}>
       {(async function (slug: string[]) {
+        const isExamples = slug[0] === 'examples';
+        if (isExamples) {
+          return (
+            <>
+              <H1>{metadata.title}</H1>
+              {mdx}
+            </>
+          );
+        }
         const isTutorials = slug[0] === 'learn' && slug[1] === 'tutorials';
         if (isTutorials) {
           return (
@@ -38,12 +44,22 @@ export default async function Page(props: PageProps) {
             list: pageMap.filter((item) => 'name' in item && item.name !== 'index'),
             route: ['', ...slug].join('/'),
           });
+
+          const prev =
+            activeIndex === 0
+              ? flatDocsDirectories[flatDocsDirectories.length - 1]
+              : flatDocsDirectories[activeIndex - 1];
+          const next =
+            activeIndex === flatDocsDirectories.length - 1
+              ? flatDocsDirectories[0]
+              : flatDocsDirectories[activeIndex + 1];
+
           return (
             <CaseStudyLayoutWrapper
               // @ts-expect-error -- fixme
               frontMatter={metadata}
-              prev={flatDocsDirectories[activeIndex - 1]}
-              next={flatDocsDirectories[activeIndex + 1]}
+              prev={prev}
+              next={next}
             >
               {mdx}
             </CaseStudyLayoutWrapper>
@@ -80,14 +96,10 @@ export default async function Page(props: PageProps) {
   );
 }
 
-export async function generateMetadata(props: PageProps) {
+export async function generateMetadata(props: Props) {
   const params = await props.params;
   const { metadata } = await importPage(params.mdxPath);
   return metadata;
 }
 
 export const generateStaticParams = generateStaticParamsFor('mdxPath');
-
-export const dynamic = 'force-static';
-
-export const dynamicParams = false;

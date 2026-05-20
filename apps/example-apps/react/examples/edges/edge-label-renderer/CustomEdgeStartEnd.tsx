@@ -1,4 +1,4 @@
-import React, { type FC } from 'react';
+import { type FC } from 'react';
 import {
   getBezierPath,
   EdgeLabelRenderer,
@@ -13,11 +13,13 @@ function EdgeLabel({ transform, label }: { transform: string; label: string }) {
     <div
       style={{
         position: 'absolute',
-        background: 'rgba(255, 255, 255, 0.75)',
+        background: 'var(--xy-theme-panel-bg)',
         padding: '5px 10px',
         color: '#ff5050',
         fontSize: 12,
         fontWeight: 700,
+        border: '1px solid var(--xy-theme-subtle-border)',
+        borderRadius: 6,
         transform,
       }}
       className="nodrag nopan"
@@ -27,9 +29,7 @@ function EdgeLabel({ transform, label }: { transform: string; label: string }) {
   );
 }
 
-const CustomEdge: FC<
-  EdgeProps<Edge<{ startLabel: string; endLabel: string }>>
-> = ({
+const CustomEdge: FC<EdgeProps<Edge<{ startLabel: string; endLabel: string }>>> = ({
   id,
   sourceX,
   sourceY,

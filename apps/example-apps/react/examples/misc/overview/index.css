@@ -114,9 +114,9 @@ body {
 .button-edge__button {
   width: 30px;
   height: 30px;
-  border: 5px solid #f7f9fb;
+  border: 5px solid var(--xy-background-color);
   color: var(--xy-edge-node-color-default);
-  background-color: #f3f3f4;
+  background-color: var(--xy-theme-muted-bg);
   cursor: pointer;
   border-radius: 50%;
   font-size: 12px;

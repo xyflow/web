@@ -13,13 +13,7 @@ import {
 import '@xyflow/react/dist/style.css';
 
 import slides from './slides';
-import {
-  Slide,
-  SLIDE_WIDTH,
-  SLIDE_HEIGHT,
-  SLIDE_PADDING,
-  type SlideData,
-} from './Slide';
+import { Slide, SLIDE_WIDTH, SLIDE_HEIGHT, SLIDE_PADDING, type SlideData } from './Slide';
 
 const slidesToElements = () => {
   const start = Object.keys(slides)[0];

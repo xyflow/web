@@ -1,5 +1,5 @@
 import Dagre from '@dagrejs/dagre';
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import {
   ReactFlow,
   ReactFlowProvider,
@@ -66,6 +66,7 @@ const LayoutFlow = () => {
       onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
       fitView
+      colorMode="system"
     >
       <Panel position="top-right">
         <button onClick={() => onLayout('TB')}>vertical layout</button>

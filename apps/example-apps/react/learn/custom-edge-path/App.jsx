@@ -28,6 +28,7 @@ function Flow() {
       defaultEdges={initialEdges}
       edgeTypes={edgeTypes}
       fitView
+      colorMode="system"
     />
   );
 }

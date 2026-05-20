@@ -90,6 +90,7 @@ const CustomNodeFlow = () => {
       onConnect={onConnect}
       nodeTypes={nodeTypes}
       fitView
+      colorMode="system"
     >
       <Controls />
       <Background />

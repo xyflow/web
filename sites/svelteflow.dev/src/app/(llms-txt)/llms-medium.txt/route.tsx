@@ -2,10 +2,13 @@
 
 import { buildLLMSTxt } from '../utils';
 
-export const dynamic = 'force-static';
+async function getCachedBody() {
+  'use cache';
+  return buildLLMSTxt(['learn']);
+}
 
 export async function GET() {
-  const body = await buildLLMSTxt(['learn']);
+  const body = await getCachedBody();
 
   return new Response(body, {
     status: 200,

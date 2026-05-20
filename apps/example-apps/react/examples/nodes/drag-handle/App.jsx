@@ -1,10 +1,4 @@
-import React from 'react';
-import {
-  ReactFlow,
-  useNodesState,
-  useEdgesState,
-  Background,
-} from '@xyflow/react';
+import { ReactFlow, useNodesState, useEdgesState, Background } from '@xyflow/react';
 
 import DragHandleNode from './DragHandleNode';
 import '@xyflow/react/dist/style.css';
@@ -36,6 +30,7 @@ const DragHandleFlow = () => {
       onEdgesChange={onEdgesChange}
       nodeTypes={nodeTypes}
       fitView
+      colorMode="system"
     >
       <Background />
     </ReactFlow>

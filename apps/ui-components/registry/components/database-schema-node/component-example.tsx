@@ -49,4 +49,6 @@ const DatabaseSchemaDemo = memo(({ data }: DatabaseSchemaNodeData) => {
   );
 });
 
+DatabaseSchemaDemo.displayName = "DatabaseSchemaDemo";
+
 export default DatabaseSchemaDemo;

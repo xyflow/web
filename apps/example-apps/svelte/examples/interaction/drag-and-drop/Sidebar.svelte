@@ -44,12 +44,12 @@
 <style>
   aside {
     width: 100%;
-    background: #fff;
+    background: var(--xy-theme-panel-bg);
+    color: var(--xy-theme-panel-text);
     font-size: 12px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    align-items: stretch;
   }
 
   .label {
@@ -59,13 +59,16 @@
 
   .nodes-container {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
   }
 
   .node {
-    margin: 0.5rem;
-    border: 1px solid #111;
+    margin: 0;
+    border: 1px solid var(--xy-theme-subtle-border);
+    background: var(--xy-node-background-color-default);
+    color: var(--xy-theme-panel-text);
     padding: 0.5rem 1rem;
     font-weight: 700;
     border-radius: 5px;

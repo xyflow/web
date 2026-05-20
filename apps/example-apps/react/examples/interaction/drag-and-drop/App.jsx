@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from 'react';
+import { useRef, useCallback } from 'react';
 import {
   ReactFlow,
   ReactFlowProvider,
@@ -88,6 +88,7 @@ const DnDFlow = () => {
           onDragStart={onDragStart}
           onDragOver={onDragOver}
           fitView
+          colorMode="system"
         >
           <Controls />
           <Background />

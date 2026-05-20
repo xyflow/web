@@ -12,10 +12,9 @@ tags: ['react-flow', 'web-audio-api', 'how-to']
 image: /img/tutorials/webaudio/web-audio-blog-thumb.png
 ---
 
-import { Emoji } from '@xyflow/xy-ui';
-import { Callout, Tabs } from 'nextra/components';
-import { Embed, Image } from 'xy-shared';
-import { RemoteCodeViewer } from 'xy-shared/server';
+import { Emoji } from 'xy-shared/components/ui/emoji';
+import { Embed } from 'xy-shared/components/blog-post/embeds';
+import { Image } from 'xy-shared/components/blog-post/embeds';
 
 Today we'll be looking at how to create an interactive audio playground using React Flow
 and the Web Audio API. We'll start from scratch, first learning about the Web Audio API
@@ -27,7 +26,6 @@ implementing custom nodes, and adding interactivity.
   alt="A screenshot of bleep.cafe, a visual audio programming environment. In it,
     there are four nodes connected together: an xy pad, an oscillator node, a
     volume node, and a master output."
-  wide
   caption="This is bleep.cafe. We're going to learn everything we need to know to
     build something just like it!"
 />
@@ -624,7 +622,6 @@ const useStore = createWithEqualityFn((set, get) => ({
   <RemoteCodeViewer
     route="tutorials/webaudio/custom-node"
     framework="react"
-    
   />
 <Callout type="info">
 Stuck on styling?

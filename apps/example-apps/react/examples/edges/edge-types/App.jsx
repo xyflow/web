@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import {
   ReactFlow,
   useNodesState,
@@ -87,10 +87,7 @@ const initialEdges = [
 const EdgeTypesFlow = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
-  const onConnect = useCallback(
-    (params) => setEdges((eds) => addEdge(params, eds)),
-    [],
-  );
+  const onConnect = useCallback((params) => setEdges((eds) => addEdge(params, eds)), []);
 
   return (
     <ReactFlow
@@ -101,6 +98,7 @@ const EdgeTypesFlow = () => {
       onConnect={onConnect}
       fitView
       minZoom={0.2}
+      colorMode="system"
     >
       <Controls />
       <Background />

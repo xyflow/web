@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react';
+import { useCallback, useRef } from 'react';
 import {
   Background,
   ReactFlow,
@@ -30,10 +30,7 @@ const AddNodeOnEdgeDrop = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   const { screenToFlowPosition } = useReactFlow();
-  const onConnect = useCallback(
-    (params) => setEdges((eds) => addEdge(params, eds)),
-    [],
-  );
+  const onConnect = useCallback((params) => setEdges((eds) => addEdge(params, eds)), []);
 
   const onConnectEnd = useCallback(
     (event, connectionState) => {
@@ -74,6 +71,7 @@ const AddNodeOnEdgeDrop = () => {
         fitView
         fitViewOptions={{ padding: 2 }}
         nodeOrigin={nodeOrigin}
+        colorMode="system"
       >
         <Background />
       </ReactFlow>

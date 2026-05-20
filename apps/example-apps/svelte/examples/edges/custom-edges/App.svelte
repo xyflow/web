@@ -38,6 +38,7 @@
   {edgeTypes}
   connectionMode={ConnectionMode.Loose}
   fitView
+  colorMode="system"
 >
   <Controls />
   <Background />

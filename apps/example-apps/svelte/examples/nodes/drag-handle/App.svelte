@@ -32,7 +32,7 @@
   let edges = $state.raw<Edge[]>([]);
 </script>
 
-<SvelteFlow bind:nodes bind:edges {nodeTypes} fitView>
+<SvelteFlow bind:nodes bind:edges {nodeTypes} fitView colorMode="system">
   <Controls />
   <Background />
 </SvelteFlow>

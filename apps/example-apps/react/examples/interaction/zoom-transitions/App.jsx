@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import {
   ReactFlow,
   addEdge,
@@ -52,6 +52,7 @@ const ZoomTransition = () => {
       onEdgesChange={onEdgesChange}
       onConnect={onConnect}
       fitView
+      colorMode="system"
     >
       <Panel position="top-right">
         <button className="xy-theme__button" onClick={() => zoomIn({ duration: 800 })}>

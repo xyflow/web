@@ -1,0 +1,1 @@
+export { default } from 'xy-shared/routes/pro/(auth)/subscribe/non-commercial-edu-oss/signup';

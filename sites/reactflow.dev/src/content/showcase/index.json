@@ -1,0 +1,1422 @@
+[
+  {
+    "id": "17bf4645-2242-8177-98eb-fee8103734f0",
+    "title": "Agentok",
+    "url": "https://agentok.ai/",
+    "demoUrl": null,
+    "repoUrl": "https://github.com/dustland/agentok",
+    "openSource": true,
+    "description": "Visual tools for multi-agent development built on Microsoft’s AutoGen framework",
+    "image": "17bf4645-2242-8177-98eb-fee8103734f0.png",
+    "tags": [
+      {
+        "id": "ede4f8e8-84cd-4a5a-87a5-d4196717e98b",
+        "name": "Workflow Automation",
+        "color": "green"
+      },
+      {
+        "id": "801ce7a8-ea72-4d11-873f-8604a0d1bd1e",
+        "name": "AI",
+        "color": "green"
+      },
+      {
+        "id": "open-source",
+        "name": "Open Source"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "189f4645-2242-813a-ae74-ecca646b4c65",
+    "title": "Ameliorate",
+    "url": "https://ameliorate.app/playground",
+    "demoUrl": null,
+    "repoUrl": "https://github.com/amelioro/ameliorate",
+    "openSource": true,
+    "description": "A flowchart builder to solve problems efficiently.",
+    "image": "189f4645-2242-813a-ae74-ecca646b4c65.png",
+    "tags": [
+      {
+        "id": "open-source",
+        "name": "Open Source"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "17bf4645-2242-81e0-83d0-d7f1c0cde50d",
+    "title": "AppBlocks",
+    "url": "https://appblocks.io",
+    "demoUrl": "https://app.appblocks.io/",
+    "repoUrl": null,
+    "openSource": false,
+    "description": "Drag and Drop Node Based Editor to Design Firmware for IoT Devices",
+    "image": "17bf4645-2242-81e0-83d0-d7f1c0cde50d.png",
+    "tags": [
+      {
+        "id": "ede4f8e8-84cd-4a5a-87a5-d4196717e98b",
+        "name": "Workflow Automation",
+        "color": "green"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "17bf4645-2242-8194-96a4-fde9fa296be5",
+    "title": "Arroyo",
+    "url": "https://arroyo.dev/",
+    "demoUrl": null,
+    "repoUrl": "https://github.com/ArroyoSystems/arroyo",
+    "openSource": true,
+    "description": "Distributed stream processing engine written in Rust",
+    "image": "17bf4645-2242-8194-96a4-fde9fa296be5.png",
+    "tags": [
+      {
+        "id": "basU",
+        "name": "Developer Tool",
+        "color": "green"
+      },
+      {
+        "id": "open-source",
+        "name": "Open Source"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "17bf4645-2242-8185-b64a-e2b2ca7fab1f",
+    "title": "Attio",
+    "url": "https://attio.com/product/automations",
+    "demoUrl": null,
+    "repoUrl": null,
+    "openSource": false,
+    "description": "Build out workflows to automate common actions across CRM processes",
+    "image": "17bf4645-2242-8185-b64a-e2b2ca7fab1f.png",
+    "tags": [
+      {
+        "id": "ede4f8e8-84cd-4a5a-87a5-d4196717e98b",
+        "name": "Workflow Automation",
+        "color": "green"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "265f4645-2242-8139-a1da-e7b1d55c2df8",
+    "title": "Bethany Robertson",
+    "url": "www.brober.xyz",
+    "demoUrl": "https://www.brober.xyz/archiveboard",
+    "repoUrl": null,
+    "openSource": false,
+    "description": "Node based archive page for a portfolio.",
+    "image": "265f4645-2242-8139-a1da-e7b1d55c2df8.png",
+    "tags": [
+      {
+        "id": "R>gY",
+        "name": "Image Processing",
+        "color": "green"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "17bf4645-2242-81a1-b11d-e63e9db6e651",
+    "title": "Bit Cloud",
+    "url": "https://bit.cloud/products/graph",
+    "demoUrl": "https://bit.cloud/bitdev/vue/~graph?depTypes=dev,runtime,peer",
+    "repoUrl": null,
+    "openSource": false,
+    "description": "Visualizer for component dependencies and hierarchies",
+    "image": "17bf4645-2242-81a1-b11d-e63e9db6e651.png",
+    "tags": [
+      {
+        "id": "basU",
+        "name": "Developer Tool",
+        "color": "green"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "2d3f4645-2242-81b4-a18c-faf61cb31eb5",
+    "title": "Bleu AI",
+    "url": "https://buildbleu.com/",
+    "demoUrl": "https://buildbleu.com/",
+    "repoUrl": null,
+    "openSource": false,
+    "description": "Run all the popular LLMs alongside video, image, and audio generation models in easy-to-build and easy-to-use workflows.",
+    "image": "2d3f4645-2242-81b4-a18c-faf61cb31eb5.png",
+    "tags": [
+      {
+        "id": "R>gY",
+        "name": "Image Processing",
+        "color": "green"
+      },
+      {
+        "id": "basU",
+        "name": "Developer Tool",
+        "color": "green"
+      },
+      {
+        "id": "801ce7a8-ea72-4d11-873f-8604a0d1bd1e",
+        "name": "AI",
+        "color": "green"
+      },
+      {
+        "id": "ede4f8e8-84cd-4a5a-87a5-d4196717e98b",
+        "name": "Workflow Automation",
+        "color": "green"
+      },
+      {
+        "id": "0ede1685-e605-44fd-a5db-7178839768c4",
+        "name": "Audio",
+        "color": "green"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "17bf4645-2242-8150-b217-e57fd057a4d4",
+    "title": "Cascade",
+    "url": "https://www.cascade.io/product",
+    "demoUrl": null,
+    "repoUrl": null,
+    "openSource": false,
+    "description": "No-code data transformation toolkit for translating data into tables, charts or interactive apps",
+    "image": "17bf4645-2242-8150-b217-e57fd057a4d4.png",
+    "tags": [],
+    "published": true
+  },
+  {
+    "id": "17bf4645-2242-819e-ab41-ce4e5863dfba",
+    "title": "Chainner",
+    "url": "https://chainner.app/",
+    "demoUrl": null,
+    "repoUrl": "https://github.com/chaiNNer-org/chaiNNer",
+    "openSource": true,
+    "description": "Node-based UI for chaining image processing workflows powered by neural networks",
+    "image": "17bf4645-2242-819e-ab41-ce4e5863dfba.png",
+    "tags": [
+      {
+        "id": "R>gY",
+        "name": "Image Processing",
+        "color": "green"
+      },
+      {
+        "id": "open-source",
+        "name": "Open Source"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "17bf4645-2242-8169-adbe-f160b3346712",
+    "title": "ChartDB",
+    "url": "https://chartdb.io",
+    "demoUrl": "https://app.chartdb.io",
+    "repoUrl": "https://github.com/chartdb/chartdb",
+    "openSource": true,
+    "description": "Open-source database diagrams editor, visualize and design your DB with a single query.",
+    "image": "17bf4645-2242-8169-adbe-f160b3346712.png",
+    "tags": [
+      {
+        "id": "801ce7a8-ea72-4d11-873f-8604a0d1bd1e",
+        "name": "AI",
+        "color": "green"
+      },
+      {
+        "id": "open-source",
+        "name": "Open Source"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "189f4645-2242-8185-a5fe-ca2dfcebe5b1",
+    "title": "CircuLearn",
+    "url": "https://circulearn.software/simulator",
+    "demoUrl": null,
+    "repoUrl": "https://github.com/amin0075/CircuLearn",
+    "openSource": true,
+    "description": "An interactive simulator designed to teach and demonstrate fundamental concepts in logic circuits.",
+    "image": "189f4645-2242-8185-a5fe-ca2dfcebe5b1.png",
+    "tags": [
+      {
+        "id": "open-source",
+        "name": "Open Source"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "28ef4645-2242-817e-948e-edaaa69b355b",
+    "title": "Clay Read",
+    "url": "https://clayread.com",
+    "demoUrl": null,
+    "repoUrl": null,
+    "openSource": false,
+    "description": "Visualize Your Reading Journey with a Bookgram",
+    "image": "28ef4645-2242-817e-948e-edaaa69b355b.png",
+    "tags": [
+      {
+        "id": "801ce7a8-ea72-4d11-873f-8604a0d1bd1e",
+        "name": "AI",
+        "color": "green"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "17bf4645-2242-813f-8c1c-d24f385facce",
+    "title": "Controller Lab",
+    "url": "https://controllerlab.io/",
+    "demoUrl": null,
+    "repoUrl": null,
+    "openSource": false,
+    "description": "Drag-and-drop tool for remapping input devices",
+    "image": "17bf4645-2242-813f-8c1c-d24f385facce.png",
+    "tags": [],
+    "published": true
+  },
+  {
+    "id": "2aef4645-2242-8177-a4ed-f82b4675940f",
+    "title": "Dafthunk",
+    "url": "https://www.dafthunk.com/",
+    "demoUrl": "https://github.com/dafthunk-com/dafthunk",
+    "repoUrl": "https://app.dafthunk.com/",
+    "openSource": true,
+    "description": "Design, visualize, and deploy automations with React Flow and Cloudflare Workflows.",
+    "image": "2aef4645-2242-8177-a4ed-f82b4675940f.png",
+    "tags": [
+      {
+        "id": "0ede1685-e605-44fd-a5db-7178839768c4",
+        "name": "Audio",
+        "color": "green"
+      },
+      {
+        "id": "ede4f8e8-84cd-4a5a-87a5-d4196717e98b",
+        "name": "Workflow Automation",
+        "color": "green"
+      },
+      {
+        "id": "801ce7a8-ea72-4d11-873f-8604a0d1bd1e",
+        "name": "AI",
+        "color": "green"
+      },
+      {
+        "id": "72571599-6aee-4f94-a304-e09b203c9d10",
+        "name": "3D",
+        "color": "green"
+      },
+      {
+        "id": "basU",
+        "name": "Developer Tool",
+        "color": "green"
+      },
+      {
+        "id": "R>gY",
+        "name": "Image Processing",
+        "color": "green"
+      },
+      {
+        "id": "open-source",
+        "name": "Open Source"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "17bf4645-2242-8177-b543-d9aaad9ab7fa",
+    "title": "Datablocks",
+    "url": "https://datablocks.pro",
+    "demoUrl": "https://editor.datablocks.pro/demo",
+    "repoUrl": null,
+    "openSource": false,
+    "description": "Editor for exploring, analyzing and transforming data. Built by the creators of React Flow.",
+    "image": "17bf4645-2242-8177-b543-d9aaad9ab7fa.png",
+    "tags": [],
+    "published": true
+  },
+  {
+    "id": "26ef4645-2242-81c5-904a-ec683879d260",
+    "title": "Datadef",
+    "url": "https://datadef.io",
+    "demoUrl": null,
+    "repoUrl": null,
+    "openSource": false,
+    "description": "App that helps to visualize data lineage, define table relationships, and generate documentation automatically.",
+    "image": "26ef4645-2242-81c5-904a-ec683879d260.png",
+    "tags": [
+      {
+        "id": "basU",
+        "name": "Developer Tool",
+        "color": "green"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "259f4645-2242-81f8-99a6-f192223acfe9",
+    "title": "Datascale",
+    "url": "https://getdatascale.com",
+    "demoUrl": "https://youtu.be/WExz7aw5sKQ",
+    "repoUrl": null,
+    "openSource": false,
+    "description": "The AI-native data design tool for engineers",
+    "image": "259f4645-2242-81f8-99a6-f192223acfe9.png",
+    "tags": [
+      {
+        "id": "basU",
+        "name": "Developer Tool",
+        "color": "green"
+      },
+      {
+        "id": "801ce7a8-ea72-4d11-873f-8604a0d1bd1e",
+        "name": "AI",
+        "color": "green"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "1b7f4645-2242-81ae-b341-d01e9e36aaca",
+    "title": "DBDraw",
+    "url": "https://dbdraw.vercel.app/",
+    "demoUrl": "https://dbdraw.vercel.app/diagram/67cd79619257303d2b4022ab",
+    "repoUrl": "https://github.com/mrudulkolambe/dbdraw",
+    "openSource": true,
+    "description": "A developer tool designed for backend developers to visualize database schemas and seamlessly export or sync them with their projects.",
+    "image": "1b7f4645-2242-81ae-b341-d01e9e36aaca.png",
+    "tags": [
+      {
+        "id": "basU",
+        "name": "Developer Tool",
+        "color": "green"
+      },
+      {
+        "id": "open-source",
+        "name": "Open Source"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "17bf4645-2242-818d-9e74-e8f9cf0d0578",
+    "title": "Dify",
+    "url": "https://dify.ai/",
+    "demoUrl": null,
+    "repoUrl": "https://github.com/langgenius/dify",
+    "openSource": false,
+    "description": "An open-source LLM app development platform",
+    "image": "17bf4645-2242-818d-9e74-e8f9cf0d0578.png",
+    "tags": [
+      {
+        "id": "801ce7a8-ea72-4d11-873f-8604a0d1bd1e",
+        "name": "AI",
+        "color": "green"
+      },
+      {
+        "id": "ede4f8e8-84cd-4a5a-87a5-d4196717e98b",
+        "name": "Workflow Automation",
+        "color": "green"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "17bf4645-2242-817a-8f0a-e8b1c5881ebb",
+    "title": "Docugram",
+    "url": "https://docugram.app/",
+    "demoUrl": null,
+    "repoUrl": null,
+    "openSource": false,
+    "description": "App that transforms documents into dynamic flow charts.",
+    "image": "17bf4645-2242-817a-8f0a-e8b1c5881ebb.png",
+    "tags": [
+      {
+        "id": "801ce7a8-ea72-4d11-873f-8604a0d1bd1e",
+        "name": "AI",
+        "color": "green"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "17bf4645-2242-81f8-abe7-e42fa63405c3",
+    "title": "Flojoy",
+    "url": "https://www.flojoy.ai/",
+    "demoUrl": null,
+    "repoUrl": "https://github.com/flojoy-ai/",
+    "openSource": true,
+    "description": "No CodePython Programming for Test, Measurement, & Control",
+    "image": "17bf4645-2242-81f8-abe7-e42fa63405c3.png",
+    "tags": [
+      {
+        "id": "basU",
+        "name": "Developer Tool",
+        "color": "green"
+      },
+      {
+        "id": "open-source",
+        "name": "Open Source"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "272f4645-2242-8109-aecd-c4395036906b",
+    "title": "Flow-Like",
+    "url": "https://flow-like.com",
+    "demoUrl": "https://flow-like.com/download/",
+    "repoUrl": "https://github.com/TM9657/flow-like",
+    "openSource": true,
+    "description": "Workflow builder for automation and AI with typed connections, offline execution, and enterprise-ready governance.",
+    "image": "272f4645-2242-8109-aecd-c4395036906b.png",
+    "tags": [
+      {
+        "id": "ede4f8e8-84cd-4a5a-87a5-d4196717e98b",
+        "name": "Workflow Automation",
+        "color": "green"
+      },
+      {
+        "id": "open-source",
+        "name": "Open Source"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "17bf4645-2242-81b6-b7a4-f6f39a1c13e7",
+    "title": "FlowiseAI",
+    "url": "https://flowiseai.com/",
+    "demoUrl": null,
+    "repoUrl": "https://github.com/FlowiseAI/Flowise",
+    "openSource": true,
+    "description": "Drag & drop UI to build customized LLM flows",
+    "image": "17bf4645-2242-81b6-b7a4-f6f39a1c13e7.png",
+    "tags": [
+      {
+        "id": "801ce7a8-ea72-4d11-873f-8604a0d1bd1e",
+        "name": "AI",
+        "color": "green"
+      },
+      {
+        "id": "open-source",
+        "name": "Open Source"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "2a7f4645-2242-8164-b178-ccbab6bd067c",
+    "title": "Flowsint",
+    "url": "https://www.flowsint.io",
+    "demoUrl": "https://www.flowsint.io/#demo",
+    "repoUrl": "https://github.com/reconurge/flowsint",
+    "openSource": true,
+    "description": "A modern platform for visual, flexible, and extensible graph-based investigations",
+    "image": "2a7f4645-2242-8164-b178-ccbab6bd067c.png",
+    "tags": [
+      {
+        "id": "ede4f8e8-84cd-4a5a-87a5-d4196717e98b",
+        "name": "Workflow Automation",
+        "color": "green"
+      },
+      {
+        "id": "open-source",
+        "name": "Open Source"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "18cf4645-2242-8192-83bd-faedbe1136df",
+    "title": "Flyff Skill Simulator",
+    "url": "https://flyffskillsimulator.vercel.app",
+    "demoUrl": null,
+    "repoUrl": "https://github.com/guysuvijak/flyff-skill-simulator",
+    "openSource": true,
+    "description": "A simulator for planning, experimenting and visualizing skills built in the Flyff Universe server",
+    "image": "18cf4645-2242-8192-83bd-faedbe1136df.png",
+    "tags": [
+      {
+        "id": "open-source",
+        "name": "Open Source"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "23bf4645-2242-8171-9e28-d93c6799aff4",
+    "title": "Formity UI",
+    "url": "https://www.formity.app/",
+    "demoUrl": "https://ui.formity.app/form-builder/explore",
+    "repoUrl": "https://github.com/martiserra99/formity",
+    "openSource": true,
+    "description": "Formity is a React package for building advanced multi-step forms.",
+    "image": "23bf4645-2242-8171-9e28-d93c6799aff4.png",
+    "tags": [
+      {
+        "id": "801ce7a8-ea72-4d11-873f-8604a0d1bd1e",
+        "name": "AI",
+        "color": "green"
+      },
+      {
+        "id": "basU",
+        "name": "Developer Tool",
+        "color": "green"
+      },
+      {
+        "id": "open-source",
+        "name": "Open Source"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "294f4645-2242-8133-91a7-d58467211c46",
+    "title": "GenAIntel",
+    "url": "https://www.genaintel.com",
+    "demoUrl": "https://www.youtube.com/watch?v=eq9Ksc2UUfU",
+    "repoUrl": null,
+    "openSource": false,
+    "description": "AI Media Generation Platform for creating images and videos with simple workflows",
+    "image": "294f4645-2242-8133-91a7-d58467211c46.png",
+    "tags": [
+      {
+        "id": "R>gY",
+        "name": "Image Processing",
+        "color": "green"
+      },
+      {
+        "id": "801ce7a8-ea72-4d11-873f-8604a0d1bd1e",
+        "name": "AI",
+        "color": "green"
+      },
+      {
+        "id": "ede4f8e8-84cd-4a5a-87a5-d4196717e98b",
+        "name": "Workflow Automation",
+        "color": "green"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "17bf4645-2242-810a-a07a-c2cf3c32ca8d",
+    "title": "Geoplex",
+    "url": "https://www.geoplex.de/",
+    "demoUrl": "https://www.geoplex.de/plexmap/switchboard/",
+    "repoUrl": null,
+    "openSource": false,
+    "description": "Tool for creating automated workflows for geo data processing tasks",
+    "image": "17bf4645-2242-810a-a07a-c2cf3c32ca8d.png",
+    "tags": [
+      {
+        "id": "ede4f8e8-84cd-4a5a-87a5-d4196717e98b",
+        "name": "Workflow Automation",
+        "color": "green"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "17bf4645-2242-818d-8ed7-f7a95c4e7e6a",
+    "title": "Graphologue",
+    "url": "https://github.com/ucsd-creativitylab/graphologue",
+    "demoUrl": "https://graphologue.app",
+    "repoUrl": null,
+    "openSource": true,
+    "description": "Convert text-based responses from LLMs into graphical diagrams in real time",
+    "image": "17bf4645-2242-818d-8ed7-f7a95c4e7e6a.png",
+    "tags": [
+      {
+        "id": "801ce7a8-ea72-4d11-873f-8604a0d1bd1e",
+        "name": "AI",
+        "color": "green"
+      },
+      {
+        "id": "open-source",
+        "name": "Open Source"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "17bf4645-2242-81be-9d6c-fd7621d165e6",
+    "title": "Heuristica",
+    "url": "https://www.heuristi.ca/",
+    "demoUrl": "https://www.heuristi.ca/discover/48204e35-3a6e-4dcb-99ed-1fb91e45eb37",
+    "repoUrl": null,
+    "openSource": false,
+    "description": "AI-powered mind maps and concept maps for visual learning, thinking and research.",
+    "image": "17bf4645-2242-81be-9d6c-fd7621d165e6.png",
+    "tags": [
+      {
+        "id": "801ce7a8-ea72-4d11-873f-8604a0d1bd1e",
+        "name": "AI",
+        "color": "green"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "17bf4645-2242-81ea-a53d-f2f55926f649",
+    "title": "Ideation Studio",
+    "url": "https://ideation-studio.dev/",
+    "demoUrl": null,
+    "repoUrl": "https://github.com/afyqzarof/studio-client",
+    "openSource": true,
+    "description": "Inspiration board where users can add media and text to a canvas",
+    "image": "17bf4645-2242-81ea-a53d-f2f55926f649.png",
+    "tags": [
+      {
+        "id": "open-source",
+        "name": "Open Source"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "2d9f4645-2242-81e6-8d1f-e00f0382b24e",
+    "title": "insight on oncology",
+    "url": "dataize.io",
+    "demoUrl": "https://youtu.be/cS7cizWYEu0",
+    "repoUrl": null,
+    "openSource": false,
+    "description": "Insight on Oncology (IO) is an agentic AI platform that turns real-world oncology data into reproducible, publication-ready analyses by orchestrating the entire research workflow end to end.",
+    "image": "2d9f4645-2242-81e6-8d1f-e00f0382b24e.png",
+    "tags": [
+      {
+        "id": "801ce7a8-ea72-4d11-873f-8604a0d1bd1e",
+        "name": "AI",
+        "color": "green"
+      },
+      {
+        "id": "ede4f8e8-84cd-4a5a-87a5-d4196717e98b",
+        "name": "Workflow Automation",
+        "color": "green"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "17bf4645-2242-8133-9315-eac3da9cccf7",
+    "title": "JSON Sea",
+    "url": "https://www.jsonsea.com/",
+    "demoUrl": null,
+    "repoUrl": "https://github.com/altenull/json-sea",
+    "openSource": true,
+    "description": "Import JSON files to visualize their data structure in a React Flow graph",
+    "image": "17bf4645-2242-8133-9315-eac3da9cccf7.png",
+    "tags": [
+      {
+        "id": "open-source",
+        "name": "Open Source"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "17bf4645-2242-811f-885e-e9c5348b35df",
+    "title": "LangFlow",
+    "url": "https://www.langflow.org/",
+    "demoUrl": "https://github.com/logspace-ai/langflow",
+    "repoUrl": null,
+    "openSource": true,
+    "description": "Build apps with a drag and drop user interface powered by LangChain",
+    "image": "17bf4645-2242-811f-885e-e9c5348b35df.png",
+    "tags": [
+      {
+        "id": "801ce7a8-ea72-4d11-873f-8604a0d1bd1e",
+        "name": "AI",
+        "color": "green"
+      },
+      {
+        "id": "ede4f8e8-84cd-4a5a-87a5-d4196717e98b",
+        "name": "Workflow Automation",
+        "color": "green"
+      },
+      {
+        "id": "open-source",
+        "name": "Open Source"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "18af4645-2242-8132-8966-e9c23d194dc8",
+    "title": "Liam ERD",
+    "url": "https://liambx.com/",
+    "demoUrl": "https://liambx.com/erd/p/raw.githubusercontent.com/liam-hq/liam/b7b9228de8840eb4ac3ca8342ebbda6d611d7ae5/frontend/packages/db-structure/src/parser/schemarb/input/schema1.in.rb?showMode=ALL_FIELDS&active=users",
+    "repoUrl": "https://github.com/liam-hq/liam",
+    "openSource": true,
+    "description": "App for generating ER diagrams from a database.",
+    "image": "18af4645-2242-8132-8966-e9c23d194dc8.png",
+    "tags": [
+      {
+        "id": "basU",
+        "name": "Developer Tool",
+        "color": "green"
+      },
+      {
+        "id": "open-source",
+        "name": "Open Source"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "24af4645-2242-8181-b7b4-c5f3e1b87428",
+    "title": "MindSnap",
+    "url": "https://mindsnap.dev/",
+    "demoUrl": "https://www.youtube.com/watch?v=h3wuKXgAzfw",
+    "repoUrl": null,
+    "openSource": false,
+    "description": "Chrome extension that transforms any webpage into interactive mind map. ",
+    "image": "24af4645-2242-8181-b7b4-c5f3e1b87428.png",
+    "tags": [
+      {
+        "id": "801ce7a8-ea72-4d11-873f-8604a0d1bd1e",
+        "name": "AI",
+        "color": "green"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "1faf4645-2242-8130-ab50-d31908aaed83",
+    "title": "NodeZero",
+    "url": "https://horizon3.ai/",
+    "demoUrl": "https://portal.horizon3ai.com/",
+    "repoUrl": null,
+    "openSource": false,
+    "description": "Autonomous penetration testing platform",
+    "image": "1faf4645-2242-8130-ab50-d31908aaed83.png",
+    "tags": [],
+    "published": true
+  },
+  {
+    "id": "2f0f4645-2242-813c-8952-dddea61cfe54",
+    "title": "Nover",
+    "url": "https://nover.studio/",
+    "demoUrl": "https://app.nover.studio",
+    "repoUrl": null,
+    "openSource": false,
+    "description": "Visual production tool empowering visual creators controllability and studio-level precision in their generations.",
+    "image": "2f0f4645-2242-813c-8952-dddea61cfe54.png",
+    "tags": [
+      {
+        "id": "R>gY",
+        "name": "Image Processing",
+        "color": "green"
+      },
+      {
+        "id": "basU",
+        "name": "Developer Tool",
+        "color": "green"
+      },
+      {
+        "id": "72571599-6aee-4f94-a304-e09b203c9d10",
+        "name": "3D",
+        "color": "green"
+      },
+      {
+        "id": "801ce7a8-ea72-4d11-873f-8604a0d1bd1e",
+        "name": "AI",
+        "color": "green"
+      },
+      {
+        "id": "ede4f8e8-84cd-4a5a-87a5-d4196717e98b",
+        "name": "Workflow Automation",
+        "color": "green"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "17bf4645-2242-812e-89c0-ff2d7b4b34c3",
+    "title": "OneSignal",
+    "url": "https://onesignal.com/journeys",
+    "demoUrl": "https://youtu.be/Jswyz80p2WI?t=1342",
+    "repoUrl": null,
+    "openSource": false,
+    "description": "OneSignal Journeys is a visual no-code workflow builder to automate messaging",
+    "image": "17bf4645-2242-812e-89c0-ff2d7b4b34c3.png",
+    "tags": [
+      {
+        "id": "ede4f8e8-84cd-4a5a-87a5-d4196717e98b",
+        "name": "Workflow Automation",
+        "color": "green"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "17bf4645-2242-81c1-beee-d9e7d2c773ae",
+    "title": "Open Metadata",
+    "url": "https://open-metadata.org/",
+    "demoUrl": null,
+    "repoUrl": "https://github.com/open-metadata/OpenMetadata",
+    "openSource": true,
+    "description": "Platform for metadata ingestion, exploration, and collaboration",
+    "image": "17bf4645-2242-81c1-beee-d9e7d2c773ae.png",
+    "tags": [
+      {
+        "id": "basU",
+        "name": "Developer Tool",
+        "color": "green"
+      },
+      {
+        "id": "open-source",
+        "name": "Open Source"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "17bf4645-2242-8184-aad7-c5628015d22d",
+    "title": "OTelBin",
+    "url": "https://www.otelbin.io/",
+    "demoUrl": null,
+    "repoUrl": "https://github.com/dash0hq/otelbin",
+    "openSource": true,
+    "description": "Web-based tool to facilitate OpenTelemetry collector configuration editing and verification",
+    "image": "17bf4645-2242-8184-aad7-c5628015d22d.png",
+    "tags": [
+      {
+        "id": "open-source",
+        "name": "Open Source"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "17bf4645-2242-8154-8d44-cafcfcc5366e",
+    "title": "Primer",
+    "url": "https://primer.io",
+    "demoUrl": "https://primer.io/docs/automation",
+    "repoUrl": null,
+    "openSource": false,
+    "description": "No-code workflow builder for payment and commerce automation",
+    "image": "17bf4645-2242-8154-8d44-cafcfcc5366e.png",
+    "tags": [
+      {
+        "id": "ede4f8e8-84cd-4a5a-87a5-d4196717e98b",
+        "name": "Workflow Automation",
+        "color": "green"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "17bf4645-2242-81b3-bc7d-fa5b743f274c",
+    "title": "Prismaliser",
+    "url": "https://prismaliser.app/",
+    "demoUrl": null,
+    "repoUrl": "https://github.com/Ovyerus/prismaliser",
+    "openSource": true,
+    "description": "Database schema visualiser for Prisma",
+    "image": "17bf4645-2242-81b3-bc7d-fa5b743f274c.png",
+    "tags": [
+      {
+        "id": "basU",
+        "name": "Developer Tool",
+        "color": "green"
+      },
+      {
+        "id": "open-source",
+        "name": "Open Source"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "2c5f4645-2242-8147-a211-ca01fea6ec94",
+    "title": "rawBit",
+    "url": "rawbit.io",
+    "demoUrl": "rawbit.io",
+    "repoUrl": "https://github.com/rawBit-io/rawbit",
+    "openSource": true,
+    "description": "Visual Bitcoin Transaction Builder & Script Debugger",
+    "image": "2c5f4645-2242-8147-a211-ca01fea6ec94.png",
+    "tags": [
+      {
+        "id": "ede4f8e8-84cd-4a5a-87a5-d4196717e98b",
+        "name": "Workflow Automation",
+        "color": "green"
+      },
+      {
+        "id": "open-source",
+        "name": "Open Source"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "1cbf4645-2242-817e-853c-c6d119db8738",
+    "title": "Repree",
+    "url": "https://www.repree.net",
+    "demoUrl": null,
+    "repoUrl": "https://github.com/mitate-gengaku/Repree",
+    "openSource": true,
+    "description": "A React flow based tool that visualizes relationships between files in codebases.",
+    "image": "1cbf4645-2242-817e-853c-c6d119db8738.png",
+    "tags": [
+      {
+        "id": "basU",
+        "name": "Developer Tool",
+        "color": "green"
+      },
+      {
+        "id": "open-source",
+        "name": "Open Source"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "17bf4645-2242-81c8-a962-fea6f7481cc8",
+    "title": "Retool",
+    "url": "https://retool.com/products/workflows",
+    "demoUrl": null,
+    "repoUrl": null,
+    "openSource": false,
+    "description": "Interactive workflow builder to connect all your data from APIs, Services and Databases",
+    "image": "17bf4645-2242-81c8-a962-fea6f7481cc8.png",
+    "tags": [
+      {
+        "id": "basU",
+        "name": "Developer Tool",
+        "color": "green"
+      },
+      {
+        "id": "ede4f8e8-84cd-4a5a-87a5-d4196717e98b",
+        "name": "Workflow Automation",
+        "color": "green"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "17bf4645-2242-81a5-9f89-f863faa65db4",
+    "title": "Shaderfrog",
+    "url": "https://shaderfrog.com/2",
+    "demoUrl": "https://shaderfrog.com/2/editor/create/three",
+    "repoUrl": "https://github.com/ShaderFrog",
+    "openSource": true,
+    "description": "An engine-agnostic no-code shader editor and composer",
+    "image": "17bf4645-2242-81a5-9f89-f863faa65db4.png",
+    "tags": [
+      {
+        "id": "R>gY",
+        "name": "Image Processing",
+        "color": "green"
+      },
+      {
+        "id": "open-source",
+        "name": "Open Source"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "217f4645-2242-8150-bf63-fb926c18c3de",
+    "title": "Sim Studio",
+    "url": "https://simstudio.ai",
+    "demoUrl": null,
+    "repoUrl": "https://github.com/simstudioai/sim",
+    "openSource": true,
+    "description": "An open source platform to build AI agents.",
+    "image": "217f4645-2242-8150-bf63-fb926c18c3de.png",
+    "tags": [
+      {
+        "id": "basU",
+        "name": "Developer Tool",
+        "color": "green"
+      },
+      {
+        "id": "ede4f8e8-84cd-4a5a-87a5-d4196717e98b",
+        "name": "Workflow Automation",
+        "color": "green"
+      },
+      {
+        "id": "801ce7a8-ea72-4d11-873f-8604a0d1bd1e",
+        "name": "AI",
+        "color": "green"
+      },
+      {
+        "id": "open-source",
+        "name": "Open Source"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "18ff4645-2242-802a-9a7c-d3e44cf203a8",
+    "title": "simple-ai",
+    "url": "https://www.simple-ai.dev/docs/react-flow/components/editable-handle",
+    "demoUrl": null,
+    "repoUrl": "https://github.com/Alwurts/simple-ai",
+    "openSource": true,
+    "description": "An open-source library of AI-focused UI components, app blocks, and React Flow workflows designed to accelerate development.",
+    "image": "18ff4645-2242-802a-9a7c-d3e44cf203a8.png",
+    "tags": [
+      {
+        "id": "basU",
+        "name": "Developer Tool",
+        "color": "green"
+      },
+      {
+        "id": "open-source",
+        "name": "Open Source"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "17bf4645-2242-8139-8753-c196791ee058",
+    "title": "Stack",
+    "url": "https://stack.ai",
+    "demoUrl": null,
+    "repoUrl": null,
+    "openSource": false,
+    "description": "Tool for integrating AI with data sources and build AI based automations.",
+    "image": "17bf4645-2242-8139-8753-c196791ee058.png",
+    "tags": [
+      {
+        "id": "801ce7a8-ea72-4d11-873f-8604a0d1bd1e",
+        "name": "AI",
+        "color": "green"
+      },
+      {
+        "id": "ede4f8e8-84cd-4a5a-87a5-d4196717e98b",
+        "name": "Workflow Automation",
+        "color": "green"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "17bf4645-2242-817e-b8ee-e7d89e409709",
+    "title": "Strelka UI",
+    "url": "https://github.com/target/strelka-ui",
+    "demoUrl": null,
+    "repoUrl": null,
+    "openSource": false,
+    "description": "File analysis interface for Strelka to upload and review file details, highlights, and metadata.",
+    "image": "17bf4645-2242-817e-b8ee-e7d89e409709.png",
+    "tags": [
+      {
+        "id": "basU",
+        "name": "Developer Tool",
+        "color": "green"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "17bf4645-2242-8130-874c-fb86b4e21791",
+    "title": "Stripe",
+    "url": "https://stripe.com/docs",
+    "demoUrl": "https://stripe.com/docs/payments/checkout/how-checkout-works#lifecycle",
+    "repoUrl": null,
+    "openSource": false,
+    "description": "Stripe uses React Flow to enhance their documentation with Flowcharts",
+    "image": "17bf4645-2242-8130-874c-fb86b4e21791.png",
+    "tags": [],
+    "published": true
+  },
+  {
+    "id": "17bf4645-2242-810f-8da1-c2432f1d1e5f",
+    "title": "Supabase",
+    "url": "https://supabase.com/blog/supabase-studio-3-0#schema-visualizer",
+    "demoUrl": null,
+    "repoUrl": "https://github.com/supabase/supabase/blob/master/apps/studio/components/interfaces/ProjectCreation/SchemaFlow.tsx",
+    "openSource": true,
+    "description": "Visualizes PostgreSQL table relations",
+    "image": "17bf4645-2242-810f-8da1-c2432f1d1e5f.png",
+    "tags": [
+      {
+        "id": "open-source",
+        "name": "Open Source"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "17bf4645-2242-8167-9d17-e98968b9a0da",
+    "title": "Taktile",
+    "url": "https://www.taktile.com/",
+    "demoUrl": null,
+    "repoUrl": null,
+    "openSource": false,
+    "description": "Build, run, and evaluate automated decision flows and risk models",
+    "image": "17bf4645-2242-8167-9d17-e98968b9a0da.png",
+    "tags": [
+      {
+        "id": "ede4f8e8-84cd-4a5a-87a5-d4196717e98b",
+        "name": "Workflow Automation",
+        "color": "green"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "2b2f4645-2242-8106-bacd-fd1379579be6",
+    "title": "Tasko",
+    "url": "www.usetasko.com",
+    "demoUrl": null,
+    "repoUrl": null,
+    "openSource": false,
+    "description": "Tasko transforms task management into a visual, automated experience.",
+    "image": "2b2f4645-2242-8106-bacd-fd1379579be6.png",
+    "tags": [
+      {
+        "id": "basU",
+        "name": "Developer Tool",
+        "color": "green"
+      },
+      {
+        "id": "ede4f8e8-84cd-4a5a-87a5-d4196717e98b",
+        "name": "Workflow Automation",
+        "color": "green"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "1f5f4645-2242-81c8-949b-e469c0243c55",
+    "title": "Tersa",
+    "url": "https://www.tersa.ai/",
+    "demoUrl": "https://www.tersa.ai/",
+    "repoUrl": "https://github.com/haydenbleasel/tersa",
+    "openSource": true,
+    "description": "Tersa is an open source canvas for building AI workflows powered by various industry-leading AI models.",
+    "image": "1f5f4645-2242-81c8-949b-e469c0243c55.png",
+    "tags": [
+      {
+        "id": "801ce7a8-ea72-4d11-873f-8604a0d1bd1e",
+        "name": "AI",
+        "color": "green"
+      },
+      {
+        "id": "R>gY",
+        "name": "Image Processing",
+        "color": "green"
+      },
+      {
+        "id": "ede4f8e8-84cd-4a5a-87a5-d4196717e98b",
+        "name": "Workflow Automation",
+        "color": "green"
+      },
+      {
+        "id": "0ede1685-e605-44fd-a5db-7178839768c4",
+        "name": "Audio",
+        "color": "green"
+      },
+      {
+        "id": "basU",
+        "name": "Developer Tool",
+        "color": "green"
+      },
+      {
+        "id": "open-source",
+        "name": "Open Source"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "188f4645-2242-8104-99ff-d5d6a69e692f",
+    "title": "ToolJet",
+    "url": "ToolJet.com",
+    "demoUrl": null,
+    "repoUrl": "https://github.com/ToolJet/ToolJet",
+    "openSource": true,
+    "description": "Open source platform to create AI-powered business apps and automations",
+    "image": "188f4645-2242-8104-99ff-d5d6a69e692f.png",
+    "tags": [
+      {
+        "id": "ede4f8e8-84cd-4a5a-87a5-d4196717e98b",
+        "name": "Workflow Automation",
+        "color": "green"
+      },
+      {
+        "id": "open-source",
+        "name": "Open Source"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "17bf4645-2242-8183-9ef5-c6753d69a0a7",
+    "title": "Traverse",
+    "url": "https://traverse.link/",
+    "demoUrl": "https://traverse.link/MYBzOakQCKeJaU6WhUasvmHDyLy2/9mye5rswz6gpoe6kgyb2yffn/?showMap=1",
+    "repoUrl": null,
+    "openSource": false,
+    "description": "Learning tool with Mindmaps, note-taking, and spaced repetition flashcards",
+    "image": "17bf4645-2242-8183-9ef5-c6753d69a0a7.png",
+    "tags": [],
+    "published": true
+  },
+  {
+    "id": "17bf4645-2242-8157-bd4d-ddfb17536d7c",
+    "title": "TSDiagram",
+    "url": "http://tsdiagram.com",
+    "demoUrl": null,
+    "repoUrl": "https://github.com/3rd/tsdiagram",
+    "openSource": true,
+    "description": "Create relational diagrams of Typescript objects",
+    "image": "17bf4645-2242-8157-bd4d-ddfb17536d7c.png",
+    "tags": [
+      {
+        "id": "basU",
+        "name": "Developer Tool",
+        "color": "green"
+      },
+      {
+        "id": "open-source",
+        "name": "Open Source"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "17bf4645-2242-8175-8aa8-cec14056bbbe",
+    "title": "Typeform",
+    "url": "https://www.typeform.com/",
+    "demoUrl": "https://www.typeform.com/help/a/use-the-logic-map-to-add-logic-to-your-typeforms-5514792640916/",
+    "repoUrl": null,
+    "openSource": false,
+    "description": "Interactive tool to build and visualize complex survey logic",
+    "image": "17bf4645-2242-8175-8aa8-cec14056bbbe.png",
+    "tags": [
+      {
+        "id": "ede4f8e8-84cd-4a5a-87a5-d4196717e98b",
+        "name": "Workflow Automation",
+        "color": "green"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "17bf4645-2242-8155-9c9c-ea8c90f3f0b2",
+    "title": "Unify",
+    "url": "https://www.unifygtm.com/plays",
+    "demoUrl": null,
+    "repoUrl": null,
+    "openSource": false,
+    "description": "Tool for building workflows to power GTM outbound sales strategies.",
+    "image": "17bf4645-2242-8155-9c9c-ea8c90f3f0b2.png",
+    "tags": [
+      {
+        "id": "ede4f8e8-84cd-4a5a-87a5-d4196717e98b",
+        "name": "Workflow Automation",
+        "color": "green"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "189f4645-2242-811f-b425-f679601bc366",
+    "title": "Vestige",
+    "url": "https://vestige.ascpixi.dev",
+    "demoUrl": null,
+    "repoUrl": "https://github.com/ascpixi/vestige",
+    "openSource": true,
+    "description": "A generative music synthesizer, inspired by analog modular synthesizers",
+    "image": "189f4645-2242-811f-b425-f679601bc366.png",
+    "tags": [
+      {
+        "id": "0ede1685-e605-44fd-a5db-7178839768c4",
+        "name": "Audio",
+        "color": "green"
+      },
+      {
+        "id": "open-source",
+        "name": "Open Source"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "19bf4645-2242-81b6-9c89-c6b28d9e9e72",
+    "title": "VisualFlow",
+    "url": "https://visualflow.net",
+    "demoUrl": null,
+    "repoUrl": "https://github.com/mitate-gengaku/VisualFlow",
+    "openSource": true,
+    "description": "A ReactFlow based application for visually designing and generating GitHub Actions workflows",
+    "image": "19bf4645-2242-81b6-9c89-c6b28d9e9e72.png",
+    "tags": [
+      {
+        "id": "basU",
+        "name": "Developer Tool",
+        "color": "green"
+      },
+      {
+        "id": "open-source",
+        "name": "Open Source"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "17bf4645-2242-81ff-9054-d988f565054e",
+    "title": "VisualFlows",
+    "url": "https://VisualFlows.io",
+    "demoUrl": "https://app.visualsitemaps.com/user_flows/share/4776e484-6077-4b63-af39-a1fa20d52f0e?s=eyJ6b29tIjowLjg0MTY3NzcxNDE1Njc3MDgsInBvc2l0aW9uIjpbMjgxLjQ4ODI3MzE4NTE3OTc2LDE5MS4zMDI4MjM0NTY0MDcwOF19",
+    "repoUrl": null,
+    "openSource": false,
+    "description": "Interactive whiteboard and flowchart designer for sitemaps",
+    "image": "17bf4645-2242-81ff-9054-d988f565054e.png",
+    "tags": [],
+    "published": true
+  },
+  {
+    "id": "1c9f4645-2242-818b-b09d-e9d402957e91",
+    "title": "Waldiez",
+    "url": "https://waldiez.io",
+    "demoUrl": "https://waldiez.github.io",
+    "repoUrl": "https://github.com/waldiez/waldiez",
+    "openSource": true,
+    "description": "Waldiez allows users to design, orchestrate, and execute complex workflows by integrating various AI models and tools.",
+    "image": "1c9f4645-2242-818b-b09d-e9d402957e91.png",
+    "tags": [
+      {
+        "id": "801ce7a8-ea72-4d11-873f-8604a0d1bd1e",
+        "name": "AI",
+        "color": "green"
+      },
+      {
+        "id": "ede4f8e8-84cd-4a5a-87a5-d4196717e98b",
+        "name": "Workflow Automation",
+        "color": "green"
+      },
+      {
+        "id": "open-source",
+        "name": "Open Source"
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "17bf4645-2242-81f5-82f9-dd22e3bbeba2",
+    "title": "Workflow Builder",
+    "url": "https://www.workflowbuilder.io/",
+    "demoUrl": "https://github.com/workflowbuildersdk/workflowbuilder",
+    "repoUrl": null,
+    "openSource": false,
+    "description": "Visual workflow editor for workflow engines with backend integration.",
+    "image": "17bf4645-2242-81f5-82f9-dd22e3bbeba2.png",
+    "tags": [
+      {
+        "id": "ede4f8e8-84cd-4a5a-87a5-d4196717e98b",
+        "name": "Workflow Automation",
+        "color": "green"
+      }
+    ],
+    "published": true
+  }
+]

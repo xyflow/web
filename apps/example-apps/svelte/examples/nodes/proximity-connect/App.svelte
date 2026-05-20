@@ -106,6 +106,7 @@
   fitView
   onnodedrag={onNodeDrag}
   onnodedragstop={onNodeDragStop}
+  colorMode="system"
 >
   <Background />
 </SvelteFlow>

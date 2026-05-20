@@ -1,0 +1,29 @@
+diff --git a/dist/server/schemas.js b/dist/server/schemas.js
+index d8410f9c9c54b6be541e35e5a3f1e7db2cef8c8a..c8b0d4703de6370ef46735eec52c3f84f85aa703 100644
+--- a/dist/server/schemas.js
++++ b/dist/server/schemas.js
+@@ -124,7 +124,8 @@ const reactNode = z.custom(
+     if (Array.isArray(data)) {
+       return data.every((item) => checkReactNode(item));
+     }
+-    return false;
++    const isServerComponent = '$$typeof' in data && data.$$typeof === Symbol.for('react.lazy');
++    return isServerComponent;
+   },
+   { error: "Must be a valid React node" }
+ );
+diff --git a/package.json b/package.json
+index 9f687b5af9ecbf131eb2dd3f3caa7598d5058fd1..510cbcb799b5fbd72612ed39cc98f6ce87dced48 100644
+--- a/package.json
++++ b/package.json
+@@ -52,6 +52,10 @@
+       "types": "./dist/server/tsdoc/index.d.ts",
+       "import": "./dist/server/tsdoc/index.js"
+     },
++    "./merge-meta-with-page-map": {
++      "types": "./dist/server/page-map/merge-meta-with-page-map.d.ts",
++      "import": "./dist/server/page-map/merge-meta-with-page-map.js"
++    },
+     "./*": {
+       "types": "./dist/client/*.d.ts",
+       "import": "./dist/client/*.js"

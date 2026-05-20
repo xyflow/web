@@ -29,7 +29,7 @@
   let edges = $state.raw(initialEdges);
 </script>
 
-<SvelteFlow bind:nodes bind:edges minZoom={0} fitView>
+<SvelteFlow bind:nodes bind:edges minZoom={0} fitView colorMode="system">
   <Background />
   <MiniMap />
   <Controls />

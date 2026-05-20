@@ -19,7 +19,7 @@ export const DatabaseSchemaNodeHeader = ({
   children,
 }: DatabaseSchemaNodeHeaderProps) => {
   return (
-    <BaseNodeHeader className="rounded-tl-md rounded-tr-md bg-secondary p-2 text-center text-sm text-muted-foreground">
+    <BaseNodeHeader className="bg-secondary text-muted-foreground rounded-tl-md rounded-tr-md p-2 text-center text-sm">
       <h2>{children}</h2>
     </BaseNodeHeader>
   );

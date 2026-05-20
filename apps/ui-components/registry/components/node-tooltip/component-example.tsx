@@ -30,4 +30,5 @@ const NodeTooltipDemo = memo(() => {
   );
 });
 
+NodeTooltipDemo.displayName = "NodeTooltipDemo";
 export default NodeTooltipDemo;

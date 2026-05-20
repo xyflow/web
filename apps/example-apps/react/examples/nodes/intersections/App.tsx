@@ -1,4 +1,4 @@
-import React, { useCallback, type MouseEvent } from 'react';
+import { useCallback, type MouseEvent } from 'react';
 import {
   ReactFlow,
   Background,
@@ -71,6 +71,7 @@ const BasicFlow = () => {
       maxZoom={4}
       fitView
       selectNodesOnDrag={false}
+      colorMode="system"
     >
       <Background />
       <Controls />

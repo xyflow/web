@@ -33,6 +33,7 @@ function App() {
       onEdgesChange={onEdgesChange}
       fitView
       nodeTypes={nodeTypes}
+      colorMode="system"
     >
       <Background />
       <Controls />

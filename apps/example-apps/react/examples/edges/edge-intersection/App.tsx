@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react';
+import { useCallback, useRef } from 'react';
 import {
   Background,
   Controls,
@@ -70,9 +70,7 @@ export default function App() {
 
   const onNodeDrag: OnNodeDrag = useCallback(
     (e, node) => {
-      const nodeDiv = document.querySelector(
-        `.react-flow__node[data-id=${node.id}]`,
-      );
+      const nodeDiv = document.querySelector(`.react-flow__node[data-id=${node.id}]`);
 
       if (!nodeDiv) return;
 
@@ -108,6 +106,7 @@ export default function App() {
       onNodeDrag={onNodeDrag}
       defaultEdgeOptions={defaultEdgeOptions}
       fitView
+      colorMode="system"
     >
       <Background />
       <Controls />

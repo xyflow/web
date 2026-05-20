@@ -46,6 +46,7 @@ export default function RectangleFlow() {
       onEdgesChange={onEdgesChange}
       onConnect={onConnect}
       fitView
+      colorMode="system"
     >
       <Controls />
       <Background />

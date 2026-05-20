@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import {
   ReactFlow,
   Controls,
@@ -73,6 +73,7 @@ const EdgesFlow = () => {
       onConnect={onConnect}
       edgeTypes={edgeTypes}
       fitView
+      colorMode="system"
     >
       <Controls />
       <Background />

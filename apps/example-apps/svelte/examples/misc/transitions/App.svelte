@@ -58,6 +58,7 @@
   defaultEdgeOptions={{
     type: 'fadeOut',
   }}
+  colorMode="system"
 >
   <Background />
   <MiniMap />

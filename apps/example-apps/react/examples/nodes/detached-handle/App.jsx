@@ -47,6 +47,7 @@ function DetachedHandleFlow() {
       onConnect={onConnect}
       nodeTypes={nodeTypes}
       fitView
+      colorMode="system"
     >
       <MiniMap />
       <Controls />

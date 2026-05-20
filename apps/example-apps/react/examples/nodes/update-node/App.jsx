@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   ReactFlow,
   useNodesState,
@@ -22,7 +22,7 @@ const UpdateNode = () => {
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
   const [nodeName, setNodeName] = useState('Node 1');
-  const [nodeBg, setNodeBg] = useState('#dbdbdb');
+  const [nodeBg, setNodeBg] = useState('#ff0071');
   const [nodeHidden, setNodeHidden] = useState(false);
 
   useEffect(() => {
@@ -106,6 +106,7 @@ const UpdateNode = () => {
       attributionPosition="bottom-left"
       fitView
       fitViewOptions={{ padding: 0.5 }}
+      colorMode="system"
     >
       <Panel position="top-left" style={{ width: 200 }}>
         <label className="xy-theme__label">Label: </label>

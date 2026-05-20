@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import {
   Background,
   ReactFlow,
@@ -77,6 +77,7 @@ const SaveRestore = () => {
       onInit={setRfInstance}
       fitView
       fitViewOptions={{ padding: 2 }}
+      colorMode="system"
     >
       <Background />
       <Panel position="top-right">

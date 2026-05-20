@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import { Handle, useStore, Position } from '@xyflow/react';
 
 const Placeholder = () => (

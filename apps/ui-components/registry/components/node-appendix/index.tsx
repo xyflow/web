@@ -21,8 +21,7 @@ const appendixVariants = cva(
 );
 
 export interface NodeAppendixProps
-  extends ComponentProps<"div">,
-    VariantProps<typeof appendixVariants> {
+  extends ComponentProps<"div">, VariantProps<typeof appendixVariants> {
   className?: string;
   position?: "top" | "bottom" | "left" | "right";
 }

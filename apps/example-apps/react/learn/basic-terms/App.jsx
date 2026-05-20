@@ -128,7 +128,8 @@ function ViewportWithAnnotation() {
       <div
         style={{
           fontFamily: 'monospace',
-          background: 'white',
+          background: 'var(--xy-theme-panel-bg)',
+          color: 'var(--xy-theme-panel-text)',
           padding: '5px',
           borderRadius: '3px',
         }}
@@ -198,6 +199,7 @@ function Flow() {
         onConnectEnd={onConnectEnd}
         fitView
         preventScrolling={false}
+        colorMode="system"
       >
         <Background />
         <Panel position="bottom-left">

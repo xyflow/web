@@ -1,4 +1,3 @@
-import React from 'react';
 import { Handle, useNodeConnections } from '@xyflow/react';
 
 const CustomHandle = (props) => {
@@ -6,12 +5,7 @@ const CustomHandle = (props) => {
     handleType: props.type,
   });
 
-  return (
-    <Handle
-      {...props}
-      isConnectable={connections.length < props.connectionCount}
-    />
-  );
+  return <Handle {...props} isConnectable={connections.length < props.connectionCount} />;
 };
 
 export default CustomHandle;

@@ -1,0 +1,116 @@
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardFooter,
+} from '../../../components/ui/card';
+import { cn } from '../../../lib/utils';
+import { Button } from '../../../components/ui/button';
+import { SubscriptionPlan } from '../../../types';
+import Link from 'next/link';
+import { ArrowLongRightIcon } from '@heroicons/react/20/solid';
+
+import CustomerPortalButton from '../CustomerPortalButton';
+import { getSubscriptionStatus } from '../../../server-actions/get-subscription';
+
+type SubscriptionFeatureProps = {
+  title: React.ReactNode;
+  description?: React.ReactNode;
+  plans?: SubscriptionPlan[];
+  button?: { label: string; href?: string; action?: () => unknown };
+  requireAdminSubscription?: boolean;
+};
+
+async function SubscriptionFeature({
+  title,
+  description,
+  plans = [],
+  button,
+  requireAdminSubscription = false,
+}: SubscriptionFeatureProps) {
+  const { plan, isAdmin, isTeamSubscribed } = await getSubscriptionStatus();
+  const isActive = plans.includes(plan) && (requireAdminSubscription ? isAdmin : true);
+
+  return (
+    <Card
+      className={cn('order-2 flex flex-col pt-2', {
+        'bg-muted': !isActive,
+        'order-1': isActive,
+      })}
+    >
+      <CardHeader className={cn({ 'cursor-not-allowed': !isActive })}>
+        <CardTitle className={cn({ 'text-muted-foreground': !isActive })}>
+          {title}
+        </CardTitle>
+        {description && (
+          <CardDescription className="text-md text-muted-foreground pt-2">
+            {description}
+          </CardDescription>
+        )}
+      </CardHeader>
+      <CardFooter className={cn('bg-background mt-auto')}>
+        {isActive ? (
+          <>{button && <ActionButton {...button} />}</>
+        ) : isTeamSubscribed ? (
+          <div className="text-muted-foreground text-sm">
+            Please contact your team admin to upgrade.
+          </div>
+        ) : (
+          <>
+            <div className="flex flex-wrap items-center space-x-1.5">
+              <div className="text-muted-foreground text-sm">
+                Available on the <span className="font-bold">{plans[0]}</span> plan.
+              </div>
+            </div>
+            {isAdmin ? (
+              <div className="ml-auto">
+                <CustomerPortalButton
+                  className="text-primary text-sm font-bold"
+                  variant="link"
+                >
+                  Upgrade
+                </CustomerPortalButton>
+              </div>
+            ) : (
+              <div className="ml-auto">
+                <Button asChild className="text-primary text-sm font-bold" variant="link">
+                  <Link href="/pro/subscribe">Subscribe</Link>
+                </Button>
+              </div>
+            )}
+          </>
+        )}
+      </CardFooter>
+    </Card>
+  );
+}
+
+function ActionButton({
+  href,
+  label,
+  action = () => {},
+}: NonNullable<SubscriptionFeatureProps['button']>) {
+  const children = (
+    <>
+      {label} <ArrowLongRightIcon className="ml-1 h-4 w-4" />
+    </>
+  );
+  if (href) {
+    return (
+      <Link href={href}>
+        <Button className="text-md font-bold" variant="link">
+          {children}
+        </Button>
+      </Link>
+    );
+  }
+
+  return (
+    <Button onClick={action} className="text-md font-bold" variant="link">
+      {children}
+    </Button>
+  );
+}
+
+export default SubscriptionFeature;

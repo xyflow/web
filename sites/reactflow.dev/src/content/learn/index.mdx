@@ -5,10 +5,8 @@ description:
 pagination_next: null
 ---
 
-import { Emoji } from '@xyflow/xy-ui';
-import { Callout, Cards, Steps } from 'nextra/components';
-import { LiteYouTubeEmbed } from 'xy-shared';
-import { RemoteCodeViewer } from 'xy-shared/server';
+import { Emoji } from 'xy-shared/components/ui/emoji';
+import PlayOnline from 'xy-shared/components/learn/play-online';
 
 # Quick Start
 
@@ -18,8 +16,31 @@ interactive no-code [Playground](https://play.reactflow.dev/).
 
 ## Installation
 
-First, spin up a new React project however you like -- we recommend using
-[Vite](https://vitejs.dev/)
+To install React Flow in your existing React project, run the following command:
+
+```bash copy npm2yarn
+npm install @xyflow/react
+```
+
+<PlayOnline />
+
+## Templates
+
+If you want to get started right away, you can use a template.
+
+### React Flow Vite template
+
+We have a ready-to-use [Vite template](https://github.com/xyflow/vite-react-flow-template)
+that you can use to get up and running in no time.
+
+```bash copy npm2yarn
+npx degit xyflow/vite-react-flow-template app-name
+```
+
+### Vite template with React
+
+To create a new React Flow project from scratch, first, spin up a new React project
+however you like -- we recommend using [Vite](https://vitejs.dev/)
 
 ```bash copy npm2yarn
 npm init vite my-react-flow-app -- --template react
@@ -44,14 +65,14 @@ something going! Get rid of everything inside `App.jsx` and add the following:
 
 > [!IMPORTANT]
 >
-> If you are using Tailwind CSS 4, you need to import the main React Flow CSS
-> stylesheet after you import the `tailwindcss` stylesheet. To ensure the
-> styles are loaded in the correct order, you should always import the styles in
-> your `global.css` file (or `index.css` file), after you import `tailwindcss`.
-> **Avoid importing the styles in your `App.tsx` file or any other file that is
-> imported by your `App.tsx` file.** [Read more](/ui).
+> If you are using Tailwind CSS 4, you need to import the main React Flow CSS stylesheet
+> after you import the `tailwindcss` stylesheet. To ensure the styles are loaded in the
+> correct order, you should always import the styles in your `global.css` file (or
+> `index.css` file), after you import `tailwindcss`. **Avoid importing the styles in your
+> `App.tsx` file or any other file that is imported by your `App.tsx` file.**
+> [Read more](/ui).
 
-```jsx "import '@xyflow/react/dist/style.css';" "width: '100vw', height: '100vh'"
+```jsx
 import { useState, useCallback } from 'react';
 import { ReactFlow, applyNodeChanges, applyEdgeChanges, addEdge } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';

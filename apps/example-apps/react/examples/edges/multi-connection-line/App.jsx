@@ -67,6 +67,7 @@ const ConnectionLineFlow = () => {
       fitViewOptions={{
         padding: 0.2,
       }}
+      colorMode="system"
     >
       <Background />
     </ReactFlow>

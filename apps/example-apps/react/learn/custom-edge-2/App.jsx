@@ -44,6 +44,7 @@ function Flow() {
       onConnect={onConnect}
       edgeTypes={edgeTypes}
       fitView
+      colorMode="system"
     />
   );
 }

@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import {
   ReactFlow,
   Background,
@@ -36,8 +36,7 @@ const Flow = () => {
         top: event.clientY < pane.height - 200 && event.clientY,
         left: event.clientX < pane.width - 200 && event.clientX,
         right: event.clientX >= pane.width - 200 && pane.width - event.clientX,
-        bottom:
-          event.clientY >= pane.height - 200 && pane.height - event.clientY,
+        bottom: event.clientY >= pane.height - 200 && pane.height - event.clientY,
       });
     },
     [setMenu],
@@ -57,6 +56,7 @@ const Flow = () => {
       onPaneClick={onPaneClick}
       onNodeContextMenu={onNodeContextMenu}
       fitView
+      colorMode="system"
     >
       <Background />
       {menu && <ContextMenu onClick={onPaneClick} {...menu} />}

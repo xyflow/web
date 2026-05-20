@@ -12,7 +12,7 @@ const initNodes: Node<NodeData>[] = Array.from(
   (_, index) => {
     // Calculate grid dimensions (aim for roughly square grid)
     const cols = Math.ceil(Math.sqrt(graphSize));
-    const rows = Math.ceil(graphSize / cols);
+    // const rows = Math.ceil(graphSize / cols);
 
     // Calculate position in grid
     const col = index % cols;
@@ -40,7 +40,7 @@ export default function App() {
       <ReactFlow defaultNodes={initNodes} defaultEdges={[]} fitView>
         <Background />
         <Panel
-          className="flex gap-1 rounded-md bg-primary-foreground p-1 text-foreground"
+          className="bg-primary-foreground text-foreground flex gap-1 rounded-md p-1"
           position="top-left"
         >
           <NodeSearch />

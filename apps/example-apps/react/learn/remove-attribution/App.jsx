@@ -1,4 +1,3 @@
-import React from 'react';
 import { ReactFlow, Background } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 
@@ -18,6 +17,7 @@ function RemoveAttributionExample() {
       fitView
       proOptions={proOptions}
       nodesDraggable
+      colorMode="system"
     >
       <Background />
     </ReactFlow>

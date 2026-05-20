@@ -1,6 +1,25 @@
-## xyflow | React Flow | Svelte Flow docs
+## React Flow Website
 
-This folder contains the source code of the [xyflow website](https://xyflow.com). It is built with [nextra](https://nextra.site/).
+This folder contains the source code of the [React Flow website](https://reactflow.dev).
+It is built with [nextra](https://nextra.site/), [nhost](https://nhost.io/) and
+[stripe](http://stripe.com/).
+
+### Environment Variables
+
+With the defaults in `.env`, you are able to run the website locally. If you want to test
+the pro examples, you need to make a copy of `.env.local.example` to `.env.local` and fill
+in the values.
+
+Additionally, we set these env variables on vercel for preview and production:
+
+```
+NEXT_PUBLIC_NHOST_SUBDOMAIN
+NEXT_PUBLIC_NHOST_REGION
+NEXT_PUBLIC_PRO_EXAMPLES_URL
+UPSTASH_REDIS_REST_URL
+UPSTASH_REDIS_REST_TOKEN
+NEXT_PUBLIC_TURNSTILE_SITE_KEY
+```
 
 ### Installation
 
@@ -10,24 +29,8 @@ $ pnpm install
 
 ### Development
 
-This starts a dev server on http://localhost:3002
-
-- Navigation links for the navbar, sidebar, and mobile navigation can be modified in the [src/app/\_meta.global.tsx](./src/app/_meta.global.ts) file.
-- The project includes six layouts:
-  - The **root layout** is defined in [src/app/layout.tsx](./src/app/layout.tsx).
-  - The **Content** and **Pro** layouts have distinct navbar links, buttons, and footer links:
-    - [src/app/(content-pages)/layout.tsx](<./src/app/(content-pages)/layout.tsx>)
-    - [src/app/pro/layout.tsx](./src/app/pro/layout.tsx)
-  - Additionally, there are three specialized layouts within [src/app/(content-pages)/[...mdxPath]/page.tsx](<./src/app/(content-pages)/[...mdxPath]/page.tsx>) for:
-    - `/examples`
-    - `/learn/tutorials`
-    - and `/pro/case-studies` pages.
-- **MDX documents** are stored in the [content](./content) directory and rendered through the dynamic page at [src/app/(content-pages)/[...mdxPath]/page.tsx](<./src/app/(content-pages)/[...mdxPath]/page.tsx>).
-- **MDX components** are defined in [src/mdx-components.tsx](./src/mdx-components.tsx).
-- The **Open Graph Image** is located at [src/app/opengraph-image.jpg](./src/app/opengraph-image.jpg).
-
 ```
-$ pnpm start
+$ pnpm run dev
 ```
 
 ### Build

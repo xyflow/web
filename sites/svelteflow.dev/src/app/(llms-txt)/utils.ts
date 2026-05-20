@@ -2,7 +2,7 @@ import {
   FIELDS,
   getSvelteFlowAPIPropsCode,
   SvelteFlowAPIPropsGroup,
-} from '@/references/SvelteFlow.props';
+} from '../../../src/content/api-reference/SvelteFlow.props';
 import { generateDefinition } from 'nextra/tsdoc';
 import {
   APIDOCS_TAG_RE,
@@ -10,7 +10,7 @@ import {
   definitionToFullMarkdown,
   getAPIDocsReplacement,
   SectionKey,
-} from 'xy-shared/server';
+} from 'xy-shared/server/llms-txt';
 
 // --- SvelteFlowAPIProps ---
 

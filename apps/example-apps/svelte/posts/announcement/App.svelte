@@ -28,7 +28,7 @@
   let minimapSize = $derived(smallDevice.current ? 100 : largeDevice.current ? 180 : 150);
 </script>
 
-<SvelteFlow bind:nodes bind:edges fitView>
+<SvelteFlow bind:nodes bind:edges fitView colorMode="system">
   <Background />
   <Controls />
   <MiniMap width={minimapSize} height={minimapSize * 0.8} />

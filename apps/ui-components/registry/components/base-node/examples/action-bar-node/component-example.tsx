@@ -71,3 +71,5 @@ export const ActionBarNodeDemo = memo(() => {
     </BaseNode>
   );
 });
+
+ActionBarNodeDemo.displayName = "ActionBarNodeDemo";

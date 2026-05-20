@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import {
   ReactFlow,
   addEdge,
@@ -87,6 +87,7 @@ const NodeAsHandleFlow = () => {
         fitView
         fitViewOptions={fitViewOptions}
         connectionMode={ConnectionMode.Loose}
+        colorMode="system"
       >
         <Background />
       </ReactFlow>

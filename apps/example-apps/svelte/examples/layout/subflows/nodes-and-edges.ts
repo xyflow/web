@@ -6,20 +6,20 @@ export const initialNodes: Node[] = [
     type: 'input',
     data: { label: 'Node 0' },
     position: { x: 250, y: 5 },
-    class: 'light'
+    class: 'light',
   },
   {
     id: '2',
     data: { label: 'Group A' },
     position: { x: 100, y: 100 },
     class: 'light',
-    style: 'background-color: rgba(255, 0, 0, 0.2); width: 200px; height: 200px;'
+    style: 'background-color: rgba(255, 0, 0, 0.2); width: 200px; height: 200px;',
   },
   {
     id: '2a',
     data: { label: 'Node A.1' },
     position: { x: 10, y: 50 },
-    parentId: '2'
+    parentId: '2',
   },
   { id: '3', data: { label: 'Node 1' }, position: { x: 320, y: 100 }, class: 'light' },
   {
@@ -28,7 +28,7 @@ export const initialNodes: Node[] = [
     position: { x: 320, y: 200 },
     class: 'light',
     style: 'background-color: rgba(255, 0, 0, 0.2); width: 300px; height: 300px;',
-    type: 'group'
+    type: 'group',
   },
   {
     id: '4a',
@@ -36,7 +36,7 @@ export const initialNodes: Node[] = [
     position: { x: 15, y: 65 },
     class: 'light',
     parentId: '4',
-    extent: 'parent'
+    extent: 'parent',
   },
   {
     id: '4b',
@@ -44,22 +44,22 @@ export const initialNodes: Node[] = [
     position: { x: 15, y: 120 },
     class: 'light',
     style: 'background-color: rgba(255, 0, 255, 0.2); width: 270px; height: 150px;',
-    parentId: '4'
+    parentId: '4',
   },
   {
     id: '4b1',
     data: { label: 'Node B.A.1' },
     position: { x: 20, y: 40 },
     class: 'light',
-    parentId: '4b'
+    parentId: '4b',
   },
   {
     id: '4b2',
     data: { label: 'Node B.A.2' },
     position: { x: 100, y: 100 },
     class: 'light',
-    parentId: '4b'
-  }
+    parentId: '4b',
+  },
 ];
 
 export const initialEdges: Edge[] = [
@@ -69,5 +69,5 @@ export const initialEdges: Edge[] = [
   { id: 'e3-4b', source: '3', target: '4b' },
   { id: 'e4a-4b1', source: '4a', target: '4b1' },
   { id: 'e4a-4b2', source: '4a', target: '4b2' },
-  { id: 'e4b1-4b2', source: '4b1', target: '4b2' }
+  { id: 'e4b1-4b2', source: '4b1', target: '4b2' },
 ];

@@ -9,4 +9,6 @@ const PlaceholderNodeDemo = memo(() => {
   );
 });
 
+PlaceholderNodeDemo.displayName = "PlaceholderNodeDemo";
+
 export default PlaceholderNodeDemo;

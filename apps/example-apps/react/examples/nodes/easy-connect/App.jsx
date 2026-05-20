@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 
 import {
   Background,
@@ -82,6 +82,7 @@ const EasyConnectExample = () => {
       defaultEdgeOptions={defaultEdgeOptions}
       connectionLineComponent={CustomConnectionLine}
       connectionLineStyle={connectionLineStyle}
+      colorMode="system"
     >
       <Background />
     </ReactFlow>

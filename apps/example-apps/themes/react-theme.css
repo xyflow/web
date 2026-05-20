@@ -21,14 +21,41 @@
   --xy-handle-border-color-default: #aaaaaa;
 
   --xy-edge-label-color-default: #505050;
+  --xy-node-background-color-default: #ffffff;
+  --xy-theme-panel-bg: #ffffff;
+  --xy-theme-panel-text: #111827;
+  --xy-theme-resize-handle-bg: #ffffff;
+  --xy-theme-focus-border: #d9d9d9;
+  --xy-theme-muted-bg: #f3f4f6;
+  --xy-theme-subtle-border: #d1d5db;
 }
 
 .react-flow.dark {
+  --xy-background-color: #101012;
+  --xy-node-background-color-default: #1a1b1e;
+  --xy-node-border-default: 1px solid #303238;
+  --xy-handle-background-color-default: #141519;
+  --xy-handle-border-color-default: #5a5d66;
+  --xy-edge-label-color-default: #e6e7ea;
+  --xy-theme-hover: #7a7d86;
+  --xy-theme-edge-hover: #f3f4f6;
+  --xy-theme-panel-bg: #141519;
+  --xy-theme-panel-text: #f3f4f6;
+  --xy-theme-resize-handle-bg: #141519;
+  --xy-theme-focus-border: #5f6470;
+  --xy-theme-muted-bg: #24262c;
+  --xy-theme-subtle-border: #3f434c;
   --xy-node-boxshadow-default:
-    0px 3.54px 4.55px 0px rgba(255, 255, 255, 0.05),
-    /* light shadow */ 0px 3.54px 4.55px 0px rgba(255, 255, 255, 0.13),
-    /* medium shadow */ 0px 0.51px 1.01px 0px rgba(255, 255, 255, 0.2); /* smallest shadow */
-  --xy-theme-color-focus: #535353;
+    0px 6px 18px 0px rgba(0, 0, 0, 0.35), 0px 2px 6px 0px rgba(0, 0, 0, 0.3),
+    0px 1px 2px 0px rgba(0, 0, 0, 0.35);
+  --xy-theme-color-focus: #4b4e57;
+  --color-background: #1a1b1e;
+  --color-hover-bg: #24262c;
+  --color-disabled: #8b9099;
+}
+
+.react-flow {
+  background-color: var(--xy-background-color);
 }
 
 /* Customizing Default Theming */
@@ -50,7 +77,7 @@
 
 .react-flow__node.selectable:focus {
   box-shadow: 0px 0px 0px 4px var(--xy-theme-color-focus);
-  border-color: #d9d9d9;
+  border-color: var(--xy-theme-focus-border);
 }
 
 .react-flow__node.selectable:focus:active {
@@ -72,6 +99,11 @@
   border-color: #9e86ed;
 }
 
+.react-flow.dark .react-flow__node-group {
+  background-color: rgba(123, 107, 148, 0.22);
+  border-color: #7b6b94;
+}
+
 .react-flow__edge.selectable:hover .react-flow__edge-path,
 .react-flow__edge.selectable.selected .react-flow__edge-path {
   stroke: var(--xy-theme-edge-hover);
@@ -84,7 +116,7 @@
 .react-flow__handle.connectionindicator:hover {
   pointer-events: all;
   border-color: var(--xy-theme-edge-hover);
-  background-color: white;
+  background-color: var(--xy-handle-background-color-default);
 }
 
 .react-flow__handle.connectionindicator:focus,
@@ -99,7 +131,7 @@
 }
 
 .react-flow__resize-control.handle {
-  background-color: #ffffff;
+  background-color: var(--xy-theme-resize-handle-bg);
   border-color: #9e86ed;
   border-radius: 0;
   width: 5px;
@@ -205,7 +237,7 @@
     background-color 0.2s ease,
     border-color 0.2s ease;
   font-size: 1rem;
-  color: inherit;
+  color: var(--xy-theme-panel-text);
 }
 
 .xy-theme__input:focus {
@@ -252,7 +284,7 @@
     background-color 0.2s ease,
     border-color 0.2s ease;
   font-size: 1rem;
-  color: inherit;
+  color: var(--xy-theme-panel-text);
   margin-right: 0.5rem;
   box-shadow: var(--xy-node-boxshadow-default);
 }
@@ -267,4 +299,5 @@
   margin-top: 10px;
   margin-bottom: 3px;
   display: inline-block;
+  color: var(--xy-theme-panel-text);
 }

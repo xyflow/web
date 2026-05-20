@@ -55,6 +55,7 @@ const CustomNodeFlow = () => {
       onConnect={onConnect}
       nodeTypes={nodeTypes}
       fitView
+      colorMode="system"
     >
       <Background />
     </ReactFlow>

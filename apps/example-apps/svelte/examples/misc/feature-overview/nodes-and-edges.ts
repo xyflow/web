@@ -14,10 +14,8 @@ export const initialNodes: Node[] = [
     selectable: false,
     data: {
       level: 1,
-      label:
-        'Built-in node and edge types. Draggable, deletable and connectable!',
-      arrowStyle:
-        'right: 0; bottom: 0; transform: translate(-30px,10px) rotate(-80deg);',
+      label: 'Built-in node and edge types. Draggable, deletable and connectable!',
+      arrowStyle: 'right: 0; bottom: 0; transform: translate(-30px,10px) rotate(-80deg);',
     },
     position: { x: -200, y: -30 },
   },

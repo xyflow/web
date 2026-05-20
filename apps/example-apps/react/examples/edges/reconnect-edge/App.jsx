@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import {
   ReactFlow,
   Background,
@@ -46,8 +46,6 @@ const initialNodes = [
     },
     position: { x: 400, y: 100 },
     style: {
-      background: '#D6D5E6',
-      color: '#333',
       width: 180,
     },
   },
@@ -118,10 +116,7 @@ const EdgeReconnect = () => {
       setEdges((els) => reconnectEdge(oldEdge, newConnection, els)),
     [],
   );
-  const onConnect = useCallback(
-    (params) => setEdges((els) => addEdge(params, els)),
-    [],
-  );
+  const onConnect = useCallback((params) => setEdges((els) => addEdge(params, els)), []);
 
   return (
     <ReactFlow
@@ -134,6 +129,7 @@ const EdgeReconnect = () => {
       onConnect={onConnect}
       fitView
       attributionPosition="top-right"
+      colorMode="system"
     >
       <Controls />
       <Background />

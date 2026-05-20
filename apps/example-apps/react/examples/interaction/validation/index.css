@@ -14,25 +14,21 @@ body {
 
 .validationflow .react-flow__node {
   width: 150px;
-  border-radius: 5px;
-  padding: 10px;
-  color: #555;
-  border: 1px solid #ddd;
+  min-height: 44px;
   text-align: center;
   font-size: 12px;
 }
 
 .validationflow .react-flow__node-customnode {
-  background: #e6e6e9;
-  border: 1px solid #ddd;
+  background: var(--xy-theme-muted-bg);
 }
 
 .react-flow__node-custominput .react-flow__handle {
-  background: #e6e6e9;
+  background: var(--xy-theme-muted-bg);
 }
 
 .validationflow .react-flow__node-custominput {
-  background: #fff;
+  background: var(--xy-node-background-color-default);
 }
 
 .validationflow .react-flow__handle.connectingto {

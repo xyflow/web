@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import {
   ReactFlow,
   Controls,
@@ -117,6 +117,7 @@ const Flow = () => {
       nodeTypes={nodeTypes}
       edgeTypes={edgeTypes}
       defaultEdgeOptions={defaultEdgeOptions}
+      colorMode="system"
     >
       <Controls showInteractive={false} />
       <svg>

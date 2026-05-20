@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import {
   ReactFlow,
   addEdge,
@@ -35,11 +35,9 @@ const Flow = () => {
       (res, n) => {
         if (n.id !== internalNode.id) {
           const dx =
-            n.internals.positionAbsolute.x -
-            internalNode.internals.positionAbsolute.x;
+            n.internals.positionAbsolute.x - internalNode.internals.positionAbsolute.x;
           const dy =
-            n.internals.positionAbsolute.y -
-            internalNode.internals.positionAbsolute.y;
+            n.internals.positionAbsolute.y - internalNode.internals.positionAbsolute.y;
           const d = Math.sqrt(dx * dx + dy * dy);
 
           if (d < res.distance && d < MIN_DISTANCE) {
@@ -83,8 +81,7 @@ const Flow = () => {
         if (
           closeEdge &&
           !nextEdges.find(
-            (ne) =>
-              ne.source === closeEdge.source && ne.target === closeEdge.target,
+            (ne) => ne.source === closeEdge.source && ne.target === closeEdge.target,
           )
         ) {
           closeEdge.className = 'temp';
@@ -107,8 +104,7 @@ const Flow = () => {
         if (
           closeEdge &&
           !nextEdges.find(
-            (ne) =>
-              ne.source === closeEdge.source && ne.target === closeEdge.target,
+            (ne) => ne.source === closeEdge.source && ne.target === closeEdge.target,
           )
         ) {
           nextEdges.push(closeEdge);
@@ -130,6 +126,7 @@ const Flow = () => {
       onNodeDragStop={onNodeDragStop}
       onConnect={onConnect}
       fitView
+      colorMode="system"
     >
       <Background />
     </ReactFlow>

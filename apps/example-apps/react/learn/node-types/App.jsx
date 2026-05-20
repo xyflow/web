@@ -37,6 +37,7 @@ function Flow() {
       defaultNodes={defaultNodes}
       defaultEdges={defaultEdges}
       fitView
+      colorMode="system"
     />
   );
 }

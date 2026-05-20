@@ -56,6 +56,7 @@
     minZoom={0.1}
     maxZoom={2.5}
     {isValidConnection}
+    colorMode="system"
   >
     <Controls />
     <Background variant={BackgroundVariant.Dots} />

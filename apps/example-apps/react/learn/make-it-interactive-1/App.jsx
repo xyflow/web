@@ -47,6 +47,7 @@ function Flow() {
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
         fitView
+        colorMode="system"
       >
         <Background />
         <Controls />

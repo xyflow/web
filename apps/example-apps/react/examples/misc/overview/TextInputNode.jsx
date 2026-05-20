@@ -1,4 +1,4 @@
-import React, { Fragment, memo } from 'react';
+import { Fragment, memo } from 'react';
 import { Handle, useStore, Position, useReactFlow } from '@xyflow/react';
 
 const dimensionAttrs = ['width', 'height'];

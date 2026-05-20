@@ -38,7 +38,7 @@
       data: {
         text: 'hello',
       },
-      position: { x: -100, y: -50 },
+      position: { x: -145, y: -50 },
     },
     {
       id: '1a',
@@ -83,7 +83,7 @@
 </script>
 
 <main>
-  <SvelteFlow bind:nodes bind:edges {nodeTypes} fitView>
+  <SvelteFlow bind:nodes bind:edges {nodeTypes} fitView colorMode="system">
     <Controls />
     <Background variant={BackgroundVariant.Dots} />
     <MiniMap />

@@ -8,11 +8,15 @@ const nextConfig: NextConfig = {
   pageExtensions: ['ts', 'tsx', 'js', 'jsx'],
   // Optionally, add any other Next.js config below
   reactStrictMode: true,
-  transpilePackages: ['@xyflow/xy-ui', 'xy-shared'],
+  transpilePackages: ['xy-shared', 'xy-shared'],
   experimental: {
-    optimizePackageImports: ['@xyflow/xy-ui', 'xy-shared'],
+    optimizePackageImports: ['xy-shared', 'xy-shared'],
   },
+  cacheComponents: true,
   images: {
+    // We need this to allow images to be displayed from localhost
+    // https://github.com/vercel/next.js/discussions/86147
+    dangerouslyAllowLocalIP: process.env.NODE_ENV === 'development',
     minimumCacheTTL: 2678400, // 31 days
     dangerouslyAllowSVG: true,
     remotePatterns: [
@@ -46,6 +50,7 @@ const nextConfig: NextConfig = {
   },
   env: {
     REACT_FLOW_VERSION: reactFlowPackageJson.version,
+    NEXT_PUBLIC_CURRENT_TIME: new Date().getTime().toString(),
     NEXT_PUBLIC_EXAMPLES_URL:
       process.env.VERCEL_ENV === 'preview'
         ? `https://example-apps-git-${process.env.VERCEL_GIT_COMMIT_REF}-xyflow.vercel.app`

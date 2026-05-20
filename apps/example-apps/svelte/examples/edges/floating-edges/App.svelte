@@ -32,6 +32,7 @@
   {edgeTypes}
   fitView
   connectionMode={ConnectionMode.Loose}
+  colorMode="system"
 >
   <Background />
 </SvelteFlow>

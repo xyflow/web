@@ -7,7 +7,7 @@ import { defaultEdges } from './edges';
 
 function Flow() {
   return (
-    <ReactFlow defaultNodes={defaultNodes} defaultEdges={defaultEdges} fitView>
+    <ReactFlow defaultNodes={defaultNodes} defaultEdges={defaultEdges} fitView colorMode="system">
       <Background
         id="1"
         gap={10}

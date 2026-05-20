@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import {
   ReactFlow,
   Background,
@@ -86,6 +86,7 @@ export default function Flow() {
       onConnect={onConnect}
       fitView
       attributionPosition="top-right"
+      colorMode="system"
     >
       <Background />
     </ReactFlow>

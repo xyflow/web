@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react';
+import { useCallback, useRef } from 'react';
 import {
   Background,
   ReactFlow,
@@ -38,10 +38,7 @@ const DeleteEdgeDrop = () => {
   const edgeReconnectSuccessful = useRef(true);
   const [nodes, , onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
-  const onConnect = useCallback(
-    (params) => setEdges((els) => addEdge(params, els)),
-    [],
-  );
+  const onConnect = useCallback((params) => setEdges((els) => addEdge(params, els)), []);
 
   const onReconnectStart = useCallback(() => {
     edgeReconnectSuccessful.current = false;
@@ -73,6 +70,7 @@ const DeleteEdgeDrop = () => {
       onConnect={onConnect}
       fitView
       attributionPosition="top-right"
+      colorMode="system"
     >
       <Controls />
       <Background />

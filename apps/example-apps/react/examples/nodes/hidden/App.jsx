@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import {
   Background,
   ReactFlow,
@@ -57,6 +57,7 @@ const HiddenFlow = () => {
       onEdgesChange={onEdgesChange}
       onConnect={onConnect}
       fitView
+      colorMode="system"
     >
       <MiniMap />
       <Controls />

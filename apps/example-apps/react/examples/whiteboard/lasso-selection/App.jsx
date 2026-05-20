@@ -43,6 +43,7 @@ export default function LassoSelectionFlow() {
       onEdgesChange={onEdgesChange}
       onConnect={onConnect}
       fitView
+      colorMode="system"
     >
       <Controls />
       <Background />

@@ -1,6 +1,212 @@
-/* 1. Base Styles */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Container */
+  --container-2xl: 1400px;
+
+  /* Colors */
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-light: hsl(var(--light));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  /* Border Radius */
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  /* Font Families */
+  --font-sans: var(--font-ntdapper);
+  --font-mono: var(--font-firamono);
+
+  /* Animations */
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  --animate-fade-in: fade-in 0.5s ease-in-out;
+  --animate-reveal-rtl: reveal-rtl 0.5s 0.1s ease-in-out forwards;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes reveal-rtl {
+    from {
+      opacity: 0;
+      clip-path: inset(0 0 0 100%);
+    }
+    to {
+      opacity: 1;
+      clip-path: inset(0 0 0 0);
+    }
+  }
+}
+
+/* Keyframes */
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+@property --xy-gradient-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 200deg;
+}
+
+/**
+* Used for the Account, Pro, SignUp/SignIn buttons 
+* Animated outline effect
+**/
+.xy-animated-outline {
+  position: relative;
+  isolation: isolate;
+  color: hsl(var(--primary));
+}
+
+.xy-animated-outline::before {
+  content: '';
+  position: absolute;
+  z-index: -2;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  opacity: 0;
+  background: linear-gradient(
+    var(--xy-gradient-angle),
+    hsl(var(--secondary)) 0%,
+    hsl(var(--secondary)) 45%,
+    hsl(var(--primary)) 60%,
+    hsl(var(--primary)) 100%
+  );
+  translate: -50% -50%;
+  transition:
+    --xy-gradient-angle 0.5s ease-in-out,
+    opacity 0.5s ease-in-out;
+}
+
+.xy-animated-outline::after {
+  content: '';
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  bottom: 1px;
+  left: 1px;
+  z-index: -1;
+  border-radius: inherit;
+  background-color: hsl(var(--muted));
+}
+
+.xy-animated-outline--loaded::before {
+  --xy-gradient-angle: 480deg;
+  opacity: 1;
+}
+
+.xy-animated-outline--disabled::before {
+  opacity: 0;
+}
+
+.xy-animated-outline:hover::before {
+  transition: --xy-gradient-angle 0.25s ease-out;
+  --xy-gradient-angle: 290deg;
+}
+
+/* Container utility customization */
+@utility container {
+  margin-inline: auto;
+  padding-inline: 2rem;
+  max-width: theme(--container-2xl);
+}
+
+/*
+ * Pro example preview thumbnails (examples overview, pro examples overview, ProExamplesMarketing).
+ * Inner `Container` shell is reset via `.pro-example-preview-thumb > div` below.
+ */
+@utility pro-example-preview-thumb {
+  padding: 1px;
+  border-style: none !important;
+  background-color: transparent;
+  background-origin: border-box;
+  background-image: conic-gradient(
+    from 135deg at 10% 90%,
+    hsl(var(--primary)) 0deg,
+    #e2e2e2 100deg,
+    #f4f4f4 150deg,
+    #e2e2e2 240deg,
+    hsl(var(--primary)) 280deg
+  );
+
+  @variant dark {
+    background-image: conic-gradient(
+      from 135deg at 10% 90%,
+      hsl(var(--primary) / 0.7) 0deg,
+      #4d4d4d 100deg,
+      #2e2e2e 150deg,
+      #4d4d4d 240deg,
+      hsl(var(--primary) / 0.7) 280deg
+    );
+  }
+}
+
+/* Strip default inner Container chrome when outer uses pro-example-preview-thumb */
+.pro-example-preview-thumb > div {
+  border-style: none !important;
+  box-shadow: none !important;
+  background-color: transparent !important;
+  border-radius: calc(0.75rem - 1px);
+}
+
+/* 2. Base Styles */
 :root {
   --docsearch-primary-color: hsl(var(--primary));
+
+  /* Brand Colors - use these in site-specific CSS to set --primary */
+  --color-xyflow: 248 1% 85%;
+  --color-react: 333 100% 50%;
+  --color-svelte: 15 100% 50%;
 }
 
 @layer base {
@@ -20,7 +226,7 @@
     --card: 0 0% 100%;
     --card-foreground: 222.2 47.4% 11.2%;
 
-    --border: 214.3 31.8% 91.4%;
+    --border: 214.3 31.8% 95%;
     --input: 214.3 31.8% 91.4%;
 
     --secondary: 0 100% 100%;
@@ -38,6 +244,38 @@
 
     --light: 0 0% 46%;
   }
+  .dark {
+    --primary: 333 100% 50%;
+    --primary-foreground: 210 40% 98%;
+
+    --background: 0 0% 6.7%;
+    --foreground: 0 0% 100%;
+
+    --muted: from hsl(var(--primary)) h 25% 12.9%;
+    --muted-foreground: 215.4 16.3% 65%;
+
+    --popover: 0 0% 6.7%;
+    --popover-foreground: 0 0% 100%;
+
+    --card: 0 0% 9%;
+    --card-foreground: 0 0% 100%;
+
+    --border: 0 0% 20%;
+    --input: 214.3 31.8% 22%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 215 20.2% 65.1%;
+
+    --light: 0 0% 80%;
+  }
 }
 
 @layer base {
@@ -45,7 +283,7 @@
     box-sizing: border-box;
   }
   body {
-    @apply bg-background text-foreground;
+    background-color: hsl(var(--background));
     font-feature-settings:
       'rlig' 1,
       'calt' 1;
@@ -71,15 +309,19 @@ html:has(body.x\:overflow-hidden) nav {
   width: 100%;
 }
 
-/* 2. Typography */
+/* 3. Typography */
 
 .xy-link-gray {
-  @apply x:transition x:text-gray-600 x:dark:text-gray-400 x:hover:text-gray-800 x:dark:hover:text-gray-200 x:contrast-more:text-gray-700 x:contrast-more:dark:text-gray-100;
+  @apply hover:text-muted-foreground text-gray-600 transition contrast-more:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 contrast-more:dark:text-gray-100;
 }
 
-/* 3. Navigation */
+.dark .xy-link-gray {
+  @apply text-gray-300 hover:text-gray-200 contrast-more:text-gray-100;
+}
+
+/* 4. Navigation */
 .nextra-menu-desktop li.active > a {
-  @apply bg-transparent text-primary;
+  @apply text-primary bg-transparent;
 }
 
 nav a:has(svg.nav-github-logo) {
@@ -104,12 +346,12 @@ main .x\:border-primary-500 {
   @apply border-primary;
 }
 
-/* 4. Sidebar */
+/* 5. Sidebar */
 
 /* adds labels to the sidebar items */
 .sidebar-title.pro:after {
   content: 'Pro';
-  @apply bg-primary border border-primary text-white text-xs ml-1.5 px-1.5 font-bold rounded-full;
+  @apply bg-primary border-primary ml-1.5 rounded-full border px-1.5 text-xs font-bold text-white;
 }
 
 .sidebar-title.pro.free:after {
@@ -132,41 +374,7 @@ li.active > .sidebar-title.pro:after {
   @apply text-primary ml-1.5 px-1.5;
 }
 
-/* 5. Buttons */
-.pro-button {
-  transition: all 0.3s ease;
-}
-
-@property --gradientAngle {
-  syntax: '<angle>';
-  inherits: false;
-  initial-value: 258deg;
-}
-
-.pro-button {
-  --gradientAngle: 258deg;
-}
-
-.pro-button:before {
-  transition: --gradientAngle 0.3s ease;
-  background:
-    linear-gradient(
-      var(--gradientAngle),
-      hsl(var(--primary)) 36.34%,
-      hsl(var(--secondary)) 50.92%,
-      rgba(240, 240, 240, 1) 63.72%
-    ),
-    linear-gradient(
-      var(--gradientAngle),
-      hsl(var(--primary)) 2.22%,
-      hsl(var(--secondary)) 18.5%,
-      rgba(240, 240, 240, 1) 32.77%
-    );
-}
-
-.pro-button:hover:before {
-  --gradientAngle: 45deg;
-}
+/* 6. Buttons */
 
 /* nextra blog overwrites */
 article.nextra-content ol li,
@@ -179,20 +387,29 @@ article.nextra-content ol li p {
   color: #222;
 }
 
-/* Docsearch overwrite */
-.nextra-navbar {
-  --docsearch-searchbox-background: #eee;
-  --docsearch-searchbox-focus-background: #eee;
+/* 7. DocSearch */
+.DocSearch--active {
+  /* Prevents jumping of site when search opens */
+  margin-inline-end: 0 !important;
 }
 
-/* 7. DocSearch */
 .DocSearch-Button {
-  @apply bg-gray-100;
+  background-color: hsl(var(--muted));
+  border-radius: 100px;
+  border-color: transparent;
+  color: hsl(var(--muted-foreground));
+}
+
+.DocSearch-Button:hover {
+  background-color: hsl(var(--muted));
+  color: hsl(var(--foreground));
+  border-color: hsl(var(--primary));
 }
 
 .DocSearch-Button .DocSearch-Search-Icon {
   width: 16px;
   height: 16px;
+  color: hsl(var(--foreground));
 }
 
 .DocSearch-Button .DocSearch-Button-Keys {
@@ -200,6 +417,7 @@ article.nextra-content ol li p {
   min-width: 0;
   margin-left: 10px;
   margin-right: 5px;
+  width: 25px;
 }
 
 .DocSearch-Button .DocSearch-Button-Key {
@@ -208,9 +426,8 @@ article.nextra-content ol li p {
   top: 0;
   width: auto;
   height: auto;
-  padding: 0;
-  margin: 0;
-  margin-left: 4px;
+  border: none;
+  color: hsl(var(--muted-foreground));
 }
 
 .DocSearch-Button .DocSearch-Button-Placeholder {
@@ -227,8 +444,6 @@ article.nextra-content ol li p {
   @apply bg-primary/5;
   box-shadow: none;
 }
-
-/* 9. Miscellaneous */
 
 /* stack example code and preview vertically */
 .sandpack-wrapper.vertical > .sp-wrapper > .sp-layout {
@@ -266,4 +481,20 @@ article.nextra-content ol li p {
   .DocSearch-Button-Placeholder {
     display: none;
   }
+}
+
+.logo-bg-color {
+  fill: hsl(var(--background));
+}
+
+.logo-outline {
+  stroke: hsl(var(--foreground));
+}
+
+.logo-fg-color {
+  fill: hsl(var(--foreground));
+}
+
+.site-native-navbar > div:nth-of-type(2) {
+  display: none;
 }

@@ -3,8 +3,10 @@
 import Link from 'next/link';
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 import { Position } from '@xyflow/react';
-import { Text } from '@xyflow/xy-ui';
-import { Hero, HeadlineNode, Handle } from '../';
+import { Text } from '../components/ui/text';
+import { Hero } from '../components/hero';
+import { HeadlineNode } from '../components/headline-node';
+import { Handle } from '../components/handle';
 
 import { BaseLayout } from './base';
 
@@ -17,17 +19,17 @@ export function NotFoundLayout({ children }: NotFoundLayoutProps) {
     <BaseLayout>
       <Hero
         title={
-          <div className="flex justify-center gap-12 lg:gap-24 lg:text-[5ch] mt-12 lg:mt-32 pb-24">
+          <div className="mt-12 flex justify-center gap-12 pb-24 lg:mt-32 lg:gap-24 lg:text-[5ch]">
             <HeadlineNode>
               4
               <Handle
                 type="target"
                 position={Position.Right}
                 id="4-target"
-                className="top-1/2 -right-[8px]"
+                className="-right-[8px] top-1/2"
                 handleWidthClass="w-4"
                 handleHeightClass="h-8"
-                handleClassName="border-none bg-purple-600"
+                handleClassName="border-none bg-primary"
                 dashed={false}
               />
             </HeadlineNode>
@@ -36,25 +38,25 @@ export function NotFoundLayout({ children }: NotFoundLayoutProps) {
               <Handle
                 type="source"
                 position={Position.Left}
-                className="top-1/2 -left-[8px]"
-                handleClassName="border-none bg-purple-600"
+                className="-left-[8px] top-1/2"
+                handleClassName="border-none bg-primary"
                 handleWidthClass="w-4"
                 handleHeightClass="h-8"
                 id="0-source"
                 to="4-target"
-                svgClassName="stroke-purple-600"
+                svgClassName="stroke-primary"
                 dashed={false}
               />
               <Handle
                 type="source"
                 position={Position.Right}
-                className="top-1/2 -right-[8px]"
-                handleClassName="border-none bg-purple-500"
+                className="-right-[8px] top-1/2"
+                handleClassName="border-none bg-primary"
                 handleWidthClass="w-4"
                 handleHeightClass="h-8"
                 id="0.1-source"
                 to="4.1-target"
-                svgClassName="stroke-purple-500"
+                svgClassName="stroke-primary"
                 dashed={false}
               />
             </HeadlineNode>
@@ -64,8 +66,8 @@ export function NotFoundLayout({ children }: NotFoundLayoutProps) {
                 type="target"
                 position={Position.Left}
                 id="4.1-target"
-                className="top-1/2 -left-[8px]"
-                handleClassName="border-none bg-purple-500"
+                className="-left-[8px] top-1/2"
+                handleClassName="border-none bg-primary"
                 handleWidthClass="w-4"
                 handleHeightClass="h-8"
                 dashed={false}
@@ -77,13 +79,13 @@ export function NotFoundLayout({ children }: NotFoundLayoutProps) {
         size="xl"
         backgroundVariant="gradient"
       >
-        <div className="flex flex-col items-center -mt-[40px]">
+        <div className="-mt-[40px] flex flex-col items-center">
           <Text size="lg" className="block">
             We couldn&apos;t find that page.
           </Text>
           <Link href="/">
             <Text>
-              Go Home <ArrowRightCircleIcon className="inline w-6 h-6 ml-1" />
+              Go Home <ArrowRightCircleIcon className="ml-1 inline h-6 w-6" />
             </Text>
           </Link>
         </div>

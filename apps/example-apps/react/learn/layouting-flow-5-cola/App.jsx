@@ -1,5 +1,5 @@
 import * as Cola from 'webcola';
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import {
   ReactFlow,
   ReactFlowProvider,
@@ -67,9 +67,7 @@ const useLayoutedElements = () => {
       });
 
       simulation.tick();
-      setNodes(
-        nodes.map((node) => ({ ...node, position: { x: node.x, y: node.y } })),
-      );
+      setNodes(nodes.map((node) => ({ ...node, position: { x: node.x, y: node.y } })));
 
       window.requestAnimationFrame(() => {
         // Give React and React Flow a chance to update and render the new node
@@ -107,6 +105,7 @@ const LayoutFlow = () => {
       edges={edges}
       onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
+      colorMode="system"
     >
       <Panel>
         {initialized && (

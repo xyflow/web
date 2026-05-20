@@ -69,6 +69,7 @@ export default function EraserFlow() {
       onConnect={onConnect}
       fitView
       defaultEdgeOptions={defaultEdgeOptions}
+      colorMode="system"
     >
       <Controls />
       <Background />

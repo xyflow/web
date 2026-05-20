@@ -12,7 +12,7 @@ import {
   Position,
   useStore,
 } from '@xyflow/react';
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 
 export type DataEdge<T extends Node = Node> = Edge<{
   /**
@@ -83,7 +83,7 @@ export function DataEdge({
       {data.key && (
         <EdgeLabelRenderer>
           <div
-            className="absolute rounded border bg-background px-1 text-foreground"
+            className="bg-background text-foreground absolute rounded border px-1"
             style={{ transform }}
           >
             <pre className="text-xs">{label}</pre>

@@ -95,6 +95,7 @@ function ReactiveFlow() {
       onEdgesChange={onEdgesChange}
       onConnect={onConnect}
       fitView
+      colorMode="system"
     >
       <Background />
     </ReactFlow>

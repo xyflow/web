@@ -13,9 +13,7 @@ const nodeTypes = {
 };
 
 function App() {
-  const nodes = [
-    { id: '0', type: 'slide', position: { x: 0, y: 0 }, data: {} },
-  ];
+  const nodes = [{ id: '0', type: 'slide', position: { x: 0, y: 0 }, data: {} }];
 
   return (
     <ReactFlow nodes={nodes} nodeTypes={nodeTypes} minZoom={0.1} fitView>

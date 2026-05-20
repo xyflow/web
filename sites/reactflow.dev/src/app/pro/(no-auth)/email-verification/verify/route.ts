@@ -1,0 +1,1 @@
+export { GET } from 'xy-shared/routes/pro/(no-auth)/email-verification/verify/route';

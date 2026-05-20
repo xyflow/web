@@ -1,5 +1,3 @@
-import React from 'react';
-
 function Icon() {
   return (
     <svg width="14" viewBox="0 0 75 100" xmlns="http://www.w3.org/2000/svg">

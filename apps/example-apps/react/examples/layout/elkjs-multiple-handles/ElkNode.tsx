@@ -7,12 +7,7 @@ export default function ElkNode({ data }: NodeProps<ElkNodeType>) {
     <>
       <div className="handles targets">
         {data.targetHandles.map((handle) => (
-          <Handle
-            key={handle.id}
-            id={handle.id}
-            type="target"
-            position={Position.Left}
-          />
+          <Handle key={handle.id} id={handle.id} type="target" position={Position.Left} />
         ))}
       </div>
       <div className="label">{data.label}</div>

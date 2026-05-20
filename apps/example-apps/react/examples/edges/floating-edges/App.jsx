@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import {
   ReactFlow,
   addEdge,
@@ -49,6 +49,7 @@ const NodeAsHandleFlow = () => {
         fitView
         edgeTypes={edgeTypes}
         connectionLineComponent={FloatingConnectionLine}
+        colorMode="system"
       >
         <Background />
       </ReactFlow>

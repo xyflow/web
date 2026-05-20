@@ -36,6 +36,7 @@ function ExampleFlow() {
       onNodeDragStop={onNodeDragStop}
       minZoom={0}
       fitView
+      colorMode="system"
     >
       <Background />
       <MiniMap />

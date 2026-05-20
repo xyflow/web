@@ -1,4 +1,3 @@
-import React from 'react';
 import { getBezierPath, type EdgeProps } from '@xyflow/react';
 
 export default function CustomEdge({

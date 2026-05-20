@@ -19,7 +19,7 @@ const nodeColor = (node) => {
 
 function Flow() {
   return (
-    <ReactFlow defaultNodes={defaultNodes} defaultEdges={defaultEdges} fitView>
+    <ReactFlow defaultNodes={defaultNodes} defaultEdges={defaultEdges} fitView colorMode="system">
       <MiniMap
         nodeColor={nodeColor}
         nodeStrokeWidth={3}

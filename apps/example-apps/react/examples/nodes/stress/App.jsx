@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import {
   ReactFlow,
   useNodesState,
@@ -44,6 +44,7 @@ const StressFlow = () => {
       onConnect={onConnect}
       fitView
       minZoom={0}
+      colorMode="system"
     >
       <MiniMap />
       <Controls />

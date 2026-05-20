@@ -56,6 +56,7 @@
     onpaneclick={handlePaneClick}
     onpointerdown={handlePaneClick}
     fitView
+    colorMode="system"
   >
     <Background />
     {#if menu}

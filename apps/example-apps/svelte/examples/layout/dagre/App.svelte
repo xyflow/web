@@ -75,10 +75,11 @@
   fitView
   connectionLineType={ConnectionLineType.SmoothStep}
   defaultEdgeOptions={{ type: 'smoothstep', animated: true }}
+  colorMode="system"
 >
   <Panel position="top-right">
-    <button onclick={() => onLayout('TB')}>vertical layout</button>
-    <button onclick={() => onLayout('LR')}>horizontal layout</button>
+    <button class="xy-theme__button" onclick={() => onLayout('TB')}>vertical layout</button>
+    <button class="xy-theme__button" onclick={() => onLayout('LR')}>horizontal layout</button>
   </Panel>
   <Background />
 </SvelteFlow>

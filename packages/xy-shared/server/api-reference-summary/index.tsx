@@ -14,9 +14,7 @@ export type ApiReferenceSummaryProps = {
 
 const { h2: H2, p: P } = getMdxComponents();
 
-export const ApiReferenceSummary: FC<ApiReferenceSummaryProps> = async ({
-  category,
-}) => {
+export const ApiReferenceSummary: FC<ApiReferenceSummaryProps> = async ({ category }) => {
   const pages = await getApiReferenceByCategory(category);
   return (
     <div>
@@ -27,11 +25,8 @@ export const ApiReferenceSummary: FC<ApiReferenceSummaryProps> = async ({
           </H2>
           <P>{description}</P>
 
-          <Link
-            href={route}
-            className="block _mt-8 text-sm text-primary text-right"
-          >
-            Read more <ArrowRightIcon className="inline w-3 h-3" />
+          <Link href={route} className="_mt-8 text-primary block text-right text-sm">
+            Read more <ArrowRightIcon className="inline h-3 w-3" />
           </Link>
         </article>
       ))}

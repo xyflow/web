@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import { stratify, tree } from 'd3-hierarchy';
 import {
   ReactFlow,
@@ -64,6 +64,7 @@ const LayoutFlow = () => {
       onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
       fitView
+      colorMode="system"
     >
       <Panel position="top-right">
         <button onClick={onLayout}>layout</button>

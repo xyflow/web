@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import {
   ReactFlow,
   useNodesState,
@@ -123,6 +123,7 @@ const EdgesFlow = () => {
       fitView
       attributionPosition="top-right"
       connectionMode={ConnectionMode.Loose}
+      colorMode="system"
     >
       <Controls />
       <Background />

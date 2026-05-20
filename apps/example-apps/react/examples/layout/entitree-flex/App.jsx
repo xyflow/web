@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import {
   Background,
   ReactFlow,
@@ -60,6 +60,7 @@ const LayoutFlow = () => {
       connectionLineType={ConnectionLineType.SmoothStep}
       fitView
       nodeTypes={nodeTypes}
+      colorMode="system"
     >
       <Panel position="top-right">
         <button className="xy-theme__button" onClick={() => onLayout('TB')}>

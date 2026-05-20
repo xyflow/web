@@ -12,13 +12,14 @@ const initialNodes = [
     id: 'n2',
     data: { label: 'Node 2' },
     position: { x: 100, y: 100 },
+    type: 'output',
   },
 ];
 
 function Flow() {
   return (
     <div style={{ height: '100%' }}>
-      <ReactFlow nodes={initialNodes} fitView>
+      <ReactFlow nodes={initialNodes} fitView colorMode="system">
         <Background />
         <Controls />
       </ReactFlow>

@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { NodeProps, Position } from "@xyflow/react";
+import { Position } from "@xyflow/react";
 
 import { LabeledHandle } from "@/registry/components/labeled-handle";
 import { BaseNode } from "@/registry/components/base-node";
@@ -22,5 +22,7 @@ const LabeledHandleDemo = memo(() => {
     </BaseNode>
   );
 });
+
+LabeledHandleDemo.displayName = "LabeledHandleDemo";
 
 export default LabeledHandleDemo;

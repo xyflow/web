@@ -1,9 +1,4 @@
-import {
-  useNodes,
-  ViewportPortal,
-  useReactFlow,
-  type XYPosition,
-} from '@xyflow/react';
+import { useNodes, ViewportPortal, useReactFlow, type XYPosition } from '@xyflow/react';
 
 export default function NodeInspector() {
   const { getInternalNode } = useReactFlow();

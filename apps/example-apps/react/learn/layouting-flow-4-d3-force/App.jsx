@@ -1,11 +1,5 @@
-import {
-  forceSimulation,
-  forceLink,
-  forceManyBody,
-  forceX,
-  forceY,
-} from 'd3-force';
-import React, { useCallback, useMemo, useRef } from 'react';
+import { forceSimulation, forceLink, forceManyBody, forceX, forceY } from 'd3-force';
+import { useCallback, useMemo, useRef } from 'react';
 import {
   ReactFlow,
   ReactFlowProvider,
@@ -126,8 +120,7 @@ const useLayoutedElements = () => {
 const LayoutFlow = () => {
   const [nodes, , onNodesChange] = useNodesState(initialNodes);
   const [edges, , onEdgesChange] = useEdgesState(initialEdges);
-  const [initialized, { toggle, isRunning }, dragEvents] =
-    useLayoutedElements();
+  const [initialized, { toggle, isRunning }, dragEvents] = useLayoutedElements();
 
   return (
     <ReactFlow
@@ -138,6 +131,7 @@ const LayoutFlow = () => {
       onNodeDragStop={dragEvents.stop}
       onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
+      colorMode="system"
     >
       <Panel>
         {initialized && (

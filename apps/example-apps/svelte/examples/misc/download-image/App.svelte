@@ -20,7 +20,7 @@
   };
 </script>
 
-<SvelteFlow bind:nodes bind:edges {nodeTypes} {defaultEdgeOptions} fitView>
+<SvelteFlow bind:nodes bind:edges {nodeTypes} {defaultEdgeOptions} fitView colorMode="system">
   <Controls />
   <DownloadButton />
   <Background />

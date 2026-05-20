@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import {
   Background,
   ReactFlow,
@@ -79,6 +79,7 @@ const ContextualZoomFlow = () => {
       defaultViewport={defaultViewport}
       attributionPosition="top-right"
       fitView
+      colorMode="system"
     >
       <Background />
       <MiniMap />

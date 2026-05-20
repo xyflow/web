@@ -44,6 +44,7 @@
   {nodeTypes}
   {edgeTypes}
   fitView
+  colorMode="system"
 >
   <Background patternColor="#aaa" gap={16} />
   <Controls />

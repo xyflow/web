@@ -36,6 +36,7 @@
   fitView
   class="intersection-flow"
   onnodedrag={onNodeDrag}
+  colorMode="system"
 >
   <Background />
   <Controls />

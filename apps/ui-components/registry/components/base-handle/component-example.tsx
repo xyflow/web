@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { NodeProps, Position } from "@xyflow/react";
+import { Position } from "@xyflow/react";
 
 import { BaseHandle } from "@/registry/components/base-handle";
 import { BaseNode, BaseNodeContent } from "@/registry/components/base-node";
@@ -16,4 +16,5 @@ const BaseHandleDemo = memo(() => {
   );
 });
 
+BaseHandleDemo.displayName = "BaseHandleDemo";
 export default BaseHandleDemo;

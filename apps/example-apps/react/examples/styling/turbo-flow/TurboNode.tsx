@@ -1,4 +1,4 @@
-import React, { memo, type ReactNode } from 'react';
+import { memo, type ReactNode } from 'react';
 import { FiCloud } from 'react-icons/fi';
 
 import { Handle, Position, type Node, type NodeProps } from '@xyflow/react';

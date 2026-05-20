@@ -1,4 +1,3 @@
-import React from 'react';
 import { ReactFlow, Background } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 
@@ -16,6 +15,7 @@ function Flow() {
       defaultNodes={nodes}
       defaultEdges={edges}
       fitView
+      colorMode="system"
     >
       <Background />
     </ReactFlow>

@@ -2,7 +2,7 @@ import {
   FIELDS,
   getReactFlowAPIPropsCode,
   ReactFlowAPIPropsGroup,
-} from '@/references/ReactFlow.props';
+} from '../../../src/content/api-reference/ReactFlow.props';
 import { generateDefinition } from 'nextra/tsdoc';
 import {
   APIDOCS_TAG_RE,
@@ -10,7 +10,7 @@ import {
   definitionToFullMarkdown,
   getAPIDocsReplacement,
   SectionKey,
-} from 'xy-shared/server';
+} from 'xy-shared/server/llms-txt';
 
 // --- ReactFlowAPIProps tag replacement ---
 

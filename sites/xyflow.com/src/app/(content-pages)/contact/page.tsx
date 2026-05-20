@@ -1,11 +1,16 @@
 import Link from 'next/link';
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 import { EnvelopeIcon } from '@heroicons/react/24/outline';
-import { Card, Input, InputLabel, Text } from '@xyflow/xy-ui';
-import { BaseLayout, ContactForm, Hero } from 'xy-shared';
+import { Card } from 'xy-shared/components/ui/card';
+import { Input } from 'xy-shared/components/ui/input';
+import { InputLabel } from 'xy-shared/components/ui/input';
+import { Text } from 'xy-shared/components/ui/text';
+import { BaseLayout } from 'xy-shared/layouts/base';
+import { ContactForm } from 'xy-shared/components/contact-form';
+import { Hero } from 'xy-shared/components/hero';
 import { FC } from 'react';
 import { Metadata } from 'next';
-import { submitContact } from '@/actions/contact';
+import { submitContact } from 'xy-shared/server-actions/contact';
 
 export const metadata: Metadata = {
   title: 'Contact Us',
@@ -23,48 +28,34 @@ const Page: FC = () => {
         title="We’re happy to answer any questions you have."
         subtitle="Messages go to our email inbox and we aim to respond within a couple of days."
       />
-      <Card className="relative mt-16 md:mt-32 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 p-2 md:p-4">
+      <Card className="relative mt-16 grid grid-cols-1 gap-4 p-2 md:mt-32 md:grid-cols-2 md:gap-8 md:p-4">
         <div
-          className="absolute opacity-5 w-full h-[200%] left-1/2 -translate-x-1/2 -translate-y-1/4 pointer-events-none"
+          className="pointer-events-none absolute left-1/2 h-[200%] w-full -translate-x-1/2 -translate-y-1/4 opacity-5"
           style={{
             background:
-              'radial-gradient(rgba(68,91,222,1) 0%, rgba(215,78,243,1) 25%, rgba(255,255,255,1) 50%)',
+              'radial-gradient(rgba(68,91,222,1) 0%, rgba(215,78,243,1) 25%, hsl(var(--card)) 50%)',
           }}
         />
-        <Card className="p-8 bg-white relative">
+        <Card className="bg-background relative p-8">
           <ContactForm action={submitContact}>
             <InputLabel>
               <span>Your Email</span>
               <Input name="email" type="email" required variant="square" />
             </InputLabel>
 
-            {/* <div className="col-span-4 flex flex-col space-y-2">
-              <p className="mb-1 block text-sm font-bold text-muted-foreground">
-                What are you reaching out about?
-              </p>
-              {contactReasons.map(({ name, value }) => (
-                <InputLabel key={name} className="ml-4 flex items-center gap-2">
-                  <Checkbox name="contact-reason" value={value} />
-                  <span>{name}</span>
-                </InputLabel>
-              ))}
-            </div> */}
-
             <InputLabel className="col-span-4">
               <span>Your message</span>
-              {/* Maybe we should wrap this in a component and drop it into xy-ui/TextArea
-                  or something similar. */}
               <textarea
                 name="message"
                 required
                 // These classes are copied from the `<Input />` component.
-                className="px-4 py-2 border border-gray-300 rounded-lg w-full h-32 md:h-64"
+                className="h-32 w-full rounded-lg border border-gray-300 px-4 py-2 md:h-64"
               />
             </InputLabel>
           </ContactForm>
         </Card>
 
-        <div className="py-8 px-24 space-y-8">
+        <div className="space-y-8 px-24 py-8">
           <Text size="lg">You can also find us on...</Text>
 
           <div className="divide-y divide-gray-200">
@@ -73,7 +64,7 @@ const Page: FC = () => {
                 <Text size="sm" className="group-hover:underline">
                   {name}
                 </Text>
-                <ArrowRightCircleIcon className="w-5 h-5" />
+                <ArrowRightCircleIcon className="h-5 w-5" />
               </Link>
             ))}
           </div>

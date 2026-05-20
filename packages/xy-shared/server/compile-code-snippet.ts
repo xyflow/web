@@ -9,10 +9,7 @@ type CompileCodeSnippetOptions = {
   npm2yarn?: boolean;
 };
 
-function createMDXString(
-  snippet: string,
-  options: CompileCodeSnippetOptions = {},
-) {
+function createMDXString(snippet: string, options: CompileCodeSnippetOptions = {}) {
   const codeblockMetadata = [
     options.showCopy && 'copy',
     options.showLineNumbers && 'showLineNumbers',
@@ -27,7 +24,7 @@ function createMDXString(
 ${snippet}`;
 }
 
-export function compileCodeSnippet(
+export async function compileCodeSnippet(
   snippet: string,
   options?: CompileCodeSnippetOptions,
 ): Promise<string> {

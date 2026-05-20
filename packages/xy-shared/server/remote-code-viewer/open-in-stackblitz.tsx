@@ -3,7 +3,8 @@
 import sdk, { OpenOptions, Project, ProjectTemplate } from '@stackblitz/sdk';
 import { useCallback } from 'react';
 
-import { Framework, IconButton } from '@xyflow/xy-ui';
+import { Framework } from '../../types';
+import { IconButton } from '../../components/ui/icon-button';
 import { fetchFiles } from './fetchFiles';
 
 type OpenInStackblitzProps = {
@@ -20,11 +21,18 @@ type Files = {
 export function OpenInStackblitz({ framework, route }: OpenInStackblitzProps) {
   const openInStackblitz = useCallback(async () => {
     try {
-      const { files, dependencies } = await fetchFiles(route, framework);
-      const { project, options } = prepare(framework, files, dependencies);
+      const { files, dependencies, devDependencies } = await fetchFiles(route, framework);
+      const { project, options } = prepare(
+        framework,
+        files,
+        dependencies,
+        devDependencies,
+      );
 
       sdk.openProject(project, options);
-    } catch (e) {}
+    } catch (e) {
+      console.error(e);
+    }
   }, [framework, route]);
 
   return (
@@ -33,7 +41,7 @@ export function OpenInStackblitz({ framework, route }: OpenInStackblitzProps) {
       onClick={openInStackblitz}
       icon={
         <svg
-          className="size-4 fill-slate-700 stroke-slate-700"
+          className="fill-card-foreground stroke-card-foreground size-4"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 56 78"
         >
@@ -48,16 +56,17 @@ function prepare(
   framework: Framework,
   files: Files,
   dependencies: Record<string, string>,
+  devDependencies: Record<string, string> = {},
 ): { project: Project; options: OpenOptions } {
   switch (framework) {
     case 'react': {
-      const projectFiles = prepareReactProject(files, dependencies);
+      const projectFiles = prepareReactProject(files, dependencies, devDependencies);
       const project = {
         title: 'ReactFlow example',
         template: 'node' as ProjectTemplate,
         files: projectFiles,
       };
-      const options = { openFile: 'App.tsx' };
+      const options = { openFile: 'src/App.tsx' };
 
       return { project, options };
     }
@@ -69,7 +78,7 @@ function prepare(
         template: 'node' as ProjectTemplate,
         files: projectFiles,
       };
-      const options = { openFile: 'App.svelte' };
+      const options = { openFile: 'src/App.svelte' };
 
       return { project, options };
     }
@@ -79,7 +88,11 @@ function prepare(
   }
 }
 
-function prepareReactProject(files: Files, dependencies: Record<string, string>) {
+function prepareReactProject(
+  files: Files,
+  dependencies: Record<string, string>,
+  devDependencies: Record<string, string> = {},
+) {
   const hasTailwind4 = Object.entries(dependencies).some(
     ([dependency, version]) =>
       dependency.includes('tailwindcss') && version.startsWith('^4.'),
@@ -93,44 +106,55 @@ function prepareReactProject(files: Files, dependencies: Record<string, string>)
         return { ...acc, [key]: value.code };
       }
     }, {}),
-    'package.json': JSON.stringify({
-      name: 'reactflow-example',
-      private: true,
-      version: '1.0.0',
-      scripts: {
-        dev: 'vite',
-        build: 'vite build',
-        preview: 'vite preview',
+    'package.json': JSON.stringify(
+      {
+        name: 'reactflow-example',
+        private: true,
+        version: '1.0.0',
+        scripts: {
+          dev: 'vite',
+          build: 'vite build',
+          preview: 'vite preview',
+        },
+        dependencies: {
+          ...dependencies,
+          // If tailwindcss is present and is version 4, add @tailwindcss/vite
+          ...(hasTailwind4 ? { '@tailwindcss/vite': dependencies['tailwindcss'] } : {}),
+        },
+        devDependencies: {
+          '@vitejs/plugin-react': '^6.0.1',
+          vite: '^8.0.10',
+          '@types/react': devDependencies['@types/react'] ?? '^19.0.0',
+          '@types/react-dom': devDependencies['@types/react-dom'] ?? '^19.0.0',
+          typescript: devDependencies['typescript'] ?? '^6.0.2',
+        },
       },
-      dependencies: {
-        ...dependencies,
-        // If tailwindcss is present and is version 4, add @tailwindcss/vite
-        ...(hasTailwind4 ? { '@tailwindcss/vite': dependencies['tailwindcss'] } : {}),
+      null,
+      2,
+    ),
+    'vite.config.js': `import { defineConfig } from 'vite'\nimport react from '@vitejs/plugin-react'\n${hasTailwind4 ? 'import tailwindcss from "@tailwindcss/vite"' : ''}\nexport default defineConfig({\n  plugins: [react(), ${hasTailwind4 ? 'tailwindcss()' : ''}],\n})`,
+    'tsconfig.json': JSON.stringify(
+      {
+        compilerOptions: {
+          target: 'es2023',
+          lib: ['ES2023', 'DOM'],
+          module: 'esnext',
+          types: ['vite/client'],
+          skipLibCheck: true,
+
+          /* Bundler mode */
+          moduleResolution: 'bundler',
+          allowImportingTsExtensions: true,
+          verbatimModuleSyntax: true,
+          moduleDetection: 'force',
+          noEmit: true,
+          jsx: 'react-jsx',
+        },
+        include: ['src'],
       },
-      devDependencies: {
-        '@vitejs/plugin-react': '^4.4.1',
-        vite: '^6.3.3',
-        '@types/react': dependencies.react ?? '^18.0.0',
-        '@types/react-dom': dependencies['react-dom'] ?? '^18.0.0',
-        typescript: '^5.8.3',
-      },
-    }),
-    'vite.config.js': `import { defineConfig } from 'vite'\nimport react from '@vitejs/plugin-react'\n${hasTailwind4 ? 'import tailwindcss from "@tailwindcss/vite"' : ''}\n// https://vitejs.dev/config/\nexport default defineConfig({\n  plugins: [react(), ${hasTailwind4 ? 'tailwindcss()' : ''}],\n})`,
-    'vite-env.d.ts': `/// <reference types="vite/client" />\n`,
-    'tsconfig.json': `{
-  "compilerOptions": {
-    "target": "ESNext",
-    "jsx": "react-jsx",
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "useDefineForClassFields": true,
-    "module": "ESNext",
-    "resolveJsonModule": true,
-    "allowJs": true,
-    "checkJs": true,
-    "isolatedModules": true
-  },
-  "include": ["./**/*.d.ts", "./**/*.{js,jsx,ts,tsx}"],
-}`,
+      null,
+      2,
+    ),
   };
 }
 
@@ -143,27 +167,30 @@ function prepareSvelteProject(files: Files, dependencies: Record<string, string>
         return { ...acc, [key]: value.code };
       }
     }, {}),
-    'package.json': JSON.stringify({
-      name: 'svelteflow-example',
-      private: true,
-      version: '1.0.0',
-      type: 'module',
-      scripts: {
-        dev: 'vite',
-        build: 'vite build',
-        preview: 'vite preview',
+    'package.json': JSON.stringify(
+      {
+        name: 'svelteflow-example',
+        private: true,
+        version: '1.0.0',
+        type: 'module',
+        scripts: {
+          dev: 'vite',
+          build: 'vite build',
+          preview: 'vite preview',
+        },
+        dependencies,
+        devDependencies: {
+          '@sveltejs/vite-plugin-svelte': '^7.1.1',
+          '@tsconfig/svelte': '^5.0.8',
+          svelte: '^5.55.5',
+          'svelte-check': '^4.4.8',
+          typescript: '^6.0.2',
+          vite: '^8.0.10',
+        },
       },
-      dependencies,
-      devDependencies: {
-        '@sveltejs/vite-plugin-svelte': '^5.0.3',
-        '@tsconfig/svelte': '^5.0.4',
-        svelte: '^5.28.6',
-        'svelte-check': '^4.1.7',
-        tslib: '^2.8.1',
-        typescript: '^5.8.3',
-        vite: '^6.3.5',
-      },
-    }),
+      null,
+      2,
+    ),
     'vite.config.ts': `import { defineConfig } from 'vite'
 import { svelte } from '@sveltejs/vite-plugin-svelte'
 

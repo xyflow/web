@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import { ReactFlow, Background } from '@xyflow/react';
 
 import { useState } from 'react';
@@ -121,6 +121,7 @@ const Flow = () => {
         onReconnect={onReconnect}
         onReconnectEnd={onReconnectEnd}
         fitView
+        colorMode="system"
       >
         <Background />
       </ReactFlow>
