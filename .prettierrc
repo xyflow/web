@@ -2,7 +2,7 @@
   "tabWidth": 2,
   "useTabs": false,
   "singleQuote": true,
-  "printWidth": 90,
-  "proseWrap": "always",
+  "printWidth": 130,
+  "proseWrap": "preserve",
   "plugins": ["prettier-plugin-tailwindcss"]
 }
