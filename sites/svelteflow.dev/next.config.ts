@@ -24,9 +24,6 @@ const nextConfig: NextConfig = {
   async redirects() {
     return redirects;
   },
-  async redirects() {
-    return redirects;
-  },
   env: {
     SVELTE_FLOW_VERSION: svelteFlowPackageJson.version,
     NEXT_PUBLIC_FRAMEWORK: 'svelte',
