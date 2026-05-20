@@ -1,5 +1,6 @@
 import { NextConfig } from 'next';
 import nextra from 'nextra';
+import redirects from './redirects.json' with { type: 'json' };
 import svelteFlowPackageJson from '@xyflow/svelte/package.json';
 
 // This is used for finding out the real deploy slug for a preview deployment
@@ -17,6 +18,9 @@ const nextConfig: NextConfig = {
   transpilePackages: ['@xyflow/xy-ui', 'xy-shared'],
   experimental: {
     optimizePackageImports: ['@xyflow/xy-ui', 'xy-shared'],
+  },
+  async redirects() {
+    return redirects;
   },
   env: {
     SVELTE_FLOW_VERSION: svelteFlowPackageJson.version,

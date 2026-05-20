@@ -35,6 +35,13 @@ export default {
           'server-side-rendering': '',
         },
       },
+      troubleshooting: {
+        items: {
+          'common-errors': '',
+          'migrate-to-v1': '',
+          'remove-attribution': '',
+        },
+      },
       'api-reference': { href: '/api-reference' },
     },
   },

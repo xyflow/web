@@ -17,13 +17,13 @@ adding common questions and pitfalls that we collect from our
 
 This usually happens when:
 
-**A:** You have two different versions of @reactflow/core installed.<br /> **B:** You are
+**A:** You have two different versions of `@xyflow/react` installed.<br /> **B:** You are
 trying to access the internal React Flow state outside of the React Flow context.
 
 #### Solution for A
 
-Update reactflow and @reactflow/node-resizer (in case you are using it), remove
-node_modules and package-lock.json and reinstall the dependencies.
+Update `@xyflow/react`, remove `node_modules` and your `package-lock.json` and reinstall
+the dependencies.
 
 #### Solution for B
 
@@ -297,7 +297,7 @@ function Flow(props) {
 
 This warning appears when you are trying to add the `extent` option to a node that does
 not have a parent node. Depending on what you are trying to do, you can remove the
-`extent` option or specify a `parentNode`.
+`extent` option or specify a `parentId`.
 
 <Callout type="error">Does show a warning:</Callout>
 
@@ -324,7 +324,7 @@ function Flow(props) {
 const nodes = [
   {
     id: 'mycustomnode',
-    parentNode: 'someothernode',
+    parentId: 'someothernode',
     extent: 'parent',
     // ...
   },
@@ -422,13 +422,18 @@ pass the correct `edgeTypes` property to React Flow. You can learn more about cu
 in the [custom edge guide](/learn/customization/custom-edges)
 
 <div id="012" />
-### Node with id yourId does not exist, it may have been removed. This can happen when a node is deleted before the "onNodeClick" handler is called.
+### Node with id yourId does not exist, it may have been removed.
+
+This can happen when a node is deleted before the "onNodeClick" handler is called.
 
 As the warning says, this can happen when you are trying to access a node that has already
 been removed from the state.
 
 <div id="013" />
-### It seems that you haven't loaded the styles. Please import '@xyflow/react/dist/style.css' or base.css to make sure everything is working properly.
+### It seems that you haven't loaded the styles.
+
+Please import '@xyflow/react/dist/style.css' or base.css to make sure
+everything is working properly.
 
 This warning appears when you haven't imported the React Flow stylesheet. The styles are
 necessary for the flow to be displayed properly.
@@ -487,10 +492,7 @@ and configure the loader like this:
 }
 ```
 
-<Callout type="info">
-  If you're using webpack 5, you don't need to do anything! React Flow will work out of
-  the box.
-</Callout>
+<Callout type="info">If you're using webpack 5, you don't need to do anything! React Flow will work out of the box.</Callout>
 
 ### Mouse events aren't working consistently when my nodes contain a `<canvas />` element.
 

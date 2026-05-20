@@ -1,0 +1,12 @@
+[
+  {
+    "source": "/error",
+    "destination": "/learn/troubleshooting",
+    "permanent": true
+  },
+  {
+    "source": "/learn/troubleshooting",
+    "destination": "/learn/troubleshooting/common-errors",
+    "permanent": true
+  }
+]
