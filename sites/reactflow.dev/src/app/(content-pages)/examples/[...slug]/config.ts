@@ -35,6 +35,7 @@ export const meta: DynamicMeta = {
       'edge-intersection': '',
       'edge-toolbar': '',
       'edge-types': '',
+      'edge-routing': '',
       'floating-edges': '',
       markers: '',
       'multi-connection-line': '',
