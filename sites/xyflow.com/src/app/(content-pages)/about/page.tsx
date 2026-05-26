@@ -4,14 +4,7 @@ import { UserGroupIcon, GlobeEuropeAfricaIcon } from '@heroicons/react/24/outlin
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid';
 import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
-import {
-  ContentGrid,
-  ContentGridItem,
-  Heading,
-  Text,
-  Button,
-  Section,
-} from '@xyflow/xy-ui';
+import { ContentGrid, ContentGridItem, Heading, Text, Button, Section } from '@xyflow/xy-ui';
 import { BaseLayout, Hero } from 'xy-shared';
 
 import christopher from '../../../../public/img/christopher.jpg';
@@ -19,7 +12,7 @@ import moritz from '../../../../public/img/moritz.jpg';
 import peter from '../../../../public/img/peter.jpg';
 import burak from '../../../../public/img/burak.jpg';
 import abbey from '../../../../public/img/abbey.jpg';
-import alessandro from '../../../../public/img/alessandro.jpg';
+import hayleigh from '../../../../public/img/hayleigh.jpg';
 import dima from '../../../../public/img/dima.jpg';
 import usman from '../../../../public/img/usman.jpg';
 import facu from '../../../../public/img/facu.jpg';
@@ -36,8 +29,8 @@ const Page: FC = () => {
 
       <Section className="max-w-screen-md mx-auto mt-12 lg:my-12">
         <Text size="lg" className="leading-8 mb-8">
-          Since 2014, Moritz and Christopher have been creating infographics, tools, and
-          interactive projects through their agency,{' '}
+          Since 2014, Moritz and Christopher have been creating infographics, tools, and interactive projects through their
+          agency,{' '}
           <Link href="https://webkid.io/" className="text-pink-500">
             webkid
           </Link>
@@ -45,20 +38,16 @@ const Page: FC = () => {
           <Link href="https://datablocks.pro/" className="text-pink-500">
             Datablocks
           </Link>{' '}
-          in 2019, they created React Flow and decided to open-source it. As adoption
-          grew, they began working on it full-time in 2021 to develop it into a
-          sustainable open-source project, just like the ones they loved using.
+          in 2019, they created React Flow and decided to open-source it. As adoption grew, they began working on it full-time in
+          2021 to develop it into a sustainable open-source project, just like the ones they loved using.
         </Text>
         <Text size="lg" className="leading-8 mb-8">
-          Today, we&apos;ve expanded the team and generalized the core of React Flow to
-          support frameworks beyond React. To keep everything organized, we launched
-          xyflow—a home for all our projects. Now, here we are–happy maintainers of a
-          couple of libraries we&apos;re proud of with wonderful communities behind them
-          :)
+          Today, we&apos;ve expanded the team and generalized the core of React Flow to support frameworks beyond React. To keep
+          everything organized, we launched xyflow—a home for all our projects. Now, here we are–happy maintainers of a couple of
+          libraries we&apos;re proud of with wonderful communities behind them :)
         </Text>
         <Text size="lg" className="leading-8 mb-8">
-          If you need anything, have an idea, or just want to say hi, we&apos;re an email
-          away at info@xyflow.com.
+          If you need anything, have an idea, or just want to say hi, we&apos;re an email away at info@xyflow.com.
         </Text>
         <Text size="lg" className="leading-8">
           ✌🏻 the xyflow team
@@ -113,14 +102,11 @@ const Page: FC = () => {
           links={[{ linkName: 'GitHub', route: 'https://github.com/peterkogo' }]}
         />
         <TeamCard
-          name="Alessandro"
+          name="Hayleigh"
           role="Software Engineer"
-          teamPic={alessandro}
-          description="Alessandro likes to hack programming languages, compilers, synthesizers, sound systems and more."
-          links={[
-            { linkName: 'Website', route: 'https://cheli.dev' },
-            { linkName: 'GitHub', route: 'https://github.com/0x0f0f0f' },
-          ]}
+          teamPic={hayleigh}
+          description="Hayleigh is a time traveller who arrived in the year 2023 on accident trying to get to the year 2032 (her home-year). While she and her 2 cats wait another 7 years until the time machine is re-invented, she decided to take to coding in languages (archaic to her) such as React, Javascript, and Elm."
+          links={[{ linkName: 'GitHub', route: 'https://github.com/hayleigh-dot-dev' }]}
         />
       </ContentGrid>
 
@@ -191,8 +177,8 @@ const Page: FC = () => {
           </div>
           <Heading className="text-center">Join our team</Heading>
           <Text size="lg" className="text-center text-light  mt-2">
-            We are expanding our Berlin-based product development team and are looking for
-            talented web developers to join us. To see our open positions, check out our{' '}
+            We are expanding our Berlin-based product development team and are looking for talented web developers to join us. To
+            see our open positions, check out our{' '}
             <Link className="text-pink-500" href="/careers">
               careers page
             </Link>
@@ -221,13 +207,7 @@ function TeamCard({
     <ContentGridItem className="flex flex-col px-8 py-10 lg:py-16">
       {teamPic && (
         <div className="mb-8 lg:-mt-8 w-full aspect-[3.5/4] max-w-[320px] relative">
-          <Image
-            objectFit="cover"
-            src={teamPic}
-            alt={name}
-            className="mb-8 lg:-mt-8"
-            fill
-          />
+          <Image objectFit="cover" src={teamPic} alt={name} className="mb-8 lg:-mt-8" fill />
         </div>
       )}
       <Heading as="p" size="sm" className="mb-4">
