@@ -56,24 +56,10 @@ const SignInMagicLink: FC = () => {
           <InputLabel className="text-muted-foreground" htmlFor="email">
             Email
           </InputLabel>
-          <Input
-            required
-            variant="square"
-            name="email"
-            id="email"
-            placeholder="Email"
-            disabled={isSuccess}
-            type="email"
-          />
+          <Input required variant="square" name="email" id="email" placeholder="Email" disabled={isSuccess} type="email" />
         </div>
         <Turnstile ref={turnstileRef} />
-        <Button
-          disabled={isLoading || isSuccess}
-          loading={isLoading}
-          size="lg"
-          className="w-full shrink-0"
-          type="submit"
-        >
+        <Button disabled={isLoading || isSuccess} loading={isLoading} size="lg" className="w-full shrink-0" type="submit">
           Send secure link
         </Button>
       </div>

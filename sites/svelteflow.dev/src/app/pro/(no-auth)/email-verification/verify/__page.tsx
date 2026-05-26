@@ -1,1 +1,0 @@
-export { default } from 'xy-shared/routes/pro/(no-auth)/email-verification/verify/__page';
