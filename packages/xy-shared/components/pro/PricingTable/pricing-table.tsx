@@ -2,13 +2,7 @@
 
 import { useState } from 'react';
 import { callNhostFunction } from '../../../server-actions/call-nhost-function';
-import {
-  BillingInterval,
-  defaultSubscriptionPlans,
-  PricingTable,
-  SubscriptionPlanId,
-} from '../../pricing-table';
-import { getHostName } from '../../../lib/get-host-name';
+import { BillingInterval, defaultSubscriptionPlans, PricingTable, SubscriptionPlanId } from '../../pricing-table';
 import { User } from '@nhost/nhost-js/auth';
 
 export default function PricingTableComponent({ user }: { user: User }) {
@@ -17,21 +11,11 @@ export default function PricingTableComponent({ user }: { user: User }) {
   const setLoading = (planId: SubscriptionPlanId, isLoading: boolean) => {
     console.log('setLoading', planId, isLoading);
     setPlans((plans) =>
-      plans.map((plan) =>
-        plan.id === planId
-          ? { ...plan, buttonLabelSignedIn: isLoading ? 'Loading...' : 'Subscribe' }
-          : plan,
-      ),
+      plans.map((plan) => (plan.id === planId ? { ...plan, buttonLabelSignedIn: isLoading ? 'Loading...' : 'Subscribe' } : plan)),
     );
   };
 
-  const subscribe = async ({
-    plan,
-    interval,
-  }: {
-    plan: SubscriptionPlanId;
-    interval: BillingInterval;
-  }) => {
+  const subscribe = async ({ plan, interval }: { plan: SubscriptionPlanId; interval: BillingInterval }) => {
     if (plan === SubscriptionPlanId.ENTERPRISE) {
       return window.open('/pro/quote-request?plan=enterprise', '_blank');
     }
@@ -40,7 +24,7 @@ export default function PricingTableComponent({ user }: { user: User }) {
 
     await Promise.resolve();
 
-    const hostName = getHostName();
+    const hostName = process.env.NEXT_PUBLIC_SITE_URL;
     const successUrl = `${hostName}/pro/dashboard`;
     const cancelUrl = `${hostName}/pro/subscribe`;
 

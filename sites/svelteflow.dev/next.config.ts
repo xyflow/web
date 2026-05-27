@@ -32,7 +32,8 @@ const nextConfig: NextConfig = {
       process.env.VERCEL_ENV === 'preview'
         ? `https://example-apps-git-${parsePreviewDeploySlug(process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL ?? '')}.vercel.app`
         : process.env.NEXT_PUBLIC_EXAMPLES_URL,
-    NEXT_PUBLIC_PRO_EXAMPLES_URL: process.env.NEXT_PUBLIC_PRO_EXAMPLES_URL,
+    NEXT_PUBLIC_SITE_URL:
+      process.env.NODE_ENV === 'development' ? 'http://localhost:3002' : `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`,
   },
   images: {
     // We need this to allow images to be displayed from localhost

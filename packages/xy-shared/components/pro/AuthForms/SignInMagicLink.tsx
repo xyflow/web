@@ -1,6 +1,6 @@
 'use client';
 
-import { FC, FormEvent, useRef, useState, useTransition } from 'react';
+import { FC, SubmitEvent, useRef, useState, useTransition } from 'react';
 import { Button } from '../../ui/button';
 import { Input, InputLabel } from '../../ui/input';
 
@@ -17,7 +17,7 @@ const SignInMagicLink: FC = () => {
 
   const turnstileRef = useRef<TurnstileRef>(null);
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
     // Prevent resubmitting the form when an error is set
     event.preventDefault();
     startTransition(async () => {
@@ -32,7 +32,7 @@ const SignInMagicLink: FC = () => {
 
       try {
         await nhostOnClient.auth.signInPasswordlessEmail(
-          { email },
+          { email, options: { redirectTo: process.env.NEXT_PUBLIC_SITE_URL } },
           {
             headers: {
               'x-cf-turnstile-response': turnstileToken,

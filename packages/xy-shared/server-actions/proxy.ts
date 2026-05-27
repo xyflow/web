@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { handleNhostMiddleware } from '../lib/nhost';
 
-const protectedRoutes = ['/pro/dashboard', '/pro/team', '/pro/account', '/pro/support'];
+const protectedRoutes = ['/pro/dashboard', '/pro/team', '/pro/account', '/pro/support', '/pro/subscribe'];
 
 const redirectToDashboard = ['/pro/sign-in', '/pro/sign-up', '/pro'];
 
@@ -29,15 +29,11 @@ export async function proxy(request: NextRequest) {
   const path = request.nextUrl.pathname;
 
   if (protectedRoutes.includes(path)) {
-    return !session
-      ? NextResponse.redirect(new URL('/pro/sign-in', request.url))
-      : response;
+    return !session ? NextResponse.redirect(new URL('/pro/sign-in', request.url)) : response;
   }
 
   if (redirectToDashboard.includes(path)) {
-    return session
-      ? NextResponse.redirect(new URL('/pro/dashboard', request.url))
-      : response;
+    return session ? NextResponse.redirect(new URL('/pro/dashboard', request.url)) : response;
   }
 
   return response;

@@ -8,12 +8,14 @@ type PageProps = {
   searchParams: Promise<SearchParams>;
 };
 
+const redirectTo = `${process.env.NEXT_PUBLIC_SITE_URL}/pro/dashboard`;
+
 export default async function EmailVerificationVerifyPage(props: PageProps) {
   const searchParams = await props.searchParams;
-  const { ticket, redirectTo, type } = searchParams;
+  const { ticket } = searchParams;
 
-  if (ticket && redirectTo && type) {
-    redirect(`${nhostOnClient.auth.baseURL}/verify?ticket=${ticket}&type=${type}&redirectTo=${redirectTo}`);
+  if (ticket) {
+    redirect(`${nhostOnClient.auth.baseURL}/verify?ticket=${ticket}&redirectTo=${encodeURIComponent(redirectTo)}`);
   }
 
   redirect('/?error=invalid-ticket');

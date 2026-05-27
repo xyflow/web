@@ -88,6 +88,8 @@ const nextConfig: NextConfig = {
       process.env.VERCEL_ENV === 'preview'
         ? `https://ui-components-git-${parsePreviewDeploySlug(process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL!)}.vercel.app`
         : process.env.NEXT_PUBLIC_UI_COMPONENTS_URL,
+    NEXT_PUBLIC_SITE_URL:
+      process.env.NODE_ENV === 'development' ? 'http://localhost:3002' : `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`,
   },
   turbopack: {
     resolveAlias: {
