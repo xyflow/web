@@ -19,7 +19,7 @@ export async function signUp(formData: FormData, turnstileToken: string) {
         email,
         password,
         options: {
-          redirectTo: process.env.NEXT_PUBLIC_SITE_URL,
+          redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/pro`,
         },
       },
       {

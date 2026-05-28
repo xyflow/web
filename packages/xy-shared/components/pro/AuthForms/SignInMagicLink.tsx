@@ -32,7 +32,7 @@ const SignInMagicLink: FC = () => {
 
       try {
         await nhostOnClient.auth.signInPasswordlessEmail(
-          { email, options: { redirectTo: process.env.NEXT_PUBLIC_SITE_URL } },
+          { email, options: { redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/pro` } },
           {
             headers: {
               'x-cf-turnstile-response': turnstileToken,
