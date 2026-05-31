@@ -387,6 +387,14 @@ necessary for the flow to be displayed properly.
 warning appears when you are trying to use the `useNodeConnections` hook outside of a
 custom node component.
 
+<div id="016" />
+### Edge with id "yourId" does not exist, it may have been removed.
+
+This can happen when an edge is deleted before the edge click/selection handler is called.
+
+As the warning says, this can happen when you are trying to access an edge that has
+already been removed from the state.
+
 ### Mouse events aren't working consistently when my nodes contain a `<canvas />` element.
 
 If you're using a `<canvas />` element inside your custom node, you might run into
