@@ -1,0 +1,20 @@
+---
+title: 'React Flow 12.11.0'
+description: 'Changelog for React Flow version 12.11.0'
+authors: [xyflow]
+date: '2026-06-01'
+---
+
+### Minor Changes
+
+- [#5677](https://github.com/xyflow/xyflow/pull/5677) - Add `autoPanOnSelection` to auto-pan when user drags a selection close to the edge of the viewport.
+
+### Patch Changes
+
+- [#5791](https://github.com/xyflow/xyflow/pull/5791) - Adds a type error when `handleId` is used without `handleType` in `useNodeConnections`
+- [#5793](https://github.com/xyflow/xyflow/pull/5793) - Dev Warnings now use library-specific messaging with the correct documentation links.
+- [#5776](https://github.com/xyflow/xyflow/pull/5776) - Export `NodeHandle` type
+- [#5755](https://github.com/xyflow/xyflow/pull/5755) - Add `@types/react` and `@types/react-dom` as optional peer dependencies to prevent issues with pnpm strict mode (`hoist: false`)
+- [#5105](https://github.com/xyflow/xyflow/pull/5105) - Fix type for event passed to onNodeDrag
+- [#5784](https://github.com/xyflow/xyflow/pull/5784) - Fix node resizing possible beyond absolute extents
+- [#5769](https://github.com/xyflow/xyflow/pull/5769) - Use `useEffect` for StoreUpdater to restore previous behaviour
