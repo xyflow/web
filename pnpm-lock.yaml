@@ -61,8 +61,8 @@ importers:
         specifier: ^12.11.0
         version: 12.11.0(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
       '@xyflow/svelte':
-        specifier: 1.4.1
-        version: 1.4.1(svelte@5.55.4(@typescript-eslint/types@8.58.2))
+        specifier: 1.6.0
+        version: 1.6.0(svelte@5.55.4(@typescript-eslint/types@8.58.2))
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -668,8 +668,8 @@ importers:
         specifier: 12.11.0
         version: 12.11.0(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
       '@xyflow/svelte':
-        specifier: 1.5.0
-        version: 1.5.0(svelte@5.55.4(@typescript-eslint/types@8.58.2))
+        specifier: 1.6.0
+        version: 1.6.0(svelte@5.55.4(@typescript-eslint/types@8.58.2))
       '@xyflow/system':
         specifier: ^0.0.72
         version: 0.0.72
@@ -3525,21 +3525,13 @@ packages:
       '@types/react-dom':
         optional: true
 
-  '@xyflow/svelte@1.4.1':
-    resolution: {integrity: sha512-CAegVmLMpX64G6JnhiU7ezoIOY7aX88cf1fSOV8FutKdZNMxcJBykhvaXunOBf7jjDs9X887RH8Jgdl1rMwXww==}
-    peerDependencies:
-      svelte: ^5.25.0
-
-  '@xyflow/svelte@1.5.0':
-    resolution: {integrity: sha512-kHJVwMtabN7xthDJqLvx5wGT5qjOAVV90J9a26geDS51lrGsGb7CCxNRiZCMuVDlRkczGVIy9dkqdph6FL4slQ==}
+  '@xyflow/svelte@1.6.0':
+    resolution: {integrity: sha512-msCT95OqTThh7gWhdFJ03Qzhc0Q8QYfA8K03M4I+KTtHdvatoTuRo9ofkFHJDbMfS243y+fOs5TCvU9T1kEUUA==}
     peerDependencies:
       svelte: ^5.25.0
 
   '@xyflow/system@0.0.72':
     resolution: {integrity: sha512-WBI5Aau0fXTXwxHPzceLNS6QdXggSWnGjDtj/gG669crApN8+SCmEtkBth1m7r6pStNo/5fI9McEi7Dk0ymCLA==}
-
-  '@xyflow/system@0.0.74':
-    resolution: {integrity: sha512-7v7B/PkiVrkdZzSbL+inGAo6tkR/WQHHG0/jhSvLQToCsfa8YubOGmBYd1s08tpKpihdHDZFwzQZeR69QSBb4Q==}
 
   '@xyflow/system@0.0.77':
     resolution: {integrity: sha512-qCDCMCQAAgUu8yHnhloHG9F5mwPX5E+Wl8McpYIOPSSXfzFJJoZcwOcsDiAjitVKIg2de1WmJbCHfpcvxprsgg==}
@@ -10173,31 +10165,13 @@ snapshots:
     transitivePeerDependencies:
       - immer
 
-  '@xyflow/svelte@1.4.1(svelte@5.55.4(@typescript-eslint/types@8.58.2))':
+  '@xyflow/svelte@1.6.0(svelte@5.55.4(@typescript-eslint/types@8.58.2))':
     dependencies:
       '@svelte-put/shortcut': 4.1.0(svelte@5.55.4(@typescript-eslint/types@8.58.2))
-      '@xyflow/system': 0.0.72
-      svelte: 5.55.4(@typescript-eslint/types@8.58.2)
-
-  '@xyflow/svelte@1.5.0(svelte@5.55.4(@typescript-eslint/types@8.58.2))':
-    dependencies:
-      '@svelte-put/shortcut': 4.1.0(svelte@5.55.4(@typescript-eslint/types@8.58.2))
-      '@xyflow/system': 0.0.74
+      '@xyflow/system': 0.0.77
       svelte: 5.55.4(@typescript-eslint/types@8.58.2)
 
   '@xyflow/system@0.0.72':
-    dependencies:
-      '@types/d3-drag': 3.0.7
-      '@types/d3-interpolate': 3.0.4
-      '@types/d3-selection': 3.0.11
-      '@types/d3-transition': 3.0.9
-      '@types/d3-zoom': 3.0.8
-      d3-drag: 3.0.0
-      d3-interpolate: 3.0.1
-      d3-selection: 3.0.0
-      d3-zoom: 3.0.0
-
-  '@xyflow/system@0.0.74':
     dependencies:
       '@types/d3-drag': 3.0.7
       '@types/d3-interpolate': 3.0.4
