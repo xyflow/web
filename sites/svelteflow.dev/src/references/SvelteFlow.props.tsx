@@ -28,12 +28,7 @@ export const FIELDS = {
     'nodeExtent',
     'elevateNodesOnSelect',
   ],
-  edge: [
-    'edgesFocusable',
-    'elevateEdgesOnSelect',
-    'defaultMarkerColor',
-    'defaultEdgeOptions',
-  ],
+  edge: ['edgesFocusable', 'elevateEdgesOnSelect', 'defaultMarkerColor', 'defaultEdgeOptions'],
   nodeEvents: [
     'onnodeclick',
     'onnodedragstart',
@@ -80,6 +75,7 @@ export const FIELDS = {
     'elementsSelectable',
     'autoPanOnConnect',
     'autoPanOnNodeDrag',
+    'autoPanOnSelection',
     'selectNodesOnDrag',
     'panOnDrag',
     'selectionOnDrag',
@@ -100,14 +96,7 @@ export const FIELDS = {
     'connectionLineStyle',
     'connectionLineContainerStyle',
   ],
-  keyboard: [
-    'deleteKey',
-    'selectionKey',
-    'multiSelectionKey',
-    'zoomActivationKey',
-    'panActivationKey',
-    'disableKeyboardA11y',
-  ],
+  keyboard: ['deleteKey', 'selectionKey', 'multiSelectionKey', 'zoomActivationKey', 'panActivationKey', 'disableKeyboardA11y'],
 };
 
 export type SvelteFlowAPIPropsGroup = keyof typeof FIELDS | 'common';

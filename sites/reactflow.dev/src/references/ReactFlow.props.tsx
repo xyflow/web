@@ -20,13 +20,7 @@ export const FIELDS = {
     'preventScrolling',
     'attributionPosition',
   ],
-  edge: [
-    'elevateEdgesOnSelect',
-    'defaultMarkerColor',
-    'defaultEdgeOptions',
-    'reconnectRadius',
-    'edgesReconnectable',
-  ],
+  edge: ['elevateEdgesOnSelect', 'defaultMarkerColor', 'defaultEdgeOptions', 'reconnectRadius', 'edgesReconnectable'],
   nodeEvents: [
     'onNodeClick',
     'onNodeDoubleClick',
@@ -91,6 +85,7 @@ export const FIELDS = {
     'elementsSelectable',
     'autoPanOnConnect',
     'autoPanOnNodeDrag',
+    'autoPanOnSelection',
     'autoPanSpeed',
     'panOnDrag',
     'selectionOnDrag',
@@ -161,8 +156,6 @@ type $ = ${myType}
 export default $`;
 }
 
-export const ReactFlowAPIProps: FC<{ group: keyof typeof FIELDS | 'common' }> = ({
-  group,
-}) => {
+export const ReactFlowAPIProps: FC<{ group: keyof typeof FIELDS | 'common' }> = ({ group }) => {
   return <APIDocs code={getReactFlowAPIPropsCode(group)} />;
 };
