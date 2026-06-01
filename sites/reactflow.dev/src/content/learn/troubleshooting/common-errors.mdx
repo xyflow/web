@@ -454,6 +454,14 @@ happen when you are trying to drag a node that has not been initialized with the
 your nodes properly. You can learn more about this in the
 ["Adding Interactivity" guide](/learn/concepts/adding-interactivity)
 
+<div id="016" />
+### Edge with id "yourId" does not exist, it may have been removed.
+
+This can happen when an edge is deleted before the edge click/selection handler is called.
+
+As the warning says, this can happen when you are trying to access an edge that has
+already been removed from the state.
+
 ### I get an error when building my app with webpack 4.
 
 If you're using webpack 4, you'll likely run into an error like this:
