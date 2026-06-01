@@ -1,8 +1,6 @@
 <script lang="ts">
   import { SvelteFlow, Background, type Node, type Edge } from '@xyflow/svelte';
 
-  import '@xyflow/svelte/dist/style.css';
-
   import { initialNodes, initialEdges } from './nodes-and-edges.svelte';
   import ColorPickerNode from './ColorPickerNode.svelte';
   import SliderNode from './SliderNode.svelte';

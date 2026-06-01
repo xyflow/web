@@ -5,8 +5,8 @@ function CustomNode({ data }) {
   return (
     <div className="rounded-md border-2 border-stone-400 bg-white px-4 py-2 shadow-md dark:border-gray-600 dark:bg-gray-800">
       <div className="flex">
-        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-teal-100 dark:bg-gray-700">
-          {data.emoji}
+        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-teal-100 text-center dark:bg-gray-700">
+          <span className="translate-x-[2px]">{data.emoji}</span>
         </div>
         <div className="ml-2">
           <div className="text-lg font-bold text-gray-900 dark:text-gray-100">
@@ -19,12 +19,12 @@ function CustomNode({ data }) {
       <Handle
         type="target"
         position={Position.Top}
-        className="w-16 !bg-teal-500 dark:!bg-teal-400"
+        className="w-16 rounded-none border-none bg-teal-500 dark:bg-teal-400"
       />
       <Handle
         type="source"
         position={Position.Bottom}
-        className="w-16 !bg-teal-500 dark:!bg-teal-400"
+        className="w-16 rounded-none border-none bg-teal-500 dark:bg-teal-400"
       />
     </div>
   );

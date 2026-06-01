@@ -10,7 +10,11 @@
 </script>
 
 <NodeWrapper label={data.label}>
-  <Handle type="source" position={Position.Right} />
+  <Handle
+    type="source"
+    position={Position.Right}
+    class="w-[10px] h-[10px] border-none bg-gray-400"
+  />
   <input
     class="nodrag accent-[#ff4000] m-3 w-full"
     style="direction: rtl;"

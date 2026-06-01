@@ -8,9 +8,6 @@ import {
   Controls,
 } from '@xyflow/react';
 
-import '@xyflow/react/dist/base.css';
-
-import './tailwind-config.js';
 import CustomNode from './CustomNode';
 
 const nodeTypes = {

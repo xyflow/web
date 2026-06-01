@@ -1,6 +1,5 @@
 <script lang="ts">
   import { SvelteFlow, Controls, MiniMap, type Node, type Edge } from '@xyflow/svelte';
-  import '@xyflow/svelte/dist/style.css';
 
   import { initialNodes, initialEdges } from './nodes-and-edges';
   import CustomNode from './CustomNode.svelte';
@@ -13,9 +12,9 @@
   };
 </script>
 
-<div class="w-full h-full bg-gray-900">
+<div class="w-full h-full">
   <SvelteFlow
-    class="bg-transparent!"
+    class="bg-teal-50! dark:bg-gray-900!"
     bind:nodes
     {nodeTypes}
     bind:edges

@@ -10,10 +10,14 @@
   <div class="flex items-center space-x-2 p-3">
     <input
       bind:value={flowState.color}
-      class="nodrag border-md w-6 h-6"
+      class="nodrag w-6 h-6 rounded cursor-pointer"
       type="color"
     />
-    <p>{flowState.color}</p>
+    <span class="font-mono text-xs">{flowState.color}</span>
   </div>
-  <Handle type="source" position={Position.Right} />
+  <Handle
+    type="source"
+    position={Position.Right}
+    class="w-[10px] h-[10px] border-none bg-gray-400"
+  />
 </NodeWrapper>
