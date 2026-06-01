@@ -29,9 +29,7 @@ export default async function Page(props: PageProps) {
 
   if (isLabsPage) {
     pageMap = await getPageMap('/labs');
-    pageMap = pageMap.filter(
-      (page) => 'name' in page && page.name !== 'index',
-    ) as MdxFile[];
+    pageMap = pageMap.filter((page) => 'name' in page && page.name !== 'index') as MdxFile[];
   } else if (isBlogPage) {
     pageMap = await getBlogs();
   } else {
@@ -63,6 +61,8 @@ export default async function Page(props: PageProps) {
 
 export async function generateMetadata(props: PageProps) {
   const params = await props.params;
+  console.log(params.mdxPath);
+
   const { metadata } = await importPage(params.mdxPath);
   return metadata;
 }

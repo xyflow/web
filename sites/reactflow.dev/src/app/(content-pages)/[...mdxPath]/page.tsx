@@ -46,13 +46,9 @@ export default async function Page(props: Props) {
           });
 
           const prev =
-            activeIndex === 0
-              ? flatDocsDirectories[flatDocsDirectories.length - 1]
-              : flatDocsDirectories[activeIndex - 1];
+            activeIndex === 0 ? flatDocsDirectories[flatDocsDirectories.length - 1] : flatDocsDirectories[activeIndex - 1];
           const next =
-            activeIndex === flatDocsDirectories.length - 1
-              ? flatDocsDirectories[0]
-              : flatDocsDirectories[activeIndex + 1];
+            activeIndex === flatDocsDirectories.length - 1 ? flatDocsDirectories[0] : flatDocsDirectories[activeIndex + 1];
 
           return (
             <CaseStudyLayoutWrapper
@@ -79,11 +75,7 @@ export default async function Page(props: Props) {
               // @ts-expect-error -- fixme
               frontMatter={metadata}
               prev={activeIndex > 0 ? flatDocsDirectories[activeIndex - 1] : undefined}
-              next={
-                activeIndex < flatDocsDirectories.length - 1
-                  ? flatDocsDirectories[activeIndex + 1]
-                  : undefined
-              }
+              next={activeIndex < flatDocsDirectories.length - 1 ? flatDocsDirectories[activeIndex + 1] : undefined}
             >
               {mdx}
             </BaseBlogPostLayout>

@@ -62,19 +62,46 @@ export async function handleNhostMiddleware(
   response: NextResponse<unknown>,
   refreshSession: boolean,
 ): Promise<Session | null> {
-  const nhost = await createNhostClient();
+  const nhost = createServerClient({
+    subdomain: process.env.NEXT_PUBLIC_NHOST_SUBDOMAIN!,
+    region: process.env.NEXT_PUBLIC_NHOST_REGION!,
+    storage: {
+      // storage compatible with Next.js middleware
+      get: (): Session | null => {
+        const raw = request.cookies.get(key)?.value || null;
+        if (!raw) {
+          return null;
+        }
+        const session = JSON.parse(raw) as Session;
+        return session;
+      },
+      set: (value: Session) => {
+        response.cookies.set({
+          name: key,
+          value: JSON.stringify(value),
+          ...COOKIE_OPTIONS,
+        });
+      },
+      remove: () => {
+        response.cookies.delete(key);
+      },
+    },
+  });
+
+  let userSession = nhost.getUserSession();
 
   const refreshToken = request.nextUrl.searchParams.get('refreshToken');
 
-  if (refreshToken) {
+  if (refreshToken && !userSession) {
     const session = await nhost.auth.refreshToken({ refreshToken });
 
     if (session.body) {
-      nhost.sessionStorage.set(session.body);
+      // nhost.sessionStorage.set(session.body);
+      userSession = session.body as Session;
     }
   }
 
-  return refreshSession && !refreshToken ? await nhost.refreshSession(30) : nhost.getUserSession();
+  return refreshSession && !refreshToken ? await nhost.refreshSession(30) : userSession;
 }
 
 export async function requireSession(): Promise<{ session: Session; user: User }> {
