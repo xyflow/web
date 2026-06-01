@@ -9,7 +9,6 @@ export default function PricingTableComponent({ user }: { user: User }) {
   const [plans, setPlans] = useState(defaultSubscriptionPlans);
 
   const setLoading = (planId: SubscriptionPlanId, isLoading: boolean) => {
-    console.log('setLoading', planId, isLoading);
     setPlans((plans) =>
       plans.map((plan) => (plan.id === planId ? { ...plan, buttonLabelSignedIn: isLoading ? 'Loading...' : 'Subscribe' } : plan)),
     );

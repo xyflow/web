@@ -296,9 +296,6 @@ const metaRecord = {
       content: {
         display: 'hidden',
       },
-      'auth-verify': {
-        display: 'hidden',
-      },
       // Auth
       dashboard: <WithIcon icon={Squares2X2Icon}>Dashboard</WithIcon>,
       support: <WithIcon icon={ChatBubbleLeftRightIcon}>Support</WithIcon>,
@@ -331,6 +328,9 @@ const metaRecord = {
         display: 'hidden',
       },
       'email-verification': {
+        display: 'hidden',
+      },
+      'auth-verify': {
         display: 'hidden',
       },
       // Both

@@ -1,16 +1,7 @@
 import { FC, ReactNode, SVGProps } from 'react';
-import {
-  Squares2X2Icon,
-  UsersIcon,
-  Cog8ToothIcon,
-  ChatBubbleLeftRightIcon,
-  SparklesIcon,
-} from '@heroicons/react/24/outline';
+import { Squares2X2Icon, UsersIcon, Cog8ToothIcon, ChatBubbleLeftRightIcon, SparklesIcon } from '@heroicons/react/24/outline';
 
-const WithIcon: FC<{ children: ReactNode; icon: FC<SVGProps<SVGElement>> }> = ({
-  children,
-  icon: Icon,
-}) => {
+const WithIcon: FC<{ children: ReactNode; icon: FC<SVGProps<SVGElement>> }> = ({ children, icon: Icon }) => {
   return (
     <span className="flex items-center gap-1.5">
       <Icon height="1.2em" />
@@ -212,17 +203,21 @@ const metaRecord = {
       },
       // No-Auth
       'sign-in': {
+        display: 'hidden',
         items: {
           'magic-link': {
             display: 'hidden',
           },
         },
       },
-      'sign-up': '',
+      'sign-up': { display: 'hidden' },
       'reset-password': {
         display: 'hidden',
       },
       'email-verification': {
+        display: 'hidden',
+      },
+      'auth-verify': {
         display: 'hidden',
       },
       // Both

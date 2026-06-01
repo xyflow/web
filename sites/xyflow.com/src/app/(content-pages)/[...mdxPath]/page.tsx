@@ -61,7 +61,6 @@ export default async function Page(props: PageProps) {
 
 export async function generateMetadata(props: PageProps) {
   const params = await props.params;
-  console.log(params.mdxPath);
 
   const { metadata } = await importPage(params.mdxPath);
   return metadata;

@@ -18,7 +18,7 @@ export default function EmailVerificationVerifyPage() {
 
       router.push(`${nhostOnClient.auth.baseURL}/verify?ticket=${ticket}&redirectTo=${encodeURIComponent(redirectTo)}`);
     } else {
-      router.push('/?error=invalid-ticket');
+      router.push('/pro/dashboard?error=invalid-ticket');
     }
   }, [ticket, router]);
 
